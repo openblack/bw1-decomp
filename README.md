@@ -1,2 +1,3 @@
 # bw1-decomp
-Decompilation of Black &amp; White 1
+* [Reverse Engineering Wiki](https://github.com/openblack/bw1-decomp/wiki)
+* [Black & White Patches](https://github.com/openblack/bw1-patches/tree/master/patches)
