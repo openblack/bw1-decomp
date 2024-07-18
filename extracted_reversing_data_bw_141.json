@@ -26621,7 +26621,6 @@
       "size": 84,
       "aliases": [
         { "name": "super", "type": "Object" },
-        { "name": "vftable", "type": "BaseBasedVftable *" },
         { "name": "object_vftable", "type": "ObjectVftable *" },
         { "name": "fixed_vftable", "type": "FixedVftable *" },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" },
@@ -27146,7 +27145,6 @@
       "size": 88,
       "aliases": [
         { "name": "super", "type": "Fixed" },
-        { "name": "vftable", "type": "BaseBasedVftable *" },
         { "name": "object_vftable", "type": "ObjectVftable *" },
         { "name": "multiMapFixed_vftable", "type": "MultiMapFixedVftable *" },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" },
@@ -27521,7 +27519,6 @@
       "size": 88,
       "aliases": [
         { "name": "super", "type": "Mobile" },
-        { "name": "vftable", "type": "BaseBasedVftable *" },
         { "name": "mobileWallHug_vftable", "type": "MobileWallHugVftable *" },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" }
       ]
@@ -31627,7 +31624,6 @@
       "size": 140,
       "aliases": [
         { "name": "super", "type": "MobileWallHug" },
-        { "name": "vftable", "type": "BaseBasedVftable *" },
         { "name": "living_vftable", "type": "LivingVftable *" },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" }
       ]
@@ -31947,7 +31943,6 @@
       "size": 224,
       "aliases": [
         { "name": "super", "type": "Living" },
-        { "name": "vftable", "type": "BaseBasedVftable *" },
         { "name": "villager_vftable", "type": "VillagerVftable *" },
         { "name": "living_vftable", "type": "LivingVftable *" },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" }
@@ -32168,7 +32163,6 @@
       "size": 124,
       "aliases": [
         { "name": "super", "type": "MultiMapFixed" },
-        { "name": "vftable", "type": "BaseBasedVftable *" },
         { "name": "abode_vftable", "type": "AbodeVftable *" },
         { "name": "object_vftable", "type": "ObjectVftable *" },
         { "name": "multiMapFixed_vftable", "type": "MultiMapFixedVftable *" },
