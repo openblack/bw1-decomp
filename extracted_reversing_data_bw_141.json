@@ -23801,8 +23801,8 @@
       "size": 4,
       "call_type": "__thiscall",
       "result": "void",
-      "args": ["struct Object *", "enum EffectNumbers"],
-      "signature": "void (struct Object *, const void *, enum EffectNumbers) __attribute__((fastcall))"
+      "args": ["struct Object *", "struct EffectNumbers *"],
+      "signature": "void (struct Object *, const void *, struct EffectNumbers *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -26473,7 +26473,12 @@
       "size": 40,
       "aliases": [
         { "name": "super", "type": "GameThingWithPos" },
-        { "name": "vftable", "type": "ObjectVftable *" }
+        { "name": "vftable_object", "type": "ObjectVftable *" },
+        {
+          "name": "vftable_gamethingwithpos",
+          "type": "GameThingWithPosVftable *"
+        },
+        { "name": "vftable_gamething", "type": "GameThingVftable *" }
       ]
     },
     {
@@ -26481,7 +26486,7 @@
       "type": "struct Object",
       "size": 84,
       "members": [
-        { "name": "super", "type": "struct GameThingWithPos", "offset": 0 },
+        { "name": "base", "type": "union ObjectBase", "offset": 0 },
         { "name": "info", "type": "const struct GObjectInfo *", "offset": 40 },
         { "name": "coords", "type": "struct MapCoords", "offset": 44 },
         { "name": "map_parent", "type": "struct Object *", "offset": 56 },
@@ -27145,6 +27150,8 @@
       "size": 88,
       "aliases": [
         { "name": "super", "type": "Fixed" },
+        { "name": "super_object", "type": "Object" },
+        { "name": "super_gamethingwithpos", "type": "GameThingWithPos" },
         { "name": "object_vftable", "type": "ObjectVftable *" },
         { "name": "multiMapFixed_vftable", "type": "MultiMapFixedVftable *" },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" },
@@ -27519,7 +27526,14 @@
       "size": 88,
       "aliases": [
         { "name": "super", "type": "Mobile" },
+        { "name": "super_object", "type": "Object" },
+        { "name": "super_gamethingwithpos", "type": "GameThingWithPos" },
         { "name": "mobileWallHug_vftable", "type": "MobileWallHugVftable *" },
+        { "name": "vftable_object", "type": "ObjectVftable *" },
+        {
+          "name": "vftable_gameThingWithPos",
+          "type": "GameThingWithPosVftable *"
+        },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" }
       ]
     },
@@ -31624,6 +31638,9 @@
       "size": 140,
       "aliases": [
         { "name": "super", "type": "MobileWallHug" },
+        { "name": "super_object", "type": "Object" },
+        { "name": "super_gamethingwithpos", "type": "GameThingWithPos" },
+        { "name": "vftable_object", "type": "ObjectVftable *" },
         { "name": "living_vftable", "type": "LivingVftable *" },
         { "name": "gameThing_vftable", "type": "GameThingVftable *" }
       ]
@@ -31943,9 +31960,17 @@
       "size": 224,
       "aliases": [
         { "name": "super", "type": "Living" },
+        { "name": "super_gamething", "type": "GameThing" },
+        { "name": "super_gamethingwithpos", "type": "GameThingWithPos" },
+        { "name": "super_object", "type": "Object" },
         { "name": "villager_vftable", "type": "VillagerVftable *" },
         { "name": "living_vftable", "type": "LivingVftable *" },
-        { "name": "gameThing_vftable", "type": "GameThingVftable *" }
+        { "name": "vftable_object", "type": "ObjectVftable *" },
+        { "name": "gameThing_vftable", "type": "GameThingVftable *" },
+        {
+          "name": "vftable_gameThingWithPos",
+          "type": "GameThingWithPosVftable *"
+        }
       ]
     },
     {
@@ -32163,6 +32188,8 @@
       "size": 124,
       "aliases": [
         { "name": "super", "type": "MultiMapFixed" },
+        { "name": "super_object", "type": "Object" },
+        { "name": "super_gamethingwithpos", "type": "GameThingWithPos" },
         { "name": "abode_vftable", "type": "AbodeVftable *" },
         { "name": "object_vftable", "type": "ObjectVftable *" },
         { "name": "multiMapFixed_vftable", "type": "MultiMapFixedVftable *" },
@@ -50222,6 +50249,16 @@
       "argument_names": ["this"]
     },
     {
+      "win_addr": 6213488,
+      "mac_addr": 268746640,
+      "decorated_name": "Living::IAmFlockLeader(void)",
+      "undecorated_name": "IAmFlockLeader__6LivingFv",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Living *"],
+      "argument_names": ["this"]
+    },
+    {
       "win_addr": 6213536,
       "mac_addr": 268850432,
       "decorated_name": "Living::GetDomainRadius(void)",
@@ -53384,6 +53421,16 @@
       "return_type": "uint32_t",
       "call_type": "__thiscall",
       "argument_types": ["struct Living *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7754528,
+      "mac_addr": 274269984,
+      "decorated_name": "Villager::ArrivesAtPickupBallReaction(void)",
+      "undecorated_name": "ArrivesAtPickupBallReaction__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
       "argument_names": ["this"]
     },
     {
