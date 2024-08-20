@@ -32631,7 +32631,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "MorphableVftable__LoadBinary__12LH3DCreatureFPci",
+      "type": "MorphableVftable__LoadBinary",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
@@ -32648,18 +32648,9 @@
       "signature": "void (struct LH3DCreature *, const void *, char *) __attribute__((fastcall))"
     },
     {
-      "kind": "FUNCTIONPROTO",
-      "type": "MorphableVftable__GetAltitude",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "float",
-      "args": ["struct LH3DCreature *", "struct LHPoint *"],
-      "signature": "float (struct LH3DCreature *, const void *, struct LHPoint *) __attribute__((fastcall))"
-    },
-    {
       "kind": "STRUCT_DECL",
       "type": "struct MorphableVftable",
-      "size": 44,
+      "size": 40,
       "members": [
         {
           "name": "SetAnimTime",
@@ -32702,19 +32693,14 @@
           "offset": 28
         },
         {
-          "name": "LoadBinary__12LH3DCreatureFPci",
-          "type": "MorphableVftable__LoadBinary__12LH3DCreatureFPci *",
+          "name": "LoadBinary",
+          "type": "MorphableVftable__LoadBinary *",
           "offset": 32
         },
         {
           "name": "SaveBinary",
           "type": "MorphableVftable__SaveBinary *",
           "offset": 36
-        },
-        {
-          "name": "GetAltitude",
-          "type": "MorphableVftable__GetAltitude *",
-          "offset": 40
         }
       ]
     },
@@ -32756,7 +32742,7 @@
     {
       "kind": "UNION_DECL",
       "type": "union DrawingObjectVftable",
-      "size": 44,
+      "size": 40,
       "aliases": [
         { "name": "morphable", "type": "MorphableVftable" },
         { "name": "valueSpinner", "type": "ValueSpinnerVftable" }
@@ -45311,6 +45297,12 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LHPixel",
+      "size": 4,
+      "members": [{ "name": "field_0x0", "type": "uint32_t", "offset": 0 }]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct LHSurface",
       "size": 48,
       "members": [
@@ -45700,17 +45692,22 @@
       ]
     },
     {
+      "kind": "UNION_DECL",
+      "type": "union LHSprite__Texels",
+      "size": 4,
+      "aliases": [
+        { "name": "_16", "type": "uint16_t" },
+        { "name": "_24", "type": "uint8_t[3]" }
+      ]
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct LHSprite",
       "size": 8,
       "members": [
         { "name": "field_0x0", "type": "uint16_t", "offset": 0 },
         { "name": "field_0x2", "type": "uint16_t", "offset": 2 },
-        {
-          "name": "texels",
-          "type": "union (unnamed union at Libs/lionhead/lhlib/VER5.0/LHSys.h:53:3) *",
-          "offset": 4
-        }
+        { "name": "texels", "type": "union LHSprite__Texels *", "offset": 4 }
       ]
     },
     {
@@ -46686,6 +46683,237 @@
       "size": 8,
       "members": [
         { "name": "vftable", "type": "struct HeapVftable", "offset": 0 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InnerRoom",
+      "size": 4,
+      "members": [{ "name": "field_0x0", "type": "uint32_t", "offset": 0 }]
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__ReloadCamera",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *", "char *"],
+      "signature": "void (struct InnerCamera *, const void *, char *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__PreDraw",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *"],
+      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Init",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *", "char *"],
+      "signature": "void (struct InnerCamera *, const void *, char *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Reinit",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *"],
+      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Close",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *"],
+      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__CalcDoorHit",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "uint32_t",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "struct LHCoord",
+        "float",
+        "_Bool"
+      ],
+      "signature": "uint32_t (struct InnerCamera *, const void *, struct InnerRoom *, struct LHCoord, float, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Update",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__UpdateMain",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__UpdateState",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__FocusOnSubMesh",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct LH3DMesh *",
+        "float",
+        "float",
+        "float"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct LH3DMesh *, float, float, float) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__TriggerIntro",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "_Bool",
+        "struct Zoomer3d *",
+        "struct Zoomer3d *"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, _Bool, struct Zoomer3d *, struct Zoomer3d *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable____dt__",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "struct InnerCamera *",
+      "args": ["struct InnerCamera *"],
+      "signature": "struct InnerCamera *(struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InnerCameraVftable",
+      "size": 48,
+      "members": [
+        {
+          "name": "ReloadCamera",
+          "type": "InnerCameraVftable__ReloadCamera *",
+          "offset": 0
+        },
+        {
+          "name": "PreDraw",
+          "type": "InnerCameraVftable__PreDraw *",
+          "offset": 4
+        },
+        { "name": "Init", "type": "InnerCameraVftable__Init *", "offset": 8 },
+        {
+          "name": "Reinit",
+          "type": "InnerCameraVftable__Reinit *",
+          "offset": 12
+        },
+        {
+          "name": "Close",
+          "type": "InnerCameraVftable__Close *",
+          "offset": 16
+        },
+        {
+          "name": "CalcDoorHit",
+          "type": "InnerCameraVftable__CalcDoorHit *",
+          "offset": 20
+        },
+        {
+          "name": "Update",
+          "type": "InnerCameraVftable__Update *",
+          "offset": 24
+        },
+        {
+          "name": "UpdateMain",
+          "type": "InnerCameraVftable__UpdateMain *",
+          "offset": 28
+        },
+        {
+          "name": "UpdateState",
+          "type": "InnerCameraVftable__UpdateState *",
+          "offset": 32
+        },
+        {
+          "name": "FocusOnSubMesh",
+          "type": "InnerCameraVftable__FocusOnSubMesh *",
+          "offset": 36
+        },
+        {
+          "name": "TriggerIntro",
+          "type": "InnerCameraVftable__TriggerIntro *",
+          "offset": 40
+        },
+        {
+          "name": "__dt__",
+          "type": "InnerCameraVftable____dt__ *",
+          "offset": 44
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InnerCamera",
+      "size": 1132,
+      "members": [
+        {
+          "name": "vftable",
+          "type": "struct InnerCameraVftable *",
+          "offset": 0
+        },
+        { "name": "field_0x4", "type": "uint8_t[1128]", "offset": 4 }
       ]
     },
     {
@@ -51217,6 +51445,16 @@
       "call_type": "cdecl",
       "argument_types": ["struct LH3DMesh *", "struct MaterialProperties *"],
       "argument_names": ["mesh", "prop"]
+    },
+    {
+      "win_addr": 7959792,
+      "mac_addr": 273912400,
+      "decorated_name": "InnerCamera::InnerCamera(void)",
+      "undecorated_name": "__ct__11InnerCameraFv",
+      "return_type": "struct InnerCamera *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerCamera *"],
+      "argument_names": ["this"]
     },
     {
       "win_addr": 6087888,
@@ -59818,6 +60056,11 @@
       "value": 9708032
     },
     { "name": "__vt__Heap", "type": "struct HeapVftable", "value": 9641160 },
+    {
+      "name": "__vt__InnerCamera",
+      "type": "struct InnerCameraVftable",
+      "value": 10088048
+    },
     {
       "name": "__vt__MobileStatic",
       "type": "struct MultiMapFixedVftable",
