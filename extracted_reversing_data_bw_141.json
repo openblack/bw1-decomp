@@ -16860,8 +16860,8 @@
       "size": 4,
       "call_type": "__thiscall",
       "result": "uint32_t",
-      "args": ["struct GameThing *", "uint8_t"],
-      "signature": "uint32_t (struct GameThing *, const void *, uint8_t) __attribute__((fastcall))"
+      "args": ["struct GameThing *", "enum RESOURCE_TYPE"],
+      "signature": "uint32_t (struct GameThing *, const void *, enum RESOURCE_TYPE) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -18595,21 +18595,21 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "GameThingWithPosVftable__IsWorkshop_1",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "_Bool",
-      "args": ["struct GameThingWithPos *", "struct Creature *"],
-      "signature": "_Bool (struct GameThingWithPos *, const void *, struct Creature *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
       "type": "GameThingWithPosVftable__IsWorkshop_0",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": ["struct GameThingWithPos *"],
       "signature": "_Bool (struct GameThingWithPos *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "GameThingWithPosVftable__IsWorkshop_1",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "_Bool",
+      "args": ["struct GameThingWithPos *", "struct Creature *"],
+      "signature": "_Bool (struct GameThingWithPos *, const void *, struct Creature *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -20381,13 +20381,13 @@
           "offset": 780
         },
         {
-          "name": "IsWorkshop_1",
-          "type": "GameThingWithPosVftable__IsWorkshop_1 *",
+          "name": "IsWorkshop_0",
+          "type": "GameThingWithPosVftable__IsWorkshop_0 *",
           "offset": 784
         },
         {
-          "name": "IsWorkshop_0",
-          "type": "GameThingWithPosVftable__IsWorkshop_0 *",
+          "name": "IsWorkshop_1",
+          "type": "GameThingWithPosVftable__IsWorkshop_1 *",
           "offset": 788
         },
         {
@@ -27426,61 +27426,60 @@
       "kind": "FUNCTIONPROTO",
       "type": "MobileWallHugVftable__AreWeThere",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "_Bool",
-      "args": ["void *", "const void *", "struct MapCoords *", "float"],
-      "signature": "_Bool (void *, const void *, struct MapCoords *, float) __attribute__((fastcall))"
+      "args": ["struct MobileWallHug *", "struct MapCoords *", "float"],
+      "signature": "_Bool (struct MobileWallHug *, const void *, struct MapCoords *, float) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "MobileWallHugVftable__GetDestPos",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "struct MapCoords *",
-      "args": ["void *"],
-      "signature": "struct MapCoords *(void *) __attribute__((fastcall))"
+      "args": ["struct MobileWallHug *"],
+      "signature": "struct MapCoords *(struct MobileWallHug *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "MobileWallHugVftable__SetSpeed",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
-      "args": ["void *", "const void *", "int"],
-      "signature": "void (void *, const void *, int) __attribute__((fastcall))"
+      "args": ["struct MobileWallHug *", "int"],
+      "signature": "void (struct MobileWallHug *, const void *, int) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "MobileWallHugVftable__SetTowardsAngle",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
-      "args": ["void *", "const void *", "uint16_t"],
-      "signature": "void (void *, const void *, uint16_t) __attribute__((fastcall))"
+      "args": ["struct MobileWallHug *", "uint16_t"],
+      "signature": "void (struct MobileWallHug *, const void *, uint16_t) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "MobileWallHugVftable__MoveTo3D",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
-      "args": ["void *"],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "args": ["struct MobileWallHug *"],
+      "signature": "void (struct MobileWallHug *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "MobileWallHugVftable__SetNewWander",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct MobileWallHug *",
         "struct MapCoords *",
         "int32_t",
         "int32_t"
       ],
-      "signature": "void (void *, const void *, struct MapCoords *, int32_t, int32_t) __attribute__((fastcall))"
+      "signature": "void (struct MobileWallHug *, const void *, struct MapCoords *, int32_t, int32_t) __attribute__((fastcall))"
     },
     {
       "kind": "STRUCT_DECL",
@@ -28791,7 +28790,9 @@
         { "name": "field_0x164", "type": "uint32_t", "offset": 356 },
         { "name": "field_0x168", "type": "uint32_t", "offset": 360 },
         { "name": "field_0x16c", "type": "uint32_t", "offset": 364 },
-        { "name": "field_0x170", "type": "uint8_t[64]", "offset": 368 },
+        { "name": "field_0x170", "type": "uint8_t[8]", "offset": 368 },
+        { "name": "field_0x178", "type": "uint32_t", "offset": 376 },
+        { "name": "field_0x17c", "type": "uint8_t[52]", "offset": 380 },
         { "name": "field_0x1b0", "type": "uint32_t", "offset": 432 },
         { "name": "field_0x1b4", "type": "uint32_t", "offset": 436 },
         { "name": "field_0x1b8", "type": "uint8_t[60]", "offset": 440 }
@@ -28899,6 +28900,64 @@
       "type": "struct ReactionDoneWhen",
       "size": 1,
       "members": [{ "name": "field_0x0", "type": "uint8_t", "offset": 0 }]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DWay",
+      "size": 20,
+      "members": [
+        { "name": "field_0x0", "type": "uint8_t[12]", "offset": 0 },
+        { "name": "field_0xc", "type": "float", "offset": 12 },
+        { "name": "field_0x10", "type": "float", "offset": 16 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DWay__Running",
+      "size": 524,
+      "members": [
+        { "name": "field_0x0", "type": "uint32_t", "offset": 0 },
+        { "name": "field_0x4", "type": "uint8_t[512]", "offset": 4 },
+        { "name": "field_0x204", "type": "float", "offset": 516 },
+        { "name": "way", "type": "struct LH3DWay *", "offset": 520 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct ScriptedCamera",
+      "size": 12,
+      "members": [
+        { "name": "data", "type": "uint8_t *", "offset": 0 },
+        {
+          "name": "field_0x4",
+          "type": "struct LH3DWay__Running *",
+          "offset": 4
+        },
+        {
+          "name": "field_0x8",
+          "type": "struct LH3DWay__Running *",
+          "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct DataPath",
+      "size": 48,
+      "members": [
+        { "name": "super", "type": "struct GameThing", "offset": 0 },
+        {
+          "name": "scripted_camera",
+          "type": "struct ScriptedCamera *",
+          "offset": 20
+        },
+        { "name": "track_no", "type": "int32_t", "offset": 24 },
+        { "name": "field_0x1c", "type": "float", "offset": 28 },
+        { "name": "field_0x20", "type": "uint32_t", "offset": 32 },
+        { "name": "field_0x24", "type": "float", "offset": 36 },
+        { "name": "field_0x28", "type": "float", "offset": 40 },
+        { "name": "field_0x2c", "type": "float", "offset": 44 }
+      ]
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -31662,7 +31721,7 @@
         { "name": "birth_turn", "type": "int32_t", "offset": 160 },
         { "name": "next", "type": "struct Living *", "offset": 164 },
         { "name": "field_0xa8", "type": "uint32_t", "offset": 168 },
-        { "name": "field_0xac", "type": "uint32_t", "offset": 172 },
+        { "name": "data_path", "type": "struct DataPath *", "offset": 172 },
         {
           "name": "data_for_script_remind",
           "type": "struct DataForScriptRemind *",
@@ -31726,12 +31785,20 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct DiscipleTable",
+      "type": "struct DiscipleInfo",
       "size": 28,
       "members": [
-        { "name": "field_0x0", "type": "uint8_t", "offset": 0 },
+        { "name": "field_0x0", "type": "uint32_t", "offset": 0 },
         { "name": "field_0x4", "type": "uint32_t", "offset": 4 },
-        { "name": "field_0x8", "type": "uint8_t[20]", "offset": 8 }
+        { "name": "field_0x8", "type": "uint32_t", "offset": 8 },
+        { "name": "field_0xc", "type": "uint32_t", "offset": 12 },
+        { "name": "field_0x10", "type": "uint32_t", "offset": 16 },
+        {
+          "name": "desire_i_fulfil",
+          "type": "enum TOWN_DESIRE_INFO",
+          "offset": 20
+        },
+        { "name": "field_0x18", "type": "uint32_t", "offset": 24 }
       ]
     },
     {
@@ -32002,7 +32069,7 @@
           "offset": 260
         },
         { "name": "field_0x108", "type": "float", "offset": 264 },
-        { "name": "field_0x10c", "type": "uint32_t", "offset": 268 },
+        { "name": "field_0x10c", "type": "float", "offset": 268 },
         { "name": "field_0x110", "type": "uint32_t", "offset": 272 },
         { "name": "fire_effect", "type": "struct FireEffect *", "offset": 276 },
         { "name": "target_thing", "type": "struct GameThing *", "offset": 280 },
@@ -32019,6 +32086,32 @@
       "size": 8,
       "members": [
         { "name": "head", "type": "struct Villager *", "offset": 0 },
+        { "name": "count", "type": "uint32_t", "offset": 4 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__Villager",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__Villager *",
+          "offset": 0
+        },
+        { "name": "payload", "type": "struct Villager *", "offset": 4 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__Villager",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__Villager *",
+          "offset": 0
+        },
         { "name": "count", "type": "uint32_t", "offset": 4 }
       ]
     },
@@ -32047,37 +32140,53 @@
       "size": 456,
       "members": [
         { "name": "super", "type": "struct GMultiMapFixedInfo", "offset": 0 },
-        { "name": "field_0x120", "type": "int", "offset": 288 },
-        { "name": "field_0x124", "type": "int", "offset": 292 },
-        { "name": "field_0x128", "type": "char[32]", "offset": 296 },
+        { "name": "abodeType", "type": "enum ABODE_TYPE", "offset": 288 },
+        { "name": "abodeNumber", "type": "enum ABODE_NUMBER", "offset": 292 },
+        { "name": "description", "type": "struct Name", "offset": 296 },
         { "name": "field_0x148", "type": "uint32_t", "offset": 328 },
         { "name": "field_0x14c", "type": "uint32_t", "offset": 332 },
         { "name": "field_0x150", "type": "uint32_t", "offset": 336 },
         { "name": "field_0x154", "type": "uint32_t", "offset": 340 },
         { "name": "tribe_type", "type": "enum TRIBE_TYPE", "offset": 344 },
-        { "name": "field_0x15c", "type": "uint32_t", "offset": 348 },
-        { "name": "field_0x160", "type": "uint32_t", "offset": 352 },
-        { "name": "field_0x164", "type": "float", "offset": 356 },
-        { "name": "field_0x168", "type": "uint32_t", "offset": 360 },
-        { "name": "field_0x16c", "type": "float", "offset": 364 },
-        { "name": "field_0x170", "type": "uint32_t", "offset": 368 },
-        { "name": "max_capacity", "type": "int", "offset": 372 },
-        { "name": "field_0x178", "type": "int", "offset": 376 },
-        { "name": "field_0x17c", "type": "uint8_t[36]", "offset": 380 },
-        { "name": "field_0x1a0", "type": "float", "offset": 416 },
-        { "name": "field_0x1a4", "type": "int", "offset": 420 },
-        { "name": "field_0x1a8", "type": "float", "offset": 424 },
-        { "name": "field_0x1ac", "type": "float", "offset": 428 },
-        { "name": "field_0x1b0", "type": "float", "offset": 432 },
-        { "name": "field_0x1b4", "type": "int", "offset": 436 },
-        { "name": "field_0x1b8", "type": "float", "offset": 440 },
-        { "name": "field_0x1bc", "type": "uint32_t", "offset": 444 },
-        { "name": "highlight_script_id", "type": "int", "offset": 448 },
+        { "name": "meshId", "type": "uint32_t", "offset": 348 },
+        { "name": "canBePhysicallyDamaged", "type": "uint32_t", "offset": 352 },
+        { "name": "startLife", "type": "float", "offset": 356 },
+        { "name": "startStrength", "type": "uint32_t", "offset": 360 },
+        { "name": "startDefence", "type": "float", "offset": 364 },
+        { "name": "startInfluence", "type": "uint32_t", "offset": 368 },
+        { "name": "maxVillagersInAbode", "type": "int", "offset": 372 },
+        { "name": "maxChildrenInAbode", "type": "int", "offset": 376 },
+        { "name": "startVillagersInAbode", "type": "uint32_t", "offset": 380 },
+        { "name": "startChildrenInAbode", "type": "uint32_t", "offset": 384 },
+        { "name": "startFood", "type": "uint32_t", "offset": 388 },
+        { "name": "startFoodRAnd", "type": "uint32_t", "offset": 392 },
+        { "name": "startWood", "type": "uint32_t", "offset": 396 },
+        { "name": "startWoodRAnd", "type": "uint32_t", "offset": 400 },
+        { "name": "howLongRuinLastsFor", "type": "uint32_t", "offset": 404 },
+        { "name": "potForResourceFood", "type": "uint32_t", "offset": 408 },
+        { "name": "potForResourceWood", "type": "uint32_t", "offset": 412 },
+        { "name": "percentTooCrowded", "type": "float", "offset": 416 },
+        { "name": "producesMobileObject", "type": "int", "offset": 420 },
         {
-          "name": "highlight_script_category",
-          "type": "enum DYK_CATEGORY",
-          "offset": 452
-        }
+          "name": "maxNumMobileObjectsToProduce",
+          "type": "float",
+          "offset": 424
+        },
+        {
+          "name": "timeEachMobileObjectTakesToProduce",
+          "type": "float",
+          "offset": 428
+        },
+        { "name": "emptyAbodeLifeReducer", "type": "float", "offset": 432 },
+        { "name": "populationWhenNeeded", "type": "int", "offset": 436 },
+        {
+          "name": "thresholdForStopBeingFunctional",
+          "type": "float",
+          "offset": 440
+        },
+        { "name": "toolTipsForBuild", "type": "int", "offset": 444 },
+        { "name": "didYouKnow", "type": "int", "offset": 448 },
+        { "name": "dykCategory", "type": "enum DYK_CATEGORY", "offset": 452 }
       ]
     },
     {
@@ -32230,8 +32339,7 @@
         { "name": "field_0xb7", "type": "uint8_t", "offset": 183 },
         { "name": "index", "type": "uint8_t", "offset": 184 },
         { "name": "field_0xb9", "type": "uint8_t", "offset": 185 },
-        { "name": "field_0xbc", "type": "uint32_t", "offset": 188 },
-        { "name": "field_0xc0", "type": "uint32_t", "offset": 192 }
+        { "name": "resources", "type": "uint32_t[2]", "offset": 188 }
       ]
     },
     {
@@ -32451,28 +32559,113 @@
     },
     {
       "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__SetAnimTime",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct LH3DCreature *", "int", "int"],
+      "signature": "void (struct LH3DCreature *, const void *, int, int) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
       "type": "MorphableVftable__LoadBase",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "uint32_t",
-      "args": ["struct DrawingObject *", "void *", "char *"],
-      "signature": "uint32_t (struct DrawingObject *, void *, char *) __attribute__((fastcall))"
+      "args": ["struct DrawingObject *", "char *"],
+      "signature": "uint32_t (struct DrawingObject *, const void *, char *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "MorphableVftable__SetSize",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
-      "args": ["struct DrawingObject *", "void *", "float"],
-      "signature": "void (struct DrawingObject *, void *, float) __attribute__((fastcall))"
+      "args": ["struct DrawingObject *", "float"],
+      "signature": "void (struct DrawingObject *, const void *, float) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__MorphAnims",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct LH3DCreature *"],
+      "signature": "void (struct LH3DCreature *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__MorphTexture",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct LH3DCreature *"],
+      "signature": "void (struct LH3DCreature *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__UpdateTime",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct LH3DCreature *", "int"],
+      "signature": "void (struct LH3DCreature *, const void *, int) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__PrepareForDrawing",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct LH3DCreature *"],
+      "signature": "void (struct LH3DCreature *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__AddForDrawing",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "_Bool",
+      "args": ["struct LH3DCreature *"],
+      "signature": "_Bool (struct LH3DCreature *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__LoadBinary__12LH3DCreatureFPci",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "_Bool",
+      "args": ["struct LH3DCreature *", "char *", "int"],
+      "signature": "_Bool (struct LH3DCreature *, const void *, char *, int) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__SaveBinary",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct LH3DCreature *", "char *"],
+      "signature": "void (struct LH3DCreature *, const void *, char *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "MorphableVftable__GetAltitude",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "float",
+      "args": ["struct LH3DCreature *", "struct LHPoint *"],
+      "signature": "float (struct LH3DCreature *, const void *, struct LHPoint *) __attribute__((fastcall))"
     },
     {
       "kind": "STRUCT_DECL",
       "type": "struct MorphableVftable",
-      "size": 40,
+      "size": 44,
       "members": [
-        { "name": "SetAnimTime", "type": "void *", "offset": 0 },
+        {
+          "name": "SetAnimTime",
+          "type": "MorphableVftable__SetAnimTime *",
+          "offset": 0
+        },
         {
           "name": "LoadBase",
           "type": "MorphableVftable__LoadBase *",
@@ -32483,13 +32676,46 @@
           "type": "MorphableVftable__SetSize *",
           "offset": 8
         },
-        { "name": "MorphAnims", "type": "void *", "offset": 12 },
-        { "name": "MorphTexture", "type": "void *", "offset": 16 },
-        { "name": "UpdateTime", "type": "void *", "offset": 20 },
-        { "name": "PrepareForDrawing", "type": "void *", "offset": 24 },
-        { "name": "AddForDrawing", "type": "void *", "offset": 28 },
-        { "name": "LoadBinary", "type": "void *", "offset": 32 },
-        { "name": "SaveBinary", "type": "void *", "offset": 36 }
+        {
+          "name": "MorphAnims",
+          "type": "MorphableVftable__MorphAnims *",
+          "offset": 12
+        },
+        {
+          "name": "MorphTexture",
+          "type": "MorphableVftable__MorphTexture *",
+          "offset": 16
+        },
+        {
+          "name": "UpdateTime",
+          "type": "MorphableVftable__UpdateTime *",
+          "offset": 20
+        },
+        {
+          "name": "PrepareForDrawing",
+          "type": "MorphableVftable__PrepareForDrawing *",
+          "offset": 24
+        },
+        {
+          "name": "AddForDrawing",
+          "type": "MorphableVftable__AddForDrawing *",
+          "offset": 28
+        },
+        {
+          "name": "LoadBinary__12LH3DCreatureFPci",
+          "type": "MorphableVftable__LoadBinary__12LH3DCreatureFPci *",
+          "offset": 32
+        },
+        {
+          "name": "SaveBinary",
+          "type": "MorphableVftable__SaveBinary *",
+          "offset": 36
+        },
+        {
+          "name": "GetAltitude",
+          "type": "MorphableVftable__GetAltitude *",
+          "offset": 40
+        }
       ]
     },
     {
@@ -32530,7 +32756,7 @@
     {
       "kind": "UNION_DECL",
       "type": "union DrawingObjectVftable",
-      "size": 40,
+      "size": 44,
       "aliases": [
         { "name": "morphable", "type": "MorphableVftable" },
         { "name": "valueSpinner", "type": "ValueSpinnerVftable" }
@@ -32599,20 +32825,173 @@
       ]
     },
     {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__Init",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct BuildingSite *"],
+      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__Process",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct BuildingSite *"],
+      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__GetWoodForStats",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "uint32_t",
+      "args": ["struct BuildingSite *"],
+      "signature": "uint32_t (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__GetPileWood",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "struct Pot *",
+      "args": ["struct BuildingSite *", "struct MapCoords *"],
+      "signature": "struct Pot *(struct BuildingSite *, const void *, struct MapCoords *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__SetPileWood",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct BuildingSite *", "struct Pot *"],
+      "signature": "void (struct BuildingSite *, const void *, struct Pot *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__CreatePileWood",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct BuildingSite *"],
+      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__IsLinkedToThisBuildingSite",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct BuildingSite *", "struct Pot *"],
+      "signature": "void (struct BuildingSite *, const void *, struct Pot *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__GetRandomBuildPos",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct BuildingSite *", "struct Object *", "int32_t *"],
+      "signature": "void (struct BuildingSite *, const void *, struct Object *, int32_t *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct BuildingSiteVftable",
+      "size": 300,
+      "members": [
+        { "name": "super", "type": "struct GameThingVftable", "offset": 0 },
+        {
+          "name": "Init",
+          "type": "BuildingSiteVftable__Init *",
+          "offset": 252
+        },
+        {
+          "name": "Process",
+          "type": "BuildingSiteVftable__Process *",
+          "offset": 256
+        },
+        {
+          "name": "GetWoodForStats",
+          "type": "BuildingSiteVftable__GetWoodForStats *",
+          "offset": 260
+        },
+        {
+          "name": "GetPileWood",
+          "type": "BuildingSiteVftable__GetPileWood *",
+          "offset": 264
+        },
+        {
+          "name": "SetPileWood",
+          "type": "BuildingSiteVftable__SetPileWood *",
+          "offset": 268
+        },
+        {
+          "name": "CreatePileWood",
+          "type": "BuildingSiteVftable__CreatePileWood *",
+          "offset": 272
+        },
+        {
+          "name": "GetResourcePosAndYAngle",
+          "type": "uintptr_t",
+          "offset": 276
+        },
+        {
+          "name": "RemovePotFromStructure",
+          "type": "uintptr_t",
+          "offset": 280
+        },
+        {
+          "name": "IsLinkedToThisBuildingSite",
+          "type": "BuildingSiteVftable__IsLinkedToThisBuildingSite *",
+          "offset": 284
+        },
+        { "name": "GetNearestEdge", "type": "uintptr_t", "offset": 288 },
+        { "name": "GetNextPosFromIndex", "type": "uintptr_t", "offset": 292 },
+        {
+          "name": "GetRandomBuildPos",
+          "type": "BuildingSiteVftable__GetRandomBuildPos *",
+          "offset": 296
+        }
+      ]
+    },
+    {
+      "kind": "UNION_DECL",
+      "type": "union BuildingSiteBase",
+      "size": 20,
+      "aliases": [
+        { "name": "super", "type": "GameThing" },
+        { "name": "vftable", "type": "BuildingSiteVftable *" },
+        { "name": "gameThing_vftable", "type": "GameThingVftable *" }
+      ]
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct BuildingSite",
       "size": 1608,
       "members": [
-        { "name": "super", "type": "struct GameThing", "offset": 0 },
+        { "name": "base", "type": "union BuildingSiteBase", "offset": 0 },
         {
           "name": "root_building",
           "type": "struct MultiMapFixed *",
           "offset": 20
         },
-        { "name": "field_0x18", "type": "uint8_t[1572]", "offset": 24 },
+        {
+          "name": "building_worker_list",
+          "type": "struct LHLinkedList__Villager",
+          "offset": 24
+        },
+        { "name": "field_0x20", "type": "uint8_t[20]", "offset": 32 },
+        {
+          "name": "building_positions",
+          "type": "struct LHPoint[127]",
+          "offset": 52
+        },
+        { "name": "field_0x628", "type": "uint8_t[20]", "offset": 1576 },
         { "name": "field_0x63c", "type": "uint8_t[4]", "offset": 1596 },
         { "name": "life", "type": "float", "offset": 1600 },
-        { "name": "field_0x644", "type": "uint8_t[4]", "offset": 1604 }
+        { "name": "wood_pile", "type": "struct Pot *", "offset": 1604 }
       ]
     },
     {
@@ -32661,19 +33040,472 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct GSaveLoadPtr",
+      "size": 4,
+      "members": [{ "name": "ptr", "type": "uintptr_t", "offset": 0 }]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GSaveLoadPtrListNode",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct GSaveLoadPtrListNode *",
+          "offset": 0
+        },
+        { "name": "payload", "type": "struct GSaveLoadPtr *", "offset": 4 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GSaveLoadPtrList",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GSaveLoadPtrListNode *",
+          "offset": 0
+        },
+        { "name": "count", "type": "uint32_t", "offset": 4 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GameOSFile",
+      "size": 560,
+      "members": [
+        { "name": "super", "type": "struct LHReleasedOSFile", "offset": 0 },
+        { "name": "field_0x8", "type": "uint8_t[64]", "offset": 8 },
+        { "name": "field_0x48", "type": "uint8_t[196]", "offset": 72 },
+        { "name": "field_0x10c", "type": "uint32_t", "offset": 268 },
+        { "name": "filename", "type": "char[256]", "offset": 272 },
+        { "name": "field_0x210", "type": "uint32_t", "offset": 528 },
+        { "name": "checksum", "type": "uint32_t", "offset": 532 },
+        { "name": "field_0x218", "type": "uint32_t", "offset": 536 },
+        { "name": "field_0x21c", "type": "uint32_t", "offset": 540 },
+        {
+          "name": "save_load_ptr_list",
+          "type": "struct GSaveLoadPtrList",
+          "offset": 544
+        },
+        {
+          "name": "game_thing_list",
+          "type": "struct GameThingList",
+          "offset": 552
+        }
+      ]
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable____dt__",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "struct CameraModeNew3 *",
+      "args": ["void *", "const void *", "uint32_t"],
+      "signature": "struct CameraModeNew3 *(void *, const void *, uint32_t) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__CanPlayerGestureWhenCameraMoving",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "_Bool",
+      "args": ["void *"],
+      "signature": "_Bool (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Update",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *"],
+      "signature": "void (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Validate",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *"],
+      "signature": "void (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Restart",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *"],
+      "signature": "void (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__IsStillValid",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "_Bool",
+      "args": ["void *"],
+      "signature": "_Bool (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Cleanup",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *"],
+      "signature": "void (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__CanExist",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "_Bool",
+      "args": ["void *"],
+      "signature": "_Bool (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__MouseIsLocked",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "_Bool",
+      "args": ["void *"],
+      "signature": "_Bool (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__ProcessKeyMovement",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *", "const void *", "uint16_t"],
+      "signature": "void (void *, const void *, uint16_t) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__ProcessMouseMovement",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *"],
+      "signature": "void (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Delete",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *"],
+      "signature": "void (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Arrived",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "_Bool",
+      "args": ["void *"],
+      "signature": "_Bool (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__GetSaveID",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "uint32_t",
+      "args": ["void *"],
+      "signature": "uint32_t (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Load",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *", "const void *", "struct GameOSFile *"],
+      "signature": "void (void *, const void *, struct GameOSFile *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Save",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *", "const void *", "struct GameOSFile *"],
+      "signature": "void (void *, const void *, struct GameOSFile *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__GetDebugName",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "const char *",
+      "args": ["void *"],
+      "signature": "const char *(void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Initialise",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *"],
+      "signature": "void (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__Reinitialise",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *", "const void *", "_Bool"],
+      "signature": "void (void *, const void *, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__FlyToPosFoc",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": [
+        "void *",
+        "const void *",
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "float"
+      ],
+      "signature": "void (void *, const void *, struct LHPoint *, struct LHPoint *, float) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__SetupVia",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": [
+        "void *",
+        "const void *",
+        "const struct LHPoint *",
+        "const struct LHPoint *",
+        "const struct LHPoint *",
+        "float"
+      ],
+      "signature": "void (void *, const void *, const struct LHPoint *, const struct LHPoint *, const struct LHPoint *, float) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__GetCameraFeatures",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "uint32_t",
+      "args": ["void *"],
+      "signature": "uint32_t (void *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "CameraModeVftable__ForceRotateAboutPoint",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": ["void *", "const void *", "struct LHPoint *"],
+      "signature": "void (void *, const void *, struct LHPoint *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeVftable",
+      "size": 96,
+      "members": [
+        {
+          "name": "__dt__",
+          "type": "CameraModeVftable____dt__ *",
+          "offset": 0
+        },
+        {
+          "name": "CanPlayerGestureWhenCameraMoving",
+          "type": "CameraModeVftable__CanPlayerGestureWhenCameraMoving *",
+          "offset": 4
+        },
+        {
+          "name": "Update",
+          "type": "CameraModeVftable__Update *",
+          "offset": 8
+        },
+        {
+          "name": "Validate",
+          "type": "CameraModeVftable__Validate *",
+          "offset": 12
+        },
+        {
+          "name": "Restart",
+          "type": "CameraModeVftable__Restart *",
+          "offset": 16
+        },
+        {
+          "name": "IsStillValid",
+          "type": "CameraModeVftable__IsStillValid *",
+          "offset": 20
+        },
+        {
+          "name": "Cleanup",
+          "type": "CameraModeVftable__Cleanup *",
+          "offset": 24
+        },
+        {
+          "name": "CanExist",
+          "type": "CameraModeVftable__CanExist *",
+          "offset": 28
+        },
+        {
+          "name": "MouseIsLocked",
+          "type": "CameraModeVftable__MouseIsLocked *",
+          "offset": 32
+        },
+        { "name": "GetMousePos", "type": "uint32_t", "offset": 36 },
+        {
+          "name": "ProcessKeyMovement",
+          "type": "CameraModeVftable__ProcessKeyMovement *",
+          "offset": 40
+        },
+        {
+          "name": "ProcessMouseMovement",
+          "type": "CameraModeVftable__ProcessMouseMovement *",
+          "offset": 44
+        },
+        {
+          "name": "Delete",
+          "type": "CameraModeVftable__Delete *",
+          "offset": 48
+        },
+        {
+          "name": "Arrived",
+          "type": "CameraModeVftable__Arrived *",
+          "offset": 52
+        },
+        {
+          "name": "GetSaveID",
+          "type": "CameraModeVftable__GetSaveID *",
+          "offset": 56
+        },
+        { "name": "Load", "type": "CameraModeVftable__Load *", "offset": 60 },
+        { "name": "Save", "type": "CameraModeVftable__Save *", "offset": 64 },
+        {
+          "name": "GetDebugName",
+          "type": "CameraModeVftable__GetDebugName *",
+          "offset": 68
+        },
+        {
+          "name": "Initialise",
+          "type": "CameraModeVftable__Initialise *",
+          "offset": 72
+        },
+        {
+          "name": "Reinitialise",
+          "type": "CameraModeVftable__Reinitialise *",
+          "offset": 76
+        },
+        {
+          "name": "FlyToPosFoc",
+          "type": "CameraModeVftable__FlyToPosFoc *",
+          "offset": 80
+        },
+        {
+          "name": "SetupVia",
+          "type": "CameraModeVftable__SetupVia *",
+          "offset": 84
+        },
+        {
+          "name": "GetCameraFeatures",
+          "type": "CameraModeVftable__GetCameraFeatures *",
+          "offset": 88
+        },
+        {
+          "name": "ForceRotateAboutPoint",
+          "type": "CameraModeVftable__ForceRotateAboutPoint *",
+          "offset": 92
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraMode",
+      "size": 8,
+      "members": [
+        {
+          "name": "vftable",
+          "type": "struct CameraModeVftable *",
+          "offset": 0
+        },
+        { "name": "camera", "type": "struct GCamera *", "offset": 4 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraExclusion",
+      "size": 40,
+      "members": [
+        { "name": "next", "type": "struct CameraExclusion *", "offset": 0 },
+        { "name": "prev", "type": "struct CameraExclusion *", "offset": 4 },
+        { "name": "field_0x8", "type": "uint32_t", "offset": 8 },
+        { "name": "field_0xc", "type": "struct LHPoint", "offset": 12 },
+        { "name": "field_0x18", "type": "float", "offset": 24 },
+        { "name": "field_0x1c", "type": "float", "offset": 28 },
+        { "name": "type", "type": "uint32_t", "offset": 32 },
+        { "name": "field_0x24", "type": "uint32_t", "offset": 36 }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum CAMERA_MODE_HAND_STATUS",
+      "size": 4,
+      "constants": [
+        { "name": "CAMERA_MODE_HAND_STATUS_NORMAL", "value": 0 },
+        { "name": "CAMERA_MODE_HAND_STATUS_ZOOMING", "value": 1 },
+        { "name": "CAMERA_MODE_HAND_STATUS_TILT_ON", "value": 2 },
+        { "name": "CAMERA_MODE_HAND_STATUS_GRABBING_LAND", "value": 3 },
+        { "name": "CAMERA_MODE_HAND_STATUS_PANNING", "value": 4 },
+        { "name": "CAMERA_MODE_HAND_STATUS_TILTING", "value": 5 },
+        { "name": "CAMERA_MODE_HAND_STATUS_0x6", "value": 6 },
+        { "name": "CAMERA_MODE_HAND_STATUS_0x7", "value": 7 },
+        { "name": "CAMERA_MODE_HAND_STATUS_0x8", "value": 8 },
+        { "name": "_CAMERA_MODE_HAND_STATUS_COUNT", "value": 9 }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum CAMERA_MODE_MOUSE_STATUS",
+      "size": 4,
+      "constants": [
+        { "name": "CAMERA_MODE_MOUSE_STATUS_NONE", "value": 0 },
+        { "name": "CAMERA_MODE_MOUSE_STATUS_LEFT", "value": 1 },
+        { "name": "CAMERA_MODE_MOUSE_STATUS_MIDDLE", "value": 2 },
+        { "name": "_CAMERA_MODE_MOUSE_STATUS_COUNT", "value": 3 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct Zoomer",
       "size": 48,
       "members": [
         { "name": "current_value", "type": "float", "offset": 0 },
         { "name": "destination", "type": "float", "offset": 4 },
-        { "name": "speed", "type": "float", "offset": 8 },
-        { "name": "speed_m1", "type": "float", "offset": 12 },
+        { "name": "destination_speed", "type": "float", "offset": 8 },
+        { "name": "current_speed", "type": "float", "offset": 12 },
         { "name": "time_m2", "type": "float", "offset": 16 },
-        { "name": "time_m1", "type": "float", "offset": 20 },
-        { "name": "time", "type": "float", "offset": 24 },
-        { "name": "field_0x1c", "type": "float", "offset": 28 },
-        { "name": "field_0x20", "type": "float", "offset": 32 },
-        { "name": "field_0x24", "type": "struct LHPoint", "offset": 36 }
+        { "name": "current_time", "type": "float", "offset": 20 },
+        { "name": "duration", "type": "float", "offset": 24 },
+        { "name": "start_value", "type": "float", "offset": 28 },
+        { "name": "start_speed", "type": "float", "offset": 32 },
+        {
+          "name": "non_linear_acceleration",
+          "type": "struct LHPoint",
+          "offset": 36
+        }
       ]
     },
     {
@@ -32681,9 +33513,24 @@
       "type": "struct Zoomer3d",
       "size": 144,
       "members": [
-        { "name": "z", "type": "struct Zoomer", "offset": 0 },
-        { "name": "x", "type": "struct Zoomer", "offset": 48 },
-        { "name": "y", "type": "struct Zoomer", "offset": 96 }
+        { "name": "x", "type": "struct Zoomer", "offset": 0 },
+        { "name": "y", "type": "struct Zoomer", "offset": 48 },
+        { "name": "z", "type": "struct Zoomer", "offset": 96 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct WeatherInfo",
+      "size": 8,
+      "members": [
+        { "name": "field_0x0", "type": "uint8_t", "offset": 0 },
+        { "name": "field_0x1", "type": "uint8_t", "offset": 1 },
+        { "name": "field_0x2", "type": "uint8_t", "offset": 2 },
+        { "name": "field_0x3", "type": "uint8_t", "offset": 3 },
+        { "name": "field_0x4", "type": "uint8_t", "offset": 4 },
+        { "name": "field_0x5", "type": "uint8_t", "offset": 5 },
+        { "name": "field_0x6", "type": "uint8_t", "offset": 6 },
+        { "name": "field_0x7", "type": "uint8_t", "offset": 7 }
       ]
     },
     {
@@ -32692,122 +33539,249 @@
       "size": 472,
       "members": [
         { "name": "super", "type": "struct GameThingWithPos", "offset": 0 },
-        { "name": "field_0x28", "type": "uint8_t", "offset": 40 },
-        { "name": "field_0x29", "type": "uint8_t", "offset": 41 },
-        { "name": "field_0x2a", "type": "uint8_t", "offset": 42 },
-        { "name": "field_0x2b", "type": "uint8_t", "offset": 43 },
-        { "name": "field_0x2c", "type": "uint8_t", "offset": 44 },
-        { "name": "field_0x2d", "type": "uint8_t", "offset": 45 },
-        { "name": "field_0x2e", "type": "uint8_t", "offset": 46 },
-        { "name": "field_0x2f", "type": "uint8_t", "offset": 47 },
-        { "name": "field_0x30", "type": "uint8_t", "offset": 48 },
-        { "name": "field_0x31", "type": "uint8_t", "offset": 49 },
-        { "name": "field_0x32", "type": "uint8_t", "offset": 50 },
-        { "name": "field_0x33", "type": "uint8_t", "offset": 51 },
-        { "name": "field_0x34", "type": "uint8_t", "offset": 52 },
-        { "name": "field_0x35", "type": "uint8_t", "offset": 53 },
-        { "name": "field_0x36", "type": "uint8_t", "offset": 54 },
-        { "name": "field_0x37", "type": "uint8_t", "offset": 55 },
-        { "name": "field_0x38", "type": "uint8_t", "offset": 56 },
-        { "name": "field_0x39", "type": "uint8_t", "offset": 57 },
-        { "name": "field_0x3a", "type": "uint8_t", "offset": 58 },
-        { "name": "field_0x3b", "type": "uint8_t", "offset": 59 },
-        { "name": "field_0x3c", "type": "uint8_t", "offset": 60 },
-        { "name": "field_0x3d", "type": "uint8_t", "offset": 61 },
-        { "name": "field_0x3e", "type": "uint8_t", "offset": 62 },
-        { "name": "field_0x3f", "type": "uint8_t", "offset": 63 },
-        { "name": "field_0x40", "type": "uint8_t", "offset": 64 },
-        { "name": "field_0x41", "type": "uint8_t", "offset": 65 },
-        { "name": "field_0x42", "type": "uint8_t", "offset": 66 },
-        { "name": "field_0x43", "type": "uint8_t", "offset": 67 },
-        { "name": "field_0x44", "type": "uint8_t", "offset": 68 },
-        { "name": "field_0x45", "type": "uint8_t", "offset": 69 },
-        { "name": "field_0x46", "type": "uint8_t", "offset": 70 },
-        { "name": "field_0x47", "type": "uint8_t", "offset": 71 },
-        { "name": "field_0x48", "type": "uint8_t", "offset": 72 },
-        { "name": "field_0x49", "type": "uint8_t", "offset": 73 },
-        { "name": "field_0x4a", "type": "uint8_t", "offset": 74 },
-        { "name": "field_0x4b", "type": "uint8_t", "offset": 75 },
-        { "name": "field_0x4c", "type": "uint8_t", "offset": 76 },
-        { "name": "field_0x4d", "type": "uint8_t", "offset": 77 },
-        { "name": "field_0x4e", "type": "uint8_t", "offset": 78 },
-        { "name": "field_0x4f", "type": "uint8_t", "offset": 79 },
-        { "name": "field_0x50", "type": "uint8_t", "offset": 80 },
-        { "name": "field_0x51", "type": "uint8_t", "offset": 81 },
-        { "name": "field_0x52", "type": "uint8_t", "offset": 82 },
-        { "name": "field_0x53", "type": "uint8_t", "offset": 83 },
-        { "name": "field_0x54", "type": "uint8_t", "offset": 84 },
-        { "name": "field_0x55", "type": "uint8_t", "offset": 85 },
-        { "name": "field_0x56", "type": "uint8_t", "offset": 86 },
-        { "name": "field_0x57", "type": "uint8_t", "offset": 87 },
-        { "name": "count_0x58", "type": "int", "offset": 88 },
-        { "name": "field_0x5c", "type": "struct LHPoint", "offset": 92 },
+        { "name": "modes", "type": "struct CameraMode *[12]", "offset": 40 },
+        { "name": "mode_current_index", "type": "int", "offset": 88 },
+        { "name": "pos", "type": "struct LHPoint", "offset": 92 },
         { "name": "time", "type": "float", "offset": 104 },
         { "name": "time_delta", "type": "float", "offset": 108 },
-        { "name": "field_0x70", "type": "uint8_t", "offset": 112 },
-        { "name": "field_0x71", "type": "uint8_t", "offset": 113 },
-        { "name": "field_0x72", "type": "uint8_t", "offset": 114 },
-        { "name": "field_0x73", "type": "uint8_t", "offset": 115 },
-        { "name": "field_0x74", "type": "uint32_t", "offset": 116 },
+        { "name": "field_0x70", "type": "uint32_t", "offset": 112 },
+        { "name": "camera_dirty", "type": "uint32_t", "offset": 116 },
         { "name": "field_0x78", "type": "uint8_t", "offset": 120 },
         { "name": "field_0x79", "type": "uint8_t", "offset": 121 },
         { "name": "field_0x7a", "type": "uint8_t", "offset": 122 },
         { "name": "field_0x7b", "type": "uint8_t", "offset": 123 },
-        { "name": "field_0x7c", "type": "uint8_t", "offset": 124 },
-        { "name": "field_0x7d", "type": "uint8_t", "offset": 125 },
-        { "name": "field_0x7e", "type": "uint8_t", "offset": 126 },
-        { "name": "field_0x7f", "type": "uint8_t", "offset": 127 },
-        { "name": "field_0x80", "type": "uint32_t", "offset": 128 },
-        { "name": "field_0x84", "type": "uint32_t", "offset": 132 },
-        { "name": "zoomer_0x88", "type": "struct Zoomer3d", "offset": 136 },
-        { "name": "zoomer_0x118", "type": "struct Zoomer3d", "offset": 280 },
-        { "name": "field_0x1a8", "type": "float", "offset": 424 },
-        { "name": "field_0x1ac", "type": "float", "offset": 428 },
-        { "name": "field_0x1b0", "type": "uint32_t", "offset": 432 },
-        { "name": "field_0x1b4", "type": "float", "offset": 436 },
-        { "name": "field_0x1b8", "type": "uint32_t", "offset": 440 },
-        { "name": "field_0x1bc", "type": "float", "offset": 444 },
-        { "name": "field_0x1c0", "type": "float", "offset": 448 },
-        { "name": "field_0x1c4", "type": "float", "offset": 452 },
-        { "name": "field_0x1c8", "type": "uint32_t", "offset": 456 },
-        { "name": "field_0x1cc", "type": "void **", "offset": 460 },
-        { "name": "field_0x1d0", "type": "float", "offset": 464 },
-        { "name": "field_0x1d4", "type": "uint32_t", "offset": 468 }
+        { "name": "field_0x7c", "type": "uint32_t", "offset": 124 },
+        { "name": "weather_info", "type": "struct WeatherInfo", "offset": 128 },
+        {
+          "name": "camera_heading_zoomer",
+          "type": "struct Zoomer3d",
+          "offset": 136
+        },
+        {
+          "name": "camera_origin_zoomer",
+          "type": "struct Zoomer3d",
+          "offset": 280
+        },
+        { "name": "fov_zoomer", "type": "struct Zoomer", "offset": 424 }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum CameraHelpReason",
+      "size": 4,
+      "constants": [
+        { "name": "CameraHelpReason_0x100", "value": 256 },
+        { "name": "CameraHelpReason_0x101", "value": 257 },
+        { "name": "CameraHelpReason_0x102", "value": 258 },
+        { "name": "CameraHelpReason_0x200", "value": 512 },
+        { "name": "CameraHelpReason_0x201", "value": 513 },
+        { "name": "CameraHelpReason_0x202", "value": 514 },
+        { "name": "CameraHelpReason_0x203", "value": 515 },
+        { "name": "CameraHelpReason_0x300", "value": 768 },
+        { "name": "CameraHelpReason_0x301", "value": 769 },
+        { "name": "CameraHelpReason_0x302", "value": 770 },
+        { "name": "CameraHelpReason_0x303", "value": 771 },
+        { "name": "CameraHelpReason_0x304", "value": 772 },
+        { "name": "CameraHelpReason_0x305", "value": 773 },
+        { "name": "CameraHelpReason_0x306", "value": 774 },
+        { "name": "CameraHelpReason_0x307", "value": 775 },
+        { "name": "CameraHelpReason_0x308", "value": 776 },
+        { "name": "_CameraHelpReason_FORCE_32_BITS", "value": 2147483647 }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LightSheet",
-      "size": 96,
+      "type": "struct CameraModeFollow",
+      "size": 72,
       "members": [
-        { "name": "field_0x0", "type": "int", "offset": 0 },
-        { "name": "field_0x4", "type": "float", "offset": 4 },
-        { "name": "field_0x8", "type": "float", "offset": 8 },
-        { "name": "field_0xc", "type": "float", "offset": 12 },
-        { "name": "field_0x10", "type": "float", "offset": 16 },
-        { "name": "field_0x14", "type": "float", "offset": 20 },
+        { "name": "super", "type": "struct CameraMode", "offset": 0 },
+        { "name": "target", "type": "struct GameThingWithPos *", "offset": 8 },
+        { "name": "pitch", "type": "float", "offset": 12 },
+        { "name": "yaw", "type": "float", "offset": 16 },
+        { "name": "viewing_distance", "type": "float", "offset": 20 },
         { "name": "field_0x18", "type": "float", "offset": 24 },
-        { "name": "field_0x1c", "type": "float", "offset": 28 },
-        { "name": "field_0x20", "type": "float", "offset": 32 },
-        { "name": "field_0x24", "type": "float", "offset": 36 },
-        { "name": "field_0x28", "type": "float", "offset": 40 },
-        { "name": "field_0x2c", "type": "uint32_t", "offset": 44 },
-        { "name": "field_0x30", "type": "uint32_t", "offset": 48 },
-        { "name": "field_0x34", "type": "float", "offset": 52 },
-        { "name": "field_0x38", "type": "uint32_t", "offset": 56 },
-        { "name": "field_0x3c", "type": "uint32_t", "offset": 60 },
-        { "name": "field_0x40", "type": "float", "offset": 64 },
-        { "name": "field_0x44", "type": "float *", "offset": 68 },
-        { "name": "field_0x48", "type": "uint16_t *", "offset": 72 },
-        { "name": "field_0x4c", "type": "float *", "offset": 76 },
-        { "name": "field_0x50", "type": "uint32_t", "offset": 80 },
-        { "name": "field_0x54", "type": "int", "offset": 84 },
+        { "name": "field_0x1c", "type": "int", "offset": 28 },
+        { "name": "field_0x20", "type": "int", "offset": 32 },
+        { "name": "field_0x24", "type": "uint8_t[24]", "offset": 36 },
+        { "name": "field_0x3c", "type": "int32_t", "offset": 60 },
+        { "name": "field_0x40", "type": "int32_t", "offset": 64 },
+        { "name": "field_0x44", "type": "int32_t", "offset": 68 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeFree",
+      "size": 24,
+      "members": [
+        { "name": "super", "type": "struct CameraMode", "offset": 0 },
+        { "name": "field_0x8", "type": "float", "offset": 8 },
+        { "name": "field_0xc", "type": "uint32_t", "offset": 12 },
+        { "name": "field_0x10", "type": "uint32_t", "offset": 16 },
+        { "name": "field_0x14", "type": "uint32_t", "offset": 20 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHCoord",
+      "size": 8,
+      "members": [
+        { "name": "x", "type": "int", "offset": 0 },
+        { "name": "y", "type": "int", "offset": 4 }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum CameraModeNew3_fight_status_t",
+      "size": 4,
+      "constants": [
+        { "name": "CameraModeNew3_fight_status_t_0x0", "value": 0 },
+        { "name": "CameraModeNew3_fight_status_t_0x1", "value": 1 },
+        { "name": "CameraModeNew3_fight_status_t_0x2", "value": 2 },
+        { "name": "_CameraModeNew3_fight_status_t_COUNT", "value": 3 },
         {
-          "name": "material_0x58",
-          "type": "struct LH3DMaterial *",
-          "offset": 88
+          "name": "_CameraModeNew3_fight_status_t_FORCE_32_BITS",
+          "value": 2147483647
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeNew3",
+      "size": 768,
+      "members": [
+        { "name": "super", "type": "struct CameraMode", "offset": 0 },
+        { "name": "field_0x8", "type": "uint32_t", "offset": 8 },
+        { "name": "origin", "type": "struct LHPoint", "offset": 12 },
+        { "name": "heading", "type": "struct LHPoint", "offset": 24 },
+        { "name": "field_0x24", "type": "struct LHPoint", "offset": 36 },
+        { "name": "field_0x30", "type": "struct LHPoint", "offset": 48 },
+        { "name": "field_0x3c", "type": "uint32_t", "offset": 60 },
+        { "name": "field_0x40", "type": "uint32_t", "offset": 64 },
+        { "name": "has_fight", "type": "bool32_t", "offset": 68 },
+        { "name": "arena", "type": "struct GArena *", "offset": 72 },
+        { "name": "field_0x4c", "type": "uint8_t", "offset": 76 },
+        { "name": "field_0x4d", "type": "uint8_t", "offset": 77 },
+        { "name": "field_0x4e", "type": "uint8_t", "offset": 78 },
+        { "name": "field_0x4f", "type": "uint8_t", "offset": 79 },
+        { "name": "yaw_0", "type": "float", "offset": 80 },
+        { "name": "pitch_0", "type": "float", "offset": 84 },
+        { "name": "fight_distance", "type": "float", "offset": 88 },
+        { "name": "fight_time_left", "type": "int", "offset": 92 },
+        { "name": "time_in_arena", "type": "int", "offset": 96 },
+        {
+          "name": "fight_status",
+          "type": "enum CameraModeNew3_fight_status_t",
+          "offset": 100
         },
-        { "name": "field_0x5c", "type": "uint32_t", "offset": 92 }
+        { "name": "field_0x68", "type": "struct LHPoint", "offset": 104 },
+        { "name": "field_0x74", "type": "float", "offset": 116 },
+        { "name": "elapsed_time", "type": "float", "offset": 120 },
+        { "name": "rotate_point", "type": "struct LHPoint", "offset": 124 },
+        { "name": "rotate_around_point", "type": "_Bool", "offset": 136 },
+        {
+          "name": "mouse_buttons",
+          "type": "enum CAMERA_MODE_MOUSE_STATUS",
+          "offset": 140
+        },
+        { "name": "tricon_0x90", "type": "uint32_t", "offset": 144 },
+        { "name": "tricon_0x94", "type": "uint32_t", "offset": 148 },
+        {
+          "name": "from_screen_centre",
+          "type": "struct LHPoint2D",
+          "offset": 152
+        },
+        {
+          "name": "from_screen_centre_abs",
+          "type": "struct LHPoint2D",
+          "offset": 160
+        },
+        { "name": "mouse_delta", "type": "struct LHCoord", "offset": 168 },
+        {
+          "name": "mouse_pos_current",
+          "type": "struct LHCoord",
+          "offset": 176
+        },
+        {
+          "name": "rotate_around_mouse_pos",
+          "type": "struct LHCoord",
+          "offset": 184
+        },
+        { "name": "mouse_pos_1", "type": "struct LHCoord", "offset": 192 },
+        { "name": "screen_centre_hit", "type": "_Bool", "offset": 200 },
+        { "name": "mouse_hit_point", "type": "struct LHPoint", "offset": 204 },
+        {
+          "name": "last_grab_mouse_hit_point",
+          "type": "struct LHPoint",
+          "offset": 216
+        },
+        { "name": "yaw_1", "type": "float", "offset": 228 },
+        { "name": "pitch_1", "type": "float", "offset": 232 },
+        { "name": "perp_distance_0xec", "type": "float", "offset": 236 },
+        {
+          "name": "screen_centre_hit_point",
+          "type": "struct LHPoint",
+          "offset": 240
+        },
+        { "name": "distance_0xfc", "type": "float", "offset": 252 },
+        { "name": "field_0x100", "type": "uint8_t", "offset": 256 },
+        { "name": "field_0x101", "type": "uint8_t", "offset": 257 },
+        { "name": "field_0x102", "type": "uint8_t", "offset": 258 },
+        { "name": "field_0x103", "type": "uint8_t", "offset": 259 },
+        { "name": "field_0x104", "type": "struct LHPoint", "offset": 260 },
+        { "name": "field_0x110", "type": "struct LHPoint", "offset": 272 },
+        { "name": "field_0x11c", "type": "struct LHPoint", "offset": 284 },
+        { "name": "field_0x128", "type": "int", "offset": 296 },
+        { "name": "heading_0x12c", "type": "struct LHPoint", "offset": 300 },
+        { "name": "field_0x138", "type": "struct LHPoint", "offset": 312 },
+        { "name": "hand_hit", "type": "_Bool", "offset": 324 },
+        { "name": "field_0x145", "type": "uint8_t", "offset": 325 },
+        { "name": "field_0x146", "type": "uint8_t", "offset": 326 },
+        { "name": "field_0x147", "type": "uint8_t", "offset": 327 },
+        { "name": "hit_0x148", "type": "_Bool", "offset": 328 },
+        { "name": "field_0x14c", "type": "struct LHPoint", "offset": 332 },
+        { "name": "field_0x158", "type": "double", "offset": 344 },
+        { "name": "field_0x160", "type": "struct LHPoint", "offset": 352 },
+        { "name": "field_0x16c", "type": "struct LHPoint", "offset": 364 },
+        { "name": "field_0x178", "type": "struct LHMatrix", "offset": 376 },
+        { "name": "distance_0x1a8", "type": "float", "offset": 424 },
+        {
+          "name": "hand_status",
+          "type": "enum CAMERA_MODE_HAND_STATUS",
+          "offset": 428
+        },
+        { "name": "field_0x1b0", "type": "struct LHCoord", "offset": 432 },
+        { "name": "field_0x1b8", "type": "struct LHPoint2D", "offset": 440 },
+        { "name": "length_0x1c0", "type": "float", "offset": 448 },
+        { "name": "vertical_distance", "type": "float", "offset": 452 },
+        { "name": "fallback_origin", "type": "struct LHPoint", "offset": 456 },
+        { "name": "fallback_heading", "type": "struct LHPoint", "offset": 468 },
+        { "name": "field_0x1e0", "type": "struct LHPoint", "offset": 480 },
+        { "name": "origin_0x1ec", "type": "struct LHPoint", "offset": 492 },
+        { "name": "field_0x1f8", "type": "struct LHPoint", "offset": 504 },
+        { "name": "heading_0x204", "type": "struct LHPoint", "offset": 516 },
+        { "name": "field_0x210", "type": "struct Zoomer", "offset": 528 },
+        { "name": "field_0x240", "type": "struct Zoomer3d", "offset": 576 },
+        { "name": "field_0x2d0", "type": "_Bool", "offset": 720 },
+        { "name": "field_0x2d1", "type": "uint8_t", "offset": 721 },
+        { "name": "field_0x2d2", "type": "uint8_t", "offset": 722 },
+        { "name": "field_0x2d3", "type": "uint8_t", "offset": 723 },
+        {
+          "name": "mouse_pos_previous",
+          "type": "struct LHCoord",
+          "offset": 724
+        },
+        { "name": "field_0x2dc", "type": "struct LHCoord", "offset": 732 },
+        { "name": "heading_distance", "type": "float", "offset": 740 },
+        { "name": "idle_time", "type": "float", "offset": 744 },
+        { "name": "field_0x2ec", "type": "int", "offset": 748 },
+        { "name": "field_0x2f0", "type": "int", "offset": 752 },
+        {
+          "name": "camera_exclusion",
+          "type": "struct CameraExclusion *",
+          "offset": 756
+        },
+        { "name": "field_0x2f8", "type": "uint32_t", "offset": 760 },
+        { "name": "field_0x2fc", "type": "uint32_t", "offset": 764 }
       ]
     },
     {
@@ -32994,6 +33968,41 @@
       "size": 104,
       "members": [
         { "name": "super", "type": "struct MobileObject", "offset": 0 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LightSheet",
+      "size": 96,
+      "members": [
+        { "name": "count", "type": "int", "offset": 0 },
+        { "name": "field_0x4", "type": "float", "offset": 4 },
+        { "name": "field_0x8", "type": "float", "offset": 8 },
+        { "name": "field_0xc", "type": "float", "offset": 12 },
+        { "name": "field_0x10", "type": "float", "offset": 16 },
+        { "name": "field_0x14", "type": "float", "offset": 20 },
+        { "name": "field_0x18", "type": "float", "offset": 24 },
+        { "name": "field_0x1c", "type": "float", "offset": 28 },
+        { "name": "field_0x20", "type": "struct LHPoint *", "offset": 32 },
+        { "name": "field_0x24", "type": "float *", "offset": 36 },
+        { "name": "field_0x28", "type": "float *", "offset": 40 },
+        { "name": "field_0x2c", "type": "uint32_t", "offset": 44 },
+        { "name": "field_0x30", "type": "uint32_t", "offset": 48 },
+        { "name": "field_0x34", "type": "float", "offset": 52 },
+        { "name": "field_0x38", "type": "uint32_t", "offset": 56 },
+        { "name": "field_0x3c", "type": "uint32_t", "offset": 60 },
+        { "name": "field_0x40", "type": "float", "offset": 64 },
+        { "name": "field_0x44", "type": "float *", "offset": 68 },
+        { "name": "field_0x48", "type": "uint16_t *", "offset": 72 },
+        { "name": "field_0x4c", "type": "float *", "offset": 76 },
+        { "name": "field_0x50", "type": "uint32_t", "offset": 80 },
+        { "name": "field_0x54", "type": "int", "offset": 84 },
+        {
+          "name": "material_0x58",
+          "type": "struct LH3DMaterial *",
+          "offset": 88
+        },
+        { "name": "field_0x5c", "type": "uint32_t", "offset": 92 }
       ]
     },
     {
@@ -39708,10 +40717,8 @@
       "type": "struct LHRegion",
       "size": 16,
       "members": [
-        { "name": "x", "type": "int", "offset": 0 },
-        { "name": "y", "type": "int", "offset": 4 },
-        { "name": "w", "type": "int", "offset": 8 },
-        { "name": "h", "type": "int", "offset": 12 }
+        { "name": "start", "type": "struct LHCoord", "offset": 0 },
+        { "name": "end", "type": "struct LHCoord", "offset": 8 }
       ]
     },
     {
@@ -40572,15 +41579,6 @@
         { "name": "field_0xc0", "type": "int", "offset": 192 },
         { "name": "field_0xc4", "type": "float", "offset": 196 },
         { "name": "field_0xc8", "type": "uint32_t", "offset": 200 }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LHCoord",
-      "size": 8,
-      "members": [
-        { "name": "x", "type": "int", "offset": 0 },
-        { "name": "y", "type": "int", "offset": 4 }
       ]
     },
     {
@@ -42169,7 +43167,7 @@
         { "name": "field_0x1c1", "type": "uint8_t", "offset": 449 },
         { "name": "field_0x1c2", "type": "uint8_t", "offset": 450 },
         { "name": "field_0x1c3", "type": "uint8_t", "offset": 451 },
-        { "name": "field_0x1c4", "type": "uint8_t", "offset": 452 },
+        { "name": "altitude", "type": "uint8_t", "offset": 452 },
         { "name": "field_0x1c5", "type": "uint8_t", "offset": 453 },
         { "name": "field_0x1c6", "type": "uint8_t", "offset": 454 },
         { "name": "field_0x1c7", "type": "uint8_t", "offset": 455 },
@@ -42932,11 +43930,11 @@
         { "name": "field_0xe0", "type": "uint32_t", "offset": 224 },
         { "name": "field_0xe4", "type": "uint32_t", "offset": 228 },
         { "name": "field_0xe8", "type": "uint32_t", "offset": 232 },
-        { "name": "field_0xec", "type": "uint32_t", "offset": 236 },
+        { "name": "wood_used", "type": "float", "offset": 236 },
         { "name": "field_0xf0", "type": "float", "offset": 240 },
         { "name": "field_0xf4", "type": "float", "offset": 244 },
-        { "name": "field_0xf8", "type": "uint32_t", "offset": 248 },
-        { "name": "field_0xfc", "type": "uint32_t", "offset": 252 },
+        { "name": "total_food", "type": "float", "offset": 248 },
+        { "name": "total_wood", "type": "float", "offset": 252 },
         { "name": "field_0x100", "type": "uint32_t", "offset": 256 },
         { "name": "field_0x104", "type": "uint32_t", "offset": 260 },
         { "name": "field_0x108", "type": "uint32_t", "offset": 264 },
@@ -43257,8 +44255,11 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct GameStats",
-      "size": 1,
-      "members": [{ "name": "field_0x0", "type": "uint8_t", "offset": 0 }]
+      "size": 172,
+      "members": [
+        { "name": "field_0x0", "type": "uint8_t[168]", "offset": 0 },
+        { "name": "wood_used", "type": "uint32_t", "offset": 168 }
+      ]
     },
     {
       "kind": "STRUCT_DECL",
@@ -44106,64 +45107,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GSaveLoadPtr",
-      "size": 4,
-      "members": [{ "name": "ptr", "type": "uintptr_t", "offset": 0 }]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GSaveLoadPtrListNode",
-      "size": 8,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct GSaveLoadPtrListNode *",
-          "offset": 0
-        },
-        { "name": "payload", "type": "struct GSaveLoadPtr *", "offset": 4 }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GSaveLoadPtrList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct GSaveLoadPtrListNode *",
-          "offset": 0
-        },
-        { "name": "count", "type": "uint32_t", "offset": 4 }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GameOSFile",
-      "size": 560,
-      "members": [
-        { "name": "super", "type": "struct LHReleasedOSFile", "offset": 0 },
-        { "name": "field_0x8", "type": "uint8_t[64]", "offset": 8 },
-        { "name": "field_0x48", "type": "uint8_t[196]", "offset": 72 },
-        { "name": "field_0x10c", "type": "uint32_t", "offset": 268 },
-        { "name": "filename", "type": "char[256]", "offset": 272 },
-        { "name": "field_0x210", "type": "uint32_t", "offset": 528 },
-        { "name": "checksum", "type": "uint32_t", "offset": 532 },
-        { "name": "field_0x218", "type": "uint32_t", "offset": 536 },
-        { "name": "field_0x21c", "type": "uint32_t", "offset": 540 },
-        {
-          "name": "save_load_ptr_list",
-          "type": "struct GSaveLoadPtrList",
-          "offset": 544
-        },
-        {
-          "name": "game_thing_list",
-          "type": "struct GameThingList",
-          "offset": 552
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct GDebug",
       "size": 185000,
       "members": [
@@ -44250,22 +45193,29 @@
       "members": [
         { "name": "field_0x0", "type": "uint32_t", "offset": 0 },
         { "name": "field_0x4", "type": "uint32_t", "offset": 4 },
-        { "name": "field_0x8", "type": "uint16_t", "offset": 8 },
-        { "name": "field_0xa", "type": "uint16_t", "offset": 10 },
+        { "name": "width", "type": "uint16_t", "offset": 8 },
+        { "name": "height", "type": "uint16_t", "offset": 10 },
         { "name": "field_0xc", "type": "uint32_t", "offset": 12 },
         { "name": "field_0x10", "type": "uint32_t", "offset": 16 },
         { "name": "field_0x14", "type": "uint8_t", "offset": 20 },
         { "name": "field_0x18", "type": "uint32_t", "offset": 24 },
         { "name": "field_0x1c", "type": "uint32_t", "offset": 28 },
         { "name": "field_0x20", "type": "uint32_t", "offset": 32 },
-        { "name": "field_0x24", "type": "uint32_t", "offset": 36 },
+        { "name": "buffer", "type": "uint16_t *", "offset": 36 },
         { "name": "window", "type": "HWND", "offset": 40 },
         { "name": "ddraw", "type": "IDirectDraw7 *", "offset": 44 },
-        { "name": "field_0x30", "type": "uint32_t", "offset": 48 },
-        { "name": "surface", "type": "IDirectDrawSurface7 *", "offset": 52 },
-        { "name": "field_0x38", "type": "uint8_t[16]", "offset": 56 },
+        {
+          "name": "surfaces",
+          "type": "IDirectDrawSurface7 *[2]",
+          "offset": 48
+        },
+        { "name": "field_0x38", "type": "struct LHRegion", "offset": 56 },
         { "name": "region", "type": "struct LHRegion", "offset": 72 },
-        { "name": "client_to_screen", "type": "POINT", "offset": 88 },
+        {
+          "name": "ms_window_client_offset",
+          "type": "struct LHCoord",
+          "offset": 88
+        },
         { "name": "clipper", "type": "IDirectDrawClipper *", "offset": 96 },
         { "name": "fullscreen_mode", "type": "_Bool", "offset": 100 },
         { "name": "field_0x65", "type": "uint8_t[22]", "offset": 101 },
@@ -44275,7 +45225,15 @@
         { "name": "field_0x7e", "type": "uint8_t", "offset": 126 },
         { "name": "field_0x7f", "type": "uint8_t", "offset": 127 },
         { "name": "field_0x80", "type": "uint8_t", "offset": 128 },
-        { "name": "field_0x81", "type": "uint8_t[307]", "offset": 129 }
+        { "name": "field_0x81", "type": "uint8_t[3]", "offset": 129 },
+        { "name": "field_0x84", "type": "uint32_t", "offset": 132 },
+        { "name": "field_0x88", "type": "uint32_t", "offset": 136 },
+        { "name": "stride", "type": "uint32_t", "offset": 140 },
+        { "name": "field_0x90", "type": "int32_t", "offset": 144 },
+        { "name": "field_0x94", "type": "uint8_t[272]", "offset": 148 },
+        { "name": "field_0x1a4", "type": "float", "offset": 420 },
+        { "name": "field_0x1a8", "type": "uint8_t[8]", "offset": 424 },
+        { "name": "field_0x1b0", "type": "float", "offset": 432 }
       ]
     },
     {
@@ -44285,222 +45243,205 @@
       "constants": [
         { "name": "LH_MOUSE_IMAGE_TYPE_0x00", "value": 0 },
         { "name": "LH_MOUSE_IMAGE_TYPE_0x01", "value": 1 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x02", "value": 2 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x03", "value": 3 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x04", "value": 4 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x05", "value": 5 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x06", "value": 6 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x07", "value": 7 },
         { "name": "LH_MOUSE_IMAGE_TYPE_0x08", "value": 8 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x09", "value": 9 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x0a", "value": 10 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x0b", "value": 11 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x0c", "value": 12 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x0d", "value": 13 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x0e", "value": 14 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x0f", "value": 15 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x10", "value": 16 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x11", "value": 17 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x12", "value": 18 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x13", "value": 19 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x14", "value": 20 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x15", "value": 21 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x16", "value": 22 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x17", "value": 23 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x18", "value": 24 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x19", "value": 25 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x1a", "value": 26 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x1b", "value": 27 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x1c", "value": 28 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x1d", "value": 29 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x1e", "value": 30 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x1f", "value": 31 },
         { "name": "LH_MOUSE_IMAGE_TYPE_0x20", "value": 32 },
-        { "name": "LH_MOUSE_IMAGE_TYPE_0x40", "value": 64 }
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x21", "value": 33 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x22", "value": 34 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x23", "value": 35 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x24", "value": 36 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x25", "value": 37 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x26", "value": 38 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x27", "value": 39 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x28", "value": 40 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x29", "value": 41 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x2a", "value": 42 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x2b", "value": 43 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x2c", "value": 44 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x2d", "value": 45 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x2e", "value": 46 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x2f", "value": 47 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x30", "value": 48 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x31", "value": 49 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x32", "value": 50 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x33", "value": 51 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x34", "value": 52 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x35", "value": 53 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x36", "value": 54 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x37", "value": 55 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x38", "value": 56 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x39", "value": 57 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x3a", "value": 58 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x3b", "value": 59 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x3c", "value": 60 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x3d", "value": 61 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x3e", "value": 62 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x3f", "value": 63 },
+        { "name": "LH_MOUSE_IMAGE_TYPE_0x40", "value": 64 },
+        { "name": "_LH_MOUSE_IMAGE_TYPE_COUNT", "value": 65 }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHMouse",
-      "size": 356,
+      "type": "struct LHSurface",
+      "size": 48,
       "members": [
-        { "name": "field_0x0", "type": "uint8_t", "offset": 0 },
-        { "name": "field_0x1", "type": "uint8_t", "offset": 1 },
-        { "name": "field_0x2", "type": "uint8_t", "offset": 2 },
-        { "name": "field_0x3", "type": "uint8_t", "offset": 3 },
-        { "name": "field_0x4", "type": "uint8_t", "offset": 4 },
-        { "name": "field_0x5", "type": "uint8_t", "offset": 5 },
-        { "name": "field_0x6", "type": "uint8_t", "offset": 6 },
-        { "name": "field_0x7", "type": "uint8_t", "offset": 7 },
-        { "name": "field_0x8", "type": "uint8_t", "offset": 8 },
-        { "name": "field_0x9", "type": "uint8_t", "offset": 9 },
-        { "name": "field_0xa", "type": "uint8_t", "offset": 10 },
-        { "name": "field_0xb", "type": "uint8_t", "offset": 11 },
-        { "name": "field_0xc", "type": "uint8_t", "offset": 12 },
-        { "name": "field_0xd", "type": "uint8_t", "offset": 13 },
-        { "name": "field_0xe", "type": "uint8_t", "offset": 14 },
-        { "name": "field_0xf", "type": "uint8_t", "offset": 15 },
+        {
+          "name": "d3d_surfaces",
+          "type": "IDirectDrawSurface7 *",
+          "offset": 0
+        },
+        { "name": "field_0x4", "type": "uint32_t", "offset": 4 },
+        { "name": "field_0x8", "type": "int", "offset": 8 },
+        { "name": "field_0xc", "type": "uint32_t", "offset": 12 },
+        { "name": "field_0x10", "type": "uint32_t", "offset": 16 },
+        { "name": "width", "type": "uint16_t", "offset": 20 },
+        { "name": "height", "type": "uint16_t", "offset": 22 },
+        { "name": "pixels", "type": "struct LHPixel *", "offset": 24 },
+        { "name": "field_0x1c", "type": "uint32_t", "offset": 28 },
+        { "name": "field_0x20", "type": "uint32_t", "offset": 32 },
+        { "name": "field_0x24", "type": "uint32_t", "offset": 36 },
+        { "name": "field_0x28", "type": "uint32_t", "offset": 40 },
+        { "name": "field_0x2c", "type": "int", "offset": 44 }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum LH_SCREEN_BUFFER",
+      "size": 4,
+      "constants": [
+        { "name": "LH_SCREEN_BUFFER_0x0", "value": 0 },
+        { "name": "LH_SCREEN_BUFFER_0x1", "value": 1 },
+        { "name": "_LH_SCREEN_BUFFER_COUNT", "value": 2 }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum LH_MOUSE_EVENT_TYPE",
+      "size": 4,
+      "constants": [
+        { "name": "LH_MOUSE_EVENT_TYPE_0x0", "value": 0 },
+        { "name": "LH_MOUSE_EVENT_TYPE_0x1", "value": 1 },
+        { "name": "LH_MOUSE_EVENT_TYPE_0x2", "value": 2 },
+        { "name": "LH_MOUSE_EVENT_TYPE_0x3", "value": 3 },
+        { "name": "LH_MOUSE_EVENT_TYPE_0x4", "value": 4 },
+        { "name": "_LH_MOUSE_EVENT_TYPE_COUNT", "value": 5 }
+      ]
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "LHMouse__handler",
+      "size": 4,
+      "call_type": "__cdecl",
+      "result": "_Bool",
+      "args": ["void *", "enum LH_MOUSE_EVENT_TYPE", "uint32_t", "uint32_t"],
+      "signature": "_Bool (void *, enum LH_MOUSE_EVENT_TYPE, uint32_t, uint32_t)"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHMouse",
+      "size": 360,
+      "members": [
+        {
+          "name": "screen_buffer",
+          "type": "enum LH_SCREEN_BUFFER",
+          "offset": 0
+        },
+        { "name": "handler", "type": "LHMouse__handler *", "offset": 4 },
+        { "name": "field_0x8", "type": "uint32_t", "offset": 8 },
+        { "name": "in_window", "type": "bool32_t", "offset": 12 },
         { "name": "field_0x10", "type": "uint8_t", "offset": 16 },
         { "name": "field_0x11", "type": "uint8_t", "offset": 17 },
         { "name": "field_0x12", "type": "uint8_t", "offset": 18 },
         { "name": "field_0x13", "type": "uint8_t", "offset": 19 },
-        { "name": "field_0x14", "type": "uint8_t", "offset": 20 },
-        { "name": "field_0x15", "type": "uint8_t", "offset": 21 },
-        { "name": "field_0x16", "type": "uint8_t", "offset": 22 },
-        { "name": "field_0x17", "type": "uint8_t", "offset": 23 },
-        { "name": "field_0x18", "type": "uint8_t", "offset": 24 },
-        { "name": "field_0x19", "type": "uint8_t", "offset": 25 },
-        { "name": "field_0x1a", "type": "uint8_t", "offset": 26 },
-        { "name": "field_0x1b", "type": "uint8_t", "offset": 27 },
-        { "name": "field_0x1c", "type": "uint8_t", "offset": 28 },
-        { "name": "field_0x1d", "type": "uint8_t", "offset": 29 },
-        { "name": "field_0x1e", "type": "uint8_t", "offset": 30 },
-        { "name": "field_0x1f", "type": "uint8_t", "offset": 31 },
-        { "name": "field_0x20", "type": "uint8_t", "offset": 32 },
-        { "name": "field_0x21", "type": "uint8_t", "offset": 33 },
+        {
+          "name": "image_0x14",
+          "type": "enum LH_MOUSE_IMAGE_TYPE",
+          "offset": 20
+        },
+        {
+          "name": "image_0x18",
+          "type": "enum LH_MOUSE_IMAGE_TYPE",
+          "offset": 24
+        },
+        { "name": "field_0x1c", "type": "uint32_t", "offset": 28 },
+        { "name": "field_0x20", "type": "uint16_t", "offset": 32 },
         { "name": "field_0x22", "type": "uint8_t", "offset": 34 },
         { "name": "field_0x23", "type": "uint8_t", "offset": 35 },
-        { "name": "field_0x24", "type": "uint8_t", "offset": 36 },
-        { "name": "field_0x25", "type": "uint8_t", "offset": 37 },
-        { "name": "field_0x26", "type": "uint8_t", "offset": 38 },
-        { "name": "field_0x27", "type": "uint8_t", "offset": 39 },
-        { "name": "field_0x28", "type": "uint8_t", "offset": 40 },
-        { "name": "field_0x29", "type": "uint8_t", "offset": 41 },
-        { "name": "field_0x2a", "type": "uint8_t", "offset": 42 },
-        { "name": "field_0x2b", "type": "uint8_t", "offset": 43 },
-        { "name": "field_0x2c", "type": "uint8_t", "offset": 44 },
-        { "name": "field_0x2d", "type": "uint8_t", "offset": 45 },
-        { "name": "field_0x2e", "type": "uint8_t", "offset": 46 },
-        { "name": "field_0x2f", "type": "uint8_t", "offset": 47 },
+        {
+          "name": "field_0x24",
+          "type": "enum LH_MOUSE_EVENT_TYPE",
+          "offset": 36
+        },
+        { "name": "field_0x28", "type": "uint32_t", "offset": 40 },
+        { "name": "field_0x2c", "type": "struct LHSurface *", "offset": 44 },
         { "name": "field_0x30", "type": "uint8_t", "offset": 48 },
         { "name": "field_0x31", "type": "uint8_t", "offset": 49 },
         { "name": "field_0x32", "type": "uint8_t", "offset": 50 },
         { "name": "field_0x33", "type": "uint8_t", "offset": 51 },
-        { "name": "field_0x34", "type": "uint8_t", "offset": 52 },
-        { "name": "field_0x35", "type": "uint8_t", "offset": 53 },
-        { "name": "field_0x36", "type": "uint8_t", "offset": 54 },
-        { "name": "field_0x37", "type": "uint8_t", "offset": 55 },
-        { "name": "field_0x38", "type": "uint8_t", "offset": 56 },
-        { "name": "field_0x39", "type": "uint8_t", "offset": 57 },
-        { "name": "field_0x3a", "type": "uint8_t", "offset": 58 },
-        { "name": "field_0x3b", "type": "uint8_t", "offset": 59 },
-        { "name": "field_0x3c", "type": "uint8_t", "offset": 60 },
-        { "name": "field_0x3d", "type": "uint8_t", "offset": 61 },
-        { "name": "field_0x3e", "type": "uint8_t", "offset": 62 },
-        { "name": "field_0x3f", "type": "uint8_t", "offset": 63 },
-        { "name": "field_0x40", "type": "uint8_t", "offset": 64 },
-        { "name": "field_0x41", "type": "uint8_t", "offset": 65 },
-        { "name": "field_0x42", "type": "uint8_t", "offset": 66 },
-        { "name": "field_0x43", "type": "uint8_t", "offset": 67 },
-        { "name": "field_0x44", "type": "uint32_t", "offset": 68 },
-        { "name": "field_0x48", "type": "uint8_t", "offset": 72 },
-        { "name": "field_0x49", "type": "uint8_t", "offset": 73 },
-        { "name": "field_0x4a", "type": "uint8_t", "offset": 74 },
-        { "name": "field_0x4b", "type": "uint8_t", "offset": 75 },
-        { "name": "field_0x4c", "type": "uint8_t", "offset": 76 },
-        { "name": "field_0x4d", "type": "uint8_t", "offset": 77 },
-        { "name": "field_0x4e", "type": "uint8_t", "offset": 78 },
-        { "name": "field_0x4f", "type": "uint8_t", "offset": 79 },
-        { "name": "field_0x50", "type": "uint8_t", "offset": 80 },
-        { "name": "field_0x51", "type": "uint8_t", "offset": 81 },
-        { "name": "field_0x52", "type": "uint8_t", "offset": 82 },
-        { "name": "field_0x53", "type": "uint8_t", "offset": 83 },
-        { "name": "field_0x54", "type": "uint8_t", "offset": 84 },
-        { "name": "field_0x55", "type": "uint8_t", "offset": 85 },
-        { "name": "field_0x56", "type": "uint8_t", "offset": 86 },
-        { "name": "field_0x57", "type": "uint8_t", "offset": 87 },
-        { "name": "field_0x58", "type": "uint8_t", "offset": 88 },
-        { "name": "field_0x59", "type": "uint8_t", "offset": 89 },
-        { "name": "field_0x5a", "type": "uint8_t", "offset": 90 },
-        { "name": "field_0x5b", "type": "uint8_t", "offset": 91 },
-        { "name": "field_0x5c", "type": "uint8_t", "offset": 92 },
-        { "name": "field_0x5d", "type": "uint8_t", "offset": 93 },
+        { "name": "field_0x34", "type": "struct LHSurface *", "offset": 52 },
+        { "name": "field_0x38", "type": "void *", "offset": 56 },
+        { "name": "field_0x3c", "type": "struct LHSurface *", "offset": 60 },
+        { "name": "field_0x40", "type": "struct LHSurface *", "offset": 64 },
+        { "name": "mouse_type_0x44", "type": "uint32_t", "offset": 68 },
+        { "name": "mouse_type_0x48", "type": "uint32_t", "offset": 72 },
+        { "name": "field_0x4c", "type": "int", "offset": 76 },
+        { "name": "field_0x50", "type": "struct LHSprite *", "offset": 80 },
+        { "name": "field_0x54", "type": "struct LHCoord *", "offset": 84 },
+        { "name": "field_0x58", "type": "struct LHSurface **", "offset": 88 },
+        { "name": "field_0x5c", "type": "uint16_t", "offset": 92 },
         { "name": "field_0x5e", "type": "uint8_t", "offset": 94 },
         { "name": "field_0x5f", "type": "uint8_t", "offset": 95 },
-        { "name": "field_0x60", "type": "uint8_t", "offset": 96 },
-        { "name": "field_0x61", "type": "uint8_t", "offset": 97 },
-        { "name": "field_0x62", "type": "uint8_t", "offset": 98 },
-        { "name": "field_0x63", "type": "uint8_t", "offset": 99 },
-        { "name": "field_0x64", "type": "uint8_t", "offset": 100 },
-        { "name": "field_0x65", "type": "uint8_t", "offset": 101 },
+        { "name": "field_0x60", "type": "uint32_t", "offset": 96 },
+        { "name": "field_0x64", "type": "uint16_t", "offset": 100 },
         { "name": "field_0x66", "type": "uint8_t", "offset": 102 },
         { "name": "field_0x67", "type": "uint8_t", "offset": 103 },
         { "name": "field_0x68", "type": "uint8_t", "offset": 104 },
         { "name": "field_0x69", "type": "uint8_t", "offset": 105 },
         { "name": "field_0x6a", "type": "uint8_t", "offset": 106 },
         { "name": "field_0x6b", "type": "uint8_t", "offset": 107 },
-        { "name": "field_0x6c", "type": "uint8_t", "offset": 108 },
-        { "name": "field_0x6d", "type": "uint8_t", "offset": 109 },
-        { "name": "field_0x6e", "type": "uint8_t", "offset": 110 },
-        { "name": "field_0x6f", "type": "uint8_t", "offset": 111 },
-        { "name": "field_0x70", "type": "uint8_t", "offset": 112 },
-        { "name": "field_0x71", "type": "uint8_t", "offset": 113 },
-        { "name": "field_0x72", "type": "uint8_t", "offset": 114 },
-        { "name": "field_0x73", "type": "uint8_t", "offset": 115 },
-        { "name": "field_0x74", "type": "uint8_t", "offset": 116 },
-        { "name": "field_0x75", "type": "uint8_t", "offset": 117 },
-        { "name": "field_0x76", "type": "uint8_t", "offset": 118 },
-        { "name": "field_0x77", "type": "uint8_t", "offset": 119 },
-        { "name": "field_0x78", "type": "uint8_t", "offset": 120 },
-        { "name": "field_0x79", "type": "uint8_t", "offset": 121 },
-        { "name": "field_0x7a", "type": "uint8_t", "offset": 122 },
-        { "name": "field_0x7b", "type": "uint8_t", "offset": 123 },
-        { "name": "field_0x7c", "type": "uint8_t", "offset": 124 },
-        { "name": "field_0x7d", "type": "uint8_t", "offset": 125 },
-        { "name": "field_0x7e", "type": "uint8_t", "offset": 126 },
-        { "name": "field_0x7f", "type": "uint8_t", "offset": 127 },
-        { "name": "field_0x80", "type": "uint8_t", "offset": 128 },
-        { "name": "field_0x81", "type": "uint8_t", "offset": 129 },
-        { "name": "field_0x82", "type": "uint8_t", "offset": 130 },
-        { "name": "field_0x83", "type": "uint8_t", "offset": 131 },
-        { "name": "field_0x84", "type": "uint8_t", "offset": 132 },
-        { "name": "field_0x85", "type": "uint8_t", "offset": 133 },
-        { "name": "field_0x86", "type": "uint8_t", "offset": 134 },
-        { "name": "field_0x87", "type": "uint8_t", "offset": 135 },
-        { "name": "field_0x88", "type": "uint8_t", "offset": 136 },
-        { "name": "field_0x89", "type": "uint8_t", "offset": 137 },
-        { "name": "field_0x8a", "type": "uint8_t", "offset": 138 },
-        { "name": "field_0x8b", "type": "uint8_t", "offset": 139 },
-        { "name": "field_0x8c", "type": "uint8_t", "offset": 140 },
-        { "name": "field_0x8d", "type": "uint8_t", "offset": 141 },
-        { "name": "field_0x8e", "type": "uint8_t", "offset": 142 },
-        { "name": "field_0x8f", "type": "uint8_t", "offset": 143 },
-        { "name": "field_0x90", "type": "uint8_t", "offset": 144 },
-        { "name": "field_0x91", "type": "uint8_t", "offset": 145 },
-        { "name": "field_0x92", "type": "uint8_t", "offset": 146 },
-        { "name": "field_0x93", "type": "uint8_t", "offset": 147 },
-        { "name": "field_0x94", "type": "uint8_t", "offset": 148 },
-        { "name": "field_0x95", "type": "uint8_t", "offset": 149 },
-        { "name": "field_0x96", "type": "uint8_t", "offset": 150 },
-        { "name": "field_0x97", "type": "uint8_t", "offset": 151 },
-        { "name": "field_0x98", "type": "uint8_t", "offset": 152 },
-        { "name": "field_0x99", "type": "uint8_t", "offset": 153 },
-        { "name": "field_0x9a", "type": "uint8_t", "offset": 154 },
-        { "name": "field_0x9b", "type": "uint8_t", "offset": 155 },
-        { "name": "field_0x9c", "type": "uint8_t", "offset": 156 },
-        { "name": "field_0x9d", "type": "uint8_t", "offset": 157 },
-        { "name": "field_0x9e", "type": "uint8_t", "offset": 158 },
-        { "name": "field_0x9f", "type": "uint8_t", "offset": 159 },
-        { "name": "field_0xa0", "type": "uint8_t", "offset": 160 },
-        { "name": "field_0xa1", "type": "uint8_t", "offset": 161 },
-        { "name": "field_0xa2", "type": "uint8_t", "offset": 162 },
-        { "name": "field_0xa3", "type": "uint8_t", "offset": 163 },
-        { "name": "field_0xa4", "type": "uint8_t", "offset": 164 },
-        { "name": "field_0xa5", "type": "uint8_t", "offset": 165 },
-        { "name": "field_0xa6", "type": "uint8_t", "offset": 166 },
-        { "name": "field_0xa7", "type": "uint8_t", "offset": 167 },
-        { "name": "field_0xa8", "type": "uint8_t", "offset": 168 },
-        { "name": "field_0xa9", "type": "uint8_t", "offset": 169 },
-        { "name": "field_0xaa", "type": "uint8_t", "offset": 170 },
-        { "name": "field_0xab", "type": "uint8_t", "offset": 171 },
-        { "name": "field_0xac", "type": "uint8_t", "offset": 172 },
-        { "name": "field_0xad", "type": "uint8_t", "offset": 173 },
-        { "name": "field_0xae", "type": "uint8_t", "offset": 174 },
-        { "name": "field_0xaf", "type": "uint8_t", "offset": 175 },
-        { "name": "field_0xb0", "type": "uint8_t", "offset": 176 },
-        { "name": "field_0xb1", "type": "uint8_t", "offset": 177 },
-        { "name": "field_0xb2", "type": "uint8_t", "offset": 178 },
-        { "name": "field_0xb3", "type": "uint8_t", "offset": 179 },
-        { "name": "field_0xb4", "type": "uint8_t", "offset": 180 },
-        { "name": "field_0xb5", "type": "uint8_t", "offset": 181 },
-        { "name": "field_0xb6", "type": "uint8_t", "offset": 182 },
-        { "name": "field_0xb7", "type": "uint8_t", "offset": 183 },
-        { "name": "field_0xb8", "type": "uint8_t", "offset": 184 },
-        { "name": "field_0xb9", "type": "uint8_t", "offset": 185 },
-        { "name": "field_0xba", "type": "uint8_t", "offset": 186 },
-        { "name": "field_0xbb", "type": "uint8_t", "offset": 187 },
-        { "name": "coord_0xbc", "type": "struct LHCoord", "offset": 188 },
-        { "name": "field_0xc4", "type": "uint8_t", "offset": 196 },
-        { "name": "field_0xc5", "type": "uint8_t", "offset": 197 },
-        { "name": "field_0xc6", "type": "uint8_t", "offset": 198 },
-        { "name": "field_0xc7", "type": "uint8_t", "offset": 199 },
-        { "name": "field_0xc8", "type": "uint8_t", "offset": 200 },
-        { "name": "field_0xc9", "type": "uint8_t", "offset": 201 },
-        { "name": "field_0xca", "type": "uint8_t", "offset": 202 },
-        { "name": "field_0xcb", "type": "uint8_t", "offset": 203 },
+        { "name": "field_0x6c", "type": "int", "offset": 108 },
+        { "name": "field_0x70", "type": "int", "offset": 112 },
+        { "name": "field_0x74", "type": "struct LHRegion", "offset": 116 },
+        { "name": "field_0x84", "type": "struct LHRegion", "offset": 132 },
+        { "name": "field_0x94", "type": "struct LHRegion", "offset": 148 },
+        { "name": "field_0xa4", "type": "struct LHRegion", "offset": 164 },
+        { "name": "field_0xb4", "type": "struct LHCoord", "offset": 180 },
+        { "name": "pos", "type": "struct LHCoord", "offset": 188 },
+        { "name": "field_0xc4", "type": "struct LHCoord", "offset": 196 },
         { "name": "field_0xcc", "type": "uint8_t", "offset": 204 },
         { "name": "field_0xcd", "type": "uint8_t", "offset": 205 },
         { "name": "field_0xce", "type": "uint8_t", "offset": 206 },
         { "name": "field_0xcf", "type": "uint8_t", "offset": 207 },
-        { "name": "field_0xd0", "type": "uint8_t", "offset": 208 },
-        { "name": "field_0xd1", "type": "uint8_t", "offset": 209 },
-        { "name": "field_0xd2", "type": "uint8_t", "offset": 210 },
-        { "name": "field_0xd3", "type": "uint8_t", "offset": 211 },
-        { "name": "field_0xd4", "type": "uint8_t", "offset": 212 },
-        { "name": "field_0xd5", "type": "uint8_t", "offset": 213 },
-        { "name": "field_0xd6", "type": "uint8_t", "offset": 214 },
-        { "name": "field_0xd7", "type": "uint8_t", "offset": 215 },
+        { "name": "current_pos", "type": "struct LHCoord", "offset": 208 },
         { "name": "field_0xd8", "type": "uint8_t", "offset": 216 },
         { "name": "field_0xd9", "type": "uint8_t", "offset": 217 },
         { "name": "field_0xda", "type": "uint8_t", "offset": 218 },
@@ -44510,9 +45451,36 @@
         { "name": "field_0xde", "type": "uint8_t", "offset": 222 },
         { "name": "field_0xdf", "type": "uint8_t", "offset": 223 },
         { "name": "coord_0xe0", "type": "struct LHCoord", "offset": 224 },
-        { "name": "field_0xe8", "type": "uint8_t[20]", "offset": 232 },
+        { "name": "effective_pos", "type": "struct LHCoord", "offset": 232 },
+        { "name": "padding", "type": "struct LHCoord", "offset": 240 },
+        { "name": "use_padding", "type": "bool32_t", "offset": 248 },
         { "name": "field_0xfc", "type": "uint32_t", "offset": 252 },
-        { "name": "field_0x100", "type": "uint8_t[100]", "offset": 256 }
+        { "name": "field_0x100", "type": "uint32_t", "offset": 256 },
+        { "name": "field_0x104", "type": "uint32_t", "offset": 260 },
+        { "name": "field_0x108", "type": "uint32_t", "offset": 264 },
+        { "name": "field_0x10c", "type": "uint32_t", "offset": 268 },
+        { "name": "field_0x110", "type": "uint32_t", "offset": 272 },
+        { "name": "field_0x114", "type": "uint32_t", "offset": 276 },
+        { "name": "field_0x118", "type": "uint32_t", "offset": 280 },
+        { "name": "field_0x11c", "type": "uint32_t", "offset": 284 },
+        { "name": "field_0x120", "type": "uint32_t", "offset": 288 },
+        { "name": "field_0x124", "type": "uint32_t", "offset": 292 },
+        { "name": "field_0x128", "type": "uint32_t", "offset": 296 },
+        { "name": "field_0x12c", "type": "uint32_t", "offset": 300 },
+        { "name": "field_0x130", "type": "uint32_t", "offset": 304 },
+        { "name": "field_0x134", "type": "uint32_t", "offset": 308 },
+        { "name": "field_0x138", "type": "uint32_t", "offset": 312 },
+        { "name": "field_0x13c", "type": "uint32_t", "offset": 316 },
+        { "name": "field_0x140", "type": "uint32_t", "offset": 320 },
+        { "name": "field_0x144", "type": "uint32_t", "offset": 324 },
+        { "name": "field_0x148", "type": "uint32_t", "offset": 328 },
+        { "name": "field_0x14c", "type": "uint32_t", "offset": 332 },
+        { "name": "field_0x150", "type": "void *", "offset": 336 },
+        { "name": "field_0x154", "type": "uint32_t", "offset": 340 },
+        { "name": "field_0x158", "type": "uint32_t", "offset": 344 },
+        { "name": "field_0x15c", "type": "uint32_t", "offset": 348 },
+        { "name": "field_0x160", "type": "uint32_t", "offset": 352 },
+        { "name": "field_0x164", "type": "uint32_t", "offset": 356 }
       ]
     },
     {
@@ -44630,6 +45598,25 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHScriptPramX_c_",
+      "size": 24672,
+      "members": [
+        { "name": "param_strs", "type": "char[12][2048]", "offset": 0 },
+        { "name": "param_ints", "type": "int[12]", "offset": 24576 },
+        { "name": "param_floats", "type": "float[12]", "offset": 24624 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHScriptCommandX_c_",
+      "size": 16,
+      "members": [
+        { "name": "function_name", "type": "const char *", "offset": 0 },
+        { "name": "param_types", "type": "uint8_t[12]", "offset": 4 }
+      ]
+    },
+    {
       "kind": "FUNCTIONPROTO",
       "type": "LHScriptX_c__callback_t",
       "size": 4,
@@ -44709,17 +45696,30 @@
         { "name": "instance", "type": "HINSTANCE", "offset": 0 },
         { "name": "field_0x4", "type": "uint32_t", "offset": 4 },
         { "name": "field_0x8", "type": "uint32_t", "offset": 8 },
-        { "name": "terminating", "type": "int", "offset": 12 }
+        { "name": "terminating", "type": "bool32_t", "offset": 12 }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHSpriteList",
+      "type": "struct LHSprite",
+      "size": 8,
+      "members": [
+        { "name": "field_0x0", "type": "uint16_t", "offset": 0 },
+        { "name": "field_0x2", "type": "uint16_t", "offset": 2 },
+        {
+          "name": "texels",
+          "type": "union (unnamed union at Libs/lionhead/lhlib/VER5.0/LHSys.h:53:3) *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHSpriteListNode",
       "size": 12,
       "members": [
-        { "name": "field_0x0", "type": "uint32_t", "offset": 0 },
-        { "name": "field_0x4", "type": "uint16_t *", "offset": 4 },
-        { "name": "field_0x8", "type": "int", "offset": 8 }
+        { "name": "payload", "type": "struct LHSprite", "offset": 0 },
+        { "name": "next", "type": "struct LHSpriteList *", "offset": 8 }
       ]
     },
     {
@@ -44727,7 +45727,11 @@
       "type": "struct LHText",
       "size": 36,
       "members": [
-        { "name": "sprite_list", "type": "struct LHSpriteList", "offset": 0 },
+        {
+          "name": "sprite_list",
+          "type": "struct LHSpriteListNode",
+          "offset": 0
+        },
         { "name": "field_0xc", "type": "uint16_t", "offset": 12 },
         { "name": "field_0xe", "type": "uint8_t", "offset": 14 },
         { "name": "field_0x10", "type": "uint32_t", "offset": 16 },
@@ -44745,7 +45749,7 @@
         { "name": "system", "type": "struct LHSystem", "offset": 0 },
         { "name": "screen", "type": "struct LHScreen", "offset": 16 },
         { "name": "mouse", "type": "struct LHMouse", "offset": 452 },
-        { "name": "field_0x328", "type": "uint8_t[268]", "offset": 808 },
+        { "name": "field_0x32c", "type": "uint8_t[264]", "offset": 812 },
         { "name": "field_0x434", "type": "uint32_t", "offset": 1076 },
         { "name": "field_0x438", "type": "uint8_t[296]", "offset": 1080 },
         { "name": "field_0x560", "type": "uint32_t[16]", "offset": 1376 },
@@ -44757,7 +45761,10 @@
         { "name": "text", "type": "struct LHText", "offset": 28740 },
         { "name": "field_0x7068", "type": "uint8_t[76]", "offset": 28776 },
         { "name": "window", "type": "HWND", "offset": 28852 },
-        { "name": "field_0x70b8", "type": "uint32_t", "offset": 28856 },
+        { "name": "field_0x70b8", "type": "uint8_t", "offset": 28856 },
+        { "name": "field_0x70b9", "type": "uint8_t", "offset": 28857 },
+        { "name": "field_0x70ba", "type": "_Bool", "offset": 28858 },
+        { "name": "field_0x70bb", "type": "uint8_t", "offset": 28859 },
         { "name": "field_0x70bc", "type": "uint32_t", "offset": 28860 },
         { "name": "field_0x70c0", "type": "uint32_t", "offset": 28864 },
         {
@@ -44766,25 +45773,6 @@
           "offset": 28868
         },
         { "name": "field_0x70c8", "type": "uint8_t[16]", "offset": 28872 }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LHScriptPramX_c_",
-      "size": 24672,
-      "members": [
-        { "name": "param_strs", "type": "char[12][2048]", "offset": 0 },
-        { "name": "param_ints", "type": "int[12]", "offset": 24576 },
-        { "name": "param_floats", "type": "float[12]", "offset": 24624 }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LHScriptCommandX_c_",
-      "size": 16,
-      "members": [
-        { "name": "function_name", "type": "const char *", "offset": 0 },
-        { "name": "param_types", "type": "uint8_t[12]", "offset": 4 }
       ]
     },
     {
@@ -45025,15 +46013,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct DrawAndClip_t",
-      "size": 8,
-      "members": [
-        { "name": "clip_x_max", "type": "float", "offset": 0 },
-        { "name": "clip_y_max", "type": "float", "offset": 4 }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct ModAddedGlobals_t",
       "size": 1,
       "members": [
@@ -45057,7 +46036,7 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct globals_t",
-      "size": 648,
+      "size": 724,
       "members": [
         {
           "name": "LH3DColor_ARRAY_008ab250",
@@ -45065,8 +46044,8 @@
           "offset": 0
         },
         {
-          "name": "DiscipleTable_ARRAY_0099a1f8",
-          "type": "struct DiscipleTable (*)[1]",
+          "name": "DiscipleInfo_ARRAY_0099a1f8",
+          "type": "struct DiscipleInfo (*)[13]",
           "offset": 4
         },
         {
@@ -45099,499 +46078,570 @@
         { "name": "DAT_00c20d58", "type": "enum TRIBE_TYPE *", "offset": 68 },
         { "name": "SigmoidTable", "type": "float (*)[41]", "offset": 72 },
         { "name": "FLOAT_00c2a150", "type": "float *", "offset": 76 },
-        {
-          "name": "DrawAndClip_00c2ab00",
-          "type": "struct DrawAndClip_t *",
-          "offset": 80
-        },
+        { "name": "g_maxX", "type": "float *", "offset": 80 },
+        { "name": "g_maxY", "type": "float *", "offset": 84 },
         {
           "name": "sin_lookup_table",
           "type": "int32_t (*)[2048]",
-          "offset": 84
+          "offset": 88
         },
         {
           "name": "cos_lookup_table",
           "type": "int32_t (*)[2048]",
-          "offset": 88
+          "offset": 92
         },
-        { "name": "s_parsed_line", "type": "char (*)[512]", "offset": 92 },
-        { "name": "DAT_00c371d4", "type": "float *", "offset": 96 },
+        { "name": "s_parsed_line", "type": "char (*)[512]", "offset": 96 },
+        { "name": "DAT_00c371d4", "type": "float *", "offset": 100 },
         {
           "name": "g_delta_time__8LH3DTech",
           "type": "uint32_t *",
-          "offset": 100
+          "offset": 104
         },
-        { "name": "DAT_00c386d0", "type": "uint32_t *", "offset": 104 },
-        { "name": "DAT_00c38714", "type": "uint32_t *", "offset": 108 },
+        { "name": "DAT_00c386d0", "type": "uint32_t *", "offset": 108 },
+        { "name": "DAT_00c38714", "type": "uint32_t *", "offset": 112 },
         {
           "name": "GAbodeInfo_ARRAY_00c3c690",
           "type": "struct GAbodeInfo (*)[147]",
-          "offset": 112
+          "offset": 116
         },
-        { "name": "SetupThing", "type": "struct SetupThing *", "offset": 116 },
+        { "name": "SetupThing", "type": "struct SetupThing *", "offset": 120 },
         {
           "name": "SetupRect_00c4ccb8",
           "type": "struct SetupRect *",
-          "offset": 120
+          "offset": 124
         },
         {
           "name": "LH3DColor_ARRAY_00c4ccd8",
           "type": "struct LH3DColor (*)[5]",
-          "offset": 124
+          "offset": 128
         },
         {
           "name": "LH3DColor_00c4ccf8",
           "type": "struct LH3DColor *",
-          "offset": 128
+          "offset": 132
         },
-        { "name": "DAT_00c4cd00", "type": "_Bool *", "offset": 132 },
-        { "name": "SetupBox", "type": "struct SetupBox_t *", "offset": 136 },
+        { "name": "DAT_00c4cd00", "type": "_Bool *", "offset": 136 },
+        { "name": "SetupBox", "type": "struct SetupBox_t *", "offset": 140 },
         {
           "name": "PTR_00c4cd2c",
           "type": "struct GatheringText **",
-          "offset": 140
+          "offset": 144
         },
-        { "name": "WCHAR_00c4cd30", "type": "char16_t *", "offset": 144 },
-        { "name": "UINT_00c58604", "type": "uint32_t *", "offset": 148 },
+        { "name": "WCHAR_00c4cd30", "type": "char16_t *", "offset": 148 },
+        { "name": "UINT_00c58604", "type": "uint32_t *", "offset": 152 },
         {
           "name": "GCitadelHeartInfo_ARRAY_00c5e270",
           "type": "struct GCitadelHeartInfo (*)[1]",
-          "offset": 152
+          "offset": 156
         },
         {
           "name": "CreatureList",
           "type": "struct CreatureList *",
-          "offset": 156
+          "offset": 160
         },
         {
           "name": "GMagicEffectInfo_ARRAY_00cc6630",
           "type": "struct GMagicEffectInfo (*)[66]",
-          "offset": 160
+          "offset": 164
         },
         {
           "name": "GFieldTypeInfo_00ccf070",
           "type": "struct GFieldTypeInfo (*)[6]",
-          "offset": 164
+          "offset": 168
         },
         {
           "name": "CHAR_ARRAY_00cd035c",
           "type": "char (*)[256]",
-          "offset": 168
+          "offset": 172
         },
-        { "name": "DAT_00cd0488", "type": "uint32_t *", "offset": 172 },
+        { "name": "DAT_00cd0488", "type": "uint32_t *", "offset": 176 },
         {
           "name": "FrontEnd_00cd0620",
           "type": "struct FrontEnd *",
-          "offset": 176
+          "offset": 180
         },
         {
           "name": "UNICODE_00cd3a18",
           "type": "char16_t (*)[2]",
-          "offset": 180
+          "offset": 184
         },
-        { "name": "DAT_00cd3ae8", "type": "uint32_t *", "offset": 184 },
-        { "name": "DAT_00cd3aec", "type": "uint8_t *", "offset": 188 },
-        { "name": "global", "type": "struct GGlobal *", "offset": 192 },
-        { "name": "ARRAY_00d0143c", "type": "uint32_t (*)[10]", "offset": 196 },
+        { "name": "DAT_00cd3ae8", "type": "uint32_t *", "offset": 188 },
+        { "name": "DAT_00cd3aec", "type": "uint8_t *", "offset": 192 },
+        { "name": "global", "type": "struct GGlobal *", "offset": 196 },
+        { "name": "ARRAY_00d0143c", "type": "uint32_t (*)[10]", "offset": 200 },
         {
           "name": "ARRAY_00d01464",
           "type": "uint32_t (*)[100]",
-          "offset": 200
+          "offset": 204
         },
-        { "name": "game", "type": "struct GGame **", "offset": 204 },
-        { "name": "DAT_00d01978", "type": "int *", "offset": 208 },
-        { "name": "INT_00d0197c", "type": "int *", "offset": 212 },
-        { "name": "Script", "type": "struct globals_Script *", "offset": 216 },
-        { "name": "DAT_00d019b4", "type": "int *", "offset": 220 },
-        { "name": "DAT_00d019b8", "type": "int *", "offset": 224 },
-        { "name": "DAT_00d019bc", "type": "int *", "offset": 228 },
+        { "name": "game", "type": "struct GGame **", "offset": 208 },
+        { "name": "DAT_00d01978", "type": "int *", "offset": 212 },
+        { "name": "INT_00d0197c", "type": "int *", "offset": 216 },
+        { "name": "Script", "type": "struct globals_Script *", "offset": 220 },
+        { "name": "DAT_00d019b4", "type": "int *", "offset": 224 },
+        { "name": "DAT_00d019b8", "type": "int *", "offset": 228 },
+        { "name": "DAT_00d019bc", "type": "int *", "offset": 232 },
         {
           "name": "GGameInfo_00d019f8",
           "type": "struct GGameInfo *",
-          "offset": 232
+          "offset": 236
         },
         {
           "name": "GameThing",
           "type": "struct GameThing_t *const",
-          "offset": 236
+          "offset": 240
         },
         {
           "name": "StateTable_00d09198",
           "type": "struct VillagerStateTable *",
-          "offset": 240
+          "offset": 244
         },
         {
           "name": "StateTable_00d12108",
           "type": "struct AnimalStateTable *",
-          "offset": 244
+          "offset": 248
         },
-        { "name": "DAT_00d13f3c", "type": "void **", "offset": 248 },
+        { "name": "DAT_00d13f3c", "type": "void **", "offset": 252 },
         {
           "name": "HelpTextDataBasePatch",
-          "type": "struct HelpTextDataBase *",
-          "offset": 252
-        },
-        {
-          "name": "HelpTextDataBase_00d17ca8",
           "type": "struct HelpTextDataBase *",
           "offset": 256
         },
         {
+          "name": "HelpTextDataBase_00d17ca8",
+          "type": "struct HelpTextDataBase *",
+          "offset": 260
+        },
+        {
           "name": "GameBlock_ARRAY_00d189d8",
           "type": "struct GameBlock *(*)[32][32]",
-          "offset": 260
+          "offset": 264
         },
         {
           "name": "GameBlock_00d199e0",
           "type": "struct GameBlock (*)",
-          "offset": 264
+          "offset": 268
         },
         {
           "name": "FLOAT_ARRAY_00d1a280",
           "type": "float (*)[8]",
-          "offset": 268
+          "offset": 272
         },
         {
           "name": "Point2D_00d3ee60",
           "type": "struct LHPoint2D (*)",
-          "offset": 272
+          "offset": 276
         },
         {
           "name": "Point2D_00d3ee68",
           "type": "struct LHPoint2D (*)",
-          "offset": 276
+          "offset": 280
         },
         {
           "name": "Point2D_00d3ee70",
           "type": "struct LHPoint2D (*)",
-          "offset": 280
+          "offset": 284
         },
         {
           "name": "CircleHugStateInfoT_00d3ee78",
           "type": "struct CircleHugStateInfoT (*)",
-          "offset": 284
+          "offset": 288
         },
-        { "name": "DAT_00d3eed0", "type": "_Bool *", "offset": 288 },
-        { "name": "DAT_00d3eed1", "type": "uint8_t *", "offset": 292 },
+        { "name": "DAT_00d3eed0", "type": "_Bool *", "offset": 292 },
+        { "name": "DAT_00d3eed1", "type": "uint8_t *", "offset": 296 },
         {
           "name": "DAT_00d3eed4",
           "type": "struct std__map__pMobileWallHug__ulong_node_list (*)",
-          "offset": 296
+          "offset": 300
         },
         {
           "name": "DAT_00d3eedc",
           "type": "struct std__map__pNewCollide__Obj__std__set__pMobileWallHug_node_list (*)",
-          "offset": 300
+          "offset": 304
         },
         {
           "name": "DAT_00d3eee4",
           "type": "struct std__set__pMobileWallHug_node_list (*)",
-          "offset": 304
+          "offset": 308
         },
         {
           "name": "DAT_00d3eef4",
           "type": "struct CircleHugStateInfo_field_0x44_node_list (*)",
-          "offset": 308
+          "offset": 312
         },
         {
           "name": "MagicInfoTable",
           "type": "struct GMagicInfo *(*)[42]",
-          "offset": 312
+          "offset": 316
         },
-        { "name": "ape_hair", "type": "struct ape_hair_t *", "offset": 316 },
+        { "name": "ape_hair", "type": "struct ape_hair_t *", "offset": 320 },
         {
           "name": "MPFEConnectionStatus_00d40e20",
           "type": "struct MPFEConnectionStatus *",
-          "offset": 320
+          "offset": 324
         },
         {
           "name": "CHAR_ARRAY_00d414d8",
           "type": "char (*)[128]",
-          "offset": 324
+          "offset": 328
         },
-        { "name": "ARGS_NEWGAME", "type": "_Bool (*)", "offset": 328 },
-        { "name": "ARGS_MULTIPLAYER", "type": "_Bool (*)", "offset": 332 },
-        { "name": "ARGS_LAND", "type": "_Bool (*)", "offset": 336 },
-        { "name": "ARGS_SKIRMISH", "type": "_Bool (*)", "offset": 340 },
-        { "name": "ARGS_PREINTROVIDEO", "type": "_Bool (*)", "offset": 344 },
-        { "name": "ARGS_FORCEINETCONN", "type": "_Bool (*)", "offset": 348 },
-        { "name": "ARGS_NOINETCONN", "type": "_Bool (*)", "offset": 352 },
-        { "name": "ARGS_EDITOR", "type": "_Bool (*)", "offset": 356 },
-        { "name": "ARGS_CONVERT", "type": "_Bool (*)", "offset": 360 },
-        { "name": "ARGS_VERSION", "type": "_Bool (*)", "offset": 364 },
-        { "name": "ARGS_NOLOADMUSIC", "type": "_Bool (*)", "offset": 368 },
-        { "name": "ARGS_SETTINGS", "type": "_Bool (*)", "offset": 372 },
+        { "name": "ARGS_NEWGAME", "type": "_Bool (*)", "offset": 332 },
+        { "name": "ARGS_MULTIPLAYER", "type": "_Bool (*)", "offset": 336 },
+        { "name": "ARGS_LAND", "type": "_Bool (*)", "offset": 340 },
+        { "name": "ARGS_SKIRMISH", "type": "_Bool (*)", "offset": 344 },
+        { "name": "ARGS_PREINTROVIDEO", "type": "_Bool (*)", "offset": 348 },
+        { "name": "ARGS_FORCEINETCONN", "type": "_Bool (*)", "offset": 352 },
+        { "name": "ARGS_NOINETCONN", "type": "_Bool (*)", "offset": 356 },
+        { "name": "ARGS_EDITOR", "type": "_Bool (*)", "offset": 360 },
+        { "name": "ARGS_CONVERT", "type": "_Bool (*)", "offset": 364 },
+        { "name": "ARGS_VERSION", "type": "_Bool (*)", "offset": 368 },
+        { "name": "ARGS_NOLOADMUSIC", "type": "_Bool (*)", "offset": 372 },
+        { "name": "ARGS_SETTINGS", "type": "_Bool (*)", "offset": 376 },
         {
           "name": "PlayerProfile_00d4bd38",
           "type": "struct PlayerProfile *",
-          "offset": 376
+          "offset": 380
         },
-        { "name": "DAT_00d4f594", "type": "struct GPlayer **", "offset": 380 },
+        { "name": "DAT_00d4f594", "type": "struct GPlayer **", "offset": 384 },
         {
           "name": "ReactionInfo_ARRAY_00d4f6b0",
           "type": "char (*)[41]",
-          "offset": 384
+          "offset": 388
         },
-        { "name": "DAT_00d95c0c", "type": "uint32_t *", "offset": 388 },
-        { "name": "script_dll", "type": "struct ScriptDLL **", "offset": 392 },
+        { "name": "DAT_00d95c0c", "type": "uint32_t *", "offset": 392 },
+        { "name": "script_dll", "type": "struct ScriptDLL **", "offset": 396 },
         {
           "name": "ARGS_SETTINGS_PATH",
           "type": "char (*)[264]",
-          "offset": 396
+          "offset": 400
         },
         {
           "name": "DAT_00d99380",
           "type": "struct GameThingWithPos **",
-          "offset": 400
+          "offset": 404
         },
         {
           "name": "PTR_00d99384",
           "type": "struct GameThingWithPos **",
-          "offset": 404
+          "offset": 408
         },
-        { "name": "script_version", "type": "float *", "offset": 408 },
+        { "name": "script_version", "type": "float *", "offset": 412 },
         {
           "name": "CHAR_ARRAY_00d99580",
           "type": "char (*)[200]",
-          "offset": 412
+          "offset": 416
         },
         {
           "name": "CHAR_ARRAY_00d99648",
           "type": "char (*)[128]",
-          "offset": 416
+          "offset": 420
         },
         {
           "name": "PTR_00d99724",
           "type": "struct MapCoords **",
-          "offset": 420
+          "offset": 424
         },
         {
           "name": "GShowNeedsInfo_ARRAY_00d99738",
           "type": "struct GShowNeedsInfo (*)[4]",
-          "offset": 424
+          "offset": 428
         },
         {
           "name": "GSpellIconInfo_00d9d3e8",
           "type": "struct GSpellIconInfo *",
-          "offset": 428
+          "offset": 432
         },
         {
           "name": "GSpellSeedInfo_ARRAY_00d9d678",
           "type": "struct GSpellSeedInfo (*)[30]",
-          "offset": 432
+          "offset": 436
         },
         {
           "name": "GTotemStatueInfo_ARRAY_00da1d18",
           "type": "struct GTotemStatueInfo (*)[9]",
-          "offset": 436
+          "offset": 440
         },
         {
           "name": "GTownInfo_00da2780",
           "type": "struct GTownInfo (*)",
-          "offset": 440
+          "offset": 444
+        },
+        {
+          "name": "GTownDesireInfo_ARRAY_00da2930",
+          "type": "struct GTownDesireInfo (*)[17]",
+          "offset": 448
         },
         {
           "name": "GTribeInfo_ARRAY_00da57a8",
           "type": "struct GTribeInfo (*)[9]",
-          "offset": 444
+          "offset": 452
         },
         {
           "name": "GTownDesireFunction_ARRAY_00da32c8",
           "type": "struct GTownDesireFunction (*)[17]",
-          "offset": 448
+          "offset": 456
         },
         {
           "name": "JustMapXZ_ARRAY_00da59fc",
           "type": "struct JustMapXZ (*)[4]",
-          "offset": 452
+          "offset": 460
         },
         {
           "name": "UINT_ARRAY_00da5a10",
           "type": "uint32_t (*)[1024]",
-          "offset": 456
+          "offset": 464
         },
         {
           "name": "GVillagerInfo_ARRAY_00da6be8",
           "type": "struct GVillagerInfo (*)[84]",
-          "offset": 460
+          "offset": 468
         },
         {
           "name": "PTR_00db9e28",
           "type": "struct VillagerName **",
-          "offset": 464
+          "offset": 472
         },
         {
           "name": "GVillagerStateTableInfo_ARRAY_00db9e68",
           "type": "struct GVillagerStateTableInfo (*)[255]",
-          "offset": 468
+          "offset": 476
         },
         {
           "name": "GWorshipSiteInfo_ARRAY_00dcbd30",
           "type": "struct GWorshipSiteInfo (*)[9]",
-          "offset": 472
+          "offset": 480
         },
-        { "name": "DAT_00e06020", "type": "uint32_t *", "offset": 476 },
-        { "name": "DAT_00e839e0", "type": "float *", "offset": 480 },
-        { "name": "DAT_00e83a20", "type": "int *", "offset": 484 },
-        { "name": "LHSys", "type": "struct LHSys *", "offset": 488 },
+        { "name": "DAT_00e06020", "type": "uint32_t *", "offset": 484 },
+        { "name": "near_clipping", "type": "float *", "offset": 488 },
+        { "name": "g_info_transform", "type": "float *", "offset": 492 },
+        { "name": "DAT_00e83a20", "type": "int *", "offset": 496 },
+        { "name": "LHSys", "type": "struct LHSys *", "offset": 500 },
         {
           "name": "lpCriticalSection_00e8c118",
           "type": "RTL_CRITICAL_SECTION *",
-          "offset": 492
+          "offset": 504
         },
         {
           "name": "lpCriticalSection_00e90650",
           "type": "RTL_CRITICAL_SECTION *",
-          "offset": 496
+          "offset": 508
         },
         {
           "name": "LH3DMist",
           "type": "struct LH3DMist_namespace *",
-          "offset": 500
+          "offset": 512
         },
         {
           "name": "LH3DMesh_g_current_list_matrix",
           "type": "struct LHMatrix (*)[256]",
-          "offset": 504
+          "offset": 516
         },
         {
           "name": "LH3DMesh_g_pack",
           "type": "struct g_pack_t **",
-          "offset": 508
+          "offset": 520
         },
         {
           "name": "LH3DMesh_g_current_matrix",
           "type": "struct LHMatrix **",
-          "offset": 512
+          "offset": 524
         },
         {
           "name": "LH3DMesh_g_b_dont_care_about_texture",
           "type": "_Bool *const",
-          "offset": 516
+          "offset": 528
         },
         {
           "name": "g_ptr_blocks__10LH3DIsland",
           "type": "struct LandBlock *(*)[256]",
-          "offset": 520
+          "offset": 532
         },
         {
           "name": "g_index_block__10LH3DIsland",
           "type": "uint8_t (*)[32][32]",
-          "offset": 524
+          "offset": 536
         },
         {
           "name": "LH3DObject",
           "type": "struct LH3DObject_region *const",
-          "offset": 528
+          "offset": 540
+        },
+        {
+          "name": "grosse_merde_pos",
+          "type": "struct LHPoint *",
+          "offset": 544
+        },
+        {
+          "name": "grosse_merde_foc",
+          "type": "struct LHPoint *",
+          "offset": 548
+        },
+        {
+          "name": "g_camera_to_world",
+          "type": "struct LHMatrix *",
+          "offset": 552
+        },
+        {
+          "name": "g_world_to_camera",
+          "type": "struct LHMatrix *",
+          "offset": 556
+        },
+        {
+          "name": "g_copy_of_world_to_clipping",
+          "type": "struct LHMatrix *",
+          "offset": 560
+        },
+        { "name": "g_mat_paper", "type": "struct LHMatrix *", "offset": 564 },
+        { "name": "g_camera", "type": "struct LH3DCamera *", "offset": 568 },
+        {
+          "name": "g_clipping_to_world",
+          "type": "struct LHMatrix *",
+          "offset": 572
+        },
+        {
+          "name": "g_local_to_clipping",
+          "type": "struct LHMatrix *",
+          "offset": 576
+        },
+        {
+          "name": "g_world_to_clipping",
+          "type": "struct LHMatrix *",
+          "offset": 580
+        },
+        {
+          "name": "field_0x00ea9e70",
+          "type": "struct LHPlane *",
+          "offset": 584
+        },
+        {
+          "name": "g_sun_light_clipping",
+          "type": "struct LHPlane *",
+          "offset": 588
+        },
+        {
+          "name": "field_0x00ea9e90",
+          "type": "struct LHPlane *",
+          "offset": 592
+        },
+        {
+          "name": "g_current_matrix",
+          "type": "struct LHMatrix **",
+          "offset": 596
         },
         {
           "name": "LHPoint_00ea9e70",
           "type": "struct LHPoint *",
-          "offset": 532
+          "offset": 600
         },
-        { "name": "current_time_maybe", "type": "uint32_t *", "offset": 536 },
-        { "name": "DAT_00ea9ec0", "type": "uint32_t *", "offset": 540 },
+        { "name": "current_time_maybe", "type": "uint32_t *", "offset": 604 },
+        { "name": "g_view_configuration", "type": "uint32_t *", "offset": 608 },
+        { "name": "DAT_00ea9ec0", "type": "uint32_t *", "offset": 612 },
+        { "name": "merde_focus", "type": "uint32_t *", "offset": 616 },
         {
           "name": "DAT_00eb9a98",
           "type": "void (**)(void *, const void *, struct MobileWallHug *) __attribute__((fastcall))",
-          "offset": 544
+          "offset": 620
         },
         {
           "name": "UINT_ARRAY_00ec81f0",
           "type": "uint32_t (*)[2048]",
-          "offset": 548
+          "offset": 624
         },
         {
           "name": "UINT_ARRAY_00eca1f0",
           "type": "uint32_t (*)[153]",
-          "offset": 552
+          "offset": 628
         },
-        { "name": "DAT_00eca614", "type": "int *", "offset": 556 },
+        {
+          "name": "LH3DRender__g_b_need_tilling",
+          "type": "bool32_t *",
+          "offset": 632
+        },
         {
           "name": "PTR_00eca618",
           "type": "struct SetRenderModeData **",
-          "offset": 560
+          "offset": 636
         },
         {
           "name": "Direct3DDevice7",
           "type": "IDirect3DDevice7 **",
-          "offset": 564
+          "offset": 640
         },
         {
           "name": "DAT_00eca64c",
           "type": "struct LH3DMaterial **",
-          "offset": 568
+          "offset": 644
         },
-        { "name": "DAT_00eca654", "type": "uint32_t *", "offset": 572 },
+        { "name": "DAT_00eca654", "type": "uint32_t *", "offset": 648 },
         {
           "name": "game_font",
           "type": "struct GatheringText **",
-          "offset": 576
+          "offset": 652
         },
         {
           "name": "DAT_00ed92dc",
           "type": "struct LH3DMaterial **",
-          "offset": 580
+          "offset": 656
         },
-        { "name": "DAT_00edc34c", "type": "uint8_t *", "offset": 584 },
+        { "name": "DAT_00edc34c", "type": "uint8_t *", "offset": 660 },
         {
           "name": "PTR_00edc368",
           "type": "struct LH3DMaterial **",
-          "offset": 588
+          "offset": 664
         },
         {
           "name": "g_cached_tex_file",
           "type": "struct LHReleasedFile *",
-          "offset": 592
+          "offset": 668
         },
         {
           "name": "LH3DTexture_first",
           "type": "struct LH3DTexture **",
-          "offset": 596
+          "offset": 672
         },
         {
           "name": "PTR_00edd494",
           "type": "struct LH3DMaterial **",
-          "offset": 600
+          "offset": 676
         },
         {
           "name": "LH3DAnim_file",
           "type": "struct LHReleasedFile *const",
-          "offset": 604
+          "offset": 680
         },
         {
           "name": "PTR_g_pack",
           "type": "struct g_anim_pack_t **const",
-          "offset": 608
+          "offset": 684
         },
-        { "name": "LH3DMem", "type": "struct LH3DMem_t *const", "offset": 612 },
+        { "name": "LH3DMem", "type": "struct LH3DMem_t *const", "offset": 688 },
         {
           "name": "LiquidParticleGroup_first",
           "type": "struct LiquidParticleGroup **const",
-          "offset": 616
+          "offset": 692
         },
-        { "name": "DAT_00f05220", "type": "uint32_t *const", "offset": 620 },
-        { "name": "DAT_00f05420", "type": "uint32_t *const", "offset": 624 },
-        { "name": "INT_00fa51c4", "type": "int32_t *const", "offset": 628 },
+        { "name": "DAT_00f05220", "type": "uint32_t *const", "offset": 696 },
+        { "name": "DAT_00f05420", "type": "uint32_t *const", "offset": 700 },
+        { "name": "INT_00fa51c4", "type": "int32_t *const", "offset": 704 },
         {
           "name": "PTR_00fa51d0",
           "type": "void (**)(int, int)",
-          "offset": 632
+          "offset": 708
         },
         {
           "name": "LH3DSubMesh_g_current_sub_mesh",
           "type": "struct LH3DSubMesh **",
-          "offset": 636
+          "offset": 712
         },
         {
           "name": "custom_footpath_display_control",
           "type": "struct custom_footpath_display_control_t *",
-          "offset": 640
+          "offset": 716
         },
         {
           "name": "mod_added_globals",
           "type": "struct ModAddedGlobals_t *",
-          "offset": 644
+          "offset": 720
         }
       ]
     },
@@ -45911,6 +46961,31 @@
       "members": [
         { "name": "array", "type": "struct HelpText *", "offset": 0 },
         { "name": "count", "type": "uint32_t", "offset": 4 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DCamera",
+      "size": 40,
+      "members": [
+        { "name": "pos", "type": "struct LHPoint", "offset": 0 },
+        { "name": "foc", "type": "struct LHPoint", "offset": 12 },
+        { "name": "fov", "type": "float", "offset": 24 },
+        { "name": "lookAtVector", "type": "struct LHPoint", "offset": 28 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DCameraChecker",
+      "size": 36,
+      "members": [
+        { "name": "next", "type": "struct LH3DCameraChecker *", "offset": 0 },
+        { "name": "max_dist", "type": "float", "offset": 4 },
+        { "name": "point", "type": "struct LHPoint", "offset": 8 },
+        { "name": "field_0x14", "type": "float", "offset": 20 },
+        { "name": "field_0x18", "type": "uint32_t", "offset": 24 },
+        { "name": "field_0x1c", "type": "uint32_t", "offset": 28 },
+        { "name": "y_only", "type": "_Bool", "offset": 32 }
       ]
     },
     {
@@ -47029,7 +48104,7 @@
       "size": 644,
       "members": [
         { "name": "super", "type": "struct SetupButton", "offset": 0 },
-        { "name": "field_0x244", "type": "struct LHMatrix", "offset": 580 },
+        { "name": "zoomer", "type": "struct Zoomer", "offset": 580 },
         {
           "name": "bar_data_list",
           "type": "struct VBarDataList",
@@ -47761,6 +48836,36 @@
       "argument_names": ["this"]
     },
     {
+      "win_addr": 4462704,
+      "mac_addr": 270116640,
+      "decorated_name": "GCamera::Camera(MapCoords&)",
+      "undecorated_name": "__ct__7GCameraFR9MapCoords",
+      "return_type": "struct GCamera *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct GCamera *", "struct MapCoords *"],
+      "argument_names": ["this", "coords"]
+    },
+    {
+      "win_addr": 4463472,
+      "mac_addr": 270116432,
+      "decorated_name": "GCamera::CantExitCurrentMode(void)",
+      "undecorated_name": "CantExitCurrentMode__7GCameraFv",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": ["struct GCamera *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 4463824,
+      "mac_addr": 270115872,
+      "decorated_name": "GCamera::SwitchToViewMode(CameraMode *)",
+      "undecorated_name": "SwitchToViewMode__7GCameraFP10CameraMode",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct GCamera *", "struct CameraMode *"],
+      "argument_names": ["this", "mode"]
+    },
+    {
       "win_addr": 4463936,
       "mac_addr": 269016624,
       "decorated_name": "GCamera::CheckStackedModesForValidity(void)",
@@ -47769,6 +48874,16 @@
       "call_type": "__thiscall",
       "argument_types": ["struct GCamera *"],
       "argument_names": ["this"]
+    },
+    {
+      "win_addr": 4464416,
+      "mac_addr": 270114928,
+      "decorated_name": "GCamera::GetThingViewingDistance(GameThingWithPos *)",
+      "undecorated_name": "GetThingViewingDistance__7GCameraFP16GameThingWithPos",
+      "return_type": "float",
+      "call_type": "cdecl",
+      "argument_types": ["struct GameThingWithPos *"],
+      "argument_names": ["target"]
     },
     {
       "win_addr": 4464464,
@@ -47791,13 +48906,298 @@
       "argument_names": ["this"]
     },
     {
-      "win_addr": 540265,
-      "mac_addr": 269278672,
-      "decorated_name": "LightSheet::LightSheet(void)",
-      "undecorated_name": "__ct__10LightSheetFv",
+      "win_addr": 4466704,
+      "mac_addr": 268641904,
+      "decorated_name": "GCamera::SetPointFromPointDistanceHeadingAndPitch(LHPoint *, LHPoint const &, float, float, float)",
+      "undecorated_name": "SetPointFromPointDistanceHeadingAndPitch__7GCameraFP7LHPointRC7LHPointfff",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHPoint *",
+        "const struct LHPoint *",
+        "float",
+        "float",
+        "float"
+      ],
+      "argument_names": ["param_1", "point", "distance", "heading", "pitch"]
+    },
+    {
+      "win_addr": 4466896,
+      "mac_addr": 268950512,
+      "decorated_name": "GCamera::GetHeadingAndPitchFromPoints(LHPoint const &, LHPoint const &, float *, float *)",
+      "undecorated_name": "GetHeadingAndPitchFromPoints__7GCameraFRC7LHPointRC7LHPointPfPf",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "float *",
+        "float *"
+      ],
+      "argument_names": ["origin", "heading", "pitch", "yaw"]
+    },
+    {
+      "win_addr": 4468464,
+      "mac_addr": 268612224,
+      "decorated_name": "GCamera::UpdateGameThingWithPosData(void)",
+      "undecorated_name": "UpdateGameThingWithPosData__7GCameraFv",
       "return_type": "void",
       "call_type": "__thiscall",
-      "argument_types": ["struct LightSheet *"],
+      "argument_types": ["struct GCamera *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 4470400,
+      "mac_addr": 270108560,
+      "decorated_name": "GCamera::SetCameraFov(float, float)",
+      "undecorated_name": "SetCameraFov__7GCameraFff",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct GCamera *", "float", "float"],
+      "argument_names": ["this", "fov", "time"]
+    },
+    {
+      "win_addr": 6172464,
+      "mac_addr": 268574240,
+      "decorated_name": "LandFeature::GetNearClipping(void)",
+      "undecorated_name": "GetNearClipping__11LandFeatureFv",
+      "return_type": "float",
+      "call_type": "__stdcall",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 4493632,
+      "mac_addr": 268441840,
+      "decorated_name": "CameraHelp::CameraHelpCallback(CameraHelpReason, LHPoint &, unsigned long)",
+      "undecorated_name": "CameraHelpCallback__10CameraHelpF16CameraHelpReasonR7LHPointUl",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "enum CameraHelpReason",
+        "struct LHPoint *",
+        "uint32_t"
+      ],
+      "argument_names": ["reason", "point", "param_3"]
+    },
+    {
+      "win_addr": 4545872,
+      "mac_addr": 268435536,
+      "decorated_name": "CameraExclusion::InsideExclusion(LHPoint)",
+      "undecorated_name": "InsideExclusion__15CameraExclusionF7LHPoint",
+      "return_type": "_Bool",
+      "call_type": "__stdcall",
+      "argument_types": ["struct LHPoint"],
+      "argument_names": ["point"]
+    },
+    {
+      "win_addr": 4546080,
+      "mac_addr": 268759360,
+      "decorated_name": "CameraExclusion::InsideInclusion(LHPoint, LHPoint, LHPoint *, LHPoint *)",
+      "undecorated_name": "InsideInclusion__15CameraExclusionF7LHPoint7LHPointP7LHPointP7LHPoint",
+      "return_type": "_Bool",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHPoint",
+        "struct LHPoint",
+        "struct LHPoint *",
+        "struct LHPoint *"
+      ],
+      "argument_names": ["param_1", "param_2", "param_3", "param_4"]
+    },
+    {
+      "win_addr": 4503552,
+      "mac_addr": 270139584,
+      "decorated_name": "CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)",
+      "undecorated_name": "__ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii",
+      "return_type": "struct CameraModeFollow *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeFollow *",
+        "struct GCamera *",
+        "struct GameThingWithPos *",
+        "float",
+        "int",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "camera",
+        "target",
+        "param_3",
+        "param_4",
+        "param_5"
+      ]
+    },
+    {
+      "win_addr": 4504064,
+      "mac_addr": 270139264,
+      "decorated_name": "CameraModeFollow::Set(GameThingWithPos *)",
+      "undecorated_name": "Set__16CameraModeFollowFP16GameThingWithPos",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeFollow *",
+        "struct GameThingWithPos *"
+      ],
+      "argument_names": ["this", "target"]
+    },
+    {
+      "win_addr": 4551392,
+      "mac_addr": 270164032,
+      "decorated_name": "CameraModeNew3::CameraModeNew3(GCamera *)",
+      "undecorated_name": "__ct__14CameraModeNew3FP7GCamera",
+      "return_type": "struct CameraModeNew3 *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct CameraModeNew3 *", "struct GCamera *"],
+      "argument_names": ["this", "camera"]
+    },
+    {
+      "win_addr": 4558256,
+      "mac_addr": 268943952,
+      "decorated_name": "CameraModeNew3::CalcPerpDistance(LHPoint &, LHPoint &, LHPoint &)",
+      "undecorated_name": "CalcPerpDistance__14CameraModeNew3FR7LHPointR7LHPointR7LHPoint",
+      "return_type": "float",
+      "call_type": "__stdcall",
+      "argument_types": [
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "struct LHPoint *"
+      ],
+      "argument_names": ["param_1", "param_2", "param_3"]
+    },
+    {
+      "win_addr": 4558656,
+      "mac_addr": 268839536,
+      "decorated_name": "CameraModeNew3::FindBestAngle(float, float, LHPoint &, float &, float *)",
+      "undecorated_name": "FindBestAngle__14CameraModeNew3FffR7LHPointRfPf",
+      "return_type": "float",
+      "call_type": "cdecl",
+      "argument_types": ["float", "float", "float *", "float *", "float *"],
+      "argument_names": ["param_1", "param_2", "param_3", "param_4", "param_5"]
+    },
+    {
+      "win_addr": 4559408,
+      "mac_addr": 268589664,
+      "decorated_name": "CameraModeNew3::UpdateTricons(void)",
+      "undecorated_name": "UpdateTricons__14CameraModeNew3Fv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct CameraModeNew3 *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 4560400,
+      "mac_addr": 270157424,
+      "decorated_name": "CameraModeNew3::UpdateClickParams(LHPoint &, LHPoint &, bool)",
+      "undecorated_name": "UpdateClickParams__14CameraModeNew3FR7LHPointR7LHPointb",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeNew3 *",
+        "const struct LHPoint *",
+        "const struct LHPoint *",
+        "_Bool"
+      ],
+      "argument_names": ["this", "param_1", "param_2", "param_3"]
+    },
+    {
+      "win_addr": 4561968,
+      "mac_addr": 268663152,
+      "decorated_name": "CameraModeNew3::",
+      "undecorated_name": "GetAltitude__14CameraModeNew3FR7LHPoint",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": ["struct CameraModeNew3 *", "struct LHPoint *"],
+      "argument_names": ["this", "param_1"]
+    },
+    {
+      "win_addr": 4562208,
+      "mac_addr": 270156672,
+      "decorated_name": "CameraModeNew3::SetAltitudeAndNormal(LHPoint &, LHPoint &)",
+      "undecorated_name": "SetAltitudeAndNormal__14CameraModeNew3FR7LHPointR7LHPoint",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeNew3 *",
+        "struct LHPoint *",
+        "struct LHPoint *"
+      ],
+      "argument_names": ["this", "param_1", "normal"]
+    },
+    {
+      "win_addr": 4562704,
+      "mac_addr": 268953200,
+      "decorated_name": "CameraModeNew3::DragFocusOntoLand(LHPoint &, LHPoint &)",
+      "undecorated_name": "DragFocusOntoLand__14CameraModeNew3FR7LHPointR7LHPoint",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeNew3 *",
+        "struct LHPoint *",
+        "struct LHPoint *"
+      ],
+      "argument_names": ["this", "param_1", "param_2"]
+    },
+    {
+      "win_addr": 4563072,
+      "mac_addr": 270155184,
+      "decorated_name": "CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)",
+      "undecorated_name": "UpdateStrafe__14CameraModeNew3FR7LHPointR7LHPointRfRffUl",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeNew3 *",
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "float *",
+        "float *",
+        "float",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "param_1",
+        "param_2",
+        "param_3",
+        "param_4",
+        "param_5",
+        "param_6"
+      ]
+    },
+    {
+      "win_addr": 4563856,
+      "mac_addr": 268474592,
+      "decorated_name": "CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)",
+      "undecorated_name": "WantToQuitFight__14CameraModeNew3F7LHPoint7LHPointf",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeNew3 *",
+        "struct LHPoint",
+        "struct LHPoint",
+        "float"
+      ],
+      "argument_names": ["this", "param_1", "param_2", "param_3"]
+    },
+    {
+      "win_addr": 4564176,
+      "mac_addr": 270154000,
+      "decorated_name": "CameraModeNew3::StartFight(GArena *)",
+      "undecorated_name": "StartFight__14CameraModeNew3FP6GArena",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct CameraModeNew3 *", "struct GArena *"],
+      "argument_names": ["this", "arena"]
+    },
+    {
+      "win_addr": 4565344,
+      "mac_addr": 268674288,
+      "decorated_name": "CameraModeNew3::Update(void)",
+      "undecorated_name": "Update__14CameraModeNew3Fv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct CameraModeNew3 *"],
       "argument_names": ["this"]
     },
     {
@@ -50113,6 +51513,50 @@
         "enum LH_FILE_MODE"
       ],
       "argument_names": ["this", "path", "mode"]
+    },
+    {
+      "win_addr": 8644240,
+      "mac_addr": 269278672,
+      "decorated_name": "LightSheet::LightSheet(void)",
+      "undecorated_name": "__ct__10LightSheetFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct LightSheet *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 8644112,
+      "mac_addr": 269278752,
+      "decorated_name": "LightSheet::PulseForceField(LHPoint, float)",
+      "undecorated_name": "PulseForceField__10LightSheetF7LHPointf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct LightSheet *", "struct LHPoint", "float"],
+      "argument_names": ["this", "param_1", "param_2"]
+    },
+    {
+      "win_addr": 8666832,
+      "mac_addr": 274845228,
+      "decorated_name": "LH3DWay::Running::__ct(LH3DWay *)",
+      "undecorated_name": "__ct__Q27LH3DWay7RunningFP7LH3DWay",
+      "return_type": "struct LH3DWay__Running *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LH3DWay__Running *",
+        "const void *",
+        "struct LH3DWay *"
+      ],
+      "argument_names": ["this", "edx", ""]
+    },
+    {
+      "win_addr": 6221888,
+      "mac_addr": 272094032,
+      "decorated_name": "DataPath::DataPath(void)",
+      "undecorated_name": "__ct__8DataPathFv",
+      "return_type": "struct DataPath *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct DataPath *"],
+      "argument_names": ["this"]
     },
     {
       "win_addr": 4288576,
@@ -53434,6 +54878,96 @@
       "argument_names": ["this"]
     },
     {
+      "win_addr": 7771680,
+      "mac_addr": 269052160,
+      "decorated_name": "Villager::GotoStoragePitForDropOff(void)",
+      "undecorated_name": "GotoStoragePitForDropOff__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7771856,
+      "mac_addr": 268460784,
+      "decorated_name": "Villager::ArrivesAtStoragePitForDropOff(void)",
+      "undecorated_name": "ArrivesAtStoragePitForDropOff__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7772208,
+      "mac_addr": 269052608,
+      "decorated_name": "Villager::GotoStoragePitForFood(void)",
+      "undecorated_name": "GotoStoragePitForFood__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7772336,
+      "mac_addr": 274317424,
+      "decorated_name": "Villager::ArrivesAtStoragePitForFood(void)",
+      "undecorated_name": "ArrivesAtStoragePitForFood__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7772976,
+      "mac_addr": 274316224,
+      "decorated_name": "Villager::ArrivesAtHomeWithFood(void)",
+      "undecorated_name": "ArrivesAtHomeWithFood__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7735600,
+      "mac_addr": 268485408,
+      "decorated_name": "Villager::ArrivesHome(void)",
+      "undecorated_name": "ArrivesHome__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7736080,
+      "mac_addr": 268454528,
+      "decorated_name": "Villager::AtHome(void)",
+      "undecorated_name": "AtHome__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7702928,
+      "mac_addr": 274161520,
+      "decorated_name": "Villager::ArrivesAtStoragePitForBuildingMaterials(void)",
+      "undecorated_name": "ArrivesAtStoragePitForBuildingMaterials__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7703280,
+      "mac_addr": 274160304,
+      "decorated_name": "Villager::ArrivesAtBuildingSite(void)",
+      "undecorated_name": "ArrivesAtBuildingSite__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Villager *"],
+      "argument_names": ["this"]
+    },
+    {
       "win_addr": 5354768,
       "mac_addr": 268794944,
       "decorated_name": "Villager::DrawVillagerInfo(void)",
@@ -54557,6 +56091,22 @@
       "argument_names": ["this", "param_2", "param_3", "param_4"]
     },
     {
+      "win_addr": 8523856,
+      "mac_addr": 269241840,
+      "decorated_name": "LH3DCameraChecker::Create(float, LHPoint, float, long, bool)",
+      "undecorated_name": "Create__17LH3DCameraCheckerFf7LHPointflb",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": ["float", "struct LHPoint", "float", "long", "_Bool"],
+      "argument_names": [
+        "max_distance",
+        "point",
+        "param_3",
+        "param_4",
+        "y_only"
+      ]
+    },
+    {
       "win_addr": 8662240,
       "mac_addr": 269721520,
       "decorated_name": "LH3DMem::Alloc",
@@ -54802,6 +56352,26 @@
       "argument_names": ["type", "value"]
     },
     {
+      "win_addr": 8490080,
+      "mac_addr": 269224576,
+      "decorated_name": "LH3DTech::RenderInitialization(long, long)",
+      "undecorated_name": "RenderInitialization__8LH3DTechFll",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": ["int32_t", "int32_t"],
+      "argument_names": ["", ""]
+    },
+    {
+      "win_addr": 8493344,
+      "mac_addr": 268651536,
+      "decorated_name": "LH3DTech::UpdateCamera(LHPoint const &, LHPoint const &)",
+      "undecorated_name": "UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": ["const struct LHPoint *", "const struct LHPoint *"],
+      "argument_names": ["param_1", "param_2"]
+    },
+    {
       "win_addr": 8561920,
       "mac_addr": 268530216,
       "decorated_name": "DrawAndClip(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)",
@@ -54850,6 +56420,16 @@
       ]
     },
     {
+      "win_addr": 8565280,
+      "mac_addr": 268682336,
+      "decorated_name": "LH3DRender::SetD3DMatrix(D3DMATRIX &, LHMatrix &)",
+      "undecorated_name": "SetD3DMatrix__10LH3DRenderFRQ29IndirectX10_D3DMATRIXR8LHMatrix",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": ["D3DMATRIX *", "struct LHMatrix *"],
+      "argument_names": ["param_1", "param_2"]
+    },
+    {
       "win_addr": 8567232,
       "mac_addr": 268622768,
       "decorated_name": "LH3DRender::SetTextureStageState(unsigned long, D3DTEXTURESTAGESTATETYPE, unsigned long)",
@@ -54890,6 +56470,16 @@
       "argument_names": ["position"]
     },
     {
+      "win_addr": 8491056,
+      "mac_addr": 269224224,
+      "decorated_name": "LH3DTech::UpdateViewPort(long, long)",
+      "undecorated_name": "UpdateViewPort__8LH3DTechFll",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": ["int32_t", "int32_t"],
+      "argument_names": ["param_1", "param_2"]
+    },
+    {
       "win_addr": 8491920,
       "mac_addr": 280898104,
       "decorated_name": "LH3DTech::ProjectPoint(LHPoint *, int *, int *, float *)",
@@ -54898,6 +56488,31 @@
       "call_type": "__fastcall",
       "argument_types": ["struct LHPoint *", "int *", "int *", "float *"],
       "argument_names": ["param_1", "param_2", "param_3", "param_4"]
+    },
+    {
+      "win_addr": 8492464,
+      "mac_addr": 268507936,
+      "decorated_name": "LH3DTech::ChangeFov(float)",
+      "undecorated_name": "ChangeFov__8LH3DTechFf",
+      "return_type": "uint32_t",
+      "call_type": "__fastcall",
+      "argument_types": ["float"],
+      "argument_names": ["fov"]
+    },
+    {
+      "win_addr": 8492688,
+      "mac_addr": 268508544,
+      "decorated_name": "LH3DTech::UpdateWorldToCamera(LHMatrix &, LHPoint &, LHPoint &, bool)",
+      "undecorated_name": "UpdateWorldToCamera__8LH3DTechFR8LHMatrixR7LHPointR7LHPointb",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHMatrix *",
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "_Bool"
+      ],
+      "argument_names": ["param_1_00", "param_2_00", "param_1", "param_2"]
     },
     {
       "win_addr": 8502224,
@@ -55143,6 +56758,60 @@
       "call_type": "__thiscall",
       "argument_types": ["struct LHMatrix *", "const struct LHMatrix *"],
       "argument_names": ["l", "r"]
+    },
+    {
+      "win_addr": 8275984,
+      "mac_addr": 269031792,
+      "decorated_name": "LHMouse::DeltaPos(void)",
+      "undecorated_name": "DeltaPos__7LHMouseFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct LHMouse *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 8276384,
+      "mac_addr": 268463920,
+      "decorated_name": "LHMouse::UpdateCurrentPos(LHCoord)",
+      "undecorated_name": "UpdateCurrentPos__7LHMouseF7LHCoord",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct LHMouse *", "struct LHCoord"],
+      "argument_names": ["this", "coord"]
+    },
+    {
+      "win_addr": 8277568,
+      "mac_addr": 269769184,
+      "decorated_name": "LHMouse::SetPosition(LHCoord *)",
+      "undecorated_name": "SetPosition__7LHMouseFP7LHCoord",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": ["struct LHMouse *", "struct LHCoord *"],
+      "argument_names": ["this", "position"]
+    },
+    {
+      "win_addr": 8280000,
+      "mac_addr": 268696464,
+      "decorated_name": "LHMouse::Draw(LH_SCREEN_BUFFER, LH_MOUSE_EVENT_TYPE)",
+      "undecorated_name": "Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHMouse *",
+        "enum LH_SCREEN_BUFFER",
+        "enum LH_MOUSE_EVENT_TYPE"
+      ],
+      "argument_names": ["this", "buffer", "event_type"]
+    },
+    {
+      "win_addr": 5547888,
+      "mac_addr": 268939552,
+      "decorated_name": "SetTurnOffMouseMove(bool)",
+      "undecorated_name": "SetTurnOffMouseMove__Fb",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": ["_Bool"],
+      "argument_names": ["value"]
     },
     {
       "win_addr": 4621440,
@@ -55604,6 +57273,36 @@
       "call_type": "__thiscall",
       "argument_types": ["struct Zoomer *", "float", "float", "float"],
       "argument_names": ["this", "destination", "speed", "time"]
+    },
+    {
+      "win_addr": 4463296,
+      "mac_addr": 271954704,
+      "decorated_name": "Zoomer::SetPosition(float)",
+      "undecorated_name": "SetPosition__6ZoomerFf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Zoomer *", "float"],
+      "argument_names": ["this", "position"]
+    },
+    {
+      "win_addr": 4466464,
+      "mac_addr": 268616832,
+      "decorated_name": "Zoomer::Update(float)",
+      "undecorated_name": "Update__6ZoomerFf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Zoomer *", "float"],
+      "argument_names": ["this", "dt"]
+    },
+    {
+      "win_addr": 4589008,
+      "mac_addr": 268639840,
+      "decorated_name": "Zoomer3d::GetCurrentValue(void)",
+      "undecorated_name": "GetCurrentValue__8Zoomer3dFv",
+      "return_type": "struct LHPoint *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct Zoomer3d *", "struct LHPoint *"],
+      "argument_names": ["this", "out_point"]
     },
     {
       "win_addr": 268556976,
@@ -57589,6 +59288,11 @@
       "value": 9385588
     },
     {
+      "name": "__vt__DataPath",
+      "type": "struct GameThingVftable",
+      "value": 9614364
+    },
+    {
       "name": "__vt__Living",
       "type": "struct LivingVftable",
       "value": 9229204
@@ -57663,8 +59367,43 @@
     },
     {
       "name": "__vt__BuildingSite",
-      "type": "struct GameThingVftable",
+      "type": "struct BuildingSiteVftable",
       "value": 9202540
+    },
+    {
+      "name": "__vt__StandardBuildingSite",
+      "type": "struct BuildingSiteVftable",
+      "value": 9203188
+    },
+    {
+      "name": "p_class_CameraMode_RTTI_Type_Descriptor",
+      "type": "struct TypeDescriptor",
+      "value": 10277776
+    },
+    {
+      "name": "__vt__GCamera",
+      "type": "struct GameThingWithPosVftable",
+      "value": 9203984
+    },
+    {
+      "name": "__vt__CameraModeFollow",
+      "type": "struct CameraModeVftable",
+      "value": 9205892
+    },
+    {
+      "name": "p_class_CameraModeFree_RTTI_Type_Descriptor",
+      "type": "struct TypeDescriptor",
+      "value": 10279424
+    },
+    {
+      "name": "__vt__CameraModeFree",
+      "type": "struct CameraModeVftable",
+      "value": 9206104
+    },
+    {
+      "name": "__vt__CameraModeNew3",
+      "type": "struct CameraModeVftable",
+      "value": 9206780
     },
     {
       "name": "__vt__CitadelPart",
