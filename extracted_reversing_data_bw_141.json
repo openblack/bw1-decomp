@@ -40546,6 +40546,361 @@
       "members": [{ "name": "field_0x0", "type": "uint8_t", "offset": 0 }]
     },
     {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__ReloadCamera",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *", "char *"],
+      "signature": "void (struct InnerCamera *, const void *, char *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__PreDraw",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *"],
+      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Init",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *", "char *"],
+      "signature": "void (struct InnerCamera *, const void *, char *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Reinit",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *"],
+      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Close",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": ["struct InnerCamera *"],
+      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__CalcDoorHit",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "uint32_t",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "struct LHCoord",
+        "float",
+        "_Bool"
+      ],
+      "signature": "uint32_t (struct InnerCamera *, const void *, struct InnerRoom *, struct LHCoord, float, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__Update",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__UpdateMain",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__UpdateState",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__FocusOnSubMesh",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "struct LH3DMesh *",
+        "float",
+        "float",
+        "float"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, struct LH3DMesh *, float, float, float) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable__TriggerIntro",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct InnerCamera *",
+        "_Bool",
+        "struct Zoomer3d *",
+        "struct Zoomer3d *"
+      ],
+      "signature": "void (struct InnerCamera *, const void *, _Bool, struct Zoomer3d *, struct Zoomer3d *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "InnerCameraVftable____dt",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "struct InnerCamera *",
+      "args": ["struct InnerCamera *"],
+      "signature": "struct InnerCamera *(struct InnerCamera *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InnerCameraVftable",
+      "size": 48,
+      "members": [
+        {
+          "name": "ReloadCamera",
+          "type": "InnerCameraVftable__ReloadCamera *",
+          "offset": 0
+        },
+        {
+          "name": "PreDraw",
+          "type": "InnerCameraVftable__PreDraw *",
+          "offset": 4
+        },
+        { "name": "Init", "type": "InnerCameraVftable__Init *", "offset": 8 },
+        {
+          "name": "Reinit",
+          "type": "InnerCameraVftable__Reinit *",
+          "offset": 12
+        },
+        {
+          "name": "Close",
+          "type": "InnerCameraVftable__Close *",
+          "offset": 16
+        },
+        {
+          "name": "CalcDoorHit",
+          "type": "InnerCameraVftable__CalcDoorHit *",
+          "offset": 20
+        },
+        {
+          "name": "Update",
+          "type": "InnerCameraVftable__Update *",
+          "offset": 24
+        },
+        {
+          "name": "UpdateMain",
+          "type": "InnerCameraVftable__UpdateMain *",
+          "offset": 28
+        },
+        {
+          "name": "UpdateState",
+          "type": "InnerCameraVftable__UpdateState *",
+          "offset": 32
+        },
+        {
+          "name": "FocusOnSubMesh",
+          "type": "InnerCameraVftable__FocusOnSubMesh *",
+          "offset": 36
+        },
+        {
+          "name": "TriggerIntro",
+          "type": "InnerCameraVftable__TriggerIntro *",
+          "offset": 40
+        },
+        { "name": "__dt", "type": "InnerCameraVftable____dt *", "offset": 44 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InnerCamera",
+      "size": 1132,
+      "members": [
+        {
+          "name": "vftable",
+          "type": "struct InnerCameraVftable *",
+          "offset": 0
+        },
+        { "name": "zoomer_pos", "type": "struct Zoomer3d", "offset": 4 },
+        { "name": "zoomer_foc", "type": "struct Zoomer3d", "offset": 148 },
+        { "name": "field_0x124", "type": "uint32_t", "offset": 292 },
+        { "name": "field_0x128", "type": "uint32_t", "offset": 296 },
+        { "name": "field_0x12c", "type": "int32_t", "offset": 300 },
+        { "name": "field_0x130", "type": "uint8_t[4]", "offset": 304 },
+        { "name": "field_0x134", "type": "uint32_t", "offset": 308 },
+        { "name": "field_0x138", "type": "struct LHCoord *", "offset": 312 },
+        { "name": "field_0x13c", "type": "uint32_t", "offset": 316 },
+        { "name": "field_0x140", "type": "uint32_t", "offset": 320 },
+        { "name": "field_0x144", "type": "float", "offset": 324 },
+        { "name": "field_0x148", "type": "uint32_t", "offset": 328 },
+        { "name": "field_0x14c", "type": "uint32_t", "offset": 332 },
+        { "name": "field_0x150", "type": "uint32_t", "offset": 336 },
+        { "name": "field_0x154", "type": "uint32_t", "offset": 340 },
+        { "name": "field_0x158", "type": "int", "offset": 344 },
+        { "name": "field_0x15c", "type": "int", "offset": 348 },
+        { "name": "filename", "type": "char[256]", "offset": 352 },
+        { "name": "field_0x260", "type": "struct LHPoint", "offset": 608 },
+        { "name": "field_0x26c", "type": "struct LHPoint", "offset": 620 },
+        { "name": "field_0x278", "type": "struct Zoomer3d", "offset": 632 },
+        { "name": "field_0x308", "type": "struct Zoomer3d", "offset": 776 },
+        { "name": "field_0x398", "type": "uint8_t", "offset": 920 },
+        { "name": "field_0x399", "type": "uint8_t", "offset": 921 },
+        { "name": "field_0x39a", "type": "uint8_t", "offset": 922 },
+        { "name": "field_0x39b", "type": "uint8_t", "offset": 923 },
+        { "name": "pos_0x39c", "type": "struct LHPoint", "offset": 924 },
+        { "name": "foc_0x3a8", "type": "struct LHPoint", "offset": 936 },
+        { "name": "field_0x3b4", "type": "uint8_t[24]", "offset": 948 },
+        { "name": "field_0x3cc", "type": "float", "offset": 972 },
+        { "name": "field_0x3d0", "type": "float", "offset": 976 },
+        { "name": "current_pos", "type": "struct LHPoint", "offset": 980 },
+        { "name": "current_foc", "type": "struct LHPoint", "offset": 992 },
+        { "name": "field_0x3ec", "type": "struct LHPoint2D", "offset": 1004 },
+        { "name": "field_0x3f4", "type": "uint8_t", "offset": 1012 },
+        { "name": "field_0x3f5", "type": "uint8_t[3]", "offset": 1013 },
+        { "name": "field_0x3f8", "type": "uint32_t", "offset": 1016 },
+        { "name": "field_0x3fc", "type": "float", "offset": 1020 },
+        { "name": "field_0x400", "type": "float", "offset": 1024 },
+        { "name": "field_0x404", "type": "uint8_t[28]", "offset": 1028 },
+        { "name": "field_0x420", "type": "float", "offset": 1056 },
+        { "name": "field_0x424", "type": "float", "offset": 1060 },
+        { "name": "field_0x428", "type": "uint32_t", "offset": 1064 },
+        { "name": "field_0x42c", "type": "struct LHPoint", "offset": 1068 },
+        { "name": "field_0x438", "type": "uint32_t", "offset": 1080 },
+        { "name": "lh3dcamera", "type": "struct LH3DCamera *", "offset": 1084 },
+        { "name": "field_0x440", "type": "uint8_t[12]", "offset": 1088 },
+        { "name": "field_0x44c", "type": "int32_t", "offset": 1100 },
+        { "name": "field_0x450", "type": "uint32_t", "offset": 1104 },
+        { "name": "field_0x454", "type": "struct LHPoint", "offset": 1108 },
+        { "name": "field_0x460", "type": "struct LHPoint", "offset": 1120 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CreatureRoomCamera",
+      "size": 1132,
+      "members": [
+        { "name": "super", "type": "struct InnerCamera", "offset": 0 }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum TempleRoomsEnum",
+      "size": 4,
+      "constants": [
+        { "name": "WorldRoom", "value": 0 },
+        { "name": "CreatureRoom", "value": 1 },
+        { "name": "ChallengeRoom", "value": 2 },
+        { "name": "UniverseRoom", "value": 3 },
+        { "name": "GameOptionsRoom", "value": 4 },
+        { "name": "SaveGameRoom", "value": 5 },
+        { "name": "CreditsRoom", "value": 6 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct TempleRoomVftable",
+      "size": 64,
+      "members": [
+        { "name": "field_0x0", "type": "uintptr_t", "offset": 0 },
+        { "name": "field_0x4", "type": "uintptr_t", "offset": 4 },
+        { "name": "field_0x8", "type": "uintptr_t", "offset": 8 },
+        { "name": "field_0xc", "type": "uintptr_t", "offset": 12 },
+        { "name": "field_0x10", "type": "uintptr_t", "offset": 16 },
+        { "name": "field_0x14", "type": "uintptr_t", "offset": 20 },
+        { "name": "field_0x18", "type": "uintptr_t", "offset": 24 },
+        { "name": "field_0x1c", "type": "uintptr_t", "offset": 28 },
+        { "name": "field_0x20", "type": "uintptr_t", "offset": 32 },
+        { "name": "field_0x24", "type": "uintptr_t", "offset": 36 },
+        { "name": "field_0x28", "type": "uintptr_t", "offset": 40 },
+        { "name": "field_0x2c", "type": "uintptr_t", "offset": 44 },
+        { "name": "field_0x30", "type": "uintptr_t", "offset": 48 },
+        { "name": "field_0x34", "type": "uintptr_t", "offset": 52 },
+        { "name": "field_0x38", "type": "uintptr_t", "offset": 56 },
+        { "name": "field_0x3c", "type": "uintptr_t", "offset": 60 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct TempleRoom",
+      "size": 236,
+      "members": [
+        {
+          "name": "vftable",
+          "type": "struct TempleRoomVftable *",
+          "offset": 0
+        },
+        { "name": "name", "type": "char[32]", "offset": 4 },
+        { "name": "field_0x24", "type": "uint32_t", "offset": 36 },
+        { "name": "field_0x28", "type": "uint32_t", "offset": 40 },
+        { "name": "field_0x2c", "type": "uint32_t", "offset": 44 },
+        { "name": "field_0x30", "type": "uint32_t", "offset": 48 },
+        { "name": "field_0x34", "type": "int32_t", "offset": 52 },
+        { "name": "field_0x38", "type": "int32_t", "offset": 56 },
+        { "name": "field_0x3c", "type": "uint8_t[64]", "offset": 60 },
+        { "name": "field_0x7c", "type": "uint32_t", "offset": 124 },
+        { "name": "field_0x80", "type": "uint8_t[64]", "offset": 128 },
+        { "name": "inner_room", "type": "struct InnerRoom *", "offset": 192 },
+        { "name": "camera", "type": "struct InnerCamera *", "offset": 196 },
+        { "name": "field_0xc8", "type": "int32_t", "offset": 200 },
+        { "name": "field_0xcc", "type": "uint8_t[4]", "offset": 204 },
+        { "name": "field_0xd0", "type": "uint32_t", "offset": 208 },
+        { "name": "field_0xd4", "type": "uint32_t", "offset": 212 },
+        { "name": "field_0xd8", "type": "uint32_t", "offset": 216 },
+        { "name": "field_0xdc", "type": "uint32_t", "offset": 220 },
+        { "name": "field_0xe0", "type": "uint32_t", "offset": 224 },
+        { "name": "field_0xe4", "type": "float", "offset": 228 },
+        { "name": "field_0xe8", "type": "float", "offset": 232 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CreatureRoom",
+      "size": 236,
+      "members": [{ "name": "super", "type": "struct TempleRoom", "offset": 0 }]
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct Creche",
       "size": 196,
@@ -44379,26 +44734,6 @@
       ]
     },
     {
-      "kind": "ENUM_DECL",
-      "type": "enum TempleRoomsEnum",
-      "size": 4,
-      "constants": [
-        { "name": "WorldRoom", "value": 0 },
-        { "name": "CreatureRoom", "value": 1 },
-        { "name": "ChallengeRoom", "value": 2 },
-        { "name": "UniverseRoom", "value": 3 },
-        { "name": "GameOptionsRoom", "value": 4 },
-        { "name": "SaveGameRoom", "value": 5 },
-        { "name": "CreditsRoom", "value": 6 }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct TempleRoom",
-      "size": 1,
-      "members": [{ "name": "field_0x0", "type": "uint8_t", "offset": 0 }]
-    },
-    {
       "kind": "STRUCT_DECL",
       "type": "struct Temple",
       "size": 84,
@@ -46033,7 +46368,7 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct globals_t",
-      "size": 724,
+      "size": 732,
       "members": [
         {
           "name": "LH3DColor_ARRAY_008ab250",
@@ -46410,7 +46745,11 @@
         },
         { "name": "DAT_00e06020", "type": "uint32_t *", "offset": 484 },
         { "name": "near_clipping", "type": "float *", "offset": 488 },
-        { "name": "g_info_transform", "type": "float *", "offset": 492 },
+        {
+          "name": "g_info_transform",
+          "type": "struct InfoTransform *",
+          "offset": 492
+        },
         { "name": "DAT_00e83a20", "type": "int *", "offset": 496 },
         { "name": "LHSys", "type": "struct LHSys *", "offset": 500 },
         {
@@ -46539,106 +46878,108 @@
           "type": "void (**)(void *, const void *, struct MobileWallHug *) __attribute__((fastcall))",
           "offset": 620
         },
+        { "name": "g_d3d_view2proj", "type": "D3DMATRIX *", "offset": 624 },
+        { "name": "g_d3d_world2view", "type": "D3DMATRIX *", "offset": 628 },
         {
           "name": "UINT_ARRAY_00ec81f0",
           "type": "uint32_t (*)[2048]",
-          "offset": 624
+          "offset": 632
         },
         {
           "name": "UINT_ARRAY_00eca1f0",
           "type": "uint32_t (*)[153]",
-          "offset": 628
+          "offset": 636
         },
         {
           "name": "LH3DRender__g_b_need_tilling",
           "type": "bool32_t *",
-          "offset": 632
+          "offset": 640
         },
         {
           "name": "PTR_00eca618",
           "type": "struct SetRenderModeData **",
-          "offset": 636
+          "offset": 644
         },
         {
           "name": "Direct3DDevice7",
           "type": "IDirect3DDevice7 **",
-          "offset": 640
+          "offset": 648
         },
         {
           "name": "DAT_00eca64c",
           "type": "struct LH3DMaterial **",
-          "offset": 644
+          "offset": 652
         },
-        { "name": "DAT_00eca654", "type": "uint32_t *", "offset": 648 },
+        { "name": "DAT_00eca654", "type": "uint32_t *", "offset": 656 },
         {
           "name": "game_font",
           "type": "struct GatheringText **",
-          "offset": 652
+          "offset": 660
         },
         {
           "name": "DAT_00ed92dc",
           "type": "struct LH3DMaterial **",
-          "offset": 656
+          "offset": 664
         },
-        { "name": "DAT_00edc34c", "type": "uint8_t *", "offset": 660 },
+        { "name": "DAT_00edc34c", "type": "uint8_t *", "offset": 668 },
         {
           "name": "PTR_00edc368",
           "type": "struct LH3DMaterial **",
-          "offset": 664
+          "offset": 672
         },
         {
           "name": "g_cached_tex_file",
           "type": "struct LHReleasedFile *",
-          "offset": 668
+          "offset": 676
         },
         {
           "name": "LH3DTexture_first",
           "type": "struct LH3DTexture **",
-          "offset": 672
+          "offset": 680
         },
         {
           "name": "PTR_00edd494",
           "type": "struct LH3DMaterial **",
-          "offset": 676
+          "offset": 684
         },
         {
           "name": "LH3DAnim_file",
           "type": "struct LHReleasedFile *const",
-          "offset": 680
+          "offset": 688
         },
         {
           "name": "PTR_g_pack",
           "type": "struct g_anim_pack_t **const",
-          "offset": 684
+          "offset": 692
         },
-        { "name": "LH3DMem", "type": "struct LH3DMem_t *const", "offset": 688 },
+        { "name": "LH3DMem", "type": "struct LH3DMem_t *const", "offset": 696 },
         {
           "name": "LiquidParticleGroup_first",
           "type": "struct LiquidParticleGroup **const",
-          "offset": 692
+          "offset": 700
         },
-        { "name": "DAT_00f05220", "type": "uint32_t *const", "offset": 696 },
-        { "name": "DAT_00f05420", "type": "uint32_t *const", "offset": 700 },
-        { "name": "INT_00fa51c4", "type": "int32_t *const", "offset": 704 },
+        { "name": "DAT_00f05220", "type": "uint32_t *const", "offset": 704 },
+        { "name": "DAT_00f05420", "type": "uint32_t *const", "offset": 708 },
+        { "name": "INT_00fa51c4", "type": "int32_t *const", "offset": 712 },
         {
           "name": "PTR_00fa51d0",
           "type": "void (**)(int, int)",
-          "offset": 708
+          "offset": 716
         },
         {
           "name": "LH3DSubMesh_g_current_sub_mesh",
           "type": "struct LH3DSubMesh **",
-          "offset": 712
+          "offset": 720
         },
         {
           "name": "custom_footpath_display_control",
           "type": "struct custom_footpath_display_control_t *",
-          "offset": 716
+          "offset": 724
         },
         {
           "name": "mod_added_globals",
           "type": "struct ModAddedGlobals_t *",
-          "offset": 720
+          "offset": 728
         }
       ]
     },
@@ -46688,232 +47029,19 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct InnerRoom",
-      "size": 4,
-      "members": [{ "name": "field_0x0", "type": "uint32_t", "offset": 0 }]
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__ReloadCamera",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": ["struct InnerCamera *", "char *"],
-      "signature": "void (struct InnerCamera *, const void *, char *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__PreDraw",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": ["struct InnerCamera *"],
-      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__Init",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": ["struct InnerCamera *", "char *"],
-      "signature": "void (struct InnerCamera *, const void *, char *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__Reinit",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": ["struct InnerCamera *"],
-      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__Close",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": ["struct InnerCamera *"],
-      "signature": "void (struct InnerCamera *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__CalcDoorHit",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "uint32_t",
-      "args": [
-        "struct InnerCamera *",
-        "struct InnerRoom *",
-        "struct LHCoord",
-        "float",
-        "_Bool"
-      ],
-      "signature": "uint32_t (struct InnerCamera *, const void *, struct InnerRoom *, struct LHCoord, float, _Bool) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__Update",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct InnerCamera *",
-        "struct InnerRoom *",
-        "float",
-        "int",
-        "int",
-        "struct LHCoord *",
-        "_Bool"
-      ],
-      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__UpdateMain",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct InnerCamera *",
-        "struct InnerRoom *",
-        "float",
-        "int",
-        "int",
-        "struct LHCoord *",
-        "_Bool"
-      ],
-      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__UpdateState",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct InnerCamera *",
-        "struct InnerRoom *",
-        "float",
-        "int",
-        "int",
-        "struct LHCoord *",
-        "_Bool"
-      ],
-      "signature": "void (struct InnerCamera *, const void *, struct InnerRoom *, float, int, int, struct LHCoord *, _Bool) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__FocusOnSubMesh",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct InnerCamera *",
-        "struct LH3DMesh *",
-        "float",
-        "float",
-        "float"
-      ],
-      "signature": "void (struct InnerCamera *, const void *, struct LH3DMesh *, float, float, float) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable__TriggerIntro",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct InnerCamera *",
-        "_Bool",
-        "struct Zoomer3d *",
-        "struct Zoomer3d *"
-      ],
-      "signature": "void (struct InnerCamera *, const void *, _Bool, struct Zoomer3d *, struct Zoomer3d *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "InnerCameraVftable____dt__",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "struct InnerCamera *",
-      "args": ["struct InnerCamera *"],
-      "signature": "struct InnerCamera *(struct InnerCamera *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct InnerCameraVftable",
-      "size": 48,
+      "size": 44,
       "members": [
-        {
-          "name": "ReloadCamera",
-          "type": "InnerCameraVftable__ReloadCamera *",
-          "offset": 0
-        },
-        {
-          "name": "PreDraw",
-          "type": "InnerCameraVftable__PreDraw *",
-          "offset": 4
-        },
-        { "name": "Init", "type": "InnerCameraVftable__Init *", "offset": 8 },
-        {
-          "name": "Reinit",
-          "type": "InnerCameraVftable__Reinit *",
-          "offset": 12
-        },
-        {
-          "name": "Close",
-          "type": "InnerCameraVftable__Close *",
-          "offset": 16
-        },
-        {
-          "name": "CalcDoorHit",
-          "type": "InnerCameraVftable__CalcDoorHit *",
-          "offset": 20
-        },
-        {
-          "name": "Update",
-          "type": "InnerCameraVftable__Update *",
-          "offset": 24
-        },
-        {
-          "name": "UpdateMain",
-          "type": "InnerCameraVftable__UpdateMain *",
-          "offset": 28
-        },
-        {
-          "name": "UpdateState",
-          "type": "InnerCameraVftable__UpdateState *",
-          "offset": 32
-        },
-        {
-          "name": "FocusOnSubMesh",
-          "type": "InnerCameraVftable__FocusOnSubMesh *",
-          "offset": 36
-        },
-        {
-          "name": "TriggerIntro",
-          "type": "InnerCameraVftable__TriggerIntro *",
-          "offset": 40
-        },
-        {
-          "name": "__dt__",
-          "type": "InnerCameraVftable____dt__ *",
-          "offset": 44
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct InnerCamera",
-      "size": 1132,
-      "members": [
-        {
-          "name": "vftable",
-          "type": "struct InnerCameraVftable *",
-          "offset": 0
-        },
-        { "name": "field_0x4", "type": "uint8_t[1128]", "offset": 4 }
+        { "name": "field_0x0", "type": "uint32_t", "offset": 0 },
+        { "name": "field_0x4", "type": "uint32_t", "offset": 4 },
+        { "name": "field_0x8", "type": "uint32_t", "offset": 8 },
+        { "name": "field_0xc", "type": "float", "offset": 12 },
+        { "name": "field_0x10", "type": "uint8_t", "offset": 16 },
+        { "name": "field_0x14", "type": "uint32_t", "offset": 20 },
+        { "name": "field_0x18", "type": "uint32_t", "offset": 24 },
+        { "name": "field_0x1c", "type": "uint32_t", "offset": 28 },
+        { "name": "field_0x20", "type": "uint32_t", "offset": 32 },
+        { "name": "field_0x24", "type": "uint32_t", "offset": 36 },
+        { "name": "field_0x28", "type": "uint32_t", "offset": 40 }
       ]
     },
     {
@@ -47214,6 +47342,29 @@
         { "name": "field_0x18", "type": "uint32_t", "offset": 24 },
         { "name": "field_0x1c", "type": "uint32_t", "offset": 28 },
         { "name": "y_only", "type": "_Bool", "offset": 32 }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InfoTransform",
+      "size": 60,
+      "members": [
+        { "name": "resolution", "type": "struct LHCoord", "offset": 0 },
+        { "name": "aspect_ratio_x_over_y", "type": "float", "offset": 8 },
+        { "name": "half_res", "type": "struct LHPoint2D", "offset": 12 },
+        { "name": "inv_half_res", "type": "struct LHPoint2D", "offset": 20 },
+        { "name": "inv_half_tan_fov_y", "type": "float", "offset": 28 },
+        { "name": "inv_half_tan_fov_x", "type": "float", "offset": 32 },
+        { "name": "cos_half_fov_sqr", "type": "float", "offset": 36 },
+        { "name": "field_0x28", "type": "float", "offset": 40 },
+        { "name": "cos_half_fov", "type": "float", "offset": 44 },
+        { "name": "field_0x30", "type": "float", "offset": 48 },
+        {
+          "name": "inv_aspect_sqr_hypo_inv_times_inv_aspect",
+          "type": "float",
+          "offset": 52
+        },
+        { "name": "inv_aspect_sqr_hypo_inv", "type": "float", "offset": 56 }
       ]
     },
     {
@@ -49931,6 +50082,16 @@
       "argument_names": ["this", "creature"]
     },
     {
+      "win_addr": 7895264,
+      "mac_addr": 271076720,
+      "decorated_name": "CreatureRoom::InitEngine(void)",
+      "undecorated_name": "InitEngine__12CreatureRoomFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct CreatureRoom *"],
+      "argument_names": ["this"]
+    },
+    {
       "win_addr": 5289632,
       "mac_addr": 271230496,
       "decorated_name": "Dance::Dance(MapCoords const &, GDanceInfo const *, GameThingWithPos *, unsigned long, int, Town *)",
@@ -51457,6 +51618,178 @@
       "argument_names": ["this"]
     },
     {
+      "win_addr": 7959584,
+      "mac_addr": 273912864,
+      "decorated_name": "InnerCamera::ReloadCamera(char *)",
+      "undecorated_name": "ReloadCamera__11InnerCameraFPc",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerCamera *", "char *"],
+      "argument_names": ["this", "param_1"]
+    },
+    {
+      "win_addr": 7956768,
+      "mac_addr": 273915152,
+      "decorated_name": "InnerCamera::PreDraw(void)",
+      "undecorated_name": "PreDraw__11InnerCameraFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerCamera *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7958848,
+      "mac_addr": 273913120,
+      "decorated_name": "InnerCamera::Init(char *)",
+      "undecorated_name": "Init__11InnerCameraFPc",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerCamera *", "char *"],
+      "argument_names": ["this", "param_1"]
+    },
+    {
+      "win_addr": 7898608,
+      "mac_addr": 271088224,
+      "decorated_name": "InnerCamera::Reinit(void)",
+      "undecorated_name": "Reinit__11InnerCameraFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerCamera *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7959712,
+      "mac_addr": 273912752,
+      "decorated_name": "InnerCamera::Close(void)",
+      "undecorated_name": "Close__11InnerCameraFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerCamera *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7956960,
+      "mac_addr": 273914592,
+      "decorated_name": "InnerCamera::CalcDoorHit(InnerRoom *, LHCoord, float, bool)",
+      "undecorated_name": "CalcDoorHit__11InnerCameraFP9InnerRoom7LHCoordfb",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "struct LHCoord",
+        "float",
+        "_Bool"
+      ],
+      "argument_names": ["this", "", "", "", ""]
+    },
+    {
+      "win_addr": 7957344,
+      "mac_addr": 273913616,
+      "decorated_name": "InnerCamera::Update(InnerRoom *, float, int, int, LHCoord const &, bool)",
+      "undecorated_name": "Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "argument_names": ["this", "", "", "", "", "", ""]
+    },
+    {
+      "win_addr": 7953632,
+      "mac_addr": 273915872,
+      "decorated_name": "InnerCamera::UpdateMain(InnerRoom *, float, int, int, LHCoord const &, bool)",
+      "undecorated_name": "UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "argument_names": ["this", "", "", "", "", "", ""]
+    },
+    {
+      "win_addr": 7955952,
+      "mac_addr": 273915440,
+      "decorated_name": "InnerCamera::UpdateState(InnerRoom *, float, int, int, LHCoord const &, bool)",
+      "undecorated_name": "UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct InnerCamera *",
+        "struct InnerRoom *",
+        "float",
+        "int",
+        "int",
+        "struct LHCoord *",
+        "_Bool"
+      ],
+      "argument_names": ["this", "", "", "", "", "", ""]
+    },
+    {
+      "win_addr": 7951728,
+      "mac_addr": 273920288,
+      "decorated_name": "InnerCamera::FocusOnSubMesh(LH3DMesh *, int, float, float, float)",
+      "undecorated_name": "FocusOnSubMesh__11InnerCameraFP8LH3DMeshifff",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct InnerCamera *",
+        "struct LH3DMesh *",
+        "int",
+        "float",
+        "float",
+        "float"
+      ],
+      "argument_names": ["this", "", "", "", "", ""]
+    },
+    {
+      "win_addr": 7952320,
+      "mac_addr": 273919392,
+      "decorated_name": "InnerCamera::TriggerIntro(bool, Zoomer3d *, Zoomer3d *)",
+      "undecorated_name": "TriggerIntro__11InnerCameraFbP8Zoomer3dP8Zoomer3d",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct InnerCamera *",
+        "_Bool",
+        "struct Zoomer3d *",
+        "struct Zoomer3d *"
+      ],
+      "argument_names": ["this", "", "", ""]
+    },
+    {
+      "win_addr": 7959760,
+      "mac_addr": 273912608,
+      "decorated_name": "InnerCamera::__dt(void)",
+      "undecorated_name": "__dt__11InnerCameraFv",
+      "return_type": "struct InnerCamera *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerCamera *"],
+      "argument_names": ["this"]
+    },
+    {
+      "win_addr": 7950384,
+      "mac_addr": 273924016,
+      "decorated_name": "InnerRoom::InnerRoom(void)",
+      "undecorated_name": "__ct__9InnerRoomFv",
+      "return_type": "struct InnerRoom *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct InnerRoom *"],
+      "argument_names": ["this"]
+    },
+    {
       "win_addr": 6087888,
       "mac_addr": 271957632,
       "decorated_name": "GInterface::SetToZero(void)",
@@ -51579,6 +51912,16 @@
       "call_type": "__thiscall",
       "argument_types": ["struct GLandscape *", "const char *"],
       "argument_names": ["this", "path"]
+    },
+    {
+      "win_addr": 8403968,
+      "mac_addr": 268724496,
+      "decorated_name": "LH3DIsland::Create(void)",
+      "undecorated_name": "Create__10LH3DIslandFv",
+      "return_type": "uint32_t",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
     },
     {
       "win_addr": 5335712,
@@ -54108,6 +54451,26 @@
       "argument_names": ["magic_type"]
     },
     {
+      "win_addr": 7948848,
+      "mac_addr": 273900192,
+      "decorated_name": "Temple::ProcessGameTurn(void)",
+      "undecorated_name": "ProcessGameTurn__6TempleFv",
+      "return_type": "void",
+      "call_type": "__stdcall",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 7964784,
+      "mac_addr": 273937232,
+      "decorated_name": "TempleRoom::TempleRoom(const char*)",
+      "undecorated_name": "__ct__10TempleRoomFPCc",
+      "return_type": "struct TempleRoom *",
+      "call_type": "__thiscall",
+      "argument_types": ["struct TempleRoom *", "const char *"],
+      "argument_names": ["this", "name"]
+    },
+    {
       "win_addr": 7883568,
       "mac_addr": 270188512,
       "decorated_name": "ChallengeRoom::CreateChallengeFiles(char*)",
@@ -54123,16 +54486,6 @@
       "decorated_name": "SaveGameRoom::CreateSaveGameFiles(char*)",
       "undecorated_name": "CreateSaveGameFiles__12SaveGameRoomFPc",
       "return_type": "_Bool",
-      "call_type": "__stdcall",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 7948848,
-      "mac_addr": 273900192,
-      "decorated_name": "Temple::ProcessGameTurn(void)",
-      "undecorated_name": "ProcessGameTurn__6TempleFv",
-      "return_type": "void",
       "call_type": "__stdcall",
       "argument_types": [],
       "argument_names": []
@@ -56678,6 +57031,16 @@
       "argument_names": ["index", "type", "value"]
     },
     {
+      "win_addr": 8581344,
+      "mac_addr": 268513936,
+      "decorated_name": "LH3DRender::StartFrame(void)",
+      "undecorated_name": "StartFrame__10LH3DRenderFv",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
       "win_addr": 8584976,
       "mac_addr": 268725180,
       "decorated_name": "LH3DRender::SetD3DTillingOn(int)",
@@ -56732,8 +57095,8 @@
       "mac_addr": 268507936,
       "decorated_name": "LH3DTech::ChangeFov(float)",
       "undecorated_name": "ChangeFov__8LH3DTechFf",
-      "return_type": "uint32_t",
-      "call_type": "__fastcall",
+      "return_type": "void",
+      "call_type": "cdecl",
       "argument_types": ["float"],
       "argument_names": ["fov"]
     },
@@ -59853,6 +60216,26 @@
       "type": "struct LivingVftable",
       "value": 9226256
     },
+    {
+      "name": "__vt__InnerCamera",
+      "type": "struct InnerCameraVftable",
+      "value": 10088048
+    },
+    {
+      "name": "__vt__CreatureRoomCamera",
+      "type": "struct InnerCameraVftable",
+      "value": 10087308
+    },
+    {
+      "name": "__vt__TempleRoom",
+      "type": "struct TempleRoomVftable",
+      "value": 10088132
+    },
+    {
+      "name": "__vt__CreatureRoom",
+      "type": "struct TempleRoomVftable",
+      "value": 10087216
+    },
     { "name": "__vt__Creche", "type": "struct AbodeVftable", "value": 9246404 },
     {
       "name": "__vt__GDanceInfo",
@@ -60056,11 +60439,6 @@
       "value": 9708032
     },
     { "name": "__vt__Heap", "type": "struct HeapVftable", "value": 9641160 },
-    {
-      "name": "__vt__InnerCamera",
-      "type": "struct InnerCameraVftable",
-      "value": 10088048
-    },
     {
       "name": "__vt__MobileStatic",
       "type": "struct MultiMapFixedVftable",
