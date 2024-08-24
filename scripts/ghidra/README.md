@@ -26,5 +26,5 @@ Usage
 ```
 5. In ghidra run the following
 ```python
-__import__("imp").load_source('analysis', r'PATH\TO\The/extracted_resersing_data.json').main(currentProgram, state)
+__import__("imp").load_source('analysis', r'PATH\TO\The/bw1-decomp/scripts/ghidra/ghidra_import.py').main(currentProgram, state)
 ```

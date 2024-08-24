@@ -376,7 +376,7 @@ def main(program, state):
     dtms = state.getTool().getService(DataTypeManagerService).getDataTypeManagers()
     dtps = [DataTypeParser(dtm, None, None, DataTypeParser.AllowedDataTypes.ALL) for dtm in dtms]
     script_dir = os.path.dirname(__file__)
-    data = json.load(open(os.path.join(script_dir, "extracted_reversing_data.json")))
+    data = json.load(open(os.path.join(script_dir, os.path.pardir, os.path.pardir, "extracted_reversing_data_bw_141.json")))
     import_types(dtms, program, data)
     import_functions(program, dtps, data, "win")
     import_globals(program, dtps, data)
