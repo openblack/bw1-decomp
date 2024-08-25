@@ -82980,24 +82980,9 @@
           "offset": 19087
         },
         {
-          "name": "field_0x4a90",
-          "type": "uint8_t",
+          "name": "enableAnimationModify",
+          "type": "bool32_t",
           "offset": 19088
-        },
-        {
-          "name": "field_0x4a91",
-          "type": "uint8_t",
-          "offset": 19089
-        },
-        {
-          "name": "field_0x4a92",
-          "type": "uint8_t",
-          "offset": 19090
-        },
-        {
-          "name": "field_0x4a93",
-          "type": "uint8_t",
-          "offset": 19091
         },
         {
           "name": "field_0x4a94",
@@ -124225,6 +124210,21 @@
       "argument_names": [
         "this"
       ]
+    },
+    {
+      "win_addr": 4703824,
+      "decorated_name": "Creature::EnableAnimationModify(bool enable)",
+      "undecorated_name": "EnableAnimationModify__8CreatureFb",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Creature *",
+        "bool",
+      ],
+      "argument_names": [
+        "this",
+        "enable",
+      ],
     },
     {
       "win_addr": 4995424,
