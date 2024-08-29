@@ -1,4 +1,4 @@
-from generate_headers import needs_header_include #, remove_type_qualificators #, is_pointer, get_clang_var_type
+from bw1_decomp_gen.generate_headers import needs_header_include #, remove_type_qualificators #, is_pointer, get_clang_var_type
 
 import unittest
 
@@ -19,6 +19,3 @@ class TestTypeMethods(unittest.TestCase):
         self.assertFalse(needs_header_include("char[0]"))
         self.assertFalse(needs_header_include("char[10]"))
         self.assertFalse(needs_header_include("char[]"))
-
-if __name__ == '__main__':
-    unittest.main()
