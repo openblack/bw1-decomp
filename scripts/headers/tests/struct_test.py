@@ -1,6 +1,6 @@
 from vftable import Vftable
 from structs import Struct
-from functions import FunctionPrototype
+from functions import FuncPtr
 import unittest
 import sys
 import os
@@ -14,8 +14,8 @@ class TestStruct(unittest.TestCase):
 
     def test_get_type_vftable(self):
         function_proto_map = {
-            "TestVftable__Foo": FunctionPrototype("TestVftable__Foo", "__thiscall", "char*", ["struct Test*", "size_t"]),
-            "TestVftable__Bar": FunctionPrototype("TestVftable__Bar", "__thiscall", "void", ["struct Test*", "float"]),
+            "TestVftable__Foo": FuncPtr("TestVftable__Foo", "__thiscall", "char*", ["struct Test*", "size_t"]),
+            "TestVftable__Bar": FuncPtr("TestVftable__Bar", "__thiscall", "void", ["struct Test*", "float"]),
         }
         s = Vftable(Struct("TestVftable", 8, [Struct.Member(
             "Foo", "TestVftable__Foo*"), Struct.Member("Bar", "TestVftable__Bar*")]), function_proto_map)

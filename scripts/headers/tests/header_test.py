@@ -6,9 +6,9 @@ import unittest
 from csnake import CodeWriter
 from pathlib import Path
 
-from functions import FunctionPrototype
+from functions import FuncPtr, DefinedFunctionPrototype
 from header import Header
-from structs import Struct
+from structs import Struct, RTTIClass
 from vftable import Vftable
 
 
@@ -340,8 +340,8 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
 
     def test_forward_declare_list(self):
         function_proto_map = {
-            "TestStruct1Vftable__Foo": FunctionPrototype("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"]),
-            "TestStruct1Vftable__Bar": FunctionPrototype("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"]),
+            "TestStruct1Vftable__Foo": FuncPtr("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"]),
+            "TestStruct1Vftable__Bar": FuncPtr("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"]),
         }
         structs: list[Struct] = [
             Vftable(Struct("TestStruct1Vftable", 8, [Struct.Member("Foo", "TestStruct1Vftable__Foo*"), Struct.Member("Bar", "TestStruct1Vftable__Bar*")]), function_proto_map),
@@ -369,8 +369,8 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
 
     def test_structs_with_forward_declare(self):
         function_proto_map = {
-            "TestStruct1Vftable__Foo": FunctionPrototype("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"]),
-            "TestStruct1Vftable__Bar": FunctionPrototype("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"]),
+            "TestStruct1Vftable__Foo": FuncPtr("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"]),
+            "TestStruct1Vftable__Bar": FuncPtr("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"]),
         }
         structs: list[Struct] = [
             Vftable(Struct("TestStruct1Vftable", 8, [Struct.Member("Foo", "TestStruct1Vftable__Foo*"), Struct.Member("Bar", "TestStruct1Vftable__Bar*")]), function_proto_map),
@@ -427,6 +427,73 @@ struct TestStruct2
     struct TestStruct1* field_0x24;
 };
 static_assert(sizeof(struct TestStruct2) == 0x28, "Data type is of wrong size");
+
+#endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
+""")
+
+    def test_structs_with_functions(self):
+        function_proto_map = {
+            "TestStructVftable__Foo": FuncPtr("TestStructVftable__Foo", "__thiscall", "char*", ["struct TestStruct*", "int"]),
+            "TestStructVftable__Bar": FuncPtr("TestStructVftable__Bar", "__thiscall", "void", ["struct TestStruct*"]),
+        }
+        method_map = {
+            "TestStruct": [
+                DefinedFunctionPrototype("__ct__10TestStructFv", "__thiscall", "struct TestStruct*", ["struct TestStruct*"], "TestStruct::TestStruct(void)", ["this"], 0x00404040, 0x10101010),
+                DefinedFunctionPrototype("Foo__10TestStructFi", "__thiscall", "char*", ["struct TestStruct*", "int"], "TestStruct::Foo(int)", ["this", "test"], 0x00404060, 0x10101020),
+                DefinedFunctionPrototype("Bar__10TestStructFv", "__thiscall", "void", ["struct TestStruct*"], "TestStruct::Bar(void)", ["this"], 0x00404050, 0x10101030),
+                DefinedFunctionPrototype("Baz__10TestStructFPCc", "__thiscall", "int", ["struct TestStruct*", "const char*"], "TestStruct::Baz(const char*)", ["this", "name"], 0x00404070, 0x10101040),
+                DefinedFunctionPrototype("Fuz__10TestStructFv", "__thiscall", "void*", ["struct TestStruct*"], "TestStruct::Fuz(void)", ["this"], 0x00404020, 0x10101080),
+            ],
+        }
+        virtual_table_function_names = (
+            "Foo",
+            "Bar",
+        )
+        structs: list[Struct] = [
+            Vftable(Struct("TestStructVftable", 8, [Struct.Member("Foo", "TestStructVftable__Foo*"), Struct.Member("Bar", "TestStructVftable__Bar*")]), function_proto_map),
+            RTTIClass(Struct("TestStruct", 4, [Struct.Member("vftable", "struct TestStructVftable*")]), {}, virtual_table_function_names, method_map),
+        ]
+        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+
+        self.assertEqual(self.cw.code,
+                         """\
+#ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
+#define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+// Forward Declares
+struct TestStruct;
+
+struct TestStructVftable
+{
+    char* (__fastcall* Foo)(struct TestStruct* this, const void* edx, int param_1);
+    void (__fastcall* Bar)(struct TestStruct* this);
+};
+static_assert(sizeof(struct TestStructVftable) == 0x8, "Data type is of wrong size");
+
+struct TestStruct
+{
+    struct TestStructVftable* vftable;
+};
+static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
+
+// Constructors
+
+// win1.41 00404040 mac 10101010 TestStruct::TestStruct(void)
+struct TestStruct* __fastcall __ct__10TestStructFv(struct TestStruct* this);
+
+// Override methods
+
+// win1.41 00404060 mac 10101020 TestStruct::Foo(int)
+char* __fastcall Foo__10TestStructFi(struct TestStruct* this, const void* edx, int test);
+// win1.41 00404050 mac 10101030 TestStruct::Bar(void)
+void __fastcall Bar__10TestStructFv(struct TestStruct* this);
+
+// Non-virtual methods
+
+// win1.41 00404020 mac 10101080 TestStruct::Fuz(void)
+void* __fastcall Fuz__10TestStructFv(struct TestStruct* this);
+// win1.41 00404070 mac 10101040 TestStruct::Baz(const char*)
+int __fastcall Baz__10TestStructFPCc(struct TestStruct* this, const void* edx, const char* name);
 
 #endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
 """)

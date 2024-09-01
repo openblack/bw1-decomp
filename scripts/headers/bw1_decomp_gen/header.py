@@ -56,17 +56,18 @@ class Header:
         return result
 
     def get_forward_declare_types(self) -> set[str]:
-        def strip_pointers_and_arrays(c_type):
+        def strip_pointers_arrays_and_modifiers(c_type):
             c_type = re.sub(r'\*', '', c_type)
             c_type = re.sub(r'\[\d*\]', '', c_type)
             c_type = re.sub(r'[()]', '', c_type)
+            c_type = c_type.removeprefix("const ")
             return c_type
 
         result = set()
         defined_types_so_far = set()
         for s in self.structs:
-            defined_types_so_far.add(f"struct {strip_pointers_and_arrays(s.name)}")
-            struct_types = {strip_pointers_and_arrays(r) for r in s.get_types()}
+            defined_types_so_far.add(f"struct {strip_pointers_arrays_and_modifiers(s.name)}")
+            struct_types = {strip_pointers_arrays_and_modifiers(r) for r in s.get_types()}
             struct_types.difference_update(defined_types_so_far)
             result.update(struct_types)
 
