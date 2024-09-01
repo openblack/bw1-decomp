@@ -17,6 +17,10 @@ class Composite:
             self.name = name
             self.type = type.replace(" *", "*")
 
+        def get_types(self) -> set[str]:
+            result = {self.type}
+            return result
+
         def to_csnake(self) -> csnake.Variable:
             # Check if it's a pointer to an array (e.g., int(*)[2] or int (*)[2])
             if self.type.endswith('[]'):
@@ -53,6 +57,12 @@ class Struct(Composite):
         members = [cls.Member(m["name"], m["type"]) for m in decl["members"]]
         return cls(name, size, members)
     
+    def get_types(self) -> set[str]:
+        result = {f"struct {self.name}"}
+        for m in self.members:
+            result.update(m.get_types())
+        return result - {"void"}
+
     def to_csnake(self) -> csnake.Struct:
         result = csnake.Struct(self.name, typedef=False)
         variables = map(self.Member.to_csnake, self.members)
@@ -146,6 +156,7 @@ class RTTIClass(Struct):
         super().to_code(cw)
         if self.vftable_address:
             cw.add_line()
+            # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
             address = csnake.FormattedLiteral(value=self.vftable_address, int_formatter=lambda x: f"0x{x:08x}")
             cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", f"{self.name}Vftable*", ["static"], value=address))
 

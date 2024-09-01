@@ -1,0 +1,23 @@
+from vftable import Vftable
+from structs import Struct
+from functions import FunctionPrototype
+import unittest
+import sys
+import os
+sys.path.append(os.path.dirname(__file__) + "/../bw1_decomp_gen")
+
+
+class TestStruct(unittest.TestCase):
+    def test_get_type_int(self):
+        s = Struct("TestStruct", 4, [Struct.Member("field_0x0", "int")])
+        self.assertSetEqual(s.get_types(), {"struct TestStruct", "int"})
+
+    def test_get_type_vftable(self):
+        function_proto_map = {
+            "TestVftable__Foo": FunctionPrototype("TestVftable__Foo", "__thiscall", "char*", ["struct Test*", "size_t"]),
+            "TestVftable__Bar": FunctionPrototype("TestVftable__Bar", "__thiscall", "void", ["struct Test*", "float"]),
+        }
+        s = Vftable(Struct("TestVftable", 8, [Struct.Member(
+            "Foo", "TestVftable__Foo*"), Struct.Member("Bar", "TestVftable__Bar*")]), function_proto_map)
+        self.assertSetEqual(s.get_types(), {
+                            "struct TestVftable", "struct Test*", "size_t", "char*", "float"})

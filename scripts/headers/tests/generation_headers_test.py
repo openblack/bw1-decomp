@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.append(os.path.dirname(__file__) + "/../bw1_decomp_gen")
+
 from bw1_decomp_gen.generate_headers import needs_header_include #, remove_type_qualificators #, is_pointer, get_clang_var_type
 
 import unittest

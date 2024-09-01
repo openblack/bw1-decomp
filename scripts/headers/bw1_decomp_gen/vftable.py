@@ -62,7 +62,12 @@ class Vftable(Struct):
                 return csnake.Variable(self.name, f)
             else:
                 return csnake.Variable(self.name, self.type)
-        
+
+        def get_types(self):
+            if type(self.type) is FunctionPrototype:
+                return set(self.type.args).union((self.type.result, ))
+            raise NotImplementedError()
+
     def __init__(self, struct: Struct, function_proto_map: dict[str, FunctionPrototype]):
         self.name = struct.name
         self.size = struct.size

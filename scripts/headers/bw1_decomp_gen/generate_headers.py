@@ -1,7 +1,6 @@
 from json import load
 from pathlib import Path
 from csnake import CodeWriter, Variable
-from clang.cindex import Index
 
 from header import Header
 from structs import Struct, Union, Enum, RTTIClass
@@ -9,55 +8,12 @@ from typedef import Typedef
 from functions import FunctionPrototype
 from vftable import Vftable
 from utils import partition
+from vanilla_filepaths import map_projects_to_object_files
 
-# Initialize the Clang index
-index = Index.create()
-
-TYPE_UNWRAP_MAP = {
-    "CONSTANTARRAY": lambda x: x.get_array_element_type(),
-    "POINTER": lambda x: x.get_pointee(),
-}
-
-
-def needs_header_include(decl_name: str) -> bool:
-    var_name = "tmp"
-    if "[" in decl_name:
-        split_index = decl_name.index("[")
-        var_name += decl_name[split_index:]
-        decl_name = decl_name[:split_index]
-
-    cw = CodeWriter()
-    cw.add_variable_declaration(Variable(var_name, decl_name))
-    translation_unit = index.parse('tmp.c', unsaved_files=[('tmp.c', str(cw))])
-    for diagnostic in translation_unit.diagnostics:
-        if diagnostic.severity >= 3:
-            return True
-    return False
-
-
-header_lookup = {
-    "uint8_t": '<stdint.h>',
-    "uint16_t": '<stdint.h>',
-    "uint32_t": '<stdint.h>',
-    "uint64_t": '<stdint.h>',
-    "int8_t": '<stdint.h>',
-    "int16_t": '<stdint.h>',
-    "int32_t": '<stdint.h>',
-    "int64_t": '<stdint.h>',
-    "union GameThingBase": '"GameThing.h"',
-}
-
-# TODO: Add own hashable classes with for
-#   - function declaration
-#   - vtables with protos
-#   - globals
-# TODO: Each one of these will be able to define dependencies (that can't be forward declared)
-#   Build a dependency tree and sort
-# TODO: For each key class, guess the file path
-# TODO: Once all that is designated, start creating headers with correct includes, starting with root node with no deps
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
 if __name__ == "__main__":
     db = load(open("extracted_reversing_data_bw_141.json"))
+    projects_and_files = map_projects_to_object_files();
     primitives = []
     for decl in db['types']: 
         primitive_look_up = {
@@ -110,15 +66,19 @@ if __name__ == "__main__":
     headers: list[Header] = []
     for t in rtti_classes[:1]:
         vftable = vftable_map[t.name]
-        path = Path(f"src/{t.name}.h")
+        for project, object_files in projects_and_files.items():
+            if t.name +".obj" in object_files:
+                break
+        else:
+            assert(False) # Need to add guessed path in vanilla_filepaths.py
+        path = Path(project) / f"{t.name}.h"
         includes: list[Header.Include] = [
             Header.Include("assert.h", {"static_assert"}, True),
             Header.Include("stddef.h", {"offsetof", "size_t"}, True),
-            # TODO: for each type, it must be included or forward declared
+            # TODO: for each type, if it's included it doesn't need to be forward declared
         ]
         structs: list[Struct] = [vftable, RTTIClass(t, vftable_address_look_up)]
         headers.append(Header(path, includes, structs))
-        # TODO: Add vftable location
         # TODO: Add vftable function addresses
         # TODO: Add constructor
         # TODO: Add various other functions
@@ -126,15 +86,11 @@ if __name__ == "__main__":
     # TODO: Merge some primitives that would fit in the same header
     # TODO: i.e. Similar type names like vftables, unknown substructures,
     # TODO:      Class methods, enums
-    # TODO: Fit these into a header data structure for which the dependencies are merged
     # TODO: Maintain a primitive to header look-up table
     # TODO: Create a header-to-header dependency graph
 
     # TODO: Topological sort headers ... is this needed?
     
-    # TODO: Figure out the best name for each header (strings in runblack.exe)
-    # TODO: Header needs a main RTTIClass struct
-
     cw = CodeWriter()
     for h in headers:
         print(f"\n// {h.path} ---------------------------------------------------------------\n")
