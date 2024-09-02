@@ -37,7 +37,7 @@ if __name__ == "__main__":
     db = load(open("extracted_reversing_data_bw_141.json"))
     projects_and_files = map_projects_to_object_files()
     primitives = []
-    for decl in db['types']: 
+    for decl in db['types']:
         primitive_look_up = {
             'STRUCT_DECL': Struct,
             'UNION_DECL': Union,
@@ -60,6 +60,7 @@ if __name__ == "__main__":
     # Do some selecting
     (
         vftables,
+        bases,
         vftable_function_prototypes,
         rtti_classes,
         rtti_helper_unions,
@@ -67,7 +68,8 @@ if __name__ == "__main__":
         list_and_nodes,
         remainder,
     ) = partition([
-        lambda x: type(x) in [Struct, Union] and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
+        lambda x: type(x) is Struct and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
+        lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
         lambda x: type(x) is Struct and x.members and x.members[0].name in ["vftable", "super", "base"],
         lambda x: type(x) is Union and x.name.endswith('Base'),
@@ -87,15 +89,23 @@ if __name__ == "__main__":
         base_name = base_name.removesuffix("_t")
         vftable_map[base_name] = Vftable(t, vftable_function_proto_map)
 
+    helper_base_map = {}
+    for t in bases:
+        helper_base_map[t.name.removesuffix('Base')] = t
+
     headers: list[Header] = []
-    for t in rtti_classes[:1]:
+    for t in rtti_classes[:2]:
         vftable = vftable_map[t.name]
+        name = t.name
+        # For things like GBaseInfo
+        if t.name[0] == 'G' and t.name[1].isupper():
+            name = t.name[1:]
         for project, object_files in projects_and_files.items():
-            if t.name +".obj" in object_files:
+            if name +".obj" in object_files:
                 break
         else:
-            assert(False) # Need to add guessed path in vanilla_filepaths.py
-        path = Path(project) / f"{t.name}.h"
+            raise RuntimeError(f"Need to add guessed path for {t.name} in vanilla_filepaths.py")
+        path = Path(project) / f"{name}.h"
         includes: list[Header.Include] = [
             Header.Include("assert.h", {"static_assert"}, True),
             Header.Include("stddef.h", {"offsetof", "size_t"}, True),
@@ -103,7 +113,13 @@ if __name__ == "__main__":
             # TODO: for each type, if it's included it doesn't need to be forward declared
         ]
         virtual_method_names = [i.name for i in vftable.members]
-        structs: list[Struct] = [vftable, RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)]
+
+        structs: list[Struct] = []
+        structs.append(vftable)
+        if t.name in helper_base_map:
+            structs.append(helper_base_map[t.name])
+        structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
+
         headers.append(Header(path, includes, structs))
         # TODO: Add vftable function addresses
         # TODO: Add constructor
@@ -116,9 +132,9 @@ if __name__ == "__main__":
     # TODO: Create a header-to-header dependency graph
 
     # TODO: Topological sort headers ... is this needed?
-    
-    cw = CodeWriter(indent=2)
+
     for h in headers:
-        print(f"\n// {h.path} ---------------------------------------------------------------\n")
+        cw = CodeWriter(indent=2)
+        print(f"\n// {h.path.as_posix()} ---------------------------------------------------------------\n")
         h.to_code(cw)
         print(cw)

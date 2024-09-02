@@ -13,10 +13,12 @@ class Composite:
     class Member:
         name: str
         type: str
+        offset: int
 
-        def __init__(self, name: str, type: str):
+        def __init__(self, name: str, type: str, offset: int):
             self.name = name
             self.type = type.replace(" *", "*")
+            self.offset = offset
 
         def get_types(self) -> set[str]:
             result = {self.type}
@@ -55,7 +57,7 @@ class Struct(Composite):
     def from_json(cls, decl: dict) -> "Struct":
         name = extract_type_name(decl['type'])
         size = decl['size']
-        members = [cls.Member(m["name"], m["type"]) for m in decl["members"]]
+        members = [cls.Member(**m) for m in decl["members"]]
         return cls(name, size, members)
 
     def get_types(self) -> set[str]:
@@ -102,8 +104,15 @@ class Union(Composite):
     def from_json(cls, decl: dict) -> "Union":
         name = extract_type_name(decl['type'])
         size = decl['size']
-        members = [cls.Member(m["name"], m["type"]) for m in decl["aliases"]]
+        # TODO: unions don't seem have the 'struct' tag, they should
+        members = [cls.Member(m["name"], f'struct {m["type"]}', 0) for m in decl["aliases"]]
         return cls(name, size, members)
+
+    def get_types(self) -> set[str]:
+        result = {f"union {self.name}"}
+        for m in self.members:
+            result.update(m.get_types())
+        return result - {"void"}
 
     def to_csnake(self) -> CSnakeUnion:
         result = CSnakeUnion(self.name, typedef=False)

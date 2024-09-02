@@ -24,7 +24,9 @@ class Vftable(Struct):
         def get_types(self):
             if type(self.type) is FuncPtr:
                 return set(self.type.args).union((self.type.result, ))
-            raise NotImplementedError()
+            if type(self.type) is str:
+                return set(self.type)
+            raise NotImplementedError(f"Don't know what to do with {self.type}")
 
     def __init__(self, struct: Struct, function_proto_map: dict[str, FuncPtr]):
         self.name = struct.name
@@ -33,8 +35,12 @@ class Vftable(Struct):
             "__dt__": "__dt",
         }
         self.members = []
+        last_offset = 0
         for i, m in enumerate(struct.members):
             name = substitutions.get(m.name, m.name)
             type_ = function_proto_map.get(m.type.removesuffix("*"), m.type)
-            comment =  hex(i * 4) if i % 4 == 0 else None
+            comment = None
+            if m.offset >= last_offset + 0x10:
+                comment = hex(m.offset)
+                last_offset = m.offset & ~0xF
             self.members.append(self.Member(name, type_, comment))
