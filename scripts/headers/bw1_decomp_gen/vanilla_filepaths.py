@@ -501,6 +501,9 @@ released_filepaths_from_strings = {
 guessed_filepaths = {
     BWPath(r"C:\Dev\black\Base.h"),
     BWPath(r"C:\Dev\black\BaseInfo.h"),
+    BWPath(r"C:\Dev\black\LocalBase.h"),
+    BWPath(r"C:\Dev\black\GameThing.h"),
+    BWPath(r"C:\Dev\black\GameThingWithPos.h"),
 }
 
 dev_filepaths = released_filepaths_from_strings.union(guessed_filepaths)

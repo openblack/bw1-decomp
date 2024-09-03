@@ -88,7 +88,7 @@ class Header:
                 if not c:
                     continue
                 for i in c:
-                    cw.include(('<' if i.system else '"') + str(i.header_path) + ('>' if i.system else '"'),
+                    cw.include(('<' if i.system else '"') + i.header_path.as_posix() + ('>' if i.system else '"'),
                                ("For " + ", ".join(sorted(i.dependencies)) if i.dependencies else None))
                 cw.add_line()
 

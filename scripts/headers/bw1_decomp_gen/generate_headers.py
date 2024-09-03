@@ -94,8 +94,8 @@ if __name__ == "__main__":
         helper_base_map[t.name.removesuffix('Base')] = t
 
     headers: list[Header] = []
-    for t in rtti_classes[:2]:
-        vftable = vftable_map[t.name]
+    for t in rtti_classes[:5]:
+        vftable = vftable_map.get(t.name)
         name = t.name
         # For things like GBaseInfo
         if t.name[0] == 'G' and t.name[1].isupper():
@@ -107,15 +107,16 @@ if __name__ == "__main__":
             raise RuntimeError(f"Need to add guessed path for {t.name} in vanilla_filepaths.py")
         path = Path(project) / f"{name}.h"
         includes: list[Header.Include] = [
-            Header.Include("assert.h", {"static_assert"}, True),
-            Header.Include("stddef.h", {"offsetof", "size_t"}, True),
-            Header.Include("stdint.h", {}, True),
+            Header.Include(Path("assert.h"), {"static_assert"}, True),
+            Header.Include(Path("stddef.h"), {"offsetof", "size_t"}, True),
+            Header.Include(Path("stdint.h"), {}, True),
             # TODO: for each type, if it's included it doesn't need to be forward declared
         ]
-        virtual_method_names = [i.name for i in vftable.members]
+        virtual_method_names = [i.name for i in vftable.members] if vftable else []
 
         structs: list[Struct] = []
-        structs.append(vftable)
+        if vftable:
+            structs.append(vftable)
         if t.name in helper_base_map:
             structs.append(helper_base_map[t.name])
         structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
