@@ -3,3 +3,4 @@
 .vscode
 *.pyc
 *$py.class
+generated_headers_output/

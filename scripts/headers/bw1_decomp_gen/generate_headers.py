@@ -1,3 +1,5 @@
+import shutil
+import sys
 from json import load
 from pathlib import Path
 from csnake import CodeWriter
@@ -95,32 +97,35 @@ if __name__ == "__main__":
 
     headers: list[Header] = []
     local_header_import_map: dict[str, str] = {}
-    for t in rtti_classes[:2]:
-        vftable = vftable_map.get(t.name)
-        name = t.name
-        # For things like GBaseInfo
-        if t.name[0] == 'G' and t.name[1].isupper():
-            name = t.name[1:]
-        for project, object_files in projects_and_files.items():
-            if name +".obj" in object_files:
-                break
-        else:
-            raise RuntimeError(f"Need to add guessed path for {t.name} in vanilla_filepaths.py")
-        path = Path(project) / f"{name}.h"
-        includes: list[Header.Include] = []
-        virtual_method_names = [i.name for i in vftable.members] if vftable else []
+    for t in rtti_classes:
+        try:
+            vftable = vftable_map.get(t.name)
+            name = t.name
+            # For things like GBaseInfo
+            if t.name[0] == 'G' and t.name[1].isupper():
+                name = t.name[1:]
+            for project, object_files in projects_and_files.items():
+                if name +".obj" in object_files:
+                    break
+            else:
+                raise RuntimeError(f"Need to add guessed path for {t.name} in vanilla_filepaths.py")
+            path = Path(project) / f"{name}.h"
+            includes: list[Header.Include] = []
+            virtual_method_names = [i.name for i in vftable.members] if vftable else []
 
-        structs: list[Struct] = []
-        if vftable:
-            structs.append(vftable)
-        if t.name in helper_base_map:
-            structs.append(helper_base_map[t.name])
-        structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
+            structs: list[Struct] = []
+            if vftable:
+                structs.append(vftable)
+            if t.name in helper_base_map:
+                structs.append(helper_base_map[t.name])
+            structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
 
-        for s in structs:
-            local_header_import_map[s.decorated_name] = path
+            for s in structs:
+                local_header_import_map[s.decorated_name] = path
 
-        headers.append(Header(path, includes, structs, local_header_import_map))
+            headers.append(Header(path, includes, structs, local_header_import_map))
+        except RuntimeError as e:
+            print(e, file=sys.stderr)
 
     # TODO: Merge some primitives that would fit in the same header
     # TODO: i.e. Similar type names like vftables, unknown substructures,
@@ -132,8 +137,19 @@ if __name__ == "__main__":
 
     # TODO: Keep track of what's been defined/declared and print out what remains to be classified.
 
+    output_path = Path("generated_headers_output")
+    if output_path.exists():
+        shutil.rmtree(output_path)
+
+    wrote_headers = 0
+    wrote_bytes = 0
     for h in headers:
         cw = CodeWriter(indent=2)
-        print(f"\n// {h.path.as_posix()} ---------------------------------------------------------------\n")
         h.to_code(cw)
-        print(cw)
+        path = output_path / h.path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("w") as f:
+            wrote_headers += 1
+            wrote_bytes += f.write(cw.code)
+
+    print(f"Wrote {wrote_headers} headers({wrote_bytes} bytes) in {output_path}")
