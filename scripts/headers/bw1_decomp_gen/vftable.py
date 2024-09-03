@@ -25,7 +25,7 @@ class Vftable(Struct):
             if type(self.type) is FuncPtr:
                 return set(self.type.args).union((self.type.result, ))
             if type(self.type) is str:
-                return set(self.type)
+                return set({self.type})
             raise NotImplementedError(f"Don't know what to do with {self.type}")
 
     def __init__(self, struct: Struct, function_proto_map: dict[str, FuncPtr]):

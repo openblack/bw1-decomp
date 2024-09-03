@@ -32,7 +32,7 @@ class TestHeaderTypes(unittest.TestCase):
                 Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
             ]),
         ]
-        h = Header(self.path, includes=[], structs=structs)
+        h = Header(self.path, includes=[], structs=structs, local_header_import_map={})
         self.assertSetEqual(h.get_types(), {
             "int",
             "int*",
@@ -60,7 +60,7 @@ class TestHeaderTypes(unittest.TestCase):
                 Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
             ]),
         ]
-        h = Header(self.path, includes=[], structs=structs)
+        h = Header(self.path, includes=[], structs=structs, local_header_import_map={})
         self.assertSetEqual(h.get_direct_dependencies(), {
             "static_assert",
             "struct TestStruct1",
@@ -88,7 +88,7 @@ class TestHeaderTypes(unittest.TestCase):
                 Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
             ]),
         ]
-        h = Header(self.path, includes=[], structs=structs)
+        h = Header(self.path, includes=[], structs=structs, local_header_import_map={})
         self.assertSetEqual(h.get_forward_declare_types(), {
             "struct TestStruct1", # Because a direct dependency (TestStruct1Vftable) appears before an indirect one (TestStruct1)
             "enum TestEnum",
@@ -104,12 +104,12 @@ class TestHeaderIncludes(unittest.TestCase):
         self.path = Path("src/TestHeader.h")
 
     def test_stdint(self):
-        h = Header(self.path, [], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0), Struct.Member("field_0x4", "int", 0x4), Struct.Member("field_0x8", "int8_t[2]", 0x8), Struct.Member("field_0xa", "int16_t", 0xa)])])
+        h = Header(self.path, [], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0), Struct.Member("field_0x4", "int", 0x4), Struct.Member("field_0x8", "int8_t[2]", 0x8), Struct.Member("field_0xa", "int16_t", 0xa)])], local_header_import_map={})
         includes = h.get_includes()
         self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("stdint.h"), {"int16_t", "int8_t", "uint32_t"}, True)])
 
     def test_with_manual_include(self):
-        h = Header(self.path, [Header.Include(Path('includetest'), {"std::TestInclude"}, True)], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0)])])
+        h = Header(self.path, [Header.Include(Path('includetest'), {"std::TestInclude"}, True)], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0)])], local_header_import_map={})
         includes = h.get_includes()
         self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("includetest"), {"std::TestInclude"}, True), Header.Include(Path("stdint.h"), {"uint32_t"}, True)])
 
@@ -117,7 +117,7 @@ class TestHeaderIncludes(unittest.TestCase):
         structs: list[Struct] = [
             Struct("TestStruct", 0, []),
         ]
-        h = Header(self.path, includes=[], structs=structs)
+        h = Header(self.path, includes=[], structs=structs, local_header_import_map={})
         self.cw = CodeWriter()
         h.to_code(self.cw)
         code = self.cw.code
@@ -138,7 +138,7 @@ class TestHeaderCreation(unittest.TestCase):
         self.path = Path("src/TestHeader.h")
 
     def test_empty(self):
-        Header(self.path, includes=[], structs=[]).to_code(self.cw)
+        Header(self.path, includes=[], structs=[], local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code,
                          """\
@@ -157,7 +157,7 @@ class TestHeaderCreation(unittest.TestCase):
             Header.Include(Path('src/TestInclude5.h'), {"TestInclude5a", "TestInclude5c", "TestInclude5b"}, False),
         ]
 
-        Header(self.path, includes, structs=[]).to_code(self.cw)
+        Header(self.path, includes, structs=[], local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code,
                          """\
@@ -180,7 +180,7 @@ class TestHeaderCreation(unittest.TestCase):
                 Struct.Member("field_0x0", "int", 0x0),  # Array of 2 pointers to int
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -203,7 +203,7 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
                 Struct.Member("field_0x0", "struct TestStruct2",0x0),
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -226,7 +226,7 @@ static_assert(sizeof(struct TestStruct1) == 0x4, "Data type is of wrong size");
                 Struct.Member("field_0x0", "struct TestStruct2*", 0x0),
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -252,7 +252,7 @@ static_assert(sizeof(struct TestStruct1) == 0x4, "Data type is of wrong size");
                 Struct.Member("field_0x0", "int[2]", 0x0),  # Just an array of 2 ints
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -275,7 +275,7 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
                 Struct.Member("field_0x0", "int[2][15][9]", 0x0),  # Just an array of 2 ints
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -298,7 +298,7 @@ static_assert(sizeof(struct TestStruct) == 0x438, "Data type is of wrong size");
                 Struct.Member("field_0x0", "int[]", 0x0),  # Just an array of 2 ints
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -321,7 +321,7 @@ static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
                 Struct.Member("field_0x0", "int[0]", 0x0),  # Just an array of 2 ints
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -344,7 +344,7 @@ static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
                 Struct.Member("field_0x0", "int*[2]", 0x0),  # Array of 2 pointers to int
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -367,7 +367,7 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
                 Struct.Member("field_0x0", "int(*)[2]", 0x0),  # Pointer to an array of 2 int
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
@@ -396,7 +396,7 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
                 Struct.Member("field_0x1c", "int", 0x1c),
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code,
                          """\
@@ -445,7 +445,7 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
                 Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
             ]),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code,
                          """\
@@ -513,7 +513,7 @@ static_assert(sizeof(struct TestStruct2) == 0x28, "Data type is of wrong size");
             Vftable(Struct("TestStructVftable", 8, [Struct.Member("Foo", "TestStructVftable__Foo*", 0x0), Struct.Member("Bar", "TestStructVftable__Bar*", 0x4)]), function_proto_map),
             RTTIClass(Struct("TestStruct", 4, [Struct.Member("vftable", "struct TestStructVftable*", 0x0)]), {}, virtual_table_function_names, method_map, {}),
         ]
-        Header(self.path, includes=[], structs=structs).to_code(self.cw)
+        Header(self.path, includes=[], structs=structs, local_header_import_map={}).to_code(self.cw)
 
         self.assertEqual(self.cw.code,
                          """\

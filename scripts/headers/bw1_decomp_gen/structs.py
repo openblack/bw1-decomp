@@ -51,8 +51,16 @@ class Composite:
     size: int
     members: list[Member]
 
+    @property
+    def decorated_name(self):
+        raise NotImplementedError()
+
 
 class Struct(Composite):
+    @property
+    def decorated_name(self):
+        return f"struct {self.name}"
+
     @classmethod
     def from_json(cls, decl: dict) -> "Struct":
         name = extract_type_name(decl['type'])
@@ -61,7 +69,7 @@ class Struct(Composite):
         return cls(name, size, members)
 
     def get_types(self) -> set[str]:
-        result = {f"struct {self.name}"}
+        result = {self.decorated_name}
         for m in self.members:
             result.update(m.get_types())
         return result - {"void"}
@@ -75,7 +83,7 @@ class Struct(Composite):
 
     def to_code(self, cw: csnake.CodeWriter):
         cw.add_struct(self.to_csnake())
-        cw.add_line(f'static_assert(sizeof(struct {self.name}) == 0x{self.size:x}, "Data type is of wrong size");')
+        cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
 
 
 # TODO: Replace with csnake.Union when https://gitlab.com/andrejr/csnake/-/merge_requests/5 lands
@@ -100,6 +108,10 @@ class CSnakeUnion(csnake.Struct):
 
 
 class Union(Composite):
+    @property
+    def decorated_name(self):
+        return f"union {self.name}"
+
     @classmethod
     def from_json(cls, decl: dict) -> "Union":
         name = extract_type_name(decl['type'])
@@ -109,7 +121,7 @@ class Union(Composite):
         return cls(name, size, members)
 
     def get_types(self) -> set[str]:
-        result = {f"union {self.name}"}
+        result = {self.decorated_name}
         for m in self.members:
             result.update(m.get_types())
         return result - {"void"}
@@ -124,7 +136,7 @@ class Union(Composite):
     def to_code(self, cw: csnake.CodeWriter):
         # TODO: Must be add_union
         cw.add_struct(self.to_csnake())
-        cw.add_line(f'static_assert(sizeof(union {self.name}) == 0x{self.size:x}, "Data type is of wrong size");')
+        cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
 
 
 @dataclass
@@ -133,8 +145,12 @@ class Enum:
     size: int
     values: tuple[str, int]
 
+    @property
+    def decorated_name(self):
+        return f"enum {self.name}"
+
     @classmethod
-    def from_json(cls, decl: dict) -> "Union":
+    def from_json(cls, decl: dict) -> "Enum":
         name = extract_type_name(decl['type'])
         size = decl['size']
         values = [(m["name"], m["value"]) for m in decl["constants"]]
@@ -148,7 +164,7 @@ class Enum:
 
     def to_code(self, cw: csnake.CodeWriter):
         cw.add_enum(self.to_csnake())
-        cw.add_line(f'static_assert(sizeof(enum {self.name}) == 0x{self.size:x}, "Data type is of wrong size");')
+        cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
 
 
 @dataclass
@@ -204,7 +220,7 @@ class RTTIClass(Struct):
             # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
             address = csnake.FormattedLiteral(
                 value=self.vftable_address, int_formatter=lambda x: f"0x{x:08x}")
-            cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", f"struct {self.name}Vftable*", ["static"], value=address))
+            cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", f"{self.decorated_name}Vftable*", ["static"], value=address))
 
         if self.constructors:
             cw.add_line()

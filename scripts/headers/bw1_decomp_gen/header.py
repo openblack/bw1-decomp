@@ -69,7 +69,7 @@ class Header:
     def __hash__(self) -> int:
         return hash(self.header_path)
 
-    def __init__(self, path: Path, includes: list[Include], structs: list[Composite]):
+    def __init__(self, path: Path, includes: list[Include], structs: list[Composite], local_header_import_map: dict[str, Path]):
         self.path = path
         self.includes = {i.header_path.as_posix(): i for i in includes}
         self.structs = structs
@@ -78,6 +78,11 @@ class Header:
             if t in C_STDLIB_HEADER_IMPORT_MAP:
                 header = C_STDLIB_HEADER_IMPORT_MAP[t]
                 i = self.includes.get(header, self.Include(Path(header), set(), True))
+                i.dependencies.add(t)
+                self.includes[header] = i
+            elif t in local_header_import_map:
+                header = local_header_import_map[t].relative_to(self.path.parent)
+                i = self.includes.get(header, self.Include(header, set(), False))
                 i.dependencies.add(t)
                 self.includes[header] = i
 
