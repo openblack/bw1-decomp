@@ -33,6 +33,8 @@ C_FUNDAMENTAL_TYPES = {
 
 
 C_STDLIB_HEADER_IMPORT_MAP = {
+    "static_assert": "assert.h",
+    "bool": "stdbool.h",
     "int8_t": "stdint.h",
     "int16_t": "stdint.h",
     "int32_t": "stdint.h",
@@ -41,7 +43,6 @@ C_STDLIB_HEADER_IMPORT_MAP = {
     "uint16_t": "stdint.h",
     "uint32_t": "stdint.h",
     "uint64_t": "stdint.h",
-    "static_assert": "assert.h",
 }
 
 

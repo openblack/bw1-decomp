@@ -5,9 +5,21 @@ from dataclasses import dataclass
 import csnake
 
 
+TYPE_SUBSTITUTIONS = {
+    "_Bool": "bool",
+}
+
+
 CALL_TYPE_SUBSTITUTIONS = {
     "cdecl": "__cdecl",
 }
+
+
+def clean_up_type(typename):
+    type_part, pointer_part, after_pointer_part = typename.partition("*")
+    type_part = type_part.rstrip()
+    type_part = TYPE_SUBSTITUTIONS.get(type_part, type_part)
+    return "".join((type_part, pointer_part, after_pointer_part))
 
 
 class CSnakeFuncPtr(csnake.FuncPtr):
@@ -54,8 +66,8 @@ class FuncPtr:
     def __init__(self, name: str, call_type: str, result: str, args: list[str]):
         self.name = name
         self.call_type = CALL_TYPE_SUBSTITUTIONS.get(call_type, call_type)
-        self.result = result.replace(" *", "*")
-        self.args = [a.replace(" *", "*") for a in args]
+        self.result = clean_up_type(result)
+        self.args = list(map(clean_up_type, args))
 
     def get_types(self) -> set[str]:
         result = {self.result}
