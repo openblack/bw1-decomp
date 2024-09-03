@@ -46,7 +46,7 @@ class TestHeaderTypes(unittest.TestCase):
             "struct TestStruct3*[2]",
         })
 
-    def test_direct_dependency_types(self):
+    def test_direct_dependencies(self):
         structs: list[Struct] = [
             Struct("TestStruct2", 0x28, [
                 Struct.Member("field_0x0", "int *", 0x0),
@@ -61,7 +61,8 @@ class TestHeaderTypes(unittest.TestCase):
             ]),
         ]
         h = Header(self.path, includes=[], structs=structs)
-        self.assertSetEqual(h.get_direct_dependency_types(), {
+        self.assertSetEqual(h.get_direct_dependencies(), {
+            "static_assert",
             "struct TestStruct1",
             "enum TestEnum",
             "union TestUnion",
@@ -95,6 +96,38 @@ class TestHeaderTypes(unittest.TestCase):
             "struct TestStruct3",
             "struct TestStruct4",
         })
+
+
+class TestHeaderIncludes(unittest.TestCase):
+    def setUp(self):
+        super().setUp()
+        self.path = Path("src/TestHeader.h")
+
+    def test_stdint(self):
+        h = Header(self.path, [], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0), Struct.Member("field_0x4", "int", 0x4), Struct.Member("field_0x8", "int8_t[2]", 0x8), Struct.Member("field_0xa", "int16_t", 0xa)])])
+        includes = h.get_includes()
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("stdint.h"), {"int16_t", "int8_t", "uint32_t"}, True)])
+
+    def test_with_manual_include(self):
+        h = Header(self.path, [Header.Include(Path('includetest'), {"std::TestInclude"}, True)], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0)])])
+        includes = h.get_includes()
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("includetest"), {"std::TestInclude"}, True), Header.Include(Path("stdint.h"), {"uint32_t"}, True)])
+
+    def test_with_struct_essentials(self):
+        structs: list[Struct] = [
+            Struct("TestStruct", 0, []),
+        ]
+        h = Header(self.path, includes=[], structs=structs)
+        self.cw = CodeWriter()
+        h.to_code(self.cw)
+        code = self.cw.code
+
+        self.assertIn("static_assert", code)  # for the struct size
+
+        includes = h.get_includes()
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True)])
+
+        self.assertEqual(code.count("static_assert"), 2)  # one for the struct size and one for the include
 
 class TestHeaderCreation(unittest.TestCase):
 
@@ -153,6 +186,8 @@ class TestHeaderCreation(unittest.TestCase):
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
 
+#include <assert.h> /* For static_assert */
+
 struct TestStruct
 {
     int field_0x0;
@@ -174,6 +209,8 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
 
+#include <assert.h> /* For static_assert */
+
 struct TestStruct1
 {
     struct TestStruct2 field_0x0;
@@ -194,6 +231,8 @@ static_assert(sizeof(struct TestStruct1) == 0x4, "Data type is of wrong size");
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
 
 // Forward Declares
 struct TestStruct2;
@@ -219,6 +258,8 @@ static_assert(sizeof(struct TestStruct1) == 0x4, "Data type is of wrong size");
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
 
+#include <assert.h> /* For static_assert */
+
 struct TestStruct
 {
     int field_0x0[2];
@@ -239,6 +280,8 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
 
 struct TestStruct
 {
@@ -261,6 +304,8 @@ static_assert(sizeof(struct TestStruct) == 0x438, "Data type is of wrong size");
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
 
+#include <assert.h> /* For static_assert */
+
 struct TestStruct
 {
     int field_0x0[];
@@ -281,6 +326,8 @@ static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
 
 struct TestStruct
 {
@@ -303,6 +350,8 @@ static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
 
+#include <assert.h> /* For static_assert */
+
 struct TestStruct
 {
     int* field_0x0[2];
@@ -323,6 +372,8 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
         self.assertEqual(self.cw.code, """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
 
 struct TestStruct
 {
@@ -351,6 +402,8 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
                          """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
 
 struct TestStruct1
 {
@@ -398,6 +451,8 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
                          """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
 
 // Forward Declares
 enum TestEnum;
@@ -464,6 +519,8 @@ static_assert(sizeof(struct TestStruct2) == 0x28, "Data type is of wrong size");
                          """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
 
 // Forward Declares
 struct TestStruct;

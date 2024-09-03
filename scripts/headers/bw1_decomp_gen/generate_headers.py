@@ -106,12 +106,7 @@ if __name__ == "__main__":
         else:
             raise RuntimeError(f"Need to add guessed path for {t.name} in vanilla_filepaths.py")
         path = Path(project) / f"{name}.h"
-        includes: list[Header.Include] = [
-            Header.Include(Path("assert.h"), {"static_assert"}, True),
-            Header.Include(Path("stddef.h"), {"offsetof", "size_t"}, True),
-            Header.Include(Path("stdint.h"), {}, True),
-            # TODO: for each type, if it's included it doesn't need to be forward declared
-        ]
+        includes: list[Header.Include] = []
         virtual_method_names = [i.name for i in vftable.members] if vftable else []
 
         structs: list[Struct] = []
@@ -122,9 +117,6 @@ if __name__ == "__main__":
         structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
 
         headers.append(Header(path, includes, structs))
-        # TODO: Add vftable function addresses
-        # TODO: Add constructor
-        # TODO: Add various other functions
 
     # TODO: Merge some primitives that would fit in the same header
     # TODO: i.e. Similar type names like vftables, unknown substructures,
@@ -133,6 +125,8 @@ if __name__ == "__main__":
     # TODO: Create a header-to-header dependency graph
 
     # TODO: Topological sort headers ... is this needed?
+
+    # TODO: Keep track of what's been defined/declared and print out what remains to be classified.
 
     for h in headers:
         cw = CodeWriter(indent=2)

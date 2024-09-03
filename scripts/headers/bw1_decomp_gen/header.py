@@ -5,11 +5,12 @@ from dataclasses import dataclass
 from inflection import underscore
 from pathlib import Path
 
-from struct import Struct
+from structs import Composite
 from utils import partition
 
 
 HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
+
 
 C_FUNDAMENTAL_TYPES = {
     'char',
@@ -27,42 +28,76 @@ C_FUNDAMENTAL_TYPES = {
     'double',
     'long double',
     '_Bool',
-    'void'
+    'void',
 }
+
+
+C_STDLIB_HEADER_IMPORT_MAP = {
+    "int8_t": "stdint.h",
+    "int16_t": "stdint.h",
+    "int32_t": "stdint.h",
+    "int64_t": "stdint.h",
+    "uint8_t": "stdint.h",
+    "uint16_t": "stdint.h",
+    "uint32_t": "stdint.h",
+    "uint64_t": "stdint.h",
+    "static_assert": "assert.h",
+}
+
+
+def strip_pointers_arrays_and_modifiers(c_type):
+    c_type = re.sub(r'\*', '', c_type)
+    c_type = re.sub(r'\[\d*\]', '', c_type)
+    c_type = re.sub(r'[()]', '', c_type)
+    c_type = c_type.removeprefix("const ")
+    return c_type
 
 
 @dataclass
 class Header:
     @dataclass(order=True)
     class Include:
-        header_path: Path  # including "" or <>
-        dependencies: set[str]  # TODO: This may be a Union of Struct, Typedef instead
+        header_path: Path
+        dependencies: set[str]
         system: bool
-
+    
     path: Path
-    includes: list[Include]
-    structs: list[Struct]  # TODO: This may be a Union of Struct, Typedef instead
+    includes: dict[str, Include]
+    structs: list[Composite]
+
+    def __hash__(self) -> int:
+        return hash(self.header_path)
+
+    def __init__(self, path: Path, includes: list[Include], structs: list[Composite]):
+        self.path = path
+        self.includes = {i.header_path.as_posix(): i for i in includes}
+        self.structs = structs
+        types = self.get_direct_dependencies()
+        for t in map(strip_pointers_arrays_and_modifiers, types):
+            if t in C_STDLIB_HEADER_IMPORT_MAP:
+                header = C_STDLIB_HEADER_IMPORT_MAP[t]
+                i = self.includes.get(header, self.Include(Path(header), set(), True))
+                i.dependencies.add(t)
+                self.includes[header] = i
 
     def get_types(self) -> set[str]:
         result = set()
         for s in self.structs:
             result.update(s.get_types())
         return result
+    
+    def get_includes(self) -> list[str]:
+        return sorted(list(self.includes.values()))
 
-    def get_direct_dependency_types(self) -> set[str]:
+    def get_direct_dependencies(self) -> set[str]:
         result = self.get_types()
         result = set(filter(lambda x: '*' not in x, result))
+        if self.structs:
+            result.add("static_assert")
         result = result - {f"struct {s.name}" for s in self.structs} - C_FUNDAMENTAL_TYPES
         return result
 
     def get_forward_declare_types(self) -> set[str]:
-        def strip_pointers_arrays_and_modifiers(c_type):
-            c_type = re.sub(r'\*', '', c_type)
-            c_type = re.sub(r'\[\d*\]', '', c_type)
-            c_type = re.sub(r'[()]', '', c_type)
-            c_type = c_type.removeprefix("const ")
-            return c_type
-
         result = set()
         defined_types_so_far = set()
         for s in self.structs:
@@ -71,7 +106,7 @@ class Header:
             struct_types.difference_update(defined_types_so_far)
             result.update(struct_types)
 
-        result.difference_update(self.get_direct_dependency_types())
+        result.difference_update(self.get_direct_dependencies())
         result.difference_update(C_FUNDAMENTAL_TYPES)
         return result
 
@@ -82,7 +117,7 @@ class Header:
         cw.add_line()
 
         if self.includes:
-            include_categories = partition([lambda x: x.system], sorted(self.includes))
+            include_categories = partition([lambda x: x.system], self.get_includes())
             for c in include_categories:
                 c = list(c)
                 if not c:
