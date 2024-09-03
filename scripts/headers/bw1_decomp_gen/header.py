@@ -81,6 +81,8 @@ class Header:
                 i.dependencies.add(t)
                 self.includes[header] = i
             elif t in local_header_import_map:
+                if local_header_import_map[t] == self.path:
+                    continue
                 header = local_header_import_map[t].relative_to(self.path.parent)
                 i = self.includes.get(header, self.Include(header, set(), False))
                 i.dependencies.add(t)
