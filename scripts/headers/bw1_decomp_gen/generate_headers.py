@@ -113,16 +113,13 @@ if __name__ == "__main__":
             includes: list[Header.Include] = []
             virtual_method_names = [i.name for i in vftable.members] if vftable else []
 
-            structs: list[Struct] = []
+            header = header_map.get(path)
+            structs: list[Struct] = header.structs if header is not None else []
             if vftable:
                 structs.append(vftable)
             if t.name in helper_base_map:
                 structs.append(helper_base_map[t.name])
             structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
-
-            header = header_map.get(path)
-            if header is not None:
-                structs += header.structs
 
             for s in structs:
                 local_header_import_map[s.decorated_name] = path
