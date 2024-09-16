@@ -2205,6 +2205,63 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct LocalBase",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BaseInfoVftable__IsClear",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "_Bool",
+      "args": [
+        "const struct BaseInfo *"
+      ],
+      "signature": "_Bool (const struct BaseInfo *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct BaseInfoVftable",
+      "size": 4,
+      "members": [
+        {
+          "name": "IsClear",
+          "type": "BaseInfoVftable__IsClear *",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct BaseInfo",
+      "size": 12,
+      "members": [
+        {
+          "name": "vftable",
+          "type": "struct BaseInfoVftable *",
+          "offset": 0
+        },
+        {
+          "name": "unique_id",
+          "type": "uint32_t",
+          "offset": 4
+        },
+        {
+          "name": "address_offset",
+          "type": "uint32_t",
+          "offset": 8
+        }
+      ]
+    },
+    {
       "kind": "FUNCTIONPROTO",
       "type": "GBaseInfoVftable__GetDebugText",
       "size": 4,
@@ -2318,18 +2375,6 @@
           "name": "index",
           "type": "int",
           "offset": 12
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LocalBase",
-      "size": 8,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
         }
       ]
     },
@@ -113424,51 +113469,6 @@
       ]
     },
     {
-      "kind": "FUNCTIONPROTO",
-      "type": "BaseInfoVftable__IsClear",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "_Bool",
-      "args": [
-        "const struct BaseInfo *"
-      ],
-      "signature": "_Bool (const struct BaseInfo *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct BaseInfoVftable",
-      "size": 4,
-      "members": [
-        {
-          "name": "IsClear",
-          "type": "BaseInfoVftable__IsClear *",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct BaseInfo",
-      "size": 12,
-      "members": [
-        {
-          "name": "vftable",
-          "type": "struct BaseInfoVftable *",
-          "offset": 0
-        },
-        {
-          "name": "field_0x4",
-          "type": "uint32_t",
-          "offset": 4
-        },
-        {
-          "name": "field_0x8",
-          "type": "uint32_t",
-          "offset": 8
-        }
-      ]
-    },
-    {
       "kind": "STRUCT_DECL",
       "type": "struct GInterface",
       "size": 1148,
@@ -123056,6 +123056,22 @@
       ]
     },
     {
+      "win_addr": 4418336,
+      "mac_addr": 268440704,
+      "decorated_name": "Base::SetInfo(BaseInfo*) const",
+      "undecorated_name": "SetInfo__4BaseCFP8BaseInfo",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Base *",
+        "struct BaseInfo *"
+      ],
+      "argument_names": [
+        "this",
+        "info"
+      ]
+    },
+    {
       "win_addr": 8111696,
       "mac_addr": 269091920,
       "decorated_name": "Base::Base(void)",
@@ -123067,20 +123083,6 @@
       ],
       "argument_names": [
         "this"
-      ]
-    },
-    {
-      "win_addr": 4418608,
-      "mac_addr": 272516656,
-      "decorated_name": "GBaseInfo::GetInfoPtr(unsigned long)",
-      "undecorated_name": "GetInfoPtr__9GBaseInfoFUl",
-      "return_type": "struct GBaseInfo *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "int"
-      ],
-      "argument_names": [
-        "index"
       ]
     },
     {
@@ -123117,6 +123119,50 @@
         "size",
         "file_name",
         "line"
+      ]
+    },
+    {
+      "win_addr": 5621616,
+      "mac_addr": 268713040,
+      "decorated_name": "BaseInfo::IsClear(void) const",
+      "undecorated_name": "IsClear__8BaseInfoCFv",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct BaseInfo *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 4418480,
+      "mac_addr": 268440592,
+      "decorated_name": "BaseInfo::Set(Base*)",
+      "undecorated_name": "Set__8BaseInfoFP4Base",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct BaseInfo *",
+        "struct Base *"
+      ],
+      "argument_names": [
+        "this",
+        "base"
+      ]
+    },
+    {
+      "win_addr": 4418608,
+      "mac_addr": 272516656,
+      "decorated_name": "GBaseInfo::GetInfoPtr(unsigned long)",
+      "undecorated_name": "GetInfoPtr__9GBaseInfoFUl",
+      "return_type": "struct GBaseInfo *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "int"
+      ],
+      "argument_names": [
+        "index"
       ]
     },
     {
@@ -139285,6 +139331,11 @@
       "name": "__vt__Base",
       "type": "struct BaseVftable",
       "value": 9083460
+    },
+    {
+      "name": "__vt__BaseInfo",
+      "type": "struct BaseInfoVftable",
+      "value": 9349328
     },
     {
       "name": "__vt__GBaseInfo",
