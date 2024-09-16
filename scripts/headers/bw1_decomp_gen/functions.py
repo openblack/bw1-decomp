@@ -139,6 +139,7 @@ class DefinedFunctionPrototype(FuncPtr):
         return csnake.Function(f"{conv} {self.name}", self.result, arguments=params)
 
     def to_code(self, cw: csnake.CodeWriter):
-        cw.add_line(
-            f"// win1.41 {self.win_addr:08x} mac {self.mac_addr:08x} {self.decorated_name}")
+        win_addr = f"{self.win_addr:08x}" if self.win_addr >= 0 else "inlined"
+        mac_addr = f"{self.mac_addr:08x}" if self.mac_addr >= 0 else "inlined"
+        cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.decorated_name}")
         cw.add_function_prototype(self.to_csnake())

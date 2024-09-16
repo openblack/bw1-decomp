@@ -2218,51 +2218,6 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "BaseInfoVftable__IsClear",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "_Bool",
-      "args": [
-        "const struct BaseInfo *"
-      ],
-      "signature": "_Bool (const struct BaseInfo *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct BaseInfoVftable",
-      "size": 4,
-      "members": [
-        {
-          "name": "IsClear",
-          "type": "BaseInfoVftable__IsClear *",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct BaseInfo",
-      "size": 12,
-      "members": [
-        {
-          "name": "vftable",
-          "type": "struct BaseInfoVftable *",
-          "offset": 0
-        },
-        {
-          "name": "unique_id",
-          "type": "uint32_t",
-          "offset": 4
-        },
-        {
-          "name": "address_offset",
-          "type": "uint32_t",
-          "offset": 8
-        }
-      ]
-    },
-    {
-      "kind": "FUNCTIONPROTO",
       "type": "GBaseInfoVftable__GetDebugText",
       "size": 4,
       "call_type": "__thiscall",
@@ -2375,6 +2330,51 @@
           "name": "index",
           "type": "int",
           "offset": 12
+        }
+      ]
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BaseInfoVftable__IsClear",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "_Bool",
+      "args": [
+        "const struct BaseInfo *"
+      ],
+      "signature": "_Bool (const struct BaseInfo *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct BaseInfoVftable",
+      "size": 4,
+      "members": [
+        {
+          "name": "IsClear",
+          "type": "BaseInfoVftable__IsClear *",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct BaseInfo",
+      "size": 12,
+      "members": [
+        {
+          "name": "vftable",
+          "type": "struct BaseInfoVftable *",
+          "offset": 0
+        },
+        {
+          "name": "unique_id",
+          "type": "uint32_t",
+          "offset": 4
+        },
+        {
+          "name": "address_offset",
+          "type": "uint32_t",
+          "offset": 8
         }
       ]
     },
@@ -122486,17 +122486,19 @@
       ]
     },
     {
-      "win_addr": 4418512,
-      "mac_addr": 271955744,
-      "decorated_name": "GBaseInfo::SetInfoID(void)",
-      "undecorated_name": "SetInfoID__9GBaseInfoFv",
+      "win_addr": 4384032,
+      "mac_addr": -1,
+      "decorated_name": "GAbodeInfo::LoadBinary(LHFile *)",
+      "undecorated_name": "LoadBinary__10GAbodeInfoFP6LHFile",
       "return_type": "void",
       "call_type": "__thiscall",
       "argument_types": [
-        "struct GBaseInfo *"
+        "struct GAbodeInfo *",
+        "struct LHFile *"
       ],
       "argument_names": [
-        "this"
+        "this",
+        "file"
       ]
     },
     {
@@ -122525,6 +122527,20 @@
         "scale",
         "food",
         "wood"
+      ]
+    },
+    {
+      "win_addr": 4205504,
+      "mac_addr": -1,
+      "decorated_name": "Abode::SetZero(void)",
+      "undecorated_name": "SetZero__5AbodeFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Abode *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -122759,6 +122775,22 @@
       ],
       "argument_names": [
         "this"
+      ]
+    },
+    {
+      "win_addr": 4223008,
+      "mac_addr": -1,
+      "decorated_name": "Abode::FindNearestDrinkingWater(float)",
+      "undecorated_name": "FindNearestDrinkingWater__5AbodeFf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Abode *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "max_dist"
       ]
     },
     {
@@ -123122,6 +123154,48 @@
       ]
     },
     {
+      "win_addr": 4418512,
+      "mac_addr": 271955744,
+      "decorated_name": "GBaseInfo::SetInfoID(void)",
+      "undecorated_name": "SetInfoID__9GBaseInfoFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GBaseInfo *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 4418608,
+      "mac_addr": 272516656,
+      "decorated_name": "GBaseInfo::GetInfoPtr(unsigned long)",
+      "undecorated_name": "GetInfoPtr__9GBaseInfoFUl",
+      "return_type": "struct GBaseInfo *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "int"
+      ],
+      "argument_names": [
+        "index"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 271633392,
+      "decorated_name": "BaseInfo::BaseInfo(void)",
+      "undecorated_name": "__ct__8BaseInfoFv",
+      "return_type": "struct BaseInfo *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct BaseInfo *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 5621616,
       "mac_addr": 268713040,
       "decorated_name": "BaseInfo::IsClear(void) const",
@@ -123149,20 +123223,6 @@
       "argument_names": [
         "this",
         "base"
-      ]
-    },
-    {
-      "win_addr": 4418608,
-      "mac_addr": 272516656,
-      "decorated_name": "GBaseInfo::GetInfoPtr(unsigned long)",
-      "undecorated_name": "GetInfoPtr__9GBaseInfoFUl",
-      "return_type": "struct GBaseInfo *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "int"
-      ],
-      "argument_names": [
-        "index"
       ]
     },
     {
@@ -123786,6 +123846,22 @@
       ]
     },
     {
+      "win_addr": 4565040,
+      "mac_addr": -1,
+      "decorated_name": "CameraModeNew3::EndFightNow(int)",
+      "undecorated_name": "EndFightNow__14CameraModeNew3Fi",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CameraModeNew3 *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "param_1"
+      ]
+    },
+    {
       "win_addr": 4563856,
       "mac_addr": 268474592,
       "decorated_name": "CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)",
@@ -123964,6 +124040,20 @@
       "call_type": "__stdcall",
       "argument_types": [],
       "argument_names": []
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 271638080,
+      "decorated_name": "CitadelPart::CitadelPart(void)",
+      "undecorated_name": "__ct__11CitadelPartFv",
+      "return_type": "struct CitadelPart *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CitadelPart *"
+      ],
+      "argument_names": [
+        "this"
+      ]
     },
     {
       "win_addr": 4625392,
@@ -124602,6 +124692,26 @@
       ]
     },
     {
+      "win_addr": 7202096,
+      "mac_addr": -1,
+      "decorated_name": "GData::Rand(float)",
+      "undecorated_name": "Rand__5GDataFf",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GData *",
+        "float",
+        "const char *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "scale",
+        "src_file",
+        "src_line"
+      ]
+    },
+    {
       "win_addr": 5316000,
       "mac_addr": 268617488,
       "decorated_name": "GDebug::SetMessage(unsigned short, char *,",
@@ -124708,6 +124818,20 @@
       ]
     },
     {
+      "win_addr": 5430656,
+      "mac_addr": -1,
+      "decorated_name": "Fixed::Fixed(void)",
+      "undecorated_name": "__ct__5FixedFv",
+      "return_type": "struct Fixed *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Fixed *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 5430720,
       "mac_addr": 269361072,
       "decorated_name": "Fixed::Fixed(MapCoords const &, GObjectInfo const *, float, float)",
@@ -124776,6 +124900,22 @@
       ]
     },
     {
+      "win_addr": 5431664,
+      "mac_addr": -1,
+      "decorated_name": "Fixed::Load(GameOSFile &)",
+      "undecorated_name": "Load__5FixedFR10GameOSFile",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Fixed *",
+        "struct GameOSFile *"
+      ],
+      "argument_names": [
+        "this",
+        "file"
+      ]
+    },
+    {
       "win_addr": 5434160,
       "mac_addr": 269048368,
       "decorated_name": "SingleMapFixed::GetCollideData(void)",
@@ -124784,6 +124924,20 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SingleMapFixed *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 269336864,
+      "decorated_name": "MultiChild::MultiChild(void)",
+      "undecorated_name": "__ct__10MultiChildFv",
+      "return_type": "struct MultiChild *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MultiChild *"
       ],
       "argument_names": [
         "this"
@@ -124803,6 +124957,20 @@
       "argument_names": [
         "param_1",
         "param_2"
+      ]
+    },
+    {
+      "win_addr": 5430288,
+      "mac_addr": -1,
+      "decorated_name": "MultiMapFixed::SortChildren(void)",
+      "undecorated_name": "SortChildren__13MultiMapFixedFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MultiMapFixed *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -125788,6 +125956,20 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 269259296,
+      "decorated_name": "Plasma::Close(void)",
+      "undecorated_name": "Close__6PlasmaFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Plasma *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 5489744,
       "mac_addr": 274483152,
       "decorated_name": "FrontEnd::SetCursorOn(void)",
@@ -126298,6 +126480,22 @@
       ]
     },
     {
+      "win_addr": 5593488,
+      "mac_addr": -1,
+      "decorated_name": "GGame::ResetAndStartPlaygroundGame(char *)",
+      "undecorated_name": "ResetAndStartPlaygroundGame__5GGameFPc",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GGame *",
+        "char *"
+      ],
+      "argument_names": [
+        "this",
+        "path"
+      ]
+    },
+    {
       "win_addr": 6538192,
       "mac_addr": 268558816,
       "decorated_name": "GGame::ProcessOneSuperpacket(void)",
@@ -126395,6 +126593,72 @@
         "this",
         "index",
         "coords"
+      ]
+    },
+    {
+      "win_addr": 5645088,
+      "mac_addr": -1,
+      "decorated_name": "GSaveLoadPtr::GSaveLoadPtr(void*)",
+      "undecorated_name": "__ct__12GSaveLoadPtrFPv",
+      "return_type": "struct GSaveLoadPtr *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GSaveLoadPtr *",
+        "void *"
+      ],
+      "argument_names": [
+        "this",
+        "ptr"
+      ]
+    },
+    {
+      "win_addr": 5653536,
+      "mac_addr": -1,
+      "decorated_name": "GSaveLoadPtrList::PushBack(GSaveLoadPtr *)",
+      "undecorated_name": "Push__GSaveLoadPtrListFP12GSaveLoadPtr",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GSaveLoadPtrList *",
+        "struct GSaveLoadPtr *"
+      ],
+      "argument_names": [
+        "this",
+        "ptr"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 271899648,
+      "decorated_name": "GameOSFile::ReadIt<int>(int*)",
+      "undecorated_name": "ReadIt_i32___10GameOSFileFRUl",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GameOSFile *",
+        "int *"
+      ],
+      "argument_names": [
+        "this",
+        "out"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "GameOSFile::Open(char *, LH_FILE_MODE)",
+      "undecorated_name": "Open__10GameOSFileFPc12LH_FILE_MODE",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GameOSFile *",
+        "char *",
+        "enum LH_FILE_MODE"
+      ],
+      "argument_names": [
+        "this",
+        "filename",
+        "mode"
       ]
     },
     {
@@ -127440,6 +127704,22 @@
       ]
     },
     {
+      "win_addr": 5623888,
+      "mac_addr": -1,
+      "decorated_name": "GameThingWithPos::GameThingWithPos(MapCoords const &)",
+      "undecorated_name": "__ct__16GameThingWithPosFRC9MapCoords",
+      "return_type": "struct GameThingWithPos *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GameThingWithPos *",
+        "const struct MapCoords *"
+      ],
+      "argument_names": [
+        "this",
+        "coords"
+      ]
+    },
+    {
       "win_addr": 5702816,
       "mac_addr": 269918912,
       "decorated_name": "GameThingWithPos::Load(GameOSFile &)",
@@ -127453,6 +127733,22 @@
       "argument_names": [
         "this",
         "file"
+      ]
+    },
+    {
+      "win_addr": 5653600,
+      "mac_addr": -1,
+      "decorated_name": "GameThingList::PushBack(GameThing *)",
+      "undecorated_name": "PushBack__13GameThingListFP9GameThing",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GameThingList *",
+        "struct GameThing *"
+      ],
+      "argument_names": [
+        "this",
+        "thing"
       ]
     },
     {
@@ -127996,6 +128292,38 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 268540144,
+      "decorated_name": "GLandscape::ConvertLandscapePointToMapCoord(LHPoint const &, MapCoords &)",
+      "undecorated_name": "ConvertLandscapePointToMapCoord__10GLandscapeFRC7LHPointR9MapCoords",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const struct LHPoint *",
+        "struct MapCoords *"
+      ],
+      "argument_names": [
+        "point",
+        "coords"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 275733556,
+      "decorated_name": "LH3DIsland::ConvertAbsoluteMapCoordToLandscapePoint(LH3DMapCoords const &, LHPoint &)",
+      "undecorated_name": "ConvertAbsoluteMapCoordToLandscapePoint__10GLandscapeFRC9MapCoordsR7LHPoint",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const struct MapCoords *",
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "coords",
+        "point"
+      ]
+    },
+    {
       "win_addr": 6181600,
       "mac_addr": 272080720,
       "decorated_name": "GLandscape::Open(char *)",
@@ -128009,6 +128337,20 @@
       "argument_names": [
         "this",
         "path"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268487952,
+      "decorated_name": "LandCell::IsWater(void)",
+      "undecorated_name": "IsWater__8LandCellFv",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LandCell *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -128035,6 +128377,22 @@
       "argument_names": [
         "x",
         "z"
+      ]
+    },
+    {
+      "win_addr": 6345632,
+      "mac_addr": -1,
+      "decorated_name": "LH3DIsland::IsWater(long, long)",
+      "undecorated_name": "IsWater__10LH3DIslandFll",
+      "return_type": "_Bool",
+      "call_type": "cdecl",
+      "argument_types": [
+        "int",
+        "int"
+      ],
+      "argument_names": [
+        "x",
+        "y"
       ]
     },
     {
@@ -128090,6 +128448,22 @@
       "argument_names": []
     },
     {
+      "win_addr": 4634400,
+      "mac_addr": -1,
+      "decorated_name": "LHOSFile::Write(char *const)",
+      "undecorated_name": "Write__8LHOSFileFCPc",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHOSFile *",
+        "const char *"
+      ],
+      "argument_names": [
+        "this",
+        "str"
+      ]
+    },
+    {
       "win_addr": 8111696,
       "mac_addr": 269897664,
       "decorated_name": "LHOSFile::LHOSFile(void)",
@@ -128117,6 +128491,20 @@
       "argument_names": [
         "this",
         "param_2"
+      ]
+    },
+    {
+      "win_addr": 8111744,
+      "mac_addr": -1,
+      "decorated_name": "LHOSFile::~LHOSFile(void)",
+      "undecorated_name": "__dt__8LHOSFileFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHOSFile *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -128188,7 +128576,7 @@
     {
       "win_addr": 8112352,
       "mac_addr": 274844820,
-      "decorated_name": "LHOSFile::Read(void *, unsigned long, unsigned long *)",
+      "decorated_name": "LHOSFile::Read(void* , unsigned long, unsigned long *)",
       "undecorated_name": "Read__8LHOSFileFPvUlPUl",
       "return_type": "uint32_t",
       "call_type": "__thiscall",
@@ -128208,7 +128596,7 @@
     {
       "win_addr": 8112416,
       "mac_addr": 274840500,
-      "decorated_name": "LHOSFile::Write(void *, unsigned long, unsigned long *)",
+      "decorated_name": "LHOSFile::Write(void* , unsigned long, unsigned long *)",
       "undecorated_name": "Write__8LHOSFileFPvUlPUl",
       "return_type": "uint32_t",
       "call_type": "__thiscall",
@@ -128223,6 +128611,20 @@
         "data",
         "len",
         "written"
+      ]
+    },
+    {
+      "win_addr": 8285456,
+      "mac_addr": -1,
+      "decorated_name": "LHReleasedOSFile::LHReleasedOSFile(void)",
+      "undecorated_name": "__ct__16LHReleasedOSFileFv",
+      "return_type": "struct LHReleasedOSFile *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHReleasedOSFile *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -128501,6 +128903,20 @@
       "argument_names": [
         "this",
         "index"
+      ]
+    },
+    {
+      "win_addr": 6212224,
+      "mac_addr": -1,
+      "decorated_name": "Living::SetTopStateToFinal(void)",
+      "undecorated_name": "SetTopStateToFinal__6LivingFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -128880,6 +129296,22 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 268747808,
+      "decorated_name": "LivingAction::GetState(unsigned long) const",
+      "undecorated_name": "GetState__12LivingActionCFUl",
+      "return_type": "enum VILLAGER_STATES",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct LivingAction *",
+        "enum LIVING_ACTION_INDEX"
+      ],
+      "argument_names": [
+        "this",
+        "index"
+      ]
+    },
+    {
       "win_addr": 6271920,
       "mac_addr": 272294688,
       "decorated_name": "GMagicInfo::GetInfoFromText(char const *)",
@@ -129028,6 +129460,20 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 268617248,
+      "decorated_name": "MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)",
+      "undecorated_name": "MoveToMobileObsIfNeededAndPoss__15MapCellIteratorFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MapCellIterator *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 6366816,
       "mac_addr": 269475312,
       "decorated_name": "GMap::ToMap(long, long)",
@@ -129056,6 +129502,24 @@
         "struct GMap *",
         "uint32_t",
         "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "x",
+        "z"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268644128,
+      "decorated_name": "JustMapXZ::Init(ushort, ushort)",
+      "undecorated_name": "Init__9JustMapXZFUsUs",
+      "return_type": "struct JustMapXZ *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct JustMapXZ *",
+        "int16_t",
+        "int16_t"
       ],
       "argument_names": [
         "this",
@@ -129260,6 +129724,208 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 268737168,
+      "decorated_name": "MapCoords::MapX(void) const",
+      "undecorated_name": "MapX__13LH3DMapCoordsCFv",
+      "return_type": "uint16_t",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const struct MapCoords *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268719856,
+      "decorated_name": "MapCoords::MapZ(void) const",
+      "undecorated_name": "MapZ__13LH3DMapCoordsCFv",
+      "return_type": "uint16_t",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const struct MapCoords *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268871872,
+      "decorated_name": "MapCoords::AddToMapX(void) const",
+      "undecorated_name": "AddToMapX__9MapCoordsFs",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MapCoords *",
+        "uint16_t"
+      ],
+      "argument_names": [
+        "this",
+        "x"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268871808,
+      "decorated_name": "MapCoords::AddToMapZ(void) const",
+      "undecorated_name": "AddToMapZ__9MapCoordsFs",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MapCoords *",
+        "uint16_t"
+      ],
+      "argument_names": [
+        "this",
+        "z"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "MapCoords::CentreOnMap(void)",
+      "undecorated_name": "CentreOnMap__13LH3DMapCoordsFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MapCoords *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "MapCoords::SetFractionX(short)",
+      "undecorated_name": "SetCellX__13LH3DMapCoordsFs",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MapCoords *",
+        "uint16_t"
+      ],
+      "argument_names": [
+        "this",
+        "x"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "MapCoords::SetFractionZ(short)",
+      "undecorated_name": "SetCellZ__13LH3DMapCoordsFs",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MapCoords *",
+        "uint16_t"
+      ],
+      "argument_names": [
+        "this",
+        "z"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268719856,
+      "decorated_name": "MapCoords::WholeX(void) const",
+      "undecorated_name": "WholeX__13LH3DMapCoordsCFv",
+      "return_type": "uint32_t",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const struct MapCoords *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268720736,
+      "decorated_name": "MapCoords::WholeZ(void) const",
+      "undecorated_name": "WholeZ__13LH3DMapCoordsCFv",
+      "return_type": "uint32_t",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const struct MapCoords *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268739024,
+      "decorated_name": "MapCoords::Altitude(void) const",
+      "undecorated_name": "Altitude__9MapCoordsCFv",
+      "return_type": "float",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const struct MapCoords *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268742240,
+      "decorated_name": "MapCoords::SetWholeX(int)",
+      "undecorated_name": "SetWholeX__9MapCoordsFl",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct MapCoords *",
+        "const void *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "x"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268742304,
+      "decorated_name": "MapCoords::SetWholeZ(int)",
+      "undecorated_name": "SetWholeZ__9MapCoordsFl",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct MapCoords *",
+        "const void *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "z"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268742368,
+      "decorated_name": "MapCoords::SetAltitude(float)",
+      "undecorated_name": "SetAltitude__9MapCoordsFf",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct MapCoords *",
+        "const void *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "altitude"
+      ]
+    },
+    {
       "win_addr": 6371152,
       "mac_addr": 268731760,
       "decorated_name": "GLandscape::ConvertMapCoordToLandscapePoint(MapCoords const &)",
@@ -129432,6 +130098,26 @@
       ]
     },
     {
+      "win_addr": 6294912,
+      "mac_addr": -1,
+      "decorated_name": "MobileObject::MobileObject(MapCoords const &, GMobileInfo const *)",
+      "undecorated_name": "__ct__6MobileFRC9MapCoordsPC11GMobileInfo",
+      "return_type": "struct Mobile *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Mobile *",
+        "const void *",
+        "struct MapCoords *",
+        "struct GMobileInfo *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "coords",
+        "info"
+      ]
+    },
+    {
       "win_addr": 6319680,
       "mac_addr": 272358912,
       "decorated_name": "MobileObject::MobileObject(MapCoords const &, GMobileObjectInfo const *, Object *, float, float)",
@@ -129523,6 +130209,134 @@
       "argument_names": [
         "this",
         "cell"
+      ]
+    },
+    {
+      "win_addr": 6354752,
+      "mac_addr": -1,
+      "decorated_name": "Point2DCompare<0>::operator=(const Point2DCompare<0>*)",
+      "undecorated_name": "__as__17Point2DCompare_0_",
+      "return_type": "struct Point2DCompare *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Point2DCompare *",
+        "const void *",
+        "struct Point2DCompare *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6354720,
+      "mac_addr": -1,
+      "decorated_name": "Point2DCompare<1>::operator=(const Point2DCompare<1>*)",
+      "undecorated_name": "__as__17Point2DCompare_1_",
+      "return_type": "struct Point2DCompare *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Point2DCompare *",
+        "const void *",
+        "struct Point2DCompare *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6357488,
+      "mac_addr": -1,
+      "decorated_name": "Point2DCompare<0>::operator<(const Point2DCompare<0>*)",
+      "undecorated_name": "__lt__17Point2DCompare_FRC17Point2DCompare_0_",
+      "return_type": "_Bool",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Point2DCompare *",
+        "const void *",
+        "struct Point2DCompare *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6357376,
+      "mac_addr": -1,
+      "decorated_name": "Point2DCompare<1>::operator<(const Point2DCompare<1>*)",
+      "undecorated_name": "__lt__17Point2DCompare_FRC17Point2DCompare_1_",
+      "return_type": "_Bool",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Point2DCompare *",
+        "const void *",
+        "struct Point2DCompare *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6357552,
+      "mac_addr": -1,
+      "decorated_name": "Point2DCompare<0>::Resolve()",
+      "undecorated_name": "Resolve__Point2DCompare_0_",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Point2DCompare *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6357440,
+      "mac_addr": -1,
+      "decorated_name": "Point2DCompare<1>::Resolve()",
+      "undecorated_name": "Resolve__Point2DCompare_1_",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Point2DCompare *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6384112,
+      "mac_addr": -1,
+      "decorated_name": "IntersectIntervalCircle<0>Resolve(void)",
+      "undecorated_name": "Resolve__26IntersectIntervalCircle_0_Fv",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct IntersectIntervalCircle *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6384112,
+      "mac_addr": -1,
+      "decorated_name": "IntersectIntervalCircle<1>Resolve(void)",
+      "undecorated_name": "Resolve__26IntersectIntervalCircle_1_Fv",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct IntersectIntervalCircle *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -129678,6 +130492,20 @@
       ]
     },
     {
+      "win_addr": 6331664,
+      "mac_addr": -1,
+      "decorated_name": "MobileWallHug::RebuildMoveByStep(void)",
+      "undecorated_name": "RebuildMoveByStep__13MobileWallHugFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MobileWallHug *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 4671632,
       "mac_addr": 270404528,
       "decorated_name": "MobileWallHug::MobileWallHug(void)",
@@ -129689,6 +130517,24 @@
       ],
       "argument_names": [
         "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "MobileWallHug::MobileWallHug(MapCoords const &, GMobileWallHugInfo const *)",
+      "undecorated_name": "__ct__13MobileWallHugFRC9MapCoordsPC18GMobileWallHugInfo",
+      "return_type": "struct MobileWallHug *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MobileWallHug *",
+        "struct MapCoords *",
+        "struct GMobileWallHugInfo *"
+      ],
+      "argument_names": [
+        "this",
+        "coords",
+        "info"
       ]
     },
     {
@@ -129924,6 +130770,20 @@
       ]
     },
     {
+      "win_addr": 8676992,
+      "mac_addr": -1,
+      "decorated_name": "LH3DHair::LH3DHair(void)",
+      "undecorated_name": "__ct__LH3DHair",
+      "return_type": "struct LH3DHair *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DHair *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 8681616,
       "mac_addr": 268703152,
       "decorated_name": "LH3DHair::ReadBinary(LHFile *, long, long, HairGroup *)",
@@ -130072,7 +130932,7 @@
     {
       "win_addr": 6386448,
       "mac_addr": 269520144,
-      "decorated_name": "Morphable::MorphInit(LHPoint &, long, void *)",
+      "decorated_name": "Morphable::MorphInit(LHPoint &, long, void* )",
       "undecorated_name": "MorphInit__9MorphableFR7LHPointlPv",
       "return_type": "void",
       "call_type": "__thiscall",
@@ -130906,6 +131766,20 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 271631760,
+      "decorated_name": "Pot::Pot(void)",
+      "undecorated_name": "__ct__3PotFv",
+      "return_type": "struct Pot *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Pot *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 6737600,
       "mac_addr": 269602480,
       "decorated_name": "Pot::SetToZero(void)",
@@ -131050,7 +131924,7 @@
     {
       "win_addr": 8819104,
       "mac_addr": 269126560,
-      "decorated_name": "RouteNode::GetLength(RPAvoid *)",
+      "decorated_name": "RouteNode::GetLength(RPAvoid* )",
       "undecorated_name": "GetLength__9RouteNodeFP7RPAvoid",
       "return_type": "float",
       "call_type": "__thiscall",
@@ -131066,7 +131940,7 @@
     {
       "win_addr": 8819136,
       "mac_addr": 269126128,
-      "decorated_name": "RouteNode::GetArcLength(RPAvoid *)",
+      "decorated_name": "RouteNode::GetArcLength(RPAvoid* )",
       "undecorated_name": "GetArcLength__9RouteNodeFP7RPAvoid",
       "return_type": "float",
       "call_type": "__thiscall",
@@ -131718,6 +132592,22 @@
       ]
     },
     {
+      "win_addr": 7516256,
+      "mac_addr": -1,
+      "decorated_name": "GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const",
+      "undecorated_name": "SpellSeedIsOfMagicType__14GSpellSeedInfoCF10MAGIC_TYPE",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct GSpellSeedInfo *",
+        "enum MAGIC_TYPE"
+      ],
+      "argument_names": [
+        "this",
+        "type"
+      ]
+    },
+    {
       "win_addr": 7516304,
       "mac_addr": 273864432,
       "decorated_name": "GSpellSeedInfo::GetFirstSpellSeedForMagicType(MAGIC_TYPE)",
@@ -131730,6 +132620,26 @@
       "argument_names": [
         "magic_type"
       ]
+    },
+    {
+      "win_addr": 13668760,
+      "mac_addr": -1,
+      "decorated_name": "get_villager_state_table ",
+      "undecorated_name": "get_villager_state_table",
+      "return_type": "struct VillagerStateTable *",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268742640,
+      "decorated_name": "GVillagerStateTableInfo::GetInfo(void)",
+      "undecorated_name": "GetInfo__23GVillagerStateTableInfoFv",
+      "return_type": "struct GVillagerStateTableInfo *",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
     },
     {
       "win_addr": 7948848,
@@ -133082,6 +133992,62 @@
       ]
     },
     {
+      "win_addr": 5963744,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateFleeingFromObjectReaction(void)",
+      "undecorated_name": "StateFleeingFromObjectReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963872,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateLookingAtObjectReaction(void)",
+      "undecorated_name": "StateLookingAtObjectReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5964208,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateFollowingObjectReaction(void)",
+      "undecorated_name": "StateFollowingObjectReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5964352,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateInspectObjectReaction(void)",
+      "undecorated_name": "StateInspectObjectReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 6210352,
       "mac_addr": 272116976,
       "decorated_name": "Living::Flying(void)",
@@ -133110,6 +134076,146 @@
       ]
     },
     {
+      "win_addr": 5964336,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateLookingAtFlyingObjectReaction(void)",
+      "undecorated_name": "StateLookingAtFlyingObjectReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963584,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateSetDying(void)",
+      "undecorated_name": "StateSetDying__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963312,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateDying(void)",
+      "undecorated_name": "StateDying__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963408,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateDead(void)",
+      "undecorated_name": "StateDead__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 7776128,
+      "mac_addr": -1,
+      "decorated_name": "Villager::Drowning(void)",
+      "undecorated_name": "Drowning__8VillagerFv",
+      "return_type": "uint32_t",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963568,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateDowned(void)",
+      "undecorated_name": "StateDowned__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963856,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateBeingGoToFoodReaction(void)",
+      "undecorated_name": "StateGoToFoodReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963296,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateArrivesAtFoodReaction(void)",
+      "undecorated_name": "StateArrivesAtFoodReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5964016,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateBeingGoToWoodReaction(void)",
+      "undecorated_name": "StateGoToWoodReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963392,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateArrivesAtWoodReaction(void)",
+      "undecorated_name": "StateArrivesAtWoodReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 6211984,
       "mac_addr": 268783136,
       "decorated_name": "Living::WaitForAnimation(void)",
@@ -133124,9 +134230,23 @@
       ]
     },
     {
+      "win_addr": 5963552,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateInHand(void)",
+      "undecorated_name": "StateInHand__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 6235712,
       "mac_addr": 272129536,
-      "decorated_name": "Living::StateInHand(void)",
+      "decorated_name": "Living::GotoPickupBallReaction(void)",
       "undecorated_name": "GotoPickupBallReaction__6LivingFv",
       "return_type": "uint32_t",
       "call_type": "__thiscall",
@@ -133146,6 +134266,48 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5964176,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateMoveInFlock(void)",
+      "undecorated_name": "StateMoveInFlock__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5963840,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateAlongPath(void)",
+      "undecorated_name": "StateAlongPath__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5964000,
+      "mac_addr": -1,
+      "decorated_name": "Living::StateFleeingAndLookingAtObjectReaction(void)",
+      "undecorated_name": "StateFleeingAndLookingAtObjectReaction__6LivingFv",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Living *"
       ],
       "argument_names": [
         "this"
@@ -133275,6 +134437,20 @@
       ],
       "argument_names": [
         "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 274850844,
+      "decorated_name": "Villager::GetStateTable(void)",
+      "undecorated_name": "GetStateTable__8VillagerFv",
+      "return_type": "struct LivingStateTableEntry *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "enum VILLAGER_STATES"
+      ],
+      "argument_names": [
+        "state"
       ]
     },
     {
@@ -134072,7 +135248,7 @@
     {
       "win_addr": 7779856,
       "mac_addr": 268507360,
-      "decorated_name": "Villager::GetMeToMyChillOutPos(int (Villager::)(void const *, void *, MapCoords &), MapCoords &, float, MapCoords const &)",
+      "decorated_name": "Villager::GetMeToMyChillOutPos(int (Villager::)(void const *, void* , MapCoords &), MapCoords &, float, MapCoords const &)",
       "undecorated_name": "GetMeToMyChillOutPos__8VillagerFM8VillagerFPCvPvR9MapCoords_iR9MapCoordsfRC9MapCoords",
       "return_type": "void",
       "call_type": "__thiscall",
@@ -134193,6 +135369,20 @@
         "scale",
         "food",
         "wood"
+      ]
+    },
+    {
+      "win_addr": 7835744,
+      "mac_addr": -1,
+      "decorated_name": "Wonder::SetZero(void)",
+      "undecorated_name": "SetZero__6WonderFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Wonder *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -134356,6 +135546,20 @@
       ]
     },
     {
+      "win_addr": 7860720,
+      "mac_addr": -1,
+      "decorated_name": "WorshipSpellIcon::SetZero(void)",
+      "undecorated_name": "SetZero__16WorshipSpellIconFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct WorshipSpellIcon *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 7860880,
       "mac_addr": 274427456,
       "decorated_name": "WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)",
@@ -134420,6 +135624,20 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct WorshipSpellIcon *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 7867120,
+      "mac_addr": -1,
+      "decorated_name": "WorshipTotem::TChargingData::TChargingData(void)",
+      "undecorated_name": "__ct__Q212WorshipTotem13TChargingDataFv",
+      "return_type": "struct WorshipTotem__TChargingData *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct WorshipTotem__TChargingData *"
       ],
       "argument_names": [
         "this"
@@ -134570,6 +135788,22 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 269034688,
+      "decorated_name": "HelpTextDataBase::GetHelpText(unsigned long) const",
+      "undecorated_name": "GetHelpText__16HelpTextDataBaseCFUl",
+      "return_type": "const char16_t *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct HelpTextDataBase *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "index"
+      ]
+    },
+    {
       "win_addr": 8774784,
       "mac_addr": 274857804,
       "decorated_name": "CAnim::CAnim(void)",
@@ -134698,6 +135932,20 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 269521504,
+      "decorated_name": "LH3DAnimSet::__ct(void)",
+      "undecorated_name": "__ct__11LH3DAnimSetFv",
+      "return_type": "struct LH3DAnimSet *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DAnimSet *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 4999536,
       "mac_addr": 270733008,
       "decorated_name": "CatInfo::Read(std::_FILE *)",
@@ -134792,6 +136040,16 @@
       ]
     },
     {
+      "win_addr": 4564976,
+      "mac_addr": -1,
+      "decorated_name": "LH3DCamera::GetPos(void)",
+      "undecorated_name": "GetPos__10LH3DCameraFv",
+      "return_type": "struct LHPoint *",
+      "call_type": "__stdcall",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
       "win_addr": 8523856,
       "mac_addr": 269241840,
       "decorated_name": "LH3DCameraChecker::Create(float, LHPoint, float, long, bool)",
@@ -134811,6 +136069,60 @@
         "param_3",
         "param_4",
         "y_only"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268975168,
+      "decorated_name": "LH3DColor::LH3DColor(uint)",
+      "undecorated_name": "ct__9LH3DColorFUl",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LH3DColor *",
+        "const void *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "color"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268775600,
+      "decorated_name": "LH3DColor::LH3DColor(LH3DColor const &)",
+      "undecorated_name": "ct__9LH3DColorFRC9LH3DColor",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LH3DColor *",
+        "const void *",
+        "const struct LH3DColor *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 273144832,
+      "decorated_name": "LH3DColor::operator=(LH3DColor const &)",
+      "undecorated_name": "as__9LH3DColorFRC9LH3DColor",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LH3DColor *",
+        "const void *",
+        "const struct LH3DColor *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
       ]
     },
     {
@@ -134842,9 +136154,23 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 272471056,
+      "decorated_name": "LH3DMesh::GetPackedMesh(long)",
+      "undecorated_name": "GetPackedMesh__8LH3DMeshFl",
+      "return_type": "struct LH3DMesh *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "int"
+      ],
+      "argument_names": [
+        "index"
+      ]
+    },
+    {
       "win_addr": 8414304,
       "mac_addr": 268879648,
-      "decorated_name": "LH3DMesh::Create(void *, int)",
+      "decorated_name": "LH3DMesh::Create(void* , int)",
       "undecorated_name": "Create__8LH3DMeshFPvi",
       "return_type": "struct LH3DMesh *",
       "call_type": "cdecl",
@@ -134998,6 +136324,20 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LH3DObject::LH3DObject(void)",
+      "undecorated_name": "__ct__10LH3DObjectFv",
+      "return_type": "struct LH3DObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 4337984,
       "mac_addr": 268702848,
       "decorated_name": "Game3DObject::SetPosition(const LHPoint&, float, float)",
@@ -135086,6 +136426,48 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct LH3DStaticObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268969648,
+      "decorated_name": "LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)",
+      "undecorated_name": "__ct__25LH3DStaticMorphableObjectFv",
+      "return_type": "struct LH3DStaticMorphableObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DStaticMorphableObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LH3DAnimatedObject::LH3DAnimatedObject(void)",
+      "undecorated_name": "__ct__18LH3DAnimatedObjectFv",
+      "return_type": "struct LH3DAnimatedObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DAnimatedObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LH3DComplexObject::LH3DComplexObject(void)",
+      "undecorated_name": "__ct__17LH3DComplexObjectFv",
+      "return_type": "struct LH3DComplexObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DComplexObject *"
       ],
       "argument_names": [
         "this"
@@ -135279,6 +136661,28 @@
       "argument_names": [
         "param_1",
         "param_2"
+      ]
+    },
+    {
+      "win_addr": 8565456,
+      "mac_addr": -1,
+      "decorated_name": "LH3DRender::SetProjMatrix(D3DMATRIX *, D3DMATRIX *, float, float, float)",
+      "undecorated_name": "SetProjMatrix__10LH3DRenderFP9D3DMATRIXP9D3DMATRIXfff",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "D3DMATRIX *",
+        "D3DMATRIX *",
+        "float",
+        "float",
+        "float"
+      ],
+      "argument_names": [
+        "param_1",
+        "projection",
+        "near_plane",
+        "far_plane",
+        "fov"
       ]
     },
     {
@@ -135480,6 +136884,16 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 269038128,
+      "decorated_name": "LH3DTech::GetDeltaTime(void)",
+      "undecorated_name": "GetDeltaTime__8LH3DTechFv",
+      "return_type": "uint32_t",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
       "win_addr": 6391472,
       "mac_addr": 274837428,
       "decorated_name": "LH3DTexture::Create",
@@ -135498,6 +136912,16 @@
         "",
         ""
       ]
+    },
+    {
+      "win_addr": 8615904,
+      "mac_addr": -1,
+      "decorated_name": "LH3DTexture::SetPackedTexture(void)",
+      "undecorated_name": "SetPackedTexture__LH3DTextureFv",
+      "return_type": "void",
+      "call_type": "__stdcall",
+      "argument_types": [],
+      "argument_names": []
     },
     {
       "win_addr": 8617280,
@@ -135525,6 +136949,22 @@
       ],
       "argument_names": [
         "id"
+      ]
+    },
+    {
+      "win_addr": 8614736,
+      "mac_addr": -1,
+      "decorated_name": "LHReleasedFile::__ct(char const *)",
+      "undecorated_name": "__ct__14LHReleasedFileFPCc",
+      "return_type": "struct LHReleasedFile *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHReleasedFile *",
+        "const char *"
+      ],
+      "argument_names": [
+        "this",
+        "name"
       ]
     },
     {
@@ -135564,6 +137004,70 @@
       ]
     },
     {
+      "win_addr": 8154544,
+      "mac_addr": -1,
+      "decorated_name": "LHFilePath::fprintf ",
+      "undecorated_name": "fprintf__LHFilePath",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHFilePath *",
+        "char *",
+        "void *"
+      ],
+      "argument_names": [
+        "path",
+        "fmt",
+        ""
+      ]
+    },
+    {
+      "win_addr": 8158634,
+      "mac_addr": -1,
+      "decorated_name": "LHFilePath::fscanf",
+      "undecorated_name": "fscanf_LHFilePath",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHFilePath *",
+        "const char *",
+        "void *"
+      ],
+      "argument_names": [
+        "path",
+        "fmt",
+        ""
+      ]
+    },
+    {
+      "win_addr": 8158679,
+      "mac_addr": -1,
+      "decorated_name": "LHFilePath::getc",
+      "undecorated_name": "getc_LHFilePath",
+      "return_type": "char",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHFilePath *"
+      ],
+      "argument_names": [
+        "path"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268813760,
+      "decorated_name": "LHSegment::LHSegment(void)",
+      "undecorated_name": "__ct__9LHSegmentFv",
+      "return_type": "struct LHSegment *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHSegment *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 4382992,
       "mac_addr": 270022224,
       "decorated_name": "LHFile::LHFile(void)",
@@ -135572,6 +137076,20 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct LHFile *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 270308176,
+      "decorated_name": "LHReleasedFile::LHReleasedFile",
+      "undecorated_name": "__ct__14LHReleasedFileFv",
+      "return_type": "struct LHReleasedFile *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHReleasedFile *"
       ],
       "argument_names": [
         "this"
@@ -135720,7 +137238,7 @@
     {
       "win_addr": 8118560,
       "mac_addr": 268455056,
-      "decorated_name": "LHFile::ReadData(void *, unsigned long)",
+      "decorated_name": "LHFile::ReadData(void* , unsigned long)",
       "undecorated_name": "ReadData__6LHFileFPvUl",
       "return_type": "uint32_t",
       "call_type": "__thiscall",
@@ -135788,7 +137306,7 @@
     {
       "win_addr": 8118336,
       "mac_addr": 269904816,
-      "decorated_name": "LHFile::GetSegmentData(void *, unsigned long, long)",
+      "decorated_name": "LHFile::GetSegmentData(void* , unsigned long, long)",
       "undecorated_name": "GetSegmentData__6LHFileFPvUll",
       "return_type": "uint32_t",
       "call_type": "__thiscall",
@@ -135819,6 +137337,22 @@
       "argument_names": [
         "this",
         "segment"
+      ]
+    },
+    {
+      "win_addr": 4207984,
+      "mac_addr": -1,
+      "decorated_name": "LHMatrix::PostTranslation(const LHPoint&)",
+      "undecorated_name": "PostTranslation__8LHMatrixFRC7LHPoint",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHMatrix *",
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "this",
+        "translation"
       ]
     },
     {
@@ -135934,6 +137468,24 @@
       ]
     },
     {
+      "win_addr": 6361456,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::DotProduct(Point2D&)",
+      "undecorated_name": "DotProduct__7Point2DRP7Point2D",
+      "return_type": "float",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct LHPoint2D *",
+        "const void *",
+        "const struct LHPoint2D *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
+      ]
+    },
+    {
       "win_addr": 6361632,
       "mac_addr": 269127008,
       "decorated_name": "Point2D::operator=(const Point2D&) copy",
@@ -135942,6 +137494,24 @@
       "call_type": "__fastcall",
       "argument_types": [
         "struct LHPoint2D *",
+        "const void *",
+        "const struct LHPoint2D *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6361872,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::DotProduct(Point2D*)",
+      "undecorated_name": "DotProduct__7Point2DFP7Point2D",
+      "return_type": "float",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct LHPoint2D *",
         "const void *",
         "const struct LHPoint2D *"
       ],
@@ -135969,6 +137539,64 @@
         "edx",
         "result",
         "rhs"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 269129024,
+      "decorated_name": "Point2D::operator+( const(Point2D const &))",
+      "undecorated_name": "__pl__7Point2DCFRC7Point2D",
+      "return_type": "struct LHPoint2D *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHPoint2D *",
+        "const void *",
+        "const struct LHPoint2D *",
+        "const struct LHPoint2D *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "lhs",
+        "rhs"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268995600,
+      "decorated_name": "Point2D::operator-( const(Point2D const &))",
+      "undecorated_name": "__mi__7Point2DCFRC7Point2D",
+      "return_type": "struct LHPoint2D *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHPoint2D *",
+        "const void *",
+        "const struct LHPoint2D *",
+        "const struct LHPoint2D *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "lhs",
+        "rhs"
+      ]
+    },
+    {
+      "win_addr": 6361664,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::Cross(const Point2D&) const",
+      "undecorated_name": "Cross__7Point2DCFRC7Point2D",
+      "return_type": "float",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct LHPoint2D *",
+        "const void *",
+        "const struct LHPoint2D *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
       ]
     },
     {
@@ -136011,6 +137639,24 @@
       ],
       "argument_names": [
         "this"
+      ]
+    },
+    {
+      "win_addr": 6379968,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::operator==(const Point2D&)",
+      "undecorated_name": "__eq__7Point2DFRC7Point2D",
+      "return_type": "_Bool",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHPoint2D *",
+        "const void *",
+        "const struct LHPoint2D *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "other"
       ]
     },
     {
@@ -136216,6 +137862,22 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "ScriptDLL::ScriptDLL(const char*)",
+      "undecorated_name": "__ct__9ScriptDLLFPCc",
+      "return_type": "struct ScriptDLL *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct ScriptDLL *",
+        "char *"
+      ],
+      "argument_names": [
+        "this",
+        "library_path"
+      ]
+    },
+    {
       "win_addr": 7299872,
       "mac_addr": 273583728,
       "decorated_name": "ScriptDLL::Create(char const *)",
@@ -136358,7 +138020,7 @@
     {
       "win_addr": 8338688,
       "mac_addr": 269943968,
-      "decorated_name": "slim::TbIME::Activate(void *)",
+      "decorated_name": "slim::TbIME::Activate(void* )",
       "undecorated_name": "Activate__Q24slim5TbIMEFPv",
       "return_type": "void",
       "call_type": "__fastcall",
@@ -136438,6 +138100,34 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 268440944,
+      "decorated_name": "LHTimer::Running(void)",
+      "undecorated_name": "Running__7LHTimerFv",
+      "return_type": "_Bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHTimer *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268457872,
+      "decorated_name": "LHTimer::Start(void)",
+      "undecorated_name": "Start__7LHTimerFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHTimer *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 4450752,
       "mac_addr": 268441632,
       "decorated_name": "LHTimer::Stop(void)",
@@ -136457,6 +138147,20 @@
       "decorated_name": "LHTimer::MSeconds(void)",
       "undecorated_name": "MSeconds__7LHTimerFv",
       "return_type": "int",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHTimer *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268441520,
+      "decorated_name": "LHTimer::GetSpeedUpFactor(void)",
+      "undecorated_name": "GetSpeedUpFactor__7LHTimerFv",
+      "return_type": "float",
       "call_type": "__thiscall",
       "argument_types": [
         "struct LHTimer *"
@@ -136546,7 +138250,7 @@
     {
       "win_addr": 8056472,
       "mac_addr": 274856916,
-      "decorated_name": "operator delete(void *)",
+      "decorated_name": "operator delete(void* )",
       "undecorated_name": "__dl__FPv",
       "return_type": "void",
       "call_type": "cdecl",
@@ -136555,6 +138259,64 @@
       ],
       "argument_names": [
         "address"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 274112800,
+      "decorated_name": "Zoomer::Zoomer()",
+      "undecorated_name": "ct__6ZoomerFv",
+      "return_type": "struct Zoomer *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "Zoomer::SetDestination(float)",
+      "undecorated_name": "SetDestination__6ZoomerFf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "destination"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268664864,
+      "decorated_name": "Zoomer::GetCurrentValue(void)",
+      "undecorated_name": "GetCurrentValue__6ZoomerFv",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268570096,
+      "decorated_name": "Zoomer::GetDestination(void)",
+      "undecorated_name": "GetDestination__6ZoomerFv",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -136623,6 +138385,92 @@
       "argument_names": [
         "this",
         "out_point"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268569936,
+      "decorated_name": "Zoomer3d::GetDestination(void)",
+      "undecorated_name": "GetDestination__8Zoomer3dFv",
+      "return_type": "struct LHPoint *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Zoomer3d *",
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "this",
+        "out_point"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "Zoomer3d::Update(float)",
+      "undecorated_name": "Update__8Zoomer3dFf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer3d *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "dt"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "Zoomer3d::SetDestinationWithSpeedAndTime(LHPoint const &, float, float)",
+      "undecorated_name": "SetDestinationWithSpeedAndTime__8Zoomer3dFRC7LHPointff",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer3d *",
+        "const struct LHPoint *",
+        "float",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "destination",
+        "speed",
+        "time"
+      ]
+    },
+    {
+      "win_addr": 4515680,
+      "mac_addr": -1,
+      "decorated_name": "Zoomer3d::SetDestinationWithTime(LHPoint const &, float)",
+      "undecorated_name": "SetDestinationWithTime__8Zoomer3dFRC7LHPointf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer3d *",
+        "const struct LHPoint *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "destination",
+        "time"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "Zoomer3d::SetPosition(LHPoint const &)",
+      "undecorated_name": "SetPosition__8Zoomer3dFRC7LHPoint",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Zoomer3d *",
+        "const struct LHPoint *"
+      ],
+      "argument_names": [
+        "this",
+        "destination"
       ]
     },
     {
@@ -137418,6 +139266,24 @@
       ]
     },
     {
+      "win_addr": 4232000,
+      "mac_addr": -1,
+      "decorated_name": "SetupControl::Drag(int, int)",
+      "undecorated_name": "Drag__12SetupControlFii",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SetupControl *",
+        "int",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "x",
+        "y"
+      ]
+    },
+    {
       "win_addr": 4232016,
       "mac_addr": 272481760,
       "decorated_name": "SetupControl::MouseDown(int, int, bool)",
@@ -137523,6 +139389,20 @@
       "argument_names": [
         "this",
         "param_1"
+      ]
+    },
+    {
+      "win_addr": 4232128,
+      "mac_addr": -1,
+      "decorated_name": "SetupControl::~SetupControl(void)",
+      "undecorated_name": "dt__12SetupControlFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SetupControl *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -137725,6 +139605,72 @@
       "argument_names": [
         "this",
         "num"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 272291088,
+      "decorated_name": "LHLinkedNode<HLineData*>::LHLinkedNode<HLineData*>(HLineData*, LHLinkedNode<HLineData>*)",
+      "undecorated_name": "ct__HLineDataListNode",
+      "return_type": "struct HLineDataListNode *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct HLineDataListNode *",
+        "const void *",
+        "struct HLineData *",
+        "struct HLineDataListNode *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "payload",
+        "next"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 271219136,
+      "decorated_name": "LHLinkedList<HLineData*>::GetStart() const",
+      "undecorated_name": "GetStart__HLineDataList",
+      "return_type": "struct HLineDataListNode *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct HLineDataList *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 272071328,
+      "decorated_name": "LHLinkedList<HLineData*>::GetNodeAtPosition() const",
+      "undecorated_name": "GetNodeAtPosition__HLineDataList",
+      "return_type": "struct HLineDataListNode *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct HLineDataList *",
+        "const void *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "index"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 270265968,
+      "decorated_name": "LHLinkedList<HLineData*>::GetLastNode()",
+      "undecorated_name": "GetLastNode__HLineDataList",
+      "return_type": "struct HLineDataListNode *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct HLineDataList *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -138212,6 +140158,36 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "SetupMP3Button::SetupMP3Button(int, int, int, int, int, wchar_t *, int, unsigned int)",
+      "undecorated_name": "ct__14SetupMP3ButtonFiiiiiPwiUi",
+      "return_type": "struct SetupMP3Button *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SetupMP3Button *",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "const char16_t *",
+        "int",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "id",
+        "x",
+        "y",
+        "width",
+        "height",
+        "label",
+        "param_8",
+        "param_9"
+      ]
+    },
+    {
       "win_addr": 4246944,
       "mac_addr": 272785536,
       "decorated_name": "SetupMP3Button::Draw(bool, bool)",
@@ -138319,6 +140295,26 @@
         "this",
         "x",
         "y"
+      ]
+    },
+    {
+      "win_addr": 4257456,
+      "mac_addr": -1,
+      "decorated_name": "SetupPicture::MouseDown(int, int, bool)",
+      "undecorated_name": "MouseDown__12SetupPictureFiib",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SetupPicture *",
+        "int",
+        "int",
+        "_Bool"
+      ],
+      "argument_names": [
+        "this",
+        "x",
+        "y",
+        "param_3"
       ]
     },
     {
@@ -138616,6 +140612,34 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 271744832,
+      "decorated_name": "SetupStaticText::SetupStaticText(int, int, int, int, int, wchar_t *, TEXTJUSTIFY)",
+      "undecorated_name": "ct__15SetupStaticTextFiiiiiPw11TEXTJUSTIFY",
+      "return_type": "struct SetupStaticText *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SetupStaticText *",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "const char16_t *",
+        "enum TEXTJUSTIFY"
+      ],
+      "argument_names": [
+        "this",
+        "id",
+        "x",
+        "y",
+        "width",
+        "height",
+        "label",
+        "text_justify"
+      ]
+    },
+    {
       "win_addr": 4232240,
       "mac_addr": 273954528,
       "decorated_name": "SetupStaticText::Draw(bool, bool)",
@@ -138647,6 +140671,34 @@
       "argument_names": [
         "this",
         "param_1"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 271744832,
+      "decorated_name": "SetupStaticTextNoHit::SetupStaticTextNoHit(int, int, int, int, int, wchar_t *, TEXTJUSTIFY)",
+      "undecorated_name": "ct__20SetupStaticTextNoHitFiiiiiPw11TEXTJUSTIFY",
+      "return_type": "struct SetupStaticTextNoHit *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SetupStaticTextNoHit *",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "const char16_t *",
+        "enum TEXTJUSTIFY"
+      ],
+      "argument_names": [
+        "this",
+        "id",
+        "x",
+        "y",
+        "width",
+        "height",
+        "label",
+        "text_justify"
       ]
     },
     {
@@ -139170,6 +141222,78 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 272291088,
+      "decorated_name": "LHLinkedNode<VBarData*>::LHLinkedNode<VBarData*>(VBarData*, LHLinkedNode<VBarData>*)",
+      "undecorated_name": "ct__VBarDataListNode",
+      "return_type": "struct VBarDataListNode *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct VBarDataListNode *",
+        "const void *",
+        "struct VBarData *",
+        "struct VBarDataListNode *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "payload",
+        "next"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 273832304,
+      "decorated_name": "LHLinkedList<VBarData*>::GetNodeAtPosition() const",
+      "undecorated_name": "GetNodeAtPosition__VBarDataList",
+      "return_type": "struct VBarDataListNode *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct VBarDataList *",
+        "const void *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "index"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 273882208,
+      "decorated_name": "LHLinkedList<VBarData*>::GetLastNode()",
+      "undecorated_name": "GetLastNode__VBarDataList",
+      "return_type": "struct VBarDataListNode *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct VBarDataList *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 271873136,
+      "decorated_name": "LHLinkedList<VBarData*>Remove(VBarData, b)",
+      "undecorated_name": "Remove__VBarDataList",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct VBarDataList *",
+        "const void *",
+        "struct VBarData *",
+        "_Bool"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "bar",
+        "only_one"
+      ]
+    },
+    {
       "win_addr": 4253872,
       "mac_addr": 272077952,
       "decorated_name": "SetupVBarGraph::Draw(bool, bool)",
@@ -139245,6 +141369,20 @@
       "argument_names": [
         "this",
         "param_1"
+      ]
+    },
+    {
+      "win_addr": 4255664,
+      "mac_addr": -1,
+      "decorated_name": "SetupVBarGraph::Reset(vfoid)",
+      "undecorated_name": "Reset__14SetupVBarGraphFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SetupVBarGraph *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -139333,14 +141471,14 @@
       "value": 9083460
     },
     {
-      "name": "__vt__BaseInfo",
-      "type": "struct BaseInfoVftable",
-      "value": 9349328
-    },
-    {
       "name": "__vt__GBaseInfo",
       "type": "struct GBaseInfoVftable",
       "value": 9194780
+    },
+    {
+      "name": "__vt__BaseInfo",
+      "type": "struct BaseInfoVftable",
+      "value": 9349328
     },
     {
       "name": "__vt__GameThing",
