@@ -95,8 +95,8 @@ if __name__ == "__main__":
     for t in bases:
         helper_base_map[t.name.removesuffix('Base')] = t
 
-    headers: list[Header] = []
     local_header_import_map: dict[str, str] = {}
+    header_map: dict[Path, Header] = {}
     for t in rtti_classes:
         try:
             vftable = vftable_map.get(t.name)
@@ -120,12 +120,19 @@ if __name__ == "__main__":
                 structs.append(helper_base_map[t.name])
             structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
 
+            header = header_map.get(path)
+            if header is not None:
+                structs += header.structs
+
             for s in structs:
                 local_header_import_map[s.decorated_name] = path
+            header = Header(path, includes, structs, local_header_import_map)
+            header_map[path] = header
 
-            headers.append(Header(path, includes, structs, local_header_import_map))
         except RuntimeError as e:
             print(e, file=sys.stderr)
+
+    headers: list[Header] = list(header_map.values())
 
     # TODO: Merge some primitives that would fit in the same header
     # TODO: i.e. Similar type names like vftables, unknown substructures,
