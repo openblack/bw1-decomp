@@ -207,7 +207,7 @@ def import_types(dtms, program, data):
             # Set the types after everything has been processed
             new_data_type.setReturnType(resolve_type(dtms, t["result"]))
             try:
-                args = [ParameterDefinitionImpl(None, resolve_type(dtms, a), t["signature"]) for a in t["args"]]
+                args = [ParameterDefinitionImpl(n, resolve_type(dtms, a), t["signature"]) for n, a in zip(t["arg_names"], t["args"])]
             except:
                 print(name)
                 raise
@@ -245,6 +245,8 @@ def import_functions(program, dtps, data, platform):
 
     for f in data["functions"]:
         address = address_factory.getAddress(hex(f[platform + "_addr"]))
+        if address < 0:
+            continue
         new_name = f["undecorated_name"]
         # print("Setting function name to: %s" % new_name)
         function = function_manager.getFunctionAt(address)
@@ -256,7 +258,8 @@ def import_functions(program, dtps, data, platform):
             function = function_manager.createFunction(None, address, AddressSet(address), SourceType.IMPORTED)
         if function:
             symbol_table.createLabel(address, new_name, program.globalNamespace, SourceType.IMPORTED)
-            function.setComment("C++ name: %s, Mac Address: 0x%08x" % (f["decorated_name"], f["mac_addr"]))
+            mac_addr = "0x%08x" % f["mac_addr"] if f["mac_addr"] >= 0 else "inlined"
+            function.setComment("C++ name: %s, Mac Address: %s" % (f["decorated_name"], mac_addr))
             if f['call_type'] == '__thiscall':
                 try:
                     data_type = next(parse_data_type(dtps, f["argument_types"][0].replace(" *", "")))

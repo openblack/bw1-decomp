@@ -10,7 +10,7 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype
 from vftable import Vftable
 from utils import partition, extract_type_name
-from vanilla_filepaths import map_projects_to_object_files
+from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names
 
 
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
@@ -59,12 +59,14 @@ if __name__ == "__main__":
 
     class_method_look_up, class_static_method_look_up, remainder_functions = find_methods(db['functions'])
 
+    object_file_base_names = get_object_file_base_names()
+
     # Do some selecting
     (
         vftables,
         bases,
         vftable_function_prototypes,
-        rtti_classes,
+        header_structs,
         rtti_helper_unions,
         enums,
         list_and_nodes,
@@ -73,7 +75,7 @@ if __name__ == "__main__":
         lambda x: type(x) is Struct and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
-        lambda x: type(x) is Struct and x.members and x.members[0].name in ["vftable", "super", "base"],
+        lambda x: type(x) is Struct and ((x.members and x.members[0].name in ["vftable", "super", "base"]) or x.name in object_file_base_names),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList") or  x.name.startswith("LHLinkedNode") or x.name.endswith("List") or x.name.endswith("ListNode"),
@@ -95,37 +97,46 @@ if __name__ == "__main__":
     for t in bases:
         helper_base_map[t.name.removesuffix('Base')] = t
 
-    headers: list[Header] = []
+
+    def get_path(name):
+        stem = name
+        # For things like GBaseInfo
+        if name[0] == 'G' and name[1].isupper():
+            stem = name[1:]
+        for project, object_files in projects_and_files.items():
+            if stem +".obj" in object_files:
+                break
+        else:
+            raise RuntimeError(f"Need to add guessed path for {name} in vanilla_filepaths.py")
+        return Path(project) / f"{stem}.h"
+
     local_header_import_map: dict[str, str] = {}
-    for t in rtti_classes:
+    header_map: dict[Path, Header] = {}
+    for t in header_structs:
         try:
-            vftable = vftable_map.get(t.name)
-            name = t.name
-            # For things like GBaseInfo
-            if t.name[0] == 'G' and t.name[1].isupper():
-                name = t.name[1:]
-            for project, object_files in projects_and_files.items():
-                if name +".obj" in object_files:
-                    break
-            else:
-                raise RuntimeError(f"Need to add guessed path for {t.name} in vanilla_filepaths.py")
-            path = Path(project) / f"{name}.h"
+            path = get_path(t.name)
             includes: list[Header.Include] = []
-            virtual_method_names = [i.name for i in vftable.members] if vftable else []
-
-            structs: list[Struct] = []
-            if vftable:
-                structs.append(vftable)
-            if t.name in helper_base_map:
-                structs.append(helper_base_map[t.name])
-            structs.append(RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up))
-
+            header = header_map.get(path)
+            structs: list[Struct] = header.structs if header is not None else []
+            if t.members and t.members[0].name in ["vftable", "super", "base"]:
+                vftable = vftable_map.get(t.name)
+                virtual_method_names = [i.name for i in vftable.members] if vftable else []
+                if vftable:
+                    structs.append(vftable)
+                if t.name in helper_base_map:
+                    structs.append(helper_base_map[t.name])
+                new_struct = RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)
+            else:
+                new_struct = t
+            structs.append(new_struct)
             for s in structs:
                 local_header_import_map[s.decorated_name] = path
-
-            headers.append(Header(path, includes, structs, local_header_import_map))
+            header = Header(path, includes, structs, local_header_import_map)
+            header_map[path] = header
         except RuntimeError as e:
             print(e, file=sys.stderr)
+
+    headers: list[Header] = list(header_map.values())
 
     # TODO: Merge some primitives that would fit in the same header
     # TODO: i.e. Similar type names like vftables, unknown substructures,

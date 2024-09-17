@@ -520,6 +520,8 @@ guessed_filepaths = {
     BWPath(r"C:\dev\Libs\LIONHEAD\LHMultiplayer\VER4.0\LHSocket.h"),
     BWPath(r"C:\dev\Libs\LIONHEAD\LHMultiplayer\VER4.0\LHSocketTCP.h"),
 
+    BWPath(r"C:\Dev\Libs\lionhead\lhlib\VER5.0\Name.h"),
+
     BWPath(r"C:\DEV\LIBS\LHALL\RELEASED\HEADERS\RPFollow.h"),
     BWPath(r"C:\DEV\LIBS\LHALL\RELEASED\HEADERS\Heap.h"),
 
@@ -700,7 +702,6 @@ def get_project_paths() -> set[BWPath]:
     return set(debug_release_stripped)
 
 
-
 def map_projects_to_object_files() -> dict[BWPath, set[BWPath]]:
     projects = defaultdict(set)
     project_paths = get_project_paths()
@@ -710,3 +711,6 @@ def map_projects_to_object_files() -> dict[BWPath, set[BWPath]]:
         if filtered_path in project_paths:
             projects[filtered_path].add(object_file)
     return dict(projects)
+
+def get_object_file_base_names() -> set[str]:
+    return {i.stem for i in dev_filepaths}

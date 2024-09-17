@@ -217,10 +217,11 @@ class RTTIClass(Struct):
         super().to_code(cw)
         if self.vftable_address:
             cw.add_line()
+            vftable_ptr_type = f"{self.decorated_name}Vftable*"
             # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
             address = csnake.FormattedLiteral(
-                value=self.vftable_address, int_formatter=lambda x: f"0x{x:08x}")
-            cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", f"{self.decorated_name}Vftable*", ["static"], value=address))
+                value=self.vftable_address, int_formatter=lambda x: f"({vftable_ptr_type})0x{x:08x}")
+            cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", vftable_ptr_type, ["static"], value=address))
 
         if self.constructors:
             cw.add_line()
