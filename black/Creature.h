@@ -212,6 +212,8 @@ struct Creature* __fastcall __ct__8CreatureFv(struct Creature* this);
 
 // win1.41 00477850 mac 101daef0 Creature::GetCreature3D(void)
 struct LH3DCreature* __fastcall GetCreature3D__8CreatureFv(struct Creature* this);
+// win1.41 0047c650 mac 101d2500 Creature::SetAnimationTimeModify(bool value)
+void __fastcall SetAnimationTimeModify__8CreatureFb(struct Creature* this, const void* edx, bool value) asm("?SetAnimationTimeModify@Creature@@QAEX_N@Z");
 // win1.41 004f8b80 mac 1028a7b0 Creature::ProcessSpells(void)
 void __fastcall ProcessSpells__8CreatureFv(struct Creature* this);
 

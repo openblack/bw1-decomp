@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x004146f0
 .extern _jmp_addr_0x00464920
 .extern _jmp_addr_0x00475730
-.extern _jmp_addr_0x0047c650
+.extern ?SetAnimationTimeModify@Creature@@QAEX_N@Z
 .extern _jmp_addr_0x0047d2f0
 .extern _jmp_addr_0x0047d310
 .extern _jmp_addr_0x0047d320
@@ -435,7 +435,7 @@ _jmp_addr_0x006f55d1:    mov                edx, dword ptr [esi]                
                          sete               cl                                            // 0x006f55e6    0f94c1
                          push               ecx                                           // 0x006f55e9    51
                          mov.s              ecx, esi                                      // 0x006f55ea    8bce
-                         call               _jmp_addr_0x0047c650                          // 0x006f55ec    e85f70d8ff
+                         call               ?SetAnimationTimeModify@Creature@@QAEX_N@Z    // 0x006f55ec    e85f70d8ff
 _jmp_addr_0x006f55f1:    pop                edi                                           // 0x006f55f1    5f
                          pop                esi                                           // 0x006f55f2    5e
                          add                esp, 0x08                                     // 0x006f55f3    83c408

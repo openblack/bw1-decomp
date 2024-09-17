@@ -210,7 +210,7 @@
 .globl _jmp_addr_0x0047c5f0
 .globl _jmp_addr_0x0047c610
 .globl _jmp_addr_0x0047c620
-.globl _jmp_addr_0x0047c650
+.globl ?SetAnimationTimeModify@Creature@@QAEX_N@Z
 .globl _jmp_addr_0x0047c690
 .globl _jmp_addr_0x0047c6b0
 .globl _jmp_addr_0x0047c770
@@ -6060,7 +6060,9 @@ _jmp_addr_0x0047c620:    {disp32} mov       eax, dword ptr [data_bytes + 0x3da58
                          {disp8} fld        dword ptr [eax + 0x3c]                        // 0x0047c646    d9403c
                          ret                                                              // 0x0047c649    c3
                          call               dword ptr [__imp__waveInUnprepareHeader@4]    // 0x0047c64a    ff15b8988a00
-_jmp_addr_0x0047c650:    call               @GetCreature3D__8CreatureFv@4                 // 0x0047c650    e8fbb1ffff
+
+?SetAnimationTimeModify@Creature@@QAEX_N@Z:
+                         call               @GetCreature3D__8CreatureFv@4                 // 0x0047c650    e8fbb1ffff
                          test               eax, eax                                      // 0x0047c655    85c0
                          {disp8} je         _jmp_addr_0x0047c669                          // 0x0047c657    7410
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x0047c659    8b4c2404
