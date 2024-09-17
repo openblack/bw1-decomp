@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
+#include <reversing_utils/re_common.h> /* For bool32_t */
+
 #include "Morphable.h" /* For struct Morphable */
 
 // Forward Declares
@@ -552,10 +554,7 @@ struct LH3DCreature
   uint8_t field_0x4a8d;
   uint8_t field_0x4a8e;
   uint8_t field_0x4a8f;
-  uint8_t field_0x4a90;
-  uint8_t field_0x4a91;
-  uint8_t field_0x4a92;
-  uint8_t field_0x4a93;
+  bool32_t isAnimationTimeModified;
   uint8_t field_0x4a94;
   uint8_t field_0x4a95;
   uint8_t field_0x4a96;
