@@ -207,7 +207,7 @@ def import_types(dtms, program, data):
             # Set the types after everything has been processed
             new_data_type.setReturnType(resolve_type(dtms, t["result"]))
             try:
-                args = [ParameterDefinitionImpl(None, resolve_type(dtms, a), t["signature"]) for a in t["args"]]
+                args = [ParameterDefinitionImpl(n, resolve_type(dtms, a), t["signature"]) for n, a in zip(t["arg_names"], t["args"])]
             except:
                 print(name)
                 raise
