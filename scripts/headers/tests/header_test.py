@@ -70,8 +70,8 @@ class TestHeaderTypes(unittest.TestCase):
 
     def test_forward_declare_list(self):
         function_proto_map = {
-            "TestStruct1Vftable__Foo": FuncPtr("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"]),
-            "TestStruct1Vftable__Bar": FuncPtr("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"]),
+            "TestStruct1Vftable__Foo": FuncPtr("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"], ["this", "", ""]),
+            "TestStruct1Vftable__Bar": FuncPtr("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"], ["this", ""]),
         }
         structs: list[Struct] = [
             Vftable(Struct("TestStruct1Vftable", 8, [Struct.Member("Foo", "TestStruct1Vftable__Foo*", 0x0), Struct.Member("Bar", "TestStruct1Vftable__Bar*", 0x4)]), function_proto_map),
@@ -427,8 +427,8 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
 
     def test_structs_with_forward_declare(self):
         function_proto_map = {
-            "TestStruct1Vftable__Foo": FuncPtr("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"]),
-            "TestStruct1Vftable__Bar": FuncPtr("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"]),
+            "TestStruct1Vftable__Foo": FuncPtr("TestStruct1Vftable__Foo", "__thiscall", "char*", ["struct TestStruct1*", "int", "struct TestStruct4*"], ["this", "", ""]),
+            "TestStruct1Vftable__Bar": FuncPtr("TestStruct1Vftable__Bar", "__thiscall", "void", ["struct TestStruct1*", "float"], ["this", "", ""]),
         }
         structs: list[Struct] = [
             Vftable(Struct("TestStruct1Vftable", 8, [Struct.Member("Foo", "TestStruct1Vftable__Foo*", 0x0), Struct.Member("Bar", "TestStruct1Vftable__Bar*", 0x4)]), function_proto_map),
@@ -493,8 +493,8 @@ static_assert(sizeof(struct TestStruct2) == 0x28, "Data type is of wrong size");
 
     def test_structs_with_functions(self):
         function_proto_map = {
-            "TestStructVftable__Foo": FuncPtr("TestStructVftable__Foo", "__thiscall", "char*", ["struct TestStruct*", "int"]),
-            "TestStructVftable__Bar": FuncPtr("TestStructVftable__Bar", "__thiscall", "void", ["struct TestStruct*"]),
+            "TestStructVftable__Foo": FuncPtr("TestStructVftable__Foo", "__thiscall", "char*", ["struct TestStruct*", "int"], ["this", ""]),
+            "TestStructVftable__Bar": FuncPtr("TestStructVftable__Bar", "__thiscall", "void", ["struct TestStruct*"], ["this"]),
         }
         method_map = {
             "TestStruct": [
