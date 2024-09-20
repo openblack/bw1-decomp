@@ -36,7 +36,7 @@ class Vftable(Struct):
         }
         self.members = []
         last_offset = 0
-        for i, m in enumerate(struct.members):
+        for m in struct.members:
             name = substitutions.get(m.name, m.name)
             type_ = function_proto_map.get(m.type.removesuffix("*"), m.type)
             comment = None
