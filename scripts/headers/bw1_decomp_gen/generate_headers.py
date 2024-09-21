@@ -63,6 +63,7 @@ if __name__ == "__main__":
 
     # Do some selecting
     (
+        globals_t,
         vftables,
         bases,
         vftable_function_prototypes,
@@ -70,8 +71,11 @@ if __name__ == "__main__":
         rtti_helper_unions,
         enums,
         list_and_nodes,
+        to_ignore,
+        remainder_primitives,
         remainder,
     ) = partition([
+        lambda x: type(x) is Struct and x.name == "globals_t",
         lambda x: type(x) is Struct and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
@@ -79,6 +83,8 @@ if __name__ == "__main__":
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList") or  x.name.startswith("LHLinkedNode") or x.name.endswith("List") or x.name.endswith("ListNode"),
+        lambda x: type(x) is Struct and (x.name.startswith("RTTI") or x.name == "TypeDescriptor"),
+        lambda x: type(x) is Struct,
     ], primitives)
 
     vftable_function_proto_map = {i.name: i for i in vftable_function_prototypes}
@@ -138,15 +144,14 @@ if __name__ == "__main__":
 
     headers: list[Header] = list(header_map.values())
 
-    # TODO: Merge some primitives that would fit in the same header
-    # TODO: i.e. Similar type names like vftables, unknown substructures,
-    # TODO:      Class methods, enums
-    # TODO: Maintain a primitive to header look-up table
-    # TODO: Create a header-to-header dependency graph
+    headers.append(Header(Path("TodoRemainderFunctions.h"), [], remainder_functions, local_header_import_map))
+    headers.append(Header(Path("TodoRemainderPrimitives.h"), [], remainder_primitives, local_header_import_map))
+    # TODO: headers.append(Header(Path("TodoRemainder.h"), [], remainder, local_header_import_map))
 
-    # TODO: Topological sort headers ... is this needed?
-
-    # TODO: Keep track of what's been defined/declared and print out what remains to be classified.
+    # TODO: create header for globals_t with actual addresses
+    # TODO: get to 0 orphan functions
+    # TODO: get to 0 orphan structs
+    # TODO: get to 0 orphan entries
 
     output_path = Path("generated_headers_output")
     if output_path.exists():
@@ -164,3 +169,10 @@ if __name__ == "__main__":
             wrote_bytes += f.write(cw.code)
 
     print(f"Wrote {wrote_headers} headers({wrote_bytes} bytes) in {output_path}")
+    print(f"Ignored {len(to_ignore)} entries")
+
+    if len(remainder_functions) + len(remainder_primitives) + len(remainder) > 0:
+        print(f"There are still {len(remainder_functions)} orphan functions")
+        print(f"There are still {len(remainder_primitives)} orphan structs")
+        print(f"There are still {len(remainder)} orphan entries")
+        exit(1)

@@ -5,7 +5,6 @@ from collections import defaultdict
 
 released_filepaths_from_strings = {
     BWPath(r"C:\Dev\libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DP3.cpp"),
-    BWPath(r"C:\Dev\libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DP3.cpp"),
     BWPath(r"c:\dev\libs\lionhead\lh3dlib\development\mfcdebug\lh3damemory.obj"),
     # BWPath(r"C:\Dev\black language\Script Library\Debug\ScriptLibraryD.pdb"),
     BWPath(r"c:\dev\black language\script library\scriptmachine.cpp"),
