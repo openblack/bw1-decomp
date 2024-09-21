@@ -679,6 +679,10 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\WorshipSpell.h"),
 }
 
+roomate_classes = {
+    "LHPoint2D": "LHPoint",
+}
+
 dev_filepaths = released_filepaths_from_strings.union(guessed_filepaths)
 
 

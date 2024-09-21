@@ -10,7 +10,7 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype
 from vftable import Vftable
 from utils import partition, extract_type_name
-from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names
+from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, roomate_classes
 
 
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
@@ -79,7 +79,7 @@ if __name__ == "__main__":
         lambda x: type(x) is Struct and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
-        lambda x: type(x) is Struct and ((x.members and x.members[0].name in ["vftable", "super", "base"]) or x.name in object_file_base_names),
+        lambda x: type(x) is Struct and ((x.members and x.members[0].name in ["vftable", "super", "base"]) or roomate_classes.get(x.name, x.name) in object_file_base_names),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList") or  x.name.startswith("LHLinkedNode") or x.name.endswith("List") or x.name.endswith("ListNode"),
@@ -120,7 +120,7 @@ if __name__ == "__main__":
     header_map: dict[Path, Header] = {}
     for t in header_structs:
         try:
-            path = get_path(t.name)
+            path = get_path(roomate_classes.get(t.name, t.name))
             includes: list[Header.Include] = []
             header = header_map.get(path)
             structs: list[Struct] = header.structs if header is not None else []

@@ -85,7 +85,7 @@ class Header:
                 if header == self.path:
                     continue
                 if header.parts[0] == self.path.parts[0]:
-                    header = header.relative_to(self.path.parent)
+                    header = header.relative_to(self.path.parts[0])
                 i = self.includes.get(header, self.Include(header, set(), False))
                 i.dependencies.add(t)
                 self.includes[header] = i
