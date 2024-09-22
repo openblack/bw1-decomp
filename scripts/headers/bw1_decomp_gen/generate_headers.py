@@ -184,7 +184,7 @@ if __name__ == "__main__":
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
-        header = Header(path, [], structs, local_header_import_map)
+        header = Header(path, [], structs)
         header_map[path] = header
 
     for t in header_structs:
@@ -205,9 +205,8 @@ if __name__ == "__main__":
                 new_struct = t
             structs.append(new_struct)
             for s in structs:
-                if type(s) is Struct:
-                    local_header_import_map[s.decorated_name] = path
-            header = Header(path, includes, structs, local_header_import_map)
+                local_header_import_map[s.decorated_name] = path
+            header = Header(path, includes, structs)
             header_map[path] = header
         except RuntimeError as e:
             print(e, file=sys.stderr)
@@ -217,7 +216,7 @@ if __name__ == "__main__":
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
-        header = Header(path, [], structs, local_header_import_map)
+        header = Header(path, [], structs)
         header_map[path] = header
 
     for t in sinit_functions:
@@ -226,8 +225,11 @@ if __name__ == "__main__":
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
-        header = Header(path, [], structs, local_header_import_map)
+        header = Header(path, [], structs)
         header_map[path] = header
+
+    for header in header_map.values():
+        header.build_include_list(local_header_import_map)
 
     headers: list[Header] = list(header_map.values())
 

@@ -84,6 +84,7 @@ class FuncPtr:
     result: str
     args: list[str]
     arg_labels: list[str]
+    decorated_name: str
 
     def __init__(self, name: str, call_type: str, result: str, args: list[str], arg_labels: list[str]):
         self.name = name
@@ -91,6 +92,7 @@ class FuncPtr:
         self.result = clean_up_type(result)
         self.args = list(map(clean_up_type, args))
         self.arg_labels = arg_labels
+        self.decorated_name = name
 
     def get_types(self) -> set[str]:
         result = {self.result}
@@ -126,7 +128,6 @@ class FuncPtr:
 
 @dataclass
 class DefinedFunctionPrototype(FuncPtr):
-    decorated_name: str
     win_addr: int
     mac_addr: int
 

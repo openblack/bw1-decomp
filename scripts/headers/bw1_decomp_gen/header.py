@@ -72,10 +72,12 @@ class Header:
     def __hash__(self) -> int:
         return hash(self.header_path)
 
-    def __init__(self, path: Path, includes: list[Include], structs: list[Composite], local_header_import_map: dict[str, Path]):
+    def __init__(self, path: Path, includes: list[Include], structs: list[Composite]):
         self.path = path
         self.includes = {i.header_path.as_posix(): i for i in includes}
         self.structs = structs
+
+    def build_include_list(self, local_header_import_map: dict[str, Path]):
         types = self.get_direct_dependencies()
         for t in map(strip_pointers_arrays_and_modifiers, types):
             if t in C_STDLIB_HEADER_IMPORT_MAP:

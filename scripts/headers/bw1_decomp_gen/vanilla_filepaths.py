@@ -762,6 +762,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\SpellSeedGraphic.h"),
     BWPath(r"C:\Dev\black\SpellWater.h"),
     BWPath(r"C:\Dev\black\SpellWithObjects.h"),
+    BWPath(r"C:\dev\Black\StandardBuildingSite.h"),
     BWPath(r"C:\Dev\black\StartGameBox.h"),
     BWPath(r"C:\Dev\black\StatsDatabase.h"),
     BWPath(r"C:\Dev\black\TerrainMapInfo.h"),
