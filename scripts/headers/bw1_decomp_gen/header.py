@@ -6,6 +6,7 @@ from inflection import underscore
 from pathlib import Path
 
 from structs import Composite
+from functions import FuncPtr
 from utils import partition
 
 
@@ -63,7 +64,7 @@ class Header:
         header_path: Path
         dependencies: set[str]
         system: bool
-    
+
     path: Path
     includes: dict[str, Include]
     structs: list[Composite]
@@ -97,7 +98,7 @@ class Header:
         for s in self.structs:
             result.update(s.get_types())
         return result
-    
+
     def get_includes(self) -> list[str]:
         return sorted(list(self.includes.values()))
 
@@ -112,6 +113,10 @@ class Header:
     def get_forward_declare_types(self) -> set[str]:
         result = set()
         defined_types_so_far = set()
+        for s in self.structs:
+            if type(s) is FuncPtr:
+                defined_types_so_far.add(s.name)
+
         for s in self.structs:
             defined_types_so_far.add(f"struct {strip_pointers_arrays_and_modifiers(s.name)}")
             struct_types = {strip_pointers_arrays_and_modifiers(r) for r in s.get_types()}

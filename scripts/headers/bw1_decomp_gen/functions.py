@@ -55,6 +55,27 @@ class CSnakeFuncPtr(csnake.FuncPtr):
 
         return retval
 
+    def get_typedef(
+        self,
+        name: str,
+        qualifiers: Optional[str] = None,
+        array: Optional[str] = None,
+    ) -> str:
+        jointargs = ", ".join(
+            arg.generate_declaration() for arg in self.arguments
+        )
+
+        retval = "typedef {rt} ({conv} {qual}{name}{arr})({arguments})".format(
+            rt=self.return_type,
+            qual=qualifiers if qualifiers else "",
+            name=name,
+            arguments=jointargs if self.arguments else "",
+            arr=array if array else "",
+            conv=self.calling_convention if self.calling_convention else ""
+        )
+
+        return retval
+
 
 @dataclass
 class FuncPtr:
@@ -97,6 +118,10 @@ class FuncPtr:
             conv = "__fastcall"
 
         return CSnakeFuncPtr(self.result, params, conv)
+
+    def to_code(self, cw: csnake.CodeWriter):
+        fptr = self.to_csnake()
+        cw.add_line(f"{fptr.get_typedef(self.name)};")
 
 
 @dataclass

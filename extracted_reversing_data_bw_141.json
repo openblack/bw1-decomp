@@ -1646,7 +1646,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "LHScriptX_c__callback_t",
+      "type": "LHScriptX_c___callback",
       "size": 4,
       "call_type": "__cdecl",
       "result": "enum uint32_t",
@@ -1692,7 +1692,7 @@
         },
         {
           "name": "callback",
-          "type": "LHScriptX_c__callback_t *",
+          "type": "LHScriptX_c___callback *",
           "offset": 36
         },
         {
@@ -52180,7 +52180,7 @@
       ],
       "arg_names": [
         "this",
-        ""
+        "player"
       ],
       "signature": "void (struct GameThing *, const void *, struct GPlayer *) __attribute__((fastcall))"
     },
@@ -52958,17 +52958,17 @@
       "kind": "FUNCTIONPROTO",
       "type": "GameThingVftable__Save",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "uint32_t",
       "args": [
         "struct GameThing *",
-        "void *"
+        "struct GameOSFile *"
       ],
       "arg_names": [
         "this",
-        ""
+        "file"
       ],
-      "signature": "uint32_t (struct GameThing *, void *) __attribute__((fastcall))"
+      "signature": "uint32_t (struct GameThing *, void *, struct GameOSFile *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -52988,17 +52988,17 @@
       "kind": "FUNCTIONPROTO",
       "type": "GameThingVftable__SaveExtraData",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
         "struct GameThing *",
-        "void *"
+        "struct GameOSFile *"
       ],
       "arg_names": [
         "this",
-        ""
+        "file"
       ],
-      "signature": "void (struct GameThing *, void *) __attribute__((fastcall))"
+      "signature": "void (struct GameThing *, const void *, struct GameOSFile *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -69774,7 +69774,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableSubEntryCallback",
+      "type": "Living__StateTableSubEntryCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
@@ -69788,7 +69788,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableSubEntryStateCallback",
+      "type": "Living__StateTableSubEntryStateCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "unsigned int",
@@ -69802,7 +69802,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableSubEntryEntryStateCallback",
+      "type": "Living__StateTableSubEntryEntryStateCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
@@ -69820,7 +69820,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "LivingStateTableSubEntry__function",
+      "type": "Living__StateTableSubEntry__function",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
@@ -69834,12 +69834,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LivingStateTableSubEntry",
+      "type": "struct Living__StateTableSubEntry",
       "size": 16,
       "members": [
         {
           "name": "function",
-          "type": "LivingStateTableSubEntry__function *",
+          "type": "Living__StateTableSubEntry__function *",
           "offset": 0
         },
         {
@@ -69861,7 +69861,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "LivingStateTableSubEntryState__function",
+      "type": "Living__StateTableSubEntryState__function",
       "size": 4,
       "call_type": "__thiscall",
       "result": "uint32_t",
@@ -69875,12 +69875,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LivingStateTableSubEntryState",
+      "type": "struct Living__StateTableSubEntryState",
       "size": 16,
       "members": [
         {
           "name": "function",
-          "type": "LivingStateTableSubEntryState__function *",
+          "type": "Living__StateTableSubEntryState__function *",
           "offset": 0
         },
         {
@@ -69902,7 +69902,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "LivingStateTableSubEntryEntryState__function",
+      "type": "Living__StateTableSubEntryEntryState__function",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
@@ -69920,12 +69920,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LivingStateTableSubEntryEntryState",
+      "type": "struct Living__StateTableSubEntryEntryState",
       "size": 16,
       "members": [
         {
           "name": "function",
-          "type": "LivingStateTableSubEntryEntryState__function *",
+          "type": "Living__StateTableSubEntryEntryState__function *",
           "offset": 0
         },
         {
@@ -69947,219 +69947,219 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LivingStateTableEntry",
+      "type": "struct Living__StateTableEntry",
       "size": 144,
       "members": [
         {
           "name": "state",
-          "type": "struct LivingStateTableSubEntryState",
+          "type": "struct Living__StateTableSubEntryState",
           "offset": 0
         },
         {
           "name": "entry_state",
-          "type": "struct LivingStateTableSubEntryEntryState",
+          "type": "struct Living__StateTableSubEntryEntryState",
           "offset": 16
         },
         {
           "name": "exit_state",
-          "type": "struct LivingStateTableSubEntry",
+          "type": "struct Living__StateTableSubEntry",
           "offset": 32
         },
         {
           "name": "save_state",
-          "type": "struct LivingStateTableSubEntry",
+          "type": "struct Living__StateTableSubEntry",
           "offset": 48
         },
         {
           "name": "load_state",
-          "type": "struct LivingStateTableSubEntry",
+          "type": "struct Living__StateTableSubEntry",
           "offset": 64
         },
         {
           "name": "field_0x50",
-          "type": "struct LivingStateTableSubEntry",
+          "type": "struct Living__StateTableSubEntry",
           "offset": 80
         },
         {
           "name": "field_0x60",
-          "type": "struct LivingStateTableSubEntry",
+          "type": "struct Living__StateTableSubEntry",
           "offset": 96
         },
         {
           "name": "transition_animation",
-          "type": "struct LivingStateTableSubEntry",
+          "type": "struct Living__StateTableSubEntry",
           "offset": 112
         },
         {
           "name": "validate",
-          "type": "struct LivingStateTableSubEntry",
+          "type": "struct Living__StateTableSubEntry",
           "offset": 128
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct VillagerStateTable",
+      "type": "struct Villager__StateTable",
       "size": 36720,
       "members": [
         {
           "name": "entries",
-          "type": "struct LivingStateTableEntry[255]",
+          "type": "struct Living__StateTableEntry[255]",
           "offset": 0
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct AnimalStateTable",
+      "type": "struct Animal__StateTable",
       "size": 7632,
       "members": [
         {
           "name": "entries",
-          "type": "struct LivingStateTableEntry[53]",
+          "type": "struct Living__StateTableEntry[53]",
           "offset": 0
         }
       ]
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableStateCallback",
+      "type": "Living__StateTableStateCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *"
+        "struct Living *"
       ],
       "arg_names": [
         "this"
       ],
-      "signature": "_Bool (struct Villager *) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableEntryStateCallback",
+      "type": "Living__StateTableEntryStateCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *",
+        "struct Living *",
         "unsigned int",
-        "enum VILLAGER_STATES"
+        "unsigned int"
       ],
       "arg_names": [
         "this",
         "",
         ""
       ],
-      "signature": "_Bool (struct Villager *, void *, unsigned int, enum VILLAGER_STATES) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *, void *, unsigned int, unsigned int) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableExitStateCallback",
+      "type": "Living__StateTableExitStateCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *",
-        "enum VILLAGER_STATES"
-      ],
-      "arg_names": [
-        "this",
-        ""
-      ],
-      "signature": "_Bool (struct Villager *, void *, enum VILLAGER_STATES) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "StateTableSaveStateCallback",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "_Bool",
-      "args": [
-        "struct Villager *",
+        "struct Living *",
         "unsigned int"
       ],
       "arg_names": [
         "this",
         ""
       ],
-      "signature": "_Bool (struct Villager *, void *, unsigned int) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *, void *, unsigned int) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableLoadStateCallback",
+      "type": "Living__StateTableSaveStateCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *",
+        "struct Living *",
         "unsigned int"
       ],
       "arg_names": [
         "this",
         ""
       ],
-      "signature": "_Bool (struct Villager *, void *, unsigned int) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *, void *, unsigned int) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableField0x50Callback",
+      "type": "Living__StateTableLoadStateCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *"
+        "struct Living *",
+        "unsigned int"
+      ],
+      "arg_names": [
+        "this",
+        ""
+      ],
+      "signature": "_Bool (struct Living *, void *, unsigned int) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "Living__StateTableField0x50Callback",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "_Bool",
+      "args": [
+        "struct Living *"
       ],
       "arg_names": [
         "this"
       ],
-      "signature": "_Bool (struct Villager *) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableField0x60Callback",
+      "type": "Living__StateTableField0x60Callback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *"
+        "struct Living *"
       ],
       "arg_names": [
         "this"
       ],
-      "signature": "_Bool (struct Villager *) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableField0x70Callback",
+      "type": "Living__StateTableField0x70Callback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *",
+        "struct Living *",
         "unsigned int",
-        "enum VILLAGER_STATES"
+        "unsigned int"
       ],
       "arg_names": [
         "this",
         "",
         ""
       ],
-      "signature": "_Bool (struct Villager *, void *, unsigned int, enum VILLAGER_STATES) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *, void *, unsigned int, unsigned int) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "StateTableField0x80Callback",
+      "type": "Living__StateTableField0x80Callback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
       "args": [
-        "struct Villager *"
+        "struct Living *"
       ],
       "arg_names": [
         "this"
       ],
-      "signature": "_Bool (struct Villager *) __attribute__((fastcall))"
+      "signature": "_Bool (struct Living *) __attribute__((fastcall))"
     },
     {
       "kind": "ENUM_DECL",
@@ -75733,7 +75733,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "GetMeToMyChillOutPosCallback",
+      "type": "Villager__GetMeToMyChillOutPosCallback",
       "size": 4,
       "call_type": "__thiscall",
       "result": "int",
@@ -81908,7 +81908,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "BlocksTownClearAreaCallback_t",
+      "type": "Town__BlocksTownClearAreaCallback_t",
       "size": 4,
       "call_type": "__thiscall",
       "result": "_Bool",
@@ -82892,12 +82892,12 @@
         },
         {
           "name": "StateTable_00d09198",
-          "type": "struct VillagerStateTable *",
+          "type": "struct Villager__StateTable *",
           "offset": 244
         },
         {
           "name": "StateTable_00d12108",
-          "type": "struct AnimalStateTable *",
+          "type": "struct Animal__StateTable *",
           "offset": 248
         },
         {
@@ -84712,7 +84712,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "LHFileCustomReadFunction",
+      "type": "LHFile__CustomReadFunction",
       "size": 4,
       "call_type": "__cdecl",
       "result": "unsigned int",
@@ -84730,7 +84730,7 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "LHFileCustomSetFilePointer",
+      "type": "LHFile__CustomSetFilePointer",
       "size": 4,
       "call_type": "__cdecl",
       "result": "unsigned int",
@@ -84798,12 +84798,12 @@
         },
         {
           "name": "custom_read_function",
-          "type": "LHFileCustomReadFunction *",
+          "type": "LHFile__CustomReadFunction *",
           "offset": 68
         },
         {
           "name": "custom_set_file_pointer_function",
-          "type": "LHFileCustomSetFilePointer *",
+          "type": "LHFile__CustomSetFilePointer *",
           "offset": 72
         },
         {
@@ -122483,10 +122483,24 @@
       ]
     },
     {
-      "kind": "TYPEDEF_DECL",
-      "type": "field_0x2d2e4_func_t",
+      "kind": "FUNCTIONPROTO",
+      "type": "GGlobal__field_0x2d2ac",
       "size": 4,
-      "typedef": "void *(*)()"
+      "call_type": "__cdecl",
+      "result": "void *",
+      "args": [],
+      "arg_names": [],
+      "signature": "void *(void)"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "GGlobal__field_0x2d2e4",
+      "size": 4,
+      "call_type": "__cdecl",
+      "result": "void *",
+      "args": [],
+      "arg_names": [],
+      "signature": "void *(void)"
     },
     {
       "kind": "STRUCT_DECL",
@@ -122505,7 +122519,7 @@
         },
         {
           "name": "field_0x2d2ac",
-          "type": "field_0x2d2e4_func_t",
+          "type": "GGlobal__field_0x2d2ac *",
           "offset": 185004
         },
         {
@@ -122575,7 +122589,7 @@
         },
         {
           "name": "field_0x2d2e4",
-          "type": "field_0x2d2e4_func_t",
+          "type": "GGlobal__field_0x2d2e4 *",
           "offset": 185060
         },
         {
@@ -136365,7 +136379,7 @@
       "mac_addr": -1,
       "decorated_name": "get_villager_state_table ",
       "undecorated_name": "get_villager_state_table",
-      "return_type": "struct VillagerStateTable *",
+      "return_type": "struct Villager__StateTable *",
       "call_type": "cdecl",
       "argument_types": [],
       "argument_names": []
@@ -136945,7 +136959,7 @@
         "float",
         "float",
         "float",
-        "BlocksTownClearAreaCallback_t *",
+        "Town__BlocksTownClearAreaCallback_t *",
         "int",
         "uint32_t",
         "uint32_t",
@@ -136974,7 +136988,7 @@
       "argument_types": [
         "struct MapCoords *",
         "float",
-        "BlocksTownClearAreaCallback_t *",
+        "Town__BlocksTownClearAreaCallback_t *",
         "int",
         "uint32_t",
         "uint32_t",
@@ -138183,7 +138197,7 @@
       "mac_addr": 274850844,
       "decorated_name": "Villager::GetStateTable(void)",
       "undecorated_name": "GetStateTable__8VillagerFv",
-      "return_type": "struct LivingStateTableEntry *",
+      "return_type": "struct Living__StateTableEntry *",
       "call_type": "cdecl",
       "argument_types": [
         "enum VILLAGER_STATES"
@@ -138993,7 +139007,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *",
-        "GetMeToMyChillOutPosCallback *",
+        "Villager__GetMeToMyChillOutPosCallback *",
         "const void *",
         "const void *",
         "const void *",
@@ -141672,7 +141686,7 @@
         "const void *",
         "const char *",
         "struct LHScriptCommandX_c_ *",
-        "LHScriptX_c__callback_t *",
+        "LHScriptX_c___callback *",
         "long *"
       ],
       "argument_names": [

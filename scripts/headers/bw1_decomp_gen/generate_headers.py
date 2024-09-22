@@ -85,22 +85,27 @@ if __name__ == "__main__":
 
     object_file_base_names = get_object_file_base_names()
 
+    def is_header_struct_name(type_name) -> bool:
+        roomate_class_name = roomate_classes.get(type_name, type_name)
+        if roomate_class_name[0] == 'G' and roomate_class_name[1].isupper():
+            roomate_class_name = roomate_class_name[1:]
+        if roomate_class_name in object_file_base_names:
+            return True
+        return False
+
     def is_header_struct(data_type) -> bool:
         if type(data_type) is Struct and data_type.members and data_type.members[0].name in ["vftable", "super", "base"]:
             return True
         if type(data_type) is Struct or type(data_type) is Union:
-            roomate_class_name = roomate_classes.get(data_type.name, data_type.name)
-            if roomate_class_name[0] == 'G' and roomate_class_name[1].isupper():
-                roomate_class_name = roomate_class_name[1:]
-            if roomate_class_name in object_file_base_names:
+            if is_header_struct_name(data_type.name):
                 return True
         return False
 
     def is_ignore_struct(data_type) -> bool:
-        if type(data_type) is Struct:
+        if type(data_type) is Struct or type(data_type) is Typedef:
             if data_type.name.startswith("RTTI"):
                 return True
-            if data_type.name in ["TypeDescriptor", "vec2u16"]:
+            if data_type.name in ["TypeDescriptor", "vec2u16", "bool32_t"]:
                 return True
         return False
 
@@ -114,6 +119,7 @@ if __name__ == "__main__":
         rtti_helper_unions,
         enums,
         list_and_nodes,
+        member_function_pointers,
         to_ignore,
         remainder_primitives,
         remainder,
@@ -126,6 +132,7 @@ if __name__ == "__main__":
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList") or  x.name.startswith("LHLinkedNode") or x.name.endswith("List") or x.name.endswith("ListNode"),
+        lambda x: type(x) is FuncPtr and "__" in x.name and is_header_struct_name(x.name[::-1].split("__")[-1][::-1]),
         is_ignore_struct,
         lambda x: type(x) is Struct,
     ], primitives)
@@ -161,6 +168,16 @@ if __name__ == "__main__":
 
     local_header_import_map: dict[str, str] = {}
     header_map: dict[Path, Header] = {}
+
+    for t in member_function_pointers:
+        struct_name = t.name[::-1].split("__")[-1][::-1]
+        path = get_path(roomate_classes.get(struct_name, struct_name))
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(t)
+        header = Header(path, [], structs, local_header_import_map)
+        header_map[path] = header
+
     for t in header_structs:
         try:
             path = get_path(roomate_classes.get(t.name, t.name))
@@ -179,7 +196,8 @@ if __name__ == "__main__":
                 new_struct = t
             structs.append(new_struct)
             for s in structs:
-                local_header_import_map[s.decorated_name] = path
+                if type(s) is Struct:
+                    local_header_import_map[s.decorated_name] = path
             header = Header(path, includes, structs, local_header_import_map)
             header_map[path] = header
         except RuntimeError as e:
@@ -187,9 +205,12 @@ if __name__ == "__main__":
 
     headers: list[Header] = list(header_map.values())
 
-    headers.append(Header(Path("TodoRemainderFunctions.h"), [], remainder_functions, local_header_import_map))
-    headers.append(Header(Path("TodoRemainderPrimitives.h"), [], remainder_primitives, local_header_import_map))
-    # TODO: headers.append(Header(Path("TodoRemainder.h"), [], remainder, local_header_import_map))
+    if remainder_functions:
+        headers.append(Header(Path("TodoRemainderFunctions.h"), [], remainder_functions, local_header_import_map))
+    if remainder_primitives:
+        headers.append(Header(Path("TodoRemainderPrimitives.h"), [], remainder_primitives, local_header_import_map))
+    if remainder:
+        headers.append(Header(Path("TodoRemainder.h"), [], remainder, local_header_import_map))
 
     # TODO: create header for globals_t with actual addresses and remove from ignored count
     to_ignore += globals_t
