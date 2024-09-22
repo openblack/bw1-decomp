@@ -127,6 +127,17 @@
       "typedef": "unsigned int"
     },
     {
+      "kind": "ENUM_DECL",
+      "type": "enum LH_RETURN",
+      "size": 4,
+      "constants": [
+        {
+          "name": "LH_RETURN_0",
+          "value": 0
+        }
+      ]
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct LHCoord",
       "size": 8,
@@ -1649,7 +1660,7 @@
       "type": "LHScriptX_c___callback",
       "size": 4,
       "call_type": "__cdecl",
-      "result": "enum uint32_t",
+      "result": "enum LH_RETURN",
       "args": [
         "int",
         "struct LHScriptPramX_c_ *"
@@ -1658,7 +1669,7 @@
         "",
         ""
       ],
-      "signature": "enum uint32_t (int, struct LHScriptPramX_c_ *)"
+      "signature": "enum LH_RETURN (int, struct LHScriptPramX_c_ *)"
     },
     {
       "kind": "STRUCT_DECL",
@@ -76802,12 +76813,17 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct GMobileObjectInfo",
-      "size": 260,
+      "size": 276,
       "members": [
         {
           "name": "super",
           "type": "struct GMobileInfo",
           "offset": 0
+        },
+        {
+          "name": "field_0x104",
+          "type": "uint8_t[16]",
+          "offset": 260
         }
       ]
     },
@@ -77619,6 +77635,126 @@
           "name": "camera",
           "type": "struct GCamera *",
           "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModePath",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeCitadel",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeCtrInteract",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeDance",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeFlyAndClick",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeFollowHeading",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeNew",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeNew1",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraModeNew",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeNew2",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraModeNew",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeTwoObjects",
+      "size": 8,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraMode",
+          "offset": 0
         }
       ]
     },
@@ -83505,7 +83641,7 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct Animal",
-      "size": 320,
+      "size": 328,
       "members": [
         {
           "name": "super",
@@ -83581,6 +83717,16 @@
           "name": "field_0x13c",
           "type": "float",
           "offset": 316
+        },
+        {
+          "name": "field_0x140",
+          "type": "float",
+          "offset": 320
+        },
+        {
+          "name": "field_0x144",
+          "type": "float",
+          "offset": 324
         }
       ]
     },
@@ -83675,12 +83821,17 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct GBallInfo",
-      "size": 260,
+      "size": 320,
       "members": [
         {
           "name": "super",
           "type": "struct GMobileObjectInfo",
           "offset": 0
+        },
+        {
+          "name": "field_0x114",
+          "type": "uint8_t[44]",
+          "offset": 276
         }
       ]
     },
@@ -83813,12 +83964,17 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct GBigForestInfo",
-      "size": 288,
+      "size": 296,
       "members": [
         {
           "name": "super",
           "type": "struct GMultiMapFixedInfo",
           "offset": 0
+        },
+        {
+          "name": "field_0x120",
+          "type": "uint8_t[8]",
+          "offset": 288
         }
       ]
     },
@@ -84065,7 +84221,7 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct BuildingSite",
-      "size": 1608,
+      "size": 1604,
       "members": [
         {
           "name": "base",
@@ -84106,6 +84262,18 @@
           "name": "life",
           "type": "float",
           "offset": 1600
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct StandardBuildingSite",
+      "size": 1608,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct BuildingSite",
+          "offset": 0
         },
         {
           "name": "wood_pile",
@@ -84478,6 +84646,18 @@
           "name": "field_0x44",
           "type": "int32_t",
           "offset": 68
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CameraModeScript",
+      "size": 72,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CameraModeFollow",
+          "offset": 0
         }
       ]
     },
@@ -123904,7 +124084,7 @@
       "type": "LHTransportVftable__Open",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "uint32_t",
+      "result": "enum LH_RETURN",
       "args": [
         "struct LHTransport *",
         "struct LHDynamicQueue_pLHNetEvent_ *",
@@ -123917,7 +124097,7 @@
         "",
         ""
       ],
-      "signature": "uint32_t (struct LHTransport *, const void *, struct LHDynamicQueue_pLHNetEvent_ *, struct LHDynamicQueue_pLHNetEvent_ *, struct LHTransportInfo *) __attribute__((fastcall))"
+      "signature": "enum LH_RETURN (struct LHTransport *, const void *, struct LHDynamicQueue_pLHNetEvent_ *, struct LHDynamicQueue_pLHNetEvent_ *, struct LHTransportInfo *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -125074,7 +125254,7 @@
       "type": "LHSocketVftable__Connect",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "uint32_t",
+      "result": "enum LH_RETURN",
       "args": [
         "void *",
         "const void *",
@@ -125085,7 +125265,7 @@
         "edx",
         "transport_info"
       ],
-      "signature": "uint32_t (void *, const void *, struct LHTransportInfo *) __attribute__((fastcall))"
+      "signature": "enum LH_RETURN (void *, const void *, struct LHTransportInfo *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -125140,7 +125320,7 @@
       "type": "LHSocketVftable__Send",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "uint32_t",
+      "result": "enum LH_RETURN",
       "args": [
         "void *",
         "const void *",
@@ -125153,7 +125333,7 @@
         "data",
         "data_len"
       ],
-      "signature": "uint32_t (void *, const void *, const void *, long) __attribute__((fastcall))"
+      "signature": "enum LH_RETURN (void *, const void *, const void *, long) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -125176,7 +125356,7 @@
       "type": "LHSocketVftable__SendPacket",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "uint32_t",
+      "result": "enum LH_RETURN",
       "args": [
         "void *",
         "const void *",
@@ -125187,7 +125367,7 @@
         "edx",
         "packet"
       ],
-      "signature": "uint32_t (void *, const void *, const struct LHPacket *) __attribute__((fastcall))"
+      "signature": "enum LH_RETURN (void *, const void *, const struct LHPacket *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -145404,9 +145584,64 @@
       "value": 9194752
     },
     {
+      "name": "__vt__CameraMode",
+      "type": "struct CameraModeVftable",
+      "value": 9205472
+    },
+    {
       "name": "p_class_CameraMode_RTTI_Type_Descriptor",
       "type": "struct TypeDescriptor",
       "value": 10277776
+    },
+    {
+      "name": "__vt__CameraModePath",
+      "type": "struct CameraModeVftable",
+      "value": 9207056
+    },
+    {
+      "name": "__vt__CameraModeCitadel",
+      "type": "struct CameraModeVftable",
+      "value": 9205396
+    },
+    {
+      "name": "__vt__CameraModeCtrInteract",
+      "type": "struct CameraModeVftable",
+      "value": 9205568
+    },
+    {
+      "name": "__vt__CameraModeDance",
+      "type": "struct CameraModeVftable",
+      "value": 9205664
+    },
+    {
+      "name": "__vt__CameraModeFlyAndClick",
+      "type": "struct CameraModeVftable",
+      "value": 9205780
+    },
+    {
+      "name": "__vt__CameraModeFollowHeading",
+      "type": "struct CameraModeVftable",
+      "value": 9206020
+    },
+    {
+      "name": "__vt__CameraModeNew",
+      "type": "struct CameraModeVftable",
+      "value": 9206452
+    },
+    {
+      "name": "__vt__CameraModeNew1",
+      "type": "struct CameraModeVftable",
+      "value": 9206360
+    },
+    {
+      "name": "__vt__CameraModeNew2",
+      "type": "struct CameraModeVftable",
+      "value": 9206616
+    },
+    {
+      "name": "__vt__CameraModeTwoObjects",
+      "type": "struct CameraModeVftable",
+      "value": 9207248
     },
     {
       "name": "__vt__CameraModeNew3",
@@ -145539,6 +145774,11 @@
       "value": 9097308
     },
     {
+      "name": "__vt__GAudio",
+      "type": "struct GameThingVftable",
+      "value": 9193696
+    },
+    {
       "name": "__vt__GBallInfo",
       "type": "struct GBaseInfoVftable",
       "value": 9195316
@@ -145582,6 +145822,11 @@
       "name": "__vt__CameraModeFollow",
       "type": "struct CameraModeVftable",
       "value": 9205892
+    },
+    {
+      "name": "__vt__CameraModeScript",
+      "type": "struct CameraModeVftable",
+      "value": 9207132
     },
     {
       "name": "p_class_CameraModeFree_RTTI_Type_Descriptor",
