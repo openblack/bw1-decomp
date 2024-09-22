@@ -54,6 +54,7 @@ def is_globals_helper_struct(name: str) -> bool:
         "SetRenderModeData",
         "ModAddedGlobals_t",
         "globals_Script",
+        "SetRenderModeData__callback"
     ]
 
 
@@ -132,7 +133,7 @@ if __name__ == "__main__":
         remainder_primitives,
         remainder,
     ) = partition([
-        lambda x: type(x) is Struct and is_globals_helper_struct(x.name),
+        lambda x: is_globals_helper_struct(x.name),
         lambda x: type(x) is Struct and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
@@ -239,9 +240,6 @@ if __name__ == "__main__":
 
     # TODO: create header for globals_t with actual addresses and remove from ignored count
     to_ignore += globals_t
-    # TODO: get to 0 orphan functions
-    # TODO: get to 0 orphan structs
-    # TODO: get to 0 orphan entries
 
     output_path = Path("generated_headers_output")
     if output_path.exists():
