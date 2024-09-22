@@ -82,6 +82,7 @@ if __name__ == "__main__":
     vftable_address_look_up = {i["name"].removeprefix("__vt__"): i for i in vftable_addresses}
 
     class_method_look_up, class_static_method_look_up, remainder_functions = find_methods(db['functions'])
+    assigned_neighbour_functions, remainder_functions = partition([lambda x: x.name in roomate_classes.keys()], remainder_functions)
 
     object_file_base_names = get_object_file_base_names()
 
@@ -202,6 +203,14 @@ if __name__ == "__main__":
             header_map[path] = header
         except RuntimeError as e:
             print(e, file=sys.stderr)
+
+    for t in assigned_neighbour_functions:
+        path = get_path(roomate_classes[t.name])
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(t)
+        header = Header(path, [], structs, local_header_import_map)
+        header_map[path] = header
 
     headers: list[Header] = list(header_map.values())
 
