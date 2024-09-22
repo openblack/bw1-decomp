@@ -120013,13 +120013,8 @@
       "members": [
         {
           "name": "super",
-          "type": "struct Base *",
+          "type": "struct Base",
           "offset": 0
-        },
-        {
-          "name": "field_0x4",
-          "type": "uint32_t",
-          "offset": 4
         },
         {
           "name": "value",
