@@ -1,3 +1,4 @@
+import time
 import shutil
 import sys
 from json import load
@@ -34,8 +35,31 @@ def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionProt
     return thiscall_map, static_method_map, remainder
 
 
+def is_globals_helper_struct(name: str) -> bool:
+    return name in [
+        "globals_t",
+        "SetupThingDraw_t",
+        "SetupBox_t",
+        "LH3DObject_namespace",
+        "LH3DComplexObject_namespace",
+        "LH3DMist_namespace",
+        "LH3DObject_region",
+        "LH3DMem_t",
+        "GameThing_t",
+        "ape_hair_t",
+        "custom_footpath_display_control_t",
+        "g_pack_t",
+        "g_anim_pack_t",
+        "GlobalLH3DTextures",
+        "SetRenderModeData",
+        "ModAddedGlobals_t",
+        "globals_Script",
+    ]
+
+
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
 if __name__ == "__main__":
+    tic = time.perf_counter()
     db = load(open("extracted_reversing_data_bw_141.json"))
     projects_and_files = map_projects_to_object_files()
     primitives = []
@@ -61,6 +85,25 @@ if __name__ == "__main__":
 
     object_file_base_names = get_object_file_base_names()
 
+    def is_header_struct(data_type) -> bool:
+        if type(data_type) is Struct and data_type.members and data_type.members[0].name in ["vftable", "super", "base"]:
+            return True
+        if type(data_type) is Struct or type(data_type) is Union:
+            roomate_class_name = roomate_classes.get(data_type.name, data_type.name)
+            if roomate_class_name[0] == 'G' and roomate_class_name[1].isupper():
+                roomate_class_name = roomate_class_name[1:]
+            if roomate_class_name in object_file_base_names:
+                return True
+        return False
+
+    def is_ignore_struct(data_type) -> bool:
+        if type(data_type) is Struct:
+            if data_type.name.startswith("RTTI"):
+                return True
+            if data_type.name in ["TypeDescriptor", "vec2u16"]:
+                return True
+        return False
+
     # Do some selecting
     (
         globals_t,
@@ -75,15 +118,15 @@ if __name__ == "__main__":
         remainder_primitives,
         remainder,
     ) = partition([
-        lambda x: type(x) is Struct and x.name == "globals_t",
+        lambda x: type(x) is Struct and is_globals_helper_struct(x.name),
         lambda x: type(x) is Struct and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
-        lambda x: type(x) is Struct and ((x.members and x.members[0].name in ["vftable", "super", "base"]) or roomate_classes.get(x.name, x.name) in object_file_base_names),
+        is_header_struct,
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList") or  x.name.startswith("LHLinkedNode") or x.name.endswith("List") or x.name.endswith("ListNode"),
-        lambda x: type(x) is Struct and (x.name.startswith("RTTI") or x.name == "TypeDescriptor"),
+        is_ignore_struct,
         lambda x: type(x) is Struct,
     ], primitives)
 
@@ -148,7 +191,8 @@ if __name__ == "__main__":
     headers.append(Header(Path("TodoRemainderPrimitives.h"), [], remainder_primitives, local_header_import_map))
     # TODO: headers.append(Header(Path("TodoRemainder.h"), [], remainder, local_header_import_map))
 
-    # TODO: create header for globals_t with actual addresses
+    # TODO: create header for globals_t with actual addresses and remove from ignored count
+    to_ignore += globals_t
     # TODO: get to 0 orphan functions
     # TODO: get to 0 orphan structs
     # TODO: get to 0 orphan entries
@@ -168,7 +212,8 @@ if __name__ == "__main__":
             wrote_headers += 1
             wrote_bytes += f.write(cw.code)
 
-    print(f"Wrote {wrote_headers} headers({wrote_bytes} bytes) in {output_path}")
+    toc = time.perf_counter()
+    print(f"Wrote {wrote_headers} headers({wrote_bytes} bytes) in {output_path}, took {toc - tic:0.4f} seconds")
     print(f"Ignored {len(to_ignore)} entries")
 
     if len(remainder_functions) + len(remainder_primitives) + len(remainder) > 0:

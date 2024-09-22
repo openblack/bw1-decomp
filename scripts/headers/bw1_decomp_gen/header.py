@@ -43,6 +43,8 @@ C_STDLIB_HEADER_IMPORT_MAP = {
     "uint16_t": "stdint.h",
     "uint32_t": "stdint.h",
     "uint64_t": "stdint.h",
+    "char16_t": "uchar.h",
+    "D3DTLVERTEX": "d3dtypes.h"
 }
 
 
