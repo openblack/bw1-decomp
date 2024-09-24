@@ -231,11 +231,17 @@ if __name__ == "__main__":
     headers: list[Header] = list(header_map.values())
 
     if remainder_functions:
-        headers.append(Header(Path("TodoRemainderFunctions.h"), [], remainder_functions, local_header_import_map))
+        header = Header(Path("TodoRemainderFunctions.h"), [], remainder_functions)
+        header.build_include_list(local_header_import_map)
+        headers.append(header)
     if remainder_primitives:
-        headers.append(Header(Path("TodoRemainderPrimitives.h"), [], remainder_primitives, local_header_import_map))
+        header = Header(Path("TodoRemainderPrimitives.h"), [], remainder_primitives)
+        header.build_include_list(local_header_import_map)
+        headers.append(header)
     if remainder:
-        headers.append(Header(Path("TodoRemainder.h"), [], remainder, local_header_import_map))
+        header = Header(Path("TodoRemainder.h"), [], remainder)
+        header.build_include_list(local_header_import_map)
+        headers.append(header)
 
     # TODO: create header for globals_t with actual addresses and remove from ignored count
     to_ignore += globals_t
