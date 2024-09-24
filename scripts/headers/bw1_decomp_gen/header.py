@@ -48,6 +48,10 @@ C_STDLIB_HEADER_IMPORT_MAP = {
     "D3DTLVERTEX": "d3dtypes.h"
 }
 
+UTILITY_HEADER_IMPORT_MAP = {
+    "bool32_t": "reversing_utils.h",
+}
+
 
 def strip_pointers_arrays_and_modifiers(c_type):
     c_type = re.sub(r'\*', '', c_type)
@@ -83,6 +87,11 @@ class Header:
             if t in C_STDLIB_HEADER_IMPORT_MAP:
                 header = C_STDLIB_HEADER_IMPORT_MAP[t]
                 i = self.includes.get(header, self.Include(Path(header), set(), True))
+                i.dependencies.add(t)
+                self.includes[header] = i
+            elif t in UTILITY_HEADER_IMPORT_MAP:
+                header = UTILITY_HEADER_IMPORT_MAP[t]
+                i = self.includes.get(header, self.Include(Path(header), set(), False))
                 i.dependencies.add(t)
                 self.includes[header] = i
             elif t in local_header_import_map:

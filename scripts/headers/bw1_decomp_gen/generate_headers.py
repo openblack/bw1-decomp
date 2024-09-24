@@ -255,9 +255,19 @@ if __name__ == "__main__":
             wrote_headers += 1
             wrote_bytes += f.write(cw.code)
 
+    copied_headers = 0
+    copied_bytes = 0
+    for file in (Path(__file__).parent / "src").glob('*'):
+        dest_file = output_path / file.name
+        result = shutil.copy2(file, dest_file)
+        copied_headers += 1
+        copied_bytes += result.stat().st_size
+
     toc = time.perf_counter()
-    print(f"Wrote {wrote_headers} headers({wrote_bytes} bytes) in {output_path}, took {toc - tic:0.4f} seconds")
+    print(f"Copied {copied_headers} headers({copied_bytes} bytes) in {output_path}")
+    print(f"Wrote {wrote_headers} headers({wrote_bytes} bytes) in {output_path}")
     print(f"Ignored {len(to_ignore)} entries")
+    print(f"Took {toc - tic:0.4f} seconds")
 
     if len(remainder_functions) + len(remainder_primitives) + len(remainder) > 0:
         print(f"There are still {len(remainder_functions)} orphan functions")
