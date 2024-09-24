@@ -116,8 +116,7 @@ class Union(Composite):
     def from_json(cls, decl: dict) -> "Union":
         name = extract_type_name(decl['type'])
         size = decl['size']
-        # TODO: unions don't seem have the 'struct' tag, they should
-        members = [cls.Member(m["name"], f'struct {m["type"]}', 0) for m in decl["aliases"]]
+        members = [cls.Member(**m, offset=0) for m in decl["aliases"]]
         return cls(name, size, members)
 
     def get_types(self) -> set[str]:

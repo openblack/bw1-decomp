@@ -56,6 +56,13 @@ def is_globals_helper_struct(name: str) -> bool:
         "globals_Script",
         "SetRenderModeData__callback"
     ]
+primitive_look_up = {
+    'STRUCT_DECL': Struct,
+    'UNION_DECL': Union,
+    'ENUM_DECL': Enum,
+    'TYPEDEF_DECL': Typedef,
+    'FUNCTIONPROTO': FuncPtr,
+}
 
 
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
@@ -65,14 +72,6 @@ if __name__ == "__main__":
     projects_and_files = map_projects_to_object_files()
     primitives = []
     for decl in db['types']:
-        primitive_look_up = {
-            'STRUCT_DECL': Struct,
-            'UNION_DECL': Union,
-            'ENUM_DECL': Enum,
-            'TYPEDEF_DECL': Typedef,
-            'FUNCTIONPROTO': FuncPtr,
-        }
-
         primitive = primitive_look_up[decl['kind']]
         # TODO: Get immediate dependencies for each primitive
         primitives.append(primitive.from_json(decl))
@@ -125,7 +124,6 @@ if __name__ == "__main__":
         bases,
         vftable_function_prototypes,
         header_structs,
-        rtti_helper_unions,
         enums,
         list_and_nodes,
         member_function_pointers,
@@ -138,7 +136,6 @@ if __name__ == "__main__":
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
         is_header_struct,
-        lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList") or  x.name.startswith("LHLinkedNode") or x.name.endswith("List") or x.name.endswith("ListNode"),
         lambda x: type(x) is FuncPtr and "__" in x.name and is_header_struct_name(x.name[::-1].split("__")[-1][::-1]),

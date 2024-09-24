@@ -52088,7 +52088,7 @@
         },
         {
           "name": "split",
-          "type": "MapCoordsSplit"
+          "type": "struct MapCoordsSplit"
         }
       ]
     },
@@ -53324,11 +53324,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Base"
+          "type": "struct Base"
         },
         {
           "name": "vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         }
       ]
     },
@@ -58574,11 +58574,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "GameThing"
+          "type": "struct GameThing"
         },
         {
           "name": "vftable",
-          "type": "GameThingWithPosVftable *"
+          "type": "struct GameThingWithPosVftable *"
         }
       ]
     },
@@ -63119,19 +63119,19 @@
       "aliases": [
         {
           "name": "super",
-          "type": "GameThingWithPos"
+          "type": "struct GameThingWithPos"
         },
         {
           "name": "vftable_object",
-          "type": "ObjectVftable *"
+          "type": "struct ObjectVftable *"
         },
         {
           "name": "vftable_gamethingwithpos",
-          "type": "GameThingWithPosVftable *"
+          "type": "struct GameThingWithPosVftable *"
         },
         {
           "name": "vftable_gamething",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         }
       ]
     },
@@ -63295,11 +63295,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Base"
+          "type": "struct Base"
         },
         {
           "name": "vftable",
-          "type": "GBaseInfoVftable *"
+          "type": "struct GBaseInfoVftable *"
         }
       ]
     },
@@ -63470,11 +63470,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "GBaseInfo"
+          "type": "struct GBaseInfo"
         },
         {
           "name": "vftable",
-          "type": "GObjectInfoVftable *"
+          "type": "struct GObjectInfoVftable *"
         }
       ]
     },
@@ -66128,23 +66128,23 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Object"
+          "type": "struct Object"
         },
         {
           "name": "object_vftable",
-          "type": "ObjectVftable *"
+          "type": "struct ObjectVftable *"
         },
         {
           "name": "fixed_vftable",
-          "type": "FixedVftable *"
+          "type": "struct FixedVftable *"
         },
         {
           "name": "gameThing_vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         },
         {
           "name": "gameThingWithPos_vftable",
-          "type": "GameThingWithPosVftable *"
+          "type": "struct GameThingWithPosVftable *"
         }
       ]
     },
@@ -66196,11 +66196,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "GObjectInfo"
+          "type": "struct GObjectInfo"
         },
         {
           "name": "vftable",
-          "type": "GSingleMapFixedInfoVftable *"
+          "type": "struct GSingleMapFixedInfoVftable *"
         }
       ]
     },
@@ -66889,31 +66889,31 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Fixed"
+          "type": "struct Fixed"
         },
         {
           "name": "super_object",
-          "type": "Object"
+          "type": "struct Object"
         },
         {
           "name": "super_gamethingwithpos",
-          "type": "GameThingWithPos"
+          "type": "struct GameThingWithPos"
         },
         {
           "name": "object_vftable",
-          "type": "ObjectVftable *"
+          "type": "struct ObjectVftable *"
         },
         {
           "name": "multiMapFixed_vftable",
-          "type": "MultiMapFixedVftable *"
+          "type": "struct MultiMapFixedVftable *"
         },
         {
           "name": "gameThing_vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         },
         {
           "name": "gameThingWithPos_vftable",
-          "type": "GameThingWithPosVftable *"
+          "type": "struct GameThingWithPosVftable *"
         }
       ]
     },
@@ -67182,11 +67182,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Object"
+          "type": "struct Object"
         },
         {
           "name": "vftable",
-          "type": "MobileVftable *"
+          "type": "struct MobileVftable *"
         }
       ]
     },
@@ -67752,31 +67752,31 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Mobile"
+          "type": "struct Mobile"
         },
         {
           "name": "super_object",
-          "type": "Object"
+          "type": "struct Object"
         },
         {
           "name": "super_gamethingwithpos",
-          "type": "GameThingWithPos"
+          "type": "struct GameThingWithPos"
         },
         {
           "name": "mobileWallHug_vftable",
-          "type": "MobileWallHugVftable *"
+          "type": "struct MobileWallHugVftable *"
         },
         {
           "name": "vftable_object",
-          "type": "ObjectVftable *"
+          "type": "struct ObjectVftable *"
         },
         {
           "name": "vftable_gameThingWithPos",
-          "type": "GameThingWithPosVftable *"
+          "type": "struct GameThingWithPosVftable *"
         },
         {
           "name": "gameThing_vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         }
       ]
     },
@@ -68332,11 +68332,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "GameThingWithPos"
+          "type": "struct GameThingWithPos"
         },
         {
           "name": "vftable",
-          "type": "ContainerVftable *"
+          "type": "struct ContainerVftable *"
         }
       ]
     },
@@ -74598,27 +74598,27 @@
       "aliases": [
         {
           "name": "super",
-          "type": "MobileWallHug"
+          "type": "struct MobileWallHug"
         },
         {
           "name": "super_object",
-          "type": "Object"
+          "type": "struct Object"
         },
         {
           "name": "super_gamethingwithpos",
-          "type": "GameThingWithPos"
+          "type": "struct GameThingWithPos"
         },
         {
           "name": "vftable_object",
-          "type": "ObjectVftable *"
+          "type": "struct ObjectVftable *"
         },
         {
           "name": "living_vftable",
-          "type": "LivingVftable *"
+          "type": "struct LivingVftable *"
         },
         {
           "name": "gameThing_vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         }
       ]
     },
@@ -75523,39 +75523,39 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Living"
+          "type": "struct Living"
         },
         {
           "name": "super_gamething",
-          "type": "GameThing"
+          "type": "struct GameThing"
         },
         {
           "name": "super_gamethingwithpos",
-          "type": "GameThingWithPos"
+          "type": "struct GameThingWithPos"
         },
         {
           "name": "super_object",
-          "type": "Object"
+          "type": "struct Object"
         },
         {
           "name": "villager_vftable",
-          "type": "VillagerVftable *"
+          "type": "struct VillagerVftable *"
         },
         {
           "name": "living_vftable",
-          "type": "LivingVftable *"
+          "type": "struct LivingVftable *"
         },
         {
           "name": "vftable_object",
-          "type": "ObjectVftable *"
+          "type": "struct ObjectVftable *"
         },
         {
           "name": "gameThing_vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         },
         {
           "name": "vftable_gameThingWithPos",
-          "type": "GameThingWithPosVftable *"
+          "type": "struct GameThingWithPosVftable *"
         }
       ]
     },
@@ -75922,35 +75922,35 @@
       "aliases": [
         {
           "name": "super",
-          "type": "MultiMapFixed"
+          "type": "struct MultiMapFixed"
         },
         {
           "name": "super_object",
-          "type": "Object"
+          "type": "struct Object"
         },
         {
           "name": "super_gamethingwithpos",
-          "type": "GameThingWithPos"
+          "type": "struct GameThingWithPos"
         },
         {
           "name": "abode_vftable",
-          "type": "AbodeVftable *"
+          "type": "struct AbodeVftable *"
         },
         {
           "name": "object_vftable",
-          "type": "ObjectVftable *"
+          "type": "struct ObjectVftable *"
         },
         {
           "name": "multiMapFixed_vftable",
-          "type": "MultiMapFixedVftable *"
+          "type": "struct MultiMapFixedVftable *"
         },
         {
           "name": "gameThing_vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         },
         {
           "name": "gameThingWithPos_vftable",
-          "type": "GameThingWithPosVftable *"
+          "type": "struct GameThingWithPosVftable *"
         }
       ]
     },
@@ -76846,11 +76846,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Mobile"
+          "type": "struct Mobile"
         },
         {
           "name": "vftable",
-          "type": "MobileObjectVftable *"
+          "type": "struct MobileObjectVftable *"
         }
       ]
     },
@@ -80009,11 +80009,11 @@
       "aliases": [
         {
           "name": "morphable",
-          "type": "MorphableVftable"
+          "type": "struct MorphableVftable"
         },
         {
           "name": "valueSpinner",
-          "type": "ValueSpinnerVftable"
+          "type": "struct ValueSpinnerVftable"
         }
       ]
     },
@@ -80523,11 +80523,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "GameThing"
+          "type": "struct GameThing"
         },
         {
           "name": "vftable",
-          "type": "PSysBaseVftable *"
+          "type": "struct PSysBaseVftable *"
         }
       ]
     },
@@ -80666,11 +80666,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "PSysBase"
+          "type": "struct PSysBase"
         },
         {
           "name": "vftable",
-          "type": "PSysInterfaceVftable *"
+          "type": "struct PSysInterfaceVftable *"
         }
       ]
     },
@@ -84206,15 +84206,15 @@
       "aliases": [
         {
           "name": "super",
-          "type": "GameThing"
+          "type": "struct GameThing"
         },
         {
           "name": "vftable",
-          "type": "BuildingSiteVftable *"
+          "type": "struct BuildingSiteVftable *"
         },
         {
           "name": "gameThing_vftable",
-          "type": "GameThingVftable *"
+          "type": "struct GameThingVftable *"
         }
       ]
     },
@@ -88020,11 +88020,11 @@
       "aliases": [
         {
           "name": "named",
-          "type": "CHand__State__Named"
+          "type": "struct CHand__State__Named"
         },
         {
           "name": "raw",
-          "type": "HandState *[11]"
+          "type": "struct HandState *[11]"
         }
       ]
     },
@@ -113659,11 +113659,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "Container"
+          "type": "struct Container"
         },
         {
           "name": "vftable",
-          "type": "ForestVftable *"
+          "type": "struct ForestVftable *"
         }
       ]
     },
@@ -119843,11 +119843,11 @@
       "aliases": [
         {
           "name": "super",
-          "type": "MobileObject"
+          "type": "struct MobileObject"
         },
         {
           "name": "vftable",
-          "type": "PotVftable *"
+          "type": "struct PotVftable *"
         }
       ]
     },
