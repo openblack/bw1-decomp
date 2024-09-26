@@ -53366,12 +53366,29 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GameThingListNode",
+      "type": "struct LHListHead__GameThing",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GameThing *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_GameThing",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct GameThingListNode *",
+          "type": "struct LHLinkedNode__p_GameThing *",
           "offset": 0
         },
         {
@@ -53383,12 +53400,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GameThingList",
+      "type": "struct LHLinkedList__p_GameThing",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct GameThingListNode *",
+          "type": "struct LHLinkedNode__p_GameThing *",
           "offset": 0
         },
         {
@@ -58616,29 +58633,29 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct ObjectListNode",
+      "type": "struct LHLinkedNode__p_GameThingWithPos",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct ObjectListNode *",
+          "type": "struct LHLinkedNode__p_GameThingWithPos *",
           "offset": 0
         },
         {
           "name": "payload",
-          "type": "struct Object *",
+          "type": "struct GameThingWithPos *",
           "offset": 4
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct ObjectList",
+      "type": "struct LHLinkedList__p_GameThingWithPos",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct ObjectListNode *",
+          "type": "struct LHLinkedNode__p_GameThingWithPos *",
           "offset": 0
         },
         {
@@ -63193,6 +63210,40 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Object",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Object *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Object *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Object",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Object *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
       "kind": "FUNCTIONPROTO",
       "type": "GBaseInfoVftable__GetDebugText",
       "size": 4,
@@ -63322,6 +63373,23 @@
           "name": "index",
           "type": "int",
           "offset": 12
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GBaseInfo",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GBaseInfo *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -66218,6 +66286,23 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct SingleMapFixedVftable",
+      "size": 2152,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct FixedVftable",
+          "offset": 0
+        },
+        {
+          "name": "field_0x864",
+          "type": "uintptr_t",
+          "offset": 2148
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct SingleMapFixed",
       "size": 92,
       "members": [
@@ -66966,12 +67051,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct MultiMapFixedListNode",
+      "type": "struct LHLinkedNode__p_MultiMapFixed",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct MultiMapFixedListNode *",
+          "type": "struct LHLinkedNode__p_MultiMapFixed *",
           "offset": 0
         },
         {
@@ -66983,12 +67068,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct MultiMapFixedList",
+      "type": "struct LHLinkedList__p_MultiMapFixed",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct MultiMapFixedListNode *",
+          "type": "struct LHLinkedNode__p_MultiMapFixed *",
           "offset": 0
         },
         {
@@ -67052,7 +67137,7 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct PlannedMultiMapFixedList",
+      "type": "struct LHListHead__PlannedMultiMapFixed",
       "size": 8,
       "members": [
         {
@@ -67064,6 +67149,33 @@
           "name": "count",
           "type": "uint32_t",
           "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GMultiMapFixedInfoVftable",
+      "size": 72,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GObjectInfoVftable",
+          "offset": 0
+        },
+        {
+          "name": "field_0x3c",
+          "type": "uintptr_t",
+          "offset": 60
+        },
+        {
+          "name": "field_0x40",
+          "type": "uintptr_t",
+          "offset": 64
+        },
+        {
+          "name": "field_0x44",
+          "type": "uintptr_t",
+          "offset": 68
         }
       ]
     },
@@ -68518,6 +68630,40 @@
           "name": "field_0x8c",
           "type": "uint32_t",
           "offset": 140
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Flock",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Flock *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Flock *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Flock",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Flock *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -70545,6 +70691,23 @@
           "name": "next",
           "type": "struct Reaction *",
           "offset": 64
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Reaction",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Reaction *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -74736,12 +74899,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode_pLiving",
+      "type": "struct LHLinkedNode__p_Living",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode_pLiving *",
+          "type": "struct LHLinkedNode__p_Living *",
           "offset": 0
         },
         {
@@ -74753,12 +74916,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList_pLiving",
+      "type": "struct LHLinkedList__p_Living",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode_pLiving *",
+          "type": "struct LHLinkedNode__p_Living *",
           "offset": 0
         },
         {
@@ -74770,7 +74933,7 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LivingList",
+      "type": "struct LHListHead__Living",
       "size": 8,
       "members": [
         {
@@ -75693,7 +75856,7 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct VillagerList",
+      "type": "struct LHListHead__Villager",
       "size": 8,
       "members": [
         {
@@ -75710,12 +75873,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__Villager",
+      "type": "struct LHLinkedNode__p_Villager",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__Villager *",
+          "type": "struct LHLinkedNode__p_Villager *",
           "offset": 0
         },
         {
@@ -75727,12 +75890,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__Villager",
+      "type": "struct LHLinkedList__p_Villager",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__Villager *",
+          "type": "struct LHLinkedNode__p_Villager *",
           "offset": 0
         },
         {
@@ -76001,7 +76164,7 @@
         },
         {
           "name": "villagers",
-          "type": "struct VillagerList",
+          "type": "struct LHListHead__Villager",
           "offset": 160
         },
         {
@@ -76053,7 +76216,7 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct AbodeList",
+      "type": "struct LHListHead__Abode",
       "size": 8,
       "members": [
         {
@@ -76063,7 +76226,7 @@
         },
         {
           "name": "count",
-          "type": "int",
+          "type": "uint32_t",
           "offset": 4
         }
       ]
@@ -76350,6 +76513,23 @@
           "name": "game_thing_0x88",
           "type": "struct GameThing *",
           "offset": 136
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__CitadelPart",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct CitadelPart *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -76888,6 +77068,40 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_MobileObject",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_MobileObject *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct MobileObject *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_MobileObject",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_MobileObject *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct GSpellSeedInfo",
       "size": 400,
       "members": [
@@ -77036,12 +77250,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GSaveLoadPtrListNode",
+      "type": "struct LHLinkedNode__p_GSaveLoadPtr",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct GSaveLoadPtrListNode *",
+          "type": "struct LHLinkedNode__p_GSaveLoadPtr *",
           "offset": 0
         },
         {
@@ -77053,12 +77267,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GSaveLoadPtrList",
+      "type": "struct LHLinkedList__p_GSaveLoadPtr",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct GSaveLoadPtrListNode *",
+          "type": "struct LHLinkedNode__p_GSaveLoadPtr *",
           "offset": 0
         },
         {
@@ -77120,12 +77334,12 @@
         },
         {
           "name": "save_load_ptr_list",
-          "type": "struct GSaveLoadPtrList",
+          "type": "struct LHLinkedList__p_GSaveLoadPtr",
           "offset": 544
         },
         {
           "name": "game_thing_list",
-          "type": "struct GameThingList",
+          "type": "struct LHLinkedList__p_GameThing",
           "offset": 552
         }
       ]
@@ -78852,7 +79066,7 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct WorshipSpellIconList",
+      "type": "struct LHListHead__WorshipSpellIcon",
       "size": 8,
       "members": [
         {
@@ -79167,7 +79381,7 @@
         },
         {
           "name": "icon_list",
-          "type": "struct WorshipSpellIconList",
+          "type": "struct LHListHead__WorshipSpellIcon",
           "offset": 224
         },
         {
@@ -79388,23 +79602,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct CitadelPartList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct CitadelPart *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct Citadel",
       "size": 128,
       "members": [
@@ -79425,7 +79622,7 @@
         },
         {
           "name": "part_list",
-          "type": "struct CitadelPartList",
+          "type": "struct LHListHead__CitadelPart",
           "offset": 76
         },
         {
@@ -79636,12 +79833,46 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct FieldList",
+      "type": "struct LHListHead__Field",
       "size": 8,
       "members": [
         {
           "name": "head",
           "type": "struct Field *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Field",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Field *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Field *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Field",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Field *",
           "offset": 0
         },
         {
@@ -80129,6 +80360,334 @@
       ]
     },
     {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__Init",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct BuildingSite *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__Process",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct BuildingSite *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__GetWoodForStats",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "uint32_t",
+      "args": [
+        "struct BuildingSite *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "uint32_t (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__GetPileWood",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "struct Pot *",
+      "args": [
+        "struct BuildingSite *",
+        "struct MapCoords *"
+      ],
+      "arg_names": [
+        "this",
+        "coords"
+      ],
+      "signature": "struct Pot *(struct BuildingSite *, const void *, struct MapCoords *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__SetPileWood",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct BuildingSite *",
+        "struct Pot *"
+      ],
+      "arg_names": [
+        "this",
+        "wood_pile"
+      ],
+      "signature": "void (struct BuildingSite *, const void *, struct Pot *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__CreatePileWood",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct BuildingSite *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__IsLinkedToThisBuildingSite",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct BuildingSite *",
+        "struct Pot *"
+      ],
+      "arg_names": [
+        "this",
+        "wood_pile"
+      ],
+      "signature": "void (struct BuildingSite *, const void *, struct Pot *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "BuildingSiteVftable__GetRandomBuildPos",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct BuildingSite *",
+        "struct Object *",
+        "int32_t *"
+      ],
+      "arg_names": [
+        "this",
+        "",
+        ""
+      ],
+      "signature": "void (struct BuildingSite *, const void *, struct Object *, int32_t *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct BuildingSiteVftable",
+      "size": 300,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingVftable",
+          "offset": 0
+        },
+        {
+          "name": "Init",
+          "type": "BuildingSiteVftable__Init *",
+          "offset": 252
+        },
+        {
+          "name": "Process",
+          "type": "BuildingSiteVftable__Process *",
+          "offset": 256
+        },
+        {
+          "name": "GetWoodForStats",
+          "type": "BuildingSiteVftable__GetWoodForStats *",
+          "offset": 260
+        },
+        {
+          "name": "GetPileWood",
+          "type": "BuildingSiteVftable__GetPileWood *",
+          "offset": 264
+        },
+        {
+          "name": "SetPileWood",
+          "type": "BuildingSiteVftable__SetPileWood *",
+          "offset": 268
+        },
+        {
+          "name": "CreatePileWood",
+          "type": "BuildingSiteVftable__CreatePileWood *",
+          "offset": 272
+        },
+        {
+          "name": "GetResourcePosAndYAngle",
+          "type": "uintptr_t",
+          "offset": 276
+        },
+        {
+          "name": "RemovePotFromStructure",
+          "type": "uintptr_t",
+          "offset": 280
+        },
+        {
+          "name": "IsLinkedToThisBuildingSite",
+          "type": "BuildingSiteVftable__IsLinkedToThisBuildingSite *",
+          "offset": 284
+        },
+        {
+          "name": "GetNearestEdge",
+          "type": "uintptr_t",
+          "offset": 288
+        },
+        {
+          "name": "GetNextPosFromIndex",
+          "type": "uintptr_t",
+          "offset": 292
+        },
+        {
+          "name": "GetRandomBuildPos",
+          "type": "BuildingSiteVftable__GetRandomBuildPos *",
+          "offset": 296
+        }
+      ]
+    },
+    {
+      "kind": "UNION_DECL",
+      "type": "union BuildingSiteBase",
+      "size": 20,
+      "aliases": [
+        {
+          "name": "super",
+          "type": "struct GameThing"
+        },
+        {
+          "name": "vftable",
+          "type": "struct BuildingSiteVftable *"
+        },
+        {
+          "name": "gameThing_vftable",
+          "type": "struct GameThingVftable *"
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct BuildingSite",
+      "size": 1604,
+      "members": [
+        {
+          "name": "base",
+          "type": "union BuildingSiteBase",
+          "offset": 0
+        },
+        {
+          "name": "root_building",
+          "type": "struct MultiMapFixed *",
+          "offset": 20
+        },
+        {
+          "name": "building_worker_list",
+          "type": "struct LHLinkedList__p_Villager",
+          "offset": 24
+        },
+        {
+          "name": "field_0x20",
+          "type": "uint8_t[20]",
+          "offset": 32
+        },
+        {
+          "name": "building_positions",
+          "type": "struct LHPoint[127]",
+          "offset": 52
+        },
+        {
+          "name": "field_0x628",
+          "type": "uint8_t[20]",
+          "offset": 1576
+        },
+        {
+          "name": "field_0x63c",
+          "type": "uint8_t[4]",
+          "offset": 1596
+        },
+        {
+          "name": "life",
+          "type": "float",
+          "offset": 1600
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_BuildingSite",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_BuildingSite *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct BuildingSite *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_BuildingSite",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_BuildingSite *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__BuildingSite",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct BuildingSite *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct StandardBuildingSite",
+      "size": 1608,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct BuildingSite",
+          "offset": 0
+        },
+        {
+          "name": "wood_pile",
+          "type": "struct Pot *",
+          "offset": 1604
+        }
+      ]
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct Creche",
       "size": 196,
@@ -80154,12 +80713,29 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct FishFarmListNode",
+      "type": "struct LHListHead__FishFarm",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct FishFarm *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_FishFarm",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct FishFarmListNode *",
+          "type": "struct LHLinkedNode__p_FishFarm *",
           "offset": 0
         },
         {
@@ -80171,12 +80747,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct FishFarmList",
+      "type": "struct LHLinkedList__p_FishFarm",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct FishFarmListNode *",
+          "type": "struct LHLinkedNode__p_FishFarm *",
           "offset": 0
         },
         {
@@ -80225,6 +80801,174 @@
           "name": "field_0xd8",
           "type": "struct PileResource *",
           "offset": 216
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct TownArtifact",
+      "size": 64,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThing",
+          "offset": 0
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint8_t[44]",
+          "offset": 20
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_TownArtifact",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_TownArtifact *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct TownArtifact *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_TownArtifact",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_TownArtifact *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct SpellVftable",
+      "size": 1364,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPosVftable",
+          "offset": 0
+        },
+        {
+          "name": "field1_0x500",
+          "type": "uintptr_t",
+          "offset": 1280
+        },
+        {
+          "name": "field2_0x504",
+          "type": "uintptr_t",
+          "offset": 1284
+        },
+        {
+          "name": "field3_0x508",
+          "type": "uintptr_t",
+          "offset": 1288
+        },
+        {
+          "name": "field4_0x50c",
+          "type": "uintptr_t",
+          "offset": 1292
+        },
+        {
+          "name": "field5_0x510",
+          "type": "uintptr_t",
+          "offset": 1296
+        },
+        {
+          "name": "field6_0x514",
+          "type": "uintptr_t",
+          "offset": 1300
+        },
+        {
+          "name": "field7_0x518",
+          "type": "uintptr_t",
+          "offset": 1304
+        },
+        {
+          "name": "field8_0x51c",
+          "type": "uintptr_t",
+          "offset": 1308
+        },
+        {
+          "name": "field9_0x520",
+          "type": "uintptr_t",
+          "offset": 1312
+        },
+        {
+          "name": "field10_0x524",
+          "type": "uintptr_t",
+          "offset": 1316
+        },
+        {
+          "name": "field11_0x528",
+          "type": "uintptr_t",
+          "offset": 1320
+        },
+        {
+          "name": "field12_0x52c",
+          "type": "uintptr_t",
+          "offset": 1324
+        },
+        {
+          "name": "field13_0x530",
+          "type": "uintptr_t",
+          "offset": 1328
+        },
+        {
+          "name": "field14_0x534",
+          "type": "uintptr_t",
+          "offset": 1332
+        },
+        {
+          "name": "field15_0x538",
+          "type": "uintptr_t",
+          "offset": 1336
+        },
+        {
+          "name": "field16_0x53c",
+          "type": "uintptr_t",
+          "offset": 1340
+        },
+        {
+          "name": "field17_0x540",
+          "type": "uintptr_t",
+          "offset": 1344
+        },
+        {
+          "name": "field18_0x544",
+          "type": "uintptr_t",
+          "offset": 1348
+        },
+        {
+          "name": "field19_0x548",
+          "type": "uintptr_t",
+          "offset": 1352
+        },
+        {
+          "name": "field20_0x54c",
+          "type": "uintptr_t",
+          "offset": 1356
+        },
+        {
+          "name": "field21_0x550",
+          "type": "uintptr_t",
+          "offset": 1360
         }
       ]
     },
@@ -80459,6 +81203,23 @@
           "name": "super",
           "type": "struct Spell",
           "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Spell",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Spell *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -80754,7 +81515,7 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct TownSpellIconList",
+      "type": "struct LHListHead__TownSpellIcon",
       "size": 8,
       "members": [
         {
@@ -80837,12 +81598,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct TownCentreListNode",
+      "type": "struct LHLinkedNode__p_TownCentre",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct TownCentreListNode *",
+          "type": "struct LHLinkedNode__p_TownCentre *",
           "offset": 0
         },
         {
@@ -80854,12 +81615,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct TownCentreList",
+      "type": "struct LHLinkedList__p_TownCentre",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct TownCentreListNode *",
+          "type": "struct LHLinkedNode__p_TownCentre *",
           "offset": 0
         },
         {
@@ -81226,57 +81987,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct TownListNode",
-      "size": 8,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct TownListNode *",
-          "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "struct Town *",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct TownList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct TownListNode *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct TownLList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct Town *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct EffectNumbers",
       "size": 28,
       "members": [
@@ -81585,18 +82295,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct TownArtifact",
-      "size": 1,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint8_t",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct Town",
       "size": 3880,
       "members": [
@@ -81782,7 +82480,7 @@
         },
         {
           "name": "abode_list",
-          "type": "struct AbodeList",
+          "type": "struct LHListHead__Abode",
           "offset": 1876
         },
         {
@@ -81802,13 +82500,8 @@
         },
         {
           "name": "homeless_list",
-          "type": "struct Villager *",
+          "type": "struct LHLinkedList__p_Villager",
           "offset": 1896
-        },
-        {
-          "name": "field_0x76c",
-          "type": "uint32_t",
-          "offset": 1900
         },
         {
           "name": "field_0x770",
@@ -81822,33 +82515,23 @@
         },
         {
           "name": "spell_icon_list",
-          "type": "struct TownSpellIconList",
+          "type": "struct LHListHead__TownSpellIcon",
           "offset": 1912
         },
         {
-          "name": "field_0x780",
-          "type": "uint32_t **",
+          "name": "field_list",
+          "type": "struct LHLinkedList__p_Field",
           "offset": 1920
         },
         {
-          "name": "field_count",
-          "type": "uint32_t",
-          "offset": 1924
-        },
-        {
-          "name": "fish_farm",
-          "type": "struct FishFarmList",
+          "name": "fish_farms",
+          "type": "struct LHLinkedList__p_FishFarm",
           "offset": 1928
         },
         {
           "name": "building_site_list",
-          "type": "struct Base *",
+          "type": "struct LHListHead__BuildingSite",
           "offset": 1936
-        },
-        {
-          "name": "building_site_count",
-          "type": "uint32_t",
-          "offset": 1940
         },
         {
           "name": "belief",
@@ -81882,7 +82565,7 @@
         },
         {
           "name": "playthings",
-          "type": "struct ObjectList",
+          "type": "struct LHLinkedList__p_Object",
           "offset": 2428
         },
         {
@@ -81907,13 +82590,8 @@
         },
         {
           "name": "artifacts",
-          "type": "struct TownArtifact *",
+          "type": "struct LHLinkedList__p_TownArtifact",
           "offset": 2452
-        },
-        {
-          "name": "field_0x998",
-          "type": "uint32_t",
-          "offset": 2456
         },
         {
           "name": "field_0x99c",
@@ -81932,7 +82610,7 @@
         },
         {
           "name": "planned_list",
-          "type": "struct PlannedMultiMapFixedList",
+          "type": "struct LHListHead__PlannedMultiMapFixed",
           "offset": 2472
         },
         {
@@ -82039,6 +82717,57 @@
           "name": "field_0xf24",
           "type": "uint32_t",
           "offset": 3876
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Town",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Town *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Town",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Town *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Town *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Town",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Town *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -82923,7 +83652,7 @@
         },
         {
           "name": "CreatureList",
-          "type": "struct CreatureList *",
+          "type": "struct LHLinkedList__p_Creature *",
           "offset": 160
         },
         {
@@ -83732,6 +84461,69 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct Feature",
+      "size": 124,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct MultiMapFixed",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct AnimatedStatic",
+      "size": 152,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Feature",
+          "offset": 0
+        },
+        {
+          "name": "field_0x7c",
+          "type": "uint8_t[28]",
+          "offset": 124
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_AnimatedStatic",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_AnimatedStatic *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct AnimatedStatic *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_AnimatedStatic",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_AnimatedStatic *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct Archive",
       "size": 16,
       "members": [
@@ -83749,6 +84541,40 @@
           "name": "file",
           "type": "struct LHOSFile",
           "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GArena",
+      "size": 76,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPos",
+          "offset": 0
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint8_t[36]",
+          "offset": 40
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GArena",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GArena *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -83929,29 +84755,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct BallListNode",
-      "size": 8,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct BallListNode *",
-          "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "struct Ball *",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct BallList",
+      "type": "struct LHListHead__Ball",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct BallListNode *",
+          "type": "struct Ball *",
           "offset": 0
         },
         {
@@ -84006,279 +84815,19 @@
       ]
     },
     {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__Init",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct BuildingSite *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__Process",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct BuildingSite *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__GetWoodForStats",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "uint32_t",
-      "args": [
-        "struct BuildingSite *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "uint32_t (struct BuildingSite *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__GetPileWood",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "struct Pot *",
-      "args": [
-        "struct BuildingSite *",
-        "struct MapCoords *"
-      ],
-      "arg_names": [
-        "this",
-        "coords"
-      ],
-      "signature": "struct Pot *(struct BuildingSite *, const void *, struct MapCoords *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__SetPileWood",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct BuildingSite *",
-        "struct Pot *"
-      ],
-      "arg_names": [
-        "this",
-        "wood_pile"
-      ],
-      "signature": "void (struct BuildingSite *, const void *, struct Pot *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__CreatePileWood",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct BuildingSite *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct BuildingSite *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__IsLinkedToThisBuildingSite",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct BuildingSite *",
-        "struct Pot *"
-      ],
-      "arg_names": [
-        "this",
-        "wood_pile"
-      ],
-      "signature": "void (struct BuildingSite *, const void *, struct Pot *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "BuildingSiteVftable__GetRandomBuildPos",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct BuildingSite *",
-        "struct Object *",
-        "int32_t *"
-      ],
-      "arg_names": [
-        "this",
-        "",
-        ""
-      ],
-      "signature": "void (struct BuildingSite *, const void *, struct Object *, int32_t *) __attribute__((fastcall))"
-    },
-    {
       "kind": "STRUCT_DECL",
-      "type": "struct BuildingSiteVftable",
-      "size": 300,
+      "type": "struct LHListHead__BigForest",
+      "size": 8,
       "members": [
         {
-          "name": "super",
-          "type": "struct GameThingVftable",
+          "name": "head",
+          "type": "struct BigForest *",
           "offset": 0
         },
         {
-          "name": "Init",
-          "type": "BuildingSiteVftable__Init *",
-          "offset": 252
-        },
-        {
-          "name": "Process",
-          "type": "BuildingSiteVftable__Process *",
-          "offset": 256
-        },
-        {
-          "name": "GetWoodForStats",
-          "type": "BuildingSiteVftable__GetWoodForStats *",
-          "offset": 260
-        },
-        {
-          "name": "GetPileWood",
-          "type": "BuildingSiteVftable__GetPileWood *",
-          "offset": 264
-        },
-        {
-          "name": "SetPileWood",
-          "type": "BuildingSiteVftable__SetPileWood *",
-          "offset": 268
-        },
-        {
-          "name": "CreatePileWood",
-          "type": "BuildingSiteVftable__CreatePileWood *",
-          "offset": 272
-        },
-        {
-          "name": "GetResourcePosAndYAngle",
-          "type": "uintptr_t",
-          "offset": 276
-        },
-        {
-          "name": "RemovePotFromStructure",
-          "type": "uintptr_t",
-          "offset": 280
-        },
-        {
-          "name": "IsLinkedToThisBuildingSite",
-          "type": "BuildingSiteVftable__IsLinkedToThisBuildingSite *",
-          "offset": 284
-        },
-        {
-          "name": "GetNearestEdge",
-          "type": "uintptr_t",
-          "offset": 288
-        },
-        {
-          "name": "GetNextPosFromIndex",
-          "type": "uintptr_t",
-          "offset": 292
-        },
-        {
-          "name": "GetRandomBuildPos",
-          "type": "BuildingSiteVftable__GetRandomBuildPos *",
-          "offset": 296
-        }
-      ]
-    },
-    {
-      "kind": "UNION_DECL",
-      "type": "union BuildingSiteBase",
-      "size": 20,
-      "aliases": [
-        {
-          "name": "super",
-          "type": "struct GameThing"
-        },
-        {
-          "name": "vftable",
-          "type": "struct BuildingSiteVftable *"
-        },
-        {
-          "name": "gameThing_vftable",
-          "type": "struct GameThingVftable *"
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct BuildingSite",
-      "size": 1604,
-      "members": [
-        {
-          "name": "base",
-          "type": "union BuildingSiteBase",
-          "offset": 0
-        },
-        {
-          "name": "root_building",
-          "type": "struct MultiMapFixed *",
-          "offset": 20
-        },
-        {
-          "name": "building_worker_list",
-          "type": "struct LHLinkedList__Villager",
-          "offset": 24
-        },
-        {
-          "name": "field_0x20",
-          "type": "uint8_t[20]",
-          "offset": 32
-        },
-        {
-          "name": "building_positions",
-          "type": "struct LHPoint[127]",
-          "offset": 52
-        },
-        {
-          "name": "field_0x628",
-          "type": "uint8_t[20]",
-          "offset": 1576
-        },
-        {
-          "name": "field_0x63c",
-          "type": "uint8_t[4]",
-          "offset": 1596
-        },
-        {
-          "name": "life",
-          "type": "float",
-          "offset": 1600
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct StandardBuildingSite",
-      "size": 1608,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct BuildingSite",
-          "offset": 0
-        },
-        {
-          "name": "wood_pile",
-          "type": "struct Pot *",
-          "offset": 1604
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -84690,6 +85239,57 @@
           "name": "field_0x14",
           "type": "uint32_t",
           "offset": 20
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct Climate",
+      "size": 136,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThing",
+          "offset": 0
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint8_t[116]",
+          "offset": 20
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Climate",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Climate *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Climate *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Climate",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Climate *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -89143,12 +89743,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct CreatureDesiresSourceListNode",
+      "type": "struct LHLinkedNode__p_CreatureDesiresSource",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct CreatureDesiresSourceListNode *",
+          "type": "struct LHLinkedNode__p_CreatureDesiresSource *",
           "offset": 0
         },
         {
@@ -89160,12 +89760,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct CreatureDesiresSourceList",
+      "type": "struct LHLinkedList__p_CreatureDesiresSource",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct CreatureDesiresSourceListNode *",
+          "type": "struct LHLinkedNode__p_CreatureDesiresSource *",
           "offset": 0
         },
         {
@@ -89212,7 +89812,7 @@
         },
         {
           "name": "source_lists",
-          "type": "struct CreatureDesiresSourceList[40]",
+          "type": "struct LHLinkedList__p_CreatureDesiresSource[40]",
           "offset": 808
         },
         {
@@ -108977,12 +109577,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedListNode__CreatureHelpStackEntry",
+      "type": "struct LHLinkedNode__CreatureHelpStackEntry",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedListNode__CreatureHelpStackEntry *",
+          "type": "struct LHLinkedNode__CreatureHelpStackEntry *",
           "offset": 0
         },
         {
@@ -108999,7 +109599,7 @@
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedListNode__CreatureHelpStackEntry *",
+          "type": "struct LHLinkedNode__CreatureHelpStackEntry *",
           "offset": 0
         },
         {
@@ -110231,30 +110831,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GParticleContainer",
-      "size": 1,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint8_t",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GArena",
-      "size": 1,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint8_t",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct BookmarkGraphic",
       "size": 1,
       "members": [
@@ -111161,6 +111737,40 @@
           "name": "field_0x12c4",
           "type": "uint32_t",
           "offset": 4804
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Creature",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Creature *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Creature *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Creature",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Creature *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -112255,6 +112865,23 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Dance",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Dance *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct DanceGroup",
       "size": 380,
       "members": [
@@ -112450,6 +113077,86 @@
           "name": "super",
           "type": "struct MultiplayerDatabase",
           "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct MobileStatic",
+      "size": 136,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct MultiMapFixed",
+          "offset": 0
+        },
+        {
+          "name": "field_0x7c",
+          "type": "uint8_t[12]",
+          "offset": 124
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LandscapeVortex",
+      "size": 136,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct MobileStatic",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct RockVftable",
+      "size": 2320,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct MultiMapFixedVftable",
+          "offset": 0
+        },
+        {
+          "name": "field_0x90c",
+          "type": "uintptr_t",
+          "offset": 2316
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct Rock",
+      "size": 148,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct MobileStatic",
+          "offset": 0
+        },
+        {
+          "name": "field_0x88",
+          "type": "uint8_t[12]",
+          "offset": 136
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct DeadTree",
+      "size": 160,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Rock",
+          "offset": 0
+        },
+        {
+          "name": "field_0x94",
+          "type": "uint8_t[12]",
+          "offset": 148
         }
       ]
     },
@@ -112815,18 +113522,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct Feature",
-      "size": 124,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct MultiMapFixed",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct FireEffect",
       "size": 80,
       "members": [
@@ -112844,6 +113539,57 @@
           "name": "field_0x18",
           "type": "uint8_t[56]",
           "offset": 24
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__FireEffect",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct FireEffect *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct FireFly",
+      "size": 196,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Object",
+          "offset": 0
+        },
+        {
+          "name": "field_0x54",
+          "type": "uint8_t[112]",
+          "offset": 84
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__FireFly",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct FireFly *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -112953,7 +113699,7 @@
         },
         {
           "name": "followers",
-          "type": "struct LHLinkedList_pLiving",
+          "type": "struct LHLinkedList__p_Living",
           "offset": 40
         }
       ]
@@ -112992,12 +113738,29 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GFootpathListNode",
+      "type": "struct LHListHead__GFootpath",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GFootpath *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_GFootpath",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct GFootpathListNode *",
+          "type": "struct LHLinkedNode__p_GFootpath *",
           "offset": 0
         },
         {
@@ -113009,12 +113772,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GFootpathList",
+      "type": "struct LHLinkedList__p_GFootpath",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct GFootpathListNode *",
+          "type": "struct LHLinkedNode__p_GFootpath *",
           "offset": 0
         },
         {
@@ -113036,25 +113799,8 @@
         },
         {
           "name": "footpath_list",
-          "type": "struct GFootpathList",
+          "type": "struct LHLinkedList__p_GFootpath",
           "offset": 20
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GFootpathGameList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct GFootpath *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
         }
       ]
     },
@@ -113579,6 +114325,40 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_GFootpathFinder",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_GFootpathFinder *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct GFootpathFinder *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_GFootpathFinder",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_GFootpathFinder *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct GTreeInfo",
       "size": 256,
       "members": [
@@ -113586,6 +114366,33 @@
           "name": "super",
           "type": "struct GSingleMapFixedInfo",
           "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct TreeVftable",
+      "size": 2164,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct SingleMapFixedVftable",
+          "offset": 0
+        },
+        {
+          "name": "field_0x868",
+          "type": "uintptr_t",
+          "offset": 2152
+        },
+        {
+          "name": "field_0x86c",
+          "type": "uintptr_t",
+          "offset": 2156
+        },
+        {
+          "name": "field_0x870",
+          "type": "uintptr_t",
+          "offset": 2160
         }
       ]
     },
@@ -113608,29 +114415,29 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct TreeListNode",
+      "type": "struct LHLinkedNode__p_Tree",
       "size": 8,
       "members": [
         {
-          "name": "payload",
-          "type": "struct Tree *",
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Tree *",
           "offset": 0
         },
         {
-          "name": "next",
-          "type": "struct TreeListNode *",
+          "name": "payload",
+          "type": "struct Tree *",
           "offset": 4
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct TreeList",
+      "type": "struct LHLinkedList__p_Tree",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct TreeListNode *",
+          "type": "struct LHLinkedNode__p_Tree *",
           "offset": 0
         },
         {
@@ -113694,13 +114501,81 @@
         },
         {
           "name": "trees_0",
-          "type": "struct TreeList",
+          "type": "struct LHLinkedList__p_Tree",
           "offset": 72
         },
         {
           "name": "trees_1",
-          "type": "struct TreeList",
+          "type": "struct LHLinkedList__p_Tree",
           "offset": 80
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Forest",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Forest *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct Fragment",
+      "size": 168,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Rock",
+          "offset": 0
+        },
+        {
+          "name": "field_0x94",
+          "type": "uint8_t[20]",
+          "offset": 148
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Fragment",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Fragment *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Fragment *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Fragment",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Fragment *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -116314,6 +117189,40 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct InfluenceRing",
+      "size": 68,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPos",
+          "offset": 0
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint8_t[28]",
+          "offset": 40
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__InfluenceRing",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct InfluenceRing *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct GGuidance__LastThings",
       "size": 1,
       "members": [
@@ -116326,12 +117235,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedListNode__GGuidance__LastThings",
+      "type": "struct LHLinkedNode__GGuidance__LastThings",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedListNode__GGuidance__LastThings *",
+          "type": "struct LHLinkedNode__GGuidance__LastThings *",
           "offset": 0
         },
         {
@@ -116348,7 +117257,7 @@
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedListNode__GGuidance__LastThings *",
+          "type": "struct LHLinkedNode__GGuidance__LastThings *",
           "offset": 0
         },
         {
@@ -117442,6 +118351,101 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct MagicFireBall",
+      "size": 96,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Object",
+          "offset": 0
+        },
+        {
+          "name": "field_0x54",
+          "type": "uint8_t[12]",
+          "offset": 84
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__MagicFireBall",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct MagicFireBall *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct MapShieldVftable",
+      "size": 2164,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct SingleMapFixedVftable",
+          "offset": 0
+        },
+        {
+          "name": "field_0x868",
+          "type": "uintptr_t",
+          "offset": 2152
+        },
+        {
+          "name": "field_0x86c",
+          "type": "uintptr_t",
+          "offset": 2156
+        },
+        {
+          "name": "field_0x870",
+          "type": "uintptr_t",
+          "offset": 2160
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct MapShield",
+      "size": 104,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct SingleMapFixed",
+          "offset": 0
+        },
+        {
+          "name": "field_0x5c",
+          "type": "uint8_t[12]",
+          "offset": 92
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__MapShield",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct MapShield *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct Mist",
       "size": 80,
       "members": [
@@ -117459,29 +118463,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct MistListNode",
-      "size": 84,
-      "members": [
-        {
-          "name": "payload",
-          "type": "struct Mist",
-          "offset": 0
-        },
-        {
-          "name": "next",
-          "type": "struct MistListNode *",
-          "offset": 80
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct MistList",
+      "type": "struct LHListHead__Mist",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct MistListNode *",
+          "type": "struct Mist *",
           "offset": 0
         },
         {
@@ -117580,6 +118567,40 @@
           "name": "session",
           "type": "struct LHSession *",
           "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GParticleContainer",
+      "size": 64,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPos",
+          "offset": 0
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint8_t[24]",
+          "offset": 40
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GParticleContainer",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GParticleContainer *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -119996,6 +121017,23 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__PileFood",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct PileFood *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct PileWood",
       "size": 180,
       "members": [
@@ -120003,40 +121041,6 @@
           "name": "super",
           "type": "struct PileResource",
           "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct PileFoodListNode",
-      "size": 184,
-      "members": [
-        {
-          "name": "payload",
-          "type": "struct PileFood",
-          "offset": 0
-        },
-        {
-          "name": "next",
-          "type": "struct PileFoodListNode *",
-          "offset": 180
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct PileFoodList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct PileFoodListNode *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
         }
       ]
     },
@@ -120487,7 +121491,7 @@
         },
         {
           "name": "towns",
-          "type": "struct TownLList",
+          "type": "struct LHListHead__Town",
           "offset": 2640
         },
         {
@@ -120504,47 +121508,103 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct MobileStatic",
-      "size": 136,
+      "type": "struct LHListHead__GPlayer",
+      "size": 8,
       "members": [
         {
-          "name": "super",
-          "type": "struct MultiMapFixed",
+          "name": "head",
+          "type": "struct GPlayer *",
           "offset": 0
         },
         {
-          "name": "field_0x7c",
-          "type": "uint8_t[12]",
-          "offset": 124
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LandscapeVortex",
-      "size": 136,
+      "type": "struct PuzzleGame",
+      "size": 1416,
       "members": [
         {
           "name": "super",
-          "type": "struct MobileStatic",
+          "type": "struct GameThingWithPos",
           "offset": 0
+        },
+        {
+          "name": "field_0x0x28",
+          "type": "uint8_t[1376]",
+          "offset": 40
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct Rock",
-      "size": 148,
+      "type": "struct LHListHead__PuzzleGame",
+      "size": 8,
       "members": [
         {
-          "name": "super",
-          "type": "struct MobileStatic",
+          "name": "head",
+          "type": "struct PuzzleGame *",
           "offset": 0
         },
         {
-          "name": "field_0x88",
-          "type": "uint8_t[12]",
-          "offset": 136
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct Reward",
+      "size": 168,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct MobileObject",
+          "offset": 0
+        },
+        {
+          "name": "field_0x68",
+          "type": "uint8_t[64]",
+          "offset": 104
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_Reward",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_Reward *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct Reward *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_Reward",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_Reward *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -120639,6 +121699,40 @@
           "name": "field_0x8",
           "type": "uint8_t[180]",
           "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct ScriptHighlight",
+      "size": 140,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct SingleMapFixed",
+          "offset": 0
+        },
+        {
+          "name": "field_0x5c",
+          "type": "uint8_t[48]",
+          "offset": 92
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__ScriptHighlight",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct ScriptHighlight *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -120743,12 +121837,114 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct SoundTagList",
+      "type": "struct LHListHead__SoundTag",
       "size": 8,
       "members": [
         {
           "name": "head",
           "type": "struct SoundTag *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GStream",
+      "size": 40,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThing",
+          "offset": 0
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint8_t[20]",
+          "offset": 20
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GStream",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GStream *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GStreetLantern",
+      "size": 100,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Object",
+          "offset": 0
+        },
+        {
+          "name": "field_0x54",
+          "type": "uint8_t[16]",
+          "offset": 84
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GStreetLantern",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GStreetLantern *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GStreetLight",
+      "size": 44,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPos",
+          "offset": 0
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint32_t",
+          "offset": 40
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GStreetLight",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GStreetLight *",
           "offset": 0
         },
         {
@@ -120938,6 +122134,142 @@
           "name": "map_info",
           "type": "struct TerrainMapInfo",
           "offset": 303112
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GWaterfall",
+      "size": 88,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Object",
+          "offset": 0
+        },
+        {
+          "name": "field_0x54",
+          "type": "uint8_t[4]",
+          "offset": 84
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GWaterfall",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GWaterfall *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct Waypoint",
+      "size": 44,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPos",
+          "offset": 0
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint8_t[4]",
+          "offset": 40
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Waypoint",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Waypoint *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct WeatherThing",
+      "size": 136,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPos",
+          "offset": 0
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint8_t[96]",
+          "offset": 40
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__WeatherThing",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct WeatherThing *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct Whale",
+      "size": 116,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct MobileObject",
+          "offset": 0
+        },
+        {
+          "name": "field_0x68",
+          "type": "uint8_t[12]",
+          "offset": 104
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Whale",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Whale *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -121215,233 +122547,24 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct UnknownListNode",
-      "size": 8,
+      "type": "struct EarthQuake",
+      "size": 1,
       "members": [
         {
-          "name": "next",
-          "type": "struct UnknownListNode *",
+          "name": "field_0x0",
+          "type": "uint8_t",
           "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "uintptr_t",
-          "offset": 4
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct UnknownList",
+      "type": "struct LHListHead__EarthQuake",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct UnknownListNode *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct FireFlyListNode",
-      "size": 200,
-      "members": [
-        {
-          "name": "payload",
-          "type": "uint8_t[196]",
-          "offset": 0
-        },
-        {
-          "name": "next",
-          "type": "struct FireFlyListNode *",
-          "offset": 196
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct FireFlyList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct FireFlyListNode *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct Fragment",
-      "size": 168,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Rock",
-          "offset": 0
-        },
-        {
-          "name": "field_0x94",
-          "type": "uint8_t[20]",
-          "offset": 148
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct FragmentListNode",
-      "size": 8,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct FragmentListNode *",
-          "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "struct Fragment *",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct FragmentList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct FragmentListNode *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CreatureListNode",
-      "size": 8,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct CreatureListNode *",
-          "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "struct Creature *",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CreatureList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct CreatureListNode *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GBaseInfoList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct GBaseInfo *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GlobalTreeListNode",
-      "size": 8,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct GlobalTreeListNode *",
-          "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "struct Tree *",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GlobalTreeList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct GlobalTreeListNode *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GlobalForestList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct Forest *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GlobalReactionList",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct Reaction *",
+          "type": "struct EarthQuake *",
           "offset": 0
         },
         {
@@ -121463,247 +122586,247 @@
         },
         {
           "name": "balls",
-          "type": "struct BallList",
+          "type": "struct LHListHead__Ball",
           "offset": 8
         },
         {
           "name": "forests",
-          "type": "struct GlobalForestList",
+          "type": "struct LHListHead__Forest",
           "offset": 16
         },
         {
           "name": "living_list",
-          "type": "struct LivingList",
+          "type": "struct LHListHead__Living",
           "offset": 24
         },
         {
           "name": "spells",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__Spell",
           "offset": 32
         },
         {
           "name": "particle_containers",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GParticleContainer",
           "offset": 40
         },
         {
           "name": "dances",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__Dance",
           "offset": 48
         },
         {
           "name": "reactions",
-          "type": "struct GlobalReactionList",
+          "type": "struct LHListHead__Reaction",
           "offset": 56
         },
         {
           "name": "mobile_objects",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_MobileObject",
           "offset": 64
         },
         {
           "name": "footpath_finder",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_GFootpathFinder",
           "offset": 72
         },
         {
           "name": "earthquakes",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__EarthQuake",
           "offset": 80
         },
         {
           "name": "villagers_without_town",
-          "type": "struct VillagerList",
+          "type": "struct LHListHead__Villager",
           "offset": 88
         },
         {
           "name": "fields",
-          "type": "struct FieldList",
+          "type": "struct LHListHead__Field",
           "offset": 96
         },
         {
           "name": "fish_farms",
-          "type": "struct FishFarmList",
+          "type": "struct LHListHead__FishFarm",
           "offset": 104
         },
         {
           "name": "fire_effects",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__FireEffect",
           "offset": 112
         },
         {
           "name": "sound_tags",
-          "type": "struct SoundTagList",
+          "type": "struct LHListHead__SoundTag",
           "offset": 120
         },
         {
           "name": "mist",
-          "type": "struct MistList",
+          "type": "struct LHListHead__Mist",
           "offset": 128
         },
         {
           "name": "street_lights",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GStreetLight",
           "offset": 136
         },
         {
           "name": "street_lanterns",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GStreetLantern",
           "offset": 144
         },
         {
           "name": "food_piles",
-          "type": "struct PileFoodList",
+          "type": "struct LHListHead__PileFood",
           "offset": 152
         },
         {
           "name": "flocks",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_Flock",
           "offset": 160
         },
         {
           "name": "influence_ring_list",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__InfluenceRing",
           "offset": 168
         },
         {
           "name": "weather_things",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__WeatherThing",
           "offset": 176
         },
         {
           "name": "streams",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GStream",
           "offset": 184
         },
         {
           "name": "footpaths",
-          "type": "struct GFootpathGameList",
+          "type": "struct LHListHead__GFootpath",
           "offset": 192
         },
         {
           "name": "waterfalls",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GWaterfall",
           "offset": 200
         },
         {
-          "name": "way_points",
-          "type": "struct UnknownList",
+          "name": "waypoints",
+          "type": "struct LHListHead__Waypoint",
           "offset": 208
         },
         {
           "name": "arenas",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GArena",
           "offset": 216
         },
         {
           "name": "town_list",
-          "type": "struct TownList",
+          "type": "struct LHLinkedList__p_Town",
           "offset": 224
         },
         {
           "name": "game_thing_with_pos",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_GameThingWithPos",
           "offset": 232
         },
         {
           "name": "script_highlights",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__ScriptHighlight",
           "offset": 240
         },
         {
           "name": "magic_fire_balls",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__MagicFireBall",
           "offset": 248
         },
         {
           "name": "map_shields",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__MapShield",
           "offset": 256
         },
         {
           "name": "building_sites",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_BuildingSite",
           "offset": 264
         },
         {
           "name": "multi_map_fixed",
-          "type": "struct MultiMapFixedList",
+          "type": "struct LHLinkedList__p_MultiMapFixed",
           "offset": 272
         },
         {
           "name": "animated_statics",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_AnimatedStatic",
           "offset": 280
         },
         {
           "name": "players",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GPlayer",
           "offset": 288
         },
         {
           "name": "rewards",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_Reward",
           "offset": 296
         },
         {
           "name": "objects",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_Object",
           "offset": 304
         },
         {
           "name": "trees",
-          "type": "struct GlobalTreeList",
+          "type": "struct LHLinkedList__p_Tree",
           "offset": 312
         },
         {
           "name": "big_forests",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__BigForest",
           "offset": 320
         },
         {
           "name": "base_infos",
-          "type": "struct GBaseInfoList",
+          "type": "struct LHListHead__GBaseInfo",
           "offset": 328
         },
         {
           "name": "climates",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_Climate",
           "offset": 336
         },
         {
           "name": "town_centres",
-          "type": "struct TownCentreList",
+          "type": "struct LHLinkedList__p_TownCentre",
           "offset": 344
         },
         {
           "name": "whales",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__Whale",
           "offset": 352
         },
         {
           "name": "fire_flies",
-          "type": "struct FireFlyList",
+          "type": "struct LHListHead__FireFly",
           "offset": 360
         },
         {
           "name": "puzzle_game",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__PuzzleGame",
           "offset": 368
         },
         {
           "name": "game_things",
-          "type": "struct UnknownList",
+          "type": "struct LHListHead__GameThing",
           "offset": 376
         },
         {
           "name": "town_artifacts",
-          "type": "struct UnknownList",
+          "type": "struct LHLinkedList__p_TownArtifact",
           "offset": 384
         },
         {
           "name": "fragments",
-          "type": "struct FragmentList",
+          "type": "struct LHLinkedList__p_Fragment",
           "offset": 392
         }
       ]
@@ -123469,18 +124592,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct ScriptHighlight",
-      "size": 92,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct SingleMapFixed",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct ScriptMarker",
       "size": 40,
       "members": [
@@ -123562,37 +124673,52 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct SpellWithObjectsVftable",
+      "size": 1368,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct SpellVftable",
+          "offset": 0
+        },
+        {
+          "name": "field_0x554",
+          "type": "uintptr_t",
+          "offset": 1364
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct SpellWithObjects",
-      "size": 236,
+      "size": 244,
       "members": [
         {
           "name": "super",
           "type": "struct Spell",
           "offset": 0
+        },
+        {
+          "name": "field_0xec",
+          "type": "uint8_t[8]",
+          "offset": 236
         }
       ]
     },
     {
       "kind": "STRUCT_DECL",
       "type": "struct SpellShield",
-      "size": 236,
+      "size": 268,
       "members": [
         {
           "name": "super",
           "type": "struct SpellWithObjects",
           "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GStreetLantern",
-      "size": 84,
-      "members": [
+        },
         {
-          "name": "super",
-          "type": "struct Object",
-          "offset": 0
+          "name": "field_0xf4",
+          "type": "uint8_t[24]",
+          "offset": 244
         }
       ]
     },
@@ -123719,23 +124845,6 @@
           "name": "next",
           "type": "struct VillagerName *",
           "offset": 1120
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct WeatherThing",
-      "size": 136,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct GameThingWithPos",
-          "offset": 0
-        },
-        {
-          "name": "field_0x28",
-          "type": "uint8_t[96]",
-          "offset": 40
         }
       ]
     },
@@ -125614,12 +126723,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct HLineDataListNode",
+      "type": "struct LHLinkedNode__p_HLineData",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct HLineDataListNode *",
+          "type": "struct LHLinkedNode__p_HLineData *",
           "offset": 0
         },
         {
@@ -125631,17 +126740,17 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct HLineDataList",
+      "type": "struct LHLinkedList__p_HLineData",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct HLineDataListNode *",
+          "type": "struct LHLinkedNode__p_HLineData *",
           "offset": 0
         },
         {
           "name": "count",
-          "type": "int",
+          "type": "uint32_t",
           "offset": 4
         }
       ]
@@ -125658,7 +126767,7 @@
         },
         {
           "name": "line_data_list",
-          "type": "struct HLineDataList",
+          "type": "struct LHLinkedList__p_HLineData",
           "offset": 580
         },
         {
@@ -125906,12 +127015,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct VBarDataListNode",
+      "type": "struct LHLinkedNode__p_VBarData",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct VBarDataListNode *",
+          "type": "struct LHLinkedNode__p_VBarData *",
           "offset": 0
         },
         {
@@ -125923,17 +127032,17 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct VBarDataList",
+      "type": "struct LHLinkedList__p_VBarData",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct VBarDataListNode *",
+          "type": "struct LHLinkedNode__p_VBarData *",
           "offset": 0
         },
         {
           "name": "count",
-          "type": "int",
+          "type": "uint32_t",
           "offset": 4
         }
       ]
@@ -125955,7 +127064,7 @@
         },
         {
           "name": "bar_data_list",
-          "type": "struct VBarDataList",
+          "type": "struct LHLinkedList__p_VBarData",
           "offset": 628
         },
         {
@@ -129948,6 +131057,20 @@
       ]
     },
     {
+      "win_addr": 5550656,
+      "mac_addr": 273668624,
+      "decorated_name": "GGame::GGame(void)",
+      "undecorated_name": "__ct__5GGameFv",
+      "return_type": "struct GGame *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GGame *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 5554560,
       "mac_addr": 268674064,
       "decorated_name": "GGame::GetCamera(void)",
@@ -130513,13 +131636,15 @@
       "decorated_name": "GSaveLoadPtrList::PushBack(GSaveLoadPtr *)",
       "undecorated_name": "Push__GSaveLoadPtrListFP12GSaveLoadPtr",
       "return_type": "_Bool",
-      "call_type": "__thiscall",
+      "call_type": "__fastcall",
       "argument_types": [
-        "struct GSaveLoadPtrList *",
+        "struct LHLinkedList__p_GSaveLoadPtr *",
+        "const void *",
         "struct GSaveLoadPtr *"
       ],
       "argument_names": [
         "this",
+        "edx",
         "ptr"
       ]
     },
@@ -131541,13 +132666,15 @@
       "decorated_name": "GameThingList::PushBack(GameThing *)",
       "undecorated_name": "PushBack__13GameThingListFP9GameThing",
       "return_type": "_Bool",
-      "call_type": "__thiscall",
+      "call_type": "__fastcall",
       "argument_types": [
-        "struct GameThingList *",
+        "struct LHLinkedList__p_GameThing *",
+        "const void *",
         "struct GameThing *"
       ],
       "argument_names": [
         "this",
+        "edx",
         "thing"
       ]
     },
@@ -134154,6 +135281,20 @@
       ]
     },
     {
+      "win_addr": 5594064,
+      "mac_addr": 274085744,
+      "decorated_name": "LHLinkedList<MobileObject*>::LHLinkedList<MobileObject*>(void)",
+      "undecorated_name": "__ct__29LHLinkedList___P12MobileObject_Fv",
+      "return_type": "struct LHLinkedList__p_MobileObject *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHLinkedList__p_MobileObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 6354752,
       "mac_addr": -1,
       "decorated_name": "Point2DCompare<0>::operator=(const Point2DCompare<0>*)",
@@ -136565,6 +137706,16 @@
       "decorated_name": "GVillagerStateTableInfo::GetInfo(void)",
       "undecorated_name": "GetInfo__23GVillagerStateTableInfoFv",
       "return_type": "struct GVillagerStateTableInfo *",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 7553008,
+      "mac_addr": 269829504,
+      "decorated_name": "GStream::CreateAll(void)",
+      "undecorated_name": "CreateAll__7GStreamFv",
+      "return_type": "void",
       "call_type": "cdecl",
       "argument_types": [],
       "argument_names": []
@@ -143540,13 +144691,13 @@
       "mac_addr": 272291088,
       "decorated_name": "LHLinkedNode<HLineData*>::LHLinkedNode<HLineData*>(HLineData*, LHLinkedNode<HLineData>*)",
       "undecorated_name": "ct__HLineDataListNode",
-      "return_type": "struct HLineDataListNode *",
+      "return_type": "struct LHLinkedNode__p_HLineData *",
       "call_type": "__fastcall",
       "argument_types": [
-        "struct HLineDataListNode *",
+        "struct LHLinkedNode__p_HLineData *",
         "const void *",
         "struct HLineData *",
-        "struct HLineDataListNode *"
+        "struct LHLinkedNode__p_HLineData *"
       ],
       "argument_names": [
         "this",
@@ -143560,10 +144711,10 @@
       "mac_addr": 271219136,
       "decorated_name": "LHLinkedList<HLineData*>::GetStart() const",
       "undecorated_name": "GetStart__HLineDataList",
-      "return_type": "struct HLineDataListNode *",
+      "return_type": "struct LHLinkedNode__p_HLineData *",
       "call_type": "__fastcall",
       "argument_types": [
-        "const struct HLineDataList *"
+        "const struct LHLinkedList__p_HLineData *"
       ],
       "argument_names": [
         "this"
@@ -143574,10 +144725,10 @@
       "mac_addr": 272071328,
       "decorated_name": "LHLinkedList<HLineData*>::GetNodeAtPosition() const",
       "undecorated_name": "GetNodeAtPosition__HLineDataList",
-      "return_type": "struct HLineDataListNode *",
+      "return_type": "struct LHLinkedNode__p_HLineData *",
       "call_type": "__fastcall",
       "argument_types": [
-        "const struct HLineDataList *",
+        "const struct LHLinkedList__p_HLineData *",
         "const void *",
         "int"
       ],
@@ -143592,10 +144743,10 @@
       "mac_addr": 270265968,
       "decorated_name": "LHLinkedList<HLineData*>::GetLastNode()",
       "undecorated_name": "GetLastNode__HLineDataList",
-      "return_type": "struct HLineDataListNode *",
+      "return_type": "struct LHLinkedNode__p_HLineData *",
       "call_type": "__fastcall",
       "argument_types": [
-        "const struct HLineDataList *"
+        "const struct LHLinkedList__p_HLineData *"
       ],
       "argument_names": [
         "this"
@@ -145154,13 +146305,13 @@
       "mac_addr": 272291088,
       "decorated_name": "LHLinkedNode<VBarData*>::LHLinkedNode<VBarData*>(VBarData*, LHLinkedNode<VBarData>*)",
       "undecorated_name": "ct__VBarDataListNode",
-      "return_type": "struct VBarDataListNode *",
+      "return_type": "struct LHLinkedNode__p_VBarData *",
       "call_type": "__fastcall",
       "argument_types": [
-        "struct VBarDataListNode *",
+        "struct LHLinkedNode__p_VBarData *",
         "const void *",
         "struct VBarData *",
-        "struct VBarDataListNode *"
+        "struct LHLinkedNode__p_VBarData *"
       ],
       "argument_names": [
         "this",
@@ -145174,10 +146325,10 @@
       "mac_addr": 273832304,
       "decorated_name": "LHLinkedList<VBarData*>::GetNodeAtPosition() const",
       "undecorated_name": "GetNodeAtPosition__VBarDataList",
-      "return_type": "struct VBarDataListNode *",
+      "return_type": "struct LHLinkedNode__p_VBarData *",
       "call_type": "__fastcall",
       "argument_types": [
-        "const struct VBarDataList *",
+        "const struct LHLinkedList__p_VBarData *",
         "const void *",
         "int"
       ],
@@ -145192,10 +146343,10 @@
       "mac_addr": 273882208,
       "decorated_name": "LHLinkedList<VBarData*>::GetLastNode()",
       "undecorated_name": "GetLastNode__VBarDataList",
-      "return_type": "struct VBarDataListNode *",
+      "return_type": "struct LHLinkedNode__p_VBarData *",
       "call_type": "__fastcall",
       "argument_types": [
-        "const struct VBarDataList *"
+        "const struct LHLinkedList__p_VBarData *"
       ],
       "argument_names": [
         "this"
@@ -145209,7 +146360,7 @@
       "return_type": "void",
       "call_type": "__fastcall",
       "argument_types": [
-        "struct VBarDataList *",
+        "struct LHLinkedList__p_VBarData *",
         "const void *",
         "struct VBarData *",
         "_Bool"
@@ -145445,7 +146596,7 @@
     },
     {
       "name": "__vt__SingleMapFixed",
-      "type": "struct FixedVftable",
+      "type": "struct SingleMapFixedVftable",
       "value": 9291924
     },
     {
@@ -145560,7 +146711,7 @@
     },
     {
       "name": "__vt__MobileObject",
-      "type": "struct MobileVftable",
+      "type": "struct MobileObjectVftable",
       "value": 9366812
     },
     {
@@ -145679,6 +146830,11 @@
       "value": 9211136
     },
     {
+      "name": "__vt__Citadel",
+      "type": "struct ContainerVftable",
+      "value": 9207400
+    },
+    {
       "name": "__vt__Field",
       "type": "struct MultiMapFixedVftable",
       "value": 9280380
@@ -145699,6 +146855,16 @@
       "value": 9197724
     },
     {
+      "name": "__vt__BuildingSite",
+      "type": "struct BuildingSiteVftable",
+      "value": 9202540
+    },
+    {
+      "name": "__vt__StandardBuildingSite",
+      "type": "struct BuildingSiteVftable",
+      "value": 9203188
+    },
+    {
       "name": "__vt__Creche",
       "type": "struct AbodeVftable",
       "value": 9246404
@@ -145709,13 +146875,18 @@
       "value": 9400368
     },
     {
+      "name": "__vt__TownArtifact",
+      "type": "struct GameThingVftable",
+      "value": 9193424
+    },
+    {
       "name": "__vt__Spell",
-      "type": "struct GameThingWithPosVftable",
+      "type": "struct SpellVftable",
       "value": 9962928
     },
     {
       "name": "__vt__SpellWater",
-      "type": "struct GameThingWithPosVftable",
+      "type": "struct SpellVftable",
       "value": 9393468
     },
     {
@@ -145774,6 +146945,21 @@
       "value": 9097308
     },
     {
+      "name": "__vt__Feature",
+      "type": "struct MultiMapFixedVftable",
+      "value": 9184032
+    },
+    {
+      "name": "__vt__AnimatedStatic",
+      "type": "struct MultiMapFixedVftable",
+      "value": 9181712
+    },
+    {
+      "name": "__vt__GArena",
+      "type": "struct GameThingVftable",
+      "value": 9186456
+    },
+    {
       "name": "__vt__GAudio",
       "type": "struct GameThingVftable",
       "value": 9193696
@@ -145790,23 +146976,13 @@
     },
     {
       "name": "__vt__GBigForestInfo",
-      "type": "struct GObjectInfoVftable",
+      "type": "struct GMultiMapFixedInfoVftable",
       "value": 9197752
     },
     {
       "name": "__vt__BigForest",
-      "type": "struct MultiMapFixedVftable",
+      "type": "struct GMultiMapFixedInfoVftable",
       "value": 9197828
-    },
-    {
-      "name": "__vt__BuildingSite",
-      "type": "struct BuildingSiteVftable",
-      "value": 9202540
-    },
-    {
-      "name": "__vt__StandardBuildingSite",
-      "type": "struct BuildingSiteVftable",
-      "value": 9203188
     },
     {
       "name": "__vt__WeatherInfo",
@@ -145837,6 +147013,11 @@
       "name": "__vt__CameraModeFree",
       "type": "struct CameraModeVftable",
       "value": 9206104
+    },
+    {
+      "name": "__vt__Climate",
+      "type": "struct GameThingVftable",
+      "value": 9412508
     },
     {
       "name": "__vt__LHFile",
@@ -146044,9 +147225,39 @@
       "value": 9265204
     },
     {
-      "name": "__vt__Feature",
+      "name": "__vt__MobileStatic",
       "type": "struct MultiMapFixedVftable",
-      "value": 9184032
+      "value": 9339060
+    },
+    {
+      "name": "__vt__LandscapeVortex",
+      "type": "struct MultiMapFixedVftable",
+      "value": 9629312
+    },
+    {
+      "name": "__vt__Rock",
+      "type": "struct RockVftable",
+      "value": 9314560
+    },
+    {
+      "name": "__vt__DeadTree",
+      "type": "struct RockVftable",
+      "value": 9265252
+    },
+    {
+      "name": "__vt__FelledTree",
+      "type": "struct RockVftable",
+      "value": 9267580
+    },
+    {
+      "name": "__vt__FireEffect",
+      "type": "struct GameThingVftable",
+      "value": 10065620
+    },
+    {
+      "name": "__vt__FireFly",
+      "type": "struct ObjectVftable",
+      "value": 9282808
     },
     {
       "name": "__vt__GFootpathNode",
@@ -146080,18 +147291,23 @@
     },
     {
       "name": "__vt__Tree",
-      "type": "struct FixedVftable",
+      "type": "struct TreeVftable",
       "value": 9343732
-    },
-    {
-      "name": "__vt__DeadTree",
-      "type": "struct FixedVftable",
-      "value": 9265252
     },
     {
       "name": "__vt__Forest",
       "type": "struct ForestVftable",
       "value": 9298972
+    },
+    {
+      "name": "__vt__Fragment",
+      "type": "struct RockVftable",
+      "value": 10070680
+    },
+    {
+      "name": "__vt__InfluenceRing",
+      "type": "struct GameThingWithPosVftable",
+      "value": 9348044
     },
     {
       "name": "__vt__GGuidance",
@@ -146134,6 +147350,21 @@
       "value": 9610656
     },
     {
+      "name": "__vt__MagicFireBall",
+      "type": "struct ObjectVftable",
+      "value": 9656668
+    },
+    {
+      "name": "__vt__MapShield",
+      "type": "struct MapShieldVftable",
+      "value": 9973364
+    },
+    {
+      "name": "__vt__GParticleContainer",
+      "type": "struct GameThingVftable",
+      "value": 9316884
+    },
+    {
       "name": "__vt__Pot",
       "type": "struct PotVftable",
       "value": 9332228
@@ -146164,19 +147395,14 @@
       "value": 9645032
     },
     {
-      "name": "__vt__MobileStatic",
-      "type": "struct MultiMapFixedVftable",
-      "value": 9339060
+      "name": "__vt__PuzzleGame",
+      "type": "struct GameThingWithPosVftable",
+      "value": 9380664
     },
     {
-      "name": "__vt__LandscapeVortex",
-      "type": "struct MultiMapFixedVftable",
-      "value": 9629312
-    },
-    {
-      "name": "__vt__Rock",
-      "type": "struct MultiMapFixedVftable",
-      "value": 9314560
+      "name": "__vt__Reward",
+      "type": "struct MobileObjectVftable",
+      "value": 9705620
     },
     {
       "name": "__vt__DataForScriptRemind",
@@ -146189,6 +147415,11 @@
       "value": 9707892
     },
     {
+      "name": "__vt__ScriptHighlight",
+      "type": "struct ObjectVftable",
+      "value": 9708172
+    },
+    {
       "name": "__vt__9LocalBase",
       "type": "struct BaseVftable",
       "value": 9083460
@@ -146199,9 +147430,39 @@
       "value": 9962808
     },
     {
-      "name": "__vt__Fragment",
-      "type": "struct MultiMapFixedVftable",
-      "value": 10070680
+      "name": "__vt__GStream",
+      "type": "struct GameThingVftable",
+      "value": 9354056
+    },
+    {
+      "name": "__vt__GStreetLantern",
+      "type": "struct ObjectVftable",
+      "value": 9349336
+    },
+    {
+      "name": "__vt__GStreetLight",
+      "type": "struct GameThingWithPosVftable",
+      "value": 9351480
+    },
+    {
+      "name": "__vt__GWaterfall",
+      "type": "struct ObjectVftable",
+      "value": 9355596
+    },
+    {
+      "name": "__vt__Waypoint",
+      "type": "struct GameThingWithPosVftable",
+      "value": 10073260
+    },
+    {
+      "name": "__vt__WeatherThing",
+      "type": "struct GameThingWithPosVftable",
+      "value": 9354312
+    },
+    {
+      "name": "__vt__Whale",
+      "type": "struct MobileObjectVftable",
+      "value": 9432044
     },
     {
       "name": "__vt__GestureSystemDataList",
@@ -146219,6 +147480,11 @@
       "value": 9304064
     },
     {
+      "name": "__vt__GGame",
+      "type": "struct GameThingVftable",
+      "value": 9303600
+    },
+    {
       "name": "__vt__Heap",
       "type": "struct HeapVftable",
       "value": 9641160
@@ -146232,11 +147498,6 @@
       "name": "__vt__Scaffold",
       "type": "struct MobileObjectVftable",
       "value": 9327916
-    },
-    {
-      "name": "__vt__ScriptHighlight",
-      "type": "struct ObjectVftable",
-      "value": 9708172
     },
     {
       "name": "__vt__ScriptMarker",
@@ -146255,18 +147516,13 @@
     },
     {
       "name": "__vt__SpellWithObjects",
-      "type": "struct ObjectVftable",
+      "type": "struct SpellWithObjectsVftable",
       "value": 9389360
     },
     {
       "name": "__vt__SpellShield",
-      "type": "struct ObjectVftable",
+      "type": "struct SpellWithObjectsVftable",
       "value": 9971928
-    },
-    {
-      "name": "__vt__GStreetLantern",
-      "type": "struct ObjectVftable",
-      "value": 9349336
     },
     {
       "name": "__vt__Totem",
@@ -146277,11 +147533,6 @@
       "name": "__vt__TownDesireFlags",
       "type": "struct ObjectVftable",
       "value": 9345900
-    },
-    {
-      "name": "__vt__WeatherThing",
-      "type": "struct GameThingWithPosVftable",
-      "value": 9354312
     },
     {
       "name": "__vt__Wonder",
