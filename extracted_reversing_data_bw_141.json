@@ -173,16 +173,33 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LHDDEnum",
+      "size": 1240,
+      "members": [
+        {
+          "name": "display_name",
+          "type": "char[248]",
+          "offset": 0
+        },
+        {
+          "name": "field_0xf8",
+          "type": "uint8_t[992]",
+          "offset": 248
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct LHScreen",
       "size": 436,
       "members": [
         {
-          "name": "field_0x0",
-          "type": "uint32_t",
+          "name": "display_devices",
+          "type": "struct LHDDEnum *",
           "offset": 0
         },
         {
-          "name": "field_0x4",
+          "name": "device_count",
           "type": "uint32_t",
           "offset": 4
         },
@@ -333,8 +350,23 @@
         },
         {
           "name": "field_0x94",
-          "type": "uint8_t[272]",
+          "type": "uint8_t[260]",
           "offset": 148
+        },
+        {
+          "name": "field_0x198",
+          "type": "int",
+          "offset": 408
+        },
+        {
+          "name": "field_0x19c",
+          "type": "int",
+          "offset": 412
+        },
+        {
+          "name": "field_0x1a0",
+          "type": "float",
+          "offset": 416
         },
         {
           "name": "field_0x1a4",
@@ -343,8 +375,13 @@
         },
         {
           "name": "field_0x1a8",
-          "type": "uint8_t[8]",
+          "type": "uint8_t[4]",
           "offset": 424
+        },
+        {
+          "name": "field_0x1ac",
+          "type": "uint32_t",
+          "offset": 428
         },
         {
           "name": "field_0x1b0",
@@ -909,12 +946,12 @@
           "offset": 64
         },
         {
-          "name": "mouse_type_0x44",
-          "type": "uint32_t",
+          "name": "is_wheel_present",
+          "type": "bool32_t",
           "offset": 68
         },
         {
-          "name": "mouse_type_0x48",
+          "name": "num_buttons",
           "type": "uint32_t",
           "offset": 72
         },
@@ -1720,6 +1757,33 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LH3DColor",
+      "size": 4,
+      "members": [
+        {
+          "name": "b",
+          "type": "uint8_t",
+          "offset": 0
+        },
+        {
+          "name": "g",
+          "type": "uint8_t",
+          "offset": 1
+        },
+        {
+          "name": "r",
+          "type": "uint8_t",
+          "offset": 2
+        },
+        {
+          "name": "a",
+          "type": "uint8_t",
+          "offset": 3
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct LHSys_field_0x70c4_t_field_0x0_t",
       "size": 2400,
       "members": [
@@ -1908,17 +1972,22 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHSpriteListNode",
+      "type": "struct LHSpriteList",
       "size": 12,
       "members": [
         {
-          "name": "payload",
-          "type": "struct LHSprite",
+          "name": "initialized",
+          "type": "_Bool",
           "offset": 0
         },
         {
-          "name": "next",
-          "type": "struct LHSpriteList *",
+          "name": "payload",
+          "type": "struct LHSprite *",
+          "offset": 4
+        },
+        {
+          "name": "field_0x8",
+          "type": "int32_t",
           "offset": 8
         }
       ]
@@ -1930,18 +1999,13 @@
       "members": [
         {
           "name": "sprite_list",
-          "type": "struct LHSpriteListNode",
+          "type": "struct LHSpriteList",
           "offset": 0
         },
         {
           "name": "field_0xc",
-          "type": "uint16_t",
+          "type": "uint32_t",
           "offset": 12
-        },
-        {
-          "name": "field_0xe",
-          "type": "uint8_t",
-          "offset": 14
         },
         {
           "name": "field_0x10",
@@ -1967,6 +2031,94 @@
           "name": "field_0x20",
           "type": "uint8_t",
           "offset": 32
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHJoypad",
+      "size": 320,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint32_t",
+          "offset": 0
+        },
+        {
+          "name": "field_0x4",
+          "type": "uint8_t",
+          "offset": 4
+        },
+        {
+          "name": "field_0x5",
+          "type": "uint8_t",
+          "offset": 5
+        },
+        {
+          "name": "field_0x6",
+          "type": "uint8_t[2]",
+          "offset": 6
+        },
+        {
+          "name": "field_0x8",
+          "type": "uint8_t[312]",
+          "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHJoypads",
+      "size": 644,
+      "members": [
+        {
+          "name": "joypads",
+          "type": "struct LHJoypad[2]",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 640
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct FrameInfoLinkedList",
+      "size": 8,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint32_t",
+          "offset": 0
+        },
+        {
+          "name": "field_0x4",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHConvert",
+      "size": 144,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint8_t[132]",
+          "offset": 0
+        },
+        {
+          "name": "frame_info",
+          "type": "struct FrameInfoLinkedList",
+          "offset": 132
+        },
+        {
+          "name": "color",
+          "type": "struct LH3DColor",
+          "offset": 140
         }
       ]
     },
@@ -2021,9 +2173,19 @@
           "offset": 1444
         },
         {
-          "name": "field_0x5a8",
-          "type": "uint8_t[796]",
+          "name": "joypads",
+          "type": "struct LHJoypads",
           "offset": 1448
+        },
+        {
+          "name": "field_0x82c",
+          "type": "uint8_t[8]",
+          "offset": 2092
+        },
+        {
+          "name": "convert",
+          "type": "struct LHConvert",
+          "offset": 2100
         },
         {
           "name": "script",
@@ -63848,33 +64010,6 @@
       ]
     },
     {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DColor",
-      "size": 4,
-      "members": [
-        {
-          "name": "b",
-          "type": "uint8_t",
-          "offset": 0
-        },
-        {
-          "name": "g",
-          "type": "uint8_t",
-          "offset": 1
-        },
-        {
-          "name": "r",
-          "type": "uint8_t",
-          "offset": 2
-        },
-        {
-          "name": "a",
-          "type": "uint8_t",
-          "offset": 3
-        }
-      ]
-    },
-    {
       "kind": "ENUM_DECL",
       "type": "enum TextureFormat_",
       "size": 4,
@@ -109577,12 +109712,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__CreatureHelpStackEntry",
+      "type": "struct LHLinkedNode__p_CreatureHelpStackEntry",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__CreatureHelpStackEntry *",
+          "type": "struct LHLinkedNode__p_CreatureHelpStackEntry *",
           "offset": 0
         },
         {
@@ -109594,12 +109729,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__CreatureHelpStackEntry",
+      "type": "struct LHLinkedList__p_CreatureHelpStackEntry",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__CreatureHelpStackEntry *",
+          "type": "struct LHLinkedNode__p_CreatureHelpStackEntry *",
           "offset": 0
         },
         {
@@ -110995,7 +111130,7 @@
         },
         {
           "name": "help_stack_entries",
-          "type": "struct LHLinkedList__CreatureHelpStackEntry[42]",
+          "type": "struct LHLinkedList__p_CreatureHelpStackEntry[42]",
           "offset": 544
         },
         {
@@ -117235,12 +117370,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__GGuidance__LastThings",
+      "type": "struct LHLinkedNode__p_GGuidance__LastThings",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__GGuidance__LastThings *",
+          "type": "struct LHLinkedNode__p_GGuidance__LastThings *",
           "offset": 0
         },
         {
@@ -117252,12 +117387,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__GGuidance__LastThings",
+      "type": "struct LHLinkedList__p_GGuidance__LastThings",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__GGuidance__LastThings *",
+          "type": "struct LHLinkedNode__p_GGuidance__LastThings *",
           "offset": 0
         },
         {
@@ -117289,7 +117424,7 @@
         },
         {
           "name": "lastThings",
-          "type": "struct LHLinkedList__GGuidance__LastThings",
+          "type": "struct LHLinkedList__p_GGuidance__LastThings",
           "offset": 144
         },
         {
@@ -135837,6 +135972,22 @@
       ]
     },
     {
+      "win_addr": 8682320,
+      "mac_addr": 268701792,
+      "decorated_name": "HairGroup::DeleteHair(long)",
+      "undecorated_name": "DeleteHair__9HairGroupFl",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct HairGroup *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "param_1"
+      ]
+    },
+    {
       "win_addr": 8813600,
       "mac_addr": 274843404,
       "decorated_name": "MeshIntersect::ReadBinary(LHFile *)",
@@ -135856,7 +136007,7 @@
       "win_addr": 8676992,
       "mac_addr": -1,
       "decorated_name": "LH3DHair::LH3DHair(void)",
-      "undecorated_name": "__ct__LH3DHair",
+      "undecorated_name": "__ct__LH3DHairFv",
       "return_type": "struct LH3DHair *",
       "call_type": "__thiscall",
       "argument_types": [
@@ -141765,6 +141916,16 @@
       ]
     },
     {
+      "win_addr": 8566128,
+      "mac_addr": 269121904,
+      "decorated_name": "LH3DRender::Close(void)",
+      "undecorated_name": "Close__10LH3DRenderFv",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
       "win_addr": 8567232,
       "mac_addr": 268622768,
       "decorated_name": "LH3DRender::SetTextureStageState(unsigned long, D3DTEXTURESTAGESTATETYPE, unsigned long)",
@@ -141819,6 +141980,16 @@
       "argument_names": [
         "index"
       ]
+    },
+    {
+      "win_addr": 8911968,
+      "mac_addr": 269326512,
+      "decorated_name": "6LHIlib::LH3DRenderClose(void)",
+      "undecorated_name": "LH3DRenderClose__6LHIlibFv",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
     },
     {
       "win_addr": 8358752,
@@ -142451,6 +142622,20 @@
       ]
     },
     {
+      "win_addr": 8277792,
+      "mac_addr": 269768736,
+      "decorated_name": "LHMouse::LHMouse(void)",
+      "undecorated_name": "__ct__7LHMouseFv",
+      "return_type": "struct LHMouse *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHMouse *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 8275984,
       "mac_addr": 269031792,
       "decorated_name": "LHMouse::DeltaPos(void)",
@@ -142871,6 +143056,48 @@
       ]
     },
     {
+      "win_addr": 8245264,
+      "mac_addr": 269801760,
+      "decorated_name": "LHDDEnum::~LHDDEnum(void)",
+      "undecorated_name": "__dt__8LHDDEnumFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHDDEnum *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8244768,
+      "mac_addr": 269804800,
+      "decorated_name": "LHScreen::LHScreen(void)",
+      "undecorated_name": "__ct__8LHScreenFv",
+      "return_type": "struct LHScreen *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHScreen *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8247536,
+      "mac_addr": 269801616,
+      "decorated_name": "LHScreen::~LHScreen(void)",
+      "undecorated_name": "__dt__8LHScreenFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHScreen *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 8239328,
       "mac_addr": 269871840,
       "decorated_name": "TurnOffMenu",
@@ -143097,6 +143324,20 @@
       ]
     },
     {
+      "win_addr": 8239104,
+      "mac_addr": -1,
+      "decorated_name": "LHSys::LHSys(void)",
+      "undecorated_name": "__ct__5LHSysFv",
+      "return_type": "struct LHSys *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHSys *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 8338688,
       "mac_addr": 269943968,
       "decorated_name": "slim::TbIME::Activate(void* )",
@@ -143177,6 +143418,16 @@
         "param_2",
         "idx"
       ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 269864224,
+      "decorated_name": "__sinit_LHSystem_cpp",
+      "undecorated_name": "__sinit_LHSystem_cpp",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
     },
     {
       "win_addr": -1,
@@ -143338,6 +143589,46 @@
       ],
       "argument_names": [
         "address"
+      ]
+    },
+    {
+      "win_addr": 9068935,
+      "mac_addr": 270173412,
+      "decorated_name": "__construct_new_array",
+      "undecorated_name": "__construct_new_array",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "void *",
+        "size_t",
+        "int",
+        "void *"
+      ],
+      "argument_names": [
+        "address",
+        "stride",
+        "len",
+        "constructor"
+      ]
+    },
+    {
+      "win_addr": 9068387,
+      "mac_addr": 270171536,
+      "decorated_name": "__destroy_new_array",
+      "undecorated_name": "__destroy_new_array",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "void *",
+        "size_t",
+        "int",
+        "void *"
+      ],
+      "argument_names": [
+        "address",
+        "stride",
+        "len",
+        "destructor"
       ]
     },
     {

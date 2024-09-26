@@ -290,7 +290,7 @@ if __name__ == "__main__":
     print(f"Took {toc - tic:0.4f} seconds")
 
     if len(remainder_functions) + len(remainder_primitives) + len(remainder) > 0:
-        print(f"There are still {len(remainder_functions)} orphan functions")
-        print(f"There are still {len(remainder_primitives)} orphan structs")
-        print(f"There are still {len(remainder)} orphan entries")
+        print(f"There are still {len(remainder_functions)} orphan functions: [{", ".join([i.name for i in remainder_functions][:10])}{", ..." if len(remainder_functions) > 10 else ""}]")
+        print(f"There are still {len(remainder_primitives)} orphan structs: [{", ".join([i.name for i in remainder_primitives][:10])}{", ..." if len(remainder_primitives) > 10 else ""}]")
+        print(f"There are still {len(remainder)} orphan entries: [{", ".join([i.name for i in remainder][:10])}{", ..." if len(remainder) > 10 else ""}]")
         exit(1)
