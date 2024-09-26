@@ -125,7 +125,9 @@ if __name__ == "__main__":
         vftable_function_prototypes,
         header_structs,
         enums,
-        list_and_nodes,
+        lh_linked_pointer_lists,
+        lh_linked_lists,
+        lh_list_heads,
         member_function_pointers,
         to_ignore,
         remainder_primitives,
@@ -137,13 +139,19 @@ if __name__ == "__main__":
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
         is_header_struct,
         lambda x: type(x) is Enum,
-        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList") or  x.name.startswith("LHLinkedNode") or x.name.endswith("List") or x.name.endswith("ListNode"),
+        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__p_") or  x.name.startswith("LHLinkedNode__p_"),
+        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__") or  x.name.startswith("LHLinkedNode__"),
+        lambda x: type(x) is Struct and x.name.startswith("LHListHead__"),
         lambda x: type(x) is FuncPtr and "__" in x.name and is_header_struct_name(x.name[::-1].split("__")[-1][::-1]),
         is_ignore_struct,
         lambda x: type(x) is Struct,
     ], primitives)
 
     vftable_function_proto_map = {i.name: i for i in vftable_function_prototypes}
+
+    lh_linked_list_pointer_structs = {"struct " + i.name.removeprefix("LHLinkedList__p_").removeprefix("LHLinkedNode__p_") for i in lh_linked_pointer_lists}
+    lh_linked_list_structs = {"struct " + i.name.removeprefix("LHLinkedList__").removeprefix("LHLinkedNode__") for i in lh_linked_lists}
+    lh_list_head_structs = {"struct " + i.name.removeprefix("LHListHead__") for i in lh_list_heads}
 
     vftable_map = {}
     for t in vftables:
@@ -225,7 +233,13 @@ if __name__ == "__main__":
         header = Header(path, [], structs)
         header_map[path] = header
 
+    consumed_lh_linked_list_pointer_structs = set()
+    consumed_lh_linked_list_structs = set()
+    consumed_lh_list_head_structs = set()
     for header in header_map.values():
+        consumed_lh_linked_list_pointer_structs.update(header.add_linked_list_pointered_defines(lh_linked_list_pointer_structs))
+        consumed_lh_linked_list_structs.update(header.add_linked_list_defines(lh_linked_list_structs))
+        consumed_lh_list_head_structs.update(header.add_list_head_defines(lh_list_head_structs))
         header.build_include_list(local_header_import_map)
 
     headers: list[Header] = list(header_map.values())

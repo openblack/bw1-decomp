@@ -50,6 +50,9 @@ C_STDLIB_HEADER_IMPORT_MAP = {
 
 UTILITY_HEADER_IMPORT_MAP = {
     "bool32_t": "reversing_utils.h",
+    "DECLARE_LH_LINKED_LIST": "LHLinkedList.h",
+    "DECLARE_P_LH_LINKED_LIST": "LHLinkedList.h",
+    "DECLARE_LH_LIST_HEAD": "LHListHead.h",
 }
 
 
@@ -72,6 +75,9 @@ class Header:
     path: Path
     includes: dict[str, Include]
     structs: list[Composite]
+    linked_lists_pointered: set[str]
+    linked_lists: set[str]
+    lists_heads: set[str]
 
     def __hash__(self) -> int:
         return hash(self.header_path)
@@ -80,6 +86,9 @@ class Header:
         self.path = path
         self.includes = {i.header_path.as_posix(): i for i in includes}
         self.structs = structs
+        self.linked_lists_pointered = set()
+        self.linked_lists = set()
+        self.lists_heads = set()
 
     def build_include_list(self, local_header_import_map: dict[str, Path]):
         types = self.get_direct_dependencies()
@@ -104,6 +113,18 @@ class Header:
                 i.dependencies.add(t)
                 self.includes[header] = i
 
+    def add_linked_list_pointered_defines(self, struct_map: set[str]) -> set[str]:
+        self.linked_lists_pointered.update(struct_map.intersection(self.get_types()))
+        return self.linked_lists_pointered
+
+    def add_linked_list_defines(self, struct_map: set[str]) -> set[str]:
+        self.lists_heads.update(struct_map.intersection(self.get_types()))
+        return self.lists_heads
+
+    def add_list_head_defines(self, struct_map: set[str]) -> set[str]:
+        self.linked_lists_pointered.update(struct_map.intersection(self.get_types()))
+        return self.linked_lists_pointered
+
     def get_types(self) -> set[str]:
         result = set()
         for s in self.structs:
@@ -119,6 +140,12 @@ class Header:
         if self.structs:
             result.add("static_assert")
         result = result - {f"struct {s.name}" for s in self.structs} - C_FUNDAMENTAL_TYPES
+        if self.linked_lists_pointered:
+            result.add("DECLARE_P_LH_LINKED_LIST")
+        if self.linked_lists:
+            result.add("DECLARE_LH_LINKED_LIST")
+        if self.lists_heads:
+            result.add("DECLARE_LH_LIST_HEAD")
         return result
 
     def get_forward_declare_types(self) -> set[str]:
@@ -163,6 +190,14 @@ class Header:
 
         for s in self.structs:
             s.to_code(cw)
+            if self.linked_lists_pointered or self.linked_lists or self.add_list_head_defines:
+                cw.add_line()
+            if s.decorated_name in self.linked_lists:
+                cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
+            if s.decorated_name in self.linked_lists_pointered:
+                cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
+            if s.decorated_name in self.lists_heads:
+                cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
             cw.add_line()
 
         cw.end_if_def()
