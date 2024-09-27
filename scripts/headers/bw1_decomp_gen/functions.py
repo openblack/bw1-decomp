@@ -119,7 +119,7 @@ class FuncPtr:
                 params.insert(1, ["edx", "const void*"])
             conv = "__fastcall"
 
-        return CSnakeFuncPtr(self.result, params, conv)
+        return CSnakeFuncPtr(self.result, params or [("", " void")], conv)
 
     def to_code(self, cw: csnake.CodeWriter):
         fptr = self.to_csnake()
