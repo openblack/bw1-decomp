@@ -946,8 +946,8 @@ roomate_classes = {
     "LHConvert": "LHSystem",
 }
 
-dev_filepaths = released_filepaths_from_strings.union(guessed_filepaths)
-
+unportable_dev_filepaths = released_filepaths_from_strings.union(guessed_filepaths)
+dev_filepaths = {BWPath(str(a.parent).lower().replace("c:", "C:").replace("/mp/", "/").replace("\\mp\\", "\\")) / a.name for a in unportable_dev_filepaths}
 
 def filter_paths(path: BWPath) -> BWPath:
     # Define parts to remove
@@ -961,7 +961,6 @@ def filter_paths(path: BWPath) -> BWPath:
 
 
 def get_project_paths() -> set[BWPath]:
-
     relatives = map(lambda x: x.relative_to(BWPath(r"C:\dev")).parent, dev_filepaths)
     debug_release_stripped = map(filter_paths, relatives)
 
