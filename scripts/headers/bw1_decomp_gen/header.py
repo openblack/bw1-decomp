@@ -50,9 +50,9 @@ C_STDLIB_HEADER_IMPORT_MAP = {
 
 UTILITY_HEADER_IMPORT_MAP = {
     "bool32_t": "reversing_utils.h",
-    "DECLARE_LH_LINKED_LIST": "LHLinkedList.h",
-    "DECLARE_P_LH_LINKED_LIST": "LHLinkedList.h",
-    "DECLARE_LH_LIST_HEAD": "LHListHead.h",
+    "DECLARE_LH_LINKED_LIST": "libs/lionhead/lhlib/LHLinkedList.h",
+    "DECLARE_P_LH_LINKED_LIST": "libs/lionhead/lhlib/LHLinkedList.h",
+    "DECLARE_LH_LIST_HEAD": "libs/lionhead/lhlib/LHListHead.h",
 }
 
 
@@ -118,12 +118,12 @@ class Header:
         return self.linked_lists_pointered
 
     def add_linked_list_defines(self, struct_map: set[str]) -> set[str]:
-        self.lists_heads.update(struct_map.intersection(self.get_types()))
-        return self.lists_heads
+        self.linked_lists.update(struct_map.intersection(self.get_types()))
+        return self.linked_lists
 
     def add_list_head_defines(self, struct_map: set[str]) -> set[str]:
-        self.linked_lists_pointered.update(struct_map.intersection(self.get_types()))
-        return self.linked_lists_pointered
+        self.lists_heads.update(struct_map.intersection(self.get_types()))
+        return self.lists_heads
 
     def get_types(self) -> set[str]:
         result = set()

@@ -503,7 +503,7 @@ released_filepaths_from_strings = {
 }
 
 guessed_filepaths = {
-    BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\Memory.h"),
+    BWPath(r"C:\Dev\Libs\lionhead\lhlib\VER5.0\LHMemory.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHJoypad.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHScreen.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHDDEnum.h"),
@@ -925,11 +925,11 @@ roomate_classes = {
     "Report3D__FPCce": "LH3DRender",
     "ScanParameters__Fv": "PCMain",
     "IsACmdLineString__FPcPCc": "PCMain",
-    "operator_new": "Memory",
-    "__nw__FUl": "Memory",
-    "__dl__FPv": "Memory",
-    "__construct_new_array": "Memory",
-    "__destroy_new_array": "Memory",
+    "operator_new": "LHMemory",
+    "__nw__FUl": "LHMemory",
+    "__dl__FPv": "LHMemory",
+    "__construct_new_array": "LHMemory",
+    "__destroy_new_array": "LHMemory",
     "CHAR2WCHAR__FPc": "Utils",
     "RequestChangeTexture__FP6Object": "Object",
     "DoWallHuggerLookahead__Fv": "MobileWallHug",

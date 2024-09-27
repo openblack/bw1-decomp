@@ -277,11 +277,13 @@ if __name__ == "__main__":
 
     copied_headers = 0
     copied_bytes = 0
-    for file in (Path(__file__).parent / "src").glob('*'):
-        dest_file = output_path / file.name
-        result = shutil.copy2(file, dest_file)
-        copied_headers += 1
-        copied_bytes += result.stat().st_size
+    for file in (Path(__file__).parent / "src").rglob('*'):
+        if file.is_file():
+            dest_file = output_path / file.relative_to(Path(__file__).parent / "src")
+            dest_file.parent.mkdir(parents=True, exist_ok=True)
+            result = shutil.copy2(file, dest_file)
+            copied_headers += 1
+            copied_bytes += Path(result).stat().st_size
 
     toc = time.perf_counter()
     print(f"Copied {copied_headers} headers({copied_bytes} bytes) in {output_path}")
