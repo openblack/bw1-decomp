@@ -190,14 +190,14 @@ class Header:
 
         for s in self.structs:
             s.to_code(cw)
-            if self.linked_lists_pointered or self.linked_lists or self.add_list_head_defines:
+            if self.linked_lists_pointered or self.linked_lists or self.lists_heads:
                 cw.add_line()
-            if s.decorated_name in self.linked_lists:
-                cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
-            if s.decorated_name in self.linked_lists_pointered:
-                cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
-            if s.decorated_name in self.lists_heads:
-                cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
+                if s.decorated_name in self.linked_lists:
+                    cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
+                if s.decorated_name in self.linked_lists_pointered:
+                    cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
+                if s.decorated_name in self.lists_heads:
+                    cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
             cw.add_line()
 
         cw.end_if_def()
