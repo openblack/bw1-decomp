@@ -909,7 +909,6 @@ roomate_classes = {
     "BookmarkGraphic": "Bookmark",
     "CHand__State": "CHand",
     "LHSprite__Texels": "LH3DSprite",
-    "DrawingObjectVftable": "DrawingObject",
     "NeedsBiggerText__Fv": "GatheringText",
     "GetMidTextSize__Fv": "GatheringText",
     "GetSmallTextSize__Fv": "GatheringText",
