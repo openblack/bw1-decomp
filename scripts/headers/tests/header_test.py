@@ -111,6 +111,12 @@ class TestHeaderIncludes(unittest.TestCase):
         includes = h.get_includes()
         self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("stdint.h"), {"int16_t", "int8_t", "uint32_t"}, True)])
 
+    def test_stdint_ptr(self):
+        h = Header(self.path, [], [Struct("TestStruct", 0x8, [Struct.Member("field_0x0", "uint32_t*", 0x0), Struct.Member("field_0x4", "const int32_t*", 0x4)])])
+        h.build_include_list({})
+        includes = h.get_includes()
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("stdint.h"), {"uint32_t", "int32_t"}, True)])
+
     def test_with_manual_include(self):
         h = Header(self.path, [Header.Include(Path('includetest'), {"std::TestInclude"}, True)], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0)])])
         h.build_include_list({})

@@ -34,6 +34,21 @@ C_FUNDAMENTAL_TYPES = {
 }
 
 
+C_STDLIB_TYPEDEFS = {
+    "bool",
+    "int8_t",
+    "int16_t",
+    "int32_t",
+    "int64_t",
+    "uint8_t",
+    "uint16_t",
+    "uint32_t",
+    "uint64_t",
+    "uintptr_t",
+    "char16_t",
+}
+
+
 C_STDLIB_HEADER_IMPORT_MAP = {
     "static_assert": "assert.h",
     "bool": "stdbool.h",
@@ -59,11 +74,16 @@ UTILITY_HEADER_IMPORT_MAP = {
 }
 
 
-def strip_pointers_arrays_and_modifiers(c_type):
-    c_type = re.sub(r'\*', '', c_type)
+def strip_arrays_and_modifiers(c_type):
     c_type = re.sub(r'\[\d*\]', '', c_type)
     c_type = re.sub(r'[()]', '', c_type)
     c_type = c_type.removeprefix("const ")
+    return c_type
+
+
+def strip_pointers_arrays_and_modifiers(c_type):
+    c_type = re.sub(r'\*', '', c_type)
+    c_type = strip_arrays_and_modifiers(c_type)
     return c_type
 
 
@@ -141,7 +161,8 @@ class Header:
 
     def get_direct_dependencies(self) -> set[str]:
         result = self.get_types()
-        result = set(filter(lambda x: '*' not in x, result))
+        pointers = set(filter(lambda x: '*' in x and strip_pointers_arrays_and_modifiers(x) not in C_STDLIB_TYPEDEFS, result))
+        result.difference_update(pointers)
         if self.structs:
             result.add("static_assert")
         result = result - {f"struct {s.name}" for s in self.structs} - C_FUNDAMENTAL_TYPES
@@ -151,6 +172,7 @@ class Header:
             result.add("DECLARE_LH_LINKED_LIST")
         if self.lists_heads:
             result.add("DECLARE_LH_LIST_HEAD")
+        result = set(map(strip_arrays_and_modifiers, result))
         return result
 
     def get_forward_declare_types(self) -> set[str]:
