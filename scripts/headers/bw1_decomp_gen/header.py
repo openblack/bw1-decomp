@@ -1,5 +1,6 @@
 import csnake
 import re
+import os
 
 from dataclasses import dataclass
 from inflection import underscore
@@ -44,15 +45,17 @@ C_STDLIB_HEADER_IMPORT_MAP = {
     "uint16_t": "stdint.h",
     "uint32_t": "stdint.h",
     "uint64_t": "stdint.h",
+    "uintptr_t": "stdint.h",
     "char16_t": "uchar.h",
     "D3DTLVERTEX": "d3dtypes.h"
 }
 
 UTILITY_HEADER_IMPORT_MAP = {
-    "bool32_t": "reversing_utils.h",
-    "DECLARE_LH_LINKED_LIST": "libs/lionhead/lhlib/LHLinkedList.h",
-    "DECLARE_P_LH_LINKED_LIST": "libs/lionhead/lhlib/LHLinkedList.h",
-    "DECLARE_LH_LIST_HEAD": "libs/lionhead/lhlib/LHListHead.h",
+    "bool32_t": Path("reversing_utils.h"),
+    "struct vec2u16": Path("reversing_utils.h"),
+    "DECLARE_LH_LINKED_LIST": Path("lionhead/lhlib/LHLinkedList.h"),
+    "DECLARE_P_LH_LINKED_LIST": Path("lionhead/lhlib/LHLinkedList.h"),
+    "DECLARE_LH_LIST_HEAD": Path("lionhead/lhlib/LHListHead.h"),
 }
 
 
@@ -108,7 +111,9 @@ class Header:
                 if header == self.path:
                     continue
                 if header.parts[0] == self.path.parts[0]:
-                    header = header.relative_to(self.path.parts[0])
+                    header = Path(os.path.relpath(header, start=self.path.parent))
+                elif header.parts[0].lower() == 'libs':
+                    header = header.relative_to("libs")
                 i = self.includes.get(header, self.Include(header, set(), False))
                 i.dependencies.add(t)
                 self.includes[header] = i
