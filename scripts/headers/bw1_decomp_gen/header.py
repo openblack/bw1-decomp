@@ -158,6 +158,7 @@ class Header:
         for s in self.structs:
             defined_types_so_far.add(f"struct {strip_pointers_arrays_and_modifiers(s.name)}")
             struct_types = {strip_pointers_arrays_and_modifiers(r) for r in s.get_types()}
+            struct_types = {r for r in struct_types if r.startswith("struct ") or r.startswith("union ") or r.startswith("enum ")}
             struct_types.difference_update(defined_types_so_far)
             result.update(struct_types)
 

@@ -76,7 +76,7 @@ class TestHeaderTypes(unittest.TestCase):
         structs: list[Struct] = [
             Vftable(Struct("TestStruct1Vftable", 8, [Struct.Member("Foo", "TestStruct1Vftable__Foo*", 0x0), Struct.Member("Bar", "TestStruct1Vftable__Bar*", 0x4)]), function_proto_map),
             Struct("TestStruct1", 4, [Struct.Member("vftable", "struct TestStruct1Vftable*", 0x0)]),
-            Struct("TestStruct2", 0x28, [
+            Struct("TestStruct2", 0x30, [
                 Struct.Member("field_0x0", "int *", 0x0),
                 Struct.Member("field_0x4", "enum TestEnum*", 0x4),
                 Struct.Member("field_0x8", "union TestUnion*", 0x8),
@@ -84,8 +84,10 @@ class TestHeaderTypes(unittest.TestCase):
                 Struct.Member("field_0x10", "struct TestStruct3(*)[2]", 0x10),
                 Struct.Member("field_0x14", "struct TestStruct3*[2]", 0x14),
                 Struct.Member("field_0x1c", "int", 0x1c),
-                Struct.Member("field_0x20", "struct TestStruct1", 0x20),
-                Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
+                Struct.Member("field_0x1c", "int*", 0x20),
+                Struct.Member("field_0x1c", "uint32_t*", 0x24),
+                Struct.Member("field_0x20", "struct TestStruct1", 0x28),
+                Struct.Member("field_0x24", "struct TestStruct1*", 0x2c),
             ]),
         ]
         h = Header(self.path, includes=[], structs=structs)
