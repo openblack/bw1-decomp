@@ -163,6 +163,10 @@ class Header:
         result = self.get_types()
         pointers = set(filter(lambda x: '*' in x and strip_pointers_arrays_and_modifiers(x) not in C_STDLIB_TYPEDEFS, result))
         result.difference_update(pointers)
+        lh_lists = {i for i in result if i.startswith("struct LHListHead__") or i.startswith("struct LHLinkedList__")}
+        lh_lists_underlying_type = {"struct " + i.removeprefix("struct ").removeprefix("LHListHead__").removeprefix("LHLinkedList__p_").removeprefix("LHLinkedList__") for i in lh_lists}
+        result.difference_update(lh_lists)
+        result.update(lh_lists_underlying_type)
         if self.structs:
             result.add("static_assert")
         result = result - {f"struct {s.name}" for s in self.structs} - C_FUNDAMENTAL_TYPES
@@ -191,6 +195,7 @@ class Header:
 
         result.difference_update(self.get_direct_dependencies())
         result.difference_update(C_FUNDAMENTAL_TYPES)
+        result = {i for i in result if not i.startswith("struct LHListHead__") and not i.startswith("struct LHLinkedList__")}
         return result
 
     def to_code(self, cw: csnake.CodeWriter):
