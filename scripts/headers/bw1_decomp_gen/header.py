@@ -229,11 +229,13 @@ class Header:
                 cw.add_line()
                 if s.decorated_name in self.linked_lists:
                     cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
+                    cw.add_line()
                 if s.decorated_name in self.linked_lists_pointered:
                     cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
+                    cw.add_line()
                 if s.decorated_name in self.lists_heads:
                     cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
-            cw.add_line()
+                    cw.add_line()
 
         cw.end_if_def()
         cw.add_line()
