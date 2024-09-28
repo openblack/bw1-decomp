@@ -1,6 +1,8 @@
 import time
 import shutil
+import string
 import sys
+from typing import Optional
 from clang import cindex
 from json import load
 from pathlib import Path
@@ -153,22 +155,58 @@ if __name__ == "__main__":
     ], remainder_functions)
 
     object_file_base_names = get_object_file_base_names()
+    object_file_base_names_lower = {str.lower(i): i for i in object_file_base_names}
 
-    def is_header_struct_name(type_name) -> bool:
+    def get_header_struct_name_key(type_name) -> Optional[str]:
         roomate_class_name = roomate_classes.get(type_name, type_name)
         if roomate_class_name[0] == 'G' and roomate_class_name[1].isupper():
             roomate_class_name = roomate_class_name[1:]
-        if roomate_class_name in object_file_base_names:
-            return True
-        return False
+        result = object_file_base_names_lower.get(roomate_class_name.lower())
+        if result is not None:
+            return result
+        if roomate_class_name[-1].lower() == 's':
+            result = object_file_base_names_lower.get(roomate_class_name[:-1].lower())
+            if result is not None:
+                return result
+        return None
 
     def is_header_struct(data_type) -> bool:
         if type(data_type) is Struct and data_type.members and data_type.members[0].name in ["vftable", "super", "base"]:
             return True
         if type(data_type) is Struct or type(data_type) is Union:
-            if is_header_struct_name(data_type.name):
+            if get_header_struct_name_key(data_type.name) is not None:
                 return True
         return False
+
+    def enum_name_to_potential_header_struct_name(type_name: str, num_stripped_suffixes) -> Optional[str]:
+        if type_name.count("_") < num_stripped_suffixes:
+            return None
+        if num_stripped_suffixes == 0:
+            if type_name in roomate_classes:
+                return roomate_classes[type_name]
+            return string.capwords(type_name).replace("_", "")
+        return "".join(map(string.capwords, type_name.split("_")[:-num_stripped_suffixes]))
+
+    def get_enum_header_name_key(data_type) -> Optional[str]:
+        if type(data_type) is not Enum:
+            return None
+
+        for num_stripped_suffixes in range(0, 3):
+            camels = list(filter(None, (
+                enum_name_to_potential_header_struct_name(data_type.name, num_stripped_suffixes),
+                enum_name_to_potential_header_struct_name(data_type.name.removeprefix("LH_").removeprefix("LH").removesuffix("Enum").removesuffix("_t"), num_stripped_suffixes),
+                enum_name_to_potential_header_struct_name(f"LH_{data_type.name}", num_stripped_suffixes),
+                enum_name_to_potential_header_struct_name(f"LH3D_{data_type.name}", num_stripped_suffixes),
+                enum_name_to_potential_header_struct_name(data_type.name.replace("_TYPE", "_INFO"), num_stripped_suffixes),
+                enum_name_to_potential_header_struct_name(data_type.name.split("__")[0], num_stripped_suffixes),
+            )))
+            if not camels:
+                break
+            for camel in camels:
+                header_name = get_header_struct_name_key(camel)
+                if header_name is not None:
+                    return header_name
+        return None
 
     def is_ignore_struct(data_type) -> bool:
         if type(data_type) is Struct or type(data_type) is Typedef:
@@ -185,7 +223,8 @@ if __name__ == "__main__":
         bases,
         vftable_function_prototypes,
         header_structs,
-        enums,
+        header_enums,
+        remainder_enums,
         lh_linked_pointer_lists,
         lh_linked_lists,
         lh_list_heads,
@@ -199,11 +238,12 @@ if __name__ == "__main__":
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
         is_header_struct,
+        lambda x: type(x) is Enum and get_enum_header_name_key(x) is not None,
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__p_") or  x.name.startswith("LHLinkedNode__p_"),
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__") or  x.name.startswith("LHLinkedNode__"),
         lambda x: type(x) is Struct and x.name.startswith("LHListHead__"),
-        lambda x: type(x) is FuncPtr and "__" in x.name and is_header_struct_name(x.name[::-1].split("__")[-1][::-1]),
+        lambda x: type(x) is FuncPtr and "__" in x.name and get_header_struct_name_key(x.name[::-1].split("__")[-1][::-1]) is not None,
         is_ignore_struct,
         lambda x: type(x) is Struct,
     ], primitives)
@@ -245,6 +285,14 @@ if __name__ == "__main__":
 
     local_header_import_map: dict[str, str] = {}
     header_map: dict[Path, Header] = {}
+
+    for e in header_enums:
+        path = get_path(get_enum_header_name_key(e))
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(e)
+        header = Header(path, [], structs)
+        header_map[path] = header
 
     for t in member_function_pointers:
         struct_name = t.name[::-1].split("__")[-1][::-1]
@@ -354,8 +402,9 @@ if __name__ == "__main__":
     print(f"Ignored {len(to_ignore)} entries")
     print(f"Took {toc - tic:0.4f} seconds")
 
-    if len(remainder_functions) + len(remainder_primitives) + len(remainder) > 0:
+    if len(remainder_functions) + len(remainder_primitives) + len(remainder_enums) + len(remainder) > 0:
         print(f"There are still {len(remainder_functions)} orphan functions: [{", ".join([i.name for i in remainder_functions][:10])}{", ..." if len(remainder_functions) > 10 else ""}]")
         print(f"There are still {len(remainder_primitives)} orphan structs: [{", ".join([i.name for i in remainder_primitives][:10])}{", ..." if len(remainder_primitives) > 10 else ""}]")
+        print(f"There are still {len(remainder_enums)} orphan enums: [{", ".join([i.name for i in remainder_enums][:10])}{", ..." if len(remainder_enums) > 10 else ""}]")
         print(f"There are still {len(remainder)} orphan entries: [{", ".join([i.name for i in remainder][:10])}{", ..." if len(remainder) > 10 else ""}]")
         exit(1)

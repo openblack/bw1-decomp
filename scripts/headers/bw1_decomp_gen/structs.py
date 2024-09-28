@@ -148,6 +148,10 @@ class Enum:
     def decorated_name(self):
         return f"enum {self.name}"
 
+    def get_types(self) -> set[str]:
+        result = {self.name}
+        return result
+
     @classmethod
     def from_json(cls, decl: dict) -> "Enum":
         name = extract_type_name(decl['type'])
@@ -158,7 +162,7 @@ class Enum:
     def to_csnake(self) -> csnake.Enum:
         result = csnake.Enum(self.name, typedef=False)
         for v in self.values:
-            result.add_variable(*v)
+            result.add_value(*v)
         return result
 
     def to_code(self, cw: csnake.CodeWriter):
