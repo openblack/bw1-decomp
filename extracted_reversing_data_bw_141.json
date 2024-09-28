@@ -62287,23 +62287,23 @@
     },
     {
       "kind": "ENUM_DECL",
-      "type": "enum L3D_MESH_FLAGS",
+      "type": "enum LH3D_MESH_FLAGS",
       "size": 4,
       "constants": [
         {
-          "name": "L3D_MESH_FLAGS_HAS_BONES",
+          "name": "LH3D_MESH_FLAGS_HAS_BONES",
           "value": 256
         },
         {
-          "name": "L3D_MESH_FLAGS_HAS_DOOR_POSITION",
+          "name": "LH3D_MESH_FLAGS_HAS_DOOR_POSITION",
           "value": 2048
         },
         {
-          "name": "L3D_MESH_FLAGS_UNKNOWN_15",
+          "name": "LH3D_MESH_FLAGS_UNKNOWN_15",
           "value": 16384
         },
         {
-          "name": "_L3D_MESH_FLAGS_FORCE_32_BIT",
+          "name": "_LH3D_MESH_FLAGS_FORCE_32_BIT",
           "value": 2147483647
         }
       ]
@@ -63947,49 +63947,6 @@
           "name": "field_0x84",
           "type": "uint8_t[60]",
           "offset": 132
-        }
-      ]
-    },
-    {
-      "kind": "ENUM_DECL",
-      "type": "enum ObjectTypeVTableAddresses",
-      "size": 4,
-      "constants": [
-        {
-          "name": "__vt__LH3DObject",
-          "value": 10102044
-        },
-        {
-          "name": "__vt__LH3DMeshedObject",
-          "value": 10102600
-        },
-        {
-          "name": "__vt__LH3DStaticObject",
-          "value": 10103156
-        },
-        {
-          "name": "__vt__LH3DStaticMorphableObject",
-          "value": 10104372
-        },
-        {
-          "name": "__vt__LH3DAnimatedObject",
-          "value": 10105504
-        },
-        {
-          "name": "__vt__LH3DComplexObject",
-          "value": 10104936
-        },
-        {
-          "name": "__vt__16LH3DSpriteObject",
-          "value": 10106064
-        },
-        {
-          "name": "__vt__LH3DMist",
-          "value": 10101480
-        },
-        {
-          "name": "__vt__LH3DCitadel",
-          "value": 10103804
         }
       ]
     },
@@ -122906,6 +122863,23 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct RenderParticle",
+      "size": 24,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct PSysBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint32_t",
+          "offset": 20
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct Scaffold",
       "size": 104,
       "members": [
@@ -141325,6 +141299,20 @@
       ]
     },
     {
+      "win_addr": 8437792,
+      "mac_addr": 268967184,
+      "decorated_name": "LH3DComplexObject::CreateDynamicShadow",
+      "undecorated_name": "CreateDynamicShadow__17LH3DComplexObjectFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DComplexObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 8475520,
       "mac_addr": 268927568,
       "decorated_name": "LH3DSpriteObject::LH3DSpriteObject(long)",
@@ -141363,20 +141351,6 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct LH3DCitadel *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8437792,
-      "mac_addr": 268967184,
-      "decorated_name": "LH3DComplexObject::CreateDynamicShadow",
-      "undecorated_name": "CreateDynamicShadow__17LH3DComplexObjectFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DComplexObject *"
       ],
       "argument_names": [
         "this"
@@ -146487,6 +146461,51 @@
       "value": 9636448
     },
     {
+      "name": "__vt__LH3DObject",
+      "type": "struct LH3DObjectVftable",
+      "value": 10102044
+    },
+    {
+      "name": "__vt__LH3DMeshedObject",
+      "type": "struct LH3DObjectVftable",
+      "value": 10102600
+    },
+    {
+      "name": "__vt__LH3DStaticObject",
+      "type": "struct LH3DObjectVftable",
+      "value": 10103156
+    },
+    {
+      "name": "__vt__LH3DStaticMorphableObject",
+      "type": "struct LH3DObjectVftable",
+      "value": 10104372
+    },
+    {
+      "name": "__vt__LH3DAnimatedObject",
+      "type": "struct LH3DObjectVftable",
+      "value": 10105504
+    },
+    {
+      "name": "__vt__LH3DComplexObject",
+      "type": "struct LH3DObjectVftable",
+      "value": 10104936
+    },
+    {
+      "name": "__vt__16LH3DSpriteObject",
+      "type": "struct LH3DObjectVftable",
+      "value": 10106064
+    },
+    {
+      "name": "__vt__LH3DMist",
+      "type": "struct LH3DObjectVftable",
+      "value": 10101480
+    },
+    {
+      "name": "__vt__LH3DCitadel",
+      "type": "struct LH3DObjectVftable",
+      "value": 10103804
+    },
+    {
       "name": "__vt__Fixed",
       "type": "struct FixedVftable",
       "value": 9287452
@@ -147440,6 +147459,11 @@
       "name": "__vt__PhysicsObject",
       "type": "struct BaseVftable",
       "value": 9644944
+    },
+    {
+      "name": "__vt__RenderParticle",
+      "type": "struct PSysBaseVftable",
+      "value": 9415740
     },
     {
       "name": "__vt__Scaffold",
