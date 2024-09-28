@@ -16,6 +16,8 @@ CALL_TYPE_SUBSTITUTIONS = {
 
 
 def clean_up_type(typename):
+    if type(typename) is csnake.FuncPtr:
+        return typename
     type_part, pointer_part, after_pointer_part = typename.partition("*")
     type_part = type_part.rstrip()
     type_part = TYPE_SUBSTITUTIONS.get(type_part, type_part)
@@ -110,8 +112,7 @@ class FuncPtr:
 
     def to_csnake(self) -> CSnakeFuncPtr:
         conv = self.call_type
-        params = [[l or f"param_{i}", a] for i, (l, a) in enumerate(
-            zip(self.arg_labels, self.args))]
+        params = [[l or f"param_{i}", a] for i, (l, a) in enumerate(zip(self.arg_labels, self.args))]
         if conv == "__thiscall":
             params[0][0] = "this"
             if len(params) > 1:

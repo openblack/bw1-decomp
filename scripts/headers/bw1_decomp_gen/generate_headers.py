@@ -1,14 +1,15 @@
 import time
 import shutil
 import sys
+from clang import cindex
 from json import load
 from pathlib import Path
-from csnake import CodeWriter
+import csnake
 
-from header import Header
+from header import Header, C_STDLIB_HEADER_IMPORT_MAP
 from structs import Struct, Union, Enum, RTTIClass
 from typedef import Typedef
-from functions import FuncPtr, DefinedFunctionPrototype
+from functions import FuncPtr, DefinedFunctionPrototype, CSnakeFuncPtr
 from vftable import Vftable
 from utils import partition, extract_type_name
 from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, roomate_classes
@@ -63,6 +64,66 @@ primitive_look_up = {
     'TYPEDEF_DECL': Typedef,
     'FUNCTIONPROTO': FuncPtr,
 }
+
+# TODO: Do every type of variable
+def arg_clang_wrapping_declaration_to_csnake(wrapping_declaration):
+    assert wrapping_declaration.kind.name == "FUNCTION_DECL"
+
+    param_declaration = next(wrapping_declaration.get_arguments())
+    assert param_declaration.kind.name == "PARM_DECL"
+
+    type_ = param_declaration.type
+
+    is_pointer = type_.kind.name == "POINTER"
+
+    if is_pointer:
+        type_ = type_.get_pointee()
+        if type_.kind.name == "FUNCTIONPROTO":
+            call_type = None
+            for attr in ["fastcall", "cdecl", "thiscall", "stdcall"]:
+                if type_.spelling.endswith(f"__attribute__(({attr}))"):
+                    call_type = f"__{attr}"
+                    break
+            return CSnakeFuncPtr(type_.get_result().spelling, [(c.displayname or f"param_{i + 1}", c.type.spelling) for i, c in enumerate(param_declaration.get_children())], call_type)
+
+    return None
+
+
+def arg_to_csnake(type_decl):
+    """This function is slow because it launched the compiler for each param. It can easily go from less than a second to more than 20 seconds"""
+    source = f"void __arg_to_csnake_wrapping_declaration({type_decl});"
+    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32"], unsaved_files=[('tmp.c', source)])
+    if [d for d in translation_unit.diagnostics if d.severity >= cindex.Diagnostic.Error]:
+        return type_decl
+    result = arg_clang_wrapping_declaration_to_csnake(next(c for c in translation_unit.cursor.get_children() if c.spelling == "__arg_to_csnake_wrapping_declaration"))
+    return result or type_decl
+
+
+def batched_arg_to_csnake(type_decls):
+    # Slow path
+    # for p in type_decls:
+    #     p.args = list(map(arg_to_csnake, p.args))
+
+    # Fast path
+    arg_list_list = []
+    for p in type_decls:
+        arg_list_list.append(p.args)
+
+    source_list = [f"#include <{i}>" for i in  set(C_STDLIB_HEADER_IMPORT_MAP.values())]
+    for i, p in enumerate(arg_list_list):
+        for j, a in enumerate(p):
+            source_list.append(f"void __arg_to_csnake_wrapping_declaration__{i}__{j}__({a});")
+
+    source = "\n".join(source_list)
+    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32"], unsaved_files=[('tmp.c', source)])
+
+    assert len([d for d in translation_unit.diagnostics if d.severity >= cindex.Diagnostic.Error]) == 0
+
+    for wrapping_declaration in (c for c in translation_unit.cursor.get_children() if c.spelling.startswith("__arg_to_csnake_wrapping_declaration")):
+        i, j = wrapping_declaration.spelling.removeprefix("__arg_to_csnake_wrapping_declaration__").removesuffix("__").split("__")
+        type_ = arg_clang_wrapping_declaration_to_csnake(wrapping_declaration)
+        if type_:
+            type_decls[int(i)].args[int(j)] = type_
 
 
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
@@ -146,6 +207,8 @@ if __name__ == "__main__":
         is_ignore_struct,
         lambda x: type(x) is Struct,
     ], primitives)
+
+    batched_arg_to_csnake(vftable_function_prototypes)
 
     vftable_function_proto_map = {i.name: i for i in vftable_function_prototypes}
 
@@ -267,7 +330,7 @@ if __name__ == "__main__":
     wrote_headers = 0
     wrote_bytes = 0
     for h in headers:
-        cw = CodeWriter(indent=2)
+        cw = csnake.CodeWriter(indent=2)
         h.to_code(cw)
         path = output_path / h.path
         path.parent.mkdir(parents=True, exist_ok=True)

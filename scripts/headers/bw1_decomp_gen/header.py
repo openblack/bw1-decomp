@@ -82,6 +82,8 @@ def strip_arrays_and_modifiers(c_type):
 
 
 def strip_pointers_arrays_and_modifiers(c_type):
+    if isinstance(c_type, csnake.FuncPtr):
+        return c_type
     c_type = re.sub(r'\*', '', c_type)
     c_type = strip_arrays_and_modifiers(c_type)
     return c_type
@@ -161,7 +163,7 @@ class Header:
 
     def get_direct_dependencies(self) -> set[str]:
         result = self.get_types()
-        pointers = set(filter(lambda x: '*' in x and strip_pointers_arrays_and_modifiers(x) not in C_STDLIB_TYPEDEFS, result))
+        pointers = set(filter(lambda x: isinstance(x, csnake.FuncPtr) or ('*' in x and strip_pointers_arrays_and_modifiers(x) not in C_STDLIB_TYPEDEFS), result))
         result.difference_update(pointers)
         lh_lists = {i for i in result if i.startswith("struct LHListHead__") or i.startswith("struct LHLinkedList__")}
         lh_lists_underlying_type = {"struct " + i.removeprefix("struct ").removeprefix("LHListHead__").removeprefix("LHLinkedList__p_").removeprefix("LHLinkedList__") for i in lh_lists}
@@ -189,7 +191,7 @@ class Header:
         for s in self.structs:
             defined_types_so_far.add(f"struct {strip_pointers_arrays_and_modifiers(s.name)}")
             struct_types = {strip_pointers_arrays_and_modifiers(r) for r in s.get_types()}
-            struct_types = {r for r in struct_types if r.startswith("struct ") or r.startswith("union ") or r.startswith("enum ")}
+            struct_types = {r for r in struct_types if type(r) is str and (r.startswith("struct ") or r.startswith("union ") or r.startswith("enum "))}
             struct_types.difference_update(defined_types_so_far)
             result.update(struct_types)
 

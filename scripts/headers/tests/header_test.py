@@ -1,5 +1,6 @@
 import sys
 import os
+import csnake
 sys.path.append(os.path.dirname(__file__) + "/../bw1_decomp_gen")
 
 import unittest
@@ -620,6 +621,46 @@ static_assert(sizeof(struct TestChildStruct) == 0x4, "Data type is of wrong size
 char* __fastcall Foo__15TestChildStructFi(struct TestChildStruct* this, const void* edx, int test);
 // win1.41 00405070 mac 10102030 TestChildStruct::Qux(int)
 char* __fastcall Qux__15TestChildStructFi(struct TestChildStruct* this, const void* edx, int test);
+
+#endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
+""")
+
+    def test_class_with_callback_in_vftable(self):
+        function_proto_map = {
+            "TestStructVftable__Foo": FuncPtr("TestStructVftable__Foo", "__thiscall", "void", ["struct TestStruct *", csnake.FuncPtr("void", [("param_1", "int"), ("param_2", "float"), ("param_3", "int")])], ["this", "foo"]),
+        }
+        virtual_table_function_names = (
+            "Foo",
+        )
+        structs: list[Struct] = [
+            Vftable(Struct("TestStructVftable", 4, [Struct.Member("Foo", "TestStructVftable__Foo*", 0x0)]), function_proto_map),
+            RTTIClass(Struct("TestStruct", 4, [Struct.Member("vftable", "struct TestStructVftable*", 0x0)]), {}, virtual_table_function_names, {}, {}),
+        ]
+        header = Header(self.path, includes=[], structs=structs)
+        header.build_include_list({})
+        header.to_code(self.cw)
+
+        self.assertEqual(self.cw.code,
+                         """\
+#ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
+#define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+
+// Forward Declares
+struct TestStruct;
+
+struct TestStructVftable
+{
+    void (__fastcall* Foo)(struct TestStruct* this, const void* edx, void (*foo)(int param_1, float param_2, int param_3));
+};
+static_assert(sizeof(struct TestStructVftable) == 0x4, "Data type is of wrong size");
+
+struct TestStruct
+{
+    struct TestStructVftable* vftable;
+};
+static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
 """)

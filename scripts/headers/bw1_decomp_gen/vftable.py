@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Optional
 import csnake
 
 from dataclasses import dataclass
@@ -13,7 +13,7 @@ class Vftable(Struct):
     class Member:
         name: str
         type: Union[FuncPtr, str]
-        comment: str
+        comment: Optional[str]
 
         def to_csnake(self) -> csnake.Variable:
             if type(self.type) is FuncPtr:
