@@ -363,6 +363,10 @@ if __name__ == "__main__":
         header = Header(Path("TodoRemainderPrimitives.h"), [], remainder_primitives)
         header.build_include_list(local_header_import_map)
         headers.append(header)
+    if remainder_enums:
+        header = Header(Path("TodoRemainderEnums.h"), [], remainder_enums)
+        header.build_include_list(local_header_import_map)
+        headers.append(header)
     if remainder:
         header = Header(Path("TodoRemainder.h"), [], remainder)
         header.build_include_list(local_header_import_map)
