@@ -253,6 +253,7 @@ static_assert(sizeof(struct TestStruct1) == 0x4, "Data type is of wrong size");
 #include <assert.h> /* For static_assert */
 
 // Forward Declares
+
 struct TestStruct2;
 
 struct TestStruct1
@@ -489,6 +490,7 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
 #include <assert.h> /* For static_assert */
 
 // Forward Declares
+
 enum TestEnum;
 struct TestStruct1;
 struct TestStruct3;
@@ -567,6 +569,7 @@ static_assert(sizeof(struct TestStruct2) == 0x28, "Data type is of wrong size");
 #include <assert.h> /* For static_assert */
 
 // Forward Declares
+
 struct TestChildStruct;
 struct TestStruct;
 

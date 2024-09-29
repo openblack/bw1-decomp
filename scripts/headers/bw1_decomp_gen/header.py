@@ -219,21 +219,21 @@ class Header:
 
         if fwd:
             cw.add_line("// Forward Declares")
+            cw.add_line()
             for f in sorted(fwd):
                 cw.add_line(f"{f};")
             cw.add_line()
 
-        for s in self.structs:
-            s.to_code(cw)
-            if self.linked_lists_pointered or self.linked_lists or self.lists_heads:
-                cw.add_line()
-                if s.decorated_name in self.linked_lists:
-                    cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
-                if s.decorated_name in self.linked_lists_pointered:
-                    cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
-                if s.decorated_name in self.lists_heads:
-                    cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
-                if s.decorated_name in self.linked_lists or s.decorated_name in self.linked_lists_pointered or s.decorated_name in self.lists_heads:
+        if self.structs:
+            for s in self.structs:
+                s.to_code(cw)
+                if s.decorated_name in self.linked_lists_pointered | self.linked_lists | self.lists_heads:
+                    if s.decorated_name in self.linked_lists:
+                        cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
+                    if s.decorated_name in self.linked_lists_pointered:
+                        cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
+                    if s.decorated_name in self.lists_heads:
+                        cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
                     cw.add_line()
 
         cw.end_if_def()

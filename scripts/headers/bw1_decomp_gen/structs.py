@@ -84,6 +84,7 @@ class Struct(Composite):
     def to_code(self, cw: csnake.CodeWriter):
         cw.add_struct(self.to_csnake())
         cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
+        cw.add_line()
 
 
 # TODO: Replace with csnake.Union when https://gitlab.com/andrejr/csnake/-/merge_requests/5 lands
@@ -136,6 +137,7 @@ class Union(Composite):
         # TODO: Must be add_union
         cw.add_struct(self.to_csnake())
         cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
+        cw.add_line()
 
 
 @dataclass
@@ -168,6 +170,7 @@ class Enum:
     def to_code(self, cw: csnake.CodeWriter):
         cw.add_enum(self.to_csnake())
         cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
+        cw.add_line()
 
 
 @dataclass
@@ -219,41 +222,41 @@ class RTTIClass(Struct):
     def to_code(self, cw: csnake.CodeWriter):
         super().to_code(cw)
         if self.vftable_address:
-            cw.add_line()
             vftable_ptr_type = f"{self.decorated_name}Vftable*"
             # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
             address = csnake.FormattedLiteral(
                 value=self.vftable_address, int_formatter=lambda x: f"({vftable_ptr_type})0x{x:08x}")
             cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", vftable_ptr_type, ["static"], value=address))
+            cw.add_line()
 
         if self.constructors:
-            cw.add_line()
             cw.add_line('// Constructors')
             cw.add_line()
 
             for f in self.constructors:
                 f.to_code(cw)
+            cw.add_line()
 
         if self.method_overrides:
-            cw.add_line()
             cw.add_line('// Override methods')
             cw.add_line()
 
             for f in self.method_overrides:
                 f.to_code(cw)
+            cw.add_line()
 
         if self.methods:
-            cw.add_line()
             cw.add_line('// Non-virtual methods')
             cw.add_line()
 
             for f in self.methods:
                 f.to_code(cw)
+            cw.add_line()
 
         if self.static_methods:
-            cw.add_line()
             cw.add_line('// Static methods')
             cw.add_line()
 
             for f in self.static_methods:
                 f.to_code(cw)
+            cw.add_line()
