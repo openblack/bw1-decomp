@@ -188,7 +188,7 @@ class RTTIClass(Struct):
         self.size = struct.size
         self.members = struct.members[:]
         vftable_global = vftable_map.get(struct.name.removeprefix("struct "))
-        self.vftable_address = vftable_global['value'] if vftable_global is not None else None
+        self.vftable_address = vftable_global['address'] if vftable_global is not None else None
 
         def get_method_name(x: str) -> str:
             if "__" not in x:

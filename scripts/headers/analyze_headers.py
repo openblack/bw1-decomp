@@ -243,25 +243,26 @@ def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bo
     return found_issues, global_addresses
 
 
-def extract_globals_in_header_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bool, Dict[str, GlobalInfo]]:
+def extract_globals_in_header_info(tu: TranslationUnit) -> Tuple[bool, Dict[str, GlobalInfo]]:
+    GLOBALS_TO_IGNORE = {'mod_added_globals'}
+
+    globals_cursor = next(c for c in tu.cursor.get_children() if c.kind.name == "VAR_DECL" and c.spelling == "globals")
+    globals_decl_cursor = globals_cursor.type.get_fields()
+    globals_init_list = list(next(i for i in globals_cursor.get_children() if i.kind.name == 'INIT_LIST_EXPR').get_children())
+    globals_init_cursor = (next(next(j.get_tokens()) for j in i.walk_preorder() if j.kind.name == 'INTEGER_LITERAL') for i in globals_init_list)
+
     found_issues = False
     global_addresses: Dict[str, GlobalInfo] = {}
-    globals_cursor = next(c for c in tu.cursor.get_children() if c.kind.name == "VAR_DECL" and c.spelling == "globals")
-    decl_cursor, init_cursor = globals_cursor.get_children()
-    variables = {d.spelling: (d.spelling, d.type.get_pointee().spelling) for d in decl_cursor.get_children()}
-    tokens = list(filter(lambda x: x.kind.name in ["IDENTIFIER", "LITERAL"], globals_cursor.get_tokens()))
-    globals_index = next(i for i, t in enumerate(tokens) if t.spelling == "globals")
-    tokens = tokens[globals_index + 1:]
-    identifiers = filter(lambda x: x.kind.name == "IDENTIFIER" and x.spelling in variables, tokens)
-    literals = filter(lambda x: x.kind.name == "LITERAL", tokens)
-    for identifier, literal in zip(identifiers, literals):
-        var_name, var_type = variables[identifier.spelling]
+    for identifier, literal in zip(globals_decl_cursor, globals_init_cursor):
+        if identifier.spelling in GLOBALS_TO_IGNORE:
+            continue
+        var_type = identifier.type.get_pointee().spelling
+        var_name = identifier.spelling
         try:
             literal_value: int = ast.literal_eval(literal.spelling)
         except ValueError as e:
             found_issues = True
-            sys.stderr.write(
-                f"global declaration \"{c.spelling}\" can't parse: \"{literal.spelling}\"\n")
+            sys.stderr.write(f"global declaration \"{identifier.spelling}\" can't parse: \"{literal.spelling}\"\n")
             continue
         global_addresses[var_name] = GlobalInfo(var_type, literal_value)
     return found_issues, global_addresses
@@ -365,10 +366,9 @@ def main(out_path) -> bool:
                                                      set(types.keys()))
     found_issues |= new_issues
 
-    # new_issues, globals_in_header_values = extract_globals_in_header_info(parse_source(path=Path("src/globals.h")),
-    #                                                                       set(types.keys()))
-    # global_values.update(globals_in_header_values)
-    # found_issues |= new_issues
+    new_issues, globals_in_header_values = extract_globals_in_header_info(parse_source(path=Path("src/globals.h")), set(types.keys()))
+    global_values.update(globals_in_header_values)
+    found_issues |= new_issues
 
     # for global_name, (global_type, global_value) in global_values.items():
     #     print(f"{global_name}: {global_type} -> {hex(global_value)}")
