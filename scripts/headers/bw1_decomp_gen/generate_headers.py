@@ -100,7 +100,7 @@ def batched_arg_to_csnake(type_decls):
             source_list.append(f"void __arg_to_csnake_wrapping_declaration__{i}__{j}__({a});")
 
     source = "\n".join(source_list)
-    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32"], unsaved_files=[('tmp.c', source)])
+    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32", "-Wno-visibility", "-Wno-microsoft-enum-forward-reference"], unsaved_files=[('tmp.c', source)])
 
     error_strings: list[str] = []
     for diagnostic in translation_unit.diagnostics:
