@@ -10,6 +10,19 @@ from typing import List, Tuple, Set, Optional, Dict, Union
 from clang.cindex import TranslationUnit, Diagnostic, Config, Token, TranslationUnitLoadError
 
 
+TYPE_SUBSTITUTION_MAP = {
+    "_Bool": "bool",
+}
+
+
+def fixup_type(typename: str):
+    for old, new in TYPE_SUBSTITUTION_MAP.items():
+        if typename.startswith(old):
+            typename = typename.replace(old, new, 1)
+            break
+    return typename
+
+
 @dataclass
 class FunctionMetadata:
     win_addr: str
@@ -397,13 +410,13 @@ def main(out_path) -> bool:
             continue
         entry = dict(kind=t.kind_name, type=type_name, size=t.size)
         if t.kind_name == "STRUCT_DECL":
-            entry['members'] = [dict(name=n, type=t, offset=o) for n, t, o in t.children]
+            entry['members'] = [dict(name=n, type=fixup_type(t), offset=o) for n, t, o in t.children]
         elif t.kind_name == "ENUM_DECL":
             entry['constants'] = [dict(name=k, value=v) for k, v in t.children]
         elif t.kind_name == "UNION_DECL":
-            entry['aliases'] = [dict(name=k, type=v) for k, v in t.children]
+            entry['aliases'] = [dict(name=k, type=fixup_type(v)) for k, v in t.children]
         elif t.kind_name == "TYPEDEF_DECL":
-            entry['typedef'] = t.children
+            entry['typedef'] = fixup_type(t.children)
         elif t.kind_name == "FUNCTIONPROTO":
             result, args, signature = t.children
             for call_type in ['fastcall', "stdcall"]:
@@ -423,8 +436,8 @@ def main(out_path) -> bool:
                                 args.pop(1)
 
             entry['size'] = 4
-            entry['result'] = result
-            entry['args'] = [i[0] for i in args]
+            entry['result'] = fixup_type(result)
+            entry['args'] = [fixup_type(i[0]) for i in args]
             entry['arg_names'] = [i[1] for i in args]
             entry['signature'] = signature
         result_types.append(entry)
@@ -434,9 +447,12 @@ def main(out_path) -> bool:
         if f.undecorated_name is None:
             continue
         f.consolidate_thiscall()
+        f.return_type = fixup_type(f.return_type)
+        f.argument_types = list(map(fixup_type, f.argument_types))
         result_functions.append(asdict(f))
 
-    result_globals: List[Dict[str, str | int]] = [dict(name=global_name, type=g.type_name, address=g.address) for global_name, g in global_values.items()]
+    result_globals: List[Dict[str, str | int]] = [dict(name=global_name, type=fixup_type(g.type_name), address=g.address) for
+                                                  global_name, g in global_values.items()]
 
     result = dict(types=result_types, functions=result_functions, globals=result_globals)
 

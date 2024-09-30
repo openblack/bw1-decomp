@@ -45533,7 +45533,7 @@
       "type": "GameThingVftable__IsAvailable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *"
       ],
@@ -45547,7 +45547,7 @@
       "type": "GameThingVftable__IsCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *"
       ],
@@ -45561,7 +45561,7 @@
       "type": "GameThingVftable__IsCreature2",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *",
         "struct Creature *"
@@ -45577,7 +45577,7 @@
       "type": "GameThingVftable__IsCreatureNotTooNear",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *",
         "struct Creature *"
@@ -45621,7 +45621,7 @@
       "type": "GameThingVftable__GetComputerSeen",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *"
       ],
@@ -45789,7 +45789,7 @@
       "type": "GameThingVftable__IsFootpathLink",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *"
       ],
@@ -45977,7 +45977,7 @@
         "enum RESOURCE_TYPE",
         "uint32_t",
         "struct GInterfaceStatus *",
-        "_Bool",
+        "bool",
         "const struct MapCoords *",
         "int"
       ],
@@ -46115,7 +46115,7 @@
       "type": "GameThingVftable__IsDeletedOnNewMap",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *"
       ],
@@ -46157,7 +46157,7 @@
       "type": "GameThingVftable__CanBecomeArtifact",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *"
       ],
@@ -46187,7 +46187,7 @@
       "type": "GameThingVftable__IsFunctional",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThing *"
       ],
@@ -47113,7 +47113,7 @@
       "type": "GameThingWithPosVftable__IsAnimate",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47175,7 +47175,7 @@
       "type": "GameThingWithPosVftable__IsMoving",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -47189,7 +47189,7 @@
       "type": "GameThingWithPosVftable__IsObjectInMap",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47203,7 +47203,7 @@
       "type": "GameThingWithPosVftable__IsDrowning",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47217,7 +47217,7 @@
       "type": "GameThingWithPosVftable__IsCannotBePickedUp",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -47245,7 +47245,7 @@
       "type": "GameThingWithPosVftable__IsStompable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47259,7 +47259,7 @@
       "type": "GameThingWithPosVftable__IsAvailableForStateChange",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47273,7 +47273,7 @@
       "type": "GameThingWithPosVftable__IsInteractable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47329,7 +47329,7 @@
       "type": "GameThingWithPosVftable__IsCastShadowAtNight",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47425,7 +47425,7 @@
       "type": "GameThingWithPosVftable__IsTown_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47441,7 +47441,7 @@
       "type": "GameThingWithPosVftable__IsTown_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47455,7 +47455,7 @@
       "type": "GameThingWithPosVftable__IsActivityObjectWhichAngerAppliesTo",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47471,7 +47471,7 @@
       "type": "GameThingWithPosVftable__IsActivityObjectWhichCompassionAppliesTo",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47487,7 +47487,7 @@
       "type": "GameThingWithPosVftable__IsActivityObjectWhichPlayfulnessAppliesTo",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47503,7 +47503,7 @@
       "type": "GameThingWithPosVftable__IsTownBelongingToAnotherPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47519,7 +47519,7 @@
       "type": "GameThingWithPosVftable__TrueFunction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47533,7 +47533,7 @@
       "type": "GameThingWithPosVftable__FalseFunction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47547,7 +47547,7 @@
       "type": "GameThingWithPosVftable__IsNotLiving",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47561,7 +47561,7 @@
       "type": "GameThingWithPosVftable__IsSuitableForCreatureActivity",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47575,7 +47575,7 @@
       "type": "GameThingWithPosVftable__IsTownCentre",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47589,7 +47589,7 @@
       "type": "GameThingWithPosVftable__IsTotemStatue",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47603,7 +47603,7 @@
       "type": "GameThingWithPosVftable__IsTownDesireFlag",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47617,7 +47617,7 @@
       "type": "GameThingWithPosVftable__IsRock_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47633,7 +47633,7 @@
       "type": "GameThingWithPosVftable__IsRock_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47647,7 +47647,7 @@
       "type": "GameThingWithPosVftable__IsSpellDispenser",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47661,7 +47661,7 @@
       "type": "GameThingWithPosVftable__IsMist",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47675,7 +47675,7 @@
       "type": "GameThingWithPosVftable__IsQueryIcon",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47689,7 +47689,7 @@
       "type": "GameThingWithPosVftable__IsStreetLight",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47703,7 +47703,7 @@
       "type": "GameThingWithPosVftable__IsStreetLantern",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47717,7 +47717,7 @@
       "type": "GameThingWithPosVftable__IsAbode",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47731,7 +47731,7 @@
       "type": "GameThingWithPosVftable__IsField_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47747,7 +47747,7 @@
       "type": "GameThingWithPosVftable__IsField_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47761,7 +47761,7 @@
       "type": "GameThingWithPosVftable__IsBuildingMaterial",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47775,7 +47775,7 @@
       "type": "GameThingWithPosVftable__IsMagicFireBall",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47789,7 +47789,7 @@
       "type": "GameThingWithPosVftable__IsSuitableForCreatureAction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47803,7 +47803,7 @@
       "type": "GameThingWithPosVftable__IsCitadelHeart",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47817,7 +47817,7 @@
       "type": "GameThingWithPosVftable__IsDamaged",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -47831,7 +47831,7 @@
       "type": "GameThingWithPosVftable__CanBeHealedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47847,7 +47847,7 @@
       "type": "GameThingWithPosVftable__CanBeEatenByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47863,7 +47863,7 @@
       "type": "GameThingWithPosVftable__CanCreatureEatMe",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47879,7 +47879,7 @@
       "type": "GameThingWithPosVftable__CanBeAttackedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47895,7 +47895,7 @@
       "type": "GameThingWithPosVftable__CanBeFrighteningToCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47911,7 +47911,7 @@
       "type": "GameThingWithPosVftable__CanBeHelpedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47927,7 +47927,7 @@
       "type": "GameThingWithPosVftable__CanBePlayedWithByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47943,7 +47943,7 @@
       "type": "GameThingWithPosVftable__CanBeImpressedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47959,7 +47959,7 @@
       "type": "GameThingWithPosVftable__CanBeInspectedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47975,7 +47975,7 @@
       "type": "GameThingWithPosVftable__CanBePoodUponByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -47991,7 +47991,7 @@
       "type": "GameThingWithPosVftable__CanBeBefriendedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48007,7 +48007,7 @@
       "type": "GameThingWithPosVftable__CanBeSleptNextToByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48023,7 +48023,7 @@
       "type": "GameThingWithPosVftable__CanBePickedUpByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48039,7 +48039,7 @@
       "type": "GameThingWithPosVftable__CanBeStrokedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48055,7 +48055,7 @@
       "type": "GameThingWithPosVftable__CanBeKissedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48071,7 +48071,7 @@
       "type": "GameThingWithPosVftable__CanBeSetOnFire",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48087,7 +48087,7 @@
       "type": "GameThingWithPosVftable__CanBeStompedOnByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48103,7 +48103,7 @@
       "type": "GameThingWithPosVftable__CanBeThrownByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48119,7 +48119,7 @@
       "type": "GameThingWithPosVftable__CanBeGivenToVillager",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48135,7 +48135,7 @@
       "type": "GameThingWithPosVftable__CanBePutInAStoragePit",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48151,7 +48151,7 @@
       "type": "GameThingWithPosVftable__CanBeDestroyedByStoning",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48167,7 +48167,7 @@
       "type": "GameThingWithPosVftable__CanBeStonedAndEatenByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48183,7 +48183,7 @@
       "type": "GameThingWithPosVftable__CanBeExaminedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48199,7 +48199,7 @@
       "type": "GameThingWithPosVftable__CanBeFoughtByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48215,7 +48215,7 @@
       "type": "GameThingWithPosVftable__CanReceiveGifts",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48231,7 +48231,7 @@
       "type": "GameThingWithPosVftable__CanActAsAContainer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48247,7 +48247,7 @@
       "type": "GameThingWithPosVftable__IsBeingBuilt",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48263,7 +48263,7 @@
       "type": "GameThingWithPosVftable__NeedsRepair",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48279,7 +48279,7 @@
       "type": "GameThingWithPosVftable__IsOnFire",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48295,7 +48295,7 @@
       "type": "GameThingWithPosVftable__IsNotOnFire",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48311,7 +48311,7 @@
       "type": "GameThingWithPosVftable__CanBeUsedForBuilding",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48327,7 +48327,7 @@
       "type": "GameThingWithPosVftable__IsMushroom",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48343,7 +48343,7 @@
       "type": "GameThingWithPosVftable__CanBeUsedForRepair",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48359,7 +48359,7 @@
       "type": "GameThingWithPosVftable__CanBeGivenToTown",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48375,7 +48375,7 @@
       "type": "GameThingWithPosVftable__CanBeUsedToHoldWater",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48391,7 +48391,7 @@
       "type": "GameThingWithPosVftable__CanBePutInFoodPile",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48407,7 +48407,7 @@
       "type": "GameThingWithPosVftable__CanBePutInWoodPile",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48423,7 +48423,7 @@
       "type": "GameThingWithPosVftable__CanHaveMagicFoodCastOnMe",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48439,7 +48439,7 @@
       "type": "GameThingWithPosVftable__CanHaveMagicWoodCastOnMe",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48455,7 +48455,7 @@
       "type": "GameThingWithPosVftable__CanBeBroughtBackToCitadel",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48471,7 +48471,7 @@
       "type": "GameThingWithPosVftable__IsVillager",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48487,7 +48487,7 @@
       "type": "GameThingWithPosVftable__IsVillagerFarFromHome",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48503,7 +48503,7 @@
       "type": "GameThingWithPosVftable__IsVillagerInTownWithoutManyBreeders",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48519,7 +48519,7 @@
       "type": "GameThingWithPosVftable__IsVillagerNotWorshipping",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48535,7 +48535,7 @@
       "type": "GameThingWithPosVftable__IsVillagerBelongingToOtherPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48551,7 +48551,7 @@
       "type": "GameThingWithPosVftable__IsCow",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48567,7 +48567,7 @@
       "type": "GameThingWithPosVftable__CanBePoodOn",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48583,7 +48583,7 @@
       "type": "GameThingWithPosVftable__IsVillagerWhoHasNotBeenImpressedRecently",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48599,7 +48599,7 @@
       "type": "GameThingWithPosVftable__IsVillagerWhoHasNotBeenDancedWithRecently",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48615,7 +48615,7 @@
       "type": "GameThingWithPosVftable__DoesVillagerBelongToATownWhichIsAlreadyImpressed",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48631,7 +48631,7 @@
       "type": "GameThingWithPosVftable__DoesTotemBelongToATownWhichIsVeryImpressedIndeed",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48647,7 +48647,7 @@
       "type": "GameThingWithPosVftable__IsDominantCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48663,7 +48663,7 @@
       "type": "GameThingWithPosVftable__CanBeDancedWith",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48679,7 +48679,7 @@
       "type": "GameThingWithPosVftable__IsAggressive",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48695,7 +48695,7 @@
       "type": "GameThingWithPosVftable__IsStoragePit",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48711,7 +48711,7 @@
       "type": "GameThingWithPosVftable__IsWorshipSite_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48727,7 +48727,7 @@
       "type": "GameThingWithPosVftable__IsWorshipSite_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -48755,7 +48755,7 @@
       "type": "GameThingWithPosVftable__IsWorkshop_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -48769,7 +48769,7 @@
       "type": "GameThingWithPosVftable__IsWorkshop_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48785,7 +48785,7 @@
       "type": "GameThingWithPosVftable__IsBuildingWhichIsBeingBuilt",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48801,7 +48801,7 @@
       "type": "GameThingWithPosVftable__IsStoragePitWithFoodInIt",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48817,7 +48817,7 @@
       "type": "GameThingWithPosVftable__IsFieldWhichNeedsWatering",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48833,7 +48833,7 @@
       "type": "GameThingWithPosVftable__IsFieldWithFoodInIt",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48849,7 +48849,7 @@
       "type": "GameThingWithPosVftable__IsFieldBelongingToAnotherPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48865,7 +48865,7 @@
       "type": "GameThingWithPosVftable__IsStoragePitBelongingToAnotherPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48881,7 +48881,7 @@
       "type": "GameThingWithPosVftable__IsStoragePitBelongingToMyPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48897,7 +48897,7 @@
       "type": "GameThingWithPosVftable__BenefitsFromHavingWaterSprinkledOnIt",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48913,7 +48913,7 @@
       "type": "GameThingWithPosVftable__IsTree_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48929,7 +48929,7 @@
       "type": "GameThingWithPosVftable__IsTree_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -48943,7 +48943,7 @@
       "type": "GameThingWithPosVftable__IsTreeNotTooNearPlannedForest",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48959,7 +48959,7 @@
       "type": "GameThingWithPosVftable__IsTreeBigEnoughForCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48975,7 +48975,7 @@
       "type": "GameThingWithPosVftable__IsAFoodPileOutsideStoragePit",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -48991,7 +48991,7 @@
       "type": "GameThingWithPosVftable__IsAWoodPileOutsideStoragePit",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49007,7 +49007,7 @@
       "type": "GameThingWithPosVftable__IsDoingSomethingInteresting",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49023,7 +49023,7 @@
       "type": "GameThingWithPosVftable__CanBeUsedForBuildingHomeByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49039,7 +49039,7 @@
       "type": "GameThingWithPosVftable__IsPickupableRock",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49055,7 +49055,7 @@
       "type": "GameThingWithPosVftable__IsCitadelPart_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49071,7 +49071,7 @@
       "type": "GameThingWithPosVftable__IsCitadelPart_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -49085,7 +49085,7 @@
       "type": "GameThingWithPosVftable__IsPlayingFootball",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49101,7 +49101,7 @@
       "type": "GameThingWithPosVftable__IsPlayingFootballAndMySideHasJustScored",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49117,7 +49117,7 @@
       "type": "GameThingWithPosVftable__IsPlayingFootballAndOtherSideHasJustScored",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49133,7 +49133,7 @@
       "type": "GameThingWithPosVftable__CanBeBroughtHomeByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49149,7 +49149,7 @@
       "type": "GameThingWithPosVftable__IsAnimalBelongingToOtherPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49165,7 +49165,7 @@
       "type": "GameThingWithPosVftable__IsOneOffSpellBelongingToOtherPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49181,7 +49181,7 @@
       "type": "GameThingWithPosVftable__IsOneOffSpellAggressive",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49197,7 +49197,7 @@
       "type": "GameThingWithPosVftable__IsOneOffSpellCompassionate",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49213,7 +49213,7 @@
       "type": "GameThingWithPosVftable__IsOneOffSpellPlayful",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49229,7 +49229,7 @@
       "type": "GameThingWithPosVftable__IsOneOffSpellToRestoreHealth",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49245,7 +49245,7 @@
       "type": "GameThingWithPosVftable__CanBeKickedByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49261,7 +49261,7 @@
       "type": "GameThingWithPosVftable__CanBeStolenByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49277,7 +49277,7 @@
       "type": "GameThingWithPosVftable__IsStealableByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49293,7 +49293,7 @@
       "type": "GameThingWithPosVftable__IsStealableSpell",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49309,7 +49309,7 @@
       "type": "GameThingWithPosVftable__IsStealableScaffold",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49325,7 +49325,7 @@
       "type": "GameThingWithPosVftable__IsTownBelongingToOtherPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49341,7 +49341,7 @@
       "type": "GameThingWithPosVftable__IsTotemWithStealableSpell",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49357,7 +49357,7 @@
       "type": "GameThingWithPosVftable__IsCreatureAvailableForJointActivity",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49373,7 +49373,7 @@
       "type": "GameThingWithPosVftable__IsCreatureNotAvailableForJointActivity",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49389,7 +49389,7 @@
       "type": "GameThingWithPosVftable__IsToyAwayFromHome",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49405,7 +49405,7 @@
       "type": "GameThingWithPosVftable__IsToy",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49421,7 +49421,7 @@
       "type": "GameThingWithPosVftable__IsToyBall",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49437,7 +49437,7 @@
       "type": "GameThingWithPosVftable__IsToyDie",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *",
         "struct Creature *"
@@ -49453,7 +49453,7 @@
       "type": "GameThingWithPosVftable__IsToyCuddly",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *",
         "struct Creature *"
@@ -49469,7 +49469,7 @@
       "type": "GameThingWithPosVftable__IsLiving_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *",
         "struct Creature *"
@@ -49485,7 +49485,7 @@
       "type": "GameThingWithPosVftable__IsLiving_0",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49499,7 +49499,7 @@
       "type": "GameThingWithPosVftable__IsFence",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49513,7 +49513,7 @@
       "type": "GameThingWithPosVftable__IsSpellIcon",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49527,7 +49527,7 @@
       "type": "GameThingWithPosVftable__NothingScareyNearMe",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49541,7 +49541,7 @@
       "type": "GameThingWithPosVftable__CanBeUsedForThrowingDamageByCreature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49555,7 +49555,7 @@
       "type": "GameThingWithPosVftable__IsCreatureWhoSeemsFriendly",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49569,7 +49569,7 @@
       "type": "GameThingWithPosVftable__CanBeThrownInTheSeaPlayfully",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49611,7 +49611,7 @@
       "type": "GameThingWithPosVftable__IsFlock",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49625,7 +49625,7 @@
       "type": "GameThingWithPosVftable__IsDance",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49639,7 +49639,7 @@
       "type": "GameThingWithPosVftable__IsReward",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49653,7 +49653,7 @@
       "type": "GameThingWithPosVftable__IsScriptContainer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49667,7 +49667,7 @@
       "type": "GameThingWithPosVftable__IsWeather",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49681,7 +49681,7 @@
       "type": "GameThingWithPosVftable__IsSpell",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49695,7 +49695,7 @@
       "type": "GameThingWithPosVftable__IsDeletedWhenReleasedFromScript",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -49709,7 +49709,7 @@
       "type": "GameThingWithPosVftable__IsMobileWallHug",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49723,7 +49723,7 @@
       "type": "GameThingWithPosVftable__IsActive",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49737,7 +49737,7 @@
       "type": "GameThingWithPosVftable__IsObjectTurningTooFastForCameraToFollowSmoothly",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49853,7 +49853,7 @@
       "type": "GameThingWithPosVftable__IsReadyForNewScriptAction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -49945,7 +49945,7 @@
       "type": "GameThingWithPosVftable__IsInScript",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -49959,7 +49959,7 @@
       "type": "GameThingWithPosVftable__IsMaleVillager",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -49973,7 +49973,7 @@
       "type": "GameThingWithPosVftable__IsFemaleVillager",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -49987,7 +49987,7 @@
       "type": "GameThingWithPosVftable__IsAnimal",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50001,7 +50001,7 @@
       "type": "GameThingWithPosVftable__IsAChild",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50015,7 +50015,7 @@
       "type": "GameThingWithPosVftable__IsHouse",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50029,7 +50029,7 @@
       "type": "GameThingWithPosVftable__IsObject",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50043,7 +50043,7 @@
       "type": "GameThingWithPosVftable__IsFootball",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50057,7 +50057,7 @@
       "type": "GameThingWithPosVftable__IsCitadel",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50071,7 +50071,7 @@
       "type": "GameThingWithPosVftable__IsForest",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50085,7 +50085,7 @@
       "type": "GameThingWithPosVftable__IsMobileObject",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50099,7 +50099,7 @@
       "type": "GameThingWithPosVftable__IsMobileStatic",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50113,7 +50113,7 @@
       "type": "GameThingWithPosVftable__IsAnyKindOfTree",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50127,7 +50127,7 @@
       "type": "GameThingWithPosVftable__IsDeadTree",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50141,7 +50141,7 @@
       "type": "GameThingWithPosVftable__IsPileFood",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50155,7 +50155,7 @@
       "type": "GameThingWithPosVftable__IsFeature",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50169,7 +50169,7 @@
       "type": "GameThingWithPosVftable__IsScriptMarker",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50183,7 +50183,7 @@
       "type": "GameThingWithPosVftable__IsScriptHighlight",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50197,7 +50197,7 @@
       "type": "GameThingWithPosVftable__IsWonder",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50211,7 +50211,7 @@
       "type": "GameThingWithPosVftable__IsInfluenceRing",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50225,7 +50225,7 @@
       "type": "GameThingWithPosVftable__IsPuzzleGame",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50239,7 +50239,7 @@
       "type": "GameThingWithPosVftable__IsScaffold",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50253,7 +50253,7 @@
       "type": "GameThingWithPosVftable__IsSkeleton",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50267,7 +50267,7 @@
       "type": "GameThingWithPosVftable__IsPoisoned",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50281,7 +50281,7 @@
       "type": "GameThingWithPosVftable__IsSpeedUp",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50295,7 +50295,7 @@
       "type": "GameThingWithPosVftable__IsParticleContainer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50309,7 +50309,7 @@
       "type": "GameThingWithPosVftable__IsSacrificeAltar",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50323,7 +50323,7 @@
       "type": "GameThingWithPosVftable__IsPot",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct GameThingWithPos *"
       ],
@@ -50337,7 +50337,7 @@
       "type": "GameThingWithPosVftable__IsComputerPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50351,7 +50351,7 @@
       "type": "GameThingWithPosVftable__CanBeThrownByPlayer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50381,7 +50381,7 @@
       "type": "GameThingWithPosVftable__IsSpellSeed",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50395,7 +50395,7 @@
       "type": "GameThingWithPosVftable__IsSpellShield",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50409,7 +50409,7 @@
       "type": "GameThingWithPosVftable__IsPileResource",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50423,7 +50423,7 @@
       "type": "GameThingWithPosVftable__IsScriptTimer",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -50437,7 +50437,7 @@
       "type": "GameThingWithPosVftable__CreateBuildingSite",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct GameThingWithPos *"
       ],
@@ -52174,7 +52174,7 @@
       "type": "ObjectVftable__IsReachable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -52188,7 +52188,7 @@
       "type": "ObjectVftable__BlocksTownClearArea",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Object *"
       ],
@@ -52310,7 +52310,7 @@
       "type": "ObjectVftable__IsObjectInMap_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct MapCell *"
@@ -52326,7 +52326,7 @@
       "type": "ObjectVftable__IsObjectInMapCheck",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -52414,7 +52414,7 @@
       "type": "ObjectVftable__GetPSysFireFlameMatrix",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct LHMatrix *"
@@ -52430,7 +52430,7 @@
       "type": "ObjectVftable__GetPSysFireLocalRndFlamePos",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct LHPoint *",
@@ -52448,7 +52448,7 @@
       "type": "ObjectVftable__GetPSysFireWorldFlamePos",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "const struct LHPoint *",
@@ -52582,7 +52582,7 @@
       "type": "ObjectVftable__HandShouldFeelWithMeshIntersect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -52672,7 +52672,7 @@
       "type": "ObjectVftable__IsAlive",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -52822,7 +52822,7 @@
       "args": [
         "struct Object *",
         "struct GPlayer *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -52887,10 +52887,10 @@
       "result": "void",
       "args": [
         "struct Object *",
-        "_Bool *",
-        "_Bool *",
-        "_Bool *",
-        "_Bool *"
+        "bool *",
+        "bool *",
+        "bool *",
+        "bool *"
       ],
       "arg_names": [
         "this",
@@ -53067,7 +53067,7 @@
       "result": "void",
       "args": [
         "struct Object *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -53080,7 +53080,7 @@
       "type": "ObjectVftable__IsG3DObjectDrawnInHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53138,7 +53138,7 @@
       "type": "ObjectVftable__CanBePickedUp",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53152,7 +53152,7 @@
       "type": "ObjectVftable__CanBeCrushed",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53224,7 +53224,7 @@
       "type": "ObjectVftable__CanBeSuckedIntoVortex",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct LandscapeVortex *"
@@ -53406,7 +53406,7 @@
       "type": "ObjectVftable__IsSpellSeedReturnPoint",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53420,7 +53420,7 @@
       "type": "ObjectVftable__IsABeliever",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53434,7 +53434,7 @@
       "type": "ObjectVftable__AsMultiMapFixed",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53464,7 +53464,7 @@
       "type": "ObjectVftable__IsResourceStore",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "enum RESOURCE_TYPE"
@@ -53480,7 +53480,7 @@
       "type": "ObjectVftable__DeleteObjectAndTakeResource",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct Object *",
@@ -53512,7 +53512,7 @@
       "type": "ObjectVftable__DoCreatureMimicAfterAddingResource",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "enum RESOURCE_TYPE",
@@ -53592,7 +53592,7 @@
       "type": "ObjectVftable__IsLockedInInteract",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53606,7 +53606,7 @@
       "type": "ObjectVftable__SetDying",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53620,7 +53620,7 @@
       "type": "ObjectVftable__IsAttackable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct Object *"
@@ -53636,7 +53636,7 @@
       "type": "ObjectVftable__IsAllied",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct Object *"
@@ -53652,7 +53652,7 @@
       "type": "ObjectVftable__IsTouching_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Object *",
         "struct MapCoords *",
@@ -53670,7 +53670,7 @@
       "type": "ObjectVftable__IsTouching_2",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Object *",
         "struct MapCoords *"
@@ -53686,7 +53686,7 @@
       "type": "ObjectVftable__IsTouching_3",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Object *",
         "struct Object *",
@@ -53764,7 +53764,7 @@
       "type": "ObjectVftable__ValidForLockedSelectProcess",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct GInterfaceStatus *"
@@ -53780,7 +53780,7 @@
       "type": "ObjectVftable__NetworkFriendlyStartLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct GInterfaceStatus *"
@@ -53796,7 +53796,7 @@
       "type": "ObjectVftable__NetworkUnfriendlyStartLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53810,7 +53810,7 @@
       "type": "ObjectVftable__IsReadyForNetworkUnfriendlyLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53824,7 +53824,7 @@
       "type": "ObjectVftable__NetworkUnfriendlyLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct ControlHandUpdateInfo *"
@@ -53840,7 +53840,7 @@
       "type": "ObjectVftable__GetReadyForNetworkUnfriendlyEndLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53854,7 +53854,7 @@
       "type": "ObjectVftable__IsReadyForNetworkUnfriendlyEndLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53868,7 +53868,7 @@
       "type": "ObjectVftable__NetworkUnfriendlyEndLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53882,7 +53882,7 @@
       "type": "ObjectVftable__NetworkFriendlyEndLockedSelect",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct GInterfaceStatus *"
@@ -53898,7 +53898,7 @@
       "type": "ObjectVftable__ValidAsInterfaceTarget",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53912,7 +53912,7 @@
       "type": "ObjectVftable__ValidAsInterfaceLeashTarget",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53926,7 +53926,7 @@
       "type": "ObjectVftable__SelectOnlyAfterRecSystem",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -53940,7 +53940,7 @@
       "type": "ObjectVftable__ValidForPlaceInHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct GInterfaceStatus *"
@@ -53956,7 +53956,7 @@
       "type": "ObjectVftable__InterfaceSetInMagicHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct GInterfaceStatus *"
@@ -53972,7 +53972,7 @@
       "type": "ObjectVftable__InterfaceSetOutMagicHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct GInterfaceStatus *"
@@ -53988,7 +53988,7 @@
       "type": "ObjectVftable__ValidToRemoveFromHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct GInterfaceStatus *",
@@ -54024,7 +54024,7 @@
       "type": "ObjectVftable__ValidToShakeFromHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54038,7 +54038,7 @@
       "type": "ObjectVftable__InterfaceMustBeInInfluenceForInteraction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54052,7 +54052,7 @@
       "type": "ObjectVftable__IsTuggable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54442,7 +54442,7 @@
       "type": "ObjectVftable__IsEffectReceiver",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct EffectValues *"
@@ -54458,7 +54458,7 @@
       "type": "ObjectVftable__CanBeDestroyedBySpell_1",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct Spell *"
@@ -54518,7 +54518,7 @@
         "const struct LHPoint *",
         "const struct LHPoint *",
         "struct Object *",
-        "_Bool",
+        "bool",
         "struct GInterfaceStatus *"
       ],
       "arg_names": [
@@ -54570,7 +54570,7 @@
       "args": [
         "struct Object *",
         "struct PhysicsObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -54616,7 +54616,7 @@
       "type": "ObjectVftable__InteractsWithPhysicsObjects",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54678,7 +54678,7 @@
       "args": [
         "struct Object *",
         "struct PhysicsObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -54692,7 +54692,7 @@
       "type": "ObjectVftable__CanBecomeAPhysicsObject",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54706,7 +54706,7 @@
       "type": "ObjectVftable__GetAlwaysRemainsInPhysicsInternalSystem",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54720,7 +54720,7 @@
       "type": "ObjectVftable__HasSunk",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54734,7 +54734,7 @@
       "type": "ObjectVftable__CreatureMustAvoid",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct Creature *"
@@ -54788,7 +54788,7 @@
       "type": "ObjectVftable__VillagerMustAvoid",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct Villager *"
@@ -54804,7 +54804,7 @@
       "type": "ObjectVftable__IsFireMan",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54818,7 +54818,7 @@
       "type": "ObjectVftable__IsARootedObject",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54846,7 +54846,7 @@
       "type": "ObjectVftable__IsSolidToNewAbode",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54888,7 +54888,7 @@
       "type": "ObjectVftable__GetLandingPoint",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "uint8_t",
@@ -54920,7 +54920,7 @@
       "type": "ObjectVftable__IsScary",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -54934,7 +54934,7 @@
       "type": "ObjectVftable__GetInspectObjectPos",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *",
         "struct Villager *",
@@ -55002,7 +55002,7 @@
       "type": "ObjectVftable__IsTownArtifact",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -55016,7 +55016,7 @@
       "type": "ObjectVftable__ProcessInHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -55076,7 +55076,7 @@
       "type": "ObjectVftable__IsPushable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -55186,7 +55186,7 @@
       "type": "ObjectVftable__IsAPotFromABuildingSite",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -55294,7 +55294,7 @@
       "type": "ObjectVftable__ShouldFootpathsGoRound",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -56701,7 +56701,7 @@
       "type": "BaseInfoVftable__IsClear",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct BaseInfo *"
       ],
@@ -57336,27 +57336,27 @@
       "members": [
         {
           "name": "field_0x0",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 0
         },
         {
           "name": "field_0x1",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 1
         },
         {
           "name": "cull",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 2
         },
         {
           "name": "field_0x3",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 3
         },
         {
           "name": "field_0x4",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 4
         }
       ]
@@ -57878,7 +57878,7 @@
       "type": "LH3DObjectVftable__IsUseAlpha",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct LH3DObject *"
       ],
@@ -57895,7 +57895,7 @@
       "result": "void",
       "args": [
         "struct LH3DObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -57911,7 +57911,7 @@
       "result": "void",
       "args": [
         "struct LH3DObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "",
@@ -57927,7 +57927,7 @@
       "result": "void",
       "args": [
         "struct LH3DObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "",
@@ -57943,7 +57943,7 @@
       "result": "void",
       "args": [
         "struct LH3DObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "",
@@ -57959,7 +57959,7 @@
       "result": "void",
       "args": [
         "struct LH3DObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "",
@@ -57975,7 +57975,7 @@
       "result": "void",
       "args": [
         "struct LH3DObject *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "",
@@ -58036,7 +58036,7 @@
       "type": "LH3DObjectVftable__IsAnimated",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct LH3DObject *"
       ],
@@ -58050,7 +58050,7 @@
       "type": "LH3DObjectVftable__GetChimneyPos",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct LH3DObject *",
         "struct LHPoint *"
@@ -58066,7 +58066,7 @@
       "type": "LH3DObjectVftable__GetDoorPos",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct LH3DObject *",
         "struct LHPoint *"
@@ -58082,7 +58082,7 @@
       "type": "LH3DObjectVftable__GetExtraPos__10LH3DObjectCFlP7LHPoint",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct LH3DObject *",
         "int",
@@ -58114,7 +58114,7 @@
       "type": "LH3DObjectVftable__IsStaticMorphable",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct LH3DObject *"
       ],
@@ -59724,7 +59724,7 @@
       "type": "MultiMapFixedVftable__IsRepaired",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MultiMapFixed *"
       ],
@@ -59738,7 +59738,7 @@
       "type": "MultiMapFixedVftable__IsBuilt",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MultiMapFixed *"
       ],
@@ -59808,7 +59808,7 @@
       "type": "MultiMapFixedVftable__IsDrawBuilding",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MultiMapFixed *"
       ],
@@ -59822,7 +59822,7 @@
       "type": "MultiMapFixedVftable__Built",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MultiMapFixed *"
       ],
@@ -59836,7 +59836,7 @@
       "type": "MultiMapFixedVftable__Repaired",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MultiMapFixed *"
       ],
@@ -59892,7 +59892,7 @@
       "type": "MultiMapFixedVftable__IsCivic",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MultiMapFixed *"
       ],
@@ -59950,7 +59950,7 @@
       "type": "MultiMapFixedVftable__IsAbode",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MultiMapFixed *"
       ],
@@ -60608,7 +60608,7 @@
         },
         {
           "name": "is_fixed",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 4
         },
         {
@@ -60886,7 +60886,7 @@
         },
         {
           "name": "result",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 8
         }
       ]
@@ -60918,7 +60918,7 @@
         },
         {
           "name": "field_0x24",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 36
         },
         {
@@ -60982,7 +60982,7 @@
       "type": "MobileWallHugVftable__AreWeThere",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct MobileWallHug *",
         "struct MapCoords *",
@@ -61601,7 +61601,7 @@
         },
         {
           "name": "field_0x40",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 64
         },
         {
@@ -63194,7 +63194,7 @@
       "type": "Living__StateTableSubEntryCallback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -63222,7 +63222,7 @@
       "type": "Living__StateTableSubEntryEntryStateCallback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "enum VILLAGER_STATES",
@@ -63240,7 +63240,7 @@
       "type": "Living__StateTableSubEntry__function",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -63322,7 +63322,7 @@
       "type": "Living__StateTableSubEntryEntryState__function",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "enum VILLAGER_STATES",
@@ -63443,7 +63443,7 @@
       "type": "Living__StateTableStateCallback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -63457,7 +63457,7 @@
       "type": "Living__StateTableEntryStateCallback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "unsigned int",
@@ -63475,7 +63475,7 @@
       "type": "Living__StateTableExitStateCallback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "unsigned int"
@@ -63491,7 +63491,7 @@
       "type": "Living__StateTableSaveStateCallback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "unsigned int"
@@ -63507,7 +63507,7 @@
       "type": "Living__StateTableLoadStateCallback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "unsigned int"
@@ -63523,7 +63523,7 @@
       "type": "Living__StateTableField0x50Callback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -63537,7 +63537,7 @@
       "type": "Living__StateTableField0x60Callback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -63551,7 +63551,7 @@
       "type": "Living__StateTableField0x70Callback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "unsigned int",
@@ -63569,7 +63569,7 @@
       "type": "Living__StateTableField0x80Callback",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64106,7 +64106,7 @@
       "type": "LivingVftable__AmILikelyToMove",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *"
       ],
@@ -64123,7 +64123,7 @@
       "result": "void",
       "args": [
         "struct Living *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -64136,7 +64136,7 @@
       "type": "LivingVftable__IsFoodSpeedUp",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *"
       ],
@@ -64180,7 +64180,7 @@
       "type": "LivingVftable__FleeingFromObjectReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64194,7 +64194,7 @@
       "type": "LivingVftable__LookingAtObjectReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64208,7 +64208,7 @@
       "type": "LivingVftable__FleeingAndLookingAtObjectReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64222,7 +64222,7 @@
       "type": "LivingVftable__FollowingObjectReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64236,7 +64236,7 @@
       "type": "LivingVftable__InspectObjectReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64250,7 +64250,7 @@
       "type": "LivingVftable__Dying",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64264,7 +64264,7 @@
       "type": "LivingVftable__Dead",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64278,7 +64278,7 @@
       "type": "LivingVftable__Downed",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64292,7 +64292,7 @@
       "type": "LivingVftable__BeingEaten",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64306,7 +64306,7 @@
       "type": "LivingVftable__GotoFoodReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64320,7 +64320,7 @@
       "type": "LivingVftable__GotoWoodReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64334,7 +64334,7 @@
       "type": "LivingVftable__MoveInFlock",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64348,7 +64348,7 @@
       "type": "LivingVftable__IsMovingForAnimation",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64362,7 +64362,7 @@
       "type": "LivingVftable__ArrivesAtFoodReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64376,7 +64376,7 @@
       "type": "LivingVftable__ArrivesAtWoodReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64390,7 +64390,7 @@
       "type": "LivingVftable__InHand",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64404,7 +64404,7 @@
       "type": "LivingVftable__DecideWhatToDo",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64462,7 +64462,7 @@
       "type": "LivingVftable__LookAtFlyingObjectReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -64570,7 +64570,7 @@
       "type": "LivingVftable__IsFinalState",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "enum VILLAGER_STATES"
@@ -65016,7 +65016,7 @@
       "type": "LivingVftable__IsScriptState",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *",
         "enum VILLAGER_STATES"
@@ -65032,7 +65032,7 @@
       "type": "LivingVftable__IsScriptInterruptableState",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *",
         "enum VILLAGER_STATES"
@@ -65048,7 +65048,7 @@
       "type": "LivingVftable__IsStateForInterface",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *",
         "enum VILLAGER_STATES"
@@ -65064,7 +65064,7 @@
       "type": "LivingVftable__IsStateExitFunctionSameAs",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *",
         "enum VILLAGER_STATES"
@@ -65080,7 +65080,7 @@
       "type": "LivingVftable__IsDeathState",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *",
         "enum VILLAGER_STATES"
@@ -65116,7 +65116,7 @@
       "type": "LivingVftable__IsDancing",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *"
       ],
@@ -65130,7 +65130,7 @@
       "type": "LivingVftable__IsInterestedInFoodObject",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "struct Object *"
@@ -65146,7 +65146,7 @@
       "type": "LivingVftable__IsInterestedInWoodObject",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "struct Object *"
@@ -65162,7 +65162,7 @@
       "type": "LivingVftable__IsAvailableForReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "enum REACTION"
@@ -65178,7 +65178,7 @@
       "type": "LivingVftable__IsAvailableForBeliefButNotReaction",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "enum REACTION"
@@ -66822,7 +66822,7 @@
       "type": "LivingVftable__IsDead",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *"
       ],
@@ -66836,7 +66836,7 @@
       "type": "LivingVftable__IsChild",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "const struct Living *"
       ],
@@ -66962,7 +66962,7 @@
       "type": "LivingVftable__CanBeHealedByHealSpell",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -66976,7 +66976,7 @@
       "type": "LivingVftable__MoveAllowedForChessGame",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -66990,7 +66990,7 @@
       "type": "LivingVftable__AttackAllowedForChessGame",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *"
       ],
@@ -67096,7 +67096,7 @@
       "type": "LivingVftable__IsPosValidForTurnAngle",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Living *",
         "struct MapCoords *"
@@ -69014,7 +69014,7 @@
         },
         {
           "name": "food_speed_up",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 240
         },
         {
@@ -69249,7 +69249,7 @@
       "type": "AbodeVftable__CausesTownEmergencyIfDamaged",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Abode *"
       ],
@@ -69263,7 +69263,7 @@
       "type": "AbodeVftable__CanBeHiddenIn",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Abode *"
       ],
@@ -74612,7 +74612,7 @@
       "result": "void *",
       "args": [
         "struct LHOSFile *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -75193,7 +75193,7 @@
       "type": "MorphableVftable__AddForDrawing",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Morphable *"
       ],
@@ -75207,7 +75207,7 @@
       "type": "MorphableVftable__LoadBinary",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Morphable *",
         "char *",
@@ -75317,7 +75317,7 @@
       "result": "uint32_t",
       "args": [
         "struct ValueSpinner *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -76077,7 +76077,7 @@
       "type": "CameraModeVftable__CanPlayerGestureWhenCameraMoving",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "void *"
       ],
@@ -76133,7 +76133,7 @@
       "type": "CameraModeVftable__IsStillValid",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "void *"
       ],
@@ -76161,7 +76161,7 @@
       "type": "CameraModeVftable__CanExist",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "void *"
       ],
@@ -76175,7 +76175,7 @@
       "type": "CameraModeVftable__MouseIsLocked",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "void *"
       ],
@@ -76235,7 +76235,7 @@
       "type": "CameraModeVftable__Arrived",
       "size": 4,
       "call_type": "__fastcall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "void *"
       ],
@@ -76331,7 +76331,7 @@
       "args": [
         "void *",
         "const void *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "",
@@ -77344,7 +77344,7 @@
         },
         {
           "name": "rotate_around_point",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 136
         },
         {
@@ -77394,7 +77394,7 @@
         },
         {
           "name": "screen_centre_hit",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 200
         },
         {
@@ -77484,7 +77484,7 @@
         },
         {
           "name": "hand_hit",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 324
         },
         {
@@ -77504,7 +77504,7 @@
         },
         {
           "name": "hit_0x148",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 328
         },
         {
@@ -77604,7 +77604,7 @@
         },
         {
           "name": "field_0x2d0",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 720
         },
         {
@@ -79609,7 +79609,7 @@
         },
         {
           "name": "opened",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 12
         },
         {
@@ -79659,7 +79659,7 @@
         },
         {
           "name": "segment_opened",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 84
         },
         {
@@ -80316,7 +80316,7 @@
       "members": [
         {
           "name": "field_0x0",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 0
         },
         {
@@ -82602,7 +82602,7 @@
         },
         {
           "name": "has_object_in_hand",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 20
         },
         {
@@ -105944,7 +105944,7 @@
         "struct InnerRoom *",
         "struct LHCoord",
         "float",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -105968,7 +105968,7 @@
         "int",
         "int",
         "struct LHCoord *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -105994,7 +105994,7 @@
         "int",
         "int",
         "struct LHCoord *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -106020,7 +106020,7 @@
         "int",
         "int",
         "struct LHCoord *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -106063,7 +106063,7 @@
       "result": "void",
       "args": [
         "struct InnerCamera *",
-        "_Bool",
+        "bool",
         "struct Zoomer3d *",
         "struct Zoomer3d *"
       ],
@@ -109673,7 +109673,7 @@
       "result": "void",
       "args": [
         "struct SetupControl *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -109689,7 +109689,7 @@
       "result": "void",
       "args": [
         "struct SetupControl *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -109702,7 +109702,7 @@
       "type": "SetupControlVftable__HitTest",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct SetupControl *",
         "int",
@@ -109723,8 +109723,8 @@
       "result": "void",
       "args": [
         "struct SetupControl *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -109761,7 +109761,7 @@
         "struct SetupControl *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -109781,7 +109781,7 @@
         "struct SetupControl *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -109851,7 +109851,7 @@
       "result": "struct SetupControl *",
       "args": [
         "struct SetupControl *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -109978,22 +109978,22 @@
         },
         {
           "name": "focus",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 552
         },
         {
           "name": "hidden",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 553
         },
         {
           "name": "field_0x22a",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 554
         },
         {
           "name": "field_0x22b",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 555
         },
         {
@@ -110108,7 +110108,7 @@
         },
         {
           "name": "field_0x23c",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 572
         },
         {
@@ -110118,7 +110118,7 @@
         },
         {
           "name": "field_0x244",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 580
         },
         {
@@ -110178,7 +110178,7 @@
         },
         {
           "name": "show_scrollbar",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 628
         },
         {
@@ -110198,12 +110198,12 @@
         },
         {
           "name": "field_0x284",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 644
         },
         {
           "name": "field_0x285",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 645
         },
         {
@@ -110213,12 +110213,12 @@
         },
         {
           "name": "use_color_background",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 656
         },
         {
           "name": "draw_highlight_box",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 657
         },
         {
@@ -110258,7 +110258,7 @@
       "type": "SetupListVftable__IsSelected",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct SetupList *",
         "int"
@@ -110298,7 +110298,7 @@
         },
         {
           "name": "pressed",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 572
         },
         {
@@ -110625,7 +110625,7 @@
       "members": [
         {
           "name": "cursor_on",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 0
         },
         {
@@ -110785,12 +110785,12 @@
         },
         {
           "name": "field_0xbc",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 188
         },
         {
           "name": "field_0xbd",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 189
         },
         {
@@ -110850,32 +110850,32 @@
         },
         {
           "name": "field_0x4e0",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 1248
         },
         {
           "name": "field_0x4e1",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 1249
         },
         {
           "name": "field_0x4e2",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 1250
         },
         {
           "name": "field_0x4e3",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 1251
         },
         {
           "name": "field_0x4e4",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 1252
         },
         {
           "name": "field_0x4e5",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 1253
         },
         {
@@ -111759,7 +111759,7 @@
         },
         {
           "name": "hand_holding_something",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 144
         },
         {
@@ -115085,7 +115085,7 @@
         },
         {
           "name": "field_0x80",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 128
         }
       ]
@@ -117306,7 +117306,7 @@
       "type": "Town__BlocksTownClearAreaCallback_t",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Object *"
       ],
@@ -117362,7 +117362,7 @@
       "type": "GTownDesireFunction__CheckSatisfyDesire",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct Villager *"
       ],
@@ -117949,7 +117949,7 @@
         },
         {
           "name": "magic_enabled",
-          "type": "_Bool[42]",
+          "type": "bool[42]",
           "offset": 2584
         },
         {
@@ -118268,7 +118268,7 @@
         },
         {
           "name": "field_0x30",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 48
         },
         {
@@ -119559,7 +119559,7 @@
         },
         {
           "name": "field_0x599c",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 22940
         },
         {
@@ -120709,7 +120709,7 @@
         },
         {
           "name": "checked",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 588
         },
         {
@@ -120776,7 +120776,7 @@
         },
         {
           "name": "masked_text",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 608
         },
         {
@@ -121487,7 +121487,7 @@
         },
         {
           "name": "y_only",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 32
         }
       ]
@@ -121991,7 +121991,7 @@
       "type": "LHMouse__handler",
       "size": 4,
       "call_type": "__cdecl",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "void *",
         "enum LH_MOUSE_EVENT_TYPE",
@@ -122602,7 +122602,7 @@
         },
         {
           "name": "fullscreen_mode",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 100
         },
         {
@@ -123267,7 +123267,7 @@
         },
         {
           "name": "field_0x958",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 2392
         },
         {
@@ -123360,7 +123360,7 @@
       "members": [
         {
           "name": "initialized",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 0
         },
         {
@@ -123607,7 +123607,7 @@
         },
         {
           "name": "field_0x70ba",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 28858
         },
         {
@@ -123731,7 +123731,7 @@
       "result": "struct LHTransport *",
       "args": [
         "struct LHTransport *",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -123908,7 +123908,7 @@
       "type": "LHTransportVftable__CheckForEvents",
       "size": 4,
       "call_type": "__thiscall",
-      "result": "_Bool",
+      "result": "bool",
       "args": [
         "struct LHTransport *"
       ],
@@ -125235,7 +125235,7 @@
         },
         {
           "name": "brightness_slider",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 588
         },
         {
@@ -125333,7 +125333,7 @@
         },
         {
           "name": "percent_mode",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 596
         }
       ]
@@ -125362,7 +125362,7 @@
         "struct SetupHLineGraph *",
         "float",
         "float",
-        "_Bool"
+        "bool"
       ],
       "arg_names": [
         "this",
@@ -125714,7 +125714,7 @@
         },
         {
           "name": "list",
-          "type": "_Bool *",
+          "type": "bool *",
           "offset": 688
         },
         {
@@ -125761,12 +125761,12 @@
         },
         {
           "name": "draggable",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 640
         },
         {
           "name": "dragging",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 641
         },
         {
@@ -125786,7 +125786,7 @@
         },
         {
           "name": "clickable",
-          "type": "_Bool",
+          "type": "bool",
           "offset": 656
         }
       ]
@@ -126018,7 +126018,7 @@
       "mac_addr": 271975152,
       "decorated_name": "Abode::GetNewEp(ABODE_EPP, MapCoords*)",
       "undecorated_name": "GetNewEp__5AbodeF8ABODE_EPP7LHPoint",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Abode *",
@@ -126254,7 +126254,7 @@
       "mac_addr": 269853280,
       "decorated_name": "GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const",
       "undecorated_name": "IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "const struct GAbodeInfo *",
@@ -126410,7 +126410,7 @@
       "mac_addr": 269157584,
       "decorated_name": "Ball::IsBallFree(void)",
       "undecorated_name": "IsBallFree__4BallFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Ball *"
@@ -126622,7 +126622,7 @@
       "mac_addr": 268713040,
       "decorated_name": "BaseInfo::IsClear(void) const",
       "undecorated_name": "IsClear__8BaseInfoCFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "const struct BaseInfo *"
@@ -126734,7 +126734,7 @@
       "mac_addr": 269166432,
       "decorated_name": "BigForest::Load(GameOSFile &)",
       "undecorated_name": "Load__9BigForestFR10GameOSFile",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct BigForest *",
@@ -126842,7 +126842,7 @@
       "mac_addr": 270116432,
       "decorated_name": "GCamera::CantExitCurrentMode(void)",
       "undecorated_name": "CantExitCurrentMode__7GCameraFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GCamera *"
@@ -127030,7 +127030,7 @@
       "mac_addr": 268435536,
       "decorated_name": "CameraExclusion::InsideExclusion(LHPoint)",
       "undecorated_name": "InsideExclusion__15CameraExclusionF7LHPoint",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__stdcall",
       "argument_types": [
         "struct LHPoint"
@@ -127044,7 +127044,7 @@
       "mac_addr": 268759360,
       "decorated_name": "CameraExclusion::InsideInclusion(LHPoint, LHPoint, LHPoint *, LHPoint *)",
       "undecorated_name": "InsideInclusion__15CameraExclusionF7LHPoint7LHPointP7LHPointP7LHPoint",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "struct LHPoint",
@@ -127180,7 +127180,7 @@
         "struct CameraModeNew3 *",
         "const struct LHPoint *",
         "const struct LHPoint *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -127246,7 +127246,7 @@
       "mac_addr": 270155184,
       "decorated_name": "CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)",
       "undecorated_name": "UpdateStrafe__14CameraModeNew3FR7LHPointR7LHPointRfRffUl",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct CameraModeNew3 *",
@@ -127288,7 +127288,7 @@
       "mac_addr": 268474592,
       "decorated_name": "CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)",
       "undecorated_name": "WantToQuitFight__14CameraModeNew3F7LHPoint7LHPointf",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct CameraModeNew3 *",
@@ -129150,7 +129150,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct VisitBlock *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -129366,7 +129366,7 @@
       "mac_addr": 269416784,
       "decorated_name": "Forest::Load(GameOSFile &)",
       "undecorated_name": "Load__6ForestFR10GameOSFile",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Forest *",
@@ -129548,7 +129548,7 @@
       "mac_addr": 268605280,
       "decorated_name": "GGame::LocalTimerSaysDoATurn(void)",
       "undecorated_name": "LocalTimerSaysDoATurn__5GGameFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GGame *"
@@ -129684,7 +129684,7 @@
       "mac_addr": 270243696,
       "decorated_name": "GGame::Init(void)",
       "undecorated_name": "Init__5GGameFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GGame *"
@@ -129816,7 +129816,7 @@
       "mac_addr": 268659136,
       "decorated_name": "GGame::IsMultiplayerGame(void)",
       "undecorated_name": "IsMultiplayerGame__5GGameCFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GGame *"
@@ -130002,7 +130002,7 @@
       "mac_addr": 268539968,
       "decorated_name": "Game3DObject::GetDoorPosition(MapCoords *) const",
       "undecorated_name": "GetDoorPosition__12Game3DObjectCFP9MapCoords",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "const struct Game3DObject *",
@@ -130018,7 +130018,7 @@
       "mac_addr": 272473424,
       "decorated_name": "Game3DObject::GetSpecialPos(unsigned long, MapCoords &) const",
       "undecorated_name": "GetSpecialPos__12Game3DObjectCFUlR9MapCoords",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "const struct Game3DObject *",
@@ -130052,7 +130052,7 @@
       "mac_addr": -1,
       "decorated_name": "GSaveLoadPtrList::PushBack(GSaveLoadPtr *)",
       "undecorated_name": "Push__GSaveLoadPtrListFP12GSaveLoadPtr",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
         "struct LHLinkedList__p_GSaveLoadPtr *",
@@ -130104,7 +130104,7 @@
       "mac_addr": 271642368,
       "decorated_name": "GameOSFile::LoadAllGame(char *)",
       "undecorated_name": "LoadAllGame__10GameOSFileFPc",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "char *"
@@ -130258,7 +130258,7 @@
       "mac_addr": 268767952,
       "decorated_name": "GameThing::IsAvailable(void)",
       "undecorated_name": "IsAvailable__9GameThingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
@@ -130272,7 +130272,7 @@
       "mac_addr": 268616704,
       "decorated_name": "GameThing::IsCreature(void)",
       "undecorated_name": "IsCreature__9GameThingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
@@ -130286,7 +130286,7 @@
       "mac_addr": 273238144,
       "decorated_name": "GameThing::IsCreature(Creature *)",
       "undecorated_name": "IsCreature__9GameThingFP8Creature",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *",
@@ -130302,7 +130302,7 @@
       "mac_addr": 273238208,
       "decorated_name": "GameThing::IsCreatureNotTooNear(Creature *)",
       "undecorated_name": "IsCreatureNotTooNear__9GameThingFP8Creature",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *",
@@ -130346,7 +130346,7 @@
       "mac_addr": 272783936,
       "decorated_name": "GameThing::GetComputerSeen(void)",
       "undecorated_name": "GetComputerSeen__9GameThingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
@@ -130514,7 +130514,7 @@
       "mac_addr": 272381664,
       "decorated_name": "GameThing::IsFootpathLink(void)",
       "undecorated_name": "IsFootpathLink__9GameThingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
@@ -130703,7 +130703,7 @@
         "enum RESOURCE_TYPE",
         "uint32_t",
         "struct GInterfaceStatus *",
-        "_Bool",
+        "bool",
         "const struct MapCoords *",
         "int"
       ],
@@ -130840,7 +130840,7 @@
       "mac_addr": 270131888,
       "decorated_name": "GameThing::IsDeletedOnNewMap(void)",
       "undecorated_name": "IsDeletedOnNewMap__9GameThingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
@@ -130882,7 +130882,7 @@
       "mac_addr": 270114272,
       "decorated_name": "GameThing::CanBecomeArtifact(void)",
       "undecorated_name": "CanBecomeArtifact__9GameThingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
@@ -130912,7 +130912,7 @@
       "mac_addr": 268859488,
       "decorated_name": "GameThing::IsFunctional(void)",
       "undecorated_name": "IsFunctional__9GameThingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
@@ -131082,7 +131082,7 @@
       "mac_addr": -1,
       "decorated_name": "GameThingList::PushBack(GameThing *)",
       "undecorated_name": "PushBack__13GameThingListFP9GameThing",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
         "struct LHLinkedList__p_GameThing *",
@@ -131323,7 +131323,7 @@
         "struct InnerRoom *",
         "struct LHCoord",
         "float",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -131347,7 +131347,7 @@
         "int",
         "int",
         "struct LHCoord *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -131373,7 +131373,7 @@
         "int",
         "int",
         "struct LHCoord *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -131399,7 +131399,7 @@
         "int",
         "int",
         "struct LHCoord *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -131444,7 +131444,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct InnerCamera *",
-        "_Bool",
+        "bool",
         "struct Zoomer3d *",
         "struct Zoomer3d *"
       ],
@@ -131624,7 +131624,7 @@
       "mac_addr": 268940016,
       "decorated_name": "GInterfaceStatus::IsSpaceInHands(void)",
       "undecorated_name": "IsSpaceInHands__16GInterfaceStatusFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GInterfaceStatus *"
@@ -131784,7 +131784,7 @@
       "mac_addr": 268487952,
       "decorated_name": "LandCell::IsWater(void)",
       "undecorated_name": "IsWater__8LandCellFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct LandCell *"
@@ -131824,7 +131824,7 @@
       "mac_addr": -1,
       "decorated_name": "LH3DIsland::IsWater(long, long)",
       "undecorated_name": "IsWater__10LH3DIslandFll",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "int",
@@ -131872,7 +131872,7 @@
       "mac_addr": 274844724,
       "decorated_name": "LH3DIsland::Release(void)",
       "undecorated_name": "Release__10LH3DIslandFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__stdcall",
       "argument_types": [],
       "argument_names": []
@@ -131926,7 +131926,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct LHOSFile *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -132076,7 +132076,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct LHReleasedOSFile *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -132306,7 +132306,7 @@
       "mac_addr": 272115008,
       "decorated_name": "Living::LookAtPos(MapCoords const &, ulong)",
       "undecorated_name": "LookAtPos__6LivingFRC9MapCoordsUl",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Living *",
@@ -132334,7 +132334,7 @@
       "mac_addr": 268757840,
       "decorated_name": "Living::IsReadyForNewAnimation(unsigned long)",
       "undecorated_name": "IsReadyForNewAnimation__6LivingFUl",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "const struct Living *",
@@ -132392,7 +132392,7 @@
       "mac_addr": 268746640,
       "decorated_name": "Living::IAmFlockLeader(void)",
       "undecorated_name": "IAmFlockLeader__6LivingFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Living *"
@@ -132876,7 +132876,7 @@
       "mac_addr": 268480576,
       "decorated_name": "MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)",
       "undecorated_name": "DoesObjectTypeCountAsFixed__7MapCellF11OBJECT_TYPE",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "enum OBJECT_TYPE"
@@ -132968,7 +132968,7 @@
       "mac_addr": 268737552,
       "decorated_name": "GMap::InBounds(long, long)",
       "undecorated_name": "InBounds__4GMapCFll",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct GMap *",
@@ -133752,7 +133752,7 @@
       "mac_addr": -1,
       "decorated_name": "Point2DCompare<0>::operator<(const Point2DCompare<0>*)",
       "undecorated_name": "__lt__17Point2DCompare_FRC17Point2DCompare_0_",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
         "struct Point2DCompare *",
@@ -133770,7 +133770,7 @@
       "mac_addr": -1,
       "decorated_name": "Point2DCompare<1>::operator<(const Point2DCompare<1>*)",
       "undecorated_name": "__lt__17Point2DCompare_FRC17Point2DCompare_1_",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
         "struct Point2DCompare *",
@@ -133878,7 +133878,7 @@
         "struct CircleHugInfo *",
         "struct NewCollide__Obj *",
         "struct MobileWallHug *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -134070,7 +134070,7 @@
       "mac_addr": 268825760,
       "decorated_name": "MobileWallHug::AreWeThere(float)",
       "undecorated_name": "AreWeThere__13MobileWallHugFf",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct MobileWallHug *",
@@ -134534,7 +134534,7 @@
       "mac_addr": 272242784,
       "decorated_name": "MPFEConnectionStatus::IsLanLobby(void)",
       "undecorated_name": "IsLanLobby__20MPFEConnectionStatusFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct MPFEConnectionStatus *"
@@ -134548,7 +134548,7 @@
       "mac_addr": 272242704,
       "decorated_name": "MPFEConnectionStatus::IsInternetLobby(void)",
       "undecorated_name": "IsInternetLobby__20MPFEConnectionStatusFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct MPFEConnectionStatus *"
@@ -134612,7 +134612,7 @@
       "mac_addr": 269533168,
       "decorated_name": "GNetwork::ProcessOnePacket(void)",
       "undecorated_name": "ProcessOnePacket__8GNetworkFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__stdcall",
       "argument_types": [
         "struct GNetwork *"
@@ -135010,7 +135010,7 @@
       "mac_addr": 271996368,
       "decorated_name": "PathCreator::CheckAndRecreateSaveGamePaths(void)",
       "undecorated_name": "CheckAndRecreateSaveGamePaths__11PathCreatorFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct PathCreator *"
@@ -135024,7 +135024,7 @@
       "mac_addr": 269600336,
       "decorated_name": "IsACmdLineString(char*, const char*)",
       "undecorated_name": "IsACmdLineString__FPcPCc",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "char *",
@@ -135140,7 +135140,7 @@
       "mac_addr": 268633808,
       "decorated_name": "GPlayer::IsNeutral(void)",
       "undecorated_name": "IsNeutral__7GPlayerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "const struct GPlayer *"
@@ -135789,7 +135789,7 @@
         "struct GameThingWithPos *",
         "struct LHPoint *",
         "uint32_t",
-        "_Bool",
+        "bool",
         "uint32_t",
         "uint32_t",
         "int",
@@ -135824,7 +135824,7 @@
         "struct LHPoint *",
         "struct LHPoint *",
         "uint32_t",
-        "_Bool",
+        "bool",
         "uint32_t",
         "uint32_t",
         "int",
@@ -135859,7 +135859,7 @@
       "argument_types": [
         "struct GameThingWithPos *",
         "uint32_t",
-        "_Bool",
+        "bool",
         "uint32_t",
         "uint32_t",
         "int",
@@ -135890,7 +135890,7 @@
         "const struct MapCoords *",
         "const struct GVillagerInfo *",
         "uint32_t",
-        "_Bool",
+        "bool",
         "struct GSpecialVillagerInfo *"
       ],
       "argument_names": [
@@ -135906,7 +135906,7 @@
       "mac_addr": 269775008,
       "decorated_name": "SpecialVillager::CanShowName(void)",
       "undecorated_name": "CanShowName__15SpecialVillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct SpecialVillager *"
@@ -136098,7 +136098,7 @@
       "mac_addr": -1,
       "decorated_name": "GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const",
       "undecorated_name": "SpellSeedIsOfMagicType__14GSpellSeedInfoCF10MAGIC_TYPE",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "const struct GSpellSeedInfo *",
@@ -136184,7 +136184,7 @@
       "mac_addr": 270188512,
       "decorated_name": "ChallengeRoom::CreateChallengeFiles(char*)",
       "undecorated_name": "CreateChallengeFiles__13ChallengeRoomFPc",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__stdcall",
       "argument_types": [],
       "argument_names": []
@@ -136194,7 +136194,7 @@
       "mac_addr": 273475888,
       "decorated_name": "SaveGameRoom::CreateSaveGameFiles(char*)",
       "undecorated_name": "CreateSaveGameFiles__12SaveGameRoomFPc",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__stdcall",
       "argument_types": [],
       "argument_names": []
@@ -136396,7 +136396,7 @@
       "mac_addr": 274031616,
       "decorated_name": "Town::AddVillagerToTown(Villager *)",
       "undecorated_name": "AddVillagerToTown__4TownFP8Villager",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Town *",
@@ -136608,7 +136608,7 @@
       "mac_addr": 274009728,
       "decorated_name": "Town::AddMagicTypesHeld(MAGIC_TYPE)",
       "undecorated_name": "AddMagicTypesHeld__4TownF10MAGIC_TYPE",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Town *",
@@ -136624,7 +136624,7 @@
       "mac_addr": 274008832,
       "decorated_name": "Town::IsMagicTypeHeld(MAGIC_TYPE)",
       "undecorated_name": "IsMagicTypeHeld__4TownF10MAGIC_TYPE",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Town *",
@@ -136710,7 +136710,7 @@
       "mac_addr": 268579808,
       "decorated_name": "Town::FindClearArea(MapCoords &, MapCoords &, float, float, float, int (Object::)(void const *, void const *), Object *)",
       "undecorated_name": "FindClearArea__4TownFR9MapCoordsR9MapCoordsfffM6ObjectFPCvPCv_iP6Object",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "struct MapCoords *",
@@ -136742,7 +136742,7 @@
       "mac_addr": 268667024,
       "decorated_name": "Town::CheckForClearArea(MapCoords &, float, int (Object::)(void const *, void const *), Object *)",
       "undecorated_name": "CheckForClearArea__4TownFR9MapCoordsfM6ObjectFPCvPCv_iP6Object",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "struct MapCoords *",
@@ -136782,7 +136782,7 @@
       "mac_addr": 268882880,
       "decorated_name": "Town::IsInStateOfEmergency(void)",
       "undecorated_name": "IsInStateOfEmergency__4TownFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Town *"
@@ -136956,7 +136956,7 @@
       "mac_addr": 274051680,
       "decorated_name": "TownCentre::CreateTotemIfNecessary(void)",
       "undecorated_name": "CreateTotemIfNecessary__10TownCentreFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct TownCentre *"
@@ -137034,7 +137034,7 @@
       "mac_addr": 274049728,
       "decorated_name": "TownCentre::AddSpell(SPELL_SEED_TYPE)",
       "undecorated_name": "AddSpell__10TownCentreF15SPELL_SEED_TYPE",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct TownCentre *",
@@ -137055,7 +137055,7 @@
       "argument_types": [
         "struct TownCentreSpellIcon *",
         "enum POWER_UP_TYPE",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -137356,7 +137356,7 @@
       "mac_addr": 273655792,
       "decorated_name": "GUtils::FindNearestDrinkingWater(MapCoords &, MapCoords &, float)",
       "undecorated_name": "FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [
         "struct MapCoords *",
@@ -138005,7 +138005,7 @@
         "struct MapCoords *",
         "struct GVillagerInfo *",
         "uint32_t",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -138040,7 +138040,7 @@
         "struct MapCoords *",
         "struct GVillagerInfo *",
         "uint32_t",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "coords",
@@ -138128,7 +138128,7 @@
       "mac_addr": 274134208,
       "decorated_name": "Villager::IsAMother(void)",
       "undecorated_name": "IsAMother__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138142,7 +138142,7 @@
       "mac_addr": 269062128,
       "decorated_name": "Villager::DecideWhatToDo(void)",
       "undecorated_name": "DecideWhatToDo__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138156,7 +138156,7 @@
       "mac_addr": 268450736,
       "decorated_name": "Villager::CheckTakeResourcesToStoragePit(void)",
       "undecorated_name": "CheckTakeResourcesToStoragePit__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138170,7 +138170,7 @@
       "mac_addr": 274129392,
       "decorated_name": "Villager::DiscipleDecideWhatToDo(void)",
       "undecorated_name": "DiscipleDecideWhatToDo__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138320,7 +138320,7 @@
       "mac_addr": 268567136,
       "decorated_name": "Villager::IsPregnant(void)",
       "undecorated_name": "IsPregnant__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138334,7 +138334,7 @@
       "mac_addr": 274122928,
       "decorated_name": "Villager::IsVillagerAvailable(void)",
       "undecorated_name": "IsVillagerAvailable__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138348,7 +138348,7 @@
       "mac_addr": 268917840,
       "decorated_name": "Villager::CallEntryStateFunction(unsigned char)",
       "undecorated_name": "CallEntryStateFunction__8VillagerFUc",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *",
@@ -138380,7 +138380,7 @@
       "mac_addr": 268939696,
       "decorated_name": "Villager::CallEntryStateFunction(unsigned char, unsigned char)",
       "undecorated_name": "CallEntryStateFunction__8VillagerFUcUc",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *",
@@ -138398,7 +138398,7 @@
       "mac_addr": 268566384,
       "decorated_name": "Villager::IsHungry(void)",
       "undecorated_name": "IsHungry__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138526,7 +138526,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -138580,7 +138580,7 @@
       "mac_addr": 274152064,
       "decorated_name": "Villager::ChildDecideWhatToDo(void)",
       "undecorated_name": "ChildDecideWhatToDo__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138594,7 +138594,7 @@
       "mac_addr": 269047040,
       "decorated_name": "Villager::IsMotherAlive(void)",
       "undecorated_name": "IsMotherAlive__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138652,7 +138652,7 @@
       "mac_addr": 268478656,
       "decorated_name": "Villager::CheckNeededForSomething(void)",
       "undecorated_name": "CheckNeededForSomething__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138666,7 +138666,7 @@
       "mac_addr": 269086128,
       "decorated_name": "Villager::GoHome(void)",
       "undecorated_name": "GoHome__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -138680,7 +138680,7 @@
       "mac_addr": 269067440,
       "decorated_name": "Villager::DoGoingHome(VILLAGER_STATES, VILLAGER_STATES)",
       "undecorated_name": "DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *",
@@ -138730,7 +138730,7 @@
       "mac_addr": 268547088,
       "decorated_name": "Villager::GoAndChilloutOutsideHome(void)",
       "undecorated_name": "GoAndChilloutOutsideHome__8VillagerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Villager *"
@@ -139573,7 +139573,7 @@
         "struct LHPoint",
         "float",
         "long",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "max_distance",
@@ -139688,7 +139688,7 @@
       "call_type": "cdecl",
       "argument_types": [
         "const void *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "buf",
@@ -139704,7 +139704,7 @@
       "call_type": "cdecl",
       "argument_types": [
         "const char *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "filename",
@@ -139904,7 +139904,7 @@
       "mac_addr": 268484464,
       "decorated_name": "LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)",
       "undecorated_name": "GetDoorPos__16LH3DMeshedObjectCFP7LHPoint",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
         "struct LH3DMeshedObject *",
@@ -140392,7 +140392,7 @@
         "struct LHMatrix *",
         "struct LHPoint *",
         "struct LHPoint *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "param_1_00",
@@ -140952,7 +140952,7 @@
       "mac_addr": 269769184,
       "decorated_name": "LHMouse::SetPosition(LHCoord *)",
       "undecorated_name": "SetPosition__7LHMouseFP7LHCoord",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct LHMouse *",
@@ -140989,7 +140989,7 @@
       "return_type": "void",
       "call_type": "cdecl",
       "argument_types": [
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "value"
@@ -141192,7 +141192,7 @@
       "mac_addr": -1,
       "decorated_name": "Point2D::operator==(const Point2D&)",
       "undecorated_name": "__eq__7Point2DFRC7Point2D",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
         "struct LHPoint2D *",
@@ -141538,7 +141538,7 @@
       "mac_addr": 274844988,
       "decorated_name": "LHScriptX<c>::LoadOneLine(LHReleasedOSFile &, char *)",
       "undecorated_name": "LoadOneLine__12LHScriptX_c_FR16LHReleasedOSFilePc",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
         "struct LHScriptX_c_ *",
@@ -141716,7 +141716,7 @@
       "mac_addr": 268440944,
       "decorated_name": "LHTimer::Running(void)",
       "undecorated_name": "Running__7LHTimerFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct LHTimer *"
@@ -142130,7 +142130,7 @@
       "mac_addr": 268659260,
       "decorated_name": "LHSession::IsSinglePlayer",
       "undecorated_name": "IsSinglePlayer__9LHSessionFv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct LHSession *"
@@ -142172,7 +142172,7 @@
       "mac_addr": 268989776,
       "decorated_name": "NeedsBiggerText(void)",
       "undecorated_name": "NeedsBiggerText__Fv",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "cdecl",
       "argument_types": [],
       "argument_names": []
@@ -142238,8 +142238,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupBigButton *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142298,7 +142298,7 @@
       "mac_addr": 269906096,
       "decorated_name": "SetupBigButton::HitTest(int, int)",
       "undecorated_name": "HitTest__14SetupBigButtonFii",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupBigButton *",
@@ -142320,7 +142320,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupBigButton *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142426,8 +142426,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupButton *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142474,7 +142474,7 @@
         "struct SetupButton *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142494,7 +142494,7 @@
         "struct SetupButton *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142530,7 +142530,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupButton *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142546,8 +142546,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupCheckBox *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142567,7 +142567,7 @@
         "int",
         "int",
         "int",
-        "_Bool",
+        "bool",
         "enum BBSTYLE",
         "const char16_t *",
         "int"
@@ -142588,7 +142588,7 @@
       "mac_addr": 269558640,
       "decorated_name": "SetupCheckBox::HitTest(int, int)",
       "undecorated_name": "HitTest__13SetupCheckBoxFii",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupCheckBox *",
@@ -142646,7 +142646,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupCheckBox *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142664,7 +142664,7 @@
         "struct SetupColourPicker *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142684,7 +142684,7 @@
         "struct SetupColourPicker *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142720,8 +142720,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupColourPicker *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142743,7 +142743,7 @@
         "int",
         "int",
         "int",
-        "_Bool",
+        "bool",
         "struct LH3DMaterial *"
       ],
       "argument_names": [
@@ -142802,7 +142802,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupColourPicker *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142844,7 +142844,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupControl *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142892,7 +142892,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupControl *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142904,7 +142904,7 @@
       "mac_addr": 271648064,
       "decorated_name": "SetupControl::HitTest(int, int)",
       "undecorated_name": "HitTest__12SetupControlFii",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupControl *",
@@ -142946,7 +142946,7 @@
         "struct SetupControl *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -142966,7 +142966,7 @@
         "struct SetupControl *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143036,7 +143036,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupControl *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143136,7 +143136,7 @@
         "struct SetupEdit *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143156,7 +143156,7 @@
         "struct SetupEdit *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143180,7 +143180,7 @@
         "int",
         "int",
         "const char16_t *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143202,7 +143202,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupEdit *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143218,7 +143218,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupEdit *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143234,8 +143234,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupEdit *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143334,8 +143334,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupHLineGraph *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143358,7 +143358,7 @@
         "int",
         "int",
         "const char16_t *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143400,7 +143400,7 @@
         "struct SetupHLineGraph *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143418,7 +143418,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupHLineGraph *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143450,7 +143450,7 @@
         "struct SetupHLineGraph *",
         "float",
         "float",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143520,8 +143520,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupHSBarGraph *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143554,7 +143554,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupHSBarGraph *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143570,7 +143570,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupList *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143624,7 +143624,7 @@
         "struct SetupList *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143662,7 +143662,7 @@
         "struct SetupList *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143704,7 +143704,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupList *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143716,7 +143716,7 @@
       "mac_addr": 273558448,
       "decorated_name": "SetupList::IsSelected(int)",
       "undecorated_name": "IsSelected__9SetupListFi",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupList *",
@@ -143736,8 +143736,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupList *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143848,8 +143848,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupMP3Button *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143866,7 +143866,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupMP3Button *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143908,7 +143908,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupMultiList *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143920,7 +143920,7 @@
       "mac_addr": 273145888,
       "decorated_name": "SetupMultiList::IsSelected(int)",
       "undecorated_name": "IsSelected__14SetupMultiListFi",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupMultiList *",
@@ -143960,7 +143960,7 @@
         "struct SetupPicture *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -143980,7 +143980,7 @@
         "struct SetupPicture *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144016,8 +144016,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupPicture *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144040,9 +144040,9 @@
         "struct LH3DMaterial *",
         "int",
         "int",
-        "_Bool",
+        "bool",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144102,7 +144102,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupPicture *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144118,7 +144118,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupPicture *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144152,8 +144152,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupSlider *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144198,7 +144198,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupSlider *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144234,7 +144234,7 @@
         "struct SetupSlider *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144254,7 +144254,7 @@
         "struct SetupSlider *",
         "int",
         "int",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144300,8 +144300,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupStaticText *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144318,7 +144318,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupStaticText *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144358,7 +144358,7 @@
       "mac_addr": 271748192,
       "decorated_name": "SetupStaticTextNoHit::HitTest(int, int)",
       "undecorated_name": "HitTest__20SetupStaticTextNoHitFii",
-      "return_type": "_Bool",
+      "return_type": "bool",
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupStaticTextNoHit *",
@@ -144380,7 +144380,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupStaticTextNoHit *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144396,8 +144396,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupTabButton *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144420,9 +144420,9 @@
         "int",
         "int",
         "const char16_t *",
-        "_Bool",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144464,7 +144464,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupTabButton *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144484,7 +144484,7 @@
         "int",
         "int",
         "int",
-        "_Bool",
+        "bool",
         "const char16_t *",
         "int"
       ],
@@ -144532,12 +144532,12 @@
         "int",
         "int",
         "int",
-        "_Bool",
+        "bool",
         "const char16_t *",
         "int",
         "const struct LH3DColor *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "x_min",
@@ -144651,11 +144651,11 @@
       "argument_types": [
         "int",
         "int",
-        "_Bool",
-        "_Bool",
+        "bool",
+        "bool",
         "int",
         "enum BBSTYLE",
-        "_Bool",
+        "bool",
         "int",
         "int"
       ],
@@ -144720,7 +144720,7 @@
         "int",
         "int",
         "int",
-        "_Bool",
+        "bool",
         "float"
       ],
       "argument_names": [
@@ -144825,12 +144825,12 @@
         "int",
         "int",
         "int",
-        "_Bool",
-        "_Bool",
-        "_Bool",
+        "bool",
+        "bool",
+        "bool",
         "const char16_t *",
         "struct LH3DColor",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "x_min",
@@ -144936,7 +144936,7 @@
         "struct LHLinkedList__p_VBarData *",
         "const void *",
         "struct VBarData *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -144954,8 +144954,8 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupVBarGraph *",
-        "_Bool",
-        "_Bool"
+        "bool",
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -145016,7 +145016,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct SetupVBarGraph *",
-        "_Bool"
+        "bool"
       ],
       "argument_names": [
         "this",
@@ -146284,7 +146284,7 @@
     },
     {
       "name": "DAT_00bec280",
-      "type": "_Bool",
+      "type": "bool",
       "address": 12501632
     },
     {
@@ -146429,7 +146429,7 @@
     },
     {
       "name": "DAT_00c4cd00",
-      "type": "_Bool",
+      "type": "bool",
       "address": 12897536
     },
     {
@@ -146624,7 +146624,7 @@
     },
     {
       "name": "DAT_00d3eed0",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13889232
     },
     {
@@ -146674,62 +146674,62 @@
     },
     {
       "name": "ARGS_NEWGAME",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920953
     },
     {
       "name": "ARGS_MULTIPLAYER",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920954
     },
     {
       "name": "ARGS_LAND",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920955
     },
     {
       "name": "ARGS_SKIRMISH",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920956
     },
     {
       "name": "ARGS_PREINTROVIDEO",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920957
     },
     {
       "name": "ARGS_FORCEINETCONN",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920958
     },
     {
       "name": "ARGS_NOINETCONN",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920959
     },
     {
       "name": "ARGS_EDITOR",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920960
     },
     {
       "name": "ARGS_CONVERT",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920961
     },
     {
       "name": "ARGS_VERSION",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920962
     },
     {
       "name": "ARGS_NOLOADMUSIC",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920963
     },
     {
       "name": "ARGS_SETTINGS",
-      "type": "_Bool",
+      "type": "bool",
       "address": 13920964
     },
     {
@@ -146919,7 +146919,7 @@
     },
     {
       "name": "LH3DMesh_g_b_dont_care_about_texture",
-      "type": "_Bool",
+      "type": "bool",
       "address": 15334996
     },
     {
