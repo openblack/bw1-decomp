@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
@@ -15,17 +15,14 @@ jobs:
       with:
         python-version: '3.12'
 
-    - name: Create virtual environment
-      run: python -m venv .venv
-
     - name: Install dependencies
-      run: .venv/bin/pip install -r scripts/headers/requirements.txt
+      run: pip install -r scripts/headers/requirements.txt
 
     - name: Run unit tests
-      run: .venv/bin/python -m unittest discover -v -s ./scripts/headers -p '*test.py'
+      run: python -m unittest discover -v -s ./scripts/headers -p '*test.py'
 
     - name: Run generate_headers.py script
-      run: .venv/bin/python scripts/headers/bw1_decomp_gen/generate_headers.py
+      run: python scripts/headers/bw1_decomp_gen/generate_headers.py
 
     - name: Upload generated headers as artifact
       uses: actions/upload-artifact@v3
