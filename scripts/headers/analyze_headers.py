@@ -1,6 +1,7 @@
 import ast
 import itertools
 import json
+import os
 import re
 import sys
 from dataclasses import dataclass, asdict, field
@@ -380,7 +381,15 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
     return found_issues
 
 
-def main(out_path) -> bool:
+def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> bool:
+    if header_path is None:
+        header_path = Path(__file__).parent.parent.parent / "generated_headers_output"
+    elif type(header_path) is str:
+        header_path = Path(header_path)
+
+    out_path = Path(out_path).absolute()
+    os.chdir(header_path)
+
     paths: List[Path] = list(filter(lambda x: x != Path("globals.h"), itertools.chain([Path("rtti.h")], *(p.rglob("*.h") for p in PATHS))))
     include_all_headers_src = '\n'.join(f'#include "{p}"' for p in paths)
 
@@ -461,11 +470,11 @@ def main(out_path) -> bool:
 
     result = dict(types=result_types, functions=result_functions, globals=result_globals)
 
-    with open(out_path, "w") as f:
+    with out_path.open(mode="w") as f:
         json.dump(result, f, indent=2)
 
     return found_issues
 
 if __name__ == "__main__":
     from sys import argv
-    exit(main(argv[1] if len(argv) == 2 else "extracted_reversing_data_bw_141.json"))
+    exit(main(*argv[1:]))
