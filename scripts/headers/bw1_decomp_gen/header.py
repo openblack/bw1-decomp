@@ -2,6 +2,7 @@ import csnake
 import re
 import os
 
+from typing import Union
 from dataclasses import dataclass
 from inflection import underscore
 from pathlib import Path
@@ -34,21 +35,6 @@ C_FUNDAMENTAL_TYPES = {
 }
 
 
-C_STDLIB_TYPEDEFS = {
-    "bool",
-    "int8_t",
-    "int16_t",
-    "int32_t",
-    "int64_t",
-    "uint8_t",
-    "uint16_t",
-    "uint32_t",
-    "uint64_t",
-    "uintptr_t",
-    "char16_t",
-}
-
-
 C_STDLIB_HEADER_IMPORT_MAP = {
     "static_assert": "assert.h",
     "bool": "stdbool.h",
@@ -62,10 +48,14 @@ C_STDLIB_HEADER_IMPORT_MAP = {
     "uint64_t": "stdint.h",
     "uintptr_t": "stdint.h",
     "char16_t": "uchar.h",
-    "D3DTLVERTEX": "d3dtypes.h"
+    "IDirect3DDevice7": "d3d.h",
+    "D3DMATRIX": "d3dtypes.h",
+    "D3DTLVERTEX": "d3dtypes.h",
 }
 
+
 UTILITY_HEADER_IMPORT_MAP = {
+    "RTL_CRITICAL_SECTION": Path("reversing_utils.h"),
     "bool32_t": Path("reversing_utils.h"),
     "struct vec2u16": Path("reversing_utils.h"),
     "DECLARE_LH_LINKED_LIST": Path("lionhead/lhlib/LHLinkedList.h"),
@@ -86,7 +76,7 @@ def strip_pointers_arrays_and_modifiers(c_type):
         return c_type
     c_type = re.sub(r'\*', '', c_type)
     c_type = strip_arrays_and_modifiers(c_type)
-    return c_type
+    return c_type.strip()
 
 
 @dataclass
@@ -161,15 +151,27 @@ class Header:
     def get_includes(self) -> list[str]:
         return sorted(list(self.includes.values()))
 
+    @staticmethod
+    def is_forward_declarable_pointer(typename: Union[str, csnake.FuncPtr]):
+        if isinstance(typename, csnake.FuncPtr):
+            return True
+        if '*' in typename:
+            # array pointer
+            if '(*' in typename and typename.endswith("]"):
+                return False
+            else:
+                return strip_pointers_arrays_and_modifiers(typename) not in (C_STDLIB_HEADER_IMPORT_MAP.keys() | UTILITY_HEADER_IMPORT_MAP.keys())
+        return False
+
     def get_direct_dependencies(self) -> set[str]:
         result = self.get_types()
-        pointers = set(filter(lambda x: isinstance(x, csnake.FuncPtr) or ('*' in x and strip_pointers_arrays_and_modifiers(x) not in C_STDLIB_TYPEDEFS), result))
+        pointers = set(filter(self.is_forward_declarable_pointer, result))
         result.difference_update(pointers)
         lh_lists = {i for i in result if i.startswith("struct LHListHead__") or i.startswith("struct LHLinkedList__")}
         lh_lists_underlying_type = {"struct " + i.removeprefix("struct ").removeprefix("LHListHead__").removeprefix("LHLinkedList__p_").removeprefix("LHLinkedList__") for i in lh_lists}
         result.difference_update(lh_lists)
         result.update(lh_lists_underlying_type)
-        if self.structs:
+        if any(hasattr(i, "size") and i.size is not None for i in self.structs):
             result.add("static_assert")
         result = result - {f"struct {s.name}" for s in self.structs} - C_FUNDAMENTAL_TYPES
         if self.linked_lists_pointered:
@@ -178,7 +180,7 @@ class Header:
             result.add("DECLARE_LH_LINKED_LIST")
         if self.lists_heads:
             result.add("DECLARE_LH_LIST_HEAD")
-        result = set(map(strip_arrays_and_modifiers, result))
+        result = set(map(strip_pointers_arrays_and_modifiers, result))
         return result
 
     def get_forward_declare_types(self) -> set[str]:
@@ -200,41 +202,85 @@ class Header:
         result = {i for i in result if not i.startswith("struct LHListHead__") and not i.startswith("struct LHLinkedList__")}
         return result
 
-    def to_code(self, cw: csnake.CodeWriter):
+    def to_code_includes(self, cw: csnake.CodeWriter):
+        if not self.includes:
+            return
+        include_categories = partition([lambda x: x.system], self.get_includes())
+        for c in include_categories:
+            c = list(c)
+            if not c:
+                continue
+            for i in c:
+                cw.include(('<' if i.system else '"') + i.header_path.as_posix() + ('>' if i.system else '"'),
+                            ("For " + ", ".join(sorted(i.dependencies)) if i.dependencies else None))
+            cw.add_line()
+
+    def to_code_forward_declares(self, cw: csnake.CodeWriter):
         fwd = self.get_forward_declare_types()
+        if not fwd:
+            return
+        cw.add_line("// Forward Declares")
+        cw.add_line()
+        for f in sorted(fwd):
+            cw.add_line(f"{f};")
+        cw.add_line()
+
+    def to_code_struct_decl(self, cw: csnake.CodeWriter):
+        if not self.structs:
+            return
+        for s in self.structs:
+            s.to_code(cw)
+            if s.decorated_name in self.linked_lists_pointered | self.linked_lists | self.lists_heads:
+                if s.decorated_name in self.linked_lists:
+                    cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
+                if s.decorated_name in self.linked_lists_pointered:
+                    cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
+                if s.decorated_name in self.lists_heads:
+                    cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
+                cw.add_line()
+
+    def to_code_inner(self, cw: csnake.CodeWriter):
+        self.to_code_includes(cw)
+        self.to_code_forward_declares(cw)
+        self.to_code_struct_decl(cw)
+
+    def to_code(self, cw: csnake.CodeWriter):
         cw.start_if_def(HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)), invert=True)
         cw.add_define(HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)))
         cw.add_line()
 
-        if self.includes:
-            include_categories = partition([lambda x: x.system], self.get_includes())
-            for c in include_categories:
-                c = list(c)
-                if not c:
-                    continue
-                for i in c:
-                    cw.include(('<' if i.system else '"') + i.header_path.as_posix() + ('>' if i.system else '"'),
-                               ("For " + ", ".join(sorted(i.dependencies)) if i.dependencies else None))
-                cw.add_line()
-
-        if fwd:
-            cw.add_line("// Forward Declares")
-            cw.add_line()
-            for f in sorted(fwd):
-                cw.add_line(f"{f};")
-            cw.add_line()
-
-        if self.structs:
-            for s in self.structs:
-                s.to_code(cw)
-                if s.decorated_name in self.linked_lists_pointered | self.linked_lists | self.lists_heads:
-                    if s.decorated_name in self.linked_lists:
-                        cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
-                    if s.decorated_name in self.linked_lists_pointered:
-                        cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
-                    if s.decorated_name in self.lists_heads:
-                        cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
-                    cw.add_line()
+        self.to_code_inner(cw)
 
         cw.end_if_def()
+        cw.add_line()
+
+
+class GlobalsHeader(Header):
+    def __init__(self, path: Path, includes: list[Header.Include], structs: list[Composite], function_proto_map: dict[str, FuncPtr]):
+        super().__init__(path, includes, structs)
+        self.globals_struct = next(filter(lambda s: s.name == "globals_t", self.structs))
+        self.globals_struct.print_offset_at_each = 1 # TODO: also print range based on member size: e.g. struct GGlobal* global;  /* 00cd3b20-00d01020 */
+        # For each type, deref it
+        for m in self.globals_struct.members:
+            m.data_type = function_proto_map.get(m.data_type.rstrip("*"), m.data_type)
+            if isinstance(m.data_type, FuncPtr):
+                m.data_type.indirection_level += 1
+                m.data_type = m.data_type.to_csnake()
+            elif "(*" in m.data_type and m.data_type.endswith("]"):
+                m.data_type = m.data_type.replace("(*", "(**")
+            elif "[" in m.data_type:
+                m.data_type = m.data_type.replace("[", " (*)[", 1)
+            else:
+                m.data_type += "*"
+
+    def to_code_inner(self, cw: csnake.CodeWriter):
+        super().to_code_inner(cw)
+
+        cw.add_line(f"volatile static struct {self.globals_struct.name} globals = {{")
+        for m in sorted(self.globals_struct.members):
+            data_type = m.data_type
+            if isinstance(data_type, csnake.FuncPtr):
+                data_type = data_type.get_declaration("")
+            cw.add_line(f"    .{m.name} = ({data_type})0x{m.offset:08x},")
+        cw.add_line("};")
         cw.add_line()

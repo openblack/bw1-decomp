@@ -8,7 +8,7 @@ from json import load
 from pathlib import Path
 import csnake
 
-from header import Header, C_STDLIB_HEADER_IMPORT_MAP
+from header import Header, GlobalsHeader, C_STDLIB_HEADER_IMPORT_MAP
 from structs import Struct, Union, Enum, RTTIClass
 from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype, CSnakeFuncPtr
@@ -38,27 +38,6 @@ def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionProt
     return thiscall_map, static_method_map, remainder
 
 
-def is_globals_helper_struct(name: str) -> bool:
-    return name in [
-        "globals_t",
-        "SetupThingDraw_t",
-        "SetupBox_t",
-        "LH3DObject_namespace",
-        "LH3DComplexObject_namespace",
-        "LH3DMist_namespace",
-        "LH3DObject_region",
-        "LH3DMem_t",
-        "GameThing_t",
-        "ape_hair_t",
-        "custom_footpath_display_control_t",
-        "g_pack_t",
-        "g_anim_pack_t",
-        "GlobalLH3DTextures",
-        "SetRenderModeData",
-        "ModAddedGlobals_t",
-        "globals_Script",
-        "SetRenderModeData__callback"
-    ]
 primitive_look_up = {
     'STRUCT_DECL': Struct,
     'UNION_DECL': Union,
@@ -126,6 +105,14 @@ def batched_arg_to_csnake(type_decls):
         type_ = arg_clang_wrapping_declaration_to_csnake(wrapping_declaration)
         if type_:
             type_decls[int(i)].args[int(j)] = type_
+
+
+def generate_globals_header(globals_decl: dict, function_proto_map: dict[str, FuncPtr], local_header_import_map: dict[str, Path]) -> GlobalsHeader:
+    members = [Struct.Member(g["name"], g["type"], g["address"]) for g in globals_decl]
+    globals_t = Struct("globals_t", None, members)
+    header = GlobalsHeader(Path("globals.h"), includes=[], structs=[globals_t], function_proto_map=function_proto_map)
+    header.build_include_list(local_header_import_map)
+    return header
 
 
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
@@ -218,10 +205,10 @@ if __name__ == "__main__":
 
     # Do some selecting
     (
-        globals_t,
         vftables,
         bases,
         vftable_function_prototypes,
+        global_function_ptr_prototypes,
         header_structs,
         header_enums,
         remainder_enums,
@@ -233,10 +220,10 @@ if __name__ == "__main__":
         remainder_primitives,
         remainder,
     ) = partition([
-        lambda x: is_globals_helper_struct(x.name),
         lambda x: type(x) is Struct and (x.name.endswith('Vftable') or x.name.startswith('vt_')),
         lambda x: type(x) is Union and x.name.endswith('Base'),
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
+        lambda x: type(x) is FuncPtr and x.name.startswith('globals_funcptr__'),
         is_header_struct,
         lambda x: type(x) is Enum and get_enum_header_name_key(x) is not None,
         lambda x: type(x) is Enum,
@@ -249,8 +236,10 @@ if __name__ == "__main__":
     ], primitives)
 
     batched_arg_to_csnake(vftable_function_prototypes)
+    batched_arg_to_csnake(global_function_ptr_prototypes)
 
     vftable_function_proto_map = {i.name: i for i in vftable_function_prototypes}
+    global_function_ptr_proto_map = {i.name: i for i in global_function_ptr_prototypes}
 
     lh_linked_list_pointer_structs = {"struct " + i.name.removeprefix("LHLinkedList__p_").removeprefix("LHLinkedNode__p_") for i in lh_linked_pointer_lists}
     lh_linked_list_structs = {"struct " + i.name.removeprefix("LHLinkedList__").removeprefix("LHLinkedNode__") for i in lh_linked_lists}
@@ -283,7 +272,7 @@ if __name__ == "__main__":
             raise RuntimeError(f"Need to add guessed path for {name} in vanilla_filepaths.py")
         return Path(project) / f"{stem}.h"
 
-    local_header_import_map: dict[str, str] = {}
+    local_header_import_map: dict[str, Path] = {}
     header_map: dict[Path, Header] = {}
 
     for e in header_enums:
@@ -355,6 +344,9 @@ if __name__ == "__main__":
 
     headers: list[Header] = list(header_map.values())
 
+    # Create header for globals_t with actual addresses
+    headers.append(generate_globals_header(remainder_globals, global_function_ptr_proto_map, local_header_import_map))
+
     if remainder_functions:
         header = Header(Path("TodoRemainderFunctions.h"), [], remainder_functions)
         header.build_include_list(local_header_import_map)
@@ -371,9 +363,6 @@ if __name__ == "__main__":
         header = Header(Path("TodoRemainder.h"), [], remainder)
         header.build_include_list(local_header_import_map)
         headers.append(header)
-
-    # TODO: create header for globals_t with actual addresses and remove from ignored count
-    to_ignore += globals_t
 
     output_path = Path("generated_headers_output")
     if output_path.exists():

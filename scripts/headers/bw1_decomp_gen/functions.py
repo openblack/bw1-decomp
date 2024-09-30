@@ -25,16 +25,18 @@ def clean_up_type(typename):
 
 
 class CSnakeFuncPtr(csnake.FuncPtr):
-    __slots__ = ("return_type", "arguments", "calling_convention")
+    __slots__ = ("return_type", "arguments", "calling_convention", "indirection_level")
 
     def __init__(
         self,
         return_type: str,
         arguments: Optional[Iterable] = None,
         calling_convention: Optional[str] = None,
+        indirection_level = 1,
     ) -> None:
         super().__init__(return_type, arguments)
         self.calling_convention = calling_convention
+        self.indirection_level = indirection_level
 
     def get_declaration(
         self,
@@ -46,13 +48,14 @@ class CSnakeFuncPtr(csnake.FuncPtr):
             arg.generate_declaration() for arg in self.arguments
         )
 
-        retval = "{rt} ({conv}* {qual}{name}{arr})({arguments})".format(
+        retval = "{rt} ({conv}{indir}{qual}{name}{arr})({arguments})".format(
             rt=self.return_type,
             qual=qualifiers if qualifiers else "",
             name=name,
             arguments=jointargs if self.arguments else "",
             arr=array if array else "",
-            conv=self.calling_convention if self.calling_convention else ""
+            conv=self.calling_convention if self.calling_convention else "",
+            indir="*" * self.indirection_level + (" " if qualifiers or name or array else ""),
         )
 
         return retval
@@ -87,14 +90,16 @@ class FuncPtr:
     args: list[str]
     arg_labels: list[str]
     decorated_name: str
+    indirection_level: int
 
-    def __init__(self, name: str, call_type: str, result: str, args: list[str], arg_labels: list[str]):
+    def __init__(self, name: str, call_type: str, result: str, args: list[str], arg_labels: list[str], indirection_level: int = 1):
         self.name = name
         self.call_type = CALL_TYPE_SUBSTITUTIONS.get(call_type, call_type)
         self.result = clean_up_type(result)
         self.args = list(map(clean_up_type, args))
         self.arg_labels = arg_labels
         self.decorated_name = name
+        self.indirection_level = indirection_level
 
     def get_types(self) -> set[str]:
         result = {self.result}
@@ -120,7 +125,7 @@ class FuncPtr:
                 params.insert(1, ["edx", "const void*"])
             conv = "__fastcall"
 
-        return CSnakeFuncPtr(self.result, params or [("", " void")], conv)
+        return CSnakeFuncPtr(self.result, params or [("", " void")], conv, self.indirection_level)
 
     def to_code(self, cw: csnake.CodeWriter):
         fptr = self.to_csnake()

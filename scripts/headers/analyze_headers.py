@@ -7,7 +7,7 @@ from dataclasses import dataclass, asdict, field
 from pathlib import Path
 from typing import List, Tuple, Set, Optional, Dict, Union
 
-from clang.cindex import TranslationUnit, Diagnostic, Config, TranslationUnitLoadError
+from clang.cindex import TranslationUnit, Diagnostic, Config, Token, TranslationUnitLoadError
 
 
 @dataclass
@@ -133,22 +133,26 @@ def parse_source(path: Optional[Path] = None, source: Optional[str] = None) -> T
     return translation_unit
 
 
-def extract_function_pointers(struct_type) -> Dict[str, TypeInfo]:
+def extract_function_pointers(struct_type) -> Dict[str, Tuple[TypeInfo, int]]:
     function_map: Dict[str, TypeInfo] = {}
     for t in struct_type.get_fields():
-        if t.type.kind.name != "POINTER":
+        underlying_type = t.type
+        pointer_depth = 0
+        while underlying_type.kind.name == "POINTER":
+            pointer_depth += 1
+            underlying_type = underlying_type.get_pointee()
+
+        if pointer_depth == 0 or underlying_type.kind.name != "FUNCTIONPROTO":
             continue
-        p = t.type.get_pointee()
-        if p.kind.name != "FUNCTIONPROTO":
-            continue
-        result = p.get_result().spelling
-        args = list(c.spelling for c in p.argument_types())
+
+        result = underlying_type.get_result().spelling
+        args = list(c.spelling for c in underlying_type.argument_types())
         arg_names = list(c.spelling for c in t.get_definition().get_children() if c.kind.name == 'PARM_DECL')
         if len(arg_names) == 0:
             arg_names = [''] * len(args)
         assert(len(args) == len(arg_names))
-        function_map[t.spelling] = TypeInfo(kind_name=p.kind.name, size=t.type.get_size(),
-                                            location=Path(t.location.file.name), children=(result, list(zip(args, arg_names)), p.spelling))
+        function_map[t.spelling] = (TypeInfo(kind_name=underlying_type.kind.name, size=t.type.get_size(),
+                                            location=Path(t.location.file.name), children=(result, list(zip(args, arg_names)), underlying_type.spelling)), pointer_depth)
     return function_map
 
 
@@ -168,7 +172,7 @@ def extract_type_info(tu: TranslationUnit) -> Tuple[bool, Dict[str, TypeInfo]]:
             children: List[Tuple[str, int] | Tuple[str, str, int]] | str | Tuple[str, List[str], str] = []
             if c.kind.name == "STRUCT_DECL":
                 extra_types = extract_function_pointers(struct_type)
-                types.update((f"{name.removeprefix("struct ")}__{k}", v) for k, v in extra_types.items())
+                types.update((f"{name.removeprefix("struct ")}__{k}", v[0]) for k, v in extra_types.items())
                 children = []
                 for f in struct_type.get_fields():
                     child_name = f.spelling
@@ -249,23 +253,38 @@ def extract_globals_in_header_info(tu: TranslationUnit) -> Tuple[bool, Dict[str,
     globals_cursor = next(c for c in tu.cursor.get_children() if c.kind.name == "VAR_DECL" and c.spelling == "globals")
     globals_decl_cursor = globals_cursor.type.get_fields()
     globals_init_list = list(next(i for i in globals_cursor.get_children() if i.kind.name == 'INIT_LIST_EXPR').get_children())
-    globals_init_cursor = (next(next(j.get_tokens()) for j in i.walk_preorder() if j.kind.name == 'INTEGER_LITERAL') for i in globals_init_list)
+    literal_map: dict[str, Token] = {}
+    for i in globals_init_list:
+        for j in i.walk_preorder():
+            if j.kind.name == 'MEMBER_REF':
+                key = j.spelling
+            elif j.kind.name == 'INTEGER_LITERAL':
+                value = next(j.get_tokens())
+        literal_map[key] = value
+
+    types: Dict[str, TypeInfo] = {}
+    extra_types = extract_function_pointers(globals_cursor.type.get_declaration().type)
+    types.update((f"globals_funcptr__{k}_t", v[0]) for k, v in extra_types.items())
 
     found_issues = False
     global_addresses: Dict[str, GlobalInfo] = {}
-    for identifier, literal in zip(globals_decl_cursor, globals_init_cursor):
+    for identifier in globals_decl_cursor:
         if identifier.spelling in GLOBALS_TO_IGNORE:
             continue
-        var_type = identifier.type.get_pointee().spelling
         var_name = identifier.spelling
+        if var_name in extra_types:
+            var_type = f"globals_funcptr__{var_name}_t" + (extra_types[var_name][1] - 1) * "*"
+        else:
+            var_type = identifier.type.get_pointee().spelling
+        literal_spelling = literal_map[var_name].spelling
         try:
-            literal_value: int = ast.literal_eval(literal.spelling)
+            literal_value: int = ast.literal_eval(literal_spelling)
         except ValueError as e:
             found_issues = True
-            sys.stderr.write(f"global declaration \"{identifier.spelling}\" can't parse: \"{literal.spelling}\"\n")
+            sys.stderr.write(f"global declaration \"{identifier.spelling}\" can't parse: \"{literal_spelling}\"\n")
             continue
         global_addresses[var_name] = GlobalInfo(var_type, literal_value)
-    return found_issues, global_addresses
+    return found_issues, global_addresses, types
 
 
 def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_names: Set[str],
@@ -344,7 +363,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
 
 
 def main(out_path) -> bool:
-    paths: List[Path] = list(itertools.chain([Path("rtti.h")], *(p.glob("*.h") for p in PATHS)))
+    paths: List[Path] = list(filter(lambda x: x != Path("src/globals.h"), itertools.chain([Path("rtti.h")], *(p.glob("*.h") for p in PATHS))))
     include_all_headers_src = '\n'.join(f'#include "{p}"' for p in paths)
 
     found_issues, types = extract_type_info(parse_source(source=include_all_headers_src))
@@ -359,15 +378,14 @@ def main(out_path) -> bool:
     decorated_names: Set[str] = set()
     function_metadata: List[FunctionMetadata] = []
     for path in paths:
-        found_issues |= extract_function_info(parse_source(path=path), set(types.keys()), decorated_names,
-                                              function_metadata)
+        found_issues |= extract_function_info(parse_source(path=path), set(types.keys()), decorated_names, function_metadata)
 
-    new_issues, global_values = extract_globals_info(parse_source(source=include_all_headers_src),
-                                                     set(types.keys()))
+    new_issues, global_values = extract_globals_info(parse_source(source=include_all_headers_src), set(types.keys()))
     found_issues |= new_issues
 
-    new_issues, globals_in_header_values = extract_globals_in_header_info(parse_source(path=Path("src/globals.h")), set(types.keys()))
+    new_issues, globals_in_header_values, globals_extra_types = extract_globals_in_header_info(parse_source(path=Path("globals.h")))
     global_values.update(globals_in_header_values)
+    types |= globals_extra_types
     found_issues |= new_issues
 
     # for global_name, (global_type, global_value) in global_values.items():
@@ -418,8 +436,7 @@ def main(out_path) -> bool:
         f.consolidate_thiscall()
         result_functions.append(asdict(f))
 
-    result_globals: List[Dict[str, str | int]] = [dict(name=global_name, type=g.type_name, value=g.address) for
-                                                  global_name, g in global_values.items()]
+    result_globals: List[Dict[str, str | int]] = [dict(name=global_name, type=g.type_name, address=g.address) for global_name, g in global_values.items()]
 
     result = dict(types=result_types, functions=result_functions, globals=result_globals)
 

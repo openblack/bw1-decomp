@@ -110069,6 +110069,34 @@
       "signature": "unsigned int (struct SetupList *, int, int, int, int, int, int, int) __attribute__((stdcall))"
     },
     {
+      "kind": "FUNCTIONPROTO",
+      "type": "SetupList__ListBoxDraw",
+      "size": 4,
+      "call_type": "__stdcall",
+      "result": "uint32_t",
+      "args": [
+        "struct SetupList *",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int",
+        "int"
+      ],
+      "arg_names": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "signature": "uint32_t (struct SetupList *, int, int, int, int, int, int, int) __attribute__((stdcall))"
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct SetupList",
       "size": 688,
@@ -110140,7 +110168,7 @@
         },
         {
           "name": "ListBoxDraw",
-          "type": "SetupList__ListBoxDraw_t **",
+          "type": "SetupList__ListBoxDraw *",
           "offset": 620
         },
         {
@@ -125838,6 +125866,40 @@
           "offset": 592
         }
       ]
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "globals_funcptr__DAT_00eb9a98_t",
+      "size": 4,
+      "call_type": "__fastcall",
+      "result": "void",
+      "args": [
+        "void *",
+        "const void *",
+        "struct MobileWallHug *"
+      ],
+      "arg_names": [
+        "this",
+        "edx",
+        "param_3"
+      ],
+      "signature": "void (void *, const void *, struct MobileWallHug *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "globals_funcptr__PTR_00fa51d0_t",
+      "size": 4,
+      "call_type": "__cdecl",
+      "result": "void",
+      "args": [
+        "int",
+        "int"
+      ],
+      "arg_names": [
+        "",
+        ""
+      ],
+      "signature": "void (int, int)"
     }
   ],
   "functions": [
@@ -146238,27 +146300,27 @@
     {
       "name": "FLOAT_00bf33f0",
       "type": "float",
-      "address": 12534472
+      "address": 12530672
     },
     {
       "name": "DAT_00bf42c8",
       "type": "int",
-      "address": 12534476
+      "address": 12534472
     },
     {
       "name": "DAT_00bf42cc",
       "type": "int",
-      "address": 12576908
+      "address": 12534476
     },
     {
       "name": "DAT_00bfe88c",
       "type": "int",
-      "address": 12577044
+      "address": 12576908
     },
     {
       "name": "DAT_00bfe914",
       "type": "int",
-      "address": 12530672
+      "address": 12577044
     },
     {
       "name": "LH3DColor_ARRAY_00bff0b8",
@@ -146538,7 +146600,7 @@
     {
       "name": "FLOAT_ARRAY_00d1a280",
       "type": "float[8]",
-      "address": 8
+      "address": 13738624
     },
     {
       "name": "Point2D_00d3ee60",
@@ -146608,7 +146670,7 @@
     {
       "name": "CHAR_ARRAY_00d414d8",
       "type": "char[128]",
-      "address": 128
+      "address": 13898968
     },
     {
       "name": "ARGS_NEWGAME",
@@ -146718,12 +146780,12 @@
     {
       "name": "CHAR_ARRAY_00d99580",
       "type": "char[200]",
-      "address": 200
+      "address": 14259584
     },
     {
       "name": "CHAR_ARRAY_00d99648",
       "type": "char[128]",
-      "address": 128
+      "address": 14259784
     },
     {
       "name": "PTR_00d99724",
@@ -146843,32 +146905,32 @@
     {
       "name": "LH3DMesh_g_current_list_matrix",
       "type": "struct LHMatrix[256]",
-      "address": 15320420
+      "address": 15322664
     },
     {
       "name": "LH3DMesh_g_pack",
       "type": "struct g_pack_t *",
-      "address": 15321444
+      "address": 15334964
     },
     {
       "name": "LH3DMesh_g_current_matrix",
       "type": "struct LHMatrix *",
-      "address": 15322664
+      "address": 15334984
     },
     {
       "name": "LH3DMesh_g_b_dont_care_about_texture",
       "type": "_Bool",
-      "address": 15334964
+      "address": 15334996
     },
     {
       "name": "g_ptr_blocks__10LH3DIsland",
       "type": "struct LandBlock *[256]",
-      "address": 15334984
+      "address": 15320420
     },
     {
       "name": "g_index_block__10LH3DIsland",
       "type": "uint8_t[32][32]",
-      "address": 15334996
+      "address": 15321444
     },
     {
       "name": "LH3DObject",
@@ -146972,7 +147034,7 @@
     },
     {
       "name": "DAT_00eb9a98",
-      "type": "void (*)(void *, const void *, struct MobileWallHug *) __attribute__((fastcall))",
+      "type": "globals_funcptr__DAT_00eb9a98_t*",
       "address": 15440536
     },
     {
@@ -147092,7 +147154,7 @@
     },
     {
       "name": "PTR_00fa51d0",
-      "type": "void (*)(int, int)",
+      "type": "globals_funcptr__PTR_00fa51d0_t*",
       "address": 16404944
     },
     {

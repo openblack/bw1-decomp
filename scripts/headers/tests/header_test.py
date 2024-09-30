@@ -8,7 +8,7 @@ from csnake import CodeWriter
 from pathlib import Path
 
 from functions import FuncPtr, DefinedFunctionPrototype
-from header import Header
+from header import Header, GlobalsHeader
 from structs import Struct, RTTIClass
 from vftable import Vftable
 
@@ -54,8 +54,8 @@ class TestHeaderTypes(unittest.TestCase):
                 Struct.Member("field_0x4", "enum TestEnum", 0x4),
                 Struct.Member("field_0x8", "union TestUnion", 0x8),
                 Struct.Member("field_0xc", "struct TestStruct3*", 0xc),
-                Struct.Member("field_0x10", "struct TestStruct3(*)[2]", 0x10),
-                Struct.Member("field_0x14", "struct TestStruct3*[2]", 0x14),
+                Struct.Member("field_0x10", "struct TestStruct4(*)[2]", 0x10),
+                Struct.Member("field_0x14", "struct TestStruct5*[2]", 0x14),
                 Struct.Member("field_0x1c", "int", 0x1c),
                 Struct.Member("field_0x20", "struct TestStruct1", 0x20),
                 Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
@@ -65,6 +65,7 @@ class TestHeaderTypes(unittest.TestCase):
         self.assertSetEqual(h.get_direct_dependencies(), {
             "static_assert",
             "struct TestStruct1",
+            "struct TestStruct4",
             "enum TestEnum",
             "union TestUnion",
         })
@@ -82,8 +83,8 @@ class TestHeaderTypes(unittest.TestCase):
                 Struct.Member("field_0x4", "enum TestEnum*", 0x4),
                 Struct.Member("field_0x8", "union TestUnion*", 0x8),
                 Struct.Member("field_0xc", "struct TestStruct3*", 0xc),
-                Struct.Member("field_0x10", "struct TestStruct3(*)[2]", 0x10),
-                Struct.Member("field_0x14", "struct TestStruct3*[2]", 0x14),
+                Struct.Member("field_0x10", "struct TestStruct5(*)[2]", 0x10),
+                Struct.Member("field_0x14", "struct TestStruct6*[2]", 0x14),
                 Struct.Member("field_0x1c", "int", 0x1c),
                 Struct.Member("field_0x1c", "int*", 0x20),
                 Struct.Member("field_0x1c", "uint32_t*", 0x24),
@@ -98,6 +99,7 @@ class TestHeaderTypes(unittest.TestCase):
             "union TestUnion",
             "struct TestStruct3",
             "struct TestStruct4",
+            "struct TestStruct6",
         })
 
 
@@ -471,8 +473,8 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
                 Struct.Member("field_0x4", "enum TestEnum*", 0x4),
                 Struct.Member("field_0x8", "union TestUnion*", 0x8),
                 Struct.Member("field_0xc", "struct TestStruct3*", 0xc),
-                Struct.Member("field_0x10", "struct TestStruct3(*)[2]", 0x10),
-                Struct.Member("field_0x14", "struct TestStruct3*[2]", 0x14),
+                Struct.Member("field_0x10", "uint32_t(*)[2]", 0x10),
+                Struct.Member("field_0x14", "struct TestStruct6*[2]", 0x14),
                 Struct.Member("field_0x1c", "int", 0x1c),
                 Struct.Member("field_0x20", "struct TestStruct1", 0x20),
                 Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
@@ -488,6 +490,7 @@ static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 // Forward Declares
 
@@ -495,11 +498,12 @@ enum TestEnum;
 struct TestStruct1;
 struct TestStruct3;
 struct TestStruct4;
+struct TestStruct6;
 union TestUnion;
 
 struct TestStruct1Vftable
 {
-    char* (__fastcall* Foo)(struct TestStruct1* this, const void* edx, int param_1, struct TestStruct4* param_2);
+    char* (__fastcall* Foo)(struct TestStruct1* this, const void* edx, int param_1, struct TestStruct4* param_2);  /* 0x0 */
     void (__fastcall* Bar)(struct TestStruct1* this, const void* edx, float param_1);
 };
 static_assert(sizeof(struct TestStruct1Vftable) == 0x8, "Data type is of wrong size");
@@ -516,8 +520,8 @@ struct TestStruct2
     enum TestEnum* field_0x4;
     union TestUnion* field_0x8;
     struct TestStruct3* field_0xc;
-    struct TestStruct3 (*field_0x10)[2];
-    struct TestStruct3* field_0x14[2];
+    uint32_t (*field_0x10)[2];
+    struct TestStruct6* field_0x14[2];
     int field_0x1c;
     struct TestStruct1 field_0x20;
     struct TestStruct1* field_0x24;
@@ -575,7 +579,7 @@ struct TestStruct;
 
 struct TestStructVftable
 {
-    char* (__fastcall* Foo)(struct TestStruct* this, const void* edx, int param_1);
+    char* (__fastcall* Foo)(struct TestStruct* this, const void* edx, int param_1);  /* 0x0 */
     void (__fastcall* Bar)(struct TestStruct* this);
 };
 static_assert(sizeof(struct TestStructVftable) == 0x8, "Data type is of wrong size");
@@ -607,7 +611,7 @@ int __fastcall Baz__10TestStructFPCc(struct TestStruct* this, const void* edx, c
 
 struct TestChildStructVftable
 {
-    struct TestStructVftable super;
+    struct TestStructVftable super;  /* 0x0 */
     char* (__fastcall* Qux)(struct TestChildStruct* this, const void* edx, int test);
 };
 static_assert(sizeof(struct TestChildStructVftable) == 0xc, "Data type is of wrong size");
@@ -651,11 +655,12 @@ char* __fastcall Qux__15TestChildStructFi(struct TestChildStruct* this, const vo
 #include <assert.h> /* For static_assert */
 
 // Forward Declares
+
 struct TestStruct;
 
 struct TestStructVftable
 {
-    void (__fastcall* Foo)(struct TestStruct* this, const void* edx, void (*foo)(int param_1, float param_2, int param_3));
+    void (__fastcall* Foo)(struct TestStruct* this, const void* edx, void (*foo)(int param_1, float param_2, int param_3));  /* 0x0 */
 };
 static_assert(sizeof(struct TestStructVftable) == 0x4, "Data type is of wrong size");
 
@@ -664,6 +669,50 @@ struct TestStruct
     struct TestStructVftable* vftable;
 };
 static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
+
+#endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
+""")
+
+    def test_globals_header(self):
+
+        test_funcptr_global_t = FuncPtr("test_funcptr_global_t", "__fastcall", "void", ["struct TestStruct*", "const void*", "int8_t"], ["this", "edx", "param_1"])
+
+        structs: list[Struct] = [
+            Struct("globals_t", None, [
+                Struct.Member("test_int_global", "int", 0xdeadbee7),
+                Struct.Member("test_struct_global", "struct TestStruct", 0xbaadc0de),
+                Struct.Member("test_uint_array_global", "uint32_t[0x800][0x900]", 0xdeadbeef),
+                Struct.Member("test_funcptr_global", "test_funcptr_global_t*", 0xdeadc0de),
+            ]),
+        ]
+
+        header = GlobalsHeader(self.path, includes=[], structs=structs, function_proto_map={"test_funcptr_global_t": test_funcptr_global_t})
+        header.build_include_list({})
+        header.to_code(self.cw)
+
+        self.assertEqual(self.cw.code,
+                         """\
+#ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
+#define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+// Forward Declares
+
+struct TestStruct;
+
+struct globals_t
+{
+    struct TestStruct* test_struct_global;  /* 0xbaadc0de */
+    int* test_int_global;  /* 0xdeadbee7 */
+    uint32_t (*test_uint_array_global)[0x800][0x900];  /* 0xdeadbeef */
+    void (__fastcall** test_funcptr_global)(struct TestStruct* this, const void* edx, int8_t param_1);  /* 0xdeadc0de */
+};
+
+volatile static struct globals_t globals = {
+    .test_struct_global = (struct TestStruct*)0xbaadc0de,
+    .test_int_global = (int*)0xdeadbee7,
+    .test_uint_array_global = (uint32_t (*)[0x800][0x900])0xdeadbeef,
+    .test_funcptr_global = (void (__fastcall**)(struct TestStruct* this, const void* edx, int8_t param_1))0xdeadc0de,
+};
 
 #endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
 """)

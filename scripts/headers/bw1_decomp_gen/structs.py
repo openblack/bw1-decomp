@@ -1,7 +1,7 @@
 import csnake
 
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Union
 
 from functions import DefinedFunctionPrototype
 from utils import partition, extract_type_name
@@ -12,43 +12,51 @@ class Composite:
     @dataclass
     class Member:
         name: str
-        type: str
+        data_type: Union[str, csnake.FuncPtr]
         offset: int
 
-        def __init__(self, name: str, type: str, offset: int):
+        def __init__(self, name: str, data_type: str, offset: int):
             self.name = name
-            self.type = type.replace(" *", "*")
+            self.data_type = data_type
+            if type(self.data_type) is str:
+                self.data_type = self.data_type.replace(" *", "*")
             self.offset = offset
 
+        def __lt__(self, other: "Composite.Member") -> bool:
+            return self.offset < other.offset
+
         def get_types(self) -> set[str]:
-            result = {self.type}
+            result = {self.data_type}
             return result
 
         def to_csnake(self) -> csnake.Variable:
             # Check if it's a pointer to an array (e.g., int(*)[2] or int (*)[2])
-            if self.type.endswith('[]'):
-                self.type = self.type.rstrip('[]')
-                self.name += '[]'
-            if '(*' in self.type and '[' in self.type:
-                base_type, array_part = self.type.split('(*')
-                formatted_name = f"(*{self.name})"
-                array_part = array_part.lstrip('(*)')
+            if type(self.data_type) is str:
+                if self.data_type.endswith('[]'):
+                    self.data_type = self.data_type.rstrip('[]')
+                    self.name += '[]'
+                if '(*' in self.data_type and '[' in self.data_type:
+                    base_type, array_part = self.data_type.split('(*')
+                    formatted_name = f"(*{self.name})"
+                    array_part = array_part.lstrip('(*)')
+                else:
+                    # Handle regular arrays and non-pointer arrays
+                    base_type, array_part = self.data_type.split(
+                        '[', 1) if '[' in self.data_type else (self.data_type, '')
+                    formatted_name = self.name
+                # Extract dimensions for arrays (e.g., "int[2][3]" -> [2, 3])
+                dimensions = [dim for dim in array_part.replace(']', '').split('[') if dim]
+                base_type = base_type.strip()
             else:
-                # Handle regular arrays and non-pointer arrays
-                base_type, array_part = self.type.split(
-                    '[', 1) if '[' in self.type else (self.type, '')
-
+                dimensions = None
+                base_type = self.data_type
                 formatted_name = self.name
 
-            # Extract dimensions for arrays (e.g., "int[2][3]" -> [2, 3])
-            dimensions = [int(dim) for dim in array_part.replace(
-                ']', '').split('[') if dim]
-
             # Create the csnake variable with either pointer/array or just array
-            return csnake.Variable(formatted_name, base_type.strip(), array=dimensions)
+            return csnake.Variable(formatted_name, base_type, array=dimensions)
 
     name: str
-    size: int
+    size: Optional[int]
     members: list[Member]
 
     @property
@@ -57,6 +65,8 @@ class Composite:
 
 
 class Struct(Composite):
+    print_offset_at_each: Optional[int] = None
+
     @property
     def decorated_name(self):
         return f"struct {self.name}"
@@ -65,7 +75,7 @@ class Struct(Composite):
     def from_json(cls, decl: dict) -> "Struct":
         name = extract_type_name(decl['type'])
         size = decl['size']
-        members = [cls.Member(**m) for m in decl["members"]]
+        members = [cls.Member(**{"data_type": m.pop("type"), **m}) for m in decl["members"]]
         return cls(name, size, members)
 
     def get_types(self) -> set[str]:
@@ -76,14 +86,26 @@ class Struct(Composite):
 
     def to_csnake(self) -> csnake.Struct:
         result = csnake.Struct(self.name, typedef=False)
-        variables = map(self.Member.to_csnake, self.members)
-        for v in variables:
+        # Check if sortable
+        if all(map(lambda x: x.__class__.__lt__ != object.__lt__, self.members)):
+            sorted_members = sorted(self.members)
+        else:
+            sorted_members = self.members
+        variables = map(self.Member.to_csnake, sorted_members)
+        last_offset: int = -1
+        for v, m in zip(variables, sorted_members):
+            if self.print_offset_at_each:
+                if last_offset < 0 or m.offset - last_offset >= self.print_offset_at_each:
+                    hoffset = f"{m.offset:08x}" if m.offset > 0x400000 else f"{m.offset:x}"
+                    v.comment = None if hoffset in m.name else "0x" + hoffset
+                    last_offset = m.offset
             result.add_variable(v)
         return result
 
     def to_code(self, cw: csnake.CodeWriter):
         cw.add_struct(self.to_csnake())
-        cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
+        if self.size is not None:
+            cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
         cw.add_line()
 
 
@@ -117,7 +139,7 @@ class Union(Composite):
     def from_json(cls, decl: dict) -> "Union":
         name = extract_type_name(decl['type'])
         size = decl['size']
-        members = [cls.Member(**m, offset=0) for m in decl["aliases"]]
+        members = [cls.Member(**{"data_type": m.pop("type"), **m}, offset=0) for m in decl["aliases"]]
         return cls(name, size, members)
 
     def get_types(self) -> set[str]:

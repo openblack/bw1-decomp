@@ -3,6 +3,8 @@
 
 #include <stdint.h> /* For uint32_t */
 
+typedef struct _RTL_CRITICAL_SECTION RTL_CRITICAL_SECTION;
+
 typedef uint32_t bool32_t;
 
 struct vec2u16

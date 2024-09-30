@@ -40,5 +40,5 @@ class TestStruct(unittest.TestCase):
         self.assertEqual(csnake_obj.declaration.code, """\
 struct TestStructVftable
 {
-    void (__fastcall* Foo)(struct TestStruct* this, const void* edx, void (*foo)(int param_1, float param_2, int param_3));
+    void (__fastcall* Foo)(struct TestStruct* this, const void* edx, void (*foo)(int param_1, float param_2, int param_3));  /* 0x0 */
 };""")
