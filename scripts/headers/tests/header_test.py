@@ -49,7 +49,7 @@ class TestHeaderTypes(unittest.TestCase):
 
     def test_direct_dependencies(self):
         structs: list[Struct] = [
-            Struct("TestStruct2", 0x28, [
+            Struct("TestStruct2", 0x2c, [
                 Struct.Member("field_0x0", "int *", 0x0),
                 Struct.Member("field_0x4", "enum TestEnum", 0x4),
                 Struct.Member("field_0x8", "union TestUnion", 0x8),
@@ -59,6 +59,7 @@ class TestHeaderTypes(unittest.TestCase):
                 Struct.Member("field_0x1c", "int", 0x1c),
                 Struct.Member("field_0x20", "struct TestStruct1", 0x20),
                 Struct.Member("field_0x24", "struct TestStruct1*", 0x24),
+                Struct.Member("field_0x128", "const struct TestStruct7(*)[2]", 0x10),
             ]),
         ]
         h = Header(self.path, includes=[], structs=structs)
@@ -66,6 +67,7 @@ class TestHeaderTypes(unittest.TestCase):
             "static_assert",
             "struct TestStruct1",
             "struct TestStruct4",
+            "struct TestStruct7",
             "enum TestEnum",
             "union TestUnion",
         })

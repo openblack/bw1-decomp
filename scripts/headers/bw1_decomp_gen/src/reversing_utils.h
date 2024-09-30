@@ -3,6 +3,7 @@
 
 #include <stdint.h> /* For uint32_t */
 
+struct HWND__; typedef struct HWND__ *HWND;
 typedef struct _RTL_CRITICAL_SECTION RTL_CRITICAL_SECTION;
 
 typedef uint32_t bool32_t;

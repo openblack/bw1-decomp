@@ -10,6 +10,11 @@ from typing import List, Tuple, Set, Optional, Dict, Union
 from clang.cindex import TranslationUnit, Diagnostic, Config, Token, TranslationUnitLoadError
 
 
+TYPES_TO_IGNORE = {
+    "RTL_CRITICAL_SECTION",
+}
+
+
 TYPE_SUBSTITUTION_MAP = {
     "_Bool": "bool",
 }
@@ -88,7 +93,6 @@ class GlobalInfo:
 
 
 PATHS = [
-    Path("."),
     Path("black"),
     Path("libs"),
 ]
@@ -112,6 +116,7 @@ def parse_source(path: Optional[Path] = None, source: Optional[str] = None) -> T
     args = ["-m32", f"-resource-dir={get_clang_resource_dir()}"]
     for p in system_include_paths:
         args.append(f"-isystem{p.as_posix()}")
+        args.append(f"-I.")
     for p in PATHS:
         args.append(f"-I{p.as_posix()}")
     for warning in ignored_warnings:
@@ -376,7 +381,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
 
 
 def main(out_path) -> bool:
-    paths: List[Path] = list(filter(lambda x: x != Path("src/globals.h"), itertools.chain([Path("rtti.h")], *(p.glob("*.h") for p in PATHS))))
+    paths: List[Path] = list(filter(lambda x: x != Path("globals.h"), itertools.chain([Path("rtti.h")], *(p.rglob("*.h") for p in PATHS))))
     include_all_headers_src = '\n'.join(f'#include "{p}"' for p in paths)
 
     found_issues, types = extract_type_info(parse_source(source=include_all_headers_src))
@@ -406,7 +411,7 @@ def main(out_path) -> bool:
 
     result_types: List[Dict] = []
     for type_name, t in types.items():
-        if t.location.is_absolute():
+        if t.location.is_absolute() or type_name in TYPES_TO_IGNORE:
             continue
         entry = dict(kind=t.kind_name, type=type_name, size=t.size)
         if t.kind_name == "STRUCT_DECL":

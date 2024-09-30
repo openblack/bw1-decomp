@@ -8,7 +8,7 @@ from json import load
 from pathlib import Path
 import csnake
 
-from header import Header, GlobalsHeader, C_STDLIB_HEADER_IMPORT_MAP
+from header import Header, GlobalsHeader, C_STDLIB_HEADER_IMPORT_MAP, UTILITY_HEADER_IMPORT_MAP
 from structs import Struct, Union, Enum, RTTIClass
 from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype, CSnakeFuncPtr
@@ -38,13 +38,17 @@ def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionProt
     return thiscall_map, static_method_map, remainder
 
 
-primitive_look_up = {
+PRIMITIVE_LOOK_UP = {
     'STRUCT_DECL': Struct,
     'UNION_DECL': Union,
     'ENUM_DECL': Enum,
     'TYPEDEF_DECL': Typedef,
     'FUNCTIONPROTO': FuncPtr,
 }
+
+TYPES_TO_IGNORE = {
+    "TypeDescriptor",
+} | {i.removeprefix("struct ") for i in UTILITY_HEADER_IMPORT_MAP.keys()} | C_STDLIB_HEADER_IMPORT_MAP.keys()
 
 # TODO: Do every type of variable
 def arg_clang_wrapping_declaration_to_csnake(wrapping_declaration):
@@ -122,7 +126,7 @@ if __name__ == "__main__":
     projects_and_files = map_projects_to_object_files()
     primitives = []
     for decl in db['types']:
-        primitive = primitive_look_up[decl['kind']]
+        primitive = PRIMITIVE_LOOK_UP[decl['kind']]
         # TODO: Get immediate dependencies for each primitive
         primitives.append(primitive.from_json(decl))
 
@@ -199,7 +203,7 @@ if __name__ == "__main__":
         if type(data_type) is Struct or type(data_type) is Typedef:
             if data_type.name.startswith("RTTI"):
                 return True
-            if data_type.name in ["TypeDescriptor", "vec2u16", "bool32_t"]:
+            if data_type.name in TYPES_TO_IGNORE:
                 return True
         return False
 
