@@ -102,7 +102,16 @@ def batched_arg_to_csnake(type_decls):
     source = "\n".join(source_list)
     translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32"], unsaved_files=[('tmp.c', source)])
 
-    assert len([d for d in translation_unit.diagnostics if d.severity >= cindex.Diagnostic.Error]) == 0
+    error_strings: list[str] = []
+    for diagnostic in translation_unit.diagnostics:
+        if diagnostic.severity >= cindex.Diagnostic.Error:
+            error_strings.append(str(diagnostic))
+        if diagnostic.severity >= cindex.Diagnostic.Warning:
+            sys.stderr.write(f"{diagnostic}\n")
+
+    if error_strings:
+        sys.stderr.flush()
+        raise RuntimeError("Error parsing source:\n\t" + "\n\t".join(error_strings))
 
     for wrapping_declaration in (c for c in translation_unit.cursor.get_children() if c.spelling.startswith("__arg_to_csnake_wrapping_declaration")):
         i, j = wrapping_declaration.spelling.removeprefix("__arg_to_csnake_wrapping_declaration__").removesuffix("__").split("__")
