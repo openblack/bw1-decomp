@@ -795,7 +795,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\WorshipSpell.h"),
 }
 
-roomate_classes = {
+ROOMMATE_CLASS_MAP = {
     "LHPoint2D": "LHPoint",
     "MapCoordsSplit": "MapCoords",
     "MapCoordsFull": "MapCoords",

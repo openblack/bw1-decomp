@@ -14,7 +14,7 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype, CSnakeFuncPtr
 from vftable import Vftable
 from utils import partition, extract_type_name
-from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, roomate_classes
+from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, ROOMMATE_CLASS_MAP
 
 
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
@@ -154,7 +154,7 @@ def build_enum_headers(header_enums, header_map):
 def build_member_funcptr_headers(member_function_pointers, header_map):
     for t in member_function_pointers:
         struct_name = t.name[::-1].split("__")[-1][::-1]
-        path = get_struct_path(roomate_classes.get(struct_name, struct_name))
+        path = get_struct_path(ROOMMATE_CLASS_MAP.get(struct_name, struct_name))
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
@@ -165,7 +165,7 @@ def build_member_funcptr_headers(member_function_pointers, header_map):
 def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
     for t in header_structs:
         try:
-            path = get_struct_path(roomate_classes.get(t.name, t.name))
+            path = get_struct_path(ROOMMATE_CLASS_MAP.get(t.name, t.name))
             includes: list[Header.Include] = []
             header = header_map.get(path)
             structs: list[Struct] = header.structs if header is not None else []
@@ -190,7 +190,7 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
 
 def build_neighbour_function_headers(assigned_neighbour_functions, header_map):
     for t in assigned_neighbour_functions:
-        path = get_struct_path(roomate_classes[t.name])
+        path = get_struct_path(ROOMMATE_CLASS_MAP[t.name])
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
@@ -201,7 +201,7 @@ def build_neighbour_function_headers(assigned_neighbour_functions, header_map):
 def build_sinit_headers(sinit_functions, header_map):
     for t in sinit_functions:
         class_name = t.name.removeprefix("__sinit_").removesuffix("_cpp")
-        path = get_struct_path(roomate_classes.get(class_name, class_name))
+        path = get_struct_path(ROOMMATE_CLASS_MAP.get(class_name, class_name))
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
@@ -243,7 +243,7 @@ if __name__ == "__main__":
         sinit_functions,
         remainder_functions,
     ) = partition([
-        lambda x: x.name in roomate_classes.keys(),
+        lambda x: x.name in ROOMMATE_CLASS_MAP.keys(),
         lambda x: x.name.startswith("__sinit_"),
     ], remainder_functions)
 
@@ -251,7 +251,7 @@ if __name__ == "__main__":
     object_file_base_names_lower = {str.lower(i): i for i in object_file_base_names}
 
     def get_header_struct_name_key(type_name) -> Optional[str]:
-        roomate_class_name = roomate_classes.get(type_name, type_name)
+        roomate_class_name = ROOMMATE_CLASS_MAP.get(type_name, type_name)
         if roomate_class_name[0] == 'G' and roomate_class_name[1].isupper():
             roomate_class_name = roomate_class_name[1:]
         result = object_file_base_names_lower.get(roomate_class_name.lower())
@@ -275,8 +275,8 @@ if __name__ == "__main__":
         if type_name.count("_") < num_stripped_suffixes:
             return None
         if num_stripped_suffixes == 0:
-            if type_name in roomate_classes:
-                return roomate_classes[type_name]
+            if type_name in ROOMMATE_CLASS_MAP:
+                return ROOMMATE_CLASS_MAP[type_name]
             return string.capwords(type_name).replace("_", "")
         return "".join(map(string.capwords, type_name.split("_")[:-num_stripped_suffixes]))
 
