@@ -128,6 +128,99 @@ def generate_globals_header(globals_decl: dict, function_proto_map: dict[str, Fu
     return header
 
 
+def get_struct_path(name):
+    stem = name
+    # For things like GBaseInfo
+    if name[0] == 'G' and name[1].isupper():
+        stem = name[1:]
+    for project, object_files in projects_and_files.items():
+        if stem +".obj" in object_files:
+            break
+    else:
+        raise RuntimeError(f"Need to add guessed path for {name} in vanilla_filepaths.py")
+    return Path(project) / f"{stem}.h"
+
+
+def build_enum_headers(header_enums, header_map):
+    for e in header_enums:
+        path = get_struct_path(get_enum_header_name_key(e))
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(e)
+        header = Header(path, [], structs)
+        header_map[path] = header
+
+
+def build_member_funcptr_headers(member_function_pointers, header_map):
+    for t in member_function_pointers:
+        struct_name = t.name[::-1].split("__")[-1][::-1]
+        path = get_struct_path(roomate_classes.get(struct_name, struct_name))
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(t)
+        header = Header(path, [], structs)
+        header_map[path] = header
+
+
+def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
+    for t in header_structs:
+        try:
+            path = get_struct_path(roomate_classes.get(t.name, t.name))
+            includes: list[Header.Include] = []
+            header = header_map.get(path)
+            structs: list[Struct] = header.structs if header is not None else []
+            if t.members and t.members[0].name in ["vftable", "super", "base"]:
+                vftable = vftable_map.get(t.name)
+                virtual_method_names = [i.name for i in vftable.members] if vftable else []
+                if vftable:
+                    structs.append(vftable)
+                if t.name in helper_base_map:
+                    structs.append(helper_base_map[t.name])
+                new_struct = RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)
+            else:
+                new_struct = t
+            structs.append(new_struct)
+            for s in structs:
+                local_header_import_map[s.decorated_name] = path
+            header = Header(path, includes, structs)
+            header_map[path] = header
+        except RuntimeError as e:
+            print(e, file=sys.stderr)
+
+
+def build_neighbour_function_headers(assigned_neighbour_functions, header_map):
+    for t in assigned_neighbour_functions:
+        path = get_struct_path(roomate_classes[t.name])
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(t)
+        header = Header(path, [], structs)
+        header_map[path] = header
+
+
+def build_sinit_headers(sinit_functions, header_map):
+    for t in sinit_functions:
+        class_name = t.name.removeprefix("__sinit_").removesuffix("_cpp")
+        path = get_struct_path(roomate_classes.get(class_name, class_name))
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(t)
+        header = Header(path, [], structs)
+        header_map[path] = header
+
+
+def build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, header_map, local_header_import_map):
+    consumed_lh_linked_list_pointer_structs = set()
+    consumed_lh_linked_list_structs = set()
+    consumed_lh_list_head_structs = set()
+    for header in header_map.values():
+        consumed_lh_linked_list_pointer_structs.update(header.add_linked_list_pointered_defines(lh_linked_list_pointer_structs))
+        consumed_lh_linked_list_structs.update(header.add_linked_list_defines(lh_linked_list_structs))
+        consumed_lh_list_head_structs.update(header.add_list_head_defines(lh_list_head_structs))
+        header.build_include_list(local_header_import_map)
+    return consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs
+
+
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
 if __name__ == "__main__":
     tic = time.perf_counter()
@@ -272,88 +365,15 @@ if __name__ == "__main__":
     for t in bases:
         helper_base_map[t.name.removesuffix('Base')] = t
 
-
-    def get_path(name):
-        stem = name
-        # For things like GBaseInfo
-        if name[0] == 'G' and name[1].isupper():
-            stem = name[1:]
-        for project, object_files in projects_and_files.items():
-            if stem +".obj" in object_files:
-                break
-        else:
-            raise RuntimeError(f"Need to add guessed path for {name} in vanilla_filepaths.py")
-        return Path(project) / f"{stem}.h"
-
     local_header_import_map: dict[str, Path] = {}
     header_map: dict[Path, Header] = {}
 
-    for e in header_enums:
-        path = get_path(get_enum_header_name_key(e))
-        header = header_map.get(path)
-        structs: list[Struct] = header.structs if header is not None else []
-        structs.append(e)
-        header = Header(path, [], structs)
-        header_map[path] = header
-
-    for t in member_function_pointers:
-        struct_name = t.name[::-1].split("__")[-1][::-1]
-        path = get_path(roomate_classes.get(struct_name, struct_name))
-        header = header_map.get(path)
-        structs: list[Struct] = header.structs if header is not None else []
-        structs.append(t)
-        header = Header(path, [], structs)
-        header_map[path] = header
-
-    for t in header_structs:
-        try:
-            path = get_path(roomate_classes.get(t.name, t.name))
-            includes: list[Header.Include] = []
-            header = header_map.get(path)
-            structs: list[Struct] = header.structs if header is not None else []
-            if t.members and t.members[0].name in ["vftable", "super", "base"]:
-                vftable = vftable_map.get(t.name)
-                virtual_method_names = [i.name for i in vftable.members] if vftable else []
-                if vftable:
-                    structs.append(vftable)
-                if t.name in helper_base_map:
-                    structs.append(helper_base_map[t.name])
-                new_struct = RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)
-            else:
-                new_struct = t
-            structs.append(new_struct)
-            for s in structs:
-                local_header_import_map[s.decorated_name] = path
-            header = Header(path, includes, structs)
-            header_map[path] = header
-        except RuntimeError as e:
-            print(e, file=sys.stderr)
-
-    for t in assigned_neighbour_functions:
-        path = get_path(roomate_classes[t.name])
-        header = header_map.get(path)
-        structs: list[Struct] = header.structs if header is not None else []
-        structs.append(t)
-        header = Header(path, [], structs)
-        header_map[path] = header
-
-    for t in sinit_functions:
-        class_name = t.name.removeprefix("__sinit_").removesuffix("_cpp")
-        path = get_path(roomate_classes.get(class_name, class_name))
-        header = header_map.get(path)
-        structs: list[Struct] = header.structs if header is not None else []
-        structs.append(t)
-        header = Header(path, [], structs)
-        header_map[path] = header
-
-    consumed_lh_linked_list_pointer_structs = set()
-    consumed_lh_linked_list_structs = set()
-    consumed_lh_list_head_structs = set()
-    for header in header_map.values():
-        consumed_lh_linked_list_pointer_structs.update(header.add_linked_list_pointered_defines(lh_linked_list_pointer_structs))
-        consumed_lh_linked_list_structs.update(header.add_linked_list_defines(lh_linked_list_structs))
-        consumed_lh_list_head_structs.update(header.add_list_head_defines(lh_list_head_structs))
-        header.build_include_list(local_header_import_map)
+    build_enum_headers(header_enums, header_map)
+    build_member_funcptr_headers(member_function_pointers, header_map)
+    build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
+    build_neighbour_function_headers(assigned_neighbour_functions, header_map)
+    build_sinit_headers(sinit_functions, header_map)
+    consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs = build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, header_map, local_header_import_map)
 
     headers: list[Header] = list(header_map.values())
 
