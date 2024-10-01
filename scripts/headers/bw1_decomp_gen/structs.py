@@ -212,7 +212,8 @@ class RTTIClass(Struct):
         self.name = struct.name
         self.size = struct.size
         self.members = struct.members[:]
-        vftable_global = vftable_map.get(struct.name.removeprefix("struct "))
+        basename = struct.name.removeprefix("struct ")
+        vftable_global = vftable_map.get(basename) or vftable_map.get(f"{len(basename)}{basename}")
         self.vftable_address = vftable_global['address'] if vftable_global is not None else None
 
         def get_method_name(x: str) -> str:
