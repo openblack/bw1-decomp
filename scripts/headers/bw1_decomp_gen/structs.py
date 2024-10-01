@@ -45,7 +45,7 @@ class Composite:
                         '[', 1) if '[' in self.data_type else (self.data_type, '')
                     formatted_name = self.name
                 # Extract dimensions for arrays (e.g., "int[2][3]" -> [2, 3])
-                dimensions = [dim for dim in array_part.replace(']', '').split('[') if dim]
+                dimensions = [hex(int(dim, 0)) for dim in array_part.replace(']', '').split('[') if dim]
                 base_type = base_type.strip()
             else:
                 dimensions = None
