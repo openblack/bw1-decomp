@@ -180,9 +180,18 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
                     structs.append(helper_base_map[t.name])
                 new_struct = RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)
                 consumed_vftable_addresses.add(new_struct.vftable_address)
-                consumed_methods |= set(i.name for i in new_struct.all_methods)
             else:
                 new_struct = t
+                (
+                    new_struct.constructors,
+                    new_struct.methods,
+                ) = partition([
+                    lambda x: x.name.startswith('__ct__'),
+                ], class_method_look_up.get(new_struct.name, list()))
+                new_struct.static_methods = class_static_method_look_up.get(new_struct.name, list())
+
+            if isinstance(new_struct, Struct):
+                consumed_methods |= set(i.name for i in new_struct.all_methods)
             structs.append(new_struct)
             for s in structs:
                 local_header_import_map[s.decorated_name] = path

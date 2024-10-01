@@ -65,11 +65,18 @@ class Composite:
 
 
 class Struct(Composite):
+    constructors: list[DefinedFunctionPrototype] = []
+    methods: list[DefinedFunctionPrototype] = []
+    static_methods: list[DefinedFunctionPrototype] = []
     print_offset_at_each: Optional[int] = None
 
     @property
     def decorated_name(self):
         return f"struct {self.name}"
+
+    @property
+    def all_methods(self) -> list[DefinedFunctionPrototype]:
+        return self.constructors + self.methods + self.static_methods
 
     @classmethod
     def from_json(cls, decl: dict) -> "Struct":
@@ -102,11 +109,39 @@ class Struct(Composite):
             result.add_variable(v)
         return result
 
-    def to_code(self, cw: csnake.CodeWriter):
+    def to_code_data(self, cw: csnake.CodeWriter):
         cw.add_struct(self.to_csnake())
         if self.size is not None:
             cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
         cw.add_line()
+
+    def to_code_methods(self, cw: csnake.CodeWriter):
+        if self.static_methods:
+            cw.add_line('// Static methods')
+            cw.add_line()
+
+            for f in self.static_methods:
+                f.to_code(cw)
+            cw.add_line()
+        if self.constructors:
+            cw.add_line('// Constructors')
+            cw.add_line()
+
+            for f in self.constructors:
+                f.to_code(cw)
+            cw.add_line()
+
+        if self.methods:
+            cw.add_line('// Non-virtual methods')
+            cw.add_line()
+
+            for f in self.methods:
+                f.to_code(cw)
+            cw.add_line()
+
+    def to_code(self, cw: csnake.CodeWriter):
+        self.to_code_data(cw)
+        self.to_code_methods(cw)
 
 
 # TODO: Replace with csnake.Union when https://gitlab.com/andrejr/csnake/-/merge_requests/5 lands
@@ -197,16 +232,12 @@ class Enum:
 
 @dataclass
 class RTTIClass(Struct):
-
     vftable_address: Optional[int]
-    constructors: list[DefinedFunctionPrototype]
     method_overrides: list[DefinedFunctionPrototype]
-    methods: list[DefinedFunctionPrototype]
-    static_methods: list[DefinedFunctionPrototype]
 
     @property
     def all_methods(self) -> list[DefinedFunctionPrototype]:
-        return self.constructors + self.method_overrides + self.methods + self.static_methods
+        return super().all_methods + self.method_overrides
 
     def __init__(self, struct: Struct, vftable_map: dict[str, dict], virtual_table_function_names: tuple[str], method_map: dict[str, DefinedFunctionPrototype], static_method_map: dict[str, DefinedFunctionPrototype]):
         self.name = struct.name
@@ -242,8 +273,8 @@ class RTTIClass(Struct):
             result.update(m.get_types())
         return result - {"void"}
 
-    def to_code(self, cw: csnake.CodeWriter):
-        super().to_code(cw)
+    def to_code_data(self, cw: csnake.CodeWriter):
+        super().to_code_data(cw)
         if self.vftable_address:
             vftable_ptr_type = f"{self.decorated_name}Vftable*"
             # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
@@ -252,34 +283,12 @@ class RTTIClass(Struct):
             cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", vftable_ptr_type, ["static"], value=address))
             cw.add_line()
 
-        if self.constructors:
-            cw.add_line('// Constructors')
-            cw.add_line()
-
-            for f in self.constructors:
-                f.to_code(cw)
-            cw.add_line()
-
+    def to_code_methods(self, cw: csnake.CodeWriter):
+        super().to_code_methods(cw)
         if self.method_overrides:
             cw.add_line('// Override methods')
             cw.add_line()
 
             for f in self.method_overrides:
-                f.to_code(cw)
-            cw.add_line()
-
-        if self.methods:
-            cw.add_line('// Non-virtual methods')
-            cw.add_line()
-
-            for f in self.methods:
-                f.to_code(cw)
-            cw.add_line()
-
-        if self.static_methods:
-            cw.add_line('// Static methods')
-            cw.add_line()
-
-            for f in self.static_methods:
                 f.to_code(cw)
             cw.add_line()
