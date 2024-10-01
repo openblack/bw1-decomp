@@ -163,6 +163,8 @@ def build_member_funcptr_headers(member_function_pointers, header_map):
 
 
 def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
+    consumed_vftable_addresses = set()
+    consumed_methods = set()
     for t in header_structs:
         try:
             path = get_struct_path(ROOMMATE_CLASS_MAP.get(t.name, t.name))
@@ -177,6 +179,8 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
                 if t.name in helper_base_map:
                     structs.append(helper_base_map[t.name])
                 new_struct = RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)
+                consumed_vftable_addresses.add(new_struct.vftable_address)
+                consumed_methods |= set(i.name for i in new_struct.all_methods)
             else:
                 new_struct = t
             structs.append(new_struct)
@@ -186,6 +190,19 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
             header_map[path] = header
         except RuntimeError as e:
             print(e, file=sys.stderr)
+
+    remaining_vftable_addresses = {k: v for k, v in vftable_address_look_up.items() if v['address'] not in consumed_vftable_addresses}
+    remaining_class_methods = list()
+    for v in class_method_look_up.values():
+        for i in v:
+            if i.name not in consumed_methods:
+                remaining_class_methods.append(i)
+    remaining_class_static_methods = list()
+    for v in class_static_method_look_up.values():
+        for i in v:
+            if i.name not in consumed_methods:
+                remaining_class_static_methods.append(i)
+    return remaining_vftable_addresses, remaining_class_methods, remaining_class_static_methods
 
 
 def build_neighbour_function_headers(assigned_neighbour_functions, header_map):
@@ -370,7 +387,7 @@ if __name__ == "__main__":
 
     build_enum_headers(header_enums, header_map)
     build_member_funcptr_headers(member_function_pointers, header_map)
-    build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
+    remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
     build_sinit_headers(sinit_functions, header_map)
     consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs = build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, header_map, local_header_import_map)
@@ -380,6 +397,8 @@ if __name__ == "__main__":
     # Create header for globals_t with actual addresses
     headers.append(generate_globals_header(remainder_globals, global_function_ptr_proto_map, local_header_import_map))
 
+    remainder_functions += remainder_class_methods
+    remainder_functions += remainder_class_static_methods
     if remainder_functions:
         header = Header(Path("TodoRemainderFunctions.h"), [], remainder_functions)
         header.build_include_list(local_header_import_map)
@@ -428,7 +447,8 @@ if __name__ == "__main__":
     print(f"Ignored {len(to_ignore)} entries")
     print(f"Took {toc - tic:0.4f} seconds")
 
-    if len(remainder_functions) + len(remainder_primitives) + len(remainder_enums) + len(remainder) > 0:
+    if len(remainder_vftables) + len(remainder_functions) + len(remainder_primitives) + len(remainder_enums) + len(remainder) > 0:
+        print(f"There are still {len(remainder_vftables)} orphan vftables: [{", ".join(sorted(i['name'] for i in remainder_vftables.values())[:10])}{", ..." if len(remainder_vftables) > 10 else ""}]")
         print(f"There are still {len(remainder_functions)} orphan functions: [{", ".join([i.name for i in remainder_functions][:10])}{", ..." if len(remainder_functions) > 10 else ""}]")
         print(f"There are still {len(remainder_primitives)} orphan structs: [{", ".join([i.name for i in remainder_primitives][:10])}{", ..." if len(remainder_primitives) > 10 else ""}]")
         print(f"There are still {len(remainder_enums)} orphan enums: [{", ".join([i.name for i in remainder_enums][:10])}{", ..." if len(remainder_enums) > 10 else ""}]")
