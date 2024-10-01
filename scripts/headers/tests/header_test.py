@@ -287,7 +287,7 @@ static_assert(sizeof(struct TestStruct1) == 0x4, "Data type is of wrong size");
 
 struct TestStruct
 {
-    int field_0x0[2];
+    int field_0x0[0x2];
 };
 static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
 
@@ -297,7 +297,7 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
     def test_struct_3d_array(self):
         structs: list[Struct] = [
             Struct("TestStruct", 0x4 * 2 * 15 * 9, [
-                Struct.Member("field_0x0", "int[2][15][9]", 0x0),  # Just an array of 2 ints
+                Struct.Member("field_0x0", "int[0x2][0xF][0x9]", 0x0),  # Just an array of 2 ints
             ]),
         ]
         header = Header(self.path, includes=[], structs=structs)
@@ -312,7 +312,7 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
 
 struct TestStruct
 {
-    int field_0x0[2][15][9];
+    int field_0x0[0x2][0xf][0x9];
 };
 static_assert(sizeof(struct TestStruct) == 0x438, "Data type is of wrong size");
 
@@ -362,7 +362,7 @@ static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
 
 struct TestStruct
 {
-    int field_0x0[0];
+    int field_0x0[0x0];
 };
 static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
 
@@ -372,7 +372,7 @@ static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
     def test_struct_array_of_pointers(self):
         structs: list[Struct] = [
             Struct("TestStruct", 0x8, [
-                Struct.Member("field_0x0", "int*[2]", 0x0),  # Array of 2 pointers to int
+                Struct.Member("field_0x0", "int*[0x2]", 0x0),  # Array of 2 pointers to int
             ]),
         ]
         header = Header(self.path, includes=[], structs=structs)
@@ -387,7 +387,7 @@ static_assert(sizeof(struct TestStruct) == 0x0, "Data type is of wrong size");
 
 struct TestStruct
 {
-    int* field_0x0[2];
+    int* field_0x0[0x2];
 };
 static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
 
@@ -412,7 +412,7 @@ static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
 
 struct TestStruct
 {
-    int (*field_0x0)[2];
+    int (*field_0x0)[0x2];
 };
 static_assert(sizeof(struct TestStruct) == 0x8, "Data type is of wrong size");
 
@@ -451,10 +451,10 @@ static_assert(sizeof(struct TestStruct1) == 0x4, "Data type is of wrong size");
 struct TestStruct2
 {
     struct TestStruct1 field_0x0;
-    struct TestStruct1 field_0x4[2];
+    struct TestStruct1 field_0x4[0x2];
     struct TestStruct1* field_0xc;
-    struct TestStruct1 (*field_0x10)[2];
-    struct TestStruct1* field_0x14[2];
+    struct TestStruct1 (*field_0x10)[0x2];
+    struct TestStruct1* field_0x14[0x2];
     int field_0x1c;
 };
 static_assert(sizeof(struct TestStruct2) == 0x20, "Data type is of wrong size");
@@ -522,8 +522,8 @@ struct TestStruct2
     enum TestEnum* field_0x4;
     union TestUnion* field_0x8;
     struct TestStruct3* field_0xc;
-    uint32_t (*field_0x10)[2];
-    struct TestStruct6* field_0x14[2];
+    uint32_t (*field_0x10)[0x2];
+    struct TestStruct6* field_0x14[0x2];
     int field_0x1c;
     struct TestStruct1 field_0x20;
     struct TestStruct1* field_0x24;
