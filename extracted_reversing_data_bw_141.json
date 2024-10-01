@@ -54756,7 +54756,7 @@
         "struct RPHolder *",
         "struct Creature *",
         "int",
-        "void (*)(int, struct LHPoint2D, float, int)"
+        "void (*)(int, struct Point2D, float, int)"
       ],
       "arg_names": [
         "this",
@@ -54765,7 +54765,7 @@
         "param_3",
         "param_4"
       ],
-      "signature": "void (struct Object *, const void *, struct RPHolder *, struct Creature *, int, void (*)(int, struct LHPoint2D, float, int)) __attribute__((fastcall))"
+      "signature": "void (struct Object *, const void *, struct RPHolder *, struct Creature *, int, void (*)(int, struct Point2D, float, int)) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -57113,7 +57113,7 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHPoint2D",
+      "type": "struct Point2D",
       "size": 8,
       "members": [
         {
@@ -57405,7 +57405,7 @@
         },
         {
           "name": "uv",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 12
         },
         {
@@ -60881,7 +60881,7 @@
       "members": [
         {
           "name": "point",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 0
         },
         {
@@ -74543,6 +74543,18 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct Cow",
+      "size": 328,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Animal",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct Feature",
       "size": 124,
       "members": [
@@ -77364,12 +77376,12 @@
         },
         {
           "name": "from_screen_centre",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 152
         },
         {
           "name": "from_screen_centre_abs",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 160
         },
         {
@@ -77549,7 +77561,7 @@
         },
         {
           "name": "field_0x1b8",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 440
         },
         {
@@ -106333,7 +106345,7 @@
         },
         {
           "name": "field_0x3ec",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 1004
         },
         {
@@ -107235,6 +107247,18 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct FelledTree",
+      "size": 160,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DeadTree",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct LHRegion",
       "size": 16,
       "members": [
@@ -107953,12 +107977,12 @@
       "members": [
         {
           "name": "start",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 0
         },
         {
           "name": "end",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 8
         },
         {
@@ -108196,7 +108220,7 @@
         },
         {
           "name": "field_0x8",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 8
         },
         {
@@ -108240,12 +108264,12 @@
         },
         {
           "name": "field_0x50004",
-          "type": "struct LHPoint2D *",
+          "type": "struct Point2D *",
           "offset": 327684
         },
         {
           "name": "field_0x50008",
-          "type": "struct LHPoint2D *",
+          "type": "struct Point2D *",
           "offset": 327688
         },
         {
@@ -108345,7 +108369,7 @@
         },
         {
           "name": "field_0x6402c",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 409644
         },
         {
@@ -108370,7 +108394,7 @@
         },
         {
           "name": "field_0x64044",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 409668
         },
         {
@@ -108425,7 +108449,7 @@
         },
         {
           "name": "field_0x64074",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 409716
         },
         {
@@ -108544,17 +108568,17 @@
         },
         {
           "name": "field_0x24",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 36
         },
         {
           "name": "field_0x2c",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 44
         },
         {
           "name": "field_0x34",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 52
         },
         {
@@ -110535,7 +110559,7 @@
         },
         {
           "name": "field_0x3b94",
-          "type": "struct LHPoint2D[1271]",
+          "type": "struct Point2D[1271]",
           "offset": 15252
         },
         {
@@ -121504,7 +121528,7 @@
         },
         {
           "name": "uv",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 12
         },
         {
@@ -121531,12 +121555,12 @@
         },
         {
           "name": "half_res",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 12
         },
         {
           "name": "inv_half_res",
-          "type": "struct LHPoint2D",
+          "type": "struct Point2D",
           "offset": 20
         },
         {
@@ -127630,10 +127654,10 @@
     {
       "win_addr": 8564384,
       "mac_addr": 274838364,
-      "decorated_name": "~NewCollide::NewCollide(void)",
+      "decorated_name": "NewCollide::~NewCollide(void)",
       "undecorated_name": "__dt__10NewCollideFv",
       "return_type": "void",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct NewCollide *"
       ],
@@ -128998,7 +129022,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct RPAvoid *",
-        "struct LHPoint2D *",
+        "struct Point2D *",
         "float"
       ],
       "argument_names": [
@@ -129045,8 +129069,8 @@
       "argument_types": [
         "struct RPHolder *",
         "int",
-        "struct LHPoint2D *",
-        "struct LHPoint2D *",
+        "struct Point2D *",
+        "struct Point2D *",
         "int"
       ],
       "argument_names": [
@@ -129066,10 +129090,10 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct RPHolder *",
-        "struct LHPoint2D *",
-        "struct LHPoint2D *",
+        "struct Point2D *",
+        "struct Point2D *",
         "int",
-        "struct LHPoint2D *",
+        "struct Point2D *",
         "int *",
         "float"
       ],
@@ -129092,7 +129116,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct RPFollow *",
-        "struct LHPoint2D *",
+        "struct Point2D *",
         "float",
         "float",
         "float",
@@ -129130,7 +129154,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct RPFollow *",
-        "struct LHPoint2D *",
+        "struct Point2D *",
         "float *",
         "float"
       ],
@@ -129208,7 +129232,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct RPlan *",
-        "struct LHPoint2D *",
+        "struct Point2D *",
         "float",
         "struct RPHolder *",
         "int",
@@ -129234,7 +129258,7 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct RPlan *",
-        "const struct LHPoint2D *",
+        "const struct Point2D *",
         "float",
         "float",
         "float",
@@ -130456,10 +130480,10 @@
     {
       "win_addr": 4215104,
       "mac_addr": 273585232,
-      "decorated_name": "FameThing::GetRadius(void)",
+      "decorated_name": "GameThing::GetRadius(void)",
       "undecorated_name": "GetRadius__9GameThingFv",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct GameThing *"
       ],
@@ -131080,8 +131104,8 @@
     {
       "win_addr": 5653600,
       "mac_addr": -1,
-      "decorated_name": "GameThingList::PushBack(GameThing *)",
-      "undecorated_name": "PushBack__13GameThingListFP9GameThing",
+      "decorated_name": "LHLinkedList<GameThing*>::PushBack(GameThing *)",
+      "undecorated_name": "PushBack__25LHLinkedList__p_GameThingFP9GameThing",
       "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
@@ -133418,10 +133442,10 @@
       "mac_addr": 269408896,
       "decorated_name": "ConvertMapCoordsToPoint2D(MapCoords const &)",
       "undecorated_name": "ConvertMapCoordsToPoint2D__FRC9MapCoords",
-      "return_type": "struct LHPoint2D *",
+      "return_type": "struct Point2D *",
       "call_type": "cdecl",
       "argument_types": [
-        "struct LHPoint2D *",
+        "struct Point2D *",
         "const struct MapCoords *"
       ],
       "argument_names": [
@@ -135408,8 +135432,8 @@
         "struct RouteNode *",
         "struct RouteNode *",
         "int",
-        "struct LHPoint2D *",
-        "struct LHPoint2D *",
+        "struct Point2D *",
+        "struct Point2D *",
         "int",
         "int"
       ],
@@ -140266,7 +140290,7 @@
     {
       "win_addr": 8911968,
       "mac_addr": 269326512,
-      "decorated_name": "6LHIlib::LH3DRenderClose(void)",
+      "decorated_name": "LHIlib::LH3DRenderClose(void)",
       "undecorated_name": "LH3DRenderClose__6LHIlibFv",
       "return_type": "int",
       "call_type": "cdecl",
@@ -141000,16 +141024,14 @@
       "mac_addr": 269127008,
       "decorated_name": "Point2D::operator=(const Point2D&)",
       "undecorated_name": "__as__7Point2DFRC7Point2D",
-      "return_type": "struct LHPoint2D *",
-      "call_type": "__fastcall",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
       "argument_types": [
-        "struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *"
+        "struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "other"
       ]
     },
@@ -141019,15 +141041,13 @@
       "decorated_name": "Point2D::DotProduct(Point2D&)",
       "undecorated_name": "DotProduct__7Point2DRP7Point2D",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *"
+        "const struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "other"
       ]
     },
@@ -141036,16 +141056,14 @@
       "mac_addr": 269127008,
       "decorated_name": "Point2D::operator=(const Point2D&) copy",
       "undecorated_name": "__as__7Point2DFRC7Point2D2",
-      "return_type": "struct LHPoint2D *",
-      "call_type": "__fastcall",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
       "argument_types": [
-        "struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *"
+        "struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "other"
       ]
     },
@@ -141055,15 +141073,13 @@
       "decorated_name": "Point2D::DotProduct(Point2D*)",
       "undecorated_name": "DotProduct__7Point2DFP7Point2D",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *"
+        "const struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "other"
       ]
     },
@@ -141072,17 +141088,15 @@
       "mac_addr": 268646208,
       "decorated_name": "Point2D::operator*(float) const",
       "undecorated_name": "__ml__7Point2DCFf",
-      "return_type": "struct LHPoint2D *",
-      "call_type": "__fastcall",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *",
-        "const void *",
-        "struct LHPoint2D *",
+        "const struct Point2D *",
+        "struct Point2D *",
         "float"
       ],
       "argument_names": [
         "this",
-        "edx",
         "result",
         "rhs"
       ]
@@ -141092,17 +141106,15 @@
       "mac_addr": 269129024,
       "decorated_name": "Point2D::operator+( const(Point2D const &))",
       "undecorated_name": "__pl__7Point2DCFRC7Point2D",
-      "return_type": "struct LHPoint2D *",
-      "call_type": "__fastcall",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
       "argument_types": [
-        "struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *",
-        "const struct LHPoint2D *"
+        "struct Point2D *",
+        "const struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "lhs",
         "rhs"
       ]
@@ -141112,17 +141124,15 @@
       "mac_addr": 268995600,
       "decorated_name": "Point2D::operator-( const(Point2D const &))",
       "undecorated_name": "__mi__7Point2DCFRC7Point2D",
-      "return_type": "struct LHPoint2D *",
-      "call_type": "__fastcall",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
       "argument_types": [
-        "struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *",
-        "const struct LHPoint2D *"
+        "struct Point2D *",
+        "const struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "lhs",
         "rhs"
       ]
@@ -141133,15 +141143,13 @@
       "decorated_name": "Point2D::Cross(const Point2D&) const",
       "undecorated_name": "Cross__7Point2DCFRC7Point2D",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *"
+        "const struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "other"
       ]
     },
@@ -141151,9 +141159,9 @@
       "decorated_name": "Point2D::Normalize(void)",
       "undecorated_name": "Normalize__7Point2DFv",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "struct LHPoint2D *"
+        "struct Point2D *"
       ],
       "argument_names": [
         "this"
@@ -141165,9 +141173,9 @@
       "decorated_name": "Point2D::GetNormSq(void) const",
       "undecorated_name": "GetNormSq__7Point2DFv",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *"
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this"
@@ -141179,9 +141187,9 @@
       "decorated_name": "Point2D::GetNormSq(void) const copy",
       "undecorated_name": "GetNormSq__7Point2DFv2",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *"
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this"
@@ -141193,15 +141201,13 @@
       "decorated_name": "Point2D::operator==(const Point2D&)",
       "undecorated_name": "__eq__7Point2DFRC7Point2D",
       "return_type": "bool",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *"
+        "struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "other"
       ]
     },
@@ -141211,9 +141217,9 @@
       "decorated_name": "Point2D::GetHeading(void) const",
       "undecorated_name": "GetHeading__7Point2DCFv",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *"
+        "const struct Point2D *"
       ],
       "argument_names": [
         "param_1"
@@ -141225,15 +141231,13 @@
       "decorated_name": "Point2D::SetSize(float)",
       "undecorated_name": "SetSize__7Point2DFf",
       "return_type": "void",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "struct LHPoint2D *",
-        "const void *",
+        "struct Point2D *",
         "float"
       ],
       "argument_names": [
         "this",
-        "edx",
         "size"
       ]
     },
@@ -141243,15 +141247,13 @@
       "decorated_name": "Point2D::GetRange(Point2D const &) const",
       "undecorated_name": "GetRange__7Point2DCFRC7Point2D",
       "return_type": "float",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct LHPoint2D *",
-        "const void *",
-        "const struct LHPoint2D *"
+        "const struct Point2D *",
+        "const struct Point2D *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "param_1"
       ]
     },
@@ -144875,6 +144877,38 @@
     },
     {
       "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "VBarData::VBarData(const VBarData &)",
+      "undecorated_name": "ct__8VBarDataFRC8VBarData",
+      "return_type": "struct VBarData *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct VBarData *",
+        "const struct VBarData *"
+      ],
+      "argument_names": [
+        "this",
+        "bar"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "VBarData::operator=(const VBarData &)",
+      "undecorated_name": "as__8VBarDataFRC8VBarData",
+      "return_type": "struct VBarData *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct VBarData *",
+        "const struct VBarData *"
+      ],
+      "argument_names": [
+        "this",
+        "bar"
+      ]
+    },
+    {
+      "win_addr": -1,
       "mac_addr": 272291088,
       "decorated_name": "LHLinkedNode<VBarData*>::LHLinkedNode<VBarData*>(VBarData*, LHLinkedNode<VBarData>*)",
       "undecorated_name": "ct__VBarDataListNode",
@@ -144891,6 +144925,20 @@
         "edx",
         "payload",
         "next"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LHLinkedList<VBarData>::GetStart() const",
+      "undecorated_name": "GetStart__VBarDataList",
+      "return_type": "struct LHLinkedNode__p_VBarData *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct LHLinkedList__p_VBarData *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -144927,9 +144975,27 @@
     },
     {
       "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LHLinkedList<VBarData*>::PushBack(VBarData*)",
+      "undecorated_name": "PushBack__24LHLinkedList__p_VBarDataFP8VBarData",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHLinkedList__p_VBarData *",
+        "const void *",
+        "struct VBarData *"
+      ],
+      "argument_names": [
+        "this",
+        "edx",
+        "payload"
+      ]
+    },
+    {
+      "win_addr": -1,
       "mac_addr": 271873136,
-      "decorated_name": "LHLinkedList<VBarData*>Remove(VBarData, b)",
-      "undecorated_name": "Remove__VBarDataList",
+      "decorated_name": "LHLinkedList<VBarData*>::Remove(VBarData*, bool)",
+      "undecorated_name": "Remove__24LHLinkedList__p_VBarDataFP8VBarDatab",
       "return_type": "void",
       "call_type": "__fastcall",
       "argument_types": [
@@ -146604,17 +146670,17 @@
     },
     {
       "name": "Point2D_00d3ee60",
-      "type": "struct LHPoint2D",
+      "type": "struct Point2D",
       "address": 13889120
     },
     {
       "name": "Point2D_00d3ee68",
-      "type": "struct LHPoint2D",
+      "type": "struct Point2D",
       "address": 13889128
     },
     {
       "name": "Point2D_00d3ee70",
-      "type": "struct LHPoint2D",
+      "type": "struct Point2D",
       "address": 13889136
     },
     {

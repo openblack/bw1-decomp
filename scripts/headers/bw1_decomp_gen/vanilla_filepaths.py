@@ -105,8 +105,8 @@ released_filepaths_from_strings = {
     BWPath(r"C:\dev\MP\Black\BWLan.cpp"),
     BWPath(r"C:\dev\MP\Black\Camera.cpp"),
     BWPath(r"C:\dev\MP\Black\CameraEditor.cpp"),
-    BWPath(r"C:\dev\MP\Black\camerahelp.cpp"),
-    BWPath(r"C:\dev\MP\Black\camerahelp.h"),
+    # BWPath(r"C:\dev\MP\Black\camerahelp.cpp"),
+    # BWPath(r"C:\dev\MP\Black\camerahelp.h"),
     BWPath(r"C:\dev\MP\Black\CameraModeCitadel.cpp"),
     BWPath(r"C:\dev\MP\Black\CameraModeDance.cpp"),
     BWPath(r"C:\dev\MP\Black\CameraModeFlyAndClick.cpp"),
@@ -525,6 +525,8 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHText.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHSystem.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DAnim.h"),
+    BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DIsland.h"),
+    BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DLandscape.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DColor.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DHair.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DTexture.h"),
@@ -583,6 +585,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\GameThing.h"),
     BWPath(r"C:\Dev\black\GameThingWithPos.h"),
 
+    BWPath(r"C:\dev\MP\Black\CameraHelp.h"),
     BWPath(r"C:\Dev\black\AllocatedBeliefList.h"),
     BWPath(r"C:\Dev\black\Bubble.h"),
     BWPath(r"C:\Dev\black\CameraExclusion.h"),
@@ -594,6 +597,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\Black\CameraModeNew2.cpp"),
     BWPath(r"C:\Dev\black\ScriptedCamera.h"),
     BWPath(r"C:\Dev\black\ControlMap.h"),
+    BWPath(r"C:\Dev\black\Cow.h"),
     BWPath(r"C:\Dev\black\CHand.h"),
     BWPath(r"C:\Dev\black\Climate.h"),
     BWPath(r"C:\Dev\black\CreatureActionsKnownAbout.h"),
@@ -650,6 +654,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\CreatureInfo.h"),
     BWPath(r"C:\Dev\black\DanceInfo.h"),
     BWPath(r"C:\Dev\black\EffectInfo.h"),
+    BWPath(r"C:\Dev\black\FelledTree.h"),
     BWPath(r"C:\Dev\black\FireEffect.h"),
     BWPath(r"C:\Dev\black\FieldTypeInfo.h"),
     BWPath(r"C:\Dev\black\FootpathFinder.h"),
@@ -704,6 +709,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\TownInfo.h"),
     BWPath(r"C:\Dev\black\TreeInfo.h"),
     BWPath(r"C:\Dev\black\TribeInfo.h"),
+    BWPath(r"C:\Dev\black\VillagerNameBlock.h"),
     BWPath(r"C:\Dev\black\VillagerInfo.h"),
     BWPath(r"C:\Dev\black\VillagerStateTableInfo.h"),
     BWPath(r"C:\Dev\black\VirtualInfluence.h"),
@@ -796,13 +802,15 @@ guessed_filepaths = {
 }
 
 ROOMMATE_CLASS_MAP = {
-    "LHPoint2D": "LHPoint",
+    "Point2D": "LHPoint",
     "MapCoordsSplit": "MapCoords",
     "MapCoordsFull": "MapCoords",
     "JustMapXZ": "MapCoords",
     "LHScriptPramX_c_": "LHScript",
     "LHScriptCommandX_c_": "LHScript",
+    "LHScriptX": "LHScript",
     "LHScriptX_c_": "LHScript",
+    "LHScriptX_w_": "LHScript",
     "LHSys": "LHSystem",
     "LHSys_field_0x70c4_t": "LHSystem",
     "LHSys_field_0x70c4_t_field_0x0_t": "LHSystem",
@@ -827,8 +835,10 @@ ROOMMATE_CLASS_MAP = {
     "std__pair__pNewCollide__Obj__std__set__pMobileWallHug": "Collide",
     "std__map__pNewCollide__Obj__std__set__pMobileWallHug_iterator": "Collide",
     "std__map__pNewCollide__Obj__std__set__pMobileWallHug_node_list": "Collide",
+    "std::map<NewCollide::Obj*, std::set<MobileWallHug*>>": "Collide",
     "std__map__pNewCollide__Obj__std__set__pMobileWallHug": "Collide",
     "SubCollideBlockPos": "Collide",
+    "std::map<SubCollideBlockPos, NewCollide3Obj*>": "Collide",
     "std__map__SubCollideBlockPosPNewCollide3Obj": "Collide",
     "std__map__SubCollideBlockPosPNewCollide3Obj_iterator": "Collide",
     "CircleHugStateInfo_field_0x44_node_list": "Collide",
@@ -855,6 +865,7 @@ ROOMMATE_CLASS_MAP = {
     "LandBlock": "Landscape",
     "LandCell": "Landscape",
     "HandFX": "PSysHandFX",
+    "GJUtils": "Utils",
     "Morphable_field_0x4314_t": "Morphable",
     "CHand__State__Named": "CHand",
     "CreatureDesiresSource": "CreatureDesires",
@@ -908,6 +919,7 @@ ROOMMATE_CLASS_MAP = {
     "CFrameData": "LH3DAnim",
     "AnimInfo": "LH3DAnim",
     "ANM_BaseHeader": "LH3DAnim",
+    "GSaveLoadPtrList": "SaveLoadPtr",
     "MapCell": "Map",
     "MapCellIterator": "Map",
     "AgeToScale": "Creature",
@@ -925,6 +937,7 @@ ROOMMATE_CLASS_MAP = {
     "Random__Fff": "Random",
     "LHFileLength": "LHFile",
     "LHLoadData": "LHFile",
+    "PSysEditorInterface": "PSysInterface",
     "SetTurnOffMouseMove__Fb": "LHMouse",
     "DrawAndClip__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl": "LH3DRender",
     "DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl": "LH3DRender",
@@ -942,7 +955,10 @@ ROOMMATE_CLASS_MAP = {
     "DoWallHuggerLookahead__Fv": "MobileWallHug",
     "Resolve__26IntersectIntervalCircle_0_Fv": "MobileWallHug",
     "Resolve__26IntersectIntervalCircle_1_Fv": "MobileWallHug",
+    "MobileWallHug_InCircleStuff": "MobileWallHug",
     "get_villager_state_table": "Villager",
+    "CPController": "Citadel",
+    "PhysicsSaveInfo": "PhysicsObject",
     "hypotenuse__Fll": "LHMath",
     "LHArcTan__Fll": "LHMath",
     "ConvertMapCoordsToPoint2D__FRC9MapCoords": "MapCoords",
@@ -951,6 +967,10 @@ ROOMMATE_CLASS_MAP = {
     "LHJoypads": "LHJoypad",
     "FrameInfoLinkedList": "LHSystem",
     "LHConvert": "LHSystem",
+    "slim::TbIME": "LHSystem",
+    "GRand": "Random",
+    "LH3DMem": "LHMemory",
+    "LHIlib": "LHDLL",
     "VORTEX_STAT_TYPE": "LandscapeVortex",
     "VORTEX_STATE_TYPE": "LandscapeVortex",
     "VORTEX_TYPE": "LandscapeVortex",
@@ -1002,6 +1022,18 @@ ROOMMATE_CLASS_MAP = {
     "MISC_INFO": "Game",
     "LOADER_VERSIONS": "PCMain",
 }
+
+
+def resolve_roommate(struct_name):
+    match = re.search(r"^(LHLinkedList|LHListHead)<([^<>\*]+)\*?>", struct_name)
+    if match:
+        struct_name = match.group(2)
+    if '<' in struct_name and not "":
+        split = struct_name.split('<')
+        if "," not in split[1]:
+            struct_name = split[0]
+    return ROOMMATE_CLASS_MAP.get(struct_name, ROOMMATE_CLASS_MAP.get(struct_name.replace("::", "__"), struct_name))
+
 
 unportable_dev_filepaths = released_filepaths_from_strings.union(guessed_filepaths)
 dev_filepaths = {BWPath(str(a.parent).lower().replace("c:", "C:").replace("/mp/", "/").replace("\\mp\\", "\\")) / a.name for a in unportable_dev_filepaths}

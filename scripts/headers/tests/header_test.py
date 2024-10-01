@@ -597,19 +597,19 @@ static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
 // win1.41 00404040 mac 10101010 TestStruct::TestStruct(void)
 struct TestStruct* __fastcall __ct__10TestStructFv(struct TestStruct* this);
 
-// Override methods
-
-// win1.41 00404060 mac 10101020 TestStruct::Foo(int)
-char* __fastcall Foo__10TestStructFi(struct TestStruct* this, const void* edx, int test);
-// win1.41 00404050 mac 10101030 TestStruct::Bar(void)
-void __fastcall Bar__10TestStructFv(struct TestStruct* this);
-
 // Non-virtual methods
 
 // win1.41 00404020 mac 10101080 TestStruct::Fuz(void)
 void* __fastcall Fuz__10TestStructFv(struct TestStruct* this);
 // win1.41 00404070 mac 10101040 TestStruct::Baz(const char*)
 int __fastcall Baz__10TestStructFPCc(struct TestStruct* this, const void* edx, const char* name);
+
+// Override methods
+
+// win1.41 00404060 mac 10101020 TestStruct::Foo(int)
+char* __fastcall Foo__10TestStructFi(struct TestStruct* this, const void* edx, int test);
+// win1.41 00404050 mac 10101030 TestStruct::Bar(void)
+void __fastcall Bar__10TestStructFv(struct TestStruct* this);
 
 struct TestChildStructVftable
 {

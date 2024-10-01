@@ -89,6 +89,8 @@ class Struct(Composite):
         result = {self.decorated_name}
         for m in self.members:
             result.update(m.get_types())
+        for m in self.all_methods:
+            result.update(m.get_types())
         return result - {"void"}
 
     def to_csnake(self) -> csnake.Struct:
@@ -266,12 +268,6 @@ class RTTIClass(Struct):
             key=lambda x: virtual_table_function_names.index(get_method_name(x.name)))
         self.methods.sort()
         self.static_methods.sort()
-
-    def get_types(self) -> set[str]:
-        result = super().get_types()
-        for m in self.all_methods:
-            result.update(m.get_types())
-        return result - {"void"}
 
     def to_code_data(self, cw: csnake.CodeWriter):
         super().to_code_data(cw)

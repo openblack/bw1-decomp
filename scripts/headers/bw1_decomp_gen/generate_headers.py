@@ -14,16 +14,32 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype, CSnakeFuncPtr
 from vftable import Vftable
 from utils import partition, extract_type_name
-from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, ROOMMATE_CLASS_MAP
+from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, resolve_roommate, ROOMMATE_CLASS_MAP
+
+
+def extract_type_from_func_name(s):
+    name = s.split("(")[0]
+    parts = name.split("::")
+
+    # Constructors
+    if len(parts) % 2 == 0 and parts[:len(parts) // 2] == parts[len(parts) // 2:]:
+        parts = ["::".join(parts[:len(parts) // 2])] * 2
+
+    if len(parts) >= 2:
+        type_name = "::".join(parts[:-1])
+
+    return type_name
 
 
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
     functions: list[DefinedFunctionPrototype] = [DefinedFunctionPrototype.from_json(f) for f in function_db]
     (
+        class_list_functions,
         thiscalls,
         static_methods,
         remainder,
     ) = partition([
+        lambda x: x.decorated_name.startswith("LHLinkedList<") or x.decorated_name.startswith("LHLinkedNode<") or x.decorated_name.startswith("LHListHead<"),
         lambda x: x.call_type == '__thiscall',
         lambda x: "::" in x.decorated_name,
     ], functions)
@@ -33,9 +49,15 @@ def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionProt
         thiscall_map[key] = thiscall_map.get(key, []) + [f]
     static_method_map: dict[str: DefinedFunctionPrototype] = {}
     for f in static_methods:
-        key = f.decorated_name.split("::")[0]
+        key = extract_type_from_func_name(f.decorated_name)
         static_method_map[key] = static_method_map.get(key, []) + [f]
-    return thiscall_map, static_method_map, remainder
+    class_list_function_map: dict[str: DefinedFunctionPrototype] = {}
+    for f in class_list_functions:
+        templated_name = extract_type_from_func_name(f.decorated_name)
+        inner_type = templated_name.split("<", 1)[1].rstrip('>')
+        key = extract_type_name(inner_type)
+        class_list_function_map[key] = class_list_function_map.get(key, []) + [f]
+    return thiscall_map, static_method_map, class_list_function_map, remainder
 
 
 PRIMITIVE_LOOK_UP = {
@@ -137,7 +159,7 @@ def get_struct_path(name):
         if stem +".obj" in object_files:
             break
     else:
-        raise RuntimeError(f"Need to add guessed path for {name} in vanilla_filepaths.py")
+        raise RuntimeError(f"Need to add guessed path or roommate for {name} in vanilla_filepaths.py")
     return Path(project) / f"{stem}.h"
 
 
@@ -154,7 +176,7 @@ def build_enum_headers(header_enums, header_map):
 def build_member_funcptr_headers(member_function_pointers, header_map):
     for t in member_function_pointers:
         struct_name = t.name[::-1].split("__")[-1][::-1]
-        path = get_struct_path(ROOMMATE_CLASS_MAP.get(struct_name, struct_name))
+        path = get_struct_path(resolve_roommate(struct_name))
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
@@ -167,7 +189,7 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
     consumed_methods = set()
     for t in header_structs:
         try:
-            path = get_struct_path(ROOMMATE_CLASS_MAP.get(t.name, t.name))
+            path = get_struct_path(resolve_roommate(t.name))
             includes: list[Header.Include] = []
             header = header_map.get(path)
             structs: list[Struct] = header.structs if header is not None else []
@@ -206,12 +228,30 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
         for i in v:
             if i.name not in consumed_methods:
                 remaining_class_methods.append(i)
-    remaining_class_static_methods = list()
-    for v in class_static_method_look_up.values():
+    remaining_class_static_methods = dict()
+    for struct_name, v in class_static_method_look_up.items():
+        remaining = []
         for i in v:
             if i.name not in consumed_methods:
-                remaining_class_static_methods.append(i)
+                remaining.append(i)
+        if remaining:
+            remaining_class_static_methods[struct_name] = remaining
     return remaining_vftable_addresses, remaining_class_methods, remaining_class_static_methods
+
+
+def build_remaining_static_function_headers(remainder_class_static_methods, header_map):
+    remainder = {}
+    for n, l in remainder_class_static_methods.items():
+        try:
+            path = get_struct_path(resolve_roommate(n))
+            header = header_map.get(path)
+            structs: list[Struct] = header.structs if header is not None else []
+            structs += l
+            header = Header(path, [], structs)
+        except RuntimeError as e:
+            print(e, file=sys.stderr)
+            remainder[n] = l
+    return remainder
 
 
 def build_neighbour_function_headers(assigned_neighbour_functions, header_map):
@@ -227,7 +267,7 @@ def build_neighbour_function_headers(assigned_neighbour_functions, header_map):
 def build_sinit_headers(sinit_functions, header_map):
     for t in sinit_functions:
         class_name = t.name.removeprefix("__sinit_").removesuffix("_cpp")
-        path = get_struct_path(ROOMMATE_CLASS_MAP.get(class_name, class_name))
+        path = get_struct_path(resolve_roommate(class_name))
         header = header_map.get(path)
         structs: list[Struct] = header.structs if header is not None else []
         structs.append(t)
@@ -263,7 +303,7 @@ if __name__ == "__main__":
     vftable_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__vt__")], global_decls)
     vftable_address_look_up = {i["name"].removeprefix("__vt__"): i for i in vftable_addresses}
 
-    class_method_look_up, class_static_method_look_up, remainder_functions = find_methods(db['functions'])
+    class_method_look_up, class_static_method_look_up, class_list_functions, remainder_functions = find_methods(db['functions'])
     (
         assigned_neighbour_functions,
         sinit_functions,
@@ -277,7 +317,7 @@ if __name__ == "__main__":
     object_file_base_names_lower = {str.lower(i): i for i in object_file_base_names}
 
     def get_header_struct_name_key(type_name) -> Optional[str]:
-        roomate_class_name = ROOMMATE_CLASS_MAP.get(type_name, type_name)
+        roomate_class_name = resolve_roommate(type_name)
         if roomate_class_name[0] == 'G' and roomate_class_name[1].isupper():
             roomate_class_name = roomate_class_name[1:]
         result = object_file_base_names_lower.get(roomate_class_name.lower())
@@ -397,6 +437,7 @@ if __name__ == "__main__":
     build_enum_headers(header_enums, header_map)
     build_member_funcptr_headers(member_function_pointers, header_map)
     remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
+    remainder_class_static_methods = build_remaining_static_function_headers(remainder_class_static_methods, header_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
     build_sinit_headers(sinit_functions, header_map)
     consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs = build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, header_map, local_header_import_map)
@@ -406,8 +447,11 @@ if __name__ == "__main__":
     # Create header for globals_t with actual addresses
     headers.append(generate_globals_header(remainder_globals, global_function_ptr_proto_map, local_header_import_map))
 
+    remainder_functions = list(remainder_functions)
     remainder_functions += remainder_class_methods
-    remainder_functions += remainder_class_static_methods
+    for v in remainder_class_static_methods.values():
+        remainder_functions += v
+    remainder_functions.sort()
     if remainder_functions:
         header = Header(Path("TodoRemainderFunctions.h"), [], remainder_functions)
         header.build_include_list(local_header_import_map)
