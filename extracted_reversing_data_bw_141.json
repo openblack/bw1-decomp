@@ -57178,6 +57178,33 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DBoundingBox",
+      "size": 32,
+      "members": [
+        {
+          "name": "unknown",
+          "type": "uint32_t",
+          "offset": 0
+        },
+        {
+          "name": "centre",
+          "type": "struct LHPoint",
+          "offset": 4
+        },
+        {
+          "name": "size",
+          "type": "struct LHPoint",
+          "offset": 16
+        },
+        {
+          "name": "diagonal_length",
+          "type": "float",
+          "offset": 28
+        }
+      ]
+    },
+    {
       "kind": "ENUM_DECL",
       "type": "enum TextureFormat_",
       "size": 4,
@@ -57417,129 +57444,23 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LH3DVertexGroup",
-      "size": 4,
-      "members": [
-        {
-          "name": "vertex_count",
-          "type": "uint16_t",
-          "offset": 0
-        },
-        {
-          "name": "bone_index",
-          "type": "uint16_t",
-          "offset": 2
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DPrimitive",
-      "size": 48,
-      "members": [
-        {
-          "name": "material_",
-          "type": "struct LH3DMaterial",
-          "offset": 0
-        },
-        {
-          "name": "num_vertices_",
-          "type": "int",
-          "offset": 16
-        },
-        {
-          "name": "vertices_",
-          "type": "struct LH3DVertex *",
-          "offset": 20
-        },
-        {
-          "name": "num_triangles_",
-          "type": "int",
-          "offset": 24
-        },
-        {
-          "name": "triangles_",
-          "type": "uint8_t *",
-          "offset": 28
-        },
-        {
-          "name": "num_vertex_groups_",
-          "type": "int",
-          "offset": 32
-        },
-        {
-          "name": "vertex_groups_",
-          "type": "struct LH3DVertexGroup *",
-          "offset": 36
-        },
-        {
-          "name": "num_blends_",
-          "type": "int",
-          "offset": 40
-        },
-        {
-          "name": "blends_",
-          "type": "uint8_t *",
-          "offset": 44
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DSubMesh",
-      "size": 20,
-      "members": [
-        {
-          "name": "flags_",
-          "type": "uint32_t",
-          "offset": 0
-        },
-        {
-          "name": "num_primitives_",
-          "type": "uint32_t",
-          "offset": 4
-        },
-        {
-          "name": "primitives_",
-          "type": "struct LH3DPrimitive **",
-          "offset": 8
-        },
-        {
-          "name": "num_bones_",
-          "type": "int",
-          "offset": 12
-        },
-        {
-          "name": "bones_",
-          "type": "uint8_t *",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct L3DBoundingBox",
+      "type": "struct Vertex3D",
       "size": 32,
       "members": [
         {
-          "name": "unknown",
-          "type": "uint32_t",
+          "name": "position",
+          "type": "struct LHPoint",
           "offset": 0
         },
         {
-          "name": "centre",
-          "type": "struct LHPoint",
-          "offset": 4
+          "name": "uv",
+          "type": "struct Point2D",
+          "offset": 12
         },
         {
-          "name": "size",
+          "name": "normal",
           "type": "struct LHPoint",
-          "offset": 16
-        },
-        {
-          "name": "diagonal_length",
-          "type": "float",
-          "offset": 28
+          "offset": 20
         }
       ]
     },
@@ -57620,7 +57541,7 @@
         },
         {
           "name": "bounding_box",
-          "type": "struct L3DBoundingBox",
+          "type": "struct LH3DBoundingBox",
           "offset": 20
         },
         {
@@ -57652,83 +57573,6 @@
           "name": "footprint_data",
           "type": "struct FootprintData *",
           "offset": 72
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DSprite",
-      "size": 52,
-      "members": [
-        {
-          "name": "pos",
-          "type": "struct LHPoint",
-          "offset": 0
-        },
-        {
-          "name": "field_0xc",
-          "type": "float",
-          "offset": 12
-        },
-        {
-          "name": "field_0x10",
-          "type": "float",
-          "offset": 16
-        },
-        {
-          "name": "angle",
-          "type": "float",
-          "offset": 20
-        },
-        {
-          "name": "field_0x18",
-          "type": "float",
-          "offset": 24
-        },
-        {
-          "name": "field_0x1c",
-          "type": "float",
-          "offset": 28
-        },
-        {
-          "name": "field_0x20",
-          "type": "float",
-          "offset": 32
-        },
-        {
-          "name": "field_0x24",
-          "type": "float",
-          "offset": 36
-        },
-        {
-          "name": "field_0x28",
-          "type": "uint32_t",
-          "offset": 40
-        },
-        {
-          "name": "field_0x2c",
-          "type": "float",
-          "offset": 44
-        },
-        {
-          "name": "field_0x30",
-          "type": "uint8_t",
-          "offset": 48
-        },
-        {
-          "name": "field_0x31",
-          "type": "uint8_t",
-          "offset": 49
-        },
-        {
-          "name": "field_0x32",
-          "type": "uint8_t",
-          "offset": 50
-        },
-        {
-          "name": "field_0x33",
-          "type": "uint8_t",
-          "offset": 51
         }
       ]
     },
@@ -58929,282 +58773,6 @@
           "name": "field_0x78",
           "type": "uint8_t",
           "offset": 120
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DMeshedObject",
-      "size": 128,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DObject",
-          "offset": 0
-        },
-        {
-          "name": "mesh",
-          "type": "struct LH3DMesh *",
-          "offset": 124
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DStaticObject",
-      "size": 128,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DMeshedObject",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DStaticMorphableObject",
-      "size": 132,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DStaticObject",
-          "offset": 0
-        },
-        {
-          "name": "field_0x80",
-          "type": "uint32_t",
-          "offset": 128
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DAnimatedObject",
-      "size": 164,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DMeshedObject",
-          "offset": 0
-        },
-        {
-          "name": "current_anim",
-          "type": "uint32_t",
-          "offset": 128
-        },
-        {
-          "name": "field_0x84",
-          "type": "uint32_t",
-          "offset": 132
-        },
-        {
-          "name": "field_0x88",
-          "type": "uint32_t",
-          "offset": 136
-        },
-        {
-          "name": "field_0x8c",
-          "type": "uint32_t",
-          "offset": 140
-        },
-        {
-          "name": "field_0x90",
-          "type": "uint32_t",
-          "offset": 144
-        },
-        {
-          "name": "field_0x94",
-          "type": "uint32_t",
-          "offset": 148
-        },
-        {
-          "name": "field_0x98",
-          "type": "uint32_t",
-          "offset": 152
-        },
-        {
-          "name": "field_0x9c",
-          "type": "uint32_t",
-          "offset": 156
-        },
-        {
-          "name": "field_0xa0",
-          "type": "uint32_t",
-          "offset": 160
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DComplexObject",
-      "size": 192,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DStaticObject",
-          "offset": 0
-        },
-        {
-          "name": "matrix_0x80",
-          "type": "struct LHMatrix *",
-          "offset": 128
-        },
-        {
-          "name": "field_0x84",
-          "type": "uint32_t *",
-          "offset": 132
-        },
-        {
-          "name": "hair",
-          "type": "struct LH3DObjectHair *",
-          "offset": 136
-        },
-        {
-          "name": "field_0x8c",
-          "type": "uint32_t",
-          "offset": 140
-        },
-        {
-          "name": "field_0x90",
-          "type": "uint32_t",
-          "offset": 144
-        },
-        {
-          "name": "field_0x94",
-          "type": "uint32_t",
-          "offset": 148
-        },
-        {
-          "name": "field_0x98",
-          "type": "uint32_t",
-          "offset": 152
-        },
-        {
-          "name": "field_0x9c",
-          "type": "uint32_t",
-          "offset": 156
-        },
-        {
-          "name": "field_0xa0",
-          "type": "uint32_t",
-          "offset": 160
-        },
-        {
-          "name": "field_0xa4",
-          "type": "uint32_t",
-          "offset": 164
-        },
-        {
-          "name": "field_0xa8",
-          "type": "uint32_t",
-          "offset": 168
-        },
-        {
-          "name": "field_0xac",
-          "type": "uint32_t",
-          "offset": 172
-        },
-        {
-          "name": "next",
-          "type": "struct LH3DComplexObject *",
-          "offset": 176
-        },
-        {
-          "name": "field_0xb4",
-          "type": "uint32_t",
-          "offset": 180
-        },
-        {
-          "name": "field_0xb8",
-          "type": "uint32_t",
-          "offset": 184
-        },
-        {
-          "name": "field_0xbc",
-          "type": "uint32_t",
-          "offset": 188
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DSpriteObject",
-      "size": 128,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DObject",
-          "offset": 0
-        },
-        {
-          "name": "smoke",
-          "type": "struct LH3DSmoke *",
-          "offset": 124
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DMist",
-      "size": 156,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DStaticObject",
-          "offset": 0
-        },
-        {
-          "name": "field_0x80",
-          "type": "uint32_t",
-          "offset": 128
-        },
-        {
-          "name": "field_0x84",
-          "type": "uint32_t",
-          "offset": 132
-        },
-        {
-          "name": "field_0x88",
-          "type": "float",
-          "offset": 136
-        },
-        {
-          "name": "field_0x8c",
-          "type": "float",
-          "offset": 140
-        },
-        {
-          "name": "field_0x90",
-          "type": "uint32_t",
-          "offset": 144
-        },
-        {
-          "name": "next",
-          "type": "struct LH3DMist *",
-          "offset": 148
-        },
-        {
-          "name": "field_0x98",
-          "type": "uint32_t",
-          "offset": 152
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DCitadel",
-      "size": 192,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct LH3DStaticMorphableObject",
-          "offset": 0
-        },
-        {
-          "name": "field_0x84",
-          "type": "uint8_t[60]",
-          "offset": 132
         }
       ]
     },
@@ -74753,18 +74321,6 @@
       ]
     },
     {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH_SamplePlayOptions",
-      "size": 360,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint8_t[360]",
-          "offset": 0
-        }
-      ]
-    },
-    {
       "kind": "ENUM_DECL",
       "type": "enum AUDIO_SFX_BANK_TYPE",
       "size": 4,
@@ -74782,11 +74338,23 @@
     {
       "kind": "STRUCT_DECL",
       "type": "struct LH_AudioBank",
-      "size": 1,
+      "size": 316,
       "members": [
         {
           "name": "field_0x0",
-          "type": "uint8_t",
+          "type": "uint8_t[316]",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH_SamplePlayOptions",
+      "size": 360,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint8_t[360]",
           "offset": 0
         }
       ]
@@ -79714,6 +79282,37 @@
       ]
     },
     {
+      "kind": "ENUM_DECL",
+      "type": "enum AnimInfoType",
+      "size": 4,
+      "constants": [
+        {
+          "name": "AnimInfoType_Minus",
+          "value": 0
+        },
+        {
+          "name": "AnimInfoType_C",
+          "value": 1
+        },
+        {
+          "name": "AnimInfoType_N",
+          "value": 2
+        },
+        {
+          "name": "AnimInfoType_L",
+          "value": 6
+        },
+        {
+          "name": "AnimInfoType_W",
+          "value": 9
+        },
+        {
+          "name": "AnimInfoType_D",
+          "value": 16
+        }
+      ]
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct CFrameData",
       "size": 264,
@@ -79818,37 +79417,6 @@
           "name": "offset",
           "type": "int[232]",
           "offset": 1856
-        }
-      ]
-    },
-    {
-      "kind": "ENUM_DECL",
-      "type": "enum AnimInfoType",
-      "size": 4,
-      "constants": [
-        {
-          "name": "AnimInfoType_Minus",
-          "value": 0
-        },
-        {
-          "name": "AnimInfoType_C",
-          "value": 1
-        },
-        {
-          "name": "AnimInfoType_N",
-          "value": 2
-        },
-        {
-          "name": "AnimInfoType_L",
-          "value": 6
-        },
-        {
-          "name": "AnimInfoType_W",
-          "value": 9
-        },
-        {
-          "name": "AnimInfoType_D",
-          "value": 16
         }
       ]
     },
@@ -110368,6 +109936,18 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct GatheringText",
+      "size": 1,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint8_t",
+          "offset": 0
+        }
+      ]
+    },
+    {
       "kind": "ENUM_DECL",
       "type": "enum BBSTYLE",
       "size": 4,
@@ -120470,6 +120050,45 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct HelpText",
+      "size": 12,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint32_t",
+          "offset": 0
+        },
+        {
+          "name": "field_0x4",
+          "type": "uint32_t",
+          "offset": 4
+        },
+        {
+          "name": "str",
+          "type": "const char16_t *",
+          "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct HelpTextDataBase",
+      "size": 8,
+      "members": [
+        {
+          "name": "array",
+          "type": "struct HelpText *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct InnerRoom",
       "size": 44,
       "members": [
@@ -121393,215 +121012,6 @@
           "name": "super",
           "type": "struct Abode",
           "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GatheringText",
-      "size": 1,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint8_t",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct HelpText",
-      "size": 12,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint32_t",
-          "offset": 0
-        },
-        {
-          "name": "field_0x4",
-          "type": "uint32_t",
-          "offset": 4
-        },
-        {
-          "name": "str",
-          "type": "const char16_t *",
-          "offset": 8
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct HelpTextDataBase",
-      "size": 8,
-      "members": [
-        {
-          "name": "array",
-          "type": "struct HelpText *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DCamera",
-      "size": 40,
-      "members": [
-        {
-          "name": "pos",
-          "type": "struct LHPoint",
-          "offset": 0
-        },
-        {
-          "name": "foc",
-          "type": "struct LHPoint",
-          "offset": 12
-        },
-        {
-          "name": "fov",
-          "type": "float",
-          "offset": 24
-        },
-        {
-          "name": "lookAtVector",
-          "type": "struct LHPoint",
-          "offset": 28
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LH3DCameraChecker",
-      "size": 36,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct LH3DCameraChecker *",
-          "offset": 0
-        },
-        {
-          "name": "max_dist",
-          "type": "float",
-          "offset": 4
-        },
-        {
-          "name": "point",
-          "type": "struct LHPoint",
-          "offset": 8
-        },
-        {
-          "name": "field_0x14",
-          "type": "float",
-          "offset": 20
-        },
-        {
-          "name": "field_0x18",
-          "type": "uint32_t",
-          "offset": 24
-        },
-        {
-          "name": "field_0x1c",
-          "type": "uint32_t",
-          "offset": 28
-        },
-        {
-          "name": "y_only",
-          "type": "bool",
-          "offset": 32
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct Vertex3D",
-      "size": 32,
-      "members": [
-        {
-          "name": "position",
-          "type": "struct LHPoint",
-          "offset": 0
-        },
-        {
-          "name": "uv",
-          "type": "struct Point2D",
-          "offset": 12
-        },
-        {
-          "name": "normal",
-          "type": "struct LHPoint",
-          "offset": 20
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct InfoTransform",
-      "size": 60,
-      "members": [
-        {
-          "name": "resolution",
-          "type": "struct LHCoord",
-          "offset": 0
-        },
-        {
-          "name": "aspect_ratio_x_over_y",
-          "type": "float",
-          "offset": 8
-        },
-        {
-          "name": "half_res",
-          "type": "struct Point2D",
-          "offset": 12
-        },
-        {
-          "name": "inv_half_res",
-          "type": "struct Point2D",
-          "offset": 20
-        },
-        {
-          "name": "inv_half_tan_fov_y",
-          "type": "float",
-          "offset": 28
-        },
-        {
-          "name": "inv_half_tan_fov_x",
-          "type": "float",
-          "offset": 32
-        },
-        {
-          "name": "cos_half_fov_sqr",
-          "type": "float",
-          "offset": 36
-        },
-        {
-          "name": "field_0x28",
-          "type": "float",
-          "offset": 40
-        },
-        {
-          "name": "cos_half_fov",
-          "type": "float",
-          "offset": 44
-        },
-        {
-          "name": "field_0x30",
-          "type": "float",
-          "offset": 48
-        },
-        {
-          "name": "inv_aspect_sqr_hypo_inv_times_inv_aspect",
-          "type": "float",
-          "offset": 52
-        },
-        {
-          "name": "inv_aspect_sqr_hypo_inv",
-          "type": "float",
-          "offset": 56
         }
       ]
     },
@@ -123191,6 +122601,142 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LH3DSprite",
+      "size": 52,
+      "members": [
+        {
+          "name": "pos",
+          "type": "struct LHPoint",
+          "offset": 0
+        },
+        {
+          "name": "field_0xc",
+          "type": "float",
+          "offset": 12
+        },
+        {
+          "name": "field_0x10",
+          "type": "float",
+          "offset": 16
+        },
+        {
+          "name": "angle",
+          "type": "float",
+          "offset": 20
+        },
+        {
+          "name": "field_0x18",
+          "type": "float",
+          "offset": 24
+        },
+        {
+          "name": "field_0x1c",
+          "type": "float",
+          "offset": 28
+        },
+        {
+          "name": "field_0x20",
+          "type": "float",
+          "offset": 32
+        },
+        {
+          "name": "field_0x24",
+          "type": "float",
+          "offset": 36
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint32_t",
+          "offset": 40
+        },
+        {
+          "name": "field_0x2c",
+          "type": "float",
+          "offset": 44
+        },
+        {
+          "name": "field_0x30",
+          "type": "uint8_t",
+          "offset": 48
+        },
+        {
+          "name": "field_0x31",
+          "type": "uint8_t",
+          "offset": 49
+        },
+        {
+          "name": "field_0x32",
+          "type": "uint8_t",
+          "offset": 50
+        },
+        {
+          "name": "field_0x33",
+          "type": "uint8_t",
+          "offset": 51
+        }
+      ]
+    },
+    {
+      "kind": "UNION_DECL",
+      "type": "union LHSprite__Texels",
+      "size": 4,
+      "aliases": [
+        {
+          "name": "_16",
+          "type": "uint16_t"
+        },
+        {
+          "name": "_24",
+          "type": "uint8_t[3]"
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHSprite",
+      "size": 8,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint16_t",
+          "offset": 0
+        },
+        {
+          "name": "field_0x2",
+          "type": "uint16_t",
+          "offset": 2
+        },
+        {
+          "name": "texels",
+          "type": "union LHSprite__Texels *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHSpriteList",
+      "size": 12,
+      "members": [
+        {
+          "name": "initialized",
+          "type": "bool",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct LHSprite *",
+          "offset": 4
+        },
+        {
+          "name": "field_0x8",
+          "type": "int32_t",
+          "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct LHSys_field_0x70c4_t_field_0x0_t",
       "size": 2400,
       "members": [
@@ -123341,65 +122887,6 @@
       ]
     },
     {
-      "kind": "UNION_DECL",
-      "type": "union LHSprite__Texels",
-      "size": 4,
-      "aliases": [
-        {
-          "name": "_16",
-          "type": "uint16_t"
-        },
-        {
-          "name": "_24",
-          "type": "uint8_t[3]"
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LHSprite",
-      "size": 8,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint16_t",
-          "offset": 0
-        },
-        {
-          "name": "field_0x2",
-          "type": "uint16_t",
-          "offset": 2
-        },
-        {
-          "name": "texels",
-          "type": "union LHSprite__Texels *",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LHSpriteList",
-      "size": 12,
-      "members": [
-        {
-          "name": "initialized",
-          "type": "bool",
-          "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "struct LHSprite *",
-          "offset": 4
-        },
-        {
-          "name": "field_0x8",
-          "type": "int32_t",
-          "offset": 8
-        }
-      ]
-    },
-    {
       "kind": "STRUCT_DECL",
       "type": "struct LHText",
       "size": 36,
@@ -123524,7 +123011,7 @@
         },
         {
           "name": "color",
-          "type": "struct LH3DColor",
+          "type": "uint32_t",
           "offset": 140
         }
       ]
@@ -123658,6 +123145,519 @@
           "name": "field_0x70c8",
           "type": "uint8_t[16]",
           "offset": 28872
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DMeshedObject",
+      "size": 128,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DObject",
+          "offset": 0
+        },
+        {
+          "name": "mesh",
+          "type": "struct LH3DMesh *",
+          "offset": 124
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DAnimatedObject",
+      "size": 164,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DMeshedObject",
+          "offset": 0
+        },
+        {
+          "name": "current_anim",
+          "type": "uint32_t",
+          "offset": 128
+        },
+        {
+          "name": "field_0x84",
+          "type": "uint32_t",
+          "offset": 132
+        },
+        {
+          "name": "field_0x88",
+          "type": "uint32_t",
+          "offset": 136
+        },
+        {
+          "name": "field_0x8c",
+          "type": "uint32_t",
+          "offset": 140
+        },
+        {
+          "name": "field_0x90",
+          "type": "uint32_t",
+          "offset": 144
+        },
+        {
+          "name": "field_0x94",
+          "type": "uint32_t",
+          "offset": 148
+        },
+        {
+          "name": "field_0x98",
+          "type": "uint32_t",
+          "offset": 152
+        },
+        {
+          "name": "field_0x9c",
+          "type": "uint32_t",
+          "offset": 156
+        },
+        {
+          "name": "field_0xa0",
+          "type": "uint32_t",
+          "offset": 160
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DCamera",
+      "size": 40,
+      "members": [
+        {
+          "name": "pos",
+          "type": "struct LHPoint",
+          "offset": 0
+        },
+        {
+          "name": "foc",
+          "type": "struct LHPoint",
+          "offset": 12
+        },
+        {
+          "name": "fov",
+          "type": "float",
+          "offset": 24
+        },
+        {
+          "name": "lookAtVector",
+          "type": "struct LHPoint",
+          "offset": 28
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DCameraChecker",
+      "size": 36,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LH3DCameraChecker *",
+          "offset": 0
+        },
+        {
+          "name": "max_dist",
+          "type": "float",
+          "offset": 4
+        },
+        {
+          "name": "point",
+          "type": "struct LHPoint",
+          "offset": 8
+        },
+        {
+          "name": "field_0x14",
+          "type": "float",
+          "offset": 20
+        },
+        {
+          "name": "field_0x18",
+          "type": "uint32_t",
+          "offset": 24
+        },
+        {
+          "name": "field_0x1c",
+          "type": "uint32_t",
+          "offset": 28
+        },
+        {
+          "name": "y_only",
+          "type": "bool",
+          "offset": 32
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DStaticObject",
+      "size": 128,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DMeshedObject",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DStaticMorphableObject",
+      "size": 132,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DStaticObject",
+          "offset": 0
+        },
+        {
+          "name": "field_0x80",
+          "type": "uint32_t",
+          "offset": 128
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DCitadel",
+      "size": 192,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DStaticMorphableObject",
+          "offset": 0
+        },
+        {
+          "name": "field_0x84",
+          "type": "uint8_t[60]",
+          "offset": 132
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DComplexObject",
+      "size": 192,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DStaticObject",
+          "offset": 0
+        },
+        {
+          "name": "matrix_0x80",
+          "type": "struct LHMatrix *",
+          "offset": 128
+        },
+        {
+          "name": "field_0x84",
+          "type": "uint32_t *",
+          "offset": 132
+        },
+        {
+          "name": "hair",
+          "type": "struct LH3DObjectHair *",
+          "offset": 136
+        },
+        {
+          "name": "field_0x8c",
+          "type": "uint32_t",
+          "offset": 140
+        },
+        {
+          "name": "field_0x90",
+          "type": "uint32_t",
+          "offset": 144
+        },
+        {
+          "name": "field_0x94",
+          "type": "uint32_t",
+          "offset": 148
+        },
+        {
+          "name": "field_0x98",
+          "type": "uint32_t",
+          "offset": 152
+        },
+        {
+          "name": "field_0x9c",
+          "type": "uint32_t",
+          "offset": 156
+        },
+        {
+          "name": "field_0xa0",
+          "type": "uint32_t",
+          "offset": 160
+        },
+        {
+          "name": "field_0xa4",
+          "type": "uint32_t",
+          "offset": 164
+        },
+        {
+          "name": "field_0xa8",
+          "type": "uint32_t",
+          "offset": 168
+        },
+        {
+          "name": "field_0xac",
+          "type": "uint32_t",
+          "offset": 172
+        },
+        {
+          "name": "next",
+          "type": "struct LH3DComplexObject *",
+          "offset": 176
+        },
+        {
+          "name": "field_0xb4",
+          "type": "uint32_t",
+          "offset": 180
+        },
+        {
+          "name": "field_0xb8",
+          "type": "uint32_t",
+          "offset": 184
+        },
+        {
+          "name": "field_0xbc",
+          "type": "uint32_t",
+          "offset": 188
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DMist",
+      "size": 156,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DStaticObject",
+          "offset": 0
+        },
+        {
+          "name": "field_0x80",
+          "type": "uint32_t",
+          "offset": 128
+        },
+        {
+          "name": "field_0x84",
+          "type": "uint32_t",
+          "offset": 132
+        },
+        {
+          "name": "field_0x88",
+          "type": "float",
+          "offset": 136
+        },
+        {
+          "name": "field_0x8c",
+          "type": "float",
+          "offset": 140
+        },
+        {
+          "name": "field_0x90",
+          "type": "uint32_t",
+          "offset": 144
+        },
+        {
+          "name": "next",
+          "type": "struct LH3DMist *",
+          "offset": 148
+        },
+        {
+          "name": "field_0x98",
+          "type": "uint32_t",
+          "offset": 152
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DPrimitive",
+      "size": 48,
+      "members": [
+        {
+          "name": "material_",
+          "type": "struct LH3DMaterial",
+          "offset": 0
+        },
+        {
+          "name": "num_vertices_",
+          "type": "int",
+          "offset": 16
+        },
+        {
+          "name": "vertices_",
+          "type": "struct LH3DVertex *",
+          "offset": 20
+        },
+        {
+          "name": "num_triangles_",
+          "type": "int",
+          "offset": 24
+        },
+        {
+          "name": "triangles_",
+          "type": "uint8_t *",
+          "offset": 28
+        },
+        {
+          "name": "num_vertex_groups_",
+          "type": "int",
+          "offset": 32
+        },
+        {
+          "name": "vertex_groups_",
+          "type": "struct LH3DVertexGroup *",
+          "offset": 36
+        },
+        {
+          "name": "num_blends_",
+          "type": "int",
+          "offset": 40
+        },
+        {
+          "name": "blends_",
+          "type": "uint8_t *",
+          "offset": 44
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DSpriteObject",
+      "size": 128,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct LH3DObject",
+          "offset": 0
+        },
+        {
+          "name": "smoke",
+          "type": "struct LH3DSmoke *",
+          "offset": 124
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DSubMesh",
+      "size": 20,
+      "members": [
+        {
+          "name": "flags_",
+          "type": "uint32_t",
+          "offset": 0
+        },
+        {
+          "name": "num_primitives_",
+          "type": "uint32_t",
+          "offset": 4
+        },
+        {
+          "name": "primitives_",
+          "type": "struct LH3DPrimitive **",
+          "offset": 8
+        },
+        {
+          "name": "num_bones_",
+          "type": "int",
+          "offset": 12
+        },
+        {
+          "name": "bones_",
+          "type": "uint8_t *",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InfoTransform",
+      "size": 60,
+      "members": [
+        {
+          "name": "resolution",
+          "type": "struct LHCoord",
+          "offset": 0
+        },
+        {
+          "name": "aspect_ratio_x_over_y",
+          "type": "float",
+          "offset": 8
+        },
+        {
+          "name": "half_res",
+          "type": "struct Point2D",
+          "offset": 12
+        },
+        {
+          "name": "inv_half_res",
+          "type": "struct Point2D",
+          "offset": 20
+        },
+        {
+          "name": "inv_half_tan_fov_y",
+          "type": "float",
+          "offset": 28
+        },
+        {
+          "name": "inv_half_tan_fov_x",
+          "type": "float",
+          "offset": 32
+        },
+        {
+          "name": "cos_half_fov_sqr",
+          "type": "float",
+          "offset": 36
+        },
+        {
+          "name": "field_0x28",
+          "type": "float",
+          "offset": 40
+        },
+        {
+          "name": "cos_half_fov",
+          "type": "float",
+          "offset": 44
+        },
+        {
+          "name": "field_0x30",
+          "type": "float",
+          "offset": 48
+        },
+        {
+          "name": "inv_aspect_sqr_hypo_inv_times_inv_aspect",
+          "type": "float",
+          "offset": 52
+        },
+        {
+          "name": "inv_aspect_sqr_hypo_inv",
+          "type": "float",
+          "offset": 56
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LH3DVertexGroup",
+      "size": 4,
+      "members": [
+        {
+          "name": "vertex_count",
+          "type": "uint16_t",
+          "offset": 0
+        },
+        {
+          "name": "bone_index",
+          "type": "uint16_t",
+          "offset": 2
         }
       ]
     },
@@ -131245,6 +131245,22 @@
       "argument_names": [
         "mesh",
         "prop"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 269034688,
+      "decorated_name": "HelpTextDataBase::GetHelpText(unsigned long) const",
+      "undecorated_name": "GetHelpText__16HelpTextDataBaseCFUl",
+      "return_type": "const char16_t *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct HelpTextDataBase *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "index"
       ]
     },
     {
@@ -139226,1288 +139242,6 @@
       ]
     },
     {
-      "win_addr": 8589616,
-      "mac_addr": 209760,
-      "decorated_name": "GatheringText::GetStringWidth(wchar_t *, int, float)",
-      "undecorated_name": "GetStringWidth__13GatheringTextFPwif",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct GatheringText *",
-        "const char16_t *",
-        "int",
-        "float"
-      ],
-      "argument_names": [
-        "this",
-        "str",
-        "len",
-        "text_size"
-      ]
-    },
-    {
-      "win_addr": 8590768,
-      "mac_addr": 274844172,
-      "decorated_name": "GatheringText::DrawText(wchar_t *, float, float, float, float, float, float, float, float, float, LH3DColor *, int, int, int)",
-      "undecorated_name": "DrawText__13GatheringTextFPwfffffffffP9LH3DColoriii",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct GatheringText *",
-        "const char16_t *",
-        "float",
-        "float",
-        "float",
-        "float",
-        "float",
-        "float",
-        "float",
-        "float",
-        "float",
-        "const struct LH3DColor *",
-        "int",
-        "int",
-        "int"
-      ],
-      "argument_names": [
-        "this",
-        "text",
-        "param_2",
-        "param_3",
-        "param_4",
-        "param_5",
-        "param_6",
-        "param_7",
-        "param_8",
-        "param_9",
-        "param_10",
-        "p_color",
-        "param_12",
-        "param_13",
-        "param_14"
-      ]
-    },
-    {
-      "win_addr": 8596576,
-      "mac_addr": 280899000,
-      "decorated_name": "GatheringText::DrawTextRaw(wchar_t *, int, float, float, float, float, LH3DColor *, int, LH3DColor *, float, float)",
-      "undecorated_name": "DrawTextRaw__13GatheringTextFPwiffffP9LH3DColoriP9LH3DColorff",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct GatheringText *",
-        "const char16_t *",
-        "int",
-        "float",
-        "float",
-        "float",
-        "float",
-        "struct LH3DColor *",
-        "int",
-        "struct LH3DColor *",
-        "float",
-        "float"
-      ],
-      "argument_names": [
-        "this",
-        "text",
-        "param_2",
-        "x",
-        "y",
-        "param_5",
-        "param_6",
-        "param_7",
-        "param_8",
-        "param_9",
-        "param_10",
-        "param_11"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 269034688,
-      "decorated_name": "HelpTextDataBase::GetHelpText(unsigned long) const",
-      "undecorated_name": "GetHelpText__16HelpTextDataBaseCFUl",
-      "return_type": "const char16_t *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct HelpTextDataBase *",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "this",
-        "index"
-      ]
-    },
-    {
-      "win_addr": 8774784,
-      "mac_addr": 274857804,
-      "decorated_name": "CAnim::CAnim(void)",
-      "undecorated_name": "__ct__5CAnimFv",
-      "return_type": "struct CAnim *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CAnim *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8774848,
-      "mac_addr": 274840404,
-      "decorated_name": "CAnim::CAnim(CAnim *)",
-      "undecorated_name": "__ct__5CAnimFP5CAnim",
-      "return_type": "struct CAnim *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CAnim *",
-        "struct CAnim *"
-      ],
-      "argument_names": [
-        "this",
-        "param_2"
-      ]
-    },
-    {
-      "win_addr": 8777536,
-      "mac_addr": 274850556,
-      "decorated_name": "CAnim::CAnim(CAnim *, CFrame *, CAnim *, CFrame *, float, CAnim *, CFrame *, float)",
-      "undecorated_name": "__ct__5CAnimFP5CAnimP6CFrameP5CAnimP6CFramefP5CAnimP6CFramef",
-      "return_type": "struct CAnim *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CAnim *",
-        "struct CAnim *",
-        "struct CFrame *",
-        "struct CAnim *",
-        "struct CFrame *",
-        "float",
-        "struct CAnim *",
-        "struct CFrame *",
-        "float"
-      ],
-      "argument_names": [
-        "this",
-        "param_2",
-        "param_3",
-        "param_4",
-        "param_5",
-        "param_6",
-        "param_7",
-        "param_8",
-        "param_9"
-      ]
-    },
-    {
-      "win_addr": 8774816,
-      "mac_addr": 274839492,
-      "decorated_name": "CAnim::~CAnim(void)",
-      "undecorated_name": "__dt__5CAnimFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CAnim *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8788480,
-      "mac_addr": 274856604,
-      "decorated_name": "CAnim::AdjustForNewBasedOnStand(CAnim *, CAnim *)",
-      "undecorated_name": "AdjustForNewBasedOnStand__5CAnimFP5CAnimP5CAnim",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CAnim *",
-        "struct CAnim *",
-        "struct CAnim *"
-      ],
-      "argument_names": [
-        "this",
-        "param_2",
-        "param_3"
-      ]
-    },
-    {
-      "win_addr": 8784944,
-      "mac_addr": 269338720,
-      "decorated_name": "CFrame::ReadBinary(LHFile *, long, long)",
-      "undecorated_name": "ReadBinary__6CFrameFP6LHFilell",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CFrame *",
-        "struct LHFile *",
-        "long",
-        "long"
-      ],
-      "argument_names": [
-        "this",
-        "file",
-        "param_3",
-        "param_4"
-      ]
-    },
-    {
-      "win_addr": 8783968,
-      "mac_addr": 274858188,
-      "decorated_name": "CAnim::ReadBinary(LHFile *)",
-      "undecorated_name": "ReadBinary__5CAnimFP6LHFile",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CAnim *",
-        "struct LHFile *"
-      ],
-      "argument_names": [
-        "this",
-        "file"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 269521504,
-      "decorated_name": "LH3DAnimSet::__ct(void)",
-      "undecorated_name": "__ct__11LH3DAnimSetFv",
-      "return_type": "struct LH3DAnimSet *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DAnimSet *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 4999536,
-      "mac_addr": 270733008,
-      "decorated_name": "CatInfo::Read(std::_FILE *)",
-      "undecorated_name": "Read__7CatInfoFPQ23std5_FILE",
-      "return_type": "char",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct CatInfo *",
-        "struct LHFilePath *"
-      ],
-      "argument_names": [
-        "this",
-        "path"
-      ]
-    },
-    {
-      "win_addr": 4999856,
-      "mac_addr": 268564784,
-      "decorated_name": "AnimInfo::Read(char *)",
-      "undecorated_name": "Read__8AnimInfoFPc",
-      "return_type": "uint32_t",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct AnimInfo *",
-        "char *"
-      ],
-      "argument_names": [
-        "this",
-        "spec_filename"
-      ]
-    },
-    {
-      "win_addr": 8626640,
-      "mac_addr": 269653360,
-      "decorated_name": "LH3DAnim::SetTransform(LH3DMatrix*, LH3DMesh*, LH3DMatrix*)",
-      "undecorated_name": "SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix",
-      "return_type": "float",
-      "call_type": "cdecl",
-      "argument_types": [
-        "struct LHMatrix *",
-        "struct LH3DMesh *",
-        "struct LHMatrix *"
-      ],
-      "argument_names": [
-        "param_1",
-        "param_2",
-        "param_3"
-      ]
-    },
-    {
-      "win_addr": 8628784,
-      "mac_addr": 274852548,
-      "decorated_name": "LH3DAnim::CreatePack(void)",
-      "undecorated_name": "CreatePack__8LH3DAnimFv",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 8627872,
-      "mac_addr": 268564784,
-      "decorated_name": "LH3DAnim::GetListPtrFrames",
-      "undecorated_name": "GetListPtrFrames__8LH3DAnimFv",
-      "return_type": "int",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DAnim *"
-      ],
-      "argument_names": [
-        "anim"
-      ]
-    },
-    {
-      "win_addr": 6396800,
-      "mac_addr": 268564784,
-      "decorated_name": "LH3DAnimSet::ReadBinaryNew",
-      "undecorated_name": "ReadBinaryNew__11LH3DAnimSetFP6LHFileP8AnimInfoP8AnimInfo",
-      "return_type": "uint32_t",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DAnimSet *",
-        "struct LHFile *",
-        "struct AnimInfo *",
-        "struct AnimInfo *"
-      ],
-      "argument_names": [
-        "this",
-        "param_2",
-        "param_3",
-        "param_4"
-      ]
-    },
-    {
-      "win_addr": 4564976,
-      "mac_addr": -1,
-      "decorated_name": "LH3DCamera::GetPos(void)",
-      "undecorated_name": "GetPos__10LH3DCameraFv",
-      "return_type": "struct LHPoint *",
-      "call_type": "__stdcall",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 8523856,
-      "mac_addr": 269241840,
-      "decorated_name": "LH3DCameraChecker::Create(float, LHPoint, float, long, bool)",
-      "undecorated_name": "Create__17LH3DCameraCheckerFf7LHPointflb",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "float",
-        "struct LHPoint",
-        "float",
-        "long",
-        "bool"
-      ],
-      "argument_names": [
-        "max_distance",
-        "point",
-        "param_3",
-        "param_4",
-        "y_only"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 268975168,
-      "decorated_name": "LH3DColor::LH3DColor(uint)",
-      "undecorated_name": "ct__9LH3DColorFUl",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "struct LH3DColor *",
-        "const void *",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "this",
-        "edx",
-        "color"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 268775600,
-      "decorated_name": "LH3DColor::LH3DColor(LH3DColor const &)",
-      "undecorated_name": "ct__9LH3DColorFRC9LH3DColor",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "struct LH3DColor *",
-        "const void *",
-        "const struct LH3DColor *"
-      ],
-      "argument_names": [
-        "this",
-        "edx",
-        "other"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 273144832,
-      "decorated_name": "LH3DColor::operator=(LH3DColor const &)",
-      "undecorated_name": "as__9LH3DColorFRC9LH3DColor",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "struct LH3DColor *",
-        "const void *",
-        "const struct LH3DColor *"
-      ],
-      "argument_names": [
-        "this",
-        "edx",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 8662240,
-      "mac_addr": 269721520,
-      "decorated_name": "LH3DMem::Alloc",
-      "undecorated_name": "Alloc__7LH3DMemFl",
-      "return_type": "void *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "size_t"
-      ],
-      "argument_names": [
-        "size"
-      ]
-    },
-    {
-      "win_addr": 8662368,
-      "mac_addr": 269256480,
-      "decorated_name": "LH3DMem::Free",
-      "undecorated_name": "Free__7LH3DMemFPv",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "void *"
-      ],
-      "argument_names": [
-        "mem"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 272471056,
-      "decorated_name": "LH3DMesh::GetPackedMesh(long)",
-      "undecorated_name": "GetPackedMesh__8LH3DMeshFl",
-      "return_type": "struct LH3DMesh *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "int"
-      ],
-      "argument_names": [
-        "index"
-      ]
-    },
-    {
-      "win_addr": 8414304,
-      "mac_addr": 268879648,
-      "decorated_name": "LH3DMesh::Create(void* , int)",
-      "undecorated_name": "Create__8LH3DMeshFPvi",
-      "return_type": "struct LH3DMesh *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "const void *",
-        "bool"
-      ],
-      "argument_names": [
-        "buf",
-        "dont_care_about_texture"
-      ]
-    },
-    {
-      "win_addr": 8415216,
-      "mac_addr": 268879424,
-      "decorated_name": "LH3DMesh::CreateFromHD(char *, int)",
-      "undecorated_name": "CreateFromHD__8LH3DMeshFPci",
-      "return_type": "struct LH3DMesh *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "const char *",
-        "bool"
-      ],
-      "argument_names": [
-        "filename",
-        "dont_care_about_textures"
-      ]
-    },
-    {
-      "win_addr": 8416512,
-      "mac_addr": 268506716,
-      "decorated_name": "LH3DMesh::Release(void)",
-      "undecorated_name": "Release__8LH3DMeshFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DMesh *"
-      ],
-      "argument_names": [
-        "mesh"
-      ]
-    },
-    {
-      "win_addr": 8420320,
-      "mac_addr": 268874256,
-      "decorated_name": "LH3DMesh::CreatePackInternal(void*)",
-      "undecorated_name": "CreatePackInternal__8LH3DMeshFPv",
-      "return_type": "void",
-      "call_type": "__stdcall",
-      "argument_types": [
-        "const void *"
-      ],
-      "argument_names": [
-        "data"
-      ]
-    },
-    {
-      "win_addr": 8420448,
-      "mac_addr": 268874080,
-      "decorated_name": "LH3DMesh::CreatePack(void)",
-      "undecorated_name": "CreatePack__8LH3DMeshFv",
-      "return_type": "void",
-      "call_type": "__stdcall",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 8421808,
-      "mac_addr": 268872400,
-      "decorated_name": "LH3DMesh::ComputeBoundingBox(void)",
-      "undecorated_name": "ComputeBoundingBox__8LH3DMeshFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DMesh *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8911360,
-      "mac_addr": 269205136,
-      "decorated_name": "LH3DSubMesh::Create(unsigned char *, LH3DSubMesh *)",
-      "undecorated_name": "Create__11LH3DSubMeshFPUcP11LH3DSubMesh",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "const uint8_t *",
-        "struct LH3DSubMesh *"
-      ],
-      "argument_names": [
-        "buffer",
-        "submesh"
-      ]
-    },
-    {
-      "win_addr": 8911648,
-      "mac_addr": 269204656,
-      "decorated_name": "LH3DSubMesh::ComputeBoundingBox(LHPoint&, LHPoint&, int&)",
-      "undecorated_name": "ComputeBoundingBox__11LH3DSubMeshFR7LHPointR7LHPointRi",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LH3DSubMesh *",
-        "struct LHPoint *",
-        "struct LHPoint *",
-        "int *"
-      ],
-      "argument_names": [
-        "this",
-        "maxima",
-        "minima",
-        "initialized"
-      ]
-    },
-    {
-      "win_addr": 8421168,
-      "mac_addr": 268872960,
-      "decorated_name": "LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)",
-      "undecorated_name": "ComputeBoundingBox__13LH3DPrimitiveFR7LHPointR7LHPointRi",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LH3DPrimitive *",
-        "struct LHPoint *",
-        "struct LHPoint *",
-        "int *"
-      ],
-      "argument_names": [
-        "this",
-        "maxima",
-        "minima",
-        "initialized"
-      ]
-    },
-    {
-      "win_addr": 8694608,
-      "mac_addr": 269091312,
-      "decorated_name": "LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)",
-      "undecorated_name": "Create__13LH3DPrimitiveFPUcP13LH3DPrimitive",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "const uint8_t *",
-        "struct LH3DPrimitive *"
-      ],
-      "argument_names": [
-        "buffer",
-        "primitive"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": -1,
-      "decorated_name": "LH3DObject::LH3DObject(void)",
-      "undecorated_name": "__ct__10LH3DObjectFv",
-      "return_type": "struct LH3DObject *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DObject *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 4337984,
-      "mac_addr": 268702848,
-      "decorated_name": "Game3DObject::SetPosition(const LHPoint&, float, float)",
-      "undecorated_name": "SetPosition__10LH3DObjectFRC7LHPointff",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LH3DObject *",
-        "struct LHPoint *",
-        "float",
-        "float"
-      ],
-      "argument_names": [
-        "this",
-        "point",
-        "y_angle",
-        "scale"
-      ]
-    },
-    {
-      "win_addr": 8434896,
-      "mac_addr": 274858500,
-      "decorated_name": "LH3DObject::Create(LH3DObject::ObjectType)",
-      "undecorated_name": "Create__10LH3DObjectFQ210LH3DObject10ObjectType",
-      "return_type": "struct LH3DObject *",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "enum LH3DObject__ObjectType"
-      ],
-      "argument_names": [
-        "object_type"
-      ]
-    },
-    {
-      "win_addr": 8363360,
-      "mac_addr": 268603776,
-      "decorated_name": "LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)",
-      "undecorated_name": "SetDrawWithGlobalAlpha__16LH3DMeshedObjectFi",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LH3DMeshedObject *",
-        "int"
-      ],
-      "argument_names": [
-        "this",
-        "value"
-      ]
-    },
-    {
-      "win_addr": 8363952,
-      "mac_addr": 268484464,
-      "decorated_name": "LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)",
-      "undecorated_name": "GetDoorPos__16LH3DMeshedObjectCFP7LHPoint",
-      "return_type": "bool",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LH3DMeshedObject *",
-        "struct LHPoint *"
-      ],
-      "argument_names": [
-        "this",
-        "out_point"
-      ]
-    },
-    {
-      "win_addr": 8479920,
-      "mac_addr": 268919904,
-      "decorated_name": "LH3DMeshedObject::LH3DMeshedObject(void)",
-      "undecorated_name": "__ct__16LH3DMeshedObjectFv",
-      "return_type": "struct LH3DMeshedObject *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DMeshedObject *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8480064,
-      "mac_addr": 268919776,
-      "decorated_name": "LH3DStaticObject::LH3DStaticObject(void)",
-      "undecorated_name": "__ct__16LH3DStaticObjectFv",
-      "return_type": "struct LH3DStaticObject *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DStaticObject *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 268969648,
-      "decorated_name": "LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)",
-      "undecorated_name": "__ct__25LH3DStaticMorphableObjectFv",
-      "return_type": "struct LH3DStaticMorphableObject *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DStaticMorphableObject *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": -1,
-      "decorated_name": "LH3DAnimatedObject::LH3DAnimatedObject(void)",
-      "undecorated_name": "__ct__18LH3DAnimatedObjectFv",
-      "return_type": "struct LH3DAnimatedObject *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DAnimatedObject *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": -1,
-      "decorated_name": "LH3DComplexObject::LH3DComplexObject(void)",
-      "undecorated_name": "__ct__17LH3DComplexObjectFv",
-      "return_type": "struct LH3DComplexObject *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DComplexObject *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8437792,
-      "mac_addr": 268967184,
-      "decorated_name": "LH3DComplexObject::CreateDynamicShadow",
-      "undecorated_name": "CreateDynamicShadow__17LH3DComplexObjectFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DComplexObject *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8475520,
-      "mac_addr": 268927568,
-      "decorated_name": "LH3DSpriteObject::LH3DSpriteObject(long)",
-      "undecorated_name": "__ct__16LH3DSpriteObjectFl",
-      "return_type": "struct LH3DSpriteObject *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DSpriteObject *",
-        "int"
-      ],
-      "argument_names": [
-        "this",
-        "type"
-      ]
-    },
-    {
-      "win_addr": 8361312,
-      "mac_addr": 269174192,
-      "decorated_name": "LH3DMist::LH3DMist(void)",
-      "undecorated_name": "__ct__8LH3DMistFv",
-      "return_type": "struct LH3DMist *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DMist *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8361312,
-      "mac_addr": 269174192,
-      "decorated_name": "LH3DCitadel::LH3DCitadel(void)",
-      "undecorated_name": "__ct__11LH3DCitadelFv",
-      "return_type": "struct LH3DCitadel *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DCitadel *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8583184,
-      "mac_addr": 268611376,
-      "decorated_name": "LH3DRender::DrawTriangle(Vertex3D *, unsigned long, unsigned short *, unsigned long)",
-      "undecorated_name": "DrawTriangle__10LH3DRenderFP8Vertex3DUlPUsUl",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct Vertex3D *",
-        "uint32_t",
-        "uint16_t *",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "vertices",
-        "param_2",
-        "param_3",
-        "param_4"
-      ]
-    },
-    {
-      "win_addr": 4270400,
-      "mac_addr": 268724960,
-      "decorated_name": "LH3DRender::SetRenderState(D3DRENDERSTATETYPE, unsigned long)",
-      "undecorated_name": "SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl",
-      "return_type": "int",
-      "call_type": "cdecl",
-      "argument_types": [
-        "D3DRENDERSTATETYPE",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "type",
-        "value"
-      ]
-    },
-    {
-      "win_addr": 8490080,
-      "mac_addr": 269224576,
-      "decorated_name": "LH3DTech::RenderInitialization(long, long)",
-      "undecorated_name": "RenderInitialization__8LH3DTechFll",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "int32_t",
-        "int32_t"
-      ],
-      "argument_names": [
-        "",
-        ""
-      ]
-    },
-    {
-      "win_addr": 8493344,
-      "mac_addr": 268651536,
-      "decorated_name": "LH3DTech::UpdateCamera(LHPoint const &, LHPoint const &)",
-      "undecorated_name": "UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "const struct LHPoint *",
-        "const struct LHPoint *"
-      ],
-      "argument_names": [
-        "param_1",
-        "param_2"
-      ]
-    },
-    {
-      "win_addr": 8561920,
-      "mac_addr": 268530216,
-      "decorated_name": "DrawAndClip(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)",
-      "undecorated_name": "DrawAndClip__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "D3DPRIMITIVETYPE",
-        "uint32_t",
-        "D3DTLVERTEX *",
-        "uint32_t",
-        "uint16_t *",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "primitive_type",
-        "fvf",
-        "vertices",
-        "vertex_count",
-        "indices",
-        "index_count"
-      ]
-    },
-    {
-      "win_addr": 8562096,
-      "mac_addr": 268762776,
-      "decorated_name": "DrawAndClip2D(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)",
-      "undecorated_name": "DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "D3DPRIMITIVETYPE",
-        "uint32_t",
-        "D3DTLVERTEX *",
-        "uint32_t",
-        "uint16_t *",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "primitive_type",
-        "fvf",
-        "vertices",
-        "vertex_count",
-        "indices",
-        "index_count"
-      ]
-    },
-    {
-      "win_addr": 8565280,
-      "mac_addr": 268682336,
-      "decorated_name": "LH3DRender::SetD3DMatrix(D3DMATRIX &, LHMatrix &)",
-      "undecorated_name": "SetD3DMatrix__10LH3DRenderFRQ29IndirectX10_D3DMATRIXR8LHMatrix",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "D3DMATRIX *",
-        "struct LHMatrix *"
-      ],
-      "argument_names": [
-        "param_1",
-        "param_2"
-      ]
-    },
-    {
-      "win_addr": 8565456,
-      "mac_addr": -1,
-      "decorated_name": "LH3DRender::SetProjMatrix(D3DMATRIX *, D3DMATRIX *, float, float, float)",
-      "undecorated_name": "SetProjMatrix__10LH3DRenderFP9D3DMATRIXP9D3DMATRIXfff",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "D3DMATRIX *",
-        "D3DMATRIX *",
-        "float",
-        "float",
-        "float"
-      ],
-      "argument_names": [
-        "param_1",
-        "projection",
-        "near_plane",
-        "far_plane",
-        "fov"
-      ]
-    },
-    {
-      "win_addr": 8566128,
-      "mac_addr": 269121904,
-      "decorated_name": "LH3DRender::Close(void)",
-      "undecorated_name": "Close__10LH3DRenderFv",
-      "return_type": "int",
-      "call_type": "cdecl",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 8567232,
-      "mac_addr": 268622768,
-      "decorated_name": "LH3DRender::SetTextureStageState(unsigned long, D3DTEXTURESTAGESTATETYPE, unsigned long)",
-      "undecorated_name": "SetTextureStageState__10LH3DRenderFUl24D3DTEXTURESTAGESTATETYPEUl",
-      "return_type": "int",
-      "call_type": "cdecl",
-      "argument_types": [
-        "uint32_t",
-        "D3DTEXTURESTAGESTATETYPE",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "index",
-        "type",
-        "value"
-      ]
-    },
-    {
-      "win_addr": 8581344,
-      "mac_addr": 268513936,
-      "decorated_name": "LH3DRender::StartFrame(void)",
-      "undecorated_name": "StartFrame__10LH3DRenderFv",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 8584976,
-      "mac_addr": 268725180,
-      "decorated_name": "LH3DRender::SetD3DTillingOn(int)",
-      "undecorated_name": "SetD3DTillingOn__10LH3DRenderFi",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "uint32_t"
-      ],
-      "argument_names": [
-        "index"
-      ]
-    },
-    {
-      "win_addr": 8585040,
-      "mac_addr": 268725324,
-      "decorated_name": "LH3DRender::SetD3DTillingOff(int)",
-      "undecorated_name": "SetD3DTillingOff__10LH3DRenderFi",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "uint32_t"
-      ],
-      "argument_names": [
-        "index"
-      ]
-    },
-    {
-      "win_addr": 8911968,
-      "mac_addr": 269326512,
-      "decorated_name": "LHIlib::LH3DRenderClose(void)",
-      "undecorated_name": "LH3DRenderClose__6LHIlibFv",
-      "return_type": "int",
-      "call_type": "cdecl",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 8358752,
-      "mac_addr": 269175472,
-      "decorated_name": "LH3DSmoke::Create(const LHPoint*)",
-      "undecorated_name": "Create__9LH3DSmokeFPC7LHPoint",
-      "return_type": "struct LH3DSmoke *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "struct LHPoint *"
-      ],
-      "argument_names": [
-        "position"
-      ]
-    },
-    {
-      "win_addr": 8651936,
-      "mac_addr": 269182192,
-      "decorated_name": "LH3DSprite::Create(long, int)",
-      "undecorated_name": "Create__10LH3DSpriteFli",
-      "return_type": "struct LH3DSprite *",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "int32_t",
-        "int32_t"
-      ],
-      "argument_names": [
-        "param_1",
-        "param_2"
-      ]
-    },
-    {
-      "win_addr": 8652016,
-      "mac_addr": 268486592,
-      "decorated_name": "LH3DSprite::SetToZero(void)",
-      "undecorated_name": "SetToZero__10LH3DSpriteFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DSprite *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8652080,
-      "mac_addr": 268609648,
-      "decorated_name": "LH3DSprite::Draw(void)",
-      "undecorated_name": "Draw__10LH3DSpriteFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DSprite *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8491056,
-      "mac_addr": 269224224,
-      "decorated_name": "LH3DTech::UpdateViewPort(long, long)",
-      "undecorated_name": "UpdateViewPort__8LH3DTechFll",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "int32_t",
-        "int32_t"
-      ],
-      "argument_names": [
-        "param_1",
-        "param_2"
-      ]
-    },
-    {
-      "win_addr": 8491920,
-      "mac_addr": 280898104,
-      "decorated_name": "LH3DTech::ProjectPoint(LHPoint *, int *, int *, float *)",
-      "undecorated_name": "ProjectPoint__8LH3DTechFP7LHPointPiPiPf",
-      "return_type": "uint32_t",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LHPoint *",
-        "int *",
-        "int *",
-        "float *"
-      ],
-      "argument_names": [
-        "param_1",
-        "param_2",
-        "param_3",
-        "param_4"
-      ]
-    },
-    {
-      "win_addr": 8492464,
-      "mac_addr": 268507936,
-      "decorated_name": "LH3DTech::ChangeFov(float)",
-      "undecorated_name": "ChangeFov__8LH3DTechFf",
-      "return_type": "void",
-      "call_type": "__stdcall",
-      "argument_types": [
-        "float"
-      ],
-      "argument_names": [
-        "fov"
-      ]
-    },
-    {
-      "win_addr": 8492688,
-      "mac_addr": 268508544,
-      "decorated_name": "LH3DTech::UpdateWorldToCamera(LHMatrix &, LHPoint &, LHPoint &, bool)",
-      "undecorated_name": "UpdateWorldToCamera__8LH3DTechFR8LHMatrixR7LHPointR7LHPointb",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LHMatrix *",
-        "struct LHPoint *",
-        "struct LHPoint *",
-        "bool"
-      ],
-      "argument_names": [
-        "param_1_00",
-        "param_2_00",
-        "param_1",
-        "param_2"
-      ]
-    },
-    {
-      "win_addr": 8502224,
-      "mac_addr": 269214464,
-      "decorated_name": "Report3D(char const *,",
-      "undecorated_name": "Report3D__FPCce",
-      "return_type": "void",
-      "call_type": "cdecl",
-      "argument_types": [
-        "const char *"
-      ],
-      "argument_names": [
-        "fmt"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 269038128,
-      "decorated_name": "LH3DTech::GetDeltaTime(void)",
-      "undecorated_name": "GetDeltaTime__8LH3DTechFv",
-      "return_type": "uint32_t",
-      "call_type": "cdecl",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 6391472,
-      "mac_addr": 274837428,
-      "decorated_name": "LH3DTexture::Create",
-      "undecorated_name": "Create__11LH3DTextureFPvUlUlP13TextureFormat",
-      "return_type": "struct LH3DTexture *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "void *",
-        "unsigned long",
-        "unsigned long",
-        "struct TextureFormat *"
-      ],
-      "argument_names": [
-        "",
-        "",
-        "",
-        ""
-      ]
-    },
-    {
-      "win_addr": 8615904,
-      "mac_addr": -1,
-      "decorated_name": "LH3DTexture::SetPackedTexture(void)",
-      "undecorated_name": "SetPackedTexture__LH3DTextureFv",
-      "return_type": "void",
-      "call_type": "__stdcall",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
-      "win_addr": 8617280,
-      "mac_addr": 274839060,
-      "decorated_name": "LH3DTexture::Release(void)",
-      "undecorated_name": "Release__11LH3DTextureFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LH3DTexture *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8619136,
-      "mac_addr": 269258848,
-      "decorated_name": "LH3DTexture::GetThisTexture",
-      "undecorated_name": "GetThisTexture__11LH3DTextureFUl",
-      "return_type": "struct LH3DTexture *",
-      "call_type": "cdecl",
-      "argument_types": [
-        "unsigned long"
-      ],
-      "argument_names": [
-        "id"
-      ]
-    },
-    {
       "win_addr": 8614736,
       "mac_addr": -1,
       "decorated_name": "LHReleasedFile::__ct(char const *)",
@@ -140896,38 +139630,6 @@
       ]
     },
     {
-      "win_addr": 4207984,
-      "mac_addr": -1,
-      "decorated_name": "LHMatrix::PostTranslation(const LHPoint&)",
-      "undecorated_name": "PostTranslation__8LHMatrixFRC7LHPoint",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct LHMatrix *",
-        "struct LHPoint *"
-      ],
-      "argument_names": [
-        "this",
-        "translation"
-      ]
-    },
-    {
-      "win_addr": 8368784,
-      "mac_addr": 268759132,
-      "decorated_name": "LHMatrix::SetInverse(LHMatrix const &)",
-      "undecorated_name": "SetInverse__8LHMatrixFRC8LHMatrix",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LHMatrix *",
-        "const struct LHMatrix *"
-      ],
-      "argument_names": [
-        "l",
-        "r"
-      ]
-    },
-    {
       "win_addr": 8277792,
       "mac_addr": 269768736,
       "decorated_name": "LHMouse::LHMouse(void)",
@@ -141017,294 +139719,6 @@
       ],
       "argument_names": [
         "value"
-      ]
-    },
-    {
-      "win_addr": 4621440,
-      "mac_addr": 269127008,
-      "decorated_name": "Point2D::operator=(const Point2D&)",
-      "undecorated_name": "__as__7Point2DFRC7Point2D",
-      "return_type": "struct Point2D *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 6361456,
-      "mac_addr": -1,
-      "decorated_name": "Point2D::DotProduct(Point2D&)",
-      "undecorated_name": "DotProduct__7Point2DRP7Point2D",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 6361632,
-      "mac_addr": 269127008,
-      "decorated_name": "Point2D::operator=(const Point2D&) copy",
-      "undecorated_name": "__as__7Point2DFRC7Point2D2",
-      "return_type": "struct Point2D *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 6361872,
-      "mac_addr": -1,
-      "decorated_name": "Point2D::DotProduct(Point2D*)",
-      "undecorated_name": "DotProduct__7Point2DFP7Point2D",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 6361488,
-      "mac_addr": 268646208,
-      "decorated_name": "Point2D::operator*(float) const",
-      "undecorated_name": "__ml__7Point2DCFf",
-      "return_type": "struct Point2D *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *",
-        "struct Point2D *",
-        "float"
-      ],
-      "argument_names": [
-        "this",
-        "result",
-        "rhs"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 269129024,
-      "decorated_name": "Point2D::operator+( const(Point2D const &))",
-      "undecorated_name": "__pl__7Point2DCFRC7Point2D",
-      "return_type": "struct Point2D *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Point2D *",
-        "const struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "lhs",
-        "rhs"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": 268995600,
-      "decorated_name": "Point2D::operator-( const(Point2D const &))",
-      "undecorated_name": "__mi__7Point2DCFRC7Point2D",
-      "return_type": "struct Point2D *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Point2D *",
-        "const struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "lhs",
-        "rhs"
-      ]
-    },
-    {
-      "win_addr": 6361664,
-      "mac_addr": -1,
-      "decorated_name": "Point2D::Cross(const Point2D&) const",
-      "undecorated_name": "Cross__7Point2DCFRC7Point2D",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 6361904,
-      "mac_addr": 269382992,
-      "decorated_name": "Point2D::Normalize(void)",
-      "undecorated_name": "Normalize__7Point2DFv",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Point2D *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 6362608,
-      "mac_addr": 268810816,
-      "decorated_name": "Point2D::GetNormSq(void) const",
-      "undecorated_name": "GetNormSq__7Point2DFv",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 8846752,
-      "mac_addr": 268810816,
-      "decorated_name": "Point2D::GetNormSq(void) const copy",
-      "undecorated_name": "GetNormSq__7Point2DFv2",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 6379968,
-      "mac_addr": -1,
-      "decorated_name": "Point2D::operator==(const Point2D&)",
-      "undecorated_name": "__eq__7Point2DFRC7Point2D",
-      "return_type": "bool",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 8846592,
-      "mac_addr": 268997216,
-      "decorated_name": "Point2D::GetHeading(void) const",
-      "undecorated_name": "GetHeading__7Point2DCFv",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "param_1"
-      ]
-    },
-    {
-      "win_addr": 8846704,
-      "mac_addr": 268996864,
-      "decorated_name": "Point2D::SetSize(float)",
-      "undecorated_name": "SetSize__7Point2DFf",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Point2D *",
-        "float"
-      ],
-      "argument_names": [
-        "this",
-        "size"
-      ]
-    },
-    {
-      "win_addr": 8846784,
-      "mac_addr": 268996608,
-      "decorated_name": "Point2D::GetRange(Point2D const &) const",
-      "undecorated_name": "GetRange__7Point2DCFRC7Point2D",
-      "return_type": "float",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "const struct Point2D *",
-        "const struct Point2D *"
-      ],
-      "argument_names": [
-        "this",
-        "param_1"
-      ]
-    },
-    {
-      "win_addr": 4466432,
-      "mac_addr": 268739168,
-      "decorated_name": "LHPoint::LHPoint(float, float, float)",
-      "undecorated_name": "__ct__7LHPointFfff",
-      "return_type": "struct LHPoint *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LHPoint *",
-        "float",
-        "float",
-        "float"
-      ],
-      "argument_names": [
-        "this",
-        "x",
-        "y",
-        "z"
-      ]
-    },
-    {
-      "win_addr": 4509632,
-      "mac_addr": 268674128,
-      "decorated_name": "LHPoint::LHPoint(const LHPoint&)",
-      "undecorated_name": "__ct__7LHPointFRC7LHPoint",
-      "return_type": "struct LHPoint *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LHPoint *",
-        "struct LHPoint *"
-      ],
-      "argument_names": [
-        "this",
-        "other"
-      ]
-    },
-    {
-      "win_addr": 5564688,
-      "mac_addr": 268664032,
-      "decorated_name": "LHPoint::FastNormalize(void)",
-      "undecorated_name": "FastNormalize__7LHPointFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LHPoint *"
-      ],
-      "argument_names": [
-        "this"
       ]
     },
     {
@@ -142128,6 +140542,1520 @@
       ]
     },
     {
+      "win_addr": 8784944,
+      "mac_addr": 269338720,
+      "decorated_name": "CFrame::ReadBinary(LHFile *, long, long)",
+      "undecorated_name": "ReadBinary__6CFrameFP6LHFilell",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CFrame *",
+        "struct LHFile *",
+        "long",
+        "long"
+      ],
+      "argument_names": [
+        "this",
+        "file",
+        "param_3",
+        "param_4"
+      ]
+    },
+    {
+      "win_addr": 8774784,
+      "mac_addr": 274857804,
+      "decorated_name": "CAnim::CAnim(void)",
+      "undecorated_name": "__ct__5CAnimFv",
+      "return_type": "struct CAnim *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CAnim *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8774848,
+      "mac_addr": 274840404,
+      "decorated_name": "CAnim::CAnim(CAnim *)",
+      "undecorated_name": "__ct__5CAnimFP5CAnim",
+      "return_type": "struct CAnim *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CAnim *",
+        "struct CAnim *"
+      ],
+      "argument_names": [
+        "this",
+        "param_2"
+      ]
+    },
+    {
+      "win_addr": 8777536,
+      "mac_addr": 274850556,
+      "decorated_name": "CAnim::CAnim(CAnim *, CFrame *, CAnim *, CFrame *, float, CAnim *, CFrame *, float)",
+      "undecorated_name": "__ct__5CAnimFP5CAnimP6CFrameP5CAnimP6CFramefP5CAnimP6CFramef",
+      "return_type": "struct CAnim *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CAnim *",
+        "struct CAnim *",
+        "struct CFrame *",
+        "struct CAnim *",
+        "struct CFrame *",
+        "float",
+        "struct CAnim *",
+        "struct CFrame *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "param_2",
+        "param_3",
+        "param_4",
+        "param_5",
+        "param_6",
+        "param_7",
+        "param_8",
+        "param_9"
+      ]
+    },
+    {
+      "win_addr": 8774816,
+      "mac_addr": 274839492,
+      "decorated_name": "CAnim::~CAnim(void)",
+      "undecorated_name": "__dt__5CAnimFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CAnim *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8788480,
+      "mac_addr": 274856604,
+      "decorated_name": "CAnim::AdjustForNewBasedOnStand(CAnim *, CAnim *)",
+      "undecorated_name": "AdjustForNewBasedOnStand__5CAnimFP5CAnimP5CAnim",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CAnim *",
+        "struct CAnim *",
+        "struct CAnim *"
+      ],
+      "argument_names": [
+        "this",
+        "param_2",
+        "param_3"
+      ]
+    },
+    {
+      "win_addr": 8783968,
+      "mac_addr": 274858188,
+      "decorated_name": "CAnim::ReadBinary(LHFile *)",
+      "undecorated_name": "ReadBinary__5CAnimFP6LHFile",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CAnim *",
+        "struct LHFile *"
+      ],
+      "argument_names": [
+        "this",
+        "file"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 269521504,
+      "decorated_name": "LH3DAnimSet::LH3DAnimSet(void)",
+      "undecorated_name": "__ct__11LH3DAnimSetFv",
+      "return_type": "struct LH3DAnimSet *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DAnimSet *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6396800,
+      "mac_addr": 268564784,
+      "decorated_name": "LH3DAnimSet::ReadBinaryNew",
+      "undecorated_name": "ReadBinaryNew__11LH3DAnimSetFP6LHFileP8AnimInfoP8AnimInfo",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DAnimSet *",
+        "struct LHFile *",
+        "struct AnimInfo *",
+        "struct AnimInfo *"
+      ],
+      "argument_names": [
+        "this",
+        "param_2",
+        "param_3",
+        "param_4"
+      ]
+    },
+    {
+      "win_addr": 4999536,
+      "mac_addr": 270733008,
+      "decorated_name": "CatInfo::Read(std::_FILE *)",
+      "undecorated_name": "Read__7CatInfoFPQ23std5_FILE",
+      "return_type": "char",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct CatInfo *",
+        "struct LHFilePath *"
+      ],
+      "argument_names": [
+        "this",
+        "path"
+      ]
+    },
+    {
+      "win_addr": 4999856,
+      "mac_addr": 268564784,
+      "decorated_name": "AnimInfo::Read(char *)",
+      "undecorated_name": "Read__8AnimInfoFPc",
+      "return_type": "uint32_t",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct AnimInfo *",
+        "char *"
+      ],
+      "argument_names": [
+        "this",
+        "spec_filename"
+      ]
+    },
+    {
+      "win_addr": 8626640,
+      "mac_addr": 269653360,
+      "decorated_name": "LH3DAnim::SetTransform(LH3DMatrix*, LH3DMesh*, LH3DMatrix*)",
+      "undecorated_name": "SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix",
+      "return_type": "float",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHMatrix *",
+        "struct LH3DMesh *",
+        "struct LHMatrix *"
+      ],
+      "argument_names": [
+        "param_1",
+        "param_2",
+        "param_3"
+      ]
+    },
+    {
+      "win_addr": 8628784,
+      "mac_addr": 274852548,
+      "decorated_name": "LH3DAnim::CreatePack(void)",
+      "undecorated_name": "CreatePack__8LH3DAnimFv",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 8627872,
+      "mac_addr": 268564784,
+      "decorated_name": "LH3DAnim::GetListPtrFrames",
+      "undecorated_name": "GetListPtrFrames__8LH3DAnimFv",
+      "return_type": "int",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DAnim *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LH3DAnimatedObject::LH3DAnimatedObject(void)",
+      "undecorated_name": "__ct__18LH3DAnimatedObjectFv",
+      "return_type": "struct LH3DAnimatedObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DAnimatedObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 4564976,
+      "mac_addr": -1,
+      "decorated_name": "LH3DCamera::GetPos(void)",
+      "undecorated_name": "GetPos__10LH3DCameraFv",
+      "return_type": "struct LHPoint *",
+      "call_type": "__stdcall",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 8523856,
+      "mac_addr": 269241840,
+      "decorated_name": "LH3DCameraChecker::Create(float, LHPoint, float, long, bool)",
+      "undecorated_name": "Create__17LH3DCameraCheckerFf7LHPointflb",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "float",
+        "struct LHPoint",
+        "float",
+        "long",
+        "bool"
+      ],
+      "argument_names": [
+        "max_distance",
+        "point",
+        "param_3",
+        "param_4",
+        "y_only"
+      ]
+    },
+    {
+      "win_addr": 8361312,
+      "mac_addr": 269174192,
+      "decorated_name": "LH3DCitadel::LH3DCitadel(void)",
+      "undecorated_name": "__ct__11LH3DCitadelFv",
+      "return_type": "struct LH3DCitadel *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DCitadel *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268975168,
+      "decorated_name": "LH3DColor::LH3DColor(uint)",
+      "undecorated_name": "__ct__9LH3DColorFUl",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DColor *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "color"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268775600,
+      "decorated_name": "LH3DColor::LH3DColor(LH3DColor const &)",
+      "undecorated_name": "__ct__9LH3DColorFRC9LH3DColor",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DColor *",
+        "const struct LH3DColor *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 273144832,
+      "decorated_name": "LH3DColor::operator=(LH3DColor const &)",
+      "undecorated_name": "__as__9LH3DColorFRC9LH3DColor",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DColor *",
+        "const struct LH3DColor *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LH3DComplexObject::LH3DComplexObject(void)",
+      "undecorated_name": "__ct__17LH3DComplexObjectFv",
+      "return_type": "struct LH3DComplexObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DComplexObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8437792,
+      "mac_addr": 268967184,
+      "decorated_name": "LH3DComplexObject::CreateDynamicShadow",
+      "undecorated_name": "CreateDynamicShadow__17LH3DComplexObjectFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DComplexObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8662240,
+      "mac_addr": 269721520,
+      "decorated_name": "LH3DMem::Alloc(long)",
+      "undecorated_name": "Alloc__7LH3DMemFl",
+      "return_type": "void *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "size_t"
+      ],
+      "argument_names": [
+        "size"
+      ]
+    },
+    {
+      "win_addr": 8662368,
+      "mac_addr": 269256480,
+      "decorated_name": "LH3DMem::Free(void)",
+      "undecorated_name": "Free__7LH3DMemFPv",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "void *"
+      ],
+      "argument_names": [
+        "mem"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 272471056,
+      "decorated_name": "LH3DMesh::GetPackedMesh(long)",
+      "undecorated_name": "GetPackedMesh__8LH3DMeshFl",
+      "return_type": "struct LH3DMesh *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "int"
+      ],
+      "argument_names": [
+        "index"
+      ]
+    },
+    {
+      "win_addr": 8414304,
+      "mac_addr": 268879648,
+      "decorated_name": "LH3DMesh::Create(void* , int)",
+      "undecorated_name": "Create__8LH3DMeshFPvi",
+      "return_type": "struct LH3DMesh *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const void *",
+        "bool"
+      ],
+      "argument_names": [
+        "buf",
+        "dont_care_about_texture"
+      ]
+    },
+    {
+      "win_addr": 8415216,
+      "mac_addr": 268879424,
+      "decorated_name": "LH3DMesh::CreateFromHD(char *, int)",
+      "undecorated_name": "CreateFromHD__8LH3DMeshFPci",
+      "return_type": "struct LH3DMesh *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const char *",
+        "bool"
+      ],
+      "argument_names": [
+        "filename",
+        "dont_care_about_textures"
+      ]
+    },
+    {
+      "win_addr": 8420320,
+      "mac_addr": 268874256,
+      "decorated_name": "LH3DMesh::CreatePackInternal(void*)",
+      "undecorated_name": "CreatePackInternal__8LH3DMeshFPv",
+      "return_type": "void",
+      "call_type": "__stdcall",
+      "argument_types": [
+        "const void *"
+      ],
+      "argument_names": [
+        "data"
+      ]
+    },
+    {
+      "win_addr": 8420448,
+      "mac_addr": 268874080,
+      "decorated_name": "LH3DMesh::CreatePack(void)",
+      "undecorated_name": "CreatePack__8LH3DMeshFv",
+      "return_type": "void",
+      "call_type": "__stdcall",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 8416512,
+      "mac_addr": 268506716,
+      "decorated_name": "LH3DMesh::Release(void)",
+      "undecorated_name": "Release__8LH3DMeshFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DMesh *"
+      ],
+      "argument_names": [
+        "mesh"
+      ]
+    },
+    {
+      "win_addr": 8421808,
+      "mac_addr": 268872400,
+      "decorated_name": "LH3DMesh::ComputeBoundingBox(void)",
+      "undecorated_name": "ComputeBoundingBox__8LH3DMeshFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DMesh *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8363360,
+      "mac_addr": 268603776,
+      "decorated_name": "LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)",
+      "undecorated_name": "SetDrawWithGlobalAlpha__16LH3DMeshedObjectFi",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LH3DMeshedObject *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "value"
+      ]
+    },
+    {
+      "win_addr": 8363952,
+      "mac_addr": 268484464,
+      "decorated_name": "LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)",
+      "undecorated_name": "GetDoorPos__16LH3DMeshedObjectCFP7LHPoint",
+      "return_type": "bool",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LH3DMeshedObject *",
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "this",
+        "out_point"
+      ]
+    },
+    {
+      "win_addr": 8479920,
+      "mac_addr": 268919904,
+      "decorated_name": "LH3DMeshedObject::LH3DMeshedObject(void)",
+      "undecorated_name": "__ct__16LH3DMeshedObjectFv",
+      "return_type": "struct LH3DMeshedObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DMeshedObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8361312,
+      "mac_addr": 269174192,
+      "decorated_name": "LH3DMist::LH3DMist(void)",
+      "undecorated_name": "__ct__8LH3DMistFv",
+      "return_type": "struct LH3DMist *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DMist *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8434896,
+      "mac_addr": 274858500,
+      "decorated_name": "LH3DObject::Create(LH3DObject::ObjectType)",
+      "undecorated_name": "Create__10LH3DObjectFQ210LH3DObject10ObjectType",
+      "return_type": "struct LH3DObject *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "enum LH3DObject__ObjectType"
+      ],
+      "argument_names": [
+        "object_type"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LH3DObject::LH3DObject(void)",
+      "undecorated_name": "__ct__10LH3DObjectFv",
+      "return_type": "struct LH3DObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 4337984,
+      "mac_addr": 268702848,
+      "decorated_name": "LH3DObject::SetPosition(const LHPoint&, float, float)",
+      "undecorated_name": "SetPosition__10LH3DObjectFRC7LHPointff",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LH3DObject *",
+        "struct LHPoint *",
+        "float",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "point",
+        "y_angle",
+        "scale"
+      ]
+    },
+    {
+      "win_addr": 8421168,
+      "mac_addr": 268872960,
+      "decorated_name": "LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)",
+      "undecorated_name": "ComputeBoundingBox__13LH3DPrimitiveFR7LHPointR7LHPointRi",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LH3DPrimitive *",
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "int *"
+      ],
+      "argument_names": [
+        "this",
+        "maxima",
+        "minima",
+        "initialized"
+      ]
+    },
+    {
+      "win_addr": 8694608,
+      "mac_addr": 269091312,
+      "decorated_name": "LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)",
+      "undecorated_name": "Create__13LH3DPrimitiveFPUcP13LH3DPrimitive",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const uint8_t *",
+        "struct LH3DPrimitive *"
+      ],
+      "argument_names": [
+        "buffer",
+        "primitive"
+      ]
+    },
+    {
+      "win_addr": 8583184,
+      "mac_addr": 268611376,
+      "decorated_name": "LH3DRender::DrawTriangle(Vertex3D *, unsigned long, unsigned short *, unsigned long)",
+      "undecorated_name": "DrawTriangle__10LH3DRenderFP8Vertex3DUlPUsUl",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct Vertex3D *",
+        "uint32_t",
+        "uint16_t *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "vertices",
+        "param_2",
+        "param_3",
+        "param_4"
+      ]
+    },
+    {
+      "win_addr": 4270400,
+      "mac_addr": 268724960,
+      "decorated_name": "LH3DRender::SetRenderState(D3DRENDERSTATETYPE, unsigned long)",
+      "undecorated_name": "SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [
+        "D3DRENDERSTATETYPE",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "type",
+        "value"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "LH3DRender::GetRenderState(D3DRENDERSTATETYPE, unsigned long&)",
+      "undecorated_name": "GetRenderState__10LH3DRenderF18D3DRENDERSTATETYPERUl",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [
+        "D3DRENDERSTATETYPE",
+        "uint32_t *"
+      ],
+      "argument_names": [
+        "type",
+        "value"
+      ]
+    },
+    {
+      "win_addr": 8565280,
+      "mac_addr": 268682336,
+      "decorated_name": "LH3DRender::SetD3DMatrix(D3DMATRIX &, LHMatrix &)",
+      "undecorated_name": "SetD3DMatrix__10LH3DRenderFRQ29IndirectX10_D3DMATRIXR8LHMatrix",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "D3DMATRIX *",
+        "struct LHMatrix *"
+      ],
+      "argument_names": [
+        "param_1",
+        "param_2"
+      ]
+    },
+    {
+      "win_addr": 8565456,
+      "mac_addr": -1,
+      "decorated_name": "LH3DRender::SetProjMatrix(D3DMATRIX *, D3DMATRIX *, float, float, float)",
+      "undecorated_name": "SetProjMatrix__10LH3DRenderFP9D3DMATRIXP9D3DMATRIXfff",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "D3DMATRIX *",
+        "D3DMATRIX *",
+        "float",
+        "float",
+        "float"
+      ],
+      "argument_names": [
+        "param_1",
+        "projection",
+        "near_plane",
+        "far_plane",
+        "fov"
+      ]
+    },
+    {
+      "win_addr": 8566128,
+      "mac_addr": 269121904,
+      "decorated_name": "LH3DRender::Close(void)",
+      "undecorated_name": "Close__10LH3DRenderFv",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 8567232,
+      "mac_addr": 268622768,
+      "decorated_name": "LH3DRender::SetTextureStageState(unsigned long, D3DTEXTURESTAGESTATETYPE, unsigned long)",
+      "undecorated_name": "SetTextureStageState__10LH3DRenderFUl24D3DTEXTURESTAGESTATETYPEUl",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [
+        "uint32_t",
+        "D3DTEXTURESTAGESTATETYPE",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "index",
+        "type",
+        "value"
+      ]
+    },
+    {
+      "win_addr": 8581344,
+      "mac_addr": 268513936,
+      "decorated_name": "LH3DRender::StartFrame(void)",
+      "undecorated_name": "StartFrame__10LH3DRenderFv",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 8584976,
+      "mac_addr": 268725180,
+      "decorated_name": "LH3DRender::SetD3DTillingOn(int)",
+      "undecorated_name": "SetD3DTillingOn__10LH3DRenderFi",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "uint32_t"
+      ],
+      "argument_names": [
+        "index"
+      ]
+    },
+    {
+      "win_addr": 8585040,
+      "mac_addr": 268725324,
+      "decorated_name": "LH3DRender::SetD3DTillingOff(int)",
+      "undecorated_name": "SetD3DTillingOff__10LH3DRenderFi",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "uint32_t"
+      ],
+      "argument_names": [
+        "index"
+      ]
+    },
+    {
+      "win_addr": 8561920,
+      "mac_addr": 268530216,
+      "decorated_name": "DrawAndClip(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)",
+      "undecorated_name": "DrawAndClip__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "D3DPRIMITIVETYPE",
+        "uint32_t",
+        "D3DTLVERTEX *",
+        "uint32_t",
+        "uint16_t *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "primitive_type",
+        "fvf",
+        "vertices",
+        "vertex_count",
+        "indices",
+        "index_count"
+      ]
+    },
+    {
+      "win_addr": 8562096,
+      "mac_addr": 268762776,
+      "decorated_name": "DrawAndClip2D(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)",
+      "undecorated_name": "DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "D3DPRIMITIVETYPE",
+        "uint32_t",
+        "D3DTLVERTEX *",
+        "uint32_t",
+        "uint16_t *",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "primitive_type",
+        "fvf",
+        "vertices",
+        "vertex_count",
+        "indices",
+        "index_count"
+      ]
+    },
+    {
+      "win_addr": 8584496,
+      "mac_addr": 269098384,
+      "decorated_name": "LH3DRender::CreateMaterial(LH3DMaterial::RenderMode, LH3DTexture *)",
+      "undecorated_name": "CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture",
+      "return_type": "struct LH3DMaterial *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "enum LH3DMaterial__RenderMode",
+        "struct LH3DTexture *"
+      ],
+      "argument_names": [
+        "render_mode",
+        "texture"
+      ]
+    },
+    {
+      "win_addr": 8358752,
+      "mac_addr": 269175472,
+      "decorated_name": "LH3DSmoke::Create(const LHPoint*)",
+      "undecorated_name": "Create__9LH3DSmokeFPC7LHPoint",
+      "return_type": "struct LH3DSmoke *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "position"
+      ]
+    },
+    {
+      "win_addr": 8651936,
+      "mac_addr": 269182192,
+      "decorated_name": "LH3DSprite::Create(long, int)",
+      "undecorated_name": "Create__10LH3DSpriteFli",
+      "return_type": "struct LH3DSprite *",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "int32_t",
+        "int32_t"
+      ],
+      "argument_names": [
+        "param_1",
+        "param_2"
+      ]
+    },
+    {
+      "win_addr": 8652016,
+      "mac_addr": 268486592,
+      "decorated_name": "LH3DSprite::SetToZero(void)",
+      "undecorated_name": "SetToZero__10LH3DSpriteFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DSprite *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8652080,
+      "mac_addr": 268609648,
+      "decorated_name": "LH3DSprite::Draw(void)",
+      "undecorated_name": "Draw__10LH3DSpriteFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DSprite *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8475520,
+      "mac_addr": 268927568,
+      "decorated_name": "LH3DSpriteObject::LH3DSpriteObject(long)",
+      "undecorated_name": "__ct__16LH3DSpriteObjectFl",
+      "return_type": "struct LH3DSpriteObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DSpriteObject *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "type"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268969648,
+      "decorated_name": "LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)",
+      "undecorated_name": "__ct__25LH3DStaticMorphableObjectFv",
+      "return_type": "struct LH3DStaticMorphableObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DStaticMorphableObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8480064,
+      "mac_addr": 268919776,
+      "decorated_name": "LH3DStaticObject::LH3DStaticObject(void)",
+      "undecorated_name": "__ct__16LH3DStaticObjectFv",
+      "return_type": "struct LH3DStaticObject *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DStaticObject *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8911360,
+      "mac_addr": 269205136,
+      "decorated_name": "LH3DSubMesh::Create(unsigned char *, LH3DSubMesh *)",
+      "undecorated_name": "Create__11LH3DSubMeshFPUcP11LH3DSubMesh",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const uint8_t *",
+        "struct LH3DSubMesh *"
+      ],
+      "argument_names": [
+        "buffer",
+        "submesh"
+      ]
+    },
+    {
+      "win_addr": 8911648,
+      "mac_addr": 269204656,
+      "decorated_name": "LH3DSubMesh::ComputeBoundingBox(LHPoint&, LHPoint&, int&)",
+      "undecorated_name": "ComputeBoundingBox__11LH3DSubMeshFR7LHPointR7LHPointRi",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LH3DSubMesh *",
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "int *"
+      ],
+      "argument_names": [
+        "this",
+        "maxima",
+        "minima",
+        "initialized"
+      ]
+    },
+    {
+      "win_addr": 8491056,
+      "mac_addr": 269224224,
+      "decorated_name": "LH3DTech::UpdateViewPort(long, long)",
+      "undecorated_name": "UpdateViewPort__8LH3DTechFll",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "int32_t",
+        "int32_t"
+      ],
+      "argument_names": [
+        "param_1",
+        "param_2"
+      ]
+    },
+    {
+      "win_addr": 8491920,
+      "mac_addr": 280898104,
+      "decorated_name": "LH3DTech::ProjectPoint(LHPoint *, int *, int *, float *)",
+      "undecorated_name": "ProjectPoint__8LH3DTechFP7LHPointPiPiPf",
+      "return_type": "uint32_t",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHPoint *",
+        "int *",
+        "int *",
+        "float *"
+      ],
+      "argument_names": [
+        "param_1",
+        "param_2",
+        "param_3",
+        "param_4"
+      ]
+    },
+    {
+      "win_addr": 8492464,
+      "mac_addr": 268507936,
+      "decorated_name": "LH3DTech::ChangeFov(float)",
+      "undecorated_name": "ChangeFov__8LH3DTechFf",
+      "return_type": "void",
+      "call_type": "__stdcall",
+      "argument_types": [
+        "float"
+      ],
+      "argument_names": [
+        "fov"
+      ]
+    },
+    {
+      "win_addr": 8492688,
+      "mac_addr": 268508544,
+      "decorated_name": "LH3DTech::UpdateWorldToCamera(LHMatrix &, LHPoint &, LHPoint &, bool)",
+      "undecorated_name": "UpdateWorldToCamera__8LH3DTechFR8LHMatrixR7LHPointR7LHPointb",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHMatrix *",
+        "struct LHPoint *",
+        "struct LHPoint *",
+        "bool"
+      ],
+      "argument_names": [
+        "param_1_00",
+        "param_2_00",
+        "param_1",
+        "param_2"
+      ]
+    },
+    {
+      "win_addr": 8502224,
+      "mac_addr": 269214464,
+      "decorated_name": "Report3D(char const *,",
+      "undecorated_name": "Report3D__FPCce",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "const char *"
+      ],
+      "argument_names": [
+        "fmt"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 269038128,
+      "decorated_name": "LH3DTech::GetDeltaTime(void)",
+      "undecorated_name": "GetDeltaTime__8LH3DTechFv",
+      "return_type": "uint32_t",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 8493344,
+      "mac_addr": 268651536,
+      "decorated_name": "LH3DTech::UpdateCamera(LHPoint const &, LHPoint const &)",
+      "undecorated_name": "UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "const struct LHPoint *",
+        "const struct LHPoint *"
+      ],
+      "argument_names": [
+        "param_1",
+        "param_2"
+      ]
+    },
+    {
+      "win_addr": 8490080,
+      "mac_addr": 269224576,
+      "decorated_name": "LH3DTech::RenderInitialization(long, long)",
+      "undecorated_name": "RenderInitialization__8LH3DTechFll",
+      "return_type": "void",
+      "call_type": "cdecl",
+      "argument_types": [
+        "int32_t",
+        "int32_t"
+      ],
+      "argument_names": [
+        "",
+        ""
+      ]
+    },
+    {
+      "win_addr": 8911968,
+      "mac_addr": 269326512,
+      "decorated_name": "LHIlib::LH3DRenderClose(void)",
+      "undecorated_name": "LH3DRenderClose__6LHIlibFv",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 6391472,
+      "mac_addr": 274837428,
+      "decorated_name": "LH3DTexture::Create",
+      "undecorated_name": "Create__11LH3DTextureFPvUlUlP13TextureFormat",
+      "return_type": "struct LH3DTexture *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "void *",
+        "unsigned long",
+        "unsigned long",
+        "struct TextureFormat *"
+      ],
+      "argument_names": [
+        "param_0",
+        "param_1",
+        "param_2",
+        "param_3"
+      ]
+    },
+    {
+      "win_addr": 8615904,
+      "mac_addr": -1,
+      "decorated_name": "LH3DTexture::SetPackedTexture(void)",
+      "undecorated_name": "SetPackedTexture__LH3DTextureFv",
+      "return_type": "void",
+      "call_type": "__stdcall",
+      "argument_types": [],
+      "argument_names": []
+    },
+    {
+      "win_addr": 8619136,
+      "mac_addr": 269258848,
+      "decorated_name": "LH3DTexture::GetThisTexture",
+      "undecorated_name": "GetThisTexture__11LH3DTextureFUl",
+      "return_type": "struct LH3DTexture *",
+      "call_type": "cdecl",
+      "argument_types": [
+        "unsigned long"
+      ],
+      "argument_names": [
+        "id"
+      ]
+    },
+    {
+      "win_addr": 8617280,
+      "mac_addr": 274839060,
+      "decorated_name": "LH3DTexture::Release(void)",
+      "undecorated_name": "Release__11LH3DTextureFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LH3DTexture *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 4207984,
+      "mac_addr": -1,
+      "decorated_name": "LHMatrix::PostTranslation(const LHPoint&)",
+      "undecorated_name": "PostTranslation__8LHMatrixFRC7LHPoint",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct LHMatrix *",
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "this",
+        "translation"
+      ]
+    },
+    {
+      "win_addr": 8368784,
+      "mac_addr": 268759132,
+      "decorated_name": "LHMatrix::SetInverse(LHMatrix const &)",
+      "undecorated_name": "SetInverse__8LHMatrixFRC8LHMatrix",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHMatrix *",
+        "const struct LHMatrix *"
+      ],
+      "argument_names": [
+        "this",
+        "r"
+      ]
+    },
+    {
+      "win_addr": 4621440,
+      "mac_addr": 269127008,
+      "decorated_name": "Point2D::operator=(const Point2D&)",
+      "undecorated_name": "__as__7Point2DFRC7Point2D",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6361456,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::DotProduct(Point2D&)",
+      "undecorated_name": "DotProduct__7Point2DRP7Point2D",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6361632,
+      "mac_addr": 269127008,
+      "decorated_name": "Point2D::operator=(const Point2D&) copy",
+      "undecorated_name": "__as__7Point2DFRC7Point2D2",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6361872,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::DotProduct(Point2D*)",
+      "undecorated_name": "DotProduct__7Point2DFP7Point2D",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6361488,
+      "mac_addr": 268646208,
+      "decorated_name": "Point2D::operator*(float) const",
+      "undecorated_name": "__ml__7Point2DCFf",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *",
+        "struct Point2D *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "result",
+        "rhs"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 269129024,
+      "decorated_name": "Point2D::operator+( const(Point2D const &))",
+      "undecorated_name": "__pl__7Point2DCFRC7Point2D",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Point2D *",
+        "const struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "lhs",
+        "rhs"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": 268995600,
+      "decorated_name": "Point2D::operator-( const(Point2D const &))",
+      "undecorated_name": "__mi__7Point2DCFRC7Point2D",
+      "return_type": "struct Point2D *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Point2D *",
+        "const struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "lhs",
+        "rhs"
+      ]
+    },
+    {
+      "win_addr": 6361664,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::Cross(const Point2D&) const",
+      "undecorated_name": "Cross__7Point2DCFRC7Point2D",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 6361904,
+      "mac_addr": 269382992,
+      "decorated_name": "Point2D::Normalize(void)",
+      "undecorated_name": "Normalize__7Point2DFv",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Point2D *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6362608,
+      "mac_addr": 268810816,
+      "decorated_name": "Point2D::GetNormSq(void) const",
+      "undecorated_name": "GetNormSq__7Point2DFv",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 8846752,
+      "mac_addr": 268810816,
+      "decorated_name": "Point2D::GetNormSq(void) const copy",
+      "undecorated_name": "GetNormSq__7Point2DFv2",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6379968,
+      "mac_addr": -1,
+      "decorated_name": "Point2D::operator==(const Point2D&)",
+      "undecorated_name": "__eq__7Point2DFRC7Point2D",
+      "return_type": "bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 8846592,
+      "mac_addr": 268997216,
+      "decorated_name": "Point2D::GetHeading(void) const",
+      "undecorated_name": "GetHeading__7Point2DCFv",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "param_1"
+      ]
+    },
+    {
+      "win_addr": 8846704,
+      "mac_addr": 268996864,
+      "decorated_name": "Point2D::SetSize(float)",
+      "undecorated_name": "SetSize__7Point2DFf",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Point2D *",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "size"
+      ]
+    },
+    {
+      "win_addr": 8846784,
+      "mac_addr": 268996608,
+      "decorated_name": "Point2D::GetRange(Point2D const &) const",
+      "undecorated_name": "GetRange__7Point2DCFRC7Point2D",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct Point2D *",
+        "const struct Point2D *"
+      ],
+      "argument_names": [
+        "this",
+        "param_1"
+      ]
+    },
+    {
+      "win_addr": 4466432,
+      "mac_addr": 268739168,
+      "decorated_name": "LHPoint::LHPoint(float, float, float)",
+      "undecorated_name": "__ct__7LHPointFfff",
+      "return_type": "struct LHPoint *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHPoint *",
+        "float",
+        "float",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    {
+      "win_addr": 4509632,
+      "mac_addr": 268674128,
+      "decorated_name": "LHPoint::LHPoint(const LHPoint&)",
+      "undecorated_name": "__ct__7LHPointFRC7LHPoint",
+      "return_type": "struct LHPoint *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHPoint *",
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ]
+    },
+    {
+      "win_addr": 5564688,
+      "mac_addr": 268664032,
+      "decorated_name": "LHPoint::FastNormalize(void)",
+      "undecorated_name": "FastNormalize__7LHPointFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHPoint *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 268556976,
       "mac_addr": 268659260,
       "decorated_name": "LHSession::IsSinglePlayer",
@@ -142167,6 +142095,104 @@
       ],
       "argument_names": [
         "this"
+      ]
+    },
+    {
+      "win_addr": 8589616,
+      "mac_addr": 209760,
+      "decorated_name": "GatheringText::GetStringWidth(wchar_t *, int, float)",
+      "undecorated_name": "GetStringWidth__13GatheringTextFPwif",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GatheringText *",
+        "const char16_t *",
+        "int",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "str",
+        "len",
+        "text_size"
+      ]
+    },
+    {
+      "win_addr": 8590768,
+      "mac_addr": 274844172,
+      "decorated_name": "GatheringText::DrawText(wchar_t *, float, float, float, float, float, float, float, float, float, LH3DColor *, int, int, int)",
+      "undecorated_name": "DrawText__13GatheringTextFPwfffffffffP9LH3DColoriii",
+      "return_type": "float",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GatheringText *",
+        "const char16_t *",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "float",
+        "const struct LH3DColor *",
+        "int",
+        "int",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "text",
+        "param_2",
+        "param_3",
+        "param_4",
+        "param_5",
+        "param_6",
+        "param_7",
+        "param_8",
+        "param_9",
+        "param_10",
+        "p_color",
+        "param_12",
+        "param_13",
+        "param_14"
+      ]
+    },
+    {
+      "win_addr": 8596576,
+      "mac_addr": 280899000,
+      "decorated_name": "GatheringText::DrawTextRaw(wchar_t *, int, float, float, float, float, LH3DColor *, int, LH3DColor *, float, float)",
+      "undecorated_name": "DrawTextRaw__13GatheringTextFPwiffffP9LH3DColoriP9LH3DColorff",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GatheringText *",
+        "const char16_t *",
+        "int",
+        "float",
+        "float",
+        "float",
+        "float",
+        "struct LH3DColor *",
+        "int",
+        "struct LH3DColor *",
+        "float",
+        "float"
+      ],
+      "argument_names": [
+        "this",
+        "text",
+        "param_2",
+        "x",
+        "y",
+        "param_5",
+        "param_6",
+        "param_7",
+        "param_8",
+        "param_9",
+        "param_10",
+        "param_11"
       ]
     },
     {
@@ -145219,46 +145245,6 @@
       "address": 10102044
     },
     {
-      "name": "__vt__LH3DMeshedObject",
-      "type": "struct LH3DObjectVftable",
-      "address": 10102600
-    },
-    {
-      "name": "__vt__LH3DStaticObject",
-      "type": "struct LH3DObjectVftable",
-      "address": 10103156
-    },
-    {
-      "name": "__vt__LH3DStaticMorphableObject",
-      "type": "struct LH3DObjectVftable",
-      "address": 10104372
-    },
-    {
-      "name": "__vt__LH3DAnimatedObject",
-      "type": "struct LH3DObjectVftable",
-      "address": 10105504
-    },
-    {
-      "name": "__vt__LH3DComplexObject",
-      "type": "struct LH3DObjectVftable",
-      "address": 10104936
-    },
-    {
-      "name": "__vt__16LH3DSpriteObject",
-      "type": "struct LH3DObjectVftable",
-      "address": 10106064
-    },
-    {
-      "name": "__vt__LH3DMist",
-      "type": "struct LH3DObjectVftable",
-      "address": 10101480
-    },
-    {
-      "name": "__vt__LH3DCitadel",
-      "type": "struct LH3DObjectVftable",
-      "address": 10103804
-    },
-    {
       "name": "__vt__Fixed",
       "type": "struct FixedVftable",
       "address": 9287452
@@ -146274,6 +146260,46 @@
       "address": 9708032
     },
     {
+      "name": "__vt__LH3DMeshedObject",
+      "type": "struct LH3DObjectVftable",
+      "address": 10102600
+    },
+    {
+      "name": "__vt__LH3DAnimatedObject",
+      "type": "struct LH3DObjectVftable",
+      "address": 10105504
+    },
+    {
+      "name": "__vt__LH3DStaticObject",
+      "type": "struct LH3DObjectVftable",
+      "address": 10103156
+    },
+    {
+      "name": "__vt__LH3DStaticMorphableObject",
+      "type": "struct LH3DObjectVftable",
+      "address": 10104372
+    },
+    {
+      "name": "__vt__LH3DCitadel",
+      "type": "struct LH3DObjectVftable",
+      "address": 10103804
+    },
+    {
+      "name": "__vt__LH3DComplexObject",
+      "type": "struct LH3DObjectVftable",
+      "address": 10104936
+    },
+    {
+      "name": "__vt__LH3DMist",
+      "type": "struct LH3DObjectVftable",
+      "address": 10101480
+    },
+    {
+      "name": "__vt__16LH3DSpriteObject",
+      "type": "struct LH3DObjectVftable",
+      "address": 10106064
+    },
+    {
       "name": "__vt__SetupColourPicker",
       "type": "struct SetupControlVftable",
       "address": 9090384
@@ -146670,17 +146696,17 @@
     },
     {
       "name": "Point2D_00d3ee60",
-      "type": "struct Point2D",
+      "type": "struct LHPoint2D",
       "address": 13889120
     },
     {
       "name": "Point2D_00d3ee68",
-      "type": "struct Point2D",
+      "type": "struct LHPoint2D",
       "address": 13889128
     },
     {
       "name": "Point2D_00d3ee70",
-      "type": "struct Point2D",
+      "type": "struct LHPoint2D",
       "address": 13889136
     },
     {

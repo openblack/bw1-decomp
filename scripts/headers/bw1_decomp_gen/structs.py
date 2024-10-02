@@ -200,6 +200,17 @@ class Union(Composite):
 
 
 @dataclass
+class HexCIntLiteral(csnake.cconstructs.VariableValue):
+    value: int
+
+    def init_target_code(self, formatters: Optional[csnake.cconstructs.LiteralFormatters] = None):
+        return str(self)
+
+    def __str__(self):
+        return hex(self.value)
+
+
+@dataclass
 class Enum:
     name: str
     size: int
@@ -223,7 +234,7 @@ class Enum:
     def to_csnake(self) -> csnake.Enum:
         result = csnake.Enum(self.name, typedef=False)
         for v in self.values:
-            result.add_value(*v)
+            result.add_value(v[0], HexCIntLiteral(v[1]))
         return result
 
     def to_code(self, cw: csnake.CodeWriter):
