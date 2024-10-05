@@ -3,6 +3,7 @@ import csnake
 from dataclasses import dataclass
 from typing import Optional, Union
 
+from csnake_overrides import CSnakeMultiLineArrayVariable, CSnakeUnion, CSnakeHexCIntLiteral
 from functions import DefinedFunctionPrototype
 from utils import partition, extract_type_name
 
@@ -146,27 +147,6 @@ class Struct(Composite):
         self.to_code_methods(cw)
 
 
-# TODO: Replace with csnake.Union when https://gitlab.com/andrejr/csnake/-/merge_requests/5 lands
-class CSnakeUnion(csnake.Struct):
-    def generate_declaration(self, indent=4):
-        writer = csnake.CodeWriterLite(indent=indent)
-        if self.typedef:
-            writer.add_line(f"typedef union")
-        else:
-            writer.add_line(f"union {self.name}")
-        writer.open_brace()
-        for var in self.variables:
-            writer.add_line(var.declaration)
-        writer.close_brace()
-
-        if self.typedef:
-            writer.add(" " + self.name + ";")
-        else:
-            writer.add(";")
-
-        return writer
-
-
 class Union(Composite):
     @property
     def decorated_name(self):
@@ -199,16 +179,6 @@ class Union(Composite):
         cw.add_line()
 
 
-@dataclass
-class HexCIntLiteral(csnake.cconstructs.VariableValue):
-    value: int
-
-    def init_target_code(self, formatters: Optional[csnake.cconstructs.LiteralFormatters] = None):
-        return str(self)
-
-    def __str__(self):
-        return hex(self.value)
-
 
 @dataclass
 class Enum:
@@ -234,13 +204,20 @@ class Enum:
     def to_csnake(self) -> csnake.Enum:
         result = csnake.Enum(self.name, typedef=False)
         for v in self.values:
-            result.add_value(v[0], HexCIntLiteral(v[1]))
+            result.add_value(v[0], CSnakeHexCIntLiteral(v[1]))
         return result
 
     def to_code(self, cw: csnake.CodeWriter):
         cw.add_enum(self.to_csnake())
         cw.add_line(f'static_assert(sizeof({self.decorated_name}) == 0x{self.size:x}, "Data type is of wrong size");')
         cw.add_line()
+
+        if self.count is not None:
+            str_label_map = {v: n for n, v in self.values}
+            strings_values = [str_label_map.get(i, f"{self.name}_{hex(i)}") for i in range(self.count[1])]
+            strings_variable = CSnakeMultiLineArrayVariable(f"{self.name}_strs", "char*", ["static", "const"], [f"_{self.name}_COUNT"], value=strings_values)
+            cw.add_variable_initialization(strings_variable)
+            cw.add_line()
 
 
 @dataclass

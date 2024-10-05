@@ -1,9 +1,8 @@
-from typing import Optional, Iterable
-
 from dataclasses import dataclass
 
 import csnake
 
+from csnake_overrides import CSnakeFuncPtr
 
 TYPE_SUBSTITUTIONS = {
     "_Bool": "bool",
@@ -22,64 +21,6 @@ def clean_up_type(typename):
     type_part = type_part.rstrip()
     type_part = TYPE_SUBSTITUTIONS.get(type_part, type_part)
     return "".join((type_part, pointer_part, after_pointer_part))
-
-
-class CSnakeFuncPtr(csnake.FuncPtr):
-    __slots__ = ("return_type", "arguments", "calling_convention", "indirection_level")
-
-    def __init__(
-        self,
-        return_type: str,
-        arguments: Optional[Iterable] = None,
-        calling_convention: Optional[str] = None,
-        indirection_level = 1,
-    ) -> None:
-        super().__init__(return_type, arguments)
-        self.calling_convention = calling_convention
-        self.indirection_level = indirection_level
-
-    def get_declaration(
-        self,
-        name: str,
-        qualifiers: Optional[str] = None,
-        array: Optional[str] = None,
-    ) -> str:
-        jointargs = ", ".join(
-            arg.generate_declaration() for arg in self.arguments
-        )
-
-        retval = "{rt} ({conv}{indir}{qual}{name}{arr})({arguments})".format(
-            rt=self.return_type,
-            qual=qualifiers if qualifiers else "",
-            name=name,
-            arguments=jointargs if self.arguments else "",
-            arr=array if array else "",
-            conv=self.calling_convention if self.calling_convention else "",
-            indir="*" * self.indirection_level + (" " if qualifiers or name or array else ""),
-        )
-
-        return retval
-
-    def get_typedef(
-        self,
-        name: str,
-        qualifiers: Optional[str] = None,
-        array: Optional[str] = None,
-    ) -> str:
-        jointargs = ", ".join(
-            arg.generate_declaration() for arg in self.arguments
-        )
-
-        retval = "typedef {rt} ({conv} {qual}{name}{arr})({arguments})".format(
-            rt=self.return_type,
-            qual=qualifiers if qualifiers else "",
-            name=name,
-            arguments=jointargs if self.arguments else "",
-            arr=array if array else "",
-            conv=self.calling_convention if self.calling_convention else ""
-        )
-
-        return retval
 
 
 @dataclass

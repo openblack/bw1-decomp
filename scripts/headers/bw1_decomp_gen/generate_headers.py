@@ -11,7 +11,8 @@ import csnake
 from header import Header, GlobalsHeader, C_STDLIB_HEADER_IMPORT_MAP, UTILITY_HEADER_IMPORT_MAP
 from structs import Struct, Union, Enum, RTTIClass
 from typedef import Typedef
-from functions import FuncPtr, DefinedFunctionPrototype, CSnakeFuncPtr
+from functions import FuncPtr, DefinedFunctionPrototype
+from csnake_overrides import CSnakeFuncPtr
 from vftable import Vftable
 from utils import partition, extract_type_name
 from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, resolve_roommate, ROOMMATE_CLASS_MAP

@@ -4,7 +4,8 @@ import os
 import csnake
 sys.path.append(os.path.dirname(__file__) + "/../bw1_decomp_gen")
 
-from functions import FuncPtr, CSnakeFuncPtr
+from functions import FuncPtr
+from csnake_overrides import CSnakeFuncPtr
 
 
 class TestCSnakeFuncPtr(unittest.TestCase):
