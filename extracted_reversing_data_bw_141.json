@@ -30436,23 +30436,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHListHead__Villager",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct Villager *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct LHLinkedNode__p_Villager",
       "size": 8,
       "members": [
@@ -30486,6 +30469,23 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Villager",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Villager *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
       "kind": "ENUM_DECL",
       "type": "enum ABODE_EPP",
       "size": 4,
@@ -30499,8 +30499,8 @@
           "value": 1
         },
         {
-          "name": "_ABODE_EPP_FORCE_32_BITS",
-          "value": 2147483647
+          "name": "_ABODE_EPP_COUNT",
+          "value": 2
         }
       ]
     },
@@ -36501,6 +36501,282 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct GMobileWallHugInfo",
+      "size": 288,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GMobileInfo",
+          "offset": 0
+        },
+        {
+          "name": "speed",
+          "type": "int32_t",
+          "offset": 260
+        },
+        {
+          "name": "field_0x108",
+          "type": "uint8_t[12]",
+          "offset": 264
+        },
+        {
+          "name": "field_0x114",
+          "type": "float",
+          "offset": 276
+        },
+        {
+          "name": "field_0x118",
+          "type": "float",
+          "offset": 280
+        },
+        {
+          "name": "field_0x11c",
+          "type": "float",
+          "offset": 284
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GLivingInfo",
+      "size": 500,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GMobileWallHugInfo",
+          "offset": 0
+        },
+        {
+          "name": "field_0x120",
+          "type": "uint32_t",
+          "offset": 288
+        },
+        {
+          "name": "move_to_state",
+          "type": "uint8_t",
+          "offset": 292
+        },
+        {
+          "name": "life",
+          "type": "float",
+          "offset": 296
+        },
+        {
+          "name": "field_0x12c",
+          "type": "float",
+          "offset": 300
+        },
+        {
+          "name": "field_0x130",
+          "type": "float",
+          "offset": 304
+        },
+        {
+          "name": "field_0x134",
+          "type": "int",
+          "offset": 308
+        },
+        {
+          "name": "teen_age",
+          "type": "uint32_t",
+          "offset": 312
+        },
+        {
+          "name": "middle_age",
+          "type": "uint32_t",
+          "offset": 316
+        },
+        {
+          "name": "old_age",
+          "type": "uint32_t",
+          "offset": 320
+        },
+        {
+          "name": "field_0x144",
+          "type": "uint32_t",
+          "offset": 324
+        },
+        {
+          "name": "field_0x148",
+          "type": "uint32_t",
+          "offset": 328
+        },
+        {
+          "name": "field_0x14c",
+          "type": "uint32_t",
+          "offset": 332
+        },
+        {
+          "name": "field_0x150",
+          "type": "uint32_t",
+          "offset": 336
+        },
+        {
+          "name": "field_0x154",
+          "type": "uint32_t",
+          "offset": 340
+        },
+        {
+          "name": "field_0x158",
+          "type": "uint32_t",
+          "offset": 344
+        },
+        {
+          "name": "field_0x15c",
+          "type": "uint32_t",
+          "offset": 348
+        },
+        {
+          "name": "field_0x160",
+          "type": "uint32_t",
+          "offset": 352
+        },
+        {
+          "name": "field_0x164",
+          "type": "uint32_t",
+          "offset": 356
+        },
+        {
+          "name": "field_0x168",
+          "type": "uint32_t",
+          "offset": 360
+        },
+        {
+          "name": "field_0x16c",
+          "type": "uint32_t",
+          "offset": 364
+        },
+        {
+          "name": "field_0x170",
+          "type": "uint8_t[8]",
+          "offset": 368
+        },
+        {
+          "name": "field_0x178",
+          "type": "uint32_t",
+          "offset": 376
+        },
+        {
+          "name": "field_0x17c",
+          "type": "uint8_t[52]",
+          "offset": 380
+        },
+        {
+          "name": "field_0x1b0",
+          "type": "uint32_t",
+          "offset": 432
+        },
+        {
+          "name": "field_0x1b4",
+          "type": "uint32_t",
+          "offset": 436
+        },
+        {
+          "name": "field_0x1b8",
+          "type": "uint8_t[60]",
+          "offset": 440
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CreatureInfo",
+      "size": 916,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GLivingInfo",
+          "offset": 0
+        },
+        {
+          "name": "creature_type",
+          "type": "uint32_t",
+          "offset": 500
+        },
+        {
+          "name": "field_0x1f8",
+          "type": "float[4]",
+          "offset": 504
+        },
+        {
+          "name": "field_0x208",
+          "type": "uint32_t",
+          "offset": 520
+        },
+        {
+          "name": "field_0x20c",
+          "type": "float",
+          "offset": 524
+        },
+        {
+          "name": "field_0x210",
+          "type": "uint32_t",
+          "offset": 528
+        },
+        {
+          "name": "field_0x214",
+          "type": "float[21]",
+          "offset": 532
+        },
+        {
+          "name": "field_0x268",
+          "type": "uint32_t",
+          "offset": 616
+        },
+        {
+          "name": "field_0x26c",
+          "type": "uint32_t",
+          "offset": 620
+        },
+        {
+          "name": "field_0x270",
+          "type": "uint32_t",
+          "offset": 624
+        },
+        {
+          "name": "field_0x274",
+          "type": "uint32_t",
+          "offset": 628
+        },
+        {
+          "name": "field_0x278",
+          "type": "float[3]",
+          "offset": 632
+        },
+        {
+          "name": "field_0x284",
+          "type": "uint32_t",
+          "offset": 644
+        },
+        {
+          "name": "field_0x288",
+          "type": "float[8]",
+          "offset": 648
+        },
+        {
+          "name": "field_0x2a8",
+          "type": "uint32_t",
+          "offset": 680
+        },
+        {
+          "name": "field_0x2ac",
+          "type": "float[38]",
+          "offset": 684
+        },
+        {
+          "name": "field_0x344",
+          "type": "uint32_t",
+          "offset": 836
+        },
+        {
+          "name": "field_0x348",
+          "type": "float[19]",
+          "offset": 840
+        }
+      ]
+    },
+    {
       "kind": "ENUM_DECL",
       "type": "enum CREATURE_TYPE",
       "size": 4,
@@ -37414,367 +37690,351 @@
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "CameraModeVftable____dt__",
+      "type": "CameraModeVftable____dt",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "struct CameraModeNew3 *",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "uint32_t"
       ],
       "arg_names": [
-        "",
-        "edx",
-        ""
+        "this",
+        "param_2"
       ],
-      "signature": "struct CameraModeNew3 *(void *, const void *, uint32_t) __attribute__((fastcall))"
+      "signature": "struct CameraModeNew3 *(struct CameraMode *, const void *, uint32_t) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__CanPlayerGestureWhenCameraMoving",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "bool",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "_Bool (void *) __attribute__((fastcall))"
+      "signature": "_Bool (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Update",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Validate",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Restart",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__IsStillValid",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "bool",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "_Bool (void *) __attribute__((fastcall))"
+      "signature": "_Bool (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Cleanup",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__CanExist",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "bool",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "_Bool (void *) __attribute__((fastcall))"
+      "signature": "_Bool (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__MouseIsLocked",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "bool",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "_Bool (void *) __attribute__((fastcall))"
+      "signature": "_Bool (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__ProcessKeyMovement",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "uint16_t"
       ],
       "arg_names": [
-        "",
-        "edx",
-        ""
+        "this",
+        "param_2"
       ],
-      "signature": "void (void *, const void *, uint16_t) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *, const void *, uint16_t) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__ProcessMouseMovement",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Delete",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Arrived",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "bool",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "_Bool (void *) __attribute__((fastcall))"
+      "signature": "_Bool (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__GetSaveID",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "uint32_t",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "uint32_t (void *) __attribute__((fastcall))"
+      "signature": "uint32_t (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Load",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "struct GameOSFile *"
       ],
       "arg_names": [
-        "",
-        "edx",
-        ""
+        "this",
+        "param_2"
       ],
-      "signature": "void (void *, const void *, struct GameOSFile *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *, const void *, struct GameOSFile *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Save",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "struct GameOSFile *"
       ],
       "arg_names": [
-        "",
-        "edx",
-        ""
+        "this",
+        "param_2"
       ],
-      "signature": "void (void *, const void *, struct GameOSFile *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *, const void *, struct GameOSFile *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__GetDebugName",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "const char *",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "const char *(void *) __attribute__((fastcall))"
+      "signature": "const char *(struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Initialise",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "void (void *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__Reinitialise",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "bool"
       ],
       "arg_names": [
-        "",
-        "edx",
-        ""
+        "this",
+        "param_2"
       ],
-      "signature": "void (void *, const void *, _Bool) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *, const void *, _Bool) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__FlyToPosFoc",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "struct LHPoint *",
         "struct LHPoint *",
         "float"
       ],
       "arg_names": [
-        "",
-        "edx",
-        "",
-        "",
-        ""
+        "this",
+        "param_2",
+        "param_3",
+        "param_4"
       ],
-      "signature": "void (void *, const void *, struct LHPoint *, struct LHPoint *, float) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *, const void *, struct LHPoint *, struct LHPoint *, float) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__SetupVia",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "const struct LHPoint *",
         "const struct LHPoint *",
         "const struct LHPoint *",
         "float"
       ],
       "arg_names": [
-        "",
-        "edx",
-        "",
-        "",
-        "",
-        ""
+        "this",
+        "param_2",
+        "param_3",
+        "param_4",
+        "param_5"
       ],
-      "signature": "void (void *, const void *, const struct LHPoint *, const struct LHPoint *, const struct LHPoint *, float) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *, const void *, const struct LHPoint *, const struct LHPoint *, const struct LHPoint *, float) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__GetCameraFeatures",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "uint32_t",
       "args": [
-        "void *"
+        "struct CameraMode *"
       ],
       "arg_names": [
-        ""
+        "this"
       ],
-      "signature": "uint32_t (void *) __attribute__((fastcall))"
+      "signature": "uint32_t (struct CameraMode *) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
       "type": "CameraModeVftable__ForceRotateAboutPoint",
       "size": 4,
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "result": "void",
       "args": [
-        "void *",
-        "const void *",
+        "struct CameraMode *",
         "struct LHPoint *"
       ],
       "arg_names": [
-        "",
-        "edx",
+        "this",
         "point"
       ],
-      "signature": "void (void *, const void *, struct LHPoint *) __attribute__((fastcall))"
+      "signature": "void (struct CameraMode *, const void *, struct LHPoint *) __attribute__((fastcall))"
     },
     {
       "kind": "STRUCT_DECL",
@@ -37782,8 +38042,8 @@
       "size": 96,
       "members": [
         {
-          "name": "__dt__",
-          "type": "CameraModeVftable____dt__ *",
+          "name": "__dt",
+          "type": "CameraModeVftable____dt *",
           "offset": 0
         },
         {
@@ -38627,6 +38887,266 @@
       ]
     },
     {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__Init",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct DialogBoxBase *",
+        "uint32_t",
+        "uint32_t",
+        "void (*)(int, struct SetupBox *, struct SetupControl *, int, int) __attribute__((stdcall))"
+      ],
+      "arg_names": [
+        "this",
+        "param_1",
+        "param_2",
+        "param_3"
+      ],
+      "signature": "void (struct DialogBoxBase *, const void *, uint32_t, uint32_t, void (*)(int, struct SetupBox *, struct SetupControl *, int, int) __attribute__((stdcall))) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__Destroy",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__InitSubDialogs",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__Show",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__CloseNotification",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__WantsKeyControl",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "bool",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "_Bool (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__WantsMouseControl",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "bool",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "_Bool (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__CanESCOut",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "bool",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "_Bool (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "FUNCTIONPROTO",
+      "type": "DialogBoxBaseVftable__InitControls",
+      "size": 4,
+      "call_type": "__thiscall",
+      "result": "void",
+      "args": [
+        "struct DialogBoxBase *"
+      ],
+      "arg_names": [
+        "this"
+      ],
+      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct DialogBoxBaseVftable",
+      "size": 36,
+      "members": [
+        {
+          "name": "Init",
+          "type": "DialogBoxBaseVftable__Init *",
+          "offset": 0
+        },
+        {
+          "name": "Destroy",
+          "type": "DialogBoxBaseVftable__Destroy *",
+          "offset": 4
+        },
+        {
+          "name": "InitSubDialogs",
+          "type": "DialogBoxBaseVftable__InitSubDialogs *",
+          "offset": 8
+        },
+        {
+          "name": "Show",
+          "type": "DialogBoxBaseVftable__Show *",
+          "offset": 12
+        },
+        {
+          "name": "CloseNotification",
+          "type": "DialogBoxBaseVftable__CloseNotification *",
+          "offset": 16
+        },
+        {
+          "name": "WantsKeyControl",
+          "type": "DialogBoxBaseVftable__WantsKeyControl *",
+          "offset": 20
+        },
+        {
+          "name": "WantsMouseControl",
+          "type": "DialogBoxBaseVftable__WantsMouseControl *",
+          "offset": 24
+        },
+        {
+          "name": "CanESCOut",
+          "type": "DialogBoxBaseVftable__CanESCOut *",
+          "offset": 28
+        },
+        {
+          "name": "InitControls",
+          "type": "DialogBoxBaseVftable__InitControls *",
+          "offset": 32
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct DialogBoxBase",
+      "size": 16,
+      "members": [
+        {
+          "name": "vftable",
+          "type": "struct DialogBoxBaseVftable *",
+          "offset": 0
+        },
+        {
+          "name": "setup_box",
+          "type": "struct SetupBox *",
+          "offset": 4
+        },
+        {
+          "name": "field_0x8",
+          "type": "uint8_t",
+          "offset": 8
+        },
+        {
+          "name": "field_0x9",
+          "type": "uint8_t",
+          "offset": 9
+        },
+        {
+          "name": "field_0xa",
+          "type": "uint8_t",
+          "offset": 10
+        },
+        {
+          "name": "field_0xb",
+          "type": "uint8_t",
+          "offset": 11
+        },
+        {
+          "name": "next",
+          "type": "struct DialogBoxBase *",
+          "offset": 12
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CDBox",
+      "size": 52,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[36]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct ChannelBox",
+      "size": 2772,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[2756]",
+          "offset": 16
+        }
+      ]
+    },
+    {
       "kind": "STRUCT_DECL",
       "type": "struct CitadelPart",
       "size": 140,
@@ -38672,6 +39192,133 @@
           "name": "count",
           "type": "uint32_t",
           "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CitadelHeart",
+      "size": 232,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct CitadelPart",
+          "offset": 0
+        },
+        {
+          "name": "field_0x8c",
+          "type": "uint32_t",
+          "offset": 140
+        },
+        {
+          "name": "field_0x90",
+          "type": "uint32_t",
+          "offset": 144
+        },
+        {
+          "name": "field_0x94",
+          "type": "struct GameThing *",
+          "offset": 148
+        },
+        {
+          "name": "field_0x98",
+          "type": "struct GameThing *",
+          "offset": 152
+        },
+        {
+          "name": "field_0x9c",
+          "type": "uint32_t",
+          "offset": 156
+        },
+        {
+          "name": "field_0xa0",
+          "type": "uint32_t",
+          "offset": 160
+        },
+        {
+          "name": "field_0xa4",
+          "type": "int",
+          "offset": 164
+        },
+        {
+          "name": "field_0xa8",
+          "type": "uint32_t",
+          "offset": 168
+        },
+        {
+          "name": "field_0xac",
+          "type": "struct GameThing *",
+          "offset": 172
+        },
+        {
+          "name": "field_0xb0",
+          "type": "struct GameThing *",
+          "offset": 176
+        },
+        {
+          "name": "field_0xb4",
+          "type": "uint32_t",
+          "offset": 180
+        },
+        {
+          "name": "field_0xb8",
+          "type": "uint8_t",
+          "offset": 184
+        },
+        {
+          "name": "field_0xbc",
+          "type": "float",
+          "offset": 188
+        },
+        {
+          "name": "field_0xc0",
+          "type": "struct GameThing *",
+          "offset": 192
+        },
+        {
+          "name": "field_0xc4",
+          "type": "uint32_t",
+          "offset": 196
+        },
+        {
+          "name": "field_0xc8",
+          "type": "uint32_t",
+          "offset": 200
+        },
+        {
+          "name": "field_0xcc",
+          "type": "struct GameThing *",
+          "offset": 204
+        },
+        {
+          "name": "field_0xd0",
+          "type": "float",
+          "offset": 208
+        },
+        {
+          "name": "field_0xd4",
+          "type": "uint32_t",
+          "offset": 212
+        },
+        {
+          "name": "field_0xd8",
+          "type": "uint32_t",
+          "offset": 216
+        },
+        {
+          "name": "field_0xdc",
+          "type": "struct GameThing *",
+          "offset": 220
+        },
+        {
+          "name": "field_0xe0",
+          "type": "uint32_t",
+          "offset": 224
+        },
+        {
+          "name": "field_0xe4",
+          "type": "uint32_t *",
+          "offset": 228
         }
       ]
     },
@@ -38803,133 +39450,6 @@
           "name": "living",
           "type": "struct Living *",
           "offset": 124
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CitadelHeart",
-      "size": 232,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct CitadelPart",
-          "offset": 0
-        },
-        {
-          "name": "field_0x8c",
-          "type": "uint32_t",
-          "offset": 140
-        },
-        {
-          "name": "field_0x90",
-          "type": "uint32_t",
-          "offset": 144
-        },
-        {
-          "name": "field_0x94",
-          "type": "struct GameThing *",
-          "offset": 148
-        },
-        {
-          "name": "field_0x98",
-          "type": "struct GameThing *",
-          "offset": 152
-        },
-        {
-          "name": "field_0x9c",
-          "type": "uint32_t",
-          "offset": 156
-        },
-        {
-          "name": "field_0xa0",
-          "type": "uint32_t",
-          "offset": 160
-        },
-        {
-          "name": "field_0xa4",
-          "type": "int",
-          "offset": 164
-        },
-        {
-          "name": "field_0xa8",
-          "type": "uint32_t",
-          "offset": 168
-        },
-        {
-          "name": "field_0xac",
-          "type": "struct GameThing *",
-          "offset": 172
-        },
-        {
-          "name": "field_0xb0",
-          "type": "struct GameThing *",
-          "offset": 176
-        },
-        {
-          "name": "field_0xb4",
-          "type": "uint32_t",
-          "offset": 180
-        },
-        {
-          "name": "field_0xb8",
-          "type": "uint8_t",
-          "offset": 184
-        },
-        {
-          "name": "field_0xbc",
-          "type": "float",
-          "offset": 188
-        },
-        {
-          "name": "field_0xc0",
-          "type": "struct GameThing *",
-          "offset": 192
-        },
-        {
-          "name": "field_0xc4",
-          "type": "uint32_t",
-          "offset": 196
-        },
-        {
-          "name": "field_0xc8",
-          "type": "uint32_t",
-          "offset": 200
-        },
-        {
-          "name": "field_0xcc",
-          "type": "struct GameThing *",
-          "offset": 204
-        },
-        {
-          "name": "field_0xd0",
-          "type": "float",
-          "offset": 208
-        },
-        {
-          "name": "field_0xd4",
-          "type": "uint32_t",
-          "offset": 212
-        },
-        {
-          "name": "field_0xd8",
-          "type": "uint32_t",
-          "offset": 216
-        },
-        {
-          "name": "field_0xdc",
-          "type": "struct GameThing *",
-          "offset": 220
-        },
-        {
-          "name": "field_0xe0",
-          "type": "uint32_t",
-          "offset": 224
-        },
-        {
-          "name": "field_0xe4",
-          "type": "uint32_t *",
-          "offset": 228
         }
       ]
     },
@@ -43319,282 +43839,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct GMobileWallHugInfo",
-      "size": 288,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct GMobileInfo",
-          "offset": 0
-        },
-        {
-          "name": "speed",
-          "type": "int32_t",
-          "offset": 260
-        },
-        {
-          "name": "field_0x108",
-          "type": "uint8_t[12]",
-          "offset": 264
-        },
-        {
-          "name": "field_0x114",
-          "type": "float",
-          "offset": 276
-        },
-        {
-          "name": "field_0x118",
-          "type": "float",
-          "offset": 280
-        },
-        {
-          "name": "field_0x11c",
-          "type": "float",
-          "offset": 284
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GLivingInfo",
-      "size": 500,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct GMobileWallHugInfo",
-          "offset": 0
-        },
-        {
-          "name": "field_0x120",
-          "type": "uint32_t",
-          "offset": 288
-        },
-        {
-          "name": "move_to_state",
-          "type": "uint8_t",
-          "offset": 292
-        },
-        {
-          "name": "life",
-          "type": "float",
-          "offset": 296
-        },
-        {
-          "name": "field_0x12c",
-          "type": "float",
-          "offset": 300
-        },
-        {
-          "name": "field_0x130",
-          "type": "float",
-          "offset": 304
-        },
-        {
-          "name": "field_0x134",
-          "type": "int",
-          "offset": 308
-        },
-        {
-          "name": "teen_age",
-          "type": "uint32_t",
-          "offset": 312
-        },
-        {
-          "name": "middle_age",
-          "type": "uint32_t",
-          "offset": 316
-        },
-        {
-          "name": "old_age",
-          "type": "uint32_t",
-          "offset": 320
-        },
-        {
-          "name": "field_0x144",
-          "type": "uint32_t",
-          "offset": 324
-        },
-        {
-          "name": "field_0x148",
-          "type": "uint32_t",
-          "offset": 328
-        },
-        {
-          "name": "field_0x14c",
-          "type": "uint32_t",
-          "offset": 332
-        },
-        {
-          "name": "field_0x150",
-          "type": "uint32_t",
-          "offset": 336
-        },
-        {
-          "name": "field_0x154",
-          "type": "uint32_t",
-          "offset": 340
-        },
-        {
-          "name": "field_0x158",
-          "type": "uint32_t",
-          "offset": 344
-        },
-        {
-          "name": "field_0x15c",
-          "type": "uint32_t",
-          "offset": 348
-        },
-        {
-          "name": "field_0x160",
-          "type": "uint32_t",
-          "offset": 352
-        },
-        {
-          "name": "field_0x164",
-          "type": "uint32_t",
-          "offset": 356
-        },
-        {
-          "name": "field_0x168",
-          "type": "uint32_t",
-          "offset": 360
-        },
-        {
-          "name": "field_0x16c",
-          "type": "uint32_t",
-          "offset": 364
-        },
-        {
-          "name": "field_0x170",
-          "type": "uint8_t[8]",
-          "offset": 368
-        },
-        {
-          "name": "field_0x178",
-          "type": "uint32_t",
-          "offset": 376
-        },
-        {
-          "name": "field_0x17c",
-          "type": "uint8_t[52]",
-          "offset": 380
-        },
-        {
-          "name": "field_0x1b0",
-          "type": "uint32_t",
-          "offset": 432
-        },
-        {
-          "name": "field_0x1b4",
-          "type": "uint32_t",
-          "offset": 436
-        },
-        {
-          "name": "field_0x1b8",
-          "type": "uint8_t[60]",
-          "offset": 440
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CreatureInfo",
-      "size": 916,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct GLivingInfo",
-          "offset": 0
-        },
-        {
-          "name": "creature_type",
-          "type": "uint32_t",
-          "offset": 500
-        },
-        {
-          "name": "field_0x1f8",
-          "type": "float[4]",
-          "offset": 504
-        },
-        {
-          "name": "field_0x208",
-          "type": "uint32_t",
-          "offset": 520
-        },
-        {
-          "name": "field_0x20c",
-          "type": "float",
-          "offset": 524
-        },
-        {
-          "name": "field_0x210",
-          "type": "uint32_t",
-          "offset": 528
-        },
-        {
-          "name": "field_0x214",
-          "type": "float[21]",
-          "offset": 532
-        },
-        {
-          "name": "field_0x268",
-          "type": "uint32_t",
-          "offset": 616
-        },
-        {
-          "name": "field_0x26c",
-          "type": "uint32_t",
-          "offset": 620
-        },
-        {
-          "name": "field_0x270",
-          "type": "uint32_t",
-          "offset": 624
-        },
-        {
-          "name": "field_0x274",
-          "type": "uint32_t",
-          "offset": 628
-        },
-        {
-          "name": "field_0x278",
-          "type": "float[3]",
-          "offset": 632
-        },
-        {
-          "name": "field_0x284",
-          "type": "uint32_t",
-          "offset": 644
-        },
-        {
-          "name": "field_0x288",
-          "type": "float[8]",
-          "offset": 648
-        },
-        {
-          "name": "field_0x2a8",
-          "type": "uint32_t",
-          "offset": 680
-        },
-        {
-          "name": "field_0x2ac",
-          "type": "float[38]",
-          "offset": 684
-        },
-        {
-          "name": "field_0x344",
-          "type": "uint32_t",
-          "offset": 836
-        },
-        {
-          "name": "field_0x348",
-          "type": "float[19]",
-          "offset": 840
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct CreaturePreviousLesson",
       "size": 4620,
       "members": [
@@ -43866,40 +44110,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_AttributeTest",
-      "size": 8,
-      "members": [
-        {
-          "name": "next",
-          "type": "struct LHLinkedNode__p_AttributeTest *",
-          "offset": 0
-        },
-        {
-          "name": "payload",
-          "type": "struct AttributeTest *",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_AttributeTest",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct LHLinkedNode__p_AttributeTest *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct AttributeTest",
       "size": 148,
       "members": [
@@ -43949,9 +44159,14 @@
           "offset": 128
         },
         {
-          "name": "attribute_test_list",
-          "type": "struct LHLinkedList__p_AttributeTest",
+          "name": "field_0x84",
+          "type": "uint32_t",
           "offset": 132
+        },
+        {
+          "name": "field_0x88",
+          "type": "uint32_t",
+          "offset": 136
         },
         {
           "name": "field_0x8c",
@@ -43962,6 +44177,40 @@
           "name": "field_0x90",
           "type": "uint32_t",
           "offset": 144
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedNode__p_AttributeTest",
+      "size": 8,
+      "members": [
+        {
+          "name": "next",
+          "type": "struct LHLinkedNode__p_AttributeTest *",
+          "offset": 0
+        },
+        {
+          "name": "payload",
+          "type": "struct AttributeTest *",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHLinkedList__p_AttributeTest",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct LHLinkedNode__p_AttributeTest *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
         }
       ]
     },
@@ -44058,6 +44307,164 @@
           "name": "agendas",
           "type": "struct DecisionTreeAgendas[2]",
           "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CreatureBeliefList",
+      "size": 20,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "field_0x8",
+          "type": "uint32_t",
+          "offset": 8
+        },
+        {
+          "name": "field_0xc",
+          "type": "uint32_t",
+          "offset": 12
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint32_t",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct AllocatedBeliefList",
+      "size": 24,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "field_0x8",
+          "type": "uint32_t",
+          "offset": 8
+        },
+        {
+          "name": "field_0xc",
+          "type": "uint32_t",
+          "offset": 12
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint32_t",
+          "offset": 16
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint32_t",
+          "offset": 20
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CreatureBeliefs",
+      "size": 624,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "lists",
+          "type": "struct CreatureBeliefList[2]",
+          "offset": 8
+        },
+        {
+          "name": "allocated_list",
+          "type": "struct AllocatedBeliefList",
+          "offset": 48
+        },
+        {
+          "name": "field_0x48",
+          "type": "uint8_t[552]",
+          "offset": 72
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct CreatureMentalDebug",
+      "size": 76,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "field_0x8",
+          "type": "uint32_t",
+          "offset": 8
+        },
+        {
+          "name": "field_0xc",
+          "type": "uint32_t",
+          "offset": 12
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint32_t",
+          "offset": 16
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint32_t",
+          "offset": 20
+        },
+        {
+          "name": "field_0x18",
+          "type": "uint32_t",
+          "offset": 24
+        },
+        {
+          "name": "field_0x1c",
+          "type": "uint32_t",
+          "offset": 28
+        },
+        {
+          "name": "field_0x20",
+          "type": "uint32_t",
+          "offset": 32
+        },
+        {
+          "name": "field_0x24",
+          "type": "uint32_t",
+          "offset": 36
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint32_t",
+          "offset": 40
+        },
+        {
+          "name": "field_0x2c",
+          "type": "uint8_t[16]",
+          "offset": 44
+        },
+        {
+          "name": "field_0x3c",
+          "type": "uint32_t",
+          "offset": 60
+        },
+        {
+          "name": "field_0x40",
+          "type": "uint8_t[12]",
+          "offset": 64
         }
       ]
     },
@@ -44236,164 +44643,6 @@
           "name": "field_0x704",
           "type": "uint32_t",
           "offset": 1796
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CreatureBeliefList",
-      "size": 20,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "field_0x8",
-          "type": "uint32_t",
-          "offset": 8
-        },
-        {
-          "name": "field_0xc",
-          "type": "uint32_t",
-          "offset": 12
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint32_t",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct AllocatedBeliefList",
-      "size": 24,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "field_0x8",
-          "type": "uint32_t",
-          "offset": 8
-        },
-        {
-          "name": "field_0xc",
-          "type": "uint32_t",
-          "offset": 12
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint32_t",
-          "offset": 16
-        },
-        {
-          "name": "field_0x14",
-          "type": "uint32_t",
-          "offset": 20
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CreatureBeliefs",
-      "size": 624,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "lists",
-          "type": "struct CreatureBeliefList[2]",
-          "offset": 8
-        },
-        {
-          "name": "allocated_list",
-          "type": "struct AllocatedBeliefList",
-          "offset": 48
-        },
-        {
-          "name": "field_0x48",
-          "type": "uint8_t[552]",
-          "offset": 72
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CreatureMentalDebug",
-      "size": 76,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "field_0x8",
-          "type": "uint32_t",
-          "offset": 8
-        },
-        {
-          "name": "field_0xc",
-          "type": "uint32_t",
-          "offset": 12
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint32_t",
-          "offset": 16
-        },
-        {
-          "name": "field_0x14",
-          "type": "uint32_t",
-          "offset": 20
-        },
-        {
-          "name": "field_0x18",
-          "type": "uint32_t",
-          "offset": 24
-        },
-        {
-          "name": "field_0x1c",
-          "type": "uint32_t",
-          "offset": 28
-        },
-        {
-          "name": "field_0x20",
-          "type": "uint32_t",
-          "offset": 32
-        },
-        {
-          "name": "field_0x24",
-          "type": "uint32_t",
-          "offset": 36
-        },
-        {
-          "name": "field_0x28",
-          "type": "uint32_t",
-          "offset": 40
-        },
-        {
-          "name": "field_0x2c",
-          "type": "uint8_t[16]",
-          "offset": 44
-        },
-        {
-          "name": "field_0x3c",
-          "type": "uint32_t",
-          "offset": 60
-        },
-        {
-          "name": "field_0x40",
-          "type": "uint8_t[12]",
-          "offset": 64
         }
       ]
     },
@@ -66210,232 +66459,6 @@
       ]
     },
     {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__Init",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct DialogBoxBase *",
-        "uint32_t",
-        "uint32_t",
-        "void (*)(int, struct SetupBox *, struct SetupControl *, int, int) __attribute__((stdcall))"
-      ],
-      "arg_names": [
-        "this",
-        "param_1",
-        "param_2",
-        "param_3"
-      ],
-      "signature": "void (struct DialogBoxBase *, const void *, uint32_t, uint32_t, void (*)(int, struct SetupBox *, struct SetupControl *, int, int) __attribute__((stdcall))) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__Destroy",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__InitSubDialogs",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__Show",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__CloseNotification",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__WantsKeyControl",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "bool",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "_Bool (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__WantsMouseControl",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "bool",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "_Bool (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__CanESCOut",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "bool",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "_Bool (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "FUNCTIONPROTO",
-      "type": "DialogBoxBaseVftable__InitControls",
-      "size": 4,
-      "call_type": "__thiscall",
-      "result": "void",
-      "args": [
-        "struct DialogBoxBase *"
-      ],
-      "arg_names": [
-        "this"
-      ],
-      "signature": "void (struct DialogBoxBase *) __attribute__((fastcall))"
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct DialogBoxBaseVftable",
-      "size": 36,
-      "members": [
-        {
-          "name": "Init",
-          "type": "DialogBoxBaseVftable__Init *",
-          "offset": 0
-        },
-        {
-          "name": "Destroy",
-          "type": "DialogBoxBaseVftable__Destroy *",
-          "offset": 4
-        },
-        {
-          "name": "InitSubDialogs",
-          "type": "DialogBoxBaseVftable__InitSubDialogs *",
-          "offset": 8
-        },
-        {
-          "name": "Show",
-          "type": "DialogBoxBaseVftable__Show *",
-          "offset": 12
-        },
-        {
-          "name": "CloseNotification",
-          "type": "DialogBoxBaseVftable__CloseNotification *",
-          "offset": 16
-        },
-        {
-          "name": "WantsKeyControl",
-          "type": "DialogBoxBaseVftable__WantsKeyControl *",
-          "offset": 20
-        },
-        {
-          "name": "WantsMouseControl",
-          "type": "DialogBoxBaseVftable__WantsMouseControl *",
-          "offset": 24
-        },
-        {
-          "name": "CanESCOut",
-          "type": "DialogBoxBaseVftable__CanESCOut *",
-          "offset": 28
-        },
-        {
-          "name": "InitControls",
-          "type": "DialogBoxBaseVftable__InitControls *",
-          "offset": 32
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct DialogBoxBase",
-      "size": 16,
-      "members": [
-        {
-          "name": "vftable",
-          "type": "struct DialogBoxBaseVftable *",
-          "offset": 0
-        },
-        {
-          "name": "setup_box",
-          "type": "struct SetupBox *",
-          "offset": 4
-        },
-        {
-          "name": "field_0x8",
-          "type": "uint8_t",
-          "offset": 8
-        },
-        {
-          "name": "field_0x9",
-          "type": "uint8_t",
-          "offset": 9
-        },
-        {
-          "name": "field_0xa",
-          "type": "uint8_t",
-          "offset": 10
-        },
-        {
-          "name": "field_0xb",
-          "type": "uint8_t",
-          "offset": 11
-        },
-        {
-          "name": "next",
-          "type": "struct DialogBoxBase *",
-          "offset": 12
-        }
-      ]
-    },
-    {
       "kind": "STRUCT_DECL",
       "type": "struct DialogBoxImmersion",
       "size": 40,
@@ -66996,23 +67019,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHListHead__Field",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct Field *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct LHLinkedNode__p_Field",
       "size": 8,
       "members": [
@@ -67036,6 +67042,23 @@
         {
           "name": "head",
           "type": "struct LHLinkedNode__p_Field *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Field",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Field *",
           "offset": 0
         },
         {
@@ -67334,23 +67357,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHListHead__FishFarm",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct FishFarm *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct LHLinkedNode__p_FishFarm",
       "size": 8,
       "members": [
@@ -67374,6 +67380,23 @@
         {
           "name": "head",
           "type": "struct LHLinkedNode__p_FishFarm *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__FishFarm",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct FishFarm *",
           "offset": 0
         },
         {
@@ -67585,23 +67608,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHListHead__GFootpath",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct GFootpath *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct LHLinkedNode__p_GFootpath",
       "size": 8,
       "members": [
@@ -67625,6 +67631,23 @@
         {
           "name": "head",
           "type": "struct LHLinkedNode__p_GFootpath *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__GFootpath",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct GFootpath *",
           "offset": 0
         },
         {
@@ -68249,99 +68272,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct FragVertex",
-      "size": 20,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint8_t[20]",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct FragTriangle",
-      "size": 88,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint32_t",
-          "offset": 0
-        },
-        {
-          "name": "vertices",
-          "type": "struct FragVertex[3]",
-          "offset": 4
-        },
-        {
-          "name": "field_0x40",
-          "type": "uint8_t[24]",
-          "offset": 64
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct FragPrimitive",
-      "size": 20,
-      "members": [
-        {
-          "name": "lh3d_primitive",
-          "type": "struct LH3DPrimitive *",
-          "offset": 0
-        },
-        {
-          "name": "field_0x4",
-          "type": "uint32_t[3]",
-          "offset": 4
-        },
-        {
-          "name": "triangle",
-          "type": "struct FragTriangle *",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct FragMesh",
-      "size": 40,
-      "members": [
-        {
-          "name": "field_0x0",
-          "type": "uint32_t",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        },
-        {
-          "name": "field_0x8",
-          "type": "uint32_t",
-          "offset": 8
-        },
-        {
-          "name": "primitives",
-          "type": "struct FragPrimitive *",
-          "offset": 12
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint32_t",
-          "offset": 16
-        },
-        {
-          "name": "field_0x14",
-          "type": "uint8_t[20]",
-          "offset": 20
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct Fragment",
       "size": 168,
       "members": [
@@ -68408,356 +68338,6 @@
           "name": "count",
           "type": "uint32_t",
           "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct HistoryBox",
-      "size": 28,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[12]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct MultiplayerConditionBox",
-      "size": 60,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[44]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct StartGameBox",
-      "size": 32,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "text",
-          "type": "struct SetupStaticText *",
-          "offset": 16
-        },
-        {
-          "name": "list",
-          "type": "struct SetupList *",
-          "offset": 20
-        },
-        {
-          "name": "button",
-          "type": "struct SetupButton *",
-          "offset": 24
-        },
-        {
-          "name": "big_button",
-          "type": "struct SetupBigButton *",
-          "offset": 28
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct ChannelBox",
-      "size": 2772,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[2756]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct EditingDebugBox",
-      "size": 552,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[536]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct SetupMultiplayerMain",
-      "size": 1124,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[1108]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct SetupOnlineLandscapes",
-      "size": 1224,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[1208]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct SkipBox",
-      "size": 36,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[20]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct CDBox",
-      "size": 52,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[36]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GatheringBox",
-      "size": 240,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[224]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LoadingBox",
-      "size": 16,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LobbyBox",
-      "size": 140,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[124]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GSLobbyBox",
-      "size": 692,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[676]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct RegisterBox",
-      "size": 40,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[24]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LoginBox",
-      "size": 2204,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[2188]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct TattooEditor",
-      "size": 12840,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[12824]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct NewProfileBox",
-      "size": 36,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[20]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct MainMenu",
-      "size": 56,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[40]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct ProfileEditor",
-      "size": 88,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[72]",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct SkirmishGameBox",
-      "size": 572,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint8_t[556]",
-          "offset": 16
         }
       ]
     },
@@ -69622,451 +69202,6 @@
           "name": "count",
           "type": "uint32_t",
           "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GInterfaceCollide",
-      "size": 48,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "pos",
-          "type": "struct MapCoords",
-          "offset": 8
-        },
-        {
-          "name": "pos_distance",
-          "type": "float",
-          "offset": 20
-        },
-        {
-          "name": "object",
-          "type": "struct Object *",
-          "offset": 24
-        },
-        {
-          "name": "object_distance",
-          "type": "float",
-          "offset": 28
-        },
-        {
-          "name": "bubble",
-          "type": "struct Bubble *",
-          "offset": 32
-        },
-        {
-          "name": "bubble_distance",
-          "type": "float",
-          "offset": 36
-        },
-        {
-          "name": "leash",
-          "type": "struct Leash *",
-          "offset": 40
-        },
-        {
-          "name": "leash_distance",
-          "type": "float",
-          "offset": 44
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GInterfaceFlags",
-      "size": 20,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "field_0x8",
-          "type": "int",
-          "offset": 8
-        },
-        {
-          "name": "field_0xc",
-          "type": "uint32_t",
-          "offset": 12
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint32_t",
-          "offset": 16
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct InterfaceHandState",
-      "size": 12,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "hand_state",
-          "type": "enum HAND_STATES",
-          "offset": 8
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GInterfaceMessageBuffer",
-      "size": 20,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct Base",
-          "offset": 0
-        },
-        {
-          "name": "field_0x8",
-          "type": "uint8_t[12]",
-          "offset": 8
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct GInterface",
-      "size": 1148,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct GameThingWithPos",
-          "offset": 0
-        },
-        {
-          "name": "field_0x28",
-          "type": "uint32_t",
-          "offset": 40
-        },
-        {
-          "name": "liquid_particle_group",
-          "type": "struct LiquidParticleGroup *",
-          "offset": 44
-        },
-        {
-          "name": "flags",
-          "type": "struct GInterfaceFlags",
-          "offset": 48
-        },
-        {
-          "name": "field_0x44",
-          "type": "int",
-          "offset": 68
-        },
-        {
-          "name": "field_0x48",
-          "type": "uint32_t",
-          "offset": 72
-        },
-        {
-          "name": "field_0x4c",
-          "type": "uint32_t",
-          "offset": 76
-        },
-        {
-          "name": "file",
-          "type": "struct LHReleasedOSFile",
-          "offset": 80
-        },
-        {
-          "name": "field_0x58",
-          "type": "uint8_t[260]",
-          "offset": 88
-        },
-        {
-          "name": "is_specific_playback",
-          "type": "uint32_t",
-          "offset": 348
-        },
-        {
-          "name": "is_any_playback",
-          "type": "uint32_t",
-          "offset": 352
-        },
-        {
-          "name": "field_0x164",
-          "type": "uint8_t[48]",
-          "offset": 356
-        },
-        {
-          "name": "field_0x194",
-          "type": "uint32_t",
-          "offset": 404
-        },
-        {
-          "name": "leash_0x198",
-          "type": "struct Leash *",
-          "offset": 408
-        },
-        {
-          "name": "leash_0x19c",
-          "type": "struct Leash *",
-          "offset": 412
-        },
-        {
-          "name": "leash_0x1a0",
-          "type": "struct Leash *",
-          "offset": 416
-        },
-        {
-          "name": "field_0x1a4",
-          "type": "uint32_t",
-          "offset": 420
-        },
-        {
-          "name": "field_0x1a8",
-          "type": "uint32_t",
-          "offset": 424
-        },
-        {
-          "name": "field_0x1ac",
-          "type": "uint32_t",
-          "offset": 428
-        },
-        {
-          "name": "field_0x1b0",
-          "type": "uint32_t",
-          "offset": 432
-        },
-        {
-          "name": "field_0x1b4",
-          "type": "uint32_t",
-          "offset": 436
-        },
-        {
-          "name": "field_0x1b8",
-          "type": "uint32_t",
-          "offset": 440
-        },
-        {
-          "name": "player",
-          "type": "struct LHPlayer *",
-          "offset": 444
-        },
-        {
-          "name": "field_0x1c0",
-          "type": "uint8_t[416]",
-          "offset": 448
-        },
-        {
-          "name": "field_0x360",
-          "type": "uint32_t",
-          "offset": 864
-        },
-        {
-          "name": "field_0x364",
-          "type": "uint32_t",
-          "offset": 868
-        },
-        {
-          "name": "field_0x368",
-          "type": "uint32_t",
-          "offset": 872
-        },
-        {
-          "name": "field_0x36c",
-          "type": "uint32_t",
-          "offset": 876
-        },
-        {
-          "name": "field_0x370",
-          "type": "uint32_t",
-          "offset": 880
-        },
-        {
-          "name": "field_0x374",
-          "type": "uint32_t",
-          "offset": 884
-        },
-        {
-          "name": "field_0x378",
-          "type": "uint32_t",
-          "offset": 888
-        },
-        {
-          "name": "field_0x37c",
-          "type": "uint32_t",
-          "offset": 892
-        },
-        {
-          "name": "field_0x380",
-          "type": "uint32_t",
-          "offset": 896
-        },
-        {
-          "name": "field_0x384",
-          "type": "uint32_t",
-          "offset": 900
-        },
-        {
-          "name": "field_0x388",
-          "type": "uint32_t",
-          "offset": 904
-        },
-        {
-          "name": "field_0x38c",
-          "type": "uint32_t",
-          "offset": 908
-        },
-        {
-          "name": "field_0x390",
-          "type": "uint32_t",
-          "offset": 912
-        },
-        {
-          "name": "field_0x394",
-          "type": "uint32_t",
-          "offset": 916
-        },
-        {
-          "name": "field_0x398",
-          "type": "uint32_t",
-          "offset": 920
-        },
-        {
-          "name": "status",
-          "type": "struct GInterfaceStatus *",
-          "offset": 924
-        },
-        {
-          "name": "hand",
-          "type": "struct CHand *",
-          "offset": 928
-        },
-        {
-          "name": "field_0x3a4",
-          "type": "struct InterfaceHandState",
-          "offset": 932
-        },
-        {
-          "name": "interface_collide",
-          "type": "struct GInterfaceCollide",
-          "offset": 944
-        },
-        {
-          "name": "field_0x3e0",
-          "type": "struct GInterfaceCollide",
-          "offset": 992
-        },
-        {
-          "name": "field_0x410",
-          "type": "float",
-          "offset": 1040
-        },
-        {
-          "name": "field_0x414",
-          "type": "float",
-          "offset": 1044
-        },
-        {
-          "name": "field_0x418",
-          "type": "uint32_t",
-          "offset": 1048
-        },
-        {
-          "name": "field_0x41c",
-          "type": "uint32_t",
-          "offset": 1052
-        },
-        {
-          "name": "field_0x420",
-          "type": "uint32_t",
-          "offset": 1056
-        },
-        {
-          "name": "field_0x424",
-          "type": "uint32_t",
-          "offset": 1060
-        },
-        {
-          "name": "field_0x428",
-          "type": "uint32_t",
-          "offset": 1064
-        },
-        {
-          "name": "field_0x42c",
-          "type": "uint32_t",
-          "offset": 1068
-        },
-        {
-          "name": "message_buffers",
-          "type": "struct GInterfaceMessageBuffer",
-          "offset": 1072
-        },
-        {
-          "name": "field_0x444",
-          "type": "int",
-          "offset": 1092
-        },
-        {
-          "name": "field_0x448",
-          "type": "int",
-          "offset": 1096
-        },
-        {
-          "name": "field_0x44c",
-          "type": "uint32_t",
-          "offset": 1100
-        },
-        {
-          "name": "field_0x450",
-          "type": "uint32_t",
-          "offset": 1104
-        },
-        {
-          "name": "field_0x454",
-          "type": "uint32_t",
-          "offset": 1108
-        },
-        {
-          "name": "field_0x458",
-          "type": "uint32_t",
-          "offset": 1112
-        },
-        {
-          "name": "field_0x45c",
-          "type": "struct BaseInfo",
-          "offset": 1116
-        },
-        {
-          "name": "field_0x468",
-          "type": "uint32_t",
-          "offset": 1128
-        },
-        {
-          "name": "field_0x46c",
-          "type": "uint32_t",
-          "offset": 1132
-        },
-        {
-          "name": "field_0x470",
-          "type": "uint32_t",
-          "offset": 1136
-        },
-        {
-          "name": "field_0x474",
-          "type": "uint32_t",
-          "offset": 1140
-        },
-        {
-          "name": "field_0x478",
-          "type": "uint32_t",
-          "offset": 1144
         }
       ]
     },
@@ -71593,23 +70728,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHListHead__Town",
-      "size": 8,
-      "members": [
-        {
-          "name": "head",
-          "type": "struct Town *",
-          "offset": 0
-        },
-        {
-          "name": "count",
-          "type": "uint32_t",
-          "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct LHLinkedNode__p_Town",
       "size": 8,
       "members": [
@@ -71633,6 +70751,23 @@
         {
           "name": "head",
           "type": "struct LHLinkedNode__p_Town *",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHListHead__Town",
+      "size": 8,
+      "members": [
+        {
+          "name": "head",
+          "type": "struct Town *",
           "offset": 0
         },
         {
@@ -72419,7 +71554,7 @@
       ],
       "arg_names": [
         "this",
-        ""
+        "param_1"
       ],
       "signature": "_Bool (struct Spell *, const void *, const struct GInterfaceStatus *) __attribute__((fastcall))"
     },
@@ -72505,7 +71640,7 @@
       ],
       "arg_names": [
         "this",
-        ""
+        "param_1"
       ],
       "signature": "void (struct Spell *, const void *, const struct SpellEventInfo *) __attribute__((fastcall))"
     },
@@ -72538,10 +71673,10 @@
       ],
       "arg_names": [
         "this",
-        "",
-        "",
-        "",
-        ""
+        "param_1",
+        "param_2",
+        "param_3",
+        "param_4"
       ],
       "signature": "int32_t (struct Spell *, const void *, struct GameThing *, struct MapCoords *, struct SpellCastData *, const struct PSysProcessInfo *) __attribute__((fastcall))"
     },
@@ -72560,10 +71695,10 @@
       ],
       "arg_names": [
         "this",
-        "",
-        "",
-        "",
-        ""
+        "param_1",
+        "param_2",
+        "param_3",
+        "param_4"
       ],
       "signature": "int32_t (struct Spell *, const void *, struct GameThing *, struct Object *, struct SpellCastData *, const struct PSysProcessInfo *) __attribute__((fastcall))"
     },
@@ -76623,6 +75758,23 @@
           "name": "field_0xa7c",
           "type": "uint8_t[1708]",
           "offset": 2684
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GatheringBox",
+      "size": 240,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[224]",
+          "offset": 16
         }
       ]
     },
@@ -113388,6 +112540,468 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct HistoryBox",
+      "size": 28,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[12]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GInterfaceCollide",
+      "size": 48,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "pos",
+          "type": "struct MapCoords",
+          "offset": 8
+        },
+        {
+          "name": "pos_distance",
+          "type": "float",
+          "offset": 20
+        },
+        {
+          "name": "object",
+          "type": "struct Object *",
+          "offset": 24
+        },
+        {
+          "name": "object_distance",
+          "type": "float",
+          "offset": 28
+        },
+        {
+          "name": "bubble",
+          "type": "struct Bubble *",
+          "offset": 32
+        },
+        {
+          "name": "bubble_distance",
+          "type": "float",
+          "offset": 36
+        },
+        {
+          "name": "leash",
+          "type": "struct Leash *",
+          "offset": 40
+        },
+        {
+          "name": "leash_distance",
+          "type": "float",
+          "offset": 44
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GInterfaceFlags",
+      "size": 20,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "field_0x8",
+          "type": "int",
+          "offset": 8
+        },
+        {
+          "name": "field_0xc",
+          "type": "uint32_t",
+          "offset": 12
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint32_t",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct InterfaceHandState",
+      "size": 12,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "hand_state",
+          "type": "enum HAND_STATES",
+          "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GInterfaceMessageBuffer",
+      "size": 20,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct Base",
+          "offset": 0
+        },
+        {
+          "name": "field_0x8",
+          "type": "uint8_t[12]",
+          "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GInterface",
+      "size": 1148,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct GameThingWithPos",
+          "offset": 0
+        },
+        {
+          "name": "field_0x28",
+          "type": "uint32_t",
+          "offset": 40
+        },
+        {
+          "name": "liquid_particle_group",
+          "type": "struct LiquidParticleGroup *",
+          "offset": 44
+        },
+        {
+          "name": "flags",
+          "type": "struct GInterfaceFlags",
+          "offset": 48
+        },
+        {
+          "name": "field_0x44",
+          "type": "int",
+          "offset": 68
+        },
+        {
+          "name": "field_0x48",
+          "type": "uint32_t",
+          "offset": 72
+        },
+        {
+          "name": "field_0x4c",
+          "type": "uint32_t",
+          "offset": 76
+        },
+        {
+          "name": "file",
+          "type": "struct LHReleasedOSFile",
+          "offset": 80
+        },
+        {
+          "name": "field_0x58",
+          "type": "uint8_t[260]",
+          "offset": 88
+        },
+        {
+          "name": "is_specific_playback",
+          "type": "uint32_t",
+          "offset": 348
+        },
+        {
+          "name": "is_any_playback",
+          "type": "uint32_t",
+          "offset": 352
+        },
+        {
+          "name": "field_0x164",
+          "type": "uint8_t[48]",
+          "offset": 356
+        },
+        {
+          "name": "field_0x194",
+          "type": "uint32_t",
+          "offset": 404
+        },
+        {
+          "name": "leash_0x198",
+          "type": "struct Leash *",
+          "offset": 408
+        },
+        {
+          "name": "leash_0x19c",
+          "type": "struct Leash *",
+          "offset": 412
+        },
+        {
+          "name": "leash_0x1a0",
+          "type": "struct Leash *",
+          "offset": 416
+        },
+        {
+          "name": "field_0x1a4",
+          "type": "uint32_t",
+          "offset": 420
+        },
+        {
+          "name": "field_0x1a8",
+          "type": "uint32_t",
+          "offset": 424
+        },
+        {
+          "name": "field_0x1ac",
+          "type": "uint32_t",
+          "offset": 428
+        },
+        {
+          "name": "field_0x1b0",
+          "type": "uint32_t",
+          "offset": 432
+        },
+        {
+          "name": "field_0x1b4",
+          "type": "uint32_t",
+          "offset": 436
+        },
+        {
+          "name": "field_0x1b8",
+          "type": "uint32_t",
+          "offset": 440
+        },
+        {
+          "name": "player",
+          "type": "struct LHPlayer *",
+          "offset": 444
+        },
+        {
+          "name": "field_0x1c0",
+          "type": "uint8_t[416]",
+          "offset": 448
+        },
+        {
+          "name": "field_0x360",
+          "type": "uint32_t",
+          "offset": 864
+        },
+        {
+          "name": "field_0x364",
+          "type": "uint32_t",
+          "offset": 868
+        },
+        {
+          "name": "field_0x368",
+          "type": "uint32_t",
+          "offset": 872
+        },
+        {
+          "name": "field_0x36c",
+          "type": "uint32_t",
+          "offset": 876
+        },
+        {
+          "name": "field_0x370",
+          "type": "uint32_t",
+          "offset": 880
+        },
+        {
+          "name": "field_0x374",
+          "type": "uint32_t",
+          "offset": 884
+        },
+        {
+          "name": "field_0x378",
+          "type": "uint32_t",
+          "offset": 888
+        },
+        {
+          "name": "field_0x37c",
+          "type": "uint32_t",
+          "offset": 892
+        },
+        {
+          "name": "field_0x380",
+          "type": "uint32_t",
+          "offset": 896
+        },
+        {
+          "name": "field_0x384",
+          "type": "uint32_t",
+          "offset": 900
+        },
+        {
+          "name": "field_0x388",
+          "type": "uint32_t",
+          "offset": 904
+        },
+        {
+          "name": "field_0x38c",
+          "type": "uint32_t",
+          "offset": 908
+        },
+        {
+          "name": "field_0x390",
+          "type": "uint32_t",
+          "offset": 912
+        },
+        {
+          "name": "field_0x394",
+          "type": "uint32_t",
+          "offset": 916
+        },
+        {
+          "name": "field_0x398",
+          "type": "uint32_t",
+          "offset": 920
+        },
+        {
+          "name": "status",
+          "type": "struct GInterfaceStatus *",
+          "offset": 924
+        },
+        {
+          "name": "hand",
+          "type": "struct CHand *",
+          "offset": 928
+        },
+        {
+          "name": "field_0x3a4",
+          "type": "struct InterfaceHandState",
+          "offset": 932
+        },
+        {
+          "name": "interface_collide",
+          "type": "struct GInterfaceCollide",
+          "offset": 944
+        },
+        {
+          "name": "field_0x3e0",
+          "type": "struct GInterfaceCollide",
+          "offset": 992
+        },
+        {
+          "name": "field_0x410",
+          "type": "float",
+          "offset": 1040
+        },
+        {
+          "name": "field_0x414",
+          "type": "float",
+          "offset": 1044
+        },
+        {
+          "name": "field_0x418",
+          "type": "uint32_t",
+          "offset": 1048
+        },
+        {
+          "name": "field_0x41c",
+          "type": "uint32_t",
+          "offset": 1052
+        },
+        {
+          "name": "field_0x420",
+          "type": "uint32_t",
+          "offset": 1056
+        },
+        {
+          "name": "field_0x424",
+          "type": "uint32_t",
+          "offset": 1060
+        },
+        {
+          "name": "field_0x428",
+          "type": "uint32_t",
+          "offset": 1064
+        },
+        {
+          "name": "field_0x42c",
+          "type": "uint32_t",
+          "offset": 1068
+        },
+        {
+          "name": "message_buffers",
+          "type": "struct GInterfaceMessageBuffer",
+          "offset": 1072
+        },
+        {
+          "name": "field_0x444",
+          "type": "int",
+          "offset": 1092
+        },
+        {
+          "name": "field_0x448",
+          "type": "int",
+          "offset": 1096
+        },
+        {
+          "name": "field_0x44c",
+          "type": "uint32_t",
+          "offset": 1100
+        },
+        {
+          "name": "field_0x450",
+          "type": "uint32_t",
+          "offset": 1104
+        },
+        {
+          "name": "field_0x454",
+          "type": "uint32_t",
+          "offset": 1108
+        },
+        {
+          "name": "field_0x458",
+          "type": "uint32_t",
+          "offset": 1112
+        },
+        {
+          "name": "field_0x45c",
+          "type": "struct BaseInfo",
+          "offset": 1116
+        },
+        {
+          "name": "field_0x468",
+          "type": "uint32_t",
+          "offset": 1128
+        },
+        {
+          "name": "field_0x46c",
+          "type": "uint32_t",
+          "offset": 1132
+        },
+        {
+          "name": "field_0x470",
+          "type": "uint32_t",
+          "offset": 1136
+        },
+        {
+          "name": "field_0x474",
+          "type": "uint32_t",
+          "offset": 1140
+        },
+        {
+          "name": "field_0x478",
+          "type": "uint32_t",
+          "offset": 1144
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct GInterfaceStatus",
       "size": 308,
       "members": [
@@ -113977,6 +113591,52 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct LoadingBox",
+      "size": 16,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LobbyBox",
+      "size": 140,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[124]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LoginBox",
+      "size": 2204,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[2188]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct GMagicEffectInfo",
       "size": 284,
       "members": [
@@ -114252,8 +113912,8 @@
       "arg_names": [
         "this",
         "coords",
-        "",
-        "",
+        "param_2",
+        "param_3",
         "flock"
       ],
       "signature": "void (struct LandscapeVortex *, const void *, const struct MapCoords *, float, float, struct Flock *) __attribute__((fastcall))"
@@ -114440,6 +114100,23 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct MainMenu",
+      "size": 56,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[40]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct MiniDialogBoxOptions",
       "size": 72,
       "members": [
@@ -114517,6 +114194,120 @@
           "name": "field_0x44",
           "type": "struct SetupButton *",
           "offset": 68
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct MPFEChannelSelector",
+      "size": 88,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "title",
+          "type": "struct SetupStaticText *",
+          "offset": 16
+        },
+        {
+          "name": "instructions",
+          "type": "struct SetupStaticText *",
+          "offset": 20
+        },
+        {
+          "name": "back_arrow",
+          "type": "struct SetupBigButton *",
+          "offset": 24
+        },
+        {
+          "name": "next_arrow",
+          "type": "struct SetupBigButton *",
+          "offset": 28
+        },
+        {
+          "name": "field_0x20",
+          "type": "struct SetupEdit *",
+          "offset": 32
+        },
+        {
+          "name": "field_0x24",
+          "type": "struct SetupEdit *",
+          "offset": 36
+        },
+        {
+          "name": "field_0x28",
+          "type": "struct SetupList *",
+          "offset": 40
+        },
+        {
+          "name": "field_0x2c",
+          "type": "struct SetupList *",
+          "offset": 44
+        },
+        {
+          "name": "join_help_channel_button",
+          "type": "struct SetupButton *",
+          "offset": 48
+        },
+        {
+          "name": "refresh_button",
+          "type": "struct SetupButton *",
+          "offset": 52
+        },
+        {
+          "name": "resume_checkbox",
+          "type": "struct SetupCheckBox *",
+          "offset": 56
+        },
+        {
+          "name": "current_game_label",
+          "type": "struct SetupStaticText *",
+          "offset": 60
+        },
+        {
+          "name": "players_in_game_label",
+          "type": "struct SetupStaticText *",
+          "offset": 64
+        },
+        {
+          "name": "game_name_label",
+          "type": "struct SetupStaticText *",
+          "offset": 68
+        },
+        {
+          "name": "field_0x48",
+          "type": "struct SetupStaticText *",
+          "offset": 72
+        },
+        {
+          "name": "field_0x4c",
+          "type": "uint8_t",
+          "offset": 76
+        },
+        {
+          "name": "field_0x50",
+          "type": "uint32_t",
+          "offset": 80
+        },
+        {
+          "name": "field_0x54",
+          "type": "uint32_t",
+          "offset": 84
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct MPFEChooseConnection",
+      "size": 16,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
         }
       ]
     },
@@ -115395,120 +115186,6 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct MPFEChannelSelector",
-      "size": 88,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        },
-        {
-          "name": "title",
-          "type": "struct SetupStaticText *",
-          "offset": 16
-        },
-        {
-          "name": "instructions",
-          "type": "struct SetupStaticText *",
-          "offset": 20
-        },
-        {
-          "name": "back_arrow",
-          "type": "struct SetupBigButton *",
-          "offset": 24
-        },
-        {
-          "name": "next_arrow",
-          "type": "struct SetupBigButton *",
-          "offset": 28
-        },
-        {
-          "name": "field_0x20",
-          "type": "struct SetupEdit *",
-          "offset": 32
-        },
-        {
-          "name": "field_0x24",
-          "type": "struct SetupEdit *",
-          "offset": 36
-        },
-        {
-          "name": "field_0x28",
-          "type": "struct SetupList *",
-          "offset": 40
-        },
-        {
-          "name": "field_0x2c",
-          "type": "struct SetupList *",
-          "offset": 44
-        },
-        {
-          "name": "join_help_channel_button",
-          "type": "struct SetupButton *",
-          "offset": 48
-        },
-        {
-          "name": "refresh_button",
-          "type": "struct SetupButton *",
-          "offset": 52
-        },
-        {
-          "name": "resume_checkbox",
-          "type": "struct SetupCheckBox *",
-          "offset": 56
-        },
-        {
-          "name": "current_game_label",
-          "type": "struct SetupStaticText *",
-          "offset": 60
-        },
-        {
-          "name": "players_in_game_label",
-          "type": "struct SetupStaticText *",
-          "offset": 64
-        },
-        {
-          "name": "game_name_label",
-          "type": "struct SetupStaticText *",
-          "offset": 68
-        },
-        {
-          "name": "field_0x48",
-          "type": "struct SetupStaticText *",
-          "offset": 72
-        },
-        {
-          "name": "field_0x4c",
-          "type": "uint8_t",
-          "offset": 76
-        },
-        {
-          "name": "field_0x50",
-          "type": "uint32_t",
-          "offset": 80
-        },
-        {
-          "name": "field_0x54",
-          "type": "uint32_t",
-          "offset": 84
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct MPFEChooseConnection",
-      "size": 16,
-      "members": [
-        {
-          "name": "super",
-          "type": "struct DialogBoxBase",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
       "type": "struct MPFEConnectionStatus",
       "size": 4,
       "members": [
@@ -115657,6 +115334,40 @@
           "name": "super",
           "type": "struct MPFEDatabase",
           "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct MultiplayerConditionBox",
+      "size": 60,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[44]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct NewProfileBox",
+      "size": 36,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[20]",
+          "offset": 16
         }
       ]
     },
@@ -115948,6 +115659,23 @@
           "name": "field_0x104",
           "type": "uint32_t",
           "offset": 260
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct ProfileEditor",
+      "size": 88,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[72]",
+          "offset": 16
         }
       ]
     },
@@ -116370,6 +116098,23 @@
           "name": "missing4bytesfromwhere",
           "type": "uint32_t",
           "offset": 96
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct RegisterBox",
+      "size": 40,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[24]",
+          "offset": 16
         }
       ]
     },
@@ -116949,6 +116694,57 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct SkipBox",
+      "size": 36,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[20]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct SkirmishGameBox",
+      "size": 572,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[556]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct GSLobbyBox",
+      "size": 692,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[676]",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct GGuidance__LastThings",
       "size": 8,
       "members": [
@@ -117481,6 +117277,38 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct StartGameBox",
+      "size": 32,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "text",
+          "type": "struct SetupStaticText *",
+          "offset": 16
+        },
+        {
+          "name": "list",
+          "type": "struct SetupList *",
+          "offset": 20
+        },
+        {
+          "name": "button",
+          "type": "struct SetupButton *",
+          "offset": 24
+        },
+        {
+          "name": "big_button",
+          "type": "struct SetupBigButton *",
+          "offset": 28
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct StatsBox",
       "size": 116,
       "members": [
@@ -117535,6 +117363,23 @@
           "name": "field_0xd8",
           "type": "struct PileResource *",
           "offset": 216
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct TattooEditor",
+      "size": 12840,
+      "members": [
+        {
+          "name": "super",
+          "type": "struct DialogBoxBase",
+          "offset": 0
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint8_t[12824]",
+          "offset": 16
         }
       ]
     },
@@ -117864,13 +117709,13 @@
       ],
       "arg_names": [
         "this",
-        ""
+        "param_1"
       ],
       "signature": "void (struct ValueSpinner *, const void *, float) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
-      "type": "ValueSpinnerVftable____dt__",
+      "type": "ValueSpinnerVftable____dt",
       "size": 4,
       "call_type": "__thiscall",
       "result": "uint32_t",
@@ -117880,7 +117725,7 @@
       ],
       "arg_names": [
         "this",
-        ""
+        "param_1"
       ],
       "signature": "uint32_t (struct ValueSpinner *, const void *, _Bool) __attribute__((fastcall))"
     },
@@ -117895,8 +117740,8 @@
           "offset": 0
         },
         {
-          "name": "__dt__",
-          "type": "ValueSpinnerVftable____dt__ *",
+          "name": "__dt",
+          "type": "ValueSpinnerVftable____dt *",
           "offset": 4
         }
       ]
@@ -118832,6 +118677,99 @@
           "name": "field_0x54",
           "type": "uint8_t[12]",
           "offset": 84
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct FragVertex",
+      "size": 20,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint8_t[20]",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct FragTriangle",
+      "size": 88,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint32_t",
+          "offset": 0
+        },
+        {
+          "name": "vertices",
+          "type": "struct FragVertex[3]",
+          "offset": 4
+        },
+        {
+          "name": "field_0x40",
+          "type": "uint8_t[24]",
+          "offset": 64
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct FragPrimitive",
+      "size": 20,
+      "members": [
+        {
+          "name": "lh3d_primitive",
+          "type": "struct LH3DPrimitive *",
+          "offset": 0
+        },
+        {
+          "name": "field_0x4",
+          "type": "uint32_t[3]",
+          "offset": 4
+        },
+        {
+          "name": "triangle",
+          "type": "struct FragTriangle *",
+          "offset": 16
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct FragMesh",
+      "size": 40,
+      "members": [
+        {
+          "name": "field_0x0",
+          "type": "uint32_t",
+          "offset": 0
+        },
+        {
+          "name": "count",
+          "type": "uint32_t",
+          "offset": 4
+        },
+        {
+          "name": "field_0x8",
+          "type": "uint32_t",
+          "offset": 8
+        },
+        {
+          "name": "primitives",
+          "type": "struct FragPrimitive *",
+          "offset": 12
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint32_t",
+          "offset": 16
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint8_t[20]",
+          "offset": 20
         }
       ]
     },
@@ -125710,7 +125648,7 @@
         "struct Abode *"
       ],
       "argument_names": [
-        "abode"
+        "this"
       ]
     },
     {
@@ -126342,7 +126280,7 @@
         "struct BuildingSite *"
       ],
       "argument_names": [
-        "param_1"
+        "this"
       ]
     },
     {
@@ -127366,16 +127304,6 @@
       ]
     },
     {
-      "win_addr": 4632752,
-      "mac_addr": 269218896,
-      "decorated_name": "ConfigGetFPS(void)",
-      "undecorated_name": "ConfigGetFPS__Fv",
-      "return_type": "int",
-      "call_type": "cdecl",
-      "argument_types": [],
-      "argument_names": []
-    },
-    {
       "win_addr": 4633072,
       "mac_addr": 269218576,
       "decorated_name": "Config::Process(void)",
@@ -127402,6 +127330,16 @@
       "argument_names": [
         "this"
       ]
+    },
+    {
+      "win_addr": 4632752,
+      "mac_addr": 269218896,
+      "decorated_name": "ConfigGetFPS(void)",
+      "undecorated_name": "ConfigGetFPS__Fv",
+      "return_type": "int",
+      "call_type": "cdecl",
+      "argument_types": [],
+      "argument_names": []
     },
     {
       "win_addr": 4635264,
@@ -127494,7 +127432,21 @@
         "struct CHand *"
       ],
       "argument_names": [
-        "hand"
+        "this"
+      ]
+    },
+    {
+      "win_addr": 4650688,
+      "mac_addr": 270318240,
+      "decorated_name": "ControlMap::ControlMap(void)",
+      "undecorated_name": "__ct__10ControlMapFv",
+      "return_type": "struct ControlMap *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct ControlMap *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -127513,20 +127465,6 @@
         "this",
         "key",
         "out_text"
-      ]
-    },
-    {
-      "win_addr": 4650688,
-      "mac_addr": 270318240,
-      "decorated_name": "ControlMap::ControlMap(void)",
-      "undecorated_name": "__ct__10ControlMapFv",
-      "return_type": "struct ControlMap *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct ControlMap *"
-      ],
-      "argument_names": [
-        "this"
       ]
     },
     {
@@ -128003,10 +127941,9 @@
       "decorated_name": "CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)",
       "undecorated_name": "__ct__16CreaturePhysicalFRC9MapCoordsUsPC12CreatureInfoP8Creature",
       "return_type": "struct CreaturePhysical *",
-      "call_type": "cdecl",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct CreaturePhysical *",
-        "const void *",
         "const struct MapCoords *",
         "uint16_t",
         "const struct CreatureInfo *",
@@ -128014,7 +127951,6 @@
       ],
       "argument_names": [
         "this",
-        "edx",
         "coords",
         "param_2",
         "info",
@@ -128533,7 +128469,7 @@
       "decorated_name": "GEffectInfo::GEffectInfo(void)",
       "undecorated_name": "__ct__11GEffectInfoFv",
       "return_type": "struct GEffectInfo *",
-      "call_type": "cdecl",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct GEffectInfo *"
       ],
@@ -128647,7 +128583,7 @@
       "decorated_name": "FireEffect::CreateSprites(void)",
       "undecorated_name": "CreateSprites__10FireEffectFv",
       "return_type": "struct FireGraphic *",
-      "call_type": "cdecl",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct FireEffect *"
       ],
@@ -128670,20 +128606,6 @@
       ]
     },
     {
-      "win_addr": 5415744,
-      "mac_addr": 269327876,
-      "decorated_name": "FireFly::FireFly(void)",
-      "undecorated_name": "__ct__7FireFlyFv",
-      "return_type": "struct FireFly *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct FireFly *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
       "win_addr": 5415552,
       "mac_addr": 269327904,
       "decorated_name": "FireFly::FireFly(const MapCoords&)",
@@ -128697,6 +128619,20 @@
       "argument_names": [
         "this",
         "coords"
+      ]
+    },
+    {
+      "win_addr": 5415744,
+      "mac_addr": 269327876,
+      "decorated_name": "FireFly::FireFly(void)",
+      "undecorated_name": "__ct__7FireFlyFv",
+      "return_type": "struct FireFly *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct FireFly *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -128860,22 +128796,6 @@
       ]
     },
     {
-      "win_addr": 269380576,
-      "mac_addr": 5437776,
-      "decorated_name": "Flock::Flock(Living*)",
-      "undecorated_name": "__ct__5FlockFP6Living",
-      "return_type": "struct Flock *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Flock *",
-        "struct Living *"
-      ],
-      "argument_names": [
-        "this",
-        "param_1"
-      ]
-    },
-    {
       "win_addr": 5437312,
       "mac_addr": 269381312,
       "decorated_name": "Flock::Flock(MapCoords const &, GFlockInfo const *, GPlayer *, unsigned long)",
@@ -128895,6 +128815,22 @@
         "info",
         "player",
         "param_4"
+      ]
+    },
+    {
+      "win_addr": 269380576,
+      "mac_addr": 5437776,
+      "decorated_name": "Flock::Flock(Living*)",
+      "undecorated_name": "__ct__5FlockFP6Living",
+      "return_type": "struct Flock *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Flock *",
+        "struct Living *"
+      ],
+      "argument_names": [
+        "this",
+        "param_1"
       ]
     },
     {
@@ -129492,20 +129428,6 @@
       ]
     },
     {
-      "win_addr": 5505632,
-      "mac_addr": -1,
-      "decorated_name": "LoginBox::LoginBox(void)",
-      "undecorated_name": "__vt__8LoginBoxFv",
-      "return_type": "struct LoginBox *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LoginBox *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
       "win_addr": 5485776,
       "mac_addr": 274484496,
       "decorated_name": "FrontEnd::Init(void)",
@@ -129537,24 +129459,6 @@
       ],
       "argument_names": [
         "this"
-      ]
-    },
-    {
-      "win_addr": 5593232,
-      "mac_addr": 274306800,
-      "decorated_name": "GGame::SetLandBalance(unsigned long, float, GPlayer *)",
-      "undecorated_name": "SetLandBalance__5GGameFUlfP7GPlayer",
-      "return_type": "void",
-      "call_type": "__stdcall",
-      "argument_types": [
-        "int",
-        "float",
-        "struct GPlayer *"
-      ],
-      "argument_names": [
-        "index",
-        "balance",
-        "player"
       ]
     },
     {
@@ -129593,6 +129497,24 @@
       ],
       "argument_names": [
         "map_path"
+      ]
+    },
+    {
+      "win_addr": 5593232,
+      "mac_addr": 274306800,
+      "decorated_name": "GGame::SetLandBalance(unsigned long, float, GPlayer *)",
+      "undecorated_name": "SetLandBalance__5GGameFUlfP7GPlayer",
+      "return_type": "void",
+      "call_type": "__stdcall",
+      "argument_types": [
+        "int",
+        "float",
+        "struct GPlayer *"
+      ],
+      "argument_names": [
+        "index",
+        "balance",
+        "player"
       ]
     },
     {
@@ -129740,6 +129662,38 @@
       "mac_addr": 268975568,
       "decorated_name": "GGame::ProcessGameCode(void)",
       "undecorated_name": "ProcessGameCode__5GGameFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GGame *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5560400,
+      "mac_addr": 268933504,
+      "decorated_name": "GGame::ProcessGraphicsEngine(unsigned long, unsigned long)",
+      "undecorated_name": "ProcessGraphicsEngine__5GGameFUlUl",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GGame *",
+        "uint32_t",
+        "uint32_t"
+      ],
+      "argument_names": [
+        "this",
+        "param_1",
+        "param_2"
+      ]
+    },
+    {
+      "win_addr": 5560960,
+      "mac_addr": 268647888,
+      "decorated_name": "GGame::ProcessGraphicsEngine(void)",
+      "undecorated_name": "Process3dEngine__5GGameFv",
       "return_type": "void",
       "call_type": "__thiscall",
       "argument_types": [
@@ -130002,38 +129956,6 @@
       "mac_addr": 268558816,
       "decorated_name": "GGame::ProcessOneSuperpacket(void)",
       "undecorated_name": "ProcessOneSuperpacket__5GGameFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct GGame *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 5560400,
-      "mac_addr": 268933504,
-      "decorated_name": "GGame::ProcessGraphicsEngine(unsigned long, unsigned long)",
-      "undecorated_name": "ProcessGraphicsEngine__5GGameFUlUl",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct GGame *",
-        "uint32_t",
-        "uint32_t"
-      ],
-      "argument_names": [
-        "this",
-        "",
-        ""
-      ]
-    },
-    {
-      "win_addr": 5560960,
-      "mac_addr": 268647888,
-      "decorated_name": "GGame::ProcessGraphicsEngine(void)",
-      "undecorated_name": "Process3dEngine__5GGameFv",
       "return_type": "void",
       "call_type": "__thiscall",
       "argument_types": [
@@ -131774,6 +131696,22 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "HandState::HandState(CHand*)",
+      "undecorated_name": "__ct__9HandStateFP5CHand",
+      "return_type": "struct HandState *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct HandState *",
+        "struct CHand *"
+      ],
+      "argument_names": [
+        "this",
+        "hand"
+      ]
+    },
+    {
       "win_addr": 4646368,
       "mac_addr": 270295312,
       "decorated_name": "HandState::DrawTheHeldObject(void)",
@@ -131813,22 +131751,6 @@
       ],
       "argument_names": [
         "this"
-      ]
-    },
-    {
-      "win_addr": -1,
-      "mac_addr": -1,
-      "decorated_name": "HandState::HandState(CHand*)",
-      "undecorated_name": "__ct__9HandStateFP5CHand",
-      "return_type": "struct HandState *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct HandState *",
-        "struct CHand *"
-      ],
-      "argument_names": [
-        "this",
-        "hand"
       ]
     },
     {
@@ -132092,10 +132014,10 @@
       ]
     },
     {
-      "win_addr": 6051200,
-      "mac_addr": 271914592,
-      "decorated_name": "HelpSystem::Reset(void)",
-      "undecorated_name": "Reset__10HelpSystemFv",
+      "win_addr": 6051040,
+      "mac_addr": 271914992,
+      "decorated_name": "HelpSystem::ClearTextDisplayed(void)",
+      "undecorated_name": "ClearTextDisplayed__10HelpSystemFv",
       "return_type": "void",
       "call_type": "__thiscall",
       "argument_types": [
@@ -132120,10 +132042,10 @@
       ]
     },
     {
-      "win_addr": 6051040,
-      "mac_addr": 271914992,
-      "decorated_name": "HelpSystem::ClearTextDisplayed(void)",
-      "undecorated_name": "ClearTextDisplayed__10HelpSystemFv",
+      "win_addr": 6051200,
+      "mac_addr": 271914592,
+      "decorated_name": "HelpSystem::Reset(void)",
+      "undecorated_name": "Reset__10HelpSystemFv",
       "return_type": "void",
       "call_type": "__thiscall",
       "argument_types": [
@@ -132138,6 +132060,20 @@
       "mac_addr": 271914416,
       "decorated_name": "HelpSystem::ResetIcons(void)",
       "undecorated_name": "ResetIcons__10HelpSystemFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct HelpSystem *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6055904,
+      "mac_addr": 271906608,
+      "decorated_name": "HelpSystem::ClearDialogueControl(void)",
+      "undecorated_name": "ClearDialogueControl__10HelpSystemFv",
       "return_type": "void",
       "call_type": "__thiscall",
       "argument_types": [
@@ -132174,20 +132110,6 @@
       "call_type": "__thiscall",
       "argument_types": [
         "const struct HelpSystem *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 6055904,
-      "mac_addr": 271906608,
-      "decorated_name": "HelpSystem::ClearDialogueControl(void)",
-      "undecorated_name": "ClearDialogueControl__10HelpSystemFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct HelpSystem *"
       ],
       "argument_names": [
         "this"
@@ -133646,20 +133568,6 @@
       ]
     },
     {
-      "win_addr": -1,
-      "mac_addr": 271887152,
-      "decorated_name": "LocalBase::LocalBase(void)",
-      "undecorated_name": "__ct__9LocalBaseFv",
-      "return_type": "struct LocalBase *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LocalBase *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
       "win_addr": 6260624,
       "mac_addr": 269085596,
       "decorated_name": "LocalBase::operator new(unsigned long)",
@@ -133678,12 +133586,40 @@
       ]
     },
     {
+      "win_addr": -1,
+      "mac_addr": 271887152,
+      "decorated_name": "LocalBase::LocalBase(void)",
+      "undecorated_name": "__ct__9LocalBaseFv",
+      "return_type": "struct LocalBase *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LocalBase *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 5505632,
+      "mac_addr": -1,
+      "decorated_name": "LoginBox::LoginBox(void)",
+      "undecorated_name": "__vt__8LoginBoxFv",
+      "return_type": "struct LoginBox *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LoginBox *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
       "win_addr": 5393920,
       "mac_addr": 269273808,
       "decorated_name": "GMagicEffectInfo::GMagicEffectInfo(void)",
       "undecorated_name": "__ct__16GMagicEffectInfoFv",
       "return_type": "struct GMagicEffectInfo *",
-      "call_type": "cdecl",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct GMagicEffectInfo *"
       ],
@@ -133706,20 +133642,6 @@
       ]
     },
     {
-      "win_addr": 4412704,
-      "mac_addr": 270069440,
-      "decorated_name": "GMagicInfo::GMagicInfo(void)",
-      "undecorated_name": "__ct__10GMagicInfoFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct GMagicInfo *"
-      ],
-      "argument_names": [
-        "this"
-      ]
-    },
-    {
       "win_addr": 6271920,
       "mac_addr": 272294688,
       "decorated_name": "GMagicInfo::GetInfoFromText(char const *)",
@@ -133731,6 +133653,20 @@
       ],
       "argument_names": [
         "text"
+      ]
+    },
+    {
+      "win_addr": 4412704,
+      "mac_addr": 270069440,
+      "decorated_name": "GMagicInfo::GMagicInfo(void)",
+      "undecorated_name": "__ct__10GMagicInfoFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GMagicInfo *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -134037,6 +133973,22 @@
       "argument_names": [
         "this",
         "str"
+      ]
+    },
+    {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "MapCoords::MapCoords(MapCoords const &)",
+      "undecorated_name": "__ct__9MapCoordsFP9MapCoords",
+      "return_type": "struct MapCoords *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct MapCoords *",
+        "const struct MapCoords *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
       ]
     },
     {
@@ -134597,20 +134549,6 @@
         "coords",
         "info",
         "spell"
-      ]
-    },
-    {
-      "win_addr": 7518240,
-      "mac_addr": 273887072,
-      "decorated_name": "SpellShield::GetMagicInfo(void) const",
-      "undecorated_name": "GetMagicInfo__11SpellShieldCFv",
-      "return_type": "struct GMagicInfo *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct SpellShield *"
-      ],
-      "argument_names": [
-        "this"
       ]
     },
     {
@@ -137124,11 +137062,25 @@
       ]
     },
     {
-      "win_addr": 6869088,
-      "mac_addr": 272687200,
-      "decorated_name": "PHandFX::RemoveAllPermBands(void)",
-      "undecorated_name": "RemoveAllPermBands__7PHandFXFv",
+      "win_addr": 6867472,
+      "mac_addr": 272688752,
+      "decorated_name": "PHandFX::Release(void)",
+      "undecorated_name": "Release__7PHandFXFv",
       "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct PSysHandFX *"
+      ],
+      "argument_names": [
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6868144,
+      "mac_addr": 272687616,
+      "decorated_name": "PHandFX::GetPULevel(void)",
+      "undecorated_name": "GetPULevel__7PHandFXFv",
+      "return_type": "uint32_t",
       "call_type": "__fastcall",
       "argument_types": [
         "struct PSysHandFX *"
@@ -137152,21 +137104,31 @@
       ]
     },
     {
-      "win_addr": 6872608,
-      "mac_addr": 272679680,
-      "decorated_name": "PHandFX::AddSpellToHandVisuals(bool)",
-      "undecorated_name": "AddSpellToHandVisuals__7PHandFXFb",
+      "win_addr": 6869088,
+      "mac_addr": 272687200,
+      "decorated_name": "PHandFX::RemoveAllPermBands(void)",
+      "undecorated_name": "RemoveAllPermBands__7PHandFXFv",
       "return_type": "void",
       "call_type": "__fastcall",
       "argument_types": [
-        "struct PSysHandFX *",
-        "const void *",
-        "bool"
+        "struct PSysHandFX *"
       ],
       "argument_names": [
-        "this",
-        "edx",
-        "param_1"
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6872416,
+      "mac_addr": 268548000,
+      "decorated_name": "PHandFX::DrawHandFX(void)",
+      "undecorated_name": "DrawHandFX__7PHandFXFv",
+      "return_type": "void",
+      "call_type": "__fastcall",
+      "argument_types": [
+        "struct PSysHandFX *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -137190,31 +137152,21 @@
       ]
     },
     {
-      "win_addr": 6872416,
-      "mac_addr": 268548000,
-      "decorated_name": "PHandFX::DrawHandFX(void)",
-      "undecorated_name": "DrawHandFX__7PHandFXFv",
+      "win_addr": 6872608,
+      "mac_addr": 272679680,
+      "decorated_name": "PHandFX::AddSpellToHandVisuals(bool)",
+      "undecorated_name": "AddSpellToHandVisuals__7PHandFXFb",
       "return_type": "void",
       "call_type": "__fastcall",
       "argument_types": [
-        "struct PSysHandFX *"
+        "struct PSysHandFX *",
+        "const void *",
+        "bool"
       ],
       "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 6868144,
-      "mac_addr": 272687616,
-      "decorated_name": "PHandFX::GetPULevel(void)",
-      "undecorated_name": "GetPULevel__7PHandFXFv",
-      "return_type": "uint32_t",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct PSysHandFX *"
-      ],
-      "argument_names": [
-        "this"
+        "this",
+        "edx",
+        "param_1"
       ]
     },
     {
@@ -137265,20 +137217,6 @@
         "this",
         "edx",
         "tribe"
-      ]
-    },
-    {
-      "win_addr": 6867472,
-      "mac_addr": 272688752,
-      "decorated_name": "PHandFX::Release(void)",
-      "undecorated_name": "Release__7PHandFXFv",
-      "return_type": "void",
-      "call_type": "__fastcall",
-      "argument_types": [
-        "struct PSysHandFX *"
-      ],
-      "argument_names": [
-        "this"
       ]
     },
     {
@@ -137544,6 +137482,22 @@
       ]
     },
     {
+      "win_addr": 7256528,
+      "mac_addr": 268968512,
+      "decorated_name": "GScript::ProcessFade(bool)",
+      "undecorated_name": "ProcessFade__7GScriptFb",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct GScript *",
+        "bool"
+      ],
+      "argument_names": [
+        "this",
+        "param_1"
+      ]
+    },
+    {
       "win_addr": 7256720,
       "mac_addr": 273512048,
       "decorated_name": "GScript::SetupScreenFadeTo(uchar,uchar,uchar,char)",
@@ -137577,22 +137531,6 @@
       ],
       "argument_names": [
         "this"
-      ]
-    },
-    {
-      "win_addr": 7256528,
-      "mac_addr": 268968512,
-      "decorated_name": "GScript::ProcessFade(bool)",
-      "undecorated_name": "ProcessFade__7GScriptFb",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct GScript *",
-        "bool"
-      ],
-      "argument_names": [
-        "this",
-        "param_1"
       ]
     },
     {
@@ -138259,6 +138197,20 @@
       "argument_names": [
         "this",
         "type"
+      ]
+    },
+    {
+      "win_addr": 7518240,
+      "mac_addr": 273887072,
+      "decorated_name": "SpellShield::GetMagicInfo(void) const",
+      "undecorated_name": "GetMagicInfo__11SpellShieldCFv",
+      "return_type": "struct GMagicInfo *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct SpellShield *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -139088,31 +139040,29 @@
       ]
     },
     {
-      "win_addr": 6929424,
-      "mac_addr": 272790720,
-      "decorated_name": "TownCentre::CreatePSys(void)",
-      "undecorated_name": "CreatePSys__10TownCentreFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
+      "win_addr": 7617680,
+      "mac_addr": 274052384,
+      "decorated_name": "TownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)",
+      "undecorated_name": "Create__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi",
+      "return_type": "struct TownCentre *",
+      "call_type": "cdecl",
       "argument_types": [
-        "struct TownCentre *"
+        "const struct MapCoords *",
+        "const struct GAbodeInfo *",
+        "struct Town *",
+        "float",
+        "float",
+        "float",
+        "int"
       ],
       "argument_names": [
-        "this"
-      ]
-    },
-    {
-      "win_addr": 6929600,
-      "mac_addr": 268620688,
-      "decorated_name": "TownCentre::ProcessPSys(void)",
-      "undecorated_name": "ProcessPSys__10TownCentreFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct TownCentre *"
-      ],
-      "argument_names": [
-        "this"
+        "coords",
+        "info",
+        "town",
+        "param_4",
+        "param_5",
+        "param_6",
+        "param_7"
       ]
     },
     {
@@ -139144,29 +139094,31 @@
       ]
     },
     {
-      "win_addr": 7617680,
-      "mac_addr": 274052384,
-      "decorated_name": "TownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)",
-      "undecorated_name": "Create__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi",
-      "return_type": "struct TownCentre *",
-      "call_type": "cdecl",
+      "win_addr": 6929424,
+      "mac_addr": 272790720,
+      "decorated_name": "TownCentre::CreatePSys(void)",
+      "undecorated_name": "CreatePSys__10TownCentreFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
       "argument_types": [
-        "const struct MapCoords *",
-        "const struct GAbodeInfo *",
-        "struct Town *",
-        "float",
-        "float",
-        "float",
-        "int"
+        "struct TownCentre *"
       ],
       "argument_names": [
-        "coords",
-        "info",
-        "town",
-        "param_4",
-        "param_5",
-        "param_6",
-        "param_7"
+        "this"
+      ]
+    },
+    {
+      "win_addr": 6929600,
+      "mac_addr": 268620688,
+      "decorated_name": "TownCentre::ProcessPSys(void)",
+      "undecorated_name": "ProcessPSys__10TownCentreFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct TownCentre *"
+      ],
+      "argument_names": [
+        "this"
       ]
     },
     {
@@ -139392,11 +139344,11 @@
       ]
     },
     {
-      "win_addr": 5626128,
-      "mac_addr": 269421616,
-      "decorated_name": "Tree::GetForest(void)",
-      "undecorated_name": "GetForest__4TreeFv",
-      "return_type": "struct Forest *",
+      "win_addr": 7649296,
+      "mac_addr": 269841744,
+      "decorated_name": "Tree::GetWoodValueMultiplier(void)",
+      "undecorated_name": "GetWoodValueMultiplier__4TreeFv",
+      "return_type": "float",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Tree *"
@@ -139406,11 +139358,11 @@
       ]
     },
     {
-      "win_addr": 7649296,
-      "mac_addr": 269841744,
-      "decorated_name": "Tree::GetWoodValueMultiplier(void)",
-      "undecorated_name": "GetWoodValueMultiplier__4TreeFv",
-      "return_type": "float",
+      "win_addr": 5626128,
+      "mac_addr": 269421616,
+      "decorated_name": "Tree::GetForest(void)",
+      "undecorated_name": "GetForest__4TreeFv",
+      "return_type": "struct Forest *",
       "call_type": "__thiscall",
       "argument_types": [
         "struct Tree *"
@@ -149012,7 +148964,7 @@
       "address": 10259912
     },
     {
-      "name": "__vt__DataForScriptRemind",
+      "name": "__vt__19DataForScriptRemind",
       "type": "struct GameThingVftable",
       "address": 9614624
     },
@@ -149072,7 +149024,7 @@
       "address": 9186456
     },
     {
-      "name": "__vt__TownArtifact",
+      "name": "__vt__12TownArtifact",
       "type": "struct GameThingVftable",
       "address": 9193424
     },
@@ -149082,7 +149034,7 @@
       "address": 9193696
     },
     {
-      "name": "__vt__MobileObject",
+      "name": "__vt__12MobileObject",
       "type": "struct MobileObjectVftable",
       "address": 9366812
     },
@@ -149112,6 +149064,11 @@
       "address": 9197752
     },
     {
+      "name": "__vt__12CreatureInfo",
+      "type": "struct GObjectInfoVftable",
+      "address": 9226072
+    },
+    {
       "name": "__vt__12BuildingSite",
       "type": "struct BuildingSiteVftable",
       "address": 9202540
@@ -149122,7 +149079,7 @@
       "address": 9203984
     },
     {
-      "name": "__vt__CameraMode",
+      "name": "__vt__10CameraMode",
       "type": "struct CameraModeVftable",
       "address": 9205472
     },
@@ -149197,9 +149154,24 @@
       "address": 9207248
     },
     {
+      "name": "__vt__5CDBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300740
+    },
+    {
+      "name": "__vt__10ChannelBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300540
+    },
+    {
       "name": "__vt__11CitadelPart",
       "type": "struct MultiMapFixedVftable",
       "address": 9218816
+    },
+    {
+      "name": "__vt__12CitadelHeart",
+      "type": "struct MultiMapFixedVftable",
+      "address": 9211136
     },
     {
       "name": "__vt__9Container",
@@ -149210,11 +149182,6 @@
       "name": "__vt__7Citadel",
       "type": "struct ContainerVftable",
       "address": 9207400
-    },
-    {
-      "name": "__vt__CitadelHeart",
-      "type": "struct MultiMapFixedVftable",
-      "address": 9211136
     },
     {
       "name": "__vt__8GClimate",
@@ -149282,7 +149249,7 @@
       "address": 9238896
     },
     {
-      "name": "__vt__CreatureMimicState",
+      "name": "__vt__18CreatureMimicState",
       "type": "struct BaseVftable",
       "address": 9242096
     },
@@ -149292,7 +149259,7 @@
       "address": 9226188
     },
     {
-      "name": "__vt__CreatureAgenda",
+      "name": "__vt__14CreatureAgenda",
       "type": "struct BaseVftable",
       "address": 9238864
     },
@@ -149302,12 +149269,12 @@
       "address": 9237468
     },
     {
-      "name": "__vt__MultiplayerDatabase",
+      "name": "__vt__19MultiplayerDatabase",
       "type": "struct MultiplayerDatabaseVftable",
       "address": 9636340
     },
     {
-      "name": "__vt__CreatureDatabase",
+      "name": "__vt__16CreatureDatabase",
       "type": "struct MultiplayerDatabaseVftable",
       "address": 9636352
     },
@@ -149315,11 +149282,6 @@
       "name": "__vt__22CreatureExplorationMap",
       "type": "struct BaseVftable",
       "address": 9240800
-    },
-    {
-      "name": "__vt__CreatureInfo",
-      "type": "struct GObjectInfoVftable",
-      "address": 9226072
     },
     {
       "name": "__vt__22CreaturePreviousLesson",
@@ -149332,12 +149294,7 @@
       "address": 9241616
     },
     {
-      "name": "__vt__15CreatureDesires",
-      "type": "struct BaseVftable",
-      "address": 9240476
-    },
-    {
-      "name": "__vt__CreatureBeliefList",
+      "name": "__vt__18CreatureBeliefList",
       "type": "struct BaseVftable",
       "address": 9238796
     },
@@ -149355,6 +149312,11 @@
       "name": "__vt__19CreatureMentalDebug",
       "type": "struct BaseVftable",
       "address": 9238732
+    },
+    {
+      "name": "__vt__15CreatureDesires",
+      "type": "struct BaseVftable",
+      "address": 9240476
     },
     {
       "name": "__vt__24CreatureObjectsInspected",
@@ -149417,7 +149379,7 @@
       "address": 9439508
     },
     {
-      "name": "__vt__GroupBehaviour",
+      "name": "__vt__14GroupBehaviour",
       "type": "struct GroupBehaviourVftable",
       "address": 9438200
     },
@@ -149432,7 +149394,7 @@
       "address": 9258192
     },
     {
-      "name": "__vt__GDanceInfo",
+      "name": "__vt__10GDanceInfo",
       "type": "struct GBaseInfoVftable",
       "address": 9255224
     },
@@ -149452,7 +149414,7 @@
       "address": 9614364
     },
     {
-      "name": "__vt__MobileStatic",
+      "name": "__vt__12MobileStatic",
       "type": "struct MultiMapFixedVftable",
       "address": 9339060
     },
@@ -149522,7 +149484,7 @@
       "address": 9280304
     },
     {
-      "name": "__vt__FireEffect",
+      "name": "__vt__10FireEffect",
       "type": "struct GameThingVftable",
       "address": 10065620
     },
@@ -149587,106 +149549,6 @@
       "address": 10070680
     },
     {
-      "name": "__vt__10HistoryBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300340
-    },
-    {
-      "name": "__vt__23MultiplayerConditionBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300420
-    },
-    {
-      "name": "__vt__12StartGameBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300380
-    },
-    {
-      "name": "__vt__ChannelBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300540
-    },
-    {
-      "name": "__vt__EditingDebugBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300580
-    },
-    {
-      "name": "__vt__SetupMultiplayerMain",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300620
-    },
-    {
-      "name": "__vt__SetupOnlineLandscapes",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300660
-    },
-    {
-      "name": "__vt__SkipBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300700
-    },
-    {
-      "name": "__vt__CDBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300740
-    },
-    {
-      "name": "__vt__GatheringBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300780
-    },
-    {
-      "name": "__vt__LoadingBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300820
-    },
-    {
-      "name": "__vt__LobbyBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300900
-    },
-    {
-      "name": "__vt__GSLobbyBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300860
-    },
-    {
-      "name": "__vt__RegisterBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300940
-    },
-    {
-      "name": "__vt__LoginBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9301144
-    },
-    {
-      "name": "__vt__TattooEditor",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300980
-    },
-    {
-      "name": "__vt__NewProfileBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9301020
-    },
-    {
-      "name": "__vt__MainMenu",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9301060
-    },
-    {
-      "name": "__vt__ProfileEditor",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9301100
-    },
-    {
-      "name": "__vt__SkirmishGameBox",
-      "type": "struct DialogBoxBaseVftable",
-      "address": 9300300
-    },
-    {
       "name": "__vt__3Pot",
       "type": "struct PotVftable",
       "address": 9332228
@@ -149732,37 +149594,12 @@
       "address": 9316884
     },
     {
-      "name": "__vt__17GInterfaceCollide",
-      "type": "struct BaseVftable",
-      "address": 9611972
-    },
-    {
-      "name": "__vt__15GInterfaceFlags",
-      "type": "struct BaseVftable",
-      "address": 9612036
-    },
-    {
-      "name": "__vt__18InterfaceHandState",
-      "type": "struct BaseVftable",
-      "address": 9612004
-    },
-    {
-      "name": "__vt__23GInterfaceMessageBuffer",
-      "type": "struct BaseVftable",
-      "address": 9611940
-    },
-    {
-      "name": "__vt__10GInterface",
-      "type": "struct GameThingWithPosVftable",
-      "address": 9610656
-    },
-    {
       "name": "__vt__10GMagicInfo",
       "type": "struct GBaseInfoVftable",
       "address": 9194684
     },
     {
-      "name": "__vt__PlannedMultiMapFixed",
+      "name": "__vt__20PlannedMultiMapFixed",
       "type": "struct GameThingWithPosVftable",
       "address": 9384276
     },
@@ -149847,7 +149684,7 @@
       "address": 9351480
     },
     {
-      "name": "__vt__PlannedAbode",
+      "name": "__vt__12PlannedAbode",
       "type": "struct GameThingWithPosVftable",
       "address": 9085884
     },
@@ -149857,7 +149694,7 @@
       "address": 9215028
     },
     {
-      "name": "__vt__PSysInterface",
+      "name": "__vt__13PSysInterface",
       "type": "struct PSysInterfaceVftable",
       "address": 9415128
     },
@@ -149892,7 +149729,7 @@
       "address": 10073260
     },
     {
-      "name": "__vt__WeatherThing",
+      "name": "__vt__12WeatherThing",
       "type": "struct GameThingWithPosVftable",
       "address": 9354312
     },
@@ -149957,12 +149794,17 @@
       "address": 9436608
     },
     {
+      "name": "__vt__12GatheringBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300780
+    },
+    {
       "name": "__vt__13GestureSystem",
       "type": "struct BaseVftable",
       "address": 9304064
     },
     {
-      "name": "__vt__GestureSystemData",
+      "name": "__vt__17GestureSystemData",
       "type": "struct BaseVftable",
       "address": 9304032
     },
@@ -150042,6 +149884,36 @@
       "address": 9610364
     },
     {
+      "name": "__vt__10HistoryBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300340
+    },
+    {
+      "name": "__vt__17GInterfaceCollide",
+      "type": "struct BaseVftable",
+      "address": 9611972
+    },
+    {
+      "name": "__vt__15GInterfaceFlags",
+      "type": "struct BaseVftable",
+      "address": 9612036
+    },
+    {
+      "name": "__vt__18InterfaceHandState",
+      "type": "struct BaseVftable",
+      "address": 9612004
+    },
+    {
+      "name": "__vt__23GInterfaceMessageBuffer",
+      "type": "struct BaseVftable",
+      "address": 9611940
+    },
+    {
+      "name": "__vt__10GInterface",
+      "type": "struct GameThingWithPosVftable",
+      "address": 9610656
+    },
+    {
       "name": "__vt__GInterfaceStatus",
       "type": "struct GameThingWithPosVftable",
       "address": 9612496
@@ -150052,9 +149924,24 @@
       "address": 9414816
     },
     {
-      "name": "__vt__GLeashStatus",
+      "name": "__vt__12GLeashStatus",
       "type": "struct GameThingVftable",
       "address": 9612240
+    },
+    {
+      "name": "__vt__10LoadingBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300820
+    },
+    {
+      "name": "__vt__8LobbyBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300900
+    },
+    {
+      "name": "__vt__8LoginBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9301144
     },
     {
       "name": "__vt__16GMagicEffectInfo",
@@ -150062,9 +149949,14 @@
       "address": 9276280
     },
     {
-      "name": "__vt__LandscapeVortex",
+      "name": "__vt__15LandscapeVortex",
       "type": "struct LandscapeVortexVftable",
       "address": 9629312
+    },
+    {
+      "name": "__vt__8MainMenu",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9301060
     },
     {
       "name": "__vt__20MiniDialogBoxOptions",
@@ -150097,6 +149989,16 @@
       "address": 9636240
     },
     {
+      "name": "__vt__23MultiplayerConditionBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300420
+    },
+    {
+      "name": "__vt__13NewProfileBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9301020
+    },
+    {
       "name": "__vt__15OneOffSpellSeed",
       "type": "struct ObjectVftable",
       "address": 9385844
@@ -150122,6 +150024,11 @@
       "address": 9650632
     },
     {
+      "name": "__vt__13ProfileEditor",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9301100
+    },
+    {
       "name": "__vt__7PHandFX",
       "type": "struct PSysHandFXVftable",
       "address": 9661468
@@ -150132,9 +150039,14 @@
       "address": 9655232
     },
     {
-      "name": "__vt__ReactionInfo",
+      "name": "__vt__12ReactionInfo",
       "type": "struct GBaseInfoVftable",
       "address": 9705452
+    },
+    {
+      "name": "__vt__11RegisterBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300940
     },
     {
       "name": "__vt__RenderParticle",
@@ -150152,7 +150064,7 @@
       "address": 10088468
     },
     {
-      "name": "__vt__ScriptDLL",
+      "name": "__vt__9ScriptDLL",
       "type": "struct LHDLLVftable",
       "address": 9708032
     },
@@ -150182,7 +150094,22 @@
       "address": 9357996
     },
     {
-      "name": "__vt__GGuidance",
+      "name": "__vt__7SkipBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300700
+    },
+    {
+      "name": "__vt__15SkirmishGameBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300300
+    },
+    {
+      "name": "__vt__10GSLobbyBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300860
+    },
+    {
+      "name": "__vt__9GGuidance",
       "type": "struct BaseVftable",
       "address": 9962668
     },
@@ -150242,6 +150169,11 @@
       "address": 9203188
     },
     {
+      "name": "__vt__12StartGameBox",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300380
+    },
+    {
       "name": "__vt__8StatsBox",
       "type": "struct DialogBoxBaseVftable",
       "address": 9300500
@@ -150250,6 +150182,11 @@
       "name": "__vt__10StoragePit",
       "type": "struct MultiMapFixedVftable",
       "address": 9400368
+    },
+    {
+      "name": "__vt__12TattooEditor",
+      "type": "struct DialogBoxBaseVftable",
+      "address": 9300980
     },
     {
       "name": "__vt__5Totem",
@@ -150262,7 +150199,7 @@
       "address": 10066504
     },
     {
-      "name": "__vt__TownDesireFlags",
+      "name": "__vt__15TownDesireFlags",
       "type": "struct ObjectVftable",
       "address": 9345900
     },
@@ -150297,7 +150234,7 @@
       "address": 10070564
     },
     {
-      "name": "__vt__GVirtualInfluence",
+      "name": "__vt__17GVirtualInfluence",
       "type": "struct BaseVftable",
       "address": 10070640
     },

@@ -806,8 +806,6 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\Black\CameraModeNew1.cpp"),
     BWPath(r"C:\Dev\Black\CameraModeNew2.cpp"),
     BWPath(r"C:\Dev\black\ScriptedCamera.h"),
-    BWPath(r"C:\Dev\black\ControlKey.h"),
-    BWPath(r"C:\Dev\black\ControlMouse.h"),
     BWPath(r"C:\Dev\black\BindableAction.h"),
     BWPath(r"C:\Dev\black\ControlMap.h"),
     BWPath(r"C:\Dev\black\Cow.h"),
@@ -1147,6 +1145,8 @@ ROOMMATE_CLASS_MAP = {
     "DecisionTreeAgendas": "CreatureMentalAttributeTest",
     "DecisionTreeCollection": "CreatureMentalAttributeTest", # Validated by new call in constructor
     "LHSegmentDesc": "LHSegment",
+    "ControlKey": "BindableAction",
+    "ControlMouse": "BindableAction",
     "MultiChild": "MultiMapFixed",
     "MultiChildList": "MultiMapFixed",
     "PhysOb": "PhysicsObject",
