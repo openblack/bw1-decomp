@@ -37,7 +37,7 @@ class Vftable(Struct):
             "__dt__": "__dt",
         }
         self.members = []
-        for i, m in enumerate(struct.members):
+        for m in struct.members:
             name = substitutions.get(m.name, m.name)
             data_type = function_proto_map.get(m.data_type.rstrip("*"), m.data_type)
-            self.members.append(self.Member(name, data_type, offset=i*4))
+            self.members.append(self.Member(name, data_type, offset=m.offset))

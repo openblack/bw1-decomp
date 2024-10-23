@@ -9,7 +9,7 @@ from pathlib import Path
 
 from structs import Composite
 from functions import FuncPtr
-from utils import partition
+from utils import partition, LH_COLLECTION_TEMPLATES
 
 
 HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
@@ -38,6 +38,7 @@ C_FUNDAMENTAL_TYPES = {
 C_STDLIB_HEADER_IMPORT_MAP = {
     "static_assert": "assert.h",
     "bool": "stdbool.h",
+    "size_t": "stddef.h",
     "int8_t": "stdint.h",
     "int16_t": "stdint.h",
     "int32_t": "stdint.h",
@@ -64,6 +65,7 @@ UTILITY_HEADER_IMPORT_MAP = {
     "DECLARE_LH_LINKED_LIST": Path("lionhead/lhlib/LHLinkedList.h"),
     "DECLARE_P_LH_LINKED_LIST": Path("lionhead/lhlib/LHLinkedList.h"),
     "DECLARE_LH_LIST_HEAD": Path("lionhead/lhlib/LHListHead.h"),
+    "DECLARE_GJ_VECTOR": Path("lionhead/lhlib/GJVector.h"),
 }
 
 
@@ -170,8 +172,8 @@ class Header:
         result = self.get_types()
         pointers = set(filter(self.is_forward_declarable_pointer, result))
         result.difference_update(pointers)
-        lh_lists = {i for i in result if i.startswith("struct LHListHead__") or i.startswith("struct LHLinkedList__")}
-        lh_lists_underlying_type = {"struct " + i.removeprefix("struct ").removeprefix("LHListHead__").removeprefix("LHLinkedList__p_").removeprefix("LHLinkedList__") for i in lh_lists}
+        lh_lists = {i for i in result if any(i.startswith(prefix) for prefix in LH_COLLECTION_TEMPLATES)}
+        lh_lists_underlying_type = {"struct " + i.removeprefix("struct ").removeprefix("LHListHead__").removeprefix("LHLinkedList__p_").removeprefix("LHLinkedList__").removeprefix("GJVector__").removeprefix("LHDynamicStack__") for i in lh_lists}
         result.difference_update(lh_lists)
         result.update(lh_lists_underlying_type)
         if any(hasattr(i, "size") and i.size is not None for i in self.structs):
@@ -202,7 +204,7 @@ class Header:
 
         result.difference_update(self.get_direct_dependencies())
         result.difference_update(C_FUNDAMENTAL_TYPES)
-        result = {i for i in result if not i.startswith("struct LHListHead__") and not i.startswith("struct LHLinkedList__")}
+        result = {i for i in result if not any(i.startswith(f"struct {p}__") for p in LH_COLLECTION_TEMPLATES)}
         return result
 
     def to_code_includes(self, cw: csnake.CodeWriter):

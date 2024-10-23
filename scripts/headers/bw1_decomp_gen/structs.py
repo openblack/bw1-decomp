@@ -1,11 +1,16 @@
 import csnake
 
 from dataclasses import dataclass
-from typing import Optional, Union
+import typing
 
 from csnake_overrides import CSnakeMultiLineArrayVariable, CSnakeUnion, CSnakeHexCIntLiteral
 from functions import DefinedFunctionPrototype
 from utils import partition, extract_type_name
+
+
+KNOWN_FLAG_ENUM_NAMES = {
+    "LHKeyMod",
+}
 
 
 @dataclass
@@ -13,7 +18,7 @@ class Composite:
     @dataclass
     class Member:
         name: str
-        data_type: Union[str, csnake.FuncPtr]
+        data_type: typing.Union[str, csnake.FuncPtr]
         offset: int
 
         def __init__(self, name: str, data_type: str, offset: int):
@@ -57,7 +62,7 @@ class Composite:
             return csnake.Variable(formatted_name, base_type, array=dimensions)
 
     name: str
-    size: Optional[int]
+    size: typing.Optional[int]
     members: list[Member]
 
     @property
@@ -69,7 +74,7 @@ class Struct(Composite):
     constructors: list[DefinedFunctionPrototype] = []
     methods: list[DefinedFunctionPrototype] = []
     static_methods: list[DefinedFunctionPrototype] = []
-    print_offset_at_each: Optional[int] = None
+    print_offset_at_each: typing.Optional[int] = None
 
     @property
     def decorated_name(self):
@@ -108,7 +113,7 @@ class Struct(Composite):
                 if last_offset < 0 or m.offset - last_offset >= self.print_offset_at_each:
                     hoffset = f"{m.offset:08x}" if m.offset > 0x400000 else f"{m.offset:x}"
                     v.comment = None if hoffset in m.name else "0x" + hoffset
-                    last_offset = m.offset
+                    last_offset = m.offset - (m.offset % self.print_offset_at_each)
             result.add_variable(v)
         return result
 
@@ -179,12 +184,42 @@ class Union(Composite):
         cw.add_line()
 
 
-
 @dataclass
 class Enum:
     name: str
     size: int
-    values: tuple[str, int]
+    values: list[tuple[str, int]]
+    count = tuple[str, int]
+
+    def __init__(self, name: str, size: int, values: tuple[str, int]):
+        self.name = name
+        self.size = size
+        self.values = []
+        min_val = None
+        max_val = 0
+        count_val = None
+        for n, v in values:
+            if n.endswith("_FORCE_32_BIT") or n.endswith("_FORCE_32_BITS") or n.endswith("_FORCE32"):
+                continue
+            if n.endswith("_COUNT"):
+                count_val = v
+            else:
+                self.values.append((n, v))
+            if min_val is None or v < min_val:
+                min_val = v
+            if v > max_val:
+                max_val = v
+        if self.name.endswith("_FLAGS") or self.name in KNOWN_FLAG_ENUM_NAMES:
+            self.count = None
+        else:
+            try:
+                assert(max_val < 0x70000000)
+            except:
+                print(self.name)
+                raise
+            self.count = (f"_{self.name}_COUNT", count_val or ((max_val or 0) + 1))
+            self.values.append(self.count)
+
 
     @property
     def decorated_name(self):
@@ -222,7 +257,8 @@ class Enum:
 
 @dataclass
 class RTTIClass(Struct):
-    vftable_address: Optional[int]
+    vftable_address: typing.Optional[int]
+    vftable_type_name: typing.Optional[str]
     method_overrides: list[DefinedFunctionPrototype]
 
     @property
@@ -236,6 +272,10 @@ class RTTIClass(Struct):
         basename = struct.name.removeprefix("struct ")
         vftable_global = vftable_map.get(basename) or vftable_map.get(f"{len(basename)}{basename}")
         self.vftable_address = vftable_global['address'] if vftable_global is not None else None
+        self.vftable_type_name = vftable_global['type'] if vftable_global is not None else None
+        if self.vftable_type_name is not None:
+            if not self.vftable_type_name.endswith("Vftable"):
+                raise TypeError(f"type: `{struct.name}` has a __vt__ declared with invalid type `{self.vftable_type_name}`")
 
         def get_method_name(x: str) -> str:
             if "__" not in x:
@@ -260,7 +300,7 @@ class RTTIClass(Struct):
     def to_code_data(self, cw: csnake.CodeWriter):
         super().to_code_data(cw)
         if self.vftable_address:
-            vftable_ptr_type = f"{self.decorated_name}Vftable*"
+            vftable_ptr_type = self.vftable_type_name + "*"
             # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
             address = csnake.FormattedLiteral(
                 value=self.vftable_address, int_formatter=lambda x: f"({vftable_ptr_type})0x{x:08x}")

@@ -1,5 +1,9 @@
 from typing import Iterable, Callable
 
+
+LH_COLLECTION_TEMPLATES = ["LHLinkedList", "LHListHead", "GJVector", "LHDynamicStack"]
+
+
 def extract_type_name(type_name: str) -> str:
     return type_name.removeprefix("const ").removeprefix("struct ").removeprefix("union ").removeprefix("enum ").removesuffix("*").strip()
 

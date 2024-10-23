@@ -153,9 +153,14 @@ def generate_globals_header(globals_decl: dict, function_proto_map: dict[str, Fu
 
 def get_struct_path(name):
     stem = name
+    # For names like GCameraEditor__InfoTrack/GCameraEditor::InfoTrack
+    if "::" in stem:
+        stem = stem.split("::")[0]
+    if "__" in stem:
+        stem = stem.split("__")[0]
     # For things like GBaseInfo
-    if name[0] == 'G' and name[1].isupper():
-        stem = name[1:]
+    if stem[0] == 'G' and stem[1].isupper():
+        stem = stem[1:]
     for project, object_files in projects_and_files.items():
         if stem +".obj" in object_files:
             break
@@ -276,16 +281,20 @@ def build_sinit_headers(sinit_functions, header_map):
         header_map[path] = header
 
 
-def build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, header_map, local_header_import_map):
+def build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, lh_dynamic_stack_structs, gj_vector_structs, header_map, local_header_import_map):
     consumed_lh_linked_list_pointer_structs = set()
     consumed_lh_linked_list_structs = set()
     consumed_lh_list_head_structs = set()
+    consumed_lh_dynamic_stack_structs = set()
+    consumed_gj_vector_structs = set()
     for header in header_map.values():
         consumed_lh_linked_list_pointer_structs.update(header.add_linked_list_pointered_defines(lh_linked_list_pointer_structs))
         consumed_lh_linked_list_structs.update(header.add_linked_list_defines(lh_linked_list_structs))
         consumed_lh_list_head_structs.update(header.add_list_head_defines(lh_list_head_structs))
+        consumed_lh_dynamic_stack_structs.update(header.add_list_head_defines(lh_dynamic_stack_structs))
+        consumed_gj_vector_structs.update(header.add_list_head_defines(gj_vector_structs))
         header.build_include_list(local_header_import_map)
-    return consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs
+    return consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs, consumed_lh_dynamic_stack_structs, consumed_gj_vector_structs
 
 
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
@@ -321,6 +330,8 @@ if __name__ == "__main__":
         roomate_class_name = resolve_roommate(type_name)
         if roomate_class_name[0] == 'G' and roomate_class_name[1].isupper():
             roomate_class_name = roomate_class_name[1:]
+        if "__" in roomate_class_name:
+            roomate_class_name = roomate_class_name.split("__")[0]
         result = object_file_base_names_lower.get(roomate_class_name.lower())
         if result is not None:
             return result
@@ -388,6 +399,8 @@ if __name__ == "__main__":
         lh_linked_pointer_lists,
         lh_linked_lists,
         lh_list_heads,
+        lh_dynamic_stacks,
+        gj_vectors,
         member_function_pointers,
         to_ignore,
         remainder_primitives,
@@ -403,6 +416,8 @@ if __name__ == "__main__":
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__p_") or  x.name.startswith("LHLinkedNode__p_"),
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__") or  x.name.startswith("LHLinkedNode__"),
         lambda x: type(x) is Struct and x.name.startswith("LHListHead__"),
+        lambda x: type(x) is Struct and x.name.startswith("LHDynamicStack__"),
+        lambda x: type(x) is Struct and x.name.startswith("GJVector__"),
         lambda x: type(x) is FuncPtr and "__" in x.name and get_header_struct_name_key(x.name[::-1].split("__")[-1][::-1]) is not None,
         is_ignore_struct,
         lambda x: type(x) is Struct,
@@ -417,6 +432,8 @@ if __name__ == "__main__":
     lh_linked_list_pointer_structs = {"struct " + i.name.removeprefix("LHLinkedList__p_").removeprefix("LHLinkedNode__p_") for i in lh_linked_pointer_lists}
     lh_linked_list_structs = {"struct " + i.name.removeprefix("LHLinkedList__").removeprefix("LHLinkedNode__") for i in lh_linked_lists}
     lh_list_head_structs = {"struct " + i.name.removeprefix("LHListHead__") for i in lh_list_heads}
+    lh_dynamic_stack_structs = {"struct " + i.name.removeprefix("LHDynamicStack__") for i in lh_dynamic_stacks}
+    gj_vector_structs = {"struct " + i.name.removeprefix("GJVector__") for i in gj_vectors}
 
     vftable_map = {}
     for t in vftables:
@@ -441,7 +458,7 @@ if __name__ == "__main__":
     remainder_class_static_methods = build_remaining_static_function_headers(remainder_class_static_methods, header_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
     build_sinit_headers(sinit_functions, header_map)
-    consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs = build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, header_map, local_header_import_map)
+    consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs, consumed_lh_dynamic_stack_structs, consumed_gj_vector_structs = build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, lh_dynamic_stack_structs, gj_vector_structs, header_map, local_header_import_map)
 
     headers: list[Header] = list(header_map.values())
 
