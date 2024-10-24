@@ -58,17 +58,6 @@ C_STDLIB_HEADER_IMPORT_MAP = {
 }
 
 
-UTILITY_HEADER_IMPORT_MAP = {
-    "RTL_CRITICAL_SECTION": Path("reversing_utils.h"),
-    "bool32_t": Path("reversing_utils.h"),
-    "struct vec2u16": Path("reversing_utils.h"),
-    "DECLARE_LH_LINKED_LIST": Path("lionhead/lhlib/LHLinkedList.h"),
-    "DECLARE_P_LH_LINKED_LIST": Path("lionhead/lhlib/LHLinkedList.h"),
-    "DECLARE_LH_LIST_HEAD": Path("lionhead/lhlib/LHListHead.h"),
-    "DECLARE_GJ_VECTOR": Path("lionhead/lhlib/GJVector.h"),
-}
-
-
 def strip_arrays_and_modifiers(c_type):
     c_type = re.sub(r'\[\d*\]', '', c_type)
     c_type = re.sub(r'[()]', '', c_type)
@@ -98,6 +87,11 @@ class Header:
     linked_lists_pointered: set[str]
     linked_lists: set[str]
     lists_heads: set[str]
+    UTILITY_HEADER_IMPORT_MAP: dict[str, Path]
+
+    @classmethod
+    def set_utility_header_import_map(cls, value: dict[str, Path]):
+        cls.UTILITY_HEADER_IMPORT_MAP = value
 
     def __hash__(self) -> int:
         return hash(self.header_path)
@@ -118,8 +112,8 @@ class Header:
                 i = self.includes.get(header, self.Include(Path(header), set(), True))
                 i.dependencies.add(t)
                 self.includes[header] = i
-            elif t in UTILITY_HEADER_IMPORT_MAP:
-                header = UTILITY_HEADER_IMPORT_MAP[t]
+            elif t in self.UTILITY_HEADER_IMPORT_MAP:
+                header = self.UTILITY_HEADER_IMPORT_MAP[t]
                 i = self.includes.get(header, self.Include(Path(header), set(), False))
                 i.dependencies.add(t)
                 self.includes[header] = i
@@ -156,8 +150,8 @@ class Header:
     def get_includes(self) -> list[str]:
         return sorted(list(self.includes.values()))
 
-    @staticmethod
-    def is_forward_declarable_pointer(typename: Union[str, csnake.FuncPtr]):
+    @classmethod
+    def is_forward_declarable_pointer(cls, typename: Union[str, csnake.FuncPtr]):
         if isinstance(typename, csnake.FuncPtr):
             return True
         if '*' in typename:
@@ -165,7 +159,7 @@ class Header:
             if '(*' in typename and typename.endswith("]"):
                 return False
             else:
-                return strip_pointers_arrays_and_modifiers(typename) not in (C_STDLIB_HEADER_IMPORT_MAP.keys() | UTILITY_HEADER_IMPORT_MAP.keys())
+                return strip_pointers_arrays_and_modifiers(typename) not in (C_STDLIB_HEADER_IMPORT_MAP.keys() | cls.UTILITY_HEADER_IMPORT_MAP.keys())
         return False
 
     def get_direct_dependencies(self) -> set[str]:

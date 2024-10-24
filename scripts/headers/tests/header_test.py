@@ -147,6 +147,10 @@ class TestHeaderIncludes(unittest.TestCase):
 
 class TestHeaderCreation(unittest.TestCase):
 
+    @classmethod
+    def setUpClass(cls):
+        Header.UTILITY_HEADER_IMPORT_MAP = {}
+
     def setUp(self):
         super().setUp()
         self.maxDiff = None

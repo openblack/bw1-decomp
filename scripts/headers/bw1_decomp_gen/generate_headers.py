@@ -8,7 +8,8 @@ from json import load
 from pathlib import Path
 import csnake
 
-from header import Header, GlobalsHeader, C_STDLIB_HEADER_IMPORT_MAP, UTILITY_HEADER_IMPORT_MAP
+import scan_src_headers
+from header import Header, GlobalsHeader, C_STDLIB_HEADER_IMPORT_MAP
 from structs import Struct, Union, Enum, RTTIClass
 from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype
@@ -69,9 +70,6 @@ PRIMITIVE_LOOK_UP = {
     'FUNCTIONPROTO': FuncPtr,
 }
 
-TYPES_TO_IGNORE = {
-    "TypeDescriptor",
-} | {i.removeprefix("struct ") for i in UTILITY_HEADER_IMPORT_MAP.keys()} | C_STDLIB_HEADER_IMPORT_MAP.keys()
 
 # TODO: Do every type of variable
 def arg_clang_wrapping_declaration_to_csnake(wrapping_declaration):
@@ -308,6 +306,13 @@ if __name__ == "__main__":
         # TODO: Get immediate dependencies for each primitive
         primitives.append(primitive.from_json(decl))
 
+    utility_header_import_map = scan_src_headers.extract_types()
+    Header.UTILITY_HEADER_IMPORT_MAP = utility_header_import_map
+
+    types_to_ignore = {
+        "TypeDescriptor",
+    } | {i.removeprefix("struct ").removeprefix("enum ") for i in utility_header_import_map.keys()} | C_STDLIB_HEADER_IMPORT_MAP.keys()
+
     global_decls = db['globals']
 
     vftable_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__vt__")], global_decls)
@@ -380,10 +385,10 @@ if __name__ == "__main__":
         return None
 
     def is_ignore_struct(data_type) -> bool:
-        if type(data_type) is Struct or type(data_type) is Typedef:
+        if type(data_type) is Struct or type(data_type) is Enum or type(data_type) is Typedef:
             if data_type.name.startswith("RTTI"):
                 return True
-            if data_type.name in TYPES_TO_IGNORE:
+            if data_type.name in types_to_ignore:
                 return True
         return False
 
@@ -394,6 +399,7 @@ if __name__ == "__main__":
         vftable_function_prototypes,
         global_function_ptr_prototypes,
         header_structs,
+        to_ignore_enums,
         header_enums,
         remainder_enums,
         lh_linked_pointer_lists,
@@ -411,6 +417,7 @@ if __name__ == "__main__":
         lambda x: type(x) is FuncPtr and ('Vftable__' in x.name or x.name.startswith('vt_')),
         lambda x: type(x) is FuncPtr and x.name.startswith('globals_funcptr__'),
         is_header_struct,
+        lambda x: type(x) is Enum and is_ignore_struct(x),
         lambda x: type(x) is Enum and get_enum_header_name_key(x) is not None,
         lambda x: type(x) is Enum,
         lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__p_") or  x.name.startswith("LHLinkedNode__p_"),
@@ -515,7 +522,7 @@ if __name__ == "__main__":
     toc = time.perf_counter()
     print(f"Copied {copied_headers} headers({copied_bytes} bytes) in {output_path}")
     print(f"Wrote {wrote_headers} headers({wrote_bytes} bytes) in {output_path}")
-    print(f"Ignored {len(to_ignore)} entries")
+    print(f"Ignored {len(to_ignore) + len(to_ignore_enums)} entries")
     print(f"Took {toc - tic:0.4f} seconds")
 
     if len(remainder_vftables) + len(remainder_functions) + len(remainder_primitives) + len(remainder_enums) + len(remainder) > 0:
