@@ -114,19 +114,19 @@ class TestHeaderIncludes(unittest.TestCase):
         h = Header(self.path, [], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0), Struct.Member("field_0x4", "int", 0x4), Struct.Member("field_0x8", "int8_t[2]", 0x8), Struct.Member("field_0xa", "int16_t", 0xa)])])
         h.build_include_list({})
         includes = h.get_includes()
-        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("stdint.h"), {"int16_t", "int8_t", "uint32_t"}, True)])
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, Header.Include.Level.SYSTEM), Header.Include(Path("stdint.h"), {"int16_t", "int8_t", "uint32_t"}, Header.Include.Level.SYSTEM)])
 
     def test_stdint_ptr(self):
         h = Header(self.path, [], [Struct("TestStruct", 0x8, [Struct.Member("field_0x0", "uint32_t*", 0x0), Struct.Member("field_0x4", "const int32_t*", 0x4)])])
         h.build_include_list({})
         includes = h.get_includes()
-        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("stdint.h"), {"uint32_t", "int32_t"}, True)])
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, Header.Include.Level.SYSTEM), Header.Include(Path("stdint.h"), {"uint32_t", "int32_t"}, Header.Include.Level.SYSTEM)])
 
     def test_with_manual_include(self):
-        h = Header(self.path, [Header.Include(Path('includetest'), {"std::TestInclude"}, True)], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0)])])
+        h = Header(self.path, [Header.Include(Path('includetest'), {"std::TestInclude"}, Header.Include.Level.SYSTEM)], [Struct("TestStruct", 0xc, [Struct.Member("field_0x0", "uint32_t", 0x0)])])
         h.build_include_list({})
         includes = h.get_includes()
-        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True), Header.Include(Path("includetest"), {"std::TestInclude"}, True), Header.Include(Path("stdint.h"), {"uint32_t"}, True)])
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, Header.Include.Level.SYSTEM), Header.Include(Path("includetest"), {"std::TestInclude"}, Header.Include.Level.SYSTEM), Header.Include(Path("stdint.h"), {"uint32_t"}, Header.Include.Level.SYSTEM)])
 
     def test_with_struct_essentials(self):
         structs: list[Struct] = [
@@ -141,7 +141,7 @@ class TestHeaderIncludes(unittest.TestCase):
         self.assertIn("static_assert", code)  # for the struct size
 
         includes = h.get_includes()
-        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, True)])
+        self.assertSequenceEqual(includes, [Header.Include(Path("assert.h"), {"static_assert"}, Header.Include.Level.SYSTEM)])
 
         self.assertEqual(code.count("static_assert"), 2)  # one for the struct size and one for the include
 
@@ -149,7 +149,7 @@ class TestHeaderCreation(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        Header.UTILITY_HEADER_IMPORT_MAP = {}
+        Header.set_utility_header_import_map({})
 
     def setUp(self):
         super().setUp()
@@ -170,11 +170,11 @@ class TestHeaderCreation(unittest.TestCase):
 
     def test_includes(self):
         includes: list[Header.Include] = [
-            Header.Include(Path('src/TestInclude4.h'), {}, False),
-            Header.Include(Path('src/TestInclude1.h'), {"TestInclude1"}, False),
-            Header.Include(Path('src/TestInclude2.h'), {"TestInclude2a", "TestInclude2b"}, False),
-            Header.Include(Path('TestInclude3'), {"std::TestInclude3"}, True),
-            Header.Include(Path('src/TestInclude5.h'), {"TestInclude5a", "TestInclude5c", "TestInclude5b"}, False),
+            Header.Include(Path('src/TestInclude4.h'), {}, Header.Include.Level.LOCAL),
+            Header.Include(Path('src/TestInclude1.h'), {"TestInclude1"}, Header.Include.Level.LOCAL),
+            Header.Include(Path('src/TestInclude2.h'), {"TestInclude2a", "TestInclude2b"}, Header.Include.Level.LOCAL),
+            Header.Include(Path('TestInclude3'), {"std::TestInclude3"}, Header.Include.Level.SYSTEM),
+            Header.Include(Path('lib/TestInclude5.h'), {"TestInclude5a", "TestInclude5c", "TestInclude5b"}, Header.Include.Level.LINKED),
         ]
 
         Header(self.path, includes, structs=[]).to_code(self.cw)
@@ -186,10 +186,11 @@ class TestHeaderCreation(unittest.TestCase):
 
 #include <TestInclude3> /* For std::TestInclude3 */
 
+#include <lib/TestInclude5.h> /* For TestInclude5a, TestInclude5b, TestInclude5c */
+
 #include "src/TestInclude1.h" /* For TestInclude1 */
 #include "src/TestInclude2.h" /* For TestInclude2a, TestInclude2b */
 #include "src/TestInclude4.h"
-#include "src/TestInclude5.h" /* For TestInclude5a, TestInclude5b, TestInclude5c */
 
 #endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
 """)

@@ -3,6 +3,7 @@ import re
 import os
 
 from typing import Union
+from enum import Enum
 from dataclasses import dataclass
 from inflection import underscore
 from pathlib import Path
@@ -77,9 +78,24 @@ def strip_pointers_arrays_and_modifiers(c_type):
 class Header:
     @dataclass(order=True)
     class Include:
+        class Level(Enum):
+            LOCAL = 0
+            LINKED = 2
+            SYSTEM = 3
         header_path: Path
         dependencies: set[str]
-        system: bool
+        level: Level
+
+        @property
+        def level_quotes(self) -> tuple[str, str]:
+            if self.level == self.Level.LOCAL:
+                return '"', '"'
+            else:
+                return '<', '>'
+
+        @property
+        def formatted_path(self):
+            return self.level_quotes[0] + self.header_path.as_posix() + self.level_quotes[1]
 
     path: Path
     includes: dict[str, Include]
@@ -109,12 +125,12 @@ class Header:
         for t in map(strip_pointers_arrays_and_modifiers, types):
             if t in C_STDLIB_HEADER_IMPORT_MAP:
                 header = C_STDLIB_HEADER_IMPORT_MAP[t]
-                i = self.includes.get(header, self.Include(Path(header), set(), True))
+                i = self.includes.get(header, self.Include(Path(header), set(), self.Include.Level.SYSTEM))
                 i.dependencies.add(t)
                 self.includes[header] = i
             elif t in self.UTILITY_HEADER_IMPORT_MAP:
                 header = self.UTILITY_HEADER_IMPORT_MAP[t]
-                i = self.includes.get(header, self.Include(Path(header), set(), False))
+                i = self.includes.get(header, self.Include(Path(header), set(), self.Include.Level.LINKED))
                 i.dependencies.add(t)
                 self.includes[header] = i
             elif t in local_header_import_map:
@@ -125,7 +141,7 @@ class Header:
                     header = Path(os.path.relpath(header, start=self.path.parent))
                 elif header.parts[0].lower() == 'libs':
                     header = header.relative_to("libs")
-                i = self.includes.get(header, self.Include(header, set(), False))
+                i = self.includes.get(header, self.Include(header, set(), self.Include.Level.LOCAL))
                 i.dependencies.add(t)
                 self.includes[header] = i
 
@@ -147,7 +163,7 @@ class Header:
             result.update(s.get_types())
         return result
 
-    def get_includes(self) -> list[str]:
+    def get_includes(self) -> list[Include]:
         return sorted(list(self.includes.values()))
 
     @classmethod
@@ -204,14 +220,17 @@ class Header:
     def to_code_includes(self, cw: csnake.CodeWriter):
         if not self.includes:
             return
-        include_categories = partition([lambda x: x.system], self.get_includes())
+        include_categories = partition([
+            lambda x: x.level == Header.Include.Level.SYSTEM,
+            lambda x: x.level == Header.Include.Level.LINKED,
+            lambda x: x.level == Header.Include.Level.LOCAL,
+        ], self.get_includes())
         for c in include_categories:
             c = list(c)
             if not c:
                 continue
             for i in c:
-                cw.include(('<' if i.system else '"') + i.header_path.as_posix() + ('>' if i.system else '"'),
-                            ("For " + ", ".join(sorted(i.dependencies)) if i.dependencies else None))
+                cw.include(i.formatted_path, ("For " + ", ".join(sorted(i.dependencies)) if i.dependencies else None))
             cw.add_line()
 
     def to_code_forward_declares(self, cw: csnake.CodeWriter):

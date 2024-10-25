@@ -307,7 +307,7 @@ if __name__ == "__main__":
         primitives.append(primitive.from_json(decl))
 
     utility_header_import_map = scan_src_headers.extract_types()
-    Header.UTILITY_HEADER_IMPORT_MAP = utility_header_import_map
+    Header.set_utility_header_import_map(utility_header_import_map)
 
     types_to_ignore = {
         "TypeDescriptor",
