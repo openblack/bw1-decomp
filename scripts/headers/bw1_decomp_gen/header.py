@@ -139,11 +139,13 @@ class Header:
                 header = local_header_import_map[t]
                 if header == self.path:
                     continue
-                if header.parts[0] == self.path.parts[0]:
+                level = self.Include.Level.LOCAL
+                if header.parent == self.path.parent:
                     header = Path(os.path.relpath(header, start=self.path.parent))
-                elif header.parts[0].lower() == 'libs':
-                    header = header.relative_to("libs")
-                i = self.includes.get(header, self.Include(header, set(), self.Include.Level.LOCAL))
+                else:
+                    header = Path(header.name)
+                    level = self.Include.Level.LINKED
+                i = self.includes.get(header, self.Include(header, set(), level))
                 i.dependencies.add(t)
                 self.includes[header] = i
 
