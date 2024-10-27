@@ -149,6 +149,7 @@ class TestHeaderCreation(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        Header.set_header_guard_format("BW1_DECOMP_%s_INCLUDED_H")
         Header.set_utility_header_import_map({})
 
     def setUp(self):

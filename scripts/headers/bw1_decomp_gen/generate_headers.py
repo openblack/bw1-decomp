@@ -19,6 +19,9 @@ from utils import partition, extract_type_name
 from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, resolve_roommate, ROOMMATE_CLASS_MAP
 
 
+HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
+
+
 def extract_type_from_func_name(s):
     name = s.split("(")[0]
     parts = name.split("::")
@@ -307,6 +310,7 @@ if __name__ == "__main__":
         primitives.append(primitive.from_json(decl))
 
     utility_header_import_map = scan_src_headers.extract_types()
+    Header.set_header_guard_format(HEADER_GUARD_TEMPLATE)
     Header.set_utility_header_import_map(utility_header_import_map)
 
     types_to_ignore = {

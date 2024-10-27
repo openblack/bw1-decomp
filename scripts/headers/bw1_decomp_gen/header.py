@@ -13,9 +13,6 @@ from functions import FuncPtr
 from utils import partition, LH_COLLECTION_TEMPLATES
 
 
-HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
-
-
 C_FUNDAMENTAL_TYPES = {
     'char',
     'unsigned char',
@@ -103,7 +100,12 @@ class Header:
     linked_lists_pointered: set[str]
     linked_lists: set[str]
     lists_heads: set[str]
+    HEADER_GUARD_TEMPLATE: dict[str, Path]
     UTILITY_HEADER_IMPORT_MAP: dict[str, Path]
+
+    @classmethod
+    def set_header_guard_format(cls, value: str):
+        cls.HEADER_GUARD_TEMPLATE = value
 
     @classmethod
     def set_utility_header_import_map(cls, value: dict[str, Path]):
@@ -263,8 +265,8 @@ class Header:
         self.to_code_struct_decl(cw)
 
     def to_code(self, cw: csnake.CodeWriter):
-        cw.start_if_def(HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)), invert=True)
-        cw.add_define(HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)))
+        cw.start_if_def(self.HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)), invert=True)
+        cw.add_define(self.HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)))
         cw.add_line()
 
         self.to_code_inner(cw)
