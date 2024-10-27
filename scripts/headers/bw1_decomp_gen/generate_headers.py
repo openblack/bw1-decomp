@@ -20,6 +20,7 @@ from vanilla_filepaths import map_projects_to_object_files, get_object_file_base
 
 
 HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
+ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = False
 
 
 def extract_type_from_func_name(s):
@@ -309,7 +310,7 @@ if __name__ == "__main__":
         # TODO: Get immediate dependencies for each primitive
         primitives.append(primitive.from_json(decl))
 
-    utility_header_import_map = scan_src_headers.extract_types()
+    utility_header_import_map = scan_src_headers.extract_types(include_dirs_stripped=ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET)
     Header.set_header_guard_format(HEADER_GUARD_TEMPLATE)
     Header.set_utility_header_import_map(utility_header_import_map)
 

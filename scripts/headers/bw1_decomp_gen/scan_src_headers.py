@@ -5,7 +5,7 @@ from clang import cindex
 SRC_BASE_PATH = Path(__file__).parent / "src"
 
 
-def extract_types(path: Path = Path(".")) -> dict[str, Path]:
+def extract_types(path: Path = Path("."), include_dirs_stripped=False) -> dict[str, Path]:
     paths = []
 
     if (SRC_BASE_PATH / path).is_file():
@@ -25,9 +25,12 @@ def extract_types(path: Path = Path(".")) -> dict[str, Path]:
             continue
         if child.spelling.strip("_") != child.spelling:
             continue
-        value = child_path.relative_to(SRC_BASE_PATH)
-        if value.is_relative_to("libs"):
-            value = value.relative_to("libs")
+        if include_dirs_stripped:
+            value = child_path.name
+        else:
+            value = child_path.relative_to(SRC_BASE_PATH)
+            if value.is_relative_to("libs"):
+                value = value.relative_to("libs")
         key = child.spelling
         if child.kind.name == "STRUCT_DECL":
            key = f"struct {key}"
