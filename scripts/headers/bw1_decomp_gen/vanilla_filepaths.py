@@ -711,6 +711,7 @@ released_filepaths_from_strings = {
 }
 
 guessed_filepaths = {
+    BWPath(r"C:\dev\MP\Black\CameraHelp.h"), # Fixing case
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DMem.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHScreen.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHDDEnum.h"),
@@ -1003,7 +1004,6 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\TownDesireFlags.h"),
     BWPath(r"C:\Dev\black\TownStats.h"),
     BWPath(r"C:\Dev\black\ValueSpinner.h"),
-    BWPath(r"C:\Dev\black\VillagerName.h"),
     BWPath(r"C:\Dev\black\Waterfall.h"),
     BWPath(r"C:\Dev\black\Waypoint.h"),
     BWPath(r"C:\Dev\black\WeatherInfo.h"),
@@ -1159,6 +1159,7 @@ ROOMMATE_CLASS_MAP = {
     "AnimInfo": "LH3DAnim",
     "ANM_BaseHeader": "LH3DAnim",
     "GSaveLoadPtrList": "SaveLoadPtr",
+    "VillagerName": "VillagerNameBlock",
     "MapCell": "Map",
     "MapCellIterator": "Map",
     "AgeToScale": "VillagerInfo",

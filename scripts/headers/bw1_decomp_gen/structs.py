@@ -226,7 +226,7 @@ class Enum:
         return f"enum {self.name}"
 
     def get_types(self) -> set[str]:
-        result = {self.name}
+        result = {self.decorated_name}
         return result
 
     @classmethod

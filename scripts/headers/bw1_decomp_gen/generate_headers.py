@@ -15,7 +15,7 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype
 from csnake_overrides import CSnakeFuncPtr
 from vftable import Vftable
-from utils import partition, extract_type_name
+from utils import partition, extract_type_name, TEMPLATE_CONTAINER_STRUCTS_PREFIXES
 from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, resolve_roommate, ROOMMATE_CLASS_MAP
 
 
@@ -312,20 +312,14 @@ def build_sinit_headers(sinit_functions, header_map):
         header_map[path] = header
 
 
-def build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, lh_dynamic_stack_structs, gj_vector_structs, header_map, local_header_import_map):
-    consumed_lh_linked_list_pointer_structs = set()
-    consumed_lh_linked_list_structs = set()
-    consumed_lh_list_head_structs = set()
-    consumed_lh_dynamic_stack_structs = set()
-    consumed_gj_vector_structs = set()
+def build_list_template_headers(template_container_structs, header_map, local_header_import_map):
+    consumed_template_container_structs = {n : set() for n in template_container_structs.keys()}
     for header in header_map.values():
-        consumed_lh_linked_list_pointer_structs.update(header.add_linked_list_pointered_defines(lh_linked_list_pointer_structs))
-        consumed_lh_linked_list_structs.update(header.add_linked_list_defines(lh_linked_list_structs))
-        consumed_lh_list_head_structs.update(header.add_list_head_defines(lh_list_head_structs))
-        consumed_lh_dynamic_stack_structs.update(header.add_list_head_defines(lh_dynamic_stack_structs))
-        consumed_gj_vector_structs.update(header.add_list_head_defines(gj_vector_structs))
+        for n in template_container_structs.keys():
+            header.add_template_container_struct_defines(n, template_container_structs[n])
+            consumed_template_container_structs[n].update(header.get_template_container_struct_defines(n))
         header.build_include_list(local_header_import_map)
-    return consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs, consumed_lh_dynamic_stack_structs, consumed_gj_vector_structs
+    return consumed_template_container_structs
 
 
 # TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
@@ -427,6 +421,7 @@ if __name__ == "__main__":
         return False
 
     # Do some selecting
+    template_container_lists = {}
     (
         vftables,
         bases,
@@ -436,11 +431,11 @@ if __name__ == "__main__":
         to_ignore_enums,
         header_enums,
         remainder_enums,
-        lh_linked_pointer_lists,
-        lh_linked_lists,
-        lh_list_heads,
-        lh_dynamic_stacks,
-        gj_vectors,
+        template_container_lists['LHLinkedList<T*>'],
+        template_container_lists['LHLinkedList<T>'],
+        template_container_lists['LHListHead<T>'],
+        template_container_lists['LHDynamicStack<T>'],
+        template_container_lists['GJVector<T>'],
         member_function_pointers,
         to_ignore,
         remainder_primitives,
@@ -454,8 +449,8 @@ if __name__ == "__main__":
         lambda x: type(x) is Enum and is_ignore_struct(x),
         lambda x: type(x) is Enum and get_enum_header_name_key(x) is not None,
         lambda x: type(x) is Enum,
-        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__p_") or  x.name.startswith("LHLinkedNode__p_"),
-        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__") or  x.name.startswith("LHLinkedNode__"),
+        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__p_") or x.name.startswith("LHLinkedNode__p_"),
+        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__") or x.name.startswith("LHLinkedNode__"),
         lambda x: type(x) is Struct and x.name.startswith("LHListHead__"),
         lambda x: type(x) is Struct and x.name.startswith("LHDynamicStack__"),
         lambda x: type(x) is Struct and x.name.startswith("GJVector__"),
@@ -470,11 +465,14 @@ if __name__ == "__main__":
     vftable_function_proto_map = {i.name: i for i in vftable_function_prototypes}
     global_function_ptr_proto_map = {i.name: i for i in global_function_ptr_prototypes}
 
-    lh_linked_list_pointer_structs = {"struct " + i.name.removeprefix("LHLinkedList__p_").removeprefix("LHLinkedNode__p_") for i in lh_linked_pointer_lists}
-    lh_linked_list_structs = {"struct " + i.name.removeprefix("LHLinkedList__").removeprefix("LHLinkedNode__") for i in lh_linked_lists}
-    lh_list_head_structs = {"struct " + i.name.removeprefix("LHListHead__") for i in lh_list_heads}
-    lh_dynamic_stack_structs = {"struct " + i.name.removeprefix("LHDynamicStack__") for i in lh_dynamic_stacks}
-    gj_vector_structs = {"struct " + i.name.removeprefix("GJVector__") for i in gj_vectors}
+    template_container_structs = {}
+    for name, prefixes in TEMPLATE_CONTAINER_STRUCTS_PREFIXES.items():
+        template_container_structs[name] = set()
+        for i in template_container_lists[name]:
+            struct_name = i.name
+            for p in prefixes:
+                struct_name = struct_name.removeprefix(p)
+            template_container_structs[name].add("struct " + struct_name)
 
     vftable_map = {}
     for t in vftables:
@@ -499,7 +497,10 @@ if __name__ == "__main__":
     remainder_class_static_methods = build_remaining_static_function_headers(remainder_class_static_methods, header_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
     build_sinit_headers(sinit_functions, header_map)
-    consumed_lh_linked_list_pointer_structs, consumed_lh_linked_list_structs, consumed_lh_list_head_structs, consumed_lh_dynamic_stack_structs, consumed_gj_vector_structs = build_list_template_headers(lh_linked_list_pointer_structs, lh_linked_list_structs, lh_list_head_structs, lh_dynamic_stack_structs, gj_vector_structs, header_map, local_header_import_map)
+    consumed_template_container_structs = build_list_template_headers(template_container_structs, header_map, local_header_import_map)
+    consumed_template_container_structs_flat = set()
+    for v in consumed_template_container_structs.values():
+        consumed_template_container_structs_flat |= v
 
     headers: list[Header] = list(header_map.values())
 

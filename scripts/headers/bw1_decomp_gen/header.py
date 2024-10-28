@@ -10,7 +10,7 @@ from pathlib import Path
 
 from structs import Composite
 from functions import FuncPtr
-from utils import partition, LH_COLLECTION_TEMPLATES
+from utils import partition, extract_template_type, LH_COLLECTION_TEMPLATES, CONTAINER_DECLARATION_MACROS
 
 
 C_FUNDAMENTAL_TYPES = {
@@ -97,9 +97,7 @@ class Header:
     path: Path
     includes: dict[str, Include]
     structs: list[Composite]
-    linked_lists_pointered: set[str]
-    linked_lists: set[str]
-    lists_heads: set[str]
+    templated_containers: dict[set[str]]
     HEADER_GUARD_TEMPLATE: dict[str, Path]
     UTILITY_HEADER_IMPORT_MAP: dict[str, Path]
 
@@ -118,9 +116,7 @@ class Header:
         self.path = path
         self.includes = {i.header_path.as_posix(): i for i in includes}
         self.structs = structs
-        self.linked_lists_pointered = set()
-        self.linked_lists = set()
-        self.lists_heads = set()
+        self.templated_containers = dict()
 
     def build_include_list(self, local_header_import_map: dict[str, Path]):
         types = self.get_direct_dependencies()
@@ -149,17 +145,19 @@ class Header:
                 i.dependencies.add(t)
                 self.includes[header] = i
 
-    def add_linked_list_pointered_defines(self, struct_map: set[str]) -> set[str]:
-        self.linked_lists_pointered.update(struct_map.intersection(self.get_types()))
-        return self.linked_lists_pointered
+    def add_template_container_struct_defines(self, name: str, struct_map: set[str]):
+        if name not in self.templated_containers:
+            self.templated_containers[name] = set()
+        self.templated_containers[name].update(struct_map.intersection(self.get_types()))
 
-    def add_linked_list_defines(self, struct_map: set[str]) -> set[str]:
-        self.linked_lists.update(struct_map.intersection(self.get_types()))
-        return self.linked_lists
+    def get_template_container_struct_defines(self, name: str) -> set[str]:
+        return self.templated_containers[name]
 
-    def add_list_head_defines(self, struct_map: set[str]) -> set[str]:
-        self.lists_heads.update(struct_map.intersection(self.get_types()))
-        return self.lists_heads
+    def get_template_container_struct_defines_flat(self) -> set[str]:
+        result = set()
+        for v in self.templated_containers.values():
+            result |= v
+        return result
 
     def get_types(self) -> set[str]:
         result = set()
@@ -186,19 +184,17 @@ class Header:
         result = self.get_types()
         pointers = set(filter(self.is_forward_declarable_pointer, result))
         result.difference_update(pointers)
-        lh_lists = {i for i in result if any(i.startswith(prefix) for prefix in LH_COLLECTION_TEMPLATES)}
-        lh_lists_underlying_type = {"struct " + i.removeprefix("struct ").removeprefix("LHListHead__").removeprefix("LHLinkedList__p_").removeprefix("LHLinkedList__").removeprefix("GJVector__").removeprefix("LHDynamicStack__") for i in lh_lists}
+        lh_lists = {i for i in result if any(i.startswith("struct " + prefix) for prefix in LH_COLLECTION_TEMPLATES)}
+        lh_lists_underlying_type = {"struct " + extract_template_type(i) for i in lh_lists}
         result.difference_update(lh_lists)
         result.update(lh_lists_underlying_type)
         if any(hasattr(i, "size") and i.size is not None for i in self.structs):
             result.add("static_assert")
-        result = result - {f"struct {s.name}" for s in self.structs} - C_FUNDAMENTAL_TYPES
-        if self.linked_lists_pointered:
-            result.add("DECLARE_P_LH_LINKED_LIST")
-        if self.linked_lists:
-            result.add("DECLARE_LH_LINKED_LIST")
-        if self.lists_heads:
-            result.add("DECLARE_LH_LIST_HEAD")
+        type_name_set = {s.decorated_name for s in self.structs}
+        result = result - type_name_set - C_FUNDAMENTAL_TYPES
+        for k, v in self.templated_containers.items():
+            if type_name_set.intersection(v):
+                result.add(CONTAINER_DECLARATION_MACROS[k])
         result = set(map(strip_pointers_arrays_and_modifiers, result))
         return result
 
@@ -210,7 +206,7 @@ class Header:
                 defined_types_so_far.add(s.name)
 
         for s in self.structs:
-            defined_types_so_far.add(f"struct {strip_pointers_arrays_and_modifiers(s.name)}")
+            defined_types_so_far.add(strip_pointers_arrays_and_modifiers(s.decorated_name))
             struct_types = {strip_pointers_arrays_and_modifiers(r) for r in s.get_types()}
             struct_types = {r for r in struct_types if type(r) is str and (r.startswith("struct ") or r.startswith("union ") or r.startswith("enum "))}
             struct_types.difference_update(defined_types_so_far)
@@ -250,15 +246,13 @@ class Header:
     def to_code_struct_decl(self, cw: csnake.CodeWriter):
         if not self.structs:
             return
+        all_template_container_structs = self.get_template_container_struct_defines_flat()
         for s in self.structs:
             s.to_code(cw)
-            if s.decorated_name in self.linked_lists_pointered | self.linked_lists | self.lists_heads:
-                if s.decorated_name in self.linked_lists:
-                    cw.add_line(f"DECLARE_LH_LINKED_LIST({s.name});")
-                if s.decorated_name in self.linked_lists_pointered:
-                    cw.add_line(f"DECLARE_P_LH_LINKED_LIST({s.name});")
-                if s.decorated_name in self.lists_heads:
-                    cw.add_line(f"DECLARE_LH_LIST_HEAD({s.name});")
+            if s.decorated_name in all_template_container_structs:
+                for k, v in self.templated_containers.items():
+                    if s.decorated_name in v:
+                        cw.add_line(f"{CONTAINER_DECLARATION_MACROS[k]}({s.name});")
                 cw.add_line()
 
     def to_code_inner(self, cw: csnake.CodeWriter):
