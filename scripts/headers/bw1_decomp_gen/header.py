@@ -263,8 +263,9 @@ class Header:
         self.to_code_struct_decl(cw)
 
     def to_code(self, cw: csnake.CodeWriter):
-        cw.start_if_def(self.HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)), invert=True)
-        cw.add_define(self.HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem)))
+        guard = self.HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem).replace("3_d_", "_3D_"))
+        cw.start_if_def(guard, invert=True)
+        cw.add_define(guard)
         cw.add_line()
 
         self.to_code_inner(cw)
