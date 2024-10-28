@@ -247,12 +247,14 @@ class Header:
         if not self.structs:
             return
         all_template_container_structs = self.get_template_container_struct_defines_flat()
-        for s in self.structs:
+        for i, s in enumerate(self.structs):
             s.to_code(cw)
             if s.decorated_name in all_template_container_structs:
                 for k, v in self.templated_containers.items():
                     if s.decorated_name in v:
                         cw.add_line(f"{CONTAINER_DECLARATION_MACROS[k]}({s.name});")
+                cw.add_line()
+            if i == len(self.structs) - 1 and isinstance(s, FuncPtr):
                 cw.add_line()
 
     def to_code_inner(self, cw: csnake.CodeWriter):
