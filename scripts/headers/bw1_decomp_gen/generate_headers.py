@@ -192,6 +192,34 @@ def build_member_funcptr_headers(member_function_pointers, header_map):
         header_map[path] = header
 
 
+def get_lowest_vftable(struct: Struct, vftable_map, helper_base_map):
+    if not struct.members:
+        return None
+    if struct.name in vftable_map:
+        return vftable_map[struct.name]
+    if struct.members and struct.members[0].name == "vftable":
+        raise RuntimeError(f"{struct.name} has a vftable but it's not in the known vftable map (type {struct.members[0].data_type})")
+    if struct.members and struct.members[0].name == "super":
+        su = struct.members[0].data_type.removeprefix("struct ")
+        if su not in vftable_map:
+            return None
+        result = vftable_map[su]
+        vftable_map[struct.name] = result
+        return result
+    raise NotImplementedError("Need to 1. check if type has a vftable, 2. walk up super/base tree until 1 is satisfied")
+    return None
+
+
+def get_virtual_methods(vftable, vftable_map):
+    if not vftable:
+        return []
+    result = vftable.members
+    if result and result[0].name == 'super':
+        su = result[0].data_type.removeprefix("struct ").removesuffix("Vftable")
+        result = get_virtual_methods(vftable_map[su], vftable_map) + result
+    return result
+
+
 def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
     consumed_vftable_addresses = set()
     consumed_methods = set()
@@ -202,10 +230,11 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
             header = header_map.get(path)
             structs: list[Struct] = header.structs if header is not None else []
             if t.members and t.members[0].name in ["vftable", "super", "base"]:
-                vftable = vftable_map.get(t.name)
-                virtual_method_names = [i.name for i in vftable.members] if vftable else []
-                if vftable:
-                    structs.append(vftable)
+                associated_vftable = vftable_map.get(t.name)
+                vftable = get_lowest_vftable(t, vftable_map, helper_base_map)
+                virtual_method_names = [i.name for i in get_virtual_methods(vftable, vftable_map)]
+                if associated_vftable:
+                    structs.append(associated_vftable)
                 if t.name in helper_base_map:
                     structs.append(helper_base_map[t.name])
                 new_struct = RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)
