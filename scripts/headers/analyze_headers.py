@@ -398,7 +398,7 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     out_path = Path(out_path).absolute()
     os.chdir(header_path)
 
-    paths: List[Path] = list(filter(lambda x: x != Path("globals.h"), itertools.chain([Path("rtti.h")], *(p.rglob("*.h") for p in PATHS))))
+    paths: List[Path] = list(filter(lambda x: x.name != "globals.h", itertools.chain(*(p.rglob("*.h") for p in PATHS))))
     include_all_headers_src = '\n'.join(f'#include "{p}"' for p in paths)
 
     found_issues, types = extract_type_info(parse_source(source=include_all_headers_src))

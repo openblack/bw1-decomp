@@ -1,5 +1,8 @@
-#ifndef BW1_DECOMP_RTTI_INCLUDED_H
-#define BW1_DECOMP_RTTI_INCLUDED_H
+#ifndef BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H
+#define BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H
+
+#include <stdbool.h>
+#include <stddef.h>
 
 struct RTTIBaseClassDescriptor {
   struct TypeDescriptor* pTypeDescriptor;
@@ -33,5 +36,7 @@ struct RTTICompleteObjectLocator {
   struct RTTIClassHierarchyDescriptor* pClassDescriptor;
 };
 
+void* __cdecl __RTDynamicCast(void* intptr, size_t vf_delta, struct TypeDescriptor* src_type, struct TypeDescriptor* target_type, bool is_reference);
+const char* __RTTypeName(const void* intptr);
 
-#endif // BW1_DECOMP_RTTI_INCLUDED_H
+#endif /* BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H */
