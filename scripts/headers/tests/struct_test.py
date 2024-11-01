@@ -21,6 +21,10 @@ class TestStruct(unittest.TestCase):
         s = Struct("TestStruct", 4, [Struct.Member("field_0x0", "int", 0x0)])
         self.assertSetEqual(s.get_types(), {"struct TestStruct", "int"})
 
+    def test_get_type_enum_array(self):
+        s = Struct("TestStruct", 4, [Struct.Member("field_0x0", "int[FOO][BAR]", 0x0)])
+        self.assertSetEqual(s.get_types(), {"struct TestStruct", "int[1][1]", "FOO", "BAR"})
+
     def test_get_type_vftable(self):
         function_proto_map = {
             "TestVftable__Foo": FuncPtr("TestVftable__Foo", "__thiscall", "char*", ["struct Test*", "size_t"], ["this", ""]),

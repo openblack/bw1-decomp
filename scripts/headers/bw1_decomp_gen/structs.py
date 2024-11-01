@@ -32,7 +32,22 @@ class Composite:
             return self.offset < other.offset
 
         def get_types(self) -> set[str]:
-            result = {self.data_type}
+            result: set[str] = set()
+            if type(self.data_type) is str and "[" in self.data_type:
+                parts = self.data_type.split("[")
+                part_0 = parts.pop(0)
+                for p in parts:
+                    p = p[:-1]
+                    try:
+                        int(p, 0)
+                    except:
+                        result.add(p)
+                        part_0 += "[1]"
+                    else:
+                        part_0 += f"[{p}]"
+                result.add(part_0)
+            else:
+                result.add(self.data_type)
             return result
 
         def to_csnake(self) -> csnake.Variable:
@@ -50,8 +65,14 @@ class Composite:
                     base_type, array_part = self.data_type.split(
                         '[', 1) if '[' in self.data_type else (self.data_type, '')
                     formatted_name = self.name
-                # Extract dimensions for arrays (e.g., "int[2][3]" -> [2, 3])
-                dimensions = [hex(int(dim, 0)) for dim in array_part.replace(']', '').split('[') if dim]
+                # Extract dimensions for arrays (e.g., "int[2][3]" -> [0x2, 0x3])
+                def to_hex(dim: str) -> str:
+                    try:
+                        return hex(int(dim, 0))
+                    except ValueError:
+                        # Likely an enum value
+                        return dim
+                dimensions = [to_hex(dim) for dim in array_part.replace(']', '').split('[') if dim]
                 base_type = base_type.strip()
             else:
                 dimensions = None

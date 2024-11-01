@@ -39,6 +39,7 @@ def extract_types(path: Path = Path("."), include_dirs_stripped=False) -> dict[s
            if len(tokens) < 2 or tokens[1].kind.name != "IDENTIFIER":
                continue
            key = f"enum {key}"
+           result.update({cc.spelling: value for cc in child.get_children()})
         elif child.kind.name == "MACRO_DEFINITION":
             # Catch non-function-like macros
             if not any(t.kind.name == "PUNCTUATION" for t in child.get_tokens()):

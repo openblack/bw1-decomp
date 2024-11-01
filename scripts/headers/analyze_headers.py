@@ -196,6 +196,14 @@ def extract_type_info(tu: TranslationUnit) -> Tuple[bool, Dict[str, TypeInfo]]:
                 for f in struct_type.get_fields():
                     child_name = f.spelling
                     child_type = f.type.spelling
+                    if f.type.kind.name == "CONSTANTARRAY":
+                        # Try to preserve enum constants as array sizes
+                        array_children = list(filter(lambda x: x.kind.name == "DECL_REF_EXPR", f.get_children()))
+                        if array_children:
+                            assert(child_type.count("[") == 1)
+                            assert(child_type.count("]") == 1)
+                            assert(len(array_children) == 1)
+                            child_type = re.sub(r"\[\d+\]", f"[{array_children[0].spelling}]", child_type)
                     if child_name in extra_types:
                         child_type = f"{name.removeprefix("struct ")}__{child_name} *"
                     child_offset = struct_type.get_offset(f.spelling) // 8

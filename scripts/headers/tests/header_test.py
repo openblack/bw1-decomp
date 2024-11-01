@@ -14,6 +14,10 @@ from vftable import Vftable
 
 
 class TestHeaderTypes(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        Header.set_utility_header_import_map({})
+
     def setUp(self):
         super().setUp()
         self.path = Path("src/TestHeader.h")
@@ -681,6 +685,36 @@ static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
 #endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
 """)
 
+    def test_forward_and_include_array_enum(self):
+        structs: list[Struct] = [
+            Struct("TestStruct", 4, [Struct.Member("bar", "struct Bar*[FOO]", 0x0)]),
+        ]
+        header = Header(self.path, includes=[], structs=structs)
+        header.build_include_list({"FOO": Path("src/TestIncludeHeader.h")})
+        header.to_code(self.cw)
+
+        self.assertEqual(self.cw.code,
+                         """\
+#ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
+#define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+
+#include "TestIncludeHeader.h" /* For FOO */
+
+// Forward Declares
+
+struct Bar;
+
+struct TestStruct
+{
+    struct Bar* bar[FOO];
+};
+static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
+
+#endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
+""")
+
     def test_globals_header(self):
 
         test_funcptr_global_t = FuncPtr("test_funcptr_global_t", "__fastcall", "void", ["struct TestStruct*", "const void*", "int8_t"], ["this", "edx", "param_1"])
@@ -702,6 +736,8 @@ static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
                          """\
 #ifndef BW1_DECOMP_TEST_HEADER_INCLUDED_H
 #define BW1_DECOMP_TEST_HEADER_INCLUDED_H
+
+#include <stdint.h> /* For uint32_t */
 
 // Forward Declares
 

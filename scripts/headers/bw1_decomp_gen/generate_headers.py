@@ -254,6 +254,11 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
             structs.append(new_struct)
             for s in structs:
                 local_header_import_map[s.decorated_name] = path
+                if type(s) is Enum:
+                    local_header_import_map.update({v: path for v, _ in s.values})
+                    for v, _ in s.values:
+                        local_header_import_map[v] = path
+
             header = Header(path, includes, structs)
             header_map[path] = header
         except RuntimeError as e:
