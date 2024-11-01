@@ -10,11 +10,11 @@ from scan_src_headers import extract_types
 
 class TestScanSrcHeaders(unittest.TestCase):
     def test_scan_types(self):
-        self.assertDictEqual(extract_types(Path("reversing_utils.h")), {
-            "HWND": Path("reversing_utils.h"),
-            "RTL_CRITICAL_SECTION": Path("reversing_utils.h"),
-            "bool32_t": Path("reversing_utils.h"),
-            "struct vec2u16": Path("reversing_utils.h"),
+        self.assertDictEqual(extract_types(Path("libs/reversing_utils/re_common.h")), {
+            "HWND": Path("reversing_utils/re_common.h"),
+            "RTL_CRITICAL_SECTION": Path("reversing_utils/re_common.h"),
+            "bool32_t": Path("reversing_utils/re_common.h"),
+            "struct vec2u16": Path("reversing_utils/re_common.h"),
         })
 
     def test_scan_macros(self):

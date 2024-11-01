@@ -2,6 +2,7 @@
 import re
 from pathlib import PureWindowsPath as BWPath
 from collections import defaultdict
+from demangler import demangle_type
 from utils import LH_COLLECTION_TEMPLATES
 
 released_sinits_in_lhall = {
@@ -1239,6 +1240,11 @@ ROOMMATE_CLASS_MAP = {
 
 
 def resolve_roommate(struct_name):
+    struct_name = demangle_type(struct_name)
+    if "::" in struct_name:
+        split = struct_name.split("::")[0]
+        if not "<" in struct_name and not ">" in struct_name:
+            return ROOMMATE_CLASS_MAP.get(split, split)
     match = re.search(rf"^({"|".join(LH_COLLECTION_TEMPLATES)})<([^<>\*]+)\*?>", struct_name)
     if match:
         struct_name = match.group(2)
