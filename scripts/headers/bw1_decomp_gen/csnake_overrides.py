@@ -51,6 +51,20 @@ class CSnakeFuncPtr(FuncPtr):
         self.calling_convention = calling_convention
         self.indirection_level = indirection_level
 
+    def get_type_only(self) -> str:
+        jointargs = ", ".join(
+            arg.primitive for arg in self.arguments
+        )
+
+        retval = "{rt} ({conv}*)({arguments})".format(
+            rt=self.return_type,
+            arguments=jointargs if self.arguments else "",
+            conv=self.calling_convention if self.calling_convention else "",
+        )
+
+        return retval
+
+
     def get_declaration(
         self,
         name: str,

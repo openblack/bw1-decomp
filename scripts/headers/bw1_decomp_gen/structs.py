@@ -1,5 +1,6 @@
 import csnake
 
+from collections import OrderedDict
 from dataclasses import dataclass
 import typing
 
@@ -286,7 +287,7 @@ class RTTIClass(Struct):
     def all_methods(self) -> list[DefinedFunctionPrototype]:
         return super().all_methods + self.method_overrides
 
-    def __init__(self, struct: Struct, vftable_map: dict[str, dict], virtual_table_function_names: tuple[str], method_map: dict[str, DefinedFunctionPrototype], static_method_map: dict[str, DefinedFunctionPrototype]):
+    def __init__(self, struct: Struct, vftable_map: dict[str, dict], virtual_table_function_arg_map: OrderedDict[str, list[str]], method_map: dict[str, DefinedFunctionPrototype], static_method_map: dict[str, DefinedFunctionPrototype]):
         self.name = struct.name
         self.size = struct.size
         self.members = struct.members[:]
@@ -302,19 +303,27 @@ class RTTIClass(Struct):
             if "__" not in x:
                 return ""
             return x[::-1].split("__", maxsplit=1)[-1][::-1]
+
+        def match_overrides(struct_type) -> bool:
+            method_args = virtual_table_function_arg_map.get(get_method_name(struct_type.name))
+            if method_args is None:
+                return False
+            method_args = [x if type(x) is str else x.get_type_only() for x in method_args]
+            return struct_type.args[1:] == method_args[1:]
+
         (
             self.constructors,
             self.method_overrides,
             self.methods,
         ) = partition([
             lambda x: x.name.startswith('__ct__'),
-            lambda x: get_method_name(x.name) in set(
-                virtual_table_function_names)
+            match_overrides
         ], method_map.get(self.name, list()))
+
         self.static_methods = static_method_map.get(self.name, list())
         self.constructors.sort()
-        self.method_overrides.sort(
-            key=lambda x: virtual_table_function_names.index(get_method_name(x.name)))
+        virtual_table_function_names = list(virtual_table_function_arg_map.keys())
+        self.method_overrides.sort(key=lambda x: virtual_table_function_names.index(get_method_name(x.name)))
         self.methods.sort()
         self.static_methods.sort()
 

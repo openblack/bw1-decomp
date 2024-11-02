@@ -2,6 +2,7 @@ import time
 import shutil
 import string
 import sys
+from collections import OrderedDict
 from typing import Optional
 from clang import cindex
 from json import load
@@ -192,12 +193,12 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
             if t.members and t.members[0].name in ["vftable", "super", "base"]:
                 associated_vftable = vftable_map.get(t.name)
                 vftable = get_lowest_vftable(t, vftable_map, helper_base_map)
-                virtual_method_names = [i.name for i in get_virtual_methods(vftable, vftable_map)]
+                virtual_table_function_arg_map = OrderedDict({i.name : i.data_type.args for i in get_virtual_methods(vftable, vftable_map) if type(i.data_type) is not str})
                 if associated_vftable:
                     structs.append(associated_vftable)
                 if t.name in helper_base_map:
                     structs.append(helper_base_map[t.name])
-                new_struct = RTTIClass(t, vftable_address_look_up, virtual_method_names, class_method_look_up, class_static_method_look_up)
+                new_struct = RTTIClass(t, vftable_address_look_up, virtual_table_function_arg_map, class_method_look_up, class_static_method_look_up)
                 consumed_vftable_addresses.add(new_struct.vftable_address)
             else:
                 new_struct = t
