@@ -160,15 +160,20 @@ def get_struct_path(name):
         stem = stem.split("::")[0]
     if "__" in stem:
         stem = stem.split("__")[0]
+    stems = [stem]
     # For things like GBaseInfo
     if stem[0] == 'G' and stem[1].isupper():
-        stem = stem[1:]
+        stems.insert(0, stem[1:])
     for project, object_files in projects_and_files.items():
-        if stem +".obj" in object_files:
-            break
+        for s in stems:
+            if s +".obj" in object_files:
+                break
+        else:
+            continue
+        break # Break out of both loops
     else:
         raise RuntimeError(f"Need to add guessed path or roommate for {name} in vanilla_filepaths.py")
-    return Path(project) / f"{stem}.h"
+    return Path(project) / f"{s}.h"
 
 
 def build_enum_headers(header_enums, header_map):
