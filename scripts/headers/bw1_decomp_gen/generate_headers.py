@@ -295,6 +295,7 @@ def build_remaining_static_function_headers(remainder_class_static_methods, head
             structs: list[Struct] = header.structs if header is not None else []
             structs += l
             header = Header(path, [], structs)
+            header_map[path] = header
         except RuntimeError as e:
             print(e, file=sys.stderr)
             remainder[n] = l
