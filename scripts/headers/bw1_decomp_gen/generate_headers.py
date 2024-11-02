@@ -15,7 +15,7 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype
 from csnake_overrides import CSnakeFuncPtr
 from vftable import Vftable
-from utils import partition, extract_type_name, TEMPLATE_CONTAINER_STRUCTS_PREFIXES
+from utils import partition, extract_type_name, extract_type_from_func_name, arg_clang_wrapping_declaration_to_csnake, TEMPLATE_CONTAINER_STRUCTS_PREFIXES
 from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, resolve_roommate, ROOMMATE_CLASS_MAP
 
 
@@ -23,18 +23,6 @@ HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
 ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = False
 
 
-def extract_type_from_func_name(s):
-    name = s.split("(")[0]
-    parts = name.split("::")
-
-    # Constructors
-    if len(parts) % 2 == 0 and parts[:len(parts) // 2] == parts[len(parts) // 2:]:
-        parts = ["::".join(parts[:len(parts) // 2])] * 2
-
-    if len(parts) >= 2:
-        type_name = "::".join(parts[:-1])
-
-    return type_name
 
 
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
@@ -73,40 +61,6 @@ PRIMITIVE_LOOK_UP = {
     'TYPEDEF_DECL': Typedef,
     'FUNCTIONPROTO': FuncPtr,
 }
-
-
-# TODO: Do every type of variable
-def arg_clang_wrapping_declaration_to_csnake(wrapping_declaration):
-    assert wrapping_declaration.kind.name == "FUNCTION_DECL"
-
-    param_declaration = next(wrapping_declaration.get_arguments())
-    assert param_declaration.kind.name == "PARM_DECL"
-
-    type_ = param_declaration.type
-
-    is_pointer = type_.kind.name == "POINTER"
-
-    if is_pointer:
-        type_ = type_.get_pointee()
-        if type_.kind.name == "FUNCTIONPROTO":
-            call_type = None
-            for attr in ["fastcall", "cdecl", "thiscall", "stdcall"]:
-                if type_.spelling.endswith(f"__attribute__(({attr}))"):
-                    call_type = f"__{attr}"
-                    break
-            return CSnakeFuncPtr(type_.get_result().spelling, [(c.displayname or f"param_{i + 1}", c.type.spelling) for i, c in enumerate(param_declaration.get_children())], call_type)
-
-    return None
-
-
-def arg_to_csnake(type_decl):
-    """This function is slow because it launched the compiler for each param. It can easily go from less than a second to more than 20 seconds"""
-    source = f"void __arg_to_csnake_wrapping_declaration({type_decl});"
-    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32"], unsaved_files=[('tmp.c', source)])
-    if [d for d in translation_unit.diagnostics if d.severity >= cindex.Diagnostic.Error]:
-        return type_decl
-    result = arg_clang_wrapping_declaration_to_csnake(next(c for c in translation_unit.cursor.get_children() if c.spelling == "__arg_to_csnake_wrapping_declaration"))
-    return result or type_decl
 
 
 def batched_arg_to_csnake(type_decls):

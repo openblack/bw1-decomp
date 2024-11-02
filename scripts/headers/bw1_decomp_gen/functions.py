@@ -1,8 +1,11 @@
+import re
 from dataclasses import dataclass
 
 import csnake
 
 from csnake_overrides import CSnakeFuncPtr
+from utils import arg_to_csnake
+
 
 TYPE_SUBSTITUTIONS = {
     "_Bool": "bool",
@@ -73,6 +76,9 @@ class FuncPtr:
         cw.add_line(f"{fptr.get_typedef(self.name)};")
 
 
+funcptr_re = re.compile(r"(\((__fastcall|__thiscall|__stdcall|__cdecl)?\*)\)")
+
+
 @dataclass
 class DefinedFunctionPrototype(FuncPtr):
     win_addr: int
@@ -93,7 +99,6 @@ class DefinedFunctionPrototype(FuncPtr):
         call_type = decl['call_type']
         result = decl['return_type']
         args = decl['argument_types']
-
         decorated_name = decl['decorated_name']
         arg_labels = decl['argument_names']
         win_addr = decl['win_addr']
@@ -102,8 +107,16 @@ class DefinedFunctionPrototype(FuncPtr):
 
     def to_csnake(self) -> csnake.Function:
         conv = self.call_type
-        params = [[l or f"param_{i}", a] for i, (l, a) in enumerate(
-            zip(self.arg_labels, self.args))]
+        params = []
+        for i, (l, a) in enumerate(zip(self.arg_labels, self.args)):
+            if not l:
+                l = f"param_{i}"
+            if funcptr_re.search(a):
+                funcptr = arg_to_csnake(a)
+                var = csnake.Variable(l, funcptr)
+                params.append(var)
+            else:
+                params.append([l, a])
         if conv == "__thiscall":
             params[0][0] = "this"
             if len(params) > 1:
