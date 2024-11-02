@@ -83,12 +83,14 @@ funcptr_re = re.compile(r"(\((__fastcall|__thiscall|__stdcall|__cdecl)?\*)\)")
 class DefinedFunctionPrototype(FuncPtr):
     win_addr: int
     mac_addr: int
+    is_function_variadic: bool
 
-    def __init__(self, name: str, call_type: str, result: str, args: list[str], decorated_name: str,  arg_labels: list[str], win_addr: int, mac_addr: int):
+    def __init__(self, name: str, call_type: str, result: str, args: list[str], decorated_name: str,  arg_labels: list[str], win_addr: int, mac_addr: int, is_function_variadic: bool):
         super().__init__(name, call_type, result, args, arg_labels)
         self.decorated_name = decorated_name
         self.win_addr = win_addr
         self.mac_addr = mac_addr
+        self.is_function_variadic = is_function_variadic
 
     def __lt__(self, other: "DefinedFunctionPrototype") -> bool:
         return self.win_addr < other.win_addr
@@ -103,7 +105,8 @@ class DefinedFunctionPrototype(FuncPtr):
         arg_labels = decl['argument_names']
         win_addr = decl['win_addr']
         mac_addr = decl['mac_addr']
-        return cls(name, call_type, result, args, decorated_name, arg_labels, win_addr, mac_addr)
+        is_function_variadic = decl['is_function_variadic']
+        return cls(name, call_type, result, args, decorated_name, arg_labels, win_addr, mac_addr, is_function_variadic)
 
     def to_csnake(self) -> csnake.Function:
         conv = self.call_type
@@ -123,6 +126,8 @@ class DefinedFunctionPrototype(FuncPtr):
                 # C doesn't have thiscall but it can be emulated with __fastcall if edx (second param) is unused
                 params.insert(1, ["edx", "const void*"])
             conv = "__fastcall"
+        if self.is_function_variadic:
+            params.append(["", "..."])
 
         return csnake.Function(f"{conv} {self.name}", self.result, arguments=params)
 
