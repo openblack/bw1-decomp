@@ -83,13 +83,13 @@ def arg_clang_wrapping_declaration_to_csnake(wrapping_declaration):
     if is_pointer:
         type_ = type_.get_pointee()
         if type_.kind.name == "FUNCTIONPROTO":
-            call_type = None
-            for attr in ["fastcall", "cdecl", "thiscall", "stdcall"]:
+            call_type = "__cdecl"
+            for attr in ["fastcall", "thiscall", "stdcall"]:
                 if type_.spelling.endswith(f"__attribute__(({attr}))"):
                     call_type = f"__{attr}"
                     break
             result = type_.get_result().spelling
-            members = [(c.displayname or f"param_{i + 1}", c.type.spelling) for i, c in enumerate(param_declaration.get_children())]
+            members = [(c.displayname or f"param_{i + 1}", c.type.spelling) for i, c in enumerate(param_declaration.get_children()) if c.kind.name == 'PARM_DECL']
             result = TYPE_SUBSTITUTION_MAP.get(result, result)
             members = list(map(lambda x: TYPE_SUBSTITUTION_MAP.get(x, x), members))
             return CSnakeFuncPtr(result, members, call_type)

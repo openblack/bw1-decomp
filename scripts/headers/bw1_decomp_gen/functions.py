@@ -42,7 +42,7 @@ class FuncPtr:
 
     def get_types(self) -> set[str]:
         result = {self.result}
-        result.update(self.args)
+        result.update(i for i in self.args if "(*)" not in i)
         return result - {"void"}
 
     @classmethod
