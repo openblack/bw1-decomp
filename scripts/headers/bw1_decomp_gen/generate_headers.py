@@ -142,17 +142,6 @@ def build_enum_headers(header_enums, header_map, local_header_import_map):
         local_header_import_map.update({v: path for v, _ in e.values})
 
 
-def build_member_funcptr_headers(member_function_pointers, header_map):
-    for t in member_function_pointers:
-        struct_name = t.name[::-1].split("__")[-1][::-1]
-        path = get_struct_path(resolve_roommate(struct_name))
-        header = header_map.get(path)
-        structs: list[Struct] = header.structs if header is not None else []
-        structs.append(t)
-        header = Header(path, [], structs)
-        header_map[path] = header
-
-
 def get_lowest_vftable(struct: Struct, vftable_map, helper_base_map):
     if not struct.members:
         return None
@@ -424,7 +413,7 @@ if __name__ == "__main__":
     batched_arg_to_csnake(vftable_function_prototypes)
     batched_arg_to_csnake(global_function_ptr_prototypes)
 
-    vftable_function_proto_map = {i.name: i for i in vftable_function_prototypes}
+    function_proto_map = {i.name: i for i in vftable_function_prototypes + member_function_pointers}
     global_function_ptr_proto_map = {i.name: i for i in global_function_ptr_prototypes}
 
     template_container_structs = {}
@@ -436,6 +425,22 @@ if __name__ == "__main__":
                 struct_name = struct_name.removeprefix(p)
             template_container_structs[name].add("struct " + struct_name)
 
+    def sub_funcptrs(struct: Struct) -> Struct:
+        substitutions = {
+            "__dt__": "__dt",
+        }
+        if type(struct) is Struct:
+            members = []
+            for m in struct.members:
+                name = substitutions.get(m.name, m.name)
+                data_type = function_proto_map.get(m.data_type.rstrip("*"), m.data_type)
+                members.append(Struct.Member(name, data_type, offset=m.offset))
+            return Struct(struct.name, struct.size, members)
+        return struct
+
+    vftables = list(map(sub_funcptrs, vftables))
+    header_structs = list(map(sub_funcptrs, header_structs))
+
     vftable_map = {}
     for t in vftables:
         base_name: str = t.name
@@ -444,7 +449,7 @@ if __name__ == "__main__":
         base_name = base_name.removeprefix("vt__")
         base_name = base_name.removeprefix("vt_")
         base_name = base_name.removesuffix("_t")
-        vftable_map[base_name] = Vftable(t, vftable_function_proto_map)
+        vftable_map[base_name] = Vftable(t)
 
     helper_base_map = {}
     for t in bases:
@@ -454,7 +459,6 @@ if __name__ == "__main__":
     header_map: dict[Path, Header] = {}
 
     build_enum_headers(header_enums, header_map, local_header_import_map)
-    build_member_funcptr_headers(member_function_pointers, header_map)
     remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
     remainder_class_static_methods = build_remaining_static_function_headers(remainder_class_static_methods, header_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)

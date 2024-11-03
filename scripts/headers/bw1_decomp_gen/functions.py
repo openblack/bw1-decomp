@@ -4,12 +4,7 @@ from dataclasses import dataclass
 import csnake
 
 from csnake_overrides import CSnakeFuncPtr
-from utils import arg_to_csnake
-
-
-TYPE_SUBSTITUTIONS = {
-    "_Bool": "bool",
-}
+from utils import arg_to_csnake, TYPE_SUBSTITUTION_MAP
 
 
 CALL_TYPE_SUBSTITUTIONS = {
@@ -22,7 +17,7 @@ def clean_up_type(typename):
         return typename
     type_part, pointer_part, after_pointer_part = typename.partition("*")
     type_part = type_part.rstrip()
-    type_part = TYPE_SUBSTITUTIONS.get(type_part, type_part)
+    type_part = TYPE_SUBSTITUTION_MAP.get(type_part, type_part)
     return "".join((type_part, pointer_part, after_pointer_part))
 
 

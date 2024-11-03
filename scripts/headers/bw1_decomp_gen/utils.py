@@ -26,6 +26,11 @@ TEMPLATE_CONTAINER_STRUCTS_PREFIXES = OrderedDict({
 })
 
 
+TYPE_SUBSTITUTION_MAP = {
+    "_Bool": "bool",
+}
+
+
 def extract_template_type(type_name: str) -> str:
     type_name = type_name.removeprefix("struct ")
     for v in TEMPLATE_CONTAINER_STRUCTS_PREFIXES.values():
@@ -83,14 +88,19 @@ def arg_clang_wrapping_declaration_to_csnake(wrapping_declaration):
                 if type_.spelling.endswith(f"__attribute__(({attr}))"):
                     call_type = f"__{attr}"
                     break
-            return CSnakeFuncPtr(type_.get_result().spelling, [(c.displayname or f"param_{i + 1}", c.type.spelling) for i, c in enumerate(param_declaration.get_children())], call_type)
+            result = type_.get_result().spelling
+            members = [(c.displayname or f"param_{i + 1}", c.type.spelling) for i, c in enumerate(param_declaration.get_children())]
+            result = TYPE_SUBSTITUTION_MAP.get(result, result)
+            members = list(map(lambda x: TYPE_SUBSTITUTION_MAP.get(x, x), members))
+            return CSnakeFuncPtr(result, members, call_type)
 
     return None
 
 
 def arg_to_csnake(type_decl):
     """This function is slow because it launched the compiler for each param. It can easily go from less than a second to more than 20 seconds"""
-    source = f"void __arg_to_csnake_wrapping_declaration({type_decl});"
+    headers = ["stdbool.h", "stdint.h"]
+    source = f"{'\n'.join(f'#include <{h}>' for h in headers)}\nvoid __arg_to_csnake_wrapping_declaration({type_decl});"
     translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32"], unsaved_files=[('tmp.c', source)])
     if [d for d in translation_unit.diagnostics if d.severity >= cindex.Diagnostic.Error]:
         return type_decl

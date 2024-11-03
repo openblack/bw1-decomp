@@ -5,7 +5,7 @@ from dataclasses import dataclass
 import typing
 
 from csnake_overrides import CSnakeMultiLineArrayVariable, CSnakeUnion, CSnakeHexCIntLiteral
-from functions import DefinedFunctionPrototype
+from functions import DefinedFunctionPrototype, FuncPtr
 from utils import partition, extract_type_name
 
 
@@ -47,6 +47,8 @@ class Composite:
                     else:
                         part_0 += f"[{p}]"
                 result.add(part_0)
+            elif type(self.data_type) is FuncPtr:
+                return set(self.data_type.args).union((self.data_type.result, ))
             else:
                 result.add(self.data_type)
             return result
@@ -80,8 +82,11 @@ class Composite:
                 base_type = self.data_type
                 formatted_name = self.name
 
-            # Create the csnake variable with either pointer/array or just array
-            return csnake.Variable(formatted_name, base_type, array=dimensions)
+            if type(self.data_type) is FuncPtr:
+                return csnake.Variable(self.name, self.data_type.to_csnake())
+            else:
+                # Create the csnake variable with either pointer/array or just array
+                return csnake.Variable(formatted_name, base_type, array=dimensions)
 
     name: str
     size: typing.Optional[int]

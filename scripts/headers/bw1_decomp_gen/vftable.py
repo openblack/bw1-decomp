@@ -29,15 +29,10 @@ class Vftable(Struct):
                 return set({self.data_type})
             raise NotImplementedError(f"Don't know what to do with {self.data_type}")
 
-    def __init__(self, struct: Struct, function_proto_map: dict[str, FuncPtr]):
+    def __init__(self, struct: Struct):
         self.name = struct.name
         self.size = struct.size
         self.print_offset_at_each = 0x10
-        substitutions = {
-            "__dt__": "__dt",
-        }
         self.members = []
         for m in struct.members:
-            name = substitutions.get(m.name, m.name)
-            data_type = function_proto_map.get(m.data_type.rstrip("*"), m.data_type)
-            self.members.append(self.Member(name, data_type, offset=m.offset))
+            self.members.append(self.Member(m.name, m.data_type, offset=m.offset))
