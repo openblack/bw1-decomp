@@ -1,5 +1,5 @@
-#ifndef BLACKHACK_GJ_VECTOR_H
-#define BLACKHACK_GJ_VECTOR_H
+#ifndef BW1_DECOMP_GJ_VECTOR_INCLUDED_H
+#define BW1_DECOMP_GJ_VECTOR_INCLUDED_H
 
 #include <stdint.h> // For uint32_t
 
@@ -22,4 +22,4 @@ struct GJVector__##T         \
   uint32_t field_0xc;        \
 }
 
-#endif /* BLACKHACK_GJ_VECTOR_H */
+#endif /* BW1_DECOMP_GJ_VECTOR_INCLUDED_H */

@@ -1,5 +1,7 @@
-#ifndef BLACKHACK_LH_LIST_HEAD_H
-#define BLACKHACK_LH_LIST_HEAD_H
+#ifndef BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H
+#define BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H
+
+#include <stdint.h> // For uint32_t
 
 // On ppc, there are two std::map for some reason
 /// Every template of the form
@@ -17,4 +19,4 @@ struct LHListHead__##T          \
   uint32_t count;               \
 }
 
-#endif  // BLACKHACK_LH_LIST_HEAD_H
+#endif /* BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H */
