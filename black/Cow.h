@@ -11,6 +11,6 @@ struct Cow
 };
 static_assert(sizeof(struct Cow) == 0x148, "Data type is of wrong size");
 
-static struct LivingVftable* __vt__3Cow = (struct LivingVftable*)0x008ad05c;
+static struct LivingVftable* const __vt__3Cow = (struct LivingVftable* const)0x008ad05c;
 
 #endif /* BW1_DECOMP_COW_INCLUDED_H */

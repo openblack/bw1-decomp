@@ -58,7 +58,7 @@ struct SetupHLineGraph
 };
 static_assert(sizeof(struct SetupHLineGraph) == 0x258, "Data type is of wrong size");
 
-static struct SetupHLineGraphVftable* __vt__15SetupHLineGraph = (struct SetupHLineGraphVftable*)0x008ab424;
+static struct SetupHLineGraphVftable* const __vt__15SetupHLineGraph = (struct SetupHLineGraphVftable* const)0x008ab424;
 
 // Constructors
 

@@ -13,7 +13,7 @@ struct GMobileStaticInfo
 };
 static_assert(sizeof(struct GMobileStaticInfo) == 0x12c, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* __vt__17GMobileStaticInfo = (struct GMultiMapFixedInfoVftable*)0x0093060c;
+static struct GMultiMapFixedInfoVftable* const __vt__17GMobileStaticInfo = (struct GMultiMapFixedInfoVftable* const)0x0093060c;
 
 // Static methods
 

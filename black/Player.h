@@ -107,7 +107,7 @@ struct GPlayer
 };
 static_assert(sizeof(struct GPlayer) == 0xa60, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__7GPlayer = (struct GameThingVftable*)0x00932be8;
+static struct GameThingVftable* const __vt__7GPlayer = (struct GameThingVftable* const)0x00932be8;
 
 // Static methods
 

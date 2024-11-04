@@ -20,7 +20,7 @@ struct GMagicInfo
 };
 static_assert(sizeof(struct GMagicInfo) == 0x58, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__10GMagicInfo = (struct GBaseInfoVftable*)0x008c4cbc;
+static struct GBaseInfoVftable* const __vt__10GMagicInfo = (struct GBaseInfoVftable* const)0x008c4cbc;
 
 // Static methods
 

@@ -20,7 +20,7 @@ struct SetupCheckBox
 };
 static_assert(sizeof(struct SetupCheckBox) == 0x260, "Data type is of wrong size");
 
-static struct SetupControlVftable* __vt__13SetupCheckBox = (struct SetupControlVftable*)0x008ab588;
+static struct SetupControlVftable* const __vt__13SetupCheckBox = (struct SetupControlVftable* const)0x008ab588;
 
 // Constructors
 

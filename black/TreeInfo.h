@@ -13,6 +13,6 @@ struct GTreeInfo
 };
 static_assert(sizeof(struct GTreeInfo) == 0x140, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* __vt__9GTreeInfo = (struct GObjectInfoVftable*)0x0099a124;
+static struct GObjectInfoVftable* const __vt__9GTreeInfo = (struct GObjectInfoVftable* const)0x0099a124;
 
 #endif /* BW1_DECOMP_TREE_INFO_INCLUDED_H */

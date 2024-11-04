@@ -89,7 +89,7 @@ struct Villager
 };
 static_assert(sizeof(struct Villager) == 0x130, "Data type is of wrong size");
 
-static struct VillagerVftable* __vt__8Villager = (struct VillagerVftable*)0x008f7960;
+static struct VillagerVftable* const __vt__8Villager = (struct VillagerVftable* const)0x008f7960;
 
 // Static methods
 

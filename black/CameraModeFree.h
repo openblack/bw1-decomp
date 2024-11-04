@@ -16,6 +16,6 @@ struct CameraModeFree
 };
 static_assert(sizeof(struct CameraModeFree) == 0x18, "Data type is of wrong size");
 
-static struct CameraModeVftable* __vt__14CameraModeFree = (struct CameraModeVftable*)0x008c7958;
+static struct CameraModeVftable* const __vt__14CameraModeFree = (struct CameraModeVftable* const)0x008c7958;
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FREE_INCLUDED_H */

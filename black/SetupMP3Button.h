@@ -19,7 +19,7 @@ struct SetupMP3Button
 };
 static_assert(sizeof(struct SetupMP3Button) == 0x250, "Data type is of wrong size");
 
-static struct SetupControlVftable* __vt__14SetupMP3Button = (struct SetupControlVftable*)0x00900060;
+static struct SetupControlVftable* const __vt__14SetupMP3Button = (struct SetupControlVftable* const)0x00900060;
 
 // Constructors
 

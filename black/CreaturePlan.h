@@ -31,7 +31,7 @@ struct CreaturePlan
 };
 static_assert(sizeof(struct CreaturePlan) == 0x30, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__12CreaturePlan = (struct BaseVftable*)0x008cc7cc;
+static struct BaseVftable* const __vt__12CreaturePlan = (struct BaseVftable* const)0x008cc7cc;
 
 struct CreaturePlanState
 {

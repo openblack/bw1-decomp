@@ -31,7 +31,7 @@ struct Mobile
 };
 static_assert(sizeof(struct Mobile) == 0x58, "Data type is of wrong size");
 
-static struct MobileVftable* __vt__6Mobile = (struct MobileVftable*)0x008ce750;
+static struct MobileVftable* const __vt__6Mobile = (struct MobileVftable* const)0x008ce750;
 
 // Constructors
 

@@ -13,7 +13,7 @@ struct SetupHSBarGraph
 };
 static_assert(sizeof(struct SetupHSBarGraph) == 0x284, "Data type is of wrong size");
 
-static struct SetupVBarGraphVftable* __vt__15SetupHSBarGraph = (struct SetupVBarGraphVftable*)0x008ffee4;
+static struct SetupVBarGraphVftable* const __vt__15SetupHSBarGraph = (struct SetupVBarGraphVftable* const)0x008ffee4;
 
 // Constructors
 

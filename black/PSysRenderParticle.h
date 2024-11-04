@@ -13,6 +13,6 @@ struct RenderParticle
 };
 static_assert(sizeof(struct RenderParticle) == 0x18, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__14RenderParticle = (struct GameThingVftable*)0x008fac3c;
+static struct GameThingVftable* const __vt__14RenderParticle = (struct GameThingVftable* const)0x008fac3c;
 
 #endif /* BW1_DECOMP_P_SYS_RENDER_PARTICLE_INCLUDED_H */

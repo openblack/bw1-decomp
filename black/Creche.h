@@ -11,6 +11,6 @@ struct Creche
 };
 static_assert(sizeof(struct Creche) == 0xc4, "Data type is of wrong size");
 
-static struct AbodeVftable* __vt__6Creche = (struct AbodeVftable*)0x008d16c4;
+static struct AbodeVftable* const __vt__6Creche = (struct AbodeVftable* const)0x008d16c4;
 
 #endif /* BW1_DECOMP_CRECHE_INCLUDED_H */

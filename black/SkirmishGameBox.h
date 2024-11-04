@@ -13,6 +13,6 @@ struct SkirmishGameBox
 };
 static_assert(sizeof(struct SkirmishGameBox) == 0x23c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__15SkirmishGameBox = (struct DialogBoxBaseVftable*)0x008de94c;
+static struct DialogBoxBaseVftable* const __vt__15SkirmishGameBox = (struct DialogBoxBaseVftable* const)0x008de94c;
 
 #endif /* BW1_DECOMP_SKIRMISH_GAME_BOX_INCLUDED_H */

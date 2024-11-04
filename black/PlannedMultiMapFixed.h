@@ -29,7 +29,7 @@ struct PlannedMultiMapFixed
 };
 static_assert(sizeof(struct PlannedMultiMapFixed) == 0x48, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__20PlannedMultiMapFixed = (struct GameThingWithPosVftable*)0x008f3154;
+static struct GameThingWithPosVftable* const __vt__20PlannedMultiMapFixed = (struct GameThingWithPosVftable* const)0x008f3154;
 
 // Constructors
 

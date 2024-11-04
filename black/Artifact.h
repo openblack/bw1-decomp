@@ -15,7 +15,7 @@ struct TownArtifact
 };
 static_assert(sizeof(struct TownArtifact) == 0x40, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__12TownArtifact = (struct GameThingVftable*)0x008c47d0;
+static struct GameThingVftable* const __vt__12TownArtifact = (struct GameThingVftable* const)0x008c47d0;
 
 DECLARE_LH_LINKED_LIST(TownArtifact);
 

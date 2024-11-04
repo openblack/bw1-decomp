@@ -35,6 +35,6 @@ struct ReactionInfo
 };
 static_assert(sizeof(struct ReactionInfo) == 0x64, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__12ReactionInfo = (struct GBaseInfoVftable*)0x009417ec;
+static struct GBaseInfoVftable* const __vt__12ReactionInfo = (struct GBaseInfoVftable* const)0x009417ec;
 
 #endif /* BW1_DECOMP_REACTION_INFO_INCLUDED_H */

@@ -28,7 +28,7 @@ struct CameraModeFollow
 };
 static_assert(sizeof(struct CameraModeFollow) == 0x48, "Data type is of wrong size");
 
-static struct CameraModeVftable* __vt__16CameraModeFollow = (struct CameraModeVftable*)0x008c7884;
+static struct CameraModeVftable* const __vt__16CameraModeFollow = (struct CameraModeVftable* const)0x008c7884;
 
 // Constructors
 

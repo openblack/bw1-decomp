@@ -13,6 +13,6 @@ struct CDBox
 };
 static_assert(sizeof(struct CDBox) == 0x34, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__5CDBox = (struct DialogBoxBaseVftable*)0x008deb04;
+static struct DialogBoxBaseVftable* const __vt__5CDBox = (struct DialogBoxBaseVftable* const)0x008deb04;
 
 #endif /* BW1_DECOMP_CD_BOX_INCLUDED_H */

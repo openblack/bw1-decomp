@@ -17,7 +17,7 @@ struct DialogBoxSaveMessage
 };
 static_assert(sizeof(struct DialogBoxSaveMessage) == 0x24, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__20DialogBoxSaveMessage = (struct DialogBoxBaseVftable*)0x008d8698;
+static struct DialogBoxBaseVftable* const __vt__20DialogBoxSaveMessage = (struct DialogBoxBaseVftable* const)0x008d8698;
 
 // Constructors
 

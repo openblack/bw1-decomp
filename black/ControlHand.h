@@ -221,7 +221,7 @@ struct CHand
 };
 static_assert(sizeof(struct CHand) == 0x49c4, "Data type is of wrong size");
 
-static struct MorphableVftable* __vt__5CHand = (struct MorphableVftable*)0x008cbecc;
+static struct MorphableVftable* const __vt__5CHand = (struct MorphableVftable* const)0x008cbecc;
 
 // Constructors
 

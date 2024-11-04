@@ -91,7 +91,7 @@ struct GInterface
 };
 static_assert(sizeof(struct GInterface) == 0x47c, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__10GInterface = (struct GameThingWithPosVftable*)0x0092a5a0;
+static struct GameThingWithPosVftable* const __vt__10GInterface = (struct GameThingWithPosVftable* const)0x0092a5a0;
 
 // Non-virtual methods
 

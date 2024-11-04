@@ -305,7 +305,7 @@ struct Object
 };
 static_assert(sizeof(struct Object) == 0x54, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__6Object = (struct ObjectVftable*)0x00930aa0;
+static struct ObjectVftable* const __vt__6Object = (struct ObjectVftable* const)0x00930aa0;
 
 // Static methods
 

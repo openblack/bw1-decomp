@@ -13,6 +13,6 @@ struct ChannelBox
 };
 static_assert(sizeof(struct ChannelBox) == 0xad4, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__10ChannelBox = (struct DialogBoxBaseVftable*)0x008dea3c;
+static struct DialogBoxBaseVftable* const __vt__10ChannelBox = (struct DialogBoxBaseVftable* const)0x008dea3c;
 
 #endif /* BW1_DECOMP_CHANNEL_BOX_INCLUDED_H */

@@ -13,7 +13,7 @@ struct LocalBase
 };
 static_assert(sizeof(struct LocalBase) == 0x8, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__9LocalBase = (struct BaseVftable*)0x008a9a44;
+static struct BaseVftable* const __vt__9LocalBase = (struct BaseVftable* const)0x008a9a44;
 
 // Static methods
 

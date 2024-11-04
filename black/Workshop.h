@@ -13,6 +13,6 @@ struct Workshop
 };
 static_assert(sizeof(struct Workshop) == 0xe8, "Data type is of wrong size");
 
-static struct AbodeVftable* __vt__8Workshop = (struct AbodeVftable*)0x0099bb20;
+static struct AbodeVftable* const __vt__8Workshop = (struct AbodeVftable* const)0x0099bb20;
 
 #endif /* BW1_DECOMP_WORKSHOP_INCLUDED_H */

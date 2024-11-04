@@ -26,7 +26,7 @@ struct DialogBoxImmersion
 };
 static_assert(sizeof(struct DialogBoxImmersion) == 0x30, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__18DialogBoxImmersion = (struct DialogBoxBaseVftable*)0x008d8644;
+static struct DialogBoxBaseVftable* const __vt__18DialogBoxImmersion = (struct DialogBoxBaseVftable* const)0x008d8644;
 
 // Constructors
 

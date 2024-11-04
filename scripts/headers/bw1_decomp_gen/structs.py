@@ -335,7 +335,7 @@ class RTTIClass(Struct):
     def to_code_data(self, cw: csnake.CodeWriter):
         super().to_code_data(cw)
         if self.vftable_address:
-            vftable_ptr_type = self.vftable_type_name + "*"
+            vftable_ptr_type = self.vftable_type_name + "* const"
             # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
             address = csnake.FormattedLiteral(
                 value=self.vftable_address, int_formatter=lambda x: f"({vftable_ptr_type})0x{x:08x}")

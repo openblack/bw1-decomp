@@ -11,6 +11,6 @@ struct PSysBase
 };
 static_assert(sizeof(struct PSysBase) == 0x14, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__8PSysBase = (struct GameThingVftable*)0x008c9c34;
+static struct GameThingVftable* const __vt__8PSysBase = (struct GameThingVftable* const)0x008c9c34;
 
 #endif /* BW1_DECOMP_P_SYS_BASE_INCLUDED_H */

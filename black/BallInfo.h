@@ -13,6 +13,6 @@ struct GBallInfo
 };
 static_assert(sizeof(struct GBallInfo) == 0x140, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__9GBallInfo = (struct GBaseInfoVftable*)0x008c4f34;
+static struct GBaseInfoVftable* const __vt__9GBallInfo = (struct GBaseInfoVftable* const)0x008c4f34;
 
 #endif /* BW1_DECOMP_BALL_INFO_INCLUDED_H */

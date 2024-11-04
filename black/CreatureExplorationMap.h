@@ -16,6 +16,6 @@ struct CreatureExplorationMap
 };
 static_assert(sizeof(struct CreatureExplorationMap) == 0x2018, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__22CreatureExplorationMap = (struct BaseVftable*)0x008d00e0;
+static struct BaseVftable* const __vt__22CreatureExplorationMap = (struct BaseVftable* const)0x008d00e0;
 
 #endif /* BW1_DECOMP_CREATURE_EXPLORATION_MAP_INCLUDED_H */

@@ -30,7 +30,7 @@ struct Rock
 };
 static_assert(sizeof(struct Rock) == 0x94, "Data type is of wrong size");
 
-static struct RockVftable* __vt__4Rock = (struct RockVftable*)0x008e2100;
+static struct RockVftable* const __vt__4Rock = (struct RockVftable* const)0x008e2100;
 
 // Constructors
 

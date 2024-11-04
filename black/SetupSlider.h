@@ -19,7 +19,7 @@ struct SetupSlider
 };
 static_assert(sizeof(struct SetupSlider) == 0x250, "Data type is of wrong size");
 
-static struct SetupControlVftable* __vt__11SetupSlider = (struct SetupControlVftable*)0x008ab2ec;
+static struct SetupControlVftable* const __vt__11SetupSlider = (struct SetupControlVftable* const)0x008ab2ec;
 
 // Constructors
 

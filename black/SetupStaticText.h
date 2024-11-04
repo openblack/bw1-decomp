@@ -16,7 +16,7 @@ struct SetupStaticText
 };
 static_assert(sizeof(struct SetupStaticText) == 0x244, "Data type is of wrong size");
 
-static struct SetupControlVftable* __vt__15SetupStaticText = (struct SetupControlVftable*)0x008ab5c0;
+static struct SetupControlVftable* const __vt__15SetupStaticText = (struct SetupControlVftable* const)0x008ab5c0;
 
 // Constructors
 

@@ -25,7 +25,7 @@ struct InfluenceRing
 };
 static_assert(sizeof(struct InfluenceRing) == 0x44, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__13InfluenceRing = (struct GameThingWithPosVftable*)0x008ea3cc;
+static struct GameThingWithPosVftable* const __vt__13InfluenceRing = (struct GameThingWithPosVftable* const)0x008ea3cc;
 
 // Constructors
 

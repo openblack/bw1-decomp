@@ -13,7 +13,7 @@ struct GFieldTypeInfo
 };
 static_assert(sizeof(struct GFieldTypeInfo) == 0x154, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__14GFieldTypeInfo = (struct MultiMapFixedVftable*)0x008d9b30;
+static struct MultiMapFixedVftable* const __vt__14GFieldTypeInfo = (struct MultiMapFixedVftable* const)0x008d9b30;
 
 // win1.41 00527cf0 mac inlined __sinit_GFieldTypeInfo_cpp
 void __cdecl __sinit_GFieldTypeInfo_cpp(void);

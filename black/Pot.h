@@ -40,7 +40,7 @@ struct Pot
 };
 static_assert(sizeof(struct Pot) == 0x78, "Data type is of wrong size");
 
-static struct PotVftable* __vt__3Pot = (struct PotVftable*)0x008e6604;
+static struct PotVftable* const __vt__3Pot = (struct PotVftable* const)0x008e6604;
 
 // Constructors
 

@@ -15,7 +15,7 @@ struct GArena
 };
 static_assert(sizeof(struct GArena) == 0x4c, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__6GArena = (struct GameThingVftable*)0x008c2c98;
+static struct GameThingVftable* const __vt__6GArena = (struct GameThingVftable* const)0x008c2c98;
 
 DECLARE_LH_LIST_HEAD(GArena);
 

@@ -40,7 +40,7 @@ struct GPlayerInfo
 };
 static_assert(sizeof(struct GPlayerInfo) == 0x90, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__11GPlayerInfo = (struct GBaseInfoVftable*)0x008df730;
+static struct GBaseInfoVftable* const __vt__11GPlayerInfo = (struct GBaseInfoVftable* const)0x008df730;
 
 struct PlayerInfo
 {

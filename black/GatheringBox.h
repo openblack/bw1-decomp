@@ -13,6 +13,6 @@ struct GatheringBox
 };
 static_assert(sizeof(struct GatheringBox) == 0xf0, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__12GatheringBox = (struct DialogBoxBaseVftable*)0x008deb2c;
+static struct DialogBoxBaseVftable* const __vt__12GatheringBox = (struct DialogBoxBaseVftable* const)0x008deb2c;
 
 #endif /* BW1_DECOMP_GATHERING_BOX_INCLUDED_H */

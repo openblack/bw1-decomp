@@ -21,7 +21,7 @@ struct GSoundMap
 };
 static_assert(sizeof(struct GSoundMap) == 0x110, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__9GSoundMap = (struct BaseVftable*)0x008df7a0;
+static struct BaseVftable* const __vt__9GSoundMap = (struct BaseVftable* const)0x008df7a0;
 
 // Constructors
 

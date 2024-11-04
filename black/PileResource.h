@@ -31,7 +31,7 @@ struct PileResource
 };
 static_assert(sizeof(struct PileResource) == 0xb4, "Data type is of wrong size");
 
-static struct PotVftable* __vt__12PileResource = (struct PotVftable*)0x009338d4;
+static struct PotVftable* const __vt__12PileResource = (struct PotVftable* const)0x009338d4;
 
 // Constructors
 

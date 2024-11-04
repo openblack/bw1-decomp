@@ -48,7 +48,7 @@ struct GVillagerStateTableInfo
 };
 static_assert(sizeof(struct GVillagerStateTableInfo) == 0x114, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__23GVillagerStateTableInfo = (struct BaseVftable*)0x0099aa24;
+static struct BaseVftable* const __vt__23GVillagerStateTableInfo = (struct BaseVftable* const)0x0099aa24;
 
 // Static methods
 

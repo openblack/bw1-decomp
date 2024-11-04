@@ -37,7 +37,7 @@ struct SpellSeedGraphic
 };
 static_assert(sizeof(struct SpellSeedGraphic) == 0x74, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__16SpellSeedGraphic = (struct GameThingWithPosVftable*)0x00981aa8;
+static struct GameThingWithPosVftable* const __vt__16SpellSeedGraphic = (struct GameThingWithPosVftable* const)0x00981aa8;
 
 // Non-virtual methods
 

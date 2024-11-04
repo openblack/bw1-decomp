@@ -21,6 +21,6 @@ struct GSpecialVillagerInfo
 };
 static_assert(sizeof(struct GSpecialVillagerInfo) == 0x60, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__20GSpecialVillagerInfo = (struct GBaseInfoVftable*)0x00980568;
+static struct GBaseInfoVftable* const __vt__20GSpecialVillagerInfo = (struct GBaseInfoVftable* const)0x00980568;
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INFO_INCLUDED_H */

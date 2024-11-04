@@ -15,6 +15,6 @@ struct GInterfaceFlags
 };
 static_assert(sizeof(struct GInterfaceFlags) == 0x14, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__15GInterfaceFlags = (struct BaseVftable*)0x0092ab04;
+static struct BaseVftable* const __vt__15GInterfaceFlags = (struct BaseVftable* const)0x0092ab04;
 
 #endif /* BW1_DECOMP_INTERFACE_FLAGS_INCLUDED_H */

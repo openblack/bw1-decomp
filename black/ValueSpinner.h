@@ -34,6 +34,6 @@ struct ValueSpinner
 };
 static_assert(sizeof(struct ValueSpinner) == 0xa0, "Data type is of wrong size");
 
-static struct ValueSpinnerVftable* __vt__12ValueSpinner = (struct ValueSpinnerVftable*)0x008c589c;
+static struct ValueSpinnerVftable* const __vt__12ValueSpinner = (struct ValueSpinnerVftable* const)0x008c589c;
 
 #endif /* BW1_DECOMP_VALUE_SPINNER_INCLUDED_H */

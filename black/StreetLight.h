@@ -15,7 +15,7 @@ struct GStreetLight
 };
 static_assert(sizeof(struct GStreetLight) == 0x2c, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__12GStreetLight = (struct GameThingWithPosVftable*)0x008eb138;
+static struct GameThingWithPosVftable* const __vt__12GStreetLight = (struct GameThingWithPosVftable* const)0x008eb138;
 
 DECLARE_LH_LIST_HEAD(GStreetLight);
 

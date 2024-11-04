@@ -13,6 +13,6 @@ struct GTotemStatueInfo
 };
 static_assert(sizeof(struct GTotemStatueInfo) == 0x124, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* __vt__16GTotemStatueInfo = (struct GMultiMapFixedInfoVftable*)0x00999a48;
+static struct GMultiMapFixedInfoVftable* const __vt__16GTotemStatueInfo = (struct GMultiMapFixedInfoVftable* const)0x00999a48;
 
 #endif /* BW1_DECOMP_TOTEM_STATUE_INFO_INCLUDED_H */

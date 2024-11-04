@@ -25,7 +25,7 @@ struct CreatureSubAction
 };
 static_assert(sizeof(struct CreatureSubAction) == 0x60, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__17CreatureSubAction = (struct BaseVftable*)0x008cd374;
+static struct BaseVftable* const __vt__17CreatureSubAction = (struct BaseVftable* const)0x008cd374;
 
 // Constructors
 
@@ -57,7 +57,7 @@ struct CreatureSubActionAgenda
 };
 static_assert(sizeof(struct CreatureSubActionAgenda) == 0xc50, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__23CreatureSubActionAgenda = (struct BaseVftable*)0x008cd354;
+static struct BaseVftable* const __vt__23CreatureSubActionAgenda = (struct BaseVftable* const)0x008cd354;
 
 // Constructors
 

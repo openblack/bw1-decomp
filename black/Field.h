@@ -46,7 +46,7 @@ struct Field
 };
 static_assert(sizeof(struct Field) == 0x124, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__5Field = (struct MultiMapFixedVftable*)0x008d9b7c;
+static struct MultiMapFixedVftable* const __vt__5Field = (struct MultiMapFixedVftable* const)0x008d9b7c;
 
 // Static methods
 

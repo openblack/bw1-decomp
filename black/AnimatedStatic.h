@@ -15,7 +15,7 @@ struct AnimatedStatic
 };
 static_assert(sizeof(struct AnimatedStatic) == 0x98, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__14AnimatedStatic = (struct MultiMapFixedVftable*)0x008c1a10;
+static struct MultiMapFixedVftable* const __vt__14AnimatedStatic = (struct MultiMapFixedVftable* const)0x008c1a10;
 
 DECLARE_LH_LINKED_LIST(AnimatedStatic);
 

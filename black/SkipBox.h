@@ -13,6 +13,6 @@ struct SkipBox
 };
 static_assert(sizeof(struct SkipBox) == 0x24, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__7SkipBox = (struct DialogBoxBaseVftable*)0x008deadc;
+static struct DialogBoxBaseVftable* const __vt__7SkipBox = (struct DialogBoxBaseVftable* const)0x008deadc;
 
 #endif /* BW1_DECOMP_SKIP_BOX_INCLUDED_H */

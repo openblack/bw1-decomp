@@ -15,7 +15,7 @@ struct GClimate
 };
 static_assert(sizeof(struct GClimate) == 0x88, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__8GClimate = (struct GameThingVftable*)0x008f9f9c;
+static struct GameThingVftable* const __vt__8GClimate = (struct GameThingVftable* const)0x008f9f9c;
 
 DECLARE_LH_LINKED_LIST(GClimate);
 

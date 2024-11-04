@@ -36,7 +36,7 @@ struct SoundTag
 };
 static_assert(sizeof(struct SoundTag) == 0x54, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__8SoundTag = (struct BaseVftable*)0x00980538;
+static struct BaseVftable* const __vt__8SoundTag = (struct BaseVftable* const)0x00980538;
 
 // Static methods
 

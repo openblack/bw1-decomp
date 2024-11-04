@@ -14,7 +14,7 @@ struct LHReleasedOSFile
 };
 static_assert(sizeof(struct LHReleasedOSFile) == 0x8, "Data type is of wrong size");
 
-static struct LHOSFileVftable* __vt__16LHReleasedOSFile = (struct LHOSFileVftable*)0x008c4d00;
+static struct LHOSFileVftable* const __vt__16LHReleasedOSFile = (struct LHOSFileVftable* const)0x008c4d00;
 
 // Constructors
 

@@ -20,6 +20,6 @@ struct SpellWithObjects
 };
 static_assert(sizeof(struct SpellWithObjects) == 0xf4, "Data type is of wrong size");
 
-static struct SpellWithObjectsVftable* __vt__16SpellWithObjects = (struct SpellWithObjectsVftable*)0x008f4530;
+static struct SpellWithObjectsVftable* const __vt__16SpellWithObjects = (struct SpellWithObjectsVftable* const)0x008f4530;
 
 #endif /* BW1_DECOMP_SPELL_WITH_OBJECTS_INCLUDED_H */

@@ -15,7 +15,7 @@ struct GWaterfall
 };
 static_assert(sizeof(struct GWaterfall) == 0x58, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__10GWaterfall = (struct ObjectVftable*)0x008ec14c;
+static struct ObjectVftable* const __vt__10GWaterfall = (struct ObjectVftable* const)0x008ec14c;
 
 DECLARE_LH_LIST_HEAD(GWaterfall);
 

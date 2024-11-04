@@ -108,7 +108,7 @@ struct MobileWallHug
 };
 static_assert(sizeof(struct MobileWallHug) == 0x8c, "Data type is of wrong size");
 
-static struct MobileWallHugVftable* __vt__13MobileWallHug = (struct MobileWallHugVftable*)0x008cded8;
+static struct MobileWallHugVftable* const __vt__13MobileWallHug = (struct MobileWallHugVftable* const)0x008cded8;
 
 // Constructors
 

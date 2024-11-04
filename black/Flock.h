@@ -44,7 +44,7 @@ struct Flock
 };
 static_assert(sizeof(struct Flock) == 0x90, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__5Flock = (struct GameThingWithPosVftable*)0x008dd108;
+static struct GameThingWithPosVftable* const __vt__5Flock = (struct GameThingWithPosVftable* const)0x008dd108;
 
 // Constructors
 

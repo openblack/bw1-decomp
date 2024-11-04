@@ -20,7 +20,7 @@ struct SpecialVillager
 };
 static_assert(sizeof(struct SpecialVillager) == 0x134, "Data type is of wrong size");
 
-static struct VillagerVftable* __vt__15SpecialVillager = (struct VillagerVftable*)0x008e15b4;
+static struct VillagerVftable* const __vt__15SpecialVillager = (struct VillagerVftable* const)0x008e15b4;
 
 // Static methods
 

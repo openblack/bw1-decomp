@@ -16,7 +16,7 @@ struct MPFEChooseConnection
 };
 static_assert(sizeof(struct MPFEChooseConnection) == 0x10, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__20MPFEChooseConnection = (struct DialogBoxBaseVftable*)0x009307d8;
+static struct DialogBoxBaseVftable* const __vt__20MPFEChooseConnection = (struct DialogBoxBaseVftable* const)0x009307d8;
 
 // Static methods
 

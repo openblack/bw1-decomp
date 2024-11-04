@@ -36,7 +36,7 @@ struct WorshipTotem
 };
 static_assert(sizeof(struct WorshipTotem) == 0x104, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__12WorshipTotem = (struct MultiMapFixedVftable*)0x0099e1bc;
+static struct MultiMapFixedVftable* const __vt__12WorshipTotem = (struct MultiMapFixedVftable* const)0x0099e1bc;
 
 // Static methods
 

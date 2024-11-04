@@ -39,7 +39,7 @@ struct FireFly
 };
 static_assert(sizeof(struct FireFly) == 0xc4, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__7FireFly = (struct ObjectVftable*)0x008da4f8;
+static struct ObjectVftable* const __vt__7FireFly = (struct ObjectVftable* const)0x008da4f8;
 
 // Static methods
 

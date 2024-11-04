@@ -50,7 +50,7 @@ struct PHandFX
 };
 static_assert(sizeof(struct PHandFX) == 0x74, "Data type is of wrong size");
 
-static struct PSysHandFXVftable* __vt__7PHandFX = (struct PSysHandFXVftable*)0x00936c1c;
+static struct PSysHandFXVftable* const __vt__7PHandFX = (struct PSysHandFXVftable* const)0x00936c1c;
 
 // Constructors
 

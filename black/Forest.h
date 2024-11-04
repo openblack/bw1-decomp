@@ -39,7 +39,7 @@ struct Forest
 };
 static_assert(sizeof(struct Forest) == 0x58, "Data type is of wrong size");
 
-static struct ForestVftable* __vt__6Forest = (struct ForestVftable*)0x008de41c;
+static struct ForestVftable* const __vt__6Forest = (struct ForestVftable* const)0x008de41c;
 
 // Constructors
 

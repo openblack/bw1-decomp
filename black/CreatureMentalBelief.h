@@ -13,6 +13,6 @@ struct CreatureBelief
 };
 static_assert(sizeof(struct CreatureBelief) == 0x4c, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__14CreatureBelief = (struct BaseVftable*)0x008cfe10;
+static struct BaseVftable* const __vt__14CreatureBelief = (struct BaseVftable* const)0x008cfe10;
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_BELIEF_INCLUDED_H */

@@ -25,7 +25,7 @@ struct Fragment
 };
 static_assert(sizeof(struct Fragment) == 0xa8, "Data type is of wrong size");
 
-static struct RockVftable* __vt__8Fragment = (struct RockVftable*)0x0099aa98;
+static struct RockVftable* const __vt__8Fragment = (struct RockVftable* const)0x0099aa98;
 
 // Constructors
 

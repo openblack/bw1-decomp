@@ -60,7 +60,7 @@ struct TownStats
 };
 static_assert(sizeof(struct TownStats) == 0x118, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__9TownStats = (struct BaseVftable*)0x0099a00c;
+static struct BaseVftable* const __vt__9TownStats = (struct BaseVftable* const)0x0099a00c;
 
 // Non-virtual methods
 

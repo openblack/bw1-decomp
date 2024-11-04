@@ -22,7 +22,7 @@ struct Totem
 };
 static_assert(sizeof(struct Totem) == 0xe4, "Data type is of wrong size");
 
-static struct AbodeVftable* __vt__5Totem = (struct AbodeVftable*)0x008ef57c;
+static struct AbodeVftable* const __vt__5Totem = (struct AbodeVftable* const)0x008ef57c;
 
 // Constructors
 

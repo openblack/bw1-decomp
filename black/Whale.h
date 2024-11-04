@@ -15,7 +15,7 @@ struct Whale
 };
 static_assert(sizeof(struct Whale) == 0x74, "Data type is of wrong size");
 
-static struct MobileObjectVftable* __vt__5Whale = (struct MobileObjectVftable*)0x008febec;
+static struct MobileObjectVftable* const __vt__5Whale = (struct MobileObjectVftable* const)0x008febec;
 
 DECLARE_LH_LIST_HEAD(Whale);
 

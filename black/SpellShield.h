@@ -17,7 +17,7 @@ struct SpellShield
 };
 static_assert(sizeof(struct SpellShield) == 0x10c, "Data type is of wrong size");
 
-static struct SpellWithObjectsVftable* __vt__11SpellShield = (struct SpellWithObjectsVftable*)0x009828d8;
+static struct SpellWithObjectsVftable* const __vt__11SpellShield = (struct SpellWithObjectsVftable* const)0x009828d8;
 
 // Non-virtual methods
 

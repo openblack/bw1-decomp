@@ -18,7 +18,7 @@ struct DanceKeyFrame
 };
 static_assert(sizeof(struct DanceKeyFrame) == 0x24, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__13DanceKeyFrame = (struct GameThingVftable*)0x008d46f0;
+static struct GameThingVftable* const __vt__13DanceKeyFrame = (struct GameThingVftable* const)0x008d46f0;
 
 // Constructors
 

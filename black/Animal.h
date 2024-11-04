@@ -37,7 +37,7 @@ struct Animal
 };
 static_assert(sizeof(struct Animal) == 0x148, "Data type is of wrong size");
 
-static struct LivingVftable* __vt__6Animal = (struct LivingVftable*)0x008ab7cc;
+static struct LivingVftable* const __vt__6Animal = (struct LivingVftable* const)0x008ab7cc;
 
 // Non-virtual methods
 

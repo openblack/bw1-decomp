@@ -11,6 +11,6 @@ struct CameraModeFollowHeading
 };
 static_assert(sizeof(struct CameraModeFollowHeading) == 0x8, "Data type is of wrong size");
 
-static struct CameraModeVftable* __vt__23CameraModeFollowHeading = (struct CameraModeVftable*)0x008c7904;
+static struct CameraModeVftable* const __vt__23CameraModeFollowHeading = (struct CameraModeVftable* const)0x008c7904;
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FOLLOW_HEADING_INCLUDED_H */

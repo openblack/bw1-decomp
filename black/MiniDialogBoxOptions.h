@@ -34,7 +34,7 @@ struct MiniDialogBoxOptions
 };
 static_assert(sizeof(struct MiniDialogBoxOptions) == 0x48, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__20MiniDialogBoxOptions = (struct DialogBoxBaseVftable*)0x008d866c;
+static struct DialogBoxBaseVftable* const __vt__20MiniDialogBoxOptions = (struct DialogBoxBaseVftable* const)0x008d866c;
 
 // Constructors
 

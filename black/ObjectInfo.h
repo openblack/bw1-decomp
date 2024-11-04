@@ -86,6 +86,6 @@ struct GObjectInfo
 };
 static_assert(sizeof(struct GObjectInfo) == 0x100, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* __vt__11GObjectInfo = (struct GObjectInfoVftable*)0x00930a60;
+static struct GObjectInfoVftable* const __vt__11GObjectInfo = (struct GObjectInfoVftable* const)0x00930a60;
 
 #endif /* BW1_DECOMP_OBJECT_INFO_INCLUDED_H */

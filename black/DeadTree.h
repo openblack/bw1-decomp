@@ -13,6 +13,6 @@ struct DeadTree
 };
 static_assert(sizeof(struct DeadTree) == 0xa0, "Data type is of wrong size");
 
-static struct RockVftable* __vt__8DeadTree = (struct RockVftable*)0x008d6064;
+static struct RockVftable* const __vt__8DeadTree = (struct RockVftable* const)0x008d6064;
 
 #endif /* BW1_DECOMP_DEAD_TREE_INCLUDED_H */

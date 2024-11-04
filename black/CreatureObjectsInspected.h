@@ -13,6 +13,6 @@ struct CreatureObjectsInspected
 };
 static_assert(sizeof(struct CreatureObjectsInspected) == 0x68, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__24CreatureObjectsInspected = (struct BaseVftable*)0x008d0548;
+static struct BaseVftable* const __vt__24CreatureObjectsInspected = (struct BaseVftable* const)0x008d0548;
 
 #endif /* BW1_DECOMP_CREATURE_OBJECTS_INSPECTED_INCLUDED_H */

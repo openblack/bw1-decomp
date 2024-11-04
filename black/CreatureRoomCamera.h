@@ -13,6 +13,6 @@ struct CreatureRoomCamera
 };
 static_assert(sizeof(struct CreatureRoomCamera) == 0x4c4, "Data type is of wrong size");
 
-static struct InnerCameraVftable* __vt__18CreatureRoomCamera = (struct InnerCameraVftable*)0x0099eb8c;
+static struct InnerCameraVftable* const __vt__18CreatureRoomCamera = (struct InnerCameraVftable* const)0x0099eb8c;
 
 #endif /* BW1_DECOMP_CREATURE_ROOM_CAMERA_INCLUDED_H */

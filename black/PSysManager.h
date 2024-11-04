@@ -13,6 +13,6 @@ struct PSysManager
 };
 static_assert(sizeof(struct PSysManager) == 0xe4, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__11PSysManager = (struct GameThingVftable*)0x009353c0;
+static struct GameThingVftable* const __vt__11PSysManager = (struct GameThingVftable* const)0x009353c0;
 
 #endif /* BW1_DECOMP_P_SYS_MANAGER_INCLUDED_H */

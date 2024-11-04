@@ -28,7 +28,7 @@ struct FishFarm
 };
 static_assert(sizeof(struct FishFarm) == 0x98, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__8FishFarm = (struct MultiMapFixedVftable*)0x008dadc0;
+static struct MultiMapFixedVftable* const __vt__8FishFarm = (struct MultiMapFixedVftable* const)0x008dadc0;
 
 // Constructors
 

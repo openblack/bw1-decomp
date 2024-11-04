@@ -44,7 +44,7 @@ struct WorshipSite
 };
 static_assert(sizeof(struct WorshipSite) == 0x128, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__11WorshipSite = (struct MultiMapFixedVftable*)0x008f2840;
+static struct MultiMapFixedVftable* const __vt__11WorshipSite = (struct MultiMapFixedVftable* const)0x008f2840;
 
 // Non-virtual methods
 

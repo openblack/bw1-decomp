@@ -17,6 +17,6 @@ struct CreatureCommandState
 };
 static_assert(sizeof(struct CreatureCommandState) == 0x2c, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__20CreatureCommandState = (struct BaseVftable*)0x008cf970;
+static struct BaseVftable* const __vt__20CreatureCommandState = (struct BaseVftable* const)0x008cf970;
 
 #endif /* BW1_DECOMP_CREATURE_COMMAND_STATE_INCLUDED_H */

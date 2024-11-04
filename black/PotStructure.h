@@ -23,7 +23,7 @@ struct PotStructure
 };
 static_assert(sizeof(struct PotStructure) == 0x84, "Data type is of wrong size");
 
-static struct PotVftable* __vt__12PotStructure = (struct PotVftable*)0x008f8dcc;
+static struct PotVftable* const __vt__12PotStructure = (struct PotVftable* const)0x008f8dcc;
 
 // Constructors
 

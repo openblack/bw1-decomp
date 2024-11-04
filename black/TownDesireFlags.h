@@ -17,7 +17,7 @@ struct TownDesireFlags
 };
 static_assert(sizeof(struct TownDesireFlags) == 0x98, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__15TownDesireFlags = (struct ObjectVftable*)0x008e9b6c;
+static struct ObjectVftable* const __vt__15TownDesireFlags = (struct ObjectVftable* const)0x008e9b6c;
 
 // Override methods
 

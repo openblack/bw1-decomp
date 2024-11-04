@@ -13,6 +13,6 @@ struct MultiplayerConditionBox
 };
 static_assert(sizeof(struct MultiplayerConditionBox) == 0x3c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__23MultiplayerConditionBox = (struct DialogBoxBaseVftable*)0x008de9c4;
+static struct DialogBoxBaseVftable* const __vt__23MultiplayerConditionBox = (struct DialogBoxBaseVftable* const)0x008de9c4;
 
 #endif /* BW1_DECOMP_MULTIPLAYER_CONDITION_BOX_INCLUDED_H */

@@ -64,7 +64,7 @@ struct SetupList
 };
 static_assert(sizeof(struct SetupList) == 0x2b0, "Data type is of wrong size");
 
-static struct SetupListVftable* __vt__9SetupList = (struct SetupListVftable*)0x008ab324;
+static struct SetupListVftable* const __vt__9SetupList = (struct SetupListVftable* const)0x008ab324;
 
 // Constructors
 

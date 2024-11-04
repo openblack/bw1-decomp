@@ -13,7 +13,7 @@ struct GLanguage
 };
 static_assert(sizeof(struct GLanguage) == 0xc, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__9GLanguage = (struct BaseVftable*)0x0092b344;
+static struct BaseVftable* const __vt__9GLanguage = (struct BaseVftable* const)0x0092b344;
 
 // Constructors
 

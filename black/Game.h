@@ -181,7 +181,7 @@ struct GGame
 };
 static_assert(sizeof(struct GGame) == 0x250544, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__5GGame = (struct GameThingVftable*)0x008df630;
+static struct GameThingVftable* const __vt__5GGame = (struct GameThingVftable* const)0x008df630;
 
 // Static methods
 

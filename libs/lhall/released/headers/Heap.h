@@ -21,6 +21,6 @@ struct Heap
 };
 static_assert(sizeof(struct Heap) == 0x8, "Data type is of wrong size");
 
-static struct HeapVftable* __vt__4Heap = (struct HeapVftable*)0x00931cc8;
+static struct HeapVftable* const __vt__4Heap = (struct HeapVftable* const)0x00931cc8;
 
 #endif /* BW1_DECOMP_HEAP_INCLUDED_H */

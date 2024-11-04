@@ -13,7 +13,7 @@ struct LH3DCitadel
 };
 static_assert(sizeof(struct LH3DCitadel) == 0xc0, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* __vt__11LH3DCitadel = (struct LH3DObjectVftable*)0x009a2bfc;
+static struct LH3DObjectVftable* const __vt__11LH3DCitadel = (struct LH3DObjectVftable* const)0x009a2bfc;
 
 // Constructors
 

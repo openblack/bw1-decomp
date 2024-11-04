@@ -144,7 +144,7 @@ struct Town
 };
 static_assert(sizeof(struct Town) == 0xf28, "Data type is of wrong size");
 
-static struct ContainerVftable* __vt__4Town = (struct ContainerVftable*)0x00999ae4;
+static struct ContainerVftable* const __vt__4Town = (struct ContainerVftable* const)0x00999ae4;
 
 // Static methods
 

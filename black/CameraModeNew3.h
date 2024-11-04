@@ -140,7 +140,7 @@ struct CameraModeNew3
 };
 static_assert(sizeof(struct CameraModeNew3) == 0x300, "Data type is of wrong size");
 
-static struct CameraModeNew3Vftable* __vt__14CameraModeNew3 = (struct CameraModeNew3Vftable*)0x008c7bfc;
+static struct CameraModeNew3Vftable* const __vt__14CameraModeNew3 = (struct CameraModeNew3Vftable* const)0x008c7bfc;
 
 // Static methods
 

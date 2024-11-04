@@ -80,7 +80,7 @@ struct TempleRoom
 };
 static_assert(sizeof(struct TempleRoom) == 0xec, "Data type is of wrong size");
 
-static struct TempleRoomVftable* __vt__10TempleRoom = (struct TempleRoomVftable*)0x0099eec4;
+static struct TempleRoomVftable* const __vt__10TempleRoom = (struct TempleRoomVftable* const)0x0099eec4;
 
 // Constructors
 

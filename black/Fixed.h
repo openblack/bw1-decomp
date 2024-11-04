@@ -45,7 +45,7 @@ struct FixedObject
 };
 static_assert(sizeof(struct FixedObject) == 0x58, "Data type is of wrong size");
 
-static struct FixedObjectVftable* __vt__11FixedObject = (struct FixedObjectVftable*)0x008db71c;
+static struct FixedObjectVftable* const __vt__11FixedObject = (struct FixedObjectVftable* const)0x008db71c;
 
 // Constructors
 
@@ -81,7 +81,7 @@ struct SingleMapFixed
 };
 static_assert(sizeof(struct SingleMapFixed) == 0x5c, "Data type is of wrong size");
 
-static struct SingleMapFixedVftable* __vt__14SingleMapFixed = (struct SingleMapFixedVftable*)0x008dc894;
+static struct SingleMapFixedVftable* const __vt__14SingleMapFixed = (struct SingleMapFixedVftable* const)0x008dc894;
 
 // Override methods
 

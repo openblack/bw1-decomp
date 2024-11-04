@@ -21,7 +21,7 @@ struct GParticleContainer
 };
 static_assert(sizeof(struct GParticleContainer) == 0x40, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__18GParticleContainer = (struct GameThingVftable*)0x008e2a14;
+static struct GameThingVftable* const __vt__18GParticleContainer = (struct GameThingVftable* const)0x008e2a14;
 
 DECLARE_LH_LIST_HEAD(GParticleContainer);
 

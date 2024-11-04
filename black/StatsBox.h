@@ -13,6 +13,6 @@ struct StatsBox
 };
 static_assert(sizeof(struct StatsBox) == 0x74, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__8StatsBox = (struct DialogBoxBaseVftable*)0x008dea14;
+static struct DialogBoxBaseVftable* const __vt__8StatsBox = (struct DialogBoxBaseVftable* const)0x008dea14;
 
 #endif /* BW1_DECOMP_STATS_BOX_INCLUDED_H */

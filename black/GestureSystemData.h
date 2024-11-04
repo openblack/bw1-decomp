@@ -13,6 +13,6 @@ struct GestureSystemData
 };
 static_assert(sizeof(struct GestureSystemData) == 0x65c, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__17GestureSystemData = (struct BaseVftable*)0x008df7e0;
+static struct BaseVftable* const __vt__17GestureSystemData = (struct BaseVftable* const)0x008df7e0;
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_DATA_INCLUDED_H */

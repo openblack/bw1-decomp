@@ -22,7 +22,7 @@ struct TownSpellIcon
 };
 static_assert(sizeof(struct TownSpellIcon) == 0x118, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__13TownSpellIcon = (struct MultiMapFixedVftable*)0x008e7794;
+static struct MultiMapFixedVftable* const __vt__13TownSpellIcon = (struct MultiMapFixedVftable* const)0x008e7794;
 
 DECLARE_LH_LIST_HEAD(TownSpellIcon);
 

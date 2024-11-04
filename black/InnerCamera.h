@@ -90,7 +90,7 @@ struct InnerCamera
 };
 static_assert(sizeof(struct InnerCamera) == 0x46c, "Data type is of wrong size");
 
-static struct InnerCameraVftable* __vt__11InnerCamera = (struct InnerCameraVftable*)0x0099ee70;
+static struct InnerCameraVftable* const __vt__11InnerCamera = (struct InnerCameraVftable* const)0x0099ee70;
 
 // Constructors
 

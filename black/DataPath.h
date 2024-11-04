@@ -23,7 +23,7 @@ struct DataPath
 };
 static_assert(sizeof(struct DataPath) == 0x30, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__8DataPath = (struct GameThingVftable*)0x0092b41c;
+static struct GameThingVftable* const __vt__8DataPath = (struct GameThingVftable* const)0x0092b41c;
 
 // Constructors
 

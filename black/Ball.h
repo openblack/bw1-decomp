@@ -39,7 +39,7 @@ struct Ball
 };
 static_assert(sizeof(struct Ball) == 0xb8, "Data type is of wrong size");
 
-static struct MobileVftable* __vt__4Ball = (struct MobileVftable*)0x008c4f74;
+static struct MobileVftable* const __vt__4Ball = (struct MobileVftable* const)0x008c4f74;
 
 // Constructors
 

@@ -18,7 +18,7 @@ struct GFootpathNode
 };
 static_assert(sizeof(struct GFootpathNode) == 0x30, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__13GFootpathNode = (struct GameThingVftable*)0x008ddfbc;
+static struct GameThingVftable* const __vt__13GFootpathNode = (struct GameThingVftable* const)0x008ddfbc;
 
 // Constructors
 

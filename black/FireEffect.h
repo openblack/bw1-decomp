@@ -34,7 +34,7 @@ struct FireEffect
 };
 static_assert(sizeof(struct FireEffect) == 0x50, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__10FireEffect = (struct GameThingVftable*)0x009996d4;
+static struct GameThingVftable* const __vt__10FireEffect = (struct GameThingVftable* const)0x009996d4;
 
 // Constructors
 

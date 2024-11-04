@@ -29,7 +29,7 @@ struct GFootpath
 };
 static_assert(sizeof(struct GFootpath) == 0x24, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__9GFootpath = (struct GameThingVftable*)0x008de0bc;
+static struct GameThingVftable* const __vt__9GFootpath = (struct GameThingVftable* const)0x008de0bc;
 
 // Static methods
 

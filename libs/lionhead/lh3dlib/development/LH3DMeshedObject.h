@@ -18,7 +18,7 @@ struct LH3DMeshedObject
 };
 static_assert(sizeof(struct LH3DMeshedObject) == 0x80, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* __vt__16LH3DMeshedObject = (struct LH3DObjectVftable*)0x009a2748;
+static struct LH3DObjectVftable* const __vt__16LH3DMeshedObject = (struct LH3DObjectVftable* const)0x009a2748;
 
 // Static methods
 

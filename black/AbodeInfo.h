@@ -57,7 +57,7 @@ struct GAbodeInfo
 };
 static_assert(sizeof(struct GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* __vt__10GAbodeInfo = (struct GObjectInfoVftable*)0x008a99f8;
+static struct GObjectInfoVftable* const __vt__10GAbodeInfo = (struct GObjectInfoVftable* const)0x008a99f8;
 
 // Static methods
 

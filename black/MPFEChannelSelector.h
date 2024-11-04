@@ -39,7 +39,7 @@ struct MPFEChannelSelector
 };
 static_assert(sizeof(struct MPFEChannelSelector) == 0x58, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__19MPFEChannelSelector = (struct DialogBoxBaseVftable*)0x00930780;
+static struct DialogBoxBaseVftable* const __vt__19MPFEChannelSelector = (struct DialogBoxBaseVftable* const)0x00930780;
 
 // Constructors
 

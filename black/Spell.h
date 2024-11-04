@@ -93,7 +93,7 @@ struct Spell
 };
 static_assert(sizeof(struct Spell) == 0xec, "Data type is of wrong size");
 
-static struct SpellVftable* __vt__5Spell = (struct SpellVftable*)0x009805b0;
+static struct SpellVftable* const __vt__5Spell = (struct SpellVftable* const)0x009805b0;
 
 // Constructors
 

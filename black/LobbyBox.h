@@ -13,6 +13,6 @@ struct LobbyBox
 };
 static_assert(sizeof(struct LobbyBox) == 0x8c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__8LobbyBox = (struct DialogBoxBaseVftable*)0x008deba4;
+static struct DialogBoxBaseVftable* const __vt__8LobbyBox = (struct DialogBoxBaseVftable* const)0x008deba4;
 
 #endif /* BW1_DECOMP_LOBBY_BOX_INCLUDED_H */

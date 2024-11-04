@@ -29,7 +29,7 @@ struct LHDLL
 };
 static_assert(sizeof(struct LHDLL) == 0x24, "Data type is of wrong size");
 
-static struct LHDLLVftable* __vt__5LHDLL = (struct LHDLLVftable*)0x0099f014;
+static struct LHDLLVftable* const __vt__5LHDLL = (struct LHDLLVftable* const)0x0099f014;
 
 // Static methods
 

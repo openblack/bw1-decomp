@@ -15,7 +15,7 @@ struct ScriptHighlight
 };
 static_assert(sizeof(struct ScriptHighlight) == 0x8c, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__15ScriptHighlight = (struct ObjectVftable*)0x0094228c;
+static struct ObjectVftable* const __vt__15ScriptHighlight = (struct ObjectVftable* const)0x0094228c;
 
 // Static methods
 

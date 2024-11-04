@@ -13,6 +13,6 @@ struct MainMenu
 };
 static_assert(sizeof(struct MainMenu) == 0x38, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__8MainMenu = (struct DialogBoxBaseVftable*)0x008dec44;
+static struct DialogBoxBaseVftable* const __vt__8MainMenu = (struct DialogBoxBaseVftable* const)0x008dec44;
 
 #endif /* BW1_DECOMP_MAIN_MENU_INCLUDED_H */

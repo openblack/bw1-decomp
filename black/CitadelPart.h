@@ -26,7 +26,7 @@ struct CitadelPart
 };
 static_assert(sizeof(struct CitadelPart) == 0x8c, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__11CitadelPart = (struct MultiMapFixedVftable*)0x008cab00;
+static struct MultiMapFixedVftable* const __vt__11CitadelPart = (struct MultiMapFixedVftable* const)0x008cab00;
 
 // Constructors
 
