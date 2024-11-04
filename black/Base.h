@@ -40,7 +40,7 @@ void* __cdecl __nw__4BaseFUl(size_t size, const char* file_name, uint32_t line);
 
 // Constructors
 
-// win1.41 007bc650 mac 100a0450 Base::Base(void)
+// win1.41 inlined mac 100a0450 Base::Base(void)
 struct Base* __fastcall __ct__4BaseFv(struct Base* this);
 
 // Non-virtual methods
