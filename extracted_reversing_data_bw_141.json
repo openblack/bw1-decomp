@@ -46463,12 +46463,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_GameThing",
+      "type": "struct LHLinkedNode__GameThing",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_GameThing *",
+          "type": "struct LHLinkedNode__GameThing *",
           "offset": 0
         },
         {
@@ -46480,12 +46480,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_GameThing",
+      "type": "struct LHLinkedList__GameThing",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_GameThing *",
+          "type": "struct LHLinkedNode__GameThing *",
           "offset": 0
         },
         {
@@ -51824,12 +51824,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_GameThingWithPos",
+      "type": "struct LHLinkedNode__GameThingWithPos",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_GameThingWithPos *",
+          "type": "struct LHLinkedNode__GameThingWithPos *",
           "offset": 0
         },
         {
@@ -51841,12 +51841,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_GameThingWithPos",
+      "type": "struct LHLinkedList__GameThingWithPos",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_GameThingWithPos *",
+          "type": "struct LHLinkedNode__GameThingWithPos *",
           "offset": 0
         },
         {
@@ -60535,7 +60535,7 @@
         "struct RPHolder *",
         "struct Creature *",
         "int",
-        "void (*)(int, struct Point2D, float, int)"
+        "void (*)(int, struct Point2D, float, int) __attribute__((cdecl))"
       ],
       "arg_names": [
         "this",
@@ -60544,7 +60544,7 @@
         "param_3",
         "param_4"
       ],
-      "signature": "void (struct Object *, const void *, struct RPHolder *, struct Creature *, int, void (*)(int, struct Point2D, float, int)) __attribute__((fastcall))"
+      "signature": "void (struct Object *, const void *, struct RPHolder *, struct Creature *, int, void (*)(int, struct Point2D, float, int) __attribute__((cdecl))) __attribute__((fastcall))"
     },
     {
       "kind": "FUNCTIONPROTO",
@@ -62293,12 +62293,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Object",
+      "type": "struct LHLinkedNode__Object",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Object *",
+          "type": "struct LHLinkedNode__Object *",
           "offset": 0
         },
         {
@@ -62310,12 +62310,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Object",
+      "type": "struct LHLinkedList__Object",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Object *",
+          "type": "struct LHLinkedNode__Object *",
           "offset": 0
         },
         {
@@ -63450,12 +63450,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_MultiMapFixed",
+      "type": "struct LHLinkedNode__MultiMapFixed",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_MultiMapFixed *",
+          "type": "struct LHLinkedNode__MultiMapFixed *",
           "offset": 0
         },
         {
@@ -63467,12 +63467,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_MultiMapFixed",
+      "type": "struct LHLinkedList__MultiMapFixed",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_MultiMapFixed *",
+          "type": "struct LHLinkedNode__MultiMapFixed *",
           "offset": 0
         },
         {
@@ -70221,12 +70221,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Living",
+      "type": "struct LHLinkedNode__Living",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Living *",
+          "type": "struct LHLinkedNode__Living *",
           "offset": 0
         },
         {
@@ -70238,12 +70238,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Living",
+      "type": "struct LHLinkedList__Living",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Living *",
+          "type": "struct LHLinkedNode__Living *",
           "offset": 0
         },
         {
@@ -70509,12 +70509,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Villager",
+      "type": "struct LHLinkedNode__Villager",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Villager *",
+          "type": "struct LHLinkedNode__Villager *",
           "offset": 0
         },
         {
@@ -70526,12 +70526,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Villager",
+      "type": "struct LHLinkedList__Villager",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Villager *",
+          "type": "struct LHLinkedNode__Villager *",
           "offset": 0
         },
         {
@@ -70865,18 +70865,6 @@
           "name": "count",
           "type": "uint32_t",
           "offset": 4
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct Name",
-      "size": 32,
-      "members": [
-        {
-          "name": "string",
-          "type": "char[32]",
-          "offset": 0
         }
       ]
     },
@@ -71526,6 +71514,18 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct Name",
+      "size": 32,
+      "members": [
+        {
+          "name": "string",
+          "type": "char[32]",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct GAbodeInfo",
       "size": 456,
       "members": [
@@ -71868,12 +71868,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_AnimatedStatic",
+      "type": "struct LHLinkedNode__AnimatedStatic",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_AnimatedStatic *",
+          "type": "struct LHLinkedNode__AnimatedStatic *",
           "offset": 0
         },
         {
@@ -71885,12 +71885,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_AnimatedStatic",
+      "type": "struct LHLinkedList__AnimatedStatic",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_AnimatedStatic *",
+          "type": "struct LHLinkedNode__AnimatedStatic *",
           "offset": 0
         },
         {
@@ -71953,12 +71953,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_TownArtifact",
+      "type": "struct LHLinkedNode__TownArtifact",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_TownArtifact *",
+          "type": "struct LHLinkedNode__TownArtifact *",
           "offset": 0
         },
         {
@@ -71970,12 +71970,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_TownArtifact",
+      "type": "struct LHLinkedList__TownArtifact",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_TownArtifact *",
+          "type": "struct LHLinkedNode__TownArtifact *",
           "offset": 0
         },
         {
@@ -72140,12 +72140,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_MobileObject",
+      "type": "struct LHLinkedNode__MobileObject",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_MobileObject *",
+          "type": "struct LHLinkedNode__MobileObject *",
           "offset": 0
         },
         {
@@ -72157,12 +72157,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_MobileObject",
+      "type": "struct LHLinkedList__MobileObject",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_MobileObject *",
+          "type": "struct LHLinkedNode__MobileObject *",
           "offset": 0
         },
         {
@@ -75824,7 +75824,7 @@
         },
         {
           "name": "building_worker_list",
-          "type": "struct LHLinkedList__p_Villager",
+          "type": "struct LHLinkedList__Villager",
           "offset": 24
         },
         {
@@ -75856,12 +75856,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_BuildingSite",
+      "type": "struct LHLinkedNode__BuildingSite",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_BuildingSite *",
+          "type": "struct LHLinkedNode__BuildingSite *",
           "offset": 0
         },
         {
@@ -75873,12 +75873,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_BuildingSite",
+      "type": "struct LHLinkedList__BuildingSite",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_BuildingSite *",
+          "type": "struct LHLinkedNode__BuildingSite *",
           "offset": 0
         },
         {
@@ -78965,12 +78965,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_GClimate",
+      "type": "struct LHLinkedNode__GClimate",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_GClimate *",
+          "type": "struct LHLinkedNode__GClimate *",
           "offset": 0
         },
         {
@@ -78982,12 +78982,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_GClimate",
+      "type": "struct LHLinkedList__GClimate",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_GClimate *",
+          "type": "struct LHLinkedNode__GClimate *",
           "offset": 0
         },
         {
@@ -79382,6 +79382,18 @@
     },
     {
       "kind": "STRUCT_DECL",
+      "type": "struct ANM_Name",
+      "size": 32,
+      "members": [
+        {
+          "name": "string",
+          "type": "char[32]",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
       "type": "struct CFrameData",
       "size": 264,
       "members": [
@@ -79500,7 +79512,7 @@
         },
         {
           "name": "animation_names",
-          "type": "struct Name[24]",
+          "type": "struct ANM_Name[24]",
           "offset": 4
         },
         {
@@ -79527,7 +79539,7 @@
         },
         {
           "name": "category_names",
-          "type": "struct Name[24]",
+          "type": "struct ANM_Name[24]",
           "offset": 8
         },
         {
@@ -79544,7 +79556,7 @@
       "members": [
         {
           "name": "name",
-          "type": "struct Name",
+          "type": "struct ANM_Name",
           "offset": 0
         },
         {
@@ -79731,7 +79743,7 @@
       "members": [
         {
           "name": "mAnimName",
-          "type": "struct Name",
+          "type": "struct ANM_Name",
           "offset": 0
         },
         {
@@ -81483,12 +81495,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_CreatureHelpStackEntry",
+      "type": "struct LHLinkedNode__CreatureHelpStackEntry",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_CreatureHelpStackEntry *",
+          "type": "struct LHLinkedNode__CreatureHelpStackEntry *",
           "offset": 0
         },
         {
@@ -81500,12 +81512,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_CreatureHelpStackEntry",
+      "type": "struct LHLinkedList__CreatureHelpStackEntry",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_CreatureHelpStackEntry *",
+          "type": "struct LHLinkedNode__CreatureHelpStackEntry *",
           "offset": 0
         },
         {
@@ -81758,7 +81770,7 @@
         },
         {
           "name": "help_stack_entries",
-          "type": "struct LHLinkedList__p_CreatureHelpStackEntry[42]",
+          "type": "struct LHLinkedList__CreatureHelpStackEntry[42]",
           "offset": 544
         },
         {
@@ -82465,12 +82477,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Creature",
+      "type": "struct LHLinkedNode__Creature",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Creature *",
+          "type": "struct LHLinkedNode__Creature *",
           "offset": 0
         },
         {
@@ -82482,12 +82494,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Creature",
+      "type": "struct LHLinkedList__Creature",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Creature *",
+          "type": "struct LHLinkedNode__Creature *",
           "offset": 0
         },
         {
@@ -83929,12 +83941,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_CreatureLearningEpisode",
+      "type": "struct LHLinkedNode__CreatureLearningEpisode",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_CreatureLearningEpisode *",
+          "type": "struct LHLinkedNode__CreatureLearningEpisode *",
           "offset": 0
         },
         {
@@ -83946,12 +83958,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_CreatureLearningEpisode",
+      "type": "struct LHLinkedList__CreatureLearningEpisode",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_CreatureLearningEpisode *",
+          "type": "struct LHLinkedNode__CreatureLearningEpisode *",
           "offset": 0
         },
         {
@@ -83968,7 +83980,7 @@
       "members": [
         {
           "name": "episodes",
-          "type": "struct LHLinkedList__p_CreatureLearningEpisode",
+          "type": "struct LHLinkedList__CreatureLearningEpisode",
           "offset": 0
         },
         {
@@ -84035,12 +84047,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_AttributeTest",
+      "type": "struct LHLinkedNode__AttributeTest",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_AttributeTest *",
+          "type": "struct LHLinkedNode__AttributeTest *",
           "offset": 0
         },
         {
@@ -84052,12 +84064,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_AttributeTest",
+      "type": "struct LHLinkedList__AttributeTest",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_AttributeTest *",
+          "type": "struct LHLinkedNode__AttributeTest *",
           "offset": 0
         },
         {
@@ -84339,12 +84351,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_CreatureDesireSource",
+      "type": "struct LHLinkedNode__CreatureDesireSource",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_CreatureDesireSource *",
+          "type": "struct LHLinkedNode__CreatureDesireSource *",
           "offset": 0
         },
         {
@@ -84356,12 +84368,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_CreatureDesireSource",
+      "type": "struct LHLinkedList__CreatureDesireSource",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_CreatureDesireSource *",
+          "type": "struct LHLinkedNode__CreatureDesireSource *",
           "offset": 0
         },
         {
@@ -84408,7 +84420,7 @@
         },
         {
           "name": "source_lists",
-          "type": "struct LHLinkedList__p_CreatureDesireSource[40]",
+          "type": "struct LHLinkedList__CreatureDesireSource[40]",
           "offset": 808
         },
         {
@@ -106136,12 +106148,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Field",
+      "type": "struct LHLinkedNode__Field",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Field *",
+          "type": "struct LHLinkedNode__Field *",
           "offset": 0
         },
         {
@@ -106153,12 +106165,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Field",
+      "type": "struct LHLinkedList__Field",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Field *",
+          "type": "struct LHLinkedNode__Field *",
           "offset": 0
         },
         {
@@ -106447,7 +106459,7 @@
         },
         {
           "name": "villagers",
-          "type": "struct LHLinkedList__p_Villager",
+          "type": "struct LHLinkedList__Villager",
           "offset": 128
         },
         {
@@ -106474,12 +106486,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_FishFarm",
+      "type": "struct LHLinkedNode__FishFarm",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_FishFarm *",
+          "type": "struct LHLinkedNode__FishFarm *",
           "offset": 0
         },
         {
@@ -106491,12 +106503,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_FishFarm",
+      "type": "struct LHLinkedList__FishFarm",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_FishFarm *",
+          "type": "struct LHLinkedNode__FishFarm *",
           "offset": 0
         },
         {
@@ -106642,12 +106654,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Flock",
+      "type": "struct LHLinkedNode__Flock",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Flock *",
+          "type": "struct LHLinkedNode__Flock *",
           "offset": 0
         },
         {
@@ -106659,12 +106671,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Flock",
+      "type": "struct LHLinkedList__Flock",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Flock *",
+          "type": "struct LHLinkedNode__Flock *",
           "offset": 0
         },
         {
@@ -106725,12 +106737,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_GFootpath",
+      "type": "struct LHLinkedNode__GFootpath",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_GFootpath *",
+          "type": "struct LHLinkedNode__GFootpath *",
           "offset": 0
         },
         {
@@ -106742,12 +106754,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_GFootpath",
+      "type": "struct LHLinkedList__GFootpath",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_GFootpath *",
+          "type": "struct LHLinkedNode__GFootpath *",
           "offset": 0
         },
         {
@@ -107049,12 +107061,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_GFootpathFinder",
+      "type": "struct LHLinkedNode__GFootpathFinder",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_GFootpathFinder *",
+          "type": "struct LHLinkedNode__GFootpathFinder *",
           "offset": 0
         },
         {
@@ -107066,12 +107078,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_GFootpathFinder",
+      "type": "struct LHLinkedList__GFootpathFinder",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_GFootpathFinder *",
+          "type": "struct LHLinkedNode__GFootpathFinder *",
           "offset": 0
         },
         {
@@ -107093,7 +107105,7 @@
         },
         {
           "name": "footpath_list",
-          "type": "struct LHLinkedList__p_GFootpath",
+          "type": "struct LHLinkedList__GFootpath",
           "offset": 20
         }
       ]
@@ -107147,7 +107159,7 @@
         },
         {
           "name": "followers",
-          "type": "struct LHLinkedList__p_Living",
+          "type": "struct LHLinkedList__Living",
           "offset": 40
         }
       ]
@@ -107257,12 +107269,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Tree",
+      "type": "struct LHLinkedNode__Tree",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Tree *",
+          "type": "struct LHLinkedNode__Tree *",
           "offset": 0
         },
         {
@@ -107274,12 +107286,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Tree",
+      "type": "struct LHLinkedList__Tree",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Tree *",
+          "type": "struct LHLinkedNode__Tree *",
           "offset": 0
         },
         {
@@ -107343,12 +107355,12 @@
         },
         {
           "name": "trees_0",
-          "type": "struct LHLinkedList__p_Tree",
+          "type": "struct LHLinkedList__Tree",
           "offset": 72
         },
         {
           "name": "trees_1",
-          "type": "struct LHLinkedList__p_Tree",
+          "type": "struct LHLinkedList__Tree",
           "offset": 80
         }
       ]
@@ -107409,12 +107421,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Fragment",
+      "type": "struct LHLinkedNode__Fragment",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Fragment *",
+          "type": "struct LHLinkedNode__Fragment *",
           "offset": 0
         },
         {
@@ -107426,12 +107438,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Fragment",
+      "type": "struct LHLinkedList__Fragment",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Fragment *",
+          "type": "struct LHLinkedNode__Fragment *",
           "offset": 0
         },
         {
@@ -109584,7 +109596,7 @@
         },
         {
           "name": "homeless_list",
-          "type": "struct LHLinkedList__p_Villager",
+          "type": "struct LHLinkedList__Villager",
           "offset": 1896
         },
         {
@@ -109604,12 +109616,12 @@
         },
         {
           "name": "field_list",
-          "type": "struct LHLinkedList__p_Field",
+          "type": "struct LHLinkedList__Field",
           "offset": 1920
         },
         {
           "name": "fish_farms",
-          "type": "struct LHLinkedList__p_FishFarm",
+          "type": "struct LHLinkedList__FishFarm",
           "offset": 1928
         },
         {
@@ -109649,7 +109661,7 @@
         },
         {
           "name": "playthings",
-          "type": "struct LHLinkedList__p_Object",
+          "type": "struct LHLinkedList__Object",
           "offset": 2428
         },
         {
@@ -109674,7 +109686,7 @@
         },
         {
           "name": "artifacts",
-          "type": "struct LHLinkedList__p_TownArtifact",
+          "type": "struct LHLinkedList__TownArtifact",
           "offset": 2452
         },
         {
@@ -109806,12 +109818,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Town",
+      "type": "struct LHLinkedNode__Town",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Town *",
+          "type": "struct LHLinkedNode__Town *",
           "offset": 0
         },
         {
@@ -109823,12 +109835,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Town",
+      "type": "struct LHLinkedList__Town",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Town *",
+          "type": "struct LHLinkedNode__Town *",
           "offset": 0
         },
         {
@@ -110368,12 +110380,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Reward",
+      "type": "struct LHLinkedNode__Reward",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Reward *",
+          "type": "struct LHLinkedNode__Reward *",
           "offset": 0
         },
         {
@@ -110385,12 +110397,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Reward",
+      "type": "struct LHLinkedList__Reward",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Reward *",
+          "type": "struct LHLinkedNode__Reward *",
           "offset": 0
         },
         {
@@ -111340,12 +111352,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_TownCentre",
+      "type": "struct LHLinkedNode__TownCentre",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_TownCentre *",
+          "type": "struct LHLinkedNode__TownCentre *",
           "offset": 0
         },
         {
@@ -111357,12 +111369,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_TownCentre",
+      "type": "struct LHLinkedList__TownCentre",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_TownCentre *",
+          "type": "struct LHLinkedNode__TownCentre *",
           "offset": 0
         },
         {
@@ -111555,12 +111567,12 @@
         },
         {
           "name": "mobile_objects",
-          "type": "struct LHLinkedList__p_MobileObject",
+          "type": "struct LHLinkedList__MobileObject",
           "offset": 64
         },
         {
           "name": "footpath_finder",
-          "type": "struct LHLinkedList__p_GFootpathFinder",
+          "type": "struct LHLinkedList__GFootpathFinder",
           "offset": 72
         },
         {
@@ -111615,7 +111627,7 @@
         },
         {
           "name": "flocks",
-          "type": "struct LHLinkedList__p_Flock",
+          "type": "struct LHLinkedList__Flock",
           "offset": 160
         },
         {
@@ -111655,12 +111667,12 @@
         },
         {
           "name": "town_list",
-          "type": "struct LHLinkedList__p_Town",
+          "type": "struct LHLinkedList__Town",
           "offset": 224
         },
         {
           "name": "game_thing_with_pos",
-          "type": "struct LHLinkedList__p_GameThingWithPos",
+          "type": "struct LHLinkedList__GameThingWithPos",
           "offset": 232
         },
         {
@@ -111680,17 +111692,17 @@
         },
         {
           "name": "building_sites",
-          "type": "struct LHLinkedList__p_BuildingSite",
+          "type": "struct LHLinkedList__BuildingSite",
           "offset": 264
         },
         {
           "name": "multi_map_fixed",
-          "type": "struct LHLinkedList__p_MultiMapFixed",
+          "type": "struct LHLinkedList__MultiMapFixed",
           "offset": 272
         },
         {
           "name": "animated_statics",
-          "type": "struct LHLinkedList__p_AnimatedStatic",
+          "type": "struct LHLinkedList__AnimatedStatic",
           "offset": 280
         },
         {
@@ -111700,17 +111712,17 @@
         },
         {
           "name": "rewards",
-          "type": "struct LHLinkedList__p_Reward",
+          "type": "struct LHLinkedList__Reward",
           "offset": 296
         },
         {
           "name": "objects",
-          "type": "struct LHLinkedList__p_Object",
+          "type": "struct LHLinkedList__Object",
           "offset": 304
         },
         {
           "name": "trees",
-          "type": "struct LHLinkedList__p_Tree",
+          "type": "struct LHLinkedList__Tree",
           "offset": 312
         },
         {
@@ -111725,12 +111737,12 @@
         },
         {
           "name": "climates",
-          "type": "struct LHLinkedList__p_GClimate",
+          "type": "struct LHLinkedList__GClimate",
           "offset": 336
         },
         {
           "name": "town_centres",
-          "type": "struct LHLinkedList__p_TownCentre",
+          "type": "struct LHLinkedList__TownCentre",
           "offset": 344
         },
         {
@@ -111755,12 +111767,12 @@
         },
         {
           "name": "town_artifacts",
-          "type": "struct LHLinkedList__p_TownArtifact",
+          "type": "struct LHLinkedList__TownArtifact",
           "offset": 384
         },
         {
           "name": "fragments",
-          "type": "struct LHLinkedList__p_Fragment",
+          "type": "struct LHLinkedList__Fragment",
           "offset": 392
         }
       ]
@@ -113022,12 +113034,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_GSaveLoadPtr",
+      "type": "struct LHLinkedNode__GSaveLoadPtr",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_GSaveLoadPtr *",
+          "type": "struct LHLinkedNode__GSaveLoadPtr *",
           "offset": 0
         },
         {
@@ -113039,12 +113051,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_GSaveLoadPtr",
+      "type": "struct LHLinkedList__GSaveLoadPtr",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_GSaveLoadPtr *",
+          "type": "struct LHLinkedNode__GSaveLoadPtr *",
           "offset": 0
         },
         {
@@ -113106,12 +113118,12 @@
         },
         {
           "name": "save_load_ptr_list",
-          "type": "struct LHLinkedList__p_GSaveLoadPtr",
+          "type": "struct LHLinkedList__GSaveLoadPtr",
           "offset": 544
         },
         {
           "name": "game_thing_list",
-          "type": "struct LHLinkedList__p_GameThing",
+          "type": "struct LHLinkedList__GameThing",
           "offset": 552
         }
       ]
@@ -119945,12 +119957,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_HLineData",
+      "type": "struct LHLinkedNode__HLineData",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_HLineData *",
+          "type": "struct LHLinkedNode__HLineData *",
           "offset": 0
         },
         {
@@ -119962,12 +119974,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_HLineData",
+      "type": "struct LHLinkedList__HLineData",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_HLineData *",
+          "type": "struct LHLinkedNode__HLineData *",
           "offset": 0
         },
         {
@@ -120112,7 +120124,7 @@
         },
         {
           "name": "line_data_list",
-          "type": "struct LHLinkedList__p_HLineData",
+          "type": "struct LHLinkedList__HLineData",
           "offset": 580
         },
         {
@@ -120151,12 +120163,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_VBarData",
+      "type": "struct LHLinkedNode__VBarData",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_VBarData *",
+          "type": "struct LHLinkedNode__VBarData *",
           "offset": 0
         },
         {
@@ -120168,12 +120180,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_VBarData",
+      "type": "struct LHLinkedList__VBarData",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_VBarData *",
+          "type": "struct LHLinkedNode__VBarData *",
           "offset": 0
         },
         {
@@ -120319,7 +120331,7 @@
         },
         {
           "name": "bar_data_list",
-          "type": "struct LHLinkedList__p_VBarData",
+          "type": "struct LHLinkedList__VBarData",
           "offset": 628
         },
         {
@@ -120991,12 +121003,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedNode__p_Q29GGuidance10LastThings",
+      "type": "struct LHLinkedNode__Q29GGuidance10LastThings",
       "size": 8,
       "members": [
         {
           "name": "next",
-          "type": "struct LHLinkedNode__p_Q29GGuidance10LastThings *",
+          "type": "struct LHLinkedNode__Q29GGuidance10LastThings *",
           "offset": 0
         },
         {
@@ -121008,12 +121020,12 @@
     },
     {
       "kind": "STRUCT_DECL",
-      "type": "struct LHLinkedList__p_Q29GGuidance10LastThings",
+      "type": "struct LHLinkedList__Q29GGuidance10LastThings",
       "size": 8,
       "members": [
         {
           "name": "head",
-          "type": "struct LHLinkedNode__p_Q29GGuidance10LastThings *",
+          "type": "struct LHLinkedNode__Q29GGuidance10LastThings *",
           "offset": 0
         },
         {
@@ -121045,7 +121057,7 @@
         },
         {
           "name": "lastThings",
-          "type": "struct LHLinkedList__p_Q29GGuidance10LastThings",
+          "type": "struct LHLinkedList__Q29GGuidance10LastThings",
           "offset": 144
         },
         {
@@ -145613,6 +145625,23 @@
       "is_function_variadic": false
     },
     {
+      "win_addr": -1,
+      "mac_addr": -1,
+      "decorated_name": "SubCollideBlockPos::operator<( const(SubCollideBlockPos const &))",
+      "undecorated_name": "__lt__18SubCollideBlockPosCFRC18SubCollideBlockPos",
+      "return_type": "bool",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "const struct SubCollideBlockPos *",
+        "const struct SubCollideBlockPos *"
+      ],
+      "argument_names": [
+        "this",
+        "other"
+      ],
+      "is_function_variadic": false
+    },
+    {
       "win_addr": 6345744,
       "mac_addr": 269038192,
       "decorated_name": "CircleHugStateInfoT::fetch(MapCoords)",
@@ -146469,6 +146498,21 @@
       "call_type": "__thiscall",
       "argument_types": [
         "struct MultiplayerDatabase *"
+      ],
+      "argument_names": [
+        "this"
+      ],
+      "is_function_variadic": false
+    },
+    {
+      "win_addr": 4642272,
+      "mac_addr": 270302032,
+      "decorated_name": "Name::Name(void)",
+      "undecorated_name": "__ct__4NameFv",
+      "return_type": "struct Name *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct Name *"
       ],
       "argument_names": [
         "this"
@@ -148167,7 +148211,7 @@
       "return_type": "bool",
       "call_type": "__fastcall",
       "argument_types": [
-        "struct LHLinkedList__p_GSaveLoadPtr *",
+        "struct LHLinkedList__GSaveLoadPtr *",
         "const void *",
         "struct GSaveLoadPtr *"
       ],
@@ -159715,10 +159759,9 @@
       "decorated_name": "LHScriptX<c>::Load(char *, LHScriptCommandX<c> *, LH_RETURN (*)(long, LHScriptPramX<c> *), long *)",
       "undecorated_name": "Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl",
       "return_type": "void",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct LHScriptX_c_ *",
-        "const void *",
         "const char *",
         "struct LHScriptCommandX_c_ *",
         "enum LH_RETURN (*)(int, struct LHScriptPramX_c_ *) __attribute__((cdecl))",
@@ -159726,7 +159769,6 @@
       ],
       "argument_names": [
         "this",
-        "edx",
         "path",
         "command",
         "callback",
@@ -159740,16 +159782,14 @@
       "decorated_name": "LHScriptX<c>::LoadOneLine(LHReleasedOSFile &, char *)",
       "undecorated_name": "LoadOneLine__12LHScriptX_c_FR16LHReleasedOSFilePc",
       "return_type": "bool",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct LHScriptX_c_ *",
-        "const void *",
         "struct LHReleasedOSFile *",
         "char *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "file",
         "line"
       ],
@@ -159761,15 +159801,13 @@
       "decorated_name": "LHScriptX<c>::ScanLine(char *)",
       "undecorated_name": "ScanLine__12LHScriptX_c_FPc",
       "return_type": "uint32_t",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct LHScriptX_c_ *",
-        "const void *",
         "char *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "line"
       ],
       "is_function_variadic": false
@@ -159780,16 +159818,14 @@
       "decorated_name": "LHScriptX<c>::LoadFile(char *, long *)",
       "undecorated_name": "LoadFile__12LHScriptX_c_FPcPl",
       "return_type": "uint32_t",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct LHScriptX_c_ *",
-        "const void *",
         "const char *",
         "long *"
       ],
       "argument_names": [
         "this",
-        "edx",
         "path",
         "param_2"
       ],
@@ -159801,7 +159837,7 @@
       "decorated_name": "LHScriptX<c>::DestroyVariables(void)",
       "undecorated_name": "DestroyVariables__12LHScriptX_c_Fv",
       "return_type": "void",
-      "call_type": "__fastcall",
+      "call_type": "__thiscall",
       "argument_types": [
         "struct LHScriptX_c_ *"
       ],
@@ -159917,21 +159953,6 @@
       "call_type": "cdecl",
       "argument_types": [],
       "argument_names": [],
-      "is_function_variadic": false
-    },
-    {
-      "win_addr": 4642272,
-      "mac_addr": 270302032,
-      "decorated_name": "Name::Name(void)",
-      "undecorated_name": "__ct__4NameFv",
-      "return_type": "struct Name *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct Name *"
-      ],
-      "argument_names": [
-        "this"
-      ],
       "is_function_variadic": false
     },
     {
@@ -160574,7 +160595,7 @@
       "argument_types": [
         "struct LHTransport *",
         "struct LHTransport *",
-        "void (*)(void *)",
+        "void (*)(void *) __attribute__((cdecl))",
         "void *"
       ],
       "argument_names": [
@@ -162363,7 +162384,7 @@
     },
     {
       "name": "CreatureList",
-      "type": "struct LHLinkedList__p_Creature",
+      "type": "struct LHLinkedList__Creature",
       "address": 12975352
     },
     {

@@ -713,7 +713,6 @@ released_filepaths_from_strings = {
 
 guessed_filepaths = {
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DMem.h"),
-    BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHScreen.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LHDDEnum.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DObject.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DMeshIntersect.cpp"), # Validated by existance of __sinit_LH3DMeshIntersect_cpp
@@ -777,7 +776,6 @@ guessed_filepaths = {
     BWPath(r"C:\dev\Libs\LIONHEAD\LHMultiplayer\VER4.0\LHNetEvent.h"),
     BWPath(r"C:\dev\Libs\LIONHEAD\LHMultiplayer\VER4.0\LHPacket.h"),
 
-    BWPath(r"C:\Dev\Libs\lionhead\lhlib\VER5.0\Name.h"),
     BWPath(r"C:\Dev\Libs\lionhead\lhlib\VER5.0\LHJoypad.h"),
     BWPath(r"C:\Dev\Libs\lionhead\lhlib\VER5.0\LHKey.h"),
     BWPath(r"C:\Dev\Libs\lionhead\lhlib\VER5.0\LHReturn.h"),
@@ -907,6 +905,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\MobileObjectInfo.h"),
     BWPath(r"C:\Dev\black\MobileWallHugInfo.h"),
     BWPath(r"C:\Dev\black\MultiMapFixedInfo.h"),
+    BWPath(r"C:\Dev\black\Name.h"),
     BWPath(r"C:\Dev\black\ObjectInfo.h"),
     BWPath(r"C:\Dev\black\PhysicsSaveInfo.cpp"),
     BWPath(r"C:\Dev\black\PlaytimeInfo.h"),
@@ -1155,6 +1154,7 @@ ROOMMATE_CLASS_MAP = {
     "MultiChildList": "MultiMapFixed",
     "CreatureFaceState": "CreatureFace",
     "Vertex3D": "LH3DVertex",
+    "ANM_Name": "LH3DAnim",
     "LH3DAnimSet": "LH3DAnim",
     "CatInfo": "LH3DAnim",
     "CAnim": "LH3DAnim",
