@@ -101,7 +101,7 @@ class Struct(Composite):
     constructors: list[DefinedFunctionPrototype] = []
     methods: list[DefinedFunctionPrototype] = []
     static_methods: list[DefinedFunctionPrototype] = []
-    print_offset_at_each: typing.Optional[int] = None
+    print_offset_at_each: typing.Optional[int] = 0x10
 
     @property
     def decorated_name(self):
