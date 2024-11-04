@@ -1276,12 +1276,9 @@ dev_filepaths = {BWPath(str(a.parent).lower().replace("c:", "C:").replace("/mp/"
 
 def filter_paths(path: BWPath) -> BWPath:
     # Define parts to remove
-    parts_to_remove = {'debug', 'release', 'mfcdebug', 'development', 'released', 'headers', 'mp'}
+    parts_to_remove = {'debug', 'release', 'mfcdebug', 'mp'}
     # Convert to lower case and filter parts
-    filtered_parts = [
-        part.lower() for part in path.parts
-        if part.lower() not in parts_to_remove and not re.match(r'version \d+\.\d+', part.lower()) and not re.match(r'ver\d+\.\d+', part.lower())
-    ]
+    filtered_parts = [part.lower() for part in path.parts if part.lower() not in parts_to_remove]
     return BWPath(*filtered_parts)
 
 
