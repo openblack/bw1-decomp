@@ -1,0 +1,106 @@
+#ifndef BW1_DECOMP_SETUP_LIST_INCLUDED_H
+#define BW1_DECOMP_SETUP_LIST_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t, uint8_t */
+#include <uchar.h> /* For char16_t */
+
+#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
+
+#include "SetupControl.h" /* For struct SetupControl, struct SetupControlVftable */
+#include "SetupRect.h" /* For struct SetupRect */
+
+// Forward Declares
+
+struct SetupList;
+
+struct SetupList__ListBoxDraw_t
+{
+  uint32_t (__stdcall* function)(struct SetupList* widget, int value, int x_min, int y_min, int x_max, int y_max, int param_7, int style);  /* 0x0 */
+};
+static_assert(sizeof(struct SetupList__ListBoxDraw_t) == 0x4, "Data type is of wrong size");
+
+struct SetupListVftable
+{
+  struct SetupControlVftable super;  /* 0x0 */
+  bool (__fastcall* IsSelected)(struct SetupList* this, const void* edx, int index);  /* 0x34 */
+};
+static_assert(sizeof(struct SetupListVftable) == 0x38, "Data type is of wrong size");
+
+struct SetupList
+{
+  struct SetupControl super;  /* 0x0 */
+  bool field_0x23c;
+  int scrollback_width;  /* 0x240 */
+  bool field_0x244;
+  int selected_index;
+  int field_0x24c;
+  int num_items;  /* 0x250 */
+  int field_0x254;
+  char16_t (*item_labels)[0x100];
+  int* item_heights;
+  uint32_t* field_0x260;
+  uint32_t* field_0x264;
+  struct LH3DColor* color;
+  struct SetupList__ListBoxDraw_t* ListBoxDraw;
+  int scroll_distance;  /* 0x270 */
+  bool show_scrollbar;
+  int field_0x278;
+  int scroll_position;
+  int field_0x280;
+  bool field_0x284;
+  bool field_0x285;
+  struct LHCoord drag_start;
+  bool use_color_background;  /* 0x290 */
+  bool draw_highlight_box;
+  uint8_t field_0x292;
+  uint8_t field_0x293;
+  struct LH3DColor box_outline_color;
+  struct LH3DColor selection_color;
+  uint8_t field_0x29c;
+  struct SetupRect selection_rect;  /* 0x2a0 */
+};
+static_assert(sizeof(struct SetupList) == 0x2b0, "Data type is of wrong size");
+
+static struct SetupListVftable* __vt__9SetupList = (struct SetupListVftable*)0x008ab324;
+
+// Constructors
+
+// win1.41 0040a450 mac 10494bc0 SetupList::SetupList(int, int, int, int, int)
+struct SetupList* __fastcall __ct__9SetupListFiiiii(struct SetupList* this, const void* edx, int id, int x, int y, int width, int height);
+
+// Non-virtual methods
+
+// win1.41 00409dd0 mac 10594000 SetupList::AutoScroll(bool)
+void __fastcall AutoScroll__9SetupListFb(struct SetupList* this, const void* edx, bool param_1);
+// win1.41 0040aaf0 mac 1056d710 SetupList::UpdateHeights(void)
+void __fastcall UpdateHeights__9SetupListFv(struct SetupList* this);
+// win1.41 0040ad60 mac 10169200 SetupList::DeleteString(int)
+void __fastcall DeleteString__9SetupListFi(struct SetupList* this, const void* edx, int index);
+// win1.41 0040ae70 mac 10112d20 SetupList::InsertString(int, wchar_t *)
+void __fastcall InsertString__9SetupListFiPw(struct SetupList* this, const void* edx, int index, const char16_t* text);
+// win1.41 0040b050 mac 104ea7a0 SetupList::SetNum(int)
+void __fastcall SetNum__9SetupListFi(struct SetupList* this, const void* edx, int num);
+
+// Override methods
+
+// win1.41 0040a5c0 mac 10388e60 SetupList::Draw(bool, bool)
+void __fastcall Draw__9SetupListFbb(struct SetupList* this, const void* edx, bool hovered, bool selected);
+// win1.41 0040a110 mac 101c7fc0 SetupList::Drag(int, int)
+void __fastcall Drag__9SetupListFii(struct SetupList* this, const void* edx, int x, int y);
+// win1.41 0040a370 mac 10478900 SetupList::MouseDown(int, int, bool)
+void __fastcall MouseDown__9SetupListFiib(struct SetupList* this, const void* edx, int x, int y, bool param_3);
+// win1.41 0040a3f0 mac 100b4690 SetupList::MouseUp(int, int, bool)
+void __fastcall MouseUp__9SetupListFiib(struct SetupList* this, const void* edx, int x, int y, bool param_3);
+// win1.41 0040a360 mac 100b7170 SetupList::Click(int, int)
+void __fastcall Click__9SetupListFii(struct SetupList* this, const void* edx, int x, int y);
+// win1.41 00409eb0 mac 103d24f0 SetupList::KeyDown(int, int)
+void __fastcall KeyDown__9SetupListFii(struct SetupList* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+// win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
+struct SetupList* __fastcall __dt__9SetupListFb(struct SetupList* this, const void* edx, bool param_1);
+// win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
+bool __fastcall IsSelected__9SetupListFi(struct SetupList* this, const void* edx, int index);
+
+#endif /* BW1_DECOMP_SETUP_LIST_INCLUDED_H */

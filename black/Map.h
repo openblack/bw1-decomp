@@ -1,0 +1,101 @@
+#ifndef BW1_DECOMP_MAP_INCLUDED_H
+#define BW1_DECOMP_MAP_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
+
+#include <chlasm/Enum.h> /* For enum OBJECT_TYPE */
+
+#include "Base.h" /* For struct Base */
+
+// Forward Declares
+
+struct Object;
+
+struct MapCell
+{
+  struct Object* first_object_mobile;  /* 0x0 */
+  struct Object* first_object_fixed;
+};
+static_assert(sizeof(struct MapCell) == 0x8, "Data type is of wrong size");
+
+// Static methods
+
+// win1.41 00601510 mac 1000b040 MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)
+bool __cdecl DoesObjectTypeCountAsFixed__7MapCellF11OBJECT_TYPE(enum OBJECT_TYPE type);
+
+// Non-virtual methods
+
+// win1.41 00601b60 mac 10054090 MapCell::SetFirstObjectMobile(Object *)
+void __fastcall SetFirstObjectMobile__7MapCellFP6Object(struct MapCell* this, const void* edx, struct Object* object);
+// win1.41 00601b70 mac 104a6ee0 MapCell::SetFirstObjectFixed(Object *)
+void __fastcall SetFirstObjectFixed__7MapCellFP6Object(struct MapCell* this, const void* edx, struct Object* object);
+// win1.41 00601380 mac 101cbfc0 MapCell::Clean(void)
+void __fastcall Clean__7MapCellFv(struct MapCell* this);
+// win1.41 006015e0 mac 100121f0 MapCell::FindTypeOnMap(OBJECT_TYPE, Object *) const
+struct Object* __fastcall FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object(struct MapCell* this, const void* edx, enum OBJECT_TYPE type, struct Object* object);
+// win1.41 00601b80 mac 100544d0 MapCell::GetX(void) const
+uint32_t __fastcall GetX__7MapCellCFv(const struct MapCell* this);
+// win1.41 00601ba0 mac 10054640 MapCell::GetZ(void) const
+uint32_t __fastcall GetZ__7MapCellCFv(const struct MapCell* this);
+
+struct MapCellIterator
+{
+  struct Object* object;  /* 0x0 */
+  bool is_fixed;
+  struct MapCell* cell;
+};
+static_assert(sizeof(struct MapCellIterator) == 0xc, "Data type is of wrong size");
+
+// Non-virtual methods
+
+// win1.41 inlined mac 1002c620 MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)
+void __fastcall MoveToMobileObsIfNeededAndPoss__15MapCellIteratorFv(struct MapCellIterator* this);
+
+struct GMap
+{
+  struct Base super;  /* 0x0 */
+  uint8_t field_0x8;
+  uint8_t field_0x9;
+  uint8_t field_0xa;
+  uint8_t field_0xb;
+  uint32_t cell_extent_zx[0x2];
+  uint32_t field_0x14;
+  uint32_t field_0x18;
+  uint32_t field_0x1c;
+  uint32_t field_0x20;
+  uint32_t field_0x24;
+  uint32_t field_0x28;
+  uint32_t field_0x2c;
+  uint32_t field_0x30;
+  uint32_t field_0x34;
+  uint32_t field_0x38;
+  uint8_t field_0x3c;
+  uint8_t field_0x3d;
+  uint8_t field_0x3e;
+  uint8_t field_0x3f;
+  uint32_t field_0x40;
+  struct MapCell cells[0x200][0x200];
+  uint16_t count_0x200044;
+  uint8_t field_0x200046;
+  uint8_t field_0x200047;
+  uint8_t field_0x200048;
+  uint8_t field_0x200049;
+  uint8_t field_0x20004a;
+  uint8_t field_0x20004b;
+  uint8_t field_0x20004c;
+  uint8_t field_0x20004d;
+  uint8_t field_0x20004e;
+  uint8_t field_0x20004f;
+};
+static_assert(sizeof(struct GMap) == 0x200050, "Data type is of wrong size");
+
+// Non-virtual methods
+
+// win1.41 00612660 mac 100fddf0 GMap::ToMap(long, long)
+struct MapCell* __fastcall ToMap__4GMapFll(struct GMap* this, const void* edx, uint32_t cell_x, uint32_t cell_z);
+// win1.41 00612690 mac 10049c10 GMap::InBounds(long, long)
+bool __fastcall InBounds__4GMapCFll(struct GMap* this, const void* edx, uint32_t x, uint32_t z);
+
+#endif /* BW1_DECOMP_MAP_INCLUDED_H */
