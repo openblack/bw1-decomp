@@ -34,7 +34,7 @@ struct MapShield
 };
 static_assert(sizeof(struct MapShield) == 0x68, "Data type is of wrong size");
 
-static struct MapShieldVftable* __vt__9MapShield = (struct MapShieldVftable*)0x00982e74;
+static struct MapShieldVftable* const __vt__9MapShield = (struct MapShieldVftable* const)0x00982e74;
 
 // Constructors
 

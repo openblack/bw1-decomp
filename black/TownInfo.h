@@ -29,6 +29,6 @@ struct GTownInfo
 };
 static_assert(sizeof(struct GTownInfo) == 0x18c, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__9GTownInfo = (struct GBaseInfoVftable*)0x00999ab4;
+static struct GBaseInfoVftable* const __vt__9GTownInfo = (struct GBaseInfoVftable* const)0x00999ab4;
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */

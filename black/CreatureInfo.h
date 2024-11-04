@@ -29,6 +29,6 @@ struct CreatureInfo
 };
 static_assert(sizeof(struct CreatureInfo) == 0x394, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* __vt__12CreatureInfo = (struct GObjectInfoVftable*)0x008cc758;
+static struct GObjectInfoVftable* const __vt__12CreatureInfo = (struct GObjectInfoVftable* const)0x008cc758;
 
 #endif /* BW1_DECOMP_CREATURE_INFO_INCLUDED_H */

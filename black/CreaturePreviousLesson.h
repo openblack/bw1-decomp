@@ -14,6 +14,6 @@ struct CreaturePreviousLesson
 };
 static_assert(sizeof(struct CreaturePreviousLesson) == 0x120c, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__22CreaturePreviousLesson = (struct BaseVftable*)0x008d0430;
+static struct BaseVftable* const __vt__22CreaturePreviousLesson = (struct BaseVftable* const)0x008d0430;
 
 #endif /* BW1_DECOMP_CREATURE_PREVIOUS_LESSON_INCLUDED_H */

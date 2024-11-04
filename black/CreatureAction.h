@@ -59,6 +59,6 @@ struct CreaturePreviousActions
 };
 static_assert(sizeof(struct CreaturePreviousActions) == 0x528, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__23CreaturePreviousActions = (struct BaseVftable*)0x008d154c;
+static struct BaseVftable* const __vt__23CreaturePreviousActions = (struct BaseVftable* const)0x008d154c;
 
 #endif /* BW1_DECOMP_CREATURE_ACTION_INCLUDED_H */

@@ -32,7 +32,7 @@ struct GameOSFile
 };
 static_assert(sizeof(struct GameOSFile) == 0x230, "Data type is of wrong size");
 
-static struct LHOSFileVftable* __vt__10GameOSFile = (struct LHOSFileVftable*)0x008df960;
+static struct LHOSFileVftable* const __vt__10GameOSFile = (struct LHOSFileVftable* const)0x008df960;
 
 // Static methods
 

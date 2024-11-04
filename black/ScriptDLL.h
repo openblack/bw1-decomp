@@ -62,7 +62,7 @@ struct ScriptDLL
 };
 static_assert(sizeof(struct ScriptDLL) == 0xdc, "Data type is of wrong size");
 
-static struct LHDLLVftable* __vt__9ScriptDLL = (struct LHDLLVftable*)0x00942200;
+static struct LHDLLVftable* const __vt__9ScriptDLL = (struct LHDLLVftable* const)0x00942200;
 
 // Static methods
 

@@ -304,7 +304,7 @@ struct GameThingWithPos
 };
 static_assert(sizeof(struct GameThingWithPos) == 0x28, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__16GameThingWithPos = (struct GameThingWithPosVftable*)0x008c31a0;
+static struct GameThingWithPosVftable* const __vt__16GameThingWithPos = (struct GameThingWithPosVftable* const)0x008c31a0;
 
 // Constructors
 

@@ -18,7 +18,7 @@ struct Wonder
 };
 static_assert(sizeof(struct Wonder) == 0xc8, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__6Wonder = (struct MultiMapFixedVftable*)0x008df96c;
+static struct MultiMapFixedVftable* const __vt__6Wonder = (struct MultiMapFixedVftable* const)0x008df96c;
 
 // Static methods
 

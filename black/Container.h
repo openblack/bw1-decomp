@@ -31,6 +31,6 @@ struct Container
 };
 static_assert(sizeof(struct Container) == 0x30, "Data type is of wrong size");
 
-static struct ContainerVftable* __vt__9Container = (struct ContainerVftable*)0x008cb980;
+static struct ContainerVftable* const __vt__9Container = (struct ContainerVftable* const)0x008cb980;
 
 #endif /* BW1_DECOMP_CONTAINER_INCLUDED_H */

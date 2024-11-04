@@ -15,7 +15,7 @@ struct Waypoint
 };
 static_assert(sizeof(struct Waypoint) == 0x2c, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__8Waypoint = (struct GameThingWithPosVftable*)0x0099b4ac;
+static struct GameThingWithPosVftable* const __vt__8Waypoint = (struct GameThingWithPosVftable* const)0x0099b4ac;
 
 DECLARE_LH_LIST_HEAD(Waypoint);
 

@@ -32,6 +32,6 @@ struct DanceGroup
 };
 static_assert(sizeof(struct DanceGroup) == 0x17c, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__10DanceGroup = (struct GameThingVftable*)0x008d44d0;
+static struct GameThingVftable* const __vt__10DanceGroup = (struct GameThingVftable* const)0x008d44d0;
 
 #endif /* BW1_DECOMP_DANCE_GROUP_INCLUDED_H */

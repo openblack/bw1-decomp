@@ -15,6 +15,6 @@ struct GSpellIconInfo
 };
 static_assert(sizeof(struct GSpellIconInfo) == 0x12c, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* __vt__14GSpellIconInfo = (struct GMultiMapFixedInfoVftable*)0x00981a58;
+static struct GMultiMapFixedInfoVftable* const __vt__14GSpellIconInfo = (struct GMultiMapFixedInfoVftable* const)0x00981a58;
 
 #endif /* BW1_DECOMP_SPELL_ICON_INFO_INCLUDED_H */

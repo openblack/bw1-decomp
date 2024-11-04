@@ -13,7 +13,7 @@ struct LoginBox
 };
 static_assert(sizeof(struct LoginBox) == 0x89c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__8LoginBox = (struct DialogBoxBaseVftable*)0x008dec98;
+static struct DialogBoxBaseVftable* const __vt__8LoginBox = (struct DialogBoxBaseVftable* const)0x008dec98;
 
 // Non-virtual methods
 

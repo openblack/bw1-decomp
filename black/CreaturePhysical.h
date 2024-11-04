@@ -21,7 +21,7 @@ struct CreatureDamageMap
 };
 static_assert(sizeof(struct CreatureDamageMap) == 0x10, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__17CreatureDamageMap = (struct BaseVftable*)0x008d14f0;
+static struct BaseVftable* const __vt__17CreatureDamageMap = (struct BaseVftable* const)0x008d14f0;
 
 struct CreaturePhysical
 {
@@ -55,7 +55,7 @@ struct CreaturePhysical
 };
 static_assert(sizeof(struct CreaturePhysical) == 0x74, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__16CreaturePhysical = (struct BaseVftable*)0x008d14d0;
+static struct BaseVftable* const __vt__16CreaturePhysical = (struct BaseVftable* const)0x008d14d0;
 
 // Constructors
 

@@ -52,7 +52,7 @@ struct TownDesire
 };
 static_assert(sizeof(struct TownDesire) == 0x564, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__10TownDesire = (struct BaseVftable*)0x0099a0c8;
+static struct BaseVftable* const __vt__10TownDesire = (struct BaseVftable* const)0x0099a0c8;
 
 // Constructors
 

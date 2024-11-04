@@ -15,7 +15,7 @@ struct CreatureBeliefList
 };
 static_assert(sizeof(struct CreatureBeliefList) == 0x14, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__18CreatureBeliefList = (struct BaseVftable*)0x008cf90c;
+static struct BaseVftable* const __vt__18CreatureBeliefList = (struct BaseVftable* const)0x008cf90c;
 
 struct AllocatedBeliefList
 {
@@ -27,7 +27,7 @@ struct AllocatedBeliefList
 };
 static_assert(sizeof(struct AllocatedBeliefList) == 0x18, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__19AllocatedBeliefList = (struct BaseVftable*)0x008cfe58;
+static struct BaseVftable* const __vt__19AllocatedBeliefList = (struct BaseVftable* const)0x008cfe58;
 
 struct CreatureBeliefs
 {
@@ -38,7 +38,7 @@ struct CreatureBeliefs
 };
 static_assert(sizeof(struct CreatureBeliefs) == 0x270, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__15CreatureBeliefs = (struct BaseVftable*)0x008cf8ec;
+static struct BaseVftable* const __vt__15CreatureBeliefs = (struct BaseVftable* const)0x008cf8ec;
 
 // Non-virtual methods
 

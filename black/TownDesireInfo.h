@@ -43,7 +43,7 @@ struct GTownDesireInfo
 };
 static_assert(sizeof(struct GTownDesireInfo) == 0x90, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__15GTownDesireInfo = (struct GBaseInfoVftable*)0x0099a098;
+static struct GBaseInfoVftable* const __vt__15GTownDesireInfo = (struct GBaseInfoVftable* const)0x0099a098;
 
 // Non-virtual methods
 

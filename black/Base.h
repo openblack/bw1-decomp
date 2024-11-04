@@ -31,7 +31,7 @@ struct Base
 };
 static_assert(sizeof(struct Base) == 0x8, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__4Base = (struct BaseVftable*)0x008a9a44;
+static struct BaseVftable* const __vt__4Base = (struct BaseVftable* const)0x008a9a44;
 
 // Static methods
 

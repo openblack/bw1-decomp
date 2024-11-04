@@ -33,7 +33,7 @@ struct Reaction
 };
 static_assert(sizeof(struct Reaction) == 0x44, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__8Reaction = (struct GameThingVftable*)0x008f3674;
+static struct GameThingVftable* const __vt__8Reaction = (struct GameThingVftable* const)0x008f3674;
 
 // Static methods
 

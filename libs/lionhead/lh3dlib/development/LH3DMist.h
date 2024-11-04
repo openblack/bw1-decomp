@@ -19,7 +19,7 @@ struct LH3DMist
 };
 static_assert(sizeof(struct LH3DMist) == 0x9c, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* __vt__8LH3DMist = (struct LH3DObjectVftable*)0x009a22e8;
+static struct LH3DObjectVftable* const __vt__8LH3DMist = (struct LH3DObjectVftable* const)0x009a22e8;
 
 // Constructors
 

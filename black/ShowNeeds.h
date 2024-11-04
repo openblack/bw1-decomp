@@ -18,7 +18,7 @@ struct ShowNeeds
 };
 static_assert(sizeof(struct ShowNeeds) == 0x24, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__9ShowNeeds = (struct GameThingVftable*)0x008ec9ac;
+static struct GameThingVftable* const __vt__9ShowNeeds = (struct GameThingVftable* const)0x008ec9ac;
 
 // Static methods
 

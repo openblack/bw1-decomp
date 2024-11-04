@@ -15,7 +15,7 @@ struct GStreetLantern
 };
 static_assert(sizeof(struct GStreetLantern) == 0x64, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__14GStreetLantern = (struct ObjectVftable*)0x008ea8d8;
+static struct ObjectVftable* const __vt__14GStreetLantern = (struct ObjectVftable* const)0x008ea8d8;
 
 DECLARE_LH_LIST_HEAD(GStreetLantern);
 

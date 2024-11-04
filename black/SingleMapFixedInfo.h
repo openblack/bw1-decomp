@@ -24,6 +24,6 @@ struct GSingleMapFixedInfo
 };
 static_assert(sizeof(struct GSingleMapFixedInfo) == 0x100, "Data type is of wrong size");
 
-static struct GSingleMapFixedInfoVftable* __vt__19GSingleMapFixedInfo = (struct GSingleMapFixedInfoVftable*)0x008db6dc;
+static struct GSingleMapFixedInfoVftable* const __vt__19GSingleMapFixedInfo = (struct GSingleMapFixedInfoVftable* const)0x008db6dc;
 
 #endif /* BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H */

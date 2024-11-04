@@ -18,7 +18,7 @@ struct HandStateCitadel
 };
 static_assert(sizeof(struct HandStateCitadel) == 0xd0, "Data type is of wrong size");
 
-static struct HandStateVftable* __vt__16HandStateCitadel = (struct HandStateVftable*)0x00900a80;
+static struct HandStateVftable* const __vt__16HandStateCitadel = (struct HandStateVftable* const)0x00900a80;
 
 // Constructors
 

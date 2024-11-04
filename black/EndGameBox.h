@@ -13,6 +13,6 @@ struct EndGameBox
 };
 static_assert(sizeof(struct EndGameBox) == 0xbc, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__10EndGameBox = (struct DialogBoxBaseVftable*)0x008de9ec;
+static struct DialogBoxBaseVftable* const __vt__10EndGameBox = (struct DialogBoxBaseVftable* const)0x008de9ec;
 
 #endif /* BW1_DECOMP_END_GAME_BOX_INCLUDED_H */

@@ -53,7 +53,7 @@ struct DataForScriptRemind
 };
 static_assert(sizeof(struct DataForScriptRemind) == 0x48, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__19DataForScriptRemind = (struct GameThingVftable*)0x0092b520;
+static struct GameThingVftable* const __vt__19DataForScriptRemind = (struct GameThingVftable* const)0x0092b520;
 
 // Static methods
 
@@ -295,7 +295,7 @@ struct Living
 };
 static_assert(sizeof(struct Living) == 0xe0, "Data type is of wrong size");
 
-static struct LivingVftable* __vt__6Living = (struct LivingVftable*)0x008cd394;
+static struct LivingVftable* const __vt__6Living = (struct LivingVftable* const)0x008cd394;
 
 // Static methods
 

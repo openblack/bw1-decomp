@@ -23,7 +23,7 @@ struct PileFood
 };
 static_assert(sizeof(struct PileFood) == 0xbc, "Data type is of wrong size");
 
-static struct PotVftable* __vt__8PileFood = (struct PotVftable*)0x0093305c;
+static struct PotVftable* const __vt__8PileFood = (struct PotVftable* const)0x0093305c;
 
 // Constructors
 

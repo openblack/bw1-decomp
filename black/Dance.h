@@ -22,7 +22,7 @@ struct Dance
 };
 static_assert(sizeof(struct Dance) == 0x12c, "Data type is of wrong size");
 
-static struct GroupBehaviourVftable* __vt__5Dance = (struct GroupBehaviourVftable*)0x008d3968;
+static struct GroupBehaviourVftable* const __vt__5Dance = (struct GroupBehaviourVftable* const)0x008d3968;
 
 // Constructors
 

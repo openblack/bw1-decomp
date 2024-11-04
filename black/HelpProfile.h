@@ -25,7 +25,7 @@ struct HelpProfile
 };
 static_assert(sizeof(struct HelpProfile) == 0x3358, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__11HelpProfile = (struct BaseVftable*)0x00915458;
+static struct BaseVftable* const __vt__11HelpProfile = (struct BaseVftable* const)0x00915458;
 
 // Static methods
 

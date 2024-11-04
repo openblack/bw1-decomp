@@ -16,6 +16,6 @@ struct GJPSysInterface
 };
 static_assert(sizeof(struct GJPSysInterface) == 0x18, "Data type is of wrong size");
 
-static struct PSysInterfaceVftable* __vt__15GJPSysInterface = (struct PSysInterfaceVftable*)0x008fa8a0;
+static struct PSysInterfaceVftable* const __vt__15GJPSysInterface = (struct PSysInterfaceVftable* const)0x008fa8a0;
 
 #endif /* BW1_DECOMP_JP_SYS_INTERFACE_INCLUDED_H */

@@ -38,7 +38,7 @@ struct MobileObject
 };
 static_assert(sizeof(struct MobileObject) == 0x68, "Data type is of wrong size");
 
-static struct MobileObjectVftable* __vt__12MobileObject = (struct MobileObjectVftable*)0x008eed1c;
+static struct MobileObjectVftable* const __vt__12MobileObject = (struct MobileObjectVftable* const)0x008eed1c;
 
 // Static methods
 

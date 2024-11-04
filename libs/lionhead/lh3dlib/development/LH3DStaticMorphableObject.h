@@ -13,7 +13,7 @@ struct LH3DStaticMorphableObject
 };
 static_assert(sizeof(struct LH3DStaticMorphableObject) == 0x84, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* __vt__25LH3DStaticMorphableObject = (struct LH3DObjectVftable*)0x009a2e34;
+static struct LH3DObjectVftable* const __vt__25LH3DStaticMorphableObject = (struct LH3DObjectVftable* const)0x009a2e34;
 
 // Constructors
 

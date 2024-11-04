@@ -13,6 +13,6 @@ struct RegisterBox
 };
 static_assert(sizeof(struct RegisterBox) == 0x28, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__11RegisterBox = (struct DialogBoxBaseVftable*)0x008debcc;
+static struct DialogBoxBaseVftable* const __vt__11RegisterBox = (struct DialogBoxBaseVftable* const)0x008debcc;
 
 #endif /* BW1_DECOMP_REGISTER_BOX_INCLUDED_H */

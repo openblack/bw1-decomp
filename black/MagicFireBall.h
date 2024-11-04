@@ -18,7 +18,7 @@ struct MagicFireBall
 };
 static_assert(sizeof(struct MagicFireBall) == 0x60, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__13MagicFireBall = (struct ObjectVftable*)0x0093595c;
+static struct ObjectVftable* const __vt__13MagicFireBall = (struct ObjectVftable* const)0x0093595c;
 
 // Constructors
 

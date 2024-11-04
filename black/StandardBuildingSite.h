@@ -16,6 +16,6 @@ struct StandardBuildingSite
 };
 static_assert(sizeof(struct StandardBuildingSite) == 0x648, "Data type is of wrong size");
 
-static struct BuildingSiteVftable* __vt__20StandardBuildingSite = (struct BuildingSiteVftable*)0x008c6df4;
+static struct BuildingSiteVftable* const __vt__20StandardBuildingSite = (struct BuildingSiteVftable* const)0x008c6df4;
 
 #endif /* BW1_DECOMP_STANDARD_BUILDING_SITE_INCLUDED_H */

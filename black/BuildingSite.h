@@ -59,7 +59,7 @@ struct BuildingSite
 };
 static_assert(sizeof(struct BuildingSite) == 0x644, "Data type is of wrong size");
 
-static struct BuildingSiteVftable* __vt__12BuildingSite = (struct BuildingSiteVftable*)0x008c6b6c;
+static struct BuildingSiteVftable* const __vt__12BuildingSite = (struct BuildingSiteVftable* const)0x008c6b6c;
 
 // Constructors
 

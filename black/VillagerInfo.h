@@ -120,7 +120,7 @@ struct GVillagerInfo
 };
 static_assert(sizeof(struct GVillagerInfo) == 0x3a4, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* __vt__13GVillagerInfo = (struct GObjectInfoVftable*)0x0099a3e4;
+static struct GObjectInfoVftable* const __vt__13GVillagerInfo = (struct GObjectInfoVftable* const)0x0099a3e4;
 
 // Static methods
 

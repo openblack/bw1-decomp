@@ -52,7 +52,7 @@ struct SetupBox
 };
 static_assert(sizeof(struct SetupBox) == 0xcc, "Data type is of wrong size");
 
-static struct SetupBoxVftable* __vt__8SetupBox = (struct SetupBoxVftable*)0x008d85ec;
+static struct SetupBoxVftable* const __vt__8SetupBox = (struct SetupBoxVftable* const)0x008d85ec;
 
 // Static methods
 

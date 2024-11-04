@@ -13,6 +13,6 @@ struct Football
 };
 static_assert(sizeof(struct Football) == 0x318, "Data type is of wrong size");
 
-static struct AbodeVftable* __vt__8Football = (struct AbodeVftable*)0x008dd648;
+static struct AbodeVftable* const __vt__8Football = (struct AbodeVftable* const)0x008dd648;
 
 #endif /* BW1_DECOMP_FOOTBALL_INCLUDED_H */

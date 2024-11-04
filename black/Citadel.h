@@ -38,7 +38,7 @@ struct Citadel
 };
 static_assert(sizeof(struct Citadel) == 0x80, "Data type is of wrong size");
 
-static struct ContainerVftable* __vt__7Citadel = (struct ContainerVftable*)0x008c7e68;
+static struct ContainerVftable* const __vt__7Citadel = (struct ContainerVftable* const)0x008c7e68;
 
 // Static methods
 

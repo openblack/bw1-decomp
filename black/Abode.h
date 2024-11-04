@@ -91,7 +91,7 @@ struct Abode
 };
 static_assert(sizeof(struct Abode) == 0xc4, "Data type is of wrong size");
 
-static struct AbodeVftable* __vt__5Abode = (struct AbodeVftable*)0x008a9a64;
+static struct AbodeVftable* const __vt__5Abode = (struct AbodeVftable* const)0x008a9a64;
 
 // Static methods
 

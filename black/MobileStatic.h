@@ -20,7 +20,7 @@ struct MobileStatic
 };
 static_assert(sizeof(struct MobileStatic) == 0x88, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__12MobileStatic = (struct MultiMapFixedVftable*)0x008e80b4;
+static struct MultiMapFixedVftable* const __vt__12MobileStatic = (struct MultiMapFixedVftable* const)0x008e80b4;
 
 // Constructors
 

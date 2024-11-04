@@ -13,6 +13,6 @@ struct GInterfaceMessageBuffer
 };
 static_assert(sizeof(struct GInterfaceMessageBuffer) == 0x14, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__23GInterfaceMessageBuffer = (struct BaseVftable*)0x0092aaa4;
+static struct BaseVftable* const __vt__23GInterfaceMessageBuffer = (struct BaseVftable* const)0x0092aaa4;
 
 #endif /* BW1_DECOMP_INTERFACE_MESSAGE_BUFFER_INCLUDED_H */

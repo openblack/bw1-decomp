@@ -15,7 +15,7 @@ struct Reward
 };
 static_assert(sizeof(struct Reward) == 0xa8, "Data type is of wrong size");
 
-static struct MobileObjectVftable* __vt__6Reward = (struct MobileObjectVftable*)0x00941894;
+static struct MobileObjectVftable* const __vt__6Reward = (struct MobileObjectVftable* const)0x00941894;
 
 DECLARE_LH_LINKED_LIST(Reward);
 

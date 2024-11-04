@@ -34,7 +34,7 @@ struct ShowNeedsVisuals
 };
 static_assert(sizeof(struct ShowNeedsVisuals) == 0x94, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__16ShowNeedsVisuals = (struct ObjectVftable*)0x008ecaac;
+static struct ObjectVftable* const __vt__16ShowNeedsVisuals = (struct ObjectVftable* const)0x008ecaac;
 
 // Constructors
 

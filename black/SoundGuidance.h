@@ -52,7 +52,7 @@ struct GGuidance
 };
 static_assert(sizeof(struct GGuidance) == 0xec, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__9GGuidance = (struct BaseVftable*)0x009804ac;
+static struct BaseVftable* const __vt__9GGuidance = (struct BaseVftable* const)0x009804ac;
 
 // Static methods
 

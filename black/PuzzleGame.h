@@ -15,7 +15,7 @@ struct PuzzleGame
 };
 static_assert(sizeof(struct PuzzleGame) == 0x588, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__10PuzzleGame = (struct GameThingWithPosVftable*)0x008f2338;
+static struct GameThingWithPosVftable* const __vt__10PuzzleGame = (struct GameThingWithPosVftable* const)0x008f2338;
 
 DECLARE_LH_LIST_HEAD(PuzzleGame);
 

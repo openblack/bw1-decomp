@@ -46,7 +46,7 @@ struct SpellIcon
 };
 static_assert(sizeof(struct SpellIcon) == 0x110, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__9SpellIcon = (struct MultiMapFixedVftable*)0x008f84ac;
+static struct MultiMapFixedVftable* const __vt__9SpellIcon = (struct MultiMapFixedVftable* const)0x008f84ac;
 
 // Constructors
 

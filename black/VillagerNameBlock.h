@@ -43,7 +43,7 @@ struct VillagerName
 };
 static_assert(sizeof(struct VillagerName) == 0x464, "Data type is of wrong size");
 
-static struct DrawingObjectVftable* __vt__12VillagerName = (struct DrawingObjectVftable*)0x0099a9bc;
+static struct DrawingObjectVftable* const __vt__12VillagerName = (struct DrawingObjectVftable* const)0x0099a9bc;
 
 // Static methods
 

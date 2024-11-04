@@ -26,6 +26,6 @@ struct GLeashStatus
 };
 static_assert(sizeof(struct GLeashStatus) == 0x3c, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__12GLeashStatus = (struct GameThingVftable*)0x0092abd0;
+static struct GameThingVftable* const __vt__12GLeashStatus = (struct GameThingVftable* const)0x0092abd0;
 
 #endif /* BW1_DECOMP_LEASH_STATUS_INCLUDED_H */

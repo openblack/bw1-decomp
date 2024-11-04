@@ -23,6 +23,6 @@ struct StoragePit
 };
 static_assert(sizeof(struct StoragePit) == 0xdc, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__10StoragePit = (struct MultiMapFixedVftable*)0x008f7030;
+static struct MultiMapFixedVftable* const __vt__10StoragePit = (struct MultiMapFixedVftable* const)0x008f7030;
 
 #endif /* BW1_DECOMP_STORAGE_PIT_INCLUDED_H */

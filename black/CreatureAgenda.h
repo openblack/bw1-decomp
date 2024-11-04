@@ -60,7 +60,7 @@ struct CreatureAgenda
 };
 static_assert(sizeof(struct CreatureAgenda) == 0x1af8, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__14CreatureAgenda = (struct BaseVftable*)0x008cf950;
+static struct BaseVftable* const __vt__14CreatureAgenda = (struct BaseVftable* const)0x008cf950;
 
 // Constructors
 

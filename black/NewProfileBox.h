@@ -13,6 +13,6 @@ struct NewProfileBox
 };
 static_assert(sizeof(struct NewProfileBox) == 0x24, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__13NewProfileBox = (struct DialogBoxBaseVftable*)0x008dec1c;
+static struct DialogBoxBaseVftable* const __vt__13NewProfileBox = (struct DialogBoxBaseVftable* const)0x008dec1c;
 
 #endif /* BW1_DECOMP_NEW_PROFILE_BOX_INCLUDED_H */

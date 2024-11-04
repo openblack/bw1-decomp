@@ -81,7 +81,7 @@ struct HelpSystem
 };
 static_assert(sizeof(struct HelpSystem) == 0x4614, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__10HelpSystem = (struct BaseVftable*)0x0092a47c;
+static struct BaseVftable* const __vt__10HelpSystem = (struct BaseVftable* const)0x0092a47c;
 
 // Constructors
 

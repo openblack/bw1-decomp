@@ -59,7 +59,7 @@ struct GMagicEffectInfo
 };
 static_assert(sizeof(struct GMagicEffectInfo) == 0x11c, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__16GMagicEffectInfo = (struct GBaseInfoVftable*)0x008d8b78;
+static struct GBaseInfoVftable* const __vt__16GMagicEffectInfo = (struct GBaseInfoVftable* const)0x008d8b78;
 
 // Constructors
 

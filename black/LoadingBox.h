@@ -11,6 +11,6 @@ struct LoadingBox
 };
 static_assert(sizeof(struct LoadingBox) == 0x10, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__10LoadingBox = (struct DialogBoxBaseVftable*)0x008deb54;
+static struct DialogBoxBaseVftable* const __vt__10LoadingBox = (struct DialogBoxBaseVftable* const)0x008deb54;
 
 #endif /* BW1_DECOMP_LOADING_BOX_INCLUDED_H */

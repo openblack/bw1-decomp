@@ -11,7 +11,7 @@ struct CreatureDatabase
 };
 static_assert(sizeof(struct CreatureDatabase) == 0x10, "Data type is of wrong size");
 
-static struct MultiplayerDatabaseVftable* __vt__16CreatureDatabase = (struct MultiplayerDatabaseVftable*)0x00930a00;
+static struct MultiplayerDatabaseVftable* const __vt__16CreatureDatabase = (struct MultiplayerDatabaseVftable* const)0x00930a00;
 
 // Constructors
 

@@ -28,7 +28,7 @@ struct MPFELogin
 };
 static_assert(sizeof(struct MPFELogin) == 0x5c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__9MPFELogin = (struct DialogBoxBaseVftable*)0x00930968;
+static struct DialogBoxBaseVftable* const __vt__9MPFELogin = (struct DialogBoxBaseVftable* const)0x00930968;
 
 // Constructors
 
@@ -41,7 +41,7 @@ struct MPFELoginDatabase
 };
 static_assert(sizeof(struct MPFELoginDatabase) == 0xc, "Data type is of wrong size");
 
-static struct MPFEDatabaseVftable* __vt__17MPFELoginDatabase = (struct MPFEDatabaseVftable*)0x00930990;
+static struct MPFEDatabaseVftable* const __vt__17MPFELoginDatabase = (struct MPFEDatabaseVftable* const)0x00930990;
 
 // Constructors
 

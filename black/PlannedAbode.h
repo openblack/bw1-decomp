@@ -18,7 +18,7 @@ struct PlannedAbode
 };
 static_assert(sizeof(struct PlannedAbode) == 0x4c, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__12PlannedAbode = (struct GameThingWithPosVftable*)0x008aa3bc;
+static struct GameThingWithPosVftable* const __vt__12PlannedAbode = (struct GameThingWithPosVftable* const)0x008aa3bc;
 
 // Static methods
 

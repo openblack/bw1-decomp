@@ -62,7 +62,7 @@ struct PSysInterface
 };
 static_assert(sizeof(struct PSysInterface) == 0x14, "Data type is of wrong size");
 
-static struct PSysInterfaceVftable* __vt__13PSysInterface = (struct PSysInterfaceVftable*)0x008fa9d8;
+static struct PSysInterfaceVftable* const __vt__13PSysInterface = (struct PSysInterfaceVftable* const)0x008fa9d8;
 
 // Static methods
 

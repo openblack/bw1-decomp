@@ -37,7 +37,7 @@ struct GCamera
 };
 static_assert(sizeof(struct GCamera) == 0x1d8, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__7GCamera = (struct GameThingWithPosVftable*)0x008c7110;
+static struct GameThingWithPosVftable* const __vt__7GCamera = (struct GameThingWithPosVftable* const)0x008c7110;
 
 // Static methods
 

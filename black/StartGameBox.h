@@ -22,6 +22,6 @@ struct StartGameBox
 };
 static_assert(sizeof(struct StartGameBox) == 0x20, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__12StartGameBox = (struct DialogBoxBaseVftable*)0x008de99c;
+static struct DialogBoxBaseVftable* const __vt__12StartGameBox = (struct DialogBoxBaseVftable* const)0x008de99c;
 
 #endif /* BW1_DECOMP_START_GAME_BOX_INCLUDED_H */

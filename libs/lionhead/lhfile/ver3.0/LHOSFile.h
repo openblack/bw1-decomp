@@ -26,7 +26,7 @@ struct LHOSFile
 };
 static_assert(sizeof(struct LHOSFile) == 0x8, "Data type is of wrong size");
 
-static struct LHOSFileVftable* __vt__8LHOSFile = (struct LHOSFileVftable*)0x0099f86c;
+static struct LHOSFileVftable* const __vt__8LHOSFile = (struct LHOSFileVftable* const)0x0099f86c;
 
 // Static methods
 

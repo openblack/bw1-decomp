@@ -25,7 +25,7 @@ struct DialogBoxKeyBinding
 };
 static_assert(sizeof(struct DialogBoxKeyBinding) == 0x1c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__19DialogBoxKeyBinding = (struct DialogBoxBaseVftable*)0x008d85a0;
+static struct DialogBoxBaseVftable* const __vt__19DialogBoxKeyBinding = (struct DialogBoxBaseVftable* const)0x008d85a0;
 
 // Constructors
 

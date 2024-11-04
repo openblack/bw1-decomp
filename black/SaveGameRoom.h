@@ -12,7 +12,7 @@ struct SaveGameRoom
 };
 static_assert(sizeof(struct SaveGameRoom) == 0x160, "Data type is of wrong size");
 
-static struct TempleRoomVftable* __vt__12SaveGameRoom = (struct TempleRoomVftable*)0x0099edfc;
+static struct TempleRoomVftable* const __vt__12SaveGameRoom = (struct TempleRoomVftable* const)0x0099edfc;
 
 // Static methods
 

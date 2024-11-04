@@ -16,7 +16,7 @@ struct GKeyBuffer
 };
 static_assert(sizeof(struct GKeyBuffer) == 0x10, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__10GKeyBuffer = (struct BaseVftable*)0x008df780;
+static struct BaseVftable* const __vt__10GKeyBuffer = (struct BaseVftable* const)0x008df780;
 
 // Constructors
 

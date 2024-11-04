@@ -23,6 +23,6 @@ struct GWorshipSiteInfo
 };
 static_assert(sizeof(struct GWorshipSiteInfo) == 0x160, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* __vt__16GWorshipSiteInfo = (struct GMultiMapFixedInfoVftable*)0x0099c478;
+static struct GMultiMapFixedInfoVftable* const __vt__16GWorshipSiteInfo = (struct GMultiMapFixedInfoVftable* const)0x0099c478;
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INFO_INCLUDED_H */

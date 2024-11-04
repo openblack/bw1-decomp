@@ -17,7 +17,7 @@ struct GTribeInfo
 };
 static_assert(sizeof(struct GTribeInfo) == 0x1c, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__10GTribeInfo = (struct GBaseInfoVftable*)0x0099a190;
+static struct GBaseInfoVftable* const __vt__10GTribeInfo = (struct GBaseInfoVftable* const)0x0099a190;
 
 // Static methods
 

@@ -15,7 +15,7 @@ struct HandStateMultiPickUp
 };
 static_assert(sizeof(struct HandStateMultiPickUp) == 0x8, "Data type is of wrong size");
 
-static struct HandStateVftable* __vt__20HandStateMultiPickUp = (struct HandStateVftable*)0x00900b6c;
+static struct HandStateVftable* const __vt__20HandStateMultiPickUp = (struct HandStateVftable* const)0x00900b6c;
 
 // Constructors
 

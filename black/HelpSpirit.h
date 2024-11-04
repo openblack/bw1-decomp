@@ -21,7 +21,7 @@ struct HelpSpirit
 };
 static_assert(sizeof(struct HelpSpirit) == 0x64, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__10HelpSpirit = (struct ObjectVftable*)0x009154b8;
+static struct ObjectVftable* const __vt__10HelpSpirit = (struct ObjectVftable* const)0x009154b8;
 
 // Constructors
 

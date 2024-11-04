@@ -32,7 +32,7 @@ struct Prss
 };
 static_assert(sizeof(struct Prss) == 0x10, "Data type is of wrong size");
 
-static struct PrssVftable* __vt__4Prss = (struct PrssVftable*)0x008d87b8;
+static struct PrssVftable* const __vt__4Prss = (struct PrssVftable* const)0x008d87b8;
 
 // Override methods
 

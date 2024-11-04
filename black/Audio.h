@@ -23,7 +23,7 @@ struct GAudio
 };
 static_assert(sizeof(struct GAudio) == 0x3d4, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__6GAudio = (struct GameThingVftable*)0x008c48e0;
+static struct GameThingVftable* const __vt__6GAudio = (struct GameThingVftable* const)0x008c48e0;
 
 // Non-virtual methods
 

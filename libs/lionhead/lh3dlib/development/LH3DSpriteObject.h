@@ -16,7 +16,7 @@ struct LH3DSpriteObject
 };
 static_assert(sizeof(struct LH3DSpriteObject) == 0x80, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* __vt__16LH3DSpriteObject = (struct LH3DObjectVftable*)0x009a34d0;
+static struct LH3DObjectVftable* const __vt__16LH3DSpriteObject = (struct LH3DObjectVftable* const)0x009a34d0;
 
 // Constructors
 

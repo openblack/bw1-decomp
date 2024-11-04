@@ -13,7 +13,7 @@ struct GMobileObjectInfo
 };
 static_assert(sizeof(struct GMobileObjectInfo) == 0x114, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__17GMobileObjectInfo = (struct GBaseInfoVftable*)0x009305cc;
+static struct GBaseInfoVftable* const __vt__17GMobileObjectInfo = (struct GBaseInfoVftable* const)0x009305cc;
 
 // Constructors
 

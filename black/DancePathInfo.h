@@ -16,6 +16,6 @@ struct DancePathInfo
 };
 static_assert(sizeof(struct DancePathInfo) == 0x20, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__13DancePathInfo = (struct GameThingVftable*)0x00900914;
+static struct GameThingVftable* const __vt__13DancePathInfo = (struct GameThingVftable* const)0x00900914;
 
 #endif /* BW1_DECOMP_DANCE_PATH_INFO_INCLUDED_H */

@@ -16,7 +16,7 @@ struct GScript
 };
 static_assert(sizeof(struct GScript) == 0xbc, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__7GScript = (struct BaseVftable*)0x00942174;
+static struct BaseVftable* const __vt__7GScript = (struct BaseVftable* const)0x00942174;
 
 // Static methods
 

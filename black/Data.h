@@ -20,7 +20,7 @@ struct GData
 };
 static_assert(sizeof(struct GData) == 0x28, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__5GData = (struct BaseVftable*)0x008d6034;
+static struct BaseVftable* const __vt__5GData = (struct BaseVftable* const)0x008d6034;
 
 // Constructors
 

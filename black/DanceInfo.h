@@ -13,6 +13,6 @@ struct GDanceInfo
 };
 static_assert(sizeof(struct GDanceInfo) == 0xb0, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__10GDanceInfo = (struct GBaseInfoVftable*)0x008d3938;
+static struct GBaseInfoVftable* const __vt__10GDanceInfo = (struct GBaseInfoVftable* const)0x008d3938;
 
 #endif /* BW1_DECOMP_DANCE_INFO_INCLUDED_H */

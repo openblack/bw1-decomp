@@ -20,7 +20,7 @@ struct GFootpathLinkSave
 };
 static_assert(sizeof(struct GFootpathLinkSave) == 0x24, "Data type is of wrong size");
 
-static struct GameThingVftable* __vt__17GFootpathLinkSave = (struct GameThingVftable*)0x008de1c4;
+static struct GameThingVftable* const __vt__17GFootpathLinkSave = (struct GameThingVftable* const)0x008de1c4;
 
 // Constructors
 

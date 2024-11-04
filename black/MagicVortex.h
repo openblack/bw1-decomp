@@ -58,7 +58,7 @@ struct LandscapeVortex
 };
 static_assert(sizeof(struct LandscapeVortex) == 0xec, "Data type is of wrong size");
 
-static struct LandscapeVortexVftable* __vt__15LandscapeVortex = (struct LandscapeVortexVftable*)0x0092ee80;
+static struct LandscapeVortexVftable* const __vt__15LandscapeVortex = (struct LandscapeVortexVftable* const)0x0092ee80;
 
 // Constructors
 

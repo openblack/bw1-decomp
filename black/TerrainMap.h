@@ -14,6 +14,6 @@ struct GTerrainMap
 };
 static_assert(sizeof(struct GTerrainMap) == 0x4a130, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__11GTerrainMap = (struct BaseVftable*)0x008df820;
+static struct BaseVftable* const __vt__11GTerrainMap = (struct BaseVftable* const)0x008df820;
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_INCLUDED_H */

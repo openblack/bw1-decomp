@@ -13,6 +13,6 @@ struct HistoryBox
 };
 static_assert(sizeof(struct HistoryBox) == 0x1c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__10HistoryBox = (struct DialogBoxBaseVftable*)0x008de974;
+static struct DialogBoxBaseVftable* const __vt__10HistoryBox = (struct DialogBoxBaseVftable* const)0x008de974;
 
 #endif /* BW1_DECOMP_HISTORY_BOX_INCLUDED_H */

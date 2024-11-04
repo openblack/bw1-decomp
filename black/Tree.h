@@ -34,7 +34,7 @@ struct Tree
 };
 static_assert(sizeof(struct Tree) == 0x6c, "Data type is of wrong size");
 
-static struct TreeVftable* __vt__4Tree = (struct TreeVftable*)0x008e92f4;
+static struct TreeVftable* const __vt__4Tree = (struct TreeVftable* const)0x008e92f4;
 
 // Static methods
 

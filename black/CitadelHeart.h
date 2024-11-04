@@ -79,7 +79,7 @@ struct CitadelHeart
 };
 static_assert(sizeof(struct CitadelHeart) == 0xe8, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__12CitadelHeart = (struct MultiMapFixedVftable*)0x008c8d00;
+static struct MultiMapFixedVftable* const __vt__12CitadelHeart = (struct MultiMapFixedVftable* const)0x008c8d00;
 
 // Static methods
 

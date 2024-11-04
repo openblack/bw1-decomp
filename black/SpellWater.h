@@ -13,6 +13,6 @@ struct SpellWater
 };
 static_assert(sizeof(struct SpellWater) == 0xf4, "Data type is of wrong size");
 
-static struct SpellVftable* __vt__10SpellWater = (struct SpellVftable*)0x008f553c;
+static struct SpellVftable* const __vt__10SpellWater = (struct SpellVftable* const)0x008f553c;
 
 #endif /* BW1_DECOMP_SPELL_WATER_INCLUDED_H */

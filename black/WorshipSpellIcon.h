@@ -33,7 +33,7 @@ struct WorshipSpellIcon
 };
 static_assert(sizeof(struct WorshipSpellIcon) == 0x140, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__16WorshipSpellIcon = (struct MultiMapFixedVftable*)0x0099d878;
+static struct MultiMapFixedVftable* const __vt__16WorshipSpellIcon = (struct MultiMapFixedVftable* const)0x0099d878;
 
 // Static methods
 

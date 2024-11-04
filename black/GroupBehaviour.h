@@ -64,7 +64,7 @@ struct GroupBehaviour
 };
 static_assert(sizeof(struct GroupBehaviour) == 0xe8, "Data type is of wrong size");
 
-static struct GroupBehaviourVftable* __vt__14GroupBehaviour = (struct GroupBehaviourVftable*)0x009003f8;
+static struct GroupBehaviourVftable* const __vt__14GroupBehaviour = (struct GroupBehaviourVftable* const)0x009003f8;
 
 // Constructors
 

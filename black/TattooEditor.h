@@ -13,6 +13,6 @@ struct TattooEditor
 };
 static_assert(sizeof(struct TattooEditor) == 0x3228, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* __vt__12TattooEditor = (struct DialogBoxBaseVftable*)0x008debf4;
+static struct DialogBoxBaseVftable* const __vt__12TattooEditor = (struct DialogBoxBaseVftable* const)0x008debf4;
 
 #endif /* BW1_DECOMP_TATTOO_EDITOR_INCLUDED_H */

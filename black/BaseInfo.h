@@ -39,7 +39,7 @@ struct GBaseInfo
 };
 static_assert(sizeof(struct GBaseInfo) == 0x10, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__9GBaseInfo = (struct GBaseInfoVftable*)0x008c4d1c;
+static struct GBaseInfoVftable* const __vt__9GBaseInfo = (struct GBaseInfoVftable* const)0x008c4d1c;
 
 // Static methods
 
@@ -67,7 +67,7 @@ struct BaseInfo
 };
 static_assert(sizeof(struct BaseInfo) == 0xc, "Data type is of wrong size");
 
-static struct BaseInfoVftable* __vt__8BaseInfo = (struct BaseInfoVftable*)0x008ea8d0;
+static struct BaseInfoVftable* const __vt__8BaseInfo = (struct BaseInfoVftable* const)0x008ea8d0;
 
 // Constructors
 

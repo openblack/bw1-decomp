@@ -29,7 +29,7 @@ struct TownCentre
 };
 static_assert(sizeof(struct TownCentre) == 0xe8, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__10TownCentre = (struct MultiMapFixedVftable*)0x008e4bfc;
+static struct MultiMapFixedVftable* const __vt__10TownCentre = (struct MultiMapFixedVftable* const)0x008e4bfc;
 
 // Static methods
 

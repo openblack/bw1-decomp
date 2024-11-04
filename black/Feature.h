@@ -11,6 +11,6 @@ struct Feature
 };
 static_assert(sizeof(struct Feature) == 0x7c, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__7Feature = (struct MultiMapFixedVftable*)0x008c2320;
+static struct MultiMapFixedVftable* const __vt__7Feature = (struct MultiMapFixedVftable* const)0x008c2320;
 
 #endif /* BW1_DECOMP_FEATURE_INCLUDED_H */

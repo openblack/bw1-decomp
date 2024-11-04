@@ -112,7 +112,7 @@ struct Morphable
 };
 static_assert(sizeof(struct Morphable) == 0x4834, "Data type is of wrong size");
 
-static struct MorphableVftable* __vt__9Morphable = (struct MorphableVftable*)0x008cbef8;
+static struct MorphableVftable* const __vt__9Morphable = (struct MorphableVftable* const)0x008cbef8;
 
 // Static methods
 

@@ -62,6 +62,6 @@ struct CreatureAttitudeToPlayer
 };
 static_assert(sizeof(struct CreatureAttitudeToPlayer) == 0x1db4, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__24CreatureAttitudeToPlayer = (struct BaseVftable*)0x008cf3dc;
+static struct BaseVftable* const __vt__24CreatureAttitudeToPlayer = (struct BaseVftable* const)0x008cf3dc;
 
 #endif /* BW1_DECOMP_CREATURE_ATTITUDE_TO_PLAYER_INCLUDED_H */

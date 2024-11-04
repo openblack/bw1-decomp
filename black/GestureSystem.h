@@ -13,7 +13,7 @@ struct GestureSystem
 };
 static_assert(sizeof(struct GestureSystem) == 0xca0, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__13GestureSystem = (struct BaseVftable*)0x008df800;
+static struct BaseVftable* const __vt__13GestureSystem = (struct BaseVftable* const)0x008df800;
 
 // Constructors
 

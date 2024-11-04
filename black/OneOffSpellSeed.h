@@ -13,6 +13,6 @@ struct OneOffSpellSeed
 };
 static_assert(sizeof(struct OneOffSpellSeed) == 0x7c, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__15OneOffSpellSeed = (struct ObjectVftable*)0x008f3774;
+static struct ObjectVftable* const __vt__15OneOffSpellSeed = (struct ObjectVftable* const)0x008f3774;
 
 #endif /* BW1_DECOMP_ONE_OFF_SPELL_SEED_INCLUDED_H */

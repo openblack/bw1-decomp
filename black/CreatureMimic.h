@@ -31,7 +31,7 @@ struct CreatureMimicState
 };
 static_assert(sizeof(struct CreatureMimicState) == 0x3c, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__18CreatureMimicState = (struct BaseVftable*)0x008d05f0;
+static struct BaseVftable* const __vt__18CreatureMimicState = (struct BaseVftable* const)0x008d05f0;
 
 // Constructors
 

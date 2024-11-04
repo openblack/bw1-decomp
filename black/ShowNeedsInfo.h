@@ -13,6 +13,6 @@ struct GShowNeedsInfo
 };
 static_assert(sizeof(struct GShowNeedsInfo) == 0x114, "Data type is of wrong size");
 
-static struct ObjectVftable* __vt__14GShowNeedsInfo = (struct ObjectVftable*)0x009572c8;
+static struct ObjectVftable* const __vt__14GShowNeedsInfo = (struct ObjectVftable* const)0x009572c8;
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_INFO_INCLUDED_H */

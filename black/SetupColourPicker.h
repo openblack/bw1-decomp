@@ -23,7 +23,7 @@ struct SetupColourPicker
 };
 static_assert(sizeof(struct SetupColourPicker) == 0x258, "Data type is of wrong size");
 
-static struct SetupControlVftable* __vt__17SetupColourPicker = (struct SetupControlVftable*)0x008ab550;
+static struct SetupControlVftable* const __vt__17SetupColourPicker = (struct SetupControlVftable* const)0x008ab550;
 
 // Constructors
 

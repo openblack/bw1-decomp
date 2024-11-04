@@ -13,6 +13,6 @@ struct GBigForestInfo
 };
 static_assert(sizeof(struct GBigForestInfo) == 0x128, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* __vt__14GBigForestInfo = (struct GMultiMapFixedInfoVftable*)0x008c58b8;
+static struct GMultiMapFixedInfoVftable* const __vt__14GBigForestInfo = (struct GMultiMapFixedInfoVftable* const)0x008c58b8;
 
 #endif /* BW1_DECOMP_BIG_FOREST_INFO_INCLUDED_H */

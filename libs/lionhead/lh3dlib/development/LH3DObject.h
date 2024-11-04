@@ -210,7 +210,7 @@ struct LH3DObject
 };
 static_assert(sizeof(struct LH3DObject) == 0x7c, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* __vt__10LH3DObject = (struct LH3DObjectVftable*)0x009a251c;
+static struct LH3DObjectVftable* const __vt__10LH3DObject = (struct LH3DObjectVftable* const)0x009a251c;
 
 // Static methods
 

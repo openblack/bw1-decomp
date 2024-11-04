@@ -14,6 +14,6 @@ struct GPrayerIconInfo
 };
 static_assert(sizeof(struct GPrayerIconInfo) == 0x108, "Data type is of wrong size");
 
-static struct GSingleMapFixedInfoVftable* __vt__15GPrayerIconInfo = (struct GSingleMapFixedInfoVftable*)0x009341c8;
+static struct GSingleMapFixedInfoVftable* const __vt__15GPrayerIconInfo = (struct GSingleMapFixedInfoVftable* const)0x009341c8;
 
 #endif /* BW1_DECOMP_PRAYER_ICON_INFO_INCLUDED_H */

@@ -26,7 +26,7 @@ struct MultiplayerDatabase
 };
 static_assert(sizeof(struct MultiplayerDatabase) == 0x10, "Data type is of wrong size");
 
-static struct MultiplayerDatabaseVftable* __vt__19MultiplayerDatabase = (struct MultiplayerDatabaseVftable*)0x009309f4;
+static struct MultiplayerDatabaseVftable* const __vt__19MultiplayerDatabase = (struct MultiplayerDatabaseVftable* const)0x009309f4;
 
 // Constructors
 

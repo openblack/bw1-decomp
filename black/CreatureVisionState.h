@@ -38,6 +38,6 @@ struct CreatureVisionState
 };
 static_assert(sizeof(struct CreatureVisionState) == 0x48, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__19CreatureVisionState = (struct BaseVftable*)0x008cf880;
+static struct BaseVftable* const __vt__19CreatureVisionState = (struct BaseVftable* const)0x008cf880;
 
 #endif /* BW1_DECOMP_CREATURE_VISION_STATE_INCLUDED_H */

@@ -32,7 +32,7 @@ struct EffectValues
 };
 static_assert(sizeof(struct EffectValues) == 0x40, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* __vt__12EffectValues = (struct GBaseInfoVftable*)0x008d8ba8;
+static struct GBaseInfoVftable* const __vt__12EffectValues = (struct GBaseInfoVftable* const)0x008d8ba8;
 
 // Static methods
 

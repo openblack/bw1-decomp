@@ -24,7 +24,7 @@ struct MPFEDatabase
 };
 static_assert(sizeof(struct MPFEDatabase) == 0xc, "Data type is of wrong size");
 
-static struct MPFEDatabaseVftable* __vt__12MPFEDatabase = (struct MPFEDatabaseVftable*)0x0093086c;
+static struct MPFEDatabaseVftable* const __vt__12MPFEDatabase = (struct MPFEDatabaseVftable* const)0x0093086c;
 
 // Constructors
 

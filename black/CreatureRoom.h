@@ -15,7 +15,7 @@ struct CreatureRoom
 };
 static_assert(sizeof(struct CreatureRoom) == 0x4d8, "Data type is of wrong size");
 
-static struct TempleRoomVftable* __vt__12CreatureRoom = (struct TempleRoomVftable*)0x0099eb30;
+static struct TempleRoomVftable* const __vt__12CreatureRoom = (struct TempleRoomVftable* const)0x0099eb30;
 
 // Constructors
 

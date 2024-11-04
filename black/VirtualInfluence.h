@@ -36,7 +36,7 @@ struct GVirtualInfluence
 };
 static_assert(sizeof(struct GVirtualInfluence) == 0x60, "Data type is of wrong size");
 
-static struct BaseVftable* __vt__17GVirtualInfluence = (struct BaseVftable*)0x0099aa70;
+static struct BaseVftable* const __vt__17GVirtualInfluence = (struct BaseVftable* const)0x0099aa70;
 
 // Constructors
 

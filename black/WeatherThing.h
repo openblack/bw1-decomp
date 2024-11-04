@@ -15,7 +15,7 @@ struct WeatherThing
 };
 static_assert(sizeof(struct WeatherThing) == 0x88, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* __vt__12WeatherThing = (struct GameThingWithPosVftable*)0x008ebc48;
+static struct GameThingWithPosVftable* const __vt__12WeatherThing = (struct GameThingWithPosVftable* const)0x008ebc48;
 
 DECLARE_LH_LIST_HEAD(WeatherThing);
 

@@ -194,7 +194,7 @@ struct Creature
 };
 static_assert(sizeof(struct Creature) == 0x12c8, "Data type is of wrong size");
 
-static struct LivingVftable* __vt__8Creature = (struct LivingVftable*)0x008cc810;
+static struct LivingVftable* const __vt__8Creature = (struct LivingVftable* const)0x008cc810;
 
 // Static methods
 

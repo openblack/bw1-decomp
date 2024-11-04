@@ -126,7 +126,7 @@ struct MultiMapFixed
 };
 static_assert(sizeof(struct MultiMapFixed) == 0x7c, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* __vt__13MultiMapFixed = (struct MultiMapFixedVftable*)0x008dbf84;
+static struct MultiMapFixedVftable* const __vt__13MultiMapFixed = (struct MultiMapFixedVftable* const)0x008dbf84;
 
 // Static methods
 
