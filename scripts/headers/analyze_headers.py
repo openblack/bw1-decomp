@@ -421,7 +421,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
 
 def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> bool:
     if header_path is None:
-        header_path = Path(__file__).parent.parent.parent / "generated_headers_output"
+        header_path = Path(__file__).parent.parent.parent
     elif type(header_path) is str:
         header_path = Path(header_path)
 

@@ -21,19 +21,15 @@ jobs:
     - name: Run unit tests
       run: python -m unittest discover -v -s ./scripts/headers -p '*test.py'
 
-    - name: Run generate_headers.py script
-      run: python scripts/headers/bw1_decomp_gen/generate_headers.py
-
     - name: Run analyze_headers.py script
       run: python scripts/headers/analyze_headers.py
 
-    - name: Upload generated headers as artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: bw1_decomp_gen_headers
-        path: generated_headers_output/
+    - name: Run generate_headers.py script
+      run: python scripts/headers/bw1_decomp_gen/generate_headers.py
 
-    - name: Upload re-generated database as artifact
+    - run: git diff
+
+    - name: Upload generated database as artifact
       uses: actions/upload-artifact@v3
       with:
         name: bw1_decomp_gen_database

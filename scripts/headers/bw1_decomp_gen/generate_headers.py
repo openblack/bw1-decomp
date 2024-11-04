@@ -1,3 +1,4 @@
+import os
 import time
 import shutil
 import string
@@ -494,9 +495,13 @@ if __name__ == "__main__":
         header.build_include_list(local_header_import_map)
         headers.append(header)
 
-    output_path = Path("generated_headers_output")
+    output_path = Path(os.getcwd())
     if output_path.exists():
-        shutil.rmtree(output_path)
+        generated_subpaths =  [Path("black"), Path("libs")]
+        for p in generated_subpaths:
+            subpath = output_path / p
+            if subpath.exists():
+                shutil.rmtree(subpath)
 
     wrote_headers = 0
     wrote_bytes = 0
