@@ -3,4 +3,4 @@
 .vscode
 *.pyc
 *$py.class
-generated_headers_output/
+extracted_reversing_data_bw_141.json
