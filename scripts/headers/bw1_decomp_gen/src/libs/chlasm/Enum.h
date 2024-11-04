@@ -558,7 +558,8 @@ enum     LEASH_TYPE
     LEASH_TYPE_EVIL                                 =  1 ,
     LEASH_TYPE_ROPE                                 =  2 ,
     LEASH_TYPE_GOOD                                 =  3 ,
-    LEASH_TYPE_LAST                                 =  4 ,
+    // LEASH_TYPE_LAST                                 =  4 ,
+    LEASH_TYPE_LAST                                 =  3 , // Seems like every named type is offset by 1
 };
 
 //*****************************************************************************

@@ -131687,227 +131687,6 @@
       ]
     },
     {
-      "kind": "ENUM_DECL",
-      "type": "enum LH_SCREEN_BUFFER",
-      "size": 4,
-      "constants": [
-        {
-          "name": "LH_SCREEN_BUFFER_0x0",
-          "value": 0
-        },
-        {
-          "name": "LH_SCREEN_BUFFER_0x1",
-          "value": 1
-        },
-        {
-          "name": "_LH_SCREEN_BUFFER_COUNT",
-          "value": 2
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct LHScreen",
-      "size": 436,
-      "members": [
-        {
-          "name": "display_devices",
-          "type": "struct LHDDEnum *",
-          "offset": 0
-        },
-        {
-          "name": "device_count",
-          "type": "uint32_t",
-          "offset": 4
-        },
-        {
-          "name": "width",
-          "type": "uint16_t",
-          "offset": 8
-        },
-        {
-          "name": "height",
-          "type": "uint16_t",
-          "offset": 10
-        },
-        {
-          "name": "field_0xc",
-          "type": "uint32_t",
-          "offset": 12
-        },
-        {
-          "name": "field_0x10",
-          "type": "uint32_t",
-          "offset": 16
-        },
-        {
-          "name": "field_0x14",
-          "type": "uint8_t",
-          "offset": 20
-        },
-        {
-          "name": "field_0x18",
-          "type": "uint32_t",
-          "offset": 24
-        },
-        {
-          "name": "field_0x1c",
-          "type": "uint32_t",
-          "offset": 28
-        },
-        {
-          "name": "field_0x20",
-          "type": "uint32_t",
-          "offset": 32
-        },
-        {
-          "name": "buffer",
-          "type": "uint16_t *",
-          "offset": 36
-        },
-        {
-          "name": "window",
-          "type": "HWND",
-          "offset": 40
-        },
-        {
-          "name": "ddraw",
-          "type": "IDirectDraw7 *",
-          "offset": 44
-        },
-        {
-          "name": "surfaces",
-          "type": "IDirectDrawSurface7 *[2]",
-          "offset": 48
-        },
-        {
-          "name": "field_0x38",
-          "type": "struct LHRegion",
-          "offset": 56
-        },
-        {
-          "name": "region",
-          "type": "struct LHRegion",
-          "offset": 72
-        },
-        {
-          "name": "ms_window_client_offset",
-          "type": "struct LHCoord",
-          "offset": 88
-        },
-        {
-          "name": "clipper",
-          "type": "IDirectDrawClipper *",
-          "offset": 96
-        },
-        {
-          "name": "fullscreen_mode",
-          "type": "bool",
-          "offset": 100
-        },
-        {
-          "name": "field_0x65",
-          "type": "uint8_t[22]",
-          "offset": 101
-        },
-        {
-          "name": "field_0x7b",
-          "type": "uint8_t",
-          "offset": 123
-        },
-        {
-          "name": "field_0x7c",
-          "type": "uint8_t",
-          "offset": 124
-        },
-        {
-          "name": "field_0x7d",
-          "type": "uint8_t",
-          "offset": 125
-        },
-        {
-          "name": "field_0x7e",
-          "type": "uint8_t",
-          "offset": 126
-        },
-        {
-          "name": "field_0x7f",
-          "type": "uint8_t",
-          "offset": 127
-        },
-        {
-          "name": "field_0x80",
-          "type": "uint8_t",
-          "offset": 128
-        },
-        {
-          "name": "field_0x81",
-          "type": "uint8_t[3]",
-          "offset": 129
-        },
-        {
-          "name": "field_0x84",
-          "type": "uint32_t",
-          "offset": 132
-        },
-        {
-          "name": "field_0x88",
-          "type": "uint32_t",
-          "offset": 136
-        },
-        {
-          "name": "stride",
-          "type": "uint32_t",
-          "offset": 140
-        },
-        {
-          "name": "field_0x90",
-          "type": "int32_t",
-          "offset": 144
-        },
-        {
-          "name": "field_0x94",
-          "type": "uint8_t[260]",
-          "offset": 148
-        },
-        {
-          "name": "field_0x198",
-          "type": "int",
-          "offset": 408
-        },
-        {
-          "name": "field_0x19c",
-          "type": "int",
-          "offset": 412
-        },
-        {
-          "name": "field_0x1a0",
-          "type": "float",
-          "offset": 416
-        },
-        {
-          "name": "field_0x1a4",
-          "type": "float",
-          "offset": 420
-        },
-        {
-          "name": "field_0x1a8",
-          "type": "uint8_t[4]",
-          "offset": 424
-        },
-        {
-          "name": "field_0x1ac",
-          "type": "uint32_t",
-          "offset": 428
-        },
-        {
-          "name": "field_0x1b0",
-          "type": "float",
-          "offset": 432
-        }
-      ]
-    },
-    {
       "kind": "STRUCT_DECL",
       "type": "struct LHSurface",
       "size": 48,
@@ -132326,6 +132105,227 @@
           "name": "count",
           "type": "uint32_t",
           "offset": 640
+        }
+      ]
+    },
+    {
+      "kind": "ENUM_DECL",
+      "type": "enum LH_SCREEN_BUFFER",
+      "size": 4,
+      "constants": [
+        {
+          "name": "LH_SCREEN_BUFFER_0x0",
+          "value": 0
+        },
+        {
+          "name": "LH_SCREEN_BUFFER_0x1",
+          "value": 1
+        },
+        {
+          "name": "_LH_SCREEN_BUFFER_COUNT",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct LHScreen",
+      "size": 436,
+      "members": [
+        {
+          "name": "display_devices",
+          "type": "struct LHDDEnum *",
+          "offset": 0
+        },
+        {
+          "name": "device_count",
+          "type": "uint32_t",
+          "offset": 4
+        },
+        {
+          "name": "width",
+          "type": "uint16_t",
+          "offset": 8
+        },
+        {
+          "name": "height",
+          "type": "uint16_t",
+          "offset": 10
+        },
+        {
+          "name": "field_0xc",
+          "type": "uint32_t",
+          "offset": 12
+        },
+        {
+          "name": "field_0x10",
+          "type": "uint32_t",
+          "offset": 16
+        },
+        {
+          "name": "field_0x14",
+          "type": "uint8_t",
+          "offset": 20
+        },
+        {
+          "name": "field_0x18",
+          "type": "uint32_t",
+          "offset": 24
+        },
+        {
+          "name": "field_0x1c",
+          "type": "uint32_t",
+          "offset": 28
+        },
+        {
+          "name": "field_0x20",
+          "type": "uint32_t",
+          "offset": 32
+        },
+        {
+          "name": "buffer",
+          "type": "uint16_t *",
+          "offset": 36
+        },
+        {
+          "name": "window",
+          "type": "HWND",
+          "offset": 40
+        },
+        {
+          "name": "ddraw",
+          "type": "IDirectDraw7 *",
+          "offset": 44
+        },
+        {
+          "name": "surfaces",
+          "type": "IDirectDrawSurface7 *[2]",
+          "offset": 48
+        },
+        {
+          "name": "field_0x38",
+          "type": "struct LHRegion",
+          "offset": 56
+        },
+        {
+          "name": "region",
+          "type": "struct LHRegion",
+          "offset": 72
+        },
+        {
+          "name": "ms_window_client_offset",
+          "type": "struct LHCoord",
+          "offset": 88
+        },
+        {
+          "name": "clipper",
+          "type": "IDirectDrawClipper *",
+          "offset": 96
+        },
+        {
+          "name": "fullscreen_mode",
+          "type": "bool",
+          "offset": 100
+        },
+        {
+          "name": "field_0x65",
+          "type": "uint8_t[22]",
+          "offset": 101
+        },
+        {
+          "name": "field_0x7b",
+          "type": "uint8_t",
+          "offset": 123
+        },
+        {
+          "name": "field_0x7c",
+          "type": "uint8_t",
+          "offset": 124
+        },
+        {
+          "name": "field_0x7d",
+          "type": "uint8_t",
+          "offset": 125
+        },
+        {
+          "name": "field_0x7e",
+          "type": "uint8_t",
+          "offset": 126
+        },
+        {
+          "name": "field_0x7f",
+          "type": "uint8_t",
+          "offset": 127
+        },
+        {
+          "name": "field_0x80",
+          "type": "uint8_t",
+          "offset": 128
+        },
+        {
+          "name": "field_0x81",
+          "type": "uint8_t[3]",
+          "offset": 129
+        },
+        {
+          "name": "field_0x84",
+          "type": "uint32_t",
+          "offset": 132
+        },
+        {
+          "name": "field_0x88",
+          "type": "uint32_t",
+          "offset": 136
+        },
+        {
+          "name": "stride",
+          "type": "uint32_t",
+          "offset": 140
+        },
+        {
+          "name": "field_0x90",
+          "type": "int32_t",
+          "offset": 144
+        },
+        {
+          "name": "field_0x94",
+          "type": "uint8_t[260]",
+          "offset": 148
+        },
+        {
+          "name": "field_0x198",
+          "type": "int",
+          "offset": 408
+        },
+        {
+          "name": "field_0x19c",
+          "type": "int",
+          "offset": 412
+        },
+        {
+          "name": "field_0x1a0",
+          "type": "float",
+          "offset": 416
+        },
+        {
+          "name": "field_0x1a4",
+          "type": "float",
+          "offset": 420
+        },
+        {
+          "name": "field_0x1a8",
+          "type": "uint8_t[4]",
+          "offset": 424
+        },
+        {
+          "name": "field_0x1ac",
+          "type": "uint32_t",
+          "offset": 428
+        },
+        {
+          "name": "field_0x1b0",
+          "type": "float",
+          "offset": 432
         }
       ]
     },
@@ -155635,9 +155635,9 @@
       "argument_types": [
         "struct RPFollow *",
         "int",
-        "void (*)(int, int)",
-        "void (*)(int, float, float)",
-        "float (*)(int)",
+        "void (*)(int, int) __attribute__((cdecl))",
+        "void (*)(int, float, float) __attribute__((cdecl))",
+        "float (*)(int) __attribute__((cdecl))",
         "int"
       ],
       "argument_names": [
@@ -158473,53 +158473,6 @@
       "is_function_variadic": false
     },
     {
-      "win_addr": 8244768,
-      "mac_addr": 269804800,
-      "decorated_name": "LHScreen::LHScreen(void)",
-      "undecorated_name": "__ct__8LHScreenFv",
-      "return_type": "struct LHScreen *",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LHScreen *"
-      ],
-      "argument_names": [
-        "this"
-      ],
-      "is_function_variadic": false
-    },
-    {
-      "win_addr": 8247536,
-      "mac_addr": 269801616,
-      "decorated_name": "LHScreen::~LHScreen(void)",
-      "undecorated_name": "__dt__8LHScreenFv",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LHScreen *"
-      ],
-      "argument_names": [
-        "this"
-      ],
-      "is_function_variadic": false
-    },
-    {
-      "win_addr": 8245456,
-      "mac_addr": 269804576,
-      "decorated_name": "LHScreen::SetFullscreenMode(int)",
-      "undecorated_name": "SetFullscreenMode__8LHScreenFi",
-      "return_type": "void",
-      "call_type": "__thiscall",
-      "argument_types": [
-        "struct LHScreen *",
-        "int"
-      ],
-      "argument_names": [
-        "this",
-        "mode"
-      ],
-      "is_function_variadic": false
-    },
-    {
       "win_addr": 8370048,
       "mac_addr": 268994592,
       "decorated_name": "PhysOb::Initialise(LH3DObject *, float)",
@@ -159750,6 +159703,53 @@
       "argument_names": [
         "min_val",
         "max_val"
+      ],
+      "is_function_variadic": false
+    },
+    {
+      "win_addr": 8244768,
+      "mac_addr": 269804800,
+      "decorated_name": "LHScreen::LHScreen(void)",
+      "undecorated_name": "__ct__8LHScreenFv",
+      "return_type": "struct LHScreen *",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHScreen *"
+      ],
+      "argument_names": [
+        "this"
+      ],
+      "is_function_variadic": false
+    },
+    {
+      "win_addr": 8247536,
+      "mac_addr": 269801616,
+      "decorated_name": "LHScreen::~LHScreen(void)",
+      "undecorated_name": "__dt__8LHScreenFv",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHScreen *"
+      ],
+      "argument_names": [
+        "this"
+      ],
+      "is_function_variadic": false
+    },
+    {
+      "win_addr": 8245456,
+      "mac_addr": 269804576,
+      "decorated_name": "LHScreen::SetFullscreenMode(int)",
+      "undecorated_name": "SetFullscreenMode__8LHScreenFi",
+      "return_type": "void",
+      "call_type": "__thiscall",
+      "argument_types": [
+        "struct LHScreen *",
+        "int"
+      ],
+      "argument_names": [
+        "this",
+        "mode"
       ],
       "is_function_variadic": false
     },

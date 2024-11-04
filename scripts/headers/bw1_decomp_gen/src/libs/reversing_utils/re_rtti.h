@@ -3,6 +3,10 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdint.h>
+
+#define VT_TO_RTTI_TYPE_DESCRIPTOR(VT) \
+  (((const struct RTTICompleteObjectLocator*)((uintptr_t)(VT) - 4))->pTypeDescriptor)
 
 struct RTTIBaseClassDescriptor {
   struct TypeDescriptor* pTypeDescriptor;
