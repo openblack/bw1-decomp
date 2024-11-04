@@ -29,6 +29,19 @@ def fixup_type(typename: str):
     return typename
 
 
+def demangle_type(mangled_type_name: str) -> str:
+    if len(mangled_type_name) > 2 and mangled_type_name[0] == 'Q':
+        parts = []
+        num_namespaces = int(mangled_type_name[1])
+        index = 2
+        for _ in range(num_namespaces):
+            l = re.match(r"\d+", mangled_type_name[index:]).group(0)
+            m = re.match(r"\d+(\w{%s})" % l, mangled_type_name[index:])
+            index += len(m.group(0))
+            parts.append(m.group(1))
+        return "::".join(parts)
+    return mangled_type_name
+
 @dataclass
 class FunctionMetadata:
     win_addr: str
@@ -39,6 +52,7 @@ class FunctionMetadata:
     call_type: Optional[str] = None
     argument_types: List[str] = field(default_factory=list)
     argument_names: List[str] = field(default_factory=list)
+    is_function_variadic: bool = False
 
     def fastcall_is_thiscall(self) -> bool:
         if self.call_type != "__fastcall":
@@ -52,11 +66,18 @@ class FunctionMetadata:
         if not this_candidate.startswith("struct "):
             return False
         this_candidate = this_candidate.removeprefix("struct ")
-        split_decorated = self.decorated_name.split("::")
+        split_decorated = self.decorated_name.split("(")[0].split(" ")[0].split("::")
         if len(split_decorated) <= 1:
             return False
-        if this_candidate != split_decorated[0]:
-            return False
+        decorated = "::".join(split_decorated[:-1])
+        if demangle_type(this_candidate) != decorated:
+            # Remove template part if there is one
+            m = re.match(r'(\w+)<[\d\w]+>', decorated)
+            if m:
+                if demangle_type(this_candidate) not in (m.group(1), decorated.replace("<", "_").replace(">", "_")):
+                    return False
+            else:
+                return False
         if len(self.argument_types) > 1:
             edx_candidate_type, edx_candidate_name = self.argument_types[1], self.argument_names[1]
             edx_candidate_type = edx_candidate_type.removeprefix("const ")
@@ -122,7 +143,6 @@ def parse_source(path: Optional[Path] = None, source: Optional[str] = None) -> T
         args.append(f"-I{p.as_posix()}")
     for warning in ignored_warnings:
         args.append(f"-Wno-{warning}")
-
     if source:
         try:
             translation_unit = TranslationUnit.from_source('tmp.c', args=args, unsaved_files=[('tmp.c', source)])
@@ -265,11 +285,11 @@ def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bo
             sys.stderr.write(
                 f"{c.extent.start.file.name}:{c.extent.start.line}: global declaration \"{c.spelling}\" can't parse: \"{literal_spelling}\"\n")
             continue
-        # if type_name not in known_types:
-        #     found_issues = True
-        #     sys.stderr.write(
-        #         f"{c.extent.start.file.name}:{c.extent.start.line}: global declaration \"{c.spelling}\" using unknown type: \"{type_name}\"\n")
-        #     continue
+        if type_name not in known_types:
+            found_issues = True
+            sys.stderr.write(
+                f"{c.extent.start.file.name}:{c.extent.start.line}: global declaration \"{c.spelling}\" using unknown type: \"{type_name}\"\n")
+            continue
         global_addresses[c.spelling] = GlobalInfo(type_name, literal_value)
     return found_issues, global_addresses
 
@@ -319,7 +339,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
     found_issues = False
 
     pattern = re.compile(
-        r"// win1\.41 (?P<winaddr>[0-9a-fA-F]+|inlined) mac (?P<macaddr>[0-9a-fA-F]+|inlined) (?P<decoratedname>[\w:(), *&<>\[\]~\-\+=/]+)")
+        r"// win1\.41 (?P<winaddr>[0-9a-fA-F]+|inlined) mac (?P<macaddr>[0-9a-fA-F]+|inlined) (?P<decoratedname>[\w:(), *&<>\[\]~\-\+=/\.]+)")
 
     for t in tu.get_tokens(extent=tu.cursor.extent):
         # TODO: Make sure every type is accounted for
@@ -343,13 +363,26 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                 sys.stderr.write(
                     f"{t.location.file}:{t.location.line}:{t.location.column} badly formed function metadata: \"{t.spelling}\"\n")
                 found_issues = True
+            elif (t.spelling.startswith("// inline")):
+                sys.stderr.write(
+                    f"{t.location.file}:{t.location.line}:{t.location.column} badly formed function metadata: \"{t.spelling}\"\n")
+                found_issues = True
         elif t.kind.name == "IDENTIFIER":
             if function_metadata and function_metadata[-1].undecorated_name is None:
                 id_kind = t.cursor.kind
                 if id_kind.name == "FUNCTION_DECL":
+                    def fix_up_type_spelling(t):
+                        if t.get_pointee().kind.name == 'FUNCTIONPROTO':
+                            for ct in ["fastcall", "stdcall"]:
+                                if t.spelling.endswith(f"__attribute__(({ct}))"):
+                                    spelling = t.spelling
+                                    spelling = spelling.removesuffix(f" __attribute__(({ct}))")
+                                    return spelling.replace("(*)", f"(__{ct}*)", 1)
+                        return t.spelling
+
                     args = list(t.cursor.get_arguments())
                     arg_names = [a.spelling for a in args]
-                    arg_types = [a.type.spelling for a in args]
+                    arg_types = [fix_up_type_spelling(a.type) for a in args]
                     ret = t.cursor.type.get_result().spelling
                     for ct in ["fastcall", "stdcall"]:
                         if t.cursor.type.spelling.endswith(f"__attribute__(({ct}))"):
@@ -362,6 +395,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                     function_metadata[-1].argument_types = arg_types
                     function_metadata[-1].argument_names = arg_names
                     function_metadata[-1].call_type = call_type
+                    function_metadata[-1].is_function_variadic = t.cursor.type.is_function_variadic()
                     for c in t.cursor.get_children():
                         if c.kind.name != "PARM_DECL":
                             continue
@@ -381,10 +415,6 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                             found_issues = True
                             sys.stderr.write(
                                 f"{t.extent.start.file.name}:{t.extent.start.line}: function declaration \"{t.spelling}\" trouble parsing: \"{param_type.spelling}\"\n")
-                        # if param_type.kind.name in declared_type_kinds and param_type.spelling not in known_types:
-                        #     found_issues = True
-                        #     sys.stderr.write(
-                        #         f"{t.extent.start.file.name}:{t.extent.start.line}: function declaration \"{t.spelling}\" using unknown type: \"{param_type.spelling}\"\n")
 
     return found_issues
 
@@ -402,13 +432,6 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     include_all_headers_src = '\n'.join(f'#include "{p}"' for p in paths)
 
     found_issues, types = extract_type_info(parse_source(source=include_all_headers_src))
-    # for type_name, (record_type, size, members) in types.items():
-    #     if record_type == "STRUCT_DECL":
-    #         print(f"{type_name}: 0x{size:x}\n\t{"\n\t".join(f"{n}: {t}" for n, t, o in members)}")
-    #     elif record_type == "ENUM_DECL":
-    #         print(f"{type_name}: 0x{size:x}\n\t{"\n\t".join(f"{k}={hex(v)}" for k, v in members)}")
-    #     elif record_type == "TYPEDEF_DECL":
-    #         print(f"{type_name}: 0x{size:x} -> {members}")
 
     decorated_names: Set[str] = set()
     function_metadata: List[FunctionMetadata] = []
@@ -418,7 +441,9 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     new_issues, global_values = extract_globals_info(parse_source(source=include_all_headers_src), set(types.keys()))
     found_issues |= new_issues
 
-    new_issues, globals_in_header_values, globals_extra_types = extract_globals_in_header_info(parse_source(path=Path("globals.h")))
+    globals_src = include_all_headers_src + "\n" + Path("globals.h").open().read()
+
+    new_issues, globals_in_header_values, globals_extra_types = extract_globals_in_header_info(parse_source(source=globals_src))
     global_values.update(globals_in_header_values)
     types |= globals_extra_types
     found_issues |= new_issues

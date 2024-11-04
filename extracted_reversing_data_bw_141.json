@@ -123618,126 +123618,6 @@
       ]
     },
     {
-      "kind": "STRUCT_DECL",
-      "type": "struct RTTIBaseClassDescriptor",
-      "size": 16,
-      "members": [
-        {
-          "name": "pTypeDescriptor",
-          "type": "struct TypeDescriptor *",
-          "offset": 0
-        },
-        {
-          "name": "numContainedBases",
-          "type": "unsigned long",
-          "offset": 4
-        },
-        {
-          "name": "where",
-          "type": "unsigned int",
-          "offset": 8
-        },
-        {
-          "name": "attributes",
-          "type": "unsigned long",
-          "offset": 12
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct RTTIBaseClassArray",
-      "size": 4,
-      "members": [
-        {
-          "name": "arrayOfBaseClassDescriptors",
-          "type": "struct RTTIBaseClassDescriptor *[0]",
-          "offset": 0
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct RTTIClassHierarchyDescriptor",
-      "size": 16,
-      "members": [
-        {
-          "name": "signature",
-          "type": "unsigned long",
-          "offset": 0
-        },
-        {
-          "name": "attributes",
-          "type": "unsigned long",
-          "offset": 4
-        },
-        {
-          "name": "numBaseClasses",
-          "type": "unsigned long",
-          "offset": 8
-        },
-        {
-          "name": "pBaseClassArray",
-          "type": "struct RTTIBaseClassArray *",
-          "offset": 12
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct TypeDescriptor",
-      "size": 8,
-      "members": [
-        {
-          "name": "pVFTable",
-          "type": "const void *",
-          "offset": 0
-        },
-        {
-          "name": "spare",
-          "type": "void *",
-          "offset": 4
-        },
-        {
-          "name": "name",
-          "type": "const char[]",
-          "offset": 8
-        }
-      ]
-    },
-    {
-      "kind": "STRUCT_DECL",
-      "type": "struct RTTICompleteObjectLocator",
-      "size": 20,
-      "members": [
-        {
-          "name": "signature",
-          "type": "unsigned long",
-          "offset": 0
-        },
-        {
-          "name": "offset",
-          "type": "unsigned long",
-          "offset": 4
-        },
-        {
-          "name": "cdOffset",
-          "type": "unsigned long",
-          "offset": 8
-        },
-        {
-          "name": "pTypeDescriptor",
-          "type": "struct TypeDescriptor *",
-          "offset": 12
-        },
-        {
-          "name": "pClassDescriptor",
-          "type": "struct RTTIClassHierarchyDescriptor *",
-          "offset": 16
-        }
-      ]
-    },
-    {
       "kind": "ENUM_DECL",
       "type": "enum MUSIC_TYPE",
       "size": 4,
@@ -129739,6 +129619,126 @@
       ]
     },
     {
+      "kind": "STRUCT_DECL",
+      "type": "struct RTTIBaseClassDescriptor",
+      "size": 16,
+      "members": [
+        {
+          "name": "pTypeDescriptor",
+          "type": "struct TypeDescriptor *",
+          "offset": 0
+        },
+        {
+          "name": "numContainedBases",
+          "type": "unsigned long",
+          "offset": 4
+        },
+        {
+          "name": "where",
+          "type": "unsigned int",
+          "offset": 8
+        },
+        {
+          "name": "attributes",
+          "type": "unsigned long",
+          "offset": 12
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct RTTIBaseClassArray",
+      "size": 4,
+      "members": [
+        {
+          "name": "arrayOfBaseClassDescriptors",
+          "type": "struct RTTIBaseClassDescriptor *[0]",
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct RTTIClassHierarchyDescriptor",
+      "size": 16,
+      "members": [
+        {
+          "name": "signature",
+          "type": "unsigned long",
+          "offset": 0
+        },
+        {
+          "name": "attributes",
+          "type": "unsigned long",
+          "offset": 4
+        },
+        {
+          "name": "numBaseClasses",
+          "type": "unsigned long",
+          "offset": 8
+        },
+        {
+          "name": "pBaseClassArray",
+          "type": "struct RTTIBaseClassArray *",
+          "offset": 12
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct TypeDescriptor",
+      "size": 8,
+      "members": [
+        {
+          "name": "pVFTable",
+          "type": "const void *",
+          "offset": 0
+        },
+        {
+          "name": "spare",
+          "type": "void *",
+          "offset": 4
+        },
+        {
+          "name": "name",
+          "type": "const char[]",
+          "offset": 8
+        }
+      ]
+    },
+    {
+      "kind": "STRUCT_DECL",
+      "type": "struct RTTICompleteObjectLocator",
+      "size": 20,
+      "members": [
+        {
+          "name": "signature",
+          "type": "unsigned long",
+          "offset": 0
+        },
+        {
+          "name": "offset",
+          "type": "unsigned long",
+          "offset": 4
+        },
+        {
+          "name": "cdOffset",
+          "type": "unsigned long",
+          "offset": 8
+        },
+        {
+          "name": "pTypeDescriptor",
+          "type": "struct TypeDescriptor *",
+          "offset": 12
+        },
+        {
+          "name": "pClassDescriptor",
+          "type": "struct RTTIClassHierarchyDescriptor *",
+          "offset": 16
+        }
+      ]
+    },
+    {
       "kind": "FUNCTIONPROTO",
       "type": "HeapVftable__SetToZero",
       "size": 4,
@@ -134906,8 +134906,8 @@
         "int"
       ],
       "arg_names": [
-        "",
-        ""
+        "param_0",
+        "param_1"
       ],
       "signature": "void (int, int)"
     }
@@ -162258,11 +162258,6 @@
       "address": 12593532
     },
     {
-      "name": "ScriptSignatures",
-      "type": "const struct LHScriptCommandX_c_[105]",
-      "address": 12717824
-    },
-    {
       "name": "DAT_00c20d54",
       "type": "uint32_t",
       "address": 12717396
@@ -162271,6 +162266,11 @@
       "name": "DAT_00c20d58",
       "type": "enum TRIBE_TYPE",
       "address": 12717400
+    },
+    {
+      "name": "ScriptSignatures",
+      "type": "const struct LHScriptCommandX_c_[105]",
+      "address": 12717824
     },
     {
       "name": "SigmoidTable",
@@ -162533,6 +162533,11 @@
       "address": 13738624
     },
     {
+      "name": "MagicInfoTable",
+      "type": "struct GMagicInfo *[42]",
+      "address": 13860112
+    },
+    {
       "name": "Point2D_00d3ee60",
       "type": "struct LHPoint2D",
       "address": 13889120
@@ -162581,11 +162586,6 @@
       "name": "DAT_00d3eef4",
       "type": "struct CircleHugStateInfo_field_0x44_node_list",
       "address": 13889268
-    },
-    {
-      "name": "MagicInfoTable",
-      "type": "struct GMagicInfo *[42]",
-      "address": 13860112
     },
     {
       "name": "ape_hair",
@@ -162753,14 +162753,14 @@
       "address": 14297392
     },
     {
-      "name": "GTribeInfo_ARRAY_00da57a8",
-      "type": "struct GTribeInfo[9]",
-      "address": 14309288
-    },
-    {
       "name": "GTownDesireFunction_ARRAY_00da32c8",
       "type": "struct GTownDesireFunction[17]",
       "address": 14299848
+    },
+    {
+      "name": "GTribeInfo_ARRAY_00da57a8",
+      "type": "struct GTribeInfo[9]",
+      "address": 14309288
     },
     {
       "name": "JustMapXZ_ARRAY_00da59fc",
@@ -162833,6 +162833,16 @@
       "address": 15311132
     },
     {
+      "name": "g_ptr_blocks__10LH3DIsland",
+      "type": "struct LandBlock *[256]",
+      "address": 15320420
+    },
+    {
+      "name": "g_index_block__10LH3DIsland",
+      "type": "uint8_t[32][32]",
+      "address": 15321444
+    },
+    {
       "name": "LH3DMesh_g_current_list_matrix",
       "type": "struct LHMatrix[256]",
       "address": 15322664
@@ -162851,16 +162861,6 @@
       "name": "LH3DMesh_g_b_dont_care_about_texture",
       "type": "bool",
       "address": 15334996
-    },
-    {
-      "name": "g_ptr_blocks__10LH3DIsland",
-      "type": "struct LandBlock *[256]",
-      "address": 15320420
-    },
-    {
-      "name": "g_index_block__10LH3DIsland",
-      "type": "uint8_t[32][32]",
-      "address": 15321444
     },
     {
       "name": "LH3DObject",
@@ -162923,6 +162923,11 @@
       "address": 15375984
     },
     {
+      "name": "LHPoint_00ea9e70",
+      "type": "struct LHPoint",
+      "address": 15375984
+    },
+    {
       "name": "g_sun_light_clipping",
       "type": "struct LHPlane",
       "address": 15376000
@@ -162936,11 +162941,6 @@
       "name": "g_current_matrix",
       "type": "struct LHMatrix *",
       "address": 15376032
-    },
-    {
-      "name": "LHPoint_00ea9e70",
-      "type": "struct LHPoint",
-      "address": 15375984
     },
     {
       "name": "current_time_maybe",

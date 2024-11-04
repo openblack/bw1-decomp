@@ -99,11 +99,16 @@ class Header:
     structs: list[Composite]
     templated_containers: dict[set[str]]
     HEADER_GUARD_TEMPLATE: dict[str, Path]
+    ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET: bool
     UTILITY_HEADER_IMPORT_MAP: dict[str, Path]
 
     @classmethod
     def set_header_guard_format(cls, value: str):
         cls.HEADER_GUARD_TEMPLATE = value
+
+    @classmethod
+    def set_assume_include_dirs_defined_in_target(cls, value: bool):
+        cls.ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = value
 
     @classmethod
     def set_utility_header_import_map(cls, value: dict[str, Path]):
@@ -139,7 +144,10 @@ class Header:
                 if header.parent == self.path.parent:
                     header = Path(os.path.relpath(header, start=self.path.parent))
                 else:
-                    header = Path(header.name)
+                    if self.ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET:
+                        header = Path(header.name)
+                    elif header.parts[0] == "libs":
+                        header = header.relative_to("libs")
                     level = self.Include.Level.LINKED
                 i = self.includes.get(header, self.Include(header, set(), level))
                 i.dependencies.add(t)

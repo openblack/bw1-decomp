@@ -708,7 +708,7 @@ struct Bar;
 
 struct TestStruct
 {
-    struct Bar* bar[FOO];
+    struct Bar* bar[FOO];  /* 0x0 */
 };
 static_assert(sizeof(struct TestStruct) == 0x4, "Data type is of wrong size");
 

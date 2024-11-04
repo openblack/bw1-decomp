@@ -24,8 +24,6 @@ HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
 ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = False
 
 
-
-
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
     functions: list[DefinedFunctionPrototype] = [DefinedFunctionPrototype.from_json(f) for f in function_db]
     (
@@ -286,6 +284,7 @@ if __name__ == "__main__":
 
     utility_header_import_map = scan_src_headers.extract_types(include_dirs_stripped=ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET)
     Header.set_header_guard_format(HEADER_GUARD_TEMPLATE)
+    Header.set_assume_include_dirs_defined_in_target(ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET)
     Header.set_utility_header_import_map(utility_header_import_map)
 
     types_to_ignore = {
