@@ -1,6 +1,10 @@
 .venv
 .pytest_cache
 .vscode
+generated_headers_output/
+build/
 *.pyc
 *$py.class
 extracted_reversing_data_bw_141.json
+*.o
+*.obj

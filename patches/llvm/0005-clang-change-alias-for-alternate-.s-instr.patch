@@ -1,0 +1,32 @@
+From 0e4ac501851856da835c3e5ce248d895de1c0351 Mon Sep 17 00:00:00 2001
+From: Sandy Carter <bwrsandman@gmail.com>
+Date: Fri, 27 Dec 2024 00:30:28 -0500
+Subject: [PATCH 5/7] clang: change alias for alternate `.s` instr
+
+Change for `and REG, IMM`
+Change for `cmp REG, IMM`
+Change for `or REG, IMM`
+---
+ llvm/lib/Target/X86/X86InstrAsmAlias.td | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/llvm/lib/Target/X86/X86InstrAsmAlias.td b/llvm/lib/Target/X86/X86InstrAsmAlias.td
+index f7b93af6dc1b..a12ceb493c19 100644
+--- a/llvm/lib/Target/X86/X86InstrAsmAlias.td
++++ b/llvm/lib/Target/X86/X86InstrAsmAlias.td
+@@ -900,9 +900,9 @@ def : InstAlias<"xchg{q}\t{%rax, %rax|rax, rax}", (NOOP), 0>;
+ // first due to the more explicit immediate type.
+ def : InstAlias<"adc{w}\t{$imm, %ax|ax, $imm}", (ADC16ri8 AX, i16i8imm:$imm), 0>;
+ def : InstAlias<"add{w}\t{$imm, %ax|ax, $imm}", (ADD16ri8 AX, i16i8imm:$imm), 0>;
+-def : InstAlias<"and{w}\t{$imm, %ax|ax, $imm}", (AND16ri8 AX, i16i8imm:$imm), 0>;
+-def : InstAlias<"cmp{w}\t{$imm, %ax|ax, $imm}", (CMP16ri8 AX, i16i8imm:$imm), 0>;
+-def : InstAlias<"or{w}\t{$imm, %ax|ax, $imm}",  (OR16ri8 AX,  i16i8imm:$imm), 0>;
++def : InstAlias<"and{w}.s\t{$imm, %ax|ax, $imm}", (AND16ri8 AX, i16i8imm:$imm), 0>;
++def : InstAlias<"cmp{w}.s\t{$imm, %ax|ax, $imm}", (CMP16ri8 AX, i16i8imm:$imm), 0>;
++def : InstAlias<"or{w}.s\t{$imm, %ax|ax, $imm}",  (OR16ri8 AX,  i16i8imm:$imm), 0>;
+ def : InstAlias<"sbb{w}\t{$imm, %ax|ax, $imm}", (SBB16ri8 AX, i16i8imm:$imm), 0>;
+ def : InstAlias<"sub{w}\t{$imm, %ax|ax, $imm}", (SUB16ri8 AX, i16i8imm:$imm), 0>;
+ def : InstAlias<"xor{w}\t{$imm, %ax|ax, $imm}", (XOR16ri8 AX, i16i8imm:$imm), 0>;
+-- 
+2.47.1
+

@@ -1,0 +1,79 @@
+name: Reassemble
+
+on: [push, pull_request]
+
+jobs:
+  reassemble:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu]
+
+    runs-on: ${{ matrix.os }}-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install Python dependencies
+      run: pip install -r src/scripts/requirements.txt
+
+    - name: Install Ninja
+      uses: seanmiddleditch/gha-setup-ninja@master
+
+    - name: Download lld and clang
+      uses: robinraju/release-downloader@v1
+      with:
+        repository: 'openblack/llvm-project'
+        tag: 'bw1-decomp-001'
+        fileName: 'llvm-${{ matrix.os }}.zip'
+        extract: true
+        out-file-path: 'llvm'
+    
+    - name: Ensure LLVM binaries are executable
+      if: ${{ runner.os != 'Windows' }}
+      run: chmod -R +x llvm/bin
+
+    - name: Build bw1-decomp project
+      run: |
+        cmake -Ssrc -Bbuild -G Ninja -DCMAKE_LINKER=${{ github.workspace }}/llvm/bin/lld -DCMAKE_ASM_COMPILER=${{ github.workspace }}/llvm/bin/clang
+        cmake --build build
+
+    - name: Verify MD5 sum of resulting binary
+      run: |
+        expected_md5="174b1a64e74b2321f3c38ccc8a511e78"
+        actual_md5=$(md5sum "${{ github.workspace }}/build/runblack-reassembled.exe" | awk '{ print $1 }')
+        
+        if [ "$expected_md5" != "$actual_md5" ]; then
+        echo "Error: MD5 sum mismatch. Expected $expected_md5 but got $actual_md5"
+        exit 1
+        else
+        echo "MD5 sum matches: $actual_md5"
+        fi
+      shell: bash
+
+    - name: Upload binary if MD5 sum mismatch
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: failed-binary-${{ matrix.os }}
+        path: build/runblack-reassembled.exe
+
+    - name: Build bw1-decomp project (Debug)
+      run: |
+        cmake -Ssrc -Bbuild_debug -G Ninja -DCMAKE_LINKER=${{ github.workspace }}/llvm/bin/lld -DCMAKE_ASM_COMPILER=${{ github.workspace }}/llvm/bin/clang -DBW1_DECOMP_DEBUG=ON -DBW1_DECOMP_FORCE_WINDOWED=ON
+        cmake --build build_debug
+
+    - name: Upload debug version
+      uses: actions/upload-artifact@v4
+      with:
+        name: debug-binary-${{ matrix.os }}
+        path: |
+          build_debug/runblack-reassembled.exe
+          build_debug/runblack-reassembled.exe.pdb
+
