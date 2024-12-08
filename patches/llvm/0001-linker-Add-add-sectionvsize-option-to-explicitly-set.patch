@@ -1,0 +1,105 @@
+From 74389a3306467eebb6e7cedd4c974ff57f19d6f2 Mon Sep 17 00:00:00 2001
+From: Sandy Carter <bwrsandman@gmail.com>
+Date: Tue, 17 Dec 2024 20:18:55 -0500
+Subject: [PATCH 1/7] linker: Add add /sectionvsize option to explicitly set
+ vsize
+
+---
+ lld/COFF/Config.h        | 3 +++
+ lld/COFF/Driver.cpp      | 4 ++++
+ lld/COFF/Driver.h        | 1 +
+ lld/COFF/DriverUtils.cpp | 9 +++++++++
+ lld/COFF/Options.td      | 1 +
+ lld/COFF/Writer.cpp      | 3 +++
+ 6 files changed, 21 insertions(+)
+
+diff --git a/lld/COFF/Config.h b/lld/COFF/Config.h
+index 9e6b17e87c9e..53a36cddf39e 100644
+--- a/lld/COFF/Config.h
++++ b/lld/COFF/Config.h
+@@ -204,6 +204,9 @@ struct Configuration {
+   // Used for /section=.name,{DEKPRSW} to set section attributes.
+   std::map<StringRef, uint32_t> section;
+ 
++  // Used for /sectionvsize=.name,vsize to set section virtual size.
++  std::map<StringRef, uint64_t> sectionVSize;
++
+   // Options for manifest files.
+   ManifestKind manifest = Default;
+   int manifestID = 1;
+diff --git a/lld/COFF/Driver.cpp b/lld/COFF/Driver.cpp
+index 0705f1c1be99..cb3b61998cf8 100644
+--- a/lld/COFF/Driver.cpp
++++ b/lld/COFF/Driver.cpp
+@@ -2127,6 +2127,10 @@ void LinkerDriver::linkerMain(ArrayRef<const char *> argsArr) {
+   for (auto *arg : args.filtered(OPT_section))
+     parseSection(arg->getValue());
+ 
++  // Handle /sectionvsize
++  for (auto *arg : args.filtered(OPT_sectionvsize))
++    parseSectionVSize(arg->getValue());
++
+   // Handle /align
+   if (auto *arg = args.getLastArg(OPT_align)) {
+     parseNumbers(arg->getValue(), &config->align);
+diff --git a/lld/COFF/Driver.h b/lld/COFF/Driver.h
+index e94a96195358..f559430c0aa6 100644
+--- a/lld/COFF/Driver.h
++++ b/lld/COFF/Driver.h
+@@ -234,6 +234,7 @@ private:
+   void parseMerge(StringRef);
+   void parsePDBPageSize(StringRef);
+   void parseSection(StringRef);
++  void parseSectionVSize(StringRef);
+   void parseAligncomm(StringRef);
+ 
+   // Parses a string in the form of "[:<integer>]"
+diff --git a/lld/COFF/DriverUtils.cpp b/lld/COFF/DriverUtils.cpp
+index 1148be09fb10..3ee231c6cbb7 100644
+--- a/lld/COFF/DriverUtils.cpp
++++ b/lld/COFF/DriverUtils.cpp
+@@ -230,6 +230,15 @@ void LinkerDriver::parseSection(StringRef s) {
+   ctx.config.section[name] = parseSectionAttributes(ctx, attrs);
+ }
+ 
++// Parses /sectionvsize option argument.
++void LinkerDriver::parseSectionVSize(StringRef s) {
++  auto [name, vsizestr] = s.split(',');
++  uint64_t vsize;
++  if (vsizestr.getAsInteger(0, vsize) || name.empty())
++    Fatal(ctx) << "/sectionvsize: invalid argument: " << s;
++  ctx.config.sectionVSize[name] = vsize;
++}
++
+ // Parses /aligncomm option argument.
+ void LinkerDriver::parseAligncomm(StringRef s) {
+   auto [name, align] = s.split(',');
+diff --git a/lld/COFF/Options.td b/lld/COFF/Options.td
+index c7ceb51f70b7..22ba1768dcbf 100644
+--- a/lld/COFF/Options.td
++++ b/lld/COFF/Options.td
+@@ -99,6 +99,7 @@ def pdbstream : Joined<["/", "-", "/?", "-?"], "pdbstream:">,
+     MetaVarName<"<name>=<file>">,
+     HelpText<"Embed the contents of <file> in the PDB as named stream <name>">;
+ def section : P<"section", "Specify section attributes">;
++def sectionvsize : P<"sectionvsize", "Specify section virtual size">;
+ def stack   : P<"stack", "Size of the stack">;
+ def stub    : P<"stub", "Specify DOS stub file">;
+ def subsystem : P<"subsystem", "Specify subsystem">;
+diff --git a/lld/COFF/Writer.cpp b/lld/COFF/Writer.cpp
+index 3c6112b7fc89..40a380bf92f3 100644
+--- a/lld/COFF/Writer.cpp
++++ b/lld/COFF/Writer.cpp
+@@ -1643,6 +1643,9 @@ void Writer::assignAddresses() {
+       if (c->hasData)
+         rawSize = alignTo(virtualSize, config->fileAlign);
+     }
++    auto explicitVSize = ctx.config.sectionVSize.find(sec->name);
++    if (explicitVSize != ctx.config.sectionVSize.end())
++      virtualSize = explicitVSize->second;
+     if (virtualSize > UINT32_MAX)
+       Err(ctx) << "section larger than 4 GiB: " << sec->name;
+     sec->header.VirtualSize = virtualSize;
+-- 
+2.47.1
+

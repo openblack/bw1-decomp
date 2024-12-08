@@ -1,0 +1,24 @@
+From fb21db182b49b4547837474d810b0c71c9e5d4ff Mon Sep 17 00:00:00 2001
+From: Sandy Carter <bwrsandman@gmail.com>
+Date: Fri, 27 Dec 2024 00:29:05 -0500
+Subject: [PATCH 4/7] clang: add alternate `.s` instr for `fadd`
+
+---
+ llvm/lib/Target/X86/X86InstrAsmAlias.td | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/llvm/lib/Target/X86/X86InstrAsmAlias.td b/llvm/lib/Target/X86/X86InstrAsmAlias.td
+index c49266468ea1..f7b93af6dc1b 100644
+--- a/llvm/lib/Target/X86/X86InstrAsmAlias.td
++++ b/llvm/lib/Target/X86/X86InstrAsmAlias.td
+@@ -717,6 +717,7 @@ multiclass FpUnaryAlias<string Mnemonic, Instruction Inst, bit EmitAlias = 1> {
+ }
+ 
+ defm : FpUnaryAlias<"fadd",   ADD_FST0r, 0>;
++defm : FpUnaryAlias<"fadd.s",   ADD_FrST0, 0>;
+ defm : FpUnaryAlias<"faddp",  ADD_FPrST0, 0>;
+ defm : FpUnaryAlias<"fsub",   SUB_FST0r, 0>;
+ defm : FpUnaryAlias<"fsub{|r}p",  SUBR_FPrST0, 0>;
+-- 
+2.47.1
+
