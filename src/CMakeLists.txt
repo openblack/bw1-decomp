@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.30)
 project(bw1-decomp ASM)
 
+set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available build configurations" FORCE)
+
 # WARNING This cmake script assumes that it's configured with CMAKE_ASM_COMPILER as a PATCHED clang and CMAKE_LINKER as llvm's lld.
 # If the wrong assembler is used, then there won't be the correct object code generated (e.g. register displacements might be of different sizes or opcodes may vary) and
 # some of the `.s` custom language extensions will not assemble.
@@ -10,6 +12,12 @@ project(bw1-decomp ASM)
 
 set(CMAKE_ASM_LINK_EXECUTABLE "<CMAKE_LINKER> <FLAGS> <CMAKE_ASM_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> /out:<TARGET> <LINK_LIBRARIES>")
 set(CMAKE_ASM_USE_RESPONSE_FILE_FOR_OBJECTS 1)
+
+set(CMAKE_ASM_FLAGS_DEBUG "")
+set(CMAKE_ASM_FLAGS_MINSIZEREL "")
+set(CMAKE_ASM_FLAGS_RELWITHDEBINFO "")
+set(CMAKE_ASM_FLAGS_RELEASE "")
+set(CMAKE_DEPFILE_FLAGS_ASM "")
 
 set(SOURCES
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
@@ -374,10 +382,8 @@ target_compile_options(runblack-reassembled
         -target
         i686-pc-windows-gnu
         -m32
+        $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
 )
-if (BW1_DECOMP_DEBUG)
-    target_compile_options(runblack-reassembled PRIVATE "-g")
-endif ()
 target_link_options(runblack-reassembled
     PRIVATE
         "-flavor"
@@ -392,14 +398,9 @@ target_link_options(runblack-reassembled
         "/filealign:0x1000"
         "/entry:jmp_addr_0x007ca49f"
         "/safeseh:no"
+        "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
+        "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug>"
 )
-if (BW1_DECOMP_DEBUG)
-    target_link_options(runblack-reassembled
-        PRIVATE
-            "/pdb:$<TARGET_FILE:runblack-reassembled>.pdb"
-            "/debug"
-    )
-endif()
 
 find_program(STRIP strip)
 add_custom_command(
@@ -413,7 +414,7 @@ find_package(Python3 REQUIRED)
 add_custom_command(
     TARGET runblack-reassembled
     POST_BUILD
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/post_assemble_patch.py --input "$<TARGET_FILE:runblack-reassembled>" --output "$<TARGET_FILE:runblack-reassembled>" $<$<BOOL:${BW1_DECOMP_DEBUG}>:"--debug"> $<$<BOOL:${BW1_DECOMP_FORCE_WINDOWED}>:"--turn-off-fullscreen">
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/post_assemble_patch.py --input "$<TARGET_FILE:runblack-reassembled>" --output "$<TARGET_FILE:runblack-reassembled>" $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:"--debug"> $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:"--turn-off-fullscreen">
     COMMENT "Patching PE header to match vanilla"
 )
 
