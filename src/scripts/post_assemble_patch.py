@@ -172,9 +172,8 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
     # Point to .rdata rather than .data
     pe.OPTIONAL_HEADER.BaseOfData = find_section_header(pe, '.rdata').get_PointerToRawData_adj()
 
-    # SELFMOD is given the executable flag because there is code in it, it should be seen as data only
-    find_section_header(pe, "SELFMOD").Characteristics |= pefile.SECTION_CHARACTERISTICS['IMAGE_SCN_CNT_INITIALIZED_DATA']
-    find_section_header(pe, "SELFMOD").Characteristics &= ~(pefile.SECTION_CHARACTERISTICS['IMAGE_SCN_MEM_EXECUTE'] | pefile.SECTION_CHARACTERISTICS['IMAGE_SCN_CNT_CODE'])
+    # rsrc should not be writable
+    find_section_header(pe, ".rsrc").Characteristics &= ~pefile.SECTION_CHARACTERISTICS['IMAGE_SCN_MEM_WRITE']
 
     # Some random strings are hanging out in header
     for offset, string in strings_to_embed:
