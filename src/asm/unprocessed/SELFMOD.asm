@@ -1,4 +1,5 @@
 .intel_syntax noprefix
+.align 16
 .section SELFMOD
 
 .globl _jmp_addr_0x00fc1285

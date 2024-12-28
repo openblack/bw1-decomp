@@ -359,6 +359,7 @@ def output_assembly(md, code: bytes, program_base: int, size_of_stack: int, sect
     with output_file.open("w") as output:
         output.write(f"""\
 .intel_syntax noprefix
+.align 16
 
 """)
 
