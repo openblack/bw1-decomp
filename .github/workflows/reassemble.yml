@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu]
+        os: [ubuntu, windows]
 
     runs-on: ${{ matrix.os }}-latest
 
@@ -41,13 +41,13 @@ jobs:
 
     - name: Build bw1-decomp project
       run: |
-        cmake -Ssrc -Bbuild -G Ninja -DCMAKE_LINKER=${{ github.workspace }}/llvm/bin/lld -DCMAKE_ASM_COMPILER=${{ github.workspace }}/llvm/bin/clang
+        cmake -Ssrc -Bbuild -G Ninja -DCMAKE_LINKER="${{ github.workspace }}/llvm/bin/lld${{ runner.os == 'Windows' && '.exe' || '' }}" -DCMAKE_ASM_COMPILER="${{ github.workspace }}/llvm/bin/clang${{ runner.os == 'Windows' && '.exe' || '' }}"
         cmake --build build
 
     - name: Verify MD5 sum of resulting binary
       run: |
         expected_md5="174b1a64e74b2321f3c38ccc8a511e78"
-        actual_md5=$(md5sum "${{ github.workspace }}/build/runblack-reassembled.exe" | awk '{ print $1 }')
+        actual_md5=$(md5sum "${{ github.workspace }}/build/runblack-reassembled.exe" | awk '{ print $1 }' | sed 's/^\\//')
         
         if [ "$expected_md5" != "$actual_md5" ]; then
         echo "Error: MD5 sum mismatch. Expected $expected_md5 but got $actual_md5"
@@ -66,7 +66,7 @@ jobs:
 
     - name: Build bw1-decomp project (Debug)
       run: |
-        cmake -Ssrc -Bbuild_debug -G Ninja -DCMAKE_LINKER=${{ github.workspace }}/llvm/bin/lld -DCMAKE_ASM_COMPILER=${{ github.workspace }}/llvm/bin/clang -DBW1_DECOMP_DEBUG=ON -DBW1_DECOMP_FORCE_WINDOWED=ON
+        cmake -Ssrc -Bbuild_debug -G Ninja -DCMAKE_LINKER="${{ github.workspace }}/llvm/bin/lld${{ runner.os == 'Windows' && '.exe' || '' }}" -DCMAKE_ASM_COMPILER="${{ github.workspace }}/llvm/bin/clang${{ runner.os == 'Windows' && '.exe' || '' }}" -DBW1_DECOMP_DEBUG=ON -DBW1_DECOMP_FORCE_WINDOWED=ON
         cmake --build build_debug
 
     - name: Upload debug version
