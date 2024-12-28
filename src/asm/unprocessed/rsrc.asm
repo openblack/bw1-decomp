@@ -1,4 +1,5 @@
 .intel_syntax noprefix
+.align 16
 .section .rsrc
 
 rsrc_bytes:
