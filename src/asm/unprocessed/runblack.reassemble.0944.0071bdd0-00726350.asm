@@ -271,7 +271,7 @@
 .extern _jmp_addr_0x0083f310
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x0086a7f0
-.extern _GetSpellSeedInfo__9SpellIconCFv
+.extern @GetSpellSeedInfo__9SpellIconCFv@4
 
 .globl _jmp_addr_0x0071be40
 .globl _jmp_addr_0x0071beb0
@@ -16079,7 +16079,7 @@ _jmp_addr_0x00726306:    xor.s              eax, eax                            
                          mov.s              edx, esp                                             // 0x0072631e    8bd4
                          add                eax, 0x00d9d678                                      // 0x00726320    0578d6d900
                          mov                dword ptr [edx], eax                                 // 0x00726325    8902
-                         call               _GetSpellSeedInfo__9SpellIconCFv                     // 0x00726327    e824000000
+                         call               @GetSpellSeedInfo__9SpellIconCFv@4                   // 0x00726327    e824000000
                          push               ecx                                                  // 0x0072632c    51
                          mov.s              ecx, esp                                             // 0x0072632d    8bcc
                          push               eax                                                  // 0x0072632f    50
