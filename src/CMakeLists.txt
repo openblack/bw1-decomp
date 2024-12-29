@@ -20,7 +20,7 @@ else()
     set(OBJ_SUFFIX ".o")
 endif()
 
-project(bw1-decomp ASM RC)
+project(bw1-decomp ASM C RC)
 
 set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available build configurations" FORCE)
 
@@ -34,11 +34,22 @@ set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available b
 set(CMAKE_ASM_LINK_EXECUTABLE "<CMAKE_LINKER> <FLAGS> <CMAKE_ASM_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> /out:<TARGET> <LINK_LIBRARIES>")
 set(CMAKE_ASM_USE_RESPONSE_FILE_FOR_OBJECTS 1)
 
+set(CMAKE_ASM_USING_LINKER_DEFAULT "")
+set(CMAKE_ASM_CREATE_CONSOLE_EXE "")
 set(CMAKE_ASM_FLAGS_DEBUG "")
 set(CMAKE_ASM_FLAGS_MINSIZEREL "")
 set(CMAKE_ASM_FLAGS_RELWITHDEBINFO "")
 set(CMAKE_ASM_FLAGS_RELEASE "")
 set(CMAKE_DEPFILE_FLAGS_ASM "")
+
+set(CMAKE_C_COMPILE_OPTIONS_MSVC_RUNTIME_LIBRARY_MultiThreadedDLL "")
+set(CMAKE_C_USING_LINKER_DEFAULT "")
+set(CMAKE_C_CREATE_CONSOLE_EXE "")
+set(CMAKE_C_FLAGS_DEBUG "")
+set(CMAKE_C_FLAGS_MINSIZEREL "")
+set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2")
+set(CMAKE_C_FLAGS_RELEASE "-O3")
+set(CMAKE_DEPFILE_FLAGS_C "")
 
 find_package(Python3 REQUIRED)
 find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
@@ -292,7 +303,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0939.0071bcd0-0071bd50.asm
     asm/unprocessed/runblack.reassemble.0942.0071bd50-0071bdd0.asm
     asm/unprocessed/runblack.reassemble.0944.0071bdd0-00726350.asm
-    asm/SpellIcon.0945.00726350-00726360.asm
+    c/SpellIcon.0945.00726350-00726360.c
     asm/unprocessed/runblack.reassemble.0946.00726360-00728570.asm
     asm/unprocessed/runblack.reassemble.0950.00728570-00729c90.asm
     asm/unprocessed/runblack.reassemble.0953.00729c90-0072e5c0.asm
@@ -559,7 +570,16 @@ add_library(common_compile_options INTERFACE)
 target_compile_options(common_compile_options INTERFACE
     -target i686-pc-windows-gnu
     -m32
+    -masm=intel
+    -march=i386
     $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
+)
+target_include_directories(common_compile_options
+    INTERFACE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/..
+        ${CMAKE_CURRENT_SOURCE_DIR}/../black
+        ${CMAKE_CURRENT_SOURCE_DIR}/../libs
 )
 # Enforce a obj linking order
 target_link_libraries(runblack-reassembled
