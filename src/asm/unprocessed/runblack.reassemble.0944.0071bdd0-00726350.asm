@@ -271,6 +271,7 @@
 .extern _jmp_addr_0x0083f310
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x0086a7f0
+.extern @GetSpellSeedInfo__9SpellIconCFv@4
 
 .globl _jmp_addr_0x0071be40
 .globl _jmp_addr_0x0071beb0
