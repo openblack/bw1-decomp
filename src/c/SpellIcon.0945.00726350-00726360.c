@@ -1,4 +1,6 @@
-__attribute__((thiscall)) int GetSpellSeedInfo__9SpellIconCFv(const void* this_)
+#include "SpellIcon.h"
+
+struct GSpellSeedInfo* __fastcall GetSpellSeedInfo__9SpellIconCFv(const struct SpellIcon* this_)
 {
-    return *(int*)(((char*)this_) + 0x80);
+    return this_->seed_info;
 }
