@@ -8,3 +8,4 @@ build/
 extracted_reversing_data_bw_141.json
 *.o
 *.obj
+*.res
