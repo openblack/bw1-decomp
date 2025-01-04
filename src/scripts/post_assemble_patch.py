@@ -79,21 +79,25 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
     timestamp = datetime(2002, 6, 18, 6, 13, 22, tzinfo=timezone.utc)
     last_text_layout_asm_addr = 0x008a895d
     header_characteristics_bits_to_clear = pefile.IMAGE_CHARACTERISTICS['IMAGE_FILE_DEBUG_STRIPPED']
-    strings_to_embed = [
-        (0x13c, b"\x0d\x00\x2b\xad"),
-        # Signature by no-cd patch?
-        # https://www.beatport.com/nl/track/crazy-bad-bwoy/682050
-        (0x340, " crazy bad bwoy "),
-        # Information about the original linker
-        (0x390, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"[24:]),
-        (0x503, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0.1 Beta  Build 010214Z  : cpu_disp.c : -I../ -Zl -Zp8 -DVX -DWMT -DMULTI_THREADED -Focpu_disp_mt.obj -c"),
-        (0x5a5, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Beta  Build 001024  : C:\\PROJECTS\\MathTest\\AMaths.c : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -ML -W3 -GX -O2 -D WIN32 -D NDEBUG -D _WINDOWS -D _USE_INTEL_COMPILER -D _KATMAI_STEP_B -FpRelease/AMaths.pch -YX -FoRelease/ -FdRelease/ -FD -QxiMKW -c"),
-        # Probably random garbage, but easy to just encode as string
-        (0xfd4, "BoG_ *90.0&!!  Yy>"),
-        (0xff4, '\2'),
-        (0xff8, "<"),
-        (0xffc, "4"),
-    ]
+    strings_to_embed = []
+    if not debug:
+        strings_to_embed += [
+            (0x13c, b"\x0d\x00\x2b\xad"),
+            # Signature by no-cd patch?
+            # https://www.beatport.com/nl/track/crazy-bad-bwoy/682050
+            (0x340, " crazy bad bwoy "),
+            # Information about the original linker
+            (0x390, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"[24:]),
+            (0x503, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0.1 Beta  Build 010214Z  : cpu_disp.c : -I../ -Zl -Zp8 -DVX -DWMT -DMULTI_THREADED -Focpu_disp_mt.obj -c"),
+            (0x5a5, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Beta  Build 001024  : C:\\PROJECTS\\MathTest\\AMaths.c : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -ML -W3 -GX -O2 -D WIN32 -D NDEBUG -D _WINDOWS -D _USE_INTEL_COMPILER -D _KATMAI_STEP_B -FpRelease/AMaths.pch -YX -FoRelease/ -FdRelease/ -FD -QxiMKW -c"),
+            # Probably random garbage, but easy to just encode as string
+            (0xfd4, "BoG_ *90.0&!!  Yy>"),
+            (0xff4, '\2'),
+            (0xff8, "<"),
+            (0xffc, "4"),
+            # Garbage string in the rsrc
+            (0x008428F8, "property of their respective owners".encode("utf-16-le")),
+        ]
     unmarked_object_old = 0x0000
     unmarked_object = 0x0001
     linker_vs98 = 0x0004

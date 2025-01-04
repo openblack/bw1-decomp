@@ -26,11 +26,11 @@ jobs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
 
-    - name: Download lld and clang
+    - name: Download lld, llvm-rc and clang
       uses: robinraju/release-downloader@v1
       with:
         repository: 'openblack/llvm-project'
-        tag: 'bw1-decomp-001'
+        tag: 'bw1-decomp-003'
         fileName: 'llvm-${{ matrix.os }}.zip'
         extract: true
         out-file-path: 'llvm'
@@ -39,9 +39,15 @@ jobs:
       if: ${{ runner.os != 'Windows' }}
       run: chmod -R +x llvm/bin
 
+    - name: Set path for LLVM binaries in env
+      shell: bash
+      run: |
+        echo "LLVM_BINARIES=$(echo '${{ github.workspace }}'/llvm/bin | sed 's,\\,/,g')" >> $GITHUB_ENV
+        echo "LLVM_SUFFIX=${{ runner.os == 'Windows' && '.exe' || '' }}" >> $GITHUB_ENV
+
     - name: Build bw1-decomp project
       run: |
-        cmake -Ssrc -Bbuild -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_LINKER="${{ github.workspace }}/llvm/bin/lld${{ runner.os == 'Windows' && '.exe' || '' }}" -DCMAKE_ASM_COMPILER="${{ github.workspace }}/llvm/bin/clang${{ runner.os == 'Windows' && '.exe' || '' }}"
+        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
         cmake --build build
 
     - name: Verify MD5 sum of resulting binary
@@ -66,7 +72,7 @@ jobs:
 
     - name: Build bw1-decomp project (Debug)
       run: |
-        cmake -Ssrc -Bbuild_debug -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_LINKER="${{ github.workspace }}/llvm/bin/lld${{ runner.os == 'Windows' && '.exe' || '' }}" -DCMAKE_ASM_COMPILER="${{ github.workspace }}/llvm/bin/clang${{ runner.os == 'Windows' && '.exe' || '' }}"
+        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
         cmake --build build_debug
 
     - name: Upload debug version

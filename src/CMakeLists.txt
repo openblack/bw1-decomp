@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(bw1-decomp ASM)
+project(bw1-decomp ASM RC)
 
 set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available build configurations" FORCE)
 
@@ -369,7 +369,12 @@ set(SOURCES
     asm/unprocessed/data.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
-    asm/unprocessed/rsrc.asm
+
+    res/winnt.rh
+    res/winuser.rh
+    res/verrsrc.h
+    res/resource.h
+    res/runblack.rc
 )
 
 add_executable(runblack-reassembled ${SOURCES})
@@ -391,6 +396,7 @@ target_link_options(runblack-reassembled
         "/FIXED"
         "/sectionvsize:.text,0x004a795d"
         "/sectionvsize:.data,0x5f9e00"
+        "$<$<CONFIG:Release>:/sectionvsize:.rsrc,0x393E>" # Required padding for garbage string in vanilla
         "/subsystem:windows,4"
         "/stack:0x100000,0x1000"
         "/heap:0x100000,0x1000"
