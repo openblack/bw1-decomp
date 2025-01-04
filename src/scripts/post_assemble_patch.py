@@ -93,6 +93,7 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
         (0xff4, '\2'),
         (0xff8, "<"),
         (0xffc, "4"),
+        (0x008428F8, "property of their respective owners".encode("utf-16-le")),
     ]
     unmarked_object_old = 0x0000
     unmarked_object = 0x0001
