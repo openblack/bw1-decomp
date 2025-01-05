@@ -187,8 +187,8 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0472.005497f0-00549900.asm
     asm/unprocessed/runblack.reassemble.0476.00549900-0054a180.asm
     asm/unprocessed/runblack.reassemble.0479.0054a180-0054c180.asm
-    c/Game.0480.0054c180-0054c187.c
-    asm/unprocessed/runblack.reassemble.0480.0054c190-0054ff80.asm
+    c/Game.0480.0054c180-0054c2d6.c
+    asm/unprocessed/runblack.reassemble.0480.0054c2e0-0054ff80.asm
     asm/unprocessed/runblack.reassemble.0483.0054ff80-00551ee0.asm
     asm/unprocessed/runblack.reassemble.0486.00551ee0-005525e0.asm
     asm/unprocessed/runblack.reassemble.0490.005525e0-005529e0.asm
