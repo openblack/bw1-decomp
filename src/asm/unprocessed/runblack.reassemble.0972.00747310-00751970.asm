@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x0053a010
 .extern _jmp_addr_0x0053a220
 .extern _jmp_addr_0x0053a310
-.extern _jmp_addr_0x0054c180
+.extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x00550980
 .extern _jmp_addr_0x00555240
 .extern _jmp_addr_0x00555850
@@ -6882,7 +6882,7 @@ _jmp_addr_0x0074af69:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          {disp32} mov       dword ptr [esp + 0x00000080], ebp              // 0x0074af77    89ac2480000000
                          {disp32} mov       dword ptr [esp + 0x00000084], 0x0000000a       // 0x0074af7e    c78424840000000a000000
                          {disp32} mov       dword ptr [esp + 0x00000088], 0x0000004b       // 0x0074af89    c78424880000004b000000
-                         call               _jmp_addr_0x0054c180                           // 0x0074af94    e8e711e0ff
+                         call               @GetCamera__5GGameFv@4                           // 0x0074af94    e8e711e0ff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]         // 0x0074af99    a1b81dea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdbc]         // 0x0074af9e    8b0dbc1dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc0]         // 0x0074afa4    8b15c01dea00
@@ -7014,7 +7014,7 @@ _jmp_addr_0x0074b111:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          mov.s              ecx, ebx                                       // 0x0074b14d    8bcb
                          call               dword ptr [eax + 0x10]                         // 0x0074b14f    ff5010
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x0074b152    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                           // 0x0074b158    e82310e0ff
+                         call               @GetCamera__5GGameFv@4                           // 0x0074b158    e82310e0ff
                          {disp8} fld        dword ptr [esp + 0x20]                         // 0x0074b15d    d9442420
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdb8]         // 0x0074b161    8b15b81dea00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdbc]         // 0x0074b167    a1bc1dea00

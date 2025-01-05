@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x0052e890
 .extern _jmp_addr_0x0052ea50
 .extern _jmp_addr_0x0052f0c0
-.extern _jmp_addr_0x0054c180
+.extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x0054d920
 .extern _jmp_addr_0x00552f80
 .extern _jmp_addr_0x00555850
@@ -20049,7 +20049,7 @@ _jmp_addr_0x0052aaa0:    sub                esp, 0x10                           
                          test               eax, eax                                             // 0x0052aaa9    85c0
                          {disp32} je        _jmp_addr_0x0052abae                                 // 0x0052aaab    0f84fd000000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]               // 0x0052aab1    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                                 // 0x0052aab7    e8c4160200
+                         call               @GetCamera__5GGameFv@4                                 // 0x0052aab7    e8c4160200
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]               // 0x0052aabc    a1b81dea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdbc]               // 0x0052aac1    8b0dbc1dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc0]               // 0x0052aac7    8b15c01dea00
