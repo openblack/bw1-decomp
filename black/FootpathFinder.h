@@ -6,7 +6,7 @@
 
 #include <lhall/released/headers/RPHolder.h> /* For struct RPHolder */
 #include <lhall/released/headers/RPlan.h> /* For struct RPlan */
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "GameThing.h" /* For struct GameThing */
 

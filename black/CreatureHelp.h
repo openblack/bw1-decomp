@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <lionhead/lhlib/VER5.0/GJVector.h> /* For DECLARE_GJ_VECTOR */
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/GJVector.h> /* For DECLARE_GJ_VECTOR */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "MapCoords.h" /* For struct MapCoords */
 

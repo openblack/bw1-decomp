@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
-#include <lionhead/lhlib/VER5.0/GJVector.h> /* For DECLARE_GJ_VECTOR */
+#include <lionhead/lhlib/ver5.0/GJVector.h> /* For DECLARE_GJ_VECTOR */
 
 // Forward Declares
 

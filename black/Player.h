@@ -8,7 +8,7 @@
 
 #include <chlasm/Enum.h> /* For enum MAGIC_TYPE */
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <lionhead/lhlib/VER5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing */

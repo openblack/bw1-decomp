@@ -6,7 +6,7 @@
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE */
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "Fixed.h" /* For struct FixedObject, struct FixedObjectVftable */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */

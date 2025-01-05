@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <uchar.h> /* For char16_t */
 
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "CreatureHelp.h" /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
