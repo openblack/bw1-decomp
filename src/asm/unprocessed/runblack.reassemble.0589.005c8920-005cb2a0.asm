@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x0043c5f0
 .extern _jmp_addr_0x004489d0
 .extern _jmp_addr_0x00448c00
-.extern _jmp_addr_0x0054c180
+.extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x00555850
 .extern _jmp_addr_0x005c46e0
 .extern _jmp_addr_0x005c4800
@@ -1150,7 +1150,7 @@ _jmp_addr_0x005c90f7:    {disp8} mov        esi, dword ptr [esp + 0x3c]         
                          {disp8} fild       dword ptr [ebx + 0x04]                        // 0x005c915f    db4304
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13a4]              // 0x005c9162    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x2c]                        // 0x005c9168    d95c242c
-                         call               _jmp_addr_0x0054c180                          // 0x005c916c    e80f30f8ff
+                         call               @GetCamera__5GGameFv@4                          // 0x005c916c    e80f30f8ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]        // 0x005c9171    8b0db81dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x005c9177    8b15bc1dea00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]        // 0x005c917d    a1c01dea00
@@ -1158,7 +1158,7 @@ _jmp_addr_0x005c90f7:    {disp8} mov        esi, dword ptr [esp + 0x3c]         
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x005c9186    8b0d5c19d000
                          {disp8} mov        dword ptr [esp + 0x10], edx                   // 0x005c918c    89542410
                          {disp8} mov        dword ptr [esp + 0x14], eax                   // 0x005c9190    89442414
-                         call               _jmp_addr_0x0054c180                          // 0x005c9194    e8e72ff8ff
+                         call               @GetCamera__5GGameFv@4                          // 0x005c9194    e8e72ff8ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc4]        // 0x005c9199    8b0dc41dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc8]        // 0x005c919f    8b15c81dea00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdcc]        // 0x005c91a5    a1cc1dea00

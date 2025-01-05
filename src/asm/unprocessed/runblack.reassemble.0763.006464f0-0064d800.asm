@@ -48,7 +48,7 @@
 .extern _jmp_addr_0x0052c0c0
 .extern _jmp_addr_0x0052c170
 .extern _jmp_addr_0x0053b4a0
-.extern _jmp_addr_0x0054c180
+.extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x0054cb10
 .extern _jmp_addr_0x005508a0
 .extern _jmp_addr_0x005508d0
@@ -1272,7 +1272,7 @@ _jmp_addr_0x0064689f:    cmp                ecx, 0x16                           
                          {disp8} jne        _jmp_addr_0x006468ab                           // 0x006468a7    7502
                          xor.s              esi, esi                                       // 0x006468a9    33f6
 _jmp_addr_0x006468ab:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x006468ab    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                           // 0x006468b1    e8ca58f0ff
+                         call               @GetCamera__5GGameFv@4                           // 0x006468b1    e8ca58f0ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]         // 0x006468b6    8b0db81dea00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]         // 0x006468bc    a1c01dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]         // 0x006468c1    8b15bc1dea00
@@ -6562,7 +6562,7 @@ _jmp_addr_0x0064a7a0:    sub                esp, 0x0c                           
                          mov.s              ebx, ecx                                       // 0x0064a7a6    8bd9
                          xor.s              edi, edi                                       // 0x0064a7a8    33ff
 _jmp_addr_0x0064a7aa:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x0064a7aa    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                           // 0x0064a7b0    e8cb19f0ff
+                         call               @GetCamera__5GGameFv@4                           // 0x0064a7b0    e8cb19f0ff
                          {disp8} mov        ecx, dword ptr [eax + 0x58]                    // 0x0064a7b5    8b4858
                          test               ecx, ecx                                       // 0x0064a7b8    85c9
                          {disp8} jge        _jmp_addr_0x0064a7c0                           // 0x0064a7ba    7d04
@@ -6590,7 +6590,7 @@ _jmp_addr_0x0064a7c4:    push               0x0                                 
                          test               esi, esi                                       // 0x0064a7fe    85f6
                          {disp8} je         _jmp_addr_0x0064a815                           // 0x0064a800    7413
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x0064a802    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                           // 0x0064a808    e87319f0ff
+                         call               @GetCamera__5GGameFv@4                           // 0x0064a808    e87319f0ff
                          push               eax                                            // 0x0064a80d    50
                          mov.s              ecx, esi                                       // 0x0064a80e    8bce
                          call               _jmp_addr_0x004572e0                           // 0x0064a810    e8cbcae0ff

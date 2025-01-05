@@ -78,7 +78,7 @@
 .extern _jmp_addr_0x0053a490
 .extern _jmp_addr_0x0053a520
 .extern _jmp_addr_0x0053a740
-.extern _jmp_addr_0x0054c180
+.extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x00550980
 .extern _jmp_addr_0x005509b0
 .extern _jmp_addr_0x00552f80

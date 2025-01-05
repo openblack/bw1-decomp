@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0042a4b0
 .extern _jmp_addr_0x00442700
 .extern _jmp_addr_0x00442d50
-.extern _jmp_addr_0x0054c180
+.extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x00555850
 .extern _jmp_addr_0x0056fa10
 .extern _jmp_addr_0x00580890
@@ -1138,7 +1138,7 @@ _jmp_addr_0x00671e8b:    {disp8} mov        ebx, dword ptr [esp + 0x18]         
                          push               ecx                                           // 0x00671f11    51
                          fstp               st(0)                                         // 0x00671f12    ddd8
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00671f14    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                          // 0x00671f1a    e861a2edff
+                         call               @GetCamera__5GGameFv@4                          // 0x00671f1a    e861a2edff
                          mov.s              ecx, eax                                      // 0x00671f1f    8bc8
                          call               _jmp_addr_0x00442d50                          // 0x00671f21    e82a0eddff
                          {disp8} fst        dword ptr [esp + 0x10]                        // 0x00671f26    d9542410
@@ -5200,7 +5200,7 @@ _jmp_addr_0x00674706:    {disp8} mov        ecx, dword ptr [ebp + 0x30]         
 _jmp_addr_0x00674737:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00674737    8b0d5c19d000
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x0067473d    8d442410
                          push               eax                                           // 0x00674741    50
-                         call               _jmp_addr_0x0054c180                          // 0x00674742    e8397aedff
+                         call               @GetCamera__5GGameFv@4                          // 0x00674742    e8397aedff
                          mov.s              ecx, eax                                      // 0x00674747    8bc8
                          call               _jmp_addr_0x00442d50                          // 0x00674749    e802e6dcff
                          {disp8} fstp       dword ptr [esp + 0x4c]                        // 0x0067474e    d95c244c
