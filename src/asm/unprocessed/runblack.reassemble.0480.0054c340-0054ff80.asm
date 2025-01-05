@@ -455,50 +455,7 @@
 .globl _globl_ct_0x0054c6f0
 .globl _globl_ct_0x0054ceb0
 
-// Snippet: asm, [0x0054c2e0, 0x0054ff60)
-                         sub                esp, 0x08                                     // 0x0054c2e0    83ec08
-                         push               esi                                           // 0x0054c2e3    56
-                         mov.s              esi, ecx                                      // 0x0054c2e4    8bf1
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0054c2e6    ff15c4918a00
-                         sub                eax, dword ptr [data_bytes + 0x30dc24]        // 0x0054c2ec    2b05243ccd00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x30dc28]        // 0x0054c2f2    8b0d283ccd00
-                         {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x0054c2f8    89442404
-                         xor.s              eax, eax                                      // 0x0054c2fc    33c0
-                         {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x0054c2fe    89442408
-                         {disp8} fild       qword ptr [esp + 0x04]                        // 0x0054c302    df6c2404
-                         {disp8} mov        dword ptr [esp + 0x04], ecx                   // 0x0054c306    894c2404
-                         {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x0054c30a    89442408
-                         {disp32} fmul      dword ptr [data_bytes + 0x30dc2c]             // 0x0054c30e    d80d2c3ccd00
-                         {disp8} fiadd      dword ptr [esp + 0x04]                        // 0x0054c314    da442404
-                         call               _jmp_addr_0x007a1400                          // 0x0054c318    e8e3502500
-                         {disp32} mov       dword ptr [esi + 0x00205d3c], eax             // 0x0054c31d    89863c5d2000
-                         pop                esi                                           // 0x0054c323    5e
-                         add                esp, 0x08                                     // 0x0054c324    83c408
-                         ret                                                              // 0x0054c327    c3
-                         nop                                                              // 0x0054c328    90
-                         nop                                                              // 0x0054c329    90
-                         nop                                                              // 0x0054c32a    90
-                         nop                                                              // 0x0054c32b    90
-                         nop                                                              // 0x0054c32c    90
-                         nop                                                              // 0x0054c32d    90
-                         nop                                                              // 0x0054c32e    90
-                         nop                                                              // 0x0054c32f    90
-                         ret                                                              // 0x0054c330    c3
-                         nop                                                              // 0x0054c331    90
-                         nop                                                              // 0x0054c332    90
-                         nop                                                              // 0x0054c333    90
-                         nop                                                              // 0x0054c334    90
-                         nop                                                              // 0x0054c335    90
-                         nop                                                              // 0x0054c336    90
-                         nop                                                              // 0x0054c337    90
-                         nop                                                              // 0x0054c338    90
-                         nop                                                              // 0x0054c339    90
-                         nop                                                              // 0x0054c33a    90
-                         nop                                                              // 0x0054c33b    90
-                         nop                                                              // 0x0054c33c    90
-                         nop                                                              // 0x0054c33d    90
-                         nop                                                              // 0x0054c33e    90
-                         nop                                                              // 0x0054c33f    90
+// Snippet: asm, [0x0054c340, 0x0054ff60)
 _jmp_addr_0x0054c340:    push               esi                                           // 0x0054c340    56
                          mov.s              esi, ecx                                      // 0x0054c341    8bf1
                          call               _jmp_addr_0x0050ccc0                          // 0x0054c343    e87809fcff
