@@ -6,7 +6,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 
 #include <chlasm/Enum.h> /* For RESOURCE_TYPE_LAST, enum TRIBE_TYPE */
-#include <lionhead/lhlib/VER5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MapCoords.h" /* For struct MapCoords */

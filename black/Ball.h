@@ -6,7 +6,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
-#include <lionhead/lhlib/VER5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "MobileObject.h" /* For struct MobileObject */

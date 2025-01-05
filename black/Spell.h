@@ -7,7 +7,7 @@
 
 #include <chlasm/Enum.h> /* For enum MAGIC_TYPE */
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
-#include <lionhead/lhlib/VER5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 #include "MapCoords.h" /* For struct MapCoords */

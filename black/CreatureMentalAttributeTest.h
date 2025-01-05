@@ -6,7 +6,7 @@
 
 #include <chlasm/CreatureEnum.h> /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
 #include <chlasm/Enum.h> /* For enum CREATURE_DESIRES */
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
 

@@ -7,7 +7,7 @@
 
 #include <chlasm/Enum.h> /* For enum DEATH_REASON, enum IMPRESSIVE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
 #include "MapCoords.h" /* For struct MapCoords */

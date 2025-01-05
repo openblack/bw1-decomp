@@ -5,8 +5,8 @@
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
-#include <lionhead/lhlib/VER5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
 #include "Villager.h" /* For struct Villager */

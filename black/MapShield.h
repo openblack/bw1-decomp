@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 
-#include <lionhead/lhlib/VER5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 
 #include "Fixed.h" /* For struct SingleMapFixed, struct SingleMapFixedVftable */
 

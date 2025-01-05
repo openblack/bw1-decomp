@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 
 #include <chlasm/CreatureEnum.h> /* For enum CREATURE_DESIRE_SOURCE */
-#include <lionhead/lhlib/VER5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 // Forward Declares
 
