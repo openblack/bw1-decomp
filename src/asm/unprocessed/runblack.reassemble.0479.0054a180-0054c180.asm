@@ -252,7 +252,7 @@
 .extern _jmp_addr_0x0063e0d0
 .extern _jmp_addr_0x0063ef20
 .extern _jmp_addr_0x0063f710
-.extern _jmp_addr_0x006419f0
+.extern _stop_draw_sprite_to_screen__Fv
 .extern _jmp_addr_0x00642610
 .extern _jmp_addr_0x006442b0
 .extern _jmp_addr_0x00644fc0
@@ -352,7 +352,7 @@
 .extern _jmp_addr_0x00794370
 .extern _jmp_addr_0x00794a30
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007aee98
+.extern ___dl__FPv
 .extern _jmp_addr_0x007bc680
 .extern _jmp_addr_0x007bc6a0
 .extern _jmp_addr_0x007c5791
@@ -389,7 +389,7 @@
 .extern _jmp_addr_0x00836250
 .extern _jmp_addr_0x008366a0
 .extern _jmp_addr_0x008367a0
-.extern _jmp_addr_0x00837d40
+.extern @Release__11LH3DTextureFv@4
 .extern _jmp_addr_0x0083b300
 .extern _jmp_addr_0x0083b3e0
 .extern _jmp_addr_0x0083b450
