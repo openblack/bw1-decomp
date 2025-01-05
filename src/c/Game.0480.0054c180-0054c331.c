@@ -86,3 +86,29 @@ void __fastcall StartGame__5GGameFv(struct GGame* this) {
     "                         add                esp, 0x10\n"                                     // 0x0054c2d2    83c410
   );
 }
+
+void __fastcall FUN_0054c2e0(struct GGame* this) {
+  __asm__(
+    "sub                esp, 0x08\n"                                     // 0x0054c2e0    83ec08
+    "push               esi\n"                                           // 0x0054c2e3    56
+    "mov.s              esi, ecx\n"                                      // 0x0054c2e4    8bf1
+    "call               dword ptr [rdata_bytes + 0x1c4]\n"               // 0x0054c2e6    ff15c4918a00
+    "sub                eax, dword ptr [data_bytes + 0x30dc24]\n"        // 0x0054c2ec    2b05243ccd00
+    "{disp32} mov       ecx, dword ptr [data_bytes + 0x30dc28]\n"        // 0x0054c2f2    8b0d283ccd00
+    "{disp8} mov        dword ptr [esp + 0x04], eax\n"                   // 0x0054c2f8    89442404
+    "xor.s              eax, eax\n"                                      // 0x0054c2fc    33c0
+    "{disp8} mov        dword ptr [esp + 0x08], eax\n"                   // 0x0054c2fe    89442408
+    "{disp8} fild       qword ptr [esp + 0x04]\n"                        // 0x0054c302    df6c2404
+    "{disp8} mov        dword ptr [esp + 0x04], ecx\n"                   // 0x0054c306    894c2404
+    "{disp8} mov        dword ptr [esp + 0x08], eax\n"                   // 0x0054c30a    89442408
+    "{disp32} fmul      dword ptr [data_bytes + 0x30dc2c]\n"             // 0x0054c30e    d80d2c3ccd00
+    "{disp8} fiadd      dword ptr [esp + 0x04]\n"                        // 0x0054c314    da442404
+    "call               _jmp_addr_0x007a1400\n"                          // 0x0054c318    e8e3502500
+    "{disp32} mov       dword ptr [esi + 0x00205d3c], eax\n"             // 0x0054c31d    89863c5d2000
+    "pop                esi\n"                                           // 0x0054c323    5e
+    "add                esp, 0x08\n"                                     // 0x0054c324    83c408
+  );
+}
+
+void __fastcall Delete__5GGameFv(struct GGame* this) {
+}
