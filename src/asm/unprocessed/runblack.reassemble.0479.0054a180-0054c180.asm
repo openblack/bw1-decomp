@@ -358,7 +358,6 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007c6bff
 .extern _jmp_addr_0x007c6c29
@@ -419,7 +418,6 @@
 .extern _jmp_addr_0x00865000
 .extern _jmp_addr_0x0086c560
 .extern _jmp_addr_0x00871f00
-.extern _jmp_addr_0x008a5b3a
 
 .globl _jmp_addr_0x0054a710
 .globl _SetTurnOffMouseMove__Fb
