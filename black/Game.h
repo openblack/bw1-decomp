@@ -227,7 +227,7 @@ void __fastcall ProcessGraphicsEngine__5GGameFUlUl(struct GGame* this, const voi
 void __fastcall Process3dEngine__5GGameFv(struct GGame* this);
 // win1.41 0054e4f0 mac 10083c70 GGame::StartTurn(void)
 void __fastcall StartTurn__5GGameFv(struct GGame* this);
-// win1.41 0054e4f0 mac 10070430 GGame::EndTurn(void)
+// win1.41 0054e960 mac 10070430 GGame::EndTurn(void)
 void __fastcall EndTurn__5GGameFv(struct GGame* this);
 // win1.41 0054e5c0 mac 100665c0 GGame::ProcessTurn(void)
 void __fastcall ProcessTurn__5GGameFv(struct GGame* this);
