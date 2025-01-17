@@ -170,7 +170,6 @@
 .extern _jmp_addr_0x00579440
 .extern _jmp_addr_0x00590f00
 .extern _jmp_addr_0x00590fb0
-.extern _jmp_addr_0x005910f0
 .extern _jmp_addr_0x00591330
 .extern _jmp_addr_0x00591370
 .extern _jmp_addr_0x005c4410
@@ -633,14 +632,6 @@
 .globl _jmp_addr_0x0054ff09
 .globl _jmp_addr_0x0054ff40
 
-                         mov                ecx, 0x00cd3b20                               // 0x0054d840    b9203bcd00
-                         {disp32} jmp       _jmp_addr_0x005910f0                          // 0x0054d845    e9a6380400
-                         nop                                                              // 0x0054d84a    90
-                         nop                                                              // 0x0054d84b    90
-                         nop                                                              // 0x0054d84c    90
-                         nop                                                              // 0x0054d84d    90
-                         nop                                                              // 0x0054d84e    90
-                         nop                                                              // 0x0054d84f    90
 _jmp_addr_0x0054d850:    push               esi                                           // 0x0054d850    56
                          mov.s              esi, ecx                                      // 0x0054d851    8bf1
                          mov                ecx, 0x00e85204                               // 0x0054d853    b90452e800

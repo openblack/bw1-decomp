@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x0056fe00
 .extern _jmp_addr_0x005739f0
 .extern _jmp_addr_0x00591010
-.extern _jmp_addr_0x005910f0
+.extern @DisplayPlayerTextMessages__7GGlobalFv@4
 .extern _jmp_addr_0x005e1860
 .extern _jmp_addr_0x005e1950
 .extern _jmp_addr_0x005ea980
@@ -583,7 +583,7 @@ _jmp_addr_0x0064202f:    {disp32} mov       eax, dword ptr [data_bytes + 0x23899
                          {disp32} mov       byte ptr [esp + 0x00000197], 0x00              // 0x0064208b    c684249701000000
                          call               _jmp_addr_0x00591010                           // 0x00642093    e878eff4ff
                          mov                ecx, 0x00cd3b20                                // 0x00642098    b9203bcd00
-                         call               _jmp_addr_0x005910f0                           // 0x0064209d    e84ef0f4ff
+                         call               @DisplayPlayerTextMessages__7GGlobalFv@4                           // 0x0064209d    e84ef0f4ff
                          {disp32} mov       esi, dword ptr [data_bytes + 0x530bec]         // 0x006420a2    8b35ec6bef00
                          push               0x0                                            // 0x006420a8    6a00
                          call               _jmp_addr_0x00641fe0                           // 0x006420aa    e831ffffff
@@ -861,7 +861,7 @@ _jmp_addr_0x006423d0:    {disp32} mov       ecx, dword ptr [esp + 0x00000494]   
                          {disp32} mov       byte ptr [esp + 0x00000397], 0x00              // 0x00642412    c684249703000000
                          call               _jmp_addr_0x00591010                           // 0x0064241a    e8f1ebf4ff
                          mov                ecx, 0x00cd3b20                                // 0x0064241f    b9203bcd00
-                         call               _jmp_addr_0x005910f0                           // 0x00642424    e8c7ecf4ff
+                         call               @DisplayPlayerTextMessages__7GGlobalFv@4                           // 0x00642424    e8c7ecf4ff
                          push               0x0                                            // 0x00642429    6a00
                          mov                ecx, 0x00e85050                                // 0x0064242b    b95050e800
                          call               _jmp_addr_0x007de090                           // 0x00642430    e85bbc1900
