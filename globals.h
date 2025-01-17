@@ -268,7 +268,7 @@ struct globals_t
   struct custom_footpath_display_control_t* custom_footpath_display_control;  /* 0x00fae800 */
 };
 
-volatile static struct globals_t globals = {
+static struct globals_t globals = {
     .LH3DColor_ARRAY_008ab250 = (const struct LH3DColor (*)[4])0x008ab250,
     .DiscipleInfo_ARRAY_0099a1f8 = (struct DiscipleInfo (*)[13])0x0099a1f8,
     .SetupThingDraw = (struct SetupThingDraw_t*)0x009c8078,
