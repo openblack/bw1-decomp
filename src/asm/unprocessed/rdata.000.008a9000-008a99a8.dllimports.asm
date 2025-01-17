@@ -3,6 +3,7 @@
 .section .rdata
 
 .globl rdata_bytes
+.globl _rdata_bytes
 .globl __imp__RegQueryValueExA@4
 .globl __imp__RegCloseKey@4
 .globl __imp__RegCreateKeyExA@4
@@ -602,6 +603,7 @@
 .globl __imp__Connect_Dialup__QAEHHP6GXHPAX_ZPAG20_Z@4
 
 rdata_bytes:
+_rdata_bytes:
 
 .long 0x005c4f26 /* ADVAPI32.DLL::RegQueryValueExA */                                                                                                            ; .set __imp__RegQueryValueExA@4,                                                                                                      0x008a9000
 .long 0x005c4ef4 /* ADVAPI32.DLL::RegCloseKey */                                                                                                                 ; .set __imp__RegCloseKey@4,                                                                                                           0x008a9004
