@@ -35,4 +35,9 @@ struct GGlobal
 };
 static_assert(sizeof(struct GGlobal) == 0x2d500, "Data type is of wrong size");
 
+// Non-virtual methods
+
+// win1.41 005910f0 mac 1032d3a0 GGlobal::DisplayPlayerTextMessages(void)
+void __fastcall DisplayPlayerTextMessages__7GGlobalFv(struct GGlobal* this);
+
 #endif /* BW1_DECOMP_GLOBAL_INCLUDED_H */
