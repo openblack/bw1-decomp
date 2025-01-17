@@ -13,6 +13,7 @@
 struct DanceGroup;
 struct DanceGroupActionArgument;
 struct GroupBehaviour;
+struct LHDynamicStack__Ul;
 
 struct GroupBehaviourVftable
 {
