@@ -1,0 +1,6720 @@
+{
+    "parts": [
+        {
+            "type": "asm",
+            "start": "00401000",
+            "end": "0040113b"
+        },
+        {
+            "type": "db",
+            "start": "0040113b",
+            "end": "00401140"
+        },
+        {
+            "type": "asm",
+            "start": "00401140",
+            "end": "004011cc"
+        },
+        {
+            "type": "db",
+            "start": "004011cc",
+            "end": "004011d0"
+        },
+        {
+            "type": "asm",
+            "start": "004011d0",
+            "end": "004012dc"
+        },
+        {
+            "type": "db",
+            "start": "004012dc",
+            "end": "004012e0"
+        },
+        {
+            "type": "asm",
+            "start": "004012e0",
+            "end": "00403097"
+        },
+        {
+            "type": "db",
+            "start": "00403097",
+            "end": "00403098"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00403098",
+            "end": "004030b0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004030b0",
+            "end": "00403130"
+        },
+        {
+            "type": "asm",
+            "start": "00403130",
+            "end": "00406044"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00406044",
+            "end": "0040604c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0040604c",
+            "end": "004060bd"
+        },
+        {
+            "type": "db",
+            "start": "004060bd",
+            "end": "004060c0"
+        },
+        {
+            "type": "asm",
+            "start": "004060c0",
+            "end": "00406115"
+        },
+        {
+            "type": "db",
+            "start": "00406115",
+            "end": "00406118"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00406118",
+            "end": "00406120"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00406120",
+            "end": "00406191"
+        },
+        {
+            "type": "db",
+            "start": "00406191",
+            "end": "004061a0"
+        },
+        {
+            "type": "asm",
+            "start": "004061a0",
+            "end": "00409784"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00409784",
+            "end": "00409798"
+        },
+        {
+            "type": "db",
+            "start": "00409798",
+            "end": "004097a0"
+        },
+        {
+            "type": "asm",
+            "start": "004097a0",
+            "end": "00409a1a"
+        },
+        {
+            "type": "db",
+            "start": "00409a1a",
+            "end": "00409a1c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00409a1c",
+            "end": "00409a40"
+        },
+        {
+            "type": "asm",
+            "start": "00409a40",
+            "end": "0040a0ec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0040a0ec",
+            "end": "0040a100"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0040a100",
+            "end": "0040a10a"
+        },
+        {
+            "type": "db",
+            "start": "0040a10a",
+            "end": "0040a110"
+        },
+        {
+            "type": "asm",
+            "start": "0040a110",
+            "end": "0040bfa3"
+        },
+        {
+            "type": "db",
+            "start": "0040bfa3",
+            "end": "0040bfa4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0040bfa4",
+            "end": "0040bfc0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0040bfc0",
+            "end": "0040c085"
+        },
+        {
+            "type": "db",
+            "start": "0040c085",
+            "end": "0040c090"
+        },
+        {
+            "type": "asm",
+            "start": "0040c090",
+            "end": "00411654"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00411654",
+            "end": "00411668"
+        },
+        {
+            "type": "db",
+            "start": "00411668",
+            "end": "00411670"
+        },
+        {
+            "type": "asm",
+            "start": "00411670",
+            "end": "0041255f"
+        },
+        {
+            "type": "db",
+            "start": "0041255f",
+            "end": "00412560"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00412560",
+            "end": "0041258c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0041258c",
+            "end": "004125a0"
+        },
+        {
+            "type": "asm",
+            "start": "004125a0",
+            "end": "00416032"
+        },
+        {
+            "type": "db",
+            "start": "00416032",
+            "end": "00416034"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00416034",
+            "end": "0041605c"
+        },
+        {
+            "type": "db",
+            "start": "0041605c",
+            "end": "00416060"
+        },
+        {
+            "type": "asm",
+            "start": "00416060",
+            "end": "00419fcf"
+        },
+        {
+            "type": "db",
+            "start": "00419fcf",
+            "end": "00419fd0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00419fd0",
+            "end": "0041a03c"
+        },
+        {
+            "type": "db",
+            "start": "0041a03c",
+            "end": "0041a040"
+        },
+        {
+            "type": "asm",
+            "start": "0041a040",
+            "end": "004222d5"
+        },
+        {
+            "type": "db",
+            "start": "004222d5",
+            "end": "004222d8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004222d8",
+            "end": "004222ec"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004222ec",
+            "end": "004222fc"
+        },
+        {
+            "type": "db",
+            "start": "004222fc",
+            "end": "00422300"
+        },
+        {
+            "type": "asm",
+            "start": "00422300",
+            "end": "00422a7e"
+        },
+        {
+            "type": "db",
+            "start": "00422a7e",
+            "end": "00422a80"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00422a80",
+            "end": "00422a90"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00422a90",
+            "end": "00422aa0"
+        },
+        {
+            "type": "asm",
+            "start": "00422aa0",
+            "end": "00423528"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00423528",
+            "end": "00423530"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00423530",
+            "end": "0042353e"
+        },
+        {
+            "type": "db",
+            "start": "0042353e",
+            "end": "00423540"
+        },
+        {
+            "type": "asm",
+            "start": "00423540",
+            "end": "004239fd"
+        },
+        {
+            "type": "db",
+            "start": "004239fd",
+            "end": "00423a00"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00423a00",
+            "end": "00423a7c"
+        },
+        {
+            "type": "db",
+            "start": "00423a7c",
+            "end": "00423a80"
+        },
+        {
+            "type": "asm",
+            "start": "00423a80",
+            "end": "0042417d"
+        },
+        {
+            "type": "db",
+            "start": "0042417d",
+            "end": "00424180"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00424180",
+            "end": "004241a4"
+        },
+        {
+            "type": "db",
+            "start": "004241a4",
+            "end": "004241b0"
+        },
+        {
+            "type": "asm",
+            "start": "004241b0",
+            "end": "004241f4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004241f4",
+            "end": "0042420c"
+        },
+        {
+            "type": "db",
+            "start": "0042420c",
+            "end": "00424210"
+        },
+        {
+            "type": "asm",
+            "start": "00424210",
+            "end": "00426c03"
+        },
+        {
+            "type": "db",
+            "start": "00426c03",
+            "end": "00426c04"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00426c04",
+            "end": "00426c10"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00426c10",
+            "end": "00426c3c"
+        },
+        {
+            "type": "db",
+            "start": "00426c3c",
+            "end": "00426c40"
+        },
+        {
+            "type": "asm",
+            "start": "00426c40",
+            "end": "00426c68"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00426c68",
+            "end": "00426c70"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00426c70",
+            "end": "00426c7d"
+        },
+        {
+            "type": "db",
+            "start": "00426c7d",
+            "end": "00426c80"
+        },
+        {
+            "type": "asm",
+            "start": "00426c80",
+            "end": "00426c9b"
+        },
+        {
+            "type": "db",
+            "start": "00426c9b",
+            "end": "00426ca0"
+        },
+        {
+            "type": "asm",
+            "start": "00426ca0",
+            "end": "0042ac01"
+        },
+        {
+            "type": "db",
+            "start": "0042ac01",
+            "end": "0042ac04"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0042ac04",
+            "end": "0042ac1c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0042ac1c",
+            "end": "0042ac50"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0042ac50",
+            "end": "0042ac64"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0042ac64",
+            "end": "0042ac76"
+        },
+        {
+            "type": "db",
+            "start": "0042ac76",
+            "end": "0042ac78"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0042ac78",
+            "end": "0042acac"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0042acac",
+            "end": "0042acba"
+        },
+        {
+            "type": "db",
+            "start": "0042acba",
+            "end": "0042acc0"
+        },
+        {
+            "type": "asm",
+            "start": "0042acc0",
+            "end": "0042ae39"
+        },
+        {
+            "type": "db",
+            "start": "0042ae39",
+            "end": "0042ae3c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0042ae3c",
+            "end": "0042ae6c"
+        },
+        {
+            "type": "db",
+            "start": "0042ae6c",
+            "end": "0042ae70"
+        },
+        {
+            "type": "asm",
+            "start": "0042ae70",
+            "end": "0043f967"
+        },
+        {
+            "type": "db",
+            "start": "0043f967",
+            "end": "0043f968"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0043f968",
+            "end": "0043f978"
+        },
+        {
+            "type": "db",
+            "start": "0043f978",
+            "end": "0043f980"
+        },
+        {
+            "type": "asm",
+            "start": "0043f980",
+            "end": "00444d18"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00444d18",
+            "end": "00444d78"
+        },
+        {
+            "type": "db",
+            "start": "00444d78",
+            "end": "00444d80"
+        },
+        {
+            "type": "asm",
+            "start": "00444d80",
+            "end": "00447815"
+        },
+        {
+            "type": "db",
+            "start": "00447815",
+            "end": "00447818"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00447818",
+            "end": "00447838"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00447838",
+            "end": "00447849"
+        },
+        {
+            "type": "db",
+            "start": "00447849",
+            "end": "00447850"
+        },
+        {
+            "type": "asm",
+            "start": "00447850",
+            "end": "00449da6"
+        },
+        {
+            "type": "db",
+            "start": "00449da6",
+            "end": "00449da8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00449da8",
+            "end": "00449de0"
+        },
+        {
+            "type": "asm",
+            "start": "00449de0",
+            "end": "00450923"
+        },
+        {
+            "type": "db",
+            "start": "00450923",
+            "end": "00450924"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00450924",
+            "end": "0045093c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0045093c",
+            "end": "00450947"
+        },
+        {
+            "type": "db",
+            "start": "00450947",
+            "end": "00450948"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00450948",
+            "end": "0045095c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0045095c",
+            "end": "004509e3"
+        },
+        {
+            "type": "db",
+            "start": "004509e3",
+            "end": "004509f0"
+        },
+        {
+            "type": "asm",
+            "start": "004509f0",
+            "end": "0046cf48"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0046cf48",
+            "end": "0046cf5c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0046cf5c",
+            "end": "0046cf75"
+        },
+        {
+            "type": "db",
+            "start": "0046cf75",
+            "end": "0046cf80"
+        },
+        {
+            "type": "asm",
+            "start": "0046cf80",
+            "end": "0046df48"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0046df48",
+            "end": "0046df60"
+        },
+        {
+            "type": "asm",
+            "start": "0046df60",
+            "end": "0046f150"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0046f150",
+            "end": "0046f168"
+        },
+        {
+            "type": "db",
+            "start": "0046f168",
+            "end": "0046f170"
+        },
+        {
+            "type": "asm",
+            "start": "0046f170",
+            "end": "0046f570"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0046f570",
+            "end": "0046f584"
+        },
+        {
+            "type": "db",
+            "start": "0046f584",
+            "end": "0046f590"
+        },
+        {
+            "type": "asm",
+            "start": "0046f590",
+            "end": "0046f79a"
+        },
+        {
+            "type": "db",
+            "start": "0046f79a",
+            "end": "0046f79c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0046f79c",
+            "end": "0046f7a4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0046f7a4",
+            "end": "0046f7b5"
+        },
+        {
+            "type": "db",
+            "start": "0046f7b5",
+            "end": "0046f7c0"
+        },
+        {
+            "type": "asm",
+            "start": "0046f7c0",
+            "end": "0046f7e4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0046f7e4",
+            "end": "0046f7ec"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0046f7ec",
+            "end": "0046f888"
+        },
+        {
+            "type": "db",
+            "start": "0046f888",
+            "end": "0046f890"
+        },
+        {
+            "type": "asm",
+            "start": "0046f890",
+            "end": "0047173d"
+        },
+        {
+            "type": "db",
+            "start": "0047173d",
+            "end": "00471740"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00471740",
+            "end": "00471754"
+        },
+        {
+            "type": "db",
+            "start": "00471754",
+            "end": "00471760"
+        },
+        {
+            "type": "asm",
+            "start": "00471760",
+            "end": "00472536"
+        },
+        {
+            "type": "db",
+            "start": "00472536",
+            "end": "00472538"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00472538",
+            "end": "0047255c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0047255c",
+            "end": "00472568"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00472568",
+            "end": "004725bc"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004725bc",
+            "end": "004725c9"
+        },
+        {
+            "type": "db",
+            "start": "004725c9",
+            "end": "004725cc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004725cc",
+            "end": "00472680"
+        },
+        {
+            "type": "asm",
+            "start": "00472680",
+            "end": "00475f25"
+        },
+        {
+            "type": "db",
+            "start": "00475f25",
+            "end": "00475f28"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00475f28",
+            "end": "00475f48"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00475f48",
+            "end": "00475f56"
+        },
+        {
+            "type": "db",
+            "start": "00475f56",
+            "end": "00475f60"
+        },
+        {
+            "type": "asm",
+            "start": "00475f60",
+            "end": "00476cf4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00476cf4",
+            "end": "00476d08"
+        },
+        {
+            "type": "db",
+            "start": "00476d08",
+            "end": "00476d10"
+        },
+        {
+            "type": "asm",
+            "start": "00476d10",
+            "end": "00477e5c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00477e5c",
+            "end": "00477e64"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00477e64",
+            "end": "00477eb9"
+        },
+        {
+            "type": "db",
+            "start": "00477eb9",
+            "end": "00477ec0"
+        },
+        {
+            "type": "asm",
+            "start": "00477ec0",
+            "end": "0047d3e1"
+        },
+        {
+            "type": "db",
+            "start": "0047d3e1",
+            "end": "0047d3e4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0047d3e4",
+            "end": "0047d410"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0047d410",
+            "end": "0047d468"
+        },
+        {
+            "type": "db",
+            "start": "0047d468",
+            "end": "0047d470"
+        },
+        {
+            "type": "asm",
+            "start": "0047d470",
+            "end": "0047d4e6"
+        },
+        {
+            "type": "db",
+            "start": "0047d4e6",
+            "end": "0047d4e8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0047d4e8",
+            "end": "0047d4fc"
+        },
+        {
+            "type": "db",
+            "start": "0047d4fc",
+            "end": "0047d500"
+        },
+        {
+            "type": "asm",
+            "start": "0047d500",
+            "end": "0047e740"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0047e740",
+            "end": "0047e754"
+        },
+        {
+            "type": "db",
+            "start": "0047e754",
+            "end": "0047e760"
+        },
+        {
+            "type": "asm",
+            "start": "0047e760",
+            "end": "0047ebda"
+        },
+        {
+            "type": "db",
+            "start": "0047ebda",
+            "end": "0047ebdc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0047ebdc",
+            "end": "0047ec0c"
+        },
+        {
+            "type": "db",
+            "start": "0047ec0c",
+            "end": "0047ec10"
+        },
+        {
+            "type": "asm",
+            "start": "0047ec10",
+            "end": "0047ef05"
+        },
+        {
+            "type": "db",
+            "start": "0047ef05",
+            "end": "0047ef08"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0047ef08",
+            "end": "0047ef2c"
+        },
+        {
+            "type": "db",
+            "start": "0047ef2c",
+            "end": "0047ef30"
+        },
+        {
+            "type": "asm",
+            "start": "0047ef30",
+            "end": "004804c8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004804c8",
+            "end": "004804e4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004804e4",
+            "end": "00480527"
+        },
+        {
+            "type": "db",
+            "start": "00480527",
+            "end": "00480530"
+        },
+        {
+            "type": "asm",
+            "start": "00480530",
+            "end": "0048172c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048172c",
+            "end": "0048175c"
+        },
+        {
+            "type": "db",
+            "start": "0048175c",
+            "end": "00481760"
+        },
+        {
+            "type": "asm",
+            "start": "00481760",
+            "end": "004835ea"
+        },
+        {
+            "type": "db",
+            "start": "004835ea",
+            "end": "004835ec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004835ec",
+            "end": "00483600"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00483600",
+            "end": "0048366b"
+        },
+        {
+            "type": "db",
+            "start": "0048366b",
+            "end": "00483670"
+        },
+        {
+            "type": "asm",
+            "start": "00483670",
+            "end": "00483716"
+        },
+        {
+            "type": "db",
+            "start": "00483716",
+            "end": "00483718"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00483718",
+            "end": "0048372c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0048372c",
+            "end": "00483750"
+        },
+        {
+            "type": "asm",
+            "start": "00483750",
+            "end": "0048481c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048481c",
+            "end": "00484824"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00484824",
+            "end": "00484830"
+        },
+        {
+            "type": "asm",
+            "start": "00484830",
+            "end": "00485108"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00485108",
+            "end": "004851a0"
+        },
+        {
+            "type": "asm",
+            "start": "004851a0",
+            "end": "00485d59"
+        },
+        {
+            "type": "db",
+            "start": "00485d59",
+            "end": "00485d5c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00485d5c",
+            "end": "00485dec"
+        },
+        {
+            "type": "db",
+            "start": "00485dec",
+            "end": "00485df0"
+        },
+        {
+            "type": "asm",
+            "start": "00485df0",
+            "end": "0048752a"
+        },
+        {
+            "type": "db",
+            "start": "0048752a",
+            "end": "0048752c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048752c",
+            "end": "004875c4"
+        },
+        {
+            "type": "db",
+            "start": "004875c4",
+            "end": "004875d0"
+        },
+        {
+            "type": "asm",
+            "start": "004875d0",
+            "end": "004894f2"
+        },
+        {
+            "type": "db",
+            "start": "004894f2",
+            "end": "004894f4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004894f4",
+            "end": "00489534"
+        },
+        {
+            "type": "db",
+            "start": "00489534",
+            "end": "00489540"
+        },
+        {
+            "type": "asm",
+            "start": "00489540",
+            "end": "0048a356"
+        },
+        {
+            "type": "db",
+            "start": "0048a356",
+            "end": "0048a358"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048a358",
+            "end": "0048a36c"
+        },
+        {
+            "type": "db",
+            "start": "0048a36c",
+            "end": "0048a370"
+        },
+        {
+            "type": "asm",
+            "start": "0048a370",
+            "end": "0048d4f5"
+        },
+        {
+            "type": "db",
+            "start": "0048d4f5",
+            "end": "0048d4f8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048d4f8",
+            "end": "0048d518"
+        },
+        {
+            "type": "db",
+            "start": "0048d518",
+            "end": "0048d520"
+        },
+        {
+            "type": "asm",
+            "start": "0048d520",
+            "end": "0048e1b0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048e1b0",
+            "end": "0048e1c0"
+        },
+        {
+            "type": "asm",
+            "start": "0048e1c0",
+            "end": "0048f03e"
+        },
+        {
+            "type": "db",
+            "start": "0048f03e",
+            "end": "0048f040"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048f040",
+            "end": "0048f054"
+        },
+        {
+            "type": "db",
+            "start": "0048f054",
+            "end": "0048f060"
+        },
+        {
+            "type": "asm",
+            "start": "0048f060",
+            "end": "0048f778"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0048f778",
+            "end": "0048f780"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0048f780",
+            "end": "0048f7a4"
+        },
+        {
+            "type": "db",
+            "start": "0048f7a4",
+            "end": "0048f7b0"
+        },
+        {
+            "type": "asm",
+            "start": "0048f7b0",
+            "end": "004908d6"
+        },
+        {
+            "type": "db",
+            "start": "004908d6",
+            "end": "004908d8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004908d8",
+            "end": "004908e0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004908e0",
+            "end": "00490902"
+        },
+        {
+            "type": "db",
+            "start": "00490902",
+            "end": "00490910"
+        },
+        {
+            "type": "asm",
+            "start": "00490910",
+            "end": "00491152"
+        },
+        {
+            "type": "db",
+            "start": "00491152",
+            "end": "00491154"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00491154",
+            "end": "00491180"
+        },
+        {
+            "type": "asm",
+            "start": "00491180",
+            "end": "00491674"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00491674",
+            "end": "00491688"
+        },
+        {
+            "type": "db",
+            "start": "00491688",
+            "end": "00491690"
+        },
+        {
+            "type": "asm",
+            "start": "00491690",
+            "end": "004af626"
+        },
+        {
+            "type": "db",
+            "start": "004af626",
+            "end": "004af628"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004af628",
+            "end": "004af634"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004af634",
+            "end": "004af63e"
+        },
+        {
+            "type": "db",
+            "start": "004af63e",
+            "end": "004af640"
+        },
+        {
+            "type": "asm",
+            "start": "004af640",
+            "end": "004c4a7c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004c4a7c",
+            "end": "004c4a94"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004c4a94",
+            "end": "004c4aa9"
+        },
+        {
+            "type": "db",
+            "start": "004c4aa9",
+            "end": "004c4ab0"
+        },
+        {
+            "type": "asm",
+            "start": "004c4ab0",
+            "end": "004ca1d9"
+        },
+        {
+            "type": "db",
+            "start": "004ca1d9",
+            "end": "004ca1dc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004ca1dc",
+            "end": "004ca1e4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004ca1e4",
+            "end": "004ca231"
+        },
+        {
+            "type": "db",
+            "start": "004ca231",
+            "end": "004ca240"
+        },
+        {
+            "type": "asm",
+            "start": "004ca240",
+            "end": "004cb3f3"
+        },
+        {
+            "type": "db",
+            "start": "004cb3f3",
+            "end": "004cb3f4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004cb3f4",
+            "end": "004cb408"
+        },
+        {
+            "type": "db",
+            "start": "004cb408",
+            "end": "004cb410"
+        },
+        {
+            "type": "asm",
+            "start": "004cb410",
+            "end": "004d0a06"
+        },
+        {
+            "type": "db",
+            "start": "004d0a06",
+            "end": "004d0a08"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004d0a08",
+            "end": "004d0a18"
+        },
+        {
+            "type": "db",
+            "start": "004d0a18",
+            "end": "004d0a20"
+        },
+        {
+            "type": "asm",
+            "start": "004d0a20",
+            "end": "004d63a1"
+        },
+        {
+            "type": "db",
+            "start": "004d63a1",
+            "end": "004d63a4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004d63a4",
+            "end": "004d63cc"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004d63cc",
+            "end": "004d63e3"
+        },
+        {
+            "type": "db",
+            "start": "004d63e3",
+            "end": "004d63f0"
+        },
+        {
+            "type": "asm",
+            "start": "004d63f0",
+            "end": "004d75ff"
+        },
+        {
+            "type": "db",
+            "start": "004d75ff",
+            "end": "004d7600"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004d7600",
+            "end": "004d761c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004d761c",
+            "end": "004d7639"
+        },
+        {
+            "type": "db",
+            "start": "004d7639",
+            "end": "004d7640"
+        },
+        {
+            "type": "asm",
+            "start": "004d7640",
+            "end": "004d8200"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004d8200",
+            "end": "004d8208"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004d8208",
+            "end": "004d8230"
+        },
+        {
+            "type": "asm",
+            "start": "004d8230",
+            "end": "004d8dae"
+        },
+        {
+            "type": "db",
+            "start": "004d8dae",
+            "end": "004d8db0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004d8db0",
+            "end": "004d8dd0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004d8dd0",
+            "end": "004d8de5"
+        },
+        {
+            "type": "db",
+            "start": "004d8de5",
+            "end": "004d8df0"
+        },
+        {
+            "type": "asm",
+            "start": "004d8df0",
+            "end": "004dcee8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004dcee8",
+            "end": "004dcef4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004dcef4",
+            "end": "004dcf17"
+        },
+        {
+            "type": "db",
+            "start": "004dcf17",
+            "end": "004dcf20"
+        },
+        {
+            "type": "asm",
+            "start": "004dcf20",
+            "end": "004e14af"
+        },
+        {
+            "type": "db",
+            "start": "004e14af",
+            "end": "004e14b0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004e14b0",
+            "end": "004e14c0"
+        },
+        {
+            "type": "asm",
+            "start": "004e14c0",
+            "end": "004e155e"
+        },
+        {
+            "type": "db",
+            "start": "004e155e",
+            "end": "004e1560"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004e1560",
+            "end": "004e1570"
+        },
+        {
+            "type": "asm",
+            "start": "004e1570",
+            "end": "004e1b24"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004e1b24",
+            "end": "004e1b34"
+        },
+        {
+            "type": "db",
+            "start": "004e1b34",
+            "end": "004e1b40"
+        },
+        {
+            "type": "asm",
+            "start": "004e1b40",
+            "end": "004e9efd"
+        },
+        {
+            "type": "db",
+            "start": "004e9efd",
+            "end": "004e9f00"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004e9f00",
+            "end": "004e9f20"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004e9f20",
+            "end": "004e9f39"
+        },
+        {
+            "type": "db",
+            "start": "004e9f39",
+            "end": "004e9f40"
+        },
+        {
+            "type": "asm",
+            "start": "004e9f40",
+            "end": "004ed15e"
+        },
+        {
+            "type": "db",
+            "start": "004ed15e",
+            "end": "004ed160"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004ed160",
+            "end": "004ed16c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "004ed16c",
+            "end": "004ed177"
+        },
+        {
+            "type": "db",
+            "start": "004ed177",
+            "end": "004ed180"
+        },
+        {
+            "type": "asm",
+            "start": "004ed180",
+            "end": "004f4af9"
+        },
+        {
+            "type": "db",
+            "start": "004f4af9",
+            "end": "004f4afc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004f4afc",
+            "end": "004f4b0c"
+        },
+        {
+            "type": "db",
+            "start": "004f4b0c",
+            "end": "004f4b10"
+        },
+        {
+            "type": "asm",
+            "start": "004f4b10",
+            "end": "004f5407"
+        },
+        {
+            "type": "db",
+            "start": "004f5407",
+            "end": "004f5408"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004f5408",
+            "end": "004f541c"
+        },
+        {
+            "type": "db",
+            "start": "004f541c",
+            "end": "004f5420"
+        },
+        {
+            "type": "asm",
+            "start": "004f5420",
+            "end": "004f7598"
+        },
+        {
+            "type": "jmptbl",
+            "start": "004f7598",
+            "end": "004f75b0"
+        },
+        {
+            "type": "asm",
+            "start": "004f75b0",
+            "end": "0050193b"
+        },
+        {
+            "type": "db",
+            "start": "0050193b",
+            "end": "0050193c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0050193c",
+            "end": "00501950"
+        },
+        {
+            "type": "asm",
+            "start": "00501950",
+            "end": "00501a4d"
+        },
+        {
+            "type": "db",
+            "start": "00501a4d",
+            "end": "00501a50"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00501a50",
+            "end": "00501a64"
+        },
+        {
+            "type": "db",
+            "start": "00501a64",
+            "end": "00501a70"
+        },
+        {
+            "type": "asm",
+            "start": "00501a70",
+            "end": "00501b9d"
+        },
+        {
+            "type": "db",
+            "start": "00501b9d",
+            "end": "00501ba0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00501ba0",
+            "end": "00501bb4"
+        },
+        {
+            "type": "db",
+            "start": "00501bb4",
+            "end": "00501bc0"
+        },
+        {
+            "type": "asm",
+            "start": "00501bc0",
+            "end": "00502630"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00502630",
+            "end": "00502658"
+        },
+        {
+            "type": "db",
+            "start": "00502658",
+            "end": "00502660"
+        },
+        {
+            "type": "asm",
+            "start": "00502660",
+            "end": "005027dc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005027dc",
+            "end": "00502804"
+        },
+        {
+            "type": "db",
+            "start": "00502804",
+            "end": "00502810"
+        },
+        {
+            "type": "asm",
+            "start": "00502810",
+            "end": "00503ba3"
+        },
+        {
+            "type": "db",
+            "start": "00503ba3",
+            "end": "00503ba4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00503ba4",
+            "end": "00503bb8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00503bb8",
+            "end": "00503bc7"
+        },
+        {
+            "type": "db",
+            "start": "00503bc7",
+            "end": "00503bd0"
+        },
+        {
+            "type": "asm",
+            "start": "00503bd0",
+            "end": "005046e9"
+        },
+        {
+            "type": "db",
+            "start": "005046e9",
+            "end": "005046ec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005046ec",
+            "end": "00504700"
+        },
+        {
+            "type": "asm",
+            "start": "00504700",
+            "end": "00504c73"
+        },
+        {
+            "type": "db",
+            "start": "00504c73",
+            "end": "00504c74"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00504c74",
+            "end": "00504cd0"
+        },
+        {
+            "type": "asm",
+            "start": "00504cd0",
+            "end": "0050768c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0050768c",
+            "end": "005076a0"
+        },
+        {
+            "type": "asm",
+            "start": "005076a0",
+            "end": "00509465"
+        },
+        {
+            "type": "db",
+            "start": "00509465",
+            "end": "00509468"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00509468",
+            "end": "00509478"
+        },
+        {
+            "type": "db",
+            "start": "00509478",
+            "end": "00509480"
+        },
+        {
+            "type": "asm",
+            "start": "00509480",
+            "end": "0050d192"
+        },
+        {
+            "type": "db",
+            "start": "0050d192",
+            "end": "0050d194"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0050d194",
+            "end": "0050d1a8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0050d1a8",
+            "end": "0050d1b4"
+        },
+        {
+            "type": "db",
+            "start": "0050d1b4",
+            "end": "0050d1c0"
+        },
+        {
+            "type": "asm",
+            "start": "0050d1c0",
+            "end": "0050e773"
+        },
+        {
+            "type": "db",
+            "start": "0050e773",
+            "end": "0050e774"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0050e774",
+            "end": "0050e7d4"
+        },
+        {
+            "type": "db",
+            "start": "0050e7d4",
+            "end": "0050e7e0"
+        },
+        {
+            "type": "asm",
+            "start": "0050e7e0",
+            "end": "0050e849"
+        },
+        {
+            "type": "db",
+            "start": "0050e849",
+            "end": "0050e84c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0050e84c",
+            "end": "0050e858"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0050e858",
+            "end": "0050e880"
+        },
+        {
+            "type": "asm",
+            "start": "0050e880",
+            "end": "005120d2"
+        },
+        {
+            "type": "db",
+            "start": "005120d2",
+            "end": "005120d4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005120d4",
+            "end": "0051212c"
+        },
+        {
+            "type": "db",
+            "start": "0051212c",
+            "end": "00512130"
+        },
+        {
+            "type": "asm",
+            "start": "00512130",
+            "end": "00513290"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00513290",
+            "end": "005132c4"
+        },
+        {
+            "type": "db",
+            "start": "005132c4",
+            "end": "005132d0"
+        },
+        {
+            "type": "asm",
+            "start": "005132d0",
+            "end": "005145f6"
+        },
+        {
+            "type": "db",
+            "start": "005145f6",
+            "end": "005145f8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005145f8",
+            "end": "00514614"
+        },
+        {
+            "type": "db",
+            "start": "00514614",
+            "end": "00514620"
+        },
+        {
+            "type": "asm",
+            "start": "00514620",
+            "end": "00514efa"
+        },
+        {
+            "type": "db",
+            "start": "00514efa",
+            "end": "00514efc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00514efc",
+            "end": "00514f1c"
+        },
+        {
+            "type": "db",
+            "start": "00514f1c",
+            "end": "00514f20"
+        },
+        {
+            "type": "asm",
+            "start": "00514f20",
+            "end": "0051593a"
+        },
+        {
+            "type": "db",
+            "start": "0051593a",
+            "end": "0051593c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0051593c",
+            "end": "00515958"
+        },
+        {
+            "type": "db",
+            "start": "00515958",
+            "end": "00515960"
+        },
+        {
+            "type": "asm",
+            "start": "00515960",
+            "end": "00515e5e"
+        },
+        {
+            "type": "db",
+            "start": "00515e5e",
+            "end": "00515e60"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00515e60",
+            "end": "00515e84"
+        },
+        {
+            "type": "db",
+            "start": "00515e84",
+            "end": "00515e90"
+        },
+        {
+            "type": "asm",
+            "start": "00515e90",
+            "end": "005178bf"
+        },
+        {
+            "type": "db",
+            "start": "005178bf",
+            "end": "005178c0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005178c0",
+            "end": "005178d0"
+        },
+        {
+            "type": "asm",
+            "start": "005178d0",
+            "end": "0051a806"
+        },
+        {
+            "type": "db",
+            "start": "0051a806",
+            "end": "0051a808"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0051a808",
+            "end": "0051a828"
+        },
+        {
+            "type": "db",
+            "start": "0051a828",
+            "end": "0051a830"
+        },
+        {
+            "type": "asm",
+            "start": "0051a830",
+            "end": "0051e31a"
+        },
+        {
+            "type": "db",
+            "start": "0051e31a",
+            "end": "0051e31c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0051e31c",
+            "end": "0051e348"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0051e348",
+            "end": "0051e36d"
+        },
+        {
+            "type": "db",
+            "start": "0051e36d",
+            "end": "0051e370"
+        },
+        {
+            "type": "asm",
+            "start": "0051e370",
+            "end": "0051e40f"
+        },
+        {
+            "type": "db",
+            "start": "0051e40f",
+            "end": "0051e410"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0051e410",
+            "end": "0051e42c"
+        },
+        {
+            "type": "db",
+            "start": "0051e42c",
+            "end": "0051e430"
+        },
+        {
+            "type": "asm",
+            "start": "0051e430",
+            "end": "0051e9cd"
+        },
+        {
+            "type": "db",
+            "start": "0051e9cd",
+            "end": "0051e9d0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0051e9d0",
+            "end": "0051ea08"
+        },
+        {
+            "type": "db",
+            "start": "0051ea08",
+            "end": "0051ea10"
+        },
+        {
+            "type": "asm",
+            "start": "0051ea10",
+            "end": "0052ae88"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0052ae88",
+            "end": "0052ae98"
+        },
+        {
+            "type": "db",
+            "start": "0052ae98",
+            "end": "0052aea0"
+        },
+        {
+            "type": "asm",
+            "start": "0052aea0",
+            "end": "0052b189"
+        },
+        {
+            "type": "db",
+            "start": "0052b189",
+            "end": "0052b18c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0052b18c",
+            "end": "0052b19c"
+        },
+        {
+            "type": "db",
+            "start": "0052b19c",
+            "end": "0052b1a0"
+        },
+        {
+            "type": "asm",
+            "start": "0052b1a0",
+            "end": "0053f3b8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0053f3b8",
+            "end": "0053f3dc"
+        },
+        {
+            "type": "db",
+            "start": "0053f3dc",
+            "end": "0053f3e0"
+        },
+        {
+            "type": "asm",
+            "start": "0053f3e0",
+            "end": "0053f525"
+        },
+        {
+            "type": "db",
+            "start": "0053f525",
+            "end": "0053f528"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0053f528",
+            "end": "0053f53c"
+        },
+        {
+            "type": "db",
+            "start": "0053f53c",
+            "end": "0053f540"
+        },
+        {
+            "type": "asm",
+            "start": "0053f540",
+            "end": "0053f71b"
+        },
+        {
+            "type": "db",
+            "start": "0053f71b",
+            "end": "0053f71c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0053f71c",
+            "end": "0053f734"
+        },
+        {
+            "type": "db",
+            "start": "0053f734",
+            "end": "0053f740"
+        },
+        {
+            "type": "asm",
+            "start": "0053f740",
+            "end": "0053fee6"
+        },
+        {
+            "type": "db",
+            "start": "0053fee6",
+            "end": "0053fee8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0053fee8",
+            "end": "0053fefc"
+        },
+        {
+            "type": "db",
+            "start": "0053fefc",
+            "end": "0053ff00"
+        },
+        {
+            "type": "asm",
+            "start": "0053ff00",
+            "end": "0054022d"
+        },
+        {
+            "type": "db",
+            "start": "0054022d",
+            "end": "00540230"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00540230",
+            "end": "00540248"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00540248",
+            "end": "00540257"
+        },
+        {
+            "type": "db",
+            "start": "00540257",
+            "end": "00540260"
+        },
+        {
+            "type": "asm",
+            "start": "00540260",
+            "end": "00540579"
+        },
+        {
+            "type": "db",
+            "start": "00540579",
+            "end": "0054057c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0054057c",
+            "end": "005405a4"
+        },
+        {
+            "type": "db",
+            "start": "005405a4",
+            "end": "005405b0"
+        },
+        {
+            "type": "asm",
+            "start": "005405b0",
+            "end": "005424ea"
+        },
+        {
+            "type": "db",
+            "start": "005424ea",
+            "end": "005424ec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005424ec",
+            "end": "00542508"
+        },
+        {
+            "type": "db",
+            "start": "00542508",
+            "end": "00542510"
+        },
+        {
+            "type": "asm",
+            "start": "00542510",
+            "end": "00543d14"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00543d14",
+            "end": "00543d4c"
+        },
+        {
+            "type": "db",
+            "start": "00543d4c",
+            "end": "00543d50"
+        },
+        {
+            "type": "asm",
+            "start": "00543d50",
+            "end": "0054441a"
+        },
+        {
+            "type": "db",
+            "start": "0054441a",
+            "end": "0054441c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0054441c",
+            "end": "0054442c"
+        },
+        {
+            "type": "db",
+            "start": "0054442c",
+            "end": "00544430"
+        },
+        {
+            "type": "asm",
+            "start": "00544430",
+            "end": "0054459d"
+        },
+        {
+            "type": "db",
+            "start": "0054459d",
+            "end": "005445a0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005445a0",
+            "end": "005445b0"
+        },
+        {
+            "type": "asm",
+            "start": "005445b0",
+            "end": "00544f4f"
+        },
+        {
+            "type": "db",
+            "start": "00544f4f",
+            "end": "00544f50"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00544f50",
+            "end": "00544f64"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00544f64",
+            "end": "00544f72"
+        },
+        {
+            "type": "db",
+            "start": "00544f72",
+            "end": "00544f80"
+        },
+        {
+            "type": "asm",
+            "start": "00544f80",
+            "end": "0054791d"
+        },
+        {
+            "type": "db",
+            "start": "0054791d",
+            "end": "00547920"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00547920",
+            "end": "00547970"
+        },
+        {
+            "type": "asm",
+            "start": "00547970",
+            "end": "00547fd3"
+        },
+        {
+            "type": "db",
+            "start": "00547fd3",
+            "end": "00547fd4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00547fd4",
+            "end": "00547ff0"
+        },
+        {
+            "type": "asm",
+            "start": "00547ff0",
+            "end": "00549789"
+        },
+        {
+            "type": "db",
+            "start": "00549789",
+            "end": "0054978c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0054978c",
+            "end": "005497dc"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "005497dc",
+            "end": "005497eb"
+        },
+        {
+            "type": "db",
+            "start": "005497eb",
+            "end": "005497f0"
+        },
+        {
+            "type": "asm",
+            "start": "005497f0",
+            "end": "005498e9"
+        },
+        {
+            "type": "db",
+            "start": "005498e9",
+            "end": "005498ec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005498ec",
+            "end": "005498fc"
+        },
+        {
+            "type": "db",
+            "start": "005498fc",
+            "end": "00549900"
+        },
+        {
+            "type": "asm",
+            "start": "00549900",
+            "end": "0054a159"
+        },
+        {
+            "type": "db",
+            "start": "0054a159",
+            "end": "0054a15c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0054a15c",
+            "end": "0054a17c"
+        },
+        {
+            "type": "db",
+            "start": "0054a17c",
+            "end": "0054a180"
+        },
+        {
+            "type": "asm",
+            "start": "0054a180",
+            "end": "0054ff60"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0054ff60",
+            "end": "0054ff74"
+        },
+        {
+            "type": "db",
+            "start": "0054ff74",
+            "end": "0054ff80"
+        },
+        {
+            "type": "asm",
+            "start": "0054ff80",
+            "end": "00551e20"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00551e20",
+            "end": "00551ed4"
+        },
+        {
+            "type": "db",
+            "start": "00551ed4",
+            "end": "00551ee0"
+        },
+        {
+            "type": "asm",
+            "start": "00551ee0",
+            "end": "0055251f"
+        },
+        {
+            "type": "db",
+            "start": "0055251f",
+            "end": "00552520"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00552520",
+            "end": "005525d4"
+        },
+        {
+            "type": "db",
+            "start": "005525d4",
+            "end": "005525e0"
+        },
+        {
+            "type": "asm",
+            "start": "005525e0",
+            "end": "005529cf"
+        },
+        {
+            "type": "db",
+            "start": "005529cf",
+            "end": "005529d0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005529d0",
+            "end": "005529e0"
+        },
+        {
+            "type": "asm",
+            "start": "005529e0",
+            "end": "00555226"
+        },
+        {
+            "type": "db",
+            "start": "00555226",
+            "end": "00555228"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00555228",
+            "end": "0055523c"
+        },
+        {
+            "type": "db",
+            "start": "0055523c",
+            "end": "00555240"
+        },
+        {
+            "type": "asm",
+            "start": "00555240",
+            "end": "0055c32b"
+        },
+        {
+            "type": "db",
+            "start": "0055c32b",
+            "end": "0055c32c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0055c32c",
+            "end": "0055c76c"
+        },
+        {
+            "type": "db",
+            "start": "0055c76c",
+            "end": "0055c770"
+        },
+        {
+            "type": "asm",
+            "start": "0055c770",
+            "end": "00562055"
+        },
+        {
+            "type": "db",
+            "start": "00562055",
+            "end": "00562058"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00562058",
+            "end": "0056207c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0056207c",
+            "end": "00562176"
+        },
+        {
+            "type": "db",
+            "start": "00562176",
+            "end": "00562180"
+        },
+        {
+            "type": "asm",
+            "start": "00562180",
+            "end": "0056a4a9"
+        },
+        {
+            "type": "db",
+            "start": "0056a4a9",
+            "end": "0056a4ac"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0056a4ac",
+            "end": "0056a4d0"
+        },
+        {
+            "type": "asm",
+            "start": "0056a4d0",
+            "end": "0056a629"
+        },
+        {
+            "type": "db",
+            "start": "0056a629",
+            "end": "0056a62c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0056a62c",
+            "end": "0056a6d0"
+        },
+        {
+            "type": "asm",
+            "start": "0056a6d0",
+            "end": "0056d206"
+        },
+        {
+            "type": "db",
+            "start": "0056d206",
+            "end": "0056d208"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0056d208",
+            "end": "0056d21c"
+        },
+        {
+            "type": "db",
+            "start": "0056d21c",
+            "end": "0056d220"
+        },
+        {
+            "type": "asm",
+            "start": "0056d220",
+            "end": "0056d93a"
+        },
+        {
+            "type": "db",
+            "start": "0056d93a",
+            "end": "0056d93c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0056d93c",
+            "end": "0056d954"
+        },
+        {
+            "type": "db",
+            "start": "0056d954",
+            "end": "0056d960"
+        },
+        {
+            "type": "asm",
+            "start": "0056d960",
+            "end": "0056e0fd"
+        },
+        {
+            "type": "db",
+            "start": "0056e0fd",
+            "end": "0056e100"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0056e100",
+            "end": "0056e11c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0056e11c",
+            "end": "0056e12b"
+        },
+        {
+            "type": "db",
+            "start": "0056e12b",
+            "end": "0056e130"
+        },
+        {
+            "type": "asm",
+            "start": "0056e130",
+            "end": "0056ea7b"
+        },
+        {
+            "type": "db",
+            "start": "0056ea7b",
+            "end": "0056ea7c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0056ea7c",
+            "end": "0056ea8c"
+        },
+        {
+            "type": "db",
+            "start": "0056ea8c",
+            "end": "0056ea90"
+        },
+        {
+            "type": "asm",
+            "start": "0056ea90",
+            "end": "0056eec5"
+        },
+        {
+            "type": "db",
+            "start": "0056eec5",
+            "end": "0056eec8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0056eec8",
+            "end": "0056eee0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0056eee0",
+            "end": "0056eeee"
+        },
+        {
+            "type": "db",
+            "start": "0056eeee",
+            "end": "0056eef0"
+        },
+        {
+            "type": "asm",
+            "start": "0056eef0",
+            "end": "00572cbb"
+        },
+        {
+            "type": "db",
+            "start": "00572cbb",
+            "end": "00572cbc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00572cbc",
+            "end": "00572cf8"
+        },
+        {
+            "type": "db",
+            "start": "00572cf8",
+            "end": "00572d00"
+        },
+        {
+            "type": "asm",
+            "start": "00572d00",
+            "end": "00573801"
+        },
+        {
+            "type": "db",
+            "start": "00573801",
+            "end": "00573804"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00573804",
+            "end": "00573838"
+        },
+        {
+            "type": "db",
+            "start": "00573838",
+            "end": "00573840"
+        },
+        {
+            "type": "asm",
+            "start": "00573840",
+            "end": "00596f61"
+        },
+        {
+            "type": "db",
+            "start": "00596f61",
+            "end": "00596f64"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00596f64",
+            "end": "00596fc4"
+        },
+        {
+            "type": "db",
+            "start": "00596fc4",
+            "end": "00596fd0"
+        },
+        {
+            "type": "asm",
+            "start": "00596fd0",
+            "end": "0059716d"
+        },
+        {
+            "type": "db",
+            "start": "0059716d",
+            "end": "00597170"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00597170",
+            "end": "00597184"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00597184",
+            "end": "00597190"
+        },
+        {
+            "type": "asm",
+            "start": "00597190",
+            "end": "0059b161"
+        },
+        {
+            "type": "db",
+            "start": "0059b161",
+            "end": "0059b164"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0059b164",
+            "end": "0059b1cc"
+        },
+        {
+            "type": "db",
+            "start": "0059b1cc",
+            "end": "0059b1d0"
+        },
+        {
+            "type": "asm",
+            "start": "0059b1d0",
+            "end": "0059be1f"
+        },
+        {
+            "type": "db",
+            "start": "0059be1f",
+            "end": "0059be20"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0059be20",
+            "end": "0059be30"
+        },
+        {
+            "type": "asm",
+            "start": "0059be30",
+            "end": "005b568c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005b568c",
+            "end": "005b56c4"
+        },
+        {
+            "type": "db",
+            "start": "005b56c4",
+            "end": "005b56d0"
+        },
+        {
+            "type": "asm",
+            "start": "005b56d0",
+            "end": "005b8e1e"
+        },
+        {
+            "type": "db",
+            "start": "005b8e1e",
+            "end": "005b8e20"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005b8e20",
+            "end": "005b8e3c"
+        },
+        {
+            "type": "db",
+            "start": "005b8e3c",
+            "end": "005b8e40"
+        },
+        {
+            "type": "asm",
+            "start": "005b8e40",
+            "end": "005bc489"
+        },
+        {
+            "type": "db",
+            "start": "005bc489",
+            "end": "005bc48c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005bc48c",
+            "end": "005bc4a0"
+        },
+        {
+            "type": "asm",
+            "start": "005bc4a0",
+            "end": "005bd096"
+        },
+        {
+            "type": "db",
+            "start": "005bd096",
+            "end": "005bd098"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005bd098",
+            "end": "005bd0a8"
+        },
+        {
+            "type": "db",
+            "start": "005bd0a8",
+            "end": "005bd0b0"
+        },
+        {
+            "type": "asm",
+            "start": "005bd0b0",
+            "end": "005bd99d"
+        },
+        {
+            "type": "db",
+            "start": "005bd99d",
+            "end": "005bd9a0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005bd9a0",
+            "end": "005bd9ac"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "005bd9ac",
+            "end": "005bd9ce"
+        },
+        {
+            "type": "db",
+            "start": "005bd9ce",
+            "end": "005bd9d0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005bd9d0",
+            "end": "005bd9e8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "005bd9e8",
+            "end": "005bdae5"
+        },
+        {
+            "type": "db",
+            "start": "005bdae5",
+            "end": "005bdaf0"
+        },
+        {
+            "type": "asm",
+            "start": "005bdaf0",
+            "end": "005bf57a"
+        },
+        {
+            "type": "db",
+            "start": "005bf57a",
+            "end": "005bf57c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005bf57c",
+            "end": "005bf598"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "005bf598",
+            "end": "005bf5ba"
+        },
+        {
+            "type": "db",
+            "start": "005bf5ba",
+            "end": "005bf5bc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005bf5bc",
+            "end": "005bf5cc"
+        },
+        {
+            "type": "db",
+            "start": "005bf5cc",
+            "end": "005bf5d0"
+        },
+        {
+            "type": "asm",
+            "start": "005bf5d0",
+            "end": "005c88d8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005c88d8",
+            "end": "005c891c"
+        },
+        {
+            "type": "db",
+            "start": "005c891c",
+            "end": "005c8920"
+        },
+        {
+            "type": "asm",
+            "start": "005c8920",
+            "end": "005cb264"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005cb264",
+            "end": "005cb26c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "005cb26c",
+            "end": "005cb299"
+        },
+        {
+            "type": "db",
+            "start": "005cb299",
+            "end": "005cb2a0"
+        },
+        {
+            "type": "asm",
+            "start": "005cb2a0",
+            "end": "005cb393"
+        },
+        {
+            "type": "db",
+            "start": "005cb393",
+            "end": "005cb394"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005cb394",
+            "end": "005cb3b0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "005cb3b0",
+            "end": "005cb3de"
+        },
+        {
+            "type": "db",
+            "start": "005cb3de",
+            "end": "005cb3e0"
+        },
+        {
+            "type": "asm",
+            "start": "005cb3e0",
+            "end": "005ddaa1"
+        },
+        {
+            "type": "db",
+            "start": "005ddaa1",
+            "end": "005ddaa4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005ddaa4",
+            "end": "005ddac8"
+        },
+        {
+            "type": "db",
+            "start": "005ddac8",
+            "end": "005ddad0"
+        },
+        {
+            "type": "asm",
+            "start": "005ddad0",
+            "end": "005dfc1f"
+        },
+        {
+            "type": "db",
+            "start": "005dfc1f",
+            "end": "005dfc20"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005dfc20",
+            "end": "005dfc3c"
+        },
+        {
+            "type": "db",
+            "start": "005dfc3c",
+            "end": "005dfc40"
+        },
+        {
+            "type": "asm",
+            "start": "005dfc40",
+            "end": "005e2cfd"
+        },
+        {
+            "type": "db",
+            "start": "005e2cfd",
+            "end": "005e2d00"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005e2d00",
+            "end": "005e2d10"
+        },
+        {
+            "type": "asm",
+            "start": "005e2d10",
+            "end": "005e3745"
+        },
+        {
+            "type": "db",
+            "start": "005e3745",
+            "end": "005e3748"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005e3748",
+            "end": "005e3764"
+        },
+        {
+            "type": "db",
+            "start": "005e3764",
+            "end": "005e3770"
+        },
+        {
+            "type": "asm",
+            "start": "005e3770",
+            "end": "005e7a0b"
+        },
+        {
+            "type": "db",
+            "start": "005e7a0b",
+            "end": "005e7a0c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005e7a0c",
+            "end": "005e7a40"
+        },
+        {
+            "type": "asm",
+            "start": "005e7a40",
+            "end": "005efd0d"
+        },
+        {
+            "type": "db",
+            "start": "005efd0d",
+            "end": "005efd10"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005efd10",
+            "end": "005efd44"
+        },
+        {
+            "type": "db",
+            "start": "005efd44",
+            "end": "005efd50"
+        },
+        {
+            "type": "asm",
+            "start": "005efd50",
+            "end": "005f0482"
+        },
+        {
+            "type": "db",
+            "start": "005f0482",
+            "end": "005f0484"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005f0484",
+            "end": "005f04b4"
+        },
+        {
+            "type": "db",
+            "start": "005f04b4",
+            "end": "005f04c0"
+        },
+        {
+            "type": "asm",
+            "start": "005f04c0",
+            "end": "005f0a28"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005f0a28",
+            "end": "005f0a58"
+        },
+        {
+            "type": "db",
+            "start": "005f0a58",
+            "end": "005f0a60"
+        },
+        {
+            "type": "asm",
+            "start": "005f0a60",
+            "end": "005f69fe"
+        },
+        {
+            "type": "db",
+            "start": "005f69fe",
+            "end": "005f6a00"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005f6a00",
+            "end": "005f6a64"
+        },
+        {
+            "type": "db",
+            "start": "005f6a64",
+            "end": "005f6a70"
+        },
+        {
+            "type": "asm",
+            "start": "005f6a70",
+            "end": "005fa458"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005fa458",
+            "end": "005fa478"
+        },
+        {
+            "type": "db",
+            "start": "005fa478",
+            "end": "005fa480"
+        },
+        {
+            "type": "asm",
+            "start": "005fa480",
+            "end": "005fb66f"
+        },
+        {
+            "type": "db",
+            "start": "005fb66f",
+            "end": "005fb670"
+        },
+        {
+            "type": "jmptbl",
+            "start": "005fb670",
+            "end": "005fb680"
+        },
+        {
+            "type": "asm",
+            "start": "005fb680",
+            "end": "00601529"
+        },
+        {
+            "type": "db",
+            "start": "00601529",
+            "end": "0060152c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0060152c",
+            "end": "006015e0"
+        },
+        {
+            "type": "asm",
+            "start": "006015e0",
+            "end": "00609308"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00609308",
+            "end": "0060931c"
+        },
+        {
+            "type": "db",
+            "start": "0060931c",
+            "end": "00609320"
+        },
+        {
+            "type": "asm",
+            "start": "00609320",
+            "end": "00609ff3"
+        },
+        {
+            "type": "db",
+            "start": "00609ff3",
+            "end": "00609ff4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00609ff4",
+            "end": "0060a00c"
+        },
+        {
+            "type": "db",
+            "start": "0060a00c",
+            "end": "0060a010"
+        },
+        {
+            "type": "asm",
+            "start": "0060a010",
+            "end": "0060a3e5"
+        },
+        {
+            "type": "db",
+            "start": "0060a3e5",
+            "end": "0060a3e8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0060a3e8",
+            "end": "0060a400"
+        },
+        {
+            "type": "asm",
+            "start": "0060a400",
+            "end": "0060a746"
+        },
+        {
+            "type": "db",
+            "start": "0060a746",
+            "end": "0060a748"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0060a748",
+            "end": "0060a764"
+        },
+        {
+            "type": "db",
+            "start": "0060a764",
+            "end": "0060a770"
+        },
+        {
+            "type": "asm",
+            "start": "0060a770",
+            "end": "0060bb7b"
+        },
+        {
+            "type": "db",
+            "start": "0060bb7b",
+            "end": "0060bb7c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0060bb7c",
+            "end": "0060bba4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0060bba4",
+            "end": "0060bbb6"
+        },
+        {
+            "type": "db",
+            "start": "0060bbb6",
+            "end": "0060bbc0"
+        },
+        {
+            "type": "asm",
+            "start": "0060bbc0",
+            "end": "0060d252"
+        },
+        {
+            "type": "db",
+            "start": "0060d252",
+            "end": "0060d254"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0060d254",
+            "end": "0060d278"
+        },
+        {
+            "type": "db",
+            "start": "0060d278",
+            "end": "0060d280"
+        },
+        {
+            "type": "asm",
+            "start": "0060d280",
+            "end": "0060d715"
+        },
+        {
+            "type": "db",
+            "start": "0060d715",
+            "end": "0060d718"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0060d718",
+            "end": "0060d73c"
+        },
+        {
+            "type": "db",
+            "start": "0060d73c",
+            "end": "0060d740"
+        },
+        {
+            "type": "asm",
+            "start": "0060d740",
+            "end": "0060f5d9"
+        },
+        {
+            "type": "db",
+            "start": "0060f5d9",
+            "end": "0060f5dc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0060f5dc",
+            "end": "0060f5f4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0060f5f4",
+            "end": "0060f62d"
+        },
+        {
+            "type": "db",
+            "start": "0060f62d",
+            "end": "0060f630"
+        },
+        {
+            "type": "asm",
+            "start": "0060f630",
+            "end": "006199ca"
+        },
+        {
+            "type": "db",
+            "start": "006199ca",
+            "end": "006199cc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006199cc",
+            "end": "006199e4"
+        },
+        {
+            "type": "db",
+            "start": "006199e4",
+            "end": "006199f0"
+        },
+        {
+            "type": "asm",
+            "start": "006199f0",
+            "end": "0061b86e"
+        },
+        {
+            "type": "db",
+            "start": "0061b86e",
+            "end": "0061b870"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0061b870",
+            "end": "0061b880"
+        },
+        {
+            "type": "asm",
+            "start": "0061b880",
+            "end": "0061e60e"
+        },
+        {
+            "type": "db",
+            "start": "0061e60e",
+            "end": "0061e610"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0061e610",
+            "end": "0061e628"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0061e628",
+            "end": "0061e636"
+        },
+        {
+            "type": "db",
+            "start": "0061e636",
+            "end": "0061e640"
+        },
+        {
+            "type": "asm",
+            "start": "0061e640",
+            "end": "0061ed06"
+        },
+        {
+            "type": "db",
+            "start": "0061ed06",
+            "end": "0061ed08"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0061ed08",
+            "end": "0061ed1c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0061ed1c",
+            "end": "0061ed2a"
+        },
+        {
+            "type": "db",
+            "start": "0061ed2a",
+            "end": "0061ed30"
+        },
+        {
+            "type": "asm",
+            "start": "0061ed30",
+            "end": "0061fffa"
+        },
+        {
+            "type": "db",
+            "start": "0061fffa",
+            "end": "0061fffc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0061fffc",
+            "end": "00620030"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00620030",
+            "end": "0062003f"
+        },
+        {
+            "type": "db",
+            "start": "0062003f",
+            "end": "00620040"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00620040",
+            "end": "006200a8"
+        },
+        {
+            "type": "db",
+            "start": "006200a8",
+            "end": "006200b0"
+        },
+        {
+            "type": "asm",
+            "start": "006200b0",
+            "end": "00626d09"
+        },
+        {
+            "type": "db",
+            "start": "00626d09",
+            "end": "00626d0c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00626d0c",
+            "end": "00626d84"
+        },
+        {
+            "type": "db",
+            "start": "00626d84",
+            "end": "00626d90"
+        },
+        {
+            "type": "asm",
+            "start": "00626d90",
+            "end": "0062970e"
+        },
+        {
+            "type": "db",
+            "start": "0062970e",
+            "end": "00629710"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00629710",
+            "end": "00629730"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00629730",
+            "end": "0062973f"
+        },
+        {
+            "type": "db",
+            "start": "0062973f",
+            "end": "00629740"
+        },
+        {
+            "type": "asm",
+            "start": "00629740",
+            "end": "0062abd8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0062abd8",
+            "end": "0062abec"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0062abec",
+            "end": "0062abfa"
+        },
+        {
+            "type": "db",
+            "start": "0062abfa",
+            "end": "0062ac00"
+        },
+        {
+            "type": "asm",
+            "start": "0062ac00",
+            "end": "0062aff9"
+        },
+        {
+            "type": "db",
+            "start": "0062aff9",
+            "end": "0062affc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0062affc",
+            "end": "0062b024"
+        },
+        {
+            "type": "db",
+            "start": "0062b024",
+            "end": "0062b030"
+        },
+        {
+            "type": "asm",
+            "start": "0062b030",
+            "end": "0062b800"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0062b800",
+            "end": "0062b818"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0062b818",
+            "end": "0062b826"
+        },
+        {
+            "type": "db",
+            "start": "0062b826",
+            "end": "0062b830"
+        },
+        {
+            "type": "asm",
+            "start": "0062b830",
+            "end": "00630fa3"
+        },
+        {
+            "type": "db",
+            "start": "00630fa3",
+            "end": "00630fa4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00630fa4",
+            "end": "00630fc0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00630fc0",
+            "end": "00630fce"
+        },
+        {
+            "type": "db",
+            "start": "00630fce",
+            "end": "00630fd0"
+        },
+        {
+            "type": "asm",
+            "start": "00630fd0",
+            "end": "0063a610"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0063a610",
+            "end": "0063a634"
+        },
+        {
+            "type": "db",
+            "start": "0063a634",
+            "end": "0063a640"
+        },
+        {
+            "type": "asm",
+            "start": "0063a640",
+            "end": "0063ad63"
+        },
+        {
+            "type": "db",
+            "start": "0063ad63",
+            "end": "0063ad64"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0063ad64",
+            "end": "0063ad80"
+        },
+        {
+            "type": "asm",
+            "start": "0063ad80",
+            "end": "0063ddcc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0063ddcc",
+            "end": "0063df64"
+        },
+        {
+            "type": "db",
+            "start": "0063df64",
+            "end": "0063df70"
+        },
+        {
+            "type": "asm",
+            "start": "0063df70",
+            "end": "0063eea0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0063eea0",
+            "end": "0063eec8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0063eec8",
+            "end": "0063eef0"
+        },
+        {
+            "type": "asm",
+            "start": "0063eef0",
+            "end": "0063f69f"
+        },
+        {
+            "type": "db",
+            "start": "0063f69f",
+            "end": "0063f6a0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0063f6a0",
+            "end": "0063f6b8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0063f6b8",
+            "end": "0063f6ea"
+        },
+        {
+            "type": "db",
+            "start": "0063f6ea",
+            "end": "0063f6ec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0063f6ec",
+            "end": "0063f6fc"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0063f6fc",
+            "end": "0063f70a"
+        },
+        {
+            "type": "db",
+            "start": "0063f70a",
+            "end": "0063f710"
+        },
+        {
+            "type": "asm",
+            "start": "0063f710",
+            "end": "0063ff0b"
+        },
+        {
+            "type": "db",
+            "start": "0063ff0b",
+            "end": "0063ff0c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0063ff0c",
+            "end": "0063ff58"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0063ff58",
+            "end": "0063ff79"
+        },
+        {
+            "type": "db",
+            "start": "0063ff79",
+            "end": "0063ff80"
+        },
+        {
+            "type": "asm",
+            "start": "0063ff80",
+            "end": "00640f4c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00640f4c",
+            "end": "00640f78"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00640f78",
+            "end": "00640f9a"
+        },
+        {
+            "type": "db",
+            "start": "00640f9a",
+            "end": "00640fa0"
+        },
+        {
+            "type": "asm",
+            "start": "00640fa0",
+            "end": "006414b7"
+        },
+        {
+            "type": "db",
+            "start": "006414b7",
+            "end": "006414b8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006414b8",
+            "end": "006414d8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006414d8",
+            "end": "00641505"
+        },
+        {
+            "type": "db",
+            "start": "00641505",
+            "end": "00641510"
+        },
+        {
+            "type": "asm",
+            "start": "00641510",
+            "end": "00641fc6"
+        },
+        {
+            "type": "db",
+            "start": "00641fc6",
+            "end": "00641fc8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00641fc8",
+            "end": "00641fe0"
+        },
+        {
+            "type": "asm",
+            "start": "00641fe0",
+            "end": "006464d1"
+        },
+        {
+            "type": "db",
+            "start": "006464d1",
+            "end": "006464d4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006464d4",
+            "end": "006464e4"
+        },
+        {
+            "type": "db",
+            "start": "006464e4",
+            "end": "006464f0"
+        },
+        {
+            "type": "asm",
+            "start": "006464f0",
+            "end": "0064d7e5"
+        },
+        {
+            "type": "db",
+            "start": "0064d7e5",
+            "end": "0064d7e8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0064d7e8",
+            "end": "0064d7fc"
+        },
+        {
+            "type": "db",
+            "start": "0064d7fc",
+            "end": "0064d800"
+        },
+        {
+            "type": "asm",
+            "start": "0064d800",
+            "end": "00651721"
+        },
+        {
+            "type": "db",
+            "start": "00651721",
+            "end": "00651724"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00651724",
+            "end": "0065173c"
+        },
+        {
+            "type": "db",
+            "start": "0065173c",
+            "end": "00651740"
+        },
+        {
+            "type": "asm",
+            "start": "00651740",
+            "end": "006663c8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006663c8",
+            "end": "006663dc"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006663dc",
+            "end": "00666405"
+        },
+        {
+            "type": "db",
+            "start": "00666405",
+            "end": "00666410"
+        },
+        {
+            "type": "asm",
+            "start": "00666410",
+            "end": "006667ed"
+        },
+        {
+            "type": "db",
+            "start": "006667ed",
+            "end": "006667f0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006667f0",
+            "end": "006667fc"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006667fc",
+            "end": "00666815"
+        },
+        {
+            "type": "db",
+            "start": "00666815",
+            "end": "00666820"
+        },
+        {
+            "type": "asm",
+            "start": "00666820",
+            "end": "0066976f"
+        },
+        {
+            "type": "db",
+            "start": "0066976f",
+            "end": "00669770"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00669770",
+            "end": "0066978c"
+        },
+        {
+            "type": "db",
+            "start": "0066978c",
+            "end": "00669790"
+        },
+        {
+            "type": "asm",
+            "start": "00669790",
+            "end": "0066ccc2"
+        },
+        {
+            "type": "db",
+            "start": "0066ccc2",
+            "end": "0066ccc4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0066ccc4",
+            "end": "0066ccd4"
+        },
+        {
+            "type": "db",
+            "start": "0066ccd4",
+            "end": "0066cce0"
+        },
+        {
+            "type": "asm",
+            "start": "0066cce0",
+            "end": "00671680"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00671680",
+            "end": "00671690"
+        },
+        {
+            "type": "asm",
+            "start": "00671690",
+            "end": "006747c1"
+        },
+        {
+            "type": "db",
+            "start": "006747c1",
+            "end": "006747c4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006747c4",
+            "end": "006747e0"
+        },
+        {
+            "type": "asm",
+            "start": "006747e0",
+            "end": "006868ca"
+        },
+        {
+            "type": "db",
+            "start": "006868ca",
+            "end": "006868cc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006868cc",
+            "end": "006868dc"
+        },
+        {
+            "type": "db",
+            "start": "006868dc",
+            "end": "006868e0"
+        },
+        {
+            "type": "asm",
+            "start": "006868e0",
+            "end": "0068e6cc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0068e6cc",
+            "end": "0068e6dc"
+        },
+        {
+            "type": "db",
+            "start": "0068e6dc",
+            "end": "0068e6e0"
+        },
+        {
+            "type": "asm",
+            "start": "0068e6e0",
+            "end": "0068e7b6"
+        },
+        {
+            "type": "db",
+            "start": "0068e7b6",
+            "end": "0068e7b8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0068e7b8",
+            "end": "0068e7c4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0068e7c4",
+            "end": "0068e7d3"
+        },
+        {
+            "type": "db",
+            "start": "0068e7d3",
+            "end": "0068e7d4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0068e7d4",
+            "end": "0068e810"
+        },
+        {
+            "type": "asm",
+            "start": "0068e810",
+            "end": "006c7bee"
+        },
+        {
+            "type": "db",
+            "start": "006c7bee",
+            "end": "006c7bf0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006c7bf0",
+            "end": "006c7c0c"
+        },
+        {
+            "type": "db",
+            "start": "006c7c0c",
+            "end": "006c7c10"
+        },
+        {
+            "type": "asm",
+            "start": "006c7c10",
+            "end": "006d6639"
+        },
+        {
+            "type": "db",
+            "start": "006d6639",
+            "end": "006d663c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006d663c",
+            "end": "006d6664"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006d6664",
+            "end": "006d6677"
+        },
+        {
+            "type": "db",
+            "start": "006d6677",
+            "end": "006d6680"
+        },
+        {
+            "type": "asm",
+            "start": "006d6680",
+            "end": "006d6c65"
+        },
+        {
+            "type": "db",
+            "start": "006d6c65",
+            "end": "006d6c68"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006d6c68",
+            "end": "006d6c94"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006d6c94",
+            "end": "006d6ca7"
+        },
+        {
+            "type": "db",
+            "start": "006d6ca7",
+            "end": "006d6cb0"
+        },
+        {
+            "type": "asm",
+            "start": "006d6cb0",
+            "end": "006d8a97"
+        },
+        {
+            "type": "db",
+            "start": "006d8a97",
+            "end": "006d8a98"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006d8a98",
+            "end": "006d8ac0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006d8ac0",
+            "end": "006d8ad2"
+        },
+        {
+            "type": "db",
+            "start": "006d8ad2",
+            "end": "006d8ad4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006d8ad4",
+            "end": "006d8af8"
+        },
+        {
+            "type": "db",
+            "start": "006d8af8",
+            "end": "006d8b00"
+        },
+        {
+            "type": "asm",
+            "start": "006d8b00",
+            "end": "006d922e"
+        },
+        {
+            "type": "db",
+            "start": "006d922e",
+            "end": "006d9230"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006d9230",
+            "end": "006d9270"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006d9270",
+            "end": "006d928c"
+        },
+        {
+            "type": "db",
+            "start": "006d928c",
+            "end": "006d9290"
+        },
+        {
+            "type": "asm",
+            "start": "006d9290",
+            "end": "006da53e"
+        },
+        {
+            "type": "db",
+            "start": "006da53e",
+            "end": "006da540"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006da540",
+            "end": "006da550"
+        },
+        {
+            "type": "asm",
+            "start": "006da550",
+            "end": "006dab30"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dab30",
+            "end": "006dab58"
+        },
+        {
+            "type": "db",
+            "start": "006dab58",
+            "end": "006dab60"
+        },
+        {
+            "type": "asm",
+            "start": "006dab60",
+            "end": "006dab81"
+        },
+        {
+            "type": "db",
+            "start": "006dab81",
+            "end": "006dab84"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dab84",
+            "end": "006dab94"
+        },
+        {
+            "type": "db",
+            "start": "006dab94",
+            "end": "006daba0"
+        },
+        {
+            "type": "asm",
+            "start": "006daba0",
+            "end": "006dabc7"
+        },
+        {
+            "type": "db",
+            "start": "006dabc7",
+            "end": "006dabc8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dabc8",
+            "end": "006dabd8"
+        },
+        {
+            "type": "db",
+            "start": "006dabd8",
+            "end": "006dabe0"
+        },
+        {
+            "type": "asm",
+            "start": "006dabe0",
+            "end": "006dac07"
+        },
+        {
+            "type": "db",
+            "start": "006dac07",
+            "end": "006dac08"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dac08",
+            "end": "006dac18"
+        },
+        {
+            "type": "db",
+            "start": "006dac18",
+            "end": "006dac20"
+        },
+        {
+            "type": "asm",
+            "start": "006dac20",
+            "end": "006dac4d"
+        },
+        {
+            "type": "db",
+            "start": "006dac4d",
+            "end": "006dac50"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dac50",
+            "end": "006dac60"
+        },
+        {
+            "type": "asm",
+            "start": "006dac60",
+            "end": "006dacb5"
+        },
+        {
+            "type": "db",
+            "start": "006dacb5",
+            "end": "006dacb8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dacb8",
+            "end": "006daccc"
+        },
+        {
+            "type": "db",
+            "start": "006daccc",
+            "end": "006dacd0"
+        },
+        {
+            "type": "asm",
+            "start": "006dacd0",
+            "end": "006db541"
+        },
+        {
+            "type": "db",
+            "start": "006db541",
+            "end": "006db544"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006db544",
+            "end": "006db568"
+        },
+        {
+            "type": "db",
+            "start": "006db568",
+            "end": "006db570"
+        },
+        {
+            "type": "asm",
+            "start": "006db570",
+            "end": "006db842"
+        },
+        {
+            "type": "db",
+            "start": "006db842",
+            "end": "006db844"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006db844",
+            "end": "006db894"
+        },
+        {
+            "type": "db",
+            "start": "006db894",
+            "end": "006db8a0"
+        },
+        {
+            "type": "asm",
+            "start": "006db8a0",
+            "end": "006dd439"
+        },
+        {
+            "type": "db",
+            "start": "006dd439",
+            "end": "006dd43c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dd43c",
+            "end": "006dd454"
+        },
+        {
+            "type": "db",
+            "start": "006dd454",
+            "end": "006dd460"
+        },
+        {
+            "type": "asm",
+            "start": "006dd460",
+            "end": "006dd914"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006dd914",
+            "end": "006dd934"
+        },
+        {
+            "type": "db",
+            "start": "006dd934",
+            "end": "006dd940"
+        },
+        {
+            "type": "asm",
+            "start": "006dd940",
+            "end": "006ddf3f"
+        },
+        {
+            "type": "db",
+            "start": "006ddf3f",
+            "end": "006ddf40"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006ddf40",
+            "end": "006ddf60"
+        },
+        {
+            "type": "asm",
+            "start": "006ddf60",
+            "end": "006de205"
+        },
+        {
+            "type": "db",
+            "start": "006de205",
+            "end": "006de208"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006de208",
+            "end": "006de220"
+        },
+        {
+            "type": "asm",
+            "start": "006de220",
+            "end": "006f1a6d"
+        },
+        {
+            "type": "db",
+            "start": "006f1a6d",
+            "end": "006f1a70"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006f1a70",
+            "end": "006f1b14"
+        },
+        {
+            "type": "db",
+            "start": "006f1b14",
+            "end": "006f1b20"
+        },
+        {
+            "type": "asm",
+            "start": "006f1b20",
+            "end": "006f51db"
+        },
+        {
+            "type": "db",
+            "start": "006f51db",
+            "end": "006f51dc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006f51dc",
+            "end": "006f51f4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006f51f4",
+            "end": "006f5202"
+        },
+        {
+            "type": "db",
+            "start": "006f5202",
+            "end": "006f5210"
+        },
+        {
+            "type": "asm",
+            "start": "006f5210",
+            "end": "006f6f26"
+        },
+        {
+            "type": "db",
+            "start": "006f6f26",
+            "end": "006f6f28"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006f6f28",
+            "end": "006f6f78"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "006f6f78",
+            "end": "006f6f9f"
+        },
+        {
+            "type": "db",
+            "start": "006f6f9f",
+            "end": "006f6fa0"
+        },
+        {
+            "type": "asm",
+            "start": "006f6fa0",
+            "end": "006f948f"
+        },
+        {
+            "type": "db",
+            "start": "006f948f",
+            "end": "006f9490"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006f9490",
+            "end": "006f94a0"
+        },
+        {
+            "type": "asm",
+            "start": "006f94a0",
+            "end": "006fc4e3"
+        },
+        {
+            "type": "db",
+            "start": "006fc4e3",
+            "end": "006fc4e4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "006fc4e4",
+            "end": "006fc514"
+        },
+        {
+            "type": "db",
+            "start": "006fc514",
+            "end": "006fc520"
+        },
+        {
+            "type": "asm",
+            "start": "006fc520",
+            "end": "00708f72"
+        },
+        {
+            "type": "db",
+            "start": "00708f72",
+            "end": "00708f74"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00708f74",
+            "end": "00708fb4"
+        },
+        {
+            "type": "db",
+            "start": "00708fb4",
+            "end": "00708fc0"
+        },
+        {
+            "type": "asm",
+            "start": "00708fc0",
+            "end": "0070912e"
+        },
+        {
+            "type": "db",
+            "start": "0070912e",
+            "end": "00709130"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00709130",
+            "end": "00709164"
+        },
+        {
+            "type": "db",
+            "start": "00709164",
+            "end": "00709170"
+        },
+        {
+            "type": "asm",
+            "start": "00709170",
+            "end": "0070b7a7"
+        },
+        {
+            "type": "db",
+            "start": "0070b7a7",
+            "end": "0070b7a8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0070b7a8",
+            "end": "0070b7e8"
+        },
+        {
+            "type": "db",
+            "start": "0070b7e8",
+            "end": "0070b7f0"
+        },
+        {
+            "type": "asm",
+            "start": "0070b7f0",
+            "end": "0070e78b"
+        },
+        {
+            "type": "db",
+            "start": "0070e78b",
+            "end": "0070e78c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0070e78c",
+            "end": "0070e81c"
+        },
+        {
+            "type": "db",
+            "start": "0070e81c",
+            "end": "0070e820"
+        },
+        {
+            "type": "asm",
+            "start": "0070e820",
+            "end": "0070f2b9"
+        },
+        {
+            "type": "db",
+            "start": "0070f2b9",
+            "end": "0070f2bc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0070f2bc",
+            "end": "0070f34c"
+        },
+        {
+            "type": "db",
+            "start": "0070f34c",
+            "end": "0070f350"
+        },
+        {
+            "type": "asm",
+            "start": "0070f350",
+            "end": "0070f753"
+        },
+        {
+            "type": "db",
+            "start": "0070f753",
+            "end": "0070f754"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0070f754",
+            "end": "0070f76c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0070f76c",
+            "end": "0070f796"
+        },
+        {
+            "type": "db",
+            "start": "0070f796",
+            "end": "0070f7a0"
+        },
+        {
+            "type": "asm",
+            "start": "0070f7a0",
+            "end": "007103ff"
+        },
+        {
+            "type": "db",
+            "start": "007103ff",
+            "end": "00710400"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00710400",
+            "end": "00710410"
+        },
+        {
+            "type": "asm",
+            "start": "00710410",
+            "end": "00715018"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00715018",
+            "end": "00715074"
+        },
+        {
+            "type": "db",
+            "start": "00715074",
+            "end": "00715080"
+        },
+        {
+            "type": "asm",
+            "start": "00715080",
+            "end": "00717e97"
+        },
+        {
+            "type": "db",
+            "start": "00717e97",
+            "end": "00717e98"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00717e98",
+            "end": "00717eac"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00717eac",
+            "end": "00717eba"
+        },
+        {
+            "type": "db",
+            "start": "00717eba",
+            "end": "00717ebc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00717ebc",
+            "end": "00718060"
+        },
+        {
+            "type": "asm",
+            "start": "00718060",
+            "end": "0071bc9c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0071bc9c",
+            "end": "0071bcc4"
+        },
+        {
+            "type": "db",
+            "start": "0071bcc4",
+            "end": "0071bcd0"
+        },
+        {
+            "type": "asm",
+            "start": "0071bcd0",
+            "end": "0071bd25"
+        },
+        {
+            "type": "db",
+            "start": "0071bd25",
+            "end": "0071bd28"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0071bd28",
+            "end": "0071bd50"
+        },
+        {
+            "type": "asm",
+            "start": "0071bd50",
+            "end": "0071bda5"
+        },
+        {
+            "type": "db",
+            "start": "0071bda5",
+            "end": "0071bda8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0071bda8",
+            "end": "0071bdd0"
+        },
+        {
+            "type": "asm",
+            "start": "0071bdd0",
+            "end": "0072853b"
+        },
+        {
+            "type": "db",
+            "start": "0072853b",
+            "end": "0072853c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0072853c",
+            "end": "0072854c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0072854c",
+            "end": "00728567"
+        },
+        {
+            "type": "db",
+            "start": "00728567",
+            "end": "00728570"
+        },
+        {
+            "type": "asm",
+            "start": "00728570",
+            "end": "00729c7f"
+        },
+        {
+            "type": "db",
+            "start": "00729c7f",
+            "end": "00729c80"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00729c80",
+            "end": "00729c90"
+        },
+        {
+            "type": "asm",
+            "start": "00729c90",
+            "end": "0072e54c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0072e54c",
+            "end": "0072e5b4"
+        },
+        {
+            "type": "db",
+            "start": "0072e5b4",
+            "end": "0072e5c0"
+        },
+        {
+            "type": "asm",
+            "start": "0072e5c0",
+            "end": "00735bd4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00735bd4",
+            "end": "00735be8"
+        },
+        {
+            "type": "db",
+            "start": "00735be8",
+            "end": "00735bf0"
+        },
+        {
+            "type": "asm",
+            "start": "00735bf0",
+            "end": "00735c14"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00735c14",
+            "end": "00735c28"
+        },
+        {
+            "type": "db",
+            "start": "00735c28",
+            "end": "00735c30"
+        },
+        {
+            "type": "asm",
+            "start": "00735c30",
+            "end": "0073643c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0073643c",
+            "end": "0073648c"
+        },
+        {
+            "type": "db",
+            "start": "0073648c",
+            "end": "00736490"
+        },
+        {
+            "type": "asm",
+            "start": "00736490",
+            "end": "0073a5b2"
+        },
+        {
+            "type": "db",
+            "start": "0073a5b2",
+            "end": "0073a5b4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0073a5b4",
+            "end": "0073a5cc"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0073a5cc",
+            "end": "0073a64f"
+        },
+        {
+            "type": "db",
+            "start": "0073a64f",
+            "end": "0073a650"
+        },
+        {
+            "type": "asm",
+            "start": "0073a650",
+            "end": "007472ec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007472ec",
+            "end": "00747310"
+        },
+        {
+            "type": "asm",
+            "start": "00747310",
+            "end": "0075193a"
+        },
+        {
+            "type": "db",
+            "start": "0075193a",
+            "end": "0075193c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0075193c",
+            "end": "0075196c"
+        },
+        {
+            "type": "db",
+            "start": "0075196c",
+            "end": "00751970"
+        },
+        {
+            "type": "asm",
+            "start": "00751970",
+            "end": "00753c57"
+        },
+        {
+            "type": "db",
+            "start": "00753c57",
+            "end": "00753c58"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00753c58",
+            "end": "00753c64"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00753c64",
+            "end": "00753c6d"
+        },
+        {
+            "type": "db",
+            "start": "00753c6d",
+            "end": "00753c70"
+        },
+        {
+            "type": "asm",
+            "start": "00753c70",
+            "end": "00756200"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00756200",
+            "end": "00756228"
+        },
+        {
+            "type": "db",
+            "start": "00756228",
+            "end": "00756230"
+        },
+        {
+            "type": "asm",
+            "start": "00756230",
+            "end": "00756e56"
+        },
+        {
+            "type": "db",
+            "start": "00756e56",
+            "end": "00756e58"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00756e58",
+            "end": "00756e80"
+        },
+        {
+            "type": "asm",
+            "start": "00756e80",
+            "end": "007676c0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007676c0",
+            "end": "007676d4"
+        },
+        {
+            "type": "db",
+            "start": "007676d4",
+            "end": "007676e0"
+        },
+        {
+            "type": "asm",
+            "start": "007676e0",
+            "end": "00767888"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00767888",
+            "end": "0076789c"
+        },
+        {
+            "type": "db",
+            "start": "0076789c",
+            "end": "007678a0"
+        },
+        {
+            "type": "asm",
+            "start": "007678a0",
+            "end": "007791ae"
+        },
+        {
+            "type": "db",
+            "start": "007791ae",
+            "end": "007791b0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007791b0",
+            "end": "007791d0"
+        },
+        {
+            "type": "asm",
+            "start": "007791d0",
+            "end": "0077d22c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0077d22c",
+            "end": "0077d23c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0077d23c",
+            "end": "0077d2de"
+        },
+        {
+            "type": "db",
+            "start": "0077d2de",
+            "end": "0077d2e0"
+        },
+        {
+            "type": "asm",
+            "start": "0077d2e0",
+            "end": "0077f5f6"
+        },
+        {
+            "type": "db",
+            "start": "0077f5f6",
+            "end": "0077f5f8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0077f5f8",
+            "end": "0077f670"
+        },
+        {
+            "type": "asm",
+            "start": "0077f670",
+            "end": "007870fb"
+        },
+        {
+            "type": "db",
+            "start": "007870fb",
+            "end": "007870fc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007870fc",
+            "end": "0078711c"
+        },
+        {
+            "type": "db",
+            "start": "0078711c",
+            "end": "00787120"
+        },
+        {
+            "type": "asm",
+            "start": "00787120",
+            "end": "007878ce"
+        },
+        {
+            "type": "db",
+            "start": "007878ce",
+            "end": "007878d0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007878d0",
+            "end": "007878e0"
+        },
+        {
+            "type": "asm",
+            "start": "007878e0",
+            "end": "0078b501"
+        },
+        {
+            "type": "db",
+            "start": "0078b501",
+            "end": "0078b504"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078b504",
+            "end": "0078b520"
+        },
+        {
+            "type": "asm",
+            "start": "0078b520",
+            "end": "0078c7a3"
+        },
+        {
+            "type": "db",
+            "start": "0078c7a3",
+            "end": "0078c7a4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078c7a4",
+            "end": "0078c7d0"
+        },
+        {
+            "type": "asm",
+            "start": "0078c7d0",
+            "end": "0078cd0a"
+        },
+        {
+            "type": "db",
+            "start": "0078cd0a",
+            "end": "0078cd0c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078cd0c",
+            "end": "0078cd20"
+        },
+        {
+            "type": "asm",
+            "start": "0078cd20",
+            "end": "0078ce5b"
+        },
+        {
+            "type": "db",
+            "start": "0078ce5b",
+            "end": "0078ce5c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078ce5c",
+            "end": "0078ce70"
+        },
+        {
+            "type": "asm",
+            "start": "0078ce70",
+            "end": "0078dcb5"
+        },
+        {
+            "type": "db",
+            "start": "0078dcb5",
+            "end": "0078dcb8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078dcb8",
+            "end": "0078dcc8"
+        },
+        {
+            "type": "db",
+            "start": "0078dcc8",
+            "end": "0078dcd0"
+        },
+        {
+            "type": "asm",
+            "start": "0078dcd0",
+            "end": "0078de45"
+        },
+        {
+            "type": "db",
+            "start": "0078de45",
+            "end": "0078de48"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078de48",
+            "end": "0078de58"
+        },
+        {
+            "type": "db",
+            "start": "0078de58",
+            "end": "0078de60"
+        },
+        {
+            "type": "asm",
+            "start": "0078de60",
+            "end": "0078dfd5"
+        },
+        {
+            "type": "db",
+            "start": "0078dfd5",
+            "end": "0078dfd8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078dfd8",
+            "end": "0078dfe8"
+        },
+        {
+            "type": "db",
+            "start": "0078dfe8",
+            "end": "0078dff0"
+        },
+        {
+            "type": "asm",
+            "start": "0078dff0",
+            "end": "0078e3ae"
+        },
+        {
+            "type": "db",
+            "start": "0078e3ae",
+            "end": "0078e3b0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078e3b0",
+            "end": "0078e3c0"
+        },
+        {
+            "type": "asm",
+            "start": "0078e3c0",
+            "end": "0078e733"
+        },
+        {
+            "type": "db",
+            "start": "0078e733",
+            "end": "0078e734"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0078e734",
+            "end": "0078e744"
+        },
+        {
+            "type": "db",
+            "start": "0078e744",
+            "end": "0078e750"
+        },
+        {
+            "type": "asm",
+            "start": "0078e750",
+            "end": "0079494e"
+        },
+        {
+            "type": "db",
+            "start": "0079494e",
+            "end": "00794950"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00794950",
+            "end": "00794968"
+        },
+        {
+            "type": "db",
+            "start": "00794968",
+            "end": "00794970"
+        },
+        {
+            "type": "asm",
+            "start": "00794970",
+            "end": "00795cdc"
+        },
+        {
+            "type": "db",
+            "start": "00795cdc",
+            "end": "00795ce0"
+        },
+        {
+            "type": "asm",
+            "start": "00795ce0",
+            "end": "0079690c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0079690c",
+            "end": "0079691c"
+        },
+        {
+            "type": "db",
+            "start": "0079691c",
+            "end": "00796920"
+        },
+        {
+            "type": "asm",
+            "start": "00796920",
+            "end": "0079a58c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0079a58c",
+            "end": "0079a5a0"
+        },
+        {
+            "type": "asm",
+            "start": "0079a5a0",
+            "end": "0079c3ef"
+        },
+        {
+            "type": "db",
+            "start": "0079c3ef",
+            "end": "0079c3f0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0079c3f0",
+            "end": "0079c548"
+        },
+        {
+            "type": "db",
+            "start": "0079c548",
+            "end": "0079c550"
+        },
+        {
+            "type": "asm",
+            "start": "0079c550",
+            "end": "0079f5b0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0079f5b0",
+            "end": "0079f5d0"
+        },
+        {
+            "type": "asm",
+            "start": "0079f5d0",
+            "end": "007a133b"
+        },
+        {
+            "type": "db",
+            "start": "007a133b",
+            "end": "007a133c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007a133c",
+            "end": "007a135c"
+        },
+        {
+            "type": "db",
+            "start": "007a135c",
+            "end": "007a1360"
+        },
+        {
+            "type": "asm",
+            "start": "007a1360",
+            "end": "007befb6"
+        },
+        {
+            "type": "db",
+            "start": "007befb6",
+            "end": "007befb8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007befb8",
+            "end": "007befd4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007befd4",
+            "end": "007bf027"
+        },
+        {
+            "type": "db",
+            "start": "007bf027",
+            "end": "007bf030"
+        },
+        {
+            "type": "asm",
+            "start": "007bf030",
+            "end": "007c0e97"
+        },
+        {
+            "type": "db",
+            "start": "007c0e97",
+            "end": "007c0e98"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c0e98",
+            "end": "007c0ed0"
+        },
+        {
+            "type": "asm",
+            "start": "007c0ed0",
+            "end": "007c3c0f"
+        },
+        {
+            "type": "db",
+            "start": "007c3c0f",
+            "end": "007c3c10"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c3c10",
+            "end": "007c3c48"
+        },
+        {
+            "type": "db",
+            "start": "007c3c48",
+            "end": "007c3c50"
+        },
+        {
+            "type": "asm",
+            "start": "007c3c50",
+            "end": "007c449f"
+        },
+        {
+            "type": "db",
+            "start": "007c449f",
+            "end": "007c44a0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c44a0",
+            "end": "007c44c8"
+        },
+        {
+            "type": "db",
+            "start": "007c44c8",
+            "end": "007c44d0"
+        },
+        {
+            "type": "asm",
+            "start": "007c44d0",
+            "end": "007c6153"
+        },
+        {
+            "type": "db",
+            "start": "007c6153",
+            "end": "007c6154"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c6154",
+            "end": "007c6160"
+        },
+        {
+            "type": "asm",
+            "start": "007c6160",
+            "end": "007c61c9"
+        },
+        {
+            "type": "db",
+            "start": "007c61c9",
+            "end": "007c61cc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c61cc",
+            "end": "007c61ec"
+        },
+        {
+            "type": "db",
+            "start": "007c61ec",
+            "end": "007c61f0"
+        },
+        {
+            "type": "asm",
+            "start": "007c61f0",
+            "end": "007c6236"
+        },
+        {
+            "type": "db",
+            "start": "007c6236",
+            "end": "007c6238"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c6238",
+            "end": "007c6248"
+        },
+        {
+            "type": "db",
+            "start": "007c6248",
+            "end": "007c6250"
+        },
+        {
+            "type": "asm",
+            "start": "007c6250",
+            "end": "007c62db"
+        },
+        {
+            "type": "db",
+            "start": "007c62db",
+            "end": "007c62dc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c62dc",
+            "end": "007c62e8"
+        },
+        {
+            "type": "db",
+            "start": "007c62e8",
+            "end": "007c62f0"
+        },
+        {
+            "type": "asm",
+            "start": "007c62f0",
+            "end": "007c6361"
+        },
+        {
+            "type": "db",
+            "start": "007c6361",
+            "end": "007c6364"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c6364",
+            "end": "007c6384"
+        },
+        {
+            "type": "db",
+            "start": "007c6384",
+            "end": "007c6390"
+        },
+        {
+            "type": "asm",
+            "start": "007c6390",
+            "end": "007c63ce"
+        },
+        {
+            "type": "db",
+            "start": "007c63ce",
+            "end": "007c63d0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007c63d0",
+            "end": "007c63e0"
+        },
+        {
+            "type": "asm",
+            "start": "007c63e0",
+            "end": "007ca6f3"
+        },
+        {
+            "type": "db",
+            "start": "007ca6f3",
+            "end": "007ca6f4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ca6f4",
+            "end": "007ca700"
+        },
+        {
+            "type": "asm",
+            "start": "007ca700",
+            "end": "007ca769"
+        },
+        {
+            "type": "db",
+            "start": "007ca769",
+            "end": "007ca76c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ca76c",
+            "end": "007ca78c"
+        },
+        {
+            "type": "db",
+            "start": "007ca78c",
+            "end": "007ca790"
+        },
+        {
+            "type": "asm",
+            "start": "007ca790",
+            "end": "007ca7d6"
+        },
+        {
+            "type": "db",
+            "start": "007ca7d6",
+            "end": "007ca7d8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ca7d8",
+            "end": "007ca7e8"
+        },
+        {
+            "type": "db",
+            "start": "007ca7e8",
+            "end": "007ca7f0"
+        },
+        {
+            "type": "asm",
+            "start": "007ca7f0",
+            "end": "007ca87b"
+        },
+        {
+            "type": "db",
+            "start": "007ca87b",
+            "end": "007ca87c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ca87c",
+            "end": "007ca888"
+        },
+        {
+            "type": "db",
+            "start": "007ca888",
+            "end": "007ca890"
+        },
+        {
+            "type": "asm",
+            "start": "007ca890",
+            "end": "007ca901"
+        },
+        {
+            "type": "db",
+            "start": "007ca901",
+            "end": "007ca904"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ca904",
+            "end": "007ca924"
+        },
+        {
+            "type": "db",
+            "start": "007ca924",
+            "end": "007ca930"
+        },
+        {
+            "type": "asm",
+            "start": "007ca930",
+            "end": "007ca96e"
+        },
+        {
+            "type": "db",
+            "start": "007ca96e",
+            "end": "007ca970"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ca970",
+            "end": "007ca980"
+        },
+        {
+            "type": "asm",
+            "start": "007ca980",
+            "end": "007cd7bb"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007cd7bb",
+            "end": "007cd7db"
+        },
+        {
+            "type": "asm",
+            "start": "007cd7db",
+            "end": "007ce251"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ce251",
+            "end": "007ce271"
+        },
+        {
+            "type": "asm",
+            "start": "007ce271",
+            "end": "007da0a2"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007da0a2",
+            "end": "007da0d2"
+        },
+        {
+            "type": "asm",
+            "start": "007da0d2",
+            "end": "007da710"
+        },
+        {
+            "type": "asm",
+            "start": "007da710",
+            "end": "007dc656",
+            "comment": "Looks like this segment had a different compiler, cmp 8bitreg, 8bitreg emmits different opcodes"
+        },
+        {
+            "type": "db",
+            "start": "007dc656",
+            "end": "007dc658"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007dc658",
+            "end": "007dc690"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007dc690",
+            "end": "007dc782"
+        },
+        {
+            "type": "db",
+            "start": "007dc782",
+            "end": "007dc784"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007dc784",
+            "end": "007dc7a0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007dc7a0",
+            "end": "007dc892"
+        },
+        {
+            "type": "db",
+            "start": "007dc892",
+            "end": "007dc894"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007dc894",
+            "end": "007dc8a8"
+        },
+        {
+            "type": "db",
+            "start": "007dc8a8",
+            "end": "007dc8b0"
+        },
+        {
+            "type": "asm",
+            "start": "007dc8b0",
+            "end": "007e4d85"
+        },
+        {
+            "type": "db",
+            "start": "007e4d85",
+            "end": "007e4d88"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e4d88",
+            "end": "007e4db0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007e4db0",
+            "end": "007e4e31"
+        },
+        {
+            "type": "db",
+            "start": "007e4e31",
+            "end": "007e4e40"
+        },
+        {
+            "type": "asm",
+            "start": "007e4e40",
+            "end": "007e6055"
+        },
+        {
+            "type": "db",
+            "start": "007e6055",
+            "end": "007e6058"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e6058",
+            "end": "007e6068"
+        },
+        {
+            "type": "db",
+            "start": "007e6068",
+            "end": "007e6070"
+        },
+        {
+            "type": "asm",
+            "start": "007e6070",
+            "end": "007e78c0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e78c0",
+            "end": "007e78d8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007e78d8",
+            "end": "007e78f7"
+        },
+        {
+            "type": "db",
+            "start": "007e78f7",
+            "end": "007e7900"
+        },
+        {
+            "type": "asm",
+            "start": "007e7900",
+            "end": "007e7f74"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e7f74",
+            "end": "007e7f8c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007e7f8c",
+            "end": "007e7fab"
+        },
+        {
+            "type": "db",
+            "start": "007e7fab",
+            "end": "007e7fb0"
+        },
+        {
+            "type": "asm",
+            "start": "007e7fb0",
+            "end": "007e8064"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e8064",
+            "end": "007e8078"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007e8078",
+            "end": "007e8086"
+        },
+        {
+            "type": "db",
+            "start": "007e8086",
+            "end": "007e8090"
+        },
+        {
+            "type": "asm",
+            "start": "007e8090",
+            "end": "007e8146"
+        },
+        {
+            "type": "db",
+            "start": "007e8146",
+            "end": "007e8148"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e8148",
+            "end": "007e815c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007e815c",
+            "end": "007e816a"
+        },
+        {
+            "type": "db",
+            "start": "007e816a",
+            "end": "007e8170"
+        },
+        {
+            "type": "asm",
+            "start": "007e8170",
+            "end": "007e8984"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e8984",
+            "end": "007e89f0"
+        },
+        {
+            "type": "asm",
+            "start": "007e89f0",
+            "end": "007e9564"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e9564",
+            "end": "007e95d0"
+        },
+        {
+            "type": "asm",
+            "start": "007e95d0",
+            "end": "007e9dd6"
+        },
+        {
+            "type": "db",
+            "start": "007e9dd6",
+            "end": "007e9dd8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e9dd8",
+            "end": "007e9dec"
+        },
+        {
+            "type": "db",
+            "start": "007e9dec",
+            "end": "007e9df0"
+        },
+        {
+            "type": "asm",
+            "start": "007e9df0",
+            "end": "007e9e86"
+        },
+        {
+            "type": "db",
+            "start": "007e9e86",
+            "end": "007e9e88"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e9e88",
+            "end": "007e9ea8"
+        },
+        {
+            "type": "db",
+            "start": "007e9ea8",
+            "end": "007e9eb0"
+        },
+        {
+            "type": "asm",
+            "start": "007e9eb0",
+            "end": "007e9fe8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007e9fe8",
+            "end": "007e9ffc"
+        },
+        {
+            "type": "db",
+            "start": "007e9ffc",
+            "end": "007ea000"
+        },
+        {
+            "type": "asm",
+            "start": "007ea000",
+            "end": "007ea086"
+        },
+        {
+            "type": "db",
+            "start": "007ea086",
+            "end": "007ea088"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007ea088",
+            "end": "007ea0a8"
+        },
+        {
+            "type": "db",
+            "start": "007ea0a8",
+            "end": "007ea0b0"
+        },
+        {
+            "type": "asm",
+            "start": "007ea0b0",
+            "end": "007f5027"
+        },
+        {
+            "type": "db",
+            "start": "007f5027",
+            "end": "007f5028"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007f5028",
+            "end": "007f5040"
+        },
+        {
+            "type": "asm",
+            "start": "007f5040",
+            "end": "007f5379"
+        },
+        {
+            "type": "db",
+            "start": "007f5379",
+            "end": "007f537c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007f537c",
+            "end": "007f5390"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "007f5390",
+            "end": "007f544e"
+        },
+        {
+            "type": "db",
+            "start": "007f544e",
+            "end": "007f5450"
+        },
+        {
+            "type": "asm",
+            "start": "007f5450",
+            "end": "007f8958"
+        },
+        {
+            "type": "jmptbl",
+            "start": "007f8958",
+            "end": "007f8968"
+        },
+        {
+            "type": "db",
+            "start": "007f8968",
+            "end": "007f8970"
+        },
+        {
+            "type": "asm",
+            "start": "007f8970",
+            "end": "0080b841"
+        },
+        {
+            "type": "db",
+            "start": "0080b841",
+            "end": "0080b844"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0080b844",
+            "end": "0080b868"
+        },
+        {
+            "type": "db",
+            "start": "0080b868",
+            "end": "0080b870"
+        },
+        {
+            "type": "asm",
+            "start": "0080b870",
+            "end": "0081b301"
+        },
+        {
+            "type": "db",
+            "start": "0081b301",
+            "end": "0081b304"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0081b304",
+            "end": "0081b31c"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0081b31c",
+            "end": "0081b33c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0081b33c",
+            "end": "0081b350"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0081b350",
+            "end": "0081b36d"
+        },
+        {
+            "type": "db",
+            "start": "0081b36d",
+            "end": "0081b370"
+        },
+        {
+            "type": "asm",
+            "start": "0081b370",
+            "end": "0081e17c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0081e17c",
+            "end": "0081e194"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0081e194",
+            "end": "0081e1b3"
+        },
+        {
+            "type": "db",
+            "start": "0081e1b3",
+            "end": "0081e1b4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0081e1b4",
+            "end": "0081e1c8"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "0081e1c8",
+            "end": "0081e1e5"
+        },
+        {
+            "type": "db",
+            "start": "0081e1e5",
+            "end": "0081e1f0"
+        },
+        {
+            "type": "asm",
+            "start": "0081e1f0",
+            "end": "0082a2ad"
+        },
+        {
+            "type": "db",
+            "start": "0082a2ad",
+            "end": "0082a2b0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0082a2b0",
+            "end": "0082a2c0"
+        },
+        {
+            "type": "asm",
+            "start": "0082a2c0",
+            "end": "0082beeb"
+        },
+        {
+            "type": "db",
+            "start": "0082beeb",
+            "end": "0082beec"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0082beec",
+            "end": "0082bf04"
+        },
+        {
+            "type": "db",
+            "start": "0082bf04",
+            "end": "0082bf10"
+        },
+        {
+            "type": "asm",
+            "start": "0082bf10",
+            "end": "008339a1"
+        },
+        {
+            "type": "db",
+            "start": "008339a1",
+            "end": "008339a4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "008339a4",
+            "end": "008339d4"
+        },
+        {
+            "type": "db",
+            "start": "008339d4",
+            "end": "008339e0"
+        },
+        {
+            "type": "asm",
+            "start": "008339e0",
+            "end": "00837cbe"
+        },
+        {
+            "type": "db",
+            "start": "00837cbe",
+            "end": "00837cc0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00837cc0",
+            "end": "00837cd4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00837cd4",
+            "end": "00837ce4"
+        },
+        {
+            "type": "db",
+            "start": "00837ce4",
+            "end": "00837cf0"
+        },
+        {
+            "type": "asm",
+            "start": "00837cf0",
+            "end": "008383de"
+        },
+        {
+            "type": "db",
+            "start": "008383de",
+            "end": "008383e0"
+        },
+        {
+            "type": "jmptbl",
+            "start": "008383e0",
+            "end": "00838410"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00838410",
+            "end": "00838430"
+        },
+        {
+            "type": "asm",
+            "start": "00838430",
+            "end": "00838e6e"
+        },
+        {
+            "type": "db",
+            "start": "00838e6e",
+            "end": "00838e70"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00838e70",
+            "end": "00838e84"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00838e84",
+            "end": "00838ea4"
+        },
+        {
+            "type": "db",
+            "start": "00838ea4",
+            "end": "00838eb0"
+        },
+        {
+            "type": "asm",
+            "start": "00838eb0",
+            "end": "0083c282"
+        },
+        {
+            "type": "db",
+            "start": "0083c282",
+            "end": "0083c284"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0083c284",
+            "end": "0083c2c8"
+        },
+        {
+            "type": "db",
+            "start": "0083c2c8",
+            "end": "0083c2d0"
+        },
+        {
+            "type": "asm",
+            "start": "0083c2d0",
+            "end": "00841fe2"
+        },
+        {
+            "type": "db",
+            "start": "00841fe2",
+            "end": "00841fe4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00841fe4",
+            "end": "00842028"
+        },
+        {
+            "type": "db",
+            "start": "00842028",
+            "end": "00842030"
+        },
+        {
+            "type": "asm",
+            "start": "00842030",
+            "end": "0084269a"
+        },
+        {
+            "type": "db",
+            "start": "0084269a",
+            "end": "0084269c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0084269c",
+            "end": "008426c0"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "008426c0",
+            "end": "00842793"
+        },
+        {
+            "type": "db",
+            "start": "00842793",
+            "end": "008427a0"
+        },
+        {
+            "type": "asm",
+            "start": "008427a0",
+            "end": "0084f2c6"
+        },
+        {
+            "type": "db",
+            "start": "0084f2c6",
+            "end": "0084f2c8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0084f2c8",
+            "end": "0084f2e4"
+        },
+        {
+            "type": "db",
+            "start": "0084f2e4",
+            "end": "0084f2f0"
+        },
+        {
+            "type": "asm",
+            "start": "0084f2f0",
+            "end": "0085018c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0085018c",
+            "end": "008501a8"
+        },
+        {
+            "type": "db",
+            "start": "008501a8",
+            "end": "008501b0"
+        },
+        {
+            "type": "asm",
+            "start": "008501b0",
+            "end": "00863ed6"
+        },
+        {
+            "type": "db",
+            "start": "00863ed6",
+            "end": "00863ed8"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00863ed8",
+            "end": "00863ee8"
+        },
+        {
+            "type": "db",
+            "start": "00863ee8",
+            "end": "00863ef0"
+        },
+        {
+            "type": "asm",
+            "start": "00863ef0",
+            "end": "0086402b"
+        },
+        {
+            "type": "db",
+            "start": "0086402b",
+            "end": "0086402c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0086402c",
+            "end": "00864040"
+        },
+        {
+            "type": "asm",
+            "start": "00864040",
+            "end": "00864177"
+        },
+        {
+            "type": "db",
+            "start": "00864177",
+            "end": "00864178"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00864178",
+            "end": "00864190"
+        },
+        {
+            "type": "asm",
+            "start": "00864190",
+            "end": "00864402"
+        },
+        {
+            "type": "db",
+            "start": "00864402",
+            "end": "00864404"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00864404",
+            "end": "00864418"
+        },
+        {
+            "type": "db",
+            "start": "00864418",
+            "end": "00864420"
+        },
+        {
+            "type": "asm",
+            "start": "00864420",
+            "end": "00864893"
+        },
+        {
+            "type": "db",
+            "start": "00864893",
+            "end": "00864894"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00864894",
+            "end": "008648a4"
+        },
+        {
+            "type": "db",
+            "start": "008648a4",
+            "end": "008648b0"
+        },
+        {
+            "type": "asm",
+            "start": "008648b0",
+            "end": "00864979"
+        },
+        {
+            "type": "db",
+            "start": "00864979",
+            "end": "0086497c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0086497c",
+            "end": "00864990"
+        },
+        {
+            "type": "asm",
+            "start": "00864990",
+            "end": "0086a0fc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0086a0fc",
+            "end": "0086a110"
+        },
+        {
+            "type": "asm",
+            "start": "0086a110",
+            "end": "0086d336"
+        },
+        {
+            "type": "db",
+            "start": "0086d336",
+            "end": "0086d338"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0086d338",
+            "end": "0086d358"
+        },
+        {
+            "type": "db",
+            "start": "0086d358",
+            "end": "0086d360"
+        },
+        {
+            "type": "asm",
+            "start": "0086d360",
+            "end": "0086fb69"
+        },
+        {
+            "type": "db",
+            "start": "0086fb69",
+            "end": "0086fb6c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0086fb6c",
+            "end": "0086fb7c"
+        },
+        {
+            "type": "db",
+            "start": "0086fb7c",
+            "end": "0086fb80"
+        },
+        {
+            "type": "asm",
+            "start": "0086fb80",
+            "end": "00877d04"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00877d04",
+            "end": "00877d20"
+        },
+        {
+            "type": "asm",
+            "start": "00877d20",
+            "end": "00886559"
+        },
+        {
+            "type": "db",
+            "start": "00886559",
+            "end": "0088655c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0088655c",
+            "end": "0088656c"
+        },
+        {
+            "type": "db",
+            "start": "0088656c",
+            "end": "00886570"
+        },
+        {
+            "type": "asm",
+            "start": "00886570",
+            "end": "0088d518"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0088d518",
+            "end": "0088d538"
+        },
+        {
+            "type": "db",
+            "start": "0088d538",
+            "end": "0088d540"
+        },
+        {
+            "type": "asm",
+            "start": "0088d540",
+            "end": "008910a4"
+        },
+        {
+            "type": "jmptbl",
+            "start": "008910a4",
+            "end": "00891114"
+        },
+        {
+            "type": "db",
+            "start": "00891114",
+            "end": "00891120"
+        },
+        {
+            "type": "asm",
+            "start": "00891120",
+            "end": "00891c30"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00891c30",
+            "end": "00891ca0"
+        },
+        {
+            "type": "asm",
+            "start": "00891ca0",
+            "end": "00891ec9"
+        },
+        {
+            "type": "db",
+            "start": "00891ec9",
+            "end": "00891ecc"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00891ecc",
+            "end": "00891f3c"
+        },
+        {
+            "type": "db",
+            "start": "00891f3c",
+            "end": "00891f40"
+        },
+        {
+            "type": "asm",
+            "start": "00891f40",
+            "end": "00893e6d"
+        },
+        {
+            "type": "db",
+            "start": "00893e6d",
+            "end": "00893e70"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00893e70",
+            "end": "00893eb4"
+        },
+        {
+            "type": "ijmptbl",
+            "start": "00893eb4",
+            "end": "00893f2c"
+        },
+        {
+            "type": "db",
+            "start": "00893f2c",
+            "end": "00893f30"
+        },
+        {
+            "type": "asm",
+            "start": "00893f30",
+            "end": "00893fab"
+        },
+        {
+            "type": "db",
+            "start": "00893fab",
+            "end": "00893fac"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00893fac",
+            "end": "00893fcc"
+        },
+        {
+            "type": "db",
+            "start": "00893fcc",
+            "end": "00893fd0"
+        },
+        {
+            "type": "asm",
+            "start": "00893fd0",
+            "end": "00896a63"
+        },
+        {
+            "type": "db",
+            "start": "00896a63",
+            "end": "00896a64"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00896a64",
+            "end": "00896a74"
+        },
+        {
+            "type": "db",
+            "start": "00896a74",
+            "end": "00896a80"
+        },
+        {
+            "type": "asm",
+            "start": "00896a80",
+            "end": "0089745a"
+        },
+        {
+            "type": "db",
+            "start": "0089745a",
+            "end": "0089745c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0089745c",
+            "end": "00897474"
+        },
+        {
+            "type": "db",
+            "start": "00897474",
+            "end": "00897480"
+        },
+        {
+            "type": "asm",
+            "start": "00897480",
+            "end": "00897535"
+        },
+        {
+            "type": "db",
+            "start": "00897535",
+            "end": "00897538"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00897538",
+            "end": "00897548"
+        },
+        {
+            "type": "db",
+            "start": "00897548",
+            "end": "00897550"
+        },
+        {
+            "type": "asm",
+            "start": "00897550",
+            "end": "0089901f"
+        },
+        {
+            "type": "db",
+            "start": "0089901f",
+            "end": "00899020"
+        },
+        {
+            "type": "jmptbl",
+            "start": "00899020",
+            "end": "00899038"
+        },
+        {
+            "type": "db",
+            "start": "00899038",
+            "end": "00899040"
+        },
+        {
+            "type": "asm",
+            "start": "00899040",
+            "end": "0089931a"
+        },
+        {
+            "type": "db",
+            "start": "0089931a",
+            "end": "0089931c"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0089931c",
+            "end": "00899334"
+        },
+        {
+            "type": "db",
+            "start": "00899334",
+            "end": "00899340"
+        },
+        {
+            "type": "asm",
+            "start": "00899340",
+            "end": "0089eb50"
+        },
+        {
+            "type": "jmptbl",
+            "start": "0089eb50",
+            "end": "0089eb78"
+        },
+        {
+            "type": "asm",
+            "start": "0089eb78",
+            "end": "008a36f0"
+        },
+        {
+            "type": "db",
+            "start": "008a36f0",
+            "end": "008a507e"
+        },
+        {
+            "type": "asm",
+            "start": "008a507e",
+            "end": "008a5a73"
+        },
+        {
+            "type": "db",
+            "start": "008a5a73",
+            "end": "008a5b00"
+        },
+        {
+            "type": "asm",
+            "start": "008a5b00",
+            "end": "008a895d"
+        }
+    ]
+}

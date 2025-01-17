@@ -4,3 +4,8 @@
 
 * [Reverse Engineering Wiki](https://github.com/openblack/bw1-decomp/wiki)
 * [Black & White Patches](https://github.com/openblack/bw1-patches/tree/master/patches)
+
+## Source
+The `src/` directory contains the decompilation source and the tools needed to rebuild the original `runblack.exe` executable.
+
+See [src/README.md](src/README.md) for more details.
