@@ -170,7 +170,6 @@
 .extern _jmp_addr_0x00579440
 .extern _jmp_addr_0x00590f00
 .extern _jmp_addr_0x00590fb0
-.extern _jmp_addr_0x005910f0
 .extern _jmp_addr_0x00591330
 .extern _jmp_addr_0x00591370
 .extern _jmp_addr_0x005c4410
