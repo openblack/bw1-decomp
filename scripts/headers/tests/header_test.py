@@ -751,7 +751,7 @@ struct globals_t
     void (__fastcall** test_funcptr_global)(struct TestStruct* this, const void* edx, int8_t param_1);  /* 0xdeadc0de */
 };
 
-volatile static struct globals_t globals = {
+static struct globals_t globals = {
     .test_struct_global = (struct TestStruct*)0xbaadc0de,
     .test_int_global = (int*)0xdeadbee7,
     .test_uint_array_global = (uint32_t (*)[0x800][0x900])0xdeadbeef,
