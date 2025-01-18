@@ -200,7 +200,7 @@
 .globl _jmp_addr_0x005c59a0
 .globl _jmp_addr_0x005c5b50
 .globl _jmp_addr_0x005c5e50
-.globl _jmp_addr_0x005c5eb0
+.globl @FUN_005c5eb0@4
 .globl _jmp_addr_0x005c5f50
 .globl _jmp_addr_0x005c5f90
 .globl _jmp_addr_0x005c6100
@@ -9611,7 +9611,7 @@ _jmp_addr_0x005c5ea4:    pop                edi                                 
                          nop                                                               // 0x005c5ead    90
                          nop                                                               // 0x005c5eae    90
                          nop                                                               // 0x005c5eaf    90
-_jmp_addr_0x005c5eb0:    {disp32} mov       dword ptr [ecx + 0x00000578], 0x00000001       // 0x005c5eb0    c7817805000001000000
+@FUN_005c5eb0@4:         {disp32} mov       dword ptr [ecx + 0x00000578], 0x00000001       // 0x005c5eb0    c7817805000001000000
                          ret                                                               // 0x005c5eba    c3
                          call               _jmp_addr_0x004017f9                           // 0x005c5ebb    e839b9e3ff
                          cmp                dword ptr [esp + 0x04], 0x03                   // 0x005c5ec0    837c240403

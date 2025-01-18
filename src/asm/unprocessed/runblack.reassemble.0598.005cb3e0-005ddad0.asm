@@ -339,7 +339,7 @@
 .globl @InitLeash__10GInterfaceFv@4
 .globl _jmp_addr_0x005ce910
 .globl @SetupHand__10GInterfaceFv@4
-.globl _jmp_addr_0x005ce9e0
+.globl @FUN_005ce9e0@4
 .globl @PostDrawProcess__10GInterfaceFv@4
 .globl _jmp_addr_0x005ceba0
 .globl @Process__10GInterfaceFv@4
@@ -5200,7 +5200,7 @@ _jmp_addr_0x005ce9d5:    pop                edi                                 
                          nop                                                               // 0x005ce9dd    90
                          nop                                                               // 0x005ce9de    90
                          nop                                                               // 0x005ce9df    90
-_jmp_addr_0x005ce9e0:    push               ebx                                            // 0x005ce9e0    53
+@FUN_005ce9e0@4:         push               ebx                                            // 0x005ce9e0    53
                          push               esi                                            // 0x005ce9e1    56
                          push               edi                                            // 0x005ce9e2    57
                          mov.s              esi, ecx                                       // 0x005ce9e3    8bf1

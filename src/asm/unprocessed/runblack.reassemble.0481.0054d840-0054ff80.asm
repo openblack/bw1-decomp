@@ -111,7 +111,6 @@
 .extern _jmp_addr_0x0054aa40
 .extern _jmp_addr_0x0054ab00
 .extern _jmp_addr_0x0054ab20
-.extern _jmp_addr_0x0054d6f0
 .extern _jmp_addr_0x00550080
 .extern _jmp_addr_0x00550110
 .extern @LoadFiles__5GGameFv@4
@@ -182,14 +181,12 @@
 .extern _jmp_addr_0x005c4660
 .extern _jmp_addr_0x005c5710
 .extern _jmp_addr_0x005c59a0
-.extern _jmp_addr_0x005c5eb0
 .extern @SetWideScreen__10HelpSystemFiUl@16
 .extern _jmp_addr_0x005c6c40
 .extern _jmp_addr_0x005c8fe0
 .extern _jmp_addr_0x005cdb90
 .extern _jmp_addr_0x005ce3f0
 .extern _jmp_addr_0x005ce410
-.extern _jmp_addr_0x005ce9e0
 .extern @PostDrawProcess__10GInterfaceFv@4
 .extern @Process__10GInterfaceFv@4
 .extern _jmp_addr_0x005cedb0
@@ -405,7 +402,6 @@
 .extern _jmp_addr_0x00840520
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x008415a0
-.extern _jmp_addr_0x00841c20
 .extern _jmp_addr_0x00842030
 .extern _jmp_addr_0x00842050
 .extern _jmp_addr_0x00842b90
@@ -425,7 +421,6 @@
 .extern _jmp_addr_0x00871f00
 .extern __wcsicmp
 
-.globl @ProcessGraphicsEngine__5GGameFUlUl@16
 .globl _jmp_addr_0x0054d920
 .globl _jmp_addr_0x0054da00
 .globl @Process3dEngine__5GGameFv@4
@@ -438,40 +433,6 @@
 .globl _jmp_addr_0x0054ef40
 .globl @Init__5GGameFv@4
 
-@ProcessGraphicsEngine__5GGameFUlUl@16:    push               esi                                           // 0x0054d850    56
-                         mov.s              esi, ecx                                      // 0x0054d851    8bf1
-                         mov                ecx, 0x00e85204                               // 0x0054d853    b90452e800
-                         call               @DeltaPos__7LHMouseFv@4                       // 0x0054d858    e8b36f2900
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4bf2e8]        // 0x0054d85d    8b0de852e800
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4bf2e4]        // 0x0054d863    a1e452e800
-                         {disp32} mov       dword ptr [data_bytes + 0x2988d0], eax        // 0x0054d868    a3d0e8c500
-                         {disp32} mov       dword ptr [data_bytes + 0x2988d4], ecx        // 0x0054d86d    890dd4e8c500
-                         {disp32} mov       ecx, dword ptr [esi + 0x002502c0]             // 0x0054d873    8b8ec0022500
-                         call               @Update__7GCameraFv@4                         // 0x0054d879    e80247efff
-                         mov.s              ecx, esi                                      // 0x0054d87e    8bce
-                         call               @MyInterface__5GGameFv@4                      // 0x0054d880    e8cb7f0000
-                         mov.s              ecx, eax                                      // 0x0054d885    8bc8
-                         call               _jmp_addr_0x005ce9e0                          // 0x0054d887    e854110800
-                         mov.s              ecx, esi                                      // 0x0054d88c    8bce
-                         call               @Process3dEngine__5GGameFv@4                  // 0x0054d88e    e8ed010000
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33adcc]        // 0x0054d893    a1cc0dd000
-                         test               eax, eax                                      // 0x0054d898    85c0
-                         {disp8} je         _jmp_addr_0x0054d8ab                          // 0x0054d89a    740f
-                         call               _jmp_addr_0x00841c20                          // 0x0054d89c    e87f432f00
-                         call               _jmp_addr_0x0054d6f0                          // 0x0054d8a1    e84afeffff
-                         call               _FinalDraw__13GCameraEditorFv                 // 0x0054d8a6    e8a577efff
-_jmp_addr_0x0054d8ab:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0054d8ab    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                      // 0x0054d8b1    e89a7f0000
-                         mov.s              ecx, eax                                      // 0x0054d8b6    8bc8
-                         call               @PostDrawProcess__10GInterfaceFv@4            // 0x0054d8b8    e8f3110800
-                         {disp32} mov       ecx, dword ptr [esi + 0x0025005c]             // 0x0054d8bd    8b8e5c002500
-                         call               _jmp_addr_0x005c5eb0                          // 0x0054d8c3    e8e8850700
-                         pop                esi                                           // 0x0054d8c8    5e
-                         ret                0x0008                                        // 0x0054d8c9    c20800
-                         nop                                                              // 0x0054d8cc    90
-                         nop                                                              // 0x0054d8cd    90
-                         nop                                                              // 0x0054d8ce    90
-                         nop                                                              // 0x0054d8cf    90
 _jmp_addr_0x0054d8d0:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b99c]        // 0x0054d8d0    a19c19d000
                          push               esi                                           // 0x0054d8d5    56
                          push               eax                                           // 0x0054d8d6    50

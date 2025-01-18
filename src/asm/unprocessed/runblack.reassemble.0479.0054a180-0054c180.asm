@@ -177,14 +177,12 @@
 .extern _jmp_addr_0x005c4660
 .extern _jmp_addr_0x005c5710
 .extern _jmp_addr_0x005c59a0
-.extern _jmp_addr_0x005c5eb0
 .extern _jmp_addr_0x005c6ad0
 .extern _jmp_addr_0x005c6c40
 .extern _jmp_addr_0x005c8fe0
 .extern _jmp_addr_0x005cdb90
 .extern _jmp_addr_0x005ce3f0
 .extern _jmp_addr_0x005ce410
-.extern _jmp_addr_0x005ce9e0
 .extern _jmp_addr_0x005ceab0
 .extern _jmp_addr_0x005cec10
 .extern _jmp_addr_0x005cedb0
@@ -399,7 +397,6 @@
 .extern _jmp_addr_0x00840520
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x008415a0
-.extern _jmp_addr_0x00841c20
 .extern _jmp_addr_0x00842030
 .extern _jmp_addr_0x00842050
 .extern _jmp_addr_0x00842b90
