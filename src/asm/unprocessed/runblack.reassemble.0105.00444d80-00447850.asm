@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0046c1b0
 .extern _jmp_addr_0x0046c2e0
 .extern _jmp_addr_0x00555820
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007aee98
 .extern _jmp_addr_0x007bd390
@@ -74,7 +74,7 @@
 .globl _jmp_addr_0x00444fff
 .globl _jmp_addr_0x00445041
 .globl _jmp_addr_0x00445046
-.globl _jmp_addr_0x00445050
+.globl _FinalDraw__13GCameraEditorFv
 .globl _jmp_addr_0x004450b5
 .globl _jmp_addr_0x00445123
 .globl _jmp_addr_0x00445157
@@ -602,7 +602,7 @@ _jmp_addr_0x00444f4c:    pop                edi                                 
                          {disp32} jne       _jmp_addr_0x00444fff                          // 0x00444f6a    0f858f000000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00444f70    8b0d5c19d000
                          push               esi                                           // 0x00444f76    56
-                         call               _jmp_addr_0x00555850                          // 0x00444f77    e8d4081100
+                         call               @MyInterface__5GGameFv@4                          // 0x00444f77    e8d4081100
                          {disp32} mov       ecx, dword ptr [eax + 0x000003a0]             // 0x00444f7c    8b88a0030000
                          push               0x1                                           // 0x00444f82    6a01
                          call               _jmp_addr_0x0046c2e0                          // 0x00444f84    e857730200
@@ -678,7 +678,7 @@ _jmp_addr_0x00445046:    ret                                                    
                          nop                                                              // 0x0044504d    90
                          nop                                                              // 0x0044504e    90
                          nop                                                              // 0x0044504f    90
-_jmp_addr_0x00445050:    {disp32} mov       eax, dword ptr [data_bytes + 0x293cf8]        // 0x00445050    a1f89cc500
+_FinalDraw__13GCameraEditorFv:    {disp32} mov       eax, dword ptr [data_bytes + 0x293cf8]        // 0x00445050    a1f89cc500
                          test               eax, eax                                      // 0x00445055    85c0
                          push               esi                                           // 0x00445057    56
                          push               edi                                           // 0x00445058    57
@@ -1161,12 +1161,12 @@ _jmp_addr_0x00445660:    push               ecx                                 
                          xor.s              ebp, ebp                                      // 0x00445668    33ed
                          {disp32} mov       dword ptr [data_bytes + 0x293d00], ebp        // 0x0044566a    892d009dc500
                          {disp32} mov       dword ptr [data_bytes + 0x293d04], ebp        // 0x00445670    892d049dc500
-                         call               _jmp_addr_0x00555850                          // 0x00445676    e8d5011100
+                         call               @MyInterface__5GGameFv@4                          // 0x00445676    e8d5011100
                          {disp32} mov       ecx, dword ptr [eax + 0x000003a0]             // 0x0044567b    8b88a0030000
                          push               ebp                                           // 0x00445681    55
                          call               _jmp_addr_0x0046c2e0                          // 0x00445682    e8596c0200
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00445687    8b0d5c19d000
-                         call               _jmp_addr_0x00555850                          // 0x0044568d    e8be011100
+                         call               @MyInterface__5GGameFv@4                          // 0x0044568d    e8be011100
                          {disp32} mov       ecx, dword ptr [eax + 0x000003a0]             // 0x00445692    8b88a0030000
                          push               0x1                                           // 0x00445698    6a01
                          call               _jmp_addr_0x0046c1b0                          // 0x0044569a    e8116b0200

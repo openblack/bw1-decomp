@@ -58,7 +58,7 @@
 .extern _jmp_addr_0x007ded50
 .extern _jmp_addr_0x007e1830
 .extern _jmp_addr_0x007e1890
-.extern _jmp_addr_0x007e4810
+.extern @DeltaPos__7LHMouseFv@4
 .extern _jmp_addr_0x007e53b0
 .extern _jmp_addr_0x008067f0
 .extern _jmp_addr_0x0080b4d0
@@ -3382,7 +3382,7 @@ _jmp_addr_0x005f8e3d:    {disp32} mov       edi, dword ptr [data_bytes + 0x36ea9
                          call               _jmp_addr_0x0082f460                           // 0x005f8eec    e86f652300
                          mov                ecx, 0x00e85204                                // 0x005f8ef1    b90452e800
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x01         // 0x005f8ef6    c605d086c30001
-                         call               _jmp_addr_0x007e4810                           // 0x005f8efd    e80eb91e00
+                         call               @DeltaPos__7LHMouseFv@4                           // 0x005f8efd    e80eb91e00
                          pop                edi                                            // 0x005f8f02    5f
                          {disp32} mov       dword ptr [data_bytes + 0x4bf2e4], esi         // 0x005f8f03    8935e452e800
                          {disp32} mov       dword ptr [data_bytes + 0x4bf2e8], esi         // 0x005f8f09    8935e852e800
@@ -3830,7 +3830,7 @@ _jmp_addr_0x005f95b5:    {disp8} fld        dword ptr [esp + 0x18]              
                          {disp32} fadd      dword ptr [rdata_bytes + 0x1390]               // 0x005f95d0    d80590a38a00
                          {disp8} fstp       dword ptr [esp + 0x34]                         // 0x005f95d6    d95c2434
                          fstp               st(0)                                          // 0x005f95da    ddd8
-                         call               _jmp_addr_0x007e4810                           // 0x005f95dc    e82fb21e00
+                         call               @DeltaPos__7LHMouseFv@4                           // 0x005f95dc    e82fb21e00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4bf2c4]         // 0x005f95e1    8b15c452e800
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4bf2e4]         // 0x005f95e7    a1e452e800
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4bf2c0]         // 0x005f95ec    8b0dc052e800

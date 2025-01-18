@@ -109,7 +109,7 @@
 .extern _jmp_addr_0x005508a0
 .extern _jmp_addr_0x005509b0
 .extern _jmp_addr_0x00552f80
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005575e0
 .extern _jmp_addr_0x00561e10
@@ -8283,7 +8283,7 @@ _jmp_addr_0x006e3b89:    push               ebx                                 
                          call               _jmp_addr_0x00511da0                          // 0x006e3b94    e807e2e2ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x006e3b99    8b0d5c19d000
                          add                esp, 0x0c                                     // 0x006e3b9f    83c40c
-                         call               _jmp_addr_0x00555850                          // 0x006e3ba2    e8a91ce7ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006e3ba2    e8a91ce7ff
                          {disp32} mov       esi, dword ptr [eax + 0x0000039c]             // 0x006e3ba7    8bb09c030000
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x987d8]        // 0x006e3bad    8b15d8179400
                          add                esi, 0x14                                     // 0x006e3bb3    83c614
@@ -12696,7 +12696,7 @@ _jmp_addr_0x006e66ff:    {disp8} mov        edi, dword ptr [esi + 0x40]         
                          push               0x0                                           // 0x006e6749    6a00
                          push               0x0                                           // 0x006e674b    6a00
                          push               esi                                           // 0x006e674d    56
-                         call               _jmp_addr_0x00555850                          // 0x006e674e    e8fdf0e6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006e674e    e8fdf0e6ff
                          mov.s              ecx, eax                                      // 0x006e6753    8bc8
                          call               _jmp_addr_0x005d56c0                          // 0x006e6755    e866efeeff
 _jmp_addr_0x006e675a:    mov.s              ecx, esi                                      // 0x006e675a    8bce
@@ -20475,19 +20475,19 @@ _jmp_addr_0x006ebc42:    xor.s              ecx, ecx                            
                          test               edx, edx                                      // 0x006ebc5a    85d2
                          {disp8} je         _jmp_addr_0x006ebca7                          // 0x006ebc5c    7449
                          mov.s              ecx, eax                                      // 0x006ebc5e    8bc8
-                         call               _jmp_addr_0x00555850                          // 0x006ebc60    e8eb9be6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006ebc60    e8eb9be6ff
                          mov.s              ecx, eax                                      // 0x006ebc65    8bc8
                          call               _jmp_addr_0x005d1260                          // 0x006ebc67    e8f455eeff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x006ebc6c    8b0d5c19d000
-                         call               _jmp_addr_0x00555850                          // 0x006ebc72    e8d99be6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006ebc72    e8d99be6ff
                          {disp8} mov        byte ptr [eax + 0x28], bl                     // 0x006ebc77    885828
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x006ebc7a    8b0d5c19d000
-                         call               _jmp_addr_0x00555850                          // 0x006ebc80    e8cb9be6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006ebc80    e8cb9be6ff
                          {disp32} mov       ecx, dword ptr [eax + 0x000003a0]             // 0x006ebc85    8b88a0030000
                          push               0x44e10000                                    // 0x006ebc8b    680000e144
                          call               _jmp_addr_0x0046bf20                          // 0x006ebc90    e88b02d8ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x006ebc95    8b0d5c19d000
-                         call               _jmp_addr_0x00555850                          // 0x006ebc9b    e8b09be6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006ebc9b    e8b09be6ff
                          mov.s              ecx, eax                                      // 0x006ebca0    8bc8
                          call               _jmp_addr_0x005db3f0                          // 0x006ebca2    e849f7eeff
 _jmp_addr_0x006ebca7:    push               -0x1                                          // 0x006ebca7    6aff
@@ -21302,14 +21302,14 @@ _jmp_addr_0x006ec6c4:    mov                eax, 0x00000001                     
                          call               _jmp_addr_0x006faa40                          // 0x006ec71e    e81de30000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x006ec723    8b0d5c19d000
                          push               esi                                           // 0x006ec729    56
-                         call               _jmp_addr_0x00555850                          // 0x006ec72a    e82191e6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006ec72a    e82191e6ff
                          mov.s              ecx, eax                                      // 0x006ec72f    8bc8
                          call               _jmp_addr_0x005db710                          // 0x006ec731    e8daefeeff
                          test               eax, eax                                      // 0x006ec736    85c0
                          pop                esi                                           // 0x006ec738    5e
                          {disp8} je         _jmp_addr_0x006ec74d                          // 0x006ec739    7412
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x006ec73b    8b0d5c19d000
-                         call               _jmp_addr_0x00555850                          // 0x006ec741    e80a91e6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006ec741    e80a91e6ff
                          mov.s              ecx, eax                                      // 0x006ec746    8bc8
                          {disp32} jmp       _jmp_addr_0x005db3f0                          // 0x006ec748    e9a3eceeff
 _jmp_addr_0x006ec74d:    ret                                                              // 0x006ec74d    c3
@@ -28695,7 +28695,7 @@ _jmp_addr_0x006f17f5:    push               0x00c0cb6c                          
                          mov.s              edi, eax                                      // 0x006f181c    8bf8
                          {disp32} jmp       _jmp_addr_0x006f1591                          // 0x006f181e    e96efdffff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x006f1823    8b0d5c19d000
-                         call               _jmp_addr_0x00555850                          // 0x006f1829    e82240e6ff
+                         call               @MyInterface__5GGameFv@4                          // 0x006f1829    e82240e6ff
                          {disp32} mov       eax, dword ptr [eax + 0x0000039c]             // 0x006f182e    8b809c030000
                          push               0x3f800000                                    // 0x006f1834    680000803f
                          push               -0x1                                          // 0x006f1839    6aff

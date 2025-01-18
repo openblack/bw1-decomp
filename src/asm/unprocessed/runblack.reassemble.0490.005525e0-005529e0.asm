@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x005508a0
 .extern _jmp_addr_0x005529e0
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005dc8b0
 .extern _jmp_addr_0x00635450
 .extern _jmp_addr_0x0064aac0
@@ -88,7 +88,7 @@ _jmp_addr_0x00552640:    sub              esp, 0x20                             
                          {disp8} mov      dword ptr [esp + 0x10], esi             // 0x00552656    89742410
                          {disp32} jne     _jmp_addr_0x005529c7                    // 0x0055265a    0f8567030000
                          mov.s            ecx, esi                                // 0x00552660    8bce
-                         call             _jmp_addr_0x00555850                    // 0x00552662    e8e9310000
+                         call             @MyInterface__5GGameFv@4                    // 0x00552662    e8e9310000
                          cmp              dword ptr [eax + 0x44], 0x10            // 0x00552667    83784410
                          {disp32} je      _jmp_addr_0x005529c7                    // 0x0055266b    0f8456030000
                          push             0x0                                     // 0x00552671    6a00
@@ -113,7 +113,7 @@ _jmp_addr_0x005526ab:    push             0x0                                   
                          test             ebx, ebx                                // 0x005526b6    85db
                          {disp32} je      _jmp_addr_0x005529b5                    // 0x005526b8    0f84f7020000
 _jmp_addr_0x005526be:    mov.s            ecx, esi                                // 0x005526be    8bce
-                         call             _jmp_addr_0x00555850                    // 0x005526c0    e88b310000
+                         call             @MyInterface__5GGameFv@4                    // 0x005526c0    e88b310000
                          cmp              ebx, dword ptr [eax + 0x0000039c]       // 0x005526c5    3b989c030000
                          {disp32} je      _jmp_addr_0x0055299f                    // 0x005526cb    0f84ce020000
                          cmp              dword ptr [ebp + 0x000008e0], 0x01      // 0x005526d1    83bde008000001

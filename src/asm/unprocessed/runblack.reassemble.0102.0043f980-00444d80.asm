@@ -39,7 +39,7 @@
 .extern _jmp_addr_0x0053b4a0
 .extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x00555820
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x0056fa10
 .extern _jmp_addr_0x0056fa80
 .extern _jmp_addr_0x0056fe00
@@ -343,7 +343,7 @@
 .globl _jmp_addr_0x00441f50
 .globl _jmp_addr_0x00441f61
 .globl _jmp_addr_0x00441f72
-.globl _jmp_addr_0x00441f80
+.globl @Update__7GCameraFv@4
 .globl _jmp_addr_0x00441fc7
 .globl _jmp_addr_0x00442096
 .globl _jmp_addr_0x004420d9
@@ -3963,7 +3963,7 @@ _jmp_addr_0x00441f72:    pop                esi                                 
                          nop                                                              // 0x00441f7d    90
                          nop                                                              // 0x00441f7e    90
                          nop                                                              // 0x00441f7f    90
-_jmp_addr_0x00441f80:    push               ebp                                           // 0x00441f80    55
+@Update__7GCameraFv@4:    push               ebp                                           // 0x00441f80    55
                          mov.s              ebp, esp                                      // 0x00441f81    8bec
                          and                esp, 0xfffffff8                               // 0x00441f83    83e4f8
                          sub                esp, 0x30                                     // 0x00441f86    83ec30
@@ -4408,7 +4408,7 @@ _jmp_addr_0x004425de:    {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb
                          {disp8} mov        dword ptr [esp + 0x14], edx                   // 0x004425fe    89542414
                          {disp8} jne        _jmp_addr_0x00442673                          // 0x00442602    756f
                          push               0x0                                           // 0x00442604    6a00
-                         call               _jmp_addr_0x00555850                          // 0x00442606    e845321100
+                         call               @MyInterface__5GGameFv@4                          // 0x00442606    e845321100
                          mov.s              ecx, eax                                      // 0x0044260b    8bc8
                          call               _jmp_addr_0x005db710                          // 0x0044260d    e8fe901900
                          test               eax, eax                                      // 0x00442612    85c0
