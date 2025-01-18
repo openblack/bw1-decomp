@@ -26,6 +26,12 @@ jobs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
 
+    - name: Set up MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: i686
+        cc: 0
+
     - name: Download lld, llvm-rc and clang
       uses: robinraju/release-downloader@v1
       with:
