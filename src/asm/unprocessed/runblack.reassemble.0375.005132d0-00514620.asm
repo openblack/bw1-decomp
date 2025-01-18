@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x0053f540
 .extern _jmp_addr_0x00552f80
 .extern _jmp_addr_0x005553f0
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005558d0
 .extern _jmp_addr_0x005cedc0
 .extern _jmp_addr_0x0066bcd0
@@ -594,7 +594,7 @@ _jmp_addr_0x005136e0:    xor.s             eax, eax                             
                          {disp8} lea       edx, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x00513718    8d540818
                          test              edx, edx                                      // 0x0051371c    85d2
                          {disp8} je        _jmp_addr_0x00513748                          // 0x0051371e    7428
-                         call              _jmp_addr_0x00555850                          // 0x00513720    e82b210400
+                         call              @MyInterface__5GGameFv@4                          // 0x00513720    e82b210400
                          test              eax, eax                                      // 0x00513725    85c0
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00513727    8b0d5c19d000
                          {disp8} je        _jmp_addr_0x00513748                          // 0x0051372d    7419
@@ -1615,7 +1615,7 @@ _jmp_addr_0x0051422e:    cmp               ebp, 0x01                            
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x30db20]        // 0x0051429a    8b0d203bcd00
                          call              _jmp_addr_0x00428250                          // 0x005142a0    e8ab3ff1ff
 _jmp_addr_0x005142a5:    {disp32} mov      ecx, dword ptr [data_bytes + 0x33b95c]        // 0x005142a5    8b0d5c19d000
-                         call              _jmp_addr_0x00555850                          // 0x005142ab    e8a0150400
+                         call              @MyInterface__5GGameFv@4                          // 0x005142ab    e8a0150400
                          mov               edx, dword ptr [eax]                          // 0x005142b0    8b10
                          mov.s             ecx, eax                                      // 0x005142b2    8bc8
                          call              dword ptr [edx + 0x40c]                       // 0x005142b4    ff920c040000

@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x00442720
 .extern _jmp_addr_0x0046a680
 .extern _jmp_addr_0x0046d210
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005760c0
 .extern _jmp_addr_0x0078da70
 .extern _jmp_addr_0x0078db20
@@ -4471,7 +4471,7 @@ _jmp_addr_0x00799ec2:    ret                                                    
                          {disp8} jne          _jmp_addr_0x00799f32                          // 0x00799ee0    7550
                          {disp32} mov         ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00799ee2    8b0d5c19d000
                          push                 esi                                           // 0x00799ee8    56
-                         call                 _jmp_addr_0x00555850                          // 0x00799ee9    e862b9dbff
+                         call                 @MyInterface__5GGameFv@4                          // 0x00799ee9    e862b9dbff
                          {disp32} mov         esi, dword ptr [eax + 0x000003a0]             // 0x00799eee    8bb0a0030000
                          test                 esi, esi                                      // 0x00799ef4    85f6
                          {disp8} je           _jmp_addr_0x00799f2a                          // 0x00799ef6    7432

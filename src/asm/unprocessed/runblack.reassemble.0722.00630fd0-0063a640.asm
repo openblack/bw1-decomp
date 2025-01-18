@@ -47,7 +47,7 @@
 .extern _jmp_addr_0x00552f80
 .extern _jmp_addr_0x00555130
 .extern _jmp_addr_0x00555400
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005559b0
 .extern _jmp_addr_0x00555a10
@@ -4863,7 +4863,7 @@ _jmp_addr_0x006336b0:    push               esi                                 
                          mov.s              ebx, ecx                                       // 0x006336d5    8bd9
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x006336d7    8b0d5c19d000
                          push               edi                                            // 0x006336dd    57
-                         call               _jmp_addr_0x00555850                           // 0x006336de    e86d21f2ff
+                         call               @MyInterface__5GGameFv@4                           // 0x006336de    e86d21f2ff
                          {disp32} mov       eax, dword ptr [eax + 0x000001bc]              // 0x006336e3    8b80bc010000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x006336e9    8b0d5c19d000
                          {disp32} mov       esi, dword ptr [eax + 0x000001fc]              // 0x006336ef    8bb0fc010000
@@ -11388,7 +11388,7 @@ _jmp_addr_0x00637dd0:    {disp8} mov        ecx, dword ptr [ecx + 0x44]         
                          push               0x0                                            // 0x00637de2    6a00
                          push               ecx                                            // 0x00637de4    51
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x00637de5    8b0d5c19d000
-                         call               _jmp_addr_0x00555850                           // 0x00637deb    e860daf1ff
+                         call               @MyInterface__5GGameFv@4                           // 0x00637deb    e860daf1ff
                          mov.s              ecx, eax                                       // 0x00637df0    8bc8
                          call               _jmp_addr_0x005d56c0                           // 0x00637df2    e8c9d8f9ff
                          ret                                                               // 0x00637df7    c3

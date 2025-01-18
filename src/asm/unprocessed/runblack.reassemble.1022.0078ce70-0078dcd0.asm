@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x0053c450
 .extern _jmp_addr_0x0053c470
 .extern _jmp_addr_0x00552f80
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005c9a70
 .extern _jmp_addr_0x005d8a10
 .extern _jmp_addr_0x0078f110
@@ -1263,13 +1263,13 @@ _jmp_addr_0x0078dc00:    {disp8} mov       byte ptr [esp + 0x3b], dl            
                          test              eax, eax                                      // 0x0078dc5a    85c0
                          {disp8} jne       _jmp_addr_0x0078dc86                          // 0x0078dc5c    7528
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0078dc5e    8b0d5c19d000
-                         call              _jmp_addr_0x00555850                          // 0x0078dc64    e8e77bdcff
+                         call              @MyInterface__5GGameFv@4                          // 0x0078dc64    e8e77bdcff
                          test              eax, eax                                      // 0x0078dc69    85c0
                          {disp8} je        _jmp_addr_0x0078dc86                          // 0x0078dc6b    7419
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0078dc6d    8b0d5c19d000
                          push              0x80000000                                    // 0x0078dc73    6800000080
                          push              0x2c                                          // 0x0078dc78    6a2c
-                         call              _jmp_addr_0x00555850                          // 0x0078dc7a    e8d17bdcff
+                         call              @MyInterface__5GGameFv@4                          // 0x0078dc7a    e8d17bdcff
                          mov.s             ecx, eax                                      // 0x0078dc7f    8bc8
                          call              _jmp_addr_0x005d8a10                          // 0x0078dc81    e88aade4ff
 _jmp_addr_0x0078dc86:    {disp8} mov       dword ptr [esi + 0x18], 0x00000001            // 0x0078dc86    c7461801000000

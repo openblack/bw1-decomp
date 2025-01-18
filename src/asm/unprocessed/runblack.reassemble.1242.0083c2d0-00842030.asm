@@ -426,7 +426,7 @@
 .globl _jmp_addr_0x00841b50
 .globl _jmp_addr_0x00841b78
 .globl _jmp_addr_0x00841b81
-.globl _jmp_addr_0x00841c20
+.globl _FUN_00841c20
 .globl _jmp_addr_0x00841c43
 .globl _jmp_addr_0x00841c65
 .globl _jmp_addr_0x00841c7f
@@ -7969,7 +7969,7 @@ _jmp_addr_0x00841b81:    {disp8} mov        ebp, dword ptr [esp + 0x30]         
                          nop                                                               // 0x00841c1d    90
                          nop                                                               // 0x00841c1e    90
                          nop                                                               // 0x00841c1f    90
-_jmp_addr_0x00841c20:    push               ebp                                            // 0x00841c20    55
+_FUN_00841c20:    push               ebp                                            // 0x00841c20    55
                          mov.s              ebp, esp                                       // 0x00841c21    8bec
                          and                esp, 0xfffffff8                                // 0x00841c23    83e4f8
                          sub                esp, 0x28                                      // 0x00841c26    83ec28
