@@ -303,7 +303,6 @@
 .extern _jmp_addr_0x00840520
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x008415a0
-.extern _jmp_addr_0x00841c20
 .extern _jmp_addr_0x00842030
 .extern _jmp_addr_0x00842050
 .extern _jmp_addr_0x00842b90
@@ -336,7 +335,7 @@
 .globl @DoNetworkStart__5GGameFv@4
 .globl @Loop__5GGameFv@4
 .globl _jmp_addr_0x0054d610
-.globl _jmp_addr_0x0054d6f0
+.globl _FUN_0054d6f0
 .globl @ProcessOneGameTurn__5GGameFv@4
 .globl _globl_ct_0x0054c6f0
 .globl _globl_ct_0x0054ceb0
@@ -1820,7 +1819,7 @@ _jmp_addr_0x0054d6e5:    test               esi, esi                            
 _jmp_addr_0x0054d6e9:    pop                esi                                           // 0x0054d6e9    5e
                          ret                                                              // 0x0054d6ea    c3
                          call               _jmp_addr_0x00401879                          // 0x0054d6eb    e88941ebff
-_jmp_addr_0x0054d6f0:    sub                esp, 0x10                                     // 0x0054d6f0    83ec10
+_FUN_0054d6f0:           sub                esp, 0x10                                     // 0x0054d6f0    83ec10
                          push               ebx                                           // 0x0054d6f3    53
                          {disp32} mov       ebx, dword ptr [data_bytes + 0x4bf2c4]        // 0x0054d6f4    8b1dc452e800
                          push               edi                                           // 0x0054d6fa    57
