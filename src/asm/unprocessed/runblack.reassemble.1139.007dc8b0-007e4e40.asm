@@ -1055,7 +1055,7 @@
 .globl _jmp_addr_0x007e47b7
 .globl _jmp_addr_0x007e47c0
 .globl _jmp_addr_0x007e47e8
-.globl _jmp_addr_0x007e4810
+.globl @DeltaPos__7LHMouseFv@4
 .globl _jmp_addr_0x007e4825
 .globl _jmp_addr_0x007e482a
 .globl _jmp_addr_0x007e4845
@@ -13240,7 +13240,7 @@ _jmp_addr_0x007e47e8:    {disp8} mov        eax, dword ptr [esp + 0x2c]         
                          add                esp, 0x0c                                     // 0x007e4809    83c40c
                          ret                0x0014                                        // 0x007e480c    c21400
                          nop                                                              // 0x007e480f    90
-_jmp_addr_0x007e4810:    {disp32} mov       eax, dword ptr [data_bytes + 0x4ca66c]        // 0x007e4810    a16c06e900
+@DeltaPos__7LHMouseFv@4:    {disp32} mov       eax, dword ptr [data_bytes + 0x4ca66c]        // 0x007e4810    a16c06e900
                          sub                esp, 0x10                                     // 0x007e4815    83ec10
                          test               eax, eax                                      // 0x007e4818    85c0
                          push               esi                                           // 0x007e481a    56

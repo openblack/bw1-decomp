@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x00530570
 .extern _jmp_addr_0x00533bc0
 .extern _jmp_addr_0x00533c10
-.extern _jmp_addr_0x00555850
+.extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005575a0
 .extern _jmp_addr_0x00557960
@@ -10568,7 +10568,7 @@ _jmp_addr_0x0076d000:    sub                esp, 0x14                           
                          mov.s              esi, ecx                                        // 0x0076d006    8bf1
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]          // 0x0076d008    8b0d5c19d000
                          push               edi                                             // 0x0076d00e    57
-                         call               _jmp_addr_0x00555850                            // 0x0076d00f    e83c88deff
+                         call               @MyInterface__5GGameFv@4                            // 0x0076d00f    e83c88deff
                          {disp8} mov        ecx, dword ptr [esi + 0x38]                     // 0x0076d014    8b4e38
                          cmp                ecx, dword ptr [eax + 0x0000039c]               // 0x0076d017    3b889c030000
                          {disp32} jne       _jmp_addr_0x0076d205                            // 0x0076d01d    0f85e2010000
@@ -17575,7 +17575,7 @@ _jmp_addr_0x00771c1b:    {disp32} mov       edx, dword ptr [data_bytes + 0x33b95
                          call               _jmp_addr_0x00511d80                            // 0x00771c39    e84201daff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]          // 0x00771c3e    8b0d5c19d000
                          add                esp, 0x08                                       // 0x00771c44    83c408
-                         call               _jmp_addr_0x00555850                            // 0x00771c47    e8043cdeff
+                         call               @MyInterface__5GGameFv@4                            // 0x00771c47    e8043cdeff
                          add                eax, 0x000003b8                                 // 0x00771c4c    05b8030000
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000              // 0x00771c51    c744242000000000
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000              // 0x00771c59    c744242400000000

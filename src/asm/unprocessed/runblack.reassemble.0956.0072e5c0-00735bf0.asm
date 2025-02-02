@@ -40,7 +40,7 @@
 .extern _jmp_addr_0x00525910
 .extern _jmp_addr_0x0052f160
 .extern _jmp_addr_0x0052f210
-.extern _jmp_addr_0x0054c180
+.extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x00561e10
 .extern _jmp_addr_0x00562180
@@ -2728,7 +2728,7 @@ _jmp_addr_0x0072f794:    mov.s              ecx, edi                            
                          test               ah, 0x41                                      // 0x0072f7a3    f6c441
                          {disp32} jne       _jmp_addr_0x0072f885                          // 0x0072f7a6    0f85d9000000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0072f7ac    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                          // 0x0072f7b2    e8c9c9e1ff
+                         call               @GetCamera__5GGameFv@4                          // 0x0072f7b2    e8c9c9e1ff
                          add                eax, 0x14                                     // 0x0072f7b7    83c014
                          push               eax                                           // 0x0072f7ba    50
                          mov.s              ecx, edi                                      // 0x0072f7bb    8bcf
@@ -4291,7 +4291,7 @@ _jmp_addr_0x00730776:    {disp32} mov       eax, dword ptr [data_bytes + 0x3da9c
                          cmp                dword ptr [esi], 0x00                         // 0x0073077e    833e00
                          {disp8} je         _jmp_addr_0x007307ae                          // 0x00730781    742b
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00730783    8b0d5c19d000
-                         call               _jmp_addr_0x0054c180                          // 0x00730789    e8f2b9e1ff
+                         call               @GetCamera__5GGameFv@4                          // 0x00730789    e8f2b9e1ff
                          mov                ecx, dword ptr [esi]                          // 0x0073078e    8b0e
                          add                eax, 0x14                                     // 0x00730790    83c014
                          push               eax                                           // 0x00730793    50
