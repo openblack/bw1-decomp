@@ -30,7 +30,7 @@ jobs:
     - run: git diff
 
     - name: Upload generated database as artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: bw1_decomp_gen_database
         path: extracted_reversing_data_bw_141.json
