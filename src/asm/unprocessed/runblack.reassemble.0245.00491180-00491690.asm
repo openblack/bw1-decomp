@@ -18,10 +18,10 @@
 .extern _jmp_addr_0x006182f0
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007faaf0
-.extern _jmp_addr_0x00803090
-.extern _jmp_addr_0x00864990
-.extern _jmp_addr_0x00864ba0
-.extern _jmp_addr_0x008691a0
+.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern @MoveAlongRoute__8RPFollowFv@4
+.extern @FillPosAndHeading__8RPFollowFR7Point2DRff@20
+.extern @GetLength__9RouteNodeFP7RPAvoid@12
 
 .globl _jmp_addr_0x00491180
 .globl _jmp_addr_0x0049120e
@@ -69,7 +69,7 @@ _jmp_addr_0x00491180:    sub                esp, 0x24                           
                          cmp.s              edx, ebp                                 // 0x004911d3    3bd5
                          {disp8} jne        _jmp_addr_0x0049120e                     // 0x004911d5    7537
                          push               eax                                      // 0x004911d7    50
-                         call               _jmp_addr_0x008691a0                     // 0x004911d8    e8c37f3d00
+                         call               @GetLength__9RouteNodeFP7RPAvoid@12      // 0x004911d8    e8c37f3d00
                          {disp32} mov       edx, dword ptr [esi + 0x00005198]        // 0x004911dd    8b9698510000
                          {disp32} fsub      dword ptr [edx + 0x00064038]             // 0x004911e3    d8a238400600
                          {disp32} fmul      dword ptr [rdata_bytes + 0x260d8]        // 0x004911e9    d80dd8f08c00
@@ -86,7 +86,7 @@ _jmp_addr_0x00491180:    sub                esp, 0x24                           
 _jmp_addr_0x0049120e:    cmp                dword ptr [edx + 0x1c], 0x01             // 0x0049120e    837a1c01
                          {disp8} jne        _jmp_addr_0x00491273                     // 0x00491212    755f
                          push               eax                                      // 0x00491214    50
-                         call               _jmp_addr_0x008691a0                     // 0x00491215    e8867f3d00
+                         call               @GetLength__9RouteNodeFP7RPAvoid@12      // 0x00491215    e8867f3d00
                          {disp32} mov       eax, dword ptr [esi + 0x00005198]        // 0x0049121a    8b8698510000
                          {disp32} mov       ecx, dword ptr [eax + 0x00064070]        // 0x00491220    8b8870400600
                          {disp8} mov        ecx, dword ptr [ecx + 0x10]              // 0x00491226    8b4910
@@ -138,7 +138,7 @@ _jmp_addr_0x00491273:    {disp32} fld       dword ptr [esi + 0x00005228]        
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]              // 0x004912c9    8d4c241c
                          {disp8} mov        dword ptr [esp + 0x20], eax              // 0x004912cd    89442420
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000       // 0x004912d1    c744242400000000
-                         call               _jmp_addr_0x00803090                     // 0x004912d9    e8b21d3700
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                     // 0x004912d9    e8b21d3700
                          {disp8} fsub       dword ptr [esi + 0x7c]                   // 0x004912de    d8667c
                          {disp32} fdiv      dword ptr [esi + 0x00005228]             // 0x004912e1    d8b628520000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1ebdc]        // 0x004912e7    d80ddc7b8c00
@@ -185,7 +185,7 @@ _jmp_addr_0x0049136b:    {disp32} mov       ecx, dword ptr [esi + 0x00005198]   
                          {disp32} mov       dword ptr [ecx + 0x00064034], eax        // 0x00491386    898134400600
 _jmp_addr_0x0049138c:    {disp32} mov       ecx, dword ptr [esi + 0x00005198]        // 0x0049138c    8b8e98510000
                          {disp32} mov       ebx, dword ptr [ecx + 0x00064070]        // 0x00491392    8b9970400600
-                         call               _jmp_addr_0x00864990                     // 0x00491398    e8f3353d00
+                         call               @MoveAlongRoute__8RPFollowFv@4           // 0x00491398    e8f3353d00
                          {disp32} mov       eax, dword ptr [esi + 0x00005198]        // 0x0049139d    8b8698510000
                          {disp32} mov       ecx, dword ptr [eax + 0x00064034]        // 0x004913a3    8b8834400600
                          {disp32} mov       dword ptr [esi + 0x00004838], ecx        // 0x004913a9    898e38480000
@@ -220,7 +220,7 @@ _jmp_addr_0x0049138c:    {disp32} mov       ecx, dword ptr [esi + 0x00005198]   
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]              // 0x0049142b    8d4c241c
                          {disp8} mov        dword ptr [esp + 0x20], eax              // 0x0049142f    89442420
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000       // 0x00491433    c744242400000000
-                         call               _jmp_addr_0x00803090                     // 0x0049143b    e8501c3700
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                     // 0x0049143b    e8501c3700
                          {disp8} fstp       dword ptr [esi + 0x7c]                   // 0x00491440    d95e7c
                          {disp32} mov       eax, dword ptr [esi + 0x00005198]        // 0x00491443    8b8698510000
                          {disp32} mov       edx, dword ptr [eax + 0x00064040]        // 0x00491449    8b9040400600
@@ -244,7 +244,7 @@ _jmp_addr_0x0049148e:    {disp32} mov       ecx, dword ptr [esi + 0x00005198]   
                          push               eax                                      // 0x004914a1    50
                          {disp32} lea       edx, dword ptr [ecx + 0x0006402c]        // 0x004914a2    8d912c400600
                          push               edx                                      // 0x004914a8    52
-                         call               _jmp_addr_0x00864ba0                     // 0x004914a9    e8f2363d00
+                         call               @FillPosAndHeading__8RPFollowFR7Point2DRff@20                     // 0x004914a9    e8f2363d00
                          {disp32} mov       eax, dword ptr [esi + 0x00005198]        // 0x004914ae    8b8698510000
                          {disp32} fld       dword ptr [eax + 0x00064030]             // 0x004914b4    d98030400600
                          {disp32} fld       dword ptr [eax + 0x0006402c]             // 0x004914ba    d9802c400600
@@ -263,12 +263,12 @@ _jmp_addr_0x0049148e:    {disp32} mov       ecx, dword ptr [esi + 0x00005198]   
                          {disp8} lea        ecx, dword ptr [esp + 0x28]              // 0x004914f3    8d4c2428
                          {disp8} mov        dword ptr [esp + 0x2c], eax              // 0x004914f7    8944242c
                          {disp8} mov        dword ptr [esp + 0x30], 0x00000000       // 0x004914fb    c744243000000000
-                         call               _jmp_addr_0x00803090                     // 0x00491503    e8881b3700
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                     // 0x00491503    e8881b3700
                          {disp8} fstp       dword ptr [esi + 0x7c]                   // 0x00491508    d95e7c
                          {disp32} mov       eax, dword ptr [esi + 0x00005198]        // 0x0049150b    8b8698510000
                          {disp32} mov       ecx, dword ptr [eax + 0x00064070]        // 0x00491511    8b8870400600
                          push               eax                                      // 0x00491517    50
-                         call               _jmp_addr_0x008691a0                     // 0x00491518    e8837c3d00
+                         call               @GetLength__9RouteNodeFP7RPAvoid@12      // 0x00491518    e8837c3d00
                          {disp32} fcom      dword ptr [rdata_bytes + 0x1c840]        // 0x0049151d    d81540588c00
                          fnstsw             ax                                       // 0x00491523    dfe0
                          test               ah, 0x01                                 // 0x00491525    f6c401

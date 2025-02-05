@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x007cb993
 .extern _jmp_addr_0x007da710
 .extern _jmp_addr_0x007dacdc
-.extern _jmp_addr_0x00885740
+.extern _peerStartListingGames
 .extern _jmp_addr_0x00885790
 .extern _jmp_addr_0x00886030
 .extern _jmp_addr_0x008863e0
@@ -9656,7 +9656,7 @@ _jmp_addr_0x0088b3f0:    push             ebx                                   
                          push             ebx                                                  // 0x0088b409    53
                          push             edi                                                  // 0x0088b40a    57
                          push             esi                                                  // 0x0088b40b    56
-                         call             _jmp_addr_0x00885740                                 // 0x0088b40c    e82fa3ffff
+                         call             _peerStartListingGames                               // 0x0088b40c    e82fa3ffff
                          add              esp, 0x10                                            // 0x0088b411    83c410
                          pop              edi                                                  // 0x0088b414    5f
                          pop              esi                                                  // 0x0088b415    5e

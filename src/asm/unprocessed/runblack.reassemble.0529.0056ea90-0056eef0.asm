@@ -7,16 +7,16 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00411190
-.extern _jmp_addr_0x004132c0
-.extern _jmp_addr_0x005136e0
+.extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
+.extern _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl
+.extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x00550ba0
 .extern _jmp_addr_0x005525e0
 .extern _jmp_addr_0x005559b0
 .extern _jmp_addr_0x00555a10
 .extern _jmp_addr_0x0056e130
 .extern _jmp_addr_0x00633620
-.extern _jmp_addr_0x0064a790
+.extern @GetPlayerNumber__7GPlayerCFv@4
 
 .globl _jmp_addr_0x0056ea90
 .globl _jmp_addr_0x0056ead1
@@ -151,7 +151,7 @@ _jmp_addr_0x0056eb67:    {disp8} mov      eax, dword ptr [esi + 0x38]           
                          lea              eax, dword ptr [eax + edx * 0x2]              // 0x0056eb84    8d0450
                          shl              eax, 5                                        // 0x0056eb87    c1e005
                          {disp8} lea      ecx, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x0056eb8a    8d4c0818
-                         call             _jmp_addr_0x0064a790                          // 0x0056eb8e    e8fdbb0d00
+                         call             @GetPlayerNumber__7GPlayerCFv@4               // 0x0056eb8e    e8fdbb0d00
                          cmp              eax, 0x04                                     // 0x0056eb93    83f804
                          .byte            0x72, 0x14// {disp8} jb _jmp_addr_0x0056ebac  // 0x0056eb96    7214
                          {disp8} mov      ecx, dword ptr [esi + 0x34]                   // 0x0056eb98    8b4e34
@@ -195,7 +195,7 @@ _jmp_addr_0x0056ebe1:    {disp8} mov      ecx, dword ptr [eax + 0x08]           
                          push             0x0                                           // 0x0056ebe6    6a00
                          push             ecx                                           // 0x0056ebe8    51
                          {disp8} mov      ecx, dword ptr [esp + 0x10]                   // 0x0056ebe9    8b4c2410
-                         call             _jmp_addr_0x00411190                          // 0x0056ebed    e89e25eaff
+                         call             @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20  // 0x0056ebed    e89e25eaff
 _jmp_addr_0x0056ebf2:    ret              0x0004                                        // 0x0056ebf2    c20400
                          nop                                                            // 0x0056ebf5    90
                          nop                                                            // 0x0056ebf6    90
@@ -350,7 +350,7 @@ _jmp_addr_0x0056edcb:    {disp8} mov      eax, dword ptr [eax + 0x18]           
                          push             0x2                                           // 0x0056ede3    6a02
                          mov.s            ecx, esi                                      // 0x0056ede5    8bce
                          call             _jmp_addr_0x0056e130                          // 0x0056ede7    e844f3ffff
-                         call             _jmp_addr_0x005136e0                          // 0x0056edec    e8ef48faff
+                         call             _HideAll__13DialogBoxBaseFv@0                 // 0x0056edec    e8ef48faff
                          mov              edx, dword ptr [esi]                          // 0x0056edf1    8b16
                          mov.s            ecx, esi                                      // 0x0056edf3    8bce
                          call             dword ptr [edx + 0xc]                         // 0x0056edf5    ff520c
@@ -368,7 +368,7 @@ _jmp_addr_0x0056ee12:    {disp8} mov      esi, dword ptr [esp + 0x10]           
                          push             ebx                                           // 0x0056ee1b    53
                          mov.s            ecx, esi                                      // 0x0056ee1c    8bce
                          call             _jmp_addr_0x0056e130                          // 0x0056ee1e    e80df3ffff
-                         call             _jmp_addr_0x005136e0                          // 0x0056ee23    e8b848faff
+                         call             _HideAll__13DialogBoxBaseFv@0                 // 0x0056ee23    e8b848faff
                          mov              eax, dword ptr [esi]                          // 0x0056ee28    8b06
                          mov.s            ecx, esi                                      // 0x0056ee2a    8bce
                          call             dword ptr [eax + 0xc]                         // 0x0056ee2c    ff500c
@@ -422,7 +422,7 @@ _jmp_addr_0x0056ee6e:    {disp8} mov      eax, dword ptr [ecx + 0x58]           
                          push             eax                                           // 0x0056eeae    50
                          push             ecx                                           // 0x0056eeaf    51
                          push             edx                                           // 0x0056eeb0    52
-                         call             _jmp_addr_0x004132c0                          // 0x0056eeb1    e80a44eaff
+                         call             _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl       // 0x0056eeb1    e80a44eaff
                          add              esp, 0x28                                     // 0x0056eeb6    83c428
                          {disp32} mov     dword ptr [data_bytes + 0x2078], edi          // 0x0056eeb9    893d78809c00
 _jmp_addr_0x0056eebf:    pop              edi                                           // 0x0056eebf    5f

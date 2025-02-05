@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x007aee98
+.extern ___dl__FPv
 .extern _jmp_addr_0x007c6288
 .extern _jmp_addr_0x007c664c
 .extern _jmp_addr_0x007c6786
@@ -1638,7 +1638,7 @@ _jmp_addr_0x007c5683:    push             0x1b                                  
                          test             byte ptr [esp + 0x08], 0x01                   // 0x007c5695    f644240801
                          {disp8} je       _jmp_addr_0x007c56a3                          // 0x007c569a    7407
                          push             esi                                           // 0x007c569c    56
-                         call             _jmp_addr_0x007aee98                          // 0x007c569d    e8f697feff
+                         call             ___dl__FPv                                    // 0x007c569d    e8f697feff
                          pop              ecx                                           // 0x007c56a2    59
 _jmp_addr_0x007c56a3:    mov.s            eax, esi                                      // 0x007c56a3    8bc6
                          pop              esi                                           // 0x007c56a5    5e
@@ -1843,7 +1843,7 @@ _jmp_addr_0x007c58a6:    push             ebp                                   
                          test             byte ptr [esp + 0x08], 0x01                   // 0x007c58d0    f644240801
                          {disp8} je       _jmp_addr_0x007c58de                          // 0x007c58d5    7407
                          push             esi                                           // 0x007c58d7    56
-                         call             _jmp_addr_0x007aee98                          // 0x007c58d8    e8bb95feff
+                         call             ___dl__FPv                                    // 0x007c58d8    e8bb95feff
                          pop              ecx                                           // 0x007c58dd    59
 _jmp_addr_0x007c58de:    mov.s            eax, esi                                      // 0x007c58de    8bc6
                          pop              esi                                           // 0x007c58e0    5e
@@ -1871,7 +1871,7 @@ _jmp_addr_0x007c58e4:    {disp32} jmp     _jmp_addr_0x007c8c85                  
                          test             byte ptr [esp + 0x08], 0x01                   // 0x007c5921    f644240801
                          {disp8} je       _jmp_addr_0x007c592f                          // 0x007c5926    7407
                          push             esi                                           // 0x007c5928    56
-                         call             _jmp_addr_0x007aee98                          // 0x007c5929    e86a95feff
+                         call             ___dl__FPv                                    // 0x007c5929    e86a95feff
                          pop              ecx                                           // 0x007c592e    59
 _jmp_addr_0x007c592f:    mov.s            eax, esi                                      // 0x007c592f    8bc6
                          pop              esi                                           // 0x007c5931    5e
@@ -2065,7 +2065,7 @@ _jmp_addr_0x007c5b30:    push             esi                                   
                          test             byte ptr [esp + 0x08], 0x01                   // 0x007c5b50    f644240801
                          {disp8} je       _jmp_addr_0x007c5b5e                          // 0x007c5b55    7407
                          push             esi                                           // 0x007c5b57    56
-                         call             _jmp_addr_0x007aee98                          // 0x007c5b58    e83b93feff
+                         call             ___dl__FPv                                    // 0x007c5b58    e83b93feff
                          pop              ecx                                           // 0x007c5b5d    59
 _jmp_addr_0x007c5b5e:    mov.s            eax, esi                                      // 0x007c5b5e    8bc6
                          pop              esi                                           // 0x007c5b60    5e

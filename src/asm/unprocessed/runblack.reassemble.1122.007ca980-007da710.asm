@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x007c6b68
 .extern _jmp_addr_0x007c6c55
 .extern _jmp_addr_0x007c6ce0
-.extern _jmp_addr_0x007c6e30
+.extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6f14
 .extern _jmp_addr_0x007c732e
@@ -22579,7 +22579,7 @@ _jmp_addr_0x007d83e9:    {disp32} mov       eax, dword ptr [data_bytes + 0x5e6cb
                          test               byte ptr [eax + 0x0c], -0x7d                   // 0x007d83fa    f6400c83
                          {disp8} je         _jmp_addr_0x007d840d                           // 0x007d83fe    740d
                          push               eax                                            // 0x007d8400    50
-                         call               _jmp_addr_0x007c6e30                           // 0x007d8401    e82aeafeff
+                         call               ___dt__10LHFilePathFv                          // 0x007d8401    e82aeafeff
                          cmp                eax, -0x01                                     // 0x007d8406    83f8ff
                          pop                ecx                                            // 0x007d8409    59
                          {disp8} je         _jmp_addr_0x007d840d                           // 0x007d840a    7401

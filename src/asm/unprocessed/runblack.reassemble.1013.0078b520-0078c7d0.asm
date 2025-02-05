@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00429d60
+.extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern _jmp_addr_0x005c5f50
 .extern _jmp_addr_0x0078f5e0
 .extern _jmp_addr_0x0078f600
@@ -212,7 +212,7 @@ _jmp_addr_0x0078b61a:    cmp                dword ptr [data_bytes + 0x43be80], e
                          add                edx, 0x36                                     // 0x0078b647    83c236
                          push               edx                                           // 0x0078b64a    52
                          push               ebx                                           // 0x0078b64b    53
-                         call               _jmp_addr_0x00429d60                          // 0x0078b64c    e80fe7c9ff
+                         call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x0078b64c    e80fe7c9ff
                          pop                esi                                           // 0x0078b651    5e
                          {disp32} mov       dword ptr [data_bytes + 0x43be28], 0x00000001 // 0x0078b652    c705281ee00001000000
                          mov                eax, 0x00000001                               // 0x0078b65c    b801000000
@@ -320,7 +320,7 @@ _jmp_addr_0x0078b74a:    cmp                dword ptr [data_bytes + 0x43be88], e
                          add                edx, 0x36                                     // 0x0078b777    83c236
                          push               edx                                           // 0x0078b77a    52
                          push               ebx                                           // 0x0078b77b    53
-                         call               _jmp_addr_0x00429d60                          // 0x0078b77c    e8dfe5c9ff
+                         call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x0078b77c    e8dfe5c9ff
                          pop                esi                                           // 0x0078b781    5e
                          {disp32} mov       dword ptr [data_bytes + 0x43be2c], 0x00000001 // 0x0078b782    c7052c1ee00001000000
                          mov                eax, 0x00000001                               // 0x0078b78c    b801000000
@@ -428,7 +428,7 @@ _jmp_addr_0x0078b87a:    cmp                dword ptr [data_bytes + 0x43be98], e
                          add                edx, 0x36                                     // 0x0078b8a7    83c236
                          push               edx                                           // 0x0078b8aa    52
                          push               ebx                                           // 0x0078b8ab    53
-                         call               _jmp_addr_0x00429d60                          // 0x0078b8ac    e8afe4c9ff
+                         call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x0078b8ac    e8afe4c9ff
                          pop                esi                                           // 0x0078b8b1    5e
                          {disp32} mov       dword ptr [data_bytes + 0x43be30], 0x00000001 // 0x0078b8b2    c705301ee00001000000
                          mov                eax, 0x00000001                               // 0x0078b8bc    b801000000
@@ -536,7 +536,7 @@ _jmp_addr_0x0078b9aa:    cmp                dword ptr [data_bytes + 0x43bea0], e
                          add                edx, 0x36                                     // 0x0078b9d7    83c236
                          push               edx                                           // 0x0078b9da    52
                          push               ebx                                           // 0x0078b9db    53
-                         call               _jmp_addr_0x00429d60                          // 0x0078b9dc    e87fe3c9ff
+                         call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x0078b9dc    e87fe3c9ff
                          pop                esi                                           // 0x0078b9e1    5e
                          {disp32} mov       dword ptr [data_bytes + 0x43be34], 0x00000001 // 0x0078b9e2    c705341ee00001000000
                          mov                eax, 0x00000001                               // 0x0078b9ec    b801000000
@@ -644,7 +644,7 @@ _jmp_addr_0x0078bada:    cmp                dword ptr [data_bytes + 0x43be90], e
                          add                edx, 0x36                                     // 0x0078bb07    83c236
                          push               edx                                           // 0x0078bb0a    52
                          push               ebx                                           // 0x0078bb0b    53
-                         call               _jmp_addr_0x00429d60                          // 0x0078bb0c    e84fe2c9ff
+                         call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x0078bb0c    e84fe2c9ff
                          pop                esi                                           // 0x0078bb11    5e
                          {disp32} mov       dword ptr [data_bytes + 0x43be38], 0x00000001 // 0x0078bb12    c705381ee00001000000
                          mov                eax, 0x00000001                               // 0x0078bb1c    b801000000
@@ -752,7 +752,7 @@ _jmp_addr_0x0078bc0a:    cmp                dword ptr [data_bytes + 0x43bea8], e
                          add                edx, 0x36                                     // 0x0078bc37    83c236
                          push               edx                                           // 0x0078bc3a    52
                          push               ebx                                           // 0x0078bc3b    53
-                         call               _jmp_addr_0x00429d60                          // 0x0078bc3c    e81fe1c9ff
+                         call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x0078bc3c    e81fe1c9ff
                          pop                esi                                           // 0x0078bc41    5e
                          {disp32} mov       dword ptr [data_bytes + 0x43be3c], 0x00000001 // 0x0078bc42    c7053c1ee00001000000
                          mov                eax, 0x00000001                               // 0x0078bc4c    b801000000
@@ -861,7 +861,7 @@ _jmp_addr_0x0078bd3f:    cmp                dword ptr [data_bytes + 0x43beb0], e
                          add                edx, 0x36                                     // 0x0078bd6c    83c236
                          push               edx                                           // 0x0078bd6f    52
                          push               ebx                                           // 0x0078bd70    53
-                         call               _jmp_addr_0x00429d60                          // 0x0078bd71    e8eadfc9ff
+                         call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x0078bd71    e8eadfc9ff
                          pop                esi                                           // 0x0078bd76    5e
                          {disp32} mov       dword ptr [data_bytes + 0x43be40], 0x00000001 // 0x0078bd77    c705401ee00001000000
                          mov                eax, 0x00000001                               // 0x0078bd81    b801000000

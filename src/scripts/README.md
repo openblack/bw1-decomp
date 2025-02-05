@@ -14,3 +14,4 @@ They include:
 * `export_asm.py`: this script uses capstone to disassemble ranges of bytes to x86 assembly. It also fixes up the source code in a way that can be reassembled by a patched `llvm` to produce the exact same op codes. In some cases, it will output `.byte` segments when such a reassembly is not possible even with the patched `clang`.
 * `post_assemble_patch.py`: is an archive copy of the one in the parent directory.
 * `re_assemble.py`: this is the original disassembly, re-assembly and validation script which makes use of some of the other scripts to disassemble, then reassemble using the patched `clang`, link, patch and compare the result against the original executable.
+* `rename_globls.py`: This cross references known function names and addresses in assembly source to give proper decorated names.

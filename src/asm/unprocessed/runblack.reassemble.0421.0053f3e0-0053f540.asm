@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00408160
-.extern _jmp_addr_0x005136e0
+.extern @FindControl__8SetupBoxFi@12
+.extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x007c5fb6
 
 .globl _jmp_addr_0x0053f3e0
@@ -34,7 +34,7 @@ _jmp_addr_0x0053f3e0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          {disp32} jl      _jmp_addr_0x0053f521                   // 0x0053f403    0f8c18010000
                          cmp              esi, 0x00000902                        // 0x0053f409    81fe02090000
                          {disp32} jge     _jmp_addr_0x0053f521                   // 0x0053f40f    0f8d0c010000
-                         call             _jmp_addr_0x005136e0                   // 0x0053f415    e8c642fdff
+                         call             _HideAll__13DialogBoxBaseFv@0          // 0x0053f415    e8c642fdff
                          {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c] // 0x0053f41a    a15c19d000
                          cmp              dword ptr [eax + 0x00205a28], 0x01     // 0x0053f41f    83b8285a200001
                          {disp8} je       _jmp_addr_0x0053f438                   // 0x0053f426    7410
@@ -85,7 +85,7 @@ _jmp_addr_0x0053f4a3:    cmp              eax, 0x06                             
                          {disp8} mov      esi, dword ptr [esp + 0x0c]            // 0x0053f4a8    8b74240c
                          push             0x000008fc                             // 0x0053f4ac    68fc080000
                          mov.s            ecx, esi                               // 0x0053f4b1    8bce
-                         call             _jmp_addr_0x00408160                   // 0x0053f4b3    e8a88cecff
+                         call             @FindControl__8SetupBoxFi@12           // 0x0053f4b3    e8a88cecff
                          test             eax, eax                               // 0x0053f4b8    85c0
                          {disp8} je       _jmp_addr_0x0053f521                   // 0x0053f4ba    7465
                          {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c] // 0x0053f4bc    a15c19d000
@@ -109,7 +109,7 @@ _jmp_addr_0x0053f505:    {disp8} mov      eax, dword ptr [eax + 0x08]           
                          push             eax                                    // 0x0053f508    50
                          push             0x000008fc                             // 0x0053f509    68fc080000
                          mov.s            ecx, esi                               // 0x0053f50e    8bce
-                         call             _jmp_addr_0x00408160                   // 0x0053f510    e84b8cecff
+                         call             @FindControl__8SetupBoxFi@12           // 0x0053f510    e84b8cecff
                          add              eax, 0x24                              // 0x0053f515    83c024
                          push             eax                                    // 0x0053f518    50
                          call             _jmp_addr_0x007c5fb6                   // 0x0053f519    e8986a2800

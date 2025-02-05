@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00603160
-.extern _jmp_addr_0x00605c40
+.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern @GetLHPoint__9MapCoordsCFv@12
 
 .globl _jmp_addr_0x0052aea0
 .globl _jmp_addr_0x0052af90
@@ -39,12 +39,12 @@ _jmp_addr_0x0052aea0:    sub                esp, 0x54                           
                          push               edx                                      // 0x0052aed4    52
                          {disp8} lea        ecx, dword ptr [esp + 0x14]              // 0x0052aed5    8d4c2414
                          {disp8} mov        dword ptr [esp + 0x24], eax              // 0x0052aed9    89442424
-                         call               _jmp_addr_0x00605c40                     // 0x0052aedd    e85ead0d00
+                         call               @GetLHPoint__9MapCoordsCFv@12            // 0x0052aedd    e85ead0d00
                          mov.s              esi, eax                                 // 0x0052aee2    8bf0
                          {disp8} lea        eax, dword ptr [esp + 0x4c]              // 0x0052aee4    8d44244c
                          push               eax                                      // 0x0052aee8    50
                          {disp8} lea        ecx, dword ptr [esp + 0x20]              // 0x0052aee9    8d4c2420
-                         call               _jmp_addr_0x00605c40                     // 0x0052aeed    e84ead0d00
+                         call               @GetLHPoint__9MapCoordsCFv@12            // 0x0052aeed    e84ead0d00
                          fld                dword ptr [esi]                          // 0x0052aef2    d906
                          fsub               dword ptr [eax]                          // 0x0052aef4    d820
                          {disp8} fld        dword ptr [esi + 0x04]                   // 0x0052aef6    d94604
@@ -77,7 +77,7 @@ _jmp_addr_0x0052aea0:    sub                esp, 0x54                           
                          {disp8} lea        ecx, dword ptr [esp + 0x50]              // 0x0052af57    8d4c2450
                          {disp8} mov        dword ptr [esp + 0x3c], edx              // 0x0052af5b    8954243c
                          {disp8} mov        dword ptr [esp + 0x40], eax              // 0x0052af5f    89442440
-                         call               _jmp_addr_0x00603160                     // 0x0052af63    e8f8810d00
+                         call               @__ct__9MapCoordsFRC7LHPoint@12          // 0x0052af63    e8f8810d00
                          mov                ecx, dword ptr [eax]                     // 0x0052af68    8b08
                          {disp8} mov        edx, dword ptr [esp + 0x68]              // 0x0052af6a    8b542468
                          mov                dword ptr [edx], ecx                     // 0x0052af6e    890a

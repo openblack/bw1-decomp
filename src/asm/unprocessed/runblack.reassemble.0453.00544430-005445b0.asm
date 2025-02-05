@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00513590
+.extern @Destroy__13DialogBoxBaseFv@4
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x0054ae20
 
@@ -24,7 +24,7 @@
 
 start_0x00544430_0x005445b0:
 // Snippet: asm, [0x00544430, 0x0054459d)
-                         call             _jmp_addr_0x00513590                          // 0x00544430    e85bf1fcff
+                         call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544430    e85bf1fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab80], 0x00000000 // 0x00544435    c705800bcd0000000000
                          ret                                                            // 0x0054443f    c3
                          push             esi                                           // 0x00544440    56

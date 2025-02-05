@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00441b60
-.extern _jmp_addr_0x00477850
+.extern @__ct__9MapCoordsFv@4
+.extern @GetCreature3D__8CreatureFv@4
 .extern _jmp_addr_0x0047a880
 .extern _jmp_addr_0x00480c60
 .extern _jmp_addr_0x004842d0
@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x0050d460
 .extern _jmp_addr_0x0050d600
 .extern _jmp_addr_0x005ef9c0
-.extern _jmp_addr_0x00605c40
+.extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x006e8160
 .extern _jmp_addr_0x0074cd50
 .extern _jmp_addr_0x0074d360
@@ -37,7 +37,7 @@
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007faa50
-.extern _jmp_addr_0x00803090
+.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
 .globl _jmp_addr_0x0050479e
 .globl _jmp_addr_0x005047b5
@@ -62,7 +62,7 @@ start_0x00504700_0x00504cd0:
                          mov.s              esi, ecx                                      // 0x00504705    8bf1
                          push               edi                                           // 0x00504707    57
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00504708    8d4c2420
-                         call               _jmp_addr_0x00441b60                          // 0x0050470c    e84fd4f3ff
+                         call               @__ct__9MapCoordsFv@4                         // 0x0050470c    e84fd4f3ff
                          {disp32} mov       ecx, dword ptr [esi + 0x000000d8]             // 0x00504711    8b8ed8000000
                          {disp8} mov        edx, dword ptr [ecx + 0x18]                   // 0x00504717    8b5118
                          {disp8} lea        eax, dword ptr [esp + 0x20]                   // 0x0050471a    8d442420
@@ -85,7 +85,7 @@ start_0x00504700_0x00504cd0:
                          {disp8} ja         _jmp_addr_0x0050479e                          // 0x0050474e    774e
                          jmp                dword ptr [eax*4 + 0x504c74]                  // 0x00504750    ff2485744c5000
                          mov.s              ecx, esi                                      // 0x00504757    8bce
-                         call               _jmp_addr_0x00477850                          // 0x00504759    e8f230f7ff
+                         call               @GetCreature3D__8CreatureFv@4                 // 0x00504759    e8f230f7ff
                          mov.s              ecx, eax                                      // 0x0050475e    8bc8
                          call               _jmp_addr_0x00484ae0                          // 0x00504760    e87b03f8ff
                          {disp32} mov       edx, dword ptr [esi + 0x00000160]             // 0x00504765    8b9660010000
@@ -109,7 +109,7 @@ _jmp_addr_0x0050479e:    {disp32} mov       eax, dword ptr [esi + 0x00000160]   
                          {disp8} mov        ecx, dword ptr [ecx + 0x58]                   // 0x005047b2    8b4958
 _jmp_addr_0x005047b5:    call               _jmp_addr_0x004848f0                          // 0x005047b5    e83601f8ff
                          mov.s              ecx, esi                                      // 0x005047ba    8bce
-                         call               _jmp_addr_0x00477850                          // 0x005047bc    e88f30f7ff
+                         call               @GetCreature3D__8CreatureFv@4                 // 0x005047bc    e88f30f7ff
                          mov.s              ecx, eax                                      // 0x005047c1    8bc8
                          call               _jmp_addr_0x00484ae0                          // 0x005047c3    e81803f8ff
 _jmp_addr_0x005047c8:    {disp32} mov       edi, dword ptr [esi + 0x000000d8]             // 0x005047c8    8bbed8000000
@@ -208,7 +208,7 @@ _jmp_addr_0x005048b5:    and                ecx, 0x0000ffff                     
                          {disp32} jmp       _jmp_addr_0x00504bd4                          // 0x00504928    e9a7020000
                          push               0x000000cd                                    // 0x0050492d    68cd000000
                          mov.s              ecx, esi                                      // 0x00504932    8bce
-                         call               _jmp_addr_0x00477850                          // 0x00504934    e8172ff7ff
+                         call               @GetCreature3D__8CreatureFv@4                 // 0x00504934    e8172ff7ff
                          mov.s              ecx, eax                                      // 0x00504939    8bc8
                          call               _jmp_addr_0x00484360                          // 0x0050493b    e820faf7ff
                          {disp32} jmp       _jmp_addr_0x00504bd4                          // 0x00504940    e98f020000
@@ -362,12 +362,12 @@ _jmp_addr_0x00504b06:    {disp32} mov       eax, dword ptr [esi + 0x000000d8]   
                          push               edx                                           // 0x00504bb1    52
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00504bb2    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x00504bb6    8944241c
-                         call               _jmp_addr_0x00605c40                          // 0x00504bba    e881101000
+                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x00504bba    e881101000
                          push               0x0                                           // 0x00504bbf    6a00
                          {disp8} lea        eax, dword ptr [esp + 0x48]                   // 0x00504bc1    8d442448
                          push               eax                                           // 0x00504bc5    50
                          mov.s              ecx, esi                                      // 0x00504bc6    8bce
-                         call               _jmp_addr_0x00477850                          // 0x00504bc8    e8832cf7ff
+                         call               @GetCreature3D__8CreatureFv@4                 // 0x00504bc8    e8832cf7ff
                          mov.s              ecx, eax                                      // 0x00504bcd    8bc8
                          call               _jmp_addr_0x00484920                          // 0x00504bcf    e84cfdf7ff
 _jmp_addr_0x00504bd4:    {disp8} fld        dword ptr [esp + 0x10]                        // 0x00504bd4    d9442410
@@ -378,7 +378,7 @@ _jmp_addr_0x00504bd4:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                   // 0x00504be5    8b4c2428
                          {disp8} mov        dword ptr [esp + 0x10], ecx                   // 0x00504be9    894c2410
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00504bed    8d4c2420
-                         call               _jmp_addr_0x00803090                          // 0x00504bf1    e89ae42f00
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x00504bf1    e89ae42f00
                          {disp8} fadd       dword ptr [esp + 0x10]                        // 0x00504bf6    d8442410
                          push               0x0                                           // 0x00504bfa    6a00
                          push               0x3dcccccd                                    // 0x00504bfc    68cdcccc3d

@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x00841660
 .extern _jmp_addr_0x00841670
 .extern _jmp_addr_0x00841680
-.extern _jmp_addr_0x008416e0
+.extern _BMan_Check__FP4Prssiii
 .extern _jmp_addr_0x00841750
 
 .globl _jmp_addr_0x00842030
@@ -196,7 +196,7 @@ _jmp_addr_0x0084216c:    ret              0x0008                                
                          push             edx                                           // 0x00842181    52
                          push             eax                                           // 0x00842182    50
                          push             ecx                                           // 0x00842183    51
-                         call             _jmp_addr_0x008416e0                          // 0x00842184    e857f5ffff
+                         call             _BMan_Check__FP4Prssiii                       // 0x00842184    e857f5ffff
                          add              esp, 0x10                                     // 0x00842189    83c410
 _jmp_addr_0x0084218c:    ret              0x0004                                        // 0x0084218c    c20400
                          nop                                                            // 0x0084218f    90

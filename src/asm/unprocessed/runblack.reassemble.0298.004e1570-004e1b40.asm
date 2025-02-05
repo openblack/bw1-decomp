@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00475730
-.extern _jmp_addr_0x004c3960
+.extern @__ct__21CreatureActionContextFR15CreatureContextf@16
 .extern _jmp_addr_0x004d74a0
 .extern _jmp_addr_0x004dca60
 .extern _jmp_addr_0x004f21e0
@@ -98,7 +98,7 @@ _jmp_addr_0x004e15e0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          mov.s              esi, ecx                                             // 0x004e15ee    8bf1
                          push               edi                                                  // 0x004e15f0    57
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                          // 0x004e15f1    8d4c2410
-                         call               _jmp_addr_0x004c3960                                 // 0x004e15f5    e86623feff
+                         call               @__ct__21CreatureActionContextFR15CreatureContextf@16// 0x004e15f5    e86623feff
                          {disp8} mov        edi, dword ptr [edi + 0x20]                          // 0x004e15fa    8b7f20
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                          // 0x004e15fd    8d4c2408
                          push               ecx                                                  // 0x004e1601    51

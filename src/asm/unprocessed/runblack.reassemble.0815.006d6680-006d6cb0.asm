@@ -7,9 +7,9 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004366f0
-.extern _jmp_addr_0x005f27f0
-.extern _jmp_addr_0x0060ad40
+.extern ___nw__4BaseFUl
+.extern @GetTopState__6LivingCFv@4
+.extern @AreWeThere__13MobileWallHugFf@12
 .extern _jmp_addr_0x0063e580
 .extern _jmp_addr_0x006d61d0
 .extern _jmp_addr_0x006d9290
@@ -59,7 +59,7 @@ _jmp_addr_0x006d6680:    push              esi                                //
                          push              0x000000a8                         // 0x006d6682    68a8000000
                          push              0x00c09908                         // 0x006d6687    680899c000
                          push              0x00000588                         // 0x006d668c    6888050000
-                         call              _jmp_addr_0x004366f0               // 0x006d6691    e85a00d6ff
+                         call              ___nw__4BaseFUl                    // 0x006d6691    e85a00d6ff
                          add               esp, 0x0c                          // 0x006d6696    83c40c
                          test              eax, eax                           // 0x006d6699    85c0
                          {disp8} je        _jmp_addr_0x006d66ce               // 0x006d669b    7431
@@ -540,7 +540,7 @@ _jmp_addr_0x006d6b74:    mov.s             ecx, ebp                           //
                          {disp8} je        _jmp_addr_0x006d6c0b               // 0x006d6bb1    7458
                          cmp               dword ptr [ebp + 0x000003f8], esi  // 0x006d6bb3    39b5f8030000
                          {disp8} je        _jmp_addr_0x006d6c0b               // 0x006d6bb9    7450
-                         call              _jmp_addr_0x005f27f0               // 0x006d6bbb    e830bcf1ff
+                         call              @GetTopState__6LivingCFv@4         // 0x006d6bbb    e830bcf1ff
                          cmp               al, 0x01                           // 0x006d6bc0    3c01
                          {disp8} jne       _jmp_addr_0x006d6bce               // 0x006d6bc2    750a
                          pop               edi                                // 0x006d6bc4    5f
@@ -561,7 +561,7 @@ _jmp_addr_0x006d6bce:    cmp               word ptr [ebp + 0x44], 0x02        //
                          ret                                                  // 0x006d6bde    c3
 _jmp_addr_0x006d6bdf:    {disp32} mov      ecx, dword ptr [ebp + 0x000003f4]  // 0x006d6bdf    8b8df4030000
                          push              esi                                // 0x006d6be5    56
-                         call              _jmp_addr_0x0060ad40               // 0x006d6be6    e85541f3ff
+                         call              @AreWeThere__13MobileWallHugFf@12  // 0x006d6be6    e85541f3ff
                          test              eax, eax                           // 0x006d6beb    85c0
                          {disp8} je        _jmp_addr_0x006d6c0b               // 0x006d6bed    741c
                          {disp32} mov      eax, dword ptr [ebp + 0x000003ec]  // 0x006d6bef    8b85ec030000

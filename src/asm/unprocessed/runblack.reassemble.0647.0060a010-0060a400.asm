@@ -8,9 +8,9 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00609ca0
-.extern _jmp_addr_0x0060a660
-.extern _jmp_addr_0x00614c40
-.extern _jmp_addr_0x006159f0
+.extern @GetObjectPtr__13CircleHugInfoFv@4
+.extern _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords
+.extern _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords
 .extern _jmp_addr_0x007a1400
 
 .globl _jmp_addr_0x0060a010
@@ -223,7 +223,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          {disp8} lea      ecx, dword ptr [esi + 0x70]      // 0x0060a25c    8d4e70
                          and              eax, 0x000007ff                  // 0x0060a25f    25ff070000
                          {disp8} mov      word ptr [esi + 0x5c], ax        // 0x0060a264    6689465c
-                         call             _jmp_addr_0x0060a660             // 0x0060a268    e8f3030000
+                         call             @GetObjectPtr__13CircleHugInfoFv@4             // 0x0060a268    e8f3030000
                          test             eax, eax                         // 0x0060a26d    85c0
                          {disp32} je      _jmp_addr_0x0060a3dd             // 0x0060a26f    0f8468010000
                          mov              edx, dword ptr [esi]             // 0x0060a275    8b16
@@ -233,7 +233,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          call             dword ptr [edx + 0x100]          // 0x0060a27e    ff9200010000
                          push             eax                              // 0x0060a284    50
                          push             esi                              // 0x0060a285    56
-                         call             _jmp_addr_0x00614c40             // 0x0060a286    e8b5a90000
+                         call             _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords             // 0x0060a286    e8b5a90000
                          add              esp, 0x08                        // 0x0060a28b    83c408
                          pop              edi                              // 0x0060a28e    5f
                          pop              esi                              // 0x0060a28f    5e
@@ -283,7 +283,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          {disp8} lea      ecx, dword ptr [esi + 0x70]      // 0x0060a30f    8d4e70
                          and              eax, 0x000007ff                  // 0x0060a312    25ff070000
                          {disp8} mov      word ptr [esi + 0x5c], ax        // 0x0060a317    6689465c
-                         call             _jmp_addr_0x0060a660             // 0x0060a31b    e840030000
+                         call             @GetObjectPtr__13CircleHugInfoFv@4             // 0x0060a31b    e840030000
                          test             eax, eax                         // 0x0060a320    85c0
                          {disp32} je      _jmp_addr_0x0060a3dd             // 0x0060a322    0f84b5000000
                          mov              edx, dword ptr [esi]             // 0x0060a328    8b16
@@ -293,7 +293,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          call             dword ptr [edx + 0x100]          // 0x0060a331    ff9200010000
                          push             eax                              // 0x0060a337    50
                          push             esi                              // 0x0060a338    56
-                         call             _jmp_addr_0x006159f0             // 0x0060a339    e8b2b60000
+                         call             _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords             // 0x0060a339    e8b2b60000
                          add              esp, 0x08                        // 0x0060a33e    83c408
                          pop              edi                              // 0x0060a341    5f
                          pop              esi                              // 0x0060a342    5e

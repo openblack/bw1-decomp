@@ -8,10 +8,10 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x004017f9
-.extern _jmp_addr_0x00407d60
+.extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern _jmp_addr_0x00428850
 .extern _jmp_addr_0x0042acc0
-.extern _jmp_addr_0x00441ac0
+.extern @SetPosition__6ZoomerFf@12
 .extern _jmp_addr_0x005b96d0
 .extern _jmp_addr_0x005b98d0
 .extern _jmp_addr_0x005bb760
@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x005bf810
 .extern _jmp_addr_0x005c2800
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x00819390
+.extern @ProjectPoint__8LH3DTechFP7LHPointPiPiPf@16
 .extern _jmp_addr_0x00839f10
 .extern _jmp_addr_0x0083a020
 .extern _jmp_addr_0x00860e00
@@ -130,7 +130,7 @@ _jmp_addr_0x005bc4a0:    sub                esp, 0x14                           
                          {disp8} mov        eax, dword ptr [edi + 0x08]                          // 0x005bc55a    8b4708
                          push               eax                                                  // 0x005bc55d    50
                          {disp32} lea       ecx, dword ptr [esi + 0x00003640]                    // 0x005bc55e    8d8e40360000
-                         call               _jmp_addr_0x00441ac0                                 // 0x005bc564    e85755e8ff
+                         call               @SetPosition__6ZoomerFf@12                           // 0x005bc564    e85755e8ff
                          {disp8} jmp        _jmp_addr_0x005bc5b6                                 // 0x005bc569    eb4b
 _jmp_addr_0x005bc56b:    {disp8} mov        edi, dword ptr [esp + 0x24]                          // 0x005bc56b    8b7c2424
                          fld                dword ptr [edi]                                      // 0x005bc56f    d907
@@ -142,21 +142,21 @@ _jmp_addr_0x005bc56b:    {disp8} mov        edi, dword ptr [esp + 0x24]         
                          {disp32} lea       ebp, dword ptr [esi + 0x000035e0]                    // 0x005bc57b    8daee0350000
                          fstp               dword ptr [esp]                                      // 0x005bc581    d91c24
                          mov.s              ecx, ebp                                             // 0x005bc584    8bcd
-                         call               _jmp_addr_0x00407d60                                 // 0x005bc586    e8d5b7e4ff
+                         call               @SetDestinationWithSpeedAndTime__6ZoomerFfff@20      // 0x005bc586    e8d5b7e4ff
                          {disp8} fld        dword ptr [edi + 0x04]                               // 0x005bc58b    d94704
                          push               0x3f000000                                           // 0x005bc58e    680000003f
                          push               ebx                                                  // 0x005bc593    53
                          push               ecx                                                  // 0x005bc594    51
                          fstp               dword ptr [esp]                                      // 0x005bc595    d91c24
                          {disp8} lea        ecx, dword ptr [ebp + 0x30]                          // 0x005bc598    8d4d30
-                         call               _jmp_addr_0x00407d60                                 // 0x005bc59b    e8c0b7e4ff
+                         call               @SetDestinationWithSpeedAndTime__6ZoomerFfff@20      // 0x005bc59b    e8c0b7e4ff
                          {disp8} fld        dword ptr [edi + 0x08]                               // 0x005bc5a0    d94708
                          push               0x3f000000                                           // 0x005bc5a3    680000003f
                          push               ebx                                                  // 0x005bc5a8    53
                          push               ecx                                                  // 0x005bc5a9    51
                          fstp               dword ptr [esp]                                      // 0x005bc5aa    d91c24
                          {disp8} lea        ecx, dword ptr [ebp + 0x60]                          // 0x005bc5ad    8d4d60
-                         call               _jmp_addr_0x00407d60                                 // 0x005bc5b0    e8abb7e4ff
+                         call               @SetDestinationWithSpeedAndTime__6ZoomerFfff@20      // 0x005bc5b0    e8abb7e4ff
                          pop                ebp                                                  // 0x005bc5b5    5d
 _jmp_addr_0x005bc5b6:    {disp8} mov        ecx, dword ptr [esp + 0x28]                          // 0x005bc5b6    8b4c2428
                          {disp8} mov        edx, dword ptr [esp + 0x2c]                          // 0x005bc5ba    8b54242c
@@ -174,7 +174,7 @@ _jmp_addr_0x005bc5b6:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          mov.s              ecx, edi                                             // 0x005bc5ea    8bcf
                          {disp32} mov       dword ptr [esi + 0x00003678], eax                    // 0x005bc5ec    898678360000
                          {disp32} mov       byte ptr [esi + 0x000035a4], bl                      // 0x005bc5f2    889ea4350000
-                         call               _jmp_addr_0x00819390                                 // 0x005bc5f8    e893cd2500
+                         call               @ProjectPoint__8LH3DTechFP7LHPointPiPiPf@16          // 0x005bc5f8    e893cd2500
                          cmp.s              eax, ebx                                             // 0x005bc5fd    3bc3
                          {disp32} mov       byte ptr [esi + 0x000035a4], bl                      // 0x005bc5ff    889ea4350000
                          {disp8} je         _jmp_addr_0x005bc62e                                 // 0x005bc605    7427

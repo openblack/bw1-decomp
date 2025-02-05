@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00412980
+.extern _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf
 .extern _jmp_addr_0x0061cc80
 .extern _jmp_addr_0x0061ccb0
 .extern _jmp_addr_0x00622f20
@@ -268,7 +268,7 @@ _jmp_addr_0x0061e862:    {disp8} mov       ecx, dword ptr [esp + 0x0c]          
                          push              edi                                           // 0x0061e8bd    57
                          sub.s             esi, ebx                                      // 0x0061e8be    2bf3
                          push              esi                                           // 0x0061e8c0    56
-                         call              _jmp_addr_0x00412980                          // 0x0061e8c1    e8ba40dfff
+                         call              _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x0061e8c1    e8ba40dfff
                          add               esp, 0x3c                                     // 0x0061e8c6    83c43c
 _jmp_addr_0x0061e8c9:    pop               edi                                           // 0x0061e8c9    5f
                          pop               esi                                           // 0x0061e8ca    5e
