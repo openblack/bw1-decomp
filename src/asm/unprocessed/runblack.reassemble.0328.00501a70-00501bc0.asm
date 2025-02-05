@@ -15,12 +15,6 @@
 .extern _jmp_addr_0x004842e0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 
-.globl _jmp_addr_0x00501ad9
-.globl _jmp_addr_0x00501ae1
-.globl _jmp_addr_0x00501b09
-.globl _jmp_addr_0x00501b8c
-.globl _jmp_addr_0x00501b96
-
 start_0x00501a70_0x00501bc0:
 // Snippet: asm, [0x00501a70, 0x00501b9d)
                          push              ecx                                      // 0x00501a70    51

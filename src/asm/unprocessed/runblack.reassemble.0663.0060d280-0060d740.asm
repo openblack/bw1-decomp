@@ -25,33 +25,9 @@
 .extern @__ct__Q210NewCollide3ObjFfP7LHPoint@16
 
 .globl @Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords@16
-.globl _jmp_addr_0x0060d296
-.globl _jmp_addr_0x0060d2b1
-.globl _jmp_addr_0x0060d2d3
-.globl _jmp_addr_0x0060d2e4
-.globl _jmp_addr_0x0060d349
-.globl _jmp_addr_0x0060d375
-.globl _jmp_addr_0x0060d38f
 .globl _IsWater__10LH3DIslandFll
-.globl _jmp_addr_0x0060d403
 .globl @fetch__19CircleHugStateInfoTF9MapCoords@20
-.globl _jmp_addr_0x0060d46c
-.globl _jmp_addr_0x0060d477
-.globl _jmp_addr_0x0060d489
-.globl _jmp_addr_0x0060d4eb
-.globl _jmp_addr_0x0060d4ed
 .globl _jmp_addr_0x0060d520
-.globl _jmp_addr_0x0060d567
-.globl _jmp_addr_0x0060d5f6
-.globl _jmp_addr_0x0060d61f
-.globl _jmp_addr_0x0060d635
-.globl _jmp_addr_0x0060d67f
-.globl _jmp_addr_0x0060d693
-.globl _jmp_addr_0x0060d6af
-.globl _jmp_addr_0x0060d6ca
-.globl _jmp_addr_0x0060d6f3
-.globl _jmp_addr_0x0060d709
-.globl _jmp_addr_0x0060d70b
 
 start_0x0060d280_0x0060d740:
 // Snippet: asm, [0x0060d280, 0x0060d715)

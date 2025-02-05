@@ -9,8 +9,6 @@
 
 .extern _jmp_addr_0x00737180
 
-.globl _jmp_addr_0x00735c0f
-
 start_0x00735bf0_0x00735c30:
 // Snippet: asm, [0x00735bf0, 0x00735c14)
                          {disp8} mov     eax, dword ptr [esp + 0x0c]  // 0x00735bf0    8b44240c

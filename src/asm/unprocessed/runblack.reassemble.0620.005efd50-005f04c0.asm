@@ -21,31 +21,6 @@
 .extern _jmp_addr_0x007fb880
 .extern _jmp_addr_0x007fc760
 
-.globl _jmp_addr_0x005efd64
-.globl _jmp_addr_0x005efd70
-.globl _jmp_addr_0x005efd80
-.globl _jmp_addr_0x005efd9c
-.globl _jmp_addr_0x005efdb1
-.globl _jmp_addr_0x005efdf8
-.globl _jmp_addr_0x005efe06
-.globl _jmp_addr_0x005efe10
-.globl _jmp_addr_0x005efe31
-.globl _jmp_addr_0x005efe57
-.globl _jmp_addr_0x005efec8
-.globl _jmp_addr_0x005efeda
-.globl _jmp_addr_0x005eff6a
-.globl _jmp_addr_0x005effc6
-.globl _jmp_addr_0x005effe7
-.globl _jmp_addr_0x005effe9
-.globl _jmp_addr_0x005f00aa
-.globl _jmp_addr_0x005f01ac
-.globl _jmp_addr_0x005f01b4
-.globl _jmp_addr_0x005f01b8
-.globl _jmp_addr_0x005f01bd
-.globl _jmp_addr_0x005f025e
-.globl _jmp_addr_0x005f027e
-.globl _jmp_addr_0x005f0299
-
 start_0x005efd50_0x005f04c0:
 // Snippet: asm, [0x005efd50, 0x005f0482)
                          {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]     // 0x005efd50    8a0d34c9fa00

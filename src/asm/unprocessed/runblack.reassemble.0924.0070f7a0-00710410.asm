@@ -38,52 +38,8 @@
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007c5791
 
-.globl _jmp_addr_0x0070f7b4
-.globl _jmp_addr_0x0070f7c0
-.globl _jmp_addr_0x0070f7e0
 .globl _jmp_addr_0x0070f8e0
-.globl _jmp_addr_0x0070f8f4
-.globl _jmp_addr_0x0070f91a
-.globl _jmp_addr_0x0070f98a
-.globl _jmp_addr_0x0070f9a6
-.globl _jmp_addr_0x0070fa99
-.globl _jmp_addr_0x0070faa1
-.globl _jmp_addr_0x0070faad
-.globl _jmp_addr_0x0070faef
-.globl _jmp_addr_0x0070fb08
-.globl _jmp_addr_0x0070fb3d
-.globl _jmp_addr_0x0070fb4a
-.globl _jmp_addr_0x0070fbe4
-.globl _jmp_addr_0x0070fc31
-.globl _jmp_addr_0x0070fc3a
-.globl _jmp_addr_0x0070fc47
-.globl _jmp_addr_0x0070fc58
-.globl _jmp_addr_0x0070fc8d
-.globl _jmp_addr_0x0070fce1
-.globl _jmp_addr_0x0070fcee
-.globl _jmp_addr_0x0070fd03
-.globl _jmp_addr_0x0070fd51
-.globl _jmp_addr_0x0070fdb7
-.globl _jmp_addr_0x0070fdfd
-.globl _jmp_addr_0x0070fe0a
-.globl _jmp_addr_0x0070fe13
-.globl _jmp_addr_0x0070fe2d
-.globl _jmp_addr_0x0070fedb
-.globl _jmp_addr_0x0070ff2d
-.globl _jmp_addr_0x0070ff7c
-.globl _jmp_addr_0x0070ffd5
-.globl _jmp_addr_0x00710015
-.globl _jmp_addr_0x007100a6
-.globl _jmp_addr_0x007100e8
-.globl _jmp_addr_0x007101c1
-.globl _jmp_addr_0x0071021f
-.globl _jmp_addr_0x007102b1
-.globl _jmp_addr_0x007102e3
-.globl _jmp_addr_0x00710314
-.globl _jmp_addr_0x00710320
-.globl _jmp_addr_0x00710340
 .globl _jmp_addr_0x00710350
-.globl _jmp_addr_0x007103f9
 
 start_0x0070f7a0_0x00710410:
 // Snippet: asm, [0x0070f7a0, 0x007103ff)

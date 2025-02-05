@@ -16,22 +16,7 @@
 .extern ___dl__FPv
 
 .globl @Draw__11SetupButtonFbb@10
-.globl _jmp_addr_0x004097e8
-.globl _jmp_addr_0x004097f4
-.globl _jmp_addr_0x00409831
-.globl _jmp_addr_0x0040983c
-.globl _jmp_addr_0x00409843
-.globl _jmp_addr_0x00409855
 .globl @__ct__10SetupButtonFiiiiiPwi@36
-.globl _jmp_addr_0x00409938
-.globl _jmp_addr_0x00409958
-.globl _jmp_addr_0x004099a9
-.globl _jmp_addr_0x004099af
-.globl _jmp_addr_0x004099b1
-.globl _jmp_addr_0x004099df
-.globl _jmp_addr_0x004099e7
-.globl _jmp_addr_0x004099ed
-.globl _jmp_addr_0x00409a17
 
 start_0x004097a0_0x00409a40:
 // Snippet: asm, [0x004097a0, 0x00409a1a)

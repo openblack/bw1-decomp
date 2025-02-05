@@ -14,12 +14,6 @@
 .extern @GetLength__9RouteNodeFP7RPAvoid@12
 
 .globl _jmp_addr_0x00863ef0
-.globl _jmp_addr_0x00863f82
-.globl _jmp_addr_0x00863f84
-.globl _jmp_addr_0x00863fcb
-.globl _jmp_addr_0x00863fd9
-.globl _jmp_addr_0x00863fec
-.globl _jmp_addr_0x00864026
 
 start_0x00863ef0_0x00864040:
 // Snippet: asm, [0x00863ef0, 0x0086402b)

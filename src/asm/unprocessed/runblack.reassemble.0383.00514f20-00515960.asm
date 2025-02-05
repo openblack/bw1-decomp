@@ -39,56 +39,6 @@
 .extern ___nw__FUl
 
 .globl @__ct__20MiniDialogBoxOptions@4
-.globl _jmp_addr_0x00514fa3
-.globl _jmp_addr_0x00514fdd
-.globl _jmp_addr_0x00514fdf
-.globl _jmp_addr_0x00515020
-.globl _jmp_addr_0x0051502c
-.globl _jmp_addr_0x00515049
-.globl _jmp_addr_0x0051504b
-.globl _jmp_addr_0x0051508d
-.globl _jmp_addr_0x005150aa
-.globl _jmp_addr_0x005150ac
-.globl _jmp_addr_0x005150e4
-.globl _jmp_addr_0x005150f0
-.globl _jmp_addr_0x00515111
-.globl _jmp_addr_0x00515113
-.globl _jmp_addr_0x00515161
-.globl _jmp_addr_0x00515182
-.globl _jmp_addr_0x00515184
-.globl _jmp_addr_0x005151cf
-.globl _jmp_addr_0x005151db
-.globl _jmp_addr_0x00515214
-.globl _jmp_addr_0x00515216
-.globl _jmp_addr_0x0051524c
-.globl _jmp_addr_0x0051528c
-.globl _jmp_addr_0x0051528e
-.globl _jmp_addr_0x005152d9
-.globl _jmp_addr_0x005152db
-.globl _jmp_addr_0x00515331
-.globl _jmp_addr_0x00515333
-.globl _jmp_addr_0x0051537a
-.globl _jmp_addr_0x0051537c
-.globl _jmp_addr_0x0051543e
-.globl _jmp_addr_0x00515459
-.globl _jmp_addr_0x0051545b
-.globl _jmp_addr_0x005154a7
-.globl _jmp_addr_0x005154c6
-.globl _jmp_addr_0x005154c8
-.globl _jmp_addr_0x00515586
-.globl _jmp_addr_0x00515592
-.globl _jmp_addr_0x005155c0
-.globl _jmp_addr_0x005155e0
-.globl _jmp_addr_0x0051561c
-.globl _jmp_addr_0x00515620
-.globl _jmp_addr_0x00515640
-.globl _jmp_addr_0x0051567c
-.globl _jmp_addr_0x00515736
-.globl _jmp_addr_0x005157a6
-.globl _jmp_addr_0x005157cb
-.globl _jmp_addr_0x005158bd
-.globl _jmp_addr_0x005158f3
-.globl _jmp_addr_0x00515933
 
 start_0x00514f20_0x00515960:
 // Snippet: asm, [0x00514f20, 0x0051593a)

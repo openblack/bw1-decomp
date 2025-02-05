@@ -20,46 +20,21 @@
 
 .globl _jmp_addr_0x0046f170
 .globl @GetDisplayText__12ControlMouseFPw@12
-.globl _jmp_addr_0x0046f19c
 .globl @__ct__14BindableActionFv@4
-.globl _jmp_addr_0x0046f1cf
 .globl _jmp_addr_0x0046f1e0
 .globl _jmp_addr_0x0046f200
 .globl _jmp_addr_0x0046f220
 .globl _jmp_addr_0x0046f240
 .globl _jmp_addr_0x0046f260
-.globl _jmp_addr_0x0046f29f
 .globl _jmp_addr_0x0046f2b0
 .globl _jmp_addr_0x0046f2f0
-.globl _jmp_addr_0x0046f325
 .globl _jmp_addr_0x0046f330
-.globl _jmp_addr_0x0046f353
-.globl _jmp_addr_0x0046f360
-.globl _jmp_addr_0x0046f376
-.globl _jmp_addr_0x0046f380
-.globl _jmp_addr_0x0046f38c
-.globl _jmp_addr_0x0046f399
-.globl _jmp_addr_0x0046f3a5
-.globl _jmp_addr_0x0046f3b2
-.globl _jmp_addr_0x0046f3b5
 .globl _IsKeyDown__14BindableActionF6LH_KEY
-.globl _jmp_addr_0x0046f3ce
-.globl _jmp_addr_0x0046f3e2
-.globl _jmp_addr_0x0046f3ee
-.globl _jmp_addr_0x0046f402
-.globl _jmp_addr_0x0046f40e
-.globl _jmp_addr_0x0046f422
-.globl _jmp_addr_0x0046f432
 .globl _jmp_addr_0x0046f440
 .globl _jmp_addr_0x0046f460
 .globl _jmp_addr_0x0046f480
-.globl _jmp_addr_0x0046f4ba
 .globl @IsKeyBeingPressed__14BindableActionFv@4
-.globl _jmp_addr_0x0046f4ef
-.globl _jmp_addr_0x0046f4f6
 .globl _jmp_addr_0x0046f500
-.globl _jmp_addr_0x0046f557
-.globl _jmp_addr_0x0046f56d
 
 start_0x0046f170_0x0046f590:
 // Snippet: asm, [0x0046f170, 0x0046f570)

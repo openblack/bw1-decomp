@@ -15,16 +15,8 @@
 .extern @__dt__5RPlanFv@4
 
 .globl _jmp_addr_0x00864190
-.globl _jmp_addr_0x008641a8
-.globl _jmp_addr_0x008641be
-.globl _jmp_addr_0x008641db
 .globl _jmp_addr_0x008641f0
-.globl _jmp_addr_0x00864290
-.globl _jmp_addr_0x008642b0
 .globl _jmp_addr_0x008642c0
-.globl _jmp_addr_0x0086437f
-.globl _jmp_addr_0x008643b7
-.globl _jmp_addr_0x008643ff
 
 start_0x00864190_0x00864420:
 // Snippet: asm, [0x00864190, 0x00864402)

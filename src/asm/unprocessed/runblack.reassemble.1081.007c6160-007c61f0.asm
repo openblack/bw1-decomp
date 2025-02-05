@@ -9,7 +9,6 @@
 
 .extern _jmp_addr_0x007c614c
 
-
 start_0x007c6160_0x007c61f0:
 // Snippet: asm, [0x007c6160, 0x007c61c9)
                          and.s           edx, ecx                     // 0x007c6160    23d1

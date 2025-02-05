@@ -9,7 +9,6 @@
 
 .extern _jmp_addr_0x007ca6ec
 
-
 start_0x007ca700_0x007ca790:
 // Snippet: asm, [0x007ca700, 0x007ca769)
                          and.s           edx, ecx                     // 0x007ca700    23d1

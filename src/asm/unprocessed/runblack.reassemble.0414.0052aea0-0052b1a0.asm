@@ -10,13 +10,7 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @GetLHPoint__9MapCoordsCFv@12
 
-.globl _jmp_addr_0x0052aea0
 .globl _jmp_addr_0x0052af90
-.globl _jmp_addr_0x0052b00e
-.globl _jmp_addr_0x0052b050
-.globl _jmp_addr_0x0052b0df
-.globl _jmp_addr_0x0052b125
-.globl _jmp_addr_0x0052b183
 
 start_0x0052aea0_0x0052b1a0:
 // Snippet: asm, [0x0052aea0, 0x0052b189)

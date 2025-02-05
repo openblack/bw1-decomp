@@ -10,7 +10,6 @@
 .extern _jmp_addr_0x006dacd0
 
 .globl _jmp_addr_0x006dac60
-.globl _jmp_addr_0x006dacb0
 
 start_0x006dac60_0x006dacd0:
 // Snippet: asm, [0x006dac60, 0x006dacb5)

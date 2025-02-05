@@ -9,11 +9,6 @@
 
 .extern _jmp_addr_0x004056d0
 
-.globl _jmp_addr_0x004060eb
-.globl _jmp_addr_0x00406105
-.globl _jmp_addr_0x0040610c
-.globl _jmp_addr_0x0040610f
-
 start_0x004060c0_0x004061a0:
 // Snippet: asm, [0x004060c0, 0x00406115)
                          call             _jmp_addr_0x004056d0              // 0x004060c0    e80bf6ffff

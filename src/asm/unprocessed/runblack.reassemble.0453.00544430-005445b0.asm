@@ -11,17 +11,6 @@
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x0054ae20
 
-.globl _jmp_addr_0x00544457
-.globl _jmp_addr_0x00544459
-.globl _jmp_addr_0x00544461
-.globl _jmp_addr_0x005444a2
-.globl _jmp_addr_0x005444e5
-.globl _jmp_addr_0x00544510
-.globl _jmp_addr_0x0054454d
-.globl _jmp_addr_0x00544586
-.globl _jmp_addr_0x00544589
-.globl _jmp_addr_0x00544598
-
 start_0x00544430_0x005445b0:
 // Snippet: asm, [0x00544430, 0x0054459d)
                          call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544430    e85bf1fcff

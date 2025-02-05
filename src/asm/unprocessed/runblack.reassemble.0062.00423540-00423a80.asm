@@ -15,32 +15,6 @@
 .extern _jmp_addr_0x007436f0
 .extern _jmp_addr_0x007c5a19
 
-.globl _jmp_addr_0x004235d2
-.globl _jmp_addr_0x004235db
-.globl _jmp_addr_0x004235dd
-.globl _jmp_addr_0x004235f4
-.globl _jmp_addr_0x0042360d
-.globl _jmp_addr_0x00423613
-.globl _jmp_addr_0x00423615
-.globl _jmp_addr_0x004236ad
-.globl _jmp_addr_0x004236ba
-.globl _jmp_addr_0x004236c7
-.globl _jmp_addr_0x004236f3
-.globl _jmp_addr_0x00423714
-.globl _jmp_addr_0x00423757
-.globl _jmp_addr_0x00423786
-.globl _jmp_addr_0x004237b6
-.globl _jmp_addr_0x0042380f
-.globl _jmp_addr_0x0042383f
-.globl _jmp_addr_0x00423850
-.globl _jmp_addr_0x00423878
-.globl _jmp_addr_0x00423895
-.globl _jmp_addr_0x004238a0
-.globl _jmp_addr_0x004238af
-.globl _jmp_addr_0x004238f6
-.globl _jmp_addr_0x004239cd
-.globl _jmp_addr_0x004239f6
-
 start_0x00423540_0x00423a80:
 // Snippet: asm, [0x00423540, 0x004239fd)
                          sub                esp, 0x08                               // 0x00423540    83ec08

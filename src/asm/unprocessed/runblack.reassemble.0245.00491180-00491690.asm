@@ -24,20 +24,6 @@
 .extern @GetLength__9RouteNodeFP7RPAvoid@12
 
 .globl _jmp_addr_0x00491180
-.globl _jmp_addr_0x0049120e
-.globl _jmp_addr_0x0049126f
-.globl _jmp_addr_0x00491273
-.globl _jmp_addr_0x00491317
-.globl _jmp_addr_0x0049131f
-.globl _jmp_addr_0x00491365
-.globl _jmp_addr_0x0049136b
-.globl _jmp_addr_0x0049138c
-.globl _jmp_addr_0x00491468
-.globl _jmp_addr_0x0049148e
-.globl _jmp_addr_0x00491532
-.globl _jmp_addr_0x00491580
-.globl _jmp_addr_0x0049163d
-.globl _jmp_addr_0x0049166c
 
 start_0x00491180_0x00491690:
 // Snippet: asm, [0x00491180, 0x00491674)

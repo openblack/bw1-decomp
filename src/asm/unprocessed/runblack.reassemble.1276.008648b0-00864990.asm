@@ -10,12 +10,6 @@
 .extern @MoveAlongRoute__8RPFollowFv@4
 .extern @GetLength__9RouteNodeFP7RPAvoid@12
 
-.globl _jmp_addr_0x0086490c
-.globl _jmp_addr_0x0086494a
-.globl _jmp_addr_0x00864950
-.globl _jmp_addr_0x0086496d
-.globl _jmp_addr_0x00864976
-
 start_0x008648b0_0x00864990:
 // Snippet: asm, [0x008648b0, 0x00864979)
                          push               ecx                               // 0x008648b0    51

@@ -7,8 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-
-
 start_0x007c6390_0x007c63e0:
 // Snippet: asm, [0x007c6390, 0x007c63ce)
                          {disp8} mov      dword ptr [edi + ecx * 0x4 + 0x18], eax // 0x007c6390    89448f18

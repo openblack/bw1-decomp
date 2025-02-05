@@ -11,23 +11,11 @@
 .extern _jmp_addr_0x0046f1e0
 
 .globl _jmp_addr_0x0046f590
-.globl _jmp_addr_0x0046f5b7
-.globl _jmp_addr_0x0046f5cd
-.globl _jmp_addr_0x0046f5e6
 .globl _jmp_addr_0x0046f5f0
-.globl _jmp_addr_0x0046f62b
-.globl _jmp_addr_0x0046f64f
 .globl _jmp_addr_0x0046f660
-.globl _jmp_addr_0x0046f687
-.globl _jmp_addr_0x0046f69d
-.globl _jmp_addr_0x0046f6b3
 .globl @__ct__10ControlMapFv@4
-.globl _jmp_addr_0x0046f6cc
 .globl _jmp_addr_0x0046f730
-.globl _jmp_addr_0x0046f73d
 .globl _jmp_addr_0x0046f750
-.globl _jmp_addr_0x0046f775
-.globl _jmp_addr_0x0046f795
 
 start_0x0046f590_0x0046f7c0:
 // Snippet: asm, [0x0046f590, 0x0046f79a)

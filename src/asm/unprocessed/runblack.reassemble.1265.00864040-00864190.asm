@@ -14,19 +14,6 @@
 .extern @GetRange__7Point2DCFRC7Point2D@12
 
 .globl _jmp_addr_0x00864040
-.globl _jmp_addr_0x00864065
-.globl _jmp_addr_0x0086406b
-.globl _jmp_addr_0x00864084
-.globl _jmp_addr_0x00864086
-.globl _jmp_addr_0x008640aa
-.globl _jmp_addr_0x008640c3
-.globl _jmp_addr_0x008640cb
-.globl _jmp_addr_0x008640f0
-.globl _jmp_addr_0x00864136
-.globl _jmp_addr_0x00864148
-.globl _jmp_addr_0x0086414f
-.globl _jmp_addr_0x00864151
-.globl _jmp_addr_0x0086416b
 
 start_0x00864040_0x00864190:
 // Snippet: asm, [0x00864040, 0x00864177)

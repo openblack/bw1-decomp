@@ -20,32 +20,8 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 
 .globl _jmp_addr_0x006da550
-.globl _jmp_addr_0x006da5c7
-.globl _jmp_addr_0x006da629
-.globl _jmp_addr_0x006da6a0
-.globl _jmp_addr_0x006da6bd
 .globl _jmp_addr_0x006da6d0
-.globl _jmp_addr_0x006da701
-.globl _jmp_addr_0x006da781
-.globl _jmp_addr_0x006da796
-.globl _jmp_addr_0x006da7c0
-.globl _jmp_addr_0x006da7d5
-.globl _jmp_addr_0x006da7e0
-.globl _jmp_addr_0x006da831
-.globl _jmp_addr_0x006da870
-.globl _jmp_addr_0x006da885
-.globl _jmp_addr_0x006da890
-.globl _jmp_addr_0x006da939
-.globl _jmp_addr_0x006da98f
-.globl _jmp_addr_0x006da9d1
-.globl _jmp_addr_0x006da9f0
-.globl _jmp_addr_0x006daa1e
-.globl _jmp_addr_0x006daa7b
-.globl _jmp_addr_0x006daa7d
-.globl _jmp_addr_0x006daaac
-.globl _jmp_addr_0x006daaf1
 .globl _jmp_addr_0x006dab00
-.globl _jmp_addr_0x006dab2a
 
 start_0x006da550_0x006dab60:
 // Snippet: asm, [0x006da550, 0x006dab30)

@@ -18,56 +18,8 @@
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
 
-.globl _jmp_addr_0x00409ae1
-.globl _jmp_addr_0x00409b04
-.globl _jmp_addr_0x00409b18
-.globl _jmp_addr_0x00409b1d
-.globl _jmp_addr_0x00409b59
-.globl _jmp_addr_0x00409b64
-.globl _jmp_addr_0x00409b76
-.globl _jmp_addr_0x00409b7b
-.globl _jmp_addr_0x00409b88
-.globl _jmp_addr_0x00409ba1
-.globl _jmp_addr_0x00409ba6
-.globl _jmp_addr_0x00409bd2
 .globl @__ct__11SetupSliderFiiiiifPw@36
-.globl _jmp_addr_0x00409c68
-.globl _jmp_addr_0x00409cca
-.globl _jmp_addr_0x00409cce
-.globl _jmp_addr_0x00409ce0
-.globl _jmp_addr_0x00409cf2
-.globl _jmp_addr_0x00409cf8
-.globl _jmp_addr_0x00409d31
-.globl _jmp_addr_0x00409d42
-.globl _jmp_addr_0x00409d88
-.globl _jmp_addr_0x00409db5
 .globl @AutoScroll__9SetupListFb@9
-.globl _jmp_addr_0x00409e20
-.globl _jmp_addr_0x00409e44
-.globl _jmp_addr_0x00409e4e
-.globl _jmp_addr_0x00409e56
-.globl _jmp_addr_0x00409e5a
-.globl _jmp_addr_0x00409e5e
-.globl _jmp_addr_0x00409e85
-.globl _jmp_addr_0x00409e87
-.globl _jmp_addr_0x00409e93
-.globl _jmp_addr_0x00409f07
-.globl _jmp_addr_0x00409f11
-.globl _jmp_addr_0x00409f4a
-.globl _jmp_addr_0x00409f5a
-.globl _jmp_addr_0x00409f64
-.globl _jmp_addr_0x00409fc6
-.globl _jmp_addr_0x00409fd0
-.globl _jmp_addr_0x0040a011
-.globl _jmp_addr_0x0040a02a
-.globl _jmp_addr_0x0040a034
-.globl _jmp_addr_0x0040a079
-.globl _jmp_addr_0x0040a0a6
-.globl _jmp_addr_0x0040a0a8
-.globl _jmp_addr_0x0040a0b0
-.globl _jmp_addr_0x0040a0c6
-.globl _jmp_addr_0x0040a0cf
-.globl _jmp_addr_0x0040a0e8
 
 start_0x00409a40_0x0040a110:
 // Snippet: asm, [0x00409a40, 0x0040a0ec)

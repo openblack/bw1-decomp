@@ -26,30 +26,6 @@
 .extern _GetPosFromAngle__6GUtilsFff
 
 .globl _jmp_addr_0x00666410
-.globl _jmp_addr_0x006664fc
-.globl _jmp_addr_0x006664fe
-.globl _jmp_addr_0x00666544
-.globl _jmp_addr_0x00666546
-.globl _jmp_addr_0x00666585
-.globl _jmp_addr_0x00666587
-.globl _jmp_addr_0x006665ad
-.globl _jmp_addr_0x006665ff
-.globl _jmp_addr_0x00666647
-.globl _jmp_addr_0x00666649
-.globl _jmp_addr_0x0066666d
-.globl _jmp_addr_0x0066666f
-.globl _jmp_addr_0x006666a1
-.globl _jmp_addr_0x006666a3
-.globl _jmp_addr_0x006666ef
-.globl _jmp_addr_0x006666f1
-.globl _jmp_addr_0x00666735
-.globl _jmp_addr_0x0066673c
-.globl _jmp_addr_0x00666767
-.globl _jmp_addr_0x00666769
-.globl _jmp_addr_0x0066678f
-.globl _jmp_addr_0x006667c1
-.globl _jmp_addr_0x006667c3
-.globl _jmp_addr_0x006667e1
 
 start_0x00666410_0x00666820:
 // Snippet: asm, [0x00666410, 0x006667ed)

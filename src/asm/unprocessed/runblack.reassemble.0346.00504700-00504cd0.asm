@@ -39,21 +39,6 @@
 .extern _jmp_addr_0x007faa50
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
-.globl _jmp_addr_0x0050479e
-.globl _jmp_addr_0x005047b5
-.globl _jmp_addr_0x005047c8
-.globl _jmp_addr_0x00504851
-.globl _jmp_addr_0x00504853
-.globl _jmp_addr_0x005048b3
-.globl _jmp_addr_0x005048b5
-.globl _jmp_addr_0x0050498d
-.globl _jmp_addr_0x0050498f
-.globl _jmp_addr_0x00504a04
-.globl _jmp_addr_0x00504b06
-.globl _jmp_addr_0x00504bd4
-.globl _jmp_addr_0x00504c2f
-.globl _jmp_addr_0x00504c6a
-
 start_0x00504700_0x00504cd0:
 // Snippet: asm, [0x00504700, 0x00504c73)
                          sub                esp, 0x44                                     // 0x00504700    83ec44

@@ -28,31 +28,6 @@
 .extern _Report3D__FPCce
 .extern _CHAR2WCHAR__FPc
 
-.globl _jmp_addr_0x00640fc0
-.globl _jmp_addr_0x00640fdb
-.globl _jmp_addr_0x00641041
-.globl _jmp_addr_0x006410e9
-.globl _jmp_addr_0x00641103
-.globl _jmp_addr_0x0064110a
-.globl _jmp_addr_0x00641116
-.globl _jmp_addr_0x00641137
-.globl _jmp_addr_0x00641145
-.globl _jmp_addr_0x00641198
-.globl _jmp_addr_0x006411c3
-.globl _jmp_addr_0x006411d6
-.globl _jmp_addr_0x006411f3
-.globl _jmp_addr_0x00641216
-.globl _jmp_addr_0x006412af
-.globl _jmp_addr_0x006412b1
-.globl _jmp_addr_0x0064132c
-.globl _jmp_addr_0x0064132e
-.globl _jmp_addr_0x00641409
-.globl _jmp_addr_0x00641432
-.globl _jmp_addr_0x0064144b
-.globl _jmp_addr_0x00641489
-.globl _jmp_addr_0x0064149b
-.globl _jmp_addr_0x006414ac
-
 start_0x00640fa0_0x00641510:
 // Snippet: asm, [0x00640fa0, 0x006414b7)
                          {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x00640fa0    8b442404
