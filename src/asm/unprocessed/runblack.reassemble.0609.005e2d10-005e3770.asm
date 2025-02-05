@@ -9,12 +9,12 @@
 
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
-.extern _jmp_addr_0x00403570
+.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
-.extern _jmp_addr_0x00803090
-.extern _jmp_addr_0x0080b4d0
+.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x008786d0
 
 .globl _jmp_addr_0x005e2d10
@@ -25,11 +25,11 @@
 .globl _jmp_addr_0x005e2e22
 .globl _jmp_addr_0x005e2e9d
 .globl _jmp_addr_0x005e2ea9
-.globl _jmp_addr_0x005e2f30
+.globl _GetNearClipping__11LandFeatureFv@0
 .globl _jmp_addr_0x005e2f46
 .globl _jmp_addr_0x005e2fb5
 .globl _jmp_addr_0x005e2fd0
-.globl _jmp_addr_0x005e2ff0
+.globl _RequestChangeTexture__FP6Object
 .globl _jmp_addr_0x005e315c
 .globl _jmp_addr_0x005e31e6
 .globl _jmp_addr_0x005e3222
@@ -96,13 +96,13 @@ _jmp_addr_0x005e2d10:    sub                esp, 0x0c                           
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]             // 0x005e2d43    8d4c240c
                          {disp8} mov        dword ptr [esp + 0x10], eax             // 0x005e2d47    89442410
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000      // 0x005e2d4b    c744241400000000
-                         call               _jmp_addr_0x00803090                    // 0x005e2d53    e838032200
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                    // 0x005e2d53    e838032200
                          {disp8} fstp       dword ptr [esi + 0x04]                  // 0x005e2d58    d95e04
                          {disp32} mov       eax, dword ptr [data_bytes + 0x3542f0]  // 0x005e2d5b    a1f0a2d100
                          test               eax, eax                                // 0x005e2d60    85c0
                          {disp32} jne       _jmp_addr_0x005e2e22                    // 0x005e2d62    0f85ba000000
                          xor.s              ecx, ecx                                // 0x005e2d68    33c9
-                         call               _jmp_addr_0x0080b4d0                    // 0x005e2d6a    e861872200
+                         call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                    // 0x005e2d6a    e861872200
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]  // 0x005e2d6f    8b1534fee900
                          {disp32} mov       dword ptr [data_bytes + 0x3542f4], eax  // 0x005e2d75    a3f4a2d100
                          mov                edi, dword ptr [edx]                    // 0x005e2d7a    8b3a
@@ -121,7 +121,7 @@ _jmp_addr_0x005e2d87:    {disp8} mov        edx, dword ptr [edx + ecx * 0x4 + 0x
                          mov                edx, 0x00000001                         // 0x005e2da1    ba01000000
                          call               dword ptr [eax + 0x58]                  // 0x005e2da6    ff5058
                          mov                ecx, 0x00000002                         // 0x005e2da9    b902000000
-                         call               _jmp_addr_0x0080b4d0                    // 0x005e2dae    e81d872200
+                         call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                    // 0x005e2dae    e81d872200
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]  // 0x005e2db3    8b1534fee900
                          {disp32} mov       dword ptr [data_bytes + 0x3542f0], eax  // 0x005e2db9    a3f0a2d100
                          mov                edi, dword ptr [edx]                    // 0x005e2dbe    8b3a
@@ -239,7 +239,7 @@ _jmp_addr_0x005e2ea9:    {disp32} mov       ecx, dword ptr [data_bytes + 0x3542f
                          nop                                                        // 0x005e2f2d    90
                          nop                                                        // 0x005e2f2e    90
                          nop                                                        // 0x005e2f2f    90
-_jmp_addr_0x005e2f30:    {disp32} mov       eax, dword ptr [data_bytes + 0x3542f8]  // 0x005e2f30    a1f8a2d100
+_GetNearClipping__11LandFeatureFv@0:    {disp32} mov       eax, dword ptr [data_bytes + 0x3542f8]  // 0x005e2f30    a1f8a2d100
                          sub                esp, 0x1c                               // 0x005e2f35    83ec1c
                          test               eax, eax                                // 0x005e2f38    85c0
                          {disp8} je         _jmp_addr_0x005e2f46                    // 0x005e2f3a    740a
@@ -260,7 +260,7 @@ _jmp_addr_0x005e2f46:    {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]   
                          {disp8} lea        ecx, dword ptr [esp + 0x04]             // 0x005e2f7f    8d4c2404
                          {disp8} mov        dword ptr [esp + 0x08], eax             // 0x005e2f83    89442408
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000      // 0x005e2f87    c744240c00000000
-                         call               _jmp_addr_0x00803090                    // 0x005e2f8f    e8fc002200
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                    // 0x005e2f8f    e8fc002200
                          {disp32} fsubr     dword ptr [data_bytes + 0x4dbdbc]       // 0x005e2f94    d82dbc1dea00
                          {disp8} fst        dword ptr [esp + 0x00]                  // 0x005e2f9a    d9542400
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]        // 0x005e2f9e    d81d98a38a00
@@ -285,7 +285,7 @@ _jmp_addr_0x005e2fd0:    {disp8} fld        dword ptr [esp + 0x00]              
                          add                esp, 0x1c                               // 0x005e2fe6    83c41c
                          ret                                                        // 0x005e2fe9    c3
                          call               dword ptr [rdata_bytes + 0x948]         // 0x005e2fea    ff1548998a00
-_jmp_addr_0x005e2ff0:    sub                esp, 0x4c                               // 0x005e2ff0    83ec4c
+_RequestChangeTexture__FP6Object:    sub                esp, 0x4c                               // 0x005e2ff0    83ec4c
                          push               ebx                                     // 0x005e2ff3    53
                          {disp8} mov        ebx, dword ptr [esp + 0x54]             // 0x005e2ff4    8b5c2454
                          push               ebp                                     // 0x005e2ff8    55
@@ -316,7 +316,7 @@ _jmp_addr_0x005e2ff0:    sub                esp, 0x4c                           
                          {disp8} lea        edi, dword ptr [ebx + 0x14]             // 0x005e3048    8d7b14
                          mov.s              ecx, edi                                // 0x005e304b    8bcf
                          {disp8} mov        dword ptr [esp + 0x14], eax             // 0x005e304d    89442414
-                         call               _jmp_addr_0x00803090                    // 0x005e3051    e83a002200
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                    // 0x005e3051    e83a002200
                          {disp8} fadd       dword ptr [esp + 0x14]                  // 0x005e3056    d8442414
                          {disp8} fstp       dword ptr [esp + 0x24]                  // 0x005e305a    d95c2424
                          fild               dword ptr [edi]                         // 0x005e305e    db07
@@ -470,7 +470,7 @@ _jmp_addr_0x005e31e6:    test               ah, 0x40                            
                          {disp8} mov        dword ptr [ecx + 0x08], ebp             // 0x005e3212    896908
                          {disp8} mov        dword ptr [ecx + 0x04], ebp             // 0x005e3215    896904
                          {disp8} mov        dword ptr [ecx + 0x10], eax             // 0x005e3218    894110
-                         call               _jmp_addr_0x00403570                    // 0x005e321b    e85003e2ff
+                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8// 0x005e321b    e85003e2ff
                          {disp8} jmp        _jmp_addr_0x005e322e                    // 0x005e3220    eb0c
 _jmp_addr_0x005e3222:    {disp8} lea        edx, dword ptr [esp + 0x20]             // 0x005e3222    8d542420
                          {disp8} lea        ecx, dword ptr [esi + 0x14]             // 0x005e3226    8d4e14

@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00442720
+.extern @Update__6ZoomerFf@12
 .extern _jmp_addr_0x005b96d0
 .extern _jmp_addr_0x005b98d0
 .extern _jmp_addr_0x005ba010
@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x007fb3f0
 .extern _jmp_addr_0x007fb5c0
 .extern _jmp_addr_0x00801c90
-.extern _jmp_addr_0x00803090
+.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
 .globl _jmp_addr_0x005bdaf0
 .globl _jmp_addr_0x005bdb21
@@ -568,13 +568,13 @@ _jmp_addr_0x005be1af:    {disp8} mov        esi, dword ptr [esp + 0x74]         
                          {disp32} lea       edi, dword ptr [ebx + 0x000035e0]                    // 0x005be1b3    8dbbe0350000
                          push               esi                                                  // 0x005be1b9    56
                          mov.s              ecx, edi                                             // 0x005be1ba    8bcf
-                         call               _jmp_addr_0x00442720                                 // 0x005be1bc    e85f45e8ff
+                         call               @Update__6ZoomerFf@12                                // 0x005be1bc    e85f45e8ff
                          push               esi                                                  // 0x005be1c1    56
                          {disp8} lea        ecx, dword ptr [edi + 0x30]                          // 0x005be1c2    8d4f30
-                         call               _jmp_addr_0x00442720                                 // 0x005be1c5    e85645e8ff
+                         call               @Update__6ZoomerFf@12                                // 0x005be1c5    e85645e8ff
                          push               esi                                                  // 0x005be1ca    56
                          {disp8} lea        ecx, dword ptr [edi + 0x60]                          // 0x005be1cb    8d4f60
-                         call               _jmp_addr_0x00442720                                 // 0x005be1ce    e84d45e8ff
+                         call               @Update__6ZoomerFf@12                                // 0x005be1ce    e84d45e8ff
                          push               ebp                                                  // 0x005be1d3    55
                          push               esi                                                  // 0x005be1d4    56
                          mov.s              ecx, ebx                                             // 0x005be1d5    8bcb
@@ -1019,7 +1019,7 @@ _jmp_addr_0x005be5fc:    {disp32} fld       dword ptr [ebx + 0x00003504]        
                          {disp8} mov        dword ptr [esp + 0x2c], eax                          // 0x005be828    8944242c
                          {disp8} mov        dword ptr [esp + 0x30], 0x00000000                   // 0x005be82c    c744243000000000
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                          // 0x005be834    8d4c2428
-                         call               _jmp_addr_0x00803090                                 // 0x005be838    e853482400
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4       // 0x005be838    e853482400
                          {disp32} fadd      dword ptr [rdata_bytes + 0x19c50]                    // 0x005be83d    d805502c8c00
                          {disp8} fld        dword ptr [esp + 0x20]                               // 0x005be843    d9442420
                          fcomp              st(1)                                                // 0x005be847    d8d9

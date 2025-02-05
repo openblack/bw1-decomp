@@ -19,12 +19,12 @@
 .extern _jmp_addr_0x004e2380
 .extern _jmp_addr_0x004e2890
 .extern _jmp_addr_0x004f12e0
-.extern _jmp_addr_0x005f27f0
-.extern _jmp_addr_0x0064ac00
+.extern @GetTopState__6LivingCFv@4
+.extern @IsNeutral__7GPlayerFv@4
 .extern _jmp_addr_0x00745ea0
-.extern _jmp_addr_0x0074cd70
+.extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007aee98
+.extern ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c5a19
 
@@ -242,7 +242,7 @@ _jmp_addr_0x004d7748:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          dec                ecx                                           // 0x004d774b    49
                          push               eax                                           // 0x004d774c    50
                          {disp8} mov        dword ptr [esi + 0x04], ecx                   // 0x004d774d    894e04
-                         call               _jmp_addr_0x007aee98                          // 0x004d7750    e843772d00
+                         call               ___dl__FPv                                    // 0x004d7750    e843772d00
                          add                esp, 0x04                                     // 0x004d7755    83c404
                          test               bl, bl                                        // 0x004d7758    84db
                          {disp8} jne        _jmp_addr_0x004d7766                          // 0x004d775a    750a
@@ -1293,7 +1293,7 @@ _jmp_addr_0x004d80c0:    push               ebx                                 
                          mov.s              ebx, eax                                      // 0x004d80d5    8bd8
                          add                esp, 0x14                                     // 0x004d80d7    83c414
                          mov.s              ecx, ebx                                      // 0x004d80da    8bcb
-                         call               _jmp_addr_0x005f27f0                          // 0x004d80dc    e80fa71100
+                         call               @GetTopState__6LivingCFv@4                    // 0x004d80dc    e80fa71100
                          and                eax, 0x000000ff                               // 0x004d80e1    25ff000000
                          mov.s              esi, eax                                      // 0x004d80e6    8bf0
                          cmp                esi, 0x17                                     // 0x004d80e8    83fe17
@@ -1307,7 +1307,7 @@ _jmp_addr_0x004d80f7:    cmp                esi, 0x21                           
                          push               ecx                                           // 0x004d8102    51
                          {disp8} lea        edx, dword ptr [ebx + 0x14]                   // 0x004d8103    8d5314
                          push               edx                                           // 0x004d8106    52
-                         call               _jmp_addr_0x0074cd70                          // 0x004d8107    e8644c2700
+                         call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x004d8107    e8644c2700
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x26300]             // 0x004d810c    d81d00f38c00
                          add                esp, 0x08                                     // 0x004d8112    83c408
                          fnstsw             ax                                            // 0x004d8115    dfe0
@@ -1352,7 +1352,7 @@ _jmp_addr_0x004d8171:    mov                edx, dword ptr [ebx]                
                          call               dword ptr [edx + 0x1c]                        // 0x004d8181    ff521c
                          mov.s              esi, eax                                      // 0x004d8184    8bf0
                          mov.s              ecx, esi                                      // 0x004d8186    8bce
-                         call               _jmp_addr_0x0064ac00                          // 0x004d8188    e8732a1700
+                         call               @IsNeutral__7GPlayerFv@4                      // 0x004d8188    e8732a1700
                          test               eax, eax                                      // 0x004d818d    85c0
                          {disp8} jne        _jmp_addr_0x004d819c                          // 0x004d818f    750b
                          mov                eax, dword ptr [edi]                          // 0x004d8191    8b07

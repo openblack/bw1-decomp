@@ -7,9 +7,9 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x007aee98
+.extern ___dl__FPv
 .extern _jmp_addr_0x007dc8b0
-.extern _jmp_addr_0x007e49a0
+.extern @UpdateCurrentPos__7LHMouseF7LHCoord@16
 .extern _jmp_addr_0x007e6070
 .extern _jmp_addr_0x007e6290
 .extern _jmp_addr_0x007e62d0
@@ -26,9 +26,9 @@
 .extern _jmp_addr_0x007eadb0
 .extern _jmp_addr_0x007eb870
 
-.globl _jmp_addr_0x007e4e40
+.globl @SetPosition__7LHMouseFP7LHCoord@12
 .globl _jmp_addr_0x007e4e93
-.globl _jmp_addr_0x007e4f20
+.globl @__ct__7LHMouseFv@4
 .globl _jmp_addr_0x007e4f90
 .globl _jmp_addr_0x007e4feb
 .globl _jmp_addr_0x007e500d
@@ -71,7 +71,7 @@
 .globl _jmp_addr_0x007e535f
 .globl _jmp_addr_0x007e536e
 .globl _jmp_addr_0x007e538f
-.globl _jmp_addr_0x007e53b0
+.globl @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
 .globl _jmp_addr_0x007e53d5
 .globl _jmp_addr_0x007e53ec
 .globl _jmp_addr_0x007e53f4
@@ -104,7 +104,7 @@
 .globl _jmp_addr_0x007e57a0
 .globl _jmp_addr_0x007e57ae
 .globl _jmp_addr_0x007e57b5
-.globl _jmp_addr_0x007e57c0
+.globl @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16
 .globl _jmp_addr_0x007e5816
 .globl _jmp_addr_0x007e5855
 .globl _jmp_addr_0x007e5885
@@ -173,7 +173,7 @@
 
 start_0x007e4e40_0x007e6070:
 // Snippet: asm, [0x007e4e40, 0x007e6055)
-_jmp_addr_0x007e4e40:    {disp32} mov     al, byte ptr [data_bytes + 0x4c60fa]     // 0x007e4e40    a0fac0e800
+@SetPosition__7LHMouseFP7LHCoord@12:    {disp32} mov     al, byte ptr [data_bytes + 0x4c60fa]     // 0x007e4e40    a0fac0e800
                          sub              esp, 0x08                                // 0x007e4e45    83ec08
                          test             al, al                                   // 0x007e4e48    84c0
                          {disp8} je       _jmp_addr_0x007e4e93                     // 0x007e4e4a    7447
@@ -190,11 +190,11 @@ _jmp_addr_0x007e4e40:    {disp32} mov     al, byte ptr [data_bytes + 0x4c60fa]  
                          push             ecx                                      // 0x007e4e71    51
                          push             edx                                      // 0x007e4e72    52
                          mov              ecx, 0x00e85204                          // 0x007e4e73    b90452e800
-                         call             _jmp_addr_0x007e49a0                     // 0x007e4e78    e823fbffff
+                         call             @UpdateCurrentPos__7LHMouseF7LHCoord@16  // 0x007e4e78    e823fbffff
                          push             0x4                                      // 0x007e4e7d    6a04
                          push             0x1                                      // 0x007e4e7f    6a01
                          mov              ecx, 0x00e85204                          // 0x007e4e81    b90452e800
-                         call             _jmp_addr_0x007e57c0                     // 0x007e4e86    e835090000
+                         call             @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16                     // 0x007e4e86    e835090000
                          xor.s            eax, eax                                 // 0x007e4e8b    33c0
                          add              esp, 0x08                                // 0x007e4e8d    83c408
                          ret              0x0004                                   // 0x007e4e90    c20400
@@ -245,7 +245,7 @@ _jmp_addr_0x007e4e93:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                       // 0x007e4f1d    90
                          nop                                                       // 0x007e4f1e    90
                          nop                                                       // 0x007e4f1f    90
-_jmp_addr_0x007e4f20:    push             ebx                                      // 0x007e4f20    53
+@__ct__7LHMouseFv@4:     push             ebx                                      // 0x007e4f20    53
                          push             esi                                      // 0x007e4f21    56
                          push             edi                                      // 0x007e4f22    57
                          mov.s            esi, ecx                                 // 0x007e4f23    8bf1
@@ -624,7 +624,7 @@ _jmp_addr_0x007e536e:    {disp8} mov      eax, dword ptr [esi + 0x1c]           
 _jmp_addr_0x007e538f:    push             0x00000080                               // 0x007e538f    6880000000
                          push             0x1                                      // 0x007e5394    6a01
                          mov.s            ecx, esi                                 // 0x007e5396    8bce
-                         call             _jmp_addr_0x007e57c0                     // 0x007e5398    e823040000
+                         call             @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16                     // 0x007e5398    e823040000
                          push             0x00e90650                               // 0x007e539d    685006e900
                          call             dword ptr [rdata_bytes + 0x184]          // 0x007e53a2    ff1584918a00
                          pop              edi                                      // 0x007e53a8    5f
@@ -632,7 +632,7 @@ _jmp_addr_0x007e538f:    push             0x00000080                            
                          pop              esi                                      // 0x007e53ab    5e
                          pop              ebx                                      // 0x007e53ac    5b
                          ret              0x0004                                   // 0x007e53ad    c20400
-_jmp_addr_0x007e53b0:    push             ebx                                      // 0x007e53b0    53
+@SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20:    push             ebx                                      // 0x007e53b0    53
                          {disp32} mov     ebx, dword ptr [rdata_bytes + 0x180]     // 0x007e53b1    8b1d80918a00
                          push             ebp                                      // 0x007e53b7    55
                          push             esi                                      // 0x007e53b8    56
@@ -717,7 +717,7 @@ _jmp_addr_0x007e54a8:    test             dword ptr [esi + 0x14], 0xfffffff8    
                          push             0x8                                      // 0x007e54b1    6a08
                          push             0x1                                      // 0x007e54b3    6a01
                          mov.s            ecx, esi                                 // 0x007e54b5    8bce
-                         call             _jmp_addr_0x007e57c0                     // 0x007e54b7    e804030000
+                         call             @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16                     // 0x007e54b7    e804030000
                          push             0x00e90650                               // 0x007e54bc    685006e900
                          call             edi                                      // 0x007e54c1    ffd7
                          pop              edi                                      // 0x007e54c3    5f
@@ -968,7 +968,7 @@ _jmp_addr_0x007e57b5:    pop              edi                                   
                          nop                                                       // 0x007e57bd    90
                          nop                                                       // 0x007e57be    90
                          nop                                                       // 0x007e57bf    90
-_jmp_addr_0x007e57c0:    sub              esp, 0x10                                // 0x007e57c0    83ec10
+@Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16:    sub              esp, 0x10                                // 0x007e57c0    83ec10
                          push             ebx                                      // 0x007e57c3    53
                          push             esi                                      // 0x007e57c4    56
                          mov.s            esi, ecx                                 // 0x007e57c5    8bf1
@@ -1384,7 +1384,7 @@ _jmp_addr_0x007e5c66:    {disp8} mov      eax, dword ptr [esi + 0x54]           
                          cmp.s            eax, ebx                                 // 0x007e5c69    3bc3
                          {disp8} je       _jmp_addr_0x007e5c79                     // 0x007e5c6b    740c
                          push             eax                                      // 0x007e5c6d    50
-                         call             _jmp_addr_0x007aee98                     // 0x007e5c6e    e82592fcff
+                         call             ___dl__FPv                               // 0x007e5c6e    e82592fcff
                          add              esp, 0x04                                // 0x007e5c73    83c404
                          {disp8} mov      dword ptr [esi + 0x54], ebx              // 0x007e5c76    895e54
 _jmp_addr_0x007e5c79:    {disp8} mov      ecx, dword ptr [esp + 0x24]              // 0x007e5c79    8b4c2424
@@ -1603,7 +1603,7 @@ _jmp_addr_0x007e5ea0:    push             ebx                                   
                          push             0x00000200                               // 0x007e5efe    6800020000
                          push             0x1                                      // 0x007e5f03    6a01
                          mov.s            ecx, esi                                 // 0x007e5f05    8bce
-                         call             _jmp_addr_0x007e57c0                     // 0x007e5f07    e8b4f8ffff
+                         call             @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16                     // 0x007e5f07    e8b4f8ffff
                          push             0x00e90650                               // 0x007e5f0c    685006e900
                          call             dword ptr [rdata_bytes + 0x184]          // 0x007e5f11    ff1584918a00
                          pop              edi                                      // 0x007e5f17    5f
@@ -1669,7 +1669,7 @@ _jmp_addr_0x007e5fce:    push             0x00000100                            
                          mov.s            ecx, esi                                 // 0x007e5fd5    8bce
                          {disp8} mov      dword ptr [esi + 0x64], eax              // 0x007e5fd7    894664
                          {disp8} mov      dword ptr [esi + 0x60], ebx              // 0x007e5fda    895e60
-                         call             _jmp_addr_0x007e57c0                     // 0x007e5fdd    e8def7ffff
+                         call             @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16                     // 0x007e5fdd    e8def7ffff
                          push             0x00e90650                               // 0x007e5fe2    685006e900
                          call             dword ptr [rdata_bytes + 0x184]          // 0x007e5fe7    ff1584918a00
                          pop              edi                                      // 0x007e5fed    5f
@@ -1694,7 +1694,7 @@ _jmp_addr_0x007e601e:    push             0x00000100                            
                          push             0x1                                      // 0x007e6023    6a01
                          mov.s            ecx, esi                                 // 0x007e6025    8bce
                          {disp8} mov      dword ptr [esi + 0x64], eax              // 0x007e6027    894664
-                         call             _jmp_addr_0x007e57c0                     // 0x007e602a    e891f7ffff
+                         call             @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16                     // 0x007e602a    e891f7ffff
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x4bf078]   // 0x007e602f    8b0d7850e800
                          push             ebx                                      // 0x007e6035    53
                          push             ebx                                      // 0x007e6036    53

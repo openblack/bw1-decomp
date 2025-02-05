@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00477850
+.extern @GetCreature3D__8CreatureFv@4
 
 .globl _jmp_addr_0x0047d470
 .globl _jmp_addr_0x0047d48a
@@ -18,7 +18,7 @@
 
 start_0x0047d470_0x0047d500:
 // Snippet: asm, [0x0047d470, 0x0047d4e6)
-_jmp_addr_0x0047d470:    call             _jmp_addr_0x00477850              // 0x0047d470    e8dba3ffff
+_jmp_addr_0x0047d470:    call             @GetCreature3D__8CreatureFv@4     // 0x0047d470    e8dba3ffff
                          mov.s            ecx, eax                          // 0x0047d475    8bc8
                          {disp32} mov     edx, dword ptr [ecx + 0x00004ac0] // 0x0047d477    8b91c04a0000
                          xor.s            eax, eax                          // 0x0047d47d    33c0
@@ -57,7 +57,7 @@ _jmp_addr_0x0047d4a2:    ret                                                // 0
                          {disp8} je       _jmp_addr_0x0047d4e1              // 0x0047d4b6    7429
                          cmp.s            eax, ecx                          // 0x0047d4b8    3bc1
                          {disp8} je       _jmp_addr_0x0047d4e1              // 0x0047d4ba    7425
-                         call             _jmp_addr_0x00477850              // 0x0047d4bc    e88fa3ffff
+                         call             @GetCreature3D__8CreatureFv@4     // 0x0047d4bc    e88fa3ffff
                          {disp32} mov     eax, dword ptr [eax + 0x00005198] // 0x0047d4c1    8b8098510000
                          {disp32} mov     eax, dword ptr [eax + 0x00064054] // 0x0047d4c7    8b8054400600
                          cmp              eax, 0x04                         // 0x0047d4cd    83f804

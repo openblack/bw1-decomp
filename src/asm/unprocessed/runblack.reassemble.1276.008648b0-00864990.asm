@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00864990
-.extern _jmp_addr_0x008691a0
+.extern @MoveAlongRoute__8RPFollowFv@4
+.extern @GetLength__9RouteNodeFP7RPAvoid@12
 
 .globl _jmp_addr_0x0086490c
 .globl _jmp_addr_0x0086494a
@@ -32,7 +32,7 @@ start_0x008648b0_0x00864990:
                          {disp8} jne        _jmp_addr_0x0086490c              // 0x008648db    752f
                          push               esi                               // 0x008648dd    56
                          fstp               st(0)                             // 0x008648de    ddd8
-                         call               _jmp_addr_0x008691a0              // 0x008648e0    e8bb480000
+                         call               @GetLength__9RouteNodeFP7RPAvoid@12              // 0x008648e0    e8bb480000
                          {disp32} fsub      dword ptr [esi + 0x00064038]      // 0x008648e5    d8a638400600
                          {disp32} fmul      dword ptr [rdata_bytes + 0xfabc0] // 0x008648eb    d80dc03b9a00
                          fadd.s             st(0), st(0)                      // 0x008648f1    dcc0
@@ -67,13 +67,13 @@ _jmp_addr_0x00864950:    {disp32} fcom      dword ptr [esi + 0x00064034]      //
                          {disp8} je         _jmp_addr_0x0086496d              // 0x0086495b    7410
                          mov.s              ecx, esi                          // 0x0086495d    8bce
                          {disp32} fstp      dword ptr [esi + 0x00064034]      // 0x0086495f    d99e34400600
-                         call               _jmp_addr_0x00864990              // 0x00864965    e826000000
+                         call               @MoveAlongRoute__8RPFollowFv@4    // 0x00864965    e826000000
                          pop                esi                               // 0x0086496a    5e
                          pop                ecx                               // 0x0086496b    59
                          ret                                                  // 0x0086496c    c3
 _jmp_addr_0x0086496d:    mov.s              ecx, esi                          // 0x0086496d    8bce
                          fstp               st(0)                             // 0x0086496f    ddd8
-                         call               _jmp_addr_0x00864990              // 0x00864971    e81a000000
+                         call               @MoveAlongRoute__8RPFollowFv@4    // 0x00864971    e81a000000
 _jmp_addr_0x00864976:    pop                esi                               // 0x00864976    5e
                          pop                ecx                               // 0x00864977    59
                          ret                                                  // 0x00864978    c3

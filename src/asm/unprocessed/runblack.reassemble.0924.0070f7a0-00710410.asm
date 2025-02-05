@@ -20,10 +20,10 @@
 .extern _jmp_addr_0x004298c0
 .extern _jmp_addr_0x004298f0
 .extern _jmp_addr_0x00429910
-.extern _jmp_addr_0x00429e30
-.extern _jmp_addr_0x0042a210
+.extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
+.extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _jmp_addr_0x0042a280
-.extern _jmp_addr_0x00603160
+.extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x0064d6a0
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x006f62b0
@@ -33,7 +33,7 @@
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x0071a610
 .extern _jmp_addr_0x0071a640
-.extern _jmp_addr_0x0071e840
+.extern _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi
 .extern _jmp_addr_0x0071ebe0
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007c5791
@@ -181,7 +181,7 @@ _jmp_addr_0x0070f7e0:    {disp32} mov     dword ptr [data_bytes + 0x3d3020], 0xf
                          {disp8} mov      dword ptr [esp + 0x5c], eax                   // 0x0070f8ac    8944245c
                          {disp8} mov      dword ptr [esp + 0x2c], edi                   // 0x0070f8b0    897c242c
                          {disp8} mov      dword ptr [esp + 0x30], 0x00000000            // 0x0070f8b4    c744243000000000
-                         call             _jmp_addr_0x00429e30                          // 0x0070f8bc    e86fa5d1ff
+                         call             @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12                          // 0x0070f8bc    e86fa5d1ff
                          {disp8} lea      ecx, dword ptr [esp + 0x20]                   // 0x0070f8c1    8d4c2420
                          call             dword ptr [rdata_bytes + 0x758]               // 0x0070f8c5    ff1558978a00
                          pop              edi                                           // 0x0070f8cb    5f
@@ -245,7 +245,7 @@ _jmp_addr_0x0070f91a:    {disp8} lea      ecx, dword ptr [esp + 0x08]           
 _jmp_addr_0x0070f98a:    {disp8} lea      eax, dword ptr [esp + 0x08]                   // 0x0070f98a    8d442408
                          push             eax                                           // 0x0070f98e    50
                          {disp8} mov      dword ptr [esp + 0x18], 0x00000000            // 0x0070f98f    c744241800000000
-                         call             _jmp_addr_0x00429e30                          // 0x0070f997    e894a4d1ff
+                         call             @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12                          // 0x0070f997    e894a4d1ff
                          {disp8} lea      ecx, dword ptr [esp + 0x08]                   // 0x0070f99c    8d4c2408
                          call             dword ptr [rdata_bytes + 0x758]               // 0x0070f9a0    ff1558978a00
 _jmp_addr_0x0070f9a6:    pop              edi                                           // 0x0070f9a6    5f
@@ -351,13 +351,13 @@ _jmp_addr_0x0070faad:    lea              eax, dword ptr [esi + esi * 0x2]      
                          push             esi                                           // 0x0070faca    56
                          push             0x0000270e                                    // 0x0070facb    680e270000
                          push             edi                                           // 0x0070fad0    57
-                         call             _jmp_addr_0x0042a210                          // 0x0070fad1    e83aa7d1ff
+                         call             @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20                          // 0x0070fad1    e83aa7d1ff
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x30db20]        // 0x0070fad6    8b0d203bcd00
                          push             esi                                           // 0x0070fadc    56
                          mov              eax, 0x0000270d                               // 0x0070fadd    b80d270000
                          push             eax                                           // 0x0070fae2    50
                          push             edi                                           // 0x0070fae3    57
-                         call             _jmp_addr_0x0042a210                          // 0x0070fae4    e827a7d1ff
+                         call             @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20                          // 0x0070fae4    e827a7d1ff
                          pop              edi                                           // 0x0070fae9    5f
                          pop              esi                                           // 0x0070faea    5e
                          add              esp, 0x08                                     // 0x0070faeb    83c408
@@ -367,7 +367,7 @@ _jmp_addr_0x0070faef:    {disp32} mov     ecx, dword ptr [data_bytes + 0x30db20]
                          mov              eax, 0x0000270c                               // 0x0070faf6    b80c270000
                          push             eax                                           // 0x0070fafb    50
                          push             edi                                           // 0x0070fafc    57
-                         call             _jmp_addr_0x0042a210                          // 0x0070fafd    e80ea7d1ff
+                         call             @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20                          // 0x0070fafd    e80ea7d1ff
                          pop              edi                                           // 0x0070fb02    5f
                          pop              esi                                           // 0x0070fb03    5e
                          add              esp, 0x08                                     // 0x0070fb04    83c408
@@ -376,7 +376,7 @@ _jmp_addr_0x0070fb08:    {disp32} mov     ecx, dword ptr [data_bytes + 0x30db20]
                          push             edi                                           // 0x0070fb0e    57
                          push             esi                                           // 0x0070fb0f    56
                          push             esi                                           // 0x0070fb10    56
-                         call             _jmp_addr_0x0042a210                          // 0x0070fb11    e8faa6d1ff
+                         call             @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20                          // 0x0070fb11    e8faa6d1ff
                          pop              edi                                           // 0x0070fb16    5f
                          pop              esi                                           // 0x0070fb17    5e
                          add              esp, 0x08                                     // 0x0070fb18    83c408
@@ -747,7 +747,7 @@ _jmp_addr_0x0070fe2d:    {disp32} mov     ecx, dword ptr [data_bytes + 0x30db20]
 _jmp_addr_0x0070fedb:    {disp8} lea      ecx, dword ptr [esp + 0x08]                   // 0x0070fedb    8d4c2408
                          push             ecx                                           // 0x0070fedf    51
                          {disp8} lea      ecx, dword ptr [esp + 0x18]                   // 0x0070fee0    8d4c2418
-                         call             _jmp_addr_0x00603160                          // 0x0070fee4    e87732efff
+                         call             @__ct__9MapCoordsFRC7LHPoint@12               // 0x0070fee4    e87732efff
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x30db20]        // 0x0070fee9    8b0d203bcd00
                          push             eax                                           // 0x0070feef    50
                          push             esi                                           // 0x0070fef0    56
@@ -1011,7 +1011,7 @@ _jmp_addr_0x007100e8:    {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c]
                          push             eax                                           // 0x007101b6    50
                          push             ebx                                           // 0x007101b7    53
                          push             esi                                           // 0x007101b8    56
-                         call             _jmp_addr_0x0071e840                          // 0x007101b9    e882e60000
+                         call             _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi                          // 0x007101b9    e882e60000
                          add              esp, 0x24                                     // 0x007101be    83c424
 _jmp_addr_0x007101c1:    pop              edi                                           // 0x007101c1    5f
                          pop              esi                                           // 0x007101c2    5e

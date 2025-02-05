@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x005ec960
+.extern @IsReadyForNewAnimation__6LivingFUl@12
 
 .globl _jmp_addr_0x00596fd0
 .globl _jmp_addr_0x0059702c
@@ -140,7 +140,7 @@ _jmp_addr_0x00597113:    {disp8} mov        esi, dword ptr [edi + 0x04]        /
                          {disp8} je         _jmp_addr_0x0059715d               // 0x0059713a    7421
                          push               0x1                                // 0x0059713c    6a01
                          mov.s              ecx, esi                           // 0x0059713e    8bce
-                         call               _jmp_addr_0x005ec960               // 0x00597140    e81b580500
+                         call               @IsReadyForNewAnimation__6LivingFUl@12               // 0x00597140    e81b580500
                          test               eax, eax                           // 0x00597145    85c0
                          {disp8} je         _jmp_addr_0x0059715d               // 0x00597147    7414
                          {disp8} mov        ecx, dword ptr [esi + 0x40]        // 0x00597149    8b4e40

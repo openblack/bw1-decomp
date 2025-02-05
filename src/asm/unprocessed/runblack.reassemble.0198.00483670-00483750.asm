@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00619650
+.extern @GetAnim__9MorphableFll@16
 
 .globl _jmp_addr_0x00483670
 .globl _jmp_addr_0x0048370a
@@ -42,7 +42,7 @@ _jmp_addr_0x00483670:    push             edi                                   
                          push             0x0                                     // 0x004836b9    6a00
                          push             0x000000d2                              // 0x004836bb    68d2000000
                          mov.s            ecx, edi                                // 0x004836c0    8bcf
-                         call             _jmp_addr_0x00619650                    // 0x004836c2    e8895f1900
+                         call             @GetAnim__9MorphableFll@16              // 0x004836c2    e8895f1900
                          mov              esi, dword ptr [eax]                    // 0x004836c7    8b30
                          {disp32} mov     edi, dword ptr [edi + 0x000047d0]       // 0x004836c9    8bbfd0470000
                          {disp32} lea     ecx, dword ptr [esi * 0x8 + 0x00000000] // 0x004836cf    8d0cf500000000

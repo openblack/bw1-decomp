@@ -9,10 +9,10 @@
 
 .extern _jmp_addr_0x004017f9
 .extern _jmp_addr_0x00408240
-.extern _jmp_addr_0x00411190
-.extern _jmp_addr_0x005133a0
+.extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
+.extern @__ct__13DialogBoxBaseFv@4
 .extern _jmp_addr_0x005133c0
-.extern _jmp_addr_0x0062b030
+.extern @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern _jmp_addr_0x0062d1c0
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c5fb6
@@ -151,7 +151,7 @@ _jmp_addr_0x0062acce:    ret                                                    
                          nop                                                             // 0x0062accf    90
 _jmp_addr_0x0062acd0:    push              esi                                           // 0x0062acd0    56
                          mov.s             esi, ecx                                      // 0x0062acd1    8bf1
-                         call              _jmp_addr_0x005133a0                          // 0x0062acd3    e8c886eeff
+                         call              @__ct__13DialogBoxBaseFv@4                    // 0x0062acd3    e8c886eeff
                          xor.s             eax, eax                                      // 0x0062acd8    33c0
                          push              0x0062b700                                    // 0x0062acda    6800b76200
                          push              0x000001f4                                    // 0x0062acdf    68f4010000
@@ -165,7 +165,7 @@ _jmp_addr_0x0062acd0:    push              esi                                  
                          {disp8} mov       dword ptr [esi + 0x20], eax                   // 0x0062ad01    894620
                          {disp32} mov      dword ptr [esi + 0x00000434], 0xffffffff      // 0x0062ad04    c78634040000ffffffff
                          {disp8} mov       dword ptr [esi + 0x24], eax                   // 0x0062ad0e    894624
-                         call              _jmp_addr_0x0062b030                          // 0x0062ad11    e81a030000
+                         call              @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20                          // 0x0062ad11    e81a030000
                          {disp8} mov       eax, dword ptr [esi + 0x04]                   // 0x0062ad16    8b4604
                          {disp32} mov      dword ptr [eax + 0x00000098], 0x00000001      // 0x0062ad19    c7809800000001000000
                          mov.s             eax, esi                                      // 0x0062ad23    8bc6
@@ -287,7 +287,7 @@ _jmp_addr_0x0062ae73:    {disp8} mov       edx, dword ptr [eax + 0x08]          
                          push              0x0                                           // 0x0062ae7c    6a00
                          push              0x0                                           // 0x0062ae7e    6a00
                          push              edx                                           // 0x0062ae80    52
-                         call              _jmp_addr_0x00411190                          // 0x0062ae81    e80a63deff
+                         call              @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20  // 0x0062ae81    e80a63deff
 _jmp_addr_0x0062ae86:    {disp8} mov       eax, dword ptr [esp + 0x04]                   // 0x0062ae86    8b442404
                          {disp8} mov       dword ptr [eax + 0x28], 0x00000001            // 0x0062ae8a    c7402801000000
                          ret               0x000c                                        // 0x0062ae91    c20c00
@@ -367,7 +367,7 @@ _jmp_addr_0x0062afe3:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              0x0                                           // 0x0062afec    6a00
                          push              0x0                                           // 0x0062afee    6a00
                          push              eax                                           // 0x0062aff0    50
-                         call              _jmp_addr_0x00411190                          // 0x0062aff1    e89a61deff
+                         call              @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20  // 0x0062aff1    e89a61deff
 _jmp_addr_0x0062aff6:    ret               0x000c                                        // 0x0062aff6    c20c00
 
 // Snippet: db, [0x0062aff9, 0x0062affc)

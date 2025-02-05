@@ -10,8 +10,8 @@
 .extern _jmp_addr_0x00864190
 .extern _jmp_addr_0x008641f0
 .extern _jmp_addr_0x008642c0
-.extern _jmp_addr_0x0086e9a0
-.extern _jmp_addr_0x0086fdc0
+.extern @GameTurnUpdate__5RPlanFi@12
+.extern @GetRange__7Point2DCFRC7Point2D@12
 
 .globl _jmp_addr_0x00864040
 .globl _jmp_addr_0x00864065
@@ -83,7 +83,7 @@ _jmp_addr_0x008640cb:    {disp32} mov      ecx, dword ptr [esi + 0x000640bc]    
                          {disp8} jne       _jmp_addr_0x008640f0                          // 0x008640e5    7509
                          push              0x0                                           // 0x008640e7    6a00
                          mov.s             ecx, edi                                      // 0x008640e9    8bcf
-                         call              _jmp_addr_0x0086e9a0                          // 0x008640eb    e8b0a80000
+                         call              @GameTurnUpdate__5RPlanFi@12                  // 0x008640eb    e8b0a80000
 _jmp_addr_0x008640f0:    {disp8} mov       eax, dword ptr [edi + 0x50]                   // 0x008640f0    8b4750
                          cmp               eax, 0x05                                     // 0x008640f3    83f805
                          {disp8} ja        _jmp_addr_0x00864151                          // 0x008640f6    7759
@@ -94,7 +94,7 @@ _jmp_addr_0x008640f0:    {disp8} mov       eax, dword ptr [edi + 0x50]          
                          {disp32} lea      edx, dword ptr [esi + 0x0006402c]             // 0x00864107    8d962c400600
                          push              edx                                           // 0x0086410d    52
                          {disp32} lea      ecx, dword ptr [esi + 0x00064074]             // 0x0086410e    8d8e74400600
-                         call              _jmp_addr_0x0086fdc0                          // 0x00864114    e8a7bc0000
+                         call              @GetRange__7Point2DCFRC7Point2D@12            // 0x00864114    e8a7bc0000
                          {disp8} fcomp     dword ptr [edi + 0x5c]                        // 0x00864119    d85f5c
                          fnstsw            ax                                            // 0x0086411c    dfe0
                          test              ah, 0x41                                      // 0x0086411e    f6c441

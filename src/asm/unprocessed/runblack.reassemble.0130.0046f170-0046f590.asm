@@ -12,16 +12,16 @@
 .extern _jmp_addr_0x0046ee50
 .extern _jmp_addr_0x0046eed0
 .extern _jmp_addr_0x0046efd0
-.extern _jmp_addr_0x0046efe0
+.extern @GetDisplayText__10ControlKeyFPw@12
 .extern _jmp_addr_0x0046f030
 .extern _jmp_addr_0x0046f040
 .extern _jmp_addr_0x0046f050
 .extern _jmp_addr_0x007c5fb6
 
 .globl _jmp_addr_0x0046f170
-.globl _jmp_addr_0x0046f180
+.globl @GetDisplayText__12ControlMouseFPw@12
 .globl _jmp_addr_0x0046f19c
-.globl _jmp_addr_0x0046f1a0
+.globl @__ct__14BindableActionFv@4
 .globl _jmp_addr_0x0046f1cf
 .globl _jmp_addr_0x0046f1e0
 .globl _jmp_addr_0x0046f200
@@ -42,7 +42,7 @@
 .globl _jmp_addr_0x0046f3a5
 .globl _jmp_addr_0x0046f3b2
 .globl _jmp_addr_0x0046f3b5
-.globl _jmp_addr_0x0046f3c0
+.globl _IsKeyDown__14BindableActionF6LH_KEY
 .globl _jmp_addr_0x0046f3ce
 .globl _jmp_addr_0x0046f3e2
 .globl _jmp_addr_0x0046f3ee
@@ -54,7 +54,7 @@
 .globl _jmp_addr_0x0046f460
 .globl _jmp_addr_0x0046f480
 .globl _jmp_addr_0x0046f4ba
-.globl _jmp_addr_0x0046f4c0
+.globl @IsKeyBeingPressed__14BindableActionFv@4
 .globl _jmp_addr_0x0046f4ef
 .globl _jmp_addr_0x0046f4f6
 .globl _jmp_addr_0x0046f500
@@ -69,7 +69,7 @@ _jmp_addr_0x0046f170:    mov              edx, dword ptr [ecx]                  
                          setne            al                                            // 0x0046f176    0f95c0
                          ret                                                            // 0x0046f179    c3
                          call             dword ptr [rdata_bytes + 0x3c]                // 0x0046f17a    ff153c908a00
-_jmp_addr_0x0046f180:    cmp              dword ptr [ecx], 0x00                         // 0x0046f180    833900
+@GetDisplayText__12ControlMouseFPw@12:    cmp              dword ptr [ecx], 0x00                         // 0x0046f180    833900
                          {disp8} je       _jmp_addr_0x0046f19c                          // 0x0046f183    7417
                          {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f185    8b442404
                          add              ecx, 0x4                                      // 0x0046f189    83c104
@@ -80,7 +80,7 @@ _jmp_addr_0x0046f180:    cmp              dword ptr [ecx], 0x00                 
                          add              esp, 0x0c                                     // 0x0046f199    83c40c
 _jmp_addr_0x0046f19c:    ret              0x0004                                        // 0x0046f19c    c20400
                          nop                                                            // 0x0046f19f    90
-_jmp_addr_0x0046f1a0:    push             esi                                           // 0x0046f1a0    56
+@__ct__14BindableActionFv@4:    push             esi                                           // 0x0046f1a0    56
                          mov.s            esi, ecx                                      // 0x0046f1a1    8bf1
                          {disp32} lea     ecx, dword ptr [esi + 0x00000100]             // 0x0046f1a3    8d8e00010000
                          call             _jmp_addr_0x0046ee30                          // 0x0046f1a9    e882fcffff
@@ -176,7 +176,7 @@ _jmp_addr_0x0046f260:    sub              esp, 0x00000080                       
                          {disp8} lea      eax, dword ptr [esp + 0x04]                   // 0x0046f278    8d442404
                          push             eax                                           // 0x0046f27c    50
                          mov.s            ecx, esi                                      // 0x0046f27d    8bce
-                         call             _jmp_addr_0x0046efe0                          // 0x0046f27f    e85cfdffff
+                         call             @GetDisplayText__10ControlKeyFPw@12           // 0x0046f27f    e85cfdffff
                          {disp32} mov     edx, dword ptr [esp + 0x00000088]             // 0x0046f284    8b942488000000
                          {disp8} lea      ecx, dword ptr [esp + 0x04]                   // 0x0046f28b    8d4c2404
                          push             ecx                                           // 0x0046f28f    51
@@ -199,7 +199,7 @@ _jmp_addr_0x0046f2b0:    sub              esp, 0x00000080                       
                          push             eax                                           // 0x0046f2ba    50
                          add              ecx, 0x00000208                               // 0x0046f2bb    81c108020000
                          {disp8} mov      word ptr [esp + 0x04], 0x0000                 // 0x0046f2c1    66c74424040000
-                         call             _jmp_addr_0x0046f180                          // 0x0046f2c8    e8b3feffff
+                         call             @GetDisplayText__12ControlMouseFPw@12         // 0x0046f2c8    e8b3feffff
                          {disp32} mov     edx, dword ptr [esp + 0x00000084]             // 0x0046f2cd    8b942484000000
                          {disp8} lea      ecx, dword ptr [esp + 0x00]                   // 0x0046f2d4    8d4c2400
                          push             ecx                                           // 0x0046f2d8    51
@@ -286,7 +286,7 @@ _jmp_addr_0x0046f3b2:    xor.s            eax, eax                              
 _jmp_addr_0x0046f3b5:    mov              eax, 0x00000001                               // 0x0046f3b5    b801000000
                          ret                                                            // 0x0046f3ba    c3
                          call             _jmp_addr_0x00401879                          // 0x0046f3bb    e8b924f9ff
-_jmp_addr_0x0046f3c0:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f3c0    8b442404
+_IsKeyDown__14BindableActionF6LH_KEY:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f3c0    8b442404
                          cmp              eax, 0x2a                                     // 0x0046f3c4    83f82a
                          {disp8} je       _jmp_addr_0x0046f3ce                          // 0x0046f3c7    7405
                          cmp              eax, 0x36                                     // 0x0046f3c9    83f836
@@ -392,20 +392,20 @@ _jmp_addr_0x0046f480:    {disp32} mov     eax, dword ptr [ecx + 0x00000100]     
 _jmp_addr_0x0046f4ba:    xor.s            eax, eax                                      // 0x0046f4ba    33c0
                          pop              esi                                           // 0x0046f4bc    5e
                          ret              0x0008                                        // 0x0046f4bd    c20800
-_jmp_addr_0x0046f4c0:    {disp32} mov     eax, dword ptr [ecx + 0x00000100]             // 0x0046f4c0    8b8100010000
+@IsKeyBeingPressed__14BindableActionFv@4:    {disp32} mov     eax, dword ptr [ecx + 0x00000100]             // 0x0046f4c0    8b8100010000
                          test             eax, eax                                      // 0x0046f4c6    85c0
                          push             esi                                           // 0x0046f4c8    56
                          {disp32} mov     esi, dword ptr [ecx + 0x00000184]             // 0x0046f4c9    8bb184010000
                          {disp8} je       _jmp_addr_0x0046f4f6                          // 0x0046f4cf    7425
                          push             eax                                           // 0x0046f4d1    50
-                         call             _jmp_addr_0x0046f3c0                          // 0x0046f4d2    e8e9feffff
+                         call             _IsKeyDown__14BindableActionF6LH_KEY          // 0x0046f4d2    e8e9feffff
                          add              esp, 0x04                                     // 0x0046f4d7    83c404
                          test             eax, eax                                      // 0x0046f4da    85c0
                          {disp8} je       _jmp_addr_0x0046f4f6                          // 0x0046f4dc    7418
                          test             esi, esi                                      // 0x0046f4de    85f6
                          {disp8} je       _jmp_addr_0x0046f4ef                          // 0x0046f4e0    740d
                          push             esi                                           // 0x0046f4e2    56
-                         call             _jmp_addr_0x0046f3c0                          // 0x0046f4e3    e8d8feffff
+                         call             _IsKeyDown__14BindableActionF6LH_KEY          // 0x0046f4e3    e8d8feffff
                          add              esp, 0x04                                     // 0x0046f4e8    83c404
                          test             eax, eax                                      // 0x0046f4eb    85c0
                          {disp8} je       _jmp_addr_0x0046f4f6                          // 0x0046f4ed    7407

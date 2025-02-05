@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00477210
-.extern _jmp_addr_0x00477850
+.extern @GetCreature3D__8CreatureFv@4
 .extern _jmp_addr_0x004f0100
 .extern _jmp_addr_0x0052edd0
 .extern _jmp_addr_0x00618c40
@@ -16,14 +16,14 @@
 .extern _jmp_addr_0x006da6d0
 .extern _jmp_addr_0x006f62b0
 .extern _jmp_addr_0x00709c40
-.extern _jmp_addr_0x00738260
-.extern _jmp_addr_0x00738270
+.extern @GetWorshipSpeed__11TotemStatueFv@4
+.extern @SetWorshipPercentage__11TotemStatueFf@12
 .extern _jmp_addr_0x0073b8e0
-.extern _jmp_addr_0x0073c060
+.extern @SetWorshipPercentage__4TownFf@12
 .extern _jmp_addr_0x0073cd20
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x00803090
+.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
 .globl _jmp_addr_0x0070e820
 .globl _jmp_addr_0x0070e854
@@ -296,9 +296,9 @@ _jmp_addr_0x0070eac6:    mov                edx, dword ptr [esi]               /
                          {disp32} mov       ecx, dword ptr [esp + 0x00000438]  // 0x0070eadf    8b8c2438040000
                          push               ecx                                // 0x0070eae6    51
                          mov.s              ecx, eax                           // 0x0070eae7    8bc8
-                         call               _jmp_addr_0x0073c060               // 0x0070eae9    e872d50200
+                         call               @SetWorshipPercentage__4TownFf@12  // 0x0070eae9    e872d50200
                          mov.s              ecx, esi                           // 0x0070eaee    8bce
-                         call               _jmp_addr_0x00738260               // 0x0070eaf0    e86b970200
+                         call               @GetWorshipSpeed__11TotemStatueFv@4// 0x0070eaf0    e86b970200
                          {disp32} fstp      dword ptr [esi + 0x00000088]       // 0x0070eaf5    d99e88000000
                          pop                edi                                // 0x0070eafb    5f
                          pop                esi                                // 0x0070eafc    5e
@@ -309,9 +309,9 @@ _jmp_addr_0x0070eac6:    mov                edx, dword ptr [esi]               /
 _jmp_addr_0x0070eb06:    {disp32} mov       edx, dword ptr [esp + 0x00000438]  // 0x0070eb06    8b942438040000
                          push               edx                                // 0x0070eb0d    52
                          mov.s              ecx, esi                           // 0x0070eb0e    8bce
-                         call               _jmp_addr_0x00738270               // 0x0070eb10    e85b970200
+                         call               @SetWorshipPercentage__11TotemStatueFf@12               // 0x0070eb10    e85b970200
                          mov.s              ecx, esi                           // 0x0070eb15    8bce
-                         call               _jmp_addr_0x00738260               // 0x0070eb17    e844970200
+                         call               @GetWorshipSpeed__11TotemStatueFv@4// 0x0070eb17    e844970200
                          {disp32} fstp      dword ptr [esi + 0x00000088]       // 0x0070eb1c    d99e88000000
                          pop                edi                                // 0x0070eb22    5f
                          pop                esi                                // 0x0070eb23    5e
@@ -629,7 +629,7 @@ _jmp_addr_0x0070ee2f:    {disp32} fld       dword ptr [esp + 0x00000438]       /
                          cmp.s              edi, ebx                           // 0x0070eee5    3bfb
                          {disp32} je        _jmp_addr_0x0070f287               // 0x0070eee7    0f849a030000
                          mov.s              ecx, edi                           // 0x0070eeed    8bcf
-                         call               _jmp_addr_0x00477850               // 0x0070eeef    e85c89d6ff
+                         call               @GetCreature3D__8CreatureFv@4      // 0x0070eeef    e85c89d6ff
                          {disp32} mov       edx, dword ptr [esp + 0x00000438]  // 0x0070eef4    8b942438040000
                          pop                edi                                // 0x0070eefb    5f
                          pop                esi                                // 0x0070eefc    5e
@@ -717,7 +717,7 @@ _jmp_addr_0x0070efb8:    {disp32} mov       ecx, dword ptr [esp + 0x00000438]  /
                          {disp8} mov        esi, dword ptr [esi + 0x40]        // 0x0070efff    8b7640
                          mov.s              ecx, edi                           // 0x0070f002    8bcf
                          {disp8} mov        dword ptr [esp + 0x18], eax        // 0x0070f004    89442418
-                         call               _jmp_addr_0x00803090               // 0x0070f008    e883400f00
+                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4               // 0x0070f008    e883400f00
                          {disp8} fadd       dword ptr [esp + 0x18]             // 0x0070f00d    d8442418
                          fild               dword ptr [edi]                    // 0x0070f011    db07
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13a4]   // 0x0070f013    d80da4a38a00

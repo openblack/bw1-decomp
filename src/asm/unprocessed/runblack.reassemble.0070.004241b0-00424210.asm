@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x006de510
+.extern _GameRand__5GRandFl
 
 .globl _jmp_addr_0x004241ee
 
@@ -16,7 +16,7 @@ start_0x004241b0_0x00424210:
                          push           0x0000033a                   // 0x004241b0    683a030000
                          push           0x009c95c0                   // 0x004241b5    68c0959c00
                          push           0x19                         // 0x004241ba    6a19
-                         call           _jmp_addr_0x006de510         // 0x004241bc    e84fa32b00
+                         call           _GameRand__5GRandFl          // 0x004241bc    e84fa32b00
                          add            esp, 0x0c                    // 0x004241c1    83c40c
                          cmp            eax, 0x05                    // 0x004241c4    83f805
                          {disp8} ja     _jmp_addr_0x004241ee         // 0x004241c7    7725

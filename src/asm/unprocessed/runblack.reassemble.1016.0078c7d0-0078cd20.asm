@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00552f80
+.extern @IsMultiplayerGame__5GGameCFv@4
 .extern _jmp_addr_0x0078bda0
 .extern _jmp_addr_0x0078c040
 .extern _jmp_addr_0x0078c110
@@ -19,9 +19,9 @@
 .extern _jmp_addr_0x0078f320
 .extern _jmp_addr_0x00798350
 .extern _jmp_addr_0x007c6ce0
-.extern _jmp_addr_0x0082fd30
+.extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern _jmp_addr_0x008379e0
-.extern _jmp_addr_0x00837d40
+.extern @Release__11LH3DTextureFv@4
 
 .globl _jmp_addr_0x0078c919
 .globl _jmp_addr_0x0078c92b
@@ -125,38 +125,38 @@ start_0x0078c7d0_0x0078cd20:
                          {disp32} mov     eax, dword ptr [data_bytes + 0x437ddc] // 0x0078c879    a1dcdddf00
                          push             eax                                    // 0x0078c87e    50
                          push             0x5                                    // 0x0078c87f    6a05
-                         call             _jmp_addr_0x0082fd30                   // 0x0078c881    e8aa340a00
+                         call             _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                   // 0x0078c881    e8aa340a00
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x433d18] // 0x0078c886    8b0d189ddf00
                          push             ecx                                    // 0x0078c88c    51
                          push             0x5                                    // 0x0078c88d    6a05
                          {disp32} mov     dword ptr [data_bytes + 0x43bdf8], eax // 0x0078c88f    a3f81de000
-                         call             _jmp_addr_0x0082fd30                   // 0x0078c894    e897340a00
+                         call             _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                   // 0x0078c894    e897340a00
                          {disp32} mov     edx, dword ptr [data_bytes + 0x42fc54] // 0x0078c899    8b15545cdf00
                          add              esp, 0x40                              // 0x0078c89f    83c440
                          push             edx                                    // 0x0078c8a2    52
                          push             0x5                                    // 0x0078c8a3    6a05
                          {disp32} mov     dword ptr [data_bytes + 0x43bdf4], eax // 0x0078c8a5    a3f41de000
-                         call             _jmp_addr_0x0082fd30                   // 0x0078c8aa    e881340a00
+                         call             _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                   // 0x0078c8aa    e881340a00
                          {disp32} mov     dword ptr [data_bytes + 0x43bdf0], eax // 0x0078c8af    a3f01de000
                          {disp32} mov     eax, dword ptr [data_bytes + 0x41fa04] // 0x0078c8b4    a1045ade00
                          push             eax                                    // 0x0078c8b9    50
                          push             0x5                                    // 0x0078c8ba    6a05
-                         call             _jmp_addr_0x0082fd30                   // 0x0078c8bc    e86f340a00
+                         call             _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                   // 0x0078c8bc    e86f340a00
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x42bb90] // 0x0078c8c1    8b0d901bdf00
                          push             ecx                                    // 0x0078c8c7    51
                          push             0x5                                    // 0x0078c8c8    6a05
                          {disp32} mov     dword ptr [data_bytes + 0x43bde0], eax // 0x0078c8ca    a3e01de000
-                         call             _jmp_addr_0x0082fd30                   // 0x0078c8cf    e85c340a00
+                         call             _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                   // 0x0078c8cf    e85c340a00
                          {disp32} mov     edx, dword ptr [data_bytes + 0x427acc] // 0x0078c8d4    8b15ccdade00
                          push             edx                                    // 0x0078c8da    52
                          push             0x5                                    // 0x0078c8db    6a05
                          {disp32} mov     dword ptr [data_bytes + 0x43bdec], eax // 0x0078c8dd    a3ec1de000
-                         call             _jmp_addr_0x0082fd30                   // 0x0078c8e2    e849340a00
+                         call             _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                   // 0x0078c8e2    e849340a00
                          {disp32} mov     dword ptr [data_bytes + 0x43bde8], eax // 0x0078c8e7    a3e81de000
                          {disp32} mov     eax, dword ptr [data_bytes + 0x423a08] // 0x0078c8ec    a1089ade00
                          push             eax                                    // 0x0078c8f1    50
                          push             0x5                                    // 0x0078c8f2    6a05
-                         call             _jmp_addr_0x0082fd30                   // 0x0078c8f4    e837340a00
+                         call             _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                   // 0x0078c8f4    e837340a00
                          {disp32} mov     dword ptr [data_bytes + 0x43bde4], eax // 0x0078c8f9    a3e41de000
                          {disp32} mov     ecx, dword ptr [ebp + 0x000000c0]      // 0x0078c8fe    8b8dc0000000
                          {disp8} mov      eax, dword ptr [ecx + 0x14]            // 0x0078c904    8b4114
@@ -316,31 +316,31 @@ _jmp_addr_0x0078caa7:    pop              ebp                                   
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x437ddc] // 0x0078cac6    8b0ddcdddf00
                          cmp.s            ecx, esi                               // 0x0078cacc    3bce
                          {disp8} je       _jmp_addr_0x0078cad5                   // 0x0078cace    7405
-                         call             _jmp_addr_0x00837d40                   // 0x0078cad0    e86bb20a00
+                         call             @Release__11LH3DTextureFv@4            // 0x0078cad0    e86bb20a00
 _jmp_addr_0x0078cad5:    {disp32} mov     ecx, dword ptr [data_bytes + 0x433d18] // 0x0078cad5    8b0d189ddf00
                          cmp.s            ecx, esi                               // 0x0078cadb    3bce
                          {disp8} je       _jmp_addr_0x0078cae4                   // 0x0078cadd    7405
-                         call             _jmp_addr_0x00837d40                   // 0x0078cadf    e85cb20a00
+                         call             @Release__11LH3DTextureFv@4            // 0x0078cadf    e85cb20a00
 _jmp_addr_0x0078cae4:    {disp32} mov     ecx, dword ptr [data_bytes + 0x42fc54] // 0x0078cae4    8b0d545cdf00
                          cmp.s            ecx, esi                               // 0x0078caea    3bce
                          {disp8} je       _jmp_addr_0x0078caf3                   // 0x0078caec    7405
-                         call             _jmp_addr_0x00837d40                   // 0x0078caee    e84db20a00
+                         call             @Release__11LH3DTextureFv@4            // 0x0078caee    e84db20a00
 _jmp_addr_0x0078caf3:    {disp32} mov     ecx, dword ptr [data_bytes + 0x41fa04] // 0x0078caf3    8b0d045ade00
                          cmp.s            ecx, esi                               // 0x0078caf9    3bce
                          {disp8} je       _jmp_addr_0x0078cb02                   // 0x0078cafb    7405
-                         call             _jmp_addr_0x00837d40                   // 0x0078cafd    e83eb20a00
+                         call             @Release__11LH3DTextureFv@4            // 0x0078cafd    e83eb20a00
 _jmp_addr_0x0078cb02:    {disp32} mov     ecx, dword ptr [data_bytes + 0x42bb90] // 0x0078cb02    8b0d901bdf00
                          cmp.s            ecx, esi                               // 0x0078cb08    3bce
                          {disp8} je       _jmp_addr_0x0078cb11                   // 0x0078cb0a    7405
-                         call             _jmp_addr_0x00837d40                   // 0x0078cb0c    e82fb20a00
+                         call             @Release__11LH3DTextureFv@4            // 0x0078cb0c    e82fb20a00
 _jmp_addr_0x0078cb11:    {disp32} mov     ecx, dword ptr [data_bytes + 0x427acc] // 0x0078cb11    8b0dccdade00
                          cmp.s            ecx, esi                               // 0x0078cb17    3bce
                          {disp8} je       _jmp_addr_0x0078cb20                   // 0x0078cb19    7405
-                         call             _jmp_addr_0x00837d40                   // 0x0078cb1b    e820b20a00
+                         call             @Release__11LH3DTextureFv@4            // 0x0078cb1b    e820b20a00
 _jmp_addr_0x0078cb20:    {disp32} mov     ecx, dword ptr [data_bytes + 0x423a08] // 0x0078cb20    8b0d089ade00
                          cmp.s            ecx, esi                               // 0x0078cb26    3bce
                          {disp8} je       _jmp_addr_0x0078cb2f                   // 0x0078cb28    7405
-                         call             _jmp_addr_0x00837d40                   // 0x0078cb2a    e811b20a00
+                         call             @Release__11LH3DTextureFv@4            // 0x0078cb2a    e811b20a00
 _jmp_addr_0x0078cb2f:    {disp32} mov     eax, dword ptr [data_bytes + 0x43bdf8] // 0x0078cb2f    a1f81de000
                          cmp.s            eax, esi                               // 0x0078cb34    3bc6
                          {disp32} mov     dword ptr [data_bytes + 0x437ddc], esi // 0x0078cb36    8935dcdddf00
@@ -393,7 +393,7 @@ _jmp_addr_0x0078cbd7:    pop              esi                                   
                          nop                                                     // 0x0078cbde    90
                          nop                                                     // 0x0078cbdf    90
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x33b95c] // 0x0078cbe0    8b0d5c19d000
-                         call             _jmp_addr_0x00552f80                   // 0x0078cbe6    e89563dcff
+                         call             @IsMultiplayerGame__5GGameCFv@4        // 0x0078cbe6    e89563dcff
                          test             eax, eax                               // 0x0078cbeb    85c0
                          {disp8} jne      _jmp_addr_0x0078cc03                   // 0x0078cbed    7514
                          {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c] // 0x0078cbef    a15c19d000
