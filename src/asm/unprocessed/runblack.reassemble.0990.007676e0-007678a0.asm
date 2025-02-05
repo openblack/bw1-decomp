@@ -13,10 +13,6 @@
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007c5a19
 
-.globl _jmp_addr_0x007677b8
-.globl _jmp_addr_0x0076786f
-.globl _jmp_addr_0x0076787d
-
 start_0x007676e0_0x007678a0:
 // Snippet: asm, [0x007676e0, 0x00767888)
                          sub                esp, 0x08                                // 0x007676e0    83ec08

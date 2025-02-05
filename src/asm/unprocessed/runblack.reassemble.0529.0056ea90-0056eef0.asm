@@ -19,31 +19,8 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 
 .globl _jmp_addr_0x0056ea90
-.globl _jmp_addr_0x0056ead1
 .globl _jmp_addr_0x0056eaf0
-.globl _jmp_addr_0x0056eb03
-.globl _jmp_addr_0x0056eb0e
-.globl _jmp_addr_0x0056eb10
-.globl _jmp_addr_0x0056eb56
-.globl _jmp_addr_0x0056eb67
-.globl _jmp_addr_0x0056ebac
-.globl _jmp_addr_0x0056ebc0
-.globl _jmp_addr_0x0056ebe1
-.globl _jmp_addr_0x0056ebf2
 .globl _jmp_addr_0x0056ec00
-.globl _jmp_addr_0x0056ec8b
-.globl _jmp_addr_0x0056ece8
-.globl _jmp_addr_0x0056ed0c
-.globl _jmp_addr_0x0056ed12
-.globl _jmp_addr_0x0056ed37
-.globl _jmp_addr_0x0056ed4f
-.globl _jmp_addr_0x0056ed5b
-.globl _jmp_addr_0x0056ed61
-.globl _jmp_addr_0x0056edcb
-.globl _jmp_addr_0x0056ee12
-.globl _jmp_addr_0x0056ee49
-.globl _jmp_addr_0x0056ee6e
-.globl _jmp_addr_0x0056eebf
 
 start_0x0056ea90_0x0056eef0:
 // Snippet: asm, [0x0056ea90, 0x0056eec5)

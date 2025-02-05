@@ -10,8 +10,6 @@
 .extern @GetAnim__9MorphableFll@16
 
 .globl _jmp_addr_0x00483670
-.globl _jmp_addr_0x0048370a
-.globl _jmp_addr_0x00483712
 
 start_0x00483670_0x00483750:
 // Snippet: asm, [0x00483670, 0x00483716)

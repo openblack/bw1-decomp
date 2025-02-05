@@ -31,48 +31,6 @@
 .extern ___nw__FUl
 
 .globl @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.globl _jmp_addr_0x0062b081
-.globl _jmp_addr_0x0062b083
-.globl _jmp_addr_0x0062b0cb
-.globl _jmp_addr_0x0062b0cd
-.globl _jmp_addr_0x0062b134
-.globl _jmp_addr_0x0062b136
-.globl _jmp_addr_0x0062b17f
-.globl _jmp_addr_0x0062b181
-.globl _jmp_addr_0x0062b1d7
-.globl _jmp_addr_0x0062b1d9
-.globl _jmp_addr_0x0062b27f
-.globl _jmp_addr_0x0062b296
-.globl _jmp_addr_0x0062b2e8
-.globl _jmp_addr_0x0062b303
-.globl _jmp_addr_0x0062b32c
-.globl _jmp_addr_0x0062b350
-.globl _jmp_addr_0x0062b3a4
-.globl _jmp_addr_0x0062b409
-.globl _jmp_addr_0x0062b42e
-.globl _jmp_addr_0x0062b441
-.globl _jmp_addr_0x0062b473
-.globl _jmp_addr_0x0062b477
-.globl _jmp_addr_0x0062b49a
-.globl _jmp_addr_0x0062b4e2
-.globl _jmp_addr_0x0062b509
-.globl _jmp_addr_0x0062b53c
-.globl _jmp_addr_0x0062b54c
-.globl _jmp_addr_0x0062b571
-.globl _jmp_addr_0x0062b584
-.globl _jmp_addr_0x0062b590
-.globl _jmp_addr_0x0062b5b2
-.globl _jmp_addr_0x0062b5e2
-.globl _jmp_addr_0x0062b615
-.globl _jmp_addr_0x0062b62f
-.globl _jmp_addr_0x0062b656
-.globl _jmp_addr_0x0062b674
-.globl _jmp_addr_0x0062b6a4
-.globl _jmp_addr_0x0062b6c7
-.globl _jmp_addr_0x0062b6da
-.globl _jmp_addr_0x0062b6f7
-.globl _jmp_addr_0x0062b7ea
-.globl _jmp_addr_0x0062b7fd
 
 start_0x0062b030_0x0062b830:
 // Snippet: asm, [0x0062b030, 0x0062b800)

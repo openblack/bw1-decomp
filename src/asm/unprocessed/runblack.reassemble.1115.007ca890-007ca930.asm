@@ -9,7 +9,6 @@
 
 .extern _jmp_addr_0x007ca850
 
-
 start_0x007ca890_0x007ca930:
 // Snippet: asm, [0x007ca890, 0x007ca901)
                          dec             esi                          // 0x007ca890    4e

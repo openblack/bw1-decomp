@@ -23,31 +23,7 @@
 .extern _jmp_addr_0x007f6e00
 .extern _jmp_addr_0x008a2752
 
-.globl _jmp_addr_0x007f5040
-.globl _jmp_addr_0x007f508a
-.globl _jmp_addr_0x007f50a6
-.globl _jmp_addr_0x007f50c0
-.globl _jmp_addr_0x007f50db
-.globl _jmp_addr_0x007f50e2
-.globl _jmp_addr_0x007f5107
-.globl _jmp_addr_0x007f512a
-.globl _jmp_addr_0x007f5144
-.globl _jmp_addr_0x007f514f
-.globl _jmp_addr_0x007f5170
-.globl _jmp_addr_0x007f5176
-.globl _jmp_addr_0x007f5199
-.globl _jmp_addr_0x007f519d
-.globl _jmp_addr_0x007f51a1
-.globl _jmp_addr_0x007f51ab
-.globl _jmp_addr_0x007f51cb
 .globl _jmp_addr_0x007f51e0
-.globl _jmp_addr_0x007f524f
-.globl _jmp_addr_0x007f52cc
-.globl _jmp_addr_0x007f52db
-.globl _jmp_addr_0x007f530c
-.globl _jmp_addr_0x007f533d
-.globl _jmp_addr_0x007f536f
-.globl _jmp_addr_0x007f5371
 
 start_0x007f5040_0x007f5450:
 // Snippet: asm, [0x007f5040, 0x007f5379)

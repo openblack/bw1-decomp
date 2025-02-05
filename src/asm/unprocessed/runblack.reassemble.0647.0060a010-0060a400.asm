@@ -17,7 +17,6 @@
 .globl _jmp_addr_0x0060a020
 .globl _jmp_addr_0x0060a030
 .globl _jmp_addr_0x0060a0b0
-.globl _jmp_addr_0x0060a3dd
 
 start_0x0060a010_0x0060a400:
 // Snippet: asm, [0x0060a010, 0x0060a3e5)

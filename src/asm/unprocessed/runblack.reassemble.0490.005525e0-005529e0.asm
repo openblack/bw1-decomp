@@ -18,19 +18,8 @@
 .extern _jmp_addr_0x00845d30
 
 .globl _jmp_addr_0x005525e0
-.globl _jmp_addr_0x00552613
 .globl _GetTribe__5GGameF10TRIBE_TYPE@4
 .globl @AddPlayerSparkles__5GGameFv@4
-.globl _jmp_addr_0x00552684
-.globl _jmp_addr_0x005526ab
-.globl _jmp_addr_0x005526be
-.globl _jmp_addr_0x005526ef
-.globl _jmp_addr_0x00552922
-.globl _jmp_addr_0x00552924
-.globl _jmp_addr_0x00552969
-.globl _jmp_addr_0x0055299f
-.globl _jmp_addr_0x005529b5
-.globl _jmp_addr_0x005529c7
 
 start_0x005525e0_0x005529e0:
 // Snippet: asm, [0x005525e0, 0x005529cf)

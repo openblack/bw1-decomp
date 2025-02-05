@@ -10,11 +10,6 @@
 .extern @GetCreature3D__8CreatureFv@4
 
 .globl _jmp_addr_0x0047d470
-.globl _jmp_addr_0x0047d48a
-.globl _jmp_addr_0x0047d49a
-.globl _jmp_addr_0x0047d49b
-.globl _jmp_addr_0x0047d4a2
-.globl _jmp_addr_0x0047d4e1
 
 start_0x0047d470_0x0047d500:
 // Snippet: asm, [0x0047d470, 0x0047d4e6)

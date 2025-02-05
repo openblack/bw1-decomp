@@ -34,44 +34,9 @@
 .extern @GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsPUlPUl@12
 .extern _jmp_addr_0x00823240
 
-.globl _jmp_addr_0x00422328
-.globl _jmp_addr_0x0042232a
-.globl _jmp_addr_0x004223f4
-.globl _jmp_addr_0x0042241f
-.globl _jmp_addr_0x0042243c
-.globl _jmp_addr_0x0042243f
-.globl _jmp_addr_0x00422457
-.globl _jmp_addr_0x00422465
-.globl _jmp_addr_0x00422486
-.globl _jmp_addr_0x004224a0
-.globl _jmp_addr_0x0042251e
-.globl _jmp_addr_0x00422577
 .globl _jmp_addr_0x00422580
-.globl _jmp_addr_0x00422593
-.globl _jmp_addr_0x004225b9
-.globl _jmp_addr_0x004225c8
-.globl _jmp_addr_0x004225ca
-.globl _jmp_addr_0x004225dc
-.globl _jmp_addr_0x004225de
-.globl _jmp_addr_0x004225e5
 .globl _jmp_addr_0x00422600
-.globl _jmp_addr_0x0042260e
-.globl _jmp_addr_0x0042263b
-.globl _jmp_addr_0x00422684
-.globl _jmp_addr_0x00422687
-.globl _jmp_addr_0x0042273a
 .globl _jmp_addr_0x00422750
-.globl _jmp_addr_0x004227b0
-.globl _jmp_addr_0x004227ba
-.globl _jmp_addr_0x0042283b
-.globl _jmp_addr_0x00422861
-.globl _jmp_addr_0x0042289f
-.globl _jmp_addr_0x00422950
-.globl _jmp_addr_0x00422965
-.globl _jmp_addr_0x0042297e
-.globl _jmp_addr_0x00422a46
-.globl _jmp_addr_0x00422a5b
-.globl _jmp_addr_0x00422a76
 
 start_0x00422300_0x00422aa0:
 // Snippet: asm, [0x00422300, 0x00422a7e)

@@ -10,10 +10,6 @@
 .extern _jmp_addr_0x00475730
 .extern _jmp_addr_0x0047a880
 
-.globl _jmp_addr_0x0050277f
-.globl _jmp_addr_0x00502790
-.globl _jmp_addr_0x005027d2
-
 start_0x00502660_0x00502810:
 // Snippet: asm, [0x00502660, 0x005027dc)
                          sub               esp, 0x2c                                     // 0x00502660    83ec2c

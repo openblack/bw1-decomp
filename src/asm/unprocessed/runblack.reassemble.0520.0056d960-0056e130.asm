@@ -26,39 +26,7 @@
 .extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
 .extern _jmp_addr_0x0081b370
 
-.globl _jmp_addr_0x0056d978
-.globl _jmp_addr_0x0056d9ca
-.globl _jmp_addr_0x0056d9d8
-.globl _jmp_addr_0x0056d9e4
 .globl _jmp_addr_0x0056da00
-.globl _jmp_addr_0x0056daa7
-.globl _jmp_addr_0x0056daac
-.globl _jmp_addr_0x0056dab6
-.globl _jmp_addr_0x0056dad2
-.globl _jmp_addr_0x0056dae9
-.globl _jmp_addr_0x0056dcd4
-.globl _jmp_addr_0x0056dcef
-.globl _jmp_addr_0x0056dcf7
-.globl _jmp_addr_0x0056dd15
-.globl _jmp_addr_0x0056ddbc
-.globl _jmp_addr_0x0056ddc5
-.globl _jmp_addr_0x0056dde0
-.globl _jmp_addr_0x0056de69
-.globl _jmp_addr_0x0056de8e
-.globl _jmp_addr_0x0056deb7
-.globl _jmp_addr_0x0056ded6
-.globl _jmp_addr_0x0056df2a
-.globl _jmp_addr_0x0056df85
-.globl _jmp_addr_0x0056dfa0
-.globl _jmp_addr_0x0056dfbc
-.globl _jmp_addr_0x0056dff0
-.globl _jmp_addr_0x0056e014
-.globl _jmp_addr_0x0056e056
-.globl _jmp_addr_0x0056e07a
-.globl _jmp_addr_0x0056e0aa
-.globl _jmp_addr_0x0056e0cf
-.globl _jmp_addr_0x0056e0ea
-.globl _jmp_addr_0x0056e0f6
 
 start_0x0056d960_0x0056e130:
 // Snippet: asm, [0x0056d960, 0x0056e0fd)

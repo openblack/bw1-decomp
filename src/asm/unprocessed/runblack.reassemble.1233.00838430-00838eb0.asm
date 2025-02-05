@@ -36,51 +36,14 @@
 .extern _jmp_addr_0x0087f8b0
 
 .globl _jmp_addr_0x00838430
-.globl _jmp_addr_0x0083844b
 .globl _jmp_addr_0x00838450
-.globl _jmp_addr_0x0083846b
 .globl _GetThisTexture__11LH3DTextureFUl
-.globl _jmp_addr_0x00838490
-.globl _jmp_addr_0x0083849e
-.globl _jmp_addr_0x008384a0
-.globl _jmp_addr_0x008384b7
-.globl _jmp_addr_0x008384bb
 .globl _jmp_addr_0x00838500
-.globl _jmp_addr_0x0083850d
-.globl _jmp_addr_0x00838518
 .globl _jmp_addr_0x00838530
-.globl _jmp_addr_0x0083853d
-.globl _jmp_addr_0x00838548
-.globl _jmp_addr_0x0083856b
 .globl _jmp_addr_0x00838580
-.globl _jmp_addr_0x008385de
-.globl _jmp_addr_0x008385ec
-.globl _jmp_addr_0x0083862e
-.globl _jmp_addr_0x00838650
 .globl _jmp_addr_0x00838660
-.globl _jmp_addr_0x00838771
-.globl _jmp_addr_0x00838775
-.globl _jmp_addr_0x008387b2
-.globl _jmp_addr_0x008387c1
-.globl _jmp_addr_0x008387c8
-.globl _jmp_addr_0x008387cd
-.globl _jmp_addr_0x008387e1
-.globl _jmp_addr_0x008387f6
-.globl _jmp_addr_0x00838873
-.globl _jmp_addr_0x0083887d
-.globl _jmp_addr_0x00838895
-.globl _jmp_addr_0x008388b1
-.globl _jmp_addr_0x00838911
-.globl _jmp_addr_0x00838931
-.globl _jmp_addr_0x008389f1
 .globl _jmp_addr_0x00838a70
-.globl _jmp_addr_0x00838a86
-.globl _jmp_addr_0x00838aa1
-.globl _jmp_addr_0x00838aab
-.globl _jmp_addr_0x00838ac4
-.globl _jmp_addr_0x00838ace
 .globl _jmp_addr_0x00838af0
-.globl _jmp_addr_0x00838e45
 
 start_0x00838430_0x00838eb0:
 // Snippet: asm, [0x00838430, 0x00838e6e)

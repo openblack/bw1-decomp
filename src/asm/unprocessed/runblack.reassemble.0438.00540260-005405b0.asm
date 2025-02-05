@@ -13,16 +13,6 @@
 .extern _jmp_addr_0x007c6462
 
 .globl @__vt__8LoginBoxFv@4
-.globl _jmp_addr_0x0054028b
-.globl _jmp_addr_0x005402c9
-.globl _jmp_addr_0x005402d0
-.globl _jmp_addr_0x005403cb
-.globl _jmp_addr_0x005403ef
-.globl _jmp_addr_0x005403ff
-.globl _jmp_addr_0x00540448
-.globl _jmp_addr_0x00540454
-.globl _jmp_addr_0x005404bd
-.globl _jmp_addr_0x00540573
 
 start_0x00540260_0x005405b0:
 // Snippet: asm, [0x00540260, 0x00540579)

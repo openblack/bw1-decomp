@@ -11,7 +11,6 @@
 .extern _jmp_addr_0x00436970
 .extern _jmp_addr_0x007c5791
 
-.globl _jmp_addr_0x0040122a
 .globl _jmp_addr_0x004012a4
 .globl _jmp_addr_0x004012b4
 .globl _jmp_addr_0x004012d0

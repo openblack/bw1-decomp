@@ -19,31 +19,6 @@
 .extern @GameTurnUpdate__5RPlanFi@12
 
 .globl _jmp_addr_0x00864420
-.globl _jmp_addr_0x0086445f
-.globl _jmp_addr_0x00864478
-.globl _jmp_addr_0x008644f3
-.globl _jmp_addr_0x00864509
-.globl _jmp_addr_0x00864517
-.globl _jmp_addr_0x00864543
-.globl _jmp_addr_0x0086454b
-.globl _jmp_addr_0x008645ba
-.globl _jmp_addr_0x008645d8
-.globl _jmp_addr_0x008645f3
-.globl _jmp_addr_0x00864642
-.globl _jmp_addr_0x00864683
-.globl _jmp_addr_0x008646ca
-.globl _jmp_addr_0x008646f1
-.globl _jmp_addr_0x008646f6
-.globl _jmp_addr_0x0086471f
-.globl _jmp_addr_0x0086475a
-.globl _jmp_addr_0x00864770
-.globl _jmp_addr_0x008647e3
-.globl _jmp_addr_0x008647e5
-.globl _jmp_addr_0x0086480f
-.globl _jmp_addr_0x0086483d
-.globl _jmp_addr_0x0086484f
-.globl _jmp_addr_0x00864851
-.globl _jmp_addr_0x00864864
 
 start_0x00864420_0x008648b0:
 // Snippet: asm, [0x00864420, 0x00864893)

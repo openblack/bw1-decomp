@@ -10,14 +10,6 @@
 .extern @IsReadyForNewAnimation__6LivingFUl@12
 
 .globl _jmp_addr_0x00596fd0
-.globl _jmp_addr_0x0059702c
-.globl _jmp_addr_0x00597036
-.globl _jmp_addr_0x00597099
-.globl _jmp_addr_0x005970ad
-.globl _jmp_addr_0x0059710a
-.globl _jmp_addr_0x00597113
-.globl _jmp_addr_0x0059715d
-.globl _jmp_addr_0x00597163
 
 start_0x00596fd0_0x00597190:
 // Snippet: asm, [0x00596fd0, 0x0059716d)

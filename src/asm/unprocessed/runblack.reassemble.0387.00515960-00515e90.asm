@@ -27,32 +27,8 @@
 .extern _jmp_addr_0x007c6462
 .extern ___nw__FUl
 
-.globl _jmp_addr_0x00515974
-.globl _jmp_addr_0x00515980
 .globl @__ct__20DialogBoxSaveMessageFv@4
 .globl _jmp_addr_0x005159c0
-.globl _jmp_addr_0x00515a1a
-.globl _jmp_addr_0x00515a5e
-.globl _jmp_addr_0x00515a60
-.globl _jmp_addr_0x00515a8f
-.globl _jmp_addr_0x00515a9b
-.globl _jmp_addr_0x00515abd
-.globl _jmp_addr_0x00515abf
-.globl _jmp_addr_0x00515af2
-.globl _jmp_addr_0x00515b14
-.globl _jmp_addr_0x00515b16
-.globl _jmp_addr_0x00515b67
-.globl _jmp_addr_0x00515bdf
-.globl _jmp_addr_0x00515c05
-.globl _jmp_addr_0x00515c4f
-.globl _jmp_addr_0x00515c62
-.globl _jmp_addr_0x00515c6e
-.globl _jmp_addr_0x00515c97
-.globl _jmp_addr_0x00515d94
-.globl _jmp_addr_0x00515dc4
-.globl _jmp_addr_0x00515de8
-.globl _jmp_addr_0x00515e28
-.globl _jmp_addr_0x00515e54
 
 start_0x00515960_0x00515e90:
 // Snippet: asm, [0x00515960, 0x00515e5e)

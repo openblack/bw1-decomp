@@ -14,17 +14,6 @@
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x007a1400
 
-.globl _jmp_addr_0x00708fef
-.globl _jmp_addr_0x0070905b
-.globl _jmp_addr_0x00709067
-.globl _jmp_addr_0x00709077
-.globl _jmp_addr_0x0070907a
-.globl _jmp_addr_0x00709082
-.globl _jmp_addr_0x0070908b
-.globl _jmp_addr_0x007090f2
-.globl _jmp_addr_0x00709101
-.globl _jmp_addr_0x00709127
-
 start_0x00708fc0_0x00709170:
 // Snippet: asm, [0x00708fc0, 0x0070912e)
                          push              ecx                                    // 0x00708fc0    51

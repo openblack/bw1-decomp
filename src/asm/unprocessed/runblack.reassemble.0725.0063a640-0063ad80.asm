@@ -26,43 +26,14 @@
 .extern _jmp_addr_0x00823c90
 
 .globl @InitialiseIsFixedForMapList__6ObjectFv@4
-.globl _jmp_addr_0x0063a68f
 .globl _jmp_addr_0x0063a6a0
-.globl _jmp_addr_0x0063a6b8
-.globl _jmp_addr_0x0063a6ba
-.globl _jmp_addr_0x0063a6dc
-.globl _jmp_addr_0x0063a6f4
-.globl _jmp_addr_0x0063a6fa
 .globl _jmp_addr_0x0063a710
-.globl _jmp_addr_0x0063a728
-.globl _jmp_addr_0x0063a72a
-.globl _jmp_addr_0x0063a74c
-.globl _jmp_addr_0x0063a764
-.globl _jmp_addr_0x0063a76a
-.globl _jmp_addr_0x0063a7ac
 .globl _jmp_addr_0x0063a7c0
-.globl _jmp_addr_0x0063a7f8
 .globl _jmp_addr_0x0063a810
 .globl _jmp_addr_0x0063a8e0
-.globl _jmp_addr_0x0063a913
 .globl _jmp_addr_0x0063a940
-.globl _jmp_addr_0x0063a95e
-.globl _jmp_addr_0x0063a9ee
-.globl _jmp_addr_0x0063aaa2
-.globl _jmp_addr_0x0063ab44
-.globl _jmp_addr_0x0063ab50
-.globl _jmp_addr_0x0063ab70
-.globl _jmp_addr_0x0063ab90
 .globl _Create__12Game3DObjectFQ210LH3DObject10ObjectType
 .globl @GetAltitudeFondation__12Game3DObjectCFv@4
-.globl _jmp_addr_0x0063ac20
-.globl _jmp_addr_0x0063ac8e
-.globl _jmp_addr_0x0063aca0
-.globl _jmp_addr_0x0063aca6
-.globl _jmp_addr_0x0063acac
-.globl _jmp_addr_0x0063acb6
-.globl _jmp_addr_0x0063ad48
-.globl _jmp_addr_0x0063ad4a
 
 start_0x0063a640_0x0063ad80:
 // Snippet: asm, [0x0063a640, 0x0063ad63)

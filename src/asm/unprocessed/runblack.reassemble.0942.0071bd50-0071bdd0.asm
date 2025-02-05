@@ -9,8 +9,6 @@
 
 .extern _jmp_addr_0x006de570
 
-.globl _jmp_addr_0x0071bda2
-
 start_0x0071bd50_0x0071bdd0:
 // Snippet: asm, [0x0071bd50, 0x0071bda5)
                          push           0xa                          // 0x0071bd50    6a0a

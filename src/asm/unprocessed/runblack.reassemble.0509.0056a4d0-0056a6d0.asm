@@ -7,9 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-
 .globl _jmp_addr_0x0056a4d0
-.globl _jmp_addr_0x0056a626
 
 start_0x0056a4d0_0x0056a6d0:
 // Snippet: asm, [0x0056a4d0, 0x0056a629)

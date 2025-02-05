@@ -36,40 +36,6 @@
 .extern _jmp_addr_0x007faa50
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
-.globl _jmp_addr_0x00503c0c
-.globl _jmp_addr_0x00503c79
-.globl _jmp_addr_0x00503c8e
-.globl _jmp_addr_0x00503d43
-.globl _jmp_addr_0x00503d6e
-.globl _jmp_addr_0x00503d93
-.globl _jmp_addr_0x00503dc1
-.globl _jmp_addr_0x00503dc8
-.globl _jmp_addr_0x00503df9
-.globl _jmp_addr_0x00503e75
-.globl _jmp_addr_0x00503ea4
-.globl _jmp_addr_0x00503ed9
-.globl _jmp_addr_0x00503f6b
-.globl _jmp_addr_0x00503fa8
-.globl _jmp_addr_0x00503fb2
-.globl _jmp_addr_0x00503fe0
-.globl _jmp_addr_0x0050403e
-.globl _jmp_addr_0x005040a6
-.globl _jmp_addr_0x00504104
-.globl _jmp_addr_0x00504141
-.globl _jmp_addr_0x0050414b
-.globl _jmp_addr_0x00504183
-.globl _jmp_addr_0x00504249
-.globl _jmp_addr_0x0050424b
-.globl _jmp_addr_0x005042d1
-.globl _jmp_addr_0x00504393
-.globl _jmp_addr_0x0050439a
-.globl _jmp_addr_0x005043bf
-.globl _jmp_addr_0x005043f7
-.globl _jmp_addr_0x005044c4
-.globl _jmp_addr_0x00504553
-.globl _jmp_addr_0x00504640
-.globl _jmp_addr_0x005046ce
-
 start_0x00503bd0_0x00504700:
 // Snippet: asm, [0x00503bd0, 0x005046e9)
                          {disp32} mov       eax, dword ptr [ecx + 0x00000160]             // 0x00503bd0    8b8160010000

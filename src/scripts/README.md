@@ -15,3 +15,4 @@ They include:
 * `post_assemble_patch.py`: is an archive copy of the one in the parent directory.
 * `re_assemble.py`: this is the original disassembly, re-assembly and validation script which makes use of some of the other scripts to disassemble, then reassemble using the patched `clang`, link, patch and compare the result against the original executable.
 * `rename_globls.py`: This cross references known function names and addresses in assembly source to give proper decorated names.
+* `clean_up_globls.py`: This cross references .globls and .extern declarations to remove .globls which aren't externally used.

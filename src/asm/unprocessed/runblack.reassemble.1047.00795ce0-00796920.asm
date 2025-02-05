@@ -20,28 +20,7 @@
 .extern _jmp_addr_0x0086d4e0
 
 .globl @UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29
-.globl _jmp_addr_0x00795d25
-.globl _jmp_addr_0x00795d40
-.globl _jmp_addr_0x00795dfd
-.globl _jmp_addr_0x00795e38
-.globl _jmp_addr_0x00795e4c
-.globl _jmp_addr_0x00795ec2
-.globl _jmp_addr_0x00795f28
-.globl _jmp_addr_0x00795f58
-.globl _jmp_addr_0x00795f87
-.globl _jmp_addr_0x00795fb7
-.globl _jmp_addr_0x00795fe7
-.globl _jmp_addr_0x007961e8
-.globl _jmp_addr_0x0079622a
-.globl _jmp_addr_0x007962a5
-.globl _jmp_addr_0x007962c6
-.globl _jmp_addr_0x0079633a
-.globl _jmp_addr_0x00796406
-.globl _jmp_addr_0x00796408
-.globl _jmp_addr_0x007964f2
-.globl _jmp_addr_0x007965e2
 .globl @UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29
-.globl _jmp_addr_0x00796901
 
 start_0x00795ce0_0x00796920:
 // Snippet: asm, [0x00795ce0, 0x0079690c)

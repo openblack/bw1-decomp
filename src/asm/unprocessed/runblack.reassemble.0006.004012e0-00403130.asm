@@ -46,46 +46,14 @@
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fbac0
 
-.globl _jmp_addr_0x00401300
-.globl _jmp_addr_0x00401312
-.globl _jmp_addr_0x0040133d
 .globl @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
-.globl _jmp_addr_0x004013d4
-.globl _jmp_addr_0x004016bb
-.globl _jmp_addr_0x004016e4
-.globl _jmp_addr_0x004017dd
 .globl _jmp_addr_0x004017f9
 .globl _jmp_addr_0x00401879
-.globl _jmp_addr_0x00401bcb
-.globl _jmp_addr_0x00401c3e
-.globl _jmp_addr_0x00401f49
-.globl _jmp_addr_0x00401f8b
-.globl _jmp_addr_0x0040263a
-.globl _jmp_addr_0x004026eb
-.globl _jmp_addr_0x00402723
-.globl _jmp_addr_0x00402a5b
 .globl _jmp_addr_0x00402b60
-.globl _jmp_addr_0x00402b83
-.globl _jmp_addr_0x00402ba7
 .globl @SetZero__5AbodeFv@4
 .globl _jmp_addr_0x00402c10
-.globl _jmp_addr_0x00402c3d
-.globl _jmp_addr_0x00402c4c
 .globl _jmp_addr_0x00402c60
-.globl _jmp_addr_0x00402c98
-.globl _jmp_addr_0x00402da3
-.globl _jmp_addr_0x00402de0
 .globl _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
-.globl _jmp_addr_0x00402f25
-.globl _jmp_addr_0x00402f4e
-.globl _jmp_addr_0x00402f99
-.globl _jmp_addr_0x00402fc2
-.globl _jmp_addr_0x00402feb
-.globl _jmp_addr_0x00402ffb
-.globl _jmp_addr_0x00403021
-.globl _jmp_addr_0x00403049
-.globl _jmp_addr_0x0040306d
-.globl _jmp_addr_0x00403093
 
 start_0x004012e0_0x00403130:
 // Snippet: asm, [0x004012e0, 0x00403097)

@@ -26,40 +26,10 @@
 .extern _Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff
 
 .globl _jmp_addr_0x006dacd0
-.globl _jmp_addr_0x006dad0e
-.globl _jmp_addr_0x006dad27
-.globl _jmp_addr_0x006dad45
 .globl _jmp_addr_0x006dad50
-.globl _jmp_addr_0x006dadb0
-.globl _jmp_addr_0x006dadbe
-.globl _jmp_addr_0x006dadf4
-.globl _jmp_addr_0x006dae26
-.globl _jmp_addr_0x006dae33
-.globl _jmp_addr_0x006dae47
-.globl _jmp_addr_0x006daf36
-.globl _jmp_addr_0x006daf46
 .globl _jmp_addr_0x006db020
-.globl _jmp_addr_0x006db07e
-.globl _jmp_addr_0x006db0c9
 .globl _jmp_addr_0x006db160
-.globl _jmp_addr_0x006db1bc
-.globl _jmp_addr_0x006db1eb
-.globl _jmp_addr_0x006db21a
-.globl _jmp_addr_0x006db2f0
-.globl _jmp_addr_0x006db2fa
-.globl _jmp_addr_0x006db359
-.globl _jmp_addr_0x006db35b
-.globl _jmp_addr_0x006db361
-.globl _jmp_addr_0x006db3c7
-.globl _jmp_addr_0x006db3c9
-.globl _jmp_addr_0x006db419
-.globl _jmp_addr_0x006db45e
-.globl _jmp_addr_0x006db4a3
-.globl _jmp_addr_0x006db4c9
-.globl _jmp_addr_0x006db4de
-.globl _jmp_addr_0x006db508
 .globl _jmp_addr_0x006db520
-.globl _jmp_addr_0x006db53e
 
 start_0x006dacd0_0x006db570:
 // Snippet: asm, [0x006dacd0, 0x006db541)

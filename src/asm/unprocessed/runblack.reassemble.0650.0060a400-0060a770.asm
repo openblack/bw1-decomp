@@ -23,29 +23,10 @@
 .extern @__dt__Q210NewCollide3ObjFv@4
 
 .globl _jmp_addr_0x0060a400
-.globl _jmp_addr_0x0060a40c
-.globl _jmp_addr_0x0060a42a
-.globl _jmp_addr_0x0060a445
 .globl _jmp_addr_0x0060a450
-.globl _jmp_addr_0x0060a489
-.globl _jmp_addr_0x0060a4ce
-.globl _jmp_addr_0x0060a4dd
-.globl _jmp_addr_0x0060a4f8
-.globl _jmp_addr_0x0060a50b
-.globl _jmp_addr_0x0060a519
-.globl _jmp_addr_0x0060a51b
-.globl _jmp_addr_0x0060a523
-.globl _jmp_addr_0x0060a539
-.globl _jmp_addr_0x0060a5ac
 .globl _jmp_addr_0x0060a5e0
-.globl _jmp_addr_0x0060a608
-.globl _jmp_addr_0x0060a60a
 .globl @__ct__13CircleHugInfoFv@4
 .globl @GetObjectPtr__13CircleHugInfoFv@4
-.globl _jmp_addr_0x0060a680
-.globl _jmp_addr_0x0060a68a
-.globl _jmp_addr_0x0060a72d
-.globl _jmp_addr_0x0060a73e
 
 start_0x0060a400_0x0060a770:
 // Snippet: asm, [0x0060a400, 0x0060a746)

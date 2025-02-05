@@ -9,8 +9,6 @@
 
 .extern _GameRand__5GRandFl
 
-.globl _jmp_addr_0x004241ee
-
 start_0x004241b0_0x00424210:
 // Snippet: asm, [0x004241b0, 0x004241f4)
                          push           0x0000033a                   // 0x004241b0    683a030000

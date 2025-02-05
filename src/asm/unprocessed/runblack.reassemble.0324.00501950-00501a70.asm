@@ -14,9 +14,6 @@
 .extern _jmp_addr_0x00484300
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
-.globl _jmp_addr_0x00501a3a
-.globl _jmp_addr_0x00501a45
-
 start_0x00501950_0x00501a70:
 // Snippet: asm, [0x00501950, 0x00501a4d)
                          {disp32} mov      eax, dword ptr [ecx + 0x00000160]       // 0x00501950    8b8160010000

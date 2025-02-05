@@ -12,10 +12,7 @@
 .extern _jmp_addr_0x00888060
 
 .globl _jmp_addr_0x00897480
-.globl _jmp_addr_0x008974b0
 .globl _jmp_addr_0x008974c0
-.globl _jmp_addr_0x00897505
-.globl _jmp_addr_0x0089750a
 
 start_0x00897480_0x00897550:
 // Snippet: asm, [0x00897480, 0x00897535)

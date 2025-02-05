@@ -14,19 +14,6 @@
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0047ec10
-.globl _jmp_addr_0x0047ec50
-.globl _jmp_addr_0x0047ec76
-.globl _jmp_addr_0x0047ec7d
-.globl _jmp_addr_0x0047ec82
-.globl _jmp_addr_0x0047ec88
-.globl _jmp_addr_0x0047eca8
-.globl _jmp_addr_0x0047ece9
-.globl _jmp_addr_0x0047edf1
-.globl _jmp_addr_0x0047ee18
-.globl _jmp_addr_0x0047ee3f
-.globl _jmp_addr_0x0047ee41
-.globl _jmp_addr_0x0047ee7e
-.globl _jmp_addr_0x0047ee93
 
 start_0x0047ec10_0x0047ef30:
 // Snippet: asm, [0x0047ec10, 0x0047ef05)

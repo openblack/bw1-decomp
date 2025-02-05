@@ -43,28 +43,7 @@
 .extern _jmp_addr_0x0087fd40
 
 .globl @LoadFile__12LHScriptX_c_FPcPl@16
-.globl _jmp_addr_0x007e81e4
-.globl _jmp_addr_0x007e81fc
-.globl _jmp_addr_0x007e8205
 .globl _jmp_addr_0x007e8240
-.globl _jmp_addr_0x007e828e
-.globl _jmp_addr_0x007e84f2
-.globl _jmp_addr_0x007e857c
-.globl _jmp_addr_0x007e8635
-.globl _jmp_addr_0x007e867a
-.globl _jmp_addr_0x007e86a9
-.globl _jmp_addr_0x007e86ab
-.globl _jmp_addr_0x007e86e8
-.globl _jmp_addr_0x007e872e
-.globl _jmp_addr_0x007e8747
-.globl _jmp_addr_0x007e8776
-.globl _jmp_addr_0x007e8778
-.globl _jmp_addr_0x007e87d9
-.globl _jmp_addr_0x007e880b
-.globl _jmp_addr_0x007e8840
-.globl _jmp_addr_0x007e8849
-.globl _jmp_addr_0x007e88ed
-.globl _jmp_addr_0x007e895f
 
 start_0x007e8170_0x007e89f0:
 // Snippet: asm, [0x007e8170, 0x007e8984)

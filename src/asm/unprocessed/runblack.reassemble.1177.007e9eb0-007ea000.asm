@@ -13,14 +13,6 @@
 .extern _jmp_addr_0x007e9df0
 
 .globl _jmp_addr_0x007e9eb0
-.globl _jmp_addr_0x007e9eec
-.globl _jmp_addr_0x007e9f09
-.globl _jmp_addr_0x007e9f18
-.globl _jmp_addr_0x007e9f37
-.globl _jmp_addr_0x007e9f43
-.globl _jmp_addr_0x007e9fbd
-.globl _jmp_addr_0x007e9fd0
-.globl _jmp_addr_0x007e9fdf
 
 start_0x007e9eb0_0x007ea000:
 // Snippet: asm, [0x007e9eb0, 0x007e9fe8)

@@ -23,48 +23,7 @@
 .extern _jmp_addr_0x008379e0
 .extern @Release__11LH3DTextureFv@4
 
-.globl _jmp_addr_0x0078c919
-.globl _jmp_addr_0x0078c92b
-.globl _jmp_addr_0x0078c92d
-.globl _jmp_addr_0x0078c945
-.globl _jmp_addr_0x0078c950
-.globl _jmp_addr_0x0078c952
-.globl _jmp_addr_0x0078c959
-.globl _jmp_addr_0x0078c966
-.globl _jmp_addr_0x0078c987
-.globl _jmp_addr_0x0078c9a9
-.globl _jmp_addr_0x0078c9cb
-.globl _jmp_addr_0x0078c9ec
-.globl _jmp_addr_0x0078ca0e
-.globl _jmp_addr_0x0078ca30
-.globl _jmp_addr_0x0078ca51
-.globl _jmp_addr_0x0078ca63
-.globl _jmp_addr_0x0078caa7
-.globl _jmp_addr_0x0078cad5
-.globl _jmp_addr_0x0078cae4
-.globl _jmp_addr_0x0078caf3
-.globl _jmp_addr_0x0078cb02
-.globl _jmp_addr_0x0078cb11
-.globl _jmp_addr_0x0078cb20
-.globl _jmp_addr_0x0078cb2f
-.globl _jmp_addr_0x0078cb65
-.globl _jmp_addr_0x0078cb71
-.globl _jmp_addr_0x0078cb7d
-.globl _jmp_addr_0x0078cb89
-.globl _jmp_addr_0x0078cb95
-.globl _jmp_addr_0x0078cba1
-.globl _jmp_addr_0x0078cbad
-.globl _jmp_addr_0x0078cbd7
-.globl _jmp_addr_0x0078cc03
-.globl _jmp_addr_0x0078cc08
 .globl _jmp_addr_0x0078cc10
-.globl _jmp_addr_0x0078cc3b
-.globl _jmp_addr_0x0078cc4b
-.globl _jmp_addr_0x0078cc69
-.globl _jmp_addr_0x0078cc97
-.globl _jmp_addr_0x0078ccc1
-.globl _jmp_addr_0x0078ccf3
-.globl _jmp_addr_0x0078cd03
 
 start_0x0078c7d0_0x0078cd20:
 // Snippet: asm, [0x0078c7d0, 0x0078cd0a)

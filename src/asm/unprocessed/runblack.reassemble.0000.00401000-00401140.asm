@@ -10,18 +10,6 @@
 .extern ___dl__FPv
 
 .globl _jmp_addr_0x00401000
-.globl _jmp_addr_0x00401021
-.globl _jmp_addr_0x0040102c
-.globl _jmp_addr_0x00401050
-.globl _jmp_addr_0x00401080
-.globl _jmp_addr_0x004010c4
-.globl _jmp_addr_0x004010d7
-.globl _jmp_addr_0x004010db
-.globl _jmp_addr_0x004010e9
-.globl _jmp_addr_0x004010f1
-.globl _jmp_addr_0x00401101
-.globl _jmp_addr_0x0040110f
-.globl _jmp_addr_0x00401130
 
 start_0x00401000_0x00401140:
 // Snippet: asm, [0x00401000, 0x0040113b)
