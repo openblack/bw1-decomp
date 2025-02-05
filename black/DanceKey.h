@@ -23,6 +23,6 @@ static struct GameThingVftable* const __vt__13DanceKeyFrame = (struct GameThingV
 // Constructors
 
 // win1.41 0050eb60 mac 102ae450 DanceKeyFrame::DanceKeyFrame(long, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
-struct DanceKeyFrame* __fastcall __ct__13DanceKeyFrameFlR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct DanceKeyFrame* this, const void* edx, int32_t param_1, struct LHDynamicStack__Ul stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* arguments);
+struct DanceKeyFrame* __fastcall __ct__13DanceKeyFrameFlR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct DanceKeyFrame* this, const void* edx, int32_t param_1, struct LHDynamicStack__Ul* stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* arguments);
 
 #endif /* BW1_DECOMP_DANCE_KEY_INCLUDED_H */

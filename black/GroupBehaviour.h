@@ -77,7 +77,7 @@ struct GroupBehaviour* __fastcall __ct__14GroupBehaviourFv(struct GroupBehaviour
 // win1.41 00597270 mac 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
 void __fastcall AddAction__14GroupBehaviourFfUl23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct GroupBehaviour* this, const void* edx, float param_1, uint32_t param_2, enum DANCE_GROUP_ACTION_TYPE action_type, struct DanceGroupActionArgument* arguments);
 // win1.41 00597300 mac 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
-void __fastcall AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct GroupBehaviour* this, const void* edx, float param_1, struct LHDynamicStack__Ul stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument);
+void __fastcall AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct GroupBehaviour* this, const void* edx, float param_1, struct LHDynamicStack__Ul* stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument);
 
 // Override methods
 
