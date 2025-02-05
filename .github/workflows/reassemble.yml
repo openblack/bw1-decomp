@@ -26,11 +26,17 @@ jobs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
 
+    - name: Set up MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: i686
+        cc: 0
+
     - name: Download lld, llvm-rc and clang
       uses: robinraju/release-downloader@v1
       with:
         repository: 'openblack/llvm-project'
-        tag: 'bw1-decomp-003'
+        tag: 'bw1-decomp-004'
         fileName: 'llvm-${{ matrix.os }}.zip'
         extract: true
         out-file-path: 'llvm'

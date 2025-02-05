@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.30)
-project(bw1-decomp ASM RC)
+project(bw1-decomp ASM C RC)
 
 set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available build configurations" FORCE)
 
@@ -13,11 +13,22 @@ set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available b
 set(CMAKE_ASM_LINK_EXECUTABLE "<CMAKE_LINKER> <FLAGS> <CMAKE_ASM_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> /out:<TARGET> <LINK_LIBRARIES>")
 set(CMAKE_ASM_USE_RESPONSE_FILE_FOR_OBJECTS 1)
 
+set(CMAKE_ASM_USING_LINKER_DEFAULT "")
+set(CMAKE_ASM_CREATE_CONSOLE_EXE "")
 set(CMAKE_ASM_FLAGS_DEBUG "")
 set(CMAKE_ASM_FLAGS_MINSIZEREL "")
 set(CMAKE_ASM_FLAGS_RELWITHDEBINFO "")
 set(CMAKE_ASM_FLAGS_RELEASE "")
 set(CMAKE_DEPFILE_FLAGS_ASM "")
+
+set(CMAKE_C_COMPILE_OPTIONS_MSVC_RUNTIME_LIBRARY_MultiThreadedDLL "")
+set(CMAKE_C_USING_LINKER_DEFAULT "")
+set(CMAKE_C_CREATE_CONSOLE_EXE "")
+set(CMAKE_C_FLAGS_DEBUG "")
+set(CMAKE_C_FLAGS_MINSIZEREL "")
+set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2")
+set(CMAKE_C_FLAGS_RELEASE "-O3")
+set(CMAKE_DEPFILE_FLAGS_C "")
 
 set(SOURCES
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
@@ -143,7 +154,11 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.0467.00547ff0-005497f0.asm
     asm/unprocessed/runblack.reassemble.0472.005497f0-00549900.asm
     asm/unprocessed/runblack.reassemble.0476.00549900-0054a180.asm
-    asm/unprocessed/runblack.reassemble.0480.0054a180-0054ff80.asm
+    asm/unprocessed/runblack.reassemble.0479.0054a180-0054c180.asm
+    c/Game.0480.0054c180-0054c331.c
+    asm/unprocessed/runblack.reassemble.0480.0054c340-0054d820.asm
+    c/Game.0481.0054d820-0054d83e.c
+    asm/unprocessed/runblack.reassemble.0481.0054d840-0054ff80.asm
     asm/unprocessed/runblack.reassemble.0483.0054ff80-00551ee0.asm
     asm/unprocessed/runblack.reassemble.0486.00551ee0-005525e0.asm
     asm/unprocessed/runblack.reassemble.0490.005525e0-005529e0.asm
@@ -259,7 +274,9 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.0936.00718060-0071bcd0.asm
     asm/unprocessed/runblack.reassemble.0939.0071bcd0-0071bd50.asm
     asm/unprocessed/runblack.reassemble.0942.0071bd50-0071bdd0.asm
-    asm/unprocessed/runblack.reassemble.0945.0071bdd0-00728570.asm
+    asm/unprocessed/runblack.reassemble.0944.0071bdd0-00726350.asm
+    c/SpellIcon.0945.00726350-00726360.c
+    asm/unprocessed/runblack.reassemble.0946.00726360-00728570.asm
     asm/unprocessed/runblack.reassemble.0950.00728570-00729c90.asm
     asm/unprocessed/runblack.reassemble.0953.00729c90-0072e5c0.asm
     asm/unprocessed/runblack.reassemble.0956.0072e5c0-00735bf0.asm
@@ -387,6 +404,8 @@ target_compile_options(runblack-reassembled
         -target
         i686-pc-windows-gnu
         -m32
+        -masm=intel
+        -march=i386
         $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
 )
 target_link_options(runblack-reassembled
@@ -406,6 +425,13 @@ target_link_options(runblack-reassembled
         "/safeseh:no"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug>"
+)
+target_include_directories(runblack-reassembled
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/..
+        ${CMAKE_CURRENT_SOURCE_DIR}/../black
+        ${CMAKE_CURRENT_SOURCE_DIR}/../libs
 )
 
 find_program(STRIP strip)

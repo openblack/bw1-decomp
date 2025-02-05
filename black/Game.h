@@ -221,6 +221,8 @@ void __fastcall Loop__5GGameFv(struct GGame* this);
 void __fastcall ProcessOneGameTurn__5GGameFv(struct GGame* this);
 // win1.41 0054d820 mac 10083dd0 GGame::ProcessGameCode(void)
 void __fastcall ProcessGameCode__5GGameFv(struct GGame* this);
+// win1.41 0054d840 mac inline GGame::DisplayPlayerTextMessages(void)
+void __fastcall DisplayPlayerTextMessages__5GGameFv(struct GGame* this);
 // win1.41 0054d850 mac 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
 void __fastcall ProcessGraphicsEngine__5GGameFUlUl(struct GGame* this, const void* edx, uint32_t param_1, uint32_t param_2);
 // win1.41 0054da80 mac 10033dd0 GGame::ProcessGraphicsEngine(void)
