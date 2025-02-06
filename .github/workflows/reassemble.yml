@@ -39,13 +39,23 @@ jobs:
       if: ${{ runner.os != 'Windows' }}
       run: chmod -R +x llvm/bin
 
+    - if: ${{ runner.os == 'Windows' }}
+      run: |
+        C:/msys64/usr/bin/pacman -Sy --noconfirm mingw-w64-clang-x86_64-headers-git
+
+    - if: ${{ runner.os != 'Windows' }}
+      run: |
+        sudo apt install -y mingw-w64 libc6-dev-i386-cross
+
     - name: Set path for LLVM binaries in env
       shell: bash
-      run: echo "LLVM_BINARIES=$(echo '${{ github.workspace }}'/llvm/bin | sed 's,\\,/,g')" >> $GITHUB_ENV
+      run: |
+        echo "CLANG_INCLUDE=$(echo '${{ github.workspace }}/llvm/lib/clang/20/include;/usr/i686-w64-mingw32/include' | sed 's,\\,/,g')" >> $GITHUB_ENV
+        echo "LLVM_BINARIES=$(echo '${{ github.workspace }}'/llvm/bin | sed 's,\\,/,g')" >> $GITHUB_ENV
 
     - name: Build bw1-decomp project
       run: |
-        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}"
+        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}" -DCMAKE_C_STANDARD_INCLUDE_DIRECTORIES="${{env.CLANG_INCLUDE}}"
         cmake --build build
 
     - name: Upload binary build path if it fails
@@ -77,7 +87,7 @@ jobs:
 
     - name: Build bw1-decomp project (Debug)
       run: |
-        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}"
+        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}" -DCMAKE_C_STANDARD_INCLUDE_DIRECTORIES="${{env.CLANG_INCLUDE}}"
         cmake --build build_debug
 
     - name: Upload debug version
