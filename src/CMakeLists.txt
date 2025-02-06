@@ -434,6 +434,7 @@ target_link_options(runblack-reassembled
 )
 target_include_directories(runblack-reassembled
     PRIVATE
+        C:/msys64/clang64/include
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/..
         ${CMAKE_CURRENT_SOURCE_DIR}/../black
