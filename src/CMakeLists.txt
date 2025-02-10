@@ -430,7 +430,7 @@ target_link_options(runblack-reassembled
         "/entry:entry_function"
         "/safeseh:no"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
-        "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug>"
+        "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug:FULL>"
 )
 target_include_directories(runblack-reassembled
     PRIVATE
