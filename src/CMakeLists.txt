@@ -642,7 +642,7 @@ target_link_options(runblack-reassembled
         "/entry:WinMainCRTStartup"
         "/safeseh:no"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
-        "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug>"
+        "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug:FULL>"
 )
 
 add_custom_command(
