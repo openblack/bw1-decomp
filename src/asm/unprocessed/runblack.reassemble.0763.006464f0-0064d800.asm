@@ -96,7 +96,7 @@
 .extern _jmp_addr_0x005dca40
 .extern _jmp_addr_0x005df1b0
 .extern _jmp_addr_0x005e2240
-.extern _jmp_addr_0x005e5c90
+.extern _ProcessAllObjectsOnCells__Fv
 .extern _jmp_addr_0x005eb120
 .extern _jmp_addr_0x005fcc70
 .extern _jmp_addr_0x006024d0
@@ -5938,7 +5938,7 @@ _jmp_addr_0x0064a829:    {disp8} mov        al, byte ptr [esp + 0x1c]           
                          {disp8} je         _jmp_addr_0x0064a856                           // 0x0064a82f    7425
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                    // 0x0064a831    8d44240c
                          push               eax                                            // 0x0064a835    50
-                         call               _jmp_addr_0x005e5c90                           // 0x0064a836    e855b4f9ff
+                         call               _ProcessAllObjectsOnCells__Fv                           // 0x0064a836    e855b4f9ff
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x0064a83b    8b4c2418
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x0064a83f    8b542410
                          add                esp, 0x04                                      // 0x0064a843    83c404
@@ -5953,7 +5953,7 @@ _jmp_addr_0x0064a856:    {disp32} mov       eax, dword ptr [ebx + 0x00000a48]   
                          {disp8} jne        _jmp_addr_0x0064a885                           // 0x0064a85e    7525
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                    // 0x0064a860    8d44240c
                          push               eax                                            // 0x0064a864    50
-                         call               _jmp_addr_0x005e5c90                           // 0x0064a865    e826b4f9ff
+                         call               _ProcessAllObjectsOnCells__Fv                           // 0x0064a865    e826b4f9ff
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x0064a86a    8b4c2418
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x0064a86e    8b542410
                          add                esp, 0x04                                      // 0x0064a872    83c404

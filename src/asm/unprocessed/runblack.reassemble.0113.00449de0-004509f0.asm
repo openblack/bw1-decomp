@@ -33,7 +33,7 @@
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
-.extern _jmp_addr_0x005e5c90
+.extern _ProcessAllObjectsOnCells__Fv
 .extern _jmp_addr_0x00657fe0
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
@@ -1763,7 +1763,7 @@ _jmp_addr_0x0044ae57:    {disp32} mov       edx, dword ptr [rdata_bytes + 0x1e7f
                          {disp8} lea        eax, dword ptr [esi + 0x0c]                   // 0x0044ae5d    8d460c
                          push               eax                                           // 0x0044ae60    50
                          {disp8} mov        dword ptr [esi + 0x1c], edx                   // 0x0044ae61    89561c
-                         call               _jmp_addr_0x005e5c90                          // 0x0044ae64    e827ae1900
+                         call               _ProcessAllObjectsOnCells__Fv                          // 0x0044ae64    e827ae1900
                          add                esp, 0x04                                     // 0x0044ae69    83c404
                          {disp8} jmp        _jmp_addr_0x0044ae94                          // 0x0044ae6c    eb26
 _jmp_addr_0x0044ae6e:    {disp32} fld       dword ptr [rdata_bytes + 0x1e7f8]             // 0x0044ae6e    d905f8778c00

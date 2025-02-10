@@ -168,7 +168,7 @@
 .globl _jmp_addr_0x005e5740
 .globl _jmp_addr_0x005e57b0
 .globl _jmp_addr_0x005e5bd0
-.globl _jmp_addr_0x005e5c90
+.globl _ProcessAllObjectsOnCells__Fv
 .globl _jmp_addr_0x005e6540
 .globl @__ct__9GLanguageFv@4
 .globl _jmp_addr_0x005e6790
@@ -2963,7 +2963,7 @@ _jmp_addr_0x005e5c86:    pop                edi                                 
                          {disp8} mov        dword ptr [esi + 0x04], 0x00000000            // 0x005e5c87    c7460400000000
                          pop                esi                                           // 0x005e5c8e    5e
                          ret                                                              // 0x005e5c8f    c3
-_jmp_addr_0x005e5c90:    {disp32} fld       dword ptr [data_bytes + 0x354360]             // 0x005e5c90    d90560a3d100
+_ProcessAllObjectsOnCells__Fv:    {disp32} fld       dword ptr [data_bytes + 0x354360]             // 0x005e5c90    d90560a3d100
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x005e5c96    8b442404
                          fstp               dword ptr [eax]                               // 0x005e5c9a    d918
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x354364]        // 0x005e5c9c    8b0d64a3d100
