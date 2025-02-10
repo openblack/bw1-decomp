@@ -329,7 +329,7 @@
 .extern _jmp_addr_0x00730760
 .extern _jmp_addr_0x00735500
 .extern _jmp_addr_0x00735540
-.extern _jmp_addr_0x007447f0
+.extern _DrawAll__10TownCentreFv
 .extern _jmp_addr_0x0074cca0
 .extern _Delete__17VillagerNameBlockFP12VillagerName
 .extern _jmp_addr_0x007627e0
@@ -985,7 +985,7 @@ _jmp_addr_0x0054dfd1:    mov.s              ecx, ebp                            
                          call               _jmp_addr_0x007203f0                          // 0x0054e023    e8c8231d00
                          call               _jmp_addr_0x0063e0d0                          // 0x0054e028    e8a3000f00
                          call               _jmp_addr_0x0064c140                          // 0x0054e02d    e80ee10f00
-                         call               _jmp_addr_0x007447f0                          // 0x0054e032    e8b9671f00
+                         call               _DrawAll__10TownCentreFv                          // 0x0054e032    e8b9671f00
                          {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]             // 0x0054e037    db05c09eea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x5132e8]        // 0x0054e03d    8b0de892ed00
                          cmp.s              ecx, ebx                                      // 0x0054e043    3bcb

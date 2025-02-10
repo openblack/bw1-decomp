@@ -35,6 +35,8 @@ static struct MultiMapFixedVftable* const __vt__10TownCentre = (struct MultiMapF
 
 // win1.41 00743c90 mac 1055b520 TownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
 struct TownCentre* __cdecl Create__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5, float param_6, int param_7);
+// win1.41 007447f0 mac 1006eae0 TownCentre::DrawAll(void)
+void __stdcall DrawAll__10TownCentreFv(void);
 
 // Constructors
 
@@ -47,6 +49,8 @@ struct TownCentre* __fastcall __ct__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Tow
 void __fastcall CreatePSys__10TownCentreFv(struct TownCentre* this);
 // win1.41 0069bcc0 mac 1002d390 TownCentre::ProcessPSys(void)
 void __fastcall ProcessPSys__10TownCentreFv(struct TownCentre* this);
+// win1.41 0069bd60 mac 10066090 TownCentre::DrawPSys(void)
+void __fastcall DrawPSys__10TownCentreFv(struct TownCentre* this);
 // win1.41 00743da0 mac 1055b260 TownCentre::CreateTotemIfNecessary(void)
 bool __fastcall CreateTotemIfNecessary__10TownCentreFv(struct TownCentre* this);
 // win1.41 00743f20 mac 1055af50 TownCentre::GetTotemPos(void)

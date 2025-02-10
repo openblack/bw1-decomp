@@ -166,7 +166,7 @@
 .extern @CreatePSys__10TownCentreFv@4
 .extern _jmp_addr_0x0069bca0
 .extern @ProcessPSys__10TownCentreFv@4
-.extern _jmp_addr_0x0069bd60
+.extern @DrawPSys__10TownCentreFv@4
 .extern _GameRand__5GRandFl
 .extern _GameFloatRand__5GRandFf
 .extern _jmp_addr_0x00715130
@@ -424,7 +424,7 @@
 .globl _jmp_addr_0x00744290
 .globl @__ct__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff@28
 .globl _Create__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff
-.globl _jmp_addr_0x007447f0
+.globl _DrawAll__10TownCentreFv
 .globl @__ct__10TownDesireFv@4
 .globl _jmp_addr_0x00745760
 .globl _jmp_addr_0x00745770
@@ -16217,7 +16217,7 @@ _jmp_addr_0x007447e9:    mov.s              eax, esi                            
                          pop                esi                                                  // 0x007447eb    5e
                          ret                0x0004                                               // 0x007447ec    c20400
                          nop                                                                     // 0x007447ef    90
-_jmp_addr_0x007447f0:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]               // 0x007447f0    a15c19d000
+_DrawAll__10TownCentreFv:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]               // 0x007447f0    a15c19d000
                          push               esi                                                  // 0x007447f5    56
                          {disp32} mov       esi, dword ptr [eax + 0x00205cfc]                    // 0x007447f6    8bb0fc5c2000
                          test               esi, esi                                             // 0x007447fc    85f6
@@ -16230,7 +16230,7 @@ _jmp_addr_0x00744800:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp8} mov        ecx, dword ptr [esi + 0x04]                          // 0x0074480d    8b4e04
                          call               @ProcessPSys__10TownCentreFv@4                       // 0x00744810    e8ab74f5ff
                          {disp8} mov        ecx, dword ptr [esi + 0x04]                          // 0x00744815    8b4e04
-                         call               _jmp_addr_0x0069bd60                                 // 0x00744818    e84375f5ff
+                         call               @DrawPSys__10TownCentreFv@4                                 // 0x00744818    e84375f5ff
 _jmp_addr_0x0074481d:    mov                esi, dword ptr [esi]                                 // 0x0074481d    8b36
                          test               esi, esi                                             // 0x0074481f    85f6
                          {disp8} jne        _jmp_addr_0x00744800                                 // 0x00744821    75dd

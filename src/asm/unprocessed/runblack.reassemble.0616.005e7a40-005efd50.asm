@@ -57,7 +57,7 @@
 .extern _jmp_addr_0x00597f20
 .extern _jmp_addr_0x005de8c0
 .extern _jmp_addr_0x005dea60
-.extern _jmp_addr_0x005e5c90
+.extern _ProcessAllObjectsOnCells__Fv
 .extern _jmp_addr_0x005e79e0
 .extern @ProcessReaction__6LivingFv@4
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
@@ -3454,7 +3454,7 @@ _jmp_addr_0x005e9dab:    {disp32} mov       al, byte ptr [ebp + 0x000000cd]     
                          {disp32} jbe       _jmp_addr_0x005ea26b                          // 0x005e9dd0    0f8695040000
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x005e9dd6    8d4c2418
                          push               ecx                                           // 0x005e9dda    51
-                         call               _jmp_addr_0x005e5c90                          // 0x005e9ddb    e8b0beffff
+                         call               _ProcessAllObjectsOnCells__Fv                          // 0x005e9ddb    e8b0beffff
                          add                esp, 0x04                                     // 0x005e9de0    83c404
                          push               0x44fa0000                                    // 0x005e9de3    680000fa44
                          push               0x447a0000                                    // 0x005e9de8    6800007a44
@@ -3770,7 +3770,7 @@ _jmp_addr_0x005ea26b:    cmp                byte ptr [ebp + 0x000000b0], 0x01   
                          {disp32} jne       _jmp_addr_0x005ea3d9                          // 0x005ea275    0f855e010000
                          {disp8} lea        edx, dword ptr [esp + 0x0c]                   // 0x005ea27b    8d54240c
                          push               edx                                           // 0x005ea27f    52
-                         call               _jmp_addr_0x005e5c90                          // 0x005ea280    e80bbaffff
+                         call               _ProcessAllObjectsOnCells__Fv                          // 0x005ea280    e80bbaffff
                          add                esp, 0x04                                     // 0x005ea285    83c404
                          push               0x44fa0000                                    // 0x005ea288    680000fa44
                          push               0x447a0000                                    // 0x005ea28d    6800007a44
