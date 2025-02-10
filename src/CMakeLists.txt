@@ -412,7 +412,7 @@ target_compile_options(runblack-reassembled
         -m32
         -masm=intel
         -march=i386
-        $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
+        $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-gcodeview>
 )
 target_link_options(runblack-reassembled
     PRIVATE
