@@ -230,7 +230,6 @@
 .extern _jmp_addr_0x00730760
 .extern _jmp_addr_0x00735500
 .extern _jmp_addr_0x00735540
-.extern _jmp_addr_0x007447f0
 .extern _jmp_addr_0x0074cca0
 .extern _Delete__17VillagerNameBlockFP12VillagerName
 .extern _jmp_addr_0x007627e0
