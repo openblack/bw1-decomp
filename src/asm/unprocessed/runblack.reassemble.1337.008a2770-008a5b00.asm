@@ -1,0 +1,3311 @@
+.intel_syntax noprefix
+.align 16
+
+.extern rdata_bytes
+.extern data_bytes
+
+.extern ___dl__FPv
+.extern @__ct__8LHOSFileFv@4
+.extern @__dt__8LHOSFileFv@4
+.extern @Open__8LHOSFileFPc12LH_FILE_MODE@16
+.extern @Close__8LHOSFileFv@4
+.extern @Write__8LHOSFileFPvUlPUl@20
+.extern _operator_new
+
+.globl _jmp_addr_0x008a30a0
+.globl _jmp_addr_0x008a507e
+.globl _jmp_addr_0x008a5084
+.globl _jmp_addr_0x008a508a
+.globl _jmp_addr_0x008a5090
+.globl _jmp_addr_0x008a5096
+.globl _jmp_addr_0x008a509c
+.globl _jmp_addr_0x008a50a2
+.globl _jmp_addr_0x008a50a8
+.globl _jmp_addr_0x008a50ae
+.globl _jmp_addr_0x008a50b4
+.globl _jmp_addr_0x008a50ba
+.globl _jmp_addr_0x008a50c0
+.globl _jmp_addr_0x008a50c6
+.globl _jmp_addr_0x008a50cc
+.globl _jmp_addr_0x008a50d2
+.globl _jmp_addr_0x008a50d8
+.globl _jmp_addr_0x008a50de
+.globl _jmp_addr_0x008a50e4
+.globl _jmp_addr_0x008a50ea
+.globl _jmp_addr_0x008a50f0
+.globl _jmp_addr_0x008a50f6
+.globl _jmp_addr_0x008a50fc
+.globl _jmp_addr_0x008a5168
+.globl _jmp_addr_0x008a5440
+.globl _jmp_addr_0x008a5480
+.globl _jmp_addr_0x008a5590
+
+start_0x008a2770_0x008a5b00:
+// Snippet: asm, [0x008a2770, 0x0089eb50)
+                         movaps            xmm7, xmm0                                      // 0x008a2770    0f28f8
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a2773    0f540530c6c300
+                         mov.s             ecx, esp                                        // 0x008a277a    8bcc
+                         andps             xmm7, xmmword ptr [data_bytes + 0x276620]       // 0x008a277c    0f543d20c6c300
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x2765f0]       // 0x008a2783    0f5905f0c5c300
+                         and               ecx, 0xfffffff0                                 // 0x008a278a    83e1f0
+                         movhlps           xmm2, xmm0                                      // 0x008a278d    0f12d0
+                         cvttps2pi         mm0, xmm0                                       // 0x008a2790    0f2cc0
+                         movq              mm2, mm0                                        // 0x008a2793    0f6fd0
+                         cvttps2pi         mm1, xmm2                                       // 0x008a2796    0f2cca
+                         pslld             mm2, 0x1e                                       // 0x008a2799    0f72f21e
+                         movq              mm3, mm1                                        // 0x008a279d    0f6fd9
+                         pslld             mm3, 0x1e                                       // 0x008a27a0    0f72f31e
+                         pand              mm2, qword ptr [data_bytes + 0x276290]          // 0x008a27a4    0fdb1590c2c300
+                         movq              qword ptr [ecx + -0x20], mm2                    // 0x008a27ab    0f7f51e0
+                         pand              mm3, qword ptr [data_bytes + 0x276290]          // 0x008a27af    0fdb1d90c2c300
+                         movq              qword ptr [ecx + -0x18], mm3                    // 0x008a27b6    0f7f59e8
+                         cvtpi2ps          xmm4, mm1                                       // 0x008a27ba    0f2ae1
+                         pand              mm1, qword ptr [data_bytes + 0x276280]          // 0x008a27bd    0fdb0d80c2c300
+                         movlhps           xmm4, xmm4                                      // 0x008a27c4    0f16e4
+                         pxor              mm7, mm7                                        // 0x008a27c7    0fefff
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276590]       // 0x008a27ca    0f282d90c5c300
+                         cvtpi2ps          xmm4, mm0                                       // 0x008a27d1    0f2ae0
+                         pand              mm0, qword ptr [data_bytes + 0x276280]          // 0x008a27d4    0fdb0580c2c300
+                         pcmpeqd           mm1, mm7                                        // 0x008a27db    0f76cf
+                         subps             xmm0, xmm4                                      // 0x008a27de    0f5cc4
+                         movq              qword ptr [ecx + -0x08], mm1                    // 0x008a27e1    0f7f49f8
+                         minps             xmm0, xmm5                                      // 0x008a27e5    0f5dc5
+                         pcmpeqd           mm0, mm7                                        // 0x008a27e8    0f76c7
+                         subps             xmm5, xmm0                                      // 0x008a27eb    0f5ce8
+                         movq              qword ptr [ecx + -0x10], mm0                    // 0x008a27ee    0f7f41f0
+                         movaps            xmm6, xmmword ptr [ecx + -0x10]                 // 0x008a27f2    0f2871f0
+                         andps             xmm0, xmm6                                      // 0x008a27f6    0f54c6
+                         andnps            xmm6, xmm5                                      // 0x008a27f9    0f55f5
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276270]       // 0x008a27fc    0f281d70c2c300
+                         orps              xmm0, xmm6                                      // 0x008a2803    0f56c6
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276260]       // 0x008a2806    0f282d60c2c300
+                         movaps            xmm1, xmm0                                      // 0x008a280d    0f28c8
+                         mulps             xmm0, xmm0                                      // 0x008a2810    0f59c0
+                         xorps             xmm7, xmmword ptr [ecx + -0x20]                 // 0x008a2813    0f5779e0
+                         movaps            xmm2, xmm0                                      // 0x008a2817    0f28d0
+                         mulps             xmm0, xmm3                                      // 0x008a281a    0f59c3
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276250]       // 0x008a281d    0f281d50c2c300
+                         addps             xmm0, xmm5                                      // 0x008a2824    0f58c5
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276240]       // 0x008a2827    0f282d40c2c300
+                         mulps             xmm0, xmm2                                      // 0x008a282e    0f59c2
+                         addps             xmm0, xmm3                                      // 0x008a2831    0f58c3
+                         mulps             xmm0, xmm2                                      // 0x008a2834    0f59c2
+                         orps              xmm1, xmm7                                      // 0x008a2837    0f56cf
+                         addps             xmm0, xmm5                                      // 0x008a283a    0f58c5
+                         mulps             xmm0, xmm1                                      // 0x008a283d    0f59c1
+                         ret               0x0010                                          // 0x008a2840    c21000
+                         {disp32} lea      esi, dword ptr [esi + 0x00000000]               // 0x008a2843    8db600000000
+                         .byte             0x8d, 0xbc, 0x27, 0x0, 0x0, 0x0, 0x0// {disp32} lea edi, dword ptr [edi + 0x00000000] // 0x008a2849    8dbc2700000000
+                         movaps            xmm7, xmm0                                      // 0x008a2850    0f28f8
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a2853    0f540530c6c300
+                         andps             xmm7, xmmword ptr [data_bytes + 0x276620]       // 0x008a285a    0f543d20c6c300
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x2765f0]       // 0x008a2861    0f5905f0c5c300
+                         pxor              xmm3, xmm3                                      // 0x008a2868    660fefdb
+                         movdqa            xmm5, xmmword ptr [data_bytes + 0x276280]       // 0x008a286c    660f6f2d80c2c300
+                         movaps            xmm4, xmmword ptr [data_bytes + 0x276590]       // 0x008a2874    0f282590c5c300
+                         cvttps2dq         xmm2, xmm0                                      // 0x008a287b    f30f5bd0
+                         pand              xmm5, xmm2                                      // 0x008a287f    660fdbea
+                         pcmpeqd           xmm5, xmm3                                      // 0x008a2883    660f76eb
+                         cvtdq2ps          xmm6, xmm2                                      // 0x008a2887    0f5bf2
+                         pand              xmm2, xmmword ptr [data_bytes + 0x2762a0]       // 0x008a288a    660fdb15a0c2c300
+                         pslld             xmm2, 0x1e                                      // 0x008a2892    660f72f21e
+                         subps             xmm0, xmm6                                      // 0x008a2897    0f5cc6
+                         minps             xmm0, xmm4                                      // 0x008a289a    0f5dc4
+                         subps             xmm4, xmm0                                      // 0x008a289d    0f5ce0
+                         andps             xmm0, xmm5                                      // 0x008a28a0    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a28a3    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a28a6    0f56c5
+                         movaps            xmm1, xmm0                                      // 0x008a28a9    0f28c8
+                         mulps             xmm0, xmm0                                      // 0x008a28ac    0f59c0
+                         xorps             xmm2, xmm7                                      // 0x008a28af    0f57d7
+                         orps              xmm1, xmm2                                      // 0x008a28b2    0f56ca
+                         movaps            xmm7, xmm0                                      // 0x008a28b5    0f28f8
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x276270]       // 0x008a28b8    0f590570c2c300
+                         addps             xmm0, xmmword ptr [data_bytes + 0x276260]       // 0x008a28bf    0f580560c2c300
+                         mulps             xmm0, xmm7                                      // 0x008a28c6    0f59c7
+                         addps             xmm0, xmmword ptr [data_bytes + 0x276250]       // 0x008a28c9    0f580550c2c300
+                         mulps             xmm0, xmm7                                      // 0x008a28d0    0f59c7
+                         addps             xmm0, xmmword ptr [data_bytes + 0x276240]       // 0x008a28d3    0f580540c2c300
+                         mulps             xmm0, xmm1                                      // 0x008a28da    0f59c1
+                         ret               0x0010                                          // 0x008a28dd    c21000
+                         movss             dword ptr [esp + -0x04], xmm0                   // 0x008a28e0    f30f114424fc
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a28e6    f30f100d30c6c300
+                         {disp8} mov       eax, dword ptr [esp + -0x04]                    // 0x008a28ee    8b4424fc
+                         mulss             xmm0, dword ptr [data_bytes + 0x2765f0]         // 0x008a28f2    f30f5905f0c5c300
+                         andps             xmm0, xmm1                                      // 0x008a28fa    0f54c1
+                         and               eax, 0x80000000                                 // 0x008a28fd    2500000080
+                         cvttss2si         ecx, xmm0                                       // 0x008a2902    f30f2cc8
+                         movss             xmm1, dword ptr [data_bytes + 0x276590]         // 0x008a2906    f30f100d90c5c300
+                         mov.s             edx, ecx                                        // 0x008a290e    8bd1
+                         shl               edx, 0x1e                                       // 0x008a2910    c1e21e
+                         cvtsi2ss          xmm2, ecx                                       // 0x008a2913    f30f2ad1
+                         and               ecx, 0x01                                       // 0x008a2917    83e101
+                         and               edx, 0x80000000                                 // 0x008a291a    81e200000080
+                         subss             xmm0, xmm2                                      // 0x008a2920    f30f5cc2
+                         movss             xmm6, dword ptr [ecx * 0x4 + 0x00c3c2b0]        // 0x008a2924    f30f10348db0c2c300
+                         minss             xmm0, xmm1                                      // 0x008a292d    f30f5dc1
+                         movss             xmm5, dword ptr [data_bytes + 0x276270]         // 0x008a2931    f30f102d70c2c300
+                         subss             xmm1, xmm0                                      // 0x008a2939    f30f5cc8
+                         andps             xmm1, xmm6                                      // 0x008a293d    0f54ce
+                         andnps            xmm6, xmm0                                      // 0x008a2940    0f55f0
+                         orps              xmm1, xmm6                                      // 0x008a2943    0f56ce
+                         movss             xmm4, dword ptr [data_bytes + 0x276260]         // 0x008a2946    f30f102560c2c300
+                         movss             xmm0, xmm1                                      // 0x008a294e    f30f10c1
+                         mulss             xmm1, xmm1                                      // 0x008a2952    f30f59c9
+                         movss             xmm7, dword ptr [data_bytes + 0x276250]         // 0x008a2956    f30f103d50c2c300
+                         xor.s             eax, edx                                        // 0x008a295e    33c2
+                         movss             xmm2, xmm1                                      // 0x008a2960    f30f10d1
+                         mulss             xmm1, xmm5                                      // 0x008a2964    f30f59cd
+                         movss             xmm5, dword ptr [data_bytes + 0x276240]         // 0x008a2968    f30f102d40c2c300
+                         {disp8} mov       dword ptr [esp + -0x04], eax                    // 0x008a2970    894424fc
+                         addss             xmm1, xmm4                                      // 0x008a2974    f30f58cc
+                         mulss             xmm1, xmm2                                      // 0x008a2978    f30f59ca
+                         movss             xmm3, dword ptr [esp + -0x04]                   // 0x008a297c    f30f105c24fc
+                         addss             xmm1, xmm7                                      // 0x008a2982    f30f58cf
+                         mulss             xmm1, xmm2                                      // 0x008a2986    f30f59ca
+                         orps              xmm0, xmm3                                      // 0x008a298a    0f56c3
+                         addss             xmm1, xmm5                                      // 0x008a298d    f30f58cd
+                         mulss             xmm0, xmm1                                      // 0x008a2991    f30f59c1
+                         ret               0x0010                                          // 0x008a2995    c21000
+                         nop                                                               // 0x008a2998    90
+                         .byte             0x8d, 0xb4, 0x26, 0x0, 0x0, 0x0, 0x0// {disp32} lea esi, dword ptr [esi + 0x00000000] // 0x008a2999    8db42600000000
+                         movaps            xmm7, xmm0                                      // 0x008a29a0    0f28f8
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a29a3    f30f100d30c6c300
+                         movss             xmm2, dword ptr [data_bytes + 0x276620]         // 0x008a29ab    f30f101520c6c300
+                         movss             xmm3, dword ptr [data_bytes + 0x2765f0]         // 0x008a29b3    f30f101df0c5c300
+                         andps             xmm0, xmm1                                      // 0x008a29bb    0f54c1
+                         andps             xmm7, xmm2                                      // 0x008a29be    0f54fa
+                         mulss             xmm0, xmm3                                      // 0x008a29c1    f30f59c3
+                         pxor              xmm3, xmm3                                      // 0x008a29c5    660fefdb
+                         movd              xmm5, dword ptr [data_bytes + 0x276280]         // 0x008a29c9    660f6e2d80c2c300
+                         movss             xmm4, dword ptr [data_bytes + 0x276590]         // 0x008a29d1    f30f102590c5c300
+                         cvttps2dq         xmm2, xmm0                                      // 0x008a29d9    f30f5bd0
+                         pand              xmm5, xmm2                                      // 0x008a29dd    660fdbea
+                         movd              xmm1, dword ptr [data_bytes + 0x2762a0]         // 0x008a29e1    660f6e0da0c2c300
+                         pcmpeqd           xmm5, xmm3                                      // 0x008a29e9    660f76eb
+                         cvtdq2ps          xmm6, xmm2                                      // 0x008a29ed    0f5bf2
+                         pand              xmm2, xmm1                                      // 0x008a29f0    660fdbd1
+                         pslld             xmm2, 0x1e                                      // 0x008a29f4    660f72f21e
+                         subss             xmm0, xmm6                                      // 0x008a29f9    f30f5cc6
+                         movss             xmm3, dword ptr [data_bytes + 0x276270]         // 0x008a29fd    f30f101d70c2c300
+                         minss             xmm0, xmm4                                      // 0x008a2a05    f30f5dc4
+                         subss             xmm4, xmm0                                      // 0x008a2a09    f30f5ce0
+                         andps             xmm0, xmm5                                      // 0x008a2a0d    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a2a10    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a2a13    0f56c5
+                         movaps            xmm1, xmm0                                      // 0x008a2a16    0f28c8
+                         movss             xmm4, dword ptr [data_bytes + 0x276260]         // 0x008a2a19    f30f102560c2c300
+                         mulss             xmm0, xmm0                                      // 0x008a2a21    f30f59c0
+                         xorps             xmm2, xmm7                                      // 0x008a2a25    0f57d7
+                         movss             xmm5, dword ptr [data_bytes + 0x276250]         // 0x008a2a28    f30f102d50c2c300
+                         orps              xmm1, xmm2                                      // 0x008a2a30    0f56ca
+                         movaps            xmm7, xmm0                                      // 0x008a2a33    0f28f8
+                         mulss             xmm0, xmm3                                      // 0x008a2a36    f30f59c3
+                         movss             xmm6, dword ptr [data_bytes + 0x276240]         // 0x008a2a3a    f30f103540c2c300
+                         addss             xmm0, xmm4                                      // 0x008a2a42    f30f58c4
+                         mulss             xmm0, xmm7                                      // 0x008a2a46    f30f59c7
+                         addss             xmm0, xmm5                                      // 0x008a2a4a    f30f58c5
+                         mulss             xmm0, xmm7                                      // 0x008a2a4e    f30f59c7
+                         addss             xmm0, xmm6                                      // 0x008a2a52    f30f58c6
+                         mulss             xmm0, xmm1                                      // 0x008a2a56    f30f59c1
+                         ret               0x0010                                          // 0x008a2a5a    c21000
+                         {disp8} lea       esi, dword ptr [esi + 0x00]                     // 0x008a2a5d    8d7600
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a2a60    0f540530c6c300
+                         mov.s             ecx, esp                                        // 0x008a2a67    8bcc
+                         addps             xmm0, xmmword ptr [data_bytes + 0x2765e0]       // 0x008a2a69    0f5805e0c5c300
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x2765f0]       // 0x008a2a70    0f5905f0c5c300
+                         and               ecx, 0xfffffff0                                 // 0x008a2a77    83e1f0
+                         movhlps           xmm2, xmm0                                      // 0x008a2a7a    0f12d0
+                         cvttps2pi         mm0, xmm0                                       // 0x008a2a7d    0f2cc0
+                         movq              mm2, mm0                                        // 0x008a2a80    0f6fd0
+                         cvttps2pi         mm1, xmm2                                       // 0x008a2a83    0f2cca
+                         pslld             mm2, 0x1e                                       // 0x008a2a86    0f72f21e
+                         movq              mm3, mm1                                        // 0x008a2a8a    0f6fd9
+                         pslld             mm3, 0x1e                                       // 0x008a2a8d    0f72f31e
+                         pand              mm2, qword ptr [data_bytes + 0x276290]          // 0x008a2a91    0fdb1590c2c300
+                         movq              qword ptr [ecx + -0x20], mm2                    // 0x008a2a98    0f7f51e0
+                         pand              mm3, qword ptr [data_bytes + 0x276290]          // 0x008a2a9c    0fdb1d90c2c300
+                         movq              qword ptr [ecx + -0x18], mm3                    // 0x008a2aa3    0f7f59e8
+                         cvtpi2ps          xmm4, mm1                                       // 0x008a2aa7    0f2ae1
+                         pand              mm1, qword ptr [data_bytes + 0x276280]          // 0x008a2aaa    0fdb0d80c2c300
+                         movlhps           xmm4, xmm4                                      // 0x008a2ab1    0f16e4
+                         pxor              mm7, mm7                                        // 0x008a2ab4    0fefff
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276590]       // 0x008a2ab7    0f282d90c5c300
+                         cvtpi2ps          xmm4, mm0                                       // 0x008a2abe    0f2ae0
+                         pand              mm0, qword ptr [data_bytes + 0x276280]          // 0x008a2ac1    0fdb0580c2c300
+                         pcmpeqd           mm1, mm7                                        // 0x008a2ac8    0f76cf
+                         subps             xmm0, xmm4                                      // 0x008a2acb    0f5cc4
+                         movq              qword ptr [ecx + -0x08], mm1                    // 0x008a2ace    0f7f49f8
+                         minps             xmm0, xmm5                                      // 0x008a2ad2    0f5dc5
+                         pcmpeqd           mm0, mm7                                        // 0x008a2ad5    0f76c7
+                         subps             xmm5, xmm0                                      // 0x008a2ad8    0f5ce8
+                         movq              qword ptr [ecx + -0x10], mm0                    // 0x008a2adb    0f7f41f0
+                         movaps            xmm6, xmmword ptr [ecx + -0x10]                 // 0x008a2adf    0f2871f0
+                         andps             xmm0, xmm6                                      // 0x008a2ae3    0f54c6
+                         andnps            xmm6, xmm5                                      // 0x008a2ae6    0f55f5
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276270]       // 0x008a2ae9    0f281d70c2c300
+                         orps              xmm0, xmm6                                      // 0x008a2af0    0f56c6
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276260]       // 0x008a2af3    0f282d60c2c300
+                         movaps            xmm1, xmm0                                      // 0x008a2afa    0f28c8
+                         mulps             xmm0, xmm0                                      // 0x008a2afd    0f59c0
+                         movaps            xmm7, xmmword ptr [ecx + -0x20]                 // 0x008a2b00    0f2879e0
+                         movaps            xmm2, xmm0                                      // 0x008a2b04    0f28d0
+                         mulps             xmm0, xmm3                                      // 0x008a2b07    0f59c3
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276250]       // 0x008a2b0a    0f281d50c2c300
+                         addps             xmm0, xmm5                                      // 0x008a2b11    0f58c5
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276240]       // 0x008a2b14    0f282d40c2c300
+                         mulps             xmm0, xmm2                                      // 0x008a2b1b    0f59c2
+                         addps             xmm0, xmm3                                      // 0x008a2b1e    0f58c3
+                         mulps             xmm0, xmm2                                      // 0x008a2b21    0f59c2
+                         orps              xmm1, xmm7                                      // 0x008a2b24    0f56cf
+                         addps             xmm0, xmm5                                      // 0x008a2b27    0f58c5
+                         mulps             xmm0, xmm1                                      // 0x008a2b2a    0f59c1
+                         ret               0x0010                                          // 0x008a2b2d    c21000
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a2b30    0f540530c6c300
+                         addps             xmm0, xmmword ptr [data_bytes + 0x2765e0]       // 0x008a2b37    0f5805e0c5c300
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x2765f0]       // 0x008a2b3e    0f5905f0c5c300
+                         pxor              xmm3, xmm3                                      // 0x008a2b45    660fefdb
+                         movdqa            xmm5, xmmword ptr [data_bytes + 0x276280]       // 0x008a2b49    660f6f2d80c2c300
+                         movaps            xmm4, xmmword ptr [data_bytes + 0x276590]       // 0x008a2b51    0f282590c5c300
+                         cvttps2dq         xmm2, xmm0                                      // 0x008a2b58    f30f5bd0
+                         pand              xmm5, xmm2                                      // 0x008a2b5c    660fdbea
+                         pcmpeqd           xmm5, xmm3                                      // 0x008a2b60    660f76eb
+                         cvtdq2ps          xmm6, xmm2                                      // 0x008a2b64    0f5bf2
+                         pand              xmm2, xmmword ptr [data_bytes + 0x2762a0]       // 0x008a2b67    660fdb15a0c2c300
+                         pslld             xmm2, 0x1e                                      // 0x008a2b6f    660f72f21e
+                         subps             xmm0, xmm6                                      // 0x008a2b74    0f5cc6
+                         minps             xmm0, xmm4                                      // 0x008a2b77    0f5dc4
+                         subps             xmm4, xmm0                                      // 0x008a2b7a    0f5ce0
+                         andps             xmm0, xmm5                                      // 0x008a2b7d    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a2b80    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a2b83    0f56c5
+                         movaps            xmm1, xmm0                                      // 0x008a2b86    0f28c8
+                         mulps             xmm0, xmm0                                      // 0x008a2b89    0f59c0
+                         orps              xmm1, xmm2                                      // 0x008a2b8c    0f56ca
+                         movaps            xmm7, xmm0                                      // 0x008a2b8f    0f28f8
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x276270]       // 0x008a2b92    0f590570c2c300
+                         addps             xmm0, xmmword ptr [data_bytes + 0x276260]       // 0x008a2b99    0f580560c2c300
+                         mulps             xmm0, xmm7                                      // 0x008a2ba0    0f59c7
+                         addps             xmm0, xmmword ptr [data_bytes + 0x276250]       // 0x008a2ba3    0f580550c2c300
+                         mulps             xmm0, xmm7                                      // 0x008a2baa    0f59c7
+                         addps             xmm0, xmmword ptr [data_bytes + 0x276240]       // 0x008a2bad    0f580540c2c300
+                         mulps             xmm0, xmm1                                      // 0x008a2bb4    0f59c1
+                         ret               0x0010                                          // 0x008a2bb7    c21000
+                         {disp32} lea      esi, dword ptr [esi + 0x00000000]               // 0x008a2bba    8db600000000
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a2bc0    f30f100d30c6c300
+                         andps             xmm0, xmm1                                      // 0x008a2bc8    0f54c1
+                         addss             xmm0, dword ptr [data_bytes + 0x2765e0]         // 0x008a2bcb    f30f5805e0c5c300
+                         mulss             xmm0, dword ptr [data_bytes + 0x2765f0]         // 0x008a2bd3    f30f5905f0c5c300
+                         cvttss2si         ecx, xmm0                                       // 0x008a2bdb    f30f2cc8
+                         movss             xmm5, dword ptr [data_bytes + 0x276590]         // 0x008a2bdf    f30f102d90c5c300
+                         mov.s             edx, ecx                                        // 0x008a2be7    8bd1
+                         shl               edx, 0x1e                                       // 0x008a2be9    c1e21e
+                         cvtsi2ss          xmm1, ecx                                       // 0x008a2bec    f30f2ac9
+                         and               edx, 0x80000000                                 // 0x008a2bf0    81e200000080
+                         and               ecx, 0x01                                       // 0x008a2bf6    83e101
+                         subss             xmm0, xmm1                                      // 0x008a2bf9    f30f5cc1
+                         movss             xmm6, dword ptr [ecx * 0x4 + 0x00c3c2b0]        // 0x008a2bfd    f30f10348db0c2c300
+                         minss             xmm0, xmm5                                      // 0x008a2c06    f30f5dc5
+                         movss             xmm1, dword ptr [data_bytes + 0x276270]         // 0x008a2c0a    f30f100d70c2c300
+                         subss             xmm5, xmm0                                      // 0x008a2c12    f30f5ce8
+                         andps             xmm5, xmm6                                      // 0x008a2c16    0f54ee
+                         movss             xmm7, dword ptr [data_bytes + 0x276260]         // 0x008a2c19    f30f103d60c2c300
+                         andnps            xmm6, xmm0                                      // 0x008a2c21    0f55f0
+                         {disp8} mov       dword ptr [esp + -0x04], edx                    // 0x008a2c24    895424fc
+                         orps              xmm5, xmm6                                      // 0x008a2c28    0f56ee
+                         movss             xmm0, xmm5                                      // 0x008a2c2b    f30f10c5
+                         mulss             xmm5, xmm5                                      // 0x008a2c2f    f30f59ed
+                         movss             xmm4, dword ptr [data_bytes + 0x276250]         // 0x008a2c33    f30f102550c2c300
+                         movss             xmm2, xmm5                                      // 0x008a2c3b    f30f10d5
+                         mulss             xmm5, xmm1                                      // 0x008a2c3f    f30f59e9
+                         movss             xmm1, dword ptr [data_bytes + 0x276240]         // 0x008a2c43    f30f100d40c2c300
+                         addss             xmm5, xmm7                                      // 0x008a2c4b    f30f58ef
+                         mulss             xmm5, xmm2                                      // 0x008a2c4f    f30f59ea
+                         movss             xmm3, dword ptr [esp + -0x04]                   // 0x008a2c53    f30f105c24fc
+                         addss             xmm5, xmm4                                      // 0x008a2c59    f30f58ec
+                         mulss             xmm5, xmm2                                      // 0x008a2c5d    f30f59ea
+                         orps              xmm0, xmm3                                      // 0x008a2c61    0f56c3
+                         addss             xmm5, xmm1                                      // 0x008a2c64    f30f58e9
+                         mulss             xmm0, xmm5                                      // 0x008a2c68    f30f59c5
+                         ret               0x0010                                          // 0x008a2c6c    c21000
+                         nop                                                               // 0x008a2c6f    90
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a2c70    f30f100d30c6c300
+                         movss             xmm2, dword ptr [data_bytes + 0x2765e0]         // 0x008a2c78    f30f1015e0c5c300
+                         movss             xmm3, dword ptr [data_bytes + 0x2765f0]         // 0x008a2c80    f30f101df0c5c300
+                         andps             xmm0, xmm1                                      // 0x008a2c88    0f54c1
+                         addss             xmm0, xmm2                                      // 0x008a2c8b    f30f58c2
+                         mulss             xmm0, xmm3                                      // 0x008a2c8f    f30f59c3
+                         pxor              xmm3, xmm3                                      // 0x008a2c93    660fefdb
+                         movd              xmm5, dword ptr [data_bytes + 0x276280]         // 0x008a2c97    660f6e2d80c2c300
+                         movss             xmm4, dword ptr [data_bytes + 0x276590]         // 0x008a2c9f    f30f102590c5c300
+                         cvttps2dq         xmm2, xmm0                                      // 0x008a2ca7    f30f5bd0
+                         pand              xmm5, xmm2                                      // 0x008a2cab    660fdbea
+                         movd              xmm1, dword ptr [data_bytes + 0x2762a0]         // 0x008a2caf    660f6e0da0c2c300
+                         pcmpeqd           xmm5, xmm3                                      // 0x008a2cb7    660f76eb
+                         cvtdq2ps          xmm6, xmm2                                      // 0x008a2cbb    0f5bf2
+                         pand              xmm2, xmm1                                      // 0x008a2cbe    660fdbd1
+                         pslld             xmm2, 0x1e                                      // 0x008a2cc2    660f72f21e
+                         subss             xmm0, xmm6                                      // 0x008a2cc7    f30f5cc6
+                         movss             xmm3, dword ptr [data_bytes + 0x276270]         // 0x008a2ccb    f30f101d70c2c300
+                         minss             xmm0, xmm4                                      // 0x008a2cd3    f30f5dc4
+                         subss             xmm4, xmm0                                      // 0x008a2cd7    f30f5ce0
+                         andps             xmm0, xmm5                                      // 0x008a2cdb    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a2cde    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a2ce1    0f56c5
+                         movaps            xmm1, xmm0                                      // 0x008a2ce4    0f28c8
+                         movss             xmm4, dword ptr [data_bytes + 0x276260]         // 0x008a2ce7    f30f102560c2c300
+                         mulss             xmm0, xmm0                                      // 0x008a2cef    f30f59c0
+                         movss             xmm5, dword ptr [data_bytes + 0x276250]         // 0x008a2cf3    f30f102d50c2c300
+                         orps              xmm1, xmm2                                      // 0x008a2cfb    0f56ca
+                         movaps            xmm7, xmm0                                      // 0x008a2cfe    0f28f8
+                         mulss             xmm0, xmm3                                      // 0x008a2d01    f30f59c3
+                         movss             xmm6, dword ptr [data_bytes + 0x276240]         // 0x008a2d05    f30f103540c2c300
+                         addss             xmm0, xmm4                                      // 0x008a2d0d    f30f58c4
+                         mulss             xmm0, xmm7                                      // 0x008a2d11    f30f59c7
+                         addss             xmm0, xmm5                                      // 0x008a2d15    f30f58c5
+                         mulss             xmm0, xmm7                                      // 0x008a2d19    f30f59c7
+                         addss             xmm0, xmm6                                      // 0x008a2d1d    f30f58c6
+                         mulss             xmm0, xmm1                                      // 0x008a2d21    f30f59c1
+                         ret               0x0010                                          // 0x008a2d25    c21000
+                         nop                                                               // 0x008a2d28    90
+                         .byte             0x8d, 0xb4, 0x26, 0x0, 0x0, 0x0, 0x0// {disp32} lea esi, dword ptr [esi + 0x00000000] // 0x008a2d29    8db42600000000
+                         movaps            xmm7, xmm0                                      // 0x008a2d30    0f28f8
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a2d33    0f540530c6c300
+                         mov.s             ecx, esp                                        // 0x008a2d3a    8bcc
+                         andps             xmm7, xmmword ptr [data_bytes + 0x276620]       // 0x008a2d3c    0f543d20c6c300
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x2765f0]       // 0x008a2d43    0f5905f0c5c300
+                         and               ecx, 0xfffffff0                                 // 0x008a2d4a    83e1f0
+                         movhlps           xmm2, xmm0                                      // 0x008a2d4d    0f12d0
+                         movq              mm4, qword ptr [data_bytes + 0x276280]          // 0x008a2d50    0f6f2580c2c300
+                         cvttps2pi         mm0, xmm0                                       // 0x008a2d57    0f2cc0
+                         movq              mm5, qword ptr [data_bytes + 0x276280]          // 0x008a2d5a    0f6f2d80c2c300
+                         movq              mm2, mm0                                        // 0x008a2d61    0f6fd0
+                         paddd             mm4, mm0                                        // 0x008a2d64    0ffee0
+                         movq              mm7, qword ptr [data_bytes + 0x276290]          // 0x008a2d67    0f6f3d90c2c300
+                         cvttps2pi         mm1, xmm2                                       // 0x008a2d6e    0f2cca
+                         pslld             mm2, 0x1e                                       // 0x008a2d71    0f72f21e
+                         pslld             mm4, 0x1e                                       // 0x008a2d75    0f72f41e
+                         movq              mm3, mm1                                        // 0x008a2d79    0f6fd9
+                         paddd             mm5, mm1                                        // 0x008a2d7c    0ffee9
+                         pslld             mm3, 0x1e                                       // 0x008a2d7f    0f72f31e
+                         pand              mm2, mm7                                        // 0x008a2d83    0fdbd7
+                         pslld             mm5, 0x1e                                       // 0x008a2d86    0f72f51e
+                         pand              mm4, mm7                                        // 0x008a2d8a    0fdbe7
+                         movq              qword ptr [ecx + -0x20], mm2                    // 0x008a2d8d    0f7f51e0
+                         pand              mm3, mm7                                        // 0x008a2d91    0fdbdf
+                         pand              mm5, mm7                                        // 0x008a2d94    0fdbef
+                         movq              qword ptr [ecx + -0x18], mm3                    // 0x008a2d97    0f7f59e8
+                         movq              qword ptr [ecx + -0x30], mm4                    // 0x008a2d9b    0f7f61d0
+                         movq              qword ptr [ecx + -0x28], mm5                    // 0x008a2d9f    0f7f69d8
+                         cvtpi2ps          xmm3, mm1                                       // 0x008a2da3    0f2ad9
+                         pand              mm1, qword ptr [data_bytes + 0x276280]          // 0x008a2da6    0fdb0d80c2c300
+                         movaps            xmm4, xmmword ptr [data_bytes + 0x276590]       // 0x008a2dad    0f282590c5c300
+                         movlhps           xmm3, xmm3                                      // 0x008a2db4    0f16db
+                         pxor              mm7, mm7                                        // 0x008a2db7    0fefff
+                         cvtpi2ps          xmm3, mm0                                       // 0x008a2dba    0f2ad8
+                         pand              mm0, qword ptr [data_bytes + 0x276280]          // 0x008a2dbd    0fdb0580c2c300
+                         pcmpeqd           mm1, mm7                                        // 0x008a2dc4    0f76cf
+                         subps             xmm0, xmm3                                      // 0x008a2dc7    0f5cc3
+                         movq              qword ptr [ecx + -0x08], mm1                    // 0x008a2dca    0f7f49f8
+                         minps             xmm0, xmm4                                      // 0x008a2dce    0f5dc4
+                         pcmpeqd           mm0, mm7                                        // 0x008a2dd1    0f76c7
+                         subps             xmm4, xmm0                                      // 0x008a2dd4    0f5ce0
+                         movq              qword ptr [ecx + -0x10], mm0                    // 0x008a2dd7    0f7f41f0
+                         movaps            xmm3, xmmword ptr [ecx + -0x10]                 // 0x008a2ddb    0f2859f0
+                         movaps            xmm6, xmm4                                      // 0x008a2ddf    0f28f4
+                         andps             xmm4, xmm3                                      // 0x008a2de2    0f54e3
+                         movaps            xmm2, xmm3                                      // 0x008a2de5    0f28d3
+                         andnps            xmm3, xmm0                                      // 0x008a2de8    0f55d8
+                         andps             xmm0, xmm2                                      // 0x008a2deb    0f54c2
+                         orps              xmm4, xmm3                                      // 0x008a2dee    0f56e3
+                         {disp8} mov       eax, dword ptr [esp + 0x14]                     // 0x008a2df1    8b442414
+                         {disp8} mov       edx, dword ptr [esp + 0x18]                     // 0x008a2df5    8b542418
+                         andnps            xmm2, xmm6                                      // 0x008a2df9    0f55d6
+                         orps              xmm0, xmm2                                      // 0x008a2dfc    0f56c2
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276270]       // 0x008a2dff    0f281d70c2c300
+                         movaps            xmm1, xmm0                                      // 0x008a2e06    0f28c8
+                         movaps            xmm5, xmm4                                      // 0x008a2e09    0f28ec
+                         xorps             xmm7, xmmword ptr [ecx + -0x20]                 // 0x008a2e0c    0f5779e0
+                         mulps             xmm0, xmm0                                      // 0x008a2e10    0f59c0
+                         mulps             xmm4, xmm4                                      // 0x008a2e13    0f59e4
+                         movaps            xmm2, xmm0                                      // 0x008a2e16    0f28d0
+                         movaps            xmm6, xmm4                                      // 0x008a2e19    0f28f4
+                         orps              xmm1, xmm7                                      // 0x008a2e1c    0f56cf
+                         movaps            xmm7, xmmword ptr [data_bytes + 0x276260]       // 0x008a2e1f    0f283d60c2c300
+                         mulps             xmm0, xmm3                                      // 0x008a2e26    0f59c3
+                         mulps             xmm4, xmm3                                      // 0x008a2e29    0f59e3
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276250]       // 0x008a2e2c    0f281d50c2c300
+                         addps             xmm0, xmm7                                      // 0x008a2e33    0f58c7
+                         addps             xmm4, xmm7                                      // 0x008a2e36    0f58e7
+                         movaps            xmm7, xmmword ptr [data_bytes + 0x276240]       // 0x008a2e39    0f283d40c2c300
+                         mulps             xmm0, xmm2                                      // 0x008a2e40    0f59c2
+                         mulps             xmm4, xmm6                                      // 0x008a2e43    0f59e6
+                         orps              xmm5, xmmword ptr [ecx + -0x30]                 // 0x008a2e46    0f5669d0
+                         addps             xmm0, xmm3                                      // 0x008a2e4a    0f58c3
+                         addps             xmm4, xmm3                                      // 0x008a2e4d    0f58e3
+                         mulps             xmm0, xmm2                                      // 0x008a2e50    0f59c2
+                         mulps             xmm4, xmm6                                      // 0x008a2e53    0f59e6
+                         addps             xmm0, xmm7                                      // 0x008a2e56    0f58c7
+                         addps             xmm4, xmm7                                      // 0x008a2e59    0f58e7
+                         mulps             xmm0, xmm1                                      // 0x008a2e5c    0f59c1
+                         mulps             xmm4, xmm5                                      // 0x008a2e5f    0f59e5
+                         movaps            xmmword ptr [eax], xmm0                         // 0x008a2e62    0f2900
+                         movaps            xmmword ptr [edx], xmm4                         // 0x008a2e65    0f2922
+                         ret               0x0020                                          // 0x008a2e68    c22000
+                         nop                                                               // 0x008a2e6b    90
+                         .byte             0x8d, 0x74, 0x26, 0x0// {disp8} lea esi, dword ptr [esi + 0x00] // 0x008a2e6c    8d742600
+                         movaps            xmm7, xmm0                                      // 0x008a2e70    0f28f8
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a2e73    0f540530c6c300
+                         andps             xmm7, xmmword ptr [data_bytes + 0x276620]       // 0x008a2e7a    0f543d20c6c300
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x2765f0]       // 0x008a2e81    0f5905f0c5c300
+                         pxor              xmm3, xmm3                                      // 0x008a2e88    660fefdb
+                         movdqa            xmm5, xmmword ptr [data_bytes + 0x276280]       // 0x008a2e8c    660f6f2d80c2c300
+                         movaps            xmm4, xmmword ptr [data_bytes + 0x276590]       // 0x008a2e94    0f282590c5c300
+                         cvttps2dq         xmm2, xmm0                                      // 0x008a2e9b    f30f5bd0
+                         pand              xmm5, xmm2                                      // 0x008a2e9f    660fdbea
+                         pcmpeqd           xmm5, xmm3                                      // 0x008a2ea3    660f76eb
+                         movdqa            xmm3, xmmword ptr [data_bytes + 0x276280]       // 0x008a2ea7    660f6f1d80c2c300
+                         movdqa            xmm1, xmmword ptr [data_bytes + 0x2762a0]       // 0x008a2eaf    660f6f0da0c2c300
+                         cvtdq2ps          xmm6, xmm2                                      // 0x008a2eb7    0f5bf2
+                         paddd             xmm3, xmm2                                      // 0x008a2eba    660ffeda
+                         pand              xmm2, xmm1                                      // 0x008a2ebe    660fdbd1
+                         pand              xmm3, xmm1                                      // 0x008a2ec2    660fdbd9
+                         subps             xmm0, xmm6                                      // 0x008a2ec6    0f5cc6
+                         pslld             xmm2, 0x1e                                      // 0x008a2ec9    660f72f21e
+                         minps             xmm0, xmm4                                      // 0x008a2ece    0f5dc4
+                         {disp8} mov       eax, dword ptr [esp + 0x14]                     // 0x008a2ed1    8b442414
+                         {disp8} mov       edx, dword ptr [esp + 0x18]                     // 0x008a2ed5    8b542418
+                         subps             xmm4, xmm0                                      // 0x008a2ed9    0f5ce0
+                         pslld             xmm3, 0x1e                                      // 0x008a2edc    660f72f31e
+                         movaps            xmm6, xmm4                                      // 0x008a2ee1    0f28f4
+                         xorps             xmm2, xmm7                                      // 0x008a2ee4    0f57d7
+                         movaps            xmm7, xmm5                                      // 0x008a2ee7    0f28fd
+                         andps             xmm6, xmm7                                      // 0x008a2eea    0f54f7
+                         andnps            xmm7, xmm0                                      // 0x008a2eed    0f55f8
+                         andps             xmm0, xmm5                                      // 0x008a2ef0    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a2ef3    0f55ec
+                         movaps            xmm4, xmmword ptr [data_bytes + 0x276270]       // 0x008a2ef6    0f282570c2c300
+                         orps              xmm6, xmm7                                      // 0x008a2efd    0f56f7
+                         orps              xmm0, xmm5                                      // 0x008a2f00    0f56c5
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276260]       // 0x008a2f03    0f282d60c2c300
+                         movaps            xmm1, xmm0                                      // 0x008a2f0a    0f28c8
+                         movaps            xmm7, xmm6                                      // 0x008a2f0d    0f28fe
+                         mulps             xmm0, xmm0                                      // 0x008a2f10    0f59c0
+                         mulps             xmm6, xmm6                                      // 0x008a2f13    0f59f6
+                         orps              xmm1, xmm2                                      // 0x008a2f16    0f56ca
+                         orps              xmm7, xmm3                                      // 0x008a2f19    0f56fb
+                         movaps            xmm2, xmm0                                      // 0x008a2f1c    0f28d0
+                         movaps            xmm3, xmm6                                      // 0x008a2f1f    0f28de
+                         mulps             xmm0, xmm4                                      // 0x008a2f22    0f59c4
+                         mulps             xmm6, xmm4                                      // 0x008a2f25    0f59f4
+                         movaps            xmm4, xmmword ptr [data_bytes + 0x276250]       // 0x008a2f28    0f282550c2c300
+                         addps             xmm0, xmm5                                      // 0x008a2f2f    0f58c5
+                         addps             xmm6, xmm5                                      // 0x008a2f32    0f58f5
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276240]       // 0x008a2f35    0f282d40c2c300
+                         mulps             xmm0, xmm2                                      // 0x008a2f3c    0f59c2
+                         mulps             xmm6, xmm3                                      // 0x008a2f3f    0f59f3
+                         addps             xmm0, xmm4                                      // 0x008a2f42    0f58c4
+                         addps             xmm6, xmm4                                      // 0x008a2f45    0f58f4
+                         mulps             xmm0, xmm2                                      // 0x008a2f48    0f59c2
+                         mulps             xmm6, xmm3                                      // 0x008a2f4b    0f59f3
+                         addps             xmm0, xmm5                                      // 0x008a2f4e    0f58c5
+                         addps             xmm6, xmm5                                      // 0x008a2f51    0f58f5
+                         mulps             xmm0, xmm1                                      // 0x008a2f54    0f59c1
+                         mulps             xmm6, xmm7                                      // 0x008a2f57    0f59f7
+                         movaps            xmmword ptr [eax], xmm0                         // 0x008a2f5a    0f2900
+                         movaps            xmmword ptr [edx], xmm6                         // 0x008a2f5d    0f2932
+                         ret               0x0020                                          // 0x008a2f60    c22000
+                         {disp32} lea      esi, dword ptr [esi + 0x00000000]               // 0x008a2f63    8db600000000
+                         .byte             0x8d, 0xbc, 0x27, 0x0, 0x0, 0x0, 0x0// {disp32} lea edi, dword ptr [edi + 0x00000000] // 0x008a2f69    8dbc2700000000
+                         movss             dword ptr [esp + -0x0c], xmm0                   // 0x008a2f70    f30f114424f4
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a2f76    f30f100d30c6c300
+                         {disp8} mov       eax, dword ptr [esp + -0x0c]                    // 0x008a2f7e    8b4424f4
+                         mulss             xmm0, dword ptr [data_bytes + 0x2765f0]         // 0x008a2f82    f30f5905f0c5c300
+                         andps             xmm0, xmm1                                      // 0x008a2f8a    0f54c1
+                         and               eax, 0x80000000                                 // 0x008a2f8d    2500000080
+                         cvttss2si         edx, xmm0                                       // 0x008a2f92    f30f2cd0
+                         mov.s             ecx, edx                                        // 0x008a2f96    8bca
+                         {disp8} mov       dword ptr [esp + -0x0c], esi                    // 0x008a2f98    897424f4
+                         mov.s             esi, edx                                        // 0x008a2f9c    8bf2
+                         add               edx, 0x01                                       // 0x008a2f9e    83c201
+                         shl               ecx, 0x1e                                       // 0x008a2fa1    c1e11e
+                         shl               edx, 0x1e                                       // 0x008a2fa4    c1e21e
+                         movss             xmm4, dword ptr [data_bytes + 0x276590]         // 0x008a2fa7    f30f102590c5c300
+                         cvtsi2ss          xmm3, esi                                       // 0x008a2faf    f30f2ade
+                         {disp8} mov       dword ptr [esp + -0x08], eax                    // 0x008a2fb3    894424f8
+                         and               esi, 0x01                                       // 0x008a2fb7    83e601
+                         subss             xmm0, xmm3                                      // 0x008a2fba    f30f5cc3
+                         movss             xmm3, dword ptr [esi * 0x4 + 0x00c3c2b8]        // 0x008a2fbe    f30f101cb5b8c2c300
+                         minss             xmm0, xmm4                                      // 0x008a2fc7    f30f5dc4
+                         subss             xmm4, xmm0                                      // 0x008a2fcb    f30f5ce0
+                         movss             xmm6, xmm4                                      // 0x008a2fcf    f30f10f4
+                         andps             xmm4, xmm3                                      // 0x008a2fd3    0f54e3
+                         and               ecx, 0x80000000                                 // 0x008a2fd6    81e100000080
+                         movss             xmm2, xmm3                                      // 0x008a2fdc    f30f10d3
+                         andnps            xmm3, xmm0                                      // 0x008a2fe0    0f55d8
+                         and               edx, 0x80000000                                 // 0x008a2fe3    81e200000080
+                         movss             xmm7, dword ptr [esp + -0x08]                   // 0x008a2fe9    f30f107c24f8
+                         andps             xmm0, xmm2                                      // 0x008a2fef    0f54c2
+                         {disp8} mov       dword ptr [esp + -0x08], ecx                    // 0x008a2ff2    894c24f8
+                         {disp8} mov       dword ptr [esp + -0x04], edx                    // 0x008a2ff6    895424fc
+                         orps              xmm4, xmm3                                      // 0x008a2ffa    0f56e3
+                         {disp8} mov       eax, dword ptr [esp + 0x14]                     // 0x008a2ffd    8b442414
+                         {disp8} mov       edx, dword ptr [esp + 0x18]                     // 0x008a3001    8b542418
+                         andnps            xmm2, xmm6                                      // 0x008a3005    0f55d6
+                         orps              xmm0, xmm2                                      // 0x008a3008    0f56c2
+                         movss             xmm2, dword ptr [esp + -0x08]                   // 0x008a300b    f30f105424f8
+                         movss             xmm1, xmm0                                      // 0x008a3011    f30f10c8
+                         movss             xmm5, xmm4                                      // 0x008a3015    f30f10ec
+                         xorps             xmm7, xmm2                                      // 0x008a3019    0f57fa
+                         movss             xmm3, dword ptr [data_bytes + 0x276270]         // 0x008a301c    f30f101d70c2c300
+                         mulss             xmm0, xmm0                                      // 0x008a3024    f30f59c0
+                         mulss             xmm4, xmm4                                      // 0x008a3028    f30f59e4
+                         movss             xmm2, xmm0                                      // 0x008a302c    f30f10d0
+                         movss             xmm6, xmm4                                      // 0x008a3030    f30f10f4
+                         orps              xmm1, xmm7                                      // 0x008a3034    0f56cf
+                         movss             xmm7, dword ptr [data_bytes + 0x276260]         // 0x008a3037    f30f103d60c2c300
+                         mulss             xmm0, xmm3                                      // 0x008a303f    f30f59c3
+                         mulss             xmm4, xmm3                                      // 0x008a3043    f30f59e3
+                         movss             xmm3, dword ptr [data_bytes + 0x276250]         // 0x008a3047    f30f101d50c2c300
+                         addss             xmm0, xmm7                                      // 0x008a304f    f30f58c7
+                         addss             xmm4, xmm7                                      // 0x008a3053    f30f58e7
+                         movss             xmm7, dword ptr [data_bytes + 0x276240]         // 0x008a3057    f30f103d40c2c300
+                         mulss             xmm0, xmm2                                      // 0x008a305f    f30f59c2
+                         mulss             xmm4, xmm6                                      // 0x008a3063    f30f59e6
+                         addss             xmm0, xmm3                                      // 0x008a3067    f30f58c3
+                         addss             xmm4, xmm3                                      // 0x008a306b    f30f58e3
+                         movss             xmm3, dword ptr [esp + -0x04]                   // 0x008a306f    f30f105c24fc
+                         mulss             xmm0, xmm2                                      // 0x008a3075    f30f59c2
+                         mulss             xmm4, xmm6                                      // 0x008a3079    f30f59e6
+                         orps              xmm5, xmm3                                      // 0x008a307d    0f56eb
+                         {disp8} mov       esi, dword ptr [esp + -0x0c]                    // 0x008a3080    8b7424f4
+                         addss             xmm0, xmm7                                      // 0x008a3084    f30f58c7
+                         addss             xmm4, xmm7                                      // 0x008a3088    f30f58e7
+                         mulss             xmm0, xmm1                                      // 0x008a308c    f30f59c1
+                         mulss             xmm4, xmm5                                      // 0x008a3090    f30f59e5
+                         movaps            xmmword ptr [eax], xmm0                         // 0x008a3094    0f2900
+                         movaps            xmmword ptr [edx], xmm4                         // 0x008a3097    0f2922
+                         ret               0x0020                                          // 0x008a309a    c22000
+                         {disp8} lea       esi, dword ptr [esi + 0x00]                     // 0x008a309d    8d7600
+_jmp_addr_0x008a30a0:    movaps            xmm7, xmm0                                      // 0x008a30a0    0f28f8
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a30a3    f30f100d30c6c300
+                         movss             xmm2, dword ptr [data_bytes + 0x276620]         // 0x008a30ab    f30f101520c6c300
+                         movss             xmm3, dword ptr [data_bytes + 0x2765f0]         // 0x008a30b3    f30f101df0c5c300
+                         andps             xmm0, xmm1                                      // 0x008a30bb    0f54c1
+                         andps             xmm7, xmm2                                      // 0x008a30be    0f54fa
+                         mulss             xmm0, xmm3                                      // 0x008a30c1    f30f59c3
+                         pxor              xmm3, xmm3                                      // 0x008a30c5    660fefdb
+                         movd              xmm5, dword ptr [data_bytes + 0x276280]         // 0x008a30c9    660f6e2d80c2c300
+                         movss             xmm4, dword ptr [data_bytes + 0x276590]         // 0x008a30d1    f30f102590c5c300
+                         cvttps2dq         xmm2, xmm0                                      // 0x008a30d9    f30f5bd0
+                         pand              xmm5, xmm2                                      // 0x008a30dd    660fdbea
+                         movd              xmm1, dword ptr [data_bytes + 0x2762a0]         // 0x008a30e1    660f6e0da0c2c300
+                         pcmpeqd           xmm5, xmm3                                      // 0x008a30e9    660f76eb
+                         movd              xmm3, dword ptr [data_bytes + 0x276280]         // 0x008a30ed    660f6e1d80c2c300
+                         cvtdq2ps          xmm6, xmm2                                      // 0x008a30f5    0f5bf2
+                         paddd             xmm3, xmm2                                      // 0x008a30f8    660ffeda
+                         pand              xmm2, xmm1                                      // 0x008a30fc    660fdbd1
+                         pand              xmm3, xmm1                                      // 0x008a3100    660fdbd9
+                         subss             xmm0, xmm6                                      // 0x008a3104    f30f5cc6
+                         pslld             xmm2, 0x1e                                      // 0x008a3108    660f72f21e
+                         minss             xmm0, xmm4                                      // 0x008a310d    f30f5dc4
+                         {disp8} mov       eax, dword ptr [esp + 0x14]                     // 0x008a3111    8b442414
+                         {disp8} mov       edx, dword ptr [esp + 0x18]                     // 0x008a3115    8b542418
+                         subss             xmm4, xmm0                                      // 0x008a3119    f30f5ce0
+                         pslld             xmm3, 0x1e                                      // 0x008a311d    660f72f31e
+                         movaps            xmm6, xmm4                                      // 0x008a3122    0f28f4
+                         xorps             xmm2, xmm7                                      // 0x008a3125    0f57d7
+                         movaps            xmm7, xmm5                                      // 0x008a3128    0f28fd
+                         andps             xmm6, xmm7                                      // 0x008a312b    0f54f7
+                         andnps            xmm7, xmm0                                      // 0x008a312e    0f55f8
+                         andps             xmm0, xmm5                                      // 0x008a3131    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a3134    0f55ec
+                         movss             xmm4, dword ptr [data_bytes + 0x276270]         // 0x008a3137    f30f102570c2c300
+                         orps              xmm6, xmm7                                      // 0x008a313f    0f56f7
+                         orps              xmm0, xmm5                                      // 0x008a3142    0f56c5
+                         movss             xmm5, dword ptr [data_bytes + 0x276260]         // 0x008a3145    f30f102d60c2c300
+                         movaps            xmm1, xmm0                                      // 0x008a314d    0f28c8
+                         movaps            xmm7, xmm6                                      // 0x008a3150    0f28fe
+                         mulss             xmm0, xmm0                                      // 0x008a3153    f30f59c0
+                         mulss             xmm6, xmm6                                      // 0x008a3157    f30f59f6
+                         orps              xmm1, xmm2                                      // 0x008a315b    0f56ca
+                         orps              xmm7, xmm3                                      // 0x008a315e    0f56fb
+                         movaps            xmm2, xmm0                                      // 0x008a3161    0f28d0
+                         movaps            xmm3, xmm6                                      // 0x008a3164    0f28de
+                         mulss             xmm0, xmm4                                      // 0x008a3167    f30f59c4
+                         mulss             xmm6, xmm4                                      // 0x008a316b    f30f59f4
+                         movss             xmm4, dword ptr [data_bytes + 0x276250]         // 0x008a316f    f30f102550c2c300
+                         addss             xmm0, xmm5                                      // 0x008a3177    f30f58c5
+                         addss             xmm6, xmm5                                      // 0x008a317b    f30f58f5
+                         movss             xmm5, dword ptr [data_bytes + 0x276240]         // 0x008a317f    f30f102d40c2c300
+                         mulss             xmm0, xmm2                                      // 0x008a3187    f30f59c2
+                         mulss             xmm6, xmm3                                      // 0x008a318b    f30f59f3
+                         addss             xmm0, xmm4                                      // 0x008a318f    f30f58c4
+                         addss             xmm6, xmm4                                      // 0x008a3193    f30f58f4
+                         mulss             xmm0, xmm2                                      // 0x008a3197    f30f59c2
+                         mulss             xmm6, xmm3                                      // 0x008a319b    f30f59f3
+                         addss             xmm0, xmm5                                      // 0x008a319f    f30f58c5
+                         addss             xmm6, xmm5                                      // 0x008a31a3    f30f58f5
+                         mulss             xmm0, xmm1                                      // 0x008a31a7    f30f59c1
+                         mulss             xmm6, xmm7                                      // 0x008a31ab    f30f59f7
+                         movaps            xmmword ptr [eax], xmm0                         // 0x008a31af    0f2900
+                         movaps            xmmword ptr [edx], xmm6                         // 0x008a31b2    0f2932
+                         ret               0x0020                                          // 0x008a31b5    c22000
+                         nop                                                               // 0x008a31b8    90
+                         .byte             0x8d, 0xb4, 0x26, 0x0, 0x0, 0x0, 0x0// {disp32} lea esi, dword ptr [esi + 0x00000000] // 0x008a31b9    8db42600000000
+                         movaps            xmm7, xmm0                                      // 0x008a31c0    0f28f8
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a31c3    0f540530c6c300
+                         mov.s             ecx, esp                                        // 0x008a31ca    8bcc
+                         andps             xmm7, xmmword ptr [data_bytes + 0x276620]       // 0x008a31cc    0f543d20c6c300
+                         movaps            xmm1, xmm0                                      // 0x008a31d3    0f28c8
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x276610]       // 0x008a31d6    0f590510c6c300
+                         movq              mm4, qword ptr [data_bytes + 0x276280]          // 0x008a31dd    0f6f2580c2c300
+                         movq              mm2, qword ptr [data_bytes + 0x276340]          // 0x008a31e4    0f6f1540c3c300
+                         cvttps2pi         mm0, xmm0                                       // 0x008a31eb    0f2cc0
+                         movhlps           xmm0, xmm0                                      // 0x008a31ee    0f12c0
+                         movq              mm5, mm4                                        // 0x008a31f1    0f6fec
+                         movq              mm3, mm2                                        // 0x008a31f4    0f6fda
+                         cvttps2pi         mm1, xmm0                                       // 0x008a31f7    0f2cc8
+                         movaps            xmm5, xmmword ptr [data_bytes + 0x276590]       // 0x008a31fa    0f282d90c5c300
+                         pand              mm4, mm0                                        // 0x008a3201    0fdbe0
+                         pand              mm5, mm1                                        // 0x008a3204    0fdbe9
+                         movq              mm7, qword ptr [data_bytes + 0x2762a0]          // 0x008a3207    0f6f3da0c2c300
+                         pand              mm2, mm0                                        // 0x008a320e    0fdbd0
+                         pand              mm3, mm1                                        // 0x008a3211    0fdbd9
+                         paddd             mm0, mm4                                        // 0x008a3214    0ffec4
+                         paddd             mm1, mm5                                        // 0x008a3217    0ffecd
+                         cvtpi2ps          xmm0, mm1                                       // 0x008a321a    0f2ac1
+                         movlhps           xmm0, xmm0                                      // 0x008a321d    0f16c0
+                         cvtpi2ps          xmm0, mm0                                       // 0x008a3220    0f2ac0
+                         paddd             mm2, mm4                                        // 0x008a3223    0ffed4
+                         paddd             mm3, mm5                                        // 0x008a3226    0ffedd
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x276600]       // 0x008a3229    0f590500c6c300
+                         pxor              mm6, mm6                                        // 0x008a3230    0feff6
+                         subps             xmm1, xmm0                                      // 0x008a3233    0f5cc8
+                         pand              mm2, mm7                                        // 0x008a3236    0fdbd7
+                         pand              mm3, mm7                                        // 0x008a3239    0fdbdf
+                         minps             xmm1, xmm5                                      // 0x008a323c    0f5dcd
+                         movaps            xmm2, xmmword ptr [data_bytes + 0x276330]       // 0x008a323f    0f281530c3c300
+                         pcmpeqd           mm2, mm6                                        // 0x008a3246    0f76d6
+                         pcmpeqd           mm3, mm6                                        // 0x008a3249    0f76de
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276320]       // 0x008a324c    0f281d20c3c300
+                         and               ecx, 0xfffffff0                                 // 0x008a3253    83e1f0
+                         movaps            xmm0, xmm1                                      // 0x008a3256    0f28c1
+                         mulps             xmm1, xmm1                                      // 0x008a3259    0f59c9
+                         xorps             xmm6, xmm6                                      // 0x008a325c    0f57f6
+                         movq              qword ptr [ecx + -0x10], mm2                    // 0x008a325f    0f7f51f0
+                         movq              qword ptr [ecx + -0x08], mm3                    // 0x008a3263    0f7f59f8
+                         mulps             xmm2, xmm1                                      // 0x008a3267    0f59d1
+                         addps             xmm3, xmm1                                      // 0x008a326a    0f58d9
+                         addps             xmm2, xmmword ptr [data_bytes + 0x276310]       // 0x008a326d    0f581510c3c300
+                         mulps             xmm3, xmm1                                      // 0x008a3274    0f59d9
+                         mulps             xmm2, xmm1                                      // 0x008a3277    0f59d1
+                         addps             xmm3, xmmword ptr [data_bytes + 0x276300]       // 0x008a327a    0f581d00c3c300
+                         addps             xmm2, xmmword ptr [data_bytes + 0x2762f0]       // 0x008a3281    0f5815f0c2c300
+                         mulps             xmm3, xmm1                                      // 0x008a3288    0f59d9
+                         mulps             xmm2, xmm1                                      // 0x008a328b    0f59d1
+                         addps             xmm3, xmmword ptr [data_bytes + 0x2762e0]       // 0x008a328e    0f581de0c2c300
+                         xorps             xmm0, xmm7                                      // 0x008a3295    0f57c7
+                         mulps             xmm3, xmm1                                      // 0x008a3298    0f59d9
+                         mulps             xmm2, xmm0                                      // 0x008a329b    0f59d0
+                         addps             xmm3, xmmword ptr [data_bytes + 0x2762d0]       // 0x008a329e    0f581dd0c2c300
+                         cmpneqps          xmm6, xmm1                                      // 0x008a32a5    0fc2f104
+                         rcpps             xmm4, xmm3                                      // 0x008a32a9    0f53e3
+                         mulps             xmm3, xmm4                                      // 0x008a32ac    0f59dc
+                         movaps            xmm5, xmmword ptr [ecx + -0x10]                 // 0x008a32af    0f2869f0
+                         mulps             xmm3, xmm4                                      // 0x008a32b3    0f59dc
+                         addps             xmm4, xmm4                                      // 0x008a32b6    0f58e4
+                         orps              xmm6, xmm5                                      // 0x008a32b9    0f56f5
+                         subps             xmm4, xmm3                                      // 0x008a32bc    0f5ce3
+                         mulps             xmm2, xmm4                                      // 0x008a32bf    0f59d4
+                         movaps            xmm1, xmmword ptr [data_bytes + 0x276620]       // 0x008a32c2    0f280d20c6c300
+                         movmskps          eax, xmm6                                       // 0x008a32c9    0f50c6
+                         addps             xmm2, xmm0                                      // 0x008a32cc    0f58d0
+                         rcpps             xmm4, xmm2                                      // 0x008a32cf    0f53e2
+                         movaps            xmm0, xmm2                                      // 0x008a32d2    0f28c2
+                         mulps             xmm2, xmm4                                      // 0x008a32d5    0f59d4
+                         cmp               eax, 0x0f                                       // 0x008a32d8    83f80f
+                         mulps             xmm2, xmm4                                      // 0x008a32db    0f59d4
+                         addps             xmm4, xmm4                                      // 0x008a32de    0f58e4
+                         subps             xmm4, xmm2                                      // 0x008a32e1    0f5ce2
+                         {disp32} jne      _jmp_addr_0x008a32f9                            // 0x008a32e4    0f850f000000
+                         xorps             xmm4, xmm1                                      // 0x008a32ea    0f57e1
+                         andps             xmm0, xmm5                                      // 0x008a32ed    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a32f0    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a32f3    0f56c5
+                         ret               0x0010                                          // 0x008a32f6    c21000
+_jmp_addr_0x008a32f9:    movaps            xmm7, xmm1                                      // 0x008a32f9    0f28f9
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x2762c0]       // 0x008a32fc    0f281dc0c2c300
+                         andps             xmm1, xmm0                                      // 0x008a3303    0f54c8
+                         orps              xmm3, xmm1                                      // 0x008a3306    0f56d9
+                         andps             xmm4, xmm6                                      // 0x008a3309    0f54e6
+                         andnps            xmm6, xmm3                                      // 0x008a330c    0f55f3
+                         orps              xmm4, xmm6                                      // 0x008a330f    0f56e6
+                         xorps             xmm4, xmm7                                      // 0x008a3312    0f57e7
+                         andps             xmm0, xmm5                                      // 0x008a3315    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a3318    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a331b    0f56c5
+                         ret               0x0010                                          // 0x008a331e    c21000
+                         nop                                                               // 0x008a3321    90
+                         .byte             0x8d, 0xb4, 0x26, 0x0, 0x0, 0x0, 0x0// {disp32} lea esi, dword ptr [esi + 0x00000000] // 0x008a3322    8db42600000000
+                         .byte             0x8d, 0xbc, 0x27, 0x0, 0x0, 0x0, 0x0// {disp32} lea edi, dword ptr [edi + 0x00000000] // 0x008a3329    8dbc2700000000
+                         movaps            xmm7, xmm0                                      // 0x008a3330    0f28f8
+                         andps             xmm0, xmmword ptr [data_bytes + 0x276630]       // 0x008a3333    0f540530c6c300
+                         andps             xmm7, xmmword ptr [data_bytes + 0x276620]       // 0x008a333a    0f543d20c6c300
+                         movaps            xmm1, xmm0                                      // 0x008a3341    0f28c8
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x276610]       // 0x008a3344    0f590510c6c300
+                         cvttps2dq         xmm0, xmm0                                      // 0x008a334b    f30f5bc0
+                         movdqa            xmm4, xmmword ptr [data_bytes + 0x276280]       // 0x008a334f    660f6f2580c2c300
+                         movdqa            xmm5, xmmword ptr [data_bytes + 0x276340]       // 0x008a3357    660f6f2d40c3c300
+                         pand              xmm4, xmm0                                      // 0x008a335f    660fdbe0
+                         pand              xmm5, xmm0                                      // 0x008a3363    660fdbe8
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276590]       // 0x008a3367    0f281d90c5c300
+                         paddd             xmm0, xmm4                                      // 0x008a336e    660ffec4
+                         paddd             xmm5, xmm4                                      // 0x008a3372    660ffeec
+                         cvtdq2ps          xmm0, xmm0                                      // 0x008a3376    0f5bc0
+                         mulps             xmm0, xmmword ptr [data_bytes + 0x276600]       // 0x008a3379    0f590500c6c300
+                         xorps             xmm6, xmm6                                      // 0x008a3380    0f57f6
+                         subps             xmm1, xmm0                                      // 0x008a3383    0f5cc8
+                         movaps            xmm2, xmmword ptr [data_bytes + 0x276330]       // 0x008a3386    0f281530c3c300
+                         minps             xmm1, xmm3                                      // 0x008a338d    0f5dcb
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x276320]       // 0x008a3390    0f281d20c3c300
+                         movaps            xmm0, xmm1                                      // 0x008a3397    0f28c1
+                         mulps             xmm1, xmm1                                      // 0x008a339a    0f59c9
+                         mulps             xmm2, xmm1                                      // 0x008a339d    0f59d1
+                         addps             xmm3, xmm1                                      // 0x008a33a0    0f58d9
+                         addps             xmm2, xmmword ptr [data_bytes + 0x276310]       // 0x008a33a3    0f581510c3c300
+                         mulps             xmm3, xmm1                                      // 0x008a33aa    0f59d9
+                         mulps             xmm2, xmm1                                      // 0x008a33ad    0f59d1
+                         addps             xmm3, xmmword ptr [data_bytes + 0x276300]       // 0x008a33b0    0f581d00c3c300
+                         addps             xmm2, xmmword ptr [data_bytes + 0x2762f0]       // 0x008a33b7    0f5815f0c2c300
+                         mulps             xmm3, xmm1                                      // 0x008a33be    0f59d9
+                         mulps             xmm2, xmm1                                      // 0x008a33c1    0f59d1
+                         addps             xmm3, xmmword ptr [data_bytes + 0x2762e0]       // 0x008a33c4    0f581de0c2c300
+                         xorps             xmm0, xmm7                                      // 0x008a33cb    0f57c7
+                         mulps             xmm3, xmm1                                      // 0x008a33ce    0f59d9
+                         pand              xmm5, xmmword ptr [data_bytes + 0x2762a0]       // 0x008a33d1    660fdb2da0c2c300
+                         addps             xmm3, xmmword ptr [data_bytes + 0x2762d0]       // 0x008a33d9    0f581dd0c2c300
+                         mulps             xmm2, xmm0                                      // 0x008a33e0    0f59d0
+                         cmpneqps          xmm6, xmm1                                      // 0x008a33e3    0fc2f104
+                         rcpps             xmm4, xmm3                                      // 0x008a33e7    0f53e3
+                         pxor              xmm7, xmm7                                      // 0x008a33ea    660fefff
+                         mulps             xmm3, xmm4                                      // 0x008a33ee    0f59dc
+                         pcmpeqd           xmm5, xmm7                                      // 0x008a33f1    660f76ef
+                         mulps             xmm3, xmm4                                      // 0x008a33f5    0f59dc
+                         addps             xmm4, xmm4                                      // 0x008a33f8    0f58e4
+                         orps              xmm6, xmm5                                      // 0x008a33fb    0f56f5
+                         subps             xmm4, xmm3                                      // 0x008a33fe    0f5ce3
+                         mulps             xmm2, xmm4                                      // 0x008a3401    0f59d4
+                         movaps            xmm1, xmmword ptr [data_bytes + 0x276620]       // 0x008a3404    0f280d20c6c300
+                         movmskps          eax, xmm6                                       // 0x008a340b    0f50c6
+                         addps             xmm2, xmm0                                      // 0x008a340e    0f58d0
+                         rcpps             xmm4, xmm2                                      // 0x008a3411    0f53e2
+                         cmp               eax, 0x0f                                       // 0x008a3414    83f80f
+                         movaps            xmm0, xmm2                                      // 0x008a3417    0f28c2
+                         mulps             xmm2, xmm4                                      // 0x008a341a    0f59d4
+                         mulps             xmm2, xmm4                                      // 0x008a341d    0f59d4
+                         addps             xmm4, xmm4                                      // 0x008a3420    0f58e4
+                         subps             xmm4, xmm2                                      // 0x008a3423    0f5ce2
+                         {disp32} jne      _jmp_addr_0x008a343b                            // 0x008a3426    0f850f000000
+                         xorps             xmm4, xmm1                                      // 0x008a342c    0f57e1
+                         andps             xmm0, xmm5                                      // 0x008a342f    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a3432    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a3435    0f56c5
+                         ret               0x0010                                          // 0x008a3438    c21000
+_jmp_addr_0x008a343b:    movaps            xmm7, xmm1                                      // 0x008a343b    0f28f9
+                         movaps            xmm3, xmmword ptr [data_bytes + 0x2762c0]       // 0x008a343e    0f281dc0c2c300
+                         andps             xmm1, xmm0                                      // 0x008a3445    0f54c8
+                         orps              xmm3, xmm1                                      // 0x008a3448    0f56d9
+                         andps             xmm4, xmm6                                      // 0x008a344b    0f54e6
+                         andnps            xmm6, xmm3                                      // 0x008a344e    0f55f3
+                         orps              xmm4, xmm6                                      // 0x008a3451    0f56e6
+                         xorps             xmm4, xmm7                                      // 0x008a3454    0f57e7
+                         andps             xmm0, xmm5                                      // 0x008a3457    0f54c5
+                         andnps            xmm5, xmm4                                      // 0x008a345a    0f55ec
+                         orps              xmm0, xmm5                                      // 0x008a345d    0f56c5
+                         ret               0x0010                                          // 0x008a3460    c21000
+                         {disp32} lea      esi, dword ptr [esi + 0x00000000]               // 0x008a3463    8db600000000
+                         .byte             0x8d, 0xbc, 0x27, 0x0, 0x0, 0x0, 0x0// {disp32} lea edi, dword ptr [edi + 0x00000000] // 0x008a3469    8dbc2700000000
+                         movss             dword ptr [esp + -0x08], xmm0                   // 0x008a3470    f30f114424f8
+                         {disp8} mov       dword ptr [esp + -0x04], esi                    // 0x008a3476    897424fc
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a347a    f30f100d30c6c300
+                         {disp8} mov       eax, dword ptr [esp + -0x08]                    // 0x008a3482    8b4424f8
+                         andps             xmm0, xmm1                                      // 0x008a3486    0f54c1
+                         and               eax, 0x80000000                                 // 0x008a3489    2500000080
+                         movss             xmm1, xmm0                                      // 0x008a348e    f30f10c8
+                         mulss             xmm0, dword ptr [data_bytes + 0x276610]         // 0x008a3492    f30f590510c6c300
+                         cvttss2si         edx, xmm0                                       // 0x008a349a    f30f2cd0
+                         movss             xmm5, dword ptr [data_bytes + 0x276590]         // 0x008a349e    f30f102d90c5c300
+                         mov               ecx, 0x00000001                                 // 0x008a34a6    b901000000
+                         mov               esi, 0x00000007                                 // 0x008a34ab    be07000000
+                         and.s             ecx, edx                                        // 0x008a34b0    23ca
+                         and.s             esi, edx                                        // 0x008a34b2    23f2
+                         add.s             edx, ecx                                        // 0x008a34b4    03d1
+                         add.s             esi, ecx                                        // 0x008a34b6    03f1
+                         {disp8} mov       dword ptr [esp + -0x08], eax                    // 0x008a34b8    894424f8
+                         cvtsi2ss          xmm0, edx                                       // 0x008a34bc    f30f2ac2
+                         xorps             xmm6, xmm6                                      // 0x008a34c0    0f57f6
+                         mulss             xmm0, dword ptr [data_bytes + 0x276600]         // 0x008a34c3    f30f590500c6c300
+                         test              esi, 0x00000002                                 // 0x008a34cb    f7c602000000
+                         subss             xmm1, xmm0                                      // 0x008a34d1    f30f5cc8
+                         movss             xmm2, dword ptr [data_bytes + 0x276330]         // 0x008a34d5    f30f101530c3c300
+                         minss             xmm1, xmm5                                      // 0x008a34dd    f30f5dcd
+                         movss             xmm3, dword ptr [data_bytes + 0x276320]         // 0x008a34e1    f30f101d20c3c300
+                         movss             xmm0, xmm1                                      // 0x008a34e9    f30f10c1
+                         mulss             xmm1, xmm1                                      // 0x008a34ed    f30f59c9
+                         movss             xmm7, dword ptr [esp + -0x08]                   // 0x008a34f1    f30f107c24f8
+                         mulss             xmm2, xmm1                                      // 0x008a34f7    f30f59d1
+                         addss             xmm3, xmm1                                      // 0x008a34fb    f30f58d9
+                         addss             xmm2, dword ptr [data_bytes + 0x276310]         // 0x008a34ff    f30f581510c3c300
+                         mulss             xmm3, xmm1                                      // 0x008a3507    f30f59d9
+                         mulss             xmm2, xmm1                                      // 0x008a350b    f30f59d1
+                         addss             xmm3, dword ptr [data_bytes + 0x276300]         // 0x008a350f    f30f581d00c3c300
+                         addss             xmm2, dword ptr [data_bytes + 0x2762f0]         // 0x008a3517    f30f5815f0c2c300
+                         mulss             xmm3, xmm1                                      // 0x008a351f    f30f59d9
+                         mulss             xmm2, xmm1                                      // 0x008a3523    f30f59d1
+                         addss             xmm3, dword ptr [data_bytes + 0x2762e0]         // 0x008a3527    f30f581de0c2c300
+                         xorps             xmm0, xmm7                                      // 0x008a352f    0f57c7
+                         mulss             xmm3, xmm1                                      // 0x008a3532    f30f59d9
+                         mulss             xmm2, xmm0                                      // 0x008a3536    f30f59d0
+                         addss             xmm3, dword ptr [data_bytes + 0x2762d0]         // 0x008a353a    f30f581dd0c2c300
+                         rcpss             xmm4, xmm3                                      // 0x008a3542    f30f53e3
+                         mulss             xmm3, xmm4                                      // 0x008a3546    f30f59dc
+                         {disp8} mov       esi, dword ptr [esp + -0x04]                    // 0x008a354a    8b7424fc
+                         mulss             xmm3, xmm4                                      // 0x008a354e    f30f59dc
+                         addss             xmm4, xmm4                                      // 0x008a3552    f30f58e4
+                         subss             xmm4, xmm3                                      // 0x008a3556    f30f5ce3
+                         mulss             xmm2, xmm4                                      // 0x008a355a    f30f59d4
+                         {disp32} je       _jmp_addr_0x008a35ab                            // 0x008a355e    0f8447000000
+                         addss             xmm2, xmm0                                      // 0x008a3564    f30f58d0
+                         comiss            xmm6, xmm1                                      // 0x008a3568    0f2ff1
+                         rcpss             xmm4, xmm2                                      // 0x008a356b    f30f53e2
+                         movss             xmm0, dword ptr [data_bytes + 0x276620]         // 0x008a356f    f30f100520c6c300
+                         {disp32} je       _jmp_addr_0x008a3593                            // 0x008a3577    0f8416000000
+                         mulss             xmm2, xmm4                                      // 0x008a357d    f30f59d4
+                         mulss             xmm2, xmm4                                      // 0x008a3581    f30f59d4
+                         addss             xmm4, xmm4                                      // 0x008a3585    f30f58e4
+                         subss             xmm4, xmm2                                      // 0x008a3589    f30f5ce2
+                         xorps             xmm0, xmm4                                      // 0x008a358d    0f57c4
+                         ret               0x0010                                          // 0x008a3590    c21000
+_jmp_addr_0x008a3593:    movss             xmm1, dword ptr [data_bytes + 0x2762c0]         // 0x008a3593    f30f100dc0c2c300
+                         movss             xmm3, xmm0                                      // 0x008a359b    f30f10d8
+                         andps             xmm0, xmm2                                      // 0x008a359f    0f54c2
+                         orps              xmm0, xmm1                                      // 0x008a35a2    0f56c1
+                         xorps             xmm0, xmm3                                      // 0x008a35a5    0f57c3
+                         ret               0x0010                                          // 0x008a35a8    c21000
+_jmp_addr_0x008a35ab:    addss             xmm0, xmm2                                      // 0x008a35ab    f30f58c2
+                         ret               0x0010                                          // 0x008a35af    c21000
+                         .byte             0x8d, 0xb4, 0x26, 0x0, 0x0, 0x0, 0x0// {disp32} lea esi, dword ptr [esi + 0x00000000] // 0x008a35b2    8db42600000000
+                         .byte             0x8d, 0xbc, 0x27, 0x0, 0x0, 0x0, 0x0// {disp32} lea edi, dword ptr [edi + 0x00000000] // 0x008a35b9    8dbc2700000000
+                         movss             xmm1, dword ptr [data_bytes + 0x276630]         // 0x008a35c0    f30f100d30c6c300
+                         movd              eax, xmm0                                       // 0x008a35c8    660f7ec0
+                         andps             xmm0, xmm1                                      // 0x008a35cc    0f54c1
+                         movaps            xmm1, xmm0                                      // 0x008a35cf    0f28c8
+                         mulss             xmm0, dword ptr [data_bytes + 0x276610]         // 0x008a35d2    f30f590510c6c300
+                         cvttss2si         edx, xmm0                                       // 0x008a35da    f30f2cd0
+                         and               eax, 0x80000000                                 // 0x008a35de    2500000080
+                         mov               ecx, 0x00000001                                 // 0x008a35e3    b901000000
+                         movd              xmm7, eax                                       // 0x008a35e8    660f6ef8
+                         mov               eax, 0x00000007                                 // 0x008a35ec    b807000000
+                         movss             xmm5, dword ptr [data_bytes + 0x276590]         // 0x008a35f1    f30f102d90c5c300
+                         and.s             ecx, edx                                        // 0x008a35f9    23ca
+                         and.s             eax, edx                                        // 0x008a35fb    23c2
+                         add.s             edx, ecx                                        // 0x008a35fd    03d1
+                         add.s             eax, ecx                                        // 0x008a35ff    03c1
+                         cvtsi2ss          xmm0, edx                                       // 0x008a3601    f30f2ac2
+                         xorps             xmm6, xmm6                                      // 0x008a3605    0f57f6
+                         mulss             xmm0, dword ptr [data_bytes + 0x276600]         // 0x008a3608    f30f590500c6c300
+                         subss             xmm1, xmm0                                      // 0x008a3610    f30f5cc8
+                         movss             xmm2, dword ptr [data_bytes + 0x276330]         // 0x008a3614    f30f101530c3c300
+                         minss             xmm1, xmm5                                      // 0x008a361c    f30f5dcd
+                         movss             xmm3, dword ptr [data_bytes + 0x276320]         // 0x008a3620    f30f101d20c3c300
+                         movaps            xmm0, xmm1                                      // 0x008a3628    0f28c1
+                         mulss             xmm1, xmm1                                      // 0x008a362b    f30f59c9
+                         mulss             xmm2, xmm1                                      // 0x008a362f    f30f59d1
+                         addss             xmm3, xmm1                                      // 0x008a3633    f30f58d9
+                         addss             xmm2, dword ptr [data_bytes + 0x276310]         // 0x008a3637    f30f581510c3c300
+                         mulss             xmm3, xmm1                                      // 0x008a363f    f30f59d9
+                         mulss             xmm2, xmm1                                      // 0x008a3643    f30f59d1
+                         addss             xmm3, dword ptr [data_bytes + 0x276300]         // 0x008a3647    f30f581d00c3c300
+                         addss             xmm2, dword ptr [data_bytes + 0x2762f0]         // 0x008a364f    f30f5815f0c2c300
+                         mulss             xmm3, xmm1                                      // 0x008a3657    f30f59d9
+                         mulss             xmm2, xmm1                                      // 0x008a365b    f30f59d1
+                         addss             xmm3, dword ptr [data_bytes + 0x2762e0]         // 0x008a365f    f30f581de0c2c300
+                         xorps             xmm0, xmm7                                      // 0x008a3667    0f57c7
+                         mulss             xmm3, xmm1                                      // 0x008a366a    f30f59d9
+                         mulss             xmm2, xmm0                                      // 0x008a366e    f30f59d0
+                         addss             xmm3, dword ptr [data_bytes + 0x2762d0]         // 0x008a3672    f30f581dd0c2c300
+                         rcpss             xmm4, xmm3                                      // 0x008a367a    f30f53e3
+                         mulss             xmm3, xmm4                                      // 0x008a367e    f30f59dc
+                         mulss             xmm3, xmm4                                      // 0x008a3682    f30f59dc
+                         addss             xmm4, xmm4                                      // 0x008a3686    f30f58e4
+                         test              eax, 0x00000002                                 // 0x008a368a    a902000000
+                         subss             xmm4, xmm3                                      // 0x008a368f    f30f5ce3
+                         mulss             xmm2, xmm4                                      // 0x008a3693    f30f59d4
+                         {disp32} je       _jmp_addr_0x008a36e3                            // 0x008a3697    0f8446000000
+                         addss             xmm2, xmm0                                      // 0x008a369d    f30f58d0
+                         comiss            xmm6, xmm1                                      // 0x008a36a1    0f2ff1
+                         rcpss             xmm4, xmm2                                      // 0x008a36a4    f30f53e2
+                         movss             xmm0, dword ptr [data_bytes + 0x276620]         // 0x008a36a8    f30f100520c6c300
+                         {disp32} je       _jmp_addr_0x008a36cc                            // 0x008a36b0    0f8416000000
+                         mulss             xmm2, xmm4                                      // 0x008a36b6    f30f59d4
+                         mulss             xmm2, xmm4                                      // 0x008a36ba    f30f59d4
+                         addss             xmm4, xmm4                                      // 0x008a36be    f30f58e4
+                         subss             xmm4, xmm2                                      // 0x008a36c2    f30f5ce2
+                         xorps             xmm0, xmm4                                      // 0x008a36c6    0f57c4
+                         ret               0x0010                                          // 0x008a36c9    c21000
+_jmp_addr_0x008a36cc:    movss             xmm1, dword ptr [data_bytes + 0x2762c0]         // 0x008a36cc    f30f100dc0c2c300
+                         movaps            xmm3, xmm0                                      // 0x008a36d4    0f28d8
+                         andps             xmm0, xmm2                                      // 0x008a36d7    0f54c2
+                         orps              xmm0, xmm1                                      // 0x008a36da    0f56c1
+                         xorps             xmm0, xmm3                                      // 0x008a36dd    0f57c3
+                         ret               0x0010                                          // 0x008a36e0    c21000
+_jmp_addr_0x008a36e3:    addss             xmm0, xmm2                                      // 0x008a36e3    f30f58c2
+                         ret               0x0010                                          // 0x008a36e7    c21000
+                         {disp32} lea      esi, dword ptr [esi + 0x00000000]               // 0x008a36ea    8db600000000
+
+// Snippet: db, [0x008a36f0, 0x008a507e)
+.byte 0x0f, 0x28, 0x2d, 0x90      // 0x008a36f0
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a36f4
+.byte 0x28, 0x35, 0xa0, 0xc5      // 0x008a36f8
+.byte 0xc3, 0x00, 0x0f, 0x53      // 0x008a36fc
+.byte 0xe0, 0x0f, 0xc2, 0xe8      // 0x008a3700
+.byte 0x01, 0x0f, 0xc2, 0xf0      // 0x008a3704
+.byte 0x06, 0x0f, 0x28, 0x0d      // 0x008a3708
+.byte 0xc0, 0xc3, 0xc3, 0x00      // 0x008a370c
+.byte 0x0f, 0x56, 0xee, 0x0f      // 0x008a3710
+.byte 0x54, 0xe5, 0x0f, 0x28      // 0x008a3714
+.byte 0x15, 0xb0, 0xc3, 0xc3      // 0x008a3718
+.byte 0x00, 0x0f, 0x28, 0xfd      // 0x008a371c
+.byte 0x0f, 0x55, 0xe8, 0x0f      // 0x008a3720
+.byte 0x28, 0x1d, 0xa0, 0xc3      // 0x008a3724
+.byte 0xc3, 0x00, 0x0f, 0x56      // 0x008a3728
+.byte 0xe5, 0x0f, 0x28, 0xc4      // 0x008a372c
+.byte 0x0f, 0x28, 0x35, 0x90      // 0x008a3730
+.byte 0xc3, 0xc3, 0x00, 0x0f      // 0x008a3734
+.byte 0x59, 0xe4, 0x0f, 0x58      // 0x008a3738
+.byte 0xcc, 0x0f, 0x28, 0x2d      // 0x008a373c
+.byte 0x80, 0xc3, 0xc3, 0x00      // 0x008a3740
+.byte 0x0f, 0x53, 0xc9, 0x0f      // 0x008a3744
+.byte 0x59, 0xca, 0x0f, 0x28      // 0x008a3748
+.byte 0x15, 0x70, 0xc3, 0xc3      // 0x008a374c
+.byte 0x00, 0x0f, 0x58, 0xdc      // 0x008a3750
+.byte 0x0f, 0x58, 0xcb, 0x0f      // 0x008a3754
+.byte 0x28, 0x1d, 0x60, 0xc3      // 0x008a3758
+.byte 0xc3, 0x00, 0x0f, 0x53      // 0x008a375c
+.byte 0xc9, 0x0f, 0x59, 0xce      // 0x008a3760
+.byte 0x0f, 0x28, 0x35, 0x50      // 0x008a3764
+.byte 0xc3, 0xc3, 0x00, 0x0f      // 0x008a3768
+.byte 0x58, 0xec, 0x0f, 0x58      // 0x008a376c
+.byte 0xcd, 0x0f, 0x28, 0x2d      // 0x008a3770
+.byte 0x20, 0xc6, 0xc3, 0x00      // 0x008a3774
+.byte 0x0f, 0x53, 0xc9, 0x0f      // 0x008a3778
+.byte 0x59, 0xca, 0x0f, 0x58      // 0x008a377c
+.byte 0xdc, 0x0f, 0x28, 0x25      // 0x008a3780
+.byte 0xe0, 0xc5, 0xc3, 0x00      // 0x008a3784
+.byte 0x0f, 0x59, 0xf0, 0x0f      // 0x008a3788
+.byte 0x58, 0xcb, 0x0f, 0x54      // 0x008a378c
+.byte 0xc5, 0x0f, 0x53, 0xc9      // 0x008a3790
+.byte 0x0f, 0x59, 0xce, 0x0f      // 0x008a3794
+.byte 0x56, 0xc4, 0x0f, 0x5c      // 0x008a3798
+.byte 0xc1, 0x0f, 0x54, 0xc7      // 0x008a379c
+.byte 0x0f, 0x55, 0xf9, 0x0f      // 0x008a37a0
+.byte 0x56, 0xc7, 0xc2, 0x10      // 0x008a37a4
+.byte 0x00, 0x8d, 0xb4, 0x26      // 0x008a37a8
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a37ac
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a37b0
+.byte 0x20, 0xc6, 0xc3, 0x00      // 0x008a37b4
+.byte 0xf3, 0x0f, 0x53, 0xe0      // 0x008a37b8
+.byte 0x0f, 0x56, 0xc8, 0xf3      // 0x008a37bc
+.byte 0x0f, 0x10, 0xf4, 0x0f      // 0x008a37c0
+.byte 0x2f, 0x0d, 0xa0, 0xc5      // 0x008a37c4
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a37c8
+.byte 0x10, 0x1d, 0xb0, 0xc3      // 0x008a37cc
+.byte 0xc3, 0x00, 0x0f, 0x82      // 0x008a37d0
+.byte 0x83, 0x00, 0x00, 0x00      // 0x008a37d4
+.byte 0xf3, 0x0f, 0x10, 0xd0      // 0x008a37d8
+.byte 0xf3, 0x0f, 0x59, 0xd2      // 0x008a37dc
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a37e0
+.byte 0xc0, 0xc3, 0xc3, 0x00      // 0x008a37e4
+.byte 0xf3, 0x0f, 0x58, 0xca      // 0x008a37e8
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a37ec
+.byte 0xa0, 0xc3, 0xc3, 0x00      // 0x008a37f0
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a37f4
+.byte 0xf3, 0x0f, 0x59, 0xcb      // 0x008a37f8
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a37fc
+.byte 0x90, 0xc3, 0xc3, 0x00      // 0x008a3800
+.byte 0xf3, 0x0f, 0x58, 0xfa      // 0x008a3804
+.byte 0xf3, 0x0f, 0x58, 0xcf      // 0x008a3808
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a380c
+.byte 0x80, 0xc3, 0xc3, 0x00      // 0x008a3810
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a3814
+.byte 0xf3, 0x0f, 0x59, 0xcb      // 0x008a3818
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a381c
+.byte 0x70, 0xc3, 0xc3, 0x00      // 0x008a3820
+.byte 0xf3, 0x0f, 0x58, 0xfa      // 0x008a3824
+.byte 0xf3, 0x0f, 0x58, 0xcf      // 0x008a3828
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a382c
+.byte 0x60, 0xc3, 0xc3, 0x00      // 0x008a3830
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a3834
+.byte 0xf3, 0x0f, 0x59, 0xcb      // 0x008a3838
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a383c
+.byte 0x50, 0xc3, 0xc3, 0x00      // 0x008a3840
+.byte 0xf3, 0x0f, 0x58, 0xfa      // 0x008a3844
+.byte 0xf3, 0x0f, 0x59, 0xc3      // 0x008a3848
+.byte 0xf3, 0x0f, 0x58, 0xcf      // 0x008a384c
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a3850
+.byte 0xf3, 0x0f, 0x59, 0xc1      // 0x008a3854
+.byte 0xc2, 0x10, 0x00, 0xf3      // 0x008a3858
+.byte 0x0f, 0x59, 0xf6, 0xf3      // 0x008a385c
+.byte 0x0f, 0x10, 0x2d, 0xc0      // 0x008a3860
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a3864
+.byte 0x0f, 0x58, 0xee, 0xf3      // 0x008a3868
+.byte 0x0f, 0x10, 0x3d, 0xa0      // 0x008a386c
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a3870
+.byte 0x0f, 0x53, 0xed, 0xf3      // 0x008a3874
+.byte 0x0f, 0x59, 0xeb, 0xf3      // 0x008a3878
+.byte 0x0f, 0x10, 0x1d, 0x90      // 0x008a387c
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a3880
+.byte 0x0f, 0x58, 0xfe, 0xf3      // 0x008a3884
+.byte 0x0f, 0x58, 0xef, 0xf3      // 0x008a3888
+.byte 0x0f, 0x10, 0x3d, 0x80      // 0x008a388c
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a3890
+.byte 0x0f, 0x53, 0xed, 0xf3      // 0x008a3894
+.byte 0x0f, 0x59, 0xeb, 0xf3      // 0x008a3898
+.byte 0x0f, 0x10, 0x1d, 0x70      // 0x008a389c
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a38a0
+.byte 0x0f, 0x58, 0xfe, 0xf3      // 0x008a38a4
+.byte 0x0f, 0x58, 0xef, 0xf3      // 0x008a38a8
+.byte 0x0f, 0x10, 0x3d, 0x60      // 0x008a38ac
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a38b0
+.byte 0x0f, 0x53, 0xed, 0xf3      // 0x008a38b4
+.byte 0x0f, 0x59, 0xeb, 0xf3      // 0x008a38b8
+.byte 0x0f, 0x10, 0x1d, 0x50      // 0x008a38bc
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a38c0
+.byte 0x0f, 0x58, 0xfe, 0xf3      // 0x008a38c4
+.byte 0x0f, 0x10, 0x15, 0x20      // 0x008a38c8
+.byte 0xc6, 0xc3, 0x00, 0xf3      // 0x008a38cc
+.byte 0x0f, 0x59, 0xe3, 0xf3      // 0x008a38d0
+.byte 0x0f, 0x58, 0xef, 0xf3      // 0x008a38d4
+.byte 0x0f, 0x10, 0x3d, 0xe0      // 0x008a38d8
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a38dc
+.byte 0x0f, 0x53, 0xed, 0xf3      // 0x008a38e0
+.byte 0x0f, 0x59, 0xec, 0x0f      // 0x008a38e4
+.byte 0x54, 0xc2, 0x0f, 0x56      // 0x008a38e8
+.byte 0xc7, 0xf3, 0x0f, 0x5c      // 0x008a38ec
+.byte 0xc5, 0xc2, 0x10, 0x00      // 0x008a38f0
+.byte 0x8d, 0xb6, 0x00, 0x00      // 0x008a38f4
+.byte 0x00, 0x00, 0x8d, 0xbf      // 0x008a38f8
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a38fc
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a3900
+.byte 0x20, 0xc6, 0xc3, 0x00      // 0x008a3904
+.byte 0xf3, 0x0f, 0x53, 0xe0      // 0x008a3908
+.byte 0x0f, 0x56, 0xc8, 0xf3      // 0x008a390c
+.byte 0x0f, 0x10, 0xf4, 0x0f      // 0x008a3910
+.byte 0x2f, 0x0d, 0xa0, 0xc5      // 0x008a3914
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3918
+.byte 0x10, 0x1d, 0xb0, 0xc3      // 0x008a391c
+.byte 0xc3, 0x00, 0x0f, 0x83      // 0x008a3920
+.byte 0x99, 0x00, 0x00, 0x00      // 0x008a3924
+.byte 0xf3, 0x0f, 0x59, 0xf6      // 0x008a3928
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a392c
+.byte 0xc0, 0xc3, 0xc3, 0x00      // 0x008a3930
+.byte 0xf3, 0x0f, 0x58, 0xee      // 0x008a3934
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a3938
+.byte 0xa0, 0xc3, 0xc3, 0x00      // 0x008a393c
+.byte 0xf3, 0x0f, 0x53, 0xed      // 0x008a3940
+.byte 0xf3, 0x0f, 0x59, 0xeb      // 0x008a3944
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a3948
+.byte 0x90, 0xc3, 0xc3, 0x00      // 0x008a394c
+.byte 0xf3, 0x0f, 0x58, 0xfe      // 0x008a3950
+.byte 0xf3, 0x0f, 0x58, 0xef      // 0x008a3954
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a3958
+.byte 0x80, 0xc3, 0xc3, 0x00      // 0x008a395c
+.byte 0xf3, 0x0f, 0x53, 0xed      // 0x008a3960
+.byte 0xf3, 0x0f, 0x59, 0xeb      // 0x008a3964
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a3968
+.byte 0x70, 0xc3, 0xc3, 0x00      // 0x008a396c
+.byte 0xf3, 0x0f, 0x58, 0xfe      // 0x008a3970
+.byte 0xf3, 0x0f, 0x58, 0xef      // 0x008a3974
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a3978
+.byte 0x60, 0xc3, 0xc3, 0x00      // 0x008a397c
+.byte 0xf3, 0x0f, 0x53, 0xed      // 0x008a3980
+.byte 0xf3, 0x0f, 0x59, 0xeb      // 0x008a3984
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a3988
+.byte 0x50, 0xc3, 0xc3, 0x00      // 0x008a398c
+.byte 0xf3, 0x0f, 0x58, 0xfe      // 0x008a3990
+.byte 0xf3, 0x0f, 0x10, 0x15      // 0x008a3994
+.byte 0x20, 0xc6, 0xc3, 0x00      // 0x008a3998
+.byte 0xf3, 0x0f, 0x59, 0xe3      // 0x008a399c
+.byte 0xf3, 0x0f, 0x58, 0xef      // 0x008a39a0
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a39a4
+.byte 0xe0, 0xc5, 0xc3, 0x00      // 0x008a39a8
+.byte 0xf3, 0x0f, 0x53, 0xed      // 0x008a39ac
+.byte 0xf3, 0x0f, 0x59, 0xec      // 0x008a39b0
+.byte 0x0f, 0x54, 0xc2, 0x0f      // 0x008a39b4
+.byte 0x56, 0xc7, 0xf3, 0x0f      // 0x008a39b8
+.byte 0x5c, 0xc5, 0xc2, 0x10      // 0x008a39bc
+.byte 0x00, 0x0f, 0x28, 0xd0      // 0x008a39c0
+.byte 0xf3, 0x0f, 0x59, 0xd2      // 0x008a39c4
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a39c8
+.byte 0xc0, 0xc3, 0xc3, 0x00      // 0x008a39cc
+.byte 0xf3, 0x0f, 0x58, 0xca      // 0x008a39d0
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a39d4
+.byte 0xa0, 0xc3, 0xc3, 0x00      // 0x008a39d8
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a39dc
+.byte 0xf3, 0x0f, 0x59, 0xcb      // 0x008a39e0
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a39e4
+.byte 0x90, 0xc3, 0xc3, 0x00      // 0x008a39e8
+.byte 0xf3, 0x0f, 0x58, 0xfa      // 0x008a39ec
+.byte 0xf3, 0x0f, 0x58, 0xcf      // 0x008a39f0
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a39f4
+.byte 0x80, 0xc3, 0xc3, 0x00      // 0x008a39f8
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a39fc
+.byte 0xf3, 0x0f, 0x59, 0xcb      // 0x008a3a00
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a3a04
+.byte 0x70, 0xc3, 0xc3, 0x00      // 0x008a3a08
+.byte 0xf3, 0x0f, 0x58, 0xfa      // 0x008a3a0c
+.byte 0xf3, 0x0f, 0x58, 0xcf      // 0x008a3a10
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a3a14
+.byte 0x60, 0xc3, 0xc3, 0x00      // 0x008a3a18
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a3a1c
+.byte 0xf3, 0x0f, 0x59, 0xcb      // 0x008a3a20
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a3a24
+.byte 0x50, 0xc3, 0xc3, 0x00      // 0x008a3a28
+.byte 0xf3, 0x0f, 0x58, 0xfa      // 0x008a3a2c
+.byte 0xf3, 0x0f, 0x59, 0xc3      // 0x008a3a30
+.byte 0xf3, 0x0f, 0x58, 0xcf      // 0x008a3a34
+.byte 0xf3, 0x0f, 0x53, 0xc9      // 0x008a3a38
+.byte 0xf3, 0x0f, 0x59, 0xc1      // 0x008a3a3c
+.byte 0xc2, 0x10, 0x00, 0x8d      // 0x008a3a40
+.byte 0xb6, 0x00, 0x00, 0x00      // 0x008a3a44
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a3a48
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a3a4c
+.byte 0x0f, 0x28, 0x15, 0x20      // 0x008a3a50
+.byte 0xc6, 0xc3, 0x00, 0x0f      // 0x008a3a54
+.byte 0x57, 0xdb, 0x8b, 0xcc      // 0x008a3a58
+.byte 0x0f, 0x28, 0x2d, 0x90      // 0x008a3a5c
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a3a60
+.byte 0x54, 0xd0, 0x0f, 0x59      // 0x008a3a64
+.byte 0xc1, 0x83, 0xe1, 0xf0      // 0x008a3a68
+.byte 0x0f, 0x56, 0x15, 0xd0      // 0x008a3a6c
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a3a70
+.byte 0xc2, 0xd9, 0x02, 0x0f      // 0x008a3a74
+.byte 0x28, 0x35, 0xa0, 0xc5      // 0x008a3a78
+.byte 0xc3, 0x00, 0x0f, 0x53      // 0x008a3a7c
+.byte 0xe0, 0x0f, 0xc2, 0xe8      // 0x008a3a80
+.byte 0x01, 0x0f, 0xc2, 0xf0      // 0x008a3a84
+.byte 0x06, 0x0f, 0x28, 0x0d      // 0x008a3a88
+.byte 0xc0, 0xc3, 0xc3, 0x00      // 0x008a3a8c
+.byte 0x0f, 0x56, 0xee, 0x0f      // 0x008a3a90
+.byte 0x29, 0x51, 0xf0, 0x0f      // 0x008a3a94
+.byte 0x29, 0x59, 0xe0, 0x0f      // 0x008a3a98
+.byte 0x54, 0xe5, 0x0f, 0x28      // 0x008a3a9c
+.byte 0x15, 0xb0, 0xc3, 0xc3      // 0x008a3aa0
+.byte 0x00, 0x0f, 0x28, 0xfd      // 0x008a3aa4
+.byte 0x0f, 0x55, 0xe8, 0x0f      // 0x008a3aa8
+.byte 0x28, 0x1d, 0xa0, 0xc3      // 0x008a3aac
+.byte 0xc3, 0x00, 0x0f, 0x56      // 0x008a3ab0
+.byte 0xe5, 0x0f, 0x28, 0xc4      // 0x008a3ab4
+.byte 0x0f, 0x28, 0x35, 0x90      // 0x008a3ab8
+.byte 0xc3, 0xc3, 0x00, 0x0f      // 0x008a3abc
+.byte 0x59, 0xe4, 0x0f, 0x58      // 0x008a3ac0
+.byte 0xcc, 0x0f, 0x28, 0x2d      // 0x008a3ac4
+.byte 0x80, 0xc3, 0xc3, 0x00      // 0x008a3ac8
+.byte 0x0f, 0x53, 0xc9, 0x0f      // 0x008a3acc
+.byte 0x59, 0xca, 0x0f, 0x28      // 0x008a3ad0
+.byte 0x15, 0x70, 0xc3, 0xc3      // 0x008a3ad4
+.byte 0x00, 0x0f, 0x58, 0xdc      // 0x008a3ad8
+.byte 0x0f, 0x58, 0xcb, 0x0f      // 0x008a3adc
+.byte 0x28, 0x1d, 0x60, 0xc3      // 0x008a3ae0
+.byte 0xc3, 0x00, 0x0f, 0x53      // 0x008a3ae4
+.byte 0xc9, 0x0f, 0x59, 0xce      // 0x008a3ae8
+.byte 0x0f, 0x28, 0x35, 0x50      // 0x008a3aec
+.byte 0xc3, 0xc3, 0x00, 0x0f      // 0x008a3af0
+.byte 0x58, 0xec, 0x0f, 0x58      // 0x008a3af4
+.byte 0xcd, 0x0f, 0x28, 0x2d      // 0x008a3af8
+.byte 0x20, 0xc6, 0xc3, 0x00      // 0x008a3afc
+.byte 0x0f, 0x53, 0xc9, 0x0f      // 0x008a3b00
+.byte 0x59, 0xca, 0x0f, 0x58      // 0x008a3b04
+.byte 0xdc, 0x0f, 0x28, 0x25      // 0x008a3b08
+.byte 0xe0, 0xc5, 0xc3, 0x00      // 0x008a3b0c
+.byte 0x0f, 0x59, 0xf0, 0x0f      // 0x008a3b10
+.byte 0x58, 0xcb, 0x0f, 0x54      // 0x008a3b14
+.byte 0xc5, 0x0f, 0x53, 0xc9      // 0x008a3b18
+.byte 0x0f, 0x28, 0x59, 0xe0      // 0x008a3b1c
+.byte 0x0f, 0x59, 0xce, 0x0f      // 0x008a3b20
+.byte 0x56, 0xc4, 0x0f, 0x5c      // 0x008a3b24
+.byte 0xc1, 0x0f, 0x28, 0x51      // 0x008a3b28
+.byte 0xf0, 0x0f, 0x54, 0xc7      // 0x008a3b2c
+.byte 0x0f, 0x55, 0xf9, 0x0f      // 0x008a3b30
+.byte 0x56, 0xc7, 0x0f, 0x28      // 0x008a3b34
+.byte 0xc8, 0x0f, 0x54, 0xc3      // 0x008a3b38
+.byte 0x0f, 0x58, 0xca, 0x0f      // 0x008a3b3c
+.byte 0x55, 0xd9, 0x0f, 0x56      // 0x008a3b40
+.byte 0xc3, 0xc2, 0x20, 0x00      // 0x008a3b44
+.byte 0x90, 0x8d, 0xb4, 0x26      // 0x008a3b48
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a3b4c
+.byte 0xf3, 0x0f, 0x11, 0x44      // 0x008a3b50
+.byte 0x24, 0xe8, 0xf3, 0x0f      // 0x008a3b54
+.byte 0x59, 0xc1, 0xf3, 0x0f      // 0x008a3b58
+.byte 0x11, 0x4c, 0x24, 0xe4      // 0x008a3b5c
+.byte 0x83, 0xec, 0x10, 0xe8      // 0x008a3b60
+.byte 0x48, 0xfc, 0xff, 0xff      // 0x008a3b64
+.byte 0x0f, 0x57, 0xff, 0xf3      // 0x008a3b68
+.byte 0x0f, 0x10, 0x4c, 0x24      // 0x008a3b6c
+.byte 0xe4, 0x0f, 0x2f, 0xcf      // 0x008a3b70
+.byte 0xf3, 0x0f, 0x10, 0x64      // 0x008a3b74
+.byte 0x24, 0xe8, 0x0f, 0x83      // 0x008a3b78
+.byte 0x12, 0x00, 0x00, 0x00      // 0x008a3b7c
+.byte 0x0f, 0x54, 0x25, 0x20      // 0x008a3b80
+.byte 0xc6, 0xc3, 0x00, 0x0f      // 0x008a3b84
+.byte 0x56, 0x25, 0xd0, 0xc5      // 0x008a3b88
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3b8c
+.byte 0x58, 0xc4, 0xc2, 0x20      // 0x008a3b90
+.byte 0x00, 0x8d, 0x74, 0x26      // 0x008a3b94
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a3b98
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a3b9c
+.byte 0xf3, 0x0f, 0x10, 0x15      // 0x008a3ba0
+.byte 0x20, 0xc6, 0xc3, 0x00      // 0x008a3ba4
+.byte 0x0f, 0x57, 0xdb, 0xf3      // 0x008a3ba8
+.byte 0x0f, 0x10, 0x2d, 0x90      // 0x008a3bac
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a3bb0
+.byte 0x54, 0xd0, 0xf3, 0x0f      // 0x008a3bb4
+.byte 0x59, 0xc1, 0x0f, 0x56      // 0x008a3bb8
+.byte 0x15, 0xd0, 0xc5, 0xc3      // 0x008a3bbc
+.byte 0x00, 0xf3, 0x0f, 0xc2      // 0x008a3bc0
+.byte 0xd9, 0x02, 0xf3, 0x0f      // 0x008a3bc4
+.byte 0x10, 0x35, 0xa0, 0xc5      // 0x008a3bc8
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3bcc
+.byte 0x53, 0xe0, 0xf3, 0x0f      // 0x008a3bd0
+.byte 0xc2, 0xe8, 0x01, 0xf3      // 0x008a3bd4
+.byte 0x0f, 0xc2, 0xf0, 0x06      // 0x008a3bd8
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a3bdc
+.byte 0xc0, 0xc3, 0xc3, 0x00      // 0x008a3be0
+.byte 0x0f, 0x56, 0xee, 0xf3      // 0x008a3be4
+.byte 0x0f, 0x11, 0x54, 0x24      // 0x008a3be8
+.byte 0xfc, 0xf3, 0x0f, 0x11      // 0x008a3bec
+.byte 0x5c, 0x24, 0xf8, 0x0f      // 0x008a3bf0
+.byte 0x54, 0xe5, 0xf3, 0x0f      // 0x008a3bf4
+.byte 0x10, 0x15, 0xb0, 0xc3      // 0x008a3bf8
+.byte 0xc3, 0x00, 0x0f, 0x28      // 0x008a3bfc
+.byte 0xfd, 0x0f, 0x55, 0xe8      // 0x008a3c00
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a3c04
+.byte 0xa0, 0xc3, 0xc3, 0x00      // 0x008a3c08
+.byte 0x0f, 0x56, 0xe5, 0x0f      // 0x008a3c0c
+.byte 0x28, 0xc4, 0xf3, 0x0f      // 0x008a3c10
+.byte 0x10, 0x35, 0x90, 0xc3      // 0x008a3c14
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3c18
+.byte 0x59, 0xe4, 0xf3, 0x0f      // 0x008a3c1c
+.byte 0x58, 0xcc, 0xf3, 0x0f      // 0x008a3c20
+.byte 0x10, 0x2d, 0x80, 0xc3      // 0x008a3c24
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3c28
+.byte 0x53, 0xc9, 0xf3, 0x0f      // 0x008a3c2c
+.byte 0x59, 0xca, 0xf3, 0x0f      // 0x008a3c30
+.byte 0x10, 0x15, 0x70, 0xc3      // 0x008a3c34
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3c38
+.byte 0x58, 0xdc, 0xf3, 0x0f      // 0x008a3c3c
+.byte 0x58, 0xcb, 0xf3, 0x0f      // 0x008a3c40
+.byte 0x10, 0x1d, 0x60, 0xc3      // 0x008a3c44
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3c48
+.byte 0x53, 0xc9, 0xf3, 0x0f      // 0x008a3c4c
+.byte 0x59, 0xce, 0xf3, 0x0f      // 0x008a3c50
+.byte 0x10, 0x35, 0x50, 0xc3      // 0x008a3c54
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3c58
+.byte 0x58, 0xec, 0xf3, 0x0f      // 0x008a3c5c
+.byte 0x58, 0xcd, 0xf3, 0x0f      // 0x008a3c60
+.byte 0x10, 0x2d, 0x20, 0xc6      // 0x008a3c64
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3c68
+.byte 0x53, 0xc9, 0xf3, 0x0f      // 0x008a3c6c
+.byte 0x59, 0xca, 0xf3, 0x0f      // 0x008a3c70
+.byte 0x58, 0xdc, 0xf3, 0x0f      // 0x008a3c74
+.byte 0x10, 0x25, 0xe0, 0xc5      // 0x008a3c78
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3c7c
+.byte 0x59, 0xf0, 0xf3, 0x0f      // 0x008a3c80
+.byte 0x58, 0xcb, 0x0f, 0x54      // 0x008a3c84
+.byte 0xc5, 0xf3, 0x0f, 0x53      // 0x008a3c88
+.byte 0xc9, 0xf3, 0x0f, 0x10      // 0x008a3c8c
+.byte 0x5c, 0x24, 0xf8, 0xf3      // 0x008a3c90
+.byte 0x0f, 0x59, 0xce, 0x0f      // 0x008a3c94
+.byte 0x56, 0xc4, 0xf3, 0x0f      // 0x008a3c98
+.byte 0x5c, 0xc1, 0xf3, 0x0f      // 0x008a3c9c
+.byte 0x10, 0x54, 0x24, 0xfc      // 0x008a3ca0
+.byte 0x0f, 0x54, 0xc7, 0x0f      // 0x008a3ca4
+.byte 0x55, 0xf9, 0x0f, 0x56      // 0x008a3ca8
+.byte 0xc7, 0x0f, 0x28, 0xc8      // 0x008a3cac
+.byte 0x0f, 0x54, 0xc3, 0xf3      // 0x008a3cb0
+.byte 0x0f, 0x58, 0xca, 0x0f      // 0x008a3cb4
+.byte 0x55, 0xd9, 0x0f, 0x56      // 0x008a3cb8
+.byte 0xc3, 0xc2, 0x20, 0x00      // 0x008a3cbc
+.byte 0x0f, 0x5d, 0x05, 0x80      // 0x008a3cc0
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a3cc4
+.byte 0x28, 0x0d, 0x70, 0xc4      // 0x008a3cc8
+.byte 0xc3, 0x00, 0x0f, 0x5f      // 0x008a3ccc
+.byte 0x05, 0x60, 0xc4, 0xc3      // 0x008a3cd0
+.byte 0x00, 0x0f, 0x59, 0xc8      // 0x008a3cd4
+.byte 0x0f, 0x57, 0xff, 0x8b      // 0x008a3cd8
+.byte 0xcc, 0x0f, 0x58, 0x0d      // 0x008a3cdc
+.byte 0xb0, 0xc5, 0xc3, 0x00      // 0x008a3ce0
+.byte 0x0f, 0x28, 0xd1, 0x0f      // 0x008a3ce4
+.byte 0x2c, 0xc1, 0x0f, 0xc2      // 0x008a3ce8
+.byte 0xd7, 0x01, 0x0f, 0x12      // 0x008a3cec
+.byte 0xc9, 0x0f, 0x54, 0x15      // 0x008a3cf0
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a3cf4
+.byte 0x0f, 0x2c, 0xc9, 0x0f      // 0x008a3cf8
+.byte 0x6f, 0x2d, 0x50, 0xc4      // 0x008a3cfc
+.byte 0xc3, 0x00, 0x0f, 0x2d      // 0x008a3d00
+.byte 0xd2, 0x0f, 0x12, 0xd2      // 0x008a3d04
+.byte 0x0f, 0x2d, 0xda, 0x0f      // 0x008a3d08
+.byte 0xfa, 0xc2, 0x0f, 0xfa      // 0x008a3d0c
+.byte 0xcb, 0x83, 0xe1, 0xf0      // 0x008a3d10
+.byte 0x0f, 0x2a, 0xc9, 0x0f      // 0x008a3d14
+.byte 0x16, 0xc9, 0x0f, 0xfe      // 0x008a3d18
+.byte 0xcd, 0x0f, 0x2a, 0xc8      // 0x008a3d1c
+.byte 0x0f, 0xfe, 0xc5, 0x0f      // 0x008a3d20
+.byte 0x28, 0xd1, 0x0f, 0x59      // 0x008a3d24
+.byte 0x0d, 0x40, 0xc4, 0xc3      // 0x008a3d28
+.byte 0x00, 0x0f, 0x59, 0x15      // 0x008a3d2c
+.byte 0x30, 0xc4, 0xc3, 0x00      // 0x008a3d30
+.byte 0x0f, 0x5c, 0xc1, 0x0f      // 0x008a3d34
+.byte 0x72, 0xf0, 0x17, 0x0f      // 0x008a3d38
+.byte 0x5c, 0xc2, 0x0f, 0x72      // 0x008a3d3c
+.byte 0xf1, 0x17, 0x0f, 0x28      // 0x008a3d40
+.byte 0xd0, 0x0f, 0x7f, 0x41      // 0x008a3d44
+.byte 0xf0, 0x0f, 0x59, 0xd2      // 0x008a3d48
+.byte 0x0f, 0x7f, 0x49, 0xf8      // 0x008a3d4c
+.byte 0x0f, 0x28, 0x35, 0x20      // 0x008a3d50
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a3d54
+.byte 0x28, 0x25, 0x10, 0xc4      // 0x008a3d58
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a3d5c
+.byte 0xf2, 0x0f, 0x28, 0x3d      // 0x008a3d60
+.byte 0x00, 0xc4, 0xc3, 0x00      // 0x008a3d64
+.byte 0x0f, 0x59, 0xe2, 0x0f      // 0x008a3d68
+.byte 0x28, 0x2d, 0xf0, 0xc3      // 0x008a3d6c
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a3d70
+.byte 0xf7, 0x0f, 0x58, 0xe5      // 0x008a3d74
+.byte 0x0f, 0x28, 0x3d, 0xe0      // 0x008a3d78
+.byte 0xc3, 0xc3, 0x00, 0x0f      // 0x008a3d7c
+.byte 0x59, 0xf2, 0x0f, 0x59      // 0x008a3d80
+.byte 0xe2, 0x0f, 0x58, 0xf7      // 0x008a3d84
+.byte 0x0f, 0x59, 0xe0, 0x0f      // 0x008a3d88
+.byte 0x28, 0x3d, 0xd0, 0xc3      // 0x008a3d8c
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a3d90
+.byte 0xf2, 0x0f, 0x58, 0xe0      // 0x008a3d94
+.byte 0x0f, 0x58, 0xf7, 0x0f      // 0x008a3d98
+.byte 0x28, 0x41, 0xf0, 0x0f      // 0x008a3d9c
+.byte 0x5c, 0xf4, 0x0f, 0x28      // 0x008a3da0
+.byte 0x3d, 0x90, 0xc5, 0xc3      // 0x008a3da4
+.byte 0x00, 0x0f, 0x53, 0xf6      // 0x008a3da8
+.byte 0x0f, 0x59, 0xe6, 0x0f      // 0x008a3dac
+.byte 0x58, 0xe4, 0x0f, 0x58      // 0x008a3db0
+.byte 0xe7, 0x0f, 0x59, 0xc4      // 0x008a3db4
+.byte 0xc2, 0x10, 0x00, 0x90      // 0x008a3db8
+.byte 0x8d, 0x74, 0x26, 0x00      // 0x008a3dbc
+.byte 0x0f, 0x5d, 0x05, 0x80      // 0x008a3dc0
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a3dc4
+.byte 0x28, 0x0d, 0x70, 0xc4      // 0x008a3dc8
+.byte 0xc3, 0x00, 0x0f, 0x5f      // 0x008a3dcc
+.byte 0x05, 0x60, 0xc4, 0xc3      // 0x008a3dd0
+.byte 0x00, 0x0f, 0x59, 0xc8      // 0x008a3dd4
+.byte 0x0f, 0x57, 0xd2, 0x0f      // 0x008a3dd8
+.byte 0x58, 0x0d, 0xb0, 0xc5      // 0x008a3ddc
+.byte 0xc3, 0x00, 0x0f, 0xc2      // 0x008a3de0
+.byte 0xd1, 0x05, 0x66, 0x0f      // 0x008a3de4
+.byte 0xdb, 0x15, 0x80, 0xc2      // 0x008a3de8
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3dec
+.byte 0x5b, 0xc9, 0x0f, 0x28      // 0x008a3df0
+.byte 0x25, 0x30, 0xc4, 0xc3      // 0x008a3df4
+.byte 0x00, 0x66, 0x0f, 0xfa      // 0x008a3df8
+.byte 0xca, 0x0f, 0x28, 0x2d      // 0x008a3dfc
+.byte 0x40, 0xc4, 0xc3, 0x00      // 0x008a3e00
+.byte 0x0f, 0x5b, 0xd9, 0x0f      // 0x008a3e04
+.byte 0x59, 0xe3, 0x0f, 0x59      // 0x008a3e08
+.byte 0xeb, 0x0f, 0x28, 0x35      // 0x008a3e0c
+.byte 0x20, 0xc4, 0xc3, 0x00      // 0x008a3e10
+.byte 0x0f, 0x5c, 0xc4, 0x0f      // 0x008a3e14
+.byte 0x28, 0x25, 0x10, 0xc4      // 0x008a3e18
+.byte 0xc3, 0x00, 0x0f, 0x5c      // 0x008a3e1c
+.byte 0xc5, 0x66, 0x0f, 0xfe      // 0x008a3e20
+.byte 0x0d, 0x50, 0xc4, 0xc3      // 0x008a3e24
+.byte 0x00, 0x0f, 0x28, 0xd0      // 0x008a3e28
+.byte 0x0f, 0x59, 0xc0, 0x0f      // 0x008a3e2c
+.byte 0x28, 0x2d, 0x00, 0xc4      // 0x008a3e30
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a3e34
+.byte 0xf0, 0x0f, 0x28, 0x1d      // 0x008a3e38
+.byte 0xf0, 0xc3, 0xc3, 0x00      // 0x008a3e3c
+.byte 0x0f, 0x59, 0xe0, 0x0f      // 0x008a3e40
+.byte 0x58, 0xf5, 0x0f, 0x28      // 0x008a3e44
+.byte 0x2d, 0xe0, 0xc3, 0xc3      // 0x008a3e48
+.byte 0x00, 0x0f, 0x58, 0xe3      // 0x008a3e4c
+.byte 0x0f, 0x28, 0x1d, 0xd0      // 0x008a3e50
+.byte 0xc3, 0xc3, 0x00, 0x0f      // 0x008a3e54
+.byte 0x59, 0xf0, 0x0f, 0x59      // 0x008a3e58
+.byte 0xe0, 0x0f, 0x58, 0xf5      // 0x008a3e5c
+.byte 0x0f, 0x59, 0xe2, 0x0f      // 0x008a3e60
+.byte 0x59, 0xf0, 0x0f, 0x28      // 0x008a3e64
+.byte 0x05, 0x90, 0xc5, 0xc3      // 0x008a3e68
+.byte 0x00, 0x0f, 0x58, 0xd4      // 0x008a3e6c
+.byte 0x0f, 0x58, 0xf3, 0x66      // 0x008a3e70
+.byte 0x0f, 0x72, 0xf1, 0x17      // 0x008a3e74
+.byte 0x0f, 0x5c, 0xf2, 0x0f      // 0x008a3e78
+.byte 0x53, 0xf6, 0x0f, 0x59      // 0x008a3e7c
+.byte 0xd6, 0x0f, 0x58, 0xd2      // 0x008a3e80
+.byte 0x0f, 0x58, 0xc2, 0x0f      // 0x008a3e84
+.byte 0x59, 0xc1, 0xc2, 0x10      // 0x008a3e88
+.byte 0x00, 0x8d, 0x76, 0x00      // 0x008a3e8c
+.byte 0xf3, 0x0f, 0x5d, 0x05      // 0x008a3e90
+.byte 0x80, 0xc4, 0xc3, 0x00      // 0x008a3e94
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a3e98
+.byte 0x70, 0xc4, 0xc3, 0x00      // 0x008a3e9c
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a3ea0
+.byte 0x60, 0xc4, 0xc3, 0x00      // 0x008a3ea4
+.byte 0xf3, 0x0f, 0x59, 0xc8      // 0x008a3ea8
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a3eac
+.byte 0x60, 0xc8, 0xfa, 0x00      // 0x008a3eb0
+.byte 0xf3, 0x0f, 0x58, 0x0d      // 0x008a3eb4
+.byte 0xb0, 0xc5, 0xc3, 0x00      // 0x008a3eb8
+.byte 0x33, 0xc9, 0xba, 0x01      // 0x008a3ebc
+.byte 0x00, 0x00, 0x00, 0x0f      // 0x008a3ec0
+.byte 0x2f, 0xcf, 0xf3, 0x0f      // 0x008a3ec4
+.byte 0x2c, 0xc1, 0x0f, 0x42      // 0x008a3ec8
+.byte 0xca, 0x2b, 0xc1, 0xf3      // 0x008a3ecc
+.byte 0x0f, 0x2a, 0xc8, 0x83      // 0x008a3ed0
+.byte 0xc0, 0x7f, 0xf3, 0x0f      // 0x008a3ed4
+.byte 0x10, 0xd1, 0xf3, 0x0f      // 0x008a3ed8
+.byte 0x59, 0x0d, 0x40, 0xc4      // 0x008a3edc
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3ee0
+.byte 0x59, 0x15, 0x30, 0xc4      // 0x008a3ee4
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a3ee8
+.byte 0x5c, 0xc1, 0xc1, 0xe0      // 0x008a3eec
+.byte 0x17, 0xf3, 0x0f, 0x5c      // 0x008a3ef0
+.byte 0xc2, 0xf3, 0x0f, 0x10      // 0x008a3ef4
+.byte 0xd0, 0x89, 0x44, 0x24      // 0x008a3ef8
+.byte 0xfc, 0xf3, 0x0f, 0x59      // 0x008a3efc
+.byte 0xd2, 0xf3, 0x0f, 0x10      // 0x008a3f00
+.byte 0x35, 0x20, 0xc4, 0xc3      // 0x008a3f04
+.byte 0x00, 0xf3, 0x0f, 0x10      // 0x008a3f08
+.byte 0x25, 0x10, 0xc4, 0xc3      // 0x008a3f0c
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a3f10
+.byte 0xf2, 0xf3, 0x0f, 0x10      // 0x008a3f14
+.byte 0x3d, 0x00, 0xc4, 0xc3      // 0x008a3f18
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a3f1c
+.byte 0xe2, 0xf3, 0x0f, 0x10      // 0x008a3f20
+.byte 0x2d, 0xf0, 0xc3, 0xc3      // 0x008a3f24
+.byte 0x00, 0xf3, 0x0f, 0x58      // 0x008a3f28
+.byte 0xf7, 0xf3, 0x0f, 0x58      // 0x008a3f2c
+.byte 0xe5, 0xf3, 0x0f, 0x10      // 0x008a3f30
+.byte 0x3d, 0xe0, 0xc3, 0xc3      // 0x008a3f34
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a3f38
+.byte 0xf2, 0xf3, 0x0f, 0x59      // 0x008a3f3c
+.byte 0xe2, 0xf3, 0x0f, 0x58      // 0x008a3f40
+.byte 0xf7, 0xf3, 0x0f, 0x59      // 0x008a3f44
+.byte 0xe0, 0xf3, 0x0f, 0x10      // 0x008a3f48
+.byte 0x3d, 0xd0, 0xc3, 0xc3      // 0x008a3f4c
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a3f50
+.byte 0xf2, 0xf3, 0x0f, 0x58      // 0x008a3f54
+.byte 0xe0, 0xf3, 0x0f, 0x58      // 0x008a3f58
+.byte 0xf7, 0xf3, 0x0f, 0x10      // 0x008a3f5c
+.byte 0x44, 0x24, 0xfc, 0xf3      // 0x008a3f60
+.byte 0x0f, 0x5c, 0xf4, 0xf3      // 0x008a3f64
+.byte 0x0f, 0x53, 0xf6, 0xf3      // 0x008a3f68
+.byte 0x0f, 0x10, 0x3d, 0x90      // 0x008a3f6c
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a3f70
+.byte 0x0f, 0x59, 0xe6, 0xf3      // 0x008a3f74
+.byte 0x0f, 0x58, 0xe4, 0xf3      // 0x008a3f78
+.byte 0x0f, 0x58, 0xe7, 0xf3      // 0x008a3f7c
+.byte 0x0f, 0x59, 0xc4, 0xc2      // 0x008a3f80
+.byte 0x10, 0x00, 0x8d, 0x76      // 0x008a3f84
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a3f88
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a3f8c
+.byte 0xf3, 0x0f, 0x5d, 0x05      // 0x008a3f90
+.byte 0x80, 0xc4, 0xc3, 0x00      // 0x008a3f94
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a3f98
+.byte 0x70, 0xc4, 0xc3, 0x00      // 0x008a3f9c
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a3fa0
+.byte 0x60, 0xc4, 0xc3, 0x00      // 0x008a3fa4
+.byte 0xf3, 0x0f, 0x59, 0xc8      // 0x008a3fa8
+.byte 0x66, 0x0f, 0x6e, 0x1d      // 0x008a3fac
+.byte 0x80, 0xc2, 0xc3, 0x00      // 0x008a3fb0
+.byte 0x0f, 0x57, 0xd2, 0xf3      // 0x008a3fb4
+.byte 0x0f, 0x58, 0x0d, 0xb0      // 0x008a3fb8
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a3fbc
+.byte 0x0f, 0xc2, 0xd1, 0x05      // 0x008a3fc0
+.byte 0x66, 0x0f, 0xdb, 0xd3      // 0x008a3fc4
+.byte 0xf3, 0x0f, 0x5b, 0xc9      // 0x008a3fc8
+.byte 0xf3, 0x0f, 0x10, 0x25      // 0x008a3fcc
+.byte 0x30, 0xc4, 0xc3, 0x00      // 0x008a3fd0
+.byte 0x66, 0x0f, 0xfa, 0xca      // 0x008a3fd4
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a3fd8
+.byte 0x40, 0xc4, 0xc3, 0x00      // 0x008a3fdc
+.byte 0x0f, 0x5b, 0xd9, 0x66      // 0x008a3fe0
+.byte 0x0f, 0x6e, 0x3d, 0x50      // 0x008a3fe4
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a3fe8
+.byte 0x0f, 0x59, 0xe3, 0xf3      // 0x008a3fec
+.byte 0x0f, 0x59, 0xeb, 0xf3      // 0x008a3ff0
+.byte 0x0f, 0x10, 0x35, 0x20      // 0x008a3ff4
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a3ff8
+.byte 0x0f, 0x5c, 0xc4, 0xf3      // 0x008a3ffc
+.byte 0x0f, 0x10, 0x25, 0x10      // 0x008a4000
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4004
+.byte 0x0f, 0x5c, 0xc5, 0x66      // 0x008a4008
+.byte 0x0f, 0xfe, 0xcf, 0xf3      // 0x008a400c
+.byte 0x0f, 0x10, 0xd0, 0xf3      // 0x008a4010
+.byte 0x0f, 0x59, 0xc0, 0xf3      // 0x008a4014
+.byte 0x0f, 0x10, 0x2d, 0x00      // 0x008a4018
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a401c
+.byte 0x0f, 0x59, 0xf0, 0xf3      // 0x008a4020
+.byte 0x0f, 0x10, 0x1d, 0xf0      // 0x008a4024
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a4028
+.byte 0x0f, 0x59, 0xe0, 0xf3      // 0x008a402c
+.byte 0x0f, 0x58, 0xf5, 0xf3      // 0x008a4030
+.byte 0x0f, 0x10, 0x2d, 0xe0      // 0x008a4034
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a4038
+.byte 0x0f, 0x58, 0xe3, 0xf3      // 0x008a403c
+.byte 0x0f, 0x10, 0x1d, 0xd0      // 0x008a4040
+.byte 0xc3, 0xc3, 0x00, 0xf3      // 0x008a4044
+.byte 0x0f, 0x59, 0xf0, 0xf3      // 0x008a4048
+.byte 0x0f, 0x59, 0xe0, 0xf3      // 0x008a404c
+.byte 0x0f, 0x58, 0xf5, 0xf3      // 0x008a4050
+.byte 0x0f, 0x59, 0xe2, 0xf3      // 0x008a4054
+.byte 0x0f, 0x59, 0xf0, 0xf3      // 0x008a4058
+.byte 0x0f, 0x10, 0x05, 0x90      // 0x008a405c
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a4060
+.byte 0x0f, 0x58, 0xd4, 0xf3      // 0x008a4064
+.byte 0x0f, 0x58, 0xf3, 0x66      // 0x008a4068
+.byte 0x0f, 0x72, 0xf1, 0x17      // 0x008a406c
+.byte 0xf3, 0x0f, 0x5c, 0xf2      // 0x008a4070
+.byte 0xf3, 0x0f, 0x53, 0xf6      // 0x008a4074
+.byte 0xf3, 0x0f, 0x59, 0xd6      // 0x008a4078
+.byte 0xf3, 0x0f, 0x58, 0xd2      // 0x008a407c
+.byte 0xf3, 0x0f, 0x58, 0xc2      // 0x008a4080
+.byte 0xf3, 0x0f, 0x59, 0xc1      // 0x008a4084
+.byte 0xc2, 0x10, 0x00, 0x90      // 0x008a4088
+.byte 0x8d, 0x74, 0x26, 0x00      // 0x008a408c
+.byte 0x0f, 0x5d, 0x05, 0x00      // 0x008a4090
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4094
+.byte 0x28, 0x0d, 0xb0, 0xc5      // 0x008a4098
+.byte 0xc3, 0x00, 0x0f, 0x5f      // 0x008a409c
+.byte 0x05, 0xf0, 0xc4, 0xc3      // 0x008a40a0
+.byte 0x00, 0x0f, 0x57, 0xff      // 0x008a40a4
+.byte 0x0f, 0x58, 0xc8, 0x8b      // 0x008a40a8
+.byte 0xcc, 0x0f, 0x28, 0xd1      // 0x008a40ac
+.byte 0x0f, 0x2c, 0xc1, 0x0f      // 0x008a40b0
+.byte 0xc2, 0xd7, 0x01, 0x0f      // 0x008a40b4
+.byte 0x12, 0xc9, 0x0f, 0x54      // 0x008a40b8
+.byte 0x15, 0x90, 0xc5, 0xc3      // 0x008a40bc
+.byte 0x00, 0x0f, 0x2c, 0xc9      // 0x008a40c0
+.byte 0x0f, 0x6f, 0x35, 0x50      // 0x008a40c4
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a40c8
+.byte 0x2d, 0xd2, 0x0f, 0x12      // 0x008a40cc
+.byte 0xd2, 0x0f, 0x6f, 0x3d      // 0x008a40d0
+.byte 0xe0, 0xc4, 0xc3, 0x00      // 0x008a40d4
+.byte 0x0f, 0x2d, 0xda, 0x0f      // 0x008a40d8
+.byte 0xfa, 0xc2, 0x0f, 0xfa      // 0x008a40dc
+.byte 0xcb, 0x83, 0xe1, 0xf0      // 0x008a40e0
+.byte 0x0f, 0x2a, 0xc9, 0x0f      // 0x008a40e4
+.byte 0x16, 0xc9, 0x0f, 0xfe      // 0x008a40e8
+.byte 0xce, 0x0f, 0x2a, 0xc8      // 0x008a40ec
+.byte 0x0f, 0xfe, 0xc6, 0x0f      // 0x008a40f0
+.byte 0x5c, 0xc1, 0x0f, 0x28      // 0x008a40f4
+.byte 0xd0, 0x0f, 0x59, 0xd2      // 0x008a40f8
+.byte 0x0f, 0x28, 0x35, 0xd0      // 0x008a40fc
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a4100
+.byte 0x28, 0x25, 0xc0, 0xc4      // 0x008a4104
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a4108
+.byte 0xf2, 0x0f, 0x28, 0x3d      // 0x008a410c
+.byte 0xb0, 0xc4, 0xc3, 0x00      // 0x008a4110
+.byte 0x0f, 0x59, 0xe2, 0x0f      // 0x008a4114
+.byte 0x28, 0x2d, 0xa0, 0xc4      // 0x008a4118
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a411c
+.byte 0xf7, 0x0f, 0x72, 0xf0      // 0x008a4120
+.byte 0x17, 0x0f, 0x58, 0xe5      // 0x008a4124
+.byte 0x0f, 0x28, 0x2d, 0x90      // 0x008a4128
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a412c
+.byte 0x59, 0xe2, 0x0f, 0x72      // 0x008a4130
+.byte 0xf1, 0x17, 0x0f, 0x58      // 0x008a4134
+.byte 0xe5, 0x0f, 0x7f, 0x41      // 0x008a4138
+.byte 0xf0, 0x0f, 0x59, 0xe0      // 0x008a413c
+.byte 0x0f, 0x7f, 0x49, 0xf8      // 0x008a4140
+.byte 0x0f, 0x5c, 0xf4, 0x0f      // 0x008a4144
+.byte 0x28, 0x3d, 0x90, 0xc5      // 0x008a4148
+.byte 0xc3, 0x00, 0x0f, 0x53      // 0x008a414c
+.byte 0xf6, 0x0f, 0x59, 0xe6      // 0x008a4150
+.byte 0x0f, 0x28, 0x41, 0xf0      // 0x008a4154
+.byte 0x0f, 0x58, 0xe4, 0x0f      // 0x008a4158
+.byte 0x58, 0xe7, 0x0f, 0x59      // 0x008a415c
+.byte 0xc4, 0xc2, 0x10, 0x00      // 0x008a4160
+.byte 0x8d, 0xb6, 0x00, 0x00      // 0x008a4164
+.byte 0x00, 0x00, 0x8d, 0xbf      // 0x008a4168
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a416c
+.byte 0x0f, 0x5d, 0x05, 0x00      // 0x008a4170
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4174
+.byte 0x28, 0x0d, 0xb0, 0xc5      // 0x008a4178
+.byte 0xc3, 0x00, 0x0f, 0x5f      // 0x008a417c
+.byte 0x05, 0xf0, 0xc4, 0xc3      // 0x008a4180
+.byte 0x00, 0x0f, 0x57, 0xd2      // 0x008a4184
+.byte 0x0f, 0x58, 0xc8, 0x0f      // 0x008a4188
+.byte 0xc2, 0xd1, 0x05, 0x66      // 0x008a418c
+.byte 0x0f, 0xdb, 0x15, 0x80      // 0x008a4190
+.byte 0xc2, 0xc3, 0x00, 0xf3      // 0x008a4194
+.byte 0x0f, 0x5b, 0xc9, 0x66      // 0x008a4198
+.byte 0x0f, 0xfa, 0xca, 0x0f      // 0x008a419c
+.byte 0x28, 0x25, 0xc0, 0xc4      // 0x008a41a0
+.byte 0xc3, 0x00, 0x0f, 0x28      // 0x008a41a4
+.byte 0x35, 0xd0, 0xc4, 0xc3      // 0x008a41a8
+.byte 0x00, 0x0f, 0x5b, 0xd1      // 0x008a41ac
+.byte 0x0f, 0x5c, 0xc2, 0x0f      // 0x008a41b0
+.byte 0x28, 0xd0, 0x0f, 0x59      // 0x008a41b4
+.byte 0xc0, 0x66, 0x0f, 0xfe      // 0x008a41b8
+.byte 0x0d, 0x50, 0xc4, 0xc3      // 0x008a41bc
+.byte 0x00, 0x0f, 0x59, 0xe0      // 0x008a41c0
+.byte 0x0f, 0x59, 0xf0, 0x0f      // 0x008a41c4
+.byte 0x58, 0x25, 0xa0, 0xc4      // 0x008a41c8
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a41cc
+.byte 0x35, 0xb0, 0xc4, 0xc3      // 0x008a41d0
+.byte 0x00, 0x0f, 0x59, 0xe0      // 0x008a41d4
+.byte 0x0f, 0x58, 0x25, 0x90      // 0x008a41d8
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a41dc
+.byte 0x59, 0xd4, 0x0f, 0x5c      // 0x008a41e0
+.byte 0xf2, 0x66, 0x0f, 0x72      // 0x008a41e4
+.byte 0xf1, 0x17, 0x0f, 0x53      // 0x008a41e8
+.byte 0xf6, 0x0f, 0x28, 0x05      // 0x008a41ec
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a41f0
+.byte 0x0f, 0x59, 0xd6, 0x0f      // 0x008a41f4
+.byte 0x58, 0xd2, 0x0f, 0x58      // 0x008a41f8
+.byte 0xc2, 0x0f, 0x59, 0xc1      // 0x008a41fc
+.byte 0xc2, 0x10, 0x00, 0x8d      // 0x008a4200
+.byte 0xb6, 0x00, 0x00, 0x00      // 0x008a4204
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a4208
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a420c
+.byte 0xf3, 0x0f, 0x5d, 0x05      // 0x008a4210
+.byte 0x00, 0xc5, 0xc3, 0x00      // 0x008a4214
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a4218
+.byte 0xb0, 0xc5, 0xc3, 0x00      // 0x008a421c
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a4220
+.byte 0xf0, 0xc4, 0xc3, 0x00      // 0x008a4224
+.byte 0x0f, 0x57, 0xff, 0xf3      // 0x008a4228
+.byte 0x0f, 0x58, 0xe8, 0x33      // 0x008a422c
+.byte 0xc9, 0xba, 0x01, 0x00      // 0x008a4230
+.byte 0x00, 0x00, 0x0f, 0x2f      // 0x008a4234
+.byte 0xef, 0xf3, 0x0f, 0x2c      // 0x008a4238
+.byte 0xc5, 0x0f, 0x42, 0xca      // 0x008a423c
+.byte 0x2b, 0xc1, 0xf3, 0x0f      // 0x008a4240
+.byte 0x2a, 0xe8, 0x83, 0xc0      // 0x008a4244
+.byte 0x7f, 0xf3, 0x0f, 0x5c      // 0x008a4248
+.byte 0xc5, 0xf3, 0x0f, 0x10      // 0x008a424c
+.byte 0xd0, 0xf3, 0x0f, 0x59      // 0x008a4250
+.byte 0xd2, 0xf3, 0x0f, 0x10      // 0x008a4254
+.byte 0x35, 0xd0, 0xc4, 0xc3      // 0x008a4258
+.byte 0x00, 0xf3, 0x0f, 0x10      // 0x008a425c
+.byte 0x25, 0xc0, 0xc4, 0xc3      // 0x008a4260
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a4264
+.byte 0xf2, 0xf3, 0x0f, 0x10      // 0x008a4268
+.byte 0x3d, 0xb0, 0xc4, 0xc3      // 0x008a426c
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a4270
+.byte 0xe2, 0xf3, 0x0f, 0x10      // 0x008a4274
+.byte 0x2d, 0xa0, 0xc4, 0xc3      // 0x008a4278
+.byte 0x00, 0xc1, 0xe0, 0x17      // 0x008a427c
+.byte 0xf3, 0x0f, 0x58, 0xf7      // 0x008a4280
+.byte 0xf3, 0x0f, 0x58, 0xe5      // 0x008a4284
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a4288
+.byte 0x90, 0xc4, 0xc3, 0x00      // 0x008a428c
+.byte 0xf3, 0x0f, 0x59, 0xe2      // 0x008a4290
+.byte 0xf3, 0x0f, 0x58, 0xe5      // 0x008a4294
+.byte 0xf3, 0x0f, 0x59, 0xe0      // 0x008a4298
+.byte 0x89, 0x44, 0x24, 0xfc      // 0x008a429c
+.byte 0xf3, 0x0f, 0x5c, 0xf4      // 0x008a42a0
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a42a4
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a42a8
+.byte 0xf3, 0x0f, 0x53, 0xf6      // 0x008a42ac
+.byte 0xf3, 0x0f, 0x59, 0xe6      // 0x008a42b0
+.byte 0xf3, 0x0f, 0x10, 0x44      // 0x008a42b4
+.byte 0x24, 0xfc, 0xf3, 0x0f      // 0x008a42b8
+.byte 0x58, 0xe4, 0xf3, 0x0f      // 0x008a42bc
+.byte 0x58, 0xe7, 0xf3, 0x0f      // 0x008a42c0
+.byte 0x59, 0xc4, 0xc2, 0x10      // 0x008a42c4
+.byte 0x00, 0x8d, 0xb4, 0x26      // 0x008a42c8
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a42cc
+.byte 0xf3, 0x0f, 0x5d, 0x05      // 0x008a42d0
+.byte 0x00, 0xc5, 0xc3, 0x00      // 0x008a42d4
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a42d8
+.byte 0xb0, 0xc5, 0xc3, 0x00      // 0x008a42dc
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a42e0
+.byte 0xf0, 0xc4, 0xc3, 0x00      // 0x008a42e4
+.byte 0x0f, 0x57, 0xff, 0xf3      // 0x008a42e8
+.byte 0x0f, 0x58, 0xe8, 0x33      // 0x008a42ec
+.byte 0xc9, 0xba, 0x01, 0x00      // 0x008a42f0
+.byte 0x00, 0x00, 0x0f, 0x2f      // 0x008a42f4
+.byte 0xef, 0xf3, 0x0f, 0x2c      // 0x008a42f8
+.byte 0xc5, 0x0f, 0x42, 0xca      // 0x008a42fc
+.byte 0x2b, 0xc1, 0xf3, 0x0f      // 0x008a4300
+.byte 0x2a, 0xe8, 0x83, 0xc0      // 0x008a4304
+.byte 0x7f, 0xf3, 0x0f, 0x5c      // 0x008a4308
+.byte 0xc5, 0xf3, 0x0f, 0x10      // 0x008a430c
+.byte 0xd0, 0xf3, 0x0f, 0x59      // 0x008a4310
+.byte 0xc0, 0xf3, 0x0f, 0x10      // 0x008a4314
+.byte 0x35, 0xd0, 0xc4, 0xc3      // 0x008a4318
+.byte 0x00, 0xf3, 0x0f, 0x10      // 0x008a431c
+.byte 0x25, 0xc0, 0xc4, 0xc3      // 0x008a4320
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a4324
+.byte 0xf0, 0xf3, 0x0f, 0x10      // 0x008a4328
+.byte 0x3d, 0xb0, 0xc4, 0xc3      // 0x008a432c
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a4330
+.byte 0xe0, 0xf3, 0x0f, 0x10      // 0x008a4334
+.byte 0x2d, 0xa0, 0xc4, 0xc3      // 0x008a4338
+.byte 0x00, 0xc1, 0xe0, 0x17      // 0x008a433c
+.byte 0xf3, 0x0f, 0x58, 0xf7      // 0x008a4340
+.byte 0xf3, 0x0f, 0x58, 0xe5      // 0x008a4344
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a4348
+.byte 0x90, 0xc4, 0xc3, 0x00      // 0x008a434c
+.byte 0xf3, 0x0f, 0x59, 0xe0      // 0x008a4350
+.byte 0x66, 0x0f, 0x6e, 0xc0      // 0x008a4354
+.byte 0xf3, 0x0f, 0x58, 0xe5      // 0x008a4358
+.byte 0xf3, 0x0f, 0x59, 0xe2      // 0x008a435c
+.byte 0xf3, 0x0f, 0x5c, 0xf4      // 0x008a4360
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a4364
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a4368
+.byte 0xf3, 0x0f, 0x53, 0xf6      // 0x008a436c
+.byte 0xf3, 0x0f, 0x59, 0xe6      // 0x008a4370
+.byte 0xf3, 0x0f, 0x58, 0xe4      // 0x008a4374
+.byte 0xf3, 0x0f, 0x58, 0xe7      // 0x008a4378
+.byte 0xf3, 0x0f, 0x59, 0xc4      // 0x008a437c
+.byte 0xc2, 0x10, 0x00, 0x8d      // 0x008a4380
+.byte 0xb6, 0x00, 0x00, 0x00      // 0x008a4384
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a4388
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a438c
+.byte 0x0f, 0x5f, 0x05, 0x40      // 0x008a4390
+.byte 0xc6, 0xc3, 0x00, 0x8b      // 0x008a4394
+.byte 0xcc, 0x0f, 0x28, 0x3d      // 0x008a4398
+.byte 0x60, 0xc6, 0xc3, 0x00      // 0x008a439c
+.byte 0x83, 0xe1, 0xf0, 0x0f      // 0x008a43a0
+.byte 0x28, 0x0d, 0x90, 0xc5      // 0x008a43a4
+.byte 0xc3, 0x00, 0x0f, 0x29      // 0x008a43a8
+.byte 0x41, 0xf0, 0x0f, 0x54      // 0x008a43ac
+.byte 0xc7, 0x0f, 0x56, 0xc1      // 0x008a43b0
+.byte 0x0f, 0x28, 0xf8, 0x0f      // 0x008a43b4
+.byte 0x58, 0xf9, 0x0f, 0x5c      // 0x008a43b8
+.byte 0xc1, 0x0f, 0x6f, 0x41      // 0x008a43bc
+.byte 0xf0, 0x0f, 0x53, 0xff      // 0x008a43c0
+.byte 0x0f, 0x59, 0xc7, 0x0f      // 0x008a43c4
+.byte 0x6f, 0x49, 0xf8, 0x0f      // 0x008a43c8
+.byte 0x58, 0xc0, 0x0f, 0x6f      // 0x008a43cc
+.byte 0x3d, 0x50, 0xc4, 0xc3      // 0x008a43d0
+.byte 0x00, 0x0f, 0x28, 0xd0      // 0x008a43d4
+.byte 0x0f, 0x59, 0xd2, 0x0f      // 0x008a43d8
+.byte 0x28, 0x25, 0x70, 0xc5      // 0x008a43dc
+.byte 0xc3, 0x00, 0x0f, 0x72      // 0x008a43e0
+.byte 0xd1, 0x17, 0x0f, 0x28      // 0x008a43e4
+.byte 0x35, 0x60, 0xc5, 0xc3      // 0x008a43e8
+.byte 0x00, 0x0f, 0x72, 0xd0      // 0x008a43ec
+.byte 0x17, 0x0f, 0x59, 0xe2      // 0x008a43f0
+.byte 0x0f, 0x28, 0x2d, 0x50      // 0x008a43f4
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a43f8
+.byte 0x59, 0xf2, 0x0f, 0x28      // 0x008a43fc
+.byte 0x3d, 0x40, 0xc5, 0xc3      // 0x008a4400
+.byte 0x00, 0x0f, 0x58, 0xe5      // 0x008a4404
+.byte 0x0f, 0xfa, 0xcf, 0x0f      // 0x008a4408
+.byte 0x58, 0xf7, 0x0f, 0xfa      // 0x008a440c
+.byte 0xc7, 0x0f, 0x28, 0x2d      // 0x008a4410
+.byte 0x30, 0xc5, 0xc3, 0x00      // 0x008a4414
+.byte 0x0f, 0x59, 0xe2, 0x0f      // 0x008a4418
+.byte 0x2a, 0xc9, 0x0f, 0x28      // 0x008a441c
+.byte 0x3d, 0x20, 0xc5, 0xc3      // 0x008a4420
+.byte 0x00, 0x0f, 0x59, 0xf2      // 0x008a4424
+.byte 0x0f, 0x58, 0xe5, 0x0f      // 0x008a4428
+.byte 0x16, 0xc9, 0x0f, 0x58      // 0x008a442c
+.byte 0xf7, 0x0f, 0x28, 0x2d      // 0x008a4430
+.byte 0x10, 0xc5, 0xc3, 0x00      // 0x008a4434
+.byte 0x0f, 0x59, 0xe2, 0x0f      // 0x008a4438
+.byte 0x2a, 0xc8, 0x0f, 0x53      // 0x008a443c
+.byte 0xf6, 0x0f, 0x59, 0xe0      // 0x008a4440
+.byte 0x0f, 0x59, 0xcd, 0x0f      // 0x008a4444
+.byte 0x59, 0xe6, 0x0f, 0x58      // 0x008a4448
+.byte 0xc1, 0x0f, 0x58, 0xc4      // 0x008a444c
+.byte 0xc2, 0x10, 0x00, 0x8d      // 0x008a4450
+.byte 0xb6, 0x00, 0x00, 0x00      // 0x008a4454
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a4458
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a445c
+.byte 0x0f, 0x5f, 0x05, 0x40      // 0x008a4460
+.byte 0xc6, 0xc3, 0x00, 0x0f      // 0x008a4464
+.byte 0x28, 0x0d, 0x90, 0xc5      // 0x008a4468
+.byte 0xc3, 0x00, 0x0f, 0x28      // 0x008a446c
+.byte 0xd8, 0x0f, 0x54, 0x05      // 0x008a4470
+.byte 0x60, 0xc6, 0xc3, 0x00      // 0x008a4474
+.byte 0x0f, 0x56, 0xc1, 0x0f      // 0x008a4478
+.byte 0x28, 0xe0, 0x0f, 0x5c      // 0x008a447c
+.byte 0xc1, 0x0f, 0x58, 0xe1      // 0x008a4480
+.byte 0x66, 0x0f, 0x72, 0xd3      // 0x008a4484
+.byte 0x17, 0x0f, 0x53, 0xe4      // 0x008a4488
+.byte 0x0f, 0x59, 0xc4, 0x66      // 0x008a448c
+.byte 0x0f, 0xfa, 0x1d, 0x50      // 0x008a4490
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a4494
+.byte 0x58, 0xc0, 0x0f, 0x28      // 0x008a4498
+.byte 0xd0, 0x0f, 0x59, 0xc0      // 0x008a449c
+.byte 0x0f, 0x28, 0x25, 0x70      // 0x008a44a0
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a44a4
+.byte 0x28, 0x35, 0x60, 0xc5      // 0x008a44a8
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a44ac
+.byte 0xe0, 0x0f, 0x28, 0x2d      // 0x008a44b0
+.byte 0x50, 0xc5, 0xc3, 0x00      // 0x008a44b4
+.byte 0x0f, 0x59, 0xf0, 0x0f      // 0x008a44b8
+.byte 0x28, 0x3d, 0x40, 0xc5      // 0x008a44bc
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a44c0
+.byte 0xe5, 0x0f, 0x58, 0xf7      // 0x008a44c4
+.byte 0x0f, 0x28, 0x2d, 0x30      // 0x008a44c8
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a44cc
+.byte 0x59, 0xe0, 0x0f, 0x28      // 0x008a44d0
+.byte 0x3d, 0x20, 0xc5, 0xc3      // 0x008a44d4
+.byte 0x00, 0x0f, 0x59, 0xf0      // 0x008a44d8
+.byte 0x0f, 0x58, 0xe5, 0x0f      // 0x008a44dc
+.byte 0x28, 0x2d, 0x10, 0xc5      // 0x008a44e0
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a44e4
+.byte 0xf7, 0x0f, 0x5b, 0xcb      // 0x008a44e8
+.byte 0x0f, 0x59, 0xc4, 0x0f      // 0x008a44ec
+.byte 0x53, 0xf6, 0x0f, 0x59      // 0x008a44f0
+.byte 0xc6, 0x0f, 0x59, 0xc2      // 0x008a44f4
+.byte 0x0f, 0x59, 0xcd, 0x0f      // 0x008a44f8
+.byte 0x58, 0xc2, 0x0f, 0x58      // 0x008a44fc
+.byte 0xc1, 0xc2, 0x10, 0x00      // 0x008a4500
+.byte 0x8d, 0xb6, 0x00, 0x00      // 0x008a4504
+.byte 0x00, 0x00, 0x8d, 0xbf      // 0x008a4508
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a450c
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a4510
+.byte 0x40, 0xc6, 0xc3, 0x00      // 0x008a4514
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a4518
+.byte 0x60, 0xc6, 0xc3, 0x00      // 0x008a451c
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a4520
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a4524
+.byte 0xf3, 0x0f, 0x11, 0x44      // 0x008a4528
+.byte 0x24, 0xfc, 0x0f, 0x54      // 0x008a452c
+.byte 0xc7, 0x0f, 0x56, 0xc1      // 0x008a4530
+.byte 0xf3, 0x0f, 0x10, 0xf8      // 0x008a4534
+.byte 0x8b, 0x54, 0x24, 0xfc      // 0x008a4538
+.byte 0xf3, 0x0f, 0x58, 0xf9      // 0x008a453c
+.byte 0xf3, 0x0f, 0x5c, 0xc1      // 0x008a4540
+.byte 0xf3, 0x0f, 0x53, 0xff      // 0x008a4544
+.byte 0xf3, 0x0f, 0x59, 0xc7      // 0x008a4548
+.byte 0xf3, 0x0f, 0x58, 0xc0      // 0x008a454c
+.byte 0xc1, 0xea, 0x17, 0xf3      // 0x008a4550
+.byte 0x0f, 0x10, 0xd0, 0x83      // 0x008a4554
+.byte 0xea, 0x7f, 0xf3, 0x0f      // 0x008a4558
+.byte 0x59, 0xd2, 0xf3, 0x0f      // 0x008a455c
+.byte 0x10, 0x25, 0x70, 0xc5      // 0x008a4560
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4564
+.byte 0x10, 0x35, 0x60, 0xc5      // 0x008a4568
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a456c
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a4570
+.byte 0x10, 0x2d, 0x50, 0xc5      // 0x008a4574
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4578
+.byte 0x59, 0xf2, 0xf3, 0x0f      // 0x008a457c
+.byte 0x10, 0x3d, 0x40, 0xc5      // 0x008a4580
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4584
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4588
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a458c
+.byte 0x10, 0x2d, 0x30, 0xc5      // 0x008a4590
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4594
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a4598
+.byte 0x2a, 0xca, 0xf3, 0x0f      // 0x008a459c
+.byte 0x10, 0x3d, 0x20, 0xc5      // 0x008a45a0
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a45a4
+.byte 0x59, 0xf2, 0xf3, 0x0f      // 0x008a45a8
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a45ac
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a45b0
+.byte 0x10, 0x2d, 0x10, 0xc5      // 0x008a45b4
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a45b8
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a45bc
+.byte 0x53, 0xf6, 0xf3, 0x0f      // 0x008a45c0
+.byte 0x59, 0xe0, 0xf3, 0x0f      // 0x008a45c4
+.byte 0x59, 0xcd, 0xf3, 0x0f      // 0x008a45c8
+.byte 0x59, 0xe6, 0xf3, 0x0f      // 0x008a45cc
+.byte 0x58, 0xc1, 0xf3, 0x0f      // 0x008a45d0
+.byte 0x58, 0xc4, 0xc2, 0x10      // 0x008a45d4
+.byte 0x00, 0x8d, 0xb4, 0x26      // 0x008a45d8
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a45dc
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a45e0
+.byte 0x40, 0xc6, 0xc3, 0x00      // 0x008a45e4
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a45e8
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a45ec
+.byte 0x66, 0x0f, 0x7e, 0xc2      // 0x008a45f0
+.byte 0x0f, 0x54, 0x05, 0x60      // 0x008a45f4
+.byte 0xc6, 0xc3, 0x00, 0x0f      // 0x008a45f8
+.byte 0x56, 0xc1, 0x0f, 0x28      // 0x008a45fc
+.byte 0xe0, 0xf3, 0x0f, 0x5c      // 0x008a4600
+.byte 0xc1, 0xf3, 0x0f, 0x58      // 0x008a4604
+.byte 0xe1, 0xc1, 0xea, 0x17      // 0x008a4608
+.byte 0xf3, 0x0f, 0x53, 0xe4      // 0x008a460c
+.byte 0xf3, 0x0f, 0x59, 0xc4      // 0x008a4610
+.byte 0xf3, 0x0f, 0x58, 0xc0      // 0x008a4614
+.byte 0x0f, 0x28, 0xd0, 0xf3      // 0x008a4618
+.byte 0x0f, 0x59, 0xc0, 0x83      // 0x008a461c
+.byte 0xea, 0x7f, 0xf3, 0x0f      // 0x008a4620
+.byte 0x10, 0x25, 0x70, 0xc5      // 0x008a4624
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4628
+.byte 0x10, 0x35, 0x60, 0xc5      // 0x008a462c
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4630
+.byte 0x59, 0xe0, 0xf3, 0x0f      // 0x008a4634
+.byte 0x10, 0x2d, 0x50, 0xc5      // 0x008a4638
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a463c
+.byte 0x59, 0xf0, 0xf3, 0x0f      // 0x008a4640
+.byte 0x10, 0x3d, 0x40, 0xc5      // 0x008a4644
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4648
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a464c
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a4650
+.byte 0x10, 0x2d, 0x30, 0xc5      // 0x008a4654
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4658
+.byte 0x59, 0xe0, 0xf3, 0x0f      // 0x008a465c
+.byte 0x10, 0x3d, 0x20, 0xc5      // 0x008a4660
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4664
+.byte 0x59, 0xf0, 0xf3, 0x0f      // 0x008a4668
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a466c
+.byte 0x10, 0x2d, 0x10, 0xc5      // 0x008a4670
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4674
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a4678
+.byte 0x2a, 0xca, 0xf3, 0x0f      // 0x008a467c
+.byte 0x59, 0xc4, 0xf3, 0x0f      // 0x008a4680
+.byte 0x53, 0xf6, 0xf3, 0x0f      // 0x008a4684
+.byte 0x59, 0xc6, 0xf3, 0x0f      // 0x008a4688
+.byte 0x59, 0xc2, 0xf3, 0x0f      // 0x008a468c
+.byte 0x59, 0xcd, 0xf3, 0x0f      // 0x008a4690
+.byte 0x58, 0xc2, 0xf3, 0x0f      // 0x008a4694
+.byte 0x58, 0xc1, 0xc2, 0x10      // 0x008a4698
+.byte 0x00, 0x8d, 0x76, 0x00      // 0x008a469c
+.byte 0x0f, 0x5f, 0x05, 0x40      // 0x008a46a0
+.byte 0xc6, 0xc3, 0x00, 0x8b      // 0x008a46a4
+.byte 0xcc, 0x0f, 0x28, 0x3d      // 0x008a46a8
+.byte 0x60, 0xc6, 0xc3, 0x00      // 0x008a46ac
+.byte 0x83, 0xe1, 0xf0, 0x0f      // 0x008a46b0
+.byte 0x28, 0x0d, 0x90, 0xc5      // 0x008a46b4
+.byte 0xc3, 0x00, 0x0f, 0x29      // 0x008a46b8
+.byte 0x41, 0xf0, 0x0f, 0x54      // 0x008a46bc
+.byte 0xc7, 0x0f, 0x56, 0xc1      // 0x008a46c0
+.byte 0x0f, 0x28, 0xf8, 0x0f      // 0x008a46c4
+.byte 0x58, 0xf9, 0x0f, 0x5c      // 0x008a46c8
+.byte 0xc1, 0x0f, 0x6f, 0x41      // 0x008a46cc
+.byte 0xf0, 0x0f, 0x53, 0xff      // 0x008a46d0
+.byte 0x0f, 0x59, 0xc7, 0x0f      // 0x008a46d4
+.byte 0x6f, 0x49, 0xf8, 0x0f      // 0x008a46d8
+.byte 0x58, 0xc0, 0x0f, 0x6f      // 0x008a46dc
+.byte 0x3d, 0x50, 0xc4, 0xc3      // 0x008a46e0
+.byte 0x00, 0x0f, 0x72, 0xd0      // 0x008a46e4
+.byte 0x17, 0x0f, 0x72, 0xd1      // 0x008a46e8
+.byte 0x17, 0x0f, 0x28, 0xd0      // 0x008a46ec
+.byte 0x0f, 0xfa, 0xc7, 0x0f      // 0x008a46f0
+.byte 0x59, 0xd2, 0x0f, 0xfa      // 0x008a46f4
+.byte 0xcf, 0x0f, 0x28, 0x25      // 0x008a46f8
+.byte 0x70, 0xc5, 0xc3, 0x00      // 0x008a46fc
+.byte 0x0f, 0x28, 0x35, 0x60      // 0x008a4700
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4704
+.byte 0x59, 0xe2, 0x0f, 0x28      // 0x008a4708
+.byte 0x2d, 0x50, 0xc5, 0xc3      // 0x008a470c
+.byte 0x00, 0x0f, 0x59, 0xf2      // 0x008a4710
+.byte 0x0f, 0x28, 0x3d, 0x40      // 0x008a4714
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4718
+.byte 0x58, 0xe5, 0x0f, 0x58      // 0x008a471c
+.byte 0xf7, 0x0f, 0x28, 0x2d      // 0x008a4720
+.byte 0x30, 0xc5, 0xc3, 0x00      // 0x008a4724
+.byte 0x0f, 0x59, 0xe2, 0x0f      // 0x008a4728
+.byte 0x2a, 0xc9, 0x0f, 0x28      // 0x008a472c
+.byte 0x3d, 0x20, 0xc5, 0xc3      // 0x008a4730
+.byte 0x00, 0x0f, 0x59, 0xf2      // 0x008a4734
+.byte 0x0f, 0x58, 0xe5, 0x0f      // 0x008a4738
+.byte 0x58, 0xf7, 0x0f, 0x28      // 0x008a473c
+.byte 0x2d, 0x80, 0xc5, 0xc3      // 0x008a4740
+.byte 0x00, 0x0f, 0x59, 0xe2      // 0x008a4744
+.byte 0x0f, 0x53, 0xf6, 0x0f      // 0x008a4748
+.byte 0x16, 0xc9, 0x0f, 0x59      // 0x008a474c
+.byte 0xe6, 0x0f, 0x2a, 0xc8      // 0x008a4750
+.byte 0x0f, 0x59, 0xe0, 0x0f      // 0x008a4754
+.byte 0x58, 0xc4, 0x0f, 0x59      // 0x008a4758
+.byte 0xc5, 0x0f, 0x58, 0xc1      // 0x008a475c
+.byte 0xc2, 0x10, 0x00, 0x8d      // 0x008a4760
+.byte 0xb6, 0x00, 0x00, 0x00      // 0x008a4764
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a4768
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a476c
+.byte 0x0f, 0x5f, 0x05, 0x40      // 0x008a4770
+.byte 0xc6, 0xc3, 0x00, 0x0f      // 0x008a4774
+.byte 0x28, 0x0d, 0x90, 0xc5      // 0x008a4778
+.byte 0xc3, 0x00, 0x0f, 0x28      // 0x008a477c
+.byte 0xd8, 0x0f, 0x54, 0x05      // 0x008a4780
+.byte 0x60, 0xc6, 0xc3, 0x00      // 0x008a4784
+.byte 0x0f, 0x56, 0xc1, 0x0f      // 0x008a4788
+.byte 0x28, 0xe0, 0x0f, 0x5c      // 0x008a478c
+.byte 0xc1, 0x0f, 0x58, 0xe1      // 0x008a4790
+.byte 0x66, 0x0f, 0x72, 0xd3      // 0x008a4794
+.byte 0x17, 0x0f, 0x53, 0xe4      // 0x008a4798
+.byte 0x0f, 0x59, 0xc4, 0x66      // 0x008a479c
+.byte 0x0f, 0xfa, 0x1d, 0x50      // 0x008a47a0
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a47a4
+.byte 0x58, 0xc0, 0x0f, 0x28      // 0x008a47a8
+.byte 0xd0, 0x0f, 0x59, 0xc0      // 0x008a47ac
+.byte 0x0f, 0x28, 0x25, 0x70      // 0x008a47b0
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a47b4
+.byte 0x28, 0x35, 0x60, 0xc5      // 0x008a47b8
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a47bc
+.byte 0xe0, 0x0f, 0x28, 0x2d      // 0x008a47c0
+.byte 0x50, 0xc5, 0xc3, 0x00      // 0x008a47c4
+.byte 0x0f, 0x59, 0xf0, 0x0f      // 0x008a47c8
+.byte 0x28, 0x3d, 0x40, 0xc5      // 0x008a47cc
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a47d0
+.byte 0xe5, 0x0f, 0x58, 0xf7      // 0x008a47d4
+.byte 0x0f, 0x28, 0x2d, 0x30      // 0x008a47d8
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a47dc
+.byte 0x59, 0xe0, 0x0f, 0x28      // 0x008a47e0
+.byte 0x3d, 0x20, 0xc5, 0xc3      // 0x008a47e4
+.byte 0x00, 0x0f, 0x59, 0xf0      // 0x008a47e8
+.byte 0x0f, 0x58, 0xe5, 0x0f      // 0x008a47ec
+.byte 0x28, 0x2d, 0x80, 0xc5      // 0x008a47f0
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a47f4
+.byte 0xf7, 0x0f, 0x5b, 0xcb      // 0x008a47f8
+.byte 0x0f, 0x59, 0xc4, 0x0f      // 0x008a47fc
+.byte 0x53, 0xf6, 0x0f, 0x59      // 0x008a4800
+.byte 0xc6, 0x0f, 0x59, 0xc2      // 0x008a4804
+.byte 0x0f, 0x59, 0xd5, 0x0f      // 0x008a4808
+.byte 0x59, 0xc5, 0x0f, 0x58      // 0x008a480c
+.byte 0xd1, 0x0f, 0x58, 0xc2      // 0x008a4810
+.byte 0xc2, 0x10, 0x00, 0x8b      // 0x008a4814
+.byte 0xf6, 0x8d, 0xbc, 0x27      // 0x008a4818
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a481c
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a4820
+.byte 0x40, 0xc6, 0xc3, 0x00      // 0x008a4824
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a4828
+.byte 0x60, 0xc6, 0xc3, 0x00      // 0x008a482c
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a4830
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a4834
+.byte 0xf3, 0x0f, 0x11, 0x44      // 0x008a4838
+.byte 0x24, 0xfc, 0x0f, 0x54      // 0x008a483c
+.byte 0xc7, 0x0f, 0x56, 0xc1      // 0x008a4840
+.byte 0xf3, 0x0f, 0x10, 0xf8      // 0x008a4844
+.byte 0x8b, 0x54, 0x24, 0xfc      // 0x008a4848
+.byte 0xf3, 0x0f, 0x58, 0xf9      // 0x008a484c
+.byte 0xf3, 0x0f, 0x5c, 0xc1      // 0x008a4850
+.byte 0xf3, 0x0f, 0x53, 0xff      // 0x008a4854
+.byte 0xf3, 0x0f, 0x59, 0xc7      // 0x008a4858
+.byte 0xf3, 0x0f, 0x58, 0xc0      // 0x008a485c
+.byte 0xc1, 0xea, 0x17, 0xf3      // 0x008a4860
+.byte 0x0f, 0x10, 0x25, 0x70      // 0x008a4864
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a4868
+.byte 0x0f, 0x10, 0x35, 0x60      // 0x008a486c
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a4870
+.byte 0x0f, 0x10, 0xd0, 0x83      // 0x008a4874
+.byte 0xea, 0x7f, 0xf3, 0x0f      // 0x008a4878
+.byte 0x59, 0xd2, 0xf3, 0x0f      // 0x008a487c
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a4880
+.byte 0x10, 0x2d, 0x50, 0xc5      // 0x008a4884
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4888
+.byte 0x59, 0xf2, 0xf3, 0x0f      // 0x008a488c
+.byte 0x10, 0x3d, 0x40, 0xc5      // 0x008a4890
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4894
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4898
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a489c
+.byte 0x10, 0x2d, 0x30, 0xc5      // 0x008a48a0
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a48a4
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a48a8
+.byte 0x10, 0x3d, 0x20, 0xc5      // 0x008a48ac
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a48b0
+.byte 0x59, 0xf2, 0xf3, 0x0f      // 0x008a48b4
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a48b8
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a48bc
+.byte 0x10, 0x2d, 0x80, 0xc5      // 0x008a48c0
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a48c4
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a48c8
+.byte 0x53, 0xf6, 0xf3, 0x0f      // 0x008a48cc
+.byte 0x2a, 0xca, 0xf3, 0x0f      // 0x008a48d0
+.byte 0x59, 0xf0, 0xf3, 0x0f      // 0x008a48d4
+.byte 0x59, 0xe6, 0xf3, 0x0f      // 0x008a48d8
+.byte 0x58, 0xc4, 0xf3, 0x0f      // 0x008a48dc
+.byte 0x59, 0xc5, 0xf3, 0x0f      // 0x008a48e0
+.byte 0x58, 0xc1, 0xc2, 0x10      // 0x008a48e4
+.byte 0x00, 0x8d, 0xb4, 0x26      // 0x008a48e8
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a48ec
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a48f0
+.byte 0x40, 0xc6, 0xc3, 0x00      // 0x008a48f4
+.byte 0xf3, 0x0f, 0x10, 0x0d      // 0x008a48f8
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a48fc
+.byte 0x0f, 0x28, 0xd8, 0x0f      // 0x008a4900
+.byte 0x54, 0x05, 0x60, 0xc6      // 0x008a4904
+.byte 0xc3, 0x00, 0x0f, 0x56      // 0x008a4908
+.byte 0xc1, 0x0f, 0x28, 0xe0      // 0x008a490c
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a4910
+.byte 0x50, 0xc4, 0xc3, 0x00      // 0x008a4914
+.byte 0xf3, 0x0f, 0x5c, 0xc1      // 0x008a4918
+.byte 0xf3, 0x0f, 0x58, 0xe1      // 0x008a491c
+.byte 0x66, 0x0f, 0x72, 0xd3      // 0x008a4920
+.byte 0x17, 0xf3, 0x0f, 0x53      // 0x008a4924
+.byte 0xe4, 0xf3, 0x0f, 0x59      // 0x008a4928
+.byte 0xc4, 0x66, 0x0f, 0xfa      // 0x008a492c
+.byte 0xdf, 0xf3, 0x0f, 0x58      // 0x008a4930
+.byte 0xc0, 0x0f, 0x28, 0xd0      // 0x008a4934
+.byte 0xf3, 0x0f, 0x59, 0xc0      // 0x008a4938
+.byte 0xf3, 0x0f, 0x10, 0x25      // 0x008a493c
+.byte 0x70, 0xc5, 0xc3, 0x00      // 0x008a4940
+.byte 0xf3, 0x0f, 0x10, 0x35      // 0x008a4944
+.byte 0x60, 0xc5, 0xc3, 0x00      // 0x008a4948
+.byte 0xf3, 0x0f, 0x59, 0xe0      // 0x008a494c
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a4950
+.byte 0x50, 0xc5, 0xc3, 0x00      // 0x008a4954
+.byte 0xf3, 0x0f, 0x59, 0xf0      // 0x008a4958
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a495c
+.byte 0x40, 0xc5, 0xc3, 0x00      // 0x008a4960
+.byte 0xf3, 0x0f, 0x58, 0xe5      // 0x008a4964
+.byte 0xf3, 0x0f, 0x58, 0xf7      // 0x008a4968
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a496c
+.byte 0x30, 0xc5, 0xc3, 0x00      // 0x008a4970
+.byte 0xf3, 0x0f, 0x59, 0xe0      // 0x008a4974
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a4978
+.byte 0x20, 0xc5, 0xc3, 0x00      // 0x008a497c
+.byte 0xf3, 0x0f, 0x59, 0xf0      // 0x008a4980
+.byte 0xf3, 0x0f, 0x58, 0xe5      // 0x008a4984
+.byte 0xf3, 0x0f, 0x10, 0x2d      // 0x008a4988
+.byte 0x80, 0xc5, 0xc3, 0x00      // 0x008a498c
+.byte 0xf3, 0x0f, 0x58, 0xf7      // 0x008a4990
+.byte 0x0f, 0x5b, 0xcb, 0xf3      // 0x008a4994
+.byte 0x0f, 0x59, 0xc4, 0xf3      // 0x008a4998
+.byte 0x0f, 0x53, 0xf6, 0xf3      // 0x008a499c
+.byte 0x0f, 0x59, 0xc6, 0xf3      // 0x008a49a0
+.byte 0x0f, 0x59, 0xc2, 0xf3      // 0x008a49a4
+.byte 0x0f, 0x59, 0xd5, 0xf3      // 0x008a49a8
+.byte 0x0f, 0x59, 0xc5, 0xf3      // 0x008a49ac
+.byte 0x0f, 0x58, 0xd1, 0xf3      // 0x008a49b0
+.byte 0x0f, 0x58, 0xc2, 0xc2      // 0x008a49b4
+.byte 0x10, 0x00, 0x8d, 0xb6      // 0x008a49b8
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a49bc
+.byte 0x0f, 0x57, 0xe4, 0x0f      // 0x008a49c0
+.byte 0xc2, 0xe0, 0x01, 0x0f      // 0x008a49c4
+.byte 0x5f, 0x05, 0x40, 0xc6      // 0x008a49c8
+.byte 0xc3, 0x00, 0x8b, 0xcc      // 0x008a49cc
+.byte 0x0f, 0x28, 0x3d, 0x60      // 0x008a49d0
+.byte 0xc6, 0xc3, 0x00, 0x83      // 0x008a49d4
+.byte 0xe1, 0xf0, 0x0f, 0x28      // 0x008a49d8
+.byte 0x1d, 0x90, 0xc5, 0xc3      // 0x008a49dc
+.byte 0x00, 0x0f, 0x29, 0x41      // 0x008a49e0
+.byte 0xf0, 0x0f, 0x54, 0xc7      // 0x008a49e4
+.byte 0x0f, 0x56, 0xc3, 0x0f      // 0x008a49e8
+.byte 0x28, 0xf8, 0x0f, 0x5c      // 0x008a49ec
+.byte 0xc3, 0x0f, 0x58, 0xfb      // 0x008a49f0
+.byte 0x0f, 0x6f, 0x41, 0xf0      // 0x008a49f4
+.byte 0x0f, 0x53, 0xff, 0x0f      // 0x008a49f8
+.byte 0x59, 0xc7, 0x0f, 0x6f      // 0x008a49fc
+.byte 0x49, 0xf8, 0x0f, 0x58      // 0x008a4a00
+.byte 0xc0, 0x0f, 0x6f, 0x3d      // 0x008a4a04
+.byte 0x50, 0xc4, 0xc3, 0x00      // 0x008a4a08
+.byte 0x0f, 0x72, 0xd0, 0x17      // 0x008a4a0c
+.byte 0x0f, 0x72, 0xd1, 0x17      // 0x008a4a10
+.byte 0x0f, 0x29, 0x61, 0xe0      // 0x008a4a14
+.byte 0x0f, 0x28, 0xd0, 0x0f      // 0x008a4a18
+.byte 0xfa, 0xc7, 0x0f, 0x59      // 0x008a4a1c
+.byte 0xd2, 0x0f, 0xfa, 0xcf      // 0x008a4a20
+.byte 0x0f, 0x28, 0x25, 0x70      // 0x008a4a24
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4a28
+.byte 0x28, 0x35, 0x60, 0xc5      // 0x008a4a2c
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a4a30
+.byte 0xe2, 0x0f, 0x28, 0x2d      // 0x008a4a34
+.byte 0x50, 0xc5, 0xc3, 0x00      // 0x008a4a38
+.byte 0x0f, 0x59, 0xf2, 0x0f      // 0x008a4a3c
+.byte 0x28, 0x3d, 0x40, 0xc5      // 0x008a4a40
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a4a44
+.byte 0xe5, 0x0f, 0x58, 0xf7      // 0x008a4a48
+.byte 0x0f, 0x28, 0x2d, 0x30      // 0x008a4a4c
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4a50
+.byte 0x59, 0xe2, 0x0f, 0x2a      // 0x008a4a54
+.byte 0xd9, 0x0f, 0x28, 0x3d      // 0x008a4a58
+.byte 0x20, 0xc5, 0xc3, 0x00      // 0x008a4a5c
+.byte 0x0f, 0x59, 0xf2, 0x0f      // 0x008a4a60
+.byte 0x16, 0xdb, 0x0f, 0x58      // 0x008a4a64
+.byte 0xe5, 0x0f, 0x58, 0xf7      // 0x008a4a68
+.byte 0x0f, 0x28, 0x2d, 0x80      // 0x008a4a6c
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4a70
+.byte 0x59, 0xe2, 0x0f, 0x2a      // 0x008a4a74
+.byte 0xd8, 0x0f, 0x53, 0xf6      // 0x008a4a78
+.byte 0x0f, 0x59, 0xe9, 0x0f      // 0x008a4a7c
+.byte 0x59, 0xe6, 0x0f, 0x28      // 0x008a4a80
+.byte 0x35, 0x00, 0xc5, 0xc3      // 0x008a4a84
+.byte 0x00, 0x0f, 0x59, 0xe0      // 0x008a4a88
+.byte 0x0f, 0x58, 0xc4, 0x0f      // 0x008a4a8c
+.byte 0x28, 0x25, 0xf0, 0xc4      // 0x008a4a90
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a4a94
+.byte 0xd9, 0x0f, 0x59, 0xc5      // 0x008a4a98
+.byte 0x0f, 0x28, 0x2d, 0x90      // 0x008a4a9c
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4aa0
+.byte 0x57, 0xff, 0x0f, 0x58      // 0x008a4aa4
+.byte 0xc3, 0x0f, 0x28, 0x1d      // 0x008a4aa8
+.byte 0xb0, 0xc5, 0xc3, 0x00      // 0x008a4aac
+.byte 0x0f, 0x5d, 0xc6, 0x0f      // 0x008a4ab0
+.byte 0x5f, 0xc4, 0x0f, 0x58      // 0x008a4ab4
+.byte 0xd8, 0x0f, 0x28, 0xd3      // 0x008a4ab8
+.byte 0x0f, 0x2c, 0xc3, 0x0f      // 0x008a4abc
+.byte 0xc2, 0xd7, 0x01, 0x0f      // 0x008a4ac0
+.byte 0x12, 0xdb, 0x0f, 0x54      // 0x008a4ac4
+.byte 0xd5, 0x0f, 0x2c, 0xcb      // 0x008a4ac8
+.byte 0x0f, 0x6f, 0x2d, 0x50      // 0x008a4acc
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a4ad0
+.byte 0x2d, 0xd2, 0x0f, 0x12      // 0x008a4ad4
+.byte 0xd2, 0x0f, 0x2d, 0xda      // 0x008a4ad8
+.byte 0x0f, 0xfa, 0xc2, 0x0f      // 0x008a4adc
+.byte 0xfa, 0xcb, 0x0f, 0x2a      // 0x008a4ae0
+.byte 0xd9, 0x0f, 0x16, 0xdb      // 0x008a4ae4
+.byte 0x0f, 0xfe, 0xcd, 0x0f      // 0x008a4ae8
+.byte 0x2a, 0xd8, 0x0f, 0xfe      // 0x008a4aec
+.byte 0xc5, 0x0f, 0x5c, 0xc3      // 0x008a4af0
+.byte 0x0f, 0x28, 0xd0, 0x0f      // 0x008a4af4
+.byte 0x59, 0xd2, 0x0f, 0x28      // 0x008a4af8
+.byte 0x35, 0xd0, 0xc4, 0xc3      // 0x008a4afc
+.byte 0x00, 0x0f, 0x28, 0x25      // 0x008a4b00
+.byte 0xc0, 0xc4, 0xc3, 0x00      // 0x008a4b04
+.byte 0x0f, 0x59, 0xf2, 0x0f      // 0x008a4b08
+.byte 0x28, 0x3d, 0xb0, 0xc4      // 0x008a4b0c
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a4b10
+.byte 0xe2, 0x0f, 0x28, 0x2d      // 0x008a4b14
+.byte 0xa0, 0xc4, 0xc3, 0x00      // 0x008a4b18
+.byte 0x0f, 0x58, 0xf7, 0x0f      // 0x008a4b1c
+.byte 0x72, 0xf0, 0x17, 0x0f      // 0x008a4b20
+.byte 0x58, 0xe5, 0x0f, 0x28      // 0x008a4b24
+.byte 0x2d, 0x90, 0xc4, 0xc3      // 0x008a4b28
+.byte 0x00, 0x0f, 0x59, 0xe2      // 0x008a4b2c
+.byte 0x0f, 0x72, 0xf1, 0x17      // 0x008a4b30
+.byte 0x0f, 0x28, 0x59, 0xe0      // 0x008a4b34
+.byte 0x0f, 0x58, 0xe5, 0x0f      // 0x008a4b38
+.byte 0x7f, 0x41, 0xf0, 0x0f      // 0x008a4b3c
+.byte 0x59, 0xe0, 0x0f, 0x7f      // 0x008a4b40
+.byte 0x49, 0xf8, 0x0f, 0x5c      // 0x008a4b44
+.byte 0xf4, 0x0f, 0x28, 0x3d      // 0x008a4b48
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a4b4c
+.byte 0x0f, 0x53, 0xf6, 0x0f      // 0x008a4b50
+.byte 0x59, 0xe6, 0x0f, 0x28      // 0x008a4b54
+.byte 0x41, 0xf0, 0x0f, 0x58      // 0x008a4b58
+.byte 0xe4, 0x0f, 0x58, 0xe7      // 0x008a4b5c
+.byte 0x0f, 0x59, 0xc4, 0x0f      // 0x008a4b60
+.byte 0x54, 0xc3, 0xc2, 0x20      // 0x008a4b64
+.byte 0x00, 0x8d, 0xb4, 0x26      // 0x008a4b68
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a4b6c
+.byte 0x0f, 0x57, 0xed, 0x0f      // 0x008a4b70
+.byte 0xc2, 0xe8, 0x01, 0x8b      // 0x008a4b74
+.byte 0xcc, 0x0f, 0x5f, 0x05      // 0x008a4b78
+.byte 0x40, 0xc6, 0xc3, 0x00      // 0x008a4b7c
+.byte 0x0f, 0x28, 0x3d, 0x90      // 0x008a4b80
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4b84
+.byte 0x28, 0xd8, 0x83, 0xe1      // 0x008a4b88
+.byte 0xf0, 0x0f, 0x54, 0x05      // 0x008a4b8c
+.byte 0x60, 0xc6, 0xc3, 0x00      // 0x008a4b90
+.byte 0x0f, 0x56, 0xc7, 0x0f      // 0x008a4b94
+.byte 0x29, 0x69, 0xf0, 0x0f      // 0x008a4b98
+.byte 0x28, 0xe0, 0x0f, 0x5c      // 0x008a4b9c
+.byte 0xc7, 0x0f, 0x58, 0xe7      // 0x008a4ba0
+.byte 0x66, 0x0f, 0x72, 0xd3      // 0x008a4ba4
+.byte 0x17, 0x0f, 0x53, 0xe4      // 0x008a4ba8
+.byte 0x0f, 0x59, 0xc4, 0x66      // 0x008a4bac
+.byte 0x0f, 0xfa, 0x1d, 0x50      // 0x008a4bb0
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a4bb4
+.byte 0x58, 0xc0, 0x0f, 0x28      // 0x008a4bb8
+.byte 0xd0, 0x0f, 0x59, 0xc0      // 0x008a4bbc
+.byte 0x0f, 0x28, 0x25, 0x70      // 0x008a4bc0
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4bc4
+.byte 0x28, 0x35, 0x60, 0xc5      // 0x008a4bc8
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a4bcc
+.byte 0xe0, 0x0f, 0x28, 0x2d      // 0x008a4bd0
+.byte 0x50, 0xc5, 0xc3, 0x00      // 0x008a4bd4
+.byte 0x0f, 0x59, 0xf0, 0x0f      // 0x008a4bd8
+.byte 0x28, 0x3d, 0x40, 0xc5      // 0x008a4bdc
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a4be0
+.byte 0xe5, 0x0f, 0x58, 0xf7      // 0x008a4be4
+.byte 0x0f, 0x28, 0x2d, 0x30      // 0x008a4be8
+.byte 0xc5, 0xc3, 0x00, 0x0f      // 0x008a4bec
+.byte 0x59, 0xe0, 0x0f, 0x28      // 0x008a4bf0
+.byte 0x3d, 0x20, 0xc5, 0xc3      // 0x008a4bf4
+.byte 0x00, 0x0f, 0x59, 0xf0      // 0x008a4bf8
+.byte 0x0f, 0x58, 0xe5, 0x0f      // 0x008a4bfc
+.byte 0x28, 0x2d, 0x80, 0xc5      // 0x008a4c00
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a4c04
+.byte 0xf7, 0x0f, 0x5b, 0xfb      // 0x008a4c08
+.byte 0x0f, 0x59, 0xc4, 0x0f      // 0x008a4c0c
+.byte 0x53, 0xf6, 0x0f, 0x59      // 0x008a4c10
+.byte 0xc6, 0x0f, 0x28, 0x25      // 0x008a4c14
+.byte 0x00, 0xc5, 0xc3, 0x00      // 0x008a4c18
+.byte 0x0f, 0x59, 0xc2, 0x0f      // 0x008a4c1c
+.byte 0x28, 0x35, 0xf0, 0xc4      // 0x008a4c20
+.byte 0xc3, 0x00, 0x0f, 0x59      // 0x008a4c24
+.byte 0xd5, 0x0f, 0x59, 0xc5      // 0x008a4c28
+.byte 0x0f, 0x58, 0xd7, 0x0f      // 0x008a4c2c
+.byte 0x28, 0x1d, 0xb0, 0xc5      // 0x008a4c30
+.byte 0xc3, 0x00, 0x0f, 0x58      // 0x008a4c34
+.byte 0xc2, 0x0f, 0x57, 0xd2      // 0x008a4c38
+.byte 0x0f, 0x59, 0xc1, 0x0f      // 0x008a4c3c
+.byte 0x5d, 0xc4, 0x0f, 0x28      // 0x008a4c40
+.byte 0x25, 0xc0, 0xc4, 0xc3      // 0x008a4c44
+.byte 0x00, 0x0f, 0x5f, 0xc6      // 0x008a4c48
+.byte 0x0f, 0x28, 0x35, 0xd0      // 0x008a4c4c
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a4c50
+.byte 0x58, 0xd8, 0x0f, 0xc2      // 0x008a4c54
+.byte 0xd3, 0x05, 0x66, 0x0f      // 0x008a4c58
+.byte 0xdb, 0x15, 0x80, 0xc2      // 0x008a4c5c
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4c60
+.byte 0x5b, 0xdb, 0x66, 0x0f      // 0x008a4c64
+.byte 0xfa, 0xda, 0x0f, 0x28      // 0x008a4c68
+.byte 0x2d, 0xa0, 0xc4, 0xc3      // 0x008a4c6c
+.byte 0x00, 0x0f, 0x5b, 0xd3      // 0x008a4c70
+.byte 0x0f, 0x28, 0x3d, 0xb0      // 0x008a4c74
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a4c78
+.byte 0x5c, 0xc2, 0x0f, 0x28      // 0x008a4c7c
+.byte 0xd0, 0x0f, 0x59, 0xc0      // 0x008a4c80
+.byte 0x66, 0x0f, 0xfe, 0x1d      // 0x008a4c84
+.byte 0x50, 0xc4, 0xc3, 0x00      // 0x008a4c88
+.byte 0x0f, 0x59, 0xe0, 0x0f      // 0x008a4c8c
+.byte 0x59, 0xf0, 0x0f, 0x58      // 0x008a4c90
+.byte 0xe5, 0x0f, 0x58, 0xf7      // 0x008a4c94
+.byte 0x0f, 0x59, 0xe0, 0x0f      // 0x008a4c98
+.byte 0x28, 0x69, 0xf0, 0x66      // 0x008a4c9c
+.byte 0x0f, 0x72, 0xf3, 0x17      // 0x008a4ca0
+.byte 0x0f, 0x58, 0x25, 0x90      // 0x008a4ca4
+.byte 0xc4, 0xc3, 0x00, 0x0f      // 0x008a4ca8
+.byte 0x59, 0xd4, 0x0f, 0x28      // 0x008a4cac
+.byte 0x05, 0x90, 0xc5, 0xc3      // 0x008a4cb0
+.byte 0x00, 0x0f, 0x5c, 0xf2      // 0x008a4cb4
+.byte 0x0f, 0x54, 0xdd, 0x0f      // 0x008a4cb8
+.byte 0x53, 0xf6, 0x0f, 0x59      // 0x008a4cbc
+.byte 0xd6, 0x0f, 0x58, 0xd2      // 0x008a4cc0
+.byte 0x0f, 0x58, 0xc2, 0x0f      // 0x008a4cc4
+.byte 0x59, 0xc3, 0xc2, 0x20      // 0x008a4cc8
+.byte 0x00, 0x8d, 0x76, 0x00      // 0x008a4ccc
+.byte 0x0f, 0x57, 0xff, 0x0f      // 0x008a4cd0
+.byte 0x2f, 0xf8, 0xf3, 0x0f      // 0x008a4cd4
+.byte 0x10, 0x3d, 0x60, 0xc6      // 0x008a4cd8
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4cdc
+.byte 0x5f, 0x05, 0x40, 0xc6      // 0x008a4ce0
+.byte 0xc3, 0x00, 0x0f, 0x83      // 0x008a4ce4
+.byte 0x7b, 0x01, 0x00, 0x00      // 0x008a4ce8
+.byte 0xf3, 0x0f, 0x10, 0x1d      // 0x008a4cec
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a4cf0
+.byte 0xf3, 0x0f, 0x11, 0x44      // 0x008a4cf4
+.byte 0x24, 0xfc, 0x0f, 0x54      // 0x008a4cf8
+.byte 0xc7, 0x0f, 0x56, 0xc3      // 0x008a4cfc
+.byte 0xf3, 0x0f, 0x10, 0xf8      // 0x008a4d00
+.byte 0xf3, 0x0f, 0x58, 0xfb      // 0x008a4d04
+.byte 0xf3, 0x0f, 0x5c, 0xc3      // 0x008a4d08
+.byte 0x8b, 0x54, 0x24, 0xfc      // 0x008a4d0c
+.byte 0xf3, 0x0f, 0x53, 0xff      // 0x008a4d10
+.byte 0xf3, 0x0f, 0x59, 0xc7      // 0x008a4d14
+.byte 0xf3, 0x0f, 0x58, 0xc0      // 0x008a4d18
+.byte 0xc1, 0xea, 0x17, 0xf3      // 0x008a4d1c
+.byte 0x0f, 0x10, 0x25, 0x70      // 0x008a4d20
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a4d24
+.byte 0x0f, 0x10, 0x35, 0x60      // 0x008a4d28
+.byte 0xc5, 0xc3, 0x00, 0x83      // 0x008a4d2c
+.byte 0xea, 0x7f, 0xf3, 0x0f      // 0x008a4d30
+.byte 0x10, 0xd0, 0xf3, 0x0f      // 0x008a4d34
+.byte 0x59, 0xd2, 0xf3, 0x0f      // 0x008a4d38
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a4d3c
+.byte 0x10, 0x2d, 0x50, 0xc5      // 0x008a4d40
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4d44
+.byte 0x59, 0xf2, 0xf3, 0x0f      // 0x008a4d48
+.byte 0x2a, 0xda, 0xf3, 0x0f      // 0x008a4d4c
+.byte 0x10, 0x3d, 0x40, 0xc5      // 0x008a4d50
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4d54
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4d58
+.byte 0x59, 0xd9, 0xf3, 0x0f      // 0x008a4d5c
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a4d60
+.byte 0x10, 0x2d, 0x30, 0xc5      // 0x008a4d64
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4d68
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a4d6c
+.byte 0x10, 0x3d, 0x20, 0xc5      // 0x008a4d70
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4d74
+.byte 0x59, 0xf2, 0xf3, 0x0f      // 0x008a4d78
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4d7c
+.byte 0x59, 0x0d, 0x80, 0xc5      // 0x008a4d80
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4d84
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a4d88
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a4d8c
+.byte 0x53, 0xf6, 0xf3, 0x0f      // 0x008a4d90
+.byte 0x59, 0xf0, 0xf3, 0x0f      // 0x008a4d94
+.byte 0x59, 0xe6, 0xf3, 0x0f      // 0x008a4d98
+.byte 0x10, 0x35, 0x00, 0xc5      // 0x008a4d9c
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4da0
+.byte 0x58, 0xc4, 0xf3, 0x0f      // 0x008a4da4
+.byte 0x10, 0x25, 0xf0, 0xc4      // 0x008a4da8
+.byte 0xc3, 0x00, 0x0f, 0x57      // 0x008a4dac
+.byte 0xff, 0xf3, 0x0f, 0x10      // 0x008a4db0
+.byte 0x2d, 0xb0, 0xc5, 0xc3      // 0x008a4db4
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a4db8
+.byte 0xc1, 0xf3, 0x0f, 0x58      // 0x008a4dbc
+.byte 0xc3, 0x33, 0xc9, 0xf3      // 0x008a4dc0
+.byte 0x0f, 0x5d, 0xc6, 0xba      // 0x008a4dc4
+.byte 0x01, 0x00, 0x00, 0x00      // 0x008a4dc8
+.byte 0xf3, 0x0f, 0x5f, 0xc4      // 0x008a4dcc
+.byte 0xf3, 0x0f, 0x58, 0xe8      // 0x008a4dd0
+.byte 0x0f, 0x2f, 0xef, 0xf3      // 0x008a4dd4
+.byte 0x0f, 0x2c, 0xc5, 0x0f      // 0x008a4dd8
+.byte 0x42, 0xca, 0x2b, 0xc1      // 0x008a4ddc
+.byte 0xf3, 0x0f, 0x2a, 0xe8      // 0x008a4de0
+.byte 0x83, 0xc0, 0x7f, 0xf3      // 0x008a4de4
+.byte 0x0f, 0x5c, 0xc5, 0xf3      // 0x008a4de8
+.byte 0x0f, 0x10, 0xd0, 0xf3      // 0x008a4dec
+.byte 0x0f, 0x59, 0xd2, 0xf3      // 0x008a4df0
+.byte 0x0f, 0x10, 0x35, 0xd0      // 0x008a4df4
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4df8
+.byte 0x0f, 0x10, 0x25, 0xc0      // 0x008a4dfc
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4e00
+.byte 0x0f, 0x59, 0xf2, 0xf3      // 0x008a4e04
+.byte 0x0f, 0x10, 0x3d, 0xb0      // 0x008a4e08
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4e0c
+.byte 0x0f, 0x59, 0xe2, 0xf3      // 0x008a4e10
+.byte 0x0f, 0x10, 0x2d, 0xa0      // 0x008a4e14
+.byte 0xc4, 0xc3, 0x00, 0xc1      // 0x008a4e18
+.byte 0xe0, 0x17, 0xf3, 0x0f      // 0x008a4e1c
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a4e20
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4e24
+.byte 0x10, 0x2d, 0x90, 0xc4      // 0x008a4e28
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4e2c
+.byte 0x59, 0xe2, 0xf3, 0x0f      // 0x008a4e30
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4e34
+.byte 0x59, 0xe0, 0x89, 0x44      // 0x008a4e38
+.byte 0x24, 0xfc, 0xf3, 0x0f      // 0x008a4e3c
+.byte 0x5c, 0xf4, 0xf3, 0x0f      // 0x008a4e40
+.byte 0x10, 0x3d, 0x90, 0xc5      // 0x008a4e44
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4e48
+.byte 0x53, 0xf6, 0xf3, 0x0f      // 0x008a4e4c
+.byte 0x59, 0xe6, 0xf3, 0x0f      // 0x008a4e50
+.byte 0x10, 0x44, 0x24, 0xfc      // 0x008a4e54
+.byte 0xf3, 0x0f, 0x58, 0xe4      // 0x008a4e58
+.byte 0xf3, 0x0f, 0x58, 0xe7      // 0x008a4e5c
+.byte 0xf3, 0x0f, 0x59, 0xc4      // 0x008a4e60
+.byte 0xc2, 0x20, 0x00, 0x0f      // 0x008a4e64
+.byte 0x57, 0xc0, 0xc2, 0x20      // 0x008a4e68
+.byte 0x00, 0x8d, 0x76, 0x00      // 0x008a4e6c
+.byte 0x0f, 0x57, 0xed, 0xf3      // 0x008a4e70
+.byte 0x0f, 0x10, 0x15, 0x60      // 0x008a4e74
+.byte 0xc6, 0xc3, 0x00, 0xf3      // 0x008a4e78
+.byte 0x0f, 0xc2, 0xe8, 0x01      // 0x008a4e7c
+.byte 0xf3, 0x0f, 0x5f, 0x05      // 0x008a4e80
+.byte 0x40, 0xc6, 0xc3, 0x00      // 0x008a4e84
+.byte 0xf3, 0x0f, 0x10, 0x3d      // 0x008a4e88
+.byte 0x90, 0xc5, 0xc3, 0x00      // 0x008a4e8c
+.byte 0x0f, 0x28, 0xd8, 0x0f      // 0x008a4e90
+.byte 0x54, 0xc2, 0x0f, 0x56      // 0x008a4e94
+.byte 0xc7, 0xf3, 0x0f, 0x11      // 0x008a4e98
+.byte 0x6c, 0x24, 0xfc, 0x0f      // 0x008a4e9c
+.byte 0x28, 0xe0, 0x66, 0x0f      // 0x008a4ea0
+.byte 0x6e, 0x15, 0x50, 0xc4      // 0x008a4ea4
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4ea8
+.byte 0x5c, 0xc7, 0xf3, 0x0f      // 0x008a4eac
+.byte 0x58, 0xe7, 0x66, 0x0f      // 0x008a4eb0
+.byte 0x72, 0xd3, 0x17, 0xf3      // 0x008a4eb4
+.byte 0x0f, 0x53, 0xe4, 0xf3      // 0x008a4eb8
+.byte 0x0f, 0x59, 0xc4, 0x66      // 0x008a4ebc
+.byte 0x0f, 0xfa, 0xda, 0xf3      // 0x008a4ec0
+.byte 0x0f, 0x58, 0xc0, 0x0f      // 0x008a4ec4
+.byte 0x28, 0xd0, 0xf3, 0x0f      // 0x008a4ec8
+.byte 0x59, 0xc0, 0xf3, 0x0f      // 0x008a4ecc
+.byte 0x10, 0x25, 0x70, 0xc5      // 0x008a4ed0
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4ed4
+.byte 0x10, 0x35, 0x60, 0xc5      // 0x008a4ed8
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4edc
+.byte 0x59, 0xe0, 0xf3, 0x0f      // 0x008a4ee0
+.byte 0x10, 0x2d, 0x50, 0xc5      // 0x008a4ee4
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4ee8
+.byte 0x59, 0xf0, 0xf3, 0x0f      // 0x008a4eec
+.byte 0x10, 0x3d, 0x40, 0xc5      // 0x008a4ef0
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4ef4
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4ef8
+.byte 0x58, 0xf7, 0xf3, 0x0f      // 0x008a4efc
+.byte 0x10, 0x2d, 0x30, 0xc5      // 0x008a4f00
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4f04
+.byte 0x59, 0xe0, 0xf3, 0x0f      // 0x008a4f08
+.byte 0x10, 0x3d, 0x20, 0xc5      // 0x008a4f0c
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4f10
+.byte 0x59, 0xf0, 0xf3, 0x0f      // 0x008a4f14
+.byte 0x58, 0xe5, 0xf3, 0x0f      // 0x008a4f18
+.byte 0x10, 0x2d, 0x80, 0xc5      // 0x008a4f1c
+.byte 0xc3, 0x00, 0xf3, 0x0f      // 0x008a4f20
+.byte 0x58, 0xf7, 0x0f, 0x5b      // 0x008a4f24
+.byte 0xfb, 0xf3, 0x0f, 0x59      // 0x008a4f28
+.byte 0xc4, 0xf3, 0x0f, 0x53      // 0x008a4f2c
+.byte 0xf6, 0xf3, 0x0f, 0x59      // 0x008a4f30
+.byte 0xc6, 0xf3, 0x0f, 0x10      // 0x008a4f34
+.byte 0x25, 0x00, 0xc5, 0xc3      // 0x008a4f38
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a4f3c
+.byte 0xc2, 0xf3, 0x0f, 0x10      // 0x008a4f40
+.byte 0x35, 0xf0, 0xc4, 0xc3      // 0x008a4f44
+.byte 0x00, 0xf3, 0x0f, 0x59      // 0x008a4f48
+.byte 0xd5, 0xf3, 0x0f, 0x59      // 0x008a4f4c
+.byte 0xc5, 0xf3, 0x0f, 0x58      // 0x008a4f50
+.byte 0xd7, 0xf3, 0x0f, 0x10      // 0x008a4f54
+.byte 0x1d, 0xb0, 0xc5, 0xc3      // 0x008a4f58
+.byte 0x00, 0xf3, 0x0f, 0x58      // 0x008a4f5c
+.byte 0xc2, 0x0f, 0x57, 0xd2      // 0x008a4f60
+.byte 0x66, 0x0f, 0x6e, 0x2d      // 0x008a4f64
+.byte 0x80, 0xc2, 0xc3, 0x00      // 0x008a4f68
+.byte 0xf3, 0x0f, 0x59, 0xc1      // 0x008a4f6c
+.byte 0xf3, 0x0f, 0x5d, 0xc4      // 0x008a4f70
+.byte 0xf3, 0x0f, 0x10, 0x25      // 0x008a4f74
+.byte 0xc0, 0xc4, 0xc3, 0x00      // 0x008a4f78
+.byte 0xf3, 0x0f, 0x5f, 0xc6      // 0x008a4f7c
+.byte 0xf3, 0x0f, 0x10, 0x35      // 0x008a4f80
+.byte 0xd0, 0xc4, 0xc3, 0x00      // 0x008a4f84
+.byte 0xf3, 0x0f, 0x58, 0xd8      // 0x008a4f88
+.byte 0xf3, 0x0f, 0xc2, 0xd3      // 0x008a4f8c
+.byte 0x05, 0x66, 0x0f, 0xdb      // 0x008a4f90
+.byte 0xd5, 0xf3, 0x0f, 0x5b      // 0x008a4f94
+.byte 0xdb, 0x66, 0x0f, 0xfa      // 0x008a4f98
+.byte 0xda, 0x0f, 0x5b, 0xd3      // 0x008a4f9c
+.byte 0xf3, 0x0f, 0x5c, 0xc2      // 0x008a4fa0
+.byte 0x0f, 0x28, 0xd0, 0xf3      // 0x008a4fa4
+.byte 0x0f, 0x59, 0xc0, 0x66      // 0x008a4fa8
+.byte 0x0f, 0xfe, 0x1d, 0x50      // 0x008a4fac
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4fb0
+.byte 0x0f, 0x59, 0xe0, 0xf3      // 0x008a4fb4
+.byte 0x0f, 0x59, 0xf0, 0xf3      // 0x008a4fb8
+.byte 0x0f, 0x58, 0x25, 0xa0      // 0x008a4fbc
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4fc0
+.byte 0x0f, 0x58, 0x35, 0xb0      // 0x008a4fc4
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4fc8
+.byte 0x0f, 0x59, 0xe0, 0xf3      // 0x008a4fcc
+.byte 0x0f, 0x58, 0x25, 0x90      // 0x008a4fd0
+.byte 0xc4, 0xc3, 0x00, 0xf3      // 0x008a4fd4
+.byte 0x0f, 0x59, 0xd4, 0xf3      // 0x008a4fd8
+.byte 0x0f, 0x10, 0x05, 0x90      // 0x008a4fdc
+.byte 0xc5, 0xc3, 0x00, 0xf3      // 0x008a4fe0
+.byte 0x0f, 0x5c, 0xf2, 0x66      // 0x008a4fe4
+.byte 0x0f, 0x72, 0xf3, 0x17      // 0x008a4fe8
+.byte 0xf3, 0x0f, 0x53, 0xf6      // 0x008a4fec
+.byte 0xf3, 0x0f, 0x10, 0x6c      // 0x008a4ff0
+.byte 0x24, 0xfc, 0xf3, 0x0f      // 0x008a4ff4
+.byte 0x59, 0xd6, 0x0f, 0x54      // 0x008a4ff8
+.byte 0xdd, 0xf3, 0x0f, 0x58      // 0x008a4ffc
+.byte 0xd2, 0xf3, 0x0f, 0x58      // 0x008a5000
+.byte 0xc2, 0xf3, 0x0f, 0x59      // 0x008a5004
+.byte 0xc3, 0xc2, 0x20, 0x00      // 0x008a5008
+.byte 0x8d, 0x74, 0x26, 0x00      // 0x008a500c
+.byte 0xc2, 0x10, 0x00, 0x8d      // 0x008a5010
+.byte 0xb6, 0x00, 0x00, 0x00      // 0x008a5014
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a5018
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a501c
+.byte 0xc2, 0x20, 0x00, 0x8d      // 0x008a5020
+.byte 0xb6, 0x00, 0x00, 0x00      // 0x008a5024
+.byte 0x00, 0x8d, 0xbc, 0x27      // 0x008a5028
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a502c
+.byte 0xff, 0x25, 0x34, 0x99      // 0x008a5030
+.byte 0x8a, 0x00, 0xff, 0x25      // 0x008a5034
+.byte 0x38, 0x99, 0x8a, 0x00      // 0x008a5038
+.byte 0xff, 0x25, 0x44, 0x99      // 0x008a503c
+.byte 0x8a, 0x00, 0xff, 0x25      // 0x008a5040
+.byte 0x3c, 0x99, 0x8a, 0x00      // 0x008a5044
+.byte 0xff, 0x25, 0x40, 0x99      // 0x008a5048
+.byte 0x8a, 0x00, 0xff, 0x25      // 0x008a504c
+.byte 0x50, 0x99, 0x8a, 0x00      // 0x008a5050
+.byte 0xff, 0x25, 0x48, 0x99      // 0x008a5054
+.byte 0x8a, 0x00, 0xff, 0x25      // 0x008a5058
+.byte 0x4c, 0x99, 0x8a, 0x00      // 0x008a505c
+.byte 0xff, 0x25, 0x54, 0x99      // 0x008a5060
+.byte 0x8a, 0x00, 0xff, 0x25      // 0x008a5064
+.byte 0x60, 0x99, 0x8a, 0x00      // 0x008a5068
+.byte 0xff, 0x25, 0x5c, 0x99      // 0x008a506c
+.byte 0x8a, 0x00, 0xff, 0x25      // 0x008a5070
+.byte 0x64, 0x99, 0x8a, 0x00      // 0x008a5074
+.byte 0xff, 0x25, 0x58, 0x99      // 0x008a5078
+.byte 0x8a, 0x00                  // 0x008a507c
+
+// Snippet: asm, [0x008a507e, 0x008a5a73)
+_jmp_addr_0x008a507e:    jmp              dword ptr [rdata_bytes + 0x928]          // 0x008a507e    ff2528998a00
+_jmp_addr_0x008a5084:    jmp              dword ptr [rdata_bytes + 0x924]          // 0x008a5084    ff2524998a00
+_jmp_addr_0x008a508a:    jmp              dword ptr [rdata_bytes + 0x920]          // 0x008a508a    ff2520998a00
+_jmp_addr_0x008a5090:    jmp              dword ptr [rdata_bytes + 0x91c]          // 0x008a5090    ff251c998a00
+_jmp_addr_0x008a5096:    jmp              dword ptr [rdata_bytes + 0x918]          // 0x008a5096    ff2518998a00
+_jmp_addr_0x008a509c:    jmp              dword ptr [rdata_bytes + 0x8d4]          // 0x008a509c    ff25d4988a00
+_jmp_addr_0x008a50a2:    jmp              dword ptr [rdata_bytes + 0x8d8]          // 0x008a50a2    ff25d8988a00
+_jmp_addr_0x008a50a8:    jmp              dword ptr [rdata_bytes + 0x8dc]          // 0x008a50a8    ff25dc988a00
+_jmp_addr_0x008a50ae:    jmp              dword ptr [rdata_bytes + 0x8e0]          // 0x008a50ae    ff25e0988a00
+_jmp_addr_0x008a50b4:    jmp              dword ptr [rdata_bytes + 0x8e4]          // 0x008a50b4    ff25e4988a00
+_jmp_addr_0x008a50ba:    jmp              dword ptr [rdata_bytes + 0x8e8]          // 0x008a50ba    ff25e8988a00
+_jmp_addr_0x008a50c0:    jmp              dword ptr [rdata_bytes + 0x8ec]          // 0x008a50c0    ff25ec988a00
+_jmp_addr_0x008a50c6:    jmp              dword ptr [rdata_bytes + 0x8f0]          // 0x008a50c6    ff25f0988a00
+_jmp_addr_0x008a50cc:    jmp              dword ptr [rdata_bytes + 0x8d0]          // 0x008a50cc    ff25d0988a00
+_jmp_addr_0x008a50d2:    jmp              dword ptr [rdata_bytes + 0x8f8]          // 0x008a50d2    ff25f8988a00
+_jmp_addr_0x008a50d8:    jmp              dword ptr [rdata_bytes + 0x8fc]          // 0x008a50d8    ff25fc988a00
+_jmp_addr_0x008a50de:    jmp              dword ptr [rdata_bytes + 0x900]          // 0x008a50de    ff2500998a00
+_jmp_addr_0x008a50e4:    jmp              dword ptr [rdata_bytes + 0x904]          // 0x008a50e4    ff2504998a00
+_jmp_addr_0x008a50ea:    jmp              dword ptr [rdata_bytes + 0x908]          // 0x008a50ea    ff2508998a00
+_jmp_addr_0x008a50f0:    jmp              dword ptr [rdata_bytes + 0x90c]          // 0x008a50f0    ff250c998a00
+_jmp_addr_0x008a50f6:    jmp              dword ptr [rdata_bytes + 0x910]          // 0x008a50f6    ff2510998a00
+_jmp_addr_0x008a50fc:    jmp              dword ptr [rdata_bytes + 0x914]          // 0x008a50fc    ff2514998a00
+                         jmp              dword ptr [rdata_bytes + 0x318]          // 0x008a5102    ff2518938a00
+                         jmp              dword ptr [rdata_bytes + 0x314]          // 0x008a5108    ff2514938a00
+                         jmp              dword ptr [rdata_bytes + 0x310]          // 0x008a510e    ff2510938a00
+                         jmp              dword ptr [rdata_bytes + 0x2c4]          // 0x008a5114    ff25c4928a00
+                         jmp              dword ptr [rdata_bytes + 0x220]          // 0x008a511a    ff2520928a00
+                         jmp              dword ptr [rdata_bytes + 0x21c]          // 0x008a5120    ff251c928a00
+                         jmp              dword ptr [rdata_bytes + 0x218]          // 0x008a5126    ff2518928a00
+                         jmp              dword ptr [rdata_bytes + 0x214]          // 0x008a512c    ff2514928a00
+                         jmp              dword ptr [rdata_bytes + 0x210]          // 0x008a5132    ff2510928a00
+                         jmp              dword ptr [rdata_bytes + 0x20c]          // 0x008a5138    ff250c928a00
+                         jmp              dword ptr [rdata_bytes + 0x208]          // 0x008a513e    ff2508928a00
+                         jmp              dword ptr [rdata_bytes + 0x204]          // 0x008a5144    ff2504928a00
+                         jmp              dword ptr [rdata_bytes + 0x200]          // 0x008a514a    ff2500928a00
+                         jmp              dword ptr [rdata_bytes + 0x1fc]          // 0x008a5150    ff25fc918a00
+                         jmp              dword ptr [rdata_bytes + 0x1f8]          // 0x008a5156    ff25f8918a00
+                         jmp              dword ptr [rdata_bytes + 0x1f4]          // 0x008a515c    ff25f4918a00
+                         jmp              dword ptr [rdata_bytes + 0x1f0]          // 0x008a5162    ff25f0918a00
+_jmp_addr_0x008a5168:    jmp              dword ptr [rdata_bytes + 0x1ec]          // 0x008a5168    ff25ec918a00
+                         jmp              dword ptr [rdata_bytes + 0x1e8]          // 0x008a516e    ff25e8918a00
+                         jmp              dword ptr [rdata_bytes + 0x1e4]          // 0x008a5174    ff25e4918a00
+                         jmp              dword ptr [rdata_bytes + 0x1e0]          // 0x008a517a    ff25e0918a00
+                         jmp              dword ptr [rdata_bytes + 0x1dc]          // 0x008a5180    ff25dc918a00
+                         jmp              dword ptr [rdata_bytes + 0x1d8]          // 0x008a5186    ff25d8918a00
+                         jmp              dword ptr [rdata_bytes + 0x1d4]          // 0x008a518c    ff25d4918a00
+                         jmp              dword ptr [rdata_bytes + 0x1d0]          // 0x008a5192    ff25d0918a00
+                         jmp              dword ptr [rdata_bytes + 0x1cc]          // 0x008a5198    ff25cc918a00
+                         jmp              dword ptr [rdata_bytes + 0x1c8]          // 0x008a519e    ff25c8918a00
+                         jmp              dword ptr [rdata_bytes + 0x268]          // 0x008a51a4    ff2568928a00
+                         jmp              dword ptr [rdata_bytes + 0x30c]          // 0x008a51aa    ff250c938a00
+                         jmp              dword ptr [rdata_bytes + 0x308]          // 0x008a51b0    ff2508938a00
+                         jmp              dword ptr [rdata_bytes + 0x2f0]          // 0x008a51b6    ff25f0928a00
+                         jmp              dword ptr [rdata_bytes + 0x304]          // 0x008a51bc    ff2504938a00
+                         jmp              dword ptr [rdata_bytes + 0x300]          // 0x008a51c2    ff2500938a00
+                         jmp              dword ptr [rdata_bytes + 0x2fc]          // 0x008a51c8    ff25fc928a00
+                         jmp              dword ptr [rdata_bytes + 0x2f8]          // 0x008a51ce    ff25f8928a00
+                         jmp              dword ptr [rdata_bytes + 0x2f4]          // 0x008a51d4    ff25f4928a00
+                         jmp              dword ptr [rdata_bytes + 0x2c0]          // 0x008a51da    ff25c0928a00
+                         jmp              dword ptr [rdata_bytes + 0x2ec]          // 0x008a51e0    ff25ec928a00
+                         jmp              dword ptr [rdata_bytes + 0x2e8]          // 0x008a51e6    ff25e8928a00
+                         jmp              dword ptr [rdata_bytes + 0x2e4]          // 0x008a51ec    ff25e4928a00
+                         jmp              dword ptr [rdata_bytes + 0x2e0]          // 0x008a51f2    ff25e0928a00
+                         jmp              dword ptr [rdata_bytes + 0x2dc]          // 0x008a51f8    ff25dc928a00
+                         jmp              dword ptr [rdata_bytes + 0x2d8]          // 0x008a51fe    ff25d8928a00
+                         jmp              dword ptr [rdata_bytes + 0x2d4]          // 0x008a5204    ff25d4928a00
+                         jmp              dword ptr [rdata_bytes + 0x2d0]          // 0x008a520a    ff25d0928a00
+                         jmp              dword ptr [rdata_bytes + 0x2cc]          // 0x008a5210    ff25cc928a00
+                         jmp              dword ptr [rdata_bytes + 0x2c8]          // 0x008a5216    ff25c8928a00
+                         jmp              dword ptr [rdata_bytes + 0x1ac]          // 0x008a521c    ff25ac918a00
+                         jmp              dword ptr [rdata_bytes + 0x1b0]          // 0x008a5222    ff25b0918a00
+                         jmp              dword ptr [rdata_bytes + 0x2bc]          // 0x008a5228    ff25bc928a00
+                         jmp              dword ptr [rdata_bytes + 0x2b8]          // 0x008a522e    ff25b8928a00
+                         jmp              dword ptr [rdata_bytes + 0x2b4]          // 0x008a5234    ff25b4928a00
+                         jmp              dword ptr [rdata_bytes + 0x2b0]          // 0x008a523a    ff25b0928a00
+                         jmp              dword ptr [rdata_bytes + 0x2ac]          // 0x008a5240    ff25ac928a00
+                         jmp              dword ptr [rdata_bytes + 0x2a8]          // 0x008a5246    ff25a8928a00
+                         jmp              dword ptr [rdata_bytes + 0x2a4]          // 0x008a524c    ff25a4928a00
+                         jmp              dword ptr [rdata_bytes + 0x2a0]          // 0x008a5252    ff25a0928a00
+                         jmp              dword ptr [rdata_bytes + 0x29c]          // 0x008a5258    ff259c928a00
+                         jmp              dword ptr [rdata_bytes + 0x298]          // 0x008a525e    ff2598928a00
+                         jmp              dword ptr [rdata_bytes + 0x294]          // 0x008a5264    ff2594928a00
+                         jmp              dword ptr [rdata_bytes + 0x290]          // 0x008a526a    ff2590928a00
+                         jmp              dword ptr [rdata_bytes + 0x28c]          // 0x008a5270    ff258c928a00
+                         jmp              dword ptr [rdata_bytes + 0x288]          // 0x008a5276    ff2588928a00
+                         jmp              dword ptr [rdata_bytes + 0x284]          // 0x008a527c    ff2584928a00
+                         jmp              dword ptr [rdata_bytes + 0x280]          // 0x008a5282    ff2580928a00
+                         jmp              dword ptr [rdata_bytes + 0x27c]          // 0x008a5288    ff257c928a00
+                         jmp              dword ptr [rdata_bytes + 0x278]          // 0x008a528e    ff2578928a00
+                         jmp              dword ptr [rdata_bytes + 0x274]          // 0x008a5294    ff2574928a00
+                         jmp              dword ptr [rdata_bytes + 0x270]          // 0x008a529a    ff2570928a00
+                         jmp              dword ptr [rdata_bytes + 0x1b4]          // 0x008a52a0    ff25b4918a00
+                         jmp              dword ptr [rdata_bytes + 0x1a8]          // 0x008a52a6    ff25a8918a00
+                         jmp              dword ptr [rdata_bytes + 0x264]          // 0x008a52ac    ff2564928a00
+                         jmp              dword ptr [rdata_bytes + 0x260]          // 0x008a52b2    ff2560928a00
+                         jmp              dword ptr [rdata_bytes + 0x25c]          // 0x008a52b8    ff255c928a00
+                         jmp              dword ptr [rdata_bytes + 0x258]          // 0x008a52be    ff2558928a00
+                         jmp              dword ptr [rdata_bytes + 0x254]          // 0x008a52c4    ff2554928a00
+                         jmp              dword ptr [rdata_bytes + 0x250]          // 0x008a52ca    ff2550928a00
+                         jmp              dword ptr [rdata_bytes + 0x24c]          // 0x008a52d0    ff254c928a00
+                         jmp              dword ptr [rdata_bytes + 0x248]          // 0x008a52d6    ff2548928a00
+                         jmp              dword ptr [rdata_bytes + 0x874]          // 0x008a52dc    ff2574988a00
+                         jmp              dword ptr [rdata_bytes + 0x87c]          // 0x008a52e2    ff257c988a00
+                         jmp              dword ptr [rdata_bytes + 0x834]          // 0x008a52e8    ff2534988a00
+                         jmp              dword ptr [rdata_bytes + 0x830]          // 0x008a52ee    ff2530988a00
+                         jmp              dword ptr [rdata_bytes + 0x864]          // 0x008a52f4    ff2564988a00
+                         jmp              dword ptr [rdata_bytes + 0x820]          // 0x008a52fa    ff2520988a00
+                         jmp              dword ptr [rdata_bytes + 0x81c]          // 0x008a5300    ff251c988a00
+                         jmp              dword ptr [rdata_bytes + 0x824]          // 0x008a5306    ff2524988a00
+                         jmp              dword ptr [rdata_bytes + 0x814]          // 0x008a530c    ff2514988a00
+                         jmp              dword ptr [rdata_bytes + 0x810]          // 0x008a5312    ff2510988a00
+                         jmp              dword ptr [rdata_bytes + 0x818]          // 0x008a5318    ff2518988a00
+                         jmp              dword ptr [rdata_bytes + 0x808]          // 0x008a531e    ff2508988a00
+                         jmp              dword ptr [rdata_bytes + 0x804]          // 0x008a5324    ff2504988a00
+                         jmp              dword ptr [rdata_bytes + 0x80c]          // 0x008a532a    ff250c988a00
+                         jmp              dword ptr [rdata_bytes + 0x858]          // 0x008a5330    ff2558988a00
+                         jmp              dword ptr [rdata_bytes + 0x7fc]          // 0x008a5336    ff25fc978a00
+                         jmp              dword ptr [rdata_bytes + 0x7f4]          // 0x008a533c    ff25f4978a00
+                         jmp              dword ptr [rdata_bytes + 0x878]          // 0x008a5342    ff2578988a00
+                         jmp              dword ptr [rdata_bytes + 0x860]          // 0x008a5348    ff2560988a00
+                         jmp              dword ptr [rdata_bytes + 0x85c]          // 0x008a534e    ff255c988a00
+                         jmp              dword ptr [rdata_bytes + 0x870]          // 0x008a5354    ff2570988a00
+                         jmp              dword ptr [rdata_bytes + 0x86c]          // 0x008a535a    ff256c988a00
+                         jmp              dword ptr [rdata_bytes + 0x868]          // 0x008a5360    ff2568988a00
+                         jmp              dword ptr [rdata_bytes + 0x82c]          // 0x008a5366    ff252c988a00
+                         jmp              dword ptr [rdata_bytes + 0x800]          // 0x008a536c    ff2500988a00
+                         jmp              dword ptr [rdata_bytes + 0x7f0]          // 0x008a5372    ff25f0978a00
+                         jmp              dword ptr [rdata_bytes + 0x7ec]          // 0x008a5378    ff25ec978a00
+                         jmp              dword ptr [rdata_bytes + 0x854]          // 0x008a537e    ff2554988a00
+                         jmp              dword ptr [rdata_bytes + 0x850]          // 0x008a5384    ff2550988a00
+                         jmp              dword ptr [rdata_bytes + 0x84c]          // 0x008a538a    ff254c988a00
+                         jmp              dword ptr [rdata_bytes + 0x848]          // 0x008a5390    ff2548988a00
+                         jmp              dword ptr [rdata_bytes + 0x844]          // 0x008a5396    ff2544988a00
+                         jmp              dword ptr [rdata_bytes + 0x840]          // 0x008a539c    ff2540988a00
+                         jmp              dword ptr [rdata_bytes + 0x83c]          // 0x008a53a2    ff253c988a00
+                         jmp              dword ptr [rdata_bytes + 0x838]          // 0x008a53a8    ff2538988a00
+                         jmp              dword ptr [rdata_bytes + 0x828]          // 0x008a53ae    ff2528988a00
+                         jmp              dword ptr [rdata_bytes + 0x7e4]          // 0x008a53b4    ff25e4978a00
+                         jmp              dword ptr [rdata_bytes + 0x7e0]          // 0x008a53ba    ff25e0978a00
+                         jmp              dword ptr [rdata_bytes + 0x7e8]          // 0x008a53c0    ff25e8978a00
+                         jmp              dword ptr [rdata_bytes + 0x48]           // 0x008a53c6    ff2548908a00
+                         jmp              dword ptr [rdata_bytes + 0x44]           // 0x008a53cc    ff2544908a00
+                         jmp              dword ptr [rdata_bytes + 0x4c]           // 0x008a53d2    ff254c908a00
+                         jmp              dword ptr [rdata_bytes + 0x50]           // 0x008a53d8    ff2550908a00
+                         jmp              dword ptr [rdata_bytes + 0x58]           // 0x008a53de    ff2558908a00
+                         jmp              dword ptr [rdata_bytes + 0x5c]           // 0x008a53e4    ff255c908a00
+                         jmp              dword ptr [rdata_bytes + 0x54]           // 0x008a53ea    ff2554908a00
+                         jmp              dword ptr [rdata_bytes + 0x4]            // 0x008a53f0    ff2504908a00
+                         jmp              dword ptr [rdata_bytes + 0x14]           // 0x008a53f6    ff2514908a00
+                         jmp              dword ptr [rdata_bytes + 0x8]            // 0x008a53fc    ff2508908a00
+                         jmp              dword ptr [rdata_bytes + 0x0]            // 0x008a5402    ff2500908a00
+                         jmp              dword ptr [rdata_bytes + 0x10]           // 0x008a5408    ff2510908a00
+                         jmp              dword ptr [rdata_bytes + 0x978]          // 0x008a540e    ff2578998a00
+                         jmp              dword ptr [rdata_bytes + 0x348]          // 0x008a5414    ff2548938a00
+                         jmp              dword ptr [rdata_bytes + 0x3dc]          // 0x008a541a    ff25dc938a00
+                         jmp              dword ptr [rdata_bytes + 0x334]          // 0x008a5420    ff2534938a00
+                         jmp              dword ptr [rdata_bytes + 0x330]          // 0x008a5426    ff2530938a00
+                         jmp              dword ptr [rdata_bytes + 0x33c]          // 0x008a542c    ff253c938a00
+                         jmp              dword ptr [rdata_bytes + 0x37c]          // 0x008a5432    ff257c938a00
+                         int3                                                      // 0x008a5438    cc
+                         int3                                                      // 0x008a5439    cc
+                         int3                                                      // 0x008a543a    cc
+                         int3                                                      // 0x008a543b    cc
+                         int3                                                      // 0x008a543c    cc
+                         int3                                                      // 0x008a543d    cc
+                         int3                                                      // 0x008a543e    cc
+                         int3                                                      // 0x008a543f    cc
+_jmp_addr_0x008a5440:    mov.s            edx, ecx                                 // 0x008a5440    8bd1
+                         push             edi                                      // 0x008a5442    57
+                         mov              ecx, 0x00000041                          // 0x008a5443    b941000000
+                         xor.s            eax, eax                                 // 0x008a5448    33c0
+                         mov.s            edi, edx                                 // 0x008a544a    8bfa
+                         rep stosd                                                 // 0x008a544c    f3ab
+                         {disp32} mov     dword ptr [edx + 0x00000104], eax        // 0x008a544e    898204010000
+                         {disp32} mov     dword ptr [edx + 0x00000108], eax        // 0x008a5454    898208010000
+                         {disp32} mov     word ptr [edx + 0x00000114], ax          // 0x008a545a    66898214010000
+                         {disp32} mov     word ptr [edx + 0x00000116], ax          // 0x008a5461    66898216010000
+                         {disp32} mov     word ptr [edx + 0x00000118], ax          // 0x008a5468    66898218010000
+                         {disp32} mov     word ptr [edx + 0x0000010c], 0x0018      // 0x008a546f    66c7820c0100001800
+                         mov.s            eax, edx                                 // 0x008a5478    8bc2
+                         pop              edi                                      // 0x008a547a    5f
+                         ret                                                       // 0x008a547b    c3
+                         nop                                                       // 0x008a547c    90
+                         nop                                                       // 0x008a547d    90
+                         nop                                                       // 0x008a547e    90
+                         nop                                                       // 0x008a547f    90
+_jmp_addr_0x008a5480:    ret                                                       // 0x008a5480    c3
+                         nop                                                       // 0x008a5481    90
+                         nop                                                       // 0x008a5482    90
+                         nop                                                       // 0x008a5483    90
+                         nop                                                       // 0x008a5484    90
+                         nop                                                       // 0x008a5485    90
+                         nop                                                       // 0x008a5486    90
+                         nop                                                       // 0x008a5487    90
+                         nop                                                       // 0x008a5488    90
+                         nop                                                       // 0x008a5489    90
+                         nop                                                       // 0x008a548a    90
+                         nop                                                       // 0x008a548b    90
+                         nop                                                       // 0x008a548c    90
+                         nop                                                       // 0x008a548d    90
+                         nop                                                       // 0x008a548e    90
+                         nop                                                       // 0x008a548f    90
+_jmp_addr_0x008a5490:    {disp8} lea      eax, dword ptr [esp + 0x04]              // 0x008a5490    8d442404
+                         {disp8} lea      ecx, dword ptr [esp + 0x08]              // 0x008a5494    8d4c2408
+                         push             eax                                      // 0x008a5498    50
+                         push             0x2                                      // 0x008a5499    6a02
+                         push             ecx                                      // 0x008a549b    51
+                         {disp8} mov      ecx, dword ptr [esp + 0x10]              // 0x008a549c    8b4c2410
+                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a54a0    e87b74f1ff
+                         test             eax, eax                                 // 0x008a54a5    85c0
+                         {disp8} je       _jmp_addr_0x008a54ae                     // 0x008a54a7    7405
+                         xor.s            eax, eax                                 // 0x008a54a9    33c0
+                         ret              0x0008                                   // 0x008a54ab    c20800
+_jmp_addr_0x008a54ae:    {disp8} mov      ecx, dword ptr [esp + 0x04]              // 0x008a54ae    8b4c2404
+                         xor.s            eax, eax                                 // 0x008a54b2    33c0
+                         cmp              ecx, 0x02                                // 0x008a54b4    83f902
+                         sete             al                                       // 0x008a54b7    0f94c0
+                         ret              0x0008                                   // 0x008a54ba    c20800
+                         nop                                                       // 0x008a54bd    90
+                         nop                                                       // 0x008a54be    90
+                         nop                                                       // 0x008a54bf    90
+_jmp_addr_0x008a54c0:    {disp8} lea      eax, dword ptr [esp + 0x04]              // 0x008a54c0    8d442404
+                         {disp8} lea      ecx, dword ptr [esp + 0x08]              // 0x008a54c4    8d4c2408
+                         push             eax                                      // 0x008a54c8    50
+                         push             0x4                                      // 0x008a54c9    6a04
+                         push             ecx                                      // 0x008a54cb    51
+                         {disp8} mov      ecx, dword ptr [esp + 0x10]              // 0x008a54cc    8b4c2410
+                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a54d0    e84b74f1ff
+                         test             eax, eax                                 // 0x008a54d5    85c0
+                         {disp8} je       _jmp_addr_0x008a54de                     // 0x008a54d7    7405
+                         xor.s            eax, eax                                 // 0x008a54d9    33c0
+                         ret              0x0008                                   // 0x008a54db    c20800
+_jmp_addr_0x008a54de:    {disp8} mov      ecx, dword ptr [esp + 0x04]              // 0x008a54de    8b4c2404
+                         xor.s            eax, eax                                 // 0x008a54e2    33c0
+                         cmp              ecx, 0x04                                // 0x008a54e4    83f904
+                         sete             al                                       // 0x008a54e7    0f94c0
+                         ret              0x0008                                   // 0x008a54ea    c20800
+                         nop                                                       // 0x008a54ed    90
+                         nop                                                       // 0x008a54ee    90
+                         nop                                                       // 0x008a54ef    90
+_jmp_addr_0x008a54f0:    push             esi                                      // 0x008a54f0    56
+                         push             edi                                      // 0x008a54f1    57
+                         {disp8} mov      edi, dword ptr [esp + 0x0c]              // 0x008a54f2    8b7c240c
+                         push             0x00004d42                               // 0x008a54f6    68424d0000
+                         mov.s            esi, ecx                                 // 0x008a54fb    8bf1
+                         push             edi                                      // 0x008a54fd    57
+                         call             _jmp_addr_0x008a5490                     // 0x008a54fe    e88dffffff
+                         test             eax, eax                                 // 0x008a5503    85c0
+                         {disp8} jne      _jmp_addr_0x008a550c                     // 0x008a5505    7505
+                         pop              edi                                      // 0x008a5507    5f
+                         pop              esi                                      // 0x008a5508    5e
+                         ret              0x0004                                   // 0x008a5509    c20400
+_jmp_addr_0x008a550c:    push             0x0                                      // 0x008a550c    6a00
+                         push             edi                                      // 0x008a550e    57
+                         mov.s            ecx, esi                                 // 0x008a550f    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a5511    e8aaffffff
+                         test             eax, eax                                 // 0x008a5516    85c0
+                         {disp8} jne      _jmp_addr_0x008a551f                     // 0x008a5518    7505
+                         pop              edi                                      // 0x008a551a    5f
+                         pop              esi                                      // 0x008a551b    5e
+                         ret              0x0004                                   // 0x008a551c    c20400
+_jmp_addr_0x008a551f:    push             0x0                                      // 0x008a551f    6a00
+                         push             edi                                      // 0x008a5521    57
+                         mov.s            ecx, esi                                 // 0x008a5522    8bce
+                         call             _jmp_addr_0x008a5490                     // 0x008a5524    e867ffffff
+                         test             eax, eax                                 // 0x008a5529    85c0
+                         {disp8} jne      _jmp_addr_0x008a5532                     // 0x008a552b    7505
+                         pop              edi                                      // 0x008a552d    5f
+                         pop              esi                                      // 0x008a552e    5e
+                         ret              0x0004                                   // 0x008a552f    c20400
+_jmp_addr_0x008a5532:    push             0x0                                      // 0x008a5532    6a00
+                         push             edi                                      // 0x008a5534    57
+                         mov.s            ecx, esi                                 // 0x008a5535    8bce
+                         call             _jmp_addr_0x008a5490                     // 0x008a5537    e854ffffff
+                         test             eax, eax                                 // 0x008a553c    85c0
+                         {disp8} jne      _jmp_addr_0x008a5545                     // 0x008a553e    7505
+                         pop              edi                                      // 0x008a5540    5f
+                         pop              esi                                      // 0x008a5541    5e
+                         ret              0x0004                                   // 0x008a5542    c20400
+_jmp_addr_0x008a5545:    push             0x36                                     // 0x008a5545    6a36
+                         push             edi                                      // 0x008a5547    57
+                         mov.s            ecx, esi                                 // 0x008a5548    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a554a    e871ffffff
+                         neg              eax                                      // 0x008a554f    f7d8
+                         sbb.s            eax, eax                                 // 0x008a5551    1bc0
+                         pop              edi                                      // 0x008a5553    5f
+                         neg              eax                                      // 0x008a5554    f7d8
+                         pop              esi                                      // 0x008a5556    5e
+                         ret              0x0004                                   // 0x008a5557    c20400
+                         nop                                                       // 0x008a555a    90
+                         nop                                                       // 0x008a555b    90
+                         nop                                                       // 0x008a555c    90
+                         nop                                                       // 0x008a555d    90
+                         nop                                                       // 0x008a555e    90
+                         nop                                                       // 0x008a555f    90
+_jmp_addr_0x008a5560:    {disp8} mov      ecx, dword ptr [esp + 0x08]              // 0x008a5560    8b4c2408
+                         test             ecx, ecx                                 // 0x008a5564    85c9
+                         {disp8} jle      _jmp_addr_0x008a5571                     // 0x008a5566    7e09
+                         {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x008a5568    8b442404
+                         shr              eax, cl                                  // 0x008a556c    d3e8
+                         ret              0x0008                                   // 0x008a556e    c20800
+_jmp_addr_0x008a5571:    mov.s            eax, ecx                                 // 0x008a5571    8bc1
+                         cdq                                                       // 0x008a5573    99
+                         mov.s            ecx, eax                                 // 0x008a5574    8bc8
+                         {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x008a5576    8b442404
+                         xor.s            ecx, edx                                 // 0x008a557a    33ca
+                         sub.s            ecx, edx                                 // 0x008a557c    2bca
+                         shl              eax, cl                                  // 0x008a557e    d3e0
+                         ret              0x0008                                   // 0x008a5580    c20800
+                         nop                                                       // 0x008a5583    90
+                         nop                                                       // 0x008a5584    90
+                         nop                                                       // 0x008a5585    90
+                         nop                                                       // 0x008a5586    90
+                         nop                                                       // 0x008a5587    90
+                         nop                                                       // 0x008a5588    90
+                         nop                                                       // 0x008a5589    90
+                         nop                                                       // 0x008a558a    90
+                         nop                                                       // 0x008a558b    90
+                         nop                                                       // 0x008a558c    90
+                         nop                                                       // 0x008a558d    90
+                         nop                                                       // 0x008a558e    90
+                         nop                                                       // 0x008a558f    90
+_jmp_addr_0x008a5590:    push             -0x1                                     // 0x008a5590    6aff
+                         push             0x008a893b                               // 0x008a5592    683b898a00
+                         {disp32} mov     eax, fs:[0x0]                            // 0x008a5597    64a100000000
+                         push             eax                                      // 0x008a559d    50
+                         {disp32} mov     fs:[0x0], esp                            // 0x008a559e    64892500000000
+                         sub              esp, 0x00000134                          // 0x008a55a5    81ec34010000
+                         push             ebx                                      // 0x008a55ab    53
+                         push             ebp                                      // 0x008a55ac    55
+                         push             esi                                      // 0x008a55ad    56
+                         mov.s            esi, ecx                                 // 0x008a55ae    8bf1
+                         push             edi                                      // 0x008a55b0    57
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a55b1    8d4c2438
+                         call             @__ct__8LHOSFileFv@4                     // 0x008a55b5    e89670f1ff
+                         {disp32} mov     eax, dword ptr [esi + 0x00000104]        // 0x008a55ba    8b8604010000
+                         xor.s            ebp, ebp                                 // 0x008a55c0    33ed
+                         imul             eax, dword ptr [esi + 0x00000108]        // 0x008a55c2    0faf8608010000
+                         {disp32} mov     dword ptr [esp + 0x0000014c], ebp        // 0x008a55c9    89ac244c010000
+                         lea              eax, dword ptr [eax + eax * 0x2]         // 0x008a55d0    8d0440
+                         push             eax                                      // 0x008a55d3    50
+                         call             _operator_new                            // 0x008a55d4    e8150ff2ff
+                         {disp32} mov     cx, word ptr [esi + 0x00000114]          // 0x008a55d9    668b8e14010000
+                         {disp32} mov     dx, word ptr [esi + 0x00000116]          // 0x008a55e0    668b9616010000
+                         {disp8} mov      dword ptr [esp + 0x2c], eax              // 0x008a55e7    8944242c
+                         {disp32} mov     ax, word ptr [esi + 0x00000118]          // 0x008a55eb    668b8618010000
+                         add              esp, 0x04                                // 0x008a55f2    83c404
+                         {disp8} mov      dword ptr [esp + 0x10], eax              // 0x008a55f5    89442410
+                         xor.s            eax, eax                                 // 0x008a55f9    33c0
+                         {disp8} mov      dword ptr [esp + 0x1c], ecx              // 0x008a55fb    894c241c
+                         push             eax                                      // 0x008a55ff    50
+                         push             esi                                      // 0x008a5600    56
+                         {disp8} lea      ecx, dword ptr [esp + 0x40]              // 0x008a5601    8d4c2440
+                         xor.s            ebx, ebx                                 // 0x008a5605    33db
+                         xor.s            edi, edi                                 // 0x008a5607    33ff
+                         {disp8} mov      dword ptr [esp + 0x20], edx              // 0x008a5609    89542420
+                         {disp8} mov      dword ptr [esp + 0x28], eax              // 0x008a560d    89442428
+                         {disp8} mov      dword ptr [esp + 0x2c], eax              // 0x008a5611    8944242c
+                         {disp8} mov      dword ptr [esp + 0x38], eax              // 0x008a5615    89442438
+                         call             @Open__8LHOSFileFPc12LH_FILE_MODE@16     // 0x008a5619    e81271f1ff
+                         test             eax, eax                                 // 0x008a561e    85c0
+                         {disp8} je       _jmp_addr_0x008a563d                     // 0x008a5620    741b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5622    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a5626    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a5631    e84a70f1ff
+                         xor.s            eax, eax                                 // 0x008a5636    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5638    e91b040000
+_jmp_addr_0x008a563d:    {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a563d    8d4c2438
+                         push             ecx                                      // 0x008a5641    51
+                         mov.s            ecx, esi                                 // 0x008a5642    8bce
+                         call             _jmp_addr_0x008a54f0                     // 0x008a5644    e8a7feffff
+                         test             eax, eax                                 // 0x008a5649    85c0
+                         {disp8} jne      _jmp_addr_0x008a5668                     // 0x008a564b    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a564d    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a5651    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a565c    e81f70f1ff
+                         xor.s            eax, eax                                 // 0x008a5661    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5663    e9f0030000
+_jmp_addr_0x008a5668:    {disp8} lea      edx, dword ptr [esp + 0x38]              // 0x008a5668    8d542438
+                         push             0x28                                     // 0x008a566c    6a28
+                         push             edx                                      // 0x008a566e    52
+                         mov.s            ecx, esi                                 // 0x008a566f    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a5671    e84afeffff
+                         test             eax, eax                                 // 0x008a5676    85c0
+                         {disp8} jne      _jmp_addr_0x008a5695                     // 0x008a5678    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a567a    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a567e    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a5689    e8f26ff1ff
+                         xor.s            eax, eax                                 // 0x008a568e    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5690    e9c3030000
+_jmp_addr_0x008a5695:    {disp32} mov     eax, dword ptr [esi + 0x00000104]        // 0x008a5695    8b8604010000
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a569b    8d4c2438
+                         push             eax                                      // 0x008a569f    50
+                         push             ecx                                      // 0x008a56a0    51
+                         mov.s            ecx, esi                                 // 0x008a56a1    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a56a3    e818feffff
+                         test             eax, eax                                 // 0x008a56a8    85c0
+                         {disp8} jne      _jmp_addr_0x008a56c7                     // 0x008a56aa    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a56ac    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a56b0    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a56bb    e8c06ff1ff
+                         xor.s            eax, eax                                 // 0x008a56c0    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a56c2    e991030000
+_jmp_addr_0x008a56c7:    {disp32} mov     edx, dword ptr [esi + 0x00000108]        // 0x008a56c7    8b9608010000
+                         {disp8} lea      eax, dword ptr [esp + 0x38]              // 0x008a56cd    8d442438
+                         push             edx                                      // 0x008a56d1    52
+                         push             eax                                      // 0x008a56d2    50
+                         mov.s            ecx, esi                                 // 0x008a56d3    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a56d5    e8e6fdffff
+                         test             eax, eax                                 // 0x008a56da    85c0
+                         {disp8} jne      _jmp_addr_0x008a56f9                     // 0x008a56dc    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a56de    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a56e2    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a56ed    e88e6ff1ff
+                         xor.s            eax, eax                                 // 0x008a56f2    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a56f4    e95f030000
+_jmp_addr_0x008a56f9:    {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a56f9    8d4c2438
+                         push             0x1                                      // 0x008a56fd    6a01
+                         push             ecx                                      // 0x008a56ff    51
+                         mov.s            ecx, esi                                 // 0x008a5700    8bce
+                         call             _jmp_addr_0x008a5490                     // 0x008a5702    e889fdffff
+                         test             eax, eax                                 // 0x008a5707    85c0
+                         {disp8} jne      _jmp_addr_0x008a5726                     // 0x008a5709    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a570b    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a570f    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a571a    e8616ff1ff
+                         xor.s            eax, eax                                 // 0x008a571f    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5721    e932030000
+_jmp_addr_0x008a5726:    {disp32} mov     dx, word ptr [esi + 0x0000010c]          // 0x008a5726    668b960c010000
+                         {disp8} lea      eax, dword ptr [esp + 0x38]              // 0x008a572d    8d442438
+                         push             edx                                      // 0x008a5731    52
+                         push             eax                                      // 0x008a5732    50
+                         mov.s            ecx, esi                                 // 0x008a5733    8bce
+                         call             _jmp_addr_0x008a5490                     // 0x008a5735    e856fdffff
+                         test             eax, eax                                 // 0x008a573a    85c0
+                         {disp8} jne      _jmp_addr_0x008a5759                     // 0x008a573c    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a573e    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a5742    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a574d    e82e6ff1ff
+                         xor.s            eax, eax                                 // 0x008a5752    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5754    e9ff020000
+_jmp_addr_0x008a5759:    {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5759    8d4c2438
+                         push             0x0                                      // 0x008a575d    6a00
+                         push             ecx                                      // 0x008a575f    51
+                         mov.s            ecx, esi                                 // 0x008a5760    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a5762    e859fdffff
+                         test             eax, eax                                 // 0x008a5767    85c0
+                         {disp8} jne      _jmp_addr_0x008a5786                     // 0x008a5769    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a576b    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a576f    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a577a    e8016ff1ff
+                         xor.s            eax, eax                                 // 0x008a577f    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5781    e9d2020000
+_jmp_addr_0x008a5786:    {disp8} lea      edx, dword ptr [esp + 0x38]              // 0x008a5786    8d542438
+                         push             0x0                                      // 0x008a578a    6a00
+                         push             edx                                      // 0x008a578c    52
+                         mov.s            ecx, esi                                 // 0x008a578d    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a578f    e82cfdffff
+                         test             eax, eax                                 // 0x008a5794    85c0
+                         {disp8} jne      _jmp_addr_0x008a57b3                     // 0x008a5796    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5798    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a579c    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a57a7    e8d46ef1ff
+                         xor.s            eax, eax                                 // 0x008a57ac    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a57ae    e9a5020000
+_jmp_addr_0x008a57b3:    {disp8} lea      eax, dword ptr [esp + 0x38]              // 0x008a57b3    8d442438
+                         push             0x0                                      // 0x008a57b7    6a00
+                         push             eax                                      // 0x008a57b9    50
+                         mov.s            ecx, esi                                 // 0x008a57ba    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a57bc    e8fffcffff
+                         test             eax, eax                                 // 0x008a57c1    85c0
+                         {disp8} jne      _jmp_addr_0x008a57e0                     // 0x008a57c3    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a57c5    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a57c9    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a57d4    e8a76ef1ff
+                         xor.s            eax, eax                                 // 0x008a57d9    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a57db    e978020000
+_jmp_addr_0x008a57e0:    {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a57e0    8d4c2438
+                         push             0x0                                      // 0x008a57e4    6a00
+                         push             ecx                                      // 0x008a57e6    51
+                         mov.s            ecx, esi                                 // 0x008a57e7    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a57e9    e8d2fcffff
+                         test             eax, eax                                 // 0x008a57ee    85c0
+                         {disp8} jne      _jmp_addr_0x008a580d                     // 0x008a57f0    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a57f2    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a57f6    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a5801    e87a6ef1ff
+                         xor.s            eax, eax                                 // 0x008a5806    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5808    e94b020000
+_jmp_addr_0x008a580d:    {disp32} mov     cl, byte ptr [esi + 0x0000010c]          // 0x008a580d    8a8e0c010000
+                         mov              edx, 0x00000001                          // 0x008a5813    ba01000000
+                         shl              edx, cl                                  // 0x008a5818    d3e2
+                         {disp8} lea      eax, dword ptr [esp + 0x38]              // 0x008a581a    8d442438
+                         mov.s            ecx, esi                                 // 0x008a581e    8bce
+                         push             edx                                      // 0x008a5820    52
+                         push             eax                                      // 0x008a5821    50
+                         call             _jmp_addr_0x008a54c0                     // 0x008a5822    e899fcffff
+                         test             eax, eax                                 // 0x008a5827    85c0
+                         {disp8} jne      _jmp_addr_0x008a5846                     // 0x008a5829    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a582b    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a582f    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a583a    e8416ef1ff
+                         xor.s            eax, eax                                 // 0x008a583f    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a5841    e912020000
+_jmp_addr_0x008a5846:    {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5846    8d4c2438
+                         push             0x0                                      // 0x008a584a    6a00
+                         push             ecx                                      // 0x008a584c    51
+                         mov.s            ecx, esi                                 // 0x008a584d    8bce
+                         call             _jmp_addr_0x008a54c0                     // 0x008a584f    e86cfcffff
+                         test             eax, eax                                 // 0x008a5854    85c0
+                         {disp8} jne      _jmp_addr_0x008a5873                     // 0x008a5856    751b
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5858    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a585c    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a5867    e8146ef1ff
+                         xor.s            eax, eax                                 // 0x008a586c    33c0
+                         {disp32} jmp     _jmp_addr_0x008a5a58                     // 0x008a586e    e9e5010000
+_jmp_addr_0x008a5873:    test             byte ptr [esp + 0x1c], 0x01              // 0x008a5873    f644241c01
+                         {disp8} jne      _jmp_addr_0x008a5888                     // 0x008a5878    750e
+_jmp_addr_0x008a587a:    shr              word ptr [esp + 0x1c], 1                 // 0x008a587a    66d16c241c
+                         {disp8} mov      al, byte ptr [esp + 0x1c]                // 0x008a587f    8a44241c
+                         inc              ebx                                      // 0x008a5883    43
+                         test             al, 0x01                                 // 0x008a5884    a801
+                         {disp8} je       _jmp_addr_0x008a587a                     // 0x008a5886    74f2
+_jmp_addr_0x008a5888:    test             byte ptr [esp + 0x18], 0x01              // 0x008a5888    f644241801
+                         {disp8} jne      _jmp_addr_0x008a589d                     // 0x008a588d    750e
+_jmp_addr_0x008a588f:    shr              word ptr [esp + 0x18], 1                 // 0x008a588f    66d16c2418
+                         {disp8} mov      al, byte ptr [esp + 0x18]                // 0x008a5894    8a442418
+                         inc              edi                                      // 0x008a5898    47
+                         test             al, 0x01                                 // 0x008a5899    a801
+                         {disp8} je       _jmp_addr_0x008a588f                     // 0x008a589b    74f2
+_jmp_addr_0x008a589d:    test             byte ptr [esp + 0x10], 0x01              // 0x008a589d    f644241001
+                         {disp8} jne      _jmp_addr_0x008a58b2                     // 0x008a58a2    750e
+_jmp_addr_0x008a58a4:    shr              word ptr [esp + 0x10], 1                 // 0x008a58a4    66d16c2410
+                         {disp8} mov      al, byte ptr [esp + 0x10]                // 0x008a58a9    8a442410
+                         inc              ebp                                      // 0x008a58ad    45
+                         test             al, 0x01                                 // 0x008a58ae    a801
+                         {disp8} je       _jmp_addr_0x008a58a4                     // 0x008a58b0    74f2
+_jmp_addr_0x008a58b2:    cmp              word ptr [esi + 0x00000116], 0x03e0      // 0x008a58b2    6681be16010000e003
+                         {disp8} jne      _jmp_addr_0x008a58c2                     // 0x008a58bb    7505
+                         sub              edi, 0x03                                // 0x008a58bd    83ef03
+                         {disp8} jmp      _jmp_addr_0x008a58c5                     // 0x008a58c0    eb03
+_jmp_addr_0x008a58c2:    sub              edi, 0x02                                // 0x008a58c2    83ef02
+_jmp_addr_0x008a58c5:    {disp32} mov     ecx, dword ptr [esi + 0x00000104]        // 0x008a58c5    8b8e04010000
+                         sub              ebx, 0x03                                // 0x008a58cb    83eb03
+                         mov.s            eax, ecx                                 // 0x008a58ce    8bc1
+                         sub              ebp, 0x03                                // 0x008a58d0    83ed03
+                         imul             eax, dword ptr [esi + 0x00000108]        // 0x008a58d3    0faf8608010000
+                         {disp8} mov      dword ptr [esp + 0x10], edi              // 0x008a58da    897c2410
+                         {disp8} mov      dword ptr [esp + 0x18], ebx              // 0x008a58de    895c2418
+                         lea              edx, dword ptr [eax + eax * 0x2]         // 0x008a58e2    8d1440
+                         {disp8} mov      dword ptr [esp + 0x1c], ebp              // 0x008a58e5    896c241c
+                         test             edx, edx                                 // 0x008a58e9    85d2
+                         {disp32} jbe     _jmp_addr_0x008a59c9                     // 0x008a58eb    0f86d8000000
+                         {disp8} mov      edx, dword ptr [esp + 0x28]              // 0x008a58f1    8b542428
+                         or               eax, -0x1                                // 0x008a58f5    83c8ff
+                         sub.s            eax, edx                                 // 0x008a58f8    2bc2
+                         {disp8} lea      ebp, dword ptr [edx + 0x01]              // 0x008a58fa    8d6a01
+                         {disp8} mov      dword ptr [esp + 0x2c], eax              // 0x008a58fd    8944242c
+                         {disp8} jmp      _jmp_addr_0x008a5907                     // 0x008a5901    eb04
+_jmp_addr_0x008a5903:    {disp8} mov      ebx, dword ptr [esp + 0x18]              // 0x008a5903    8b5c2418
+_jmp_addr_0x008a5907:    {disp32} mov     eax, dword ptr [esp + 0x00000154]        // 0x008a5907    8b842454010000
+                         {disp8} mov      edx, dword ptr [esp + 0x20]              // 0x008a590e    8b542420
+                         mov              di, word ptr [eax + edx * 0x2]           // 0x008a5912    668b3c50
+                         mov.s            eax, edx                                 // 0x008a5916    8bc2
+                         inc              eax                                      // 0x008a5918    40
+                         {disp8} mov      dword ptr [esp + 0x20], eax              // 0x008a5919    89442420
+                         {disp8} mov      eax, dword ptr [esp + 0x24]              // 0x008a591d    8b442424
+                         inc              eax                                      // 0x008a5921    40
+                         cmp.s            eax, ecx                                 // 0x008a5922    3bc1
+                         {disp8} mov      dword ptr [esp + 0x24], eax              // 0x008a5924    89442424
+                         .byte            0x72, 0x1e// {disp8} jb _jmp_addr_0x008a5948 // 0x008a5928    721e
+                         {disp8} mov      ecx, dword ptr [esp + 0x30]              // 0x008a592a    8b4c2430
+                         {disp32} mov     eax, dword ptr [esi + 0x00000110]        // 0x008a592e    8b8610010000
+                         inc              ecx                                      // 0x008a5934    41
+                         {disp8} mov      dword ptr [esp + 0x24], 0x00000000       // 0x008a5935    c744242400000000
+                         imul             eax, ecx                                 // 0x008a593d    0fafc1
+                         {disp8} mov      dword ptr [esp + 0x30], ecx              // 0x008a5940    894c2430
+                         {disp8} mov      dword ptr [esp + 0x20], eax              // 0x008a5944    89442420
+_jmp_addr_0x008a5948:    xor.s            eax, eax                                 // 0x008a5948    33c0
+                         and              edi, 0x0000ffff                          // 0x008a594a    81e7ffff0000
+                         {disp32} mov     ax, word ptr [esi + 0x00000114]          // 0x008a5950    668b8614010000
+                         push             ebx                                      // 0x008a5957    53
+                         and.s            eax, edi                                 // 0x008a5958    23c7
+                         mov.s            ecx, esi                                 // 0x008a595a    8bce
+                         push             eax                                      // 0x008a595c    50
+                         call             _jmp_addr_0x008a5560                     // 0x008a595d    e8fefbffff
+                         {disp8} mov      ecx, dword ptr [esp + 0x10]              // 0x008a5962    8b4c2410
+                         xor.s            edx, edx                                 // 0x008a5966    33d2
+                         {disp32} mov     dx, word ptr [esi + 0x00000116]          // 0x008a5968    668b9616010000
+                         push             ecx                                      // 0x008a596f    51
+                         and.s            edx, edi                                 // 0x008a5970    23d7
+                         mov.s            ecx, esi                                 // 0x008a5972    8bce
+                         push             edx                                      // 0x008a5974    52
+                         mov.s            bl, al                                   // 0x008a5975    8ad8
+                         call             _jmp_addr_0x008a5560                     // 0x008a5977    e8e4fbffff
+                         xor.s            ecx, ecx                                 // 0x008a597c    33c9
+                         {disp8} mov      byte ptr [esp + 0x17], al                // 0x008a597e    88442417
+                         {disp32} mov     cx, word ptr [esi + 0x00000118]          // 0x008a5982    668b8e18010000
+                         {disp8} mov      eax, dword ptr [esp + 0x1c]              // 0x008a5989    8b44241c
+                         and.s            ecx, edi                                 // 0x008a598d    23cf
+                         push             eax                                      // 0x008a598f    50
+                         push             ecx                                      // 0x008a5990    51
+                         mov.s            ecx, esi                                 // 0x008a5991    8bce
+                         call             _jmp_addr_0x008a5560                     // 0x008a5993    e8c8fbffff
+                         {disp8} mov      dl, byte ptr [esp + 0x17]                // 0x008a5998    8a542417
+                         {disp8} mov      byte ptr [ebp + -0x01], al               // 0x008a599c    8845ff
+                         {disp8} mov      eax, dword ptr [esp + 0x2c]              // 0x008a599f    8b44242c
+                         {disp8} mov      byte ptr [ebp + 0x00], dl                // 0x008a59a3    885500
+                         {disp8} mov      byte ptr [ebp + 0x01], bl                // 0x008a59a6    885d01
+                         {disp32} mov     ecx, dword ptr [esi + 0x00000104]        // 0x008a59a9    8b8e04010000
+                         add              ebp, 0x03                                // 0x008a59af    83c503
+                         lea              edx, dword ptr [eax + ebp * 0x1]         // 0x008a59b2    8d1428
+                         mov.s            eax, ecx                                 // 0x008a59b5    8bc1
+                         imul             eax, dword ptr [esi + 0x00000108]        // 0x008a59b7    0faf8608010000
+                         lea              eax, dword ptr [eax + eax * 0x2]         // 0x008a59be    8d0440
+                         cmp.s            edx, eax                                 // 0x008a59c1    3bd0
+                         {disp32} jb      _jmp_addr_0x008a5903                     // 0x008a59c3    0f823affffff
+_jmp_addr_0x008a59c9:    {disp32} mov     eax, dword ptr [esi + 0x00000108]        // 0x008a59c9    8b8608010000
+                         xor.s            edi, edi                                 // 0x008a59cf    33ff
+                         test             eax, eax                                 // 0x008a59d1    85c0
+                         {disp8} jbe      _jmp_addr_0x008a5a29                     // 0x008a59d3    7654
+_jmp_addr_0x008a59d5:    {disp32} mov     ecx, dword ptr [esi + 0x00000104]        // 0x008a59d5    8b8e04010000
+                         sub.s            eax, edi                                 // 0x008a59db    2bc7
+                         imul             eax, ecx                                 // 0x008a59dd    0fafc1
+                         {disp8} lea      edx, dword ptr [esp + 0x34]              // 0x008a59e0    8d542434
+                         push             edx                                      // 0x008a59e4    52
+                         lea              edx, dword ptr [ecx + ecx * 0x2]         // 0x008a59e5    8d1449
+                         {disp8} mov      ecx, dword ptr [esp + 0x2c]              // 0x008a59e8    8b4c242c
+                         push             edx                                      // 0x008a59ec    52
+                         lea              edx, dword ptr [ecx + eax * 0x2]         // 0x008a59ed    8d1441
+                         {disp8} lea      ecx, dword ptr [esp + 0x40]              // 0x008a59f0    8d4c2440
+                         add.s            eax, edx                                 // 0x008a59f4    03c2
+                         push             eax                                      // 0x008a59f6    50
+                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a59f7    e8246ff1ff
+                         {disp32} mov     eax, dword ptr [esi + 0x00000104]        // 0x008a59fc    8b8604010000
+                         neg              eax                                      // 0x008a5a02    f7d8
+                         and              eax, 0x03                                // 0x008a5a04    83e003
+                         {disp8} mov      dword ptr [esp + 0x2c], eax              // 0x008a5a07    8944242c
+                         {disp8} je       _jmp_addr_0x008a5a1e                     // 0x008a5a0b    7411
+                         {disp8} lea      ecx, dword ptr [esp + 0x34]              // 0x008a5a0d    8d4c2434
+                         push             ecx                                      // 0x008a5a11    51
+                         push             eax                                      // 0x008a5a12    50
+                         push             0x0                                      // 0x008a5a13    6a00
+                         {disp8} lea      ecx, dword ptr [esp + 0x44]              // 0x008a5a15    8d4c2444
+                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a5a19    e8026ff1ff
+_jmp_addr_0x008a5a1e:    {disp32} mov     eax, dword ptr [esi + 0x00000108]        // 0x008a5a1e    8b8608010000
+                         inc              edi                                      // 0x008a5a24    47
+                         cmp.s            edi, eax                                 // 0x008a5a25    3bf8
+                         .byte            0x72, 0xac// {disp8} jb _jmp_addr_0x008a59d5 // 0x008a5a27    72ac
+_jmp_addr_0x008a5a29:    {disp8} mov      edx, dword ptr [esp + 0x28]              // 0x008a5a29    8b542428
+                         push             edx                                      // 0x008a5a2d    52
+                         call             ___dl__FPv                               // 0x008a5a2e    e86594f0ff
+                         add              esp, 0x04                                // 0x008a5a33    83c404
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5a36    8d4c2438
+                         call             @Close__8LHOSFileFv@4                    // 0x008a5a3a    e8216ef1ff
+                         {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5a3f    8d4c2438
+                         {disp32} mov     dword ptr [esp + 0x0000014c], 0xffffffff // 0x008a5a43    c784244c010000ffffffff
+                         call             @__dt__8LHOSFileFv@4                     // 0x008a5a4e    e82d6cf1ff
+                         mov              eax, 0x00000001                          // 0x008a5a53    b801000000
+_jmp_addr_0x008a5a58:    {disp32} mov     ecx, dword ptr [esp + 0x00000144]        // 0x008a5a58    8b8c2444010000
+                         pop              edi                                      // 0x008a5a5f    5f
+                         pop              esi                                      // 0x008a5a60    5e
+                         pop              ebp                                      // 0x008a5a61    5d
+                         pop              ebx                                      // 0x008a5a62    5b
+                         {disp32} mov     fs:[0x0], ecx                            // 0x008a5a63    64890d00000000
+                         add              esp, 0x00000140                          // 0x008a5a6a    81c440010000
+                         ret              0x0004                                   // 0x008a5a70    c20400
+
+// Snippet: db, [0x008a5a73, 0x008a5b00)
+.byte 0x90, 0x90, 0x90, 0x90      // 0x008a5a73
+.byte 0x90, 0x90, 0x90, 0x90      // 0x008a5a77
+.byte 0x90, 0x90, 0x90, 0x90      // 0x008a5a7b
+.byte 0x90, 0xff, 0x25, 0x1c      // 0x008a5a7f
+.byte 0x90, 0x8a, 0x00, 0xcc      // 0x008a5a83
+.byte 0xcc, 0xcc, 0xcc, 0xcc      // 0x008a5a87
+.byte 0xcc, 0xcc, 0xcc, 0xcc      // 0x008a5a8b
+.byte 0xcc, 0x30, 0x4b, 0x9a      // 0x008a5a8f
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5a93
+.byte 0x00, 0x03, 0xff, 0xff      // 0x008a5a97
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5a9b
+.byte 0x00, 0x20, 0x4b, 0x9a      // 0x008a5a9f
+.byte 0x00, 0x04, 0x00, 0x00      // 0x008a5aa3
+.byte 0x00, 0x03, 0xff, 0xff      // 0x008a5aa7
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5aab
+.byte 0x00, 0x10, 0x4b, 0x9a      // 0x008a5aaf
+.byte 0x00, 0x08, 0x00, 0x00      // 0x008a5ab3
+.byte 0x00, 0x03, 0xff, 0xff      // 0x008a5ab7
+.byte 0x80, 0x00, 0x00, 0x00      // 0x008a5abb
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5abf
+.byte 0x00, 0x0c, 0x00, 0x00      // 0x008a5ac3
+.byte 0x00, 0x0c, 0xff, 0xff      // 0x008a5ac7
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5acb
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5acf
+.byte 0x00, 0x0d, 0x00, 0x00      // 0x008a5ad3
+.byte 0x00, 0x0c, 0xff, 0xff      // 0x008a5ad7
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5adb
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5adf
+.byte 0x00, 0x0e, 0x00, 0x00      // 0x008a5ae3
+.byte 0x00, 0x0c, 0xff, 0xff      // 0x008a5ae7
+.byte 0x80, 0x00, 0x00, 0x00      // 0x008a5aeb
+.byte 0x00, 0x00, 0x00, 0x00      // 0x008a5aef
+.byte 0x00, 0x0f, 0x00, 0x00      // 0x008a5af3
+.byte 0x00, 0x0c, 0xff, 0xff      // 0x008a5af7
+.byte 0x80, 0x00, 0x00, 0x00      // 0x008a5afb
+.byte 0x00                        // 0x008a5aff
+
