@@ -3263,7 +3263,7 @@ _jmp_addr_0x007c8257:    push                 ebp                               
                          push                 dword ptr [ebp + 0x0c]                      // 0x007c8271    ff750c
                          push                 dword ptr [ebp + -0x04]                     // 0x007c8274    ff75fc
                          push                 dword ptr [ebp + 0x08]                      // 0x007c8277    ff7508
-                         call                 _jmp_addr_0x008a5168                        // 0x007c827a    e8e9ce0d00
+                         call                 _jmp_KERNEL32_DLL__RtlUnwind                // 0x007c827a    e8e9ce0d00
                          {disp8} mov          eax, dword ptr [ebp + 0x0c]                 // 0x007c827f    8b450c
                          {disp8} mov          eax, dword ptr [eax + 0x04]                 // 0x007c8282    8b4004
                          and                  al, -0x03                                   // 0x007c8285    24fd
@@ -3523,7 +3523,7 @@ _jmp_addr_0x007c8518:    push                 ebp                               
                          push                 0x0                                         // 0x007c8521    6a00
                          push                 0x007c8530                                  // 0x007c8523    6830857c00
                          push                 dword ptr [ebp + 0x08]                      // 0x007c8528    ff7508
-                         call                 _jmp_addr_0x008a5168                        // 0x007c852b    e838cc0d00
+                         call                 _jmp_KERNEL32_DLL__RtlUnwind                // 0x007c852b    e838cc0d00
                          pop                  ebp                                         // 0x007c8530    5d
                          pop                  edi                                         // 0x007c8531    5f
                          pop                  esi                                         // 0x007c8532    5e

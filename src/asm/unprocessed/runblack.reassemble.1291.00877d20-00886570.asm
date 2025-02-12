@@ -19171,7 +19171,7 @@ _jmp_addr_0x00885368:    push               eax                                 
                          call               _jmp_addr_0x00886690                                 // 0x00885369    e822130000
                          add                esp, 0x04                                            // 0x0088536e    83c404
                          push               eax                                                  // 0x00885371    50
-                         call               _jmp_addr_0x008a507e                                 // 0x00885372    e807fd0100
+                         call               _jmp_WSOCK32_DLL__Ordinal_10                         // 0x00885372    e807fd0100
                          {disp32} mov       dword ptr [esp + 0x00000098], eax                    // 0x00885377    89842498000000
                          mov.s              ebx, eax                                             // 0x0088537e    8bd8
 _jmp_addr_0x00885380:    {disp32} mov       eax, dword ptr [esi + 0x000004c8]                    // 0x00885380    8b86c8040000
@@ -20954,7 +20954,7 @@ _jmp_addr_0x00886490:    push               esi                                 
                          {disp8} je         _jmp_addr_0x008864c4                                 // 0x008864a5    741d
                          push               edi                                                  // 0x008864a7    57
                          mov                byte ptr [esi], 0x00                                 // 0x008864a8    c60600
-                         call               _jmp_addr_0x008a507e                                 // 0x008864ab    e8ceeb0100
+                         call               _jmp_WSOCK32_DLL__Ordinal_10                         // 0x008864ab    e8ceeb0100
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x008864b0    8b7c240c
                          inc                esi                                                  // 0x008864b4    46
                          push               esi                                                  // 0x008864b5    56
