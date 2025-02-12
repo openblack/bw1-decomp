@@ -53,9 +53,9 @@
 .extern _LH3DRenderClose__6LHIlibFv
 .extern _jmp_addr_0x0087fc70
 .extern _jmp_addr_0x0087fc80
-.extern _jmp_addr_0x00898390
-.extern _jmp_addr_0x00898396
-.extern _jmp_addr_0x0089839c
+.extern _jmp_DDRAW_DLL__DirectDrawEnumerateA
+.extern _jmp_DDRAW_DLL__DirectDrawCreateEx
+.extern _jmp_DDRAW_DLL__DirectDrawCreate
 .extern _jmp_addr_0x008a5440
 .extern _jmp_addr_0x008a5480
 .extern _jmp_addr_0x008a5590
@@ -720,7 +720,7 @@ _jmp_addr_0x007dcf9d:    push               edi                                 
                          push               0x009a5940                                    // 0x007dcfa1    6840599a00
                          push               eax                                           // 0x007dcfa6    50
                          push               edi                                           // 0x007dcfa7    57
-                         call               _jmp_addr_0x00898396                          // 0x007dcfa8    e8e9b30b00
+                         call               _jmp_DDRAW_DLL__DirectDrawCreateEx                          // 0x007dcfa8    e8e9b30b00
                          mov.s              eax, esi                                      // 0x007dcfad    8bc6
                          pop                edi                                           // 0x007dcfaf    5f
                          pop                esi                                           // 0x007dcfb0    5e
@@ -1114,7 +1114,7 @@ _jmp_addr_0x007dd360:    sub                esp, 0x0000043c                     
                          mov                eax, dword ptr [esi]                          // 0x007dd376    8b06
                          push               eax                                           // 0x007dd378    50
                          push               0x007dd5c0                                    // 0x007dd379    68c0d57d00
-                         call               _jmp_addr_0x00898390                          // 0x007dd37e    e80db00b00
+                         call               _jmp_DDRAW_DLL__DirectDrawEnumerateA                          // 0x007dd37e    e80db00b00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4c65c8]        // 0x007dd383    a1c8c5e800
                          {disp8} mov        dword ptr [esp + 0x0c], ebx                   // 0x007dd388    895c240c
                          cmp.s              eax, ebx                                      // 0x007dd38c    3bc3
@@ -1152,7 +1152,7 @@ _jmp_addr_0x007dd3ef:    push               0x0                                 
                          push               0x009a5940                                    // 0x007dd3f1    6840599a00
                          push               ebp                                           // 0x007dd3f6    55
                          push               0x0                                           // 0x007dd3f7    6a00
-                         call               _jmp_addr_0x00898396                          // 0x007dd3f9    e898af0b00
+                         call               _jmp_DDRAW_DLL__DirectDrawCreateEx                          // 0x007dd3f9    e898af0b00
                          {disp8} mov        eax, dword ptr [ebp + 0x00]                   // 0x007dd3fe    8b4500
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                   // 0x007dd401    8d54241c
                          push               0x0                                           // 0x007dd405    6a00
@@ -1230,7 +1230,7 @@ _jmp_addr_0x007dd4ea:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          push               ebp                                           // 0x007dd4ff    55
                          {disp32} lea       ecx, dword ptr [esi + eax * 0x1 + 0x000000cc] // 0x007dd500    8d8c06cc000000
                          push               ecx                                           // 0x007dd507    51
-                         call               _jmp_addr_0x00898396                          // 0x007dd508    e889ae0b00
+                         call               _jmp_DDRAW_DLL__DirectDrawCreateEx                          // 0x007dd508    e889ae0b00
                          {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x007dd50d    8b442410
                          {disp8} mov        dword ptr [esp + 0x14], ebx                   // 0x007dd511    895c2414
                          mov                edx, dword ptr [eax]                          // 0x007dd515    8b10
@@ -1364,7 +1364,7 @@ _jmp_addr_0x007dd6a3:    {disp32} mov       eax, dword ptr [esi + 0x000000ec]   
                          push               0x0                                           // 0x007dd6dd    6a00
                          push               eax                                           // 0x007dd6df    50
                          push               ebp                                           // 0x007dd6e0    55
-                         call               _jmp_addr_0x0089839c                          // 0x007dd6e1    e8b6ac0b00
+                         call               _jmp_DDRAW_DLL__DirectDrawCreate                          // 0x007dd6e1    e8b6ac0b00
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x007dd6e6    8d542410
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000            // 0x007dd6ea    c744241000000000
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x007dd6f2    8b442414
