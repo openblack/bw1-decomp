@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x007f66f0
 .extern _jmp_addr_0x007f6780
 .extern _jmp_addr_0x007f6e00
-.extern _jmp_addr_0x008a2752
+.extern _jmp_IMM32_DLL__ImmGetProperty
 
 .globl _jmp_addr_0x007f51e0
 
@@ -145,7 +145,7 @@ _jmp_addr_0x007f5170:    cmp.s            edx, ecx                              
 _jmp_addr_0x007f5176:    mov              eax, dword ptr [esi]                    // 0x007f5176    8b06
                          push             0x4                                     // 0x007f5178    6a04
                          push             eax                                     // 0x007f517a    50
-                         call             _jmp_addr_0x008a2752                    // 0x007f517b    e8d2d50a00
+                         call             _jmp_IMM32_DLL__ImmGetProperty          // 0x007f517b    e8d2d50a00
                          and              eax, 0x00030000                         // 0x007f5180    2500000300
                          cmp              eax, 0x00030000                         // 0x007f5185    3d00000300
                          {disp8} jne      _jmp_addr_0x007f5199                    // 0x007f518a    750d

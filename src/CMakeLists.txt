@@ -363,7 +363,9 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1324.00897480-00897550.asm
     asm/unprocessed/runblack.reassemble.1328.00897550-00899040.asm
     asm/unprocessed/runblack.reassemble.1332.00899040-00899340.asm
-    asm/unprocessed/runblack.reassemble.1336.00899340-008a5b00.asm
+    asm/unprocessed/runblack.reassemble.1335.00899340-008a2710.asm
+    asm/unprocessed/runblack.reassemble.1336.008a2710-008a2770-imm32.dll.asm
+    asm/unprocessed/runblack.reassemble.1337.008a2770-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a895d.asm
     asm/unprocessed/rdata.asm
     asm/unprocessed/data.asm

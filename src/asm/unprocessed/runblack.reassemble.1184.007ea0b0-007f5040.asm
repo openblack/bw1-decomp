@@ -51,17 +51,17 @@
 .extern _jmp_addr_0x007f5e90
 .extern _jmp_addr_0x007f6730
 .extern _jmp_addr_0x007f6bb0
-.extern _jmp_addr_0x008a2710
-.extern _jmp_addr_0x008a2716
-.extern _jmp_addr_0x008a271c
-.extern _jmp_addr_0x008a2722
-.extern _jmp_addr_0x008a2728
-.extern _jmp_addr_0x008a272e
-.extern _jmp_addr_0x008a2734
-.extern _jmp_addr_0x008a273a
-.extern _jmp_addr_0x008a2740
-.extern _jmp_addr_0x008a2746
-.extern _jmp_addr_0x008a274c
+.extern _jmp_IMM32_DLL__ImmAssociateContext
+.extern _jmp_IMM32_DLL__ImmGetContext
+.extern _jmp_IMM32_DLL__ImmReleaseContext
+.extern _jmp_IMM32_DLL__ImmGetCompositionStringA
+.extern _jmp_IMM32_DLL__ImmSetCompositionStringA
+.extern _jmp_IMM32_DLL__ImmNotifyIME
+.extern _jmp_IMM32_DLL__ImmGetOpenStatus
+.extern _jmp_IMM32_DLL__ImmSetOpenStatus
+.extern _jmp_IMM32_DLL__ImmSetCompositionWindow
+.extern _jmp_IMM32_DLL__ImmGetCandidateListA
+.extern _jmp_IMM32_DLL__ImmDestroyContext
 
 .globl _jmp_addr_0x007ea0b0
 .globl _jmp_addr_0x007ea240
@@ -14662,7 +14662,7 @@ _jmp_addr_0x007f42b0:    push             ecx                                   
 _jmp_addr_0x007f4300:    {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x007f4300    8b442404
                          push             0x0                                      // 0x007f4304    6a00
                          push             eax                                      // 0x007f4306    50
-                         call             _jmp_addr_0x008a2710                     // 0x007f4307    e804e40a00
+                         call             _jmp_IMM32_DLL__ImmAssociateContext      // 0x007f4307    e804e40a00
                          ret                                                       // 0x007f430c    c3
                          nop                                                       // 0x007f430d    90
                          nop                                                       // 0x007f430e    90
@@ -14994,7 +14994,7 @@ _jmp_addr_0x007f45d0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          mov.s            esi, ecx                                 // 0x007f45d5    8bf1
                          push             eax                                      // 0x007f45d7    50
                          mov              dword ptr [esi], eax                     // 0x007f45d8    8906
-                         call             _jmp_addr_0x008a2716                     // 0x007f45da    e837e10a00
+                         call             _jmp_IMM32_DLL__ImmGetContext            // 0x007f45da    e837e10a00
                          {disp8} mov      dword ptr [esi + 0x04], eax              // 0x007f45df    894604
                          mov.s            eax, esi                                 // 0x007f45e2    8bc6
                          pop              esi                                      // 0x007f45e4    5e
@@ -15013,7 +15013,7 @@ _jmp_addr_0x007f45f0:    {disp8} mov      eax, dword ptr [ecx + 0x04]           
                          push             eax                                      // 0x007f45f7    50
                          mov              eax, dword ptr [ecx]                     // 0x007f45f8    8b01
                          push             eax                                      // 0x007f45fa    50
-                         call             _jmp_addr_0x008a271c                     // 0x007f45fb    e81ce10a00
+                         call             _jmp_IMM32_DLL__ImmReleaseContext        // 0x007f45fb    e81ce10a00
 _jmp_addr_0x007f4600:    ret                                                       // 0x007f4600    c3
                          nop                                                       // 0x007f4601    90
                          nop                                                       // 0x007f4602    90
@@ -15038,7 +15038,7 @@ _jmp_addr_0x007f4610:    {disp8} mov      edx, dword ptr [esp + 0x04]           
                          {disp8} mov      eax, dword ptr [ecx + 0x04]              // 0x007f4624    8b4104
                          push             edx                                      // 0x007f4627    52
                          push             eax                                      // 0x007f4628    50
-                         call             _jmp_addr_0x008a2722                     // 0x007f4629    e8f4e00a00
+                         call             _jmp_IMM32_DLL__ImmGetCompositionStringA // 0x007f4629    e8f4e00a00
                          test             eax, eax                                 // 0x007f462e    85c0
                          {disp8} jl       _jmp_addr_0x007f4654                     // 0x007f4630    7c22
                          {disp32} mov     ecx, dword ptr [esp + 0x0000020c]        // 0x007f4632    8b8c240c020000
@@ -15114,7 +15114,7 @@ _jmp_addr_0x007f46ea:    {disp8} mov      eax, dword ptr [esp + 0x10]           
                          push             ebx                                      // 0x007f46fb    53
                          push             edx                                      // 0x007f46fc    52
                          push             ecx                                      // 0x007f46fd    51
-                         call             _jmp_addr_0x008a2728                     // 0x007f46fe    e825e00a00
+                         call             _jmp_IMM32_DLL__ImmSetCompositionStringA // 0x007f46fe    e825e00a00
                          pop              edi                                      // 0x007f4703    5f
                          pop              esi                                      // 0x007f4704    5e
                          pop              ebp                                      // 0x007f4705    5d
@@ -15194,7 +15194,7 @@ _jmp_addr_0x007f4780:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          push             edx                                      // 0x007f4790    52
                          push             eax                                      // 0x007f4791    50
                          push             ecx                                      // 0x007f4792    51
-                         call             _jmp_addr_0x008a272e                     // 0x007f4793    e896df0a00
+                         call             _jmp_IMM32_DLL__ImmNotifyIME             // 0x007f4793    e896df0a00
                          ret              0x000c                                   // 0x007f4798    c20c00
                          nop                                                       // 0x007f479b    90
                          nop                                                       // 0x007f479c    90
@@ -15203,7 +15203,7 @@ _jmp_addr_0x007f4780:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                       // 0x007f479f    90
 _jmp_addr_0x007f47a0:    {disp8} mov      eax, dword ptr [ecx + 0x04]              // 0x007f47a0    8b4104
                          push             eax                                      // 0x007f47a3    50
-                         call             _jmp_addr_0x008a2734                     // 0x007f47a4    e88bdf0a00
+                         call             _jmp_IMM32_DLL__ImmGetOpenStatus         // 0x007f47a4    e88bdf0a00
                          ret                                                       // 0x007f47a9    c3
                          nop                                                       // 0x007f47aa    90
                          nop                                                       // 0x007f47ab    90
@@ -15215,7 +15215,7 @@ _jmp_addr_0x007f47b0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          {disp8} mov      ecx, dword ptr [ecx + 0x04]              // 0x007f47b4    8b4904
                          push             eax                                      // 0x007f47b7    50
                          push             ecx                                      // 0x007f47b8    51
-                         call             _jmp_addr_0x008a273a                     // 0x007f47b9    e87cdf0a00
+                         call             _jmp_IMM32_DLL__ImmSetOpenStatus         // 0x007f47b9    e87cdf0a00
                          ret              0x0004                                   // 0x007f47be    c20400
                          nop                                                       // 0x007f47c1    90
                          nop                                                       // 0x007f47c2    90
@@ -15236,7 +15236,7 @@ _jmp_addr_0x007f47d0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          {disp8} mov      ecx, dword ptr [ecx + 0x04]              // 0x007f47d4    8b4904
                          push             eax                                      // 0x007f47d7    50
                          push             ecx                                      // 0x007f47d8    51
-                         call             _jmp_addr_0x008a2740                     // 0x007f47d9    e862df0a00
+                         call             _jmp_IMM32_DLL__ImmSetCompositionWindow  // 0x007f47d9    e862df0a00
                          ret              0x0004                                   // 0x007f47de    c20400
                          nop                                                       // 0x007f47e1    90
                          nop                                                       // 0x007f47e2    90
@@ -15261,7 +15261,7 @@ _jmp_addr_0x007f47f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          push             edx                                      // 0x007f4800    52
                          push             eax                                      // 0x007f4801    50
                          push             ecx                                      // 0x007f4802    51
-                         call             _jmp_addr_0x008a2746                     // 0x007f4803    e83edf0a00
+                         call             _jmp_IMM32_DLL__ImmGetCandidateListA     // 0x007f4803    e83edf0a00
                          ret              0x000c                                   // 0x007f4808    c20c00
                          nop                                                       // 0x007f480b    90
                          nop                                                       // 0x007f480c    90
@@ -15332,10 +15332,10 @@ _jmp_addr_0x007f48a0:    sub              esp, 0x0c                             
                          {disp8} je       _jmp_addr_0x007f48d9                     // 0x007f48d0    7407
                          push             edi                                      // 0x007f48d2    57
                          push             eax                                      // 0x007f48d3    50
-                         call             _jmp_addr_0x008a2710                     // 0x007f48d4    e837de0a00
+                         call             _jmp_IMM32_DLL__ImmAssociateContext      // 0x007f48d4    e837de0a00
 _jmp_addr_0x007f48d9:    {disp32} mov     eax, dword ptr [esi + 0x00000828]        // 0x007f48d9    8b8628080000
                          push             eax                                      // 0x007f48df    50
-                         call             _jmp_addr_0x008a274c                     // 0x007f48e0    e867de0a00
+                         call             _jmp_IMM32_DLL__ImmDestroyContext        // 0x007f48e0    e867de0a00
 _jmp_addr_0x007f48e5:    {disp32} mov     eax, dword ptr [esi + 0x00000810]        // 0x007f48e5    8b8610080000
                          {disp32} mov     ebx, dword ptr [esi + 0x0000080c]        // 0x007f48eb    8b9e0c080000
                          cmp.s            ebx, eax                                 // 0x007f48f1    3bd8
@@ -15568,7 +15568,7 @@ _jmp_addr_0x007f4b1a:    {disp8} lea      eax, dword ptr [esi + 0x08]           
                          push             0x9                                      // 0x007f4b50    6a09
                          push             eax                                      // 0x007f4b52    50
                          {disp32} mov     byte ptr [data_bytes + 0x4cc0e4], 0x01   // 0x007f4b53    c605e420e90001
-                         call             _jmp_addr_0x008a2728                     // 0x007f4b5a    e8c9db0a00
+                         call             _jmp_IMM32_DLL__ImmSetCompositionStringA // 0x007f4b5a    e8c9db0a00
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x270fd4]   // 0x007f4b5f    8b0dd46fc300
                          {disp32} mov     edx, dword ptr [data_bytes + 0x270cbc]   // 0x007f4b65    8b15bc6cc300
                          {disp8} mov      eax, dword ptr [esp + 0x0c]              // 0x007f4b6b    8b44240c
@@ -15578,7 +15578,7 @@ _jmp_addr_0x007f4b1a:    {disp8} lea      eax, dword ptr [esi + 0x08]           
                          push             0x00c36bbc                               // 0x007f4b76    68bc6bc300
                          push             0x24                                     // 0x007f4b7b    6a24
                          push             eax                                      // 0x007f4b7d    50
-                         call             _jmp_addr_0x008a2728                     // 0x007f4b7e    e8a5db0a00
+                         call             _jmp_IMM32_DLL__ImmSetCompositionStringA // 0x007f4b7e    e8a5db0a00
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x2710dc]   // 0x007f4b83    8b0ddc70c300
                          {disp32} mov     edx, dword ptr [data_bytes + 0x270dc4]   // 0x007f4b89    8b15c46dc300
                          {disp8} mov      eax, dword ptr [esp + 0x0c]              // 0x007f4b8f    8b44240c
@@ -15588,7 +15588,7 @@ _jmp_addr_0x007f4b1a:    {disp8} lea      eax, dword ptr [esi + 0x08]           
                          push             0x00c36cc4                               // 0x007f4b9a    68c46cc300
                          push             0x12                                     // 0x007f4b9f    6a12
                          push             eax                                      // 0x007f4ba1    50
-                         call             _jmp_addr_0x008a2728                     // 0x007f4ba2    e881db0a00
+                         call             _jmp_IMM32_DLL__ImmSetCompositionStringA // 0x007f4ba2    e881db0a00
                          push             edi                                      // 0x007f4ba7    57
                          mov.s            ecx, esi                                 // 0x007f4ba8    8bce
                          {disp32} mov     byte ptr [data_bytes + 0x4cc0e4], 0x00   // 0x007f4baa    c605e420e90000
@@ -15601,7 +15601,7 @@ _jmp_addr_0x007f4bbb:    mov              edx, dword ptr [esi]                  
                          push             ecx                                      // 0x007f4bc9    51
                          push             edx                                      // 0x007f4bca    52
                          push             eax                                      // 0x007f4bcb    50
-                         call             _jmp_addr_0x008a2722                     // 0x007f4bcc    e851db0a00
+                         call             _jmp_IMM32_DLL__ImmGetCompositionStringA // 0x007f4bcc    e851db0a00
                          {disp32} mov     dword ptr [esi + 0x00000104], eax        // 0x007f4bd1    898604010000
                          add              esi, 0x00000108                          // 0x007f4bd7    81c608010000
                          cmp              esi, 0x00c370e0                          // 0x007f4bdd    81fee070c300
