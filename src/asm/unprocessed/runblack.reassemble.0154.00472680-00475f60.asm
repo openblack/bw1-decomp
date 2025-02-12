@@ -171,8 +171,8 @@
 .extern _jmp_addr_0x0081edd0
 .extern _CHAR2WCHAR__FPc
 .extern _jmp_addr_0x00833a00
-.extern _jmp_addr_0x00898390
-.extern _jmp_addr_0x00898396
+.extern _jmp_DDRAW_DLL__DirectDrawEnumerateA
+.extern _jmp_DDRAW_DLL__DirectDrawCreateEx
 
 .globl _jmp_addr_0x00472680
 .globl _jmp_addr_0x004726b0
@@ -263,7 +263,7 @@ _jmp_addr_0x004726d0:    push               ebx                                 
                          and                ecx, 0x03                                            // 0x004726f4    83e103
                          push               0x00472760                                           // 0x004726f7    6860274700
                          rep movsb                                                               // 0x004726fc    f3a4
-                         call               _jmp_addr_0x00898390                                 // 0x004726fe    e88d5c4200
+                         call               _jmp_DDRAW_DLL__DirectDrawEnumerateA                                 // 0x004726fe    e88d5c4200
                          test               eax, eax                                             // 0x00472703    85c0
                          {disp8} je         _jmp_addr_0x00472731                                 // 0x00472705    742a
                          or                 ecx, 0xffffffff                                      // 0x00472707    83c9ff
@@ -317,7 +317,7 @@ _jmp_addr_0x00472731:    or                 ecx, 0xffffffff                     
                          {disp8} lea        eax, dword ptr [esp + 0x14]                          // 0x00472774    8d442414
                          push               eax                                                  // 0x00472778    50
                          push               ecx                                                  // 0x00472779    51
-                         call               _jmp_addr_0x00898396                                 // 0x0047277a    e8175c4200
+                         call               _jmp_DDRAW_DLL__DirectDrawCreateEx                                 // 0x0047277a    e8175c4200
                          test               eax, eax                                             // 0x0047277f    85c0
                          {disp32} jne       _jmp_addr_0x0047290f                                 // 0x00472781    0f8588010000
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                          // 0x00472787    8b44240c
