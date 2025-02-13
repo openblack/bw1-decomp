@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x007c4c00
 .extern _jmp_addr_0x007c4c30
 .extern _jmp_addr_0x007c6786
-.extern _jmp_addr_0x007c92ac
+.extern _calloc
 
 .globl _jmp_addr_0x007c10c0
 .globl _jmp_addr_0x007c11f0
@@ -256,7 +256,7 @@ _jmp_addr_0x007c1050:    mov              eax, 0xfffffffe                       
                          {disp8} mov      ecx, dword ptr [esp + 0x08]                   // 0x007c1094    8b4c2408
                          push             eax                                           // 0x007c1098    50
                          push             ecx                                           // 0x007c1099    51
-                         call             _jmp_addr_0x007c92ac                          // 0x007c109a    e80d820000
+                         call             _calloc                                       // 0x007c109a    e80d820000
                          add              esp, 0x08                                     // 0x007c109f    83c408
                          ret                                                            // 0x007c10a2    c3
                          nop                                                            // 0x007c10a3    90

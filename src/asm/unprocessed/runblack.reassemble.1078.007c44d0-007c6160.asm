@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x007c989f
 .extern _jmp_addr_0x007c9fc6
 .extern _jmp_addr_0x007c9fcf
-.extern _jmp_addr_0x007ca5a7
+.extern __amsg_exit
 .extern _jmp_addr_0x007cb6b6
 .extern _jmp_addr_0x007cb717
 .extern _jmp_addr_0x007cb744
@@ -1553,7 +1553,7 @@ _jmp_addr_0x007c5791:    push             dword ptr [esp + 0x04]                
                          {disp32} mov     dword ptr [data_bytes + 0x5e7cdc], eax        // 0x007c57b0    a3dcdcfa00
                          {disp8} jne      _jmp_addr_0x007c57c4                          // 0x007c57b5    750d
                          push             0x18                                          // 0x007c57b7    6a18
-                         call             _jmp_addr_0x007ca5a7                          // 0x007c57b9    e8e94d0000
+                         call             __amsg_exit                                   // 0x007c57b9    e8e94d0000
                          {disp32} mov     eax, dword ptr [data_bytes + 0x5e7cdc]        // 0x007c57be    a1dcdcfa00
                          pop              ecx                                           // 0x007c57c3    59
 _jmp_addr_0x007c57c4:    and              dword ptr [eax], 0x00                         // 0x007c57c4    832000
@@ -2445,7 +2445,7 @@ _jmp_addr_0x007c5fdb:    push             ebp                                   
                          leave                                                          // 0x007c60d9    c9
                          ret                                                            // 0x007c60da    c3
                          push             0x19                                          // 0x007c60db    6a19
-                         call             _jmp_addr_0x007ca5a7                          // 0x007c60dd    e8c5440000
+                         call             __amsg_exit                                   // 0x007c60dd    e8c5440000
                          pop              ecx                                           // 0x007c60e2    59
                          ret                                                            // 0x007c60e3    c3
                          int3                                                           // 0x007c60e4    cc
