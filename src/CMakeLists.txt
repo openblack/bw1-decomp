@@ -408,7 +408,7 @@ target_link_options(runblack-reassembled
         "/heap:0x100000,0x1000"
         "/base:0x00400000"
         "/filealign:0x1000"
-        "/entry:entry_function"
+        "/entry:WinMainCRTStartup"
         "/safeseh:no"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug>"

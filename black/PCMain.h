@@ -20,4 +20,7 @@ void __cdecl __construct_new_array(void* address, size_t stride, int len, void* 
 // win1.41 008a5f63 mac 101a7d90 __destroy_new_array
 void __cdecl __destroy_new_array(void* address, size_t stride, int len, void* destructor);
 
+// win1.41 007dee50 mac ???????? WinMain
+int __clrcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd);
+
 #endif /* BW1_DECOMP_PC_MAIN_INCLUDED_H */

@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x007c908a
 .extern _jmp_addr_0x007c90a0
 .extern _jmp_addr_0x007c91f0
-.extern _jmp_addr_0x007c92ac
+.extern _calloc
 .extern _jmp_addr_0x007c9657
 .extern _jmp_addr_0x007ca5f0
 .extern _jmp_addr_0x007cb100
@@ -1642,7 +1642,7 @@ _jmp_addr_0x007db78d:    ret                                                    
 ___nw__FUl:              {disp8} mov       eax, dword ptr [esp + 0x04]                    // 0x007db790    8b442404
                          push              0x1                                            // 0x007db794    6a01
                          push              eax                                            // 0x007db796    50
-                         call              _jmp_addr_0x007c92ac                           // 0x007db797    e810dbfeff
+                         call              _calloc                                        // 0x007db797    e810dbfeff
                          add               esp, 0x08                                      // 0x007db79c    83c408
                          ret                                                              // 0x007db79f    c3
 _jmp_addr_0x007db7a0:    {disp8} mov       eax, dword ptr [esp + 0x04]                    // 0x007db7a0    8b442404
