@@ -231,7 +231,7 @@
 .globl _jmp_addr_0x007ca3b2
 .globl _jmp_addr_0x007ca45f
 .globl _WinMainCRTStartup
-.globl _jmp_addr_0x007ca5a7
+.globl __amsg_exit
 .globl _jmp_addr_0x007ca5f0
 .globl _jmp_addr_0x007ca66c
 .globl _jmp_addr_0x007ca690
@@ -6891,7 +6891,7 @@ _jmp_addr_0x007ca56d:    push                 eax                               
                          {disp8} mov          esp, dword ptr [ebp + -0x18]                // 0x007ca59c    8b65e8
                          push                 dword ptr [ebp + -0x68]                     // 0x007ca59f    ff7598
                          call                 _jmp_addr_0x007c9ef2                        // 0x007ca5a2    e84bf9ffff
-_jmp_addr_0x007ca5a7:    cmp                  dword ptr [data_bytes + 0x4be220], 0x01     // 0x007ca5a7    833d2042e80001
+__amsg_exit         :    cmp                  dword ptr [data_bytes + 0x4be220], 0x01     // 0x007ca5a7    833d2042e80001
                          {disp8} jne          _jmp_addr_0x007ca5b5                        // 0x007ca5ae    7505
                          call                 __FF_MSGBANNER                              // 0x007ca5b0    e8eebd0000
 _jmp_addr_0x007ca5b5:    push                 dword ptr [esp + 0x04]                      // 0x007ca5b5    ff742404
