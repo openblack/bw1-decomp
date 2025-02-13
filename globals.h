@@ -105,6 +105,9 @@ struct globals_t
   float* FLOAT_00c2a150;
   float* g_maxX;  /* 0x00c2ab00 */
   float* g_maxY;  /* 0x00c2ab04 */
+  void (__cdecl** _FPinit)(void);  /* 0x00c2d39c */
+  int* __app_type;  /* 0x00c2d674 */
+  LPCRITICAL_SECTION (*_locktable)[48];  /* 0x00c2da60 */
   int32_t (*sin_lookup_table)[0x800];  /* 0x00c31614 */
   int32_t (*cos_lookup_table)[0x800];  /* 0x00c31e14 */
   char (*s_parsed_line)[0x200];  /* 0x00c341c0 */
@@ -209,6 +212,8 @@ struct globals_t
   float* near_clipping;  /* 0x00e839e0 */
   struct InfoTransform* g_info_transform;  /* 0x00e839e4 */
   int* DAT_00e83a20;
+  int* __error_mode; /* 0x00e84220 */
+  void (**_adbgmsg)(void); /* 0x00e843dc */
   struct LHSys* LHSys;  /* 0x00e85040 */
   RTL_CRITICAL_SECTION* lpCriticalSection_00e8c118;
   RTL_CRITICAL_SECTION* lpCriticalSection_00e90650;
@@ -265,6 +270,9 @@ struct globals_t
   int32_t* INT_00fa51c4;
   void (__cdecl** PTR_00fa51d0)(int param_0, int param_1);
   struct LH3DSubMesh** LH3DSubMesh_g_current_sub_mesh;  /* 0x00fa93bc */
+  HANDLE* _crtheap;  /* 0x00facca8 */
+  char** _acmdln;/* 0x00fadccc */
+  char** _aenvptr; /* 0x00e84218 */
   struct custom_footpath_display_control_t* custom_footpath_display_control;  /* 0x00fae800 */
 };
 
@@ -291,6 +299,9 @@ static struct globals_t globals = {
     .FLOAT_00c2a150 = (float*)0x00c2a150,
     .g_maxX = (float*)0x00c2ab00,
     .g_maxY = (float*)0x00c2ab04,
+    ._FPinit = (void (__cdecl**)(void)) 0x00c2d39c,
+    .__app_type = (int*)0x00c2d674,
+    ._locktable = (LPCRITICAL_SECTION (*)[48]) 0x00c2da60,
     .sin_lookup_table = (int32_t (*)[2048])0x00c31614,
     .cos_lookup_table = (int32_t (*)[2048])0x00c31e14,
     .s_parsed_line = (char (*)[512])0x00c341c0,
@@ -395,6 +406,8 @@ static struct globals_t globals = {
     .near_clipping = (float*)0x00e839e0,
     .g_info_transform = (struct InfoTransform*)0x00e839e4,
     .DAT_00e83a20 = (int*)0x00e83a20,
+    .__error_mode = (int*)0x00e84220,
+    ._adbgmsg = (void (**)(void))0x00e843dc,
     .LHSys = (struct LHSys*)0x00e85040,
     .lpCriticalSection_00e8c118 = (RTL_CRITICAL_SECTION*)0x00e8c118,
     .lpCriticalSection_00e90650 = (RTL_CRITICAL_SECTION*)0x00e90650,
@@ -451,6 +464,9 @@ static struct globals_t globals = {
     .INT_00fa51c4 = (int32_t*)0x00fa51c4,
     .PTR_00fa51d0 = (void (__cdecl**)(int param_0, int param_1))0x00fa51d0,
     .LH3DSubMesh_g_current_sub_mesh = (struct LH3DSubMesh**)0x00fa93bc,
+    ._crtheap = (HANDLE*)0x00facca8,
+    ._acmdln = (char**)0x00fadccc,
+    ._aenvptr = (char**)0x00e84218,
     .custom_footpath_display_control = (struct custom_footpath_display_control_t*)0x00fae800,
 };
 

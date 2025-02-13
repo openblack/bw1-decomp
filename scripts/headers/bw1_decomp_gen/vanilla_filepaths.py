@@ -1192,6 +1192,7 @@ ROOMMATE_CLASS_MAP = {
     "DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl": "LH3DRender",
     "ConfigGetFPS__Fv": "Config",
     "Report3D__FPCce": "LH3DTech",
+    "WinMain": "PCMain",
     "ScanParameters__Fv": "PCMain",
     "IsACmdLineString__FPcPCc": "PCMain",
     "operator_new": "PCMain",
