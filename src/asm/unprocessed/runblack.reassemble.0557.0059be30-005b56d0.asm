@@ -76,7 +76,7 @@
 .extern _jmp_addr_0x007c7ae0
 .extern _jmp_addr_0x007c91a0
 .extern _jmp_addr_0x007c91f0
-.extern _jmp_addr_0x007c92ac
+.extern _calloc
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007fab30
@@ -1190,7 +1190,7 @@ _jmp_addr_0x0059c99c:    test               eax, eax                            
                          add                eax, 0x0a                                     // 0x0059ca0b    83c00a
                          push               0x1                                           // 0x0059ca0e    6a01
                          push               eax                                           // 0x0059ca10    50
-                         call               _jmp_addr_0x007c92ac                          // 0x0059ca11    e896c82200
+                         call               _calloc                                       // 0x0059ca11    e896c82200
                          mov.s              ebx, eax                                      // 0x0059ca16    8bd8
                          mov                word ptr [ebx], di                            // 0x0059ca18    66893b
                          {disp8} mov        ecx, dword ptr [esp + 0x44]                   // 0x0059ca1b    8b4c2444
