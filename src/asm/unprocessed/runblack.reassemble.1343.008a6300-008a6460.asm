@@ -97,7 +97,7 @@ _jmp_addr_0x008a63dc:    {disp32} mov     al, byte ptr [ebx + 0x00facb81]       
                          and              al, 0x20                                // 0x008a63e2    2420
                          cmp              al, 0x20                                // 0x008a63e4    3c20
                          {disp8} jne      _jmp_addr_0x008a63f1                    // 0x008a63e6    7509
-                         movzx            eax, byte ptr [ebx + 0x00faca80]        // 0x008a63e8    0fb68380cafa00
+                         movzx            eax, byte ptr [ebx + __mbcasemap]       // 0x008a63e8    0fb68380cafa00
                          {disp8} jmp      _jmp_addr_0x008a63f3                    // 0x008a63ef    eb02
 _jmp_addr_0x008a63f1:    mov.s            eax, ebx                                // 0x008a63f1    8bc3
 _jmp_addr_0x008a63f3:    pop              ebx                                     // 0x008a63f3    5b
