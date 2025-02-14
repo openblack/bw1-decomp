@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x007c9e80
 .extern _jmp_addr_0x007cb6b6
 .extern _jmp_addr_0x007cb717
-.extern _jmp_addr_0x007cb744
+.extern ___crtLCMapStringA
 .extern _jmp_addr_0x007d480c
 .extern _jmp_addr_0x007d4dde
 .extern _jmp_addr_0x007d5070
@@ -477,7 +477,7 @@ _jmp_addr_0x008a5edc:    push             ebx                                   
                          mov              esi, 0x00000100                         // 0x008a5ee7    be00010000
                          push             esi                                     // 0x008a5eec    56
                          push             eax                                     // 0x008a5eed    50
-                         call             _jmp_addr_0x007cb744                    // 0x008a5eee    e85158f2ff
+                         call             ___crtLCMapStringA                      // 0x008a5eee    e85158f2ff
                          mov.s            ebx, eax                                // 0x008a5ef3    8bd8
                          add              esp, 0x20                               // 0x008a5ef5    83c420
                          test             ebx, ebx                                // 0x008a5ef8    85db
@@ -496,7 +496,7 @@ _jmp_addr_0x008a5edc:    push             ebx                                   
                          push             dword ptr [ebp + 0x08]                  // 0x008a5f12    ff7508
                          push             esi                                     // 0x008a5f15    56
                          push             dword ptr [data_bytes + 0x4be2a0]       // 0x008a5f16    ff35a042e800
-                         call             _jmp_addr_0x007cb744                    // 0x008a5f1c    e82358f2ff
+                         call             ___crtLCMapStringA                      // 0x008a5f1c    e82358f2ff
                          add              esp, 0x20                               // 0x008a5f21    83c420
                          test             eax, eax                                // 0x008a5f24    85c0
                          {disp8} je       _jmp_addr_0x008a5f35                    // 0x008a5f26    740d
@@ -527,7 +527,7 @@ ___destroy_new_array:    push             ebp                                   
                          mov.s            ebp, esp                                // 0x008a5f64    8bec
                          push             -0x1                                    // 0x008a5f66    6aff
                          push             0x009a6298                              // 0x008a5f68    6898629a00
-                         push             0x007cd8ac                              // 0x008a5f6d    68acd87c00
+                         push             0x007cd8ac /*__except_handler3*/        // 0x008a5f6d    68acd87c00
                          {disp32} mov     eax, fs:[0x0]                           // 0x008a5f72    64a100000000
                          push             eax                                     // 0x008a5f78    50
                          {disp32} mov     fs:[0x0], esp                           // 0x008a5f79    64892500000000
@@ -569,7 +569,7 @@ _jmp_addr_0x008a5fe3:    push             ebp                                   
                          mov.s            ebp, esp                                // 0x008a5fe4    8bec
                          push             -0x1                                    // 0x008a5fe6    6aff
                          push             0x009a62a8                              // 0x008a5fe8    68a8629a00
-                         push             0x007cd8ac                              // 0x008a5fed    68acd87c00
+                         push             0x007cd8ac /*__except_handler3*/        // 0x008a5fed    68acd87c00
                          {disp32} mov     eax, fs:[0x0]                           // 0x008a5ff2    64a100000000
                          push             eax                                     // 0x008a5ff8    50
                          {disp32} mov     fs:[0x0], esp                           // 0x008a5ff9    64892500000000
@@ -760,7 +760,7 @@ ___construct_new_array:  push             ebp                                   
                          mov.s            ebp, esp                                // 0x008a6188    8bec
                          push             -0x1                                    // 0x008a618a    6aff
                          push             0x009a62b8                              // 0x008a618c    68b8629a00
-                         push             0x007cd8ac                              // 0x008a6191    68acd87c00
+                         push             0x007cd8ac /*__except_handler3*/        // 0x008a6191    68acd87c00
                          {disp32} mov     eax, fs:[0x0]                           // 0x008a6196    64a100000000
                          push             eax                                     // 0x008a619c    50
                          {disp32} mov     fs:[0x0], esp                           // 0x008a619d    64892500000000

@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x007cb295
 .extern _jmp_addr_0x007cb6b6
 .extern _jmp_addr_0x007cb717
-.extern _jmp_addr_0x007cb744
+.extern ___crtLCMapStringA
 .extern _jmp_addr_0x007cb993
 .extern _jmp_addr_0x007cc962
 .extern _jmp_addr_0x007ccf82
@@ -537,7 +537,7 @@ _jmp_addr_0x007c668a:    push                 ebp                               
                          mov.s                ebp, esp                                    // 0x007c668b    8bec
                          push                 -0x1                                        // 0x007c668d    6aff
                          push                 0x009a0698                                  // 0x007c668f    6898069a00
-                         push                 0x007cd8ac                                  // 0x007c6694    68acd87c00
+                         push                 0x007cd8ac /*__except_handler3*/            // 0x007c6694    68acd87c00
                          {disp32} mov         eax, fs:[0x0]                               // 0x007c6699    64a100000000
                          push                 eax                                         // 0x007c669f    50
                          {disp32} mov         fs:[0x0], esp                               // 0x007c66a0    64892500000000
@@ -626,7 +626,7 @@ _jmp_addr_0x007c6786:    push                 ebp                               
                          mov.s                ebp, esp                                    // 0x007c6787    8bec
                          push                 -0x1                                        // 0x007c6789    6aff
                          push                 0x009a06b0                                  // 0x007c678b    68b0069a00
-                         push                 0x007cd8ac                                  // 0x007c6790    68acd87c00
+                         push                 0x007cd8ac /*__except_handler3*/            // 0x007c6790    68acd87c00
                          {disp32} mov         eax, fs:[0x0]                               // 0x007c6795    64a100000000
                          push                 eax                                         // 0x007c679b    50
                          {disp32} mov         fs:[0x0], esp                               // 0x007c679c    64892500000000
@@ -4954,7 +4954,7 @@ _jmp_addr_0x007c92ac:    push                 ebp                               
                          mov.s                ebp, esp                                    // 0x007c92ad    8bec
                          push                 -0x1                                        // 0x007c92af    6aff
                          push                 0x009a0708                                  // 0x007c92b1    6808079a00
-                         push                 0x007cd8ac                                  // 0x007c92b6    68acd87c00
+                         push                 0x007cd8ac /*__except_handler3*/            // 0x007c92b6    68acd87c00
                          {disp32} mov         eax, fs:[0x0]                               // 0x007c92bb    64a100000000
                          push                 eax                                         // 0x007c92c1    50
                          {disp32} mov         fs:[0x0], esp                               // 0x007c92c2    64892500000000
@@ -5403,7 +5403,7 @@ _jmp_addr_0x007c96e5:    push                 esi                               
                          push                 eax                                         // 0x007c96f2    50
                          push                 edi                                         // 0x007c96f3    57
                          push                 dword ptr [data_bytes + 0x4be2a0]           // 0x007c96f4    ff35a042e800
-                         call                 _jmp_addr_0x007cb744                        // 0x007c96fa    e845200000
+                         call                 ___crtLCMapStringA                          // 0x007c96fa    e845200000
                          add                  esp, 0x20                                   // 0x007c96ff    83c420
                          test                 eax, eax                                    // 0x007c9702    85c0
                          {disp8} je           _jmp_addr_0x007c96b4                        // 0x007c9704    74ae
@@ -5577,7 +5577,7 @@ _jmp_addr_0x007c989f:    push                 ebp                               
                          mov.s                ebp, esp                                    // 0x007c98a0    8bec
                          push                 -0x1                                        // 0x007c98a2    6aff
                          push                 0x009a0720                                  // 0x007c98a4    6820079a00
-                         push                 0x007cd8ac                                  // 0x007c98a9    68acd87c00
+                         push                 0x007cd8ac /*__except_handler3*/            // 0x007c98a9    68acd87c00
                          {disp32} mov         eax, fs:[0x0]                               // 0x007c98ae    64a100000000
                          push                 eax                                         // 0x007c98b4    50
                          {disp32} mov         fs:[0x0], esp                               // 0x007c98b5    64892500000000
@@ -6811,7 +6811,7 @@ _entry_function:         push                 ebp                               
                          mov.s                ebp, esp                                    // 0x007ca4a0    8bec
                          push                 -0x1                                        // 0x007ca4a2    6aff
                          push                 0x009a0738                                  // 0x007ca4a4    6838079a00
-                         push                 0x007cd8ac                                  // 0x007ca4a9    68acd87c00
+                         push                 0x007cd8ac /*__except_handler3*/            // 0x007ca4a9    68acd87c00
                          {disp32} mov         eax, fs:[0x0]                               // 0x007ca4ae    64a100000000
                          push                 eax                                         // 0x007ca4b4    50
                          {disp32} mov         fs:[0x0], esp                               // 0x007ca4b5    64892500000000
