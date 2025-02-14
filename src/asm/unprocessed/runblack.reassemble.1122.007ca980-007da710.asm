@@ -14946,14 +14946,14 @@ _jmp_addr_0x007d4c24:    mov                dx, word ptr [ecx]                  
                          {disp8} je         _jmp_addr_0x007d4c42                           // 0x007d4c2a    7416
                          or                 byte ptr [eax + 0xfacb81], 0x10                // 0x007d4c2c    808881cbfa0010
                          {disp32} mov       dl, byte ptr [ebp + eax * 0x1 + -0x00000214]   // 0x007d4c33    8a9405ecfdffff
-_jmp_addr_0x007d4c3a:    {disp32} mov       byte ptr [eax + 0x00faca80], dl                // 0x007d4c3a    889080cafa00
+_jmp_addr_0x007d4c3a:    {disp32} mov       byte ptr [eax + __mbcasemap], dl               // 0x007d4c3a    889080cafa00
                          {disp8} jmp        _jmp_addr_0x007d4c5e                           // 0x007d4c40    eb1c
 _jmp_addr_0x007d4c42:    test               dl, 0x02                                       // 0x007d4c42    f6c202
                          {disp8} je         _jmp_addr_0x007d4c57                           // 0x007d4c45    7410
                          or                 byte ptr [eax + 0xfacb81], 0x20                // 0x007d4c47    808881cbfa0020
                          {disp32} mov       dl, byte ptr [ebp + eax * 0x1 + -0x00000314]   // 0x007d4c4e    8a9405ecfcffff
                          {disp8} jmp        _jmp_addr_0x007d4c3a                           // 0x007d4c55    ebe3
-_jmp_addr_0x007d4c57:    and                byte ptr [eax + 0x00faca80], 0x00              // 0x007d4c57    80a080cafa0000
+_jmp_addr_0x007d4c57:    and                byte ptr [eax + __mbcasemap], 0x00             // 0x007d4c57    80a080cafa0000
 _jmp_addr_0x007d4c5e:    inc                eax                                            // 0x007d4c5e    40
                          inc                ecx                                            // 0x007d4c5f    41
                          inc                ecx                                            // 0x007d4c60    41
@@ -14969,7 +14969,7 @@ _jmp_addr_0x007d4c6e:    cmp                eax, 0x41                           
                          or                 byte ptr [eax + 0xfacb81], 0x10                // 0x007d4c78    808881cbfa0010
                          mov.s              cl, al                                         // 0x007d4c7f    8ac8
                          add                cl, 0x20                                       // 0x007d4c81    80c120
-_jmp_addr_0x007d4c84:    {disp32} mov       byte ptr [eax + 0x00faca80], cl                // 0x007d4c84    888880cafa00
+_jmp_addr_0x007d4c84:    {disp32} mov       byte ptr [eax + __mbcasemap], cl               // 0x007d4c84    888880cafa00
                          {disp8} jmp        _jmp_addr_0x007d4cab                           // 0x007d4c8a    eb1f
 _jmp_addr_0x007d4c8c:    cmp                eax, 0x61                                      // 0x007d4c8c    83f861
                          .byte              0x72, 0x13// {disp8} jb _jmp_addr_0x007d4ca4   // 0x007d4c8f    7213
@@ -14979,7 +14979,7 @@ _jmp_addr_0x007d4c8c:    cmp                eax, 0x61                           
                          mov.s              cl, al                                         // 0x007d4c9d    8ac8
                          sub                cl, 0x20                                       // 0x007d4c9f    80e920
                          {disp8} jmp        _jmp_addr_0x007d4c84                           // 0x007d4ca2    ebe0
-_jmp_addr_0x007d4ca4:    and                byte ptr [eax + 0x00faca80], 0x00              // 0x007d4ca4    80a080cafa0000
+_jmp_addr_0x007d4ca4:    and                byte ptr [eax + __mbcasemap], 0x00             // 0x007d4ca4    80a080cafa0000
 _jmp_addr_0x007d4cab:    inc                eax                                            // 0x007d4cab    40
                          cmp.s              eax, esi                                       // 0x007d4cac    3bc6
                          .byte              0x72, 0xbe// {disp8} jb _jmp_addr_0x007d4c6e   // 0x007d4cae    72be
