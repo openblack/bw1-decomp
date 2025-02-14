@@ -79,6 +79,7 @@
 .extern _jmp_addr_0x008a17ba
 .extern _jmp_addr_0x008a1d52
 .extern _jmp_addr_0x008a5480
+.extern __rt_probe_read4@4
 
 .globl _jmp_addr_0x008a5b00
 .globl _jmp_addr_0x008a5b0c
@@ -381,7 +382,7 @@ _jmp_addr_0x008a5ddd:    cmp              al, byte ptr [ebp + -0x00000107]      
 _jmp_addr_0x008a5de5:    movzx            eax, al                                 // 0x008a5de5    0fb6c0
                          push             eax                                     // 0x008a5de8    50
                          {disp8} mov      byte ptr [ebp + 0x08], 0x3d             // 0x008a5de9    c645083d
-                         call             _mbctoupper                             // 0x008a5ded    e889050000
+                         call             __mbctoupper                            // 0x008a5ded    e889050000
                          and              byte ptr [ebp + 0x0b], 0x00             // 0x008a5df2    80650b00
                          {disp8} mov      byte ptr [ebp + 0x09], al               // 0x008a5df6    884509
                          pop              ecx                                     // 0x008a5df9    59
@@ -864,7 +865,7 @@ _jmp_addr_0x008a629f:    cmp              esi, 0x00                             
                          {disp8} je       _jmp_addr_0x008a62d4                    // 0x008a62a2    7430
                          {disp8} lea      eax, dword ptr [ebx + 0x20]             // 0x008a62a4    8d4320
                          push             eax                                     // 0x008a62a7    50
-                         call             __rt_probe_read                         // 0x008a62a8    e849010000
+                         call             __rt_probe_read4@4                      // 0x008a62a8    e849010000
                          or.s             eax, eax                                // 0x008a62ad    0bc0
                          {disp8} je       _jmp_addr_0x008a62c7                    // 0x008a62af    7416
                          {disp8} mov      eax, dword ptr [ebx + 0x20]             // 0x008a62b1    8b4320
