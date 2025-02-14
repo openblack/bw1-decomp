@@ -39,7 +39,6 @@
 .extern _jmp_addr_0x007c9e80
 .extern _jmp_addr_0x007cb6b6
 .extern _jmp_addr_0x007cb717
-.extern _jmp_addr_0x007cb744
 .extern _jmp_addr_0x007d480c
 .extern _jmp_addr_0x007d4dde
 .extern _jmp_addr_0x007d5070

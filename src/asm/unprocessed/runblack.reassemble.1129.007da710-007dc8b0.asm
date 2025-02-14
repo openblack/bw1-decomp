@@ -1032,7 +1032,7 @@ _jmp_addr_0x007db121:    push              ebp                                  
                          mov.s             ebp, esp                                       // 0x007db122    8bec
                          push              -0x1                                           // 0x007db124    6aff
                          push              0x009a1600                                     // 0x007db126    6800169a00
-                         push              0x007cd8ac                                     // 0x007db12b    68acd87c00
+                         push              0x007cd8ac /*__except_handler3*/               // 0x007db12b    68acd87c00
                          {disp32} mov      eax, fs:[0x0]                                  // 0x007db130    64a100000000
                          push              eax                                            // 0x007db136    50
                          {disp32} mov      fs:[0x0], esp                                  // 0x007db137    64892500000000
@@ -1136,7 +1136,7 @@ _jmp_addr_0x007db234:    push              ebp                                  
                          mov.s             ebp, esp                                       // 0x007db235    8bec
                          push              -0x1                                           // 0x007db237    6aff
                          push              0x009a1610                                     // 0x007db239    6810169a00
-                         push              0x007cd8ac                                     // 0x007db23e    68acd87c00
+                         push              0x007cd8ac /*__except_handler3*/               // 0x007db23e    68acd87c00
                          {disp32} mov      eax, fs:[0x0]                                  // 0x007db243    64a100000000
                          push              eax                                            // 0x007db249    50
                          {disp32} mov      fs:[0x0], esp                                  // 0x007db24a    64892500000000
