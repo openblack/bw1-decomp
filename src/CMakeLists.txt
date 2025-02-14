@@ -385,7 +385,10 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
-    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a895d.asm
+    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6300.asm
+    asm/unprocessed/runblack.reassemble.1343.008a6300-008a6460.asm
+    asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
+    asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
     asm/unprocessed/rdata.asm
     asm/unprocessed/data.asm
     asm/unprocessed/data1.asm
