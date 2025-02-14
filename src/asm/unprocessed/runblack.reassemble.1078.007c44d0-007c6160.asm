@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x007ca5a7
 .extern _jmp_addr_0x007cb6b6
 .extern _jmp_addr_0x007cb717
-.extern _jmp_addr_0x007cb744
+.extern ___crtLCMapStringA
 .extern _jmp_addr_0x007cb993
 .extern _jmp_addr_0x007cc962
 .extern _jmp_addr_0x007cc9b2
@@ -1596,7 +1596,7 @@ _jmp_addr_0x007c581f:    mov.s            eax, esi                              
                          mov.s            ebp, esp                                      // 0x007c5825    8bec
                          push             -0x1                                          // 0x007c5827    6aff
                          push             0x009a05f0                                    // 0x007c5829    68f0059a00
-                         push             0x007cd8ac                                    // 0x007c582e    68acd87c00
+                         push             0x007cd8ac /*__except_handler3*/              // 0x007c582e    68acd87c00
                          {disp32} mov     eax, fs:[0x0]                                 // 0x007c5833    64a100000000
                          push             eax                                           // 0x007c5839    50
                          {disp32} mov     fs:[0x0], esp                                 // 0x007c583a    64892500000000
@@ -1695,7 +1695,7 @@ _jmp_addr_0x007c593a:    push             ebp                                   
                          mov.s            ebp, esp                                      // 0x007c593b    8bec
                          push             -0x1                                          // 0x007c593d    6aff
                          push             0x009a0660                                    // 0x007c593f    6860069a00
-                         push             0x007cd8ac                                    // 0x007c5944    68acd87c00
+                         push             0x007cd8ac /*__except_handler3*/              // 0x007c5944    68acd87c00
                          {disp32} mov     eax, fs:[0x0]                                 // 0x007c5949    64a100000000
                          push             eax                                           // 0x007c594f    50
                          {disp32} mov     fs:[0x0], esp                                 // 0x007c5950    64892500000000
@@ -1768,7 +1768,7 @@ _jmp_addr_0x007c5a19:    push             ebp                                   
                          mov.s            ebp, esp                                      // 0x007c5a1a    8bec
                          push             -0x1                                          // 0x007c5a1c    6aff
                          push             0x009a0680                                    // 0x007c5a1e    6880069a00
-                         push             0x007cd8ac                                    // 0x007c5a23    68acd87c00
+                         push             0x007cd8ac /*__except_handler3*/              // 0x007c5a23    68acd87c00
                          {disp32} mov     eax, fs:[0x0]                                 // 0x007c5a28    64a100000000
                          push             eax                                           // 0x007c5a2e    50
                          {disp32} mov     fs:[0x0], esp                                 // 0x007c5a2f    64892500000000
@@ -2290,7 +2290,7 @@ _jmp_addr_0x007c5f4a:    pop              eax                                   
                          push             eax                                           // 0x007c5f59    50
                          push             0x00000200                                    // 0x007c5f5a    6800020000
                          push             dword ptr [data_bytes + 0x4be2a0]             // 0x007c5f5f    ff35a042e800
-                         call             _jmp_addr_0x007cb744                          // 0x007c5f65    e8da570000
+                         call             ___crtLCMapStringA                            // 0x007c5f65    e8da570000
                          add              esp, 0x20                                     // 0x007c5f6a    83c420
                          test             eax, eax                                      // 0x007c5f6d    85c0
                          {disp8} je       _jmp_addr_0x007c5f1a                          // 0x007c5f6f    74a9

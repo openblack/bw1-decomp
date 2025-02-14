@@ -3,7 +3,7 @@
 
 .extern data_bytes
 
-.extern _jmp_addr_0x007cb744
+.extern ___crtLCMapStringA
 .extern _jmp_addr_0x008a0621
 .extern _jmp_addr_0x008a12d2
 .extern _jmp_addr_0x008a17ba
@@ -84,7 +84,7 @@ _mbctoupper:             push             ebp                                   
                          push             eax                                     // 0x008a63b5    50
                          push             0x00000200                              // 0x008a63b6    6800020000
                          push             dword ptr [data_bytes + 0x5e6c84]       // 0x008a63bb    ff3584ccfa00
-                         call             _jmp_addr_0x007cb744                    // 0x008a63c1    e87e53f2ff
+                         call             ___crtLCMapStringA                      // 0x008a63c1    e87e53f2ff
                          add              esp, 0x20                               // 0x008a63c6    83c420
                          test             eax, eax                                // 0x008a63c9    85c0
                          {disp8} je       _jmp_addr_0x008a63f1                    // 0x008a63cb    7424
@@ -110,7 +110,7 @@ __rt_probe_read:         push             ebp                                   
                          mov.s            ebp, esp                                // 0x008a63f7    8bec
                          push             -0x1                                    // 0x008a63f9    6aff
                          push             0x009a62c8                              // 0x008a63fb    68c8629a00
-                         push             0x007cd8ac                              // 0x008a6400    68acd87c00
+                         push             0x007cd8ac /*__except_handler3*/        // 0x008a6400    68acd87c00
                          {disp32} mov     eax, fs:[0x0]                           // 0x008a6405    64a100000000
                          push             eax                                     // 0x008a640b    50
                          {disp32} mov     fs:[0x0], esp                           // 0x008a640c    64892500000000
