@@ -11,8 +11,8 @@
 .extern _jmp_addr_0x008a5480
 
 .globl __setjmp3
-.globl _mbctoupper
-.globl __rt_probe_read
+.globl __mbctoupper
+.globl __rt_probe_read4@4
 
 // LIBCMT.LIB/build/intel/mt_obj/setjmp3.obj
 __setjmp3:               {disp8} mov      edx, dword ptr [esp + 0x04]             // 0x008a6300    8b542404
@@ -59,8 +59,8 @@ _jmp_addr_0x008a6378:    sub.s            eax, eax                              
                          ret                                                      // 0x008a637a    c3
 
 
-// LIBCMT.LIB/build/intel/mt_obj/mbtouppr.obj
-_mbctoupper:             push             ebp                                     // 0x008a637b    55
+// LIBCMT.LIB/build/intel/mt_obj/mbtoupr.obj
+__mbctoupper:            push             ebp                                     // 0x008a637b    55
                          mov.s            ebp, esp                                // 0x008a637c    8bec
                          push             ecx                                     // 0x008a637e    51
                          push             ebx                                     // 0x008a637f    53
@@ -106,7 +106,7 @@ _jmp_addr_0x008a63f3:    pop              ebx                                   
 
 
 // LIBCMT.LIB/build/intel/mt_obj/sehsupp.obj
-__rt_probe_read:         push             ebp                                     // 0x008a63f6    55
+__rt_probe_read4@4:      push             ebp                                     // 0x008a63f6    55
                          mov.s            ebp, esp                                // 0x008a63f7    8bec
                          push             -0x1                                    // 0x008a63f9    6aff
                          push             0x009a62c8                              // 0x008a63fb    68c8629a00
