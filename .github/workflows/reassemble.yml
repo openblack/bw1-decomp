@@ -26,7 +26,7 @@ jobs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
 
-    - name: Download lld, llvm-rc and clang
+    - name: Download lld, llvm-rc, llvm-ar and clang
       uses: robinraju/release-downloader@v1
       with:
         repository: 'openblack/llvm-project'
@@ -47,7 +47,7 @@ jobs:
 
     - name: Build bw1-decomp project
       run: |
-        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
+        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DLLVM_AR_EXECUTABLE="${{env.LLVM_BINARIES}}/llvm-ar${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
         cmake --build build
 
     - name: Verify MD5 sum of resulting binary
