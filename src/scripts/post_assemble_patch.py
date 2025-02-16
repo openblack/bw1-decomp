@@ -95,8 +95,10 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
             (0xff4, '\2'),
             (0xff8, "<"),
             (0xffc, "4"),
-            # Unable to do balign 0 it seems
+            # libcmt padding is 0xCC
             (0x004A645B, b"\xCC"),
+            (0x004A6281, b"\xCC\xCC\xCC"),
+            (0x004A62FD, b"\xCC\xCC\xCC"),
             # Garbage string in the rsrc
             (0x008428F8, "property of their respective owners".encode("utf-16-le")),
         ]
