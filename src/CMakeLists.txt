@@ -373,38 +373,35 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
-    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6300.asm
-
-    asm/unprocessed/data.asm
-    asm/unprocessed/data1.asm
-    asm/unprocessed/SELFMOD.asm
+    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm
 )
 
 add_library(runblack-reassembled-src OBJECT ${SOURCES})
 
-# libcmt is statically linked between 007aee98 and 008a6470
-# The text section is aligned on 1 byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
-add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
-set(LIBCMT_SRC_OBJECTS
-    "build\\intel\\mt_obj\\setjmp3.obj"
-    "build\\intel\\mt_obj\\mbtoupr.obj"
-    "build\\intel\\mt_obj\\sehsupp.obj"
-)
-
-set(LIBCMT_PATCHED_OBJECTS)
-foreach(src_obj IN LISTS LIBCMT_SRC_OBJECTS)
+function(add_patched_libcmt_object src_obj patch_flag)
   string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
   get_filename_component(obj ${src_obj_fixed} NAME)
-  set(OUTPUT_FILE "${CMAKE_CURRENT_BINARY_DIR}/${obj}.patched.o")
+  set(output_file "${CMAKE_CURRENT_BINARY_DIR}/${obj}.patched.o")
   add_custom_command(
-    OUTPUT ${OUTPUT_FILE}
+    OUTPUT ${output_file}
     COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB '${src_obj}'
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
             "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'"
-            ${OUTPUT_FILE}
+            ${output_file}
+            ${patch_flag}
   )
-  list(APPEND LIBCMT_PATCHED_OBJECTS ${OUTPUT_FILE})
-endforeach()
+  set(LIBCMT_PATCHED_OBJECTS "${LIBCMT_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
+endfunction()
+
+# libcmt is statically linked between 007aee98 and 008a6470
+# The text section is aligned on 1 byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
+add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
+
+set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\sehsupp.obj" ON)
 set_property(TARGET runblack-reassembled-libcmt PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 # These bits appear after the static linked portion. Could be part of libcmt, just don't know yet
@@ -415,6 +412,9 @@ add_library(runblack-reassembled-src-post-static OBJECT
 
 # Linking with static libraries inserts constants in rdata, so these sections are split up to allow the constants to be inserted in between
 add_library(runblack-reassembled-data-001 OBJECT
+    asm/unprocessed/data.asm
+    asm/unprocessed/data1.asm
+    asm/unprocessed/SELFMOD.asm
     asm/unprocessed/rdata-001-008a9000-009a62c8.asm
 )
 add_library(runblack-reassembled-data-002 OBJECT
@@ -450,6 +450,17 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-data-002
         runblack-reassembled-rc
 )
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm.o"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm.o"
+            ON
+    COMMENT "Processing .obj file before linking"
+)
+
 target_link_libraries(runblack-reassembled-src PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-post-static PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-data-001 PRIVATE common_compile_options)
