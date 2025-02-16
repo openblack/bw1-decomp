@@ -9,6 +9,7 @@ if (LLVM_BINARIES_DIR)
     set(CMAKE_ASM_COMPILER "${LLVM_BINARIES_DIR}/clang${LLVM_EXECUTABLE_SUFFIX}")
     set(CMAKE_RC_COMPILER "${LLVM_BINARIES_DIR}/llvm-rc${LLVM_EXECUTABLE_SUFFIX}")
     set(CMAKE_LINKER "${LLVM_BINARIES_DIR}/lld${LLVM_EXECUTABLE_SUFFIX}")
+    set(LLVM_AR_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-ar${LLVM_EXECUTABLE_SUFFIX}")
 endif()
 
 project(bw1-decomp ASM RC)
@@ -30,6 +31,9 @@ set(CMAKE_ASM_FLAGS_MINSIZEREL "")
 set(CMAKE_ASM_FLAGS_RELWITHDEBINFO "")
 set(CMAKE_ASM_FLAGS_RELEASE "")
 set(CMAKE_DEPFILE_FLAGS_ASM "")
+
+find_package(Python3 REQUIRED)
+find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 
 set(SOURCES
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
@@ -383,16 +387,53 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6300.asm
-    asm/unprocessed/runblack.reassemble.1343.008a6300-008a6460.asm
-    asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
-    asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    
+
     asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
-    asm/unprocessed/rdata.001.008a99a8-009c5564.asm
+    asm/unprocessed/rdata.001.008a99a8-009a62c8.asm
     asm/unprocessed/data.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
+)
 
+add_library(runblack-reassembled-src OBJECT ${SOURCES})
+
+# libcmt is statically linked between 007aee98 and 008a6470
+# The text section is aligned on 1 byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
+add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
+set(LIBCMT_SRC_OBJECTS
+    "build\\intel\\mt_obj\\setjmp3.obj"
+    "build\\intel\\mt_obj\\mbtoupr.obj"
+    "build\\intel\\mt_obj\\sehsupp.obj"
+)
+
+set(LIBCMT_PATCHED_OBJECTS)
+foreach(src_obj IN LISTS LIBCMT_SRC_OBJECTS)
+  string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
+  get_filename_component(obj ${src_obj_fixed} NAME)
+  set(OUTPUT_FILE "${CMAKE_CURRENT_BINARY_DIR}/${obj}.patched.o")
+  add_custom_command(
+    OUTPUT ${OUTPUT_FILE}
+    COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB '${src_obj}'
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'"
+            ${OUTPUT_FILE}
+  )
+  list(APPEND LIBCMT_PATCHED_OBJECTS ${OUTPUT_FILE})
+endforeach()
+set_property(TARGET runblack-reassembled-libcmt PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
+# These bits appear after the static linked portion. Could be part of libcmt, just don't know yet
+add_library(runblack-reassembled-src-post-static OBJECT
+    asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
+    asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
+)
+
+# Linking with static libraries inserts constants in rdata, so these sections are split up to allow the constants to be inserted in between
+add_library(runblack-reassembled-data-002 OBJECT
+    asm/unprocessed/rdata.002.009a62d4-009c5564.asm
+)
+
+add_library(runblack-reassembled-rc OBJECT
     res/winnt.rh
     res/winuser.rh
     res/verrsrc.h
@@ -400,18 +441,29 @@ set(SOURCES
     res/runblack.rc
 )
 
-add_executable(runblack-reassembled ${SOURCES})
+add_executable(runblack-reassembled)
 set_target_properties(runblack-reassembled PROPERTIES
     LINKER_LANGUAGE ASM
     SUFFIX ".exe"
 )
-target_compile_options(runblack-reassembled
-    PRIVATE
-        -target
-        i686-pc-windows-gnu
-        -m32
-        $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
+add_library(common_compile_options INTERFACE)
+target_compile_options(common_compile_options INTERFACE
+    -target i686-pc-windows-gnu
+    -m32
+    $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
 )
+# Enforce a obj linking order
+target_link_libraries(runblack-reassembled
+    PRIVATE
+        runblack-reassembled-src
+        runblack-reassembled-libcmt
+        runblack-reassembled-src-post-static
+        runblack-reassembled-data-002
+        runblack-reassembled-rc
+)
+target_link_libraries(runblack-reassembled-src PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-post-static PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-data-002 PRIVATE common_compile_options)
 target_link_options(runblack-reassembled
     PRIVATE
         "-flavor"
@@ -439,7 +491,6 @@ add_custom_command(
     COMMENT "Stripping $<TARGET_FILE:runblack-reassembled> for reloc, idata and debug"
 )
 
-find_package(Python3 REQUIRED)
 add_custom_command(
     TARGET runblack-reassembled
     POST_BUILD
