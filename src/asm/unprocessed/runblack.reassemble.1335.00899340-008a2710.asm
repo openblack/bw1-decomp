@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x007d9487
 .extern _jmp_addr_0x007db352
 .extern _jmp_addr_0x008986b0
-.extern _jmp_addr_0x008a6284
+.extern _longjmp
 .extern __setjmp3
 
 .globl _jmp_addr_0x008995f0
@@ -14132,7 +14132,7 @@ _jmp_addr_0x008a25a1:    mov.s             eax, esi                             
                          add               esp, -0x08                                      // 0x008a25b3    83c4f8
                          mov               dword ptr [esp], 0x00fbfdc0                     // 0x008a25b6    c70424c0fdfb00
                          {disp8} mov       dword ptr [esp + 0x04], 0x00000001              // 0x008a25bd    c744240401000000
-                         call              _jmp_addr_0x008a6284                            // 0x008a25c5    e8ba3c0000
+                         call              _longjmp                                        // 0x008a25c5    e8ba3c0000
                          {disp32} lea      esi, dword ptr [esi + 0x00000000]               // 0x008a25ca    8db600000000
 _jmp_addr_0x008a25d0:    push              ebp                                             // 0x008a25d0    55
                          mov.s             ebp, esp                                        // 0x008a25d1    8bec
