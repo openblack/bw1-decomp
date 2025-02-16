@@ -13,6 +13,12 @@ if (LLVM_BINARIES_DIR)
     set(LLVM_AR_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-ar${LLVM_EXECUTABLE_SUFFIX}")
 endif()
 
+if (CMAKE_HOST_WIN32)
+    set(OBJ_SUFFIX ".obj")
+else()
+    set(OBJ_SUFFIX ".o")
+endif()
+
 project(bw1-decomp ASM RC)
 
 set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available build configurations" FORCE)
@@ -38,6 +44,12 @@ find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
 find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 
 set(SOURCES_001
+    asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
+    asm/unprocessed/rdata.001.008a99a8-009a62c8.asm
+    asm/unprocessed/data.asm
+    asm/unprocessed/data1.asm
+    asm/unprocessed/SELFMOD.asm
+
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
     asm/unprocessed/runblack.reassemble.0002.00401140-004011d0.asm
     asm/unprocessed/runblack.reassemble.0004.004011d0-004012e0.asm
@@ -388,13 +400,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
-    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6300.asm
-
-    asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
-    asm/unprocessed/rdata.001.008a99a8-009a62c8.asm
-    asm/unprocessed/data.asm
-    asm/unprocessed/data1.asm
-    asm/unprocessed/SELFMOD.asm
+    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm
 )
 set(SOURCES_002
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
@@ -413,29 +419,32 @@ add_library(runblack-reassembled-rc OBJECT
     res/runblack.rc
 )
 
+function(add_patched_libcmt_object src_obj patch_flag)
+  string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
+  get_filename_component(obj ${src_obj_fixed} NAME)
+  if (CMAKE_HOST_WIN32)
+    set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${obj}")
+  else()
+    set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'")
+    set(src_obj "'${src_obj}'")
+  endif()
+  set(output_file "${CMAKE_CURRENT_BINARY_DIR}/${obj}.patched${OBJ_SUFFIX}")
+  add_custom_command(
+    OUTPUT ${output_file}
+    COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB ${src_obj}
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py ${input_file} ${output_file} ${patch_flag})
+  set(LIBCMT_PATCHED_OBJECTS "${LIBCMT_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
+endfunction()
+
 # libcmt is statically linked between 007aee98 and 008a6470
 # The text section is aligned on 1 byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
 add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
-set(LIBCMT_SRC_OBJECTS
-    "build\\intel\\mt_obj\\setjmp3.obj"
-    "build\\intel\\mt_obj\\mbtoupr.obj"
-    "build\\intel\\mt_obj\\sehsupp.obj"
-)
 
 set(LIBCMT_PATCHED_OBJECTS)
-foreach(src_obj IN LISTS LIBCMT_SRC_OBJECTS)
-  string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
-  get_filename_component(obj ${src_obj_fixed} NAME)
-  set(OUTPUT_FILE "${CMAKE_CURRENT_BINARY_DIR}/${obj}.patched.o")
-  add_custom_command(
-    OUTPUT ${OUTPUT_FILE}
-    COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB '${src_obj}'
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'"
-            ${OUTPUT_FILE}
-  )
-  list(APPEND LIBCMT_PATCHED_OBJECTS ${OUTPUT_FILE})
-endforeach()
+add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\sehsupp.obj" ON)
 set_property(TARGET runblack-reassembled-libcmt PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_executable(runblack-reassembled)
@@ -457,6 +466,16 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-src-002
         runblack-reassembled-rc
 )
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-001.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-001.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm${OBJ_SUFFIX}"
+            ON
+)
+
 target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
 target_link_options(runblack-reassembled
