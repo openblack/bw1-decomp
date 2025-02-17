@@ -72,7 +72,7 @@ jobs:
 
     - name: Build bw1-decomp project (Debug)
       run: |
-        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
+        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DLLVM_OBJCOPY_EXECUTABLE="${{env.LLVM_BINARIES}}/llvm-objcopy${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
         cmake --build build_debug
 
     - name: Upload debug version
