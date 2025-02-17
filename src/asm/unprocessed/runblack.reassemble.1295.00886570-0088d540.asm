@@ -131,7 +131,7 @@
 .extern _jmp_addr_0x008a50cc
 .extern _jmp_addr_0x008a50d2
 .extern _jmp_addr_0x008a5e29
-.extern _jmp_addr_0x008a6209
+.extern _clock
 
 .globl _jmp_addr_0x00886570
 .globl _jmp_addr_0x00886690
@@ -8175,7 +8175,7 @@ _jmp_addr_0x0088aae5:    push             0x0                                   
                          call             _jmp_addr_0x007c79fd                                 // 0x0088aae7    e811cff3ff
                          add              esp, 0x04                                            // 0x0088aaec    83c404
                          mov.s            edi, eax                                             // 0x0088aaef    8bf8
-                         call             _jmp_addr_0x008a6209                                 // 0x0088aaf1    e813b70100
+                         call             _clock                                               // 0x0088aaf1    e813b70100
                          xor.s            edi, eax                                             // 0x0088aaf6    33f8
                          call             dword ptr [rdata_bytes + 0x1c4]                      // 0x0088aaf8    ff15c4918a00
                          xor.s            edi, eax                                             // 0x0088aafe    33f8
