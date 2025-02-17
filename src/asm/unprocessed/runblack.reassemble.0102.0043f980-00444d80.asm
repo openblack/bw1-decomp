@@ -134,7 +134,7 @@
 .globl _jmp_addr_0x0043f980
 .globl _jmp_addr_0x0043ff00
 .globl _jmp_addr_0x004401f0
-.globl _jmp_addr_0x004404c0
+.globl _GetNumPeopleInRoom__9BWGameSpyFv
 .globl _jmp_addr_0x004415e0
 .globl _jmp_addr_0x00441700
 .globl _jmp_addr_0x00441840
@@ -1159,7 +1159,8 @@ _jmp_addr_0x004404b5:    pop                edi                                 
                          pop                ebp                                           // 0x004404b6    5d
                          add                esp, 0x00000808                               // 0x004404b7    81c408080000
                          ret                0x0004                                        // 0x004404bd    c20400
-_jmp_addr_0x004404c0:    {disp32} mov       eax, dword ptr [data_bytes + 0x293a04]        // 0x004404c0    a1049ac500
+
+_GetNumPeopleInRoom__9BWGameSpyFv:    {disp32} mov       eax, dword ptr [data_bytes + 0x293a04]        // 0x004404c0    a1049ac500
                          test               eax, eax                                      // 0x004404c5    85c0
                          {disp8} je         _jmp_addr_0x004404da                          // 0x004404c7    7411
                          push               -0x1                                          // 0x004404c9    6aff

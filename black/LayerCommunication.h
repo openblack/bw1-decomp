@@ -4,10 +4,6 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uintptr_t */
 
-// Forward Declares
-
-struct BWLan;
-
 struct LayerCommunicationVftable
 {
   uintptr_t SendMessageW;  /* 0x0 */
@@ -20,7 +16,7 @@ struct LayerCommunicationVftable
   uintptr_t InitialiseLobbyState;
   uintptr_t CreateOrJoinRoom;  /* 0x20 */
   uintptr_t StartGame;
-  uint32_t (__fastcall* Connect)(struct BWLan* this);
+  uint32_t (__fastcall* Connect)(struct LayerCommunicationVftable* this);
   uintptr_t Disconnect;
   uintptr_t KickPlayerFromChannel;  /* 0x30 */
   uintptr_t BanPlayerInChannel;
