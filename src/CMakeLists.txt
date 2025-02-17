@@ -11,6 +11,7 @@ if (LLVM_BINARIES_DIR)
     set(LLVM_STRIP_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-strip${LLVM_EXECUTABLE_SUFFIX}")
     set(CMAKE_LINKER "${LLVM_BINARIES_DIR}/lld${LLVM_EXECUTABLE_SUFFIX}")
     set(LLVM_AR_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-ar${LLVM_EXECUTABLE_SUFFIX}")
+    set(LLVM_OBJCOPY_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-objcopy${LLVM_EXECUTABLE_SUFFIX}")
 endif()
 
 if (CMAKE_HOST_WIN32)
@@ -42,6 +43,7 @@ set(CMAKE_DEPFILE_FLAGS_ASM "")
 find_package(Python3 REQUIRED)
 find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
 find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
+find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
     asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
@@ -420,27 +422,50 @@ add_library(runblack-reassembled-rc OBJECT
 )
 
 function(add_patched_libcmt_object src_obj patch_flag)
-  string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
-  get_filename_component(obj ${src_obj_fixed} NAME)
-  if (CMAKE_HOST_WIN32)
-    set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${obj}")
-  else()
-    set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'")
-    set(src_obj "'${src_obj}'")
-  endif()
-  set(output_file "${CMAKE_CURRENT_BINARY_DIR}/${obj}.patched${OBJ_SUFFIX}")
-  add_custom_command(
-    OUTPUT ${output_file}
-    COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB ${src_obj}
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py ${input_file} ${output_file} ${patch_flag})
-  set(LIBCMT_PATCHED_OBJECTS "${LIBCMT_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
+    cmake_parse_arguments(ARG "" "" "WEAKEN_SYMBOLS;DELETE_SECTIONS" ${ARGN})
+
+    string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
+    get_filename_component(obj ${src_obj_fixed} NAME)
+
+    if (CMAKE_HOST_WIN32)
+        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${obj}")
+    else()
+        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'")
+        set(src_obj "'${src_obj}'")
+    endif()
+    set(output_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT-patched/${obj}.patched${OBJ_SUFFIX}")
+    set(tmp_output "${output_file}.tmp")
+
+    set(WEAKEN_ARGS "")
+    if (ARG_WEAKEN_SYMBOLS)
+        foreach(symbol ${ARG_WEAKEN_SYMBOLS})
+            list(APPEND WEAKEN_ARGS "--weaken-symbol=${symbol}")
+        endforeach()
+    endif()
+
+    set(DELETE_ARGS "")
+    if (ARG_DELETE_SECTIONS)
+        foreach(section ${ARG_DELETE_SECTIONS})
+            list(APPEND DELETE_ARGS "--remove-section=${section}")
+        endforeach()
+    endif()
+
+    add_custom_command(
+        OUTPUT ${output_file}
+        COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB ${src_obj}
+        COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py ${input_file} ${tmp_output} ${patch_flag}
+        COMMAND ${LLVM_OBJCOPY_EXECUTABLE} ${WEAKEN_ARGS} ${DELETE_ARGS} ${tmp_output} ${output_file}
+    )
+
+    set(LIBCMT_PATCHED_OBJECTS "${LIBCMT_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
 endfunction()
 
 # libcmt is statically linked between 007aee98 and 008a6470
-# The text section is aligned on 1 byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
+# The text section is aligned on 1-byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
 add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
 
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\clock.obj" ON WEAKEN_SYMBOLS _start_tics)
 add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj" ON)
@@ -484,7 +509,7 @@ target_link_options(runblack-reassembled
         "link"
         "/FIXED"
         "/sectionvsize:.text,0x004a795d"
-        "/sectionvsize:.data,0x5f9e00"
+        "/sectionvsize:.data,0x5f8e00"
         "$<$<CONFIG:Release>:/sectionvsize:.rsrc,0x393E>" # Required padding for garbage string in vanilla
         "/subsystem:windows,4"
         "/stack:0x100000,0x1000"
@@ -501,6 +526,7 @@ add_custom_command(
     TARGET runblack-reassembled
     POST_BUILD
     COMMAND ${LLVM_STRIP_EXECUTABLE} "$<TARGET_FILE:runblack-reassembled>"
+    COMMAND ${LLVM_STRIP_EXECUTABLE} -R ".CRT" "$<TARGET_FILE:runblack-reassembled>"
     COMMENT "Stripping $<TARGET_FILE:runblack-reassembled> for reloc, idata and debug"
 )
 

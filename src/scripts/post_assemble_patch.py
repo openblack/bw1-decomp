@@ -189,6 +189,9 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
     # rsrc should not be writable
     find_section_header(pe, ".rsrc").Characteristics &= ~pefile.SECTION_CHARACTERISTICS['IMAGE_SCN_MEM_WRITE']
 
+    # Fix .data virtual size after deleting .CRT
+    find_section_header(pe, ".data").Misc_VirtualSize = 0x5f9e00
+
     # Some random strings are hanging out in header
     for offset, string in strings_to_embed:
         embed_string(pe, offset, string)
