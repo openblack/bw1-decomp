@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x0043f980
 .extern _jmp_addr_0x0043ff00
 .extern _jmp_addr_0x004401f0
-.extern _jmp_addr_0x004404c0
+.extern _GetNumPeopleInRoom__9BWGameSpyFv
 .extern @__ct__14CameraModeNew3FP7GCamera@12
 .extern _jmp_addr_0x00463610
 .extern _jmp_addr_0x0047c6b0
@@ -30653,7 +30653,7 @@ _jmp_addr_0x0043f0cb:    add                esp, 0x04                           
                          {disp32} jmp       _jmp_addr_0x0043f1c2                                 // 0x0043f0e5    e9d8000000
 _jmp_addr_0x0043f0ea:    mov                ecx, 0x00c599fc                                      // 0x0043f0ea    b9fc99c500
                          xor.s              esi, esi                                             // 0x0043f0ef    33f6
-                         call               _jmp_addr_0x004404c0                                 // 0x0043f0f1    e8ca130000
+                         call               _GetNumPeopleInRoom__9BWGameSpyFv                    // 0x0043f0f1    e8ca130000
                          test               eax, eax                                             // 0x0043f0f6    85c0
                          {disp8} jle        _jmp_addr_0x0043f130                                 // 0x0043f0f8    7e36
 _jmp_addr_0x0043f0fa:    {disp32} mov       eax, dword ptr [data_bytes + 0x293a04]               // 0x0043f0fa    a1049ac500
@@ -30671,7 +30671,7 @@ _jmp_addr_0x0043f0fa:    {disp32} mov       eax, dword ptr [data_bytes + 0x293a0
                          {disp32} je        _jmp_addr_0x0043f1a8                                 // 0x0043f11b    0f8487000000
 _jmp_addr_0x0043f121:    mov                ecx, 0x00c599fc                                      // 0x0043f121    b9fc99c500
                          inc                esi                                                  // 0x0043f126    46
-                         call               _jmp_addr_0x004404c0                                 // 0x0043f127    e894130000
+                         call               _GetNumPeopleInRoom__9BWGameSpyFv                    // 0x0043f127    e894130000
                          cmp.s              esi, eax                                             // 0x0043f12c    3bf0
                          {disp8} jl         _jmp_addr_0x0043f0fa                                 // 0x0043f12e    7cca
 _jmp_addr_0x0043f130:    {disp32} mov       al, byte ptr [data_bytes + 0x292370]                 // 0x0043f130    a07083c500
@@ -30824,7 +30824,7 @@ _jmp_addr_0x0043f2f0:    cmp                dword ptr [esp + 0x04], 0x02        
                          {disp8} jne        _jmp_addr_0x0043f354                                 // 0x0043f2f5    755d
                          mov                ecx, 0x00c599fc                                      // 0x0043f2f7    b9fc99c500
                          {disp32} mov       dword ptr [data_bytes + 0x2939f8], 0x00000000        // 0x0043f2fc    c705f899c50000000000
-                         call               _jmp_addr_0x004404c0                                 // 0x0043f306    e8b5110000
+                         call               _GetNumPeopleInRoom__9BWGameSpyFv                    // 0x0043f306    e8b5110000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x35a4e4]               // 0x0043f30b    8b0de404d200
                          inc                eax                                                  // 0x0043f311    40
                          {disp32} mov       dword ptr [data_bytes + 0x293a14], eax               // 0x0043f312    a3149ac500
