@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x0046f030
 .extern _jmp_addr_0x0046f040
 .extern _jmp_addr_0x0046f050
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 
 .globl _jmp_addr_0x0046f170
 .globl @GetDisplayText__12ControlMouseFPw@12
@@ -68,7 +68,7 @@ _jmp_addr_0x0046f19c:    ret              0x0004                                
 _jmp_addr_0x0046f1cf:    {disp8} mov      ecx, dword ptr [eax + 0x08]                   // 0x0046f1cf    8b4808
                          push             ecx                                           // 0x0046f1d2    51
                          push             esi                                           // 0x0046f1d3    56
-                         call             _jmp_addr_0x007c5fb6                          // 0x0046f1d4    e8dd6d3500
+                         call             _wcscpy                                       // 0x0046f1d4    e8dd6d3500
                          add              esp, 0x08                                     // 0x0046f1d9    83c408
                          mov.s            eax, esi                                      // 0x0046f1dc    8bc6
                          pop              esi                                           // 0x0046f1de    5e
@@ -85,7 +85,7 @@ _jmp_addr_0x0046f1e0:    push             esi                                   
 _jmp_addr_0x0046f200:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f200    8b442404
                          push             eax                                           // 0x0046f204    50
                          push             ecx                                           // 0x0046f205    51
-                         call             _jmp_addr_0x007c5fb6                          // 0x0046f206    e8ab6d3500
+                         call             _wcscpy                                       // 0x0046f206    e8ab6d3500
                          add              esp, 0x08                                     // 0x0046f20b    83c408
                          ret              0x0004                                        // 0x0046f20e    c20400
                          nop                                                            // 0x0046f211    90
@@ -123,7 +123,7 @@ _jmp_addr_0x0046f220:    push             esi                                   
 _jmp_addr_0x0046f240:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f240    8b442404
                          push             ecx                                           // 0x0046f244    51
                          push             eax                                           // 0x0046f245    50
-                         call             _jmp_addr_0x007c5fb6                          // 0x0046f246    e86b6d3500
+                         call             _wcscpy                                       // 0x0046f246    e86b6d3500
                          add              esp, 0x08                                     // 0x0046f24b    83c408
                          ret              0x0004                                        // 0x0046f24e    c20400
                          nop                                                            // 0x0046f251    90
@@ -179,7 +179,7 @@ _jmp_addr_0x0046f2b0:    sub              esp, 0x00000080                       
                          {disp8} lea      ecx, dword ptr [esp + 0x00]                   // 0x0046f2d4    8d4c2400
                          push             ecx                                           // 0x0046f2d8    51
                          push             edx                                           // 0x0046f2d9    52
-                         call             _jmp_addr_0x007c5fb6                          // 0x0046f2da    e8d76c3500
+                         call             _wcscpy                                       // 0x0046f2da    e8d76c3500
                          add              esp, 0x00000088                               // 0x0046f2df    81c488000000
                          ret              0x0004                                        // 0x0046f2e5    c20400
                          nop                                                            // 0x0046f2e8    90

@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x007bd030
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x007dec80
 .extern _jmp_addr_0x007f9540
 .extern _jmp_addr_0x00807e40
@@ -1343,7 +1343,7 @@ _jmp_addr_0x0082afc5:    {disp8} mov        edx, dword ptr [ebp + 0x3c]         
                          push               eax                                           // 0x0082b061    50
                          call               _jmp_addr_0x007bd030                          // 0x0082b062    e8c91ff9ff
                          push               esi                                           // 0x0082b067    56
-                         call               _jmp_addr_0x007c6786                          // 0x0082b068    e819b7f9ff
+                         call               _free                                         // 0x0082b068    e819b7f9ff
                          {disp8} mov        eax, dword ptr [esp + 0x50]                   // 0x0082b06d    8b442450
                          {disp8} mov        edx, dword ptr [esp + 0x48]                   // 0x0082b071    8b542448
                          {disp8} mov        ecx, dword ptr [ebp + 0x38]                   // 0x0082b075    8b4d38
@@ -1355,7 +1355,7 @@ _jmp_addr_0x0082afc5:    {disp8} mov        edx, dword ptr [ebp + 0x3c]         
                          {disp8} mov        dword ptr [esp + 0x10], edx                   // 0x0082b085    89542410
                          {disp32} jl        _jmp_addr_0x0082afc1                          // 0x0082b089    0f8c32ffffff
 _jmp_addr_0x0082b08f:    push               ebp                                           // 0x0082b08f    55
-                         call               _jmp_addr_0x007c6786                          // 0x0082b090    e8f1b6f9ff
+                         call               _free                                         // 0x0082b090    e8f1b6f9ff
                          {disp8} mov        eax, dword ptr [esp + 0x28]                   // 0x0082b095    8b442428
                          {disp8} mov        edx, dword ptr [esp + 0x18]                   // 0x0082b099    8b542418
                          {disp32} mov       ecx, dword ptr [esp + 0x00000538]             // 0x0082b09d    8b8c2438050000

@@ -19,7 +19,7 @@
 .extern @GetSegment__6LHFileFPcP9LHSegmenti@20
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x007dee20
 .extern _Report3D__FPCce
 .extern _jmp_addr_0x00837400
@@ -472,7 +472,7 @@ _jmp_addr_0x00838911:    mov               ecx, dword ptr [esi]                 
                          rep movsb                                                  // 0x00838922    f3a4
                          {disp8} mov       ecx, dword ptr [esp + 0x14]              // 0x00838924    8b4c2414
                          push              ecx                                      // 0x00838928    51
-                         call              _jmp_addr_0x007c6786                     // 0x00838929    e858def8ff
+                         call              _free                                    // 0x00838929    e858def8ff
                          add               esp, 0x04                                // 0x0083892e    83c404
 _jmp_addr_0x00838931:    {disp8} mov       ecx, dword ptr [esp + 0x10]              // 0x00838931    8b4c2410
                          {disp8} mov       edx, dword ptr [esp + 0x18]              // 0x00838935    8b542418
@@ -552,7 +552,7 @@ _jmp_addr_0x008389f1:    or                ecx, 0xffffffff                      
                          {disp8} mov       dword ptr [esp + 0x5c], ebx              // 0x00838a28    895c245c
                          call              _jmp_addr_0x007bda90                     // 0x00838a2c    e85f50f8ff
                          push              ebx                                      // 0x00838a31    53
-                         call              _jmp_addr_0x007c6786                     // 0x00838a32    e84fddf8ff
+                         call              _free                                    // 0x00838a32    e84fddf8ff
                          add               esp, 0x04                                // 0x00838a37    83c404
                          {disp8} lea       ecx, dword ptr [esp + 0x5c]              // 0x00838a3a    8d4c245c
                          call              @Close__6LHFileFv@4                      // 0x00838a3e    e87d51f8ff

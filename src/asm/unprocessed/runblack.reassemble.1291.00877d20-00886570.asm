@@ -34,7 +34,7 @@
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007c79fd
@@ -11132,7 +11132,7 @@ _jmp_addr_0x0087f950:    push               esi                                 
                          push               ecx                                                  // 0x0087f962    51
                          call               _jmp_addr_0x007bd030                                 // 0x0087f963    e8c8d6f3ff
                          push               esi                                                  // 0x0087f968    56
-                         call               _jmp_addr_0x007c6786                                 // 0x0087f969    e8186ef4ff
+                         call               _free                                                // 0x0087f969    e8186ef4ff
                          add                esp, 0x14                                            // 0x0087f96e    83c414
                          pop                esi                                                  // 0x0087f971    5e
                          ret                0x0004                                               // 0x0087f972    c20400
@@ -18610,7 +18610,7 @@ _jmp_addr_0x00884db0:    push               esi                                 
                          call               _jmp_addr_0x008898e0                                 // 0x00884dbc    e81f4b0000
                          call               _jmp_addr_0x0088a910                                 // 0x00884dc1    e84a5b0000
                          push               esi                                                  // 0x00884dc6    56
-                         call               _jmp_addr_0x007c6786                                 // 0x00884dc7    e8ba19f4ff
+                         call               _free                                                // 0x00884dc7    e8ba19f4ff
                          add                esp, 0x0c                                            // 0x00884dcc    83c40c
                          pop                esi                                                  // 0x00884dcf    5e
                          ret                                                                     // 0x00884dd0    c3
@@ -20734,7 +20734,7 @@ _jmp_addr_0x008861ea:    push               0x0                                 
                          push               ecx                                                  // 0x008862ba    51
                          call               _jmp_addr_0x0088fad0                                 // 0x008862bb    e810980000
                          push               esi                                                  // 0x008862c0    56
-                         call               _jmp_addr_0x007c6786                                 // 0x008862c1    e8c004f4ff
+                         call               _free                                                // 0x008862c1    e8c004f4ff
                          add                esp, 0x08                                            // 0x008862c6    83c408
                          pop                esi                                                  // 0x008862c9    5e
                          ret                                                                     // 0x008862ca    c3
