@@ -9,7 +9,7 @@
 .extern _jmp_addr_0x007c60f0
 .extern _operator_new
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x007c6942
 .extern _jmp_addr_0x007c6ad3
 .extern _jmp_addr_0x007c6c34
@@ -2928,7 +2928,7 @@ _jmp_addr_0x0089ae80:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                               // 0x0089ae8f    90
 _jmp_addr_0x0089ae90:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0089ae90    8b442408
                          push               eax                                            // 0x0089ae94    50
-                         call               _jmp_addr_0x007c6786                           // 0x0089ae95    e8ecb8f2ff
+                         call               _free                                          // 0x0089ae95    e8ecb8f2ff
                          pop                ecx                                            // 0x0089ae9a    59
                          ret                                                               // 0x0089ae9b    c3
                          nop                                                               // 0x0089ae9c    90
@@ -2944,7 +2944,7 @@ _jmp_addr_0x0089aea0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                               // 0x0089aeaf    90
 _jmp_addr_0x0089aeb0:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0089aeb0    8b442408
                          push               eax                                            // 0x0089aeb4    50
-                         call               _jmp_addr_0x007c6786                           // 0x0089aeb5    e8ccb8f2ff
+                         call               _free                                          // 0x0089aeb5    e8ccb8f2ff
                          pop                ecx                                            // 0x0089aeba    59
                          ret                                                               // 0x0089aebb    c3
                          nop                                                               // 0x0089aebc    90

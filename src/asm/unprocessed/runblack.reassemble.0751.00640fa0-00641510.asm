@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x00640cb0
 .extern _jmp_addr_0x00641510
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c9bce
 .extern ___nw__FUl
 .extern _Report3D__FPCce
@@ -225,7 +225,7 @@ _jmp_addr_0x00641198:    {disp8} mov      esi, dword ptr [eax + 0x08]           
                          add              ecx, 0x24                                     // 0x006411a9    83c124
                          push             esi                                           // 0x006411ac    56
                          push             ecx                                           // 0x006411ad    51
-                         call             _jmp_addr_0x007c5fb6                          // 0x006411ae    e8034e1800
+                         call             _wcscpy                                       // 0x006411ae    e8034e1800
                          {disp8} mov      esi, dword ptr [edi + 0x14]                   // 0x006411b3    8b7714
                          {disp32} mov     eax, dword ptr [esi + 0x00000250]             // 0x006411b6    8b8650020000
                          add              esp, 0x08                                     // 0x006411bc    83c408

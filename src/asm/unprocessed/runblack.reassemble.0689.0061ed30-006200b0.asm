@@ -37,7 +37,7 @@
 .extern @IsLanLobby__20MPFEConnectionStatusFv@4
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c6425
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern _operator_new
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6edf
@@ -1184,7 +1184,7 @@ _jmp_addr_0x0061fc48:    {disp8} mov      ecx, dword ptr [ecx + 0x08]           
                          xor.s            ebp, ebp                                      // 0x0061fc75    33ed
                          push             ebx                                           // 0x0061fc77    53
                          {disp32} mov     word ptr [edi + 0x00000222], bp               // 0x0061fc78    6689af22020000
-                         call             _jmp_addr_0x007c6462                          // 0x0061fc7f    e8de671a00
+                         call             _wcslen                                       // 0x0061fc7f    e8de671a00
                          {disp32} mov     dword ptr [edi + 0x0000024c], eax             // 0x0061fc84    89874c020000
                          {disp32} mov     dword ptr [edi + 0x00000254], eax             // 0x0061fc8a    898754020000
                          {disp32} mov     dword ptr [edi + 0x00000250], eax             // 0x0061fc90    898750020000

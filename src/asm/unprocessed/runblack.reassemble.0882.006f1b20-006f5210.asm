@@ -74,7 +74,7 @@
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
 start_0x006f1b20_0x006f5210:
@@ -3624,7 +3624,7 @@ _jmp_addr_0x006f4266:    mov.s              ecx, edi                            
                          push               eax                                                  // 0x006f429c    50
                          add                esi, 0x000000e0                                      // 0x006f429d    81c6e0000000
                          push               esi                                                  // 0x006f42a3    56
-                         call               _jmp_addr_0x007c5fb6                                 // 0x006f42a4    e80d1d0d00
+                         call               _wcscpy                                              // 0x006f42a4    e80d1d0d00
                          add                esp, 0x08                                            // 0x006f42a9    83c408
 _jmp_addr_0x006f42ac:    pop                edi                                                  // 0x006f42ac    5f
                          pop                esi                                                  // 0x006f42ad    5e

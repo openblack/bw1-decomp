@@ -129,8 +129,8 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
-.extern _jmp_addr_0x007c6462
+.extern _wcscpy
+.extern _wcslen
 .extern _operator_new
 .extern _jmp_addr_0x007c664c
 .extern _jmp_addr_0x007c804a
@@ -11328,7 +11328,7 @@ _jmp_addr_0x00735890:    push               ebx                                 
                          push               edi                                           // 0x00735896    57
                          push               ebx                                           // 0x00735897    53
                          mov.s              edi, ecx                                      // 0x00735898    8bf9
-                         call               _jmp_addr_0x007c6462                          // 0x0073589a    e8c30b0900
+                         call               _wcslen                                       // 0x0073589a    e8c30b0900
                          mov.s              esi, eax                                      // 0x0073589f    8bf0
                          add                esi, 0x02                                     // 0x007358a1    83c602
                          lea                eax, dword ptr [esi + esi * 0x1]              // 0x007358a4    8d0436
@@ -11337,7 +11337,7 @@ _jmp_addr_0x00735890:    push               ebx                                 
                          push               ebx                                           // 0x007358ad    53
                          push               eax                                           // 0x007358ae    50
                          {disp8} mov        dword ptr [edi + 0x04], eax                   // 0x007358af    894704
-                         call               _jmp_addr_0x007c5fb6                          // 0x007358b2    e8ff060900
+                         call               _wcscpy                                       // 0x007358b2    e8ff060900
                          push               esi                                           // 0x007358b7    56
                          call               _operator_new                                 // 0x007358b8    e8310c0900
                          add                esp, 0x14                                     // 0x007358bd    83c414

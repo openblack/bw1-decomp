@@ -358,7 +358,7 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007c6bff
 .extern _jmp_addr_0x007c6c29
@@ -419,7 +419,7 @@
 .extern _jmp_addr_0x00865000
 .extern _jmp_addr_0x0086c560
 .extern _jmp_addr_0x00871f00
-.extern _jmp_addr_0x008a5b3a
+.extern __wcsicmp
 
 .globl _jmp_addr_0x0054a710
 .globl _SetTurnOffMouseMove__Fb
@@ -4395,7 +4395,7 @@ _jmp_addr_0x0054cec0:    ret                                                    
                          push               eax                                           // 0x0054cf3f    50
                          {disp32} lea       eax, dword ptr [esp + 0x00000268]             // 0x0054cf40    8d842468020000
                          push               eax                                           // 0x0054cf47    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0054cf48    e869902700
+                         call               _wcscpy                                       // 0x0054cf48    e869902700
                          add                esp, 0x08                                     // 0x0054cf4d    83c408
 _jmp_addr_0x0054cf50:    cmp                dword ptr [esi + 0x0025017c], ebx             // 0x0054cf50    399e7c012500
                          {disp8} jne        _jmp_addr_0x0054cf6b                          // 0x0054cf56    7513
@@ -4773,14 +4773,14 @@ _jmp_addr_0x0054d54a:    cmp                dword ptr [eax + 0x00205a08], ebp   
                          {disp8} je         _jmp_addr_0x0054d57e                          // 0x0054d566    7416
                          push               0x00cd3a18                                    // 0x0054d568    68183acd00
                          push               0x00d4bf38                                    // 0x0054d56d    6838bfd400
-                         call               _jmp_addr_0x008a5b3a                          // 0x0054d572    e8c3853500
+                         call               __wcsicmp                                     // 0x0054d572    e8c3853500
                          add                esp, 0x08                                     // 0x0054d577    83c408
                          test               eax, eax                                      // 0x0054d57a    85c0
                          {disp8} je         _jmp_addr_0x0054d5db                          // 0x0054d57c    745d
 _jmp_addr_0x0054d57e:    {disp8} lea        eax, dword ptr [esp + 0x24]                   // 0x0054d57e    8d442424
                          push               0x00d4bf38                                    // 0x0054d582    6838bfd400
                          push               eax                                           // 0x0054d587    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0054d588    e8298a2700
+                         call               _wcscpy                                       // 0x0054d588    e8298a2700
                          push               0x00cd3a18                                    // 0x0054d58d    68183acd00
                          call               _ProfileExists__13PlayerProfileFPw            // 0x0054d592    e819ea1100
                          add                esp, 0x0c                                     // 0x0054d597    83c40c
@@ -4788,7 +4788,7 @@ _jmp_addr_0x0054d57e:    {disp8} lea        eax, dword ptr [esp + 0x24]         
                          {disp8} je         _jmp_addr_0x0054d5e5                          // 0x0054d59c    7447
                          push               0x00cd3a18                                    // 0x0054d59e    68183acd00
                          push               0x00d4bf38                                    // 0x0054d5a3    6838bfd400
-                         call               _jmp_addr_0x008a5b3a                          // 0x0054d5a8    e88d853500
+                         call               __wcsicmp                                     // 0x0054d5a8    e88d853500
                          add                esp, 0x08                                     // 0x0054d5ad    83c408
                          test               eax, eax                                      // 0x0054d5b0    85c0
                          {disp8} je         _jmp_addr_0x0054d5e5                          // 0x0054d5b2    7431
@@ -7686,7 +7686,7 @@ _jmp_addr_0x0054fdd6:    mov.s              ecx, ebx                            
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30a698]        // 0x0054fde9    a19806cd00
                          add                eax, 0x24                                     // 0x0054fdee    83c024
                          push               eax                                           // 0x0054fdf1    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0054fdf2    e8bf612700
+                         call               _wcscpy                                       // 0x0054fdf2    e8bf612700
                          add                esp, 0x0c                                     // 0x0054fdf7    83c40c
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0054fdfa    8b0d5c19d000
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x0054fe00    e87b310000

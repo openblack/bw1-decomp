@@ -9,7 +9,7 @@
 
 .extern @FindControl__8SetupBoxFi@12
 .extern _HideAll__13DialogBoxBaseFv@0
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 
 .globl _jmp_addr_0x0053f3e0
 
@@ -105,7 +105,7 @@ _jmp_addr_0x0053f505:    {disp8} mov      eax, dword ptr [eax + 0x08]           
                          call             @FindControl__8SetupBoxFi@12           // 0x0053f510    e84b8cecff
                          add              eax, 0x24                              // 0x0053f515    83c024
                          push             eax                                    // 0x0053f518    50
-                         call             _jmp_addr_0x007c5fb6                   // 0x0053f519    e8986a2800
+                         call             _wcscpy                                // 0x0053f519    e8986a2800
                          add              esp, 0x08                              // 0x0053f51e    83c408
 _jmp_addr_0x0053f521:    xor.s            eax, eax                               // 0x0053f521    33c0
                          pop              esi                                    // 0x0053f523    5e

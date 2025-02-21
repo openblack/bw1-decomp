@@ -165,7 +165,7 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c60f0
 .extern _jmp_addr_0x007c6425
 .extern _operator_new
@@ -29241,7 +29241,7 @@ _jmp_addr_0x0043e097:    ret                                                    
                          push               eax                                                  // 0x0043e109    50
                          {disp8} lea        eax, dword ptr [esp + 0x08]                          // 0x0043e10a    8d442408
                          push               eax                                                  // 0x0043e10e    50
-                         call               _jmp_addr_0x007c5fb6                                 // 0x0043e10f    e8a27e3800
+                         call               _wcscpy                                              // 0x0043e10f    e8a27e3800
                          add                esp, 0x08                                            // 0x0043e114    83c408
                          mov                ecx, 0x00d3f038                                      // 0x0043e117    b938f0d300
                          call               _jmp_addr_0x00622c10                                 // 0x0043e11c    e8ef4a1e00
@@ -30074,7 +30074,7 @@ _jmp_addr_0x0043eafa:    {disp32} mov       edi, dword ptr [rdata_bytes + 0x3d8]
                          call               edi                                                  // 0x0043eb0e    ffd7
                          push               eax                                                  // 0x0043eb10    50
                          push               esi                                                  // 0x0043eb11    56
-                         call               _jmp_addr_0x007c5fb6                                 // 0x0043eb12    e89f743800
+                         call               _wcscpy                                              // 0x0043eb12    e89f743800
                          {disp32} mov       ebx, dword ptr [esp + 0x00000834]                    // 0x0043eb17    8b9c2434080000
                          push               ebx                                                  // 0x0043eb1e    53
                          call               _jmp_addr_0x005990a0                                 // 0x0043eb1f    e87ca51500
@@ -30248,7 +30248,7 @@ _jmp_addr_0x0043ed02:    add                esp, 0x04                           
                          call               dword ptr [rdata_bytes + 0x3d8]                      // 0x0043ed10    ff15d8938a00
                          push               eax                                                  // 0x0043ed16    50
                          push               esi                                                  // 0x0043ed17    56
-                         call               _jmp_addr_0x007c5fb6                                 // 0x0043ed18    e899723800
+                         call               _wcscpy                                              // 0x0043ed18    e899723800
                          push               0x0                                                  // 0x0043ed1d    6a00
                          push               ebx                                                  // 0x0043ed1f    53
                          push               esi                                                  // 0x0043ed20    56

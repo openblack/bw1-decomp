@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x007faff0
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
 .extern _jmp_addr_0x007fb5c0
@@ -729,7 +729,7 @@ _jmp_addr_0x00839645:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          test               eax, eax                                        // 0x00839649    85c0
                          {disp8} je         _jmp_addr_0x00839656                            // 0x0083964b    7409
                          push               eax                                             // 0x0083964d    50
-                         call               _jmp_addr_0x007c6786                            // 0x0083964e    e833d1f8ff
+                         call               _free                                           // 0x0083964e    e833d1f8ff
                          add                esp, 0x04                                       // 0x00839653    83c404
 _jmp_addr_0x00839656:    pop                edi                                             // 0x00839656    5f
                          pop                esi                                             // 0x00839657    5e
@@ -2455,7 +2455,7 @@ _jmp_addr_0x0083a8d1:    or                 ecx, 0xffffffff                     
                          {disp8} lea        ecx, dword ptr [esp + 0x58]                     // 0x0083a911    8d4c2458
                          call               @Close__6LHFileFv@4                             // 0x0083a915    e8a632f8ff
                          push               ebx                                             // 0x0083a91a    53
-                         call               _jmp_addr_0x007c6786                            // 0x0083a91b    e866bef8ff
+                         call               _free                                           // 0x0083a91b    e866bef8ff
                          add                esp, 0x04                                       // 0x0083a920    83c404
                          {disp8} lea        ecx, dword ptr [esp + 0x58]                     // 0x0083a923    8d4c2458
                          {disp32} mov       dword ptr [esp + 0x000000ec], 0xffffffff        // 0x0083a927    c78424ec000000ffffffff

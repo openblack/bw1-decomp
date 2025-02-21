@@ -156,10 +156,10 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern _operator_new
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -170,7 +170,7 @@
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0081b370
 .extern _jmp_addr_0x00827a50
-.extern _jmp_addr_0x008a5b0c
+.extern  __wcsdup
 
 .globl _jmp_addr_0x004780d0
 .globl _jmp_addr_0x00478350
@@ -2056,7 +2056,7 @@ _jmp_addr_0x00479520:    {disp32} mov       eax, dword ptr [rdata_bytes + 0x61c]
                          {disp32} mov       edx, dword ptr [ecx + 0x00205d40]             // 0x00479584    8b91405d2000
                          push               eax                                           // 0x0047958a    50
                          mov                dword ptr [ebx], edx                          // 0x0047958b    8913
-                         call               _jmp_addr_0x008a5b0c                          // 0x0047958d    e87ac54200
+                         call                __wcsdup                                     // 0x0047958d    e87ac54200
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x00479592    8b4c2418
                          add                esp, 0x04                                     // 0x00479596    83c404
                          push               ecx                                           // 0x00479599    51
@@ -2075,7 +2075,7 @@ _jmp_addr_0x004795b0:    push               esi                                 
                          mov.s              esi, ecx                                      // 0x004795b1    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x04]                   // 0x004795b3    8b4604
                          push               eax                                           // 0x004795b6    50
-                         call               _jmp_addr_0x007c6786                          // 0x004795b7    e8cad13400
+                         call               _free                                         // 0x004795b7    e8cad13400
                          add                esp, 0x04                                     // 0x004795bc    83c404
                          {disp8} lea        ecx, dword ptr [esi + 0x08]                   // 0x004795bf    8d4e08
                          call               dword ptr [rdata_bytes + 0x618]               // 0x004795c2    ff1518968a00
@@ -5574,12 +5574,12 @@ _jmp_addr_0x0047bf49:    {disp32} lea       eax, dword ptr [ebx + 0x000000e0]   
                          push               eax                                           // 0x0047bf4f    50
                          {disp32} lea       eax, dword ptr [esp + 0x00000f08]             // 0x0047bf50    8d8424080f0000
                          push               eax                                           // 0x0047bf57    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0047bf58    e859a03400
+                         call               _wcscpy                                       // 0x0047bf58    e859a03400
                          {disp32} lea       eax, dword ptr [ebp + 0x000000e0]             // 0x0047bf5d    8d85e0000000
                          push               eax                                           // 0x0047bf63    50
                          {disp32} lea       ecx, dword ptr [esp + 0x00000d10]             // 0x0047bf64    8d8c24100d0000
                          push               ecx                                           // 0x0047bf6b    51
-                         call               _jmp_addr_0x007c5fb6                          // 0x0047bf6c    e845a03400
+                         call               _wcscpy                                       // 0x0047bf6c    e845a03400
                          {disp32} mov       edx, dword ptr [ebx + 0x00000160]             // 0x0047bf71    8b9360010000
                          {disp8} mov        eax, dword ptr [edx + 0x6c]                   // 0x0047bf77    8b426c
                          {disp32} mov       ecx, dword ptr [ebp + 0x00000160]             // 0x0047bf7a    8b8d60010000
@@ -5711,12 +5711,12 @@ _jmp_addr_0x0047c1b0:    {disp32} lea       edx, dword ptr [esp + 0x00000f04]   
                          push               edx                                           // 0x0047c1b7    52
                          {disp32} lea       eax, dword ptr [ebx + 0x000000e0]             // 0x0047c1b8    8d83e0000000
                          push               eax                                           // 0x0047c1be    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0047c1bf    e8f29d3400
+                         call               _wcscpy                                       // 0x0047c1bf    e8f29d3400
                          {disp32} lea       eax, dword ptr [esp + 0x00000d0c]             // 0x0047c1c4    8d84240c0d0000
                          push               eax                                           // 0x0047c1cb    50
                          {disp32} lea       eax, dword ptr [ebp + 0x000000e0]             // 0x0047c1cc    8d85e0000000
                          push               eax                                           // 0x0047c1d2    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0047c1d3    e8de9d3400
+                         call               _wcscpy                                       // 0x0047c1d3    e8de9d3400
                          {disp32} mov       ecx, dword ptr [ebx + 0x00000160]             // 0x0047c1d8    8b8b60010000
                          {disp8} mov        edx, dword ptr [esp + 0x24]                   // 0x0047c1de    8b542424
                          {disp8} mov        dword ptr [ecx + 0x6c], edx                   // 0x0047c1e2    89516c

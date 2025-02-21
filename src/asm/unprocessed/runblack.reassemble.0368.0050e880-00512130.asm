@@ -78,7 +78,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _fprintf__10LHFilePath
 .extern _jmp_addr_0x007c7e13
 .extern _LHRand__FlRU
@@ -1658,7 +1658,7 @@ _jmp_addr_0x0050f786:    mov                eax, dword ptr [esi]                
                          test               eax, eax                                      // 0x0050f788    85c0
                          {disp8} je         _jmp_addr_0x0050f795                          // 0x0050f78a    7409
                          push               eax                                           // 0x0050f78c    50
-                         call               _jmp_addr_0x007c6786                          // 0x0050f78d    e8f46f2b00
+                         call               _free                                         // 0x0050f78d    e8f46f2b00
                          add                esp, 0x04                                     // 0x0050f792    83c404
 _jmp_addr_0x0050f795:    mov                dword ptr [esi], 0x00000000                   // 0x0050f795    c70600000000
                          add                esi, 0x04                                     // 0x0050f79b    83c604

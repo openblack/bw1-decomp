@@ -36,7 +36,7 @@
 .extern _jmp_addr_0x0066b900
 .extern _jmp_addr_0x0066bad0
 .extern _jmp_addr_0x0066bcd0
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x00514620
@@ -390,7 +390,7 @@ _jmp_addr_0x00514a5f:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          push              ecx                                           // 0x00514a65    51
                          add               edx, 0x24                                     // 0x00514a66    83c224
                          push              edx                                           // 0x00514a69    52
-                         call              _jmp_addr_0x007c5fb6                          // 0x00514a6a    e847152b00
+                         call              _wcscpy                                       // 0x00514a6a    e847152b00
                          add               esp, 0x08                                     // 0x00514a6f    83c408
                          {disp8} mov       dword ptr [edi + 0x2c], esi                   // 0x00514a72    89772c
                          pop               edi                                           // 0x00514a75    5f
@@ -725,7 +725,7 @@ _jmp_addr_0x00514e39:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              eax                                           // 0x00514e3f    50
                          add               ecx, 0x24                                     // 0x00514e40    83c124
                          push              ecx                                           // 0x00514e43    51
-                         call              _jmp_addr_0x007c5fb6                          // 0x00514e44    e86d112b00
+                         call              _wcscpy                                       // 0x00514e44    e86d112b00
                          {disp32} mov      eax, dword ptr [data_bytes + 0x5132dc]        // 0x00514e49    a1dc92ed00
                          add               esp, 0x08                                     // 0x00514e4e    83c408
                          test              eax, eax                                      // 0x00514e51    85c0

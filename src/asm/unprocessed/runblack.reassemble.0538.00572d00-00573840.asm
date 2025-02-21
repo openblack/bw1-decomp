@@ -29,7 +29,7 @@
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007c6425
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x007c6eb0
 .extern ___nw__FUl
@@ -88,7 +88,7 @@ _jmp_addr_0x00572da9:    {disp32} mov      esi, dword ptr [ebx + 0x000000ac]    
                          call              _jmp_addr_0x007c6425                          // 0x00572db9    e867362500
                          push              edi                                           // 0x00572dbe    57
                          {disp32} mov      word ptr [esi + 0x00000222], 0x0000           // 0x00572dbf    66c786220200000000
-                         call              _jmp_addr_0x007c6462                          // 0x00572dc8    e895362500
+                         call              _wcslen                                       // 0x00572dc8    e895362500
                          {disp32} mov      dword ptr [esi + 0x0000024c], eax             // 0x00572dcd    89864c020000
                          {disp32} mov      dword ptr [esi + 0x00000254], eax             // 0x00572dd3    898654020000
                          {disp32} mov      dword ptr [esi + 0x00000250], eax             // 0x00572dd9    898650020000
@@ -757,7 +757,7 @@ _jmp_addr_0x005736c4:    pop               edi                                  
                          add               eax, 0x24                                     // 0x005736ff    83c024
                          push              eax                                           // 0x00573702    50
                          {disp8} fstp      dword ptr [esp + 0x20]                        // 0x00573703    d95c2420
-                         call              _jmp_addr_0x007c6462                          // 0x00573707    e8562d2500
+                         call              _wcslen                                       // 0x00573707    e8562d2500
                          {disp8} mov       esi, dword ptr [esp + 0x20]                   // 0x0057370c    8b742420
                          {disp32} mov      edx, dword ptr [ebx + 0x000000ac]             // 0x00573710    8b93ac000000
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x286d2c]        // 0x00573716    8b0d2ccdc400
