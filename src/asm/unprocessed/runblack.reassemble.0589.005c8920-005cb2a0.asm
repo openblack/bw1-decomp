@@ -51,9 +51,9 @@
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c6425
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007c6edf
 .extern ___nw__FUl
@@ -3349,7 +3349,7 @@ _jmp_addr_0x005cad00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               edi                                           // 0x005cad10    57
                          mov                dword ptr [esi], eax                          // 0x005cad11    8906
                          {disp8} mov        dword ptr [esi + 0x04], ecx                   // 0x005cad13    894e04
-                         call               _jmp_addr_0x007c6462                          // 0x005cad16    e847b71f00
+                         call               _wcslen                                       // 0x005cad16    e847b71f00
                          inc                eax                                           // 0x005cad1b    40
                          push               0x32                                          // 0x005cad1c    6a32
                          lea                edx, dword ptr [eax + eax * 0x1]              // 0x005cad1e    8d1400
@@ -3359,7 +3359,7 @@ _jmp_addr_0x005cad00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               edi                                           // 0x005cad2c    57
                          push               eax                                           // 0x005cad2d    50
                          {disp8} mov        dword ptr [esi + 0x08], eax                   // 0x005cad2e    894608
-                         call               _jmp_addr_0x007c5fb6                          // 0x005cad31    e880b21f00
+                         call               _wcscpy                                       // 0x005cad31    e880b21f00
                          add                esp, 0x18                                     // 0x005cad36    83c418
                          pop                edi                                           // 0x005cad39    5f
                          pop                esi                                           // 0x005cad3a    5e

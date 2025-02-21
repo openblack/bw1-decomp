@@ -123,11 +123,11 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x007c90a0
 .extern _jmp_addr_0x007c989f
 .extern _jmp_addr_0x007da710
@@ -1693,7 +1693,7 @@ _jmp_addr_0x0063bd88:    {disp32} mov       eax, dword ptr [data_bytes + 0x37e3b
                          {disp8} jne        _jmp_addr_0x0063bdab                           // 0x0063bd91    7518
                          {disp32} mov       eax, dword ptr [data_bytes + 0x37e3c4]         // 0x0063bd93    a1c443d400
                          push               eax                                            // 0x0063bd98    50
-                         call               _jmp_addr_0x007c6786                           // 0x0063bd99    e8e8a91800
+                         call               _free                                          // 0x0063bd99    e8e8a91800
                          add                esp, 0x04                                      // 0x0063bd9e    83c404
                          {disp32} mov       dword ptr [data_bytes + 0x37e3c4], 0x00000000  // 0x0063bda1    c705c443d40000000000
 _jmp_addr_0x0063bdab:    ret                                                               // 0x0063bdab    c3
@@ -4188,7 +4188,7 @@ _jmp_addr_0x0063d9e9:    push               0x0                                 
                          push               eax                                            // 0x0063da06    50
                          {disp32} lea       eax, dword ptr [edi + 0x000000e0]              // 0x0063da07    8d87e0000000
                          push               eax                                            // 0x0063da0d    50
-                         call               _jmp_addr_0x007c5fb6                           // 0x0063da0e    e8a3851800
+                         call               _wcscpy                                        // 0x0063da0e    e8a3851800
                          add                esp, 0x0c                                      // 0x0063da13    83c40c
                          {disp32} mov       dword ptr [edi + 0x00001058], 0x00000001       // 0x0063da16    c7875810000001000000
                          mov.s              eax, edi                                       // 0x0063da20    8bc7

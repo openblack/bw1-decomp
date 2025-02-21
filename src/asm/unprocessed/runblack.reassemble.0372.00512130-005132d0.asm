@@ -54,7 +54,7 @@
 .extern _jmp_addr_0x007a1400
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c5791
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern _jmp_addr_0x007c647f
 .extern _operator_new
 .extern _jmp_addr_0x007c7e64
@@ -869,7 +869,7 @@ _jmp_addr_0x005128ee:    sub               ebp, 0x06                            
 _jmp_addr_0x005128f1:    {disp8} fild      dword ptr [edi + 0x20]                               // 0x005128f1    db4720
                          push              esi                                                  // 0x005128f4    56
                          {disp8} fstp      dword ptr [esp + 0x14]                               // 0x005128f5    d95c2414
-                         call              _jmp_addr_0x007c6462                                 // 0x005128f9    e8643b2b00
+                         call              _wcslen                                              // 0x005128f9    e8643b2b00
                          {disp8} mov       edx, dword ptr [esp + 0x14]                          // 0x005128fe    8b542414
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x286d2c]               // 0x00512902    8b0d2ccdc400
                          add               esp, 0x04                                            // 0x00512908    83c404

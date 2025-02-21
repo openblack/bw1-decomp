@@ -15,7 +15,7 @@
 .extern @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern _jmp_addr_0x0062d1c0
 .extern _jmp_addr_0x007c5791
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 
 start_0x0062ac00_0x0062b030:
 // Snippet: asm, [0x0062ac00, 0x0062aff9)
@@ -291,7 +291,7 @@ _jmp_addr_0x0062af19:    {disp8} mov       edx, dword ptr [eax + 0x08]          
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x0062af1c    8b44240c
                          push              edx                                           // 0x0062af20    52
                          push              eax                                           // 0x0062af21    50
-                         call              _jmp_addr_0x007c5fb6                          // 0x0062af22    e88fb01900
+                         call              _wcscpy                                       // 0x0062af22    e88fb01900
                          add               esp, 0x08                                     // 0x0062af27    83c408
                          ret               0x000c                                        // 0x0062af2a    c20c00
                          {disp8} mov       ecx, dword ptr [esp + 0x04]                   // 0x0062af2d    8b4c2404

@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c6425
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c8606
@@ -757,7 +757,7 @@ _jmp_addr_0x0054a0b9:    {disp8} mov       ecx, dword ptr [eax + 0x18]          
                          call              _jmp_addr_0x007c6425                          // 0x0054a121    e8ffc22700
                          push              edi                                           // 0x0054a126    57
                          {disp32} mov      word ptr [esi + 0x00000222], 0x0000           // 0x0054a127    66c786220200000000
-                         call              _jmp_addr_0x007c6462                          // 0x0054a130    e82dc32700
+                         call              _wcslen                                       // 0x0054a130    e82dc32700
                          add               esp, 0x10                                     // 0x0054a135    83c410
                          {disp32} mov      dword ptr [esi + 0x0000024c], eax             // 0x0054a138    89864c020000
                          {disp32} mov      dword ptr [esi + 0x00000254], eax             // 0x0054a13e    898654020000

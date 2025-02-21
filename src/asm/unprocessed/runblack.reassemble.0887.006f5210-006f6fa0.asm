@@ -32,7 +32,7 @@
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _operator_new
 
 .globl @Init__19ScriptCreatureCurseFP8Creature@12
@@ -1034,7 +1034,7 @@ _jmp_addr_0x006f5c5f:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               eax                                           // 0x006f5c62    50
                          add                esi, 0x000000e0                               // 0x006f5c63    81c6e0000000
                          push               esi                                           // 0x006f5c69    56
-                         call               _jmp_addr_0x007c5fb6                          // 0x006f5c6a    e847030d00
+                         call               _wcscpy                                       // 0x006f5c6a    e847030d00
                          add                esp, 0x08                                     // 0x006f5c6f    83c408
 _jmp_addr_0x006f5c72:    pop                edi                                           // 0x006f5c72    5f
                          pop                esi                                           // 0x006f5c73    5e

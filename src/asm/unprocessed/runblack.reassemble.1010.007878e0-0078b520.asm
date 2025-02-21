@@ -74,7 +74,7 @@
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c6ce0
 .extern ___nw__FUl
 .extern _Create__9LH3DSmokeFPC7LHPoint
@@ -2547,7 +2547,7 @@ _jmp_addr_0x00789a70:    sub                esp, 0x0000020c                     
                          push               edx                                           // 0x00789b0b    52
                          {disp32} lea       ecx, dword ptr [eax * 0x4 + 0x00de1008]       // 0x00789b0c    8d0c850810de00
                          push               ecx                                           // 0x00789b13    51
-                         call               _jmp_addr_0x007c5fb6                          // 0x00789b14    e89dc40300
+                         call               _wcscpy                                       // 0x00789b14    e89dc40300
                          add                esp, 0x28                                     // 0x00789b19    83c428
                          pop                esi                                           // 0x00789b1c    5e
                          pop                ebx                                           // 0x00789b1d    5b
