@@ -27,7 +27,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0071d0b0
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern ___nw__FUl
 
@@ -564,7 +564,7 @@ _jmp_addr_0x0056e852:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              eax                                           // 0x0056e858    50
                          add               ecx, 0x24                                     // 0x0056e859    83c124
                          push              ecx                                           // 0x0056e85c    51
-                         call              _jmp_addr_0x007c5fb6                          // 0x0056e85d    e854772500
+                         call              _wcscpy                                       // 0x0056e85d    e854772500
                          add               esp, 0x08                                     // 0x0056e862    83c408
 _jmp_addr_0x0056e865:    {disp8} mov       al, byte ptr [esi + 0x5c]                     // 0x0056e865    8a465c
                          test              al, al                                        // 0x0056e868    84c0
@@ -588,7 +588,7 @@ _jmp_addr_0x0056e8a7:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              eax                                           // 0x0056e8ad    50
                          add               ecx, 0x24                                     // 0x0056e8ae    83c124
                          push              ecx                                           // 0x0056e8b1    51
-                         call              _jmp_addr_0x007c5fb6                          // 0x0056e8b2    e8ff762500
+                         call              _wcscpy                                       // 0x0056e8b2    e8ff762500
                          {disp8} mov       eax, dword ptr [esi + 0x64]                   // 0x0056e8b7    8b4664
                          mov               edi, 0x00000001                               // 0x0056e8ba    bf01000000
                          add               esp, 0x08                                     // 0x0056e8bf    83c408
@@ -679,7 +679,7 @@ _jmp_addr_0x0056e9b5:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          {disp8} mov       eax, dword ptr [esi + 0x34]                   // 0x0056e9cb    8b4634
                          add               eax, 0x24                                     // 0x0056e9ce    83c024
                          push              eax                                           // 0x0056e9d1    50
-                         call              _jmp_addr_0x007c5fb6                          // 0x0056e9d2    e8df752500
+                         call              _wcscpy                                       // 0x0056e9d2    e8df752500
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0056e9d7    8b0d5c19d000
                          xor.s             eax, eax                                      // 0x0056e9dd    33c0
                          {disp32} mov      al, byte ptr [ecx + 0x00205a59]               // 0x0056e9df    8a81595a2000

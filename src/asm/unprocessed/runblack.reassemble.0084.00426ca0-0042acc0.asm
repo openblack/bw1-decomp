@@ -48,7 +48,7 @@
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
 .extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x007c686f
 .extern _jmp_addr_0x007c68ed
 .extern _jmp_addr_0x007c6ad3
@@ -434,7 +434,7 @@ _jmp_addr_0x00427047:    {disp8} mov        eax, dword ptr [edi + 0x18]         
                          pop                ebx                                                  // 0x00427055    5b
                          {disp8} je         _jmp_addr_0x00427061                                 // 0x00427056    7409
                          push               eax                                                  // 0x00427058    50
-                         call               _jmp_addr_0x007c6786                                 // 0x00427059    e828f73900
+                         call               _free                                                // 0x00427059    e828f73900
                          add                esp, 0x04                                            // 0x0042705e    83c404
 _jmp_addr_0x00427061:    call               _jmp_addr_0x007dee00                                 // 0x00427061    e89a7d3b00
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x00427066    8b442408

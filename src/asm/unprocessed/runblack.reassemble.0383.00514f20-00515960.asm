@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x005553f0
 .extern _jmp_addr_0x00793d90
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern ___nw__FUl
 
 .globl @__ct__20MiniDialogBoxOptions@4
@@ -669,7 +669,7 @@ _jmp_addr_0x00515736:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          push              ecx                                           // 0x0051573c    51
                          add               edx, 0x24                                     // 0x0051573d    83c224
                          push              edx                                           // 0x00515740    52
-                         call              _jmp_addr_0x007c5fb6                          // 0x00515741    e870082b00
+                         call              _wcscpy                                       // 0x00515741    e870082b00
                          {disp8} mov       eax, dword ptr [esi + 0x28]                   // 0x00515746    8b4628
                          {disp8} mov       ecx, dword ptr [eax + 0x0c]                   // 0x00515749    8b480c
                          sub               dword ptr [eax + 0x14], ecx                   // 0x0051574c    294814

@@ -24,7 +24,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007c5791
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern ___nw__FUl
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
@@ -731,7 +731,7 @@ _jmp_addr_0x0056adc1:    {disp8} mov        eax, dword ptr [esp + 0x24]         
                          add.s              edx, esi                                      // 0x0056addd    03d6
                          push               edx                                           // 0x0056addf    52
                          push               eax                                           // 0x0056ade0    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0056ade1    e8d0b12500
+                         call               _wcscpy                                       // 0x0056ade1    e8d0b12500
                          add                esp, 0x08                                     // 0x0056ade6    83c408
 _jmp_addr_0x0056ade9:    pop                edi                                           // 0x0056ade9    5f
                          pop                esi                                           // 0x0056adea    5e
