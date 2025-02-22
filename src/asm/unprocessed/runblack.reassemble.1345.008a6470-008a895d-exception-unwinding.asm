@@ -2969,7 +2969,7 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          {disp8} mov      eax, dword ptr [ebp + -0x10]            // 0x008a83fc    8b45f0
                          add              eax, 0x08                               // 0x008a83ff    83c008
                          push             eax                                     // 0x008a8402    50
-                         call             ___destroy_new_array                    // 0x008a8403    e85bdbffff
+                         call             ??_M@YGXPAXIHP6EX0@Z@Z                  // 0x008a8403    e85bdbffff
                          ret                                                      // 0x008a8408    c3
                          mov              eax, 0x009bf0e0                         // 0x008a8409    b8e0f09b00
                          {disp32} jmp     _jmp_addr_0x007c82a6                    // 0x008a840e    e993fef1ff
@@ -2992,7 +2992,7 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          {disp8} mov      eax, dword ptr [ebp + -0x14]            // 0x008a842c    8b45ec
                          add              eax, 0x08                               // 0x008a842f    83c008
                          push             eax                                     // 0x008a8432    50
-                         call             ___destroy_new_array                    // 0x008a8433    e82bdbffff
+                         call             ??_M@YGXPAXIHP6EX0@Z@Z                  // 0x008a8433    e82bdbffff
                          ret                                                      // 0x008a8438    c3
                          mov              eax, 0x009bf108                         // 0x008a8439    b808f19b00
                          {disp32} jmp     _jmp_addr_0x007c82a6                    // 0x008a843e    e963fef1ff

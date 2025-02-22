@@ -545,7 +545,7 @@ _jmp_addr_0x0083c812:    pop                edi                                 
                          push               eax                                            // 0x0083c849    50
                          push               0x38                                           // 0x0083c84a    6a38
                          push               esi                                            // 0x0083c84c    56
-                         call               ___destroy_new_array                           // 0x0083c84d    e811970600
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                         // 0x0083c84d    e811970600
                          test               bl, 0x01                                       // 0x0083c852    f6c301
                          {disp8} je         _jmp_addr_0x0083c860                           // 0x0083c855    7409
                          push               edi                                            // 0x0083c857    57

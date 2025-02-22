@@ -60,7 +60,7 @@
 .extern _jmp_addr_0x008a5480
 .extern _jmp_addr_0x008a5590
 .extern _jmp_addr_0x008a5b00
-.extern ___destroy_new_array
+.extern ??_M@YGXPAXIHP6EX0@Z@Z
 .extern _jmp_addr_0x00fc1285
 
 .globl _jmp_addr_0x007dc8b0
@@ -750,7 +750,7 @@ _jmp_addr_0x007dcf9d:    push               edi                                 
                          push               eax                                           // 0x007dcfd9    50
                          push               0x000000f8                                    // 0x007dcfda    68f8000000
                          push               esi                                           // 0x007dcfdf    56
-                         call               ___destroy_new_array                          // 0x007dcfe0    e87e8f0c00
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                        // 0x007dcfe0    e87e8f0c00
                          test               bl, 0x01                                      // 0x007dcfe5    f6c301
                          {disp8} je         _jmp_addr_0x007dcff3                          // 0x007dcfe8    7409
                          push               edi                                           // 0x007dcfea    57
@@ -1556,7 +1556,7 @@ _jmp_addr_0x007dd8e1:    pop                esi                                 
                          push               ecx                                           // 0x007dd90a    51
                          push               0x000000f8                                    // 0x007dd90b    68f8000000
                          push               eax                                           // 0x007dd910    50
-                         call               ___destroy_new_array                          // 0x007dd911    e84d860c00
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                        // 0x007dd911    e84d860c00
                          push               edi                                           // 0x007dd916    57
                          call               ___dl__FPv                                    // 0x007dd917    e87c15fdff
                          add                esp, 0x04                                     // 0x007dd91c    83c404
