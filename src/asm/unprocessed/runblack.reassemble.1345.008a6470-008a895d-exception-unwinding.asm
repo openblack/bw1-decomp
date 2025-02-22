@@ -53,9 +53,6 @@
 .extern _jmp_addr_0x008a1d52
 .extern _jmp_addr_0x008a5480
 
-.globl ___destroy_new_array
-.globl ___construct_new_array
-
                          mov              eax, 0x009bbcc0                         // 0x008a6470    b8c0bc9b00
                          {disp32} jmp     _jmp_addr_0x007c82a6                    // 0x008a6475    e92c1ef2ff
                          int3                                                     // 0x008a647a    cc

@@ -15,9 +15,9 @@ void* __cdecl operator_new(size_t size);
 void* __cdecl __nw__FUl(size_t size, const char* file_name, uint32_t line);
 // win1.41 007aee98 mac 1061fbd4 operator delete(void* )
 void __cdecl __dl__FPv(void* address);
-// win1.41 008a6187 mac 101a84e4 __construct_new_array
+// win1.41 008a6187 mac 101a84e4 operator new[](void *,unsigned int,int,void (__thiscall*)(void *),void (__thiscall*)(void *)) - ??_L@YGXPAXIHP6EX0@Z1@Z
 void __cdecl __construct_new_array(void* address, size_t stride, int len, void* constructor);
-// win1.41 008a5f63 mac 101a7d90 __destroy_new_array
+// win1.41 008a5f63 mac 101a7d90 operator delete[](void *,unsigned int,int,void (__thiscall*)(void *)) - ??_M@YGXPAXIHP6EX0@Z@Z
 void __cdecl __destroy_new_array(void* address, size_t stride, int len, void* destructor);
 
 #endif /* BW1_DECOMP_PC_MAIN_INCLUDED_H */
