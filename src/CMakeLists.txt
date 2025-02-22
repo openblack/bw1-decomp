@@ -388,7 +388,7 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
-    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6053.asm
+    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5f63.asm
 )
 
 add_library(runblack-reassembled-src OBJECT ${SOURCES})
@@ -433,6 +433,7 @@ endfunction()
 add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
 
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecdtr.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strspn.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcschr.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcsrchr.obj" ON)
@@ -456,7 +457,7 @@ add_library(runblack-reassembled-src-post-static OBJECT
 # Linking with static libraries inserts constants in rdata, so these sections are split up to allow the constants to be inserted in between
 add_library(runblack-reassembled-data-001 OBJECT
     asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
-    asm/unprocessed/rdata.001.008a99a8-009a62a8.asm
+    asm/unprocessed/rdata.001.008a99a8-009a6298.asm
     asm/unprocessed/data.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
@@ -499,8 +500,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm.o"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm.o"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5f63.asm.o"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5f63.asm.o"
             ON
     COMMENT "Processing .obj file before linking"
 )
