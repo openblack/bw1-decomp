@@ -402,7 +402,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
-    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6281.asm
+    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a6053.asm
 )
 set(SOURCES_002
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
@@ -465,6 +465,11 @@ endfunction()
 add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
 
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strspn.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcschr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsrchr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcspbrk.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsspn.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecctr.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\clock.obj" ON WEAKEN_SYMBOLS _start_tics)
 add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
