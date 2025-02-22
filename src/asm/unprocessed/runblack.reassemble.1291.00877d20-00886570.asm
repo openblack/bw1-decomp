@@ -170,7 +170,7 @@
 .extern _jmp_addr_0x0088fbf0
 .extern _jmp_addr_0x008a507e
 .extern ___destroy_new_array
-.extern ___construct_new_array
+.extern ??_L@YGXPAXIHP6EX0@Z1@Z
 
 .globl _jmp_addr_0x00877d20
 .globl _jmp_addr_0x00878210
@@ -3275,7 +3275,7 @@ _jmp_addr_0x0087a327:    pop                esi                                 
                          {disp8} lea        eax, dword ptr [esi + 0x08]                          // 0x0087a36a    8d4608
                          push               eax                                                  // 0x0087a36d    50
                          {disp8} mov        dword ptr [esp + 0x18], esi                          // 0x0087a36e    89742418
-                         call               ___construct_new_array                               // 0x0087a372    e810be0200
+                         call               ??_L@YGXPAXIHP6EX0@Z1@Z                              // 0x0087a372    e810be0200
                          mov                dword ptr [esi], 0x009a3c30                          // 0x0087a377    c706303c9a00
                          mov.s              ecx, esi                                             // 0x0087a37d    8bce
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000                   // 0x0087a37f    c744241000000000

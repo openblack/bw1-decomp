@@ -51,7 +51,7 @@
 .extern _jmp_addr_0x0086cff0
 .extern @GetNormSq__7Point2DFv2@4
 .extern ___destroy_new_array
-.extern ___construct_new_array
+.extern ??_L@YGXPAXIHP6EX0@Z1@Z
 
 .globl _jmp_addr_0x0083c2d0
 .globl _jmp_addr_0x0083d4b0
@@ -1728,7 +1728,7 @@ _jmp_addr_0x0083d5c8:    mov                ebx, dword ptr [esi]                
                          push               0x38                                           // 0x0083d5fd    6a38
                          push               ebp                                            // 0x0083d5ff    55
                          mov                dword ptr [eax], ebx                           // 0x0083d600    8918
-                         call               ___construct_new_array                         // 0x0083d602    e8808b0600
+                         call               ??_L@YGXPAXIHP6EX0@Z1@Z                        // 0x0083d602    e8808b0600
 _jmp_addr_0x0083d607:    {disp8} mov        dword ptr [esi + 0x04], ebp                    // 0x0083d607    896e04
                          {disp8} mov        eax, dword ptr [edi + 0x04]                    // 0x0083d60a    8b4704
                          xor.s              ebp, ebp                                       // 0x0083d60d    33ed
