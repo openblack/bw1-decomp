@@ -83,7 +83,7 @@
 .extern _jmp_addr_0x00880770
 .extern _jmp_addr_0x00881de0
 .extern ___destroy_new_array
-.extern ___construct_new_array
+.extern ??_L@YGXPAXIHP6EX0@Z1@Z
 
 .globl _jmp_addr_0x00842b40
 .globl _jmp_addr_0x00842b90
@@ -7394,7 +7394,7 @@ _jmp_addr_0x00847a10:    {disp8} mov        dword ptr [eax + 0x0c], edi         
                          push               0x64                                           // 0x00847a92    6a64
                          push               edi                                            // 0x00847a94    57
                          mov                dword ptr [eax], esi                           // 0x00847a95    8930
-                         call               ___construct_new_array                         // 0x00847a97    e8ebe60500
+                         call               ??_L@YGXPAXIHP6EX0@Z1@Z                        // 0x00847a97    e8ebe60500
                          mov.s              ebp, edi                                       // 0x00847a9c    8bef
                          xor.s              edx, edx                                       // 0x00847a9e    33d2
                          {disp8} jmp        _jmp_addr_0x00847aa4                           // 0x00847aa0    eb02
@@ -7524,7 +7524,7 @@ _jmp_addr_0x00847bb8:    dec                esi                                 
                          push               0x64                                           // 0x00847bea    6a64
                          push               edi                                            // 0x00847bec    57
                          mov                dword ptr [eax], esi                           // 0x00847bed    8930
-                         call               ___construct_new_array                         // 0x00847bef    e893e50500
+                         call               ??_L@YGXPAXIHP6EX0@Z1@Z                        // 0x00847bef    e893e50500
                          {disp8} mov        dword ptr [esp + 0x10], edi                    // 0x00847bf4    897c2410
                          {disp8} jmp        _jmp_addr_0x00847bfe                           // 0x00847bf8    eb04
 _jmp_addr_0x00847bfa:    {disp8} mov        dword ptr [esp + 0x10], ebp                    // 0x00847bfa    896c2410
@@ -8183,7 +8183,7 @@ _jmp_addr_0x008481ff:    push               -0x1                                
                          push               0x64                                           // 0x008482de    6a64
                          push               ebp                                            // 0x008482e0    55
                          mov                dword ptr [eax], ebx                           // 0x008482e1    8918
-                         call               ___construct_new_array                         // 0x008482e3    e89fde0500
+                         call               ??_L@YGXPAXIHP6EX0@Z1@Z                        // 0x008482e3    e89fde0500
 _jmp_addr_0x008482e8:    {disp8} mov        eax, dword ptr [edi + 0x04]                    // 0x008482e8    8b4704
                          xor.s              ebx, ebx                                       // 0x008482eb    33db
                          test               eax, eax                                       // 0x008482ed    85c0

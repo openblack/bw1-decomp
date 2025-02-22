@@ -47,7 +47,7 @@
 .extern __lock
 .extern __unlock
 .extern ___crtLCMapStringA
-.extern _jmp_addr_0x007d480c
+.extern ?terminate@@YAXXZ
 .extern _jmp_addr_0x007d4dde
 .extern _strcpy
 .extern _jmp_addr_0x007d9a5d
@@ -97,7 +97,9 @@
 .globl _wcsrchr
 .globl _wcspbrk
 .globl _wcsspn
-.globl ___construct_new_array
+.globl ??_L@YGXPAXIHP6EX0@Z1@Z
+.globl ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z
+.globl ?ArrayUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z
 
 start_0x008a5b00_0x008a895d:
 // Snippet: asm, [0x008a5b00, 0x008a895d)
@@ -562,9 +564,9 @@ _jmp_addr_0x008a5fcb:    cmp              dword ptr [ebp + -0x1c], 0x00         
                          push             dword ptr [ebp + 0x10]                  // 0x008a5fd4    ff7510
                          push             dword ptr [ebp + 0x0c]                  // 0x008a5fd7    ff750c
                          push             dword ptr [ebp + 0x08]                  // 0x008a5fda    ff7508
-                         call             _jmp_addr_0x008a5fe3                    // 0x008a5fdd    e801000000
+                         call             ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z       // 0x008a5fdd    e801000000
 _jmp_addr_0x008a5fe2:    ret                                                      // 0x008a5fe2    c3
-_jmp_addr_0x008a5fe3:    push             ebp                                     // 0x008a5fe3    55
+?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z:    push             ebp                                     // 0x008a5fe3    55
                          mov.s            ebp, esp                                // 0x008a5fe4    8bec
                          push             -0x1                                    // 0x008a5fe6    6aff
                          push             0x009a62a8                              // 0x008a5fe8    68a8629a00
@@ -587,7 +589,7 @@ _jmp_addr_0x008a600c:    dec              dword ptr [ebp + 0x10]                
                          call             dword ptr [ebp + 0x14]                  // 0x008a601a    ff5514
                          {disp8} jmp      _jmp_addr_0x008a600c                    // 0x008a601d    ebed
                          push             dword ptr [ebp + -0x14]                 // 0x008a601f    ff75ec
-                         call             _jmp_addr_0x008a6041                    // 0x008a6022    e81a000000
+                         call             ?ArrayUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z                    // 0x008a6022    e81a000000
                          pop              ecx                                     // 0x008a6027    59
                          ret                                                      // 0x008a6028    c3
                          {disp8} mov      esp, dword ptr [ebp + -0x18]            // 0x008a6029    8b65e8
@@ -599,13 +601,13 @@ _jmp_addr_0x008a602c:    or               dword ptr [ebp - 4], 0xffffffff       
                          pop              ebx                                     // 0x008a603c    5b
                          leave                                                    // 0x008a603d    c9
                          ret              0x0010                                  // 0x008a603e    c21000
-_jmp_addr_0x008a6041:    {disp8} mov      eax, dword ptr [esp + 0x04]             // 0x008a6041    8b442404
+?ArrayUnwindFilter@@YAHPAU_EXCEPTION_POINTERS@@@Z:    {disp8} mov      eax, dword ptr [esp + 0x04]             // 0x008a6041    8b442404
                          mov              eax, dword ptr [eax]                    // 0x008a6045    8b00
                          cmp              dword ptr [eax], 0xe06d7363             // 0x008a6047    813863736de0
                          {disp8} je       _jmp_addr_0x008a6052                    // 0x008a604d    7403
                          xor.s            eax, eax                                // 0x008a604f    33c0
                          ret                                                      // 0x008a6051    c3
-_jmp_addr_0x008a6052:    {disp32} jmp     _jmp_addr_0x007d480c                    // 0x008a6052    e9b5e7f2ff
+_jmp_addr_0x008a6052:    {disp32} jmp     ?terminate@@YAXXZ                       // 0x008a6052    e9b5e7f2ff
                          int3                                                     // 0x008a6057    cc
                          int3                                                     // 0x008a6058    cc
                          int3                                                     // 0x008a6059    cc
@@ -755,7 +757,7 @@ _jmp_addr_0x008a617d:    sub              eax, dword ptr [esp + 0x10]           
                          pop              ebx                                     // 0x008a6183    5b
                          sar              eax, 1                                  // 0x008a6184    d1f8
                          ret                                                      // 0x008a6186    c3
-___construct_new_array:  push             ebp                                     // 0x008a6187    55
+??_L@YGXPAXIHP6EX0@Z1@Z: push             ebp                                     // 0x008a6187    55
                          mov.s            ebp, esp                                // 0x008a6188    8bec
                          push             -0x1                                    // 0x008a618a    6aff
                          push             0x009a62b8                              // 0x008a618c    68b8629a00
@@ -797,5 +799,5 @@ _jmp_addr_0x008a61f1:    cmp              dword ptr [ebp + -0x20], 0x00         
                          push             dword ptr [ebp + -0x1c]                 // 0x008a61fa    ff75e4
                          push             dword ptr [ebp + 0x0c]                  // 0x008a61fd    ff750c
                          push             dword ptr [ebp + 0x08]                  // 0x008a6200    ff7508
-                         call             _jmp_addr_0x008a5fe3                    // 0x008a6203    e8dbfdffff
+                         call             ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z       // 0x008a6203    e8dbfdffff
 _jmp_addr_0x008a6208:    ret                                                      // 0x008a6208    c3
