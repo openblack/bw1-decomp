@@ -4713,7 +4713,7 @@ _jmp_addr_0x00845b18:    call               _jmp_addr_0x00844ca0                
                          push               eax                                            // 0x00845b49    50
                          push               0x64                                           // 0x00845b4a    6a64
                          push               esi                                            // 0x00845b4c    56
-                         call               ___destroy_new_array                           // 0x00845b4d    e811040600
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                         // 0x00845b4d    e811040600
                          test               bl, 0x01                                       // 0x00845b52    f6c301
                          {disp8} je         _jmp_addr_0x00845b60                           // 0x00845b55    7409
                          push               edi                                            // 0x00845b57    57
@@ -7435,7 +7435,7 @@ _jmp_addr_0x00847aec:    {disp8} mov        eax, dword ptr [ebx + 0x74]         
                          push               ecx                                            // 0x00847afe    51
                          push               0x64                                           // 0x00847aff    6a64
                          push               eax                                            // 0x00847b01    50
-                         call               ___destroy_new_array                           // 0x00847b02    e85ce40500
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                         // 0x00847b02    e85ce40500
                          push               esi                                            // 0x00847b07    56
                          call               ___dl__FPv                                     // 0x00847b08    e88b73f6ff
                          add                esp, 0x04                                      // 0x00847b0d    83c404
@@ -7493,7 +7493,7 @@ _jmp_addr_0x00847b10:    {disp8} mov        eax, dword ptr [ebx + 0x04]         
                          push               ecx                                            // 0x00847b8f    51
                          push               0x64                                           // 0x00847b90    6a64
                          push               eax                                            // 0x00847b92    50
-                         call               ___destroy_new_array                           // 0x00847b93    e8cbe30500
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                         // 0x00847b93    e8cbe30500
                          push               esi                                            // 0x00847b98    56
                          call               ___dl__FPv                                     // 0x00847b99    e8fa72f6ff
                          add                esp, 0x04                                      // 0x00847b9e    83c404
@@ -7560,7 +7560,7 @@ _jmp_addr_0x00847c42:    {disp8} mov        eax, dword ptr [ebx + 0x74]         
                          push               edx                                            // 0x00847c55    52
                          push               0x64                                           // 0x00847c56    6a64
                          push               eax                                            // 0x00847c58    50
-                         call               ___destroy_new_array                           // 0x00847c59    e805e30500
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                         // 0x00847c59    e805e30500
                          push               esi                                            // 0x00847c5e    56
                          call               ___dl__FPv                                     // 0x00847c5f    e83472f6ff
                          add                esp, 0x04                                      // 0x00847c64    83c404

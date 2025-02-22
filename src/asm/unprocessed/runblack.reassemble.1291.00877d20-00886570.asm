@@ -3372,7 +3372,7 @@ _jmp_addr_0x0087a47b:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          push               0x8                                                  // 0x0087a489    6a08
                          push               eax                                                  // 0x0087a48b    50
                          {disp8} mov        dword ptr [esp + 0x34], 0xffffffff                   // 0x0087a48c    c7442434ffffffff
-                         call               ___destroy_new_array                                 // 0x0087a494    e8caba0200
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                               // 0x0087a494    e8caba0200
                          {disp8} mov        ecx, dword ptr [esp + 0x1c]                          // 0x0087a499    8b4c241c
                          pop                edi                                                  // 0x0087a49d    5f
                          pop                esi                                                  // 0x0087a49e    5e
