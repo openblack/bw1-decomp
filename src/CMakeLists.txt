@@ -47,7 +47,7 @@ find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
     asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
-    asm/unprocessed/rdata.001.008a99a8-009a62c8.asm
+    asm/unprocessed/rdata.001.008a99a8-009a62a8.asm
     asm/unprocessed/data.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
@@ -465,6 +465,7 @@ endfunction()
 add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
 
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecctr.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\clock.obj" ON WEAKEN_SYMBOLS _start_tics)
 add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj" OFF)
