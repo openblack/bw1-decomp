@@ -48,7 +48,7 @@
 .extern _jmp_addr_0x00870920
 .extern _jmp_addr_0x00870990
 .extern __filelength
-.extern _jmp_addr_0x008a5ca3
+.extern __fileno
 
 .globl _jmp_addr_0x00548990
 
@@ -313,7 +313,7 @@ _jmp_addr_0x005482e0:    sub                esp, 0x44                           
                          add                esp, 0x44                                     // 0x00548358    83c444
                          ret                0x000c                                        // 0x0054835b    c20c00
 _jmp_addr_0x0054835e:    push               edi                                           // 0x0054835e    57
-                         call               _jmp_addr_0x008a5ca3                          // 0x0054835f    e83fd93500
+                         call               __fileno                                      // 0x0054835f    e83fd93500
                          push               eax                                           // 0x00548364    50
                          call               __filelength                                  // 0x00548365    e8afd83500
                          push               edi                                           // 0x0054836a    57

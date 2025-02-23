@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -674,7 +674,7 @@ _jmp_addr_0x00842d0a:    {disp32} mov       eax, dword ptr [data_bytes + 0x53054
                          push               eax                                            // 0x00842d33    50
                          {disp32} mov       dword ptr [data_bytes + 0x530540], edx         // 0x00842d34    89154065ef00
                          {disp32} mov       dword ptr [data_bytes + 0x53054c], ecx         // 0x00842d3a    890d4c65ef00
-                         call               _jmp_addr_0x007c664c                           // 0x00842d40    e80739f8ff
+                         call               _malloc                                        // 0x00842d40    e80739f8ff
                          mov                ecx, 0x51627384                                // 0x00842d45    b984736251
                          mov                dword ptr [eax], esi                           // 0x00842d4a    8930
                          {disp8} mov        dword ptr [eax + 0x04], ecx                    // 0x00842d4c    894804
@@ -741,7 +741,7 @@ _jmp_addr_0x00842de5:    pop                edi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00842df5    8b74240c
                          {disp8} lea        ecx, dword ptr [eax + esi * 0x1 + 0x08]        // 0x00842df9    8d4c3008
                          push               ecx                                            // 0x00842dfd    51
-                         call               _jmp_addr_0x007c664c                           // 0x00842dfe    e84938f8ff
+                         call               _malloc                                        // 0x00842dfe    e84938f8ff
                          mov.s              ecx, eax                                       // 0x00842e03    8bc8
                          add                esp, 0x04                                      // 0x00842e05    83c404
                          test               ecx, ecx                                       // 0x00842e08    85c9
@@ -10908,7 +10908,7 @@ _jmp_addr_0x0084a230:    sub                esp, 0x08                           
                          push               edi                                            // 0x0084a242    57
                          shl                esi, 2                                         // 0x0084a243    c1e602
                          push               esi                                            // 0x0084a246    56
-                         call               _jmp_addr_0x007c664c                           // 0x0084a247    e800c4f7ff
+                         call               _malloc                                        // 0x0084a247    e800c4f7ff
                          mov.s              ebp, eax                                       // 0x0084a24c    8be8
                          mov.s              ecx, esi                                       // 0x0084a24e    8bce
                          mov.s              edx, ecx                                       // 0x0084a250    8bd1

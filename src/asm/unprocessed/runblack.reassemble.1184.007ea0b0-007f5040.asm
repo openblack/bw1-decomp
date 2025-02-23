@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x007c57d2
 .extern _wcslen
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -6519,7 +6519,7 @@ _jmp_addr_0x007eea9d:    push             ebx                                   
                          {disp8} mov      eax, dword ptr [esp + 0x20]              // 0x007eeaaf    8b442420
                          add              eax, -0x10                               // 0x007eeab3    83c0f0
                          push             eax                                      // 0x007eeab6    50
-                         call             _jmp_addr_0x007c664c                     // 0x007eeab7    e8907bfdff
+                         call             _malloc                                  // 0x007eeab7    e8907bfdff
                          add              esp, 0x04                                // 0x007eeabc    83c404
                          test             eax, eax                                 // 0x007eeabf    85c0
                          {disp32} je      _jmp_addr_0x007eebe2                     // 0x007eeac1    0f841b010000
@@ -6530,7 +6530,7 @@ _jmp_addr_0x007eea9d:    push             ebx                                   
 _jmp_addr_0x007eead4:    {disp8} mov      ecx, dword ptr [esp + 0x20]              // 0x007eead4    8b4c2420
                          add              ecx, -0x10                               // 0x007eead8    83c1f0
                          push             ecx                                      // 0x007eeadb    51
-                         call             _jmp_addr_0x007c664c                     // 0x007eeadc    e86b7bfdff
+                         call             _malloc                                  // 0x007eeadc    e86b7bfdff
                          mov.s            esi, eax                                 // 0x007eeae1    8bf0
                          add              esp, 0x04                                // 0x007eeae3    83c404
                          test             esi, esi                                 // 0x007eeae6    85f6

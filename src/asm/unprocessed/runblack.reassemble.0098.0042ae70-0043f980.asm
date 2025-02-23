@@ -170,7 +170,7 @@
 .extern _jmp_addr_0x007c6425
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _jmp_addr_0x007c6bd1
 .extern _jmp_addr_0x007c6c29
 .extern _jmp_addr_0x007c6c34
@@ -439,7 +439,7 @@ _jmp_addr_0x0042af55:    push               esi                                 
                          lea                edx, dword ptr [eax + eax * 0x2]                     // 0x0042afb3    8d1440
                          shl                edx, 3                                               // 0x0042afb6    c1e203
                          push               edx                                                  // 0x0042afb9    52
-                         call               _jmp_addr_0x007c664c                                 // 0x0042afba    e88db63900
+                         call               _malloc                                              // 0x0042afba    e88db63900
                          mov.s              edi, eax                                             // 0x0042afbf    8bf8
                          {disp8} mov        eax, dword ptr [esp + 0x18]                          // 0x0042afc1    8b442418
                          {disp8} mov        dword ptr [esp + 0x20], eax                          // 0x0042afc5    89442420

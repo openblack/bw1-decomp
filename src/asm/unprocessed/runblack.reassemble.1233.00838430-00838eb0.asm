@@ -18,7 +18,7 @@
 .extern @Close__6LHFileFv@4
 .extern @GetSegment__6LHFileFPcP9LHSegmenti@20
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007dee20
 .extern _Report3D__FPCce
@@ -313,7 +313,7 @@ _jmp_addr_0x00838660:    push              -0x1                                 
                          rep stosd                                                  // 0x00838737    f3ab
                          push              0x00001004                               // 0x00838739    6804100000
                          stosb                                                      // 0x0083873e    aa
-                         call              _jmp_addr_0x007c664c                     // 0x0083873f    e808dff8ff
+                         call              _malloc                                  // 0x0083873f    e808dff8ff
                          mov.s             ebx, eax                                 // 0x00838744    8bd8
                          {disp8} mov       eax, dword ptr [ebp + 0x00]              // 0x00838746    8b4500
                          mov               dword ptr [ebx], eax                     // 0x00838749    8903

@@ -38,7 +38,7 @@
 .extern _wcslen
 .extern _jmp_addr_0x007c647f
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c6eb0
 .extern ___nw__FUl
@@ -86,7 +86,7 @@ _jmp_addr_0x0059b1fb:    {disp8} mov      ebx, dword ptr [esp + 0x18]           
                          shr              ecx, 2                                        // 0x0059b20e    c1e902
                          add              ecx, 0x5                                      // 0x0059b211    83c105
                          push             ecx                                           // 0x0059b214    51
-                         call             _jmp_addr_0x007c664c                          // 0x0059b215    e832b42200
+                         call             _malloc                                       // 0x0059b215    e832b42200
                          {disp32} lea     edx, dword ptr [esi + 0x00000298]             // 0x0059b21a    8d9698020000
                          push             edx                                           // 0x0059b220    52
                          mov.s            edi, eax                                      // 0x0059b221    8bf8

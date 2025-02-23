@@ -271,7 +271,7 @@
 .extern _jmp_addr_0x007c6425
 .extern _wcslen
 .extern _jmp_addr_0x007c647f
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c76e0
 .extern _jmp_addr_0x007db770
@@ -18261,7 +18261,7 @@ _jmp_addr_0x005d8799:    {disp32} mov       edx, dword ptr [data_bytes + 0x35258
                          call               dword ptr [rdata_bytes + 0x88]                 // 0x005d87c0    ff1588908a00
                          shl                eax, 2                                         // 0x005d87c6    c1e002
                          push               eax                                            // 0x005d87c9    50
-                         call               _jmp_addr_0x007c664c                           // 0x005d87ca    e87dde1e00
+                         call               _malloc                                        // 0x005d87ca    e87dde1e00
                          add                esp, 0x04                                      // 0x005d87cf    83c404
                          cmp.s              eax, edi                                       // 0x005d87d2    3bc7
                          {disp32} mov       dword ptr [data_bytes + 0x352580], eax         // 0x005d87d4    a38085d100
