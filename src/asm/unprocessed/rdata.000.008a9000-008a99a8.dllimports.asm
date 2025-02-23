@@ -10,9 +10,9 @@
 .globl __imp__RegOpenKeyExA@4
 .globl __imp__RegSetValueExA@4
 .globl __imp__TrackMouseEvent@4
-.globl __imp__DirectDrawCreateEx4
-.globl __imp__DirectDrawEnumerateA4
-.globl __imp__DirectDrawCreate4
+.globl __imp__DirectDrawCreateEx@4
+.globl __imp__DirectDrawEnumerateA@4
+.globl __imp__DirectDrawCreate@4
 .globl __imp__DirectInputCreateA@4
 .globl __imp__DirectXSetupGetVersion
 .globl __imp__SetTextColor@4
@@ -575,19 +575,19 @@
 .globl __imp__WSAStartup@4
 .globl __imp__inet_addr@4
 .globl __imp__inet_ntoa
-.globl __imp__BinkService_4@4
-.globl __imp__BinkWait_4@4
-.globl __imp__BinkGetRealtime_12@4
-.globl __imp__BinkGoto_12@4
-.globl __imp__BinkNextFrame_4@4
-.globl __imp__BinkSetSoundSystem_8@4
-.globl __imp__BinkOpenDirectSound_4@4
-.globl __imp__BinkSetSoundOnOff_8@4
-.globl __imp__BinkClose_4@4
-.globl __imp__BinkDoFrame_4@4
-.globl __imp__BinkOpen_8@4
-.globl __imp__BinkGetSummary_8@4
-.globl __imp__BinkCopyToBuffer_28@4
+.globl __imp__BinkService@4
+.globl __imp__BinkWait@4
+.globl __imp__BinkNextFrame@4
+.globl __imp__BinkGetRealtime@12
+.globl __imp__BinkGoto@12
+.globl __imp__BinkSetSoundOnOff@8
+.globl __imp__BinkSetSoundSystem@8
+.globl __imp__BinkOpenDirectSound@4
+.globl __imp__BinkClose@4
+.globl __imp__BinkGetSummary@8
+.globl __imp__BinkOpen@8
+.globl __imp__BinkCopyToBuffer@28
+.globl __imp__BinkDoFrame@4
 .globl __imp__GetSaveFileNameA@4
 .globl __imp__GetOpenFileNameA@4
 .globl __imp__CoFileTimeToDosDateTime@4
@@ -612,9 +612,9 @@ rdata_bytes:
 .long 0
 .long 0x005c5120 /* COMCTL32.DLL::TrackMouseEvent */                                                                                                             ; .set __imp__TrackMouseEvent@4,                                                                                                       0x008a901c
 .long 0
-.long 0x005c419e /* DDRAW.dll::DirectDrawCreateEx */                                                                                                             ; .set __imp__DirectDrawCreateEx4,                                                                                                     0x008a9024
-.long 0x005c4186 /* DDRAW.dll::DirectDrawEnumerateA */                                                                                                           ; .set __imp__DirectDrawEnumerateA4,                                                                                                   0x008a9028
-.long 0x005c41b4 /* DDRAW.dll::DirectDrawCreate */                                                                                                               ; .set __imp__DirectDrawCreate4,                                                                                                       0x008a902c
+.long 0x005c419e /* DDRAW.dll::DirectDrawCreateEx */                                                                                                             ; .set __imp__DirectDrawCreateEx@4,                                                                                                    0x008a9024
+.long 0x005c4186 /* DDRAW.dll::DirectDrawEnumerateA */                                                                                                           ; .set __imp__DirectDrawEnumerateA@4,                                                                                                  0x008a9028
+.long 0x005c41b4 /* DDRAW.dll::DirectDrawCreate */                                                                                                               ; .set __imp__DirectDrawCreate@4,                                                                                                      0x008a902c
 .long 0
 .long 0x005c5142 /* DINPUT.DLL::DirectInputCreateA */                                                                                                            ; .set __imp__DirectInputCreateA@4,                                                                                                    0x008a9034
 .long 0
@@ -1192,19 +1192,19 @@ rdata_bytes:
 .long 0x8000000a /* WSOCK32.dll::inet_addr */                                                                                                                    ; .set __imp__inet_addr@4,                                                                                                             0x008a9928
 .long 0x8000000b /* WSOCK32.dll::inet_ntoa */                                                                                                                    ; .set __imp__inet_ntoa,                                                                                                               0x008a992c
 .long 0
-.long 0x005c4582 /* binkw32.dll::BinkService_4 */                                                                                                                ; .set __imp__BinkService_4@4,                                                                                                         0x008a9934
-.long 0x005c4594 /* binkw32.dll::BinkWait_4 */                                                                                                                   ; .set __imp__BinkWait_4@4,                                                                                                            0x008a9938
-.long 0x005c45b6 /* binkw32.dll::BinkGetRealtime_12 */                                                                                                           ; .set __imp__BinkGetRealtime_12@4,                                                                                                    0x008a993c
-.long 0x005c45cc /* binkw32.dll::BinkGoto_12 */                                                                                                                  ; .set __imp__BinkGoto_12@4,                                                                                                           0x008a9940
-.long 0x005c45a2 /* binkw32.dll::BinkNextFrame_4 */                                                                                                              ; .set __imp__BinkNextFrame_4@4,                                                                                                       0x008a9944
-.long 0x005c45f4 /* binkw32.dll::BinkSetSoundSystem_8 */                                                                                                         ; .set __imp__BinkSetSoundSystem_8@4,                                                                                                  0x008a9948
-.long 0x005c460c /* binkw32.dll::BinkOpenDirectSound_4 */                                                                                                        ; .set __imp__BinkOpenDirectSound_4@4,                                                                                                 0x008a994c
-.long 0x005c45dc /* binkw32.dll::BinkSetSoundOnOff_8 */                                                                                                          ; .set __imp__BinkSetSoundOnOff_8@4,                                                                                                   0x008a9950
-.long 0x005c4626 /* binkw32.dll::BinkClose_4 */                                                                                                                  ; .set __imp__BinkClose_4@4,                                                                                                           0x008a9954
-.long 0x005c4670 /* binkw32.dll::BinkDoFrame_4 */                                                                                                                ; .set __imp__BinkDoFrame_4@4,                                                                                                         0x008a9958
-.long 0x005c464a /* binkw32.dll::BinkOpen_8 */                                                                                                                   ; .set __imp__BinkOpen_8@4,                                                                                                            0x008a995c
-.long 0x005c4636 /* binkw32.dll::BinkGetSummary_8 */                                                                                                             ; .set __imp__BinkGetSummary_8@4,                                                                                                      0x008a9960
-.long 0x005c4658 /* binkw32.dll::BinkCopyToBuffer_28 */                                                                                                          ; .set __imp__BinkCopyToBuffer_28@4,                                                                                                   0x008a9964
+.long 0x005c4582 /* binkw32.dll::BinkService_4 */                                                                                                                ; .set __imp__BinkService@4,                                                                                                           0x008a9934
+.long 0x005c4594 /* binkw32.dll::BinkWait_4 */                                                                                                                   ; .set __imp__BinkWait@4,                                                                                                              0x008a9938
+.long 0x005c45b6 /* binkw32.dll::BinkGetRealtime_12 */                                                                                                           ; .set __imp__BinkGetRealtime@12,                                                                                                      0x008a993c
+.long 0x005c45cc /* binkw32.dll::BinkGoto_12 */                                                                                                                  ; .set __imp__BinkGoto@12,                                                                                                             0x008a9940
+.long 0x005c45a2 /* binkw32.dll::BinkNextFrame_4 */                                                                                                              ; .set __imp__BinkNextFrame@4,                                                                                                         0x008a9944
+.long 0x005c45f4 /* binkw32.dll::BinkSetSoundSystem_8 */                                                                                                         ; .set __imp__BinkSetSoundSystem@8,                                                                                                    0x008a9948
+.long 0x005c460c /* binkw32.dll::BinkOpenDirectSound_4 */                                                                                                        ; .set __imp__BinkOpenDirectSound@4,                                                                                                   0x008a994c
+.long 0x005c45dc /* binkw32.dll::BinkSetSoundOnOff_8 */                                                                                                          ; .set __imp__BinkSetSoundOnOff@8,                                                                                                     0x008a9950
+.long 0x005c4626 /* binkw32.dll::BinkClose_4 */                                                                                                                  ; .set __imp__BinkClose@4,                                                                                                             0x008a9954
+.long 0x005c4670 /* binkw32.dll::BinkDoFrame_4 */                                                                                                                ; .set __imp__BinkDoFrame@4,                                                                                                           0x008a9958
+.long 0x005c464a /* binkw32.dll::BinkOpen_8 */                                                                                                                   ; .set __imp__BinkOpen@8,                                                                                                              0x008a995c
+.long 0x005c4636 /* binkw32.dll::BinkGetSummary_8 */                                                                                                             ; .set __imp__BinkGetSummary@8,                                                                                                        0x008a9960
+.long 0x005c4658 /* binkw32.dll::BinkCopyToBuffer_28 */                                                                                                          ; .set __imp__BinkCopyToBuffer@28,                                                                                                     0x008a9964
 .long 0
 .long 0x005c0698 /* comdlg32.dll::GetSaveFileNameA */                                                                                                            ; .set __imp__GetSaveFileNameA@4,                                                                                                      0x008a996c
 .long 0x005c06ac /* comdlg32.dll::GetOpenFileNameA */                                                                                                            ; .set __imp__GetOpenFileNameA@4,                                                                                                      0x008a9970
