@@ -1,4 +1,16 @@
 cmake_minimum_required(VERSION 3.30)
+
+# Set the llvm utils before project so the toolchain selection has the right paths
+if (LLVM_BINARIES_DIR)
+    # CMAKE_EXECUTABLE_SUFFIX is set after project
+    if (CMAKE_HOST_WIN32)
+        set(LLVM_EXECUTABLE_SUFFIX ".exe")
+    endif()
+    set(CMAKE_ASM_COMPILER "${LLVM_BINARIES_DIR}/clang${LLVM_EXECUTABLE_SUFFIX}")
+    set(CMAKE_RC_COMPILER "${LLVM_BINARIES_DIR}/llvm-rc${LLVM_EXECUTABLE_SUFFIX}")
+    set(CMAKE_LINKER "${LLVM_BINARIES_DIR}/lld${LLVM_EXECUTABLE_SUFFIX}")
+endif()
+
 project(bw1-decomp ASM RC)
 
 set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available build configurations" FORCE)

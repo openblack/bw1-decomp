@@ -34,27 +34,25 @@ jobs:
         fileName: 'llvm-${{ matrix.os }}.zip'
         extract: true
         out-file-path: 'llvm'
-    
+
     - name: Ensure LLVM binaries are executable
       if: ${{ runner.os != 'Windows' }}
       run: chmod -R +x llvm/bin
 
     - name: Set path for LLVM binaries in env
       shell: bash
-      run: |
-        echo "LLVM_BINARIES=$(echo '${{ github.workspace }}'/llvm/bin | sed 's,\\,/,g')" >> $GITHUB_ENV
-        echo "LLVM_SUFFIX=${{ runner.os == 'Windows' && '.exe' || '' }}" >> $GITHUB_ENV
+      run: echo "LLVM_BINARIES=$(echo '${{ github.workspace }}'/llvm/bin | sed 's,\\,/,g')" >> $GITHUB_ENV
 
     - name: Build bw1-decomp project
       run: |
-        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
+        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}"
         cmake --build build
 
     - name: Verify MD5 sum of resulting binary
       run: |
         expected_md5="174b1a64e74b2321f3c38ccc8a511e78"
         actual_md5=$(md5sum "${{ github.workspace }}/build/runblack-reassembled.exe" | awk '{ print $1 }' | sed 's/^\\//')
-        
+
         if [ "$expected_md5" != "$actual_md5" ]; then
         echo "Error: MD5 sum mismatch. Expected $expected_md5 but got $actual_md5"
         exit 1
@@ -72,7 +70,7 @@ jobs:
 
     - name: Build bw1-decomp project (Debug)
       run: |
-        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_ASM_COMPILER="${{env.LLVM_BINARIES}}/clang${{env.LLVM_SUFFIX}}" -DCMAKE_RC_COMPILER="${{env.LLVM_BINARIES}}/llvm-rc${{env.LLVM_SUFFIX}}" -DCMAKE_LINKER="${{env.LLVM_BINARIES}}/lld${{env.LLVM_SUFFIX}}"
+        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}"
         cmake --build build_debug
 
     - name: Upload debug version
@@ -82,4 +80,3 @@ jobs:
         path: |
           build_debug/runblack-reassembled.exe
           build_debug/runblack-reassembled.exe.pdb
-

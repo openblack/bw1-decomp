@@ -36,9 +36,7 @@ See [scripts/README.md](src/README.md) for more details.
 
 CMake can rebuild a byte-for-byte replica of the original `runblack.exe`.
 
-For the assembly, it requires a **patched** llvm clang to be set as `CMAKE_ASM_COMPILER` to produce the correct opcodes. See [`../patches/llvm`](../patches/llvm) for the required patches.
-
-For linking, it requires a **patched** llvm lld-link to be set as `CMAKE_LINKER`.
+For the assembly, patching, linking and others, it requires a **patched** llvm.
 
 If the wrong assembler is used, then there won't be the correct object code generated (e.g. register displacements might be of different sizes or opcodes may vary).
 
@@ -49,15 +47,10 @@ If the wrong linker is used, sections may be placed in different virtual and phy
 If either the assembler or linker are wrongly used, then the md5 sums will not match.
 
 ```bash
-git git@github.com:openblack/bw1-decomp.git
-git git@github.com:openblack/llvm-project.git
-pushd llvm-project
-cmake -Sllvm -Bbuild -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS="clang;lld"
-cmake --build build --target clang lld
-popd
+# Download the latest llvm-project from https://github.com/openblack/llvm-project/releases
 
 # from the bw1-decomp directory
-cmake -Ssrc -Bbuild -DCMAKE_LINKER=$PWD/llvm-project/build/bin/lld -DCMAKE_ASM_COMPILER=$PWD/llvm-project/build/bin/clang
+cmake -Ssrc -Bbuild -DLLVM_BINARIES_DIR=/path/to/the/latest/llvm-project
 cmake --build build
 ```
 
