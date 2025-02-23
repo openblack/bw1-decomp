@@ -18,7 +18,7 @@
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _jmp_addr_0x007c5791
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007e67c0
@@ -23871,7 +23871,7 @@ _jmp_addr_0x008631d0:    push               ecx                                 
                          call               _LHFileLength__FPcPUl                         // 0x008631fe    e85d97f5ff
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x00863203    8b4c2410
                          push               ecx                                           // 0x00863207    51
-                         call               _jmp_addr_0x007c664c                          // 0x00863208    e83f34f6ff
+                         call               _malloc                                       // 0x00863208    e83f34f6ff
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x0086320d    8b542414
                          push               0x0                                           // 0x00863211    6a00
                          push               edx                                           // 0x00863213    52

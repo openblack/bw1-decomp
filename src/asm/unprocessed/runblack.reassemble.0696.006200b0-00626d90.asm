@@ -154,7 +154,7 @@
 .extern _CHAR2WCHAR__FPc
 .extern _jmp_addr_0x00886780
 .extern __filelength
-.extern _jmp_addr_0x008a5ca3
+.extern __fileno
 .extern __wcsnicmp
 
 .globl _jmp_addr_0x006200b0
@@ -8637,7 +8637,7 @@ _jmp_addr_0x006262b5:    test              esi, esi                             
                          {disp32} je       _jmp_addr_0x00626347                          // 0x006262b7    0f848a000000
                          push              edi                                           // 0x006262bd    57
                          push              esi                                           // 0x006262be    56
-                         call              _jmp_addr_0x008a5ca3                          // 0x006262bf    e8dff92700
+                         call              __fileno                                      // 0x006262bf    e8dff92700
                          push              eax                                           // 0x006262c4    50
                          call              __filelength                                  // 0x006262c5    e84ff92700
                          push              0x00000745                                    // 0x006262ca    6845070000
@@ -8721,7 +8721,7 @@ _jmp_addr_0x00626360:    sub               esp, 0x08                            
                          ret                                                             // 0x0062638e    c3
 _jmp_addr_0x0062638f:    push              edi                                           // 0x0062638f    57
                          push              esi                                           // 0x00626390    56
-                         call              _jmp_addr_0x008a5ca3                          // 0x00626391    e80df92700
+                         call              __fileno                                      // 0x00626391    e80df92700
                          push              eax                                           // 0x00626396    50
                          call              __filelength                                  // 0x00626397    e87df82700
                          push              0x0000075b                                    // 0x0062639c    685b070000

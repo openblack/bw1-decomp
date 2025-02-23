@@ -23,7 +23,7 @@
 .extern @GetSegment__6LHFileFPcP9LHSegmenti@20
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007faff0
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
@@ -414,7 +414,7 @@ _jmp_addr_0x0083923b:    {disp32} mov       eax, dword ptr [data_bytes + 0x51747
 _jmp_addr_0x0083926e:    mov.s              esi, ebx                                        // 0x0083926e    8bf3
                          imul               esi, ebx                                        // 0x00839270    0faff3
                          push               esi                                             // 0x00839273    56
-                         call               _jmp_addr_0x007c664c                            // 0x00839274    e8d3d3f8ff
+                         call               _malloc                                         // 0x00839274    e8d3d3f8ff
                          mov.s              edx, eax                                        // 0x00839279    8bd0
                          {disp32} mov       eax, dword ptr [data_bytes + 0x517490]          // 0x0083927b    a190d4ed00
                          xor.s              ecx, ecx                                        // 0x00839280    33c9
@@ -2323,7 +2323,7 @@ _jmp_addr_0x0083a6c2:    pop                esi                                 
                          {disp32} lea       esi, dword ptr [ecx * 0x4 + 0x00000008]         // 0x0083a772    8d348d08000000
                          push               esi                                             // 0x0083a779    56
                          {disp8} mov        dword ptr [esp + 0x28], esi                     // 0x0083a77a    89742428
-                         call               _jmp_addr_0x007c664c                            // 0x0083a77e    e8c9bef8ff
+                         call               _malloc                                         // 0x0083a77e    e8c9bef8ff
                          mov.s              ebx, eax                                        // 0x0083a783    8bd8
                          mov.s              ecx, esi                                        // 0x0083a785    8bce
                          mov.s              edx, ecx                                        // 0x0083a787    8bd1

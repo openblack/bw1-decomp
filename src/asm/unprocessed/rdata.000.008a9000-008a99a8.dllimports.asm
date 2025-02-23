@@ -94,7 +94,7 @@
 .globl __imp__EnterCriticalSection@4
 .globl __imp__LeaveCriticalSection@4
 .globl __imp__SetCurrentDirectoryA@4
-.globl __imp__GetCurrentDirectoryA@4
+.globl __imp__GetCurrentDirectoryA@8
 .globl __imp__RemoveDirectoryA@4
 .globl __imp__FindFirstFileA@4
 .globl __imp__FindNextFileA@4
@@ -104,7 +104,7 @@
 .globl __imp__SetStdHandle@4
 .globl __imp__TlsGetValue@4
 .globl __imp__GetCurrentThread@4
-.globl __imp__SetEnvironmentVariableA@4
+.globl __imp__SetEnvironmentVariableA@8
 .globl __imp__GlobalMemoryStatus@4
 .globl __imp__GetVersionExA@4
 .globl __imp__GetFileAttributesA@4
@@ -122,7 +122,7 @@
 .globl __imp__GetLocalTime@4
 .globl __imp__GetSystemTime@4
 .globl __imp__GetTimeZoneInformation@4
-.globl __imp__GetLastError@4
+.globl __imp__GetLastError@0
 .globl __imp__HeapFree@4
 .globl __imp__HeapAlloc@4
 .globl __imp__IsBadReadPtr@4
@@ -702,7 +702,7 @@ rdata_bytes:
 .long 0x005c03a0 /* KERNEL32.DLL::EnterCriticalSection */                                                                                                        ; .set __imp__EnterCriticalSection@4,                                                                                                  0x008a9180
 .long 0x005c0388 /* KERNEL32.DLL::LeaveCriticalSection */                                                                                                        ; .set __imp__LeaveCriticalSection@4,                                                                                                  0x008a9184
 .long 0x005c0370 /* KERNEL32.DLL::SetCurrentDirectoryA */                                                                                                        ; .set __imp__SetCurrentDirectoryA@4,                                                                                                  0x008a9188
-.long 0x005c0358 /* KERNEL32.DLL::GetCurrentDirectoryA */                                                                                                        ; .set __imp__GetCurrentDirectoryA@4,                                                                                                  0x008a918c
+.long 0x005c0358 /* KERNEL32.DLL::GetCurrentDirectoryA */                                                                                                        ; .set __imp__GetCurrentDirectoryA@8,                                                                                                  0x008a918c
 .long 0x005c0344 /* KERNEL32.DLL::RemoveDirectoryA */                                                                                                            ; .set __imp__RemoveDirectoryA@4,                                                                                                      0x008a9190
 .long 0x005c0332 /* KERNEL32.DLL::FindFirstFileA */                                                                                                              ; .set __imp__FindFirstFileA@4,                                                                                                        0x008a9194
 .long 0x005c0322 /* KERNEL32.DLL::FindNextFileA */                                                                                                               ; .set __imp__FindNextFileA@4,                                                                                                         0x008a9198
@@ -712,7 +712,7 @@ rdata_bytes:
 .long 0x005c4b60 /* KERNEL32.DLL::SetStdHandle */                                                                                                                ; .set __imp__SetStdHandle@4,                                                                                                          0x008a91a8
 .long 0x005c498e /* KERNEL32.DLL::TlsGetValue */                                                                                                                 ; .set __imp__TlsGetValue@4,                                                                                                           0x008a91ac
 .long 0x005c499c /* KERNEL32.DLL::GetCurrentThread */                                                                                                            ; .set __imp__GetCurrentThread@4,                                                                                                      0x008a91b0
-.long 0x005c4b46 /* KERNEL32.DLL::SetEnvironmentVariableA */                                                                                                     ; .set __imp__SetEnvironmentVariableA@4,                                                                                               0x008a91b4
+.long 0x005c4b46 /* KERNEL32.DLL::SetEnvironmentVariableA */                                                                                                     ; .set __imp__SetEnvironmentVariableA@8,                                                                                               0x008a91b4
 .long 0x005c028a /* KERNEL32.DLL::GlobalMemoryStatus */                                                                                                          ; .set __imp__GlobalMemoryStatus@4,                                                                                                    0x008a91b8
 .long 0x005c027a /* KERNEL32.DLL::GetVersionExA */                                                                                                               ; .set __imp__GetVersionExA@4,                                                                                                         0x008a91bc
 .long 0x005c0264 /* KERNEL32.DLL::GetFileAttributesA */                                                                                                          ; .set __imp__GetFileAttributesA@4,                                                                                                    0x008a91c0
@@ -730,7 +730,7 @@ rdata_bytes:
 .long 0x005c479a /* KERNEL32.DLL::GetLocalTime */                                                                                                                ; .set __imp__GetLocalTime@4,                                                                                                          0x008a91f0
 .long 0x005c478a /* KERNEL32.DLL::GetSystemTime */                                                                                                               ; .set __imp__GetSystemTime@4,                                                                                                         0x008a91f4
 .long 0x005c4770 /* KERNEL32.DLL::GetTimeZoneInformation */                                                                                                      ; .set __imp__GetTimeZoneInformation@4,                                                                                                0x008a91f8
-.long 0x005c4760 /* KERNEL32.DLL::GetLastError */                                                                                                                ; .set __imp__GetLastError@4,                                                                                                          0x008a91fc
+.long 0x005c4760 /* KERNEL32.DLL::GetLastError */                                                                                                                ; .set __imp__GetLastError@0,                                                                                                          0x008a91fc
 .long 0x005c4754 /* KERNEL32.DLL::HeapFree */                                                                                                                    ; .set __imp__HeapFree@4,                                                                                                              0x008a9200
 .long 0x005c4748 /* KERNEL32.DLL::HeapAlloc */                                                                                                                   ; .set __imp__HeapAlloc@4,                                                                                                             0x008a9204
 .long 0x005c4738 /* KERNEL32.DLL::IsBadReadPtr */                                                                                                                ; .set __imp__IsBadReadPtr@4,                                                                                                          0x008a9208

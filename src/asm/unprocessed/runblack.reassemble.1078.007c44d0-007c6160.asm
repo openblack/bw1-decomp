@@ -9,7 +9,7 @@
 
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c6288
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c8bdf
 .extern _jmp_addr_0x007c8c1c
@@ -1547,7 +1547,7 @@ _jmp_addr_0x007c5791:    push             dword ptr [esp + 0x04]                
                          dec              eax                                           // 0x007c57a1    48
                          ret                                                            // 0x007c57a2    c3
                          push             0x00000080                                    // 0x007c57a3    6880000000
-                         call             _jmp_addr_0x007c664c                          // 0x007c57a8    e89f0e0000
+                         call             _malloc                                       // 0x007c57a8    e89f0e0000
                          test             eax, eax                                      // 0x007c57ad    85c0
                          pop              ecx                                           // 0x007c57af    59
                          {disp32} mov     dword ptr [data_bytes + 0x5e7cdc], eax        // 0x007c57b0    a3dcdcfa00

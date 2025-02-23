@@ -126,7 +126,7 @@
 .extern _wcscpy
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c90a0
 .extern _jmp_addr_0x007c989f
@@ -2000,7 +2000,7 @@ _jmp_addr_0x0063c06b:    mov                eax, 0x38e38e39                     
                          {disp32} mov       dword ptr [data_bytes + 0x37e3cc], eax         // 0x0063c087    a3cc43d400
                          push               eax                                            // 0x0063c08c    50
                          {disp8} jne        _jmp_addr_0x0063c099                           // 0x0063c08d    750a
-                         call               _jmp_addr_0x007c664c                           // 0x0063c08f    e8b8a51800
+                         call               _malloc                                        // 0x0063c08f    e8b8a51800
                          add                esp, 0x04                                      // 0x0063c094    83c404
                          {disp8} jmp        _jmp_addr_0x0063c0a2                           // 0x0063c097    eb09
 _jmp_addr_0x0063c099:    push               ecx                                            // 0x0063c099    51
@@ -2314,7 +2314,7 @@ _jmp_addr_0x0063c313:    pop                esi                                 
                          mov.s              esi, ecx                                       // 0x0063c337    8bf1
                          push               eax                                            // 0x0063c339    50
                          {disp8} mov        dword ptr [esi + 0x04], eax                    // 0x0063c33a    894604
-                         call               _jmp_addr_0x007c664c                           // 0x0063c33d    e80aa31800
+                         call               _malloc                                        // 0x0063c33d    e80aa31800
                          add                esp, 0x04                                      // 0x0063c342    83c404
                          mov                dword ptr [esi], eax                           // 0x0063c345    8906
                          pop                esi                                            // 0x0063c347    5e
