@@ -102,8 +102,8 @@
 .extern _jmp_addr_0x0086a110
 .extern _jmp_addr_0x0086a160
 .extern __filelength
-.extern _jmp_addr_0x008a5ca3
-.extern _jmp_addr_0x008a5da3
+.extern __fileno
+.extern __chdir
 .extern __strlwr
 
 .globl _jmp_addr_0x007115a0
@@ -4472,7 +4472,7 @@ _jmp_addr_0x00713140:    sub                esp, 0x68                           
                          and                ecx, 0x03                                     // 0x007131aa    83e103
                          push               ebx                                           // 0x007131ad    53
                          rep movsb                                                        // 0x007131ae    f3a4
-                         call               _jmp_addr_0x008a5ca3                          // 0x007131b0    e8ee2a1900
+                         call               __fileno                                      // 0x007131b0    e8ee2a1900
                          push               eax                                           // 0x007131b5    50
                          call               __filelength                                  // 0x007131b6    e85e2a1900
                          push               0x0000014a                                    // 0x007131bb    684a010000
@@ -4611,7 +4611,7 @@ _jmp_addr_0x007132b0:    sub                esp, 0x08                           
                          and                ecx, 0x03                                     // 0x007132f9    83e103
                          push               edx                                           // 0x007132fc    52
                          rep movsb                                                        // 0x007132fd    f3a4
-                         call               _jmp_addr_0x008a5ca3                          // 0x007132ff    e89f291900
+                         call               __fileno                                      // 0x007132ff    e89f291900
                          push               eax                                           // 0x00713304    50
                          call               __filelength                                  // 0x00713305    e80f291900
                          push               0x00000170                                    // 0x0071330a    6870010000
@@ -6191,7 +6191,7 @@ _jmp_addr_0x007141fb:    push               0x00c20ccc                          
                          test               edi, edi                                      // 0x00714218    85ff
                          {disp8} je         _jmp_addr_0x0071425a                          // 0x0071421a    743e
                          push               edi                                           // 0x0071421c    57
-                         call               _jmp_addr_0x008a5ca3                          // 0x0071421d    e8811a1900
+                         call               __fileno                                      // 0x0071421d    e8811a1900
                          push               eax                                           // 0x00714222    50
                          call               __filelength                                  // 0x00714223    e8f1191900
                          push               0x00000304                                    // 0x00714228    6804030000
@@ -6478,11 +6478,11 @@ _jmp_addr_0x00714490:    sub                esp, 0x00000954                     
                          push               0x00d99648                                    // 0x007144ba    684896d900
                          call               _jmp_addr_0x007c8668                          // 0x007144bf    e8a4410b00
                          push               0x00c20d1c                                    // 0x007144c4    681c0dc200
-                         call               _jmp_addr_0x008a5da3                          // 0x007144c9    e8d5181900
+                         call               __chdir                                       // 0x007144c9    e8d5181900
                          push               0x00c20d10                                    // 0x007144ce    68100dc200
                          call               _jmp_addr_0x007ca102                          // 0x007144d3    e82a5c0b00
                          push               0x00bea7b8                                    // 0x007144d8    68b8a7be00
-                         call               _jmp_addr_0x008a5da3                          // 0x007144dd    e8c1181900
+                         call               __chdir                                       // 0x007144dd    e8c1181900
                          add                esp, 0x20                                     // 0x007144e2    83c420
                          {disp32} lea       ecx, dword ptr [esp + 0x00000154]             // 0x007144e5    8d8c2454010000
                          push               ecx                                           // 0x007144ec    51

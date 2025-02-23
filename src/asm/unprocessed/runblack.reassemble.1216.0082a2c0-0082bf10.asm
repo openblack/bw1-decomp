@@ -17,7 +17,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _jmp_addr_0x007bd030
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007dec80
 .extern _jmp_addr_0x007f9540
@@ -1268,7 +1268,7 @@ _jmp_addr_0x0082af60:    {disp8} mov        ecx, dword ptr [esp + 0x14]         
                          {disp32} jne       _jmp_addr_0x0082b0c6                          // 0x0082af7a    0f8546010000
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                   // 0x0082af80    8b44241c
                          push               eax                                           // 0x0082af84    50
-                         call               _jmp_addr_0x007c664c                          // 0x0082af85    e8c2b6f9ff
+                         call               _malloc                                       // 0x0082af85    e8c2b6f9ff
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x0082af8a    8b4c2420
                          xor.s              esi, esi                                      // 0x0082af8e    33f6
                          push               esi                                           // 0x0082af90    56

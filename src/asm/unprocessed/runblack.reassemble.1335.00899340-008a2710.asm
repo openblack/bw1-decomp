@@ -8,7 +8,7 @@
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c60f0
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c6942
 .extern _jmp_addr_0x007c6ad3
@@ -2921,7 +2921,7 @@ _jmp_addr_0x0089ae4c:    push               eax                                 
                          nop                                                               // 0x0089ae7f    90
 _jmp_addr_0x0089ae80:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0089ae80    8b442408
                          push               eax                                            // 0x0089ae84    50
-                         call               _jmp_addr_0x007c664c                           // 0x0089ae85    e8c2b7f2ff
+                         call               _malloc                                        // 0x0089ae85    e8c2b7f2ff
                          add                esp, 0x04                                      // 0x0089ae8a    83c404
                          ret                                                               // 0x0089ae8d    c3
                          nop                                                               // 0x0089ae8e    90
@@ -2937,7 +2937,7 @@ _jmp_addr_0x0089ae90:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                               // 0x0089ae9f    90
 _jmp_addr_0x0089aea0:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0089aea0    8b442408
                          push               eax                                            // 0x0089aea4    50
-                         call               _jmp_addr_0x007c664c                           // 0x0089aea5    e8a2b7f2ff
+                         call               _malloc                                        // 0x0089aea5    e8a2b7f2ff
                          add                esp, 0x04                                      // 0x0089aeaa    83c404
                          ret                                                               // 0x0089aead    c3
                          nop                                                               // 0x0089aeae    90

@@ -236,7 +236,7 @@
 .extern _jmp_addr_0x0083b450
 .extern _jmp_addr_0x00841260
 .extern __filelength
-.extern _jmp_addr_0x008a5ca3
+.extern __fileno
 
 .globl _jmp_addr_0x00630fd0
 .globl @__ct__17MPFELoginDatabaseFv@4
@@ -2845,7 +2845,7 @@ _jmp_addr_0x00632a30:    push               ecx                                 
                          test               edi, edi                                       // 0x00632a4d    85ff
                          {disp8} je         _jmp_addr_0x00632a7a                           // 0x00632a4f    7429
                          push               edi                                            // 0x00632a51    57
-                         call               _jmp_addr_0x008a5ca3                           // 0x00632a52    e84c322700
+                         call               __fileno                                       // 0x00632a52    e84c322700
                          push               eax                                            // 0x00632a57    50
                          call               __filelength                                   // 0x00632a58    e8bc312700
                          mov.s              ebx, eax                                       // 0x00632a5d    8bd8
@@ -6251,7 +6251,7 @@ _jmp_addr_0x00634eb8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          cmp.s              esi, ebp                                       // 0x00634f65    3bf5
                          {disp32} je        _jmp_addr_0x006351f4                           // 0x00634f67    0f8487020000
                          push               esi                                            // 0x00634f6d    56
-                         call               _jmp_addr_0x008a5ca3                           // 0x00634f6e    e8300d2700
+                         call               __fileno                                       // 0x00634f6e    e8300d2700
                          push               eax                                            // 0x00634f73    50
                          call               __filelength                                   // 0x00634f74    e8a00c2700
                          push               0x00000194                                     // 0x00634f79    6894010000

@@ -17,7 +17,7 @@
 .extern _wcslen
 .extern _jmp_addr_0x007c64fc
 .extern _jmp_addr_0x007c6587
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c686f
 .extern _jmp_addr_0x007c689d
@@ -1093,14 +1093,14 @@ _jmp_addr_0x007e69c5:    ret                                                    
                          nop                                                            // 0x007e69cf    90
 _jmp_addr_0x007e69d0:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007e69d0    8b442404
                          push             eax                                           // 0x007e69d4    50
-                         call             _jmp_addr_0x007c664c                          // 0x007e69d5    e872fcfdff
+                         call             _malloc                                       // 0x007e69d5    e872fcfdff
                          add              esp, 0x04                                     // 0x007e69da    83c404
                          ret              0x0004                                        // 0x007e69dd    c20400
                          push             esi                                           // 0x007e69e0    56
                          push             edi                                           // 0x007e69e1    57
                          {disp8} mov      edi, dword ptr [esp + 0x0c]                   // 0x007e69e2    8b7c240c
                          push             edi                                           // 0x007e69e6    57
-                         call             _jmp_addr_0x007c664c                          // 0x007e69e7    e860fcfdff
+                         call             _malloc                                       // 0x007e69e7    e860fcfdff
                          mov.s            esi, eax                                      // 0x007e69ec    8bf0
                          add              esp, 0x04                                     // 0x007e69ee    83c404
                          test             esi, esi                                      // 0x007e69f1    85f6

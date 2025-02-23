@@ -132,7 +132,7 @@
 .extern _wcscpy
 .extern _wcslen
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _jmp_addr_0x007c804a
 .extern ___nw__FUl
 .extern _jmp_addr_0x007feb30
@@ -8499,7 +8499,7 @@ _jmp_addr_0x00733ca5:    lea                ecx, dword ptr [esi + esi * 0x2]    
                          {disp8} lea        eax, dword ptr [esi + -0x01]                  // 0x00733cab    8d46ff
                          push               ecx                                           // 0x00733cae    51
                          {disp8} mov        dword ptr [edi + 0x20], eax                   // 0x00733caf    894720
-                         call               _jmp_addr_0x007c664c                          // 0x00733cb2    e895290900
+                         call               _malloc                                       // 0x00733cb2    e895290900
                          {disp8} mov        ecx, dword ptr [edi + 0x14]                   // 0x00733cb7    8b4f14
                          add                esp, 0x04                                     // 0x00733cba    83c404
                          test               ecx, ecx                                      // 0x00733cbd    85c9
