@@ -465,6 +465,7 @@ endfunction()
 add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
 
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\getpid.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecdtr.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strspn.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcschr.obj" ON)

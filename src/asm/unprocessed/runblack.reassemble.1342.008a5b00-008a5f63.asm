@@ -90,7 +90,6 @@
 .globl __wcsnicmp
 .globl _jmp_addr_0x008a5da3
 .globl __strlwr
-.globl _jmp_addr_0x008a5f5d
 
 start_0x008a5b00_0x008a895d:
 // Snippet: asm, [0x008a5b00, 0x008a895d)
@@ -514,4 +513,3 @@ _jmp_addr_0x008a5f59:    pop              edi                                   
                          pop              esi                                     // 0x008a5f5a    5e
                          leave                                                    // 0x008a5f5b    c9
                          ret                                                      // 0x008a5f5c    c3
-_jmp_addr_0x008a5f5d:    jmp              dword ptr [rdata_bytes + 0x31c]         // 0x008a5f5d    ff251c938a00
