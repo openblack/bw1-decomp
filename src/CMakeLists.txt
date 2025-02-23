@@ -389,7 +389,9 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1343.008a6300-008a6460.asm
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    asm/unprocessed/rdata.asm
+    
+    asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
+    asm/unprocessed/rdata.001.008a99a8-009c5564.asm
     asm/unprocessed/data.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
