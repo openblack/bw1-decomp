@@ -118,7 +118,7 @@
 .extern ___nw__FUl
 .extern _CHAR2WCHAR__FPc
 .extern __filelength
-.extern _jmp_addr_0x008a5ca3
+.extern __fileno
 
 .globl _jmp_addr_0x0062b830
 .globl _jmp_addr_0x0062b990
@@ -2289,7 +2289,7 @@ _jmp_addr_0x0062ceb0:    sub                esp, 0x0c                           
                          {disp32} je        _jmp_addr_0x0062cf61                           // 0x0062ced0    0f848b000000
                          push               ebp                                            // 0x0062ced6    55
                          push               edi                                            // 0x0062ced7    57
-                         call               _jmp_addr_0x008a5ca3                           // 0x0062ced8    e8c68d2700
+                         call               __fileno                                       // 0x0062ced8    e8c68d2700
                          push               eax                                            // 0x0062cedd    50
                          call               __filelength                                   // 0x0062cede    e8368d2700
                          mov.s              ebp, eax                                       // 0x0062cee3    8be8
@@ -2366,7 +2366,7 @@ _jmp_addr_0x0062cf70:    sub                esp, 0x08                           
                          push               ebp                                            // 0x0062cf97    55
                          push               edi                                            // 0x0062cf98    57
                          push               esi                                            // 0x0062cf99    56
-                         call               _jmp_addr_0x008a5ca3                           // 0x0062cf9a    e8048d2700
+                         call               __fileno                                       // 0x0062cf9a    e8048d2700
                          push               eax                                            // 0x0062cf9f    50
                          call               __filelength                                   // 0x0062cfa0    e8748c2700
                          mov.s              edi, eax                                       // 0x0062cfa5    8bf8
@@ -2477,7 +2477,7 @@ _jmp_addr_0x0062d08e:    push               edi                                 
                          test               esi, esi                                       // 0x0062d0b2    85f6
                          {disp32} je        _jmp_addr_0x0062d1b3                           // 0x0062d0b4    0f84f9000000
                          push               esi                                            // 0x0062d0ba    56
-                         call               _jmp_addr_0x008a5ca3                           // 0x0062d0bb    e8e38b2700
+                         call               __fileno                                       // 0x0062d0bb    e8e38b2700
                          push               eax                                            // 0x0062d0c0    50
                          call               __filelength                                   // 0x0062d0c1    e8538b2700
                          mov.s              edi, eax                                       // 0x0062d0c6    8bf8

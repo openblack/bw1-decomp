@@ -47,7 +47,7 @@
 .extern _jmp_addr_0x007c5e51
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c686f
 .extern _jmp_addr_0x007c68ed
@@ -304,7 +304,7 @@ _jmp_addr_0x00426f0b:    {disp8} mov        edx, dword ptr [esp + 0x10]         
                          call               dword ptr [rdata_bytes + 0x760]                      // 0x00426f28    ff1560978a00
                          shl                eax, 2                                               // 0x00426f2e    c1e002
                          push               eax                                                  // 0x00426f31    50
-                         call               _jmp_addr_0x007c664c                                 // 0x00426f32    e815f73900
+                         call               _malloc                                              // 0x00426f32    e815f73900
                          add                esp, 0x04                                            // 0x00426f37    83c404
                          mov.s              ecx, ebp                                             // 0x00426f3a    8bcd
                          {disp8} mov        dword ptr [ebp + 0x18], eax                          // 0x00426f3c    894518
