@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x007f3b80
 .extern _jmp_addr_0x007f3d20
 .extern _jmp_addr_0x007f42b0
-.extern _jmp_addr_0x008a5f5d
+.extern __getpid
 
 .globl _jmp_addr_0x007da710
 .globl _jmp_addr_0x007da811
@@ -1390,7 +1390,7 @@ _jmp_addr_0x007db4d0:    push              ebp                                  
                          {disp32} mov      eax, dword ptr [data_bytes + 0x26af70]         // 0x007db4d6    a1700fc300
                          test              eax, eax                                       // 0x007db4db    85c0
                          {disp8} je        _jmp_addr_0x007db53a                           // 0x007db4dd    745b
-                         call              _jmp_addr_0x008a5f5d                           // 0x007db4df    e879aa0c00
+                         call              __getpid                                       // 0x007db4df    e879aa0c00
                          push              0x00c3119c                                     // 0x007db4e4    689c11c300
                          {disp32} mov      dword ptr [data_bytes + 0x4be584], eax         // 0x007db4e9    a38445e800
                          call              dword ptr [rdata_bytes + 0x16c]                // 0x007db4ee    ff156c918a00
