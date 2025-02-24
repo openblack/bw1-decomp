@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x007c6ad3
 .extern _jmp_addr_0x007c6c34
 .extern _jmp_addr_0x007ca2f9
-.extern _jmp_addr_0x007ca5f0
+.extern _strlen
 .extern _jmp_addr_0x007ca66c
 .extern _jmp_addr_0x007ca690
 .extern _jmp_addr_0x007d0cec
@@ -13988,10 +13988,10 @@ _jmp_addr_0x008a243e:    push              ebp                                  
                          push              edi                                             // 0x008a2445    57
                          mov.s             esi, ecx                                        // 0x008a2446    8bf1
                          push              dword ptr [ebp + 0x08]                          // 0x008a2448    ff7508
-                         call              _jmp_addr_0x007ca5f0                            // 0x008a244b    e8a081f2ff
+                         call              _strlen                                         // 0x008a244b    e8a081f2ff
                          push              dword ptr [ebp + 0x0c]                          // 0x008a2450    ff750c
                          mov.s             edi, eax                                        // 0x008a2453    8bf8
-                         call              _jmp_addr_0x007ca5f0                            // 0x008a2455    e89681f2ff
+                         call              _strlen                                         // 0x008a2455    e89681f2ff
                          mov.s             ebx, eax                                        // 0x008a245a    8bd8
                          mov               eax, dword ptr [esi]                            // 0x008a245c    8b06
                          pop               ecx                                             // 0x008a245e    59

@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x007c91f0
 .extern _calloc
 .extern _jmp_addr_0x007c9657
-.extern _jmp_addr_0x007ca5f0
+.extern _strlen
 .extern _jmp_addr_0x007cb100
 .extern __lock
 .extern __unlock
@@ -647,7 +647,7 @@ _jmp_addr_0x007dacdc:    push              esi                                  
                          test              esi, esi                                       // 0x007dace1    85f6
                          {disp8} je        _jmp_addr_0x007dad03                           // 0x007dace3    741e
                          push              esi                                            // 0x007dace5    56
-                         call              _jmp_addr_0x007ca5f0                           // 0x007dace6    e805f9feff
+                         call              _strlen                                        // 0x007dace6    e805f9feff
                          inc               eax                                            // 0x007daceb    40
                          push              eax                                            // 0x007dacec    50
                          call              _malloc                                        // 0x007daced    e85ab9feff
