@@ -95,6 +95,11 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
             (0xff4, '\2'),
             (0xff8, "<"),
             (0xffc, "4"),
+            # libcmt padding is 0xCC
+            (0x004A645B, b"\xCC" * 1),
+            (0x004A6281, b"\xCC" * 3),
+            (0x004A62FD, b"\xCC" * 3),
+            (0x004A6057, b"\xCC" * 9),
             # Garbage string in the rsrc
             (0x008428F8, "property of their respective owners".encode("utf-16-le")),
         ]
@@ -132,6 +137,10 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
 
     # Make room for rich header
     old_lfanew = pe.DOS_HEADER.e_lfanew
+    pe.DOS_HEADER.e_cblp = 0x90
+    pe.DOS_HEADER.e_cp = 0x03
+    pe.DOS_HEADER.e_maxalloc = 0xffff
+    pe.DOS_HEADER.e_sp = 0xb8
     pe.DOS_HEADER.e_lfanew += offset_for_rich_header
     for structure in pe.__structures__:
         if 0 < structure.get_file_offset() < 0x1000:
@@ -156,6 +165,8 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
 
     # Setting the time
     pe.NT_HEADERS.FILE_HEADER.TimeDateStamp = int(timestamp.timestamp())
+    pe.NT_HEADERS.FILE_HEADER.Characteristics |= pefile.IMAGE_CHARACTERISTICS['IMAGE_FILE_LINE_NUMS_STRIPPED']
+    pe.NT_HEADERS.FILE_HEADER.Characteristics |= pefile.IMAGE_CHARACTERISTICS['IMAGE_FILE_LOCAL_SYMS_STRIPPED']
 
     if not debug:
         pe.FILE_HEADER.Characteristics &= ~header_characteristics_bits_to_clear
@@ -178,6 +189,9 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
 
     # rsrc should not be writable
     find_section_header(pe, ".rsrc").Characteristics &= ~pefile.SECTION_CHARACTERISTICS['IMAGE_SCN_MEM_WRITE']
+
+    # Fix .data virtual size after deleting .CRT
+    find_section_header(pe, ".data").Misc_VirtualSize = 0x5f9e00
 
     # Some random strings are hanging out in header
     for offset, string in strings_to_embed:

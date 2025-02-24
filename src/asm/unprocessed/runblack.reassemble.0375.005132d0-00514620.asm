@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x007a1400
 .extern ___dl__FPv
 .extern _jmp_addr_0x007c5791
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern ___nw__FUl
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
 
@@ -1117,7 +1117,7 @@ _jmp_addr_0x00513e7a:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          push              ecx                                           // 0x00513e80    51
                          add               edx, 0x24                                     // 0x00513e81    83c224
                          push              edx                                           // 0x00513e84    52
-                         call              _jmp_addr_0x007c5fb6                          // 0x00513e85    e82c212b00
+                         call              _wcscpy                                       // 0x00513e85    e82c212b00
                          add               esp, 0x08                                     // 0x00513e8a    83c408
                          {disp8} mov       dword ptr [edi + 0x50], esi                   // 0x00513e8d    897750
                          pop               edi                                           // 0x00513e90    5f
@@ -1197,7 +1197,7 @@ _jmp_addr_0x00513f4a:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          {disp8} mov       edx, dword ptr [ecx + 0x44]                   // 0x00513f5d    8b5144
                          add               edx, 0x24                                     // 0x00513f60    83c224
                          push              edx                                           // 0x00513f63    52
-                         call              _jmp_addr_0x007c5fb6                          // 0x00513f64    e84d202b00
+                         call              _wcscpy                                       // 0x00513f64    e84d202b00
                          add               esp, 0x08                                     // 0x00513f69    83c408
                          {disp8} mov       dword ptr [esi + 0x54], edi                   // 0x00513f6c    897e54
                          pop               edi                                           // 0x00513f6f    5f
@@ -1261,7 +1261,7 @@ _jmp_addr_0x00513fef:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          push              ecx                                           // 0x00513ff5    51
                          add               edx, 0x24                                     // 0x00513ff6    83c224
                          push              edx                                           // 0x00513ff9    52
-                         call              _jmp_addr_0x007c5fb6                          // 0x00513ffa    e8b71f2b00
+                         call              _wcscpy                                       // 0x00513ffa    e8b71f2b00
                          add               esp, 0x08                                     // 0x00513fff    83c408
                          {disp8} mov       dword ptr [edi + 0x4c], esi                   // 0x00514002    89774c
                          pop               edi                                           // 0x00514005    5f
@@ -1322,7 +1322,7 @@ _jmp_addr_0x0051408d:    {disp8} mov       edx, dword ptr [eax + 0x08]          
                          push              edx                                           // 0x00514093    52
                          add               eax, 0x24                                     // 0x00514094    83c024
                          push              eax                                           // 0x00514097    50
-                         call              _jmp_addr_0x007c5fb6                          // 0x00514098    e8191f2b00
+                         call              _wcscpy                                       // 0x00514098    e8191f2b00
                          add               esp, 0x08                                     // 0x0051409d    83c408
                          {disp8} mov       dword ptr [edi + 0x48], esi                   // 0x005140a0    897748
                          pop               edi                                           // 0x005140a3    5f

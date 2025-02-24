@@ -4,8 +4,8 @@
 .extern rdata_bytes
 .extern data_bytes
 
-.extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _malloc
+.extern _free
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x008866c0
 .extern _jmp_addr_0x00886780
@@ -503,7 +503,7 @@ _jmp_addr_0x008979e7:    {disp32} mov       ecx, dword ptr [data_bytes + 0x5e67c
                          push               ecx                                           // 0x00897a34    51
                          call               dword ptr [esp + 0x40]                        // 0x00897a35    ff542440
                          push               esi                                           // 0x00897a39    56
-                         call               _jmp_addr_0x007c6786                          // 0x00897a3a    e847edf2ff
+                         call               _free                                         // 0x00897a3a    e847edf2ff
                          {disp32} mov       edx, dword ptr [data_bytes + 0x5e67cc]        // 0x00897a3f    8b15ccc7fa00
                          push               edx                                           // 0x00897a45    52
                          call               _jmp_addr_0x00887e40                          // 0x00897a46    e8f503ffff
@@ -1103,7 +1103,7 @@ _jmp_addr_0x00898050:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x0089808d    89442420
                          {disp8} je         _jmp_addr_0x008980ba                          // 0x00898091    7427
                          push               ebx                                           // 0x00898093    53
-                         call               _jmp_addr_0x007c664c                          // 0x00898094    e8b3e5f2ff
+                         call               _malloc                                       // 0x00898094    e8b3e5f2ff
                          add                esp, 0x04                                     // 0x00898099    83c404
                          {disp8} mov        dword ptr [esp + 0x14], eax                   // 0x0089809c    89442414
                          test               eax, eax                                      // 0x008980a0    85c0

@@ -297,7 +297,7 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007c6425
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern _operator_new
 .extern _jmp_addr_0x007c76e0
 .extern ___nw__FUl
@@ -18208,7 +18208,7 @@ _jmp_addr_0x00762bc9:    mov                edx, dword ptr [edi]                
                          {disp8} mov        ecx, dword ptr [esi + 0x20]                   // 0x00762bcb    8b4e20
                          push               edx                                           // 0x00762bce    52
                          {disp8} mov        dword ptr [esp + 0x38], ecx                   // 0x00762bcf    894c2438
-                         call               _jmp_addr_0x007c6462                          // 0x00762bd3    e88a380600
+                         call               _wcslen                                       // 0x00762bd3    e88a380600
                          {disp8} mov        edx, dword ptr [esp + 0x38]                   // 0x00762bd8    8b542438
                          mov                ecx, dword ptr [edi]                          // 0x00762bdc    8b0f
                          add                esp, 0x04                                     // 0x00762bde    83c404
@@ -18543,7 +18543,7 @@ _jmp_addr_0x00762fa1:    {disp32} mov       cx, word ptr [data_bytes + 0x4bf05a]
                          {disp8} fadd       dword ptr [esi + 0x2c]                        // 0x00762fec    d8462c
                          fstp               dword ptr [esp]                               // 0x00762fef    d91c24
                          push               ecx                                           // 0x00762ff2    51
-                         call               _jmp_addr_0x007c6462                          // 0x00762ff3    e86a340600
+                         call               _wcslen                                       // 0x00762ff3    e86a340600
                          mov                edx, dword ptr [edi]                          // 0x00762ff8    8b17
                          {disp8} mov        ecx, dword ptr [esp + 0x44]                   // 0x00762ffa    8b4c2444
                          add                esp, 0x04                                     // 0x00762ffe    83c404

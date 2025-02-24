@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x0056d270
 .extern _jmp_addr_0x007a1400
 .extern ___dl__FPv
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
 .extern _jmp_addr_0x0081b370
 
@@ -74,7 +74,7 @@ _jmp_addr_0x0056d9e4:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               eax                                           // 0x0056d9ea    50
                          add                edx, 0x24                                     // 0x0056d9eb    83c224
                          push               edx                                           // 0x0056d9ee    52
-                         call               _jmp_addr_0x007c5fb6                          // 0x0056d9ef    e8c2852500
+                         call               _wcscpy                                       // 0x0056d9ef    e8c2852500
                          add                esp, 0x08                                     // 0x0056d9f4    83c408
                          pop                esi                                           // 0x0056d9f7    5e
                          ret                                                              // 0x0056d9f8    c3

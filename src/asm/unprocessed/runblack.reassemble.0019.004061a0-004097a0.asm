@@ -72,7 +72,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007c5e51
 .extern _jmp_addr_0x007c5f8c
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c5fdb
 .extern ___nw__FUl
 .extern @Activate__Q24slim5TbIMEFPv@12
@@ -4457,7 +4457,7 @@ _jmp_addr_0x00409231:    lea                edx, dword ptr [eax + eax * 0x2]    
                          mov                dword ptr [esi], 0x008ab27c                   // 0x0040925f    c7067cb28a00
                          {disp32} mov       byte ptr [esi + 0x0000022b], bl               // 0x00409265    889e2b020000
                          {disp32} mov       dword ptr [esi + 0x00000224], ebx             // 0x0040926b    899e24020000
-                         call               _jmp_addr_0x007c5fb6                          // 0x00409271    e840cd3b00
+                         call               _wcscpy                                       // 0x00409271    e840cd3b00
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x00409276    8b542414
                          {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x0040927a    8b442418
                          {disp8} mov        ecx, dword ptr [esp + 0x1c]                   // 0x0040927e    8b4c241c

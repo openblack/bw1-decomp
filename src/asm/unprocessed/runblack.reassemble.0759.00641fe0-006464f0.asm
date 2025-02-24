@@ -87,8 +87,8 @@
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c748b
-.extern _jmp_addr_0x007c9e10
-.extern _jmp_addr_0x007c9e80
+.extern __aulldiv
+.extern __allmul
 .extern _jmp_addr_0x007c9ee1
 .extern ___nw__FUl
 .extern _jmp_addr_0x007db8a0
@@ -713,14 +713,14 @@ _jmp_addr_0x00642631:    {disp32} mov       eax, dword ptr [data_bytes + 0x380ac
                          sbb.s              ecx, esi                                       // 0x006426a3    1bce
                          push               ecx                                            // 0x006426a5    51
                          push               eax                                            // 0x006426a6    50
-                         call               _jmp_addr_0x007c9e80                           // 0x006426a7    e8d4771800
+                         call               __allmul                                       // 0x006426a7    e8d4771800
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x23899c]         // 0x006426ac    8b0d9ce9bf00
                          push               ecx                                            // 0x006426b2    51
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x238998]         // 0x006426b3    8b0d98e9bf00
                          push               ecx                                            // 0x006426b9    51
                          push               edx                                            // 0x006426ba    52
                          push               eax                                            // 0x006426bb    50
-                         call               _jmp_addr_0x007c9e10                           // 0x006426bc    e84f771800
+                         call               __aulldiv                                      // 0x006426bc    e84f771800
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x380ac8]         // 0x006426c1    8b0dc86ad400
                          sub.s              eax, ecx                                       // 0x006426c7    2bc1
                          {disp32} mov       dword ptr [data_bytes + 0x380acc], eax         // 0x006426c9    a3cc6ad400
