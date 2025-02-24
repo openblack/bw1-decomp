@@ -132,6 +132,10 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
 
     # Make room for rich header
     old_lfanew = pe.DOS_HEADER.e_lfanew
+    pe.DOS_HEADER.e_cblp = 0x90
+    pe.DOS_HEADER.e_cp = 0x03
+    pe.DOS_HEADER.e_maxalloc = 0xffff
+    pe.DOS_HEADER.e_sp = 0xb8
     pe.DOS_HEADER.e_lfanew += offset_for_rich_header
     for structure in pe.__structures__:
         if 0 < structure.get_file_offset() < 0x1000:
@@ -156,6 +160,8 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
 
     # Setting the time
     pe.NT_HEADERS.FILE_HEADER.TimeDateStamp = int(timestamp.timestamp())
+    pe.NT_HEADERS.FILE_HEADER.Characteristics |= pefile.IMAGE_CHARACTERISTICS['IMAGE_FILE_LINE_NUMS_STRIPPED']
+    pe.NT_HEADERS.FILE_HEADER.Characteristics |= pefile.IMAGE_CHARACTERISTICS['IMAGE_FILE_LOCAL_SYMS_STRIPPED']
 
     if not debug:
         pe.FILE_HEADER.Characteristics &= ~header_characteristics_bits_to_clear

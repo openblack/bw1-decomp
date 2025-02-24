@@ -8,6 +8,7 @@ if (LLVM_BINARIES_DIR)
     endif()
     set(CMAKE_ASM_COMPILER "${LLVM_BINARIES_DIR}/clang${LLVM_EXECUTABLE_SUFFIX}")
     set(CMAKE_RC_COMPILER "${LLVM_BINARIES_DIR}/llvm-rc${LLVM_EXECUTABLE_SUFFIX}")
+    set(LLVM_STRIP_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-strip${LLVM_EXECUTABLE_SUFFIX}")
     set(CMAKE_LINKER "${LLVM_BINARIES_DIR}/lld${LLVM_EXECUTABLE_SUFFIX}")
 endif()
 
@@ -41,6 +42,8 @@ set(CMAKE_C_FLAGS_MINSIZEREL "")
 set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2")
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 set(CMAKE_DEPFILE_FLAGS_C "")
+
+find_program(LLVM_STRIP_EXECUTABLE llvm-strip)
 
 set(SOURCES
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
@@ -447,17 +450,17 @@ target_link_options(runblack-reassembled
 target_include_directories(runblack-reassembled
     PRIVATE
         C:/msys64/clang64/include
+        D:/msys64/clang64/include
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/..
         ${CMAKE_CURRENT_SOURCE_DIR}/../black
         ${CMAKE_CURRENT_SOURCE_DIR}/../libs
 )
 
-find_program(STRIP strip)
 add_custom_command(
     TARGET runblack-reassembled
     POST_BUILD
-    COMMAND ${STRIP} "$<TARGET_FILE:runblack-reassembled>"
+    COMMAND ${LLVM_STRIP_EXECUTABLE} "$<TARGET_FILE:runblack-reassembled>"
     COMMENT "Stripping $<TARGET_FILE:runblack-reassembled> for reloc, idata and debug"
 )
 
