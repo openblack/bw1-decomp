@@ -30,7 +30,7 @@ jobs:
       uses: robinraju/release-downloader@v1
       with:
         repository: 'openblack/llvm-project'
-        tag: 'bw1-decomp-003'
+        tag: 'bw1-decomp-008'
         fileName: 'llvm-${{ matrix.os }}.zip'
         extract: true
         out-file-path: 'llvm'
