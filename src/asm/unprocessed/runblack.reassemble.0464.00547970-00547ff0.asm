@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x007197f0
 .extern _jmp_addr_0x00719840
 .extern _jmp_addr_0x007c6425
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern ___nw__FUl
 
 start_0x00547970_0x00547ff0:
@@ -486,7 +486,7 @@ _jmp_addr_0x00547f9e:    push             edi                                   
                          call             _jmp_addr_0x007c6425                          // 0x00547f9f    e881e42700
                          push             edi                                           // 0x00547fa4    57
                          {disp32} mov     word ptr [esi + 0x00000222], bx               // 0x00547fa5    66899e22020000
-                         call             _jmp_addr_0x007c6462                          // 0x00547fac    e8b1e42700
+                         call             _wcslen                                       // 0x00547fac    e8b1e42700
                          add              esp, 0x10                                     // 0x00547fb1    83c410
                          {disp32} mov     dword ptr [esi + 0x0000024c], eax             // 0x00547fb4    89864c020000
                          {disp32} mov     dword ptr [esi + 0x00000254], eax             // 0x00547fba    898654020000

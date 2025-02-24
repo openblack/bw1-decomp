@@ -189,7 +189,7 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c6425
 .extern _operator_new
 .extern _jmp_addr_0x007c6ce0
@@ -4241,7 +4241,7 @@ _jmp_addr_0x00649180:    pop                edi                                 
                          push               eax                                            // 0x006491b0    50
                          {disp32} lea       ecx, dword ptr [esi + 0x000008e4]              // 0x006491b1    8d8ee4080000
                          push               ecx                                            // 0x006491b7    51
-                         call               _jmp_addr_0x007c5fb6                           // 0x006491b8    e8f9cd1700
+                         call               _wcscpy                                        // 0x006491b8    e8f9cd1700
                          add                esp, 0x08                                      // 0x006491bd    83c408
 _jmp_addr_0x006491c0:    {disp32} mov       eax, dword ptr [esi + 0x00000944]              // 0x006491c0    8b8644090000
                          test               eax, eax                                       // 0x006491c6    85c0

@@ -359,7 +359,7 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007c6bff
 .extern _jmp_addr_0x007c6c29
@@ -419,7 +419,6 @@
 .extern _jmp_addr_0x00865000
 .extern _jmp_addr_0x0086c560
 .extern _jmp_addr_0x00871f00
-.extern _jmp_addr_0x008a5b3a
 
 .globl _jmp_addr_0x0054d920
 .globl _jmp_addr_0x0054da00
@@ -3052,7 +3051,7 @@ _jmp_addr_0x0054fdd6:    mov.s              ecx, ebx                            
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30a698]        // 0x0054fde9    a19806cd00
                          add                eax, 0x24                                     // 0x0054fdee    83c024
                          push               eax                                           // 0x0054fdf1    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0054fdf2    e8bf612700
+                         call               _wcscpy                                       // 0x0054fdf2    e8bf612700
                          add                esp, 0x0c                                     // 0x0054fdf7    83c40c
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0054fdfa    8b0d5c19d000
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x0054fe00    e87b310000
@@ -3164,4 +3163,3 @@ _jmp_addr_0x0054ff40:    {disp32} mov       dword ptr [data_bytes + 0x33b980], e
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0054ff74
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0054ff78
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0054ff7c
-
