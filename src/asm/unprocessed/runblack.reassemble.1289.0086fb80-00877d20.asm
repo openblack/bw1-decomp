@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x007bd030
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x008002c0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x00804e60
@@ -2006,7 +2006,7 @@ _jmp_addr_0x00871129:    call                 _jmp_addr_0x007c57d2              
                          call                 _jmp_addr_0x007bd030                           // 0x0087114c    e8dfbef4ff
                          push                 edi                                            // 0x00871151    57
                          inc                  ebx                                            // 0x00871152    43
-                         call                 _jmp_addr_0x007c6786                           // 0x00871153    e82e56f5ff
+                         call                 _free                                          // 0x00871153    e82e56f5ff
                          {disp8} mov          esi, dword ptr [esi + 0x04]                    // 0x00871158    8b7604
                          add                  esp, 0x14                                      // 0x0087115b    83c414
                          test                 esi, esi                                       // 0x0087115e    85f6

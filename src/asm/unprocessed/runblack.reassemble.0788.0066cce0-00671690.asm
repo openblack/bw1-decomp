@@ -93,8 +93,8 @@
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5fb6
-.extern _jmp_addr_0x007c6462
+.extern _wcscpy
+.extern _wcslen
 .extern _operator_new
 .extern ___nw__FUl
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
@@ -4903,9 +4903,9 @@ _jmp_addr_0x0066fcb0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               eax                                           // 0x0066fcb8    50
                          {disp8} lea        edi, dword ptr [esi + 0x04]                   // 0x0066fcb9    8d7e04
                          push               edi                                           // 0x0066fcbc    57
-                         call               _jmp_addr_0x007c5fb6                          // 0x0066fcbd    e8f4621500
+                         call               _wcscpy                                       // 0x0066fcbd    e8f4621500
                          push               edi                                           // 0x0066fcc2    57
-                         call               _jmp_addr_0x007c6462                          // 0x0066fcc3    e89a671500
+                         call               _wcslen                                       // 0x0066fcc3    e89a671500
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x0066fcc8    8b54241c
                          {disp32} mov       dword ptr [esi + 0x00000088], eax             // 0x0066fccc    898688000000
                          {disp32} mov       dword ptr [esi + 0x00000090], 0x00000002      // 0x0066fcd2    c7869000000002000000

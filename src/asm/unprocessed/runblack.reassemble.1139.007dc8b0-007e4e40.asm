@@ -60,7 +60,7 @@
 .extern _jmp_addr_0x008a5480
 .extern _jmp_addr_0x008a5590
 .extern _jmp_addr_0x008a5b00
-.extern ___destroy_new_array
+.extern ??_M@YGXPAXIHP6EX0@Z@Z
 .extern _jmp_addr_0x00fc1285
 
 .globl _jmp_addr_0x007dc8b0
@@ -91,7 +91,7 @@
 .globl _jmp_addr_0x007dedd0
 .globl _jmp_addr_0x007dee00
 .globl _jmp_addr_0x007dee20
-.globl _jmp_addr_0x007dee50
+.globl _WinMain@16
 .globl _jmp_addr_0x007df060
 .globl _jmp_addr_0x007df430
 .globl _jmp_addr_0x007df850
@@ -750,7 +750,7 @@ _jmp_addr_0x007dcf9d:    push               edi                                 
                          push               eax                                           // 0x007dcfd9    50
                          push               0x000000f8                                    // 0x007dcfda    68f8000000
                          push               esi                                           // 0x007dcfdf    56
-                         call               ___destroy_new_array                          // 0x007dcfe0    e87e8f0c00
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                        // 0x007dcfe0    e87e8f0c00
                          test               bl, 0x01                                      // 0x007dcfe5    f6c301
                          {disp8} je         _jmp_addr_0x007dcff3                          // 0x007dcfe8    7409
                          push               edi                                           // 0x007dcfea    57
@@ -1556,7 +1556,7 @@ _jmp_addr_0x007dd8e1:    pop                esi                                 
                          push               ecx                                           // 0x007dd90a    51
                          push               0x000000f8                                    // 0x007dd90b    68f8000000
                          push               eax                                           // 0x007dd910    50
-                         call               ___destroy_new_array                          // 0x007dd911    e84d860c00
+                         call               ??_M@YGXPAXIHP6EX0@Z@Z                        // 0x007dd911    e84d860c00
                          push               edi                                           // 0x007dd916    57
                          call               ___dl__FPv                                    // 0x007dd917    e87c15fdff
                          add                esp, 0x04                                     // 0x007dd91c    83c404
@@ -3574,7 +3574,7 @@ _jmp_addr_0x007dee33:    push               0x0                                 
                          ret                                                              // 0x007dee4d    c3
                          nop                                                              // 0x007dee4e    90
                          nop                                                              // 0x007dee4f    90
-_jmp_addr_0x007dee50:    sub                esp, 0x0c                                     // 0x007dee50    83ec0c
+_WinMain@16:             sub                esp, 0x0c                                     // 0x007dee50    83ec0c
                          push               0x0                                           // 0x007dee53    6a00
                          call               dword ptr [rdata_bytes + 0x3b4]               // 0x007dee55    ff15b4938a00
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x007dee5b    8d442404

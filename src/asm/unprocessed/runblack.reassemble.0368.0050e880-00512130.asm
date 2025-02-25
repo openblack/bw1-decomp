@@ -77,8 +77,8 @@
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
-.extern _jmp_addr_0x007c6786
+.extern _malloc
+.extern _free
 .extern _fprintf__10LHFilePath
 .extern _jmp_addr_0x007c7e13
 .extern _LHRand__FlRU
@@ -1658,7 +1658,7 @@ _jmp_addr_0x0050f786:    mov                eax, dword ptr [esi]                
                          test               eax, eax                                      // 0x0050f788    85c0
                          {disp8} je         _jmp_addr_0x0050f795                          // 0x0050f78a    7409
                          push               eax                                           // 0x0050f78c    50
-                         call               _jmp_addr_0x007c6786                          // 0x0050f78d    e8f46f2b00
+                         call               _free                                         // 0x0050f78d    e8f46f2b00
                          add                esp, 0x04                                     // 0x0050f792    83c404
 _jmp_addr_0x0050f795:    mov                dword ptr [esi], 0x00000000                   // 0x0050f795    c70600000000
                          add                esi, 0x04                                     // 0x0050f79b    83c604
@@ -1680,7 +1680,7 @@ _jmp_addr_0x0050f7b0:    sub                esp, 0x00000100                     
                          mov                edi, 0x00cc5ee8                               // 0x0050f7b8    bfe85ecc00
                          mov                esi, 0x00be8414                               // 0x0050f7bd    be1484be00
 _jmp_addr_0x0050f7c2:    push               0x6c                                          // 0x0050f7c2    6a6c
-                         call               _jmp_addr_0x007c664c                          // 0x0050f7c4    e8836e2b00
+                         call               _malloc                                       // 0x0050f7c4    e8836e2b00
                          add                esp, 0x04                                     // 0x0050f7c9    83c404
                          push               esi                                           // 0x0050f7cc    56
                          mov                dword ptr [edi], eax                          // 0x0050f7cd    8907
