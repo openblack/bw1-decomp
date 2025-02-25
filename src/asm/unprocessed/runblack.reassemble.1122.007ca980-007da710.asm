@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x007c9c73
 .extern __aulldiv
 .extern __allmul
-.extern _jmp_addr_0x007c9ef2
+.extern __exit
 .extern _jmp_addr_0x007ca030
 .extern _jmp_addr_0x007ca179
 .extern _jmp_addr_0x007ca1a2
@@ -177,7 +177,7 @@
 .globl _jmp_addr_0x007d65a4
 .globl _jmp_addr_0x007d675c
 .globl _jmp_addr_0x007d681c
-.globl _jmp_addr_0x007d68af
+.globl __XcptFilter
 .globl __wincmdln
 .globl __setenvp
 .globl __setargv
@@ -16957,7 +16957,7 @@ _jmp_addr_0x007d6285:    xor.s              ecx, ecx                            
                          call               __unlock                                       // 0x007d6292    e88054ffff
                          pop                ecx                                            // 0x007d6297    59
 _jmp_addr_0x007d6298:    push               0x3                                            // 0x007d6298    6a03
-                         call               _jmp_addr_0x007c9ef2                           // 0x007d629a    e8533cffff
+                         call               __exit                                         // 0x007d629a    e8533cffff
 _jmp_addr_0x007d629f:    {disp8} mov        eax, dword ptr [ebp + 0x08]                    // 0x007d629f    8b4508
                          cmp                eax, 0x08                                      // 0x007d62a2    83f808
                          {disp8} je         _jmp_addr_0x007d62b1                           // 0x007d62a5    740a
@@ -17506,7 +17506,7 @@ _jmp_addr_0x007d68ab:    pop                edi                                 
                          pop                esi                                            // 0x007d68ac    5e
                          pop                ebx                                            // 0x007d68ad    5b
                          ret                                                               // 0x007d68ae    c3
-_jmp_addr_0x007d68af:    push               ebp                                            // 0x007d68af    55
+__XcptFilter:            push               ebp                                            // 0x007d68af    55
                          mov.s              ebp, esp                                       // 0x007d68b0    8bec
                          push               ecx                                            // 0x007d68b2    51
                          push               ebx                                            // 0x007d68b3    53
