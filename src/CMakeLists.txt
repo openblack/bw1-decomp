@@ -339,7 +339,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1099.007c63e0-007ca49f.asm
 )
 set(SOURCES_002
-    asm/unprocessed/runblack.reassemble.1101.007ca5f0-007ca700.asm
+    asm/unprocessed/runblack.reassemble.1101.007ca690-007ca700.asm
     asm/unprocessed/runblack.reassemble.1103.007ca700-007ca790.asm
     asm/unprocessed/runblack.reassemble.1107.007ca790-007ca7f0.asm
     asm/unprocessed/runblack.reassemble.1111.007ca7f0-007ca890.asm
@@ -470,6 +470,8 @@ endfunction()
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\wincrt0.obj" ON WEAKEN_SYMBOLS __aenvptr __wenvptr ___error_mode __acmdln)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strlen.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehprolog.obj" OFF)
 set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 # libcmt is statically linked between 007aee98 and 008a6470
