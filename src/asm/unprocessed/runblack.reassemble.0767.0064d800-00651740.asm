@@ -53,7 +53,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007c60f0
 .extern _operator_new
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
@@ -4860,7 +4860,7 @@ _jmp_addr_0x00651240:    xor.s              eax, eax                            
                          push               eax                                           // 0x00651266    50
                          {disp8} lea        ecx, dword ptr [esi + 0x1c]                   // 0x00651267    8d4e1c
                          push               ecx                                           // 0x0065126a    51
-                         call               _jmp_addr_0x007c90a0                          // 0x0065126b    e8307e1700
+                         call               _strncpy                                      // 0x0065126b    e8307e1700
                          add                esp, 0x0c                                     // 0x00651270    83c40c
 _jmp_addr_0x00651273:    {disp8} mov        edx, dword ptr [edi + 0x14]                   // 0x00651273    8b5714
                          pop                edi                                           // 0x00651276    5f
@@ -4918,7 +4918,7 @@ _jmp_addr_0x00651273:    {disp8} mov        edx, dword ptr [edi + 0x14]         
                          {disp8} lea        ecx, dword ptr [esi + 0x1c]                   // 0x006512da    8d4e1c
                          push               ecx                                           // 0x006512dd    51
                          {disp8} mov        dword ptr [esi + 0x14], 0x00000002            // 0x006512de    c7461402000000
-                         call               _jmp_addr_0x007c90a0                          // 0x006512e5    e8b67d1700
+                         call               _strncpy                                      // 0x006512e5    e8b67d1700
                          add                esp, 0x0c                                     // 0x006512ea    83c40c
                          mov.s              eax, esi                                      // 0x006512ed    8bc6
                          pop                esi                                           // 0x006512ef    5e

@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 .extern _jmp_addr_0x007c7ae0
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern _jmp_addr_0x007dee00
 .extern _jmp_addr_0x0080db30
 .extern @__ct__16LH3DSpriteObjectFl@12
@@ -11479,7 +11479,7 @@ _jmp_addr_0x00800c10:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               0x00000400                                     // 0x00800c14    6800040000
                          push               eax                                            // 0x00800c19    50
                          push               0x00e9c0b8                                     // 0x00800c1a    68b8c0e900
-                         call               _jmp_addr_0x007c90a0                           // 0x00800c1f    e87c84fcff
+                         call               _strncpy                                       // 0x00800c1f    e87c84fcff
                          add                esp, 0x0c                                      // 0x00800c24    83c40c
                          ret                                                               // 0x00800c27    c3
                          nop                                                               // 0x00800c28    90

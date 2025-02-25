@@ -98,6 +98,7 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
             # libcmt padding is 0xCC
             (0x003ca66b, b"\xCC" * 1),
             (0x003ca68b, b"\xCC" * 5),
+            (0x003ca9c5, b"\xCC" * 11),
             (0x004A645B, b"\xCC" * 1),
             (0x004A6281, b"\xCC" * 3),
             (0x004A62FD, b"\xCC" * 3),

@@ -109,7 +109,7 @@
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c748b
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern _jmp_addr_0x007c94ce
 .extern _jmp_addr_0x007c9525
 .extern _jmp_addr_0x007c9849
@@ -5400,7 +5400,7 @@ _jmp_addr_0x0062ed88:    push               ebx                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                    // 0x0062ed8c    8d4c2424
                          push               ecx                                            // 0x0062ed90    51
                          {disp8} mov        byte ptr [esp + edi * 0x1 + 0x28], 0x00        // 0x0062ed91    c6443c2800
-                         call               _jmp_addr_0x007c90a0                           // 0x0062ed96    e805a31900
+                         call               _strncpy                                       // 0x0062ed96    e805a31900
                          {disp8} mov        ebx, dword ptr [esi + 0x28]                    // 0x0062ed9b    8b5e28
                          {disp8} lea        edx, dword ptr [esp + 0x28]                    // 0x0062ed9e    8d542428
                          add.s              ebx, edi                                       // 0x0062eda2    03df
