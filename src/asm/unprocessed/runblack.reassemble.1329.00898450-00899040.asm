@@ -9,7 +9,7 @@
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c75a2
-.extern _jmp_addr_0x007c9ee1
+.extern _exit
 .extern _jmp_addr_0x007ca2f9
 .extern _jmp_addr_0x00899040
 .extern _jmp_addr_0x008995f0
@@ -90,7 +90,7 @@ _jmp_addr_0x008984b0:    push               esi                                 
                          call               _fprintf__10LHFilePath                        // 0x008984db    e8d0e8f2ff
                          add                esp, 0x0c                                     // 0x008984e0    83c40c
                          push               0x1                                           // 0x008984e3    6a01
-                         call               _jmp_addr_0x007c9ee1                          // 0x008984e5    e8f719f3ff
+                         call               _exit                                         // 0x008984e5    e8f719f3ff
 _jmp_addr_0x008984ea:    add                esi, 0x08                                     // 0x008984ea    83c608
                          push               eax                                           // 0x008984ed    50
                          push               esi                                           // 0x008984ee    56
@@ -592,7 +592,7 @@ _jmp_addr_0x00898960:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          call               _jmp_addr_0x0089a470                          // 0x008989bc    e8af1a0000
                          add                esp, 0x08                                     // 0x008989c1    83c408
                          push               0x1                                           // 0x008989c4    6a01
-                         call               _jmp_addr_0x007c9ee1                          // 0x008989c6    e81615f3ff
+                         call               _exit                                         // 0x008989c6    e81615f3ff
                          pop                esi                                           // 0x008989cb    5e
                          nop                                                              // 0x008989cc    90
                          nop                                                              // 0x008989cd    90

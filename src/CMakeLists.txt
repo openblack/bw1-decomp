@@ -47,8 +47,8 @@ find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
     asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
-    asm/unprocessed/rdata.001.008a99a8-009a6298.asm
-    asm/unprocessed/data.asm
+    asm/unprocessed/rdata.001.008a99a8-009a0738.asm
+    asm/unprocessed/data.000.009c6000-00c2d670.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
 
@@ -336,7 +336,10 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
     asm/unprocessed/runblack.reassemble.1093.007c62f0-007c6390.asm
     asm/unprocessed/runblack.reassemble.1097.007c6390-007c63e0.asm
-    asm/unprocessed/runblack.reassemble.1100.007c63e0-007ca700.asm
+    asm/unprocessed/runblack.reassemble.1099.007c63e0-007ca49f.asm
+)
+set(SOURCES_002
+    asm/unprocessed/runblack.reassemble.1101.007ca5f0-007ca700.asm
     asm/unprocessed/runblack.reassemble.1103.007ca700-007ca790.asm
     asm/unprocessed/runblack.reassemble.1107.007ca790-007ca7f0.asm
     asm/unprocessed/runblack.reassemble.1111.007ca7f0-007ca890.asm
@@ -403,15 +406,18 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm
+    asm/unprocessed/rdata.002.009a0744-009a6298.asm
 )
-set(SOURCES_002
+set(SOURCES_003
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    asm/unprocessed/rdata.002.009a62d4-009c5564.asm
+    asm/unprocessed/rdata.003.009a62d4-009c5564.asm
+    asm/unprocessed/data.001.00c2d680-0x00c3cff0.asm
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
 add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
+add_library(runblack-reassembled-src-003 OBJECT ${SOURCES_003})
 
 add_library(runblack-reassembled-rc OBJECT
     res/winnt.rh
@@ -460,9 +466,15 @@ function(add_patched_libcmt_object src_obj patch_flag)
     set(LIBCMT_PATCHED_OBJECTS "${LIBCMT_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
 endfunction()
 
+
+add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
+set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wincrt0.obj" ON WEAKEN_SYMBOLS __aenvptr __wenvptr ___error_mode __acmdln)
+set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
 # libcmt is statically linked between 007aee98 and 008a6470
 # The text section is aligned on 1-byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
-add_library(runblack-reassembled-libcmt OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
 
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcsdup.obj" ON)
@@ -485,7 +497,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\sehsupp.obj" ON)
-set_property(TARGET runblack-reassembled-libcmt PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_executable(runblack-reassembled)
 set_target_properties(runblack-reassembled PROPERTIES
@@ -502,8 +514,10 @@ target_compile_options(common_compile_options INTERFACE
 target_link_libraries(runblack-reassembled
     PRIVATE
         runblack-reassembled-src-001
-        runblack-reassembled-libcmt
+        runblack-reassembled-libcmt-001
         runblack-reassembled-src-002
+        runblack-reassembled-libcmt-002
+        runblack-reassembled-src-003
         runblack-reassembled-rc
 )
 
@@ -511,13 +525,14 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-001.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-001.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm${OBJ_SUFFIX}"
             ON
 )
 
 target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-003 PRIVATE common_compile_options)
 target_link_options(runblack-reassembled
     PRIVATE
         "-flavor"

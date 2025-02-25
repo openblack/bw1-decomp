@@ -77,7 +77,7 @@
 .globl __imp__MultiByteToWideChar@4
 .globl __imp__GetTimeFormatW@4
 .globl __imp__QueryPerformanceCounter@4
-.globl __imp__GetCommandLineA@4
+.globl __imp__GetCommandLineA@0
 .globl __imp__GetDateFormatW@4
 .globl __imp__OutputDebugStringA@4
 .globl __imp__QueryPerformanceFrequency@4
@@ -149,7 +149,7 @@
 .globl __imp__OpenProcess@4
 .globl __imp__GetLocaleInfoW@4
 .globl __imp__IsBadCodePtr@4
-.globl __imp__GetVersion@4
+.globl __imp__GetVersion@0
 .globl __imp__GetSystemTimeAsFileTime@4
 .globl __imp__GetStringTypeW@4
 .globl __imp__GetStringTypeA@4
@@ -685,7 +685,7 @@ rdata_bytes:
 .long 0x005c04ee /* KERNEL32.DLL::MultiByteToWideChar */                                                                                                         ; .set __imp__MultiByteToWideChar@4,                                                                                                   0x008a913c
 .long 0x005c052c /* KERNEL32.DLL::GetTimeFormatW */                                                                                                              ; .set __imp__GetTimeFormatW@4,                                                                                                        0x008a9140
 .long 0x005c04b8 /* KERNEL32.DLL::QueryPerformanceCounter */                                                                                                     ; .set __imp__QueryPerformanceCounter@4,                                                                                               0x008a9144
-.long 0x005c04a6 /* KERNEL32.DLL::GetCommandLineA */                                                                                                             ; .set __imp__GetCommandLineA@4,                                                                                                       0x008a9148
+.long 0x005c04a6 /* KERNEL32.DLL::GetCommandLineA */                                                                                                             ; .set __imp__GetCommandLineA@0,                                                                                                       0x008a9148
 .long 0x005c053e /* KERNEL32.DLL::GetDateFormatW */                                                                                                              ; .set __imp__GetDateFormatW@4,                                                                                                        0x008a914c
 .long 0x005c0504 /* KERNEL32.DLL::OutputDebugStringA */                                                                                                          ; .set __imp__OutputDebugStringA@4,                                                                                                    0x008a9150
 .long 0x005c04d2 /* KERNEL32.DLL::QueryPerformanceFrequency */                                                                                                   ; .set __imp__QueryPerformanceFrequency@4,                                                                                             0x008a9154
@@ -757,7 +757,7 @@ rdata_bytes:
 .long 0x005c4b92 /* KERNEL32.DLL::OpenProcess */                                                                                                                 ; .set __imp__OpenProcess@4,                                                                                                           0x008a925c
 .long 0x005c4b80 /* KERNEL32.DLL::GetLocaleInfoW */                                                                                                              ; .set __imp__GetLocaleInfoW@4,                                                                                                        0x008a9260
 .long 0x005c4b70 /* KERNEL32.DLL::IsBadCodePtr */                                                                                                                ; .set __imp__IsBadCodePtr@4,                                                                                                          0x008a9264
-.long 0x005c4850 /* KERNEL32.DLL::GetVersion */                                                                                                                  ; .set __imp__GetVersion@4,                                                                                                            0x008a9268
+.long 0x005c4850 /* KERNEL32.DLL::GetVersion */                                                                                                                  ; .set __imp__GetVersion@0,                                                                                                            0x008a9268
 .long 0x005c51b8 /* KERNEL32.DLL::GetSystemTimeAsFileTime */                                                                                                     ; .set __imp__GetSystemTimeAsFileTime@4,                                                                                               0x008a926c
 .long 0x005c4b34 /* KERNEL32.DLL::GetStringTypeW */                                                                                                              ; .set __imp__GetStringTypeW@4,                                                                                                        0x008a9270
 .long 0x005c4b22 /* KERNEL32.DLL::GetStringTypeA */                                                                                                              ; .set __imp__GetStringTypeA@4,                                                                                                        0x008a9274

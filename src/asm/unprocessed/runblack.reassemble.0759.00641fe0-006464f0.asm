@@ -89,7 +89,7 @@
 .extern _jmp_addr_0x007c748b
 .extern __aulldiv
 .extern __allmul
-.extern _jmp_addr_0x007c9ee1
+.extern _exit
 .extern ___nw__FUl
 .extern _jmp_addr_0x007db8a0
 .extern _jmp_addr_0x007db910
@@ -1426,7 +1426,7 @@ _jmp_addr_0x00643045:    push               edi                                 
                          mov                ecx, 0x00e85040                                // 0x00643073    b94050e800
                          call               _jmp_addr_0x007db8a0                           // 0x00643078    e823881900
                          push               ebx                                            // 0x0064307d    53
-                         call               _jmp_addr_0x007c9ee1                           // 0x0064307e    e85e6e1800
+                         call               _exit                                          // 0x0064307e    e85e6e1800
 _jmp_addr_0x00643083:    {disp32} mov       cl, byte ptr [data_bytes + 0x4bf0cb]           // 0x00643083    8a0dcb50e800
                          xor.s              edx, edx                                       // 0x00643089    33d2
                          sar                edx, cl                                        // 0x0064308b    d3fa

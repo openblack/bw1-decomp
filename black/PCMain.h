@@ -23,6 +23,6 @@ void __cdecl __construct_new_array(void* address, size_t stride, int len, void* 
 void __cdecl __destroy_new_array(void* address, size_t stride, int len, void* destructor);
 
 // win1.41 007dee50 mac inlined WinMain
-int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char* lpCmdLine, int nShowCmd);
+int __stdcall _WinMain@16(HINSTANCE hInstance, HINSTANCE hPrevInstance, char* lpCmdLine, int nShowCmd);
 
 #endif /* BW1_DECOMP_PC_MAIN_INCLUDED_H */

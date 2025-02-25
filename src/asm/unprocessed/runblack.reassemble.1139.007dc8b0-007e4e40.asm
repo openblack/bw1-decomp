@@ -91,7 +91,7 @@
 .globl _jmp_addr_0x007dedd0
 .globl _jmp_addr_0x007dee00
 .globl _jmp_addr_0x007dee20
-.globl _WinMain
+.globl _WinMain@16
 .globl _jmp_addr_0x007df060
 .globl _jmp_addr_0x007df430
 .globl _jmp_addr_0x007df850
@@ -3574,7 +3574,7 @@ _jmp_addr_0x007dee33:    push               0x0                                 
                          ret                                                              // 0x007dee4d    c3
                          nop                                                              // 0x007dee4e    90
                          nop                                                              // 0x007dee4f    90
-_WinMain:                sub                esp, 0x0c                                     // 0x007dee50    83ec0c
+_WinMain@16:             sub                esp, 0x0c                                     // 0x007dee50    83ec0c
                          push               0x0                                           // 0x007dee53    6a00
                          call               dword ptr [rdata_bytes + 0x3b4]               // 0x007dee55    ff15b4938a00
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x007dee5b    8d442404
