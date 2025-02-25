@@ -12,7 +12,7 @@
 .extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c6ce0
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern _jmp_addr_0x007c91f0
 .extern _jmp_addr_0x007c942a
 .extern _jmp_addr_0x007c9560
@@ -529,7 +529,7 @@ _jmp_addr_0x008943af:    pop              edi                                   
                          push             0x00000080                                     // 0x00894415    6880000000
                          push             esi                                            // 0x0089441a    56
                          push             ebp                                            // 0x0089441b    55
-                         call             _jmp_addr_0x007c90a0                           // 0x0089441c    e87f4cf3ff
+                         call             _strncpy                                       // 0x0089441c    e87f4cf3ff
                          xor.s            ecx, ecx                                       // 0x00894421    33c9
                          {disp8} lea      edx, dword ptr [esp + 0x1c]                    // 0x00894423    8d54241c
                          {disp8} mov      dword ptr [esp + 0x1c], ecx                    // 0x00894427    894c241c

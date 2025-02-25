@@ -74,7 +74,7 @@
 .extern _free
 .extern _jmp_addr_0x007c76e0
 .extern _jmp_addr_0x007c7ae0
-.extern _jmp_addr_0x007c91a0
+.extern _strncmp
 .extern _jmp_addr_0x007c91f0
 .extern _calloc
 .extern ___nw__FUl
@@ -322,7 +322,7 @@ _jmp_addr_0x0059c05d:    inc                edi                                 
 _jmp_addr_0x0059c05e:    push               0x3                                           // 0x0059c05e    6a03
                          push               0x00befff0                                    // 0x0059c060    68f0ffbe00
                          push               esi                                           // 0x0059c065    56
-                         call               _jmp_addr_0x007c91a0                          // 0x0059c066    e835d12200
+                         call               _strncmp                                      // 0x0059c066    e835d12200
                          add                esp, 0x0c                                     // 0x0059c06b    83c40c
                          test               eax, eax                                      // 0x0059c06e    85c0
                          {disp8} jne        _jmp_addr_0x0059c085                          // 0x0059c070    7513
@@ -338,7 +338,7 @@ _jmp_addr_0x0059c05e:    push               0x3                                 
 _jmp_addr_0x0059c085:    push               0x3                                           // 0x0059c085    6a03
                          push               0x00beffec                                    // 0x0059c087    68ecffbe00
                          push               esi                                           // 0x0059c08c    56
-                         call               _jmp_addr_0x007c91a0                          // 0x0059c08d    e80ed12200
+                         call               _strncmp                                      // 0x0059c08d    e80ed12200
                          add                esp, 0x0c                                     // 0x0059c092    83c40c
                          test               eax, eax                                      // 0x0059c095    85c0
                          {disp8} jne        _jmp_addr_0x0059c0ac                          // 0x0059c097    7513
@@ -354,7 +354,7 @@ _jmp_addr_0x0059c085:    push               0x3                                 
 _jmp_addr_0x0059c0ac:    push               0x3                                           // 0x0059c0ac    6a03
                          push               0x00beffe8                                    // 0x0059c0ae    68e8ffbe00
                          push               esi                                           // 0x0059c0b3    56
-                         call               _jmp_addr_0x007c91a0                          // 0x0059c0b4    e8e7d02200
+                         call               _strncmp                                      // 0x0059c0b4    e8e7d02200
                          add                esp, 0x0c                                     // 0x0059c0b9    83c40c
                          test               eax, eax                                      // 0x0059c0bc    85c0
                          {disp8} jne        _jmp_addr_0x0059c0cd                          // 0x0059c0be    750d

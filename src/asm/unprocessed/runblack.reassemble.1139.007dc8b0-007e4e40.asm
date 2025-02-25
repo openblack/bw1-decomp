@@ -20,7 +20,7 @@
 .extern _fprintf__10LHFilePath
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c8837
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern _jmp_addr_0x007c9560
 .extern _jmp_addr_0x007c95e8
 .extern _jmp_addr_0x007c9c73
@@ -1358,7 +1358,7 @@ _jmp_addr_0x007dd6a3:    {disp32} mov       eax, dword ptr [esi + 0x000000ec]   
                          {disp8} mov        dword ptr [edx + 0x04], ecx                   // 0x007dd6c8    894a04
                          {disp8} mov        dword ptr [edx + 0x08], ecx                   // 0x007dd6cb    894a08
                          {disp8} mov        dword ptr [edx + 0x0c], ecx                   // 0x007dd6ce    894a0c
-                         call               _jmp_addr_0x007c90a0                          // 0x007dd6d1    e8cab9feff
+                         call               _strncpy                                      // 0x007dd6d1    e8cab9feff
                          add                esp, 0x0c                                     // 0x007dd6d6    83c40c
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x007dd6d9    8d442414
                          push               0x0                                           // 0x007dd6dd    6a00
@@ -1398,7 +1398,7 @@ _jmp_addr_0x007dd6a3:    {disp32} mov       eax, dword ptr [esi + 0x000000ec]   
                          push               ecx                                           // 0x007dd751    51
                          push               esi                                           // 0x007dd752    56
                          {disp8} mov        dword ptr [edi + 0x0c], eax                   // 0x007dd753    89470c
-                         call               _jmp_addr_0x007c90a0                          // 0x007dd756    e845b9feff
+                         call               _strncpy                                      // 0x007dd756    e845b9feff
                          add                esp, 0x0c                                     // 0x007dd75b    83c40c
                          {disp32} lea       edx, dword ptr [esp + 0x00000310]             // 0x007dd75e    8d942410030000
                          push               edx                                           // 0x007dd765    52
