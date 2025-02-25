@@ -13,12 +13,12 @@
 .extern _jmp_addr_0x007c6eb0
 .extern __errno
 .extern ___doserrno
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern _jmp_addr_0x007c91f0
 .extern _calloc
 .extern _jmp_addr_0x007c9657
 .extern _strlen
-.extern _jmp_addr_0x007cb100
+.extern _memset
 .extern __lock
 .extern __unlock
 .extern _jmp_addr_0x007d211b
@@ -56,7 +56,7 @@
 .globl _jmp_addr_0x007dad60
 .globl _jmp_addr_0x007db0a5
 .globl _jmp_addr_0x007db121
-.globl _jmp_addr_0x007db234
+.globl ___crtGetLocaleInfoA
 .globl _jmp_addr_0x007db352
 .globl _jmp_addr_0x007db410
 .globl _LHRand__FlRU
@@ -729,7 +729,7 @@ _jmp_addr_0x007dad60:    push              ebp                                  
                          push              ebx                                            // 0x007dadb8    53
                          push              esi                                            // 0x007dadb9    56
                          push              eax                                            // 0x007dadba    50
-                         call              _jmp_addr_0x007cb100                           // 0x007dadbb    e84003ffff
+                         call              _memset                                        // 0x007dadbb    e84003ffff
                          push              0x00008000                                     // 0x007dadc0    6800800000
                          push              dword ptr [ebp + 0x08]                         // 0x007dadc5    ff7508
                          call              _jmp_addr_0x007db3ab                           // 0x007dadc8    e8de050000
@@ -1132,7 +1132,7 @@ _jmp_addr_0x007db222:    {disp8} lea       esp, dword ptr [ebp + -0x30]         
                          pop               ebx                                            // 0x007db231    5b
                          leave                                                            // 0x007db232    c9
                          ret                                                              // 0x007db233    c3
-_jmp_addr_0x007db234:    push              ebp                                            // 0x007db234    55
+___crtGetLocaleInfoA:    push              ebp                                            // 0x007db234    55
                          mov.s             ebp, esp                                       // 0x007db235    8bec
                          push              -0x1                                           // 0x007db237    6aff
                          push              0x009a1610                                     // 0x007db239    6810169a00
@@ -1311,7 +1311,7 @@ _jmp_addr_0x007db410:    {disp8} mov       eax, dword ptr [esp + 0x08]          
                          call              dword ptr [rdata_bytes + 0x148]                // 0x007db41f    ff1548918a00
                          push              eax                                            // 0x007db425    50
                          push              0x00e84ee8                                     // 0x007db426    68e84ee800
-                         call              _jmp_addr_0x007c90a0                           // 0x007db42b    e870dcfeff
+                         call              _strncpy                                       // 0x007db42b    e870dcfeff
                          {disp8} mov       edx, dword ptr [esp + 0x10]                    // 0x007db430    8b542410
                          add               esp, 0x0c                                      // 0x007db434    83c40c
                          mov               eax, 0x00e84ee8                                // 0x007db437    b8e84ee800

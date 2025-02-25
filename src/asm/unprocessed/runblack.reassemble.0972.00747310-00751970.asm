@@ -231,7 +231,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
 .extern _jmp_addr_0x007c6ce0
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern _jmp_addr_0x007c9bf0
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e2df0
@@ -12601,7 +12601,7 @@ _jmp_addr_0x0074f250:    push               edi                                 
                          push               edi                                            // 0x0074f268    57
                          {disp8} mov        edi, dword ptr [esp + 0x18]                    // 0x0074f269    8b7c2418
                          push               edi                                            // 0x0074f26d    57
-                         call               _jmp_addr_0x007c90a0                           // 0x0074f26e    e82d9e0700
+                         call               _strncpy                                       // 0x0074f26e    e82d9e0700
                          add                esp, 0x0c                                      // 0x0074f273    83c40c
                          mov                byte ptr [esi + edi * 0x1], 0x00               // 0x0074f276    c6043e00
                          pop                esi                                            // 0x0074f27a    5e

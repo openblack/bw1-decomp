@@ -563,7 +563,7 @@ _jmp_addr_0x00545547:    test               byte ptr [esp + 0x10], 0x10         
                          call               dword ptr [rdata_bytes + 0x228]               // 0x00545553    ff1528928a00
                          {disp32} jmp       _jmp_addr_0x005455fe                          // 0x00545559    e9a0000000
 _jmp_addr_0x0054555e:    {disp8} lea        esi, dword ptr [esp + 0x3c]                   // 0x0054555e    8d74243c
-                         mov                eax, 0x00bea7bc                               // 0x00545562    b8bca7be00
+                         mov                eax, 0x00bea7bc /* ??_C@_01PJCK@?4?$AA@ */    // 0x00545562    b8bca7be00
 _jmp_addr_0x00545567:    mov                dl, byte ptr [eax]                            // 0x00545567    8a10
                          mov.s              cl, dl                                        // 0x00545569    8aca
                          cmp                dl, byte ptr [esi]                            // 0x0054556b    3a16

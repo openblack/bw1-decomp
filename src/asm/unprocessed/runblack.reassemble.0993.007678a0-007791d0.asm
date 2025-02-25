@@ -328,8 +328,8 @@
 .extern _jmp_addr_0x007ca179
 .extern _jmp_addr_0x007ca210
 .extern _jmp_addr_0x007ca232
-.extern _jmp_addr_0x007ca24a
-.extern _jmp_addr_0x007ca2f9
+.extern _setvbuf
+.extern _fflush
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e73d0
 .extern @LoadOneLine__12LHScriptX_c_FR16LHReleasedOSFilePc@16
@@ -23494,7 +23494,7 @@ _jmp_addr_0x00776f89:    {disp8} mov        esi, dword ptr [esp + 0x18]         
                          push               0x0                                             // 0x00776fe3    6a00
                          push               edx                                             // 0x00776fe5    52
                          push               eax                                             // 0x00776fe6    50
-                         call               _jmp_addr_0x007ca24a                            // 0x00776fe7    e85e320500
+                         call               _setvbuf                                        // 0x00776fe7    e85e320500
                          add                esp, 0x10                                       // 0x00776fec    83c410
                          test               eax, eax                                        // 0x00776fef    85c0
                          {disp8} jne        _jmp_addr_0x00776ff9                            // 0x00776ff1    7506
@@ -23509,7 +23509,7 @@ _jmp_addr_0x00776ff9:    xor.s              eax, eax                            
                          test               eax, eax                                        // 0x00777003    85c0
                          {disp8} je         _jmp_addr_0x00777018                            // 0x00777005    7411
                          push               eax                                             // 0x00777007    50
-                         call               _jmp_addr_0x007ca2f9                            // 0x00777008    e8ec320500
+                         call               _fflush                                         // 0x00777008    e8ec320500
                          add                esp, 0x04                                       // 0x0077700d    83c404
                          test               eax, eax                                        // 0x00777010    85c0
                          {disp8} jge        _jmp_addr_0x00777018                            // 0x00777012    7d04

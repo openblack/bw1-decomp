@@ -180,8 +180,8 @@
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
-.extern _jmp_addr_0x007c90a0
-.extern _jmp_addr_0x007c91a0
+.extern _strncpy
+.extern _strncmp
 .extern _jmp_addr_0x007c9bf0
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
@@ -23957,7 +23957,7 @@ _jmp_addr_0x006640f7:    mov.s              ecx, ebx                            
                          push               esi                                            // 0x00664105    56
                          push               ebp                                            // 0x00664106    55
                          push               eax                                            // 0x00664107    50
-                         call               _jmp_addr_0x007c91a0                           // 0x00664108    e893501600
+                         call               _strncmp                                       // 0x00664108    e893501600
                          {disp8} mov        edi, dword ptr [esp + 0x24]                    // 0x0066410d    8b7c2424
                          add                esp, 0x0c                                      // 0x00664111    83c40c
                          test               eax, eax                                       // 0x00664114    85c0
@@ -24204,7 +24204,7 @@ _jmp_addr_0x00664320:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x00000124], 0x00000000       // 0x00664335    c7862401000000000000
                          push               ecx                                            // 0x0066433f    51
                          mov                dword ptr [esi], 0x008ffcac                    // 0x00664340    c706acfc8f00
-                         call               _jmp_addr_0x007c90a0                           // 0x00664346    e8554d1600
+                         call               _strncpy                                       // 0x00664346    e8554d1600
                          {disp8} mov        edx, dword ptr [esp + 0x18]                    // 0x0066434b    8b542418
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                    // 0x0066434f    8b44241c
                          {disp32} mov       dword ptr [esi + 0x0000011c], eax              // 0x00664353    89861c010000

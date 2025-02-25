@@ -336,16 +336,10 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
     asm/unprocessed/runblack.reassemble.1093.007c62f0-007c6390.asm
     asm/unprocessed/runblack.reassemble.1097.007c6390-007c63e0.asm
-    asm/unprocessed/runblack.reassemble.1099.007c63e0-007ca49f.asm
+    asm/unprocessed/runblack.reassemble.1099.007c63e0-007ca24a.asm
 )
 set(SOURCES_002
-    asm/unprocessed/runblack.reassemble.1101.007ca690-007ca700.asm
-    asm/unprocessed/runblack.reassemble.1103.007ca700-007ca790.asm
-    asm/unprocessed/runblack.reassemble.1107.007ca790-007ca7f0.asm
-    asm/unprocessed/runblack.reassemble.1111.007ca7f0-007ca890.asm
-    asm/unprocessed/runblack.reassemble.1115.007ca890-007ca930.asm
-    asm/unprocessed/runblack.reassemble.1119.007ca930-007ca980.asm
-    asm/unprocessed/runblack.reassemble.1122.007ca980-007da710.asm
+    asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
     asm/unprocessed/runblack.reassemble.1129.007da710-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1139.007dc8b0-007e4e40.asm
     asm/unprocessed/runblack.reassemble.1144.007e4e40-007e6070.asm
@@ -469,9 +463,14 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\setvbuf.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fflush.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncat.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\wincrt0.obj" ON WEAKEN_SYMBOLS __aenvptr __wenvptr ___error_mode __acmdln)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strlen.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ehprolog.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\memcpy.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\memcmp.obj" OFF)
 set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 # libcmt is statically linked between 007aee98 and 008a6470
@@ -529,6 +528,15 @@ add_custom_command(
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm${OBJ_SUFFIX}"
+            ON
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
             ON
 )
 
