@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x007ca2f9
 .extern _strlen
 .extern __EH_prolog
-.extern _jmp_addr_0x007ca690
+.extern _memcpy
 .extern _jmp_addr_0x007d0cec
 .extern _jmp_addr_0x007d1e78
 .extern _jmp_addr_0x007d20b6
@@ -13462,7 +13462,7 @@ _jmp_addr_0x008a1e85:    test              edi, edi                             
                          push              edi                                             // 0x008a1e89    57
                          push              eax                                             // 0x008a1e8a    50
                          push              dword ptr [ebp + 0x08]                          // 0x008a1e8b    ff7508
-                         call              _jmp_addr_0x007ca690                            // 0x008a1e8e    e8fd87f2ff
+                         call              _memcpy                                         // 0x008a1e8e    e8fd87f2ff
                          add               dword ptr [ebp + 0x08], edi                     // 0x008a1e93    017d08
                          add               dword ptr [esi + 0x28], edi                     // 0x008a1e96    017e28
                          add               dword ptr [ebp + -0x04], edi                    // 0x008a1e99    017dfc

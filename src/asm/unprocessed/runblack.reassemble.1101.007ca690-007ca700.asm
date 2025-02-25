@@ -1,10 +1,10 @@
 .intel_syntax noprefix
 .align 16
 
-.globl _jmp_addr_0x007ca690
+.globl _memcpy
 .globl _jmp_addr_0x007ca6ec
 
-_jmp_addr_0x007ca690:    push                 ebp                                         // 0x007ca690    55
+_memcpy:                 push                 ebp                                         // 0x007ca690    55
                          mov.s                ebp, esp                                    // 0x007ca691    8bec
                          push                 edi                                         // 0x007ca693    57
                          push                 esi                                         // 0x007ca694    56
