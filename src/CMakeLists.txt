@@ -463,6 +463,7 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fputc.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ungetc.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\fgetpos.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\fsetpos.obj" ON)
@@ -550,6 +551,7 @@ target_link_options(runblack-reassembled
     PRIVATE
         "-flavor"
         "link"
+        "/includeglob:*"
         "/FIXED"
         "/sectionvsize:.text,0x004a795d"
         "/sectionvsize:.data,0x5f8e00"
