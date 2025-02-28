@@ -61,6 +61,8 @@
 .globl _jmp_addr_0x006dcb90
 .globl _jmp_addr_0x006dcfd0
 
+.globl _globl_ct_0x006dc980
+
 start_0x006db8a0_0x006dd460:
 // Snippet: asm, [0x006db8a0, 0x006dd439)
 _jmp_addr_0x006db8a0:    push               ebx                                            // 0x006db8a0    53
@@ -1712,7 +1714,7 @@ _jmp_addr_0x006dc963:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          pop                ebx                                            // 0x006dc97b    5b
                          add                esp, 0x1c                                      // 0x006dc97c    83c41c
                          ret                                                               // 0x006dc97f    c3
-                         call               _jmp_addr_0x006dc990                           // 0x006dc980    e80b000000
+_globl_ct_0x006dc980:    call               _jmp_addr_0x006dc990                           // 0x006dc980    e80b000000
                          {disp32} jmp       _jmp_addr_0x006dc9b0                           // 0x006dc985    e926000000
                          nop                                                               // 0x006dc98a    90
                          nop                                                               // 0x006dc98b    90

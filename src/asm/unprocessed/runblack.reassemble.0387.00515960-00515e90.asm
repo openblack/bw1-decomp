@@ -30,9 +30,11 @@
 .globl @__ct__20DialogBoxSaveMessageFv@4
 .globl _jmp_addr_0x005159c0
 
+.globl _globl_ct_0x00515960
+
 start_0x00515960_0x00515e90:
 // Snippet: asm, [0x00515960, 0x00515e5e)
-                         {disp32} mov     cl, byte ptr [data_bytes + 0x5e6934]          // 0x00515960    8a0d34c9fa00
+_globl_ct_0x00515960:    {disp32} mov     cl, byte ptr [data_bytes + 0x5e6934]          // 0x00515960    8a0d34c9fa00
                          mov              al, 0x01                                      // 0x00515966    b001
                          test             al, cl                                        // 0x00515968    84c8
                          {disp8} jne      _jmp_addr_0x00515974                          // 0x0051596a    7508

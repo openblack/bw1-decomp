@@ -94,6 +94,9 @@
 .globl _jmp_addr_0x00668650
 .globl _jmp_addr_0x00668790
 
+.globl _globl_ct_0x00666a80
+.globl _globl_ct_0x00666ab0
+
 start_0x00666820_0x00669790:
 // Snippet: asm, [0x00666820, 0x0066976f)
 _jmp_addr_0x00666820:    {disp8} mov        edx, dword ptr [esp + 0x0c]              // 0x00666820    8b54240c
@@ -315,7 +318,7 @@ _jmp_addr_0x00666a70:    pop                edi                                 
                          nop                                                         // 0x00666a7d    90
                          nop                                                         // 0x00666a7e    90
                          nop                                                         // 0x00666a7f    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]     // 0x00666a80    8a0d34c9fa00
+_globl_ct_0x00666a80:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]     // 0x00666a80    8a0d34c9fa00
                          mov                al, 0x01                                 // 0x00666a86    b001
                          test               al, cl                                   // 0x00666a88    84c8
                          {disp8} jne        _jmp_addr_0x00666a94                     // 0x00666a8a    7508
@@ -337,7 +340,7 @@ _jmp_addr_0x00666aa0:    push               0x00407870                          
                          nop                                                         // 0x00666aad    90
                          nop                                                         // 0x00666aae    90
                          nop                                                         // 0x00666aaf    90
-                         {disp32} jmp       _jmp_addr_0x00666ac0                     // 0x00666ab0    e90b000000
+_globl_ct_0x00666ab0:    {disp32} jmp       _jmp_addr_0x00666ac0                     // 0x00666ab0    e90b000000
                          nop                                                         // 0x00666ab5    90
                          nop                                                         // 0x00666ab6    90
                          nop                                                         // 0x00666ab7    90

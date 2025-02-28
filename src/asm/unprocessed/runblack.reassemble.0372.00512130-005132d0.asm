@@ -65,6 +65,9 @@
 .globl @__ct__19DialogBoxKeyBindingFv@4
 .globl _jmp_addr_0x00512820
 
+.globl _globl_ct_0x005122b0
+.globl _globl_ct_0x00512780
+
 start_0x00512130_0x005132d0:
 // Snippet: asm, [0x00512130, 0x00513290)
                          push              ebx                                                  // 0x00512130    53
@@ -196,7 +199,7 @@ _jmp_addr_0x00512299:    pop               edi                                  
                          nop                                                                    // 0x005122ad    90
                          nop                                                                    // 0x005122ae    90
                          nop                                                                    // 0x005122af    90
-                         call              _jmp_addr_0x005122c0                                 // 0x005122b0    e80b000000
+_globl_ct_0x005122b0:    call              _jmp_addr_0x005122c0                                 // 0x005122b0    e80b000000
                          {disp32} jmp      _jmp_addr_0x005122d0                                 // 0x005122b5    e916000000
                          nop                                                                    // 0x005122ba    90
                          nop                                                                    // 0x005122bb    90
@@ -694,7 +697,7 @@ _jmp_addr_0x0051276b:    xor.s             edx, edx                             
                          {disp32} mov      dword ptr [ecx + 0x0002d1c8], edx                    // 0x00512778    8991c8d10200
                          ret                                                                    // 0x0051277e    c3
                          nop                                                                    // 0x0051277f    90
-                         {disp32} mov      cl, byte ptr [data_bytes + 0x5e6934]                 // 0x00512780    8a0d34c9fa00
+_globl_ct_0x00512780:    {disp32} mov      cl, byte ptr [data_bytes + 0x5e6934]                 // 0x00512780    8a0d34c9fa00
                          mov               al, 0x01                                             // 0x00512786    b001
                          test              al, cl                                               // 0x00512788    84c8
                          {disp8} jne       _jmp_addr_0x00512794                                 // 0x0051278a    7508

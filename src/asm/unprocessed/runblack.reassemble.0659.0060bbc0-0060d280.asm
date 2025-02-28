@@ -67,6 +67,9 @@
 .globl @MoveToCircleHugLinearSquareSweep__13MobileWallHugFRC9MapCoords@12
 .globl @Init__20ObjectCircleIteratorFiRC9MapCoords@16
 
+.globl _globl_ct_0x0060c1c0
+.globl _globl_ct_0x0060c1e0
+
 start_0x0060bbc0_0x0060d280:
 // Snippet: asm, [0x0060bbc0, 0x0060d252)
 _jmp_addr_0x0060bbc0:    sub                esp, 0x0c                                     // 0x0060bbc0    83ec0c
@@ -683,7 +686,7 @@ _jmp_addr_0x0060c1a0:    {disp8} fild       dword ptr [esp + 0x08]              
                          ret                                                              // 0x0060c1bd    c3
                          nop                                                              // 0x0060c1be    90
                          nop                                                              // 0x0060c1bf    90
-                         {disp32} jmp       _jmp_addr_0x0060c1d0                          // 0x0060c1c0    e90b000000
+_globl_ct_0x0060c1c0:    {disp32} jmp       _jmp_addr_0x0060c1d0                          // 0x0060c1c0    e90b000000
                          nop                                                              // 0x0060c1c5    90
                          nop                                                              // 0x0060c1c6    90
                          nop                                                              // 0x0060c1c7    90
@@ -711,7 +714,7 @@ _jmp_addr_0x0060c1d0:    ret                                                    
                          nop                                                              // 0x0060c1dd    90
                          nop                                                              // 0x0060c1de    90
                          nop                                                              // 0x0060c1df    90
-                         {disp32} jmp       _jmp_addr_0x0060c1f0                          // 0x0060c1e0    e90b000000
+_globl_ct_0x0060c1e0:    {disp32} jmp       _jmp_addr_0x0060c1f0                          // 0x0060c1e0    e90b000000
                          nop                                                              // 0x0060c1e5    90
                          nop                                                              // 0x0060c1e6    90
                          nop                                                              // 0x0060c1e7    90

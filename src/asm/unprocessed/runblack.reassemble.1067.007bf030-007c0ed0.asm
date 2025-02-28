@@ -29,6 +29,8 @@
 .globl _jmp_addr_0x007c0a80
 .globl _jmp_addr_0x007c0aa0
 
+.globl _globl_ct_0x007bf1c0
+
 start_0x007bf030_0x007c0ed0:
 // Snippet: asm, [0x007bf030, 0x007c0e97)
 _jmp_addr_0x007bf030:    push             esi                                            // 0x007bf030    56
@@ -191,7 +193,7 @@ _jmp_addr_0x007bf19e:    and              ecx, 0x0000ffff                       
                          nop                                                             // 0x007bf1bd    90
                          nop                                                             // 0x007bf1be    90
                          nop                                                             // 0x007bf1bf    90
-                         call             _jmp_addr_0x007bf1d0                           // 0x007bf1c0    e80b000000
+_globl_ct_0x007bf1c0:    call             _jmp_addr_0x007bf1d0                           // 0x007bf1c0    e80b000000
                          {disp32} jmp     _jmp_addr_0x007bf1f0                           // 0x007bf1c5    e926000000
                          nop                                                             // 0x007bf1ca    90
                          nop                                                             // 0x007bf1cb    90

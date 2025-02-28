@@ -62,6 +62,8 @@
 .globl _jmp_addr_0x0062a100
 .globl _jmp_addr_0x0062a220
 
+.globl _globl_ct_0x0062a2c0
+
 start_0x00629740_0x0062ac00:
 // Snippet: asm, [0x00629740, 0x0062abd8)
 _jmp_addr_0x00629740:    cmp               dword ptr [esp + 0x10], 0x01                   // 0x00629740    837c241001
@@ -1101,7 +1103,7 @@ _jmp_addr_0x0062a2b6:    pop               edi                                  
                          pop               esi                                            // 0x0062a2b7    5e
                          ret               0x0004                                         // 0x0062a2b8    c20400
                          call              _jmp_addr_0x004017f9                           // 0x0062a2bb    e83975ddff
-                         call              _jmp_addr_0x0062a2d0                           // 0x0062a2c0    e80b000000
+_globl_ct_0x0062a2c0:    call              _jmp_addr_0x0062a2d0                           // 0x0062a2c0    e80b000000
                          {disp32} jmp      _jmp_addr_0x0062a2e0                           // 0x0062a2c5    e916000000
                          nop                                                              // 0x0062a2ca    90
                          nop                                                              // 0x0062a2cb    90
