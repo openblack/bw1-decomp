@@ -83,6 +83,8 @@
 .globl _jmp_addr_0x0082ba10
 .globl _jmp_addr_0x0082bbc0
 
+.globl _globl_ct_0x0082b1f0
+
 start_0x0082a2c0_0x0082bf10:
 // Snippet: asm, [0x0082a2c0, 0x0082beeb)
                          ret                                                              // 0x0082a2c0    c3
@@ -1464,7 +1466,7 @@ _jmp_addr_0x0082b1e3:    pop                edi                                 
                          nop                                                              // 0x0082b1ed    90
                          nop                                                              // 0x0082b1ee    90
                          nop                                                              // 0x0082b1ef    90
-                         {disp32} jmp       _jmp_addr_0x0082b200                          // 0x0082b1f0    e90b000000
+_globl_ct_0x0082b1f0:    {disp32} jmp       _jmp_addr_0x0082b200                          // 0x0082b1f0    e90b000000
                          nop                                                              // 0x0082b1f5    90
                          nop                                                              // 0x0082b1f6    90
                          nop                                                              // 0x0082b1f7    90

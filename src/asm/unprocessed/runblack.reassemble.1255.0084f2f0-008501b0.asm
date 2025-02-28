@@ -15,6 +15,8 @@
 .globl _jmp_addr_0x0084f2f0
 .globl _jmp_addr_0x0084f910
 
+.globl _globl_ct_0x0084f8e0
+
 start_0x0084f2f0_0x008501b0:
 // Snippet: asm, [0x0084f2f0, 0x0085018c)
 _jmp_addr_0x0084f2f0:    sub                esp, 0x00000398                               // 0x0084f2f0    81ec98030000
@@ -465,7 +467,7 @@ _jmp_addr_0x0084f8d3:    pop                edi                                 
                          ret                                                              // 0x0084f8dd    c3
                          nop                                                              // 0x0084f8de    90
                          nop                                                              // 0x0084f8df    90
-                         {disp32} jmp       _jmp_addr_0x0084f8f0                          // 0x0084f8e0    e90b000000
+_globl_ct_0x0084f8e0:    {disp32} jmp       _jmp_addr_0x0084f8f0                          // 0x0084f8e0    e90b000000
                          nop                                                              // 0x0084f8e5    90
                          nop                                                              // 0x0084f8e6    90
                          nop                                                              // 0x0084f8e7    90

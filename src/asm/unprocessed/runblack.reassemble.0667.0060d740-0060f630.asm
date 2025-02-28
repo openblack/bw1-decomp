@@ -78,6 +78,8 @@
 .globl @SetGameAngle__13MobileWallHugFUs@10
 .globl _jmp_addr_0x0060db00
 
+.globl _globl_ct_0x0060dae0
+
 start_0x0060d740_0x0060f630:
 // Snippet: asm, [0x0060d740, 0x0060f5d9)
 _jmp_addr_0x0060d740:    {disp8} mov        ax, word ptr [esp + 0x04]                   // 0x0060d740    668b442404
@@ -400,7 +402,7 @@ _jmp_addr_0x0060da70:    mov                edx, dword ptr [esi]                
                          {disp8} mov        word ptr [esi + 0x5c], ax                   // 0x0060dad8    6689465c
                          pop                esi                                         // 0x0060dadc    5e
                          ret                0x0004                                      // 0x0060dadd    c20400
-                         {disp32} jmp       _jmp_addr_0x0060daf0                        // 0x0060dae0    e90b000000
+_globl_ct_0x0060dae0:    {disp32} jmp       _jmp_addr_0x0060daf0                        // 0x0060dae0    e90b000000
                          nop                                                            // 0x0060dae5    90
                          nop                                                            // 0x0060dae6    90
                          nop                                                            // 0x0060dae7    90

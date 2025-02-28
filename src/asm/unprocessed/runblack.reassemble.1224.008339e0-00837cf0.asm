@@ -97,6 +97,9 @@
 .globl _jmp_addr_0x00837930
 .globl _jmp_addr_0x008379e0
 
+.globl _globl_ct_0x00833cf0
+.globl _globl_ct_0x00837330
+
 start_0x008339e0_0x00837cf0:
 // Snippet: asm, [0x008339e0, 0x00837cbe)
                          ret                                                               // 0x008339e0    c3
@@ -410,7 +413,7 @@ _jmp_addr_0x00833ce8:    mov.s              eax, esi                            
                          ret                0x0004                                         // 0x00833ceb    c20400
                          nop                                                               // 0x00833cee    90
                          nop                                                               // 0x00833cef    90
-                         {disp32} jmp       _jmp_addr_0x00833d00                           // 0x00833cf0    e90b000000
+_globl_ct_0x00833cf0:    {disp32} jmp       _jmp_addr_0x00833d00                           // 0x00833cf0    e90b000000
                          nop                                                               // 0x00833cf5    90
                          nop                                                               // 0x00833cf6    90
                          nop                                                               // 0x00833cf7    90
@@ -4597,7 +4600,7 @@ _jmp_addr_0x00837300:    {disp8} mov        ecx, dword ptr [esp + 0x04]         
                          nop                                                               // 0x0083732d    90
                          nop                                                               // 0x0083732e    90
                          nop                                                               // 0x0083732f    90
-                         call               _jmp_addr_0x00837340                           // 0x00837330    e80b000000
+_globl_ct_0x00837330:    call               _jmp_addr_0x00837340                           // 0x00837330    e80b000000
                          {disp32} jmp       _jmp_addr_0x008373e0                           // 0x00837335    e9a6000000
                          nop                                                               // 0x0083733a    90
                          nop                                                               // 0x0083733b    90

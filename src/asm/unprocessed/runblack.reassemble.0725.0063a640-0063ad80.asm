@@ -35,6 +35,10 @@
 .globl _Create__12Game3DObjectFQ210LH3DObject10ObjectType
 .globl @GetAltitudeFondation__12Game3DObjectCFv@4
 
+.globl _globl_ct_0x0063ab30
+.globl _globl_ct_0x0063ab60
+.globl _globl_ct_0x0063ab80
+
 start_0x0063a640_0x0063ad80:
 // Snippet: asm, [0x0063a640, 0x0063ad63)
 @InitialiseIsFixedForMapList__6ObjectFv@4:    push               esi                                           // 0x0063a640    56
@@ -563,7 +567,7 @@ _jmp_addr_0x0063aaa2:    push               esi                                 
                          nop                                                              // 0x0063ab2d    90
                          nop                                                              // 0x0063ab2e    90
                          nop                                                              // 0x0063ab2f    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0063ab30    8a0d34c9fa00
+_globl_ct_0x0063ab30:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0063ab30    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x0063ab36    b001
                          test               al, cl                                        // 0x0063ab38    84c8
                          {disp8} jne        _jmp_addr_0x0063ab44                          // 0x0063ab3a    7508
@@ -585,7 +589,7 @@ _jmp_addr_0x0063ab50:    push               0x00407870                          
                          nop                                                              // 0x0063ab5d    90
                          nop                                                              // 0x0063ab5e    90
                          nop                                                              // 0x0063ab5f    90
-                         {disp32} jmp       _jmp_addr_0x0063ab70                          // 0x0063ab60    e90b000000
+_globl_ct_0x0063ab60:    {disp32} jmp       _jmp_addr_0x0063ab70                          // 0x0063ab60    e90b000000
                          nop                                                              // 0x0063ab65    90
                          nop                                                              // 0x0063ab66    90
                          nop                                                              // 0x0063ab67    90
@@ -600,7 +604,7 @@ _jmp_addr_0x0063ab50:    push               0x00407870                          
 _jmp_addr_0x0063ab70:    {disp32} mov       dword ptr [data_bytes + 0x37e384], 0x3e000000 // 0x0063ab70    c7058443d4000000003e
                          ret                                                              // 0x0063ab7a    c3
                          call               _jmp_addr_0x004017f9                          // 0x0063ab7b    e8796cdcff
-                         {disp32} jmp       _jmp_addr_0x0063ab90                          // 0x0063ab80    e90b000000
+_globl_ct_0x0063ab80:    {disp32} jmp       _jmp_addr_0x0063ab90                          // 0x0063ab80    e90b000000
                          nop                                                              // 0x0063ab85    90
                          nop                                                              // 0x0063ab86    90
                          nop                                                              // 0x0063ab87    90

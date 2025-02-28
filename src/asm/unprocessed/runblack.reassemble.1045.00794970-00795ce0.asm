@@ -63,6 +63,8 @@
 .globl @TriggerIntro__11InnerCameraFbP8Zoomer3dP8Zoomer3d@17
 .globl _jmp_addr_0x00795980
 
+.globl _globl_ct_0x00794ab0
+
 start_0x00794970_0x00795ce0:
 // Snippet: asm, [0x00794970, 0x00795cdc)
 _jmp_addr_0x00794970:    {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x00794970    8b442414
@@ -200,7 +202,7 @@ _jmp_addr_0x00794a80:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          call               _StartScript__7GScriptFPc@4                   // 0x00794aa9    e8626cf5ff
 _jmp_addr_0x00794aae:    ret                                                              // 0x00794aae    c3
                          nop                                                              // 0x00794aaf    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00794ab0    8a0d34c9fa00
+_globl_ct_0x00794ab0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00794ab0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00794ab6    b001
                          test               al, cl                                        // 0x00794ab8    84c8
                          {disp8} jne        _jmp_addr_0x00794ac4                          // 0x00794aba    7508
