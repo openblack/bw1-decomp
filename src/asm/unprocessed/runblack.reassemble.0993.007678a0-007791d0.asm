@@ -324,7 +324,8 @@
 .extern _jmp_addr_0x007c8bdf
 .extern _jmp_addr_0x007c8ca8
 .extern _jmp_addr_0x007c8d30
-.extern _jmp_addr_0x007ca12e
+.extern _fputc
+.extern _putc
 .extern _ungetc
 .extern _fgetpos
 .extern _fsetpos
@@ -22803,7 +22804,7 @@ _jmp_addr_0x0077690b:    {disp8} mov        edi, dword ptr [esi + 0x44]         
                          movsx              eax, byte ptr [esp + 0x13]                      // 0x0077694a    0fbe442413
                          push               esi                                             // 0x0077694f    56
                          push               eax                                             // 0x00776950    50
-_jmp_addr_0x00776951:    call               _jmp_addr_0x007ca12e                            // 0x00776951    e8d8370500
+_jmp_addr_0x00776951:    call               _fputc                                          // 0x00776951    e8d8370500
                          add                esp, 0x08                                       // 0x00776956    83c408
                          cmp                eax, -0x01                                      // 0x00776959    83f8ff
                          {disp8} je         _jmp_addr_0x007769b6                            // 0x0077695c    7458

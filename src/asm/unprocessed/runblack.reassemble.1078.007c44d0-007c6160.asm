@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x007cc9b2
 .extern _strcmp
 .extern _jmp_addr_0x007cce94
-.extern _jmp_addr_0x007ccf82
+.extern __flsbuf
 .extern _jmp_addr_0x007cd09a
 .extern _jmp_addr_0x007cd984
 .extern _jmp_addr_0x007cda0d
@@ -1585,7 +1585,7 @@ _jmp_addr_0x007c57d2:    push             ebp                                   
 _jmp_addr_0x007c5812:    {disp8} lea      eax, dword ptr [ebp + -0x20]                  // 0x007c5812    8d45e0
                          push             eax                                           // 0x007c5815    50
                          push             0x0                                           // 0x007c5816    6a00
-                         call             _jmp_addr_0x007ccf82                          // 0x007c5818    e865770000
+                         call             __flsbuf                                      // 0x007c5818    e865770000
                          pop              ecx                                           // 0x007c581d    59
                          pop              ecx                                           // 0x007c581e    59
 _jmp_addr_0x007c581f:    mov.s            eax, esi                                      // 0x007c581f    8bc6
