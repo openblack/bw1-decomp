@@ -96,7 +96,7 @@
 .globl _jmp_addr_0x007cc9b2
 .globl _strcmp
 .globl _jmp_addr_0x007cce94
-.globl _jmp_addr_0x007ccf82
+.globl __flsbuf
 .globl _jmp_addr_0x007cd09a
 .globl _jmp_addr_0x007cd984
 .globl _jmp_addr_0x007cda0d
@@ -1015,7 +1015,7 @@ _jmp_addr_0x007cb35d:    inc                dword ptr [esi]                     
 _jmp_addr_0x007cb361:    movsx              eax, byte ptr [ebp + 0x0c]                     // 0x007cb361    0fbe450c
                          push               esi                                            // 0x007cb365    56
 _jmp_addr_0x007cb366:    push               eax                                            // 0x007cb366    50
-                         call               _jmp_addr_0x007ccf82                           // 0x007cb367    e8161c0000
+                         call               __flsbuf                                       // 0x007cb367    e8161c0000
                          pop                ecx                                            // 0x007cb36c    59
                          pop                ecx                                            // 0x007cb36d    59
 _jmp_addr_0x007cb36e:    cmp                eax, -0x01                                     // 0x007cb36e    83f8ff
@@ -1033,7 +1033,7 @@ _jmp_addr_0x007cb379:    dec                dword ptr [esi + 0x04]              
 _jmp_addr_0x007cb38d:    movsx              eax, byte ptr [ebp + 0x0c]                     // 0x007cb38d    0fbe450c
                          push               esi                                            // 0x007cb391    56
                          push               eax                                            // 0x007cb392    50
-                         call               _jmp_addr_0x007ccf82                           // 0x007cb393    e8ea1b0000
+                         call               __flsbuf                                       // 0x007cb393    e8ea1b0000
                          pop                ecx                                            // 0x007cb398    59
                          pop                ecx                                            // 0x007cb399    59
 _jmp_addr_0x007cb39a:    cmp                eax, -0x01                                     // 0x007cb39a    83f8ff
@@ -3711,7 +3711,7 @@ _jmp_addr_0x007ccf79:    push               0x9                                 
                          call               __unlock                                       // 0x007ccf7b    e897e7ffff
                          pop                ecx                                            // 0x007ccf80    59
                          ret                                                               // 0x007ccf81    c3
-_jmp_addr_0x007ccf82:    push               ebp                                            // 0x007ccf82    55
+__flsbuf:                push               ebp                                            // 0x007ccf82    55
                          mov.s              ebp, esp                                       // 0x007ccf83    8bec
                          push               ebx                                            // 0x007ccf85    53
                          push               esi                                            // 0x007ccf86    56
@@ -4437,7 +4437,7 @@ _jmp_addr_0x007cd7db:    push             ebp                                   
                          {disp8} jmp      _jmp_addr_0x007cd7ff                         // 0x007cd7f2    eb0b
 _jmp_addr_0x007cd7f4:    push             ecx                                          // 0x007cd7f4    51
                          push             dword ptr [ebp + 0x08]                       // 0x007cd7f5    ff7508
-                         call             _jmp_addr_0x007ccf82                         // 0x007cd7f8    e885f7ffff
+                         call             __flsbuf                                     // 0x007cd7f8    e885f7ffff
                          pop              ecx                                          // 0x007cd7fd    59
                          pop              ecx                                          // 0x007cd7fe    59
 _jmp_addr_0x007cd7ff:    cmp              eax, -0x01                                   // 0x007cd7ff    83f8ff
