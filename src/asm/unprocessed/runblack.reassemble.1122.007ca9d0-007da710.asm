@@ -50,7 +50,7 @@
 .extern __aulldiv
 .extern __allmul
 .extern __exit
-.extern _jmp_addr_0x007ca030
+.extern __allshl
 .extern _ungetc
 .extern __ungetc_lk
 .extern __flush
@@ -8472,7 +8472,7 @@ _jmp_addr_0x007d05c3:    test               eax, eax                            
                          {disp8} mov        edx, dword ptr [ebp + -0x24]                   // 0x007d05ce    8b55dc
                          push               0x4                                            // 0x007d05d1    6a04
                          pop                ecx                                            // 0x007d05d3    59
-                         call               _jmp_addr_0x007ca030                           // 0x007d05d4    e8579affff
+                         call               __allshl                                       // 0x007d05d4    e8579affff
                          push               ebx                                            // 0x007d05d9    53
                          {disp8} mov        dword ptr [ebp + -0x28], eax                   // 0x007d05da    8945d8
                          {disp8} mov        dword ptr [ebp + -0x24], edx                   // 0x007d05dd    8955dc
@@ -8502,7 +8502,7 @@ _jmp_addr_0x007d060d:    test               eax, eax                            
                          {disp8} mov        edx, dword ptr [ebp + -0x24]                   // 0x007d061e    8b55dc
                          push               0x3                                            // 0x007d0621    6a03
                          pop                ecx                                            // 0x007d0623    59
-                         call               _jmp_addr_0x007ca030                           // 0x007d0624    e8079affff
+                         call               __allshl                                       // 0x007d0624    e8079affff
                          {disp8} jmp        _jmp_addr_0x007d063a                           // 0x007d0629    eb0f
 _jmp_addr_0x007d062b:    push               0x0                                            // 0x007d062b    6a00
                          push               0xa                                            // 0x007d062d    6a0a
@@ -16106,7 +16106,7 @@ _jmp_addr_0x007d5a6a:    test               eax, eax                            
                          push               0x4                                            // 0x007d5a75    6a04
                          pop                ecx                                            // 0x007d5a77    59
                          mov.s              eax, esi                                       // 0x007d5a78    8bc6
-                         call               _jmp_addr_0x007ca030                           // 0x007d5a7a    e8b145ffff
+                         call               __allshl                                       // 0x007d5a7a    e8b145ffff
                          push               ebx                                            // 0x007d5a7f    53
                          mov.s              esi, eax                                       // 0x007d5a80    8bf0
                          {disp8} mov        dword ptr [ebp + -0x34], edx                   // 0x007d5a82    8955cc
@@ -16142,7 +16142,7 @@ _jmp_addr_0x007d5ac4:    test               eax, eax                            
                          push               0x3                                            // 0x007d5ad7    6a03
                          pop                ecx                                            // 0x007d5ad9    59
                          mov.s              eax, esi                                       // 0x007d5ada    8bc6
-                         call               _jmp_addr_0x007ca030                           // 0x007d5adc    e84f45ffff
+                         call               __allshl                                       // 0x007d5adc    e84f45ffff
                          {disp8} jmp        _jmp_addr_0x007d5af0                           // 0x007d5ae1    eb0d
 _jmp_addr_0x007d5ae3:    push               0x0                                            // 0x007d5ae3    6a00
                          push               0xa                                            // 0x007d5ae5    6a0a

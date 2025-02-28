@@ -85,7 +85,7 @@
 .globl __imp__MoveFileA@4
 .globl __imp__GetDateFormatA@4
 .globl __imp__GetTempFileNameA@4
-.globl __imp__CreateDirectoryA@4
+.globl __imp__CreateDirectoryA@8
 .globl __imp__LoadLibraryA@4
 .globl __imp__GetProcAddress@4
 .globl __imp__FreeLibrary@4
@@ -693,7 +693,7 @@ rdata_bytes:
 .long 0x005c0466 /* KERNEL32.DLL::MoveFileA */                                                                                                                   ; .set __imp__MoveFileA@4,                                                                                                             0x008a915c
 .long 0x005c0454 /* KERNEL32.DLL::GetDateFormatA */                                                                                                              ; .set __imp__GetDateFormatA@4,                                                                                                        0x008a9160
 .long 0x005c0430 /* KERNEL32.DLL::GetTempFileNameA */                                                                                                            ; .set __imp__GetTempFileNameA@4,                                                                                                      0x008a9164
-.long 0x005c041c /* KERNEL32.DLL::CreateDirectoryA */                                                                                                            ; .set __imp__CreateDirectoryA@4,                                                                                                      0x008a9168
+.long 0x005c041c /* KERNEL32.DLL::CreateDirectoryA */                                                                                                            ; .set __imp__CreateDirectoryA@8,                                                                                                      0x008a9168
 .long 0x005c040c /* KERNEL32.DLL::LoadLibraryA */                                                                                                                ; .set __imp__LoadLibraryA@4,                                                                                                          0x008a916c
 .long 0x005c03fa /* KERNEL32.DLL::GetProcAddress */                                                                                                              ; .set __imp__GetProcAddress@4,                                                                                                        0x008a9170
 .long 0x005c03ec /* KERNEL32.DLL::FreeLibrary */                                                                                                                 ; .set __imp__FreeLibrary@4,                                                                                                           0x008a9174
