@@ -151,6 +151,22 @@
 .globl _jmp_addr_0x004d6110
 .globl _jmp_addr_0x004d6140
 
+.globl _globl_ct_0x004d2270
+.globl _globl_ct_0x004d22a0
+.globl _globl_ct_0x004d22d0
+.globl _globl_ct_0x004d28c0
+.globl _globl_ct_0x004d28f0
+.globl _globl_ct_0x004d2920
+.globl _globl_ct_0x004d3430
+.globl _globl_ct_0x004d3460
+.globl _globl_ct_0x004d3490
+.globl _globl_ct_0x004d3840
+.globl _globl_ct_0x004d3870
+.globl _globl_ct_0x004d38a0
+.globl _globl_ct_0x004d41f0
+.globl _globl_ct_0x004d4220
+.globl _globl_ct_0x004d4250
+
 start_0x004d0a20_0x004d63f0:
 // Snippet: asm, [0x004d0a20, 0x004d63a1)
 _jmp_addr_0x004d0a20:    {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x004d0a20    8b542408
@@ -2255,7 +2271,7 @@ _jmp_addr_0x004d2260:    pop                edi                                 
                          nop                                                                     // 0x004d226d    90
                          nop                                                                     // 0x004d226e    90
                          nop                                                                     // 0x004d226f    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d2270    8a0d34c9fa00
+_globl_ct_0x004d2270:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d2270    8a0d34c9fa00
                          mov                al, 0x01                                             // 0x004d2276    b001
                          test               al, cl                                               // 0x004d2278    84c8
                          {disp8} jne        _jmp_addr_0x004d2284                                 // 0x004d227a    7508
@@ -2277,7 +2293,7 @@ _jmp_addr_0x004d2290:    push               0x00407870                          
                          nop                                                                     // 0x004d229d    90
                          nop                                                                     // 0x004d229e    90
                          nop                                                                     // 0x004d229f    90
-                         {disp32} jmp       _jmp_addr_0x004d22b0                                 // 0x004d22a0    e90b000000
+_globl_ct_0x004d22a0:    {disp32} jmp       _jmp_addr_0x004d22b0                                 // 0x004d22a0    e90b000000
                          nop                                                                     // 0x004d22a5    90
                          nop                                                                     // 0x004d22a6    90
                          nop                                                                     // 0x004d22a7    90
@@ -2306,7 +2322,7 @@ _jmp_addr_0x004d22b0:    {disp32} fld       dword ptr [rdata_bytes + 0x268a4]   
                          nop                                                                     // 0x004d22cd    90
                          nop                                                                     // 0x004d22ce    90
                          nop                                                                     // 0x004d22cf    90
-                         {disp32} jmp       _jmp_addr_0x004d22e0                                 // 0x004d22d0    e90b000000
+_globl_ct_0x004d22d0:    {disp32} jmp       _jmp_addr_0x004d22e0                                 // 0x004d22d0    e90b000000
                          nop                                                                     // 0x004d22d5    90
                          nop                                                                     // 0x004d22d6    90
                          nop                                                                     // 0x004d22d7    90
@@ -2840,7 +2856,7 @@ _jmp_addr_0x004d28b6:    pop                edi                                 
                          nop                                                                     // 0x004d28bd    90
                          nop                                                                     // 0x004d28be    90
                          nop                                                                     // 0x004d28bf    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d28c0    8a0d34c9fa00
+_globl_ct_0x004d28c0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d28c0    8a0d34c9fa00
                          mov                al, 0x01                                             // 0x004d28c6    b001
                          test               al, cl                                               // 0x004d28c8    84c8
                          {disp8} jne        _jmp_addr_0x004d28d4                                 // 0x004d28ca    7508
@@ -2862,7 +2878,7 @@ _jmp_addr_0x004d28e0:    push               0x00407870                          
                          nop                                                                     // 0x004d28ed    90
                          nop                                                                     // 0x004d28ee    90
                          nop                                                                     // 0x004d28ef    90
-                         {disp32} jmp       _jmp_addr_0x004d2900                                 // 0x004d28f0    e90b000000
+_globl_ct_0x004d28f0:    {disp32} jmp       _jmp_addr_0x004d2900                                 // 0x004d28f0    e90b000000
                          nop                                                                     // 0x004d28f5    90
                          nop                                                                     // 0x004d28f6    90
                          nop                                                                     // 0x004d28f7    90
@@ -2891,7 +2907,7 @@ _jmp_addr_0x004d2900:    {disp32} fld       dword ptr [rdata_bytes + 0x26938]   
                          nop                                                                     // 0x004d291d    90
                          nop                                                                     // 0x004d291e    90
                          nop                                                                     // 0x004d291f    90
-                         {disp32} jmp       _jmp_addr_0x004d2930                                 // 0x004d2920    e90b000000
+_globl_ct_0x004d2920:    {disp32} jmp       _jmp_addr_0x004d2930                                 // 0x004d2920    e90b000000
                          nop                                                                     // 0x004d2925    90
                          nop                                                                     // 0x004d2926    90
                          nop                                                                     // 0x004d2927    90
@@ -4034,7 +4050,7 @@ _jmp_addr_0x004d33fb:    mov                eax, 0x00000001                     
                          neg                eax                                                  // 0x004d3425    f7d8
                          ret                0x0008                                               // 0x004d3427    c20800
                          call               dword ptr [rdata_bytes + 0x11c]                      // 0x004d342a    ff151c918a00
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d3430    8a0d34c9fa00
+_globl_ct_0x004d3430:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d3430    8a0d34c9fa00
                          mov                al, 0x01                                             // 0x004d3436    b001
                          test               al, cl                                               // 0x004d3438    84c8
                          {disp8} jne        _jmp_addr_0x004d3444                                 // 0x004d343a    7508
@@ -4056,7 +4072,7 @@ _jmp_addr_0x004d3450:    push               0x00407870                          
                          nop                                                                     // 0x004d345d    90
                          nop                                                                     // 0x004d345e    90
                          nop                                                                     // 0x004d345f    90
-                         {disp32} jmp       _jmp_addr_0x004d3470                                 // 0x004d3460    e90b000000
+_globl_ct_0x004d3460:    {disp32} jmp       _jmp_addr_0x004d3470                                 // 0x004d3460    e90b000000
                          nop                                                                     // 0x004d3465    90
                          nop                                                                     // 0x004d3466    90
                          nop                                                                     // 0x004d3467    90
@@ -4085,7 +4101,7 @@ _jmp_addr_0x004d3470:    {disp32} fld       dword ptr [rdata_bytes + 0x26948]   
                          nop                                                                     // 0x004d348d    90
                          nop                                                                     // 0x004d348e    90
                          nop                                                                     // 0x004d348f    90
-                         {disp32} jmp       _jmp_addr_0x004d34a0                                 // 0x004d3490    e90b000000
+_globl_ct_0x004d3490:    {disp32} jmp       _jmp_addr_0x004d34a0                                 // 0x004d3490    e90b000000
                          nop                                                                     // 0x004d3495    90
                          nop                                                                     // 0x004d3496    90
                          nop                                                                     // 0x004d3497    90
@@ -4386,7 +4402,7 @@ _jmp_addr_0x004d381a:    {disp32} mov       eax, dword ptr [ecx + 0x00000fb4]   
 _jmp_addr_0x004d3835:    mov                eax, 0x00000001                                      // 0x004d3835    b801000000
                          ret                                                                     // 0x004d383a    c3
                          call               _jmp_addr_0x00401879                                 // 0x004d383b    e839e0f2ff
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d3840    8a0d34c9fa00
+_globl_ct_0x004d3840:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d3840    8a0d34c9fa00
                          mov                al, 0x01                                             // 0x004d3846    b001
                          test               al, cl                                               // 0x004d3848    84c8
                          {disp8} jne        _jmp_addr_0x004d3854                                 // 0x004d384a    7508
@@ -4408,7 +4424,7 @@ _jmp_addr_0x004d3860:    push               0x00407870                          
                          nop                                                                     // 0x004d386d    90
                          nop                                                                     // 0x004d386e    90
                          nop                                                                     // 0x004d386f    90
-                         {disp32} jmp       _jmp_addr_0x004d3880                                 // 0x004d3870    e90b000000
+_globl_ct_0x004d3870:    {disp32} jmp       _jmp_addr_0x004d3880                                 // 0x004d3870    e90b000000
                          nop                                                                     // 0x004d3875    90
                          nop                                                                     // 0x004d3876    90
                          nop                                                                     // 0x004d3877    90
@@ -4437,7 +4453,7 @@ _jmp_addr_0x004d3880:    {disp32} fld       dword ptr [rdata_bytes + 0x26994]   
                          nop                                                                     // 0x004d389d    90
                          nop                                                                     // 0x004d389e    90
                          nop                                                                     // 0x004d389f    90
-                         {disp32} jmp       _jmp_addr_0x004d38b0                                 // 0x004d38a0    e90b000000
+_globl_ct_0x004d38a0:    {disp32} jmp       _jmp_addr_0x004d38b0                                 // 0x004d38a0    e90b000000
                          nop                                                                     // 0x004d38a5    90
                          nop                                                                     // 0x004d38a6    90
                          nop                                                                     // 0x004d38a7    90
@@ -5375,7 +5391,7 @@ _jmp_addr_0x004d41c2:    pop                esi                                 
                          mov                eax, 0x00c82f70                                      // 0x004d41e7    b8702fc800
                          ret                0x0004                                               // 0x004d41ec    c20400
                          nop                                                                     // 0x004d41ef    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d41f0    8a0d34c9fa00
+_globl_ct_0x004d41f0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x004d41f0    8a0d34c9fa00
                          mov                al, 0x01                                             // 0x004d41f6    b001
                          test               al, cl                                               // 0x004d41f8    84c8
                          {disp8} jne        _jmp_addr_0x004d4204                                 // 0x004d41fa    7508
@@ -5397,7 +5413,7 @@ _jmp_addr_0x004d4210:    push               0x00407870                          
                          nop                                                                     // 0x004d421d    90
                          nop                                                                     // 0x004d421e    90
                          nop                                                                     // 0x004d421f    90
-                         {disp32} jmp       _jmp_addr_0x004d4230                                 // 0x004d4220    e90b000000
+_globl_ct_0x004d4220:    {disp32} jmp       _jmp_addr_0x004d4230                                 // 0x004d4220    e90b000000
                          nop                                                                     // 0x004d4225    90
                          nop                                                                     // 0x004d4226    90
                          nop                                                                     // 0x004d4227    90
@@ -5426,7 +5442,7 @@ _jmp_addr_0x004d4230:    {disp32} fld       dword ptr [rdata_bytes + 0x269a8]   
                          nop                                                                     // 0x004d424d    90
                          nop                                                                     // 0x004d424e    90
                          nop                                                                     // 0x004d424f    90
-                         {disp32} jmp       _jmp_addr_0x004d4260                                 // 0x004d4250    e90b000000
+_globl_ct_0x004d4250:    {disp32} jmp       _jmp_addr_0x004d4260                                 // 0x004d4250    e90b000000
                          nop                                                                     // 0x004d4255    90
                          nop                                                                     // 0x004d4256    90
                          nop                                                                     // 0x004d4257    90

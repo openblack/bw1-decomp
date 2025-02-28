@@ -45,10 +45,11 @@
 .extern _jmp_addr_0x00794830
 
 .globl _jmp_addr_0x0063ef20
+.globl _globl_ct_0x0063eef0
 
 start_0x0063eef0_0x0063f710:
 // Snippet: asm, [0x0063eef0, 0x0063f69f)
-                         {disp32} jmp     _jmp_addr_0x0063ef00                          // 0x0063eef0    e90b000000
+_globl_ct_0x0063eef0:    {disp32} jmp     _jmp_addr_0x0063ef00                          // 0x0063eef0    e90b000000
                          nop                                                            // 0x0063eef5    90
                          nop                                                            // 0x0063eef6    90
                          nop                                                            // 0x0063eef7    90

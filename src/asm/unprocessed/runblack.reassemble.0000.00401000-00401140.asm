@@ -10,6 +10,9 @@
 .extern ___dl__FPv
 
 .globl _jmp_addr_0x00401000
+.globl _globl_ct_0x00401040
+.globl _globl_ct_0x00401070
+.globl _globl_ct_0x00401120
 
 start_0x00401000_0x00401140:
 // Snippet: asm, [0x00401000, 0x0040113b)
@@ -52,7 +55,7 @@ _jmp_addr_0x0040102c:    pop               esi                                  
                          nop                                                             // 0x0040103d    90
                          nop                                                             // 0x0040103e    90
                          nop                                                             // 0x0040103f    90
-                         {disp32} jmp      _jmp_addr_0x00401050                          // 0x00401040    e90b000000
+_globl_ct_0x00401040:    {disp32} jmp      _jmp_addr_0x00401050                          // 0x00401040    e90b000000
                          nop                                                             // 0x00401045    90
                          nop                                                             // 0x00401046    90
                          nop                                                             // 0x00401047    90
@@ -81,7 +84,7 @@ _jmp_addr_0x00401050:    {disp32} fld      dword ptr [rdata_bytes + 0x9e4]      
                          nop                                                             // 0x0040106d    90
                          nop                                                             // 0x0040106e    90
                          nop                                                             // 0x0040106f    90
-                         {disp32} jmp      _jmp_addr_0x00401080                          // 0x00401070    e90b000000
+_globl_ct_0x00401070:    {disp32} jmp      _jmp_addr_0x00401080                          // 0x00401070    e90b000000
                          nop                                                             // 0x00401075    90
                          nop                                                             // 0x00401076    90
                          nop                                                             // 0x00401077    90
@@ -171,7 +174,7 @@ _jmp_addr_0x0040110f:    mov.s             eax, esi                             
                          nop                                                             // 0x0040111d    90
                          nop                                                             // 0x0040111e    90
                          nop                                                             // 0x0040111f    90
-                         {disp32} jmp      _jmp_addr_0x00401130                          // 0x00401120    e90b000000
+_globl_ct_0x00401120:    {disp32} jmp      _jmp_addr_0x00401130                          // 0x00401120    e90b000000
                          nop                                                             // 0x00401125    90
                          nop                                                             // 0x00401126    90
                          nop                                                             // 0x00401127    90

@@ -111,8 +111,8 @@
 .globl __imp__GetTickCount@4
 .globl __imp__GetStartupInfoA@4
 .globl __imp__GetModuleHandleA@4
-.globl __imp__GetCurrentProcess@4
-.globl __imp__TerminateProcess@4
+.globl __imp__GetCurrentProcess@0
+.globl __imp__TerminateProcess@8
 .globl __imp__ExitProcess@4
 .globl __imp__Beep@4
 .globl __imp__HeapReAlloc@4
@@ -719,8 +719,8 @@ rdata_bytes:
 .long 0x005c0254 /* KERNEL32.DLL::GetTickCount */                                                                                                                ; .set __imp__GetTickCount@4,                                                                                                          0x008a91c4
 .long 0x005c483e /* KERNEL32.DLL::GetStartupInfoA */                                                                                                             ; .set __imp__GetStartupInfoA@4,                                                                                                       0x008a91c8
 .long 0x005c482a /* KERNEL32.DLL::GetModuleHandleA */                                                                                                            ; .set __imp__GetModuleHandleA@4,                                                                                                      0x008a91cc
-.long 0x005c4816 /* KERNEL32.DLL::GetCurrentProcess */                                                                                                           ; .set __imp__GetCurrentProcess@4,                                                                                                     0x008a91d0
-.long 0x005c4802 /* KERNEL32.DLL::TerminateProcess */                                                                                                            ; .set __imp__TerminateProcess@4,                                                                                                      0x008a91d4
+.long 0x005c4816 /* KERNEL32.DLL::GetCurrentProcess */                                                                                                           ; .set __imp__GetCurrentProcess@0,                                                                                                     0x008a91d0
+.long 0x005c4802 /* KERNEL32.DLL::TerminateProcess */                                                                                                            ; .set __imp__TerminateProcess@8,                                                                                                      0x008a91d4
 .long 0x005c47f4 /* KERNEL32.DLL::ExitProcess */                                                                                                                 ; .set __imp__ExitProcess@4,                                                                                                           0x008a91d8
 .long 0x005c47ec /* KERNEL32.DLL::Beep */                                                                                                                        ; .set __imp__Beep@4,                                                                                                                  0x008a91dc
 .long 0x005c47de /* KERNEL32.DLL::HeapReAlloc */                                                                                                                 ; .set __imp__HeapReAlloc@4,                                                                                                           0x008a91e0

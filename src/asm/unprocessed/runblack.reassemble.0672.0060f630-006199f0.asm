@@ -188,6 +188,10 @@
 .globl @GetAnim__9MorphableFll@16
 .globl @GetSetAnim__9MorphableFlll@20
 
+.globl _globl_ct_0x00617060
+.globl _globl_ct_0x00617090
+.globl _globl_ct_0x006170c0
+
 start_0x0060f630_0x006199f0:
 // Snippet: asm, [0x0060f630, 0x006199ca)
 _jmp_addr_0x0060f630:    sub                esp, 0x0c                                      // 0x0060f630    83ec0c
@@ -11679,7 +11683,7 @@ _jmp_addr_0x00617046:    push               edi                                 
                          nop                                                               // 0x0061705d    90
                          nop                                                               // 0x0061705e    90
                          nop                                                               // 0x0061705f    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]           // 0x00617060    8a0d34c9fa00
+_globl_ct_0x00617060:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]           // 0x00617060    8a0d34c9fa00
                          mov                al, 0x01                                       // 0x00617066    b001
                          test               al, cl                                         // 0x00617068    84c8
                          {disp8} jne        _jmp_addr_0x00617074                           // 0x0061706a    7508
@@ -11701,7 +11705,7 @@ _jmp_addr_0x00617080:    push               0x00407870                          
                          nop                                                               // 0x0061708d    90
                          nop                                                               // 0x0061708e    90
                          nop                                                               // 0x0061708f    90
-                         {disp32} jmp       _jmp_addr_0x006170a0                           // 0x00617090    e90b000000
+_globl_ct_0x00617090:    {disp32} jmp       _jmp_addr_0x006170a0                           // 0x00617090    e90b000000
                          nop                                                               // 0x00617095    90
                          nop                                                               // 0x00617096    90
                          nop                                                               // 0x00617097    90
@@ -11730,7 +11734,7 @@ _jmp_addr_0x006170a0:    {disp32} fld       dword ptr [rdata_bytes + 0x87694]   
                          nop                                                               // 0x006170bd    90
                          nop                                                               // 0x006170be    90
                          nop                                                               // 0x006170bf    90
-                         {disp32} jmp       _jmp_addr_0x006170d0                           // 0x006170c0    e90b000000
+_globl_ct_0x006170c0:    {disp32} jmp       _jmp_addr_0x006170d0                           // 0x006170c0    e90b000000
                          nop                                                               // 0x006170c5    90
                          nop                                                               // 0x006170c6    90
                          nop                                                               // 0x006170c7    90

@@ -70,6 +70,10 @@
 .globl _jmp_addr_0x00609cc0
 .globl @RebuildMoveByStep__13MobileWallHugFv@4
 
+.globl _globl_ct_0x00609760
+.globl _globl_ct_0x00609790
+.globl _globl_ct_0x006097c0
+
 start_0x00609320_0x0060a010:
 // Snippet: asm, [0x00609320, 0x00609ff3)
                          mov               eax, 0x00000001                               // 0x00609320    b801000000
@@ -511,7 +515,7 @@ _jmp_addr_0x0060975a:    pop               esi                                  
                          ret               0x0004                                        // 0x0060975b    c20400
                          nop                                                             // 0x0060975e    90
                          nop                                                             // 0x0060975f    90
-                         {disp32} mov      cl, byte ptr [data_bytes + 0x5e6934]          // 0x00609760    8a0d34c9fa00
+_globl_ct_0x00609760:    {disp32} mov      cl, byte ptr [data_bytes + 0x5e6934]          // 0x00609760    8a0d34c9fa00
                          mov               al, 0x01                                      // 0x00609766    b001
                          test              al, cl                                        // 0x00609768    84c8
                          {disp8} jne       _jmp_addr_0x00609774                          // 0x0060976a    7508
@@ -533,7 +537,7 @@ _jmp_addr_0x00609780:    push              0x00407870                           
                          nop                                                             // 0x0060978d    90
                          nop                                                             // 0x0060978e    90
                          nop                                                             // 0x0060978f    90
-                         {disp32} jmp      _jmp_addr_0x006097a0                          // 0x00609790    e90b000000
+_globl_ct_0x00609790:    {disp32} jmp      _jmp_addr_0x006097a0                          // 0x00609790    e90b000000
                          nop                                                             // 0x00609795    90
                          nop                                                             // 0x00609796    90
                          nop                                                             // 0x00609797    90
@@ -562,7 +566,7 @@ _jmp_addr_0x006097a0:    {disp32} fld      dword ptr [rdata_bytes + 0x87658]    
                          nop                                                             // 0x006097bd    90
                          nop                                                             // 0x006097be    90
                          nop                                                             // 0x006097bf    90
-                         call              _jmp_addr_0x006097d0                          // 0x006097c0    e80b000000
+_globl_ct_0x006097c0:    call              _jmp_addr_0x006097d0                          // 0x006097c0    e80b000000
                          {disp32} jmp      _jmp_addr_0x006098a0                          // 0x006097c5    e9d6000000
                          nop                                                             // 0x006097ca    90
                          nop                                                             // 0x006097cb    90
