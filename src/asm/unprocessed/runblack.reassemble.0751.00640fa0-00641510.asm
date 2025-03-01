@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x00641510
 .extern _jmp_addr_0x007c57d2
 .extern _wcscpy
-.extern _jmp_addr_0x007c9bce
+.extern __sleep
 .extern ___nw__FUl
 .extern _Report3D__FPCce
 .extern _CHAR2WCHAR__FPc
@@ -265,7 +265,7 @@ _jmp_addr_0x00641216:    xor.s            ecx, ecx                              
                          push             0x0                                           // 0x0064122a    6a00
                          call             _jmp_addr_0x00557f90                          // 0x0064122c    e85f6df1ff
                          push             0x000003e8                                    // 0x00641231    68e8030000
-                         call             _jmp_addr_0x007c9bce                          // 0x00641236    e893891800
+                         call             __sleep                                       // 0x00641236    e893891800
                          push             0x1                                           // 0x0064123b    6a01
                          call             _jmp_addr_0x00557f90                          // 0x0064123d    e84e6df1ff
                          add              esp, 0x0c                                     // 0x00641242    83c40c

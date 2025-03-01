@@ -232,7 +232,7 @@
 .extern _operator_new
 .extern _jmp_addr_0x007c6ce0
 .extern _strncpy
-.extern _jmp_addr_0x007c9bf0
+.extern _strrchr
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e2df0
 .extern _jmp_addr_0x007e3d20
@@ -10788,7 +10788,7 @@ _jmp_addr_0x0074de90:    sub                esp, 0x0000014c                     
                          {disp32} mov       edi, dword ptr [esp + 0x00000160]              // 0x0074de98    8bbc2460010000
                          push               0x5c                                           // 0x0074de9f    6a5c
                          push               edi                                            // 0x0074dea1    57
-                         call               _jmp_addr_0x007c9bf0                           // 0x0074dea2    e849bd0700
+                         call               _strrchr                                       // 0x0074dea2    e849bd0700
                          xor.s              esi, esi                                       // 0x0074dea7    33f6
                          add                esp, 0x08                                      // 0x0074dea9    83c408
                          cmp.s              eax, esi                                       // 0x0074deac    3bc6

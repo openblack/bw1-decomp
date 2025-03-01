@@ -49,7 +49,7 @@
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c95e8
-.extern _jmp_addr_0x007c9bf0
+.extern _strrchr
 .extern __controlfp
 .extern _jmp_addr_0x007dbed0
 .extern _jmp_addr_0x007dedd0
@@ -180,7 +180,7 @@ _jmp_addr_0x0064164a:    {disp8} mov       edx, dword ptr [ebp + 0x00]          
                          push              0x5c                                          // 0x00641674    6a5c
                          push              edx                                           // 0x00641676    52
                          rep movsb                                                       // 0x00641677    f3a4
-                         call              _jmp_addr_0x007c9bf0                          // 0x00641679    e872851800
+                         call              _strrchr                                      // 0x00641679    e872851800
                          add               esp, 0x08                                     // 0x0064167e    83c408
                          test              eax, eax                                      // 0x00641681    85c0
                          {disp8} jne       _jmp_addr_0x00641694                          // 0x00641683    750f
@@ -188,7 +188,7 @@ _jmp_addr_0x0064164a:    {disp8} mov       edx, dword ptr [ebp + 0x00]          
                          push              0x2f                                          // 0x00641687    6a2f
                          push              ecx                                           // 0x00641689    51
                          mov.s             ebp, ebx                                      // 0x0064168a    8beb
-                         call              _jmp_addr_0x007c9bf0                          // 0x0064168c    e85f851800
+                         call              _strrchr                                      // 0x0064168c    e85f851800
                          add               esp, 0x08                                     // 0x00641691    83c408
 _jmp_addr_0x00641694:    {disp8} mov       edx, dword ptr [ebp + 0x00]                   // 0x00641694    8b5500
                          or                ecx, 0xffffffff                               // 0x00641697    83c9ff
