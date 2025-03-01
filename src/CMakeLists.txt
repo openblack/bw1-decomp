@@ -463,6 +463,8 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ulldiv.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\llmul.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\crt0dat.obj" ON WEAKEN_SYMBOLS __umaskval __osver __winver __winmajor __winminor ___argc ___argv ___wargv __environ ___initenv __wenviron ___winitenv __pgmptr __wpgmptr __exitflag __C_Termination_Done __C_Exit_Done ___onexitbegin ___onexitend)
 add_patched_libcmt_object("build\\intel\\mt_obj\\llshr.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\llshl.obj" OFF)
