@@ -82,7 +82,7 @@ _jmp_KERNEL32_DLL__RtlUnwind:                      jmp              dword ptr [_
 _jmp_KERNEL32_DLL__RaiseException:                 jmp              dword ptr [__imp__RaiseException@4]                                       // 0x008a516e    ff25e8918a00
 _jmp_KERNEL32_DLL__SetFileAttributesA:             jmp              dword ptr [__imp__SetFileAttributesA@4]                                   // 0x008a5174    ff25e4918a00
 _jmp_KERNEL32_DLL__HeapReAlloc:                    jmp              dword ptr [__imp__HeapReAlloc@4]                                          // 0x008a517a    ff25e0918a00
-_jmp_KERNEL32_DLL__Beep:                           jmp              dword ptr [__imp__Beep@4]                                                 // 0x008a5180    ff25dc918a00
+_jmp_KERNEL32_DLL__Beep:                           jmp              dword ptr [__imp__Beep@8]                                                 // 0x008a5180    ff25dc918a00
 _jmp_KERNEL32_DLL__ExitProcess:                    jmp              dword ptr [__imp__ExitProcess@4]                                          // 0x008a5186    ff25d8918a00
 _jmp_KERNEL32_DLL__TerminateProcess:               jmp              dword ptr [__imp__TerminateProcess@8]                                     // 0x008a518c    ff25d4918a00
 _jmp_KERNEL32_DLL__GetCurrentProcess:              jmp              dword ptr [__imp__GetCurrentProcess@0]                                    // 0x008a5192    ff25d0918a00

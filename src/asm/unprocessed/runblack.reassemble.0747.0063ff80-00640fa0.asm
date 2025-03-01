@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c8859
-.extern _jmp_addr_0x007c9bce
+.extern __sleep
 .extern _jmp_addr_0x007de090
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x00814fd0
@@ -569,7 +569,7 @@ _jmp_addr_0x006405bf:    call              _jmp_addr_0x0082f460                 
                          mov               ecx, 0x00e85050                               // 0x006405c6    b95050e800
                          call              _jmp_addr_0x007de090                          // 0x006405cb    e8c0da1900
                          push              0x000007d0                                    // 0x006405d0    68d0070000
-                         call              _jmp_addr_0x007c9bce                          // 0x006405d5    e8f4951800
+                         call              __sleep                                       // 0x006405d5    e8f4951800
                          add               esp, 0x04                                     // 0x006405da    83c404
                          pop               edi                                           // 0x006405dd    5f
                          pop               esi                                           // 0x006405de    5e

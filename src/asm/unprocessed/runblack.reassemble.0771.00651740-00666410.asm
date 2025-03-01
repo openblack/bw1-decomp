@@ -182,7 +182,7 @@
 .extern _operator_new
 .extern _strncpy
 .extern _strncmp
-.extern _jmp_addr_0x007c9bf0
+.extern _strrchr
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -23954,7 +23954,7 @@ _jmp_addr_0x006640a0:    push               ebx                                 
                          {disp8} mov        eax, dword ptr [eax + 0x08]                    // 0x006640ab    8b4008
                          push               0x3a                                           // 0x006640ae    6a3a
                          push               eax                                            // 0x006640b0    50
-                         call               _jmp_addr_0x007c9bf0                           // 0x006640b1    e83a5b1600
+                         call               _strrchr                                       // 0x006640b1    e83a5b1600
                          mov.s              ebp, eax                                       // 0x006640b6    8be8
                          add                esp, 0x08                                      // 0x006640b8    83c408
                          test               ebp, ebp                                       // 0x006640bb    85ed
