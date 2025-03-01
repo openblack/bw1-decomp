@@ -23,7 +23,7 @@
 .extern _strncpy
 .extern _jmp_addr_0x007c9560
 .extern _jmp_addr_0x007c95e8
-.extern _jmp_addr_0x007c9c73
+.extern __controlfp
 .extern _jmp_addr_0x007db410
 .extern ___nw__FUl
 .extern _jmp_addr_0x007db8e0
@@ -3530,12 +3530,12 @@ _jmp_addr_0x007dedd0:    push               esi                                 
                          mov                esi, 0x0008001e                               // 0x007dedde    be1e000800
 _jmp_addr_0x007dede3:    push               0x0                                           // 0x007dede3    6a00
                          push               0x0                                           // 0x007dede5    6a00
-                         call               _jmp_addr_0x007c9c73                          // 0x007dede7    e887aefeff
+                         call               __controlfp                                   // 0x007dede7    e887aefeff
                          not                esi                                           // 0x007dedec    f7d6
                          and.s              eax, esi                                      // 0x007dedee    23c6
                          push               0x0008001f                                    // 0x007dedf0    681f000800
                          push               eax                                           // 0x007dedf5    50
-                         call               _jmp_addr_0x007c9c73                          // 0x007dedf6    e878aefeff
+                         call               __controlfp                                   // 0x007dedf6    e878aefeff
                          add                esp, 0x10                                     // 0x007dedfb    83c410
                          pop                esi                                           // 0x007dedfe    5e
                          ret                                                              // 0x007dedff    c3
@@ -3567,11 +3567,11 @@ _jmp_addr_0x007dee20:    push               esi                                 
                          mov                esi, 0x0008001e                               // 0x007dee2e    be1e000800
 _jmp_addr_0x007dee33:    push               0x0                                           // 0x007dee33    6a00
                          push               0x0                                           // 0x007dee35    6a00
-                         call               _jmp_addr_0x007c9c73                          // 0x007dee37    e837aefeff
+                         call               __controlfp                                   // 0x007dee37    e837aefeff
                          or.s               eax, esi                                      // 0x007dee3c    0bc6
                          push               0x0008001f                                    // 0x007dee3e    681f000800
                          push               eax                                           // 0x007dee43    50
-                         call               _jmp_addr_0x007c9c73                          // 0x007dee44    e82aaefeff
+                         call               __controlfp                                   // 0x007dee44    e82aaefeff
                          add                esp, 0x10                                     // 0x007dee49    83c410
                          pop                esi                                           // 0x007dee4c    5e
                          ret                                                              // 0x007dee4d    c3

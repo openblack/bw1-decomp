@@ -50,7 +50,7 @@
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c95e8
 .extern _jmp_addr_0x007c9bf0
-.extern _jmp_addr_0x007c9c73
+.extern __controlfp
 .extern _jmp_addr_0x007dbed0
 .extern _jmp_addr_0x007dedd0
 .extern _jmp_addr_0x007dee00
@@ -396,7 +396,7 @@ _jmp_addr_0x006418a0:    {disp32} fld      dword ptr [rdata_bytes + 0x88c30]    
                          nop                                                             // 0x006418bf    90
                          push              0x0                                           // 0x006418c0    6a00
                          push              0x0                                           // 0x006418c2    6a00
-                         call              _jmp_addr_0x007c9c73                          // 0x006418c4    e8aa831800
+                         call              __controlfp                                   // 0x006418c4    e8aa831800
                          add               esp, 0x08                                     // 0x006418c9    83c408
                          and               eax, 0x0000ff00                               // 0x006418cc    2500ff0000
                          ret                                                             // 0x006418d1    c3

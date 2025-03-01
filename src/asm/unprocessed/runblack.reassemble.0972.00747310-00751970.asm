@@ -402,8 +402,6 @@
 .globl @CheckTakeResourcesToStoragePit__8VillagerFv@4
 .globl @DiscipleDecideWhatToDo__8VillagerFv@4
 
-.globl _globl_ct_0x00744ae0
-.globl _globl_ct_0x00744bc0
 .globl _globl_ct_0x00747310
 .globl _globl_ct_0x00747350
 .globl _globl_ct_0x00748a10

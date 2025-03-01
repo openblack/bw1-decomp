@@ -23,7 +23,7 @@
 .extern __unlock
 .extern ___crtLCMapStringA
 .extern _jmp_addr_0x007cb993
-.extern _jmp_addr_0x007cc962
+.extern __setdefaultprecision
 .extern _jmp_addr_0x007cc9b2
 .extern _strcmp
 .extern _jmp_addr_0x007cce94
@@ -1417,7 +1417,7 @@ _jmp_addr_0x007c5394:    jmp              dword ptr [rdata_bytes + 0x418]       
 _fltused:                call             _jmp_addr_0x007c561c                          // 0x007c5604    e813000000
                          call             _jmp_addr_0x007cc9b2                          // 0x007c5609    e8a4730000
                          {disp32} mov     dword ptr [data_bytes + 0x4be194], eax        // 0x007c560e    a39441e800
-                         call             _jmp_addr_0x007cc962                          // 0x007c5613    e84a730000
+                         call             __setdefaultprecision                         // 0x007c5613    e84a730000
                          fnclex                                                         // 0x007c5618    dbe2
                          ret                                                            // 0x007c561a    c3
 _jmp_addr_0x007c561b:    ret                                                            // 0x007c561b    c3
