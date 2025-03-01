@@ -16,7 +16,7 @@
 .extern _strncpy
 .extern _jmp_addr_0x007c91f0
 .extern _calloc
-.extern _jmp_addr_0x007c9657
+.extern __tolower_lk
 .extern _strlen
 .extern _memset
 .extern __lock
@@ -147,10 +147,10 @@ _jmp_addr_0x007da7b4:    mov               al, byte ptr [esi]                   
                          push              ecx                                            // 0x007da7c2    51
                          push              eax                                            // 0x007da7c3    50
                          push              ebx                                            // 0x007da7c4    53
-                         call              _jmp_addr_0x007c9657                           // 0x007da7c5    e88deefeff
+                         call              __tolower_lk                                   // 0x007da7c5    e88deefeff
                          mov.s             ebx, eax                                       // 0x007da7ca    8bd8
                          add               esp, 0x04                                      // 0x007da7cc    83c404
-                         call              _jmp_addr_0x007c9657                           // 0x007da7cf    e883eefeff
+                         call              __tolower_lk                                   // 0x007da7cf    e883eefeff
                          add               esp, 0x04                                      // 0x007da7d4    83c404
                          pop               ecx                                            // 0x007da7d7    59
                          cmp.s             eax, ebx                                       // 0x007da7d8    3bc3

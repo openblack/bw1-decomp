@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x007c6587
 .extern _strncpy
 .extern _strncmp
-.extern _jmp_addr_0x007c9560
+.extern _strstr
 .extern _jmp_addr_0x007dacdc
 .extern _jmp_addr_0x008862d0
 .extern _jmp_addr_0x00886570
@@ -85,7 +85,7 @@ _jmp_addr_0x00896aa6:    {disp32} mov     eax, dword ptr [esi + 0x00000088]     
                          {disp32} lea     ecx, dword ptr [esp + 0x00000124]              // 0x00896b00    8d8c2424010000
                          push             0x00c3a8ec                                     // 0x00896b07    68eca8c300
                          push             ecx                                            // 0x00896b0c    51
-                         call             _jmp_addr_0x007c9560                           // 0x00896b0d    e84e2af3ff
+                         call             _strstr                                        // 0x00896b0d    e84e2af3ff
                          add              esp, 0x08                                      // 0x00896b12    83c408
                          test             eax, eax                                       // 0x00896b15    85c0
                          {disp8} je       _jmp_addr_0x00896aa6                           // 0x00896b17    748d
@@ -659,7 +659,7 @@ _jmp_addr_0x008970ac:    {disp8} mov      edx, dword ptr [esi + 0x08]           
                          {disp32} lea     eax, dword ptr [esp + 0x00000138]              // 0x00897136    8d842438010000
                          push             0x00c3a8ec                                     // 0x0089713d    68eca8c300
                          push             eax                                            // 0x00897142    50
-                         call             _jmp_addr_0x007c9560                           // 0x00897143    e81824f3ff
+                         call             _strstr                                        // 0x00897143    e81824f3ff
                          {disp8} mov      ecx, dword ptr [esi + 0x08]                    // 0x00897148    8b4e08
                          mov.s            edi, eax                                       // 0x0089714b    8bf8
                          add              esp, 0x08                                      // 0x0089714d    83c408

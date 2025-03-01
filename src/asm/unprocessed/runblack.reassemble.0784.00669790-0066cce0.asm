@@ -97,7 +97,7 @@
 .extern _free
 .extern _jmp_addr_0x007c6c29
 .extern _jmp_addr_0x007c6edf
-.extern _jmp_addr_0x007c942a
+.extern _strtok
 .extern __chmod
 .extern _jmp_addr_0x007dacdc
 .extern ___nw__FUl
@@ -3018,13 +3018,13 @@ _jmp_addr_0x0066b5f7:    mov.s              ecx, esi                            
                          push               0x009cf590                                    // 0x0066b6b9    6890f59c00
                          push               ecx                                           // 0x0066b6be    51
                          mov.s              esi, eax                                      // 0x0066b6bf    8bf0
-                         call               _jmp_addr_0x007c942a                          // 0x0066b6c1    e864dd1500
+                         call               _strtok                                       // 0x0066b6c1    e864dd1500
                          add                esp, 0x1c                                     // 0x0066b6c6    83c41c
                          test               eax, eax                                      // 0x0066b6c9    85c0
                          {disp8} je         _jmp_addr_0x0066b6e0                          // 0x0066b6cb    7413
 _jmp_addr_0x0066b6cd:    push               0x009cf590                                    // 0x0066b6cd    6890f59c00
                          push               0x0                                           // 0x0066b6d2    6a00
-                         call               _jmp_addr_0x007c942a                          // 0x0066b6d4    e851dd1500
+                         call               _strtok                                       // 0x0066b6d4    e851dd1500
                          add                esp, 0x08                                     // 0x0066b6d9    83c408
                          test               eax, eax                                      // 0x0066b6dc    85c0
                          {disp8} jne        _jmp_addr_0x0066b6cd                          // 0x0066b6de    75ed

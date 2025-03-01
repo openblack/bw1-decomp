@@ -22,7 +22,7 @@
 .extern __lock
 .extern __unlock
 .extern ___crtLCMapStringA
-.extern _jmp_addr_0x007cb993
+.extern __isctype
 .extern __setdefaultprecision
 .extern _jmp_addr_0x007cc9b2
 .extern _strcmp
@@ -2258,7 +2258,7 @@ _jmp_addr_0x007c5eeb:    {disp8} mov      ebx, dword ptr [ebp + 0x08]           
                          {disp8} jle      _jmp_addr_0x007c5f0b                          // 0x007c5efd    7e0c
                          push             0x2                                           // 0x007c5eff    6a02
                          push             ebx                                           // 0x007c5f01    53
-                         call             _jmp_addr_0x007cb993                          // 0x007c5f02    e88c5a0000
+                         call             __isctype                                     // 0x007c5f02    e88c5a0000
                          pop              ecx                                           // 0x007c5f07    59
                          pop              ecx                                           // 0x007c5f08    59
                          {disp8} jmp      _jmp_addr_0x007c5f16                          // 0x007c5f09    eb0b
