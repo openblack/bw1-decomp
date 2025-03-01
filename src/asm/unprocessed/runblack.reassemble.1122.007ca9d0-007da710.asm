@@ -46,7 +46,7 @@
 .extern _jmp_addr_0x007c95e8
 .extern _jmp_addr_0x007c9849
 .extern _jmp_addr_0x007c989f
-.extern _jmp_addr_0x007c9c73
+.extern __controlfp
 .extern __aulldiv
 .extern __allmul
 .extern __exit
@@ -93,7 +93,7 @@
 .globl _jmp_addr_0x007cbbd6
 .globl _jmp_addr_0x007cbe23
 .globl _jmp_addr_0x007cc6ba
-.globl _jmp_addr_0x007cc962
+.globl __setdefaultprecision
 .globl _jmp_addr_0x007cc9b2
 .globl _strcmp
 .globl _jmp_addr_0x007cce94
@@ -177,7 +177,7 @@
 .globl _jmp_addr_0x007d5db5
 .globl _jmp_addr_0x007d5fee
 .globl _jmp_addr_0x007d61d2
-.globl _jmp_addr_0x007d639a
+.globl ___pxcptinfoptrs
 .globl __FF_MSGBANNER
 .globl __NMSG_WRITE
 .globl __getbuf
@@ -3048,9 +3048,9 @@ _jmp_addr_0x007cc954:    cmp                byte ptr [eax], 0x00                
                          ret                                                               // 0x007cc95e    c3
 _jmp_addr_0x007cc95f:    mov.s              eax, edx                                       // 0x007cc95f    8bc2
                          ret                                                               // 0x007cc961    c3
-_jmp_addr_0x007cc962:    push               0x00030000                                     // 0x007cc962    6800000300
+__setdefaultprecision:   push               0x00030000                                     // 0x007cc962    6800000300
                          push               0x00010000                                     // 0x007cc967    6800000100
-                         call               _jmp_addr_0x007c9c73                           // 0x007cc96c    e802d3ffff
+                         call               __controlfp                                    // 0x007cc96c    e802d3ffff
                          pop                ecx                                            // 0x007cc971    59
                          pop                ecx                                            // 0x007cc972    59
                          ret                                                               // 0x007cc973    c3
@@ -16942,7 +16942,7 @@ _jmp_addr_0x007d638e:    pop                edi                                 
                          call               _jmp_addr_0x007d232b                           // 0x007d6391    e895bfffff
                          add                eax, 0x58                                      // 0x007d6396    83c058
                          ret                                                               // 0x007d6399    c3
-_jmp_addr_0x007d639a:    call               _jmp_addr_0x007d232b                           // 0x007d639a    e88cbfffff
+___pxcptinfoptrs:        call               _jmp_addr_0x007d232b                           // 0x007d639a    e88cbfffff
                          add                eax, 0x54                                      // 0x007d639f    83c054
                          ret                                                               // 0x007d63a2    c3
 __FF_MSGBANNER:          {disp32} mov       eax, dword ptr [data_bytes + 0x4be220]         // 0x007d63a3    a12042e800
