@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x007c8837
 .extern _strncpy
 .extern _jmp_addr_0x007c91f0
-.extern _jmp_addr_0x007c95e8
+.extern _tolower
 .extern __chmod
 .extern _jmp_addr_0x007dacdc
 .extern _jmp_addr_0x007fae60
@@ -4844,7 +4844,7 @@ _jmp_addr_0x0087b530:    {disp32} mov       al, byte ptr [data_bytes + 0x273960]
                          movsx              edi, byte ptr [esp + 0x10]                           // 0x0087b53e    0fbe7c2410
                          mov                esi, 0x00c39960                                      // 0x0087b543    be6099c300
 _jmp_addr_0x0087b548:    push               edi                                                  // 0x0087b548    57
-                         call               _jmp_addr_0x007c95e8                                 // 0x0087b549    e89ae0f4ff
+                         call               _tolower                                             // 0x0087b549    e89ae0f4ff
                          movsx              ecx, byte ptr [esi]                                  // 0x0087b54e    0fbe0e
                          add                esp, 0x04                                            // 0x0087b551    83c404
                          cmp.s              ecx, eax                                             // 0x0087b554    3bc8

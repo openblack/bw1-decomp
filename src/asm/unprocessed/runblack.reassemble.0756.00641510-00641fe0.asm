@@ -48,7 +48,7 @@
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
-.extern _jmp_addr_0x007c95e8
+.extern _tolower
 .extern _strrchr
 .extern __controlfp
 .extern _jmp_addr_0x007dbed0
@@ -584,11 +584,11 @@ _jmp_addr_0x00641a3f:    or                ecx, 0xffffffff                      
 _jmp_addr_0x00641a55:    {disp8} mov       edx, dword ptr [esp + 0x18]                   // 0x00641a55    8b542418
 _jmp_addr_0x00641a59:    movsx             eax, byte ptr [esi + edx * 0x1]               // 0x00641a59    0fbe0416
                          push              eax                                           // 0x00641a5d    50
-                         call              _jmp_addr_0x007c95e8                          // 0x00641a5e    e8857b1800
+                         call              _tolower                                      // 0x00641a5e    e8857b1800
                          movsx             ecx, byte ptr [ebx]                           // 0x00641a63    0fbe0b
                          push              ecx                                           // 0x00641a66    51
                          mov.s             ebp, eax                                      // 0x00641a67    8be8
-                         call              _jmp_addr_0x007c95e8                          // 0x00641a69    e87a7b1800
+                         call              _tolower                                      // 0x00641a69    e87a7b1800
                          add               esp, 0x08                                     // 0x00641a6e    83c408
                          cmp.s             eax, ebp                                      // 0x00641a71    3bc5
                          {disp8} jne       _jmp_addr_0x00641a38                          // 0x00641a73    75c3

@@ -33,8 +33,8 @@
 .extern _jmp_addr_0x007c81cd
 .extern _strncpy
 .extern _jmp_addr_0x007c91f0
-.extern _jmp_addr_0x007c94ce
-.extern _jmp_addr_0x007c9560
+.extern _atof
+.extern _strstr
 .extern _strrchr
 .extern _jmp_addr_0x007cd984
 .extern _strpbrk
@@ -1624,7 +1624,7 @@ _jmp_addr_0x007e6df3:    sbb.s            eax, eax                              
                          {disp8} mov      ecx, dword ptr [esp + 0x04]                   // 0x007e6e84    8b4c2404
                          push             eax                                           // 0x007e6e88    50
                          push             ecx                                           // 0x007e6e89    51
-                         call             _jmp_addr_0x007c9560                          // 0x007e6e8a    e8d126feff
+                         call             _strstr                                       // 0x007e6e8a    e8d126feff
                          add              esp, 0x08                                     // 0x007e6e8f    83c408
                          ret                                                            // 0x007e6e92    c3
                          nop                                                            // 0x007e6e93    90
@@ -1644,7 +1644,7 @@ _jmp_addr_0x007e6df3:    sbb.s            eax, eax                              
                          {disp8} mov      ecx, dword ptr [esp + 0x04]                   // 0x007e6ea4    8b4c2404
                          push             eax                                           // 0x007e6ea8    50
                          push             ecx                                           // 0x007e6ea9    51
-                         call             _jmp_addr_0x007c9560                          // 0x007e6eaa    e8b126feff
+                         call             _strstr                                       // 0x007e6eaa    e8b126feff
                          add              esp, 0x08                                     // 0x007e6eaf    83c408
                          ret                                                            // 0x007e6eb2    c3
                          nop                                                            // 0x007e6eb3    90
@@ -1752,7 +1752,7 @@ _jmp_addr_0x007e6f60:    movsx            eax, byte ptr [esp + 0x04]            
                          nop                                                            // 0x007e6f6f    90
 _jmp_addr_0x007e6f70:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007e6f70    8b442404
                          push             eax                                           // 0x007e6f74    50
-                         call             _jmp_addr_0x007c94ce                          // 0x007e6f75    e85425feff
+                         call             _atof                                         // 0x007e6f75    e85425feff
                          pop              ecx                                           // 0x007e6f7a    59
                          ret                                                            // 0x007e6f7b    c3
                          nop                                                            // 0x007e6f7c    90
@@ -2059,7 +2059,7 @@ _jmp_addr_0x007e7180:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          push             eax                                           // 0x007e7184    50
                          call             _jmp_addr_0x007e6ab0                          // 0x007e7185    e826f9ffff
                          push             eax                                           // 0x007e718a    50
-                         call             _jmp_addr_0x007c94ce                          // 0x007e718b    e83e23feff
+                         call             _atof                                         // 0x007e718b    e83e23feff
                          add              esp, 0x08                                     // 0x007e7190    83c408
                          ret                                                            // 0x007e7193    c3
                          nop                                                            // 0x007e7194    90
