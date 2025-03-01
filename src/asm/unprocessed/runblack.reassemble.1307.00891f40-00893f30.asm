@@ -11,7 +11,7 @@
 .extern _free
 .extern _jmp_addr_0x007c6ce0
 .extern _strncpy
-.extern _jmp_addr_0x007c95e8
+.extern _tolower
 .extern _jmp_addr_0x007c989f
 .extern _jmp_addr_0x007dacdc
 .extern _jmp_addr_0x00887d90
@@ -283,7 +283,7 @@ _jmp_addr_0x00892110:    push             esi                                   
                          test             eax, eax                                 // 0x0089211c    85c0
                          {disp8} je       _jmp_addr_0x00892133                     // 0x0089211e    7413
 _jmp_addr_0x00892120:    push             eax                                      // 0x00892120    50
-                         call             _jmp_addr_0x007c95e8                     // 0x00892121    e8c274f3ff
+                         call             _tolower                                 // 0x00892121    e8c274f3ff
                          add.s            edi, eax                                 // 0x00892126    03f8
                          add              esp, 0x04                                // 0x00892128    83c404
                          movsx            eax, byte ptr [esi]                      // 0x0089212b    0fbe06
