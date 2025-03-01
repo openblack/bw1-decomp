@@ -216,7 +216,7 @@
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c94ce
 .extern _jmp_addr_0x007c9525
-.extern _jmp_addr_0x007c9860
+.extern __chmod
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fab30
 .extern _jmp_addr_0x007fac10
@@ -6248,12 +6248,12 @@ _jmp_addr_0x00634eb8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          call               @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20   // 0x00634ec5    e8c6c2ddff
                          push               0x00000180                                     // 0x00634eca    6880010000
                          push               0x00bec7a4                                     // 0x00634ecf    68a4c7be00
-                         call               _jmp_addr_0x007c9860                           // 0x00634ed4    e887491900
+                         call               __chmod                                        // 0x00634ed4    e887491900
                          push               0x00bec7a4                                     // 0x00634ed9    68a4c7be00
                          call               _jmp_addr_0x007c6c29                           // 0x00634ede    e8461d1900
                          push               0x00000180                                     // 0x00634ee3    6880010000
                          push               0x00bec778                                     // 0x00634ee8    6878c7be00
-                         call               _jmp_addr_0x007c9860                           // 0x00634eed    e86e491900
+                         call               __chmod                                        // 0x00634eed    e86e491900
                          push               0x00bec778                                     // 0x00634ef2    6878c7be00
                          call               _jmp_addr_0x007c6c29                           // 0x00634ef7    e82d1d1900
                          add                esp, 0x18                                      // 0x00634efc    83c418
@@ -6445,7 +6445,7 @@ _jmp_addr_0x0063517c:    cmp                dword ptr [esp + 0x14], 0x01        
                          call               _jmp_addr_0x007810c0                           // 0x0063519a    e821bf1400
                          push               0x00000180                                     // 0x0063519f    6880010000
                          push               0x00bec7a4                                     // 0x006351a4    68a4c7be00
-                         call               _jmp_addr_0x007c9860                           // 0x006351a9    e8b2461900
+                         call               __chmod                                        // 0x006351a9    e8b2461900
                          push               0x00bec7a4                                     // 0x006351ae    68a4c7be00
                          call               _jmp_addr_0x007c6c29                           // 0x006351b3    e8711a1900
                          push               0x009ce5dc                                     // 0x006351b8    68dce59c00

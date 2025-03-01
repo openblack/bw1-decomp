@@ -43,7 +43,7 @@
 .extern _strncpy
 .extern _jmp_addr_0x007c91f0
 .extern _jmp_addr_0x007c95e8
-.extern _jmp_addr_0x007c9860
+.extern __chmod
 .extern _jmp_addr_0x007dacdc
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
@@ -5284,7 +5284,7 @@ _jmp_addr_0x0087baa8:    {disp8} mov        eax, dword ptr [ebx + 0x10]         
                          {disp32} mov       ecx, dword ptr [esp + 0x00000140]                    // 0x0087babf    8b8c2440010000
                          push               0x00000180                                           // 0x0087bac6    6880010000
                          push               ecx                                                  // 0x0087bacb    51
-                         call               _jmp_addr_0x007c9860                                 // 0x0087bacc    e88fddf4ff
+                         call               __chmod                                              // 0x0087bacc    e88fddf4ff
                          add                esp, 0x08                                            // 0x0087bad1    83c408
                          {disp8} mov        dword ptr [esp + 0x1c], esi                          // 0x0087bad4    8974241c
                          {disp8} mov        dword ptr [esp + 0x18], esi                          // 0x0087bad8    89742418

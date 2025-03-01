@@ -113,7 +113,7 @@
 .extern _jmp_addr_0x007c94ce
 .extern _jmp_addr_0x007c9525
 .extern _jmp_addr_0x007c9849
-.extern _jmp_addr_0x007c9860
+.extern __chmod
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
 .extern _CHAR2WCHAR__FPc
@@ -8508,7 +8508,7 @@ _jmp_addr_0x00630f39:    call               dword ptr [rdata_bytes + 0x428]     
                          {disp8} je         _jmp_addr_0x00630f9f                           // 0x00630f5d    7440
                          push               0x00000180                                     // 0x00630f5f    6880010000
                          push               0x00bfdb14                                     // 0x00630f64    6814dbbf00
-                         call               _jmp_addr_0x007c9860                           // 0x00630f69    e8f2881900
+                         call               __chmod                                        // 0x00630f69    e8f2881900
                          push               0x00bfdb14                                     // 0x00630f6e    6814dbbf00
                          call               _jmp_addr_0x007c6c29                           // 0x00630f73    e8b15c1900
                          add                esp, 0x0c                                      // 0x00630f78    83c40c

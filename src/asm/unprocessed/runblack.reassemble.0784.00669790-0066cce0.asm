@@ -98,7 +98,7 @@
 .extern _jmp_addr_0x007c6c29
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c942a
-.extern _jmp_addr_0x007c9860
+.extern __chmod
 .extern _jmp_addr_0x007dacdc
 .extern ___nw__FUl
 .extern _jmp_addr_0x00842100
@@ -3764,7 +3764,7 @@ _jmp_addr_0x0066bf20:    sub                esp, 0x0000020c                     
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x0066bf7b    8d4c241c
                          push               0x00000180                                    // 0x0066bf7f    6880010000
                          push               ecx                                           // 0x0066bf84    51
-                         call               _jmp_addr_0x007c9860                          // 0x0066bf85    e8d6d81500
+                         call               __chmod                                       // 0x0066bf85    e8d6d81500
                          {disp8} lea        edx, dword ptr [esp + 0x24]                   // 0x0066bf8a    8d542424
                          push               edx                                           // 0x0066bf8e    52
                          call               _jmp_addr_0x007c6c29                          // 0x0066bf8f    e895ac1500
