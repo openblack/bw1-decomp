@@ -463,6 +463,8 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\slbeep.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strrchr.obj" ON)
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\ieee87.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ulldiv.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\llmul.obj" OFF)

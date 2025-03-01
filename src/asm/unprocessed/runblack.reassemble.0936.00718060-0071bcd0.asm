@@ -105,7 +105,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
 .extern _jmp_addr_0x007c6eb0
-.extern _jmp_addr_0x007c9bf0
+.extern _strrchr
 .extern ___nw__FUl
 .extern @Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl@24
 .extern _jmp_addr_0x007e7960
@@ -246,13 +246,13 @@ _jmp_addr_0x007180da:    or                 edx, 0xffffffff                     
                          call               _CreateAll__7GStreamFv                        // 0x00718152    e899be0100
                          push               0x5c                                          // 0x00718157    6a5c
                          push               0x00d99648                                    // 0x00718159    684896d900
-                         call               _jmp_addr_0x007c9bf0                          // 0x0071815e    e88d1a0b00
+                         call               _strrchr                                      // 0x0071815e    e88d1a0b00
                          add                esp, 0x08                                     // 0x00718163    83c408
                          cmp.s              eax, ebp                                      // 0x00718166    3bc5
                          {disp8} jne        _jmp_addr_0x00718181                          // 0x00718168    7517
                          push               0x2f                                          // 0x0071816a    6a2f
                          push               0x00d99648                                    // 0x0071816c    684896d900
-                         call               _jmp_addr_0x007c9bf0                          // 0x00718171    e87a1a0b00
+                         call               _strrchr                                      // 0x00718171    e87a1a0b00
                          add                esp, 0x08                                     // 0x00718176    83c408
                          cmp.s              eax, ebp                                      // 0x00718179    3bc5
                          {disp32} je        _jmp_addr_0x00718243                          // 0x0071817b    0f84c2000000
