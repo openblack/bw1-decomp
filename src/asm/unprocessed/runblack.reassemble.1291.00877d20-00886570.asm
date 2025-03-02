@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x007c882a
 .extern _jmp_addr_0x007c8837
 .extern _strncpy
-.extern _jmp_addr_0x007c91f0
+.extern _strchr
 .extern _tolower
 .extern __chmod
 .extern _jmp_addr_0x007dacdc
@@ -20947,7 +20947,7 @@ _jmp_addr_0x00886490:    push               esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x10]                          // 0x00886492    8b7c2410
                          push               0x3a                                                 // 0x00886496    6a3a
                          push               edi                                                  // 0x00886498    57
-                         call               _jmp_addr_0x007c91f0                                 // 0x00886499    e8522df4ff
+                         call               _strchr                                              // 0x00886499    e8522df4ff
                          mov.s              esi, eax                                             // 0x0088649e    8bf0
                          add                esp, 0x08                                            // 0x008864a0    83c408
                          test               esi, esi                                             // 0x008864a3    85f6

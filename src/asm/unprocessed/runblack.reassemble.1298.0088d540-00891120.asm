@@ -20,7 +20,7 @@
 .extern _strcspn
 .extern _strncpy
 .extern _strncmp
-.extern _jmp_addr_0x007c91f0
+.extern _strchr
 .extern _strtok
 .extern _strstr
 .extern _jmp_addr_0x007c989f
@@ -2286,7 +2286,7 @@ _jmp_addr_0x0088eb00:    {disp32} mov     eax, dword ptr [rdata_bytes + 0xfaf50]
 _jmp_addr_0x0088eb25:    movsx            ecx, byte ptr [esi + 0x00faae50]               // 0x0088eb25    0fbe8e50aefa00
                          push             ecx                                            // 0x0088eb2c    51
                          push             0x009a3f28                                     // 0x0088eb2d    68283f9a00
-                         call             _jmp_addr_0x007c91f0                           // 0x0088eb32    e8b9a6f3ff
+                         call             _strchr                                        // 0x0088eb32    e8b9a6f3ff
                          add              esp, 0x08                                      // 0x0088eb37    83c408
                          sub              eax, 0x009a3f28                                // 0x0088eb3a    2d283f9a00
                          {disp8} js       _jmp_addr_0x0088eb5a                           // 0x0088eb3f    7819
@@ -2364,7 +2364,7 @@ _jmp_addr_0x0088ebea:    inc              eax                                   
 _jmp_addr_0x0088ec02:    movsx            ecx, byte ptr [esp + esi * 0x1 + 0x04]         // 0x0088ec02    0fbe4c3404
                          push             ecx                                            // 0x0088ec07    51
                          push             0x009a3f3c                                     // 0x0088ec08    683c3f9a00
-                         call             _jmp_addr_0x007c91f0                           // 0x0088ec0d    e8dea5f3ff
+                         call             _strchr                                        // 0x0088ec0d    e8dea5f3ff
                          add              esp, 0x08                                      // 0x0088ec12    83c408
                          sub              eax, 0x009a3f3c                                // 0x0088ec15    2d3c3f9a00
                          {disp8} js       _jmp_addr_0x0088ebe3                           // 0x0088ec1a    78c7
