@@ -14,7 +14,7 @@
 .extern __errno
 .extern ___doserrno
 .extern _strncpy
-.extern _jmp_addr_0x007c91f0
+.extern _strchr
 .extern _calloc
 .extern __tolower_lk
 .extern _strlen
@@ -590,7 +590,7 @@ _jmp_addr_0x007dac45:    push              ebp                                  
                          {disp8} jne       _jmp_addr_0x007dac62                           // 0x007dac51    750f
                          push              dword ptr [ebp + 0x0c]                         // 0x007dac53    ff750c
                          push              dword ptr [ebp + 0x08]                         // 0x007dac56    ff7508
-                         call              _jmp_addr_0x007c91f0                           // 0x007dac59    e892e5feff
+                         call              _strchr                                        // 0x007dac59    e892e5feff
                          pop               ecx                                            // 0x007dac5e    59
                          pop               ecx                                            // 0x007dac5f    59
                          {disp8} jmp       _jmp_addr_0x007dacd8                           // 0x007dac60    eb76

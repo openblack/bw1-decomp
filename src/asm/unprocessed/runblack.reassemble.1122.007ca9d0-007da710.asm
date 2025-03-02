@@ -34,13 +34,13 @@
 .extern _jmp_addr_0x007c85e5
 .extern __NLG_Notify
 .extern _strcspn
-.extern _jmp_addr_0x007c8ddb
+.extern _strtol
 .extern __dosmaperr
 .extern __errno
 .extern ___doserrno
 .extern _strncpy
 .extern _strncmp
-.extern _jmp_addr_0x007c91f0
+.extern _strchr
 .extern _calloc
 .extern _strstr
 .extern _tolower
@@ -5590,7 +5590,7 @@ _jmp_addr_0x007ce47a:    cmp.s              eax, ebx                            
                          {disp8} je         _jmp_addr_0x007ce4bc                           // 0x007ce47c    743e
                          push               0x2c                                           // 0x007ce47e    6a2c
                          push               eax                                            // 0x007ce480    50
-                         call               _jmp_addr_0x007c91f0                           // 0x007ce481    e86aadffff
+                         call               _strchr                                        // 0x007ce481    e86aadffff
                          pop                ecx                                            // 0x007ce486    59
                          cmp.s              eax, ebx                                       // 0x007ce487    3bc3
                          pop                ecx                                            // 0x007ce489    59
@@ -5609,7 +5609,7 @@ _jmp_addr_0x007ce49d:    cmp                byte ptr [ecx], bl                  
 _jmp_addr_0x007ce4a1:    push               0xa                                            // 0x007ce4a1    6a0a
                          push               ebx                                            // 0x007ce4a3    53
                          push               eax                                            // 0x007ce4a4    50
-                         call               _jmp_addr_0x007c8ddb                           // 0x007ce4a5    e831a9ffff
+                         call               _strtol                                        // 0x007ce4a5    e831a9ffff
                          add                esp, 0x0c                                      // 0x007ce4aa    83c40c
                          cmp                eax, 0x02                                      // 0x007ce4ad    83f802
                          {disp8} je         _jmp_addr_0x007ce4cf                           // 0x007ce4b0    741d

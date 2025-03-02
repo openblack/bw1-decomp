@@ -469,6 +469,11 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strtol.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\dosmap.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strncpy.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strncmp.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strchr.obj" OFF)
 set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
