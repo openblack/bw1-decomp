@@ -75,7 +75,7 @@
 .extern _jmp_addr_0x007c76e0
 .extern _jmp_addr_0x007c7ae0
 .extern _strncmp
-.extern _jmp_addr_0x007c91f0
+.extern _strchr
 .extern _calloc
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faa50
@@ -335,7 +335,7 @@ _jmp_addr_0x0059bfb9:    {disp32} mov       eax, dword ptr [ebx + 0x00000230]   
                          {disp32} je        _jmp_addr_0x0059c0cd                          // 0x0059c03f    0f8488000000
                          push               0x5c                                          // 0x0059c045    6a5c
                          push               esi                                           // 0x0059c047    56
-                         call               _jmp_addr_0x007c91f0                          // 0x0059c048    e8a3d12200
+                         call               _strchr                                       // 0x0059c048    e8a3d12200
                          mov.s              edi, eax                                      // 0x0059c04d    8bf8
                          add                esp, 0x08                                     // 0x0059c04f    83c408
                          test               edi, edi                                      // 0x0059c052    85ff

@@ -47,7 +47,7 @@
 .globl _jmp_addr_0x007c57d2
 .globl _jmp_addr_0x007c593a
 .globl _jmp_addr_0x007c5a19
-.globl _jmp_addr_0x007c5e51
+.globl _toupper
 .globl _jmp_addr_0x007c5f8c
 .globl _wcscpy
 .globl _jmp_addr_0x007c5fdb
@@ -2194,7 +2194,7 @@ _jmp_addr_0x007c5e44:    mov              eax, dword ptr [eax]                  
                          {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007c5e49    8b442404
                          add              eax, -0x20                                    // 0x007c5e4d    83c0e0
                          ret                                                            // 0x007c5e50    c3
-_jmp_addr_0x007c5e51:    push             ebx                                           // 0x007c5e51    53
+_toupper:                push             ebx                                           // 0x007c5e51    53
                          xor.s            ebx, ebx                                      // 0x007c5e52    33db
                          cmp              dword ptr [data_bytes + 0x4be2a0], ebx        // 0x007c5e54    391da042e800
                          {disp8} jne      _jmp_addr_0x007c5e6f                          // 0x007c5e5a    7513

@@ -13,7 +13,7 @@
 .extern @Close__8LHOSFileFv@4
 .extern _jmp_addr_0x007bcad0
 .extern _jmp_addr_0x007bd0c0
-.extern _jmp_addr_0x007c5e51
+.extern _toupper
 .extern _jmp_addr_0x007c6eb0
 .extern ___nw__FUl
 .extern @SetFullscreenMode__8LHScreenFi@12
@@ -315,7 +315,7 @@ _jmp_addr_0x007e8b94:    mov               ecx, dword ptr [esi]                 
                          inc               ecx                                      // 0x007e8bbf    41
                          push              eax                                      // 0x007e8bc0    50
                          mov               dword ptr [esi], ecx                     // 0x007e8bc1    890e
-                         call              _jmp_addr_0x007c5e51                     // 0x007e8bc3    e889d2fdff
+                         call              _toupper                                 // 0x007e8bc3    e889d2fdff
                          mov               byte ptr [edi], al                       // 0x007e8bc8    8807
                          mov               eax, dword ptr [esi]                     // 0x007e8bca    8b06
                          inc               edi                                      // 0x007e8bcc    47

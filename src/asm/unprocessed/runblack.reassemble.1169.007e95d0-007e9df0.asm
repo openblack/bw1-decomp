@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ___dl__FPv
-.extern _jmp_addr_0x007c5e51
+.extern _toupper
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e6d70
 .extern _jmp_addr_0x007e6da0
@@ -178,7 +178,7 @@ _jmp_addr_0x007e971d:    mov              ecx, dword ptr [esi]                  
                          add              ecx, 0x2                                // 0x007e9760    83c102
                          push             eax                                     // 0x007e9763    50
                          mov              dword ptr [esi], ecx                    // 0x007e9764    890e
-                         call             _jmp_addr_0x007c5e51                    // 0x007e9766    e8e6c6fdff
+                         call             _toupper                                // 0x007e9766    e8e6c6fdff
                          mov              word ptr [edi], ax                      // 0x007e976b    668907
                          mov              eax, dword ptr [esi]                    // 0x007e976e    8b06
                          add              edi, 0x02                               // 0x007e9770    83c702
