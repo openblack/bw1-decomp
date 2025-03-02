@@ -28,7 +28,7 @@
 .extern _strcmp
 .extern _jmp_addr_0x007cce94
 .extern __flsbuf
-.extern _jmp_addr_0x007cd09a
+.extern __output
 .extern _jmp_addr_0x007cd984
 .extern _jmp_addr_0x007cda0d
 .extern _jmp_addr_0x007cda37
@@ -1578,7 +1578,7 @@ _jmp_addr_0x007c57d2:    push             ebp                                   
                          push             dword ptr [ebp + 0x0c]                        // 0x007c57f0    ff750c
                          {disp8} mov      dword ptr [ebp + -0x1c], 0x7fffffff           // 0x007c57f3    c745e4ffffff7f
                          push             eax                                           // 0x007c57fa    50
-                         call             _jmp_addr_0x007cd09a                          // 0x007c57fb    e89a780000
+                         call             __output                                      // 0x007c57fb    e89a780000
                          add              esp, 0x0c                                     // 0x007c5800    83c40c
                          dec              dword ptr [ebp + -0x1c]                       // 0x007c5803    ff4de4
                          mov.s            esi, eax                                      // 0x007c5806    8bf0
