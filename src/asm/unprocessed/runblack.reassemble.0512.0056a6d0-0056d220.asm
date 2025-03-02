@@ -24,7 +24,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007c5791
-.extern _jmp_addr_0x007c5fb6
+.extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern ___nw__FUl
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
@@ -40,6 +40,10 @@
 .globl _jmp_addr_0x0056a890
 .globl _jmp_addr_0x0056aca0
 .globl _jmp_addr_0x0056b4b0
+
+.globl _globl_ct_0x0056a8e0
+.globl _globl_ct_0x0056a910
+.globl _globl_ct_0x0056a940
 
 start_0x0056a6d0_0x0056d220:
 // Snippet: asm, [0x0056a6d0, 0x0056d206)
@@ -266,7 +270,7 @@ _jmp_addr_0x0056a8d5:    pop                esi                                 
                          nop                                                              // 0x0056a8dd    90
                          nop                                                              // 0x0056a8de    90
                          nop                                                              // 0x0056a8df    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0056a8e0    8a0d34c9fa00
+_globl_ct_0x0056a8e0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0056a8e0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x0056a8e6    b001
                          test               al, cl                                        // 0x0056a8e8    84c8
                          {disp8} jne        _jmp_addr_0x0056a8f4                          // 0x0056a8ea    7508
@@ -288,7 +292,7 @@ _jmp_addr_0x0056a900:    push               0x00407870                          
                          nop                                                              // 0x0056a90d    90
                          nop                                                              // 0x0056a90e    90
                          nop                                                              // 0x0056a90f    90
-                         {disp32} jmp       _jmp_addr_0x0056a920                          // 0x0056a910    e90b000000
+_globl_ct_0x0056a910:    {disp32} jmp       _jmp_addr_0x0056a920                          // 0x0056a910    e90b000000
                          nop                                                              // 0x0056a915    90
                          nop                                                              // 0x0056a916    90
                          nop                                                              // 0x0056a917    90
@@ -317,7 +321,7 @@ _jmp_addr_0x0056a920:    {disp32} fld       dword ptr [rdata_bytes + 0x56ed4]   
                          nop                                                              // 0x0056a93d    90
                          nop                                                              // 0x0056a93e    90
                          nop                                                              // 0x0056a93f    90
-                         {disp32} jmp       _jmp_addr_0x0056a950                          // 0x0056a940    e90b000000
+_globl_ct_0x0056a940:    {disp32} jmp       _jmp_addr_0x0056a950                          // 0x0056a940    e90b000000
                          nop                                                              // 0x0056a945    90
                          nop                                                              // 0x0056a946    90
                          nop                                                              // 0x0056a947    90
@@ -731,7 +735,7 @@ _jmp_addr_0x0056adc1:    {disp8} mov        eax, dword ptr [esp + 0x24]         
                          add.s              edx, esi                                      // 0x0056addd    03d6
                          push               edx                                           // 0x0056addf    52
                          push               eax                                           // 0x0056ade0    50
-                         call               _jmp_addr_0x007c5fb6                          // 0x0056ade1    e8d0b12500
+                         call               _wcscpy                                       // 0x0056ade1    e8d0b12500
                          add                esp, 0x08                                     // 0x0056ade6    83c408
 _jmp_addr_0x0056ade9:    pop                edi                                           // 0x0056ade9    5f
                          pop                esi                                           // 0x0056adea    5e

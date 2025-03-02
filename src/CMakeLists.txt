@@ -10,6 +10,14 @@ if (LLVM_BINARIES_DIR)
     set(CMAKE_RC_COMPILER "${LLVM_BINARIES_DIR}/llvm-rc${LLVM_EXECUTABLE_SUFFIX}")
     set(LLVM_STRIP_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-strip${LLVM_EXECUTABLE_SUFFIX}")
     set(CMAKE_LINKER "${LLVM_BINARIES_DIR}/lld${LLVM_EXECUTABLE_SUFFIX}")
+    set(LLVM_AR_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-ar${LLVM_EXECUTABLE_SUFFIX}")
+    set(LLVM_OBJCOPY_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-objcopy${LLVM_EXECUTABLE_SUFFIX}")
+endif()
+
+if (CMAKE_HOST_WIN32)
+    set(OBJ_SUFFIX ".obj")
+else()
+    set(OBJ_SUFFIX ".o")
 endif()
 
 project(bw1-decomp ASM RC)
@@ -32,9 +40,18 @@ set(CMAKE_ASM_FLAGS_RELWITHDEBINFO "")
 set(CMAKE_ASM_FLAGS_RELEASE "")
 set(CMAKE_DEPFILE_FLAGS_ASM "")
 
-find_program(LLVM_STRIP_EXECUTABLE llvm-strip)
+find_package(Python3 REQUIRED)
+find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
+find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
+find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
-set(SOURCES
+set(SOURCES_001
+    asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
+    asm/unprocessed/rdata.001.008a99a8-009a0738.asm
+    asm/unprocessed/data.000.009c6000-00c2d670.asm
+    asm/unprocessed/data1.asm
+    asm/unprocessed/SELFMOD.asm
+
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
     asm/unprocessed/runblack.reassemble.0002.00401140-004011d0.asm
     asm/unprocessed/runblack.reassemble.0004.004011d0-004012e0.asm
@@ -319,13 +336,15 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
     asm/unprocessed/runblack.reassemble.1093.007c62f0-007c6390.asm
     asm/unprocessed/runblack.reassemble.1097.007c6390-007c63e0.asm
-    asm/unprocessed/runblack.reassemble.1100.007c63e0-007ca700.asm
-    asm/unprocessed/runblack.reassemble.1103.007ca700-007ca790.asm
-    asm/unprocessed/runblack.reassemble.1107.007ca790-007ca7f0.asm
-    asm/unprocessed/runblack.reassemble.1111.007ca7f0-007ca890.asm
-    asm/unprocessed/runblack.reassemble.1115.007ca890-007ca930.asm
-    asm/unprocessed/runblack.reassemble.1119.007ca930-007ca980.asm
-    asm/unprocessed/runblack.reassemble.1122.007ca980-007da710.asm
+    asm/unprocessed/runblack.reassemble.1099.007c63e0-007c92ac.asm
+)
+# Likely a different calloc
+set(SOURCES_002 asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
+# Likely a different realloc
+set(SOURCES_003 asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
+
+set(SOURCES_004
+    asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
     asm/unprocessed/runblack.reassemble.1129.007da710-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1139.007dc8b0-007e4e40.asm
     asm/unprocessed/runblack.reassemble.1144.007e4e40-007e6070.asm
@@ -385,12 +404,23 @@ set(SOURCES
     asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
-    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a895d.asm
-    asm/unprocessed/rdata.asm
-    asm/unprocessed/data.asm
-    asm/unprocessed/data1.asm
-    asm/unprocessed/SELFMOD.asm
+    asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm
+    asm/unprocessed/rdata.002.009a0744-009a6298.asm
+)
+set(SOURCES_005
+    asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
+    asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
+    asm/unprocessed/rdata.003.009a62d4-009c5564.asm
+    asm/unprocessed/data.001.00c2d680-0x00c3cff0.asm
+)
 
+add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
+add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
+add_library(runblack-reassembled-src-003 OBJECT ${SOURCES_003})
+add_library(runblack-reassembled-src-004 OBJECT ${SOURCES_004})
+add_library(runblack-reassembled-src-005 OBJECT ${SOURCES_005})
+
+add_library(runblack-reassembled-rc OBJECT
     res/winnt.rh
     res/winuser.rh
     res/verrsrc.h
@@ -398,32 +428,185 @@ set(SOURCES
     res/runblack.rc
 )
 
-add_executable(runblack-reassembled ${SOURCES})
+function(add_patched_libcmt_object src_obj patch_flag)
+    cmake_parse_arguments(ARG "" "" "WEAKEN_SYMBOLS;DELETE_SECTIONS" ${ARGN})
+
+    string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
+    get_filename_component(obj ${src_obj_fixed} NAME)
+
+    if (CMAKE_HOST_WIN32)
+        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${obj}")
+    else()
+        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'")
+        set(src_obj "'${src_obj}'")
+    endif()
+    set(output_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT-patched/${obj}.patched${OBJ_SUFFIX}")
+    set(tmp_output "${output_file}.tmp")
+
+    set(WEAKEN_ARGS "")
+    if (ARG_WEAKEN_SYMBOLS)
+        foreach(symbol ${ARG_WEAKEN_SYMBOLS})
+            list(APPEND WEAKEN_ARGS "--weaken-symbol=${symbol}")
+        endforeach()
+    endif()
+
+    set(DELETE_ARGS "")
+    if (ARG_DELETE_SECTIONS)
+        foreach(section ${ARG_DELETE_SECTIONS})
+            list(APPEND DELETE_ARGS "--remove-section=${section}")
+        endforeach()
+    endif()
+
+    add_custom_command(
+        OUTPUT ${output_file}
+        COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB ${src_obj}
+        COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py ${input_file} ${tmp_output} ${patch_flag}
+        COMMAND ${LLVM_OBJCOPY_EXECUTABLE} ${WEAKEN_ARGS} ${DELETE_ARGS} ${tmp_output} ${output_file}
+    )
+
+    set(LIBCMT_PATCHED_OBJECTS "${LIBCMT_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
+endfunction()
+
+add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
+set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strtol.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\dosmap.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strncpy.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strncmp.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strchr.obj" OFF)
+set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
+add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
+set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\printf.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strtok.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\atof.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\swscanf.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strstr.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\tolower.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncmp.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\towlower.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\abort.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\chmod.obj" ON)
+set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
+add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
+set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\slbeep.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strrchr.obj" ON)
+add_patched_libcmt_object("..\\build\\intel\\mt_obj\\ieee87.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ulldiv.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\llmul.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\crt0dat.obj" ON WEAKEN_SYMBOLS __umaskval __osver __winver __winmajor __winminor ___argc ___argv ___wargv __environ ___initenv __wenviron ___winitenv __pgmptr __wpgmptr __exitflag __C_Termination_Done __C_Exit_Done ___onexitbegin ___onexitend)
+add_patched_libcmt_object("build\\intel\\mt_obj\\llshr.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\llshl.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\llrem.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\mkdir.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fputc.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ungetc.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fgetpos.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fsetpos.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\setvbuf.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fflush.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncat.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wincrt0.obj" ON WEAKEN_SYMBOLS __aenvptr __wenvptr ___error_mode __acmdln)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strlen.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehprolog.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\memcpy.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\memcmp.obj" OFF)
+set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
+# libcmt is statically linked between 007aee98 and 008a6470
+# The text section is aligned on 1-byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
+add_library(runblack-reassembled-libcmt-004 OBJECT IMPORTED)
+
+set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsdup.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsicmp.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\flength.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fileno.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsnicmp.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\chdir.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strlwr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\getpid.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecdtr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strspn.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcschr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsrchr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcspbrk.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsspn.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecctr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\clock.obj" ON WEAKEN_SYMBOLS _start_tics)
+add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj" ON)
+add_patched_libcmt_object("build\\intel\\mt_obj\\sehsupp.obj" ON)
+set_property(TARGET runblack-reassembled-libcmt-004 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
+add_executable(runblack-reassembled)
 set_target_properties(runblack-reassembled PROPERTIES
     LINKER_LANGUAGE ASM
     SUFFIX ".exe"
 )
-target_compile_options(runblack-reassembled
-    PRIVATE
-        -target
-        i686-pc-windows-gnu
-        -m32
-        $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
+add_library(common_compile_options INTERFACE)
+target_compile_options(common_compile_options INTERFACE
+    -target i686-pc-windows-gnu
+    -m32
+    $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g>
 )
+# Enforce a obj linking order
+target_link_libraries(runblack-reassembled
+    PRIVATE
+        runblack-reassembled-src-001
+        runblack-reassembled-libcmt-001
+        runblack-reassembled-src-002
+        runblack-reassembled-libcmt-002
+        runblack-reassembled-src-003
+        runblack-reassembled-libcmt-003
+        runblack-reassembled-src-004
+        runblack-reassembled-libcmt-004
+        runblack-reassembled-src-005
+        runblack-reassembled-rc
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
+            ON
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
+            ON
+)
+
+target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-003 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-005 PRIVATE common_compile_options)
 target_link_options(runblack-reassembled
     PRIVATE
         "-flavor"
         "link"
+        "/includeglob:*"
         "/FIXED"
         "/sectionvsize:.text,0x004a795d"
-        "/sectionvsize:.data,0x5f9e00"
+        "/sectionvsize:.data,0x5f8e00"
         "$<$<CONFIG:Release>:/sectionvsize:.rsrc,0x393E>" # Required padding for garbage string in vanilla
         "/subsystem:windows,4"
         "/stack:0x100000,0x1000"
         "/heap:0x100000,0x1000"
         "/base:0x00400000"
         "/filealign:0x1000"
-        "/entry:entry_function"
+        "/entry:WinMainCRTStartup"
         "/safeseh:no"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug>"
@@ -433,10 +616,10 @@ add_custom_command(
     TARGET runblack-reassembled
     POST_BUILD
     COMMAND ${LLVM_STRIP_EXECUTABLE} "$<TARGET_FILE:runblack-reassembled>"
+    COMMAND ${LLVM_STRIP_EXECUTABLE} -R ".CRT" "$<TARGET_FILE:runblack-reassembled>"
     COMMENT "Stripping $<TARGET_FILE:runblack-reassembled> for reloc, idata and debug"
 )
 
-find_package(Python3 REQUIRED)
 add_custom_command(
     TARGET runblack-reassembled
     POST_BUILD

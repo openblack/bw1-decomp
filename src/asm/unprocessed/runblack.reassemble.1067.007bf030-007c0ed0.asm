@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x007c3c50
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c8606
-.extern _jmp_addr_0x007c942a
+.extern _strtok
 
 .globl _jmp_addr_0x007bf0d0
 .globl _jmp_addr_0x007bf210
@@ -28,6 +28,8 @@
 .globl _jmp_addr_0x007c0920
 .globl _jmp_addr_0x007c0a80
 .globl _jmp_addr_0x007c0aa0
+
+.globl _globl_ct_0x007bf1c0
 
 start_0x007bf030_0x007c0ed0:
 // Snippet: asm, [0x007bf030, 0x007c0e97)
@@ -126,7 +128,7 @@ _jmp_addr_0x007bf10d:    {disp32} mov     edx, dword ptr [esi + 0x000002b0]     
                          {disp32} mov     eax, dword ptr [esi + 0x000002a0]              // 0x007bf113    8b86a0020000
                          push             edx                                            // 0x007bf119    52
                          push             eax                                            // 0x007bf11a    50
-                         call             _jmp_addr_0x007c942a                           // 0x007bf11b    e80aa30000
+                         call             _strtok                                        // 0x007bf11b    e80aa30000
                          mov.s            edx, eax                                       // 0x007bf120    8bd0
                          add              esp, 0x08                                      // 0x007bf122    83c408
                          test             edx, edx                                       // 0x007bf125    85d2
@@ -140,7 +142,7 @@ _jmp_addr_0x007bf12f:    mov.s            ecx, esi                              
                          {disp32} mov     edx, dword ptr [esi + 0x000002a0]              // 0x007bf140    8b96a0020000
                          push             ecx                                            // 0x007bf146    51
                          push             edx                                            // 0x007bf147    52
-                         call             _jmp_addr_0x007c942a                           // 0x007bf148    e8dda20000
+                         call             _strtok                                        // 0x007bf148    e8dda20000
                          mov.s            edx, eax                                       // 0x007bf14d    8bd0
                          add              esp, 0x08                                      // 0x007bf14f    83c408
                          test             edx, edx                                       // 0x007bf152    85d2
@@ -191,7 +193,7 @@ _jmp_addr_0x007bf19e:    and              ecx, 0x0000ffff                       
                          nop                                                             // 0x007bf1bd    90
                          nop                                                             // 0x007bf1be    90
                          nop                                                             // 0x007bf1bf    90
-                         call             _jmp_addr_0x007bf1d0                           // 0x007bf1c0    e80b000000
+_globl_ct_0x007bf1c0:    call             _jmp_addr_0x007bf1d0                           // 0x007bf1c0    e80b000000
                          {disp32} jmp     _jmp_addr_0x007bf1f0                           // 0x007bf1c5    e926000000
                          nop                                                             // 0x007bf1ca    90
                          nop                                                             // 0x007bf1cb    90

@@ -36,6 +36,9 @@
 .globl _jmp_addr_0x0079f640
 .globl _jmp_addr_0x0079f790
 
+.globl _globl_ct_0x0079f910
+.globl _globl_ct_0x0079f940
+
 start_0x0079f5d0_0x007a1360:
 // Snippet: asm, [0x0079f5d0, 0x007a133b)
 _jmp_addr_0x0079f5d0:    mov                eax, 0x00000001                               // 0x0079f5d0    b801000000
@@ -265,7 +268,7 @@ _jmp_addr_0x0079f8fc:    {disp32} mov       ecx, dword ptr [data_bytes + 0x2644f
                          nop                                                              // 0x0079f90d    90
                          nop                                                              // 0x0079f90e    90
                          nop                                                              // 0x0079f90f    90
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0079f910    8a0d34c9fa00
+_globl_ct_0x0079f910:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0079f910    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x0079f916    b001
                          test               al, cl                                        // 0x0079f918    84c8
                          {disp8} jne        _jmp_addr_0x0079f924                          // 0x0079f91a    7508
@@ -287,7 +290,7 @@ _jmp_addr_0x0079f930:    push               0x00407870                          
                          nop                                                              // 0x0079f93d    90
                          nop                                                              // 0x0079f93e    90
                          nop                                                              // 0x0079f93f    90
-                         {disp32} jmp       _jmp_addr_0x0079f950                          // 0x0079f940    e90b000000
+_globl_ct_0x0079f940:    {disp32} jmp       _jmp_addr_0x0079f950                          // 0x0079f940    e90b000000
                          nop                                                              // 0x0079f945    90
                          nop                                                              // 0x0079f946    90
                          nop                                                              // 0x0079f947    90

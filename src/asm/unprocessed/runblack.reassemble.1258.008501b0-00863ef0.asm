@@ -18,7 +18,7 @@
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _jmp_addr_0x007c5791
 .extern _operator_new
-.extern _jmp_addr_0x007c664c
+.extern _malloc
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007e67c0
@@ -136,6 +136,10 @@
 .globl @Init__8RPFollowFiPFii_vPFiff_vPFi_fi@28
 .globl _jmp_addr_0x00863b00
 .globl @SetDest__8RPFollowFRC7Point2Dffff@28
+
+.globl _globl_ct_0x00855230
+.globl _globl_ct_0x00863980
+.globl _globl_ct_0x008639b0
 
 start_0x008501b0_0x00863ef0:
 // Snippet: asm, [0x008501b0, 0x00863ed6)
@@ -6283,7 +6287,7 @@ _jmp_addr_0x0085521f:    pop                edi                                 
                          nop                                                              // 0x0085522d    90
                          nop                                                              // 0x0085522e    90
                          nop                                                              // 0x0085522f    90
-                         {disp32} jmp       _jmp_addr_0x00855240                          // 0x00855230    e90b000000
+_globl_ct_0x00855230:    {disp32} jmp       _jmp_addr_0x00855240                          // 0x00855230    e90b000000
                          nop                                                              // 0x00855235    90
                          nop                                                              // 0x00855236    90
                          nop                                                              // 0x00855237    90
@@ -23871,7 +23875,7 @@ _jmp_addr_0x008631d0:    push               ecx                                 
                          call               _LHFileLength__FPcPUl                         // 0x008631fe    e85d97f5ff
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x00863203    8b4c2410
                          push               ecx                                           // 0x00863207    51
-                         call               _jmp_addr_0x007c664c                          // 0x00863208    e83f34f6ff
+                         call               _malloc                                       // 0x00863208    e83f34f6ff
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x0086320d    8b542414
                          push               0x0                                           // 0x00863211    6a00
                          push               edx                                           // 0x00863213    52
@@ -24474,7 +24478,7 @@ _jmp_addr_0x0086396d:    pop                edi                                 
                          nop                                                              // 0x0086397d    90
                          nop                                                              // 0x0086397e    90
                          nop                                                              // 0x0086397f    90
-                         {disp32} jmp       _jmp_addr_0x00863990                          // 0x00863980    e90b000000
+_globl_ct_0x00863980:    {disp32} jmp       _jmp_addr_0x00863990                          // 0x00863980    e90b000000
                          nop                                                              // 0x00863985    90
                          nop                                                              // 0x00863986    90
                          nop                                                              // 0x00863987    90
@@ -24503,7 +24507,7 @@ _jmp_addr_0x00863990:    {disp32} fld       dword ptr [rdata_bytes + 0xfabb4]   
                          nop                                                              // 0x008639ad    90
                          nop                                                              // 0x008639ae    90
                          nop                                                              // 0x008639af    90
-                         {disp32} jmp       _jmp_addr_0x008639c0                          // 0x008639b0    e90b000000
+_globl_ct_0x008639b0:    {disp32} jmp       _jmp_addr_0x008639c0                          // 0x008639b0    e90b000000
                          nop                                                              // 0x008639b5    90
                          nop                                                              // 0x008639b6    90
                          nop                                                              // 0x008639b7    90

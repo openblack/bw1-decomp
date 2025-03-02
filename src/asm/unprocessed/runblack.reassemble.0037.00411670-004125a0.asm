@@ -12,7 +12,7 @@
 .extern _DrawBevBox__10SetupThingFiiiiiiiUl
 .extern _jmp_addr_0x007a1400
 .extern ___dl__FPv
-.extern _jmp_addr_0x007c6462
+.extern _wcslen
 .extern @Release__8LH3DMeshFv@4
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern @GetStringWidth__13GatheringTextFPwif@20
@@ -111,7 +111,7 @@ _GetTextWidth__10SetupThingFPwfif:    {disp8} mov        eax, dword ptr [esp + 0
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x00411727    8b742408
                          {disp8} jne        _jmp_addr_0x00411736                          // 0x0041172b    7509
                          push               esi                                           // 0x0041172d    56
-                         call               _jmp_addr_0x007c6462                          // 0x0041172e    e82f4d3b00
+                         call               _wcslen                                       // 0x0041172e    e82f4d3b00
                          add                esp, 0x04                                     // 0x00411733    83c404
 _jmp_addr_0x00411736:    {disp8} mov        edx, dword ptr [esp + 0x0c]                   // 0x00411736    8b54240c
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x286d2c]        // 0x0041173a    8b0d2ccdc400
@@ -363,7 +363,7 @@ _jmp_addr_0x00411a28:    push               ebp                                 
                          push               edi                                           // 0x00411a32    57
                          {disp8} jne        _jmp_addr_0x00411a40                          // 0x00411a33    750b
                          push               ebx                                           // 0x00411a35    53
-                         call               _jmp_addr_0x007c6462                          // 0x00411a36    e8274a3b00
+                         call               _wcslen                                       // 0x00411a36    e8274a3b00
                          add                esp, 0x04                                     // 0x00411a3b    83c404
                          mov.s              esi, eax                                      // 0x00411a3e    8bf0
 _jmp_addr_0x00411a40:    {disp8} mov        ebp, dword ptr [esp + 0x28]                   // 0x00411a40    8b6c2428

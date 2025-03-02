@@ -95,6 +95,23 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
             (0xff4, '\2'),
             (0xff8, "<"),
             (0xffc, "4"),
+            # libcmt padding is 0xCC
+            (0x003c9093, b"\xCC" * 13),
+            (0x003c919e, b"\xCC" * 2),
+            (0x003c91d8, b"\xCC" * 8),
+            (0x003c955b, b"\xCC" * 5),
+            (0x003c9e04, b"\xCC" * 12),
+            (0x003c9e78, b"\xCC" * 8),
+            (0x003ca66b, b"\xCC" * 1),
+            (0x003ca68b, b"\xCC" * 5),
+            (0x003ca9c5, b"\xCC" * 11),
+            (0x003ca04f, b"\xCC" * 1),
+            (0x003c9ff2, b"\xCC" * 14),
+            (0x003ca021, b"\xCC" * 15),
+            (0x004A645B, b"\xCC" * 1),
+            (0x004A6281, b"\xCC" * 3),
+            (0x004A62FD, b"\xCC" * 3),
+            (0x004A6057, b"\xCC" * 9),
             # Garbage string in the rsrc
             (0x008428F8, "property of their respective owners".encode("utf-16-le")),
         ]
@@ -184,6 +201,9 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
 
     # rsrc should not be writable
     find_section_header(pe, ".rsrc").Characteristics &= ~pefile.SECTION_CHARACTERISTICS['IMAGE_SCN_MEM_WRITE']
+
+    # Fix .data virtual size after deleting .CRT
+    find_section_header(pe, ".data").Misc_VirtualSize = 0x5f9e00
 
     # Some random strings are hanging out in header
     for offset, string in strings_to_embed:

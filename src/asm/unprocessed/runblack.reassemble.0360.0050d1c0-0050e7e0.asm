@@ -49,6 +49,9 @@
 .globl _jmp_addr_0x0050e340
 .globl _jmp_addr_0x0050e3e0
 
+.globl _globl_ct_0x0050e2e0
+.globl _globl_ct_0x0050e310
+
 start_0x0050d1c0_0x0050e7e0:
 // Snippet: asm, [0x0050d1c0, 0x0050e773)
 _jmp_addr_0x0050d1c0:    sub                esp, 0x18                                     // 0x0050d1c0    83ec18
@@ -1644,7 +1647,7 @@ _jmp_addr_0x0050e2d3:    pop                edi                                 
                          pop                esi                                           // 0x0050e2d6    5e
                          ret                0x0004                                        // 0x0050e2d7    c20400
                          call               dword ptr [rdata_bytes + 0x8fc]               // 0x0050e2da    ff15fc988a00
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0050e2e0    8a0d34c9fa00
+_globl_ct_0x0050e2e0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0050e2e0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x0050e2e6    b001
                          test               al, cl                                        // 0x0050e2e8    84c8
                          {disp8} jne        _jmp_addr_0x0050e2f4                          // 0x0050e2ea    7508
@@ -1666,7 +1669,7 @@ _jmp_addr_0x0050e300:    push               0x00407870                          
                          nop                                                              // 0x0050e30d    90
                          nop                                                              // 0x0050e30e    90
                          nop                                                              // 0x0050e30f    90
-                         {disp32} jmp       _jmp_addr_0x0050e320                          // 0x0050e310    e90b000000
+_globl_ct_0x0050e310:    {disp32} jmp       _jmp_addr_0x0050e320                          // 0x0050e310    e90b000000
                          nop                                                              // 0x0050e315    90
                          nop                                                              // 0x0050e316    90
                          nop                                                              // 0x0050e317    90

@@ -26,7 +26,7 @@ jobs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
 
-    - name: Download lld, llvm-rc and clang
+    - name: Download patched llvm project
       uses: robinraju/release-downloader@v1
       with:
         repository: 'openblack/llvm-project'

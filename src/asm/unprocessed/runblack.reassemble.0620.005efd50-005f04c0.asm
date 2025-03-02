@@ -21,9 +21,11 @@
 .extern _jmp_addr_0x007fb880
 .extern _jmp_addr_0x007fc760
 
+.globl _globl_ct_0x005efd50
+
 start_0x005efd50_0x005f04c0:
 // Snippet: asm, [0x005efd50, 0x005f0482)
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]     // 0x005efd50    8a0d34c9fa00
+_globl_ct_0x005efd50:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]     // 0x005efd50    8a0d34c9fa00
                          mov                al, 0x01                                 // 0x005efd56    b001
                          test               al, cl                                   // 0x005efd58    84c8
                          {disp8} jne        _jmp_addr_0x005efd64                     // 0x005efd5a    7508

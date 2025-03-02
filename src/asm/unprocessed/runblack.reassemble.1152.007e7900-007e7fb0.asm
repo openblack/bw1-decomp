@@ -9,7 +9,7 @@
 
 .extern ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007c90a0
+.extern _strncpy
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e6fc0
 .extern _jmp_addr_0x007e6fe0
@@ -257,7 +257,7 @@ _jmp_addr_0x007e7b15:    test             edi, edi                              
                          push             ebp                                       // 0x007e7b29    55
                          push             0x00c341c0                                // 0x007e7b2a    68c041c300
                          {disp8} mov      dword ptr [esi + 0x04], edx               // 0x007e7b2f    895604
-                         call             _jmp_addr_0x007c90a0                      // 0x007e7b32    e86915feff
+                         call             _strncpy                                  // 0x007e7b32    e86915feff
                          add              esp, 0x0c                                 // 0x007e7b37    83c40c
                          mov.s            ecx, esi                                  // 0x007e7b3a    8bce
                          push             ebp                                       // 0x007e7b3c    55

@@ -48,6 +48,9 @@
 .globl @SetDest__5RPlanFRC7Point2Dfffiifi@40
 .globl @GameTurnUpdate__5RPlanFi@12
 
+.globl _globl_ct_0x0086e070
+.globl _globl_ct_0x0086e0a0
+
 start_0x0086d360_0x0086fb80:
 // Snippet: asm, [0x0086d360, 0x0086fb69)
 _jmp_addr_0x0086d360:    {disp32} mov       eax, dword ptr [data_bytes + 0x5df1c0]        // 0x0086d360    a1c051fa00
@@ -1220,7 +1223,7 @@ _jmp_addr_0x0086de62:    {disp32} fld       dword ptr [rdata_bytes + 0x1390]    
                          nop                                                              // 0x0086e06d    90
                          nop                                                              // 0x0086e06e    90
                          nop                                                              // 0x0086e06f    90
-                         {disp32} jmp       _jmp_addr_0x0086e080                          // 0x0086e070    e90b000000
+_globl_ct_0x0086e070:    {disp32} jmp       _jmp_addr_0x0086e080                          // 0x0086e070    e90b000000
                          nop                                                              // 0x0086e075    90
                          nop                                                              // 0x0086e076    90
                          nop                                                              // 0x0086e077    90
@@ -1249,7 +1252,7 @@ _jmp_addr_0x0086e080:    {disp32} fld       dword ptr [rdata_bytes + 0xfac00]   
                          nop                                                              // 0x0086e09d    90
                          nop                                                              // 0x0086e09e    90
                          nop                                                              // 0x0086e09f    90
-                         {disp32} jmp       _jmp_addr_0x0086e0b0                          // 0x0086e0a0    e90b000000
+_globl_ct_0x0086e0a0:    {disp32} jmp       _jmp_addr_0x0086e0b0                          // 0x0086e0a0    e90b000000
                          nop                                                              // 0x0086e0a5    90
                          nop                                                              // 0x0086e0a6    90
                          nop                                                              // 0x0086e0a7    90

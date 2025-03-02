@@ -63,6 +63,8 @@
 .globl _jmp_addr_0x0086cff0
 .globl _jmp_addr_0x0086d060
 
+.globl _globl_ct_0x0086d040
+
 start_0x0086a110_0x0086d360:
 // Snippet: asm, [0x0086a110, 0x0086d336)
 _jmp_addr_0x0086a110:    {disp32} mov       eax, dword ptr [data_bytes + 0x5dc694]         // 0x0086a110    a19426fa00
@@ -3775,7 +3777,7 @@ _jmp_addr_0x0086d032:    ret                0x0014                              
                          nop                                                               // 0x0086d03d    90
                          nop                                                               // 0x0086d03e    90
                          nop                                                               // 0x0086d03f    90
-                         {disp32} jmp       _jmp_addr_0x0086d050                           // 0x0086d040    e90b000000
+_globl_ct_0x0086d040:    {disp32} jmp       _jmp_addr_0x0086d050                           // 0x0086d040    e90b000000
                          nop                                                               // 0x0086d045    90
                          nop                                                               // 0x0086d046    90
                          nop                                                               // 0x0086d047    90

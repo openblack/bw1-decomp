@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x007bd030
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
-.extern _jmp_addr_0x007c6786
+.extern _free
 .extern _jmp_addr_0x008002c0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x00804e60
@@ -91,6 +91,9 @@
 .globl _jmp_addr_0x00876910
 .globl _jmp_addr_0x00877210
 
+.globl _globl_ct_0x0086fc00
+.globl _globl_ct_0x0086feb0
+
 start_0x0086fb80_0x00877d20:
 // Snippet: asm, [0x0086fb80, 0x00877d04)
 _jmp_addr_0x0086fb80:    push                 esi                                            // 0x0086fb80    56
@@ -136,7 +139,7 @@ _jmp_addr_0x0086fbd6:    {disp8} mov          eax, dword ptr [esi + 0x58]       
                          ret                  0x0008                                         // 0x0086fbfb    c20800
                          nop                                                                 // 0x0086fbfe    90
                          nop                                                                 // 0x0086fbff    90
-                         {disp32} jmp         _jmp_addr_0x0086fc10                           // 0x0086fc00    e90b000000
+_globl_ct_0x0086fc00:    {disp32} jmp         _jmp_addr_0x0086fc10                           // 0x0086fc00    e90b000000
                          nop                                                                 // 0x0086fc05    90
                          nop                                                                 // 0x0086fc06    90
                          nop                                                                 // 0x0086fc07    90
@@ -456,7 +459,7 @@ _jmp_addr_0x0086fe80:    {disp8} fld          dword ptr [ecx + 0x04]            
                          nop                                                                 // 0x0086fead    90
                          nop                                                                 // 0x0086feae    90
                          nop                                                                 // 0x0086feaf    90
-                         {disp32} jmp         _jmp_addr_0x0086fec0                           // 0x0086feb0    e90b000000
+_globl_ct_0x0086feb0:    {disp32} jmp         _jmp_addr_0x0086fec0                           // 0x0086feb0    e90b000000
                          nop                                                                 // 0x0086feb5    90
                          nop                                                                 // 0x0086feb6    90
                          nop                                                                 // 0x0086feb7    90
@@ -2006,7 +2009,7 @@ _jmp_addr_0x00871129:    call                 _jmp_addr_0x007c57d2              
                          call                 _jmp_addr_0x007bd030                           // 0x0087114c    e8dfbef4ff
                          push                 edi                                            // 0x00871151    57
                          inc                  ebx                                            // 0x00871152    43
-                         call                 _jmp_addr_0x007c6786                           // 0x00871153    e82e56f5ff
+                         call                 _free                                          // 0x00871153    e82e56f5ff
                          {disp8} mov          esi, dword ptr [esi + 0x04]                    // 0x00871158    8b7604
                          add                  esp, 0x14                                      // 0x0087115b    83c414
                          test                 esi, esi                                       // 0x0087115e    85f6

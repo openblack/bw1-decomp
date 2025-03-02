@@ -9,6 +9,8 @@
 
 .extern _jmp_addr_0x004012d0
 
+.globl _globl_ct_0x00401170
+.globl _jmp_addr_0x007d4cc3
 .globl _jmp_addr_0x00401140
 
 start_0x00401140_0x004011d0:
@@ -35,7 +37,7 @@ _jmp_addr_0x0040115a:    mov.s            ecx, esi                        // 0x0
                          pop              ebx                             // 0x00401166    5b
 _jmp_addr_0x00401167:    ret              0x0010                          // 0x00401167    c21000
                          call             dword ptr [rdata_bytes + 0x8a8] // 0x0040116a    ff15a8988a00
-                         call             _jmp_addr_0x00401180            // 0x00401170    e80b000000
+_globl_ct_0x00401170:    call             _jmp_addr_0x00401180            // 0x00401170    e80b000000
                          {disp32} jmp     _jmp_addr_0x004012d0            // 0x00401175    e956010000
                          nop                                              // 0x0040117a    90
                          nop                                              // 0x0040117b    90
