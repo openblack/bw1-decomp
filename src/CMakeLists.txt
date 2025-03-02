@@ -466,6 +466,7 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\printf.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strtok.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\atof.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\swscanf.obj" ON)

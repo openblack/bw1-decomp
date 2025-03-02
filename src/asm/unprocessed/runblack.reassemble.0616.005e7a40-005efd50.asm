@@ -128,7 +128,7 @@
 .extern _jmp_addr_0x007c8859
 .extern _jmp_addr_0x007c8912
 .extern _strncpy
-.extern _jmp_addr_0x007c93e9
+.extern _printf
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _CHAR2WCHAR__FPc
@@ -959,7 +959,7 @@ _jmp_addr_0x005e80f0:    {disp32} mov       ax, word ptr [ecx + 0x000000b8]     
                          cmp                eax, 0x01                                     // 0x005e817e    83f801
                          {disp8} jne        _jmp_addr_0x005e819c                          // 0x005e8181    7519
                          push               0x00bf3780                                    // 0x005e8183    688037bf00
-                         call               _jmp_addr_0x007c93e9                          // 0x005e8188    e85c121e00
+                         call               _printf                                       // 0x005e8188    e85c121e00
                          add                esp, 0x04                                     // 0x005e818d    83c404
                          pop                edi                                           // 0x005e8190    5f
                          pop                esi                                           // 0x005e8191    5e
@@ -981,7 +981,7 @@ _jmp_addr_0x005e819c:    push               0x00bf3764                          
                          test               byte ptr [esp + 0x0e], 0x07                   // 0x005e81b6    f644240e07
                          {disp8} je         _jmp_addr_0x005e81d6                          // 0x005e81bb    7419
                          push               0x00bf371c                                    // 0x005e81bd    681c37bf00
-                         call               _jmp_addr_0x007c93e9                          // 0x005e81c2    e822121e00
+                         call               _printf                                       // 0x005e81c2    e822121e00
                          add                esp, 0x04                                     // 0x005e81c7    83c404
                          pop                edi                                           // 0x005e81ca    5f
                          pop                esi                                           // 0x005e81cb    5e
@@ -1009,7 +1009,7 @@ _jmp_addr_0x005e81d6:    push               0x00bf370c                          
                          cmp                word ptr [esp + 0x0e], 0x00                   // 0x005e8206    66837c240e00
                          {disp8} jle        _jmp_addr_0x005e8227                          // 0x005e820c    7e19
                          push               0x00bf36c4                                    // 0x005e820e    68c436bf00
-                         call               _jmp_addr_0x007c93e9                          // 0x005e8213    e8d1111e00
+                         call               _printf                                       // 0x005e8213    e8d1111e00
                          add                esp, 0x04                                     // 0x005e8218    83c404
                          pop                edi                                           // 0x005e821b    5f
                          pop                esi                                           // 0x005e821c    5e
