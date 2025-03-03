@@ -117,7 +117,7 @@
 .globl __imp__Beep@8
 .globl __imp__HeapReAlloc@4
 .globl __imp__SetFileAttributesA@8
-.globl __imp__RaiseException@4
+.globl __imp__RaiseException@16
 .globl __imp__RtlUnwind@4
 .globl __imp__GetLocalTime@4
 .globl __imp__GetSystemTime@4
@@ -725,7 +725,7 @@ rdata_bytes:
 .long 0x005c47ec /* KERNEL32.DLL::Beep */                                                                                                                        ; .set __imp__Beep@8,                                                                                                                  0x008a91dc
 .long 0x005c47de /* KERNEL32.DLL::HeapReAlloc */                                                                                                                 ; .set __imp__HeapReAlloc@4,                                                                                                           0x008a91e0
 .long 0x005c47c8 /* KERNEL32.DLL::SetFileAttributesA */                                                                                                          ; .set __imp__SetFileAttributesA@8,                                                                                                    0x008a91e4
-.long 0x005c47b6 /* KERNEL32.DLL::RaiseException */                                                                                                              ; .set __imp__RaiseException@4,                                                                                                        0x008a91e8
+.long 0x005c47b6 /* KERNEL32.DLL::RaiseException */                                                                                                              ; .set __imp__RaiseException@16,                                                                                                        0x008a91e8
 .long 0x005c47aa /* KERNEL32.DLL::RtlUnwind */                                                                                                                   ; .set __imp__RtlUnwind@4,                                                                                                             0x008a91ec
 .long 0x005c479a /* KERNEL32.DLL::GetLocalTime */                                                                                                                ; .set __imp__GetLocalTime@4,                                                                                                          0x008a91f0
 .long 0x005c478a /* KERNEL32.DLL::GetSystemTime */                                                                                                               ; .set __imp__GetSystemTime@4,                                                                                                         0x008a91f4

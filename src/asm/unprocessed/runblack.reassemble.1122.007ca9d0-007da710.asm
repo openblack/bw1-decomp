@@ -170,8 +170,8 @@
 .globl __ioinit
 .globl _strcpy
 .globl _strcat
-.globl _jmp_addr_0x007d51a6
-.globl _jmp_addr_0x007d51b7
+.globl ?__CxxSetUnhandledExceptionFilter@@YAXXZ
+.globl ?__CxxRestoreUnhandledExceptionFilter@@YAXXZ
 .globl __fltin2
 .globl __winput
 .globl ___crtLCMapStringW
@@ -203,6 +203,7 @@
 .globl ___init_collate
 .globl _jmp_addr_0x007cb158
 .globl _jmp_addr_0x007d4cc3
+.globl ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z
 
 _setlocale:              push               ebp                                            // 0x007caa7c    55
                          mov.s              ebp, esp                                       // 0x007caa7d    8bec
@@ -15319,7 +15320,7 @@ _jmp_addr_0x007d5158:    mov                byte ptr [edi], dl                  
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x007d515a    8b442408
                          pop                edi                                            // 0x007d515e    5f
                          ret                                                               // 0x007d515f    c3
-                         push               esi                                            // 0x007d5160    56
+?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z:    push               esi                                            // 0x007d5160    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x007d5161    8b742408
                          mov                eax, dword ptr [esi]                           // 0x007d5165    8b06
                          cmp                dword ptr [eax], 0xe06d7363                    // 0x007d5167    813863736de0
@@ -15343,11 +15344,11 @@ _jmp_addr_0x007d5183:    {disp32} mov       eax, dword ptr [data_bytes + 0x4be3c
 _jmp_addr_0x007d51a0:    xor.s              eax, eax                                       // 0x007d51a0    33c0
 _jmp_addr_0x007d51a2:    pop                esi                                            // 0x007d51a2    5e
                          ret                0x0004                                         // 0x007d51a3    c20400
-_jmp_addr_0x007d51a6:    push               0x007d5160                                     // 0x007d51a6    6860517d00
+?__CxxSetUnhandledExceptionFilter@@YAXXZ:    push               0x007d5160 /* ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z */                                    // 0x007d51a6    6860517d00
                          call               dword ptr [rdata_bytes + 0x2a8]                // 0x007d51ab    ff15a8928a00
                          {disp32} mov       dword ptr [data_bytes + 0x4be3c0], eax         // 0x007d51b1    a3c043e800
                          ret                                                               // 0x007d51b6    c3
-_jmp_addr_0x007d51b7:    push               dword ptr [data_bytes + 0x4be3c0]              // 0x007d51b7    ff35c043e800
+?__CxxRestoreUnhandledExceptionFilter@@YAXXZ:    push               dword ptr [data_bytes + 0x4be3c0]              // 0x007d51b7    ff35c043e800
                          call               dword ptr [rdata_bytes + 0x2a8]                // 0x007d51bd    ff15a8928a00
                          ret                                                               // 0x007d51c3    c3
 __fltin2:                push               ebp                                            // 0x007d51c4    55
