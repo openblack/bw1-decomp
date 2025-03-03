@@ -67,7 +67,7 @@
 .extern _jmp_addr_0x0077fe10
 .extern _jmp_addr_0x0077fe40
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007c5791
@@ -3252,7 +3252,7 @@ _jmp_addr_0x0070d92b:    cmp.s              esi, ebx                            
                          {disp32} lea       edi, dword ptr [ecx + 0x00205c8c]             // 0x0070d933    8db98c5c2000
                          {disp8} je         _jmp_addr_0x0070d955                          // 0x0070d939    741a
                          push               0x8                                           // 0x0070d93b    6a08
-                         call               _operator_new                                 // 0x0070d93d    e8ac8b0b00
+                         call               _operator_new                                // 0x0070d93d    e8ac8b0b00
                          add                esp, 0x04                                     // 0x0070d942    83c404
                          cmp.s              eax, ebx                                      // 0x0070d945    3bc3
                          {disp8} je         _jmp_addr_0x0070d955                          // 0x0070d947    740c
@@ -3306,7 +3306,7 @@ _jmp_addr_0x0070d99a:    {disp8} mov        edx, dword ptr [edi + 0x04]         
                          dec                edx                                           // 0x0070d99d    4a
                          push               eax                                           // 0x0070d99e    50
                          {disp8} mov        dword ptr [edi + 0x04], edx                   // 0x0070d99f    895704
-                         call               ___dl__FPv                                    // 0x0070d9a2    e8f1140a00
+                         call                ___dl__FPv                                   // 0x0070d9a2    e8f1140a00
                          add                esp, 0x04                                     // 0x0070d9a7    83c404
                          {disp8} jmp        _jmp_addr_0x0070d9ae                          // 0x0070d9aa    eb02
 _jmp_addr_0x0070d9ac:    mov.s              ebx, eax                                      // 0x0070d9ac    8bd8

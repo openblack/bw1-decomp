@@ -43,7 +43,7 @@
 .extern @SetActive__10GInterfaceFi@12
 .extern _jmp_addr_0x0066bcd0
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _wcscpy
 .extern ___nw__FUl
@@ -356,7 +356,7 @@ _jmp_addr_0x005135dc:    {disp8} mov       eax, dword ptr [esi + 0x6c]          
                          test              eax, eax                                      // 0x005135df    85c0
                          {disp8} jne       _jmp_addr_0x005135ce                          // 0x005135e1    75eb
 _jmp_addr_0x005135e3:    push              esi                                           // 0x005135e3    56
-                         call              ___dl__FPv                                    // 0x005135e4    e8afb82900
+                         call               ___dl__FPv                                   // 0x005135e4    e8afb82900
                          add               esp, 0x04                                     // 0x005135e9    83c404
 _jmp_addr_0x005135ec:    pop               esi                                           // 0x005135ec    5e
                          ret                                                             // 0x005135ed    c3

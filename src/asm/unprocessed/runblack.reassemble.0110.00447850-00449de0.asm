@@ -20,7 +20,7 @@
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005c46e0
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
@@ -2871,7 +2871,7 @@ _jmp_addr_0x004499ff:    mov                edx, dword ptr [eax]                
 _jmp_addr_0x00449a0d:    mov                edx, dword ptr [ecx]                          // 0x00449a0d    8b11
                          mov                dword ptr [eax], edx                          // 0x00449a0f    8910
 _jmp_addr_0x00449a11:    push               ecx                                           // 0x00449a11    51
-                         call               ___dl__FPv                                    // 0x00449a12    e881543600
+                         call                ___dl__FPv                                   // 0x00449a12    e881543600
                          {disp32} mov       esi, dword ptr [data_bytes + 0x294fe8]        // 0x00449a17    8b35e8afc500
                          add                esp, 0x04                                     // 0x00449a1d    83c404
 _jmp_addr_0x00449a20:    mov.s              ecx, esi                                      // 0x00449a20    8bce
@@ -2923,7 +2923,7 @@ _jmp_addr_0x00449aa4:    cmp.s              ecx, ebx                            
                          mov                eax, dword ptr [ecx]                          // 0x00449aac    8b01
                          push               ecx                                           // 0x00449aae    51
                          {disp32} mov       dword ptr [data_bytes + 0x294fe8], eax        // 0x00449aaf    a3e8afc500
-                         call               ___dl__FPv                                    // 0x00449ab4    e8df533600
+                         call                ___dl__FPv                                   // 0x00449ab4    e8df533600
                          add                esp, 0x04                                     // 0x00449ab9    83c404
                          {disp32} jmp       _jmp_addr_0x00449b7c                          // 0x00449abc    e9bb000000
 _jmp_addr_0x00449ac1:    mov.s              eax, esi                                      // 0x00449ac1    8bc6
@@ -2936,13 +2936,13 @@ _jmp_addr_0x00449ac7:    mov                edx, dword ptr [eax]                
                          cmp.s              eax, ebx                                      // 0x00449acf    3bc3
                          {disp8} jne        _jmp_addr_0x00449ac7                          // 0x00449ad1    75f4
                          push               ecx                                           // 0x00449ad3    51
-                         call               ___dl__FPv                                    // 0x00449ad4    e8bf533600
+                         call                ___dl__FPv                                   // 0x00449ad4    e8bf533600
                          add                esp, 0x04                                     // 0x00449ad9    83c404
                          {disp32} jmp       _jmp_addr_0x00449b7c                          // 0x00449adc    e99b000000
 _jmp_addr_0x00449ae1:    mov                edx, dword ptr [ecx]                          // 0x00449ae1    8b11
                          mov                dword ptr [eax], edx                          // 0x00449ae3    8910
 _jmp_addr_0x00449ae5:    push               ecx                                           // 0x00449ae5    51
-                         call               ___dl__FPv                                    // 0x00449ae6    e8ad533600
+                         call                ___dl__FPv                                   // 0x00449ae6    e8ad533600
                          add                esp, 0x04                                     // 0x00449aeb    83c404
                          {disp32} jmp       _jmp_addr_0x00449b7c                          // 0x00449aee    e989000000
 _jmp_addr_0x00449af3:    cmp.s              esi, ebx                                      // 0x00449af3    3bf3

@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern _strncpy
 .extern ___nw__FUl
@@ -421,7 +421,7 @@ _jmp_addr_0x007e7ce8:    {disp8} mov      eax, dword ptr [esi + 0x08]           
                          test             eax, eax                                  // 0x007e7ceb    85c0
                          {disp8} je       _jmp_addr_0x007e7cf8                      // 0x007e7ced    7409
                          push             eax                                       // 0x007e7cef    50
-                         call             ___dl__FPv                                // 0x007e7cf0    e8a371fcff
+                         call              ___dl__FPv                               // 0x007e7cf0    e8a371fcff
                          add              esp, 0x04                                 // 0x007e7cf5    83c404
 _jmp_addr_0x007e7cf8:    {disp8} lea      edx, dword ptr [esp + 0x24]               // 0x007e7cf8    8d542424
                          push             edx                                       // 0x007e7cfc    52

@@ -99,7 +99,7 @@
 .extern _ConvertGameAngleTo3D__6GUtilsFl
 .extern _jmp_addr_0x0074f310
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
@@ -3579,7 +3579,7 @@ _jmp_addr_0x00417bd6:    {disp32} mov       edx, dword ptr [edi + 0x00000988]   
                          dec                edx                                           // 0x00417bdc    4a
                          push               eax                                           // 0x00417bdd    50
                          {disp32} mov       dword ptr [edi + 0x00000988], edx             // 0x00417bde    899788090000
-                         call               ___dl__FPv                                    // 0x00417be4    e8af723900
+                         call                ___dl__FPv                                   // 0x00417be4    e8af723900
                          add                esp, 0x04                                     // 0x00417be9    83c404
                          {disp8} jmp        _jmp_addr_0x00417bf0                          // 0x00417bec    eb02
 _jmp_addr_0x00417bee:    mov.s              ebp, eax                                      // 0x00417bee    8be8
@@ -3635,7 +3635,7 @@ _jmp_addr_0x00417c50:    push               esi                                 
                          test               edi, edi                                      // 0x00417c62    85ff
                          {disp8} je         _jmp_addr_0x00417c8b                          // 0x00417c64    7425
                          push               0x8                                           // 0x00417c66    6a08
-                         call               _operator_new                                 // 0x00417c68    e881e83a00
+                         call               _operator_new                                // 0x00417c68    e881e83a00
                          add                esp, 0x04                                     // 0x00417c6d    83c404
                          test               eax, eax                                      // 0x00417c70    85c0
                          {disp8} je         _jmp_addr_0x00417c8b                          // 0x00417c72    7417

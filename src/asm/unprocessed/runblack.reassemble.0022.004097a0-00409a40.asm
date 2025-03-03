@@ -13,7 +13,7 @@
 .extern _GetTextWidth__10SetupThingFPwfif
 .extern _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori
 .extern _DrawBevBox__10SetupThingFiiiiiiiUl
-.extern ___dl__FPv
+.extern  ___dl__FPv
 
 .globl @Draw__11SetupButtonFbb@10
 .globl @__ct__10SetupButtonFiiiiiPwi@36
@@ -195,7 +195,7 @@ _jmp_addr_0x00409938:    ret                0x0008                              
                          test               byte ptr [esp + 0x08], 0x01              // 0x00409948    f644240801
                          {disp8} je         _jmp_addr_0x00409958                     // 0x0040994d    7409
                          push               esi                                      // 0x0040994f    56
-                         call               ___dl__FPv                               // 0x00409950    e843553a00
+                         call                ___dl__FPv                              // 0x00409950    e843553a00
                          add                esp, 0x04                                // 0x00409955    83c404
 _jmp_addr_0x00409958:    mov.s              eax, esi                                 // 0x00409958    8bc6
                          pop                esi                                      // 0x0040995a    5e

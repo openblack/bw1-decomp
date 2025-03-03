@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x0056aca0
 .extern _jmp_addr_0x0056b4b0
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0056d220
@@ -34,7 +34,7 @@ _jmp_addr_0x0056d220:    push              esi                                  
                          mov.s             edi, ecx                                      // 0x0056d222    8bf9
                          {disp8} mov       eax, dword ptr [edi + 0x70]                   // 0x0056d224    8b4770
                          push              eax                                           // 0x0056d227    50
-                         call              ___dl__FPv                                    // 0x0056d228    e86b1c2400
+                         call               ___dl__FPv                                   // 0x0056d228    e86b1c2400
                          {disp8} mov       esi, dword ptr [edi + 0x34]                   // 0x0056d22d    8b7734
                          add               esp, 0x04                                     // 0x0056d230    83c404
                          test              esi, esi                                      // 0x0056d233    85f6

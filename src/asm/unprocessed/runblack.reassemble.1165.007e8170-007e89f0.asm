@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00521a90
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern @Open__16LHReleasedOSFileFPc12LH_FILE_MODE@16
 .extern @Close__8LHOSFileFv@4
 .extern _jmp_addr_0x007bcad0
@@ -427,7 +427,7 @@ _jmp_addr_0x007e857c:    push              0x00000138                           
                          add               esp, 0x0c                                // 0x007e862f    83c40c
                          ret               0x0008                                   // 0x007e8632    c20800
 _jmp_addr_0x007e8635:    push              esi                                      // 0x007e8635    56
-                         call              ___dl__FPv                               // 0x007e8636    e85d68fcff
+                         call               ___dl__FPv                              // 0x007e8636    e85d68fcff
                          add               esp, 0x04                                // 0x007e863b    83c404
                          mov.s             eax, ebx                                 // 0x007e863e    8bc3
                          {disp8} mov       ecx, dword ptr [esp + 0x0c]              // 0x007e8640    8b4c240c
@@ -589,7 +589,7 @@ _jmp_addr_0x007e880b:    mov.s             edi, eax                             
                          add               esp, 0x0c                                // 0x007e883a    83c40c
                          ret               0x0008                                   // 0x007e883d    c20800
 _jmp_addr_0x007e8840:    push              edi                                      // 0x007e8840    57
-                         call              ___dl__FPv                               // 0x007e8841    e85266fcff
+                         call               ___dl__FPv                              // 0x007e8841    e85266fcff
                          add               esp, 0x04                                // 0x007e8846    83c404
 _jmp_addr_0x007e8849:    mov.s             eax, ebx                                 // 0x007e8849    8bc3
                          {disp8} mov       ecx, dword ptr [esp + 0x0c]              // 0x007e884b    8b4c240c

@@ -101,7 +101,7 @@
 .extern _FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf
 .extern _jmp_addr_0x0074f310
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007c5791
@@ -3001,7 +3001,7 @@ _jmp_addr_0x0041bcb8:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          dec                ecx                                           // 0x0041bcbb    49
                          push               eax                                           // 0x0041bcbc    50
                          {disp8} mov        dword ptr [esi + 0x04], ecx                   // 0x0041bcbd    894e04
-                         call               ___dl__FPv                                    // 0x0041bcc0    e8d3313900
+                         call                ___dl__FPv                                   // 0x0041bcc0    e8d3313900
                          add                esp, 0x04                                     // 0x0041bcc5    83c404
                          test               bl, bl                                        // 0x0041bcc8    84db
                          {disp8} jne        _jmp_addr_0x0041bcd6                          // 0x0041bcca    750a
@@ -14692,7 +14692,7 @@ _jmp_addr_0x00421f50:    push               edi                                 
                          {disp32} mov       edx, dword ptr [data_bytes + 0x33b95c]        // 0x00421f9f    8b155c19d000
                          push               0x8                                           // 0x00421fa5    6a08
                          {disp32} lea       esi, dword ptr [edx + 0x00205cbc]             // 0x00421fa7    8db2bc5c2000
-                         call               _operator_new                                 // 0x00421fad    e83c453a00
+                         call               _operator_new                                // 0x00421fad    e83c453a00
                          add                esp, 0x04                                     // 0x00421fb2    83c404
                          test               eax, eax                                      // 0x00421fb5    85c0
                          {disp8} je         _jmp_addr_0x00421fc5                          // 0x00421fb7    740c

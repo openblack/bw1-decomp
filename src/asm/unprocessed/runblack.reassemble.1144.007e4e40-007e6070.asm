@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007dc8b0
 .extern @UpdateCurrentPos__7LHMouseF7LHCoord@16
 .extern _jmp_addr_0x007e6070
@@ -1247,7 +1247,7 @@ _jmp_addr_0x007e5c66:    {disp8} mov      eax, dword ptr [esi + 0x54]           
                          cmp.s            eax, ebx                                 // 0x007e5c69    3bc3
                          {disp8} je       _jmp_addr_0x007e5c79                     // 0x007e5c6b    740c
                          push             eax                                      // 0x007e5c6d    50
-                         call             ___dl__FPv                               // 0x007e5c6e    e82592fcff
+                         call              ___dl__FPv                              // 0x007e5c6e    e82592fcff
                          add              esp, 0x04                                // 0x007e5c73    83c404
                          {disp8} mov      dword ptr [esi + 0x54], ebx              // 0x007e5c76    895e54
 _jmp_addr_0x007e5c79:    {disp8} mov      ecx, dword ptr [esp + 0x24]              // 0x007e5c79    8b4c2424

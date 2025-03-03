@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _operator_new
 .extern _jmp_addr_0x007f4980
 .extern _jmp_addr_0x007f4990
@@ -55,7 +55,7 @@ _jmp_addr_0x007f5040:    push             -0x1                                  
                          xor.s            eax, eax                                // 0x007f5088    33c0
 _jmp_addr_0x007f508a:    {disp32} lea     ecx, dword ptr [eax * 0x4 + 0x00000000] // 0x007f508a    8d0c8500000000
                          push             ecx                                     // 0x007f5091    51
-                         call             _operator_new                           // 0x007f5092    e85714fdff
+                         call             _operator_new                          // 0x007f5092    e85714fdff
                          add              esp, 0x04                               // 0x007f5097    83c404
                          cmp.s            esi, ebx                                // 0x007f509a    3bf3
                          {disp8} mov      dword ptr [esp + 0x20], eax             // 0x007f509c    89442420
@@ -161,7 +161,7 @@ _jmp_addr_0x007f51a1:    cmp.s            esi, ecx                              
                          mov              ecx, dword ptr [esi]                    // 0x007f51a5    8b0e
                          {disp8} mov      dword ptr [esp + 0x10], ecx             // 0x007f51a7    894c2410
 _jmp_addr_0x007f51ab:    push             edx                                     // 0x007f51ab    52
-                         call             ___dl__FPv                              // 0x007f51ac    e8e79cfbff
+                         call              ___dl__FPv                             // 0x007f51ac    e8e79cfbff
                          {disp8} mov      eax, dword ptr [esp + 0x14]             // 0x007f51b1    8b442414
                          add              esp, 0x04                               // 0x007f51b5    83c404
                          pop              edi                                     // 0x007f51b8    5f

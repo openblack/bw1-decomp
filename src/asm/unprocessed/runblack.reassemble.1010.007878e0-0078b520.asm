@@ -71,7 +71,7 @@
 .extern _jmp_addr_0x0079a8d0
 .extern _jmp_addr_0x0079a910
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _wcscpy
@@ -1043,7 +1043,7 @@ _jmp_addr_0x00788605:    ret                                                    
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00788618    f644240801
                          {disp8} je         _jmp_addr_0x00788628                          // 0x0078861d    7409
                          push               esi                                           // 0x0078861f    56
-                         call               ___dl__FPv                                    // 0x00788620    e873680200
+                         call                ___dl__FPv                                   // 0x00788620    e873680200
                          add                esp, 0x04                                     // 0x00788625    83c404
 _jmp_addr_0x00788628:    mov.s              eax, esi                                      // 0x00788628    8bc6
                          pop                esi                                           // 0x0078862a    5e
@@ -2507,7 +2507,7 @@ _jmp_addr_0x007899f0:    {disp32} mov       eax, dword ptr [data_bytes + 0x4f39a
                          call               _jmp_addr_0x00898530                          // 0x00789a3d    e8eeea1000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x41afc4]        // 0x00789a42    8b0dc40fde00
                          push               ecx                                           // 0x00789a48    51
-                         call               ___dl__FPv                                    // 0x00789a49    e84a540200
+                         call                ___dl__FPv                                   // 0x00789a49    e84a540200
                          xor.s              eax, eax                                      // 0x00789a4e    33c0
                          add                esp, 0x04                                     // 0x00789a50    83c404
                          {disp8} lea        ecx, dword ptr [esp + 0x00]                   // 0x00789a53    8d4c2400

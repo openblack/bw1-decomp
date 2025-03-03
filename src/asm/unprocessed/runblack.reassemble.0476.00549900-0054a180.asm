@@ -20,7 +20,7 @@
 .extern @Show__13DialogBoxBaseFv@4
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00548990
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _Exists__8LHOSFileFPc
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
@@ -208,7 +208,7 @@ _jmp_addr_0x00549ab8:    {disp8} mov       ecx, dword ptr [esi + 0x04]          
                          dec               ecx                                           // 0x00549abb    49
                          push              eax                                           // 0x00549abc    50
                          {disp8} mov       dword ptr [esi + 0x04], ecx                   // 0x00549abd    894e04
-                         call              ___dl__FPv                                    // 0x00549ac0    e8d3532600
+                         call               ___dl__FPv                                   // 0x00549ac0    e8d3532600
                          add               esp, 0x04                                     // 0x00549ac5    83c404
                          test              bl, bl                                        // 0x00549ac8    84db
                          {disp8} jne       _jmp_addr_0x00549ad6                          // 0x00549aca    750a

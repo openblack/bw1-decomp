@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern ___dl__FPv
+.extern  ___dl__FPv
 
 .globl _jmp_addr_0x00401000
 .globl _globl_ct_0x00401040
@@ -134,7 +134,7 @@ _jmp_addr_0x004010c4:    {disp8} mov       eax, dword ptr [esi + -0x0c]         
                          test              eax, eax                                      // 0x004010ca    85c0
                          {disp8} je        _jmp_addr_0x004010d7                          // 0x004010cc    7409
                          push              eax                                           // 0x004010ce    50
-                         call              ___dl__FPv                                    // 0x004010cf    e8c4dd3a00
+                         call               ___dl__FPv                                   // 0x004010cf    e8c4dd3a00
                          add               esp, 0x04                                     // 0x004010d4    83c404
 _jmp_addr_0x004010d7:    dec               ebp                                           // 0x004010d7    4d
                          {disp8} jne       _jmp_addr_0x004010c4                          // 0x004010d8    75ea
@@ -142,7 +142,7 @@ _jmp_addr_0x004010d7:    dec               ebp                                  
 _jmp_addr_0x004010db:    test              bl, 0x01                                      // 0x004010db    f6c301
                          {disp8} je        _jmp_addr_0x004010e9                          // 0x004010de    7409
                          push              edi                                           // 0x004010e0    57
-                         call              ___dl__FPv                                    // 0x004010e1    e8b2dd3a00
+                         call               ___dl__FPv                                   // 0x004010e1    e8b2dd3a00
                          add               esp, 0x04                                     // 0x004010e6    83c404
 _jmp_addr_0x004010e9:    mov.s             eax, edi                                      // 0x004010e9    8bc7
                          pop               edi                                           // 0x004010eb    5f
@@ -153,12 +153,12 @@ _jmp_addr_0x004010f1:    {disp8} mov       eax, dword ptr [esi + 0x08]          
                          test              eax, eax                                      // 0x004010f4    85c0
                          {disp8} je        _jmp_addr_0x00401101                          // 0x004010f6    7409
                          push              eax                                           // 0x004010f8    50
-                         call              ___dl__FPv                                    // 0x004010f9    e89add3a00
+                         call               ___dl__FPv                                   // 0x004010f9    e89add3a00
                          add               esp, 0x04                                     // 0x004010fe    83c404
 _jmp_addr_0x00401101:    test              bl, 0x01                                      // 0x00401101    f6c301
                          {disp8} je        _jmp_addr_0x0040110f                          // 0x00401104    7409
                          push              esi                                           // 0x00401106    56
-                         call              ___dl__FPv                                    // 0x00401107    e88cdd3a00
+                         call               ___dl__FPv                                   // 0x00401107    e88cdd3a00
                          add               esp, 0x04                                     // 0x0040110c    83c404
 _jmp_addr_0x0040110f:    mov.s             eax, esi                                      // 0x0040110f    8bc6
                          pop               esi                                           // 0x00401111    5e
