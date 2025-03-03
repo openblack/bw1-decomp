@@ -469,6 +469,7 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+list(APPEND LIBCMT_PATCHED_OBJECTS "${CMAKE_SOURCE_DIR}/lib/padding_at_0x00c2d4ec.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strtol.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\dosmap.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strncpy.obj" OFF)
