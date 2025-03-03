@@ -1,7 +1,7 @@
 .intel_syntax noprefix
 .align 16
 
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern @__ct__8LHOSFileFv@4
 .extern @__dt__8LHOSFileFv@4
 .extern @Open__8LHOSFileFPc12LH_FILE_MODE@16
@@ -187,7 +187,7 @@ _jmp_addr_0x008a5590:    push             -0x1                                  
                          {disp32} mov     dword ptr [esp + 0x0000014c], ebp        // 0x008a55c9    89ac244c010000
                          lea              eax, dword ptr [eax + eax * 0x2]         // 0x008a55d0    8d0440
                          push             eax                                      // 0x008a55d3    50
-                         call             _operator_new                            // 0x008a55d4    e8150ff2ff
+                         call             _operator_new                           // 0x008a55d4    e8150ff2ff
                          {disp32} mov     cx, word ptr [esi + 0x00000114]          // 0x008a55d9    668b8e14010000
                          {disp32} mov     dx, word ptr [esi + 0x00000116]          // 0x008a55e0    668b9616010000
                          {disp8} mov      dword ptr [esp + 0x2c], eax              // 0x008a55e7    8944242c
@@ -497,7 +497,7 @@ _jmp_addr_0x008a5a1e:    {disp32} mov     eax, dword ptr [esi + 0x00000108]     
                          .byte            0x72, 0xac// {disp8} jb _jmp_addr_0x008a59d5 // 0x008a5a27    72ac
 _jmp_addr_0x008a5a29:    {disp8} mov      edx, dword ptr [esp + 0x28]              // 0x008a5a29    8b542428
                          push             edx                                      // 0x008a5a2d    52
-                         call             ___dl__FPv                               // 0x008a5a2e    e86594f0ff
+                         call              ___dl__FPv                              // 0x008a5a2e    e86594f0ff
                          add              esp, 0x04                                // 0x008a5a33    83c404
                          {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5a36    8d4c2438
                          call             @Close__8LHOSFileFv@4                    // 0x008a5a3a    e8216ef1ff

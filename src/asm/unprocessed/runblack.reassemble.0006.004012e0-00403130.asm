@@ -39,7 +39,7 @@
 .extern _jmp_addr_0x0076d4c0
 .extern _Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi
 .extern _jmp_addr_0x00779590
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007f70e0
 .extern _jmp_addr_0x007f8d10
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
@@ -4722,7 +4722,7 @@ _jmp_addr_0x00402b83:    {disp32} mov       edi, dword ptr [esi + 0x00000090]   
                          mov.s              ecx, edi                                 // 0x00402b8d    8bcf
                          call               _jmp_addr_0x007f70e0                     // 0x00402b8f    e84c453f00
                          push               edi                                      // 0x00402b94    57
-                         call               ___dl__FPv                               // 0x00402b95    e8fec23a00
+                         call                ___dl__FPv                              // 0x00402b95    e8fec23a00
                          add                esp, 0x04                                // 0x00402b9a    83c404
                          {disp32} mov       dword ptr [esi + 0x00000090], 0x00000000 // 0x00402b9d    c7869000000000000000
 _jmp_addr_0x00402ba7:    mov.s              ecx, esi                                 // 0x00402ba7    8bce

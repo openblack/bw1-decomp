@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x00545990
 .extern _jmp_addr_0x00545d80
 .extern _jmp_addr_0x00545f00
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c5f8c
 .extern _wcscpy
 .extern _wcslen
@@ -515,7 +515,7 @@ _jmp_addr_0x00544b18:    {disp8} mov      edx, dword ptr [edi + 0x1c]           
                          ret              0x0008                                        // 0x00544b49    c20800
 _jmp_addr_0x00544b4c:    add              ecx, -0x2                                     // 0x00544b4c    83c1fe
                          push             ecx                                           // 0x00544b4f    51
-                         call             ___dl__FPv                                    // 0x00544b50    e843a32600
+                         call              ___dl__FPv                                   // 0x00544b50    e843a32600
                          add              esp, 0x04                                     // 0x00544b55    83c404
 _jmp_addr_0x00544b58:    add              esp, 0x10                                     // 0x00544b58    83c410
                          ret              0x0008                                        // 0x00544b5b    c20800

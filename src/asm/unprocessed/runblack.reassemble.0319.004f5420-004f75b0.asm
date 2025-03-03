@@ -55,7 +55,7 @@
 .extern _jmp_addr_0x005fa7d0
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
@@ -2309,7 +2309,7 @@ _jmp_addr_0x004f6a1f:    {disp8} mov        edi, dword ptr [ebx + 0x08]         
                          test               esi, esi                                       // 0x004f6a28    85f6
                          {disp8} je         _jmp_addr_0x004f6a5e                           // 0x004f6a2a    7432
                          push               0x8                                            // 0x004f6a2c    6a08
-                         call               _operator_new                                  // 0x004f6a2e    e8bbfa2c00
+                         call               _operator_new                                 // 0x004f6a2e    e8bbfa2c00
                          add                esp, 0x04                                      // 0x004f6a33    83c404
                          test               eax, eax                                       // 0x004f6a36    85c0
                          {disp8} je         _jmp_addr_0x004f6a5e                           // 0x004f6a38    7424
@@ -3095,7 +3095,7 @@ _jmp_addr_0x004f71b9:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x1                                            // 0x004f722b    6a01
                          call               _jmp_addr_0x0046c1b0                           // 0x004f722d    e87e4ff7ff
                          push               esi                                            // 0x004f7232    56
-                         call               ___dl__FPv                                     // 0x004f7233    e8607c2b00
+                         call                ___dl__FPv                                    // 0x004f7233    e8607c2b00
                          add                esp, 0x04                                      // 0x004f7238    83c404
                          xor.s              eax, eax                                       // 0x004f723b    33c0
                          pop                esi                                            // 0x004f723d    5e

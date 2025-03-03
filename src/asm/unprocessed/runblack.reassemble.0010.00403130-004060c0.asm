@@ -84,7 +84,7 @@
 .extern _jmp_addr_0x00752b80
 .extern _jmp_addr_0x007611f0
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x007da710
@@ -1616,7 +1616,7 @@ _jmp_addr_0x00403f31:    {disp8} fld        dword ptr [eax + 0x18]              
                          mov.s              ecx, esi                                      // 0x00403f58    8bce
                          call               _jmp_addr_0x007f70e0                          // 0x00403f5a    e881313f00
                          push               esi                                           // 0x00403f5f    56
-                         call               ___dl__FPv                                    // 0x00403f60    e833af3a00
+                         call                ___dl__FPv                                   // 0x00403f60    e833af3a00
                          add                esp, 0x04                                     // 0x00403f65    83c404
                          {disp32} mov       dword ptr [edi + 0x00000090], 0x00000000      // 0x00403f68    c7879000000000000000
 _jmp_addr_0x00403f72:    {disp8} fld        dword ptr [esp + 0x08]                        // 0x00403f72    d9442408

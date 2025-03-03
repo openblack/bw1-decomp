@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x00741220
 .extern _jmp_addr_0x007466d0
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x007c5791
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
@@ -3043,7 +3043,7 @@ _jmp_addr_0x00414820:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x00414827    8bce
                          call               _jmp_addr_0x0051fbe0                          // 0x00414829    e8b2b31000
                          push               esi                                           // 0x0041482e    56
-                         call               ___dl__FPv                                    // 0x0041482f    e864a63900
+                         call                ___dl__FPv                                   // 0x0041482f    e864a63900
                          add                esp, 0x04                                     // 0x00414834    83c404
 _jmp_addr_0x00414837:    pop                esi                                           // 0x00414837    5e
                          ret                                                              // 0x00414838    c3

@@ -65,7 +65,7 @@
 .extern @__ct__8FragMeshFR10GameOSFileP8LH3DMesh@16
 .extern _jmp_addr_0x0076d680
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007c5791
@@ -301,7 +301,7 @@ _jmp_addr_0x0040628b:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          mov.s              ecx, ebp                                      // 0x0040632c    8bcd
                          call               _jmp_addr_0x007f70e0                          // 0x0040632e    e8ad0d3f00
                          push               ebp                                           // 0x00406333    55
-                         call               ___dl__FPv                                    // 0x00406334    e85f8b3a00
+                         call                ___dl__FPv                                   // 0x00406334    e85f8b3a00
                          add                esp, 0x04                                     // 0x00406339    83c404
 _jmp_addr_0x0040633c:    push               0x00000778                                    // 0x0040633c    6878070000
                          push               0x009c7fbc                                    // 0x00406341    68bc7f9c00
@@ -403,7 +403,7 @@ _jmp_addr_0x0040644e:    {disp32} fld       dword ptr [edi + 0x00000178]        
                          mov.s              ecx, edi                                      // 0x00406496    8bcf
                          call               _jmp_addr_0x007f70e0                          // 0x00406498    e8430c3f00
                          push               edi                                           // 0x0040649d    57
-                         call               ___dl__FPv                                    // 0x0040649e    e8f5893a00
+                         call                ___dl__FPv                                   // 0x0040649e    e8f5893a00
                          add                esp, 0x04                                     // 0x004064a3    83c404
 _jmp_addr_0x004064a6:    pop                edi                                           // 0x004064a6    5f
                          {disp32} mov       dword ptr [esi + 0x00000090], 0x00000000      // 0x004064a7    c7869000000000000000
@@ -4625,7 +4625,7 @@ _jmp_addr_0x00409334:    xor.s              eax, eax                            
                          test               byte ptr [esp + 0x08], 0x01                   // 0x004093a8    f644240801
                          {disp8} je         _jmp_addr_0x004093b8                          // 0x004093ad    7409
                          push               esi                                           // 0x004093af    56
-                         call               ___dl__FPv                                    // 0x004093b0    e8e35a3a00
+                         call                ___dl__FPv                                   // 0x004093b0    e8e35a3a00
                          add                esp, 0x04                                     // 0x004093b5    83c404
 _jmp_addr_0x004093b8:    mov.s              eax, esi                                      // 0x004093b8    8bc6
                          pop                esi                                           // 0x004093ba    5e

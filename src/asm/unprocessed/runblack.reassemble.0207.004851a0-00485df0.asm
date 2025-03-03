@@ -17,7 +17,7 @@
 .extern @GetAnim__9MorphableFll@16
 .extern _GameRand__5GRandFl
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern  ___dl__FPv
 .extern _jmp_addr_0x0085e490
 
 .globl _jmp_addr_0x004851a0
@@ -882,7 +882,7 @@ _jmp_addr_0x00485c0e:    {disp32} mov       ecx, dword ptr [esi + 0x000048bc]   
                          mov.s              ecx, edi                                 // 0x00485cf7    8bcf
                          call               _jmp_addr_0x0085e490                     // 0x00485cf9    e892873d00
                          push               edi                                      // 0x00485cfe    57
-                         call               ___dl__FPv                               // 0x00485cff    e894913200
+                         call                ___dl__FPv                              // 0x00485cff    e894913200
                          add                esp, 0x04                                // 0x00485d04    83c404
                          pop                edi                                      // 0x00485d07    5f
                          {disp32} mov       dword ptr [esi + 0x00005220], 0x00000000 // 0x00485d08    c7862052000000000000
