@@ -469,6 +469,7 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\throw.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strcspn.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\memchr.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\lconv.obj" ON WEAKEN_SYMBOLS ___lconv_static_null)

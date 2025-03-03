@@ -79,7 +79,7 @@ _jmp_KERNEL32_DLL__GetTimeZoneInformation:         jmp              dword ptr [_
 _jmp_KERNEL32_DLL__GetSystemTime:                  jmp              dword ptr [__imp__GetSystemTime@4]                                        // 0x008a515c    ff25f4918a00
 _jmp_KERNEL32_DLL__GetLocalTime:                   jmp              dword ptr [__imp__GetLocalTime@4]                                         // 0x008a5162    ff25f0918a00
 _jmp_KERNEL32_DLL__RtlUnwind:                      jmp              dword ptr [__imp__RtlUnwind@4]                                            // 0x008a5168    ff25ec918a00
-_jmp_KERNEL32_DLL__RaiseException:                 jmp              dword ptr [__imp__RaiseException@4]                                       // 0x008a516e    ff25e8918a00
+_jmp_KERNEL32_DLL__RaiseException:                 jmp              dword ptr [__imp__RaiseException@16]                                      // 0x008a516e    ff25e8918a00
 _jmp_KERNEL32_DLL__SetFileAttributesA:             jmp              dword ptr [__imp__SetFileAttributesA@8]                                   // 0x008a5174    ff25e4918a00
 _jmp_KERNEL32_DLL__HeapReAlloc:                    jmp              dword ptr [__imp__HeapReAlloc@4]                                          // 0x008a517a    ff25e0918a00
 _jmp_KERNEL32_DLL__Beep:                           jmp              dword ptr [__imp__Beep@8]                                                 // 0x008a5180    ff25dc918a00

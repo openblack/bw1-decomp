@@ -322,7 +322,7 @@
 .extern _getc_10LHFilePath
 .extern _jmp_addr_0x007c8859
 .extern _jmp_addr_0x007c8bdf
-.extern _jmp_addr_0x007c8ca8
+.extern __CxxThrowException@8
 .extern _memchr
 .extern _fputc
 .extern _putc
@@ -24686,7 +24686,7 @@ _jmp_addr_0x00777b9a:    push               0x00bef914                          
                          push               0x009bbe18                                      // 0x00777ba8    6818be9b00
                          {disp8} lea        edx, dword ptr [esp + 0x0c]                     // 0x00777bad    8d54240c
                          push               edx                                             // 0x00777bb1    52
-                         call               _jmp_addr_0x007c8ca8                            // 0x00777bb2    e8f1100500
+                         call               __CxxThrowException@8                            // 0x00777bb2    e8f1100500
 _jmp_addr_0x00777bb7:    pop                edi                                             // 0x00777bb7    5f
                          xor.s              eax, eax                                        // 0x00777bb8    33c0
                          pop                esi                                             // 0x00777bba    5e
@@ -25943,7 +25943,7 @@ _jmp_addr_0x00778895:    {disp8} lea        eax, dword ptr [esp + 0x24]         
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                     // 0x007788b0    8d4c2418
                          push               ecx                                             // 0x007788b4    51
                          {disp8} mov        dword ptr [esp + 0x1c], 0x009001f8              // 0x007788b5    c744241cf8019000
-                         call               _jmp_addr_0x007c8ca8                            // 0x007788bd    e8e6030500
+                         call               __CxxThrowException@8                            // 0x007788bd    e8e6030500
                          nop                                                                // 0x007788c2    90
                          nop                                                                // 0x007788c3    90
                          nop                                                                // 0x007788c4    90

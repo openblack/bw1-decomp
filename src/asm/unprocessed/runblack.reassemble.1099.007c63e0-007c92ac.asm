@@ -177,7 +177,7 @@
 .globl _jmp_addr_0x007c8bdf
 .globl _jmp_addr_0x007c8c1c
 .globl _jmp_addr_0x007c8c85
-.globl _jmp_addr_0x007c8ca8
+.globl __CxxThrowException@8
 .globl _strcspn
 
                          {disp8} mov          eax, dword ptr [ebp + 0x08]                 // 0x007c63e0    8b4508
@@ -4235,27 +4235,3 @@ _jmp_addr_0x007c8c9a:    ret                                                    
                          {disp8} jne          _jmp_addr_0x007c8ca7                        // 0x007c8ca0    7505
                          mov                  eax, 0x009a06d4                             // 0x007c8ca2    b8d4069a00
 _jmp_addr_0x007c8ca7:    ret                                                              // 0x007c8ca7    c3
-_jmp_addr_0x007c8ca8:    push                 ebp                                         // 0x007c8ca8    55
-                         mov.s                ebp, esp                                    // 0x007c8ca9    8bec
-                         sub                  esp, 0x20                                   // 0x007c8cab    83ec20
-                         {disp8} mov          eax, dword ptr [ebp + 0x08]                 // 0x007c8cae    8b4508
-                         push                 esi                                         // 0x007c8cb1    56
-                         push                 edi                                         // 0x007c8cb2    57
-                         push                 0x8                                         // 0x007c8cb3    6a08
-                         pop                  ecx                                         // 0x007c8cb5    59
-                         mov                  esi, 0x009a06e8                             // 0x007c8cb6    bee8069a00
-                         {disp8} lea          edi, dword ptr [ebp + -0x20]                // 0x007c8cbb    8d7de0
-                         rep movsd            es:[edi], dword ptr ds:[esi]                // 0x007c8cbe    f3a5
-                         {disp8} mov          dword ptr [ebp + -0x08], eax                // 0x007c8cc0    8945f8
-                         {disp8} mov          eax, dword ptr [ebp + 0x0c]                 // 0x007c8cc3    8b450c
-                         {disp8} mov          dword ptr [ebp + -0x04], eax                // 0x007c8cc6    8945fc
-                         {disp8} lea          eax, dword ptr [ebp + -0x0c]                // 0x007c8cc9    8d45f4
-                         push                 eax                                         // 0x007c8ccc    50
-                         push                 dword ptr [ebp + -0x10]                     // 0x007c8ccd    ff75f0
-                         push                 dword ptr [ebp + -0x1c]                     // 0x007c8cd0    ff75e4
-                         push                 dword ptr [ebp + -0x20]                     // 0x007c8cd3    ff75e0
-                         call                 dword ptr [rdata_bytes + 0x1e8]             // 0x007c8cd6    ff15e8918a00
-                         pop                  edi                                         // 0x007c8cdc    5f
-                         pop                  esi                                         // 0x007c8cdd    5e
-                         leave                                                            // 0x007c8cde    c9
-                         ret                  0x0008                                      // 0x007c8cdf    c20800
