@@ -26,11 +26,11 @@ jobs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
 
-    - name: Download lld, llvm-rc and clang
+    - name: Download patched llvm project
       uses: robinraju/release-downloader@v1
       with:
         repository: 'openblack/llvm-project'
-        tag: 'bw1-decomp-008'
+        tag: 'bw1-decomp-009'
         fileName: 'llvm-${{ matrix.os }}.zip'
         extract: true
         out-file-path: 'llvm'
@@ -47,6 +47,13 @@ jobs:
       run: |
         cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}"
         cmake --build build
+
+    - name: Upload binary build path if it fails
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: failed-build-${{ matrix.os }}
+        path: build/
 
     - name: Verify MD5 sum of resulting binary
       run: |
