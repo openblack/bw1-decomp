@@ -62,7 +62,7 @@
 .globl _stop_draw_sprite_to_screen__Fv
 .globl _IsACmdLineString__FPcPCc
 .globl _ScanParameters__Fv@0
-.globl _jmp_addr_0x00641c60
+.globl _pc_main__Fv
 
 .globl _globl_ct_0x00641840
 .globl _globl_ct_0x00641870
@@ -771,7 +771,7 @@ _jmp_addr_0x00641c51:    pop               edi                                  
                          nop                                                             // 0x00641c5d    90
                          nop                                                             // 0x00641c5e    90
                          nop                                                             // 0x00641c5f    90
-_jmp_addr_0x00641c60:    push              ebp                                           // 0x00641c60    55
+_pc_main__Fv:            push              ebp                                           // 0x00641c60    55
                          mov.s             ebp, esp                                      // 0x00641c61    8bec
                          sub               esp, 0x08                                     // 0x00641c63    83ec08
                          push              ebx                                           // 0x00641c66    53
@@ -819,7 +819,7 @@ _jmp_addr_0x00641cd0:    {disp8} lea       edx, dword ptr [ebp + -0x08]         
                          push              0x00bfea90                                    // 0x00641cf0    6890eabf00
                          push              0x00bfea58                                    // 0x00641cf5    6858eabf00
                          push              ebx                                           // 0x00641cfa    53
-                         call              dword ptr [__imp__MessageBoxA@4]              // 0x00641cfb    ff15b8978a00
+                         call              dword ptr [__imp__MessageBoxA@16]             // 0x00641cfb    ff15b8978a00
                          push              ebx                                           // 0x00641d01    53
                          call              dword ptr [__imp__PostQuitMessage@4]          // 0x00641d02    ff15bc978a00
                          pop               esi                                           // 0x00641d08    5e
