@@ -208,7 +208,7 @@ _jmp_addr_0x0046f2f0:    {disp32} mov     edx, dword ptr [ecx + 0x00000100]     
                          ret              0x0008                                        // 0x0046f322    c20800
 _jmp_addr_0x0046f325:    xor.s            eax, eax                                      // 0x0046f325    33c0
                          ret              0x0008                                        // 0x0046f327    c20800
-                         call             dword ptr [__imp__MessageBoxA@4]              // 0x0046f32a    ff15b8978a00
+                         call             dword ptr [__imp__MessageBoxA@16]             // 0x0046f32a    ff15b8978a00
 _jmp_addr_0x0046f330:    {disp32} mov     eax, dword ptr [ecx + 0x00000208]             // 0x0046f330    8b8108020000
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x0046f336    8b542404
                          add              ecx, 0x00000208                               // 0x0046f33a    81c108020000

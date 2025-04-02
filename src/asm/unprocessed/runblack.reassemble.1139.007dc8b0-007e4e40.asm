@@ -2083,7 +2083,7 @@ _jmp_addr_0x007dddc9:    {disp8} mov        eax, dword ptr [esi + 0x64]         
                          push               0x00c31548                                    // 0x007dde62    684815c300
                          push               ebx                                           // 0x007dde67    53
                          {disp32} mov       byte ptr [data_bytes + 0x4c60f8], 0x01        // 0x007dde68    c605f8c0e80001
-                         call               dword ptr [__imp__MessageBoxA@4]              // 0x007dde6f    ff15b8978a00
+                         call               dword ptr [__imp__MessageBoxA@16]             // 0x007dde6f    ff15b8978a00
                          pop                edi                                           // 0x007dde75    5f
                          pop                esi                                           // 0x007dde76    5e
                          pop                ebp                                           // 0x007dde77    5d
@@ -3597,7 +3597,7 @@ _jmp_addr_0x007dee81:    {disp8} mov        eax, dword ptr [esp + 0x00]         
                          push               0x00bec320                                    // 0x007dee8e    6820c3be00
                          push               0x00c33e14                                    // 0x007dee93    68143ec300
                          push               0x0                                           // 0x007dee98    6a00
-                         call               dword ptr [__imp__MessageBoxA@4]              // 0x007dee9a    ff15b8978a00
+                         call               dword ptr [__imp__MessageBoxA@16]             // 0x007dee9a    ff15b8978a00
                          cmp                eax, 0x02                                     // 0x007deea0    83f802
                          {disp8} je         _jmp_addr_0x007deee4                          // 0x007deea3    743f
 _jmp_addr_0x007deea5:    {disp8} mov        ecx, dword ptr [esp + 0x1c]                   // 0x007deea5    8b4c241c
