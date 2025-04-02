@@ -819,7 +819,7 @@ _jmp_addr_0x00641cd0:    {disp8} lea       edx, dword ptr [ebp + -0x08]         
                          push              0x00bfea90                                    // 0x00641cf0    6890eabf00
                          push              0x00bfea58                                    // 0x00641cf5    6858eabf00
                          push              ebx                                           // 0x00641cfa    53
-                         call              dword ptr [__imp__MessageBoxA@4]              // 0x00641cfb    ff15b8978a00
+                         call              dword ptr [__imp__MessageBoxA@16]             // 0x00641cfb    ff15b8978a00
                          push              ebx                                           // 0x00641d01    53
                          call              dword ptr [__imp__PostQuitMessage@4]          // 0x00641d02    ff15bc978a00
                          pop               esi                                           // 0x00641d08    5e

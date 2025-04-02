@@ -484,7 +484,7 @@
 .globl __imp__LHSampleStop_LH_AudioSystem__QAEPAULH_SampleInfo__PAVLH_AudioBank__KK_Z@4
 .globl __imp__ShellExecuteA@4
 .globl __imp__GetWindowDC@4
-.globl __imp__MessageBoxA@4
+.globl __imp__MessageBoxA@16
 .globl __imp__PostQuitMessage@4
 .globl __imp__SetWindowTextA@4
 .globl __imp__LoadImageA@4
@@ -1099,7 +1099,7 @@ __imp__LHSampleStop_LH_AudioSystem__QAEPAULH_SampleInfo__PAVLH_AudioBank__KK_Z@4
 __imp__ShellExecuteA@4:                                                                                                        .long 0x005c06ec // 0x008a97ac SHELL32.dll::ShellExecuteA
 .long 0
 __imp__GetWindowDC@4:                                                                                                          .long 0x005c05d4 // 0x008a97b4 USER32.dll::GetWindowDC
-__imp__MessageBoxA@4:                                                                                                          .long 0x005c0614 // 0x008a97b8 USER32.dll::MessageBoxA
+__imp__MessageBoxA@16:                                                                                                         .long 0x005c0614 // 0x008a97b8 USER32.dll::MessageBoxA
 __imp__PostQuitMessage@4:                                                                                                      .long 0x005c0602 // 0x008a97bc USER32.dll::PostQuitMessage
 __imp__SetWindowTextA@4:                                                                                                       .long 0x005c05f0 // 0x008a97c0 USER32.dll::SetWindowTextA
 __imp__LoadImageA@4:                                                                                                           .long 0x005c05e2 // 0x008a97c4 USER32.dll::LoadImageA
