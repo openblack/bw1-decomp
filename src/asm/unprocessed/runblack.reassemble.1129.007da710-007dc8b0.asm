@@ -69,7 +69,7 @@
 .globl _jmp_addr_0x007db8f0
 .globl _jmp_addr_0x007db910
 .globl _jmp_addr_0x007db940
-.globl _jmp_addr_0x007dbc30
+.globl _jmp_addr_0x007dbc30@16
 .globl _jmp_addr_0x007dbed0
 
 .globl _globl_ct_0x007db7b0
@@ -2077,7 +2077,7 @@ _jmp_addr_0x007dbc16:    {disp8} mov       ecx, dword ptr [esp + 0x1c]          
                          add               esp, 0x1c                                      // 0x007dbc2b    83c41c
                          ret                                                              // 0x007dbc2e    c3
                          nop                                                              // 0x007dbc2f    90
-_jmp_addr_0x007dbc30:    {disp32} mov      eax, dword ptr [rdata_bytes + 0x358]           // 0x007dbc30    a158938a00
+_jmp_addr_0x007dbc30@16: {disp32} mov      eax, dword ptr [rdata_bytes + 0x358]           // 0x007dbc30    a158938a00
                          push              ebx                                            // 0x007dbc35    53
                          {disp32} mov      ebx, dword ptr [__imp__LoadCursorA@4]          // 0x007dbc36    8b1d58988a00
                          push              esi                                            // 0x007dbc3c    56

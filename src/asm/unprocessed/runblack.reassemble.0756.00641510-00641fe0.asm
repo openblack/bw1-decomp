@@ -62,7 +62,7 @@
 .globl _stop_draw_sprite_to_screen__Fv
 .globl _IsACmdLineString__FPcPCc
 .globl _ScanParameters__Fv@0
-.globl _jmp_addr_0x00641c60
+.globl _pc_main__Fv
 
 .globl _globl_ct_0x00641840
 .globl _globl_ct_0x00641870
@@ -771,7 +771,7 @@ _jmp_addr_0x00641c51:    pop               edi                                  
                          nop                                                             // 0x00641c5d    90
                          nop                                                             // 0x00641c5e    90
                          nop                                                             // 0x00641c5f    90
-_jmp_addr_0x00641c60:    push              ebp                                           // 0x00641c60    55
+_pc_main__Fv:            push              ebp                                           // 0x00641c60    55
                          mov.s             ebp, esp                                      // 0x00641c61    8bec
                          sub               esp, 0x08                                     // 0x00641c63    83ec08
                          push              ebx                                           // 0x00641c66    53

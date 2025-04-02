@@ -9,7 +9,7 @@
 
 .extern @SetSpeedUpFactor__7LHTimerFf@12
 .extern _jmp_addr_0x00449650
-.extern _jmp_addr_0x00641c60
+.extern _pc_main__Fv
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007aeea3
@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x007db8f0
 .extern _jmp_addr_0x007db910
 .extern _jmp_addr_0x007db940
-.extern _jmp_addr_0x007dbc30
+.extern _jmp_addr_0x007dbc30@16
 .extern _jmp_addr_0x007dbed0
 .extern @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16
 .extern _jmp_addr_0x007e67e0
@@ -3608,7 +3608,7 @@ _jmp_addr_0x007deea5:    {disp8} mov        ecx, dword ptr [esp + 0x1c]         
                          push               edx                                           // 0x007deeb6    52
                          push               eax                                           // 0x007deeb7    50
                          push               ecx                                           // 0x007deeb8    51
-                         call               _jmp_addr_0x007dbc30                          // 0x007deeb9    e872cdffff
+                         call               _jmp_addr_0x007dbc30@16                       // 0x007deeb9    e872cdffff
                          {disp8} lea        edx, dword ptr [esp + 0x04]                   // 0x007deebe    8d542404
                          {disp8} lea        eax, dword ptr [esp + 0x08]                   // 0x007deec2    8d442408
                          push               edx                                           // 0x007deec6    52
@@ -3618,7 +3618,7 @@ _jmp_addr_0x007deea5:    {disp8} mov        ecx, dword ptr [esp + 0x1c]         
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x007deed1    8b542410
                          push               ecx                                           // 0x007deed5    51
                          push               edx                                           // 0x007deed6    52
-                         call               _jmp_addr_0x00641c60                          // 0x007deed7    e8842de6ff
+                         call               _pc_main__Fv                                  // 0x007deed7    e8842de6ff
                          add                esp, 0x10                                     // 0x007deedc    83c410
                          call               _jmp_addr_0x007dbed0                          // 0x007deedf    e8eccfffff
 _jmp_addr_0x007deee4:    xor.s              eax, eax                                      // 0x007deee4    33c0
