@@ -1846,7 +1846,7 @@ _jmp_addr_0x006f6375:    mov.s              eax, edi                            
                          push               ebx                                           // 0x006f6380    53
                          push               esi                                           // 0x006f6381    56
                          push               edi                                           // 0x006f6382    57
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x170]          // 0x006f6383    8b3d70918a00
+                         {disp32} mov       edi, dword ptr [__imp__GetProcAddress@4]      // 0x006f6383    8b3d70918a00
                          mov.s              esi, ecx                                      // 0x006f6389    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x08]                   // 0x006f638b    8b4608
                          push               0x00c0d35c                                    // 0x006f638e    685cd3c000

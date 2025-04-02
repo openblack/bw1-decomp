@@ -280,7 +280,7 @@ _jmp_addr_0x00449fae:    {disp32} mov       edx, dword ptr [ebp + 0x00000094]   
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x294fec]        // 0x00449fb4    8b0decafc500
                          mov                esi, dword ptr [ecx]                          // 0x00449fba    8b31
                          push               edx                                           // 0x00449fbc    52
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x00449fbd    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x00449fbd    ff15c4918a00
                          shr                eax, 3                                        // 0x00449fc3    c1e803
                          and                eax, 0x000001ff                               // 0x00449fc6    25ff010000
                          {disp8} mov        dword ptr [esp + 0x2c], eax                   // 0x00449fcb    8944242c
@@ -1488,7 +1488,7 @@ _jmp_addr_0x0044aba0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          mov.s              eax, esi                                      // 0x0044abc4    8bc6
                          pop                esi                                           // 0x0044abc6    5e
                          ret                0x0008                                        // 0x0044abc7    c20800
-                         call               dword ptr [rdata_bytes + 0x190]               // 0x0044abca    ff1590918a00
+                         call               dword ptr [__imp__RemoveDirectoryA@4]         // 0x0044abca    ff1590918a00
                          mov                eax, 0x00000001                               // 0x0044abd0    b801000000
                          ret                                                              // 0x0044abd5    c3
                          nop                                                              // 0x0044abd6    90
@@ -2546,7 +2546,7 @@ _jmp_addr_0x0044b7f5:    pop                edi                                 
                          xor.s              eax, eax                                      // 0x0044b7f6    33c0
                          pop                esi                                           // 0x0044b7f8    5e
                          ret                                                              // 0x0044b7f9    c3
-                         call               dword ptr [rdata_bytes + 0x950]               // 0x0044b7fa    ff1550998a00
+                         call               dword ptr [__imp__BinkSetSoundOnOff@8]        // 0x0044b7fa    ff1550998a00
 @__ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii@28:    sub                esp, 0x0c                                     // 0x0044b800    83ec0c
                          push               esi                                           // 0x0044b803    56
                          push               edi                                           // 0x0044b804    57
@@ -7742,7 +7742,7 @@ _jmp_addr_0x0044f66d:    xor.s              ebx, ebx                            
                          {disp8} mov        dword ptr [ecx + 0x08], edx                   // 0x0044f750    895108
                          {disp32} mov       dword ptr [esi + 0x00000110], eax             // 0x0044f753    898610010000
                          {disp32} mov       dword ptr [esi + 0x0000010c], eax             // 0x0044f759    89860c010000
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0044f75f    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0044f75f    ff15c4918a00
                          push               edi                                           // 0x0044f765    57
                          dec                eax                                           // 0x0044f766    48
                          push               ebp                                           // 0x0044f767    55

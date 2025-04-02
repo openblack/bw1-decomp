@@ -4449,7 +4449,7 @@ _jmp_addr_0x0070e74e:    push               edi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x0070e74f    8d4c2414
                          push               0x00c2094c                                    // 0x0070e753    684c09c200
                          push               ecx                                           // 0x0070e758    51
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x0070e759    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x0070e759    ff155c938a00
                          push               eax                                           // 0x0070e75f    50
                          call               _jmp_addr_0x006f62b0                          // 0x0070e760    e84b7bfeff
                          add                esp, 0x10                                     // 0x0070e765    83c410

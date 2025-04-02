@@ -1391,7 +1391,7 @@ _jmp_addr_0x00470b30:    {disp32} mov       al, byte ptr [data_bytes + 0x2988c8]
                          push               ebx                                           // 0x00470b38    53
                          push               ebp                                           // 0x00470b39    55
                          push               esi                                           // 0x00470b3a    56
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x1c4]          // 0x00470b3b    8b35c4918a00
+                         {disp32} mov       esi, dword ptr [__imp__GetTickCount@4]        // 0x00470b3b    8b35c4918a00
                          xor.s              ebp, ebp                                      // 0x00470b41    33ed
                          test               al, 0x01                                      // 0x00470b43    a801
                          push               edi                                           // 0x00470b45    57
@@ -1636,7 +1636,7 @@ _jmp_addr_0x00470e80:    {disp32} mov       al, byte ptr [data_bytes + 0x2987b0]
                          push               ebx                                           // 0x00470e88    53
                          push               ebp                                           // 0x00470e89    55
                          push               esi                                           // 0x00470e8a    56
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x1c4]          // 0x00470e8b    8b35c4918a00
+                         {disp32} mov       esi, dword ptr [__imp__GetTickCount@4]        // 0x00470e8b    8b35c4918a00
                          xor.s              ebp, ebp                                      // 0x00470e91    33ed
                          test               al, 0x01                                      // 0x00470e93    a801
                          push               edi                                           // 0x00470e95    57

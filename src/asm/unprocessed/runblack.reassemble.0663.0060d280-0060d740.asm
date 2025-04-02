@@ -176,7 +176,7 @@ _IsWater__10LH3DIslandFll:    {disp8} mov       ecx, dword ptr [esp + 0x04]     
 _jmp_addr_0x0060d403:    mov               eax, 0x00000001                             // 0x0060d403    b801000000
                          pop               esi                                         // 0x0060d408    5e
                          ret                                                           // 0x0060d409    c3
-                         call              dword ptr [rdata_bytes + 0x7bc]             // 0x0060d40a    ff15bc978a00
+                         call              dword ptr [__imp__PostQuitMessage@4]        // 0x0060d40a    ff15bc978a00
 @fetch__19CircleHugStateInfoTF9MapCoords@20:    sub               esp, 0x20                                   // 0x0060d410    83ec20
                          mov               eax, 0x00008000                             // 0x0060d413    b800800000
                          push              esi                                         // 0x0060d418    56

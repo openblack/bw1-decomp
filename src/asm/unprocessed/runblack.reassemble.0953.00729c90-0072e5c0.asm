@@ -6908,7 +6908,7 @@ _jmp_addr_0x0072de67:    {disp8} mov        dword ptr [esi + 0x14], edi         
                          {disp8} fld        dword ptr [esi + 0x20]                        // 0x0072de76    d94620
                          push               edi                                           // 0x0072de79    57
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0072de7a    d81d98a38a00
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x88c]          // 0x0072de80    8b3d8c988a00
+                         {disp32} mov       edi, dword ptr [__imp__timeGetTime@4]         // 0x0072de80    8b3d8c988a00
                          fnstsw             ax                                            // 0x0072de86    dfe0
                          test               ah, 0x40                                      // 0x0072de88    f6c440
                          {disp8} je         _jmp_addr_0x0072de95                          // 0x0072de8b    7408
@@ -7054,7 +7054,7 @@ _jmp_addr_0x0072e002:    push               0x0                                 
                          and                ecx, 0xffffffc3                               // 0x0072e04b    83e1c3
                          or                 ecx, 3                                        // 0x0072e04e    83c903
                          {disp8} mov        dword ptr [eax + 0x28], ecx                   // 0x0072e051    894828
-                         call               dword ptr [rdata_bytes + 0x88c]               // 0x0072e054    ff158c988a00
+                         call               dword ptr [__imp__timeGetTime@4]              // 0x0072e054    ff158c988a00
                          {disp8} mov        edx, dword ptr [esi + 0x14]                   // 0x0072e05a    8b5614
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x0072e05d    89442404
                          {disp8} mov        dword ptr [esp + 0x08], 0x00000000            // 0x0072e061    c744240800000000

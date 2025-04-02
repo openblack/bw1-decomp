@@ -3127,7 +3127,7 @@ _SetCurrentProfile__13PlayerProfileFPw:    sub                esp, 0x00000200   
                          push               esi                                           // 0x0066b7a6    56
                          {disp32} mov       esi, dword ptr [esp + 0x00000208]             // 0x0066b7a7    8bb42408020000
                          push               esi                                           // 0x0066b7ae    56
-                         call               dword ptr [rdata_bytes + 0x548]               // 0x0066b7af    ff1548958a00
+                         call               dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x0066b7af    ff1548958a00
                          push               esi                                           // 0x0066b7b5    56
                          call               dword ptr [rdata_bytes + 0x5d0]               // 0x0066b7b6    ff15d0958a00
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                   // 0x0066b7bc    8d44240c
@@ -3427,7 +3427,7 @@ _jmp_addr_0x0066bad0:    sub                esp, 0x00000304                     
                          call               _jmp_addr_0x0066b900                          // 0x0066bae1    e81afeffff
                          {disp32} mov       esi, dword ptr [esp + 0x00000318]             // 0x0066bae6    8bb42418030000
                          push               esi                                           // 0x0066baed    56
-                         call               dword ptr [rdata_bytes + 0x548]               // 0x0066baee    ff1548958a00
+                         call               dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x0066baee    ff1548958a00
                          push               esi                                           // 0x0066baf4    56
                          {disp32} mov       esi, dword ptr [esp + 0x00000324]             // 0x0066baf5    8bb42424030000
                          {disp32} lea       ecx, dword ptr [esi + 0x00000200]             // 0x0066bafc    8d8e00020000
@@ -3553,7 +3553,7 @@ _jmp_addr_0x0066bc87:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          call               _jmp_addr_0x005c4840                          // 0x0066bc9a    e8a18bf5ff
 _jmp_addr_0x0066bc9f:    {disp32} lea       edx, dword ptr [esp + 0x00000104]             // 0x0066bc9f    8d942404010000
                          push               edx                                           // 0x0066bca6    52
-                         call               dword ptr [rdata_bytes + 0x548]               // 0x0066bca7    ff1548958a00
+                         call               dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x0066bca7    ff1548958a00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x0066bcad    a15c19d000
                          add                esp, 0x04                                     // 0x0066bcb2    83c404
                          {disp32} lea       ecx, dword ptr [eax + 0x00250310]             // 0x0066bcb5    8d8810032500

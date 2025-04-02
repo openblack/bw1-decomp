@@ -1479,7 +1479,7 @@ _jmp_addr_0x00424e62:    mov.s              eax, edi                            
                          pop                esi                                           // 0x00424e65    5e
                          add                esp, 0x0c                                     // 0x00424e66    83c40c
                          ret                                                              // 0x00424e69    c3
-                         call               dword ptr [rdata_bytes + 0x978]               // 0x00424e6a    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x00424e6a    ff1578998a00
 _jmp_addr_0x00424e70:    sub                esp, 0x0c                                     // 0x00424e70    83ec0c
                          {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x00424e73    8b442418
                          push               ebx                                           // 0x00424e77    53
@@ -3089,7 +3089,7 @@ _jmp_addr_0x00425d00:    push               esi                                 
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00425d50    8b442404
                          {disp8} mov        dword ptr [ecx + 0x24], eax                   // 0x00425d54    894124
                          ret                0x0004                                        // 0x00425d57    c20400
-                         call               dword ptr [rdata_bytes + 0x14]                // 0x00425d5a    ff1514908a00
+                         call               dword ptr [__imp__RegSetValueExA@4]           // 0x00425d5a    ff1514908a00
                          {disp8} mov        eax, dword ptr [ecx + 0x18]                   // 0x00425d60    8b4118
                          ret                                                              // 0x00425d63    c3
                          nop                                                              // 0x00425d64    90

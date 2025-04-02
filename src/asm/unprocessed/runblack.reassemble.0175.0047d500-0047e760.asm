@@ -1096,7 +1096,7 @@ _jmp_addr_0x0047e000:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          push               0x009cf968                                    // 0x0047e01f    6868f99c00
                          push               eax                                           // 0x0047e024    50
                          call               _jmp_addr_0x007c57d2                          // 0x0047e025    e8a8773400
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x228]          // 0x0047e02a    8b3d28928a00
+                         {disp32} mov       edi, dword ptr [__imp__DeleteFileA@4]         // 0x0047e02a    8b3d28928a00
                          add                esp, 0x0c                                     // 0x0047e030    83c40c
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                   // 0x0047e033    8d4c2408
                          push               ecx                                           // 0x0047e037    51

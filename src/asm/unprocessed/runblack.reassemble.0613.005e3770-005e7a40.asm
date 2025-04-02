@@ -2650,7 +2650,7 @@ _jmp_addr_0x005e581e:    call               _jmp_addr_0x00823780                
 _jmp_addr_0x005e5823:    call               _jmp_addr_0x0086d460                          // 0x005e5823    e8387c2800
                          pop                ecx                                           // 0x005e5828    59
                          ret                                                              // 0x005e5829    c3
-                         call               dword ptr [rdata_bytes + 0x8fc]               // 0x005e582a    ff15fc988a00
+                         call               dword ptr [__imp__sendto@4]                   // 0x005e582a    ff15fc988a00
 _jmp_addr_0x005e5830:    sub                esp, 0x20                                     // 0x005e5830    83ec20
                          call               _jmp_addr_0x005e25c0                          // 0x005e5833    e888cdffff
                          call               _jmp_addr_0x0083f8b0                          // 0x005e5838    e873a02500
@@ -3911,7 +3911,7 @@ _jmp_addr_0x005e67c0:    push               esi                                 
                          call               _jmp_addr_0x007ae0e0                          // 0x005e67e3    e8f8781c00
 _jmp_addr_0x005e67e8:    pop                esi                                           // 0x005e67e8    5e
                          ret                                                              // 0x005e67e9    c3
-                         call               dword ptr [rdata_bytes + 0x10c]               // 0x005e67ea    ff150c918a00
+                         call               dword ptr [__imp__ImmAssociateContext@4]      // 0x005e67ea    ff150c918a00
 _globl_ct_0x005e67f0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x005e67f0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x005e67f6    b001
                          test               al, cl                                        // 0x005e67f8    84c8
@@ -4542,7 +4542,7 @@ _jmp_addr_0x005e6e8d:    pop                edi                                 
                          pop                ebx                                           // 0x005e6e90    5b
                          add                esp, 0x0000018c                               // 0x005e6e91    81c48c010000
                          ret                0x0008                                        // 0x005e6e97    c20800
-                         call               dword ptr [rdata_bytes + 0x74]                // 0x005e6e9a    ff1574908a00
+                         call               dword ptr [__imp__DeleteDC@4]                 // 0x005e6e9a    ff1574908a00
 _jmp_addr_0x005e6ea0:    sub                esp, 0x00000168                               // 0x005e6ea0    81ec68010000
                          push               ebp                                           // 0x005e6ea6    55
                          push               esi                                           // 0x005e6ea7    56

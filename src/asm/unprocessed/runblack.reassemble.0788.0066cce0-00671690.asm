@@ -639,7 +639,7 @@ _jmp_addr_0x0066d1a0:    sub                esp, 0x00000174                     
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30db20]        // 0x0066d1b5    a1203bcd00
                          {disp32} mov       ecx, dword ptr [eax + 0x000003ac]             // 0x0066d1ba    8b88ac030000
                          cmp                dword ptr [esp + 0x0000018c], 0x000000c8      // 0x0066d1c0    81bc248c010000c8000000
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x1c4]          // 0x0066d1cb    8b3dc4918a00
+                         {disp32} mov       edi, dword ptr [__imp__GetTickCount@4]        // 0x0066d1cb    8b3dc4918a00
                          {disp8} mov        dword ptr [esp + 0x1c], ecx                   // 0x0066d1d1    894c241c
                          {disp8} jae        _jmp_addr_0x0066d1f7                          // 0x0066d1d5    7320
                          call               edi                                           // 0x0066d1d7    ffd7

@@ -278,7 +278,7 @@ _jmp_addr_0x00641216:    xor.s            ecx, ecx                              
                          {disp32} lea     edx, dword ptr [esp + 0x00000410]             // 0x0064125a    8d942410040000
                          push             0x00bfe708                                    // 0x00641261    6808e7bf00
                          push             edx                                           // 0x00641266    52
-                         call             dword ptr [rdata_bytes + 0x35c]               // 0x00641267    ff155c938a00
+                         call             dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x00641267    ff155c938a00
                          push             eax                                           // 0x0064126d    50
                          call             _CHAR2WCHAR__FPc                              // 0x0064126e    e82dee1e00
                          {disp32} mov     esi, dword ptr [data_bytes + 0x34043c]        // 0x00641273    8b353c64d000
@@ -313,7 +313,7 @@ _jmp_addr_0x006412b1:    push             eax                                   
                          {disp32} lea     ecx, dword ptr [esp + 0x00000810]             // 0x006412d5    8d8c2410080000
                          push             0x00bfe6f0                                    // 0x006412dc    68f0e6bf00
                          push             ecx                                           // 0x006412e1    51
-                         call             dword ptr [rdata_bytes + 0x35c]               // 0x006412e2    ff155c938a00
+                         call             dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x006412e2    ff155c938a00
                          push             eax                                           // 0x006412e8    50
                          call             _CHAR2WCHAR__FPc                              // 0x006412e9    e8b2ed1e00
                          {disp32} mov     esi, dword ptr [data_bytes + 0x34043c]        // 0x006412ee    8b353c64d000

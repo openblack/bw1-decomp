@@ -1444,7 +1444,7 @@ _jmp_addr_0x00553835:    {disp32} fld       dword ptr [esi + 0x00205e70]        
                          test               ah, 0x40                                      // 0x0055384d    f6c440
                          {disp8} jne        _jmp_addr_0x005538be                          // 0x00553850    756c
                          push               edi                                           // 0x00553852    57
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x1c4]          // 0x00553853    8b3dc4918a00
+                         {disp32} mov       edi, dword ptr [__imp__GetTickCount@4]        // 0x00553853    8b3dc4918a00
                          call               edi                                           // 0x00553859    ffd7
                          {disp32} mov       ecx, dword ptr [esi + 0x00205e68]             // 0x0055385b    8b8e685e2000
                          {disp32} mov       edx, dword ptr [esi + 0x00205e6c]             // 0x00553861    8b966c5e2000

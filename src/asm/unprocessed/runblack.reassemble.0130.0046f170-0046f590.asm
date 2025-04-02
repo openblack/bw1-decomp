@@ -43,7 +43,7 @@ _jmp_addr_0x0046f170:    mov              edx, dword ptr [ecx]                  
                          test             edx, edx                                      // 0x0046f174    85d2
                          setne            al                                            // 0x0046f176    0f95c0
                          ret                                                            // 0x0046f179    c3
-                         call             dword ptr [rdata_bytes + 0x3c]                // 0x0046f17a    ff153c908a00
+                         call             dword ptr [__imp__DirectXSetupGetVersion]     // 0x0046f17a    ff153c908a00
 @GetDisplayText__12ControlMouseFPw@12:    cmp              dword ptr [ecx], 0x00                         // 0x0046f180    833900
                          {disp8} je       _jmp_addr_0x0046f19c                          // 0x0046f183    7417
                          {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f185    8b442404
@@ -208,7 +208,7 @@ _jmp_addr_0x0046f2f0:    {disp32} mov     edx, dword ptr [ecx + 0x00000100]     
                          ret              0x0008                                        // 0x0046f322    c20800
 _jmp_addr_0x0046f325:    xor.s            eax, eax                                      // 0x0046f325    33c0
                          ret              0x0008                                        // 0x0046f327    c20800
-                         call             dword ptr [rdata_bytes + 0x7b8]               // 0x0046f32a    ff15b8978a00
+                         call             dword ptr [__imp__MessageBoxA@4]              // 0x0046f32a    ff15b8978a00
 _jmp_addr_0x0046f330:    {disp32} mov     eax, dword ptr [ecx + 0x00000208]             // 0x0046f330    8b8108020000
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x0046f336    8b542404
                          add              ecx, 0x00000208                               // 0x0046f33a    81c108020000

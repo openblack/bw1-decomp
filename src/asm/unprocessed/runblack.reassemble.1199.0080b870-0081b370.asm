@@ -17414,7 +17414,7 @@ _globl_ct_0x008189f0:    {disp32} jmp       _jmp_addr_0x00818a00                
                          nop                                                              // 0x008189ff    90
 _jmp_addr_0x00818a00:    sub                esp, 0x08                                     // 0x00818a00    83ec08
                          push               esi                                           // 0x00818a03    56
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x1c4]          // 0x00818a04    8b35c4918a00
+                         {disp32} mov       esi, dword ptr [__imp__GetTickCount@4]        // 0x00818a04    8b35c4918a00
                          push               edi                                           // 0x00818a0a    57
                          {disp32} mov       dword ptr [data_bytes + 0x4dbc80], 0x3f800000 // 0x00818a0b    c705801cea000000803f
                          {disp32} mov       dword ptr [data_bytes + 0x4dbc84], 0x00000000 // 0x00818a15    c705841cea0000000000
@@ -17591,7 +17591,7 @@ _RenderInitialization__8LH3DTechFll:    push               ecx                  
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x00818c7b    89442408
                          call               @MSeconds__7LHTimerFv@4                       // 0x00818c7f    e8ec5ec2ff
                          {disp32} mov       dword ptr [data_bytes + 0x4dbc7c], eax        // 0x00818c84    a37c1cea00
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x00818c89    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x00818c89    ff15c4918a00
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00818c8f    8b4c2408
                          {disp32} mov       dword ptr [data_bytes + 0x4dbc80], ecx        // 0x00818c93    890d801cea00
                          mov                edx, 0x00ea9e40                               // 0x00818c99    ba409eea00

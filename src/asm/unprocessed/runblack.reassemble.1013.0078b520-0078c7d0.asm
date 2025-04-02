@@ -130,7 +130,7 @@ _jmp_addr_0x0078b61a:    cmp                dword ptr [data_bytes + 0x43be80], e
                          push               ebx                                           // 0x0078b62e    53
                          push               ebx                                           // 0x0078b62f    53
                          push               0x2                                           // 0x0078b630    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078b632    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078b632    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078b638    33d2
                          mov                ecx, 0x00000006                               // 0x0078b63a    b906000000
                          div                ecx                                           // 0x0078b63f    f7f1
@@ -238,7 +238,7 @@ _jmp_addr_0x0078b74a:    cmp                dword ptr [data_bytes + 0x43be88], e
                          push               ebx                                           // 0x0078b75e    53
                          push               ebx                                           // 0x0078b75f    53
                          push               0x2                                           // 0x0078b760    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078b762    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078b762    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078b768    33d2
                          mov                ecx, 0x00000006                               // 0x0078b76a    b906000000
                          div                ecx                                           // 0x0078b76f    f7f1
@@ -346,7 +346,7 @@ _jmp_addr_0x0078b87a:    cmp                dword ptr [data_bytes + 0x43be98], e
                          push               ebx                                           // 0x0078b88e    53
                          push               ebx                                           // 0x0078b88f    53
                          push               0x2                                           // 0x0078b890    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078b892    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078b892    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078b898    33d2
                          mov                ecx, 0x00000006                               // 0x0078b89a    b906000000
                          div                ecx                                           // 0x0078b89f    f7f1
@@ -454,7 +454,7 @@ _jmp_addr_0x0078b9aa:    cmp                dword ptr [data_bytes + 0x43bea0], e
                          push               ebx                                           // 0x0078b9be    53
                          push               ebx                                           // 0x0078b9bf    53
                          push               0x2                                           // 0x0078b9c0    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078b9c2    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078b9c2    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078b9c8    33d2
                          mov                ecx, 0x00000006                               // 0x0078b9ca    b906000000
                          div                ecx                                           // 0x0078b9cf    f7f1
@@ -562,7 +562,7 @@ _jmp_addr_0x0078bada:    cmp                dword ptr [data_bytes + 0x43be90], e
                          push               ebx                                           // 0x0078baee    53
                          push               ebx                                           // 0x0078baef    53
                          push               0x2                                           // 0x0078baf0    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078baf2    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078baf2    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078baf8    33d2
                          mov                ecx, 0x00000006                               // 0x0078bafa    b906000000
                          div                ecx                                           // 0x0078baff    f7f1
@@ -670,7 +670,7 @@ _jmp_addr_0x0078bc0a:    cmp                dword ptr [data_bytes + 0x43bea8], e
                          push               ebx                                           // 0x0078bc1e    53
                          push               ebx                                           // 0x0078bc1f    53
                          push               0x2                                           // 0x0078bc20    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078bc22    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078bc22    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078bc28    33d2
                          mov                ecx, 0x00000006                               // 0x0078bc2a    b906000000
                          div                ecx                                           // 0x0078bc2f    f7f1
@@ -779,7 +779,7 @@ _jmp_addr_0x0078bd3f:    cmp                dword ptr [data_bytes + 0x43beb0], e
                          push               ebx                                           // 0x0078bd53    53
                          push               ebx                                           // 0x0078bd54    53
                          push               0x2                                           // 0x0078bd55    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078bd57    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078bd57    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078bd5d    33d2
                          mov                ecx, 0x00000006                               // 0x0078bd5f    b906000000
                          div                ecx                                           // 0x0078bd64    f7f1

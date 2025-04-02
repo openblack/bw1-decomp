@@ -1274,7 +1274,7 @@ _jmp_addr_0x00850fc0:    sub                esp, 0x20                           
                          {disp32} fld       dword ptr [rdata_bytes + 0x1390]              // 0x00850ff0    d90590a38a00
                          {disp32} fdiv      dword ptr [data_bytes + 0x4bda04]             // 0x00850ff6    d835043ae800
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x00850ffc    d95c241c
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x00851000    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x00851000    ff15c4918a00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x5e33bc]        // 0x00851006    a1bc93fa00
                          test               byte ptr [eax], 0x01                          // 0x0085100b    f60001
                          {disp32} jne       _jmp_addr_0x00851285                          // 0x0085100e    0f8571020000

@@ -1783,7 +1783,7 @@ _jmp_addr_0x004da000:    {disp8} mov        dword ptr [edi + 0x74], ebp         
                          pop                ebp                                                  // 0x004da007    5d
                          pop                ebx                                                  // 0x004da008    5b
                          ret                                                                     // 0x004da009    c3
-                         call               dword ptr [rdata_bytes + 0x944]                      // 0x004da00a    ff1544998a00
+                         call               dword ptr [__imp__BinkNextFrame@4]                   // 0x004da00a    ff1544998a00
 _jmp_addr_0x004da010:    mov.s              eax, ecx                                             // 0x004da010    8bc1
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                          // 0x004da012    8b4c2404
                          {disp8} mov        edx, dword ptr [ecx + 0x04]                          // 0x004da016    8b5104
@@ -2374,7 +2374,7 @@ _jmp_addr_0x004da5d0:    {disp8} mov        dword ptr [edi + 0x74], ebp         
                          pop                ebp                                                  // 0x004da5d7    5d
                          pop                ebx                                                  // 0x004da5d8    5b
                          ret                                                                     // 0x004da5d9    c3
-                         call               dword ptr [rdata_bytes + 0x970]                      // 0x004da5da    ff1570998a00
+                         call               dword ptr [__imp__GetOpenFileNameA@4]                // 0x004da5da    ff1570998a00
                          push               ebx                                                  // 0x004da5e0    53
                          push               ebp                                                  // 0x004da5e1    55
                          push               esi                                                  // 0x004da5e2    56
@@ -2660,7 +2660,7 @@ _jmp_addr_0x004da8a0:    {disp8} mov        dword ptr [edi + 0x74], ebp         
                          pop                ebp                                                  // 0x004da8a7    5d
                          pop                ebx                                                  // 0x004da8a8    5b
                          ret                                                                     // 0x004da8a9    c3
-                         call               dword ptr [rdata_bytes + 0x28]                       // 0x004da8aa    ff1528908a00
+                         call               dword ptr [__imp__DirectDrawEnumerateA@4]            // 0x004da8aa    ff1528908a00
                          push               ebx                                                  // 0x004da8b0    53
                          push               ebp                                                  // 0x004da8b1    55
                          push               esi                                                  // 0x004da8b2    56
@@ -3282,7 +3282,7 @@ _jmp_addr_0x004dada6:    mov                ebx, dword ptr [ebx]                
 _jmp_addr_0x004dadb3:    pop                ebx                                                  // 0x004dadb3    5b
                          add                esp, 0x08                                            // 0x004dadb4    83c408
                          ret                0x0010                                               // 0x004dadb7    c21000
-                         call               dword ptr [rdata_bytes + 0x124]                      // 0x004dadba    ff1524918a00
+                         call               dword ptr [__imp__ImmGetCandidateListA@4]            // 0x004dadba    ff1524918a00
                          sub                esp, 0x08                                            // 0x004dadc0    83ec08
                          push               ebx                                                  // 0x004dadc3    53
                          {disp8} mov        ebx, dword ptr [ecx + 0x18]                          // 0x004dadc4    8b5918

@@ -735,7 +735,7 @@ _jmp_addr_0x0054884e:    pop                edi                                 
                          pop                ebx                                           // 0x00548853    5b
                          add                esp, 0x44                                     // 0x00548854    83c444
                          ret                0x000c                                        // 0x00548857    c20c00
-                         call               dword ptr [rdata_bytes + 0x8dc]               // 0x0054885a    ff15dc988a00
+                         call               dword ptr [__imp__bind@4]                     // 0x0054885a    ff15dc988a00
 _jmp_addr_0x00548860:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00548860    8b442404
                          mov                eax, dword ptr [eax]                          // 0x00548864    8b00
                          test               eax, eax                                      // 0x00548866    85c0

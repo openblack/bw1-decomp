@@ -110,7 +110,7 @@ _jmp_addr_0x004478f4:    push               edi                                 
 _jmp_addr_0x00447907:    pop                esi                                           // 0x00447907    5e
                          pop                ecx                                           // 0x00447908    59
                          ret                                                              // 0x00447909    c3
-                         call               dword ptr [rdata_bytes + 0x7ac]               // 0x0044790a    ff15ac978a00
+                         call               dword ptr [__imp__ShellExecuteA@4]            // 0x0044790a    ff15ac978a00
 _jmp_addr_0x00447910:    push               edi                                           // 0x00447910    57
                          {disp8} mov        edi, dword ptr [esp + 0x08]                   // 0x00447911    8b7c2408
                          test               edi, edi                                      // 0x00447915    85ff
@@ -2686,7 +2686,7 @@ _jmp_addr_0x0044973b:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x0044975f    8b15bc1dea00
                          {disp8} mov        eax, dword ptr [esp + 0x2c]                   // 0x00449765    8b44242c
                          {disp8} mov        dword ptr [esp + 0x18], edx                   // 0x00449769    89542418
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x7dc]          // 0x0044976d    8b35dc978a00
+                         {disp32} mov       esi, dword ptr [__imp__SendMessageA@4]        // 0x0044976d    8b35dc978a00
                          {disp32} mov       dword ptr [data_bytes + 0x293e74], edx        // 0x00449773    8915749ec500
                          {disp8} mov        dword ptr [esp + 0x14], ecx                   // 0x00449779    894c2414
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]        // 0x0044977d    8b0dc01dea00

@@ -337,7 +337,7 @@ _jmp_addr_0x0053faf3:    {disp8} mov       dword ptr [edi + 0x20], eax          
                          call              _SetCurrentProfile__13PlayerProfileFPw        // 0x0053fb08    e893bc1200
                          call              esi                                           // 0x0053fb0d    ffd6
                          push              eax                                           // 0x0053fb0f    50
-                         call              dword ptr [rdata_bytes + 0x548]               // 0x0053fb10    ff1548958a00
+                         call              dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x0053fb10    ff1548958a00
                          {disp8} lea       ecx, dword ptr [esp + 0x10]                   // 0x0053fb16    8d4c2410
                          push              ecx                                           // 0x0053fb1a    51
                          call              _jmp_addr_0x0066b900                          // 0x0053fb1b    e8e0bd1200

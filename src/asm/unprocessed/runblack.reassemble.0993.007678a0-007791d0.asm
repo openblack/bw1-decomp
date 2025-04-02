@@ -13062,7 +13062,7 @@ _jmp_addr_0x0076fd4c:    {disp8} lea        ecx, dword ptr [esp + 0x18]         
                          {disp8} lea        edx, dword ptr [esp + 0x20]                     // 0x0076fd72    8d542420
                          push               edx                                             // 0x0076fd76    52
                          push               eax                                             // 0x0076fd77    50
-                         call               dword ptr [rdata_bytes + 0x158]                 // 0x0076fd78    ff1558918a00
+                         call               dword ptr [__imp__CopyFileA@4]                  // 0x0076fd78    ff1558918a00
                          mov.s              ecx, ebp                                        // 0x0076fd7e    8bcd
                          call               _jmp_addr_0x0076fb10                            // 0x0076fd80    e88bfdffff
                          test               al, al                                          // 0x0076fd85    84c0
@@ -13257,7 +13257,7 @@ _jmp_addr_0x0076ffa6:    {disp8} mov        ecx, dword ptr [esp + 0x14]         
                          push               edx                                             // 0x0076ffae    52
                          {disp8} lea        eax, dword ptr [esp + 0x20]                     // 0x0076ffaf    8d442420
                          push               eax                                             // 0x0076ffb3    50
-                         call               dword ptr [rdata_bytes + 0x158]                 // 0x0076ffb4    ff1558918a00
+                         call               dword ptr [__imp__CopyFileA@4]                  // 0x0076ffb4    ff1558918a00
                          pop                esi                                             // 0x0076ffba    5e
                          pop                ebp                                             // 0x0076ffbb    5d
                          pop                edi                                             // 0x0076ffbc    5f

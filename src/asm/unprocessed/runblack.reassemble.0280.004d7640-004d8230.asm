@@ -401,7 +401,7 @@ _jmp_addr_0x004d78f0:    mov.s              eax, ecx                            
                          {disp8} mov        dword ptr [eax + 0x14], ecx                   // 0x004d7903    894814
                          {disp8} mov        dword ptr [eax + 0x10], ecx                   // 0x004d7906    894810
                          ret                                                              // 0x004d7909    c3
-                         call               dword ptr [rdata_bytes + 0x148]               // 0x004d790a    ff1548918a00
+                         call               dword ptr [__imp__GetCommandLineA@0]          // 0x004d790a    ff1548918a00
                          push               esi                                           // 0x004d7910    56
                          mov.s              esi, ecx                                      // 0x004d7911    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004d7913    e848f0f5ff

@@ -21569,7 +21569,7 @@ _jmp_addr_0x006ed956:    {disp8} lea        ecx, dword ptr [esp + 0x70]         
                          {disp32} lea       edx, dword ptr [esp + 0x00000178]             // 0x006ed95b    8d942478010000
                          push               0x00c0c22c                                    // 0x006ed962    682cc2c000
                          push               edx                                           // 0x006ed967    52
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x006ed968    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x006ed968    ff155c938a00
                          push               eax                                           // 0x006ed96e    50
                          call               _jmp_addr_0x006f62b0                          // 0x006ed96f    e83c890000
                          add                esp, 0x10                                     // 0x006ed974    83c410
@@ -26603,7 +26603,7 @@ _jmp_addr_0x006f0f51:    push               esi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x30]                   // 0x006f0f52    8d442430
                          push               0x00c0cb48                                    // 0x006f0f56    6848cbc000
                          push               eax                                           // 0x006f0f5b    50
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x006f0f5c    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x006f0f5c    ff155c938a00
                          push               eax                                           // 0x006f0f62    50
                          call               _jmp_addr_0x006f62b0                          // 0x006f0f63    e848530000
                          add                esp, 0x10                                     // 0x006f0f68    83c410
@@ -26650,7 +26650,7 @@ _jmp_addr_0x006f0fd9:    push               esi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x30]                   // 0x006f0fda    8d442430
                          push               0x00c0cb18                                    // 0x006f0fde    6818cbc000
                          push               eax                                           // 0x006f0fe3    50
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x006f0fe4    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x006f0fe4    ff155c938a00
                          push               eax                                           // 0x006f0fea    50
                          call               _jmp_addr_0x006f62b0                          // 0x006f0feb    e8c0520000
                          add                esp, 0x10                                     // 0x006f0ff0    83c410
@@ -26726,7 +26726,7 @@ _jmp_addr_0x006f10c5:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x006f10c6    8d4c2434
                          push               0x00c0cb48                                    // 0x006f10ca    6848cbc000
                          push               ecx                                           // 0x006f10cf    51
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x006f10d0    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x006f10d0    ff155c938a00
                          push               eax                                           // 0x006f10d6    50
                          call               _jmp_addr_0x006f62b0                          // 0x006f10d7    e8d4510000
                          add                esp, 0x10                                     // 0x006f10dc    83c410
@@ -26777,7 +26777,7 @@ _jmp_addr_0x006f1169:    push               esi                                 
                          {disp8} lea        edx, dword ptr [esp + 0x34]                   // 0x006f116a    8d542434
                          push               0x00c0cb18                                    // 0x006f116e    6818cbc000
                          push               edx                                           // 0x006f1173    52
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x006f1174    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x006f1174    ff155c938a00
                          push               eax                                           // 0x006f117a    50
                          call               _jmp_addr_0x006f62b0                          // 0x006f117b    e830510000
                          add                esp, 0x10                                     // 0x006f1180    83c410

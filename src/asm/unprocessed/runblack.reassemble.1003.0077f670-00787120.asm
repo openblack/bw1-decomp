@@ -4695,7 +4695,7 @@ _jmp_addr_0x0078243f:    mov.s              ecx, eax                            
                          push               0x0                                           // 0x0078246b    6a00
                          push               0x0                                           // 0x0078246d    6a00
                          push               0x3                                           // 0x0078246f    6a03
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x00782471    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x00782471    ff15c4918a00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x30db20]        // 0x00782477    8b0d203bcd00
                          and                eax, 0x03                                     // 0x0078247d    83e003
                          add                eax, 0x2e                                     // 0x00782480    83c02e
@@ -8873,7 +8873,7 @@ _jmp_addr_0x0078426d:    cmp                dword ptr [data_bytes + 0x40abfc], e
                          push               ebx                                           // 0x00784280    53
                          push               ebx                                           // 0x00784281    53
                          push               0x2                                           // 0x00784282    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x00784284    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x00784284    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0078428a    33d2
                          mov                ecx, 0x00000006                               // 0x0078428c    b906000000
                          div                ecx                                           // 0x00784291    f7f1
@@ -9599,7 +9599,7 @@ _jmp_addr_0x00784a30:    sub                esp, 0x0000024c                     
                          push               ebx                                           // 0x00784a36    53
                          {disp32} mov       ebx, dword ptr [esp + 0x00000254]             // 0x00784a37    8b9c2454020000
                          push               ebp                                           // 0x00784a3e    55
-                         {disp32} mov       ebp, dword ptr [rdata_bytes + 0x158]          // 0x00784a3f    8b2d58918a00
+                         {disp32} mov       ebp, dword ptr [__imp__CopyFileA@4]           // 0x00784a3f    8b2d58918a00
                          push               esi                                           // 0x00784a45    56
                          push               edi                                           // 0x00784a46    57
                          {disp32} mov       edi, dword ptr [esp + 0x00000264]             // 0x00784a47    8bbc2464020000
@@ -12478,7 +12478,7 @@ _jmp_addr_0x00786dcf:    {disp32} mov       eax, dword ptr [edi + 0x000000fc]   
                          mov                dword ptr [eax], ebx                          // 0x00786de0    8918
                          {disp32} jmp       _jmp_addr_0x00786f47                          // 0x00786de2    e960010000
 _jmp_addr_0x00786de7:    cmp                dword ptr [data_bytes + 0x41af80], ebx        // 0x00786de7    391d800fde00
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x1c4]          // 0x00786ded    8b35c4918a00
+                         {disp32} mov       esi, dword ptr [__imp__GetTickCount@4]        // 0x00786ded    8b35c4918a00
                          {disp8} jne        _jmp_addr_0x00786dfc                          // 0x00786df3    7507
                          call               esi                                           // 0x00786df5    ffd6
                          {disp32} mov       dword ptr [data_bytes + 0x41af80], eax        // 0x00786df7    a3800fde00

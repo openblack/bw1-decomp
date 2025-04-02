@@ -1392,7 +1392,7 @@ _jmp_addr_0x0082b0e3:    pop                edi                                 
 _jmp_addr_0x0082b0f0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5021b8]          // 0x0082b0f0    8a0db881ec00
                          sub                esp, 0x08                                     // 0x0082b0f6    83ec08
                          push               esi                                           // 0x0082b0f9    56
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x1c4]          // 0x0082b0fa    8b35c4918a00
+                         {disp32} mov       esi, dword ptr [__imp__GetTickCount@4]        // 0x0082b0fa    8b35c4918a00
                          push               edi                                           // 0x0082b100    57
                          mov                al, 0x01                                      // 0x0082b101    b001
                          xor.s              edi, edi                                      // 0x0082b103    33ff

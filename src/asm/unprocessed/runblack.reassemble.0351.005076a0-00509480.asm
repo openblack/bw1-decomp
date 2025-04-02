@@ -1273,7 +1273,7 @@ _jmp_addr_0x005084c0:    mov                eax, 0x00000002                     
                          pop                esi                                           // 0x005084c5    5e
                          add                esp, 0x28                                     // 0x005084c6    83c428
                          ret                                                              // 0x005084c9    c3
-                         call               dword ptr [rdata_bytes + 0x7d4]               // 0x005084ca    ff15d4978a00
+                         call               dword ptr [__imp__GetKeyNameTextW@4]          // 0x005084ca    ff15d4978a00
                          push               ebx                                           // 0x005084d0    53
                          push               ebp                                           // 0x005084d1    55
                          push               esi                                           // 0x005084d2    56

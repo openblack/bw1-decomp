@@ -345,7 +345,7 @@ _jmp_addr_0x005bd48d:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          mov                dword ptr [eax], ecx                          // 0x005bd494    8908
                          {disp8} mov        dword ptr [eax + 0x04], edx                   // 0x005bd496    895004
                          ret                                                              // 0x005bd499    c3
-                         call               dword ptr [rdata_bytes + 0x4]                 // 0x005bd49a    ff1504908a00
+                         call               dword ptr [__imp__RegCloseKey@4]              // 0x005bd49a    ff1504908a00
 _jmp_addr_0x005bd4a0:    push               ecx                                           // 0x005bd4a0    51
                          push               ebx                                           // 0x005bd4a1    53
                          {disp8} mov        ebx, dword ptr [esp + 0x0c]                   // 0x005bd4a2    8b5c240c

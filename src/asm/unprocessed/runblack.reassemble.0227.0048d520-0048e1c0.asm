@@ -49,7 +49,7 @@ _jmp_addr_0x0048d52f:    cmp                eax, 0x23                           
                          {disp8} jne        _jmp_addr_0x0048d539                          // 0x0048d532    7505
                          {disp32} jmp       _jmp_addr_0x0048b970                          // 0x0048d534    e937e4ffff
 _jmp_addr_0x0048d539:    ret                                                              // 0x0048d539    c3
-                         call               dword ptr [rdata_bytes + 0x850]               // 0x0048d53a    ff1550988a00
+                         call               dword ptr [__imp__MoveWindow@4]               // 0x0048d53a    ff1550988a00
                          push               ecx                                           // 0x0048d540    51
                          push               ebx                                           // 0x0048d541    53
                          push               ebp                                           // 0x0048d542    55

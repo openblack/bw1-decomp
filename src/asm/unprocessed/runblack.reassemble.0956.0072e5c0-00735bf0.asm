@@ -11369,7 +11369,7 @@ _jmp_addr_0x00735890:    push               ebx                                 
                          push               0x0                                           // 0x007358c9    6a00
                          push               0x0                                           // 0x007358cb    6a00
                          mov                dword ptr [edi], eax                          // 0x007358cd    8907
-                         call               dword ptr [rdata_bytes + 0x22c]               // 0x007358cf    ff152c928a00
+                         call               dword ptr [__imp__WideCharToMultiByte@4]      // 0x007358cf    ff152c928a00
                          mov                ecx, dword ptr [edi]                          // 0x007358d5    8b0f
                          mov                byte ptr [ecx + eax * 0x1], 0x00              // 0x007358d7    c6040100
                          mov.s              eax, edi                                      // 0x007358db    8bc7
@@ -11423,7 +11423,7 @@ _jmp_addr_0x007358f0:    push               ebx                                 
                          push               0x0                                           // 0x00735930    6a00
                          rep movsb                                                        // 0x00735932    f3a4
                          {disp8} mov        ecx, dword ptr [ebx + 0x04]                   // 0x00735934    8b4b04
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x13c]          // 0x00735937    8b353c918a00
+                         {disp32} mov       esi, dword ptr [__imp__MultiByteToWideChar@4] // 0x00735937    8b353c918a00
                          push               ecx                                           // 0x0073593d    51
                          push               -0x1                                          // 0x0073593e    6aff
                          push               ebp                                           // 0x00735940    55

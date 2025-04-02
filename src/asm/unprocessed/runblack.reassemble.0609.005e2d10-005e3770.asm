@@ -229,7 +229,7 @@ _jmp_addr_0x005e2fd0:    {disp8} fld        dword ptr [esp + 0x00]              
                          {disp32} fadd      dword ptr [rdata_bytes + 0x223c]        // 0x005e2fe0    d8053cb28a00
                          add                esp, 0x1c                               // 0x005e2fe6    83c41c
                          ret                                                        // 0x005e2fe9    c3
-                         call               dword ptr [rdata_bytes + 0x948]         // 0x005e2fea    ff1548998a00
+                         call               dword ptr [__imp__BinkSetSoundSystem@8] // 0x005e2fea    ff1548998a00
 _RequestChangeTexture__FP6Object:    sub                esp, 0x4c                               // 0x005e2ff0    83ec4c
                          push               ebx                                     // 0x005e2ff3    53
                          {disp8} mov        ebx, dword ptr [esp + 0x54]             // 0x005e2ff4    8b5c2454

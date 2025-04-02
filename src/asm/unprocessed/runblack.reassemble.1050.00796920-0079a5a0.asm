@@ -2380,7 +2380,7 @@ _jmp_addr_0x0079848b:    {disp8} mov          ecx, dword ptr [esi + 0x48]       
                          add.s                ecx, edi                                      // 0x00798490    03cf
                          {disp8} mov          dword ptr [esp + 0x44], ecx                   // 0x00798492    894c2444
 _jmp_addr_0x00798496:    {disp32} mov         dword ptr [data_bytes + 0x504618], 0x00c387c8 // 0x00798496    c70518a6ec00c887c300
-                         call                 dword ptr [rdata_bytes + 0x1c4]               // 0x007984a0    ff15c4918a00
+                         call                 dword ptr [__imp__GetTickCount@4]             // 0x007984a0    ff15c4918a00
                          and                  eax, 0x000003ff                               // 0x007984a6    25ff030000
                          {disp8} mov          dword ptr [esp + 0x54], eax                   // 0x007984ab    89442454
                          {disp8} mov          dword ptr [esp + 0x58], 0x00000000            // 0x007984af    c744245800000000

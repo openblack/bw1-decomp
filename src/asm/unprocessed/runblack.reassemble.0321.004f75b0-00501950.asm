@@ -1259,7 +1259,7 @@ _jmp_addr_0x004f823d:    {disp32} mov       ecx, dword ptr [esi + 0x00001084]   
                          {disp32} mov       dword ptr [esi + 0x00001084], 0x00000000      // 0x004f824e    c7868410000000000000
 _jmp_addr_0x004f8258:    pop                esi                                           // 0x004f8258    5e
                          ret                                                              // 0x004f8259    c3
-                         call               dword ptr [rdata_bytes + 0x3c]                // 0x004f825a    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x004f825a    ff153c908a00
 _jmp_addr_0x004f8260:    push               ecx                                           // 0x004f8260    51
                          push               esi                                           // 0x004f8261    56
                          {disp8} mov        esi, dword ptr [ecx + 0x28]                   // 0x004f8262    8b7128
@@ -1787,7 +1787,7 @@ _jmp_addr_0x004f8850:    push               ebx                                 
                          {disp32} mov       dword ptr [edx + 0x000021f0], eax             // 0x004f88a0    8982f0210000
                          pop                ebx                                           // 0x004f88a6    5b
                          ret                0x0008                                        // 0x004f88a7    c20800
-                         call               dword ptr [rdata_bytes + 0x87c]               // 0x004f88aa    ff157c988a00
+                         call               dword ptr [__imp__SetMenu@4]                  // 0x004f88aa    ff157c988a00
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x004f88b0    8b442408
                          push               ebx                                           // 0x004f88b4    53
                          push               ebp                                           // 0x004f88b5    55
@@ -9551,7 +9551,7 @@ _jmp_addr_0x00500492:    push               0x1                                 
                          pop                esi                                           // 0x005004a7    5e
                          pop                ecx                                           // 0x005004a8    59
                          ret                                                              // 0x005004a9    c3
-                         call               dword ptr [rdata_bytes + 0x978]               // 0x005004aa    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x005004aa    ff1578998a00
                          {disp32} mov       eax, dword ptr [ecx + 0x00000160]             // 0x005004b0    8b8160010000
                          {disp8} mov        edx, dword ptr [eax + 0x58]                   // 0x005004b6    8b5058
                          {disp32} mov       eax, dword ptr [edx + 0x000048d0]             // 0x005004b9    8b82d0480000
@@ -11178,7 +11178,7 @@ _jmp_addr_0x0050188e:    pop                edi                                 
                          pop                ebx                                           // 0x00501895    5b
                          add                esp, 0x48                                     // 0x00501896    83c448
                          ret                                                              // 0x00501899    c3
-                         call               dword ptr [rdata_bytes + 0x2f4]               // 0x0050189a    ff15f4928a00
+                         call               dword ptr [__imp__GetModuleFileNameA@4]       // 0x0050189a    ff15f4928a00
 _jmp_addr_0x005018a0:    sub                esp, 0x10                                     // 0x005018a0    83ec10
                          push               esi                                           // 0x005018a3    56
                          mov.s              esi, ecx                                      // 0x005018a4    8bf1

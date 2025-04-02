@@ -53,7 +53,7 @@ _jmp_addr_0x004e14fb:    push             edi                                   
                          pop              esi                                           // 0x004e1525    5e
                          pop              ebx                                           // 0x004e1526    5b
                          ret              0x0008                                        // 0x004e1527    c20800
-                         call             dword ptr [rdata_bytes + 0x24]                // 0x004e152a    ff1524908a00
+                         call             dword ptr [__imp__DirectDrawCreateEx@4]       // 0x004e152a    ff1524908a00
 _jmp_addr_0x004e1530:    {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x004e1530    8b542404
                          {disp8} mov      eax, dword ptr [edx + 0x08]                   // 0x004e1534    8b4208
                          cmp              eax, 0x03                                     // 0x004e1537    83f803

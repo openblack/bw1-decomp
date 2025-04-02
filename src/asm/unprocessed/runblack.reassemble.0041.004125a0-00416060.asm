@@ -2416,7 +2416,7 @@ _jmp_addr_0x00414173:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          {disp8} mov        dword ptr [esi + 0x0c], 0x00000000            // 0x0041418f    c7460c00000000
                          pop                esi                                           // 0x00414196    5e
                          ret                0x0004                                        // 0x00414197    c20400
-                         call               dword ptr [rdata_bytes + 0x804]               // 0x0041419a    ff1504988a00
+                         call               dword ptr [__imp__GetSystemMetrics@4]         // 0x0041419a    ff1504988a00
 _jmp_addr_0x004141a0:    push               ebx                                           // 0x004141a0    53
                          push               esi                                           // 0x004141a1    56
                          mov.s              ebx, ecx                                      // 0x004141a2    8bd9
@@ -2880,7 +2880,7 @@ _jmp_addr_0x00414600:    push               esi                                 
 _jmp_addr_0x00414655:    pop                edi                                           // 0x00414655    5f
                          pop                esi                                           // 0x00414656    5e
                          ret                0x0008                                        // 0x00414657    c20800
-                         call               dword ptr [rdata_bytes + 0x978]               // 0x0041465a    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x0041465a    ff1578998a00
 _jmp_addr_0x00414660:    {disp8} fld        dword ptr [ecx + 0x08]                        // 0x00414660    d94108
                          {disp32} fcom      dword ptr [rdata_bytes + 0x1398]              // 0x00414663    d81598a38a00
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x00414669    d9442404
@@ -2919,7 +2919,7 @@ _jmp_addr_0x004146d3:    {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]    
                          {disp8} jne        _jmp_addr_0x004146e7                          // 0x004146de    7507
                          {disp8} mov        dword ptr [ecx + 0x08], 0x3f800000            // 0x004146e0    c741080000803f
 _jmp_addr_0x004146e7:    ret                0x0004                                        // 0x004146e7    c20400
-                         call               dword ptr [rdata_bytes + 0xc]                 // 0x004146ea    ff150c908a00
+                         call               dword ptr [__imp__GetUserNameA@4]             // 0x004146ea    ff150c908a00
 _jmp_addr_0x004146f0:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x004146f0    d9442404
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x004146f4    8b442404
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x2678]              // 0x004146f8    d81d78b68a00
@@ -3330,7 +3330,7 @@ _jmp_addr_0x00414b90:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          {disp8} mov        byte ptr [ecx + 0x01], dl                     // 0x00414ba2    885101
                          mov                byte ptr [ecx], al                            // 0x00414ba5    8801
                          ret                0x000c                                        // 0x00414ba7    c20c00
-                         call               dword ptr [rdata_bytes + 0x8a8]               // 0x00414baa    ff15a8988a00
+                         call               dword ptr [__imp__waveInClose@4]              // 0x00414baa    ff15a8988a00
                          mov                eax, dword ptr [ecx]                          // 0x00414bb0    8b01
                          jmp                dword ptr [eax]                               // 0x00414bb2    ff20
                          nop                                                              // 0x00414bb4    90

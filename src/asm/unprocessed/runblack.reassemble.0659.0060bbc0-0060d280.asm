@@ -191,7 +191,7 @@ _jmp_addr_0x0060bcac:    mov                edx, dword ptr [esi]                
                          pop                ebp                                           // 0x0060bcf5    5d
                          pop                ebx                                           // 0x0060bcf6    5b
                          ret                0x000c                                        // 0x0060bcf7    c20c00
-                         call               dword ptr [rdata_bytes + 0x2c]                // 0x0060bcfa    ff152c908a00
+                         call               dword ptr [__imp__DirectDrawCreate@4]         // 0x0060bcfa    ff152c908a00
 _jmp_addr_0x0060bd00:    sub                esp, 0x08                                     // 0x0060bd00    83ec08
                          push               esi                                           // 0x0060bd03    56
                          push               edi                                           // 0x0060bd04    57
@@ -362,7 +362,7 @@ _jmp_addr_0x0060bea0:    sub                esp, 0x0c                           
                          pop                esi                                           // 0x0060bee3    5e
                          add                esp, 0x0c                                     // 0x0060bee4    83c40c
                          ret                0x0004                                        // 0x0060bee7    c20400
-                         call               dword ptr [rdata_bytes + 0x34]                // 0x0060beea    ff1534908a00
+                         call               dword ptr [__imp__DirectInputCreateA@4]       // 0x0060beea    ff1534908a00
 _jmp_addr_0x0060bef0:    {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060bef0    8b4128
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x0060bef3    8b4c2404
                          {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x0060bef7    8b542408
@@ -637,7 +637,7 @@ _jmp_addr_0x0060c110:    {disp8} fld        dword ptr [esp + 0x04]              
                          pop                edi                                           // 0x0060c135    5f
                          pop                esi                                           // 0x0060c136    5e
                          ret                0x0004                                        // 0x0060c137    c20400
-                         call               dword ptr [rdata_bytes + 0x3c]                // 0x0060c13a    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x0060c13a    ff153c908a00
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c140    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000118]             // 0x0060c143    8b8018010000
                          push               eax                                           // 0x0060c149    50

@@ -219,7 +219,7 @@ _jmp_addr_0x0056dae9:    {disp8} mov        eax, dword ptr [esi + 0x34]         
                          {disp8} mov        dword ptr [esp + 0x78], ecx                   // 0x0056dbc7    894c2478
                          {disp8} mov        dword ptr [esp + 0x7c], edx                   // 0x0056dbcb    8954247c
                          {disp32} mov       dword ptr [esp + 0x00000080], eax             // 0x0056dbcf    89842480000000
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0056dbd6    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0056dbd6    ff15c4918a00
                          xor.s              edi, edi                                      // 0x0056dbdc    33ff
                          and                eax, 0x00001fff                               // 0x0056dbde    25ff1f0000
                          {disp8} mov        dword ptr [esp + 0x44], eax                   // 0x0056dbe3    89442444

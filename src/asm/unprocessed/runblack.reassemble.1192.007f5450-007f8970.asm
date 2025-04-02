@@ -811,7 +811,7 @@ _jmp_addr_0x007f5c41:    {disp32} mov       eax, dword ptr [esi + 0x00000828]   
                          push               0x0                                            // 0x007f5c53    6a00
                          {disp32} mov       dword ptr [esi + 0x00000830], 0x00000100       // 0x007f5c55    c7863008000000010000
                          {disp32} mov       dword ptr [esi + 0x00000820], edi              // 0x007f5c5f    89be20080000
-                         call               dword ptr [rdata_bytes + 0x7e8]                // 0x007f5c65    ff15e8978a00
+                         call               dword ptr [__imp__GetKeyboardLayout@4]         // 0x007f5c65    ff15e8978a00
                          push               eax                                            // 0x007f5c6b    50
                          mov.s              ecx, esi                                       // 0x007f5c6c    8bce
                          call               _jmp_addr_0x007f5ef0                           // 0x007f5c6e    e87d020000
@@ -1005,7 +1005,7 @@ _jmp_addr_0x007f5e70:    {disp8} lea        eax, dword ptr [ecx + 0x08]         
                          nop                                                               // 0x007f5e8f    90
 _jmp_addr_0x007f5e90:    sub                esp, 0x00000100                                // 0x007f5e90    81ec00010000
                          push               0x0                                            // 0x007f5e96    6a00
-                         call               dword ptr [rdata_bytes + 0x7e8]                // 0x007f5e98    ff15e8978a00
+                         call               dword ptr [__imp__GetKeyboardLayout@4]         // 0x007f5e98    ff15e8978a00
                          {disp8} lea        ecx, dword ptr [esp + 0x00]                    // 0x007f5e9e    8d4c2400
                          push               0x00000100                                     // 0x007f5ea2    6800010000
                          push               ecx                                            // 0x007f5ea7    51

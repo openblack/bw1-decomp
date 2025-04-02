@@ -11037,7 +11037,7 @@ _jmp_addr_0x008a03b2:    {disp8} fld       dword ptr [eax + -0x40]              
                          nop                                                               // 0x008a04ed    90
                          nop                                                               // 0x008a04ee    90
                          nop                                                               // 0x008a04ef    90
-_jmp_addr_0x008a04f0:    jmp               dword ptr [rdata_bytes + 0x3c]                  // 0x008a04f0    ff253c908a00
+_jmp_addr_0x008a04f0:    jmp               dword ptr [__imp__DirectXSetupGetVersion]       // 0x008a04f0    ff253c908a00
 _jmp_addr_0x008a04f6:    push              esi                                             // 0x008a04f6    56
                          mov.s             esi, ecx                                        // 0x008a04f7    8bf1
                          xor.s             eax, eax                                        // 0x008a04f9    33c0
@@ -12184,16 +12184,16 @@ _jmp_addr_0x008a1111:    mov.s             eax, esi                             
                          pop               esi                                             // 0x008a1113    5e
                          ret               0x0008                                          // 0x008a1114    c20800
 _jmp_addr_0x008a1117:    push              dword ptr [esp + 0x04]                          // 0x008a1117    ff742404
-                         call              dword ptr [rdata_bytes + 0x17c]                 // 0x008a111b    ff157c918a00
+                         call              dword ptr [__imp__InitializeCriticalSection@4]  // 0x008a111b    ff157c918a00
                          ret                                                               // 0x008a1121    c3
 _jmp_addr_0x008a1122:    push              dword ptr [esp + 0x04]                          // 0x008a1122    ff742404
-                         call              dword ptr [rdata_bytes + 0x178]                 // 0x008a1126    ff1578918a00
+                         call              dword ptr [__imp__DeleteCriticalSection@4]      // 0x008a1126    ff1578918a00
                          ret                                                               // 0x008a112c    c3
 _jmp_addr_0x008a112d:    push              dword ptr [esp + 0x04]                          // 0x008a112d    ff742404
-                         call              dword ptr [rdata_bytes + 0x180]                 // 0x008a1131    ff1580918a00
+                         call              dword ptr [__imp__EnterCriticalSection@4]       // 0x008a1131    ff1580918a00
                          ret                                                               // 0x008a1137    c3
 _jmp_addr_0x008a1138:    push              dword ptr [esp + 0x04]                          // 0x008a1138    ff742404
-                         call              dword ptr [rdata_bytes + 0x184]                 // 0x008a113c    ff1584918a00
+                         call              dword ptr [__imp__LeaveCriticalSection@4]       // 0x008a113c    ff1584918a00
                          ret                                                               // 0x008a1142    c3
                          mov               eax, 0x008a8761                                 // 0x008a1143    b861878a00
                          call              __EH_prolog                                     // 0x008a1148    e81f95f2ff

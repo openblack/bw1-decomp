@@ -809,7 +809,7 @@ _jmp_addr_0x0041a67d:    xor.s              eax, eax                            
                          sub.s              eax, esi                                      // 0x0041a684    2bc6
                          pop                esi                                           // 0x0041a686    5e
                          ret                0x0004                                        // 0x0041a687    c20400
-                         call               dword ptr [rdata_bytes + 0x3c]                // 0x0041a68a    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x0041a68a    ff153c908a00
 _jmp_addr_0x0041a690:    sub                esp, 0x10                                     // 0x0041a690    83ec10
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x0041a693    8b442420
                          push               ebx                                           // 0x0041a697    53
@@ -2608,7 +2608,7 @@ _jmp_addr_0x0041b993:    pop                edi                                 
                          xor.s              eax, eax                                      // 0x0041b994    33c0
                          pop                esi                                           // 0x0041b996    5e
                          ret                0x0004                                        // 0x0041b997    c20400
-                         call               dword ptr [rdata_bytes + 0x7e4]               // 0x0041b99a    ff15e4978a00
+                         call               dword ptr [__imp__SetCursorPos@4]             // 0x0041b99a    ff15e4978a00
                          {disp32} jmp       _jmp_addr_0x005eed20                          // 0x0041b9a0    e97b331d00
                          nop                                                              // 0x0041b9a5    90
                          nop                                                              // 0x0041b9a6    90
@@ -7022,7 +7022,7 @@ _jmp_addr_0x0041d497:    xor.s              eax, eax                            
                          mov                eax, 0x00000001                               // 0x0041d4c3    b801000000
                          pop                esi                                           // 0x0041d4c8    5e
                          ret                                                              // 0x0041d4c9    c3
-                         call               dword ptr [rdata_bytes + 0x978]               // 0x0041d4ca    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x0041d4ca    ff1578998a00
 _jmp_addr_0x0041d4d0:    push               esi                                           // 0x0041d4d0    56
                          push               0x000000fa                                    // 0x0041d4d1    68fa000000
                          push               0x009c8f88                                    // 0x0041d4d6    68888f9c00
@@ -9154,7 +9154,7 @@ _jmp_addr_0x0041e790:    {disp32} mov       eax, dword ptr [ecx + 0x000000b8]   
                          push               0x0                                           // 0x0041e7e0    6a00
                          call               _jmp_addr_0x005ecb80                          // 0x0041e7e2    e899e31c00
                          ret                0x0004                                        // 0x0041e7e7    c20400
-                         call               dword ptr [rdata_bytes + 0x4]                 // 0x0041e7ea    ff1504908a00
+                         call               dword ptr [__imp__RegCloseKey@4]              // 0x0041e7ea    ff1504908a00
 _jmp_addr_0x0041e7f0:    sub                esp, 0x0c                                     // 0x0041e7f0    83ec0c
                          push               ebx                                           // 0x0041e7f3    53
                          push               esi                                           // 0x0041e7f4    56
@@ -11163,7 +11163,7 @@ _jmp_addr_0x0041fc10:    push               esi                                 
 _jmp_addr_0x0041fc66:    xor.s              eax, eax                                      // 0x0041fc66    33c0
                          pop                esi                                           // 0x0041fc68    5e
                          ret                                                              // 0x0041fc69    c3
-                         call               dword ptr [rdata_bytes + 0x8c0]               // 0x0041fc6a    ff15c0988a00
+                         call               dword ptr [__imp__mmioOpenA@4]                // 0x0041fc6a    ff15c0988a00
                          mov                eax, 0x00000001                               // 0x0041fc70    b801000000
                          ret                0x0004                                        // 0x0041fc75    c20400
                          nop                                                              // 0x0041fc78    90
@@ -11296,7 +11296,7 @@ _jmp_addr_0x0041fd30:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          mov.s              eax, esi                                      // 0x0041fd64    8bc6
                          pop                esi                                           // 0x0041fd66    5e
                          ret                0x000c                                        // 0x0041fd67    c20c00
-                         call               dword ptr [rdata_bytes + 0x8dc]               // 0x0041fd6a    ff15dc988a00
+                         call               dword ptr [__imp__bind@4]                     // 0x0041fd6a    ff15dc988a00
                          mov                eax, 0x00000089                               // 0x0041fd70    b889000000
                          ret                                                              // 0x0041fd75    c3
                          nop                                                              // 0x0041fd76    90
@@ -13421,7 +13421,7 @@ _jmp_addr_0x004213c0:    push               esi                                 
 _jmp_addr_0x00421416:    xor.s              eax, eax                                      // 0x00421416    33c0
                          pop                esi                                           // 0x00421418    5e
                          ret                                                              // 0x00421419    c3
-                         call               dword ptr [rdata_bytes + 0x114]               // 0x0042141a    ff1514918a00
+                         call               dword ptr [__imp__ImmReleaseContext@4]        // 0x0042141a    ff1514918a00
                          mov                eax, 0x0000008b                               // 0x00421420    b88b000000
                          ret                                                              // 0x00421425    c3
                          nop                                                              // 0x00421426    90
@@ -13658,7 +13658,7 @@ _jmp_addr_0x00421600:    push               esi                                 
 _jmp_addr_0x00421656:    xor.s              eax, eax                                      // 0x00421656    33c0
                          pop                esi                                           // 0x00421658    5e
                          ret                                                              // 0x00421659    c3
-                         call               dword ptr [rdata_bytes + 0x68]                // 0x0042165a    ff1568908a00
+                         call               dword ptr [__imp__CreateDIBSection@4]         // 0x0042165a    ff1568908a00
                          mov                eax, 0x0000008c                               // 0x00421660    b88c000000
                          ret                                                              // 0x00421665    c3
                          nop                                                              // 0x00421666    90

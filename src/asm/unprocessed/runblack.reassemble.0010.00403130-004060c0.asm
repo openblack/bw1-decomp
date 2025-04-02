@@ -1624,7 +1624,7 @@ _jmp_addr_0x00403f72:    {disp8} fld        dword ptr [esp + 0x08]              
                          pop                esi                                           // 0x00403f77    5e
                          pop                ecx                                           // 0x00403f78    59
                          ret                                                              // 0x00403f79    c3
-                         call               dword ptr [rdata_bytes + 0x3c]                // 0x00403f7a    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x00403f7a    ff153c908a00
                          push               ebx                                           // 0x00403f80    53
                          push               esi                                           // 0x00403f81    56
                          mov.s              esi, ecx                                      // 0x00403f82    8bf1
@@ -2335,7 +2335,7 @@ _jmp_addr_0x004046a0:    ret                0x0004                              
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x004046b0    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000110]             // 0x004046b3    8b8010010000
                          ret                                                              // 0x004046b9    c3
-                         call               dword ptr [rdata_bytes + 0x7c0]               // 0x004046ba    ff15c0978a00
+                         call               dword ptr [__imp__SetWindowTextA@4]           // 0x004046ba    ff15c0978a00
 _jmp_addr_0x004046c0:    {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x004046c0    8b4128
                          sub                esp, 0x08                                     // 0x004046c3    83ec08
                          push               esi                                           // 0x004046c6    56
@@ -4476,7 +4476,7 @@ _jmp_addr_0x004056d0:    {disp8} mov        eax, dword ptr [ecx + 0x40]         
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x004056e0    8b442404
                          {disp8} mov        dword ptr [ecx + 0x2c], eax                   // 0x004056e4    89412c
                          ret                0x0004                                        // 0x004056e7    c20400
-                         call               dword ptr [rdata_bytes + 0x978]               // 0x004056ea    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x004056ea    ff1578998a00
 _jmp_addr_0x004056f0:    call               _jmp_addr_0x004056d0                          // 0x004056f0    e8dbffffff
                          {disp32} mov       eax, dword ptr [eax + 0x00000120]             // 0x004056f5    8b8020010000
                          and                eax, dword ptr [esp + 0x04]                   // 0x004056fb    23442404
@@ -4831,7 +4831,7 @@ _jmp_addr_0x004059d0:    {disp32} mov       ecx, dword ptr [data_bytes + 0x286c7
                          call               dword ptr [eax + 4]                           // 0x004059dc    ff5004
                          {disp32} mov       dword ptr [data_bytes + 0x286c70], 0x00000000 // 0x004059df    c70570ccc40000000000
 _jmp_addr_0x004059e9:    ret                                                              // 0x004059e9    c3
-                         call               dword ptr [rdata_bytes + 0x14]                // 0x004059ea    ff1514908a00
+                         call               dword ptr [__imp__RegSetValueExA@4]           // 0x004059ea    ff1514908a00
 _jmp_addr_0x004059f0:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]             // 0x004059f0    db05c09eea00
                          {disp32} fld       dword ptr [data_bytes + 0x286c78]             // 0x004059f6    d90578ccc400
                          fcos                                                             // 0x004059fc    d9ff

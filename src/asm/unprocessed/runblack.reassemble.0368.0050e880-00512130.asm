@@ -2949,7 +2949,7 @@ _jmp_addr_0x005105dd:    {disp8} mov        ecx, dword ptr [ebx + -0x04]        
                          pop                ebx                                           // 0x00510605    5b
                          add                esp, 0x6c                                     // 0x00510606    83c46c
                          ret                                                              // 0x00510609    c3
-                         call               dword ptr [rdata_bytes + 0x970]               // 0x0051060a    ff1570998a00
+                         call               dword ptr [__imp__GetOpenFileNameA@4]         // 0x0051060a    ff1570998a00
                          push               esi                                           // 0x00510610    56
                          mov.s              esi, ecx                                      // 0x00510611    8bf1
                          call               _jmp_addr_0x00436960                          // 0x00510613    e84863f2ff
@@ -4139,7 +4139,7 @@ _jmp_addr_0x00511162:    {disp8} mov        ecx, dword ptr [edi + 0x28]         
                          {disp8} mov        eax, dword ptr [ecx + 0x48]                   // 0x00511165    8b4148
                          pop                edi                                           // 0x00511168    5f
                          ret                                                              // 0x00511169    c3
-                         call               dword ptr [rdata_bytes + 0x28]                // 0x0051116a    ff1528908a00
+                         call               dword ptr [__imp__DirectDrawEnumerateA@4]     // 0x0051116a    ff1528908a00
                          push               esi                                           // 0x00511170    56
                          mov.s              esi, ecx                                      // 0x00511171    8bf1
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x00511173    8b0d34fee900
@@ -4249,7 +4249,7 @@ _jmp_addr_0x00511250:    {disp32} mov       ecx, dword ptr [data_bytes + 0x2fff0
                          call               dword ptr [eax + 4]                           // 0x0051125c    ff5004
                          {disp32} mov       dword ptr [data_bytes + 0x2fff04], 0x00000000 // 0x0051125f    c705045fcc0000000000
 _jmp_addr_0x00511269:    ret                                                              // 0x00511269    c3
-                         call               dword ptr [rdata_bytes + 0x34]                // 0x0051126a    ff1534908a00
+                         call               dword ptr [__imp__DirectInputCreateA@4]       // 0x0051126a    ff1534908a00
 _jmp_addr_0x00511270:    push               ebx                                           // 0x00511270    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                   // 0x00511271    8b5c2408
                          test               ebx, ebx                                      // 0x00511275    85db
@@ -5191,7 +5191,7 @@ _jmp_addr_0x00511ba0:    sub                esp, 0x0c                           
                          push               esi                                           // 0x00511ba4    56
                          mov.s              esi, ecx                                      // 0x00511ba5    8bf1
                          push               edi                                           // 0x00511ba7    57
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x1c4]          // 0x00511ba8    8b3dc4918a00
+                         {disp32} mov       edi, dword ptr [__imp__GetTickCount@4]        // 0x00511ba8    8b3dc4918a00
                          xor.s              ebx, ebx                                      // 0x00511bae    33db
                          {disp32} mov       dword ptr [esi + 0x00000108], 0x3f800000      // 0x00511bb0    c786080100000000803f
                          {disp32} mov       dword ptr [esi + 0x0000010c], ebx             // 0x00511bba    899e0c010000

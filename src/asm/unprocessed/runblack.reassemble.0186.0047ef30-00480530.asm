@@ -969,7 +969,7 @@ _jmp_addr_0x0047f874:    {disp32} mov       dword ptr [esi + 0x00005184], eax   
                          pop                esi                                           // 0x0047f895    5e
                          pop                ebx                                           // 0x0047f896    5b
                          ret                0x000c                                        // 0x0047f897    c20c00
-                         call               dword ptr [rdata_bytes + 0x8fc]               // 0x0047f89a    ff15fc988a00
+                         call               dword ptr [__imp__sendto@4]                   // 0x0047f89a    ff15fc988a00
 _jmp_addr_0x0047f8a0:    sub                esp, 0x08                                     // 0x0047f8a0    83ec08
                          {disp32} mov       eax, dword ptr [ecx + 0x00005184]             // 0x0047f8a3    8b8184510000
                          {disp8} mov        ecx, dword ptr [eax + 0x04]                   // 0x0047f8a9    8b4804

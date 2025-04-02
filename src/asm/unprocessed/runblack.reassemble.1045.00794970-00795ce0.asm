@@ -1351,7 +1351,7 @@ _jmp_addr_0x007955c6:    {disp8} mov        ecx, dword ptr [edi + 0x48]         
                          push               0x0                                           // 0x0079578b    6a00
                          push               0x0                                           // 0x0079578d    6a00
                          push               0x3                                           // 0x0079578f    6a03
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x00795791    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x00795791    ff15c4918a00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x30db20]        // 0x00795797    8b0d203bcd00
                          and                eax, 0x03                                     // 0x0079579d    83e003
                          add                eax, 0x2e                                     // 0x007957a0    83c02e

@@ -1254,7 +1254,7 @@ _jmp_addr_0x007887e6:    {disp32} mov       ecx, dword ptr [esi + 0x000000fc]   
                          {disp32} mov       dword ptr [data_bytes + 0x4700c8], ecx        // 0x0078898a    890dc860e300
                          {disp32} mov       dword ptr [data_bytes + 0x4700cc], edx        // 0x00788990    8915cc60e300
                          {disp32} mov       dword ptr [data_bytes + 0x4700d0], eax        // 0x00788996    a3d060e300
-_jmp_addr_0x0078899b:    {disp32} mov       ebx, dword ptr [rdata_bytes + 0x1c4]          // 0x0078899b    8b1dc4918a00
+_jmp_addr_0x0078899b:    {disp32} mov       ebx, dword ptr [__imp__GetTickCount@4]        // 0x0078899b    8b1dc4918a00
                          xor.s              ebp, ebp                                      // 0x007889a1    33ed
                          xor.s              edi, edi                                      // 0x007889a3    33ff
 _jmp_addr_0x007889a5:    call               ebx                                           // 0x007889a5    ffd3
@@ -1882,7 +1882,7 @@ _jmp_addr_0x0078929f:    push               ecx                                 
                          add                esp, 0x0c                                     // 0x007892af    83c40c
                          {disp8} lea        edx, dword ptr [esp + 0x3c]                   // 0x007892b2    8d54243c
                          push               edx                                           // 0x007892b6    52
-                         call               dword ptr [rdata_bytes + 0x150]               // 0x007892b7    ff1550918a00
+                         call               dword ptr [__imp__OutputDebugStringA@4]       // 0x007892b7    ff1550918a00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x41afa0]        // 0x007892bd    8b0da00fde00
                          {disp32} fld       dword ptr [ecx * 0x4 + 0x00de0d38]            // 0x007892c3    d9048d380dde00
                          {disp32} fcomp     dword ptr [ecx * 0x4 + 0x00de0d34]            // 0x007892ca    d81c8d340dde00
@@ -2032,7 +2032,7 @@ _jmp_addr_0x00789492:    cmp                dword ptr [data_bytes + 0x41afb4], e
                          push               ebx                                           // 0x007894a5    53
                          push               ebx                                           // 0x007894a6    53
                          push               0x2                                           // 0x007894a7    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x007894a9    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x007894a9    ff15c4918a00
                          xor.s              edx, edx                                      // 0x007894af    33d2
                          mov                ecx, 0x00000006                               // 0x007894b1    b906000000
                          div                ecx                                           // 0x007894b6    f7f1
@@ -2158,7 +2158,7 @@ _jmp_addr_0x00789612:    cmp                dword ptr [data_bytes + 0x41afb8], e
                          push               ebx                                           // 0x00789626    53
                          push               ebx                                           // 0x00789627    53
                          push               0x2                                           // 0x00789628    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078962a    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078962a    ff15c4918a00
                          xor.s              edx, edx                                      // 0x00789630    33d2
                          mov                ecx, 0x00000006                               // 0x00789632    b906000000
                          div                ecx                                           // 0x00789637    f7f1
@@ -2294,7 +2294,7 @@ _jmp_addr_0x007897a2:    cmp                dword ptr [data_bytes + 0x41afbc], e
                          push               ebx                                           // 0x007897b6    53
                          push               ebx                                           // 0x007897b7    53
                          push               0x2                                           // 0x007897b8    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x007897ba    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x007897ba    ff15c4918a00
                          xor.s              edx, edx                                      // 0x007897c0    33d2
                          mov                ecx, 0x00000006                               // 0x007897c2    b906000000
                          div                ecx                                           // 0x007897c7    f7f1
@@ -2430,7 +2430,7 @@ _jmp_addr_0x00789932:    cmp                dword ptr [data_bytes + 0x41afc0], e
                          push               ebx                                           // 0x00789946    53
                          push               ebx                                           // 0x00789947    53
                          push               0x2                                           // 0x00789948    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0078994a    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0078994a    ff15c4918a00
                          xor.s              edx, edx                                      // 0x00789950    33d2
                          mov                ecx, 0x00000006                               // 0x00789952    b906000000
                          div                ecx                                           // 0x00789957    f7f1

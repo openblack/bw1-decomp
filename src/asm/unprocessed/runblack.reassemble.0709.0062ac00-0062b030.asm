@@ -203,7 +203,7 @@ _jmp_addr_0x0062ad8e:    {disp8} mov       dword ptr [esi + 0x20], edi          
                          ret                                                             // 0x0062ad9f    c3
                          push              esi                                           // 0x0062ada0    56
                          mov.s             esi, ecx                                      // 0x0062ada1    8bf1
-                         call              dword ptr [rdata_bytes + 0x88c]               // 0x0062ada3    ff158c988a00
+                         call              dword ptr [__imp__timeGetTime@4]              // 0x0062ada3    ff158c988a00
                          {disp32} mov      dword ptr [esi + 0x00000434], eax             // 0x0062ada9    898634040000
                          {disp8} mov       eax, dword ptr [esp + 0x08]                   // 0x0062adaf    8b442408
                          {disp32} mov      dword ptr [esi + 0x00000438], eax             // 0x0062adb3    898638040000

@@ -644,7 +644,7 @@ _jmp_addr_0x005bcbdf:    mov                edx, dword ptr [eax]                
 _jmp_addr_0x005bcc15:    pop                edi                                                  // 0x005bcc15    5f
                          pop                esi                                                  // 0x005bcc16    5e
                          ret                0x0008                                               // 0x005bcc17    c20800
-                         call               dword ptr [rdata_bytes + 0x978]                      // 0x005bcc1a    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]         // 0x005bcc1a    ff1578998a00
 _jmp_addr_0x005bcc20:    push               edi                                                  // 0x005bcc20    57
                          {disp32} lea       edi, dword ptr [ecx + 0x00002f7c]                    // 0x005bcc21    8db97c2f0000
                          mov                ecx, 0x00000050                                      // 0x005bcc27    b950000000
@@ -752,7 +752,7 @@ _jmp_addr_0x005bcd00:    sub                esp, 0x1c                           
                          {disp32} je        _jmp_addr_0x005bce0c                                 // 0x005bcd18    0f84ee000000
                          cmp                dword ptr [data_bytes + 0x34fa9c], ebp               // 0x005bcd1e    392d9c5ad100
                          {disp32} je        _jmp_addr_0x005bce0c                                 // 0x005bcd24    0f84e2000000
-                         call               dword ptr [rdata_bytes + 0x1c4]                      // 0x005bcd2a    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]                    // 0x005bcd2a    ff15c4918a00
                          sub                eax, dword ptr [data_bytes + 0x34fa98]               // 0x005bcd30    2b05985ad100
                          {disp32} mov       ecx, dword ptr [esi + 0x00002efc]                    // 0x005bcd36    8b8efc2e0000
                          {disp8} mov        dword ptr [esp + 0x24], eax                          // 0x005bcd3c    89442424

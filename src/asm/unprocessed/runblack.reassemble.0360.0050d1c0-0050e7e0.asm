@@ -261,7 +261,7 @@ _jmp_addr_0x0050d460:    sub                esp, 0x0c                           
                          {disp8} fild       dword ptr [esp + 0x18]                        // 0x0050d480    db442418
                          add                esp, 0x14                                     // 0x0050d484    83c414
                          ret                0x0004                                        // 0x0050d487    c20400
-                         call               dword ptr [rdata_bytes + 0x978]               // 0x0050d48a    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x0050d48a    ff1578998a00
 _jmp_addr_0x0050d490:    {disp8} mov        eax, dword ptr [ecx + 0x1c]                   // 0x0050d490    8b411c
                          xor.s              edx, edx                                      // 0x0050d493    33d2
                          test               eax, eax                                      // 0x0050d495    85c0
@@ -273,7 +273,7 @@ _jmp_addr_0x0050d499:    {disp8} mov        ecx, dword ptr [eax + 0x04]         
                          test               eax, eax                                      // 0x0050d4a5    85c0
                          {disp8} jne        _jmp_addr_0x0050d499                          // 0x0050d4a7    75f0
 _jmp_addr_0x0050d4a9:    ret                                                              // 0x0050d4a9    c3
-                         call               dword ptr [rdata_bytes + 0x14]                // 0x0050d4aa    ff1514908a00
+                         call               dword ptr [__imp__RegSetValueExA@4]           // 0x0050d4aa    ff1514908a00
 _jmp_addr_0x0050d4b0:    {disp32} mov       eax, dword ptr [ecx + 0x00000174]             // 0x0050d4b0    8b8174010000
                          push               ebx                                           // 0x0050d4b6    53
                          xor.s              ebx, ebx                                      // 0x0050d4b7    33db
@@ -1325,7 +1325,7 @@ _jmp_addr_0x0050dfbb:    pop                ebp                                 
                          pop                esi                                           // 0x0050dfc3    5e
                          add                esp, 0x08                                     // 0x0050dfc4    83c408
                          ret                0x0004                                        // 0x0050dfc7    c20400
-                         call               dword ptr [rdata_bytes + 0x898]               // 0x0050dfca    ff1598988a00
+                         call               dword ptr [__imp__timeSetEvent@4]             // 0x0050dfca    ff1598988a00
 _jmp_addr_0x0050dfd0:    {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0050dfd0    a190c9be00
                          test               eax, eax                                      // 0x0050dfd5    85c0
                          push               esi                                           // 0x0050dfd7    56
@@ -1646,7 +1646,7 @@ _jmp_addr_0x0050e2d3:    pop                edi                                 
                          xor.s              eax, eax                                      // 0x0050e2d4    33c0
                          pop                esi                                           // 0x0050e2d6    5e
                          ret                0x0004                                        // 0x0050e2d7    c20400
-                         call               dword ptr [rdata_bytes + 0x8fc]               // 0x0050e2da    ff15fc988a00
+                         call               dword ptr [__imp__sendto@4]                   // 0x0050e2da    ff15fc988a00
 _globl_ct_0x0050e2e0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0050e2e0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x0050e2e6    b001
                          test               al, cl                                        // 0x0050e2e8    84c8

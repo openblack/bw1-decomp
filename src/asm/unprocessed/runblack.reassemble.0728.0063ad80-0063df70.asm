@@ -1853,7 +1853,7 @@ _jmp_addr_0x0063bebc:    pop                edi                                 
                          push               0x00bfdf6c                                     // 0x0063bf03    686cdfbf00
                          push               edx                                            // 0x0063bf08    52
                          mov                word ptr [esi], ax                             // 0x0063bf09    668906
-                         call               dword ptr [rdata_bytes + 0x35c]                // 0x0063bf0c    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]    // 0x0063bf0c    ff155c938a00
                          add                esp, 0x0c                                      // 0x0063bf12    83c40c
                          push               eax                                            // 0x0063bf15    50
                          {disp8} lea        eax, dword ptr [esi + 0x04]                    // 0x0063bf16    8d4604
@@ -2972,7 +2972,7 @@ _jmp_addr_0x0063ca41:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95
                          call               @MyInterface__5GGameFv@4                       // 0x0063caa9    e8a28df1ff
                          cmp.s              edi, eax                                       // 0x0063caae    3bf8
                          {disp32} jne       _jmp_addr_0x0063ddbf                           // 0x0063cab0    0f8509130000
-                         call               dword ptr [rdata_bytes + 0x1c4]                // 0x0063cab6    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]              // 0x0063cab6    ff15c4918a00
                          xor.s              ecx, ecx                                       // 0x0063cabc    33c9
                          {disp8} mov        cl, byte ptr [ebx + 0x40]                      // 0x0063cabe    8a4b40
                          {disp8} lea        edx, dword ptr [esp + 0x2c]                    // 0x0063cac1    8d54242c
@@ -2999,7 +2999,7 @@ _jmp_addr_0x0063ca41:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95
                          call               @MyInterface__5GGameFv@4                       // 0x0063cb02    e8498df1ff
                          cmp.s              edi, eax                                       // 0x0063cb07    3bf8
                          {disp32} jne       _jmp_addr_0x0063ddbf                           // 0x0063cb09    0f85b0120000
-                         call               dword ptr [rdata_bytes + 0x1c4]                // 0x0063cb0f    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]              // 0x0063cb0f    ff15c4918a00
                          xor.s              edx, edx                                       // 0x0063cb15    33d2
                          {disp8} mov        dl, byte ptr [ebx + 0x40]                      // 0x0063cb17    8a5340
                          sub                eax, dword ptr [edx * 0x4 + 0x00d443d4]        // 0x0063cb1a    2b0495d443d400
@@ -3026,7 +3026,7 @@ _jmp_addr_0x0063ca41:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95
                          call               @MyInterface__5GGameFv@4                       // 0x0063cb5b    e8f08cf1ff
                          cmp.s              edi, eax                                       // 0x0063cb60    3bf8
                          {disp32} jne       _jmp_addr_0x0063ddbf                           // 0x0063cb62    0f8557120000
-                         call               dword ptr [rdata_bytes + 0x1c4]                // 0x0063cb68    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]              // 0x0063cb68    ff15c4918a00
                          xor.s              ecx, ecx                                       // 0x0063cb6e    33c9
                          {disp8} mov        cl, byte ptr [ebx + 0x40]                      // 0x0063cb70    8a4b40
                          {disp8} lea        edx, dword ptr [esp + 0x2c]                    // 0x0063cb73    8d54242c

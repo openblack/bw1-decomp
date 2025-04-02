@@ -923,7 +923,7 @@ _jmp_addr_0x004120a0:    push               ecx                                 
                          {disp32} mov       dword ptr [data_bytes + 0x286d28], 0x00000001 // 0x004120dc    c70528cdc40001000000
                          add                esp, 0x1c                                     // 0x004120e6    83c41c
                          ret                                                              // 0x004120e9    c3
-                         call               dword ptr [rdata_bytes + 0x3c]                // 0x004120ea    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x004120ea    ff153c908a00
 _jmp_addr_0x004120f0:    {disp32} mov       ecx, dword ptr [data_bytes + 0x286cf0]        // 0x004120f0    8b0df0ccc400
                          push               esi                                           // 0x004120f6    56
                          xor.s              esi, esi                                      // 0x004120f7    33f6

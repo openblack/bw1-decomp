@@ -650,7 +650,7 @@ _jmp_addr_0x0050529e:    pop                edi                                 
                          mov                eax, 0x00000002                                      // 0x00505313    b802000000
                          pop                esi                                                  // 0x00505318    5e
                          ret                                                                     // 0x00505319    c3
-                         call               dword ptr [rdata_bytes + 0x970]                      // 0x0050531a    ff1570998a00
+                         call               dword ptr [__imp__GetOpenFileNameA@4]                // 0x0050531a    ff1570998a00
                          sub                esp, 0x08                                            // 0x00505320    83ec08
                          push               esi                                                  // 0x00505323    56
                          push               0x00000d13                                           // 0x00505324    68130d0000
@@ -722,7 +722,7 @@ _jmp_addr_0x005053d8:    dec                word ptr [esi + 0x58]               
                          mov                eax, 0x00000002                                      // 0x005053f3    b802000000
                          pop                esi                                                  // 0x005053f8    5e
                          ret                                                                     // 0x005053f9    c3
-                         call               dword ptr [rdata_bytes + 0x2c]                       // 0x005053fa    ff152c908a00
+                         call               dword ptr [__imp__DirectDrawCreate@4]                // 0x005053fa    ff152c908a00
                          sub                esp, 0x14                                            // 0x00505400    83ec14
                          push               ebx                                                  // 0x00505403    53
                          push               ebp                                                  // 0x00505404    55
@@ -1425,7 +1425,7 @@ _jmp_addr_0x00505c17:    pop                edi                                 
                          {disp32} mov       dword ptr [eax + edx * 0x4 + 0x0001d420], 0x00000001 // 0x00505c49    c7849020d4010001000000
                          mov                eax, 0x00000002                                      // 0x00505c54    b802000000
                          ret                                                                     // 0x00505c59    c3
-                         call               dword ptr [rdata_bytes + 0x34]                       // 0x00505c5a    ff1534908a00
+                         call               dword ptr [__imp__DirectInputCreateA@4]              // 0x00505c5a    ff1534908a00
                          sub                esp, 0x0c                                            // 0x00505c60    83ec0c
                          push               ebx                                                  // 0x00505c63    53
                          push               esi                                                  // 0x00505c64    56
@@ -1847,7 +1847,7 @@ _jmp_addr_0x00506133:    {disp32} mov       ecx, dword ptr [esi + 0x00000164]   
                          mov                eax, 0x00000002                                      // 0x00506143    b802000000
                          pop                esi                                                  // 0x00506148    5e
                          ret                                                                     // 0x00506149    c3
-                         call               dword ptr [rdata_bytes + 0x3c]                       // 0x0050614a    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]            // 0x0050614a    ff153c908a00
                          {disp32} mov       eax, dword ptr [ecx + 0x00000164]                    // 0x00506150    8b8164010000
                          {disp32} mov       ecx, dword ptr [eax + 0x00000fb4]                    // 0x00506156    8b88b40f0000
                          add                eax, 0x00000fa8                                      // 0x0050615c    05a80f0000

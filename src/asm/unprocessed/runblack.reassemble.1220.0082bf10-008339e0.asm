@@ -4047,7 +4047,7 @@ _jmp_addr_0x0082ee70:    sub                esp, 0x08                           
                          {disp32} mov       al, byte ptr [data_bytes + 0x2726d0]           // 0x0082ee7e    a0d086c300
                          test               al, al                                         // 0x0082ee83    84c0
                          {disp8} je         _jmp_addr_0x0082eef5                           // 0x0082ee85    746e
-                         call               dword ptr [rdata_bytes + 0x1c4]                // 0x0082ee87    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]              // 0x0082ee87    ff15c4918a00
                          sub                eax, dword ptr [data_bytes + 0x4dbc78]         // 0x0082ee8d    2b05781cea00
                          {disp8} mov        dword ptr [esp + 0x04], eax                    // 0x0082ee93    89442404
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbc7c]         // 0x0082ee97    a17c1cea00
@@ -4254,7 +4254,7 @@ _StartFrame__10LH3DRenderFv:    push               ebp                          
                          fldcw              word ptr [ebp + -0x02]                         // 0x0082f144    d96dfe
                          wait                                                              // 0x0082f147    9b
                          {disp32} mov       dword ptr [data_bytes + 0x4dba88], esi         // 0x0082f148    8935881aea00
-                         call               dword ptr [rdata_bytes + 0x1c4]                // 0x0082f14e    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]              // 0x0082f14e    ff15c4918a00
                          sub                eax, dword ptr [data_bytes + 0x4dbc78]         // 0x0082f154    2b05781cea00
                          {disp8} mov        dword ptr [ebp + -0x0c], eax                   // 0x0082f15a    8945f4
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbc7c]         // 0x0082f15d    a17c1cea00
@@ -5571,7 +5571,7 @@ _jmp_addr_0x00830080:    push               0x00830090                          
                          nop                                                               // 0x0083008e    90
                          nop                                                               // 0x0083008f    90
                          mov                ecx, 0x00eb9ac0                                // 0x00830090    b9c09aeb00
-                         jmp                dword ptr [rdata_bytes + 0x378]                // 0x00830095    ff2578938a00
+                         jmp                dword ptr [__imp___1LHVersion__QAE_XZ@4]       // 0x00830095    ff2578938a00
                          nop                                                               // 0x0083009b    90
                          nop                                                               // 0x0083009c    90
                          nop                                                               // 0x0083009d    90
@@ -5584,7 +5584,7 @@ _CHAR2WCHAR__FPc:        {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               eax                                            // 0x008300b0    50
                          push               0x1                                            // 0x008300b1    6a01
                          push               0x0                                            // 0x008300b3    6a00
-                         call               dword ptr [rdata_bytes + 0x13c]                // 0x008300b5    ff153c918a00
+                         call               dword ptr [__imp__MultiByteToWideChar@4]       // 0x008300b5    ff153c918a00
                          {disp32} mov       word ptr [eax * 0x2 + 0x00ecbd08], 0x0000      // 0x008300bb    66c7044508bdec000000
                          mov                eax, 0x00ecbd08                                // 0x008300c5    b808bdec00
                          ret                                                               // 0x008300ca    c3

@@ -7707,7 +7707,7 @@ _jmp_addr_0x0068c363:    or                 ecx, 0xffffffff                     
                          {disp32} lea       ecx, dword ptr [esp + 0x0000010c]             // 0x0068c38a    8d8c240c010000
                          push               0x00c0288c                                    // 0x0068c391    688c28c000
                          push               ecx                                           // 0x0068c396    51
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x0068c397    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x0068c397    ff155c938a00
                          or                 ecx, 0xffffffff                               // 0x0068c39d    83c9ff
                          mov.s              edi, eax                                      // 0x0068c3a0    8bf8
                          xor.s              eax, eax                                      // 0x0068c3a2    33c0

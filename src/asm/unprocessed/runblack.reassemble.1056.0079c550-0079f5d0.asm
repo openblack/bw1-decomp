@@ -3653,7 +3653,7 @@ _jmp_addr_0x0079f14c:    cmp                dword ptr [data_bytes + 0x4741a0], e
                          push               ebx                                           // 0x0079f160    53
                          push               ebx                                           // 0x0079f161    53
                          push               0x2                                           // 0x0079f162    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x0079f164    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x0079f164    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0079f16a    33d2
                          mov                ecx, 0x00000006                               // 0x0079f16c    b906000000
                          div                ecx                                           // 0x0079f171    f7f1

@@ -2125,7 +2125,7 @@ _jmp_addr_0x0050ab35:    pop                edi                                 
                          xor.s              eax, eax                                      // 0x0050ab36    33c0
                          pop                esi                                           // 0x0050ab38    5e
                          ret                                                              // 0x0050ab39    c3
-                         call               dword ptr [rdata_bytes + 0x570]               // 0x0050ab3a    ff1570958a00
+                         call               dword ptr [__imp__db_free_data__YAXPAPAD_Z@4] // 0x0050ab3a    ff1570958a00
                          ret                0x0004                                        // 0x0050ab40    c20400
                          nop                                                              // 0x0050ab43    90
                          nop                                                              // 0x0050ab44    90

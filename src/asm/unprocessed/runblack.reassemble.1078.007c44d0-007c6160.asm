@@ -1213,8 +1213,8 @@ _jmp_addr_0x007c50c1:    {disp8} mov      esi, dword ptr [esp + 0x38]           
                          jmp              dword ptr [rdata_bytes + 0x700]               // 0x007c513c    ff2500978a00
                          jmp              dword ptr [rdata_bytes + 0x704]               // 0x007c5142    ff2504978a00
                          jmp              dword ptr [rdata_bytes + 0x708]               // 0x007c5148    ff2508978a00
-                         jmp              dword ptr [rdata_bytes + 0x70c]               // 0x007c514e    ff250c978a00
-                         jmp              dword ptr [rdata_bytes + 0x710]               // 0x007c5154    ff2510978a00
+                         jmp              dword ptr [__imp___0LH_AudioSystem__QAE_XZ@4] // 0x007c514e    ff250c978a00
+                         jmp              dword ptr [__imp___1LH_AudioSystem__QAE_XZ@4] // 0x007c5154    ff2510978a00
                          jmp              dword ptr [rdata_bytes + 0x714]               // 0x007c515a    ff2514978a00
                          jmp              dword ptr [rdata_bytes + 0x718]               // 0x007c5160    ff2518978a00
                          jmp              dword ptr [rdata_bytes + 0x71c]               // 0x007c5166    ff251c978a00
@@ -1261,19 +1261,19 @@ _jmp_addr_0x007c50c1:    {disp8} mov      esi, dword ptr [esp + 0x38]           
                          jmp              dword ptr [rdata_bytes + 0x6e8]               // 0x007c525c    ff25e8968a00
                          jmp              dword ptr [rdata_bytes + 0x6a4]               // 0x007c5262    ff25a4968a00
                          jmp              dword ptr [rdata_bytes + 0x6a0]               // 0x007c5268    ff25a0968a00
-                         jmp              dword ptr [rdata_bytes + 0x69c]               // 0x007c526e    ff259c968a00
+                         jmp              dword ptr [__imp__Reset_DBInfo__QAEXXZ@4]     // 0x007c526e    ff259c968a00
                          jmp              dword ptr [rdata_bytes + 0x698]               // 0x007c5274    ff2598968a00
                          jmp              dword ptr [rdata_bytes + 0x694]               // 0x007c527a    ff2594968a00
                          jmp              dword ptr [rdata_bytes + 0x690]               // 0x007c5280    ff2590968a00
                          jmp              dword ptr [rdata_bytes + 0x68c]               // 0x007c5286    ff258c968a00
-                         jmp              dword ptr [rdata_bytes + 0x688]               // 0x007c528c    ff2588968a00
+                         jmp              dword ptr [__imp___0LH_USER_ID__QAE_K_Z@4]    // 0x007c528c    ff2588968a00
                          jmp              dword ptr [rdata_bytes + 0x684]               // 0x007c5292    ff2584968a00
                          jmp              dword ptr [rdata_bytes + 0x680]               // 0x007c5298    ff2580968a00
                          jmp              dword ptr [rdata_bytes + 0x67c]               // 0x007c529e    ff257c968a00
                          jmp              dword ptr [rdata_bytes + 0x674]               // 0x007c52a4    ff2574968a00
-                         jmp              dword ptr [rdata_bytes + 0x66c]               // 0x007c52aa    ff256c968a00
+                         jmp              dword ptr [__imp___0LH_USER_ID__QAE_XZ@4]     // 0x007c52aa    ff256c968a00
                          jmp              dword ptr [rdata_bytes + 0x668]               // 0x007c52b0    ff2568968a00
-                         jmp              dword ptr [rdata_bytes + 0x6ac]               // 0x007c52b6    ff25ac968a00
+                         jmp              dword ptr [__imp__Startup_LHSocket__SAXXZ@4]  // 0x007c52b6    ff25ac968a00
                          jmp              dword ptr [rdata_bytes + 0x664]               // 0x007c52bc    ff2564968a00
                          jmp              dword ptr [rdata_bytes + 0x660]               // 0x007c52c2    ff2560968a00
                          jmp              dword ptr [rdata_bytes + 0x65c]               // 0x007c52c8    ff255c968a00
@@ -1290,27 +1290,27 @@ _jmp_addr_0x007c50c1:    {disp8} mov      esi, dword ptr [esp + 0x38]           
                          jmp              dword ptr [rdata_bytes + 0x630]               // 0x007c530a    ff2530968a00
                          jmp              dword ptr [rdata_bytes + 0x62c]               // 0x007c5310    ff252c968a00
                          jmp              dword ptr [rdata_bytes + 0x628]               // 0x007c5316    ff2528968a00
-                         jmp              dword ptr [rdata_bytes + 0x618]               // 0x007c531c    ff2518968a00
+                         jmp              dword ptr [__imp___1LHPlayer__QAE_XZ@4]       // 0x007c531c    ff2518968a00
                          jmp              dword ptr [rdata_bytes + 0x614]               // 0x007c5322    ff2514968a00
                          jmp              dword ptr [rdata_bytes + 0x60c]               // 0x007c5328    ff250c968a00
                          jmp              dword ptr [rdata_bytes + 0x608]               // 0x007c532e    ff2508968a00
                          jmp              dword ptr [rdata_bytes + 0x604]               // 0x007c5334    ff2504968a00
-                         jmp              dword ptr [rdata_bytes + 0x600]               // 0x007c533a    ff2500968a00
-                         jmp              dword ptr [rdata_bytes + 0x5fc]               // 0x007c5340    ff25fc958a00
+                         jmp              dword ptr [__imp___0LHFileDownload__QAE_XZ@4] // 0x007c533a    ff2500968a00
+                         jmp              dword ptr [__imp___1LHFileDownload__QAE_XZ@4] // 0x007c5340    ff25fc958a00
                          jmp              dword ptr [rdata_bytes + 0x5f8]               // 0x007c5346    ff25f8958a00
                          jmp              dword ptr [rdata_bytes + 0x5f4]               // 0x007c534c    ff25f4958a00
                          jmp              dword ptr [rdata_bytes + 0x5f0]               // 0x007c5352    ff25f0958a00
                          jmp              dword ptr [rdata_bytes + 0x5ec]               // 0x007c5358    ff25ec958a00
                          jmp              dword ptr [rdata_bytes + 0x5e8]               // 0x007c535e    ff25e8958a00
                          jmp              dword ptr [rdata_bytes + 0x4d4]               // 0x007c5364    ff25d4948a00
-                         jmp              dword ptr [rdata_bytes + 0x548]               // 0x007c536a    ff2548958a00
+                         jmp              dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x007c536a    ff2548958a00
                          jmp              dword ptr [rdata_bytes + 0x3ec]               // 0x007c5370    ff25ec938a00
                          jmp              dword ptr [rdata_bytes + 0x3f0]               // 0x007c5376    ff25f0938a00
                          jmp              dword ptr [rdata_bytes + 0x404]               // 0x007c537c    ff2504948a00
                          jmp              dword ptr [rdata_bytes + 0x408]               // 0x007c5382    ff2508948a00
                          jmp              dword ptr [rdata_bytes + 0x40c]               // 0x007c5388    ff250c948a00
                          jmp              dword ptr [rdata_bytes + 0x410]               // 0x007c538e    ff2510948a00
-_jmp_addr_0x007c5394:    jmp              dword ptr [rdata_bytes + 0x418]               // 0x007c5394    ff2518948a00
+_jmp_addr_0x007c5394:    jmp              dword ptr [__imp__GetIPAddress__YAPADXZ@4]    // 0x007c5394    ff2518948a00
                          jmp              dword ptr [rdata_bytes + 0x41c]               // 0x007c539a    ff251c948a00
                          jmp              dword ptr [rdata_bytes + 0x420]               // 0x007c53a0    ff2520948a00
                          jmp              dword ptr [rdata_bytes + 0x424]               // 0x007c53a6    ff2524948a00
@@ -1344,25 +1344,25 @@ _jmp_addr_0x007c5394:    jmp              dword ptr [rdata_bytes + 0x418]       
                          jmp              dword ptr [rdata_bytes + 0x4a4]               // 0x007c544e    ff25a4948a00
                          jmp              dword ptr [rdata_bytes + 0x4a8]               // 0x007c5454    ff25a8948a00
                          jmp              dword ptr [rdata_bytes + 0x4b0]               // 0x007c545a    ff25b0948a00
-                         jmp              dword ptr [rdata_bytes + 0x4b4]               // 0x007c5460    ff25b4948a00
-                         jmp              dword ptr [rdata_bytes + 0x4b8]               // 0x007c5466    ff25b8948a00
+                         jmp              dword ptr [__imp___1LHHttp2__QAE_XZ@4]        // 0x007c5460    ff25b4948a00
+                         jmp              dword ptr [__imp__Reset_LHHttp2__QAEXXZ@4]    // 0x007c5466    ff25b8948a00
                          jmp              dword ptr [rdata_bytes + 0x4bc]               // 0x007c546c    ff25bc948a00
                          jmp              dword ptr [rdata_bytes + 0x4c0]               // 0x007c5472    ff25c0948a00
                          jmp              dword ptr [rdata_bytes + 0x4c4]               // 0x007c5478    ff25c4948a00
                          jmp              dword ptr [rdata_bytes + 0x4c8]               // 0x007c547e    ff25c8948a00
                          jmp              dword ptr [rdata_bytes + 0x4cc]               // 0x007c5484    ff25cc948a00
                          jmp              dword ptr [rdata_bytes + 0x4d0]               // 0x007c548a    ff25d0948a00
-                         jmp              dword ptr [rdata_bytes + 0x6b0]               // 0x007c5490    ff25b0968a00
+                         jmp              dword ptr [__imp___0LHHttp2__QAE_XZ@4]        // 0x007c5490    ff25b0968a00
                          jmp              dword ptr [rdata_bytes + 0x4d8]               // 0x007c5496    ff25d8948a00
-                         jmp              dword ptr [rdata_bytes + 0x4dc]               // 0x007c549c    ff25dc948a00
+                         jmp              dword ptr [__imp__Close_LHLobby__UAEXXZ@4]    // 0x007c549c    ff25dc948a00
                          jmp              dword ptr [rdata_bytes + 0x4e0]               // 0x007c54a2    ff25e0948a00
                          jmp              dword ptr [rdata_bytes + 0x4e8]               // 0x007c54a8    ff25e8948a00
-                         jmp              dword ptr [rdata_bytes + 0x4ec]               // 0x007c54ae    ff25ec948a00
+                         jmp              dword ptr [__imp___0LHLobby__QAE_XZ@4]        // 0x007c54ae    ff25ec948a00
                          jmp              dword ptr [rdata_bytes + 0x4f0]               // 0x007c54b4    ff25f0948a00
-                         jmp              dword ptr [rdata_bytes + 0x4f4]               // 0x007c54ba    ff25f4948a00
+                         jmp              dword ptr [__imp___1LHLobby__UAE_XZ@4]        // 0x007c54ba    ff25f4948a00
                          jmp              dword ptr [rdata_bytes + 0x4f8]               // 0x007c54c0    ff25f8948a00
-                         jmp              dword ptr [rdata_bytes + 0x4fc]               // 0x007c54c6    ff25fc948a00
-                         jmp              dword ptr [rdata_bytes + 0x504]               // 0x007c54cc    ff2504958a00
+                         jmp              dword ptr [__imp___1LHNetUser__QAE_XZ@4]      // 0x007c54c6    ff25fc948a00
+                         jmp              dword ptr [__imp__Logout_LHNetUser__QAEXXZ@4] // 0x007c54cc    ff2504958a00
                          jmp              dword ptr [rdata_bytes + 0x508]               // 0x007c54d2    ff2508958a00
                          jmp              dword ptr [rdata_bytes + 0x50c]               // 0x007c54d8    ff250c958a00
                          jmp              dword ptr [rdata_bytes + 0x510]               // 0x007c54de    ff2510958a00
@@ -1371,26 +1371,26 @@ _jmp_addr_0x007c5394:    jmp              dword ptr [rdata_bytes + 0x418]       
                          jmp              dword ptr [rdata_bytes + 0x51c]               // 0x007c54f0    ff251c958a00
                          jmp              dword ptr [rdata_bytes + 0x520]               // 0x007c54f6    ff2520958a00
                          jmp              dword ptr [rdata_bytes + 0x524]               // 0x007c54fc    ff2524958a00
-                         jmp              dword ptr [rdata_bytes + 0x528]               // 0x007c5502    ff2528958a00
+                         jmp              dword ptr [__imp__Close_LHSession__UAEXXZ@4]  // 0x007c5502    ff2528958a00
                          jmp              dword ptr [rdata_bytes + 0x52c]               // 0x007c5508    ff252c958a00
                          jmp              dword ptr [rdata_bytes + 0x530]               // 0x007c550e    ff2530958a00
                          jmp              dword ptr [rdata_bytes + 0x534]               // 0x007c5514    ff2534958a00
                          jmp              dword ptr [rdata_bytes + 0x53c]               // 0x007c551a    ff253c958a00
-                         jmp              dword ptr [rdata_bytes + 0x544]               // 0x007c5520    ff2544958a00
+                         jmp              dword ptr [__imp___1LHSession__UAE_XZ@4]      // 0x007c5520    ff2544958a00
                          jmp              dword ptr [rdata_bytes + 0x3e4]               // 0x007c5526    ff25e4938a00
                          jmp              dword ptr [rdata_bytes + 0x54c]               // 0x007c552c    ff254c958a00
                          jmp              dword ptr [rdata_bytes + 0x550]               // 0x007c5532    ff2550958a00
                          jmp              dword ptr [rdata_bytes + 0x554]               // 0x007c5538    ff2554958a00
                          jmp              dword ptr [rdata_bytes + 0x558]               // 0x007c553e    ff2558958a00
                          jmp              dword ptr [rdata_bytes + 0x560]               // 0x007c5544    ff2560958a00
-                         jmp              dword ptr [rdata_bytes + 0x564]               // 0x007c554a    ff2564958a00
+                         jmp              dword ptr [__imp___1LHHttpHeaders__QAE_XZ@4]  // 0x007c554a    ff2564958a00
                          jmp              dword ptr [rdata_bytes + 0x568]               // 0x007c5550    ff2568958a00
                          jmp              dword ptr [rdata_bytes + 0x56c]               // 0x007c5556    ff256c958a00
-                         jmp              dword ptr [rdata_bytes + 0x570]               // 0x007c555c    ff2570958a00
+                         jmp              dword ptr [__imp__db_free_data__YAXPAPAD_Z@4] // 0x007c555c    ff2570958a00
                          jmp              dword ptr [rdata_bytes + 0x574]               // 0x007c5562    ff2574958a00
                          jmp              dword ptr [rdata_bytes + 0x578]               // 0x007c5568    ff2578958a00
                          jmp              dword ptr [rdata_bytes + 0x57c]               // 0x007c556e    ff257c958a00
-                         jmp              dword ptr [rdata_bytes + 0x580]               // 0x007c5574    ff2580958a00
+                         jmp              dword ptr [__imp___1DBInfo__QAE_XZ@4]         // 0x007c5574    ff2580958a00
                          jmp              dword ptr [rdata_bytes + 0x584]               // 0x007c557a    ff2584958a00
                          jmp              dword ptr [rdata_bytes + 0x588]               // 0x007c5580    ff2588958a00
                          jmp              dword ptr [rdata_bytes + 0x58c]               // 0x007c5586    ff258c958a00
@@ -1725,7 +1725,7 @@ _jmp_addr_0x007c5982:    and              dword ptr [ebp + -0x04], 0x00         
                          {disp8} mov      dword ptr [ebp + -0x1c], esi                  // 0x007c598b    8975e4
                          push             0x8                                           // 0x007c598e    6a08
                          push             dword ptr [esi + 0x0c]                        // 0x007c5990    ff760c
-                         call             dword ptr [rdata_bytes + 0x208]               // 0x007c5993    ff1508928a00
+                         call             dword ptr [__imp__IsBadReadPtr@4]             // 0x007c5993    ff1508928a00
                          test             eax, eax                                      // 0x007c5999    85c0
                          {disp8} jne      _jmp_addr_0x007c59b3                          // 0x007c599b    7516
                          {disp8} mov      eax, dword ptr [esi + 0x0c]                   // 0x007c599d    8b460c
@@ -2211,9 +2211,9 @@ _jmp_addr_0x007c5e6f:    push             esi                                   
                          mov              esi, 0x00fadcc8                               // 0x007c5e70    bec8dcfa00
                          push             edi                                           // 0x007c5e75    57
                          push             esi                                           // 0x007c5e76    56
-                         call             dword ptr [rdata_bytes + 0x310]               // 0x007c5e77    ff1510938a00
+                         call             dword ptr [__imp__InterlockedIncrement@4]     // 0x007c5e77    ff1510938a00
                          cmp              dword ptr [data_bytes + 0x5e7cc4], ebx        // 0x007c5e7d    391dc4dcfa00
-                         {disp32} mov     edi, dword ptr [rdata_bytes + 0x314]          // 0x007c5e83    8b3d14938a00
+                         {disp32} mov     edi, dword ptr [__imp__InterlockedDecrement@4]// 0x007c5e83    8b3d14938a00
                          {disp8} je       _jmp_addr_0x007c5e99                          // 0x007c5e89    740e
                          push             esi                                           // 0x007c5e8b    56
                          call             edi                                           // 0x007c5e8c    ffd7
@@ -2363,7 +2363,7 @@ _jmp_addr_0x007c5fdb:    push             ebp                                   
                          push             eax                                           // 0x007c5ffd    50
                          push             0x1                                           // 0x007c5ffe    6a01
                          push             0x0                                           // 0x007c6000    6a00
-                         call             dword ptr [rdata_bytes + 0x13c]               // 0x007c6002    ff153c918a00
+                         call             dword ptr [__imp__MultiByteToWideChar@4]      // 0x007c6002    ff153c918a00
                          {disp8} mov      eax, dword ptr [ebp + 0x0c]                   // 0x007c6008    8b450c
                          leave                                                          // 0x007c600b    c9
                          ret                                                            // 0x007c600c    c3
@@ -2383,7 +2383,7 @@ _jmp_addr_0x007c5fdb:    push             ebp                                   
                          push             eax                                           // 0x007c602f    50
                          push             0x1                                           // 0x007c6030    6a01
                          push             0x0                                           // 0x007c6032    6a00
-                         call             dword ptr [rdata_bytes + 0x13c]               // 0x007c6034    ff153c918a00
+                         call             dword ptr [__imp__MultiByteToWideChar@4]      // 0x007c6034    ff153c918a00
                          {disp8} mov      eax, dword ptr [ebp + 0x0c]                   // 0x007c603a    8b450c
                          leave                                                          // 0x007c603d    c9
                          ret                                                            // 0x007c603e    c3
@@ -2403,7 +2403,7 @@ _jmp_addr_0x007c5fdb:    push             ebp                                   
                          push             eax                                           // 0x007c6061    50
                          push             0x1                                           // 0x007c6062    6a01
                          push             0x0                                           // 0x007c6064    6a00
-                         call             dword ptr [rdata_bytes + 0x13c]               // 0x007c6066    ff153c918a00
+                         call             dword ptr [__imp__MultiByteToWideChar@4]      // 0x007c6066    ff153c918a00
                          {disp8} mov      eax, dword ptr [ebp + 0x0c]                   // 0x007c606c    8b450c
                          leave                                                          // 0x007c606f    c9
                          ret                                                            // 0x007c6070    c3
@@ -2424,7 +2424,7 @@ _jmp_addr_0x007c5fdb:    push             ebp                                   
                          push             eax                                           // 0x007c6096    50
                          push             0x1                                           // 0x007c6097    6a01
                          push             0x0                                           // 0x007c6099    6a00
-                         call             dword ptr [rdata_bytes + 0x13c]               // 0x007c609b    ff153c918a00
+                         call             dword ptr [__imp__MultiByteToWideChar@4]      // 0x007c609b    ff153c918a00
                          {disp8} mov      eax, dword ptr [ebp + 0x10]                   // 0x007c60a1    8b4510
                          leave                                                          // 0x007c60a4    c9
                          ret                                                            // 0x007c60a5    c3
@@ -2445,7 +2445,7 @@ _jmp_addr_0x007c5fdb:    push             ebp                                   
                          push             eax                                           // 0x007c60cb    50
                          push             0x1                                           // 0x007c60cc    6a01
                          push             0x0                                           // 0x007c60ce    6a00
-                         call             dword ptr [rdata_bytes + 0x13c]               // 0x007c60d0    ff153c918a00
+                         call             dword ptr [__imp__MultiByteToWideChar@4]      // 0x007c60d0    ff153c918a00
                          {disp8} mov      eax, dword ptr [ebp + 0x10]                   // 0x007c60d6    8b4510
                          leave                                                          // 0x007c60d9    c9
                          ret                                                            // 0x007c60da    c3

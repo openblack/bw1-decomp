@@ -1402,7 +1402,7 @@ _jmp_addr_0x00512fff:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          call              @FindControl__8SetupBoxFi@12                         // 0x00513021    e83a51efff
                          add               eax, 0x24                                            // 0x00513026    83c024
                          push              eax                                                  // 0x00513029    50
-                         call              dword ptr [rdata_bytes + 0x360]                      // 0x0051302a    ff1560938a00
+                         call              dword ptr [__imp__UNICODE_sprintf__YAHPAG0ZZ@4]      // 0x0051302a    ff1560938a00
                          add               esp, 0x14                                            // 0x00513030    83c414
                          pop               edi                                                  // 0x00513033    5f
                          pop               esi                                                  // 0x00513034    5e
@@ -1567,7 +1567,7 @@ _jmp_addr_0x0051324a:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          call              @FindControl__8SetupBoxFi@12                         // 0x00513267    e8f44eefff
                          add               eax, 0x24                                            // 0x0051326c    83c024
                          push              eax                                                  // 0x0051326f    50
-                         call              dword ptr [rdata_bytes + 0x360]                      // 0x00513270    ff1560938a00
+                         call              dword ptr [__imp__UNICODE_sprintf__YAHPAG0ZZ@4]      // 0x00513270    ff1560938a00
                          add               esp, 0x14                                            // 0x00513276    83c414
                          {disp32} mov      dword ptr [data_bytes + 0x300250], 0x00000000        // 0x00513279    c7055062cc0000000000
 _jmp_addr_0x00513283:    pop               edi                                                  // 0x00513283    5f

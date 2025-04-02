@@ -4454,7 +4454,7 @@ _jmp_addr_0x0071e920:    sub                esp, 0x00000168                     
                          test               eax, eax                                             // 0x0071e9aa    85c0
                          {disp8} jne        _jmp_addr_0x0071ea22                                 // 0x0071e9ac    7574
 _jmp_addr_0x0071e9ae:    {disp8} lea        ecx, dword ptr [esp + 0x10]                          // 0x0071e9ae    8d4c2410
-                         call               dword ptr [rdata_bytes + 0x75c]                      // 0x0071e9b2    ff155c978a00
+                         call               dword ptr [__imp___0LH_SamplePlayOptions__QAE_XZ@4]  // 0x0071e9b2    ff155c978a00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x30db20]               // 0x0071e9b8    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + ebp * 0x4 + 0x00000194]        // 0x0071e9be    8b84a994010000
                          {disp32} mov       edx, dword ptr [esp + 0x00000180]                    // 0x0071e9c5    8b942480010000
@@ -4477,7 +4477,7 @@ _jmp_addr_0x0071e9ae:    {disp8} lea        ecx, dword ptr [esp + 0x10]         
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000                   // 0x0071ea0b    c744242000000000
                          call               @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12 // 0x0071ea13    e818b4d0ff
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                          // 0x0071ea18    8d4c2410
-                         call               dword ptr [rdata_bytes + 0x758]                      // 0x0071ea1c    ff1558978a00
+                         call               dword ptr [__imp___1LH_SamplePlayOptions__QAE_XZ@4]  // 0x0071ea1c    ff1558978a00
 _jmp_addr_0x0071ea22:    mov.s              eax, edi                                             // 0x0071ea22    8bc7
                          pop                edi                                                  // 0x0071ea24    5f
                          pop                esi                                                  // 0x0071ea25    5e
@@ -4537,7 +4537,7 @@ _jmp_addr_0x0071ea40:    sub                esp, 0x00000168                     
                          test               eax, eax                                             // 0x0071eaca    85c0
                          {disp8} jne        _jmp_addr_0x0071eb42                                 // 0x0071eacc    7574
 _jmp_addr_0x0071eace:    {disp8} lea        ecx, dword ptr [esp + 0x10]                          // 0x0071eace    8d4c2410
-                         call               dword ptr [rdata_bytes + 0x75c]                      // 0x0071ead2    ff155c978a00
+                         call               dword ptr [__imp___0LH_SamplePlayOptions__QAE_XZ@4]  // 0x0071ead2    ff155c978a00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x30db20]               // 0x0071ead8    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + ebp * 0x4 + 0x000003a8]        // 0x0071eade    8b84a9a8030000
                          {disp32} mov       edx, dword ptr [esp + 0x00000180]                    // 0x0071eae5    8b942480010000
@@ -4560,7 +4560,7 @@ _jmp_addr_0x0071eace:    {disp8} lea        ecx, dword ptr [esp + 0x10]         
                          {disp8} mov        dword ptr [esp + 0x64], eax                          // 0x0071eb2f    89442464
                          call               @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12 // 0x0071eb33    e8f8b2d0ff
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                          // 0x0071eb38    8d4c2410
-                         call               dword ptr [rdata_bytes + 0x758]                      // 0x0071eb3c    ff1558978a00
+                         call               dword ptr [__imp___1LH_SamplePlayOptions__QAE_XZ@4]  // 0x0071eb3c    ff1558978a00
 _jmp_addr_0x0071eb42:    mov.s              eax, edi                                             // 0x0071eb42    8bc7
                          pop                edi                                                  // 0x0071eb44    5f
                          pop                esi                                                  // 0x0071eb45    5e

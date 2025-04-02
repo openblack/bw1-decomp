@@ -535,7 +535,7 @@ _jmp_addr_0x005733f2:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              eax                                           // 0x00573403    50
                          {disp32} lea      ecx, dword ptr [esp + 0x00000830]             // 0x00573404    8d8c2430080000
 _jmp_addr_0x0057340b:    push              ecx                                           // 0x0057340b    51
-                         call              dword ptr [rdata_bytes + 0x3d8]               // 0x0057340c    ff15d8938a00
+                         call              dword ptr [__imp___0LHSPrintfW__QAA_PAGZZ@4]  // 0x0057340c    ff15d8938a00
                          add               esp, 0x10                                     // 0x00573412    83c410
                          push              eax                                           // 0x00573415    50
                          mov.s             ecx, esi                                      // 0x00573416    8bce
@@ -565,7 +565,7 @@ _jmp_addr_0x0057341d:    {disp32} mov      eax, dword ptr [ebx + 0x000000e0]    
                          {disp8} mov       esi, dword ptr [eax + 0x04]                   // 0x0057345a    8b7004
                          test              esi, esi                                      // 0x0057345d    85f6
                          {disp8} je        _jmp_addr_0x0057346d                          // 0x0057345f    740c
-                         call              dword ptr [rdata_bytes + 0x1c4]               // 0x00573461    ff15c4918a00
+                         call              dword ptr [__imp__GetTickCount@4]             // 0x00573461    ff15c4918a00
                          {disp32} mov      dword ptr [esi + 0x00001008], eax             // 0x00573467    898608100000
 _jmp_addr_0x0057346d:    {disp32} mov      eax, dword ptr [ebx + 0x000000ec]             // 0x0057346d    8b83ec000000
                          test              eax, eax                                      // 0x00573473    85c0

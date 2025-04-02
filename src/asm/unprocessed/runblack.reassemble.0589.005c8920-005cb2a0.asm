@@ -1246,7 +1246,7 @@ _jmp_addr_0x005c9490:    push               0x0                                 
                          push               0x21                                          // 0x005c9492    6a21
                          call               _jmp_addr_0x005c8b80                          // 0x005c9494    e8e7f6ffff
                          ret                                                              // 0x005c9499    c3
-                         call               dword ptr [rdata_bytes + 0x91c]               // 0x005c949a    ff151c998a00
+                         call               dword ptr [__imp__ioctlsocket@4]              // 0x005c949a    ff151c998a00
 _jmp_addr_0x005c94a0:    sub                esp, 0x0c                                     // 0x005c94a0    83ec0c
                          push               ebx                                           // 0x005c94a3    53
                          push               ebp                                           // 0x005c94a4    55

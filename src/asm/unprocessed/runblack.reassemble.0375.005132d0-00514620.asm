@@ -426,7 +426,7 @@ _jmp_addr_0x00513697:    cmp               dword ptr [eax + 0x04], ecx          
                          ret                                                             // 0x005136a3    c3
 _jmp_addr_0x005136a4:    {disp32} mov      dword ptr [data_bytes + 0x30029c], eax        // 0x005136a4    a39c62cc00
 _jmp_addr_0x005136a9:    ret                                                             // 0x005136a9    c3
-                         call              dword ptr [rdata_bytes + 0x3c]                // 0x005136aa    ff153c908a00
+                         call              dword ptr [__imp__DirectXSetupGetVersion]     // 0x005136aa    ff153c908a00
 _jmp_addr_0x005136b0:    {disp32} mov      eax, dword ptr [data_bytes + 0x3002a0]        // 0x005136b0    a1a062cc00
                          test              eax, eax                                      // 0x005136b5    85c0
                          {disp8} jbe       _jmp_addr_0x005136ca                          // 0x005136b7    7611

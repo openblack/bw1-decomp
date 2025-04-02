@@ -927,7 +927,7 @@ _jmp_addr_0x00516840:    {disp8} fld        dword ptr [esp + 0x0c]              
                          pop                edi                                           // 0x00516865    5f
                          pop                esi                                           // 0x00516866    5e
                          ret                0x000c                                        // 0x00516867    c20c00
-                         call               dword ptr [rdata_bytes + 0x85c]               // 0x0051686a    ff155c988a00
+                         call               dword ptr [__imp__ScreenToClient@4]           // 0x0051686a    ff155c988a00
                          push               esi                                           // 0x00516870    56
                          mov.s              esi, ecx                                      // 0x00516871    8bf1
                          {disp8} fld        dword ptr [esi + 0x1c]                        // 0x00516873    d9461c
@@ -1305,7 +1305,7 @@ _jmp_addr_0x00516c56:    {disp8} mov        eax, dword ptr [esp + 0x20]         
                          pop                ebx                                           // 0x00516ca7    5b
                          pop                ecx                                           // 0x00516ca8    59
                          ret                                                              // 0x00516ca9    c3
-                         call               dword ptr [rdata_bytes + 0x580]               // 0x00516caa    ff1580958a00
+                         call               dword ptr [__imp___1DBInfo__QAE_XZ@4]         // 0x00516caa    ff1580958a00
 _jmp_addr_0x00516cb0:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x00516cb0    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205a28]             // 0x00516cb5    8b88285a2000
                          sub                esp, 0x44                                     // 0x00516cbb    83ec44

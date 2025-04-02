@@ -757,7 +757,7 @@ _Report3D__FPCce:        {disp8} mov        ecx, dword ptr [esp + 0x04]         
                          add                esp, 0x0c                                     // 0x0081bbed    83c40c
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0081bbf0    8d442400
                          push               eax                                           // 0x0081bbf4    50
-                         call               dword ptr [rdata_bytes + 0x150]               // 0x0081bbf5    ff1550918a00
+                         call               dword ptr [__imp__OutputDebugStringA@4]       // 0x0081bbf5    ff1550918a00
                          add                esp, 0x00000800                               // 0x0081bbfb    81c400080000
                          ret                                                              // 0x0081bc01    c3
                          nop                                                              // 0x0081bc02    90

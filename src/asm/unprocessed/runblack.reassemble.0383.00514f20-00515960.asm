@@ -565,7 +565,7 @@ _jmp_addr_0x0051561c:    ret                                                    
                          nop                                                             // 0x0051561d    90
                          nop                                                             // 0x0051561e    90
                          nop                                                             // 0x0051561f    90
-_jmp_addr_0x00515620:    call              dword ptr [rdata_bytes + 0x1c4]               // 0x00515620    ff15c4918a00
+_jmp_addr_0x00515620:    call              dword ptr [__imp__GetTickCount@4]             // 0x00515620    ff15c4918a00
                          {disp32} mov      edx, dword ptr [data_bytes + 0x222cac]        // 0x00515626    8b15ac8cbe00
                          mov.s             ecx, eax                                      // 0x0051562c    8bc8
                          sub.s             ecx, edx                                      // 0x0051562e    2bca

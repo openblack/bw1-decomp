@@ -720,7 +720,7 @@ _jmp_addr_0x00502fdd:    pop                edi                                 
                          pop                esi                                                  // 0x00502fe3    5e
                          add                esp, 0x20                                            // 0x00502fe4    83c420
                          ret                0x000c                                               // 0x00502fe7    c20c00
-                         call               dword ptr [rdata_bytes + 0x950]                      // 0x00502fea    ff1550998a00
+                         call               dword ptr [__imp__BinkSetSoundOnOff@8]               // 0x00502fea    ff1550998a00
                          {disp32} mov       eax, dword ptr [ecx + 0x00000164]                    // 0x00502ff0    8b8164010000
                          {disp32} mov       ecx, dword ptr [eax + 0x00000fb4]                    // 0x00502ff6    8b88b40f0000
                          add                eax, 0x00000fa8                                      // 0x00502ffc    05a80f0000

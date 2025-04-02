@@ -67,7 +67,7 @@ _jmp_addr_0x004ca281:    add                ecx, 0x8                            
                          pop                edi                                           // 0x004ca287    5f
                          pop                esi                                           // 0x004ca288    5e
                          ret                                                              // 0x004ca289    c3
-                         call               dword ptr [rdata_bytes + 0x7ac]               // 0x004ca28a    ff15ac978a00
+                         call               dword ptr [__imp__ShellExecuteA@4]            // 0x004ca28a    ff15ac978a00
 _jmp_addr_0x004ca290:    sub                esp, 0x08                                     // 0x004ca290    83ec08
                          push               esi                                           // 0x004ca293    56
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x004ca294    8b742410

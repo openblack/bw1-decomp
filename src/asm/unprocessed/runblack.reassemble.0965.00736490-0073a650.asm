@@ -2773,7 +2773,7 @@ _jmp_addr_0x00737f11:    {disp32} fld       dword ptr [esi + 0x0000009c]        
                          push               esi                                            // 0x00737f46    56
                          push               edi                                            // 0x00737f47    57
                          mov.s              esi, ecx                                       // 0x00737f48    8bf1
-                         call               dword ptr [rdata_bytes + 0x1c4]                // 0x00737f4a    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]              // 0x00737f4a    ff15c4918a00
                          sub                eax, dword ptr [data_bytes + 0x4dbc78]         // 0x00737f50    2b05781cea00
                          {disp8} mov        dword ptr [esp + 0x08], eax                    // 0x00737f56    89442408
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbc7c]         // 0x00737f5a    a17c1cea00
@@ -3661,7 +3661,7 @@ _jmp_addr_0x00738931:    pop                edi                                 
                          push               ebx                                            // 0x00738963    53
                          push               esi                                            // 0x00738964    56
                          mov.s              esi, ecx                                       // 0x00738965    8bf1
-                         call               dword ptr [rdata_bytes + 0x1c4]                // 0x00738967    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]              // 0x00738967    ff15c4918a00
                          sub                eax, dword ptr [data_bytes + 0x4dbc78]         // 0x0073896d    2b05781cea00
                          {disp8} mov        dword ptr [esp + 0x18], eax                    // 0x00738973    89442418
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbc7c]         // 0x00738977    a17c1cea00

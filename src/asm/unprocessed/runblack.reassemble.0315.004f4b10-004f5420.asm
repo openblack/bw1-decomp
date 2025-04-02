@@ -165,7 +165,7 @@ _jmp_addr_0x004f4c30:    {disp32} mov       byte ptr [ecx + 0x000001d4], 0x00   
                          mov                eax, dword ptr [ecx]                     // 0x004f4c41    8b01
                          jmp                dword ptr [eax + 0x118]                  // 0x004f4c43    ffa018010000
 _jmp_addr_0x004f4c49:    ret                                                         // 0x004f4c49    c3
-                         call               dword ptr [rdata_bytes + 0x3c]           // 0x004f4c4a    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]// 0x004f4c4a    ff153c908a00
 _jmp_addr_0x004f4c50:    push               esi                                      // 0x004f4c50    56
                          mov.s              esi, ecx                                 // 0x004f4c51    8bf1
                          {disp32} mov       ecx, dword ptr [esi + 0x00000198]        // 0x004f4c53    8b8e98010000

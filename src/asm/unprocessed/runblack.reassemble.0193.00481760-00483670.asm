@@ -1750,7 +1750,7 @@ _jmp_addr_0x00482cb1:    {disp8} fld        dword ptr [edi + 0x08]              
                          push               ecx                                                  // 0x00482cdc    51
                          call               _fprintf__10LHFilePath                               // 0x00482cdd    e8ce403400
                          add                esp, 0x20                                            // 0x00482ce2    83c420
-                         call               dword ptr [rdata_bytes + 0x354]                      // 0x00482ce5    ff1554938a00
+                         call               dword ptr [__imp__GetCurrentStackString__YAPADXZ@4]  // 0x00482ce5    ff1554938a00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x33b95c]               // 0x00482ceb    8b155c19d000
                          push               eax                                                  // 0x00482cf1    50
                          {disp32} mov       eax, dword ptr [edx + 0x002502d0]                    // 0x00482cf2    8b82d0022500

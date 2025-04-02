@@ -1088,7 +1088,7 @@ _jmp_addr_0x00416b75:    pop                esi                                 
                          xor.s              eax, eax                                      // 0x00416b76    33c0
                          pop                ebx                                           // 0x00416b78    5b
                          ret                                                              // 0x00416b79    c3
-                         call               dword ptr [rdata_bytes + 0x91c]               // 0x00416b7a    ff151c998a00
+                         call               dword ptr [__imp__ioctlsocket@4]              // 0x00416b7a    ff151c998a00
 _jmp_addr_0x00416b80:    push               ebx                                           // 0x00416b80    53
                          push               esi                                           // 0x00416b81    56
                          mov.s              esi, ecx                                      // 0x00416b82    8bf1
@@ -4463,7 +4463,7 @@ _jmp_addr_0x004184aa:    {disp32} mov       edx, dword ptr [edx + 0x00000214]   
 _jmp_addr_0x004184c6:    xor.s              eax, eax                                      // 0x004184c6    33c0
                          pop                esi                                           // 0x004184c8    5e
                          ret                                                              // 0x004184c9    c3
-                         call               dword ptr [rdata_bytes + 0x11c]               // 0x004184ca    ff151c918a00
+                         call               dword ptr [__imp__ImmSetCompositionStringA@4] // 0x004184ca    ff151c918a00
                          sub                esp, 0x0c                                     // 0x004184d0    83ec0c
                          push               esi                                           // 0x004184d3    56
                          mov.s              esi, ecx                                      // 0x004184d4    8bf1
@@ -5062,7 +5062,7 @@ _jmp_addr_0x00418cb9:    {disp8} mov        eax, dword ptr [esi + 0x20]         
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00418cc0    8b442404
                          {disp8} mov        dword ptr [ecx + 0x20], eax                   // 0x00418cc4    894120
                          ret                0x0008                                        // 0x00418cc7    c20800
-                         call               dword ptr [rdata_bytes + 0x50]                // 0x00418cca    ff1550908a00
+                         call               dword ptr [__imp__SetBkColor@4]               // 0x00418cca    ff1550908a00
 _jmp_addr_0x00418cd0:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00418cd0    8b442404
                          push               esi                                           // 0x00418cd4    56
                          push               edi                                           // 0x00418cd5    57

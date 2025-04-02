@@ -621,7 +621,7 @@ _jmp_addr_0x00544c44:    {disp8} mov      ecx, dword ptr [eax + 0x08]           
                          {disp8} lea      eax, dword ptr [esp + 0x14]                   // 0x00544c57    8d442414
                          push             eax                                           // 0x00544c5b    50
                          push             0x00bea760                                    // 0x00544c5c    6860a7be00
-                         call             dword ptr [rdata_bytes + 0x194]               // 0x00544c61    ff1594918a00
+                         call             dword ptr [__imp__FindFirstFileA@4]           // 0x00544c61    ff1594918a00
                          {disp8} mov      esi, dword ptr [ebp + 0x10]                   // 0x00544c67    8b7510
                          {disp8} mov      dword ptr [esp + 0x10], eax                   // 0x00544c6a    89442410
                          {disp32} mov     eax, dword ptr [esi + 0x00000250]             // 0x00544c6e    8b8650020000
@@ -662,7 +662,7 @@ _jmp_addr_0x00544cbb:    push             0x0                                   
 _jmp_addr_0x00544ccb:    cmp              dword ptr [esp + 0x10], -0x01                 // 0x00544ccb    837c2410ff
                          {disp8} mov      dword ptr [ebp + 0x1c], edi                   // 0x00544cd0    897d1c
                          {disp32} je      _jmp_addr_0x00544db3                          // 0x00544cd3    0f84da000000
-                         {disp32} mov     edi, dword ptr [rdata_bytes + 0x198]          // 0x00544cd9    8b3d98918a00
+                         {disp32} mov     edi, dword ptr [__imp__FindNextFileA@4]       // 0x00544cd9    8b3d98918a00
                          mov              ebx, 0x00001b38                               // 0x00544cdf    bb381b0000
 _jmp_addr_0x00544ce4:    {disp8} lea      edx, dword ptr [esp + 0x40]                   // 0x00544ce4    8d542440
                          push             edx                                           // 0x00544ce8    52
@@ -725,7 +725,7 @@ _jmp_addr_0x00544d89:    {disp8} lea      eax, dword ptr [esp + 0x40]           
                          {disp32} jne     _jmp_addr_0x00544ce4                          // 0x00544dad    0f8531ffffff
 _jmp_addr_0x00544db3:    {disp8} mov      eax, dword ptr [esp + 0x10]                   // 0x00544db3    8b442410
                          push             eax                                           // 0x00544db7    50
-                         call             dword ptr [rdata_bytes + 0x224]               // 0x00544db8    ff1524928a00
+                         call             dword ptr [__imp__FindClose@4]                // 0x00544db8    ff1524928a00
                          {disp8} mov      eax, dword ptr [ebp + 0x10]                   // 0x00544dbe    8b4510
                          {disp32} mov     edi, dword ptr [eax + 0x00000248]             // 0x00544dc1    8bb848020000
                          {disp8} mov      ecx, dword ptr [ebp + 0x2c]                   // 0x00544dc7    8b4d2c

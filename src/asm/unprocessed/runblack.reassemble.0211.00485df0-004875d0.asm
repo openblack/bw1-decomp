@@ -163,7 +163,7 @@ _jmp_addr_0x00485f1f:    {disp32} fld       dword ptr [esi + 0x00000094]        
                          {disp32} fmul      dword ptr [rdata_bytes + 0x23d4]                     // 0x00485f30    d80dd4b38a00
                          pop                esi                                                  // 0x00485f36    5e
                          ret                0x0004                                               // 0x00485f37    c20400
-                         call               dword ptr [rdata_bytes + 0x3c]                       // 0x00485f3a    ff153c908a00
+                         call               dword ptr [__imp__DirectXSetupGetVersion]            // 0x00485f3a    ff153c908a00
 _jmp_addr_0x00485f40:    sub                esp, 0x1c                                            // 0x00485f40    83ec1c
                          push               ebx                                                  // 0x00485f43    53
                          push               ebp                                                  // 0x00485f44    55
@@ -1440,7 +1440,7 @@ _jmp_addr_0x00486f68:    push               0x0                                 
                          fnstsw             ax                                                   // 0x00486ff7    dfe0
                          test               ah, 0x41                                             // 0x00486ff9    f6c441
                          {disp8} jne        _jmp_addr_0x00487030                                 // 0x00486ffc    7532
-                         call               dword ptr [rdata_bytes + 0x1c4]                      // 0x00486ffe    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]                    // 0x00486ffe    ff15c4918a00
                          sub                eax, dword ptr [edi + 0x00003508]                    // 0x00487004    2b8708350000
                          cmp                eax, 0x00000fa0                                      // 0x0048700a    3da00f0000
                          {disp8} jae        _jmp_addr_0x00487030                                 // 0x0048700f    731f

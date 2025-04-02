@@ -734,7 +734,7 @@ _jmp_addr_0x00555573:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          {disp8} jmp        _jmp_addr_0x00555620                          // 0x00555619    eb05
 _jmp_addr_0x0055561b:    call               _jmp_addr_0x0062da60                          // 0x0055561b    e840840d00
 _jmp_addr_0x00555620:    push               esi                                           // 0x00555620    56
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x88c]          // 0x00555621    8b358c988a00
+                         {disp32} mov       esi, dword ptr [__imp__timeGetTime@4]         // 0x00555621    8b358c988a00
                          call               esi                                           // 0x00555627    ffd6
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x00555629    89442408
                          {disp8} mov        dword ptr [esp + 0x0c], ebx                   // 0x0055562d    895c240c
@@ -923,7 +923,7 @@ _SetLandBalance__5GGameFUlfP7GPlayer@12:    {disp8} mov        eax, dword ptr [e
                          call               _jmp_addr_0x005e28f0                          // 0x0055589f    e84cd00800
                          add                esp, 0x0c                                     // 0x005558a4    83c40c
                          ret                0x000c                                        // 0x005558a7    c20c00
-                         call               dword ptr [rdata_bytes + 0x1c]                // 0x005558aa    ff151c908a00
+                         call               dword ptr [__imp__TrackMouseEvent@4]          // 0x005558aa    ff151c908a00
 _jmp_addr_0x005558b0:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x005558b0    a15c19d000
                          {disp32} mov       eax, dword ptr [eax + 0x000059a8]             // 0x005558b5    8b80a8590000
                          dec                eax                                           // 0x005558bb    48
@@ -2473,7 +2473,7 @@ _jmp_addr_0x00556970:    {disp32} mov       esi, dword ptr [data_bytes + 0x33b9e
                          pop                ebx                                           // 0x00556997    5b
                          pop                ecx                                           // 0x00556998    59
                          ret                                                              // 0x00556999    c3
-                         call               dword ptr [rdata_bytes + 0x7ac]               // 0x0055699a    ff15ac978a00
+                         call               dword ptr [__imp__ShellExecuteA@4]            // 0x0055699a    ff15ac978a00
 _jmp_addr_0x005569a0:    push               ebx                                           // 0x005569a0    53
                          push               ebp                                           // 0x005569a1    55
                          push               esi                                           // 0x005569a2    56
@@ -2686,7 +2686,7 @@ _jmp_addr_0x00556bf4:    {disp8} mov        edx, dword ptr [ebx + 0x04]         
                          pop                ebp                                           // 0x00556c05    5d
                          pop                ebx                                           // 0x00556c06    5b
                          ret                0x0010                                        // 0x00556c07    c21000
-                         call               dword ptr [rdata_bytes + 0x998]               // 0x00556c0a    ff1598998a00
+                         call               dword ptr [__imp__Release_Dialup__QAEXXZ@4]   // 0x00556c0a    ff1598998a00
 _jmp_addr_0x00556c10:    mov                eax, dword ptr [ecx]                          // 0x00556c10    8b01
                          {disp8} mov        edx, dword ptr [eax + 0x08]                   // 0x00556c12    8b5008
                          push               esi                                           // 0x00556c15    56
@@ -3900,7 +3900,7 @@ _jmp_addr_0x00557609:    xor.s              eax, eax                            
 _jmp_addr_0x00557610:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00557610    8b442404
                          {disp8} mov        dword ptr [ecx + 0x44], eax                   // 0x00557614    894144
                          ret                0x0004                                        // 0x00557617    c20400
-                         call               dword ptr [rdata_bytes + 0x244]               // 0x0055761a    ff1544928a00
+                         call               dword ptr [__imp__GlobalFree@4]               // 0x0055761a    ff1544928a00
 @SetVisualTimeCycle__9GGameInfoFfff@20:    push               ecx                                           // 0x00557620    51
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x00557621    8b442408
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x00557625    d9442408
@@ -5807,7 +5807,7 @@ _jmp_addr_0x00558c06:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          {disp32} fld       dword ptr [ecx + 0x00205e70]                  // 0x00558c0c    d981705e2000
                          {disp32} mov       eax, dword ptr [ecx + 0x00205a40]             // 0x00558c12    8b81405a2000
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x00558c18    d81d98a38a00
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x1c4]          // 0x00558c1e    8b3dc4918a00
+                         {disp32} mov       edi, dword ptr [__imp__GetTickCount@4]        // 0x00558c1e    8b3dc4918a00
                          {disp32} lea       esi, dword ptr [ecx + 0x00205d68]             // 0x00558c24    8db1685d2000
                          lea                eax, dword ptr [eax + eax * 0x4]              // 0x00558c2a    8d0480
                          lea                ebp, dword ptr [eax + eax * 0x4]              // 0x00558c2d    8d2c80

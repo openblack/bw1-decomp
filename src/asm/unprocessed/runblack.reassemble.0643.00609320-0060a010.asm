@@ -1033,7 +1033,7 @@ _jmp_addr_0x00609cc0:    sub               esp, 0x0c                            
                          {disp8} mov       dword ptr [ecx + 0x68], 0x00000000            // 0x00609d41    c7416800000000
                          pop               esi                                           // 0x00609d48    5e
                          ret                                                             // 0x00609d49    c3
-                         call              dword ptr [rdata_bytes + 0x970]               // 0x00609d4a    ff1570998a00
+                         call              dword ptr [__imp__GetOpenFileNameA@4]         // 0x00609d4a    ff1570998a00
 _jmp_addr_0x00609d50:    sub               esp, 0x3c                                     // 0x00609d50    83ec3c
                          push              ebx                                           // 0x00609d53    53
                          push              ebp                                           // 0x00609d54    55

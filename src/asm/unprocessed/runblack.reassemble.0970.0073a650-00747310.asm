@@ -17325,7 +17325,7 @@ _jmp_addr_0x007457c0:    {disp32} mov       eax, dword ptr [data_bytes + 0x30dc7
                          push               ebx                                                  // 0x007457e1    53
                          push               esi                                                  // 0x007457e2    56
                          push               edi                                                  // 0x007457e3    57
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x35c]                 // 0x007457e4    8b3d5c938a00
+                         {disp32} mov       edi, dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]     // 0x007457e4    8b3d5c938a00
                          push               eax                                                  // 0x007457ea    50
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                          // 0x007457eb    8d4c2414
                          push               0x00c22df4                                           // 0x007457ef    68f42dc200

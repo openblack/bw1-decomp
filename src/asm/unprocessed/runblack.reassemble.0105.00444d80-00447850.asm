@@ -710,7 +710,7 @@ _jmp_addr_0x004454c3:    inc                ecx                                 
 _jmp_addr_0x0044551f:    {disp8} mov        dword ptr [eax + 0x24], 0xffffffff            // 0x0044551f    c74024ffffffff
                          add                esp, 0x28                                     // 0x00445526    83c428
                          ret                                                              // 0x00445529    c3
-                         call               dword ptr [rdata_bytes + 0x1c]                // 0x0044552a    ff151c908a00
+                         call               dword ptr [__imp__TrackMouseEvent@4]          // 0x0044552a    ff151c908a00
 _CreateSegFile__13GCameraEditorFv:    {disp32} mov       eax, dword ptr [data_bytes + 0x293cf4]        // 0x00445530    a1f49cc500
                          push               ebx                                           // 0x00445535    53
                          xor.s              ebx, ebx                                      // 0x00445536    33db
@@ -754,7 +754,7 @@ _CreateSegFile__13GCameraEditorFv:    {disp32} mov       eax, dword ptr [data_by
                          {disp8} jmp        _jmp_addr_0x004455b4                          // 0x004455ac    eb06
 _jmp_addr_0x004455ae:    {disp32} mov       dword ptr [data_bytes + 0x293cf4], ebx        // 0x004455ae    891df49cc500
 _jmp_addr_0x004455b4:    push               0x009cdc70                                    // 0x004455b4    6870dc9c00
-                         call               dword ptr [rdata_bytes + 0x1c0]               // 0x004455b9    ff15c0918a00
+                         call               dword ptr [__imp__GetFileAttributesA@4]       // 0x004455b9    ff15c0918a00
                          cmp                eax, -0x01                                    // 0x004455bf    83f8ff
                          pop                esi                                           // 0x004455c2    5e
                          {disp8} jne        _jmp_addr_0x004455db                          // 0x004455c3    7516
@@ -3651,7 +3651,7 @@ _jmp_addr_0x00447450:    push               ebx                                 
                          push               esi                                           // 0x00447459    56
                          push               edi                                           // 0x0044745a    57
                          {disp32} je        _jmp_addr_0x00447810                          // 0x0044745b    0f84af030000
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x1c4]          // 0x00447461    8b35c4918a00
+                         {disp32} mov       esi, dword ptr [__imp__GetTickCount@4]        // 0x00447461    8b35c4918a00
                          xor.s              ebp, ebp                                      // 0x00447467    33ed
                          call               esi                                           // 0x00447469    ffd6
                          mov.s              ecx, eax                                      // 0x0044746b    8bc8

@@ -1226,7 +1226,7 @@ _jmp_addr_0x00518670:    {disp32} mov       ecx, dword ptr [esi + 0x0000039c]   
                          call               _jmp_addr_0x0063b7e0                          // 0x005186c3    e818311200
 _jmp_addr_0x005186c8:    pop                esi                                           // 0x005186c8    5e
                          ret                                                              // 0x005186c9    c3
-                         call               dword ptr [rdata_bytes + 0x978]               // 0x005186ca    ff1578998a00
+                         call               dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x005186ca    ff1578998a00
                          push               esi                                           // 0x005186d0    56
                          mov.s              esi, ecx                                      // 0x005186d1    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x68]                   // 0x005186d3    8b4668
@@ -2523,7 +2523,7 @@ _jmp_addr_0x0051961c:    {disp8} mov        ecx, dword ptr [esp + 0x0c]         
                          pop                ebx                                           // 0x00519635    5b
                          add                esp, 0x18                                     // 0x00519636    83c418
                          ret                                                              // 0x00519639    c3
-                         call               dword ptr [rdata_bytes + 0xc]                 // 0x0051963a    ff150c908a00
+                         call               dword ptr [__imp__GetUserNameA@4]             // 0x0051963a    ff150c908a00
                          {disp32} jmp       _jmp_addr_0x00519650                          // 0x00519640    e90b000000
                          nop                                                              // 0x00519645    90
                          nop                                                              // 0x00519646    90

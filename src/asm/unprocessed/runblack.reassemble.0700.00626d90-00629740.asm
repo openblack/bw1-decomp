@@ -1724,7 +1724,7 @@ _jmp_addr_0x00627f80:    sub               esp, 0x00000404                      
                          {disp8} lea       ecx, dword ptr [esp + 0x0c]                   // 0x00627fb2    8d4c240c
                          push              0x009cf968                                    // 0x00627fb6    6868f99c00
                          push              ecx                                           // 0x00627fbb    51
-                         call              dword ptr [rdata_bytes + 0x35c]               // 0x00627fbc    ff155c938a00
+                         call              dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x00627fbc    ff155c938a00
                          push              eax                                           // 0x00627fc2    50
                          call              _Exists__8LHOSFileFPc                         // 0x00627fc3    e8d8461900
                          add               esp, 0x10                                     // 0x00627fc8    83c410
@@ -2669,7 +2669,7 @@ _jmp_addr_0x00628a2e:    {disp32} mov      eax, dword ptr [data_bytes + 0x30a624
                          call              @IsInternetLobby__20MPFEConnectionStatusFv@4  // 0x00628a55    e866500000
                          test              al, al                                        // 0x00628a5a    84c0
                          {disp8} je        _jmp_addr_0x00628a8b                          // 0x00628a5c    742d
-                         {disp32} mov      esi, dword ptr [rdata_bytes + 0x88c]          // 0x00628a5e    8b358c988a00
+                         {disp32} mov      esi, dword ptr [__imp__timeGetTime@4]         // 0x00628a5e    8b358c988a00
                          call              esi                                           // 0x00628a64    ffd6
                          {disp32} mov      edx, dword ptr [data_bytes + 0x379a94]        // 0x00628a66    8b1594fad300
                          sub               eax, dword ptr [edx + 0x000004b8]             // 0x00628a6c    2b82b8040000

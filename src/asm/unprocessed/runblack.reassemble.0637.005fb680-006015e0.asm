@@ -8859,7 +8859,7 @@ _jmp_addr_0x00601132:    sub                esi, 0x08                           
                          pop                esi                                           // 0x00601147    5e
                          pop                ebx                                           // 0x00601148    5b
                          ret                                                              // 0x00601149    c3
-                         call               dword ptr [rdata_bytes + 0x964]               // 0x0060114a    ff1564998a00
+                         call               dword ptr [__imp__BinkCopyToBuffer@28]        // 0x0060114a    ff1564998a00
 _jmp_addr_0x00601150:    push               esi                                           // 0x00601150    56
                          mov.s              esi, ecx                                      // 0x00601151    8bf1
 _jmp_addr_0x00601153:    mov                ecx, dword ptr [esi]                          // 0x00601153    8b0e

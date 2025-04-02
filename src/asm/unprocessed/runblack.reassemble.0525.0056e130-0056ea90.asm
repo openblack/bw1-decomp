@@ -674,7 +674,7 @@ _jmp_addr_0x0056e9b5:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              eax                                           // 0x0056e9be    50
                          {disp8} lea       edx, dword ptr [esp + 0x20]                   // 0x0056e9bf    8d542420
                          push              edx                                           // 0x0056e9c3    52
-                         call              dword ptr [rdata_bytes + 0x3d8]               // 0x0056e9c4    ff15d8938a00
+                         call              dword ptr [__imp___0LHSPrintfW__QAA_PAGZZ@4]  // 0x0056e9c4    ff15d8938a00
                          push              eax                                           // 0x0056e9ca    50
                          {disp8} mov       eax, dword ptr [esi + 0x34]                   // 0x0056e9cb    8b4634
                          add               eax, 0x24                                     // 0x0056e9ce    83c024

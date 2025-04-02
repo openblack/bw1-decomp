@@ -531,7 +531,7 @@ _jmp_addr_0x008382eb:    {disp8} mov       ecx, dword ptr [esi + 0x04]          
                          push              edx                                            // 0x008382f6    52
                          call              _jmp_addr_0x0085dc00                           // 0x008382f7    e804590200
 _jmp_addr_0x008382fc:    {disp32} inc      dword ptr [data_bytes + 0x517454]              // 0x008382fc    ff0554d4ed00
-_jmp_addr_0x00838302:    call              dword ptr [rdata_bytes + 0x1c4]                // 0x00838302    ff15c4918a00
+_jmp_addr_0x00838302:    call              dword ptr [__imp__GetTickCount@4]              // 0x00838302    ff15c4918a00
                          sub               eax, dword ptr [data_bytes + 0x4dbc78]         // 0x00838308    2b05781cea00
                          {disp8} mov       dword ptr [esp + 0x14], eax                    // 0x0083830e    89442414
                          {disp32} mov      eax, dword ptr [data_bytes + 0x4dbc7c]         // 0x00838312    a17c1cea00

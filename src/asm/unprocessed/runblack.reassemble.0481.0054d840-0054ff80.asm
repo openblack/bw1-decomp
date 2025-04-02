@@ -455,7 +455,7 @@ _jmp_addr_0x0054d907:    {disp32} mov       byte ptr [data_bytes + 0x33b984], 0x
                          {disp32} mov       dword ptr [data_bytes + 0x33b98c], 0x00000000 // 0x0054d90e    c7058c19d00000000000
                          pop                esi                                           // 0x0054d918    5e
                          ret                                                              // 0x0054d919    c3
-                         call               dword ptr [rdata_bytes + 0x74]                // 0x0054d91a    ff1574908a00
+                         call               dword ptr [__imp__DeleteDC@4]                 // 0x0054d91a    ff1574908a00
 _jmp_addr_0x0054d920:    push               esi                                           // 0x0054d920    56
                          mov.s              esi, ecx                                      // 0x0054d921    8bf1
                          call               _jmp_addr_0x005f3d90                          // 0x0054d923    e868640a00
@@ -596,7 +596,7 @@ _jmp_addr_0x0054dab5:    call               _StartFrame__10LH3DRenderFv         
                          cmp.s              eax, edi                                      // 0x0054dad2    3bc7
                          {disp8} je         _jmp_addr_0x0054dadd                          // 0x0054dad4    7407
                          push               eax                                           // 0x0054dad6    50
-                         call               dword ptr [rdata_bytes + 0x934]               // 0x0054dad7    ff1534998a00
+                         call               dword ptr [__imp__BinkService@4]              // 0x0054dad7    ff1534998a00
 _jmp_addr_0x0054dadd:    cmp                dword ptr [data_bytes + 0x33b98c], edi        // 0x0054dadd    393d8c19d000
                          {disp8} je         _jmp_addr_0x0054daec                          // 0x0054dae3    7407
                          mov.s              ecx, esi                                      // 0x0054dae5    8bce
@@ -717,7 +717,7 @@ _jmp_addr_0x0054dbd9:    {disp8} mov        ecx, dword ptr [esp + 0x14]         
                          {disp8} lea        eax, dword ptr [esp + 0x28]                   // 0x0054dc87    8d442428
                          push               eax                                           // 0x0054dc8b    50
                          push               edx                                           // 0x0054dc8c    52
-                         call               dword ptr [rdata_bytes + 0x93c]               // 0x0054dc8d    ff153c998a00
+                         call               dword ptr [__imp__BinkGetRealtime@12]         // 0x0054dc8d    ff153c998a00
                          {disp8} mov        ecx, dword ptr [esp + 0x34]                   // 0x0054dc93    8b4c2434
                          cmp                ecx, 0x01                                     // 0x0054dc97    83f901
                          {disp8} jae        _jmp_addr_0x0054dca1                          // 0x0054dc9a    7305
@@ -1546,7 +1546,7 @@ _jmp_addr_0x0054e7ae:    call               @IsMultiplayerGame__5GGameCFv@4     
                          {disp32} mov       eax, dword ptr [data_bytes + 0x33b9b0]        // 0x0054e7eb    a1b019d000
                          test               eax, eax                                      // 0x0054e7f0    85c0
                          {disp8} jne        _jmp_addr_0x0054e85f                          // 0x0054e7f2    756b
-                         call               dword ptr [rdata_bytes + 0x88c]               // 0x0054e7f4    ff158c988a00
+                         call               dword ptr [__imp__timeGetTime@4]              // 0x0054e7f4    ff158c988a00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x33b9ac]        // 0x0054e7fa    8b15ac19d000
                          add                edx, 0x0036ee80                               // 0x0054e800    81c280ee3600
                          cmp.s              eax, edx                                      // 0x0054e806    3bc2
@@ -2126,7 +2126,7 @@ _jmp_addr_0x0054ef40:    sub                esp, 0x00000608                     
                          {disp32} mov       dword ptr [data_bytes + 0x5173a0], 0x0054eea0 // 0x0054efc3    c705a0d3ed00a0ee5400
                          call               edi                                           // 0x0054efcd    ffd7
                          push               eax                                           // 0x0054efcf    50
-                         call               dword ptr [rdata_bytes + 0x548]               // 0x0054efd0    ff1548958a00
+                         call               dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x0054efd0    ff1548958a00
                          add                esp, 0x08                                     // 0x0054efd6    83c408
                          push               0x00bec728                                    // 0x0054efd9    6828c7be00
                          call               _Report3D__FPCce                              // 0x0054efde    e8edcb2c00
@@ -2354,7 +2354,7 @@ _jmp_addr_0x0054f299:    push               0x00bec650                          
                          {disp32} lea       edx, dword ptr [esp + 0x00000210]             // 0x0054f321    8d942410020000
                          push               0x00bea5f4                                    // 0x0054f328    68f4a5be00
                          push               edx                                           // 0x0054f32d    52
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x0054f32e    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x0054f32e    ff155c938a00
                          push               eax                                           // 0x0054f334    50
                          call               dword ptr [rdata_bytes + 0x5f8]               // 0x0054f335    ff15f8958a00
                          add                esp, 0x10                                     // 0x0054f33b    83c410

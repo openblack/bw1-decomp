@@ -616,7 +616,7 @@ _jmp_addr_0x0042402c:    mov                eax, 0x00000181                     
 _jmp_addr_0x00424033:    mov                eax, 0x00000136                               // 0x00424033    b836010000
                          pop                esi                                           // 0x00424038    5e
                          ret                                                              // 0x00424039    c3
-                         call               dword ptr [rdata_bytes + 0x7ac]               // 0x0042403a    ff15ac978a00
+                         call               dword ptr [__imp__ShellExecuteA@4]            // 0x0042403a    ff15ac978a00
                          mov                eax, 0x00000137                               // 0x00424040    b837010000
                          ret                                                              // 0x00424045    c3
                          nop                                                              // 0x00424046    90

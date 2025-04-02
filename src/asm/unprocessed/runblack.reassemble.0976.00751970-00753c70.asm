@@ -2958,7 +2958,7 @@ _jmp_addr_0x007535ba:    fld                st(0)                               
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x0075360c    8d442414
                          push               0x00c2367c                                    // 0x00753610    687c36c200
                          push               eax                                           // 0x00753615    50
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x00753616    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x00753616    ff155c938a00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0075361c    8b0d5c19d000
                          {disp32} mov       edx, dword ptr [ecx + 0x002502d8]             // 0x00753622    8b91d8022500
                          add                esp, 0x10                                     // 0x00753628    83c410

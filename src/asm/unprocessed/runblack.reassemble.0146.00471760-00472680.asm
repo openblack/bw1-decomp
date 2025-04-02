@@ -170,7 +170,7 @@ _jmp_addr_0x004718ca:    mov.s            eax, edx                              
                          pop              esi                                           // 0x00471900    5e
                          add              esp, 0x00000108                               // 0x00471901    81c408010000
                          ret              0x0004                                        // 0x00471907    c20400
-                         call             dword ptr [rdata_bytes + 0x978]               // 0x0047190a    ff1578998a00
+                         call             dword ptr [__imp__CoFileTimeToDosDateTime@4]  // 0x0047190a    ff1578998a00
 _jmp_addr_0x00471910:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x00471910    8b442404
                          cmp              eax, -0x01                                    // 0x00471914    83f8ff
                          {disp8} jne      _jmp_addr_0x0047191e                          // 0x00471917    7505
@@ -186,7 +186,7 @@ _jmp_addr_0x0047191e:    cmp              eax, 0x03                             
                          ret              0x0004                                        // 0x0047192f    c20400
 _jmp_addr_0x00471932:    mov              eax, 0x00000001                               // 0x00471932    b801000000
                          ret              0x0004                                        // 0x00471937    c20400
-                         call             dword ptr [rdata_bytes + 0x4]                 // 0x0047193a    ff1504908a00
+                         call             dword ptr [__imp__RegCloseKey@4]              // 0x0047193a    ff1504908a00
 _jmp_addr_0x00471940:    sub              esp, 0x00000104                               // 0x00471940    81ec04010000
                          push             esi                                           // 0x00471946    56
                          {disp32} mov     esi, dword ptr [esp + 0x0000010c]             // 0x00471947    8bb4240c010000

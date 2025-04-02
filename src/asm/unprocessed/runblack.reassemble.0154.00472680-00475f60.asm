@@ -243,7 +243,7 @@ _jmp_addr_0x00472680:    push               ebp                                 
 _jmp_addr_0x004726b0:    sub                esp, 0x24                                            // 0x004726b0    83ec24
                          {disp8} lea        eax, dword ptr [esp + 0x00]                          // 0x004726b3    8d442400
                          push               eax                                                  // 0x004726b7    50
-                         call               dword ptr [rdata_bytes + 0x234]                      // 0x004726b8    ff1534928a00
+                         call               dword ptr [__imp__GetSystemInfo@4]                   // 0x004726b8    ff1534928a00
                          {disp8} mov        eax, dword ptr [esp + 0x14]                          // 0x004726be    8b442414
                          add                esp, 0x24                                            // 0x004726c2    83c424
                          ret                                                                     // 0x004726c5    c3
@@ -529,11 +529,11 @@ _jmp_addr_0x004729a0:    push               ebp                                 
                          rdtsc                                                                   // 0x004729a8    0f31
                          {disp8} mov        dword ptr [ebp + -0x10], eax                         // 0x004729aa    8945f0
                          {disp8} mov        dword ptr [ebp + -0x0c], edx                         // 0x004729ad    8955f4
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x1c4]                 // 0x004729b0    8b35c4918a00
+                         {disp32} mov       esi, dword ptr [__imp__GetTickCount@4]               // 0x004729b0    8b35c4918a00
                          call               esi                                                  // 0x004729b6    ffd6
                          push               0x64                                                 // 0x004729b8    6a64
                          mov.s              edi, eax                                             // 0x004729ba    8bf8
-                         call               dword ptr [rdata_bytes + 0x230]                      // 0x004729bc    ff1530928a00
+                         call               dword ptr [__imp__Sleep@4]                           // 0x004729bc    ff1530928a00
                          call               esi                                                  // 0x004729c2    ffd6
                          mov.s              ecx, eax                                             // 0x004729c4    8bc8
                          rdtsc                                                                   // 0x004729c6    0f31

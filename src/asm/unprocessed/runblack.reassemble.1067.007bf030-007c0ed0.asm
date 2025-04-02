@@ -229,7 +229,7 @@ _jmp_addr_0x007bf1f0:    push             0x007bf200                            
                          nop                                                             // 0x007bf1fe    90
                          nop                                                             // 0x007bf1ff    90
                          mov              ecx, 0x00e83fe8                                // 0x007bf200    b9e83fe800
-                         jmp              dword ptr [rdata_bytes + 0x378]                // 0x007bf205    ff2578938a00
+                         jmp              dword ptr [__imp___1LHVersion__QAE_XZ@4]       // 0x007bf205    ff2578938a00
                          nop                                                             // 0x007bf20b    90
                          nop                                                             // 0x007bf20c    90
                          nop                                                             // 0x007bf20d    90

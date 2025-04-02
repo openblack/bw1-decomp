@@ -3454,7 +3454,7 @@ _jmp_addr_0x005e259d:    {disp32} mov       eax, dword ptr [data_bytes + 0x35425
                          add                esp, 0x04                                      // 0x005e25ac    83c404
                          {disp32} mov       dword ptr [data_bytes + 0x35425c], 0x00000000  // 0x005e25af    c7055ca2d10000000000
 _jmp_addr_0x005e25b9:    ret                                                               // 0x005e25b9    c3
-                         call               dword ptr [rdata_bytes + 0x194]                // 0x005e25ba    ff1594918a00
+                         call               dword ptr [__imp__FindFirstFileA@4]            // 0x005e25ba    ff1594918a00
 _jmp_addr_0x005e25c0:    push               ebp                                            // 0x005e25c0    55
                          mov.s              ebp, esp                                       // 0x005e25c1    8bec
                          sub                esp, 0x2c                                      // 0x005e25c3    83ec2c

@@ -582,7 +582,7 @@ _jmp_addr_0x00542c02:    pop                esi                                 
                          ret                                                              // 0x00542c07    c3
 _jmp_addr_0x00542c08:    cmp                dword ptr [data_bytes + 0x30ab74], ebx        // 0x00542c08    391d740bcd00
                          push               edi                                           // 0x00542c0e    57
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x1c4]          // 0x00542c0f    8b3dc4918a00
+                         {disp32} mov       edi, dword ptr [__imp__GetTickCount@4]        // 0x00542c0f    8b3dc4918a00
                          {disp8} jne        _jmp_addr_0x00542c1e                          // 0x00542c15    7507
                          call               edi                                           // 0x00542c17    ffd7
                          {disp32} mov       dword ptr [data_bytes + 0x30ab74], eax        // 0x00542c19    a3740bcd00

@@ -877,7 +877,7 @@ _jmp_addr_0x0040cb45:    cmp.s                edi, ebp                          
                          {disp32} mov         eax, dword ptr [esi + 0x0000025c]             // 0x0040cb4d    8b865c020000
                          test                 eax, eax                                      // 0x0040cb53    85c0
                          {disp32} je          _jmp_addr_0x0040cc99                          // 0x0040cb55    0f843e010000
-                         call                 dword ptr [rdata_bytes + 0x1c4]               // 0x0040cb5b    ff15c4918a00
+                         call                 dword ptr [__imp__GetTickCount@4]             // 0x0040cb5b    ff15c4918a00
                          mov.s                ecx, eax                                      // 0x0040cb61    8bc8
                          mov                  eax, 0x51eb851f                               // 0x0040cb63    b81f85eb51
                          mul                  ecx                                           // 0x0040cb68    f7e1
@@ -5698,7 +5698,7 @@ _jmp_addr_0x00410451:    {disp32} mov         al, byte ptr [edi + 0x00000281]   
                          push                 eax                                           // 0x00410517    50
                          call                 _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00410518    e863240000
                          add                  esp, 0x3c                                     // 0x0041051d    83c43c
-_jmp_addr_0x00410520:    call                 dword ptr [rdata_bytes + 0x1c4]               // 0x00410520    ff15c4918a00
+_jmp_addr_0x00410520:    call                 dword ptr [__imp__GetTickCount@4]             // 0x00410520    ff15c4918a00
                          mov.s                ecx, eax                                      // 0x00410526    8bc8
                          mov                  eax, 0x51eb851f                               // 0x00410528    b81f85eb51
                          mul                  ecx                                           // 0x0041052d    f7e1

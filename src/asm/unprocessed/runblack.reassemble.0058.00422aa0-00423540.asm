@@ -229,7 +229,7 @@ _jmp_addr_0x00422cb7:    xor.s              eax, eax                            
 _jmp_addr_0x00422cc0:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00422cc0    8b442404
                          {disp8} mov        dword ptr [ecx + 0x7c], eax                   // 0x00422cc4    89417c
                          ret                0x0004                                        // 0x00422cc7    c20400
-                         call               dword ptr [rdata_bytes + 0x1c]                // 0x00422cca    ff151c908a00
+                         call               dword ptr [__imp__TrackMouseEvent@4]          // 0x00422cca    ff151c908a00
 _jmp_addr_0x00422cd0:    push               esi                                           // 0x00422cd0    56
                          mov.s              esi, ecx                                      // 0x00422cd1    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x00422cd3    8b4e40

@@ -653,7 +653,7 @@ _jmp_addr_0x0086a7c8:    add                esi, 0x0c                           
                          nop                                                               // 0x0086a7ed    90
                          nop                                                               // 0x0086a7ee    90
                          nop                                                               // 0x0086a7ef    90
-_jmp_addr_0x0086a7f0:    call               dword ptr [rdata_bytes + 0x1c4]                // 0x0086a7f0    ff15c4918a00
+_jmp_addr_0x0086a7f0:    call               dword ptr [__imp__GetTickCount@4]              // 0x0086a7f0    ff15c4918a00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x5dc770]         // 0x0086a7f6    8b157027fa00
                          mov.s              ecx, eax                                       // 0x0086a7fc    8bc8
                          sub.s              ecx, edx                                       // 0x0086a7fe    2bca

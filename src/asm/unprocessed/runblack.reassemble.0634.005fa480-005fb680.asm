@@ -101,7 +101,7 @@ start_0x005fa480_0x005fb680:
                          xor.s              ebx, ebx                                      // 0x005fa488    33db
                          cmp.s              al, bl                                        // 0x005fa48a    3ac3
                          push               esi                                           // 0x005fa48c    56
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x88c]          // 0x005fa48d    8b358c988a00
+                         {disp32} mov       esi, dword ptr [__imp__timeGetTime@4]         // 0x005fa48d    8b358c988a00
                          {disp8} je         _jmp_addr_0x005fa4af                          // 0x005fa493    741a
                          call               esi                                           // 0x005fa495    ffd6
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x005fa497    89442408
@@ -1630,7 +1630,7 @@ _jmp_addr_0x005fb169:    {disp8} mov        edi, dword ptr [esp + 0x14]         
                          mov                eax, 0x00000001                               // 0x005fb181    b801000000
                          pop                ebx                                           // 0x005fb186    5b
                          ret                0x0004                                        // 0x005fb187    c20400
-                         call               dword ptr [rdata_bytes + 0x2d0]               // 0x005fb18a    ff15d0928a00
+                         call               dword ptr [__imp__TlsAlloc@4]                 // 0x005fb18a    ff15d0928a00
 _jmp_addr_0x005fb190:    sub                esp, 0x20                                     // 0x005fb190    83ec20
                          push               ebx                                           // 0x005fb193    53
                          push               ebp                                           // 0x005fb194    55

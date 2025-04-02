@@ -629,7 +629,7 @@ _jmp_addr_0x0051ae9c:    {disp8} mov        edx, dword ptr [esp + 0x0c]         
                          pop                ebx                                                  // 0x0051aeb5    5b
                          add                esp, 0x18                                            // 0x0051aeb6    83c418
                          ret                                                                     // 0x0051aeb9    c3
-                         call               dword ptr [rdata_bytes + 0x8a8]                      // 0x0051aeba    ff15a8988a00
+                         call               dword ptr [__imp__waveInClose@4]                     // 0x0051aeba    ff15a8988a00
                          push               esi                                                  // 0x0051aec0    56
                          mov.s              esi, ecx                                             // 0x0051aec1    8bf1
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]               // 0x0051aec3    8b0d5c19d000
@@ -2454,7 +2454,7 @@ _jmp_addr_0x0051c54c:    mov.s              ecx, ebx                            
 _jmp_addr_0x0051c555:    pop                ebx                                                  // 0x0051c555    5b
                          add                esp, 0x38                                            // 0x0051c556    83c438
                          ret                                                                     // 0x0051c559    c3
-                         call               dword ptr [rdata_bytes + 0x8fc]                      // 0x0051c55a    ff15fc988a00
+                         call               dword ptr [__imp__sendto@4]                          // 0x0051c55a    ff15fc988a00
                          push               ebp                                                  // 0x0051c560    55
                          mov.s              ebp, esp                                             // 0x0051c561    8bec
                          sub                esp, 0x40                                            // 0x0051c563    83ec40

@@ -21394,7 +21394,7 @@ _jmp_addr_0x00683184:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          push               ebx                                           // 0x00683261    53
                          push               ebx                                           // 0x00683262    53
                          push               0x2                                           // 0x00683263    6a02
-                         call               dword ptr [rdata_bytes + 0x1c4]               // 0x00683265    ff15c4918a00
+                         call               dword ptr [__imp__GetTickCount@4]             // 0x00683265    ff15c4918a00
                          xor.s              edx, edx                                      // 0x0068326b    33d2
                          mov                ecx, 0x00000005                               // 0x0068326d    b905000000
                          div                ecx                                           // 0x00683272    f7f1

@@ -3634,7 +3634,7 @@ _jmp_addr_0x006fbd21:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x006fbd22    8d4c2414
                          push               0x00c0cb48                                    // 0x006fbd26    6848cbc000
                          push               ecx                                           // 0x006fbd2b    51
-                         call               dword ptr [rdata_bytes + 0x35c]               // 0x006fbd2c    ff155c938a00
+                         call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x006fbd2c    ff155c938a00
                          push               eax                                           // 0x006fbd32    50
                          call               _jmp_addr_0x006f62b0                          // 0x006fbd33    e878a5ffff
                          add                esp, 0x10                                     // 0x006fbd38    83c410

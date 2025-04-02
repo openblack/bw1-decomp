@@ -1337,7 +1337,7 @@ _jmp_addr_0x00481390:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 _jmp_addr_0x0048139e:    {disp32} mov       ecx, dword ptr [ecx + 0x000051f0]        // 0x0048139e    8b89f0510000
                          mov                eax, dword ptr [ecx + eax * 0x4]         // 0x004813a4    8b0481
                          ret                0x0004                                   // 0x004813a7    c20400
-                         call               dword ptr [rdata_bytes + 0x970]          // 0x004813aa    ff1570998a00
+                         call               dword ptr [__imp__GetOpenFileNameA@4]    // 0x004813aa    ff1570998a00
 _jmp_addr_0x004813b0:    push               esi                                      // 0x004813b0    56
                          mov.s              esi, ecx                                 // 0x004813b1    8bf1
                          call               @GetSafeBuffer__12LH3DCreatureFv@4       // 0x004813b3    e8f82e0000
@@ -1347,7 +1347,7 @@ _jmp_addr_0x004813b0:    push               esi                                 
                          {disp8} lea        eax, dword ptr [eax + ecx * 0x1 + 0x24]  // 0x004813c4    8d440824
                          pop                esi                                      // 0x004813c8    5e
                          ret                                                         // 0x004813c9    c3
-                         call               dword ptr [rdata_bytes + 0x28]           // 0x004813ca    ff1528908a00
+                         call               dword ptr [__imp__DirectDrawEnumerateA@4]// 0x004813ca    ff1528908a00
 _jmp_addr_0x004813d0:    push               esi                                      // 0x004813d0    56
                          mov.s              esi, ecx                                 // 0x004813d1    8bf1
                          call               @GetSafeBuffer__12LH3DCreatureFv@4       // 0x004813d3    e8d82e0000
@@ -1357,7 +1357,7 @@ _jmp_addr_0x004813d0:    push               esi                                 
                          {disp8} lea        eax, dword ptr [eax + ecx * 0x1 + 0x24]  // 0x004813e4    8d440824
                          pop                esi                                      // 0x004813e8    5e
                          ret                                                         // 0x004813e9    c3
-                         call               dword ptr [rdata_bytes + 0x34]           // 0x004813ea    ff1534908a00
+                         call               dword ptr [__imp__DirectInputCreateA@4]  // 0x004813ea    ff1534908a00
 @GetBonePos__12LH3DCreatureFl@12:    call               @GetSafeBuffer__12LH3DCreatureFv@4       // 0x004813f0    e8bb2e0000
                          {disp8} mov        ecx, dword ptr [esp + 0x04]              // 0x004813f5    8b4c2404
                          lea                ecx, dword ptr [ecx + ecx * 0x2]         // 0x004813f9    8d0c49

@@ -176,14 +176,14 @@ _jmp_addr_0x00718060:    {disp8} mov        ecx, dword ptr [esp + 0x04]         
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0071806a    8d442400
                          push               eax                                           // 0x0071806e    50
                          push               ecx                                           // 0x0071806f    51
-                         call               dword ptr [rdata_bytes + 0x194]               // 0x00718070    ff1594918a00
+                         call               dword ptr [__imp__FindFirstFileA@4]           // 0x00718070    ff1594918a00
                          cmp                eax, -0x01                                    // 0x00718076    83f8ff
                          {disp8} jne        _jmp_addr_0x00718084                          // 0x00718079    7509
                          xor.s              eax, eax                                      // 0x0071807b    33c0
                          add                esp, 0x00000140                               // 0x0071807d    81c440010000
                          ret                                                              // 0x00718083    c3
 _jmp_addr_0x00718084:    push               eax                                           // 0x00718084    50
-                         call               dword ptr [rdata_bytes + 0x224]               // 0x00718085    ff1524928a00
+                         call               dword ptr [__imp__FindClose@4]                // 0x00718085    ff1524928a00
                          {disp32} mov       eax, dword ptr [esp + 0x00000148]             // 0x0071808b    8b842448010000
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x00718092    8b542414
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x00718096    8b4c2418
