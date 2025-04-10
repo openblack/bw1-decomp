@@ -113,6 +113,7 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
             (0x004A645B, b"\xCC" * 1),
             (0x004A6281, b"\xCC" * 3),
             (0x004A62FD, b"\xCC" * 3),
+            (0x004A8970, b"\x00" * 1680),
             (0x004A6057, b"\xCC" * 9),
             # Garbage string in the rsrc
             (0x008428F8, "property of their respective owners".encode("utf-16-le")),

@@ -582,6 +582,7 @@ target_include_directories(common_compile_options
     INTERFACE
         C:/msys64/clang64/include
         D:/msys64/clang64/include
+        /usr/x86_64-w64-mingw32/include
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/..
         ${CMAKE_CURRENT_SOURCE_DIR}/../black
