@@ -1245,7 +1245,7 @@ _jmp_addr_0x00642dc1:    push               0x00d46a88                          
                          {disp8} jne        _jmp_addr_0x00642de3                           // 0x00642dd7    750a
                          {disp32} mov       dword ptr [data_bytes + 0x504604], 0x00d46a88  // 0x00642dd9    c70504a6ec00886ad400
 _jmp_addr_0x00642de3:    call               dword ptr [__imp__InitLibrary_LHLobby__SAXXZ@4]// 0x00642de3    ff15ec938a00
-                         {disp32} mov       ebp, dword ptr [rdata_bytes + 0x344]           // 0x00642de9    8b2d44938a00
+                         {disp32} mov       ebp, dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]           // 0x00642de9    8b2d44938a00
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x00642def    8d442414
                          push               eax                                            // 0x00642df3    50
                          push               0x00bfecdc                                     // 0x00642df4    68dcecbf00
@@ -1569,7 +1569,7 @@ _jmp_addr_0x0064321e:    {disp32} mov       edi, dword ptr [data_bytes + 0x380ad
                          mov.s              ecx, esi                                       // 0x00643250    8bce
                          mov                dword ptr [esi], 0x00931cbc                    // 0x00643252    c706bc1c9300
                          call               _jmp_addr_0x007e1bc0                           // 0x00643258    e863e91900
-                         {disp32} mov       ebp, dword ptr [rdata_bytes + 0x344]           // 0x0064325d    8b2d44938a00
+                         {disp32} mov       ebp, dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]           // 0x0064325d    8b2d44938a00
                          mov.s              ecx, esi                                       // 0x00643263    8bce
                          {disp32} mov       dword ptr [data_bytes + 0x30db18], ecx         // 0x00643265    890d183bcd00
                          mov                edi, 0x00000001                                // 0x0064326b    bf01000000

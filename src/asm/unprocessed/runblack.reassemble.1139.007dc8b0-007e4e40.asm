@@ -706,7 +706,7 @@ _jmp_addr_0x007dcf48:    push               edi                                 
                          push               0x009caff8                                    // 0x007dcf62    68f8af9c00
                          {disp32} mov       dword ptr [esi + 0x000001b0], edi             // 0x007dcf67    89beb0010000
                          {disp8} mov        dword ptr [esi + 0x18], edi                   // 0x007dcf6d    897e18
-                         call               dword ptr [rdata_bytes + 0x344]               // 0x007dcf70    ff1544938a00
+                         call               dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]               // 0x007dcf70    ff1544938a00
                          add                esp, 0x0c                                     // 0x007dcf76    83c40c
                          test               eax, eax                                      // 0x007dcf79    85c0
                          {disp8} jne        _jmp_addr_0x007dcf93                          // 0x007dcf7b    7516
@@ -3579,12 +3579,12 @@ _jmp_addr_0x007dee33:    push               0x0                                 
                          nop                                                              // 0x007dee4f    90
 _WinMain@16:             sub                esp, 0x0c                                     // 0x007dee50    83ec0c
                          push               0x0                                           // 0x007dee53    6a00
-                         call               dword ptr [rdata_bytes + 0x3b4]               // 0x007dee55    ff15b4938a00
+                         call               dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]               // 0x007dee55    ff15b4938a00
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x007dee5b    8d442404
                          push               eax                                           // 0x007dee5f    50
                          push               0x00bf3c18                                    // 0x007dee60    68183cbf00
                          push               0x00bea5b8                                    // 0x007dee65    68b8a5be00
-                         call               dword ptr [rdata_bytes + 0x344]               // 0x007dee6a    ff1544938a00
+                         call               dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]               // 0x007dee6a    ff1544938a00
                          add                esp, 0x10                                     // 0x007dee70    83c410
                          test               eax, eax                                      // 0x007dee73    85c0
                          {disp8} je         _jmp_addr_0x007dee81                          // 0x007dee75    740a

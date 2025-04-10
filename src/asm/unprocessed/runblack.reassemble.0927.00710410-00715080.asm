@@ -2090,7 +2090,7 @@ _jmp_addr_0x007118e0:    sub                esp, 0x18                           
                          push               edi                                           // 0x007118e8    57
                          mov                dword ptr [esi], 0x0095726c                   // 0x007118e9    c7066c729500
                          call               dword ptr [rdata_bytes + 0x3b0]               // 0x007118ef    ff15b0938a00
-                         {disp32} mov       ebx, dword ptr [rdata_bytes + 0x3b4]          // 0x007118f5    8b1db4938a00
+                         {disp32} mov       ebx, dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]          // 0x007118f5    8b1db4938a00
                          push               0x0                                           // 0x007118fb    6a00
                          mov.s              edi, eax                                      // 0x007118fd    8bf8
                          call               ebx                                           // 0x007118ff    ffd3
@@ -2334,7 +2334,7 @@ _jmp_addr_0x00711b50:    sub                esp, 0x00000104                     
                          {disp8} mov        dword ptr [esp + 0x10], 0x000000ff            // 0x00711b6c    c7442410ff000000
                          stosw                                                            // 0x00711b74    66ab
                          call               dword ptr [rdata_bytes + 0x3b0]               // 0x00711b76    ff15b0938a00
-                         {disp32} mov       ebp, dword ptr [rdata_bytes + 0x3b4]          // 0x00711b7c    8b2db4938a00
+                         {disp32} mov       ebp, dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]          // 0x00711b7c    8b2db4938a00
                          push               0x2                                           // 0x00711b82    6a02
                          mov.s              ebx, eax                                      // 0x00711b84    8bd8
                          call               ebp                                           // 0x00711b86    ffd5

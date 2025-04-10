@@ -193,7 +193,7 @@ _jmp_addr_0x005147eb:    {disp8} lea       eax, dword ptr [esp + 0x08]          
                          {disp8} jmp       _jmp_addr_0x0051481a                          // 0x0051480e    eb0a
 _jmp_addr_0x00514810:    {disp32} mov      dword ptr [edx + 0x00000248], 0x00000001      // 0x00514810    c7824802000001000000
 _jmp_addr_0x0051481a:    {disp32} mov      eax, dword ptr [data_bytes + 0x2721ec]        // 0x0051481a    a1ec81c300
-                         {disp32} mov      edi, dword ptr [rdata_bytes + 0x344]          // 0x0051481f    8b3d44938a00
+                         {disp32} mov      edi, dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]          // 0x0051481f    8b3d44938a00
                          {disp8} lea       edx, dword ptr [esp + 0x08]                   // 0x00514825    8d542408
                          push              edx                                           // 0x00514829    52
                          {disp8} mov       dword ptr [esi + 0x54], eax                   // 0x0051482a    894654

@@ -5752,8 +5752,8 @@ _jmp_addr_0x005f42d8:    {disp8} fld        dword ptr [esp + 0x38]              
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x005f441f    d95c241c
                          {disp32} jne       _jmp_addr_0x005f44b4                          // 0x005f4423    0f858b000000
                          push               0x0                                           // 0x005f4429    6a00
-                         call               dword ptr [rdata_bytes + 0x3b4]               // 0x005f442b    ff15b4938a00
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x344]          // 0x005f4431    8b3544938a00
+                         call               dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]               // 0x005f442b    ff15b4938a00
+                         {disp32} mov       esi, dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]          // 0x005f4431    8b3544938a00
                          push               0x00d31ae0                                    // 0x005f4437    68e01ad300
                          push               0x00bf3c2c                                    // 0x005f443c    682c3cbf00
                          push               0x00bea5b8                                    // 0x005f4441    68b8a5be00

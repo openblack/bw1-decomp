@@ -923,7 +923,7 @@ _jmp_addr_0x005e80f0:    {disp32} mov       ax, word ptr [ecx + 0x000000b8]     
                          push               edi                                           // 0x005e810c    57
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000028            // 0x005e810d    c744241428000000
                          call               dword ptr [rdata_bytes + 0x3b0]               // 0x005e8115    ff15b0938a00
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x3b4]          // 0x005e811b    8b3db4938a00
+                         {disp32} mov       edi, dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]          // 0x005e811b    8b3db4938a00
                          push               0x1                                           // 0x005e8121    6a01
                          mov.s              esi, eax                                      // 0x005e8123    8bf0
                          call               edi                                           // 0x005e8125    ffd7
@@ -3141,7 +3141,7 @@ _jmp_addr_0x005e98b0:    sub                esp, 0x00000a2c                     
                          call               _jmp_addr_0x005e9350                          // 0x005e9971    e8daf9ffff
                          cmp                al, 0x01                                      // 0x005e9976    3c01
                          {disp32} jne       _jmp_addr_0x005e9c89                          // 0x005e9978    0f850b030000
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x344]          // 0x005e997e    8b3544938a00
+                         {disp32} mov       esi, dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]          // 0x005e997e    8b3544938a00
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x005e9984    8d542410
                          push               edx                                           // 0x005e9988    52
                          push               0x00bf3918                                    // 0x005e9989    681839bf00

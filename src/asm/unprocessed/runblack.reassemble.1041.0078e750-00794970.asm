@@ -377,7 +377,7 @@ _jmp_addr_0x0078e8c0:    sub                esp, 0x00000104                     
                          and                ecx, 0x03                                     // 0x0078e92f    83e103
                          push               0x1                                           // 0x0078e932    6a01
                          rep movsb                                                        // 0x0078e934    f3a4
-                         call               dword ptr [rdata_bytes + 0x3b4]               // 0x0078e936    ff15b4938a00
+                         call               dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]               // 0x0078e936    ff15b4938a00
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x0078e93c    8d4c2414
                          push               ecx                                           // 0x0078e940    51
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                   // 0x0078e941    8d54241c

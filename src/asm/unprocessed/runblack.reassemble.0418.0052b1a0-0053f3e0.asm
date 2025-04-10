@@ -27420,7 +27420,7 @@ _jmp_addr_0x0053c9bc:    {disp8} fld        dword ptr [esp + 0x14]              
                          push               0x1                                                  // 0x0053cabc    6a01
                          {disp32} mov       dword ptr [esp + 0x00000954], 0x00000001             // 0x0053cabe    c784245409000001000000
                          {disp8} mov        dword ptr [esp + 0x14], esi                          // 0x0053cac9    89742414
-                         call               dword ptr [rdata_bytes + 0x3b4]                      // 0x0053cacd    ff15b4938a00
+                         call               dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]                      // 0x0053cacd    ff15b4938a00
                          {disp8} lea        edx, dword ptr [esp + 0x14]                          // 0x0053cad3    8d542414
                          push               edx                                                  // 0x0053cad7    52
                          {disp8} lea        eax, dword ptr [esp + 0x38]                          // 0x0053cad8    8d442438

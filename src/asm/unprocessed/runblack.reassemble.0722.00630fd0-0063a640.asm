@@ -5601,7 +5601,7 @@ _jmp_addr_0x00634665:    {disp32} mov       eax, dword ptr [data_bytes + 0x35a4c
                          {disp8} jmp        _jmp_addr_0x006346a7                           // 0x00634699    eb0c
 _jmp_addr_0x0063469b:    {disp32} mov       ecx, dword ptr [data_bytes + 0x35a4a8]         // 0x0063469b    8b0da804d200
                          {disp32} mov       dword ptr [data_bytes + 0x35a4d0], ecx         // 0x006346a1    890dd004d200
-_jmp_addr_0x006346a7:    {disp32} mov       ebx, dword ptr [rdata_bytes + 0x3b4]           // 0x006346a7    8b1db4938a00
+_jmp_addr_0x006346a7:    {disp32} mov       ebx, dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]           // 0x006346a7    8b1db4938a00
                          push               0x0                                            // 0x006346ad    6a00
                          call               ebx                                            // 0x006346af    ffd3
                          call               dword ptr [rdata_bytes + 0x3b0]                // 0x006346b1    ff15b0938a00
@@ -7491,7 +7491,7 @@ _jmp_addr_0x00635e5f:    {disp8} lea        eax, dword ptr [esp + 0x1c]         
                          push               eax                                            // 0x00635e63    50
                          push               0x00bfdecc                                     // 0x00635e64    68ccdebf00
                          push               0x009caff8                                     // 0x00635e69    68f8af9c00
-                         call               dword ptr [rdata_bytes + 0x344]                // 0x00635e6e    ff1544938a00
+                         call               dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]                // 0x00635e6e    ff1544938a00
                          add                esp, 0x0c                                      // 0x00635e74    83c40c
                          test               eax, eax                                       // 0x00635e77    85c0
                          {disp8} jne        _jmp_addr_0x00635e86                           // 0x00635e79    750b

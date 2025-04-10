@@ -11492,7 +11492,7 @@ _jmp_addr_0x00525a40:    sub                esp, 0x00000108                     
                          test               eax, eax                                             // 0x00525a95    85c0
                          {disp32} jne       _jmp_addr_0x00525b5a                                 // 0x00525a97    0f85bd000000
 _jmp_addr_0x00525a9d:    call               dword ptr [rdata_bytes + 0x3b0]                      // 0x00525a9d    ff15b0938a00
-                         {disp32} mov       edi, dword ptr [rdata_bytes + 0x3b4]                 // 0x00525aa3    8b3db4938a00
+                         {disp32} mov       edi, dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]                 // 0x00525aa3    8b3db4938a00
                          push               0x2                                                  // 0x00525aa9    6a02
                          mov.s              esi, eax                                             // 0x00525aab    8bf0
                          call               edi                                                  // 0x00525aad    ffd7

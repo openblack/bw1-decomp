@@ -2677,7 +2677,7 @@ _jmp_addr_0x0062d241:    mov.s              ecx, eax                            
                          push               0x009caff8                                     // 0x0062d25a    68f8af9c00
                          setne              bl                                             // 0x0062d25f    0f95c3
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000000             // 0x0062d262    c744241c00000000
-                         call               dword ptr [rdata_bytes + 0x344]                // 0x0062d26a    ff1544938a00
+                         call               dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]                // 0x0062d26a    ff1544938a00
                          add                esp, 0x0c                                      // 0x0062d270    83c40c
                          mov                esi, 0x00bea694                                // 0x0062d273    be94a6be00
                          call               _jmp_addr_0x007c5394                           // 0x0062d278    e817811900

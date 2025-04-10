@@ -1855,7 +1855,7 @@ _jmp_addr_0x00428245:    ret                0x0004                              
                          nop                                                                     // 0x0042824f    90
 _jmp_addr_0x00428250:    push               ecx                                                  // 0x00428250    51
                          push               esi                                                  // 0x00428251    56
-                         {disp32} mov       esi, dword ptr [rdata_bytes + 0x344]                 // 0x00428252    8b3544938a00
+                         {disp32} mov       esi, dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]                 // 0x00428252    8b3544938a00
                          push               edi                                                  // 0x00428258    57
                          {disp8} lea        eax, dword ptr [esp + 0x08]                          // 0x00428259    8d442408
                          push               eax                                                  // 0x0042825d    50
