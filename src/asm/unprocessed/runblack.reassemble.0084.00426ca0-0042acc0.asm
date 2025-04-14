@@ -1589,7 +1589,7 @@ _jmp_addr_0x00427eee:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          test               eax, eax                                             // 0x00427f49    85c0
                          {disp8} je         _jmp_addr_0x00427fa4                                 // 0x00427f4b    7457
                          push               0x0                                                  // 0x00427f4d    6a00
-                         push               0x009cafc8                                           // 0x00427f4f    68c8af9c00
+                         push               0x009cafc8 /*??_R0?AVVillager@@@8*/                  // 0x00427f4f    68c8af9c00
                          push               0x009c8de8                                           // 0x00427f54    68e88d9c00
                          push               0x0                                                  // 0x00427f59    6a00
                          push               eax                                                  // 0x00427f5b    50
