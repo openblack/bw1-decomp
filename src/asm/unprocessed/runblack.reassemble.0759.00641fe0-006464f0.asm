@@ -173,6 +173,8 @@
 .globl _globl_ct_0x00644260
 .globl _globl_ct_0x00644290
 
+.globl _jmp_addr_0x00642530
+
 start_0x00641fe0_0x006464f0:
 // Snippet: asm, [0x00641fe0, 0x006464d1)
 _jmp_addr_0x00641fe0:    {disp32} jmp       _jmp_addr_0x007dee00                           // 0x00641fe0    e91bce1900
@@ -607,7 +609,7 @@ _jmp_addr_0x00642516:    push               0x0                                 
 _jmp_addr_0x00642526:    test               al, al                                         // 0x00642526    84c0
                          {disp8} je         _jmp_addr_0x00642540                           // 0x00642528    7416
                          {disp32} mov       cl, byte ptr [data_bytes + 0x380aa8]           // 0x0064252a    8a0da86ad400
-                         {disp32} mov       byte ptr [data_bytes + 0x380aa9], 0x00         // 0x00642530    c605a96ad40000
+_jmp_addr_0x00642530:    {disp32} mov       byte ptr [data_bytes + 0x380aa9], 0x00         // 0x00642530    c605a96ad40000
                          push               ecx                                            // 0x00642537    51
                          call               _SetTurnOffMouseMove__Fb                       // 0x00642538    e83382f0ff
 _jmp_addr_0x0064253d:    add                esp, 0x04                                      // 0x0064253d    83c404
