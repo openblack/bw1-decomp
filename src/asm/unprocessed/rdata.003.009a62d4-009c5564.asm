@@ -3,6 +3,8 @@
 .section .rdata
 
 .macro RTTIBaseClassDescriptor name num_base_classes
+    .global ??_R1A@?0A@A@\name@@8
+_RTTIBaseClassDescriptor__\name:
 ??_R1A@?0A@A@\name@@8:
     .long ??_R0?AV\name@@@8
     .long \num_base_classes
