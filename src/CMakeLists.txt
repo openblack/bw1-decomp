@@ -58,8 +58,8 @@ find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
     asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
-    asm/unprocessed/rdata.001.008a99a8-009a0738.asm
-    asm/unprocessed/data.000.009c6000-00c2d670.asm
+    asm/unprocessed/rdata.001.008a99a8-0099f878.asm
+    asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
 
@@ -344,10 +344,24 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1056.0079c550-0079f5d0.asm
     asm/unprocessed/runblack.reassemble.1058.0079f5d0-007a1360.asm
     asm/unprocessed/runblack.reassemble.1062.007a1360-007bf030.asm
-    asm/unprocessed/runblack.reassemble.1067.007bf030-007c0ed0.asm
-    asm/unprocessed/runblack.reassemble.1070.007c0ed0-007c3c50.asm
-    asm/unprocessed/runblack.reassemble.1074.007c3c50-007c44d0.asm
-    asm/unprocessed/runblack.reassemble.1078.007c44d0-007c6160.asm
+    asm/unprocessed/runblack.reassemble.1063.007bf030-007bf210.asm
+)
+set(SOURCES_ZLIB
+    asm/zlib/deflate.asm
+    asm/zlib/inflate.asm
+    asm/zlib/zutil.asm
+    asm/zlib/adler32.asm
+    asm/zlib/trees.asm
+    asm/zlib/infblock.asm
+    asm/zlib/infcodes.asm
+    asm/zlib/inftrees.asm
+    asm/zlib/infutil.asm
+    asm/zlib/inffast.asm
+)
+set(SOURCES_003
+    asm/unprocessed/rdata.003.009a05c0-009a0738.asm
+    asm/unprocessed/data.002.00c2d394-00c2d670.asm
+    asm/unprocessed/runblack.reassemble.1078.007c5100-007c6160.asm
     asm/unprocessed/runblack.reassemble.1081.007c6160-007c61f0.asm
     asm/unprocessed/runblack.reassemble.1085.007c61f0-007c6250.asm
     asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
@@ -356,11 +370,11 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1099.007c63e0-007c92ac.asm
 )
 # Likely a different calloc
-set(SOURCES_002 asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
+set(SOURCES_004 asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
 # Likely a different realloc
-set(SOURCES_003 asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
+set(SOURCES_005 asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
 
-set(SOURCES_004
+set(SOURCES_006
     asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
     asm/unprocessed/runblack.reassemble.1129.007da710-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1137.007dc8b0-007dee50.asm
@@ -424,20 +438,22 @@ set(SOURCES_004
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm
-    asm/unprocessed/rdata.002.009a0744-009a6298.asm
+    asm/unprocessed/rdata.004.009a0744-009a6298.asm
 )
-set(SOURCES_005
+set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    asm/unprocessed/rdata.003.009a62d4-009c5564.asm
-    asm/unprocessed/data.001.00c2d680-0x00c3cff0.asm
+    asm/unprocessed/rdata.005.009a62d4-009c5564.asm
+    asm/unprocessed/data.003.00c2d680-0x00c3cff0.asm
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
-add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
+add_library(runblack-reassembled-zlib OBJECT ${SOURCES_ZLIB})
 add_library(runblack-reassembled-src-003 OBJECT ${SOURCES_003})
 add_library(runblack-reassembled-src-004 OBJECT ${SOURCES_004})
 add_library(runblack-reassembled-src-005 OBJECT ${SOURCES_005})
+add_library(runblack-reassembled-src-006 OBJECT ${SOURCES_006})
+add_library(runblack-reassembled-src-007 OBJECT ${SOURCES_007})
 
 add_library(runblack-reassembled-rc OBJECT
     res/winnt.rh
@@ -594,14 +610,16 @@ target_include_directories(common_compile_options
 target_link_libraries(runblack-reassembled
     PRIVATE
         runblack-reassembled-src-001
-        runblack-reassembled-libcmt-001
-        runblack-reassembled-src-002
-        runblack-reassembled-libcmt-002
+        runblack-reassembled-zlib
         runblack-reassembled-src-003
-        runblack-reassembled-libcmt-003
+        runblack-reassembled-libcmt-001
         runblack-reassembled-src-004
-        runblack-reassembled-libcmt-004
+        runblack-reassembled-libcmt-002
         runblack-reassembled-src-005
+        runblack-reassembled-libcmt-003
+        runblack-reassembled-src-006
+        runblack-reassembled-libcmt-004
+        runblack-reassembled-src-007
         runblack-reassembled-rc
 )
 
@@ -609,8 +627,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-005.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-005.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
             ON
 )
 
@@ -618,16 +636,18 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
             ON
 )
 
 target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-zlib PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-003 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-005 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-006 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-007 PRIVATE common_compile_options)
 target_link_options(runblack-reassembled
     PRIVATE
         "-flavor"
