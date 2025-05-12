@@ -443,7 +443,8 @@ set(SOURCES_006
 set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    asm/unprocessed/rdata.005.009a62d4-009c5564.asm
+    asm/unprocessed/rdata.005.009a62d4-009bbcc0-rtti.asm
+    asm/unprocessed/rdata.006.009bbcc0-009c5564.asm
     asm/unprocessed/data.003.00c2d680-0x00c3cff0.asm
 )
 
