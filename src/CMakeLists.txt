@@ -57,8 +57,9 @@ find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
-    asm/unprocessed/rdata.000.008a9000-008a99a8.dllimports.asm
-    asm/unprocessed/rdata.001.008a99a8-0099f878.asm
+    asm/unprocessed/rdata.000.008a9000-008a99c0.dllimports.asm
+    asm/unprocessed/rdata.002.008a99c0-008a99d0-image_debug_directory.asm
+    asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
@@ -359,7 +360,7 @@ set(SOURCES_ZLIB
     asm/zlib/inffast.asm
 )
 set(SOURCES_003
-    asm/unprocessed/rdata.003.009a05c0-009a0738.asm
+    asm/unprocessed/rdata.004.009a05c0-009a0738.asm
     asm/unprocessed/data.002.00c2d394-00c2d670.asm
     asm/unprocessed/runblack.reassemble.1078.007c5100-007c6160.asm
     asm/unprocessed/runblack.reassemble.1081.007c6160-007c61f0.asm
@@ -438,13 +439,13 @@ set(SOURCES_006
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm
-    asm/unprocessed/rdata.004.009a0744-009a6298.asm
+    asm/unprocessed/rdata.005.009a0744-009a6298.asm
 )
 set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    asm/unprocessed/rdata.005.009a62d4-009bbcc0-rtti.asm
-    asm/unprocessed/rdata.006.009bbcc0-009c5564.asm
+    asm/unprocessed/rdata.006.009a62d4-009bbcc0-rtti.asm
+    asm/unprocessed/rdata.007.009bbcc0-009c5564.asm
     asm/unprocessed/data.003.00c2d680-0x00c3cff0.asm
 )
 
