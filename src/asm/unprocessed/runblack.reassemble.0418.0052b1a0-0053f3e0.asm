@@ -521,6 +521,7 @@
 .globl _InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell
 .globl _AddFootpath__13MultiMapFixedFP9GFootpath
 .globl _InsertMapObjectToCell__11FixedObjectFP7MapCell
+.globl ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z
 
 start_0x0052b1a0_0x0053f3e0:
 // Snippet: asm, [0x0052b1a0, 0x0053f3b8)
@@ -6406,6 +6407,7 @@ _GetCollideData__14SingleMapFixedFv:
 _jmp_addr_0x0052eb5a:    mov.s              eax, esi                                             // 0x0052eb5a    8bc6
                          pop                esi                                                  // 0x0052eb5c    5e
                          ret                0x0004                                               // 0x0052eb5d    c20400
+?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                          // 0x0052eb60    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x0052eb64    8b542408
                          push               eax                                                  // 0x0052eb68    50

@@ -14,15 +14,24 @@
 .globl _jmp_addr_0x004012a4
 .globl _jmp_addr_0x004012b4
 .globl _jmp_addr_0x004012d0
-.globl ___dt__4BaseFv
-.globl _Dump__4BaseFv
-.globl _CleanUpForSerialisation__4BaseFv
-.globl _Get3DSoundPos__4BaseFP7LHPoint
-.globl _ToBeDeleted__4BaseFi
+.globl ??1Base@@UAE@XZ
+.globl ?Dump@Base@@UAEXXZ
+.globl ?CleanUpForSerialisation@Base@@UAEXXZ
+.globl ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
+.globl ?ToBeDeleted@Base@@UAEXH@Z
+.globl ?GetDebugText@GObjectInfo@@UBEPBDXZ
+.globl ?GetBaseInfo@GAbodeInfo@@UAEPAVGBaseInfo@@AAK@Z
+.globl ?UpdateValue@GBaseInfo@@UAEXMKK@Z
+.globl ?GetMesh@AbodeInfo@@UBE?AW4MeshId@@XZ
+.globl ?GetMesh@GObjectInfo@@UBE?AW4MeshId@@W4TRIBE_TYPE@@@Z
+.globl ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ
+.globl ?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ
+.globl ?GetAbodeType@GAbodeInfo@@UBE?AW4ABODE_TYPE@@XZ
+.globl ?GetAbodeNumber@GAbodeInfo@@UBE?AW4ABODE_NUMBER@@XZ
 
 start_0x004011d0_0x004012e0:
 // Snippet: asm, [0x004011d0, 0x004012dc)
-_ToBeDeleted__4BaseFi:
+?ToBeDeleted@Base@@UAEXH@Z:
                          mov              eax, dword ptr [ecx]              // 0x004011d0    8b01
                          call             dword ptr [eax + 8]               // 0x004011d2    ff5008
                          ret              0x0004                            // 0x004011d5    c20400
@@ -34,7 +43,7 @@ _ToBeDeleted__4BaseFi:
                          nop                                                // 0x004011dd    90
                          nop                                                // 0x004011de    90
                          nop                                                // 0x004011df    90
-_Get3DSoundPos__4BaseFP7LHPoint:
+?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z:
                          xor.s            eax, eax                          // 0x004011e0    33c0
                          ret              0x0004                            // 0x004011e2    c20400
                          nop                                                // 0x004011e5    90
@@ -48,7 +57,7 @@ _Get3DSoundPos__4BaseFP7LHPoint:
                          nop                                                // 0x004011ed    90
                          nop                                                // 0x004011ee    90
                          nop                                                // 0x004011ef    90
-_CleanUpForSerialisation__4BaseFv:
+?CleanUpForSerialisation@Base@@UAEXXZ:
                          ret                                                // 0x004011f0    c3
                          nop                                                // 0x004011f1    90
                          nop                                                // 0x004011f2    90
@@ -65,7 +74,7 @@ _CleanUpForSerialisation__4BaseFv:
                          nop                                                // 0x004011fd    90
                          nop                                                // 0x004011fe    90
                          nop                                                // 0x004011ff    90
-_Dump__4BaseFv:
+?Dump@Base@@UAEXXZ:
                          ret                                                // 0x00401200    c3
                          nop                                                // 0x00401201    90
                          nop                                                // 0x00401202    90
@@ -82,7 +91,7 @@ _Dump__4BaseFv:
                          nop                                                // 0x0040120d    90
                          nop                                                // 0x0040120e    90
                          nop                                                // 0x0040120f    90
-___dt__4BaseFv:
+??1Base@@UAE@XZ:
                          push             esi                               // 0x00401210    56
                          mov.s            esi, ecx                          // 0x00401211    8bf1
                          call             _jmp_addr_0x00436960              // 0x00401213    e848570300
@@ -95,6 +104,7 @@ ___dt__4BaseFv:
 _jmp_addr_0x0040122a:    mov.s            eax, esi                          // 0x0040122a    8bc6
                          pop              esi                               // 0x0040122c    5e
                          ret              0x0004                            // 0x0040122d    c20400
+?UpdateValue@GBaseInfo@@UAEXMKK@Z:
                          ret              0x000c                            // 0x00401230    c20c00
                          nop                                                // 0x00401233    90
                          nop                                                // 0x00401234    90
@@ -109,6 +119,7 @@ _jmp_addr_0x0040122a:    mov.s            eax, esi                          // 0
                          nop                                                // 0x0040123d    90
                          nop                                                // 0x0040123e    90
                          nop                                                // 0x0040123f    90
+?GetMesh@AbodeInfo@@UBE?AW4MeshId@@XZ:
                          {disp32} mov     eax, dword ptr [ecx + 0x0000015c] // 0x00401240    8b815c010000
                          ret                                                // 0x00401246    c3
                          nop                                                // 0x00401247    90
@@ -120,6 +131,7 @@ _jmp_addr_0x0040122a:    mov.s            eax, esi                          // 0
                          nop                                                // 0x0040124d    90
                          nop                                                // 0x0040124e    90
                          nop                                                // 0x0040124f    90
+?GetAbodeType@GAbodeInfo@@UBE?AW4ABODE_TYPE@@XZ:
                          {disp32} mov     eax, dword ptr [ecx + 0x00000120] // 0x00401250    8b8120010000
                          ret                                                // 0x00401256    c3
                          nop                                                // 0x00401257    90
@@ -131,6 +143,7 @@ _jmp_addr_0x0040122a:    mov.s            eax, esi                          // 0
                          nop                                                // 0x0040125d    90
                          nop                                                // 0x0040125e    90
                          nop                                                // 0x0040125f    90
+?GetAbodeNumber@GAbodeInfo@@UBE?AW4ABODE_NUMBER@@XZ:
                          {disp32} mov     eax, dword ptr [ecx + 0x00000124] // 0x00401260    8b8124010000
                          ret                                                // 0x00401266    c3
                          nop                                                // 0x00401267    90
@@ -142,6 +155,7 @@ _jmp_addr_0x0040122a:    mov.s            eax, esi                          // 0
                          nop                                                // 0x0040126d    90
                          nop                                                // 0x0040126e    90
                          nop                                                // 0x0040126f    90
+?GetBaseInfo@GAbodeInfo@@UAEPAVGBaseInfo@@AAK@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x04]       // 0x00401270    8b442404
                          mov              dword ptr [eax], 0x00000093       // 0x00401274    c70093000000
                          mov              eax, 0x00c3c690                   // 0x0040127a    b890c6c300
@@ -160,6 +174,7 @@ _jmp_addr_0x0040122a:    mov.s            eax, esi                          // 0
                          nop                                                // 0x0040128d    90
                          nop                                                // 0x0040128e    90
                          nop                                                // 0x0040128f    90
+?GetMesh@GObjectInfo@@UBE?AW4MeshId@@W4TRIBE_TYPE@@@Z:
                          xor.s            eax, eax                          // 0x00401290    33c0
                          ret              0x0004                            // 0x00401292    c20400
                          nop                                                // 0x00401295    90
@@ -173,6 +188,7 @@ _jmp_addr_0x0040122a:    mov.s            eax, esi                          // 0
                          nop                                                // 0x0040129d    90
                          nop                                                // 0x0040129e    90
                          nop                                                // 0x0040129f    90
+?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ:
                          {disp8} mov      eax, dword ptr [ecx + 0x14]       // 0x004012a0    8b4114
                          ret                                                // 0x004012a3    c3
 _jmp_addr_0x004012a4:    mov              eax, 0xfffff9cc                   // 0x004012a4    b8ccf9ffff
@@ -180,6 +196,7 @@ _jmp_addr_0x004012a4:    mov              eax, 0xfffff9cc                   // 0
                          add.s            eax, ecx                          // 0x004012aa    03c1
                          mov              eax, dword ptr [eax]              // 0x004012ac    8b00
                          jmp              eax                               // 0x004012ae    ffe0
+?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ:
                          {disp8} mov      eax, dword ptr [ecx + 0x70]       // 0x004012b0    8b4170
                          ret                                                // 0x004012b3    c3
 _jmp_addr_0x004012b4:    mov              eax, 0xfffffa5c                   // 0x004012b4    b85cfaffff
@@ -187,6 +204,8 @@ _jmp_addr_0x004012b4:    mov              eax, 0xfffffa5c                   // 0
                          add.s            eax, ecx                          // 0x004012ba    03c1
                          mov              eax, dword ptr [eax]              // 0x004012bc    8b00
                          jmp              eax                               // 0x004012be    ffe0
+
+?GetDebugText@GObjectInfo@@UBEPBDXZ:
                          {disp8} lea      eax, dword ptr [ecx + 0x18]       // 0x004012c0    8d4118
                          ret                                                // 0x004012c3    c3
                          nop                                                // 0x004012c4    90

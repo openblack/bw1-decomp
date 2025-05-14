@@ -390,9 +390,11 @@
 .globl _jmp_addr_0x0043e0a0
 .globl _jmp_addr_0x0043ee80
 .globl _jmp_addr_0x0043ee90
+
 .globl _Connect__9BWGameSpyFv
 .globl ___dt__16LHReleasedOSFileFv
 .globl _Load__9BigForestFR10GameOSFile
+.globl ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
 
 start_0x0042ae70_0x0043f980:
 // Snippet: asm, [0x0042ae70, 0x0043f967)
@@ -17792,6 +17794,7 @@ _jmp_addr_0x00436c51:    ret                                                    
                          nop                                                                     // 0x00436c5d    90
                          nop                                                                     // 0x00436c5e    90
                          nop                                                                     // 0x00436c5f    90
+?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00436c60    8b442404
                          mov                cl, -0x01                                            // 0x00436c64    b1ff
                          mov                byte ptr [eax], cl                                   // 0x00436c66    8808
