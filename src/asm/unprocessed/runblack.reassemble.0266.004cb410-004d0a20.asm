@@ -81,7 +81,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
@@ -4522,7 +4522,7 @@ _jmp_addr_0x004ce2b4:    {disp32} jmp       _jmp_addr_0x004ce2c0                
                          nop                                                              // 0x004ce2be    90
                          nop                                                              // 0x004ce2bf    90
 _jmp_addr_0x004ce2c0:    push               0x00407870                                    // 0x004ce2c0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x004ce2c5    e8c7742f00
+                         call               _atexit                                       // 0x004ce2c5    e8c7742f00
                          pop                ecx                                           // 0x004ce2ca    59
                          ret                                                              // 0x004ce2cb    c3
                          nop                                                              // 0x004ce2cc    90
@@ -5761,7 +5761,7 @@ _jmp_addr_0x004cf184:    {disp32} jmp       _jmp_addr_0x004cf190                
                          nop                                                              // 0x004cf18e    90
                          nop                                                              // 0x004cf18f    90
 _jmp_addr_0x004cf190:    push               0x00407870                                    // 0x004cf190    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x004cf195    e8f7652f00
+                         call               _atexit                                       // 0x004cf195    e8f7652f00
                          pop                ecx                                           // 0x004cf19a    59
                          ret                                                              // 0x004cf19b    c3
                          nop                                                              // 0x004cf19c    90
@@ -7245,7 +7245,7 @@ _jmp_addr_0x004d02d4:    {disp32} jmp       _jmp_addr_0x004d02e0                
                          nop                                                              // 0x004d02de    90
                          nop                                                              // 0x004d02df    90
 _jmp_addr_0x004d02e0:    push               0x00407870                                    // 0x004d02e0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x004d02e5    e8a7542f00
+                         call               _atexit                                       // 0x004d02e5    e8a7542f00
                          pop                ecx                                           // 0x004d02ea    59
                          ret                                                              // 0x004d02eb    c3
                          nop                                                              // 0x004d02ec    90

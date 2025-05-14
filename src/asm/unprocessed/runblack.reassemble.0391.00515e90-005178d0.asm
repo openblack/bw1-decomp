@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x00730570
 .extern @GetAbode__8VillagerFv@4
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007c5f8c
 .extern _wcscpy
@@ -83,7 +83,7 @@ _jmp_addr_0x00515ea4:    {disp32} jmp       _jmp_addr_0x00515eb0                
                          nop                                                              // 0x00515eae    90
                          nop                                                              // 0x00515eaf    90
 _jmp_addr_0x00515eb0:    push               0x00407870                                    // 0x00515eb0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x00515eb5    e8d7f82a00
+                         call               _atexit                                       // 0x00515eb5    e8d7f82a00
                          pop                ecx                                           // 0x00515eba    59
                          ret                                                              // 0x00515ebb    c3
                          nop                                                              // 0x00515ebc    90

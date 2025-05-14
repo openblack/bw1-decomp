@@ -50,7 +50,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c6425
 .extern _wcslen
@@ -2113,7 +2113,7 @@ _jmp_addr_0x00798254:    {disp32} jmp         _jmp_addr_0x00798260              
                          nop                                                                // 0x0079825e    90
                          nop                                                                // 0x0079825f    90
 _jmp_addr_0x00798260:    push                 0x00407870                                    // 0x00798260    6870784000
-                         call                 _jmp_addr_0x007c5791                          // 0x00798265    e827d50200
+                         call                 _atexit                                       // 0x00798265    e827d50200
                          pop                  ecx                                           // 0x0079826a    59
                          ret                                                                // 0x0079826b    c3
                          nop                                                                // 0x0079826c    90

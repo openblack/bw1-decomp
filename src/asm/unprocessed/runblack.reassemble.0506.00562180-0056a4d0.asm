@@ -57,7 +57,7 @@
 .extern @Close__8LHOSFileFv@4
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 .extern _jmp_addr_0x007c79fd
@@ -3737,7 +3737,7 @@ _jmp_addr_0x005648e4:    {disp32} jmp       _jmp_addr_0x005648f0                
                          nop                                                              // 0x005648ee    90
                          nop                                                              // 0x005648ef    90
 _jmp_addr_0x005648f0:    push               0x00407870                                    // 0x005648f0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x005648f5    e8970e2600
+                         call               _atexit                                       // 0x005648f5    e8970e2600
                          pop                ecx                                           // 0x005648fa    59
                          ret                                                              // 0x005648fb    c3
                          nop                                                              // 0x005648fc    90
@@ -3874,7 +3874,7 @@ _jmp_addr_0x00564a00:    mov                ecx, 0x00d01ab0                     
                          nop                                                              // 0x00564a0e    90
                          nop                                                              // 0x00564a0f    90
 _jmp_addr_0x00564a10:    push               0x00564a20                                    // 0x00564a10    68204a5600
-                         call               _jmp_addr_0x007c5791                          // 0x00564a15    e8770d2600
+                         call               _atexit                                       // 0x00564a15    e8770d2600
                          pop                ecx                                           // 0x00564a1a    59
                          ret                                                              // 0x00564a1b    c3
                          nop                                                              // 0x00564a1c    90

@@ -43,7 +43,7 @@
 .extern _jmp_addr_0x00756000
 .extern _jmp_addr_0x00757180
 .extern @MakeChildOrphaned__8VillagerFP8Villager@12
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c5a19
 
 .globl _jmp_addr_0x00756240
@@ -1250,7 +1250,7 @@ _jmp_addr_0x00756c94:    {disp32} jmp       _jmp_addr_0x00756ca0                
                          nop                                                              // 0x00756c9e    90
                          nop                                                              // 0x00756c9f    90
 _jmp_addr_0x00756ca0:    push               0x00407870                                    // 0x00756ca0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x00756ca5    e8e7ea0600
+                         call               _atexit                                       // 0x00756ca5    e8e7ea0600
                          pop                ecx                                           // 0x00756caa    59
                          ret                                                              // 0x00756cab    c3
                          nop                                                              // 0x00756cac    90
