@@ -16,10 +16,10 @@ struct GObjectInfo;
 struct GObjectInfoVftable
 {
   struct GBaseInfoVftable super;  /* 0x0 */
-  void* (__fastcall* GetMesh)(const struct GObjectInfo* this);  /* 0x2c */
-  void* (__fastcall* GetMesh__TRIBE_TYPE)(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe);  /* 0x30 */
+  enum MeshId (__fastcall* GetMesh)(const struct GObjectInfo* this);  /* 0x2c */
+  enum MeshId (__fastcall* GetMesh__TRIBE_TYPE)(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe);  /* 0x30 */
   enum ALIGNMENT_TYPE (__fastcall* GetAlignmentType)(const struct GObjectInfo* this);
-  uint32_t (__fastcall* GetFoodType)(const struct GObjectInfo* this);
+  enum FOOD_TYPE (__fastcall* GetFoodType)(const struct GObjectInfo* this);
 };
 static_assert(sizeof(struct GObjectInfoVftable) == 0x3c, "Data type is of wrong size");
 
@@ -87,5 +87,16 @@ struct GObjectInfo
 static_assert(sizeof(struct GObjectInfo) == 0x100, "Data type is of wrong size");
 
 static struct GObjectInfoVftable* const __vt__11GObjectInfo = (struct GObjectInfoVftable* const)0x00930a60;
+
+// Override methods
+
+// win1.41 004012c0 mac 10511e08 GObjectInfo::GetDebugText(void)
+const char* __fastcall GetDebugText__11GObjectInfoCFv(const struct GBaseInfo* this) asm("?GetDebugText@GObjectInfo@@UBEPBDXZ");
+// win1.41 00401290 mac 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
+enum MeshId __fastcall GetMesh__11GObjectInfoCF10TRIBE_TYPE(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe) asm("?GetMesh@GObjectInfo@@UBE?AW4MeshId@@W4TRIBE_TYPE@@@Z");
+// win1.41 004012a0 mac 1016de30 GObjectInfo::GetAlignmentType(void) const
+enum ALIGNMENT_TYPE __fastcall GetAlignmentType__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ");
+// win1.41 004012b0 mac 100627a0 GObjectInfo::GetFoodType(void) const
+enum FOOD_TYPE __fastcall GetFoodType__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ");
 
 #endif /* BW1_DECOMP_OBJECT_INFO_INCLUDED_H */

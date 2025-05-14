@@ -76,6 +76,7 @@
 .globl _SetPos__16GameThingWithPosFRC9MapCoords
 .globl _GetComputerSeen__9GameThingFv
 .globl _CastPlayer__9GameThingFv
+.globl ??1GAbodeInfo@@UAE@XZ
 
 start_0x004012e0_0x00403130:
 // Snippet: asm, [0x004012e0, 0x00403097)
@@ -110,7 +111,7 @@ _jmp_addr_0x00401312:    ret                                                    
                          nop                                                         // 0x0040131d    90
                          nop                                                         // 0x0040131e    90
                          nop                                                         // 0x0040131f    90
-                         push               esi                                      // 0x00401320    56
+??1GAbodeInfo@@UAE@XZ:   push               esi                                      // 0x00401320    56
                          mov.s              esi, ecx                                 // 0x00401321    8bf1
                          call               _jmp_addr_0x00436960                     // 0x00401323    e838560300
                          test               byte ptr [esp + 0x08], 0x01              // 0x00401328    f644240801

@@ -68,6 +68,8 @@
 .globl _globl_ct_0x00414070
 .globl _globl_ct_0x00414770
 
+.globl ?GetDebugText@Base@@UBEPBDXZ
+
 start_0x004125a0_0x00416060:
 // Snippet: asm, [0x004125a0, 0x00416032)
 _DrawLine__10SetupThingFiiiiUliff:    {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x004125a0    8b442418
@@ -2318,6 +2320,7 @@ _jmp_addr_0x0041408c:    mov                dword ptr [eax], 0x008a9a44         
                          nop                                                              // 0x004140ad    90
                          nop                                                              // 0x004140ae    90
                          nop                                                              // 0x004140af    90
+?GetDebugText@Base@@UBEPBDXZ:
                          xor.s              eax, eax                                      // 0x004140b0    33c0
                          ret                                                              // 0x004140b2    c3
                          nop                                                              // 0x004140b3    90

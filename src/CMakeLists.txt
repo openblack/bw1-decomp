@@ -59,6 +59,7 @@ find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 set(SOURCES_001
     asm/unprocessed/rdata.000.008a9000-008a99c0.dllimports.asm
     asm/unprocessed/rdata.002.008a99c0-008a99d0-image_debug_directory.asm
+    c/AbodeInfo.000.c
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
