@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _LHLoadData__FPcPvUlPUl
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern ___nw__FUl
 .extern _jmp_addr_0x008190d0
 .extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
@@ -1208,7 +1208,7 @@ _jmp_addr_0x00543440:    {disp32} mov       al, byte ptr [data_bytes + 0x30a4fc]
                          {disp32} mov       dword ptr [data_bytes + 0x30a4f0], 0x00000000 // 0x0054346a    c705f004cd0000000000
                          {disp32} mov       dword ptr [data_bytes + 0x30a4f4], 0x41a00000 // 0x00543474    c705f404cd000000a041
                          {disp32} mov       dword ptr [data_bytes + 0x30a4f8], 0xc1f00000 // 0x0054347e    c705f804cd000000f0c1
-                         call               _jmp_addr_0x007c5791                          // 0x00543488    e804232800
+                         call               _atexit                                       // 0x00543488    e804232800
                          add                esp, 0x04                                     // 0x0054348d    83c404
 _jmp_addr_0x00543490:    {disp32} mov       al, byte ptr [data_bytes + 0x30a4fc]          // 0x00543490    a0fc04cd00
                          test               al, 0x02                                      // 0x00543495    a802
@@ -1220,7 +1220,7 @@ _jmp_addr_0x00543490:    {disp32} mov       al, byte ptr [data_bytes + 0x30a4fc]
                          {disp32} mov       dword ptr [data_bytes + 0x30a4e0], 0x00000000 // 0x005434a9    c705e004cd0000000000
                          {disp32} mov       dword ptr [data_bytes + 0x30a4e4], 0x40e00000 // 0x005434b3    c705e404cd000000e040
                          {disp32} mov       dword ptr [data_bytes + 0x30a4e8], 0x00000000 // 0x005434bd    c705e804cd0000000000
-                         call               _jmp_addr_0x007c5791                          // 0x005434c7    e8c5222800
+                         call               _atexit                                       // 0x005434c7    e8c5222800
                          add                esp, 0x04                                     // 0x005434cc    83c404
 _jmp_addr_0x005434cf:    {disp8} mov        eax, dword ptr [esp + 0x5c]                   // 0x005434cf    8b44245c
                          dec                eax                                           // 0x005434d3    48
