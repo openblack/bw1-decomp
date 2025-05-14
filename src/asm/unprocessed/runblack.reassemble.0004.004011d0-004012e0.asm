@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x00436960
 .extern _jmp_addr_0x00436970
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 
 .globl _jmp_addr_0x004012a4
 .globl _jmp_addr_0x004012b4
@@ -221,7 +221,7 @@ _jmp_addr_0x004012b4:    mov              eax, 0xfffffa5c                   // 0
                          nop                                                // 0x004012ce    90
                          nop                                                // 0x004012cf    90
 _jmp_addr_0x004012d0:    push             0x004012e0                        // 0x004012d0    68e0124000
-                         call             _jmp_addr_0x007c5791              // 0x004012d5    e8b7443c00
+                         call             _atexit                           // 0x004012d5    e8b7443c00
                          pop              ecx                               // 0x004012da    59
                          ret                                                // 0x004012db    c3
 

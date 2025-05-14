@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x00774550
 .extern @GetTotemPos__11WorshipSiteFv@12
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c5a19
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0081f1a0
@@ -1318,7 +1318,7 @@ _jmp_addr_0x006f7b84:    {disp32} jmp       _jmp_addr_0x006f7b90                
                          nop                                                              // 0x006f7b8e    90
                          nop                                                              // 0x006f7b8f    90
 _jmp_addr_0x006f7b90:    push               0x00407870                                    // 0x006f7b90    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x006f7b95    e8f7db0c00
+                         call               _atexit                                       // 0x006f7b95    e8f7db0c00
                          pop                ecx                                           // 0x006f7b9a    59
                          ret                                                              // 0x006f7b9b    c3
                          nop                                                              // 0x006f7b9c    90
