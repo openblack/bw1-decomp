@@ -182,6 +182,7 @@
 .globl _globl_ct_0x00738ef0
 .globl _globl_ct_0x00738f20
 .globl _globl_ct_0x00738f40
+.globl _CallVirtualFunctionsForCreation__11TotemStatueFRC9MapCoords
 
 start_0x00736490_0x0073a650:
 // Snippet: asm, [0x00736490, 0x0073a5b2)
@@ -2628,6 +2629,7 @@ _jmp_addr_0x00737d33:    pop                edi                                 
                          nop                                                               // 0x00737d5d    90
                          nop                                                               // 0x00737d5e    90
                          nop                                                               // 0x00737d5f    90
+_CallVirtualFunctionsForCreation__11TotemStatueFRC9MapCoords:
                          sub                esp, 0x24                                      // 0x00737d60    83ec24
                          push               ebx                                            // 0x00737d63    53
                          push               esi                                            // 0x00737d64    56

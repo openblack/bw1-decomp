@@ -407,6 +407,20 @@
 .globl _globl_ct_0x00636300
 .globl _globl_ct_0x00636330
 .globl _globl_ct_0x006363f0
+.globl _CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords
+.globl _CleanupWhenDeleted__6ObjectFi
+.globl _RemoveMapObject__6ObjectFv
+.globl _InsertMapObject__6ObjectFv
+.globl _SetYAngle__6ObjectFf
+.globl _RemoveMapObjectFromCell__6ObjectFP7MapCell
+.globl _ActualMoveMapObject__6ObjectFRC9MapCoords
+.globl _MoveMapObject__6ObjectFRC9MapCoords
+.globl _SetLife__6ObjectFf
+.globl _Load__6ObjectFR10GameOSFile
+.globl _ReduceLife__6ObjectFfP7GPlayer
+.globl _Create3DObject__6ObjectFv
+.globl _InsertMapObjectToCell__6ObjectFP7MapCell
+.globl _SetScale__6ObjectFf
 
 start_0x00630fd0_0x0063a640:
 // Snippet: asm, [0x00630fd0, 0x0063a610)
@@ -8240,6 +8254,7 @@ _jmp_addr_0x00636508:    {disp8} mov        ecx, dword ptr [ecx + eax * 0x4 + 0x
                          nop                                                               // 0x006365ed    90
                          nop                                                               // 0x006365ee    90
                          nop                                                               // 0x006365ef    90
+_Create3DObject__6ObjectFv:
 @Create3DObject__6ObjectFv@4:    push               esi                                            // 0x006365f0    56
                          mov.s              esi, ecx                                       // 0x006365f1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x006365f3    8b06
@@ -8400,6 +8415,7 @@ _jmp_addr_0x00636731:    pop                edi                                 
                          pop                ebx                                            // 0x00636739    5b
                          ret                                                               // 0x0063673a    c3
                          call               _jmp_addr_0x004017f9                           // 0x0063673b    e8b9b0dcff
+_InsertMapObject__6ObjectFv:
 @InsertMapObject__6ObjectFv@4:    push               esi                                            // 0x00636740    56
                          mov.s              esi, ecx                                       // 0x00636741    8bf1
                          push               edi                                            // 0x00636743    57
@@ -8433,6 +8449,7 @@ _jmp_addr_0x00636785:    push               ebx                                 
 _jmp_addr_0x0063679d:    pop                edi                                            // 0x0063679d    5f
                          pop                esi                                            // 0x0063679e    5e
                          ret                                                               // 0x0063679f    c3
+_RemoveMapObject__6ObjectFv:
 @RemoveMapObject__6ObjectFv@4:    push               esi                                            // 0x006367a0    56
                          mov.s              esi, ecx                                       // 0x006367a1    8bf1
                          push               edi                                            // 0x006367a3    57
@@ -8502,6 +8519,7 @@ _jmp_addr_0x0063681d:    pop                edi                                 
                          nop                                                               // 0x0063682d    90
                          nop                                                               // 0x0063682e    90
                          nop                                                               // 0x0063682f    90
+_InsertMapObjectToCell__6ObjectFP7MapCell:
 @InsertMapObjectToCell__6ObjectFP7MapCell@12:    push               ebx                                            // 0x00636830    53
                          push               esi                                            // 0x00636831    56
                          mov.s              ebx, ecx                                       // 0x00636832    8bd9
@@ -8570,6 +8588,7 @@ _jmp_addr_0x006368be:    push               edi                                 
                          ret                0x0004                                         // 0x006368cb    c20400
                          nop                                                               // 0x006368ce    90
                          nop                                                               // 0x006368cf    90
+_RemoveMapObjectFromCell__6ObjectFP7MapCell:
 @RemoveMapObjectFromCell__6ObjectFP7MapCell@12:    push               ebx                                            // 0x006368d0    53
                          push               ebp                                            // 0x006368d1    55
                          push               esi                                            // 0x006368d2    56
@@ -8713,6 +8732,7 @@ _jmp_addr_0x00636a22:    push               ebx                                 
                          nop                                                               // 0x00636a3d    90
                          nop                                                               // 0x00636a3e    90
                          nop                                                               // 0x00636a3f    90
+_MoveMapObject__6ObjectFRC9MapCoords:
 @MoveMapObject__6ObjectFRC9MapCoords@12:    {disp8} mov        dx, word ptr [ecx + 0x16]                      // 0x00636a40    668b5116
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00636a44    8b442404
                          cmp                dx, word ptr [eax + 0x02]                      // 0x00636a48    663b5002
@@ -8888,6 +8908,7 @@ _jmp_addr_0x00636b61:    {disp8} mov        ecx, dword ptr [esi + 0x40]         
                          {disp8} fld        dword ptr [eax + 0x30]                         // 0x00636bdb    d94030
                          ret                                                               // 0x00636bde    c3
                          nop                                                               // 0x00636bdf    90
+_CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords:
 @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12:    push               esi                                            // 0x00636be0    56
                          mov.s              esi, ecx                                       // 0x00636be1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00636be3    8b06
@@ -10041,6 +10062,7 @@ _jmp_addr_0x006377c0:    ret                0x0008                              
                          nop                                                               // 0x006377ed    90
                          nop                                                               // 0x006377ee    90
                          nop                                                               // 0x006377ef    90
+_CleanupWhenDeleted__6ObjectFi:
                          push               esi                                            // 0x006377f0    56
                          mov.s              esi, ecx                                       // 0x006377f1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x006377f3    8b06
@@ -10055,6 +10077,7 @@ _jmp_addr_0x00637809:    pop                esi                                 
                          nop                                                               // 0x0063780d    90
                          nop                                                               // 0x0063780e    90
                          nop                                                               // 0x0063780f    90
+_ReduceLife__6ObjectFfP7GPlayer:
 @ReduceLife__6ObjectFfP7GPlayer@16:    push               esi                                            // 0x00637810    56
                          mov.s              esi, ecx                                       // 0x00637811    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00637813    8b06
@@ -10875,6 +10898,7 @@ _jmp_addr_0x00637ff0:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          nop                                                               // 0x0063803d    90
                          nop                                                               // 0x0063803e    90
                          nop                                                               // 0x0063803f    90
+_ActualMoveMapObject__6ObjectFRC9MapCoords:
 @ActualMoveMapObject__6ObjectFRC9MapCoords@12:    push               esi                                            // 0x00638040    56
                          mov.s              esi, ecx                                       // 0x00638041    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00638043    8b06
@@ -12623,6 +12647,7 @@ _jmp_addr_0x006391f7:    pop                esi                                 
                          pop                ebx                                            // 0x006391f9    5b
                          add                esp, 0x14                                      // 0x006391fa    83c414
                          ret                0x0010                                         // 0x006391fd    c21000
+_SetScale__6ObjectFf:
 @SetScale__6ObjectFf@12: push               esi                                            // 0x00639200    56
                          mov.s              esi, ecx                                       // 0x00639201    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00639203    8b06
@@ -12667,6 +12692,7 @@ _jmp_addr_0x0063924f:    pop                esi                                 
                          nop                                                               // 0x0063925d    90
                          nop                                                               // 0x0063925e    90
                          nop                                                               // 0x0063925f    90
+_SetYAngle__6ObjectFf:
 @SetYAngle__6ObjectFf@12:push               esi                                            // 0x00639260    56
                          mov.s              esi, ecx                                       // 0x00639261    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00639263    8b06
@@ -13864,6 +13890,7 @@ _jmp_addr_0x00639ea1:    pop                esi                                 
                          add                esp, 0x48                                      // 0x00639ea5    83c448
                          ret                0x0004                                         // 0x00639ea8    c20400
                          call               _jmp_addr_0x004017f9                           // 0x00639eab    e84979dcff
+_Load__6ObjectFR10GameOSFile:
 @Load__6ObjectFR10GameOSFile@12:    push               esi                                            // 0x00639eb0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00639eb1    8b742408
                          push               edi                                            // 0x00639eb5    57
@@ -14089,6 +14116,7 @@ _jmp_addr_0x0063a127:    .byte              0x66, 0x81, 0x63, 0x24, 0xcf, 0xff//
                          nop                                                               // 0x0063a13d    90
                          nop                                                               // 0x0063a13e    90
                          nop                                                               // 0x0063a13f    90
+_SetLife__6ObjectFf:
 @SetLife__6ObjectFf@12:  {disp8} mov        dx, word ptr [ecx + 0x24]                      // 0x0063a140    668b5124
                          test               dh, 0x02                                       // 0x0063a144    f6c602
                          push               esi                                            // 0x0063a147    56

@@ -66,6 +66,7 @@
 .globl @ThrowObject__5CHandFv@4
 .globl _jmp_addr_0x0046de40
 .globl _jmp_addr_0x0046df00
+.globl _LoadBinary_5CHandFPci
 
 start_0x0046cf80_0x0046df60:
 // Snippet: asm, [0x0046cf80, 0x0046df48)
@@ -332,6 +333,7 @@ _jmp_addr_0x0046d2b3:    pop                esi                                 
                          nop                                                              // 0x0046d2bd    90
                          nop                                                              // 0x0046d2be    90
                          nop                                                              // 0x0046d2bf    90
+_LoadBinary_5CHandFPci:
                          sub                esp, 0x48                                     // 0x0046d2c0    83ec48
                          push               ebx                                           // 0x0046d2c3    53
                          push               ebp                                           // 0x0046d2c4    55

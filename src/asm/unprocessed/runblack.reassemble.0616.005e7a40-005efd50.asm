@@ -240,6 +240,11 @@
 .globl _globl_ct_0x005ef850
 .globl _globl_ct_0x005ef880
 .globl _globl_ct_0x005ef8b0
+.globl _EnterMoveOnPath__6LivingFUcUc
+.globl _ToBeDeleted__6LivingFi
+.globl _GetFinalDestPos__6LivingFP9MapCoords
+.globl _SetAge__6LivingFUl
+.globl _MoveAlongPath__6LivingFv
 
 start_0x005e7a40_0x005efd50:
 // Snippet: asm, [0x005e7a40, 0x005efd0d)
@@ -6387,6 +6392,7 @@ _jmp_addr_0x005ec000:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x005ec09d    90
                          nop                                                              // 0x005ec09e    90
                          nop                                                              // 0x005ec09f    90
+_ToBeDeleted__6LivingFi:
 @ToBeDeleted__6LivingFi@12:    push               ebp                                           // 0x005ec0a0    55
                          push               esi                                           // 0x005ec0a1    56
                          mov.s              esi, ecx                                      // 0x005ec0a2    8bf1
@@ -6509,6 +6515,7 @@ _jmp_addr_0x005ec1be:    pop                edi                                 
                          nop                                                              // 0x005ec1dd    90
                          nop                                                              // 0x005ec1de    90
                          nop                                                              // 0x005ec1df    90
+_GetFinalDestPos__6LivingFP9MapCoords:
 @GetFinalDestPos__6LivingFP9MapCoords@12:    push               esi                                           // 0x005ec1e0    56
                          mov.s              esi, ecx                                      // 0x005ec1e1    8bf1
                          {disp32} mov       ecx, dword ptr [esi + 0x000000c8]             // 0x005ec1e3    8b8ec8000000
@@ -8314,6 +8321,7 @@ _jmp_addr_0x005ed23f:    {disp8} mov        ax, word ptr [edi + 0x5c]           
                          nop                                                              // 0x005ed2bd    90
                          nop                                                              // 0x005ed2be    90
                          nop                                                              // 0x005ed2bf    90
+_SetAge__6LivingFUl:
 @SetAge__6LivingFUl@12:  {disp32} mov       eax, dword ptr [data_bytes + 0x33ba04]        // 0x005ed2c0    a1041ad000
                          imul               eax, dword ptr [esp + 0x04]                   // 0x005ed2c5    0faf442404
                          {disp32} mov       edx, dword ptr [data_bytes + 0x33b95c]        // 0x005ed2ca    8b155c19d000
@@ -9342,6 +9350,7 @@ _jmp_addr_0x005edd72:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          nop                                                              // 0x005eddcd    90
                          nop                                                              // 0x005eddce    90
                          nop                                                              // 0x005eddcf    90
+_EnterMoveOnPath__6LivingFUcUc:
                          mov                eax, 0x00000001                               // 0x005eddd0    b801000000
                          ret                0x0008                                        // 0x005eddd5    c20800
                          nop                                                              // 0x005eddd8    90
@@ -9740,6 +9749,7 @@ _jmp_addr_0x005ee221:    xor.s              eax, eax                            
                          nop                                                              // 0x005ee22d    90
                          nop                                                              // 0x005ee22e    90
                          nop                                                              // 0x005ee22f    90
+_MoveAlongPath__6LivingFv:
                          sub                esp, 0x34                                     // 0x005ee230    83ec34
                          push               esi                                           // 0x005ee233    56
                          mov.s              esi, ecx                                      // 0x005ee234    8bf1

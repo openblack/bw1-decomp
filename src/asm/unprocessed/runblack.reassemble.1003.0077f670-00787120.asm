@@ -239,6 +239,7 @@
 .globl _globl_ct_0x00786560
 .globl _globl_ct_0x00786590
 .globl _globl_ct_0x007865b0
+.globl _CallVirtualFunctionsForCreation__12WorshipTotemFRC9MapCoords
 
 start_0x0077f670_0x00787120:
 // Snippet: asm, [0x0077f670, 0x007870fb)
@@ -2315,6 +2316,7 @@ _jmp_addr_0x00780a60:    {disp32} mov       eax, dword ptr [ecx + 0x00000100]   
                          jmp                dword ptr [eax + 0x428]                       // 0x00780aa8    ffa028040000
                          nop                                                              // 0x00780aae    90
                          nop                                                              // 0x00780aaf    90
+_CallVirtualFunctionsForCreation__12WorshipTotemFRC9MapCoords:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00780ab0    8b442404
                          push               eax                                           // 0x00780ab4    50
                          call               @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12                          // 0x00780ab5    e8d6dddaff

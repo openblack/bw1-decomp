@@ -39,9 +39,22 @@
 .globl _jmp_addr_0x0040b000
 .globl @SetNum__9SetupListFi@12
 .globl @__ct__14SetupMultiListFiiiiii@32
+.globl ___dt__14SetupMultiListFb
+.globl _KeyDown__9SetupEditFii
+.globl _Click__9SetupListFii
+.globl _Drag__9SetupListFii
+.globl _MouseDown__9SetupListFiib
+.globl _IsSelected__14SetupMultiListFi
+.globl _Draw__9SetupListFbb
+.globl _Char__9SetupEditFi
+.globl _MouseUp__9SetupListFiib
+.globl _Click__14SetupMultiListFii
+.globl _IsSelected__9SetupListFi
+.globl ___dt__9SetupListFb
 
 start_0x0040a110_0x0040c090:
 // Snippet: asm, [0x0040a110, 0x0040bfa3)
+_Drag__9SetupListFii:
                          sub                  esp, 0x10                                       // 0x0040a110    83ec10
                          push                 ebx                                             // 0x0040a113    53
                          push                 ebp                                             // 0x0040a114    55
@@ -251,6 +264,7 @@ _jmp_addr_0x0040a359:    ret                  0x0008                            
                          nop                                                                  // 0x0040a35d    90
                          nop                                                                  // 0x0040a35e    90
                          nop                                                                  // 0x0040a35f    90
+_Click__9SetupListFii:
                          ret                  0x0008                                          // 0x0040a360    c20800
                          nop                                                                  // 0x0040a363    90
                          nop                                                                  // 0x0040a364    90
@@ -265,6 +279,7 @@ _jmp_addr_0x0040a359:    ret                  0x0008                            
                          nop                                                                  // 0x0040a36d    90
                          nop                                                                  // 0x0040a36e    90
                          nop                                                                  // 0x0040a36f    90
+_MouseDown__9SetupListFiib:
                          {disp8} mov          eax, dword ptr [ecx + 0x04]                     // 0x0040a370    8b4104
                          test                 eax, eax                                        // 0x0040a373    85c0
                          {disp8} jne          _jmp_addr_0x0040a3e8                            // 0x0040a375    7571
@@ -301,6 +316,7 @@ _jmp_addr_0x0040a3e0:    mov                  eax, dword ptr [ecx]              
                          pop                  esi                                             // 0x0040a3e7    5e
 _jmp_addr_0x0040a3e8:    ret                  0x000c                                          // 0x0040a3e8    c20c00
                          call                 _jmp_addr_0x00401879                            // 0x0040a3eb    e88974ffff
+_MouseUp__9SetupListFiib:
                          {disp8} mov          eax, dword ptr [ecx + 0x04]                     // 0x0040a3f0    8b4104
                          test                 eax, eax                                        // 0x0040a3f3    85c0
                          {disp8} jne          _jmp_addr_0x0040a44a                            // 0x0040a3f5    7553
@@ -374,6 +390,7 @@ _jmp_addr_0x0040a44a:    ret                  0x000c                            
                          ret                  0x0014                                          // 0x0040a51b    c21400
                          nop                                                                  // 0x0040a51e    90
                          nop                                                                  // 0x0040a51f    90
+_IsSelected__9SetupListFi:
                          {disp8} mov          edx, dword ptr [esp + 0x04]                     // 0x0040a520    8b542404
                          push                 esi                                             // 0x0040a524    56
                          {disp32} mov         esi, dword ptr [ecx + 0x00000248]               // 0x0040a525    8bb148020000
@@ -392,6 +409,7 @@ _jmp_addr_0x0040a44a:    ret                  0x000c                            
                          nop                                                                  // 0x0040a53d    90
                          nop                                                                  // 0x0040a53e    90
                          nop                                                                  // 0x0040a53f    90
+___dt__9SetupListFb:
                          push                 esi                                             // 0x0040a540    56
                          mov.s                esi, ecx                                        // 0x0040a541    8bf1
                          {disp32} mov         eax, dword ptr [esi + 0x00000268]               // 0x0040a543    8b8668020000
@@ -439,6 +457,7 @@ _jmp_addr_0x0040a5ab:    mov.s                eax, esi                          
                          nop                                                                  // 0x0040a5bd    90
                          nop                                                                  // 0x0040a5be    90
                          nop                                                                  // 0x0040a5bf    90
+_Draw__9SetupListFbb:
                          sub                  esp, 0x30                                       // 0x0040a5c0    83ec30
                          push                 ebx                                             // 0x0040a5c3    53
                          push                 ebp                                             // 0x0040a5c4    55
@@ -1684,6 +1703,7 @@ _jmp_addr_0x0040b497:    mov.s                eax, esi                          
                          nop                                                                  // 0x0040b49d    90
                          nop                                                                  // 0x0040b49e    90
                          nop                                                                  // 0x0040b49f    90
+___dt__14SetupMultiListFb:
                          push                 esi                                             // 0x0040b4a0    56
                          mov.s                esi, ecx                                        // 0x0040b4a1    8bf1
                          call                 _jmp_addr_0x0040b4c0                            // 0x0040b4a3    e818000000
@@ -1728,6 +1748,7 @@ _jmp_addr_0x0040b4c0:    push                 esi                               
                          pop                  esi                                             // 0x0040b52d    5e
                          ret                                                                  // 0x0040b52e    c3
                          nop                                                                  // 0x0040b52f    90
+_IsSelected__14SetupMultiListFi:
                          {disp8} mov          eax, dword ptr [esp + 0x04]                     // 0x0040b530    8b442404
                          test                 eax, eax                                        // 0x0040b534    85c0
                          {disp8} jl           _jmp_addr_0x0040b54c                            // 0x0040b536    7c14
@@ -1753,6 +1774,7 @@ _jmp_addr_0x0040b54c:    xor.s                al, al                            
                          nop                                                                  // 0x0040b55d    90
                          nop                                                                  // 0x0040b55e    90
                          nop                                                                  // 0x0040b55f    90
+_Click__14SetupMultiListFii:
                          {disp8} mov          edx, dword ptr [ecx + 0x0c]                     // 0x0040b560    8b510c
                          {disp32} mov         al, byte ptr [ecx + 0x00000285]                 // 0x0040b563    8a8185020000
                          push                 ebx                                             // 0x0040b569    53
@@ -1809,6 +1831,7 @@ _jmp_addr_0x0040b5e2:    pop                  esi                               
                          nop                                                                  // 0x0040b5ed    90
                          nop                                                                  // 0x0040b5ee    90
                          nop                                                                  // 0x0040b5ef    90
+_Char__9SetupEditFi:
                          sub                  esp, 0x00000200                                 // 0x0040b5f0    81ec00020000
                          push                 ebx                                             // 0x0040b5f6    53
                          push                 ebp                                             // 0x0040b5f7    55
@@ -2206,6 +2229,7 @@ _jmp_addr_0x0040bad8:    pop                  edi                               
                          nop                                                                  // 0x0040baed    90
                          nop                                                                  // 0x0040baee    90
                          nop                                                                  // 0x0040baef    90
+_KeyDown__9SetupEditFii:
                          sub                  esp, 0x00000204                                 // 0x0040baf0    81ec04020000
                          push                 esi                                             // 0x0040baf6    56
                          mov.s                esi, ecx                                        // 0x0040baf7    8bf1

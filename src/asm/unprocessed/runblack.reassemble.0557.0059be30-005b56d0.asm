@@ -150,6 +150,7 @@
 .globl _globl_ct_0x005b3a10
 .globl _globl_ct_0x005b3a30
 .globl _globl_ct_0x005b3a50
+.globl _Exit__9HandStateFv
 
 start_0x0059be30_0x005b56d0:
 // Snippet: asm, [0x0059be30, 0x005b568c)
@@ -17793,6 +17794,7 @@ _jmp_addr_0x005b02a0:    {disp32} mov       dword ptr [data_bytes + 0x34ded8], 0
                          nop                                                              // 0x005b02cd    90
                          nop                                                              // 0x005b02ce    90
                          nop                                                              // 0x005b02cf    90
+_Exit__9HandStateFv:
                          ret                                                              // 0x005b02d0    c3
                          nop                                                              // 0x005b02d1    90
                          nop                                                              // 0x005b02d2    90

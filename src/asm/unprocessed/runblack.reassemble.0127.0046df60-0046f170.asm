@@ -72,6 +72,7 @@
 .globl _globl_ct_0x0046edc0
 .globl _globl_ct_0x0046edf0
 .globl _globl_ct_0x0046ee10
+.globl _DrawTheHeldObject__9HandStateFv
 
 start_0x0046df60_0x0046f170:
 // Snippet: asm, [0x0046df60, 0x0046f150)
@@ -629,6 +630,7 @@ _jmp_addr_0x0046e5d0:    {disp32} mov       eax, dword ptr [ecx + 0x0000489c]   
                          nop                                                              // 0x0046e5dd    90
                          nop                                                              // 0x0046e5de    90
                          nop                                                              // 0x0046e5df    90
+_DrawTheHeldObject__9HandStateFv:
                          ret                                                              // 0x0046e5e0    c3
                          nop                                                              // 0x0046e5e1    90
                          nop                                                              // 0x0046e5e2    90

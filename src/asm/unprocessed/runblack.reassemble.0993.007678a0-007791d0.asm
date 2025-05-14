@@ -504,6 +504,7 @@
 .globl _globl_ct_0x00775dd0
 .globl _globl_ct_0x00778d20
 .globl _globl_ct_0x00778dd0
+.globl _CallVirtualFunctionsForCreation__6WonderFRC9MapCoords
 
 start_0x007678a0_0x007791d0:
 // Snippet: asm, [0x007678a0, 0x007791ae)
@@ -26883,6 +26884,7 @@ _jmp_addr_0x0077914b:    pop                edi                                 
                          nop                                                                // 0x0077915d    90
                          nop                                                                // 0x0077915e    90
                          nop                                                                // 0x0077915f    90
+_CallVirtualFunctionsForCreation__6WonderFRC9MapCoords:
                          push               esi                                             // 0x00779160    56
                          mov.s              esi, ecx                                        // 0x00779161    8bf1
                          {disp8} lea        eax, dword ptr [esi + 0x14]                     // 0x00779163    8d4614

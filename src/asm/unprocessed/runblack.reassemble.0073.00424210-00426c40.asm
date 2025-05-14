@@ -141,6 +141,8 @@
 .globl _globl_ct_0x00426ac0
 .globl _globl_ct_0x00426af0
 .globl _globl_ct_0x00426b20
+.globl _IsObjectFullyInMap__11FixedObjectFv
+.globl _GetDebugText__9GameThingFv
 
 start_0x00424210_0x00426c40:
 // Snippet: asm, [0x00424210, 0x00426c03)
@@ -1902,6 +1904,7 @@ _jmp_addr_0x004252d0:    push               esi                                 
                          mov.s              eax, esi                                      // 0x004252ec    8bc6
                          pop                esi                                           // 0x004252ee    5e
                          ret                                                              // 0x004252ef    c3
+_IsObjectFullyInMap__11FixedObjectFv:
                          mov                eax, dword ptr [ecx]                          // 0x004252f0    8b01
                          jmp                dword ptr [eax + 0x558]                       // 0x004252f2    ffa058050000
                          nop                                                              // 0x004252f8    90
@@ -3128,6 +3131,7 @@ _jmp_addr_0x00425d00:    push               esi                                 
 _jmp_addr_0x00425d9a:    mov.s              eax, esi                                      // 0x00425d9a    8bc6
                          pop                esi                                           // 0x00425d9c    5e
                          ret                0x0004                                        // 0x00425d9d    c20400
+_GetDebugText__9GameThingFv:
                          mov                eax, 0x009c9714                               // 0x00425da0    b814979c00
                          ret                                                              // 0x00425da5    c3
                          nop                                                              // 0x00425da6    90

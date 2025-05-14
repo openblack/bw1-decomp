@@ -116,6 +116,24 @@
 .globl _globl_ct_0x00570620
 .globl _globl_ct_0x00570650
 .globl _globl_ct_0x00570670
+.globl ___dt__20SetupStaticTextNoHitFb
+.globl _UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc
+.globl ___dt__14SetupMP3ButtonFb
+.globl _GetSaveType__9GameThingFv
+.globl _Load__16GameThingWithPosFR10GameOSFile
+.globl _GetPlayer__9GameThingFv
+.globl _SaveExtraData__9GameThingFR10GameOSFile
+.globl _UseFootpathIfNecessary__9GameThingFP6LivingRC9MapCoordsUc
+.globl _SetPlayer__9GameThingFP7GPlayer
+.globl _GetTown__9GameThingFv
+.globl _HitTest__20SetupStaticTextNoHitFii
+.globl _UpdateSpellInfo__9GameThingFP5SpellP15PSysProcessInfo
+.globl _JustGetResource__9GameThingF13RESOURCE_TYPEUlPb
+.globl _JustRemoveResource__9GameThingF13RESOURCE_TYPEUlPb
+.globl _Load__9GameThingFR10GameOSFile
+.globl _Save__9GameThingFR10GameOSFile
+.globl _JustAddResource__9GameThingF13RESOURCE_TYPEUlb
+.globl _MaintainSpell__9GameThingFP5Spellf
 
 start_0x0056eef0_0x00572d00:
 // Snippet: asm, [0x0056eef0, 0x00572cbb)
@@ -1262,6 +1280,7 @@ _jmp_addr_0x0056fbce:    mov                eax, dword ptr [edx]                
                          {disp8} mov        dword ptr [edx + 0x04], eax                   // 0x0056fbd9    894204
 _jmp_addr_0x0056fbdc:    ret                0x0004                                        // 0x0056fbdc    c20400
                          nop                                                              // 0x0056fbdf    90
+_Save__9GameThingFR10GameOSFile:
 @Save__9GameThingFR10GameOSFile@12:    push               ecx                                           // 0x0056fbe0    51
                          push               esi                                           // 0x0056fbe1    56
                          push               edi                                           // 0x0056fbe2    57
@@ -1360,6 +1379,7 @@ _jmp_addr_0x0056fcda:    pop                edi                                 
                          nop                                                              // 0x0056fced    90
                          nop                                                              // 0x0056fcee    90
                          nop                                                              // 0x0056fcef    90
+_Load__9GameThingFR10GameOSFile:
 @Load__9GameThingFR10GameOSFile@12:    push               ebx                                           // 0x0056fcf0    53
                          push               esi                                           // 0x0056fcf1    56
                          push               edi                                           // 0x0056fcf2    57
@@ -1416,6 +1436,7 @@ _jmp_addr_0x0056fd81:    pop                edi                                 
                          nop                                                              // 0x0056fd8d    90
                          nop                                                              // 0x0056fd8e    90
                          nop                                                              // 0x0056fd8f    90
+_GetSaveType__9GameThingFv:
 @GetSaveType__9GameThingFv@4:    xor.s              eax, eax                                      // 0x0056fd90    33c0
                          ret                                                              // 0x0056fd92    c3
                          nop                                                              // 0x0056fd93    90
@@ -1431,6 +1452,7 @@ _jmp_addr_0x0056fd81:    pop                edi                                 
                          nop                                                              // 0x0056fd9d    90
                          nop                                                              // 0x0056fd9e    90
                          nop                                                              // 0x0056fd9f    90
+_SaveExtraData__9GameThingFR10GameOSFile:
                          push               ecx                                           // 0x0056fda0    51
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0056fda1    a190c9be00
                          test               eax, eax                                      // 0x0056fda6    85c0
@@ -1564,6 +1586,7 @@ _jmp_addr_0x0056feb0:    {disp32} fld       dword ptr [data_bytes + 0x292660]   
                          nop                                                              // 0x0056fecd    90
                          nop                                                              // 0x0056fece    90
                          nop                                                              // 0x0056fecf    90
+_MaintainSpell__9GameThingFP5Spellf:
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x0056fed0    d9442408
                          ret                0x0008                                        // 0x0056fed4    c20800
                          nop                                                              // 0x0056fed7    90
@@ -1575,6 +1598,7 @@ _jmp_addr_0x0056feb0:    {disp32} fld       dword ptr [data_bytes + 0x292660]   
                          nop                                                              // 0x0056fedd    90
                          nop                                                              // 0x0056fede    90
                          nop                                                              // 0x0056fedf    90
+_UpdateSpellInfo__9GameThingFP5SpellP15PSysProcessInfo:
                          ret                0x0008                                        // 0x0056fee0    c20800
                          nop                                                              // 0x0056fee3    90
                          nop                                                              // 0x0056fee4    90
@@ -1604,6 +1628,7 @@ _jmp_addr_0x0056ff06:    xor.s              eax, eax                            
                          nop                                                              // 0x0056ff0d    90
                          nop                                                              // 0x0056ff0e    90
                          nop                                                              // 0x0056ff0f    90
+_GetTown__9GameThingFv:
                          xor.s              eax, eax                                      // 0x0056ff10    33c0
                          ret                                                              // 0x0056ff12    c3
                          nop                                                              // 0x0056ff13    90
@@ -1819,6 +1844,7 @@ _jmp_addr_0x00570120:    xor.s              eax, eax                            
                          nop                                                              // 0x0057012d    90
                          nop                                                              // 0x0057012e    90
                          nop                                                              // 0x0057012f    90
+_GetPlayer__9GameThingFv:
 @GetPlayer__9GameThingFv@4:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00570130    8b0d5c19d000
                          xor.s              eax, eax                                      // 0x00570136    33c0
                          {disp32} mov       al, byte ptr [ecx + 0x00205a5b]               // 0x00570138    8a815b5a2000
@@ -1829,6 +1855,7 @@ _jmp_addr_0x00570120:    xor.s              eax, eax                            
                          {disp8} lea        eax, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x0057014a    8d440818
                          ret                                                              // 0x0057014e    c3
                          nop                                                              // 0x0057014f    90
+_SetPlayer__9GameThingFP7GPlayer:
 @SetPlayer__9GameThingFP7GPlayer@12:    ret                0x0004                                        // 0x00570150    c20400
                          nop                                                              // 0x00570153    90
                          nop                                                              // 0x00570154    90
@@ -2107,6 +2134,7 @@ _jmp_addr_0x005702b0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0057032d    90
                          nop                                                              // 0x0057032e    90
                          nop                                                              // 0x0057032f    90
+_UseFootpathIfNecessary__9GameThingFP6LivingRC9MapCoordsUc:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00570330    8b44240c
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00570334    8b4c2408
                          push               eax                                           // 0x00570338    50
@@ -2124,6 +2152,7 @@ _jmp_addr_0x005702b0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0057034d    90
                          nop                                                              // 0x0057034e    90
                          nop                                                              // 0x0057034f    90
+_UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc:
 @UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc@17:    push               esi                                           // 0x00570350    56
                          mov.s              esi, ecx                                      // 0x00570351    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00570353    8b06
@@ -2277,6 +2306,7 @@ _jmp_addr_0x0057048a:    pop                esi                                 
                          nop                                                              // 0x0057049d    90
                          nop                                                              // 0x0057049e    90
                          nop                                                              // 0x0057049f    90
+_Load__16GameThingWithPosFR10GameOSFile:
 @Load__16GameThingWithPosFR10GameOSFile@12:    push               ebx                                           // 0x005704a0    53
                          push               edi                                           // 0x005704a1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x005704a2    8b7c240c
@@ -2453,6 +2483,7 @@ _jmp_addr_0x00570550:    pop                edi                                 
                          nop                                                              // 0x005705ed    90
                          nop                                                              // 0x005705ee    90
                          nop                                                              // 0x005705ef    90
+_JustAddResource__9GameThingF13RESOURCE_TYPEUlb:
                          xor.s              eax, eax                                      // 0x005705f0    33c0
                          ret                0x000c                                        // 0x005705f2    c20c00
                          nop                                                              // 0x005705f5    90
@@ -2466,6 +2497,7 @@ _jmp_addr_0x00570550:    pop                edi                                 
                          nop                                                              // 0x005705fd    90
                          nop                                                              // 0x005705fe    90
                          nop                                                              // 0x005705ff    90
+_JustRemoveResource__9GameThingF13RESOURCE_TYPEUlPb:
                          xor.s              eax, eax                                      // 0x00570600    33c0
                          ret                0x000c                                        // 0x00570602    c20c00
                          nop                                                              // 0x00570605    90
@@ -2479,6 +2511,7 @@ _jmp_addr_0x00570550:    pop                edi                                 
                          nop                                                              // 0x0057060d    90
                          nop                                                              // 0x0057060e    90
                          nop                                                              // 0x0057060f    90
+_JustGetResource__9GameThingF13RESOURCE_TYPEUlPb:
                          xor.s              eax, eax                                      // 0x00570610    33c0
                          ret                0x000c                                        // 0x00570612    c20c00
                          nop                                                              // 0x00570615    90
@@ -4437,6 +4470,7 @@ _jmp_addr_0x00571ee1:    push               0x1                                 
                          nop                                                              // 0x00571efd    90
                          nop                                                              // 0x00571efe    90
                          nop                                                              // 0x00571eff    90
+_HitTest__20SetupStaticTextNoHitFii:
                          xor.s              al, al                                        // 0x00571f00    32c0
                          ret                0x0008                                        // 0x00571f02    c20800
                          nop                                                              // 0x00571f05    90
@@ -4450,6 +4484,7 @@ _jmp_addr_0x00571ee1:    push               0x1                                 
                          nop                                                              // 0x00571f0d    90
                          nop                                                              // 0x00571f0e    90
                          nop                                                              // 0x00571f0f    90
+___dt__20SetupStaticTextNoHitFb:
                          push               esi                                           // 0x00571f10    56
                          mov.s              esi, ecx                                      // 0x00571f11    8bf1
                          call               @__dt__12SetupControlFv@4                     // 0x00571f13    e8a874e9ff
@@ -4463,6 +4498,7 @@ _jmp_addr_0x00571f28:    mov.s              eax, esi                            
                          ret                0x0004                                        // 0x00571f2b    c20400
                          nop                                                              // 0x00571f2e    90
                          nop                                                              // 0x00571f2f    90
+___dt__14SetupMP3ButtonFb:
                          push               esi                                           // 0x00571f30    56
                          mov.s              esi, ecx                                      // 0x00571f31    8bf1
                          call               @__dt__12SetupControlFv@4                     // 0x00571f33    e88874e9ff

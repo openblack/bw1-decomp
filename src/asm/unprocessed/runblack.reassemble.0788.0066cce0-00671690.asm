@@ -167,6 +167,8 @@
 .globl _globl_ct_0x00670a50
 .globl _globl_ct_0x00670a80
 .globl _globl_ct_0x00670ab0
+.globl _CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords
+.globl _CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords
 
 start_0x0066cce0_0x00671690:
 // Snippet: asm, [0x0066cce0, 0x00671680)
@@ -1667,6 +1669,7 @@ _jmp_addr_0x0066db7f:    pop                edi                                 
                          nop                                                              // 0x0066db8d    90
                          nop                                                              // 0x0066db8e    90
                          nop                                                              // 0x0066db8f    90
+_CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords:
 @CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066db90    8b442404
                          push               esi                                           // 0x0066db94    56
                          mov.s              esi, ecx                                      // 0x0066db95    8bf1
@@ -2482,6 +2485,7 @@ _jmp_addr_0x0066e2f1:    mov                eax, 0x00000b38                     
                          nop                                                              // 0x0066e2fd    90
                          nop                                                              // 0x0066e2fe    90
                          nop                                                              // 0x0066e2ff    90
+_CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords:
 @CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066e300    8b442404
                          push               esi                                           // 0x0066e304    56
                          mov.s              esi, ecx                                      // 0x0066e305    8bf1

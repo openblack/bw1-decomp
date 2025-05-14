@@ -122,6 +122,7 @@
 .globl _globl_ct_0x0077eb40
 .globl _globl_ct_0x0077efc0
 .globl _globl_ct_0x0077eff0
+.globl _CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords
 
 start_0x0077d2e0_0x0077f670:
 // Snippet: asm, [0x0077d2e0, 0x0077f5f6)
@@ -3180,6 +3181,7 @@ _jmp_addr_0x0077f276:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0077f28d    90
                          nop                                                              // 0x0077f28e    90
                          nop                                                              // 0x0077f28f    90
+_CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0077f290    8b442404
                          push               esi                                           // 0x0077f294    56
                          mov.s              esi, ecx                                      // 0x0077f295    8bf1

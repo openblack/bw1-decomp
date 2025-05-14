@@ -114,6 +114,7 @@
 .globl _globl_ct_0x0051cc80
 .globl _globl_ct_0x0051ccb0
 .globl _globl_ct_0x0051cce0
+.globl _DrawVillagerInfo__8VillagerFv
 
 start_0x0051a830_0x0051e370:
 // Snippet: asm, [0x0051a830, 0x0051e31a)
@@ -1139,6 +1140,7 @@ _jmp_addr_0x0051b4f3:    {disp8} mov        edi, dword ptr [esi + 0x40]         
                          pop                esi                                                  // 0x0051b50b    5e
                          ret                0x0004                                               // 0x0051b50c    c20400
                          nop                                                                     // 0x0051b50f    90
+_DrawVillagerInfo__8VillagerFv:
 @DrawVillagerInfo__8VillagerFv@4:    sub                esp, 0x00000820                                      // 0x0051b510    81ec20080000
                          push               ebx                                                  // 0x0051b516    53
                          push               ebp                                                  // 0x0051b517    55

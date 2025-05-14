@@ -194,6 +194,17 @@
 .globl _globl_ct_0x0068c950
 .globl _globl_ct_0x0068c980
 .globl _globl_ct_0x0068c9a0
+.globl _ReleaseOrCreateTribalPowerRing__7PHandFXF10TRIBE_TYPE
+.globl _StartTribalPowerRing__7PHandFXF10TRIBE_TYPE
+.globl _DrawHandFX__7PHandFXFv
+.globl _StopTribalPowerRing__7PHandFXFv
+.globl _Release__7PHandFXFv
+.globl _DoRemoveFromHandVisual__7PHandFXFv
+.globl _SetPULevel__7PHandFXFlb
+.globl _ModifyAtomCollection__22UR_GesturingRecognisedCFP14AtomCollection
+.globl _GetPULevel__7PHandFXFv
+.globl _RemoveAllPermBands__7PHandFXFv
+.globl _AddSpellToHandVisuals__7PHandFXFb
 
 start_0x006868e0_0x0068e6e0:
 // Snippet: asm, [0x006868e0, 0x0068e6cc)
@@ -2639,6 +2650,7 @@ _jmp_addr_0x006884dc:    mov.s              eax, esi                            
                          nop                                                              // 0x006884ed    90
                          nop                                                              // 0x006884ee    90
                          nop                                                              // 0x006884ef    90
+_ModifyAtomCollection__22UR_GesturingRecognisedCFP14AtomCollection:
                          sub                esp, 0x0000018c                               // 0x006884f0    81ec8c010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x388b18]        // 0x006884f6    a118ebd400
                          test               eax, eax                                      // 0x006884fb    85c0
@@ -8378,6 +8390,7 @@ _jmp_addr_0x0068c9fd:    xor.s              esi, esi                            
                          nop                                                              // 0x0068ca0d    90
                          nop                                                              // 0x0068ca0e    90
                          nop                                                              // 0x0068ca0f    90
+_Release__7PHandFXFv:
                          push               esi                                           // 0x0068ca10    56
                          mov.s              esi, ecx                                      // 0x0068ca11    8bf1
                          test               esi, esi                                      // 0x0068ca13    85f6
@@ -8630,6 +8643,7 @@ _jmp_addr_0x0068cca9:    pop                esi                                 
                          ret                                                              // 0x0068ccad    c3
                          nop                                                              // 0x0068ccae    90
                          nop                                                              // 0x0068ccaf    90
+_GetPULevel__7PHandFXFv:
                          {disp8} mov        eax, dword ptr [ecx + 0x48]                   // 0x0068ccb0    8b4148
                          ret                                                              // 0x0068ccb3    c3
                          nop                                                              // 0x0068ccb4    90
@@ -8818,6 +8832,7 @@ _jmp_addr_0x0068ce7d:    {disp8} mov        dword ptr [esi + 0x4c], eax         
                          add                esp, 0x14                                     // 0x0068ce89    83c414
                          ret                0x0004                                        // 0x0068ce8c    c20400
                          nop                                                              // 0x0068ce8f    90
+_DoRemoveFromHandVisual__7PHandFXFv:
                          sub                esp, 0x00000174                               // 0x0068ce90    81ec74010000
                          push               esi                                           // 0x0068ce96    56
                          mov.s              esi, ecx                                      // 0x0068ce97    8bf1
@@ -8992,6 +9007,7 @@ _jmp_addr_0x0068d050:    ret                                                    
                          nop                                                              // 0x0068d05d    90
                          nop                                                              // 0x0068d05e    90
                          nop                                                              // 0x0068d05f    90
+_RemoveAllPermBands__7PHandFXFv:
                          push               esi                                           // 0x0068d060    56
                          mov.s              esi, ecx                                      // 0x0068d061    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x44]                   // 0x0068d063    8b4e44
@@ -9998,6 +10014,7 @@ _jmp_addr_0x0068dd4f:    pop                edi                                 
                          nop                                                              // 0x0068dd5d    90
                          nop                                                              // 0x0068dd5e    90
                          nop                                                              // 0x0068dd5f    90
+_DrawHandFX__7PHandFXFv:
                          push               ecx                                           // 0x0068dd60    51
                          {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x0068dd61    a15c19d000
                          test               byte ptr [eax + 0x14], 0x04                   // 0x0068dd66    f6401404
@@ -10020,6 +10037,7 @@ _jmp_addr_0x0068dd80:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]   
                          nop                                                              // 0x0068dd9d    90
                          nop                                                              // 0x0068dd9e    90
                          nop                                                              // 0x0068dd9f    90
+_SetPULevel__7PHandFXFlb:
                          push               ebx                                           // 0x0068dda0    53
                          push               ebp                                           // 0x0068dda1    55
                          push               esi                                           // 0x0068dda2    56
@@ -10078,6 +10096,7 @@ _jmp_addr_0x0068de17:    pop                edi                                 
                          ret                0x0008                                        // 0x0068de1b    c20800
                          nop                                                              // 0x0068de1e    90
                          nop                                                              // 0x0068de1f    90
+_AddSpellToHandVisuals__7PHandFXFb:
                          push               ecx                                           // 0x0068de20    51
                          {disp8} mov        al, byte ptr [esp + 0x08]                     // 0x0068de21    8a442408
                          test               al, al                                        // 0x0068de25    84c0
@@ -10185,6 +10204,7 @@ _CreateTribalPowerColumn__10PSysHandFXF10TRIBE_TYPERC7LHPointUl:    {disp8} mov 
                          add                esp, 0x10                                     // 0x0068df17    83c410
                          ret                                                              // 0x0068df1a    c3
                          call               _jmp_addr_0x004017f9                          // 0x0068df1b    e8d938d7ff
+_StartTribalPowerRing__7PHandFXF10TRIBE_TYPE:
                          sub                esp, 0x10                                     // 0x0068df20    83ec10
                          push               esi                                           // 0x0068df23    56
                          mov.s              esi, ecx                                      // 0x0068df24    8bf1
@@ -10223,6 +10243,7 @@ _CreateTribalPowerColumn__10PSysHandFXF10TRIBE_TYPERC7LHPointUl:    {disp8} mov 
                          pop                esi                                           // 0x0068df99    5e
                          add                esp, 0x10                                     // 0x0068df9a    83c410
                          ret                0x0004                                        // 0x0068df9d    c20400
+_StopTribalPowerRing__7PHandFXFv:
                          push               esi                                           // 0x0068dfa0    56
                          mov.s              esi, ecx                                      // 0x0068dfa1    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x08]                   // 0x0068dfa3    8b4e08
@@ -10240,6 +10261,7 @@ _jmp_addr_0x0068dfb8:    pop                esi                                 
                          nop                                                              // 0x0068dfbd    90
                          nop                                                              // 0x0068dfbe    90
                          nop                                                              // 0x0068dfbf    90
+_ReleaseOrCreateTribalPowerRing__7PHandFXF10TRIBE_TYPE:
                          sub                esp, 0x0c                                     // 0x0068dfc0    83ec0c
                          push               esi                                           // 0x0068dfc3    56
                          mov.s              esi, ecx                                      // 0x0068dfc4    8bf1

@@ -67,6 +67,12 @@
 
 .globl _globl_ct_0x005122b0
 .globl _globl_ct_0x00512780
+.globl _InitSubDialogs__13DialogBoxBaseFv
+.globl _WantsKeyControl__13DialogBoxBaseFv
+.globl _InitControls__19DialogBoxKeyBindingFv
+.globl _WantsMouseControl__13DialogBoxBaseFv
+.globl _CloseNotification__13DialogBoxBaseFv
+.globl _CanESCOut__13DialogBoxBaseFv
 
 start_0x00512130_0x005132d0:
 // Snippet: asm, [0x00512130, 0x00513290)
@@ -740,6 +746,7 @@ _jmp_addr_0x005127a0:    push              0x00407870                           
                          nop                                                                    // 0x005127cd    90
                          nop                                                                    // 0x005127ce    90
                          nop                                                                    // 0x005127cf    90
+_InitSubDialogs__13DialogBoxBaseFv:
                          ret                                                                    // 0x005127d0    c3
                          nop                                                                    // 0x005127d1    90
                          nop                                                                    // 0x005127d2    90
@@ -756,6 +763,7 @@ _jmp_addr_0x005127a0:    push              0x00407870                           
                          nop                                                                    // 0x005127dd    90
                          nop                                                                    // 0x005127de    90
                          nop                                                                    // 0x005127df    90
+_CloseNotification__13DialogBoxBaseFv:
                          ret                                                                    // 0x005127e0    c3
                          nop                                                                    // 0x005127e1    90
                          nop                                                                    // 0x005127e2    90
@@ -772,6 +780,7 @@ _jmp_addr_0x005127a0:    push              0x00407870                           
                          nop                                                                    // 0x005127ed    90
                          nop                                                                    // 0x005127ee    90
                          nop                                                                    // 0x005127ef    90
+_WantsKeyControl__13DialogBoxBaseFv:
                          call              _jmp_addr_0x00513770                                 // 0x005127f0    e87b0f0000
                          neg               eax                                                  // 0x005127f5    f7d8
                          sbb.s             eax, eax                                             // 0x005127f7    1bc0
@@ -781,6 +790,7 @@ _jmp_addr_0x005127a0:    push              0x00407870                           
                          nop                                                                    // 0x005127fd    90
                          nop                                                                    // 0x005127fe    90
                          nop                                                                    // 0x005127ff    90
+_WantsMouseControl__13DialogBoxBaseFv:
                          call              _jmp_addr_0x00513770                                 // 0x00512800    e86b0f0000
                          neg               eax                                                  // 0x00512805    f7d8
                          sbb.s             eax, eax                                             // 0x00512807    1bc0
@@ -790,6 +800,7 @@ _jmp_addr_0x005127a0:    push              0x00407870                           
                          nop                                                                    // 0x0051280d    90
                          nop                                                                    // 0x0051280e    90
                          nop                                                                    // 0x0051280f    90
+_CanESCOut__13DialogBoxBaseFv:
                          {disp8} mov       eax, dword ptr [ecx + 0x04]                          // 0x00512810    8b4104
                          {disp8} mov       dl, byte ptr [eax + 0x64]                            // 0x00512813    8a5064
                          xor.s             ecx, ecx                                             // 0x00512816    33c9
@@ -1106,6 +1117,7 @@ _jmp_addr_0x00512b67:    {disp8} mov       dword ptr [edi + 0x14], eax          
                          nop                                                                    // 0x00512bcd    90
                          nop                                                                    // 0x00512bce    90
                          nop                                                                    // 0x00512bcf    90
+_InitControls__19DialogBoxKeyBindingFv:
                          sub               esp, 0x00000200                                      // 0x00512bd0    81ec00020000
                          push              ebx                                                  // 0x00512bd6    53
                          push              ebp                                                  // 0x00512bd7    55

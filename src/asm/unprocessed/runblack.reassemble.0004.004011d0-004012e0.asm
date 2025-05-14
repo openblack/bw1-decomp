@@ -14,9 +14,15 @@
 .globl _jmp_addr_0x004012a4
 .globl _jmp_addr_0x004012b4
 .globl _jmp_addr_0x004012d0
+.globl ___dt__4BaseFv
+.globl _Dump__4BaseFv
+.globl _CleanUpForSerialisation__4BaseFv
+.globl _Get3DSoundPos__4BaseFP7LHPoint
+.globl _ToBeDeleted__4BaseFi
 
 start_0x004011d0_0x004012e0:
 // Snippet: asm, [0x004011d0, 0x004012dc)
+_ToBeDeleted__4BaseFi:
                          mov              eax, dword ptr [ecx]              // 0x004011d0    8b01
                          call             dword ptr [eax + 8]               // 0x004011d2    ff5008
                          ret              0x0004                            // 0x004011d5    c20400
@@ -28,6 +34,7 @@ start_0x004011d0_0x004012e0:
                          nop                                                // 0x004011dd    90
                          nop                                                // 0x004011de    90
                          nop                                                // 0x004011df    90
+_Get3DSoundPos__4BaseFP7LHPoint:
                          xor.s            eax, eax                          // 0x004011e0    33c0
                          ret              0x0004                            // 0x004011e2    c20400
                          nop                                                // 0x004011e5    90
@@ -41,6 +48,7 @@ start_0x004011d0_0x004012e0:
                          nop                                                // 0x004011ed    90
                          nop                                                // 0x004011ee    90
                          nop                                                // 0x004011ef    90
+_CleanUpForSerialisation__4BaseFv:
                          ret                                                // 0x004011f0    c3
                          nop                                                // 0x004011f1    90
                          nop                                                // 0x004011f2    90
@@ -57,6 +65,7 @@ start_0x004011d0_0x004012e0:
                          nop                                                // 0x004011fd    90
                          nop                                                // 0x004011fe    90
                          nop                                                // 0x004011ff    90
+_Dump__4BaseFv:
                          ret                                                // 0x00401200    c3
                          nop                                                // 0x00401201    90
                          nop                                                // 0x00401202    90
@@ -73,6 +82,7 @@ start_0x004011d0_0x004012e0:
                          nop                                                // 0x0040120d    90
                          nop                                                // 0x0040120e    90
                          nop                                                // 0x0040120f    90
+___dt__4BaseFv:
                          push             esi                               // 0x00401210    56
                          mov.s            esi, ecx                          // 0x00401211    8bf1
                          call             _jmp_addr_0x00436960              // 0x00401213    e848570300

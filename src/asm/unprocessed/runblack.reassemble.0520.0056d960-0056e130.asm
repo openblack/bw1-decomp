@@ -27,9 +27,11 @@
 .extern _jmp_addr_0x0081b370
 
 .globl _jmp_addr_0x0056da00
+.globl ___dt__15SetupHSBarGraphFb
 
 start_0x0056d960_0x0056e130:
 // Snippet: asm, [0x0056d960, 0x0056e0fd)
+___dt__15SetupHSBarGraphFb:
                          push               esi                                           // 0x0056d960    56
                          mov.s              esi, ecx                                      // 0x0056d961    8bf1
                          call               @__dt__12SetupControlFv@4                     // 0x0056d963    e858bae9ff

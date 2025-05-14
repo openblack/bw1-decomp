@@ -437,9 +437,12 @@
 .globl _globl_ct_0x00727e90
 .globl _globl_ct_0x00727ec0
 .globl _globl_ct_0x00727ef0
+.globl _GetGuidanceResourceType__9GameThingFv
+.globl _CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords
 
 start_0x0071bdd0_0x00728570:
 // Snippet: asm, [0x0071bdd0, 0x0072853b)
+_GetGuidanceResourceType__9GameThingFv:
                          xor.s              eax, eax                                             // 0x0071bdd0    33c0
                          ret                                                                     // 0x0071bdd2    c3
                          nop                                                                     // 0x0071bdd3    90
@@ -15872,6 +15875,7 @@ _jmp_addr_0x00726140:    mov                eax, dword ptr [ecx]                
                          {disp8} fstp       dword ptr [esi + 0x08]                               // 0x00726159    d95e08
                          pop                esi                                                  // 0x0072615c    5e
                          ret                0x0004                                               // 0x0072615d    c20400
+_CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords:
 @CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00726160    8b442404
                          push               esi                                                  // 0x00726164    56
                          mov.s              esi, ecx                                             // 0x00726165    8bf1

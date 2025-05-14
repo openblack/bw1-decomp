@@ -209,6 +209,7 @@
 .globl _jmp_addr_0x00555130
 .globl _jmp_addr_0x00555180
 .globl _jmp_addr_0x005551d0
+.globl _Save__5GGameFR10GameOSFile
 
 start_0x005529e0_0x00555240:
 // Snippet: asm, [0x005529e0, 0x00555226)
@@ -1987,6 +1988,7 @@ _jmp_addr_0x0055407f:    pop                edi                                 
                          add                esp, 0x00000210                               // 0x00554082    81c410020000
                          ret                0x0008                                        // 0x00554088    c20800
                          call               _jmp_addr_0x00401879                          // 0x0055408b    e8e9d7eaff
+_Save__5GGameFR10GameOSFile:
                          sub                esp, 0x08                                     // 0x00554090    83ec08
                          push               ebp                                           // 0x00554093    55
                          push               esi                                           // 0x00554094    56

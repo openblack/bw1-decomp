@@ -58,6 +58,7 @@
 .globl _globl_ct_0x00756cb0
 .globl _globl_ct_0x00756cd0
 .globl _globl_ct_0x00756d00
+.globl _SetSkeleton__8VillagerFi
 
 start_0x00756230_0x00756e80:
 // Snippet: asm, [0x00756230, 0x00756e56)
@@ -136,6 +137,7 @@ _jmp_addr_0x007562aa:    push               esi                                 
                          nop                                                              // 0x007562bd    90
                          nop                                                              // 0x007562be    90
                          nop                                                              // 0x007562bf    90
+_SetSkeleton__8VillagerFi:
 @SetSkeleton__8VillagerFi@9:    {disp32} mov       al, byte ptr [data_bytes + 0x3e0bc4]          // 0x007562c0    a0c46bda00
                          test               al, 0x01                                      // 0x007562c5    a801
                          push               ebx                                           // 0x007562c7    53

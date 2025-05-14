@@ -456,6 +456,9 @@
 .globl _globl_ct_0x00744ab0
 .globl _globl_ct_0x00744ae0
 .globl _globl_ct_0x00744bc0
+.globl _MakeFunctional__10TownCentreFv
+.globl _CallVirtualFunctionsForCreation__10TownCentreFRC9MapCoords
+.globl _CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords
 
 start_0x0073a650_0x00747310:
 // Snippet: asm, [0x0073a650, 0x007472ec)
@@ -15096,6 +15099,7 @@ _jmp_addr_0x00743ce4:    xor.s              eax, eax                            
                          nop                                                                     // 0x00743ced    90
                          nop                                                                     // 0x00743cee    90
                          nop                                                                     // 0x00743cef    90
+_CallVirtualFunctionsForCreation__10TownCentreFRC9MapCoords:
                          sub                esp, 0x08                                            // 0x00743cf0    83ec08
                          push               esi                                                  // 0x00743cf3    56
                          mov.s              esi, ecx                                             // 0x00743cf4    8bf1
@@ -15246,6 +15250,7 @@ _jmp_addr_0x00743e68:    pop                edi                                 
                          nop                                                                     // 0x00743e7d    90
                          nop                                                                     // 0x00743e7e    90
                          nop                                                                     // 0x00743e7f    90
+_MakeFunctional__10TownCentreFv:
                          push               ebx                                                  // 0x00743e80    53
                          push               ebp                                                  // 0x00743e81    55
                          mov.s              ebx, ecx                                             // 0x00743e82    8bd9
@@ -19272,6 +19277,7 @@ _jmp_addr_0x00746db0:    {disp8} mov        eax, dword ptr [ecx + 0x5c]         
                          add                eax, 0x00da2930                                      // 0x00746db9    053029da00
                          ret                                                                     // 0x00746dbe    c3
                          nop                                                                     // 0x00746dbf    90
+_CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00746dc0    8b442404
                          push               esi                                                  // 0x00746dc4    56
                          mov.s              esi, ecx                                             // 0x00746dc5    8bf1

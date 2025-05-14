@@ -100,6 +100,7 @@
 .globl _globl_ct_0x004f7110
 .globl _globl_ct_0x004f7140
 .globl _globl_ct_0x004f7170
+.globl _StringFunction__4PrssFlPci
 
 start_0x004f5420_0x004f75b0:
 // Snippet: asm, [0x004f5420, 0x004f7598)
@@ -3070,6 +3071,7 @@ _jmp_addr_0x004f71b9:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                               // 0x004f71fd    90
                          nop                                                               // 0x004f71fe    90
                          nop                                                               // 0x004f71ff    90
+_StringFunction__4PrssFlPci:
                          ret                0x000c                                         // 0x004f7200    c20c00
                          nop                                                               // 0x004f7203    90
                          nop                                                               // 0x004f7204    90

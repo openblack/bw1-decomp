@@ -394,6 +394,7 @@
 .globl _globl_ct_0x007675b0
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
+.globl _AddDrawing__12VillagerNameFv
 
 start_0x00756e80_0x007676e0:
 // Snippet: asm, [0x00756e80, 0x007676c0)
@@ -17972,6 +17973,7 @@ _jmp_addr_0x00762882:    xor.s              edx, edx                            
                          nop                                                              // 0x0076289d    90
                          nop                                                              // 0x0076289e    90
                          nop                                                              // 0x0076289f    90
+_AddDrawing__12VillagerNameFv:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x504644]        // 0x007628a0    a144a6ec00
                          test               eax, eax                                      // 0x007628a5    85c0
                          {disp8} je         _jmp_addr_0x007628fb                          // 0x007628a7    7452

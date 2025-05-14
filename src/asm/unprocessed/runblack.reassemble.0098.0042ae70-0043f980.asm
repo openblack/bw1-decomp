@@ -390,6 +390,9 @@
 .globl _jmp_addr_0x0043e0a0
 .globl _jmp_addr_0x0043ee80
 .globl _jmp_addr_0x0043ee90
+.globl _Connect__9BWGameSpyFv
+.globl ___dt__16LHReleasedOSFileFv
+.globl _Load__9BigForestFR10GameOSFile
 
 start_0x0042ae70_0x0043f980:
 // Snippet: asm, [0x0042ae70, 0x0043f967)
@@ -7445,6 +7448,7 @@ _jmp_addr_0x0042fd2f:    pop                esi                                 
                          nop                                                                     // 0x0042fd3d    90
                          nop                                                                     // 0x0042fd3e    90
                          nop                                                                     // 0x0042fd3f    90
+___dt__16LHReleasedOSFileFv:
                          push               esi                                                  // 0x0042fd40    56
                          mov.s              esi, ecx                                             // 0x0042fd41    8bf1
                          call               @__dt__8LHOSFileFv@4                                 // 0x0042fd43    e838c93800
@@ -21654,6 +21658,7 @@ _jmp_addr_0x004394d9:    pop                edi                                 
                          xor.s              eax, eax                                             // 0x004394da    33c0
                          pop                esi                                                  // 0x004394dc    5e
                          ret                0x0004                                               // 0x004394dd    c20400
+_Load__9BigForestFR10GameOSFile:
                          push               esi                                                  // 0x004394e0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                          // 0x004394e1    8b742408
                          push               edi                                                  // 0x004394e5    57
@@ -29485,6 +29490,7 @@ _jmp_addr_0x0043e275:    pop                edi                                 
                          nop                                                                     // 0x0043e28d    90
                          nop                                                                     // 0x0043e28e    90
                          nop                                                                     // 0x0043e28f    90
+_Connect__9BWGameSpyFv:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x351cac]               // 0x0043e290    a1ac7cd100
                          sub                esp, 0x00000814                                      // 0x0043e295    81ec14080000
                          push               ebx                                                  // 0x0043e29b    53

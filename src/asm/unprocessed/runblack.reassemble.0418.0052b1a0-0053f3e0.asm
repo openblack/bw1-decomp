@@ -503,6 +503,24 @@
 .globl _globl_ct_0x0053b450
 .globl _globl_ct_0x0053b470
 .globl _globl_ct_0x0053c430
+.globl _Load__13GFootpathLinkFR10GameOSFile
+.globl _Load__15GFootpathFinderFR10GameOSFile
+.globl _CreateCollideData__13MultiMapFixedFv
+.globl _Load__11FixedObjectFR10GameOSFile
+.globl _CreateCollideData__14SingleMapFixedFv
+.globl _Load__6ForestFR10GameOSFile
+.globl _Load__17GFootpathLinkSaveFR10GameOSFile
+.globl _Load__13MultiMapFixedFR10GameOSFile
+.globl _Create3DObject__11FixedObjectFv
+.globl _GetDoorPos__13MultiMapFixedFv
+.globl _GetCollideData__14SingleMapFixedFv
+.globl _InsertMapObject__13MultiMapFixedFv
+.globl _GetMapChild__13MultiMapFixedFRC7MapCell
+.globl _SetMapChild__13MultiMapFixedFP6ObjectP7MapCell
+.globl _CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords
+.globl _InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell
+.globl _AddFootpath__13MultiMapFixedFP9GFootpath
+.globl _InsertMapObjectToCell__11FixedObjectFP7MapCell
 
 start_0x0052b1a0_0x0053f3e0:
 // Snippet: asm, [0x0052b1a0, 0x0053f3b8)
@@ -4944,6 +4962,7 @@ _jmp_addr_0x0052de20:    mov                dword ptr [ecx], 0x008db71c         
                          nop                                                                     // 0x0052de2d    90
                          nop                                                                     // 0x0052de2e    90
                          nop                                                                     // 0x0052de2f    90
+_Create3DObject__11FixedObjectFv:
                          push               esi                                                  // 0x0052de30    56
                          mov.s              esi, ecx                                             // 0x0052de31    8bf1
                          call               @Create3DObject__6ObjectFv@4                         // 0x0052de33    e8b8871000
@@ -5001,6 +5020,7 @@ _jmp_addr_0x0052de78:    add                edi, 0x14                           
                          nop                                                                     // 0x0052de9d    90
                          nop                                                                     // 0x0052de9e    90
                          nop                                                                     // 0x0052de9f    90
+_InsertMapObjectToCell__11FixedObjectFP7MapCell:
 @InsertMapObjectToCell__11FixedObjectFP7MapCell@12:    push               esi                                                  // 0x0052dea0    56
                          push               edi                                                  // 0x0052dea1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052dea2    8b7c240c
@@ -5034,6 +5054,7 @@ _jmp_addr_0x0052deb9:    push               esi                                 
                          nop                                                                     // 0x0052dedd    90
                          nop                                                                     // 0x0052dede    90
                          nop                                                                     // 0x0052dedf    90
+_InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell:
 @InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12:    push               esi                                                  // 0x0052dee0    56
                          push               edi                                                  // 0x0052dee1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052dee2    8b7c240c
@@ -5311,6 +5332,7 @@ _jmp_addr_0x0052e167:    pop                edi                                 
                          ret                0x0004                                               // 0x0052e16b    c20400
                          nop                                                                     // 0x0052e16e    90
                          nop                                                                     // 0x0052e16f    90
+_Load__11FixedObjectFR10GameOSFile:
 @Load__11FixedObjectFR10GameOSFile@12:    push               esi                                                  // 0x0052e170    56
                          push               edi                                                  // 0x0052e171    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052e172    8b7c240c
@@ -5533,6 +5555,7 @@ _jmp_addr_0x0052e354:    push               esi                                 
                          nop                                                                     // 0x0052e36d    90
                          nop                                                                     // 0x0052e36e    90
                          nop                                                                     // 0x0052e36f    90
+_GetDoorPos__13MultiMapFixedFv:
                          sub                esp, 0x0c                                            // 0x0052e370    83ec0c
                          push               esi                                                  // 0x0052e373    56
                          mov.s              esi, ecx                                             // 0x0052e374    8bf1
@@ -5583,6 +5606,7 @@ _jmp_addr_0x0052e3f0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} mov        dword ptr [ecx + 0x74], eax                          // 0x0052e3f4    894174
                          ret                0x0004                                               // 0x0052e3f7    c20400
                          call               dword ptr [__imp__TrackMouseEvent@4]                 // 0x0052e3fa    ff151c908a00
+_GetMapChild__13MultiMapFixedFRC7MapCell:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x0052e400    8b442404
                          push               eax                                                  // 0x0052e404    50
                          call               @SortedMultiChildFind__13MultiMapFixedFRC7MapCell@12 // 0x0052e405    e826f8ffff
@@ -5600,6 +5624,7 @@ _jmp_addr_0x0052e413:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052e41d    90
                          nop                                                                     // 0x0052e41e    90
                          nop                                                                     // 0x0052e41f    90
+_SetMapChild__13MultiMapFixedFP6ObjectP7MapCell:
                          push               ebx                                                  // 0x0052e420    53
                          push               esi                                                  // 0x0052e421    56
                          push               edi                                                  // 0x0052e422    57
@@ -5887,6 +5912,7 @@ _jmp_addr_0x0052e639:    mov.s              ecx, esi                            
                          nop                                                                     // 0x0052e64d    90
                          nop                                                                     // 0x0052e64e    90
                          nop                                                                     // 0x0052e64f    90
+_InsertMapObject__13MultiMapFixedFv:
 @InsertMapObject__13MultiMapFixedFv@4:    sub                esp, 0x2c                                            // 0x0052e650    83ec2c
                          push               ebx                                                  // 0x0052e653    53
                          push               ebp                                                  // 0x0052e654    55
@@ -6097,6 +6123,7 @@ _jmp_addr_0x0052e880:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                                     // 0x0052e88d    90
                          nop                                                                     // 0x0052e88e    90
                          nop                                                                     // 0x0052e88f    90
+_CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords:
 @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12:    sub                esp, 0x14                                            // 0x0052e890    83ec14
                          push               ebx                                                  // 0x0052e893    53
                          push               esi                                                  // 0x0052e894    56
@@ -6352,6 +6379,7 @@ _jmp_addr_0x0052ead9:    mov.s              ecx, esi                            
                          nop                                                                     // 0x0052eb2d    90
                          nop                                                                     // 0x0052eb2e    90
                          nop                                                                     // 0x0052eb2f    90
+_GetCollideData__14SingleMapFixedFv:
                          {disp8} mov        eax, dword ptr [ecx + 0x58]                          // 0x0052eb30    8b4158
                          ret                                                                     // 0x0052eb33    c3
                          nop                                                                     // 0x0052eb34    90
@@ -6662,6 +6690,7 @@ _jmp_addr_0x0052edef:    {disp8} fld        dword ptr [ecx + 0x5c]              
                          call               dword ptr [edx + 0x8a8]                              // 0x0052ee01    ff92a8080000
 _jmp_addr_0x0052ee07:    ret                0x0004                                               // 0x0052ee07    c20400
                          call               dword ptr [__imp__ShellExecuteA@4]                   // 0x0052ee0a    ff15ac978a00
+_AddFootpath__13MultiMapFixedFP9GFootpath:
                          push               edi                                                  // 0x0052ee10    57
                          mov.s              edi, ecx                                             // 0x0052ee11    8bf9
                          mov                eax, dword ptr [edi]                                 // 0x0052ee13    8b07
@@ -7215,6 +7244,7 @@ _jmp_addr_0x0052f2fe:    pop                edi                                 
                          nop                                                                     // 0x0052f30d    90
                          nop                                                                     // 0x0052f30e    90
                          nop                                                                     // 0x0052f30f    90
+_Load__13MultiMapFixedFR10GameOSFile:
 @Load__13MultiMapFixedFR10GameOSFile@12:    push               ebx                                                  // 0x0052f310    53
                          push               esi                                                  // 0x0052f311    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                          // 0x0052f312    8b74240c
@@ -7421,6 +7451,7 @@ _jmp_addr_0x0052f501:    pop                edi                                 
                          pop                esi                                                  // 0x0052f507    5e
                          ret                0x0004                                               // 0x0052f508    c20400
                          call               _jmp_addr_0x00401879                                 // 0x0052f50b    e86923edff
+_CreateCollideData__14SingleMapFixedFv:
                          push               esi                                                  // 0x0052f510    56
                          mov.s              esi, ecx                                             // 0x0052f511    8bf1
                          call               _jmp_addr_0x0052f6a0                                 // 0x0052f513    e888010000
@@ -7451,6 +7482,7 @@ _jmp_addr_0x0052f540:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052f54d    90
                          nop                                                                     // 0x0052f54e    90
                          nop                                                                     // 0x0052f54f    90
+_CreateCollideData__13MultiMapFixedFv:
                          push               esi                                                  // 0x0052f550    56
                          mov.s              esi, ecx                                             // 0x0052f551    8bf1
                          call               @ReleaseCollideData__13MultiMapFixedFv@4             // 0x0052f553    e878010000
@@ -18524,6 +18556,7 @@ _jmp_addr_0x00536597:    pop                edi                                 
                          ret                0x0004                                               // 0x0053659b    c20400
                          nop                                                                     // 0x0053659e    90
                          nop                                                                     // 0x0053659f    90
+_Load__13GFootpathLinkFR10GameOSFile:
                          push               ecx                                                  // 0x005365a0    51
                          push               ebx                                                  // 0x005365a1    53
                          {disp8} mov        ebx, dword ptr [esp + 0x0c]                          // 0x005365a2    8b5c240c
@@ -19404,6 +19437,7 @@ _jmp_addr_0x00537092:    pop                edi                                 
                          nop                                                                     // 0x0053709d    90
                          nop                                                                     // 0x0053709e    90
                          nop                                                                     // 0x0053709f    90
+_Load__17GFootpathLinkSaveFR10GameOSFile:
                          push               ebx                                                  // 0x005370a0    53
                          push               esi                                                  // 0x005370a1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                          // 0x005370a2    8b74240c
@@ -22197,6 +22231,7 @@ _jmp_addr_0x005390d1:    pop                edi                                 
                          nop                                                                     // 0x005390dd    90
                          nop                                                                     // 0x005390de    90
                          nop                                                                     // 0x005390df    90
+_Load__15GFootpathFinderFR10GameOSFile:
                          push               esi                                                  // 0x005390e0    56
                          push               edi                                                  // 0x005390e1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x005390e2    8b7c240c
@@ -25404,6 +25439,7 @@ _jmp_addr_0x0053b060:    pop                esi                                 
                          nop                                                                     // 0x0053b06d    90
                          nop                                                                     // 0x0053b06e    90
                          nop                                                                     // 0x0053b06f    90
+_Load__6ForestFR10GameOSFile:
                          push               ecx                                                  // 0x0053b070    51
                          push               ebp                                                  // 0x0053b071    55
                          push               esi                                                  // 0x0053b072    56

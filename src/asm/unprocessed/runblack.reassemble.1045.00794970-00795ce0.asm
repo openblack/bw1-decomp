@@ -64,6 +64,8 @@
 .globl _jmp_addr_0x00795980
 
 .globl _globl_ct_0x00794ab0
+.globl _FocusOnSubMesh__11InnerCameraFP8LH3DMeshifff
+.globl _TriggerIntro__11InnerCameraFbP8Zoomer3dP8Zoomer3d
 
 start_0x00794970_0x00795ce0:
 // Snippet: asm, [0x00794970, 0x00795cdc)
@@ -1203,6 +1205,7 @@ _jmp_addr_0x00795569:    pop                edi                                 
                          pop                ebx                                           // 0x0079556b    5b
                          ret                0x0004                                        // 0x0079556c    c20400
                          nop                                                              // 0x0079556f    90
+_FocusOnSubMesh__11InnerCameraFP8LH3DMeshifff:
                          sub                esp, 0x18                                     // 0x00795570    83ec18
                          push               ebx                                           // 0x00795573    53
                          {disp8} mov        ebx, dword ptr [esp + 0x24]                   // 0x00795574    8b5c2424
@@ -1375,6 +1378,7 @@ _jmp_addr_0x007957ab:    pop                edi                                 
                          nop                                                              // 0x007957bd    90
                          nop                                                              // 0x007957be    90
                          nop                                                              // 0x007957bf    90
+_TriggerIntro__11InnerCameraFbP8Zoomer3dP8Zoomer3d:
 @TriggerIntro__11InnerCameraFbP8Zoomer3dP8Zoomer3d@17:    {disp8} mov        al, byte ptr [esp + 0x04]                     // 0x007957c0    8a442404
                          sub                esp, 0x0c                                     // 0x007957c4    83ec0c
                          push               ebx                                           // 0x007957c7    53

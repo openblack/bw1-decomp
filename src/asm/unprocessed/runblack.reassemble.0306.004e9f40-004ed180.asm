@@ -104,6 +104,7 @@
 .globl _globl_ct_0x004eac10
 .globl _globl_ct_0x004eac40
 .globl _globl_ct_0x004eac60
+.globl _LoadBase__12LH3DCreatureFPc
 
 start_0x004e9f40_0x004ed180:
 // Snippet: asm, [0x004e9f40, 0x004ed15e)
@@ -1255,6 +1256,7 @@ _jmp_addr_0x004eac70:    {disp32} fld       dword ptr [rdata_bytes + 0x2761c]   
                          nop                                                              // 0x004eac8d    90
                          nop                                                              // 0x004eac8e    90
                          nop                                                              // 0x004eac8f    90
+_LoadBase__12LH3DCreatureFPc:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x004eac90    8b442404
                          push               esi                                           // 0x004eac94    56
                          mov.s              esi, ecx                                      // 0x004eac95    8bf1

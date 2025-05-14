@@ -121,9 +121,17 @@
 .globl _globl_ct_0x007982e0
 .globl _globl_ct_0x00798300
 .globl _globl_ct_0x00798320
+.globl _CalcDoorHit__11InnerCameraFP9InnerRoom7LHCoordfb
+.globl _PreDraw__11InnerCameraFv
+.globl ___dt__11InnerCameraFv
+.globl _ReloadCamera__11InnerCameraFPc
+.globl _Init__11InnerCameraFPc
+.globl _Close__11InnerCameraFv
+.globl _Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb
 
 start_0x00796920_0x0079a5a0:
 // Snippet: asm, [0x00796920, 0x0079a58c)
+_PreDraw__11InnerCameraFv:
                          sub                  esp, 0x0c                                     // 0x00796920    83ec0c
                          push                 esi                                           // 0x00796923    56
                          push                 0x3fc90fdb                                    // 0x00796924    68db0fc93f
@@ -179,6 +187,7 @@ start_0x00796920_0x0079a5a0:
                          nop                                                                // 0x007969dd    90
                          nop                                                                // 0x007969de    90
                          nop                                                                // 0x007969df    90
+_CalcDoorHit__11InnerCameraFP9InnerRoom7LHCoordfb:
                          sub                  esp, 0x24                                     // 0x007969e0    83ec24
                          push                 ebx                                           // 0x007969e3    53
                          push                 esi                                           // 0x007969e4    56
@@ -304,6 +313,7 @@ _jmp_addr_0x00796b2e:    {disp8} mov          eax, dword ptr [esp + 0x24]       
                          nop                                                                // 0x00796b5d    90
                          nop                                                                // 0x00796b5e    90
                          nop                                                                // 0x00796b5f    90
+_Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
 @Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29:    xor.s                eax, eax                                      // 0x00796b60    33c0
                          {disp32} mov         al, byte ptr [data_bytes + 0x4bf304]          // 0x00796b62    a00453e800
                          sub                  esp, 0x6c                                     // 0x00796b67    83ec6c
@@ -713,6 +723,7 @@ _jmp_addr_0x007970f0:    push                 ebx                               
                          nop                                                                // 0x0079713d    90
                          nop                                                                // 0x0079713e    90
                          nop                                                                // 0x0079713f    90
+_Init__11InnerCameraFPc:
 @Init__11InnerCameraFPc@12:    sub                  esp, 0x18                                     // 0x00797140    83ec18
                          push                 ebx                                           // 0x00797143    53
                          xor.s                ebx, ebx                                      // 0x00797144    33db
@@ -911,6 +922,7 @@ _jmp_addr_0x0079740f:    pop                  edi                               
                          nop                                                                // 0x0079741d    90
                          nop                                                                // 0x0079741e    90
                          nop                                                                // 0x0079741f    90
+_ReloadCamera__11InnerCameraFPc:
 @ReloadCamera__11InnerCameraFPc@12:    push                 ebx                                           // 0x00797420    53
                          {disp8} mov          ebx, dword ptr [esp + 0x08]                   // 0x00797421    8b5c2408
                          test                 ebx, ebx                                      // 0x00797425    85db
@@ -965,6 +977,7 @@ _jmp_addr_0x0079748c:    pop                  edi                               
                          nop                                                                // 0x0079749d    90
                          nop                                                                // 0x0079749e    90
                          nop                                                                // 0x0079749f    90
+_Close__11InnerCameraFv:
 @Close__11InnerCameraFv@4:    push                 esi                                           // 0x007974a0    56
                          mov.s                esi, ecx                                      // 0x007974a1    8bf1
                          {disp32} mov         ecx, dword ptr [esi + 0x0000043c]             // 0x007974a3    8b8e3c040000
@@ -983,6 +996,7 @@ _jmp_addr_0x007974c0:    mov                  dword ptr [ecx], 0x0099ee70       
                          nop                                                                // 0x007974cd    90
                          nop                                                                // 0x007974ce    90
                          nop                                                                // 0x007974cf    90
+___dt__11InnerCameraFv:
                          push                 esi                                           // 0x007974d0    56
                          mov.s                esi, ecx                                      // 0x007974d1    8bf1
                          call                 _jmp_addr_0x007974c0                          // 0x007974d3    e8e8ffffff

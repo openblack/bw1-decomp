@@ -117,6 +117,7 @@
 .globl _globl_ct_0x00628290
 .globl _globl_ct_0x006282b0
 .globl _globl_ct_0x006282e0
+.globl _InitControls__19MPFEChannelSelectorFv
 
 start_0x00626d90_0x00629740:
 // Snippet: asm, [0x00626d90, 0x0062970e)
@@ -2968,6 +2969,7 @@ _jmp_addr_0x00628ddd:    pop               edi                                  
                          nop                                                             // 0x00628e2d    90
                          nop                                                             // 0x00628e2e    90
                          nop                                                             // 0x00628e2f    90
+_InitControls__19MPFEChannelSelectorFv:
                          push              ebx                                           // 0x00628e30    53
                          push              esi                                           // 0x00628e31    56
                          mov.s             esi, ecx                                      // 0x00628e32    8bf1

@@ -31,9 +31,11 @@
 .extern ___nw__FUl
 
 .globl @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
+.globl _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v
 
 start_0x0062b030_0x0062b830:
 // Snippet: asm, [0x0062b030, 0x0062b800)
+_Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v:
 @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20:    {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x0062b030    8b44240c
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x0062b034    8b542404
                          push             edi                                           // 0x0062b038    57

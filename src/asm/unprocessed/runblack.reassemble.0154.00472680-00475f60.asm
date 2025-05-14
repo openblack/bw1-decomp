@@ -203,6 +203,7 @@
 .globl _globl_ct_0x00472bc0
 .globl _globl_ct_0x00472cb0
 .globl _globl_ct_0x00472d70
+.globl _ProcessState__8CreatureFv
 
 start_0x00472680_0x00475f60:
 // Snippet: asm, [0x00472680, 0x00475f25)
@@ -1034,6 +1035,7 @@ _jmp_addr_0x00472db4:    ret                                                    
                          nop                                                                     // 0x00472dbd    90
                          nop                                                                     // 0x00472dbe    90
                          nop                                                                     // 0x00472dbf    90
+_ProcessState__8CreatureFv:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x29e178]               // 0x00472dc0    a17841c600
                          sub                esp, 0x00000248                                      // 0x00472dc5    81ec48020000
                          push               ebx                                                  // 0x00472dcb    53

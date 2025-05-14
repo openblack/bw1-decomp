@@ -21,9 +21,12 @@
 
 .globl @UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29
 .globl @UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29
+.globl _UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb
+.globl _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb
 
 start_0x00795ce0_0x00796920:
 // Snippet: asm, [0x00795ce0, 0x0079690c)
+_UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
 @UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29:    sub                esp, 0x00000090                               // 0x00795ce0    81ec90000000
                          push               ebx                                           // 0x00795ce6    53
                          push               ebp                                           // 0x00795ce7    55
@@ -583,6 +586,7 @@ _jmp_addr_0x007965e2:    pop                edi                                 
                          add                esp, 0x00000090                               // 0x007965e6    81c490000000
                          ret                0x0018                                        // 0x007965ec    c21800
                          nop                                                              // 0x007965ef    90
+_UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
 @UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29:    sub                esp, 0x6c                                     // 0x007965f0    83ec6c
                          push               esi                                           // 0x007965f3    56
                          push               edi                                           // 0x007965f4    57

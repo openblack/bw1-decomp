@@ -228,6 +228,8 @@
 .globl _globl_ct_0x006304e0
 .globl _globl_ct_0x00630500
 .globl _globl_ct_0x00630530
+.globl _DatabaseComplete__12MPFEDatabaseFv
+.globl _DatabaseError__12MPFEDatabaseFv
 
 start_0x0062b830_0x00630fd0:
 // Snippet: asm, [0x0062b830, 0x00630fa3)
@@ -4534,6 +4536,7 @@ _jmp_addr_0x0062e4da:    pop                edi                                 
                          nop                                                               // 0x0062e4ed    90
                          nop                                                               // 0x0062e4ee    90
                          nop                                                               // 0x0062e4ef    90
+_DatabaseError__12MPFEDatabaseFv:
 @DatabaseError__12MPFEDatabaseFv@4:    push               esi                                            // 0x0062e4f0    56
                          mov.s              esi, ecx                                       // 0x0062e4f1    8bf1
                          {disp8} mov        al, byte ptr [esi + 0x08]                      // 0x0062e4f3    8a4608
@@ -4545,6 +4548,7 @@ _jmp_addr_0x0062e4da:    pop                edi                                 
 _jmp_addr_0x0062e509:    pop                esi                                            // 0x0062e509    5e
                          ret                                                               // 0x0062e50a    c3
                          call               _jmp_addr_0x004017f9                           // 0x0062e50b    e8e932ddff
+_DatabaseComplete__12MPFEDatabaseFv:
 @DatabaseComplete__12MPFEDatabaseFv@4:    push               esi                                            // 0x0062e510    56
                          mov.s              esi, ecx                                       // 0x0062e511    8bf1
                          {disp8} mov        al, byte ptr [esi + 0x08]                      // 0x0062e513    8a4608

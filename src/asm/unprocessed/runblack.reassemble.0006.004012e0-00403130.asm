@@ -54,6 +54,28 @@
 .globl _jmp_addr_0x00402c10
 .globl _jmp_addr_0x00402c60
 .globl _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
+.globl _CastSpellIcon__9GameThingFv
+.globl _CalculateInfluence__9GameThingFRC9MapCoords
+.globl _SetVillagerActivity__9GameThingFP8Villager
+.globl _AddFootpathLink__9GameThingFP9GFootpath
+.globl _CastCreature__9GameThingFv
+.globl _GetVillagerActivityDesire__9GameThingFP8Villager
+.globl _CastOneOffSpellSeed__9GameThingFv
+.globl _IsAvailable__9GameThingFv
+.globl _RemoveDance__9GameThingFv
+.globl _IsCreatureNotTooNear__9GameThingFP8Creature
+.globl _IsDeletedOnNewMap__9GameThingFv
+.globl _IsCreature2__9GameThingFP8Creature
+.globl _GetShowNeedsPos__9GameThingFUlP9MapCoords
+.globl _CastTree__9GameThingFv
+.globl _GetMaxAlignmentChangePerGameTurn__9GameThingFv
+.globl _GetPlayerWhoLastPickedMeUp__9GameThingFv
+.globl _IsCreature__9GameThingFv
+.globl _GetPlayerWhoLastDroppedMe__9GameThingFv
+.globl _UpdateVillagerActivityEffect__9GameThingFP8Villager
+.globl _SetPos__16GameThingWithPosFRC9MapCoords
+.globl _GetComputerSeen__9GameThingFv
+.globl _CastPlayer__9GameThingFv
 
 start_0x004012e0_0x00403130:
 // Snippet: asm, [0x004012e0, 0x00403097)
@@ -858,11 +880,13 @@ _jmp_addr_0x004017dd:    mov.s              eax, esi                            
                          nop                                                         // 0x004017ed    90
                          nop                                                         // 0x004017ee    90
                          nop                                                         // 0x004017ef    90
+_CalculateInfluence__9GameThingFRC9MapCoords:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1390]         // 0x004017f0    d90590a38a00
                          ret                0x0004                                   // 0x004017f6    c20400
 _jmp_addr_0x004017f9:    push               ecx                                      // 0x004017f9    51
                          push               eax                                      // 0x004017fa    50
                          call               _jmp_addr_0x004012a4                     // 0x004017fb    e8a4faffff
+_RemoveDance__9GameThingFv:
                          ret                                                         // 0x00401800    c3
                          nop                                                         // 0x00401801    90
                          nop                                                         // 0x00401802    90
@@ -879,12 +903,14 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040180d    90
                          nop                                                         // 0x0040180e    90
                          nop                                                         // 0x0040180f    90
+_IsAvailable__9GameThingFv:
                          xor.s              eax, eax                                 // 0x00401810    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x0a]                // 0x00401812    8a410a
                          not                al                                       // 0x00401815    f6d0
                          and                eax, 0x01                                // 0x00401817    83e001
                          ret                                                         // 0x0040181a    c3
                          call               _jmp_addr_0x00401879                     // 0x0040181b    e859000000
+_IsCreature2__9GameThingFP8Creature:
                          xor.s              eax, eax                                 // 0x00401820    33c0
                          ret                                                         // 0x00401822    c3
                          nop                                                         // 0x00401823    90
@@ -900,6 +926,7 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040182d    90
                          nop                                                         // 0x0040182e    90
                          nop                                                         // 0x0040182f    90
+_IsCreature__9GameThingFv:
                          xor.s              eax, eax                                 // 0x00401830    33c0
                          ret                0x0004                                   // 0x00401832    c20400
                          nop                                                         // 0x00401835    90
@@ -913,6 +940,7 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040183d    90
                          nop                                                         // 0x0040183e    90
                          nop                                                         // 0x0040183f    90
+_IsCreatureNotTooNear__9GameThingFP8Creature:
                          xor.s              eax, eax                                 // 0x00401840    33c0
                          ret                0x0004                                   // 0x00401842    c20400
                          nop                                                         // 0x00401845    90
@@ -926,6 +954,7 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040184d    90
                          nop                                                         // 0x0040184e    90
                          nop                                                         // 0x0040184f    90
+_GetMaxAlignmentChangePerGameTurn__9GameThingFv:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1394]         // 0x00401850    d90594a38a00
                          ret                                                         // 0x00401856    c3
                          nop                                                         // 0x00401857    90
@@ -937,6 +966,7 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040185d    90
                          nop                                                         // 0x0040185e    90
                          nop                                                         // 0x0040185f    90
+_GetComputerSeen__9GameThingFv:
                          xor.s              eax, eax                                 // 0x00401860    33c0
                          ret                                                         // 0x00401862    c3
                          nop                                                         // 0x00401863    90
@@ -952,11 +982,13 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040186d    90
                          nop                                                         // 0x0040186e    90
                          nop                                                         // 0x0040186f    90
+_GetVillagerActivityDesire__9GameThingFP8Villager:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00401870    d90598a38a00
                          ret                0x0004                                   // 0x00401876    c20400
 _jmp_addr_0x00401879:    push               ecx                                      // 0x00401879    51
                          push               eax                                      // 0x0040187a    50
                          call               _jmp_addr_0x004012b4                     // 0x0040187b    e834faffff
+_SetVillagerActivity__9GameThingFP8Villager:
                          xor.s              eax, eax                                 // 0x00401880    33c0
                          ret                0x0004                                   // 0x00401882    c20400
                          nop                                                         // 0x00401885    90
@@ -970,6 +1002,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040188d    90
                          nop                                                         // 0x0040188e    90
                          nop                                                         // 0x0040188f    90
+_UpdateVillagerActivityEffect__9GameThingFP8Villager:
                          xor.s              eax, eax                                 // 0x00401890    33c0
                          ret                0x0004                                   // 0x00401892    c20400
                          nop                                                         // 0x00401895    90
@@ -983,6 +1016,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040189d    90
                          nop                                                         // 0x0040189e    90
                          nop                                                         // 0x0040189f    90
+_GetPlayerWhoLastPickedMeUp__9GameThingFv:
                          xor.s              eax, eax                                 // 0x004018a0    33c0
                          ret                                                         // 0x004018a2    c3
                          nop                                                         // 0x004018a3    90
@@ -998,6 +1032,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018ad    90
                          nop                                                         // 0x004018ae    90
                          nop                                                         // 0x004018af    90
+_GetPlayerWhoLastDroppedMe__9GameThingFv:
                          xor.s              eax, eax                                 // 0x004018b0    33c0
                          ret                                                         // 0x004018b2    c3
                          nop                                                         // 0x004018b3    90
@@ -1013,6 +1048,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018bd    90
                          nop                                                         // 0x004018be    90
                          nop                                                         // 0x004018bf    90
+_AddFootpathLink__9GameThingFP9GFootpath:
                          xor.s              eax, eax                                 // 0x004018c0    33c0
                          ret                0x0004                                   // 0x004018c2    c20400
                          nop                                                         // 0x004018c5    90
@@ -1026,6 +1062,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018cd    90
                          nop                                                         // 0x004018ce    90
                          nop                                                         // 0x004018cf    90
+_CastCreature__9GameThingFv:
                          xor.s              eax, eax                                 // 0x004018d0    33c0
                          ret                                                         // 0x004018d2    c3
                          nop                                                         // 0x004018d3    90
@@ -1041,6 +1078,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018dd    90
                          nop                                                         // 0x004018de    90
                          nop                                                         // 0x004018df    90
+_CastPlayer__9GameThingFv:
                          xor.s              eax, eax                                 // 0x004018e0    33c0
                          ret                                                         // 0x004018e2    c3
                          nop                                                         // 0x004018e3    90
@@ -1056,6 +1094,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018ed    90
                          nop                                                         // 0x004018ee    90
                          nop                                                         // 0x004018ef    90
+_CastOneOffSpellSeed__9GameThingFv:
                          xor.s              eax, eax                                 // 0x004018f0    33c0
                          ret                                                         // 0x004018f2    c3
                          nop                                                         // 0x004018f3    90
@@ -1071,6 +1110,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018fd    90
                          nop                                                         // 0x004018fe    90
                          nop                                                         // 0x004018ff    90
+_CastSpellIcon__9GameThingFv:
                          xor.s              eax, eax                                 // 0x00401900    33c0
                          ret                                                         // 0x00401902    c3
                          nop                                                         // 0x00401903    90
@@ -1086,6 +1126,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040190d    90
                          nop                                                         // 0x0040190e    90
                          nop                                                         // 0x0040190f    90
+_CastTree__9GameThingFv:
                          xor.s              eax, eax                                 // 0x00401910    33c0
                          ret                                                         // 0x00401912    c3
                          nop                                                         // 0x00401913    90
@@ -1101,6 +1142,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040191d    90
                          nop                                                         // 0x0040191e    90
                          nop                                                         // 0x0040191f    90
+_IsDeletedOnNewMap__9GameThingFv:
                          mov                eax, 0x00000001                          // 0x00401920    b801000000
                          ret                                                         // 0x00401925    c3
                          nop                                                         // 0x00401926    90
@@ -1113,6 +1155,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040192d    90
                          nop                                                         // 0x0040192e    90
                          nop                                                         // 0x0040192f    90
+_GetShowNeedsPos__9GameThingFUlP9MapCoords:
                          xor.s              eax, eax                                 // 0x00401930    33c0
                          ret                0x0008                                   // 0x00401932    c20800
                          nop                                                         // 0x00401935    90
@@ -1126,6 +1169,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040193d    90
                          nop                                                         // 0x0040193e    90
                          nop                                                         // 0x0040193f    90
+_SetPos__16GameThingWithPosFRC9MapCoords:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00401940    8b442404
                          mov                edx, dword ptr [eax]                     // 0x00401944    8b10
                          add                ecx, 0x14                                // 0x00401946    83c114

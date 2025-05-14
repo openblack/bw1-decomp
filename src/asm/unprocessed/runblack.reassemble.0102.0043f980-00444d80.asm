@@ -188,6 +188,7 @@
 .globl _jmp_addr_0x0043fb20
 .globl _jmp_addr_0x0043fc20
 .globl _jmp_addr_0x0043fc30
+.globl _Connect__5BWLanFv
 
 start_0x0043f980_0x00444d80:
 // Snippet: asm, [0x0043f980, 0x00444d18)
@@ -1748,6 +1749,7 @@ _jmp_addr_0x00440a9f:    push               ebp                                 
                          nop                                                              // 0x00440abd    90
                          nop                                                              // 0x00440abe    90
                          nop                                                              // 0x00440abf    90
+_Connect__5BWLanFv:
                          sub                esp, 0x00000d40                               // 0x00440ac0    81ec400d0000
                          push               ebp                                           // 0x00440ac6    55
                          push               esi                                           // 0x00440ac7    56

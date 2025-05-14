@@ -428,6 +428,11 @@
 .globl _globl_ct_0x0074f800
 .globl _globl_ct_0x0074f830
 .globl _globl_ct_0x0074f930
+.globl _SetOnFire__4TreeFf
+.globl _DecideWhatToDo__8VillagerFv
+.globl _ProcessState__8VillagerFv
+.globl _CreateCollideData__4TreeFv
+.globl _GetWoodValueMultiplier__4TreeFv
 
 start_0x00747310_0x00751970:
 // Snippet: asm, [0x00747310, 0x0075193a)
@@ -6900,6 +6905,7 @@ _jmp_addr_0x0074b779:    mov                eax, 0x00000001                     
                          nop                                                               // 0x0074b80d    90
                          nop                                                               // 0x0074b80e    90
                          nop                                                               // 0x0074b80f    90
+_GetWoodValueMultiplier__4TreeFv:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1390]               // 0x0074b810    d90590a38a00
                          ret                                                               // 0x0074b816    c3
                          nop                                                               // 0x0074b817    90
@@ -7711,6 +7717,7 @@ _jmp_addr_0x0074c123:    pop                edi                                 
                          nop                                                               // 0x0074c13d    90
                          nop                                                               // 0x0074c13e    90
                          nop                                                               // 0x0074c13f    90
+_SetOnFire__4TreeFf:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x0074c140    8b442404
                          push               eax                                            // 0x0074c144    50
                          call               _jmp_addr_0x00639a40                           // 0x0074c145    e8f6d8eeff
@@ -8133,6 +8140,7 @@ _jmp_addr_0x0074c5dd:    {disp8} mov        edx, dword ptr [esp + 0x08]         
 _jmp_addr_0x0074c5eb:    pop                ecx                                            // 0x0074c5eb    59
                          ret                0x000c                                         // 0x0074c5ec    c20c00
                          nop                                                               // 0x0074c5ef    90
+_CreateCollideData__4TreeFv:
                          sub                esp, 0x30                                      // 0x0074c5f0    83ec30
                          push               esi                                            // 0x0074c5f3    56
                          mov.s              esi, ecx                                       // 0x0074c5f4    8bf1
@@ -15981,6 +15989,7 @@ _jmp_addr_0x007515b3:    xor.s              eax, eax                            
                          nop                                                               // 0x007515bd    90
                          nop                                                               // 0x007515be    90
                          nop                                                               // 0x007515bf    90
+_DecideWhatToDo__8VillagerFv:
                          push               esi                                            // 0x007515c0    56
                          mov.s              esi, ecx                                       // 0x007515c1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x007515c3    8b06

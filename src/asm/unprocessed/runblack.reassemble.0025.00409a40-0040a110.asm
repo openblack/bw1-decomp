@@ -20,9 +20,16 @@
 
 .globl @__ct__11SetupSliderFiiiiifPw@36
 .globl @AutoScroll__9SetupListFb@9
+.globl _MouseDown__11SetupSliderFiib
+.globl ___dt__11SetupSliderFb
+.globl _Draw__11SetupSliderFbb
+.globl _MouseUp__11SetupSliderFiib
+.globl _Drag__11SetupSliderFii
+.globl _KeyDown__9SetupListFii
 
 start_0x00409a40_0x0040a110:
 // Snippet: asm, [0x00409a40, 0x0040a0ec)
+_Draw__11SetupSliderFbb:
                          push               ecx                                      // 0x00409a40    51
                          push               ebx                                      // 0x00409a41    53
                          push               ebp                                      // 0x00409a42    55
@@ -234,6 +241,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
                          nop                                                         // 0x00409c4d    90
                          nop                                                         // 0x00409c4e    90
                          nop                                                         // 0x00409c4f    90
+___dt__11SetupSliderFb:
                          push               esi                                      // 0x00409c50    56
                          mov.s              esi, ecx                                 // 0x00409c51    8bf1
                          call               @__dt__12SetupControlFv@4                // 0x00409c53    e868f7ffff
@@ -247,6 +255,7 @@ _jmp_addr_0x00409c68:    mov.s              eax, esi                            
                          ret                0x0004                                   // 0x00409c6b    c20400
                          nop                                                         // 0x00409c6e    90
                          nop                                                         // 0x00409c6f    90
+_Drag__11SetupSliderFii:
                          push               ecx                                      // 0x00409c70    51
                          push               ebx                                      // 0x00409c71    53
                          push               esi                                      // 0x00409c72    56
@@ -329,6 +338,7 @@ _jmp_addr_0x00409d42:    pop                edi                                 
                          nop                                                         // 0x00409d5d    90
                          nop                                                         // 0x00409d5e    90
                          nop                                                         // 0x00409d5f    90
+_MouseDown__11SetupSliderFiib:
                          {disp8} mov        al, byte ptr [esp + 0x0c]                // 0x00409d60    8a44240c
                          test               al, al                                   // 0x00409d64    84c0
                          {disp8} je         _jmp_addr_0x00409d88                     // 0x00409d66    7420
@@ -340,6 +350,7 @@ _jmp_addr_0x00409d42:    pop                edi                                 
                          {disp32} mov       dword ptr [ecx + 0x00000240], eax        // 0x00409d82    898140020000
 _jmp_addr_0x00409d88:    ret                0x000c                                   // 0x00409d88    c20c00
                          call               _jmp_addr_0x00401879                     // 0x00409d8b    e8e97affff
+_MouseUp__11SetupSliderFiib:
                          push               ebx                                      // 0x00409d90    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]              // 0x00409d91    8b5c2408
                          push               esi                                      // 0x00409d95    56
@@ -464,6 +475,7 @@ _jmp_addr_0x00409e93:    {disp32} mov       ecx, dword ptr [esi + 0x00000278]   
                          nop                                                         // 0x00409ead    90
                          nop                                                         // 0x00409eae    90
                          nop                                                         // 0x00409eaf    90
+_KeyDown__9SetupListFii:
                          push               esi                                      // 0x00409eb0    56
                          mov.s              esi, ecx                                 // 0x00409eb1    8bf1
                          {disp32} mov       al, byte ptr [esi + 0x00000284]          // 0x00409eb3    8a8684020000

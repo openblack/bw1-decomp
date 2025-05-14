@@ -262,6 +262,7 @@
 .globl _globl_ct_0x00606d60
 .globl _globl_ct_0x00608470
 .globl _globl_ct_0x006084a0
+.globl _InsertMapObjectToCell__12MobileObjectFP7MapCell
 
 start_0x006015e0_0x00609320:
 // Snippet: asm, [0x006015e0, 0x00609308)
@@ -9331,6 +9332,7 @@ _jmp_addr_0x006071ff:    pop                esi                                 
                          {disp8} lea        eax, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x0060724a    8d440818
                          ret                                                              // 0x0060724e    c3
                          nop                                                              // 0x0060724f    90
+_InsertMapObjectToCell__12MobileObjectFP7MapCell:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00607250    8b442404
                          push               eax                                           // 0x00607254    50
                          call               @InsertMapObjectToCell__6ObjectFP7MapCell@12  // 0x00607255    e8d6f50200

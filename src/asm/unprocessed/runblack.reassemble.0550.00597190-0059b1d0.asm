@@ -137,6 +137,9 @@
 .globl _globl_ct_0x00599220
 .globl _globl_ct_0x00599250
 .globl _globl_ct_0x00599270
+.globl _AddAction__14GroupBehaviourFfUl23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument
+.globl _LoadDance__14GroupBehaviourFPCc
+.globl _AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument
 
 start_0x00597190_0x0059b1d0:
 // Snippet: asm, [0x00597190, 0x0059b161)
@@ -248,6 +251,7 @@ _jmp_addr_0x0059725e:    mov                esi, dword ptr [esi]                
                          nop                                                              // 0x0059726d    90
                          nop                                                              // 0x0059726e    90
                          nop                                                              // 0x0059726f    90
+_AddAction__14GroupBehaviourFfUl23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument:
                          sub                esp, 0x08                                     // 0x00597270    83ec08
                          push               esi                                           // 0x00597273    56
                          push               0x8                                           // 0x00597274    6a08
@@ -307,6 +311,7 @@ _jmp_addr_0x005972ea:    pop                esi                                 
                          nop                                                              // 0x005972fd    90
                          nop                                                              // 0x005972fe    90
                          nop                                                              // 0x005972ff    90
+_AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument:
                          push               ebx                                           // 0x00597300    53
                          push               esi                                           // 0x00597301    56
                          mov.s              ebx, ecx                                      // 0x00597302    8bd9
@@ -849,6 +854,7 @@ _jmp_addr_0x005978c6:    {disp8} lea        ecx, dword ptr [esp + 0x18]         
                          nop                                                              // 0x005978dd    90
                          nop                                                              // 0x005978de    90
                          nop                                                              // 0x005978df    90
+_LoadDance__14GroupBehaviourFPCc:
                          sub                esp, 0x0000065c                               // 0x005978e0    81ec5c060000
                          push               ebx                                           // 0x005978e6    53
                          push               ebp                                           // 0x005978e7    55

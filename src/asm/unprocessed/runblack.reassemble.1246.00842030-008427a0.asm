@@ -27,6 +27,8 @@
 .globl _globl_ct_0x00842190
 .globl _globl_ct_0x008421b0
 .globl _globl_ct_0x008421d0
+.globl _PrssKey__4PrssF6LH_KEYUs
+.globl _PrssMouse__4PrssFP10MouseInput
 
 start_0x00842030_0x008427a0:
 // Snippet: asm, [0x00842030, 0x0084269a)
@@ -159,12 +161,14 @@ _jmp_addr_0x00842150:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          nop                                                            // 0x0084215d    90
                          nop                                                            // 0x0084215e    90
                          nop                                                            // 0x0084215f    90
+_PrssKey__4PrssF6LH_KEYUs:
                          cmp              dword ptr [esp + 0x04], 0x01                  // 0x00842160    837c240401
                          {disp8} jne      _jmp_addr_0x0084216c                          // 0x00842165    7505
                          mov              eax, dword ptr [ecx]                          // 0x00842167    8b01
                          call             dword ptr [eax + 8]                           // 0x00842169    ff5008
 _jmp_addr_0x0084216c:    ret              0x0008                                        // 0x0084216c    c20800
                          nop                                                            // 0x0084216f    90
+_PrssMouse__4PrssFP10MouseInput:
                          {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x00842170    8b442404
                          {disp8} mov      edx, dword ptr [eax + 0x18]                   // 0x00842174    8b5018
                          test             edx, edx                                      // 0x00842177    85d2

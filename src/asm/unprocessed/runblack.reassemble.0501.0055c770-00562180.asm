@@ -207,9 +207,13 @@
 .globl _jmp_addr_0x00561bf0
 .globl @ResolveAllLoads__10GameOSFileFv@4
 .globl _jmp_addr_0x00561e10
+.globl _GetVillagerName__8VillagerFv
+.globl _IsClear__8BaseInfoCFv
+.globl _GetForest__4TreeFv
 
 start_0x0055c770_0x00562180:
 // Snippet: asm, [0x0055c770, 0x00562055)
+_IsClear__8BaseInfoCFv:
                          {disp8} mov        eax, dword ptr [ecx + 0x04]                    // 0x0055c770    8b4104
                          test               eax, eax                                       // 0x0055c773    85c0
                          {disp8} jne        _jmp_addr_0x0055c784                           // 0x0055c775    750d
@@ -508,6 +512,7 @@ _jmp_addr_0x0055c81a:    mov.s              eax, esi                            
                          nop                                                               // 0x0055ca3d    90
                          nop                                                               // 0x0055ca3e    90
                          nop                                                               // 0x0055ca3f    90
+_GetVillagerName__8VillagerFv:
                          xor.s              eax, eax                                       // 0x0055ca40    33c0
                          ret                                                               // 0x0055ca42    c3
                          nop                                                               // 0x0055ca43    90
@@ -2772,6 +2777,7 @@ _jmp_addr_0x0055d88d:    mov.s              eax, esi                            
                          {disp32} mov       eax, dword ptr [eax + 0x00000138]              // 0x0055d903    8b8038010000
                          ret                                                               // 0x0055d909    c3
                          call               dword ptr [rdata_bytes + 0x328]                // 0x0055d90a    ff1528938a00
+_GetForest__4TreeFv:
                          {disp8} mov        eax, dword ptr [ecx + 0x68]                    // 0x0055d910    8b4168
                          ret                                                               // 0x0055d913    c3
                          nop                                                               // 0x0055d914    90

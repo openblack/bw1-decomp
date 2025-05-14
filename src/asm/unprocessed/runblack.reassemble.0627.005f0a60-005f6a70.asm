@@ -165,6 +165,9 @@
 .globl _globl_ct_0x005f5180
 .globl _globl_ct_0x005f51b0
 .globl _globl_ct_0x005f51d0
+.globl _SetState__6LivingFUlUc
+.globl _SetCurrentAndDestinationState__6LivingFUcUc
+.globl _SetTopState__6LivingFUc
 
 start_0x005f0a60_0x005f6a70:
 // Snippet: asm, [0x005f0a60, 0x005f69fe)
@@ -3204,6 +3207,7 @@ _jmp_addr_0x005f28d2:    xor.s              eax, eax                            
                          nop                                                              // 0x005f28dd    90
                          nop                                                              // 0x005f28de    90
                          nop                                                              // 0x005f28df    90
+_SetTopState__6LivingFUc:
 @SetTopState__6LivingFUc@12:    push               ebx                                           // 0x005f28e0    53
                          push               esi                                           // 0x005f28e1    56
                          push               edi                                           // 0x005f28e2    57
@@ -3269,6 +3273,7 @@ _jmp_addr_0x005f2978:    pop                edi                                 
                          mov.s              eax, ebx                                      // 0x005f297a    8bc3
                          pop                ebx                                           // 0x005f297c    5b
                          ret                0x0004                                        // 0x005f297d    c20400
+_SetCurrentAndDestinationState__6LivingFUcUc:
 @SetCurrentAndDestinationState__6LivingFUcUc@16:    push               ebx                                           // 0x005f2980    53
                          {disp8} mov        ebx, dword ptr [esp + 0x0c]                   // 0x005f2981    8b5c240c
                          push               esi                                           // 0x005f2985    56
@@ -3379,6 +3384,7 @@ _jmp_addr_0x005f2a70:    xor.s              eax, eax                            
                          nop                                                              // 0x005f2a7d    90
                          nop                                                              // 0x005f2a7e    90
                          nop                                                              // 0x005f2a7f    90
+_SetState__6LivingFUlUc:
 @SetState__6LivingFUlUc@16:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x005f2a80    8b442408
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x005f2a84    8b542404
                          push               eax                                           // 0x005f2a88    50

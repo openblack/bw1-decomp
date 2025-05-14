@@ -12,6 +12,8 @@
 .globl _globl_ct_0x00401170
 .globl _jmp_addr_0x007d4cc3
 .globl _jmp_addr_0x00401140
+.globl _Delete__4BaseFi
+.globl _Serialise__4BaseFR7Archive
 
 start_0x00401140_0x004011d0:
 // Snippet: asm, [0x00401140, 0x004011cc)
@@ -65,6 +67,7 @@ _jmp_addr_0x0040118c:    mov              dword ptr [eax], 0x008a9a44     // 0x0
                          nop                                              // 0x004011ad    90
                          nop                                              // 0x004011ae    90
                          nop                                              // 0x004011af    90
+_Serialise__4BaseFR7Archive:
                          ret              0x0004                          // 0x004011b0    c20400
                          nop                                              // 0x004011b3    90
                          nop                                              // 0x004011b4    90
@@ -79,6 +82,7 @@ _jmp_addr_0x0040118c:    mov              dword ptr [eax], 0x008a9a44     // 0x0
                          nop                                              // 0x004011bd    90
                          nop                                              // 0x004011be    90
                          nop                                              // 0x004011bf    90
+_Delete__4BaseFi:
                          test             ecx, ecx                        // 0x004011c0    85c9
                          {disp8} je       _jmp_addr_0x004011cb            // 0x004011c2    7407
                          mov              eax, dword ptr [ecx]            // 0x004011c4    8b01

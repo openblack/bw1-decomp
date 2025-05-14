@@ -137,6 +137,8 @@
 .globl _globl_ct_0x00416cb0
 .globl _globl_ct_0x00416cd0
 .globl _globl_ct_0x00416dd0
+.globl _SetMapChild__6ObjectFP6ObjectP7MapCell
+.globl _StorePreviousState__6LivingFv
 
 start_0x00416060_0x0041a040:
 // Snippet: asm, [0x00416060, 0x00419fcf)
@@ -1703,6 +1705,7 @@ _jmp_addr_0x00416eb0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0041703d    90
                          nop                                                              // 0x0041703e    90
                          nop                                                              // 0x0041703f    90
+_StorePreviousState__6LivingFv:
                          push               esi                                           // 0x00417040    56
                          mov.s              esi, ecx                                      // 0x00417041    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00417043    8b06
@@ -5059,6 +5062,7 @@ _jmp_addr_0x00418c7f:    pop                esi                                 
 _jmp_addr_0x00418cb9:    {disp8} mov        eax, dword ptr [esi + 0x20]                   // 0x00418cb9    8b4620
                          pop                esi                                           // 0x00418cbc    5e
                          ret                0x0004                                        // 0x00418cbd    c20400
+_SetMapChild__6ObjectFP6ObjectP7MapCell:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00418cc0    8b442404
                          {disp8} mov        dword ptr [ecx + 0x20], eax                   // 0x00418cc4    894120
                          ret                0x0008                                        // 0x00418cc7    c20800

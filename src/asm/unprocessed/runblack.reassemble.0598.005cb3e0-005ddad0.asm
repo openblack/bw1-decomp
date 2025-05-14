@@ -493,6 +493,7 @@
 .globl _globl_ct_0x005dd2f0
 .globl _globl_ct_0x005dd320
 .globl _globl_ct_0x005dd340
+.globl _UpdateSpellInfo__16GInterfaceStatusFP5SpellP15PSysProcessInfo
 
 start_0x005cb3e0_0x005ddad0:
 // Snippet: asm, [0x005cb3e0, 0x005ddaa1)
@@ -24097,6 +24098,7 @@ _jmp_addr_0x005dc8d0:    push               esi                                 
                          nop                                                               // 0x005dc8ed    90
                          nop                                                               // 0x005dc8ee    90
                          nop                                                               // 0x005dc8ef    90
+_UpdateSpellInfo__16GInterfaceStatusFP5SpellP15PSysProcessInfo:
                          sub                esp, 0x0c                                      // 0x005dc8f0    83ec0c
                          push               ebx                                            // 0x005dc8f3    53
                          push               esi                                            // 0x005dc8f4    56

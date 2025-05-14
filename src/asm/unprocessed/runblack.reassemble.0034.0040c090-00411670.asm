@@ -61,6 +61,59 @@
 .globl @SetFocusPrev__8SetupBoxFv@4
 .globl _jmp_addr_0x00411150
 .globl @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
+.globl _Click__12SetupPictureFii
+.globl _GetBar__14SetupVBarGraphFiR8VBarData
+.globl _SetLine__15SetupHLineGraphFiR9HLineData
+.globl _Drag__12SetupPictureFii
+.globl _HitTest__14SetupBigButtonFii
+.globl _AddLine__15SetupHLineGraphFR9HLineData
+.globl ___dt__12SetupPictureFb
+.globl ___dt__13SetupCheckBoxFb
+.globl _Draw__15SetupHSBarGraphFbb
+.globl _SetFocus__12SetupPictureFb
+.globl _HitTest__13SetupCheckBoxFii
+.globl _Drag__17SetupColourPickerFii
+.globl _Click__17SetupColourPickerFii
+.globl _SetScale__15SetupHSBarGraphFf
+.globl _Draw__14SetupBigButtonFbb
+.globl _KeyDown__13SetupCheckBoxFii
+.globl _KeyDown__17SetupColourPickerFii
+.globl _AddBar__14SetupVBarGraphFRC8VBarData
+.globl _MouseDown__9SetupEditFiib
+.globl _KeyDown__12SetupPictureFii
+.globl _MouseDown__17SetupColourPickerFiib
+.globl _KeyDown__14SetupTabButtonFii
+.globl _SetBar__14SetupVBarGraphFiRC8VBarData
+.globl _GetLine__15SetupHLineGraphFiR9HLineData
+.globl _MouseUp__15SetupHLineGraphFiib
+.globl _Draw__14SetupMP3ButtonFbb
+.globl _Draw__12SetupPictureFbb
+.globl _Reset__15SetupHLineGraphFv
+.globl _KeyDown__14SetupVBarGraphFii
+.globl _Draw__15SetupHLineGraphFbb
+.globl _MouseDown__12SetupPictureFiib
+.globl ___dt__14SetupTabButtonFb
+.globl ___dt__14SetupBigButtonFb
+.globl _Draw__14SetupVBarGraphFbb
+.globl _Draw__9SetupEditFbb
+.globl _MouseUp__12SetupPictureFiib
+.globl ___dt__17SetupColourPickerFb
+.globl ___dt__14SetupVBarGraphFb
+.globl _SetScale__15SetupHLineGraphFffb
+.globl _Drag__9SetupEditFii
+.globl _Reset__14SetupVBarGraphFv
+.globl _SetFocus__9SetupEditFb
+.globl _Click__13SetupCheckBoxFii
+.globl ___dt__15SetupHLineGraphFb
+.globl _MouseUp__9SetupEditFiib
+.globl _KeyDown__15SetupHLineGraphFii
+.globl _Draw__14SetupTabButtonFbb
+.globl ___dt__9SetupEditFb
+.globl _Draw__17SetupColourPickerFbb
+.globl _MouseUp__17SetupColourPickerFiib
+.globl _KeyDown__14SetupBigButtonFii
+.globl _SetScale__14SetupVBarGraphFf
+.globl _Draw__13SetupCheckBoxFbb
 
 start_0x0040c090_0x00411670:
 // Snippet: asm, [0x0040c090, 0x00411654)
@@ -134,6 +187,7 @@ _jmp_addr_0x0040c133:    {disp32} mov         eax, dword ptr [esi + 0x00000258] 
                          nop                                                                // 0x0040c14d    90
                          nop                                                                // 0x0040c14e    90
                          nop                                                                // 0x0040c14f    90
+_Drag__9SetupEditFii:
                          {disp8} mov          eax, dword ptr [esp + 0x04]                   // 0x0040c150    8b442404
                          push                 esi                                           // 0x0040c154    56
                          mov.s                esi, ecx                                      // 0x0040c155    8bf1
@@ -146,6 +200,7 @@ _jmp_addr_0x0040c133:    {disp32} mov         eax, dword ptr [esi + 0x00000258] 
                          nop                                                                // 0x0040c16d    90
                          nop                                                                // 0x0040c16e    90
                          nop                                                                // 0x0040c16f    90
+_MouseDown__9SetupEditFiib:
                          {disp8} mov          al, byte ptr [esp + 0x0c]                     // 0x0040c170    8a44240c
                          test                 al, al                                        // 0x0040c174    84c0
                          push                 esi                                           // 0x0040c176    56
@@ -160,6 +215,7 @@ _jmp_addr_0x0040c133:    {disp32} mov         eax, dword ptr [esi + 0x00000258] 
 _jmp_addr_0x0040c197:    pop                  esi                                           // 0x0040c197    5e
                          ret                  0x000c                                        // 0x0040c198    c20c00
                          call                 _jmp_addr_0x00401879                          // 0x0040c19b    e8d956ffff
+_MouseUp__9SetupEditFiib:
                          {disp8} mov          al, byte ptr [esp + 0x0c]                     // 0x0040c1a0    8a44240c
                          test                 al, al                                        // 0x0040c1a4    84c0
                          push                 esi                                           // 0x0040c1a6    56
@@ -386,6 +442,7 @@ _jmp_addr_0x0040c4f1:    pop                  edi                               
                          pop                  ebx                                           // 0x0040c4f6    5b
                          add                  esp, 0x00000200                               // 0x0040c4f7    81c400020000
                          ret                  0x001c                                        // 0x0040c4fd    c21c00
+_SetFocus__9SetupEditFb:
                          push                 ebx                                           // 0x0040c500    53
                          {disp8} mov          ebx, dword ptr [esp + 0x08]                   // 0x0040c501    8b5c2408
                          test                 bl, bl                                        // 0x0040c505    84db
@@ -417,6 +474,7 @@ _jmp_addr_0x0040c558:    pop                  esi                               
                          nop                                                                // 0x0040c55d    90
                          nop                                                                // 0x0040c55e    90
                          nop                                                                // 0x0040c55f    90
+___dt__9SetupEditFb:
                          push                 esi                                           // 0x0040c560    56
                          mov.s                esi, ecx                                      // 0x0040c561    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040c563    e858ceffff
@@ -430,6 +488,7 @@ _jmp_addr_0x0040c578:    mov.s                eax, esi                          
                          ret                  0x0004                                        // 0x0040c57b    c20400
                          nop                                                                // 0x0040c57e    90
                          nop                                                                // 0x0040c57f    90
+_Draw__9SetupEditFbb:
                          sub                  esp, 0x00000218                               // 0x0040c580    81ec18020000
                          push                 ebx                                           // 0x0040c586    53
                          push                 ebp                                           // 0x0040c587    55
@@ -1087,6 +1146,7 @@ _jmp_addr_0x0040cd84:    pop                  edi                               
                          nop                                                                // 0x0040cd9d    90
                          nop                                                                // 0x0040cd9e    90
                          nop                                                                // 0x0040cd9f    90
+_Draw__14SetupMP3ButtonFbb:
                          push                 ebx                                           // 0x0040cda0    53
                          {disp8} mov          ebx, dword ptr [esp + 0x08]                   // 0x0040cda1    8b5c2408
                          push                 esi                                           // 0x0040cda5    56
@@ -1191,6 +1251,7 @@ _jmp_addr_0x0040ce4d:    {disp8} fld          dword ptr [esp + 0x10]            
                          nop                                                                // 0x0040cead    90
                          nop                                                                // 0x0040ceae    90
                          nop                                                                // 0x0040ceaf    90
+_Draw__14SetupBigButtonFbb:
                          push                 ebx                                           // 0x0040ceb0    53
                          {disp8} mov          bl, byte ptr [esp + 0x08]                     // 0x0040ceb1    8a5c2408
                          test                 bl, bl                                        // 0x0040ceb5    84db
@@ -1592,6 +1653,7 @@ _jmp_addr_0x0040d2db:    {disp8} mov          edx, dword ptr [esp + 0x24]       
                          nop                                                                // 0x0040d2ed    90
                          nop                                                                // 0x0040d2ee    90
                          nop                                                                // 0x0040d2ef    90
+_KeyDown__14SetupBigButtonFii:
                          {disp32} mov         ecx, dword ptr [ecx + 0x00000234]             // 0x0040d2f0    8b8934020000
                          test                 ecx, ecx                                      // 0x0040d2f6    85c9
                          {disp8} je           _jmp_addr_0x0040d308                          // 0x0040d2f8    740e
@@ -1603,6 +1665,7 @@ _jmp_addr_0x0040d2db:    {disp8} mov          edx, dword ptr [esp + 0x24]       
                          call                 dword ptr [eax]                               // 0x0040d306    ff10
 _jmp_addr_0x0040d308:    ret                  0x0008                                        // 0x0040d308    c20800
                          call                 _jmp_addr_0x00401879                          // 0x0040d30b    e86945ffff
+_HitTest__14SetupBigButtonFii:
                          {disp8} mov          edx, dword ptr [ecx + 0x08]                   // 0x0040d310    8b5108
                          {disp8} mov          eax, dword ptr [esp + 0x04]                   // 0x0040d313    8b442404
                          cmp.s                eax, edx                                      // 0x0040d317    3bc2
@@ -1627,6 +1690,7 @@ _jmp_addr_0x0040d34e:    xor.s                eax, eax                          
 _jmp_addr_0x0040d353:    mov                  eax, 0x00000001                               // 0x0040d353    b801000000
                          ret                  0x0008                                        // 0x0040d358    c20800
                          call                 _jmp_addr_0x00401879                          // 0x0040d35b    e81945ffff
+___dt__14SetupBigButtonFb:
                          push                 esi                                           // 0x0040d360    56
                          mov.s                esi, ecx                                      // 0x0040d361    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040d363    e858c0ffff
@@ -1652,6 +1716,7 @@ _jmp_addr_0x0040d380:    {disp32} mov         dword ptr [ecx + 0x00000248], 0x00
                          {disp32} mov         dword ptr [ecx + 0x00000248], 0x00000003      // 0x0040d3b0    c7814802000003000000
                          ret                                                                // 0x0040d3ba    c3
                          call                 _jmp_addr_0x00401879                          // 0x0040d3bb    e8b944ffff
+_Draw__15SetupHSBarGraphFbb:
                          sub                  esp, 0x00000218                               // 0x0040d3c0    81ec18020000
                          push                 ebx                                           // 0x0040d3c6    53
                          push                 esi                                           // 0x0040d3c7    56
@@ -2148,6 +2213,7 @@ _jmp_addr_0x0040d987:    pop                  edi                               
                          nop                                                                // 0x0040d99d    90
                          nop                                                                // 0x0040d99e    90
                          nop                                                                // 0x0040d99f    90
+_SetScale__15SetupHSBarGraphFf:
                          {disp8} fld          dword ptr [esp + 0x04]                        // 0x0040d9a0    d9442404
                          {disp32} fcomp       dword ptr [rdata_bytes + 0x1398]              // 0x0040d9a4    d81d98a38a00
                          fnstsw               ax                                            // 0x0040d9aa    dfe0
@@ -2261,6 +2327,7 @@ _jmp_addr_0x0040da7b:    {disp8} mov          esi, dword ptr [ebx + 0x08]       
                          nop                                                                // 0x0040daad    90
                          nop                                                                // 0x0040daae    90
                          nop                                                                // 0x0040daaf    90
+_Draw__15SetupHLineGraphFbb:
                          sub                  esp, 0x00000244                               // 0x0040dab0    81ec44020000
                          push                 ebx                                           // 0x0040dab6    53
                          push                 ebp                                           // 0x0040dab7    55
@@ -3151,6 +3218,7 @@ _jmp_addr_0x0040e4f9:    pop                  edi                               
                          nop                                                                // 0x0040e57d    90
                          nop                                                                // 0x0040e57e    90
                          nop                                                                // 0x0040e57f    90
+_KeyDown__15SetupHLineGraphFii:
                          {disp32} mov         ecx, dword ptr [ecx + 0x00000234]             // 0x0040e580    8b8934020000
                          test                 ecx, ecx                                      // 0x0040e586    85c9
                          {disp8} je           _jmp_addr_0x0040e598                          // 0x0040e588    740e
@@ -3162,6 +3230,7 @@ _jmp_addr_0x0040e4f9:    pop                  edi                               
                          call                 dword ptr [eax]                               // 0x0040e596    ff10
 _jmp_addr_0x0040e598:    ret                  0x0008                                        // 0x0040e598    c20800
                          call                 _jmp_addr_0x00401879                          // 0x0040e59b    e8d932ffff
+_MouseUp__15SetupHLineGraphFiib:
                          {disp8} mov          al, byte ptr [esp + 0x0c]                     // 0x0040e5a0    8a44240c
                          test                 al, al                                        // 0x0040e5a4    84c0
                          {disp8} je           _jmp_addr_0x0040e5b9                          // 0x0040e5a6    7411
@@ -3174,6 +3243,7 @@ _jmp_addr_0x0040e5b9:    ret                  0x000c                            
                          nop                                                                // 0x0040e5bd    90
                          nop                                                                // 0x0040e5be    90
                          nop                                                                // 0x0040e5bf    90
+___dt__15SetupHLineGraphFb:
                          push                 esi                                           // 0x0040e5c0    56
                          mov.s                esi, ecx                                      // 0x0040e5c1    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040e5c3    e8f8adffff
@@ -3187,6 +3257,7 @@ _jmp_addr_0x0040e5d8:    mov.s                eax, esi                          
                          ret                  0x0004                                        // 0x0040e5db    c20400
                          nop                                                                // 0x0040e5de    90
                          nop                                                                // 0x0040e5df    90
+_Reset__15SetupHLineGraphFv:
 @Reset__15SetupHLineGraphFv@4:    push                 ebx                                           // 0x0040e5e0    53
                          push                 ebp                                           // 0x0040e5e1    55
                          push                 esi                                           // 0x0040e5e2    56
@@ -3232,6 +3303,7 @@ _jmp_addr_0x0040e64b:    pop                  edi                               
                          pop                  ebp                                           // 0x0040e64d    5d
                          pop                  ebx                                           // 0x0040e64e    5b
                          ret                                                                // 0x0040e64f    c3
+_SetScale__15SetupHLineGraphFffb:
                          {disp8} fld          dword ptr [esp + 0x04]                        // 0x0040e650    d9442404
                          push                 esi                                           // 0x0040e654    56
                          {disp32} fcom        dword ptr [rdata_bytes + 0x1398]              // 0x0040e655    d81598a38a00
@@ -3320,6 +3392,7 @@ _jmp_addr_0x0040e70e:    {disp8} mov          edx, dword ptr [esp + 0x08]       
                          nop                                                                // 0x0040e72d    90
                          nop                                                                // 0x0040e72e    90
                          nop                                                                // 0x0040e72f    90
+_AddLine__15SetupHLineGraphFR9HLineData:
                          push                 ecx                                           // 0x0040e730    51
                          push                 ebx                                           // 0x0040e731    53
                          push                 esi                                           // 0x0040e732    56
@@ -3389,6 +3462,7 @@ _jmp_addr_0x0040e7e9:    pop                  esi                               
                          pop                  ecx                                           // 0x0040e7eb    59
                          ret                  0x0004                                        // 0x0040e7ec    c20400
                          nop                                                                // 0x0040e7ef    90
+_SetLine__15SetupHLineGraphFiR9HLineData:
                          {disp8} mov          edx, dword ptr [esp + 0x04]                   // 0x0040e7f0    8b542404
                          test                 edx, edx                                      // 0x0040e7f4    85d2
                          push                 esi                                           // 0x0040e7f6    56
@@ -3436,6 +3510,7 @@ _jmp_addr_0x0040e83f:    pop                  esi                               
                          nop                                                                // 0x0040e84d    90
                          nop                                                                // 0x0040e84e    90
                          nop                                                                // 0x0040e84f    90
+_GetLine__15SetupHLineGraphFiR9HLineData:
                          {disp8} mov          edx, dword ptr [esp + 0x04]                   // 0x0040e850    8b542404
                          test                 edx, edx                                      // 0x0040e854    85d2
                          push                 esi                                           // 0x0040e856    56
@@ -3483,6 +3558,7 @@ _jmp_addr_0x0040e89f:    pop                  esi                               
                          nop                                                                // 0x0040e8ad    90
                          nop                                                                // 0x0040e8ae    90
                          nop                                                                // 0x0040e8af    90
+_Draw__14SetupVBarGraphFbb:
                          sub                  esp, 0x00000220                               // 0x0040e8b0    81ec20020000
                          push                 ebx                                           // 0x0040e8b6    53
                          push                 esi                                           // 0x0040e8b7    56
@@ -4046,6 +4122,7 @@ _jmp_addr_0x0040eeea:    pop                  esi                               
                          nop                                                                // 0x0040ef6d    90
                          nop                                                                // 0x0040ef6e    90
                          nop                                                                // 0x0040ef6f    90
+_KeyDown__14SetupVBarGraphFii:
                          {disp32} mov         ecx, dword ptr [ecx + 0x00000234]             // 0x0040ef70    8b8934020000
                          test                 ecx, ecx                                      // 0x0040ef76    85c9
                          {disp8} je           _jmp_addr_0x0040ef88                          // 0x0040ef78    740e
@@ -4057,6 +4134,7 @@ _jmp_addr_0x0040eeea:    pop                  esi                               
                          call                 dword ptr [eax]                               // 0x0040ef86    ff10
 _jmp_addr_0x0040ef88:    ret                  0x0008                                        // 0x0040ef88    c20800
                          call                 _jmp_addr_0x00401879                          // 0x0040ef8b    e8e928ffff
+___dt__14SetupVBarGraphFb:
                          push                 esi                                           // 0x0040ef90    56
                          mov.s                esi, ecx                                      // 0x0040ef91    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040ef93    e828a4ffff
@@ -4070,6 +4148,7 @@ _jmp_addr_0x0040efa8:    mov.s                eax, esi                          
                          ret                  0x0004                                        // 0x0040efab    c20400
                          nop                                                                // 0x0040efae    90
                          nop                                                                // 0x0040efaf    90
+_Reset__14SetupVBarGraphFv:
 @Reset__14SetupVBarGraphFv@4:    sub                  esp, 0x74                                     // 0x0040efb0    83ec74
                          push                 ebx                                           // 0x0040efb3    53
                          push                 ebp                                           // 0x0040efb4    55
@@ -4197,6 +4276,7 @@ _jmp_addr_0x0040f00c:    {disp32} mov         dword ptr [esi + 0x00000248], ebx 
                          nop                                                                // 0x0040f1ad    90
                          nop                                                                // 0x0040f1ae    90
                          nop                                                                // 0x0040f1af    90
+_SetScale__14SetupVBarGraphFf:
                          {disp8} fld          dword ptr [esp + 0x04]                        // 0x0040f1b0    d9442404
                          {disp32} fcom        dword ptr [rdata_bytes + 0x1398]              // 0x0040f1b4    d81598a38a00
                          fnstsw               ax                                            // 0x0040f1ba    dfe0
@@ -4267,6 +4347,7 @@ _jmp_addr_0x0040f271:    test                 eax, eax                          
                          {disp8} jne          _jmp_addr_0x0040f241                          // 0x0040f27a    75c5
 _jmp_addr_0x0040f27c:    ret                  0x0004                                        // 0x0040f27c    c20400
                          nop                                                                // 0x0040f27f    90
+_AddBar__14SetupVBarGraphFRC8VBarData:
                          push                 esi                                           // 0x0040f280    56
                          push                 edi                                           // 0x0040f281    57
                          push                 0x00000890                                    // 0x0040f282    6890080000
@@ -4314,6 +4395,7 @@ _jmp_addr_0x0040f2fa:    pop                  edi                               
                          pop                  esi                                           // 0x0040f2fb    5e
                          ret                  0x0004                                        // 0x0040f2fc    c20400
                          nop                                                                // 0x0040f2ff    90
+_SetBar__14SetupVBarGraphFiRC8VBarData:
                          {disp8} mov          edx, dword ptr [esp + 0x04]                   // 0x0040f300    8b542404
                          test                 edx, edx                                      // 0x0040f304    85d2
                          push                 esi                                           // 0x0040f306    56
@@ -4349,6 +4431,7 @@ _jmp_addr_0x0040f349:    pop                  esi                               
                          nop                                                                // 0x0040f34d    90
                          nop                                                                // 0x0040f34e    90
                          nop                                                                // 0x0040f34f    90
+_GetBar__14SetupVBarGraphFiR8VBarData:
                          {disp8} mov          edx, dword ptr [esp + 0x04]                   // 0x0040f350    8b542404
                          test                 edx, edx                                      // 0x0040f354    85d2
                          push                 esi                                           // 0x0040f356    56
@@ -4384,6 +4467,7 @@ _jmp_addr_0x0040f399:    pop                  esi                               
                          nop                                                                // 0x0040f39d    90
                          nop                                                                // 0x0040f39e    90
                          nop                                                                // 0x0040f39f    90
+_Draw__14SetupTabButtonFbb:
                          sub                  esp, 0x18                                     // 0x0040f3a0    83ec18
                          push                 ebp                                           // 0x0040f3a3    55
                          push                 esi                                           // 0x0040f3a4    56
@@ -4647,6 +4731,7 @@ _jmp_addr_0x0040f65e:    mov.s                eax, esi                          
                          nop                                                                // 0x0040f66d    90
                          nop                                                                // 0x0040f66e    90
                          nop                                                                // 0x0040f66f    90
+_KeyDown__14SetupTabButtonFii:
                          {disp32} mov         ecx, dword ptr [ecx + 0x00000234]             // 0x0040f670    8b8934020000
                          test                 ecx, ecx                                      // 0x0040f676    85c9
                          {disp8} je           _jmp_addr_0x0040f688                          // 0x0040f678    740e
@@ -4658,6 +4743,7 @@ _jmp_addr_0x0040f65e:    mov.s                eax, esi                          
                          call                 dword ptr [eax]                               // 0x0040f686    ff10
 _jmp_addr_0x0040f688:    ret                  0x0008                                        // 0x0040f688    c20800
                          call                 _jmp_addr_0x00401879                          // 0x0040f68b    e8e921ffff
+___dt__14SetupTabButtonFb:
                          push                 esi                                           // 0x0040f690    56
                          mov.s                esi, ecx                                      // 0x0040f691    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040f693    e8289dffff
@@ -4671,6 +4757,7 @@ _jmp_addr_0x0040f6a8:    mov.s                eax, esi                          
                          ret                  0x0004                                        // 0x0040f6ab    c20400
                          nop                                                                // 0x0040f6ae    90
                          nop                                                                // 0x0040f6af    90
+_MouseDown__12SetupPictureFiib:
                          {disp8} mov          dl, byte ptr [esp + 0x0c]                     // 0x0040f6b0    8a54240c
                          sub                  esp, 0x74                                     // 0x0040f6b4    83ec74
                          push                 esi                                           // 0x0040f6b7    56
@@ -4756,6 +4843,7 @@ _jmp_addr_0x0040f832:    pop                  esi                               
                          nop                                                                // 0x0040f83d    90
                          nop                                                                // 0x0040f83e    90
                          nop                                                                // 0x0040f83f    90
+_MouseUp__12SetupPictureFiib:
                          {disp8} mov          al, byte ptr [esp + 0x0c]                     // 0x0040f840    8a44240c
                          sub                  esp, 0x6c                                     // 0x0040f844    83ec6c
                          push                 ebx                                           // 0x0040f847    53
@@ -4869,6 +4957,7 @@ _jmp_addr_0x0040f9f9:    pop                  esi                               
                          nop                                                                // 0x0040fa0d    90
                          nop                                                                // 0x0040fa0e    90
                          nop                                                                // 0x0040fa0f    90
+_Drag__12SetupPictureFii:
                          ret                  0x0008                                        // 0x0040fa10    c20800
                          nop                                                                // 0x0040fa13    90
                          nop                                                                // 0x0040fa14    90
@@ -4883,6 +4972,7 @@ _jmp_addr_0x0040f9f9:    pop                  esi                               
                          nop                                                                // 0x0040fa1d    90
                          nop                                                                // 0x0040fa1e    90
                          nop                                                                // 0x0040fa1f    90
+_Draw__12SetupPictureFbb:
                          {disp32} fild        dword ptr [data_bytes + 0x272134]             // 0x0040fa20    db053481c300
                          sub                  esp, 0x000000ac                               // 0x0040fa26    81ecac000000
                          push                 ebx                                           // 0x0040fa2c    53
@@ -5830,6 +5920,7 @@ _jmp_addr_0x004105b9:    pop                  edi                               
                          ret                  0x0024                                        // 0x004106eb    c22400
                          nop                                                                // 0x004106ee    90
                          nop                                                                // 0x004106ef    90
+_KeyDown__12SetupPictureFii:
                          {disp32} mov         ecx, dword ptr [ecx + 0x00000234]             // 0x004106f0    8b8934020000
                          test                 ecx, ecx                                      // 0x004106f6    85c9
                          {disp8} je           _jmp_addr_0x00410708                          // 0x004106f8    740e
@@ -5841,6 +5932,7 @@ _jmp_addr_0x004105b9:    pop                  edi                               
                          call                 dword ptr [eax]                               // 0x00410706    ff10
 _jmp_addr_0x00410708:    ret                  0x0008                                        // 0x00410708    c20800
                          call                 _jmp_addr_0x00401879                          // 0x0041070b    e86911ffff
+_Click__12SetupPictureFii:
                          ret                  0x0008                                        // 0x00410710    c20800
                          nop                                                                // 0x00410713    90
                          nop                                                                // 0x00410714    90
@@ -5855,6 +5947,7 @@ _jmp_addr_0x00410708:    ret                  0x0008                            
                          nop                                                                // 0x0041071d    90
                          nop                                                                // 0x0041071e    90
                          nop                                                                // 0x0041071f    90
+___dt__12SetupPictureFb:
                          push                 esi                                           // 0x00410720    56
                          mov.s                esi, ecx                                      // 0x00410721    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x00410723    e8988cffff
@@ -5868,6 +5961,7 @@ _jmp_addr_0x00410738:    mov.s                eax, esi                          
                          ret                  0x0004                                        // 0x0041073b    c20400
                          nop                                                                // 0x0041073e    90
                          nop                                                                // 0x0041073f    90
+_SetFocus__12SetupPictureFb:
                          {disp8} mov          dl, byte ptr [esp + 0x04]                     // 0x00410740    8a542404
                          xor.s                eax, eax                                      // 0x00410744    33c0
                          cmp.s                dl, al                                        // 0x00410746    3ad0
@@ -5899,16 +5993,19 @@ _jmp_addr_0x00410738:    mov.s                eax, esi                          
                          {disp32} mov         dword ptr [ecx + 0x00000250], eax             // 0x004107e2    898150020000
 _jmp_addr_0x004107e8:    ret                  0x0004                                        // 0x004107e8    c20400
                          call                 _jmp_addr_0x00401879                          // 0x004107eb    e88910ffff
+_MouseDown__17SetupColourPickerFiib:
                          {disp32} mov         dword ptr [ecx + 0x0000023c], 0x00000001      // 0x004107f0    c7813c02000001000000
                          ret                  0x000c                                        // 0x004107fa    c20c00
                          nop                                                                // 0x004107fd    90
                          nop                                                                // 0x004107fe    90
                          nop                                                                // 0x004107ff    90
+_MouseUp__17SetupColourPickerFiib:
                          {disp32} mov         dword ptr [ecx + 0x0000023c], 0x00000000      // 0x00410800    c7813c02000000000000
                          ret                  0x000c                                        // 0x0041080a    c20c00
                          nop                                                                // 0x0041080d    90
                          nop                                                                // 0x0041080e    90
                          nop                                                                // 0x0041080f    90
+_Drag__17SetupColourPickerFii:
                          {disp8} mov          eax, dword ptr [ecx + 0x0c]                   // 0x00410810    8b410c
                          {disp8} mov          edx, dword ptr [esp + 0x08]                   // 0x00410813    8b542408
                          sub.s                edx, eax                                      // 0x00410817    2bd0
@@ -5946,6 +6043,7 @@ _jmp_addr_0x00410866:    fstp                 st(0)                             
                          nop                                                                // 0x0041087d    90
                          nop                                                                // 0x0041087e    90
                          nop                                                                // 0x0041087f    90
+_Draw__17SetupColourPickerFbb:
                          sub                  esp, 0x14                                     // 0x00410880    83ec14
                          {disp32} mov         eax, dword ptr [data_bytes + 0x4bf2c0]        // 0x00410883    a1c052e800
                          push                 ebx                                           // 0x00410888    53
@@ -6187,6 +6285,7 @@ _jmp_addr_0x00410a88:    {disp8} mov          ecx, dword ptr [esp + 0x28]       
                          nop                                                                // 0x00410b2d    90
                          nop                                                                // 0x00410b2e    90
                          nop                                                                // 0x00410b2f    90
+_KeyDown__17SetupColourPickerFii:
                          {disp32} mov         ecx, dword ptr [ecx + 0x00000234]             // 0x00410b30    8b8934020000
                          test                 ecx, ecx                                      // 0x00410b36    85c9
                          {disp8} je           _jmp_addr_0x00410b48                          // 0x00410b38    740e
@@ -6198,6 +6297,7 @@ _jmp_addr_0x00410a88:    {disp8} mov          ecx, dword ptr [esp + 0x28]       
                          call                 dword ptr [eax]                               // 0x00410b46    ff10
 _jmp_addr_0x00410b48:    ret                  0x0008                                        // 0x00410b48    c20800
                          call                 _jmp_addr_0x00401879                          // 0x00410b4b    e8290dffff
+_Click__17SetupColourPickerFii:
                          ret                  0x0008                                        // 0x00410b50    c20800
                          nop                                                                // 0x00410b53    90
                          nop                                                                // 0x00410b54    90
@@ -6212,6 +6312,7 @@ _jmp_addr_0x00410b48:    ret                  0x0008                            
                          nop                                                                // 0x00410b5d    90
                          nop                                                                // 0x00410b5e    90
                          nop                                                                // 0x00410b5f    90
+___dt__17SetupColourPickerFb:
                          push                 esi                                           // 0x00410b60    56
                          mov.s                esi, ecx                                      // 0x00410b61    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x00410b63    e85888ffff
@@ -6225,6 +6326,7 @@ _jmp_addr_0x00410b78:    mov.s                eax, esi                          
                          ret                  0x0004                                        // 0x00410b7b    c20400
                          nop                                                                // 0x00410b7e    90
                          nop                                                                // 0x00410b7f    90
+_Draw__13SetupCheckBoxFbb:
                          push                 ebx                                           // 0x00410b80    53
                          push                 ebp                                           // 0x00410b81    55
                          push                 esi                                           // 0x00410b82    56
@@ -6600,6 +6702,7 @@ _jmp_addr_0x00410ed7:    call                 _DrawText__10SetupThingFiii11TEXTJ
                          nop                                                                // 0x00410f8d    90
                          nop                                                                // 0x00410f8e    90
                          nop                                                                // 0x00410f8f    90
+_HitTest__13SetupCheckBoxFii:
                          {disp8} mov          eax, dword ptr [ecx + 0x14]                   // 0x00410f90    8b4114
                          push                 ebx                                           // 0x00410f93    53
                          {disp8} mov          ebx, dword ptr [ecx + 0x10]                   // 0x00410f94    8b5910
@@ -6667,6 +6770,7 @@ _jmp_addr_0x00411008:    pop                  edi                               
                          nop                                                                // 0x0041101d    90
                          nop                                                                // 0x0041101e    90
                          nop                                                                // 0x0041101f    90
+_Click__13SetupCheckBoxFii:
                          {disp32} mov         al, byte ptr [ecx + 0x0000024c]               // 0x00411020    8a814c020000
                          test                 al, al                                        // 0x00411026    84c0
                          {disp8} je           _jmp_addr_0x00411037                          // 0x00411028    740d
@@ -6681,6 +6785,7 @@ _jmp_addr_0x00411037:    {disp32} mov         edx, dword ptr [ecx + 0x00000248] 
                          nop                                                                // 0x0041104d    90
                          nop                                                                // 0x0041104e    90
                          nop                                                                // 0x0041104f    90
+_KeyDown__13SetupCheckBoxFii:
                          {disp32} mov         ecx, dword ptr [ecx + 0x00000234]             // 0x00411050    8b8934020000
                          test                 ecx, ecx                                      // 0x00411056    85c9
                          {disp8} je           _jmp_addr_0x00411068                          // 0x00411058    740e
@@ -6692,6 +6797,7 @@ _jmp_addr_0x00411037:    {disp32} mov         edx, dword ptr [ecx + 0x00000248] 
                          call                 dword ptr [eax]                               // 0x00411066    ff10
 _jmp_addr_0x00411068:    ret                  0x0008                                        // 0x00411068    c20800
                          call                 _jmp_addr_0x00401879                          // 0x0041106b    e80908ffff
+___dt__13SetupCheckBoxFb:
                          push                 esi                                           // 0x00411070    56
                          mov.s                esi, ecx                                      // 0x00411071    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x00411073    e84883ffff

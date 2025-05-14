@@ -121,9 +121,12 @@
 .globl _globl_ct_0x0078b030
 .globl _globl_ct_0x0078b060
 .globl _globl_ct_0x0078b080
+.globl _InitEngine__12CreatureRoomFv
+.globl _Reinit__11InnerCameraFv
 
 start_0x007878e0_0x0078b520:
 // Snippet: asm, [0x007878e0, 0x0078b501)
+_InitEngine__12CreatureRoomFv:
                          sub                esp, 0x40                                     // 0x007878e0    83ec40
                          push               esi                                           // 0x007878e3    56
                          mov.s              esi, ecx                                      // 0x007878e4    8bf1
@@ -1019,6 +1022,7 @@ _jmp_addr_0x007885ea:    pop                edi                                 
                          pop                esi                                           // 0x007885eb    5e
                          add                esp, 0x40                                     // 0x007885ec    83c440
                          ret                                                              // 0x007885ef    c3
+_Reinit__11InnerCameraFv:
                          {disp32} mov       eax, dword ptr [ecx + 0x0000043c]             // 0x007885f0    8b813c040000
                          test               eax, eax                                      // 0x007885f6    85c0
                          {disp8} jne        _jmp_addr_0x00788605                          // 0x007885f8    750b

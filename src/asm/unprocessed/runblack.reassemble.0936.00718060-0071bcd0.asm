@@ -168,6 +168,8 @@
 .globl _globl_ct_0x0071a960
 .globl _globl_ct_0x0071a990
 .globl _globl_ct_0x0071a9b0
+.globl _CallVirtualFunctionsForCreation__16ShowNeedsVisualsFRC9MapCoords
+.globl _GetSampleForAttack__9GameThingFv
 
 start_0x00718060_0x0071bcd0:
 // Snippet: asm, [0x00718060, 0x0071bc9c)
@@ -2952,6 +2954,7 @@ _jmp_addr_0x00719de6:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          nop                                                              // 0x00719dfd    90
                          nop                                                              // 0x00719dfe    90
                          nop                                                              // 0x00719dff    90
+_CallVirtualFunctionsForCreation__16ShowNeedsVisualsFRC9MapCoords:
 @CallVirtualFunctionsForCreation__16ShowNeedsVisualsFRC9MapCoords@12:    push               esi                                           // 0x00719e00    56
                          mov.s              esi, ecx                                      // 0x00719e01    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00719e03    8b06
@@ -5688,6 +5691,7 @@ _jmp_addr_0x0071bc0f:    pop                esi                                 
                          nop                                                              // 0x0071bc1d    90
                          nop                                                              // 0x0071bc1e    90
                          nop                                                              // 0x0071bc1f    90
+_GetSampleForAttack__9GameThingFv:
                          xor.s              eax, eax                                      // 0x0071bc20    33c0
                          ret                                                              // 0x0071bc22    c3
                          nop                                                              // 0x0071bc23    90

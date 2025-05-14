@@ -17,9 +17,16 @@
 
 .globl @Draw__11SetupButtonFbb@10
 .globl @__ct__10SetupButtonFiiiiiPwi@36
+.globl _MouseUp__10SetupButtonFiib
+.globl _Draw__11SetupButtonFbb
+.globl _KeyDown__11SetupSliderFii
+.globl _MouseDown__10SetupButtonFiib
+.globl _KeyDown__11SetupButtonFii
+.globl ___dt__11SetupButtonFb
 
 start_0x004097a0_0x00409a40:
 // Snippet: asm, [0x004097a0, 0x00409a1a)
+_Draw__11SetupButtonFbb:
 @Draw__11SetupButtonFbb@10:    push               ebx                                      // 0x004097a0    53
                          {disp8} mov        bl, byte ptr [esp + 0x08]                // 0x004097a1    8a5c2408
                          push               ebp                                      // 0x004097a5    55
@@ -168,16 +175,19 @@ _jmp_addr_0x00409855:    {disp8} mov        edi, dword ptr [esi + 0x10]         
                          nop                                                         // 0x004098fd    90
                          nop                                                         // 0x004098fe    90
                          nop                                                         // 0x004098ff    90
+_MouseDown__10SetupButtonFiib:
                          {disp32} mov       dword ptr [ecx + 0x0000023c], 0x00000001 // 0x00409900    c7813c02000001000000
                          ret                0x000c                                   // 0x0040990a    c20c00
                          nop                                                         // 0x0040990d    90
                          nop                                                         // 0x0040990e    90
                          nop                                                         // 0x0040990f    90
+_MouseUp__10SetupButtonFiib:
                          {disp32} mov       dword ptr [ecx + 0x0000023c], 0x00000000 // 0x00409910    c7813c02000000000000
                          ret                0x000c                                   // 0x0040991a    c20c00
                          nop                                                         // 0x0040991d    90
                          nop                                                         // 0x0040991e    90
                          nop                                                         // 0x0040991f    90
+_KeyDown__11SetupButtonFii:
                          {disp32} mov       ecx, dword ptr [ecx + 0x00000234]        // 0x00409920    8b8934020000
                          test               ecx, ecx                                 // 0x00409926    85c9
                          {disp8} je         _jmp_addr_0x00409938                     // 0x00409928    740e
@@ -189,6 +199,7 @@ _jmp_addr_0x00409855:    {disp8} mov        edi, dword ptr [esi + 0x10]         
                          call               dword ptr [eax]                          // 0x00409936    ff10
 _jmp_addr_0x00409938:    ret                0x0008                                   // 0x00409938    c20800
                          call               _jmp_addr_0x00401879                     // 0x0040993b    e8397fffff
+___dt__11SetupButtonFb:
                          push               esi                                      // 0x00409940    56
                          mov.s              esi, ecx                                 // 0x00409941    8bf1
                          call               @__dt__12SetupControlFv@4                // 0x00409943    e878faffff
@@ -202,6 +213,7 @@ _jmp_addr_0x00409958:    mov.s              eax, esi                            
                          ret                0x0004                                   // 0x0040995b    c20400
                          nop                                                         // 0x0040995e    90
                          nop                                                         // 0x0040995f    90
+_KeyDown__11SetupSliderFii:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00409960    8b442404
                          add                eax, 0xffffff39                          // 0x00409964    0539ffffff
                          xor.s              dl, dl                                   // 0x00409969    32d2

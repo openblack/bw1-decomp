@@ -146,6 +146,7 @@
 .globl _globl_ct_0x0050cdc0
 .globl _globl_ct_0x0050cdf0
 .globl _globl_ct_0x0050ce20
+.globl _GetAngle__14GroupBehaviourFv
 
 start_0x00509480_0x0050d1c0:
 // Snippet: asm, [0x00509480, 0x0050d192)
@@ -5386,6 +5387,7 @@ _jmp_addr_0x0050cc10:    {disp32} mov       dword ptr [data_bytes + 0x2ffcb0], 0
                          nop                                                              // 0x0050cc3d    90
                          nop                                                              // 0x0050cc3e    90
                          nop                                                              // 0x0050cc3f    90
+_GetAngle__14GroupBehaviourFv:
                          {disp32} fld       dword ptr [ecx + 0x000000ac]                  // 0x0050cc40    d981ac000000
                          ret                                                              // 0x0050cc46    c3
                          nop                                                              // 0x0050cc47    90

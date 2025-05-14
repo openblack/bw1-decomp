@@ -76,6 +76,9 @@
 .globl _globl_ct_0x00513790
 .globl _globl_ct_0x005137c0
 .globl _globl_ct_0x005137e0
+.globl _Destroy__13DialogBoxBaseFv
+.globl _Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v
+.globl _Show__13DialogBoxBaseFv
 
 start_0x005132d0_0x00514620:
 // Snippet: asm, [0x005132d0, 0x005145f6)
@@ -212,6 +215,7 @@ _jmp_addr_0x005133f0:    ret                                                    
                          nop                                                             // 0x005133fd    90
                          nop                                                             // 0x005133fe    90
                          nop                                                             // 0x005133ff    90
+_Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v:
 @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20:    sub               esp, 0x10                                     // 0x00513400    83ec10
                          push              ebx                                           // 0x00513403    53
                          push              esi                                           // 0x00513404    56
@@ -325,6 +329,7 @@ _jmp_addr_0x00513565:    {disp8} mov       eax, dword ptr [esp + 0x28]          
                          nop                                                             // 0x0051358d    90
                          nop                                                             // 0x0051358e    90
                          nop                                                             // 0x0051358f    90
+_Destroy__13DialogBoxBaseFv:
 @Destroy__13DialogBoxBaseFv@4:    push              esi                                           // 0x00513590    56
                          {disp8} mov       esi, dword ptr [ecx + 0x04]                   // 0x00513591    8b7104
                          test              esi, esi                                      // 0x00513594    85f6
@@ -362,6 +367,7 @@ _jmp_addr_0x005135ec:    pop               esi                                  
                          ret                                                             // 0x005135ed    c3
                          nop                                                             // 0x005135ee    90
                          nop                                                             // 0x005135ef    90
+_Show__13DialogBoxBaseFv:
 @Show__13DialogBoxBaseFv@4:    cmp               dword ptr [data_bytes + 0x3002a0], 0x0f       // 0x005135f0    833da062cc000f
                          push              esi                                           // 0x005135f7    56
                          mov.s             esi, ecx                                      // 0x005135f8    8bf1
