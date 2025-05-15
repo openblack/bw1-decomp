@@ -61,7 +61,7 @@ static_assert(sizeof(struct GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GAbodeInfo asm("??_R4GAbodeInfo@@6B@");
 
 // win1.41 008a99f8 mac 107346d4 GAbodeInfo::`vftable'
-const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbodeInfo@@6B@");
+extern const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbodeInfo@@6B@");
 
 // Static methods
 
@@ -79,12 +79,12 @@ void __fastcall LoadBinary__10GAbodeInfoFP6LHFile(struct GAbodeInfo* this, const
 
 // Override methods
 
-// win1.41 004011c0 mac 101ca240 GAbodeInfo::~GAbodeInfo(void)
+// win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(void)
 struct Base* __fastcall __dt__10GAbodeInfoFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1GAbodeInfo@@UAE@XZ");
 // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
 struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GAbodeInfo@@UAEPAVGBaseInfo@@AAK@Z");
 // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
-enum MeshId __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@AbodeInfo@@UBE?AW4MeshId@@XZ");
+uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GAbodeInfo@@UBE?AW4MeshId@@XZ");
 // win1.41 00401250 mac 106fde70 GAbodeInfo::GetAbodeType() const
 enum ABODE_TYPE __fastcall GetAbodeType__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm ("?GetAbodeType@GAbodeInfo@@UBE?AW4ABODE_TYPE@@XZ");
 // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
