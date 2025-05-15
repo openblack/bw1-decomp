@@ -45,7 +45,7 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
 .extern _jmp_addr_0x007c6ce0
@@ -349,7 +349,7 @@ _jmp_addr_0x005fa724:    {disp32} jmp       _jmp_addr_0x005fa730                
                          nop                                                              // 0x005fa72e    90
                          nop                                                              // 0x005fa72f    90
 _jmp_addr_0x005fa730:    push               0x00407870                                    // 0x005fa730    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x005fa735    e857b01c00
+                         call               _atexit                                       // 0x005fa735    e857b01c00
                          pop                ecx                                           // 0x005fa73a    59
                          ret                                                              // 0x005fa73b    c3
                          nop                                                              // 0x005fa73c    90
@@ -515,7 +515,7 @@ _jmp_addr_0x005fa864:    {disp32} jmp       _jmp_addr_0x005fa870                
                          nop                                                              // 0x005fa86e    90
                          nop                                                              // 0x005fa86f    90
 _jmp_addr_0x005fa870:    push               0x00407870                                    // 0x005fa870    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x005fa875    e817af1c00
+                         call               _atexit                                       // 0x005fa875    e817af1c00
                          pop                ecx                                           // 0x005fa87a    59
                          ret                                                              // 0x005fa87b    c3
                          nop                                                              // 0x005fa87c    90
@@ -924,7 +924,7 @@ _jmp_addr_0x005fab94:    {disp32} jmp       _jmp_addr_0x005faba0                
                          nop                                                              // 0x005fab9e    90
                          nop                                                              // 0x005fab9f    90
 _jmp_addr_0x005faba0:    push               0x00407870                                    // 0x005faba0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x005faba5    e8e7ab1c00
+                         call               _atexit                                       // 0x005faba5    e8e7ab1c00
                          pop                ecx                                           // 0x005fabaa    59
                          ret                                                              // 0x005fabab    c3
                          nop                                                              // 0x005fabac    90
@@ -1111,7 +1111,7 @@ _jmp_addr_0x005fad24:    {disp32} jmp       _jmp_addr_0x005fad30                
                          nop                                                              // 0x005fad2e    90
                          nop                                                              // 0x005fad2f    90
 _jmp_addr_0x005fad30:    push               0x00407870                                    // 0x005fad30    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x005fad35    e857aa1c00
+                         call               _atexit                                       // 0x005fad35    e857aa1c00
                          pop                ecx                                           // 0x005fad3a    59
                          ret                                                              // 0x005fad3b    c3
                          nop                                                              // 0x005fad3c    90
@@ -1324,7 +1324,7 @@ _jmp_addr_0x005faee4:    {disp32} jmp       _jmp_addr_0x005faef0                
                          nop                                                              // 0x005faeee    90
                          nop                                                              // 0x005faeef    90
 _jmp_addr_0x005faef0:    push               0x00407870                                    // 0x005faef0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x005faef5    e897a81c00
+                         call               _atexit                                       // 0x005faef5    e897a81c00
                          pop                ecx                                           // 0x005faefa    59
                          ret                                                              // 0x005faefb    c3
                          nop                                                              // 0x005faefc    90
@@ -1818,7 +1818,7 @@ _jmp_addr_0x005fb394:    {disp32} jmp       _jmp_addr_0x005fb3a0                
                          nop                                                              // 0x005fb39e    90
                          nop                                                              // 0x005fb39f    90
 _jmp_addr_0x005fb3a0:    push               0x00407870                                    // 0x005fb3a0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x005fb3a5    e8e7a31c00
+                         call               _atexit                                       // 0x005fb3a5    e8e7a31c00
                          pop                ecx                                           // 0x005fb3aa    59
                          ret                                                              // 0x005fb3ab    c3
                          nop                                                              // 0x005fb3ac    90

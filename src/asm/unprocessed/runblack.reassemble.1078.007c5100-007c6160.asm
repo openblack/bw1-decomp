@@ -37,7 +37,7 @@
 
 .globl _jmp_addr_0x007c5394
 .globl _jmp_addr_0x007c56e0
-.globl _jmp_addr_0x007c5791
+.globl _atexit
 .globl _jmp_addr_0x007c57d2
 .globl _jmp_addr_0x007c593a
 .globl _jmp_addr_0x007c5a19
@@ -358,7 +358,7 @@ _jmp_addr_0x007c56e0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          ret              0x0004                                        // 0x007c570b    c20400
                          mov.s            eax, ecx                                      // 0x007c570e    8bc1
                          ret              0x0004                                        // 0x007c5710    c20400
-_jmp_addr_0x007c5713:    push             esi                                           // 0x007c5713    56
+___onexit:               push             esi                                           // 0x007c5713    56
                          call             __lockexit                                    // 0x007c5714    e8ad480000
                          push             dword ptr [data_bytes + 0x5e7cdc]             // 0x007c5719    ff35dcdcfa00
                          call             _jmp_addr_0x007cce94                          // 0x007c571f    e870770000
@@ -395,8 +395,8 @@ _jmp_addr_0x007c5788:    call             __unlockexit                          
                          mov.s            eax, esi                                      // 0x007c578d    8bc6
                          pop              esi                                           // 0x007c578f    5e
                          ret                                                            // 0x007c5790    c3
-_jmp_addr_0x007c5791:    push             dword ptr [esp + 0x04]                        // 0x007c5791    ff742404
-                         call             _jmp_addr_0x007c5713                          // 0x007c5795    e879ffffff
+_atexit:                 push             dword ptr [esp + 0x04]                        // 0x007c5791    ff742404
+                         call             ___onexit                                     // 0x007c5795    e879ffffff
                          neg              eax                                           // 0x007c579a    f7d8
                          sbb.s            eax, eax                                      // 0x007c579c    1bc0
                          pop              ecx                                           // 0x007c579e    59

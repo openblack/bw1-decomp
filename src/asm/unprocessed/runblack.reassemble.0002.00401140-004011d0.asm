@@ -12,8 +12,6 @@
 .globl _globl_ct_0x00401170
 .globl _jmp_addr_0x007d4cc3
 .globl _jmp_addr_0x00401140
-.globl _Delete__4BaseFi
-.globl _Serialise__4BaseFR7Archive
 
 start_0x00401140_0x004011d0:
 // Snippet: asm, [0x00401140, 0x004011cc)
@@ -47,6 +45,7 @@ _globl_ct_0x00401170:    call             _jmp_addr_0x00401180            // 0x0
                          nop                                              // 0x0040117d    90
                          nop                                              // 0x0040117e    90
                          nop                                              // 0x0040117f    90
+
 _jmp_addr_0x00401180:    mov              eax, 0x00c3c690                 // 0x00401180    b890c6c300
                          mov              ecx, 0x00000093                 // 0x00401185    b993000000
                          xor.s            edx, edx                        // 0x0040118a    33d2
@@ -58,38 +57,3 @@ _jmp_addr_0x0040118c:    mov              dword ptr [eax], 0x008a9a44     // 0x0
                          dec              ecx                             // 0x004011a3    49
                          {disp8} jne      _jmp_addr_0x0040118c            // 0x004011a4    75e6
                          ret                                              // 0x004011a6    c3
-                         nop                                              // 0x004011a7    90
-                         nop                                              // 0x004011a8    90
-                         nop                                              // 0x004011a9    90
-                         nop                                              // 0x004011aa    90
-                         nop                                              // 0x004011ab    90
-                         nop                                              // 0x004011ac    90
-                         nop                                              // 0x004011ad    90
-                         nop                                              // 0x004011ae    90
-                         nop                                              // 0x004011af    90
-_Serialise__4BaseFR7Archive:
-                         ret              0x0004                          // 0x004011b0    c20400
-                         nop                                              // 0x004011b3    90
-                         nop                                              // 0x004011b4    90
-                         nop                                              // 0x004011b5    90
-                         nop                                              // 0x004011b6    90
-                         nop                                              // 0x004011b7    90
-                         nop                                              // 0x004011b8    90
-                         nop                                              // 0x004011b9    90
-                         nop                                              // 0x004011ba    90
-                         nop                                              // 0x004011bb    90
-                         nop                                              // 0x004011bc    90
-                         nop                                              // 0x004011bd    90
-                         nop                                              // 0x004011be    90
-                         nop                                              // 0x004011bf    90
-_Delete__4BaseFi:
-                         test             ecx, ecx                        // 0x004011c0    85c9
-                         {disp8} je       _jmp_addr_0x004011cb            // 0x004011c2    7407
-                         mov              eax, dword ptr [ecx]            // 0x004011c4    8b01
-                         push             0x1                             // 0x004011c6    6a01
-                         call             dword ptr [eax + 4]             // 0x004011c8    ff5004
-_jmp_addr_0x004011cb:    ret                                              // 0x004011cb    c3
-
-// Snippet: db, [0x004011cc, 0x004011d0)
-.byte 0x45, 0x16, 0xa1, 0x03      // 0x004011cc
-

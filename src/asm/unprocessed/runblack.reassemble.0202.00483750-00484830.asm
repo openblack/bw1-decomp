@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x006e8210
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c5a19
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faa50
@@ -752,7 +752,7 @@ _jmp_addr_0x00483ed0:    push               esi                                 
                          or.s               dl, al                                        // 0x00483ee1    0ad0
                          push               0x00483f30                                    // 0x00483ee3    68303f4800
                          {disp32} mov       byte ptr [data_bytes + 0x29e194], dl          // 0x00483ee8    88159441c600
-                         call               _jmp_addr_0x007c5791                          // 0x00483eee    e89e183400
+                         call               _atexit                                       // 0x00483eee    e89e183400
                          add                esp, 0x04                                     // 0x00483ef3    83c404
 _jmp_addr_0x00483ef6:    {disp32} mov       eax, dword ptr [esi + 0x00005198]             // 0x00483ef6    8b8698510000
                          {disp32} fld       dword ptr [eax + 0x00064078]                  // 0x00483efc    d98078400600

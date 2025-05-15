@@ -68,7 +68,7 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c5a19
 .extern _toupper
 .extern _jmp_addr_0x007c5f8c
@@ -2209,7 +2209,7 @@ _jmp_addr_0x00407854:    {disp32} jmp       _jmp_addr_0x00407860                
                          nop                                                              // 0x0040785e    90
                          nop                                                              // 0x0040785f    90
 _jmp_addr_0x00407860:    push               0x00407870                                    // 0x00407860    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x00407865    e827df3b00
+                         call               _atexit                                       // 0x00407865    e827df3b00
                          pop                ecx                                           // 0x0040786a    59
                          ret                                                              // 0x0040786b    c3
                          nop                                                              // 0x0040786c    90

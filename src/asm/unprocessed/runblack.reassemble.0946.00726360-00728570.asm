@@ -252,7 +252,7 @@
 .extern ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007c6425
@@ -1175,7 +1175,7 @@ _jmp_addr_0x00726d80:    xor.s              eax, eax                            
                          nop                                                                     // 0x00726d8e    90
                          nop                                                                     // 0x00726d8f    90
 _jmp_addr_0x00726d90:    push               0x00726da0                                           // 0x00726d90    68a06d7200
-                         call               _jmp_addr_0x007c5791                                 // 0x00726d95    e8f7e90900
+                         call               _atexit                                              // 0x00726d95    e8f7e90900
                          pop                ecx                                                  // 0x00726d9a    59
                          ret                                                                     // 0x00726d9b    c3
                          nop                                                                     // 0x00726d9c    90
@@ -2765,7 +2765,7 @@ _jmp_addr_0x00727e74:    {disp32} jmp       _jmp_addr_0x00727e80                
                          nop                                                                     // 0x00727e7e    90
                          nop                                                                     // 0x00727e7f    90
 _jmp_addr_0x00727e80:    push               0x00407870                                           // 0x00727e80    6870784000
-                         call               _jmp_addr_0x007c5791                                 // 0x00727e85    e807d90900
+                         call               _atexit                                              // 0x00727e85    e807d90900
                          pop                ecx                                                  // 0x00727e8a    59
                          ret                                                                     // 0x00727e8b    c3
                          nop                                                                     // 0x00727e8c    90
