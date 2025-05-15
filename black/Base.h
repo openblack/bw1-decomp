@@ -31,7 +31,11 @@ struct Base
 };
 static_assert(sizeof(struct Base) == 0x8, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__4Base = (struct BaseVftable* const)0x008a9a44;
+// win1.41 008a9a40 mac 10733fb4 Base::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Base asm("??_R4Base@@6B@");
+
+// win1.41 008a9a44 mac 1073400c Base::`vftable'
+extern const struct BaseVftable __vt__4Base asm("??_7Base@@6B@");
 
 // Static methods
 
