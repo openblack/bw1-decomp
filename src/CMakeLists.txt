@@ -59,15 +59,23 @@ find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 set(SOURCES_001
     asm/unprocessed/rdata.000.008a9000-008a99c0.dllimports.asm
     asm/unprocessed/rdata.002.008a99c0-008a99d0-image_debug_directory.asm
+
+    asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
+    asm/unprocessed/runblack.reassemble.0002.00401140-004011b0.asm
+
+    c/Base.000.c
+    c/BaseInfo.000.c
     c/AbodeInfo.000.c
+    c/Base.001.c
+    c/ObjectInfo.000.c
+
+    asm/unprocessed/runblack.reassemble.0004.004012d0-004012e0.asm
+
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
 
-    asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
-    asm/unprocessed/runblack.reassemble.0002.00401140-004011d0.asm
-    asm/unprocessed/runblack.reassemble.0004.004011d0-004012e0.asm
     asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
     asm/unprocessed/runblack.reassemble.0014.004060c0-004061a0.asm
@@ -447,7 +455,8 @@ set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
     asm/unprocessed/rdata.006.009a62d4-009bbcc0-rtti.asm
     asm/unprocessed/rdata.007.009bbcc0-009c5564.asm
-    asm/unprocessed/data.003.00c2d680-0x00c3cff0.asm
+    asm/unprocessed/data.003.00c2d680-0x00c3c680.asm
+    asm/unprocessed/data.004.0x00c3c680-0x00c3cff0.asm
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})

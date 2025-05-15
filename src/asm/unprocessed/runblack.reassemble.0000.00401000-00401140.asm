@@ -14,8 +14,6 @@
 .globl _globl_ct_0x00401070
 .globl _globl_ct_0x00401120
 
-start_0x00401000_0x00401140:
-// Snippet: asm, [0x00401000, 0x0040113b)
 _jmp_addr_0x00401000:    {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x00401000    8b44240c
                          push              ebx                                           // 0x00401004    53
                          {disp8} mov       ebx, dword ptr [esp + 0x0c]                   // 0x00401005    8b5c240c
@@ -188,8 +186,6 @@ _globl_ct_0x00401120:    {disp32} jmp      _jmp_addr_0x00401130                 
                          nop                                                             // 0x0040112f    90
 _jmp_addr_0x00401130:    {disp32} mov      dword ptr [data_bytes + 0x276684], 0xffffffff // 0x00401130    c70584c6c300ffffffff
                          ret                                                             // 0x0040113a    c3
-
-// Snippet: db, [0x0040113b, 0x00401140)
-.byte 0xe8, 0x39, 0x07, 0x00      // 0x0040113b
-.byte 0x00                        // 0x0040113f
+// SEH Code path ??
+                         call               _jmp_addr_0x00401879                         // 0x0040113b    e839070000
 

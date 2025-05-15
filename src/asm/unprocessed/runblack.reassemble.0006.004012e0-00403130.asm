@@ -7,8 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004012a4
-.extern _jmp_addr_0x004012b4
 .extern @Init__5AbodeFiUlUl@20
 .extern _jmp_addr_0x00403190
 .extern _jmp_addr_0x00403d20
@@ -884,9 +882,10 @@ _jmp_addr_0x004017dd:    mov.s              eax, esi                            
 _CalculateInfluence__9GameThingFRC9MapCoords:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1390]         // 0x004017f0    d90590a38a00
                          ret                0x0004                                   // 0x004017f6    c20400
+                         // SEH code path?
 _jmp_addr_0x004017f9:    push               ecx                                      // 0x004017f9    51
                          push               eax                                      // 0x004017fa    50
-                         call               _jmp_addr_0x004012a4                     // 0x004017fb    e8a4faffff
+                         call               ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ + 4                     // 0x004017fb    e8a4faffff
 _RemoveDance__9GameThingFv:
                          ret                                                         // 0x00401800    c3
                          nop                                                         // 0x00401801    90
@@ -988,7 +987,7 @@ _GetVillagerActivityDesire__9GameThingFP8Villager:
                          ret                0x0004                                   // 0x00401876    c20400
 _jmp_addr_0x00401879:    push               ecx                                      // 0x00401879    51
                          push               eax                                      // 0x0040187a    50
-                         call               _jmp_addr_0x004012b4                     // 0x0040187b    e834faffff
+                         call               ?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ + 4                     // 0x0040187b    e834faffff
 _SetVillagerActivity__9GameThingFP8Villager:
                          xor.s              eax, eax                                 // 0x00401880    33c0
                          ret                0x0004                                   // 0x00401882    c20400
