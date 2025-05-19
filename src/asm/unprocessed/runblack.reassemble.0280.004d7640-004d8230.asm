@@ -751,7 +751,7 @@ _jmp_addr_0x004d7bd0:    push               esi                                 
                          mov.s              ecx, edi                                      // 0x004d7c1c    8bcf
                          call               dword ptr [edx + 0x42c]                       // 0x004d7c1e    ff922c040000
                          {disp32} fstp      dword ptr [esi + 0x0001d3d0]                  // 0x004d7c24    d99ed0d30100
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x004d7c2a    a15c19d000
+                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x004d7c2a    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205a40]             // 0x004d7c2f    8b88405a2000
                          {disp32} mov       dword ptr [esi + 0x0001d3d4], ecx             // 0x004d7c35    898ed4d30100
                          {disp32} mov       dword ptr [esi + 0x0001d3d8], 0x3f000000      // 0x004d7c3b    c786d8d301000000003f
@@ -1046,7 +1046,7 @@ _jmp_addr_0x004d7ee2:    {disp8} mov        ecx, dword ptr [esi + 0x30]         
                          {disp8} je         _jmp_addr_0x004d7f23                          // 0x004d7ef3    742e
                          cmp                dword ptr [esi + 0x30], edi                   // 0x004d7ef5    397e30
                          {disp8} je         _jmp_addr_0x004d7f23                          // 0x004d7ef8    7429
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x004d7efa    a15c19d000
+                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x004d7efa    a15c19d000
                          {disp32} mov       eax, dword ptr [eax + 0x00205a40]             // 0x004d7eff    8b80405a2000
                          {disp8} mov        ebx, dword ptr [esi + 0x3c]                   // 0x004d7f05    8b5e3c
                          mov.s              ecx, eax                                      // 0x004d7f08    8bc8

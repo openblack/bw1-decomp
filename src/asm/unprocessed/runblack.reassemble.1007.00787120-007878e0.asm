@@ -36,7 +36,7 @@ start_0x00787120_0x007878e0:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x44001c]        // 0x00787128    a11c60e000
                          test               eax, eax                                      // 0x0078712d    85c0
                          {disp8} je         _jmp_addr_0x00787148                          // 0x0078712f    7417
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00787131    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00787131    8b0d5c19d000
                          call               _jmp_addr_0x00553a70                          // 0x00787137    e834c9dcff
                          {disp32} mov       dword ptr [data_bytes + 0x44001c], 0x00000000 // 0x0078713c    c7051c60e00000000000
                          pop                esi                                           // 0x00787146    5e
@@ -311,7 +311,7 @@ _jmp_addr_0x0078740b:    pop                edi                                 
                          sub                esp, 0x38                                     // 0x00787420    83ec38
                          xor.s              eax, eax                                      // 0x00787423    33c0
                          push               ebx                                           // 0x00787425    53
-                         {disp32} mov       ebx, dword ptr [data_bytes + 0x33b95c]        // 0x00787426    8b1d5c19d000
+                         {disp32} mov       ebx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00787426    8b1d5c19d000
                          {disp32} mov       al, byte ptr [ebx + 0x00205a59]               // 0x0078742c    8a83595a2000
                          push               ebp                                           // 0x00787432    55
                          push               esi                                           // 0x00787433    56
@@ -326,7 +326,7 @@ _jmp_addr_0x0078740b:    pop                edi                                 
                          {disp8} mov        dword ptr [esp + 0x18], edx                   // 0x00787452    89542418
                          xor.s              esi, esi                                      // 0x00787456    33f6
                          {disp8} jmp        _jmp_addr_0x00787460                          // 0x00787458    eb06
-_jmp_addr_0x0078745a:    {disp32} mov       ebx, dword ptr [data_bytes + 0x33b95c]        // 0x0078745a    8b1d5c19d000
+_jmp_addr_0x0078745a:    {disp32} mov       ebx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0078745a    8b1d5c19d000
 _jmp_addr_0x00787460:    mov.s              eax, esi                                      // 0x00787460    8bc6
                          cdq                                                              // 0x00787462    99
                          mov                ecx, 0x00000007                               // 0x00787463    b907000000
@@ -627,7 +627,7 @@ _jmp_addr_0x007877ce:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          {disp8} jne        _jmp_addr_0x007878b4                          // 0x0078786e    7544
                          cmp                ecx, -0x01                                    // 0x00787870    83f9ff
                          {disp8} je         _jmp_addr_0x007878b4                          // 0x00787873    743f
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x33b95c]        // 0x00787875    8b155c19d000
+                         {disp32} mov       edx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00787875    8b155c19d000
                          xor.s              eax, eax                                      // 0x0078787b    33c0
                          {disp32} mov       al, byte ptr [edx + 0x00205a59]               // 0x0078787d    8a82595a2000
                          push               -0x1                                          // 0x00787883    6aff

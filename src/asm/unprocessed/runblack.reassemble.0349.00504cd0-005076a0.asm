@@ -705,7 +705,7 @@ _jmp_addr_0x0050529e:    pop                edi                                 
                          call               _jmp_addr_0x004f60b0                                 // 0x005053bb    e8f00cffff
                          test               eax, eax                                             // 0x005053c0    85c0
                          {disp8} je         _jmp_addr_0x005053d8                                 // 0x005053c2    7414
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x33b95c]               // 0x005053c4    8b155c19d000
+                         {disp32} mov       edx, dword ptr [_data_bytes_uint_0x00d0195c]               // 0x005053c4    8b155c19d000
                          {disp32} mov       eax, dword ptr [edx + 0x00205a40]                    // 0x005053ca    8b82405a2000
                          {disp8} mov        dword ptr [edi + 0x78], eax                          // 0x005053d0    894778
 _jmp_addr_0x005053d3:    pop                edi                                                  // 0x005053d3    5f
@@ -715,7 +715,7 @@ _jmp_addr_0x005053d3:    pop                edi                                 
 _jmp_addr_0x005053d8:    dec                word ptr [esi + 0x58]                                // 0x005053d8    66ff4e58
                          cmp                word ptr [esi + 0x58], 0x00                          // 0x005053dc    66837e5800
                          {disp8} jne        _jmp_addr_0x005053d3                                 // 0x005053e1    75f0
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]               // 0x005053e3    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]               // 0x005053e3    8b0d5c19d000
                          {disp32} mov       edx, dword ptr [ecx + 0x00205a40]                    // 0x005053e9    8b91405a2000
                          {disp8} mov        dword ptr [edi + 0x78], edx                          // 0x005053ef    895778
                          pop                edi                                                  // 0x005053f2    5f
@@ -1677,7 +1677,7 @@ _jmp_addr_0x00505f4f:    pop                edi                                 
                          pop                esi                                                  // 0x00505f55    5e
                          add                esp, 0x0c                                            // 0x00505f56    83c40c
                          ret                                                                     // 0x00505f59    c3
-                         call               dword ptr [rdata_bytes + 0xd8]                       // 0x00505f5a    ff15d8908a00
+                         call               dword ptr [__imp___ChangeParameters_CImmPeriodic__QAEHKKKJJJKPAUFEELIT_ENVELOPE___Z@4]                       // 0x00505f5a    ff15d8908a00
                          sub                esp, 0x08                                            // 0x00505f60    83ec08
                          xor.s              edx, edx                                             // 0x00505f63    33d2
                          mov                eax, 0x000003e8                                      // 0x00505f65    b8e8030000
