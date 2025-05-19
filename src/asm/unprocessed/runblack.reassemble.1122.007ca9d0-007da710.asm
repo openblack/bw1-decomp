@@ -87,7 +87,7 @@
 .globl __unlock
 .globl ___crtLCMapStringA
 .globl __isctype
-.globl _jmp_addr_0x007cba08
+.globl _strtod
 .globl _jmp_addr_0x007cbab2
 .globl _jmp_addr_0x007cbb41
 .globl _jmp_addr_0x007cbbd6
@@ -1647,7 +1647,7 @@ _jmp_addr_0x007cb9ff:    movzx              eax, word ptr [ebp + 0x0a]          
 _jmp_addr_0x007cba03:    and                eax, dword ptr [ebp + 0x0c]                    // 0x007cba03    23450c
                          leave                                                             // 0x007cba06    c9
                          ret                                                               // 0x007cba07    c3
-_jmp_addr_0x007cba08:    push               ebp                                            // 0x007cba08    55
+_strtod:                 push               ebp                                            // 0x007cba08    55
                          mov.s              ebp, esp                                       // 0x007cba09    8bec
                          sub                esp, 0x20                                      // 0x007cba0b    83ec20
                          push               esi                                            // 0x007cba0e    56
@@ -1699,7 +1699,7 @@ _jmp_addr_0x007cba6a:    mov                edx, dword ptr [eax]                
 _jmp_addr_0x007cba7d:    test               dl, -0x7f                                      // 0x007cba7d    f6c281
                          {disp8} je         _jmp_addr_0x007cbaa2                           // 0x007cba80    7420
                          cmp                byte ptr [esi], 0x2d                           // 0x007cba82    803e2d
-                         {disp32} fld       qword ptr [data_bytes + 0x26ac08]              // 0x007cba85    dd05080cc300
+                         {disp32} fld       qword ptr [__HUGE]                             // 0x007cba85    dd05080cc300
                          {disp8} jne        _jmp_addr_0x007cba8f                           // 0x007cba8b    7502
                          fchs                                                              // 0x007cba8d    d9e0
 _jmp_addr_0x007cba8f:    {disp8} fstp       qword ptr [ebp + -0x08]                        // 0x007cba8f    dd5df8
