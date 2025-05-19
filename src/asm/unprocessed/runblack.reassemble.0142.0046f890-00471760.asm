@@ -2237,7 +2237,7 @@ _jmp_addr_0x00471620:    sub                esp, 0x00000104                     
                          call               _jmp_addr_0x00471910                          // 0x00471659    e8b2020000
                          test               eax, eax                                      // 0x0047165e    85c0
                          {disp8} je         _jmp_addr_0x0047168c                          // 0x00471660    742a
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00471662    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00471662    8b0d5c19d000
                          {disp32} mov       ecx, dword ptr [ecx + 0x00250300]             // 0x00471668    8b8900032500
                          call               _jmp_addr_0x00471760                          // 0x0047166e    e8ed000000
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x00471673    8d4c240c

@@ -1,13 +1,11 @@
 #include "AbodeInfo.h"
 
-const float floats_0x008a99dc[] = {
-    10.0f,
-    365.25f,
-    86400.0f,
-    10.0f,
-    1000.0f,
-    512.0f,
-};
+const float abode_info_float_0x008a99dc = 10.0f;
+const float abode_info_float_0x008a99e0 = 365.25f;
+const float abode_info_float_0x008a99e4 = 86400.0f;
+const float abode_info_float_0x008a99e8 = 10.0f;
+const float abode_info_float_0x008a99ec = 1000.0f;
+const float abode_info_float_0x008a99f0 = 512.0f;
 
 uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this)
 {

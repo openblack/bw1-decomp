@@ -45,14 +45,21 @@ _globl_ct_0x00401170:    call             _jmp_addr_0x00401180            // 0x0
                          nop                                              // 0x0040117d    90
                          nop                                              // 0x0040117e    90
                          nop                                              // 0x0040117f    90
-
-_jmp_addr_0x00401180:    mov              eax, 0x00c3c690                 // 0x00401180    b890c6c300
+_jmp_addr_0x00401180:
+.att_syntax
+                         mov    $_data_bytes_uint_0x00c3c690, %eax        // 0x00401180    b890c6c300
+.intel_syntax noprefix
                          mov              ecx, 0x00000093                 // 0x00401185    b993000000
                          xor.s            edx, edx                        // 0x0040118a    33d2
-_jmp_addr_0x0040118c:    mov              dword ptr [eax], 0x008a9a44     // 0x0040118c    c700449a8a00
+_jmp_addr_0x0040118c:
+.att_syntax
+                         movl    $??_7Base@@6B@, (%eax)                   // 0x0040118c    c700449a8a00
+.intel_syntax noprefix
                          {disp8} mov      dword ptr [eax + 0x04], edx     // 0x00401192    895004
                          {disp8} mov      dword ptr [eax + 0x08], edx     // 0x00401195    895008
-                         mov              dword ptr [eax], 0x008a99f8     // 0x00401198    c700f8998a00
+.att_syntax
+                         movl    $??_7GAbodeInfo@@6B@, (%eax)             // 0x00401198    c700f8998a00
+.intel_syntax noprefix
                          add              eax, 0x000001c8                 // 0x0040119e    05c8010000
                          dec              ecx                             // 0x004011a3    49
                          {disp8} jne      _jmp_addr_0x0040118c            // 0x004011a4    75e6

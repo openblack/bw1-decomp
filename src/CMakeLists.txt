@@ -455,8 +455,8 @@ set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
     asm/unprocessed/rdata.006.009a62d4-009bbcc0-rtti.asm
     asm/unprocessed/rdata.007.009bbcc0-009c5564.asm
-    asm/unprocessed/data.003.00c2d680-0x00c3c680.asm
-    asm/unprocessed/data.004.0x00c3c680-0x00c3cff0.asm
+    asm/unprocessed/data.003.00c2d680-00c3c680.asm
+    asm/unprocessed/data.004.00c3c680-00c3cff0.asm
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})

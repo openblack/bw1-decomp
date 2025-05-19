@@ -1,12 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
-.extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern  ___dl__FPv
 
 .globl _jmp_addr_0x00401000
@@ -65,9 +59,9 @@ _globl_ct_0x00401040:    {disp32} jmp      _jmp_addr_0x00401050                 
                          nop                                                             // 0x0040104d    90
                          nop                                                             // 0x0040104e    90
                          nop                                                             // 0x0040104f    90
-_jmp_addr_0x00401050:    {disp32} fld      dword ptr [rdata_bytes + 0x9e4]               // 0x00401050    d905e4998a00
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x9e0]               // 0x00401056    d80de0998a00
-                         {disp32} fstp     dword ptr [data_bytes + 0x27668c]             // 0x0040105c    d91d8cc6c300
+_jmp_addr_0x00401050:    {disp32} fld      dword ptr [_abode_info_float_0x008a99e4]      // 0x00401050    d905e4998a00
+                         {disp32} fmul     dword ptr [_abode_info_float_0x008a99e0]      // 0x00401056    d80de0998a00
+                         {disp32} fstp     dword ptr [_data_bytes_float_0x00c3c68c]      // 0x0040105c    d91d8cc6c300
                          ret                                                             // 0x00401062    c3
                          nop                                                             // 0x00401063    90
                          nop                                                             // 0x00401064    90
@@ -94,9 +88,9 @@ _globl_ct_0x00401070:    {disp32} jmp      _jmp_addr_0x00401080                 
                          nop                                                             // 0x0040107d    90
                          nop                                                             // 0x0040107e    90
                          nop                                                             // 0x0040107f    90
-_jmp_addr_0x00401080:    {disp32} fld      dword ptr [rdata_bytes + 0x9e8]               // 0x00401080    d905e8998a00
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x9f0]               // 0x00401086    d80df0998a00
-                         {disp32} fstp     dword ptr [data_bytes + 0x276688]             // 0x0040108c    d91d88c6c300
+_jmp_addr_0x00401080:    {disp32} fld      dword ptr [_abode_info_float_0x008a99e8]      // 0x00401080    d905e8998a00
+                         {disp32} fmul     dword ptr [_abode_info_float_0x008a99f0]      // 0x00401086    d80df0998a00
+                         {disp32} fstp     dword ptr [_data_bytes_float_0x00c3c688]      // 0x0040108c    d91d88c6c300
                          ret                                                             // 0x00401092    c3
                          nop                                                             // 0x00401093    90
                          nop                                                             // 0x00401094    90
@@ -184,7 +178,7 @@ _globl_ct_0x00401120:    {disp32} jmp      _jmp_addr_0x00401130                 
                          nop                                                             // 0x0040112d    90
                          nop                                                             // 0x0040112e    90
                          nop                                                             // 0x0040112f    90
-_jmp_addr_0x00401130:    {disp32} mov      dword ptr [data_bytes + 0x276684], 0xffffffff // 0x00401130    c70584c6c300ffffffff
+_jmp_addr_0x00401130:    {disp32} mov      dword ptr [_data_bytes_float_0x00c3c684], 0xffffffff // 0x00401130    c70584c6c300ffffffff
                          ret                                                             // 0x0040113a    c3
 // SEH Code path ??
                          call               _jmp_addr_0x00401879                         // 0x0040113b    e839070000

@@ -28,13 +28,13 @@ _jmp_addr_0x0053f3e0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          cmp              esi, 0x00000902                        // 0x0053f409    81fe02090000
                          {disp32} jge     _jmp_addr_0x0053f521                   // 0x0053f40f    0f8d0c010000
                          call             _HideAll__13DialogBoxBaseFv@0          // 0x0053f415    e8c642fdff
-                         {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c] // 0x0053f41a    a15c19d000
+                         {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c] // 0x0053f41a    a15c19d000
                          cmp              dword ptr [eax + 0x00205a28], 0x01     // 0x0053f41f    83b8285a200001
                          {disp8} je       _jmp_addr_0x0053f438                   // 0x0053f426    7410
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x30a65c] // 0x0053f428    8b0d5c06cd00
                          mov              eax, dword ptr [ecx]                   // 0x0053f42e    8b01
                          call             dword ptr [eax + 0xc]                  // 0x0053f430    ff500c
-                         {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c] // 0x0053f433    a15c19d000
+                         {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c] // 0x0053f433    a15c19d000
 _jmp_addr_0x0053f438:    {disp32} lea     ecx, dword ptr [esi + -0x000008fd]     // 0x0053f438    8d8e03f7ffff
                          cmp              ecx, 0x04                              // 0x0053f43e    83f904
                          {disp32} ja      _jmp_addr_0x0053f521                   // 0x0053f441    0f87da000000
@@ -81,7 +81,7 @@ _jmp_addr_0x0053f4a3:    cmp              eax, 0x06                             
                          call             @FindControl__8SetupBoxFi@12           // 0x0053f4b3    e8a88cecff
                          test             eax, eax                               // 0x0053f4b8    85c0
                          {disp8} je       _jmp_addr_0x0053f521                   // 0x0053f4ba    7465
-                         {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c] // 0x0053f4bc    a15c19d000
+                         {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c] // 0x0053f4bc    a15c19d000
                          cmp              dword ptr [eax + 0x00205a28], 0x01     // 0x0053f4c1    83b8285a200001
                          {disp32} mov     eax, dword ptr [data_bytes + 0x351cac] // 0x0053f4c8    a1ac7cd100
                          {disp8} jne      _jmp_addr_0x0053f4eb                   // 0x0053f4cd    751c
