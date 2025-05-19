@@ -221,7 +221,7 @@ _jmp_addr_0x00471963:    push             esi                                   
                          test             bl, bl                                        // 0x0047199e    84db
                          pop              ebx                                           // 0x004719a0    5b
                          {disp8} je       _jmp_addr_0x004719c6                          // 0x004719a1    7423
-                         {disp32} mov     ecx, dword ptr [data_bytes + 0x33b95c]        // 0x004719a3    8b0d5c19d000
+                         {disp32} mov     ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x004719a3    8b0d5c19d000
                          {disp32} mov     ecx, dword ptr [ecx + 0x00250300]             // 0x004719a9    8b8900032500
                          call             _jmp_addr_0x00471760                          // 0x004719af    e8acfdffff
                          cmp              eax, -0x01                                    // 0x004719b4    83f8ff

@@ -381,7 +381,7 @@ _jmp_addr_0x0056ddc5:    call               _adjusty__10SetupThingFi            
                          {disp8} mov        dword ptr [esp + 0x14], esi                   // 0x0056ddd2    89742414
                          {disp8} jge        _jmp_addr_0x0056dde0                          // 0x0056ddd6    7d08
                          {disp8} mov        dword ptr [esp + 0x14], 0x0000000a            // 0x0056ddd8    c74424140a000000
-_jmp_addr_0x0056dde0:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0056dde0    8b0d5c19d000
+_jmp_addr_0x0056dde0:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056dde0    8b0d5c19d000
                          {disp32} mov       eax, dword ptr [ecx + 0x00250538]             // 0x0056dde6    8b8138052500
                          test               eax, eax                                      // 0x0056ddec    85c0
                          {disp32} je        _jmp_addr_0x0056e0aa                          // 0x0056ddee    0f84b6020000
@@ -390,7 +390,7 @@ _jmp_addr_0x0056dde0:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95
                          call               @GetPlayer__5GGameFUl@12                      // 0x0056ddf9    e8b22bfeff
                          test               eax, eax                                      // 0x0056ddfe    85c0
                          {disp32} je        _jmp_addr_0x0056e0aa                          // 0x0056de00    0f84a4020000
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]        // 0x0056de06    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056de06    8b0d5c19d000
                          push               esi                                           // 0x0056de0c    56
                          call               @GetPlayer__5GGameFUl@12                      // 0x0056de0d    e89e2bfeff
                          {disp32} mov       ecx, dword ptr [eax + 0x00000a4c]             // 0x0056de12    8b884c0a0000

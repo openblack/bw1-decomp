@@ -112,7 +112,7 @@ _jmp_addr_0x005e2e22:    {disp32} mov       ecx, dword ptr [data_bytes + 0x3542f
                          push               0x0                                     // 0x005e2e56    6a00
                          mov                edx, 0x00d1a2e0                         // 0x005e2e58    bae0a2d100
                          call               dword ptr [eax + 0x20]                  // 0x005e2e5d    ff5020
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]  // 0x005e2e60    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]  // 0x005e2e60    8b0d5c19d000
                          {disp32} mov       esi, dword ptr [ecx + 0x00205d48]       // 0x005e2e66    8bb1485d2000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x3542f0]  // 0x005e2e6c    8b0df0a2d100
                          mov                edx, dword ptr [ecx]                    // 0x005e2e72    8b11

@@ -30,7 +30,7 @@
 
 start_0x0070f350_0x0070f7a0:
 // Snippet: asm, [0x0070f350, 0x0070f753)
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x0070f350    a15c19d000
+                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0070f350    a15c19d000
                          {disp32} mov       eax, dword ptr [eax + 0x00250090]             // 0x0070f355    8b8090002500
                          {disp8} mov        ecx, dword ptr [eax + 0x20]                   // 0x0070f35b    8b4820
                          {disp8} mov        edx, dword ptr [eax + 0x24]                   // 0x0070f35e    8b5024
@@ -93,11 +93,11 @@ _jmp_addr_0x0070f3e1:    mov                edx, dword ptr [esi]                
                          call               dword ptr [edx + 0x3f8]                       // 0x0070f3e5    ff92f8030000
                          test               eax, eax                                      // 0x0070f3eb    85c0
                          {disp8} je         _jmp_addr_0x0070f45f                          // 0x0070f3ed    7470
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x0070f3ef    a15c19d000
+                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0070f3ef    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00250090]             // 0x0070f3f4    8b8890002500
                          {disp8} mov        edx, dword ptr [esp + 0x0c]                   // 0x0070f3fa    8b54240c
                          {disp8} mov        dword ptr [ecx + 0x20], edx                   // 0x0070f3fe    895120
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]        // 0x0070f401    a15c19d000
+                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0070f401    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00250090]             // 0x0070f406    8b8890002500
                          {disp8} mov        dword ptr [ecx + 0x24], edi                   // 0x0070f40c    897924
                          mov                edx, dword ptr [esi]                          // 0x0070f40f    8b16

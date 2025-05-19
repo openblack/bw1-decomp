@@ -351,11 +351,11 @@ _jmp_addr_0x0078cbd7:    pop              esi                                   
                          nop                                                     // 0x0078cbdd    90
                          nop                                                     // 0x0078cbde    90
                          nop                                                     // 0x0078cbdf    90
-                         {disp32} mov     ecx, dword ptr [data_bytes + 0x33b95c] // 0x0078cbe0    8b0d5c19d000
+                         {disp32} mov     ecx, dword ptr [_data_bytes_uint_0x00d0195c] // 0x0078cbe0    8b0d5c19d000
                          call             @IsMultiplayerGame__5GGameCFv@4        // 0x0078cbe6    e89563dcff
                          test             eax, eax                               // 0x0078cbeb    85c0
                          {disp8} jne      _jmp_addr_0x0078cc03                   // 0x0078cbed    7514
-                         {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c] // 0x0078cbef    a15c19d000
+                         {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c] // 0x0078cbef    a15c19d000
                          {disp32} mov     ecx, dword ptr [eax + 0x00205a0c]      // 0x0078cbf4    8b880c5a2000
                          test             ecx, ecx                               // 0x0078cbfa    85c9
                          {disp32} mov     eax, dword ptr [data_bytes + 0x4741b0] // 0x0078cbfc    a1b0a1e300
