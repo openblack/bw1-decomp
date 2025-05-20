@@ -425,6 +425,7 @@
 .globl _jmp_addr_0x0054b180
 .globl _jmp_addr_0x0054b190
 .globl @__ct__5GGameFv@4
+.globl ??1GGame@@UAE@XZ
 .globl _jmp_addr_0x0054b820
 .globl @Reset__7LHTimerFUl@12
 .globl @__ct__10GKeyBuffer@4
@@ -2750,7 +2751,7 @@ _jmp_addr_0x0054bb90:    xor.s              eax, eax                            
                          ret                                                              // 0x0054bb9d    c3
                          nop                                                              // 0x0054bb9e    90
                          nop                                                              // 0x0054bb9f    90
-                         push               ebx                                           // 0x0054bba0    53
+??1GGame@@UAE@XZ:        push               ebx                                           // 0x0054bba0    53
                          push               esi                                           // 0x0054bba1    56
                          mov.s              esi, ecx                                      // 0x0054bba2    8bf1
                          push               edi                                           // 0x0054bba4    57
