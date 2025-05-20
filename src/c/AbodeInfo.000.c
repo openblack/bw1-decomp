@@ -1,5 +1,10 @@
 #include "AbodeInfo.h"
 
+__attribute__((section(".data$Z"))) int abode_info_bool_00c3c680 = 0;
+__attribute__((section(".data$Z"))) float abode_info_float_0x00c3c684 = 0.0f;
+__attribute__((section(".data$Z"))) float abode_info_float_0x00c3c688 = 0.0f;
+__attribute__((section(".data$Z"))) float abode_info_float_0x00c3c68c = 0.0f;
+
 const float abode_info_float_0x008a99dc = 10.0f;
 const float abode_info_float_0x008a99e0 = 365.25f;
 const float abode_info_float_0x008a99e4 = 86400.0f;
