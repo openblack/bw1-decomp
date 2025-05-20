@@ -14,14 +14,14 @@ _jmp_addr_0x004012d0:
 
 .byte 0x90, 0x25, 0xa2, 0x03                                                         // 0x004012dc
 
-_jmp_addr_0x004012e0:    {disp32} mov       cl, byte ptr [_data_bytes_byte_0x00c3c680]     // 0x004012e0    8a0d80c6c300
+_jmp_addr_0x004012e0:    {disp32} mov       cl, byte ptr [_abode_info_bool_00c3c680]     // 0x004012e0    8a0d80c6c300
                          mov                al, 0x01                                 // 0x004012e6    b001
                          test               al, cl                                   // 0x004012e8    84c8
                          {disp8} jne        _jmp_addr_0x00401312                     // 0x004012ea    7526
                          push               esi                                      // 0x004012ec    56
                          or.s               cl, al                                   // 0x004012ed    0ac8
                          push               edi                                      // 0x004012ef    57
-                         {disp32} mov       byte ptr [_data_bytes_byte_0x00c3c680], cl     // 0x004012f0    880d80c6c300
+                         {disp32} mov       byte ptr [_abode_info_bool_00c3c680], cl     // 0x004012f0    880d80c6c300
                          mov                esi, 0x00c4cc68                          // 0x004012f6    be68ccc400
                          mov                edi, 0x00000093                          // 0x004012fb    bf93000000
 _jmp_addr_0x00401300:    sub                esi, 0x000001c8                          // 0x00401300    81eec8010000
