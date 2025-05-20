@@ -55,7 +55,7 @@ void __fastcall SetInfo__4BaseCFP8BaseInfo(const struct Base* this, const void* 
 // Override methods
 
 // win1.41 004011b0 mac 101228f0 Base::Serialise(Archive&)
-void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, struct Archive* param_1) asm("?Serialize@Base@@UAEXAAVArchive@@@Z");
+void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, struct Archive* param_1) asm("?Serialise@Base@@UAEXAAVArchive@@@Z");
 // win1.41 00401210 mac 10082770 Base::~Base(void)
 struct Base* __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1Base@@UAE@XZ");
 // win1.41 004011c0 mac 1056ecc0 Base::Delete(int)
