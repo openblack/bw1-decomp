@@ -13,7 +13,7 @@
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007aeea3
 .extern _jmp_addr_0x007aef3f
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 .extern _fprintf__10LHFilePath
@@ -2117,7 +2117,7 @@ _jmp_addr_0x007e0450:    xor.s              eax, eax                            
                          nop                                                              // 0x007e045e    90
                          nop                                                              // 0x007e045f    90
 _jmp_addr_0x007e0460:    push               0x007e0470                                    // 0x007e0460    6870047e00
-                         call               _atexit                                       // 0x007e0465    e82753feff
+                         call               _atexit@4                                     // 0x007e0465    e82753feff
                          pop                ecx                                           // 0x007e046a    59
                          ret                                                              // 0x007e046b    c3
                          nop                                                              // 0x007e046c    90

@@ -90,4 +90,7 @@ enum ABODE_TYPE __fastcall GetAbodeType__10GAbodeInfoCFv(const struct GMultiMapF
 // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
 enum ABODE_NUMBER __fastcall GetAbodeNumber__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm ("?GetAbodeNumber@GAbodeInfo@@UBE?AW4ABODE_NUMBER@@XZ");
 
+void __cdecl dynamic_initializer_for_AbodeInfos(void) asm("??__EAbodeInfos@@YAXXZ");
+extern void __cdecl _register_global_dtor_for_AbodeInfos(void);
+
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */

@@ -31,7 +31,7 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 
@@ -1662,7 +1662,7 @@ _jmp_addr_0x0050e2f4:    {disp32} jmp       _jmp_addr_0x0050e300                
                          nop                                                              // 0x0050e2fe    90
                          nop                                                              // 0x0050e2ff    90
 _jmp_addr_0x0050e300:    push               0x00407870                                    // 0x0050e300    6870784000
-                         call               _atexit                                       // 0x0050e305    e887742b00
+                         call               _atexit@4                                     // 0x0050e305    e887742b00
                          pop                ecx                                           // 0x0050e30a    59
                          ret                                                              // 0x0050e30b    c3
                          nop                                                              // 0x0050e30c    90

@@ -86,7 +86,7 @@
 .extern @Close__8LHOSFileFv@4
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c5a19
 .extern _wcscpy
@@ -2756,7 +2756,7 @@ _jmp_addr_0x00598e04:    {disp32} jmp       _jmp_addr_0x00598e10                
                          nop                                                              // 0x00598e0e    90
                          nop                                                              // 0x00598e0f    90
 _jmp_addr_0x00598e10:    push               0x00407870                                    // 0x00598e10    6870784000
-                         call               _atexit                                       // 0x00598e15    e877c92200
+                         call               _atexit@4                                     // 0x00598e15    e877c92200
                          pop                ecx                                           // 0x00598e1a    59
                          ret                                                              // 0x00598e1b    c3
                          nop                                                              // 0x00598e1c    90
@@ -3218,7 +3218,7 @@ _jmp_addr_0x00599234:    {disp32} jmp       _jmp_addr_0x00599240                
                          nop                                                              // 0x0059923e    90
                          nop                                                              // 0x0059923f    90
 _jmp_addr_0x00599240:    push               0x00407870                                    // 0x00599240    6870784000
-                         call               _atexit                                       // 0x00599245    e847c52200
+                         call               _atexit@4                                     // 0x00599245    e847c52200
                          pop                ecx                                           // 0x0059924a    59
                          ret                                                              // 0x0059924b    c3
                          nop                                                              // 0x0059924c    90
@@ -5503,7 +5503,7 @@ _jmp_addr_0x0059aee9:    {disp32} mov       al, byte ptr [data_bytes + 0x341ec8]
                          mov                ecx, 0x00d07db8                               // 0x0059af6e    b9b87dd000
                          call               @SetSpeedUpFactor__7LHTimerFf@12              // 0x0059af73    e8483ceaff
 _jmp_addr_0x0059af78:    push               0x0059b250                                    // 0x0059af78    6850b25900
-                         call               _atexit                                       // 0x0059af7d    e80fa82200
+                         call               _atexit@4                                     // 0x0059af7d    e80fa82200
                          add                esp, 0x04                                     // 0x0059af82    83c404
                          {disp8} jmp        _jmp_addr_0x0059af89                          // 0x0059af85    eb02
 _jmp_addr_0x0059af87:    xor.s              edi, edi                                      // 0x0059af87    33ff

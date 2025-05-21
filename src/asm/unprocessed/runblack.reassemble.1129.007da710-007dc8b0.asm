@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _atexit
+.extern _atexit@4
 .extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c6eb0
@@ -1673,7 +1673,7 @@ _jmp_addr_0x007db7c0:    mov               ecx, 0x00e85040                      
                          nop                                                              // 0x007db7ce    90
                          nop                                                              // 0x007db7cf    90
 _jmp_addr_0x007db7d0:    push              0x007db7e0                                     // 0x007db7d0    68e0b77d00
-                         call              _atexit                                        // 0x007db7d5    e8b79ffeff
+                         call              _atexit@4                                      // 0x007db7d5    e8b79ffeff
                          pop               ecx                                            // 0x007db7da    59
                          ret                                                              // 0x007db7db    c3
                          nop                                                              // 0x007db7dc    90
