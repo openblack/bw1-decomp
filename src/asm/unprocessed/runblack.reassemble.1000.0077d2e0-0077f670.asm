@@ -89,7 +89,7 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
 .extern ___nw__FUl
@@ -1805,7 +1805,7 @@ _jmp_addr_0x0077e459:    pop                esi                                 
                          {disp32} mov       dword ptr [data_bytes + 0x405d04], 0x41d73d71 // 0x0077e5cb    c70504bddc00713dd741
                          {disp32} mov       dword ptr [data_bytes + 0x405d08], 0x40400000 // 0x0077e5d5    c70508bddc0000004040
                          {disp32} mov       dword ptr [data_bytes + 0x405d0c], 0xc2044083 // 0x0077e5df    c7050cbddc00834004c2
-                         call               _atexit                                       // 0x0077e5e9    e8a3710400
+                         call               _atexit@4                                     // 0x0077e5e9    e8a3710400
                          add                esp, 0x04                                     // 0x0077e5ee    83c404
 _jmp_addr_0x0077e5f1:    push               0x00000956                                    // 0x0077e5f1    6856090000
                          push               0x00c24d10                                    // 0x0077e5f6    68104dc200
@@ -2339,7 +2339,7 @@ _jmp_addr_0x0077eb24:    {disp32} jmp       _jmp_addr_0x0077eb30                
                          nop                                                              // 0x0077eb2e    90
                          nop                                                              // 0x0077eb2f    90
 _jmp_addr_0x0077eb30:    push               0x00407870                                    // 0x0077eb30    6870784000
-                         call               _atexit                                       // 0x0077eb35    e8576c0400
+                         call               _atexit@4                                     // 0x0077eb35    e8576c0400
                          pop                ecx                                           // 0x0077eb3a    59
                          ret                                                              // 0x0077eb3b    c3
                          nop                                                              // 0x0077eb3c    90
@@ -2387,7 +2387,7 @@ _jmp_addr_0x0077eb50:    xor.s              eax, eax                            
                          nop                                                              // 0x0077eb8e    90
                          nop                                                              // 0x0077eb8f    90
 _jmp_addr_0x0077eb90:    push               0x0077eba0                                    // 0x0077eb90    68a0eb7700
-                         call               _atexit                                       // 0x0077eb95    e8f76b0400
+                         call               _atexit@4                                     // 0x0077eb95    e8f76b0400
                          pop                ecx                                           // 0x0077eb9a    59
                          ret                                                              // 0x0077eb9b    c3
                          nop                                                              // 0x0077eb9c    90
@@ -2870,7 +2870,7 @@ _jmp_addr_0x0077efd4:    {disp32} jmp       _jmp_addr_0x0077efe0                
                          nop                                                              // 0x0077efde    90
                          nop                                                              // 0x0077efdf    90
 _jmp_addr_0x0077efe0:    push               0x00407870                                    // 0x0077efe0    6870784000
-                         call               _atexit                                       // 0x0077efe5    e8a7670400
+                         call               _atexit@4                                     // 0x0077efe5    e8a7670400
                          pop                ecx                                           // 0x0077efea    59
                          ret                                                              // 0x0077efeb    c3
                          nop                                                              // 0x0077efec    90
