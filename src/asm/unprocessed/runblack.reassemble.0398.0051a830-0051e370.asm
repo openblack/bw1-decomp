@@ -60,7 +60,7 @@
 .extern _jmp_addr_0x00779a60
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 .extern _jmp_addr_0x007c5f8c
 .extern _wcscpy
@@ -225,7 +225,7 @@ _jmp_addr_0x0051a98c:    {disp32} mov       cl, byte ptr [data_bytes + 0x3002cc]
                          {disp32} mov       dword ptr [data_bytes + 0x3002c0], 0x00000000        // 0x0051a9a7    c705c062cc0000000000
                          {disp32} mov       dword ptr [data_bytes + 0x3002c4], 0x3f800000        // 0x0051a9b1    c705c462cc000000803f
                          {disp32} mov       dword ptr [data_bytes + 0x3002c8], 0x00000000        // 0x0051a9bb    c705c862cc0000000000
-                         call               _atexit                                              // 0x0051a9c5    e8c7ad2a00
+                         call               _atexit@4                                            // 0x0051a9c5    e8c7ad2a00
                          add                esp, 0x04                                            // 0x0051a9ca    83c404
 _jmp_addr_0x0051a9cd:    {disp32} fld       dword ptr [data_bytes + 0x3002c4]                    // 0x0051a9cd    d905c462cc00
                          {disp8} fmul       dword ptr [esp + 0x08]                               // 0x0051a9d3    d84c2408
@@ -3083,7 +3083,7 @@ _jmp_addr_0x0051cc94:    {disp32} jmp       _jmp_addr_0x0051cca0                
                          nop                                                                     // 0x0051cc9e    90
                          nop                                                                     // 0x0051cc9f    90
 _jmp_addr_0x0051cca0:    push               0x00407870                                           // 0x0051cca0    6870784000
-                         call               _atexit                                              // 0x0051cca5    e8e78a2a00
+                         call               _atexit@4                                            // 0x0051cca5    e8e78a2a00
                          pop                ecx                                                  // 0x0051ccaa    59
                          ret                                                                     // 0x0051ccab    c3
                          nop                                                                     // 0x0051ccac    90

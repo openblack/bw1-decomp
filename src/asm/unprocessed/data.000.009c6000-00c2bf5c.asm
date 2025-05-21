@@ -94,7 +94,7 @@ ___xc_a:
 .long _globl_ct_0x00401040                                                                                         // [0x40] 0x009c6000 + 0x40 = 0x009c6040
 .long _globl_ct_0x00401070
 .long _globl_ct_0x00401120
-.long _globl_ct_0x00401170
+.long ___CRTInit_GAbodeInfoArray
 .long _globl_ct_0x00407840                                                                                         // [0x50] 0x009c6000 + 0x50 = 0x009c6050
 .long _globl_ct_0x00407880
 .long _globl_ct_0x004078b0

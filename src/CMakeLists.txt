@@ -61,15 +61,14 @@ set(SOURCES_001
     asm/unprocessed/rdata.002.008a99c0-008a99d0-image_debug_directory.asm
 
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
-    asm/unprocessed/runblack.reassemble.0002.00401140-004011b0.asm
 
+    c/AbodeInfo.000.c
     c/Base.000.c
     c/BaseInfo.000.c
-    c/AbodeInfo.000.c
+    c/AbodeInfo.001.c
     c/Base.001.c
     c/ObjectInfo.000.c
-
-    asm/unprocessed/runblack.reassemble.0004.004012d0-004012e0.asm
+    c/AbodeInfo.002.c
 
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
@@ -77,6 +76,7 @@ set(SOURCES_001
     asm/unprocessed/SELFMOD.asm
 
     asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
+
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
     asm/unprocessed/runblack.reassemble.0014.004060c0-004061a0.asm
     asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm

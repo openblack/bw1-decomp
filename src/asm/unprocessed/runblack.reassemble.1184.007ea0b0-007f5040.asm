@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x00546120
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007af180
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _wcslen
 .extern _operator_new
@@ -14940,7 +14940,7 @@ _jmp_addr_0x007f4554:    {disp32} jmp     _jmp_addr_0x007f4560                  
                          nop                                                       // 0x007f455e    90
                          nop                                                       // 0x007f455f    90
 _jmp_addr_0x007f4560:    push             0x00407870                               // 0x007f4560    6870784000
-                         call             _atexit                                  // 0x007f4565    e82712fdff
+                         call             _atexit@4                                // 0x007f4565    e82712fdff
                          pop              ecx                                      // 0x007f456a    59
                          ret                                                       // 0x007f456b    c3
                          nop                                                       // 0x007f456c    90

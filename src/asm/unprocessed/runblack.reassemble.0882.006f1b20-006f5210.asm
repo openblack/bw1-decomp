@@ -72,7 +72,7 @@
 .extern _jmp_addr_0x00740b40
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
 .extern _jmp_addr_0x007a1400
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 .extern _wcscpy
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -2456,7 +2456,7 @@ _jmp_addr_0x006f3664:    {disp32} jmp       _jmp_addr_0x006f3670                
                          nop                                                                     // 0x006f366e    90
                          nop                                                                     // 0x006f366f    90
 _jmp_addr_0x006f3670:    push               0x00407870                                           // 0x006f3670    6870784000
-                         call               _atexit                                              // 0x006f3675    e817210d00
+                         call               _atexit@4                                            // 0x006f3675    e817210d00
                          pop                ecx                                                  // 0x006f367a    59
                          ret                                                                     // 0x006f367b    c3
                          nop                                                                     // 0x006f367c    90
@@ -2562,7 +2562,7 @@ _jmp_addr_0x006f36ec:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                                     // 0x006f372e    90
                          nop                                                                     // 0x006f372f    90
 _jmp_addr_0x006f3730:    push               0x006f3740                                           // 0x006f3730    6840376f00
-                         call               _atexit                                              // 0x006f3735    e857200d00
+                         call               _atexit@4                                            // 0x006f3735    e857200d00
                          pop                ecx                                                  // 0x006f373a    59
                          ret                                                                     // 0x006f373b    c3
                          nop                                                                     // 0x006f373c    90

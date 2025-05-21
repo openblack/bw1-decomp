@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x005133c0
 .extern @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern _jmp_addr_0x0062d1c0
-.extern _atexit
+.extern _atexit@4
 .extern _wcscpy
 
 .globl _globl_ct_0x0062ac00
@@ -39,7 +39,7 @@ _jmp_addr_0x0062ac14:    {disp32} jmp      _jmp_addr_0x0062ac20                 
                          nop                                                             // 0x0062ac1e    90
                          nop                                                             // 0x0062ac1f    90
 _jmp_addr_0x0062ac20:    push              0x00407870                                    // 0x0062ac20    6870784000
-                         call              _atexit                                       // 0x0062ac25    e867ab1900
+                         call              _atexit@4                                     // 0x0062ac25    e867ab1900
                          pop               ecx                                           // 0x0062ac2a    59
                          ret                                                             // 0x0062ac2b    c3
                          nop                                                             // 0x0062ac2c    90
@@ -107,7 +107,7 @@ _jmp_addr_0x0062ac90:    mov               ecx, 0x00d409a8                      
                          nop                                                             // 0x0062ac9e    90
                          nop                                                             // 0x0062ac9f    90
 _jmp_addr_0x0062aca0:    push              0x0062acb0                                    // 0x0062aca0    68b0ac6200
-                         call              _atexit                                       // 0x0062aca5    e8e7aa1900
+                         call              _atexit@4                                     // 0x0062aca5    e8e7aa1900
                          pop               ecx                                           // 0x0062acaa    59
                          ret                                                             // 0x0062acab    c3
                          nop                                                             // 0x0062acac    90

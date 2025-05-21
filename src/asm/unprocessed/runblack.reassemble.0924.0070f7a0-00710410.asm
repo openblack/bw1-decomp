@@ -36,7 +36,7 @@
 .extern _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi
 .extern _jmp_addr_0x0071ebe0
 .extern _jmp_addr_0x007a1400
-.extern _atexit
+.extern _atexit@4
 
 .globl _jmp_addr_0x0070f8e0
 .globl _jmp_addr_0x00710350
@@ -63,7 +63,7 @@ _jmp_addr_0x0070f7b4:    {disp32} jmp     _jmp_addr_0x0070f7c0                  
                          nop                                                            // 0x0070f7be    90
                          nop                                                            // 0x0070f7bf    90
 _jmp_addr_0x0070f7c0:    push             0x00407870                                    // 0x0070f7c0    6870784000
-                         call             _atexit                                       // 0x0070f7c5    e8c75f0b00
+                         call             _atexit@4                                     // 0x0070f7c5    e8c75f0b00
                          pop              ecx                                           // 0x0070f7ca    59
                          ret                                                            // 0x0070f7cb    c3
                          nop                                                            // 0x0070f7cc    90
@@ -1135,7 +1135,7 @@ _jmp_addr_0x00710314:    {disp32} jmp     _jmp_addr_0x00710320                  
                          nop                                                            // 0x0071031e    90
                          nop                                                            // 0x0071031f    90
 _jmp_addr_0x00710320:    push             0x00407870                                    // 0x00710320    6870784000
-                         call             _atexit                                       // 0x00710325    e867540b00
+                         call             _atexit@4                                     // 0x00710325    e867540b00
                          pop              ecx                                           // 0x0071032a    59
                          ret                                                            // 0x0071032b    c3
                          nop                                                            // 0x0071032c    90

@@ -25,7 +25,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _atexit
+.extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 
 .globl _jmp_addr_0x004d7640
@@ -214,7 +214,7 @@ _jmp_addr_0x004d77a4:    {disp32} jmp       _jmp_addr_0x004d77b0                
                          nop                                                              // 0x004d77ae    90
                          nop                                                              // 0x004d77af    90
 _jmp_addr_0x004d77b0:    push               0x00407870                                    // 0x004d77b0    6870784000
-                         call               _atexit                                       // 0x004d77b5    e8d7df2e00
+                         call               _atexit@4                                     // 0x004d77b5    e8d7df2e00
                          pop                ecx                                           // 0x004d77ba    59
                          ret                                                              // 0x004d77bb    c3
                          nop                                                              // 0x004d77bc    90

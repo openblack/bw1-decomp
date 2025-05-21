@@ -1,70 +1,26 @@
 #include "AbodeInfo.h"
 
-__attribute__((section(".data$Z"))) int abode_info_bool_00c3c680 = 0;
-__attribute__((section(".data$Z"))) float abode_info_float_0x00c3c684 = 0.0f;
-__attribute__((section(".data$Z"))) float abode_info_float_0x00c3c688 = 0.0f;
-__attribute__((section(".data$Z"))) float abode_info_float_0x00c3c68c = 0.0f;
-
-const float abode_info_float_0x008a99dc = 10.0f;
-const float abode_info_float_0x008a99e0 = 365.25f;
-const float abode_info_float_0x008a99e4 = 86400.0f;
-const float abode_info_float_0x008a99e8 = 10.0f;
-const float abode_info_float_0x008a99ec = 1000.0f;
-const float abode_info_float_0x008a99f0 = 512.0f;
-
-uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this)
+void __cdecl __CRTInit_GAbodeInfoArray(void)
 {
-    __asm__("{disp32} mov     eax, dword ptr [ecx + 0x0000015c]"); // 0x00401240    8b815c010000
-    __asm__("ret");                                                // 0x00401246    c3
-
-    __builtin_unreachable();
+  dynamic_initializer_for_AbodeInfos();
+  _register_global_dtor_for_AbodeInfos();
 }
 
-enum ABODE_TYPE __fastcall GetAbodeType__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this)
+__attribute__((noinline))
+void __cdecl dynamic_initializer_for_AbodeInfos(void)
 {
-  __asm__("{disp32} mov     eax, dword ptr [ecx + 0x00000120]");   // 0x00401250    8b8120010000
-  __asm__("ret");                                                  // 0x00401256    c3
+  __asm__(
+    "mov eax, OFFSET _AbodeInfos\n"                         // 0x00401180    b890c6c300
+    "mov              ecx, 0x00000093\n"                    // 0x00401185    b993000000
+    "xor.s            edx, edx\n"                           // 0x0040118a    33d2
 
-  __builtin_unreachable();
+    "_jmp_addr_0x0040118c:\n"
+    "mov    DWORD PTR [eax], OFFSET ??_7Base@@6B@\n"        // 0x0040118c    c700449a8a00
+    "{disp8} mov      dword ptr [eax + 0x04], edx\n"        // 0x00401192    895004
+    "{disp8} mov      dword ptr [eax + 0x08], edx\n"        // 0x00401195    895008
+    "mov    DWORD PTR [eax], OFFSET ??_7GAbodeInfo@@6B@\n"  // 0x00401198    c700f8998a00
+    "add              eax, 0x000001c8\n"                    // 0x0040119e    05c8010000
+    "dec              ecx\n"                                // 0x004011a3    49
+    "{disp8} jne      _jmp_addr_0x0040118c\n"               // 0x004011a4    75e6
+  );
 }
-
-enum ABODE_NUMBER __fastcall GetAbodeNumber__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this)
-{
-  __asm__("{disp32} mov     eax, dword ptr [ecx + 0x00000124]");   // 0x00401260    8b8124010000
-  __asm__("ret");                                                  // 0x00401266    c3
-
-  __builtin_unreachable();
-}
-
-struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1)
-{
-  __asm__("{disp8} mov      eax, dword ptr [esp + 0x04]");         // 0x00401270    8b442404
-  __asm__("mov              dword ptr [eax], 0x00000093");         // 0x00401274    c70093000000
-  __asm__("mov              eax, 0x00c3c690");                     // 0x0040127a    b890c6c300
-  __asm__("ret 0x0004");                                           // 0x0040127f    c20400
-
-  __builtin_unreachable();
-}
-
-struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__10GAbodeInfo = &__RTTICompleObjectLocator__10GAbodeInfo;
-
-const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo = {
-    Serialise__4BaseFR7Archive,
-    __dt__10GAbodeInfoFv,
-    Delete__4BaseFi,
-    ToBeDeleted__4BaseFi,
-    Get3DSoundPos__4BaseFP7LHPoint,
-    CleanUpForSerialisation__4BaseFv,
-    Dump__4BaseFv,
-    GetDebugText__11GObjectInfoCFv,
-    GetDebugColor__9GBaseInfoCFv,
-    GetBaseInfo__10GAbodeInfoFRUl,
-    UpdateValue__9GBaseInfoFfUlUl,
-    GetMesh__10GAbodeInfoCFv,
-    GetMesh__11GObjectInfoCF10TRIBE_TYPE,
-    GetAlignmentType__11GObjectInfoCFv,
-    GetFoodType__11GObjectInfoCFv,
-    IsOkToCreateAtPos__18GMultiMapFixedInfoCFRC9MapCoordsff,
-    GetAbodeType__10GAbodeInfoCFv,
-    GetAbodeNumber__10GAbodeInfoCFv,
-};
