@@ -57,19 +57,18 @@ find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
+
+    c/_CXXFuncs.c
     asm/unprocessed/rdata.000.008a9000-008a99c0.dllimports.asm
-
     c/_DebugDirectory.c
-
-    asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
-
-    c/AbodeInfo.000.c
+    c/unprocessed/Unknown.000.c
+    c/AbodeInfo.001.c
     c/Base.000.c
     c/BaseInfo.000.c
-    c/AbodeInfo.001.c
+    c/AbodeInfo.002.c
     c/Base.001.c
     c/ObjectInfo.000.c
-    c/AbodeInfo.002.c
+    c/AbodeInfo.003.c
 
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
