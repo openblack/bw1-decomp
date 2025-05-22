@@ -58,7 +58,8 @@ find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
     asm/unprocessed/rdata.000.008a9000-008a99c0.dllimports.asm
-    asm/unprocessed/rdata.002.008a99c0-008a99d0-image_debug_directory.asm
+
+    c/_DebugDirectory.c
 
     asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
 
