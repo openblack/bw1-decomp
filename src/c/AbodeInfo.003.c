@@ -39,3 +39,23 @@ void __cdecl dynamic_atexit_destructor_for_AbodeInfos(void)
   );
   __builtin_unreachable();
 }
+
+struct Base* __fastcall __dt__10GAbodeInfoFv(struct Base* this, const void* edx, uint8_t param_1)
+{
+  __asm__(
+    "push               esi\n"                                          // 0x00401320    56
+    "mov.s              esi, ecx\n"                                     // 0x00401321    8bf1
+    "call               _jmp_addr_0x00436960\n"                         // 0x00401323    e838560300
+    "test               byte ptr [esp + 0x08], 0x01\n"                  // 0x00401328    f644240801
+    "{disp8} je         _jmp_addr_0x0040133d\n"                         // 0x0040132d    740e
+    "push               0x000001c8\n"                                   // 0x0040132f    68c8010000
+    "push               esi\n"                                          // 0x00401334    56
+    "call               _jmp_addr_0x00436970\n"                         // 0x00401335    e836560300
+    "add                esp, 0x08\n"                                    // 0x0040133a    83c408
+    "_jmp_addr_0x0040133d:\n"
+    "mov.s              eax, esi\n"                                     // 0x0040133d    8bc6
+    "pop                esi\n"                                          // 0x0040133f    5e
+    "ret                0x0004\n"                                       // 0x00401340    c20400
+  );
+  __builtin_unreachable();
+}

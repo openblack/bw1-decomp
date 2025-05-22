@@ -69,33 +69,7 @@
 .globl _SetPos__16GameThingWithPosFRC9MapCoords
 .globl _GetComputerSeen__9GameThingFv
 .globl _CastPlayer__9GameThingFv
-.globl ??1GAbodeInfo@@UAE@XZ
 
-??1GAbodeInfo@@UAE@XZ:   push               esi                                      // 0x00401320    56
-                         mov.s              esi, ecx                                 // 0x00401321    8bf1
-                         call               _jmp_addr_0x00436960                     // 0x00401323    e838560300
-                         test               byte ptr [esp + 0x08], 0x01              // 0x00401328    f644240801
-                         {disp8} je         _jmp_addr_0x0040133d                     // 0x0040132d    740e
-                         push               0x000001c8                               // 0x0040132f    68c8010000
-                         push               esi                                      // 0x00401334    56
-                         call               _jmp_addr_0x00436970                     // 0x00401335    e836560300
-                         add                esp, 0x08                                // 0x0040133a    83c408
-_jmp_addr_0x0040133d:    mov.s              eax, esi                                 // 0x0040133d    8bc6
-                         pop                esi                                      // 0x0040133f    5e
-                         ret                0x0004                                   // 0x00401340    c20400
-                         nop                                                         // 0x00401343    90
-                         nop                                                         // 0x00401344    90
-                         nop                                                         // 0x00401345    90
-                         nop                                                         // 0x00401346    90
-                         nop                                                         // 0x00401347    90
-                         nop                                                         // 0x00401348    90
-                         nop                                                         // 0x00401349    90
-                         nop                                                         // 0x0040134a    90
-                         nop                                                         // 0x0040134b    90
-                         nop                                                         // 0x0040134c    90
-                         nop                                                         // 0x0040134d    90
-                         nop                                                         // 0x0040134e    90
-                         nop                                                         // 0x0040134f    90
 @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36:    {disp8} mov        eax, dword ptr [esp + 0x1c]              // 0x00401350    8b44241c
                          {disp8} mov        edx, dword ptr [esp + 0x14]              // 0x00401354    8b542414
                          push               esi                                      // 0x00401358    56
