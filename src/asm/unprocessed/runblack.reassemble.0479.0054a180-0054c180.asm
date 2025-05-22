@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401000
+.extern ??_V@YAXPAXKKP6EXXZ@Z
 .extern _jmp_addr_0x00401140
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00407a20
@@ -2770,7 +2770,7 @@ _jmp_addr_0x0054bb90:    xor.s              eax, eax                            
                          push               0x14                                          // 0x0054bbe4    6a14
                          {disp8} lea        eax, dword ptr [ebx + 0x10]                   // 0x0054bbe6    8d4310
                          push               eax                                           // 0x0054bbe9    50
-                         call               _jmp_addr_0x00401000                          // 0x0054bbea    e81154ebff
+                         call               ??_V@YAXPAXKKP6EXXZ@Z                         // 0x0054bbea    e81154ebff
                          mov.s              ecx, ebx                                      // 0x0054bbef    8bcb
                          call               _jmp_addr_0x00436960                          // 0x0054bbf1    e86aadeeff
                          push               0x0054be20                                    // 0x0054bbf6    6820be5400
@@ -2778,7 +2778,7 @@ _jmp_addr_0x0054bb90:    xor.s              eax, eax                            
                          push               0x00000128                                    // 0x0054bc00    6828010000
                          {disp8} lea        ecx, dword ptr [edi + 0x08]                   // 0x0054bc05    8d4f08
                          push               ecx                                           // 0x0054bc08    51
-                         call               _jmp_addr_0x00401000                          // 0x0054bc09    e8f253ebff
+                         call               ??_V@YAXPAXKKP6EXXZ@Z                         // 0x0054bc09    e8f253ebff
                          mov.s              ecx, edi                                      // 0x0054bc0e    8bcf
                          call               _jmp_addr_0x00436960                          // 0x0054bc10    e84badeeff
                          {disp32} lea       ecx, dword ptr [esi + 0x00205ba4]             // 0x0054bc15    8d8ea45b2000
@@ -2930,7 +2930,7 @@ _jmp_addr_0x0054bdc9:    push               0x0054bef0                          
                          sub                edi, 0x00000128                               // 0x0054bdd2    81ef28010000
                          push               edi                                           // 0x0054bdd8    57
                          sub                esi, 0x00000128                               // 0x0054bdd9    81ee28010000
-                         call               _jmp_addr_0x00401000                          // 0x0054bddf    e81c52ebff
+                         call               ??_V@YAXPAXKKP6EXXZ@Z                         // 0x0054bddf    e81c52ebff
                          mov.s              ecx, esi                                      // 0x0054bde4    8bce
                          call               _jmp_addr_0x00436960                          // 0x0054bde6    e875abeeff
                          dec                ebx                                           // 0x0054bdeb    4b
