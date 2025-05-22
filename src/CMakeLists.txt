@@ -70,12 +70,12 @@ set(SOURCES_001
     c/ObjectInfo.000.c
     c/AbodeInfo.003.c
 
+    asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
+
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
-
-    asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
     asm/unprocessed/runblack.reassemble.0014.004060c0-004061a0.asm

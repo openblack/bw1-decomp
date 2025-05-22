@@ -1,6 +1,5 @@
 #include "Base.h"
 
-
 // Inlined so that the first object file to be compiles (AbodeInfo.o is before Base.o) has these definitions first
 
 void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, struct Archive* param_1)
@@ -53,7 +52,7 @@ void __fastcall Dump__4BaseFv(struct Base* this)
 {
 }
 
-struct Base* __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_t param_1)
+void __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_t param_1)
 {
     __asm__(
         "push             esi\n"                               // 0x00401210    56
@@ -68,7 +67,5 @@ struct Base* __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_
         "_jmp_addr_0x0040122a:\n"
         "mov.s            eax, esi\n"                          // 0x0040122a    8bc6
         "pop              esi\n"                               // 0x0040122c    5e
-        "ret              0x0004\n"                            // 0x0040122d    c20400
     );
-    __builtin_unreachable();
 }

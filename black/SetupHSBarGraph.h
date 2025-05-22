@@ -25,7 +25,7 @@ struct SetupHSBarGraph* __fastcall __ct__15SetupHSBarGraphFiiiiiPw(struct SetupH
 // win1.41 0040d3c0 mac 100df500 SetupHSBarGraph::Draw(bool, bool)
 void __fastcall Draw__15SetupHSBarGraphFbb(struct SetupHSBarGraph* this, const void* edx, bool hovered, bool selected);
 // win1.41 0056d960 mac 100cd050 SetupHSBarGraph::~SetupHSBarGraph(void)
-struct SetupHSBarGraph* __fastcall __dt__15SetupHSBarGraphFb(struct SetupHSBarGraph* this, const void* edx, bool param_1);
+void __fastcall __dt__15SetupHSBarGraphFb(struct SetupHSBarGraph* this, const void* edx, bool param_1);
 // win1.41 0040d9a0 mac 10130720 SetupHSBarGraph::SetScale(float)
 void __fastcall SetScale__15SetupHSBarGraphFf(struct SetupHSBarGraph* this, const void* edx, float scale);
 
