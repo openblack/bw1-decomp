@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401000
+.extern ??_V@YAXPAXKKP6EXXZ@Z
 .extern _jmp_addr_0x00401140
 .extern _jmp_addr_0x00407700
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
@@ -1815,7 +1815,7 @@ _jmp_addr_0x006c8b06:    {disp8} mov        eax, dword ptr [edi + -0x08]        
                          push               ecx                                           // 0x006c8b1b    51
                          push               0x00000094                                    // 0x006c8b1c    6894000000
                          push               eax                                           // 0x006c8b21    50
-                         call               _jmp_addr_0x00401000                          // 0x006c8b22    e8d984d3ff
+                         call               ??_V@YAXPAXKKP6EXXZ@Z                         // 0x006c8b22    e8d984d3ff
                          push               esi                                           // 0x006c8b27    56
                          call                ___dl__FPv                                   // 0x006c8b28    e86b630e00
                          add                esp, 0x04                                     // 0x006c8b2d    83c404

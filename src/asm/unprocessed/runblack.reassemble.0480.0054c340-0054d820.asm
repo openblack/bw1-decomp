@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401000
 .extern _jmp_addr_0x00401140
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00407a20
