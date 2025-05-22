@@ -119,7 +119,7 @@
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa70
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fb70
+.extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern @Save__9GameThingFR10GameOSFile@12
 .extern @Load__9GameThingFR10GameOSFile@12
 .extern _jmp_addr_0x0056fef0
@@ -6878,7 +6878,7 @@ _jmp_addr_0x006e3b04:    {disp8} mov        ecx, dword ptr [eax + 0x40]         
                          {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x006e3b11    8b542408
                          push               edx                                           // 0x006e3b15    52
                          mov.s              ecx, esi                                      // 0x006e3b16    8bce
-                         call               _jmp_addr_0x0056fb70                          // 0x006e3b18    e853c0e8ff
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z              // 0x006e3b18    e853c0e8ff
                          pop                esi                                           // 0x006e3b1d    5e
                          ret                0x0004                                        // 0x006e3b1e    c20400
 _jmp_addr_0x006e3b21:    {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x006e3b21    8b4e40
@@ -6888,7 +6888,7 @@ _jmp_addr_0x006e3b27:    dec                dword ptr [edx + 0x04]              
 _jmp_addr_0x006e3b31:    {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x006e3b31    8b542408
                          push               edx                                           // 0x006e3b35    52
                          mov.s              ecx, esi                                      // 0x006e3b36    8bce
-                         call               _jmp_addr_0x0056fb70                          // 0x006e3b38    e833c0e8ff
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z              // 0x006e3b38    e833c0e8ff
                          pop                esi                                           // 0x006e3b3d    5e
                          ret                0x0004                                        // 0x006e3b3e    c20400
                          nop                                                              // 0x006e3b41    90

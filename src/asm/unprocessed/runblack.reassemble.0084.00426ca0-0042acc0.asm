@@ -23,7 +23,7 @@
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fb70
+.extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern @Save__9GameThingFR10GameOSFile@12
 .extern @Load__9GameThingFR10GameOSFile@12
 .extern _jmp_addr_0x005981d0
@@ -446,7 +446,7 @@ _jmp_addr_0x00427061:    call               _jmp_addr_0x007dee00                
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x00427066    8b442408
                          push               eax                                                  // 0x0042706a    50
                          mov.s              ecx, edi                                             // 0x0042706b    8bcf
-                         call               _jmp_addr_0x0056fb70                                 // 0x0042706d    e8fe8a1400
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z                     // 0x0042706d    e8fe8a1400
                          pop                edi                                                  // 0x00427072    5f
                          ret                0x0004                                               // 0x00427073    c20400
                          nop                                                                     // 0x00427076    90
