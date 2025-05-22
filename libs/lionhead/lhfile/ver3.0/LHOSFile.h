@@ -56,7 +56,7 @@ uint32_t __fastcall Write__8LHOSFileFPvUlPUl(struct LHOSFile* this, const void* 
 // Override methods
 
 // win1.41 007bc660 mac 10164ef0 LHOSFile::~LHOSFile(bool)
-struct LHOSFile* __fastcall __dt__8LHOSFileFb(struct LHOSFile* this, const void* edx, bool param_2);
+void __fastcall __dt__8LHOSFileFb(struct LHOSFile* this, const void* edx, bool param_2);
 // win1.41 007bc730 mac 10164b40 LHOSFile::Open(const char*, LH_FILE_MODE)
 uint32_t __fastcall Open__8LHOSFileFPc12LH_FILE_MODE(struct LHOSFile* this, const void* edx, const char* path, enum LH_FILE_MODE mode);
 

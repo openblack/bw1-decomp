@@ -39,6 +39,6 @@ void __fastcall MouseUp__11SetupSliderFiib(struct SetupSlider* this, const void*
 // win1.41 00409960 mac 10103d10 SetupSlider::KeyDown(int, int)
 void __fastcall KeyDown__11SetupSliderFii(struct SetupSlider* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 00409c50 mac 101c8450 SetupSlider::~SetupSlider(void)
-struct SetupSlider* __fastcall __dt__11SetupSliderFb(struct SetupSlider* this, const void* edx, bool param_1);
+void __fastcall __dt__11SetupSliderFb(struct SetupSlider* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_SLIDER_INCLUDED_H */

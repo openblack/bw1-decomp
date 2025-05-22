@@ -28,6 +28,6 @@ struct SetupStaticText* __fastcall __ct__15SetupStaticTextFiiiiiPw11TEXTJUSTIFY(
 // win1.41 00409430 mac 105436e0 SetupStaticText::Draw(bool, bool)
 void __fastcall Draw__15SetupStaticTextFbb(struct SetupStaticText* this, const void* edx, bool hovered, bool selected);
 // win1.41 00411670 mac 100cb300 SetupStaticText::~SetupStaticText(void)
-struct SetupStaticText* __fastcall __dt__15SetupStaticTextFb(struct SetupStaticText* this, const void* edx, bool param_1);
+void __fastcall __dt__15SetupStaticTextFb(struct SetupStaticText* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_INCLUDED_H */

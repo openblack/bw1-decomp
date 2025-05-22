@@ -80,7 +80,7 @@ void __fastcall LoadBinary__10GAbodeInfoFP6LHFile(struct GAbodeInfo* this, const
 // Override methods
 
 // win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(void)
-struct Base* __fastcall __dt__10GAbodeInfoFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1GAbodeInfo@@UAE@XZ");
+void __fastcall __dt__10GAbodeInfoFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1GAbodeInfo@@UAE@XZ");
 // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
 struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GAbodeInfo@@UAEPAVGBaseInfo@@AAK@Z");
 // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const

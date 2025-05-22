@@ -1,8 +1,13 @@
 #ifndef BW1_DECOMP_GLOBALS_INCLUDED_H
 #define BW1_DECOMP_GLOBALS_INCLUDED_H
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpragma-pack"
+#pragma clang diagnostic ignored "-Wmacro-redefined"
+#pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <d3d.h> /* For IDirect3DDevice7 */
 #include <d3dtypes.h> /* For D3DMATRIX */
+#pragma clang diagnostic pop
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 #include <uchar.h> /* For char16_t */
