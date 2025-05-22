@@ -99,7 +99,7 @@ void __fastcall Click__9SetupListFii(struct SetupList* this, const void* edx, in
 // win1.41 00409eb0 mac 103d24f0 SetupList::KeyDown(int, int)
 void __fastcall KeyDown__9SetupListFii(struct SetupList* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
-struct SetupList* __fastcall __dt__9SetupListFb(struct SetupList* this, const void* edx, bool param_1);
+void __fastcall __dt__9SetupListFb(struct SetupList* this, const void* edx, bool param_1);
 // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
 bool __fastcall IsSelected__9SetupListFi(struct SetupList* this, const void* edx, int index);
 

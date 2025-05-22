@@ -74,7 +74,7 @@ void __fastcall MouseUp__15SetupHLineGraphFiib(struct SetupHLineGraph* this, con
 // win1.41 0040e580 mac 10518860 SetupHLineGraph::KeyDown(int, int)
 void __fastcall KeyDown__15SetupHLineGraphFii(struct SetupHLineGraph* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040e5c0 mac 0040e5c0 SetupHLineGraph::~SetupHLineGraph(void)
-struct SetupHLineGraph* __fastcall __dt__15SetupHLineGraphFb(struct SetupHLineGraph* this, const void* edx, bool param_1);
+void __fastcall __dt__15SetupHLineGraphFb(struct SetupHLineGraph* this, const void* edx, bool param_1);
 // win1.41 0040e5e0 mac 102a7a10 SetupHLineGraph::Reset(void)
 void __fastcall Reset__15SetupHLineGraphFv(struct SetupHLineGraph* this);
 // win1.41 0040e650 mac 10211b80 SetupHLineGraph::SetScale(float, float, bool)
