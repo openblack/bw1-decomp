@@ -69,6 +69,7 @@
 .globl _SetPos__16GameThingWithPosFRC9MapCoords
 .globl _GetComputerSeen__9GameThingFv
 .globl _CastPlayer__9GameThingFv
+.globl CanBeFrighteningToCreature__11FixedObjectFP8Creature
 
 @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36:    {disp8} mov        eax, dword ptr [esp + 0x1c]              // 0x00401350    8b44241c
                          {disp8} mov        edx, dword ptr [esp + 0x14]              // 0x00401354    8b542414
@@ -129,6 +130,7 @@ _jmp_addr_0x004013d4:    {disp32} mov       eax, dword ptr [_data_bytes_uint_0x0
                          nop                                                         // 0x004013fd    90
                          nop                                                         // 0x004013fe    90
                          nop                                                         // 0x004013ff    90
+CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          xor.s              eax, eax                                 // 0x00401400    33c0
                          ret                0x0004                                   // 0x00401402    c20400
                          nop                                                         // 0x00401405    90
