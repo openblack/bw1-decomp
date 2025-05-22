@@ -84,7 +84,7 @@
 .globl _jmp_addr_0x0056fa80
 .globl @ProcessDead__9GameThingFi@12
 .globl _ProcessDeadList__9GameThingFi@4
-.globl _jmp_addr_0x0056fb70
+.globl ?ToBeDeleted@GameThing@@UAEXH@Z
 .globl @Save__9GameThingFR10GameOSFile@12
 .globl @Load__9GameThingFR10GameOSFile@12
 .globl @GetSaveType__9GameThingFv@4
@@ -134,6 +134,7 @@
 .globl _Save__9GameThingFR10GameOSFile
 .globl _JustAddResource__9GameThingF13RESOURCE_TYPEUlb
 .globl _MaintainSpell__9GameThingFP5Spellf
+.globl ??1GameThing@@UAE@XZ
 
 start_0x0056eef0_0x00572d00:
 // Snippet: asm, [0x0056eef0, 0x00572cbb)
@@ -1114,7 +1115,7 @@ _jmp_addr_0x0056f9f0:    {disp32} fld       dword ptr [rdata_bytes + 0x56f48]   
                          nop                                                              // 0x0056fa4d    90
                          nop                                                              // 0x0056fa4e    90
                          nop                                                              // 0x0056fa4f    90
-                         push               esi                                           // 0x0056fa50    56
+??1GameThing@@UAE@XZ:    push               esi                                           // 0x0056fa50    56
                          mov.s              esi, ecx                                      // 0x0056fa51    8bf1
                          call               _jmp_addr_0x0056fa80                          // 0x0056fa53    e828000000
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0056fa58    f644240801
@@ -1239,7 +1240,7 @@ _jmp_addr_0x0056fb65:    pop                edi                                 
                          nop                                                              // 0x0056fb6d    90
                          nop                                                              // 0x0056fb6e    90
                          nop                                                              // 0x0056fb6f    90
-_jmp_addr_0x0056fb70:    {disp8} mov        al, byte ptr [ecx + 0x0a]                     // 0x0056fb70    8a410a
+?ToBeDeleted@GameThing@@UAEXH@Z:    {disp8} mov        al, byte ptr [ecx + 0x0a]                     // 0x0056fb70    8a410a
                          test               al, 0x01                                      // 0x0056fb73    a801
                          {disp8} jne        _jmp_addr_0x0056fbdc                          // 0x0056fb75    7565
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x0056fb77    8b542404
@@ -1497,7 +1498,7 @@ _jmp_addr_0x0056fe00:    push               esi                                 
                          call               dword ptr [eax + 0x1a4]                       // 0x0056fe0b    ff90a4010000
                          push               edi                                           // 0x0056fe11    57
                          mov.s              ecx, esi                                      // 0x0056fe12    8bce
-                         call               _jmp_addr_0x0056fb70                          // 0x0056fe14    e857fdffff
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z              // 0x0056fe14    e857fdffff
                          pop                edi                                           // 0x0056fe19    5f
                          pop                esi                                           // 0x0056fe1a    5e
                          ret                0x0004                                        // 0x0056fe1b    c20400
