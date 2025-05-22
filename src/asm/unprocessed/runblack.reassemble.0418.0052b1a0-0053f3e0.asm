@@ -116,7 +116,7 @@
 .extern _jmp_addr_0x0056f7d0
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fb70
+.extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern @Save__9GameThingFR10GameOSFile@12
 .extern @Load__9GameThingFR10GameOSFile@12
 .extern _jmp_addr_0x0056fe00
@@ -16183,7 +16183,7 @@ _jmp_addr_0x00534f45:    {disp8} mov        edx, dword ptr [eax + 0x1c]         
                          push               eax                                                  // 0x00534f56    50
                          mov.s              ecx, esi                                             // 0x00534f57    8bce
                          {disp8} mov        dword ptr [esi + 0x20], ebx                          // 0x00534f59    895e20
-                         call               _jmp_addr_0x0056fb70                                 // 0x00534f5c    e80fac0300
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z                     // 0x00534f5c    e80fac0300
                          pop                esi                                                  // 0x00534f61    5e
                          pop                ebx                                                  // 0x00534f62    5b
                          ret                0x0004                                               // 0x00534f63    c20400
@@ -16195,7 +16195,7 @@ _jmp_addr_0x00534f72:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          push               eax                                                  // 0x00534f76    50
                          mov.s              ecx, esi                                             // 0x00534f77    8bce
                          {disp8} mov        dword ptr [esi + 0x20], ebx                          // 0x00534f79    895e20
-                         call               _jmp_addr_0x0056fb70                                 // 0x00534f7c    e8efab0300
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z                     // 0x00534f7c    e8efab0300
                          pop                esi                                                  // 0x00534f81    5e
                          pop                ebx                                                  // 0x00534f82    5b
                          ret                0x0004                                               // 0x00534f83    c20400
@@ -17991,7 +17991,7 @@ _jmp_addr_0x0053604d:    test               esi, esi                            
 _jmp_addr_0x00536055:    {disp8} mov        eax, dword ptr [esp + 0x14]                          // 0x00536055    8b442414
                          push               eax                                                  // 0x00536059    50
                          mov.s              ecx, edi                                             // 0x0053605a    8bcf
-                         call               _jmp_addr_0x0056fb70                                 // 0x0053605c    e80f9b0300
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z                     // 0x0053605c    e80f9b0300
                          pop                edi                                                  // 0x00536061    5f
                          pop                esi                                                  // 0x00536062    5e
                          pop                ebp                                                  // 0x00536063    5d
@@ -22366,7 +22366,7 @@ _jmp_addr_0x00539206:    {disp32} mov       ecx, dword ptr [ebx + 0x000640bc]   
 _jmp_addr_0x00539226:    {disp8} mov        ecx, dword ptr [esp + 0x10]                          // 0x00539226    8b4c2410
                          push               ecx                                                  // 0x0053922a    51
                          mov.s              ecx, ebx                                             // 0x0053922b    8bcb
-                         call               _jmp_addr_0x0056fb70                                 // 0x0053922d    e83e690300
+                         call                ?ToBeDeleted@GameThing@@UAEXH@Z                     // 0x0053922d    e83e690300
                          pop                edi                                                  // 0x00539232    5f
                          pop                ebp                                                  // 0x00539233    5d
                          pop                ebx                                                  // 0x00539234    5b
