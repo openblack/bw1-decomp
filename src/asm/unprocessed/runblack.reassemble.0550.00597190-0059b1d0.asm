@@ -48,7 +48,7 @@
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
-.extern _jmp_addr_0x005703f0
+.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern _jmp_addr_0x00596570
 .extern _jmp_addr_0x0059b1d0
@@ -1659,7 +1659,7 @@ _jmp_addr_0x00598240:    push               esi                                 
                          push               edi                                           // 0x00598245    57
                          mov.s              edi, ecx                                      // 0x00598246    8bf9
                          push               esi                                           // 0x00598248    56
-                         call               _jmp_addr_0x005703f0                          // 0x00598249    e8a281fdff
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x00598249    e8a281fdff
                          test               eax, eax                                      // 0x0059824e    85c0
                          {disp32} je        _jmp_addr_0x005985ae                          // 0x00598250    0f8458030000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x00598256    a190c9be00

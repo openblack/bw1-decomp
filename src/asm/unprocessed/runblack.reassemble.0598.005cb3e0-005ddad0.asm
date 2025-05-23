@@ -123,8 +123,8 @@
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fe00
-.extern _jmp_addr_0x005703f0
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
+.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x00578c20
@@ -3620,7 +3620,7 @@ _jmp_addr_0x005cd8bd:    {disp8} mov        edx, dword ptr [eax + 0x40]         
                          {disp8} jne        _jmp_addr_0x005cd8bd                           // 0x005cd8c8    75f3
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x005cd8ca    8b442408
                          push               eax                                            // 0x005cd8ce    50
-                         call               _jmp_addr_0x0056fe00                           // 0x005cd8cf    e82c25faff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z         // 0x005cd8cf    e82c25faff
                          pop                esi                                            // 0x005cd8d4    5e
                          ret                0x0004                                         // 0x005cd8d5    c20400
 _jmp_addr_0x005cd8d8:    {disp8} mov        edx, dword ptr [ecx + 0x40]                    // 0x005cd8d8    8b5140
@@ -3629,7 +3629,7 @@ _jmp_addr_0x005cd8de:    dec                dword ptr [esi + 0x04]              
                          {disp8} mov        dword ptr [ecx + 0x40], 0x00000000             // 0x005cd8e1    c7414000000000
 _jmp_addr_0x005cd8e8:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x005cd8e8    8b442408
                          push               eax                                            // 0x005cd8ec    50
-                         call               _jmp_addr_0x0056fe00                           // 0x005cd8ed    e80e25faff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z         // 0x005cd8ed    e80e25faff
                          pop                esi                                            // 0x005cd8f2    5e
                          ret                0x0004                                         // 0x005cd8f3    c20400
                          nop                                                               // 0x005cd8f6    90
@@ -4040,7 +4040,7 @@ _jmp_addr_0x005cdc46:    pop                edi                                 
                          push               edi                                            // 0x005cdc65    57
                          mov.s              edi, ecx                                       // 0x005cdc66    8bf9
                          push               esi                                            // 0x005cdc68    56
-                         call               _jmp_addr_0x005703f0                           // 0x005cdc69    e88227faff
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z  // 0x005cdc69    e88227faff
                          test               eax, eax                                       // 0x005cdc6e    85c0
                          {disp32} je        _jmp_addr_0x005cdd2c                           // 0x005cdc70    0f84b6000000
                          push               0x0                                            // 0x005cdc76    6a00
@@ -4819,7 +4819,7 @@ _jmp_addr_0x005ce4ad:    mov.s              ecx, esi                            
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                    // 0x005ce4b4    8b44240c
                          push               eax                                            // 0x005ce4b8    50
                          mov.s              ecx, esi                                       // 0x005ce4b9    8bce
-                         call               _jmp_addr_0x0056fe00                           // 0x005ce4bb    e84019faff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z         // 0x005ce4bb    e84019faff
                          pop                edi                                            // 0x005ce4c0    5f
                          pop                esi                                            // 0x005ce4c1    5e
                          ret                0x0004                                         // 0x005ce4c2    c20400
@@ -7489,7 +7489,7 @@ _jmp_addr_0x005d0487:    xor.s              eax, eax                            
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                    // 0x005d0492    8b7c240c
                          mov.s              esi, ecx                                       // 0x005d0496    8bf1
                          push               edi                                            // 0x005d0498    57
-                         call               _jmp_addr_0x005703f0                           // 0x005d0499    e852fff9ff
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z  // 0x005d0499    e852fff9ff
                          test               eax, eax                                       // 0x005d049e    85c0
                          {disp8} je         _jmp_addr_0x005d04ba                           // 0x005d04a0    7418
                          {disp32} mov       eax, dword ptr [esi + 0x0000039c]              // 0x005d04a2    8b869c030000
@@ -22847,7 +22847,7 @@ _jmp_addr_0x005dbad0:    {disp8} mov        edx, dword ptr [esp + 0x1c]         
 _jmp_addr_0x005dbb27:    {disp8} mov        ecx, dword ptr [esp + 0x08]                    // 0x005dbb27    8b4c2408
                          push               ecx                                            // 0x005dbb2b    51
                          mov.s              ecx, esi                                       // 0x005dbb2c    8bce
-                         call               _jmp_addr_0x0056fe00                           // 0x005dbb2e    e8cd42f9ff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z         // 0x005dbb2e    e8cd42f9ff
                          {disp8} mov        dword ptr [esi + 0x2c], 0x00000000             // 0x005dbb33    c7462c00000000
                          pop                esi                                            // 0x005dbb3a    5e
                          ret                0x0004                                         // 0x005dbb3b    c20400
@@ -24227,7 +24227,7 @@ _jmp_addr_0x005dca40:    {disp8} mov        eax, dword ptr [ecx + 0x34]         
                          push               edi                                            // 0x005dca55    57
                          mov.s              edi, ecx                                       // 0x005dca56    8bf9
                          push               esi                                            // 0x005dca58    56
-                         call               _jmp_addr_0x005703f0                           // 0x005dca59    e89239f9ff
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z  // 0x005dca59    e89239f9ff
                          test               eax, eax                                       // 0x005dca5e    85c0
                          {disp32} je        _jmp_addr_0x005dcdb1                           // 0x005dca60    0f844b030000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x005dca66    a190c9be00

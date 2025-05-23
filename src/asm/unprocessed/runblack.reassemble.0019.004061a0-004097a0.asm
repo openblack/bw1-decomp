@@ -43,7 +43,7 @@
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
-.extern _jmp_addr_0x005701b0
+.extern ?IsInteractable@GameThingWithPos@@UAE_NXZ
 .extern _jmp_addr_0x005d8a10
 .extern @__apl__9MapCoordsFRC9MapCoords@12
 .extern @GetLHPoint__9MapCoordsCFv@12
@@ -1590,7 +1590,7 @@ _jmp_addr_0x004071f2:    pop                edi                                 
                          pop                esi                                           // 0x0040721a    5e
                          ret                                                              // 0x0040721b    c3
 _jmp_addr_0x0040721c:    mov.s              ecx, esi                                      // 0x0040721c    8bce
-                         call               _jmp_addr_0x005701b0                          // 0x0040721e    e88d8f1600
+                         call               ?IsInteractable@GameThingWithPos@@UAE_NXZ     // 0x0040721e    e88d8f1600
                          pop                esi                                           // 0x00407223    5e
                          ret                                                              // 0x00407224    c3
                          nop                                                              // 0x00407225    90
