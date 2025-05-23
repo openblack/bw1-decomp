@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
-.extern _jmp_addr_0x0056fe00
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x005e6540
 .extern @GetTopState__6LivingCFv@4
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
@@ -492,7 +492,7 @@ _jmp_addr_0x006d712e:    {disp8} mov        ecx, dword ptr [eax + 0x2c]         
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x006d713b    8b542414
                          push               edx                                           // 0x006d713f    52
                          mov.s              ecx, ebp                                      // 0x006d7140    8bcd
-                         call               _jmp_addr_0x0056fe00                          // 0x006d7142    e8b98ce9ff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z        // 0x006d7142    e8b98ce9ff
                          pop                edi                                           // 0x006d7147    5f
                          pop                esi                                           // 0x006d7148    5e
                          pop                ebp                                           // 0x006d7149    5d
@@ -505,7 +505,7 @@ _jmp_addr_0x006d7154:    dec                dword ptr [edx + 0x04]              
 _jmp_addr_0x006d715a:    {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x006d715a    8b542414
                          push               edx                                           // 0x006d715e    52
                          mov.s              ecx, ebp                                      // 0x006d715f    8bcd
-                         call               _jmp_addr_0x0056fe00                          // 0x006d7161    e89a8ce9ff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z        // 0x006d7161    e89a8ce9ff
                          pop                edi                                           // 0x006d7166    5f
                          pop                esi                                           // 0x006d7167    5e
                          pop                ebp                                           // 0x006d7168    5d

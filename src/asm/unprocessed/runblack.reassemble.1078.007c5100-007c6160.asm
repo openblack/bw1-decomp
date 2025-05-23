@@ -51,6 +51,7 @@
 .globl _jmp_addr_0x007c561b
 .globl _jmp_addr_0x007c568d
 .globl _jmp_addr_0x007c57a3
+.globl ?GetText@GameThingWithPos@@UAEPBDXZ
 
                          jmp              dword ptr [rdata_bytes + 0x758]               // 0x007c5100    ff2558978a00
                          jmp              dword ptr [rdata_bytes + 0x75c]               // 0x007c5106    ff255c978a00
@@ -1301,6 +1302,7 @@ _jmp_addr_0x007c5fdb:    push             ebp                                   
                          {disp8} mov      eax, dword ptr [ebp + 0x10]                   // 0x007c60d6    8b4510
                          leave                                                          // 0x007c60d9    c9
                          ret                                                            // 0x007c60da    c3
+?GetText@GameThingWithPos@@UAEPBDXZ:
                          push             0x19                                          // 0x007c60db    6a19
                          call             __amsg_exit                                   // 0x007c60dd    e8c5440000
                          pop              ecx                                           // 0x007c60e2    59

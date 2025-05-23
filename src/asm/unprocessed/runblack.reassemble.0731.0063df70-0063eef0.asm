@@ -20,8 +20,8 @@
 .extern _jmp_addr_0x00563400
 .extern _jmp_addr_0x00563410
 .extern @__ct__9GameThingFv@4
-.extern _jmp_addr_0x0056fe00
-.extern _jmp_addr_0x005703f0
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
+.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern @GetLHPoint__9MapCoordsCFv@12
@@ -373,7 +373,7 @@ _jmp_addr_0x0063e20e:    push              esi                                  
 _jmp_addr_0x0063e22c:    {disp8} mov       eax, dword ptr [esp + 0x08]                   // 0x0063e22c    8b442408
                          push              eax                                           // 0x0063e230    50
                          mov.s             ecx, esi                                      // 0x0063e231    8bce
-                         call              _jmp_addr_0x0056fe00                          // 0x0063e233    e8c81bf3ff
+                         call              ?ToBeDeleted@GameThingWithPos@@UAEXH@Z        // 0x0063e233    e8c81bf3ff
                          pop               esi                                           // 0x0063e238    5e
                          ret               0x0004                                        // 0x0063e239    c20400
                          nop                                                             // 0x0063e23c    90
@@ -730,7 +730,7 @@ _jmp_addr_0x0063e5cf:    ret                                                    
                          push              edi                                           // 0x0063e5d5    57
                          mov.s             edi, ecx                                      // 0x0063e5d6    8bf9
                          push              esi                                           // 0x0063e5d8    56
-                         call              _jmp_addr_0x005703f0                          // 0x0063e5d9    e8121ef3ff
+                         call              ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x0063e5d9    e8121ef3ff
                          test              eax, eax                                      // 0x0063e5de    85c0
                          {disp32} je       _jmp_addr_0x0063e6ba                          // 0x0063e5e0    0f84d4000000
                          {disp32} mov      eax, dword ptr [data_bytes + 0x226990]        // 0x0063e5e6    a190c9be00

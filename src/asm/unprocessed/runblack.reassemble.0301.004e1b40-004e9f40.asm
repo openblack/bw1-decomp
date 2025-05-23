@@ -226,6 +226,10 @@
 .globl _globl_ct_0x004e9bf0
 .globl _globl_ct_0x004e9c20
 .globl _globl_ct_0x004e9c40
+.globl ?CanCreatureEatMe@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsStealableByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?NothingScareyNearMe@GameThingWithPos@@UBE_NXZ
 
 start_0x004e1b40_0x004e9f40:
 // Snippet: asm, [0x004e1b40, 0x004e9efd)
@@ -3635,6 +3639,7 @@ _jmp_addr_0x004e3efe:    mov                eax, 0x00000001                     
                          nop                                                                // 0x004e3f2d    90
                          nop                                                                // 0x004e3f2e    90
                          nop                                                                // 0x004e3f2f    90
+?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          push               esi                                             // 0x004e3f30    56
                          push               edi                                             // 0x004e3f31    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                     // 0x004e3f32    8b7c240c
@@ -3985,6 +3990,7 @@ _jmp_addr_0x004e4200:    mov                eax, 0x00000001                     
                          nop                                                                // 0x004e420d    90
                          nop                                                                // 0x004e420e    90
                          nop                                                                // 0x004e420f    90
+?IsStealableByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          push               esi                                             // 0x004e4210    56
                          push               edi                                             // 0x004e4211    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                     // 0x004e4212    8b7c240c
@@ -4245,6 +4251,7 @@ _jmp_addr_0x004e446e:    xor.s              eax, eax                            
                          nop                                                                // 0x004e447d    90
                          nop                                                                // 0x004e447e    90
                          nop                                                                // 0x004e447f    90
+?NothingScareyNearMe@GameThingWithPos@@UBE_NXZ:
                          add                ecx, 0x14                                       // 0x004e4480    83c114
                          push               ecx                                             // 0x004e4483    51
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                     // 0x004e4484    8b4c2408
@@ -5073,6 +5080,7 @@ _jmp_addr_0x004e4a9c:    xor.s              eax, eax                            
                          nop                                                                // 0x004e4b8d    90
                          nop                                                                // 0x004e4b8e    90
                          nop                                                                // 0x004e4b8f    90
+?CanCreatureEatMe@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          push               esi                                             // 0x004e4b90    56
                          push               edi                                             // 0x004e4b91    57
                          push               0x0                                             // 0x004e4b92    6a00
