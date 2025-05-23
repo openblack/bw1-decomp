@@ -41,7 +41,7 @@
 .extern @__ct__5GGameFv@4
 .extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fe00
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x005739f0
 .extern _jmp_addr_0x00591010
 .extern @DisplayPlayerTextMessages__7GGlobalFv@4
@@ -2123,7 +2123,7 @@ _jmp_addr_0x0064377a:    mov.s              eax, esi                            
 _jmp_addr_0x00643790:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x00643790    8b442408
                          push               eax                                            // 0x00643794    50
                          mov.s              ecx, esi                                       // 0x00643795    8bce
-                         call               _jmp_addr_0x0056fe00                           // 0x00643797    e864c6f2ff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z         // 0x00643797    e864c6f2ff
                          pop                esi                                            // 0x0064379c    5e
                          ret                0x0004                                         // 0x0064379d    c20400
 _jmp_addr_0x006437a0:    {disp8} mov        eax, dword ptr [ecx + 0x40]                    // 0x006437a0    8b4140

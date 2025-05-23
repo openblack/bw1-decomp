@@ -139,6 +139,9 @@
 .globl _globl_ct_0x00416dd0
 .globl _SetMapChild__6ObjectFP6ObjectP7MapCell
 .globl _StorePreviousState__6LivingFv
+.globl ?GetDebugText@GameThingWithPos@@QAEPADXZ
+.globl ?IsWonder@GameThingWithPos@@UAE_NXZ
+.globl ?CreateBuildingSite@GameThingWithPos@@UBE_NXZ
 
 start_0x00416060_0x0041a040:
 // Snippet: asm, [0x00416060, 0x00419fcf)
@@ -3289,6 +3292,7 @@ _jmp_addr_0x004178bd:    mov.s              eax, esi                            
                          nop                                                              // 0x004178cd    90
                          nop                                                              // 0x004178ce    90
                          nop                                                              // 0x004178cf    90
+?IsWonder@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x004178d0    33c0
                          ret                                                              // 0x004178d2    c3
                          nop                                                              // 0x004178d3    90
@@ -3304,6 +3308,7 @@ _jmp_addr_0x004178bd:    mov.s              eax, esi                            
                          nop                                                              // 0x004178dd    90
                          nop                                                              // 0x004178de    90
                          nop                                                              // 0x004178df    90
+?CreateBuildingSite@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                      // 0x004178e0    33c0
                          ret                                                              // 0x004178e2    c3
                          nop                                                              // 0x004178e3    90
@@ -3319,7 +3324,7 @@ _jmp_addr_0x004178bd:    mov.s              eax, esi                            
                          nop                                                              // 0x004178ed    90
                          nop                                                              // 0x004178ee    90
                          nop                                                              // 0x004178ef    90
-                         mov                eax, 0x009c8e18                               // 0x004178f0    b8188e9c00
+?GetDebugText@GameThingWithPos@@QAEPADXZ: mov                eax, 0x009c8e18                               // ?GetDebugText@GameThingWithPos@@QAEPADXZ
                          ret                                                              // 0x004178f5    c3
                          nop                                                              // 0x004178f6    90
                          nop                                                              // 0x004178f7    90

@@ -23,7 +23,7 @@
 .extern @SetStartDate__9GGameInfoFlll@20
 .extern @SetStartTime__9GGameInfoFlll@20
 .extern @__ct__9GameThingFv@4
-.extern _jmp_addr_0x005703f0
+.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x005c6570
@@ -1893,7 +1893,7 @@ _jmp_addr_0x007116d0:    sub                esp, 0x08                           
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x00711702    8b74240c
                          mov.s              ebx, ecx                                      // 0x00711706    8bd9
                          push               esi                                           // 0x00711708    56
-                         call               _jmp_addr_0x005703f0                          // 0x00711709    e8e2ece5ff
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x00711709    e8e2ece5ff
                          test               eax, eax                                      // 0x0071170e    85c0
                          {disp32} je        _jmp_addr_0x0071179a                          // 0x00711710    0f8484000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x00711716    a190c9be00

@@ -42,8 +42,8 @@
 .extern @MyInterface__5GGameFv@4
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fe00
-.extern _jmp_addr_0x005703f0
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
+.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x005990a0
@@ -3549,7 +3549,7 @@ _jmp_addr_0x00441efd:    {disp8} mov        eax, dword ptr [ebx + 0x58]         
 _jmp_addr_0x00441f09:    {disp8} mov        ecx, dword ptr [esp + 0x0c]                   // 0x00441f09    8b4c240c
                          push               ecx                                           // 0x00441f0d    51
                          mov.s              ecx, ebx                                      // 0x00441f0e    8bcb
-                         call               _jmp_addr_0x0056fe00                          // 0x00441f10    e8ebde1200
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z        // 0x00441f10    e8ebde1200
                          pop                edi                                           // 0x00441f15    5f
                          pop                ebx                                           // 0x00441f16    5b
                          ret                0x0004                                        // 0x00441f17    c20400
@@ -5073,7 +5073,7 @@ _jmp_addr_0x00443070:    sub                esp, 0x2c                           
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x004430ef    8b74240c
                          push               esi                                           // 0x004430f3    56
                          mov.s              ecx, edi                                      // 0x004430f4    8bcf
-                         call               _jmp_addr_0x005703f0                          // 0x004430f6    e8f5d21200
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x004430f6    e8f5d21200
                          test               eax, eax                                      // 0x004430fb    85c0
                          {disp32} je        _jmp_addr_0x0044338e                          // 0x004430fd    0f848b020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x00443103    a190c9be00

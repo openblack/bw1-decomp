@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00436970
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fe00
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x00636670
 .extern @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
@@ -611,7 +611,7 @@ _jmp_addr_0x006dde18:    {disp8} mov      ecx, dword ptr [esp + 0x08]           
                          nop                                                       // 0x006dde2f    90
                          {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x006dde30    8b442404
                          push             eax                                      // 0x006dde34    50
-                         call             _jmp_addr_0x0056fe00                     // 0x006dde35    e8c61fe9ff
+                         call             ?ToBeDeleted@GameThingWithPos@@UAEXH@Z   // 0x006dde35    e8c61fe9ff
                          ret              0x0004                                   // 0x006dde3a    c20400
                          nop                                                       // 0x006dde3d    90
                          nop                                                       // 0x006dde3e    90
