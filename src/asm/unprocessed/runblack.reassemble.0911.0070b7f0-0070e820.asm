@@ -22,8 +22,8 @@
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
-.extern _jmp_addr_0x0056fe00
-.extern _jmp_addr_0x005703f0
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
+.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x005d8a10
@@ -3317,7 +3317,7 @@ _jmp_addr_0x0070d9ae:    test               esi, esi                            
 _jmp_addr_0x0070d9b5:    {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x0070d9b5    8b4c2410
                          push               ecx                                           // 0x0070d9b9    51
                          mov.s              ecx, ebp                                      // 0x0070d9ba    8bcd
-                         call               _jmp_addr_0x0056fe00                          // 0x0070d9bc    e83f24e6ff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z        // 0x0070d9bc    e83f24e6ff
                          pop                edi                                           // 0x0070d9c1    5f
                          pop                ebp                                           // 0x0070d9c2    5d
                          pop                ebx                                           // 0x0070d9c3    5b
@@ -3333,7 +3333,7 @@ _jmp_addr_0x0070d9b5:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          nop                                                              // 0x0070d9cf    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0070d9d0    8b442404
                          push               eax                                           // 0x0070d9d4    50
-                         call               _jmp_addr_0x005703f0                          // 0x0070d9d5    e8162ae6ff
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x0070d9d5    e8162ae6ff
                          neg                eax                                           // 0x0070d9da    f7d8
                          sbb.s              eax, eax                                      // 0x0070d9dc    1bc0
                          neg                eax                                           // 0x0070d9de    f7d8

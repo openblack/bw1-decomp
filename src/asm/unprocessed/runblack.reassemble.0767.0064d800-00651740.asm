@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x0056f910
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fe00
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x005dc060
 .extern _jmp_addr_0x005ebd80
@@ -3105,7 +3105,7 @@ _jmp_addr_0x00650144:    test               ebx, ebx                            
 _jmp_addr_0x00650153:    {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x00650153    8b4c2414
                          push               ecx                                           // 0x00650157    51
                          mov.s              ecx, edi                                      // 0x00650158    8bcf
-                         call               _jmp_addr_0x0056fe00                          // 0x0065015a    e8a1fcf1ff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z        // 0x0065015a    e8a1fcf1ff
                          pop                edi                                           // 0x0065015f    5f
                          pop                esi                                           // 0x00650160    5e
                          pop                ebp                                           // 0x00650161    5d
