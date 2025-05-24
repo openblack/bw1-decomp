@@ -17,7 +17,7 @@
 .extern @MSeconds__7LHTimerFv@4
 .extern _jmp_addr_0x0050e3e0
 .extern _jmp_addr_0x00518050
-.extern _jmp_addr_0x0052df50
+.extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
 .extern @AllocateMultiChild__13MultiMapFixedFv@4
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -4936,7 +4936,7 @@ _jmp_addr_0x005118fd:    mov.s              eax, esi                            
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00511974    8b542404
                          push               eax                                           // 0x00511978    50
                          push               edx                                           // 0x00511979    52
-                         call               _jmp_addr_0x0052df50                          // 0x0051197a    e8d1c50100
+                         call               ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z // 0x0051197a    e8d1c50100
                          ret                0x0008                                        // 0x0051197f    c20800
                          nop                                                              // 0x00511982    90
                          nop                                                              // 0x00511983    90

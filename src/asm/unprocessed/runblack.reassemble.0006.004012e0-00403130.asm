@@ -334,6 +334,14 @@
 .globl ?SetHeadPos@Object@@UAEXPAUMapCoords@@@Z
 .globl ?IsAPotFromABuildingSite@Object@@UAE_NXZ
 .globl ?StandAnimation@Object@@UAEIXZ
+.globl ?CanBeSleptNextToByCreature@Fixed@@UAE_NPAVCreature@@@Z
+.globl ?CanBePickedUpByCreature@Fixed@@UAE_NPAVCreature@@@Z
+.globl ?CanBeSetOnFire@Fixed@@UAE_NPAVCreature@@@Z
+.globl ?CanBeDestroyedByStoning@Fixed@@UAE_NPAVCreature@@@Z
+.globl ?CanBeCrushed@Fixed@@UAE_NXZ
+.globl ?VillagerMustAvoid@Fixed@@UAE_NPAVVillager@@@Z
+.globl ?GetTownArtifact@Fixed@@UAEPAVGameThing@@XZ
+.globl ?IsTownArtifact@Fixed@@UAE_NXZ
 
 @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36:    {disp8} mov        eax, dword ptr [esp + 0x1c]              // 0x00401350    8b44241c
                          {disp8} mov        edx, dword ptr [esp + 0x14]              // 0x00401354    8b542414
@@ -408,6 +416,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040140d    90
                          nop                                                         // 0x0040140e    90
                          nop                                                         // 0x0040140f    90
+?CanBeSleptNextToByCreature@Fixed@@UAE_NPAVCreature@@@Z:
                          mov                eax, 0x00000001                          // 0x00401410    b801000000
                          ret                0x0004                                   // 0x00401415    c20400
                          nop                                                         // 0x00401418    90
@@ -418,6 +427,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040141d    90
                          nop                                                         // 0x0040141e    90
                          nop                                                         // 0x0040141f    90
+?CanBeDestroyedByStoning@Fixed@@UAE_NPAVCreature@@@Z:
                          mov                eax, 0x00000001                          // 0x00401420    b801000000
                          ret                0x0004                                   // 0x00401425    c20400
                          nop                                                         // 0x00401428    90
@@ -428,12 +438,14 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040142d    90
                          nop                                                         // 0x0040142e    90
                          nop                                                         // 0x0040142f    90
+?CanBeSetOnFire@Fixed@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401430    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x0a]                // 0x00401432    8a410a
                          not                al                                       // 0x00401435    f6d0
                          shr                eax, 3                                   // 0x00401437    c1e803
                          and                eax, 0x01                                // 0x0040143a    83e001
                          ret                0x0004                                   // 0x0040143d    c20400
+?CanBePickedUpByCreature@Fixed@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401440    33c0
                          ret                0x0004                                   // 0x00401442    c20400
                          nop                                                         // 0x00401445    90
@@ -447,6 +459,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040144d    90
                          nop                                                         // 0x0040144e    90
                          nop                                                         // 0x0040144f    90
+?CanBeCrushed@Fixed@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00401450    b801000000
                          ret                                                         // 0x00401455    c3
                          nop                                                         // 0x00401456    90
@@ -459,6 +472,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040145d    90
                          nop                                                         // 0x0040145e    90
                          nop                                                         // 0x0040145f    90
+?VillagerMustAvoid@Fixed@@UAE_NPAVVillager@@@Z:
                          mov                eax, 0x00000001                          // 0x00401460    b801000000
                          ret                0x0004                                   // 0x00401465    c20400
                          nop                                                         // 0x00401468    90
@@ -469,6 +483,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040146d    90
                          nop                                                         // 0x0040146e    90
                          nop                                                         // 0x0040146f    90
+?GetTownArtifact@Fixed@@UAEPAVGameThing@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x54]              // 0x00401470    8b4154
                          ret                                                         // 0x00401473    c3
                          nop                                                         // 0x00401474    90
@@ -483,6 +498,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040147d    90
                          nop                                                         // 0x0040147e    90
                          nop                                                         // 0x0040147f    90
+?IsTownArtifact@Fixed@@UAE_NXZ:
                          {disp8} mov        edx, dword ptr [ecx + 0x54]              // 0x00401480    8b5154
                          xor.s              eax, eax                                 // 0x00401483    33c0
                          test               edx, edx                                 // 0x00401485    85d2

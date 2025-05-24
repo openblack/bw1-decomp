@@ -94,7 +94,7 @@
 .extern _jmp_addr_0x00527350
 .extern _Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi
 .extern _jmp_addr_0x0052c7b0
-.extern _jmp_addr_0x0052df50
+.extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052edd0
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
@@ -12172,7 +12172,7 @@ _jmp_addr_0x006e7000:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x006e7004    8b542404
                          push               eax                                           // 0x006e7008    50
                          push               edx                                           // 0x006e7009    52
-                         call               _jmp_addr_0x0052df50                          // 0x006e700a    e8416fe4ff
+                         call               ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z // 0x006e700a    e8416fe4ff
                          ret                0x0008                                        // 0x006e700f    c20800
                          nop                                                              // 0x006e7012    90
                          nop                                                              // 0x006e7013    90
