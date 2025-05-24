@@ -115,6 +115,7 @@
 .globl _globl_ct_0x0051ccb0
 .globl _globl_ct_0x0051cce0
 .globl _DrawVillagerInfo__8VillagerFv
+.globl ?DrawOutOfMap@Object@@UAEX_N@Z
 
 start_0x0051a830_0x0051e370:
 // Snippet: asm, [0x0051a830, 0x0051e31a)
@@ -1744,7 +1745,7 @@ _jmp_addr_0x0051bbce:    {disp8} mov        eax, dword ptr [esi + 0x70]         
 _jmp_addr_0x0051bc1a:    {disp8} mov        ecx, dword ptr [esp + 0x08]                          // 0x0051bc1a    8b4c2408
                          push               ecx                                                  // 0x0051bc1e    51
                          mov.s              ecx, esi                                             // 0x0051bc1f    8bce
-                         call               _jmp_addr_0x0051c820                                 // 0x0051bc21    e8fa0b0000
+                         call               ?DrawOutOfMap@Object@@UAEX_N@Z                       // 0x0051bc21    e8fa0b0000
 _jmp_addr_0x0051bc26:    {disp8} mov        esi, dword ptr [esi + 0x40]                          // 0x0051bc26    8b7640
                          test               esi, esi                                             // 0x0051bc29    85f6
                          {disp8} je         _jmp_addr_0x0051bc31                                 // 0x0051bc2b    7404
@@ -2677,7 +2678,8 @@ _jmp_addr_0x0051c80f:    mov.s              ecx, ebx                            
                          nop                                                                     // 0x0051c81d    90
                          nop                                                                     // 0x0051c81e    90
                          nop                                                                     // 0x0051c81f    90
-_jmp_addr_0x0051c820:    push               esi                                                  // 0x0051c820    56
+?DrawOutOfMap@Object@@UAEX_N@Z:
+                         push               esi                                                  // 0x0051c820    56
                          mov.s              esi, ecx                                             // 0x0051c821    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x40]                          // 0x0051c823    8b4640
                          test               eax, eax                                             // 0x0051c826    85c0

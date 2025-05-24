@@ -60,8 +60,8 @@
 .extern _jmp_addr_0x00601d10
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @GetLHPoint__9MapCoordsCFv@12
-.extern _jmp_addr_0x00637870
-.extern _jmp_addr_0x0063a020
+.extern ?IncreaseLife@Object@@UAEXM@Z
+.extern ?ResolveLoad@Object@@UAEXXZ
 .extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
 .extern @GetSpecialPos__12Game3DObjectCFUlR9MapCoords@16
 .extern _jmp_addr_0x0063b5d0
@@ -2522,7 +2522,7 @@ _jmp_addr_0x00737c51:    ret                                                    
                          ret                0x0004                                         // 0x00737c76    c20400
 _jmp_addr_0x00737c79:    {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x00737c79    8b542404
                          push               edx                                            // 0x00737c7d    52
-                         call               _jmp_addr_0x00637870                           // 0x00737c7e    e8edfbefff
+                         call               ?IncreaseLife@Object@@UAEXM@Z                  // 0x00737c7e    e8edfbefff
                          ret                0x0004                                         // 0x00737c83    c20400
                          nop                                                               // 0x00737c86    90
                          nop                                                               // 0x00737c87    90
@@ -3641,7 +3641,7 @@ _jmp_addr_0x00738931:    pop                edi                                 
                          nop                                                               // 0x0073893f    90
                          push               esi                                            // 0x00738940    56
                          mov.s              esi, ecx                                       // 0x00738941    8bf1
-                         call               _jmp_addr_0x0063a020                           // 0x00738943    e8d816f0ff
+                         call               ?ResolveLoad@Object@@UAEXXZ                    // 0x00738943    e8d816f0ff
                          mov.s              ecx, esi                                       // 0x00738948    8bce
                          call               _jmp_addr_0x007381c0                           // 0x0073894a    e871f8ffff
                          pop                esi                                            // 0x0073894f    5e

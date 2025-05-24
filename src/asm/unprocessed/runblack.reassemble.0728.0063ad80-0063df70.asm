@@ -166,6 +166,7 @@
 .globl _globl_ct_0x0063c350
 .globl _globl_ct_0x0063c380
 .globl _globl_ct_0x0063c3a0
+.globl ?CalculateWhereIWillBeAfterNSeconds@Object@@UAEXMPAULHPoint@@@Z
 
 start_0x0063ad80_0x0063df70:
 // Snippet: asm, [0x0063ad80, 0x0063ddcc)
@@ -1252,6 +1253,7 @@ _globl_ct_0x0063b8b0:    {disp32} jmp       _jmp_addr_0x0063b8c0                
 _jmp_addr_0x0063b8c0:    {disp32} mov       dword ptr [data_bytes + 0x37e390], 0xffffffff  // 0x0063b8c0    c7059043d400ffffffff
                          ret                                                               // 0x0063b8ca    c3
                          call               _jmp_addr_0x004017f9                           // 0x0063b8cb    e8295fdcff
+?CalculateWhereIWillBeAfterNSeconds@Object@@UAEXMPAULHPoint@@@Z:
                          sub                esp, 0x10                                      // 0x0063b8d0    83ec10
                          {disp8} lea        eax, dword ptr [ecx + 0x14]                    // 0x0063b8d3    8d4114
                          mov                edx, dword ptr [eax]                           // 0x0063b8d6    8b10

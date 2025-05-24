@@ -41,7 +41,7 @@
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
 .extern _jmp_addr_0x006055c0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
-.extern _jmp_addr_0x00637870
+.extern ?IncreaseLife@Object@@UAEXM@Z
 .extern @GetAltitudeFondation__12Game3DObjectCFv@4
 .extern @__ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff@24
 .extern _jmp_addr_0x00648820
@@ -5451,7 +5451,7 @@ _jmp_addr_0x00405efd:    xor.s              edi, edi                            
 _jmp_addr_0x00405eff:    {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x00405eff    8b442410
                          push               eax                                           // 0x00405f03    50
                          mov.s              ecx, esi                                      // 0x00405f04    8bce
-                         call               _jmp_addr_0x00637870                          // 0x00405f06    e865192300
+                         call               ?IncreaseLife@Object@@UAEXM@Z                 // 0x00405f06    e865192300
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00405f0b    d95c2410
                          test               edi, edi                                      // 0x00405f0f    85ff
                          {disp8} je         _jmp_addr_0x00405f32                          // 0x00405f11    741f

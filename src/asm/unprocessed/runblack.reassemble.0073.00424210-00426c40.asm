@@ -56,7 +56,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
-.extern _jmp_addr_0x00636670
+.extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
 .extern @SetScale__6ObjectFf@12
 .extern @SetYAngle__6ObjectFf@12
@@ -146,6 +146,9 @@
 .globl ??1GameThingWithPos@@UAE@XZ
 .globl ?GetScale@GameThingWithPos@@UBEMXZ
 .globl ?SetScale@GameThingWithPos@@UAEXM@Z
+.globl ?CanBeFrighteningToCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?GetMesh@Object@@UAEHXZ
+.globl ?CanBeCrushed@Object@@UAE_NXZ
 
 start_0x00424210_0x00426c40:
 // Snippet: asm, [0x00424210, 0x00426c03)
@@ -1967,6 +1970,7 @@ _IsObjectFullyInMap__11FixedObjectFv:
                          nop                                                              // 0x0042533d    90
                          nop                                                              // 0x0042533e    90
                          nop                                                              // 0x0042533f    90
+?GetMesh@Object@@UAEHXZ:
                          xor.s              eax, eax                                      // 0x00425340    33c0
                          ret                                                              // 0x00425342    c3
                          nop                                                              // 0x00425343    90
@@ -2265,7 +2269,7 @@ _jmp_addr_0x00425619:    {disp8} mov        edi, dword ptr [esi + 0x68]         
 _jmp_addr_0x00425637:    {disp8} mov        ecx, dword ptr [esp + 0x0c]                   // 0x00425637    8b4c240c
                          push               ecx                                           // 0x0042563b    51
                          mov.s              ecx, esi                                      // 0x0042563c    8bce
-                         call               _jmp_addr_0x00636670                          // 0x0042563e    e82d102100
+                         call               ?ToBeDeleted@Object@@UAEXH@Z                  // 0x0042563e    e82d102100
                          pop                edi                                           // 0x00425643    5f
                          pop                esi                                           // 0x00425644    5e
                          ret                0x0004                                        // 0x00425645    c20400
@@ -2947,6 +2951,7 @@ _jmp_addr_0x00425c40:    push               0x00407870                          
                          nop                                                              // 0x00425c4d    90
                          nop                                                              // 0x00425c4e    90
                          nop                                                              // 0x00425c4f    90
+?CanBeCrushed@Object@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x00425c50    33c0
                          ret                                                              // 0x00425c52    c3
                          nop                                                              // 0x00425c53    90
@@ -2962,6 +2967,7 @@ _jmp_addr_0x00425c40:    push               0x00407870                          
                          nop                                                              // 0x00425c5d    90
                          nop                                                              // 0x00425c5e    90
                          nop                                                              // 0x00425c5f    90
+?CanBeFrighteningToCreature@Object@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00425c60    33c0
                          ret                0x0004                                        // 0x00425c62    c20400
                          nop                                                              // 0x00425c65    90

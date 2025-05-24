@@ -100,7 +100,7 @@
 .extern _jmp_addr_0x00632670
 .extern _jmp_addr_0x00637cc0
 .extern _jmp_addr_0x00639a10
-.extern _jmp_addr_0x0063a7c0
+.extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 .extern _jmp_addr_0x0063e580
 .extern _jmp_addr_0x00646a00
 .extern _jmp_addr_0x00649810
@@ -22104,7 +22104,7 @@ _jmp_addr_0x004395c0:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          {disp8} mov        dword ptr [ecx + 0x1c], 0x00000000                   // 0x004397c0    c7411c00000000
                          ret                0x0004                                               // 0x004397c7    c20400
                          call               dword ptr [rdata_bytes + 0x98c]                      // 0x004397ca    ff158c998a00
-                         {disp32} jmp       _jmp_addr_0x0063a7c0                                 // 0x004397d0    e9eb0f2000
+                         {disp32} jmp       ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ                                 // 0x004397d0    e9eb0f2000
                          nop                                                                     // 0x004397d5    90
                          nop                                                                     // 0x004397d6    90
                          nop                                                                     // 0x004397d7    90

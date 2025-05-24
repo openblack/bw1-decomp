@@ -46,7 +46,7 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _ConvertMapCoordToLandscapePoint__10GLandscapeFRC9MapCoordsR7LHPoint
-.extern _jmp_addr_0x00636670
+.extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern _jmp_addr_0x00638b00
 .extern _Create__13PSysInterfaceFP5Spell13PARTICLE_TYPERC7LHPointRC7LHPointfQ213PSysInterface13NET_GAME_TYPE
 .extern _jmp_addr_0x006ca7a0
@@ -1115,7 +1115,7 @@ _jmp_addr_0x007099f7:    {disp8} mov        ecx, dword ptr [esi + 0x74]         
 _jmp_addr_0x00709a06:    {disp8} mov        ecx, dword ptr [esp + 0x0c]                   // 0x00709a06    8b4c240c
                          push               ecx                                           // 0x00709a0a    51
                          mov.s              ecx, esi                                      // 0x00709a0b    8bce
-                         call               _jmp_addr_0x00636670                          // 0x00709a0d    e85eccf2ff
+                         call               ?ToBeDeleted@Object@@UAEXH@Z                  // 0x00709a0d    e85eccf2ff
                          pop                edi                                           // 0x00709a12    5f
                          pop                esi                                           // 0x00709a13    5e
                          ret                0x0004                                        // 0x00709a14    c20400

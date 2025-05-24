@@ -88,6 +88,7 @@
 .globl _jmp_addr_0x005198f0
 .globl _jmp_addr_0x00519960
 .globl _jmp_addr_0x00519ad0
+.globl ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
 
 start_0x005178d0_0x0051a830:
 // Snippet: asm, [0x005178d0, 0x0051a806)
@@ -819,7 +820,7 @@ _jmp_addr_0x00518163:    push               ebx                                 
                          push               edi                                           // 0x005181af    57
                          mov.s              edi, ecx                                      // 0x005181b0    8bf9
                          push               esi                                           // 0x005181b2    56
-                         call               _jmp_addr_0x005190e0                          // 0x005181b3    e8280f0000
+                         call               ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z                          // 0x005181b3    e8280f0000
                          xor.s              ebp, ebp                                      // 0x005181b8    33ed
                          push               ebp                                           // 0x005181ba    55
                          mov.s              ecx, edi                                      // 0x005181bb    8bcf
@@ -2062,7 +2063,8 @@ _jmp_addr_0x005190d0:    {disp8} mov        esi, dword ptr [esi + 0x40]         
 _jmp_addr_0x005190db:    pop                esi                                           // 0x005190db    5e
                          ret                0x0004                                        // 0x005190dc    c20400
                          nop                                                              // 0x005190df    90
-_jmp_addr_0x005190e0:    sub                esp, 0x34                                     // 0x005190e0    83ec34
+?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z:
+                         sub                esp, 0x34                                     // 0x005190e0    83ec34
                          push               esi                                           // 0x005190e3    56
                          mov.s              esi, ecx                                      // 0x005190e4    8bf1
                          {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x005190e6    8b0d5c19d000

@@ -81,10 +81,10 @@
 .extern @SetSpeed__13MobileWallHugFl@12
 .extern _jmp_addr_0x00635430
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
-.extern _jmp_addr_0x00636670
+.extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
 .extern @SetScale__6ObjectFf@12
-.extern _jmp_addr_0x0063a020
+.extern ?ResolveLoad@Object@@UAEXXZ
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a710
 .extern _jmp_addr_0x0063a810
@@ -6473,7 +6473,7 @@ _jmp_addr_0x005ec166:    {disp32} mov       ecx, dword ptr [esi + 0x000000b8]   
 _jmp_addr_0x005ec180:    {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x005ec180    8b4c2410
                          push               ecx                                           // 0x005ec184    51
                          mov.s              ecx, esi                                      // 0x005ec185    8bce
-                         call               _jmp_addr_0x00636670                          // 0x005ec187    e8e4a40400
+                         call               ?ToBeDeleted@Object@@UAEXH@Z                  // 0x005ec187    e8e4a40400
                          {disp32} mov       edi, dword ptr [esi + 0x00000098]             // 0x005ec18c    8bbe98000000
                          cmp.s              edi, ebp                                      // 0x005ec192    3bfd
                          {disp8} je         _jmp_addr_0x005ec1be                          // 0x005ec194    7428
@@ -10639,7 +10639,7 @@ _jmp_addr_0x005eed12:    pop                edi                                 
                          nop                                                              // 0x005eed1d    90
                          nop                                                              // 0x005eed1e    90
                          nop                                                              // 0x005eed1f    90
-_jmp_addr_0x005eed20:    {disp32} jmp       _jmp_addr_0x0063a020                          // 0x005eed20    e9fbb20400
+_jmp_addr_0x005eed20:    {disp32} jmp       ?ResolveLoad@Object@@UAEXXZ                   // 0x005eed20    e9fbb20400
                          nop                                                              // 0x005eed25    90
                          nop                                                              // 0x005eed26    90
                          nop                                                              // 0x005eed27    90

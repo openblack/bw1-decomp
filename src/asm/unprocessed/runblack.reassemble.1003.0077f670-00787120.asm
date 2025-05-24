@@ -61,8 +61,8 @@
 .extern _jmp_addr_0x005dc8b0
 .extern _jmp_addr_0x005fb830
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
-.extern _jmp_addr_0x006364f0
-.extern _jmp_addr_0x0063a020
+.extern ?Get3DType@Object@@UAE?AW4LH3DObject__ObjectType@@XZ
+.extern ?ResolveLoad@Object@@UAEXXZ
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
 .extern @GetPlayerColour__7GPlayerCFv@4
 .extern _jmp_addr_0x006de570
@@ -2003,7 +2003,7 @@ _jmp_addr_0x00780740:    push               ebx                                 
                          nop                                                              // 0x007807cd    90
                          nop                                                              // 0x007807ce    90
                          nop                                                              // 0x007807cf    90
-                         {disp32} jmp       _jmp_addr_0x006364f0                          // 0x007807d0    e91b5debff
+                         {disp32} jmp       ?Get3DType@Object@@UAE?AW4LH3DObject__ObjectType@@XZ                          // 0x007807d0    e91b5debff
                          nop                                                              // 0x007807d5    90
                          nop                                                              // 0x007807d6    90
                          nop                                                              // 0x007807d7    90
@@ -2699,7 +2699,7 @@ _jmp_addr_0x00780ee0:    push               ecx                                 
                          nop                                                              // 0x00780efd    90
                          nop                                                              // 0x00780efe    90
                          nop                                                              // 0x00780eff    90
-                         {disp32} jmp       _jmp_addr_0x0063a020                          // 0x00780f00    e91b91ebff
+                         {disp32} jmp       ?ResolveLoad@Object@@UAEXXZ                   // 0x00780f00    e91b91ebff
                          nop                                                              // 0x00780f05    90
                          nop                                                              // 0x00780f06    90
                          nop                                                              // 0x00780f07    90

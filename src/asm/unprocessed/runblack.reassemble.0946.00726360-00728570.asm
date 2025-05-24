@@ -154,7 +154,7 @@
 .extern _Get3DType__6ObjectF9MESH_LIST
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
-.extern _jmp_addr_0x00636670
+.extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @MoveMapObject__6ObjectFRC9MapCoords@12
 .extern @SetScale__6ObjectFf@12
 .extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
@@ -3241,7 +3241,7 @@ _jmp_addr_0x0072827d:    pop                edi                                 
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x0072828f    8b442408
                          push               eax                                                  // 0x00728293    50
                          mov.s              ecx, esi                                             // 0x00728294    8bce
-                         call               _jmp_addr_0x00636670                                 // 0x00728296    e8d5e3f0ff
+                         call               ?ToBeDeleted@Object@@UAEXH@Z                         // 0x00728296    e8d5e3f0ff
                          pop                esi                                                  // 0x0072829b    5e
                          ret                0x0004                                               // 0x0072829c    c20400
                          nop                                                                     // 0x0072829f    90

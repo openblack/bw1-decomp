@@ -175,9 +175,9 @@
 .extern @SetGameAngle__13MobileWallHugFUs@10
 .extern _jmp_addr_0x00637cc0
 .extern @SetScale__6ObjectFf@12
-.extern _jmp_addr_0x0063a020
+.extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a1b0
-.extern _jmp_addr_0x0063a7c0
+.extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 .extern _jmp_addr_0x0063a810
 .extern _jmp_addr_0x0064a9c0
 .extern @GetPlayer3DColor__7GPlayerFv@12
@@ -11242,7 +11242,7 @@ _jmp_addr_0x0076e8ec:    {disp8} mov        eax, dword ptr [esp + 0x24]         
                          nop                                                                // 0x0076e96d    90
                          nop                                                                // 0x0076e96e    90
                          nop                                                                // 0x0076e96f    90
-                         {disp32} jmp       _jmp_addr_0x0063a7c0                            // 0x0076e970    e94bbeecff
+                         {disp32} jmp       ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ                            // 0x0076e970    e94bbeecff
                          nop                                                                // 0x0076e975    90
                          nop                                                                // 0x0076e976    90
                          nop                                                                // 0x0076e977    90
@@ -12487,7 +12487,7 @@ _jmp_addr_0x0076f79e:    pop                esi                                 
                          nop                                                                // 0x0076f7ad    90
                          nop                                                                // 0x0076f7ae    90
                          nop                                                                // 0x0076f7af    90
-                         {disp32} jmp       _jmp_addr_0x0063a020                            // 0x0076f7b0    e96ba8ecff
+                         {disp32} jmp       ?ResolveLoad@Object@@UAEXXZ                     // 0x0076f7b0    e96ba8ecff
                          nop                                                                // 0x0076f7b5    90
                          nop                                                                // 0x0076f7b6    90
                          nop                                                                // 0x0076f7b7    90
@@ -20828,7 +20828,7 @@ _jmp_addr_0x00775265:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x0
                          nop                                                                // 0x007752dd    90
                          nop                                                                // 0x007752de    90
                          nop                                                                // 0x007752df    90
-                         {disp32} jmp       _jmp_addr_0x0063a020                            // 0x007752e0    e93b4decff
+                         {disp32} jmp       ?ResolveLoad@Object@@UAEXXZ                     // 0x007752e0    e93b4decff
                          nop                                                                // 0x007752e5    90
                          nop                                                                // 0x007752e6    90
                          nop                                                                // 0x007752e7    90
