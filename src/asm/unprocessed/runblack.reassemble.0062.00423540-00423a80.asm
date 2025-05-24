@@ -96,7 +96,7 @@ _jmp_addr_0x0042360d:    cmp.s              edi, ebx                            
                          mov.s              ecx, edi                                // 0x0042360f    8bcf
                          {disp8} jne        _jmp_addr_0x00423615                    // 0x00423611    7502
 _jmp_addr_0x00423613:    mov.s              ebx, edi                                // 0x00423613    8bdf
-_jmp_addr_0x00423615:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]  // 0x00423615    a15c19d000
+_jmp_addr_0x00423615:    {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]  // 0x00423615    a15c19d000
                          {disp32} mov       esi, dword ptr [eax + 0x00205a40]       // 0x0042361a    8bb0405a2000
                          xor.s              edx, edx                                // 0x00423620    33d2
                          mov                eax, 0x000003e8                         // 0x00423622    b8e8030000

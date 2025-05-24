@@ -2,18 +2,23 @@
 #define BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uintptr_t */
 
+#include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum ABODE_NUMBER */
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 
 #include "ObjectInfo.h" /* For struct GObjectInfo, struct GObjectInfoVftable */
 
+struct GMultiMapFixedInfo;
+struct MapCoords;
+
 struct GMultiMapFixedInfoVftable
 {
   struct GObjectInfoVftable super;  /* 0x0 */
-  uintptr_t field_0x3c;
-  uintptr_t field_0x40;
-  uintptr_t field_0x44;
+  bool (__fastcall* IsOkToCreateAtPos)(const struct GMultiMapFixedInfo* this, const void* edx, const struct MapCoords* pos, float param_2, float param_3);
+  enum ABODE_TYPE (__fastcall* GetAbodeType)(const struct GMultiMapFixedInfo* this);
+  enum ABODE_NUMBER (__fastcall* GetAbodeNumber)(const struct GMultiMapFixedInfo* this);
 };
 static_assert(sizeof(struct GMultiMapFixedInfoVftable) == 0x48, "Data type is of wrong size");
 
@@ -30,5 +35,10 @@ struct GMultiMapFixedInfo
   float influence;
 };
 static_assert(sizeof(struct GMultiMapFixedInfo) == 0x120, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 0052eb60 mac 100dffe0 GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords&, float, float) const
+bool __fastcall IsOkToCreateAtPos__18GMultiMapFixedInfoCFRC9MapCoordsff(const struct GMultiMapFixedInfo* this, const void* edx, const struct MapCoords* pos, float param_2, float param_3) asm("?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z");
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H */

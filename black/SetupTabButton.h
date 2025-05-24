@@ -34,6 +34,6 @@ void __fastcall Draw__14SetupTabButtonFbb(struct SetupTabButton* this, const voi
 // win1.41 0040f670 mac 1037abd0 SetupTabButton::KeyDown(int, int)
 void __fastcall KeyDown__14SetupTabButtonFii(struct SetupTabButton* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040f690 mac 10369440 SetupTabButton::~SetupTabButton(void)
-struct SetupTabButton* __fastcall __dt__14SetupTabButtonFb(struct SetupTabButton* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupTabButtonFb(struct SetupTabButton* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_TAB_BUTTON_INCLUDED_H */

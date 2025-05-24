@@ -67,6 +67,6 @@ void __fastcall KeyDown__9SetupEditFii(struct SetupEdit* this, const void* edx, 
 // win1.41 0040b5f0 mac 103e3630 SetupEdit::Char(int)
 void __fastcall Char__9SetupEditFi(struct SetupEdit* this, const void* edx, int character);
 // win1.41 0040c560 mac 1035a3a0 SetupEdit::~SetupEdit(void)
-struct SetupEdit* __fastcall __dt__9SetupEditFb(struct SetupEdit* this, const void* edx, bool param_1);
+void __fastcall __dt__9SetupEditFb(struct SetupEdit* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_EDIT_INCLUDED_H */

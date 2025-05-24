@@ -1,14 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
-.extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
-.extern _jmp_addr_0x004012a4
-.extern _jmp_addr_0x004012b4
 .extern @Init__5AbodeFiUlUl@20
 .extern _jmp_addr_0x00403190
 .extern _jmp_addr_0x00403d20
@@ -24,13 +16,12 @@
 .extern _jmp_addr_0x0052e280
 .extern _jmp_addr_0x0052e2b0
 .extern _jmp_addr_0x005315a0
-.extern _jmp_addr_0x005702b0
 .extern _jmp_addr_0x00595d70
-.extern _jmp_addr_0x006366a0
+.extern ?Delete@Object@@UAEXH@Z
 .extern _jmp_addr_0x00637cc0
-.extern _jmp_addr_0x00638cb0
+.extern ?GetInspectObjectPos@Object@@UAE_NPAVVillager@@PAUMapCoords@@@Z
 .extern _jmp_addr_0x007228d0
-.extern _jmp_addr_0x00732770
+.extern ?GetPSysFireLocalRndFlamePos@Object@@UAE_NPAULHPoint@@PAH@Z
 .extern _jmp_addr_0x00732d60
 .extern _jmp_addr_0x007374c0
 .extern @AddStructureToTown__4TownFP13MultiMapFixed@12
@@ -45,6 +36,7 @@
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fbac0
+.extern _rdata_bytes_float_0x008aa390
 
 .globl @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
 .globl _jmp_addr_0x004017f9
@@ -76,65 +68,273 @@
 .globl _SetPos__16GameThingWithPosFRC9MapCoords
 .globl _GetComputerSeen__9GameThingFv
 .globl _CastPlayer__9GameThingFv
+.globl CanBeFrighteningToCreature__11FixedObjectFP8Creature
+.globl ?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ
+.globl ?PhysicsEditorCreate@GameThingWithPos@@QAEXH@Z
+.globl ?GetCreatureBeliefListType@GameThingWithPos@@UAEIXZ
+.globl ?GetCitadel@GameThingWithPos@@UAEPAUCitadel@@XZ
+.globl ?SetHeight@GameThingWithPos@@UAEXM@Z
+.globl ?SetMaxHeight@GameThingWithPos@@UAEXM@Z
+.globl ?GetMaxHeight@GameThingWithPos@@UAEMXZ
+.globl ?IsAnimate@GameThingWithPos@@UAE_NXZ
+.globl ?GetInteractPos@GameThingWithPos@@UAEXPAULHPoint@@@Z
+.globl ?IsCannotBePickedUp@GameThingWithPos@@UBE_NXZ
+.globl ?IsStompable@GameThingWithPos@@UAE_NXZ
+.globl ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
+.globl ?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z
+.globl ?IsTown_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTown_0@GameThingWithPos@@UAE_NXZ
+.globl ?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?TrueFunction@GameThingWithPos@@UAE_NXZ
+.globl ?FalseFunction@GameThingWithPos@@UAE_NXZ
+.globl ?IsNotLiving@GameThingWithPos@@UAE_NXZ
+.globl ?IsSuitableForCreatureActivity@GameThingWithPos@@UAE_NXZ
+.globl ?IsTownCentre@GameThingWithPos@@UAE_NXZ
+.globl ?IsTotemStatue@GameThingWithPos@@UAE_NXZ
+.globl ?IsTownDesireFlag@GameThingWithPos@@UAE_NXZ
+.globl ?IsRock_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsRock_0@GameThingWithPos@@UAE_NXZ
+.globl ?IsSpellDispenser@GameThingWithPos@@UAE_NXZ
+.globl ?IsMist@GameThingWithPos@@UAE_NXZ
+.globl ?IsQueryIcon@GameThingWithPos@@UAE_NXZ
+.globl ?IsStreetLight@GameThingWithPos@@UAE_NXZ
+.globl ?IsStreetLantern@GameThingWithPos@@UAE_NXZ
+.globl ?IsField_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsField_0@GameThingWithPos@@UAE_NXZ
+.globl ?IsMagicFireBall@GameThingWithPos@@UAE_NXZ
+.globl ?IsCitadelHeart@GameThingWithPos@@UAE_NXZ
+.globl ?IsDamaged@GameThingWithPos@@UAE_NXZ
+.globl ?CanBeHealedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeKissedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanReceiveGifts@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanActAsAContainer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsNotOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsMushroom@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeGivenToTown@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsVillagerFarFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsVillagerNotWorshipping@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsCow@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsDominantCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeDancedWith@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsWorshipSite_0@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsWorshipSite_1@GameThingWithPos@@UAE_NXZ
+.globl ?GetWorshipSite@GameThingWithPos@@UAEPAUWorshipSite@@XZ
+.globl ?IsWorkshop_0@GameThingWithPos@@UAE_NXZ
+.globl ?IsWorkshop_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTree_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTree_0@GameThingWithPos@@UAE_NXZ
+.globl ?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsDoingSomethingInteresting@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsPickupableRock@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsCitadelPart_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsCitadelPart_0@GameThingWithPos@@UAE_NXZ
+.globl ?IsPlayingFootball@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsStealableScaffold@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsToy@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsToyBall@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsToyDie@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsToyCuddly@GameThingWithPos@@UBE_NPAUCreature@@@Z
+.globl ?IsLiving_1@GameThingWithPos@@UBE_NPAUCreature@@@Z
+.globl ?IsLiving_0@GameThingWithPos@@UBE_NXZ
+.globl ?IsFence@GameThingWithPos@@UBE_NXZ
+.globl ?IsSpellIcon@GameThingWithPos@@UBE_NXZ
+.globl ?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UBE_NXZ
+.globl ?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UBE_NXZ
+.globl ?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UBE_NXZ
+.globl ?IsFlock@GameThingWithPos@@UBE_NXZ
+.globl ?IsDance@GameThingWithPos@@UBE_NXZ
+.globl ?IsReward@GameThingWithPos@@UBE_NXZ
+.globl ?IsScriptContainer@GameThingWithPos@@UBE_NXZ
+.globl ?IsWeather@GameThingWithPos@@UBE_NXZ
+.globl ?IsSpell@GameThingWithPos@@UBE_NXZ
+.globl ?IsDeletedWhenReleasedFromScript@GameThingWithPos@@UAE_NXZ
+.globl ?IsMobileWallHug@GameThingWithPos@@UBE_NXZ
+.globl ?IsActive@GameThingWithPos@@UBE_NXZ
+.globl ?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UBE_NXZ
+.globl ?CalculateDesireForFood@GameThingWithPos@@UAEMXZ
+.globl ?CalculateDesireForRest@GameThingWithPos@@UAEMXZ
+.globl ?CalculatePeopleHidingIndicator@GameThingWithPos@@UAEMXZ
+.globl ?IsReadyForNewScriptAction@GameThingWithPos@@UBE_NXZ
+.globl ?SetControlledByScript@GameThingWithPos@@UAEXH@Z
+.globl ?GetDeathReason@GameThingWithPos@@UAE?AW4DEATH_REASON@@XZ
+.globl ?IsInScript@GameThingWithPos@@UAE_NXZ
+.globl ?IsMaleVillager@GameThingWithPos@@UAE_NXZ
+.globl ?IsFemaleVillager@GameThingWithPos@@UAE_NXZ
+.globl ?IsAnimal@GameThingWithPos@@UAE_NXZ
+.globl ?IsAChild@GameThingWithPos@@UAE_NXZ
+.globl ?IsFootball@GameThingWithPos@@UBE_NXZ
+.globl ?IsCitadel@GameThingWithPos@@UAE_NXZ
+.globl ?IsForest@GameThingWithPos@@UAE_NXZ
+.globl ?IsMobileObject@GameThingWithPos@@UAE_NXZ
+.globl ?IsMobileStatic@GameThingWithPos@@UAE_NXZ
+.globl ?IsAnyKindOfTree@GameThingWithPos@@UAE_NXZ
+.globl ?IsDeadTree@GameThingWithPos@@UAE_NXZ
+.globl ?IsPileFood@GameThingWithPos@@UAE_NXZ
+.globl ?IsFeature@GameThingWithPos@@UAE_NXZ
+.globl ?IsScriptMarker@GameThingWithPos@@UAE_NXZ
+.globl ?IsScriptHighlight@GameThingWithPos@@UAE_NXZ
+.globl ?IsInfluenceRing@GameThingWithPos@@UAE_NXZ
+.globl ?IsPuzzleGame@GameThingWithPos@@UAE_NXZ
+.globl ?IsScaffold@GameThingWithPos@@UAE_NXZ
+.globl ?IsSkeleton@GameThingWithPos@@UBE_NXZ
+.globl ?IsPoisoned@GameThingWithPos@@UBE_NXZ
+.globl ?IsSpeedUp@GameThingWithPos@@UAE_NXZ
+.globl ?IsParticleContainer@GameThingWithPos@@UAE_NXZ
+.globl ?IsSacrificeAltar@GameThingWithPos@@UAE_NXZ
+.globl ?IsPot@GameThingWithPos@@UAE_NXZ
+.globl ?IsComputerPlayer@GameThingWithPos@@UBE_NXZ
+.globl ?SetSkeleton@GameThingWithPos@@UAEXH@Z
+.globl ?IsSpellSeed@GameThingWithPos@@UBE_NXZ
+.globl ?IsSpellShield@GameThingWithPos@@UBE_NXZ
+.globl ?IsPileResource@GameThingWithPos@@UBE_NXZ
+.globl ?IsScriptTimer@GameThingWithPos@@UBE_NXZ
+.globl ?GetFacingDirection@GameThingWithPos@@UAEMXZ
+.globl ?SetAffectedByWind@GameThingWithPos@@UAEXH@Z
+.globl ?GetReactionPower@GameThingWithPos@@UAEMXZ
+.globl ?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ
+.globl ?GetLife@Object@@UAEMXZ
+.globl ?GetScale@Object@@UAEMXZ
+.globl ?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z
+.globl ?IsMoving@Object@@UAE_NXZ
+.globl ?IsSuitableForCreatureAction@Object@@UAE_NXZ
+.globl ?CanBeAttackedByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeHelpedByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBePlayedWithByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeImpressedByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeExaminedByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?IsOnFire@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBePoodOn@Object@@UAE_NPAVCreature@@@Z
+.globl ?GetText@Object@@UAEPBDXZ
+.globl ?IsObject@Object@@UAE_NXZ
+.globl ?GetXAngle@Object@@UAEMXZ
+.globl ?GetYAngle@Object@@UAEMXZ
+.globl ?GetZAngle@Object@@UAEMXZ
+.globl ?SetJustScale@Object@@UAEXM@Z
+.globl ?UpdateFrom3DPosition@Object@@UAEXXZ
+.globl ?MoveAlongPath@Object@@UAEIXZ
+.globl ?IsReachable@Object@@UAE_NXZ
+.globl ?GetPtr@Object@@UAEPAV1@XZ
+.globl ?Get3DObjectForPSys@Object@@UAEPAVGame3DObject@@XZ
+.globl ?GetSpotEffectPower@Object@@UAEMXZ
+.globl ?GetHoldYRotate@Object@@UAEMXZ
+.globl ?HandShouldFeelWithMeshIntersect@Object@@UAE_NXZ
+.globl ?SetSpecularColor@Object@@UAEXULH3DColor@@@Z
+.globl ?GetSpecularColor@Object@@UAE?AULH3DColor@@XZ
+.globl ?SetBeliefSprite@Object@@UAEXPAVLH3DSprite@@@Z
+.globl ?GetBeliefSprite@Object@@UAEPAVLH3DSprite@@XZ
+.globl ?IsAlive@Object@@UAE_NXZ
+.globl ?ScaffoldMoved@Object@@UAEXPAVScaffold@@@Z
+.globl ?ProcessBySpell@Object@@UAEIPAVSpell@@@Z
+.globl ?GetDetailMesh@Object@@UAEHH@Z
+.globl ?IsG3DObjectDrawnInHand@Object@@UAE_NXZ
+.globl ?GetDrawRegion@Object@@UAEXPAULHRegion@@@Z
+.globl ?ProcessState@Object@@UAEIXZ
+.globl ?CanBePickedUp@Object@@UAE_NXZ
+.globl ?GetVillagerHugRadius@Object@@UAEMXZ
+.globl ?GetFoodValue@Object@@UAEMW4FOOD_TYPE@@@Z
+.globl ?GetFoodType@Object@@UAE?AW4FOOD_TYPE@@XZ
+.globl ?IsSpellSeedReturnPoint@Object@@UAE_NXZ
+.globl ?IsABeliever@Object@@UAE_NXZ
+.globl ?GetResourceType@Object@@UAE?AW4RESOURCE_TYPE@@XZ
+.globl ?GetDefaultResource@Object@@UAEHXZ
+.globl ?SetPoisonedResource@Object@@UAEXW4RESOURCE_TYPE@@H@Z
+.globl ?SetPoisoned@Object@@UAEXH@Z
+.globl ?IsLockedInInteract@Object@@UAE_NXZ
+.globl ?SetDying@Object@@UAE_NXZ
+.globl ?EndOnFire@Object@@UAEXXZ
+.globl ?NetworkUnfriendlyStartLockedSelect@Object@@UAE_NXZ
+.globl ?IsReadyForNetworkUnfriendlyLockedSelect@Object@@UAE_NXZ
+.globl ?NetworkUnfriendlyLockedSelect@Object@@UAE_NPAVControlHandUpdateInfo@@@Z
+.globl ?GetReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAE_NXZ
+.globl ?IsReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAE_NXZ
+.globl ?NetworkUnfriendlyEndLockedSelect@Object@@UAE_NXZ
+.globl ?NetworkFriendlyEndLockedSelect@Object@@UAE_NPAVGInterfaceStatus@@@Z
+.globl ?ValidAsInterfaceTarget@Object@@UAE_NXZ
+.globl ?ValidAsInterfaceLeashTarget@Object@@UAE_NXZ
+.globl ?SelectOnlyAfterRecSystem@Object@@UAE_NXZ
+.globl ?ValidForPlaceInHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
+.globl ?ValidToRemoveFromHand@Object@@UAE_NPAVGInterfaceStatus@@PBUMapCoords@@@Z
+.globl ?RemoveFromHand@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z
+.globl ?InterfaceMustBeInInfluenceForInteraction@Object@@UAE_NXZ
+.globl ?ValidToApplyThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z
+.globl ?ApplyThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@PAVGestureSystemPacketData@@@Z
+.globl ?ValidToApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PAUMapCoords@@@Z
+.globl ?ApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@PAVGestureSystemPacketData@@@Z
+.globl ?ValidForLockedApplyProcess@Object@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?ApplyUnlockProcess@Object@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?IsInterfacePowerUpWhenInHand@Object@@UAEIXZ
+.globl ?ApplyOnlyAfterRecSystem@Object@@UAEIXZ
+.globl ?ApplyOnlyAfterReleased@Object@@UAEIXZ
+.globl ?InterfaceValidToGiveObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z
+.globl ?InterfaceGiveObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z
+.globl ?InterfaceValidToInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?InterfaceInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?ValidToSelectFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z
+.globl ?ValidToApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z
+.globl ?SelectFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z
+.globl ?ApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z
+.globl ?ValidToFightThisToObject@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z
+.globl ?FightThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z
+.globl ?IsEffectReceiver@Object@@UAE_NPAVEffectValues@@@Z
+.globl ?PhysicallyDestroysAbodes@Object@@UAEIXZ
+.globl ?GetAlwaysRemainsInPhysicsInternalSystem@Object@@UAE_NXZ
+.globl ?GetTastiness@Object@@UAEIXZ
+.globl ?IsScary@Object@@UAE_NXZ
+.globl ?GetObjectCollide@Object@@UAEIXZ
+.globl ?IsPushable@Object@@UAE_NXZ
+.globl ?GetCarriedTreeType@Object@@UAEIXZ
+.globl ?GetFacingPitch@Object@@UAEMXZ
+.globl ?SetHeadPos@Object@@UAEXPAUMapCoords@@@Z
+.globl ?IsAPotFromABuildingSite@Object@@UAE_NXZ
+.globl ?StandAnimation@Object@@UAEIXZ
 
-start_0x004012e0_0x00403130:
-// Snippet: asm, [0x004012e0, 0x00403097)
-                         {disp32} mov       cl, byte ptr [data_bytes + 0x276680]     // 0x004012e0    8a0d80c6c300
-                         mov                al, 0x01                                 // 0x004012e6    b001
-                         test               al, cl                                   // 0x004012e8    84c8
-                         {disp8} jne        _jmp_addr_0x00401312                     // 0x004012ea    7526
-                         push               esi                                      // 0x004012ec    56
-                         or.s               cl, al                                   // 0x004012ed    0ac8
-                         push               edi                                      // 0x004012ef    57
-                         {disp32} mov       byte ptr [data_bytes + 0x276680], cl     // 0x004012f0    880d80c6c300
-                         mov                esi, 0x00c4cc68                          // 0x004012f6    be68ccc400
-                         mov                edi, 0x00000093                          // 0x004012fb    bf93000000
-_jmp_addr_0x00401300:    sub                esi, 0x000001c8                          // 0x00401300    81eec8010000
-                         mov.s              ecx, esi                                 // 0x00401306    8bce
-                         call               _jmp_addr_0x00436960                     // 0x00401308    e853560300
-                         dec                edi                                      // 0x0040130d    4f
-                         {disp8} jne        _jmp_addr_0x00401300                     // 0x0040130e    75f0
-                         pop                edi                                      // 0x00401310    5f
-                         pop                esi                                      // 0x00401311    5e
-_jmp_addr_0x00401312:    ret                                                         // 0x00401312    c3
-                         nop                                                         // 0x00401313    90
-                         nop                                                         // 0x00401314    90
-                         nop                                                         // 0x00401315    90
-                         nop                                                         // 0x00401316    90
-                         nop                                                         // 0x00401317    90
-                         nop                                                         // 0x00401318    90
-                         nop                                                         // 0x00401319    90
-                         nop                                                         // 0x0040131a    90
-                         nop                                                         // 0x0040131b    90
-                         nop                                                         // 0x0040131c    90
-                         nop                                                         // 0x0040131d    90
-                         nop                                                         // 0x0040131e    90
-                         nop                                                         // 0x0040131f    90
-                         push               esi                                      // 0x00401320    56
-                         mov.s              esi, ecx                                 // 0x00401321    8bf1
-                         call               _jmp_addr_0x00436960                     // 0x00401323    e838560300
-                         test               byte ptr [esp + 0x08], 0x01              // 0x00401328    f644240801
-                         {disp8} je         _jmp_addr_0x0040133d                     // 0x0040132d    740e
-                         push               0x000001c8                               // 0x0040132f    68c8010000
-                         push               esi                                      // 0x00401334    56
-                         call               _jmp_addr_0x00436970                     // 0x00401335    e836560300
-                         add                esp, 0x08                                // 0x0040133a    83c408
-_jmp_addr_0x0040133d:    mov.s              eax, esi                                 // 0x0040133d    8bc6
-                         pop                esi                                      // 0x0040133f    5e
-                         ret                0x0004                                   // 0x00401340    c20400
-                         nop                                                         // 0x00401343    90
-                         nop                                                         // 0x00401344    90
-                         nop                                                         // 0x00401345    90
-                         nop                                                         // 0x00401346    90
-                         nop                                                         // 0x00401347    90
-                         nop                                                         // 0x00401348    90
-                         nop                                                         // 0x00401349    90
-                         nop                                                         // 0x0040134a    90
-                         nop                                                         // 0x0040134b    90
-                         nop                                                         // 0x0040134c    90
-                         nop                                                         // 0x0040134d    90
-                         nop                                                         // 0x0040134e    90
-                         nop                                                         // 0x0040134f    90
 @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36:    {disp8} mov        eax, dword ptr [esp + 0x1c]              // 0x00401350    8b44241c
                          {disp8} mov        edx, dword ptr [esp + 0x14]              // 0x00401354    8b542414
                          push               esi                                      // 0x00401358    56
@@ -172,7 +372,7 @@ _jmp_addr_0x0040133d:    mov.s              eax, esi                            
                          {disp32} mov       cl, byte ptr [eax + 0x00000758]          // 0x004013c6    8a8858070000
                          dec                cl                                       // 0x004013cc    fec9
                          {disp32} mov       byte ptr [esi + 0x000000b8], cl          // 0x004013ce    888eb8000000
-_jmp_addr_0x004013d4:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]   // 0x004013d4    a15c19d000
+_jmp_addr_0x004013d4:    {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]   // 0x004013d4    a15c19d000
                          or                 byte ptr [eax + 0x59c0], 1               // 0x004013d9    8088c059000001
                          push               0x43480000                               // 0x004013e0    6800004843
                          mov.s              ecx, esi                                 // 0x004013e5    8bce
@@ -194,6 +394,7 @@ _jmp_addr_0x004013d4:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95
                          nop                                                         // 0x004013fd    90
                          nop                                                         // 0x004013fe    90
                          nop                                                         // 0x004013ff    90
+CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          xor.s              eax, eax                                 // 0x00401400    33c0
                          ret                0x0004                                   // 0x00401402    c20400
                          nop                                                         // 0x00401405    90
@@ -669,7 +870,7 @@ _jmp_addr_0x004013d4:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b95
                          nop                                                         // 0x0040169f    90
                          mov                eax, dword ptr [ecx]                     // 0x004016a0    8b01
                          call               dword ptr [eax + 0x884]                  // 0x004016a2    ff9084080000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]         // 0x004016a8    d81d90a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004016a8    d81d90a38a00
                          fnstsw             ax                                       // 0x004016ae    dfe0
                          test               ah, 0x01                                 // 0x004016b0    f6c401
                          {disp8} jne        _jmp_addr_0x004016bb                     // 0x004016b3    7506
@@ -685,7 +886,7 @@ _jmp_addr_0x004016bb:    xor.s              eax, eax                            
                          {disp8} je         _jmp_addr_0x004016e4                     // 0x004016c7    741b
                          mov                edx, dword ptr [ecx]                     // 0x004016c9    8b11
                          call               dword ptr [edx + 0x880]                  // 0x004016cb    ff9280080000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]         // 0x004016d1    d81d90a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004016d1    d81d90a38a00
                          fnstsw             ax                                       // 0x004016d7    dfe0
                          test               ah, 0x01                                 // 0x004016d9    f6c401
                          {disp8} jne        _jmp_addr_0x004016e4                     // 0x004016dc    7506
@@ -881,11 +1082,12 @@ _jmp_addr_0x004017dd:    mov.s              eax, esi                            
                          nop                                                         // 0x004017ee    90
                          nop                                                         // 0x004017ef    90
 _CalculateInfluence__9GameThingFRC9MapCoords:
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1390]         // 0x004017f0    d90590a38a00
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004017f0    d90590a38a00
                          ret                0x0004                                   // 0x004017f6    c20400
+                         // SEH code path?
 _jmp_addr_0x004017f9:    push               ecx                                      // 0x004017f9    51
                          push               eax                                      // 0x004017fa    50
-                         call               _jmp_addr_0x004012a4                     // 0x004017fb    e8a4faffff
+                         call               ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ + 4                     // 0x004017fb    e8a4faffff
 _RemoveDance__9GameThingFv:
                          ret                                                         // 0x00401800    c3
                          nop                                                         // 0x00401801    90
@@ -955,7 +1157,7 @@ _IsCreatureNotTooNear__9GameThingFP8Creature:
                          nop                                                         // 0x0040184e    90
                          nop                                                         // 0x0040184f    90
 _GetMaxAlignmentChangePerGameTurn__9GameThingFv:
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1394]         // 0x00401850    d90594a38a00
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa394]         // 0x00401850    d90594a38a00
                          ret                                                         // 0x00401856    c3
                          nop                                                         // 0x00401857    90
                          nop                                                         // 0x00401858    90
@@ -983,11 +1185,11 @@ _GetComputerSeen__9GameThingFv:
                          nop                                                         // 0x0040186e    90
                          nop                                                         // 0x0040186f    90
 _GetVillagerActivityDesire__9GameThingFP8Villager:
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00401870    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00401870    d90598a38a00
                          ret                0x0004                                   // 0x00401876    c20400
 _jmp_addr_0x00401879:    push               ecx                                      // 0x00401879    51
                          push               eax                                      // 0x0040187a    50
-                         call               _jmp_addr_0x004012b4                     // 0x0040187b    e834faffff
+                         call               ?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ + 4                     // 0x0040187b    e834faffff
 _SetVillagerActivity__9GameThingFP8Villager:
                          xor.s              eax, eax                                 // 0x00401880    33c0
                          ret                0x0004                                   // 0x00401882    c20400
@@ -1180,6 +1382,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          {disp8} mov        dword ptr [ecx + 0x08], eax              // 0x00401954    894108
                          ret                0x0004                                   // 0x00401957    c20400
                          call               dword ptr [__imp__BinkCopyToBuffer@28]   // 0x0040195a    ff1564998a00
+?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00401960    8b442404
                          add                ecx, 0x14                                // 0x00401964    83c114
                          push               esi                                      // 0x00401967    56
@@ -1194,9 +1397,11 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          ret                0x0004                                   // 0x0040197b    c20400
                          nop                                                         // 0x0040197e    90
                          nop                                                         // 0x0040197f    90
+?PhysicsEditorCreate@GameThingWithPos@@QAEXH@Z:
                          {disp8} mov        dword ptr [ecx + 0x1c], 0x00000000       // 0x00401980    c7411c00000000
                          ret                0x0004                                   // 0x00401987    c20400
                          call               dword ptr [__imp__GetOpenFileNameA@4]    // 0x0040198a    ff1570998a00
+?GetCreatureBeliefListType@GameThingWithPos@@UAEIXZ:
                          mov                eax, 0x00000001                          // 0x00401990    b801000000
                          ret                                                         // 0x00401995    c3
                          nop                                                         // 0x00401996    90
@@ -1209,6 +1414,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x0040199d    90
                          nop                                                         // 0x0040199e    90
                          nop                                                         // 0x0040199f    90
+?GetCitadel@GameThingWithPos@@UAEPAUCitadel@@XZ:
                          xor.s              eax, eax                                 // 0x004019a0    33c0
                          ret                                                         // 0x004019a2    c3
                          nop                                                         // 0x004019a3    90
@@ -1224,6 +1430,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x004019ad    90
                          nop                                                         // 0x004019ae    90
                          nop                                                         // 0x004019af    90
+?SetHeight@GameThingWithPos@@UAEXM@Z:
                          ret                0x0004                                   // 0x004019b0    c20400
                          nop                                                         // 0x004019b3    90
                          nop                                                         // 0x004019b4    90
@@ -1238,6 +1445,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x004019bd    90
                          nop                                                         // 0x004019be    90
                          nop                                                         // 0x004019bf    90
+?SetMaxHeight@GameThingWithPos@@UAEXM@Z:
                          ret                0x0004                                   // 0x004019c0    c20400
                          nop                                                         // 0x004019c3    90
                          nop                                                         // 0x004019c4    90
@@ -1252,7 +1460,8 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x004019cd    90
                          nop                                                         // 0x004019ce    90
                          nop                                                         // 0x004019cf    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x004019d0    d90598a38a00
+?GetMaxHeight@GameThingWithPos@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004019d0    d90598a38a00
                          ret                                                         // 0x004019d6    c3
                          nop                                                         // 0x004019d7    90
                          nop                                                         // 0x004019d8    90
@@ -1263,6 +1472,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x004019dd    90
                          nop                                                         // 0x004019de    90
                          nop                                                         // 0x004019df    90
+?IsAnimate@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004019e0    33c0
                          ret                                                         // 0x004019e2    c3
                          nop                                                         // 0x004019e3    90
@@ -1278,6 +1488,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x004019ed    90
                          nop                                                         // 0x004019ee    90
                          nop                                                         // 0x004019ef    90
+?GetInteractPos@GameThingWithPos@@UAEXPAULHPoint@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x004019f0    8b442404
                          add                ecx, 0x14                                // 0x004019f4    83c114
                          push               esi                                      // 0x004019f7    56
@@ -1292,6 +1503,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          ret                0x0004                                   // 0x00401a0b    c20400
                          nop                                                         // 0x00401a0e    90
                          nop                                                         // 0x00401a0f    90
+?IsCannotBePickedUp@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00401a10    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x24]                // 0x00401a12    668b4124
                          shr                eax, 0xd                                 // 0x00401a16    c1e80d
@@ -1300,6 +1512,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a1d    90
                          nop                                                         // 0x00401a1e    90
                          nop                                                         // 0x00401a1f    90
+?IsStompable@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401a20    33c0
                          ret                                                         // 0x00401a22    c3
                          nop                                                         // 0x00401a23    90
@@ -1315,6 +1528,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a2d    90
                          nop                                                         // 0x00401a2e    90
                          nop                                                         // 0x00401a2f    90
+?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401a30    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x24]                // 0x00401a32    8a4124
                          not                al                                       // 0x00401a35    f6d0
@@ -1323,7 +1537,8 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          ret                                                         // 0x00401a3d    c3
                          nop                                                         // 0x00401a3e    90
                          nop                                                         // 0x00401a3f    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1390]         // 0x00401a40    d90590a38a00
+?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa390]         // 0x00401a40    d90590a38a00
                          ret                0x0004                                   // 0x00401a46    c20400
                          nop                                                         // 0x00401a49    90
                          nop                                                         // 0x00401a4a    90
@@ -1332,6 +1547,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a4d    90
                          nop                                                         // 0x00401a4e    90
                          nop                                                         // 0x00401a4f    90
+?IsTown_0@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401a50    33c0
                          ret                0x0004                                   // 0x00401a52    c20400
                          nop                                                         // 0x00401a55    90
@@ -1345,6 +1561,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a5d    90
                          nop                                                         // 0x00401a5e    90
                          nop                                                         // 0x00401a5f    90
+?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a60    33c0
                          ret                0x0004                                   // 0x00401a62    c20400
                          nop                                                         // 0x00401a65    90
@@ -1358,6 +1575,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a6d    90
                          nop                                                         // 0x00401a6e    90
                          nop                                                         // 0x00401a6f    90
+?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a70    33c0
                          ret                0x0004                                   // 0x00401a72    c20400
                          nop                                                         // 0x00401a75    90
@@ -1371,6 +1589,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a7d    90
                          nop                                                         // 0x00401a7e    90
                          nop                                                         // 0x00401a7f    90
+?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a80    33c0
                          ret                0x0004                                   // 0x00401a82    c20400
                          nop                                                         // 0x00401a85    90
@@ -1384,6 +1603,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a8d    90
                          nop                                                         // 0x00401a8e    90
                          nop                                                         // 0x00401a8f    90
+?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a90    33c0
                          ret                0x0004                                   // 0x00401a92    c20400
                          nop                                                         // 0x00401a95    90
@@ -1397,6 +1617,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401a9d    90
                          nop                                                         // 0x00401a9e    90
                          nop                                                         // 0x00401a9f    90
+?TrueFunction@GameThingWithPos@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00401aa0    b801000000
                          ret                                                         // 0x00401aa5    c3
                          nop                                                         // 0x00401aa6    90
@@ -1409,6 +1630,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401aad    90
                          nop                                                         // 0x00401aae    90
                          nop                                                         // 0x00401aaf    90
+?FalseFunction@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401ab0    33c0
                          ret                                                         // 0x00401ab2    c3
                          nop                                                         // 0x00401ab3    90
@@ -1424,6 +1646,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401abd    90
                          nop                                                         // 0x00401abe    90
                          nop                                                         // 0x00401abf    90
+?IsNotLiving@GameThingWithPos@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00401ac0    b801000000
                          ret                                                         // 0x00401ac5    c3
                          nop                                                         // 0x00401ac6    90
@@ -1436,6 +1659,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401acd    90
                          nop                                                         // 0x00401ace    90
                          nop                                                         // 0x00401acf    90
+?IsSuitableForCreatureActivity@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401ad0    33c0
                          ret                                                         // 0x00401ad2    c3
                          nop                                                         // 0x00401ad3    90
@@ -1451,6 +1675,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401add    90
                          nop                                                         // 0x00401ade    90
                          nop                                                         // 0x00401adf    90
+?IsTown_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ae0    33c0
                          ret                                                         // 0x00401ae2    c3
                          nop                                                         // 0x00401ae3    90
@@ -1466,6 +1691,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401aed    90
                          nop                                                         // 0x00401aee    90
                          nop                                                         // 0x00401aef    90
+?IsTownCentre@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401af0    33c0
                          ret                                                         // 0x00401af2    c3
                          nop                                                         // 0x00401af3    90
@@ -1481,6 +1707,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401afd    90
                          nop                                                         // 0x00401afe    90
                          nop                                                         // 0x00401aff    90
+?IsTotemStatue@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b00    33c0
                          ret                                                         // 0x00401b02    c3
                          nop                                                         // 0x00401b03    90
@@ -1496,6 +1723,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b0d    90
                          nop                                                         // 0x00401b0e    90
                          nop                                                         // 0x00401b0f    90
+?IsTownDesireFlag@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b10    33c0
                          ret                                                         // 0x00401b12    c3
                          nop                                                         // 0x00401b13    90
@@ -1511,6 +1739,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b1d    90
                          nop                                                         // 0x00401b1e    90
                          nop                                                         // 0x00401b1f    90
+?IsRock_0@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b20    33c0
                          ret                                                         // 0x00401b22    c3
                          nop                                                         // 0x00401b23    90
@@ -1526,6 +1755,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b2d    90
                          nop                                                         // 0x00401b2e    90
                          nop                                                         // 0x00401b2f    90
+?IsSpellDispenser@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b30    33c0
                          ret                                                         // 0x00401b32    c3
                          nop                                                         // 0x00401b33    90
@@ -1541,6 +1771,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b3d    90
                          nop                                                         // 0x00401b3e    90
                          nop                                                         // 0x00401b3f    90
+?IsMist@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b40    33c0
                          ret                                                         // 0x00401b42    c3
                          nop                                                         // 0x00401b43    90
@@ -1556,6 +1787,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b4d    90
                          nop                                                         // 0x00401b4e    90
                          nop                                                         // 0x00401b4f    90
+?IsQueryIcon@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b50    33c0
                          ret                                                         // 0x00401b52    c3
                          nop                                                         // 0x00401b53    90
@@ -1571,6 +1803,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b5d    90
                          nop                                                         // 0x00401b5e    90
                          nop                                                         // 0x00401b5f    90
+?IsStreetLight@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b60    33c0
                          ret                                                         // 0x00401b62    c3
                          nop                                                         // 0x00401b63    90
@@ -1586,6 +1819,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b6d    90
                          nop                                                         // 0x00401b6e    90
                          nop                                                         // 0x00401b6f    90
+?IsStreetLantern@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b70    33c0
                          ret                                                         // 0x00401b72    c3
                          nop                                                         // 0x00401b73    90
@@ -1601,6 +1835,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b7d    90
                          nop                                                         // 0x00401b7e    90
                          nop                                                         // 0x00401b7f    90
+?IsField_0@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b80    33c0
                          ret                                                         // 0x00401b82    c3
                          nop                                                         // 0x00401b83    90
@@ -1616,6 +1851,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b8d    90
                          nop                                                         // 0x00401b8e    90
                          nop                                                         // 0x00401b8f    90
+?IsMagicFireBall@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401b90    33c0
                          ret                                                         // 0x00401b92    c3
                          nop                                                         // 0x00401b93    90
@@ -1631,6 +1867,7 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401b9d    90
                          nop                                                         // 0x00401b9e    90
                          nop                                                         // 0x00401b9f    90
+?IsCitadelHeart@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401ba0    33c0
                          ret                                                         // 0x00401ba2    c3
                          nop                                                         // 0x00401ba3    90
@@ -1646,9 +1883,10 @@ _SetPos__16GameThingWithPosFRC9MapCoords:
                          nop                                                         // 0x00401bad    90
                          nop                                                         // 0x00401bae    90
                          nop                                                         // 0x00401baf    90
+?IsDamaged@GameThingWithPos@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                     // 0x00401bb0    8b01
                          call               dword ptr [eax + 0x11c]                  // 0x00401bb2    ff901c010000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]         // 0x00401bb8    d81d90a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa390]         // 0x00401bb8    d81d90a38a00
                          fnstsw             ax                                       // 0x00401bbe    dfe0
                          test               ah, 0x01                                 // 0x00401bc0    f6c401
                          {disp8} je         _jmp_addr_0x00401bcb                     // 0x00401bc3    7406
@@ -1658,6 +1896,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          ret                                                         // 0x00401bcd    c3
                          nop                                                         // 0x00401bce    90
                          nop                                                         // 0x00401bcf    90
+?CanBeHealedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401bd0    33c0
                          ret                0x0004                                   // 0x00401bd2    c20400
                          nop                                                         // 0x00401bd5    90
@@ -1671,6 +1910,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401bdd    90
                          nop                                                         // 0x00401bde    90
                          nop                                                         // 0x00401bdf    90
+?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401be0    33c0
                          ret                0x0004                                   // 0x00401be2    c20400
                          nop                                                         // 0x00401be5    90
@@ -1684,6 +1924,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401bed    90
                          nop                                                         // 0x00401bee    90
                          nop                                                         // 0x00401bef    90
+?CanBeKissedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401bf0    33c0
                          ret                0x0004                                   // 0x00401bf2    c20400
                          nop                                                         // 0x00401bf5    90
@@ -1697,6 +1938,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401bfd    90
                          nop                                                         // 0x00401bfe    90
                          nop                                                         // 0x00401bff    90
+?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c00    33c0
                          ret                0x0004                                   // 0x00401c02    c20400
                          nop                                                         // 0x00401c05    90
@@ -1710,6 +1952,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401c0d    90
                          nop                                                         // 0x00401c0e    90
                          nop                                                         // 0x00401c0f    90
+?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          push               esi                                      // 0x00401c10    56
                          push               edi                                      // 0x00401c11    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]              // 0x00401c12    8b7c240c
@@ -1744,6 +1987,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c4d    90
                          nop                                                         // 0x00401c4e    90
                          nop                                                         // 0x00401c4f    90
+?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c50    33c0
                          ret                0x0004                                   // 0x00401c52    c20400
                          nop                                                         // 0x00401c55    90
@@ -1757,6 +2001,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c5d    90
                          nop                                                         // 0x00401c5e    90
                          nop                                                         // 0x00401c5f    90
+?CanReceiveGifts@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c60    33c0
                          ret                0x0004                                   // 0x00401c62    c20400
                          nop                                                         // 0x00401c65    90
@@ -1770,6 +2015,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c6d    90
                          nop                                                         // 0x00401c6e    90
                          nop                                                         // 0x00401c6f    90
+?CanActAsAContainer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c70    33c0
                          ret                0x0004                                   // 0x00401c72    c20400
                          nop                                                         // 0x00401c75    90
@@ -1783,6 +2029,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c7d    90
                          nop                                                         // 0x00401c7e    90
                          nop                                                         // 0x00401c7f    90
+?IsNotOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          {disp8} mov        edx, dword ptr [esp + 0x04]              // 0x00401c80    8b542404
                          mov                eax, dword ptr [ecx]                     // 0x00401c84    8b01
                          push               edx                                      // 0x00401c86    52
@@ -1802,6 +2049,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c9d    90
                          nop                                                         // 0x00401c9e    90
                          nop                                                         // 0x00401c9f    90
+?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ca0    33c0
                          ret                0x0004                                   // 0x00401ca2    c20400
                          nop                                                         // 0x00401ca5    90
@@ -1815,6 +2063,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cad    90
                          nop                                                         // 0x00401cae    90
                          nop                                                         // 0x00401caf    90
+?IsMushroom@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cb0    33c0
                          ret                0x0004                                   // 0x00401cb2    c20400
                          nop                                                         // 0x00401cb5    90
@@ -1828,6 +2077,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cbd    90
                          nop                                                         // 0x00401cbe    90
                          nop                                                         // 0x00401cbf    90
+?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cc0    33c0
                          ret                0x0004                                   // 0x00401cc2    c20400
                          nop                                                         // 0x00401cc5    90
@@ -1841,6 +2091,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ccd    90
                          nop                                                         // 0x00401cce    90
                          nop                                                         // 0x00401ccf    90
+?CanBeGivenToTown@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cd0    33c0
                          ret                0x0004                                   // 0x00401cd2    c20400
                          nop                                                         // 0x00401cd5    90
@@ -1854,6 +2105,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cdd    90
                          nop                                                         // 0x00401cde    90
                          nop                                                         // 0x00401cdf    90
+?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ce0    33c0
                          ret                0x0004                                   // 0x00401ce2    c20400
                          nop                                                         // 0x00401ce5    90
@@ -1867,6 +2119,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ced    90
                          nop                                                         // 0x00401cee    90
                          nop                                                         // 0x00401cef    90
+?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cf0    33c0
                          ret                0x0004                                   // 0x00401cf2    c20400
                          nop                                                         // 0x00401cf5    90
@@ -1880,6 +2133,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cfd    90
                          nop                                                         // 0x00401cfe    90
                          nop                                                         // 0x00401cff    90
+?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d00    33c0
                          ret                0x0004                                   // 0x00401d02    c20400
                          nop                                                         // 0x00401d05    90
@@ -1893,6 +2147,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d0d    90
                          nop                                                         // 0x00401d0e    90
                          nop                                                         // 0x00401d0f    90
+?IsVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d10    33c0
                          ret                0x0004                                   // 0x00401d12    c20400
                          nop                                                         // 0x00401d15    90
@@ -1906,6 +2161,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d1d    90
                          nop                                                         // 0x00401d1e    90
                          nop                                                         // 0x00401d1f    90
+?IsVillagerFarFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d20    33c0
                          ret                0x0004                                   // 0x00401d22    c20400
                          nop                                                         // 0x00401d25    90
@@ -1919,6 +2175,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d2d    90
                          nop                                                         // 0x00401d2e    90
                          nop                                                         // 0x00401d2f    90
+?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d30    33c0
                          ret                0x0004                                   // 0x00401d32    c20400
                          nop                                                         // 0x00401d35    90
@@ -1932,6 +2189,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d3d    90
                          nop                                                         // 0x00401d3e    90
                          nop                                                         // 0x00401d3f    90
+?IsVillagerNotWorshipping@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d40    33c0
                          ret                0x0004                                   // 0x00401d42    c20400
                          nop                                                         // 0x00401d45    90
@@ -1945,6 +2203,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d4d    90
                          nop                                                         // 0x00401d4e    90
                          nop                                                         // 0x00401d4f    90
+?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d50    33c0
                          ret                0x0004                                   // 0x00401d52    c20400
                          nop                                                         // 0x00401d55    90
@@ -1958,6 +2217,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d5d    90
                          nop                                                         // 0x00401d5e    90
                          nop                                                         // 0x00401d5f    90
+?IsCow@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d60    33c0
                          ret                0x0004                                   // 0x00401d62    c20400
                          nop                                                         // 0x00401d65    90
@@ -1971,6 +2231,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d6d    90
                          nop                                                         // 0x00401d6e    90
                          nop                                                         // 0x00401d6f    90
+?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d70    33c0
                          ret                0x0004                                   // 0x00401d72    c20400
                          nop                                                         // 0x00401d75    90
@@ -1984,6 +2245,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d7d    90
                          nop                                                         // 0x00401d7e    90
                          nop                                                         // 0x00401d7f    90
+?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d80    33c0
                          ret                0x0004                                   // 0x00401d82    c20400
                          nop                                                         // 0x00401d85    90
@@ -1997,6 +2259,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d8d    90
                          nop                                                         // 0x00401d8e    90
                          nop                                                         // 0x00401d8f    90
+?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d90    33c0
                          ret                0x0004                                   // 0x00401d92    c20400
                          nop                                                         // 0x00401d95    90
@@ -2010,6 +2273,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d9d    90
                          nop                                                         // 0x00401d9e    90
                          nop                                                         // 0x00401d9f    90
+?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401da0    33c0
                          ret                0x0004                                   // 0x00401da2    c20400
                          nop                                                         // 0x00401da5    90
@@ -2023,6 +2287,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dad    90
                          nop                                                         // 0x00401dae    90
                          nop                                                         // 0x00401daf    90
+?IsDominantCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401db0    33c0
                          ret                0x0004                                   // 0x00401db2    c20400
                          nop                                                         // 0x00401db5    90
@@ -2036,6 +2301,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dbd    90
                          nop                                                         // 0x00401dbe    90
                          nop                                                         // 0x00401dbf    90
+?CanBeDancedWith@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401dc0    33c0
                          ret                0x0004                                   // 0x00401dc2    c20400
                          nop                                                         // 0x00401dc5    90
@@ -2049,6 +2315,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dcd    90
                          nop                                                         // 0x00401dce    90
                          nop                                                         // 0x00401dcf    90
+?IsAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401dd0    33c0
                          ret                0x0004                                   // 0x00401dd2    c20400
                          nop                                                         // 0x00401dd5    90
@@ -2062,6 +2329,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ddd    90
                          nop                                                         // 0x00401dde    90
                          nop                                                         // 0x00401ddf    90
+?IsStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401de0    33c0
                          ret                0x0004                                   // 0x00401de2    c20400
                          nop                                                         // 0x00401de5    90
@@ -2075,6 +2343,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ded    90
                          nop                                                         // 0x00401dee    90
                          nop                                                         // 0x00401def    90
+?IsWorshipSite_1@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401df0    33c0
                          ret                0x0004                                   // 0x00401df2    c20400
                          nop                                                         // 0x00401df5    90
@@ -2088,6 +2357,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dfd    90
                          nop                                                         // 0x00401dfe    90
                          nop                                                         // 0x00401dff    90
+?IsWorshipSite_0@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e00    33c0
                          ret                                                         // 0x00401e02    c3
                          nop                                                         // 0x00401e03    90
@@ -2103,6 +2373,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e0d    90
                          nop                                                         // 0x00401e0e    90
                          nop                                                         // 0x00401e0f    90
+?GetWorshipSite@GameThingWithPos@@UAEPAUWorshipSite@@XZ:
                          xor.s              eax, eax                                 // 0x00401e10    33c0
                          ret                                                         // 0x00401e12    c3
                          nop                                                         // 0x00401e13    90
@@ -2118,6 +2389,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e1d    90
                          nop                                                         // 0x00401e1e    90
                          nop                                                         // 0x00401e1f    90
+?IsWorkshop_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e20    33c0
                          ret                0x0004                                   // 0x00401e22    c20400
                          nop                                                         // 0x00401e25    90
@@ -2131,6 +2403,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e2d    90
                          nop                                                         // 0x00401e2e    90
                          nop                                                         // 0x00401e2f    90
+?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e30    33c0
                          ret                0x0004                                   // 0x00401e32    c20400
                          nop                                                         // 0x00401e35    90
@@ -2144,6 +2417,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e3d    90
                          nop                                                         // 0x00401e3e    90
                          nop                                                         // 0x00401e3f    90
+?IsField_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e40    33c0
                          ret                0x0004                                   // 0x00401e42    c20400
                          nop                                                         // 0x00401e45    90
@@ -2157,6 +2431,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e4d    90
                          nop                                                         // 0x00401e4e    90
                          nop                                                         // 0x00401e4f    90
+?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e50    33c0
                          ret                0x0004                                   // 0x00401e52    c20400
                          nop                                                         // 0x00401e55    90
@@ -2170,6 +2445,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e5d    90
                          nop                                                         // 0x00401e5e    90
                          nop                                                         // 0x00401e5f    90
+?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e60    33c0
                          ret                0x0004                                   // 0x00401e62    c20400
                          nop                                                         // 0x00401e65    90
@@ -2183,6 +2459,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e6d    90
                          nop                                                         // 0x00401e6e    90
                          nop                                                         // 0x00401e6f    90
+?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e70    33c0
                          ret                0x0004                                   // 0x00401e72    c20400
                          nop                                                         // 0x00401e75    90
@@ -2196,6 +2473,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e7d    90
                          nop                                                         // 0x00401e7e    90
                          nop                                                         // 0x00401e7f    90
+?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e80    33c0
                          ret                0x0004                                   // 0x00401e82    c20400
                          nop                                                         // 0x00401e85    90
@@ -2209,6 +2487,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e8d    90
                          nop                                                         // 0x00401e8e    90
                          nop                                                         // 0x00401e8f    90
+?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e90    33c0
                          ret                0x0004                                   // 0x00401e92    c20400
                          nop                                                         // 0x00401e95    90
@@ -2222,6 +2501,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e9d    90
                          nop                                                         // 0x00401e9e    90
                          nop                                                         // 0x00401e9f    90
+?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ea0    33c0
                          ret                0x0004                                   // 0x00401ea2    c20400
                          nop                                                         // 0x00401ea5    90
@@ -2235,6 +2515,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ead    90
                          nop                                                         // 0x00401eae    90
                          nop                                                         // 0x00401eaf    90
+?IsTree_0@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401eb0    33c0
                          ret                0x0004                                   // 0x00401eb2    c20400
                          nop                                                         // 0x00401eb5    90
@@ -2248,6 +2529,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ebd    90
                          nop                                                         // 0x00401ebe    90
                          nop                                                         // 0x00401ebf    90
+?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ec0    33c0
                          ret                0x0004                                   // 0x00401ec2    c20400
                          nop                                                         // 0x00401ec5    90
@@ -2261,6 +2543,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ecd    90
                          nop                                                         // 0x00401ece    90
                          nop                                                         // 0x00401ecf    90
+?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ed0    33c0
                          ret                0x0004                                   // 0x00401ed2    c20400
                          nop                                                         // 0x00401ed5    90
@@ -2274,6 +2557,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401edd    90
                          nop                                                         // 0x00401ede    90
                          nop                                                         // 0x00401edf    90
+?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ee0    33c0
                          ret                0x0004                                   // 0x00401ee2    c20400
                          nop                                                         // 0x00401ee5    90
@@ -2287,6 +2571,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401eed    90
                          nop                                                         // 0x00401eee    90
                          nop                                                         // 0x00401eef    90
+?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ef0    33c0
                          ret                0x0004                                   // 0x00401ef2    c20400
                          nop                                                         // 0x00401ef5    90
@@ -2300,6 +2585,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401efd    90
                          nop                                                         // 0x00401efe    90
                          nop                                                         // 0x00401eff    90
+?IsDoingSomethingInteresting@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401f00    33c0
                          ret                0x0004                                   // 0x00401f02    c20400
                          nop                                                         // 0x00401f05    90
@@ -2313,6 +2599,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401f0d    90
                          nop                                                         // 0x00401f0e    90
                          nop                                                         // 0x00401f0f    90
+?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          push               esi                                      // 0x00401f10    56
                          mov.s              esi, ecx                                 // 0x00401f11    8bf1
                          mov                eax, dword ptr [esi]                     // 0x00401f13    8b06
@@ -2340,10 +2627,12 @@ _jmp_addr_0x00401f49:    pop                edi                                 
                          xor.s              eax, eax                                 // 0x00401f4a    33c0
                          pop                esi                                      // 0x00401f4c    5e
                          ret                0x0004                                   // 0x00401f4d    c20400
+?IsRock_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          mov                eax, dword ptr [ecx]                     // 0x00401f50    8b01
                          call               dword ptr [eax + 0x1f0]                  // 0x00401f52    ff90f0010000
                          ret                0x0004                                   // 0x00401f58    c20400
                          call               _jmp_addr_0x00401879                     // 0x00401f5b    e819f9ffff
+?IsPickupableRock@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          push               esi                                      // 0x00401f60    56
                          mov.s              esi, ecx                                 // 0x00401f61    8bf1
                          mov                eax, dword ptr [esi]                     // 0x00401f63    8b06
@@ -2378,6 +2667,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401f9d    90
                          nop                                                         // 0x00401f9e    90
                          nop                                                         // 0x00401f9f    90
+?IsCitadelPart_0@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401fa0    33c0
                          ret                0x0004                                   // 0x00401fa2    c20400
                          nop                                                         // 0x00401fa5    90
@@ -2391,6 +2681,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fad    90
                          nop                                                         // 0x00401fae    90
                          nop                                                         // 0x00401faf    90
+?IsPlayingFootball@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fb0    33c0
                          ret                0x0004                                   // 0x00401fb2    c20400
                          nop                                                         // 0x00401fb5    90
@@ -2404,6 +2695,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fbd    90
                          nop                                                         // 0x00401fbe    90
                          nop                                                         // 0x00401fbf    90
+?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fc0    33c0
                          ret                0x0004                                   // 0x00401fc2    c20400
                          nop                                                         // 0x00401fc5    90
@@ -2417,6 +2709,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fcd    90
                          nop                                                         // 0x00401fce    90
                          nop                                                         // 0x00401fcf    90
+?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fd0    33c0
                          ret                0x0004                                   // 0x00401fd2    c20400
                          nop                                                         // 0x00401fd5    90
@@ -2430,6 +2723,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fdd    90
                          nop                                                         // 0x00401fde    90
                          nop                                                         // 0x00401fdf    90
+?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fe0    33c0
                          ret                0x0004                                   // 0x00401fe2    c20400
                          nop                                                         // 0x00401fe5    90
@@ -2443,6 +2737,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fed    90
                          nop                                                         // 0x00401fee    90
                          nop                                                         // 0x00401fef    90
+?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ff0    33c0
                          ret                0x0004                                   // 0x00401ff2    c20400
                          nop                                                         // 0x00401ff5    90
@@ -2456,6 +2751,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401ffd    90
                          nop                                                         // 0x00401ffe    90
                          nop                                                         // 0x00401fff    90
+?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402000    33c0
                          ret                0x0004                                   // 0x00402002    c20400
                          nop                                                         // 0x00402005    90
@@ -2469,6 +2765,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040200d    90
                          nop                                                         // 0x0040200e    90
                          nop                                                         // 0x0040200f    90
+?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402010    33c0
                          ret                0x0004                                   // 0x00402012    c20400
                          nop                                                         // 0x00402015    90
@@ -2482,6 +2779,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040201d    90
                          nop                                                         // 0x0040201e    90
                          nop                                                         // 0x0040201f    90
+?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402020    33c0
                          ret                0x0004                                   // 0x00402022    c20400
                          nop                                                         // 0x00402025    90
@@ -2495,6 +2793,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040202d    90
                          nop                                                         // 0x0040202e    90
                          nop                                                         // 0x0040202f    90
+?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402030    33c0
                          ret                0x0004                                   // 0x00402032    c20400
                          nop                                                         // 0x00402035    90
@@ -2508,6 +2807,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040203d    90
                          nop                                                         // 0x0040203e    90
                          nop                                                         // 0x0040203f    90
+?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402040    33c0
                          ret                0x0004                                   // 0x00402042    c20400
                          nop                                                         // 0x00402045    90
@@ -2521,6 +2821,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040204d    90
                          nop                                                         // 0x0040204e    90
                          nop                                                         // 0x0040204f    90
+?IsStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402050    33c0
                          ret                0x0004                                   // 0x00402052    c20400
                          nop                                                         // 0x00402055    90
@@ -2534,6 +2835,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040205d    90
                          nop                                                         // 0x0040205e    90
                          nop                                                         // 0x0040205f    90
+?IsStealableScaffold@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402060    33c0
                          ret                0x0004                                   // 0x00402062    c20400
                          nop                                                         // 0x00402065    90
@@ -2547,6 +2849,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040206d    90
                          nop                                                         // 0x0040206e    90
                          nop                                                         // 0x0040206f    90
+?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402070    33c0
                          ret                0x0004                                   // 0x00402072    c20400
                          nop                                                         // 0x00402075    90
@@ -2560,6 +2863,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040207d    90
                          nop                                                         // 0x0040207e    90
                          nop                                                         // 0x0040207f    90
+?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402080    33c0
                          ret                0x0004                                   // 0x00402082    c20400
                          nop                                                         // 0x00402085    90
@@ -2573,6 +2877,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040208d    90
                          nop                                                         // 0x0040208e    90
                          nop                                                         // 0x0040208f    90
+?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402090    33c0
                          ret                0x0004                                   // 0x00402092    c20400
                          nop                                                         // 0x00402095    90
@@ -2586,6 +2891,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040209d    90
                          nop                                                         // 0x0040209e    90
                          nop                                                         // 0x0040209f    90
+?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020a0    33c0
                          ret                0x0004                                   // 0x004020a2    c20400
                          nop                                                         // 0x004020a5    90
@@ -2599,6 +2905,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020ad    90
                          nop                                                         // 0x004020ae    90
                          nop                                                         // 0x004020af    90
+?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020b0    33c0
                          ret                0x0004                                   // 0x004020b2    c20400
                          nop                                                         // 0x004020b5    90
@@ -2612,6 +2919,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020bd    90
                          nop                                                         // 0x004020be    90
                          nop                                                         // 0x004020bf    90
+?IsToy@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020c0    33c0
                          ret                0x0004                                   // 0x004020c2    c20400
                          nop                                                         // 0x004020c5    90
@@ -2625,6 +2933,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020cd    90
                          nop                                                         // 0x004020ce    90
                          nop                                                         // 0x004020cf    90
+?IsToyBall@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020d0    33c0
                          ret                0x0004                                   // 0x004020d2    c20400
                          nop                                                         // 0x004020d5    90
@@ -2638,6 +2947,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020dd    90
                          nop                                                         // 0x004020de    90
                          nop                                                         // 0x004020df    90
+?IsToyDie@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020e0    33c0
                          ret                0x0004                                   // 0x004020e2    c20400
                          nop                                                         // 0x004020e5    90
@@ -2651,6 +2961,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020ed    90
                          nop                                                         // 0x004020ee    90
                          nop                                                         // 0x004020ef    90
+?IsToyCuddly@GameThingWithPos@@UBE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020f0    33c0
                          ret                0x0004                                   // 0x004020f2    c20400
                          nop                                                         // 0x004020f5    90
@@ -2664,10 +2975,12 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020fd    90
                          nop                                                         // 0x004020fe    90
                          nop                                                         // 0x004020ff    90
+?IsLiving_0@GameThingWithPos@@UBE_NXZ:
                          mov                eax, dword ptr [ecx]                     // 0x00402100    8b01
                          call               dword ptr [eax + 0x3c4]                  // 0x00402102    ff90c4030000
                          ret                0x0004                                   // 0x00402108    c20400
                          call               _jmp_addr_0x00401879                     // 0x0040210b    e869f7ffff
+?IsFence@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402110    33c0
                          ret                                                         // 0x00402112    c3
                          nop                                                         // 0x00402113    90
@@ -2683,6 +2996,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040211d    90
                          nop                                                         // 0x0040211e    90
                          nop                                                         // 0x0040211f    90
+?IsSpellIcon@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402120    33c0
                          ret                                                         // 0x00402122    c3
                          nop                                                         // 0x00402123    90
@@ -2698,6 +3012,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040212d    90
                          nop                                                         // 0x0040212e    90
                          nop                                                         // 0x0040212f    90
+?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402130    33c0
                          ret                0x0004                                   // 0x00402132    c20400
                          nop                                                         // 0x00402135    90
@@ -2711,6 +3026,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040213d    90
                          nop                                                         // 0x0040213e    90
                          nop                                                         // 0x0040213f    90
+?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402140    33c0
                          ret                0x0004                                   // 0x00402142    c20400
                          nop                                                         // 0x00402145    90
@@ -2724,6 +3040,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040214d    90
                          nop                                                         // 0x0040214e    90
                          nop                                                         // 0x0040214f    90
+?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402150    33c0
                          ret                0x0004                                   // 0x00402152    c20400
                          nop                                                         // 0x00402155    90
@@ -2737,6 +3054,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040215d    90
                          nop                                                         // 0x0040215e    90
                          nop                                                         // 0x0040215f    90
+?IsFlock@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402160    33c0
                          ret                                                         // 0x00402162    c3
                          nop                                                         // 0x00402163    90
@@ -2752,6 +3070,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040216d    90
                          nop                                                         // 0x0040216e    90
                          nop                                                         // 0x0040216f    90
+?IsDance@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402170    33c0
                          ret                                                         // 0x00402172    c3
                          nop                                                         // 0x00402173    90
@@ -2767,6 +3086,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040217d    90
                          nop                                                         // 0x0040217e    90
                          nop                                                         // 0x0040217f    90
+?IsReward@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402180    33c0
                          ret                                                         // 0x00402182    c3
                          nop                                                         // 0x00402183    90
@@ -2782,6 +3102,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040218d    90
                          nop                                                         // 0x0040218e    90
                          nop                                                         // 0x0040218f    90
+?IsScriptContainer@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402190    33c0
                          ret                                                         // 0x00402192    c3
                          nop                                                         // 0x00402193    90
@@ -2797,6 +3118,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040219d    90
                          nop                                                         // 0x0040219e    90
                          nop                                                         // 0x0040219f    90
+?IsWeather@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004021a0    33c0
                          ret                                                         // 0x004021a2    c3
                          nop                                                         // 0x004021a3    90
@@ -2812,6 +3134,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004021ad    90
                          nop                                                         // 0x004021ae    90
                          nop                                                         // 0x004021af    90
+?IsSpell@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004021b0    33c0
                          ret                                                         // 0x004021b2    c3
                          nop                                                         // 0x004021b3    90
@@ -2827,6 +3150,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004021bd    90
                          nop                                                         // 0x004021be    90
                          nop                                                         // 0x004021bf    90
+?IsDeletedWhenReleasedFromScript@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004021c0    33c0
                          ret                                                         // 0x004021c2    c3
                          nop                                                         // 0x004021c3    90
@@ -2842,6 +3166,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004021cd    90
                          nop                                                         // 0x004021ce    90
                          nop                                                         // 0x004021cf    90
+?IsMobileWallHug@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004021d0    33c0
                          ret                                                         // 0x004021d2    c3
                          nop                                                         // 0x004021d3    90
@@ -2857,6 +3182,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004021dd    90
                          nop                                                         // 0x004021de    90
                          nop                                                         // 0x004021df    90
+?IsActive@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004021e0    33c0
                          ret                                                         // 0x004021e2    c3
                          nop                                                         // 0x004021e3    90
@@ -2872,6 +3198,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004021ed    90
                          nop                                                         // 0x004021ee    90
                          nop                                                         // 0x004021ef    90
+?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004021f0    33c0
                          ret                                                         // 0x004021f2    c3
                          nop                                                         // 0x004021f3    90
@@ -2887,7 +3214,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004021fd    90
                          nop                                                         // 0x004021fe    90
                          nop                                                         // 0x004021ff    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00402200    d90598a38a00
+?CalculateDesireForFood@GameThingWithPos@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402200    d90598a38a00
                          ret                                                         // 0x00402206    c3
                          nop                                                         // 0x00402207    90
                          nop                                                         // 0x00402208    90
@@ -2898,7 +3226,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040220d    90
                          nop                                                         // 0x0040220e    90
                          nop                                                         // 0x0040220f    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00402210    d90598a38a00
+?CalculateDesireForRest@GameThingWithPos@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402210    d90598a38a00
                          ret                                                         // 0x00402216    c3
                          nop                                                         // 0x00402217    90
                          nop                                                         // 0x00402218    90
@@ -2909,7 +3238,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040221d    90
                          nop                                                         // 0x0040221e    90
                          nop                                                         // 0x0040221f    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00402220    d90598a38a00
+?CalculatePeopleHidingIndicator@GameThingWithPos@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402220    d90598a38a00
                          ret                                                         // 0x00402226    c3
                          nop                                                         // 0x00402227    90
                          nop                                                         // 0x00402228    90
@@ -2920,6 +3250,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040222d    90
                          nop                                                         // 0x0040222e    90
                          nop                                                         // 0x0040222f    90
+?IsReadyForNewScriptAction@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402230    33c0
                          ret                                                         // 0x00402232    c3
                          nop                                                         // 0x00402233    90
@@ -2935,6 +3266,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040223d    90
                          nop                                                         // 0x0040223e    90
                          nop                                                         // 0x0040223f    90
+?SetControlledByScript@GameThingWithPos@@UAEXH@Z:
                          xor.s              eax, eax                                 // 0x00402240    33c0
                          {disp8} mov        al, byte ptr [esp + 0x04]                // 0x00402242    8a442404
                          xor.s              edx, edx                                 // 0x00402246    33d2
@@ -2960,6 +3292,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040226d    90
                          nop                                                         // 0x0040226e    90
                          nop                                                         // 0x0040226f    90
+?GetDeathReason@GameThingWithPos@@UAE?AW4DEATH_REASON@@XZ:
                          xor.s              eax, eax                                 // 0x00402270    33c0
                          ret                                                         // 0x00402272    c3
                          nop                                                         // 0x00402273    90
@@ -2975,6 +3308,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040227d    90
                          nop                                                         // 0x0040227e    90
                          nop                                                         // 0x0040227f    90
+?IsInScript@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402280    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x24]                // 0x00402282    668b4124
                          shr                eax, 9                                   // 0x00402286    c1e809
@@ -2983,6 +3317,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040228d    90
                          nop                                                         // 0x0040228e    90
                          nop                                                         // 0x0040228f    90
+?IsMaleVillager@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402290    33c0
                          ret                                                         // 0x00402292    c3
                          nop                                                         // 0x00402293    90
@@ -2998,6 +3333,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040229d    90
                          nop                                                         // 0x0040229e    90
                          nop                                                         // 0x0040229f    90
+?IsFemaleVillager@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004022a0    33c0
                          ret                                                         // 0x004022a2    c3
                          nop                                                         // 0x004022a3    90
@@ -3013,6 +3349,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004022ad    90
                          nop                                                         // 0x004022ae    90
                          nop                                                         // 0x004022af    90
+?IsAnimal@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004022b0    33c0
                          ret                                                         // 0x004022b2    c3
                          nop                                                         // 0x004022b3    90
@@ -3028,6 +3365,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004022bd    90
                          nop                                                         // 0x004022be    90
                          nop                                                         // 0x004022bf    90
+?IsAChild@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004022c0    33c0
                          ret                                                         // 0x004022c2    c3
                          nop                                                         // 0x004022c3    90
@@ -3043,6 +3381,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004022cd    90
                          nop                                                         // 0x004022ce    90
                          nop                                                         // 0x004022cf    90
+?IsFootball@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004022d0    33c0
                          ret                                                         // 0x004022d2    c3
                          nop                                                         // 0x004022d3    90
@@ -3058,6 +3397,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004022dd    90
                          nop                                                         // 0x004022de    90
                          nop                                                         // 0x004022df    90
+?IsCitadel@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004022e0    33c0
                          ret                                                         // 0x004022e2    c3
                          nop                                                         // 0x004022e3    90
@@ -3073,6 +3413,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004022ed    90
                          nop                                                         // 0x004022ee    90
                          nop                                                         // 0x004022ef    90
+?IsForest@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004022f0    33c0
                          ret                                                         // 0x004022f2    c3
                          nop                                                         // 0x004022f3    90
@@ -3088,6 +3429,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004022fd    90
                          nop                                                         // 0x004022fe    90
                          nop                                                         // 0x004022ff    90
+?IsMobileObject@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402300    33c0
                          ret                                                         // 0x00402302    c3
                          nop                                                         // 0x00402303    90
@@ -3103,6 +3445,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040230d    90
                          nop                                                         // 0x0040230e    90
                          nop                                                         // 0x0040230f    90
+?IsMobileStatic@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402310    33c0
                          ret                                                         // 0x00402312    c3
                          nop                                                         // 0x00402313    90
@@ -3118,6 +3461,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040231d    90
                          nop                                                         // 0x0040231e    90
                          nop                                                         // 0x0040231f    90
+?IsTree_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402320    33c0
                          ret                                                         // 0x00402322    c3
                          nop                                                         // 0x00402323    90
@@ -3133,6 +3477,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040232d    90
                          nop                                                         // 0x0040232e    90
                          nop                                                         // 0x0040232f    90
+?IsAnyKindOfTree@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402330    33c0
                          ret                                                         // 0x00402332    c3
                          nop                                                         // 0x00402333    90
@@ -3148,6 +3493,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040233d    90
                          nop                                                         // 0x0040233e    90
                          nop                                                         // 0x0040233f    90
+?IsDeadTree@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402340    33c0
                          ret                                                         // 0x00402342    c3
                          nop                                                         // 0x00402343    90
@@ -3163,6 +3509,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040234d    90
                          nop                                                         // 0x0040234e    90
                          nop                                                         // 0x0040234f    90
+?IsLiving_1@GameThingWithPos@@UBE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402350    33c0
                          ret                                                         // 0x00402352    c3
                          nop                                                         // 0x00402353    90
@@ -3178,6 +3525,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040235d    90
                          nop                                                         // 0x0040235e    90
                          nop                                                         // 0x0040235f    90
+?IsCitadelPart_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402360    33c0
                          ret                                                         // 0x00402362    c3
                          nop                                                         // 0x00402363    90
@@ -3193,6 +3541,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040236d    90
                          nop                                                         // 0x0040236e    90
                          nop                                                         // 0x0040236f    90
+?IsPileFood@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402370    33c0
                          ret                                                         // 0x00402372    c3
                          nop                                                         // 0x00402373    90
@@ -3208,6 +3557,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040237d    90
                          nop                                                         // 0x0040237e    90
                          nop                                                         // 0x0040237f    90
+?IsFeature@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402380    33c0
                          ret                                                         // 0x00402382    c3
                          nop                                                         // 0x00402383    90
@@ -3223,6 +3573,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040238d    90
                          nop                                                         // 0x0040238e    90
                          nop                                                         // 0x0040238f    90
+?IsScriptMarker@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402390    33c0
                          ret                                                         // 0x00402392    c3
                          nop                                                         // 0x00402393    90
@@ -3238,6 +3589,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040239d    90
                          nop                                                         // 0x0040239e    90
                          nop                                                         // 0x0040239f    90
+?IsScriptHighlight@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004023a0    33c0
                          ret                                                         // 0x004023a2    c3
                          nop                                                         // 0x004023a3    90
@@ -3253,6 +3605,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004023ad    90
                          nop                                                         // 0x004023ae    90
                          nop                                                         // 0x004023af    90
+?IsWorkshop_0@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004023b0    33c0
                          ret                                                         // 0x004023b2    c3
                          nop                                                         // 0x004023b3    90
@@ -3268,6 +3621,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004023bd    90
                          nop                                                         // 0x004023be    90
                          nop                                                         // 0x004023bf    90
+?IsInfluenceRing@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004023c0    33c0
                          ret                                                         // 0x004023c2    c3
                          nop                                                         // 0x004023c3    90
@@ -3283,6 +3637,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004023cd    90
                          nop                                                         // 0x004023ce    90
                          nop                                                         // 0x004023cf    90
+?IsPuzzleGame@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004023d0    33c0
                          ret                                                         // 0x004023d2    c3
                          nop                                                         // 0x004023d3    90
@@ -3298,6 +3653,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004023dd    90
                          nop                                                         // 0x004023de    90
                          nop                                                         // 0x004023df    90
+?IsScaffold@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004023e0    33c0
                          ret                                                         // 0x004023e2    c3
                          nop                                                         // 0x004023e3    90
@@ -3313,6 +3669,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004023ed    90
                          nop                                                         // 0x004023ee    90
                          nop                                                         // 0x004023ef    90
+?IsSkeleton@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004023f0    33c0
                          ret                                                         // 0x004023f2    c3
                          nop                                                         // 0x004023f3    90
@@ -3328,6 +3685,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004023fd    90
                          nop                                                         // 0x004023fe    90
                          nop                                                         // 0x004023ff    90
+?IsPoisoned@GameThingWithPos@@UBE_NXZ:
                          xor.s              al, al                                   // 0x00402400    32c0
                          ret                                                         // 0x00402402    c3
                          nop                                                         // 0x00402403    90
@@ -3343,6 +3701,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040240d    90
                          nop                                                         // 0x0040240e    90
                          nop                                                         // 0x0040240f    90
+?IsSpeedUp@GameThingWithPos@@UAE_NXZ:
                          xor.s              al, al                                   // 0x00402410    32c0
                          ret                                                         // 0x00402412    c3
                          nop                                                         // 0x00402413    90
@@ -3358,6 +3717,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040241d    90
                          nop                                                         // 0x0040241e    90
                          nop                                                         // 0x0040241f    90
+?IsParticleContainer@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402420    33c0
                          ret                                                         // 0x00402422    c3
                          nop                                                         // 0x00402423    90
@@ -3373,6 +3733,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040242d    90
                          nop                                                         // 0x0040242e    90
                          nop                                                         // 0x0040242f    90
+?IsSacrificeAltar@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402430    33c0
                          ret                                                         // 0x00402432    c3
                          nop                                                         // 0x00402433    90
@@ -3388,6 +3749,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040243d    90
                          nop                                                         // 0x0040243e    90
                          nop                                                         // 0x0040243f    90
+?IsPot@GameThingWithPos@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402440    33c0
                          ret                                                         // 0x00402442    c3
                          nop                                                         // 0x00402443    90
@@ -3403,6 +3765,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040244d    90
                          nop                                                         // 0x0040244e    90
                          nop                                                         // 0x0040244f    90
+?IsComputerPlayer@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402450    33c0
                          ret                                                         // 0x00402452    c3
                          nop                                                         // 0x00402453    90
@@ -3418,6 +3781,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040245d    90
                          nop                                                         // 0x0040245e    90
                          nop                                                         // 0x0040245f    90
+?SetSkeleton@GameThingWithPos@@UAEXH@Z:
                          ret                0x0004                                   // 0x00402460    c20400
                          nop                                                         // 0x00402463    90
                          nop                                                         // 0x00402464    90
@@ -3432,6 +3796,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040246d    90
                          nop                                                         // 0x0040246e    90
                          nop                                                         // 0x0040246f    90
+?IsSpellSeed@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402470    33c0
                          ret                                                         // 0x00402472    c3
                          nop                                                         // 0x00402473    90
@@ -3447,6 +3812,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040247d    90
                          nop                                                         // 0x0040247e    90
                          nop                                                         // 0x0040247f    90
+?IsSpellShield@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402480    33c0
                          ret                                                         // 0x00402482    c3
                          nop                                                         // 0x00402483    90
@@ -3462,6 +3828,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040248d    90
                          nop                                                         // 0x0040248e    90
                          nop                                                         // 0x0040248f    90
+?IsPileResource@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402490    33c0
                          ret                                                         // 0x00402492    c3
                          nop                                                         // 0x00402493    90
@@ -3477,6 +3844,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040249d    90
                          nop                                                         // 0x0040249e    90
                          nop                                                         // 0x0040249f    90
+?IsScriptTimer@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x004024a0    33c0
                          ret                                                         // 0x004024a2    c3
                          nop                                                         // 0x004024a3    90
@@ -3492,7 +3860,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024ad    90
                          nop                                                         // 0x004024ae    90
                          nop                                                         // 0x004024af    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x004024b0    d90598a38a00
+?GetFacingDirection@GameThingWithPos@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004024b0    d90598a38a00
                          ret                                                         // 0x004024b6    c3
                          nop                                                         // 0x004024b7    90
                          nop                                                         // 0x004024b8    90
@@ -3503,6 +3872,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024bd    90
                          nop                                                         // 0x004024be    90
                          nop                                                         // 0x004024bf    90
+?SetAffectedByWind@GameThingWithPos@@UAEXH@Z:
                          ret                0x0004                                   // 0x004024c0    c20400
                          nop                                                         // 0x004024c3    90
                          nop                                                         // 0x004024c4    90
@@ -3517,7 +3887,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024cd    90
                          nop                                                         // 0x004024ce    90
                          nop                                                         // 0x004024cf    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1390]         // 0x004024d0    d90590a38a00
+?GetReactionPower@GameThingWithPos@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004024d0    d90590a38a00
                          ret                                                         // 0x004024d6    c3
                          nop                                                         // 0x004024d7    90
                          nop                                                         // 0x004024d8    90
@@ -3528,6 +3899,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024dd    90
                          nop                                                         // 0x004024de    90
                          nop                                                         // 0x004024df    90
+?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ:
                          ret                                                         // 0x004024e0    c3
                          nop                                                         // 0x004024e1    90
                          nop                                                         // 0x004024e2    90
@@ -3544,7 +3916,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024ed    90
                          nop                                                         // 0x004024ee    90
                          nop                                                         // 0x004024ef    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x004024f0    d90598a38a00
+?GetXAngle@Object@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004024f0    d90598a38a00
                          ret                                                         // 0x004024f6    c3
                          nop                                                         // 0x004024f7    90
                          nop                                                         // 0x004024f8    90
@@ -3555,6 +3928,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024fd    90
                          nop                                                         // 0x004024fe    90
                          nop                                                         // 0x004024ff    90
+?GetYAngle@Object@@UAEMXZ:
                          {disp8} fld        dword ptr [ecx + 0x4c]                   // 0x00402500    d9414c
                          ret                                                         // 0x00402503    c3
                          nop                                                         // 0x00402504    90
@@ -3569,7 +3943,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040250d    90
                          nop                                                         // 0x0040250e    90
                          nop                                                         // 0x0040250f    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00402510    d90598a38a00
+?GetZAngle@Object@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402510    d90598a38a00
                          ret                                                         // 0x00402516    c3
                          nop                                                         // 0x00402517    90
                          nop                                                         // 0x00402518    90
@@ -3580,6 +3955,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040251d    90
                          nop                                                         // 0x0040251e    90
                          nop                                                         // 0x0040251f    90
+?GetScale@Object@@UAEMXZ:
                          {disp8} fld        dword ptr [ecx + 0x50]                   // 0x00402520    d94150
                          ret                                                         // 0x00402523    c3
                          nop                                                         // 0x00402524    90
@@ -3594,10 +3970,12 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040252d    90
                          nop                                                         // 0x0040252e    90
                          nop                                                         // 0x0040252f    90
+?SetJustScale@Object@@UAEXM@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00402530    8b442404
                          {disp8} mov        dword ptr [ecx + 0x50], eax              // 0x00402534    894150
                          ret                0x0004                                   // 0x00402537    c20400
                          call               dword ptr [__imp__DirectDrawCreate@4]    // 0x0040253a    ff152c908a00
+?UpdateFrom3DPosition@Object@@UAEXXZ:
                          ret                                                         // 0x00402540    c3
                          nop                                                         // 0x00402541    90
                          nop                                                         // 0x00402542    90
@@ -3614,6 +3992,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040254d    90
                          nop                                                         // 0x0040254e    90
                          nop                                                         // 0x0040254f    90
+?MoveAlongPath@Object@@UAEIXZ:
                          mov                eax, 0x00000001                          // 0x00402550    b801000000
                          ret                                                         // 0x00402555    c3
                          nop                                                         // 0x00402556    90
@@ -3626,6 +4005,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040255d    90
                          nop                                                         // 0x0040255e    90
                          nop                                                         // 0x0040255f    90
+?IsReachable@Object@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                     // 0x00402560    8b01
                          {disp8} jmp        dword ptr [eax + 0x2c]                   // 0x00402562    ff602c
                          nop                                                         // 0x00402565    90
@@ -3639,6 +4019,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040256d    90
                          nop                                                         // 0x0040256e    90
                          nop                                                         // 0x0040256f    90
+?GetPtr@Object@@UAEPAV1@XZ:
                          mov.s              eax, ecx                                 // 0x00402570    8bc1
                          ret                                                         // 0x00402572    c3
                          nop                                                         // 0x00402573    90
@@ -3654,6 +4035,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040257d    90
                          nop                                                         // 0x0040257e    90
                          nop                                                         // 0x0040257f    90
+?Get3DObjectForPSys@Object@@UAEPAVGame3DObject@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x40]              // 0x00402580    8b4140
                          ret                                                         // 0x00402583    c3
                          nop                                                         // 0x00402584    90
@@ -3668,7 +4050,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040258d    90
                          nop                                                         // 0x0040258e    90
                          nop                                                         // 0x0040258f    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00402590    d90598a38a00
+?GetSpotEffectPower@Object@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402590    d90598a38a00
                          ret                                                         // 0x00402596    c3
                          nop                                                         // 0x00402597    90
                          nop                                                         // 0x00402598    90
@@ -3679,7 +4062,8 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040259d    90
                          nop                                                         // 0x0040259e    90
                          nop                                                         // 0x0040259f    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x004025a0    d90598a38a00
+?GetHoldYRotate@Object@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004025a0    d90598a38a00
                          ret                                                         // 0x004025a6    c3
                          nop                                                         // 0x004025a7    90
                          nop                                                         // 0x004025a8    90
@@ -3690,6 +4074,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004025ad    90
                          nop                                                         // 0x004025ae    90
                          nop                                                         // 0x004025af    90
+?HandShouldFeelWithMeshIntersect@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x004025b0    b801000000
                          ret                                                         // 0x004025b5    c3
                          nop                                                         // 0x004025b6    90
@@ -3702,6 +4087,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004025bd    90
                          nop                                                         // 0x004025be    90
                          nop                                                         // 0x004025bf    90
+?SetSpecularColor@Object@@UAEXULH3DColor@@@Z:
                          ret                0x0004                                   // 0x004025c0    c20400
                          nop                                                         // 0x004025c3    90
                          nop                                                         // 0x004025c4    90
@@ -3716,6 +4102,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004025cd    90
                          nop                                                         // 0x004025ce    90
                          nop                                                         // 0x004025cf    90
+?GetSpecularColor@Object@@UAE?AULH3DColor@@XZ:
                          xor.s              eax, eax                                 // 0x004025d0    33c0
                          ret                                                         // 0x004025d2    c3
                          nop                                                         // 0x004025d3    90
@@ -3731,6 +4118,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004025dd    90
                          nop                                                         // 0x004025de    90
                          nop                                                         // 0x004025df    90
+?SetBeliefSprite@Object@@UAEXPAVLH3DSprite@@@Z:
                          ret                0x0004                                   // 0x004025e0    c20400
                          nop                                                         // 0x004025e3    90
                          nop                                                         // 0x004025e4    90
@@ -3745,6 +4133,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004025ed    90
                          nop                                                         // 0x004025ee    90
                          nop                                                         // 0x004025ef    90
+?GetBeliefSprite@Object@@UAEPAVLH3DSprite@@XZ:
                          xor.s              eax, eax                                 // 0x004025f0    33c0
                          ret                                                         // 0x004025f2    c3
                          nop                                                         // 0x004025f3    90
@@ -3760,6 +4149,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004025fd    90
                          nop                                                         // 0x004025fe    90
                          nop                                                         // 0x004025ff    90
+?GetLife@Object@@UAEMXZ:
                          {disp8} fld        dword ptr [ecx + 0x48]                   // 0x00402600    d94148
                          ret                                                         // 0x00402603    c3
                          nop                                                         // 0x00402604    90
@@ -3774,11 +4164,12 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040260d    90
                          nop                                                         // 0x0040260e    90
                          nop                                                         // 0x0040260f    90
+?IsAlive@Object@@UAE_NXZ:
                          push               esi                                      // 0x00402610    56
                          mov.s              esi, ecx                                 // 0x00402611    8bf1
                          mov                eax, dword ptr [esi]                     // 0x00402613    8b06
                          call               dword ptr [eax + 0x11c]                  // 0x00402615    ff901c010000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]         // 0x0040261b    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]         // 0x0040261b    d81d98a38a00
                          fnstsw             ax                                       // 0x00402621    dfe0
                          test               ah, 0x41                                 // 0x00402623    f6c441
                          {disp8} jne        _jmp_addr_0x0040263a                     // 0x00402626    7512
@@ -3795,6 +4186,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          ret                                                         // 0x0040263d    c3
                          nop                                                         // 0x0040263e    90
                          nop                                                         // 0x0040263f    90
+?ScaffoldMoved@Object@@UAEXPAVScaffold@@@Z:
                          ret                0x0004                                   // 0x00402640    c20400
                          nop                                                         // 0x00402643    90
                          nop                                                         // 0x00402644    90
@@ -3809,6 +4201,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          nop                                                         // 0x0040264d    90
                          nop                                                         // 0x0040264e    90
                          nop                                                         // 0x0040264f    90
+?ProcessBySpell@Object@@UAEIPAVSpell@@@Z:
                          mov                eax, 0x00000001                          // 0x00402650    b801000000
                          ret                0x0004                                   // 0x00402655    c20400
                          nop                                                         // 0x00402658    90
@@ -3819,10 +4212,12 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          nop                                                         // 0x0040265d    90
                          nop                                                         // 0x0040265e    90
                          nop                                                         // 0x0040265f    90
+?GetDetailMesh@Object@@UAEHH@Z:
                          mov                eax, dword ptr [ecx]                     // 0x00402660    8b01
                          call               dword ptr [eax + 0x608]                  // 0x00402662    ff9008060000
                          ret                0x0004                                   // 0x00402668    c20400
                          call               _jmp_addr_0x00401879                     // 0x0040266b    e809f2ffff
+?IsG3DObjectDrawnInHand@Object@@UAE_NXZ:
                          mov                al, 0x01                                 // 0x00402670    b001
                          ret                                                         // 0x00402672    c3
                          nop                                                         // 0x00402673    90
@@ -3838,6 +4233,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          nop                                                         // 0x0040267d    90
                          nop                                                         // 0x0040267e    90
                          nop                                                         // 0x0040267f    90
+?GetDrawRegion@Object@@UAEXPAULHRegion@@@Z:
                          ret                0x0004                                   // 0x00402680    c20400
                          nop                                                         // 0x00402683    90
                          nop                                                         // 0x00402684    90
@@ -3852,6 +4248,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          nop                                                         // 0x0040268d    90
                          nop                                                         // 0x0040268e    90
                          nop                                                         // 0x0040268f    90
+?ProcessState@Object@@UAEIXZ:
                          xor.s              eax, eax                                 // 0x00402690    33c0
                          ret                                                         // 0x00402692    c3
                          nop                                                         // 0x00402693    90
@@ -3867,6 +4264,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          nop                                                         // 0x0040269d    90
                          nop                                                         // 0x0040269e    90
                          nop                                                         // 0x0040269f    90
+?CanBePickedUp@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004026a0    33c0
                          ret                                                         // 0x004026a2    c3
                          nop                                                         // 0x004026a3    90
@@ -3882,10 +4280,11 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          nop                                                         // 0x004026ad    90
                          nop                                                         // 0x004026ae    90
                          nop                                                         // 0x004026af    90
+?GetVillagerHugRadius@Object@@UAEMXZ:
                          mov                eax, dword ptr [ecx]                     // 0x004026b0    8b01
                          call               dword ptr [eax + 0x64]                   // 0x004026b2    ff5064
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x13a0]         // 0x004026b5    d80da0a38a00
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x139c]         // 0x004026bb    d8059ca38a00
+                         {disp32} fmul      dword ptr [_rdata_bytes_float_0x008aa3a0]         // 0x004026b5    d80da0a38a00
+                         {disp32} fadd      dword ptr [_rdata_bytes_float_0x008aa39c]         // 0x004026bb    d8059ca38a00
                          ret                                                         // 0x004026c1    c3
                          nop                                                         // 0x004026c2    90
                          nop                                                         // 0x004026c3    90
@@ -3901,6 +4300,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          nop                                                         // 0x004026cd    90
                          nop                                                         // 0x004026ce    90
                          nop                                                         // 0x004026cf    90
+?GetFoodValue@Object@@UAEMW4FOOD_TYPE@@@Z:
                          push               esi                                      // 0x004026d0    56
                          mov.s              esi, ecx                                 // 0x004026d1    8bf1
                          mov                eax, dword ptr [esi]                     // 0x004026d3    8b06
@@ -3911,7 +4311,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          {disp8} fld        dword ptr [ecx + 0x68]                   // 0x004026e4    d94168
                          pop                esi                                      // 0x004026e7    5e
                          ret                0x0004                                   // 0x004026e8    c20400
-_jmp_addr_0x004026eb:    {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x004026eb    d90598a38a00
+_jmp_addr_0x004026eb:    {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004026eb    d90598a38a00
                          pop                esi                                      // 0x004026f1    5e
                          ret                0x0004                                   // 0x004026f2    c20400
                          nop                                                         // 0x004026f5    90
@@ -3925,6 +4325,7 @@ _jmp_addr_0x004026eb:    {disp32} fld       dword ptr [rdata_bytes + 0x1398]    
                          nop                                                         // 0x004026fd    90
                          nop                                                         // 0x004026fe    90
                          nop                                                         // 0x004026ff    90
+?GetFoodType@Object@@UAE?AW4FOOD_TYPE@@XZ:
                          {disp8} mov        ecx, dword ptr [ecx + 0x28]              // 0x00402700    8b4928
                          mov                eax, dword ptr [ecx]                     // 0x00402703    8b01
                          {disp8} jmp        dword ptr [eax + 0x38]                   // 0x00402705    ff6038
@@ -3936,6 +4337,7 @@ _jmp_addr_0x004026eb:    {disp32} fld       dword ptr [rdata_bytes + 0x1398]    
                          nop                                                         // 0x0040270d    90
                          nop                                                         // 0x0040270e    90
                          nop                                                         // 0x0040270f    90
+?IsMoving@Object@@UAE_NXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x14]              // 0x00402710    8b4114
                          cmp                eax, dword ptr [ecx + 0x2c]              // 0x00402713    3b412c
                          {disp8} jne        _jmp_addr_0x00402723                     // 0x00402716    750b
@@ -3953,6 +4355,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040272d    90
                          nop                                                         // 0x0040272e    90
                          nop                                                         // 0x0040272f    90
+?IsSpellSeedReturnPoint@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402730    33c0
                          ret                                                         // 0x00402732    c3
                          nop                                                         // 0x00402733    90
@@ -3968,6 +4371,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040273d    90
                          nop                                                         // 0x0040273e    90
                          nop                                                         // 0x0040273f    90
+?IsABeliever@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402740    33c0
                          ret                                                         // 0x00402742    c3
                          nop                                                         // 0x00402743    90
@@ -3983,6 +4387,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040274d    90
                          nop                                                         // 0x0040274e    90
                          nop                                                         // 0x0040274f    90
+?GetResourceType@Object@@UAE?AW4RESOURCE_TYPE@@XZ:
                          or                 eax, -0x1                                // 0x00402750    83c8ff
                          ret                                                         // 0x00402753    c3
                          nop                                                         // 0x00402754    90
@@ -3997,6 +4402,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040275d    90
                          nop                                                         // 0x0040275e    90
                          nop                                                         // 0x0040275f    90
+?GetDefaultResource@Object@@UAEHXZ:
                          xor.s              eax, eax                                 // 0x00402760    33c0
                          ret                                                         // 0x00402762    c3
                          nop                                                         // 0x00402763    90
@@ -4012,6 +4418,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040276d    90
                          nop                                                         // 0x0040276e    90
                          nop                                                         // 0x0040276f    90
+?SetPoisonedResource@Object@@UAEXW4RESOURCE_TYPE@@H@Z:
                          ret                0x0008                                   // 0x00402770    c20800
                          nop                                                         // 0x00402773    90
                          nop                                                         // 0x00402774    90
@@ -4026,6 +4433,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040277d    90
                          nop                                                         // 0x0040277e    90
                          nop                                                         // 0x0040277f    90
+?SetPoisoned@Object@@UAEXH@Z:
                          ret                0x0004                                   // 0x00402780    c20400
                          nop                                                         // 0x00402783    90
                          nop                                                         // 0x00402784    90
@@ -4040,6 +4448,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040278d    90
                          nop                                                         // 0x0040278e    90
                          nop                                                         // 0x0040278f    90
+?IsLockedInInteract@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402790    33c0
                          ret                                                         // 0x00402792    c3
                          nop                                                         // 0x00402793    90
@@ -4055,6 +4464,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040279d    90
                          nop                                                         // 0x0040279e    90
                          nop                                                         // 0x0040279f    90
+?SetDying@Object@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                     // 0x004027a0    8b01
                          push               0x0                                      // 0x004027a2    6a00
                          call               dword ptr [eax + 0xc]                    // 0x004027a4    ff500c
@@ -4063,6 +4473,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004027ad    90
                          nop                                                         // 0x004027ae    90
                          nop                                                         // 0x004027af    90
+?EndOnFire@Object@@UAEXXZ:
                          ret                                                         // 0x004027b0    c3
                          nop                                                         // 0x004027b1    90
                          nop                                                         // 0x004027b2    90
@@ -4079,13 +4490,15 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004027bd    90
                          nop                                                         // 0x004027be    90
                          nop                                                         // 0x004027bf    90
+?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x004027c0    8b442404
                          push               eax                                      // 0x004027c4    50
-                         call               _jmp_addr_0x005702b0                     // 0x004027c5    e8e6da1600
+                         call               ?GetDistanceFromObject@GameThingWithPos@@UBEMPAUMapCoords@@@Z                     // 0x004027c5    e8e6da1600
                          ret                0x0004                                   // 0x004027ca    c20400
                          nop                                                         // 0x004027cd    90
                          nop                                                         // 0x004027ce    90
                          nop                                                         // 0x004027cf    90
+?NetworkUnfriendlyStartLockedSelect@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x004027d0    b801000000
                          ret                                                         // 0x004027d5    c3
                          nop                                                         // 0x004027d6    90
@@ -4098,6 +4511,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004027dd    90
                          nop                                                         // 0x004027de    90
                          nop                                                         // 0x004027df    90
+?IsReadyForNetworkUnfriendlyLockedSelect@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x004027e0    b801000000
                          ret                                                         // 0x004027e5    c3
                          nop                                                         // 0x004027e6    90
@@ -4110,6 +4524,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004027ed    90
                          nop                                                         // 0x004027ee    90
                          nop                                                         // 0x004027ef    90
+?NetworkUnfriendlyLockedSelect@Object@@UAE_NPAVControlHandUpdateInfo@@@Z:
                          mov                eax, 0x00000001                          // 0x004027f0    b801000000
                          ret                0x0004                                   // 0x004027f5    c20400
                          nop                                                         // 0x004027f8    90
@@ -4120,6 +4535,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004027fd    90
                          nop                                                         // 0x004027fe    90
                          nop                                                         // 0x004027ff    90
+?GetReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00402800    b801000000
                          ret                                                         // 0x00402805    c3
                          nop                                                         // 0x00402806    90
@@ -4132,6 +4548,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040280d    90
                          nop                                                         // 0x0040280e    90
                          nop                                                         // 0x0040280f    90
+?IsReadyForNetworkUnfriendlyEndLockedSelect@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00402810    b801000000
                          ret                                                         // 0x00402815    c3
                          nop                                                         // 0x00402816    90
@@ -4144,6 +4561,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040281d    90
                          nop                                                         // 0x0040281e    90
                          nop                                                         // 0x0040281f    90
+?NetworkUnfriendlyEndLockedSelect@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00402820    b801000000
                          ret                                                         // 0x00402825    c3
                          nop                                                         // 0x00402826    90
@@ -4156,6 +4574,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040282d    90
                          nop                                                         // 0x0040282e    90
                          nop                                                         // 0x0040282f    90
+?NetworkFriendlyEndLockedSelect@Object@@UAE_NPAVGInterfaceStatus@@@Z:
                          mov                eax, 0x00000001                          // 0x00402830    b801000000
                          ret                0x0004                                   // 0x00402835    c20400
                          nop                                                         // 0x00402838    90
@@ -4166,6 +4585,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040283d    90
                          nop                                                         // 0x0040283e    90
                          nop                                                         // 0x0040283f    90
+?ValidAsInterfaceTarget@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00402840    b801000000
                          ret                                                         // 0x00402845    c3
                          nop                                                         // 0x00402846    90
@@ -4178,6 +4598,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040284d    90
                          nop                                                         // 0x0040284e    90
                          nop                                                         // 0x0040284f    90
+?ValidAsInterfaceLeashTarget@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00402850    b801000000
                          ret                                                         // 0x00402855    c3
                          nop                                                         // 0x00402856    90
@@ -4190,6 +4611,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040285d    90
                          nop                                                         // 0x0040285e    90
                          nop                                                         // 0x0040285f    90
+?SelectOnlyAfterRecSystem@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402860    33c0
                          ret                                                         // 0x00402862    c3
                          nop                                                         // 0x00402863    90
@@ -4205,6 +4627,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040286d    90
                          nop                                                         // 0x0040286e    90
                          nop                                                         // 0x0040286f    90
+?ValidForPlaceInHand@Object@@UAE_NPAVGInterfaceStatus@@@Z:
                          xor.s              eax, eax                                 // 0x00402870    33c0
                          ret                0x0004                                   // 0x00402872    c20400
                          nop                                                         // 0x00402875    90
@@ -4218,6 +4641,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040287d    90
                          nop                                                         // 0x0040287e    90
                          nop                                                         // 0x0040287f    90
+?ValidToRemoveFromHand@Object@@UAE_NPAVGInterfaceStatus@@PBUMapCoords@@@Z:
                          xor.s              eax, eax                                 // 0x00402880    33c0
                          ret                0x0008                                   // 0x00402882    c20800
                          nop                                                         // 0x00402885    90
@@ -4231,6 +4655,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040288d    90
                          nop                                                         // 0x0040288e    90
                          nop                                                         // 0x0040288f    90
+?RemoveFromHand@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z:
                          mov                eax, 0x00000017                          // 0x00402890    b817000000
                          ret                0x0008                                   // 0x00402895    c20800
                          nop                                                         // 0x00402898    90
@@ -4241,6 +4666,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040289d    90
                          nop                                                         // 0x0040289e    90
                          nop                                                         // 0x0040289f    90
+?InterfaceMustBeInInfluenceForInteraction@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x004028a0    b801000000
                          ret                                                         // 0x004028a5    c3
                          nop                                                         // 0x004028a6    90
@@ -4253,6 +4679,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004028ad    90
                          nop                                                         // 0x004028ae    90
                          nop                                                         // 0x004028af    90
+?ValidToApplyThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z:
                          xor.s              eax, eax                                 // 0x004028b0    33c0
                          ret                0x0008                                   // 0x004028b2    c20800
                          nop                                                         // 0x004028b5    90
@@ -4266,6 +4693,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004028bd    90
                          nop                                                         // 0x004028be    90
                          nop                                                         // 0x004028bf    90
+?ApplyThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@PAVGestureSystemPacketData@@@Z:
                          xor.s              eax, eax                                 // 0x004028c0    33c0
                          ret                0x000c                                   // 0x004028c2    c20c00
                          nop                                                         // 0x004028c5    90
@@ -4279,6 +4707,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004028cd    90
                          nop                                                         // 0x004028ce    90
                          nop                                                         // 0x004028cf    90
+?ValidToApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PAUMapCoords@@@Z:
                          xor.s              eax, eax                                 // 0x004028d0    33c0
                          ret                0x0008                                   // 0x004028d2    c20800
                          nop                                                         // 0x004028d5    90
@@ -4292,6 +4721,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004028dd    90
                          nop                                                         // 0x004028de    90
                          nop                                                         // 0x004028df    90
+?ApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@PAVGestureSystemPacketData@@@Z:
                          xor.s              eax, eax                                 // 0x004028e0    33c0
                          ret                0x000c                                   // 0x004028e2    c20c00
                          nop                                                         // 0x004028e5    90
@@ -4305,6 +4735,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004028ed    90
                          nop                                                         // 0x004028ee    90
                          nop                                                         // 0x004028ef    90
+?ValidForLockedApplyProcess@Object@@UAEIPAVGInterfaceStatus@@@Z:
                          xor.s              eax, eax                                 // 0x004028f0    33c0
                          ret                0x0004                                   // 0x004028f2    c20400
                          nop                                                         // 0x004028f5    90
@@ -4318,6 +4749,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004028fd    90
                          nop                                                         // 0x004028fe    90
                          nop                                                         // 0x004028ff    90
+?ApplyUnlockProcess@Object@@UAEIPAVGInterfaceStatus@@@Z:
                          mov                eax, 0x00000001                          // 0x00402900    b801000000
                          ret                0x0004                                   // 0x00402905    c20400
                          nop                                                         // 0x00402908    90
@@ -4328,6 +4760,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040290d    90
                          nop                                                         // 0x0040290e    90
                          nop                                                         // 0x0040290f    90
+?IsInterfacePowerUpWhenInHand@Object@@UAEIXZ:
                          xor.s              eax, eax                                 // 0x00402910    33c0
                          ret                                                         // 0x00402912    c3
                          nop                                                         // 0x00402913    90
@@ -4343,6 +4776,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040291d    90
                          nop                                                         // 0x0040291e    90
                          nop                                                         // 0x0040291f    90
+?ApplyOnlyAfterRecSystem@Object@@UAEIXZ:
                          xor.s              eax, eax                                 // 0x00402920    33c0
                          ret                                                         // 0x00402922    c3
                          nop                                                         // 0x00402923    90
@@ -4358,6 +4792,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040292d    90
                          nop                                                         // 0x0040292e    90
                          nop                                                         // 0x0040292f    90
+?ApplyOnlyAfterReleased@Object@@UAEIXZ:
                          xor.s              eax, eax                                 // 0x00402930    33c0
                          ret                                                         // 0x00402932    c3
                          nop                                                         // 0x00402933    90
@@ -4373,6 +4808,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040293d    90
                          nop                                                         // 0x0040293e    90
                          nop                                                         // 0x0040293f    90
+?InterfaceValidToGiveObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z:
                          xor.s              eax, eax                                 // 0x00402940    33c0
                          ret                0x0008                                   // 0x00402942    c20800
                          nop                                                         // 0x00402945    90
@@ -4386,6 +4822,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040294d    90
                          nop                                                         // 0x0040294e    90
                          nop                                                         // 0x0040294f    90
+?InterfaceGiveObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z:
                          mov                eax, 0x00000016                          // 0x00402950    b816000000
                          ret                0x0008                                   // 0x00402955    c20800
                          nop                                                         // 0x00402958    90
@@ -4396,6 +4833,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040295d    90
                          nop                                                         // 0x0040295e    90
                          nop                                                         // 0x0040295f    90
+?InterfaceValidToInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z:
                          xor.s              eax, eax                                 // 0x00402960    33c0
                          ret                0x0004                                   // 0x00402962    c20400
                          nop                                                         // 0x00402965    90
@@ -4409,6 +4847,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040296d    90
                          nop                                                         // 0x0040296e    90
                          nop                                                         // 0x0040296f    90
+?InterfaceInteractAsMapCoordsObject@Object@@UAEIPAVGInterfaceStatus@@@Z:
                          mov                eax, 0x00000001                          // 0x00402970    b801000000
                          ret                0x0004                                   // 0x00402975    c20400
                          nop                                                         // 0x00402978    90
@@ -4419,6 +4858,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040297d    90
                          nop                                                         // 0x0040297e    90
                          nop                                                         // 0x0040297f    90
+?ValidToSelectFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z:
                          xor.s              eax, eax                                 // 0x00402980    33c0
                          ret                0x0008                                   // 0x00402982    c20800
                          nop                                                         // 0x00402985    90
@@ -4432,6 +4872,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040298d    90
                          nop                                                         // 0x0040298e    90
                          nop                                                         // 0x0040298f    90
+?ValidToApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z:
                          xor.s              eax, eax                                 // 0x00402990    33c0
                          ret                0x0008                                   // 0x00402992    c20800
                          nop                                                         // 0x00402995    90
@@ -4445,6 +4886,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x0040299d    90
                          nop                                                         // 0x0040299e    90
                          nop                                                         // 0x0040299f    90
+?SelectFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z:
                          mov                eax, 0x00000001                          // 0x004029a0    b801000000
                          ret                0x0008                                   // 0x004029a5    c20800
                          nop                                                         // 0x004029a8    90
@@ -4455,6 +4897,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004029ad    90
                          nop                                                         // 0x004029ae    90
                          nop                                                         // 0x004029af    90
+?ApplyFightThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z:
                          mov                eax, 0x00000001                          // 0x004029b0    b801000000
                          ret                0x0008                                   // 0x004029b5    c20800
                          nop                                                         // 0x004029b8    90
@@ -4465,6 +4908,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004029bd    90
                          nop                                                         // 0x004029be    90
                          nop                                                         // 0x004029bf    90
+?ValidToFightThisToObject@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z:
                          xor.s              eax, eax                                 // 0x004029c0    33c0
                          ret                0x0008                                   // 0x004029c2    c20800
                          nop                                                         // 0x004029c5    90
@@ -4478,6 +4922,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004029cd    90
                          nop                                                         // 0x004029ce    90
                          nop                                                         // 0x004029cf    90
+?FightThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z:
                          mov                eax, 0x00000001                          // 0x004029d0    b801000000
                          ret                0x0008                                   // 0x004029d5    c20800
                          nop                                                         // 0x004029d8    90
@@ -4488,6 +4933,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004029dd    90
                          nop                                                         // 0x004029de    90
                          nop                                                         // 0x004029df    90
+?IsEffectReceiver@Object@@UAE_NPAVEffectValues@@@Z:
                          mov                eax, 0x00000001                          // 0x004029e0    b801000000
                          ret                0x0004                                   // 0x004029e5    c20400
                          nop                                                         // 0x004029e8    90
@@ -4498,6 +4944,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004029ed    90
                          nop                                                         // 0x004029ee    90
                          nop                                                         // 0x004029ef    90
+?IsObject@Object@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x004029f0    b801000000
                          ret                                                         // 0x004029f5    c3
                          nop                                                         // 0x004029f6    90
@@ -4510,6 +4957,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x004029fd    90
                          nop                                                         // 0x004029fe    90
                          nop                                                         // 0x004029ff    90
+?PhysicallyDestroysAbodes@Object@@UAEIXZ:
                          xor.s              al, al                                   // 0x00402a00    32c0
                          ret                                                         // 0x00402a02    c3
                          nop                                                         // 0x00402a03    90
@@ -4525,6 +4973,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x00402a0d    90
                          nop                                                         // 0x00402a0e    90
                          nop                                                         // 0x00402a0f    90
+?GetAlwaysRemainsInPhysicsInternalSystem@Object@@UAE_NXZ:
                          xor.s              al, al                                   // 0x00402a10    32c0
                          ret                                                         // 0x00402a12    c3
                          nop                                                         // 0x00402a13    90
@@ -4540,10 +4989,12 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x00402a1d    90
                          nop                                                         // 0x00402a1e    90
                          nop                                                         // 0x00402a1f    90
+?IsSuitableForCreatureAction@Object@@UAE_NXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]              // 0x00402a20    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x000000c0]        // 0x00402a23    8b80c0000000
                          ret                                                         // 0x00402a29    c3
                          call               dword ptr [__imp__DirectInputCreateA@4]  // 0x00402a2a    ff1534908a00
+?CanBePoodOn@Object@@UAE_NPAVCreature@@@Z:
                          mov                eax, 0x00000001                          // 0x00402a30    b801000000
                          ret                0x0004                                   // 0x00402a35    c20400
                          nop                                                         // 0x00402a38    90
@@ -4554,6 +5005,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          nop                                                         // 0x00402a3d    90
                          nop                                                         // 0x00402a3e    90
                          nop                                                         // 0x00402a3f    90
+?CanBeAttackedByCreature@Object@@UAE_NPAVCreature@@@Z:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]              // 0x00402a40    8b4128
                          {disp32} mov       edx, dword ptr [eax + 0x000000c4]        // 0x00402a43    8b90c4000000
                          test               edx, edx                                 // 0x00402a49    85d2
@@ -4564,6 +5016,7 @@ _jmp_addr_0x00402723:    mov                eax, 0x00000001                     
                          ret                0x0004                                   // 0x00402a58    c20400
 _jmp_addr_0x00402a5b:    xor.s              eax, eax                                 // 0x00402a5b    33c0
                          ret                0x0004                                   // 0x00402a5d    c20400
+?CanBePlayedWithByCreature@Object@@UAE_NPAVCreature@@@Z:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]              // 0x00402a60    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x000000c8]        // 0x00402a63    8b80c8000000
                          ret                0x0004                                   // 0x00402a69    c20400
@@ -4571,6 +5024,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402a6d    90
                          nop                                                         // 0x00402a6e    90
                          nop                                                         // 0x00402a6f    90
+?CanBeImpressedByCreature@Object@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402a70    33c0
                          ret                0x0004                                   // 0x00402a72    c20400
                          nop                                                         // 0x00402a75    90
@@ -4584,6 +5038,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402a7d    90
                          nop                                                         // 0x00402a7e    90
                          nop                                                         // 0x00402a7f    90
+?CanBeHelpedByCreature@Object@@UAE_NPAVCreature@@@Z:
                          mov                eax, 0x00000001                          // 0x00402a80    b801000000
                          ret                0x0004                                   // 0x00402a85    c20400
                          nop                                                         // 0x00402a88    90
@@ -4594,6 +5049,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402a8d    90
                          nop                                                         // 0x00402a8e    90
                          nop                                                         // 0x00402a8f    90
+?CanBeExaminedByCreature@Object@@UAE_NPAVCreature@@@Z:
                          mov                eax, 0x00000001                          // 0x00402a90    b801000000
                          ret                0x0004                                   // 0x00402a95    c20400
                          nop                                                         // 0x00402a98    90
@@ -4604,6 +5060,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402a9d    90
                          nop                                                         // 0x00402a9e    90
                          nop                                                         // 0x00402a9f    90
+?IsOnFire@Object@@UAE_NPAVCreature@@@Z:
                          call               _jmp_addr_0x00637cc0                     // 0x00402aa0    e81b522300
                          ret                0x0004                                   // 0x00402aa5    c20400
                          nop                                                         // 0x00402aa8    90
@@ -4614,6 +5071,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402aad    90
                          nop                                                         // 0x00402aae    90
                          nop                                                         // 0x00402aaf    90
+?GetTastiness@Object@@UAEIXZ:
                          xor.s              eax, eax                                 // 0x00402ab0    33c0
                          ret                                                         // 0x00402ab2    c3
                          nop                                                         // 0x00402ab3    90
@@ -4629,6 +5087,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402abd    90
                          nop                                                         // 0x00402abe    90
                          nop                                                         // 0x00402abf    90
+?IsScary@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402ac0    33c0
                          ret                                                         // 0x00402ac2    c3
                          nop                                                         // 0x00402ac3    90
@@ -4644,6 +5103,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402acd    90
                          nop                                                         // 0x00402ace    90
                          nop                                                         // 0x00402acf    90
+?GetObjectCollide@Object@@UAEIXZ:
                          xor.s              eax, eax                                 // 0x00402ad0    33c0
                          ret                                                         // 0x00402ad2    c3
                          nop                                                         // 0x00402ad3    90
@@ -4659,6 +5119,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402add    90
                          nop                                                         // 0x00402ade    90
                          nop                                                         // 0x00402adf    90
+?IsPushable@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402ae0    33c0
                          ret                                                         // 0x00402ae2    c3
                          nop                                                         // 0x00402ae3    90
@@ -4674,6 +5135,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402aed    90
                          nop                                                         // 0x00402aee    90
                          nop                                                         // 0x00402aef    90
+?GetCarriedTreeType@Object@@UAEIXZ:
                          xor.s              eax, eax                                 // 0x00402af0    33c0
                          ret                                                         // 0x00402af2    c3
                          nop                                                         // 0x00402af3    90
@@ -4689,7 +5151,8 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402afd    90
                          nop                                                         // 0x00402afe    90
                          nop                                                         // 0x00402aff    90
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x00402b00    d90598a38a00
+?GetFacingPitch@Object@@UAEMXZ:
+                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402b00    d90598a38a00
                          ret                                                         // 0x00402b06    c3
                          nop                                                         // 0x00402b07    90
                          nop                                                         // 0x00402b08    90
@@ -4700,6 +5163,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402b0d    90
                          nop                                                         // 0x00402b0e    90
                          nop                                                         // 0x00402b0f    90
+?SetHeadPos@Object@@UAEXPAUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00402b10    8b442404
                          add                ecx, 0x14                                // 0x00402b14    83c114
                          mov                edx, dword ptr [ecx]                     // 0x00402b17    8b11
@@ -4709,7 +5173,8 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          {disp8} mov        ecx, dword ptr [ecx + 0x08]              // 0x00402b21    8b4908
                          {disp8} mov        dword ptr [eax + 0x08], ecx              // 0x00402b24    894808
                          ret                0x0004                                   // 0x00402b27    c20400
-                         call               dword ptr [rdata_bytes + 0xd8]           // 0x00402b2a    ff15d8908a00
+                         call               dword ptr [__imp___ChangeParameters_CImmPeriodic__QAEHKKKJJJKPAUFEELIT_ENVELOPE___Z@4]           // 0x00402b2a    ff15d8908a00
+?IsAPotFromABuildingSite@Object@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x00402b30    33c0
                          ret                                                         // 0x00402b32    c3
                          nop                                                         // 0x00402b33    90
@@ -4725,6 +5190,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402b3d    90
                          nop                                                         // 0x00402b3e    90
                          nop                                                         // 0x00402b3f    90
+?GetText@Object@@UAEPBDXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]              // 0x00402b40    8b4128
                          add                eax, 0x18                                // 0x00402b43    83c018
                          ret                                                         // 0x00402b46    c3
@@ -4737,6 +5203,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402b4d    90
                          nop                                                         // 0x00402b4e    90
                          nop                                                         // 0x00402b4f    90
+?StandAnimation@Object@@UAEIXZ:
                          or                 eax, -0x1                                // 0x00402b50    83c8ff
                          ret                                                         // 0x00402b53    c3
                          nop                                                         // 0x00402b54    90
@@ -4820,7 +5287,7 @@ _jmp_addr_0x00402c10:    push               esi                                 
                          call               dword ptr [edx + 0x48]                   // 0x00402c1f    ff5248
                          test               eax, eax                                 // 0x00402c22    85c0
                          {disp8} je         _jmp_addr_0x00402c4c                     // 0x00402c24    7426
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]   // 0x00402c26    a15c19d000
+                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]   // 0x00402c26    a15c19d000
                          {disp8} mov        ecx, dword ptr [eax + 0x14]              // 0x00402c2b    8b4814
                          test               ch, -0x80                                // 0x00402c2e    f6c580
                          {disp8} jne        _jmp_addr_0x00402c3d                     // 0x00402c31    750a
@@ -4834,7 +5301,7 @@ _jmp_addr_0x00402c3d:    mov                eax, dword ptr [esi]                
                          mov.s              ecx, eax                                 // 0x00402c45    8bc8
                          call               _jmp_addr_0x00739a60                     // 0x00402c47    e8146e3300
 _jmp_addr_0x00402c4c:    mov.s              ecx, esi                                 // 0x00402c4c    8bce
-                         call               _jmp_addr_0x006366a0                     // 0x00402c4e    e84d3a2300
+                         call               ?Delete@Object@@UAEXH@Z                  // 0x00402c4e    e84d3a2300
                          pop                esi                                      // 0x00402c53    5e
                          ret                                                         // 0x00402c54    c3
                          nop                                                         // 0x00402c55    90
@@ -4859,7 +5326,7 @@ _jmp_addr_0x00402c60:    push               esi                                 
                          call               dword ptr [edx + 0x910]                  // 0x00402c6f    ff9210090000
                          test               edi, edi                                 // 0x00402c75    85ff
                          {disp8} je         _jmp_addr_0x00402c98                     // 0x00402c77    741f
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]   // 0x00402c79    a15c19d000
+                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]   // 0x00402c79    a15c19d000
                          {disp8} mov        ecx, dword ptr [eax + 0x14]              // 0x00402c7e    8b4814
                          test               ch, -0x80                                // 0x00402c81    f6c580
                          {disp8} jne        _jmp_addr_0x00402c98                     // 0x00402c84    7512
@@ -4897,7 +5364,7 @@ _jmp_addr_0x00402c98:    mov.s              ecx, esi                            
                          {disp8} mov        edx, dword ptr [esp + 0x04]              // 0x00402cd4    8b542404
                          push               eax                                      // 0x00402cd8    50
                          push               edx                                      // 0x00402cd9    52
-                         call               _jmp_addr_0x00638cb0                     // 0x00402cda    e8d15f2300
+                         call               ?GetInspectObjectPos@Object@@UAE_NPAVVillager@@PAUMapCoords@@@Z                     // 0x00402cda    e8d15f2300
                          ret                0x0008                                   // 0x00402cdf    c20800
                          nop                                                         // 0x00402ce2    90
                          nop                                                         // 0x00402ce3    90
@@ -4977,7 +5444,7 @@ _jmp_addr_0x00402da3:    {disp8} mov        ecx, dword ptr [esp + 0x40]         
                          push               ecx                                      // 0x00402da7    51
                          push               esi                                      // 0x00402da8    56
                          mov.s              ecx, edi                                 // 0x00402da9    8bcf
-                         call               _jmp_addr_0x00732770                     // 0x00402dab    e8c0f93200
+                         call               ?GetPSysFireLocalRndFlamePos@Object@@UAE_NPAULHPoint@@PAH@Z                     // 0x00402dab    e8c0f93200
                          pop                edi                                      // 0x00402db0    5f
                          pop                esi                                      // 0x00402db1    5e
                          add                esp, 0x30                                // 0x00402db2    83c430
