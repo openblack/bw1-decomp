@@ -122,9 +122,9 @@
 .extern _jmp_addr_0x00618c40
 .extern @GetAnim__9MorphableFll@16
 .extern @MoveMapObject__6ObjectFRC9MapCoords@12
-.extern _jmp_addr_0x00637980
+.extern ?ApplyEffect@Object@@UAEXPBXPAVEffectValues@@@Z
 .extern _jmp_addr_0x00637cc0
-.extern _jmp_addr_0x00637ff0
+.extern ?ApplySingleEffect@Object@@UAEXW4EFFECT_TYPE@@MPAVGameThing@@PBUMapCoords@@@Z
 .extern _jmp_addr_0x00647460
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064b4f0
@@ -1503,7 +1503,7 @@ _jmp_addr_0x00478fe9:    mov.s              ecx, esi                            
                          push               eax                                           // 0x00478ff9    50
                          push               edi                                           // 0x00478ffa    57
                          mov.s              ecx, esi                                      // 0x00478ffb    8bce
-                         call               _jmp_addr_0x00637980                          // 0x00478ffd    e87ee91b00
+                         call               ?ApplyEffect@Object@@UAEXPBXPAVEffectValues@@@Z                          // 0x00478ffd    e87ee91b00
                          pop                edi                                           // 0x00479002    5f
                          pop                esi                                           // 0x00479003    5e
                          pop                ebx                                           // 0x00479004    5b
@@ -1524,7 +1524,7 @@ _jmp_addr_0x0047900b:    {disp32} fld       dword ptr [rdata_bytes + 0x1390]    
                          {disp8} mov        edx, dword ptr [esp + 0x0c]                   // 0x0047902e    8b54240c
                          push               eax                                           // 0x00479032    50
                          push               edx                                           // 0x00479033    52
-                         call               _jmp_addr_0x00637ff0                          // 0x00479034    e8b7ef1b00
+                         call               ?ApplySingleEffect@Object@@UAEXW4EFFECT_TYPE@@MPAVGameThing@@PBUMapCoords@@@Z                          // 0x00479034    e8b7ef1b00
                          ret                0x0010                                        // 0x00479039    c21000
                          nop                                                              // 0x0047903c    90
                          nop                                                              // 0x0047903d    90

@@ -59,14 +59,14 @@
 .extern _jmp_addr_0x00607a20
 .extern _jmp_addr_0x00607c40
 .extern _jmp_addr_0x00607d00
-.extern _jmp_addr_0x00636f00
-.extern _jmp_addr_0x006375a0
-.extern _jmp_addr_0x00637660
-.extern _jmp_addr_0x006377b0
+.extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
+.extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
+.extern ?InterfaceSetInMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
+.extern ?InteractsWithPhysicsObjects@Object@@UAE_NXZ
 .extern _jmp_addr_0x00637cc0
-.extern _jmp_addr_0x00638180
-.extern _jmp_addr_0x00638580
-.extern _jmp_addr_0x00638590
+.extern ?Get2DRadius@Object@@UAEMXZ
+.extern ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
+.extern ?GetQueryLastEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
 .extern _jmp_addr_0x0063a940
 .extern _jmp_addr_0x0063e370
 .extern _jmp_addr_0x0063e580
@@ -367,7 +367,7 @@ _jmp_addr_0x0066ce58:    pop                ecx                                 
                          pop                esi                                           // 0x0066cede    5e
                          ret                                                              // 0x0066cedf    c3
 _jmp_addr_0x0066cee0:    mov.s              ecx, esi                                      // 0x0066cee0    8bce
-                         call               _jmp_addr_0x006377b0                          // 0x0066cee2    e8c9a8fcff
+                         call               ?InteractsWithPhysicsObjects@Object@@UAE_NXZ  // 0x0066cee2    e8c9a8fcff
                          pop                esi                                           // 0x0066cee7    5e
                          ret                                                              // 0x0066cee8    c3
                          nop                                                              // 0x0066cee9    90
@@ -1209,7 +1209,7 @@ _jmp_addr_0x0066d705:    pop                esi                                 
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0066d718    8b442408
                          push               eax                                           // 0x0066d71c    50
                          mov.s              ecx, esi                                      // 0x0066d71d    8bce
-                         call               _jmp_addr_0x00637660                          // 0x0066d71f    e83c9ffcff
+                         call               ?InterfaceSetInMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z                          // 0x0066d71f    e83c9ffcff
                          pop                esi                                           // 0x0066d724    5e
                          ret                0x0004                                        // 0x0066d725    c20400
                          nop                                                              // 0x0066d728    90
@@ -1767,7 +1767,7 @@ _jmp_addr_0x0066dc70:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               ebx                                           // 0x0066dc74    53
                          push               eax                                           // 0x0066dc75    50
                          mov.s              ecx, esi                                      // 0x0066dc76    8bce
-                         call               _jmp_addr_0x006375a0                          // 0x0066dc78    e82399fcff
+                         call               ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z// 0x0066dc78    e82399fcff
                          pop                esi                                           // 0x0066dc7d    5e
                          pop                ebp                                           // 0x0066dc7e    5d
                          pop                ebx                                           // 0x0066dc7f    5b
@@ -2141,7 +2141,7 @@ _jmp_addr_0x0066dfac:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          push               edx                                           // 0x0066dfbf    52
                          push               ecx                                           // 0x0066dfc0    51
                          mov.s              ecx, esi                                      // 0x0066dfc1    8bce
-                         call               _jmp_addr_0x00636f00                          // 0x0066dfc3    e8388ffcff
+                         call               ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z                          // 0x0066dfc3    e8388ffcff
                          pop                esi                                           // 0x0066dfc8    5e
                          ret                0x0014                                        // 0x0066dfc9    c21400
                          nop                                                              // 0x0066dfcc    90
@@ -2446,7 +2446,7 @@ _jmp_addr_0x0066e28c:    pop                edi                                 
                          test               eax, eax                                      // 0x0066e2b4    85c0
                          {disp8} je         _jmp_addr_0x0066e2c1                          // 0x0066e2b6    7409
                          mov.s              ecx, esi                                      // 0x0066e2b8    8bce
-                         call               _jmp_addr_0x00638580                          // 0x0066e2ba    e8c1a2fcff
+                         call               ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ                          // 0x0066e2ba    e8c1a2fcff
                          pop                esi                                           // 0x0066e2bf    5e
                          ret                                                              // 0x0066e2c0    c3
 _jmp_addr_0x0066e2c1:    mov                eax, 0x00000b38                               // 0x0066e2c1    b8380b0000
@@ -2471,7 +2471,7 @@ _jmp_addr_0x0066e2c1:    mov                eax, 0x00000b38                     
                          test               eax, eax                                      // 0x0066e2e4    85c0
                          {disp8} je         _jmp_addr_0x0066e2f1                          // 0x0066e2e6    7409
                          mov.s              ecx, esi                                      // 0x0066e2e8    8bce
-                         call               _jmp_addr_0x00638590                          // 0x0066e2ea    e8a1a2fcff
+                         call               ?GetQueryLastEnumText@Object@@UAE?AW4HELP_TEXT@@XZ                          // 0x0066e2ea    e8a1a2fcff
                          pop                esi                                           // 0x0066e2ef    5e
                          ret                                                              // 0x0066e2f0    c3
 _jmp_addr_0x0066e2f1:    mov                eax, 0x00000b38                               // 0x0066e2f1    b8380b0000
@@ -3899,7 +3899,7 @@ _jmp_addr_0x0066f173:    pop                edi                                 
                          call               dword ptr [eax + 0x86c]                       // 0x0066f186    ff906c080000
                          {disp8} fstp       dword ptr [esp + 0x04]                        // 0x0066f18c    d95c2404
                          mov.s              ecx, esi                                      // 0x0066f190    8bce
-                         call               _jmp_addr_0x00638180                          // 0x0066f192    e8e98ffcff
+                         call               ?Get2DRadius@Object@@UAEMXZ                   // 0x0066f192    e8e98ffcff
                          {disp8} fmul       dword ptr [esp + 0x04]                        // 0x0066f197    d84c2404
                          pop                esi                                           // 0x0066f19b    5e
                          pop                ecx                                           // 0x0066f19c    59

@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x006055c0
 .extern _jmp_addr_0x0060a9f0
 .extern @SetGameAngle__13MobileWallHugFUs@10
-.extern _jmp_addr_0x00637870
+.extern ?IncreaseLife@Object@@UAEXM@Z
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x0066c9d0
 .extern _GameRand__5GRandFl
@@ -2832,7 +2832,7 @@ _jmp_addr_0x0075345e:    pop                esi                                 
                          ret                                                              // 0x0075345f    c3
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00753460    8b442404
                          push               eax                                           // 0x00753464    50
-                         call               _jmp_addr_0x00637870                          // 0x00753465    e80644eeff
+                         call               ?IncreaseLife@Object@@UAEXM@Z                 // 0x00753465    e80644eeff
                          ret                0x0004                                        // 0x0075346a    c20400
                          nop                                                              // 0x0075346d    90
                          nop                                                              // 0x0075346e    90

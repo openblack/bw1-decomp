@@ -177,8 +177,8 @@
 .globl _jmp_addr_0x004e3820
 .globl _jmp_addr_0x004e3880
 .globl _jmp_addr_0x004e3960
-.globl _jmp_addr_0x004e3a20
-.globl _jmp_addr_0x004e3b40
+.extern ?CanBePickedUpByCreature@Object@@UAE_NPAVCreature@@@Z
+.extern ?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z
 .globl _jmp_addr_0x004e3d30
 .globl _jmp_addr_0x004e3ee0
 .globl _jmp_addr_0x004e4d00
@@ -230,6 +230,18 @@
 .globl ?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
 .globl ?IsStealableByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
 .globl ?NothingScareyNearMe@GameThingWithPos@@UBE_NXZ
+.globl ?CanBeEatenByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBePoodUponByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBePickedUpByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeStrokedByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeStompedOnByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeThrownByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBePutInAStoragePit@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBePutInFoodPile@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBePutInWoodPile@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeBroughtBackToCitadel@Object@@UAE_NPAVCreature@@@Z
+.globl ?CanBeKickedByCreature@Object@@UAE_NPAVCreature@@@Z
 
 start_0x004e1b40_0x004e9f40:
 // Snippet: asm, [0x004e1b40, 0x004e9efd)
@@ -3119,7 +3131,8 @@ _jmp_addr_0x004e3a11:    pop                edi                                 
                          add                esp, 0x0c                                       // 0x004e3a15    83c40c
                          ret                0x0004                                          // 0x004e3a18    c20400
                          call               _jmp_addr_0x00401879                            // 0x004e3a1b    e859def1ff
-_jmp_addr_0x004e3a20:    push               ebx                                             // 0x004e3a20    53
+?CanBePickedUpByCreature@Object@@UAE_NPAVCreature@@@Z:
+                         push               ebx                                             // 0x004e3a20    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                     // 0x004e3a21    8b5c2408
                          test               ebx, ebx                                        // 0x004e3a25    85db
                          push               esi                                             // 0x004e3a27    56
@@ -3213,6 +3226,7 @@ _jmp_addr_0x004e3af2:    push               ebx                                 
                          pop                esi                                             // 0x004e3afb    5e
                          pop                ebx                                             // 0x004e3afc    5b
                          ret                0x0004                                          // 0x004e3afd    c20400
+?CanBeStrokedByCreature@Object@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e3b00    56
                          mov.s              esi, ecx                                        // 0x004e3b01    8bf1
                          mov                eax, dword ptr [esi]                            // 0x004e3b03    8b06
@@ -3235,7 +3249,8 @@ _jmp_addr_0x004e3b34:    xor.s              eax, eax                            
                          pop                esi                                             // 0x004e3b36    5e
                          ret                0x0004                                          // 0x004e3b37    c20400
                          call               dword ptr [__imp__TrackMouseEvent@4]            // 0x004e3b3a    ff151c908a00
-_jmp_addr_0x004e3b40:    {disp8} mov        eax, dword ptr [ecx + 0x28]                     // 0x004e3b40    8b4128
+?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z:
+                         {disp8} mov        eax, dword ptr [ecx + 0x28]                     // 0x004e3b40    8b4128
                          {disp32} mov       edx, dword ptr [eax + 0x000000cc]               // 0x004e3b43    8b90cc000000
                          xor.s              ecx, ecx                                        // 0x004e3b49    33c9
                          test               edx, edx                                        // 0x004e3b4b    85d2
@@ -3279,6 +3294,7 @@ _jmp_addr_0x004e3ba7:    xor.s              eax, eax                            
                          nop                                                                // 0x004e3bad    90
                          nop                                                                // 0x004e3bae    90
                          nop                                                                // 0x004e3baf    90
+?CanBeBroughtBackToCitadel@Object@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e3bb0    56
                          push               edi                                             // 0x004e3bb1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                     // 0x004e3bb2    8b7c240c
@@ -3314,7 +3330,8 @@ _jmp_addr_0x004e3c08:    pop                edi                                 
                          pop                esi                                             // 0x004e3c0b    5e
                          ret                0x0004                                          // 0x004e3c0c    c20400
                          nop                                                                // 0x004e3c0f    90
-_jmp_addr_0x004e3c10:    push               esi                                             // 0x004e3c10    56
+?CanBeStompedOnByCreature@Object@@UAE_NPAVCreature@@@Z:
+                         push               esi                                             // 0x004e3c10    56
                          mov.s              esi, ecx                                        // 0x004e3c11    8bf1
                          mov                eax, dword ptr [esi]                            // 0x004e3c13    8b06
                          call               dword ptr [eax + 0x178]                         // 0x004e3c15    ff9078010000
@@ -3364,7 +3381,7 @@ _jmp_addr_0x004e3c62:    xor.s              eax, eax                            
                          push               edi                                             // 0x004e3c94    57
                          mov.s              ecx, esi                                        // 0x004e3c95    8bce
                          {disp8} fstp       dword ptr [esp + 0x10]                          // 0x004e3c97    d95c2410
-                         call               _jmp_addr_0x004e3c10                            // 0x004e3c9b    e870ffffff
+                         call               ?CanBeStompedOnByCreature@Object@@UAE_NPAVCreature@@@Z                            // 0x004e3c9b    e870ffffff
                          test               eax, eax                                        // 0x004e3ca0    85c0
                          {disp8} je         _jmp_addr_0x004e3cdf                            // 0x004e3ca2    743b
                          {disp8} fld        dword ptr [esp + 0x0c]                          // 0x004e3ca4    d944240c
@@ -3399,6 +3416,7 @@ _jmp_addr_0x004e3cdf:    pop                edi                                 
                          nop                                                                // 0x004e3ced    90
                          nop                                                                // 0x004e3cee    90
                          nop                                                                // 0x004e3cef    90
+?CanBeThrownByCreature@Object@@UAE_NPAVCreature@@@Z:
                          push               ecx                                             // 0x004e3cf0    51
                          mov                eax, dword ptr [ecx]                            // 0x004e3cf1    8b01
                          call               dword ptr [eax + 0x42c]                         // 0x004e3cf3    ff902c040000
@@ -3431,6 +3449,7 @@ _jmp_addr_0x004e3d30:    mov                eax, dword ptr [ecx]                
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1ba04]               // 0x004e3d38    d80d044a8c00
                          ret                                                                // 0x004e3d3e    c3
                          nop                                                                // 0x004e3d3f    90
+?CanBePutInAStoragePit@Object@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e3d40    56
                          push               edi                                             // 0x004e3d41    57
                          add                ecx, 0x14                                       // 0x004e3d42    83c114
@@ -3463,6 +3482,7 @@ _jmp_addr_0x004e3d89:    pop                edi                                 
                          xor.s              eax, eax                                        // 0x004e3d8a    33c0
                          pop                esi                                             // 0x004e3d8c    5e
                          ret                0x0004                                          // 0x004e3d8d    c20400
+?CanBePutInFoodPile@Object@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e3d90    56
                          mov.s              esi, ecx                                        // 0x004e3d91    8bf1
                          mov                eax, dword ptr [esi]                            // 0x004e3d93    8b06
@@ -3492,6 +3512,7 @@ _jmp_addr_0x004e3dc1:    xor.s              eax, eax                            
                          nop                                                                // 0x004e3dcd    90
                          nop                                                                // 0x004e3dce    90
                          nop                                                                // 0x004e3dcf    90
+?CanBePutInWoodPile@Object@@UAE_NPAVCreature@@@Z:
                          sub                esp, 0x08                                       // 0x004e3dd0    83ec08
                          push               esi                                             // 0x004e3dd3    56
                          mov.s              esi, ecx                                        // 0x004e3dd4    8bf1
@@ -3578,6 +3599,7 @@ _jmp_addr_0x004e3ea1:    xor.s              eax, eax                            
                          nop                                                                // 0x004e3ead    90
                          nop                                                                // 0x004e3eae    90
                          nop                                                                // 0x004e3eaf    90
+?CanBePoodUponByCreature@Object@@UAE_NPAVCreature@@@Z:
                          mov                eax, dword ptr [ecx]                            // 0x004e3eb0    8b01
                          call               dword ptr [eax + 0x42c]                         // 0x004e3eb2    ff902c040000
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x224c]                // 0x004e3eb8    d81d4cb28a00
@@ -3709,7 +3731,7 @@ _jmp_addr_0x004e3fb2:    mov                eax, dword ptr [esi]                
 _jmp_addr_0x004e3fd8:    {disp8} mov        ecx, dword ptr [esp + 0x08]                     // 0x004e3fd8    8b4c2408
                          push               ecx                                             // 0x004e3fdc    51
                          mov.s              ecx, esi                                        // 0x004e3fdd    8bce
-                         call               _jmp_addr_0x004e3a20                            // 0x004e3fdf    e83cfaffff
+                         call               ?CanBePickedUpByCreature@Object@@UAE_NPAVCreature@@@Z                            // 0x004e3fdf    e83cfaffff
                          pop                esi                                             // 0x004e3fe4    5e
                          ret                0x0004                                          // 0x004e3fe5    c20400
                          nop                                                                // 0x004e3fe8    90
@@ -4107,6 +4129,7 @@ _jmp_addr_0x004e4309:    pop                edi                                 
                          push               edx                                             // 0x004e4316    52
                          call               dword ptr [eax + 0x234]                         // 0x004e4317    ff9034020000
                          ret                0x0004                                          // 0x004e431d    c20400
+?CanBeKickedByCreature@Object@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e4320    56
                          push               edi                                             // 0x004e4321    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                     // 0x004e4322    8b7c240c
@@ -4715,6 +4738,7 @@ _jmp_addr_0x004e48b9:    xor.s              eax, eax                            
                          ret                0x0004                                          // 0x004e48bb    c20400
                          nop                                                                // 0x004e48be    90
                          nop                                                                // 0x004e48bf    90
+?CanBeEatenByCreature@Object@@UAE_NPAVCreature@@@Z:
                          {disp8} mov        edx, dword ptr [esp + 0x04]                     // 0x004e48c0    8b542404
                          mov                eax, dword ptr [ecx]                            // 0x004e48c4    8b01
                          push               edx                                             // 0x004e48c6    52
@@ -4931,7 +4955,7 @@ _jmp_addr_0x004e4a75:    pop                edi                                 
                          {disp8} jne        _jmp_addr_0x004e4a9c                            // 0x004e4a84    7516
                          {disp8} mov        eax, dword ptr [esp + 0x04]                     // 0x004e4a86    8b442404
                          push               eax                                             // 0x004e4a8a    50
-                         call               _jmp_addr_0x004e3a20                            // 0x004e4a8b    e890efffff
+                         call               ?CanBePickedUpByCreature@Object@@UAE_NPAVCreature@@@Z                            // 0x004e4a8b    e890efffff
                          test               eax, eax                                        // 0x004e4a90    85c0
                          {disp8} je         _jmp_addr_0x004e4a9c                            // 0x004e4a92    7408
                          mov                eax, 0x00000001                                 // 0x004e4a94    b801000000

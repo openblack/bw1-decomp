@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x0060aad0
 .extern @SetupMobileMoveToPos__13MobileWallHugFRC9MapCoords14MOVE_TO_STATES@16
 .extern _jmp_addr_0x0060acd0
-.extern _jmp_addr_0x006375a0
+.extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern _jmp_addr_0x00647460
 .extern _jmp_addr_0x0066b9c0
 .extern _GameFloatRand__5GRandFf
@@ -256,7 +256,7 @@ _jmp_addr_0x005f0b79:    {disp8} mov        edx, dword ptr [esp + 0x18]         
                          push               edx                                           // 0x005f0b7d    52
                          push               edi                                           // 0x005f0b7e    57
                          mov.s              ecx, esi                                      // 0x005f0b7f    8bce
-                         call               _jmp_addr_0x006375a0                          // 0x005f0b81    e81a6a0400
+                         call               ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z// 0x005f0b81    e81a6a0400
                          mov.s              ebp, eax                                      // 0x005f0b86    8be8
                          xor.s              eax, eax                                      // 0x005f0b88    33c0
                          {disp32} mov       ax, word ptr [esi + 0x000000b4]               // 0x005f0b8a    668b86b4000000
@@ -476,7 +476,7 @@ _jmp_addr_0x005f0df9:    {disp8} mov        ecx, dword ptr [esp + 0x18]         
                          push               ecx                                           // 0x005f0dfd    51
                          push               edi                                           // 0x005f0dfe    57
                          mov.s              ecx, esi                                      // 0x005f0dff    8bce
-                         call               _jmp_addr_0x006375a0                          // 0x005f0e01    e89a670400
+                         call               ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z// 0x005f0e01    e89a670400
                          xor.s              edx, edx                                      // 0x005f0e06    33d2
                          {disp32} mov       dx, word ptr [esi + 0x000000b4]               // 0x005f0e08    668b96b4000000
                          and                ebx, 0x03                                     // 0x005f0e0f    83e303

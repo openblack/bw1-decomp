@@ -41,7 +41,7 @@
 .extern _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords
 .extern _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
-.extern _jmp_addr_0x00636670
+.extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063b740
@@ -345,7 +345,7 @@ _jmp_addr_0x00609532:    pop               esi                                  
                          push              eax                                           // 0x006095cc    50
                          mov.s             ecx, esi                                      // 0x006095cd    8bce
                          {disp8} mov       dword ptr [esi + 0x40], 0x00000000            // 0x006095cf    c7464000000000
-                         call              _jmp_addr_0x00636670                          // 0x006095d6    e895d00200
+                         call              ?ToBeDeleted@Object@@UAEXH@Z                  // 0x006095d6    e895d00200
                          pop               esi                                           // 0x006095db    5e
                          ret               0x0004                                        // 0x006095dc    c20400
                          nop                                                             // 0x006095df    90

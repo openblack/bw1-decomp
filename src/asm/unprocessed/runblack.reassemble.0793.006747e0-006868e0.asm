@@ -82,13 +82,13 @@
 .extern @__ct__6ObjectFv@4
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
-.extern _jmp_addr_0x00636670
-.extern _jmp_addr_0x00637ce0
+.extern ?ToBeDeleted@Object@@UAEXH@Z
+.extern ?GetHeatCapacity@Object@@UAEMXZ
 .extern _jmp_addr_0x00637dd0
 .extern _jmp_addr_0x00639a10
 .extern _jmp_addr_0x00639a60
-.extern _jmp_addr_0x00639a90
-.extern _jmp_addr_0x00639b90
+.extern ?GetRainCoolingMultiplier@Object@@UAEMXZ
+.extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern _jmp_addr_0x0063e370
 .extern _jmp_addr_0x0063e580
@@ -20853,7 +20853,7 @@ _jmp_addr_0x00682cc9:    {disp8} mov        ecx, dword ptr [eax + 0x54]         
                          {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x00682cd6    8b542408
                          push               edx                                           // 0x00682cda    52
                          mov.s              ecx, edi                                      // 0x00682cdb    8bcf
-                         call               _jmp_addr_0x00636670                          // 0x00682cdd    e88e39fbff
+                         call               ?ToBeDeleted@Object@@UAEXH@Z                  // 0x00682cdd    e88e39fbff
                          pop                edi                                           // 0x00682ce2    5f
                          ret                0x0004                                        // 0x00682ce3    c20400
 _jmp_addr_0x00682ce6:    {disp8} mov        ecx, dword ptr [edi + 0x54]                   // 0x00682ce6    8b4f54
@@ -20863,7 +20863,7 @@ _jmp_addr_0x00682cec:    dec                dword ptr [edx + 0x04]              
 _jmp_addr_0x00682cf6:    {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x00682cf6    8b542408
                          push               edx                                           // 0x00682cfa    52
                          mov.s              ecx, edi                                      // 0x00682cfb    8bcf
-                         call               _jmp_addr_0x00636670                          // 0x00682cfd    e86e39fbff
+                         call               ?ToBeDeleted@Object@@UAEXH@Z                  // 0x00682cfd    e86e39fbff
 _jmp_addr_0x00682d02:    pop                edi                                           // 0x00682d02    5f
                          ret                0x0004                                        // 0x00682d03    c20400
                          nop                                                              // 0x00682d06    90
@@ -20921,7 +20921,7 @@ _jmp_addr_0x00682d02:    pop                edi                                 
                          {disp32} fmul      dword ptr [rdata_bytes + 0x8c914]             // 0x00682d4f    d80d14599300
                          {disp8} fstp       dword ptr [esp + 0x04]                        // 0x00682d55    d95c2404
                          fstp               st(0)                                         // 0x00682d59    ddd8
-                         call               _jmp_addr_0x00637ce0                          // 0x00682d5b    e8804ffbff
+                         call               ?GetHeatCapacity@Object@@UAEMXZ               // 0x00682d5b    e8804ffbff
                          {disp8} mov        esi, dword ptr [esi + 0x5c]                   // 0x00682d60    8b765c
                          {disp8} fmul       dword ptr [esp + 0x04]                        // 0x00682d63    d84c2404
                          test               esi, esi                                      // 0x00682d67    85f6
@@ -20960,7 +20960,7 @@ _jmp_addr_0x00682d7c:    {disp32} fld       dword ptr [rdata_bytes + 0x1390]    
                          {disp8} mov        al, byte ptr [ecx + 0x58]                     // 0x00682db0    8a4158
                          test               al, al                                        // 0x00682db3    84c0
                          {disp8} je         _jmp_addr_0x00682dbc                          // 0x00682db5    7405
-                         {disp32} jmp       _jmp_addr_0x00639a90                          // 0x00682db7    e9d46cfbff
+                         {disp32} jmp       ?GetRainCoolingMultiplier@Object@@UAEMXZ      // 0x00682db7    e9d46cfbff
 _jmp_addr_0x00682dbc:    {disp32} fld       dword ptr [rdata_bytes + 0x1398]              // 0x00682dbc    d90598a38a00
                          ret                                                              // 0x00682dc2    c3
                          nop                                                              // 0x00682dc3    90
@@ -21435,7 +21435,7 @@ _jmp_addr_0x0068329b:    pop                esi                                 
                          push               edi                                           // 0x006832b5    57
                          mov.s              edi, ecx                                      // 0x006832b6    8bf9
                          push               esi                                           // 0x006832b8    56
-                         call               _jmp_addr_0x00639b90                          // 0x006832b9    e8d268fbff
+                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z           // 0x006832b9    e8d268fbff
                          test               eax, eax                                      // 0x006832be    85c0
                          {disp8} je         _jmp_addr_0x00683311                          // 0x006832c0    744f
                          {disp8} lea        eax, dword ptr [edi + 0x5c]                   // 0x006832c2    8d475c

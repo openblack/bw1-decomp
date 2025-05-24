@@ -11,8 +11,8 @@
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x005f04c0
 .extern @GetTopState__6LivingCFv@4
-.extern _jmp_addr_0x00636f00
-.extern _jmp_addr_0x00637480
+.extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
+.extern ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z
 .extern _jmp_addr_0x00750940
 .extern _jmp_addr_0x00756000
 .extern _atexit@4
@@ -76,7 +76,7 @@ _jmp_addr_0x005efdb1:    {disp8} mov        ecx, dword ptr [esp + 0x1c]         
                          push               ecx                                      // 0x005efdc8    51
                          push               edx                                      // 0x005efdc9    52
                          mov.s              ecx, esi                                 // 0x005efdca    8bce
-                         call               _jmp_addr_0x00636f00                     // 0x005efdcc    e82f710400
+                         call               ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z                     // 0x005efdcc    e82f710400
                          mov.s              edi, eax                                 // 0x005efdd1    8bf8
                          test               edi, edi                                 // 0x005efdd3    85ff
                          {disp8} je         _jmp_addr_0x005efdf8                     // 0x005efdd5    7421
@@ -141,7 +141,7 @@ _jmp_addr_0x005efe57:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          push               ecx                                      // 0x005efe74    51
                          push               edi                                      // 0x005efe75    57
                          mov.s              ecx, esi                                 // 0x005efe76    8bce
-                         call               _jmp_addr_0x00637480                     // 0x005efe78    e803760400
+                         call               ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z                     // 0x005efe78    e803760400
                          mov.s              eax, edi                                 // 0x005efe7d    8bc7
                          pop                edi                                      // 0x005efe7f    5f
                          pop                esi                                      // 0x005efe80    5e
