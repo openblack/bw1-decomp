@@ -48,8 +48,8 @@
 .extern _jmp_addr_0x00521a90
 .extern _jmp_addr_0x00529350
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
-.extern _jmp_addr_0x0052df50
-.extern _jmp_addr_0x0052e140
+.extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
+.extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__11FixedObjectFR10GameOSFile@12
 .extern _jmp_addr_0x0052e880
 .extern _jmp_addr_0x0052eac0
@@ -6949,7 +6949,7 @@ _GetWoodValueMultiplier__4TreeFv:
                          {disp8} mov        eax, dword ptr [esp + 0x50]                    // 0x0074b85b    8b442450
                          push               0x0                                            // 0x0074b85f    6a00
                          push               eax                                            // 0x0074b861    50
-                         call               _jmp_addr_0x0052df50                           // 0x0074b862    e8e926deff
+                         call               ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z  // 0x0074b862    e8e926deff
                          pop                edi                                            // 0x0074b867    5f
                          pop                esi                                            // 0x0074b868    5e
                          pop                ebp                                            // 0x0074b869    5d
@@ -6966,7 +6966,7 @@ _jmp_addr_0x0074b871:    {disp8} mov        edi, dword ptr [esp + 0x50]         
                          push               eax                                            // 0x0074b88d    50
                          push               edi                                            // 0x0074b88e    57
                          mov.s              ecx, ebp                                       // 0x0074b88f    8bcd
-                         call               _jmp_addr_0x0052df50                           // 0x0074b891    e8ba26deff
+                         call               ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z  // 0x0074b891    e8ba26deff
                          pop                edi                                            // 0x0074b896    5f
                          pop                esi                                            // 0x0074b897    5e
                          pop                ebp                                            // 0x0074b898    5d
@@ -7233,7 +7233,7 @@ _jmp_addr_0x0074bbc2:    {disp8} mov        eax, dword ptr [esp + 0x54]         
                          push               eax                                            // 0x0074bbc6    50
                          push               edi                                            // 0x0074bbc7    57
                          mov.s              ecx, ebp                                       // 0x0074bbc8    8bcd
-                         call               _jmp_addr_0x0052df50                           // 0x0074bbca    e88123deff
+                         call               ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z  // 0x0074bbca    e88123deff
                          pop                edi                                            // 0x0074bbcf    5f
                          pop                esi                                            // 0x0074bbd0    5e
                          pop                ebp                                            // 0x0074bbd1    5d
@@ -7785,7 +7785,7 @@ _jmp_addr_0x0074c1b0:    push               esi                                 
                          push               edi                                            // 0x0074c1b5    57
                          mov.s              edi, ecx                                       // 0x0074c1b6    8bf9
                          push               esi                                            // 0x0074c1b8    56
-                         call               _jmp_addr_0x0052e140                           // 0x0074c1b9    e8821fdeff
+                         call               ?Save@Fixed@@UAEIPAVGameOSFile@@@Z             // 0x0074c1b9    e8821fdeff
                          test               eax, eax                                       // 0x0074c1be    85c0
                          {disp32} je        _jmp_addr_0x0074c291                           // 0x0074c1c0    0f84cb000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x0074c1c6    a190c9be00

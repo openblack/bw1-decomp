@@ -48,7 +48,7 @@
 .extern _jmp_addr_0x0052bfd0
 .extern _jmp_addr_0x0052c020
 .extern _jmp_addr_0x0052c070
-.extern _jmp_addr_0x0052df50
+.extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
 .extern @__ct__13MultiMapFixedFv@4
 .extern _jmp_addr_0x0052fa50
 .extern _jmp_addr_0x0052fb50
@@ -12180,7 +12180,7 @@ _jmp_addr_0x0076f3b7:    pop                edi                                 
                          push               eax                                             // 0x0076f40a    50
                          push               esi                                             // 0x0076f40b    56
                          mov.s              ecx, ebx                                        // 0x0076f40c    8bcb
-                         call               _jmp_addr_0x0052df50                            // 0x0076f40e    e83debdbff
+                         call               ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z   // 0x0076f40e    e83debdbff
                          mov.s              ebp, eax                                        // 0x0076f413    8be8
                          {disp32} mov       eax, dword ptr [ebx + 0x00000094]               // 0x0076f415    8b8394000000
                          xor.s              edi, edi                                        // 0x0076f41b    33ff
