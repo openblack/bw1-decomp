@@ -324,7 +324,6 @@
 .globl _jmp_addr_0x00636e30
 .extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
 .extern ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z
-.extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?InterfaceSetInMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
 .extern ?GetPhysicsConstantsType@Object@@UAEIXZ
 .extern ?SetUpPhysOb@Object@@UAEXPAVPhysOb@@@Z
