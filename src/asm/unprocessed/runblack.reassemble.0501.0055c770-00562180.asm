@@ -37,9 +37,9 @@
 .extern @__ct__13CircleHugInfoFv@4
 .extern @__ct__6ObjectFv@4
 .extern _jmp_addr_0x00636640
-.extern _jmp_addr_0x006375a0
-.extern _jmp_addr_0x006377c0
-.extern _jmp_addr_0x00637e00
+.extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
+.extern ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z
+.extern ?IsTouching@Object@@UAE_NPAV1@M@Z
 .extern _jmp_addr_0x0064a9f0
 .extern _jmp_addr_0x006500c0
 .extern _jmp_addr_0x00650c40
@@ -433,7 +433,7 @@ _jmp_addr_0x0055c81a:    mov.s              eax, esi                            
                          {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x0055c9a4    8b542404
                          push               eax                                            // 0x0055c9a8    50
                          push               edx                                            // 0x0055c9a9    52
-                         call               _jmp_addr_0x00637e00                           // 0x0055c9aa    e851b40d00
+                         call               ?IsTouching@Object@@UAE_NPAV1@M@Z              // 0x0055c9aa    e851b40d00
                          ret                0x0008                                         // 0x0055c9af    c20800
                          nop                                                               // 0x0055c9b2    90
                          nop                                                               // 0x0055c9b3    90
@@ -11264,7 +11264,7 @@ _jmp_addr_0x0056186d:    mov.s              eax, esi                            
                          {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x005618b4    8b542404
                          push               eax                                            // 0x005618b8    50
                          push               edx                                            // 0x005618b9    52
-                         call               _jmp_addr_0x006377c0                           // 0x005618ba    e8015f0d00
+                         call               ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z                           // 0x005618ba    e8015f0d00
                          ret                0x0008                                         // 0x005618bf    c20800
                          nop                                                               // 0x005618c2    90
                          nop                                                               // 0x005618c3    90
@@ -11535,7 +11535,7 @@ _jmp_addr_0x005618ed:    mov.s              eax, esi                            
                          {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x00561a44    8b542404
                          push               eax                                            // 0x00561a48    50
                          push               edx                                            // 0x00561a49    52
-                         call               _jmp_addr_0x006375a0                           // 0x00561a4a    e8515b0d00
+                         call               ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z // 0x00561a4a    e8515b0d00
                          ret                0x0008                                         // 0x00561a4f    c20800
                          nop                                                               // 0x00561a52    90
                          nop                                                               // 0x00561a53    90

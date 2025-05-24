@@ -50,7 +50,7 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x006055c0
-.extern _jmp_addr_0x0063a020
+.extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a710
 .extern _jmp_addr_0x0063a940
 .extern _jmp_addr_0x00646950
@@ -783,7 +783,7 @@ _jmp_addr_0x0077dade:    pop                edi                                 
                          nop                                                              // 0x0077daed    90
                          nop                                                              // 0x0077daee    90
                          nop                                                              // 0x0077daef    90
-                         {disp32} jmp       _jmp_addr_0x0063a020                          // 0x0077daf0    e92bc5ebff
+                         {disp32} jmp       ?ResolveLoad@Object@@UAEXXZ                   // 0x0077daf0    e92bc5ebff
                          nop                                                              // 0x0077daf5    90
                          nop                                                              // 0x0077daf6    90
                          nop                                                              // 0x0077daf7    90

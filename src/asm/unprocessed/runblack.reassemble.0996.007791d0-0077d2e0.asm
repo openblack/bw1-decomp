@@ -70,7 +70,7 @@
 .extern @__apl__9MapCoordsFRC9MapCoords@12
 .extern _jmp_addr_0x006055c0
 .extern @GetLHPoint__9MapCoordsCFv@12
-.extern _jmp_addr_0x0063a020
+.extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a940
 .extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
 .extern _jmp_addr_0x0063b040
@@ -1960,7 +1960,7 @@ _jmp_addr_0x0077a328:    pop                esi                                 
                          pop                ebp                                           // 0x0077a32b    5d
                          pop                ecx                                           // 0x0077a32c    59
                          ret                0x0004                                        // 0x0077a32d    c20400
-                         {disp32} jmp       _jmp_addr_0x0063a020                          // 0x0077a330    e9ebfcebff
+                         {disp32} jmp       ?ResolveLoad@Object@@UAEXXZ                   // 0x0077a330    e9ebfcebff
                          nop                                                              // 0x0077a335    90
                          nop                                                              // 0x0077a336    90
                          nop                                                              // 0x0077a337    90
