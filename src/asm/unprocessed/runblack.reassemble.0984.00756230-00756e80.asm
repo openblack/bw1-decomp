@@ -26,7 +26,7 @@
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @InsertMapObject__6ObjectFv@4
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
-.extern _jmp_addr_0x006385e0
+.extern ?ThrowObjectFromHand@Object@@UAEIPAVGInterfaceStatus@@H@Z
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0064d750
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
@@ -1101,7 +1101,7 @@ _jmp_addr_0x00756b14:    push               0x0                                 
 _jmp_addr_0x00756b21:    push               edi                                           // 0x00756b21    57
                          push               ebx                                           // 0x00756b22    53
                          mov.s              ecx, esi                                      // 0x00756b23    8bce
-                         call               _jmp_addr_0x006385e0                          // 0x00756b25    e8b61aeeff
+                         call               ?ThrowObjectFromHand@Object@@UAEIPAVGInterfaceStatus@@H@Z                          // 0x00756b25    e8b61aeeff
                          pop                edi                                           // 0x00756b2a    5f
                          pop                esi                                           // 0x00756b2b    5e
                          pop                ebx                                           // 0x00756b2c    5b

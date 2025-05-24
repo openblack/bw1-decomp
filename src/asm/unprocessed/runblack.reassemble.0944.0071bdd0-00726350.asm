@@ -155,7 +155,7 @@
 .extern _Get3DType__6ObjectF9MESH_LIST
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
-.extern _jmp_addr_0x00636670
+.extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @MoveMapObject__6ObjectFRC9MapCoords@12
 .extern @SetScale__6ObjectFf@12
 .extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType

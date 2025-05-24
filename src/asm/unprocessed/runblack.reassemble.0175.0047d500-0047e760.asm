@@ -36,8 +36,8 @@
 .extern _jmp_addr_0x00555a10
 .extern _jmp_addr_0x005de010
 .extern @ReduceLife__6ObjectFfP7GPlayer@16
-.extern _jmp_addr_0x00637870
-.extern _jmp_addr_0x00638580
+.extern ?IncreaseLife@Object@@UAEXM@Z
+.extern ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
 .extern _jmp_addr_0x0064aac0
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
 .extern _GameRand__5GRandFl
@@ -455,7 +455,7 @@ _jmp_addr_0x0047d8e6:    pop                edi                                 
                          push               ebx                                           // 0x0047d8f0    53
                          push               esi                                           // 0x0047d8f1    56
                          mov.s              esi, ecx                                      // 0x0047d8f2    8bf1
-                         call               _jmp_addr_0x00638580                          // 0x0047d8f4    e887ac1b00
+                         call               ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ                          // 0x0047d8f4    e887ac1b00
                          mov.s              ebx, eax                                      // 0x0047d8f9    8bd8
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x0047d8fb    8b4628
                          {disp32} mov       eax, dword ptr [eax + 0x000001f4]             // 0x0047d8fe    8b80f4010000
@@ -933,7 +933,7 @@ _jmp_addr_0x0047de5f:    {disp32} fstp      dword ptr [ecx + 0x00004aa8]        
 _jmp_addr_0x0047de65:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0047de65    8b442408
                          push               eax                                           // 0x0047de69    50
                          mov.s              ecx, esi                                      // 0x0047de6a    8bce
-                         call               _jmp_addr_0x00637870                          // 0x0047de6c    e8ff991b00
+                         call               ?IncreaseLife@Object@@UAEXM@Z                 // 0x0047de6c    e8ff991b00
                          pop                esi                                           // 0x0047de71    5e
                          ret                0x0004                                        // 0x0047de72    c20400
                          nop                                                              // 0x0047de75    90

@@ -37,13 +37,13 @@
 .extern _jmp_addr_0x00608750
 .extern _jmp_addr_0x00608760
 .extern _jmp_addr_0x00608b30
-.extern _jmp_addr_0x006376b0
+.extern ?SetUpPhysOb@Object@@UAEXPAVPhysOb@@@Z
 .extern _jmp_addr_0x00637cc0
 .extern @SetScale__6ObjectFf@12
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a230
 .extern @InitialiseIsFixedForMapList__6ObjectFv@4
-.extern _jmp_addr_0x0063a7c0
+.extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063b680
 .extern _jmp_addr_0x00644800
@@ -3304,7 +3304,7 @@ _jmp_addr_0x005108ea:    {disp8} mov        ecx, dword ptr [edi + 0x28]         
                          nop                                                              // 0x0051096d    90
                          nop                                                              // 0x0051096e    90
                          nop                                                              // 0x0051096f    90
-                         {disp32} jmp       _jmp_addr_0x0063a7c0                          // 0x00510970    e94b9e1200
+                         {disp32} jmp       ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ                          // 0x00510970    e94b9e1200
                          nop                                                              // 0x00510975    90
                          nop                                                              // 0x00510976    90
                          nop                                                              // 0x00510977    90
@@ -4159,7 +4159,7 @@ _jmp_addr_0x00511186:    push               edi                                 
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0051119b    8b4c2408
                          push               ecx                                           // 0x0051119f    51
                          mov.s              ecx, esi                                      // 0x005111a0    8bce
-                         call               _jmp_addr_0x006376b0                          // 0x005111a2    e809651200
+                         call               ?SetUpPhysOb@Object@@UAEXPAVPhysOb@@@Z        // 0x005111a2    e809651200
                          pop                esi                                           // 0x005111a7    5e
                          ret                0x0004                                        // 0x005111a8    c20400
 _jmp_addr_0x005111ab:    mov                edx, dword ptr [esi]                          // 0x005111ab    8b16

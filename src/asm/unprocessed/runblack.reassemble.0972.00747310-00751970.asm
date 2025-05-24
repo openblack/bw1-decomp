@@ -102,8 +102,8 @@
 .extern _jmp_addr_0x0060db00
 .extern _jmp_addr_0x0060fc50
 .extern @Create3DObject__6ObjectFv@4
-.extern _jmp_addr_0x00636670
-.extern _jmp_addr_0x006377c0
+.extern ?ToBeDeleted@Object@@UAEXH@Z
+.extern ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern _jmp_addr_0x00637cc0
 .extern _jmp_addr_0x00637dd0
 .extern _jmp_addr_0x006380c0
@@ -115,7 +115,7 @@
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a230
 .extern _jmp_addr_0x0063a710
-.extern _jmp_addr_0x0063a8e0
+.extern ?ApplyWaterSpell@Object@@UAEMPAVSpellWater@@@Z
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063e580
 .extern _jmp_addr_0x00644800
@@ -5050,7 +5050,7 @@ _jmp_addr_0x0074a271:    test               esi, esi                            
 _jmp_addr_0x0074a278:    {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x0074a278    8b542410
                          push               edx                                            // 0x0074a27c    52
                          mov.s              ecx, ebx                                       // 0x0074a27d    8bcb
-                         call               _jmp_addr_0x00636670                           // 0x0074a27f    e8ecc3eeff
+                         call               ?ToBeDeleted@Object@@UAEXH@Z                   // 0x0074a27f    e8ecc3eeff
                          pop                edi                                            // 0x0074a284    5f
                          pop                ebp                                            // 0x0074a285    5d
                          pop                ebx                                            // 0x0074a286    5b
@@ -6782,7 +6782,7 @@ _jmp_addr_0x0074b705:    {disp8} mov        ecx, dword ptr [esp + 0x14]         
                          push               ecx                                            // 0x0074b709    51
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                    // 0x0074b70a    8b4c240c
                          push               ebp                                            // 0x0074b70e    55
-                         call               _jmp_addr_0x006377c0                           // 0x0074b70f    e8acc0eeff
+                         call               ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z                           // 0x0074b70f    e8acc0eeff
 _jmp_addr_0x0074b714:    pop                ebp                                            // 0x0074b714    5d
                          pop                ebx                                            // 0x0074b715    5b
                          pop                ecx                                            // 0x0074b716    59
@@ -7956,7 +7956,7 @@ _jmp_addr_0x0074c381:    pop                esi                                 
                          push               edi                                            // 0x0074c3a0    57
                          mov.s              esi, ecx                                       // 0x0074c3a1    8bf1
                          push               ebp                                            // 0x0074c3a3    55
-                         call               _jmp_addr_0x0063a8e0                           // 0x0074c3a4    e837e5eeff
+                         call               ?ApplyWaterSpell@Object@@UAEMPAVSpellWater@@@Z // 0x0074c3a4    e837e5eeff
                          fstp               st(0)                                          // 0x0074c3a9    ddd8
                          {disp32} mov       ecx, dword ptr [ebp + 0x000000b4]              // 0x0074c3ab    8b8db4000000
                          {disp8} mov        al, byte ptr [esi + 0x5e]                      // 0x0074c3b1    8a465e

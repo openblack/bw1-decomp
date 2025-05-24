@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x006022c0
 .extern _jmp_addr_0x00602460
 .extern _jmp_addr_0x00603720
-.extern _jmp_addr_0x00639ad0
+.extern ?ProcessInHand@Object@@UAE_NXZ
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x0064ab20
@@ -2236,7 +2236,7 @@ _jmp_addr_0x00729a00:    {disp8} mov        eax, dword ptr [esi + 0x60]         
                          mov.s              ecx, esi                                 // 0x00729a12    8bce
                          call               dword ptr [eax + 0xc]                    // 0x00729a14    ff500c
 _jmp_addr_0x00729a17:    mov.s              ecx, esi                                 // 0x00729a17    8bce
-                         call               _jmp_addr_0x00639ad0                     // 0x00729a19    e8b200f1ff
+                         call               ?ProcessInHand@Object@@UAE_NXZ           // 0x00729a19    e8b200f1ff
                          pop                edi                                      // 0x00729a1e    5f
                          pop                esi                                      // 0x00729a1f    5e
                          add                esp, 0x08                                // 0x00729a20    83c408
