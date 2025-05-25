@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x0052e280
 .extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
 .extern @AllocateMultiChild__13MultiMapFixedFv@4
-.extern _jmp_addr_0x0052f0c0
+.extern ?IsDrawBuilding@MultiMapFixed@@UAE_NXZ
 .extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x0054d920
 .extern @IsMultiplayerGame__5GGameCFv@4
@@ -13968,7 +13968,7 @@ _jmp_addr_0x0052777b:    mov.s              eax, edi                            
                          sbb.s              eax, eax                                             // 0x005277bd    1bc0
                          inc                eax                                                  // 0x005277bf    40
                          ret                                                                     // 0x005277c0    c3
-_jmp_addr_0x005277c1:    {disp32} jmp       _jmp_addr_0x0052f0c0                                 // 0x005277c1    e9fa780000
+_jmp_addr_0x005277c1:    {disp32} jmp       ?IsDrawBuilding@MultiMapFixed@@UAE_NXZ               // 0x005277c1    e9fa780000
                          nop                                                                     // 0x005277c6    90
                          nop                                                                     // 0x005277c7    90
                          nop                                                                     // 0x005277c8    90

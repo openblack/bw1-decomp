@@ -38,8 +38,8 @@
 .extern @__ct__12EffectValuesF11EFFECT_TYPEfP9GameThingfP7GPlayer@24
 .extern _jmp_addr_0x005254c0
 .extern _jmp_addr_0x00525910
-.extern _jmp_addr_0x0052f160
-.extern _jmp_addr_0x0052f210
+.extern ?RemovePotFromStructure@MultiMapFixed@@UAEXPAVPotStructure@@@Z
+.extern ?DoCreatureMimicAfterAddingResource@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@PAVGInterfaceStatus@@@Z
 .extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x00561e10
@@ -7399,7 +7399,7 @@ _jmp_addr_0x0073323e:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp8} jne        _jmp_addr_0x00733217                          // 0x0073324a    75cb
                          push               esi                                           // 0x0073324c    56
                          mov.s              ecx, edi                                      // 0x0073324d    8bcf
-                         call               _jmp_addr_0x0052f160                          // 0x0073324f    e80cbfdfff
+                         call               ?RemovePotFromStructure@MultiMapFixed@@UAEXPAVPotStructure@@@Z                          // 0x0073324f    e80cbfdfff
                          pop                edi                                           // 0x00733254    5f
                          pop                esi                                           // 0x00733255    5e
                          pop                ebp                                           // 0x00733256    5d
@@ -8033,7 +8033,7 @@ _jmp_addr_0x00733804:    mov.s              eax, esi                            
                          push               esi                                           // 0x0073381b    56
                          mov.s              edi, ecx                                      // 0x0073381c    8bf9
                          push               ebx                                           // 0x0073381e    53
-                         call               _jmp_addr_0x0052f210                          // 0x0073381f    e8ecb9dfff
+                         call               ?DoCreatureMimicAfterAddingResource@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@PAVGInterfaceStatus@@@Z                          // 0x0073381f    e8ecb9dfff
                          test               eax, eax                                      // 0x00733824    85c0
                          {disp32} jne       _jmp_addr_0x007338bb                          // 0x00733826    0f858f000000
                          test               ebx, ebx                                      // 0x0073382c    85db

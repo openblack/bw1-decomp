@@ -14,7 +14,7 @@
 .extern _Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
-.extern _jmp_addr_0x0052e2b0
+.extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern _jmp_addr_0x005315a0
 .extern _jmp_addr_0x00595d70
 .extern ?Delete@Object@@UAEXH@Z
@@ -342,6 +342,29 @@
 .globl ?VillagerMustAvoid@Fixed@@UAE_NPAVVillager@@@Z
 .globl ?GetTownArtifact@Fixed@@UAEPAVGameThing@@XZ
 .globl ?IsTownArtifact@Fixed@@UAE_NXZ
+.globl ?IsFootpathLink@MultiMapFixed@@UAE_NXZ
+.globl ?GetFootpathLink@MultiMapFixed@@UAEPAVGFootpathLink@@XZ
+.globl ?CastMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ
+.globl ?IsBeingBuilt@MultiMapFixed@@UAE_NPAVCreature@@@Z
+.globl ?NeedsRepair@MultiMapFixed@@UAE_NPAVCreature@@@Z
+.globl ?AsMultiMapFixed@MultiMapFixed@@UAE_NXZ
+.globl ?IsSolidToNewAbode@MultiMapFixed@@UAE_NXZ
+.globl ?IsPlaytimeStructure@MultiMapFixed@@UAE_NXZ
+.globl ?IsPlaytimeStarted@MultiMapFixed@@UAE_NXZ
+.globl ?AddPlaytimeVillager@MultiMapFixed@@UAEXPAVVillager@@@Z
+.globl ?GetResourceDropPosForComputerPlayer@MultiMapFixed@@UAEXPAUMapCoords@@@Z
+.globl ?GetPercentBuilt@MultiMapFixed@@UAEMXZ
+.globl ?GetPercentRepaired@MultiMapFixed@@UAEMXZ
+.globl ?GetBuildingSiteWood@MultiMapFixed@@UAEIPAI@Z
+.globl ?GetBuildingObject@MultiMapFixed@@UAEPAXXZ
+.globl ?SetPower@MultiMapFixed@@UAEXM@Z
+.globl ?GetResourcePos@MultiMapFixed@@UAEPAUMapCoords@@W4RESOURCE_TYPE@@H@Z
+.globl ?IsPoisonedResource@MultiMapFixed@@UAE_NXZ
+.globl ?GetResourceNearestEdge@MultiMapFixed@@UAEPAUMapCoords@@PAU2@W4RESOURCE_TYPE@@PAVObject@@H@Z
+.globl ?AddToPlayer@MultiMapFixed@@UAEXXZ
+.globl ?RemoveFromPlayer@MultiMapFixed@@UAEXXZ
+.globl ?CalulateAmountOverMaximum@MultiMapFixed@@UAEHW4RESOURCE_TYPE@@@Z
+.globl ?GetCollideData@MultiMapFixed@@UAEPAVNewCollide@@XZ
 
 @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36:    {disp8} mov        eax, dword ptr [esp + 0x1c]              // 0x00401350    8b44241c
                          {disp8} mov        edx, dword ptr [esp + 0x14]              // 0x00401354    8b542414
@@ -505,6 +528,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          setne              al                                       // 0x00401487    0f95c0
                          ret                                                         // 0x0040148a    c3
                          call               _jmp_addr_0x00401879                     // 0x0040148b    e8e9030000
+?AsMultiMapFixed@MultiMapFixed@@UAE_NXZ:
                          mov.s              eax, ecx                                 // 0x00401490    8bc1
                          ret                                                         // 0x00401492    c3
                          nop                                                         // 0x00401493    90
@@ -520,6 +544,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040149d    90
                          nop                                                         // 0x0040149e    90
                          nop                                                         // 0x0040149f    90
+?IsPlaytimeStructure@MultiMapFixed@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004014a0    33c0
                          ret                                                         // 0x004014a2    c3
                          nop                                                         // 0x004014a3    90
@@ -535,6 +560,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004014ad    90
                          nop                                                         // 0x004014ae    90
                          nop                                                         // 0x004014af    90
+?IsPlaytimeStarted@MultiMapFixed@@UAE_NXZ:
                          xor.s              eax, eax                                 // 0x004014b0    33c0
                          ret                                                         // 0x004014b2    c3
                          nop                                                         // 0x004014b3    90
@@ -550,6 +576,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004014bd    90
                          nop                                                         // 0x004014be    90
                          nop                                                         // 0x004014bf    90
+?AddPlaytimeVillager@MultiMapFixed@@UAEXPAVVillager@@@Z:
                          xor.s              eax, eax                                 // 0x004014c0    33c0
                          ret                0x0004                                   // 0x004014c2    c20400
                          nop                                                         // 0x004014c5    90
@@ -563,6 +590,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004014cd    90
                          nop                                                         // 0x004014ce    90
                          nop                                                         // 0x004014cf    90
+?GetResourceDropPosForComputerPlayer@MultiMapFixed@@UAEXPAUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x004014d0    8b442404
                          add                ecx, 0x14                                // 0x004014d4    83c114
                          push               esi                                      // 0x004014d7    56
@@ -577,6 +605,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          ret                0x0008                                   // 0x004014eb    c20800
                          nop                                                         // 0x004014ee    90
                          nop                                                         // 0x004014ef    90
+?GetPercentBuilt@MultiMapFixed@@UAEMXZ:
                          {disp8} fld        dword ptr [ecx + 0x5c]                   // 0x004014f0    d9415c
                          ret                                                         // 0x004014f3    c3
                          nop                                                         // 0x004014f4    90
@@ -591,6 +620,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004014fd    90
                          nop                                                         // 0x004014fe    90
                          nop                                                         // 0x004014ff    90
+?GetPercentRepaired@MultiMapFixed@@UAEMXZ:
                          mov                eax, dword ptr [ecx]                     // 0x00401500    8b01
                          jmp                dword ptr [eax + 0x11c]                  // 0x00401502    ffa01c010000
                          nop                                                         // 0x00401508    90
@@ -601,6 +631,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040150d    90
                          nop                                                         // 0x0040150e    90
                          nop                                                         // 0x0040150f    90
+?GetBuildingSiteWood@MultiMapFixed@@UAEIPAI@Z:
                          xor.s              eax, eax                                 // 0x00401510    33c0
                          ret                0x0004                                   // 0x00401512    c20400
                          nop                                                         // 0x00401515    90
@@ -614,6 +645,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040151d    90
                          nop                                                         // 0x0040151e    90
                          nop                                                         // 0x0040151f    90
+?GetBuildingObject@MultiMapFixed@@UAEPAXXZ:
                          mov.s              eax, ecx                                 // 0x00401520    8bc1
                          ret                                                         // 0x00401522    c3
                          nop                                                         // 0x00401523    90
@@ -629,6 +661,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040152d    90
                          nop                                                         // 0x0040152e    90
                          nop                                                         // 0x0040152f    90
+?IsSolidToNewAbode@MultiMapFixed@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00401530    b801000000
                          ret                                                         // 0x00401535    c3
                          nop                                                         // 0x00401536    90
@@ -641,6 +674,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040153d    90
                          nop                                                         // 0x0040153e    90
                          nop                                                         // 0x0040153f    90
+?CastMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ:
                          mov.s              eax, ecx                                 // 0x00401540    8bc1
                          ret                                                         // 0x00401542    c3
                          nop                                                         // 0x00401543    90
@@ -656,6 +690,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040154d    90
                          nop                                                         // 0x0040154e    90
                          nop                                                         // 0x0040154f    90
+?SetPower@MultiMapFixed@@UAEXM@Z:
                          ret                0x0004                                   // 0x00401550    c20400
                          nop                                                         // 0x00401553    90
                          nop                                                         // 0x00401554    90
@@ -670,6 +705,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040155d    90
                          nop                                                         // 0x0040155e    90
                          nop                                                         // 0x0040155f    90
+?GetResourcePos@MultiMapFixed@@UAEPAUMapCoords@@W4RESOURCE_TYPE@@H@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00401560    8b442404
                          add                ecx, 0x14                                // 0x00401564    83c114
                          push               esi                                      // 0x00401567    56
@@ -684,6 +720,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          ret                0x000c                                   // 0x0040157b    c20c00
                          nop                                                         // 0x0040157e    90
                          nop                                                         // 0x0040157f    90
+?IsPoisonedResource@MultiMapFixed@@UAE_NXZ:
                          xor.s              al, al                                   // 0x00401580    32c0
                          ret                0x0004                                   // 0x00401582    c20400
                          nop                                                         // 0x00401585    90
@@ -697,6 +734,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040158d    90
                          nop                                                         // 0x0040158e    90
                          nop                                                         // 0x0040158f    90
+?GetResourceNearestEdge@MultiMapFixed@@UAEPAUMapCoords@@PAU2@W4RESOURCE_TYPE@@PAVObject@@H@Z:
                          {disp8} mov        edx, dword ptr [esp + 0x08]              // 0x00401590    8b542408
                          mov                eax, dword ptr [ecx]                     // 0x00401594    8b01
                          push               esi                                      // 0x00401596    56
@@ -709,6 +747,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          pop                esi                                      // 0x004015a7    5e
                          ret                0x0010                                   // 0x004015a8    c21000
                          call               _jmp_addr_0x00401879                     // 0x004015ab    e8c9020000
+?AddToPlayer@MultiMapFixed@@UAEXXZ:
                          ret                                                         // 0x004015b0    c3
                          nop                                                         // 0x004015b1    90
                          nop                                                         // 0x004015b2    90
@@ -725,6 +764,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004015bd    90
                          nop                                                         // 0x004015be    90
                          nop                                                         // 0x004015bf    90
+?RemoveFromPlayer@MultiMapFixed@@UAEXXZ:
                          ret                                                         // 0x004015c0    c3
                          nop                                                         // 0x004015c1    90
                          nop                                                         // 0x004015c2    90
@@ -741,6 +781,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004015cd    90
                          nop                                                         // 0x004015ce    90
                          nop                                                         // 0x004015cf    90
+?CalulateAmountOverMaximum@MultiMapFixed@@UAEHW4RESOURCE_TYPE@@@Z:
                          xor.s              eax, eax                                 // 0x004015d0    33c0
                          ret                0x0004                                   // 0x004015d2    c20400
                          nop                                                         // 0x004015d5    90
@@ -754,6 +795,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004015dd    90
                          nop                                                         // 0x004015de    90
                          nop                                                         // 0x004015df    90
+?IsBeingBuilt@MultiMapFixed@@UAE_NPAVCreature@@@Z:
                          mov                eax, dword ptr [ecx]                     // 0x004015e0    8b01
                          call               dword ptr [eax + 0x890]                  // 0x004015e2    ff9090080000
                          dec                eax                                      // 0x004015e8    48
@@ -775,12 +817,14 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x004015fd    90
                          nop                                                         // 0x004015fe    90
                          nop                                                         // 0x004015ff    90
+?NeedsRepair@MultiMapFixed@@UAE_NPAVCreature@@@Z:
                          mov                eax, dword ptr [ecx]                     // 0x00401600    8b01
                          call               dword ptr [eax + 0x88c]                  // 0x00401602    ff908c080000
                          neg                eax                                      // 0x00401608    f7d8
                          sbb.s              eax, eax                                 // 0x0040160a    1bc0
                          inc                eax                                      // 0x0040160c    40
                          ret                0x0004                                   // 0x0040160d    c20400
+?IsFootpathLink@MultiMapFixed@@UAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00401610    b801000000
                          ret                                                         // 0x00401615    c3
                          nop                                                         // 0x00401616    90
@@ -793,6 +837,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040161d    90
                          nop                                                         // 0x0040161e    90
                          nop                                                         // 0x0040161f    90
+?GetFootpathLink@MultiMapFixed@@UAEPAVGFootpathLink@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x64]              // 0x00401620    8b4164
                          ret                                                         // 0x00401623    c3
                          nop                                                         // 0x00401624    90
@@ -807,6 +852,7 @@ CanBeFrighteningToCreature__11FixedObjectFP8Creature:
                          nop                                                         // 0x0040162d    90
                          nop                                                         // 0x0040162e    90
                          nop                                                         // 0x0040162f    90
+?GetCollideData@MultiMapFixed@@UAEPAVNewCollide@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x78]              // 0x00401630    8b4178
                          ret                                                         // 0x00401633    c3
                          nop                                                         // 0x00401634    90
@@ -5357,7 +5403,7 @@ _jmp_addr_0x00402c98:    mov.s              ecx, esi                            
                          {disp8} mov        eax, dword ptr [esp + 0x0c]              // 0x00402c9f    8b44240c
                          push               eax                                      // 0x00402ca3    50
                          mov.s              ecx, esi                                 // 0x00402ca4    8bce
-                         call               _jmp_addr_0x0052e2b0                     // 0x00402ca6    e805b61200
+                         call               ?ToBeDeleted@MultiMapFixed@@UAEXH@Z      // 0x00402ca6    e805b61200
                          pop                edi                                      // 0x00402cab    5f
                          pop                esi                                      // 0x00402cac    5e
                          ret                0x0004                                   // 0x00402cad    c20400

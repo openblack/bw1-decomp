@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00422750
 .extern _jmp_addr_0x00436970
 .extern _jmp_addr_0x0052e280
-.extern _jmp_addr_0x0052f250
+.extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
 .extern @Read__8LHOSFileFPvUlPUl@20
@@ -41,7 +41,7 @@ start_0x00422aa0_0x00423540:
                          mov.s              edi, ecx                                      // 0x00422aa7    8bf9
                          push               esi                                           // 0x00422aa9    56
                          {disp8} mov        dword ptr [esp + 0x0c], edi                   // 0x00422aaa    897c240c
-                         call               _jmp_addr_0x0052f250                          // 0x00422aae    e89dc71000
+                         call               ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z    // 0x00422aae    e89dc71000
                          test               eax, eax                                      // 0x00422ab3    85c0
                          {disp32} je        _jmp_addr_0x00422bae                          // 0x00422ab5    0f84f3000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x00422abb    a190c9be00

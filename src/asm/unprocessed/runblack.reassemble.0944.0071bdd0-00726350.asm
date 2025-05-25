@@ -52,7 +52,7 @@
 .extern _jmp_addr_0x0050dda0
 .extern _jmp_addr_0x0050e020
 .extern _SetMessage__6GDebugFUsPce
-.extern _jmp_addr_0x00518090
+.extern ?Draw@MultiMapFixed@@UAEXXZ
 .extern _jmp_addr_0x00518bf0
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x00519960
@@ -69,9 +69,9 @@
 .extern @__ct__13MultiMapFixedFv@4
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
-.extern _jmp_addr_0x0052e2b0
+.extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
-.extern _jmp_addr_0x0052f250
+.extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
 .extern _jmp_addr_0x005399e0
@@ -10821,7 +10821,7 @@ _jmp_addr_0x00722a19:    {disp8} lea        ecx, dword ptr [esp + 0x04]         
                          call               _jmp_addr_0x00519960                                 // 0x00722a55    e8066fdfff
                          add                esp, 0x0c                                            // 0x00722a5a    83c40c
 _jmp_addr_0x00722a5d:    mov.s              ecx, esi                                             // 0x00722a5d    8bce
-                         call               _jmp_addr_0x00518090                                 // 0x00722a5f    e82c56dfff
+                         call               ?Draw@MultiMapFixed@@UAEXXZ                          // 0x00722a5f    e82c56dfff
                          pop                esi                                                  // 0x00722a64    5e
                          add                esp, 0x48                                            // 0x00722a65    83c448
                          ret                                                                     // 0x00722a68    c3
@@ -15800,7 +15800,7 @@ _jmp_addr_0x007260b9:    {disp8} mov        ecx, dword ptr [esi + 0x7c]         
 _jmp_addr_0x007260ce:    {disp8} mov        ecx, dword ptr [esp + 0x08]                          // 0x007260ce    8b4c2408
                          push               ecx                                                  // 0x007260d2    51
                          mov.s              ecx, esi                                             // 0x007260d3    8bce
-                         call               _jmp_addr_0x0052e2b0                                 // 0x007260d5    e8d681e0ff
+                         call               ?ToBeDeleted@MultiMapFixed@@UAEXH@Z                  // 0x007260d5    e8d681e0ff
                          pop                esi                                                  // 0x007260da    5e
                          ret                0x0004                                               // 0x007260db    c20400
                          nop                                                                     // 0x007260de    90

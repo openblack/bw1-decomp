@@ -39,11 +39,11 @@
 .extern _jmp_addr_0x005198f0
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
-.extern _jmp_addr_0x0052e2b0
+.extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
-.extern _jmp_addr_0x0052f250
+.extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
-.extern _jmp_addr_0x0052f5e0
+.extern ?ReduceLife@MultiMapFixed@@UAEXMPAVGPlayer@@@Z
 .extern _jmp_addr_0x00550e40
 .extern _jmp_addr_0x005514d0
 .extern _jmp_addr_0x00555270
@@ -2481,7 +2481,7 @@ _jmp_addr_0x00737c12:    mov.s              ecx, esi                            
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x00737c28    8b442408
                          push               eax                                            // 0x00737c2c    50
                          mov.s              ecx, esi                                       // 0x00737c2d    8bce
-                         call               _jmp_addr_0x0052e2b0                           // 0x00737c2f    e87c66dfff
+                         call               ?ToBeDeleted@MultiMapFixed@@UAEXH@Z            // 0x00737c2f    e87c66dfff
                          pop                esi                                            // 0x00737c34    5e
                          ret                0x0004                                         // 0x00737c35    c20400
                          nop                                                               // 0x00737c38    90
@@ -2549,7 +2549,7 @@ _jmp_addr_0x00737cae:    {disp8} mov        edx, dword ptr [esp + 0x08]         
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00737cb2    8b442404
                          push               edx                                            // 0x00737cb6    52
                          push               eax                                            // 0x00737cb7    50
-                         call               _jmp_addr_0x0052f5e0                           // 0x00737cb8    e82379dfff
+                         call               ?ReduceLife@MultiMapFixed@@UAEXMPAVGPlayer@@@Z // 0x00737cb8    e82379dfff
                          ret                0x0008                                         // 0x00737cbd    c20800
 _Create__11TotemStatueFP10TownCentre:    sub                esp, 0x0c                                      // 0x00737cc0    83ec0c
                          push               esi                                            // 0x00737cc3    56
@@ -3458,7 +3458,7 @@ _jmp_addr_0x007386f6:    mov                eax, 0x00000001                     
                          push               edi                                            // 0x00738705    57
                          mov.s              edi, ecx                                       // 0x00738706    8bf9
                          push               esi                                            // 0x00738708    56
-                         call               _jmp_addr_0x0052f250                           // 0x00738709    e8426bdfff
+                         call               ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z     // 0x00738709    e8426bdfff
                          test               eax, eax                                       // 0x0073870e    85c0
                          {disp32} je        _jmp_addr_0x007387ee                           // 0x00738710    0f84d8000000
                          {disp8} mov        eax, dword ptr [edi + 0x7c]                    // 0x00738716    8b477c

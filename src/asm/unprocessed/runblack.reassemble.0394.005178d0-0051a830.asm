@@ -78,7 +78,7 @@
 .globl _jmp_addr_0x00517f10
 .globl _jmp_addr_0x00517f90
 .globl _jmp_addr_0x00518050
-.globl _jmp_addr_0x00518090
+.extern ?Draw@MultiMapFixed@@UAEXXZ
 .globl _jmp_addr_0x00518100
 .globl _jmp_addr_0x00518150
 .globl _jmp_addr_0x00518640
@@ -89,6 +89,7 @@
 .globl _jmp_addr_0x00519960
 .globl _jmp_addr_0x00519ad0
 .globl ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
+.globl ?Draw@MultiMapFixed@@UAEXXZ
 
 start_0x005178d0_0x0051a830:
 // Snippet: asm, [0x005178d0, 0x0051a806)
@@ -569,7 +570,7 @@ _jmp_addr_0x00517f23:    push               ebx                                 
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x00517f76    8b4e40
                          {disp8} mov        dword ptr [ecx + 0x64], 0x00000001            // 0x00517f79    c7416401000000
 _jmp_addr_0x00517f80:    mov.s              ecx, esi                                      // 0x00517f80    8bce
-                         call               _jmp_addr_0x00518090                          // 0x00517f82    e809010000
+                         call               ?Draw@MultiMapFixed@@UAEXXZ                   // 0x00517f82    e809010000
                          pop                esi                                           // 0x00517f87    5e
                          ret                                                              // 0x00517f88    c3
                          nop                                                              // 0x00517f89    90
@@ -681,7 +682,8 @@ _jmp_addr_0x00518050:    push               ebx                                 
                          nop                                                              // 0x0051808d    90
                          nop                                                              // 0x0051808e    90
                          nop                                                              // 0x0051808f    90
-_jmp_addr_0x00518090:    push               ebx                                           // 0x00518090    53
+?Draw@MultiMapFixed@@UAEXXZ:
+                         push               ebx                                           // 0x00518090    53
                          mov.s              ebx, ecx                                      // 0x00518091    8bd9
                          mov                eax, dword ptr [ebx]                          // 0x00518093    8b03
                          call               dword ptr [eax + 0x8a4]                       // 0x00518095    ff90a4080000
@@ -1197,7 +1199,7 @@ _jmp_addr_0x00518670:    {disp32} mov       ecx, dword ptr [esi + 0x0000039c]   
                          nop                                                              // 0x0051868d    90
                          nop                                                              // 0x0051868e    90
                          nop                                                              // 0x0051868f    90
-                         {disp32} jmp       _jmp_addr_0x00518090                          // 0x00518690    e9fbf9ffff
+                         {disp32} jmp       ?Draw@MultiMapFixed@@UAEXXZ                   // 0x00518690    e9fbf9ffff
                          nop                                                              // 0x00518695    90
                          nop                                                              // 0x00518696    90
                          nop                                                              // 0x00518697    90
