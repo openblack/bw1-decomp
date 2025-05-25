@@ -242,6 +242,7 @@
 .globl ?CanBePutInWoodPile@Object@@UAE_NPAVCreature@@@Z
 .globl ?CanBeBroughtBackToCitadel@Object@@UAE_NPAVCreature@@@Z
 .globl ?CanBeKickedByCreature@Object@@UAE_NPAVCreature@@@Z
+.globl ?IsBuildingWhichIsBeingBuilt@MultiMapFixed@@UAE_NPAVCreature@@@Z
 
 start_0x004e1b40_0x004e9f40:
 // Snippet: asm, [0x004e1b40, 0x004e9efd)
@@ -3980,6 +3981,7 @@ _jmp_addr_0x004e41ae:    pop                edi                                 
                          nop                                                                // 0x004e41bd    90
                          nop                                                                // 0x004e41be    90
                          nop                                                                // 0x004e41bf    90
+?IsBuildingWhichIsBeingBuilt@MultiMapFixed@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e41c0    56
                          mov.s              esi, ecx                                        // 0x004e41c1    8bf1
                          mov                eax, dword ptr [esi]                            // 0x004e41c3    8b06

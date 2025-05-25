@@ -18,11 +18,11 @@
 .extern _jmp_addr_0x00437eb0
 .extern @InsertMapObject__13MultiMapFixedFv@4
 .extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
-.extern _jmp_addr_0x0052ebb0
-.extern _jmp_addr_0x0052ec70
-.extern _jmp_addr_0x0052ef10
-.extern _jmp_addr_0x0052f5e0
-.extern _jmp_addr_0x0052f700
+.extern ?Built@MultiMapFixed@@UAE_NXZ
+.extern ?Repaired@MultiMapFixed@@UAE_NXZ
+.extern ?SaveObject@MultiMapFixed@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z
+.extern ?ReduceLife@MultiMapFixed@@UAEXMPAVGPlayer@@@Z
+.extern ?Process@MultiMapFixed@@UAEIXZ
 .extern @__ct__9GFootpathFP16GameThingWithPosP16GameThingWithPos@16
 .extern @AddPos__9GFootpathFRC9MapCoords@12
 .extern _AttemptRerenderFootpathWithCreatureRP__9GFootpathFP13GFootpathNodeP13GFootpathNodeRC9MapCoords
@@ -218,6 +218,7 @@
 .globl ?IsObject@GameThingWithPos@@UBE_NXZ
 .globl ?GetQueryFirstEnumText@GameThingWithPos@@UAE?AW4HELP_TEXT@@XZ
 .globl ?GetQueryLastEnumText@GameThingWithPos@@UAE?AW4HELP_TEXT@@XZ
+.globl ?IsAbode@GameThingWithPos@@UAE_NXZ
 
 start_0x00403130_0x004060c0:
 // Snippet: asm, [0x00403130, 0x00406044)
@@ -2133,7 +2134,7 @@ _jmp_addr_0x0040442f:    pop                edi                                 
                          nop                                                              // 0x0040443f    90
 _jmp_addr_0x00404440:    push               esi                                           // 0x00404440    56
                          mov.s              esi, ecx                                      // 0x00404441    8bf1
-                         call               _jmp_addr_0x0052f700                          // 0x00404443    e8b8b21200
+                         call               ?Process@MultiMapFixed@@UAEIXZ                // 0x00404443    e8b8b21200
                          mov                eax, dword ptr [esi]                          // 0x00404448    8b06
                          mov.s              ecx, esi                                      // 0x0040444a    8bce
                          call               dword ptr [eax + 0x89c]                       // 0x0040444c    ff909c080000
@@ -2446,7 +2447,7 @@ _jmp_addr_0x00404712:    xor.s              eax, eax                            
                          nop                                                              // 0x0040471f    90
 _jmp_addr_0x00404720:    push               esi                                           // 0x00404720    56
                          mov.s              esi, ecx                                      // 0x00404721    8bf1
-                         call               _jmp_addr_0x0052ebb0                          // 0x00404723    e888a41200
+                         call               ?Built@MultiMapFixed@@UAE_NXZ                 // 0x00404723    e888a41200
                          mov                eax, dword ptr [esi]                          // 0x00404728    8b06
                          mov.s              ecx, esi                                      // 0x0040472a    8bce
                          call               dword ptr [eax + 0x48]                        // 0x0040472c    ff5048
@@ -2509,7 +2510,7 @@ _jmp_addr_0x0040479f:    mov                eax, 0x00000001                     
                          nop                                                              // 0x004047af    90
                          push               esi                                           // 0x004047b0    56
                          mov.s              esi, ecx                                      // 0x004047b1    8bf1
-                         call               _jmp_addr_0x0052ec70                          // 0x004047b3    e8b8a41200
+                         call               ?Repaired@MultiMapFixed@@UAE_NXZ              // 0x004047b3    e8b8a41200
                          mov                eax, dword ptr [esi]                          // 0x004047b8    8b06
                          mov.s              ecx, esi                                      // 0x004047ba    8bce
                          call               dword ptr [eax + 0x48]                        // 0x004047bc    ff5048
@@ -5284,7 +5285,7 @@ _jmp_addr_0x00405d18:    call               _jmp_addr_0x00715130                
                          push               ebx                                           // 0x00405d50    53
                          push               edi                                           // 0x00405d51    57
                          mov.s              ecx, esi                                      // 0x00405d52    8bce
-                         call               _jmp_addr_0x0052ef10                          // 0x00405d54    e8b7911200
+                         call               ?SaveObject@MultiMapFixed@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z                          // 0x00405d54    e8b7911200
                          pop                edi                                           // 0x00405d59    5f
                          pop                ebx                                           // 0x00405d5a    5b
                          pop                esi                                           // 0x00405d5b    5e
@@ -5343,7 +5344,7 @@ _jmp_addr_0x00405dc0:    {disp8} mov        ebx, dword ptr [esp + 0x18]         
                          push               ebx                                           // 0x00405dc8    53
                          push               eax                                           // 0x00405dc9    50
                          mov.s              ecx, esi                                      // 0x00405dca    8bce
-                         call               _jmp_addr_0x0052f5e0                          // 0x00405dcc    e80f981200
+                         call               ?ReduceLife@MultiMapFixed@@UAEXMPAVGPlayer@@@Z// 0x00405dcc    e80f981200
                          {disp8} fst        dword ptr [esp + 0x18]                        // 0x00405dd1    d9542418
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]              // 0x00405dd5    d81d90a38a00
                          fnstsw             ax                                            // 0x00405ddb    dfe0

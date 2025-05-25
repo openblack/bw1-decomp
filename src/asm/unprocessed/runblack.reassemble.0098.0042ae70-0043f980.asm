@@ -22,13 +22,13 @@
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x00517f10
-.extern _jmp_addr_0x00518090
+.extern ?Draw@MultiMapFixed@@UAEXXZ
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
-.extern _jmp_addr_0x0052e2b0
+.extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern _jmp_addr_0x0052e3f0
 .extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
-.extern _jmp_addr_0x0052f250
+.extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @ReleaseCollideData__13MultiMapFixedFv@4
 .extern _jmp_addr_0x00531c20
@@ -395,6 +395,9 @@
 .globl ___dt__16LHReleasedOSFileFv
 .globl _Load__9BigForestFR10GameOSFile
 .globl ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
+.globl ?IsRepaired@MultiMapFixed@@UAE_NXZ
+.globl ?IsBuilt@MultiMapFixed@@UAE_NXZ
+.globl ?ConvertToPlanned@MultiMapFixed@@UAEPAVPlannedMultiMapFixed@@XZ
 
 start_0x0042ae70_0x0043f980:
 // Snippet: asm, [0x0042ae70, 0x0043f967)
@@ -20869,6 +20872,7 @@ _jmp_addr_0x00438d5e:    xor.s              eax, eax                            
                          pop                esi                                                  // 0x00438d6b    5e
                          ret                0x0014                                               // 0x00438d6c    c21400
                          nop                                                                     // 0x00438d6f    90
+?IsRepaired@MultiMapFixed@@UAE_NXZ:
                          mov                eax, 0x00000001                                      // 0x00438d70    b801000000
                          ret                                                                     // 0x00438d75    c3
                          nop                                                                     // 0x00438d76    90
@@ -20881,6 +20885,7 @@ _jmp_addr_0x00438d5e:    xor.s              eax, eax                            
                          nop                                                                     // 0x00438d7d    90
                          nop                                                                     // 0x00438d7e    90
                          nop                                                                     // 0x00438d7f    90
+?IsBuilt@MultiMapFixed@@UAE_NXZ:
                          mov                eax, 0x00000001                                      // 0x00438d80    b801000000
                          ret                                                                     // 0x00438d85    c3
                          nop                                                                     // 0x00438d86    90
@@ -20893,6 +20898,7 @@ _jmp_addr_0x00438d5e:    xor.s              eax, eax                            
                          nop                                                                     // 0x00438d8d    90
                          nop                                                                     // 0x00438d8e    90
                          nop                                                                     // 0x00438d8f    90
+?ConvertToPlanned@MultiMapFixed@@UAEPAVPlannedMultiMapFixed@@XZ:
                          xor.s              eax, eax                                             // 0x00438d90    33c0
                          ret                                                                     // 0x00438d92    c3
                          nop                                                                     // 0x00438d93    90
@@ -21058,7 +21064,7 @@ _jmp_addr_0x00438e9c:    {disp32} mov       eax, dword ptr [ecx + 0x00000080]   
                          {disp8} mov        dword ptr [eax + 0x38], 0x00000000                   // 0x00438ea7    c7403800000000
 _jmp_addr_0x00438eae:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00438eae    8b442404
                          push               eax                                                  // 0x00438eb2    50
-                         call               _jmp_addr_0x0052e2b0                                 // 0x00438eb3    e8f8530f00
+                         call               ?ToBeDeleted@MultiMapFixed@@UAEXH@Z                  // 0x00438eb3    e8f8530f00
                          ret                0x0004                                               // 0x00438eb8    c20400
                          call               _jmp_addr_0x00401879                                 // 0x00438ebb    e8b989fcff
 _Create__9BigForestFRC9MapCoordsPC14GBigForestInfoUlff:    sub                esp, 0x08                                            // 0x00438ec0    83ec08
@@ -21133,7 +21139,7 @@ _jmp_addr_0x00438f3b:    pop                edi                                 
                          nop                                                                     // 0x00438f5d    90
                          nop                                                                     // 0x00438f5e    90
                          nop                                                                     // 0x00438f5f    90
-                         {disp32} jmp       _jmp_addr_0x00518090                                 // 0x00438f60    e92bf10d00
+                         {disp32} jmp       ?Draw@MultiMapFixed@@UAEXXZ                          // 0x00438f60    e92bf10d00
                          nop                                                                     // 0x00438f65    90
                          nop                                                                     // 0x00438f66    90
                          nop                                                                     // 0x00438f67    90
@@ -21630,7 +21636,7 @@ _jmp_addr_0x0043945f:    pop                esi                                 
                          push               edi                                                  // 0x00439475    57
                          mov.s              edi, ecx                                             // 0x00439476    8bf9
                          push               esi                                                  // 0x00439478    56
-                         call               _jmp_addr_0x0052f250                                 // 0x00439479    e8d25d0f00
+                         call               ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z           // 0x00439479    e8d25d0f00
                          test               eax, eax                                             // 0x0043947e    85c0
                          {disp8} je         _jmp_addr_0x004394d9                                 // 0x00439480    7457
                          {disp32} mov       eax, dword ptr [edi + 0x00000080]                    // 0x00439482    8b8780000000

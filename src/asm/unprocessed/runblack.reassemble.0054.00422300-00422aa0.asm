@@ -13,7 +13,7 @@
 .extern @SetPosition__10LH3DObjectFRC7LHPointff@16
 .extern _jmp_addr_0x00527700
 .extern _jmp_addr_0x00527710
-.extern _jmp_addr_0x0052e2b0
+.extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern @AllocateMultiChild__13MultiMapFixedFv@4
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x0056fef0
@@ -278,7 +278,7 @@ _jmp_addr_0x004225de:    test              esi, esi                             
 _jmp_addr_0x004225e5:    {disp8} mov       ecx, dword ptr [esp + 0x10]                   // 0x004225e5    8b4c2410
                          push              ecx                                           // 0x004225e9    51
                          mov.s             ecx, ebp                                      // 0x004225ea    8bcd
-                         call              _jmp_addr_0x0052e2b0                          // 0x004225ec    e8bfbc1000
+                         call              ?ToBeDeleted@MultiMapFixed@@UAEXH@Z           // 0x004225ec    e8bfbc1000
                          pop               edi                                           // 0x004225f1    5f
                          pop               ebp                                           // 0x004225f2    5d
                          pop               ebx                                           // 0x004225f3    5b

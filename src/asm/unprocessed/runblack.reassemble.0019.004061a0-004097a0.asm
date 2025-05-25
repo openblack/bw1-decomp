@@ -32,11 +32,11 @@
 .extern _jmp_addr_0x00524fe0
 .extern _jmp_addr_0x00525720
 .extern _jmp_addr_0x00525950
-.extern _jmp_addr_0x0052eca0
-.extern _jmp_addr_0x0052ece0
-.extern _jmp_addr_0x0052ef70
-.extern _jmp_addr_0x0052f0d0
-.extern _jmp_addr_0x0052f250
+.extern ?GetInfluence@MultiMapFixed@@UAEMXZ
+.extern ?GetDesireToBeRepaired@MultiMapFixed@@UAEMXZ
+.extern ?IsFunctional@MultiMapFixed@@UAE_NXZ
+.extern ?GetDiscipleStateIfInteractedWith@MultiMapFixed@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
+.extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @GetCamera__5GGameFv@4
 .extern @MyInterface__5GGameFv@4
@@ -198,7 +198,7 @@ start_0x004061a0_0x004097a0:
                          call               dword ptr [__imp__timeKillEvent@4]            // 0x004061fa    ff1590988a00
                          push               esi                                           // 0x00406200    56
                          mov.s              esi, ecx                                      // 0x00406201    8bf1
-                         call               _jmp_addr_0x0052ef70                          // 0x00406203    e8688d1200
+                         call               ?IsFunctional@MultiMapFixed@@UAE_NXZ          // 0x00406203    e8688d1200
                          cmp                eax, 0x01                                     // 0x00406208    83f801
                          {disp8} jne        _jmp_addr_0x00406222                          // 0x0040620b    7515
                          mov                eax, dword ptr [esi]                          // 0x0040620d    8b06
@@ -829,7 +829,7 @@ _jmp_addr_0x00406959:    pop                edi                                 
                          test               eax, eax                                      // 0x004069a5    85c0
                          {disp8} je         _jmp_addr_0x004069b3                          // 0x004069a7    740a
 _jmp_addr_0x004069a9:    mov.s              ecx, esi                                      // 0x004069a9    8bce
-                         call               _jmp_addr_0x0052ece0                          // 0x004069ab    e830831200
+                         call               ?GetDesireToBeRepaired@MultiMapFixed@@UAEMXZ  // 0x004069ab    e830831200
                          pop                edi                                           // 0x004069b0    5f
                          pop                esi                                           // 0x004069b1    5e
                          ret                                                              // 0x004069b2    c3
@@ -893,7 +893,7 @@ _jmp_addr_0x00406a10:    push               ecx                                 
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x00406a13    8b742410
                          mov.s              ebx, ecx                                      // 0x00406a17    8bd9
                          push               esi                                           // 0x00406a19    56
-                         call               _jmp_addr_0x0052f250                          // 0x00406a1a    e831881200
+                         call               ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z    // 0x00406a1a    e831881200
                          test               eax, eax                                      // 0x00406a1f    85c0
                          {disp32} je        _jmp_addr_0x00406d09                          // 0x00406a21    0f84e2020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x00406a27    a190c9be00
@@ -1524,7 +1524,7 @@ _jmp_addr_0x00407170:    push               ebx                                 
                          push               ebp                                           // 0x0040717c    55
                          mov.s              esi, ecx                                      // 0x0040717d    8bf1
                          push               edi                                           // 0x0040717f    57
-                         call               _jmp_addr_0x0052f0d0                          // 0x00407180    e84b7f1200
+                         call               ?GetDiscipleStateIfInteractedWith@MultiMapFixed@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z                          // 0x00407180    e84b7f1200
                          mov.s              ebx, eax                                      // 0x00407185    8bd8
                          test               ebx, ebx                                      // 0x00407187    85db
                          {disp8} jne        _jmp_addr_0x004071f0                          // 0x00407189    7565
@@ -1658,7 +1658,7 @@ _jmp_addr_0x0040725a:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          sub                esp, 0x08                                     // 0x004072a0    83ec08
                          push               esi                                           // 0x004072a3    56
                          mov.s              esi, ecx                                      // 0x004072a4    8bf1
-                         call               _jmp_addr_0x0052eca0                          // 0x004072a6    e8f5791200
+                         call               ?GetInfluence@MultiMapFixed@@UAEMXZ           // 0x004072a6    e8f5791200
                          {disp8} fstp       dword ptr [esp + 0x08]                        // 0x004072ab    d95c2408
                          mov.s              ecx, esi                                      // 0x004072af    8bce
                          call               _jmp_addr_0x004070d0                          // 0x004072b1    e81afeffff
