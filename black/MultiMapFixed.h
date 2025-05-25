@@ -91,7 +91,7 @@ struct MultiMapFixedVftable
   uint32_t (__fastcall* DoResourceAdding)(struct MultiMapFixed* this, const void* edx, enum RESOURCE_TYPE type, struct GInterfaceStatus* iface, bool param_3, struct MapCoords* param_4, int param_5);
   uint32_t (__fastcall* DoResourceRemoving)(struct MultiMapFixed* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* iface, bool param_4);
   int (__fastcall* CalulateAmountOverMaximum)(struct MultiMapFixed* this, const void* edx, enum RESOURCE_TYPE type);
-  bool (__fastcall* IsAbode)(struct MultiMapFixed* this);  /* 0x8f0 */
+  void (__fastcall* SetTown)(struct MultiMapFixed* this, const void* edx, struct Town* town);  /* 0x8f0 */
   void (__fastcall* RemovePotFromStructure)(struct MultiMapFixed* this, const void* edx, struct PotStructure* structure);
   bool (__fastcall* GetShouldNotBeAddedToPlanned)(struct MultiMapFixed* this);
   void (__fastcall* SetShouldNotBeAddedToPlanned)(struct MultiMapFixed* this, const void* edx, bool value);
