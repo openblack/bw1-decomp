@@ -167,6 +167,7 @@
 .globl _globl_ct_0x004d4220
 .globl _globl_ct_0x004d4250
 .globl ?GetHowMuchCreatureWantsToLookAtMe@Fixed@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@Abode@@UAEMXZ
 
 start_0x004d0a20_0x004d63f0:
 // Snippet: asm, [0x004d0a20, 0x004d63a1)
@@ -1643,6 +1644,7 @@ _jmp_addr_0x004d1b05:    {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]   
                          nop                                                                     // 0x004d1b5d    90
                          nop                                                                     // 0x004d1b5e    90
                          nop                                                                     // 0x004d1b5f    90
+?GetHowMuchCreatureWantsToLookAtMe@Abode@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]                    // 0x004d1b60    d905447a8c00
                          ret                                                                     // 0x004d1b66    c3
                          nop                                                                     // 0x004d1b67    90

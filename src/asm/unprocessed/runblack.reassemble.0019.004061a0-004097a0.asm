@@ -90,16 +90,16 @@
 .extern _jmp_addr_0x00829690
 .extern _jmp_addr_0x00829780
 
-.globl _jmp_addr_0x00406240
+.extern ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
 .globl _jmp_addr_0x00406640
 .globl _jmp_addr_0x004069c0
-.globl _jmp_addr_0x00406a10
-.globl _jmp_addr_0x00406d20
+.extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
+.extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .globl @FindNearestDrinkingWater__5AbodeFf@12
 .globl _jmp_addr_0x004070f0
-.globl _jmp_addr_0x00407170
+.extern ?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
 .globl @GetPosOutside__5AbodeFfff@24
-.globl _jmp_addr_0x004073c0
+.extern ?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z
 .globl _jmp_addr_0x004073f0
 .globl _jmp_addr_0x004074a0
 .globl _jmp_addr_0x00407540
@@ -152,6 +152,27 @@
 .globl _Click__12SetupControlFii
 .globl _MouseUp__12SetupControlFiib
 .globl _SetFocus__12SetupControlFb
+.globl ?IsFunctional@Abode@@UAE_NXZ
+.globl ?Load@Abode@@UAEIPAVGameOSFile@@@Z
+.globl ?Save@Abode@@UAEIPAVGameOSFile@@@Z
+.globl ?IsInteractable@Abode@@UAE_NXZ
+.globl ?IsWonder@Abode@@UAE_NXZ
+.globl ?GetScriptObjectType@Abode@@UAEIXZ
+.globl ?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
+.globl ?InterfaceValidToTap@Abode@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?InterfaceTap@Abode@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?ChecksVerticesVObjects@Abode@@UAEIXZ
+.globl ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
+.globl ?CanBecomeAPhysicsObject@Abode@@UAE_NXZ
+.globl ?DiscipleInHandNear@Abode@@UAEXPAVVillager@@PAVGInterfaceStatus@@@Z
+.globl ?GetInfluence@Abode@@UAEMXZ
+.globl ?GetPercentRepairedForNonFunctional@Abode@@UAEMXZ
+.globl ?GetPercentAbodeFullWithAdults@Abode@@UAEMXZ
+.globl ?GetPercentAbodeFullWithChildren@Abode@@UAEMXZ
+.globl ?GetAbodeType@Abode@@UAE?AW4ABODE_TYPE@@XZ
+.globl ?GetDesireToBeRepaired@Abode@@UAEMXZ
+.globl ?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z
+.globl ?CanBeHiddenIn@Abode@@UAE_NXZ
 
 start_0x004061a0_0x004097a0:
 // Snippet: asm, [0x004061a0, 0x00409784)
@@ -169,6 +190,7 @@ start_0x004061a0_0x004097a0:
                          nop                                                              // 0x004061bd    90
                          nop                                                              // 0x004061be    90
                          nop                                                              // 0x004061bf    90
+?IsWonder@Abode@@UAE_NXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x004061c0    8b4128
                          {disp32} mov       edx, dword ptr [eax + 0x00000120]             // 0x004061c3    8b9020010000
                          xor.s              ecx, ecx                                      // 0x004061c9    33c9
@@ -192,10 +214,12 @@ start_0x004061a0_0x004097a0:
                          nop                                                              // 0x004061ed    90
                          nop                                                              // 0x004061ee    90
                          nop                                                              // 0x004061ef    90
+?GetAbodeType@Abode@@UAE?AW4ABODE_TYPE@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x004061f0    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000120]             // 0x004061f3    8b8020010000
                          ret                                                              // 0x004061f9    c3
                          call               dword ptr [__imp__timeKillEvent@4]            // 0x004061fa    ff1590988a00
+?IsFunctional@Abode@@UAE_NXZ:
                          push               esi                                           // 0x00406200    56
                          mov.s              esi, ecx                                      // 0x00406201    8bf1
                          call               ?IsFunctional@MultiMapFixed@@UAE_NXZ          // 0x00406203    e8688d1200
@@ -222,6 +246,7 @@ _jmp_addr_0x00406222:    xor.s              eax, eax                            
                          nop                                                              // 0x0040622d    90
                          nop                                                              // 0x0040622e    90
                          nop                                                              // 0x0040622f    90
+?ChecksVerticesVObjects@Abode@@UAEIXZ:
                          xor.s              al, al                                        // 0x00406230    32c0
                          ret                                                              // 0x00406232    c3
                          nop                                                              // 0x00406233    90
@@ -237,7 +262,8 @@ _jmp_addr_0x00406222:    xor.s              eax, eax                            
                          nop                                                              // 0x0040623d    90
                          nop                                                              // 0x0040623e    90
                          nop                                                              // 0x0040623f    90
-_jmp_addr_0x00406240:    sub                esp, 0x34                                     // 0x00406240    83ec34
+?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z:
+                         sub                esp, 0x34                                     // 0x00406240    83ec34
                          push               ebx                                           // 0x00406243    53
                          {disp8} mov        ebx, dword ptr [esp + 0x3c]                   // 0x00406244    8b5c243c
                          push               ebp                                           // 0x00406248    55
@@ -685,6 +711,7 @@ _jmp_addr_0x004067ef:    pop                esi                                 
                          nop                                                              // 0x004067fd    90
                          nop                                                              // 0x004067fe    90
                          nop                                                              // 0x004067ff    90
+?CanBecomeAPhysicsObject@Abode@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x00406800    33c0
                          ret                                                              // 0x00406802    c3
                          nop                                                              // 0x00406803    90
@@ -700,6 +727,7 @@ _jmp_addr_0x004067ef:    pop                esi                                 
                          nop                                                              // 0x0040680d    90
                          nop                                                              // 0x0040680e    90
                          nop                                                              // 0x0040680f    90
+?GetScriptObjectType@Abode@@UAEIXZ:
                          mov                eax, 0x00000002                               // 0x00406810    b802000000
                          ret                                                              // 0x00406815    c3
                          nop                                                              // 0x00406816    90
@@ -712,6 +740,7 @@ _jmp_addr_0x004067ef:    pop                esi                                 
                          nop                                                              // 0x0040681d    90
                          nop                                                              // 0x0040681e    90
                          nop                                                              // 0x0040681f    90
+?InterfaceValidToTap@Abode@@UAEIPAVGInterfaceStatus@@@Z:
                          mov                eax, 0x00000001                               // 0x00406820    b801000000
                          ret                0x0004                                        // 0x00406825    c20400
                          nop                                                              // 0x00406828    90
@@ -722,6 +751,7 @@ _jmp_addr_0x004067ef:    pop                esi                                 
                          nop                                                              // 0x0040682d    90
                          nop                                                              // 0x0040682e    90
                          nop                                                              // 0x0040682f    90
+?InterfaceTap@Abode@@UAEIPAVGInterfaceStatus@@@Z:
                          sub                esp, 0x00000174                               // 0x00406830    81ec74010000
                          push               esi                                           // 0x00406836    56
                          push               edi                                           // 0x00406837    57
@@ -809,6 +839,7 @@ _jmp_addr_0x00406959:    pop                edi                                 
                          nop                                                              // 0x0040696d    90
                          nop                                                              // 0x0040696e    90
                          nop                                                              // 0x0040696f    90
+?GetDesireToBeRepaired@Abode@@UAEMXZ:
                          push               esi                                           // 0x00406970    56
                          mov.s              esi, ecx                                      // 0x00406971    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00406973    8b06
@@ -887,7 +918,8 @@ _jmp_addr_0x004069f9:    pop                edi                                 
                          nop                                                              // 0x00406a0d    90
                          nop                                                              // 0x00406a0e    90
                          nop                                                              // 0x00406a0f    90
-_jmp_addr_0x00406a10:    push               ecx                                           // 0x00406a10    51
+?Save@Abode@@UAEIPAVGameOSFile@@@Z:
+                         push               ecx                                           // 0x00406a10    51
                          push               ebx                                           // 0x00406a11    53
                          push               esi                                           // 0x00406a12    56
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x00406a13    8b742410
@@ -1136,7 +1168,8 @@ _jmp_addr_0x00406d09:    pop                esi                                 
                          nop                                                              // 0x00406d1d    90
                          nop                                                              // 0x00406d1e    90
                          nop                                                              // 0x00406d1f    90
-_jmp_addr_0x00406d20:    sub                esp, 0x08                                     // 0x00406d20    83ec08
+?Load@Abode@@UAEIPAVGameOSFile@@@Z:
+                         sub                esp, 0x08                                     // 0x00406d20    83ec08
                          push               ebp                                           // 0x00406d23    55
                          push               esi                                           // 0x00406d24    56
                          {disp8} mov        esi, dword ptr [esp + 0x14]                   // 0x00406d25    8b742414
@@ -1402,6 +1435,7 @@ _jmp_addr_0x00407015:    pop                esi                                 
                          ret                0x0004                                        // 0x0040704b    c20400
                          nop                                                              // 0x0040704e    90
                          nop                                                              // 0x0040704f    90
+?GetPercentAbodeFullWithAdults@Abode@@UAEMXZ:
                          sub                esp, 0x08                                     // 0x00407050    83ec08
                          push               esi                                           // 0x00407053    56
                          {disp8} mov        esi, dword ptr [ecx + 0x28]                   // 0x00407054    8b7128
@@ -1424,6 +1458,7 @@ _jmp_addr_0x00407081:    {disp32} fld       dword ptr [rdata_bytes + 0x1390]    
                          nop                                                              // 0x0040708d    90
                          nop                                                              // 0x0040708e    90
                          nop                                                              // 0x0040708f    90
+?GetPercentAbodeFullWithChildren@Abode@@UAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x00407090    8b4128
                          sub                esp, 0x08                                     // 0x00407093    83ec08
                          push               esi                                           // 0x00407096    56
@@ -1515,7 +1550,8 @@ _jmp_addr_0x0040714f:    {disp8} lea        ecx, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0040716d    90
                          nop                                                              // 0x0040716e    90
                          nop                                                              // 0x0040716f    90
-_jmp_addr_0x00407170:    push               ebx                                           // 0x00407170    53
+?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z:
+                         push               ebx                                           // 0x00407170    53
                          push               ebp                                           // 0x00407171    55
                          {disp8} mov        ebp, dword ptr [esp + 0x10]                   // 0x00407172    8b6c2410
                          push               esi                                           // 0x00407176    56
@@ -1578,6 +1614,7 @@ _jmp_addr_0x004071f2:    pop                edi                                 
                          nop                                                              // 0x004071fd    90
                          nop                                                              // 0x004071fe    90
                          nop                                                              // 0x004071ff    90
+?IsInteractable@Abode@@UAE_NXZ:
                          push               esi                                           // 0x00407200    56
                          mov.s              esi, ecx                                      // 0x00407201    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00407203    8b06
@@ -1641,6 +1678,7 @@ _jmp_addr_0x0040725a:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0040727d    90
                          nop                                                              // 0x0040727e    90
                          nop                                                              // 0x0040727f    90
+?CanBeHiddenIn@Abode@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                          // 0x00407280    8b01
                          jmp                dword ptr [eax + 0xd4]                        // 0x00407282    ffa0d4000000
                          nop                                                              // 0x00407288    90
@@ -1651,10 +1689,12 @@ _jmp_addr_0x0040725a:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0040728d    90
                          nop                                                              // 0x0040728e    90
                          nop                                                              // 0x0040728f    90
+?GetPercentRepairedForNonFunctional@Abode@@UAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x00407290    8b4128
                          {disp32} fld       dword ptr [eax + 0x000001b8]                  // 0x00407293    d980b8010000
                          ret                                                              // 0x00407299    c3
                          call               dword ptr [__imp__bind@4]                     // 0x0040729a    ff15dc988a00
+?GetInfluence@Abode@@UAEMXZ:
                          sub                esp, 0x08                                     // 0x004072a0    83ec08
                          push               esi                                           // 0x004072a3    56
                          mov.s              esi, ecx                                      // 0x004072a4    8bf1
@@ -1749,7 +1789,8 @@ _jmp_addr_0x0040725a:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          add                esp, 0x1c                                     // 0x004073b4    83c41c
                          ret                0x0010                                        // 0x004073b7    c21000
                          call               dword ptr [rdata_bytes + 0x3dc]               // 0x004073ba    ff15dc938a00
-_jmp_addr_0x004073c0:    {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x004073c0    8b542404
+?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z:
+                         {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x004073c0    8b542404
                          test               edx, edx                                      // 0x004073c4    85d2
                          {disp8} je         _jmp_addr_0x004073ec                          // 0x004073c6    7424
                          cmp                byte ptr [ecx + 0x000000b9], -0x38            // 0x004073c8    80b9b9000000c8
@@ -1785,6 +1826,7 @@ _jmp_addr_0x00407416:    ret                0x0004                              
                          nop                                                              // 0x0040741d    90
                          nop                                                              // 0x0040741e    90
                          nop                                                              // 0x0040741f    90
+?DiscipleInHandNear@Abode@@UAEXPAVVillager@@PAVGInterfaceStatus@@@Z:
                          push               esi                                           // 0x00407420    56
                          mov.s              esi, ecx                                      // 0x00407421    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x00407423    8b4628

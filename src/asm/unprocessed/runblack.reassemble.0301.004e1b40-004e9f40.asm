@@ -243,6 +243,8 @@
 .globl ?CanBeBroughtBackToCitadel@Object@@UAE_NPAVCreature@@@Z
 .globl ?CanBeKickedByCreature@Object@@UAE_NPAVCreature@@@Z
 .globl ?IsBuildingWhichIsBeingBuilt@MultiMapFixed@@UAE_NPAVCreature@@@Z
+.globl ?CanBeStompedOnByCreature@Abode@@UAE_NPAVCreature@@@Z
+.globl ?CanBeKickedByCreature@Abode@@UAE_NPAVCreature@@@Z
 
 start_0x004e1b40_0x004e9f40:
 // Snippet: asm, [0x004e1b40, 0x004e9efd)
@@ -3706,6 +3708,7 @@ _jmp_addr_0x004e3f96:    pop                edi                                 
                          nop                                                                // 0x004e3f9d    90
                          nop                                                                // 0x004e3f9e    90
                          nop                                                                // 0x004e3f9f    90
+?CanBeKickedByCreature@Abode@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e3fa0    56
                          mov.s              esi, ecx                                        // 0x004e3fa1    8bf1
                          call               _jmp_addr_0x00637cc0                            // 0x004e3fa3    e8183d1500
@@ -4213,6 +4216,7 @@ _jmp_addr_0x004e43df:    pop                edi                                 
                          nop                                                                // 0x004e43ed    90
                          nop                                                                // 0x004e43ee    90
                          nop                                                                // 0x004e43ef    90
+?CanBeStompedOnByCreature@Abode@@UAE_NPAVCreature@@@Z:
                          push               ecx                                             // 0x004e43f0    51
                          mov                eax, dword ptr [ecx]                            // 0x004e43f1    8b01
                          call               dword ptr [eax + 0x42c]                         // 0x004e43f3    ff902c040000
