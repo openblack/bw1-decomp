@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x004729a0
 .extern @GetCreature3D__8CreatureFv@4
 .extern _jmp_addr_0x004ea900
-.extern _jmp_addr_0x00518090
+.extern ?Draw@MultiMapFixed@@UAEXXZ
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x005198f0
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
@@ -2977,7 +2977,7 @@ _jmp_addr_0x00643fa3:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          nop                                                               // 0x00643fcd    90
                          nop                                                               // 0x00643fce    90
                          nop                                                               // 0x00643fcf    90
-                         {disp32} jmp       _jmp_addr_0x00518090                           // 0x00643fd0    e9bb40edff
+                         {disp32} jmp       ?Draw@MultiMapFixed@@UAEXXZ                    // 0x00643fd0    e9bb40edff
                          nop                                                               // 0x00643fd5    90
                          nop                                                               // 0x00643fd6    90
                          nop                                                               // 0x00643fd7    90

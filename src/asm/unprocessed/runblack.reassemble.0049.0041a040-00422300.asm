@@ -173,6 +173,20 @@
 .globl _globl_ct_0x00421de0
 .globl _globl_ct_0x00421e10
 .globl _globl_ct_0x00421e40
+.globl ?GetTown@MultiMapFixed@@UAEPAVTown@@XZ
+.globl ?GetArrivePos@MultiMapFixed@@UAEPAUMapCoords@@PAU2@@Z
+.globl ?IsWonder@MultiMapFixed@@UAE_NXZ
+.globl ?GetPercentAbodeFullWithAdults@MultiMapFixed@@UAEMXZ
+.globl ?GetPercentAbodeFullWithChildren@MultiMapFixed@@UAEMXZ
+.globl ?GetDestructionMesh@MultiMapFixed@@UAEPAVLH3DMesh@@XZ
+.globl ?RemoveDamage@MultiMapFixed@@UAEXXZ
+.globl ?IsCivic@MultiMapFixed@@UAE_NXZ
+.globl ?GetAbodeType@MultiMapFixed@@UAE?AW4ABODE_TYPE@@XZ
+.globl ?DoResourceAdding@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@PAVGInterfaceStatus@@_NPAUMapCoords@@H@Z
+.globl ?DoResourceRemoving@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_N@Z
+.globl ?GetShouldNotBeAddedToPlanned@MultiMapFixed@@UAE_NXZ
+.globl ?SetShouldNotBeAddedToPlanned@MultiMapFixed@@UAEX_N@Z
+.globl ?SetTown@MultiMapFixed@@UAEXPAVTown@@@Z
 
 start_0x0041a040_0x00422300:
 // Snippet: asm, [0x0041a040, 0x004222d5)
@@ -14716,6 +14730,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          pop                edi                                           // 0x00421fd8    5f
                          ret                                                              // 0x00421fd9    c3
                          call               dword ptr [rdata_bytes + 0x328]               // 0x00421fda    ff1528938a00
+?GetArrivePos@MultiMapFixed@@UAEPAUMapCoords@@PAU2@@Z:
                          mov                eax, dword ptr [ecx]                          // 0x00421fe0    8b01
                          push               esi                                           // 0x00421fe2    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x00421fe3    8b742408
@@ -14736,6 +14751,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x00421ffd    90
                          nop                                                              // 0x00421ffe    90
                          nop                                                              // 0x00421fff    90
+?GetPercentAbodeFullWithAdults@MultiMapFixed@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1390]              // 0x00422000    d90590a38a00
                          ret                                                              // 0x00422006    c3
                          nop                                                              // 0x00422007    90
@@ -14747,6 +14763,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042200d    90
                          nop                                                              // 0x0042200e    90
                          nop                                                              // 0x0042200f    90
+?GetPercentAbodeFullWithChildren@MultiMapFixed@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1390]              // 0x00422010    d90590a38a00
                          ret                                                              // 0x00422016    c3
                          nop                                                              // 0x00422017    90
@@ -14758,6 +14775,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042201d    90
                          nop                                                              // 0x0042201e    90
                          nop                                                              // 0x0042201f    90
+?GetDestructionMesh@MultiMapFixed@@UAEPAVLH3DMesh@@XZ:
                          xor.s              eax, eax                                      // 0x00422020    33c0
                          ret                                                              // 0x00422022    c3
                          nop                                                              // 0x00422023    90
@@ -14773,6 +14791,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042202d    90
                          nop                                                              // 0x0042202e    90
                          nop                                                              // 0x0042202f    90
+?RemoveDamage@MultiMapFixed@@UAEXXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1398]              // 0x00422030    d90598a38a00
                          ret                                                              // 0x00422036    c3
                          nop                                                              // 0x00422037    90
@@ -14784,6 +14803,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042203d    90
                          nop                                                              // 0x0042203e    90
                          nop                                                              // 0x0042203f    90
+?IsCivic@MultiMapFixed@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x00422040    33c0
                          ret                                                              // 0x00422042    c3
                          nop                                                              // 0x00422043    90
@@ -14799,6 +14819,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042204d    90
                          nop                                                              // 0x0042204e    90
                          nop                                                              // 0x0042204f    90
+?IsWonder@MultiMapFixed@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x00422050    33c0
                          ret                                                              // 0x00422052    c3
                          nop                                                              // 0x00422053    90
@@ -14814,6 +14835,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042205d    90
                          nop                                                              // 0x0042205e    90
                          nop                                                              // 0x0042205f    90
+?GetAbodeType@MultiMapFixed@@UAE?AW4ABODE_TYPE@@XZ:
                          mov                eax, 0x00000001                               // 0x00422060    b801000000
                          ret                                                              // 0x00422065    c3
                          nop                                                              // 0x00422066    90
@@ -14826,6 +14848,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042206d    90
                          nop                                                              // 0x0042206e    90
                          nop                                                              // 0x0042206f    90
+?DoResourceAdding@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@PAVGInterfaceStatus@@_NPAUMapCoords@@H@Z:
                          xor.s              eax, eax                                      // 0x00422070    33c0
                          ret                0x0018                                        // 0x00422072    c21800
                          nop                                                              // 0x00422075    90
@@ -14839,6 +14862,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042207d    90
                          nop                                                              // 0x0042207e    90
                          nop                                                              // 0x0042207f    90
+?DoResourceRemoving@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_N@Z:
                          xor.s              eax, eax                                      // 0x00422080    33c0
                          ret                0x0010                                        // 0x00422082    c21000
                          nop                                                              // 0x00422085    90
@@ -14852,6 +14876,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042208d    90
                          nop                                                              // 0x0042208e    90
                          nop                                                              // 0x0042208f    90
+?SetTown@MultiMapFixed@@UAEXPAVTown@@@Z:
                          ret                0x0004                                        // 0x00422090    c20400
                          nop                                                              // 0x00422093    90
                          nop                                                              // 0x00422094    90
@@ -14866,6 +14891,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x0042209d    90
                          nop                                                              // 0x0042209e    90
                          nop                                                              // 0x0042209f    90
+?GetTown@MultiMapFixed@@UAEPAVTown@@XZ:
                          xor.s              eax, eax                                      // 0x004220a0    33c0
                          ret                                                              // 0x004220a2    c3
                          nop                                                              // 0x004220a3    90
@@ -14881,6 +14907,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x004220ad    90
                          nop                                                              // 0x004220ae    90
                          nop                                                              // 0x004220af    90
+?GetShouldNotBeAddedToPlanned@MultiMapFixed@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x004220b0    33c0
                          ret                                                              // 0x004220b2    c3
                          nop                                                              // 0x004220b3    90
@@ -14896,6 +14923,7 @@ _jmp_addr_0x00421fd6:    xor.s              eax, eax                            
                          nop                                                              // 0x004220bd    90
                          nop                                                              // 0x004220be    90
                          nop                                                              // 0x004220bf    90
+?SetShouldNotBeAddedToPlanned@MultiMapFixed@@UAEX_N@Z:
                          ret                0x0004                                        // 0x004220c0    c20400
                          nop                                                              // 0x004220c3    90
                          nop                                                              // 0x004220c4    90

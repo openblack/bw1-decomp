@@ -31,11 +31,11 @@
 .extern @__ct__13MultiMapFixedFv@4
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
-.extern _jmp_addr_0x0052e2b0
-.extern _jmp_addr_0x0052ed40
-.extern _jmp_addr_0x0052f0d0
-.extern _jmp_addr_0x0052f1f0
-.extern _jmp_addr_0x0052f210
+.extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
+.extern ?BuildBy@MultiMapFixed@@UAEXM@Z
+.extern ?GetDiscipleStateIfInteractedWith@MultiMapFixed@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
+.extern ?IsResourceStore@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@@Z
+.extern ?DoCreatureMimicAfterAddingResource@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@PAVGInterfaceStatus@@@Z
 .extern @ReleaseCollideData__13MultiMapFixedFv@4
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x00561e10
@@ -942,7 +942,7 @@ _jmp_addr_0x0077dc41:    {disp8} mov        eax, dword ptr [eax + 0x04]         
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0077dc52    8b7c240c
                          mov.s              esi, ecx                                      // 0x0077dc56    8bf1
                          push               edi                                           // 0x0077dc58    57
-                         call               _jmp_addr_0x0052ed40                          // 0x0077dc59    e8e210dbff
+                         call               ?BuildBy@MultiMapFixed@@UAEXM@Z               // 0x0077dc59    e8e210dbff
                          {disp32} mov       ecx, dword ptr [esi + 0x000000dc]             // 0x0077dc5e    8b8edc000000
                          test               ecx, ecx                                      // 0x0077dc64    85c9
                          {disp8} je         _jmp_addr_0x0077dc80                          // 0x0077dc66    7418
@@ -1163,7 +1163,7 @@ _jmp_addr_0x0077ddd0:    {disp32} fld       dword ptr [rdata_bytes + 0xf39ec]   
                          push               esi                                           // 0x0077de7b    56
                          mov.s              edi, ecx                                      // 0x0077de7c    8bf9
                          push               eax                                           // 0x0077de7e    50
-                         call               _jmp_addr_0x0052f0d0                          // 0x0077de7f    e84c12dbff
+                         call               ?GetDiscipleStateIfInteractedWith@MultiMapFixed@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z                          // 0x0077de7f    e84c12dbff
                          mov.s              ebx, eax                                      // 0x0077de84    8bd8
                          cmp                ebx, 0x04                                     // 0x0077de86    83fb04
                          {disp8} je         _jmp_addr_0x0077deb0                          // 0x0077de89    7425
@@ -1197,7 +1197,7 @@ _jmp_addr_0x0077deb2:    pop                edi                                 
                          push               esi                                           // 0x0077dec0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x0077dec1    8b742408
                          push               esi                                           // 0x0077dec5    56
-                         call               _jmp_addr_0x0052f1f0                          // 0x0077dec6    e82513dbff
+                         call               ?IsResourceStore@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@@Z                          // 0x0077dec6    e82513dbff
                          test               eax, eax                                      // 0x0077decb    85c0
                          {disp8} jne        _jmp_addr_0x0077dedc                          // 0x0077decd    750d
                          test               esi, esi                                      // 0x0077decf    85f6
@@ -1228,7 +1228,7 @@ _jmp_addr_0x0077dedc:    mov                eax, 0x00000001                     
                          push               esi                                           // 0x0077defb    56
                          mov.s              edi, ecx                                      // 0x0077defc    8bf9
                          push               ebx                                           // 0x0077defe    53
-                         call               _jmp_addr_0x0052f210                          // 0x0077deff    e80c13dbff
+                         call               ?DoCreatureMimicAfterAddingResource@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@PAVGInterfaceStatus@@@Z                          // 0x0077deff    e80c13dbff
                          test               eax, eax                                      // 0x0077df04    85c0
                          {disp8} jne        _jmp_addr_0x0077df1e                          // 0x0077df06    7516
                          test               ebx, ebx                                      // 0x0077df08    85db
@@ -2527,7 +2527,7 @@ _jmp_addr_0x0077ecd3:    {disp8} mov        edx, dword ptr [ecx + 0x7c]         
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0077ece0    8b442408
                          push               eax                                           // 0x0077ece4    50
                          mov.s              ecx, esi                                      // 0x0077ece5    8bce
-                         call               _jmp_addr_0x0052e2b0                          // 0x0077ece7    e8c4f5daff
+                         call               ?ToBeDeleted@MultiMapFixed@@UAEXH@Z           // 0x0077ece7    e8c4f5daff
                          pop                esi                                           // 0x0077ecec    5e
                          ret                0x0004                                        // 0x0077eced    c20400
 _jmp_addr_0x0077ecf0:    {disp8} mov        edx, dword ptr [esi + 0x7c]                   // 0x0077ecf0    8b567c
@@ -2537,7 +2537,7 @@ _jmp_addr_0x0077ecf6:    dec                dword ptr [eax + 0x04]              
 _jmp_addr_0x0077ed00:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0077ed00    8b442408
                          push               eax                                           // 0x0077ed04    50
                          mov.s              ecx, esi                                      // 0x0077ed05    8bce
-                         call               _jmp_addr_0x0052e2b0                          // 0x0077ed07    e8a4f5daff
+                         call               ?ToBeDeleted@MultiMapFixed@@UAEXH@Z           // 0x0077ed07    e8a4f5daff
                          pop                esi                                           // 0x0077ed0c    5e
                          ret                0x0004                                        // 0x0077ed0d    c20400
 _jmp_addr_0x0077ed10:    push               esi                                           // 0x0077ed10    56

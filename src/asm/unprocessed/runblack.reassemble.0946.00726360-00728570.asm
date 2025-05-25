@@ -52,7 +52,7 @@
 .extern _jmp_addr_0x0050dda0
 .extern _jmp_addr_0x0050e020
 .extern _SetMessage__6GDebugFUsPce
-.extern _jmp_addr_0x00518090
+.extern ?Draw@MultiMapFixed@@UAEXXZ
 .extern _jmp_addr_0x00518bf0
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x00519960
@@ -69,9 +69,9 @@
 .extern @__ct__13MultiMapFixedFv@4
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
-.extern _jmp_addr_0x0052e2b0
+.extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
-.extern _jmp_addr_0x0052f250
+.extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
 .extern _jmp_addr_0x005399e0
@@ -2295,7 +2295,7 @@ _jmp_addr_0x00727940:    push               esi                                 
                          push               edi                                                  // 0x00727945    57
                          mov.s              edi, ecx                                             // 0x00727946    8bf9
                          push               esi                                                  // 0x00727948    56
-                         call               _jmp_addr_0x0052f250                                 // 0x00727949    e80279e0ff
+                         call               ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z           // 0x00727949    e80279e0ff
                          test               eax, eax                                             // 0x0072794e    85c0
                          {disp32} je        _jmp_addr_0x007279ee                                 // 0x00727950    0f8498000000
                          {disp32} mov       eax, dword ptr [edi + 0x00000080]                    // 0x00727956    8b8780000000
