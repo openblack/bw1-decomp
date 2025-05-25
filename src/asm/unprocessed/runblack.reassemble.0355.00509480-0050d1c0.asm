@@ -10,10 +10,10 @@
 .extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00402b60
-.extern _jmp_addr_0x00402c60
-.extern _jmp_addr_0x00403f00
+.extern ?ToBeDeleted@Abode@@UAEXH@Z
+.extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern @MakeFunctional__5AbodeFv@4
-.extern _jmp_addr_0x00405d90
+.extern ?ReduceLife@Abode@@UAEXMPAVGPlayer@@@Z
 .extern _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
@@ -2024,7 +2024,7 @@ _jmp_addr_0x0050aa1d:    mov.s              eax, esi                            
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0050aa3b    8b4c2408
                          push               ecx                                           // 0x0050aa3f    51
                          mov.s              ecx, esi                                      // 0x0050aa40    8bce
-                         call               _jmp_addr_0x00402c60                          // 0x0050aa42    e81982efff
+                         call               ?ToBeDeleted@Abode@@UAEXH@Z                   // 0x0050aa42    e81982efff
                          pop                esi                                           // 0x0050aa47    5e
                          ret                0x0004                                        // 0x0050aa48    c20400
                          call               _jmp_addr_0x00401879                          // 0x0050aa4b    e8296eefff
@@ -2067,7 +2067,7 @@ _jmp_addr_0x0050aaac:    mov                eax, dword ptr [edi]                
                          {disp32} mov       dword ptr [eax + 0x00000744], esi             // 0x0050aab3    89b044070000
                          pop                esi                                           // 0x0050aab9    5e
 _jmp_addr_0x0050aaba:    mov.s              ecx, edi                                      // 0x0050aaba    8bcf
-                         call               _jmp_addr_0x00403f00                          // 0x0050aabc    e83f94efff
+                         call               ?DeleteDependancys@Abode@@UAEXXZ              // 0x0050aabc    e83f94efff
                          pop                edi                                           // 0x0050aac1    5f
                          ret                                                              // 0x0050aac2    c3
                          nop                                                              // 0x0050aac3    90
@@ -2178,7 +2178,7 @@ _jmp_addr_0x0050ab81:    pop                esi                                 
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x0050ab94    8b542404
                          push               eax                                           // 0x0050ab98    50
                          push               edx                                           // 0x0050ab99    52
-                         call               _jmp_addr_0x00405d90                          // 0x0050ab9a    e8f1b1efff
+                         call               ?ReduceLife@Abode@@UAEXMPAVGPlayer@@@Z        // 0x0050ab9a    e8f1b1efff
                          ret                0x0008                                        // 0x0050ab9f    c20800
                          nop                                                              // 0x0050aba2    90
                          nop                                                              // 0x0050aba3    90

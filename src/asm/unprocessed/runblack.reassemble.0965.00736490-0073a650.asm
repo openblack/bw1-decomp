@@ -8,19 +8,19 @@
 .extern rsrc_bytes
 
 .extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
-.extern _jmp_addr_0x00402c10
-.extern _jmp_addr_0x00402c60
+.extern ?Delete@Abode@@UAEXH@Z
+.extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
-.extern _jmp_addr_0x00403f00
+.extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern @AddVillagerToAbode__5AbodeFP8Villager@12
 .extern _jmp_addr_0x00404340
 .extern _jmp_addr_0x00404580
 .extern @MakeFunctional__5AbodeFv@4
 .extern @GetTribeType__5AbodeCFv@4
-.extern _jmp_addr_0x00406a10
-.extern _jmp_addr_0x00406d20
+.extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
+.extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern _jmp_addr_0x00417c50
 .extern _jmp_addr_0x0041bc90
 .extern @SetPosition__10LH3DObjectFRC7LHPointff@16
@@ -1573,7 +1573,7 @@ _jmp_addr_0x00737380:    {disp32} mov       dword ptr [data_bytes + 0x3dbcf0], 0
                          mov                eax, dword ptr [esi]                           // 0x00737413    8b06
                          call               dword ptr [eax + 0x910]                        // 0x00737415    ff9010090000
                          mov.s              ecx, esi                                       // 0x0073741b    8bce
-                         call               _jmp_addr_0x00402c10                           // 0x0073741d    e8eeb7ccff
+                         call               ?Delete@Abode@@UAEXH@Z                         // 0x0073741d    e8eeb7ccff
                          pop                esi                                            // 0x00737422    5e
                          ret                                                               // 0x00737423    c3
                          nop                                                               // 0x00737424    90
@@ -1595,7 +1595,7 @@ _jmp_addr_0x00737380:    {disp32} mov       dword ptr [data_bytes + 0x3dbcf0], 0
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                    // 0x0073743b    8b4c2408
                          push               ecx                                            // 0x0073743f    51
                          mov.s              ecx, esi                                       // 0x00737440    8bce
-                         call               _jmp_addr_0x00402c60                           // 0x00737442    e819b8ccff
+                         call               ?ToBeDeleted@Abode@@UAEXH@Z                    // 0x00737442    e819b8ccff
                          pop                esi                                            // 0x00737447    5e
                          ret                0x0004                                         // 0x00737448    c20400
                          nop                                                               // 0x0073744b    90
@@ -1621,7 +1621,7 @@ _jmp_addr_0x00737380:    {disp32} mov       dword ptr [data_bytes + 0x3dbcf0], 0
                          mov.s              ecx, eax                                       // 0x00737474    8bc8
                          call               _jmp_addr_0x0073d650                           // 0x00737476    e8d5610000
 _jmp_addr_0x0073747b:    mov.s              ecx, esi                                       // 0x0073747b    8bce
-                         call               _jmp_addr_0x00403f00                           // 0x0073747d    e87ecaccff
+                         call               ?DeleteDependancys@Abode@@UAEXXZ               // 0x0073747d    e87ecaccff
                          pop                esi                                            // 0x00737482    5e
                          ret                                                               // 0x00737483    c3
                          nop                                                               // 0x00737484    90
@@ -2030,7 +2030,7 @@ _jmp_addr_0x00737800:    push               ebx                                 
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00737802    8b74240c
                          mov.s              ebx, ecx                                       // 0x00737806    8bd9
                          push               esi                                            // 0x00737808    56
-                         call               _jmp_addr_0x00406d20                           // 0x00737809    e812f5ccff
+                         call               ?Load@Abode@@UAEIPAVGameOSFile@@@Z             // 0x00737809    e812f5ccff
                          test               eax, eax                                       // 0x0073780e    85c0
                          {disp32} je        _jmp_addr_0x007378a0                           // 0x00737810    0f848a000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]         // 0x00737816    a194c9be00
@@ -2093,7 +2093,7 @@ _jmp_addr_0x007378b0:    push               ebx                                 
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x007378b2    8b74240c
                          mov.s              ebx, ecx                                       // 0x007378b6    8bd9
                          push               esi                                            // 0x007378b8    56
-                         call               _jmp_addr_0x00406a10                           // 0x007378b9    e852f1ccff
+                         call               ?Save@Abode@@UAEIPAVGameOSFile@@@Z             // 0x007378b9    e852f1ccff
                          test               eax, eax                                       // 0x007378be    85c0
                          {disp32} je        _jmp_addr_0x00737950                           // 0x007378c0    0f848a000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x007378c6    a190c9be00

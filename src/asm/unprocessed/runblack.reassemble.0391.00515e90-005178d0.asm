@@ -53,7 +53,7 @@
 .extern _jmp_addr_0x00868c80
 .extern _jmp_addr_0x0086a1b0
 
-.globl _jmp_addr_0x00515f70
+.extern ?Draw@Abode@@UAEXXZ
 .globl _jmp_addr_0x005167d0
 .globl _jmp_addr_0x00516840
 .globl _GetCell__10LH3DIslandFll
@@ -65,6 +65,7 @@
 .globl _globl_ct_0x00515ef0
 .globl _globl_ct_0x00515f10
 .globl _globl_ct_0x00515f40
+.globl ?Draw@Abode@@UAEXXZ
 
 start_0x00515e90_0x005178d0:
 // Snippet: asm, [0x00515e90, 0x005178bf)
@@ -178,7 +179,8 @@ _jmp_addr_0x00515f50:    {disp32} mov       dword ptr [data_bytes + 0x3002f0], 0
                          {disp32} mov       dword ptr [data_bytes + 0x3002f8], 0x00000000 // 0x00515f64    c705f862cc0000000000
                          ret                                                              // 0x00515f6e    c3
                          nop                                                              // 0x00515f6f    90
-_jmp_addr_0x00515f70:    sub                esp, 0x30                                     // 0x00515f70    83ec30
+?Draw@Abode@@UAEXXZ:
+                         sub                esp, 0x30                                     // 0x00515f70    83ec30
                          push               ebx                                           // 0x00515f73    53
                          push               ebp                                           // 0x00515f74    55
                          push               esi                                           // 0x00515f75    56
@@ -458,7 +460,7 @@ _jmp_addr_0x00516316:    pop                edi                                 
                          sub                esp, 0x1c                                     // 0x00516320    83ec1c
                          push               esi                                           // 0x00516323    56
                          mov.s              esi, ecx                                      // 0x00516324    8bf1
-                         call               _jmp_addr_0x00515f70                          // 0x00516326    e845fcffff
+                         call               ?Draw@Abode@@UAEXXZ                           // 0x00516326    e845fcffff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x0051632b    8b4e40
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x0051632e    8d442414
                          push               eax                                           // 0x00516332    50
@@ -563,7 +565,7 @@ _jmp_addr_0x00516448:    pop                esi                                 
                          push               ebx                                           // 0x00516453    53
                          push               esi                                           // 0x00516454    56
                          mov.s              ebx, ecx                                      // 0x00516455    8bd9
-                         call               _jmp_addr_0x00515f70                          // 0x00516457    e814fbffff
+                         call               ?Draw@Abode@@UAEXXZ                           // 0x00516457    e814fbffff
                          {disp32} mov       esi, dword ptr [data_bytes + 0x4dbaf0]        // 0x0051645c    8b35f01aea00
                          mov                eax, dword ptr [ebx]                          // 0x00516462    8b03
                          mov.s              ecx, ebx                                      // 0x00516464    8bcb
