@@ -44,11 +44,11 @@ static const char* ABODE_EPP_strs[_ABODE_EPP_COUNT] = {
 struct AbodeVftable
 {
   struct MultiMapFixedVftable super;  /* 0x0 */
-  uintptr_t MoveAbodeToPlannedAbodes;  /* 0x90c */
+  void (__fastcall* MoveAbodeToPlannedAbodes)(struct Abode* this);  /* 0x90c */
   void (__fastcall* DeleteDependancys)(struct Abode* this);  /* 0x910 */
   void (__fastcall* MakeFunctional)(struct Abode* this);
   void (__fastcall* StopBeingFunctional)(struct Abode* this, const void* edx, struct GPlayer* param_1);
-  uintptr_t RestartBeingFunctional;
+  void (__fastcall* RestartBeingFunctional)(struct Abode* this);
   bool (__fastcall* CausesTownEmergencyIfDamaged)(struct Abode* this);  /* 0x920 */
   bool (__fastcall* CanBeHiddenIn)(struct Abode* this);
   struct GTribeInfo* (__fastcall* GetTribe)(struct Abode* this);
