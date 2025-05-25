@@ -11,13 +11,13 @@
 .extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00402b60
-.extern _jmp_addr_0x00402c60
+.extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern @MakeFunctional__5AbodeFv@4
-.extern _jmp_addr_0x00406a10
-.extern _jmp_addr_0x00406d20
+.extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
+.extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern _jmp_addr_0x00407700
 .extern _jmp_addr_0x004077a0
 .extern _GetMidTextSize__Fv
@@ -10769,7 +10769,7 @@ _jmp_addr_0x0053134d:    mov.s              eax, esi                            
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                          // 0x0053136b    8b4c2408
                          push               ecx                                                  // 0x0053136f    51
                          mov.s              ecx, esi                                             // 0x00531370    8bce
-                         call               _jmp_addr_0x00402c60                                 // 0x00531372    e8e918edff
+                         call               ?ToBeDeleted@Abode@@UAEXH@Z                          // 0x00531372    e8e918edff
                          pop                esi                                                  // 0x00531377    5e
                          ret                0x0004                                               // 0x00531378    c20400
                          call               _jmp_addr_0x00401879                                 // 0x0053137b    e8f904edff
@@ -13683,7 +13683,7 @@ _jmp_addr_0x005331a0:    sub                esp, 0x54                           
                          push               edi                                                  // 0x005332a5    57
                          mov.s              edi, ecx                                             // 0x005332a6    8bf9
                          push               esi                                                  // 0x005332a8    56
-                         call               _jmp_addr_0x00406a10                                 // 0x005332a9    e86237edff
+                         call               ?Save@Abode@@UAEIPAVGameOSFile@@@Z                   // 0x005332a9    e86237edff
                          test               eax, eax                                             // 0x005332ae    85c0
                          {disp32} je        _jmp_addr_0x005336d6                                 // 0x005332b0    0f8420040000
                          {disp32} mov       eax, dword ptr [edi + 0x000000c4]                    // 0x005332b6    8b87c4000000
@@ -14006,7 +14006,7 @@ _jmp_addr_0x005336d6:    pop                edi                                 
                          push               edi                                                  // 0x005336e5    57
                          mov.s              edi, ecx                                             // 0x005336e6    8bf9
                          push               esi                                                  // 0x005336e8    56
-                         call               _jmp_addr_0x00406d20                                 // 0x005336e9    e83236edff
+                         call               ?Load@Abode@@UAEIPAVGameOSFile@@@Z                   // 0x005336e9    e83236edff
                          test               eax, eax                                             // 0x005336ee    85c0
                          {disp32} je        _jmp_addr_0x00533b23                                 // 0x005336f0    0f842d040000
                          push               ebx                                                  // 0x005336f6    53

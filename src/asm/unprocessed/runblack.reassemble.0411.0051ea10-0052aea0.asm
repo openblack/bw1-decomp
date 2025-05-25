@@ -10,13 +10,13 @@
 .extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00402b60
-.extern _jmp_addr_0x00402c60
+.extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern @Init__5AbodeFiUlUl@20
-.extern _jmp_addr_0x00404440
-.extern _jmp_addr_0x00404720
+.extern ?Process@Abode@@UAEIXZ
+.extern ?Built@Abode@@UAE_NXZ
 .extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
-.extern _jmp_addr_0x00406a10
-.extern _jmp_addr_0x00406d20
+.extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
+.extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ___nw__4BaseFUl
@@ -15129,7 +15129,7 @@ _jmp_addr_0x005280e7:    xor.s              eax, eax                            
                          nop                                                                     // 0x005280ef    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x005280f0    8b442404
                          push               eax                                                  // 0x005280f4    50
-                         call               _jmp_addr_0x00402c60                                 // 0x005280f5    e866abedff
+                         call               ?ToBeDeleted@Abode@@UAEXH@Z                          // 0x005280f5    e866abedff
                          ret                0x0004                                               // 0x005280fa    c20400
                          nop                                                                     // 0x005280fd    90
                          nop                                                                     // 0x005280fe    90
@@ -16593,7 +16593,7 @@ _jmp_addr_0x00529010:    {disp8} fld        dword ptr [esp + 0x08]              
                          sub                esp, 0x10                                            // 0x00529020    83ec10
                          push               esi                                                  // 0x00529023    56
                          mov.s              esi, ecx                                             // 0x00529024    8bf1
-                         call               _jmp_addr_0x00404440                                 // 0x00529026    e815b4edff
+                         call               ?Process@Abode@@UAEIXZ                               // 0x00529026    e815b4edff
                          {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]               // 0x0052902b    a15c19d000
                          {disp32} mov       eax, dword ptr [eax + 0x00205a40]                    // 0x00529030    8b80405a2000
                          add                eax, dword ptr [esi + 0x0000011c]                    // 0x00529036    03861c010000
@@ -17562,7 +17562,7 @@ _jmp_addr_0x00529ae1:    mov                eax, 0x00000001                     
                          push               edi                                                  // 0x00529b15    57
                          mov.s              edi, ecx                                             // 0x00529b16    8bf9
                          push               esi                                                  // 0x00529b18    56
-                         call               _jmp_addr_0x00406a10                                 // 0x00529b19    e8f2ceedff
+                         call               ?Save@Abode@@UAEIPAVGameOSFile@@@Z                   // 0x00529b19    e8f2ceedff
                          test               eax, eax                                             // 0x00529b1e    85c0
                          {disp32} je        _jmp_addr_0x00529d4c                                 // 0x00529b20    0f8426020000
                          {disp32} mov       eax, dword ptr [edi + 0x00000120]                    // 0x00529b26    8b8720010000
@@ -17754,7 +17754,7 @@ _jmp_addr_0x00529d4c:    pop                edi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x10]                          // 0x00529d63    8b742410
                          mov.s              ebx, ecx                                             // 0x00529d67    8bd9
                          push               esi                                                  // 0x00529d69    56
-                         call               _jmp_addr_0x00406d20                                 // 0x00529d6a    e8b1cfedff
+                         call               ?Load@Abode@@UAEIPAVGameOSFile@@@Z                   // 0x00529d6a    e8b1cfedff
                          test               eax, eax                                             // 0x00529d6f    85c0
                          {disp32} je        _jmp_addr_0x00529fa6                                 // 0x00529d71    0f842f020000
                          push               ebp                                                  // 0x00529d77    55
@@ -18065,7 +18065,7 @@ _jmp_addr_0x0052a080:    {disp32} mov       eax, dword ptr [ecx + 0x00000120]   
                          push               esi                                                  // 0x0052a0b0    56
                          push               edi                                                  // 0x0052a0b1    57
                          mov.s              esi, ecx                                             // 0x0052a0b2    8bf1
-                         call               _jmp_addr_0x00404720                                 // 0x0052a0b4    e867a6edff
+                         call               ?Built@Abode@@UAE_NXZ                                // 0x0052a0b4    e867a6edff
                          push               esi                                                  // 0x0052a0b9    56
                          mov.s              edi, eax                                             // 0x0052a0ba    8bf8
                          call               _RequestChangeTexture__FP6Object                     // 0x0052a0bc    e82f8f0b00

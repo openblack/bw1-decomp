@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x0046c1b0
 .extern _jmp_addr_0x0046c2e0
 .extern _jmp_addr_0x0046d9d0
-.extern _jmp_addr_0x00515f70
+.extern ?Draw@Abode@@UAEXXZ
 .extern _jmp_addr_0x005167d0
 .extern _jmp_addr_0x00516840
 .extern _jmp_addr_0x00517f90
@@ -3056,7 +3056,7 @@ _jmp_addr_0x0051cc5f:    {disp32} mov       ecx, dword ptr [esi + 0x000000d4]   
                          push               0x0                                                  // 0x0051cc65    6a00
                          call               _jmp_addr_0x00719e90                                 // 0x0051cc67    e824d21f00
 _jmp_addr_0x0051cc6c:    mov.s              ecx, esi                                             // 0x0051cc6c    8bce
-                         call               _jmp_addr_0x00515f70                                 // 0x0051cc6e    e8fd92ffff
+                         call               ?Draw@Abode@@UAEXXZ                                  // 0x0051cc6e    e8fd92ffff
                          pop                esi                                                  // 0x0051cc73    5e
                          ret                                                                     // 0x0051cc74    c3
                          nop                                                                     // 0x0051cc75    90

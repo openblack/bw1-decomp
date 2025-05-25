@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x00482d40
 .extern _jmp_addr_0x00484300
 .extern _jmp_addr_0x004f4c50
-.extern _jmp_addr_0x00515f70
+.extern ?Draw@Abode@@UAEXXZ
 .extern _jmp_addr_0x00517080
 .extern _jmp_addr_0x0051a830
 .extern @GetCamera__5GGameFv@4
@@ -2249,7 +2249,7 @@ _jmp_addr_0x00519320:    xor.s              eax, eax                            
                          ret                0x0004                                        // 0x0051934b    c20400
                          nop                                                              // 0x0051934e    90
                          nop                                                              // 0x0051934f    90
-                         {disp32} jmp       _jmp_addr_0x00515f70                          // 0x00519350    e91bccffff
+                         {disp32} jmp       ?Draw@Abode@@UAEXXZ                           // 0x00519350    e91bccffff
                          nop                                                              // 0x00519355    90
                          nop                                                              // 0x00519356    90
                          nop                                                              // 0x00519357    90
