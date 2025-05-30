@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
+.extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00402b60
 .extern _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
@@ -167,9 +167,9 @@
 .globl _CanBecomeArtifact__9GameThingFv
 .globl _Get2DRadius__9GameThingFv
 .globl _GetRadius__9GameThingFv
-.globl _GetMesh__12MobileObjectCFv
+.globl ?GetMesh@Abode@@UBEHXZ
 .globl _GetResource__9GameThingF13RESOURCE_TYPE
-.globl _InsertMapObject__5AbodeFv
+.globl ?InsertMapObject@Abode@@UAEXXZ
 .globl _GetNumberOfInstanceForGlobalList__9GameThingFv
 .globl ?GetArrivePos@GameThingWithPos@@QAEPAUMapCoords@@XZ
 .globl ?GetCreatureBeliefType@GameThingWithPos@@UAEIXZ
@@ -316,7 +316,7 @@ _jmp_addr_0x00403190:    push               esi                                 
                          push               edx                                           // 0x004031ce    52
                          push               edi                                           // 0x004031cf    57
                          mov.s              ecx, eax                                      // 0x004031d0    8bc8
-                         call               @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36                          // 0x004031d2    e879e1ffff
+                         call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z                          // 0x004031d2    e879e1ffff
                          mov.s              esi, eax                                      // 0x004031d7    8bf0
                          test               esi, esi                                      // 0x004031d9    85f6
                          {disp8} je         _jmp_addr_0x004031e8                          // 0x004031db    740b
@@ -1636,7 +1636,7 @@ _jmp_addr_0x00403ed9:    pop                edi                                 
                          add                esp, 0x18                                     // 0x00403edb    83c418
                          ret                                                              // 0x00403ede    c3
                          nop                                                              // 0x00403edf    90
-_InsertMapObject__5AbodeFv:
+?InsertMapObject@Abode@@UAEXXZ:
                          {disp32} jmp       @InsertMapObject__13MultiMapFixedFv@4         // 0x00403ee0    e96ba71200
                          nop                                                              // 0x00403ee5    90
                          nop                                                              // 0x00403ee6    90
@@ -2828,7 +2828,7 @@ _jmp_addr_0x00404a8d:    pop                edi                                 
                          nop                                                              // 0x00404a9d    90
                          nop                                                              // 0x00404a9e    90
                          nop                                                              // 0x00404a9f    90
-_GetMesh__12MobileObjectCFv:
+?GetMesh@Abode@@UBEHXZ:
                          {disp8} mov        ecx, dword ptr [ecx + 0x28]                   // 0x00404aa0    8b4928
                          mov                eax, dword ptr [ecx]                          // 0x00404aa3    8b01
                          {disp8} jmp        dword ptr [eax + 0x2c]                        // 0x00404aa5    ff602c
@@ -4874,7 +4874,7 @@ _jmp_addr_0x00405890:    push               esi                                 
                          push               edx                                           // 0x004058d0    52
                          push               edi                                           // 0x004058d1    57
                          mov.s              ecx, esi                                      // 0x004058d2    8bce
-                         call               @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36                          // 0x004058d4    e877baffff
+                         call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z                          // 0x004058d4    e877baffff
                          push               edi                                           // 0x004058d9    57
                          mov.s              ecx, esi                                      // 0x004058da    8bce
                          mov                dword ptr [esi], 0x008aa8e4                   // 0x004058dc    c706e4a88a00

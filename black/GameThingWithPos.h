@@ -343,7 +343,7 @@ struct MapCoords* __fastcall GetPos__16GameThingWithPosFv(const struct GameThing
 // win1.41 00405260 mac 101c7ec0 GameThingWithPos::GetArrivePos(void)
 struct MapCoords* __fastcall GetArrivePos__16GameThingWithPosFv(const struct GameThingWithPos* this, const void* edx, struct MapCoords* param_1) asm("?GetArrivePos@GameThingWithPos@@QAEPAUMapCoords@@XZ");
 // win1.41 00401980 mac 103d18f0 GameThingWithPos::GetArriPhysicsEditorCreatevePos(int)
-void __fastcall* PhysicsEditorCreate__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?PhysicsEditorCreate@GameThingWithPos@@QAEXH@Z");
+void __fastcall PhysicsEditorCreate__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?PhysicsEditorCreate@GameThingWithPos@@QAEXH@Z");
 // win1.41 00405280 mac 103e5940 GameThingWithPos::GetCreatureBeliefType(void)
 uint32_t __fastcall GetCreatureBeliefType__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@GameThingWithPos@@UAEIXZ");
 // win1.41 00401990 mac 103e0cc0 GameThingWithPos::GetCreatureBeliefListType(void)

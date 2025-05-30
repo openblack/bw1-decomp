@@ -169,7 +169,7 @@
 .globl _globl_ct_0x0071a990
 .globl _globl_ct_0x0071a9b0
 .globl _CallVirtualFunctionsForCreation__16ShowNeedsVisualsFRC9MapCoords
-.globl _GetSampleForAttack__9GameThingFv
+.globl ?GetSampleForAttack@GameThing@@UAEIXZ
 
 start_0x00718060_0x0071bcd0:
 // Snippet: asm, [0x00718060, 0x0071bc9c)
@@ -5695,7 +5695,7 @@ _jmp_addr_0x0071bc0f:    pop                esi                                 
                          nop                                                              // 0x0071bc1d    90
                          nop                                                              // 0x0071bc1e    90
                          nop                                                              // 0x0071bc1f    90
-_GetSampleForAttack__9GameThingFv:
+?GetSampleForAttack@GameThing@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x0071bc20    33c0
                          ret                                                              // 0x0071bc22    c3
                          nop                                                              // 0x0071bc23    90
