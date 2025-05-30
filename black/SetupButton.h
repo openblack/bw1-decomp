@@ -33,6 +33,6 @@ void __fastcall MouseUp__10SetupButtonFiib(struct SetupButton* this, const void*
 // win1.41 00409920 mac 1034a2d0 SetupButton::KeyDown(int, int)
 void __fastcall KeyDown__11SetupButtonFii(struct SetupButton* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 00409940 mac 10594240 SetupButton::~SetupButton(void)
-struct SetupButton* __fastcall __dt__11SetupButtonFb(struct SetupButton* this, const void* edx, bool param_1);
+void __fastcall __dt__11SetupButtonFb(struct SetupButton* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_BUTTON_INCLUDED_H */

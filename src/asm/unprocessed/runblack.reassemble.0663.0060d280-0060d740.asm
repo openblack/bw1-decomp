@@ -77,7 +77,7 @@ _jmp_addr_0x0060d2e4:    {disp8} mov       eax, dword ptr [esp + 0x24]          
                          {disp8} mov       dword ptr [esp + 0x18], edx                 // 0x0060d2f4    89542418
                          {disp8} mov       edi, dword ptr [esp + 0x16]                 // 0x0060d2f8    8b7c2416
                          mov               dword ptr [esi], ebx                        // 0x0060d2fc    891e
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x33b95c]      // 0x0060d2fe    a15c19d000
+                         {disp32} mov      eax, dword ptr [_data_bytes_uint_0x00d0195c]      // 0x0060d2fe    a15c19d000
                          {disp8} mov       dword ptr [esp + 0x10], ebp                 // 0x0060d303    896c2410
                          {disp8} mov       ebx, dword ptr [esp + 0x12]                 // 0x0060d307    8b5c2412
                          and               edi, 0x0000ffff                             // 0x0060d30b    81e7ffff0000
@@ -88,7 +88,7 @@ _jmp_addr_0x0060d2e4:    {disp8} mov       eax, dword ptr [esp + 0x24]          
                          call              @InBounds__4GMapCFll@16                     // 0x0060d31f    e86c530000
                          test              eax, eax                                    // 0x0060d324    85c0
                          {disp8} je        _jmp_addr_0x0060d349                        // 0x0060d326    7421
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x33b95c]      // 0x0060d328    8b0d5c19d000
+                         {disp32} mov      ecx, dword ptr [_data_bytes_uint_0x00d0195c]      // 0x0060d328    8b0d5c19d000
                          push              edi                                         // 0x0060d32e    57
                          push              ebx                                         // 0x0060d32f    53
                          add               ecx, 0x000059b8                             // 0x0060d330    81c1b8590000

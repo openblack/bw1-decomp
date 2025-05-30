@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x007bda90
 .extern @Close__6LHFileFv@4
 .extern @GetSegment__6LHFileFPcP9LHSegmenti@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 .extern _jmp_addr_0x007c7ae0
@@ -23772,7 +23772,7 @@ _jmp_addr_0x0080a090:    {disp8} mov        eax, dword ptr [ebx + 0x10]         
                          or                 dl, 1                                          // 0x0080a0ab    80ca01
                          push               0x0080ac20                                     // 0x0080a0ae    6820ac8000
                          {disp32} mov       byte ptr [data_bytes + 0x4d6e00], dl           // 0x0080a0b3    881500cee900
-                         call               _jmp_addr_0x007c5791                           // 0x0080a0b9    e8d3b6fbff
+                         call               _atexit@4                                      // 0x0080a0b9    e8d3b6fbff
                          add                esp, 0x04                                      // 0x0080a0be    83c404
 _jmp_addr_0x0080a0c1:    {disp8} mov        eax, dword ptr [esp + 0x78]                    // 0x0080a0c1    8b442478
                          test               eax, eax                                       // 0x0080a0c5    85c0

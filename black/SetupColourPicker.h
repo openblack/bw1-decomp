@@ -45,6 +45,6 @@ void __fastcall Click__17SetupColourPickerFii(struct SetupColourPicker* this, co
 // win1.41 00410b30 mac 1034f250 SetupColourPicker::KeyDown(int, int)
 void __fastcall KeyDown__17SetupColourPickerFii(struct SetupColourPicker* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 00410b60 mac 10571d70 SetupColourPicker::~SetupColourPicker(void)
-struct SetupColourPicker* __fastcall __dt__17SetupColourPickerFb(struct SetupColourPicker* this, const void* edx, bool param_1);
+void __fastcall __dt__17SetupColourPickerFb(struct SetupColourPicker* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_COLOUR_PICKER_INCLUDED_H */

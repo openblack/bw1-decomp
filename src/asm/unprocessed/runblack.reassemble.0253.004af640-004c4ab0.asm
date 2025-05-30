@@ -68,7 +68,7 @@
 .extern @GetAbode__8VillagerFv@4
 .extern @GetTotemPos__11WorshipSiteFv@12
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 .extern _fscanf_10LHFilePath
 .extern _getc_10LHFilePath
@@ -26941,7 +26941,7 @@ _jmp_addr_0x004c33b4:    {disp32} jmp       _jmp_addr_0x004c33c0                
                          nop                                                                     // 0x004c33be    90
                          nop                                                                     // 0x004c33bf    90
 _jmp_addr_0x004c33c0:    push               0x00407870                                           // 0x004c33c0    6870784000
-                         call               _jmp_addr_0x007c5791                                 // 0x004c33c5    e8c7233000
+                         call               _atexit@4                                            // 0x004c33c5    e8c7233000
                          pop                ecx                                                  // 0x004c33ca    59
                          ret                                                                     // 0x004c33cb    c3
                          nop                                                                     // 0x004c33cc    90
@@ -28749,7 +28749,7 @@ _jmp_addr_0x004c4334:    {disp32} jmp       _jmp_addr_0x004c4340                
                          nop                                                                     // 0x004c433e    90
                          nop                                                                     // 0x004c433f    90
 _jmp_addr_0x004c4340:    push               0x00407870                                           // 0x004c4340    6870784000
-                         call               _jmp_addr_0x007c5791                                 // 0x004c4345    e847143000
+                         call               _atexit@4                                            // 0x004c4345    e847143000
                          pop                ecx                                                  // 0x004c434a    59
                          ret                                                                     // 0x004c434b    c3
                          nop                                                                     // 0x004c434c    90
@@ -29280,7 +29280,7 @@ _jmp_addr_0x004c4904:    {disp32} jmp       _jmp_addr_0x004c4910                
                          nop                                                                     // 0x004c490e    90
                          nop                                                                     // 0x004c490f    90
 _jmp_addr_0x004c4910:    push               0x00407870                                           // 0x004c4910    6870784000
-                         call               _jmp_addr_0x007c5791                                 // 0x004c4915    e8770e3000
+                         call               _atexit@4                                            // 0x004c4915    e8770e3000
                          pop                ecx                                                  // 0x004c491a    59
                          ret                                                                     // 0x004c491b    c3
                          nop                                                                     // 0x004c491c    90

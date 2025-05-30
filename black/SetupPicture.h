@@ -53,6 +53,6 @@ void __fastcall Click__12SetupPictureFii(struct SetupPicture* this, const void* 
 // win1.41 004106f0 mac 100fe9d0 SetupPicture::KeyDown(int, int)
 void __fastcall KeyDown__12SetupPictureFii(struct SetupPicture* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 00410720 mac 1034f1b0 SetupPicture::~SetupPicture(void)
-struct SetupPicture* __fastcall __dt__12SetupPictureFb(struct SetupPicture* this, const void* edx, bool param_1);
+void __fastcall __dt__12SetupPictureFb(struct SetupPicture* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_PICTURE_INCLUDED_H */

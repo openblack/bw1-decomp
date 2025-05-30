@@ -15,10 +15,10 @@ struct LHPoint;
 struct BaseVftable
 {
   void (__fastcall* Serialise)(struct Base* this, const void* edx, struct Archive* param_1);  /* 0x0 */
-  struct Base* (__fastcall* __dt)(struct Base* this, const void* edx, uint8_t param_1);
+  void (__fastcall* __dt)(struct Base* this, const void* edx, uint8_t param_1);
   void (__fastcall* Delete)(struct Base* this, const void* edx, int param_1);
   void (__fastcall* ToBeDeleted)(struct Base* this, const void* edx, int param_1);
-  uint32_t (__fastcall* Get3DSoundPos)(struct Base* this, const void* edx, struct LHPoint* pos);  /* 0x10 */
+  int (__fastcall* Get3DSoundPos)(struct Base* this, const void* edx, struct LHPoint* pos);  /* 0x10 */
   void (__fastcall* CleanUpForSerialisation)(struct Base* this);
   void (__fastcall* Dump)(struct Base* this);
 };
@@ -31,7 +31,11 @@ struct Base
 };
 static_assert(sizeof(struct Base) == 0x8, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__4Base = (struct BaseVftable* const)0x008a9a44;
+// win1.41 008a9a40 mac 10733fb4 Base::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Base asm("??_R4Base@@6B@");
+
+// win1.41 008a9a44 mac 10734004 Base::`vftable'
+extern const struct BaseVftable __vt__4Base asm("??_7Base@@6B@");
 
 // Static methods
 
@@ -51,18 +55,18 @@ void __fastcall SetInfo__4BaseCFP8BaseInfo(const struct Base* this, const void* 
 // Override methods
 
 // win1.41 004011b0 mac 101228f0 Base::Serialise(Archive&)
-void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, struct Archive* param_1);
+void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, struct Archive* param_1) asm("?Serialise@Base@@UAEXAAVArchive@@@Z");
 // win1.41 00401210 mac 10082770 Base::~Base(void)
-struct Base* __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_t param_1);
+void __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1Base@@UAE@XZ");
 // win1.41 004011c0 mac 1056ecc0 Base::Delete(int)
-void __fastcall Delete__4BaseFi(struct Base* this, const void* edx, int param_1);
+void __fastcall Delete__4BaseFi(struct Base* this, const void* edx, int param_1) asm("?Delete@Base@@UAEXH@Z");
 // win1.41 004011d0 mac 1032b070 Base::ToBeDeleted(int)
-void __fastcall ToBeDeleted__4BaseFi(struct Base* this, const void* edx, int param_1);
+void __fastcall ToBeDeleted__4BaseFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Base@@UAEXH@Z");
 // win1.41 004011e0 mac 1032b3d0 Base::Get3DSoundPos(LHPoint*)
-void __fastcall Get3DSoundPos__4BaseFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1);
+int __fastcall Get3DSoundPos__4BaseFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1) asm("?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z");
 // win1.41 004011f0 mac 1032cbf0 Base::CleanUpForSerialisation(void)
-void __fastcall CleanUpForSerialisation__4BaseFv(struct Base* this);
+void __fastcall CleanUpForSerialisation__4BaseFv(struct Base* this) asm("?CleanUpForSerialisation@Base@@UAEXXZ");
 // win1.41 00401200 mac 106fc7f0 Base::Dump(void)
-void __fastcall Dump__4BaseFv(struct Base* this);
+void __fastcall Dump__4BaseFv(struct Base* this) asm("?Dump@Base@@UAEXXZ");
 
 #endif /* BW1_DECOMP_BASE_INCLUDED_H */

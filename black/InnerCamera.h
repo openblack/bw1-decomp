@@ -122,6 +122,6 @@ void __fastcall FocusOnSubMesh__11InnerCameraFP8LH3DMeshifff(struct InnerCamera*
 // win1.41 007957c0 mac 1053ada0 InnerCamera::TriggerIntro(bool, Zoomer3d *, Zoomer3d *)
 void __fastcall TriggerIntro__11InnerCameraFbP8Zoomer3dP8Zoomer3d(struct InnerCamera* this, const void* edx, bool param_1, struct Zoomer3d* param_2, struct Zoomer3d* param_3);
 // win1.41 007974d0 mac 10539320 InnerCamera::__dt(void)
-struct InnerCamera* __fastcall __dt__11InnerCameraFv(struct InnerCamera* this);
+void __fastcall __dt__11InnerCameraFv(struct InnerCamera* this);
 
 #endif /* BW1_DECOMP_INNER_CAMERA_INCLUDED_H */

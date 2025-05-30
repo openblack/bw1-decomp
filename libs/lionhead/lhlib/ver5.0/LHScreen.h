@@ -2,7 +2,12 @@
 #define BW1_DECOMP_LH_SCREEN_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpragma-pack"
+#pragma clang diagnostic ignored "-Wmacro-redefined"
+#pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <ddraw.h> /* For IDirectDraw7, IDirectDrawClipper, IDirectDrawSurface7 */
+#pragma clang diagnostic pop
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 

@@ -70,6 +70,8 @@
 .globl _WIN_MAIN_BETA_PATCH_REG_KEY
 .globl _WIN_MAIN_LIONHEAD_REG_ADDR
 
+.globl _data_bytes_uint_0x00d0195c
+
 data_bytes:
 _data_bytes:
 ___xc_a:
@@ -92,7 +94,7 @@ ___xc_a:
 .long _globl_ct_0x00401040                                                                                         // [0x40] 0x009c6000 + 0x40 = 0x009c6040
 .long _globl_ct_0x00401070
 .long _globl_ct_0x00401120
-.long _globl_ct_0x00401170
+.long ___CRTInit_GAbodeInfoArray
 .long _globl_ct_0x00407840                                                                                         // [0x50] 0x009c6000 + 0x50 = 0x009c6050
 .long _globl_ct_0x00407880
 .long _globl_ct_0x004078b0
@@ -19319,3 +19321,5 @@ ASCIZ_ALIGNED "Added PNG Support" 4                                             
 
 .asciz "YyHhTtMM"                                                                                                  // [0x265f4f] 0x009c6000 + 0x265f4f = 0x00c2bf4f
 .byte 0xe8, 0x3f, 0xe8, 0x00, 0x74, 0xba, 0xc2, 0x00                                                               // [0x265f58] 0x009c6000 + 0x265f58 = 0x00c2bf58
+
+.set _data_bytes_uint_0x00d0195c, 0x00d0195c

@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x004726b0
 .extern _jmp_addr_0x004726d0
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 
@@ -221,7 +221,7 @@ _jmp_addr_0x00471963:    push             esi                                   
                          test             bl, bl                                        // 0x0047199e    84db
                          pop              ebx                                           // 0x004719a0    5b
                          {disp8} je       _jmp_addr_0x004719c6                          // 0x004719a1    7423
-                         {disp32} mov     ecx, dword ptr [data_bytes + 0x33b95c]        // 0x004719a3    8b0d5c19d000
+                         {disp32} mov     ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x004719a3    8b0d5c19d000
                          {disp32} mov     ecx, dword ptr [ecx + 0x00250300]             // 0x004719a9    8b8900032500
                          call             _jmp_addr_0x00471760                          // 0x004719af    e8acfdffff
                          cmp              eax, -0x01                                    // 0x004719b4    83f8ff
@@ -282,7 +282,7 @@ _jmp_addr_0x00471a34:    {disp32} jmp     _jmp_addr_0x00471a40                  
                          nop                                                            // 0x00471a3e    90
                          nop                                                            // 0x00471a3f    90
 _jmp_addr_0x00471a40:    push             0x00407870                                    // 0x00471a40    6870784000
-                         call             _jmp_addr_0x007c5791                          // 0x00471a45    e8473d3500
+                         call             _atexit@4                                     // 0x00471a45    e8473d3500
                          pop              ecx                                           // 0x00471a4a    59
                          ret                                                            // 0x00471a4b    c3
                          nop                                                            // 0x00471a4c    90

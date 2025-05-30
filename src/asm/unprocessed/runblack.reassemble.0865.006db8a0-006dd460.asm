@@ -41,7 +41,7 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _operator_new
 .extern _LHRand__FlRU
 
@@ -1333,7 +1333,7 @@ _jmp_addr_0x006dc420:    sub                esp, 0x18                           
                          {disp32} mov       ecx, dword ptr [eax * 0x8 + 0x00c0986c]        // 0x006dc518    8b0cc56c98c000
                          {disp32} mov       edx, dword ptr [eax * 0x8 + 0x00c09868]        // 0x006dc51f    8b14c56898c000
                          push               ecx                                            // 0x006dc526    51
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x33b95c]         // 0x006dc527    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]         // 0x006dc527    8b0d5c19d000
                          push               edx                                            // 0x006dc52d    52
                          push               0x11                                           // 0x006dc52e    6a11
                          call               @MyInterface__5GGameFv@4                       // 0x006dc530    e81b93e7ff
@@ -1739,7 +1739,7 @@ _jmp_addr_0x006dc99c:    mov                dword ptr [eax], edx                
                          nop                                                               // 0x006dc9ae    90
                          nop                                                               // 0x006dc9af    90
 _jmp_addr_0x006dc9b0:    push               0x006dc9c0                                     // 0x006dc9b0    68c0c96d00
-                         call               _jmp_addr_0x007c5791                           // 0x006dc9b5    e8d78d0e00
+                         call               _atexit@4                                      // 0x006dc9b5    e8d78d0e00
                          pop                ecx                                            // 0x006dc9ba    59
                          ret                                                               // 0x006dc9bb    c3
                          nop                                                               // 0x006dc9bc    90

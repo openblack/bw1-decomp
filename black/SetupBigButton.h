@@ -35,6 +35,6 @@ void __fastcall Draw__14SetupBigButtonFbb(struct SetupBigButton* this, const voi
 // win1.41 0040d2f0 mac 101689f0 SetupBigButton::KeyDown(int, int)
 void __fastcall KeyDown__14SetupBigButtonFii(struct SetupBigButton* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040d360 mac 1010fca0 SetupBigButton::~SetupBigButton(void)
-struct SetupBigButton* __fastcall __dt__14SetupBigButtonFb(struct SetupBigButton* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupBigButtonFb(struct SetupBigButton* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_BIG_BUTTON_INCLUDED_H */

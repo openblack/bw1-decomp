@@ -38,6 +38,6 @@ void __fastcall Click__13SetupCheckBoxFii(struct SetupCheckBox* this, const void
 // win1.41 00411050 mac 10599580 SetupCheckBox::KeyDown(int, int)
 void __fastcall KeyDown__13SetupCheckBoxFii(struct SetupCheckBox* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 00411070 mac 105893e0 SetupCheckBox::~SetupCheckBox(void)
-struct SetupCheckBox* __fastcall __dt__13SetupCheckBoxFb(struct SetupCheckBox* this, const void* edx, bool param_1);
+void __fastcall __dt__13SetupCheckBoxFb(struct SetupCheckBox* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_CHECK_BOX_INCLUDED_H */

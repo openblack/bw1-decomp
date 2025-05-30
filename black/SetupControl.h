@@ -91,6 +91,6 @@ void __fastcall KeyDown__12SetupControlFii(struct SetupControl* this, const void
 // win1.41 00409390 mac 105049b0 SetupControl::Char(int)
 void __fastcall Char__12SetupControlFi(struct SetupControl* this, const void* edx, int character);
 // win1.41 004093a0 mac 100c48e0 SetupControl::~SetupControl(bool)
-struct SetupControl* __fastcall __dt__12SetupControlFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__12SetupControlFb(struct SetupControl* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_CONTROL_INCLUDED_H */

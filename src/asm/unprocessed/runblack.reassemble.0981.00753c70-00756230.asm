@@ -18,10 +18,10 @@
 .extern _jmp_addr_0x005eed20
 .extern @SetupMoveToWithHug__6LivingFRC9MapCoordsUc@13
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
-.extern _jmp_addr_0x00638580
-.extern _jmp_addr_0x00638590
-.extern _jmp_addr_0x006385a0
-.extern _jmp_addr_0x006385b0
+.extern ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
+.extern ?GetQueryLastEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
+.extern ?GetFOVHelpMessageSet@Object@@UAEIXZ
+.extern ?GetFOVHelpCondition@Object@@UAEIXZ
 .extern _GameRand__5GRandFl
 .extern _GameFloatRand__5GRandFf
 .extern @GetStoragePit__4TownFv@4
@@ -349,7 +349,7 @@ _jmp_addr_0x00753f7b:    cmp               eax, 0x08                            
                          pop               esi                                           // 0x00753f85    5e
                          ret                                                             // 0x00753f86    c3
 _jmp_addr_0x00753f87:    mov.s             ecx, esi                                      // 0x00753f87    8bce
-                         call              _jmp_addr_0x00638580                          // 0x00753f89    e8f245eeff
+                         call              ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ                          // 0x00753f89    e8f245eeff
 _jmp_addr_0x00753f8e:    pop               esi                                           // 0x00753f8e    5e
                          ret                                                             // 0x00753f8f    c3
                          push              esi                                           // 0x00753f90    56
@@ -394,7 +394,7 @@ _jmp_addr_0x00753ff0:    cmp               eax, 0x08                            
                          pop               esi                                           // 0x00753ffb    5e
                          ret                                                             // 0x00753ffc    c3
 _jmp_addr_0x00753ffd:    mov.s             ecx, esi                                      // 0x00753ffd    8bce
-                         call              _jmp_addr_0x00638590                          // 0x00753fff    e88c45eeff
+                         call              ?GetQueryLastEnumText@Object@@UAE?AW4HELP_TEXT@@XZ                          // 0x00753fff    e88c45eeff
                          pop               edi                                           // 0x00754004    5f
                          pop               esi                                           // 0x00754005    5e
                          ret                                                             // 0x00754006    c3
@@ -425,7 +425,7 @@ _jmp_addr_0x00754049:    mov.s             eax, edi                             
                          ret                                                             // 0x0075404d    c3
                          nop                                                             // 0x0075404e    90
                          nop                                                             // 0x0075404f    90
-                         {disp32} jmp      _jmp_addr_0x006385a0                          // 0x00754050    e94b45eeff
+                         {disp32} jmp      ?GetFOVHelpMessageSet@Object@@UAEIXZ          // 0x00754050    e94b45eeff
                          nop                                                             // 0x00754055    90
                          nop                                                             // 0x00754056    90
                          nop                                                             // 0x00754057    90
@@ -437,7 +437,7 @@ _jmp_addr_0x00754049:    mov.s             eax, edi                             
                          nop                                                             // 0x0075405d    90
                          nop                                                             // 0x0075405e    90
                          nop                                                             // 0x0075405f    90
-                         {disp32} jmp      _jmp_addr_0x006385b0                          // 0x00754060    e94b45eeff
+                         {disp32} jmp      ?GetFOVHelpCondition@Object@@UAEIXZ           // 0x00754060    e94b45eeff
                          nop                                                             // 0x00754065    90
                          nop                                                             // 0x00754066    90
                          nop                                                             // 0x00754067    90
