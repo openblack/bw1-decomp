@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
+.extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
@@ -26504,7 +26504,7 @@ _jmp_addr_0x00778de0:    {disp32} fld       dword ptr [rdata_bytes + 0xf2b10]   
                          push               edx                                             // 0x00778e24    52
                          push               eax                                             // 0x00778e25    50
                          mov.s              ecx, esi                                        // 0x00778e26    8bce
-                         call               @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36                            // 0x00778e28    e82385c8ff
+                         call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z                            // 0x00778e28    e82385c8ff
                          mov.s              ecx, esi                                        // 0x00778e2d    8bce
                          mov                dword ptr [esi], 0x008df96c                     // 0x00778e2f    c7066cf98d00
                          call               @SetZero__6WonderFv@4                           // 0x00778e35    e826020000

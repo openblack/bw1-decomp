@@ -91,7 +91,11 @@ struct Abode
 };
 static_assert(sizeof(struct Abode) == 0xc4, "Data type is of wrong size");
 
-static struct AbodeVftable* const __vt__5Abode = (struct AbodeVftable* const)0x008a9a64;
+// win1.41 008a9a60 mac 1073480c Abode::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Abode asm("??_R4Abode@@6B@");
+
+// win1.41 008a9a64 mac 10734814 Abode::`vftable'
+extern const struct AbodeVftable __vt__5Abode asm("??_7GAbode@@6B@");
 
 // Static methods
 
@@ -101,7 +105,7 @@ struct Abode* __cdecl Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii(c
 // Constructors
 
 // win1.41 00401350 mac 1033b330 Abode::Abode(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Abode* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood);
+struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Abode* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood) asm("??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Non-virtual methods
 
@@ -131,7 +135,7 @@ struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const
 // Override methods
 
 // win1.41 004017c0 mac 103d4980 Abode::_dt(void)
-struct Base * __fastcall __dt__5AbodeFv(struct Base* this, const void* edx, uint8_t param_1) asm("??_DAbode@@QAEXXZ");
+void __fastcall __dt__5AbodeFv(struct Base* this, const void* edx, uint8_t param_1) asm("??_DAbode@@QAEXXZ");
 // win1.41 00402c10 mac 1033b510 Abode::Delete(void)
 void __fastcall Delete__5AbodeFv(struct Base* this, const void* edx, int param_1) asm("?Delete@Abode@@UAEXH@Z");
 // win1.41 00402c60 mac 100c6f40 Abode::ToBeDeleted(int)
@@ -195,7 +199,7 @@ uint32_t __fastcall GetScriptObjectType__5AbodeFv(struct GameThingWithPos* this)
 // win1.41 00402cb0 mac 10570ad0 Abode::DestroyedByBeam(void)
 void __fastcall DestroyedByBeam__5AbodeFv(struct Object* this) asm("?DestroyedByBeam@Abode@@UAEXXZ");
 // win1.41 00403ee0 mac 1036edb0 Abode::InsertMapObject(void)
-void __fastcall InsertMapObject__5AbodeFv(struct Abode* this);
+void __fastcall InsertMapObject__5AbodeFv(struct Object* this) asm("?InsertMapObject@Abode@@UAEXXZ");
 // win1.41 00402cf0 mac 101c66a0 Abode::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
 bool __fastcall GetPSysFireLocalRndFlamePos__5AbodeFP7LHPointPl(struct Object* this, const void* edx, struct LHPoint* point, int32_t* param_2) asm("?GetPSysFireLocalRndFlamePos@Abode@@UAE_NPAULHPoint@@PAH@Z");
 // win1.41 00405d90 mac 10097be0 Abode::ReduceLife(float, GPlayer *)
@@ -206,12 +210,14 @@ void __fastcall IncreaseLife__5AbodeFf(struct Object* this, const void* edx, flo
 uint32_t __fastcall DestroyedByEffect__5AbodeFP7GPlayerf(struct Object* this, const void* edx, struct GPlayer* player, float param_2) asm("?DestroyedByEffect@Abode@@UAEIPAVGPlayer@@M@Z");
 // win1.41 00404440 mac 1004fcb0 Abode::Process(void)
 uint32_t __fastcall Process__5AbodeFv(struct Object* this) asm("?Process@Abode@@UAEIXZ");
+// win1.41 00515f70 mac 100ac700 Abode::GetMesh(void) const
+int __fastcall GetMesh__5AbodeCFv(const struct Object* this) asm("?GetMesh@Abode@@UBEHXZ");
 // win1.41 00515f70 mac 10036a60 Abode::Draw(void)
 void __fastcall Draw__5AbodeFv(struct Object* this) asm("?Draw@Abode@@UAEXXZ");
 // win1.41 00407170 mac 1034ec40 Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 uint32_t __fastcall GetDiscipleStateIfInteractedWith__5AbodeFP16GInterfaceStatusP8Villager(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct Villager* villager) asm("?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z");
 // win1.41 00403200 mac 10576c70 Abode::CallVirtualFunctionsForCreation(const MapCoords&)
-void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Abode* this, const void* edx, const struct MapCoords* coords);
+void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords);
 // win1.41 00406820 mac 1049b920 Abode::InterfaceValidToTap(GInterfaceStatus *)
 uint32_t __fastcall InterfaceValidToTap__5AbodeFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?InterfaceValidToTap@Abode@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 00406830 mac 102fed90 Abode::InterfaceTap(GInterfaceStatus *)

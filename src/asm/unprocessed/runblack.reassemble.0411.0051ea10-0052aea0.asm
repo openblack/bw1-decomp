@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
+.extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00402b60
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
@@ -14712,7 +14712,7 @@ _jmp_addr_0x00527dbd:    mov.s              eax, esi                            
                          push               eax                                                  // 0x00527df6    50
                          push               ecx                                                  // 0x00527df7    51
                          mov.s              ecx, esi                                             // 0x00527df8    8bce
-                         call               @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36// 0x00527dfa    e85195edff
+                         call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z// 0x00527dfa    e85195edff
                          {disp8} mov        edx, dword ptr [esp + 0x14]                          // 0x00527dff    8b542414
                          xor.s              ebx, ebx                                             // 0x00527e03    33db
                          {disp32} mov       dword ptr [esi + 0x000000c4], ebx                    // 0x00527e05    899ec4000000
