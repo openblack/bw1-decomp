@@ -129,7 +129,7 @@ struct ObjectVftable
   uint32_t (__fastcall* Process)(struct Object* this);
   uint32_t (__fastcall* ProcessBySpell)(struct Object* this, const void* edx, struct Spell* spell);  /* 0x600 */
   void (__fastcall* ApplySingleEffect)(struct Object* this, const void* edx, enum EFFECT_TYPE param_1, float param_2, struct GameThing* param_3, const struct MapCoords* param_4);
-  int (__fastcall* GetMesh)(struct Object* this);
+  int (__fastcall* GetMesh)(const struct Object* this);
   int (__fastcall* GetDetailMesh)(struct Object* this, const void* edx, int detail);
   void (__fastcall* Draw)(struct Object* this);  /* 0x610 */
   void (__fastcall* DrawOutOfMap)(struct Object* this, const void* edx, bool param_1);
@@ -357,7 +357,7 @@ float __fastcall GetLife__6ObjectFv(const struct GameThingWithPos* this) asm("?G
 // win1.41 00402520 mac 10044cb0 Object::GetScale(void)
 float __fastcall GetScale__6ObjectFv(const struct GameThingWithPos* this) asm("?GetScale@Object@@UAEMXZ");
 // win1.41 00639200 mac 103d3c80 Object::SetScale(float)
-void __fastcall SetScale__6ObjectFf(struct Object* this, const void* edx, float scale);
+void __fastcall SetScale__6ObjectFf(struct GameThingWithPos* this, const void* edx, float scale);
 // win1.41 004027c0 mac 103d58a0 Object::GetDistanceFromObject(MapCoords &)
 float __fastcall GetDistanceFromObject__6ObjectFRC9MapCoords(const struct GameThingWithPos* this, const void* edx, struct MapCoords* target) asm("?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z");
 // win1.41 006394e0 mac 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
@@ -369,7 +369,7 @@ bool __fastcall IsObjectInMap__6ObjectFP7MapCell(struct GameThingWithPos* this) 
 // win1.41 0063a780 mac 103d07e0 Object::IsDrowning(void)
 bool __fastcall IsDrowning__6ObjectFv(struct GameThingWithPos* this) asm("?IsDrowning@Object@@UAE_NXZ");
 // win1.41 006377f0 mac 103d6d80 Object::CleanupWhenDeleted(int)
-void __fastcall CleanupWhenDeleted__6ObjectFi(struct Object* this, const void* edx, int param_1);
+void __fastcall CleanupWhenDeleted__6ObjectFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?CleanupWhenDeleted@Object@@UAEXH@Z");
 // win1.41 00639860 mac 103d3840 Object::GetImpressiveValue(Living *, Reaction *)
 float __fastcall GetImpressiveValue__6ObjectFP6LivingP8Reaction(struct GameThingWithPos* this, const void* edx, struct Living* param_1, struct Reaction* param_2) asm("?GetImpressiveValue@Object@@UAEMPAVLiving@@PAVReaction@@@Z");
 // win1.41 00639940 mac 103d2cf0 Object::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
@@ -569,7 +569,7 @@ uint32_t __fastcall ProcessBySpell__6ObjectFP5Spell(struct Object* this, const v
 // win1.41 00637ff0 mac 103d57e0 Object::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
 void __fastcall ApplySingleEffect__6ObjectF11EFFECT_TYPEfP9GameThingRC9MapCoords(struct Object* this, const void* edx, enum EFFECT_TYPE param_1, float param_2, struct GameThing* param_3, const struct MapCoords* param_4) asm("?ApplySingleEffect@Object@@UAEXW4EFFECT_TYPE@@MPAVGameThing@@PBUMapCoords@@@Z");
 // win1.41 00425340 mac 10368d70 Object::GetMesh( const(void))
-int __fastcall GetMesh__6ObjectCFv(struct Object* this) asm("?GetMesh@Object@@UAEHXZ");
+int __fastcall GetMesh__6ObjectCFv(const struct Object* this) asm("?GetMesh@Object@@UAEHXZ");
 // win1.41 00402660 mac 10368ae0 Object::GetDetailMesh( const(DETAIL_LEVEL))
 int __fastcall GetDetailMesh__6ObjectCF12DETAIL_LEVEL(struct Object* this, const void* edx, int detail) asm("?GetDetailMesh@Object@@UAEHH@Z");
 // win1.41 004648b0 mac 100e33f0 Object::Draw(void)

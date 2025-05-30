@@ -60,7 +60,7 @@ static_assert(sizeof(struct GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 // win1.41 008a99f4 mac 107346c4 GAbodeInfo::`RTTI Complete Object Locator'
 extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GAbodeInfo asm("??_R4GAbodeInfo@@6B@");
 
-// win1.41 008a99f8 mac 107346d4 GAbodeInfo::`vftable'
+// win1.41 008a99f8 mac 107346cc GAbodeInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbodeInfo@@6B@");
 
 // Static methods

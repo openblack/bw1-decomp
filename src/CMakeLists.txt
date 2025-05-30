@@ -69,6 +69,7 @@ set(SOURCES_001
     c/Base.001.c
     c/ObjectInfo.000.c
     c/AbodeInfo.003.c
+    c/Abode.000.c
 
     asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
 

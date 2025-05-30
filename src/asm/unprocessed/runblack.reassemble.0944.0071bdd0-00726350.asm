@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
+.extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern _jmp_addr_0x00402b60
 .extern @SetZero__5AbodeFv@4
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
@@ -437,12 +437,12 @@
 .globl _globl_ct_0x00727e90
 .globl _globl_ct_0x00727ec0
 .globl _globl_ct_0x00727ef0
-.globl _GetGuidanceResourceType__9GameThingFv
+.globl ?GetGuidanceResourceType@GameThing@@UAEIXZ
 .globl _CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords
 
 start_0x0071bdd0_0x00728570:
 // Snippet: asm, [0x0071bdd0, 0x0072853b)
-_GetGuidanceResourceType__9GameThingFv:
+?GetGuidanceResourceType@GameThing@@UAEIXZ:
                          xor.s              eax, eax                                             // 0x0071bdd0    33c0
                          ret                                                                     // 0x0071bdd2    c3
                          nop                                                                     // 0x0071bdd3    90
@@ -10589,7 +10589,7 @@ _jmp_addr_0x00722730:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          push               edx                                                  // 0x0072275d    52
                          push               eax                                                  // 0x0072275e    50
                          mov.s              ecx, esi                                             // 0x0072275f    8bce
-                         call               @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36// 0x00722761    e8eaebcdff
+                         call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z// 0x00722761    e8eaebcdff
                          mov.s              ecx, esi                                             // 0x00722766    8bce
                          mov                dword ptr [esi], 0x00981078                          // 0x00722768    c70678109800
                          call               _jmp_addr_0x007227b0                                 // 0x0072276e    e83d000000

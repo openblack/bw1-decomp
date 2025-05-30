@@ -268,27 +268,27 @@ void __fastcall RemoveDance__9GameThingFv(struct GameThing* this);
 // win1.41 00401810 mac 100512d0 GameThing::IsAvailable(void)
 bool __fastcall IsAvailable__9GameThingFv(struct GameThing* this);
 // win1.41 00401830 mac 1002c400 GameThing::IsCreature(void)
-bool __fastcall IsCreature__9GameThingFv(struct GameThing* this);
+bool __fastcall IsCreature__9GameThingFv(struct GameThing* this) asm("?IsCreature@GameThing@@UAE_NXZ");
 // win1.41 00401820 mac 10494880 GameThing::IsCreature(Creature *)
 bool __fastcall IsCreature2__9GameThingFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1);
 // win1.41 00401840 mac 104948c0 GameThing::IsCreatureNotTooNear(Creature *)
-bool __fastcall IsCreatureNotTooNear__9GameThingFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1);
+bool __fastcall IsCreatureNotTooNear__9GameThingFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z");
 // win1.41 00405130 mac 10169a70 GameThing::GetDrawImportance(void)
 float __fastcall GetDrawImportance__9GameThingFv(struct GameThing* this);
 // win1.41 00401850 mac 10428ff0 GameThing::GetMaxAlignmentChangePerGameTurn(void)
-float __fastcall GetMaxAlignmentChangePerGameTurn__9GameThingFv(struct GameThing* this);
+float __fastcall GetMaxAlignmentChangePerGameTurn__9GameThingFv(struct GameThing* this) asm("?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ");
 // win1.41 00401860 mac 10425a40 GameThing::GetComputerSeen(void)
-bool __fastcall GetComputerSeen__9GameThingFv(struct GameThing* this);
+bool __fastcall GetComputerSeen__9GameThingFv(struct GameThing* this) asm("?GetComputerSeen@GameThing@@UAE_NXZ");
 // win1.41 0056ff10 mac 103c22d0 GameThing::GetTown(void)
 struct Town* __fastcall GetTown__9GameThingFv(struct GameThing* this);
 // win1.41 00401870 mac 103f1450 GameThing::GetVillagerActivityDesire(Villager *)
 float __fastcall GetVillagerActivityDesire__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1);
 // win1.41 00401880 mac 10389ac0 GameThing::SetVillagerActivity(Villager *)
-void __fastcall SetVillagerActivity__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1);
+void __fastcall SetVillagerActivity__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1) asm("?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z");
 // win1.41 00401890 mac 1037f2e0 GameThing::UpdateVillagerActivityEffect(Villager *)
 uint32_t __fastcall UpdateVillagerActivityEffect__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1);
 // win1.41 0056fed0 mac 10160960 GameThing::MaintainSpell(Spell *, float)
-void __fastcall MaintainSpell__9GameThingFP5Spellf(struct GameThing* this, const void* edx, uint32_t param_1, float param_2);
+void __fastcall MaintainSpell__9GameThingFP5Spellf(struct GameThing* this, const void* edx, uint32_t param_1, float param_2) asm("?MaintainSpell@GameThing@@UAEXIM@Z");
 // win1.41 0056fee0 mac 100fc510 GameThing::UpdateSpellInfo(Spell *, PSysProcessInfo *)
 void __fastcall UpdateSpellInfo__9GameThingFP5SpellP15PSysProcessInfo(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2);
 // win1.41 00405140 mac 104e9450 GameThing::GetRadius(void)
@@ -330,15 +330,15 @@ struct Creature* __fastcall CastCreature__9GameThingFv(struct GameThing* this);
 // win1.41 004018e0 mac 103dd5d0 GameThing::CastPlayer(void)
 struct GPlayer* __fastcall CastPlayer__9GameThingFv(struct GameThing* this);
 // win1.41 004018f0 mac 104fb790 GameThing::CastOneOffSpellSeed(void)
-uint32_t __fastcall CastOneOffSpellSeed__9GameThingFv(struct GameThing* this);
+uint32_t __fastcall CastOneOffSpellSeed__9GameThingFv(struct GameThing* this) asm("?CastOneOffSpellSeed@GameThing@@UAEIXZ");
 // win1.41 004051e0 mac 1017ebc0 GameThing::CastAbode(void)
 struct Abode* __fastcall CastAbode__9GameThingFv(struct GameThing* this);
 // win1.41 004051f0 mac 10199740 GameThing::CastMultiMapFixed(void)
 struct MultiMapFixed* __fastcall CastMultiMapFixed__9GameThingFv(struct GameThing* this);
 // win1.41 00401900 mac 100a0a70 GameThing::CastSpellIcon(void)
-uint32_t __fastcall CastSpellIcon__9GameThingFv(struct GameThing* this);
+uint32_t __fastcall CastSpellIcon__9GameThingFv(struct GameThing* this) asm("?CastSpellIcon@GameThing@@UAEIXZ");
 // win1.41 00401910 mac 101c8320 GameThing::CastTree(void)
-uint32_t __fastcall CastTree__9GameThingFv(struct GameThing* this);
+uint32_t __fastcall CastTree__9GameThingFv(struct GameThing* this) asm("?CastTree@GameThing@@UAEIXZ");
 // win1.41 00401920 mac 1019e2b0 GameThing::IsDeletedOnNewMap(void)
 bool __fastcall IsDeletedOnNewMap__9GameThingFv(struct GameThing* this);
 // win1.41 00405200 mac 100ac9a0 GameThing::GetNumberOfInstanceForGlobalList(void)
@@ -354,17 +354,17 @@ bool __fastcall IsFunctional__9GameThingFv(struct GameThing* this);
 // win1.41 00425da0 mac 1054ef00 GameThing::GetDebugText(void)
 char* __fastcall GetDebugText__9GameThingFv(struct GameThing* this);
 // win1.41 0071bc20 mac 1050ff50 GameThing::GetSampleForAttack(void)
-uint32_t __fastcall GetSampleForAttack__9GameThingFv(struct GameThing* this);
+uint32_t __fastcall GetSampleForAttack__9GameThingFv(struct GameThing* this) asm("?GetSampleForAttack@GameThing@@UAEIXZ");
 // win1.41 0071bdd0 mac 1050fc90 GameThing::GetGuidanceResourceType(void)
-uint32_t __fastcall GetGuidanceResourceType__9GameThingFv(struct GameThing* this);
+uint32_t __fastcall GetGuidanceResourceType__9GameThingFv(struct GameThing* this) asm("?GetGuidanceResourceType@GameThing@@UAEIXZ");
 // win1.41 00401930 mac 1017a550 GameThing::GetShowNeedsPos(unsigned long, MapCoords *)
-uint32_t __fastcall GetShowNeedsPos__9GameThingFUlP9MapCoords(struct GameThing* this);
+uint32_t __fastcall GetShowNeedsPos__9GameThingFUlP9MapCoords(struct GameThing* this) asm("?GetShowNeedsPos@GameThing@@UAEIXZ");
 // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
 uint32_t __fastcall Load__9GameThingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)
 uint32_t __fastcall Save__9GameThingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 // win1.41 0056fd90 mac 101361c0 GameThing::GetSaveType(void)
-uint32_t __fastcall GetSaveType__9GameThingFv(struct GameThing* this);
+uint32_t __fastcall GetSaveType__9GameThingFv(struct GameThing* this) asm("?GetSaveType@GameThing@@UAEIXZ");
 // win1.41 0056fda0 mac 100bc180 GameThing::SaveExtraData(GameOSFile &)
 void __fastcall SaveExtraData__9GameThingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 // win1.41 00405250 mac 1057b140 GameThing::ResolveLoad(void)

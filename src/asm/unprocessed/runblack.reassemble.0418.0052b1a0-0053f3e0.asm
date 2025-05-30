@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
+.extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00402b60
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
@@ -505,21 +505,21 @@
 .globl _globl_ct_0x0053c430
 .globl _Load__13GFootpathLinkFR10GameOSFile
 .globl _Load__15GFootpathFinderFR10GameOSFile
-.globl _CreateCollideData__13MultiMapFixedFv
+.globl ?CreateCollideData@MultiMapFixed@@UAEXXZ
 .globl _Load__11FixedObjectFR10GameOSFile
 .globl _CreateCollideData__14SingleMapFixedFv
 .globl _Load__6ForestFR10GameOSFile
 .globl _Load__17GFootpathLinkSaveFR10GameOSFile
 .globl _Load__13MultiMapFixedFR10GameOSFile
-.globl _Create3DObject__11FixedObjectFv
-.globl _GetDoorPos__13MultiMapFixedFv
+.globl ?Create3DObject@Fixed@@UAEXXZ
+.globl @GetDoorPos__13MultiMapFixedFv@12
 .globl _GetCollideData__14SingleMapFixedFv
-.globl _InsertMapObject__13MultiMapFixedFv
-.globl _GetMapChild__13MultiMapFixedFRC7MapCell
-.globl _SetMapChild__13MultiMapFixedFP6ObjectP7MapCell
+.globl ?InsertMapObject@MultiMapFixed@@UAEXXZ
+.globl ?GetMapChild@MultiMapFixed@@UAEPAVObject@@PBUMapCell@@@Z
+.globl @SetMapChild__13MultiMapFixedFP6ObjectP7MapCell@16
 .globl _CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords
 .globl _InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell
-.globl _AddFootpath__13MultiMapFixedFP9GFootpath
+.globl @AddFootpath__13MultiMapFixedFP9GFootpath@12
 .globl _InsertMapObjectToCell__11FixedObjectFP7MapCell
 .globl ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z
 .globl ??1Fixed@@UAE@XZ
@@ -5011,7 +5011,7 @@ _jmp_addr_0x0052de20:    mov                dword ptr [ecx], 0x008db71c         
                          nop                                                                     // 0x0052de2d    90
                          nop                                                                     // 0x0052de2e    90
                          nop                                                                     // 0x0052de2f    90
-_Create3DObject__11FixedObjectFv:
+?Create3DObject@Fixed@@UAEXXZ:
                          push               esi                                                  // 0x0052de30    56
                          mov.s              esi, ecx                                             // 0x0052de31    8bf1
                          call               @Create3DObject__6ObjectFv@4                         // 0x0052de33    e8b8871000
@@ -5611,7 +5611,7 @@ _jmp_addr_0x0052e354:    push               esi                                 
                          nop                                                                     // 0x0052e36d    90
                          nop                                                                     // 0x0052e36e    90
                          nop                                                                     // 0x0052e36f    90
-_GetDoorPos__13MultiMapFixedFv:
+@GetDoorPos__13MultiMapFixedFv@12:
                          sub                esp, 0x0c                                            // 0x0052e370    83ec0c
                          push               esi                                                  // 0x0052e373    56
                          mov.s              esi, ecx                                             // 0x0052e374    8bf1
@@ -5662,7 +5662,7 @@ _jmp_addr_0x0052e3f0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} mov        dword ptr [ecx + 0x74], eax                          // 0x0052e3f4    894174
                          ret                0x0004                                               // 0x0052e3f7    c20400
                          call               dword ptr [__imp__TrackMouseEvent@4]                 // 0x0052e3fa    ff151c908a00
-_GetMapChild__13MultiMapFixedFRC7MapCell:
+?GetMapChild@MultiMapFixed@@UAEPAVObject@@PBUMapCell@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x0052e400    8b442404
                          push               eax                                                  // 0x0052e404    50
                          call               @SortedMultiChildFind__13MultiMapFixedFRC7MapCell@12 // 0x0052e405    e826f8ffff
@@ -5680,7 +5680,7 @@ _jmp_addr_0x0052e413:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052e41d    90
                          nop                                                                     // 0x0052e41e    90
                          nop                                                                     // 0x0052e41f    90
-_SetMapChild__13MultiMapFixedFP6ObjectP7MapCell:
+@SetMapChild__13MultiMapFixedFP6ObjectP7MapCell@16:
                          push               ebx                                                  // 0x0052e420    53
                          push               esi                                                  // 0x0052e421    56
                          push               edi                                                  // 0x0052e422    57
@@ -5973,7 +5973,7 @@ _jmp_addr_0x0052e639:    mov.s              ecx, esi                            
                          nop                                                                     // 0x0052e64d    90
                          nop                                                                     // 0x0052e64e    90
                          nop                                                                     // 0x0052e64f    90
-_InsertMapObject__13MultiMapFixedFv:
+?InsertMapObject@MultiMapFixed@@UAEXXZ:
 @InsertMapObject__13MultiMapFixedFv@4:    sub                esp, 0x2c                                            // 0x0052e650    83ec2c
                          push               ebx                                                  // 0x0052e653    53
                          push               ebp                                                  // 0x0052e654    55
@@ -6762,7 +6762,7 @@ _jmp_addr_0x0052edef:    {disp8} fld        dword ptr [ecx + 0x5c]              
                          call               dword ptr [edx + 0x8a8]                              // 0x0052ee01    ff92a8080000
 _jmp_addr_0x0052ee07:    ret                0x0004                                               // 0x0052ee07    c20400
                          call               dword ptr [__imp__ShellExecuteA@4]                   // 0x0052ee0a    ff15ac978a00
-_AddFootpath__13MultiMapFixedFP9GFootpath:
+@AddFootpath__13MultiMapFixedFP9GFootpath@12:
                          push               edi                                                  // 0x0052ee10    57
                          mov.s              edi, ecx                                             // 0x0052ee11    8bf9
                          mov                eax, dword ptr [edi]                                 // 0x0052ee13    8b07
@@ -7573,7 +7573,7 @@ _jmp_addr_0x0052f540:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052f54d    90
                          nop                                                                     // 0x0052f54e    90
                          nop                                                                     // 0x0052f54f    90
-_CreateCollideData__13MultiMapFixedFv:
+?CreateCollideData@MultiMapFixed@@UAEXXZ:
                          push               esi                                                  // 0x0052f550    56
                          mov.s              esi, ecx                                             // 0x0052f551    8bf1
                          call               @ReleaseCollideData__13MultiMapFixedFv@4             // 0x0052f553    e878010000
@@ -10569,7 +10569,7 @@ _jmp_addr_0x00531190:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          push               edx                                                  // 0x005311b6    52
                          push               eax                                                  // 0x005311b7    50
                          mov.s              ecx, esi                                             // 0x005311b8    8bce
-                         call               @__ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36// 0x005311ba    e89101edff
+                         call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z// 0x005311ba    e89101edff
                          xor.s              ebx, ebx                                             // 0x005311bf    33db
                          {disp32} mov       dword ptr [esi + 0x000000c4], ebx                    // 0x005311c1    899ec4000000
                          {disp32} mov       dword ptr [esi + 0x00000144], ebx                    // 0x005311c7    899e44010000

@@ -407,7 +407,7 @@
 .globl _globl_ct_0x00636330
 .globl _globl_ct_0x006363f0
 .globl _CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords
-.globl _CleanupWhenDeleted__6ObjectFi
+.globl ?CleanupWhenDeleted@Object@@UAEXH@Z 
 .globl _RemoveMapObject__6ObjectFv
 .globl _InsertMapObject__6ObjectFv
 .globl _SetYAngle__6ObjectFf
@@ -10197,7 +10197,7 @@ _jmp_addr_0x00637707:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          nop                                                               // 0x006377ed    90
                          nop                                                               // 0x006377ee    90
                          nop                                                               // 0x006377ef    90
-_CleanupWhenDeleted__6ObjectFi:
+?CleanupWhenDeleted@Object@@UAEXH@Z :
                          push               esi                                            // 0x006377f0    56
                          mov.s              esi, ecx                                       // 0x006377f1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x006377f3    8b06
