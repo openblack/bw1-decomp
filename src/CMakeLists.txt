@@ -596,7 +596,7 @@ target_compile_options(common_compile_options INTERFACE
     -m32
     -masm=intel
     -march=i386
-    $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-gcodeview>
+    $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g -gcodeview>
 )
 target_include_directories(common_compile_options
     INTERFACE
