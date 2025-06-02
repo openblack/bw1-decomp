@@ -9,3 +9,11 @@
 The `src/` directory contains the decompilation source and the tools needed to rebuild the original `runblack.exe` executable.
 
 See [src/README.md](src/README.md) for more details.
+
+## Debug Symbols
+
+This recompilation also produces a version with debug symbols which include Global's, function definition and struct definitions.
+
+It's easy to use with tools like Ghidra and Ida Pro by going into Actions/ and downloading the debug artifact from reassemble.yaml.
+
+For live debugging, it must be built locally using the RelWithDebInfo build type and launched with the current directory being the original game files directory (where runblack.exe lives).
