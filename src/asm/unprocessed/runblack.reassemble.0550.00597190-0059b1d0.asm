@@ -5480,7 +5480,7 @@ _jmp_addr_0x0059aee9:    {disp32} mov       al, byte ptr [data_bytes + 0x341ec8]
                          {disp32} mov       dword ptr [data_bytes + 0x341ec4], 0x00000000 // 0x0059af0d    c705c47ed00000000000
                          call               esi                                           // 0x0059af17    ffd6
                          {disp32} fld       dword ptr [data_bytes + 0x341ec0]             // 0x0059af19    d905c07ed000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0059af1f    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0059af1f    d81d98a38a00
                          {disp32} mov       dword ptr [data_bytes + 0x341eb8], eax        // 0x0059af25    a3b87ed000
                          xor.s              edi, edi                                      // 0x0059af2a    33ff
                          {disp32} mov       dword ptr [data_bytes + 0x341ebc], edi        // 0x0059af2c    893dbc7ed000
@@ -5493,7 +5493,7 @@ _jmp_addr_0x0059aee9:    {disp32} mov       al, byte ptr [data_bytes + 0x341ec8]
                          {disp32} mov       dword ptr [data_bytes + 0x341ec4], eax        // 0x0059af44    a3c47ed000
                          call               @SetSpeedUpFactor__7LHTimerFf@12              // 0x0059af49    e8723ceaff
                          {disp32} fld       dword ptr [data_bytes + 0x341ec0]             // 0x0059af4e    d905c07ed000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0059af54    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0059af54    d81d98a38a00
                          fnstsw             ax                                            // 0x0059af5a    dfe0
                          test               ah, 0x40                                      // 0x0059af5c    f6c440
                          {disp8} jne        _jmp_addr_0x0059af78                          // 0x0059af5f    7517
@@ -5508,7 +5508,7 @@ _jmp_addr_0x0059af78:    push               0x0059b250                          
                          {disp8} jmp        _jmp_addr_0x0059af89                          // 0x0059af85    eb02
 _jmp_addr_0x0059af87:    xor.s              edi, edi                                      // 0x0059af87    33ff
 _jmp_addr_0x0059af89:    {disp32} fld       dword ptr [data_bytes + 0x341ec0]             // 0x0059af89    d905c07ed000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0059af8f    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0059af8f    d81d98a38a00
                          fnstsw             ax                                            // 0x0059af95    dfe0
                          test               ah, 0x40                                      // 0x0059af97    f6c440
                          {disp8} je         _jmp_addr_0x0059aff6                          // 0x0059af9a    745a
@@ -5552,7 +5552,7 @@ _jmp_addr_0x0059aff6:    call               esi                                 
                          add                esp, 0x04                                     // 0x0059b03f    83c404
 _jmp_addr_0x0059b042:    call               esi                                           // 0x0059b042    ffd6
                          {disp32} fld       dword ptr [data_bytes + 0x341ec0]             // 0x0059b044    d905c07ed000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0059b04a    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0059b04a    d81d98a38a00
                          {disp32} mov       dword ptr [data_bytes + 0x341eb8], eax        // 0x0059b050    a3b87ed000
                          {disp32} mov       dword ptr [data_bytes + 0x341ebc], edi        // 0x0059b055    893dbc7ed000
                          fnstsw             ax                                            // 0x0059b05b    dfe0

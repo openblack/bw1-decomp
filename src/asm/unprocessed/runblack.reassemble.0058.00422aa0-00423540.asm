@@ -706,10 +706,10 @@ _jmp_addr_0x00423130:    push               0x00407870                          
                          nop                                                              // 0x0042313f    90
 @SetPosition__10LH3DObjectFRC7LHPointff@16:    push               ecx                                           // 0x00423140    51
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x00423141    d9442408
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x00423145    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x00423145    d81d98a38a00
                          {disp8} fld        dword ptr [esp + 0x0c]                        // 0x0042314b    d944240c
                          fnstsw             ax                                            // 0x0042314f    dfe0
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]              // 0x00423151    d81d90a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x00423151    d81d90a38a00
                          test               ah, 0x40                                      // 0x00423157    f6c440
                          fnstsw             ax                                            // 0x0042315a    dfe0
                          {disp32} jne       _jmp_addr_0x004232e3                          // 0x0042315c    0f8581010000

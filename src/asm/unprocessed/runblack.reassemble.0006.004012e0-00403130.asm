@@ -36,7 +36,7 @@
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fbac0
-.extern _rdata_bytes_float_0x008aa390
+.extern _rdata_float1p0
 
 .globl _jmp_addr_0x004017f9
 .globl _jmp_addr_0x00401879
@@ -905,7 +905,7 @@
 ?IsRepaired@Abode@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                     // 0x004016a0    8b01
                          call               dword ptr [eax + 0x884]                  // 0x004016a2    ff9084080000
-                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004016a8    d81d90a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float1p0]                       // 0x004016a8    d81d90a38a00
                          fnstsw             ax                                       // 0x004016ae    dfe0
                          test               ah, 0x01                                 // 0x004016b0    f6c401
                          {disp8} jne        _jmp_addr_0x004016bb                     // 0x004016b3    7506
@@ -922,7 +922,7 @@ _jmp_addr_0x004016bb:    xor.s              eax, eax                            
                          {disp8} je         _jmp_addr_0x004016e4                     // 0x004016c7    741b
                          mov                edx, dword ptr [ecx]                     // 0x004016c9    8b11
                          call               dword ptr [edx + 0x880]                  // 0x004016cb    ff9280080000
-                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004016d1    d81d90a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float1p0]                       // 0x004016d1    d81d90a38a00
                          fnstsw             ax                                       // 0x004016d7    dfe0
                          test               ah, 0x01                                 // 0x004016d9    f6c401
                          {disp8} jne        _jmp_addr_0x004016e4                     // 0x004016dc    7506
@@ -1131,7 +1131,7 @@ _jmp_addr_0x004017dd:    mov.s              eax, esi                            
                          nop                                                         // 0x004017ee    90
                          nop                                                         // 0x004017ef    90
 @CalculateInfluence__9GameThingFRC9MapCoords@12:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004017f0    d90590a38a00
+                         {disp32} fld       dword ptr [_rdata_float1p0]                       // 0x004017f0    d90590a38a00
                          ret                0x0004                                   // 0x004017f6    c20400
                          // SEH code path?
 _jmp_addr_0x004017f9:    push               ecx                                      // 0x004017f9    51
@@ -1206,7 +1206,7 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040184e    90
                          nop                                                         // 0x0040184f    90
 ?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ:
-                         {disp32} fld       dword ptr [?maxAlignmentChangePerGameTurn@GameThing@@2MB]         // 0x00401850    d90594a38a00
+                         {disp32} fld       dword ptr [?maxAlignmentChangePerGameTurn@GameThing@@2MB]  // 0x00401850    d90594a38a00
                          ret                                                         // 0x00401856    c3
                          nop                                                         // 0x00401857    90
                          nop                                                         // 0x00401858    90
@@ -1234,7 +1234,7 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040186e    90
                          nop                                                         // 0x0040186f    90
 @GetVillagerActivityDesire__9GameThingFP8Villager@12:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00401870    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00401870    d90598a38a00
                          ret                0x0004                                   // 0x00401876    c20400
 _jmp_addr_0x00401879:    push               ecx                                      // 0x00401879    51
                          push               eax                                      // 0x0040187a    50
@@ -1510,7 +1510,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004019ce    90
                          nop                                                         // 0x004019cf    90
 ?GetMaxHeight@GameThingWithPos@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004019d0    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x004019d0    d90598a38a00
                          ret                                                         // 0x004019d6    c3
                          nop                                                         // 0x004019d7    90
                          nop                                                         // 0x004019d8    90
@@ -1587,7 +1587,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x00401a3e    90
                          nop                                                         // 0x00401a3f    90
 ?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa390]         // 0x00401a40    d90590a38a00
+                         {disp32} fld       dword ptr [_rdata_float1p0]                       // 0x00401a40    d90590a38a00
                          ret                0x0004                                   // 0x00401a46    c20400
                          nop                                                         // 0x00401a49    90
                          nop                                                         // 0x00401a4a    90
@@ -1935,7 +1935,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
 ?IsDamaged@GameThingWithPos@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                     // 0x00401bb0    8b01
                          call               dword ptr [eax + 0x11c]                  // 0x00401bb2    ff901c010000
-                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa390]         // 0x00401bb8    d81d90a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float1p0]                       // 0x00401bb8    d81d90a38a00
                          fnstsw             ax                                       // 0x00401bbe    dfe0
                          test               ah, 0x01                                 // 0x00401bc0    f6c401
                          {disp8} je         _jmp_addr_0x00401bcb                     // 0x00401bc3    7406
@@ -3264,7 +3264,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004021fe    90
                          nop                                                         // 0x004021ff    90
 ?CalculateDesireForFood@GameThingWithPos@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402200    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00402200    d90598a38a00
                          ret                                                         // 0x00402206    c3
                          nop                                                         // 0x00402207    90
                          nop                                                         // 0x00402208    90
@@ -3276,7 +3276,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040220e    90
                          nop                                                         // 0x0040220f    90
 ?CalculateDesireForRest@GameThingWithPos@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402210    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00402210    d90598a38a00
                          ret                                                         // 0x00402216    c3
                          nop                                                         // 0x00402217    90
                          nop                                                         // 0x00402218    90
@@ -3288,7 +3288,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040221e    90
                          nop                                                         // 0x0040221f    90
 ?CalculatePeopleHidingIndicator@GameThingWithPos@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402220    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00402220    d90598a38a00
                          ret                                                         // 0x00402226    c3
                          nop                                                         // 0x00402227    90
                          nop                                                         // 0x00402228    90
@@ -3910,7 +3910,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024ae    90
                          nop                                                         // 0x004024af    90
 ?GetFacingDirection@GameThingWithPos@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004024b0    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x004024b0    d90598a38a00
                          ret                                                         // 0x004024b6    c3
                          nop                                                         // 0x004024b7    90
                          nop                                                         // 0x004024b8    90
@@ -3937,7 +3937,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024ce    90
                          nop                                                         // 0x004024cf    90
 ?GetReactionPower@GameThingWithPos@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa390]         // 0x004024d0    d90590a38a00
+                         {disp32} fld       dword ptr [_rdata_float1p0]                       // 0x004024d0    d90590a38a00
                          ret                                                         // 0x004024d6    c3
                          nop                                                         // 0x004024d7    90
                          nop                                                         // 0x004024d8    90
@@ -3966,7 +3966,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004024ee    90
                          nop                                                         // 0x004024ef    90
 ?GetXAngle@Object@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004024f0    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x004024f0    d90598a38a00
                          ret                                                         // 0x004024f6    c3
                          nop                                                         // 0x004024f7    90
                          nop                                                         // 0x004024f8    90
@@ -3993,7 +3993,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040250e    90
                          nop                                                         // 0x0040250f    90
 ?GetZAngle@Object@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402510    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00402510    d90598a38a00
                          ret                                                         // 0x00402516    c3
                          nop                                                         // 0x00402517    90
                          nop                                                         // 0x00402518    90
@@ -4100,7 +4100,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040258e    90
                          nop                                                         // 0x0040258f    90
 ?GetSpotEffectPower@Object@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402590    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00402590    d90598a38a00
                          ret                                                         // 0x00402596    c3
                          nop                                                         // 0x00402597    90
                          nop                                                         // 0x00402598    90
@@ -4112,7 +4112,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040259e    90
                          nop                                                         // 0x0040259f    90
 ?GetHoldYRotate@Object@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004025a0    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x004025a0    d90598a38a00
                          ret                                                         // 0x004025a6    c3
                          nop                                                         // 0x004025a7    90
                          nop                                                         // 0x004025a8    90
@@ -4218,7 +4218,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          mov.s              esi, ecx                                 // 0x00402611    8bf1
                          mov                eax, dword ptr [esi]                     // 0x00402613    8b06
                          call               dword ptr [eax + 0x11c]                  // 0x00402615    ff901c010000
-                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]         // 0x0040261b    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x0040261b    d81d98a38a00
                          fnstsw             ax                                       // 0x00402621    dfe0
                          test               ah, 0x41                                 // 0x00402623    f6c441
                          {disp8} jne        _jmp_addr_0x0040263a                     // 0x00402626    7512
@@ -4332,8 +4332,8 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
 ?GetVillagerHugRadius@Object@@UAEMXZ:
                          mov                eax, dword ptr [ecx]                     // 0x004026b0    8b01
                          call               dword ptr [eax + 0x64]                   // 0x004026b2    ff5064
-                         {disp32} fmul      dword ptr [_rdata_bytes_float_0x008aa3a0]         // 0x004026b5    d80da0a38a00
-                         {disp32} fadd      dword ptr [_rdata_bytes_float_0x008aa39c]         // 0x004026bb    d8059ca38a00
+                         {disp32} fmul      dword ptr [_rdata_float1p05]             // 0x004026b5    d80da0a38a00
+                         {disp32} fadd      dword ptr [_rdata_float0p0005]           // 0x004026bb    d8059ca38a00
                          ret                                                         // 0x004026c1    c3
                          nop                                                         // 0x004026c2    90
                          nop                                                         // 0x004026c3    90
@@ -4360,7 +4360,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          {disp8} fld        dword ptr [ecx + 0x68]                   // 0x004026e4    d94168
                          pop                esi                                      // 0x004026e7    5e
                          ret                0x0004                                   // 0x004026e8    c20400
-_jmp_addr_0x004026eb:    {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x004026eb    d90598a38a00
+_jmp_addr_0x004026eb:    {disp32} fld       dword ptr [_rdata_float0p0]              // 0x004026eb    d90598a38a00
                          pop                esi                                      // 0x004026f1    5e
                          ret                0x0004                                   // 0x004026f2    c20400
                          nop                                                         // 0x004026f5    90
@@ -5201,7 +5201,7 @@ _jmp_addr_0x00402a5b:    xor.s              eax, eax                            
                          nop                                                         // 0x00402afe    90
                          nop                                                         // 0x00402aff    90
 ?GetFacingPitch@Object@@UAEMXZ:
-                         {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]         // 0x00402b00    d90598a38a00
+                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00402b00    d90598a38a00
                          ret                                                         // 0x00402b06    c3
                          nop                                                         // 0x00402b07    90
                          nop                                                         // 0x00402b08    90

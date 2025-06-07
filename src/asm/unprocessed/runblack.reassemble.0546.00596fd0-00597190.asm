@@ -37,7 +37,7 @@ _jmp_addr_0x00596fd0:    sub                esp, 0x08                          /
                          sub.s              eax, ebp                           // 0x00597005    2bc5
                          {disp8} mov        dword ptr [esp + 0x1c], eax        // 0x00597007    8944241c
                          {disp8} fild       dword ptr [esp + 0x1c]             // 0x0059700b    db44241c
-                         {disp32} fcom      dword ptr [rdata_bytes + 0x1398]   // 0x0059700f    d81598a38a00
+                         {disp32} fcom      dword ptr [_rdata_float0p0]        // 0x0059700f    d81598a38a00
                          fnstsw             ax                                 // 0x00597015    dfe0
                          test               ah, 0x41                           // 0x00597017    f6c441
                          {disp8} jne        _jmp_addr_0x0059702c               // 0x0059701a    7510

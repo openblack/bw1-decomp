@@ -1633,7 +1633,7 @@ _jmp_addr_0x007db75f:    and               word ptr [ebp + -0x02], 0x07ff       
 _jmp_addr_0x007db770:    {disp8} fld       dword ptr [esp + 0x08]                         // 0x007db770    d9442408
                          {disp8} fld       dword ptr [esp + 0x04]                         // 0x007db774    d9442404
                          fpatan                                                           // 0x007db778    d9f3
-                         {disp32} fcom     dword ptr [rdata_bytes + 0x1398]               // 0x007db77a    d81598a38a00
+                         {disp32} fcom     dword ptr [_rdata_float0p0]                    // 0x007db77a    d81598a38a00
                          fnstsw            ax                                             // 0x007db780    dfe0
                          test              ah, 0x01                                       // 0x007db782    f6c401
                          {disp8} je        _jmp_addr_0x007db78d                           // 0x007db785    7406

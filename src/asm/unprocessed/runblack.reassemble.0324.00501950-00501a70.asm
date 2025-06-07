@@ -54,10 +54,10 @@ start_0x00501950_0x00501a70:
                          fild              dword ptr [edi]                         // 0x005019b4    db07
                          push              ecx                                     // 0x005019b6    51
                          mov.s             ecx, esi                                // 0x005019b7    8bce
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]        // 0x005019b9    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]               // 0x005019b9    d80da4a38a00
                          {disp8} fstp      dword ptr [esp + 0x14]                  // 0x005019bf    d95c2414
                          {disp8} fild      dword ptr [edi + 0x04]                  // 0x005019c3    db4704
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]        // 0x005019c6    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]               // 0x005019c6    d80da4a38a00
                          {disp8} fstp      dword ptr [esp + 0x1c]                  // 0x005019cc    d95c241c
                          call              _jmp_addr_0x0047a500                    // 0x005019d0    e82b8bf7ff
                          {disp32} mov      edx, dword ptr [esi + 0x00000160]       // 0x005019d5    8b9660010000

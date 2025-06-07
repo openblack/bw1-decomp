@@ -456,7 +456,7 @@ _jmp_addr_0x006da98f:    test               byte ptr [esi + 0x24], 0x10         
                          {disp8} jmp        _jmp_addr_0x006da9f0                          // 0x006da9cf    eb1f
 _jmp_addr_0x006da9d1:    fstp               st(0)                                         // 0x006da9d1    ddd8
                          {disp32} fld       dword ptr [esi + 0x000000f4]                  // 0x006da9d3    d986f4000000
-                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]              // 0x006da9d9    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x006da9d9    d81d98a38a00
                          fnstsw             ax                                            // 0x006da9df    dfe0
                          test               ah, 0x41                                      // 0x006da9e1    f6c441
                          {disp8} jne        _jmp_addr_0x006da9f0                          // 0x006da9e4    750a
@@ -478,7 +478,7 @@ _jmp_addr_0x006da9f0:    push               edi                                 
 _jmp_addr_0x006daa1e:    {disp8} fild       dword ptr [esp + 0x0c]                        // 0x006daa1e    db44240c
                          pop                edi                                           // 0x006daa22    5f
                          fdiv               st, st(1)                                     // 0x006daa23    d8f1
-                         {disp32} fsubr     dword ptr [rdata_bytes + 0x1390]              // 0x006daa25    d82d90a38a00
+                         {disp32} fsubr     dword ptr [_rdata_float1p0]                   // 0x006daa25    d82d90a38a00
                          fmulp              st(2), st                                     // 0x006daa2b    deca
                          fxch               st(1)                                         // 0x006daa2d    d9c9
                          fchs                                                             // 0x006daa2f    d9e0
@@ -522,7 +522,7 @@ _jmp_addr_0x006daa7d:    mov                eax, 0x00000001                     
                          cmp                eax, -0x01                                    // 0x006daa99    83f8ff
                          {disp8} mov        dword ptr [esp + 0x00], eax                   // 0x006daa9c    89442400
                          {disp8} jne        _jmp_addr_0x006daaac                          // 0x006daaa0    750a
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1390]              // 0x006daaa2    d90590a38a00
+                         {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x006daaa2    d90590a38a00
                          add                esp, 0x0c                                     // 0x006daaa8    83c40c
                          ret                                                              // 0x006daaab    c3
 _jmp_addr_0x006daaac:    {disp32} mov       eax, dword ptr [ecx + 0x000000f0]             // 0x006daaac    8b81f0000000
@@ -539,7 +539,7 @@ _jmp_addr_0x006daaac:    {disp32} mov       eax, dword ptr [ecx + 0x000000f0]   
                          {disp32} fild      dword ptr [ecx + 0x000000ec]                  // 0x006daad7    db81ec000000
                          {disp8} fimul      dword ptr [esp + 0x08]                        // 0x006daadd    da4c2408
                          faddp              st(1), st                                     // 0x006daae1    dec1
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x13ac]              // 0x006daae3    d80daca38a00
+                         {disp32} fmul      dword ptr [_rdata_float0p2]                   // 0x006daae3    d80daca38a00
                          {disp8} fidiv      dword ptr [esp + 0x00]                        // 0x006daae9    da742400
                          add                esp, 0x0c                                     // 0x006daaed    83c40c
                          ret                                                              // 0x006daaf0    c3

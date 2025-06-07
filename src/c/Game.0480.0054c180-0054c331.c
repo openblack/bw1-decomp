@@ -35,7 +35,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this) {
     "                         {disp32} mov       dword ptr [data_bytes + 0x30a6e8], ebx\n"        // 0x0054c1f1    891de806cd00
     "                         call               edi\n"                                           // 0x0054c1f7    ffd7
     "                         {disp32} fld       dword ptr [esi + 0x00205e70]\n"                  // 0x0054c1f9    d986705e2000
-    "                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]\n"              // 0x0054c1ff    d81d98a38a00
+    "                         {disp32} fcomp     dword ptr [_rdata_float0p0]     \n"              // 0x0054c1ff    d81d98a38a00
     "                         {disp32} mov       dword ptr [esi + 0x00205e68], eax\n"             // 0x0054c205    8986685e2000
     "                         {disp32} mov       dword ptr [esi + 0x00205e6c], ebx\n"             // 0x0054c20b    899e6c5e2000
     "                         fnstsw             ax\n"                                            // 0x0054c211    dfe0

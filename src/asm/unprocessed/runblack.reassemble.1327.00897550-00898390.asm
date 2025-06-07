@@ -111,7 +111,7 @@ _jmp_addr_0x008975a3:    ret                                                    
                          test               eax, eax                                      // 0x00897606    85c0
                          {disp8} jne        _jmp_addr_0x0089760c                          // 0x00897608    7502
                          fchs                                                             // 0x0089760a    d9e0
-_jmp_addr_0x0089760c:    {disp32} fcom      dword ptr [rdata_bytes + 0x1398]              // 0x0089760c    d81598a38a00
+_jmp_addr_0x0089760c:    {disp32} fcom      dword ptr [_rdata_float0p0]                   // 0x0089760c    d81598a38a00
                          fnstsw             ax                                            // 0x00897612    dfe0
                          test               ah, 0x41                                      // 0x00897614    f6c441
                          {disp8} jne        _jmp_addr_0x00897624                          // 0x00897617    750b
@@ -119,7 +119,7 @@ _jmp_addr_0x0089760c:    {disp32} fcom      dword ptr [rdata_bytes + 0x1398]    
                          mov                eax, 0x00000001                               // 0x0089761b    b801000000
                          add                esp, 0x08                                     // 0x00897620    83c408
                          ret                                                              // 0x00897623    c3
-_jmp_addr_0x00897624:    {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x00897624    d81d98a38a00
+_jmp_addr_0x00897624:    {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x00897624    d81d98a38a00
                          fnstsw             ax                                            // 0x0089762a    dfe0
                          test               ah, 0x01                                      // 0x0089762c    f6c401
                          {disp8} je         _jmp_addr_0x00897638                          // 0x0089762f    7407
