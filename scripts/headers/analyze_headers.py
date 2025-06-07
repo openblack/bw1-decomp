@@ -339,7 +339,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
     found_issues = False
 
     pattern = re.compile(
-        r"// win1\.41 (?P<winaddr>[0-9a-fA-F]+|inlined) mac (?P<macaddr>[0-9a-fA-F]+|inlined) (?P<decoratedname>[\w:(), *&<>\[\]~\-\+=/\.]+)")
+        r"// win1\.41 (?P<winaddr>[0-9a-fA-F]+|inlined) mac (?P<macaddr>[0-9a-fA-F]+|inlined) (?P<decoratedname>[\w:(), *&<>\[\]~\-\+=/\.`']+)")
 
     for t in tu.get_tokens(extent=tu.cursor.extent):
         # TODO: Make sure every type is accounted for
@@ -349,7 +349,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                 win_addr = int(match.group('winaddr'), 16) if match.group('winaddr') != 'inlined' else -1
                 mac_addr = int(match.group('macaddr'), 16) if match.group('macaddr') != 'inlined' else -1
                 decorated_name = match.group('decoratedname')
-                if "virtual table" in decorated_name or "vtable" in decorated_name:
+                if "virtual table" in decorated_name or "vtable" in decorated_name or "vftable" in decorated_name and "`RTTI Complete Object Locator'" in decorated_name:
                     continue
                 if decorated_name in decorated_names:
                     sys.stderr.write(f"{t.extent.start.file.name}:{t.extent.start.line}: error: duplicate entry: \"{decorated_name}\"\n")
@@ -359,7 +359,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                         FunctionMetadata(win_addr=win_addr, mac_addr=mac_addr, decorated_name=decorated_name))
                     decorated_names.add(decorated_name)
             elif (
-                    " win" in t.spelling or " mac" in t.spelling) and "inline" not in t.spelling and "vtable" not in t.spelling and "virtual table" not in t.spelling:
+                    " win" in t.spelling or " mac" in t.spelling) and "inline" not in t.spelling and "vftable" not in t.spelling  and "vtable" not in t.spelling and "virtual table" not in t.spelling:
                 sys.stderr.write(
                     f"{t.location.file}:{t.location.line}:{t.location.column} badly formed function metadata: \"{t.spelling}\"\n")
                 found_issues = True
