@@ -690,7 +690,7 @@ _jmp_addr_0x0064065f:    push              ebp                                  
                          {disp8} fstp      dword ptr [esp + 0x54]                        // 0x00640749    d95c2454
                          {disp32} fld      dword ptr [data_bytes + 0x22d37c]             // 0x0064074d    d9057c33bf00
                          push              esi                                           // 0x00640753    56
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13b4]              // 0x00640754    d80db4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float0p5]                   // 0x00640754    d80db4a38a00
                          push              0x4                                           // 0x0064075a    6a04
                          {disp8} lea       edx, dword ptr [esp + 0x30]                   // 0x0064075c    8d542430
                          push              ebp                                           // 0x00640760    55

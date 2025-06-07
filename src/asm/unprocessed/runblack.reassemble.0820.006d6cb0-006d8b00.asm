@@ -528,7 +528,7 @@ _jmp_addr_0x006d7188:    mov.s              eax, esi                            
                          nop                                                              // 0x006d718e    90
                          nop                                                              // 0x006d718f    90
 _jmp_addr_0x006d7190:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x006d7190    d9442404
-                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]              // 0x006d7194    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x006d7194    d81d98a38a00
                          fnstsw             ax                                            // 0x006d719a    dfe0
                          test               ah, 0x01                                      // 0x006d719c    f6c401
                          {disp8} jne        _jmp_addr_0x006d71b0                          // 0x006d719f    750f
@@ -1435,9 +1435,9 @@ _jmp_addr_0x006d7c6f:    {disp8} mov        dword ptr [edx + 0x78], eax         
                          {disp8} jmp        _jmp_addr_0x006d7ccf                          // 0x006d7cb7    eb16
                          {disp32} fld       dword ptr [rdata_bytes + 0x2478]              // 0x006d7cb9    d90578b48a00
                          {disp8} jmp        _jmp_addr_0x006d7ccf                          // 0x006d7cbf    eb0e
-                         {disp32} fld       dword ptr [rdata_bytes + 0x1390]              // 0x006d7cc1    d90590a38a00
+                         {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x006d7cc1    d90590a38a00
                          {disp8} jmp        _jmp_addr_0x006d7ccf                          // 0x006d7cc7    eb06
-_jmp_addr_0x006d7cc9:    {disp32} fld       dword ptr [_rdata_bytes_float_0x008aa398]              // 0x006d7cc9    d90598a38a00
+_jmp_addr_0x006d7cc9:    {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x006d7cc9    d90598a38a00
 _jmp_addr_0x006d7ccf:    {disp8} mov        eax, dword ptr [ebp + 0x00]                   // 0x006d7ccf    8b4500
                          {disp8} fadd       dword ptr [eax + 0x70]                        // 0x006d7cd2    d84070
                          add                eax, 0x68                                     // 0x006d7cd5    83c068

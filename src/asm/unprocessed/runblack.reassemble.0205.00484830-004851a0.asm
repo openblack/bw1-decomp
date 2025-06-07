@@ -224,7 +224,7 @@ _jmp_addr_0x0048493b:    push               0x1                                 
                          sete               dl                                       // 0x00484a24    0f94c2
                          {disp32} mov       dword ptr [esi + 0x0000522c], edx        // 0x00484a27    89962c520000
                          {disp8} jmp        _jmp_addr_0x00484a6b                     // 0x00484a2d    eb3c
-_jmp_addr_0x00484a2f:    {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]         // 0x00484a2f    d81d98a38a00
+_jmp_addr_0x00484a2f:    {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00484a2f    d81d98a38a00
                          fnstsw             ax                                       // 0x00484a35    dfe0
                          test               ah, 0x41                                 // 0x00484a37    f6c441
                          {disp8} jne        _jmp_addr_0x00484a49                     // 0x00484a3a    750d

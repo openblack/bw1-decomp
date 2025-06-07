@@ -775,7 +775,7 @@ _jmp_addr_0x005488b8:    fld                st(1)                               
                          fcos                                                             // 0x005488ba    d9ff
                          fmul               st, st(1)                                     // 0x005488bc    d8c9
                          fadd               st, st(4)                                     // 0x005488be    d8c4
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x13b4]              // 0x005488c0    d805b4a38a00
+                         {disp32} fadd      dword ptr [_rdata_float0p5]                   // 0x005488c0    d805b4a38a00
                          call               _jmp_addr_0x007a1400                          // 0x005488c6    e8358b2500
                          fld                st(1)                                         // 0x005488cb    d9c1
                          fsin                                                             // 0x005488cd    d9fe
@@ -783,7 +783,7 @@ _jmp_addr_0x005488b8:    fld                st(1)                               
                          shl                ebp, 8                                        // 0x005488d1    c1e508
                          fmul               st, st(1)                                     // 0x005488d4    d8c9
                          fadd               st, st(3)                                     // 0x005488d6    d8c3
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x13b4]              // 0x005488d8    d805b4a38a00
+                         {disp32} fadd      dword ptr [_rdata_float0p5]                   // 0x005488d8    d805b4a38a00
                          call               _jmp_addr_0x007a1400                          // 0x005488de    e81d8b2500
                          fxch               st(1)                                         // 0x005488e3    d9c9
                          {disp32} fsub      dword ptr [rdata_bytes + 0x35d04]             // 0x005488e5    d82504ed8d00
@@ -791,7 +791,7 @@ _jmp_addr_0x005488b8:    fld                st(1)                               
                          fxch               st(1)                                         // 0x005488ed    d9c9
                          mov                word ptr [edi + ebp * 0x2], si                // 0x005488ef    6689346f
                          fld                st(1)                                         // 0x005488f3    d9c1
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x005488f5    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x005488f5    d81d98a38a00
                          fnstsw             ax                                            // 0x005488fb    dfe0
                          test               ah, 0x41                                      // 0x005488fd    f6c441
                          {disp8} je         _jmp_addr_0x005488b8                          // 0x00548900    74b6

@@ -454,7 +454,7 @@ _jmp_addr_0x00490e0b:    {disp32} mov       eax, dword ptr [esi + 0x00005198]   
                          {disp8} fmul       dword ptr [esp + 0x10]                   // 0x00490eb1    d84c2410
                          {disp8} jmp        _jmp_addr_0x00490ec3                     // 0x00490eb5    eb0c
 _jmp_addr_0x00490eb7:    {disp8} fld        dword ptr [esp + 0x10]                   // 0x00490eb7    d9442410
-                         {disp32} fsub      dword ptr [rdata_bytes + 0x13b4]         // 0x00490ebb    d825b4a38a00
+                         {disp32} fsub      dword ptr [_rdata_float0p5]              // 0x00490ebb    d825b4a38a00
                          fimul              dword ptr [eax]                          // 0x00490ec1    da08
 _jmp_addr_0x00490ec3:    call               _jmp_addr_0x007a1400                     // 0x00490ec3    e838053100
                          {disp32} mov       edi, dword ptr [esi + 0x00005220]        // 0x00490ec8    8bbe20520000

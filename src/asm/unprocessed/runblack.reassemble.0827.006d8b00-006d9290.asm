@@ -354,7 +354,7 @@ _jmp_addr_0x006d8ee8:    {disp32} fcom     dword ptr [rdata_bytes + 0x28678]    
                          test              ah, 0x01                                      // 0x006d8ef0    f6c401
                          {disp8} jne       _jmp_addr_0x006d8efb                          // 0x006d8ef3    7506
                          {disp32} fsub     dword ptr [rdata_bytes + 0x28678]             // 0x006d8ef5    d82578168d00
-_jmp_addr_0x006d8efb:    {disp32} fcom     dword ptr [rdata_bytes + 0x1398]              // 0x006d8efb    d81598a38a00
+_jmp_addr_0x006d8efb:    {disp32} fcom     dword ptr [_rdata_float0p0]                   // 0x006d8efb    d81598a38a00
                          fnstsw            ax                                            // 0x006d8f01    dfe0
                          test              ah, 0x01                                      // 0x006d8f03    f6c401
                          {disp8} je        _jmp_addr_0x006d8f0e                          // 0x006d8f06    7406
@@ -486,7 +486,7 @@ _jmp_addr_0x006d90c7:    {disp32} fcom     dword ptr [rdata_bytes + 0x28678]    
                          test              ah, 0x01                                      // 0x006d90cf    f6c401
                          {disp8} jne       _jmp_addr_0x006d90da                          // 0x006d90d2    7506
                          {disp32} fsub     dword ptr [rdata_bytes + 0x28678]             // 0x006d90d4    d82578168d00
-_jmp_addr_0x006d90da:    {disp32} fcom     dword ptr [rdata_bytes + 0x1398]              // 0x006d90da    d81598a38a00
+_jmp_addr_0x006d90da:    {disp32} fcom     dword ptr [_rdata_float0p0]                   // 0x006d90da    d81598a38a00
                          fnstsw            ax                                            // 0x006d90e0    dfe0
                          test              ah, 0x01                                      // 0x006d90e2    f6c401
                          {disp8} je        _jmp_addr_0x006d90ed                          // 0x006d90e5    7406
