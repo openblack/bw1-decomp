@@ -196,7 +196,7 @@ _jmp_addr_0x0070f46a:    pop                edi                                 
                          test               eax, eax                                      // 0x0070f4fb    85c0
                          {disp8} je         _jmp_addr_0x0070f546                          // 0x0070f4fd    7447
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x0070f4ff    d9442410
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0070f503    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0070f503    d81d98a38a00
                          fnstsw             ax                                            // 0x0070f509    dfe0
                          test               ah, 0x40                                      // 0x0070f50b    f6c440
                          {disp8} jne        _jmp_addr_0x0070f51d                          // 0x0070f50e    750d
@@ -204,7 +204,7 @@ _jmp_addr_0x0070f46a:    pop                edi                                 
                          call               _jmp_addr_0x007a1400                          // 0x0070f514    e8e71e0900
                          {disp8} mov        word ptr [esi + 0x50], ax                     // 0x0070f519    66894650
 _jmp_addr_0x0070f51d:    {disp8} fld        dword ptr [esp + 0x14]                        // 0x0070f51d    d9442414
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0070f521    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0070f521    d81d98a38a00
                          fnstsw             ax                                            // 0x0070f527    dfe0
                          test               ah, 0x40                                      // 0x0070f529    f6c440
                          {disp8} jne        _jmp_addr_0x0070f53b                          // 0x0070f52c    750d

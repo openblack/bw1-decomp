@@ -129,7 +129,7 @@ _jmp_addr_0x00753d45:    pop               edi                                  
                          {disp8} mov       ecx, dword ptr [eax + 0x28]                   // 0x00753d5f    8b4828
                          {disp32} fld      dword ptr [ecx + 0x00000144]                  // 0x00753d62    d98144010000
                          mov.s             ecx, esi                                      // 0x00753d68    8bce
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13b4]              // 0x00753d6a    d80db4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float0p5]                   // 0x00753d6a    d80db4a38a00
                          {disp8} fstp      dword ptr [esp + 0x04]                        // 0x00753d70    d95c2404
                          call              @GetAbode__8VillagerFv@4                      // 0x00753d74    e8e7e3ffff
                          test              eax, eax                                      // 0x00753d79    85c0

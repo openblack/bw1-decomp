@@ -1047,8 +1047,8 @@ _jmp_addr_0x0079ab7b:    push              ebx                                  
                          {disp32} je       _jmp_addr_0x0079c3dc                          // 0x0079b186    0f8450120000
                          {disp32} mov      ecx, dword ptr [eax + 0x00000160]             // 0x0079b18c    8b8860010000
                          {disp8} fld       dword ptr [ecx + 0x10]                        // 0x0079b192    d94110
-                         {disp32} fadd     dword ptr [rdata_bytes + 0x1390]              // 0x0079b195    d80590a38a00
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13b4]              // 0x0079b19b    d80db4a38a00
+                         {disp32} fadd     dword ptr [_rdata_float1p0]                   // 0x0079b195    d80590a38a00
+                         {disp32} fmul     dword ptr [_rdata_float0p5]                   // 0x0079b19b    d80db4a38a00
                          {disp32} fmul     dword ptr [rdata_bytes + 0x26e4]              // 0x0079b1a1    d80de4b68a00
                          call              _jmp_addr_0x007a1400                          // 0x0079b1a7    e854620000
                          cmp               eax, 0x04                                     // 0x0079b1ac    83f804
@@ -1315,7 +1315,7 @@ _jmp_addr_0x0079b556:    {disp8} mov       ecx, dword ptr [ecx + 0x08]          
                          {disp8} mov       dword ptr [esp + 0x10], edi                   // 0x0079b5b2    897c2410
                          {disp8} fidiv     dword ptr [esp + 0x0c]                        // 0x0079b5b6    da74240c
                          {disp8} jmp       _jmp_addr_0x0079b5c2                          // 0x0079b5ba    eb06
-_jmp_addr_0x0079b5bc:    {disp32} fld      dword ptr [rdata_bytes + 0x1398]              // 0x0079b5bc    d90598a38a00
+_jmp_addr_0x0079b5bc:    {disp32} fld      dword ptr [_rdata_float0p0]                   // 0x0079b5bc    d90598a38a00
 _jmp_addr_0x0079b5c2:    {disp32} fmul     dword ptr [rdata_bytes + 0x26e4]              // 0x0079b5c2    d80de4b68a00
                          call              _jmp_addr_0x007a1400                          // 0x0079b5c8    e8335e0000
                          cmp               eax, 0x04                                     // 0x0079b5cd    83f804
