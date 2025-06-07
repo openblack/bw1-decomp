@@ -131,7 +131,7 @@ _jmp_addr_0x007677b8:    {disp32} mov       al, byte ptr [data_bytes + 0x389918]
                          {disp32} fadd      dword ptr [ebx + ecx * 0x4 + 0x00000108] // 0x0076784e    d8848b08010000
                          {disp32} fadd      dword ptr [ebx + ecx * 0x4 + 0x000000c4] // 0x00767855    d8848bc4000000
                          {disp32} fmul      dword ptr [eax + 0x00db9e80]             // 0x0076785c    d888809edb00
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]         // 0x00767862    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00767862    d81d98a38a00
                          fnstsw             ax                                       // 0x00767868    dfe0
                          test               ah, 0x41                                 // 0x0076786a    f6c441
                          {disp8} je         _jmp_addr_0x0076787d                     // 0x0076786d    740e

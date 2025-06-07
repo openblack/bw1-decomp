@@ -696,7 +696,7 @@ _jmp_addr_0x0050227f:    mov                eax, 0x00000001                     
                          {disp32} mov       ecx, dword ptr [ecx + 0x00000160]             // 0x00502340    8b8960010000
                          {disp8} fld        dword ptr [ecx + 0x2c]                        // 0x00502346    d9412c
                          {disp8} fsubr      dword ptr [ecx + 0x2c]                        // 0x00502349    d8692c
-                         {disp32} fcom      dword ptr [rdata_bytes + 0x1398]              // 0x0050234c    d81598a38a00
+                         {disp32} fcom      dword ptr [_rdata_float0p0]                   // 0x0050234c    d81598a38a00
                          {disp8} fst        dword ptr [ecx + 0x2c]                        // 0x00502352    d9512c
                          fnstsw             ax                                            // 0x00502355    dfe0
                          test               ah, 0x01                                      // 0x00502357    f6c401
@@ -705,7 +705,7 @@ _jmp_addr_0x0050227f:    mov                eax, 0x00000001                     
                          {disp8} mov        dword ptr [ecx + 0x2c], 0x00000000            // 0x0050235e    c7412c00000000
                          mov                eax, 0x00000002                               // 0x00502365    b802000000
                          ret                                                              // 0x0050236a    c3
-_jmp_addr_0x0050236b:    {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]              // 0x0050236b    d81d90a38a00
+_jmp_addr_0x0050236b:    {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x0050236b    d81d90a38a00
                          fnstsw             ax                                            // 0x00502371    dfe0
                          test               ah, 0x41                                      // 0x00502373    f6c441
                          {disp8} jne        _jmp_addr_0x0050237f                          // 0x00502376    7507

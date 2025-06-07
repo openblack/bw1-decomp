@@ -1226,7 +1226,7 @@ _jmp_addr_0x004907c0:    sub                esp, 0x08                           
                          fsqrt                                                            // 0x004907de    d9fa
                          fxch               st(1)                                         // 0x004907e0    d9c9
                          fxch               st(1)                                         // 0x004907e2    d9c9
-                         {disp32} fdivr     dword ptr [rdata_bytes + 0x1390]              // 0x004907e4    d83d90a38a00
+                         {disp32} fdivr     dword ptr [_rdata_float1p0]                   // 0x004907e4    d83d90a38a00
                          {disp32} fdivr     dword ptr [rdata_bytes + 0x26e4]              // 0x004907ea    d83de4b68a00
                          fcompp                                                           // 0x004907f0    ded9
                          fnstsw             ax                                            // 0x004907f2    dfe0
@@ -1234,7 +1234,7 @@ _jmp_addr_0x004907c0:    sub                esp, 0x08                           
                          {disp8} je         _jmp_addr_0x00490801                          // 0x004907f7    7408
                          {disp32} fld       dword ptr [rdata_bytes + 0x2414]              // 0x004907f9    d90514b48a00
                          {disp8} jmp        _jmp_addr_0x00490807                          // 0x004907ff    eb06
-_jmp_addr_0x00490801:    {disp32} fld       dword ptr [rdata_bytes + 0x13b4]              // 0x00490801    d905b4a38a00
+_jmp_addr_0x00490801:    {disp32} fld       dword ptr [_rdata_float0p5]                   // 0x00490801    d905b4a38a00
 _jmp_addr_0x00490807:    xor.s              edx, edx                                      // 0x00490807    33d2
                          mov                eax, 0x000003e8                               // 0x00490809    b8e8030000
                          div                dword ptr [data_bytes + 0x33ba38]             // 0x0049080e    f735381ad000

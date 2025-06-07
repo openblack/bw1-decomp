@@ -174,9 +174,9 @@ _jmp_addr_0x006d93a0:    {disp8} mov       edx, dword ptr [ecx + 0x48]          
                          {disp8} je        _jmp_addr_0x006d93cb                          // 0x006d93bd    740c
                          dec               edx                                           // 0x006d93bf    4a
                          {disp8} je        _jmp_addr_0x006d93cb                          // 0x006d93c0    7409
-                         {disp32} fld      dword ptr [rdata_bytes + 0x1398]              // 0x006d93c2    d90598a38a00
+                         {disp32} fld      dword ptr [_rdata_float0p0]                   // 0x006d93c2    d90598a38a00
                          ret               0x0004                                        // 0x006d93c8    c20400
-_jmp_addr_0x006d93cb:    {disp32} fld      dword ptr [rdata_bytes + 0x1390]              // 0x006d93cb    d90590a38a00
+_jmp_addr_0x006d93cb:    {disp32} fld      dword ptr [_rdata_float1p0]                   // 0x006d93cb    d90590a38a00
                          ret               0x0004                                        // 0x006d93d1    c20400
                          nop                                                             // 0x006d93d4    90
                          nop                                                             // 0x006d93d5    90

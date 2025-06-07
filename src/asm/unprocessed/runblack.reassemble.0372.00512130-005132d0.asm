@@ -315,10 +315,10 @@ _jmp_addr_0x00512353:    pop               esi                                  
                          {disp8} fstp      dword ptr [ebp + 0x04]                               // 0x0051238e    d95d04
                          mov.s             eax, edx                                             // 0x00512391    8bc2
                          fild              dword ptr [edi]                                      // 0x00512393    db07
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]                     // 0x00512395    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]              // 0x00512395    d80da4a38a00
                          {disp8} fstp      dword ptr [ebp + 0x00]                               // 0x0051239b    d95d00
                          {disp8} fild      dword ptr [edi + 0x04]                               // 0x0051239e    db4704
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]                     // 0x005123a1    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]              // 0x005123a1    d80da4a38a00
                          {disp8} fstp      dword ptr [ebp + 0x08]                               // 0x005123a7    d95d08
                          mov               edi, dword ptr [ecx]                                 // 0x005123aa    8b39
                          mov               dword ptr [eax], edi                                 // 0x005123ac    8938
@@ -437,10 +437,10 @@ _jmp_addr_0x005124a7:    pop               edi                                  
                          {disp8} fstp      dword ptr [ebp + 0x04]                               // 0x005124e7    d95d04
                          mov.s             eax, edx                                             // 0x005124ea    8bc2
                          fild              dword ptr [edi]                                      // 0x005124ec    db07
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]                     // 0x005124ee    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]              // 0x005124ee    d80da4a38a00
                          {disp8} fstp      dword ptr [ebp + 0x00]                               // 0x005124f4    d95d00
                          {disp8} fild      dword ptr [edi + 0x04]                               // 0x005124f7    db4704
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]                     // 0x005124fa    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]              // 0x005124fa    d80da4a38a00
                          {disp8} fstp      dword ptr [ebp + 0x08]                               // 0x00512500    d95d08
                          mov               edi, dword ptr [ecx]                                 // 0x00512503    8b39
                          mov               dword ptr [eax], edi                                 // 0x00512505    8938

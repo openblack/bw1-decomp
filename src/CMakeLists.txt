@@ -70,6 +70,9 @@ set(SOURCES_001
     c/ObjectInfo.000.c
     c/AbodeInfo.003.c
     c/Abode.000.c
+    c/_float_constants.000.c
+    c/GameThing.000.c
+    c/_float_constants.001.c
 
     asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
 

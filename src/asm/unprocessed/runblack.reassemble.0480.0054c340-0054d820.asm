@@ -539,7 +539,7 @@ _jmp_addr_0x0054c560:    xor.s              eax, eax                            
 _jmp_addr_0x0054c570:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0054c570    8b0d5c19d000
                          {disp32} fld       dword ptr [ecx + 0x00205e70]                  // 0x0054c576    d981705e2000
                          sub                esp, 0x10                                     // 0x0054c57c    83ec10
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0054c57f    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0054c57f    d81d98a38a00
                          push               ebx                                           // 0x0054c585    53
                          push               esi                                           // 0x0054c586    56
                          {disp32} lea       esi, dword ptr [ecx + 0x00205d68]             // 0x0054c587    8db1685d2000
@@ -572,7 +572,7 @@ _jmp_addr_0x0054c5f4:    push               ebp                                 
                          {disp32} lea       esi, dword ptr [ecx + 0x00205d68]             // 0x0054c5fb    8db1685d2000
                          call               edi                                           // 0x0054c601    ffd7
                          {disp32} fld       dword ptr [esi + 0x00000108]                  // 0x0054c603    d98608010000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x0054c609    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0054c609    d81d98a38a00
                          {disp32} mov       dword ptr [esi + 0x00000100], eax             // 0x0054c60f    898600010000
                          {disp8} lea        eax, dword ptr [ebp + ebp * 0x4 + 0x00]       // 0x0054c615    8d44ad00
                          lea                edx, dword ptr [eax + eax * 0x4]              // 0x0054c619    8d1480

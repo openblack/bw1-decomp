@@ -108,7 +108,7 @@ _jmp_addr_0x0052af90:    sub                esp, 0x0c                           
                          mov.s              esi, ecx                                 // 0x0052afa8    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x5c]              // 0x0052afaa    8b465c
                          cmp                eax, 0x03                                // 0x0052afad    83f803
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]         // 0x0052afb0    d80db0a38a00
+                         {disp32} fmul      dword ptr [_rdata_float0p001]            // 0x0052afb0    d80db0a38a00
                          {disp8} fstp       dword ptr [esp + 0x08]                   // 0x0052afb6    d95c2408
                          {disp32} ja        _jmp_addr_0x0052b183                     // 0x0052afba    0f87c3010000
                          jmp                dword ptr [eax*4 + 0x52b18c]             // 0x0052afc0    ff24858cb15200

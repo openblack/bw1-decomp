@@ -1648,7 +1648,7 @@ _jmp_addr_0x006f61c7:    pop                edi                                 
                          {disp8} je         _jmp_addr_0x006f6245                          // 0x006f6203    7440
                          fld                dword ptr [edi]                               // 0x006f6205    d907
                          {disp8} fst        dword ptr [esp + 0x0c]                        // 0x006f6207    d954240c
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]              // 0x006f620b    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x006f620b    d81d98a38a00
                          fnstsw             ax                                            // 0x006f6211    dfe0
                          test               ah, 0x41                                      // 0x006f6213    f6c441
                          {disp8} jne        _jmp_addr_0x006f6245                          // 0x006f6216    752d

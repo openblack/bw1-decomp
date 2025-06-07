@@ -229,10 +229,10 @@ _jmp_addr_0x0060d489:    {disp8} mov       edx, dword ptr [esp + 0x34]          
                          {disp8} fstp      dword ptr [esp + 0x28]                      // 0x0060d4a8    d95c2428
                          push              0x28                                        // 0x0060d4ac    6a28
                          {disp8} fild      dword ptr [esp + 0x38]                      // 0x0060d4ae    db442438
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]            // 0x0060d4b2    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]                   // 0x0060d4b2    d80da4a38a00
                          {disp8} fstp      dword ptr [esp + 0x28]                      // 0x0060d4b8    d95c2428
                          {disp8} fild      dword ptr [esp + 0x3c]                      // 0x0060d4bc    db44243c
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13a4]            // 0x0060d4c0    d80da4a38a00
+                         {disp32} fmul     dword ptr [_rdata_float_coord_to_point]                   // 0x0060d4c0    d80da4a38a00
                          {disp8} fstp      dword ptr [esp + 0x30]                      // 0x0060d4c6    d95c2430
                          call              ___nw__FUl                                  // 0x0060d4ca    e8c1e21c00
                          add               esp, 0x0c                                   // 0x0060d4cf    83c40c

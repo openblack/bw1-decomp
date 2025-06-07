@@ -85,7 +85,7 @@ _jmp_addr_0x0053f7b0:    sub               esp, 0x0c                            
                          cdq                                                             // 0x0053f7cd    99
                          sub.s             eax, edx                                      // 0x0053f7ce    2bc2
                          sar               eax, 1                                        // 0x0053f7d0    d1f8
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x13ac]              // 0x0053f7d2    d80daca38a00
+                         {disp32} fmul     dword ptr [_rdata_float0p2]                   // 0x0053f7d2    d80daca38a00
                          mov               edx, 0x00000190                               // 0x0053f7d8    ba90010000
                          sub.s             edx, eax                                      // 0x0053f7dd    2bd0
                          push              ebx                                           // 0x0053f7df    53

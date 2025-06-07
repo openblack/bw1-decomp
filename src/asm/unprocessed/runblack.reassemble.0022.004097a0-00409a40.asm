@@ -232,7 +232,7 @@ _KeyDown__11SetupSliderFii:
 _jmp_addr_0x004099a9:    {disp32} fstp      dword ptr [ecx + 0x0000023c]             // 0x004099a9    d9993c020000
 _jmp_addr_0x004099af:    mov                dl, 0x01                                 // 0x004099af    b201
 _jmp_addr_0x004099b1:    {disp32} fld       dword ptr [ecx + 0x0000023c]             // 0x004099b1    d9813c020000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]         // 0x004099b7    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x004099b7    d81d98a38a00
                          fnstsw             ax                                       // 0x004099bd    dfe0
                          test               ah, 0x41                                 // 0x004099bf    f6c441
                          {disp8} jne        _jmp_addr_0x004099e7                     // 0x004099c2    7523
@@ -245,7 +245,7 @@ _jmp_addr_0x004099b1:    {disp32} fld       dword ptr [ecx + 0x0000023c]        
                          {disp8} jmp        _jmp_addr_0x004099ed                     // 0x004099dd    eb0e
 _jmp_addr_0x004099df:    {disp32} fld       dword ptr [rdata_bytes + 0x1390]         // 0x004099df    d90590a38a00
                          {disp8} jmp        _jmp_addr_0x004099ed                     // 0x004099e5    eb06
-_jmp_addr_0x004099e7:    {disp32} fld       dword ptr [rdata_bytes + 0x1398]         // 0x004099e7    d90598a38a00
+_jmp_addr_0x004099e7:    {disp32} fld       dword ptr [_rdata_float0p0]              // 0x004099e7    d90598a38a00
 _jmp_addr_0x004099ed:    test               dl, dl                                   // 0x004099ed    84d2
                          {disp32} fst       dword ptr [ecx + 0x0000023c]             // 0x004099ef    d9913c020000
                          {disp32} fstp      dword ptr [ecx + 0x00000240]             // 0x004099f5    d99940020000
