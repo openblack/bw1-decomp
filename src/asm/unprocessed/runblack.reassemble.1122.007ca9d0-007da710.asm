@@ -1311,13 +1311,13 @@ _jmp_addr_0x007cb64a:    push               esi                                 
 _jmp_addr_0x007cb657:    mov                eax, dword ptr [esi]                           // 0x007cb657    8b06
                          test               eax, eax                                       // 0x007cb659    85c0
                          {disp8} je         _jmp_addr_0x007cb688                           // 0x007cb65b    742b
-                         cmp                esi, 0x00c2daa4                                // 0x007cb65d    81fea4dac200
+                         cmp                esi, OFFSET _p_ltlcritsect                     // 0x007cb65d    81fea4dac200
                          {disp8} je         _jmp_addr_0x007cb688                           // 0x007cb663    7423
-                         cmp                esi, 0x00c2da94                                // 0x007cb665    81fe94dac200
+                         cmp                esi, OFFSET _p_xlcritsect                      // 0x007cb665    81fe94dac200
                          {disp8} je         _jmp_addr_0x007cb688                           // 0x007cb66b    741b
-                         cmp                esi, 0x00c2da84                                // 0x007cb66d    81fe84dac200
+                         cmp                esi, OFFSET _p_hlcritsect                      // 0x007cb66d    81fe84dac200
                          {disp8} je         _jmp_addr_0x007cb688                           // 0x007cb673    7413
-                         cmp                esi, 0x00c2da64                                // 0x007cb675    81fe64dac200
+                         cmp                esi, OFFSET _p_sigcritsect                     // 0x007cb675    81fe64dac200
                          {disp8} je         _jmp_addr_0x007cb688                           // 0x007cb67b    740b
                          push               eax                                            // 0x007cb67d    50
                          call               edi                                            // 0x007cb67e    ffd7
