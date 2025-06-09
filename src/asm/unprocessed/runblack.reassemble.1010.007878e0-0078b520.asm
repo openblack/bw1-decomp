@@ -1151,7 +1151,7 @@ _jmp_addr_0x00788772:    push               ebp                                 
                          {disp32} mov       ecx, dword ptr [esi + 0x000000fc]             // 0x007887c5    8b8efc000000
                          push               0x000000ca                                    // 0x007887cb    68ca000000
                          call               _jmp_addr_0x00484360                          // 0x007887d0    e88bbbcfff
-_jmp_addr_0x007887d5:    {disp32} mov       eax, dword ptr [data_bytes + 0x272134]        // 0x007887d5    a13481c300
+_jmp_addr_0x007887d5:    {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x007887d5    a13481c300
                          cmp                eax, 0x000000c8                               // 0x007887da    3dc8000000
                          {disp8} jle        _jmp_addr_0x007887e6                          // 0x007887df    7e05
                          mov                eax, 0x000000c8                               // 0x007887e1    b8c8000000

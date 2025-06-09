@@ -1483,11 +1483,11 @@ _jmp_addr_0x005cbf78:    {disp32} mov       edx, dword ptr [data_bytes + 0x22ba2
                          {disp8} jne        _jmp_addr_0x005cbf9a                           // 0x005cbf80    7518
                          test               esi, esi                                       // 0x005cbf82    85f6
                          {disp8} jl         _jmp_addr_0x005cbf9a                           // 0x005cbf84    7c14
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x005cbf86    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x005cbf86    db053481c300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3689c]              // 0x005cbf8c    d80d9cf88d00
                          {disp32} fadd      dword ptr [data_bytes + 0x351cb4]              // 0x005cbf92    d805b47cd100
                          {disp8} jmp        _jmp_addr_0x005cbfac                           // 0x005cbf98    eb12
-_jmp_addr_0x005cbf9a:    {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x005cbf9a    db053481c300
+_jmp_addr_0x005cbf9a:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x005cbf9a    db053481c300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x81544]              // 0x005cbfa0    d80d44a59200
                          {disp32} fsubr     dword ptr [data_bytes + 0x351cb4]              // 0x005cbfa6    d82db47cd100
 _jmp_addr_0x005cbfac:    {disp32} fstp      dword ptr [data_bytes + 0x351cb4]              // 0x005cbfac    d91db47cd100
@@ -1572,7 +1572,7 @@ _jmp_addr_0x005cc0fd:    {disp8} mov        edx, dword ptr [eax + 0x08]         
                          {disp32} mov       ecx, dword ptr [esp + eax * 0x4 + 0x00000090]  // 0x005cc10c    8b8c8490000000
                          push               ecx                                            // 0x005cc113    51
                          call               _wcslen                                        // 0x005cc114    e849a31f00
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x005cc119    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x005cc119    db053481c300
                          mov.s              ebp, eax                                       // 0x005cc11f    8be8
                          add                esp, 0x04                                      // 0x005cc121    83c404
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1ecf8]              // 0x005cc124    d80df87c8c00
@@ -2045,7 +2045,7 @@ _jmp_addr_0x005cc7b1:    call               _jmp_addr_0x007a1400                
                          {disp8} mov        dword ptr [esp + 0x10], ebx                    // 0x005cc7c5    895c2410
                          {disp8} mov        dword ptr [esp + 0x14], 0x3f800000             // 0x005cc7c9    c74424140000803f
                          {disp8} jne        _jmp_addr_0x005cc7db                           // 0x005cc7d1    7508
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x005cc7d3    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x005cc7d3    db053481c300
                          {disp8} jmp        _jmp_addr_0x005cc7e1                           // 0x005cc7d9    eb06
 _jmp_addr_0x005cc7db:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]              // 0x005cc7db    db05c09eea00
 _jmp_addr_0x005cc7e1:    {disp32} fmul      dword ptr [rdata_bytes + 0x3689c]              // 0x005cc7e1    d80d9cf88d00

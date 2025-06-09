@@ -12388,7 +12388,7 @@ _jmp_addr_0x00526530:    sub                esp, 0x48                           
                          mov.s              esi, ecx                                             // 0x00526534    8bf1
                          cmp                dword ptr [esi + 0x20], 0x02                         // 0x00526536    837e2002
                          {disp32} jl        _jmp_addr_0x005267be                                 // 0x0052653a    0f8c7e020000
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]                    // 0x00526540    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]              // 0x00526540    db053481c300
                          {disp8} mov        ecx, dword ptr [esi + 0x04]                          // 0x00526546    8b4e04
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]                     // 0x00526549    d80db0a38a00
                          {disp8} fstp       dword ptr [esp + 0x10]                               // 0x0052654f    d95c2410
@@ -12898,7 +12898,7 @@ _jmp_addr_0x00526bfd:    {disp8} mov        eax, dword ptr [esi + 0x1c]         
                          xor.s              ebx, ebx                                             // 0x00526c00    33db
                          cmp.s              eax, ebx                                             // 0x00526c02    3bc3
                          {disp32} je        _jmp_addr_0x00526dcd                                 // 0x00526c04    0f84c3010000
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]                    // 0x00526c0a    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]              // 0x00526c0a    db053481c300
                          {disp8} mov        dword ptr [esp + 0x18], ebx                          // 0x00526c10    895c2418
                          {disp8} mov        dword ptr [esp + 0x10], ebx                          // 0x00526c14    895c2410
                          xor.s              edi, edi                                             // 0x00526c18    33ff

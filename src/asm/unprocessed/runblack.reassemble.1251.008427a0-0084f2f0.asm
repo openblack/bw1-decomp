@@ -3052,7 +3052,7 @@ _jmp_addr_0x008447b0:    sub                esp, 0x1c                           
                          test               eax, eax                                       // 0x008447e3    85c0
                          {disp8} jl         _jmp_addr_0x00844817                           // 0x008447e5    7c30
                          {disp32} mov       eax, dword ptr [data_bytes + 0x5314e8]         // 0x008447e7    a1e874ef00
-                         add                eax, dword ptr [data_bytes + 0x272134]         // 0x008447ec    03053481c300
+                         add                eax, dword ptr [?g_delta_time@LH3DTech@@2MA]   // 0x008447ec    03053481c300
                          cmp                eax, 0x000003e8                                // 0x008447f2    3de8030000
                          {disp32} mov       dword ptr [data_bytes + 0x5314e8], eax         // 0x008447f7    a3e874ef00
                          {disp8} jle        _jmp_addr_0x00844808                           // 0x008447fc    7e0a

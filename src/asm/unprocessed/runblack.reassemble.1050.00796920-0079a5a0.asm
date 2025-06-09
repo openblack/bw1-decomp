@@ -4229,7 +4229,7 @@ _jmp_addr_0x00799e86:    {disp32} fld         dword ptr [data_bytes + 0x470134] 
                          fnstsw               ax                                            // 0x00799e92    dfe0
                          test                 ah, 0x41                                      // 0x00799e94    f6c441
                          {disp8} jne          _jmp_addr_0x00799ec2                          // 0x00799e97    7529
-                         {disp32} fild        dword ptr [data_bytes + 0x272134]             // 0x00799e99    db053481c300
+                         {disp32} fild        dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x00799e99    db053481c300
                          {disp32} fsubr       dword ptr [data_bytes + 0x470134]             // 0x00799e9f    d82d3461e300
                          {disp32} fst         dword ptr [data_bytes + 0x470134]             // 0x00799ea5    d9153461e300
                          {disp32} fcomp       dword ptr [rdata_bytes + 0x1398]              // 0x00799eab    d81d98a38a00
@@ -4773,7 +4773,7 @@ _jmp_addr_0x0079a498:    cmp.s                edi, ebx                          
 _jmp_addr_0x0079a4fc:    {disp8} mov          dword ptr [esi + 0x34], ebp                   // 0x0079a4fc    896e34
 _jmp_addr_0x0079a4ff:    {disp32} mov         eax, dword ptr [data_bytes + 0x47010c]        // 0x0079a4ff    a10c61e300
 _jmp_addr_0x0079a504:    {disp8} mov          edx, dword ptr [esi + 0x7c]                   // 0x0079a504    8b567c
-                         {disp32} fild        dword ptr [data_bytes + 0x272134]             // 0x0079a507    db053481c300
+                         {disp32} fild        dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0079a507    db053481c300
                          cmp                  edx, 0x02                                     // 0x0079a50d    83fa02
                          sete                 dl                                            // 0x0079a510    0f94c2
                          {disp32} mov         ecx, dword ptr [esi + 0x000000c4]             // 0x0079a513    8b8ec4000000

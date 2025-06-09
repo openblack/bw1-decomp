@@ -1047,7 +1047,7 @@ _jmp_addr_0x00642a32:    mov.s              ecx, edi                            
                          {disp32} mov       dword ptr [data_bytes + 0x27271c], 0x00000001  // 0x00642ad4    c7051c87c30001000000
                          call               @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20                           // 0x00642ade    e8cd281a00
 _jmp_addr_0x00642ae3:    call               _StartFrame__10LH3DRenderFv                    // 0x00642ae3    e8f8c51e00
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x00642ae8    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x00642ae8    db053481c300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]               // 0x00642aee    d80db0a38a00
                          {disp8} fadd       dword ptr [esp + 0x20]                         // 0x00642af4    d8442420
                          {disp8} fst        dword ptr [esp + 0x20]                         // 0x00642af8    d9542420

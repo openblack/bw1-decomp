@@ -1955,7 +1955,7 @@ _jmp_addr_0x005b7061:    {disp8} fld        dword ptr [esp + 0x10]              
                          fstp               dword ptr [esp]                               // 0x005b709f    d91c24
                          mov                ecx, 0x00d14010                               // 0x005b70a2    b91040d100
                          call               @SetDestinationWithSpeedAndTime__6ZoomerFfff@20                          // 0x005b70a7    e8b40ce5ff
-_jmp_addr_0x005b70ac:    {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x005b70ac    db053481c300
+_jmp_addr_0x005b70ac:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x005b70ac    db053481c300
                          mov                ecx, 0x00d13fb0                               // 0x005b70b2    b9b03fd100
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3418]              // 0x005b70b7    d80d18c48a00
                          {disp32} fstp      dword ptr [esp + 0x00000080]                  // 0x005b70bd    d99c2480000000
@@ -2053,7 +2053,7 @@ _jmp_addr_0x005b7182:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          call               @GetAnim__9MorphableFll@16                    // 0x005b71dd    e86e240600
                          {disp8} mov        edx, dword ptr [esi + 0x08]                   // 0x005b71e2    8b5608
                          mov.s              edi, eax                                      // 0x005b71e5    8bf8
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x272134]        // 0x005b71e7    a13481c300
+                         {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x005b71e7    a13481c300
                          add.s              eax, edx                                      // 0x005b71ec    03c2
                          cdq                                                              // 0x005b71ee    99
                          idiv               dword ptr [edi]                               // 0x005b71ef    f73f
@@ -2420,7 +2420,7 @@ _jmp_addr_0x005b7534:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x0
                          {disp32} mov       dword ptr [eax + 0x0000486c], ecx             // 0x005b75f7    89886c480000
                          {disp32} mov       edx, dword ptr [eax + 0x00004860]             // 0x005b75fd    8b9060480000
                          {disp32} mov       dword ptr [eax + 0x00004870], edx             // 0x005b7603    899070480000
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x272134]        // 0x005b7609    a13481c300
+                         {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x005b7609    a13481c300
                          {disp8} mov        edx, dword ptr [esi + 0x18]                   // 0x005b760e    8b5618
                          add.s              edx, eax                                      // 0x005b7611    03d0
                          add                esp, 0x0c                                     // 0x005b7613    83c40c
