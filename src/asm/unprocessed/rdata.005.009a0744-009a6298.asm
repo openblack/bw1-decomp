@@ -2,6 +2,18 @@
 .balign 0
 .section .rdata
 
+.globl ??_C@_07PCLE@LC_TIME?$AA@
+.globl ??_C@_0L@NKG@LC_NUMERIC?$AA@
+.globl ??_C@_0M@CBIH@LC_MONETARY?$AA@
+.globl ??_C@_08LFGE@LC_CTYPE?$AA@
+.globl ??_C@_0L@CFLC@LC_COLLATE?$AA@
+.globl ??_C@_06GCPK@LC_ALL?$AA@
+.globl ??_C@_01NON@_?$AA@
+.globl ??_C@_02BGDO@?$DN?$DL?$AA@
+.globl ??_C@_01FAJB@?$DL?$AA@
+.globl ??_C@_03DBOJ@_?4?0?$AA@
+
+/* setlocal.obj start */
 ??_C@_07PCLE@LC_TIME?$AA@:                                                                                         // [0xf7744] 0x008a9000 + 0xf7744 = 0x009a0744
 .asciz "LC_TIME"
 
@@ -25,11 +37,22 @@
 
 ??_C@_06GCPK@LC_ALL?$AA@:                                                                                          // [0xf777c] 0x008a9000 + 0xf777c = 0x009a077c
 .asciz "LC_ALL"
+.byte 0x00                                                                                                         // [0xf7783] 0x008a9000 + 0xf7783 = 0x009a0783
 
-.byte 0x00, 0x3b, 0x00, 0x00, 0x00, 0x3d, 0x3b, 0x00, 0x00, 0x5f, 0x2e, 0x2c, 0x00                                 // [0xf7783] 0x008a9000 + 0xf7783 = 0x009a0783
+??_C@_01FAJB@?$DL?$AA@:                                                                                            // [0xf7784] 0x008a9000 + 0xf7784 = 0x009a0784
+.asciz ";"
+.byte 0x00, 0x00                                                                                                   // [0xf7786] 0x008a9000 + 0xf7786 = 0x009a0786
+
+??_C@_02BGDO@?$DN?$DL?$AA@:                                                                                        // [0xf7788] 0x008a9000 + 0xf7788 = 0x009a0788
+.asciz "=;"
+.byte 0x00                                                                                                         // [0xf778b] 0x008a9000 + 0xf778b = 0x009a078b
+
+??_C@_03DBOJ@_?4?0?$AA@:                                                                                           // [0xf778c] 0x008a9000 + 0xf778c = 0x009a078c
+.asciz "_.,"
 
 ??_C@_01NON@_?$AA@:                                                                                                // [0xf7790] 0x008a9000 + 0xf7790 = 0x009a0790
-.byte 0x5f, 0x00
+.asciz "_"
+/* setlocal.obj end */
 
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00                           // [0xf7792] 0x008a9000 + 0xf7792 = 0x009a0792
 .byte 0xff, 0xff, 0xff, 0xff, 0x54, 0xb8, 0x7c, 0x00, 0x58, 0xb8, 0x7c, 0x00, 0xff, 0xff, 0xff, 0xff               // [0xf77a0] 0x008a9000 + 0xf77a0 = 0x009a07a0
