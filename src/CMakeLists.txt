@@ -569,6 +569,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\ehprolog.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\memcpy.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\memcmp.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\setlocal.obj" ON WEAKEN_SYMBOLS ___unguarded_readlc_active ___setlc_active "_?cachecp@?1??_expandlocale@@9@9" "_?cacheid@?1??_expandlocale@@9@9" "??_C@_03DBOJ@_?4?0?$AA@" "??_C@_01KPOD@?$DN?$AA@" "??_C@_01FAJB@?$DL?$AA@" "??_C@_02BGDO@?$DN?$DL?$AA@" "??_C@_01PJCK@?4?$AA@" "??_C@_07PCLE@LC_TIME?$AA@" "??_C@_0L@NKG@LC_NUMERIC?$AA@" "??_C@_0M@CBIH@LC_MONETARY?$AA@" "??_C@_08LFGE@LC_CTYPE?$AA@" "??_C@_06GCPK@LC_ALL?$AA@" "??_C@_01NON@_?$AA@" "??_C@_0L@CFLC@LC_COLLATE?$AA@")
+add_patched_libcmt_object("build\\intel\\mt_obj\\memset.obj" OFF)
 set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 # libcmt is statically linked between 007aee98 and 008a6470
@@ -644,6 +645,15 @@ add_custom_command(
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-005.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-005.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
+            ON
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
             ON
 )
 
