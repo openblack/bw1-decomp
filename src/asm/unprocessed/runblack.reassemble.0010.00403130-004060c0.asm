@@ -5063,7 +5063,7 @@ _GetInfoFromText__10GAbodeInfoFPc:    sub                esp, 0x08              
                          push               esi                                           // 0x00405a75    56
                          push               edi                                           // 0x00405a76    57
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000            // 0x00405a77    c744241400000000
-                         {disp8} mov        dword ptr [esp + 0x10], 0x00c3c690            // 0x00405a7f    c744241090c6c300
+                         {disp8} mov        dword ptr [esp + 0x10], OFFSET _AbodeInfos    // 0x00405a7f    c744241090c6c300
                          mov                ebp, 0x00da57b8                               // 0x00405a87    bdb857da00
 _jmp_addr_0x00405a8c:    {disp8} mov        eax, dword ptr [ebp + 0x00]                   // 0x00405a8c    8b4500
                          {disp32} mov       edx, dword ptr [eax * 0x4 + 0x00c22fdc]       // 0x00405a8f    8b1485dc2fc200
@@ -5138,7 +5138,7 @@ _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER:    push               esi       
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x00405b31    8b742408
                          push               edi                                           // 0x00405b35    57
                          {disp8} mov        edi, dword ptr [esp + 0x10]                   // 0x00405b36    8b7c2410
-                         mov                eax, 0x00c3c690                               // 0x00405b3a    b890c6c300
+                         mov                eax, OFFSET _AbodeInfos                       // 0x00405b3a    b890c6c300
                          mov                ecx, 0x00c3c7e8                               // 0x00405b3f    b9e8c7c300
 _jmp_addr_0x00405b44:    mov                edx, dword ptr [ecx]                          // 0x00405b44    8b11
                          cmp.s              edx, esi                                      // 0x00405b46    3bd6

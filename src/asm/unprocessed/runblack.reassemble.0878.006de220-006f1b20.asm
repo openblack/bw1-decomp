@@ -27382,7 +27382,7 @@ _jmp_addr_0x006f17f5:    push               0x00c0cb6c                          
                          lea                eax, dword ptr [esi + ecx * 0x2]              // 0x006f188f    8d044e
                          lea                edx, dword ptr [eax + eax * 0x2]              // 0x006f1892    8d1440
                          push               ebp                                           // 0x006f1895    55
-                         {disp32} lea       eax, dword ptr [edx * 0x8 + 0x00c3c690]       // 0x006f1896    8d04d590c6c300
+                         {disp32} lea       eax, dword ptr [edx * 0x8 + _AbodeInfos]      // 0x006f1896    8d04d590c6c300
                          push               eax                                           // 0x006f189d    50
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x006f189e    8d4c2434
                          push               ecx                                           // 0x006f18a2    51
@@ -27400,7 +27400,7 @@ _jmp_addr_0x006f17f5:    push               0x00c0cb6c                          
                          lea                eax, dword ptr [esi + ecx * 0x2]              // 0x006f18c5    8d044e
                          lea                edx, dword ptr [eax + eax * 0x2]              // 0x006f18c8    8d1440
                          push               ebp                                           // 0x006f18cb    55
-                         {disp32} lea       eax, dword ptr [edx * 0x8 + 0x00c3c690]       // 0x006f18cc    8d04d590c6c300
+                         {disp32} lea       eax, dword ptr [edx * 0x8 + _AbodeInfos]      // 0x006f18cc    8d04d590c6c300
                          push               eax                                           // 0x006f18d3    50
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x006f18d4    8d4c2434
                          push               ecx                                           // 0x006f18d8    51

@@ -2458,7 +2458,7 @@ _jmp_addr_0x0042c8e9:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          {disp8} mov        dword ptr [esp + 0x10], eax                          // 0x0042c8f8    89442410
                          .byte              0x72, 0xae// {disp8} jb _jmp_addr_0x0042c8ac         // 0x0042c8fc    72ae
 _jmp_addr_0x0042c8fe:    xor.s              ebx, ebx                                             // 0x0042c8fe    33db
-                         {disp8} mov        dword ptr [esp + 0x10], 0x00c3c690                   // 0x0042c900    c744241090c6c300
+                         {disp8} mov        dword ptr [esp + 0x10], OFFSET _AbodeInfos           // 0x0042c900    c744241090c6c300
 _jmp_addr_0x0042c908:    push               esi                                                  // 0x0042c908    56
                          push               ebx                                                  // 0x0042c909    53
                          push               0x009cc340                                           // 0x0042c90a    6840c39c00
@@ -2486,7 +2486,7 @@ _jmp_addr_0x0042c945:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          {disp8} jmp        _jmp_addr_0x0042c9ad                                 // 0x0042c95a    eb51
 _jmp_addr_0x0042c95c:    {disp32} inc       dword ptr [ebp + 0x0000211c]                         // 0x0042c95c    ff851c210000
                          {disp8} jmp        _jmp_addr_0x0042c8fe                                 // 0x0042c962    eb9a
-_jmp_addr_0x0042c964:    mov                esi, 0x00c3c690                                      // 0x0042c964    be90c6c300
+_jmp_addr_0x0042c964:    mov                esi, OFFSET _AbodeInfos                              // 0x0042c964    be90c6c300
 _jmp_addr_0x0042c969:    {disp8} lea        edx, dword ptr [esp + 0x1c]                          // 0x0042c969    8d54241c
                          push               edx                                                  // 0x0042c96d    52
                          mov.s              ecx, esi                                             // 0x0042c96e    8bce
