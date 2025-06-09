@@ -3194,7 +3194,7 @@ _jmp_addr_0x005f8fdb:    {disp32} fld       dword ptr [data_bytes + 0x4dbdd0]   
                          {disp8} je         _jmp_addr_0x005f904e                           // 0x005f9040    740c
                          {disp32} mov       dword ptr [data_bytes + 0x371ccc], 0x3a83126f  // 0x005f9042    c705cc7cd3006f12833a
                          {disp8} jmp        _jmp_addr_0x005f906c                           // 0x005f904c    eb1e
-_jmp_addr_0x005f904e:    {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x005f904e    db053481c300
+_jmp_addr_0x005f904e:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x005f904e    db053481c300
                          {disp32} fmul      dword ptr [data_bytes + 0x36ea8c]              // 0x005f9054    d80d8c4ad300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x826f8]              // 0x005f905a    d80df8b69200
                          {disp32} fadd      dword ptr [data_bytes + 0x371ccc]              // 0x005f9060    d805cc7cd300
@@ -3627,7 +3627,7 @@ _jmp_addr_0x005f968c:    {disp8} fild       dword ptr [esp + 0x18]              
                          {disp8} jmp        _jmp_addr_0x005f96ee                           // 0x005f96e2    eb0a
 _jmp_addr_0x005f96e4:    {disp32} mov       dword ptr [data_bytes + 0x36ea8c], 0x3dcccccd  // 0x005f96e4    c7058c4ad300cdcccc3d
 _jmp_addr_0x005f96ee:    cmp.s              ebx, ebp                                       // 0x005f96ee    3bdd
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x005f96f0    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x005f96f0    db053481c300
                          fld                st(0)                                          // 0x005f96f6    d9c0
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]               // 0x005f96f8    d80db0a38a00
                          {disp8} fstp       dword ptr [esp + 0x14]                         // 0x005f96fe    d95c2414

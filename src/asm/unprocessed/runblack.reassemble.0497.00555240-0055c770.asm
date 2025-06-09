@@ -604,7 +604,7 @@ _jmp_addr_0x005553f0:    {disp32} mov       dword ptr [ecx + 0x00250180], 0x0000
 _jmp_addr_0x00555400:    {disp32} mov       dword ptr [ecx + 0x00250180], 0x00000003      // 0x00555400    c7818001250003000000
                          ret                                                              // 0x0055540a    c3
                          call               _jmp_addr_0x00401879                          // 0x0055540b    e869c4eaff
-_jmp_addr_0x00555410:    {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x00555410    db053481c300
+_jmp_addr_0x00555410:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x00555410    db053481c300
                          push               esi                                           // 0x00555416    56
                          push               edi                                           // 0x00555417    57
                          push               ecx                                           // 0x00555418    51
@@ -623,7 +623,7 @@ _jmp_addr_0x00555410:    {disp32} fild      dword ptr [data_bytes + 0x272134]   
                          {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00555462    8b0d5c19d000
                          {disp32} mov       ecx, dword ptr [ecx + 0x000059b4]             // 0x00555468    8b89b4590000
                          call               _jmp_addr_0x00793ee0                          // 0x0055546e    e86dea2300
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x00555473    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x00555473    db053481c300
                          push               ecx                                           // 0x00555479    51
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3418]              // 0x0055547a    d80d18c48a00
                          fstp               dword ptr [esp]                               // 0x00555480    d91c24
@@ -855,7 +855,7 @@ _jmp_addr_0x005557d0:    mov                ecx, 0x00d01600                     
 _jmp_addr_0x005557e0:    {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x005557e0    a15c19d000
                          cmp                dword ptr [eax + 0x00205a28], 0x01            // 0x005557e5    83b8285a200001
                          {disp8} jne        _jmp_addr_0x00555804                          // 0x005557ec    7516
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x272134]        // 0x005557ee    a13481c300
+                         {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x005557ee    a13481c300
                          test               eax, eax                                      // 0x005557f3    85c0
                          {disp8} jle        _jmp_addr_0x0055581a                          // 0x005557f5    7e23
                          cmp                eax, 0x000001f4                               // 0x005557f7    3df4010000
@@ -883,7 +883,7 @@ _jmp_addr_0x00555820:    {disp32} mov       eax, dword ptr [_data_bytes_uint_0x0
                          test               ecx, ecx                                      // 0x0055583b    85c9
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4e3ec0]        // 0x0055583d    a1c09eea00
                          {disp8} jne        _jmp_addr_0x00555849                          // 0x00555842    7505
-_jmp_addr_0x00555844:    {disp32} mov       eax, dword ptr [data_bytes + 0x272134]        // 0x00555844    a13481c300
+_jmp_addr_0x00555844:    {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x00555844    a13481c300
 _jmp_addr_0x00555849:    ret                                                              // 0x00555849    c3
                          call               dword ptr [rdata_bytes + 0x328]               // 0x0055584a    ff1528938a00
 @MyInterface__5GGameFv@4:xor.s              eax, eax                                      // 0x00555850    33c0

@@ -1824,7 +1824,7 @@ _jmp_addr_0x0040d4be:    {disp8} mov          eax, dword ptr [esi + 0x14]       
                          push                 edx                                           // 0x0040d4d7    52
                          call                 _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb                          // 0x0040d4d8    e873420000
                          fstp                 st(0)                                         // 0x0040d4dd    ddd8
-                         {disp32} fild        dword ptr [data_bytes + 0x272134]             // 0x0040d4df    db053481c300
+                         {disp32} fild        dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0040d4df    db053481c300
                          add                  esp, 0x2c                                     // 0x0040d4e5    83c42c
                          {disp32} fmul        dword ptr [rdata_bytes + 0x13b0]              // 0x0040d4e8    d80db0a38a00
                          {disp32} fadd        dword ptr [esi + 0x00000258]                  // 0x0040d4ee    d88658020000
@@ -3680,7 +3680,7 @@ _jmp_addr_0x0040e9af:    {disp8} mov          eax, dword ptr [esi + 0x14]       
                          {disp8} fstp         dword ptr [esp + 0x28]                        // 0x0040e9f3    d95c2428
                          {disp8} fild         dword ptr [esp + 0x20]                        // 0x0040e9f7    db442420
                          {disp8} fstp         dword ptr [esp + 0x14]                        // 0x0040e9fb    d95c2414
-                         {disp32} fild        dword ptr [data_bytes + 0x272134]             // 0x0040e9ff    db053481c300
+                         {disp32} fild        dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0040e9ff    db053481c300
                          {disp32} fmul        dword ptr [rdata_bytes + 0x13b0]              // 0x0040ea05    d80db0a38a00
                          {disp32} fadd        dword ptr [esi + 0x00000258]                  // 0x0040ea0b    d88658020000
                          {disp32} fcom        dword ptr [esi + 0x0000025c]                  // 0x0040ea11    d8965c020000
@@ -4973,7 +4973,7 @@ _Drag__12SetupPictureFii:
                          nop                                                                // 0x0040fa1e    90
                          nop                                                                // 0x0040fa1f    90
 _Draw__12SetupPictureFbb:
-                         {disp32} fild        dword ptr [data_bytes + 0x272134]             // 0x0040fa20    db053481c300
+                         {disp32} fild        dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0040fa20    db053481c300
                          sub                  esp, 0x000000ac                               // 0x0040fa26    81ecac000000
                          push                 ebx                                           // 0x0040fa2c    53
                          push                 ebp                                           // 0x0040fa2d    55

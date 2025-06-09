@@ -18182,7 +18182,7 @@ _jmp_addr_0x005b07c1:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          call               @GetAnim__9MorphableFll@16                    // 0x005b07c6    e8858e0600
                          {disp8} mov        ecx, dword ptr [esi + 0x08]                   // 0x005b07cb    8b4e08
                          mov.s              ebx, eax                                      // 0x005b07ce    8bd8
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x272134]        // 0x005b07d0    a13481c300
+                         {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x005b07d0    a13481c300
                          add.s              eax, ecx                                      // 0x005b07d5    03c1
                          cdq                                                              // 0x005b07d7    99
                          idiv               dword ptr [ebx]                               // 0x005b07d8    f73b
@@ -18236,7 +18236,7 @@ _jmp_addr_0x005b0828:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} lea        ecx, dword ptr [edi + 0x60]                   // 0x005b0865    8d4f60
                          call               @SetPosition__6ZoomerFf@12                    // 0x005b0868    e85312e9ff
                          {disp8} mov        dword ptr [esi + 0x0c], ebp                   // 0x005b086d    896e0c
-_jmp_addr_0x005b0870:    {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x005b0870    db053481c300
+_jmp_addr_0x005b0870:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x005b0870    db053481c300
                          mov.s              ecx, edi                                      // 0x005b0876    8bcf
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3418]              // 0x005b0878    d80d18c48a00
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x005b087e    d95c2414
@@ -18856,7 +18856,7 @@ _jmp_addr_0x005b0fd1:    call               _jmp_addr_0x0046c040                
                          fstp               dword ptr [esp]                               // 0x005b1014    d91c24
                          {disp8} lea        ecx, dword ptr [edi + 0x60]                   // 0x005b1017    8d4f60
                          call               @SetDestinationWithSpeedAndTime__6ZoomerFfff@20                          // 0x005b101a    e8416de5ff
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x005b101f    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x005b101f    db053481c300
                          mov.s              ecx, edi                                      // 0x005b1025    8bcf
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3418]              // 0x005b1027    d80d18c48a00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x005b102d    d95c2410
@@ -18921,7 +18921,7 @@ _jmp_addr_0x005b10d8:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          call               @GetAnim__9MorphableFll@16                    // 0x005b10f1    e85a850600
                          {disp8} mov        ecx, dword ptr [esi + 0x08]                   // 0x005b10f6    8b4e08
                          mov.s              edi, eax                                      // 0x005b10f9    8bf8
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x272134]        // 0x005b10fb    a13481c300
+                         {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x005b10fb    a13481c300
                          add.s              eax, ecx                                      // 0x005b1100    03c1
                          cdq                                                              // 0x005b1102    99
                          idiv               dword ptr [edi]                               // 0x005b1103    f73f
@@ -20631,7 +20631,7 @@ _jmp_addr_0x005b2723:    {disp8} fld        dword ptr [esp + 0x24]              
                          push               eax                                           // 0x005b29d6    50
                          {disp32} mov       dword ptr [esp + 0x000000b0], edx             // 0x005b29d7    899424b0000000
                          call               @GetAnim__9MorphableFll@16                    // 0x005b29de    e86d6c0600
-                         {disp32} mov       ebp, dword ptr [data_bytes + 0x272134]        // 0x005b29e3    8b2d3481c300
+                         {disp32} mov       ebp, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x005b29e3    8b2d3481c300
                          mov.s              ecx, eax                                      // 0x005b29e9    8bc8
                          {disp8} mov        eax, dword ptr [ebx + 0x08]                   // 0x005b29eb    8b4308
                          add.s              eax, ebp                                      // 0x005b29ee    03c5
@@ -22585,7 +22585,7 @@ _jmp_addr_0x005b419a:    {disp32} mov       eax, dword ptr [data_bytes + 0x34df3
 _jmp_addr_0x005b41a3:    {disp8} mov        edx, dword ptr [esi + 0x04]                   // 0x005b41a3    8b5604
                          cmp                dword ptr [edx + 0x000049bc], ebp             // 0x005b41a6    39aabc490000
                          {disp8} jne        _jmp_addr_0x005b41d3                          // 0x005b41ac    7525
-                         sub                eax, dword ptr [data_bytes + 0x272134]        // 0x005b41ae    2b053481c300
+                         sub                eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x005b41ae    2b053481c300
                          {disp32} mov       dword ptr [data_bytes + 0x34df3c], eax        // 0x005b41b4    a33c3fd100
                          {disp8} jns        _jmp_addr_0x005b41d3                          // 0x005b41b9    7918
                          {disp32} mov       dword ptr [data_bytes + 0x34df3c], ebp        // 0x005b41bb    892d3c3fd100

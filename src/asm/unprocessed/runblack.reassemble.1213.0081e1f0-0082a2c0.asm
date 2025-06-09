@@ -4239,7 +4239,7 @@ _jmp_addr_0x00821270:    {disp32} mov       eax, dword ptr [data_bytes + 0x2723b
                          xor.s              edi, edi                                             // 0x00821281    33ff
                          test               esi, esi                                             // 0x00821283    85f6
                          {disp8} je         _jmp_addr_0x008212d0                                 // 0x00821285    7449
-_jmp_addr_0x00821287:    {disp32} mov       eax, dword ptr [data_bytes + 0x272134]               // 0x00821287    a13481c300
+_jmp_addr_0x00821287:    {disp32} mov       eax, dword ptr [?g_delta_time@LH3DTech@@2MA]         // 0x00821287    a13481c300
                          {disp8} mov        ecx, dword ptr [esi + 0x1c]                          // 0x0082128c    8b4e1c
                          sub.s              ecx, eax                                             // 0x0082128f    2bc8
                          mov.s              eax, ecx                                             // 0x00821291    8bc1

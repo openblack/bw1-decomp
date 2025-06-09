@@ -6506,7 +6506,7 @@ _jmp_addr_0x005f4ddc:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               0x0                                           // 0x005f4de0    6a00
                          push               eax                                           // 0x005f4de2    50
                          call               _jmp_addr_0x005f3dc0                          // 0x005f4de3    e8d8efffff
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x005f4de8    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x005f4de8    db053481c300
                          add                esp, 0x08                                     // 0x005f4dee    83c408
                          push               0x1                                           // 0x005f4df1    6a01
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]              // 0x005f4df3    d80db0a38a00

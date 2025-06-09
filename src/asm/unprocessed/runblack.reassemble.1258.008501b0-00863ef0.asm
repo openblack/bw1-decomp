@@ -17371,7 +17371,7 @@ _jmp_addr_0x0085e063:    imul               ebp, esi                            
                          nop                                                              // 0x0085e07e    90
                          nop                                                              // 0x0085e07f    90
                          {disp32} mov       eax, dword ptr [data_bytes + 0x53f21c]        // 0x0085e080    a11c52f000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x272134]        // 0x0085e085    8b153481c300
+                         {disp32} mov       edx, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x0085e085    8b153481c300
                          sub                esp, 0x0c                                     // 0x0085e08b    83ec0c
                          push               ebp                                           // 0x0085e08e    55
                          add.s              eax, edx                                      // 0x0085e08f    03c2

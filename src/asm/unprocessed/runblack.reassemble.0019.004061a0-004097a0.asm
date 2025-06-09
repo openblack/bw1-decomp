@@ -3240,7 +3240,7 @@ _jmp_addr_0x004082f0:    {disp32} mov       ecx, dword ptr [data_bytes + 0x30db2
                          call               _jmp_addr_0x005d8a10                          // 0x00408334    e8d7061d00
 _jmp_addr_0x00408339:    ret                                                              // 0x00408339    c3
                          call               dword ptr [__imp__DirectInputCreateA@4]       // 0x0040833a    ff1534908a00
-_jmp_addr_0x00408340:    {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x00408340    db053481c300
+_jmp_addr_0x00408340:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]             // 0x00408340    db053481c300
                          {disp8} mov        al, byte ptr [esp + 0x14]                     // 0x00408346    8a442414
                          sub                esp, 0x00000208                               // 0x0040834a    81ec08020000
                          push               ebx                                           // 0x00408350    53

@@ -485,7 +485,7 @@ _jmp_addr_0x00542a90:    sub                esp, 0x14                           
                          {disp32} je        _jmp_addr_0x00542bbc                          // 0x00542aa1    0f8415010000
                          cmp                byte ptr [esi + 0x00003210], bl               // 0x00542aa7    389e10320000
                          {disp32} je        _jmp_addr_0x00542bbc                          // 0x00542aad    0f8409010000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x272134]        // 0x00542ab3    8b153481c300
+                         {disp32} mov       edx, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x00542ab3    8b153481c300
                          mov                eax, dword ptr [ecx]                          // 0x00542ab9    8b01
                          push               edx                                           // 0x00542abb    52
                          call               dword ptr [eax + 0x14]                        // 0x00542abc    ff5014
@@ -616,7 +616,7 @@ _jmp_addr_0x00542c50:    sub                esp, 0x44                           
                          push               edi                                           // 0x00542c62    57
                          {disp32} je        _jmp_addr_0x00542d08                          // 0x00542c63    0f849f000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30a6e4]        // 0x00542c69    a1e406cd00
-                         sub                eax, dword ptr [data_bytes + 0x272134]        // 0x00542c6e    2b053481c300
+                         sub                eax, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x00542c6e    2b053481c300
                          cmp.s              eax, ebx                                      // 0x00542c74    3bc3
                          {disp32} mov       dword ptr [data_bytes + 0x30a6e4], eax        // 0x00542c76    a3e406cd00
                          {disp32} jg        _jmp_addr_0x00542d08                          // 0x00542c7b    0f8f87000000
@@ -1256,7 +1256,7 @@ _jmp_addr_0x00543516:    mov                ecx, dword ptr [eax]                
                          {disp8} fld        dword ptr [esp + 0x18]                        // 0x00543542    d9442418
                          {disp8} fsub       dword ptr [esp + 0x24]                        // 0x00543546    d8642424
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x0054354a    d95c2418
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x0054354e    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0054354e    db053481c300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x35cd0]             // 0x00543554    d80dd0ec8d00
                          {disp8} fstp       dword ptr [esp + 0x68]                        // 0x0054355a    d95c2468
                          {disp32} fld       dword ptr [data_bytes + 0x30a4dc]             // 0x0054355e    d905dc04cd00
@@ -1410,7 +1410,7 @@ _jmp_addr_0x0054373e:    add                esi, 0x04                           
                          cmp                eax, 0x0b                                     // 0x0054376f    83f80b
                          {disp8} mov        eax, dword ptr [esp + 0x68]                   // 0x00543772    8b442468
                          {disp8} jne        _jmp_addr_0x005437f0                          // 0x00543776    7578
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x00543778    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x00543778    db053481c300
                          {disp32} mov       edx, dword ptr [data_bytes + 0x30ab78]        // 0x0054377e    8b15780bcd00
                          test               edx, edx                                      // 0x00543784    85d2
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]              // 0x00543786    d80db0a38a00

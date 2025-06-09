@@ -6075,7 +6075,7 @@ _jmp_addr_0x0044e2c2:    {disp8} fld        dword ptr [esp + 0x5c]              
                          fmul               st, st(1)                                     // 0x0044e2fe    d8c9
                          {disp8} fstp       dword ptr [esp + 0x5c]                        // 0x0044e300    d95c245c
                          fstp               st(0)                                         // 0x0044e304    ddd8
-_jmp_addr_0x0044e306:    {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x0044e306    db053481c300
+_jmp_addr_0x0044e306:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0044e306    db053481c300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]              // 0x0044e30c    d80db0a38a00
                          {disp8} fst        dword ptr [esp + 0x0c]                        // 0x0044e312    d954240c
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1e9a8]             // 0x0044e316    d80da8798c00
@@ -6630,7 +6630,7 @@ _jmp_addr_0x0044ea40:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          ret                0x0004                                        // 0x0044ea5c    c20400
                          nop                                                              // 0x0044ea5f    90
                          push               ecx                                           // 0x0044ea60    51
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x0044ea61    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0044ea61    db053481c300
                          xor.s              eax, eax                                      // 0x0044ea67    33c0
                          push               esi                                           // 0x0044ea69    56
                          mov.s              esi, ecx                                      // 0x0044ea6a    8bf1

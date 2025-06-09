@@ -92,7 +92,7 @@ _jmp_addr_0x00447850:    push               ecx                                 
                          push               esi                                           // 0x004478cc    56
                          call               _jmp_addr_0x00447450                          // 0x004478cd    e87efbffff
                          add                esp, 0x1c                                     // 0x004478d2    83c41c
-_jmp_addr_0x004478d5:    {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x004478d5    db053481c300
+_jmp_addr_0x004478d5:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x004478d5    db053481c300
                          {disp32} mov       esi, dword ptr [data_bytes + 0x294fe0]        // 0x004478db    8b35e0afc500
                          test               esi, esi                                      // 0x004478e1    85f6
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]              // 0x004478e3    d80db0a38a00

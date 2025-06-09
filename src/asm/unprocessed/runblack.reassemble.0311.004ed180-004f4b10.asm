@@ -518,7 +518,7 @@ _jmp_addr_0x004ed532:    {disp32} mov       ecx, dword ptr [esi + 0x00000098]   
                          {disp32} fmul      dword ptr [rdata_bytes + 0x19c40]                    // 0x004ed558    d80d402c8c00
                          fstp               dword ptr [esp]                                      // 0x004ed55e    d91c24
                          {disp8} jmp        _jmp_addr_0x004ed5d4                                 // 0x004ed561    eb71
-_jmp_addr_0x004ed563:    {disp32} fild      dword ptr [data_bytes + 0x272134]                    // 0x004ed563    db053481c300
+_jmp_addr_0x004ed563:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]              // 0x004ed563    db053481c300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3418]                     // 0x004ed569    d80d18c48a00
                          {disp32} fcom      dword ptr [rdata_bytes + 0x1398]                     // 0x004ed56f    d81598a38a00
                          fnstsw             ax                                                   // 0x004ed575    dfe0

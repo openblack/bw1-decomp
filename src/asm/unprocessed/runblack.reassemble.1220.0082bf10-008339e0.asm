@@ -4279,7 +4279,7 @@ _jmp_addr_0x0082f19b:    {disp32} fild      dword ptr [data_bytes + 0x501fc8]   
                          {disp32} mov       dword ptr [data_bytes + 0x501fc8], esi         // 0x0082f1ab    8935c87fec00
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2228]               // 0x0082f1b1    d80d28b28a00
                          push               eax                                            // 0x0082f1b7    50
-                         {disp32} fidiv     dword ptr [data_bytes + 0x272134]              // 0x0082f1b8    da353481c300
+                         {disp32} fidiv     dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x0082f1b8    da353481c300
                          {disp32} fstp      dword ptr [data_bytes + 0x501fc4]              // 0x0082f1be    d91dc47fec00
                          {disp32} fld       dword ptr [data_bytes + 0x501fc4]              // 0x0082f1c4    d905c47fec00
                          {disp32} fsub      dword ptr [data_bytes + 0x501fc0]              // 0x0082f1ca    d825c07fec00

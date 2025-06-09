@@ -10447,7 +10447,7 @@ _jmp_addr_0x0068e120:    push               ebx                                 
                          call               _jmp_addr_0x0057d540                          // 0x0068e1c0    e87bf3eeff
                          {disp8} mov        ecx, dword ptr [ebx + 0x10]                   // 0x0068e1c5    8b4b10
                          {disp8} mov        dword ptr [ecx + 0x04], eax                   // 0x0068e1c8    894104
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]             // 0x0068e1cb    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]       // 0x0068e1cb    db053481c300
                          {disp8} mov        ecx, dword ptr [ebx + 0x10]                   // 0x0068e1d1    8b4b10
                          {disp32} fmul      dword ptr [rdata_bytes + 0x13b0]              // 0x0068e1d4    d80db0a38a00
                          fstp               dword ptr [esp]                               // 0x0068e1da    d91c24

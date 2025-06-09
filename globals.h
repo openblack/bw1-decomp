@@ -117,7 +117,7 @@ struct globals_t
   int32_t (*cos_lookup_table)[0x800];  /* 0x00c31e14 */
   char (*s_parsed_line)[0x200];  /* 0x00c341c0 */
   float* DAT_00c371d4;
-  uint32_t* g_delta_time__8LH3DTech;  /* 0x00c38134 */
+  uint32_t* g_delta_time__8LH3DTech;  /* 0x00c38134 ?g_delta_time@LH3DTech@@2MA */
   uint32_t* DAT_00c386d0;
   uint32_t* DAT_00c38714;
   struct GAbodeInfo (*GAbodeInfo_ARRAY_00c3c690)[0x93];
