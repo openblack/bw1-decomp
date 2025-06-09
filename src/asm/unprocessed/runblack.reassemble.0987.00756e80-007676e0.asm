@@ -14661,7 +14661,7 @@ _jmp_addr_0x007607e4:    {disp32} lea       edi, dword ptr [ebp * 0x8 + 0x000000
                          push               ecx                                           // 0x00760821    51
                          mov.s              ecx, esi                                      // 0x00760822    8bce
                          call               _jmp_addr_0x007618c0                          // 0x00760824    e897100000
-_jmp_addr_0x00760829:    {disp32} mov       eax, dword ptr [edi + 0x0099a1f8]             // 0x00760829    8b87f8a19900
+_jmp_addr_0x00760829:    {disp32} mov       eax, dword ptr [edi + _DiscipleInfo_ARRAY_0099a1f8]             // 0x00760829    8b87f8a19900
                          test               eax, eax                                      // 0x0076082f    85c0
                          {disp8} jne        _jmp_addr_0x00760841                          // 0x00760831    750e
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x00760833    8b542410
@@ -14671,7 +14671,7 @@ _jmp_addr_0x00760829:    {disp32} mov       eax, dword ptr [edi + 0x0099a1f8]   
                          {disp8} jmp        _jmp_addr_0x00760854                          // 0x0076083f    eb13
 _jmp_addr_0x00760841:    mov                eax, dword ptr [esi]                          // 0x00760841    8b06
                          xor.s              ecx, ecx                                      // 0x00760843    33c9
-                         {disp32} mov       cl, byte ptr [edi + 0x0099a1f8]               // 0x00760845    8a8ff8a19900
+                         {disp32} mov       cl, byte ptr [edi + _DiscipleInfo_ARRAY_0099a1f8]               // 0x00760845    8a8ff8a19900
                          push               ecx                                           // 0x0076084b    51
                          mov.s              ecx, esi                                      // 0x0076084c    8bce
                          call               dword ptr [eax + 0x8e8]                       // 0x0076084e    ff90e8080000
