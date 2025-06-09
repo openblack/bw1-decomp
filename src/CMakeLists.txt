@@ -485,8 +485,8 @@ function(add_patched_libcmt_object src_obj patch_flag)
     if (CMAKE_HOST_WIN32)
         set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${obj}")
     else()
-        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'")
-        set(src_obj "'${src_obj}'")
+        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${src_obj}")
+        set(src_obj "${src_obj}")
     endif()
     set(output_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT-patched/${obj}.patched${OBJ_SUFFIX}")
     set(tmp_output "${output_file}.tmp")
@@ -506,6 +506,7 @@ function(add_patched_libcmt_object src_obj patch_flag)
     endif()
 
     add_custom_command(
+        VERBATIM
         OUTPUT ${output_file}
         COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB ${src_obj}
         COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py ${input_file} ${tmp_output} ${patch_flag}
