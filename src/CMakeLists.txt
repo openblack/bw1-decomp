@@ -379,6 +379,7 @@ set(SOURCES_003
     asm/unprocessed/runblack.reassemble.1093.007c62f0-007c6390.asm
     asm/unprocessed/runblack.reassemble.1097.007c6390-007c63e0.asm
     asm/unprocessed/runblack.reassemble.1099.007c63e0-007c92ac.asm
+    asm/unprocessed/bss.asm
 )
 # Likely a different calloc
 set(SOURCES_004 asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)

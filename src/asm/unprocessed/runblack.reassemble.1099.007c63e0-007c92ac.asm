@@ -3,9 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
 
 .extern putc
 .extern  ___dl__FPv
@@ -180,6 +177,9 @@
 .globl _strcspn
 .globl ??2@YAPAXI@Z
 .globl _operator_new
+.globl ??1exception@@UAE@XZ
+.globl ?what@exception@@UBEPBDXZ
+.globl ??_Gexception@@UAEPAXI@Z
 
                          {disp8} mov          eax, dword ptr [ebp + 0x08]                 // 0x007c63e0    8b4508
                          pop                  esi                                         // 0x007c63e3    5e
@@ -4236,8 +4236,4 @@ _jmp_addr_0x007c8c9a:    ret                                                    
                          test                 eax, eax                                    // 0x007c8c9e    85c0
                          {disp8} jne          _jmp_addr_0x007c8ca7                        // 0x007c8ca0    7505
                          mov                  eax, 0x009a06d4                             // 0x007c8ca2    b8d4069a00
-_jmp_addr_0x007c8ca7:    ret                                                              // 0x007c8ca7    c3
-
-.globl ??1exception@@UAE@XZ
-.globl ?what@exception@@UBEPBDXZ
-.globl ??_Gexception@@UAEPAXI@Z
+_jmp_addr_0x007c8ca7:    ret                                                              // 0x007c8ca7    c6431000
