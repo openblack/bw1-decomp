@@ -3465,7 +3465,7 @@ _jmp_addr_0x00712735:    pop                esi                                 
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000001            // 0x0071277e    c744241c01000000
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x00712786    89442420
                          {disp8} mov        dword ptr [esp + 0x28], ebx                   // 0x0071278a    895c2428
-                         {disp8} mov        dword ptr [esp + 0x30], 0x00bea7bc /* ??_C@_01PJCK@?4?$AA@ */            // 0x0071278e    c7442430bca7be00
+                         {disp8} mov        dword ptr [esp + 0x30], OFFSET ??_C@_01PJCK@?4?$AA@            // 0x0071278e    c7442430bca7be00
                          {disp8} mov        dword ptr [esp + 0x34], 0x00c20c40            // 0x00712796    c7442434400cc200
                          {disp8} mov        dword ptr [esp + 0x38], ebx                   // 0x0071279e    895c2438
                          {disp8} mov        word ptr [esp + 0x3c], bx                     // 0x007127a2    66895c243c
