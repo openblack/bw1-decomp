@@ -120,6 +120,7 @@ struct globals_t
   uint32_t* g_delta_time__8LH3DTech;  /* 0x00c38134 ?g_delta_time@LH3DTech@@2MA */
   uint32_t* DAT_00c386d0;
   uint32_t* DAT_00c38714;
+  // End of data's non-virtual allocations
   struct GAbodeInfo (*GAbodeInfo_ARRAY_00c3c690)[0x93];
   struct SetupThing* SetupThing;  /* 0x00c4cc80 */
   struct SetupRect* SetupRect_00c4ccb8;
@@ -314,6 +315,7 @@ static struct globals_t globals = {
     .g_delta_time__8LH3DTech = (uint32_t*)0x00c38134,
     .DAT_00c386d0 = (uint32_t*)0x00c386d0,
     .DAT_00c38714 = (uint32_t*)0x00c38714,
+    // End of data's non-virtual allocations
     .GAbodeInfo_ARRAY_00c3c690 = (struct GAbodeInfo (*)[147])0x00c3c690,
     .SetupThing = (struct SetupThing*)0x00c4cc80,
     .SetupRect_00c4ccb8 = (struct SetupRect*)0x00c4ccb8,

@@ -3063,7 +3063,7 @@ _jmp_addr_0x006f6d00:    push               esi                                 
                          pop                esi                                           // 0x006f6daf    5e
                          ret                                                              // 0x006f6db0    c3
                          {disp8} mov        esi, dword ptr [esi + 0x28]                   // 0x006f6db1    8b7628
-                         sub                esi, 0x00c3c690                               // 0x006f6db4    81ee90c6c300
+                         sub                esi, OFFSET _AbodeInfos                       // 0x006f6db4    81ee90c6c300
                          mov                eax, 0x8fb823ef                               // 0x006f6dba    b8ef23b88f
                          {disp32} jmp       _jmp_addr_0x006f6f00                          // 0x006f6dbf    e93c010000
                          {disp8} mov        esi, dword ptr [esi + 0x28]                   // 0x006f6dc4    8b7628
