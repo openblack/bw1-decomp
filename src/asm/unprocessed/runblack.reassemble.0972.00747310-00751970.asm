@@ -16272,7 +16272,7 @@ _jmp_addr_0x00751896:    pop                edi                                 
                          {disp32} lea       ecx, dword ptr [eax * 0x8 + 0x00000000]        // 0x007518b6    8d0cc500000000
                          sub.s              ecx, eax                                       // 0x007518bd    2bc8
                          xor.s              eax, eax                                       // 0x007518bf    33c0
-                         {disp32} mov       al, byte ptr [ecx * 0x4 + 0x0099a1f8]          // 0x007518c1    8a048df8a19900
+                         {disp32} mov       al, byte ptr [ecx * 0x4 + _DiscipleInfo_ARRAY_0099a1f8]          // 0x007518c1    8a048df8a19900
                          mov.s              ecx, esi                                       // 0x007518c8    8bce
                          push               eax                                            // 0x007518ca    50
                          call               dword ptr [edx + 0x8e8]                        // 0x007518cb    ff92e8080000
