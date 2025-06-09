@@ -1497,11 +1497,11 @@ _jmp_addr_0x006da3aa:    {disp8} lea       eax, dword ptr [ebx + 0x14]          
                          shr               edi, 2                                        // 0x006da3c6    c1ef02
                          shl               edi, 2                                        // 0x006da3c9    c1e702
                          {disp8} mov       dword ptr [esp + 0x10], ecx                   // 0x006da3cc    894c2410
-                         {disp32} fild     dword ptr [edi + 0x00c31614]                  // 0x006da3d0    db871416c300
+                         {disp32} fild     dword ptr [edi + _sin_lookup_table]           // 0x006da3d0    db871416c300
                          {disp32} fmul     dword ptr [ebx + 0x00000388]                  // 0x006da3d6    d88b88030000
                          fadd.s            st(0), st(0)                                  // 0x006da3dc    dcc0
                          call              _jmp_addr_0x007a1400                          // 0x006da3de    e81d700c00
-                         {disp32} fild     dword ptr [edi + 0x00c31e14]                  // 0x006da3e3    db87141ec300
+                         {disp32} fild     dword ptr [edi + _cos_lookup_table]           // 0x006da3e3    db87141ec300
                          {disp8} mov       ecx, dword ptr [esp + 0x10]                   // 0x006da3e9    8b4c2410
                          add.s             ecx, eax                                      // 0x006da3ed    03c8
                          {disp32} fmul     dword ptr [ebx + 0x00000388]                  // 0x006da3ef    d88b88030000

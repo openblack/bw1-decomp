@@ -1298,12 +1298,12 @@ _jmp_addr_0x006dc420:    sub                esp, 0x18                           
                          {disp32} fsubr     dword ptr [data_bytes + 0x243904]              // 0x006dc4af    d82d0499c000
                          {disp32} fadd      dword ptr [rdata_bytes + 0x91818]              // 0x006dc4b5    d80518a89300
                          {disp8} fild       dword ptr [esp + 0x10]                         // 0x006dc4bb    db442410
-                         {disp32} fild      dword ptr [esi + 0x00c31614]                   // 0x006dc4bf    db861416c300
+                         {disp32} fild      dword ptr [esi + _sin_lookup_table]            // 0x006dc4bf    db861416c300
                          fmul               st, st(2)                                      // 0x006dc4c5    d8ca
                          {disp32} fmul      dword ptr [edi + 0x00000388]                   // 0x006dc4c7    d88f88030000
                          fadd               st, st(1)                                      // 0x006dc4cd    d8c1
                          call               _jmp_addr_0x007a1400                           // 0x006dc4cf    e82c4f0c00
-                         {disp32} fild      dword ptr [esi + 0x00c31e14]                   // 0x006dc4d4    db86141ec300
+                         {disp32} fild      dword ptr [esi + _cos_lookup_table]            // 0x006dc4d4    db86141ec300
                          add.s              ebx, eax                                       // 0x006dc4da    03d8
                          fmul               st, st(2)                                      // 0x006dc4dc    d8ca
                          {disp32} fmul      dword ptr [edi + 0x00000388]                   // 0x006dc4de    d88f88030000

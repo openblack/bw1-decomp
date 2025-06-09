@@ -1021,8 +1021,8 @@ _jmp_addr_0x00609cc0:    sub               esp, 0x0c                            
                          xor.s             eax, eax                                      // 0x00609d17    33c0
                          {disp8} mov       ax, word ptr [ecx + 0x5a]                     // 0x00609d19    668b415a
                          shl               esi, 2                                        // 0x00609d1d    c1e602
-                         {disp32} mov      edx, dword ptr [esi + 0x00c31614]             // 0x00609d20    8b961416c300
-                         {disp32} mov      esi, dword ptr [esi + 0x00c31e14]             // 0x00609d26    8bb6141ec300
+                         {disp32} mov      edx, dword ptr [esi + _sin_lookup_table]      // 0x00609d20    8b961416c300
+                         {disp32} mov      esi, dword ptr [esi + _cos_lookup_table]      // 0x00609d26    8bb6141ec300
                          shr               eax, 4                                        // 0x00609d2c    c1e804
                          imul              esi, eax                                      // 0x00609d2f    0faff0
                          imul              edx, eax                                      // 0x00609d32    0fafd0
