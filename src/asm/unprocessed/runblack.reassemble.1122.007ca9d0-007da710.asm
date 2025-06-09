@@ -199,11 +199,11 @@
 .globl ___init_numeric
 .globl ___init_monetary
 .globl ___init_collate
-.globl _jmp_addr_0x007cb158
+.globl ___initstdio
 .globl _jmp_addr_0x007d4cc3
 .globl ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z
 
-_jmp_addr_0x007cb158:    {disp32} mov       eax, dword ptr [data_bytes + 0x5e7cc0]         // 0x007cb158    a1c0dcfa00
+___initstdio:            {disp32} mov       eax, dword ptr [data_bytes + 0x5e7cc0]         // 0x007cb158    a1c0dcfa00
                          push               esi                                            // 0x007cb15d    56
                          push               0x14                                           // 0x007cb15e    6a14
                          test               eax, eax                                       // 0x007cb160    85c0

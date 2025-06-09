@@ -2854,7 +2854,7 @@ _jmp_addr_0x00404ad1:    mov                edx, dword ptr [ecx]                
                          {disp8} lea        edx, dword ptr [esp + edx * 0x2 + 0x00]       // 0x00404ad8    8d545400
                          add                ecx, 0x000001c8                               // 0x00404adc    81c1c8010000
                          {disp32} lea       edx, dword ptr [ecx + -0x00000158]            // 0x00404ae2    8d91a8feffff
-                         cmp                edx, 0x00c4cc68                               // 0x00404ae8    81fa68ccc400
+                         cmp                edx, OFFSET _DAT_00c4cc68                     // 0x00404ae8    81fa68ccc400
                          .byte              0x72, 0xe1// {disp8} jb _jmp_addr_0x00404ad1  // 0x00404aee    72e1
                          push               esi                                           // 0x00404af0    56
                          {disp8} lea        edx, dword ptr [esp + 0x04]                   // 0x00404af1    8d542404
