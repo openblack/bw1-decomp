@@ -24536,7 +24536,7 @@ _jmp_addr_0x00766ee7:    cmp                esi, -0x01                          
                          and                eax, 0x0000ffff                               // 0x00766f05    25ffff0000
                          shl                eax, 2                                        // 0x00766f0a    c1e002
                          mov.s              esi, eax                                      // 0x00766f0d    8bf0
-                         {disp32} fild      dword ptr [esi + 0x00c31e14]                  // 0x00766f0f    db86141ec300
+                         {disp32} fild      dword ptr [esi + _cos_lookup_table]           // 0x00766f0f    db86141ec300
                          {disp8} fmul       dword ptr [esp + 0x0c]                        // 0x00766f15    d84c240c
                          {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00766f19    d80d1cc48a00
                          {disp8} fild       dword ptr [esp + 0x10]                        // 0x00766f1f    db442410
@@ -24546,7 +24546,7 @@ _jmp_addr_0x00766ee7:    cmp                esi, -0x01                          
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3408]              // 0x00766f31    d80d08c48a00
                          {disp32} fdiv      dword ptr [rdata_bytes + 0xf19d0]             // 0x00766f37    d835d0a99900
                          call               _jmp_addr_0x007a1400                          // 0x00766f3d    e8bea40300
-                         {disp32} fild      dword ptr [esi + 0x00c31614]                  // 0x00766f42    db861416c300
+                         {disp32} fild      dword ptr [esi + _sin_lookup_table]           // 0x00766f42    db861416c300
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x00766f48    89442410
                          {disp8} fmul       dword ptr [esp + 0x0c]                        // 0x00766f4c    d84c240c
                          {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00766f50    d80d1cc48a00

@@ -14028,8 +14028,8 @@ _jmp_addr_0x0077069f:    pop                edi                                 
                          call               _jmp_addr_0x0074d220                            // 0x00770731    e8eacafdff
                          and                eax, 0x0000ffff                                 // 0x00770736    25ffff0000
                          shl                eax, 2                                          // 0x0077073b    c1e002
-                         {disp32} mov       esi, dword ptr [eax + 0x00c31e14]               // 0x0077073e    8bb0141ec300
-                         {disp32} mov       edi, dword ptr [eax + 0x00c31614]               // 0x00770744    8bb81416c300
+                         {disp32} mov       esi, dword ptr [eax + _cos_lookup_table]        // 0x0077073e    8bb0141ec300
+                         {disp32} mov       edi, dword ptr [eax + _sin_lookup_table]        // 0x00770744    8bb81416c300
                          {disp8} mov        eax, dword ptr [esp + 0x64]                     // 0x0077074a    8b442464
                          shl                esi, 9                                          // 0x0077074e    c1e609
                          shl                edi, 9                                          // 0x00770751    c1e709
@@ -14099,8 +14099,8 @@ _jmp_addr_0x007707e5:    call               _jmp_addr_0x0074d220                
 _jmp_addr_0x00770801:    and                esi, 0x0000ffff                                 // 0x00770801    81e6ffff0000
                          shl                esi, 2                                          // 0x00770807    c1e602
                          mov.s              eax, esi                                        // 0x0077080a    8bc6
-                         {disp32} mov       esi, dword ptr [eax + 0x00c31e14]               // 0x0077080c    8bb0141ec300
-                         {disp32} mov       edi, dword ptr [eax + 0x00c31614]               // 0x00770812    8bb81416c300
+                         {disp32} mov       esi, dword ptr [eax + _cos_lookup_table]        // 0x0077080c    8bb0141ec300
+                         {disp32} mov       edi, dword ptr [eax + _sin_lookup_table]        // 0x00770812    8bb81416c300
                          shl                esi, 9                                          // 0x00770818    c1e609
                          shl                edi, 9                                          // 0x0077081b    c1e709
                          sar                esi, 0xc                                        // 0x0077081e    c1fe0c

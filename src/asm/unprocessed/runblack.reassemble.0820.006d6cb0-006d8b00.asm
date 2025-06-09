@@ -1618,11 +1618,11 @@ _jmp_addr_0x006d7ed7:    {disp8} mov        dword ptr [ebp + 0x00], 0x00000000  
                          shr                edi, 2                                        // 0x006d7f12    c1ef02
                          shl                edi, 2                                        // 0x006d7f15    c1e702
                          {disp8} mov        dword ptr [esp + 0x20], ecx                   // 0x006d7f18    894c2420
-                         {disp32} fild      dword ptr [edi + 0x00c31614]                  // 0x006d7f1c    db871416c300
+                         {disp32} fild      dword ptr [edi + _sin_lookup_table]           // 0x006d7f1c    db871416c300
                          {disp32} fmul      dword ptr [esi + 0x00000388]                  // 0x006d7f22    d88e88030000
                          fadd.s             st(0), st(0)                                  // 0x006d7f28    dcc0
                          call               _jmp_addr_0x007a1400                          // 0x006d7f2a    e8d1940c00
-                         {disp32} fild      dword ptr [edi + 0x00c31e14]                  // 0x006d7f2f    db87141ec300
+                         {disp32} fild      dword ptr [edi + _cos_lookup_table]           // 0x006d7f2f    db87141ec300
                          add.s              ebx, eax                                      // 0x006d7f35    03d8
                          {disp8} mov        dword ptr [esp + 0x1c], ebx                   // 0x006d7f37    895c241c
                          {disp32} fmul      dword ptr [esi + 0x00000388]                  // 0x006d7f3b    d88e88030000

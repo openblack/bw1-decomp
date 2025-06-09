@@ -1307,7 +1307,7 @@ __mtinitlocks:           push               esi                                 
 _jmp_addr_0x007cb64a:    push               esi                                            // 0x007cb64a    56
                          push               edi                                            // 0x007cb64b    57
                          {disp32} mov       edi, dword ptr [__imp__DeleteCriticalSection@4]// 0x007cb64c    8b3d78918a00
-                         mov                esi, 0x00c2da60                                // 0x007cb652    be60dac200
+                         mov                esi, OFFSET __locktable                        // 0x007cb652    be60dac200
 _jmp_addr_0x007cb657:    mov                eax, dword ptr [esi]                           // 0x007cb657    8b06
                          test               eax, eax                                       // 0x007cb659    85c0
                          {disp8} je         _jmp_addr_0x007cb688                           // 0x007cb65b    742b
@@ -1342,8 +1342,8 @@ __lock:                  push               ebp                                 
                          mov.s              ebp, esp                                       // 0x007cb6b7    8bec
                          {disp8} mov        eax, dword ptr [ebp + 0x08]                    // 0x007cb6b9    8b4508
                          push               esi                                            // 0x007cb6bc    56
-                         cmp                dword ptr [eax * 0x4 + 0x00c2da60], 0x00       // 0x007cb6bd    833c8560dac20000
-                         {disp32} lea       esi, dword ptr [eax * 0x4 + 0x00c2da60]        // 0x007cb6c5    8d348560dac200
+                         cmp                dword ptr [eax * 0x4 + __locktable], 0x00       // 0x007cb6bd    833c8560dac20000
+                         {disp32} lea       esi, dword ptr [eax * 0x4 + __locktable]        // 0x007cb6c5    8d348560dac200
                          {disp8} jne        _jmp_addr_0x007cb70c                           // 0x007cb6cc    753e
                          push               edi                                            // 0x007cb6ce    57
                          push               0x18                                           // 0x007cb6cf    6a18
@@ -1378,7 +1378,7 @@ _jmp_addr_0x007cb70c:    push               dword ptr [esi]                     
 __unlock:                push               ebp                                            // 0x007cb717    55
                          mov.s              ebp, esp                                       // 0x007cb718    8bec
                          {disp8} mov        eax, dword ptr [ebp + 0x08]                    // 0x007cb71a    8b4508
-                         push               dword ptr [eax * 0x4 + 0x00c2da60]             // 0x007cb71d    ff348560dac200
+                         push               dword ptr [eax * 0x4 + __locktable]             // 0x007cb71d    ff348560dac200
                          call               dword ptr [__imp__LeaveCriticalSection@4]      // 0x007cb724    ff1584918a00
                          pop                ebp                                            // 0x007cb72a    5d
                          ret                                                               // 0x007cb72b    c3

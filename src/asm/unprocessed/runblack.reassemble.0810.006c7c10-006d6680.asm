@@ -20936,11 +20936,11 @@ _jmp_addr_0x006d61d0:    sub                esp, 0x3c                           
                          {disp8} mov        dword ptr [esi + 0x30], ebx                   // 0x006d6258    895e30
                          {disp32} mov       dword ptr [esi + 0x00000584], ebx             // 0x006d625b    899e84050000
                          {disp32} mov       dword ptr [esi + 0x0000040c], 0x00000005      // 0x006d6261    c7860c04000005000000
-                         {disp32} fild      dword ptr [edi + 0x00c31e14]                  // 0x006d626b    db87141ec300
+                         {disp32} fild      dword ptr [edi + _cos_lookup_table]           // 0x006d626b    db87141ec300
                          {disp8} fmul       dword ptr [esp + 0x5c]                        // 0x006d6271    d84c245c
                          call               _jmp_addr_0x007a1400                          // 0x006d6275    e886b10c00
                          {disp32} mov       dword ptr [esi + 0x00000390], eax             // 0x006d627a    898690030000
-                         {disp32} fild      dword ptr [edi + 0x00c31614]                  // 0x006d6280    db871416c300
+                         {disp32} fild      dword ptr [edi + _sin_lookup_table]           // 0x006d6280    db871416c300
                          {disp8} fmul       dword ptr [esp + 0x5c]                        // 0x006d6286    d84c245c
                          call               _jmp_addr_0x007a1400                          // 0x006d628a    e871b10c00
                          {disp32} mov       dword ptr [esi + 0x00000394], eax             // 0x006d628f    898694030000

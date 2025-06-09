@@ -3689,8 +3689,8 @@ _jmp_addr_0x00417c8b:    pop                edi                                 
                          xor.s              eax, eax                                      // 0x00417cb0    33c0
                          {disp8} mov        ax, word ptr [esi + 0x5a]                     // 0x00417cb2    668b465a
                          shl                edx, 2                                        // 0x00417cb6    c1e202
-                         {disp32} mov       ecx, dword ptr [edx + 0x00c31614]             // 0x00417cb9    8b8a1416c300
-                         {disp32} mov       edx, dword ptr [edx + 0x00c31e14]             // 0x00417cbf    8b92141ec300
+                         {disp32} mov       ecx, dword ptr [edx + _sin_lookup_table]      // 0x00417cb9    8b8a1416c300
+                         {disp32} mov       edx, dword ptr [edx + _cos_lookup_table]      // 0x00417cbf    8b92141ec300
                          shr                eax, 4                                        // 0x00417cc5    c1e804
                          imul               ecx, eax                                      // 0x00417cc8    0fafc8
                          imul               edx, eax                                      // 0x00417ccb    0fafd0

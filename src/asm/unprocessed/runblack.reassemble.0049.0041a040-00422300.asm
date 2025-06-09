@@ -604,8 +604,8 @@ _jmp_addr_0x0041a43c:    call               _GetAngleFromXZ__6GUtilsFRC9MapCoord
                          and                eax, 0x0000ffff                               // 0x0041a44c    25ffff0000
                          shl                eax, 2                                        // 0x0041a451    c1e002
                          mov.s              edi, eax                                      // 0x0041a454    8bf8
-                         {disp32} mov       ecx, dword ptr [edi + 0x00c31e14]             // 0x0041a456    8b8f141ec300
-                         {disp32} mov       edi, dword ptr [edi + 0x00c31614]             // 0x0041a45c    8bbf1416c300
+                         {disp32} mov       ecx, dword ptr [edi + _cos_lookup_table]      // 0x0041a456    8b8f141ec300
+                         {disp32} mov       edi, dword ptr [edi + _sin_lookup_table]      // 0x0041a45c    8bbf1416c300
                          xor.s              eax, eax                                      // 0x0041a462    33c0
                          {disp8} mov        ax, word ptr [esi + 0x5a]                     // 0x0041a464    668b465a
                          mov.s              edx, eax                                      // 0x0041a468    8bd0
@@ -673,8 +673,8 @@ _jmp_addr_0x0041a4d6:    {disp8} lea        ecx, dword ptr [esp + 0x0c]         
                          and                eax, 0x000007ff                               // 0x0041a51a    25ff070000
                          and                eax, 0x0000ffff                               // 0x0041a51f    25ffff0000
                          shl                eax, 2                                        // 0x0041a524    c1e002
-                         {disp32} mov       edx, dword ptr [eax + 0x00c31e14]             // 0x0041a527    8b90141ec300
-                         {disp32} mov       eax, dword ptr [eax + 0x00c31614]             // 0x0041a52d    8b801416c300
+                         {disp32} mov       edx, dword ptr [eax + _cos_lookup_table]      // 0x0041a527    8b90141ec300
+                         {disp32} mov       eax, dword ptr [eax + _sin_lookup_table]      // 0x0041a52d    8b801416c300
                          shr                ecx, 4                                        // 0x0041a533    c1e904
                          imul               edx, ecx                                      // 0x0041a536    0fafd1
                          imul               eax, ecx                                      // 0x0041a539    0fafc1
@@ -1585,8 +1585,8 @@ _jmp_addr_0x0041ae3c:    test               ebp, ebp                            
                          {disp8} mov        cx, word ptr [esi + 0x5a]                     // 0x0041ae65    668b4e5a
                          and                eax, 0x0000ffff                               // 0x0041ae69    25ffff0000
                          shl                eax, 2                                        // 0x0041ae6e    c1e002
-                         {disp32} mov       edi, dword ptr [eax + 0x00c31e14]             // 0x0041ae71    8bb8141ec300
-                         {disp32} mov       ebx, dword ptr [eax + 0x00c31614]             // 0x0041ae77    8b981416c300
+                         {disp32} mov       edi, dword ptr [eax + _cos_lookup_table]      // 0x0041ae71    8bb8141ec300
+                         {disp32} mov       ebx, dword ptr [eax + _sin_lookup_table]      // 0x0041ae77    8b981416c300
                          mov                eax, 0x66666667                               // 0x0041ae7d    b867666666
                          add                esp, 0x10                                     // 0x0041ae82    83c410
                          mov.s              edx, ecx                                      // 0x0041ae85    8bd1
