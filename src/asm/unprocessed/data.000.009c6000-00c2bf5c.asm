@@ -2032,7 +2032,7 @@ ___xi_z:                                                                        
 
 ___xp_a:
 .long 0x00000000
-.long _jmp_addr_0x007cb200                                                                                         // [0x1e60] 0x009c6000 + 0x1e60 = 0x009c7e60
+.long ___endstdio                                                                                                  // [0x1e60] 0x009c6000 + 0x1e60 = 0x009c7e60
 ___xp_z:
 .long 0x00000000
 

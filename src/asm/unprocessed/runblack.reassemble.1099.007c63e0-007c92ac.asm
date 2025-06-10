@@ -3923,7 +3923,7 @@ _jmp_addr_0x007c8975:    mov                  eax, dword ptr [edi]              
                          mov.s                ecx, esi                                    // 0x007c8988    8bce
                          sar                  ebx, 5                                      // 0x007c898a    c1fb05
                          and                  ecx, 0x1f                                   // 0x007c898d    83e11f
-                         {disp32} mov         ebx, dword ptr [ebx * 0x4 + 0x00fac960]     // 0x007c8990    8b1c9d60c9fa00
+                         {disp32} mov         ebx, dword ptr [ebx * 0x4 + ___pioinfo]     // 0x007c8990    8b1c9d60c9fa00
                          lea                  ecx, dword ptr [ecx + ecx * 0x8]            // 0x007c8997    8d0cc9
                          test                 byte ptr [ebx + ecx * 0x4 + 0x04], -0x80    // 0x007c899a    f6448b0480
                          {disp8} je           _jmp_addr_0x007c89ca                        // 0x007c899f    7429
@@ -3957,7 +3957,7 @@ _jmp_addr_0x007c89f1:    sub.s                eax, edx                          
                          {disp8} mov          dword ptr [ebp + 0x08], eax                 // 0x007c89f5    894508
                          mov.s                eax, esi                                    // 0x007c89f8    8bc6
                          sar                  eax, 5                                      // 0x007c89fa    c1f805
-                         {disp32} lea         ebx, dword ptr [eax * 0x4 + 0x00fac960]     // 0x007c89fd    8d1c8560c9fa00
+                         {disp32} lea         ebx, dword ptr [eax * 0x4 + ___pioinfo]     // 0x007c89fd    8d1c8560c9fa00
                          mov.s                eax, esi                                    // 0x007c8a04    8bc6
                          and                  eax, 0x1f                                   // 0x007c8a06    83e01f
                          lea                  esi, dword ptr [eax + eax * 0x8]            // 0x007c8a09    8d34c0
