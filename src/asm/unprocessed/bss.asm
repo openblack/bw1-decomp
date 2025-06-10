@@ -8,6 +8,7 @@
 .globl __winminor
 .globl ___unguarded_readlc_active
 .globl ___lconv_static_null
+.globl __bufin
 .globl __nstream
 .globl ___lc_id
 .globl ___winitenv
@@ -75,7 +76,7 @@ ___error_mode:                             .space 4                             
 _?cacheid@?1??_expandlocale@@9@9:          .space 4                                                                // [0x4be224] 0x009c6000 + 0x4be224 = 0x00e84224
                                            .space 4
 _?cachecp@?1??_expandlocale@@9@9:          .space 4                                                                // [0x4be22c] 0x009c6000 + 0x4be22c = 0x00e8422c
-__cflush:                                  .space 4                                                                // [0x4be230] 0x009c6000 + 0x4be230 = 0x00e84230
+__cflush:                                  .space 4                     // _file.obj: 00000000 B                   // [0x4be230] 0x009c6000 + 0x4be230 = 0x00e84230
                                            .space 0x64
 ___lc_handle:                              .space 4                                                                // [0x4be298] 0x009c6000 + 0x4be298 = 0x00e84298
                                            .space 4                                                                // [0x4be29c] 0x009c6000 + 0x4be29c = 0x00e8429c
@@ -97,9 +98,10 @@ __mbctype:                                 .space 4                             
                                            .space 0x100
 ___mblcid:                                 .space 4                                                                // [0x5e6c84] 0x009c6000 + 0x5e6c84 = 0x00facc84
                                            .space 0x30
-___piob:                                   .space 4                                                                // [0x5e6cb8] 0x009c6000 + 0x5e6cb8 = 0x00faccb8
-                                           .space 0x1004
-__nstream:                                 .space 4                                                                // [0x5e7cc0] 0x009c6000 + 0x5e7cc0 = 0x00fadcc0
+___piob:                                   .space 4                     // _file.obj: 00000004 C ___piob           // [0x5e6cb8] 0x009c6000 + 0x5e6cb8 = 0x00faccb8
+                                           .space 4
+__bufin:                                   .space 0x1000                // _file.obj: 00001000 C __bufin           // [0x5e6cc0] 0x009c6000 + 0x5e6cc0 = 0x00faccc0
+__nstream:                                 .space 4                     // _file.obj: 00000004 C __nstream         // [0x5e7cc0] 0x009c6000 + 0x5e7cc0 = 0x00fadcc0
 ___setlc_active:                           .space 4                                                                // [0x5e7cc4] 0x009c6000 + 0x5e7cc4 = 0x00fadcc4
 ___unguarded_readlc_active:                .space 4                                                                // [0x5e7cc8] 0x009c6000 + 0x5e7cc8 = 0x00fadcc8
 __acmdln:                                  .space 4                                                                // [0x5e7ccc] 0x009c6000 + 0x5e7ccc = 0x00fadccc

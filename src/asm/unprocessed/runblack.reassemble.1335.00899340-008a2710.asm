@@ -12060,7 +12060,7 @@ _jmp_addr_0x008a0fb6:    mov.s             ecx, esi                             
                          mov.s             ecx, edx                                        // 0x008a0fcf    8bca
                          sar               edi, 5                                          // 0x008a0fd1    c1ff05
                          and               ecx, 0x1f                                       // 0x008a0fd4    83e11f
-                         {disp32} mov      edi, dword ptr [edi * 0x4 + 0x00fac960]         // 0x008a0fd7    8b3cbd60c9fa00
+                         {disp32} mov      edi, dword ptr [edi * 0x4 + ___pioinfo]         // 0x008a0fd7    8b3cbd60c9fa00
                          lea               ecx, dword ptr [ecx + ecx * 0x8]                // 0x008a0fde    8d0cc9
                          {disp8} mov       bl, byte ptr [edi + ecx * 0x4 + 0x04]           // 0x008a0fe1    8a5c8f04
                          test              bl, -0x80                                       // 0x008a0fe5    f6c380
