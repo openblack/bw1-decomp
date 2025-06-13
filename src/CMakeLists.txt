@@ -575,6 +575,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\_file.obj" OFF WEAKEN_SYMBOLS _
 add_patched_libcmt_object("build\\intel\\mt_obj\\fputwc.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ungetwc.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\fgetwc.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\mlock.obj" OFF WEAKEN_SYMBOLS _sigcritsect _ltlcritsect _hlcritsect _xlcritsect)
 set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 # libcmt is statically linked between 007aee98 and 008a6470
