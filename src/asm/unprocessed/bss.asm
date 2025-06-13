@@ -46,6 +46,10 @@
 .globl __pgmptr
 .globl ___error_mode
 .globl _DAT_00c4cc68
+.globl _sigcritsect
+.globl _ltlcritsect
+.globl _hlcritsect
+.globl _xlcritsect
 
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
@@ -76,8 +80,12 @@ ___error_mode:                             .space 4                             
 _?cacheid@?1??_expandlocale@@9@9:          .space 4                                                                // [0x4be224] 0x009c6000 + 0x4be224 = 0x00e84224
                                            .space 4
 _?cachecp@?1??_expandlocale@@9@9:          .space 4                                                                // [0x4be22c] 0x009c6000 + 0x4be22c = 0x00e8422c
-__cflush:                                  .space 4                     // _file.obj: 00000000 B                   // [0x4be230] 0x009c6000 + 0x4be230 = 0x00e84230
-                                           .space 0x64
+__cflush:                                  .space 4                     // _file.obj: 00000000 b                   // [0x4be230] 0x009c6000 + 0x4be230 = 0x00e84230
+                                           .space 0x4
+_sigcritsect:                              .space 0x18                  // mlock.obj: 00000000 B                   // [0x4be238] 0x009c6000 + 0x4be238 = 0x00e84238
+_ltlcritsect:                              .space 0x18                  // mlock.obj: 00000018 B                   // [0x4be250] 0x009c6000 + 0x4be268 = 0x00e84250
+_hlcritsect:                               .space 0x18                  // mlock.obj: 00000030 B                   // [0x4be268] 0x009c6000 + 0x4be268 = 0x00e84268
+_xlcritsect:                               .space 0x18                  // mlock.obj: 00000048 B                   // [0x4be280] 0x009c6000 + 0x4be280 = 0x00e84280
 ___lc_handle:                              .space 4                                                                // [0x4be298] 0x009c6000 + 0x4be298 = 0x00e84298
                                            .space 4                                                                // [0x4be29c] 0x009c6000 + 0x4be29c = 0x00e8429c
 ___crtLCMapStringA:                        .space 4                                                                // [0x4be2a0] 0x009c6000 + 0x4be2a0 = 0x00e842a0
