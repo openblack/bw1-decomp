@@ -169,7 +169,7 @@ struct GameThingVftable
   float (__fastcall* GetDrawImportance)(struct GameThing* this);
   float (__fastcall* GetMaxAlignmentChangePerGameTurn)(struct GameThing* this);  /* 0x40 */
   bool (__fastcall* GetComputerSeen)(struct GameThing* this);
-  struct Town* (__fastcall* GetTown)(const struct GameThing* this);
+  struct Town* (__fastcall* GetTown)(struct GameThing* this);
   float (__fastcall* GetVillagerActivityDesire)(struct GameThing* this, const void* edx, struct Villager* param_1);
   void (__fastcall* SetVillagerActivity)(struct GameThing* this, const void* edx, struct Villager* param_1);  /* 0x50 */
   uint32_t (__fastcall* UpdateVillagerActivityEffect)(struct GameThing* this, const void* edx, struct Villager* param_1);

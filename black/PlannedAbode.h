@@ -18,7 +18,11 @@ struct PlannedAbode
 };
 static_assert(sizeof(struct PlannedAbode) == 0x4c, "Data type is of wrong size");
 
-static struct PlannedMultiMapFixedVftable* const __vt__12PlannedAbode = (struct PlannedMultiMapFixedVftable* const)0x008aa3bc;
+// win1.41 008aa3b8 mac 10746fa8 PlannedAbode::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PlannedAbode asm("??_R4PlannedAbode@@6B@");
+
+// win1.41 008aa3bc mac 10746fb0 PlannedAbode::`vftable'
+extern const struct PlannedMultiMapFixedVftable __vt__12PlannedAbode asm("??_7PlannedAbode@@6B@");
 
 // Static methods
 
