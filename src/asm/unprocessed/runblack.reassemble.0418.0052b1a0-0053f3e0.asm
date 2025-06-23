@@ -121,7 +121,7 @@
 .extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x0056fef0
-.extern @UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc@17
+.extern ?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z
 .extern _jmp_addr_0x00591010
 .extern _jmp_addr_0x005c9c60
 .extern _jmp_addr_0x005dc130
@@ -6873,7 +6873,7 @@ _jmp_addr_0x0052eeee:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               ecx                                                  // 0x0052eefb    51
                          push               edx                                                  // 0x0052eefc    52
                          mov.s              ecx, esi                                             // 0x0052eefd    8bce
-                         call               @UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc@17                                 // 0x0052eeff    e84c140400
+                         call               ?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z   // 0x0052eeff    e84c140400
                          pop                esi                                                  // 0x0052ef04    5e
                          ret                0x000c                                               // 0x0052ef05    c20c00
                          nop                                                                     // 0x0052ef08    90
@@ -25279,7 +25279,7 @@ _jmp_addr_0x0053ad8e:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               ecx                                                  // 0x0053ad9b    51
                          push               edx                                                  // 0x0053ad9c    52
                          mov.s              ecx, esi                                             // 0x0053ad9d    8bce
-                         call               @UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc@17                                 // 0x0053ad9f    e8ac550300
+                         call               ?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z  // 0x0053ad9f    e8ac550300
                          pop                esi                                                  // 0x0053ada4    5e
                          ret                0x000c                                               // 0x0053ada5    c20c00
                          nop                                                                     // 0x0053ada8    90
