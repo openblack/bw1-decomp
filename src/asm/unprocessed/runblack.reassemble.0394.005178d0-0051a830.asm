@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
-.extern _jmp_addr_0x004056d0
+.extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
 .extern @SetPosition__10LH3DObjectFRC7LHPointff@16
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
@@ -855,7 +855,7 @@ _jmp_addr_0x005181fe:    sub.s              eax, edx                            
                          {disp8} jne        _jmp_addr_0x005182ab                          // 0x0051822a    757f
                          {disp32} mov       dword ptr [data_bytes + 0x300320], ebp        // 0x0051822c    892d2063cc00
                          {disp8} mov        ecx, dword ptr [edi + 0x6c]                   // 0x00518232    8b4f6c
-                         call               _jmp_addr_0x004056d0                          // 0x00518235    e896d4eeff
+                         call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ                          // 0x00518235    e896d4eeff
                          mov                edx, dword ptr [eax]                          // 0x0051823a    8b10
                          mov.s              ecx, eax                                      // 0x0051823c    8bc8
                          call               dword ptr [edx + 0x44]                        // 0x0051823e    ff5244

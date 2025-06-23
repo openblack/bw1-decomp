@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401879
-.extern _jmp_addr_0x004056d0
+.extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
 .extern @AutoScroll__9SetupListFb@9
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
@@ -173,10 +173,11 @@
 .globl ?GetDesireToBeRepaired@Abode@@UAEMXZ
 .globl ?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z
 .globl ?CanBeHiddenIn@Abode@@UAE_NXZ
+.globl ?IsWonder@PlannedAbode@@UAE_NXZ
+.globl ?GetAbodeType@PlannedAbode@@QAE?AW4ABODE_TYPE@@XZ
 
-start_0x004061a0_0x004097a0:
-// Snippet: asm, [0x004061a0, 0x00409784)
-                         call               _jmp_addr_0x004056d0                          // 0x004061a0    e82bf5ffff
+?IsWonder@PlannedAbode@@UAE_NXZ:
+                         call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ                          // 0x004061a0    e82bf5ffff
                          {disp32} mov       edx, dword ptr [eax + 0x00000120]             // 0x004061a5    8b9020010000
                          xor.s              ecx, ecx                                      // 0x004061ab    33c9
                          cmp                edx, 0x00000100                               // 0x004061ad    81fa00010000
@@ -190,6 +191,7 @@ start_0x004061a0_0x004097a0:
                          nop                                                              // 0x004061bd    90
                          nop                                                              // 0x004061be    90
                          nop                                                              // 0x004061bf    90
+
 ?IsWonder@Abode@@UAE_NXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x004061c0    8b4128
                          {disp32} mov       edx, dword ptr [eax + 0x00000120]             // 0x004061c3    8b9020010000
@@ -207,7 +209,9 @@ start_0x004061a0_0x004097a0:
                          nop                                                              // 0x004061dd    90
                          nop                                                              // 0x004061de    90
                          nop                                                              // 0x004061df    90
-                         call               _jmp_addr_0x004056d0                          // 0x004061e0    e8ebf4ffff
+
+?GetAbodeType@PlannedAbode@@QAE?AW4ABODE_TYPE@@XZ:
+                         call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ                          // 0x004061e0    e8ebf4ffff
                          {disp32} mov       eax, dword ptr [eax + 0x00000120]             // 0x004061e5    8b8020010000
                          ret                                                              // 0x004061eb    c3
                          nop                                                              // 0x004061ec    90

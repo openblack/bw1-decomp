@@ -189,7 +189,9 @@ struct GTribeInfo* __fastcall GetTribe__4TownCFv(struct Town* this);
 // win1.41 0073c860 mac 10092530 Town::GetWorshipersNeeded(int, int, int *)
 int __fastcall GetWorshipersNeeded__4TownFiiPi(struct Town* this, const void* edx, int param_1, int param_2, int* result);
 // win1.41 0073d080 mac 105516a0 Town::AddPlanned(PlannedMultiMapFixed *)
-void __fastcall AddPlanned__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* planned);
+void __fastcall AddPlanned__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z");
+// win1.41 0073d0d0 mac 10551530 Town::RemovePlanned(PlannedMultiMapFixed *)
+void __fastcall RemovePlanned__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z");
 // win1.41 0073d150 mac 105514f0 Town::AllVillagersCheckNeedNewAbode(void)
 void __fastcall AllVillagersCheckNeedNewAbode__4TownFv(struct Town* this);
 // win1.41 0073d360 mac 10550fd0 Town::GetNextSpellIcon(TownSpellIcon *)

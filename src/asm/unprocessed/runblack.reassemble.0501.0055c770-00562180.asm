@@ -210,9 +210,10 @@
 .globl _GetVillagerName__8VillagerFv
 .globl _IsClear__8BaseInfoCFv
 .globl _GetForest__4TreeFv
+.globl ??1PlannedMultiMapFixed@@UAE@XZ
+.globl ?GetDebugText@PlannedMultiMapFixed@@QAEPADXZ
+.globl ?GetSaveType@PlannedMultiMapFixed@@UAEIXZ
 
-start_0x0055c770_0x00562180:
-// Snippet: asm, [0x0055c770, 0x00562055)
 _IsClear__8BaseInfoCFv:
                          {disp8} mov        eax, dword ptr [ecx + 0x04]                    // 0x0055c770    8b4104
                          test               eax, eax                                       // 0x0055c773    85c0
@@ -737,6 +738,8 @@ _jmp_addr_0x0055cb90:    push               esi                                 
                          nop                                                               // 0x0055cbcd    90
                          nop                                                               // 0x0055cbce    90
                          nop                                                               // 0x0055cbcf    90
+
+?GetSaveType@PlannedMultiMapFixed@@UAEIXZ:
                          mov                eax, 0x00000038                                // 0x0055cbd0    b838000000
                          ret                                                               // 0x0055cbd5    c3
                          nop                                                               // 0x0055cbd6    90
@@ -749,6 +752,8 @@ _jmp_addr_0x0055cb90:    push               esi                                 
                          nop                                                               // 0x0055cbdd    90
                          nop                                                               // 0x0055cbde    90
                          nop                                                               // 0x0055cbdf    90
+
+?GetDebugText@PlannedMultiMapFixed@@QAEPADXZ:
                          mov                eax, 0x00bed1a0                                // 0x0055cbe0    b8a0d1be00
                          ret                                                               // 0x0055cbe5    c3
                          nop                                                               // 0x0055cbe6    90
@@ -761,6 +766,8 @@ _jmp_addr_0x0055cb90:    push               esi                                 
                          nop                                                               // 0x0055cbed    90
                          nop                                                               // 0x0055cbee    90
                          nop                                                               // 0x0055cbef    90
+
+??1PlannedMultiMapFixed@@UAE@XZ:
                          push               esi                                            // 0x0055cbf0    56
                          mov.s              esi, ecx                                       // 0x0055cbf1    8bf1
                          call               _jmp_addr_0x0056fa80                           // 0x0055cbf3    e8882e0100

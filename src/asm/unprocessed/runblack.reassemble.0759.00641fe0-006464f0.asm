@@ -65,8 +65,8 @@
 .extern _jmp_addr_0x0071ed40
 .extern @AddStructureToTown__4TownFP13MultiMapFixed@12
 .extern _jmp_addr_0x00739a60
-.extern @AddPlanned__4TownFP20PlannedMultiMapFixed@12
-.extern _jmp_addr_0x0073d0d0
+.extern ?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
+.extern ?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
 .extern _jmp_addr_0x0074ce10
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074e030
@@ -2083,7 +2083,7 @@ _jmp_addr_0x00643710:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp8} mov        dword ptr [esi + 0x48], ecx                    // 0x00643741    894e48
                          {disp8} je         _jmp_addr_0x0064374c                           // 0x00643744    7406
                          push               esi                                            // 0x00643746    56
-                         call               @AddPlanned__4TownFP20PlannedMultiMapFixed@12  // 0x00643747    e834990f00
+                         call               ?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z  // 0x00643747    e834990f00
 _jmp_addr_0x0064374c:    mov.s              eax, esi                                       // 0x0064374c    8bc6
                          pop                esi                                            // 0x0064374e    5e
                          ret                0x0018                                         // 0x0064374f    c21800
@@ -2119,7 +2119,7 @@ _jmp_addr_0x0064377a:    mov.s              eax, esi                            
                          test               ecx, ecx                                       // 0x00643786    85c9
                          {disp8} je         _jmp_addr_0x00643790                           // 0x00643788    7406
                          push               esi                                            // 0x0064378a    56
-                         call               _jmp_addr_0x0073d0d0                           // 0x0064378b    e840990f00
+                         call               ?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z  // 0x0064378b    e840990f00
 _jmp_addr_0x00643790:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x00643790    8b442408
                          push               eax                                            // 0x00643794    50
                          mov.s              ecx, esi                                       // 0x00643795    8bce

@@ -33,6 +33,8 @@
 .endm
 .macro RTTI_Class_Type_Descriptor_And_Reflection name reflection
     RTTI_Class_Type_Descriptor4Padding \name
+    .global _debug_text_\name
+_debug_text_\name:
     ASCIZ_ALIGNED "\reflection" 8
 .endm
 .macro RTTI_Class_Type_Descriptor_Reflection_And_Path name reflection path

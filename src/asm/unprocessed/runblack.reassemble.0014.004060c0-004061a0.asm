@@ -7,11 +7,12 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004056d0
+.extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
 
-start_0x004060c0_0x004061a0:
-// Snippet: asm, [0x004060c0, 0x00406115)
-                         call             _jmp_addr_0x004056d0              // 0x004060c0    e80bf6ffff
+.globl ?IsCivic@PlannedAbode@@QAE_NXZ
+
+?IsCivic@PlannedAbode@@QAE_NXZ:
+                         call             ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ              // 0x004060c0    e80bf6ffff
                          {disp32} mov     eax, dword ptr [eax + 0x00000120] // 0x004060c5    8b8020010000
                          cmp              eax, 0x00000100                   // 0x004060cb    3d00010000
                          {disp8} jg       _jmp_addr_0x004060eb              // 0x004060d0    7f19
