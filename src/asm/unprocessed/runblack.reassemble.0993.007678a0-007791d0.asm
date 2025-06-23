@@ -72,8 +72,8 @@
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
-.extern @Save__9GameThingFR10GameOSFile@12
-.extern @Load__9GameThingFR10GameOSFile@12
+.extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x0056fef0
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
@@ -12894,7 +12894,7 @@ _jmp_addr_0x0076fb10:    mov.s              eax, ecx                            
                          mov.s              ebp, ecx                                        // 0x0076fb4f    8be9
                          push               esi                                             // 0x0076fb51    56
                          {disp8} mov        dword ptr [esp + 0x10], ebp                     // 0x0076fb52    896c2410
-                         call               @Save__9GameThingFR10GameOSFile@12              // 0x0076fb56    e88500e0ff
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z         // 0x0076fb56    e88500e0ff
                          test               eax, eax                                        // 0x0076fb5b    85c0
                          {disp32} je        _jmp_addr_0x0076fdac                            // 0x0076fb5d    0f8449020000
                          push               ebx                                             // 0x0076fb63    53
@@ -13104,7 +13104,7 @@ _jmp_addr_0x0076fdac:    pop                esi                                 
                          mov.s              edi, ecx                                        // 0x0076fdcf    8bf9
                          push               ebx                                             // 0x0076fdd1    53
                          {disp8} mov        dword ptr [esp + 0x10], edi                     // 0x0076fdd2    897c2410
-                         call               @Load__9GameThingFR10GameOSFile@12              // 0x0076fdd6    e815ffdfff
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z         // 0x0076fdd6    e815ffdfff
                          test               eax, eax                                        // 0x0076fddb    85c0
                          {disp32} je        _jmp_addr_0x0076ffcc                            // 0x0076fddd    0f84e9010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]          // 0x0076fde3    a194c9be00
@@ -17878,7 +17878,7 @@ _jmp_addr_0x0077331f:    ret                                                    
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                     // 0x00773322    8b74240c
                          mov.s              ebp, ecx                                        // 0x00773326    8be9
                          push               esi                                             // 0x00773328    56
-                         call               @Save__9GameThingFR10GameOSFile@12              // 0x00773329    e8b2c8dfff
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z         // 0x00773329    e8b2c8dfff
                          test               eax, eax                                        // 0x0077332e    85c0
                          {disp32} je        _jmp_addr_0x007736d6                            // 0x00773330    0f84a0030000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]          // 0x00773336    a190c9be00
@@ -18179,7 +18179,7 @@ _jmp_addr_0x007736d6:    pop                esi                                 
                          mov.s              ebp, ecx                                        // 0x007736e9    8be9
                          push               esi                                             // 0x007736eb    56
                          {disp8} mov        dword ptr [esp + 0x0c], ebp                     // 0x007736ec    896c240c
-                         call               @Load__9GameThingFR10GameOSFile@12              // 0x007736f0    e8fbc5dfff
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z         // 0x007736f0    e8fbc5dfff
                          test               eax, eax                                        // 0x007736f5    85c0
                          {disp32} je        _jmp_addr_0x00773abb                            // 0x007736f7    0f84be030000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]          // 0x007736fd    a194c9be00

@@ -95,8 +95,8 @@
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x0056fe70
 .extern _jmp_addr_0x0056fef0
-.extern @GetPlayer__9GameThingFv@4
-.extern @SetPlayer__9GameThingFP7GPlayer@12
+.extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
+.extern ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
@@ -483,7 +483,7 @@ _jmp_addr_0x007264d9:    xor.s              edx, edx                            
                          pop                esi                                                  // 0x00726560    5e
                          ret                                                                     // 0x00726561    c3
 _jmp_addr_0x00726562:    mov.s              ecx, esi                                             // 0x00726562    8bce
-                         call               @GetPlayer__9GameThingFv@4                           // 0x00726564    e8c79be4ff
+                         call               ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ              // 0x00726564    e8c79be4ff
                          pop                esi                                                  // 0x00726569    5e
                          ret                                                                     // 0x0072656a    c3
                          nop                                                                     // 0x0072656b    90
@@ -496,7 +496,7 @@ _jmp_addr_0x00726562:    mov.s              ecx, esi                            
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x00726572    8b7c240c
                          mov.s              esi, ecx                                             // 0x00726576    8bf1
                          push               edi                                                  // 0x00726578    57
-                         call               @SetPlayer__9GameThingFP7GPlayer@12                  // 0x00726579    e8d29be4ff
+                         call               ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z             // 0x00726579    e8d29be4ff
                          {disp8} mov        ecx, dword ptr [esi + 0x7c]                          // 0x0072657e    8b4e7c
                          test               ecx, ecx                                             // 0x00726581    85c9
                          {disp8} je         _jmp_addr_0x0072658b                                 // 0x00726583    7406
@@ -2012,7 +2012,7 @@ _jmp_addr_0x00727690:    call               _jmp_addr_0x00727700                
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x007276b2    8b7c240c
                          mov.s              esi, ecx                                             // 0x007276b6    8bf1
                          push               edi                                                  // 0x007276b8    57
-                         call               @SetPlayer__9GameThingFP7GPlayer@12                  // 0x007276b9    e8928ae4ff
+                         call               ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z             // 0x007276b9    e8928ae4ff
                          {disp8} mov        dword ptr [esi + 0x4c], edi                          // 0x007276be    897e4c
                          {disp8} mov        ecx, dword ptr [esi + 0x50]                          // 0x007276c1    8b4e50
                          test               ecx, ecx                                             // 0x007276c4    85c9

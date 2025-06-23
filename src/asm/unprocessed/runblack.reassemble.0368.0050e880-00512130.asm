@@ -26,8 +26,8 @@
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
-.extern @Save__9GameThingFR10GameOSFile@12
-.extern @Load__9GameThingFR10GameOSFile@12
+.extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x00597f20
 .extern _jmp_addr_0x005e6540
@@ -145,7 +145,7 @@ start_0x0050e880_0x00512130:
                          {disp8} mov        esi, dword ptr [esp + 0x14]                   // 0x0050e885    8b742414
                          mov.s              ebx, ecx                                      // 0x0050e889    8bd9
                          push               esi                                           // 0x0050e88b    56
-                         call               @Save__9GameThingFR10GameOSFile@12            // 0x0050e88c    e84f130600
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x0050e88c    e84f130600
                          test               eax, eax                                      // 0x0050e891    85c0
                          {disp32} je        _jmp_addr_0x0050e9f1                          // 0x0050e893    0f8458010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0050e899    a190c9be00
@@ -276,7 +276,7 @@ _jmp_addr_0x0050e9f1:    pop                esi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x0050ea03    8b742410
                          mov.s              ebx, ecx                                      // 0x0050ea07    8bd9
                          push               esi                                           // 0x0050ea09    56
-                         call               @Load__9GameThingFR10GameOSFile@12            // 0x0050ea0a    e8e1120600
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x0050ea0a    e8e1120600
                          test               eax, eax                                      // 0x0050ea0f    85c0
                          {disp32} je        _jmp_addr_0x0050eb4d                          // 0x0050ea11    0f8436010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x0050ea17    a194c9be00
@@ -1094,7 +1094,7 @@ _jmp_addr_0x0050f1be:    ret                                                    
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x0050f1c2    8b74240c
                          mov.s              ebx, ecx                                      // 0x0050f1c6    8bd9
                          push               esi                                           // 0x0050f1c8    56
-                         call               @Save__9GameThingFR10GameOSFile@12            // 0x0050f1c9    e8120a0600
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x0050f1c9    e8120a0600
                          test               eax, eax                                      // 0x0050f1ce    85c0
                          {disp32} je        _jmp_addr_0x0050f2e9                          // 0x0050f1d0    0f8413010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0050f1d6    a190c9be00
@@ -1197,7 +1197,7 @@ _jmp_addr_0x0050f2e9:    pop                esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x10]                   // 0x0050f2f3    8b7c2410
                          mov.s              ebx, ecx                                      // 0x0050f2f7    8bd9
                          push               edi                                           // 0x0050f2f9    57
-                         call               @Load__9GameThingFR10GameOSFile@12            // 0x0050f2fa    e8f1090600
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x0050f2fa    e8f1090600
                          test               eax, eax                                      // 0x0050f2ff    85c0
                          {disp32} je        _jmp_addr_0x0050f434                          // 0x0050f301    0f842d010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x0050f307    a194c9be00

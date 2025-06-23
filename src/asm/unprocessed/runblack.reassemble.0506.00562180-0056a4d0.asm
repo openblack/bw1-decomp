@@ -38,8 +38,8 @@
 .extern _jmp_addr_0x0056a890
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern @Save__9GameThingFR10GameOSFile@12
-.extern @Load__9GameThingFR10GameOSFile@12
+.extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern _jmp_addr_0x00580c30
 .extern _jmp_addr_0x00580cc0
 .extern @GetPlayerNumber__7GPlayerCFv@4
@@ -4941,7 +4941,7 @@ _jmp_addr_0x005654e6:    xor.s              eax, eax                            
                          push               edi                                           // 0x005654f5    57
                          mov.s              edi, ecx                                      // 0x005654f6    8bf9
                          push               esi                                           // 0x005654f8    56
-                         call               @Load__9GameThingFR10GameOSFile@12            // 0x005654f9    e8f2a70000
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x005654f9    e8f2a70000
                          test               eax, eax                                      // 0x005654fe    85c0
                          {disp32} je        _jmp_addr_0x00565e5d                          // 0x00565500    0f8457090000
                          push               ebx                                           // 0x00565506    53
@@ -5683,7 +5683,7 @@ _jmp_addr_0x00565e5d:    pop                edi                                 
                          push               edi                                           // 0x00565e75    57
                          mov.s              edi, ecx                                      // 0x00565e76    8bf9
                          push               esi                                           // 0x00565e78    56
-                         call               @Save__9GameThingFR10GameOSFile@12            // 0x00565e79    e8629d0000
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x00565e79    e8629d0000
                          test               eax, eax                                      // 0x00565e7e    85c0
                          {disp32} je        _jmp_addr_0x005667e7                          // 0x00565e80    0f8461090000
                          {disp8} mov        eax, dword ptr [edi + 0x14]                   // 0x00565e86    8b4714

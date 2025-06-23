@@ -37,7 +37,7 @@
 .extern @ReadInfo__10GameOSFileFPPC9GBaseInfo@12
 .extern _jmp_addr_0x0056fa80
 .extern _jmp_addr_0x0056fef0
-.extern @GetPlayer__9GameThingFv@4
+.extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .extern _GetSharedMesh__7GJUtilsFPCcRC18MaterialProperties
 .extern _jmp_addr_0x0057e220
 .extern _jmp_addr_0x005cd9d0
@@ -4116,7 +4116,7 @@ _jmp_addr_0x0072c13e:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          mov                edx, dword ptr [eax]                          // 0x0072c157    8b10
                          mov.s              ecx, eax                                      // 0x0072c159    8bc8
                          {disp8} jmp        dword ptr [edx + 0x1c]                        // 0x0072c15b    ff621c
-_jmp_addr_0x0072c15e:    {disp32} jmp       @GetPlayer__9GameThingFv@4                    // 0x0072c15e    e9cd3fe4ff
+_jmp_addr_0x0072c15e:    {disp32} jmp       ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ       // 0x0072c15e    e9cd3fe4ff
                          nop                                                              // 0x0072c163    90
                          nop                                                              // 0x0072c164    90
                          nop                                                              // 0x0072c165    90

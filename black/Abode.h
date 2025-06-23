@@ -145,15 +145,15 @@ struct GPlayer * __fastcall GetPlayer__5AbodeFv(struct GameThing* this) asm("?Ge
 // win1.41 00401730 mac 1004fe30 Abode::GetTown(void)
 struct Town * __fastcall GetTown__5AbodeFv(const struct GameThing* this) asm("?GetTown@Abode@@UAEPAVTown@@XZ");
 // win1.41 00404d40 mac 10000f50 Abode::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
-uint32_t __fastcall JustAddResource__5AbodeF13RESOURCE_TYPEUlb(struct GameThing* this, const void* edx, uint8_t param_1) asm("?JustAddResource@Abode@@UAEIE@Z");
+uint32_t __fastcall JustAddResource__5AbodeF13RESOURCE_TYPEUlb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, bool param_3) asm("?JustAddResource@Abode@@UAEIE@Z");
 // win1.41 00404d60 mac 1034cdd0 Abode::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
-uint32_t __fastcall JustRemoveResource__5AbodeF13RESOURCE_TYPEUlPb(struct GameThing* this, const void* edx, uint8_t param_1) asm("?JustRemoveResource@Abode@@UAEIE@Z");
+uint32_t __fastcall JustRemoveResource__5AbodeF13RESOURCE_TYPEUlPb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, bool* param_3) asm("?JustRemoveResource@Abode@@UAEIE@Z");
 // win1.41 00404d30 mac 1006d300 Abode::CallVirtualFunctionsForCreationGetResource(RESOURCE_TYPE)
 uint32_t __fastcall GetResource__5AbodeF13RESOURCE_TYPE(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type) asm("?GetResource@Abode@@UAEIW4RESOURCE_TYPE@@@Z");
 // win1.41 00404d90 mac 101c95e0 Abode::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 uint32_t __fastcall AddResource__5AbodeF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* param_3, bool param_4, const struct MapCoords* coords, int param_6) asm("?AddResource@Abode@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NPBUMapCoords@@H@Z");
 // win1.41 00404f10 mac 101c9a10 Abode::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
-uint32_t __fastcall RemoveResource__5AbodeF13RESOURCE_TYPEUlP16GInterfaceStatusPb(struct GameThing* this, const void* edx, uint8_t param_1, uint8_t param_2, uint8_t param_3) asm("?RemoveResource@Abode@@UAEIEEE@Z");
+uint32_t __fastcall RemoveResource__5AbodeF13RESOURCE_TYPEUlP16GInterfaceStatusPb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* param_3, bool* param_4) asm("?RemoveResource@Abode@@UAEIEEE@Z");
 // win1.41 00401640 mac 105602b0 Abode::CastAbode(void)
 struct Abode * __fastcall CastAbode__5AbodeFv(struct GameThing* this) asm("?CastAbode@Abode@@UAEPAV1@XZ");
 // win1.41 00403f10 mac 103c9730 Abode::GetNumberOfInstanceForGlobalList(void)

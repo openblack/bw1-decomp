@@ -226,9 +226,9 @@
 .globl _globl_ct_0x004e9bf0
 .globl _globl_ct_0x004e9c20
 .globl _globl_ct_0x004e9c40
-.globl ?CanCreatureEatMe@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsStealableByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanCreatureEatMe@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsStealableByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?NothingScareyNearMe@GameThingWithPos@@UBE_NXZ
 .globl ?CanBeEatenByCreature@Object@@UAE_NPAVCreature@@@Z
 .globl ?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z
@@ -3664,7 +3664,7 @@ _jmp_addr_0x004e3efe:    mov                eax, 0x00000001                     
                          nop                                                                // 0x004e3f2d    90
                          nop                                                                // 0x004e3f2e    90
                          nop                                                                // 0x004e3f2f    90
-?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e3f30    56
                          push               edi                                             // 0x004e3f31    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                     // 0x004e3f32    8b7c240c
@@ -4017,7 +4017,7 @@ _jmp_addr_0x004e4200:    mov                eax, 0x00000001                     
                          nop                                                                // 0x004e420d    90
                          nop                                                                // 0x004e420e    90
                          nop                                                                // 0x004e420f    90
-?IsStealableByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsStealableByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e4210    56
                          push               edi                                             // 0x004e4211    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                     // 0x004e4212    8b7c240c
@@ -5110,7 +5110,7 @@ _jmp_addr_0x004e4a9c:    xor.s              eax, eax                            
                          nop                                                                // 0x004e4b8d    90
                          nop                                                                // 0x004e4b8e    90
                          nop                                                                // 0x004e4b8f    90
-?CanCreatureEatMe@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanCreatureEatMe@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          push               esi                                             // 0x004e4b90    56
                          push               edi                                             // 0x004e4b91    57
                          push               0x0                                             // 0x004e4b92    6a00

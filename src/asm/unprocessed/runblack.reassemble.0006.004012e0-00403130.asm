@@ -46,27 +46,27 @@
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .globl _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
 .globl ?CastSpellIcon@GameThing@@UAEIXZ
-.globl @CalculateInfluence__9GameThingFRC9MapCoords@12
+.globl ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z
 .globl ?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z
-.globl @AddFootpathLink__9GameThingFP9GFootpath@12
-.globl @CastCreature__9GameThingFv@4
-.globl @GetVillagerActivityDesire__9GameThingFP8Villager@12
+.globl ?AddFootpathLink@GameThing@@QAEXPAVGFootpath@@@Z
+.globl ?CastCreature@GameThing@@QAEPAVCreature@@XZ
+.globl ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z
 .globl ?CastOneOffSpellSeed@GameThing@@UAEIXZ
-.globl @IsAvailable__9GameThingFv@4
-.globl @RemoveDance__9GameThingFv@4
+.globl ?IsAvailable@GameThing@@QAE_NXZ
+.globl ?RemoveDance@GameThing@@QAEXXZ
 .globl ?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z
-.globl @IsDeletedOnNewMap__9GameThingFv@4
-.globl @IsCreature2__9GameThingFP8Creature@12
+.globl ?IsDeletedOnNewMap@GameThing@@QAE_NXZ
+.globl ?IsCreature@GameThing@@QAE_NPAVCreature@@@Z
 .globl ?GetShowNeedsPos@GameThing@@UAEIXZ
 .globl ?CastTree@GameThing@@UAEIXZ
 .globl ?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ
-.globl @GetPlayerWhoLastPickedMeUp__9GameThingFv@4
+.globl ?GetPlayerWhoLastPickedMeUp@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?IsCreature@GameThing@@UAE_NXZ
-.globl @GetPlayerWhoLastDroppedMe__9GameThingFv@4
-.globl @UpdateVillagerActivityEffect__9GameThingFP8Villager@12
+.globl ?GetPlayerWhoLastDroppedMe@GameThing@@QAEPAVGPlayer@@XZ
+.globl ?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z
 .globl @SetPos__16GameThingWithPosFRC9MapCoords@12
 .globl ?GetComputerSeen@GameThing@@UAE_NXZ
-.globl @CastPlayer__9GameThingFv@4
+.globl ?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?CanBeFrighteningToCreature@Fixed@@UAE_NPAVCreature@@@Z
 .globl ?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ
 .globl ?PhysicsEditorCreate@GameThingWithPos@@QAEXH@Z
@@ -81,12 +81,12 @@
 .globl ?IsStompable@GameThingWithPos@@UAE_NXZ
 .globl ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
 .globl ?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z
-.globl ?IsTown_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTown_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?IsTown_0@GameThingWithPos@@UAE_NXZ
-.globl ?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?TrueFunction@GameThingWithPos@@UAE_NXZ
 .globl ?FalseFunction@GameThingWithPos@@UAE_NXZ
 .globl ?IsNotLiving@GameThingWithPos@@UAE_NXZ
@@ -94,93 +94,93 @@
 .globl ?IsTownCentre@GameThingWithPos@@UAE_NXZ
 .globl ?IsTotemStatue@GameThingWithPos@@UAE_NXZ
 .globl ?IsTownDesireFlag@GameThingWithPos@@UAE_NXZ
-.globl ?IsRock_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsRock_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?IsRock_0@GameThingWithPos@@UAE_NXZ
 .globl ?IsSpellDispenser@GameThingWithPos@@UAE_NXZ
 .globl ?IsMist@GameThingWithPos@@UAE_NXZ
 .globl ?IsQueryIcon@GameThingWithPos@@UAE_NXZ
 .globl ?IsStreetLight@GameThingWithPos@@UAE_NXZ
 .globl ?IsStreetLantern@GameThingWithPos@@UAE_NXZ
-.globl ?IsField_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsField_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?IsField_0@GameThingWithPos@@UAE_NXZ
 .globl ?IsMagicFireBall@GameThingWithPos@@UAE_NXZ
 .globl ?IsCitadelHeart@GameThingWithPos@@UAE_NXZ
 .globl ?IsDamaged@GameThingWithPos@@UAE_NXZ
-.globl ?CanBeHealedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeKissedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanReceiveGifts@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanActAsAContainer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsNotOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsMushroom@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeGivenToTown@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsVillagerFarFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsVillagerNotWorshipping@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsCow@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsDominantCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeDancedWith@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsWorshipSite_0@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeHealedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeKissedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanReceiveGifts@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanActAsAContainer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsNotOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsMushroom@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeGivenToTown@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsVillager@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsVillagerFarFromHome@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsVillagerNotWorshipping@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsCow@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsDominantCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeDancedWith@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsAggressive@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsWorshipSite_0@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?IsWorshipSite_1@GameThingWithPos@@UAE_NXZ
 .globl ?GetWorshipSite@GameThingWithPos@@UAEPAUWorshipSite@@XZ
 .globl ?IsWorkshop_0@GameThingWithPos@@UAE_NXZ
-.globl ?IsWorkshop_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsTree_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsWorkshop_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsTree_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?IsTree_0@GameThingWithPos@@UAE_NXZ
-.globl ?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsDoingSomethingInteresting@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsPickupableRock@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsCitadelPart_1@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsDoingSomethingInteresting@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsPickupableRock@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsCitadelPart_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?IsCitadelPart_0@GameThingWithPos@@UAE_NXZ
-.globl ?IsPlayingFootball@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsStealableScaffold@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsToy@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsToyBall@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsToyDie@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsToyCuddly@GameThingWithPos@@UBE_NPAUCreature@@@Z
-.globl ?IsLiving_1@GameThingWithPos@@UBE_NPAUCreature@@@Z
+.globl ?IsPlayingFootball@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsStealableScaffold@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsToy@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsToyBall@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsToyDie@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsToyCuddly@GameThingWithPos@@UBE_NPAVCreature@@@Z
+.globl ?IsLiving_1@GameThingWithPos@@UBE_NPAVCreature@@@Z
 .globl ?IsLiving_0@GameThingWithPos@@UBE_NXZ
 .globl ?IsFence@GameThingWithPos@@UBE_NXZ
 .globl ?IsSpellIcon@GameThingWithPos@@UBE_NXZ
@@ -1130,14 +1130,14 @@ _jmp_addr_0x004017dd:    mov.s              eax, esi                            
                          nop                                                         // 0x004017ed    90
                          nop                                                         // 0x004017ee    90
                          nop                                                         // 0x004017ef    90
-@CalculateInfluence__9GameThingFRC9MapCoords@12:
-                         {disp32} fld       dword ptr [_rdata_float1p0]                       // 0x004017f0    d90590a38a00
+?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z:
+                         {disp32} fld       dword ptr [_rdata_float1p0]              // 0x004017f0    d90590a38a00
                          ret                0x0004                                   // 0x004017f6    c20400
                          // SEH code path?
 _jmp_addr_0x004017f9:    push               ecx                                      // 0x004017f9    51
                          push               eax                                      // 0x004017fa    50
                          call               ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ + 4                     // 0x004017fb    e8a4faffff
-@RemoveDance__9GameThingFv@4:
+?RemoveDance@GameThing@@QAEXXZ:
                          ret                                                         // 0x00401800    c3
                          nop                                                         // 0x00401801    90
                          nop                                                         // 0x00401802    90
@@ -1154,14 +1154,14 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040180d    90
                          nop                                                         // 0x0040180e    90
                          nop                                                         // 0x0040180f    90
-@IsAvailable__9GameThingFv@4:
+?IsAvailable@GameThing@@QAE_NXZ:
                          xor.s              eax, eax                                 // 0x00401810    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x0a]                // 0x00401812    8a410a
                          not                al                                       // 0x00401815    f6d0
                          and                eax, 0x01                                // 0x00401817    83e001
                          ret                                                         // 0x0040181a    c3
                          call               _jmp_addr_0x00401879                     // 0x0040181b    e859000000
-@IsCreature2__9GameThingFP8Creature@12:
+?IsCreature@GameThing@@QAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401820    33c0
                          ret                                                         // 0x00401822    c3
                          nop                                                         // 0x00401823    90
@@ -1233,7 +1233,7 @@ _jmp_addr_0x004017f9:    push               ecx                                 
                          nop                                                         // 0x0040186d    90
                          nop                                                         // 0x0040186e    90
                          nop                                                         // 0x0040186f    90
-@GetVillagerActivityDesire__9GameThingFP8Villager@12:
+?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z:
                          {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00401870    d90598a38a00
                          ret                0x0004                                   // 0x00401876    c20400
 _jmp_addr_0x00401879:    push               ecx                                      // 0x00401879    51
@@ -1253,7 +1253,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040188d    90
                          nop                                                         // 0x0040188e    90
                          nop                                                         // 0x0040188f    90
-@UpdateVillagerActivityEffect__9GameThingFP8Villager@12:
+?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z:
                          xor.s              eax, eax                                 // 0x00401890    33c0
                          ret                0x0004                                   // 0x00401892    c20400
                          nop                                                         // 0x00401895    90
@@ -1267,7 +1267,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040189d    90
                          nop                                                         // 0x0040189e    90
                          nop                                                         // 0x0040189f    90
-@GetPlayerWhoLastPickedMeUp__9GameThingFv@4:
+?GetPlayerWhoLastPickedMeUp@GameThing@@QAEPAVGPlayer@@XZ:
                          xor.s              eax, eax                                 // 0x004018a0    33c0
                          ret                                                         // 0x004018a2    c3
                          nop                                                         // 0x004018a3    90
@@ -1283,7 +1283,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018ad    90
                          nop                                                         // 0x004018ae    90
                          nop                                                         // 0x004018af    90
-@GetPlayerWhoLastDroppedMe__9GameThingFv@4:
+?GetPlayerWhoLastDroppedMe@GameThing@@QAEPAVGPlayer@@XZ:
                          xor.s              eax, eax                                 // 0x004018b0    33c0
                          ret                                                         // 0x004018b2    c3
                          nop                                                         // 0x004018b3    90
@@ -1299,7 +1299,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018bd    90
                          nop                                                         // 0x004018be    90
                          nop                                                         // 0x004018bf    90
-@AddFootpathLink__9GameThingFP9GFootpath@12:
+?AddFootpathLink@GameThing@@QAEXPAVGFootpath@@@Z:
                          xor.s              eax, eax                                 // 0x004018c0    33c0
                          ret                0x0004                                   // 0x004018c2    c20400
                          nop                                                         // 0x004018c5    90
@@ -1313,7 +1313,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018cd    90
                          nop                                                         // 0x004018ce    90
                          nop                                                         // 0x004018cf    90
-@CastCreature__9GameThingFv@4:
+?CastCreature@GameThing@@QAEPAVCreature@@XZ:
                          xor.s              eax, eax                                 // 0x004018d0    33c0
                          ret                                                         // 0x004018d2    c3
                          nop                                                         // 0x004018d3    90
@@ -1329,7 +1329,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x004018dd    90
                          nop                                                         // 0x004018de    90
                          nop                                                         // 0x004018df    90
-@CastPlayer__9GameThingFv@4:
+?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ:
                          xor.s              eax, eax                                 // 0x004018e0    33c0
                          ret                                                         // 0x004018e2    c3
                          nop                                                         // 0x004018e3    90
@@ -1393,7 +1393,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040191d    90
                          nop                                                         // 0x0040191e    90
                          nop                                                         // 0x0040191f    90
-@IsDeletedOnNewMap__9GameThingFv@4:
+?IsDeletedOnNewMap@GameThing@@QAE_NXZ:
                          mov                eax, 0x00000001                          // 0x00401920    b801000000
                          ret                                                         // 0x00401925    c3
                          nop                                                         // 0x00401926    90
@@ -1610,7 +1610,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x00401a5d    90
                          nop                                                         // 0x00401a5e    90
                          nop                                                         // 0x00401a5f    90
-?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a60    33c0
                          ret                0x0004                                   // 0x00401a62    c20400
                          nop                                                         // 0x00401a65    90
@@ -1624,7 +1624,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x00401a6d    90
                          nop                                                         // 0x00401a6e    90
                          nop                                                         // 0x00401a6f    90
-?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a70    33c0
                          ret                0x0004                                   // 0x00401a72    c20400
                          nop                                                         // 0x00401a75    90
@@ -1638,7 +1638,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x00401a7d    90
                          nop                                                         // 0x00401a7e    90
                          nop                                                         // 0x00401a7f    90
-?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a80    33c0
                          ret                0x0004                                   // 0x00401a82    c20400
                          nop                                                         // 0x00401a85    90
@@ -1652,7 +1652,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x00401a8d    90
                          nop                                                         // 0x00401a8e    90
                          nop                                                         // 0x00401a8f    90
-?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401a90    33c0
                          ret                0x0004                                   // 0x00401a92    c20400
                          nop                                                         // 0x00401a95    90
@@ -1724,7 +1724,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x00401add    90
                          nop                                                         // 0x00401ade    90
                          nop                                                         // 0x00401adf    90
-?IsTown_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsTown_1@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ae0    33c0
                          ret                                                         // 0x00401ae2    c3
                          nop                                                         // 0x00401ae3    90
@@ -1945,7 +1945,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          ret                                                         // 0x00401bcd    c3
                          nop                                                         // 0x00401bce    90
                          nop                                                         // 0x00401bcf    90
-?CanBeHealedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeHealedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401bd0    33c0
                          ret                0x0004                                   // 0x00401bd2    c20400
                          nop                                                         // 0x00401bd5    90
@@ -1959,7 +1959,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401bdd    90
                          nop                                                         // 0x00401bde    90
                          nop                                                         // 0x00401bdf    90
-?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401be0    33c0
                          ret                0x0004                                   // 0x00401be2    c20400
                          nop                                                         // 0x00401be5    90
@@ -1973,7 +1973,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401bed    90
                          nop                                                         // 0x00401bee    90
                          nop                                                         // 0x00401bef    90
-?CanBeKissedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeKissedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401bf0    33c0
                          ret                0x0004                                   // 0x00401bf2    c20400
                          nop                                                         // 0x00401bf5    90
@@ -1987,7 +1987,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401bfd    90
                          nop                                                         // 0x00401bfe    90
                          nop                                                         // 0x00401bff    90
-?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c00    33c0
                          ret                0x0004                                   // 0x00401c02    c20400
                          nop                                                         // 0x00401c05    90
@@ -2001,7 +2001,7 @@ _jmp_addr_0x00401bcb:    xor.s              eax, eax                            
                          nop                                                         // 0x00401c0d    90
                          nop                                                         // 0x00401c0e    90
                          nop                                                         // 0x00401c0f    90
-?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          push               esi                                      // 0x00401c10    56
                          push               edi                                      // 0x00401c11    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]              // 0x00401c12    8b7c240c
@@ -2036,7 +2036,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c4d    90
                          nop                                                         // 0x00401c4e    90
                          nop                                                         // 0x00401c4f    90
-?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c50    33c0
                          ret                0x0004                                   // 0x00401c52    c20400
                          nop                                                         // 0x00401c55    90
@@ -2050,7 +2050,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c5d    90
                          nop                                                         // 0x00401c5e    90
                          nop                                                         // 0x00401c5f    90
-?CanReceiveGifts@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanReceiveGifts@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c60    33c0
                          ret                0x0004                                   // 0x00401c62    c20400
                          nop                                                         // 0x00401c65    90
@@ -2064,7 +2064,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c6d    90
                          nop                                                         // 0x00401c6e    90
                          nop                                                         // 0x00401c6f    90
-?CanActAsAContainer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanActAsAContainer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401c70    33c0
                          ret                0x0004                                   // 0x00401c72    c20400
                          nop                                                         // 0x00401c75    90
@@ -2078,7 +2078,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c7d    90
                          nop                                                         // 0x00401c7e    90
                          nop                                                         // 0x00401c7f    90
-?IsNotOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsNotOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          {disp8} mov        edx, dword ptr [esp + 0x04]              // 0x00401c80    8b542404
                          mov                eax, dword ptr [ecx]                     // 0x00401c84    8b01
                          push               edx                                      // 0x00401c86    52
@@ -2098,7 +2098,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401c9d    90
                          nop                                                         // 0x00401c9e    90
                          nop                                                         // 0x00401c9f    90
-?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ca0    33c0
                          ret                0x0004                                   // 0x00401ca2    c20400
                          nop                                                         // 0x00401ca5    90
@@ -2112,7 +2112,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cad    90
                          nop                                                         // 0x00401cae    90
                          nop                                                         // 0x00401caf    90
-?IsMushroom@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsMushroom@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cb0    33c0
                          ret                0x0004                                   // 0x00401cb2    c20400
                          nop                                                         // 0x00401cb5    90
@@ -2126,7 +2126,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cbd    90
                          nop                                                         // 0x00401cbe    90
                          nop                                                         // 0x00401cbf    90
-?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cc0    33c0
                          ret                0x0004                                   // 0x00401cc2    c20400
                          nop                                                         // 0x00401cc5    90
@@ -2140,7 +2140,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ccd    90
                          nop                                                         // 0x00401cce    90
                          nop                                                         // 0x00401ccf    90
-?CanBeGivenToTown@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeGivenToTown@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cd0    33c0
                          ret                0x0004                                   // 0x00401cd2    c20400
                          nop                                                         // 0x00401cd5    90
@@ -2154,7 +2154,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cdd    90
                          nop                                                         // 0x00401cde    90
                          nop                                                         // 0x00401cdf    90
-?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ce0    33c0
                          ret                0x0004                                   // 0x00401ce2    c20400
                          nop                                                         // 0x00401ce5    90
@@ -2168,7 +2168,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ced    90
                          nop                                                         // 0x00401cee    90
                          nop                                                         // 0x00401cef    90
-?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanHaveMagicFoodCastOnMe@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401cf0    33c0
                          ret                0x0004                                   // 0x00401cf2    c20400
                          nop                                                         // 0x00401cf5    90
@@ -2182,7 +2182,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401cfd    90
                          nop                                                         // 0x00401cfe    90
                          nop                                                         // 0x00401cff    90
-?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d00    33c0
                          ret                0x0004                                   // 0x00401d02    c20400
                          nop                                                         // 0x00401d05    90
@@ -2196,7 +2196,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d0d    90
                          nop                                                         // 0x00401d0e    90
                          nop                                                         // 0x00401d0f    90
-?IsVillager@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsVillager@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d10    33c0
                          ret                0x0004                                   // 0x00401d12    c20400
                          nop                                                         // 0x00401d15    90
@@ -2210,7 +2210,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d1d    90
                          nop                                                         // 0x00401d1e    90
                          nop                                                         // 0x00401d1f    90
-?IsVillagerFarFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsVillagerFarFromHome@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d20    33c0
                          ret                0x0004                                   // 0x00401d22    c20400
                          nop                                                         // 0x00401d25    90
@@ -2224,7 +2224,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d2d    90
                          nop                                                         // 0x00401d2e    90
                          nop                                                         // 0x00401d2f    90
-?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsVillagerInTownWithoutManyBreeders@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d30    33c0
                          ret                0x0004                                   // 0x00401d32    c20400
                          nop                                                         // 0x00401d35    90
@@ -2238,7 +2238,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d3d    90
                          nop                                                         // 0x00401d3e    90
                          nop                                                         // 0x00401d3f    90
-?IsVillagerNotWorshipping@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsVillagerNotWorshipping@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d40    33c0
                          ret                0x0004                                   // 0x00401d42    c20400
                          nop                                                         // 0x00401d45    90
@@ -2252,7 +2252,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d4d    90
                          nop                                                         // 0x00401d4e    90
                          nop                                                         // 0x00401d4f    90
-?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsVillagerBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d50    33c0
                          ret                0x0004                                   // 0x00401d52    c20400
                          nop                                                         // 0x00401d55    90
@@ -2266,7 +2266,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d5d    90
                          nop                                                         // 0x00401d5e    90
                          nop                                                         // 0x00401d5f    90
-?IsCow@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsCow@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d60    33c0
                          ret                0x0004                                   // 0x00401d62    c20400
                          nop                                                         // 0x00401d65    90
@@ -2280,7 +2280,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d6d    90
                          nop                                                         // 0x00401d6e    90
                          nop                                                         // 0x00401d6f    90
-?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsVillagerWhoHasNotBeenImpressedRecently@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d70    33c0
                          ret                0x0004                                   // 0x00401d72    c20400
                          nop                                                         // 0x00401d75    90
@@ -2294,7 +2294,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d7d    90
                          nop                                                         // 0x00401d7e    90
                          nop                                                         // 0x00401d7f    90
-?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsVillagerWhoHasNotBeenDancedWithRecently@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d80    33c0
                          ret                0x0004                                   // 0x00401d82    c20400
                          nop                                                         // 0x00401d85    90
@@ -2308,7 +2308,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d8d    90
                          nop                                                         // 0x00401d8e    90
                          nop                                                         // 0x00401d8f    90
-?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?DoesVillagerBelongToATownWhichIsAlreadyImpressed@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401d90    33c0
                          ret                0x0004                                   // 0x00401d92    c20400
                          nop                                                         // 0x00401d95    90
@@ -2322,7 +2322,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401d9d    90
                          nop                                                         // 0x00401d9e    90
                          nop                                                         // 0x00401d9f    90
-?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401da0    33c0
                          ret                0x0004                                   // 0x00401da2    c20400
                          nop                                                         // 0x00401da5    90
@@ -2336,7 +2336,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dad    90
                          nop                                                         // 0x00401dae    90
                          nop                                                         // 0x00401daf    90
-?IsDominantCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsDominantCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401db0    33c0
                          ret                0x0004                                   // 0x00401db2    c20400
                          nop                                                         // 0x00401db5    90
@@ -2350,7 +2350,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dbd    90
                          nop                                                         // 0x00401dbe    90
                          nop                                                         // 0x00401dbf    90
-?CanBeDancedWith@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeDancedWith@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401dc0    33c0
                          ret                0x0004                                   // 0x00401dc2    c20400
                          nop                                                         // 0x00401dc5    90
@@ -2364,7 +2364,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dcd    90
                          nop                                                         // 0x00401dce    90
                          nop                                                         // 0x00401dcf    90
-?IsAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsAggressive@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401dd0    33c0
                          ret                0x0004                                   // 0x00401dd2    c20400
                          nop                                                         // 0x00401dd5    90
@@ -2378,7 +2378,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ddd    90
                          nop                                                         // 0x00401dde    90
                          nop                                                         // 0x00401ddf    90
-?IsStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401de0    33c0
                          ret                0x0004                                   // 0x00401de2    c20400
                          nop                                                         // 0x00401de5    90
@@ -2406,7 +2406,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401dfd    90
                          nop                                                         // 0x00401dfe    90
                          nop                                                         // 0x00401dff    90
-?IsWorshipSite_0@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsWorshipSite_0@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e00    33c0
                          ret                                                         // 0x00401e02    c3
                          nop                                                         // 0x00401e03    90
@@ -2438,7 +2438,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e1d    90
                          nop                                                         // 0x00401e1e    90
                          nop                                                         // 0x00401e1f    90
-?IsWorkshop_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsWorkshop_1@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e20    33c0
                          ret                0x0004                                   // 0x00401e22    c20400
                          nop                                                         // 0x00401e25    90
@@ -2452,7 +2452,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e2d    90
                          nop                                                         // 0x00401e2e    90
                          nop                                                         // 0x00401e2f    90
-?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e30    33c0
                          ret                0x0004                                   // 0x00401e32    c20400
                          nop                                                         // 0x00401e35    90
@@ -2466,7 +2466,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e3d    90
                          nop                                                         // 0x00401e3e    90
                          nop                                                         // 0x00401e3f    90
-?IsField_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsField_1@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e40    33c0
                          ret                0x0004                                   // 0x00401e42    c20400
                          nop                                                         // 0x00401e45    90
@@ -2480,7 +2480,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e4d    90
                          nop                                                         // 0x00401e4e    90
                          nop                                                         // 0x00401e4f    90
-?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e50    33c0
                          ret                0x0004                                   // 0x00401e52    c20400
                          nop                                                         // 0x00401e55    90
@@ -2494,7 +2494,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e5d    90
                          nop                                                         // 0x00401e5e    90
                          nop                                                         // 0x00401e5f    90
-?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e60    33c0
                          ret                0x0004                                   // 0x00401e62    c20400
                          nop                                                         // 0x00401e65    90
@@ -2508,7 +2508,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e6d    90
                          nop                                                         // 0x00401e6e    90
                          nop                                                         // 0x00401e6f    90
-?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e70    33c0
                          ret                0x0004                                   // 0x00401e72    c20400
                          nop                                                         // 0x00401e75    90
@@ -2522,7 +2522,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e7d    90
                          nop                                                         // 0x00401e7e    90
                          nop                                                         // 0x00401e7f    90
-?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e80    33c0
                          ret                0x0004                                   // 0x00401e82    c20400
                          nop                                                         // 0x00401e85    90
@@ -2536,7 +2536,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e8d    90
                          nop                                                         // 0x00401e8e    90
                          nop                                                         // 0x00401e8f    90
-?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401e90    33c0
                          ret                0x0004                                   // 0x00401e92    c20400
                          nop                                                         // 0x00401e95    90
@@ -2550,7 +2550,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401e9d    90
                          nop                                                         // 0x00401e9e    90
                          nop                                                         // 0x00401e9f    90
-?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ea0    33c0
                          ret                0x0004                                   // 0x00401ea2    c20400
                          nop                                                         // 0x00401ea5    90
@@ -2578,7 +2578,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ebd    90
                          nop                                                         // 0x00401ebe    90
                          nop                                                         // 0x00401ebf    90
-?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ec0    33c0
                          ret                0x0004                                   // 0x00401ec2    c20400
                          nop                                                         // 0x00401ec5    90
@@ -2592,7 +2592,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401ecd    90
                          nop                                                         // 0x00401ece    90
                          nop                                                         // 0x00401ecf    90
-?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ed0    33c0
                          ret                0x0004                                   // 0x00401ed2    c20400
                          nop                                                         // 0x00401ed5    90
@@ -2606,7 +2606,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401edd    90
                          nop                                                         // 0x00401ede    90
                          nop                                                         // 0x00401edf    90
-?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ee0    33c0
                          ret                0x0004                                   // 0x00401ee2    c20400
                          nop                                                         // 0x00401ee5    90
@@ -2620,7 +2620,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401eed    90
                          nop                                                         // 0x00401eee    90
                          nop                                                         // 0x00401eef    90
-?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ef0    33c0
                          ret                0x0004                                   // 0x00401ef2    c20400
                          nop                                                         // 0x00401ef5    90
@@ -2634,7 +2634,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401efd    90
                          nop                                                         // 0x00401efe    90
                          nop                                                         // 0x00401eff    90
-?IsDoingSomethingInteresting@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsDoingSomethingInteresting@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401f00    33c0
                          ret                0x0004                                   // 0x00401f02    c20400
                          nop                                                         // 0x00401f05    90
@@ -2648,7 +2648,7 @@ _jmp_addr_0x00401c3e:    pop                edi                                 
                          nop                                                         // 0x00401f0d    90
                          nop                                                         // 0x00401f0e    90
                          nop                                                         // 0x00401f0f    90
-?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          push               esi                                      // 0x00401f10    56
                          mov.s              esi, ecx                                 // 0x00401f11    8bf1
                          mov                eax, dword ptr [esi]                     // 0x00401f13    8b06
@@ -2676,12 +2676,12 @@ _jmp_addr_0x00401f49:    pop                edi                                 
                          xor.s              eax, eax                                 // 0x00401f4a    33c0
                          pop                esi                                      // 0x00401f4c    5e
                          ret                0x0004                                   // 0x00401f4d    c20400
-?IsRock_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsRock_1@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          mov                eax, dword ptr [ecx]                     // 0x00401f50    8b01
                          call               dword ptr [eax + 0x1f0]                  // 0x00401f52    ff90f0010000
                          ret                0x0004                                   // 0x00401f58    c20400
                          call               _jmp_addr_0x00401879                     // 0x00401f5b    e819f9ffff
-?IsPickupableRock@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsPickupableRock@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          push               esi                                      // 0x00401f60    56
                          mov.s              esi, ecx                                 // 0x00401f61    8bf1
                          mov                eax, dword ptr [esi]                     // 0x00401f63    8b06
@@ -2730,7 +2730,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fad    90
                          nop                                                         // 0x00401fae    90
                          nop                                                         // 0x00401faf    90
-?IsPlayingFootball@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsPlayingFootball@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fb0    33c0
                          ret                0x0004                                   // 0x00401fb2    c20400
                          nop                                                         // 0x00401fb5    90
@@ -2744,7 +2744,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fbd    90
                          nop                                                         // 0x00401fbe    90
                          nop                                                         // 0x00401fbf    90
-?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsPlayingFootballAndMySideHasJustScored@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fc0    33c0
                          ret                0x0004                                   // 0x00401fc2    c20400
                          nop                                                         // 0x00401fc5    90
@@ -2758,7 +2758,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fcd    90
                          nop                                                         // 0x00401fce    90
                          nop                                                         // 0x00401fcf    90
-?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsPlayingFootballAndOtherSideHasJustScored@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fd0    33c0
                          ret                0x0004                                   // 0x00401fd2    c20400
                          nop                                                         // 0x00401fd5    90
@@ -2772,7 +2772,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fdd    90
                          nop                                                         // 0x00401fde    90
                          nop                                                         // 0x00401fdf    90
-?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401fe0    33c0
                          ret                0x0004                                   // 0x00401fe2    c20400
                          nop                                                         // 0x00401fe5    90
@@ -2786,7 +2786,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401fed    90
                          nop                                                         // 0x00401fee    90
                          nop                                                         // 0x00401fef    90
-?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00401ff0    33c0
                          ret                0x0004                                   // 0x00401ff2    c20400
                          nop                                                         // 0x00401ff5    90
@@ -2800,7 +2800,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x00401ffd    90
                          nop                                                         // 0x00401ffe    90
                          nop                                                         // 0x00401fff    90
-?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402000    33c0
                          ret                0x0004                                   // 0x00402002    c20400
                          nop                                                         // 0x00402005    90
@@ -2814,7 +2814,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040200d    90
                          nop                                                         // 0x0040200e    90
                          nop                                                         // 0x0040200f    90
-?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402010    33c0
                          ret                0x0004                                   // 0x00402012    c20400
                          nop                                                         // 0x00402015    90
@@ -2828,7 +2828,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040201d    90
                          nop                                                         // 0x0040201e    90
                          nop                                                         // 0x0040201f    90
-?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402020    33c0
                          ret                0x0004                                   // 0x00402022    c20400
                          nop                                                         // 0x00402025    90
@@ -2842,7 +2842,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040202d    90
                          nop                                                         // 0x0040202e    90
                          nop                                                         // 0x0040202f    90
-?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsOneOffSpellToRestoreHealth@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402030    33c0
                          ret                0x0004                                   // 0x00402032    c20400
                          nop                                                         // 0x00402035    90
@@ -2856,7 +2856,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040203d    90
                          nop                                                         // 0x0040203e    90
                          nop                                                         // 0x0040203f    90
-?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402040    33c0
                          ret                0x0004                                   // 0x00402042    c20400
                          nop                                                         // 0x00402045    90
@@ -2870,7 +2870,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040204d    90
                          nop                                                         // 0x0040204e    90
                          nop                                                         // 0x0040204f    90
-?IsStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402050    33c0
                          ret                0x0004                                   // 0x00402052    c20400
                          nop                                                         // 0x00402055    90
@@ -2884,7 +2884,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040205d    90
                          nop                                                         // 0x0040205e    90
                          nop                                                         // 0x0040205f    90
-?IsStealableScaffold@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsStealableScaffold@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402060    33c0
                          ret                0x0004                                   // 0x00402062    c20400
                          nop                                                         // 0x00402065    90
@@ -2898,7 +2898,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040206d    90
                          nop                                                         // 0x0040206e    90
                          nop                                                         // 0x0040206f    90
-?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402070    33c0
                          ret                0x0004                                   // 0x00402072    c20400
                          nop                                                         // 0x00402075    90
@@ -2912,7 +2912,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040207d    90
                          nop                                                         // 0x0040207e    90
                          nop                                                         // 0x0040207f    90
-?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402080    33c0
                          ret                0x0004                                   // 0x00402082    c20400
                          nop                                                         // 0x00402085    90
@@ -2926,7 +2926,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040208d    90
                          nop                                                         // 0x0040208e    90
                          nop                                                         // 0x0040208f    90
-?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402090    33c0
                          ret                0x0004                                   // 0x00402092    c20400
                          nop                                                         // 0x00402095    90
@@ -2940,7 +2940,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040209d    90
                          nop                                                         // 0x0040209e    90
                          nop                                                         // 0x0040209f    90
-?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020a0    33c0
                          ret                0x0004                                   // 0x004020a2    c20400
                          nop                                                         // 0x004020a5    90
@@ -2954,7 +2954,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020ad    90
                          nop                                                         // 0x004020ae    90
                          nop                                                         // 0x004020af    90
-?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020b0    33c0
                          ret                0x0004                                   // 0x004020b2    c20400
                          nop                                                         // 0x004020b5    90
@@ -2968,7 +2968,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020bd    90
                          nop                                                         // 0x004020be    90
                          nop                                                         // 0x004020bf    90
-?IsToy@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsToy@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020c0    33c0
                          ret                0x0004                                   // 0x004020c2    c20400
                          nop                                                         // 0x004020c5    90
@@ -2982,7 +2982,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020cd    90
                          nop                                                         // 0x004020ce    90
                          nop                                                         // 0x004020cf    90
-?IsToyBall@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsToyBall@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020d0    33c0
                          ret                0x0004                                   // 0x004020d2    c20400
                          nop                                                         // 0x004020d5    90
@@ -2996,7 +2996,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020dd    90
                          nop                                                         // 0x004020de    90
                          nop                                                         // 0x004020df    90
-?IsToyDie@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsToyDie@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020e0    33c0
                          ret                0x0004                                   // 0x004020e2    c20400
                          nop                                                         // 0x004020e5    90
@@ -3010,7 +3010,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x004020ed    90
                          nop                                                         // 0x004020ee    90
                          nop                                                         // 0x004020ef    90
-?IsToyCuddly@GameThingWithPos@@UBE_NPAUCreature@@@Z:
+?IsToyCuddly@GameThingWithPos@@UBE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x004020f0    33c0
                          ret                0x0004                                   // 0x004020f2    c20400
                          nop                                                         // 0x004020f5    90
@@ -3510,7 +3510,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040231d    90
                          nop                                                         // 0x0040231e    90
                          nop                                                         // 0x0040231f    90
-?IsTree_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsTree_1@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402320    33c0
                          ret                                                         // 0x00402322    c3
                          nop                                                         // 0x00402323    90
@@ -3558,7 +3558,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040234d    90
                          nop                                                         // 0x0040234e    90
                          nop                                                         // 0x0040234f    90
-?IsLiving_1@GameThingWithPos@@UBE_NPAUCreature@@@Z:
+?IsLiving_1@GameThingWithPos@@UBE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402350    33c0
                          ret                                                         // 0x00402352    c3
                          nop                                                         // 0x00402353    90
@@ -3574,7 +3574,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          nop                                                         // 0x0040235d    90
                          nop                                                         // 0x0040235e    90
                          nop                                                         // 0x0040235f    90
-?IsCitadelPart_1@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsCitadelPart_1@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                 // 0x00402360    33c0
                          ret                                                         // 0x00402362    c3
                          nop                                                         // 0x00402363    90

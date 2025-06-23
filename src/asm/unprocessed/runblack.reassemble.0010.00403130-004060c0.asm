@@ -32,7 +32,7 @@
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x0056fef0
-.extern @GetPlayer__9GameThingFv@4
+.extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .extern _jmp_addr_0x005e6540
 .extern _jmp_addr_0x00602880
 .extern @__ct__9MapCoordsFRC7LHPoint@12
@@ -148,29 +148,29 @@
 .globl _jmp_addr_0x00405fa0
 .globl _jmp_addr_0x00405fb0
 .globl _jmp_addr_0x00405fc0
-.globl _CastAbode__9GameThingFv
-.globl _ResolveLoad__9GameThingFv
-.globl _GetTownArtifactValue__9GameThingFv
-.globl _GetNearestPathTo__9GameThingFRC9MapCoordsfi
-.globl _RemoveFootpath__9GameThingFP9GFootpath
-.globl _GetFootpathLink__9GameThingFv
-.globl _GetDrawImportance__9GameThingFv
-.globl _IsFootpathLink__9GameThingFv
-.globl _RemoveResource__9GameThingF13RESOURCE_TYPEUlP16GInterfaceStatusPb
-.globl _AddResource__9GameThingF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi
-.globl _CastMultiMapFixed__9GameThingFv
-.globl _DrawInHand__9GameThingFP16GInterfaceStatus
-.globl _AddFootpath__9GameThingFP9GFootpath
+.globl ?CastAbode@GameThing@@QAEPAVAbode@@XZ
+.globl ?ResolveLoad@GameThing@@QAEXXZ
+.globl ?GetTownArtifactValue@GameThing@@QAEMXZ
+.globl ?GetNearestPathTo@GameThing@@QAEIABUMapCoords@@MH@Z
+.globl ?RemoveFootpath@GameThing@@QAEIPAVGFootpath@@@Z
+.globl ?GetFootpathLink@GameThing@@QAEPAVGFootpathLink@@XZ
+.globl ?GetDrawImportance@GameThing@@QAEMXZ
+.globl ?IsFootpathLink@GameThing@@QAE_NXZ
+.globl ?RemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@PA_N@Z
+.globl ?AddResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@_NABUMapCoords@@H@Z
+.globl ?CastMultiMapFixed@GameThing@@QAEPAVMultiMapFixed@@XZ
+.globl ?DrawInHand@GameThing@@QAEXPAVGInterfaceStatus@@@Z
+.globl ?AddFootpath@GameThing@@QAEIPAVGFootpath@@@Z
 .globl _MakeFunctional__5AbodeFv
-.globl _IsFunctional__9GameThingFv
+.globl ?IsFunctional@GameThing@@QAE_NXZ
 .globl _CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords
-.globl _CanBecomeArtifact__9GameThingFv
-.globl _Get2DRadius__9GameThingFv
-.globl _GetRadius__9GameThingFv
+.globl ?CanBecomeArtifact@GameThing@@QAE_NXZ
+.globl ?Get2DRadius@GameThing@@QAEMXZ
+.globl ?GetRadius@GameThing@@QAEMXZ
 .globl ?GetMesh@Abode@@UBEHXZ
-.globl _GetResource__9GameThingF13RESOURCE_TYPE
+.globl ?GetResource@GameThing@@QAEIW4RESOURCE_TYPE@@@Z
 .globl ?InsertMapObject@Abode@@UAEXXZ
-.globl _GetNumberOfInstanceForGlobalList__9GameThingFv
+.globl ?GetNumberOfInstanceForGlobalList@GameThing@@QAEGXZ
 .globl ?GetArrivePos@GameThingWithPos@@QAEPAUMapCoords@@XZ
 .globl ?GetCreatureBeliefType@GameThingWithPos@@UAEIXZ
 .globl ?GetOrigin@GameThingWithPos@@UBEIXZ
@@ -184,32 +184,32 @@
 .globl ?IsAbode@GameThingWithPos@@UAE_NXZ
 .globl ?IsBuildingMaterial@GameThingWithPos@@UAE_NXZ
 .globl ?IsSuitableForCreatureAction@GameThingWithPos@@UAE_NXZ
-.globl ?CanBeEatenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeAttackedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeFrighteningToCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeHelpedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBePlayedWithByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeImpressedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeInspectedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBePoodUponByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeSleptNextToByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBePickedUpByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeStrokedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeSetOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeStompedOnByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeThrownByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBePutInAStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeDestroyedByStoning@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeExaminedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsBeingBuilt@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?NeedsRepair@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBePutInFoodPile@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBePutInWoodPile@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeBroughtBackToCitadel@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBePoodOn@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?IsBuildingWhichIsBeingBuilt@GameThingWithPos@@UAE_NPAUCreature@@@Z
-.globl ?CanBeKickedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z
+.globl ?CanBeEatenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeAttackedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeFrighteningToCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeHelpedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBePlayedWithByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeImpressedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeInspectedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBePoodUponByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeSleptNextToByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBePickedUpByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeStrokedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeSetOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeStompedOnByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeThrownByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBePutInAStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeDestroyedByStoning@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeExaminedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?NeedsRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBePutInFoodPile@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBePutInWoodPile@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeBroughtBackToCitadel@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBePoodOn@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?IsBuildingWhichIsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z
+.globl ?CanBeKickedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .globl ?GetCreatureMimicType@GameThingWithPos@@UBEIXZ
 .globl ?GetHowMuchCreatureWantsToLookAtMe@GameThingWithPos@@UAEMXZ
 .globl ?GetHeight@GameThingWithPos@@UBEMXZ
@@ -3544,7 +3544,7 @@ _jmp_addr_0x0040506c:    mov.s              eax, edi                            
 _jmp_addr_0x0040512a:    mov.s              eax, esi                                      // 0x0040512a    8bc6
                          pop                esi                                           // 0x0040512c    5e
                          ret                0x0004                                        // 0x0040512d    c20400
-_GetDrawImportance__9GameThingFv:
+?GetDrawImportance@GameThing@@QAEMXZ:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x00405130    d90598a38a00
                          ret                                                              // 0x00405136    c3
                          nop                                                              // 0x00405137    90
@@ -3556,7 +3556,7 @@ _GetDrawImportance__9GameThingFv:
                          nop                                                              // 0x0040513d    90
                          nop                                                              // 0x0040513e    90
                          nop                                                              // 0x0040513f    90
-_GetRadius__9GameThingFv:
+?GetRadius@GameThing@@QAEMXZ:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x00405140    d90598a38a00
                          ret                                                              // 0x00405146    c3
                          nop                                                              // 0x00405147    90
@@ -3568,7 +3568,7 @@ _GetRadius__9GameThingFv:
                          nop                                                              // 0x0040514d    90
                          nop                                                              // 0x0040514e    90
                          nop                                                              // 0x0040514f    90
-_Get2DRadius__9GameThingFv:
+?Get2DRadius@GameThing@@QAEMXZ:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x00405150    d90598a38a00
                          ret                                                              // 0x00405156    c3
                          nop                                                              // 0x00405157    90
@@ -3580,7 +3580,7 @@ _Get2DRadius__9GameThingFv:
                          nop                                                              // 0x0040515d    90
                          nop                                                              // 0x0040515e    90
                          nop                                                              // 0x0040515f    90
-_IsFootpathLink__9GameThingFv:
+?IsFootpathLink@GameThing@@QAE_NXZ:
                          xor.s              eax, eax                                      // 0x00405160    33c0
                          ret                                                              // 0x00405162    c3
                          nop                                                              // 0x00405163    90
@@ -3596,7 +3596,7 @@ _IsFootpathLink__9GameThingFv:
                          nop                                                              // 0x0040516d    90
                          nop                                                              // 0x0040516e    90
                          nop                                                              // 0x0040516f    90
-_GetFootpathLink__9GameThingFv:
+?GetFootpathLink@GameThing@@QAEPAVGFootpathLink@@XZ:
                          xor.s              eax, eax                                      // 0x00405170    33c0
                          ret                                                              // 0x00405172    c3
                          nop                                                              // 0x00405173    90
@@ -3612,7 +3612,7 @@ _GetFootpathLink__9GameThingFv:
                          nop                                                              // 0x0040517d    90
                          nop                                                              // 0x0040517e    90
                          nop                                                              // 0x0040517f    90
-_GetNearestPathTo__9GameThingFRC9MapCoordsfi:
+?GetNearestPathTo@GameThing@@QAEIABUMapCoords@@MH@Z:
                          xor.s              eax, eax                                      // 0x00405180    33c0
                          ret                0x000c                                        // 0x00405182    c20c00
                          nop                                                              // 0x00405185    90
@@ -3626,7 +3626,7 @@ _GetNearestPathTo__9GameThingFRC9MapCoordsfi:
                          nop                                                              // 0x0040518d    90
                          nop                                                              // 0x0040518e    90
                          nop                                                              // 0x0040518f    90
-_AddFootpath__9GameThingFP9GFootpath:
+?AddFootpath@GameThing@@QAEIPAVGFootpath@@@Z:
                          xor.s              eax, eax                                      // 0x00405190    33c0
                          ret                0x0004                                        // 0x00405192    c20400
                          nop                                                              // 0x00405195    90
@@ -3640,7 +3640,7 @@ _AddFootpath__9GameThingFP9GFootpath:
                          nop                                                              // 0x0040519d    90
                          nop                                                              // 0x0040519e    90
                          nop                                                              // 0x0040519f    90
-_RemoveFootpath__9GameThingFP9GFootpath:
+?RemoveFootpath@GameThing@@QAEIPAVGFootpath@@@Z:
                          xor.s              eax, eax                                      // 0x004051a0    33c0
                          ret                0x0004                                        // 0x004051a2    c20400
                          nop                                                              // 0x004051a5    90
@@ -3654,7 +3654,7 @@ _RemoveFootpath__9GameThingFP9GFootpath:
                          nop                                                              // 0x004051ad    90
                          nop                                                              // 0x004051ae    90
                          nop                                                              // 0x004051af    90
-_GetResource__9GameThingF13RESOURCE_TYPE:
+?GetResource@GameThing@@QAEIW4RESOURCE_TYPE@@@Z:
                          xor.s              eax, eax                                      // 0x004051b0    33c0
                          ret                0x0004                                        // 0x004051b2    c20400
                          nop                                                              // 0x004051b5    90
@@ -3668,7 +3668,7 @@ _GetResource__9GameThingF13RESOURCE_TYPE:
                          nop                                                              // 0x004051bd    90
                          nop                                                              // 0x004051be    90
                          nop                                                              // 0x004051bf    90
-_AddResource__9GameThingF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi:
+?AddResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@_NABUMapCoords@@H@Z:
                          xor.s              eax, eax                                      // 0x004051c0    33c0
                          ret                0x0018                                        // 0x004051c2    c21800
                          nop                                                              // 0x004051c5    90
@@ -3682,7 +3682,7 @@ _AddResource__9GameThingF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi:
                          nop                                                              // 0x004051cd    90
                          nop                                                              // 0x004051ce    90
                          nop                                                              // 0x004051cf    90
-_RemoveResource__9GameThingF13RESOURCE_TYPEUlP16GInterfaceStatusPb:
+?RemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@PA_N@Z:
                          xor.s              eax, eax                                      // 0x004051d0    33c0
                          ret                0x0010                                        // 0x004051d2    c21000
                          nop                                                              // 0x004051d5    90
@@ -3696,7 +3696,7 @@ _RemoveResource__9GameThingF13RESOURCE_TYPEUlP16GInterfaceStatusPb:
                          nop                                                              // 0x004051dd    90
                          nop                                                              // 0x004051de    90
                          nop                                                              // 0x004051df    90
-_CastAbode__9GameThingFv:
+?CastAbode@GameThing@@QAEPAVAbode@@XZ:
                          xor.s              eax, eax                                      // 0x004051e0    33c0
                          ret                                                              // 0x004051e2    c3
                          nop                                                              // 0x004051e3    90
@@ -3712,7 +3712,7 @@ _CastAbode__9GameThingFv:
                          nop                                                              // 0x004051ed    90
                          nop                                                              // 0x004051ee    90
                          nop                                                              // 0x004051ef    90
-_CastMultiMapFixed__9GameThingFv:
+?CastMultiMapFixed@GameThing@@QAEPAVMultiMapFixed@@XZ:
                          xor.s              eax, eax                                      // 0x004051f0    33c0
                          ret                                                              // 0x004051f2    c3
                          nop                                                              // 0x004051f3    90
@@ -3728,7 +3728,7 @@ _CastMultiMapFixed__9GameThingFv:
                          nop                                                              // 0x004051fd    90
                          nop                                                              // 0x004051fe    90
                          nop                                                              // 0x004051ff    90
-_GetNumberOfInstanceForGlobalList__9GameThingFv:
+?GetNumberOfInstanceForGlobalList@GameThing@@QAEGXZ:
                          mov                ax, 0x0001                                    // 0x00405200    66b80100
                          ret                                                              // 0x00405204    c3
                          nop                                                              // 0x00405205    90
@@ -3742,7 +3742,7 @@ _GetNumberOfInstanceForGlobalList__9GameThingFv:
                          nop                                                              // 0x0040520d    90
                          nop                                                              // 0x0040520e    90
                          nop                                                              // 0x0040520f    90
-_GetTownArtifactValue__9GameThingFv:
+?GetTownArtifactValue@GameThing@@QAEMXZ:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x00405210    d90598a38a00
                          ret                                                              // 0x00405216    c3
                          nop                                                              // 0x00405217    90
@@ -3754,7 +3754,7 @@ _GetTownArtifactValue__9GameThingFv:
                          nop                                                              // 0x0040521d    90
                          nop                                                              // 0x0040521e    90
                          nop                                                              // 0x0040521f    90
-_CanBecomeArtifact__9GameThingFv:
+?CanBecomeArtifact@GameThing@@QAE_NXZ:
                          xor.s              al, al                                        // 0x00405220    32c0
                          ret                                                              // 0x00405222    c3
                          nop                                                              // 0x00405223    90
@@ -3770,7 +3770,7 @@ _CanBecomeArtifact__9GameThingFv:
                          nop                                                              // 0x0040522d    90
                          nop                                                              // 0x0040522e    90
                          nop                                                              // 0x0040522f    90
-_DrawInHand__9GameThingFP16GInterfaceStatus:
+?DrawInHand@GameThing@@QAEXPAVGInterfaceStatus@@@Z:
                          ret                0x0004                                        // 0x00405230    c20400
                          nop                                                              // 0x00405233    90
                          nop                                                              // 0x00405234    90
@@ -3785,7 +3785,7 @@ _DrawInHand__9GameThingFP16GInterfaceStatus:
                          nop                                                              // 0x0040523d    90
                          nop                                                              // 0x0040523e    90
                          nop                                                              // 0x0040523f    90
-_IsFunctional__9GameThingFv:
+?IsFunctional@GameThing@@QAE_NXZ:
                          mov                eax, dword ptr [ecx]                          // 0x00405240    8b01
                          {disp8} jmp        dword ptr [eax + 0x2c]                        // 0x00405242    ff602c
                          nop                                                              // 0x00405245    90
@@ -3799,7 +3799,7 @@ _IsFunctional__9GameThingFv:
                          nop                                                              // 0x0040524d    90
                          nop                                                              // 0x0040524e    90
                          nop                                                              // 0x0040524f    90
-_ResolveLoad__9GameThingFv:
+?ResolveLoad@GameThing@@QAEXXZ:
                          ret                                                              // 0x00405250    c3
                          nop                                                              // 0x00405251    90
                          nop                                                              // 0x00405252    90
@@ -4004,7 +4004,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040533d    90
                          nop                                                              // 0x0040533e    90
                          nop                                                              // 0x0040533f    90
-?CanBeEatenByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeEatenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405340    33c0
                          ret                0x0004                                        // 0x00405342    c20400
                          nop                                                              // 0x00405345    90
@@ -4018,7 +4018,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040534d    90
                          nop                                                              // 0x0040534e    90
                          nop                                                              // 0x0040534f    90
-?CanBeAttackedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeAttackedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405350    33c0
                          ret                0x0004                                        // 0x00405352    c20400
                          nop                                                              // 0x00405355    90
@@ -4032,7 +4032,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040535d    90
                          nop                                                              // 0x0040535e    90
                          nop                                                              // 0x0040535f    90
-?CanBeFrighteningToCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeFrighteningToCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405360    33c0
                          ret                0x0004                                        // 0x00405362    c20400
                          nop                                                              // 0x00405365    90
@@ -4046,7 +4046,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040536d    90
                          nop                                                              // 0x0040536e    90
                          nop                                                              // 0x0040536f    90
-?CanBeHelpedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeHelpedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405370    33c0
                          ret                0x0004                                        // 0x00405372    c20400
                          nop                                                              // 0x00405375    90
@@ -4060,7 +4060,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040537d    90
                          nop                                                              // 0x0040537e    90
                          nop                                                              // 0x0040537f    90
-?CanBePlayedWithByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBePlayedWithByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405380    33c0
                          ret                0x0004                                        // 0x00405382    c20400
                          nop                                                              // 0x00405385    90
@@ -4074,7 +4074,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040538d    90
                          nop                                                              // 0x0040538e    90
                          nop                                                              // 0x0040538f    90
-?CanBeImpressedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeImpressedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405390    33c0
                          ret                0x0004                                        // 0x00405392    c20400
                          nop                                                              // 0x00405395    90
@@ -4088,7 +4088,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040539d    90
                          nop                                                              // 0x0040539e    90
                          nop                                                              // 0x0040539f    90
-?CanBeInspectedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeInspectedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004053a0    33c0
                          ret                0x0004                                        // 0x004053a2    c20400
                          nop                                                              // 0x004053a5    90
@@ -4102,7 +4102,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004053ad    90
                          nop                                                              // 0x004053ae    90
                          nop                                                              // 0x004053af    90
-?CanBePoodUponByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBePoodUponByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004053b0    33c0
                          ret                0x0004                                        // 0x004053b2    c20400
                          nop                                                              // 0x004053b5    90
@@ -4116,7 +4116,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004053bd    90
                          nop                                                              // 0x004053be    90
                          nop                                                              // 0x004053bf    90
-?CanBeSleptNextToByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeSleptNextToByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004053c0    33c0
                          ret                0x0004                                        // 0x004053c2    c20400
                          nop                                                              // 0x004053c5    90
@@ -4130,7 +4130,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004053cd    90
                          nop                                                              // 0x004053ce    90
                          nop                                                              // 0x004053cf    90
-?CanBePickedUpByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBePickedUpByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004053d0    33c0
                          ret                0x0004                                        // 0x004053d2    c20400
                          nop                                                              // 0x004053d5    90
@@ -4144,7 +4144,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004053dd    90
                          nop                                                              // 0x004053de    90
                          nop                                                              // 0x004053df    90
-?CanBeStrokedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeStrokedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004053e0    33c0
                          ret                0x0004                                        // 0x004053e2    c20400
                          nop                                                              // 0x004053e5    90
@@ -4158,7 +4158,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004053ed    90
                          nop                                                              // 0x004053ee    90
                          nop                                                              // 0x004053ef    90
-?CanBeSetOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeSetOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004053f0    33c0
                          ret                0x0004                                        // 0x004053f2    c20400
                          nop                                                              // 0x004053f5    90
@@ -4172,7 +4172,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004053fd    90
                          nop                                                              // 0x004053fe    90
                          nop                                                              // 0x004053ff    90
-?CanBeStompedOnByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeStompedOnByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405400    33c0
                          ret                0x0004                                        // 0x00405402    c20400
                          nop                                                              // 0x00405405    90
@@ -4186,7 +4186,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040540d    90
                          nop                                                              // 0x0040540e    90
                          nop                                                              // 0x0040540f    90
-?CanBeThrownByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeThrownByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405410    33c0
                          ret                0x0004                                        // 0x00405412    c20400
                          nop                                                              // 0x00405415    90
@@ -4200,7 +4200,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040541d    90
                          nop                                                              // 0x0040541e    90
                          nop                                                              // 0x0040541f    90
-?CanBePutInAStoragePit@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBePutInAStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405420    33c0
                          ret                0x0004                                        // 0x00405422    c20400
                          nop                                                              // 0x00405425    90
@@ -4214,7 +4214,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040542d    90
                          nop                                                              // 0x0040542e    90
                          nop                                                              // 0x0040542f    90
-?CanBeDestroyedByStoning@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeDestroyedByStoning@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405430    33c0
                          ret                0x0004                                        // 0x00405432    c20400
                          nop                                                              // 0x00405435    90
@@ -4228,7 +4228,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040543d    90
                          nop                                                              // 0x0040543e    90
                          nop                                                              // 0x0040543f    90
-?CanBeExaminedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeExaminedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405440    33c0
                          ret                0x0004                                        // 0x00405442    c20400
                          nop                                                              // 0x00405445    90
@@ -4242,7 +4242,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040544d    90
                          nop                                                              // 0x0040544e    90
                          nop                                                              // 0x0040544f    90
-?IsBeingBuilt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405450    33c0
                          ret                0x0004                                        // 0x00405452    c20400
                          nop                                                              // 0x00405455    90
@@ -4256,7 +4256,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040545d    90
                          nop                                                              // 0x0040545e    90
                          nop                                                              // 0x0040545f    90
-?NeedsRepair@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?NeedsRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405460    33c0
                          ret                0x0004                                        // 0x00405462    c20400
                          nop                                                              // 0x00405465    90
@@ -4270,7 +4270,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040546d    90
                          nop                                                              // 0x0040546e    90
                          nop                                                              // 0x0040546f    90
-?IsOnFire@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405470    33c0
                          ret                0x0004                                        // 0x00405472    c20400
                          nop                                                              // 0x00405475    90
@@ -4284,7 +4284,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040547d    90
                          nop                                                              // 0x0040547e    90
                          nop                                                              // 0x0040547f    90
-?CanBePutInFoodPile@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBePutInFoodPile@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405480    33c0
                          ret                0x0004                                        // 0x00405482    c20400
                          nop                                                              // 0x00405485    90
@@ -4298,7 +4298,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040548d    90
                          nop                                                              // 0x0040548e    90
                          nop                                                              // 0x0040548f    90
-?CanBePutInWoodPile@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBePutInWoodPile@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00405490    33c0
                          ret                0x0004                                        // 0x00405492    c20400
                          nop                                                              // 0x00405495    90
@@ -4312,7 +4312,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x0040549d    90
                          nop                                                              // 0x0040549e    90
                          nop                                                              // 0x0040549f    90
-?CanBeBroughtBackToCitadel@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeBroughtBackToCitadel@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004054a0    33c0
                          ret                0x0004                                        // 0x004054a2    c20400
                          nop                                                              // 0x004054a5    90
@@ -4326,7 +4326,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004054ad    90
                          nop                                                              // 0x004054ae    90
                          nop                                                              // 0x004054af    90
-?CanBePoodOn@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBePoodOn@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004054b0    33c0
                          ret                0x0004                                        // 0x004054b2    c20400
                          nop                                                              // 0x004054b5    90
@@ -4340,7 +4340,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004054bd    90
                          nop                                                              // 0x004054be    90
                          nop                                                              // 0x004054bf    90
-?IsBuildingWhichIsBeingBuilt@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?IsBuildingWhichIsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004054c0    33c0
                          ret                0x0004                                        // 0x004054c2    c20400
                          nop                                                              // 0x004054c5    90
@@ -4354,7 +4354,7 @@ _ResolveLoad__9GameThingFv:
                          nop                                                              // 0x004054cd    90
                          nop                                                              // 0x004054ce    90
                          nop                                                              // 0x004054cf    90
-?CanBeKickedByCreature@GameThingWithPos@@UAE_NPAUCreature@@@Z:
+?CanBeKickedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x004054d0    33c0
                          ret                0x0004                                        // 0x004054d2    c20400
                          nop                                                              // 0x004054d5    90
@@ -5557,7 +5557,7 @@ _jmp_addr_0x00405f6c:    xor.s              eax, eax                            
                          pop                esi                                           // 0x00405f8a    5e
                          ret                                                              // 0x00405f8b    c3
 _jmp_addr_0x00405f8c:    mov.s              ecx, esi                                      // 0x00405f8c    8bce
-                         call               @GetPlayer__9GameThingFv@4                    // 0x00405f8e    e89da11600
+                         call               ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ       // 0x00405f8e    e89da11600
                          pop                esi                                           // 0x00405f93    5e
                          ret                                                              // 0x00405f94    c3
                          nop                                                              // 0x00405f95    90

@@ -96,8 +96,8 @@
 .extern _jmp_addr_0x0056fe70
 .extern ?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z
 .extern _jmp_addr_0x0056fef0
-.extern @GetPlayer__9GameThingFv@4
-.extern @SetPlayer__9GameThingFP7GPlayer@12
+.extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
+.extern ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
