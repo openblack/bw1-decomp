@@ -85,16 +85,16 @@
 .globl @ProcessDead__9GameThingFi@12
 .globl _ProcessDeadList__9GameThingFi@4
 .globl ?ToBeDeleted@GameThing@@UAEXH@Z
-.globl @Save__9GameThingFR10GameOSFile@12
-.globl @Load__9GameThingFR10GameOSFile@12
+.globl ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
+.globl ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .globl @GetSaveType__9GameThingFv@4
 .globl ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .globl ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .globl _jmp_addr_0x0056fe70
 .globl ?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z
 .globl _jmp_addr_0x0056fef0
-.globl @GetPlayer__9GameThingFv@4
-.globl @SetPlayer__9GameThingFP7GPlayer@12
+.globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
+.globl ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .globl @UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc@17
 .globl ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .globl @Load__16GameThingWithPosFR10GameOSFile@12
@@ -120,18 +120,16 @@
 .globl ___dt__14SetupMP3ButtonFb
 .globl ?GetSaveType@GameThing@@UAEIXZ
 .globl _Load__16GameThingWithPosFR10GameOSFile
-.globl _GetPlayer__9GameThingFv
-.globl @SaveExtraData__9GameThingFR10GameOSFile@12
-.globl _UseFootpathIfNecessary__9GameThingFP6LivingRC9MapCoordsUc
-.globl _SetPlayer__9GameThingFP7GPlayer
-.globl _GetTown__9GameThingFv
+.globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
+.globl ?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z
+.globl ?UseFootpathIfNecessary@GameThing@@QAEXPAVLiving@@ABUMapCoords@@E@Z
+.globl ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
+.globl ?GetTown@GameThing@@QAEPAVTown@@XZ
 .globl _HitTest__20SetupStaticTextNoHitFii
-.globl @UpdateSpellInfo__9GameThingFP5SpellP15PSysProcessInfo@16
-.globl @JustGetResource__9GameThingF13RESOURCE_TYPEUlPb@16
-.globl _JustRemoveResource__9GameThingF13RESOURCE_TYPEUlPb
-.globl _Load__9GameThingFR10GameOSFile
-.globl _Save__9GameThingFR10GameOSFile
-.globl _JustAddResource__9GameThingF13RESOURCE_TYPEUlb
+.globl ?UpdateSpellInfo@GameThing@@QAEXPAVSpell@@PAVPSysProcessInfo@@@Z
+.globl ?JustGetResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
+.globl ?JustRemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
+.globl ?JustAddResource@GameThing@@QAEIW4RESOURCE_TYPE@@K_N@Z
 .globl ?MaintainSpell@GameThing@@UAEXIM@Z
 .globl ??1GameThing@@UAE@XZ
 .globl ?GetSaveType@GameThingWithPos@@QAEKXZ
@@ -1310,8 +1308,8 @@ _jmp_addr_0x0056fbce:    mov                eax, dword ptr [edx]                
                          {disp8} mov        dword ptr [edx + 0x04], eax                   // 0x0056fbd9    894204
 _jmp_addr_0x0056fbdc:    ret                0x0004                                        // 0x0056fbdc    c20400
                          nop                                                              // 0x0056fbdf    90
-_Save__9GameThingFR10GameOSFile:
-@Save__9GameThingFR10GameOSFile@12:    push               ecx                                           // 0x0056fbe0    51
+?Save@GameThing@@QAEIAAVGGameOSFile@@@Z:
+                         push               ecx                                           // 0x0056fbe0    51
                          push               esi                                           // 0x0056fbe1    56
                          push               edi                                           // 0x0056fbe2    57
                          mov.s              edi, ecx                                      // 0x0056fbe3    8bf9
@@ -1409,8 +1407,9 @@ _jmp_addr_0x0056fcda:    pop                edi                                 
                          nop                                                              // 0x0056fced    90
                          nop                                                              // 0x0056fcee    90
                          nop                                                              // 0x0056fcef    90
-_Load__9GameThingFR10GameOSFile:
-@Load__9GameThingFR10GameOSFile@12:    push               ebx                                           // 0x0056fcf0    53
+
+?Load@GameThing@@QAEIAAVGGameOSFile@@@Z:
+                         push               ebx                                           // 0x0056fcf0    53
                          push               esi                                           // 0x0056fcf1    56
                          push               edi                                           // 0x0056fcf2    57
                          push               0x1                                           // 0x0056fcf3    6a01
@@ -1482,7 +1481,7 @@ _jmp_addr_0x0056fd81:    pop                edi                                 
                          nop                                                              // 0x0056fd9d    90
                          nop                                                              // 0x0056fd9e    90
                          nop                                                              // 0x0056fd9f    90
-@SaveExtraData__9GameThingFR10GameOSFile@12:
+?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z:
                          push               ecx                                           // 0x0056fda0    51
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0056fda1    a190c9be00
                          test               eax, eax                                      // 0x0056fda6    85c0
@@ -1631,7 +1630,7 @@ _jmp_addr_0x0056fe9c:    {disp32} fld       dword ptr [_rdata_float1p0]         
                          nop                                                              // 0x0056fedd    90
                          nop                                                              // 0x0056fede    90
                          nop                                                              // 0x0056fedf    90
-@UpdateSpellInfo__9GameThingFP5SpellP15PSysProcessInfo@16:
+?UpdateSpellInfo@GameThing@@QAEXPAVSpell@@PAVPSysProcessInfo@@@Z:
                          ret                0x0008                                        // 0x0056fee0    c20800
                          nop                                                              // 0x0056fee3    90
                          nop                                                              // 0x0056fee4    90
@@ -1661,7 +1660,7 @@ _jmp_addr_0x0056ff06:    xor.s              eax, eax                            
                          nop                                                              // 0x0056ff0d    90
                          nop                                                              // 0x0056ff0e    90
                          nop                                                              // 0x0056ff0f    90
-_GetTown__9GameThingFv:
+?GetTown@GameThing@@QAEPAVTown@@XZ:
                          xor.s              eax, eax                                      // 0x0056ff10    33c0
                          ret                                                              // 0x0056ff12    c3
                          nop                                                              // 0x0056ff13    90
@@ -1880,8 +1879,9 @@ _jmp_addr_0x00570120:    xor.s              eax, eax                            
                          nop                                                              // 0x0057012d    90
                          nop                                                              // 0x0057012e    90
                          nop                                                              // 0x0057012f    90
-_GetPlayer__9GameThingFv:
-@GetPlayer__9GameThingFv@4:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00570130    8b0d5c19d000
+
+?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ:
+                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00570130    8b0d5c19d000
                          xor.s              eax, eax                                      // 0x00570136    33c0
                          {disp32} mov       al, byte ptr [ecx + 0x00205a5b]               // 0x00570138    8a815b5a2000
                          lea                edx, dword ptr [eax + eax * 0x4]              // 0x0057013e    8d1480
@@ -1891,8 +1891,9 @@ _GetPlayer__9GameThingFv:
                          {disp8} lea        eax, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x0057014a    8d440818
                          ret                                                              // 0x0057014e    c3
                          nop                                                              // 0x0057014f    90
-_SetPlayer__9GameThingFP7GPlayer:
-@SetPlayer__9GameThingFP7GPlayer@12:    ret                0x0004                                        // 0x00570150    c20400
+
+?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z:
+                         ret                0x0004                                        // 0x00570150    c20400
                          nop                                                              // 0x00570153    90
                          nop                                                              // 0x00570154    90
                          nop                                                              // 0x00570155    90
@@ -2185,7 +2186,7 @@ _jmp_addr_0x005701ed:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0057032d    90
                          nop                                                              // 0x0057032e    90
                          nop                                                              // 0x0057032f    90
-_UseFootpathIfNecessary__9GameThingFP6LivingRC9MapCoordsUc:
+?UseFootpathIfNecessary@GameThing@@QAEXPAVLiving@@ABUMapCoords@@E@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00570330    8b44240c
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00570334    8b4c2408
                          push               eax                                           // 0x00570338    50
@@ -2296,7 +2297,7 @@ _jmp_addr_0x0057037e:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x005703f2    8b74240c
                          mov.s              ebx, ecx                                      // 0x005703f6    8bd9
                          push               esi                                           // 0x005703f8    56
-                         call               @Save__9GameThingFR10GameOSFile@12            // 0x005703f9    e8e2f7ffff
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x005703f9    e8e2f7ffff
                          test               eax, eax                                      // 0x005703fe    85c0
                          {disp32} je        _jmp_addr_0x0057048a                          // 0x00570400    0f8484000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x00570406    a190c9be00
@@ -2366,7 +2367,7 @@ _Load__16GameThingWithPosFR10GameOSFile:
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x005704a2    8b7c240c
                          mov.s              ebx, ecx                                      // 0x005704a6    8bd9
                          push               edi                                           // 0x005704a8    57
-                         call               @Load__9GameThingFR10GameOSFile@12            // 0x005704a9    e842f8ffff
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x005704a9    e842f8ffff
                          test               eax, eax                                      // 0x005704ae    85c0
                          {disp32} je        _jmp_addr_0x00570550                          // 0x005704b0    0f849a000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x005704b6    a194c9be00
@@ -2542,7 +2543,7 @@ _jmp_addr_0x00570550:    pop                edi                                 
                          nop                                                              // 0x005705ed    90
                          nop                                                              // 0x005705ee    90
                          nop                                                              // 0x005705ef    90
-_JustAddResource__9GameThingF13RESOURCE_TYPEUlb:
+?JustAddResource@GameThing@@QAEIW4RESOURCE_TYPE@@K_N@Z:
                          xor.s              eax, eax                                      // 0x005705f0    33c0
                          ret                0x000c                                        // 0x005705f2    c20c00
                          nop                                                              // 0x005705f5    90
@@ -2556,7 +2557,7 @@ _JustAddResource__9GameThingF13RESOURCE_TYPEUlb:
                          nop                                                              // 0x005705fd    90
                          nop                                                              // 0x005705fe    90
                          nop                                                              // 0x005705ff    90
-_JustRemoveResource__9GameThingF13RESOURCE_TYPEUlPb:
+?JustRemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z:
                          xor.s              eax, eax                                      // 0x00570600    33c0
                          ret                0x000c                                        // 0x00570602    c20c00
                          nop                                                              // 0x00570605    90
@@ -2570,7 +2571,7 @@ _JustRemoveResource__9GameThingF13RESOURCE_TYPEUlPb:
                          nop                                                              // 0x0057060d    90
                          nop                                                              // 0x0057060e    90
                          nop                                                              // 0x0057060f    90
-@JustGetResource__9GameThingF13RESOURCE_TYPEUlPb@16:
+?JustGetResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z:
                          xor.s              eax, eax                                      // 0x00570610    33c0
                          ret                0x000c                                        // 0x00570612    c20c00
                          nop                                                              // 0x00570615    90

@@ -120,8 +120,8 @@
 .extern _jmp_addr_0x0056fa70
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
-.extern @Save__9GameThingFR10GameOSFile@12
-.extern @Load__9GameThingFR10GameOSFile@12
+.extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x00597400
 .extern _jmp_addr_0x00597ed0
@@ -8274,7 +8274,7 @@ _jmp_addr_0x006e497c:    pop                edi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x14]                   // 0x006e4995    8b742414
                          mov.s              ebx, ecx                                      // 0x006e4999    8bd9
                          push               esi                                           // 0x006e499b    56
-                         call               @Save__9GameThingFR10GameOSFile@12            // 0x006e499c    e83fb2e8ff
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x006e499c    e83fb2e8ff
                          test               eax, eax                                      // 0x006e49a1    85c0
                          {disp32} je        _jmp_addr_0x006e4b96                          // 0x006e49a3    0f84ed010000
                          {disp8} mov        eax, dword ptr [ebx + 0x14]                   // 0x006e49a9    8b4314
@@ -8445,7 +8445,7 @@ _jmp_addr_0x006e4b96:    pop                esi                                 
                          push               edi                                           // 0x006e4ba6    57
                          mov.s              edi, ecx                                      // 0x006e4ba7    8bf9
                          push               esi                                           // 0x006e4ba9    56
-                         call               @Load__9GameThingFR10GameOSFile@12            // 0x006e4baa    e841b1e8ff
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x006e4baa    e841b1e8ff
                          test               eax, eax                                      // 0x006e4baf    85c0
                          {disp32} je        _jmp_addr_0x006e4d64                          // 0x006e4bb1    0f84ad010000
                          push               ebx                                           // 0x006e4bb7    53

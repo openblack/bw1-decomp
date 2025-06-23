@@ -166,7 +166,7 @@ struct GFootpathLink * __fastcall GetFootpathLink__13MultiMapFixedFv(struct Game
 // win1.41 0052ee10 mac 100df0c0 MultiMapFixed::AddFootpath(GFootpath *)
 uint32_t __fastcall AddFootpath__13MultiMapFixedFP9GFootpath(struct GameThing* this, const void* edx, struct GFootpath* footpath);
 // win1.41 0052eeb0 mac 100defc0 MultiMapFixed::GetNearestPathTo(MapCoords const &, float, int)
-uint32_t __fastcall GetNearestPathTo__13MultiMapFixedFRC9MapCoordsfi(struct GameThing* this, const void* edx, struct MapCoords* param_1, float param_2, int param_3) asm("?GetNearestPathTo@MultiMapFixed@@UAEIPAUMapCoords@@MH@Z");
+uint32_t __fastcall GetNearestPathTo__13MultiMapFixedFRC9MapCoordsfi(struct GameThing* this, const void* edx, const struct MapCoords* param_1, float param_2, int param_3) asm("?GetNearestPathTo@MultiMapFixed@@UAEIPAUMapCoords@@MH@Z");
 // win1.41 0052eec0 mac 1009b530 MultiMapFixed::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
 void __fastcall UseFootpathIfNecessary__13MultiMapFixedFP6LivingRC9MapCoordsUc(struct GameThing* this, const void* edx, struct Living* param_1, const struct MapCoords* param_2, unsigned char param_3) asm("?UseFootpathIfNecessary@MultiMapFixed@@UAEXPAVLiving@@PBUMapCoords@@E@Z");
 // win1.41 0052ee80 mac 100df010 MultiMapFixed::RemoveFootpath(GFootpath *)

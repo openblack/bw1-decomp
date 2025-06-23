@@ -40,7 +40,7 @@
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x0056fef0
-.extern @GetPlayer__9GameThingFv@4
+.extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .extern @MoveToPos__6LivingFv@4
 .extern _jmp_addr_0x005ec2a0
 .extern @IsReadyForNewAnimation__6LivingFUl@12
@@ -11301,7 +11301,7 @@ _jmp_addr_0x0041fd30:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          push               0x0                                           // 0x0041fd49    6a00
                          mov.s              ecx, esi                                      // 0x0041fd4b    8bce
                          mov                dword ptr [esi], 0x008bd068                   // 0x0041fd4d    c70668d08b00
-                         call               @GetPlayer__9GameThingFv@4                    // 0x0041fd53    e8d8031500
+                         call               ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ       // 0x0041fd53    e8d8031500
                          push               eax                                           // 0x0041fd58    50
                          push               0x1c                                          // 0x0041fd59    6a1c
                          push               esi                                           // 0x0041fd5b    56

@@ -48,8 +48,8 @@
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
-.extern @Save__9GameThingFR10GameOSFile@12
-.extern @Load__9GameThingFR10GameOSFile@12
+.extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x005990a0
 .extern _jmp_addr_0x005990c0
@@ -26704,7 +26704,7 @@ _jmp_addr_0x0043c830:    push               esi                                 
                          push               edi                                                  // 0x0043c835    57
                          mov.s              edi, ecx                                             // 0x0043c836    8bf9
                          push               esi                                                  // 0x0043c838    56
-                         call               @Save__9GameThingFR10GameOSFile@12                   // 0x0043c839    e8a2331300
+                         call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z              // 0x0043c839    e8a2331300
                          test               eax, eax                                             // 0x0043c83e    85c0
                          {disp32} je        _jmp_addr_0x0043cabe                                 // 0x0043c840    0f8478020000
                          {disp8} mov        eax, dword ptr [edi + 0x14]                          // 0x0043c846    8b4714
@@ -26928,7 +26928,7 @@ _jmp_addr_0x0043cad0:    push               ecx                                 
                          {disp8} mov        esi, dword ptr [esp + 0x10]                          // 0x0043cad3    8b742410
                          mov.s              ebp, ecx                                             // 0x0043cad7    8be9
                          push               esi                                                  // 0x0043cad9    56
-                         call               @Load__9GameThingFR10GameOSFile@12                   // 0x0043cada    e811321300
+                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z              // 0x0043cada    e811321300
                          test               eax, eax                                             // 0x0043cadf    85c0
                          {disp32} je        _jmp_addr_0x0043cda2                                 // 0x0043cae1    0f84bb020000
                          push               ebx                                                  // 0x0043cae7    53
