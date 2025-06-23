@@ -2,12 +2,10 @@
 
 #include "Object.h"
 
+__attribute__((XOR32rr_REV))
 uint32_t __fastcall GetMesh__11GObjectInfoCF10TRIBE_TYPE(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe)
 {
-    __asm__("xor.s eax, eax"); // 0x00401290    33c0
-    __asm__("ret   0x0004");   // 0x00401292    c20400
-
-    __builtin_unreachable();
+    return 0;
 }
 
 enum ALIGNMENT_TYPE __fastcall GetAlignmentType__11GObjectInfoCFv(const struct GObjectInfo* this)

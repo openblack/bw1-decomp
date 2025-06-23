@@ -33,15 +33,10 @@ void __fastcall ToBeDeleted__4BaseFi(struct Base* this, const void* edx, int par
   // this->vftable->Delete(this, edx, param_1);
 }
 
+__attribute__((XOR32rr_REV))
 int __fastcall Get3DSoundPos__4BaseFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1)
 {
-  //return 0;
-
-  asm(
-    "xor.s            eax, eax\n"                          // 0x004011e0    33c0
-    "ret              0x0004\n"                            // 0x004011e2    c20400
-  );
-  __builtin_unreachable();
+  return 0;
 }
 
 void __fastcall CleanUpForSerialisation__4BaseFv(struct Base* this)
