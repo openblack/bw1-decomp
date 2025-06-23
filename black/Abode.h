@@ -95,7 +95,7 @@ static_assert(sizeof(struct Abode) == 0xc4, "Data type is of wrong size");
 extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Abode asm("??_R4Abode@@6B@");
 
 // win1.41 008a9a64 mac 10734814 Abode::`vftable'
-extern const struct AbodeVftable __vt__5Abode asm("??_7GAbode@@6B@");
+extern const struct AbodeVftable __vt__5Abode asm("??_7Abode@@6B@");
 
 // Static methods
 
@@ -143,7 +143,7 @@ void __fastcall ToBeDeleted__5AbodeFi(struct Base* this, const void* edx, int pa
 // win1.41 00405f70 mac 1006d070 Abode::GetPlayer(void)
 struct GPlayer * __fastcall GetPlayer__5AbodeFv(struct GameThing* this) asm("?GetPlayer@Abode@@UAEPAVGPlayer@@XZ");
 // win1.41 00401730 mac 1004fe30 Abode::GetTown(void)
-struct Town * __fastcall GetTown__5AbodeFv(const struct GameThing* this) asm("?GetTown@Abode@@UAEPAVTown@@XZ");
+struct Town * __fastcall GetTown__5AbodeFv(struct GameThing* this) asm("?GetTown@Abode@@UAEPAVTown@@XZ");
 // win1.41 00404d40 mac 10000f50 Abode::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
 uint32_t __fastcall JustAddResource__5AbodeF13RESOURCE_TYPEUlb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, bool param_3) asm("?JustAddResource@Abode@@UAEIE@Z");
 // win1.41 00404d60 mac 1034cdd0 Abode::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
