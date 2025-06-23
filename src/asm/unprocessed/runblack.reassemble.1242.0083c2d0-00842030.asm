@@ -3355,7 +3355,7 @@ _jmp_addr_0x0083e979:    {disp8} fld        dword ptr [edi + 0x34]              
                          {disp8} fild       dword ptr [esp + 0x14]                         // 0x0083e987    db442414
                          {disp8} fsubr      dword ptr [edi + 0x34]                         // 0x0083e98b    d86f34
                          {disp8} fstp       dword ptr [edi + 0x34]                         // 0x0083e98e    d95f34
-                         {disp32} fild      dword ptr [data_bytes + 0x272134]              // 0x0083e991    db053481c300
+                         {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2MA]        // 0x0083e991    db053481c300
                          {disp32} fmul      dword ptr [rdata_bytes + 0xfaafc]              // 0x0083e997    d80dfc3a9a00
                          {disp8} fadd       dword ptr [edi + 0x64]                         // 0x0083e99d    d84764
                          {disp8} fstp       dword ptr [esp + 0x54]                         // 0x0083e9a0    d95c2454

@@ -57,7 +57,11 @@ struct GAbodeInfo
 };
 static_assert(sizeof(struct GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* const __vt__10GAbodeInfo = (struct GObjectInfoVftable* const)0x008a99f8;
+// win1.41 008a99f4 mac 107346c4 GAbodeInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GAbodeInfo asm("??_R4GAbodeInfo@@6B@");
+
+// win1.41 008a99f8 mac 107346cc GAbodeInfo::`vftable'
+extern const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbodeInfo@@6B@");
 
 // Static methods
 
@@ -72,5 +76,21 @@ struct GAbodeInfo* __cdecl Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER(enum TR
 bool __fastcall IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town(const struct GAbodeInfo* this, const void* edx, const struct MapCoords* coords, float param_2, float param_3, struct Town* town);
 // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)
 void __fastcall LoadBinary__10GAbodeInfoFP6LHFile(struct GAbodeInfo* this, const void* edx, struct LHFile* file);
+
+// Override methods
+
+// win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(void)
+void __fastcall __dt__10GAbodeInfoFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1GAbodeInfo@@UAE@XZ");
+// win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
+struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GAbodeInfo@@UAEPAVGBaseInfo@@AAK@Z");
+// win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
+uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GAbodeInfo@@UBE?AW4MeshId@@XZ");
+// win1.41 00401250 mac 106fde70 GAbodeInfo::GetAbodeType() const
+enum ABODE_TYPE __fastcall GetAbodeType__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm ("?GetAbodeType@GAbodeInfo@@UBE?AW4ABODE_TYPE@@XZ");
+// win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
+enum ABODE_NUMBER __fastcall GetAbodeNumber__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm ("?GetAbodeNumber@GAbodeInfo@@UBE?AW4ABODE_NUMBER@@XZ");
+
+void __cdecl dynamic_initializer_for_AbodeInfos(void) asm("??__EAbodeInfos@@YAXXZ");
+extern void __cdecl _register_global_dtor_for_AbodeInfos(void);
 
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */

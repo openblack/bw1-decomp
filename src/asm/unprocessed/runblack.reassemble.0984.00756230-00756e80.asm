@@ -14,9 +14,9 @@
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fe00
+.extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x0056fe70
-.extern _jmp_addr_0x005703f0
+.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern @Load__16GameThingWithPosFR10GameOSFile@12
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern @GetFinalDestPos__6LivingFP9MapCoords@12
@@ -26,7 +26,7 @@
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @InsertMapObject__6ObjectFv@4
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
-.extern _jmp_addr_0x006385e0
+.extern ?ThrowObjectFromHand@Object@@UAEIPAVGInterfaceStatus@@H@Z
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0064d750
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
@@ -43,7 +43,7 @@
 .extern _jmp_addr_0x00756000
 .extern _jmp_addr_0x00757180
 .extern @MakeChildOrphaned__8VillagerFP8Villager@12
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 
 .globl _jmp_addr_0x00756240
@@ -785,7 +785,7 @@ _jmp_addr_0x00756865:    {disp8} mov        dword ptr [esi + 0x2c], edi         
 _jmp_addr_0x0075688e:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0075688e    8b442408
                          push               eax                                           // 0x00756892    50
                          mov.s              ecx, esi                                      // 0x00756893    8bce
-                         call               _jmp_addr_0x0056fe00                          // 0x00756895    e86695e1ff
+                         call               ?ToBeDeleted@GameThingWithPos@@UAEXH@Z        // 0x00756895    e86695e1ff
                          pop                esi                                           // 0x0075689a    5e
                          ret                0x0004                                        // 0x0075689b    c20400
                          nop                                                              // 0x0075689e    90
@@ -826,7 +826,7 @@ _jmp_addr_0x007568d2:    pop                edi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x007568e2    8b7c240c
                          mov.s              esi, ecx                                      // 0x007568e6    8bf1
                          push               edi                                           // 0x007568e8    57
-                         call               _jmp_addr_0x005703f0                          // 0x007568e9    e8029be1ff
+                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x007568e9    e8029be1ff
                          test               eax, eax                                      // 0x007568ee    85c0
                          {disp8} je         _jmp_addr_0x00756912                          // 0x007568f0    7420
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x007568f2    8b4628
@@ -1101,7 +1101,7 @@ _jmp_addr_0x00756b14:    push               0x0                                 
 _jmp_addr_0x00756b21:    push               edi                                           // 0x00756b21    57
                          push               ebx                                           // 0x00756b22    53
                          mov.s              ecx, esi                                      // 0x00756b23    8bce
-                         call               _jmp_addr_0x006385e0                          // 0x00756b25    e8b61aeeff
+                         call               ?ThrowObjectFromHand@Object@@UAEIPAVGInterfaceStatus@@H@Z                          // 0x00756b25    e8b61aeeff
                          pop                edi                                           // 0x00756b2a    5f
                          pop                esi                                           // 0x00756b2b    5e
                          pop                ebx                                           // 0x00756b2c    5b
@@ -1250,7 +1250,7 @@ _jmp_addr_0x00756c94:    {disp32} jmp       _jmp_addr_0x00756ca0                
                          nop                                                              // 0x00756c9e    90
                          nop                                                              // 0x00756c9f    90
 _jmp_addr_0x00756ca0:    push               0x00407870                                    // 0x00756ca0    6870784000
-                         call               _jmp_addr_0x007c5791                          // 0x00756ca5    e8e7ea0600
+                         call               _atexit@4                                     // 0x00756ca5    e8e7ea0600
                          pop                ecx                                           // 0x00756caa    59
                          ret                                                              // 0x00756cab    c3
                          nop                                                              // 0x00756cac    90

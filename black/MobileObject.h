@@ -58,8 +58,6 @@ struct MobileObject* __fastcall __ct__12MobileObjectFRC9MapCoordsPC17GMobileObje
 void __fastcall InsertMapObjectToCell__12MobileObjectFP7MapCell(struct MobileObject* this, const void* edx, struct MapCell* cell);
 // win1.41 00607265 mac 103bd050 MobileObject::RemoveMapObjectFromCell(MapCell *)
 void __fastcall RemoveMapObjectFromCell__12MobileObjectFP7MapCell(struct MobileObject* this, const void* edx, struct MapCell* cell);
-// win1.41 00404aa0 mac 100ad960 MobileObject::GetMesh(void) const
-void* __fastcall GetMesh__12MobileObjectCFv(struct MobileObject* this);
 
 DECLARE_LH_LINKED_LIST(MobileObject);
 

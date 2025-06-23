@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x00548990
 .extern  ___dl__FPv
 .extern _Exists__8LHOSFileFPc
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c6425
 .extern _wcslen
@@ -240,7 +240,7 @@ _jmp_addr_0x00549af4:    {disp32} jmp      _jmp_addr_0x00549b00                 
                          nop                                                             // 0x00549afe    90
                          nop                                                             // 0x00549aff    90
 _jmp_addr_0x00549b00:    push              0x00407870                                    // 0x00549b00    6870784000
-                         call              _jmp_addr_0x007c5791                          // 0x00549b05    e887bc2700
+                         call              _atexit@4                                     // 0x00549b05    e887bc2700
                          pop               ecx                                           // 0x00549b0a    59
                          ret                                                             // 0x00549b0b    c3
                          nop                                                             // 0x00549b0c    90

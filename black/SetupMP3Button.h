@@ -31,6 +31,6 @@ struct SetupMP3Button* __fastcall __ct__14SetupMP3ButtonFiiiiiPwiUi(struct Setup
 // win1.41 0040cda0 mac 10426080 SetupMP3Button::Draw(bool, bool)
 void __fastcall Draw__14SetupMP3ButtonFbb(struct SetupMP3Button* this, const void* edx, bool hovered, bool selected);
 // win1.41 00571f30 mac 103547d0 SetupMP3Button::~SetupMP3Button(void)
-struct SetupMP3Button* __fastcall __dt__14SetupMP3ButtonFb(struct SetupMP3Button* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupMP3ButtonFb(struct SetupMP3Button* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_MP3_BUTTON_INCLUDED_H */

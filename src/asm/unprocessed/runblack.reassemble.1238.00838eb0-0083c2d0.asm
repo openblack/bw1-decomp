@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x007bda90
 .extern @Close__6LHFileFv@4
 .extern @GetSegment__6LHFileFPcP9LHSegmenti@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _malloc
 .extern _free
@@ -988,7 +988,7 @@ _jmp_addr_0x008398d0:    push               0x00c39040                          
                          call               @__ct__14LHReleasedFileFPCc@12                  // 0x008398da    e871daffff
                          ret                                                                // 0x008398df    c3
 _jmp_addr_0x008398e0:    push               0x008398f0                                      // 0x008398e0    68f0988300
-                         call               _jmp_addr_0x007c5791                            // 0x008398e5    e8a7bef8ff
+                         call               _atexit@4                                       // 0x008398e5    e8a7bef8ff
                          pop                ecx                                             // 0x008398ea    59
                          ret                                                                // 0x008398eb    c3
                          nop                                                                // 0x008398ec    90

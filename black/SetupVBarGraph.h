@@ -79,7 +79,7 @@ void __fastcall Draw__14SetupVBarGraphFbb(struct SetupVBarGraph* this, const voi
 // win1.41 0040ef70 mac 10350e50 SetupVBarGraph::KeyDown(int, int)
 void __fastcall KeyDown__14SetupVBarGraphFii(struct SetupVBarGraph* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040ef90 mac 103de920 SetupVBarGraph::~SetupVBarGraph(void)
-struct SetupVBarGraph* __fastcall __dt__14SetupVBarGraphFb(struct SetupVBarGraph* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupVBarGraphFb(struct SetupVBarGraph* this, const void* edx, bool param_1);
 // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
 void __fastcall Reset__14SetupVBarGraphFv(struct SetupVBarGraph* this);
 // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)

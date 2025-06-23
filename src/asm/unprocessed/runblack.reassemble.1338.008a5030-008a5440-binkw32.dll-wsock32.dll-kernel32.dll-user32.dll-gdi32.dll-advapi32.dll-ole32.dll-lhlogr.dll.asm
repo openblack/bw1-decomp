@@ -89,7 +89,7 @@ _jmp_KERNEL32_DLL__GetCurrentProcess:              jmp              dword ptr [_
 _jmp_KERNEL32_DLL__GetModuleHandleA:               jmp              dword ptr [__imp__GetModuleHandleA@4]                                     // 0x008a5198    ff25cc918a00
 _jmp_KERNEL32_DLL__GetStartupInfoA:                jmp              dword ptr [__imp__GetStartupInfoA@4]                                      // 0x008a519e    ff25c8918a00
 _jmp_KERNEL32_DLL__GetVersion:                     jmp              dword ptr [__imp__GetVersion@0]                                           // 0x008a51a4    ff2568928a00
-_jmp_KERNEL32_DLL__FatalAppExitA:                  jmp              dword ptr [__imp__FatalAppExitA@4]                                        // 0x008a51aa    ff250c938a00
+_jmp_KERNEL32_DLL__FatalAppExitA:                  jmp              dword ptr [__imp__FatalAppExitA@8]                                        // 0x008a51aa    ff250c938a00
 _jmp_KERNEL32_DLL__LCMapStringA:                   jmp              dword ptr [__imp__LCMapStringA@4]                                         // 0x008a51b0    ff2508938a00
 _jmp_KERNEL32_DLL__LCMapStringW:                   jmp              dword ptr [__imp__LCMapStringW@4]                                         // 0x008a51b6    ff25f0928a00
 _jmp_KERNEL32_DLL__GetCPInfo:                      jmp              dword ptr [__imp__GetCPInfo@4]                                            // 0x008a51bc    ff2504938a00

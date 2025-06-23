@@ -1134,8 +1134,8 @@ _jmp_addr_0x0060b25c:    {disp8} mov        dword ptr [esp + 0x38], ebp         
                          {disp8} mov        ax, word ptr [esi + 0x5a]               // 0x0060b36a    668b465a
                          push               0x0                                     // 0x0060b36e    6a00
                          shl                ecx, 2                                  // 0x0060b370    c1e102
-                         {disp32} mov       edx, dword ptr [ecx + 0x00c31614]       // 0x0060b373    8b911416c300
-                         {disp32} mov       ecx, dword ptr [ecx + 0x00c31e14]       // 0x0060b379    8b89141ec300
+                         {disp32} mov       edx, dword ptr [ecx + _sin_lookup_table]// 0x0060b373    8b911416c300
+                         {disp32} mov       ecx, dword ptr [ecx + _cos_lookup_table]// 0x0060b379    8b89141ec300
                          shr                eax, 4                                  // 0x0060b37f    c1e804
                          imul               edx, eax                                // 0x0060b382    0fafd0
                          imul               ecx, eax                                // 0x0060b385    0fafc8
@@ -1382,8 +1382,8 @@ _jmp_addr_0x0060b57b:    {disp8} mov        dword ptr [esp + 0x38], ebp         
                          {disp8} mov        ax, word ptr [esi + 0x5a]               // 0x0060b6a0    668b465a
                          {disp8} mov        dword ptr [esp + 0x24], esi             // 0x0060b6a4    89742424
                          shl                edx, 2                                  // 0x0060b6a8    c1e202
-                         {disp32} mov       ecx, dword ptr [edx + 0x00c31614]       // 0x0060b6ab    8b8a1416c300
-                         {disp32} mov       edx, dword ptr [edx + 0x00c31e14]       // 0x0060b6b1    8b92141ec300
+                         {disp32} mov       ecx, dword ptr [edx + _sin_lookup_table]// 0x0060b6ab    8b8a1416c300
+                         {disp32} mov       edx, dword ptr [edx + _cos_lookup_table]// 0x0060b6b1    8b92141ec300
                          shr                eax, 4                                  // 0x0060b6b7    c1e804
                          imul               ecx, eax                                // 0x0060b6ba    0fafc8
                          imul               edx, eax                                // 0x0060b6bd    0fafd0

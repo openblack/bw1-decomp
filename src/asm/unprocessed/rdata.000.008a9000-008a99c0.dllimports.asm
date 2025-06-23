@@ -191,7 +191,7 @@
 .globl __imp__CompareStringA@4
 .globl __imp__GetCPInfo@4
 .globl __imp__LCMapStringA@4
-.globl __imp__FatalAppExitA@4
+.globl __imp__FatalAppExitA@8
 .globl __imp__InterlockedIncrement@4
 .globl __imp__InterlockedDecrement@4
 .globl __imp__InterlockedExchange@4
@@ -800,7 +800,7 @@ __imp__CompareStringW@4:                                                        
 __imp__CompareStringA@4:                                                                                                       .long 0x005c489a // 0x008a9300 KERNEL32.DLL::CompareStringA
 __imp__GetCPInfo@4:                                                                                                            .long 0x005c488e // 0x008a9304 KERNEL32.DLL::GetCPInfo
 __imp__LCMapStringA@4:                                                                                                         .long 0x005c486e // 0x008a9308 KERNEL32.DLL::LCMapStringA
-__imp__FatalAppExitA@4:                                                                                                        .long 0x005c485e // 0x008a930c KERNEL32.DLL::FatalAppExitA
+__imp__FatalAppExitA@8:                                                                                                        .long 0x005c485e // 0x008a930c KERNEL32.DLL::FatalAppExitA
 __imp__InterlockedIncrement@4:                                                                                                 .long 0x005c46bc // 0x008a9310 KERNEL32.DLL::InterlockedIncrement
 __imp__InterlockedDecrement@4:                                                                                                 .long 0x005c46a4 // 0x008a9314 KERNEL32.DLL::InterlockedDecrement
 __imp__InterlockedExchange@4:                                                                                                  .long 0x005c468e // 0x008a9318 KERNEL32.DLL::InterlockedExchange

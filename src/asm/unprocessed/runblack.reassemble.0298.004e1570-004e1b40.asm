@@ -173,7 +173,7 @@ _jmp_addr_0x004e1694:    {disp32} mov       eax, dword ptr [esp + 0x00000918]   
                          call               _jmp_addr_0x007c57d2                                 // 0x004e172d    e8a0402e00
                          {disp32} fld       dword ptr [ebp + 0x000185c4]                         // 0x004e1732    d985c4850100
                          add                esp, 0x1c                                            // 0x004e1738    83c41c
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]                     // 0x004e173b    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]                     // 0x004e173b    d81d98a38a00
                          mov                edi, 0x00bdfa60                                      // 0x004e1741    bf60fabd00
                          fnstsw             ax                                                   // 0x004e1746    dfe0
                          test               ah, 0x41                                             // 0x004e1748    f6c441
@@ -192,7 +192,7 @@ _jmp_addr_0x004e1752:    {disp32} fld       dword ptr [ebp + 0x000185c4]        
                          mov.s              edi, edx                                             // 0x004e1771    8bfa
                          rep movsd          es:[edi], dword ptr ds:[esi]                         // 0x004e1773    f3a5
                          mov.s              ecx, eax                                             // 0x004e1775    8bc8
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]                     // 0x004e1777    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]                     // 0x004e1777    d81d98a38a00
                          and                ecx, 0x03                                            // 0x004e177d    83e103
                          rep movsb                                                               // 0x004e1780    f3a4
                          fnstsw             ax                                                   // 0x004e1782    dfe0
@@ -213,7 +213,7 @@ _jmp_addr_0x004e1793:    {disp32} fld       dword ptr [ebp + 0x000185c4]        
                          mov.s              edi, edx                                             // 0x004e17af    8bfa
                          rep movsd          es:[edi], dword ptr ds:[esi]                         // 0x004e17b1    f3a5
                          mov.s              ecx, eax                                             // 0x004e17b3    8bc8
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]                     // 0x004e17b5    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]                     // 0x004e17b5    d81d98a38a00
                          and                ecx, 0x03                                            // 0x004e17bb    83e103
                          rep movsb                                                               // 0x004e17be    f3a4
                          fnstsw             ax                                                   // 0x004e17c0    dfe0
@@ -234,7 +234,7 @@ _jmp_addr_0x004e17d1:    {disp32} fld       dword ptr [ebp + 0x000185c4]        
                          mov.s              edi, edx                                             // 0x004e17f0    8bfa
                          rep movsd          es:[edi], dword ptr ds:[esi]                         // 0x004e17f2    f3a5
                          mov.s              ecx, eax                                             // 0x004e17f4    8bc8
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x1398]                     // 0x004e17f6    d81d98a38a00
+                         {disp32} fcomp     dword ptr [_rdata_bytes_float_0x008aa398]                     // 0x004e17f6    d81d98a38a00
                          and                ecx, 0x03                                            // 0x004e17fc    83e103
                          rep movsb                                                               // 0x004e17ff    f3a4
                          fnstsw             ax                                                   // 0x004e1801    dfe0

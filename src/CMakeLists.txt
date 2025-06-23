@@ -57,17 +57,27 @@ find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
+
+    c/_CXXFuncs.c
     asm/unprocessed/rdata.000.008a9000-008a99c0.dllimports.asm
-    asm/unprocessed/rdata.002.008a99c0-008a99d0-image_debug_directory.asm
+    c/_DebugDirectory.c
+    c/unprocessed/Unknown.000.c
+    c/AbodeInfo.001.c
+    c/Base.000.c
+    c/BaseInfo.000.c
+    c/AbodeInfo.002.c
+    c/Base.001.c
+    c/ObjectInfo.000.c
+    c/AbodeInfo.003.c
+    c/Abode.000.c
+
+    asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
+
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
 
-    asm/unprocessed/runblack.reassemble.0000.00401000-00401140.asm
-    asm/unprocessed/runblack.reassemble.0002.00401140-004011d0.asm
-    asm/unprocessed/runblack.reassemble.0004.004011d0-004012e0.asm
-    asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
     asm/unprocessed/runblack.reassemble.0014.004060c0-004061a0.asm
     asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
@@ -369,6 +379,7 @@ set(SOURCES_003
     asm/unprocessed/runblack.reassemble.1093.007c62f0-007c6390.asm
     asm/unprocessed/runblack.reassemble.1097.007c6390-007c63e0.asm
     asm/unprocessed/runblack.reassemble.1099.007c63e0-007c92ac.asm
+    asm/unprocessed/bss.asm
 )
 # Likely a different calloc
 set(SOURCES_004 asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
@@ -446,7 +457,8 @@ set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
     asm/unprocessed/rdata.006.009a62d4-009bbcc0-rtti.asm
     asm/unprocessed/rdata.007.009bbcc0-009c5564.asm
-    asm/unprocessed/data.003.00c2d680-0x00c3cff0.asm
+    asm/unprocessed/data.003.00c2d680-00c3c680.asm
+    asm/unprocessed/data.004.00c3c680-00c3cff0.asm
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
@@ -474,8 +486,8 @@ function(add_patched_libcmt_object src_obj patch_flag)
     if (CMAKE_HOST_WIN32)
         set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${obj}")
     else()
-        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/'${src_obj}'")
-        set(src_obj "'${src_obj}'")
+        set(input_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT/${src_obj}")
+        set(src_obj "${src_obj}")
     endif()
     set(output_file "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT-patched/${obj}.patched${OBJ_SUFFIX}")
     set(tmp_output "${output_file}.tmp")
@@ -495,6 +507,7 @@ function(add_patched_libcmt_object src_obj patch_flag)
     endif()
 
     add_custom_command(
+        VERBATIM
         OUTPUT ${output_file}
         COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/LIBCMT" x ${CMAKE_SOURCE_DIR}/lib/LIBCMT.LIB ${src_obj}
         COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py ${input_file} ${tmp_output} ${patch_flag}
@@ -556,6 +569,13 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\strlen.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ehprolog.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\memcpy.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\memcmp.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\setlocal.obj" ON WEAKEN_SYMBOLS ___unguarded_readlc_active ___setlc_active "_?cachecp@?1??_expandlocale@@9@9" "_?cacheid@?1??_expandlocale@@9@9" "??_C@_03DBOJ@_?4?0?$AA@" "??_C@_01KPOD@?$DN?$AA@" "??_C@_01FAJB@?$DL?$AA@" "??_C@_02BGDO@?$DN?$DL?$AA@" "??_C@_01PJCK@?4?$AA@" "??_C@_07PCLE@LC_TIME?$AA@" "??_C@_0L@NKG@LC_NUMERIC?$AA@" "??_C@_0M@CBIH@LC_MONETARY?$AA@" "??_C@_08LFGE@LC_CTYPE?$AA@" "??_C@_06GCPK@LC_ALL?$AA@" "??_C@_01NON@_?$AA@" "??_C@_0L@CFLC@LC_COLLATE?$AA@")
+add_patched_libcmt_object("build\\intel\\mt_obj\\memset.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\_file.obj" OFF WEAKEN_SYMBOLS __cflush)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fputwc.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\ungetwc.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\fgetwc.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\mlock.obj" OFF WEAKEN_SYMBOLS _sigcritsect _ltlcritsect _hlcritsect _xlcritsect)
 set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 # libcmt is statically linked between 007aee98 and 008a6470
@@ -596,7 +616,7 @@ target_compile_options(common_compile_options INTERFACE
     -m32
     -masm=intel
     -march=i386
-    $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-gcodeview>
+    $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g -gcodeview>
 )
 target_include_directories(common_compile_options
     INTERFACE

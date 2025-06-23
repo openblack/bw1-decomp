@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c8606
 .extern _strtok
 
@@ -205,7 +205,7 @@ _jmp_addr_0x007bf1d0:    push             0x00c2bdc8                            
                          nop                                                             // 0x007bf1ee    90
                          nop                                                             // 0x007bf1ef    90
 _jmp_addr_0x007bf1f0:    push             0x007bf200                                     // 0x007bf1f0    6800f27b00
-                         call             _jmp_addr_0x007c5791                           // 0x007bf1f5    e897650000
+                         call             _atexit@4                                      // 0x007bf1f5    e897650000
                          pop              ecx                                            // 0x007bf1fa    59
                          ret                                                             // 0x007bf1fb    c3
                          nop                                                             // 0x007bf1fc    90

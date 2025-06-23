@@ -192,7 +192,7 @@ _jmp_addr_0x0059b2b0:    push             esi                                   
                          add              esp, 0x18                                     // 0x0059b312    83c418
                          pop              esi                                           // 0x0059b315    5e
                          ret                                                            // 0x0059b316    c3
-_jmp_addr_0x0059b317:    {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c]        // 0x0059b317    a15c19d000
+_jmp_addr_0x0059b317:    {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0059b317    a15c19d000
                          cmp              dword ptr [eax + 0x00205a28], 0x01            // 0x0059b31c    83b8285a200001
                          {disp8} jne      _jmp_addr_0x0059b32c                          // 0x0059b323    7507
                          call             _jmp_addr_0x00513640                          // 0x0059b325    e81683f7ff

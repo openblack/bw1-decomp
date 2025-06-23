@@ -26,6 +26,6 @@ struct SetupStaticTextNoHit* __fastcall __ct__20SetupStaticTextNoHitFiiiiiPw11TE
 // win1.41 00571f00 mac 10328c60 SetupStaticTextNoHit::HitTest(int, int)
 bool __fastcall HitTest__20SetupStaticTextNoHitFii(struct SetupStaticTextNoHit* this, const void* edx, int x, int y);
 // win1.41 00571f10 mac 10328bc0 SetupStaticTextNoHit::~SetupStaticTextNoHit(void)
-struct SetupStaticTextNoHit* __fastcall __dt__20SetupStaticTextNoHitFb(struct SetupStaticTextNoHit* this, const void* edx, bool param_1);
+void __fastcall __dt__20SetupStaticTextNoHitFb(struct SetupStaticTextNoHit* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_NO_HIT_INCLUDED_H */

@@ -216,7 +216,7 @@ _jmp_addr_0x005447f9:    cmp              esi, dword ptr [edi + 0x1c]           
                          pop              edi                                           // 0x005447fc    5f
                          {disp8} jne      _jmp_addr_0x00544814                          // 0x005447fd    7515
                          call             _jmp_addr_0x00513640                          // 0x005447ff    e83ceefcff
-                         {disp32} mov     ecx, dword ptr [data_bytes + 0x33b95c]        // 0x00544804    8b0d5c19d000
+                         {disp32} mov     ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00544804    8b0d5c19d000
                          {disp32} mov     dword ptr [ecx + 0x00250180], 0x00000005      // 0x0054480a    c7818001250005000000
 _jmp_addr_0x00544814:    pop              esi                                           // 0x00544814    5e
                          ret              0x0018                                        // 0x00544815    c21800
@@ -788,7 +788,7 @@ _jmp_addr_0x00544df0:    {disp8} mov      eax, dword ptr [esp + 0x08]           
                          {disp32} mov     edi, dword ptr [esp + 0x00000220]             // 0x00544e5c    8bbc2420020000
                          cmp              edi, dword ptr [esi + 0x28]                   // 0x00544e63    3b7e28
                          {disp8} jne      _jmp_addr_0x00544e83                          // 0x00544e66    751b
-                         {disp32} mov     eax, dword ptr [data_bytes + 0x33b95c]        // 0x00544e68    a15c19d000
+                         {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00544e68    a15c19d000
                          {disp32} mov     dword ptr [eax + 0x0025017c], 0x00000000      // 0x00544e6d    c7807c01250000000000
                          {disp32} mov     byte ptr [esi + 0x00000238], 0x00             // 0x00544e77    c6863802000000
                          call             _jmp_addr_0x00513640                          // 0x00544e7e    e8bde7fcff

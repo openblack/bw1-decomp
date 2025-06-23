@@ -1,8 +1,13 @@
 #ifndef BW1_DECOMP_GLOBALS_INCLUDED_H
 #define BW1_DECOMP_GLOBALS_INCLUDED_H
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpragma-pack"
+#pragma clang diagnostic ignored "-Wmacro-redefined"
+#pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <d3d.h> /* For IDirect3DDevice7 */
 #include <d3dtypes.h> /* For D3DMATRIX */
+#pragma clang diagnostic pop
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 #include <uchar.h> /* For char16_t */
@@ -112,9 +117,10 @@ struct globals_t
   int32_t (*cos_lookup_table)[0x800];  /* 0x00c31e14 */
   char (*s_parsed_line)[0x200];  /* 0x00c341c0 */
   float* DAT_00c371d4;
-  uint32_t* g_delta_time__8LH3DTech;  /* 0x00c38134 */
+  uint32_t* g_delta_time__8LH3DTech;  /* 0x00c38134 ?g_delta_time@LH3DTech@@2MA */
   uint32_t* DAT_00c386d0;
   uint32_t* DAT_00c38714;
+  // End of data's non-virtual allocations
   struct GAbodeInfo (*GAbodeInfo_ARRAY_00c3c690)[0x93];
   struct SetupThing* SetupThing;  /* 0x00c4cc80 */
   struct SetupRect* SetupRect_00c4ccb8;
@@ -309,6 +315,7 @@ static struct globals_t globals = {
     .g_delta_time__8LH3DTech = (uint32_t*)0x00c38134,
     .DAT_00c386d0 = (uint32_t*)0x00c386d0,
     .DAT_00c38714 = (uint32_t*)0x00c38714,
+    // End of data's non-virtual allocations
     .GAbodeInfo_ARRAY_00c3c690 = (struct GAbodeInfo (*)[147])0x00c3c690,
     .SetupThing = (struct SetupThing*)0x00c4cc80,
     .SetupRect_00c4ccb8 = (struct SetupRect*)0x00c4ccb8,

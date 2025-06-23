@@ -16,7 +16,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern @SetName__6LHFileFPCc@12
 .extern @GetSegment__6LHFileFPcP9LHSegmenti@20
-.extern _jmp_addr_0x007c5791
+.extern _atexit@4
 .extern _jmp_addr_0x007c57d2
 .extern _wcscpy
 .extern _jmp_addr_0x007c5fdb
@@ -4670,7 +4670,7 @@ _jmp_addr_0x00837340:    push               0x00c38eb4                          
                          nop                                                               // 0x008373de    90
                          nop                                                               // 0x008373df    90
 _jmp_addr_0x008373e0:    push               0x008373f0                                     // 0x008373e0    68f0738300
-                         call               _jmp_addr_0x007c5791                           // 0x008373e5    e8a7e3f8ff
+                         call               _atexit@4                                      // 0x008373e5    e8a7e3f8ff
                          pop                ecx                                            // 0x008373ea    59
                          ret                                                               // 0x008373eb    c3
                          nop                                                               // 0x008373ec    90
