@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x00562240
 .extern _jmp_addr_0x005622b0
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
-.extern @Load__16GameThingWithPosFR10GameOSFile@12
+.extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x005e6540
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00606380
@@ -980,7 +980,7 @@ _jmp_addr_0x006d9d35:    pop               esi                                  
                          mov.s             ebp, ecx                                      // 0x006d9d47    8be9
                          push              esi                                           // 0x006d9d49    56
                          {disp8} mov       dword ptr [esp + 0x0c], ebp                   // 0x006d9d4a    896c240c
-                         call              @Load__16GameThingWithPosFR10GameOSFile@12    // 0x006d9d4e    e84d67e9ff
+                         call              ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z // 0x006d9d4e    e84d67e9ff
                          test              eax, eax                                      // 0x006d9d53    85c0
                          {disp32} je       _jmp_addr_0x006da340                          // 0x006d9d55    0f84e5050000
                          {disp32} mov      eax, dword ptr [data_bytes + 0x226994]        // 0x006d9d5b    a194c9be00

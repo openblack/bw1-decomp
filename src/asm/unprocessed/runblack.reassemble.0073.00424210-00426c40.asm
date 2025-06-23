@@ -41,7 +41,7 @@
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x0056fef0
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
-.extern @Load__16GameThingWithPosFR10GameOSFile@12
+.extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x0057d440
 .extern _jmp_addr_0x00597400
@@ -1812,7 +1812,7 @@ _jmp_addr_0x004251c2:    pop                edi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x004251d2    8b74240c
                          mov.s              ebx, ecx                                      // 0x004251d6    8bd9
                          push               esi                                           // 0x004251d8    56
-                         call               @Load__16GameThingWithPosFR10GameOSFile@12    // 0x004251d9    e8c2b21400
+                         call               ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z // 0x004251d9    e8c2b21400
                          test               eax, eax                                      // 0x004251de    85c0
                          {disp32} je        _jmp_addr_0x004252bc                          // 0x004251e0    0f84d6000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x004251e6    a194c9be00

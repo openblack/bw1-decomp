@@ -99,7 +99,7 @@
 .extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .extern ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
-.extern @Load__16GameThingWithPosFR10GameOSFile@12
+.extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x00575e20
 .extern _jmp_addr_0x00576f20
@@ -9505,7 +9505,7 @@ _jmp_addr_0x00721cd0:    push               esi                                 
                          push               edi                                                  // 0x00721cd5    57
                          mov.s              edi, ecx                                             // 0x00721cd6    8bf9
                          push               esi                                                  // 0x00721cd8    56
-                         call               @Load__16GameThingWithPosFR10GameOSFile@12           // 0x00721cd9    e8c2e7e4ff
+                         call               ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z        // 0x00721cd9    e8c2e7e4ff
                          test               eax, eax                                             // 0x00721cde    85c0
                          {disp32} je        _jmp_addr_0x00722061                                 // 0x00721ce0    0f847b030000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]               // 0x00721ce6    a194c9be00

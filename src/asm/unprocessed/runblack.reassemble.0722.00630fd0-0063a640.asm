@@ -66,7 +66,7 @@
 .extern _jmp_addr_0x0056fe70
 .extern ?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
-.extern @Load__16GameThingWithPosFR10GameOSFile@12
+.extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x005707f0
 .extern _jmp_addr_0x00570890
@@ -14105,7 +14105,7 @@ _Load__6ObjectFR10GameOSFile:
                          push               edi                                            // 0x00639eb5    57
                          mov.s              edi, ecx                                       // 0x00639eb6    8bf9
                          push               esi                                            // 0x00639eb8    56
-                         call               @Load__16GameThingWithPosFR10GameOSFile@12     // 0x00639eb9    e8e265f3ff
+                         call               ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z  // 0x00639eb9    e8e265f3ff
                          test               eax, eax                                       // 0x00639ebe    85c0
                          {disp32} je        _jmp_addr_0x0063a013                           // 0x00639ec0    0f844d010000
                          push               ebx                                            // 0x00639ec6    53

@@ -64,7 +64,7 @@
 .globl ?IsCreature@GameThing@@UAE_NXZ
 .globl ?GetPlayerWhoLastDroppedMe@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z
-.globl @SetPos__16GameThingWithPosFRC9MapCoords@12
+.globl ?SetPos@GameThingWithPos@@QAEXABUMapCoords@@@Z
 .globl ?GetComputerSeen@GameThing@@UAE_NXZ
 .globl ?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?CanBeFrighteningToCreature@Fixed@@UAE_NPAVCreature@@@Z
@@ -1420,7 +1420,7 @@ _jmp_addr_0x00401879:    push               ecx                                 
                          nop                                                         // 0x0040193d    90
                          nop                                                         // 0x0040193e    90
                          nop                                                         // 0x0040193f    90
-@SetPos__16GameThingWithPosFRC9MapCoords@12:
+?SetPos@GameThingWithPos@@QAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00401940    8b442404
                          mov                edx, dword ptr [eax]                     // 0x00401944    8b10
                          add                ecx, 0x14                                // 0x00401946    83c114

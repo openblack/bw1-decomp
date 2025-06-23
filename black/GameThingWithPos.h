@@ -27,7 +27,7 @@ struct WorshipSite;
 struct GameThingWithPosVftable
 {
   struct GameThingVftable super;  /* 0x0 */
-  void (__fastcall* SetPos)(struct GameThingWithPos* this, const void* edx, struct MapCoords* param_1);  /* 0xfc */
+  void (__fastcall* SetPos)(struct GameThingWithPos* this, const void* edx, const struct MapCoords* param_1);  /* 0xfc */
   struct MapCoords* (__fastcall* GetPos)(const struct GameThingWithPos* this, const void* edx, struct MapCoords* param_1);  /* 0x100 */
   struct MapCoords* (__fastcall* GetArrivePos)(struct GameThingWithPos* this, const void* edx, struct MapCoords* coords);
   void (__fastcall* PhysicsEditorCreate)(struct GameThingWithPos* this, const void* edx, int param_1);
@@ -329,15 +329,15 @@ int __fastcall Get3DSoundPos__16GameThingWithPosFP7LHPoint(struct Base* this, co
 // win1.41 004178f0 mac 101bb350 GameThingWithPos::GetDebugText(void)
 char* __fastcall GetDebugText__16GameThingWithPosFv(struct GameThing* this) asm("?GetDebugText@GameThingWithPos@@QAEPADXZ");
 // win1.41 00570350 mac 10005560 GameThingWithPos::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-void __fastcall UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc(struct GameThingWithPos* this, const void* edx, struct Living* param_1, const struct MapCoords* param_2, unsigned char param_3);
+void __fastcall UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc(struct GameThingWithPos* this, const void* edx, struct Living* param_1, const struct MapCoords* param_2, unsigned char param_3) asm("?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z");
 // win1.41 005704a0 mac 1016a2c0 GameThingWithPos::Load(GameOSFile &)
-uint32_t __fastcall Load__16GameThingWithPosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__16GameThingWithPosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z");
 // win1.41 005703f0 mac 10512f10 GameThingWithPos::Save(GameOSFile &)
 uint32_t __fastcall Save__16GameThingWithPosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z");
 // win1.41 00570560 mac 10430e60 GameThingWithPos::GetSaveType(void)
 uint32_t __fastcall GetSaveType__16GameThingWithPosFv(struct GameThing* this) asm("?GetSaveType@GameThingWithPos@@QAEKXZ");
 // win1.41 00401940 mac 1004d010 GameThingWithPos::SetPos(MapCoords const &)
-void __fastcall SetPos__16GameThingWithPosFRC9MapCoords(struct GameThingWithPos* this, const void* edx, struct MapCoords* param_2);
+void __fastcall SetPos__16GameThingWithPosFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* param_2) asm("?SetPos@GameThingWithPos@@QAEXABUMapCoords@@@Z");
 // win1.41 00401960 mac 10032b70 GameThingWithPos::GetPos(void)
 struct MapCoords* __fastcall GetPos__16GameThingWithPosFv(const struct GameThingWithPos* this, const void* edx, struct MapCoords* param_1) asm("?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ");
 // win1.41 00405260 mac 101c7ec0 GameThingWithPos::GetArrivePos(void)

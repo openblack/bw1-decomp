@@ -95,9 +95,9 @@
 .globl _jmp_addr_0x0056fef0
 .globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
-.globl @UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc@17
+.globl ?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z
 .globl ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
-.globl @Load__16GameThingWithPosFR10GameOSFile@12
+.globl ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .globl @SetToZero__16GameThingWithPosFv@4
 .globl _jmp_addr_0x005707f0
 .globl _jmp_addr_0x00570890
@@ -116,10 +116,8 @@
 .globl _globl_ct_0x00570650
 .globl _globl_ct_0x00570670
 .globl ___dt__20SetupStaticTextNoHitFb
-.globl _UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc
 .globl ___dt__14SetupMP3ButtonFb
 .globl ?GetSaveType@GameThing@@UAEIXZ
-.globl _Load__16GameThingWithPosFR10GameOSFile
 .globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z
 .globl ?UseFootpathIfNecessary@GameThing@@QAEXPAVLiving@@ABUMapCoords@@E@Z
@@ -2204,8 +2202,8 @@ _jmp_addr_0x005701ed:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0057034d    90
                          nop                                                              // 0x0057034e    90
                          nop                                                              // 0x0057034f    90
-_UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc:
-@UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc@17:    push               esi                                           // 0x00570350    56
+?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z:
+                         push               esi                                           // 0x00570350    56
                          mov.s              esi, ecx                                      // 0x00570351    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00570353    8b06
                          call               dword ptr [eax + 0x74]                        // 0x00570355    ff5074
@@ -2361,8 +2359,8 @@ _jmp_addr_0x0057048a:    pop                esi                                 
                          nop                                                              // 0x0057049d    90
                          nop                                                              // 0x0057049e    90
                          nop                                                              // 0x0057049f    90
-_Load__16GameThingWithPosFR10GameOSFile:
-@Load__16GameThingWithPosFR10GameOSFile@12:    push               ebx                                           // 0x005704a0    53
+?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z:
+                         push               ebx                                           // 0x005704a0    53
                          push               edi                                           // 0x005704a1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x005704a2    8b7c240c
                          mov.s              ebx, ecx                                      // 0x005704a6    8bd9

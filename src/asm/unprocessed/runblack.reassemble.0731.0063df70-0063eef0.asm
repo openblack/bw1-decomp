@@ -22,7 +22,7 @@
 .extern @__ct__9GameThingFv@4
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
-.extern @Load__16GameThingWithPosFR10GameOSFile@12
+.extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
@@ -825,7 +825,7 @@ _jmp_addr_0x0063e6ba:    pop               edi                                  
                          push              edi                                           // 0x0063e6d5    57
                          mov.s             edi, ecx                                      // 0x0063e6d6    8bf9
                          push              esi                                           // 0x0063e6d8    56
-                         call              @Load__16GameThingWithPosFR10GameOSFile@12    // 0x0063e6d9    e8c21df3ff
+                         call              ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z // 0x0063e6d9    e8c21df3ff
                          test              eax, eax                                      // 0x0063e6de    85c0
                          {disp32} je       _jmp_addr_0x0063e7ba                          // 0x0063e6e0    0f84d4000000
                          {disp32} mov      eax, dword ptr [data_bytes + 0x226994]        // 0x0063e6e6    a194c9be00

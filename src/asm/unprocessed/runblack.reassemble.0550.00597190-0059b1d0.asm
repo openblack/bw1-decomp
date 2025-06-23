@@ -49,7 +49,7 @@
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
-.extern @Load__16GameThingWithPosFR10GameOSFile@12
+.extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x00596570
 .extern _jmp_addr_0x0059b1d0
 .extern _jmp_addr_0x0059b260
@@ -1939,7 +1939,7 @@ _jmp_addr_0x005985c0:    push               ecx                                 
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x005985c3    8b742410
                          mov.s              ebx, ecx                                      // 0x005985c7    8bd9
                          push               esi                                           // 0x005985c9    56
-                         call               @Load__16GameThingWithPosFR10GameOSFile@12    // 0x005985ca    e8d17efdff
+                         call               ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z // 0x005985ca    e8d17efdff
                          test               eax, eax                                      // 0x005985cf    85c0
                          {disp32} je        _jmp_addr_0x00598975                          // 0x005985d1    0f849e030000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x005985d7    a194c9be00
