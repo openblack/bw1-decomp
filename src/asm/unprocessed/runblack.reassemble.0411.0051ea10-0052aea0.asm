@@ -95,8 +95,8 @@
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063b680
 .extern @__ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff@24
-.extern _jmp_addr_0x00648990
-.extern _jmp_addr_0x00648af0
+.extern ?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z
 .extern _jmp_addr_0x0066cd30
 .extern _jmp_addr_0x0066cde0
 .extern _jmp_addr_0x0066cf10
@@ -13693,7 +13693,7 @@ _jmp_addr_0x00527541:    pop                edi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x00527552    8b7c240c
                          mov.s              esi, ecx                                             // 0x00527556    8bf1
                          push               edi                                                  // 0x00527558    57
-                         call               _jmp_addr_0x00648990                                 // 0x00527559    e832141200
+                         call               ?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z   // 0x00527559    e832141200
                          test               eax, eax                                             // 0x0052755e    85c0
                          {disp8} je         _jmp_addr_0x00527577                                 // 0x00527560    7415
                          {disp8} mov        eax, dword ptr [esi + 0x48]                          // 0x00527562    8b4648
@@ -13715,7 +13715,7 @@ _jmp_addr_0x00527577:    pop                edi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x00527582    8b7c240c
                          mov.s              esi, ecx                                             // 0x00527586    8bf1
                          push               edi                                                  // 0x00527588    57
-                         call               _jmp_addr_0x00648af0                                 // 0x00527589    e862151200
+                         call               ?Load@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z   // 0x00527589    e862151200
                          test               eax, eax                                             // 0x0052758e    85c0
                          {disp8} je         _jmp_addr_0x005275a7                                 // 0x00527590    7415
                          add                esi, 0x48                                            // 0x00527592    83c648

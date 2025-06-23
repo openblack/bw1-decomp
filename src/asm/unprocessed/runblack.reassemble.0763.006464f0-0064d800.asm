@@ -224,8 +224,8 @@
 .globl _jmp_addr_0x00648290
 .globl @__ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff@24
 .globl _jmp_addr_0x00648820
-.globl _jmp_addr_0x00648990
-.globl _jmp_addr_0x00648af0
+.globl ?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z
+.globl ?Load@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z
 .globl @__ct__10PlayerInfoFv@4
 .globl _jmp_addr_0x00648da0
 .globl _jmp_addr_0x00648ee0
@@ -310,6 +310,11 @@
 .globl _jmp_addr_0x0064d6b0
 .globl _jmp_addr_0x0064d750
 .globl _GetRemapedPlayer__FUl
+.globl ?GetText@PlannedMultiMapFixed@@UAEPBDXZ
+.globl ?CreateBuildingSite@PlannedMultiMapFixed@@UBE_NXZ
+.globl ?PostCreatePlanned@PlannedMultiMapFixed@@QAEXAAVMultiMapFixed@@@Z
+.globl ?GetDesireToBeRepaired@PlannedMultiMapFixed@@QAEMXZ
+.globl ?Draw@PlannedMultiMapFixed@@QAEXXZ
 
 .globl _globl_ct_0x00647490
 .globl _globl_ct_0x006474c0
@@ -3384,6 +3389,8 @@ _jmp_addr_0x006488ca:    pop                edi                                 
                          nop                                                               // 0x0064890d    90
                          nop                                                               // 0x0064890e    90
                          nop                                                               // 0x0064890f    90
+
+?GetDesireToBeRepaired@PlannedMultiMapFixed@@QAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x30]                    // 0x00648910    8b4130
                          test               eax, eax                                       // 0x00648913    85c0
                          {disp8} je         _jmp_addr_0x00648921                           // 0x00648915    740a
@@ -3400,6 +3407,8 @@ _jmp_addr_0x00648921:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                               // 0x0064892d    90
                          nop                                                               // 0x0064892e    90
                          nop                                                               // 0x0064892f    90
+
+?Draw@PlannedMultiMapFixed@@QAEXXZ:
                          ret                                                               // 0x00648930    c3
                          nop                                                               // 0x00648931    90
                          nop                                                               // 0x00648932    90
@@ -3416,6 +3425,7 @@ _jmp_addr_0x00648921:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                               // 0x0064893d    90
                          nop                                                               // 0x0064893e    90
                          nop                                                               // 0x0064893f    90
+?GetText@PlannedMultiMapFixed@@UAEPBDXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x40]                    // 0x00648940    8b4140
                          add                eax, 0x18                                      // 0x00648943    83c018
                          ret                                                               // 0x00648946    c3
@@ -3428,6 +3438,8 @@ _jmp_addr_0x00648921:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                               // 0x0064894d    90
                          nop                                                               // 0x0064894e    90
                          nop                                                               // 0x0064894f    90
+
+?CreateBuildingSite@PlannedMultiMapFixed@@UBE_NXZ:
                          push               esi                                            // 0x00648950    56
                          push               edi                                            // 0x00648951    57
                          push               0x4e                                           // 0x00648952    6a4e
@@ -3452,7 +3464,9 @@ _jmp_addr_0x0064898b:    pop                edi                                 
                          xor.s              eax, eax                                       // 0x0064898c    33c0
                          pop                esi                                            // 0x0064898e    5e
                          ret                                                               // 0x0064898f    c3
-_jmp_addr_0x00648990:    push               esi                                            // 0x00648990    56
+
+?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z:
+                         push               esi                                            // 0x00648990    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00648991    8b742408
                          push               edi                                            // 0x00648995    57
                          mov.s              edi, ecx                                       // 0x00648996    8bf9
@@ -3569,7 +3583,9 @@ _jmp_addr_0x00648ae7:    pop                edi                                 
                          ret                0x0004                                         // 0x00648aeb    c20400
                          nop                                                               // 0x00648aee    90
                          nop                                                               // 0x00648aef    90
-_jmp_addr_0x00648af0:    push               ebx                                            // 0x00648af0    53
+
+?Load@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z:
+                         push               ebx                                            // 0x00648af0    53
                          push               esi                                            // 0x00648af1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00648af2    8b74240c
                          mov.s              ebx, ecx                                       // 0x00648af6    8bd9
@@ -3698,6 +3714,8 @@ _jmp_addr_0x00648c3b:    pop                esi                                 
                          nop                                                               // 0x00648c4d    90
                          nop                                                               // 0x00648c4e    90
                          nop                                                               // 0x00648c4f    90
+
+?PostCreatePlanned@PlannedMultiMapFixed@@QAEXAAVMultiMapFixed@@@Z:
                          push               esi                                            // 0x00648c50    56
                          push               edi                                            // 0x00648c51    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                    // 0x00648c52    8b7c240c

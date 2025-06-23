@@ -21,7 +21,7 @@
 .extern @CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager@12
 .extern @__ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff@28
 .extern @Init__12PlannedAbodeFP4Town@12
-.extern _jmp_addr_0x004056d0
+.extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
 .extern _jmp_addr_0x004056f0
 .extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
 .extern _jmp_addr_0x00405b70
@@ -304,8 +304,8 @@
 .globl _jmp_addr_0x0073cf00
 .globl _jmp_addr_0x0073cf60
 .globl _jmp_addr_0x0073d030
-.globl @AddPlanned__4TownFP20PlannedMultiMapFixed@12
-.globl _jmp_addr_0x0073d0d0
+.globl ?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
+.globl ?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
 .globl @AllVillagersCheckNeedNewAbode__4TownFv@4
 .globl _jmp_addr_0x0073d1c0
 .globl _jmp_addr_0x0073d220
@@ -4612,7 +4612,9 @@ _jmp_addr_0x0073d071:    ret                0x0004                              
                          nop                                                                     // 0x0073d07d    90
                          nop                                                                     // 0x0073d07e    90
                          nop                                                                     // 0x0073d07f    90
-@AddPlanned__4TownFP20PlannedMultiMapFixed@12:    {disp32} mov       edx, dword ptr [ecx + 0x000009a8]                    // 0x0073d080    8b91a8090000
+
+?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z:
+                         {disp32} mov       edx, dword ptr [ecx + 0x000009a8]                    // 0x0073d080    8b91a8090000
                          test               edx, edx                                             // 0x0073d086    85d2
                          {disp8} je         _jmp_addr_0x0073d0a3                                 // 0x0073d088    7419
                          {disp8} mov        eax, dword ptr [edx + 0x44]                          // 0x0073d08a    8b4244
@@ -4640,7 +4642,9 @@ _jmp_addr_0x0073d0ad:    {disp8} mov        dword ptr [eax + 0x44], 0x00000000  
                          nop                                                                     // 0x0073d0cd    90
                          nop                                                                     // 0x0073d0ce    90
                          nop                                                                     // 0x0073d0cf    90
-_jmp_addr_0x0073d0d0:    {disp32} mov       eax, dword ptr [ecx + 0x000009a8]                    // 0x0073d0d0    8b81a8090000
+
+?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z:
+                         {disp32} mov       eax, dword ptr [ecx + 0x000009a8]                    // 0x0073d0d0    8b81a8090000
                          test               eax, eax                                             // 0x0073d0d6    85c0
                          {disp8} je         _jmp_addr_0x0073d147                                 // 0x0073d0d8    746d
                          {disp8} mov        edx, dword ptr [esp + 0x04]                          // 0x0073d0da    8b542404
@@ -15986,7 +15990,7 @@ _jmp_addr_0x00744519:    xor.s              esi, esi                            
                          call               dword ptr [edx + 0x48]                               // 0x0074457a    ff5248
                          push               eax                                                  // 0x0074457d    50
                          mov.s              ecx, esi                                             // 0x0074457e    8bce
-                         call               _jmp_addr_0x004056d0                                 // 0x00744580    e84b11ccff
+                         call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ                                 // 0x00744580    e84b11ccff
                          push               eax                                                  // 0x00744585    50
                          {disp8} lea        eax, dword ptr [esi + 0x14]                          // 0x00744586    8d4614
                          push               eax                                                  // 0x00744589    50
