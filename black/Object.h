@@ -138,7 +138,7 @@ struct ObjectVftable
   uint32_t (__fastcall* ProcessState)(struct Object* this);  /* 0x620 */
   float (__fastcall* GetProjectileSpeed)(struct Object* this);
   bool (__fastcall* CanBePickedUp)(struct Object* this);
-  bool (__fastcall* CanBeCrushed)(struct Object* this);
+  bool32_t (__fastcall* CanBeCrushed)(struct Object* this);
   float (__fastcall* GetTopPos)(struct Object* this);  /* 0x630 */
   float (__fastcall* GetVillagerHugRadius)(struct Object* this);
   float (__fastcall* GetWeight)(struct Object* this);
@@ -241,7 +241,7 @@ struct ObjectVftable
   bool (__fastcall* CreatureMustAvoid)(struct Object* this, const void* edx, struct Creature* param_1);
   void (__fastcall* AddToRoutePlan)(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4));  /* 0x7c0 */
   float (__fastcall* GetRoutePlanRadius)(struct Object* this, const void* edx, struct Creature* param_1);
-  bool (__fastcall* VillagerMustAvoid)(struct Object* this, const void* edx, struct Villager* param_1);
+  bool32_t (__fastcall* VillagerMustAvoid)(struct Object* this, const void* edx, struct Villager* param_1);
   bool (__fastcall* IsFireMan)(struct Object* this);
   bool (__fastcall* IsARootedObject)(struct Object* this);  /* 0x7d0 */
   enum SOUND_COLLISION_TYPE (__fastcall* GetCollideSoundType)(struct Object* this);
@@ -255,7 +255,7 @@ struct ObjectVftable
   void (__fastcall* DiscipleInHandNear)(struct Object* this, const void* edx, struct Villager* param_1, struct GInterfaceStatus* status);
   bool32_t (__fastcall* GetSpecialPos)(struct Object* this, const void* edx, uint32_t index, struct MapCoords* pos);
   struct GameThing* (__fastcall* GetTownArtifact)(struct Object* this);
-  bool (__fastcall* IsTownArtifact)(struct Object* this);  /* 0x800 */
+  bool32_t (__fastcall* IsTownArtifact)(struct Object* this);  /* 0x800 */
   bool (__fastcall* ProcessInHand)(struct Object* this);
   uint32_t (__fastcall* ProcessInInteract)(struct Object* this, const void* edx, struct GInterfaceStatus* status);
   uint32_t (__fastcall* GetObjectCollide)(struct Object* this);
@@ -587,7 +587,7 @@ float __fastcall GetProjectileSpeed__6ObjectFv(struct Object* this) asm("?GetPro
 // win1.41 004026a0 mac 103e4940 Object::CanBePickedUp(void)
 bool __fastcall CanBePickedUp__6ObjectFv(struct Object* this) asm("?CanBePickedUp@Object@@UAE_NXZ");
 // win1.41 00425c50 mac 100add90 Object::CanBeCrushed(void)
-bool __fastcall CanBeCrushed__6ObjectFv(struct Object* this) asm("?CanBeCrushed@Object@@UAE_NXZ");
+bool32_t __fastcall CanBeCrushed__6ObjectFv(struct Object* this) asm("?CanBeCrushed@Object@@UAE_NXZ");
 // win1.41 00638160 mac 103d5490 Object::GetTopPos(void)
 float __fastcall GetTopPos__6ObjectFv(struct Object* this) asm("?GetTopPos@Object@@UAEMXZ");
 // win1.41 004026b0 mac 100a7df0 Object::GetVillagerHugRadius(void)
@@ -793,7 +793,7 @@ void __fastcall AddToRoutePlan__6ObjectFP8RPHolderP8CreatureiPFi7Point2Dfi_v(str
 // win1.41 006384c0 mac 103d5070 Object::GetRoutePlanRadius(Creature *)
 float __fastcall GetRoutePlanRadius__6ObjectFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?GetRoutePlanRadius@Object@@UAEMPAVCreature@@@Z");
 // win1.41 00638be0 mac 103d41e0 Object::VillagerMustAvoid(Villager *)
-bool __fastcall VillagerMustAvoid__6ObjectFP8Villager(struct Object* this, const void* edx, struct Villager* param_1) asm("?VillagerMustAvoid@Object@@UAE_NPAVVillager@@@Z");
+bool32_t __fastcall VillagerMustAvoid__6ObjectFP8Villager(struct Object* this, const void* edx, struct Villager* param_1) asm("?VillagerMustAvoid@Object@@UAE_NPAVVillager@@@Z");
 // win1.41 00639a00 mac 103d2b20 Object::IsFireMan(void)
 bool __fastcall IsFireMan__6ObjectFv(struct Object* this) asm("?IsFireMan@Object@@UAE_NXZ");
 // win1.41 00638730 mac 10097740 Object::IsARootedObject(void)
@@ -821,7 +821,7 @@ bool32_t __fastcall GetSpecialPos__6ObjectFUlP9MapCoords(struct Object* this, co
 // win1.41 00419960 mac 100adee0 Object::GetTownArtifact(void)
 struct GameThing* __fastcall GetTownArtifact__6ObjectFv(struct Object* this) asm("?GetTownArtifact@Object@@UAEPAVGameThing@@XZ");
 // win1.41 00419970 mac 100adf20 Object::IsTownArtifact(void)
-bool __fastcall IsTownArtifact__6ObjectFv(struct Object* this) asm("?IsTownArtifact@Object@@UAE_NXZ");
+bool32_t __fastcall IsTownArtifact__6ObjectFv(struct Object* this) asm("?IsTownArtifact@Object@@UAE_NXZ");
 // win1.41 00639ad0 mac 1008a4c0 Object::ProcessInHand(void)
 bool __fastcall ProcessInHand__6ObjectFv(struct Object* this) asm("?ProcessInHand@Object@@UAE_NXZ");
 // win1.41 00639b10 mac 103d22d0 Object::ProcessInInteract(GInterfaceStatus *)
