@@ -26832,7 +26832,7 @@ _jmp_addr_0x0053c0f0:    sub                esp, 0x1c                           
                          mov.s              eax, ecx                                             // 0x0053c14d    8bc1
                          {disp8} mov        dword ptr [esp + 0x38], ecx                          // 0x0053c14f    894c2438
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2620]                     // 0x0053c153    d80d20b68a00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]               // 0x0053c159    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                         // 0x0053c159    8b0d80ccc400
                          {disp8} lea        edx, dword ptr [esp + 0x24]                          // 0x0053c15f    8d542424
                          push               edx                                                  // 0x0053c163    52
                          fld                st(0)                                                // 0x0053c164    d9c0

@@ -921,7 +921,7 @@ _jmp_addr_0x004120a0:    push               ecx                                 
                          push               eax                                           // 0x004120cf    50
                          push               0x6                                           // 0x004120d0    6a06
                          call               _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                          // 0x004120d2    e859dc4100
-                         {disp32} mov       dword ptr [data_bytes + 0x286c80], eax        // 0x004120d7    a380ccc400
+                         {disp32} mov       dword ptr [_SetupThing], eax                  // 0x004120d7    a380ccc400
                          {disp32} mov       dword ptr [data_bytes + 0x286d28], 0x00000001 // 0x004120dc    c70528cdc40001000000
                          add                esp, 0x1c                                     // 0x004120e6    83c41c
                          ret                                                              // 0x004120e9    c3
@@ -940,13 +940,13 @@ _jmp_addr_0x0041210e:    {disp32} mov       ecx, dword ptr [data_bytes + 0x286cf
                          {disp8} je         _jmp_addr_0x00412123                          // 0x0041211c    7405
                          mov                eax, dword ptr [ecx]                          // 0x0041211e    8b01
                          call               dword ptr [eax + 4]                           // 0x00412120    ff5004
-_jmp_addr_0x00412123:    {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x00412123    8b0d80ccc400
+_jmp_addr_0x00412123:    {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x00412123    8b0d80ccc400
                          {disp32} mov       dword ptr [data_bytes + 0x286cf4], esi        // 0x00412129    8935f4ccc400
                          {disp8} mov        ecx, dword ptr [ecx + 0x08]                   // 0x0041212f    8b4908
                          call               @Release__11LH3DTextureFv@4                   // 0x00412132    e8095c4200
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x286c80]        // 0x00412137    8b1580ccc400
+                         {disp32} mov       edx, dword ptr [_SetupThing]                  // 0x00412137    8b1580ccc400
                          {disp8} mov        dword ptr [edx + 0x08], esi                   // 0x0041213d    897208
-                         {disp32} mov       dword ptr [data_bytes + 0x286c80], esi        // 0x00412140    893580ccc400
+                         {disp32} mov       dword ptr [_SetupThing], esi                  // 0x00412140    893580ccc400
                          pop                esi                                           // 0x00412146    5e
                          ret                                                              // 0x00412147    c3
                          nop                                                              // 0x00412148    90
@@ -1120,7 +1120,7 @@ _jmp_addr_0x00412414:    test               cl, cl                              
                          {disp8} mov        esi, dword ptr [esp + 0x4c]                   // 0x00412416    8b74244c
                          {disp8} mov        edi, dword ptr [esp + 0x48]                   // 0x0041241a    8b7c2448
                          {disp8} je         _jmp_addr_0x00412481                          // 0x0041241e    7461
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x00412420    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x00412420    8b0d80ccc400
                          fld                st(0)                                         // 0x00412426    d9c0
                          {disp8} fadd       dword ptr [esp + 0x1c]                        // 0x00412428    d844241c
                          push               0x42c80000                                    // 0x0041242c    680000c842
@@ -1204,7 +1204,7 @@ _jmp_addr_0x004124e8:    {disp8} mov        al, byte ptr [esp + 0x2c]           
                          test               al, al                                        // 0x004124ec    84c0
                          {disp32} mov       eax, dword ptr [data_bytes + 0x5132dc]        // 0x004124ee    a1dc92ed00
                          {disp8} jne        _jmp_addr_0x004124fa                          // 0x004124f3    7505
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x004124f5    a180ccc400
+                         {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x004124f5    a180ccc400
 _jmp_addr_0x004124fa:    {disp8} fld        dword ptr [esp + 0x10]                        // 0x004124fa    d9442410
                          push               0x42c80000                                    // 0x004124fe    680000c842
                          {disp8} fadd       dword ptr [esp + 0x40]                        // 0x00412503    d8442440
