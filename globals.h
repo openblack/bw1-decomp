@@ -71,7 +71,6 @@ struct MapCoords;
 struct PlayerProfile;
 struct ScriptDLL;
 struct SetRenderModeData;
-struct SetupBox_t;
 struct SetupRect;
 struct SetupThing;
 struct SetupThingDraw_t;
@@ -123,13 +122,6 @@ struct globals_t
   // End of data's non-virtual allocations
   struct GAbodeInfo (*GAbodeInfo_ARRAY_00c3c690)[0x93];
   struct SetupThing* SetupThing;  /* 0x00c4cc80 */
-  struct SetupRect* SetupRect_00c4ccb8;
-  struct LH3DColor (*LH3DColor_ARRAY_00c4ccd8)[0x5];
-  struct LH3DColor* LH3DColor_00c4ccf8;
-  bool* DAT_00c4cd00;
-  struct SetupBox_t* SetupBox;  /* 0x00c4cd1c */
-  struct GatheringText** PTR_00c4cd2c;
-  char16_t* WCHAR_00c4cd30;
   uint32_t* UINT_00c58604;
   struct GCitadelHeartInfo (*GCitadelHeartInfo_ARRAY_00c5e270)[0x1];
   struct LHLinkedList__Creature* CreatureList;  /* 0x00c5fcf8 */
@@ -318,13 +310,6 @@ static struct globals_t globals = {
     // End of data's non-virtual allocations
     .GAbodeInfo_ARRAY_00c3c690 = (struct GAbodeInfo (*)[147])0x00c3c690,
     .SetupThing = (struct SetupThing*)0x00c4cc80,
-    .SetupRect_00c4ccb8 = (struct SetupRect*)0x00c4ccb8,
-    .LH3DColor_ARRAY_00c4ccd8 = (struct LH3DColor (*)[5])0x00c4ccd8,
-    .LH3DColor_00c4ccf8 = (struct LH3DColor*)0x00c4ccf8,
-    .DAT_00c4cd00 = (bool*)0x00c4cd00,
-    .SetupBox = (struct SetupBox_t*)0x00c4cd1c,
-    .PTR_00c4cd2c = (struct GatheringText**)0x00c4cd2c,
-    .WCHAR_00c4cd30 = (char16_t*)0x00c4cd30,
     .UINT_00c58604 = (uint32_t*)0x00c58604,
     .GCitadelHeartInfo_ARRAY_00c5e270 = (struct GCitadelHeartInfo (*)[1])0x00c5e270,
     .CreatureList = (struct LHLinkedList__Creature*)0x00c5fcf8,

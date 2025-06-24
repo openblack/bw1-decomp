@@ -1373,7 +1373,7 @@ _jmp_addr_0x004135fe:    test               esi, esi                            
                          {disp32} fadd      dword ptr [rdata_bytes + 0x2624]              // 0x00413600    d80524b68a00
                          {disp8} fstp       dword ptr [esp + 0x28]                        // 0x00413606    d95c2428
                          {disp8} jne        _jmp_addr_0x0041365a                          // 0x0041360a    754e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x0041360c    a180ccc400
+                         {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x0041360c    a180ccc400
                          push               0x42c80000                                    // 0x00413611    680000c842
                          push               esi                                           // 0x00413616    56
                          push               0x0000a000                                    // 0x00413617    6800a00000
@@ -1399,7 +1399,7 @@ _jmp_addr_0x004135fe:    test               esi, esi                            
 _jmp_addr_0x0041365a:    {disp8} mov        edx, dword ptr [esp + 0x38]                   // 0x0041365a    8b542438
                          cmp                word ptr [edx], 0x00                          // 0x0041365e    66833a00
                          {disp32} je        _jmp_addr_0x00413894                          // 0x00413662    0f842c020000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x286c80]        // 0x00413668    8b1580ccc400
+                         {disp32} mov       edx, dword ptr [_SetupThing]                  // 0x00413668    8b1580ccc400
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x0041366e    8b442420
                          push               0x42c80000                                    // 0x00413672    680000c842
                          push               0x0                                           // 0x00413677    6a00
@@ -1420,7 +1420,7 @@ _jmp_addr_0x0041365a:    {disp8} mov        edx, dword ptr [esp + 0x38]         
                          {disp8} lea        eax, dword ptr [ebx + 0x08]                   // 0x004136a2    8d4308
                          push               eax                                           // 0x004136a5    50
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x004136a6    e8d5f2ffff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x004136ab    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x004136ab    8b0d80ccc400
                          push               0x42c80000                                    // 0x004136b1    680000c842
                          push               0x0                                           // 0x004136b6    6a00
                          push               0x0000a000                                    // 0x004136b8    6800a00000
@@ -1439,7 +1439,7 @@ _jmp_addr_0x0041365a:    {disp8} mov        edx, dword ptr [esp + 0x38]         
                          push               esi                                           // 0x004136e3    56
                          push               ebx                                           // 0x004136e4    53
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x004136e5    e896f2ffff
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x286c80]        // 0x004136ea    8b1580ccc400
+                         {disp32} mov       edx, dword ptr [_SetupThing]                  // 0x004136ea    8b1580ccc400
                          add                esp, 0x78                                     // 0x004136f0    83c478
                          push               0x42c80000                                    // 0x004136f3    680000c842
                          push               0x0                                           // 0x004136f8    6a00
@@ -1459,7 +1459,7 @@ _jmp_addr_0x0041365a:    {disp8} mov        edx, dword ptr [esp + 0x38]         
                          push               esi                                           // 0x00413725    56
                          push               eax                                           // 0x00413726    50
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00413727    e854f2ffff
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x0041372c    a180ccc400
+                         {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x0041372c    a180ccc400
                          push               0x42c80000                                    // 0x00413731    680000c842
                          push               0x0                                           // 0x00413736    6a00
                          {disp8} mov        ecx, dword ptr [esp + 0x64]                   // 0x00413738    8b4c2464
@@ -1480,7 +1480,7 @@ _jmp_addr_0x0041365a:    {disp8} mov        edx, dword ptr [esp + 0x38]         
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00413763    e818f2ffff
                          add                esp, 0x78                                     // 0x00413768    83c478
                          push               0x42c80000                                    // 0x0041376b    680000c842
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x286c80]        // 0x00413770    8b1580ccc400
+                         {disp32} mov       edx, dword ptr [_SetupThing]                  // 0x00413770    8b1580ccc400
                          push               0x0                                           // 0x00413776    6a00
                          {disp8} mov        eax, dword ptr [esp + 0x28]                   // 0x00413778    8b442428
                          push               0x0000a000                                    // 0x0041377c    6800a00000
@@ -1498,7 +1498,7 @@ _jmp_addr_0x0041365a:    {disp8} mov        edx, dword ptr [esp + 0x38]         
                          {disp8} lea        eax, dword ptr [ebp + -0x08]                  // 0x0041379f    8d45f8
                          push               eax                                           // 0x004137a2    50
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x004137a3    e8d8f1ffff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x004137a8    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x004137a8    8b0d80ccc400
                          {disp8} mov        edx, dword ptr [esp + 0x64]                   // 0x004137ae    8b542464
                          {disp8} mov        eax, dword ptr [esp + 0x58]                   // 0x004137b2    8b442458
                          push               0x42c80000                                    // 0x004137b6    680000c842
@@ -1519,7 +1519,7 @@ _jmp_addr_0x0041365a:    {disp8} mov        edx, dword ptr [esp + 0x38]         
                          push               eax                                           // 0x004137e0    50
                          push               ebx                                           // 0x004137e1    53
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x004137e2    e899f1ffff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x004137e7    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x004137e7    8b0d80ccc400
                          {disp32} mov       edx, dword ptr [esp + 0x000000a0]             // 0x004137ed    8b9424a0000000
                          {disp32} mov       eax, dword ptr [esp + 0x00000094]             // 0x004137f4    8b842494000000
                          add                esp, 0x78                                     // 0x004137fb    83c478
@@ -1690,7 +1690,7 @@ _jmp_addr_0x0041398c:    {disp8} mov        edx, dword ptr [esp + 0x30]         
                          push               ebp                                           // 0x004139bc    55
                          push               ebx                                           // 0x004139bd    53
                          call               _DrawBevBox__10SetupThingFiiiiiiiUl           // 0x004139be    e85d020000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x286c80]        // 0x004139c3    8b1580ccc400
+                         {disp32} mov       edx, dword ptr [_SetupThing]                  // 0x004139c3    8b1580ccc400
                          push               0x42c80000                                    // 0x004139c9    680000c842
                          push               0x0                                           // 0x004139ce    6a00
                          push               0x0000a000                                    // 0x004139d0    6800a00000
@@ -1715,7 +1715,7 @@ _jmp_addr_0x0041398c:    {disp8} mov        edx, dword ptr [esp + 0x30]         
                          {disp32} mov       dword ptr [esp + 0x00000080], eax             // 0x00413a06    89842480000000
                          {disp32} mov       dword ptr [esp + 0x00000084], ecx             // 0x00413a0d    898c2484000000
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00413a14    e867efffff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x00413a19    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x00413a19    8b0d80ccc400
                          add                esp, 0x5c                                     // 0x00413a1f    83c45c
                          push               0x42c80000                                    // 0x00413a22    680000c842
                          {disp8} mov        edx, dword ptr [esp + 0x28]                   // 0x00413a27    8b542428
@@ -1736,7 +1736,7 @@ _jmp_addr_0x0041398c:    {disp8} mov        edx, dword ptr [esp + 0x30]         
                          push               eax                                           // 0x00413a53    50
                          {disp8} mov        dword ptr [esp + 0x68], eax                   // 0x00413a54    89442468
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00413a58    e823efffff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x00413a5d    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x00413a5d    8b0d80ccc400
                          push               0x42c80000                                    // 0x00413a63    680000c842
                          push               0x0                                           // 0x00413a68    6a00
                          push               0x0000a000                                    // 0x00413a6a    6800a00000
@@ -1756,7 +1756,7 @@ _jmp_addr_0x0041398c:    {disp8} mov        edx, dword ptr [esp + 0x30]         
                          push               eax                                           // 0x00413aa0    50
                          push               ebx                                           // 0x00413aa1    53
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00413aa2    e8d9eeffff
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x00413aa7    a180ccc400
+                         {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x00413aa7    a180ccc400
                          add                esp, 0x78                                     // 0x00413aac    83c478
                          push               0x42c80000                                    // 0x00413aaf    680000c842
                          push               0x0                                           // 0x00413ab4    6a00
@@ -1780,7 +1780,7 @@ _jmp_addr_0x0041398c:    {disp8} mov        edx, dword ptr [esp + 0x30]         
                          add                esp, 0x3c                                     // 0x00413aee    83c43c
                          test               eax, eax                                      // 0x00413af1    85c0
                          {disp8} je         _jmp_addr_0x00413b3b                          // 0x00413af3    7446
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x00413af5    a180ccc400
+                         {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x00413af5    a180ccc400
                          push               0x42c80000                                    // 0x00413afa    680000c842
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                   // 0x00413aff    8b4c2428
                          {disp8} mov        edx, dword ptr [esp + 0x30]                   // 0x00413b03    8b542430
@@ -1803,7 +1803,7 @@ _jmp_addr_0x0041398c:    {disp8} mov        edx, dword ptr [esp + 0x30]         
                          add                esp, 0x3c                                     // 0x00413b36    83c43c
                          {disp8} jmp        _jmp_addr_0x00413b3f                          // 0x00413b39    eb04
 _jmp_addr_0x00413b3b:    {disp8} mov        ebp, dword ptr [esp + 0x28]                   // 0x00413b3b    8b6c2428
-_jmp_addr_0x00413b3f:    {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x00413b3f    a180ccc400
+_jmp_addr_0x00413b3f:    {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x00413b3f    a180ccc400
                          push               0x42c80000                                    // 0x00413b44    680000c842
                          {disp8} mov        ecx, dword ptr [esp + 0x30]                   // 0x00413b49    8b4c2430
                          push               0x0                                           // 0x00413b4d    6a00
@@ -1822,7 +1822,7 @@ _jmp_addr_0x00413b3f:    {disp32} mov       eax, dword ptr [data_bytes + 0x286c8
                          push               esi                                           // 0x00413b78    56
                          push               ebp                                           // 0x00413b79    55
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00413b7a    e801eeffff
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x286c80]        // 0x00413b7f    8b1580ccc400
+                         {disp32} mov       edx, dword ptr [_SetupThing]                  // 0x00413b7f    8b1580ccc400
                          push               0x42c80000                                    // 0x00413b85    680000c842
                          push               0x0                                           // 0x00413b8a    6a00
                          push               0x0000a000                                    // 0x00413b8c    6800a00000
@@ -1840,7 +1840,7 @@ _jmp_addr_0x00413b3f:    {disp32} mov       eax, dword ptr [data_bytes + 0x286c8
                          push               ebp                                           // 0x00413bb8    55
                          push               ebx                                           // 0x00413bb9    53
                          call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00413bba    e8c1edffff
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x00413bbf    a180ccc400
+                         {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x00413bbf    a180ccc400
                          add                esp, 0x78                                     // 0x00413bc4    83c478
                          push               0x42c80000                                    // 0x00413bc7    680000c842
                          push               0x0                                           // 0x00413bcc    6a00
@@ -1986,7 +1986,7 @@ _jmp_addr_0x00413d42:    cmp                dword ptr [data_bytes + 0x502634], e
                          and                eax, 0xfffffffe                               // 0x00413d60    83e0fe
                          inc                eax                                           // 0x00413d63    40
                          {disp32} mov       dword ptr [data_bytes + 0x502634], eax        // 0x00413d64    a33486ec00
-_jmp_addr_0x00413d69:    {disp32} mov       eax, dword ptr [data_bytes + 0x286c80]        // 0x00413d69    a180ccc400
+_jmp_addr_0x00413d69:    {disp32} mov       eax, dword ptr [_SetupThing]                  // 0x00413d69    a180ccc400
                          {disp8} mov        ecx, dword ptr [esp + 0x30]                   // 0x00413d6e    8b4c2430
                          push               ebp                                           // 0x00413d72    55
                          push               0x42c80000                                    // 0x00413d73    680000c842

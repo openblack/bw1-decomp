@@ -76,7 +76,7 @@ start_0x00542510_0x00543d50:
                          add                esp, 0x0c                                     // 0x00542546    83c40c
                          cmp.s              eax, ebx                                      // 0x00542549    3bc3
                          {disp8} je         _jmp_addr_0x0054256b                          // 0x0054254b    741e
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c80]        // 0x0054254d    8b0d80ccc400
+                         {disp32} mov       ecx, dword ptr [_SetupThing]                  // 0x0054254d    8b0d80ccc400
                          push               ecx                                           // 0x00542553    51
                          push               ebx                                           // 0x00542554    53
                          push               0x00000207                                    // 0x00542555    6807020000
@@ -96,7 +96,7 @@ _jmp_addr_0x0054256d:    push               0x00000a70                          
                          add                esp, 0x0c                                     // 0x00542584    83c40c
                          cmp.s              eax, ebx                                      // 0x00542587    3bc3
                          {disp8} je         _jmp_addr_0x005425ad                          // 0x00542589    7422
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x286c80]        // 0x0054258b    8b1580ccc400
+                         {disp32} mov       edx, dword ptr [_SetupThing]                  // 0x0054258b    8b1580ccc400
                          push               edx                                           // 0x00542591    52
                          push               0x1                                           // 0x00542592    6a01
                          push               0x00000207                                    // 0x00542594    6807020000

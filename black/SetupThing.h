@@ -7,8 +7,10 @@
 #include <uchar.h> /* For char16_t */
 
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */
+#include "SetupRect.h" /* For struct SetupRect */
 
 // Forward Declares
 
@@ -68,7 +70,18 @@ static const char* BBSTYLE_strs[_BBSTYLE_COUNT] = {
 struct SetupThing
 {
   struct LH3DMaterial* ui_shadow_material;  /* 0x0 */
-  uint8_t field_0x4[0xac];
+  uint8_t field_0x4[0x34];
+  struct SetupRect SetupRect_00c4ccb8;  /* 0x38 */
+  uint8_t field_0x48[0x10];
+  struct LH3DColor LH3DColor_ARRAY_00c4ccd8[0x5];  /* 0x58 */
+  uint8_t field_0x6c[0xc];
+  struct LH3DColor LH3DColor_00c4ccf8; /* 0x78 */
+  uint8_t field_0x7c[0x4];
+  bool32_t DAT_00c4cd00;  /* 0x80 */
+  uint8_t field_0x84[0x18];
+  uint8_t SetupBox; /* 0x9c */
+  uint8_t field_0xa0[0xc];
+  struct GatheringText* PTR_00c4cd2c;  /* 0xac */
   char16_t WCHAR_00c4cd30[0x4];  /* 0xb0 */
 };
 static_assert(sizeof(struct SetupThing) == 0xb8, "Data type is of wrong size");

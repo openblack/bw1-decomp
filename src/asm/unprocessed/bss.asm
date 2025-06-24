@@ -50,12 +50,18 @@
 .globl _ltlcritsect
 .globl _hlcritsect
 .globl _xlcritsect
+.globl _SetupThing
 
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
 
 _DAT_00c4cc68:                             .space 4                                                                // [0x286c68] 0x009c6000 + 0x286c68 = 0x00c4cc68
-                                           .space 0x237564
+                                           .space 0x14
+_SetupThing:                               .space 0xb8                                                             // [0x286c80] 0x009c6000 + 0x286c80 = 0x00c4cc80
+                                           .space 0xc8                                                             // [0x286d38] 0x009c6000 + 0x286d38 = 0x00c4cd38
+                                           .space 0x33200
+                                           .space 0x200000                                                         // [0x2aa000] 0x009c6000 + 0x2aa000 = 0x00c80000
+                                           .space 0x41d0
 ___lconv_static_null:                      .space 4                                                                // [0x4be1d0] 0x009c6000 + 0x4be1d0 = 0x00e841d0
 __umaskval:                                .space 4                                                                // [0x4be1d4] 0x009c6000 + 0x4be1d4 = 0x00e841d4
 __osver:                                   .space 4                                                                // [0x4be1d8] 0x009c6000 + 0x4be1d8 = 0x00e841d8
