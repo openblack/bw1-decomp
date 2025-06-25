@@ -3817,7 +3817,7 @@ _globl_ct_0x00557560:    call               _jmp_addr_0x00557570                
                          nop                                                              // 0x0055756d    90
                          nop                                                              // 0x0055756e    90
                          nop                                                              // 0x0055756f    90
-_jmp_addr_0x00557570:    mov                ecx, 0x00d019f8                               // 0x00557570    b9f819d000
+_jmp_addr_0x00557570:    mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00557570    b9f819d000
                          {disp32} jmp       @__ct__9GGameInfoFv@4                         // 0x00557575    e9b6010000
                          nop                                                              // 0x0055757a    90
                          nop                                                              // 0x0055757b    90
@@ -3833,7 +3833,7 @@ _jmp_addr_0x00557580:    push               0x00557590                          
                          nop                                                              // 0x0055758d    90
                          nop                                                              // 0x0055758e    90
                          nop                                                              // 0x0055758f    90
-                         mov                ecx, 0x00d019f8                               // 0x00557590    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00557590    b9f819d000
                          {disp32} jmp       _jmp_addr_0x00436960                          // 0x00557595    e9c6f3edff
                          nop                                                              // 0x0055759a    90
                          nop                                                              // 0x0055759b    90
@@ -3879,7 +3879,7 @@ _jmp_addr_0x005575d0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x005575dd    90
                          nop                                                              // 0x005575de    90
                          nop                                                              // 0x005575df    90
-_jmp_addr_0x005575e0:    mov                ecx, 0x00d019f8                               // 0x005575e0    b9f819d000
+_jmp_addr_0x005575e0:    mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005575e0    b9f819d000
                          call               _jmp_addr_0x005575a0                          // 0x005575e5    e8b6ffffff
                          push               ecx                                           // 0x005575ea    51
                          fstp               dword ptr [esp]                               // 0x005575eb    d91c24

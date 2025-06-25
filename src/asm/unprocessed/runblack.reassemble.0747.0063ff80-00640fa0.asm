@@ -681,7 +681,7 @@ _jmp_addr_0x0064065f:    push              ebp                                  
                          push              eax                                           // 0x00640728    50
                          call              _jmp_addr_0x007c75a2                          // 0x00640729    e8746e1800
                          add               esp, 0x20                                     // 0x0064072e    83c420
-                         mov               ecx, 0x00d019f8                               // 0x00640731    b9f819d000
+                         mov               ecx, OFFSET _GGameInfo_00d019f8               // 0x00640731    b9f819d000
                          call              _jmp_addr_0x005575a0                          // 0x00640736    e8656ef1ff
                          {disp8} fstp      dword ptr [esp + 0x24]                        // 0x0064073b    d95c2424
                          {disp8} mov       ecx, dword ptr [esp + 0x24]                   // 0x0064073f    8b4c2424

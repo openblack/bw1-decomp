@@ -3729,7 +3729,7 @@ _jmp_addr_0x00717d14:    {disp32} mov       eax, dword ptr [data_bytes + 0x30ab1
                          mov                edx, dword ptr [ecx]                          // 0x00717d72    8b11
                          push               eax                                           // 0x00717d74    50
                          push               edx                                           // 0x00717d75    52
-                         mov                ecx, 0x00d019f8                               // 0x00717d76    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00717d76    b9f819d000
                          call               @SetVisualTimeCycleFromMapEditor__9GGameInfoFfff@20                          // 0x00717d7b    e830fee3ff
                          xor.s              eax, eax                                      // 0x00717d80    33c0
                          pop                edi                                           // 0x00717d82    5f

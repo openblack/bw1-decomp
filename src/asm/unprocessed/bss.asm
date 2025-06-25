@@ -66,6 +66,9 @@
 .globl _global
 .globl _ARRAY_00d0143c
 .globl _game
+.globl _GGameInfo_00d019f8
+.globl _VillagerStateTable
+.globl _AnimalStateTable
 
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
@@ -102,7 +105,12 @@ _global:                                   .space 0x2d500                       
 _ARRAY_00d0143c:                           .space 0x40                                                             // [0x33b43c] 0x009c6000 + 0x33b43c = 0x00d0143c
                                            .space 0x4e0                                                            // [0x33b47c] 0x009c6000 + 0x33b47c = 0x00d0147c
 _game:                                     .space 4                                                                // [0x33b95c] 0x009c6000 + 0x33b95c = 0x00d0195c
-                                           .space 0x182870                                                         // [0x33b960] 0x009c6000 + 0x33b960 = 0x00d01960
+                                           .space 0x98                                                             // [0x33b960] 0x009c6000 + 0x33b960 = 0x00d01960
+_GGameInfo_00d019f8:                       .space 0x58                                                             // [0x33b9f8] 0x009c6000 + 0x33b9f8 = 0x00d019f8
+                                           .space 0x7748                                                           // [0x33ba50] 0x009c6000 + 0x33ba50 = 0x00d01a50
+_VillagerStateTable:                       .space 0x8f70                                                           // [0x343198] 0x009c6000 + 0x343198 = 0x00d09198
+_AnimalStateTable:                         .space 0x1dd0                                                           // [0x34c108] 0x009c6000 + 0x34c108 = 0x00d12108
+                                           .space 0x1702f8                                                         // [0x34ded8] 0x009c6000 + 0x34ded8 = 0x00d13ed8
 
 ___lconv_static_null:                      .space 4                                                                // [0x4be1d0] 0x009c6000 + 0x4be1d0 = 0x00e841d0
 __umaskval:                                .space 4                                                                // [0x4be1d4] 0x009c6000 + 0x4be1d4 = 0x00e841d4

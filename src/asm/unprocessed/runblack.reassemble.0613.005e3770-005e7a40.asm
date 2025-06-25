@@ -825,7 +825,7 @@ _jmp_addr_0x005e3f30:    {disp32} mov       dword ptr [data_bytes + 0x354360], 0
                          {disp32} mov       dword ptr [data_bytes + 0x354368], 0x45200000 // 0x005e3f44    c70568a3d10000002045
                          ret                                                              // 0x005e3f4e    c3
                          nop                                                              // 0x005e3f4f    90
-                         mov                ecx, 0x00d019f8                               // 0x005e3f50    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005e3f50    b9f819d000
                          {disp32} jmp       _jmp_addr_0x005575e0                          // 0x005e3f55    e98636f7ff
                          nop                                                              // 0x005e3f5a    90
                          nop                                                              // 0x005e3f5b    90
@@ -2687,7 +2687,7 @@ _jmp_addr_0x005e5830:    sub                esp, 0x20                           
                          {disp8} jmp        _jmp_addr_0x005e58d0                          // 0x005e58cc    eb02
 _jmp_addr_0x005e58ce:    fstp               st(0)                                         // 0x005e58ce    ddd8
 _jmp_addr_0x005e58d0:    push               esi                                           // 0x005e58d0    56
-                         mov                ecx, 0x00d019f8                               // 0x005e58d1    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005e58d1    b9f819d000
                          call               _jmp_addr_0x005575a0                          // 0x005e58d6    e8c51cf7ff
                          push               ecx                                           // 0x005e58db    51
                          fstp               dword ptr [esp]                               // 0x005e58dc    d91c24

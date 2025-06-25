@@ -3959,7 +3959,7 @@ _jmp_addr_0x00417f5f:    mov.s              ecx, esi                            
                          {disp32} mov       al, byte ptr [esi + 0x0000008c]               // 0x00417f68    8a868c000000
                          lea                eax, dword ptr [eax + eax * 0x8]              // 0x00417f6e    8d04c0
                          shl                eax, 4                                        // 0x00417f71    c1e004
-                         add                eax, 0x00d12108                               // 0x00417f74    050821d100
+                         add                eax, 0x00d12108 /* _AnimalStateTable */       // 0x00417f74    050821d100
                          mov.s              edx, eax                                      // 0x00417f79    8bd0
                          mov                eax, dword ptr [edx]                          // 0x00417f7b    8b02
                          {disp8} mov        ecx, dword ptr [edx + 0x04]                   // 0x00417f7d    8b4a04

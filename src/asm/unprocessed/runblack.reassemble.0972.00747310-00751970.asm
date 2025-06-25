@@ -2479,7 +2479,7 @@ _jmp_addr_0x0074888d:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          push               ecx                                            // 0x007488c0    51
                          push               esi                                            // 0x007488c1    56
                          mov.s              esi, ecx                                       // 0x007488c2    8bf1
-                         mov                ecx, 0x00d019f8                                // 0x007488c4    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                // 0x007488c4    b9f819d000
                          call               _jmp_addr_0x005575a0                           // 0x007488c9    e8d2ece0ff
                          {disp8} fstp       dword ptr [esp + 0x04]                         // 0x007488ce    d95c2404
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x007488d2    8b442404
@@ -2492,7 +2492,7 @@ _jmp_addr_0x0074888d:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          fstp               dword ptr [esp]                                // 0x007488ef    d91c24
                          push               ecx                                            // 0x007488f2    51
                          {disp32} fld       dword ptr [eax + 0x000000ec]                   // 0x007488f3    d980ec000000
-                         mov                ecx, 0x00d019f8                                // 0x007488f9    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                // 0x007488f9    b9f819d000
                          {disp32} fmul      dword ptr [_rdata_float0p5]                    // 0x007488fe    d80db4a38a00
                          fstp               dword ptr [esp]                                // 0x00748904    d91c24
                          call               _jmp_addr_0x00557ae0                           // 0x00748907    e8d4f1e0ff
@@ -2529,7 +2529,7 @@ _jmp_addr_0x0074895a:    pop                ecx                                 
                          push               ecx                                            // 0x00748960    51
                          push               esi                                            // 0x00748961    56
                          mov.s              esi, ecx                                       // 0x00748962    8bf1
-                         mov                ecx, 0x00d019f8                                // 0x00748964    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                // 0x00748964    b9f819d000
                          call               _jmp_addr_0x005575a0                           // 0x00748969    e832ece0ff
                          {disp8} fstp       dword ptr [esp + 0x04]                         // 0x0074896e    d95c2404
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00748972    8b442404
@@ -2539,7 +2539,7 @@ _jmp_addr_0x0074895a:    pop                ecx                                 
                          add                esp, 0x04                                      // 0x00748980    83c404
                          push               0x0                                            // 0x00748983    6a00
                          push               0x3f800000                                     // 0x00748985    680000803f
-                         mov                ecx, 0x00d019f8                                // 0x0074898a    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                // 0x0074898a    b9f819d000
                          call               _jmp_addr_0x00557ae0                           // 0x0074898f    e84cf1e0ff
                          {disp8} fadd       dword ptr [esp + 0x04]                         // 0x00748994    d8442404
                          {disp8} mov        ecx, dword ptr [esi + 0x28]                    // 0x00748998    8b4e28

@@ -146,8 +146,8 @@ struct globals_t
   int* DAT_00d019bc;
   struct GGameInfo* GGameInfo_00d019f8;
   struct GameThing_t* GameThing;  /* 0x00d06080 */
-  struct Villager__StateTable* StateTable_00d09198;
-  struct Animal__StateTable* StateTable_00d12108;
+  struct Villager__StateTable* VillagerStateTable;
+  struct Animal__StateTable* AnimalStateTable;
   void** DAT_00d13f3c;
   struct HelpTextDataBase* HelpTextDataBasePatch;  /* 0x00d17ca0 */
   struct HelpTextDataBase* HelpTextDataBase_00d17ca8;
@@ -334,8 +334,8 @@ static struct globals_t globals = {
     .DAT_00d019bc = (int*)0x00d019bc,
     .GGameInfo_00d019f8 = (struct GGameInfo*)0x00d019f8,
     .GameThing = (struct GameThing_t*)0x00d06080,
-    .StateTable_00d09198 = (struct Villager__StateTable*)0x00d09198,
-    .StateTable_00d12108 = (struct Animal__StateTable*)0x00d12108,
+    .VillagerStateTable = (struct Villager__StateTable*)0x00d09198,
+    .AnimalStateTable = (struct Animal__StateTable*)0x00d12108,
     .DAT_00d13f3c = (void**)0x00d13f3c,
     .HelpTextDataBasePatch = (struct HelpTextDataBase*)0x00d17ca0,
     .HelpTextDataBase_00d17ca8 = (struct HelpTextDataBase*)0x00d17ca8,

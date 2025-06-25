@@ -1402,7 +1402,7 @@ _jmp_addr_0x0054e586:    mov.s              ecx, ebp                            
                          mov                edx, dword ptr [eax]                          // 0x0054e58d    8b10
                          mov.s              ecx, eax                                      // 0x0054e58f    8bc8
                          call               dword ptr [edx + 0x18]                        // 0x0054e591    ff5218
-                         mov                ecx, 0x00d019f8                               // 0x0054e594    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x0054e594    b9f819d000
                          call               _jmp_addr_0x00557ba0                          // 0x0054e599    e802960000
                          mov.s              ecx, ebp                                      // 0x0054e59e    8bcd
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x0054e5a0    e8db490000
@@ -1440,7 +1440,7 @@ _jmp_addr_0x0054e5b9:    pop                ebp                                 
                          {disp32} mov       dword ptr [data_bytes + 0x4e3e78], eax        // 0x0054e623    a3789eea00
                          call               @FastNormalize__7LHPointFv@4                  // 0x0054e628    e8e3020000
                          call               _jmp_addr_0x0068f590                          // 0x0054e62d    e85e0f1400
-                         mov                ecx, 0x00d019f8                               // 0x0054e632    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x0054e632    b9f819d000
                          call               @Process__9GGameInfoFv@4                      // 0x0054e637    e824950000
                          call               _jmp_addr_0x005cdb90                          // 0x0054e63c    e84ff50700
                          call               _ProcessPlayers__7GPlayerFv                   // 0x0054e641    e8dab30f00
@@ -2158,7 +2158,7 @@ _jmp_addr_0x0054ef40:    sub                esp, 0x00000608                     
                          push               0x1                                           // 0x0054f051    6a01
                          call               _RenderLoadingFrame__Fb                       // 0x0054f053    e8e85d0a00
                          add                esp, 0x08                                     // 0x0054f058    83c408
-                         mov                ecx, 0x00d019f8                               // 0x0054f05b    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x0054f05b    b9f819d000
                          call               @GetYear__9GGameInfoFv@4                      // 0x0054f060    e8eb880000
                          call               _jmp_addr_0x007a1400                          // 0x0054f065    e896232500
                          {disp32} mov       dword ptr [data_bytes + 0x33ba14], eax        // 0x0054f06a    a3141ad000

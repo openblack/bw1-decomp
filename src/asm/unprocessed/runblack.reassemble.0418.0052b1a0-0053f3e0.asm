@@ -1177,13 +1177,13 @@ _jmp_addr_0x0052b790:    ret                                                    
                          nop                                                                     // 0x0052b79d    90
                          nop                                                                     // 0x0052b79e    90
                          nop                                                                     // 0x0052b79f    90
-_jmp_addr_0x0052b7a0:    mov                ecx, 0x00d019f8                                      // 0x0052b7a0    b9f819d000
+_jmp_addr_0x0052b7a0:    mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x0052b7a0    b9f819d000
                          call               _jmp_addr_0x005575a0                                 // 0x0052b7a5    e8f6bd0200
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x261c0]                    // 0x0052b7aa    d81dc0f18c00
                          fnstsw             ax                                                   // 0x0052b7b0    dfe0
                          test               ah, 0x41                                             // 0x0052b7b2    f6c441
                          {disp8} jne        _jmp_addr_0x0052b7f6                                 // 0x0052b7b5    753f
-                         mov                ecx, 0x00d019f8                                      // 0x0052b7b7    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x0052b7b7    b9f819d000
                          call               _jmp_addr_0x005575a0                                 // 0x0052b7bc    e8dfbd0200
                          push               ecx                                                  // 0x0052b7c1    51
                          fstp               dword ptr [esp]                                      // 0x0052b7c2    d91c24
@@ -1200,13 +1200,13 @@ _jmp_addr_0x0052b7a0:    mov                ecx, 0x00d019f8                     
 _jmp_addr_0x0052b7e8:    call               _jmp_addr_0x0052b350                                 // 0x0052b7e8    e863fbffff
                          {disp32} mov       byte ptr [data_bytes + 0x223da0], 0x00               // 0x0052b7ed    c605a09dbe0000
                          {disp8} jmp        _jmp_addr_0x0052b83c                                 // 0x0052b7f4    eb46
-_jmp_addr_0x0052b7f6:    mov                ecx, 0x00d019f8                                      // 0x0052b7f6    b9f819d000
+_jmp_addr_0x0052b7f6:    mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x0052b7f6    b9f819d000
                          call               _jmp_addr_0x005575a0                                 // 0x0052b7fb    e8a0bd0200
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x261c0]                    // 0x0052b800    d81dc0f18c00
                          fnstsw             ax                                                   // 0x0052b806    dfe0
                          test               ah, 0x01                                             // 0x0052b808    f6c401
                          {disp8} je         _jmp_addr_0x0052b83c                                 // 0x0052b80b    742f
-                         mov                ecx, 0x00d019f8                                      // 0x0052b80d    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x0052b80d    b9f819d000
                          call               _jmp_addr_0x005575a0                                 // 0x0052b812    e889bd0200
                          push               ecx                                                  // 0x0052b817    51
                          fstp               dword ptr [esp]                                      // 0x0052b818    d91c24

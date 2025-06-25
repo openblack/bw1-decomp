@@ -191,7 +191,7 @@ _jmp_addr_0x00515f50:    {disp32} mov       dword ptr [data_bytes + 0x3002f0], 0
                          push               edi                                           // 0x00515f82    57
                          {disp8} mov        edi, dword ptr [esi + 0x40]                   // 0x00515f83    8b7e40
                          {disp32} je        _jmp_addr_0x0051606d                          // 0x00515f86    0f84e1000000
-                         mov                ecx, 0x00d019f8                               // 0x00515f8c    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00515f8c    b9f819d000
                          call               _jmp_addr_0x005575e0                          // 0x00515f91    e84a160400
                          test               eax, eax                                      // 0x00515f96    85c0
                          {disp32} je        _jmp_addr_0x0051606d                          // 0x00515f98    0f84cf000000
@@ -361,7 +361,7 @@ _jmp_addr_0x00516137:    {disp32} mov       eax, dword ptr [_game]              
                          fnstsw             ax                                            // 0x005161d9    dfe0
                          test               ah, 0x01                                      // 0x005161db    f6c401
                          {disp32} je        _jmp_addr_0x00516288                          // 0x005161de    0f84a4000000
-                         mov                ecx, 0x00d019f8                               // 0x005161e4    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005161e4    b9f819d000
                          call               _jmp_addr_0x005575a0                          // 0x005161e9    e8b2130400
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x005161ee    d95c2410
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x005161f2    8b4c2410

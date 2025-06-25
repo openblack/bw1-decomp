@@ -1772,7 +1772,7 @@ _jmp_addr_0x0059d030:    push               esi                                 
                          {disp32} mov       dword ptr [data_bytes + 0x343224], esi        // 0x0059d07b    89352492d000
                          xor.s              esi, esi                                      // 0x0059d081    33f6
                          mov                eax, 0x005ec1d0                               // 0x0059d083    b8d0c15e00
-                         {disp32} mov       dword ptr [data_bytes + 0x343198], eax        // 0x0059d088    a39891d000
+                         {disp32} mov       dword ptr [_VillagerStateTable], eax          // 0x0059d088    a39891d000
                          xor.s              eax, eax                                      // 0x0059d08d    33c0
                          {disp32} mov       dword ptr [data_bytes + 0x3431a8], eax        // 0x0059d08f    a3a891d000
                          {disp32} mov       dword ptr [data_bytes + 0x3431b8], eax        // 0x0059d094    a3b891d000
@@ -14331,7 +14331,7 @@ _jmp_addr_0x005ac9f0:    push               esi                                 
                          {disp32} mov       dword ptr [data_bytes + 0x34c174], esi        // 0x005aca28    89357421d100
                          or                 esi, 0xffffffff                               // 0x005aca2e    83ceff
                          mov                eax, 0x005ec1d0                               // 0x005aca31    b8d0c15e00
-                         {disp32} mov       dword ptr [data_bytes + 0x34c108], eax        // 0x005aca36    a30821d100
+                         {disp32} mov       dword ptr [_AnimalStateTable], eax            // 0x005aca36    a30821d100
                          xor.s              eax, eax                                      // 0x005aca3b    33c0
                          {disp32} mov       dword ptr [data_bytes + 0x34c118], eax        // 0x005aca3d    a31821d100
                          {disp32} mov       dword ptr [data_bytes + 0x34c128], eax        // 0x005aca42    a32821d100
