@@ -6915,7 +6915,7 @@ _jmp_addr_0x006e3b50:    push               ecx                                 
                          push               0x00cd3b24                                    // 0x006e3b64    68243bcd00
                          call               _SetMessage__6GDebugFUsPce                    // 0x006e3b69    e832e2e2ff
                          add                esp, 0x10                                     // 0x006e3b6e    83c410
-                         mov                ecx, 0x00d019f8                               // 0x006e3b71    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x006e3b71    b9f819d000
                          call               _jmp_addr_0x005575e0                          // 0x006e3b76    e8653ae7ff
                          test               eax, eax                                      // 0x006e3b7b    85c0
                          mov                eax, 0x00c0be68                               // 0x006e3b7d    b868bec000

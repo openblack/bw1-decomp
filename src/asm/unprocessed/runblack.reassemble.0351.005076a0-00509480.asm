@@ -1530,7 +1530,7 @@ _jmp_addr_0x0050878a:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          fnstsw             ax                                            // 0x005087b0    dfe0
                          test               ah, 0x40                                      // 0x005087b2    f6c440
                          {disp8} je         _jmp_addr_0x005087d4                          // 0x005087b5    741d
-                         mov                ecx, 0x00d019f8                               // 0x005087b7    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005087b7    b9f819d000
                          call               _jmp_addr_0x005575e0                          // 0x005087bc    e81fee0400
                          test               eax, eax                                      // 0x005087c1    85c0
                          {disp8} jne        _jmp_addr_0x005087d4                          // 0x005087c3    750f

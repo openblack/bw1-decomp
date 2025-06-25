@@ -3141,7 +3141,7 @@ _jmp_addr_0x004d2b79:    xor.s              eax, eax                            
                          nop                                                                     // 0x004d2b9d    90
                          nop                                                                     // 0x004d2b9e    90
                          nop                                                                     // 0x004d2b9f    90
-                         mov                ecx, 0x00d019f8                                      // 0x004d2ba0    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x004d2ba0    b9f819d000
                          call               _jmp_addr_0x00557a80                                 // 0x004d2ba5    e8d64e0800
                          sub                eax, 0x02                                            // 0x004d2baa    83e802
                          neg                eax                                                  // 0x004d2bad    f7d8
@@ -3671,7 +3671,7 @@ _jmp_addr_0x004d2fde:    xor.s              eax, eax                            
                          nop                                                                     // 0x004d307d    90
                          nop                                                                     // 0x004d307e    90
                          nop                                                                     // 0x004d307f    90
-                         mov                ecx, 0x00d019f8                                      // 0x004d3080    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x004d3080    b9f819d000
                          call               _jmp_addr_0x005575e0                                 // 0x004d3085    e856450800
                          neg                eax                                                  // 0x004d308a    f7d8
                          sbb.s              eax, eax                                             // 0x004d308c    1bc0
@@ -3691,7 +3691,7 @@ _jmp_addr_0x004d2fde:    xor.s              eax, eax                            
                          nop                                                                     // 0x004d309d    90
                          nop                                                                     // 0x004d309e    90
                          nop                                                                     // 0x004d309f    90
-                         mov                ecx, 0x00d019f8                                      // 0x004d30a0    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x004d30a0    b9f819d000
                          call               _jmp_addr_0x005575e0                                 // 0x004d30a5    e836450800
                          ret                0x0008                                               // 0x004d30aa    c20800
                          nop                                                                     // 0x004d30ad    90

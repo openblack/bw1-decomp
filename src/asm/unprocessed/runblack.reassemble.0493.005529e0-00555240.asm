@@ -2254,7 +2254,7 @@ _jmp_addr_0x005543f1:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
                          add                ecx, 0x4                                      // 0x005543fb    83c104
                          add.s              eax, ecx                                      // 0x005543fe    03c1
                          {disp32} mov       dword ptr [esi + 0x00000214], eax             // 0x00554400    898614020000
-_jmp_addr_0x00554406:    mov                ecx, 0x00d019f8                               // 0x00554406    b9f819d000
+_jmp_addr_0x00554406:    mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00554406    b9f819d000
                          call               _jmp_addr_0x005575a0                          // 0x0055440b    e890310000
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x00554410    d95c2414
                          cmp                dword ptr [data_bytes + 0x226990], ebx        // 0x00554414    391d90c9be00
@@ -2800,7 +2800,7 @@ _jmp_addr_0x00554b4a:    {disp8} mov        ecx, dword ptr [esp + 0x1c]         
                          {disp32} mov       dword ptr [esi + 0x00000214], eax             // 0x00554b5f    898614020000
 _jmp_addr_0x00554b65:    {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x00554b65    8b54241c
                          push               edx                                           // 0x00554b69    52
-                         mov                ecx, 0x00d019f8                               // 0x00554b6a    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00554b6a    b9f819d000
                          call               _jmp_addr_0x005575d0                          // 0x00554b6f    e85c2a0000
                          cmp                dword ptr [data_bytes + 0x226994], ebx        // 0x00554b74    391d94c9be00
                          {disp32} je        _jmp_addr_0x00554c74                          // 0x00554b7a    0f84f4000000
@@ -2868,7 +2868,7 @@ _jmp_addr_0x00554c59:    {disp32} mov       eax, dword ptr [data_bytes + 0x33ba3
                          {disp32} mov       dword ptr [esi + 0x00000214], ecx             // 0x00554c6e    898e14020000
 _jmp_addr_0x00554c74:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33ba3c]        // 0x00554c74    8b0d3c1ad000
                          push               ecx                                           // 0x00554c7a    51
-                         mov                ecx, 0x00d019f8                               // 0x00554c7b    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00554c7b    b9f819d000
                          call               _jmp_addr_0x00557610                          // 0x00554c80    e88b290000
                          {disp32} mov       edx, dword ptr [data_bytes + 0x33ba44]        // 0x00554c85    8b15441ad000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x33ba48]        // 0x00554c8b    a1481ad000
@@ -2876,7 +2876,7 @@ _jmp_addr_0x00554c74:    {disp32} mov       ecx, dword ptr [data_bytes + 0x33ba3
                          push               edx                                           // 0x00554c96    52
                          push               eax                                           // 0x00554c97    50
                          push               ecx                                           // 0x00554c98    51
-                         mov                ecx, 0x00d019f8                               // 0x00554c99    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00554c99    b9f819d000
                          call               @SetVisualTimeCycle__9GGameInfoFfff@20        // 0x00554c9e    e87d290000
                          {disp32} lea       ecx, dword ptr [ebp + 0x00205e8c]             // 0x00554ca3    8d8d8c5e2000
                          call               _jmp_addr_0x00735500                          // 0x00554ca9    e852081e00

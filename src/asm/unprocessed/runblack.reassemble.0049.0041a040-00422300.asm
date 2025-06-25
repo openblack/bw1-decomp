@@ -11442,7 +11442,7 @@ _jmp_addr_0x0041fe67:    mov.s              eax, edi                            
                          mov                eax, 0x00000001                               // 0x0041fe8c    b801000000
                          pop                esi                                           // 0x0041fe91    5e
                          ret                                                              // 0x0041fe92    c3
-_jmp_addr_0x0041fe93:    mov                ecx, 0x00d019f8                               // 0x0041fe93    b9f819d000
+_jmp_addr_0x0041fe93:    mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x0041fe93    b9f819d000
                          call               _jmp_addr_0x005575a0                          // 0x0041fe98    e803771300
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x14c90]             // 0x0041fe9d    d81d90dc8b00
                          fnstsw             ax                                            // 0x0041fea3    dfe0
@@ -14094,7 +14094,7 @@ _jmp_addr_0x00421a4b:    mov                eax, dword ptr [esi]                
                          call               dword ptr [eax + 0xba0]                       // 0x00421a4f    ff90a00b0000
                          cmp                eax, 0x01                                     // 0x00421a55    83f801
                          {disp32} jne       _jmp_addr_0x00421c3c                          // 0x00421a58    0f85de010000
-                         mov                ecx, 0x00d019f8                               // 0x00421a5e    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00421a5e    b9f819d000
                          call               _jmp_addr_0x005575a0                          // 0x00421a63    e8385b1300
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x17d88]             // 0x00421a68    d81d880d8c00
                          fnstsw             ax                                            // 0x00421a6e    dfe0

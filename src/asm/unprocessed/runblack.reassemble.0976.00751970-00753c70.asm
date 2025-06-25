@@ -1021,7 +1021,7 @@ _ToBeDeleted__8VillagerFi:
                          push               edi                                           // 0x007521dc    57
                          lea                eax, dword ptr [eax + eax * 0x8]              // 0x007521dd    8d04c0
                          shl                eax, 4                                        // 0x007521e0    c1e004
-                         add                eax, 0x00d09198                               // 0x007521e3    059891d000
+                         add                eax, 0x00d09198 /* _VillagerStateTable */     // 0x007521e3    059891d000
                          mov.s              esi, eax                                      // 0x007521e8    8bf0
                          mov                eax, dword ptr [esi]                          // 0x007521ea    8b06
                          {disp8} mov        edx, dword ptr [esi + 0x04]                   // 0x007521ec    8b5604

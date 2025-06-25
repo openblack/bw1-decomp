@@ -2297,7 +2297,7 @@ _jmp_addr_0x0071d1c0:    {disp32} mov       eax, dword ptr [data_bytes + 0x25c1d
                          cmp                eax, 0x01                                            // 0x0071d1c9    83f801
                          {disp32} mov       dword ptr [data_bytes + 0x25c1d0], eax               // 0x0071d1cc    a3d021c200
                          {disp32} jge       _jmp_addr_0x0071d260                                 // 0x0071d1d1    0f8d89000000
-                         mov                ecx, 0x00d019f8                                      // 0x0071d1d7    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x0071d1d7    b9f819d000
                          call               _jmp_addr_0x005575e0                                 // 0x0071d1dc    e8ffa3e3ff
                          test               eax, eax                                             // 0x0071d1e1    85c0
                          {disp8} je         _jmp_addr_0x0071d260                                 // 0x0071d1e3    747b

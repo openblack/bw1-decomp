@@ -1081,7 +1081,7 @@ _jmp_addr_0x00710e10:    {disp32} mov       dword ptr [data_bytes + 0x3d3028], 0
                          fstp               dword ptr [esp]                               // 0x00710e3a    d91c24
                          call               _jmp_addr_0x0086a110                          // 0x00710e3d    e8ce921500
                          fstp               dword ptr [esp]                               // 0x00710e42    d91c24
-                         mov                ecx, 0x00d019f8                               // 0x00710e45    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00710e45    b9f819d000
                          call               _jmp_addr_0x005575d0                          // 0x00710e4a    e88167e4ff
                          pop                ecx                                           // 0x00710e4f    59
                          ret                                                              // 0x00710e50    c3
@@ -1101,7 +1101,7 @@ _jmp_addr_0x00710e10:    {disp32} mov       dword ptr [data_bytes + 0x3d3028], 0
                          nop                                                              // 0x00710e5e    90
                          nop                                                              // 0x00710e5f    90
                          push               ecx                                           // 0x00710e60    51
-                         mov                ecx, 0x00d019f8                               // 0x00710e61    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00710e61    b9f819d000
                          call               _jmp_addr_0x005575a0                          // 0x00710e66    e83567e4ff
                          push               ecx                                           // 0x00710e6b    51
                          fstp               dword ptr [esp]                               // 0x00710e6c    d91c24
@@ -1127,7 +1127,7 @@ _jmp_addr_0x00710e10:    {disp32} mov       dword ptr [data_bytes + 0x3d3028], 0
                          {disp8} mov        dword ptr [esp + 0x00], ecx                   // 0x00710ea8    894c2400
                          {disp8} fild       dword ptr [esp + 0x00]                        // 0x00710eac    db442400
                          push               ecx                                           // 0x00710eb0    51
-                         mov                ecx, 0x00d019f8                               // 0x00710eb1    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00710eb1    b9f819d000
                          fstp               dword ptr [esp]                               // 0x00710eb6    d91c24
                          call               _jmp_addr_0x00557610                          // 0x00710eb9    e85267e4ff
                          pop                ecx                                           // 0x00710ebe    59
@@ -1151,7 +1151,7 @@ _jmp_addr_0x00710e10:    {disp32} mov       dword ptr [data_bytes + 0x3d3028], 0
                          fstp               dword ptr [esp]                               // 0x00710ef8    d91c24
                          call               _jmp_addr_0x0086a110                          // 0x00710efb    e810921500
                          fstp               dword ptr [esp]                               // 0x00710f00    d91c24
-                         mov                ecx, 0x00d019f8                               // 0x00710f03    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00710f03    b9f819d000
                          call               _jmp_addr_0x005575b0                          // 0x00710f08    e8a366e4ff
                          add                esp, 0x08                                     // 0x00710f0d    83c408
                          ret                                                              // 0x00710f10    c3
@@ -1687,7 +1687,7 @@ _jmp_addr_0x00711476:    mov                eax, dword ptr [esi]                
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x007114ff    d9442410
                          push               ecx                                           // 0x00711503    51
                          fstp               dword ptr [esp]                               // 0x00711504    d91c24
-                         mov                ecx, 0x00d019f8                               // 0x00711507    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00711507    b9f819d000
                          call               @SetVisualTimeCycle__9GGameInfoFfff@20        // 0x0071150c    e80f61e4ff
                          add                esp, 0x0c                                     // 0x00711511    83c40c
                          ret                                                              // 0x00711514    c3
@@ -1708,7 +1708,7 @@ _jmp_addr_0x00711476:    mov                eax, dword ptr [esi]                
                          push               eax                                           // 0x00711531    50
                          push               ecx                                           // 0x00711532    51
                          push               edx                                           // 0x00711533    52
-                         mov                ecx, 0x00d019f8                               // 0x00711534    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00711534    b9f819d000
                          call               @SetVisualTimeCycle__9GGameInfoFfff@20        // 0x00711539    e8e260e4ff
                          ret                                                              // 0x0071153e    c3
                          nop                                                              // 0x0071153f    90
@@ -7284,7 +7284,7 @@ _jmp_addr_0x00714cf0:    {disp32} fld       dword ptr [rdata_bytes + 0xae2b8]   
                          push               ecx                                           // 0x00714d4f    51
                          push               edx                                           // 0x00714d50    52
                          push               eax                                           // 0x00714d51    50
-                         mov                ecx, 0x00d019f8                               // 0x00714d52    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00714d52    b9f819d000
                          call               @SetStartDate__9GGameInfoFlll@20              // 0x00714d57    e8742ae4ff
                          xor.s              eax, eax                                      // 0x00714d5c    33c0
                          pop                esi                                           // 0x00714d5e    5e
@@ -7297,7 +7297,7 @@ _jmp_addr_0x00714cf0:    {disp32} fld       dword ptr [rdata_bytes + 0xae2b8]   
                          push               ecx                                           // 0x00714d79    51
                          push               edx                                           // 0x00714d7a    52
                          push               eax                                           // 0x00714d7b    50
-                         mov                ecx, 0x00d019f8                               // 0x00714d7c    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00714d7c    b9f819d000
                          call               @SetStartTime__9GGameInfoFlll@20              // 0x00714d81    e86a2ae4ff
                          xor.s              eax, eax                                      // 0x00714d86    33c0
                          pop                esi                                           // 0x00714d88    5e

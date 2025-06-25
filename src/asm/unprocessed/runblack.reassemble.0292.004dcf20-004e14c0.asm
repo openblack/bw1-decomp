@@ -2178,7 +2178,7 @@ _jmp_addr_0x004de930:    ret                0x0004                              
                          {disp8} fld        dword ptr [eax + 0x30]                          // 0x004de966    d94030
                          ret                                                                // 0x004de969    c3
                          call               dword ptr [__imp__TrackMouseEvent@4]            // 0x004de96a    ff151c908a00
-                         mov                ecx, 0x00d019f8                                 // 0x004de970    b9f819d000
+                         mov                ecx, OFFSET _GGameInfo_00d019f8                 // 0x004de970    b9f819d000
                          call               _jmp_addr_0x005575e0                            // 0x004de975    e8668c0700
                          test               eax, eax                                        // 0x004de97a    85c0
                          {disp8} je         _jmp_addr_0x004de985                            // 0x004de97c    7407
