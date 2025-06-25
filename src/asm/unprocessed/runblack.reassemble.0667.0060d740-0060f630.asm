@@ -96,7 +96,7 @@ _jmp_addr_0x0060d750:    {disp8} mov        ax, word ptr [esp + 0x04]           
                          nop                                                            // 0x0060d75d    90
                          nop                                                            // 0x0060d75e    90
                          nop                                                            // 0x0060d75f    90
-_jmp_addr_0x0060d760:    {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]      // 0x0060d760    a15c19d000
+_jmp_addr_0x0060d760:    {disp32} mov       eax, dword ptr [_game]                      // 0x0060d760    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x000059c8]           // 0x0060d765    8b88c8590000
                          {disp32} lea       edx, dword ptr [eax + 0x000059b8]           // 0x0060d76b    8d90b8590000
                          push               esi                                         // 0x0060d771    56
@@ -550,7 +550,7 @@ _jmp_addr_0x0060dbef:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          pop                ebx                                         // 0x0060dc23    5b
                          add                esp, 0x00000288                             // 0x0060dc24    81c488020000
                          ret                0x0008                                      // 0x0060dc2a    c20800
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]      // 0x0060dc2d    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                      // 0x0060dc2d    8b0d5c19d000
                          call               @MyInterface__5GGameFv@4                    // 0x0060dc33    e8187cf4ff
                          {disp32} lea       ecx, dword ptr [esp + 0x000000b0]           // 0x0060dc38    8d8c24b0000000
                          push               ecx                                         // 0x0060dc3f    51

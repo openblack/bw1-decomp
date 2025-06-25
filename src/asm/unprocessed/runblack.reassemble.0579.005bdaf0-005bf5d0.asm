@@ -150,7 +150,7 @@ _jmp_addr_0x005bdccb:    {disp32} fstp      dword ptr [ecx + 0x000033d0]        
                          fsub               st, st(1)                                            // 0x005bdce3    d8e1
                          fdiv               st, st(2)                                            // 0x005bdce5    d8f2
                          {disp32} fstp      dword ptr [ecx + 0x000033d8]                         // 0x005bdce7    d999d8330000
-                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]               // 0x005bdced    a15c19d000
+                         {disp32} mov       eax, dword ptr [_game]                               // 0x005bdced    a15c19d000
                          {disp32} mov       edx, dword ptr [eax + 0x0025005c]                    // 0x005bdcf2    8b905c002500
                          {disp32} mov       eax, dword ptr [edx + 0x000045e8]                    // 0x005bdcf8    8b82e8450000
                          fstp               st(0)                                                // 0x005bdcfe    ddd8

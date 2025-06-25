@@ -123,7 +123,7 @@ _jmp_addr_0x00545025:    mov                edi, 0x00000001                     
                          {disp32} mov       dword ptr [data_bytes + 0x27271c], edi        // 0x0054502a    893d1c87c300
                          call               _StartFrame__10LH3DRenderFv                   // 0x00545030    e8aba02e00
                          call               _GetCurrentActiveBox__8SetupBoxFv             // 0x00545035    e8962eecff
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0054503a    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x0054503a    8b0d5c19d000
                          {disp32} mov       edx, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x00545040    8b153481c300
                          mov.s              ebx, eax                                      // 0x00545046    8bd8
                          neg                ebx                                           // 0x00545048    f7db
@@ -427,7 +427,7 @@ _jmp_addr_0x00545411:    cmp                eax, dword ptr [edx + 0x18]         
                          {disp8} jne        _jmp_addr_0x0054541d                          // 0x00545414    7507
                          dec                ecx                                           // 0x00545416    49
                          {disp32} mov       dword ptr [data_bytes + 0x43be44], ecx        // 0x00545417    890d441ee000
-_jmp_addr_0x0054541d:    {disp32} mov       edx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0054541d    8b155c19d000
+_jmp_addr_0x0054541d:    {disp32} mov       edx, dword ptr [_game]                        // 0x0054541d    8b155c19d000
                          {disp32} mov       eax, dword ptr [edx + 0x0025005c]             // 0x00545423    8b825c002500
                          test               eax, eax                                      // 0x00545429    85c0
                          {disp8} je         _jmp_addr_0x00545435                          // 0x0054542b    7408

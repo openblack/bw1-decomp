@@ -47,7 +47,7 @@
 
 start_0x0056a6d0_0x0056d220:
 // Snippet: asm, [0x0056a6d0, 0x0056d206)
-_jmp_addr_0x0056a6d0:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056a6d0    8b0d5c19d000
+_jmp_addr_0x0056a6d0:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0056a6d0    8b0d5c19d000
                          push               ebx                                           // 0x0056a6d6    53
                          push               esi                                           // 0x0056a6d7    56
                          push               edi                                           // 0x0056a6d8    57
@@ -68,13 +68,13 @@ _jmp_addr_0x0056a6ee:    cmp.s              eax, esi                            
                          cmp                dword ptr [esi + 0x000008e0], ebx             // 0x0056a704    399ee0080000
                          mov.s              edi, eax                                      // 0x0056a70a    8bf8
                          {disp8} je         _jmp_addr_0x0056a71e                          // 0x0056a70c    7410
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056a70e    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x0056a70e    8b0d5c19d000
                          {disp32} mov       edx, dword ptr [ecx + 0x00205a0c]             // 0x0056a714    8b910c5a2000
                          test               edx, edx                                      // 0x0056a71a    85d2
                          {disp8} je         _jmp_addr_0x0056a72a                          // 0x0056a71c    740c
 _jmp_addr_0x0056a71e:    {disp32} mov       ecx, dword ptr [eax + 0x00000a44]             // 0x0056a71e    8b88440a0000
                          {disp32} inc       dword ptr [ecx + 0x00001064]                  // 0x0056a724    ff8164100000
-_jmp_addr_0x0056a72a:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056a72a    8b0d5c19d000
+_jmp_addr_0x0056a72a:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0056a72a    8b0d5c19d000
                          push               eax                                           // 0x0056a730    50
                          call               _jmp_addr_0x005508d0                          // 0x0056a731    e89a61feff
                          test               eax, eax                                      // 0x0056a736    85c0
@@ -89,9 +89,9 @@ _jmp_addr_0x0056a73a:    cmp                dword ptr [esi + 0x000008e0], ebx   
                          {disp8} mov        dword ptr [edx + 0x18], eax                   // 0x0056a757    894218
                          {disp32} mov       eax, dword ptr [esi + 0x00000a44]             // 0x0056a75a    8b86440a0000
                          {disp8} mov        dword ptr [eax + 0x1c], ecx                   // 0x0056a760    89481c
-_jmp_addr_0x0056a763:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056a763    8b0d5c19d000
+_jmp_addr_0x0056a763:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0056a763    8b0d5c19d000
                          call               _jmp_addr_0x00550a80                          // 0x0056a769    e81263feff
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056a76e    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x0056a76e    8b0d5c19d000
                          mov.s              esi, eax                                      // 0x0056a774    8bf0
                          dec                esi                                           // 0x0056a776    4e
                          call               _jmp_addr_0x00555130                          // 0x0056a777    e8b4a9feff
@@ -1116,7 +1116,7 @@ _jmp_addr_0x0056b1f6:    test               esi, esi                            
                          {disp8} jge        _jmp_addr_0x0056b212                          // 0x0056b203    7d0d
                          {disp32} mov       edx, dword ptr [eax + 0x0000026c]             // 0x0056b205    8b906c020000
                          mov                dword ptr [edx + esi * 0x4], 0x0056af90       // 0x0056b20b    c704b290af5600
-_jmp_addr_0x0056b212:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056b212    8b0d5c19d000
+_jmp_addr_0x0056b212:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0056b212    8b0d5c19d000
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                   // 0x0056b218    8d44240c
                          push               eax                                           // 0x0056b21c    50
                          xor.s              eax, eax                                      // 0x0056b21d    33c0
@@ -1252,7 +1252,7 @@ _jmp_addr_0x0056b398:    test               esi, esi                            
                          {disp8} jge        _jmp_addr_0x0056b3b4                          // 0x0056b3a5    7d0d
                          {disp32} mov       edx, dword ptr [eax + 0x0000026c]             // 0x0056b3a7    8b906c020000
                          mov                dword ptr [edx + esi * 0x4], 0x0056af90       // 0x0056b3ad    c704b290af5600
-_jmp_addr_0x0056b3b4:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056b3b4    8b0d5c19d000
+_jmp_addr_0x0056b3b4:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0056b3b4    8b0d5c19d000
                          {disp8} lea        eax, dword ptr [esp + 0x18]                   // 0x0056b3ba    8d442418
                          push               eax                                           // 0x0056b3be    50
                          xor.s              eax, eax                                      // 0x0056b3bf    33c0
@@ -1348,7 +1348,7 @@ _jmp_addr_0x0056b4b0:    sub                esp, 0x20                           
                          {disp8} mov        eax, dword ptr [esi + 0x6c]                   // 0x0056b4be    8b466c
                          test               eax, eax                                      // 0x0056b4c1    85c0
                          {disp32} je        _jmp_addr_0x0056d1fe                          // 0x0056b4c3    0f84351d0000
-                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0056b4c9    a15c19d000
+                         {disp32} mov       eax, dword ptr [_game]                        // 0x0056b4c9    a15c19d000
                          {disp8} mov        edx, dword ptr [esi + 0x70]                   // 0x0056b4ce    8b5670
                          {disp32} mov       ecx, dword ptr [eax + 0x00205c88]             // 0x0056b4d1    8b88885c2000
                          push               edx                                           // 0x0056b4d7    52

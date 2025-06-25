@@ -5080,7 +5080,7 @@ _jmp_addr_0x004e0600:    {disp8} mov        eax, dword ptr [ecx + 0x20]         
 _jmp_addr_0x004e062d:    {disp8} mov        eax, dword ptr [ecx + 0x3c]                     // 0x004e062d    8b413c
                          test               eax, eax                                        // 0x004e0630    85c0
                          {disp8} je         _jmp_addr_0x004e0691                            // 0x004e0632    745d
-                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]          // 0x004e0634    a15c19d000
+                         {disp32} mov       eax, dword ptr [_game]                          // 0x004e0634    a15c19d000
                          push               edi                                             // 0x004e0639    57
                          {disp32} mov       edi, dword ptr [eax + 0x00205a40]               // 0x004e063a    8bb8405a2000
                          sub                edi, dword ptr [ecx + 0x4c]                     // 0x004e0640    2b794c

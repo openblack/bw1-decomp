@@ -87,7 +87,7 @@ start_0x00476d10_0x00477ec0:
                          call               _jmp_addr_0x004f25d0                     // 0x00476d2e    e89db80700
                          {disp8} mov        esi, dword ptr [eax + 0x4c]              // 0x00476d33    8b704c
                          {disp8} mov        eax, dword ptr [eax + 0x20]              // 0x00476d36    8b4020
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]   // 0x00476d39    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                   // 0x00476d39    8b0d5c19d000
                          {disp32} mov       edx, dword ptr [ecx + 0x00205a40]        // 0x00476d3f    8b91405a2000
                          mov.s              ecx, eax                                 // 0x00476d45    8bc8
                          sub.s              edx, esi                                 // 0x00476d47    2bd6

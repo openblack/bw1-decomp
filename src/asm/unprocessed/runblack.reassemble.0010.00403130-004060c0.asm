@@ -1883,7 +1883,7 @@ _jmp_addr_0x004040de:    mov.s              ecx, esi                            
                          mov.s              ecx, eax                                      // 0x004040f1    8bc8
                          call               _jmp_addr_0x00404340                          // 0x004040f3    e848020000
                          {disp8} jmp        _jmp_addr_0x0040415a                          // 0x004040f8    eb60
-_jmp_addr_0x004040fa:    {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x004040fa    a15c19d000
+_jmp_addr_0x004040fa:    {disp32} mov       eax, dword ptr [_game]                        // 0x004040fa    a15c19d000
                          {disp32} lea       edx, dword ptr [eax + 0x00205bfc]             // 0x004040ff    8d90fc5b2000
                          mov                eax, dword ptr [edx]                          // 0x00404105    8b02
                          cmp.s              eax, ebp                                      // 0x00404107    3bc5
@@ -2632,7 +2632,7 @@ _jmp_addr_0x0040485f:    push               edi                                 
                          call               @GetStoragePit__4TownFv@4                     // 0x00404871    e83a6d3300
                          cmp.s              eax, esi                                      // 0x00404876    3bc6
                          {disp32} je        _jmp_addr_0x0040494d                          // 0x00404878    0f84cf000000
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0040487e    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x0040487e    8b0d5c19d000
                          {disp32} mov       eax, dword ptr [ecx + 0x00205a40]             // 0x00404884    8b81405a2000
                          test               eax, eax                                      // 0x0040488a    85c0
                          {disp32} jbe       _jmp_addr_0x0040494d                          // 0x0040488c    0f86bb000000

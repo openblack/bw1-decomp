@@ -2840,7 +2840,7 @@ _jmp_addr_0x0061ddf9:    cmp                ebx, dword ptr [esi + 0x00000ab0]   
                          neg                ecx                                                  // 0x0061de01    f7d9
 _jmp_addr_0x0061de03:    {disp32} mov       eax, dword ptr [data_bytes + 0x22e580]               // 0x0061de03    a18045bf00
                          imul               eax, ecx                                             // 0x0061de08    0fafc1
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]               // 0x0061de0b    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                               // 0x0061de0b    8b0d5c19d000
                          {disp32} mov       edi, dword ptr [ecx + 0x000059a0]                    // 0x0061de11    8bb9a0590000
                          add.s              eax, edi                                             // 0x0061de17    03c7
                          cmp                eax, 0x0a                                            // 0x0061de19    83f80a
@@ -2848,7 +2848,7 @@ _jmp_addr_0x0061de03:    {disp32} mov       eax, dword ptr [data_bytes + 0x22e58
                          cmp                eax, 0x000005a0                                      // 0x0061de1e    3da0050000
                          {disp8} ja         _jmp_addr_0x0061de72                                 // 0x0061de23    774d
                          {disp32} mov       dword ptr [ecx + 0x000059a0], eax                    // 0x0061de25    8981a0590000
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]               // 0x0061de2b    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                               // 0x0061de2b    8b0d5c19d000
                          {disp32} mov       byte ptr [data_bytes + 0x37a601], 0x01               // 0x0061de31    c6050106d40001
                          {disp32} mov       ecx, dword ptr [ecx + 0x000059a0]                    // 0x0061de38    8b89a0590000
                          xor.s              edx, edx                                             // 0x0061de3e    33d2

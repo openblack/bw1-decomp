@@ -11884,7 +11884,7 @@ _jmp_addr_0x00561ce9:    test               esi, esi                            
                          mov.s              eax, esi                                       // 0x00561ceb    8bc6
                          {disp8} jne        _jmp_addr_0x00561cb6                           // 0x00561ced    75c7
                          {disp32} jmp       _jmp_addr_0x00561c66                           // 0x00561cef    e972ffffff
-_jmp_addr_0x00561cf4:    {disp32} mov       eax, dword ptr [data_bytes + 0x299cf8]         // 0x00561cf4    a1f8fcc500
+_jmp_addr_0x00561cf4:    {disp32} mov       eax, dword ptr [_CreatureList]                 // 0x00561cf4    a1f8fcc500
                          test               eax, eax                                       // 0x00561cf9    85c0
                          {disp8} je         _jmp_addr_0x00561d28                           // 0x00561cfb    742b
 _jmp_addr_0x00561cfd:    mov                esi, dword ptr [eax]                           // 0x00561cfd    8b30
@@ -11903,7 +11903,7 @@ _jmp_addr_0x00561cfd:    mov                esi, dword ptr [eax]                
 _jmp_addr_0x00561d22:    test               esi, esi                                       // 0x00561d22    85f6
                          mov.s              eax, esi                                       // 0x00561d24    8bc6
                          {disp8} jne        _jmp_addr_0x00561cfd                           // 0x00561d26    75d5
-_jmp_addr_0x00561d28:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]         // 0x00561d28    8b0d5c19d000
+_jmp_addr_0x00561d28:    {disp32} mov       ecx, dword ptr [_game]                         // 0x00561d28    8b0d5c19d000
                          xor.s              eax, eax                                       // 0x00561d2e    33c0
                          {disp32} mov       al, byte ptr [ecx + 0x00205a59]                // 0x00561d30    8a81595a2000
                          add                ecx, 0x00250084                                // 0x00561d36    81c184002500

@@ -11,7 +11,7 @@
 
 start_0x00426c40_0x00426c80:
 // Snippet: asm, [0x00426c40, 0x00426c68)
-_jmp_addr_0x00426c40:    {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c] // 0x00426c40    a15c19d000
+_jmp_addr_0x00426c40:    {disp32} mov     eax, dword ptr [_game]                 // 0x00426c40    a15c19d000
                          {disp32} mov     eax, dword ptr [eax + 0x00250080]      // 0x00426c45    8b8080002500
                          cmp              eax, 0x0c                              // 0x00426c4b    83f80c
                          {disp8} ja       _jmp_addr_0x00426c65                   // 0x00426c4e    7715

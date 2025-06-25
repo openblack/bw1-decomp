@@ -4267,7 +4267,7 @@ _jmp_addr_0x005fa000:    {disp32} mov       cl, byte ptr [data_bytes + 0x4bf350]
                          {disp32} mov       byte ptr [data_bytes + 0x4bf350], cl           // 0x005fa00e    880d5053e800
                          xor.s              ecx, ecx                                       // 0x005fa014    33c9
                          {disp32} mov       dword ptr [data_bytes + 0x2988d4], ecx         // 0x005fa016    890dd4e8c500
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]         // 0x005fa01c    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                         // 0x005fa01c    8b0d5c19d000
                          {disp32} mov       dword ptr [data_bytes + 0x4bf474], eax         // 0x005fa022    a37454e800
                          {disp32} mov       dword ptr [data_bytes + 0x4bf5e4], eax         // 0x005fa027    a3e455e800
                          {disp32} mov       dword ptr [data_bytes + 0x4bf5e0], eax         // 0x005fa02c    a3e055e800

@@ -1399,7 +1399,7 @@ _jmp_addr_0x004845f0:    push               edi                                 
                          xor.s              eax, eax                                      // 0x00484630    33c0
                          pop                edi                                           // 0x00484632    5f
                          ret                                                              // 0x00484633    c3
-_jmp_addr_0x00484634:    {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00484634    8b0d5c19d000
+_jmp_addr_0x00484634:    {disp32} mov       ecx, dword ptr [_game]                        // 0x00484634    8b0d5c19d000
                          call               @GetCamera__5GGameFv@4                        // 0x0048463a    e8417b0c00
                          {disp8} mov        ecx, dword ptr [eax + 0x58]                   // 0x0048463f    8b4858
                          test               ecx, ecx                                      // 0x00484642    85c9
