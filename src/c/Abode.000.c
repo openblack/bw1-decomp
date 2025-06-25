@@ -634,7 +634,7 @@ struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struc
     "dec                cl\n"                                                               // 0x004013cc    fec9
     "{disp32} mov       byte ptr [esi + 0x000000b8], cl\n"                                  // 0x004013ce    888eb8000000
     "_jmp_addr_0x004013d4:\n"
-    "{disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]\n"                     // 0x004013d4    a15c19d000
+    "{disp32} mov       eax, dword ptr [_game]                \n"                     // 0x004013d4    a15c19d000
     "or                 byte ptr [eax + 0x59c0], 1\n"                                       // 0x004013d9    8088c059000001
     "push               0x43480000\n"                                                       // 0x004013e0    6800004843
     "mov.s              ecx, esi\n"                                                         // 0x004013e5    8bce

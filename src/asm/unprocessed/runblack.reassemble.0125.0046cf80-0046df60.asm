@@ -73,7 +73,7 @@ start_0x0046cf80_0x0046df60:
 _jmp_addr_0x0046cf80:    push               ebp                                           // 0x0046cf80    55
                          push               esi                                           // 0x0046cf81    56
                          mov.s              esi, ecx                                      // 0x0046cf82    8bf1
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0046cf84    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x0046cf84    8b0d5c19d000
                          call               @MyInterface__5GGameFv@4                      // 0x0046cf8a    e8c1880e00
                          {disp8} mov        ebp, dword ptr [esp + 0x0c]                   // 0x0046cf8f    8b6c240c
                          cmp                ebp, 0x07                                     // 0x0046cf93    83fd07
@@ -122,7 +122,7 @@ _jmp_addr_0x0046d03a:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          push               ecx                                           // 0x0046d03e    51
                          {disp32} mov       ecx, dword ptr [esi + 0x000049b4]             // 0x0046d03f    8b8eb4490000
                          call               _jmp_addr_0x00436a70                          // 0x0046d045    e8269afcff
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0046d04a    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x0046d04a    8b0d5c19d000
                          push               eax                                           // 0x0046d050    50
                          push               0x59                                          // 0x0046d051    6a59
                          call               _jmp_addr_0x005514d0                          // 0x0046d053    e878440e00
@@ -309,7 +309,7 @@ _jmp_addr_0x0046d260:    {disp32} mov       eax, dword ptr [esi + 0x00004878]   
                          {disp32} mov       ecx, dword ptr [esi + 0x0000482c]             // 0x0046d274    8b8e2c480000
                          mov                edx, dword ptr [ecx]                          // 0x0046d27a    8b11
                          call               dword ptr [edx + 0x108]                       // 0x0046d27c    ff9208010000
-                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0046d282    a15c19d000
+                         {disp32} mov       eax, dword ptr [_game]                        // 0x0046d282    a15c19d000
                          cmp                dword ptr [eax + 0x00205a28], 0x01            // 0x0046d287    83b8285a200001
                          {disp8} je         _jmp_addr_0x0046d2b3                          // 0x0046d28e    7423
                          {disp32} mov       ecx, dword ptr [esi + 0x00004948]             // 0x0046d290    8b8e48490000
@@ -1070,7 +1070,7 @@ _jmp_addr_0x0046db92:    {disp8} mov        ecx, dword ptr [esi + 0x1c]         
                          mov.s              ecx, esi                                      // 0x0046db9c    8bce
                          call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x0046db9e    e8ed543900
                          {disp8} fadd       dword ptr [esp + 0x24]                        // 0x0046dba3    d8442424
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x0046dba7    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x0046dba7    8b0d5c19d000
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x0046dbad    d95c2418
                          fild               dword ptr [esi]                               // 0x0046dbb1    db06
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x0046dbb3    d80da4a38a00

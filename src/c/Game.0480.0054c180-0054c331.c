@@ -7,7 +7,7 @@ struct GCamera* __fastcall GetCamera__5GGameFv(struct GGame* this) {
 
 void __fastcall StartGame__5GGameFv(struct GGame* this) {
   __asm__(
-    "                         {disp32} mov       eax, dword ptr [data_bytes + 0x33b95c]\n"        // 0x0054c190    a15c19d000
+    "                         {disp32} mov       eax, dword ptr [_game]\n"                        // 0x0054c190    a15c19d000
     "                         sub                esp, 0x10\n"                                     // 0x0054c195    83ec10
     "                         push               ebx\n"                                           // 0x0054c198    53
     "                         push               esi\n"                                           // 0x0054c199    56

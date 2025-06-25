@@ -10009,7 +10009,7 @@ _jmp_addr_0x0049c927:    sub                esp, 0x10                           
                          pop                ebx                                            // 0x0049c95b    5b
                          pop                ecx                                            // 0x0049c95c    59
                          ret                0x0004                                         // 0x0049c95d    c20400
-                         {disp32} mov       edx, dword ptr [_data_bytes_uint_0x00d0195c]         // 0x0049c960    8b155c19d000
+                         {disp32} mov       edx, dword ptr [_game]                         // 0x0049c960    8b155c19d000
                          {disp32} mov       eax, dword ptr [ecx + 0x00001514]              // 0x0049c966    8b8114150000
                          {disp32} mov       edx, dword ptr [edx + 0x00205a40]              // 0x0049c96c    8b92405a2000
                          {disp32} mov       dword ptr [eax + 0x000010fc], edx              // 0x0049c972    8990fc100000
@@ -12948,7 +12948,7 @@ _jmp_addr_0x0049ebb3:    add                esi, 0x04                           
                          inc                ebx                                            // 0x0049ebb6    43
                          cmp                esi, 0x10                                      // 0x0049ebb7    83fe10
                          .byte              0x72, 0xb7// {disp8} jb _jmp_addr_0x0049eb73   // 0x0049ebba    72b7
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]         // 0x0049ebbc    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                         // 0x0049ebbc    8b0d5c19d000
                          {disp8} mov        eax, dword ptr [esp + 0x18]                    // 0x0049ebc2    8b442418
                          {disp32} mov       edx, dword ptr [ecx + 0x00205a40]              // 0x0049ebc6    8b91405a2000
                          {disp32} mov       dword ptr [eax * 0x4 + 0x00c64154], edx        // 0x0049ebcc    8914855441c600

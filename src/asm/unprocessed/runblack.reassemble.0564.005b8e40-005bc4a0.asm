@@ -1110,7 +1110,7 @@ _jmp_addr_0x005b9ac3:    pop                esi                                 
                          ret                0x000c                                         // 0x005b9ac7    c20c00
                          call               dword ptr [rdata_bytes + 0xd0]                 // 0x005b9aca    ff15d0908a00
 _jmp_addr_0x005b9ad0:    sub                esp, 0x0c                                      // 0x005b9ad0    83ec0c
-                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]         // 0x005b9ad3    a15c19d000
+                         {disp32} mov       eax, dword ptr [_game]                         // 0x005b9ad3    a15c19d000
                          {disp32} mov       edx, dword ptr [eax + 0x0025005c]              // 0x005b9ad8    8b905c002500
                          {disp32} mov       eax, dword ptr [edx + 0x000045e8]              // 0x005b9ade    8b82e8450000
                          test               eax, eax                                       // 0x005b9ae4    85c0
@@ -3016,7 +3016,7 @@ _jmp_addr_0x005bb40d:    pop                esi                                 
                          {disp32} mov       eax, dword ptr [data_bytes + 0x34fa94]         // 0x005bb47c    a1945ad100
                          test               eax, eax                                       // 0x005bb481    85c0
                          {disp32} je        _jmp_addr_0x005bb521                           // 0x005bb483    0f8498000000
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x30db20]         // 0x005bb489    a1203bcd00
+                         {disp32} mov       eax, dword ptr [_global]                       // 0x005bb489    a1203bcd00
                          {disp32} mov       eax, dword ptr [eax + 0x000003c0]              // 0x005bb48e    8b80c0030000
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                    // 0x005bb494    8b4c2410
                          push               esi                                            // 0x005bb498    56

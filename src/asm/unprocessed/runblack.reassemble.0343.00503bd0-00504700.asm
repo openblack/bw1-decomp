@@ -639,7 +639,7 @@ _jmp_addr_0x005042d1:    {disp8} lea        edx, dword ptr [esp + 0x2c]         
                          nop                                                              // 0x0050431e    90
                          nop                                                              // 0x0050431f    90
                          sub                esp, 0x08                                     // 0x00504320    83ec08
-                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x00504323    a15c19d000
+                         {disp32} mov       eax, dword ptr [_game]                        // 0x00504323    a15c19d000
                          push               ebx                                           // 0x00504328    53
                          push               ebp                                           // 0x00504329    55
                          {disp32} mov       ebp, dword ptr [eax + 0x00205a40]             // 0x0050432a    8ba8405a2000

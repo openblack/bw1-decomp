@@ -71,7 +71,6 @@ _debug_text_\name:
 .globl _WIN_MAIN_BETA_PATCH_MSG_BOX_TITLE
 .globl _WIN_MAIN_BETA_PATCH_REG_KEY
 .globl _WIN_MAIN_LIONHEAD_REG_ADDR
-.globl _data_bytes_uint_0x00d0195c
 .globl _SetupThingDraw
 .globl _ScriptSignatures
 .globl _SigmoidTable
@@ -19210,5 +19209,3 @@ ASCIZ_ALIGNED "Added PNG Support" 4                                             
 
 .asciz "YyHhTtMM"                                                                                                  // [0x265f4f] 0x009c6000 + 0x265f4f = 0x00c2bf4f
 .byte 0xe8, 0x3f, 0xe8, 0x00, 0x74, 0xba, 0xc2, 0x00                                                               // [0x265f58] 0x009c6000 + 0x265f58 = 0x00c2bf58
-
-.set _data_bytes_uint_0x00d0195c, 0x00d0195c

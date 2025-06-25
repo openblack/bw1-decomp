@@ -306,7 +306,7 @@ _jmp_addr_0x005bc7b5:    ret                                                    
                          nop                                                                     // 0x005bc7bd    90
                          nop                                                                     // 0x005bc7be    90
                          nop                                                                     // 0x005bc7bf    90
-_jmp_addr_0x005bc7c0:    {disp32} mov       eax, dword ptr [data_bytes + 0x30db20]               // 0x005bc7c0    a1203bcd00
+_jmp_addr_0x005bc7c0:    {disp32} mov       eax, dword ptr [_global]                             // 0x005bc7c0    a1203bcd00
                          {disp32} mov       eax, dword ptr [eax + 0x000003ac]                    // 0x005bc7c5    8b80ac030000
                          ret                                                                     // 0x005bc7cb    c3
                          nop                                                                     // 0x005bc7cc    90

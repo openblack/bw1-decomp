@@ -1333,7 +1333,7 @@ _jmp_addr_0x006dc420:    sub                esp, 0x18                           
                          {disp32} mov       ecx, dword ptr [eax * 0x8 + 0x00c0986c]        // 0x006dc518    8b0cc56c98c000
                          {disp32} mov       edx, dword ptr [eax * 0x8 + 0x00c09868]        // 0x006dc51f    8b14c56898c000
                          push               ecx                                            // 0x006dc526    51
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]         // 0x006dc527    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                         // 0x006dc527    8b0d5c19d000
                          push               edx                                            // 0x006dc52d    52
                          push               0x11                                           // 0x006dc52e    6a11
                          call               @MyInterface__5GGameFv@4                       // 0x006dc530    e81b93e7ff

@@ -66,7 +66,7 @@ _GetTribe__5GGameF10TRIBE_TYPE@4:    {disp8} mov      eax, dword ptr [esp + 0x04
                          nop                                                      // 0x0055263e    90
                          nop                                                      // 0x0055263f    90
 @AddPlayerSparkles__5GGameFv@4:    sub              esp, 0x20                               // 0x00552640    83ec20
-                         {disp32} mov     eax, dword ptr [_data_bytes_uint_0x00d0195c]  // 0x00552643    a15c19d000
+                         {disp32} mov     eax, dword ptr [_game]                  // 0x00552643    a15c19d000
                          push             ebx                                     // 0x00552648    53
                          push             ebp                                     // 0x00552649    55
                          push             esi                                     // 0x0055264a    56

@@ -1647,7 +1647,7 @@ _jmp_addr_0x004802e7:    {disp32} mov       eax, dword ptr [esi + 0x00005184]   
                          call               @CloseSegment__6LHFileFv@4                    // 0x00480303    e848dc3300
                          mov.s              ecx, edi                                      // 0x00480308    8bcf
                          call               @Close__6LHFileFv@4                           // 0x0048030a    e8b1d83300
-_jmp_addr_0x0048030f:    {disp32} mov       ecx, dword ptr [data_bytes + 0x30db20]        // 0x0048030f    8b0d203bcd00
+_jmp_addr_0x0048030f:    {disp32} mov       ecx, dword ptr [_global]                      // 0x0048030f    8b0d203bcd00
                          test               ecx, ecx                                      // 0x00480315    85c9
                          {disp8} je         _jmp_addr_0x00480325                          // 0x00480317    740c
                          {disp32} mov       edx, dword ptr [esi + 0x00005288]             // 0x00480319    8b9688520000

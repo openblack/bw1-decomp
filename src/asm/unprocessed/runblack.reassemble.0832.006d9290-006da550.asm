@@ -371,7 +371,7 @@ _jmp_addr_0x006d94e6:    push              0x0000068b                           
                          add               esp, 0x14                                     // 0x006d95bf    83c414
                          cmp.s             edi, ebp                                      // 0x006d95c2    3bfd
                          {disp8} je        _jmp_addr_0x006d960d                          // 0x006d95c4    7447
-                         {disp32} mov      ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x006d95c6    8b0d5c19d000
+                         {disp32} mov      ecx, dword ptr [_game]                        // 0x006d95c6    8b0d5c19d000
                          xor.s             eax, eax                                      // 0x006d95cc    33c0
                          {disp32} mov      al, byte ptr [ecx + 0x00205a5b]               // 0x006d95ce    8a815b5a2000
                          push              0x000aba52                                    // 0x006d95d4    6852ba0a00

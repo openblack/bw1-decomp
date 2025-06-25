@@ -888,7 +888,7 @@ _jmp_addr_0x006f5ab5:    pop                esi                                 
                          nop                                                              // 0x006f5abe    90
                          nop                                                              // 0x006f5abf    90
                          push               ecx                                           // 0x006f5ac0    51
-                         {disp32} mov       ecx, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x006f5ac1    8b0d5c19d000
+                         {disp32} mov       ecx, dword ptr [_game]                        // 0x006f5ac1    8b0d5c19d000
                          xor.s              eax, eax                                      // 0x006f5ac7    33c0
                          {disp32} mov       al, byte ptr [ecx + 0x00205a59]               // 0x006f5ac9    8a81595a2000
                          push               esi                                           // 0x006f5acf    56
@@ -1640,7 +1640,7 @@ _jmp_addr_0x006f61c7:    pop                edi                                 
                          push               edi                                           // 0x006f61e7    57
                          mov.s              edi, ecx                                      // 0x006f61e8    8bf9
                          {disp8} je         _jmp_addr_0x006f6245                          // 0x006f61ea    7459
-                         {disp32} mov       eax, dword ptr [_data_bytes_uint_0x00d0195c]        // 0x006f61ec    a15c19d000
+                         {disp32} mov       eax, dword ptr [_game]                        // 0x006f61ec    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00250090]             // 0x006f61f1    8b8890002500
                          push               0x00bdff00                                    // 0x006f61f7    6800ffbd00
                          call               _jmp_addr_0x006eb760                          // 0x006f61fc    e85f55ffff
@@ -3143,7 +3143,7 @@ _jmp_addr_0x006f6e6d:    {disp8} mov        esi, dword ptr [esi + 0x28]         
                          pop                esi                                           // 0x006f6e8e    5e
                          ret                                                              // 0x006f6e8f    c3
                          {disp32} mov       esi, dword ptr [esi + 0x00000120]             // 0x006f6e90    8bb620010000
-                         sub                esi, 0x00ccf070                               // 0x006f6e96    81ee70f0cc00
+                         sub                esi, OFFSET _GFieldTypeInfo_00ccf070          // 0x006f6e96    81ee70f0cc00
                          mov                eax, 0x60606061                               // 0x006f6e9c    b861606060
                          imul               esi                                           // 0x006f6ea1    f7ee
                          mov.s              eax, edx                                      // 0x006f6ea3    8bc2
