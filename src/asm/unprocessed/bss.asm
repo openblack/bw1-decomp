@@ -74,6 +74,13 @@
 .globl _Point2D_00d3ee60
 .globl _Point2D_00d3ee68
 .globl _Point2D_00d3ee70
+.globl _CircleHugStateInfoT_00d3ee78
+.globl _DAT_00d3eed0
+.globl _DAT_00d3eed1
+.globl _DAT_00d3eed4
+.globl _DAT_00d3eedc
+.globl _DAT_00d3eee4             
+.globl _DAT_00d3eef4
 
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
@@ -123,7 +130,17 @@ _MagicInfoTable:                           .space 0x2a * 0x58                   
  _Point2D_00d3ee60:                        .space 8                                                                // [0x378e60] 0x009c6000 + 0x378e60 = 0x00d3ee60
  _Point2D_00d3ee68:                        .space 8                                                                // [0x378e68] 0x009c6000 + 0x378e68 = 0x00d3ee68
  _Point2D_00d3ee70:                        .space 8                                                                // [0x378e70] 0x009c6000 + 0x378e70 = 0x00d3ee70
-                                           .space 0x145358                                                         // [0x378e78] 0x009c6000 + 0x378e78 = 0x00d3ee78
+_CircleHugStateInfoT_00d3ee78:             .space 0x54                                                             // [0x378e78] 0x009c6000 + 0x378e78 = 0x00d3ee78
+                                           .space 0x4                                                              // [0x378ecc] 0x009c6000 + 0x378ecc = 0x00d3eecc
+_DAT_00d3eed0:                             .space 0x1                                                              // [0x378ed0] 0x009c6000 + 0x378ed0 = 0x00d3eed0
+_DAT_00d3eed1:                             .space 0x1                                                              // [0x378ed1] 0x009c6000 + 0x378ed1 = 0x00d3eed1
+                                           .space 0x2                                                              // [0x378ed2] 0x009c6000 + 0x378ed2 = 0x00d3eed2
+_DAT_00d3eed4:                             .space 0x8                                                              // [0x378ed4] 0x009c6000 + 0x378ed4 = 0x00d3eed4
+_DAT_00d3eedc:                             .space 0x8                                                              // [0x378edc] 0x009c6000 + 0x378edc = 0x00d3eedc
+_DAT_00d3eee4:                             .space 0x8                                                              // [0x378ee4] 0x009c6000 + 0x378ee4 = 0x00d3eee4
+                                           .space 0x8                                                              // [0x378eec] 0x009c6000 + 0x378eec = 0x00d3eeec
+_DAT_00d3eef4:                             .space 0x8                                                              // [0x378ef4] 0x009c6000 + 0x378ef4 = 0x00d3eef4
+                                           .space 0x1452d4                                                         // [0x378efc] 0x009c6000 + 0x378efc = 0x00d3eefc
 
 ___lconv_static_null:                      .space 4                                                                // [0x4be1d0] 0x009c6000 + 0x4be1d0 = 0x00e841d0
 __umaskval:                                .space 4                                                                // [0x4be1d4] 0x009c6000 + 0x4be1d4 = 0x00e841d4

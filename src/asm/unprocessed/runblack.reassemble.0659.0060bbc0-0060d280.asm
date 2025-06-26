@@ -1035,7 +1035,7 @@ _jmp_addr_0x0060c580:    {disp8} lea        edx, dword ptr [esp + 0x10]         
                          push               edx                                           // 0x0060c584    52
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x0060c585    8d44241c
                          push               eax                                           // 0x0060c589    50
-                         mov                ecx, 0x00d3ee78                               // 0x0060c58a    b978eed300
+                         mov                ecx, OFFSET _CircleHugStateInfoT_00d3ee78        // 0x0060c58a    b978eed300
                          {disp8} mov        dword ptr [esp + 0x18], edi                   // 0x0060c58f    897c2418
                          {disp8} mov        dword ptr [esp + 0x1c], ebp                   // 0x0060c593    896c241c
                          call               _jmp_addr_0x00610490                          // 0x0060c597    e8f43e0000
@@ -1313,7 +1313,7 @@ _jmp_addr_0x0060c8cb:    cmp                eax, 0x0000ffff                     
                          push               edx                                           // 0x0060c8d6    52
                          {disp8} lea        eax, dword ptr [esp + 0x24]                   // 0x0060c8d7    8d442424
                          push               eax                                           // 0x0060c8db    50
-                         mov                ecx, 0x00d3ee78                               // 0x0060c8dc    b978eed300
+                         mov                ecx, OFFSET _CircleHugStateInfoT_00d3ee78        // 0x0060c8dc    b978eed300
                          {disp8} mov        dword ptr [esp + 0x20], ebx                   // 0x0060c8e1    895c2420
                          {disp8} mov        dword ptr [esp + 0x24], ebp                   // 0x0060c8e5    896c2424
                          call               _jmp_addr_0x00610490                          // 0x0060c8e9    e8a23b0000
