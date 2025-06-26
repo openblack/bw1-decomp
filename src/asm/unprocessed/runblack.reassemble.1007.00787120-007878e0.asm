@@ -469,7 +469,7 @@ _jmp_addr_0x00787608:    {disp32} mov       dword ptr [esi + 0x000001b0], 0xff80
 _jmp_addr_0x0078765b:    mov                eax, dword ptr [ebx]                          // 0x0078765b    8b03
                          cmp.s              eax, ebp                                      // 0x0078765d    3bc5
                          {disp8} jle        _jmp_addr_0x007876df                          // 0x0078765f    7e7e
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x00787661    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00787661    8b0d34fee900
                          {disp8} jl         _jmp_addr_0x0078766d                          // 0x00787667    7c04
                          cmp                eax, dword ptr [ecx]                          // 0x00787669    3b01
                          {disp8} jl         _jmp_addr_0x0078766f                          // 0x0078766b    7c02

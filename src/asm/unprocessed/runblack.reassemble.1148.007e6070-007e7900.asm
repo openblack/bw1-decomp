@@ -120,7 +120,7 @@ _jmp_addr_0x007e6070:    sub              esp, 0x2c                             
                          push             esi                                           // 0x007e6075    56
                          push             edi                                           // 0x007e6076    57
                          mov.s            esi, ecx                                      // 0x007e6077    8bf1
-                         push             0x00e90650                                    // 0x007e6079    685006e900
+                         push             0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e6079    685006e900
                          call             dword ptr [__imp__EnterCriticalSection@4]     // 0x007e607e    ff1580918a00
                          mov              eax, dword ptr [esi]                          // 0x007e6084    8b06
                          {disp8} lea      ecx, dword ptr [esi + 0x74]                   // 0x007e6086    8d4e74
@@ -276,7 +276,7 @@ _jmp_addr_0x007e61d8:    {disp8} mov      edx, dword ptr [esp + 0x44]           
                          mov.s            ecx, esi                                      // 0x007e6262    8bce
                          call             _jmp_addr_0x007e67e0                          // 0x007e6264    e877050000
                          mov.s            ebp, eax                                      // 0x007e6269    8be8
-_jmp_addr_0x007e626b:    push             0x00e90650                                    // 0x007e626b    685006e900
+_jmp_addr_0x007e626b:    push             0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e626b    685006e900
                          call             dword ptr [__imp__LeaveCriticalSection@4]     // 0x007e6270    ff1584918a00
                          pop              edi                                           // 0x007e6276    5f
                          mov.s            eax, ebp                                      // 0x007e6277    8bc5

@@ -1146,7 +1146,7 @@ _jmp_addr_0x005e08d5:    add                esi, 0x34                           
                          {disp8} mov        dword ptr [esp + 0x40], 0x41536873             // 0x005e0b82    c744244073685341
                          {disp8} mov        dword ptr [esp + 0x44], 0xc19d4189             // 0x005e0b8a    c744244489419dc1
                          call               _jmp_addr_0x007faff0                           // 0x005e0b92    e859a42100
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]         // 0x005e0b97    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x005e0b97    8b1534fee900
                          mov                ecx, dword ptr [edx]                           // 0x005e0b9d    8b0a
                          mov                eax, 0x000001f2                                // 0x005e0b9f    b8f2010000
                          cmp.s              ecx, eax                                       // 0x005e0ba4    3bc8
@@ -1187,7 +1187,7 @@ _jmp_addr_0x005e0baa:    {disp8} mov        ecx, dword ptr [ebx + 0x3c]         
                          {disp8} mov        ecx, dword ptr [ebx + 0x3c]                    // 0x005e0c10    8b4b3c
                          mov                edx, dword ptr [ecx]                           // 0x005e0c13    8b11
                          call               dword ptr [edx + 0x100]                        // 0x005e0c15    ff9200010000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]         // 0x005e0c1b    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x005e0c1b    8b1534fee900
                          mov                ecx, dword ptr [edx]                           // 0x005e0c21    8b0a
                          mov                eax, 0x000001f8                                // 0x005e0c23    b8f8010000
                          cmp.s              ecx, eax                                       // 0x005e0c28    3bc8
@@ -1540,7 +1540,7 @@ _jmp_addr_0x005e1124:    xor.s              ecx, ecx                            
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x005e115a    8d542418
                          mov.s              ecx, eax                                       // 0x005e115e    8bc8
                          call               dword ptr [edi + 0x20]                         // 0x005e1160    ff5720
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]         // 0x005e1163    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x005e1163    8b1534fee900
                          mov                ecx, dword ptr [edx]                           // 0x005e1169    8b0a
                          mov                eax, 0x00000153                                // 0x005e116b    b853010000
                          cmp.s              ecx, eax                                       // 0x005e1170    3bc8
@@ -1576,7 +1576,7 @@ _jmp_addr_0x005e11c1:    mov                ecx, 0x00000002                     
                          {disp8} mov        dword ptr [esi + 0x34], ebx                    // 0x005e11c9    895e34
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                           // 0x005e11cc    e8ffa22200
                          {disp8} mov        dword ptr [esi + 0x3c], eax                    // 0x005e11d1    89463c
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]         // 0x005e11d4    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x005e11d4    8b1534fee900
                          mov                ebp, dword ptr [edx]                           // 0x005e11da    8b2a
                          mov                ecx, 0x000001f8                                // 0x005e11dc    b9f8010000
                          cmp.s              ebp, ecx                                       // 0x005e11e1    3be9
@@ -1618,7 +1618,7 @@ _jmp_addr_0x005e11e7:    {disp8} mov        edx, dword ptr [edx + ecx * 0x4 + 0x
                          mov                ecx, 0x00000002                                // 0x005e124d    b902000000
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                           // 0x005e1252    e879a22200
                          {disp8} mov        dword ptr [esi + 0x40], eax                    // 0x005e1257    894640
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]         // 0x005e125a    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x005e125a    8b1534fee900
                          mov                ebp, dword ptr [edx]                           // 0x005e1260    8b2a
                          mov                ecx, 0x00000010                                // 0x005e1262    b910000000
                          cmp.s              ebp, ecx                                       // 0x005e1267    3be9
@@ -1654,7 +1654,7 @@ _jmp_addr_0x005e129c:    {disp8} mov        ecx, dword ptr [esi + 0x40]         
                          xor.s              ecx, ecx                                       // 0x005e12be    33c9
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                           // 0x005e12c0    e80ba22200
                          {disp8} mov        dword ptr [esi + 0x44], eax                    // 0x005e12c5    894644
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]         // 0x005e12c8    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x005e12c8    8b1534fee900
                          mov                ebp, dword ptr [edx]                           // 0x005e12ce    8b2a
                          mov                ecx, 0x00000215                                // 0x005e12d0    b915020000
                          cmp.s              ebp, ecx                                       // 0x005e12d5    3be9

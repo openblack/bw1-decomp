@@ -2306,12 +2306,12 @@ _jmp_addr_0x007de143:    mov                al, -0x01                           
                          push               eax                                           // 0x007de182    50
                          call               _jmp_addr_0x007e45f0                          // 0x007de183    e868640000
 _jmp_addr_0x007de188:    {disp32} mov       edi, dword ptr [__imp__EnterCriticalSection@4]// 0x007de188    8b3d80918a00
-                         push               0x00e90650                                    // 0x007de18e    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de18e    685006e900
                          call               edi                                           // 0x007de193    ffd7
-                         push               0x00e90650                                    // 0x007de195    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de195    685006e900
                          call               edi                                           // 0x007de19a    ffd7
                          {disp32} mov       edi, dword ptr [__imp__LeaveCriticalSection@4]// 0x007de19c    8b3d84918a00
-                         push               0x00e90650                                    // 0x007de1a2    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de1a2    685006e900
                          {disp32} mov       dword ptr [data_bytes + 0x4bf20c], 0x00000001 // 0x007de1a7    c7050c52e80001000000
                          call               edi                                           // 0x007de1b1    ffd7
                          push               0x1                                           // 0x007de1b3    6a01
@@ -2322,7 +2322,7 @@ _jmp_addr_0x007de188:    {disp32} mov       edi, dword ptr [__imp__EnterCritical
                          push               ecx                                           // 0x007de1c5    51
                          mov.s              ecx, esi                                      // 0x007de1c6    8bce
                          call               _jmp_addr_0x007de580                          // 0x007de1c8    e8b3030000
-                         push               0x00e90650                                    // 0x007de1cd    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de1cd    685006e900
                          mov.s              esi, eax                                      // 0x007de1d2    8bf0
                          call               edi                                           // 0x007de1d4    ffd7
                          call               _jmp_addr_0x007db910                          // 0x007de1d6    e835d7ffff
@@ -2825,11 +2825,11 @@ _jmp_addr_0x007de74a:    {disp32} mov       al, byte ptr [data_bytes + 0x4c65e4]
                          test               al, al                                        // 0x007de757    84c0
                          {disp32} jne       _jmp_addr_0x007de809                          // 0x007de759    0f85aa000000
                          {disp32} mov       ebx, dword ptr [__imp__EnterCriticalSection@4]// 0x007de75f    8b1d80918a00
-                         push               0x00e90650                                    // 0x007de765    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de765    685006e900
                          {disp32} mov       byte ptr [data_bytes + 0x4c65e4], 0x01        // 0x007de76a    c605e4c5e80001
                          call               ebx                                           // 0x007de771    ffd3
                          {disp32} mov       ebp, dword ptr [__imp__LeaveCriticalSection@4]// 0x007de773    8b2d84918a00
-                         push               0x00e90650                                    // 0x007de779    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de779    685006e900
                          call               ebp                                           // 0x007de77e    ffd5
                          {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x007de780    8b442418
                          {disp8} mov        ecx, dword ptr [esi + 0x64]                   // 0x007de784    8b4e64
@@ -2862,12 +2862,12 @@ _jmp_addr_0x007de798:    call               _jmp_addr_0x007e69b0                
                          mov.s              ecx, esi                                      // 0x007de7c5    8bce
                          call               _jmp_addr_0x007ddcb0                          // 0x007de7c7    e8e4f4ffff
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x007de7cc    89442410
-_jmp_addr_0x007de7d0:    push               0x00e90650                                    // 0x007de7d0    685006e900
+_jmp_addr_0x007de7d0:    push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de7d0    685006e900
                          call               ebx                                           // 0x007de7d5    ffd3
                          push               0x1                                           // 0x007de7d7    6a01
                          call               _jmp_addr_0x007e6960                          // 0x007de7d9    e882810000
                          add                esp, 0x04                                     // 0x007de7de    83c404
-                         push               0x00e90650                                    // 0x007de7e1    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de7e1    685006e900
                          call               ebp                                           // 0x007de7e6    ffd5
                          mov.s              ecx, esi                                      // 0x007de7e8    8bce
                          call               _jmp_addr_0x007de820                          // 0x007de7ea    e831000000
@@ -3061,7 +3061,7 @@ _jmp_addr_0x007de9bc:    push               edi                                 
                          {disp32} mov       dword ptr [esp + 0x00000110], eax             // 0x007de9de    89842410010000
                          {disp8} mov        ax, word ptr [esi + 0x0a]                     // 0x007de9e5    668b460a
                          and                eax, 0x0000ffff                               // 0x007de9e9    25ffff0000
-                         push               0x00e90650                                    // 0x007de9ee    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007de9ee    685006e900
                          {disp32} mov       dword ptr [esp + 0x00000118], eax             // 0x007de9f3    89842418010000
                          {disp8} mov        eax, dword ptr [esi + 0x68]                   // 0x007de9fa    8b4668
                          {disp32} mov       word ptr [esp + 0x00000124], ax               // 0x007de9fd    6689842424010000
@@ -3074,17 +3074,17 @@ _jmp_addr_0x007de9bc:    push               edi                                 
                          {disp32} mov       word ptr [esp + 0x0000012a], 0x0000           // 0x007dea2b    66c784242a0100000000
                          {disp32} mov       dword ptr [esp + 0x00000120], eax             // 0x007dea35    89842420010000
                          call               edi                                           // 0x007dea3c    ffd7
-                         push               0x00e90650                                    // 0x007dea3e    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007dea3e    685006e900
                          call               edi                                           // 0x007dea43    ffd7
                          {disp32} mov       edi, dword ptr [__imp__LeaveCriticalSection@4]// 0x007dea45    8b3d84918a00
-                         push               0x00e90650                                    // 0x007dea4b    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007dea4b    685006e900
                          {disp32} mov       dword ptr [data_bytes + 0x4bf20c], 0x00000001 // 0x007dea50    c7050c52e80001000000
                          call               edi                                           // 0x007dea5a    ffd7
                          push               0x1                                           // 0x007dea5c    6a01
                          push               0x0                                           // 0x007dea5e    6a00
                          mov                ecx, 0x00e85204                               // 0x007dea60    b90452e800
                          call               @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16                          // 0x007dea65    e8566d0000
-                         push               0x00e90650                                    // 0x007dea6a    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007dea6a    685006e900
                          call               edi                                           // 0x007dea6f    ffd7
                          {disp8} mov        esi, dword ptr [esi + 0x24]                   // 0x007dea71    8b7624
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x007dea74    8d4c240c

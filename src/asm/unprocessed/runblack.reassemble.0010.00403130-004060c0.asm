@@ -671,7 +671,7 @@ _jmp_addr_0x00403530:    xor.s              eax, eax                            
                          push               edi                                           // 0x00403597    57
                          {disp8} mov        dword ptr [esp + 0x14], ecx                   // 0x00403598    894c2414
                          call               dword ptr [eax + 0x608]                       // 0x0040359c    ff9008060000
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x004035a2    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x004035a2    8b0d34fee900
                          xor.s              edi, edi                                      // 0x004035a8    33ff
                          cmp.s              eax, edi                                      // 0x004035aa    3bc7
                          {disp8} jl         _jmp_addr_0x004035b2                          // 0x004035ac    7c04
@@ -5006,7 +5006,7 @@ _jmp_addr_0x0040597c:    pop                esi                                 
 _jmp_addr_0x00405980:    push               esi                                           // 0x00405980    56
                          xor.s              ecx, ecx                                      // 0x00405981    33c9
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x00405983    e8485b4000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x00405988    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00405988    8b1534fee900
                          {disp32} mov       dword ptr [data_bytes + 0x286c70], eax        // 0x0040598e    a370ccc400
                          mov                esi, dword ptr [edx]                          // 0x00405993    8b32
                          mov                ecx, 0x00000085                               // 0x00405995    b985000000

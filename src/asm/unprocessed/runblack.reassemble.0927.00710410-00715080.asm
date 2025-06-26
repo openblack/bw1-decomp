@@ -6535,7 +6535,7 @@ _jmp_addr_0x0071452e:    test               edx, edx                            
                          sar                esi, 4                                        // 0x0071454d    c1fe04
                          xor.s              ebx, ebx                                      // 0x00714550    33db
                          shl                eax, 5                                        // 0x00714552    c1e005
-                         {disp32} mov       bl, byte ptr [eax + esi * 0x1 + 0x00e9c964]   // 0x00714555    8a9c3064c9e900
+                         {disp32} mov       bl, byte ptr [eax + esi + ?g_index_block@LH3DIsland@@3PAY0CA@EA]   // 0x00714555    8a9c3064c9e900
                          mov.s              esi, ebx                                      // 0x0071455c    8bf3
                          test               esi, esi                                      // 0x0071455e    85f6
                          {disp8} je         _jmp_addr_0x007145aa                          // 0x00714560    7448
@@ -6547,7 +6547,7 @@ _jmp_addr_0x0071452e:    test               edx, edx                            
                          mov.s              eax, ecx                                      // 0x0071456e    8bc1
                          and                eax, 0x0f                                     // 0x00714570    83e00f
                          add.s              ebx, eax                                      // 0x00714573    03d8
-                         {disp32} mov       eax, dword ptr [esi * 0x4 + 0x00e9c564]       // 0x00714575    8b04b564c5e900
+                         {disp32} mov       eax, dword ptr [esi * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]       // 0x00714575    8b04b564c5e900
                          lea                eax, dword ptr [eax + ebx * 0x8]              // 0x0071457c    8d04d8
                          test               eax, eax                                      // 0x0071457f    85c0
                          {disp8} je         _jmp_addr_0x007145aa                          // 0x00714581    7427

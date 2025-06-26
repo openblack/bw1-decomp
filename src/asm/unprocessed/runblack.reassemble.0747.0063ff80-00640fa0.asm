@@ -177,7 +177,7 @@ _jmp_addr_0x00640033:    push              0x4                                  
                          push              0x1                                           // 0x006400ec    6a01
                          mov               ecx, 0x00e85050                               // 0x006400ee    b95050e800
                          call              _jmp_addr_0x007de090                          // 0x006400f3    e898df1900
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x504638]        // 0x006400f8    a138a6ec00
+                         {disp32} mov      eax, dword ptr [_Direct3DDevice7]             // 0x006400f8    a138a6ec00
                          mov               edx, dword ptr [eax]                          // 0x006400fd    8b10
                          push              0x0                                           // 0x006400ff    6a00
                          push              0x3f800000                                    // 0x00640101    680000803f
@@ -361,7 +361,7 @@ _jmp_addr_0x00640328:    {disp32} mov      ecx, dword ptr [data_bytes + 0x379008
                          {disp8} jne       _jmp_addr_0x00640328                          // 0x0064035a    75cc
                          {disp32} mov      ecx, dword ptr [esi + 0x0000482c]             // 0x0064035c    8b8e2c480000
                          call              _jmp_addr_0x00814fd0                          // 0x00640362    e8694c1d00
-                         {disp32} mov      dword ptr [data_bytes + 0x271d9c], 0x00e9ce28 // 0x00640367    c7059c7dc30028cee900
+                         {disp32} mov      dword ptr [data_bytes + 0x271d9c], OFFSET ?g_current_list_matrix@LH3DMesh@@2PAULH3DMatrix@@A // 0x00640367    c7059c7dc30028cee900
                          {disp32} mov      ecx, dword ptr [esi + 0x0000482c]             // 0x00640371    8b8e2c480000
                          mov               eax, dword ptr [ecx]                          // 0x00640377    8b01
                          mov               edx, 0x00000001                               // 0x00640379    ba01000000
@@ -505,7 +505,7 @@ _jmp_addr_0x00640443:    push              ebp                                  
 _jmp_addr_0x006404f2:    {disp8} mov       esi, dword ptr [ecx + 0x04]                   // 0x006404f2    8b7104
 _jmp_addr_0x006404f5:    mov               ecx, 0x00000002                               // 0x006404f5    b902000000
                          call              @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x006404fa    e8d1af1c00
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x006404ff    8b0d34fee900
+                         {disp32} mov      ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x006404ff    8b0d34fee900
                          mov.s             ebx, eax                                      // 0x00640505    8bd8
                          {disp8} mov       eax, dword ptr [esp + 0x20]                   // 0x00640507    8b442420
                          test              eax, eax                                      // 0x0064050b    85c0
@@ -524,7 +524,7 @@ _jmp_addr_0x00640515:    {disp8} mov       edx, dword ptr [ecx + eax * 0x4 + 0x0
                          {disp8} jmp       _jmp_addr_0x00640560                          // 0x0064052b    eb33
 _jmp_addr_0x0064052d:    xor.s             ecx, ecx                                      // 0x0064052d    33c9
                          call              @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x0064052f    e89caf1c00
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x00640534    8b0d34fee900
+                         {disp32} mov      ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00640534    8b0d34fee900
                          mov.s             ebx, eax                                      // 0x0064053a    8bd8
                          {disp8} mov       eax, dword ptr [esp + 0x20]                   // 0x0064053c    8b442420
                          test              eax, eax                                      // 0x00640540    85c0

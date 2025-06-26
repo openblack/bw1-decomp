@@ -128,7 +128,7 @@ _jmp_addr_0x0060d78f:    test               eax, eax                            
                          shl                edx, 5                                      // 0x0060d7b2    c1e205
                          mov.s              esi, ecx                                    // 0x0060d7b5    8bf1
                          sar                esi, 4                                      // 0x0060d7b7    c1fe04
-                         {disp32} mov       bl, byte ptr [edx + esi * 0x1 + 0x00e9c964] // 0x0060d7ba    8a9c3264c9e900
+                         {disp32} mov       bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@3PAY0CA@EA] // 0x0060d7ba    8a9c3264c9e900
                          mov.s              edx, ebx                                    // 0x0060d7c1    8bd3
                          test               edx, edx                                    // 0x0060d7c3    85d2
                          pop                ebx                                         // 0x0060d7c5    5b
@@ -137,7 +137,7 @@ _jmp_addr_0x0060d78f:    test               eax, eax                            
                          mov.s              esi, eax                                    // 0x0060d7cb    8bf0
                          shl                esi, 4                                      // 0x0060d7cd    c1e604
                          add.s              esi, eax                                    // 0x0060d7d0    03f0
-                         {disp32} mov       eax, dword ptr [edx * 0x4 + 0x00e9c564]     // 0x0060d7d2    8b049564c5e900
+                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]     // 0x0060d7d2    8b049564c5e900
                          and                ecx, 0x0f                                   // 0x0060d7d9    83e10f
                          add.s              esi, ecx                                    // 0x0060d7dc    03f1
                          lea                eax, dword ptr [eax + esi * 0x8]            // 0x0060d7de    8d04f0

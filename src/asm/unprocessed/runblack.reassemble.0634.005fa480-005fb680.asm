@@ -211,7 +211,7 @@ _jmp_addr_0x005fa55b:    push               esi                                 
 _jmp_addr_0x005fa5e6:    xor.s              ecx, ecx                                      // 0x005fa5e6    33c9
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x005fa5e8    e8e30e2100
                          cmp.s              esi, ebx                                      // 0x005fa5ed    3bf3
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x005fa5ef    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x005fa5ef    8b0d34fee900
                          mov.s              edi, eax                                      // 0x005fa5f5    8bf8
                          mov.s              eax, esi                                      // 0x005fa5f7    8bc6
                          {disp8} jl         _jmp_addr_0x005fa5ff                          // 0x005fa5f9    7c04

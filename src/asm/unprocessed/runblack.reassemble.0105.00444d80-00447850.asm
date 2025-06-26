@@ -3870,7 +3870,7 @@ _jmp_addr_0x0044771f:    {disp32} mov       eax, dword ptr [data_bytes + 0x50424
                          mov.s              esi, ecx                                      // 0x00447736    8bf1
                          cmp.s              eax, esi                                      // 0x00447738    3bc6
                          {disp8} je         _jmp_addr_0x0044775e                          // 0x0044773a    7422
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x0044773c    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x0044773c    a138a6ec00
                          mov                edx, dword ptr [eax]                          // 0x00447741    8b10
                          push               esi                                           // 0x00447743    56
                          push               0x16                                          // 0x00447744    6a16
@@ -3882,7 +3882,7 @@ _jmp_addr_0x0044771f:    {disp32} mov       eax, dword ptr [data_bytes + 0x50424
                          {disp32} mov       dword ptr [data_bytes + 0x504248], esi        // 0x00447758    893548a2ec00
 _jmp_addr_0x0044775e:    cmp                dword ptr [data_bytes + 0x50424c], 0x08       // 0x0044775e    833d4ca2ec0008
                          {disp8} je         _jmp_addr_0x00447785                          // 0x00447765    741e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x00447767    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x00447767    a138a6ec00
                          mov                ecx, dword ptr [eax]                          // 0x0044776c    8b08
                          push               0x8                                           // 0x0044776e    6a08
                          push               0x17                                          // 0x00447770    6a17
@@ -3896,7 +3896,7 @@ _jmp_addr_0x0044775e:    cmp                dword ptr [data_bytes + 0x50424c], 0
 _jmp_addr_0x00447785:    {disp32} mov       eax, dword ptr [data_bytes + 0x504228]        // 0x00447785    a128a2ec00
                          test               eax, eax                                      // 0x0044778a    85c0
                          {disp8} je         _jmp_addr_0x004477a6                          // 0x0044778c    7418
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x0044778e    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x0044778e    a138a6ec00
                          mov                edx, dword ptr [eax]                          // 0x00447793    8b10
                          push               0x0                                           // 0x00447795    6a00
                          push               0xe                                           // 0x00447797    6a0e
@@ -3916,7 +3916,7 @@ _jmp_addr_0x004477a6:    push               0x6                                 
                          add                esp, 0x18                                     // 0x004477c5    83c418
                          cmp                eax, 0x04                                     // 0x004477c8    83f804
                          {disp8} je         _jmp_addr_0x004477eb                          // 0x004477cb    741e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x004477cd    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x004477cd    a138a6ec00
                          mov                ecx, dword ptr [eax]                          // 0x004477d2    8b08
                          push               0x4                                           // 0x004477d4    6a04
                          push               0x17                                          // 0x004477d6    6a17
@@ -3929,7 +3929,7 @@ _jmp_addr_0x004477a6:    push               0x6                                 
                          {disp32} mov       dword ptr [data_bytes + 0x50424c], eax        // 0x004477e6    a34ca2ec00
 _jmp_addr_0x004477eb:    cmp                dword ptr [data_bytes + 0x504228], 0x01       // 0x004477eb    833d28a2ec0001
                          {disp8} je         _jmp_addr_0x00447810                          // 0x004477f2    741c
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x004477f4    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x004477f4    a138a6ec00
                          mov                edx, dword ptr [eax]                          // 0x004477f9    8b10
                          push               0x1                                           // 0x004477fb    6a01
                          push               0xe                                           // 0x004477fd    6a0e

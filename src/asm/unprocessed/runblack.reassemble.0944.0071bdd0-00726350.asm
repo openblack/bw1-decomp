@@ -3033,7 +3033,7 @@ _jmp_addr_0x0071d8e0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          mov.s              esi, eax                                             // 0x0071d91b    8bf0
                          sar                esi, 4                                               // 0x0071d91d    c1fe04
                          shl                ecx, 5                                               // 0x0071d920    c1e105
-                         {disp32} mov       bl, byte ptr [ecx + esi * 0x1 + 0x00e9c964]          // 0x0071d923    8a9c3164c9e900
+                         {disp32} mov       bl, byte ptr [ecx + esi + ?g_index_block@LH3DIsland@@3PAY0CA@EA]          // 0x0071d923    8a9c3164c9e900
                          mov.s              esi, ebx                                             // 0x0071d92a    8bf3
                          test               esi, esi                                             // 0x0071d92c    85f6
                          pop                ebx                                                  // 0x0071d92e    5b
@@ -3042,7 +3042,7 @@ _jmp_addr_0x0071d8e0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          mov.s              ecx, edx                                             // 0x0071d934    8bca
                          shl                ecx, 4                                               // 0x0071d936    c1e104
                          add.s              ecx, edx                                             // 0x0071d939    03ca
-                         {disp32} mov       edx, dword ptr [esi * 0x4 + 0x00e9c564]              // 0x0071d93b    8b14b564c5e900
+                         {disp32} mov       edx, dword ptr [esi * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]              // 0x0071d93b    8b14b564c5e900
                          and                eax, 0x0f                                            // 0x0071d942    83e00f
                          add.s              ecx, eax                                             // 0x0071d945    03c8
                          lea                eax, dword ptr [edx + ecx * 0x8]                     // 0x0071d947    8d04ca

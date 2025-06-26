@@ -8810,7 +8810,7 @@ _jmp_addr_0x007e4897:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 _jmp_addr_0x007e48bb:    pop                esi                                           // 0x007e48bb    5e
                          add                esp, 0x10                                     // 0x007e48bc    83c410
                          ret                                                              // 0x007e48bf    c3
-_jmp_addr_0x007e48c0:    {disp32} mov       eax, dword ptr [data_bytes + 0x4bf040]        // 0x007e48c0    a14050e800
+_jmp_addr_0x007e48c0:    {disp32} mov       eax, dword ptr [_LHSys]                       // 0x007e48c0    a14050e800
                          push               0x0                                           // 0x007e48c5    6a00
                          push               0x00e90668                                    // 0x007e48c7    686806e900
                          push               0x00000700                                    // 0x007e48cc    6800070000
@@ -9038,7 +9038,7 @@ _jmp_addr_0x007e4b59:    {disp32} mov       dword ptr [ecx + 0x000000f0], eax   
 _jmp_addr_0x007e4b80:    push               esi                                           // 0x007e4b80    56
                          push               edi                                           // 0x007e4b81    57
                          mov.s              esi, ecx                                      // 0x007e4b82    8bf1
-                         push               0x00e90650                                    // 0x007e4b84    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4b84    685006e900
                          call               dword ptr [__imp__EnterCriticalSection@4]     // 0x007e4b89    ff1580918a00
                          {disp8} mov        edx, dword ptr [esp + 0x0c]                   // 0x007e4b8f    8b54240c
                          {disp32} mov       cl, byte ptr [esi + 0x0000014c]               // 0x007e4b93    8a8e4c010000
@@ -9059,7 +9059,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x0000010c], edx             // 0x007e4bdb    89960c010000
                          {disp32} mov       edx, dword ptr [esi + 0x000000c0]             // 0x007e4be1    8b96c0000000
                          and                al, -0x09                                     // 0x007e4be7    24f7
-                         push               0x00e90650                                    // 0x007e4be9    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4be9    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000110], edx             // 0x007e4bee    899610010000
                          {disp32} mov       byte ptr [esi + 0x0000014c], cl               // 0x007e4bf4    888e4c010000
                          {disp32} mov       byte ptr [esi + 0x00000100], al               // 0x007e4bfa    888600010000
@@ -9071,7 +9071,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       edx, dword ptr [esi + 0x000000c0]             // 0x007e4c11    8b96c0000000
                          and                al, -0x03                                     // 0x007e4c17    24fd
                          {disp32} mov       dword ptr [esi + 0x00000124], ecx             // 0x007e4c19    898e24010000
-                         push               0x00e90650                                    // 0x007e4c1f    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4c1f    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000128], edx             // 0x007e4c24    899628010000
                          {disp32} mov       byte ptr [esi + 0x00000100], al               // 0x007e4c2a    888600010000
                          call               dword ptr [__imp__LeaveCriticalSection@4]     // 0x007e4c30    ff1584918a00
@@ -9083,7 +9083,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x00000114], edx             // 0x007e4c44    899614010000
                          {disp32} mov       edx, dword ptr [esi + 0x000000c0]             // 0x007e4c4a    8b96c0000000
                          and                al, 0x7f                                      // 0x007e4c50    247f
-                         push               0x00e90650                                    // 0x007e4c52    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4c52    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000118], edx             // 0x007e4c57    899618010000
                          {disp32} mov       byte ptr [esi + 0x0000014c], cl               // 0x007e4c5d    888e4c010000
                          {disp32} mov       byte ptr [esi + 0x00000100], al               // 0x007e4c63    888600010000
@@ -9095,7 +9095,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       edx, dword ptr [esi + 0x000000c0]             // 0x007e4c7a    8b96c0000000
                          and                al, -0x41                                     // 0x007e4c80    24bf
                          {disp32} mov       dword ptr [esi + 0x0000012c], ecx             // 0x007e4c82    898e2c010000
-                         push               0x00e90650                                    // 0x007e4c88    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4c88    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000130], edx             // 0x007e4c8d    899630010000
                          {disp32} mov       byte ptr [esi + 0x00000100], al               // 0x007e4c93    888600010000
                          call               dword ptr [__imp__LeaveCriticalSection@4]     // 0x007e4c99    ff1584918a00
@@ -9107,7 +9107,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x00000104], edx             // 0x007e4cad    899604010000
                          {disp32} mov       edx, dword ptr [esi + 0x000000c0]             // 0x007e4cb3    8b96c0000000
                          and                al, -0x05                                     // 0x007e4cb9    24fb
-                         push               0x00e90650                                    // 0x007e4cbb    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4cbb    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000108], edx             // 0x007e4cc0    899608010000
                          {disp32} mov       byte ptr [esi + 0x0000014c], cl               // 0x007e4cc6    888e4c010000
                          {disp32} mov       byte ptr [esi + 0x00000100], al               // 0x007e4ccc    888600010000
@@ -9119,7 +9119,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       edx, dword ptr [esi + 0x000000c0]             // 0x007e4ce3    8b96c0000000
                          and                al, -0x02                                     // 0x007e4ce9    24fe
                          {disp32} mov       dword ptr [esi + 0x0000011c], ecx             // 0x007e4ceb    898e1c010000
-                         push               0x00e90650                                    // 0x007e4cf1    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4cf1    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000120], edx             // 0x007e4cf6    899620010000
                          {disp32} mov       byte ptr [esi + 0x00000100], al               // 0x007e4cfc    888600010000
                          call               dword ptr [__imp__LeaveCriticalSection@4]     // 0x007e4d02    ff1584918a00
@@ -9129,7 +9129,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       eax, dword ptr [esi + 0x000000bc]             // 0x007e4d0d    8b86bc000000
                          {disp32} mov       ecx, dword ptr [esi + 0x000000c0]             // 0x007e4d13    8b8ec0000000
                          {disp32} mov       dword ptr [esi + 0x00000134], eax             // 0x007e4d19    898634010000
-                         push               0x00e90650                                    // 0x007e4d1f    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4d1f    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000138], ecx             // 0x007e4d24    898e38010000
                          call               dword ptr [__imp__LeaveCriticalSection@4]     // 0x007e4d2a    ff1584918a00
                          pop                edi                                           // 0x007e4d30    5f
@@ -9138,7 +9138,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       edx, dword ptr [esi + 0x000000bc]             // 0x007e4d35    8b96bc000000
                          {disp32} mov       eax, dword ptr [esi + 0x000000c0]             // 0x007e4d3b    8b86c0000000
                          {disp32} mov       dword ptr [esi + 0x0000013c], edx             // 0x007e4d41    89963c010000
-                         push               0x00e90650                                    // 0x007e4d47    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4d47    685006e900
                          {disp32} mov       dword ptr [esi + 0x00000140], eax             // 0x007e4d4c    898640010000
                          call               dword ptr [__imp__LeaveCriticalSection@4]     // 0x007e4d52    ff1584918a00
                          pop                edi                                           // 0x007e4d58    5f
@@ -9148,7 +9148,7 @@ _jmp_addr_0x007e4b80:    push               esi                                 
                          {disp32} mov       edx, dword ptr [esi + 0x000000c0]             // 0x007e4d63    8b96c0000000
                          {disp32} mov       dword ptr [esi + 0x00000144], ecx             // 0x007e4d69    898e44010000
                          {disp32} mov       dword ptr [esi + 0x00000148], edx             // 0x007e4d6f    899648010000
-_jmp_addr_0x007e4d75:    push               0x00e90650                                    // 0x007e4d75    685006e900
+_jmp_addr_0x007e4d75:    push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x007e4d75    685006e900
                          call               dword ptr [__imp__LeaveCriticalSection@4]     // 0x007e4d7a    ff1584918a00
                          pop                edi                                           // 0x007e4d80    5f
                          pop                esi                                           // 0x007e4d81    5e

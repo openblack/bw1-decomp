@@ -550,7 +550,7 @@ _jmp_addr_0x004ed5d4:    {disp32} mov       ecx, dword ptr [esi + 0x00004828]   
                          push               eax                                                  // 0x004ed5da    50
                          push               edi                                                  // 0x004ed5db    57
                          call               _jmp_addr_0x00848350                                 // 0x004ed5dc    e86fad3500
-                         mov                edi, 0x00e9ce28                                      // 0x004ed5e1    bf28cee900
+                         mov                edi, OFFSET ?g_current_list_matrix@LH3DMesh@@2PAULH3DMatrix@@A                                      // 0x004ed5e1    bf28cee900
                          {disp32} mov       dword ptr [data_bytes + 0x271d9c], edi               // 0x004ed5e6    893d9c7dc300
                          {disp32} mov       ecx, dword ptr [esi + 0x000047f0]                    // 0x004ed5ec    8b8ef0470000
                          {disp32} mov       dword ptr [data_bytes + 0x271d9c], ecx               // 0x004ed5f2    890d9c7dc300

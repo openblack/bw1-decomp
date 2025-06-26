@@ -2505,7 +2505,7 @@ _jmp_addr_0x0079e158:    test               esi, esi                            
                          {disp8} jmp        _jmp_addr_0x0079e197                          // 0x0079e172    eb23
 _jmp_addr_0x0079e174:    cmp                eax, 0x08                                     // 0x0079e174    83f808
                          {disp8} je         _jmp_addr_0x0079e197                          // 0x0079e177    741e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x0079e179    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x0079e179    a138a6ec00
                          mov                ecx, dword ptr [eax]                          // 0x0079e17e    8b08
                          push               0x8                                           // 0x0079e180    6a08
                          push               0x17                                          // 0x0079e182    6a17
@@ -2547,7 +2547,7 @@ _jmp_addr_0x0079e1eb:    test               esi, esi                            
                          {disp8} jne        _jmp_addr_0x0079e212                          // 0x0079e1ed    7523
                          cmp                eax, 0x04                                     // 0x0079e1ef    83f804
                          {disp8} je         _jmp_addr_0x0079e212                          // 0x0079e1f2    741e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x0079e1f4    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x0079e1f4    a138a6ec00
                          mov                edx, dword ptr [eax]                          // 0x0079e1f9    8b10
                          push               0x4                                           // 0x0079e1fb    6a04
                          push               0x17                                          // 0x0079e1fd    6a17
@@ -2878,7 +2878,7 @@ _jmp_addr_0x0079e6af:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} mov        dword ptr [esp + 0x18], 0x00000000            // 0x0079e6d0    c744241800000000
 _jmp_addr_0x0079e6d8:    cmp                dword ptr [data_bytes + 0x50424c], 0x08       // 0x0079e6d8    833d4ca2ec0008
                          {disp8} je         _jmp_addr_0x0079e6ff                          // 0x0079e6df    741e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x0079e6e1    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x0079e6e1    a138a6ec00
                          mov                ecx, dword ptr [eax]                          // 0x0079e6e6    8b08
                          push               0x8                                           // 0x0079e6e8    6a08
                          push               0x17                                          // 0x0079e6ea    6a17
@@ -2960,7 +2960,7 @@ _jmp_addr_0x0079e6ff:    {disp32} mov       edx, dword ptr [esi + 0x000000c4]   
                          call               _jmp_addr_0x0083dfe0                          // 0x0079e816    e8c5f70900
                          cmp                dword ptr [data_bytes + 0x50424c], 0x04       // 0x0079e81b    833d4ca2ec0004
                          {disp8} je         _jmp_addr_0x0079e842                          // 0x0079e822    741e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x0079e824    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x0079e824    a138a6ec00
                          mov                edx, dword ptr [eax]                          // 0x0079e829    8b10
                          push               0x4                                           // 0x0079e82b    6a04
                          push               0x17                                          // 0x0079e82d    6a17

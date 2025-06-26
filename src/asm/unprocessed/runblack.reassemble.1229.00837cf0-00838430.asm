@@ -234,7 +234,7 @@ _jmp_addr_0x00837f29:    mov               edx, dword ptr [ebx]                 
                          {disp32} mov      ebx, dword ptr [esp + 0x000000ac]              // 0x00837f45    8b9c24ac000000
                          cmp               dword ptr [ebx * 0x4 + 0x00ec81d0], edi        // 0x00837f4c    393c9dd081ec00
                          {disp8} je        _jmp_addr_0x00837fb4                           // 0x00837f53    745f
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x504638]         // 0x00837f55    a138a6ec00
+                         {disp32} mov      eax, dword ptr [_Direct3DDevice7]              // 0x00837f55    a138a6ec00
                          mov               ecx, dword ptr [eax]                           // 0x00837f5a    8b08
                          push              edi                                            // 0x00837f5c    57
                          push              ebx                                            // 0x00837f5d    53
@@ -255,7 +255,7 @@ _jmp_addr_0x00837f86:    {disp32} mov      edi, dword ptr [esp + 0x000000ac]    
                          {disp32} mov      eax, dword ptr [edi * 0x4 + 0x00ec81d0]        // 0x00837f8d    8b04bdd081ec00
                          test              eax, eax                                       // 0x00837f94    85c0
                          {disp8} je        _jmp_addr_0x00837fb4                           // 0x00837f96    741c
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x504638]         // 0x00837f98    a138a6ec00
+                         {disp32} mov      eax, dword ptr [_Direct3DDevice7]              // 0x00837f98    a138a6ec00
                          mov               edx, dword ptr [eax]                           // 0x00837f9d    8b10
                          push              0x0                                            // 0x00837f9f    6a00
                          push              edi                                            // 0x00837fa1    57
@@ -509,7 +509,7 @@ _jmp_addr_0x00838282:    {disp32} mov      eax, dword ptr [data_bytes + 0x4d6d94
                          {disp32} mov      eax, dword ptr [esi * 0x4 + 0x00ec81d0]        // 0x008382af    8b04b5d081ec00
                          test              eax, eax                                       // 0x008382b6    85c0
                          {disp32} je       _jmp_addr_0x008383d1                           // 0x008382b8    0f8413010000
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x504638]         // 0x008382be    a138a6ec00
+                         {disp32} mov      eax, dword ptr [_Direct3DDevice7]              // 0x008382be    a138a6ec00
                          mov               ecx, dword ptr [eax]                           // 0x008382c3    8b08
                          push              0x0                                            // 0x008382c5    6a00
                          push              esi                                            // 0x008382c7    56
@@ -557,7 +557,7 @@ _jmp_addr_0x0083834e:    {disp8} mov       eax, dword ptr [esi + 0x04]          
                          {disp32} mov      ebx, dword ptr [esp + 0x000000ac]              // 0x00838357    8b9c24ac000000
                          cmp               dword ptr [ebx * 0x4 + 0x00ec81d0], edi        // 0x0083835e    393c9dd081ec00
                          {disp8} je        _jmp_addr_0x0083837e                           // 0x00838365    7417
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x504638]         // 0x00838367    a138a6ec00
+                         {disp32} mov      eax, dword ptr [_Direct3DDevice7]              // 0x00838367    a138a6ec00
                          mov               edx, dword ptr [eax]                           // 0x0083836c    8b10
                          push              edi                                            // 0x0083836e    57
                          push              ebx                                            // 0x0083836f    53
@@ -571,7 +571,7 @@ _jmp_addr_0x0083837e:    {disp8} mov       eax, dword ptr [esi + 0x04]          
 _jmp_addr_0x00838388:    {disp32} mov      edi, dword ptr [esp + 0x000000ac]              // 0x00838388    8bbc24ac000000
                          cmp               dword ptr [edi * 0x4 + 0x00ec81d0], ebx        // 0x0083838f    391cbdd081ec00
                          {disp8} je        _jmp_addr_0x008383af                           // 0x00838396    7417
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x504638]         // 0x00838398    a138a6ec00
+                         {disp32} mov      eax, dword ptr [_Direct3DDevice7]              // 0x00838398    a138a6ec00
                          mov               ecx, dword ptr [eax]                           // 0x0083839d    8b08
                          push              ebx                                            // 0x0083839f    53
                          push              edi                                            // 0x008383a0    57

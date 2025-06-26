@@ -2404,7 +2404,7 @@ _jmp_addr_0x00780b40:    sub                esp, 0x08                           
                          test               eax, eax                                      // 0x00780b4d    85c0
                          {disp8} mov        dword ptr [esi + 0x6c], eax                   // 0x00780b4f    89466c
                          {disp8} je         _jmp_addr_0x00780bcc                          // 0x00780b52    7478
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x00780b54    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00780b54    8b1534fee900
                          mov                cl, 0x01                                      // 0x00780b5a    b101
                          {disp8} mov        byte ptr [esp + 0x07], cl                     // 0x00780b5c    884c2407
                          {disp8} mov        byte ptr [esp + 0x08], cl                     // 0x00780b60    884c2408

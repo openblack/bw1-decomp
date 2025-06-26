@@ -4031,7 +4031,7 @@ _jmp_addr_0x004dfa4b:    test               esi, esi                            
                          sar                edi, 4                                          // 0x004dfa6a    c1ff04
                          xor.s              eax, eax                                        // 0x004dfa6d    33c0
                          shl                ecx, 5                                          // 0x004dfa6f    c1e105
-                         {disp32} mov       al, byte ptr [ecx + edi * 0x1 + 0x00e9c964]     // 0x004dfa72    8a843964c9e900
+                         {disp32} mov       al, byte ptr [ecx + edi + ?g_index_block@LH3DIsland@@3PAY0CA@EA]     // 0x004dfa72    8a843964c9e900
                          mov.s              edi, eax                                        // 0x004dfa79    8bf8
                          test               edi, edi                                        // 0x004dfa7b    85ff
                          {disp8} je         _jmp_addr_0x004dfab5                            // 0x004dfa7d    7436
@@ -4043,7 +4043,7 @@ _jmp_addr_0x004dfa4b:    test               esi, esi                            
                          mov.s              eax, edx                                        // 0x004dfa8b    8bc2
                          and                eax, 0x0f                                       // 0x004dfa8d    83e00f
                          add.s              ecx, eax                                        // 0x004dfa90    03c8
-                         {disp32} mov       eax, dword ptr [edi * 0x4 + 0x00e9c564]         // 0x004dfa92    8b04bd64c5e900
+                         {disp32} mov       eax, dword ptr [edi * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]         // 0x004dfa92    8b04bd64c5e900
                          lea                eax, dword ptr [eax + ecx * 0x8]                // 0x004dfa99    8d04c8
                          test               eax, eax                                        // 0x004dfa9c    85c0
                          {disp8} je         _jmp_addr_0x004dfab5                            // 0x004dfa9e    7415

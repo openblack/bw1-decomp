@@ -6197,7 +6197,7 @@ _CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords:
                          mov                edx, dword ptr [esi]                                 // 0x0052e8a0    8b16
                          mov.s              ecx, esi                                             // 0x0052e8a2    8bce
                          call               dword ptr [edx + 0x608]                              // 0x0052e8a4    ff9208060000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]               // 0x0052e8aa    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]               // 0x0052e8aa    8b1534fee900
                          xor.s              ebx, ebx                                             // 0x0052e8b0    33db
                          cmp.s              eax, ebx                                             // 0x0052e8b2    3bc3
                          {disp8} jl         _jmp_addr_0x0052e8ba                                 // 0x0052e8b4    7c04

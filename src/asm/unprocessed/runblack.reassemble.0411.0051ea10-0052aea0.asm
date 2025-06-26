@@ -2102,7 +2102,7 @@ _jmp_addr_0x0051fcaf:    {disp8} mov        ecx, dword ptr [esi + 0x18]         
                          test               ecx, ecx                                             // 0x0051fcb2    85c9
                          {disp8} je         _jmp_addr_0x0051fd16                                 // 0x0051fcb4    7460
                          test               edi, edi                                             // 0x0051fcb6    85ff
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]               // 0x0051fcb8    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]               // 0x0051fcb8    8b1534fee900
                          push               ebx                                                  // 0x0051fcbe    53
                          mov.s              eax, edi                                             // 0x0051fcbf    8bc7
                          {disp8} jl         _jmp_addr_0x0051fcc7                                 // 0x0051fcc1    7c04
@@ -16039,7 +16039,7 @@ _jmp_addr_0x00528970:    sub                esp, 0x10                           
                          mov.s              ecx, esi                                             // 0x00528a67    8bce
                          call               dword ptr [edx + 0x608]                              // 0x00528a69    ff9208060000
                          cmp.s              eax, edi                                             // 0x00528a6f    3bc7
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]               // 0x00528a71    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]               // 0x00528a71    8b1534fee900
                          {disp8} jl         _jmp_addr_0x00528a7d                                 // 0x00528a77    7c04
                          cmp                eax, dword ptr [edx]                                 // 0x00528a79    3b02
                          {disp8} jl         _jmp_addr_0x00528a7f                                 // 0x00528a7b    7c02

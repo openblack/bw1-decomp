@@ -314,7 +314,7 @@ _jmp_addr_0x00422d71:    push               ebx                                 
                          add                esp, 0x04                                     // 0x00422d7e    83c404
                          test               ebx, ebx                                      // 0x00422d81    85db
                          {disp32} mov       dword ptr [edi + esi * 0x4 + 0x00000080], eax // 0x00422d83    8984b780000000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x00422d8a    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00422d8a    8b1534fee900
                          mov.s              ecx, ebx                                      // 0x00422d90    8bcb
                          {disp8} jl         _jmp_addr_0x00422d98                          // 0x00422d92    7c04
                          cmp                ebx, dword ptr [edx]                          // 0x00422d94    3b1a
@@ -654,7 +654,7 @@ _jmp_addr_0x00423090:    {disp8} fld        dword ptr [esp + 0x5c]              
 _jmp_addr_0x004230d0:    {disp8} mov        ecx, dword ptr [ecx + 0x40]                   // 0x004230d0    8b4940
                          test               ecx, ecx                                      // 0x004230d3    85c9
                          {disp8} je         _jmp_addr_0x00423102                          // 0x004230d5    742b
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x004230d7    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x004230d7    8b1534fee900
                          push               esi                                           // 0x004230dd    56
                          mov                esi, dword ptr [edx]                          // 0x004230de    8b32
                          mov                eax, 0x000000d4                               // 0x004230e0    b8d4000000
