@@ -2568,7 +2568,7 @@ _globl_ct_0x0077a870:    call               _jmp_addr_0x0077a880                
                          nop                                                              // 0x0077a87d    90
                          nop                                                              // 0x0077a87e    90
                          nop                                                              // 0x0077a87f    90
-_jmp_addr_0x0077a880:    mov                eax, 0x00dcbd30                               // 0x0077a880    b830bddc00
+_jmp_addr_0x0077a880:    mov                eax, OFFSET _GWorshipSiteInfo_ARRAY_00dcbd30  // 0x0077a880    b830bddc00
                          mov                ecx, 0x00000009                               // 0x0077a885    b909000000
                          xor.s              edx, edx                                      // 0x0077a88a    33d2
 .att_syntax
@@ -2592,7 +2592,7 @@ _jmp_addr_0x0077a88c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x0077a8af    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0077a8b0    8b442404
                          mov                dword ptr [eax], 0x00000009                   // 0x0077a8b4    c70009000000
-                         mov                eax, 0x00dcbd30                               // 0x0077a8ba    b830bddc00
+                         mov                eax, OFFSET _GWorshipSiteInfo_ARRAY_00dcbd30  // 0x0077a8ba    b830bddc00
                          ret                0x0004                                        // 0x0077a8bf    c20400
                          nop                                                              // 0x0077a8c2    90
                          nop                                                              // 0x0077a8c3    90
@@ -2954,7 +2954,7 @@ _jmp_addr_0x0077ac50:    sub                esp, 0x0c                           
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x0077ac6c    89442424
                          {disp8} mov        dword ptr [esp + 0x08], edx                   // 0x0077ac70    89542408
                          mov.s              ecx, ebx                                      // 0x0077ac74    8bcb
-                         sub                ecx, 0x00da57a8                               // 0x0077ac76    81e9a857da00
+                         sub                ecx, OFFSET _GTribeInfo_ARRAY_00da57a8        // 0x0077ac76    81e9a857da00
                          mov                eax, 0x92492493                               // 0x0077ac7c    b893244992
                          imul               ecx                                           // 0x0077ac81    f7e9
                          add.s              edx, ecx                                      // 0x0077ac83    03d1
@@ -2970,7 +2970,7 @@ _jmp_addr_0x0077ac50:    sub                esp, 0x0c                           
                          shl                esi, 5                                        // 0x0077ac9b    c1e605
                          push               edi                                           // 0x0077ac9e    57
                          {disp8} mov        edi, dword ptr [esp + 0x28]                   // 0x0077ac9f    8b7c2428
-                         add                esi, 0x00dcbd30                               // 0x0077aca3    81c630bddc00
+                         add                esi, OFFSET _GWorshipSiteInfo_ARRAY_00dcbd30  // 0x0077aca3    81c630bddc00
                          test               edi, edi                                      // 0x0077aca9    85ff
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000            // 0x0077acab    c744242000000000
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x0077acb3    d95c2418
@@ -4804,7 +4804,7 @@ _jmp_addr_0x0077c066:    pop                edi                                 
                          push               ecx                                           // 0x0077c0d0    51
                          {disp32} lea       edx, dword ptr [esi * 0x8 + 0x00000000]       // 0x0077c0d1    8d14f500000000
                          sub.s              edx, esi                                      // 0x0077c0d8    2bd6
-                         {disp32} lea       eax, dword ptr [edx * 0x4 + 0x00da57a8]       // 0x0077c0da    8d0495a857da00
+                         {disp32} lea       eax, dword ptr [edx * 0x4 + _GTribeInfo_ARRAY_00da57a8]       // 0x0077c0da    8d0495a857da00
                          push               eax                                           // 0x0077c0e1    50
                          push               ebx                                           // 0x0077c0e2    53
                          push               ebp                                           // 0x0077c0e3    55
@@ -4912,7 +4912,7 @@ _jmp_addr_0x0077c179:    mov                edx, dword ptr [eax]                
                          call               _jmp_addr_0x0077c2e0                          // 0x0077c20a    e8d1000000
                          {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00c22fdc]       // 0x0077c20f    8b0485dc2fc200
                          push               eax                                           // 0x0077c216    50
-                         sub                edi, 0x00dcbd30                               // 0x0077c217    81ef30bddc00
+                         sub                edi, OFFSET _GWorshipSiteInfo_ARRAY_00dcbd30  // 0x0077c217    81ef30bddc00
                          mov                eax, 0x2e8ba2e9                               // 0x0077c21d    b8e9a28b2e
                          imul               edi                                           // 0x0077c222    f7ef
                          sar                edx, 6                                        // 0x0077c224    c1fa06
@@ -5792,10 +5792,10 @@ _jmp_addr_0x0077ca27:    {disp8} lea        eax, dword ptr [esp + 0x1c]         
                          lea                ecx, dword ptr [eax + eax * 0x4]              // 0x0077ca58    8d0c80
                          shl                ecx, 4                                        // 0x0077ca5b    c1e104
                          push               edi                                           // 0x0077ca5e    57
-                         add                ecx, 0x00d9d678                               // 0x0077ca5f    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0077ca5f    81c178d6d900
                          push               ecx                                           // 0x0077ca65    51
                          {disp8} lea        edx, dword ptr [esp + 0x20]                   // 0x0077ca66    8d542420
-                         push               0x00d9d3e8                                    // 0x0077ca6a    68e8d3d900
+                         push               0x00d9d3e8 /* _GSpellIconInfo_00d9d3e8 */     // 0x0077ca6a    68e8d3d900
                          push               edx                                           // 0x0077ca6f    52
                          call               _Create__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi                          // 0x0077ca70    e83b280000
                          add                esp, 0x1c                                     // 0x0077ca75    83c41c

@@ -203,7 +203,7 @@ _jmp_addr_0x005bd2a0:    sub                esp, 0x18                           
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x005bd2e6    89442404
                          {disp8} fiadd      dword ptr [esp + 0x0c]                        // 0x005bd2ea    da44240c
                          call               _jmp_addr_0x007a1400                          // 0x005bd2ee    e80d411e00
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]             // 0x005bd2f3    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                    // 0x005bd2f3    d905e039e800
                          fadd.s             st(0), st(0)                                  // 0x005bd2f9    dcc0
                          push               ecx                                           // 0x005bd2fb    51
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x005bd2fc    8944240c

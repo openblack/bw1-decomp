@@ -2965,7 +2965,7 @@ _jmp_addr_0x005b7c10:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          faddp              st(1), st                                     // 0x005b7c71    dec1
                          {disp8} fadd       dword ptr [edx + 0x2c]                        // 0x005b7c73    d8422c
                          {disp8} fst        dword ptr [ecx + 0x0c]                        // 0x005b7c76    d9510c
-                         {disp32} fcomp     dword ptr [data_bytes + 0x4bd9e0]             // 0x005b7c79    d81de039e800
+                         {disp32} fcomp     dword ptr [_near_clipping]                    // 0x005b7c79    d81de039e800
                          fnstsw             ax                                            // 0x005b7c7f    dfe0
                          test               ah, 0x01                                      // 0x005b7c81    f6c401
                          {disp8} je         _jmp_addr_0x005b7c8d                          // 0x005b7c84    7407
@@ -3014,7 +3014,7 @@ _jmp_addr_0x005b7d11:    {disp32} fcomp     dword ptr [data_bytes + 0x264b04]   
                          {disp8} jne        _jmp_addr_0x005b7d27                          // 0x005b7d1c    7509
                          {disp32} mov       edx, dword ptr [data_bytes + 0x264b04]        // 0x005b7d1e    8b1504abc200
                          {disp8} mov        dword ptr [ecx + 0x04], edx                   // 0x005b7d24    895104
-_jmp_addr_0x005b7d27:    {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]             // 0x005b7d27    d905e039e800
+_jmp_addr_0x005b7d27:    {disp32} fld       dword ptr [_near_clipping]                    // 0x005b7d27    d905e039e800
                          {disp8} fmul       dword ptr [ecx + 0x0c]                        // 0x005b7d2d    d8490c
                          {disp8} fst        dword ptr [ecx + 0x0c]                        // 0x005b7d30    d9510c
                          {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x005b7d33    d90590a38a00

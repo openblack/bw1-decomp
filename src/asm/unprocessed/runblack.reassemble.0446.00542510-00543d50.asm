@@ -453,7 +453,7 @@ _jmp_addr_0x00542a2a:    {disp32} mov       ecx, dword ptr [ebx + 0x0000320c]   
                          shl                eax, 5                                        // 0x00542a52    c1e005
                          {disp32} mov       ecx, dword ptr [eax + ecx * 0x1 + 0x00000a64] // 0x00542a55    8b8c08640a0000
                          push               ecx                                           // 0x00542a5c    51
-                         push               0x00d4bd38                                    // 0x00542a5d    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x00542a5d    6838bdd400
                          call               _jmp_addr_0x005dea60                          // 0x00542a62    e8f9bf0900
                          {disp32} mov       ecx, dword ptr [ebx + 0x0000320c]             // 0x00542a67    8b8b0c320000
                          mov                edx, dword ptr [ecx]                          // 0x00542a6d    8b11
@@ -997,7 +997,7 @@ _jmp_addr_0x0054319f:    xor.s              eax, eax                            
                          shl                eax, 5                                        // 0x005431b5    c1e005
                          {disp32} mov       ecx, dword ptr [eax + ecx * 0x1 + 0x00000a64] // 0x005431b8    8b8c08640a0000
                          push               ecx                                           // 0x005431bf    51
-                         push               0x00d4bd38                                    // 0x005431c0    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x005431c0    6838bdd400
                          call               _jmp_addr_0x005dea60                          // 0x005431c5    e896b80900
                          {disp8} mov        byte ptr [ebp + 0x10], 0x01                   // 0x005431ca    c6451001
                          {disp32} mov       edx, dword ptr [data_bytes + 0x30ab70]        // 0x005431ce    8b15700bcd00
@@ -1140,7 +1140,7 @@ _jmp_addr_0x0054337c:    {disp32} mov       ecx, dword ptr [ebp + 0x0000320c]   
                          shl                eax, 5                                        // 0x005433a4    c1e005
                          {disp32} mov       ecx, dword ptr [eax + ecx * 0x1 + 0x00000a64] // 0x005433a7    8b8c08640a0000
                          push               ecx                                           // 0x005433ae    51
-                         push               0x00d4bd38                                    // 0x005433af    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x005433af    6838bdd400
                          call               _jmp_addr_0x005dea60                          // 0x005433b4    e8a7b60900
                          {disp32} mov       ebp, dword ptr [ebp + 0x0000320c]             // 0x005433b9    8bad0c320000
                          {disp8} mov        edx, dword ptr [ebp + 0x00]                   // 0x005433bf    8b5500
@@ -1788,7 +1788,7 @@ _jmp_addr_0x00543c8c:    xor.s              eax, eax                            
                          shl                eax, 5                                        // 0x00543ca2    c1e005
                          {disp32} mov       ecx, dword ptr [eax + ecx * 0x1 + 0x00000a64] // 0x00543ca5    8b8c08640a0000
                          push               ecx                                           // 0x00543cac    51
-                         push               0x00d4bd38                                    // 0x00543cad    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x00543cad    6838bdd400
                          call               _jmp_addr_0x005dea60                          // 0x00543cb2    e8a9ad0900
                          {disp32} mov       ecx, dword ptr [ebp + 0x0000320c]             // 0x00543cb7    8b8d0c320000
                          mov                edx, dword ptr [ecx]                          // 0x00543cbd    8b11

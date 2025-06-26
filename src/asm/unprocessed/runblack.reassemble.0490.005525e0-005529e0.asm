@@ -54,7 +54,7 @@ _jmp_addr_0x00552613:    pop              edi                                   
 _GetTribe__5GGameF10TRIBE_TYPE@4:    {disp8} mov      eax, dword ptr [esp + 0x04]             // 0x00552620    8b442404
                          {disp32} lea     ecx, dword ptr [eax * 0x8 + 0x00000000] // 0x00552624    8d0cc500000000
                          sub.s            ecx, eax                                // 0x0055262b    2bc8
-                         {disp32} lea     eax, dword ptr [ecx * 0x4 + 0x00da57a8] // 0x0055262d    8d048da857da00
+                         {disp32} lea     eax, dword ptr [ecx * 0x4 + _GTribeInfo_ARRAY_00da57a8] // 0x0055262d    8d048da857da00
                          ret              0x0004                                  // 0x00552634    c20400
                          nop                                                      // 0x00552637    90
                          nop                                                      // 0x00552638    90

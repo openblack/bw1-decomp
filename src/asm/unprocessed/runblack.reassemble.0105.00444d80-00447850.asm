@@ -2139,7 +2139,7 @@ _jmp_addr_0x004464a9:    {disp8} mov        eax, dword ptr [esi + 0x30]         
                          imul               eax, ecx                                      // 0x00446500    0fafc1
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x00446503    8944240c
                          {disp8} fild       dword ptr [esp + 0x0c]                        // 0x00446507    db44240c
-                         {disp32} fidiv     dword ptr [data_bytes + 0x4bd9e4]             // 0x0044650b    da35e439e800
+                         {disp32} fidiv     dword ptr [_g_info_transform]                 // 0x0044650b    da35e439e800
                          call               _jmp_addr_0x007a1400                          // 0x00446511    e8eaae3500
                          {disp8} mov        dword ptr [esi + 0x08], eax                   // 0x00446516    894608
                          {disp8} jmp        _jmp_addr_0x00446569                          // 0x00446519    eb4e

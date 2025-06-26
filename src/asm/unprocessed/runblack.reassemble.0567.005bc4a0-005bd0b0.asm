@@ -129,7 +129,7 @@ _jmp_addr_0x005bc5b6:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          cmp.s              eax, ebx                                             // 0x005bc5fd    3bc3
                          {disp32} mov       byte ptr [esi + 0x000035a4], bl                      // 0x005bc5ff    889ea4350000
                          {disp8} je         _jmp_addr_0x005bc62e                                 // 0x005bc605    7427
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]                    // 0x005bc607    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                           // 0x005bc607    d905e039e800
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2230]                     // 0x005bc60d    d80d30b28a00
                          {disp8} fcomp      dword ptr [esp + 0x0c]                               // 0x005bc613    d85c240c
                          fnstsw             ax                                                   // 0x005bc617    dfe0

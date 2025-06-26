@@ -304,8 +304,8 @@
 .globl _jmp_addr_0x007282a0
 .globl _jmp_addr_0x00728300
 
-@GetSpellSeedType__9SpellIconFv@4:    {disp32} mov       ecx, dword ptr [ecx + 0x00000080]                    // 0x00726360    8b8980000000
-                         sub                ecx, 0x00d9d678                                      // 0x00726366    81e978d6d900
+@GetSpellSeedType__9SpellIconFv@4:    {disp32} mov       ecx, dword ptr [ecx + 0x00000080]       // 0x00726360    8b8980000000
+                         sub                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x00726366    81e978d6d900
                          mov                eax, 0x51eb851f                                      // 0x0072636c    b81f85eb51
                          imul               ecx                                                  // 0x00726371    f7e9
                          mov.s              eax, edx                                             // 0x00726373    8bc2
@@ -2061,7 +2061,7 @@ _jmp_addr_0x00727700:    {disp8} mov        eax, dword ptr [ecx + 0x48]         
                          lea                eax, dword ptr [eax + eax * 0x4]                     // 0x00727703    8d0480
                          lea                eax, dword ptr [eax + eax * 0x4]                     // 0x00727706    8d0480
                          shl                eax, 4                                               // 0x00727709    c1e004
-                         add                eax, 0x00d9d678                                      // 0x0072770c    0578d6d900
+                         add                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                                     // 0x0072770c    0578d6d900
                          ret                                                                     // 0x00727711    c3
                          nop                                                                     // 0x00727712    90
                          nop                                                                     // 0x00727713    90

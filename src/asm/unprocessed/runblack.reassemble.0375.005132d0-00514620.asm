@@ -1692,7 +1692,7 @@ _jmp_addr_0x00514574:    cmp               dword ptr [ebx + 0x18], 0x76         
                          mov.s             ecx, edi                                      // 0x0051457c    8bcf
                          call              @FindControl__8SetupBoxFi@12                  // 0x0051457e    e8dd3befff
                          {disp32} mov      edx, dword ptr [eax + 0x00000248]             // 0x00514583    8b9048020000
-                         push              0x00d4bd38                                    // 0x00514589    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */      // 0x00514589    6838bdd400
                          {disp32} mov      dword ptr [data_bytes + 0x386550], edx        // 0x0051458e    891550c5d400
                          call              _jmp_addr_0x0066bcd0                          // 0x00514594    e837771500
                          add               esp, 0x04                                     // 0x00514599    83c404

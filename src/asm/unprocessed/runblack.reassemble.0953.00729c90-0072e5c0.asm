@@ -995,7 +995,7 @@ _jmp_addr_0x0072a50e:    pop                edi                                 
                          lea                eax, dword ptr [ecx + ecx * 0x4]              // 0x0072a537    8d0489
                          lea                ecx, dword ptr [eax + eax * 0x4]              // 0x0072a53a    8d0c80
                          shl                ecx, 4                                        // 0x0072a53d    c1e104
-                         add                ecx, 0x00d9d678                               // 0x0072a540    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072a540    81c178d6d900
                          call               @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12                          // 0x0072a546    e8750a0000
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x0072a54b    8b4c2404
                          mov                edx, dword ptr [ecx]                          // 0x0072a54f    8b11
@@ -1068,7 +1068,7 @@ _jmp_addr_0x0072a5f0:    {disp8} mov        eax, dword ptr [ecx + 0x68]         
                          lea                eax, dword ptr [eax + eax * 0x4]              // 0x0072a5f3    8d0480
                          lea                eax, dword ptr [eax + eax * 0x4]              // 0x0072a5f6    8d0480
                          shl                eax, 4                                        // 0x0072a5f9    c1e004
-                         add                eax, 0x00d9d678                               // 0x0072a5fc    0578d6d900
+                         add                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                              // 0x0072a5fc    0578d6d900
                          ret                                                              // 0x0072a601    c3
                          nop                                                              // 0x0072a602    90
                          nop                                                              // 0x0072a603    90
@@ -1232,7 +1232,7 @@ _jmp_addr_0x0072a7ae:    {disp8} mov        eax, dword ptr [esp + 0x2c]         
                          push               ebp                                           // 0x0072a7bd    55
                          shl                ecx, 4                                        // 0x0072a7be    c1e104
                          push               esi                                           // 0x0072a7c1    56
-                         add                ecx, 0x00d9d678                               // 0x0072a7c2    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072a7c2    81c178d6d900
                          push               ecx                                           // 0x0072a7c8    51
                          {disp8} lea        edx, dword ptr [esp + 0x20]                   // 0x0072a7c9    8d542420
                          push               edx                                           // 0x0072a7cd    52
@@ -1245,7 +1245,7 @@ _jmp_addr_0x0072a7d3:    mov.s              edi, eax                            
                          lea                ecx, dword ptr [eax + eax * 0x4]              // 0x0072a7df    8d0c80
                          shl                ecx, 4                                        // 0x0072a7e2    c1e104
                          push               ebp                                           // 0x0072a7e5    55
-                         add                ecx, 0x00d9d678                               // 0x0072a7e6    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072a7e6    81c178d6d900
                          call               @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12                          // 0x0072a7ec    e8cf070000
                          push               eax                                           // 0x0072a7f1    50
                          mov                eax, dword ptr [esi]                          // 0x0072a7f2    8b06
@@ -1937,7 +1937,7 @@ _globl_ct_0x0072ae20:    call               _jmp_addr_0x0072ae30                
                          nop                                                              // 0x0072ae2d    90
                          nop                                                              // 0x0072ae2e    90
                          nop                                                              // 0x0072ae2f    90
-_jmp_addr_0x0072ae30:    mov                eax, 0x00d9d678                               // 0x0072ae30    b878d6d900
+_jmp_addr_0x0072ae30:    mov                eax, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072ae30    b878d6d900
                          mov                ecx, 0x0000001e                               // 0x0072ae35    b91e000000
                          xor.s              edx, edx                                      // 0x0072ae3a    33d2
 .att_syntax
@@ -1972,7 +1972,7 @@ _jmp_addr_0x0072ae3c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x0072ae6f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0072ae70    8b442404
                          mov                dword ptr [eax], 0x0000001e                   // 0x0072ae74    c7001e000000
-                         mov                eax, 0x00d9d678                               // 0x0072ae7a    b878d6d900
+                         mov                eax, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072ae7a    b878d6d900
                          ret                0x0004                                        // 0x0072ae7f    c20400
                          nop                                                              // 0x0072ae82    90
                          nop                                                              // 0x0072ae83    90
@@ -2216,7 +2216,7 @@ _GetFirstSpellSeedForMagicType__14GSpellSeedInfoF10MAGIC_TYPE:    push          
                          push               esi                                           // 0x0072b095    56
                          push               edi                                           // 0x0072b096    57
                          xor.s              edi, edi                                      // 0x0072b097    33ff
-                         mov                esi, 0x00d9d678                               // 0x0072b099    be78d6d900
+                         mov                esi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072b099    be78d6d900
 _jmp_addr_0x0072b09e:    push               ebx                                           // 0x0072b09e    53
                          mov.s              ecx, esi                                      // 0x0072b09f    8bce
                          call               @SpellSeedIsOfMagicType__14GSpellSeedInfoCF10MAGIC_TYPE@12                          // 0x0072b0a1    e8baffffff
@@ -2275,7 +2275,7 @@ _jmp_addr_0x0072b100:    push               ebx                                 
                          push               edi                                           // 0x0072b10b    57
                          {disp8} mov        dword ptr [ebp + 0x00], 0xffffffff            // 0x0072b10c    c74500ffffffff
                          xor.s              edi, edi                                      // 0x0072b113    33ff
-                         mov                esi, 0x00d9d678                               // 0x0072b115    be78d6d900
+                         mov                esi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072b115    be78d6d900
 _jmp_addr_0x0072b11a:    push               ebx                                           // 0x0072b11a    53
                          mov.s              ecx, esi                                      // 0x0072b11b    8bce
                          call               @SpellSeedIsOfMagicType__14GSpellSeedInfoCF10MAGIC_TYPE@12                          // 0x0072b11d    e83effffff
@@ -2295,7 +2295,7 @@ _jmp_addr_0x0072b13a:    lea                eax, dword ptr [edi + edi * 0x4]    
                          push               ebp                                           // 0x0072b140    55
                          shl                ecx, 4                                        // 0x0072b141    c1e104
                          push               ebx                                           // 0x0072b144    53
-                         add                ecx, 0x00d9d678                               // 0x0072b145    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072b145    81c178d6d900
                          call               _jmp_addr_0x0072b010                          // 0x0072b14b    e8c0feffff
                          pop                edi                                           // 0x0072b150    5f
                          pop                esi                                           // 0x0072b151    5e
@@ -2332,7 +2332,7 @@ _jmp_addr_0x0072b170:    push               ebx                                 
                          push               esi                                           // 0x0072b175    56
                          push               edi                                           // 0x0072b176    57
                          xor.s              edi, edi                                      // 0x0072b177    33ff
-                         mov                esi, 0x00d9d678                               // 0x0072b179    be78d6d900
+                         mov                esi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0072b179    be78d6d900
 _jmp_addr_0x0072b17e:    mov.s              ecx, esi                                      // 0x0072b17e    8bce
                          call               _jmp_addr_0x0072b160                          // 0x0072b180    e8dbffffff
                          push               eax                                           // 0x0072b185    50
@@ -2400,9 +2400,9 @@ _jmp_addr_0x0072b1f7:    pop                edi                                 
                          nop                                                              // 0x0072b1fe    90
                          nop                                                              // 0x0072b1ff    90
 _jmp_addr_0x0072b200:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0072b200    8b442404
-                         cmp                eax, 0x00d9d678                               // 0x0072b204    3d78d6d900
+                         cmp                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                              // 0x0072b204    3d78d6d900
                          .byte              0x72, 0x1f// {disp8} jb _jmp_addr_0x0072b22a  // 0x0072b209    721f
-                         sub                eax, 0x00d9d678                               // 0x0072b20b    2d78d6d900
+                         sub                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                              // 0x0072b20b    2d78d6d900
                          mov.s              ecx, eax                                      // 0x0072b210    8bc8
                          mov                eax, 0x51eb851f                               // 0x0072b212    b81f85eb51
                          imul               ecx                                           // 0x0072b217    f7e9

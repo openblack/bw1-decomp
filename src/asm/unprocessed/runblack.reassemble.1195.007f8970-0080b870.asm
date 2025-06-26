@@ -11532,7 +11532,7 @@ _jmp_addr_0x00800c30:    sub                esp, 0x24                           
                          fnstsw             ax                                             // 0x00800c93    dfe0
                          test               ah, 0x41                                       // 0x00800c95    f6c441
                          {disp8} je         _jmp_addr_0x00800ca4                           // 0x00800c98    740a
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4bd9e0]         // 0x00800c9a    8b0de039e800
+                         {disp32} mov       ecx, dword ptr [_near_clipping]                // 0x00800c9a    8b0de039e800
                          {disp8} mov        dword ptr [esp + 0x34], ecx                    // 0x00800ca0    894c2434
 _jmp_addr_0x00800ca4:    {disp32} fcom      dword ptr [_rdata_float0p0]                    // 0x00800ca4    d81598a38a00
                          fnstsw             ax                                             // 0x00800caa    dfe0
@@ -18050,7 +18050,7 @@ _jmp_addr_0x00805d10:    {disp32} mov       eax, dword ptr [data_bytes + 0x4e3ea
                          {disp8} fadd       dword ptr [eax + 0x2c]                         // 0x00805d62    d8402c
                          {disp8} fstp       dword ptr [ecx + 0x18]                         // 0x00805d65    d95918
                          {disp8} fld        dword ptr [ecx + 0x18]                         // 0x00805d68    d94118
-                         {disp32} fcomp     dword ptr [data_bytes + 0x4bd9e0]              // 0x00805d6b    d81de039e800
+                         {disp32} fcomp     dword ptr [_near_clipping]                     // 0x00805d6b    d81de039e800
                          fnstsw             ax                                             // 0x00805d71    dfe0
                          test               ah, 0x01                                       // 0x00805d73    f6c401
                          {disp8} je         _jmp_addr_0x00805d80                           // 0x00805d76    7408
@@ -18108,7 +18108,7 @@ _jmp_addr_0x00805dda:    cmp                dword ptr [ecx], 0x00               
                          {disp32} fmul      dword ptr [data_bytes + 0x4bd9f4]              // 0x00805e0f    d80df439e800
                          {disp8} fstp       dword ptr [ecx + 0x14]                         // 0x00805e15    d95914
                          {disp8} fld        dword ptr [ebp + -0x20]                        // 0x00805e18    d945e0
-                         {disp32} fmul      dword ptr [data_bytes + 0x4bd9e0]              // 0x00805e1b    d80de039e800
+                         {disp32} fmul      dword ptr [_near_clipping]                     // 0x00805e1b    d80de039e800
                          {disp8} fstp       dword ptr [ecx + 0x18]                         // 0x00805e21    d95918
 _jmp_addr_0x00805e24:    add                ecx, 0x24                                      // 0x00805e24    83c124
                          dec                esi                                            // 0x00805e27    4e
@@ -24396,7 +24396,7 @@ _jmp_addr_0x0080aa2f:    {disp8} mov        ecx, dword ptr [ebx + 0x08]         
 _jmp_addr_0x0080aa43:    {disp32} mov       ecx, dword ptr [data_bytes + 0x53d138]         // 0x0080aa43    8b0d3831f000
                          cmp                ecx, dword ptr [esp + 0x0000008c]              // 0x0080aa49    3b8c248c000000
                          {disp32} jle       _jmp_addr_0x0080ab3d                           // 0x0080aa50    0f8ee7000000
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]              // 0x0080aa56    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                     // 0x0080aa56    d905e039e800
                          {disp8} mov        edx, dword ptr [esp + 0x14]                    // 0x0080aa5c    8b542414
                          {disp32} fdiv      dword ptr [data_bytes + 0x53d13c]              // 0x0080aa60    d8353c31f000
                          push               ecx                                            // 0x0080aa66    51

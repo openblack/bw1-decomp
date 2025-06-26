@@ -186,7 +186,7 @@ _GetInfoFromText__13GVillagerInfoFPc:    sub                esp, 0x08           
                          push               esi                                           // 0x007519e5    56
                          push               edi                                           // 0x007519e6    57
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000            // 0x007519e7    c744241400000000
-                         {disp8} mov        dword ptr [esp + 0x10], 0x00da6be8            // 0x007519ef    c7442410e86bda00
+                         {disp8} mov        dword ptr [esp + 0x10], OFFSET _GVillagerInfo_ARRAY_00da6be8            // 0x007519ef    c7442410e86bda00
                          mov                ebp, 0x00da57b8                               // 0x007519f7    bdb857da00
 _jmp_addr_0x007519fc:    {disp8} mov        eax, dword ptr [ebp + 0x00]                   // 0x007519fc    8b4500
                          {disp32} mov       edx, dword ptr [eax * 0x4 + 0x00c22fdc]       // 0x007519ff    8b1485dc2fc200
@@ -330,7 +330,7 @@ _jmp_addr_0x00751b67:    mov                edx, dword ptr [esi]                
                          mov.s              ecx, esi                                      // 0x00751b6c    8bce
                          call               dword ptr [edx + 0x8d0]                       // 0x00751b6e    ff92d0080000
                          push               eax                                           // 0x00751b74    50
-                         sub                edi, 0x00da6be8                               // 0x00751b75    81efe86bda00
+                         sub                edi, OFFSET _GVillagerInfo_ARRAY_00da6be8     // 0x00751b75    81efe86bda00
                          mov                eax, 0x8ca29c05                               // 0x00751b7b    b8059ca28c
                          imul               edi                                           // 0x00751b80    f7ef
                          add.s              edx, edi                                      // 0x00751b82    03d7
@@ -1515,7 +1515,7 @@ _jmp_addr_0x0075263e:    xor.s              eax, eax                            
 _Find__13GVillagerInfoF10TRIBE_TYPE15VILLAGER_NUMBER:    {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x00752650    8b542408
                          push               esi                                           // 0x00752654    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x00752655    8b742408
-                         mov                eax, 0x00da6be8                               // 0x00752659    b8e86bda00
+                         mov                eax, OFFSET _GVillagerInfo_ARRAY_00da6be8     // 0x00752659    b8e86bda00
                          mov                ecx, 0x00da6de4                               // 0x0075265e    b9e46dda00
 _jmp_addr_0x00752663:    cmp                dword ptr [ecx + -0x08], esi                  // 0x00752663    3971f8
                          {disp8} jne        _jmp_addr_0x0075266c                          // 0x00752666    7504

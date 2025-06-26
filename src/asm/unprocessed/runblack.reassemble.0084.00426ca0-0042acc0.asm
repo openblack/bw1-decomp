@@ -1653,7 +1653,7 @@ _jmp_addr_0x00427fa4:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               eax                                                  // 0x00428027    50
                          call               _jmp_addr_0x00751ee0                                 // 0x00428028    e8b39e3200
                          mov.s              ecx, eax                                             // 0x0042802d    8bc8
-                         sub                ecx, 0x00da57a8                                      // 0x0042802f    81e9a857da00
+                         sub                ecx, OFFSET _GTribeInfo_ARRAY_00da57a8               // 0x0042802f    81e9a857da00
                          mov                eax, 0x92492493                                      // 0x00428035    b893244992
                          imul               ecx                                                  // 0x0042803a    f7e9
                          add.s              edx, ecx                                             // 0x0042803c    03d1

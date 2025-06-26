@@ -824,7 +824,7 @@ _jmp_addr_0x0054c91f:    ret                0x0014                              
                          call               _jmp_addr_0x00553a70                          // 0x0054c96b    e800710000
 _jmp_addr_0x0054c970:    push               0x14                                          // 0x0054c970    6a14
                          call               _jmp_addr_0x00792fb0                          // 0x0054c972    e839662400
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x3cfc10]        // 0x0054c977    8b0d105cd900
+                         {disp32} mov       ecx, dword ptr [_script_dll]                  // 0x0054c977    8b0d105cd900
                          add                esp, 0x04                                     // 0x0054c97d    83c404
                          call               @StopAllTasks__9ScriptDLLFv@4                 // 0x0054c980    e88b9f1a00
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0054c985    8b0d5c19d000
@@ -1507,10 +1507,10 @@ _jmp_addr_0x0054d1f7:    call               _jmp_addr_0x0054c570                
                          push               edx                                           // 0x0054d211    52
                          call               _jmp_addr_0x0066b900                          // 0x0054d212    e8e9e61100
                          {disp8} lea        eax, dword ptr [esp + 0x6c]                   // 0x0054d217    8d44246c
-                         push               0x00d4bd38                                    // 0x0054d21b    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x0054d21b    6838bdd400
                          push               eax                                           // 0x0054d220    50
                          call               _jmp_addr_0x0066bad0                          // 0x0054d221    e8aae81100
-                         push               0x00d4bd38                                    // 0x0054d226    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x0054d226    6838bdd400
                          call               _jmp_addr_0x0066bcd0                          // 0x0054d22b    e8a0ea1100
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0054d230    8b0d5c19d000
                          add                esp, 0x14                                     // 0x0054d236    83c414

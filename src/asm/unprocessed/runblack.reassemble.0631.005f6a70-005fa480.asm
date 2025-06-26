@@ -3175,7 +3175,7 @@ _jmp_addr_0x005f8fb3:    cmp                eax, 0x01                           
                          add                esp, 0x000001a0                                // 0x005f8fd4    81c4a0010000
                          ret                                                               // 0x005f8fda    c3
 _jmp_addr_0x005f8fdb:    {disp32} fld       dword ptr [data_bytes + 0x4dbdd0]              // 0x005f8fdb    d905d01dea00
-                         {disp32} mov       dword ptr [data_bytes + 0x4bd9e0], 0x3dcccccd  // 0x005f8fe1    c705e039e800cdcccc3d
+                         {disp32} mov       dword ptr [_near_clipping], 0x3dcccccd         // 0x005f8fe1    c705e039e800cdcccc3d
                          {disp32} fmul      dword ptr [_rdata_float0p5]                    // 0x005f8feb    d80db4a38a00
                          {disp32} mov       dword ptr [data_bytes + 0x27271c], 0x00000002  // 0x005f8ff1    c7051c87c30002000000
                          {disp8} mov        dword ptr [esp + 0x64], 0x00000000             // 0x005f8ffb    c744246400000000
@@ -4316,7 +4316,7 @@ _jmp_addr_0x005fa0d5:    call               _jmp_addr_0x005fa000                
                          {disp32} mov       eax, dword ptr [data_bytes + 0x22dccc]         // 0x005fa0da    a1cc3cbf00
                          test               eax, eax                                       // 0x005fa0df    85c0
                          {disp32} mov       dword ptr [data_bytes + 0x264150], 0x00000000  // 0x005fa0e1    c70550a1c20000000000
-                         {disp32} mov       dword ptr [data_bytes + 0x440020], 0x00000000  // 0x005fa0eb    c7052060e00000000000
+                         {disp32} mov       dword ptr [_DAT_00e06020], 0x00000000          // 0x005fa0eb    c7052060e00000000000
                          {disp32} mov       dword ptr [data_bytes + 0x440024], 0xff000000  // 0x005fa0f5    c7052460e000000000ff
                          {disp32} mov       dword ptr [data_bytes + 0x440028], 0x00000000  // 0x005fa0ff    c7052860e00000000000
                          pop                ebx                                            // 0x005fa109    5b

@@ -8725,7 +8725,7 @@ _jmp_addr_0x0064c35b:    ret                0x0008                              
                          lea                ecx, dword ptr [eax + eax * 0x4]               // 0x0064c36f    8d0c80
                          shl                ecx, 4                                         // 0x0064c372    c1e104
                          push               0x0                                            // 0x0064c375    6a00
-                         add                ecx, 0x00d9d678                                // 0x0064c377    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678     // 0x0064c377    81c178d6d900
                          call               _jmp_addr_0x0072af10                           // 0x0064c37d    e88eeb0d00
                          test               eax, eax                                       // 0x0064c382    85c0
                          {disp8} je         _jmp_addr_0x0064c393                           // 0x0064c384    740d

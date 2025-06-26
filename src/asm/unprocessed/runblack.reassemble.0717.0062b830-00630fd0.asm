@@ -8369,7 +8369,7 @@ _jmp_addr_0x00630d80:    push               esi                                 
                          push               ecx                                            // 0x00630d9a    51
                          push               0x00d4c338                                     // 0x00630d9b    6838c3d400
                          call               _wcscpy                                        // 0x00630da0    e811521900
-                         push               0x00d4bd38                                     // 0x00630da5    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */        // 0x00630da5    6838bdd400
                          call               _jmp_addr_0x0066bcd0                           // 0x00630daa    e821af0300
                          add                esp, 0x14                                      // 0x00630daf    83c414
                          call               _jmp_addr_0x005eb970                           // 0x00630db2    e8b9abfbff

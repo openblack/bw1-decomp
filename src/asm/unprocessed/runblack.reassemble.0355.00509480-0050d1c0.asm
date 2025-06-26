@@ -2438,7 +2438,7 @@ _jmp_addr_0x0050ae40:    {disp8} fld        dword ptr [esi + 0x04]              
                          push               eax                                           // 0x0050ae7b    50
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x0050ae7c    8b442420
                          {disp8} fstp       dword ptr [esp + 0x28]                        // 0x0050ae80    d95c2428
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]             // 0x0050ae84    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                    // 0x0050ae84    d905e039e800
                          push               ecx                                           // 0x0050ae8a    51
                          push               ecx                                           // 0x0050ae8b    51
                          fadd.s             st(0), st(0)                                  // 0x0050ae8c    dcc0
@@ -2474,7 +2474,7 @@ _jmp_addr_0x0050ae40:    {disp8} fld        dword ptr [esi + 0x04]              
                          push               0x0                                           // 0x0050aee0    6a00
                          push               0x1                                           // 0x0050aee2    6a01
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x0050aee4    d95c2420
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]             // 0x0050aee8    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                    // 0x0050aee8    d905e039e800
                          push               0x1                                           // 0x0050aeee    6a01
                          push               ebx                                           // 0x0050aef0    53
                          fadd.s             st(0), st(0)                                  // 0x0050aef1    dcc0

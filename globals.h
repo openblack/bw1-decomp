@@ -20,6 +20,7 @@
 #include <black/MagicEffectInfo.h> /* For struct GMagicEffectInfo */
 #include <black/MagicInfo.h> /* For struct GMagicInfo */
 #include <black/MapCoords.h> /* For struct JustMapXZ */
+#include <black/ReactionInfo.h> /* For struct ReactionInfo */
 #include <black/ShowNeedsInfo.h> /* For struct GShowNeedsInfo */
 #include <black/SpellSeedInfo.h> /* For struct GSpellSeedInfo */
 #include <black/TotemStatueInfo.h> /* For struct GTotemStatueInfo */
@@ -182,7 +183,7 @@ struct globals_t
   bool* ARGS_SETTINGS;  /* 0x00d46ac4 */
   struct PlayerProfile* PlayerProfile_00d4bd38;
   struct GPlayer** DAT_00d4f594;
-  char (*ReactionInfo_ARRAY_00d4f6b0)[0x29];
+  struct ReactionInfo (*ReactionInfo_ARRAY_00d4f6b0)[0x29];
   uint32_t* DAT_00d95c0c;
   struct ScriptDLL** script_dll;  /* 0x00d95c10 */
   char (*ARGS_SETTINGS_PATH)[0x108];  /* 0x00d9927c */

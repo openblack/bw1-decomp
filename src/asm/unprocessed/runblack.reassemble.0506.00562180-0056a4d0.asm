@@ -4531,7 +4531,7 @@ _jmp_addr_0x00565170:    {disp32} mov       ecx, dword ptr [_game]              
                          nop                                                              // 0x0056518d    90
                          nop                                                              // 0x0056518e    90
                          nop                                                              // 0x0056518f    90
-_jmp_addr_0x00565190:    {disp32} mov       ecx, dword ptr [data_bytes + 0x3cfc10]        // 0x00565190    8b0d105cd900
+_jmp_addr_0x00565190:    {disp32} mov       ecx, dword ptr [_script_dll]                  // 0x00565190    8b0d105cd900
                          {disp32} jmp       _jmp_addr_0x006f6aa0                          // 0x00565196    e905191900
                          nop                                                              // 0x0056519b    90
                          nop                                                              // 0x0056519c    90

@@ -17,7 +17,7 @@
 start_0x00708fc0_0x00709170:
 // Snippet: asm, [0x00708fc0, 0x0070912e)
                          push              ecx                                    // 0x00708fc0    51
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x3cfc10] // 0x00708fc1    8b0d105cd900
+                         {disp32} mov      ecx, dword ptr [_script_dll]           // 0x00708fc1    8b0d105cd900
                          push              esi                                    // 0x00708fc7    56
                          {disp8} lea       eax, dword ptr [esp + 0x04]            // 0x00708fc8    8d442404
                          push              eax                                    // 0x00708fcc    50
@@ -29,14 +29,14 @@ start_0x00708fc0_0x00709170:
                          cmp               eax, 0x0d                              // 0x00708fe4    83f80d
                          {disp8} jne       _jmp_addr_0x00708fef                   // 0x00708fe7    7506
                          {disp32} mov      esi, dword ptr [data_bytes + 0x353c94] // 0x00708fe9    8b35949cd100
-_jmp_addr_0x00708fef:    {disp32} mov      ecx, dword ptr [data_bytes + 0x3cfc10] // 0x00708fef    8b0d105cd900
+_jmp_addr_0x00708fef:    {disp32} mov      ecx, dword ptr [_script_dll]           // 0x00708fef    8b0d105cd900
                          push              0x6                                    // 0x00708ff5    6a06
                          push              esi                                    // 0x00708ff7    56
                          call              _jmp_addr_0x006f6ba0                   // 0x00708ff8    e8a3dbfeff
                          pop               esi                                    // 0x00708ffd    5e
                          pop               ecx                                    // 0x00708ffe    59
                          ret                                                      // 0x00708fff    c3
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x3cfc10] // 0x00709000    8b0d105cd900
+                         {disp32} mov      ecx, dword ptr [_script_dll]           // 0x00709000    8b0d105cd900
                          sub               esp, 0x08                              // 0x00709006    83ec08
                          push              ebx                                    // 0x00709009    53
                          push              esi                                    // 0x0070900a    56
@@ -46,13 +46,13 @@ _jmp_addr_0x00708fef:    {disp32} mov      ecx, dword ptr [data_bytes + 0x3cfc10
                          call              _jmp_addr_0x006f6bc0                   // 0x00709011    e8aadbfeff
                          push              eax                                    // 0x00709016    50
                          call              _jmp_addr_0x0070d220                   // 0x00709017    e804420000
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x3cfc10] // 0x0070901c    8b0d105cd900
+                         {disp32} mov      ecx, dword ptr [_script_dll]           // 0x0070901c    8b0d105cd900
                          add               esp, 0x04                              // 0x00709022    83c404
                          {disp8} lea       edx, dword ptr [esp + 0x10]            // 0x00709025    8d542410
                          push              edx                                    // 0x00709029    52
                          mov.s             edi, eax                               // 0x0070902a    8bf8
                          call              _jmp_addr_0x006f6bc0                   // 0x0070902c    e88fdbfeff
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x3cfc10] // 0x00709031    8b0d105cd900
+                         {disp32} mov      ecx, dword ptr [_script_dll]           // 0x00709031    8b0d105cd900
                          mov.s             ebx, eax                               // 0x00709037    8bd8
                          {disp8} lea       eax, dword ptr [esp + 0x10]            // 0x00709039    8d442410
                          push              eax                                    // 0x0070903d    50

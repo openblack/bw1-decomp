@@ -168,7 +168,7 @@ _ProcessGameTurn__6TempleFv@0:    {disp32} mov       eax, dword ptr [_game]     
                          push               -0x1                                          // 0x00794a3b    6aff
                          mov                ecx, 0x00cd3b24                               // 0x00794a3d    b9243bcd00
                          call               _jmp_addr_0x00511f50                          // 0x00794a42    e809d5d7ff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x3cfc10]        // 0x00794a47    8b0d105cd900
+                         {disp32} mov       ecx, dword ptr [_script_dll]                  // 0x00794a47    8b0d105cd900
                          push               0x18                                          // 0x00794a4d    6a18
                          call               _jmp_addr_0x006f6840                          // 0x00794a4f    e8ec1df6ff
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x00794a54    8b0d203bcd00

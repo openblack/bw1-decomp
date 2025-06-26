@@ -1223,7 +1223,7 @@ _jmp_addr_0x007a0726:    {disp32} fld       dword ptr [data_bytes + 0x43fff0]   
                          {disp32} fadd      dword ptr [rdata_bytes + 0x1dca4]             // 0x007a0741    d805a46c8c00
                          {disp32} mov       dword ptr [data_bytes + 0x440000], eax        // 0x007a0747    a30060e000
                          {disp32} mov       dword ptr [data_bytes + 0x264150], 0x00000000 // 0x007a074c    c70550a1c20000000000
-                         {disp32} mov       dword ptr [data_bytes + 0x440020], 0x3f800000 // 0x007a0756    c7052060e0000000803f
+                         {disp32} mov       dword ptr [_DAT_00e06020], 0x3f800000         // 0x007a0756    c7052060e0000000803f
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x007a0760    d95c2414
                          {disp32} fld       dword ptr [data_bytes + 0x43fff8]             // 0x007a0764    d905f85fe000
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x007a076a    8b4c2414

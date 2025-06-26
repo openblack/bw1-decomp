@@ -494,7 +494,7 @@ _jmp_addr_0x0063f4f5:    call             _jmp_addr_0x006ec670                  
                          call             dword ptr [rdata_bytes + 0x60c]               // 0x0063f50f    ff150c968a00
                          push             eax                                           // 0x0063f515    50
                          call             dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x0063f516    ff1548958a00
-                         push             0x00d4bd38                                    // 0x0063f51c    6838bdd400
+                         push             0x00d4bd38 /* _PlayerProfile_00d4bd38 */      // 0x0063f51c    6838bdd400
                          call             _jmp_addr_0x0066bcd0                          // 0x0063f521    e8aac70200
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x30a65c]        // 0x0063f526    8b0d5c06cd00
                          mov              edx, dword ptr [ecx]                          // 0x0063f52c    8b11

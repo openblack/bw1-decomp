@@ -2277,7 +2277,7 @@ _globl_ct_0x00737a30:    call               _jmp_addr_0x00737a40                
                          nop                                                               // 0x00737a3d    90
                          nop                                                               // 0x00737a3e    90
                          nop                                                               // 0x00737a3f    90
-_jmp_addr_0x00737a40:    mov                eax, 0x00da1d18                                // 0x00737a40    b8181dda00
+_jmp_addr_0x00737a40:    mov                eax, OFFSET _GTotemStatueInfo_ARRAY_00da1d18   // 0x00737a40    b8181dda00
                          mov                ecx, 0x00000009                                // 0x00737a45    b909000000
                          xor.s              edx, edx                                       // 0x00737a4a    33d2
 .att_syntax
@@ -2312,7 +2312,7 @@ _jmp_addr_0x00737a4c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x00737a7f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00737a80    8b442404
                          mov                dword ptr [eax], 0x00000009                    // 0x00737a84    c70009000000
-                         mov                eax, 0x00da1d18                                // 0x00737a8a    b8181dda00
+                         mov                eax, OFFSET _GTotemStatueInfo_ARRAY_00da1d18   // 0x00737a8a    b8181dda00
                          ret                0x0004                                         // 0x00737a8f    c20400
                          nop                                                               // 0x00737a92    90
                          nop                                                               // 0x00737a93    90
@@ -2567,7 +2567,7 @@ _Create__11TotemStatueFP10TownCentre:    sub                esp, 0x0c           
                          {disp8} je         _jmp_addr_0x00737d33                           // 0x00737ce8    7449
                          lea                ecx, dword ptr [esi + esi * 0x8]               // 0x00737cea    8d0cf6
                          lea                edx, dword ptr [esi + ecx * 0x8]               // 0x00737ced    8d14ce
-                         {disp32} lea       ecx, dword ptr [edx * 0x4 + 0x00da1d18]        // 0x00737cf0    8d0c95181dda00
+                         {disp32} lea       ecx, dword ptr [edx * 0x4 + _GTotemStatueInfo_ARRAY_00da1d18]        // 0x00737cf0    8d0c95181dda00
                          push               ecx                                            // 0x00737cf7    51
                          push               edi                                            // 0x00737cf8    57
                          mov.s              ecx, eax                                       // 0x00737cf9    8bc8
@@ -4148,7 +4148,7 @@ _jmp_addr_0x00738f50:    xor.s              eax, eax                            
                          nop                                                               // 0x00738f6f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00738f70    8b442404
                          mov                dword ptr [eax], 0x00000001                    // 0x00738f74    c70001000000
-                         mov                eax, 0x00da2780                                // 0x00738f7a    b88027da00
+                         mov                eax, OFFSET _GTownInfo_00da2780                // 0x00738f7a    b88027da00
                          ret                0x0004                                         // 0x00738f7f    c20400
                          nop                                                               // 0x00738f82    90
                          nop                                                               // 0x00738f83    90
@@ -4178,7 +4178,7 @@ _jmp_addr_0x00738f90:    push               0x00738fa0                          
                          {disp8} jne        _jmp_addr_0x00738fbe                           // 0x00738faa    7512
                          or.s               cl, al                                         // 0x00738fac    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x3dc774], cl           // 0x00738fae    880d7427da00
-                         mov                ecx, 0x00da2780                                // 0x00738fb4    b98027da00
+                         mov                ecx, OFFSET _GTownInfo_00da2780                // 0x00738fb4    b98027da00
                          {disp32} jmp       _jmp_addr_0x00436960                           // 0x00738fb9    e9a2d9cfff
 _jmp_addr_0x00738fbe:    ret                                                               // 0x00738fbe    c3
                          nop                                                               // 0x00738fbf    90
@@ -5394,7 +5394,7 @@ _jmp_addr_0x00739d50:    {disp32} mov       ecx, dword ptr [ecx + 0x000005b8]   
                          {disp8} mov        dword ptr [esp + 0x34], ecx                    // 0x00739d5e    894c2434
                          {disp8} lea        esi, dword ptr [esp + 0x48]                    // 0x00739d62    8d742448
                          mov                edi, 0x00000054                                // 0x00739d66    bf54000000
-_jmp_addr_0x00739d6b:    mov                edx, 0x00da6be8                                // 0x00739d6b    bae86bda00
+_jmp_addr_0x00739d6b:    mov                edx, OFFSET _GVillagerInfo_ARRAY_00da6be8      // 0x00739d6b    bae86bda00
                          mov                ecx, 0x00da6e04                                // 0x00739d70    b9046eda00
 _jmp_addr_0x00739d75:    {disp8} mov        eax, dword ptr [esp + 0x34]                    // 0x00739d75    8b442434
                          cmp                dword ptr [ecx + -0x28], eax                   // 0x00739d79    3941d8

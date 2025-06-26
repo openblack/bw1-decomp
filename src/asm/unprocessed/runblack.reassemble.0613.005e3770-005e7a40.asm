@@ -1258,7 +1258,7 @@ _jmp_addr_0x005e448e:    {disp32} mov       ecx, dword ptr [data_bytes + 0x4bf2c
                          {disp8} fld        dword ptr [esp + 0x2c]                        // 0x005e4573    d944242c
                          {disp8} fsub       dword ptr [esp + 0x54]                        // 0x005e4577    d8642454
                          {disp8} fstp       dword ptr [esp + 0x2c]                        // 0x005e457b    d95c242c
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]             // 0x005e457f    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                    // 0x005e457f    d905e039e800
                          {disp32} fmul      dword ptr [rdata_bytes + 0x224c]              // 0x005e4585    d80d4cb28a00
                          fld                st(1)                                         // 0x005e458b    d9c1
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x005e458d    d81d98a38a00
@@ -2251,7 +2251,7 @@ _jmp_addr_0x005e52b9:    mov                ecx, dword ptr [esi]                
                          mov.s              eax, ecx                                      // 0x005e5313    8bc1
                          shr                ecx, 2                                        // 0x005e5315    c1e902
                          mov.s              esi, edi                                      // 0x005e5318    8bf7
-                         mov                edi, 0x00d99580                               // 0x005e531a    bf8095d900
+                         mov                edi, OFFSET _CHAR_ARRAY_00d99580              // 0x005e531a    bf8095d900
                          rep movsd          es:[edi], dword ptr ds:[esi]                  // 0x005e531f    f3a5
                          mov.s              ecx, eax                                      // 0x005e5321    8bc8
                          and                ecx, 0x03                                     // 0x005e5323    83e103
