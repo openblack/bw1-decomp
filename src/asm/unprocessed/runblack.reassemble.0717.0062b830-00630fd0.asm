@@ -3175,7 +3175,7 @@ _globl_ct_0x0062d7d0:    {disp32} jmp       _jmp_addr_0x0062d7e0                
                          nop                                                               // 0x0062d7dd    90
                          nop                                                               // 0x0062d7de    90
                          nop                                                               // 0x0062d7df    90
-_jmp_addr_0x0062d7e0:    {disp32} mov       dword ptr [data_bytes + 0x37ae20], 0x00000002  // 0x0062d7e0    c705200ed40002000000
+_jmp_addr_0x0062d7e0:    {disp32} mov       dword ptr [_MPFEConnectionStatus_00d40e20], 0x00000002  // 0x0062d7e0    c705200ed40002000000
                          {disp32} mov       dword ptr [data_bytes + 0x37ae24], 0x00000000  // 0x0062d7ea    c705240ed40000000000
                          ret                                                               // 0x0062d7f4    c3
                          nop                                                               // 0x0062d7f5    90

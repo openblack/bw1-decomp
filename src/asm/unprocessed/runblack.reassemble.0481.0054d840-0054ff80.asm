@@ -2306,12 +2306,12 @@ _jmp_addr_0x0054f233:    mov.s              ecx, eax                            
                          call               _jmp_addr_0x0066bad0                          // 0x0054f26b    e860c81100
                          add                esp, 0x10                                     // 0x0054f270    83c410
 _jmp_addr_0x0054f273:    call               _jmp_addr_0x005de2f0                          // 0x0054f273    e878f00800
-                         {disp32} mov       al, byte ptr [data_bytes + 0x380abe]          // 0x0054f278    a0be6ad400
+                         {disp32} mov       al, byte ptr [_ARGS_FORCEINETCONN]            // 0x0054f278    a0be6ad400
                          test               al, al                                        // 0x0054f27d    84c0
                          {disp8} mov        byte ptr [esp + 0x08], 0x00                   // 0x0054f27f    c644240800
                          {disp8} je         _jmp_addr_0x0054f28b                          // 0x0054f284    7405
                          {disp8} mov        byte ptr [esp + 0x08], 0x01                   // 0x0054f286    c644240801
-_jmp_addr_0x0054f28b:    {disp32} mov       al, byte ptr [data_bytes + 0x380abf]          // 0x0054f28b    a0bf6ad400
+_jmp_addr_0x0054f28b:    {disp32} mov       al, byte ptr [_ARGS_NOINETCONN]                // 0x0054f28b    a0bf6ad400
                          test               al, al                                        // 0x0054f290    84c0
                          {disp8} je         _jmp_addr_0x0054f299                          // 0x0054f292    7405
                          {disp8} mov        byte ptr [esp + 0x08], 0x02                   // 0x0054f294    c644240802

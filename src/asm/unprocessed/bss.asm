@@ -81,6 +81,21 @@
 .globl _DAT_00d3eedc
 .globl _DAT_00d3eee4             
 .globl _DAT_00d3eef4
+.globl _ape_hair
+.globl _MPFEConnectionStatus_00d40e20
+.globl _CHAR_ARRAY_00d414d8
+.globl _ARGS_NEWGAME
+.globl _ARGS_MULTIPLAYER
+.globl _ARGS_LAND
+.globl _ARGS_SKIRMISH
+.globl _ARGS_PREINTROVIDEO
+.globl _ARGS_FORCEINETCONN
+.globl _ARGS_NOINETCONN
+.globl _ARGS_EDITOR
+.globl _ARGS_CONVERT
+.globl _ARGS_VERSION
+.globl _ARGS_NOLOADMUSIC
+.globl _ARGS_SETTINGS
 
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
@@ -140,7 +155,28 @@ _DAT_00d3eedc:                             .space 0x8                           
 _DAT_00d3eee4:                             .space 0x8                                                              // [0x378ee4] 0x009c6000 + 0x378ee4 = 0x00d3eee4
                                            .space 0x8                                                              // [0x378eec] 0x009c6000 + 0x378eec = 0x00d3eeec
 _DAT_00d3eef4:                             .space 0x8                                                              // [0x378ef4] 0x009c6000 + 0x378ef4 = 0x00d3eef4
-                                           .space 0x1452d4                                                         // [0x378efc] 0x009c6000 + 0x378efc = 0x00d3eefc
+                                           .space 0x108                                                            // [0x378efc] 0x009c6000 + 0x378efc = 0x00d3eefc
+_ape_hair:                                 .space 0x4                                                              // [0x379004] 0x009c6000 + 0x379004 = 0x00d3f004
+                                           .space 0x1e18                                                           // [0x379008] 0x009c6000 + 0x379008 = 0x00d3f008
+_MPFEConnectionStatus_00d40e20:            .space 0x4                                                              // [0x37ae20] 0x009c6000 + 0x37ae20 = 0x00d40e20
+                                           .space 0x6b4                                                            // [0x37ae24] 0x009c6000 + 0x37ae24 = 0x00d40e24
+_CHAR_ARRAY_00d414d8:                      .space 0x80                                                             // [0x37b4d8] 0x009c6000 + 0x37b4d8 = 0x00d414d8
+                                           .space 0x5560                                                           // [0x37b558] 0x009c6000 + 0x37b558 = 0x00d41558
+                                           .space 0x1                                                              // [0x380ab8] 0x009c6000 + 0x380ab8 = 0x00d46ab8
+_ARGS_NEWGAME:                             .space 0x1                                                              // [0x380ab9] 0x009c6000 + 0x380ab9 = 0x00d46ab9
+_ARGS_MULTIPLAYER:                         .space 0x1                                                              // [0x380aba] 0x009c6000 + 0x380aba = 0x00d46aba
+_ARGS_LAND:                                .space 0x1                                                              // [0x380abb] 0x009c6000 + 0x380abb = 0x00d46abb
+_ARGS_SKIRMISH:                            .space 0x1                                                              // [0x380abc] 0x009c6000 + 0x380abc = 0x00d46abc
+_ARGS_PREINTROVIDEO:                       .space 0x1                                                              // [0x380abd] 0x009c6000 + 0x380abd = 0x00d46abd
+_ARGS_FORCEINETCONN:                       .space 0x1                                                              // [0x380abe] 0x009c6000 + 0x380abe = 0x00d46abe
+_ARGS_NOINETCONN:                          .space 0x1                                                              // [0x380abf] 0x009c6000 + 0x380abf = 0x00d46abf
+_ARGS_EDITOR:                              .space 0x1                                                              // [0x380ac0] 0x009c6000 + 0x380ac0 = 0x00d46ac0
+_ARGS_CONVERT:                             .space 0x1                                                              // [0x380ac1] 0x009c6000 + 0x380ac1 = 0x00d46ac1
+_ARGS_VERSION:                             .space 0x1                                                              // [0x380ac2] 0x009c6000 + 0x380ac2 = 0x00d46ac2
+_ARGS_NOLOADMUSIC:                         .space 0x1                                                              // [0x380ac3] 0x009c6000 + 0x380ac3 = 0x00d46ac3
+_ARGS_SETTINGS:                            .space 0x1                                                              // [0x380ac4] 0x009c6000 + 0x380ac4 = 0x00d46ac4
+                                           .space 0x3                                                              // [0x380ac5] 0x009c6000 + 0x380ac5 = 0x00d46ac5
+                                           .space 0x13d708                                                         // [0x380ac8] 0x009c6000 + 0x380ac8 = 0x00d46ac8
 
 ___lconv_static_null:                      .space 4                                                                // [0x4be1d0] 0x009c6000 + 0x4be1d0 = 0x00e841d0
 __umaskval:                                .space 4                                                                // [0x4be1d4] 0x009c6000 + 0x4be1d4 = 0x00e841d4

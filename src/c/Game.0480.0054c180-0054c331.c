@@ -17,7 +17,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this) {
     "                         call               @Init__5GGameFv@4\n"                             // 0x0054c1a4    e807320000
     "                         cmp                eax, 0x01\n"                                     // 0x0054c1a9    83f801
     "                         {disp32} jne       _jmp_addr_0x0054c2d0\n"                          // 0x0054c1ac    0f851e010000
-    "                         cmp                byte ptr [data_bytes + 0x380ac1], bl\n"          // 0x0054c1b2    381dc16ad400
+    "                         cmp                byte ptr [_ARGS_CONVERT], bl\n"                  // 0x0054c1b2    381dc16ad400
     "                         {disp32} jne       _jmp_addr_0x0054c2d0\n"                          // 0x0054c1b8    0f8512010000
     "                         push               edi\n"                                           // 0x0054c1be    57
     "                         call               _stop_draw_sprite_to_screen__Fv\n"               // 0x0054c1bf    e82c580f00
