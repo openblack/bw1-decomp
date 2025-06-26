@@ -6817,7 +6817,7 @@ _jmp_addr_0x007201a2:    ret                                                    
 _jmp_addr_0x007201ce:    pop                esi                                                  // 0x007201ce    5e
                          ret                                                                     // 0x007201cf    c3
 _jmp_addr_0x007201d0:    {disp32} mov       eax, dword ptr [ecx + 0x000000b4]                    // 0x007201d0    8b81b4000000
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]              // 0x007201d6    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]         // 0x007201d6    8b0485107dd300
                          ret                                                                     // 0x007201dd    c3
                          nop                                                                     // 0x007201de    90
                          nop                                                                     // 0x007201df    90
@@ -10321,7 +10321,7 @@ _jmp_addr_0x007224de:    mov.s              ecx, esi                            
                          nop                                                                     // 0x007224fe    90
                          nop                                                                     // 0x007224ff    90
 _jmp_addr_0x00722500:    {disp32} mov       eax, dword ptr [ecx + 0x000000b4]                    // 0x00722500    8b81b4000000
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]              // 0x00722506    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]         // 0x00722506    8b0485107dd300
                          ret                                                                     // 0x0072250d    c3
                          nop                                                                     // 0x0072250e    90
                          nop                                                                     // 0x0072250f    90
@@ -10891,7 +10891,7 @@ _jmp_addr_0x00722b14:    mov                eax, 0x00000001                     
                          nop                                                                     // 0x00722b1e    90
                          nop                                                                     // 0x00722b1f    90
 _jmp_addr_0x00722b20:    {disp32} mov       eax, dword ptr [ecx + 0x000000d4]                    // 0x00722b20    8b81d4000000
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]              // 0x00722b26    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]         // 0x00722b26    8b0485107dd300
                          ret                                                                     // 0x00722b2d    c3
                          nop                                                                     // 0x00722b2e    90
                          nop                                                                     // 0x00722b2f    90
@@ -13807,7 +13807,7 @@ _jmp_addr_0x00724c50:    {disp32} fld       dword ptr [rdata_bytes + 0xd89e8]   
                          nop                                                                     // 0x00724c6e    90
                          nop                                                                     // 0x00724c6f    90
 _jmp_addr_0x00724c70:    {disp32} mov       eax, dword ptr [ecx + 0x000000b4]                    // 0x00724c70    8b81b4000000
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]              // 0x00724c76    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]         // 0x00724c76    8b0485107dd300
                          ret                                                                     // 0x00724c7d    c3
                          nop                                                                     // 0x00724c7e    90
                          nop                                                                     // 0x00724c7f    90
@@ -15073,7 +15073,7 @@ _jmp_addr_0x00725a1a:    pop                edi                                 
                          add                esp, 0x08                                            // 0x00725a1c    83c408
                          ret                                                                     // 0x00725a1f    c3
 _jmp_addr_0x00725a20:    {disp32} mov       eax, dword ptr [ecx + 0x000000b4]                    // 0x00725a20    8b81b4000000
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]              // 0x00725a26    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]         // 0x00725a26    8b0485107dd300
                          ret                                                                     // 0x00725a2d    c3
                          nop                                                                     // 0x00725a2e    90
                          nop                                                                     // 0x00725a2f    90

@@ -1220,7 +1220,7 @@ _jmp_addr_0x0042b85f:    {disp8} lea        ecx, dword ptr [esp + 0x20]         
                          {disp8} mov        al, byte ptr [esp + 0x14]                            // 0x0042b876    8a442414
                          test               al, al                                               // 0x0042b87a    84c0
                          {disp8} je         _jmp_addr_0x0042b8cc                                 // 0x0042b87c    744e
-                         mov                edi, 0x00d37d10                                      // 0x0042b87e    bf107dd300
+                         mov                edi, OFFSET _MagicInfoTable                          // 0x0042b87e    bf107dd300
 _jmp_addr_0x0042b883:    push               0x0000009f                                           // 0x0042b883    689f000000
                          push               0x009cc624                                           // 0x0042b888    6824c69c00
                          push               0x58                                                 // 0x0042b88d    6a58
@@ -1244,7 +1244,7 @@ _jmp_addr_0x0042b8ae:    {disp8} lea        edx, dword ptr [esp + 0x1c]         
                          .byte              0x72, 0xbc// {disp8} jb _jmp_addr_0x0042b883         // 0x0042b8c5    72bc
                          {disp32} jmp       _jmp_addr_0x0042b94d                                 // 0x0042b8c7    e981000000
 _jmp_addr_0x0042b8cc:    xor.s              ebx, ebx                                             // 0x0042b8cc    33db
-                         {disp8} mov        dword ptr [esp + 0x10], 0x00d37d10                   // 0x0042b8ce    c7442410107dd300
+                         {disp8} mov        dword ptr [esp + 0x10], OFFSET _MagicInfoTable       // 0x0042b8ce    c7442410107dd300
 _jmp_addr_0x0042b8d6:    push               0x000000ab                                           // 0x0042b8d6    68ab000000
                          push               0x009cc624                                           // 0x0042b8db    6824c69c00
                          push               0x58                                                 // 0x0042b8e0    6a58

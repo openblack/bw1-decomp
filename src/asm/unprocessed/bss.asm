@@ -69,6 +69,11 @@
 .globl _GGameInfo_00d019f8
 .globl _VillagerStateTable
 .globl _AnimalStateTable
+.globl _GameBlock_ARRAY_00d189d8
+.globl _MagicInfoTable
+.globl _Point2D_00d3ee60
+.globl _Point2D_00d3ee68
+.globl _Point2D_00d3ee70
 
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
@@ -110,7 +115,15 @@ _GGameInfo_00d019f8:                       .space 0x58                          
                                            .space 0x7748                                                           // [0x33ba50] 0x009c6000 + 0x33ba50 = 0x00d01a50
 _VillagerStateTable:                       .space 0x8f70                                                           // [0x343198] 0x009c6000 + 0x343198 = 0x00d09198
 _AnimalStateTable:                         .space 0x1dd0                                                           // [0x34c108] 0x009c6000 + 0x34c108 = 0x00d12108
-                                           .space 0x1702f8                                                         // [0x34ded8] 0x009c6000 + 0x34ded8 = 0x00d13ed8
+                                           .space 0x4b00                                                           // [0x34ded8] 0x009c6000 + 0x34ded8 = 0x00d13ed8
+_GameBlock_ARRAY_00d189d8:                 .space 0x5000                                                           // [0x3529d8] 0x009c6000 + 0x3529d8 = 0x00d189d8
+                                           .space 0x1a338                                                          // [0x3579d8] 0x009c6000 + 0x3579d8 = 0x00d1d9d8
+_MagicInfoTable:                           .space 0x2a * 0x58                                                      // [0x371d10] 0x009c6000 + 0x371d10 = 0x00d37d10
+                                           .space 0x62e0                                                           // [0x372b80] 0x009c6000 + 0x372b80 = 0x00d38b80
+ _Point2D_00d3ee60:                        .space 8                                                                // [0x378e60] 0x009c6000 + 0x378e60 = 0x00d3ee60
+ _Point2D_00d3ee68:                        .space 8                                                                // [0x378e68] 0x009c6000 + 0x378e68 = 0x00d3ee68
+ _Point2D_00d3ee70:                        .space 8                                                                // [0x378e70] 0x009c6000 + 0x378e70 = 0x00d3ee70
+                                           .space 0x145358                                                         // [0x378e78] 0x009c6000 + 0x378e78 = 0x00d3ee78
 
 ___lconv_static_null:                      .space 4                                                                // [0x4be1d0] 0x009c6000 + 0x4be1d0 = 0x00e841d0
 __umaskval:                                .space 4                                                                // [0x4be1d4] 0x009c6000 + 0x4be1d4 = 0x00e841d4

@@ -2025,7 +2025,7 @@ _jmp_addr_0x0042536a:    mov.s              eax, esi                            
                          mov                dword ptr [esi], 0x008c36b0                   // 0x004253b0    c706b0368c00
                          {disp8} mov        dword ptr [esi + 0x68], eax                   // 0x004253b6    894668
                          {disp8} mov        dword ptr [esi + 0x58], edi                   // 0x004253b9    897e58
-                         {disp32} mov       edx, dword ptr [ecx * 0x4 + 0x00d37d10]       // 0x004253bc    8b148d107dd300
+                         {disp32} mov       edx, dword ptr [ecx * 0x4 + _MagicInfoTable]  // 0x004253bc    8b148d107dd300
                          {disp8} mov        eax, dword ptr [edx + 0x28]                   // 0x004253c3    8b4228
                          {disp8} mov        dword ptr [esi + 0x6c], eax                   // 0x004253c6    89466c
                          mov                edx, dword ptr [edi]                          // 0x004253c9    8b17

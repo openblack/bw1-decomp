@@ -504,7 +504,7 @@ _jmp_addr_0x0070bb84:    {disp8} mov        ecx, dword ptr [esp + 0x78]         
                          call               _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x0070bb94    e8d7160400
                          fstp               st(0)                                         // 0x0070bb99    ddd8
                          {disp32} mov       edx, dword ptr [esp + 0x00000088]             // 0x0070bb9b    8b942488000000
-                         {disp32} mov       esi, dword ptr [edx * 0x4 + 0x00d37d10]       // 0x0070bba2    8b3495107dd300
+                         {disp32} mov       esi, dword ptr [edx * 0x4 + _MagicInfoTable]  // 0x0070bba2    8b3495107dd300
                          add                esp, 0x08                                     // 0x0070bba9    83c408
                          mov.s              ecx, esi                                      // 0x0070bbac    8bce
                          call               @GetMagicEffectInfo__10GMagicInfoCFv@4        // 0x0070bbae    e8cdfaeeff
@@ -659,7 +659,7 @@ _jmp_addr_0x0070bdc4:    push               ebp                                 
                          call               _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x0070bdd1    e89a140400
                          fstp               st(0)                                         // 0x0070bdd6    ddd8
                          {disp32} mov       ecx, dword ptr [esp + 0x00000088]             // 0x0070bdd8    8b8c2488000000
-                         {disp32} mov       edi, dword ptr [ecx * 0x4 + 0x00d37d10]       // 0x0070bddf    8b3c8d107dd300
+                         {disp32} mov       edi, dword ptr [ecx * 0x4 + _MagicInfoTable]  // 0x0070bddf    8b3c8d107dd300
                          add                esp, 0x08                                     // 0x0070bde6    83c408
                          mov.s              ecx, edi                                      // 0x0070bde9    8bcf
                          call               @GetMagicEffectInfo__10GMagicInfoCFv@4        // 0x0070bdeb    e890f8eeff
@@ -1968,7 +1968,7 @@ _jmp_addr_0x0070cd35:    pop                edi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0070cd47    8d442400
                          push               eax                                           // 0x0070cd4b    50
                          call               _jmp_addr_0x006f6bc0                          // 0x0070cd4c    e86f9efeff
-                         {disp32} mov       ecx, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x0070cd51    8b0c85107dd300
+                         {disp32} mov       ecx, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x0070cd51    8b0c85107dd300
                          call               _jmp_addr_0x005fb800                          // 0x0070cd58    e8a3eaeeff
                          {disp8} fstp       dword ptr [esp + 0x00]                        // 0x0070cd5d    d95c2400
                          {disp8} mov        ecx, dword ptr [esp + 0x00]                   // 0x0070cd61    8b4c2400

@@ -23251,7 +23251,7 @@ _jmp_addr_0x004c087d:    sub                esp, 0x10                           
                          mov.s              ecx, esi                                             // 0x004c08a9    8bce
                          call               _jmp_addr_0x004ff240                                 // 0x004c08ab    e890e90300
                          {disp8} mov        eax, dword ptr [esp + 0x14]                          // 0x004c08b0    8b442414
-                         {disp32} mov       ecx, dword ptr [eax * 0x4 + 0x00d37d10]              // 0x004c08b4    8b0c85107dd300
+                         {disp32} mov       ecx, dword ptr [eax * 0x4 + _MagicInfoTable]         // 0x004c08b4    8b0c85107dd300
                          {disp8} mov        edi, dword ptr [ecx + 0x2c]                          // 0x004c08bb    8b792c
                          test               edi, edi                                             // 0x004c08be    85ff
                          {disp8} je         _jmp_addr_0x004c0928                                 // 0x004c08c0    7466

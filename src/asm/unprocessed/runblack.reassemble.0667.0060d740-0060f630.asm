@@ -1054,7 +1054,7 @@ _jmp_addr_0x0060e32e:    {disp32} lea       ecx, dword ptr [esp + 0x000000a4]   
                          mov                bl, 0x01                                    // 0x0060e33a    b301
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060e33c    e8df2e0000
                          {disp32} mov       dl, byte ptr [esp + 0x000000ac]             // 0x0060e341    8a9424ac000000
-                         push               0x00d3ee70                                  // 0x0060e348    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e348    6870eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                 // 0x0060e34d    8d4c241c
                          {disp8} mov        byte ptr [esp + 0x24], dl                   // 0x0060e351    88542424
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e355    e8e62e0000
@@ -1122,7 +1122,7 @@ _jmp_addr_0x0060e43c:    {disp32} lea       ecx, dword ptr [esp + 0x000000e0]   
                          mov                bl, 0x01                                    // 0x0060e448    b301
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060e44a    e8d12d0000
                          {disp32} mov       dl, byte ptr [esp + 0x000000e8]             // 0x0060e44f    8a9424e8000000
-                         push               0x00d3ee70                                  // 0x0060e456    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e456    6870eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                 // 0x0060e45b    8d4c241c
                          {disp8} mov        byte ptr [esp + 0x24], dl                   // 0x0060e45f    88542424
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e463    e8d82d0000
@@ -1187,7 +1187,7 @@ _jmp_addr_0x0060e53e:    {disp32} lea       ecx, dword ptr [esp + 0x000000bc]   
                          mov                bl, 0x01                                    // 0x0060e54a    b301
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060e54c    e8cf2c0000
                          {disp32} mov       dl, byte ptr [esp + 0x000000c4]             // 0x0060e551    8a9424c4000000
-                         push               0x00d3ee70                                  // 0x0060e558    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e558    6870eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                 // 0x0060e55d    8d4c241c
                          {disp8} mov        byte ptr [esp + 0x24], dl                   // 0x0060e561    88542424
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e565    e8d62c0000
@@ -1217,7 +1217,7 @@ _jmp_addr_0x0060e58c:    {disp8} fld        dword ptr [esp + 0x4c]              
                          fchs                                                           // 0x0060e5bf    d9e0
                          {disp32} fstp      dword ptr [esp + 0x000001ac]                // 0x0060e5c1    d99c24ac010000
                          call               @__as__7Point2DFRC7Point2D@12               // 0x0060e5c8    e8b39ee5ff
-                         push               0x00d3ee70                                  // 0x0060e5cd    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e5cd    6870eed300
                          {disp32} lea       ecx, dword ptr [esp + 0x000000f0]           // 0x0060e5d2    8d8c24f0000000
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e5d9    e8622c0000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                 // 0x0060e5de    d81d98a38a00
@@ -1251,7 +1251,7 @@ _jmp_addr_0x0060e637:    {disp32} lea       ecx, dword ptr [esp + 0x000000ec]   
                          mov                bl, 0x01                                    // 0x0060e643    b301
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060e645    e8d62b0000
                          {disp32} mov       dl, byte ptr [esp + 0x000000f4]             // 0x0060e64a    8a9424f4000000
-                         push               0x00d3ee70                                  // 0x0060e651    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e651    6870eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                 // 0x0060e656    8d4c241c
                          {disp8} mov        byte ptr [esp + 0x24], dl                   // 0x0060e65a    88542424
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e65e    e8dd2b0000
@@ -1316,7 +1316,7 @@ _jmp_addr_0x0060e739:    {disp32} lea       ecx, dword ptr [esp + 0x000000c8]   
                          mov                bl, 0x01                                    // 0x0060e745    b301
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060e747    e8d42a0000
                          {disp32} mov       dl, byte ptr [esp + 0x000000d0]             // 0x0060e74c    8a9424d0000000
-                         push               0x00d3ee70                                  // 0x0060e753    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e753    6870eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                 // 0x0060e758    8d4c241c
                          {disp8} mov        byte ptr [esp + 0x24], dl                   // 0x0060e75c    88542424
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e760    e8db2a0000
@@ -1346,7 +1346,7 @@ _jmp_addr_0x0060e787:    {disp8} fld        dword ptr [esp + 0x28]              
                          fchs                                                           // 0x0060e7ba    d9e0
                          {disp32} fstp      dword ptr [esp + 0x00000140]                // 0x0060e7bc    d99c2440010000
                          call               @__as__7Point2DFRC7Point2D@12               // 0x0060e7c3    e8b89ce5ff
-                         push               0x00d3ee70                                  // 0x0060e7c8    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e7c8    6870eed300
                          {disp32} lea       ecx, dword ptr [esp + 0x000000fc]           // 0x0060e7cd    8d8c24fc000000
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e7d4    e8672a0000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                 // 0x0060e7d9    d81d98a38a00
@@ -1379,7 +1379,7 @@ _jmp_addr_0x0060e832:    {disp32} lea       ecx, dword ptr [esp + 0x000000f8]   
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                 // 0x0060e83a    8d4c241c
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060e83e    e8dd290000
                          {disp32} mov       dl, byte ptr [esp + 0x00000100]             // 0x0060e843    8a942400010000
-                         push               0x00d3ee70                                  // 0x0060e84a    6870eed300
+                         push               0x00d3ee70 /* _Point2D_00d3ee70 */          // 0x0060e84a    6870eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                 // 0x0060e84f    8d4c241c
                          {disp8} mov        byte ptr [esp + 0x24], dl                   // 0x0060e853    88542424
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060e857    e8e4290000
@@ -1443,7 +1443,7 @@ _jmp_addr_0x0060e87e:    {disp8} fld        dword ptr [esp + 0x18]              
                          {disp32} fsub      dword ptr [esp + 0x00000084]                // 0x0060e932    d8a42484000000
                          {disp8} lea        edx, dword ptr [esp + 0x58]                 // 0x0060e939    8d542458
                          push               edx                                         // 0x0060e93d    52
-                         mov                ecx, 0x00d3ee70                             // 0x0060e93e    b970eed300
+                         mov                ecx, OFFSET _Point2D_00d3ee70               // 0x0060e93e    b970eed300
                          {disp8} fstp       dword ptr [esp + 0x5c]                      // 0x0060e943    d95c245c
                          {disp8} fld        dword ptr [esp + 0x60]                      // 0x0060e947    d9442460
                          {disp32} fsub      dword ptr [esp + 0x0000008c]                // 0x0060e94b    d8a4248c000000
@@ -1788,7 +1788,7 @@ _jmp_addr_0x0060edb7:    {disp8} mov        edx, dword ptr [esp + 0x30]         
                          {disp8} fstp       dword ptr [esp + 0x2c]                      // 0x0060edf3    d95c242c
                          call               @__ml__7Point2DCFf@16                       // 0x0060edf7    e894230000
                          push               eax                                         // 0x0060edfc    50
-                         mov                ecx, 0x00d3ee60                             // 0x0060edfd    b960eed300
+                         mov                ecx, OFFSET _Point2D_00d3ee60               // 0x0060edfd    b960eed300
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060ee02    e819240000
                          {disp8} fld        dword ptr [esp + 0x24]                      // 0x0060ee07    d9442424
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x2270]            // 0x0060ee0b    d81d70b28a00
@@ -1912,7 +1912,7 @@ _jmp_addr_0x0060ef85:    cmp                al, 0x10                            
                          {disp32} fstp      dword ptr [data_bytes + 0x378e68]           // 0x0060efb8    d91d68eed300
                          {disp32} mov       dword ptr [data_bytes + 0x378e6c], edx      // 0x0060efbe    89156ceed300
                          {disp8} je         _jmp_addr_0x0060f01d                        // 0x0060efc4    7457
-                         push               0x00d3ee60                                  // 0x0060efc6    6860eed300
+                         push               0x00d3ee60 /* _Point2D_00d3ee60 */          // 0x0060efc6    6860eed300
                          {disp32} lea       ecx, dword ptr [esp + 0x00000218]           // 0x0060efcb    8d8c2418020000
                          call               @__as__7Point2DFRC7Point2D@12               // 0x0060efd2    e8a994e5ff
                          {disp32} lea       eax, dword ptr [esp + 0x00000214]           // 0x0060efd7    8d842414020000
@@ -1921,7 +1921,7 @@ _jmp_addr_0x0060ef85:    cmp                al, 0x10                            
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060efe3    e838220000
                          {disp32} mov       cl, byte ptr [esp + 0x0000021c]             // 0x0060efe8    8a8c241c020000
                          {disp8} mov        byte ptr [esp + 0x40], cl                   // 0x0060efef    884c2440
-                         push               0x00d3ee68                                  // 0x0060eff3    6868eed300
+                         push               0x00d3ee68 /* _Point2D_00d3ee68 */          // 0x0060eff3    6868eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                 // 0x0060eff8    8d4c243c
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060effc    e83f220000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                 // 0x0060f001    d81d98a38a00
@@ -1954,7 +1954,7 @@ _jmp_addr_0x0060f01d:    {disp8} fld        dword ptr [esp + 0x64]              
                          fchs                                                           // 0x0060f068    d9e0
                          {disp32} fstp      dword ptr [esp + 0x00000164]                // 0x0060f06a    d99c2464010000
                          call               @__as__7Point2DFRC7Point2D@12               // 0x0060f071    e80a94e5ff
-                         push               0x00d3ee68                                  // 0x0060f076    6868eed300
+                         push               0x00d3ee68 /* _Point2D_00d3ee68 */          // 0x0060f076    6868eed300
                          {disp32} lea       ecx, dword ptr [esp + 0x00000108]           // 0x0060f07b    8d8c2408010000
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060f082    e8b9210000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                 // 0x0060f087    d81d98a38a00
@@ -1989,7 +1989,7 @@ _jmp_addr_0x0060f0e1:    {disp32} lea       eax, dword ptr [esp + 0x00000104]   
                          call               @__as__7Point2DFRC7Point2D2@12              // 0x0060f0ef    e82c210000
                          {disp32} mov       cl, byte ptr [esp + 0x0000010c]             // 0x0060f0f4    8a8c240c010000
                          {disp8} mov        byte ptr [esp + 0x40], cl                   // 0x0060f0fb    884c2440
-                         push               0x00d3ee68                                  // 0x0060f0ff    6868eed300
+                         push               0x00d3ee68 /* _Point2D_00d3ee68 */          // 0x0060f0ff    6868eed300
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                 // 0x0060f104    8d4c243c
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060f108    e833210000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                 // 0x0060f10d    d81d98a38a00
@@ -2020,7 +2020,7 @@ _jmp_addr_0x0060f12e:    {disp8} fld        dword ptr [esp + 0x44]              
                          {disp32} mov       dword ptr [esp + 0x00000170], edx           // 0x0060f166    89942470010000
                          {disp32} fstp      dword ptr [esp + 0x00000174]                // 0x0060f16d    d99c2474010000
                          call               @__as__7Point2DFRC7Point2D@12               // 0x0060f174    e80793e5ff
-                         push               0x00d3ee68                                  // 0x0060f179    6868eed300
+                         push               0x00d3ee68 /* _Point2D_00d3ee68 */          // 0x0060f179    6868eed300
                          {disp32} lea       ecx, dword ptr [esp + 0x00000118]           // 0x0060f17e    8d8c2418010000
                          call               @Cross__7Point2DCFRC7Point2D@12             // 0x0060f185    e8b6200000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                 // 0x0060f18a    d81d98a38a00

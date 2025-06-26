@@ -2841,7 +2841,7 @@ _jmp_addr_0x0073bcdf:    mov                ecx, dword ptr [eax]                
                          call               _jmp_addr_0x00719610                                 // 0x0073bd84    e887d8fdff
                          add                esp, 0x2c                                            // 0x0073bd89    83c42c
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000                   // 0x0073bd8c    c744241000000000
-                         mov                ebx, 0x00d37d10                                      // 0x0073bd94    bb107dd300
+                         mov                ebx, OFFSET _MagicInfoTable                          // 0x0073bd94    bb107dd300
 _jmp_addr_0x0073bd99:    {disp8} mov        edx, dword ptr [esp + 0x10]                          // 0x0073bd99    8b542410
                          push               edx                                                  // 0x0073bd9d    52
                          mov.s              ecx, esi                                             // 0x0073bd9e    8bce

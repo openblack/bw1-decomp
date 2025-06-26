@@ -10831,7 +10831,7 @@ _jmp_addr_0x006e60c6:    cmp                ebp, -0x01                          
                          {disp8} jne        _jmp_addr_0x006e6130                          // 0x006e60c9    7565
                          test               edx, edx                                      // 0x006e60cb    85d2
                          {disp8} je         _jmp_addr_0x006e6130                          // 0x006e60cd    7461
-                         {disp32} mov       eax, dword ptr [edx * 0x4 + 0x00d37d10]       // 0x006e60cf    8b0495107dd300
+                         {disp32} mov       eax, dword ptr [edx * 0x4 + _MagicInfoTable]  // 0x006e60cf    8b0495107dd300
                          {disp8} mov        edi, dword ptr [eax + 0x2c]                   // 0x006e60d6    8b782c
                          test               edi, edi                                      // 0x006e60d9    85ff
                          {disp32} je        _jmp_addr_0x006e636d                          // 0x006e60db    0f848c020000
@@ -10995,7 +10995,7 @@ _jmp_addr_0x006e62c4:    mov                edx, dword ptr [esi]                
                          call               dword ptr [edx + 0x1c]                        // 0x006e62cb    ff521c
                          mov.s              ecx, eax                                      // 0x006e62ce    8bc8
                          call               _jmp_addr_0x0064c300                          // 0x006e62d0    e82b60f6ff
-_jmp_addr_0x006e62d5:    {disp32} mov       eax, dword ptr [edi * 0x4 + 0x00d37d10]       // 0x006e62d5    8b04bd107dd300
+_jmp_addr_0x006e62d5:    {disp32} mov       eax, dword ptr [edi * 0x4 + _MagicInfoTable]  // 0x006e62d5    8b04bd107dd300
                          {disp8} mov        edi, dword ptr [eax + 0x2c]                   // 0x006e62dc    8b782c
                          test               edi, edi                                      // 0x006e62df    85ff
                          {disp32} je        _jmp_addr_0x006e636d                          // 0x006e62e1    0f8486000000
