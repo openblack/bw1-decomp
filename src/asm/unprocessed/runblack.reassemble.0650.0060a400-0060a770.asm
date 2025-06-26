@@ -285,7 +285,7 @@ _jmp_addr_0x0060a60a:    {disp8} mov       ecx, dword ptr [esp + 0x08]          
                          nop                                                      // 0x0060a66f    90
                          {disp8} mov       eax, dword ptr [esp + 0x04]            // 0x0060a670    8b442404
                          push              eax                                    // 0x0060a674    50
-                         mov               ecx, 0x00d3ee78                        // 0x0060a675    b978eed300
+                         mov               ecx, OFFSET _CircleHugStateInfoT_00d3ee78 // 0x0060a675    b978eed300
                          call              _jmp_addr_0x0060a680                   // 0x0060a67a    e801000000
                          ret                                                      // 0x0060a67f    c3
 _jmp_addr_0x0060a680:    push              ecx                                    // 0x0060a680    51

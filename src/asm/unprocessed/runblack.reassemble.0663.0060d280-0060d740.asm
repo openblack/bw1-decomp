@@ -106,7 +106,7 @@ _jmp_addr_0x0060d349:    {disp8} mov       eax, dword ptr [esp + 0x14]          
                          mov               dword ptr [edx], ebp                        // 0x0060d356    892a
                          {disp8} mov       dword ptr [edx + 0x04], eax                 // 0x0060d358    894204
                          {disp8} mov       dword ptr [edx + 0x08], ecx                 // 0x0060d35b    894a08
-                         mov               ecx, 0x00d3ee78                             // 0x0060d35e    b978eed300
+                         mov               ecx, OFFSET _CircleHugStateInfoT_00d3ee78   // 0x0060d35e    b978eed300
                          call              @fetch__19CircleHugStateInfoTF9MapCoords@20 // 0x0060d363    e8a8000000
                          {disp8} mov       dword ptr [esi + 0x08], eax                 // 0x0060d368    894608
                          pop               edi                                         // 0x0060d36b    5f
@@ -302,7 +302,7 @@ _jmp_addr_0x0060d567:    {disp8} lea       ecx, dword ptr [esp + 0x10]          
                          mov               dword ptr [edx], eax                        // 0x0060d58b    8902
                          {disp8} mov       eax, dword ptr [esp + 0x24]                 // 0x0060d58d    8b442424
                          {disp8} mov       dword ptr [edx + 0x04], ecx                 // 0x0060d591    894a04
-                         mov               ecx, 0x00d3ee78                             // 0x0060d594    b978eed300
+                         mov               ecx, OFFSET _CircleHugStateInfoT_00d3ee78   // 0x0060d594    b978eed300
                          {disp8} mov       dword ptr [edx + 0x08], eax                 // 0x0060d599    894208
                          call              @fetch__19CircleHugStateInfoTF9MapCoords@20 // 0x0060d59c    e86ffeffff
                          {disp8} mov       dword ptr [esi + 0x08], eax                 // 0x0060d5a1    894608
