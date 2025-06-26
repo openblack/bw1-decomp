@@ -751,7 +751,7 @@ _jmp_addr_0x006407f6:    push              esi                                  
                          {disp8} mov       dword ptr [esp + 0x24], 0x00000000            // 0x006407ff    c744242400000000
                          call              _jmp_addr_0x007c75a2                          // 0x00640807    e8966d1800
                          add               esp, 0x10                                     // 0x0064080c    83c410
-                         mov               ebx, 0x00d99648                               // 0x0064080f    bb4896d900
+                         mov               ebx, OFFSET _CHAR_ARRAY_00d99648              // 0x0064080f    bb4896d900
 _jmp_addr_0x00640814:    or                ecx, 0xffffffff                               // 0x00640814    83c9ff
                          xor.s             eax, eax                                      // 0x00640817    33c0
                          mov.s             edi, ebx                                      // 0x00640819    8bfb

@@ -5172,7 +5172,7 @@ _jmp_addr_0x005583e3:    {disp32} mov       ecx, dword ptr [esp + 0x00000230]   
                          .byte              0x72, 0xb0// {disp8} jb _jmp_addr_0x005583b6  // 0x00558404    72b0
 _jmp_addr_0x00558406:    or                 ecx, 0xffffffff                               // 0x00558406    83c9ff
                          xor.s              eax, eax                                      // 0x00558409    33c0
-                         mov                edi, 0x00d99580                               // 0x0055840b    bf8095d900
+                         mov                edi, OFFSET _CHAR_ARRAY_00d99580              // 0x0055840b    bf8095d900
                          repne scasb                                                      // 0x00558410    f2ae
                          not                ecx                                           // 0x00558412    f7d1
                          sub.s              edi, ecx                                      // 0x00558414    2bf9

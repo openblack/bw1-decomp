@@ -3975,13 +3975,13 @@ _jmp_addr_0x00442464:    push               0x0                                 
                          {disp8} fadd       dword ptr [esp + 0x2c]                        // 0x004424a7    d844242c
                          {disp8} fstp       dword ptr [esp + 0x2c]                        // 0x004424ab    d95c242c
 _jmp_addr_0x004424af:    call               _GetNearClipping__11LandFeatureFv@0           // 0x004424af    e87c0a1a00
-                         {disp32} fstp      dword ptr [data_bytes + 0x4bd9e0]             // 0x004424b4    d91de039e800
+                         {disp32} fstp      dword ptr [_near_clipping]                    // 0x004424b4    d91de039e800
                          {disp32} fld       dword ptr [data_bytes + 0x4dbdd0]             // 0x004424ba    d905d01dea00
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x004424c0    8b0d5c19d000
                          {disp32} fmul      dword ptr [_rdata_float0p5]                   // 0x004424c6    d80db4a38a00
                          fptan                                                            // 0x004424cc    d9f2
                          fstp               st(0)                                         // 0x004424ce    ddd8
-                         {disp32} fmul      dword ptr [data_bytes + 0x4bd9e0]             // 0x004424d0    d80de039e800
+                         {disp32} fmul      dword ptr [_near_clipping]                    // 0x004424d0    d80de039e800
                          {disp32} fst       dword ptr [data_bytes + 0x27212c]             // 0x004424d6    d9152c81c300
                          {disp32} fdiv      dword ptr [data_bytes + 0x4bd9ec]             // 0x004424dc    d835ec39e800
                          {disp32} fstp      dword ptr [data_bytes + 0x272130]             // 0x004424e2    d91d3081c300
@@ -4643,7 +4643,7 @@ _jmp_addr_0x00442c20:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          {disp8} fmul       dword ptr [eax + 0x04]                        // 0x00442c91    d84804
                          faddp              st(1), st                                     // 0x00442c94    dec1
                          {disp32} fadd      dword ptr [data_bytes + 0x4dbd84]             // 0x00442c96    d805841dea00
-                         {disp32} fcom      dword ptr [data_bytes + 0x4bd9e0]             // 0x00442c9c    d815e039e800
+                         {disp32} fcom      dword ptr [_near_clipping]                    // 0x00442c9c    d815e039e800
                          fnstsw             ax                                            // 0x00442ca2    dfe0
                          test               ah, 0x01                                      // 0x00442ca4    f6c401
                          {disp8} je         _jmp_addr_0x00442cae                          // 0x00442ca7    7405

@@ -139,7 +139,7 @@ _PreDraw__11InnerCameraFv:
                          call                 _ChangeFov__8LH3DTechFf@4                     // 0x0079692b    e8802c0800
                          {disp32} fld         dword ptr [data_bytes + 0x4dbdd0]             // 0x00796930    d905d01dea00
                          {disp32} fmul        dword ptr [_rdata_float0p5]                   // 0x00796936    d80db4a38a00
-                         {disp32} mov         dword ptr [data_bytes + 0x4bd9e0], 0x3e4ccccd // 0x0079693c    c705e039e800cdcc4c3e
+                         {disp32} mov         dword ptr [_near_clipping], 0x3e4ccccd        // 0x0079693c    c705e039e800cdcc4c3e
                          {disp32} lea         edx, dword ptr [esi + 0x000003e0]             // 0x00796946    8d96e0030000
                          mov.s                eax, edx                                      // 0x0079694c    8bc2
                          fptan                                                              // 0x0079694e    d9f2
@@ -1545,7 +1545,7 @@ _jmp_addr_0x00797af0:    fld                  st(1)                             
                          fxch                 st(1)                                         // 0x00797b45    d9c9
                          {disp32} fadd        dword ptr [rdata_bytes + 0x2fbd0]             // 0x00797b47    d805d08b8d00
                          {disp8} fld          dword ptr [esi + 0x0c]                        // 0x00797b4d    d9460c
-                         {disp32} fcomp       dword ptr [data_bytes + 0x4bd9e0]             // 0x00797b50    d81de039e800
+                         {disp32} fcomp       dword ptr [_near_clipping]                    // 0x00797b50    d81de039e800
                          fnstsw               ax                                            // 0x00797b56    dfe0
                          test                 ah, 0x01                                      // 0x00797b58    f6c401
                          {disp8} je           _jmp_addr_0x00797b9c                          // 0x00797b5b    743f
@@ -1639,7 +1639,7 @@ _jmp_addr_0x00797c77:    {disp8} fld          dword ptr [esi + 0x04]            
                          {disp8} jne          _jmp_addr_0x00797c8f                          // 0x00797c85    7508
                          {disp32} mov         eax, dword ptr [data_bytes + 0x264b04]        // 0x00797c87    a104abc200
                          {disp8} mov          dword ptr [esi + 0x04], eax                   // 0x00797c8c    894604
-_jmp_addr_0x00797c8f:    {disp32} fld         dword ptr [data_bytes + 0x4bd9e0]             // 0x00797c8f    d905e039e800
+_jmp_addr_0x00797c8f:    {disp32} fld         dword ptr [_near_clipping]                    // 0x00797c8f    d905e039e800
                          {disp8} fmul         dword ptr [esi + 0x0c]                        // 0x00797c95    d84e0c
                          {disp8} fst          dword ptr [esi + 0x0c]                        // 0x00797c98    d9560c
                          {disp32} fld         dword ptr [_rdata_float1p0]                   // 0x00797c9b    d90590a38a00
@@ -3428,7 +3428,7 @@ _jmp_addr_0x00799176:    pop                  edi                               
                          nop                                                                // 0x0079918e    90
                          nop                                                                // 0x0079918f    90
 _jmp_addr_0x00799190:    {disp32} mov         dword ptr [data_bytes + 0x440024], 0x00ffffff // 0x00799190    c7052460e000ffffff00
-                         {disp32} mov         dword ptr [data_bytes + 0x440020], 0x3f800000 // 0x0079919a    c7052060e0000000803f
+                         {disp32} mov         dword ptr [_DAT_00e06020], 0x3f800000         // 0x0079919a    c7052060e0000000803f
                          {disp32} mov         dword ptr [data_bytes + 0x264150], 0x00000000 // 0x007991a4    c70550a1c20000000000
                          {disp32} mov         dword ptr [data_bytes + 0x440028], 0x00000000 // 0x007991ae    c7052860e00000000000
                          ret                                                                // 0x007991b8    c3

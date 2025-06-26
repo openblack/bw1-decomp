@@ -2934,7 +2934,7 @@ _jmp_addr_0x00519ad0:    sub                esp, 0x34                           
                          lea                edi, dword ptr [eax + eax * 0x4]              // 0x00519af5    8d3c80
                          lea                edi, dword ptr [edi + edi * 0x4]              // 0x00519af8    8d3cbf
                          shl                edi, 4                                        // 0x00519afb    c1e704
-                         add                edi, 0x00d9d678                               // 0x00519afe    81c778d6d900
+                         add                edi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x00519afe    81c778d6d900
                          call               _jmp_addr_0x00727690                          // 0x00519b04    e887db2000
                          xor.s              ebx, ebx                                      // 0x00519b09    33db
                          test               eax, eax                                      // 0x00519b0b    85c0

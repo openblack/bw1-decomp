@@ -237,7 +237,7 @@ _jmp_addr_0x0060bd3f:    cmp                edi, 0x08                           
 _jmp_addr_0x0060bd71:    {disp32} mov       ebp, dword ptr [_game]                        // 0x0060bd71    8b2d5c19d000
                          dec                eax                                           // 0x0060bd77    48
                          and                eax, 0x03                                     // 0x0060bd78    83e003
-                         {disp32} mov       dx, word ptr [eax * 0x4 + 0x00da59fc]         // 0x0060bd7b    668b1485fc59da00
+                         {disp32} mov       dx, word ptr [eax * 0x4 + _JustMapXZ_ARRAY_00da59fc]         // 0x0060bd7b    668b1485fc59da00
                          movsx              ecx, dx                                       // 0x0060bd83    0fbfca
                          add.s              ecx, edi                                      // 0x0060bd86    03cf
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x0060bd88    89442410
@@ -269,7 +269,7 @@ _jmp_addr_0x0060bdca:    {disp8} mov        ecx, dword ptr [esp + 0x24]         
 _jmp_addr_0x0060bdda:    {disp32} mov       ebp, dword ptr [_game]                        // 0x0060bdda    8b2d5c19d000
                          inc                eax                                           // 0x0060bde0    40
                          and                eax, 0x03                                     // 0x0060bde1    83e003
-                         {disp32} mov       dx, word ptr [eax * 0x4 + 0x00da59fc]         // 0x0060bde4    668b1485fc59da00
+                         {disp32} mov       dx, word ptr [eax * 0x4 + _JustMapXZ_ARRAY_00da59fc]         // 0x0060bde4    668b1485fc59da00
                          movsx              ecx, dx                                       // 0x0060bdec    0fbfca
                          add.s              ecx, edi                                      // 0x0060bdef    03cf
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x0060bdf1    89442410

@@ -1377,7 +1377,7 @@ _jmp_addr_0x0073aff4:    add                eax, 0x04                           
                          sub.s              eax, ecx                                             // 0x0073b02c    2bc1
                          lea                edx, dword ptr [ecx + eax * 0x4]                     // 0x0073b02e    8d1481
                          lea                eax, dword ptr [ecx + edx * 0x8]                     // 0x0073b031    8d04d1
-                         {disp32} lea       eax, dword ptr [eax * 0x4 + 0x00da6be8]              // 0x0073b034    8d0485e86bda00
+                         {disp32} lea       eax, dword ptr [eax * 0x4 + _GVillagerInfo_ARRAY_00da6be8]              // 0x0073b034    8d0485e86bda00
                          ret                0x0004                                               // 0x0073b03b    c20400
                          nop                                                                     // 0x0073b03e    90
                          nop                                                                     // 0x0073b03f    90
@@ -4965,7 +4965,7 @@ _jmp_addr_0x0073d3c7:    push               ebx                                 
                          lea                esi, dword ptr [eax + eax * 0x4]                     // 0x0073d3d4    8d3480
                          shl                esi, 4                                               // 0x0073d3d7    c1e604
                          add                esp, 0x04                                            // 0x0073d3da    83c404
-                         add                esi, 0x00d9d678                                      // 0x0073d3dd    81c678d6d900
+                         add                esi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x0073d3dd    81c678d6d900
                          push               -0x1                                                 // 0x0073d3e3    6aff
                          mov.s              ecx, esi                                             // 0x0073d3e5    8bce
                          call               @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12                                 // 0x0073d3e7    e8d4dbfeff
@@ -5046,7 +5046,7 @@ _jmp_addr_0x0073d48e:    push               esi                                 
                          lea                esi, dword ptr [eax + eax * 0x4]                     // 0x0073d49a    8d3480
                          shl                esi, 4                                               // 0x0073d49d    c1e604
                          add                esp, 0x04                                            // 0x0073d4a0    83c404
-                         add                esi, 0x00d9d678                                      // 0x0073d4a3    81c678d6d900
+                         add                esi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x0073d4a3    81c678d6d900
                          push               -0x1                                                 // 0x0073d4a9    6aff
                          mov.s              ecx, esi                                             // 0x0073d4ab    8bce
                          call               @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12                                 // 0x0073d4ad    e80edbfeff
@@ -5096,7 +5096,7 @@ _jmp_addr_0x0073d500:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          lea                esi, dword ptr [eax + eax * 0x4]                     // 0x0073d509    8d3480
                          shl                esi, 4                                               // 0x0073d50c    c1e604
                          push               edi                                                  // 0x0073d50f    57
-                         add                esi, 0x00d9d678                                      // 0x0073d510    81c678d6d900
+                         add                esi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x0073d510    81c678d6d900
                          {disp32} mov       edi, dword ptr [esi + 0x00000124]                    // 0x0073d516    8bbe24010000
                          mov.s              ebp, ecx                                             // 0x0073d51c    8be9
                          push               edi                                                  // 0x0073d51e    57
@@ -5164,7 +5164,7 @@ _jmp_addr_0x0073d5a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          lea                eax, dword ptr [eax + eax * 0x4]                     // 0x0073d5ac    8d0480
                          lea                edi, dword ptr [eax + eax * 0x4]                     // 0x0073d5af    8d3c80
                          shl                edi, 4                                               // 0x0073d5b2    c1e704
-                         add                edi, 0x00d9d678                                      // 0x0073d5b5    81c778d6d900
+                         add                edi, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x0073d5b5    81c778d6d900
                          mov.s              ebp, ecx                                             // 0x0073d5bb    8be9
                          or                 esi, 0xffffffff                                      // 0x0073d5bd    83ceff
 _jmp_addr_0x0073d5c0:    cmp                dword ptr [ebx], 0x00                                // 0x0073d5c0    833b00
@@ -10362,7 +10362,7 @@ _jmp_addr_0x00740da0:    push               eax                                 
                          lea                ecx, dword ptr [eax + eax * 0x4]                     // 0x00740dbb    8d0c80
                          shl                ecx, 4                                               // 0x00740dbe    c1e104
                          add                esp, 0x04                                            // 0x00740dc1    83c404
-                         add                ecx, 0x00d9d678                                      // 0x00740dc4    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x00740dc4    81c178d6d900
                          call               @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12                                 // 0x00740dca    e8f1a1feff
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                          // 0x00740dcf    8b4c240c
                          push               ecx                                                  // 0x00740dd3    51
@@ -15290,7 +15290,7 @@ _jmp_addr_0x00743eb5:    push               edi                                 
                          lea                ecx, dword ptr [eax + eax * 0x4]                     // 0x00743ed7    8d0c80
                          shl                ecx, 4                                               // 0x00743eda    c1e104
                          push               edi                                                  // 0x00743edd    57
-                         add                ecx, 0x00d9d678                                      // 0x00743ede    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x00743ede    81c178d6d900
                          call               @GetPowerUpFromMagicType__14GSpellSeedInfoCF10MAGIC_TYPE@12                                 // 0x00743ee4    e88770feff
                          cmp                eax, -0x01                                           // 0x00743ee9    83f8ff
                          {disp8} je         _jmp_addr_0x00743ef7                                 // 0x00743eec    7409
@@ -15380,7 +15380,7 @@ _jmp_addr_0x00743fb0:    mov                edx, dword ptr [edi]                
                          lea                eax, dword ptr [ebx + ebx * 0x4]                     // 0x00743fbc    8d049b
                          lea                eax, dword ptr [eax + eax * 0x4]                     // 0x00743fbf    8d0480
                          shl                eax, 4                                               // 0x00743fc2    c1e004
-                         add                eax, 0x00d9d678                                      // 0x00743fc5    0578d6d900
+                         add                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                                     // 0x00743fc5    0578d6d900
                          cmp.s              ebp, eax                                             // 0x00743fca    3be8
                          {disp8} je         _jmp_addr_0x00743fe0                                 // 0x00743fcc    7412
 _jmp_addr_0x00743fce:    inc                esi                                                  // 0x00743fce    46
@@ -15496,7 +15496,7 @@ _jmp_addr_0x007440ba:    {disp8} mov        edx, dword ptr [ebp + 0x00]         
                          lea                ecx, dword ptr [eax + eax * 0x4]                     // 0x007440dc    8d0c80
                          shl                ecx, 4                                               // 0x007440df    c1e104
                          push               ebp                                                  // 0x007440e2    55
-                         add                ecx, 0x00d9d678                                      // 0x007440e3    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678           // 0x007440e3    81c178d6d900
                          push               ecx                                                  // 0x007440e9    51
                          {disp8} lea        edx, dword ptr [esp + 0x2c]                          // 0x007440ea    8d54242c
                          push               0x00d9d514                                           // 0x007440ee    6814d5d900
@@ -15687,7 +15687,7 @@ _jmp_addr_0x007442d2:    mov                ecx, dword ptr [esi]                
                          lea                eax, dword ptr [edi + edi * 0x4]                     // 0x007442de    8d04bf
                          lea                eax, dword ptr [eax + eax * 0x4]                     // 0x007442e1    8d0480
                          shl                eax, 4                                               // 0x007442e4    c1e004
-                         add                eax, 0x00d9d678                                      // 0x007442e7    0578d6d900
+                         add                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                                     // 0x007442e7    0578d6d900
                          cmp.s              edx, eax                                             // 0x007442ec    3bd0
                          {disp8} jne        _jmp_addr_0x0074430d                                 // 0x007442ee    751d
                          mov                dword ptr [esi], 0x00000000                          // 0x007442f0    c70600000000
@@ -16580,11 +16580,11 @@ _globl_ct_0x00744ae0:    call               _jmp_addr_0x00744af0                
                          nop                                                                     // 0x00744aed    90
                          nop                                                                     // 0x00744aee    90
                          nop                                                                     // 0x00744aef    90
-_jmp_addr_0x00744af0:    mov                eax, 0x00da2930                                      // 0x00744af0    b83029da00
+_jmp_addr_0x00744af0:    mov                eax, OFFSET _GTownDesireInfo_ARRAY_00da2930          // 0x00744af0    b83029da00
                          mov                ecx, 0x00000011                                      // 0x00744af5    b911000000
                          xor.s              edx, edx                                             // 0x00744afa    33d2
 .att_syntax
-_jmp_addr_0x00744afc:    movl               $??_7Base@@6B@, (%eax)                        // 0x00744afc    c700449a8a00
+_jmp_addr_0x00744afc:    movl               $??_7Base@@6B@, (%eax)                               // 0x00744afc    c700449a8a00
 .intel_syntax noprefix
                          {disp8} mov        dword ptr [eax + 0x04], edx                          // 0x00744b02    895004
                          {disp8} mov        dword ptr [eax + 0x08], edx                          // 0x00744b05    895008
@@ -16604,7 +16604,7 @@ _jmp_addr_0x00744afc:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                                     // 0x00744b1f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00744b20    8b442404
                          mov                dword ptr [eax], 0x00000011                          // 0x00744b24    c70011000000
-                         mov                eax, 0x00da2930                                      // 0x00744b2a    b83029da00
+                         mov                eax, OFFSET _GTownDesireInfo_ARRAY_00da2930          // 0x00744b2a    b83029da00
                          ret                0x0004                                               // 0x00744b2f    c20400
                          nop                                                                     // 0x00744b32    90
                          nop                                                                     // 0x00744b33    90
@@ -17793,7 +17793,7 @@ _jmp_addr_0x00745d80:    push               esi                                 
                          {disp32} mov       ecx, dword ptr [esi + 0x00000160]                    // 0x00745dc0    8b8e60010000
                          call               @GetTribe__4TownCFv@4                                // 0x00745dc6    e8756affff
                          mov.s              ecx, eax                                             // 0x00745dcb    8bc8
-                         sub                ecx, 0x00da57a8                                      // 0x00745dcd    81e9a857da00
+                         sub                ecx, OFFSET _GTribeInfo_ARRAY_00da57a8               // 0x00745dcd    81e9a857da00
                          mov                eax, 0x92492493                                      // 0x00745dd3    b893244992
                          imul               ecx                                                  // 0x00745dd8    f7e9
                          add.s              edx, ecx                                             // 0x00745dda    03d1
@@ -17944,7 +17944,7 @@ _jmp_addr_0x00745edd:    {disp8} mov        eax, dword ptr [edi + 0x04]         
 _jmp_addr_0x00745f80:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00745f80    8b442404
                          lea                eax, dword ptr [eax + eax * 0x8]                     // 0x00745f84    8d04c0
                          shl                eax, 4                                               // 0x00745f87    c1e004
-                         add                eax, 0x00da2930                                      // 0x00745f8a    053029da00
+                         add                eax, 0x00da2930 /* _GTownDesireInfo_ARRAY_00da2930 */  // 0x00745f8a    053029da00
                          ret                0x0004                                               // 0x00745f8f    c20400
                          nop                                                                     // 0x00745f92    90
                          nop                                                                     // 0x00745f93    90
@@ -18503,10 +18503,11 @@ _jmp_addr_0x00746561:    {disp32} fsubr     dword ptr [_rdata_float1p0]         
 _jmp_addr_0x00746570:    {disp8} mov        eax, dword ptr [ecx + 0x08]                          // 0x00746570    8b4108
                          lea                eax, dword ptr [eax + eax * 0x8]                     // 0x00746573    8d04c0
                          shl                eax, 4                                               // 0x00746576    c1e004
-                         add                eax, 0x00da2930                                      // 0x00746579    053029da00
+                         add                eax, 0x00da2930 /* _GTownDesireInfo_ARRAY_00da2930 */ // 0x00746579    053029da00
                          ret                                                                     // 0x0074657e    c3
                          nop                                                                     // 0x0074657f    90
-@GetDesireFunctions__15GTownDesireInfoCFv@4:    sub                ecx, 0x00da2930                                      // 0x00746580    81e93029da00
+@GetDesireFunctions__15GTownDesireInfoCFv@4:
+                         sub                ecx, OFFSET _GTownDesireInfo_ARRAY_00da2930          // 0x00746580    81e93029da00
                          mov                eax, 0x38e38e39                                      // 0x00746586    b8398ee338
                          imul               ecx                                                  // 0x0074658b    f7e9
                          sar                edx, 5                                               // 0x0074658d    c1fa05
@@ -18515,7 +18516,7 @@ _jmp_addr_0x00746570:    {disp8} mov        eax, dword ptr [ecx + 0x08]         
                          add.s              edx, eax                                             // 0x00746595    03d0
                          lea                ecx, dword ptr [edx + edx * 0x2]                     // 0x00746597    8d0c52
                          lea                edx, dword ptr [edx + ecx * 0x4]                     // 0x0074659a    8d148a
-                         {disp32} lea       eax, dword ptr [edx * 0x8 + 0x00da32c8]              // 0x0074659d    8d04d5c832da00
+                         {disp32} lea       eax, dword ptr [edx * 0x8 + _GTownDesireFunction_ARRAY_00da32c8]              // 0x0074659d    8d04d5c832da00
                          ret                                                                     // 0x007465a4    c3
                          nop                                                                     // 0x007465a5    90
                          nop                                                                     // 0x007465a6    90
@@ -19280,7 +19281,7 @@ _jmp_addr_0x00746da1:    pop                edi                                 
 _jmp_addr_0x00746db0:    {disp8} mov        eax, dword ptr [ecx + 0x5c]                          // 0x00746db0    8b415c
                          lea                eax, dword ptr [eax + eax * 0x8]                     // 0x00746db3    8d04c0
                          shl                eax, 4                                               // 0x00746db6    c1e004
-                         add                eax, 0x00da2930                                      // 0x00746db9    053029da00
+                         add                eax, 0x00da2930 /* _GTownDesireInfo_ARRAY_00da2930 */ // 0x00746db9    053029da00
                          ret                                                                     // 0x00746dbe    c3
                          nop                                                                     // 0x00746dbf    90
 _CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords:
@@ -19664,7 +19665,7 @@ _jmp_addr_0x007471c0:    push               ebp                                 
                          push               edi                                                  // 0x007471da    57
                          {disp8} mov        dword ptr [esp + 0x10], ecx                          // 0x007471db    894c2410
                          {disp8} mov        dword ptr [esp + 0x14], edx                          // 0x007471df    89542414
-                         mov                esi, 0x00da32c8                                      // 0x007471e3    bec832da00
+                         mov                esi, OFFSET _GTownDesireFunction_ARRAY_00da32c8      // 0x007471e3    bec832da00
                          {disp32} lea       ebx, dword ptr [ecx + 0x000000d4]                    // 0x007471e8    8d99d4000000
 _jmp_addr_0x007471ee:    fld                dword ptr [ebx]                                      // 0x007471ee    d903
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                          // 0x007471f0    d81d98a38a00
@@ -19729,7 +19730,7 @@ _jmp_addr_0x00747270:    push               ebx                                 
                          push               esi                                                  // 0x00747275    56
                          push               edi                                                  // 0x00747276    57
                          xor.s              edi, edi                                             // 0x00747277    33ff
-                         mov                esi, 0x00da32c8                                      // 0x00747279    bec832da00
+                         mov                esi, OFFSET _GTownDesireFunction_ARRAY_00da32c8      // 0x00747279    bec832da00
 _jmp_addr_0x0074727e:    mov                eax, dword ptr [esi]                                 // 0x0074727e    8b06
                          push               eax                                                  // 0x00747280    50
                          push               ebx                                                  // 0x00747281    53

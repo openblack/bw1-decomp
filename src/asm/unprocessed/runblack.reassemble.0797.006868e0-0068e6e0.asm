@@ -6834,7 +6834,7 @@ _jmp_addr_0x0068b814:    {disp32} mov       eax, dword ptr [data_bytes + 0x4e3e9
                          call               _jmp_addr_0x0081e1f0                          // 0x0068b83b    e8b0291900
                          {disp8} fld        dword ptr [edi + 0x50]                        // 0x0068b840    d94750
                          {disp8} fadd       dword ptr [edi + 0x44]                        // 0x0068b843    d84744
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4bd9e4]        // 0x0068b846    a1e439e800
+                         {disp32} mov       eax, dword ptr [_g_info_transform]            // 0x0068b846    a1e439e800
                          cdq                                                              // 0x0068b84b    99
                          sub.s              eax, edx                                      // 0x0068b84c    2bc2
                          sar                eax, 1                                        // 0x0068b84e    d1f8
@@ -7141,7 +7141,7 @@ _jmp_addr_0x0068bcad:    cmp                esi, -0x01                          
                          lea                ecx, dword ptr [eax + eax * 0x4]              // 0x0068bcbc    8d0c80
                          shl                ecx, 4                                        // 0x0068bcbf    c1e104
                          push               ebp                                           // 0x0068bcc2    55
-                         add                ecx, 0x00d9d678                               // 0x0068bcc3    81c178d6d900
+                         add                ecx, OFFSET _GSpellSeedInfo_ARRAY_00d9d678    // 0x0068bcc3    81c178d6d900
                          call               @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12                          // 0x0068bcc9    e8f2f20900
                          mov.s              esi, eax                                      // 0x0068bcce    8bf0
                          cmp                dword ptr [esi * 0x4 + 0x00d4e898], ebx       // 0x0068bcd0    391cb598e8d400
@@ -9814,7 +9814,7 @@ _jmp_addr_0x0068d9df:    {disp32} mov       edx, dword ptr [esp + 0x00000100]   
                          {disp32} je        _jmp_addr_0x0068dd32                          // 0x0068d9fe    0f842e030000
                          {disp8} fld        dword ptr [esi + 0x3c]                        // 0x0068da04    d9463c
                          {disp8} mov        dword ptr [esp + 0x74], 0x00000000            // 0x0068da07    c744247400000000
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]             // 0x0068da0f    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                    // 0x0068da0f    d905e039e800
                          {disp8} mov        dword ptr [esp + 0x70], 0x00000000            // 0x0068da15    c744247000000000
                          {disp32} fadd      dword ptr [rdata_bytes + 0x2244]              // 0x0068da1d    d80544b28a00
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x0068da23    d95c2414

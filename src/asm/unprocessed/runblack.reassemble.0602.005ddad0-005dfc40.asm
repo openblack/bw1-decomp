@@ -2163,7 +2163,7 @@ _jmp_addr_0x005defa7:    {disp32} mov       ecx, dword ptr [_game]              
                          call               @GetPlayerNumber__7GPlayerCFv@4               // 0x005df06d    e81eb70600
                          push               eax                                           // 0x005df072    50
                          push               ebx                                           // 0x005df073    53
-                         push               0x00d4bd38                                    // 0x005df074    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x005df074    6838bdd400
                          call               _jmp_addr_0x005dea60                          // 0x005df079    e8e2f9ffff
                          push               0x0000009e                                    // 0x005df07e    689e000000
                          push               0x00bf3268                                    // 0x005df083    686832bf00
@@ -2171,7 +2171,7 @@ _jmp_addr_0x005defa7:    {disp32} mov       ecx, dword ptr [_game]              
                          call               ___nw__FUl                                    // 0x005df08d    e8fec61f00
                          mov.s              edx, eax                                      // 0x005df092    8bd0
                          mov                ecx, 0x0000020a                               // 0x005df094    b90a020000
-                         mov                esi, 0x00d4bd38                               // 0x005df099    be38bdd400
+                         mov                esi, OFFSET _PlayerProfile_00d4bd38           // 0x005df099    be38bdd400
                          mov.s              edi, edx                                      // 0x005df09e    8bfa
                          rep movsd          es:[edi], dword ptr ds:[esi]                  // 0x005df0a0    f3a5
                          {disp32} lea       eax, dword ptr [edx + 0x00000824]             // 0x005df0a2    8d8224080000

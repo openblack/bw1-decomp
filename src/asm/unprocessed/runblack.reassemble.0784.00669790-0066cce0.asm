@@ -3117,7 +3117,7 @@ _globl_ct_0x0066b770:    {disp32} jmp       _jmp_addr_0x0066b780                
 _jmp_addr_0x0066b780:    push               edi                                           // 0x0066b780    57
                          mov                ecx, 0x0000020a                               // 0x0066b781    b90a020000
                          xor.s              eax, eax                                      // 0x0066b786    33c0
-                         mov                edi, 0x00d4bd38                               // 0x0066b788    bf38bdd400
+                         mov                edi, OFFSET _PlayerProfile_00d4bd38           // 0x0066b788    bf38bdd400
                          rep stosd                                                        // 0x0066b78d    f3ab
                          {disp32} mov       dword ptr [data_bytes + 0x386558], 0x00000001 // 0x0066b78f    c70558c5d40001000000
                          pop                edi                                           // 0x0066b799    5f
@@ -3134,7 +3134,7 @@ _SetCurrentProfile__13PlayerProfileFPw:    sub                esp, 0x00000200   
                          push               eax                                           // 0x0066b7c0    50
                          call               _jmp_addr_0x0066b900                          // 0x0066b7c1    e83a010000
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0066b7c6    8d4c2410
-                         push               0x00d4bd38                                    // 0x0066b7ca    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x0066b7ca    6838bdd400
                          push               ecx                                           // 0x0066b7cf    51
                          call               _jmp_addr_0x0066bad0                          // 0x0066b7d0    e8fb020000
                          {disp32} mov       edx, dword ptr [_game]                        // 0x0066b7d5    8b155c19d000
@@ -3208,7 +3208,7 @@ _jmp_addr_0x0066b8a4:    {disp32} mov       eax, dword ptr [_game]              
                          test               eax, eax                                      // 0x0066b8dd    85c0
                          {disp8} je         _jmp_addr_0x0066b8f4                          // 0x0066b8df    7413
                          add                eax, 0x000000e0                               // 0x0066b8e1    05e0000000
-                         push               0x00d4bd38                                    // 0x0066b8e6    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x0066b8e6    6838bdd400
                          push               eax                                           // 0x0066b8eb    50
                          call               _wcscpy                                       // 0x0066b8ec    e8c5a61500
                          add                esp, 0x08                                     // 0x0066b8f1    83c408

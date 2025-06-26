@@ -76,7 +76,7 @@
 
 start_0x0046df60_0x0046f170:
 // Snippet: asm, [0x0046df60, 0x0046f150)
-_jmp_addr_0x0046df60:    {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]             // 0x0046df60    d905e039e800
+_jmp_addr_0x0046df60:    {disp32} fld       dword ptr [_near_clipping]                    // 0x0046df60    d905e039e800
                          sub                esp, 0x18                                     // 0x0046df66    83ec18
                          {disp32} fadd      dword ptr [_rdata_float1p0]                   // 0x0046df69    d80590a38a00
                          push               ebx                                           // 0x0046df6f    53

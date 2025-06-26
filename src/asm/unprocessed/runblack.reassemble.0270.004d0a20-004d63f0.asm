@@ -4752,7 +4752,7 @@ _jmp_addr_0x004d3b53:    pop                esi                                 
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004d3b60    8b442404
                          lea                ecx, dword ptr [eax + eax * 0x8]                     // 0x004d3b64    8d0cc0
                          shl                ecx, 4                                               // 0x004d3b67    c1e104
-                         add                ecx, 0x00da2930                                      // 0x004d3b6a    81c13029da00
+                         add                ecx, OFFSET _GTownDesireInfo_ARRAY_00da2930          // 0x004d3b6a    81c13029da00
                          call               @GetDesireFunctions__15GTownDesireInfoCFv@4          // 0x004d3b70    e80b2a2700
                          mov                eax, dword ptr [eax]                                 // 0x004d3b75    8b00
                          ret                0x0004                                               // 0x004d3b77    c20400

@@ -1869,7 +1869,7 @@ _jmp_addr_0x005fb400:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          lea                eax, dword ptr [eax + eax * 0x4]              // 0x005fb403    8d0480
                          lea                eax, dword ptr [eax + eax * 0x4]              // 0x005fb406    8d0480
                          shl                eax, 4                                        // 0x005fb409    c1e004
-                         add                eax, 0x00d9d678                               // 0x005fb40c    0578d6d900
+                         add                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                              // 0x005fb40c    0578d6d900
                          ret                                                              // 0x005fb411    c3
                          nop                                                              // 0x005fb412    90
                          nop                                                              // 0x005fb413    90

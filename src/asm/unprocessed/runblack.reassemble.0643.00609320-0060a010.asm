@@ -798,7 +798,7 @@ _DoWallHuggerLookahead__Fv:    {disp32} mov      eax, dword ptr [data_bytes + 0x
                          push              0x15                                          // 0x00609aa9    6a15
                          {disp8} mov       dword ptr [esp + 0x18], eax                   // 0x00609aab    89442418
                          add               eax, 0x14                                     // 0x00609aaf    83c014
-                         push              0x00da6be8                                    // 0x00609ab2    68e86bda00
+                         push              0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */ // 0x00609ab2    68e86bda00
                          push              eax                                           // 0x00609ab7    50
                          call              _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x00609ab8    e823611400
                          {disp8} mov       edx, dword ptr [esp + 0x20]                   // 0x00609abd    8b542420
@@ -1043,7 +1043,7 @@ _jmp_addr_0x00609d50:    sub               esp, 0x3c                            
                          push              0x0                                           // 0x00609d5b    6a00
                          push              0x15                                          // 0x00609d5d    6a15
                          {disp8} lea       eax, dword ptr [edi + 0x14]                   // 0x00609d5f    8d4714
-                         push              0x00da6be8                                    // 0x00609d62    68e86bda00
+                         push              0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */ // 0x00609d62    68e86bda00
                          push              eax                                           // 0x00609d67    50
                          mov.s             ebx, ecx                                      // 0x00609d68    8bd9
                          call              _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x00609d6a    e8715e1400

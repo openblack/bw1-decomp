@@ -228,7 +228,7 @@ _jmp_addr_0x0051486f:    {disp8} mov       eax, dword ptr [esi + 0x54]          
                          push              ecx                                           // 0x0051488a    51
                          call              _jmp_addr_0x0066b900                          // 0x0051488b    e870701500
                          {disp8} lea       edx, dword ptr [esp + 0x1c]                   // 0x00514890    8d54241c
-                         push              0x00d4bd38                                    // 0x00514894    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */      // 0x00514894    6838bdd400
                          push              edx                                           // 0x00514899    52
                          call              _jmp_addr_0x0066bad0                          // 0x0051489a    e831721500
                          add               esp, 0x10                                     // 0x0051489f    83c410
@@ -314,7 +314,7 @@ _jmp_addr_0x005148b0:    push              esi                                  
                          call              @MyInterface__5GGameFv@4                      // 0x005149aa    e8a10e0400
                          {disp32} mov      ecx, dword ptr [eax + 0x000003a0]             // 0x005149af    8b88a0030000
                          call              _jmp_addr_0x0046e630                          // 0x005149b5    e8769cf5ff
-_jmp_addr_0x005149ba:    push              0x00d4bd38                                    // 0x005149ba    6838bdd400
+_jmp_addr_0x005149ba:    push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */      // 0x005149ba    6838bdd400
                          call              _jmp_addr_0x0066bcd0                          // 0x005149bf    e80c731500
                          pop               ecx                                           // 0x005149c4    59
                          ret                                                             // 0x005149c5    c3
@@ -761,7 +761,7 @@ _jmp_addr_0x00514e39:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          {disp32} mov      ecx, dword ptr [eax + 0x00250304]             // 0x00514ebf    8b8804032500
                          {disp8} mov       edx, dword ptr [ecx + 0x64]                   // 0x00514ec5    8b5164
                          {disp8} mov       eax, dword ptr [edx + 0x2c]                   // 0x00514ec8    8b422c
-                         push              0x00d4bd38                                    // 0x00514ecb    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */      // 0x00514ecb    6838bdd400
                          {disp32} mov      dword ptr [data_bytes + 0x386558], eax        // 0x00514ed0    a358c5d400
                          call              _jmp_addr_0x0066bcd0                          // 0x00514ed5    e8f66d1500
                          add               esp, 0x04                                     // 0x00514eda    83c404

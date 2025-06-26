@@ -2297,7 +2297,7 @@ _jmp_addr_0x0086bd00:    sub                esp, 0x000000e4                     
                          {disp8} fld        dword ptr [esp + 0x08]                         // 0x0086bdaf    d9442408
                          {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]              // 0x0086bdb3    d825c01dea00
                          {disp8} fstp       dword ptr [esp + 0x08]                         // 0x0086bdb9    d95c2408
-                         {disp32} fld       dword ptr [data_bytes + 0x4bd9e0]              // 0x0086bdbd    d905e039e800
+                         {disp32} fld       dword ptr [_near_clipping]                     // 0x0086bdbd    d905e039e800
                          {disp8} fld        dword ptr [esp + 0x00]                         // 0x0086bdc3    d9442400
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                    // 0x0086bdc7    d81d98a38a00
                          fnstsw             ax                                             // 0x0086bdcd    dfe0

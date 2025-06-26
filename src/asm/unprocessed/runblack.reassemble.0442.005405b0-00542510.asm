@@ -98,7 +98,7 @@ _jmp_addr_0x005405b0:    push               ebx                                 
                          push               edx                                           // 0x00540640    52
                          push               0x00d4c338                                    // 0x00540641    6838c3d400
                          call               _wcscpy                                       // 0x00540646    e86b592800
-                         push               0x00d4bd38                                    // 0x0054064b    6838bdd400
+                         push              0x00d4bd38 /* _PlayerProfile_00d4bd38 */       // 0x0054064b    6838bdd400
                          call               _jmp_addr_0x0066bcd0                          // 0x00540650    e87bb61200
                          add                esp, 0x38                                     // 0x00540655    83c438
                          pop                edi                                           // 0x00540658    5f

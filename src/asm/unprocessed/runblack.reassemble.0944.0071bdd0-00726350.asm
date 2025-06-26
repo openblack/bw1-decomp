@@ -15593,7 +15593,7 @@ _globl_ct_0x00725ef0:    call               _jmp_addr_0x00725f00                
                          nop                                                                     // 0x00725efd    90
                          nop                                                                     // 0x00725efe    90
                          nop                                                                     // 0x00725eff    90
-_jmp_addr_0x00725f00:    mov                eax, 0x00d9d3e8                                      // 0x00725f00    b8e8d3d900
+_jmp_addr_0x00725f00:    mov                eax, OFFSET _GSpellIconInfo_00d9d3e8                 // 0x00725f00    b8e8d3d900
                          mov                ecx, 0x00000002                                      // 0x00725f05    b902000000
                          xor.s              edx, edx                                             // 0x00725f0a    33d2
 .att_syntax
@@ -15628,7 +15628,7 @@ _jmp_addr_0x00725f0c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                                     // 0x00725f3f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00725f40    8b442404
                          mov                dword ptr [eax], 0x00000002                          // 0x00725f44    c70002000000
-                         mov                eax, 0x00d9d3e8                                      // 0x00725f4a    b8e8d3d900
+                         mov                eax, OFFSET _GSpellIconInfo_00d9d3e8                 // 0x00725f4a    b8e8d3d900
                          ret                0x0004                                               // 0x00725f4f    c20400
                          nop                                                                     // 0x00725f52    90
                          nop                                                                     // 0x00725f53    90
@@ -16087,7 +16087,7 @@ _jmp_addr_0x00726306:    xor.s              eax, eax                            
                          push               ecx                                                  // 0x0072631a    51
                          shl                eax, 4                                               // 0x0072631b    c1e004
                          mov.s              edx, esp                                             // 0x0072631e    8bd4
-                         add                eax, 0x00d9d678                                      // 0x00726320    0578d6d900
+                         add                eax, 0x00d9d678 /* OFFSET _GSpellSeedInfo_ARRAY_00d9d678 */                                     // 0x00726320    0578d6d900
                          mov                dword ptr [edx], eax                                 // 0x00726325    8902
                          call               @GetSpellSeedInfo__9SpellIconCFv@4                   // 0x00726327    e824000000
                          push               ecx                                                  // 0x0072632c    51
