@@ -222,7 +222,7 @@ _jmp_addr_0x00449e10:    sub                esp, 0x0c                           
                          {disp32} jne       _jmp_addr_0x00449f4d                          // 0x00449ec0    0f8587000000
                          mov                ecx, 0x00000002                               // 0x00449ec6    b902000000
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x00449ecb    e800163c00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x00449ed0    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00449ed0    8b1534fee900
                          {disp32} mov       dword ptr [data_bytes + 0x294fec], eax        // 0x00449ed6    a3ecafc500
                          mov                esi, dword ptr [edx]                          // 0x00449edb    8b32
                          mov                ecx, 0x000001e1                               // 0x00449edd    b9e1010000

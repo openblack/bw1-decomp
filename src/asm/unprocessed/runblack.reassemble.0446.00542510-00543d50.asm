@@ -513,7 +513,7 @@ _jmp_addr_0x00542a90:    sub                esp, 0x14                           
                          call               _jmp_addr_0x0081b370                          // 0x00542b19    e852882d00
                          cmp                dword ptr [data_bytes + 0x50424c], 0x04       // 0x00542b1e    833d4ca2ec0004
                          {disp8} je         _jmp_addr_0x00542b45                          // 0x00542b25    741e
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x00542b27    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x00542b27    a138a6ec00
                          mov                ecx, dword ptr [eax]                          // 0x00542b2c    8b08
                          push               0x4                                           // 0x00542b2e    6a04
                          push               0x17                                          // 0x00542b30    6a17
@@ -526,7 +526,7 @@ _jmp_addr_0x00542a90:    sub                esp, 0x14                           
                          {disp32} mov       dword ptr [data_bytes + 0x50424c], eax        // 0x00542b40    a34ca2ec00
 _jmp_addr_0x00542b45:    cmp                dword ptr [data_bytes + 0x504228], 0x01       // 0x00542b45    833d28a2ec0001
                          {disp8} je         _jmp_addr_0x00542b6a                          // 0x00542b4c    741c
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x504638]        // 0x00542b4e    a138a6ec00
+                         {disp32} mov       eax, dword ptr [_Direct3DDevice7]             // 0x00542b4e    a138a6ec00
                          mov                edx, dword ptr [eax]                          // 0x00542b53    8b10
                          push               0x1                                           // 0x00542b55    6a01
                          push               0xe                                           // 0x00542b57    6a0e

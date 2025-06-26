@@ -154,7 +154,7 @@ _IsWater__10LH3DIslandFll:    {disp8} mov       ecx, dword ptr [esp + 0x04]     
                          shl               edx, 5                                      // 0x0060d3c8    c1e205
                          mov.s             esi, eax                                    // 0x0060d3cb    8bf0
                          sar               esi, 4                                      // 0x0060d3cd    c1fe04
-                         {disp32} mov      bl, byte ptr [edx + esi * 0x1 + 0x00e9c964] // 0x0060d3d0    8a9c3264c9e900
+                         {disp32} mov      bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@3PAY0CA@EA] // 0x0060d3d0    8a9c3264c9e900
                          mov.s             edx, ebx                                    // 0x0060d3d7    8bd3
                          test              edx, edx                                    // 0x0060d3d9    85d2
                          pop               ebx                                         // 0x0060d3db    5b
@@ -165,7 +165,7 @@ _IsWater__10LH3DIslandFll:    {disp8} mov       ecx, dword ptr [esp + 0x04]     
                          and               eax, 0x0f                                   // 0x0060d3e6    83e00f
                          add.s             esi, ecx                                    // 0x0060d3e9    03f1
                          add.s             esi, eax                                    // 0x0060d3eb    03f0
-                         {disp32} mov      eax, dword ptr [edx * 0x4 + 0x00e9c564]     // 0x0060d3ed    8b049564c5e900
+                         {disp32} mov      eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]     // 0x0060d3ed    8b049564c5e900
                          lea               eax, dword ptr [eax + esi * 0x8]            // 0x0060d3f4    8d04f0
                          test              eax, eax                                    // 0x0060d3f7    85c0
                          {disp8} je        _jmp_addr_0x0060d403                        // 0x0060d3f9    7408

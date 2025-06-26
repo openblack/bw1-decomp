@@ -1386,7 +1386,7 @@ _jmp_addr_0x00406fa4:    cmp                dword ptr [esp + 0x14], ebx         
                          mov                eax, dword ptr [ecx]                          // 0x00406fc7    8b01
                          call               dword ptr [eax + 0x2c]                        // 0x00406fc9    ff502c
                          cmp.s              eax, ebx                                      // 0x00406fcc    3bc3
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x00406fce    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00406fce    8b0d34fee900
                          {disp8} jl         _jmp_addr_0x00406fda                          // 0x00406fd4    7c04
                          cmp                eax, dword ptr [ecx]                          // 0x00406fd6    3b01
                          {disp8} jl         _jmp_addr_0x00406fdc                          // 0x00406fd8    7c02

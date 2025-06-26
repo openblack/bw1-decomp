@@ -2903,7 +2903,7 @@ _jmp_addr_0x0051ca58:    {disp8} mov        edi, dword ptr [ecx + 0x04]         
                          mov.s              ecx, edi                                             // 0x0051ca95    8bcf
                          call               dword ptr [eax + 0x608]                              // 0x0051ca97    ff9008060000
                          cmp.s              eax, ebx                                             // 0x0051ca9d    3bc3
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]               // 0x0051ca9f    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]               // 0x0051ca9f    8b1534fee900
                          {disp8} jl         _jmp_addr_0x0051caab                                 // 0x0051caa5    7c04
                          cmp                eax, dword ptr [edx]                                 // 0x0051caa7    3b02
                          {disp8} jl         _jmp_addr_0x0051caad                                 // 0x0051caa9    7c02

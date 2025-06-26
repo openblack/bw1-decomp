@@ -906,7 +906,7 @@ _jmp_addr_0x0046d943:    {disp32} mov       ecx, dword ptr [ebx + 0x0000482c]   
                          call               _jmp_addr_0x00814fd0                          // 0x0046d9ad    e81e763a00
                          pop                edi                                           // 0x0046d9b2    5f
                          pop                esi                                           // 0x0046d9b3    5e
-                         {disp32} mov       dword ptr [data_bytes + 0x271d9c], 0x00e9ce28 // 0x0046d9b4    c7059c7dc30028cee900
+                         {disp32} mov       dword ptr [data_bytes + 0x271d9c], OFFSET ?g_current_list_matrix@LH3DMesh@@2PAULH3DMatrix@@A // 0x0046d9b4    c7059c7dc30028cee900
                          pop                ebx                                           // 0x0046d9be    5b
                          add                esp, 0x78                                     // 0x0046d9bf    83c478
                          ret                                                              // 0x0046d9c2    c3

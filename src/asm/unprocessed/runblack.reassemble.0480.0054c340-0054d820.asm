@@ -368,13 +368,13 @@ _jmp_addr_0x0054c37e:    push               0x0                                 
                          {disp32} lea       ecx, dword ptr [esi + 0x002502b8]             // 0x0054c392    8d8eb8022500
                          call               _jmp_addr_0x0061a150                          // 0x0054c398    e8b3dd0c00
 _jmp_addr_0x0054c39d:    call               _jmp_addr_0x008415a0                          // 0x0054c39d    e8fe512f00
-                         push               0x00e90650                                    // 0x0054c3a2    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x0054c3a2    685006e900
                          call               dword ptr [__imp__EnterCriticalSection@4]     // 0x0054c3a7    ff1580918a00
                          mov.s              ecx, esi                                      // 0x0054c3ad    8bce
                          call               @MyInterface__5GGameFv@4                      // 0x0054c3af    e89c940000
                          mov.s              ecx, eax                                      // 0x0054c3b4    8bc8
                          call               _jmp_addr_0x005cedb0                          // 0x0054c3b6    e8f5290800
-                         push               0x00e90650                                    // 0x0054c3bb    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x0054c3bb    685006e900
                          call               dword ptr [__imp__LeaveCriticalSection@4]     // 0x0054c3c0    ff1584918a00
                          pop                esi                                           // 0x0054c3c6    5e
                          ret                                                              // 0x0054c3c7    c3
@@ -390,23 +390,23 @@ _jmp_addr_0x0054c39d:    call               _jmp_addr_0x008415a0                
                          push               esi                                           // 0x0054c3d1    56
                          push               edi                                           // 0x0054c3d2    57
                          {disp32} mov       edi, dword ptr [__imp__EnterCriticalSection@4]// 0x0054c3d3    8b3d80918a00
-                         push               0x00e8c118                                    // 0x0054c3d9    6818c1e800
+                         push               0x00e8c118 /* _lpCriticalSection_00e8c118 */  // 0x0054c3d9    6818c1e800
                          mov.s              esi, ecx                                      // 0x0054c3de    8bf1
                          call               edi                                           // 0x0054c3e0    ffd7
                          mov.s              ecx, esi                                      // 0x0054c3e2    8bce
                          call               @ProcessBufferedKeys__5GGameFv@4              // 0x0054c3e4    e837000000
                          {disp32} mov       ebx, dword ptr [__imp__LeaveCriticalSection@4]// 0x0054c3e9    8b1d84918a00
-                         push               0x00e8c118                                    // 0x0054c3ef    6818c1e800
+                         push               0x00e8c118 /* _lpCriticalSection_00e8c118 */  // 0x0054c3ef    6818c1e800
                          call               ebx                                           // 0x0054c3f4    ffd3
                          mov.s              ecx, esi                                      // 0x0054c3f6    8bce
                          call               @ProcessOneSuperpacket__5GGameFv@4            // 0x0054c3f8    e8d3ff0e00
-                         push               0x00e90650                                    // 0x0054c3fd    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x0054c3fd    685006e900
                          call               edi                                           // 0x0054c402    ffd7
                          mov.s              ecx, esi                                      // 0x0054c404    8bce
                          call               @MyInterface__5GGameFv@4                      // 0x0054c406    e845940000
                          mov.s              ecx, eax                                      // 0x0054c40b    8bc8
                          call               @Process__10GInterfaceFv@4                    // 0x0054c40d    e8fe270800
-                         push               0x00e90650                                    // 0x0054c412    685006e900
+                         push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x0054c412    685006e900
                          call               ebx                                           // 0x0054c417    ffd3
                          pop                edi                                           // 0x0054c419    5f
                          pop                esi                                           // 0x0054c41a    5e
@@ -1524,11 +1524,11 @@ _jmp_addr_0x0054d1f7:    call               _jmp_addr_0x0054c570                
 _jmp_addr_0x0054d262:    {disp32} mov       ecx, dword ptr [esi + 0x00250300]             // 0x0054d262    8b8e00032500
                          {disp32} mov       dword ptr [esi + 0x00205d5c], ebx             // 0x0054d268    899e5c5d2000
                          call               @ProcessActionsPerformed__10ControlMapFv@4    // 0x0054d26e    e83d38f2ff
-                         push               0x00e8c118                                    // 0x0054d273    6818c1e800
+                         push               0x00e8c118 /* _lpCriticalSection_00e8c118 */  // 0x0054d273    6818c1e800
                          call               edi                                           // 0x0054d278    ffd7
                          mov.s              ecx, esi                                      // 0x0054d27a    8bce
                          call               @ProcessBufferedKeys__5GGameFv@4              // 0x0054d27c    e89ff1ffff
-                         push               0x00e8c118                                    // 0x0054d281    6818c1e800
+                         push               0x00e8c118 /* _lpCriticalSection_00e8c118 */  // 0x0054d281    6818c1e800
                          call               ebp                                           // 0x0054d286    ffd5
                          mov.s              ecx, esi                                      // 0x0054d288    8bce
                          call               @ProcessNetworkPackets__5GGameFv@4            // 0x0054d28a    e8a1f9ffff

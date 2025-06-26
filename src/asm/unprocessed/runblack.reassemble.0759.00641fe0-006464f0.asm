@@ -1434,7 +1434,7 @@ _jmp_addr_0x00643045:    push               edi                                 
                          call               _jmp_addr_0x007ddc40                           // 0x0064306a    e8d1ab1900
                          test               eax, eax                                       // 0x0064306f    85c0
                          {disp8} je         _jmp_addr_0x00643083                           // 0x00643071    7410
-                         mov                ecx, 0x00e85040                                // 0x00643073    b94050e800
+                         mov                ecx, OFFSET _LHSys                             // 0x00643073    b94050e800
                          call               _jmp_addr_0x007db8a0                           // 0x00643078    e823881900
                          push               ebx                                            // 0x0064307d    53
                          call               _exit                                          // 0x0064307e    e85e6e1800

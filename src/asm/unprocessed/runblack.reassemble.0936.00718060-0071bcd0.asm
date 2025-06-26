@@ -2978,7 +2978,7 @@ _CallVirtualFunctionsForCreation__16ShowNeedsVisualsFRC9MapCoords:
                          mov.s              ecx, esi                                      // 0x00719e30    8bce
                          call               dword ptr [edx + 0x608]                       // 0x00719e32    ff9208060000
                          test               eax, eax                                      // 0x00719e38    85c0
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x00719e3a    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00719e3a    8b1534fee900
                          {disp8} jl         _jmp_addr_0x00719e46                          // 0x00719e40    7c04
                          cmp                eax, dword ptr [edx]                          // 0x00719e42    3b02
                          {disp8} jl         _jmp_addr_0x00719e48                          // 0x00719e44    7c02

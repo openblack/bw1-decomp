@@ -1581,7 +1581,7 @@ _jmp_addr_0x005c980b:    {disp8} fld        dword ptr [esp + 0x10]              
                          mov.s              ebx, ecx                                      // 0x005c9848    8bd9
                          sar                ebx, 4                                        // 0x005c984a    c1fb04
                          xor.s              edx, edx                                      // 0x005c984d    33d2
-                         {disp32} mov       dl, byte ptr [ebx + ebp * 0x1 + 0x00e9c964]   // 0x005c984f    8a942b64c9e900
+                         {disp32} mov       dl, byte ptr [ebx + ebp + ?g_index_block@LH3DIsland@@3PAY0CA@EA]   // 0x005c984f    8a942b64c9e900
                          pop                ebp                                           // 0x005c9856    5d
                          test               edx, edx                                      // 0x005c9857    85d2
                          {disp8} je         _jmp_addr_0x005c9897                          // 0x005c9859    743c
@@ -1589,7 +1589,7 @@ _jmp_addr_0x005c980b:    {disp8} fld        dword ptr [esp + 0x10]              
                          mov.s              ebx, eax                                      // 0x005c985e    8bd8
                          shl                ebx, 4                                        // 0x005c9860    c1e304
                          add.s              ebx, eax                                      // 0x005c9863    03d8
-                         {disp32} mov       eax, dword ptr [edx * 0x4 + 0x00e9c564]       // 0x005c9865    8b049564c5e900
+                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]       // 0x005c9865    8b049564c5e900
                          and                ecx, 0x0f                                     // 0x005c986c    83e10f
                          add.s              ebx, ecx                                      // 0x005c986f    03d9
                          lea                eax, dword ptr [eax + ebx * 0x8]              // 0x005c9871    8d04d8

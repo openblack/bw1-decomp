@@ -16474,7 +16474,7 @@ _jmp_addr_0x00761a00:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} je         _jmp_addr_0x00761a6a                          // 0x00761a16    7452
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x00761a18    8b4628
                          {disp32} mov       eax, dword ptr [eax + 0x00000204]             // 0x00761a1b    8b8004020000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x00761a21    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00761a21    8b1534fee900
                          mov.s              ecx, eax                                      // 0x00761a27    8bc8
                          test               ecx, ecx                                      // 0x00761a29    85c9
                          {disp8} jl         _jmp_addr_0x00761a31                          // 0x00761a2b    7c04
@@ -16510,7 +16510,7 @@ _jmp_addr_0x00761a6a:    mov                edx, dword ptr [esi]                
                          mov.s              ecx, esi                                      // 0x00761a6e    8bce
                          call               dword ptr [edx + 0x60c]                       // 0x00761a70    ff920c060000
                          test               eax, eax                                      // 0x00761a76    85c0
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x00761a78    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00761a78    8b0d34fee900
                          {disp8} jl         _jmp_addr_0x00761a84                          // 0x00761a7e    7c04
                          cmp                eax, dword ptr [ecx]                          // 0x00761a80    3b01
                          {disp8} jl         _jmp_addr_0x00761a86                          // 0x00761a82    7c02
@@ -16521,7 +16521,7 @@ _jmp_addr_0x00761a86:    {disp8} mov        ebx, dword ptr [ecx + eax * 0x4 + 0x
                          mov.s              ecx, esi                                      // 0x00761a8e    8bce
                          call               dword ptr [eax + 0x60c]                       // 0x00761a90    ff900c060000
                          test               eax, eax                                      // 0x00761a96    85c0
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]        // 0x00761a98    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00761a98    8b0d34fee900
                          {disp8} jl         _jmp_addr_0x00761aa4                          // 0x00761a9e    7c04
                          cmp                eax, dword ptr [ecx]                          // 0x00761aa0    3b01
                          {disp8} jl         _jmp_addr_0x00761aa6                          // 0x00761aa2    7c02
@@ -16532,7 +16532,7 @@ _jmp_addr_0x00761aa6:    {disp8} mov        edi, dword ptr [ecx + eax * 0x4 + 0x
                          mov.s              ecx, esi                                      // 0x00761aae    8bce
                          call               dword ptr [edx + 0x60c]                       // 0x00761ab0    ff920c060000
                          test               eax, eax                                      // 0x00761ab6    85c0
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4d9e34]        // 0x00761ab8    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00761ab8    8b1534fee900
                          {disp8} jl         _jmp_addr_0x00761ac4                          // 0x00761abe    7c04
                          cmp                eax, dword ptr [edx]                          // 0x00761ac0    3b02
                          {disp8} jl         _jmp_addr_0x00761ac6                          // 0x00761ac2    7c02

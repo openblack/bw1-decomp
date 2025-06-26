@@ -538,7 +538,7 @@ _jmp_addr_0x00481c60:    sub                esp, 0x44                           
                          mov.s              ecx, esi                                             // 0x00481c7c    8bce
                          call               dword ptr [edx + 0x608]                              // 0x00481c7e    ff9208060000
                          test               eax, eax                                             // 0x00481c84    85c0
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4d9e34]               // 0x00481c86    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]               // 0x00481c86    8b0d34fee900
                          {disp8} jl         _jmp_addr_0x00481c92                                 // 0x00481c8c    7c04
                          cmp                eax, dword ptr [ecx]                                 // 0x00481c8e    3b01
                          {disp8} jl         _jmp_addr_0x00481c94                                 // 0x00481c90    7c02

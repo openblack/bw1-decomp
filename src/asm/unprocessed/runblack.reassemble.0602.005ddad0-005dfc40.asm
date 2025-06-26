@@ -228,7 +228,7 @@ _jmp_addr_0x005ddc00:    push               ebx                                 
                          push               edi                                           // 0x005ddc03    57
                          mov                ecx, 0x00d199e0                               // 0x005ddc04    b9e099d100
                          call               _jmp_addr_0x005ddb70                          // 0x005ddc09    e862ffffff
-                         mov                ebp, 0x00e9c964                               // 0x005ddc0e    bd64c9e900
+                         mov                ebp, OFFSET ?g_index_block@LH3DIsland@@3PAY0CA@EA                               // 0x005ddc0e    bd64c9e900
                          mov                ebx, OFFSET _GameBlock_ARRAY_00d189d8         // 0x005ddc13    bbd889d100
 _jmp_addr_0x005ddc18:    xor.s              esi, esi                                      // 0x005ddc18    33f6
                          mov.s              edi, ebx                                      // 0x005ddc1a    8bfb
@@ -245,7 +245,7 @@ _jmp_addr_0x005ddc1c:    cmp                ebx, OFFSET _GameBlock_ARRAY_00d189d
                          mov                al, byte ptr [esi + ebp * 0x1]                // 0x005ddc3d    8a042e
                          test               eax, eax                                      // 0x005ddc40    85c0
                          {disp8} je         _jmp_addr_0x005ddc71                          // 0x005ddc42    742d
-                         {disp32} mov       ecx, dword ptr [eax * 0x4 + 0x00e9c564]       // 0x005ddc44    8b0c8564c5e900
+                         {disp32} mov       ecx, dword ptr [eax * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]       // 0x005ddc44    8b0c8564c5e900
                          test               ecx, ecx                                      // 0x005ddc4b    85c9
                          {disp8} je         _jmp_addr_0x005ddc71                          // 0x005ddc4d    7422
                          push               0x46                                          // 0x005ddc4f    6a46
