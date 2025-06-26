@@ -1830,7 +1830,7 @@ _GetInfoFromText__10GMagicInfoFPCc:    push               ebx                   
                          push               esi                                           // 0x005fb3b5    56
                          push               edi                                           // 0x005fb3b6    57
                          xor.s              edi, edi                                      // 0x005fb3b7    33ff
-                         mov                esi, 0x00d37d10                               // 0x005fb3b9    be107dd300
+                         mov                esi, OFFSET _MagicInfoTable                   // 0x005fb3b9    be107dd300
 _jmp_addr_0x005fb3be:    mov                ecx, dword ptr [esi]                          // 0x005fb3be    8b0e
                          call               @GetMagicInfoText__10GMagicInfoCFv@4          // 0x005fb3c0    e82b000000
                          push               eax                                           // 0x005fb3c5    50

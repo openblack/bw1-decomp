@@ -1050,7 +1050,7 @@ _jmp_addr_0x0052b670:    push               ebp                                 
                          push               edi                                                  // 0x0052b681    57
                          xor.s              esi, esi                                             // 0x0052b682    33f6
 _jmp_addr_0x0052b684:    {disp32} fld       dword ptr [esi + 0x00ccfbac]                         // 0x0052b684    d986acfbcc00
-                         {disp32} mov       ecx, dword ptr [esi + 0x00d37d10]                    // 0x0052b68a    8b8e107dd300
+                         {disp32} mov       ecx, dword ptr [esi + _MagicInfoTable]               // 0x0052b68a    8b8e107dd300
                          sub                esp, 0x08                                            // 0x0052b690    83ec08
                          fstp               qword ptr [esp]                                      // 0x0052b693    dd1c24
                          call               @GetMagicInfoText__10GMagicInfoCFv@4                 // 0x0052b696    e855fd0c00
@@ -1128,7 +1128,7 @@ _jmp_addr_0x0052b723:    {disp8} fld        dword ptr [esp + 0x08]              
                          ret                                                                     // 0x0052b73f    c3
 _jmp_addr_0x0052b740:    test               esi, esi                                             // 0x0052b740    85f6
                          {disp8} je         _jmp_addr_0x0052b785                                 // 0x0052b742    7441
-                         {disp32} mov       ecx, dword ptr [esi * 0x4 + 0x00d37d10]              // 0x0052b744    8b0cb5107dd300
+                         {disp32} mov       ecx, dword ptr [esi * 0x4 + _MagicInfoTable]         // 0x0052b744    8b0cb5107dd300
                          push               edi                                                  // 0x0052b74b    57
                          call               _jmp_addr_0x005fb400                                 // 0x0052b74c    e8affc0c00
                          mov.s              edi, eax                                             // 0x0052b751    8bf8

@@ -1219,7 +1219,7 @@ _jmp_addr_0x005fbf10:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x005fbf1f    90
 _jmp_addr_0x005fbf20:    {disp32} mov       eax, dword ptr [ecx + 0x000000b4]             // 0x005fbf20    8b81b4000000
                          push               esi                                           // 0x005fbf26    56
-                         {disp32} mov       esi, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x005fbf27    8b3485107dd300
+                         {disp32} mov       esi, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x005fbf27    8b3485107dd300
                          push               0x0                                           // 0x005fbf2e    6a00
                          push               0x009cb9a8                                    // 0x005fbf30    68a8b99c00
                          push               0x009cba90                                    // 0x005fbf35    6890ba9c00

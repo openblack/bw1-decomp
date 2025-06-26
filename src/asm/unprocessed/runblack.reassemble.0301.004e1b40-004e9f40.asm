@@ -693,7 +693,7 @@ _jmp_addr_0x004e1f70:    sub                esp, 0x10                           
                          {disp32} je        _jmp_addr_0x004e201e                            // 0x004e1f92    0f8486000000
                          dec                eax                                             // 0x004e1f98    48
                          {disp32} jne       _jmp_addr_0x004e20fd                            // 0x004e1f99    0f855e010000
-                         {disp8} mov        dword ptr [esp + 0x24], 0x00d37d10              // 0x004e1f9f    c7442424107dd300
+                         {disp8} mov        dword ptr [esp + 0x24], OFFSET _MagicInfoTable  // 0x004e1f9f    c7442424107dd300
                          mov                ebp, 0x00cc66c8                                 // 0x004e1fa7    bdc866cc00
                          mov                esi, 0x00ca9cd4                                 // 0x004e1fac    bed49cca00
 _jmp_addr_0x004e1fb1:    cmp                dword ptr [esi], 0x00                           // 0x004e1fb1    833e00
@@ -729,7 +729,7 @@ _jmp_addr_0x004e1ffc:    {disp8} mov        ecx, dword ptr [esp + 0x24]         
                          {disp8} mov        dword ptr [esp + 0x24], ecx                     // 0x004e2013    894c2424
                          .byte              0x72, 0x98// {disp8} jb _jmp_addr_0x004e1fb1    // 0x004e2017    7298
                          {disp32} jmp       _jmp_addr_0x004e20f5                            // 0x004e2019    e9d7000000
-_jmp_addr_0x004e201e:    {disp8} mov        dword ptr [esp + 0x24], 0x00d37d10              // 0x004e201e    c7442424107dd300
+_jmp_addr_0x004e201e:    {disp8} mov        dword ptr [esp + 0x24], OFFSET _MagicInfoTable  // 0x004e201e    c7442424107dd300
                          mov                ebp, 0x00cc66c8                                 // 0x004e2026    bdc866cc00
                          mov                esi, 0x00ca9cd4                                 // 0x004e202b    bed49cca00
 _jmp_addr_0x004e2030:    cmp                dword ptr [esi], 0x00                           // 0x004e2030    833e00
@@ -765,7 +765,7 @@ _jmp_addr_0x004e207b:    {disp8} mov        ecx, dword ptr [esp + 0x24]         
                          {disp8} mov        dword ptr [esp + 0x24], ecx                     // 0x004e2092    894c2424
                          .byte              0x72, 0x98// {disp8} jb _jmp_addr_0x004e2030    // 0x004e2096    7298
                          {disp8} jmp        _jmp_addr_0x004e20f5                            // 0x004e2098    eb5b
-_jmp_addr_0x004e209a:    mov                ebp, 0x00d37d10                                 // 0x004e209a    bd107dd300
+_jmp_addr_0x004e209a:    mov                ebp, OFFSET _MagicInfoTable                     // 0x004e209a    bd107dd300
                          mov                esi, 0x00ca9cd4                                 // 0x004e209f    bed49cca00
 _jmp_addr_0x004e20a4:    cmp                dword ptr [esi], 0x00                           // 0x004e20a4    833e00
                          {disp8} je         _jmp_addr_0x004e20e6                            // 0x004e20a7    743d
@@ -1736,7 +1736,7 @@ _jmp_addr_0x004e2ac0:    sub                esp, 0x08                           
                          push               edi                                             // 0x004e2ac6    57
                          {disp8} mov        dword ptr [esp + 0x10], ecx                     // 0x004e2ac7    894c2410
                          xor.s              edi, edi                                        // 0x004e2acb    33ff
-                         mov                ebp, 0x00d37d10                                 // 0x004e2acd    bd107dd300
+                         mov                ebp, OFFSET _MagicInfoTable                     // 0x004e2acd    bd107dd300
                          mov                ebx, 0x00cc66c8                                 // 0x004e2ad2    bbc866cc00
                          mov                esi, 0x00ca9cd4                                 // 0x004e2ad7    bed49cca00
 _jmp_addr_0x004e2adc:    cmp                dword ptr [esi], 0x00                           // 0x004e2adc    833e00
@@ -1792,7 +1792,7 @@ _jmp_addr_0x004e2b60:    sub                esp, 0x08                           
                          push               edi                                             // 0x004e2b66    57
                          {disp8} mov        dword ptr [esp + 0x10], ecx                     // 0x004e2b67    894c2410
                          xor.s              edi, edi                                        // 0x004e2b6b    33ff
-                         mov                ebp, 0x00d37d10                                 // 0x004e2b6d    bd107dd300
+                         mov                ebp, OFFSET _MagicInfoTable                     // 0x004e2b6d    bd107dd300
                          mov                ebx, 0x00cc66c8                                 // 0x004e2b72    bbc866cc00
                          mov                esi, 0x00ca9cd4                                 // 0x004e2b77    bed49cca00
 _jmp_addr_0x004e2b7c:    cmp                dword ptr [esi], 0x00                           // 0x004e2b7c    833e00
@@ -1848,7 +1848,7 @@ _jmp_addr_0x004e2c00:    push               ecx                                 
                          push               edi                                             // 0x004e2c04    57
                          {disp8} mov        dword ptr [esp + 0x10], ecx                     // 0x004e2c05    894c2410
                          xor.s              edi, edi                                        // 0x004e2c09    33ff
-                         mov                ebx, 0x00d37d10                                 // 0x004e2c0b    bb107dd300
+                         mov                ebx, OFFSET _MagicInfoTable                     // 0x004e2c0b    bb107dd300
                          mov                esi, 0x00ca9cd4                                 // 0x004e2c10    bed49cca00
 _jmp_addr_0x004e2c15:    cmp                dword ptr [esi], 0x00                           // 0x004e2c15    833e00
                          {disp8} je         _jmp_addr_0x004e2c4e                            // 0x004e2c18    7434

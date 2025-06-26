@@ -4042,7 +4042,7 @@ _jmp_addr_0x006ff06c:    mov                edx, dword ptr [esi]                
                          call               dword ptr [eax + 0x34]                        // 0x006ff077    ff5034
                          test               eax, eax                                      // 0x006ff07a    85c0
                          {disp8} je         _jmp_addr_0x006ff041                          // 0x006ff07c    74c3
-                         {disp32} mov       ecx, dword ptr [edi * 0x4 + 0x00d37d10]       // 0x006ff07e    8b0cbd107dd300
+                         {disp32} mov       ecx, dword ptr [edi * 0x4 + _MagicInfoTable]  // 0x006ff07e    8b0cbd107dd300
                          mov                edx, dword ptr [ecx]                          // 0x006ff085    8b11
                          call               dword ptr [edx + 0x3c]                        // 0x006ff087    ff523c
                          test               eax, eax                                      // 0x006ff08a    85c0

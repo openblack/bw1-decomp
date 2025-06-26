@@ -2083,7 +2083,7 @@ _jmp_addr_0x0072af41:    {disp32} mov       eax, dword ptr [ecx + edx * 0x4 + 0x
 _jmp_addr_0x0072af50:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0072af50    8b442404
                          push               eax                                           // 0x0072af54    50
                          call               _jmp_addr_0x0072af10                          // 0x0072af55    e8b6ffffff
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x0072af5a    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x0072af5a    8b0485107dd300
                          ret                0x0004                                        // 0x0072af61    c20400
                          nop                                                              // 0x0072af64    90
                          nop                                                              // 0x0072af65    90
@@ -2150,11 +2150,11 @@ _jmp_addr_0x0072afe0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          call               @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12                          // 0x0072afe8    e8d3ffffff
                          test               eax, eax                                      // 0x0072afed    85c0
                          {disp8} je         _jmp_addr_0x0072affc                          // 0x0072afef    740b
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x0072aff1    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x0072aff1    8b0485107dd300
                          pop                esi                                           // 0x0072aff8    5e
                          ret                0x0004                                        // 0x0072aff9    c20400
 _jmp_addr_0x0072affc:    {disp32} mov       ecx, dword ptr [esi + 0x00000124]             // 0x0072affc    8b8e24010000
-                         {disp32} mov       eax, dword ptr [ecx * 0x4 + 0x00d37d10]       // 0x0072b002    8b048d107dd300
+                         {disp32} mov       eax, dword ptr [ecx * 0x4 + _MagicInfoTable]  // 0x0072b002    8b048d107dd300
                          pop                esi                                           // 0x0072b009    5e
                          ret                0x0004                                        // 0x0072b00a    c20400
                          nop                                                              // 0x0072b00d    90
@@ -3086,7 +3086,7 @@ _jmp_addr_0x0072b7a7:    {disp32} mov       ecx, dword ptr [_game]              
                          ret                                                              // 0x0072b81e    c3
                          nop                                                              // 0x0072b81f    90
 @GetMagicInfo__11SpellShieldCFv@4:    {disp32} mov       eax, dword ptr [ecx + 0x000000b4]             // 0x0072b820    8b81b4000000
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x0072b826    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x0072b826    8b0485107dd300
                          ret                                                              // 0x0072b82d    c3
                          nop                                                              // 0x0072b82e    90
                          nop                                                              // 0x0072b82f    90
@@ -6610,7 +6610,7 @@ _jmp_addr_0x0072db3e:    pop                edi                                 
                          ret                                                              // 0x0072db7e    c3
                          nop                                                              // 0x0072db7f    90
 _jmp_addr_0x0072db80:    {disp32} mov       eax, dword ptr [ecx + 0x000000b4]             // 0x0072db80    8b81b4000000
-                         {disp32} mov       eax, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x0072db86    8b0485107dd300
+                         {disp32} mov       eax, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x0072db86    8b0485107dd300
                          ret                                                              // 0x0072db8d    c3
                          nop                                                              // 0x0072db8e    90
                          nop                                                              // 0x0072db8f    90

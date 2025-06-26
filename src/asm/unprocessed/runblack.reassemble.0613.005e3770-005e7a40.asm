@@ -3079,7 +3079,7 @@ _jmp_addr_0x005e5de0:    {disp32} fld       dword ptr [ecx + 0x000009bc]        
                          {disp32} mov       esi, dword ptr [ecx + 0x00000918]             // 0x005e5dfd    8bb118090000
                          shl                edx, 5                                        // 0x005e5e03    c1e205
                          add.s              edx, esi                                      // 0x005e5e06    03d6
-                         {disp32} mov       edi, dword ptr [edx * 0x4 + 0x00d189d8]       // 0x005e5e08    8b3c95d889d100
+                         {disp32} mov       edi, dword ptr [edx * 0x4 + _GameBlock_ARRAY_00d189d8]       // 0x005e5e08    8b3c95d889d100
                          cmp.s              edi, ebp                                      // 0x005e5e0f    3bfd
                          {disp8} je         _jmp_addr_0x005e5e66                          // 0x005e5e11    7453
                          mov                eax, dword ptr [edi]                          // 0x005e5e13    8b07

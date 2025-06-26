@@ -815,7 +815,7 @@ _jmp_addr_0x004f7bab:    {disp32} mov       edi, dword ptr [esp + 0x00000090]   
                          call               _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x004f7c2e    e83d562500
                          fstp               st(0)                                         // 0x004f7c33    ddd8
                          mov                edx, dword ptr [edi]                          // 0x004f7c35    8b17
-                         {disp32} mov       ebp, dword ptr [ebx * 0x4 + 0x00d37d10]       // 0x004f7c37    8b2c9d107dd300
+                         {disp32} mov       ebp, dword ptr [ebx * 0x4 + _MagicInfoTable]  // 0x004f7c37    8b2c9d107dd300
                          add                esp, 0x08                                     // 0x004f7c3e    83c408
                          mov.s              ecx, edi                                      // 0x004f7c41    8bcf
                          call               dword ptr [edx + 0x64]                        // 0x004f7c43    ff5264
@@ -1085,7 +1085,7 @@ _jmp_addr_0x004f7fdd:    mov.s              ecx, esi                            
                          call               _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x004f7fed    e87e522500
                          fstp               st(0)                                         // 0x004f7ff2    ddd8
                          {disp32} mov       eax, dword ptr [rdata_bytes + 0x2861c]        // 0x004f7ff4    a11c168d00
-                         {disp32} mov       ebx, dword ptr [edi * 0x4 + 0x00d37d10]       // 0x004f7ff9    8b1cbd107dd300
+                         {disp32} mov       ebx, dword ptr [edi * 0x4 + _MagicInfoTable]  // 0x004f7ff9    8b1cbd107dd300
                          {disp32} mov       dword ptr [esp + 0x0000008c], eax             // 0x004f8000    8984248c000000
                          {disp8} mov        eax, dword ptr [ebx + 0x28]                   // 0x004f8007    8b4328
                          add                esp, 0x08                                     // 0x004f800a    83c408
@@ -1536,7 +1536,7 @@ _jmp_addr_0x004f8590:    sub                esp, 0x24                           
                          push               ebx                                           // 0x004f8597    53
                          {disp8} mov        ebx, dword ptr [esp + 0x30]                   // 0x004f8598    8b5c2430
                          push               ebp                                           // 0x004f859c    55
-                         {disp32} mov       ebp, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x004f859d    8b2c85107dd300
+                         {disp32} mov       ebp, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x004f859d    8b2c85107dd300
                          push               esi                                           // 0x004f85a4    56
                          mov.s              esi, ecx                                      // 0x004f85a5    8bf1
                          {disp8} mov        ecx, dword ptr [ebx + 0x08]                   // 0x004f85a7    8b4b08

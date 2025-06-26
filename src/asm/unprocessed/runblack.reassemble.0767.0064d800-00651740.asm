@@ -4046,7 +4046,7 @@ _jmp_addr_0x00650a70:    sub                esp, 0x18                           
                          nop                                                              // 0x00650ade    90
                          nop                                                              // 0x00650adf    90
 _jmp_addr_0x00650ae0:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00650ae0    8b442404
-                         {disp32} mov       ecx, dword ptr [eax * 0x4 + 0x00d37d10]       // 0x00650ae4    8b0c85107dd300
+                         {disp32} mov       ecx, dword ptr [eax * 0x4 + _MagicInfoTable]  // 0x00650ae4    8b0c85107dd300
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x00650aeb    8b4128
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00650aee    8b4c2408
                          test               ecx, ecx                                      // 0x00650af2    85c9

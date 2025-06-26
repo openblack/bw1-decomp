@@ -229,10 +229,10 @@ _jmp_addr_0x005ddc00:    push               ebx                                 
                          mov                ecx, 0x00d199e0                               // 0x005ddc04    b9e099d100
                          call               _jmp_addr_0x005ddb70                          // 0x005ddc09    e862ffffff
                          mov                ebp, 0x00e9c964                               // 0x005ddc0e    bd64c9e900
-                         mov                ebx, 0x00d189d8                               // 0x005ddc13    bbd889d100
+                         mov                ebx, OFFSET _GameBlock_ARRAY_00d189d8         // 0x005ddc13    bbd889d100
 _jmp_addr_0x005ddc18:    xor.s              esi, esi                                      // 0x005ddc18    33f6
                          mov.s              edi, ebx                                      // 0x005ddc1a    8bfb
-_jmp_addr_0x005ddc1c:    cmp                ebx, 0x00d189d8                               // 0x005ddc1c    81fbd889d100
+_jmp_addr_0x005ddc1c:    cmp                ebx, OFFSET _GameBlock_ARRAY_00d189d8         // 0x005ddc1c    81fbd889d100
                          mov                dword ptr [edi], 0x00000000                   // 0x005ddc22    c70700000000
                          {disp8} jl         _jmp_addr_0x005ddc71                          // 0x005ddc28    7c47
                          cmp                ebx, 0x00d19958                               // 0x005ddc2a    81fb5899d100
@@ -278,7 +278,7 @@ _jmp_addr_0x005ddc90:    push               ebx                                 
                          push               edi                                           // 0x005ddc92    57
                          mov                ecx, 0x00d199e0                               // 0x005ddc93    b9e099d100
                          call               _jmp_addr_0x005ddb70                          // 0x005ddc98    e8d3feffff
-                         mov                esi, 0x00d189d8                               // 0x005ddc9d    bed889d100
+                         mov                esi, OFFSET _GameBlock_ARRAY_00d189d8         // 0x005ddc9d    bed889d100
 _jmp_addr_0x005ddca2:    mov                ebx, 0x00000020                               // 0x005ddca2    bb20000000
 _jmp_addr_0x005ddca7:    mov                edi, dword ptr [esi]                          // 0x005ddca7    8b3e
                          test               edi, edi                                      // 0x005ddca9    85ff
@@ -335,7 +335,7 @@ _jmp_addr_0x005ddcbd:    mov                dword ptr [esi], 0x00000000         
                          {disp8} jg         _jmp_addr_0x005ddd2b                          // 0x005ddd19    7f10
                          shl                esi, 5                                        // 0x005ddd1b    c1e605
                          add.s              esi, eax                                      // 0x005ddd1e    03f0
-                         {disp32} mov       ecx, dword ptr [esi * 0x4 + 0x00d189d8]       // 0x005ddd20    8b0cb5d889d100
+                         {disp32} mov       ecx, dword ptr [esi * 0x4 + _GameBlock_ARRAY_00d189d8]       // 0x005ddd20    8b0cb5d889d100
                          test               ecx, ecx                                      // 0x005ddd27    85c9
                          {disp8} jne        _jmp_addr_0x005ddd3a                          // 0x005ddd29    750f
 _jmp_addr_0x005ddd2b:    push               ebx                                           // 0x005ddd2b    53
@@ -389,7 +389,7 @@ _Remove__9GameBlockFP6ObjectP7MapCell:    push               ebx                
                          {disp8} jg         _jmp_addr_0x005ddd9b                          // 0x005ddd89    7f10
                          shl                esi, 5                                        // 0x005ddd8b    c1e605
                          add.s              esi, eax                                      // 0x005ddd8e    03f0
-                         {disp32} mov       ecx, dword ptr [esi * 0x4 + 0x00d189d8]       // 0x005ddd90    8b0cb5d889d100
+                         {disp32} mov       ecx, dword ptr [esi * 0x4 + _GameBlock_ARRAY_00d189d8]       // 0x005ddd90    8b0cb5d889d100
                          test               ecx, ecx                                      // 0x005ddd97    85c9
                          {disp8} jne        _jmp_addr_0x005dddaa                          // 0x005ddd99    750f
 _jmp_addr_0x005ddd9b:    push               ebx                                           // 0x005ddd9b    53
@@ -549,7 +549,7 @@ _jmp_addr_0x005dded0:    push               esi                                 
                          push               edi                                           // 0x005dded1    57
                          mov                ecx, 0x00d199e0                               // 0x005dded2    b9e099d100
                          call               _jmp_addr_0x005ddb70                          // 0x005dded7    e894fcffff
-                         mov                esi, 0x00d189d8                               // 0x005ddedc    bed889d100
+                         mov                esi, OFFSET _GameBlock_ARRAY_00d189d8         // 0x005ddedc    bed889d100
 _jmp_addr_0x005ddee1:    mov                edi, 0x00000020                               // 0x005ddee1    bf20000000
 _jmp_addr_0x005ddee6:    mov                ecx, dword ptr [esi]                          // 0x005ddee6    8b0e
                          test               ecx, ecx                                      // 0x005ddee8    85c9
