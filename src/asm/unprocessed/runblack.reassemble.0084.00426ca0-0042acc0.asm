@@ -258,7 +258,7 @@ _jmp_addr_0x00426d98:    {disp8} mov        dword ptr [ebp + 0x14], eax         
 _jmp_addr_0x00426e8e:    mov                edi, dword ptr [ebx]                                 // 0x00426e8e    8b3b
                          cmp.s              edi, esi                                             // 0x00426e90    3bfe
                          {disp8} je         _jmp_addr_0x00426f05                                 // 0x00426e92    7471
-                         {disp32} mov       al, byte ptr [data_bytes + 0x380ac3]                 // 0x00426e94    a0c36ad400
+                         {disp32} mov       al, byte ptr [_ARGS_NOLOADMUSIC]                     // 0x00426e94    a0c36ad400
                          test               al, al                                               // 0x00426e99    84c0
                          {disp8} jne        _jmp_addr_0x00426f05                                 // 0x00426e9b    7568
                          or                 ecx, 0xffffffff                                      // 0x00426e9d    83c9ff

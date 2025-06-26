@@ -8545,7 +8545,7 @@ _InsertMapObject__6ObjectFv:
                          call               dword ptr [edx + 0xd8]                         // 0x0063676c    ff92d8000000
                          push               eax                                            // 0x00636772    50
                          push               0x00bfdef0                                     // 0x00636773    68f0debf00
-                         push               0x00d414d8                                     // 0x00636778    68d814d400
+                         push               0x00d414d8  /* _CHAR_ARRAY_00d414d8 */         // 0x00636778    68d814d400
                          call               _jmp_addr_0x007c57d2                           // 0x0063677d    e850f01800
                          add                esp, 0x0c                                      // 0x00636782    83c40c
 _jmp_addr_0x00636785:    push               ebx                                            // 0x00636785    53

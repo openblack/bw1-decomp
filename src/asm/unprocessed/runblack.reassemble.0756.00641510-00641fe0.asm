@@ -642,83 +642,83 @@ _jmp_addr_0x00641ac3:    inc               esi                                  
                          add               esp, 0x08                                     // 0x00641ad5    83c408
                          test              al, al                                        // 0x00641ad8    84c0
                          {disp8} je        _jmp_addr_0x00641aeb                          // 0x00641ada    740f
-                         {disp32} mov      al, byte ptr [data_bytes + 0x380aba]          // 0x00641adc    a0ba6ad400
+                         {disp32} mov      al, byte ptr [_ARGS_MULTIPLAYER]              // 0x00641adc    a0ba6ad400
                          test              al, al                                        // 0x00641ae1    84c0
                          {disp8} jne       _jmp_addr_0x00641aeb                          // 0x00641ae3    7506
-                         {disp32} mov      byte ptr [data_bytes + 0x380ab9], bl          // 0x00641ae5    881db96ad400
+                         {disp32} mov      byte ptr [_ARGS_NEWGAME], bl                  // 0x00641ae5    881db96ad400
 _jmp_addr_0x00641aeb:    push              0x00931c3c                                    // 0x00641aeb    683c1c9300
                          push              esi                                           // 0x00641af0    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641af1    e81affffff
                          add               esp, 0x08                                     // 0x00641af6    83c408
                          test              al, al                                        // 0x00641af9    84c0
                          {disp8} je        _jmp_addr_0x00641b0c                          // 0x00641afb    740f
-                         {disp32} mov      al, byte ptr [data_bytes + 0x380ab9]          // 0x00641afd    a0b96ad400
+                         {disp32} mov      al, byte ptr [_ARGS_NEWGAME]                  // 0x00641afd    a0b96ad400
                          test              al, al                                        // 0x00641b02    84c0
                          {disp8} jne       _jmp_addr_0x00641b0c                          // 0x00641b04    7506
-                         {disp32} mov      byte ptr [data_bytes + 0x380aba], bl          // 0x00641b06    881dba6ad400
+                         {disp32} mov      byte ptr [_ARGS_MULTIPLAYER], bl              // 0x00641b06    881dba6ad400
 _jmp_addr_0x00641b0c:    push              0x00931c48                                    // 0x00641b0c    68481c9300
                          push              esi                                           // 0x00641b11    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641b12    e8f9feffff
                          add               esp, 0x08                                     // 0x00641b17    83c408
                          test              al, al                                        // 0x00641b1a    84c0
                          {disp8} je        _jmp_addr_0x00641b24                          // 0x00641b1c    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380abb], bl          // 0x00641b1e    881dbb6ad400
+                         {disp32} mov      byte ptr [_ARGS_LAND], bl                     // 0x00641b1e    881dbb6ad400
 _jmp_addr_0x00641b24:    push              0x00931c50                                    // 0x00641b24    68501c9300
                          push              esi                                           // 0x00641b29    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641b2a    e8e1feffff
                          add               esp, 0x08                                     // 0x00641b2f    83c408
                          test              al, al                                        // 0x00641b32    84c0
                          {disp8} je        _jmp_addr_0x00641b3c                          // 0x00641b34    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380abc], bl          // 0x00641b36    881dbc6ad400
+                         {disp32} mov      byte ptr [_ARGS_SKIRMISH], bl                 // 0x00641b36    881dbc6ad400
 _jmp_addr_0x00641b3c:    push              0x00931c5c                                    // 0x00641b3c    685c1c9300
                          push              esi                                           // 0x00641b41    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641b42    e8c9feffff
                          add               esp, 0x08                                     // 0x00641b47    83c408
                          test              al, al                                        // 0x00641b4a    84c0
                          {disp8} je        _jmp_addr_0x00641b54                          // 0x00641b4c    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380abd], bl          // 0x00641b4e    881dbd6ad400
+                         {disp32} mov      byte ptr [_ARGS_PREINTROVIDEO], bl            // 0x00641b4e    881dbd6ad400
 _jmp_addr_0x00641b54:    push              0x00931c6c                                    // 0x00641b54    686c1c9300
                          push              esi                                           // 0x00641b59    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641b5a    e8b1feffff
                          add               esp, 0x08                                     // 0x00641b5f    83c408
                          test              al, al                                        // 0x00641b62    84c0
                          {disp8} je        _jmp_addr_0x00641b6c                          // 0x00641b64    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380abe], bl          // 0x00641b66    881dbe6ad400
+                         {disp32} mov      byte ptr [_ARGS_FORCEINETCONN], bl            // 0x00641b66    881dbe6ad400
 _jmp_addr_0x00641b6c:    push              0x00931c7c                                    // 0x00641b6c    687c1c9300
                          push              esi                                           // 0x00641b71    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641b72    e899feffff
                          add               esp, 0x08                                     // 0x00641b77    83c408
                          test              al, al                                        // 0x00641b7a    84c0
                          {disp8} je        _jmp_addr_0x00641b84                          // 0x00641b7c    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380abf], bl          // 0x00641b7e    881dbf6ad400
+                         {disp32} mov      byte ptr [_ARGS_NOINETCONN], bl               // 0x00641b7e    881dbf6ad400
 _jmp_addr_0x00641b84:    push              0x00931c88                                    // 0x00641b84    68881c9300
                          push              esi                                           // 0x00641b89    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641b8a    e881feffff
                          add               esp, 0x08                                     // 0x00641b8f    83c408
                          test              al, al                                        // 0x00641b92    84c0
                          {disp8} je        _jmp_addr_0x00641b9c                          // 0x00641b94    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380ac0], bl          // 0x00641b96    881dc06ad400
+                         {disp32} mov      byte ptr [_ARGS_EDITOR], bl                   // 0x00641b96    881dc06ad400
 _jmp_addr_0x00641b9c:    push              0x00931c90                                    // 0x00641b9c    68901c9300
                          push              esi                                           // 0x00641ba1    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641ba2    e869feffff
                          add               esp, 0x08                                     // 0x00641ba7    83c408
                          test              al, al                                        // 0x00641baa    84c0
                          {disp8} je        _jmp_addr_0x00641bb4                          // 0x00641bac    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380ac1], bl          // 0x00641bae    881dc16ad400
+                         {disp32} mov      byte ptr [_ARGS_CONVERT], bl                  // 0x00641bae    881dc16ad400
 _jmp_addr_0x00641bb4:    push              0x00931c98                                    // 0x00641bb4    68981c9300
                          push              esi                                           // 0x00641bb9    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641bba    e851feffff
                          add               esp, 0x08                                     // 0x00641bbf    83c408
                          test              al, al                                        // 0x00641bc2    84c0
                          {disp8} je        _jmp_addr_0x00641bcc                          // 0x00641bc4    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380ac2], bl          // 0x00641bc6    881dc26ad400
+                         {disp32} mov      byte ptr [_ARGS_VERSION], bl                  // 0x00641bc6    881dc26ad400
 _jmp_addr_0x00641bcc:    push              0x00931ca0                                    // 0x00641bcc    68a01c9300
                          push              esi                                           // 0x00641bd1    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641bd2    e839feffff
                          add               esp, 0x08                                     // 0x00641bd7    83c408
                          test              al, al                                        // 0x00641bda    84c0
                          {disp8} je        _jmp_addr_0x00641be4                          // 0x00641bdc    7406
-                         {disp32} mov      byte ptr [data_bytes + 0x380ac3], bl          // 0x00641bde    881dc36ad400
+                         {disp32} mov      byte ptr [_ARGS_NOLOADMUSIC], bl              // 0x00641bde    881dc36ad400
 _jmp_addr_0x00641be4:    push              0x00931cac                                    // 0x00641be4    68ac1c9300
                          push              esi                                           // 0x00641be9    56
                          call              _IsACmdLineString__FPcPCc                     // 0x00641bea    e821feffff
@@ -747,7 +747,7 @@ _jmp_addr_0x00641c21:    cmp               al, 0x20                             
                          inc               ecx                                           // 0x00641c2b    41
                          test              al, al                                        // 0x00641c2c    84c0
                          {disp8} jne       _jmp_addr_0x00641c21                          // 0x00641c2e    75f1
-_jmp_addr_0x00641c30:    {disp32} mov      byte ptr [data_bytes + 0x380ac4], bl          // 0x00641c30    881dc46ad400
+_jmp_addr_0x00641c30:    {disp32} mov      byte ptr [_ARGS_SETTINGS], bl                 // 0x00641c30    881dc46ad400
 _jmp_addr_0x00641c36:    {disp8} mov       al, byte ptr [esi + 0x01]                     // 0x00641c36    8a4601
                          inc               esi                                           // 0x00641c39    46
                          test              al, al                                        // 0x00641c3a    84c0
@@ -787,7 +787,7 @@ _pc_main__Fv:            push              ebp                                  
                          add               esp, 0x08                                     // 0x00641c7e    83c408
                          call              _jmp_addr_0x0054d610                          // 0x00641c81    e88ab9f0ff
                          call              _ScanParameters__Fv@0                         // 0x00641c86    e815feffff
-                         {disp32} mov      al, byte ptr [data_bytes + 0x380ac2]          // 0x00641c8b    a0c26ad400
+                         {disp32} mov      al, byte ptr [_ARGS_VERSION]                  // 0x00641c8b    a0c26ad400
                          xor.s             ebx, ebx                                      // 0x00641c90    33db
                          cmp.s             al, bl                                        // 0x00641c92    3ac3
                          {disp8} je        _jmp_addr_0x00641cd0                          // 0x00641c94    743a
@@ -852,7 +852,7 @@ _jmp_addr_0x00641d10:    call              _jmp_addr_0x00642d80                 
                          mov               ecx, OFFSET _global                           // 0x00641d74    b9203bcd00
                          call              _jmp_addr_0x00590fd0                          // 0x00641d79    e852f2f4ff
                          call              _jmp_addr_0x007dee00                          // 0x00641d7e    e87dd01900
-                         cmp               byte ptr [data_bytes + 0x380abd], bl          // 0x00641d83    381dbd6ad400
+                         cmp               byte ptr [_ARGS_PREINTROVIDEO], bl            // 0x00641d83    381dbd6ad400
                          {disp8} jne       _jmp_addr_0x00641d94                          // 0x00641d89    7509
                          call              _jmp_addr_0x0066b9c0                          // 0x00641d8b    e8309c0200
                          test              eax, eax                                      // 0x00641d90    85c0
@@ -867,19 +867,19 @@ _jmp_addr_0x00641d99:    push              edi                                  
                          add               ecx, 0x00250310                               // 0x00641db5    81c110032500
                          call              _jmp_addr_0x0078e9b0                          // 0x00641dbb    e8f0cb1400
                          call              _Init__8FrontEndFv                            // 0x00641dc0    e80b97efff
-                         cmp               byte ptr [data_bytes + 0x380ab9], bl          // 0x00641dc5    381db96ad400
+                         cmp               byte ptr [_ARGS_NEWGAME], bl                  // 0x00641dc5    381db96ad400
                          mov               edi, 0x00000003                               // 0x00641dcb    bf03000000
                          {disp8} je        _jmp_addr_0x00641de5                          // 0x00641dd0    7413
                          {disp32} mov      edx, dword ptr [_game]                        // 0x00641dd2    8b155c19d000
                          mov               esi, 0x00000001                               // 0x00641dd8    be01000000
                          {disp32} mov      dword ptr [edx + 0x0025017c], esi             // 0x00641ddd    89b27c012500
                          {disp8} jmp       _jmp_addr_0x00641e17                          // 0x00641de3    eb32
-_jmp_addr_0x00641de5:    cmp               byte ptr [data_bytes + 0x380abc], bl          // 0x00641de5    381dbc6ad400
+_jmp_addr_0x00641de5:    cmp               byte ptr [_ARGS_SKIRMISH], bl                 // 0x00641de5    381dbc6ad400
                          {disp8} je        _jmp_addr_0x00641dfe                          // 0x00641deb    7411
                          {disp32} mov      eax, dword ptr [_game]                        // 0x00641ded    a15c19d000
                          {disp32} mov      dword ptr [eax + 0x0025017c], 0x00000004      // 0x00641df2    c7807c01250004000000
                          {disp8} jmp       _jmp_addr_0x00641e12                          // 0x00641dfc    eb14
-_jmp_addr_0x00641dfe:    cmp               byte ptr [data_bytes + 0x380aba], bl          // 0x00641dfe    381dba6ad400
+_jmp_addr_0x00641dfe:    cmp               byte ptr [_ARGS_MULTIPLAYER], bl              // 0x00641dfe    381dba6ad400
                          {disp8} je        _jmp_addr_0x00641e12                          // 0x00641e04    740c
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641e06    8b0d5c19d000
                          {disp32} mov      dword ptr [ecx + 0x0025017c], edi             // 0x00641e0c    89b97c012500

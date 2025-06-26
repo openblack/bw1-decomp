@@ -13661,7 +13661,9 @@ _jmp_addr_0x00618680:    {disp8} lea        edx, dword ptr [esp + 0x50]         
                          nop                                                               // 0x006186ad    90
                          nop                                                               // 0x006186ae    90
                          nop                                                               // 0x006186af    90
-_Create__11LH3DTextureFPvUlUlP13TextureFormat:    {disp32} mov       eax, dword ptr [data_bytes + 0x379004]         // 0x006186b0    a104f0d300
+
+_Create__11LH3DTextureFPvUlUlP13TextureFormat:
+                         {disp32} mov       eax, dword ptr [_ape_hair]                     // 0x006186b0    a104f0d300
                          test               eax, eax                                       // 0x006186b5    85c0
                          {disp8} je         _jmp_addr_0x006186bc                           // 0x006186b7    7403
                          xor.s              eax, eax                                       // 0x006186b9    33c0
@@ -13673,7 +13675,7 @@ _jmp_addr_0x006186bc:    push               0x0                                 
                          call               _jmp_addr_0x008379e0                           // 0x006186c7    e814f32100
                          add                esp, 0x10                                      // 0x006186cc    83c410
                          test               eax, eax                                       // 0x006186cf    85c0
-                         {disp32} mov       dword ptr [data_bytes + 0x379004], eax         // 0x006186d1    a304f0d300
+                         {disp32} mov       dword ptr [_ape_hair], eax                     // 0x006186d1    a304f0d300
                          {disp8} jne        _jmp_addr_0x006186d9                           // 0x006186d6    7501
                          ret                                                               // 0x006186d8    c3
 _jmp_addr_0x006186d9:    {disp32} mov       ecx, dword ptr [data_bytes + 0x379008]         // 0x006186d9    8b0d08f0d300
@@ -13683,7 +13685,7 @@ _jmp_addr_0x006186d9:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37900
                          push               ecx                                            // 0x006186e9    51
                          {disp8} mov        dword ptr [ecx + 0x08], 0x00000000             // 0x006186ea    c7410800000000
                          call                ___dl__FPv                                    // 0x006186f1    e8a2671900
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x379004]         // 0x006186f6    a104f0d300
+                         {disp32} mov       eax, dword ptr [_ape_hair]                     // 0x006186f6    a104f0d300
                          add                esp, 0x04                                      // 0x006186fb    83c404
 _jmp_addr_0x006186fe:    push               eax                                            // 0x006186fe    50
                          push               0x9                                            // 0x006186ff    6a09
