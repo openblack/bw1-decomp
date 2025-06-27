@@ -8,6 +8,7 @@
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "Base.h" /* For struct Base, struct BaseVftable */
 
@@ -179,7 +180,7 @@ struct GameThingVftable
   float (__fastcall* Get2DRadius)(struct GameThing* this);
   struct GPlayer* (__fastcall* GetPlayerWhoLastPickedMeUp)(struct GameThing* this);
   struct GPlayer* (__fastcall* GetPlayerWhoLastDroppedMe)(struct GameThing* this);
-  bool (__fastcall* IsFootpathLink)(struct GameThing* this);  /* 0x70 */
+  bool32_t (__fastcall* IsFootpathLink)(struct GameThing* this);  /* 0x70 */
   struct GFootpathLink* (__fastcall* GetFootpathLink)(struct GameThing* this);
   void (__fastcall* AddFootpathLink)(struct GameThing* this, const void* edx, struct GFootpath* param_1);
   uint32_t (__fastcall* GetNearestPathTo)(struct GameThing* this, const void* edx, const struct MapCoords* param_1, float param_2, int param_3);
@@ -300,7 +301,7 @@ struct GPlayer* __fastcall GetPlayerWhoLastPickedMeUp__9GameThingFv(struct GameT
 // win1.41 004018b0 mac 10381da0 GameThing::GetPlayerWhoLastDroppedMe(void)
 struct GPlayer* __fastcall GetPlayerWhoLastDroppedMe__9GameThingFv(struct GameThing* this) asm("?GetPlayerWhoLastDroppedMe@GameThing@@QAEPAVGPlayer@@XZ");
 // win1.41 00405160 mac 103c36e0 GameThing::IsFootpathLink(void)
-bool __fastcall IsFootpathLink__9GameThingFv(struct GameThing* this) asm("?IsFootpathLink@GameThing@@QAE_NXZ");
+bool32_t __fastcall IsFootpathLink__9GameThingFv(struct GameThing* this) asm("?IsFootpathLink@GameThing@@QAE_NXZ");
 // win1.41 00405170 mac 1056c160 GameThing::GetFootpathLink(void)
 struct GFootpathLink* __fastcall GetFootpathLink__9GameThingFv(struct GameThing* this) asm("?GetFootpathLink@GameThing@@QAEPAVGFootpathLink@@XZ");
 // win1.41 004018c0 mac 101063a0 GameThing::AddFootpathLink(GFootpath *)

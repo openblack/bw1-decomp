@@ -60,7 +60,7 @@ struct MultiMapFixedVftable
   float (__fastcall* GetInfluence)(struct MultiMapFixed* this);
   bool (__fastcall* IsPlaytimeStructure)(struct MultiMapFixed* this);
   bool (__fastcall* IsPlaytimeStarted)(struct MultiMapFixed* this);  /* 0x870 */
-  void (__fastcall* AddPlaytimeVillager)(struct MultiMapFixed* this, const void* edx, struct Villager* villager);
+  bool (__fastcall* AddPlaytimeVillager)(struct MultiMapFixed* this, const void* edx, struct Villager* villager);
   void (__fastcall* CheckMapObject)(struct MultiMapFixed* this);
   void (__fastcall* GetResourceDropPosForComputerPlayer)(struct MultiMapFixed* this, const void* edx, struct MapCoords* drop_pos);
   float (__fastcall* GetPercentBuilt)(struct MultiMapFixed* this);  /* 0x880 */
@@ -117,7 +117,7 @@ struct MultiMapFixed
 {
   union MultiMapFixedBase base;  /* 0x0 */
   uint8_t field_0x58;
-  float field_0x5c;
+  float percent_built;
   uint32_t field_0x60;
   struct GFootpathLink* footpath_link;
   struct MultiChildList multi_children_array;
@@ -160,7 +160,7 @@ void __fastcall ToBeDeleted__13MultiMapFixedFi(struct Base* this, const void* ed
 // win1.41 004220a0 mac 100a5880 MultiMapFixed::GetTown(void)
 struct Town * __fastcall GetTown__13MultiMapFixedFv(const struct GameThing* this) asm("?GetTown@MultiMapFixed@@UAEPAVTown@@XZ");
 // win1.41 00401610 mac 101481c0 MultiMapFixed::IsFootpathLink(void)
-bool __fastcall IsFootpathLink__13MultiMapFixedFv(struct GameThing* this) asm("?IsFootpathLink@MultiMapFixed@@UAE_NXZ");
+bool32_t __fastcall IsFootpathLink__13MultiMapFixedFv(struct GameThing* this) asm("?IsFootpathLink@MultiMapFixed@@UAE_NXZ");
 // win1.41 00401620 mac 1009b630 MultiMapFixed::GetFootpathLink(void)
 struct GFootpathLink * __fastcall GetFootpathLink__13MultiMapFixedFv(struct GameThing* this) asm("?GetFootpathLink@MultiMapFixed@@UAEPAVGFootpathLink@@XZ");
 // win1.41 0052ee10 mac 100df0c0 MultiMapFixed::AddFootpath(GFootpath *)
@@ -218,7 +218,7 @@ uint32_t __fastcall GetDiscipleStateIfInteractedWith__13MultiMapFixedFP16GInterf
 // win1.41 0052e890 mac 100e0240 MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords&)
 void __fastcall CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords(struct MultiMapFixed* this, const void* edx, const struct MapCoords* coords);
 // win1.41 00401490 mac 1056ea60 MultiMapFixed::AsMultiMapFixed(void)
-bool __fastcall AsMultiMapFixed__13MultiMapFixedFv(struct Object* this) asm("?AsMultiMapFixed@MultiMapFixed@@UAE_NXZ");
+struct MultiMapFixed* __fastcall AsMultiMapFixed__13MultiMapFixedFv(struct Object* this) asm("?AsMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ");
 // win1.41 0052f1f0 mac 100de6f0 MultiMapFixed::IsResourceStore(RESOURCE_TYPE)
 bool __fastcall IsResourceStore__13MultiMapFixedF13RESOURCE_TYPE(struct Object* this, const void* edx, enum RESOURCE_TYPE type) asm("?IsResourceStore@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@@Z");
 // win1.41 0052f460 mac 100de000 MultiMapFixed::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
@@ -232,7 +232,7 @@ bool __fastcall InteractsWithPhysicsObjects__13MultiMapFixedFv(struct Object* th
 // win1.41 0052f490 mac 100dded0 MultiMapFixed::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__13MultiMapFixedFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@MultiMapFixed@@UAE_NPAVCreature@@@Z");
 // win1.41 00401530 mac 100a0e40 MultiMapFixed::IsSolidToNewAbode(void)
-bool __fastcall IsSolidToNewAbode__13MultiMapFixedFv(struct Object* this) asm("?IsSolidToNewAbode@MultiMapFixed@@UAE_NXZ");
+bool32_t __fastcall IsSolidToNewAbode__13MultiMapFixedFv(struct Object* this) asm("?IsSolidToNewAbode@MultiMapFixed@@UAE_NXZ");
 // win1.41 0052ef10 mac 100dee90 MultiMapFixed::SaveObject(LHOSFile &, MapCoords const &)
 size_t __fastcall SaveObject__13MultiMapFixedFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@MultiMapFixed@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z");
 // win1.41 00401630 mac inlined MultiMapFixed::GetCollideData(void)
@@ -248,7 +248,7 @@ bool __fastcall IsPlaytimeStructure__13MultiMapFixedFv(struct MultiMapFixed* thi
 // win1.41 004014b0 mac 103e2190 MultiMapFixed::IsPlaytimeStarted(void)
 bool __fastcall IsPlaytimeStarted__13MultiMapFixedFv(struct MultiMapFixed* this) asm("?IsPlaytimeStarted@MultiMapFixed@@UAE_NXZ");
 // win1.41 004014c0 mac 1037fbf0 MultiMapFixed::AddPlaytimeVillager(Villager *)
-void __fastcall AddPlaytimeVillager__13MultiMapFixedFP8Villager(struct MultiMapFixed* this, const void* edx, struct Villager* villager) asm("?AddPlaytimeVillager@MultiMapFixed@@UAEXPAVVillager@@@Z");
+bool __fastcall AddPlaytimeVillager__13MultiMapFixedFP8Villager(struct MultiMapFixed* this, const void* edx, struct Villager* villager) asm("?AddPlaytimeVillager@MultiMapFixed@@UAE_NPAVVillager@@@Z");
 // win1.41 0052e840 mac 100e04f0 MultiMapFixed::CheckMapObject(void)
 void __fastcall CheckMapObject__13MultiMapFixedFv(struct MultiMapFixed* this) asm("?CheckMapObject@MultiMapFixed@@UAEXXZ");
 // win1.41 004014d0 mac 1016ecd0 MultiMapFixed::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE)
