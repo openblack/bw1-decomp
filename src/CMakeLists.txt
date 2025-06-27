@@ -58,6 +58,7 @@ find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
 
+    c/_HeaderIncluder.c
     c/_CXXFuncs.c
     asm/unprocessed/rdata.000.008a9000-008a99c0.dllimports.asm
     c/_DebugDirectory.c
