@@ -12,6 +12,8 @@
 
 struct SetupBox;
 struct SetupControl;
+enum LHKey;
+enum LHKeyMod;
 
 struct SetupControlVftable
 {
