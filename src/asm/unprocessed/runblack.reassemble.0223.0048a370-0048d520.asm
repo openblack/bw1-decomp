@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00406640
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern _jmp_addr_0x0042a4b0
@@ -2596,7 +2595,7 @@ _jmp_addr_0x0048c530:    pop                edi                                 
                          pop                ebx                                                  // 0x0048c533    5b
                          add                esp, 0x000001b0                                      // 0x0048c534    81c4b0010000
                          ret                                                                     // 0x0048c53a    c3
-                         call               _jmp_addr_0x00401879                                 // 0x0048c53b    e83953f7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x0048c53b    e83953f7ff
 _jmp_addr_0x0048c540:    sub                esp, 0x58                                            // 0x0048c540    83ec58
                          push               esi                                                  // 0x0048c543    56
                          mov.s              esi, ecx                                             // 0x0048c544    8bf1
@@ -3537,7 +3536,7 @@ _jmp_addr_0x0048d245:    pop                edi                                 
                          pop                esi                                                  // 0x0048d246    5e
                          add                esp, 0x50                                            // 0x0048d247    83c450
                          ret                                                                     // 0x0048d24a    c3
-                         call               _jmp_addr_0x00401879                                 // 0x0048d24b    e82946f7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x0048d24b    e82946f7ff
 _jmp_addr_0x0048d250:    push               esi                                                  // 0x0048d250    56
                          push               edi                                                  // 0x0048d251    57
                          push               0x0                                                  // 0x0048d252    6a00

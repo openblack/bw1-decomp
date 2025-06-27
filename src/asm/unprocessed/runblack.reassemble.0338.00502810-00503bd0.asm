@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern @StartFight__14CameraModeNew3FP6GArena@12
 .extern _jmp_addr_0x0045a800
 .extern _jmp_addr_0x00475730
@@ -753,7 +752,7 @@ _jmp_addr_0x00503049:    mov                edx, dword ptr [eax]                
                          call               dword ptr [edx + 0x8e8]                              // 0x0050304f    ff92e8080000
 _jmp_addr_0x00503055:    mov                eax, 0x00000002                                      // 0x00503055    b802000000
                          ret                                                                     // 0x0050305a    c3
-                         call               _jmp_addr_0x00401879                                 // 0x0050305b    e819e8efff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x0050305b    e819e8efff
                          mov                eax, 0x00000001                                      // 0x00503060    b801000000
                          ret                                                                     // 0x00503065    c3
                          nop                                                                     // 0x00503066    90
@@ -1646,7 +1645,7 @@ _jmp_addr_0x00503a80:    mov                eax, 0x00000002                     
 _jmp_addr_0x00503a87:    xor.s              eax, eax                                             // 0x00503a87    33c0
                          pop                esi                                                  // 0x00503a89    5e
                          ret                                                                     // 0x00503a8a    c3
-                         call               _jmp_addr_0x00401879                                 // 0x00503a8b    e8e9ddefff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00503a8b    e8e9ddefff
                          push               ecx                                                  // 0x00503a90    51
                          push               esi                                                  // 0x00503a91    56
                          mov.s              esi, ecx                                             // 0x00503a92    8bf1

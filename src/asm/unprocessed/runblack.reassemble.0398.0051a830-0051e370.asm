@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
@@ -2275,7 +2274,7 @@ _jmp_addr_0x0051c305:    pop                esi                                 
                          pop                ebx                                                  // 0x0051c306    5b
                          add                esp, 0x24                                            // 0x0051c307    83c424
                          ret                                                                     // 0x0051c30a    c3
-                         call               _jmp_addr_0x00401879                                 // 0x0051c30b    e86955eeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x0051c30b    e86955eeff
                          sub                esp, 0x38                                            // 0x0051c310    83ec38
                          push               ebx                                                  // 0x0051c313    53
                          mov.s              ebx, ecx                                             // 0x0051c314    8bd9
@@ -3135,7 +3134,7 @@ _globl_ct_0x0051cce0:    {disp32} jmp       _jmp_addr_0x0051ccf0                
                          nop                                                                     // 0x0051ccef    90
 _jmp_addr_0x0051ccf0:    {disp32} mov       dword ptr [data_bytes + 0x300328], 0xffffffff        // 0x0051ccf0    c7052863cc00ffffffff
                          ret                                                                     // 0x0051ccfa    c3
-                         call               _jmp_addr_0x00401879                                 // 0x0051ccfb    e8794beeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x0051ccfb    e8794beeff
                          push               ebx                                                  // 0x0051cd00    53
                          push               esi                                                  // 0x0051cd01    56
                          push               0x6e                                                 // 0x0051cd02    6a6e

@@ -8,7 +8,6 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00407a20
 .extern _jmp_addr_0x00407a30
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
@@ -1412,7 +1411,7 @@ _jmp_addr_0x0054e586:    mov.s              ecx, ebp                            
                          {disp32} mov       dword ptr [eax + 0x00004608], 0x00000000      // 0x0054e5af    c7800846000000000000
 _jmp_addr_0x0054e5b9:    pop                ebp                                           // 0x0054e5b9    5d
                          ret                                                              // 0x0054e5ba    c3
-                         call               _jmp_addr_0x00401879                          // 0x0054e5bb    e8b932ebff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054e5bb    e8b932ebff
 @ProcessTurn__5GGameFv@4:sub                esp, 0x10                                     // 0x0054e5c0    83ec10
                          push               esi                                           // 0x0054e5c3    56
                          push               edi                                           // 0x0054e5c4    57

@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _jmp_addr_0x0060c3f0
 .extern @Init__20ObjectCircleIteratorFiRC9MapCoords@16
 .extern _jmp_addr_0x0060d740
@@ -135,7 +134,7 @@ _jmp_addr_0x0060d38f:    pop               edi                                  
                          pop               ebx                                         // 0x0060d394    5b
                          add               esp, 0x0c                                   // 0x0060d395    83c40c
                          ret               0x0008                                      // 0x0060d398    c20800
-                         call              _jmp_addr_0x004017f9                        // 0x0060d39b    e85944dfff
+                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                        // 0x0060d39b    e85944dfff
 _IsWater__10LH3DIslandFll:    {disp8} mov       ecx, dword ptr [esp + 0x04]                 // 0x0060d3a0    8b4c2404
                          test              ecx, ecx                                    // 0x0060d3a4    85c9
                          push              esi                                         // 0x0060d3a6    56

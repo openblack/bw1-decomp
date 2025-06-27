@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _GetSmallTextSize__Fv
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @__dt__12SetupControlFv@4
@@ -315,7 +314,7 @@ _jmp_addr_0x0040a3e0:    mov                  eax, dword ptr [ecx]              
                          call                 dword ptr [eax + 0x18]                          // 0x0040a3e4    ff5018
                          pop                  esi                                             // 0x0040a3e7    5e
 _jmp_addr_0x0040a3e8:    ret                  0x000c                                          // 0x0040a3e8    c20c00
-                         call                 _jmp_addr_0x00401879                            // 0x0040a3eb    e88974ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                            // 0x0040a3eb    e88974ffff
 _MouseUp__9SetupListFiib:
                          {disp8} mov          eax, dword ptr [ecx + 0x04]                     // 0x0040a3f0    8b4104
                          test                 eax, eax                                        // 0x0040a3f3    85c0

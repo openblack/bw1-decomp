@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _jmp_addr_0x00403530
 .extern ___nw__4BaseFUl
 .extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
@@ -260,7 +259,7 @@ _jmp_addr_0x006094eb:    mov.s             ecx, esi                             
                          {disp8} jne       _jmp_addr_0x006094eb                          // 0x006094f7    75f2
 _jmp_addr_0x006094f9:    pop               esi                                           // 0x006094f9    5e
                          ret                                                             // 0x006094fa    c3
-                         call              _jmp_addr_0x004017f9                          // 0x006094fb    e8f982dfff
+                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x006094fb    e8f982dfff
                          push              esi                                           // 0x00609500    56
                          {disp32} mov      esi, dword ptr [data_bytes + 0x378e54]        // 0x00609501    8b3554eed300
                          test              esi, esi                                      // 0x00609507    85f6

@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _GetSmallTextSize__Fv
 .extern _jmp_addr_0x00408100
 .extern @__ct__10SetupButtonFiiiiiPwi@36
@@ -261,7 +260,7 @@ _globl_ct_0x00549b10:    {disp32} jmp      _jmp_addr_0x00549b20                 
                          nop                                                             // 0x00549b1f    90
 _jmp_addr_0x00549b20:    {disp32} mov      dword ptr [data_bytes + 0x30b67c], 0xffffffff // 0x00549b20    c7057c16cd00ffffffff
                          ret                                                             // 0x00549b2a    c3
-                         call              _jmp_addr_0x00401879                          // 0x00549b2b    e8497debff
+                         call              ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00549b2b    e8497debff
 _globl_ct_0x00549b30:    {disp32} jmp      _jmp_addr_0x00549b40                          // 0x00549b30    e90b000000
                          nop                                                             // 0x00549b35    90
                          nop                                                             // 0x00549b36    90

@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x004046a0
 .extern _jmp_addr_0x004070f0
 .extern _GetCurrentActiveBox__8SetupBoxFv
@@ -134,7 +133,7 @@ _globl_ct_0x00515ef0:    {disp32} jmp       _jmp_addr_0x00515f00                
                          nop                                                              // 0x00515eff    90
 _jmp_addr_0x00515f00:    {disp32} mov       dword ptr [data_bytes + 0x300300], 0xffffffff // 0x00515f00    c7050063cc00ffffffff
                          ret                                                              // 0x00515f0a    c3
-                         call               _jmp_addr_0x00401879                          // 0x00515f0b    e869b9eeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00515f0b    e869b9eeff
 _globl_ct_0x00515f10:    {disp32} jmp       _jmp_addr_0x00515f20                          // 0x00515f10    e90b000000
                          nop                                                              // 0x00515f15    90
                          nop                                                              // 0x00515f16    90
@@ -625,7 +624,7 @@ _jmp_addr_0x005164ff:    {disp32} mov       dword ptr [data_bytes + 0x4dbaf0], e
                          pop                ebx                                           // 0x00516506    5b
                          add                esp, 0x08                                     // 0x00516507    83c408
                          ret                                                              // 0x0051650a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0051650b    e869b3eeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0051650b    e869b3eeff
 _jmp_addr_0x00516510:    sub                esp, 0x2c                                     // 0x00516510    83ec2c
                          push               ebx                                           // 0x00516513    53
                          push               ebp                                           // 0x00516514    55

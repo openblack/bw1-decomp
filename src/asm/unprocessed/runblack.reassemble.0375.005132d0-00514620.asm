@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _GetMidTextSize__Fv
 .extern _jmp_addr_0x00407a20
 .extern _jmp_addr_0x00407a30
@@ -561,7 +560,7 @@ _globl_ct_0x005137c0:    {disp32} jmp      _jmp_addr_0x005137d0                 
                          nop                                                             // 0x005137cf    90
 _jmp_addr_0x005137d0:    {disp32} mov      dword ptr [data_bytes + 0x3002b0], 0xffffffff // 0x005137d0    c705b062cc00ffffffff
                          ret                                                             // 0x005137da    c3
-                         call              _jmp_addr_0x00401879                          // 0x005137db    e899e0eeff
+                         call              ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x005137db    e899e0eeff
 _globl_ct_0x005137e0:    {disp32} jmp      _jmp_addr_0x005137f0                          // 0x005137e0    e90b000000
                          nop                                                             // 0x005137e5    90
                          nop                                                             // 0x005137e6    90
@@ -1342,7 +1341,7 @@ _jmp_addr_0x0051408d:    {disp8} mov       edx, dword ptr [eax + 0x08]          
                          pop               esi                                           // 0x005140a4    5e
                          add               esp, 0x10                                     // 0x005140a5    83c410
                          ret               0x0004                                        // 0x005140a8    c20400
-                         call              _jmp_addr_0x00401879                          // 0x005140ab    e8c9d7eeff
+                         call              ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x005140ab    e8c9d7eeff
 _jmp_addr_0x005140b0:    {disp8} mov       eax, dword ptr [ecx + 0x48]                   // 0x005140b0    8b4148
                          ret                                                             // 0x005140b3    c3
                          nop                                                             // 0x005140b4    90

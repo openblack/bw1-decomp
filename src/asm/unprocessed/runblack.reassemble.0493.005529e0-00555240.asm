@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00407700
 .extern _jmp_addr_0x004077a0
 .extern _jmp_addr_0x00424d10
@@ -823,7 +822,7 @@ _jmp_addr_0x005530a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          or.s               eax, edx                                      // 0x005530b3    0bc2
                          {disp8} mov        dword ptr [ecx + 0x14], eax                   // 0x005530b5    894114
                          ret                0x0004                                        // 0x005530b8    c20400
-                         call               _jmp_addr_0x00401879                          // 0x005530bb    e8b9e7eaff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x005530bb    e8b9e7eaff
 _jmp_addr_0x005530c0:    push               ebp                                           // 0x005530c0    55
                          mov.s              ebp, esp                                      // 0x005530c1    8bec
                          and                esp, 0xfffffff8                               // 0x005530c3    83e4f8
@@ -1811,7 +1810,7 @@ _jmp_addr_0x00553de6:    {disp32} mov       ecx, dword ptr [_game]              
                          mov.s              ecx, eax                                      // 0x00553e03    8bc8
                          {disp32} jmp       _jmp_addr_0x005d1260                          // 0x00553e05    e956d40700
 _jmp_addr_0x00553e0a:    ret                                                              // 0x00553e0a    c3
-                         call               _jmp_addr_0x00401879                          // 0x00553e0b    e869daeaff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00553e0b    e869daeaff
 _jmp_addr_0x00553e10:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x00553e10    8b442408
                          {disp32} mov       edx, dword ptr [data_bytes + 0x226284]        // 0x00553e14    8b1584c2be00
                          sub                esp, 0x00000210                               // 0x00553e1a    81ec10020000
@@ -1987,7 +1986,7 @@ _jmp_addr_0x0055407f:    pop                edi                                 
                          pop                ebp                                           // 0x00554081    5d
                          add                esp, 0x00000210                               // 0x00554082    81c410020000
                          ret                0x0008                                        // 0x00554088    c20800
-                         call               _jmp_addr_0x00401879                          // 0x0055408b    e8e9d7eaff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0055408b    e8e9d7eaff
 _Save__5GGameFR10GameOSFile:
                          sub                esp, 0x08                                     // 0x00554090    83ec08
                          push               ebp                                           // 0x00554093    55

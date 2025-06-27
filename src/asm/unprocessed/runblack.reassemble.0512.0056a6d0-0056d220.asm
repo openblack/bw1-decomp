@@ -8,7 +8,6 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern _jmp_addr_0x004017f9
 .extern _GetSmallTextSize__Fv
 .extern @AutoScroll__9SetupListFb@9
 .extern @InsertString__9SetupListFiPw@16
@@ -335,7 +334,7 @@ _globl_ct_0x0056a940:    {disp32} jmp       _jmp_addr_0x0056a950                
                          nop                                                              // 0x0056a94f    90
 _jmp_addr_0x0056a950:    {disp32} mov       dword ptr [data_bytes + 0x34005c], 0xffffffff // 0x0056a950    c7055c60d000ffffffff
                          ret                                                              // 0x0056a95a    c3
-                         call               _jmp_addr_0x004017f9                          // 0x0056a95b    e8996ee9ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0056a95b    e8996ee9ff
 _jmp_addr_0x0056a960:    push               ebp                                           // 0x0056a960    55
                          mov.s              ebp, esp                                      // 0x0056a961    8bec
                          and                esp, 0xfffffff8                               // 0x0056a963    83e4f8

@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00529350
 .extern _GameRand__5GRandFl
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -49,7 +48,7 @@ start_0x00423a80_0x004241b0:
                          and                eax, 0xfffffffb                               // 0x00423ab2    83e0fb
                          add                eax, 0x00000105                               // 0x00423ab5    0505010000
                          ret                                                              // 0x00423aba    c3
-                         call               _jmp_addr_0x00401879                          // 0x00423abb    e8b9ddfdff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00423abb    e8b9ddfdff
                          mov                eax, 0x000000d9                               // 0x00423ac0    b8d9000000
                          ret                                                              // 0x00423ac5    c3
                          nop                                                              // 0x00423ac6    90

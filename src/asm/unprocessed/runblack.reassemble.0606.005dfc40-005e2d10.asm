@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403740
 .extern _jmp_addr_0x00403770
@@ -2748,7 +2747,7 @@ _globl_ct_0x005e1c60:    {disp32} jmp       _jmp_addr_0x005e1c70                
                          nop                                                               // 0x005e1c6f    90
 _jmp_addr_0x005e1c70:    {disp32} mov       dword ptr [data_bytes + 0x354254], 0x3e000000  // 0x005e1c70    c70554a2d1000000003e
                          ret                                                               // 0x005e1c7a    c3
-                         call               _jmp_addr_0x004017f9                           // 0x005e1c7b    e879fbe1ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x005e1c7b    e879fbe1ff
 _globl_ct_0x005e1c80:    {disp32} jmp       _jmp_addr_0x005e1c90                           // 0x005e1c80    e90b000000
                          nop                                                               // 0x005e1c85    90
                          nop                                                               // 0x005e1c86    90
@@ -3243,7 +3242,7 @@ _jmp_addr_0x005e22a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          add                esp, 0x04                                      // 0x005e22d0    83c404
                          call               _jmp_addr_0x005e1de0                           // 0x005e22d3    e808fbffff
                          ret                0x0004                                         // 0x005e22d8    c20400
-                         call               _jmp_addr_0x004017f9                           // 0x005e22db    e819f5e1ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x005e22db    e819f5e1ff
 _jmp_addr_0x005e22e0:    {disp8} fld        dword ptr [esp + 0x04]                         // 0x005e22e0    d9442404
                          {disp32} fcom      dword ptr [rdata_bytes + 0x269ac]              // 0x005e22e4    d815acf98c00
                          fnstsw             ax                                             // 0x005e22ea    dfe0

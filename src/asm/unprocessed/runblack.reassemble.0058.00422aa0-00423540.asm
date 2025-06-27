@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00422750
 .extern _jmp_addr_0x00436970
 .extern _jmp_addr_0x0052e280
@@ -978,7 +977,7 @@ _globl_ct_0x004233e0:    {disp32} jmp       _jmp_addr_0x004233f0                
                          nop                                                              // 0x004233ef    90
 _jmp_addr_0x004233f0:    {disp32} mov       dword ptr [data_bytes + 0x28fff4], 0xffffffff // 0x004233f0    c705f45fc500ffffffff
                          ret                                                              // 0x004233fa    c3
-                         call               _jmp_addr_0x00401879                          // 0x004233fb    e879e4fdff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004233fb    e879e4fdff
 _jmp_addr_0x00423400:    push               ebx                                           // 0x00423400    53
                          push               esi                                           // 0x00423401    56
                          xor.s              eax, eax                                      // 0x00423402    33c0

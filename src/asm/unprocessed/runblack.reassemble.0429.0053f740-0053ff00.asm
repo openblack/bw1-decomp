@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__14SetupTabButtonFiiiiiPwiii@35
@@ -370,7 +369,7 @@ _jmp_addr_0x0053fb32:    push              0x0                                  
                          {disp32} mov      dword ptr [data_bytes + 0x30ab60], 0x00000000 // 0x0053fb5f    c705600bcd0000000000
                          pop               esi                                           // 0x0053fb69    5e
                          ret                                                             // 0x0053fb6a    c3
-                         call              _jmp_addr_0x00401879                          // 0x0053fb6b    e8091decff
+                         call              ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0053fb6b    e8091decff
                          cmp               dword ptr [data_bytes + 0x351cac], 0x00000ded // 0x0053fb70    813dac7cd100ed0d0000
                          {disp32} mov      eax, dword ptr [data_bytes + 0x351ca8]        // 0x0053fb7a    a1a87cd100
                          {disp8} jbe       _jmp_addr_0x0053fb86                          // 0x0053fb7f    7605

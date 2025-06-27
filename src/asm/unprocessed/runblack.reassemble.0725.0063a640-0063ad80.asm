@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern _jmp_addr_0x005508a0
 .extern _jmp_addr_0x00555880
@@ -264,7 +263,7 @@ _jmp_addr_0x0063a7ac:    xor.s              eax, eax                            
                          ret                                                              // 0x0063a7f7    c3
 _jmp_addr_0x0063a7f8:    xor.s              eax, eax                                      // 0x0063a7f8    33c0
                          ret                                                              // 0x0063a7fa    c3
-                         call               _jmp_addr_0x004017f9                          // 0x0063a7fb    e8f96fdcff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0063a7fb    e8f96fdcff
 ?SetYJustAngle@Object@@UAEXM@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0063a800    8b442404
                          {disp8} mov        dword ptr [ecx + 0x4c], eax                   // 0x0063a804    89414c
@@ -631,7 +630,7 @@ _globl_ct_0x0063ab60:    {disp32} jmp       _jmp_addr_0x0063ab70                
                          nop                                                              // 0x0063ab6f    90
 _jmp_addr_0x0063ab70:    {disp32} mov       dword ptr [data_bytes + 0x37e384], 0x3e000000 // 0x0063ab70    c7058443d4000000003e
                          ret                                                              // 0x0063ab7a    c3
-                         call               _jmp_addr_0x004017f9                          // 0x0063ab7b    e8796cdcff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0063ab7b    e8796cdcff
 _globl_ct_0x0063ab80:    {disp32} jmp       _jmp_addr_0x0063ab90                          // 0x0063ab80    e90b000000
                          nop                                                              // 0x0063ab85    90
                          nop                                                              // 0x0063ab86    90

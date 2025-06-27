@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
@@ -557,7 +556,7 @@ _jmp_addr_0x00517f23:    push               ebx                                 
                          pop                ebx                                           // 0x00517f58    5b
                          pop                ecx                                           // 0x00517f59    59
                          ret                                                              // 0x00517f5a    c3
-                         call               _jmp_addr_0x00401879                          // 0x00517f5b    e81999eeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00517f5b    e81999eeff
                          push               esi                                           // 0x00517f60    56
                          mov.s              esi, ecx                                      // 0x00517f61    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x40]                   // 0x00517f63    8b4640
@@ -777,7 +776,7 @@ _jmp_addr_0x00518113:    push               ebx                                 
                          pop                ebx                                           // 0x00518148    5b
                          pop                ecx                                           // 0x00518149    59
                          ret                                                              // 0x0051814a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0051814b    e82997eeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0051814b    e82997eeff
 _jmp_addr_0x00518150:    push               ecx                                           // 0x00518150    51
                          {disp8} mov        eax, dword ptr [ecx + 0x44]                   // 0x00518151    8b4144
                          test               eax, eax                                      // 0x00518154    85c0
@@ -814,7 +813,7 @@ _jmp_addr_0x00518163:    push               ebx                                 
                          pop                ebx                                           // 0x00518198    5b
                          pop                ecx                                           // 0x00518199    59
                          ret                                                              // 0x0051819a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0051819b    e8d996eeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0051819b    e8d996eeff
                          sub                esp, 0x00000190                               // 0x005181a0    81ec90010000
                          push               ebp                                           // 0x005181a6    55
                          push               esi                                           // 0x005181a7    56
@@ -1624,7 +1623,7 @@ _jmp_addr_0x00518b90:    {disp8} fld        dword ptr [esp + 0x04]              
                          {disp8} fmul       dword ptr [ecx + 0x20]                        // 0x00518be2    d84920
                          {disp8} fstp       dword ptr [ecx + 0x20]                        // 0x00518be5    d95920
                          ret                0x0004                                        // 0x00518be8    c20400
-                         call               _jmp_addr_0x00401879                          // 0x00518beb    e8898ceeff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00518beb    e8898ceeff
 _jmp_addr_0x00518bf0:    fld                dword ptr [edx]                               // 0x00518bf0    d902
                          {disp8} fld        dword ptr [edx + 0x04]                        // 0x00518bf2    d94204
                          {disp8} fld        dword ptr [edx + 0x08]                        // 0x00518bf5    d94208

@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern @DeleteString__9SetupListFi@12
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
@@ -701,7 +700,7 @@ _jmp_addr_0x0059c3f3:    sbb.s              eax, eax                            
                          sbb                eax, -0x01                                    // 0x0059c3f6    83d8ff
                          pop                ebx                                           // 0x0059c3f9    5b
                          ret                                                              // 0x0059c3fa    c3
-                         call               _jmp_addr_0x004017f9                          // 0x0059c3fb    e8f953e6ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0059c3fb    e8f953e6ff
 _jmp_addr_0x0059c400:    sub                esp, 0x0000049c                               // 0x0059c400    81ec9c040000
                          push               ebx                                           // 0x0059c406    53
                          mov.s              ebx, ecx                                      // 0x0059c407    8bd9
@@ -780,7 +779,7 @@ _jmp_addr_0x0059c476:    {disp32} mov       eax, dword ptr [esp + 0x000004b4]   
 _jmp_addr_0x0059c4f1:    pop                ebx                                           // 0x0059c4f1    5b
                          add                esp, 0x0000049c                               // 0x0059c4f2    81c49c040000
                          ret                0x0008                                        // 0x0059c4f8    c20800
-                         call               _jmp_addr_0x004017f9                          // 0x0059c4fb    e8f952e6ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0059c4fb    e8f952e6ff
 _jmp_addr_0x0059c500:    sub                esp, 0x00000498                               // 0x0059c500    81ec98040000
                          push               ebx                                           // 0x0059c506    53
                          push               ebp                                           // 0x0059c507    55
@@ -17780,7 +17779,7 @@ _globl_ct_0x005b0290:    {disp32} jmp       _jmp_addr_0x005b02a0                
                          nop                                                              // 0x005b029f    90
 _jmp_addr_0x005b02a0:    {disp32} mov       dword ptr [data_bytes + 0x34ded8], 0xffffffff // 0x005b02a0    c705d83ed100ffffffff
                          ret                                                              // 0x005b02aa    c3
-                         call               _jmp_addr_0x004017f9                          // 0x005b02ab    e84915e5ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005b02ab    e84915e5ff
 @__ct__15HandStateCameraFP5CHand@12:    mov.s              eax, ecx                                      // 0x005b02b0    8bc1
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x005b02b2    8b4c2404
                          {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x005b02b6    894804
@@ -18539,7 +18538,7 @@ _globl_ct_0x005b0bd0:    {disp32} jmp       _jmp_addr_0x005b0be0                
                          nop                                                              // 0x005b0bdf    90
 _jmp_addr_0x005b0be0:    {disp32} mov       dword ptr [data_bytes + 0x34dee4], 0xffffffff // 0x005b0be0    c705e43ed100ffffffff
                          ret                                                              // 0x005b0bea    c3
-                         call               _jmp_addr_0x004017f9                          // 0x005b0beb    e8090ce5ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005b0beb    e8090ce5ff
 @__ct__16HandStateCitadelFP5CHand@12:    mov.s              eax, ecx                                      // 0x005b0bf0    8bc1
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x005b0bf2    8b4c2404
                          {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x005b0bf6    894804
@@ -19182,7 +19181,7 @@ _globl_ct_0x005b13b0:    {disp32} jmp       _jmp_addr_0x005b13c0                
                          nop                                                              // 0x005b13bf    90
 _jmp_addr_0x005b13c0:    {disp32} mov       dword ptr [data_bytes + 0x34def0], 0xffffffff // 0x005b13c0    c705f03ed100ffffffff
                          ret                                                              // 0x005b13ca    c3
-                         call               _jmp_addr_0x004017f9                          // 0x005b13cb    e82904e5ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005b13cb    e82904e5ff
 @__ct__17HandStateCreatureFP5CHand@12:    mov.s              eax, ecx                                      // 0x005b13d0    8bc1
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x005b13d2    8b4c2404
                          {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x005b13d6    894804
@@ -20786,7 +20785,7 @@ _globl_ct_0x005b2b30:    {disp32} jmp       _jmp_addr_0x005b2b40                
                          nop                                                              // 0x005b2b3f    90
 _jmp_addr_0x005b2b40:    {disp32} mov       dword ptr [data_bytes + 0x34df10], 0xffffffff // 0x005b2b40    c705103fd100ffffffff
                          ret                                                              // 0x005b2b4a    c3
-                         call               _jmp_addr_0x004017f9                          // 0x005b2b4b    e8a9ece4ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005b2b4b    e8a9ece4ff
 _globl_ct_0x005b2b50:    {disp32} jmp       _jmp_addr_0x005b2b60                          // 0x005b2b50    e90b000000
                          nop                                                              // 0x005b2b55    90
                          nop                                                              // 0x005b2b56    90
@@ -21164,7 +21163,7 @@ _jmp_addr_0x005b2f70:    {disp32} mov       ecx, dword ptr [_game]              
                          mov.s              ecx, eax                                      // 0x005b2fa3    8bc8
                          call               _jmp_addr_0x005b3000                          // 0x005b2fa5    e856000000
 _jmp_addr_0x005b2faa:    ret                                                              // 0x005b2faa    c3
-                         call               _jmp_addr_0x004017f9                          // 0x005b2fab    e849e8e4ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005b2fab    e849e8e4ff
 _jmp_addr_0x005b2fb0:    {disp32} mov       ecx, dword ptr [_game]                        // 0x005b2fb0    8b0d5c19d000
                          push               esi                                           // 0x005b2fb6    56
                          call               @MyInterface__5GGameFv@4                      // 0x005b2fb7    e89428faff
@@ -22028,7 +22027,7 @@ _globl_ct_0x005b3a10:    {disp32} jmp       _jmp_addr_0x005b3a20                
                          nop                                                              // 0x005b3a1f    90
 _jmp_addr_0x005b3a20:    {disp32} mov       dword ptr [data_bytes + 0x34df40], 0xffffffff // 0x005b3a20    c705403fd100ffffffff
                          ret                                                              // 0x005b3a2a    c3
-                         call               _jmp_addr_0x004017f9                          // 0x005b3a2b    e8c9dde4ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005b3a2b    e8c9dde4ff
 _globl_ct_0x005b3a30:    {disp32} jmp       _jmp_addr_0x005b3a40                          // 0x005b3a30    e90b000000
                          nop                                                              // 0x005b3a35    90
                          nop                                                              // 0x005b3a36    90

@@ -129,7 +129,7 @@ struct MapCoords* __fastcall GetResourceNearestEdge__13MultiMapFixedF13RESOURCE_
         "mov.s              eax, esi                   \n" // 0x004015a5    8bc6
         "pop                esi                        \n" // 0x004015a7    5e
         "ret                0x0010                     \n" // 0x004015a8    c21000
-        "call               _jmp_addr_0x00401879       \n" // 0x004015ab    e8c9020000
+        "call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9       \n" // 0x004015ab    e8c9020000
     );
     __builtin_unreachable();
 }

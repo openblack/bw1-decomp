@@ -27,7 +27,10 @@ struct MapCoords;
 struct MultiMapFixed;
 struct PSysProcessInfo;
 struct Spell;
+struct SpellIcon;
+struct SpellSeed;
 struct Town;
+struct Tree;
 struct Villager;
 
 enum GAME_THING_TYPE
@@ -164,15 +167,15 @@ struct GameThingVftable
   float (__fastcall* CalculateInfluence)(struct GameThing* this, const void* edx, const struct MapCoords* param_1);
   void (__fastcall* RemoveDance)(struct GameThing* this);
   bool (__fastcall* IsAvailable)(struct GameThing* this);
-  bool (__fastcall* IsCreature)(struct GameThing* this);  /* 0x30 */
-  bool (__fastcall* IsCreature2)(struct GameThing* this, const void* edx, struct Creature* param_1);
+  bool (__fastcall* IsCreature)(struct GameThing* this, const void* edx, struct Creature* param_1);  /* 0x30 */
+  bool (__fastcall* IsCreature2)(struct GameThing* this);
   bool (__fastcall* IsCreatureNotTooNear)(struct GameThing* this, const void* edx, struct Creature* param_1);
   float (__fastcall* GetDrawImportance)(struct GameThing* this);
   float (__fastcall* GetMaxAlignmentChangePerGameTurn)(struct GameThing* this);  /* 0x40 */
   bool (__fastcall* GetComputerSeen)(struct GameThing* this);
   struct Town* (__fastcall* GetTown)(struct GameThing* this);
   float (__fastcall* GetVillagerActivityDesire)(struct GameThing* this, const void* edx, struct Villager* param_1);
-  void (__fastcall* SetVillagerActivity)(struct GameThing* this, const void* edx, struct Villager* param_1);  /* 0x50 */
+  uint32_t (__fastcall* SetVillagerActivity)(struct GameThing* this, const void* edx, struct Villager* param_1);  /* 0x50 */
   uint32_t (__fastcall* UpdateVillagerActivityEffect)(struct GameThing* this, const void* edx, struct Villager* param_1);
   void (__fastcall* MaintainSpell)(struct GameThing* this, const void* edx, uint32_t param_1, float param_2);
   void (__fastcall* UpdateSpellInfo)(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2);
@@ -182,7 +185,7 @@ struct GameThingVftable
   struct GPlayer* (__fastcall* GetPlayerWhoLastDroppedMe)(struct GameThing* this);
   bool32_t (__fastcall* IsFootpathLink)(struct GameThing* this);  /* 0x70 */
   struct GFootpathLink* (__fastcall* GetFootpathLink)(struct GameThing* this);
-  void (__fastcall* AddFootpathLink)(struct GameThing* this, const void* edx, struct GFootpath* param_1);
+  uint32_t (__fastcall* AddFootpathLink)(struct GameThing* this, const void* edx, struct GFootpath* param_1);
   uint32_t (__fastcall* GetNearestPathTo)(struct GameThing* this, const void* edx, const struct MapCoords* param_1, float param_2, int param_3);
   void (__fastcall* UseFootpathIfNecessary)(struct GameThing* this, const void* edx, struct Living* param_1, const struct MapCoords* param_2, unsigned char param_3);  /* 0x80 */
   uint32_t (__fastcall* AddFootpath)(struct GameThing* this, const void* edx, struct GFootpath* param_1);
@@ -195,12 +198,12 @@ struct GameThingVftable
   uint32_t (__fastcall* RemoveResource)(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* param_3, bool* param_4);  /* 0xa0 */
   struct Creature* (__fastcall* CastCreature)(struct GameThing* this);
   struct GPlayer* (__fastcall* CastPlayer)(struct GameThing* this);
-  uint32_t (__fastcall* CastOneOffSpellSeed)(struct GameThing* this);
+  struct SpellSeed* (__fastcall* CastOneOffSpellSeed)(struct GameThing* this);
   struct Abode* (__fastcall* CastAbode)(struct GameThing* this);  /* 0xb0 */
   struct MultiMapFixed* (__fastcall* CastMultiMapFixed)(struct GameThing* this);
-  uint32_t (__fastcall* CastSpellIcon)(struct GameThing* this);
-  uint32_t (__fastcall* CastTree)(struct GameThing* this);
-  bool (__fastcall* IsDeletedOnNewMap)(struct GameThing* this);  /* 0xc0 */
+  struct SpellIcon* (__fastcall* CastSpellIcon)(struct GameThing* this);
+  struct Tree* (__fastcall* CastTree)(struct GameThing* this);
+  bool32_t (__fastcall* IsDeletedOnNewMap)(struct GameThing* this);  /* 0xc0 */
   uint16_t (__fastcall* GetNumberOfInstanceForGlobalList)(struct GameThing* this);
   float (__fastcall* GetTownArtifactValue)(struct GameThing* this);
   bool (__fastcall* CanBecomeArtifact)(struct GameThing* this);
@@ -209,7 +212,7 @@ struct GameThingVftable
   char* (__fastcall* GetDebugText)(struct GameThing* this);
   uint32_t (__fastcall* GetSampleForAttack)(struct GameThing* this);
   uint32_t (__fastcall* GetGuidanceResourceType)(struct GameThing* this);  /* 0xe0 */
-  uint32_t (__fastcall* GetShowNeedsPos)(struct GameThing* this);
+  uint32_t (__fastcall* GetShowNeedsPos)(struct GameThing* this, const void* edx, uint32_t param_1, struct MapCoords* param_2);
   uint32_t (__fastcall* Load)(struct GameThing* this, const void* edx, struct GameOSFile* file);
   uint32_t (__fastcall* Save)(struct GameThing* this, const void* edx, struct GameOSFile* file);
   uint32_t (__fastcall* GetSaveType)(struct GameThing* this);  /* 0xf0 */
@@ -268,10 +271,10 @@ float __fastcall CalculateInfluence__9GameThingFRC9MapCoords(struct GameThing* t
 void __fastcall RemoveDance__9GameThingFv(struct GameThing* this) asm("?RemoveDance@GameThing@@QAEXXZ");
 // win1.41 00401810 mac 100512d0 GameThing::IsAvailable(void)
 bool __fastcall IsAvailable__9GameThingFv(struct GameThing* this) asm("?IsAvailable@GameThing@@QAE_NXZ");
+// win1.41 00401820 mac 10494880 GameThing::IsCreature(Creature *)
+bool __fastcall IsCreature__9GameThingFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreature@GameThing@@QAE_NPAVCreature@@@Z");
 // win1.41 00401830 mac 1002c400 GameThing::IsCreature(void)
 bool __fastcall IsCreature__9GameThingFv(struct GameThing* this) asm("?IsCreature@GameThing@@UAE_NXZ");
-// win1.41 00401820 mac 10494880 GameThing::IsCreature(Creature *)
-bool __fastcall IsCreature2__9GameThingFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreature@GameThing@@QAE_NPAVCreature@@@Z");
 // win1.41 00401840 mac 104948c0 GameThing::IsCreatureNotTooNear(Creature *)
 bool __fastcall IsCreatureNotTooNear__9GameThingFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z");
 // win1.41 00405130 mac 10169a70 GameThing::GetDrawImportance(void)
@@ -285,7 +288,7 @@ struct Town* __fastcall GetTown__9GameThingFv(struct GameThing* this) asm("?GetT
 // win1.41 00401870 mac 103f1450 GameThing::GetVillagerActivityDesire(Villager *)
 float __fastcall GetVillagerActivityDesire__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1) asm("?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z");
 // win1.41 00401880 mac 10389ac0 GameThing::SetVillagerActivity(Villager *)
-void __fastcall SetVillagerActivity__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1) asm("?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z");
+uint32_t __fastcall SetVillagerActivity__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1) asm("?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z");
 // win1.41 00401890 mac 1037f2e0 GameThing::UpdateVillagerActivityEffect(Villager *)
 uint32_t __fastcall UpdateVillagerActivityEffect__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1) asm("?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z");
 // win1.41 0056fed0 mac 10160960 GameThing::MaintainSpell(Spell *, float)
@@ -305,7 +308,7 @@ bool32_t __fastcall IsFootpathLink__9GameThingFv(struct GameThing* this) asm("?I
 // win1.41 00405170 mac 1056c160 GameThing::GetFootpathLink(void)
 struct GFootpathLink* __fastcall GetFootpathLink__9GameThingFv(struct GameThing* this) asm("?GetFootpathLink@GameThing@@QAEPAVGFootpathLink@@XZ");
 // win1.41 004018c0 mac 101063a0 GameThing::AddFootpathLink(GFootpath *)
-void __fastcall AddFootpathLink__9GameThingFP9GFootpath(struct GameThing* this, const void* edx, struct GFootpath* param_1) asm("?AddFootpathLink@GameThing@@QAEXPAVGFootpath@@@Z");
+uint32_t __fastcall AddFootpathLink__9GameThingFP9GFootpath(struct GameThing* this, const void* edx, struct GFootpath* param_1) asm("?AddFootpathLink@GameThing@@QAEXPAVGFootpath@@@Z");
 // win1.41 00405180 mac 104788b0 GameThing::GetNearestPathTo(MapCoords const &, float, int)
 uint32_t __fastcall GetNearestPathTo__9GameThingFRC9MapCoordsfi(struct GameThing* this, const void* edx, const struct MapCoords* param_1, float param_2, int param_3) asm("?GetNearestPathTo@GameThing@@QAEIABUMapCoords@@MH@Z");
 // win1.41 00570330 mac 100e4740 GameThing::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
@@ -331,17 +334,17 @@ struct Creature* __fastcall CastCreature__9GameThingFv(struct GameThing* this) a
 // win1.41 004018e0 mac 103dd5d0 GameThing::CastPlayer(void)
 struct GPlayer* __fastcall CastPlayer__9GameThingFv(struct GameThing* this) asm("?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ");
 // win1.41 004018f0 mac 104fb790 GameThing::CastOneOffSpellSeed(void)
-uint32_t __fastcall CastOneOffSpellSeed__9GameThingFv(struct GameThing* this) asm("?CastOneOffSpellSeed@GameThing@@UAEIXZ");
+struct SpellSeed* __fastcall CastOneOffSpellSeed__9GameThingFv(struct GameThing* this) asm("?CastOneOffSpellSeed@GameThing@@UAEIXZ");
 // win1.41 004051e0 mac 1017ebc0 GameThing::CastAbode(void)
 struct Abode* __fastcall CastAbode__9GameThingFv(struct GameThing* this) asm("?CastAbode@GameThing@@QAEPAVAbode@@XZ");
 // win1.41 004051f0 mac 10199740 GameThing::CastMultiMapFixed(void)
 struct MultiMapFixed* __fastcall CastMultiMapFixed__9GameThingFv(struct GameThing* this) asm("?CastMultiMapFixed@GameThing@@QAEPAVMultiMapFixed@@XZ");
 // win1.41 00401900 mac 100a0a70 GameThing::CastSpellIcon(void)
-uint32_t __fastcall CastSpellIcon__9GameThingFv(struct GameThing* this) asm("?CastSpellIcon@GameThing@@UAEIXZ");
+struct SpellIcon* __fastcall CastSpellIcon__9GameThingFv(struct GameThing* this) asm("?CastSpellIcon@GameThing@@UAEIXZ");
 // win1.41 00401910 mac 101c8320 GameThing::CastTree(void)
-uint32_t __fastcall CastTree__9GameThingFv(struct GameThing* this) asm("?CastTree@GameThing@@UAEIXZ");
+struct Tree* __fastcall CastTree__9GameThingFv(struct GameThing* this) asm("?CastTree@GameThing@@UAEIXZ");
 // win1.41 00401920 mac 1019e2b0 GameThing::IsDeletedOnNewMap(void)
-bool __fastcall IsDeletedOnNewMap__9GameThingFv(struct GameThing* this) asm("?IsDeletedOnNewMap@GameThing@@QAE_NXZ");
+bool32_t __fastcall IsDeletedOnNewMap__9GameThingFv(struct GameThing* this) asm("?IsDeletedOnNewMap@GameThing@@QAE_NXZ");
 // win1.41 00405200 mac 100ac9a0 GameThing::GetNumberOfInstanceForGlobalList(void)
 uint16_t __fastcall GetNumberOfInstanceForGlobalList__9GameThingFv(struct GameThing* this) asm("?GetNumberOfInstanceForGlobalList@GameThing@@QAEGXZ");
 // win1.41 00405210 mac 1019aa00 GameThing::GetTownArtifactValue(void)
@@ -359,7 +362,7 @@ uint32_t __fastcall GetSampleForAttack__9GameThingFv(struct GameThing* this) asm
 // win1.41 0071bdd0 mac 1050fc90 GameThing::GetGuidanceResourceType(void)
 uint32_t __fastcall GetGuidanceResourceType__9GameThingFv(struct GameThing* this) asm("?GetGuidanceResourceType@GameThing@@UAEIXZ");
 // win1.41 00401930 mac 1017a550 GameThing::GetShowNeedsPos(unsigned long, MapCoords *)
-uint32_t __fastcall GetShowNeedsPos__9GameThingFUlP9MapCoords(struct GameThing* this) asm("?GetShowNeedsPos@GameThing@@UAEIXZ");
+uint32_t __fastcall GetShowNeedsPos__9GameThingFUlP9MapCoords(struct GameThing* this, const void* edx, uint32_t param_1, struct MapCoords* param_2) asm("?GetShowNeedsPos@MultiMapFixed@@UAEIKPAUMapCoords@@@Z");
 // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
 uint32_t __fastcall Load__9GameThingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GameThing@@QAEIAAVGGameOSFile@@@Z");
 // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)

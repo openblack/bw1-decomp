@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x0046ee30
 .extern _jmp_addr_0x0046ee50
 .extern _jmp_addr_0x0046eed0
@@ -81,7 +80,7 @@ _jmp_addr_0x0046f1e0:    push             esi                                   
                          call             _jmp_addr_0x0046ee50                          // 0x0046f1f4    e857fcffff
                          pop              esi                                           // 0x0046f1f9    5e
                          ret                                                            // 0x0046f1fa    c3
-                         call             _jmp_addr_0x00401879                          // 0x0046f1fb    e87926f9ff
+                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0046f1fb    e87926f9ff
 _jmp_addr_0x0046f200:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f200    8b442404
                          push             eax                                           // 0x0046f204    50
                          push             ecx                                           // 0x0046f205    51
@@ -260,7 +259,7 @@ _jmp_addr_0x0046f3b2:    xor.s            eax, eax                              
                          ret                                                            // 0x0046f3b4    c3
 _jmp_addr_0x0046f3b5:    mov              eax, 0x00000001                               // 0x0046f3b5    b801000000
                          ret                                                            // 0x0046f3ba    c3
-                         call             _jmp_addr_0x00401879                          // 0x0046f3bb    e8b924f9ff
+                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0046f3bb    e8b924f9ff
 _IsKeyDown__14BindableActionF6LH_KEY:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f3c0    8b442404
                          cmp              eax, 0x2a                                     // 0x0046f3c4    83f82a
                          {disp8} je       _jmp_addr_0x0046f3ce                          // 0x0046f3c7    7405
