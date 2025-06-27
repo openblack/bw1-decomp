@@ -18,26 +18,17 @@ const float abode_info_float_0x008a99f0 = 512.0f;
 
 uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this)
 {
-    __asm__("{disp32} mov     eax, dword ptr [ecx + 0x0000015c]"); // 0x00401240    8b815c010000
-    __asm__("ret");                                                // 0x00401246    c3
-
-    __builtin_unreachable();
+    return ((const struct GAbodeInfo*)this)->meshId;
 }
 
 enum ABODE_TYPE __fastcall GetAbodeType__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this)
 {
-  __asm__("{disp32} mov     eax, dword ptr [ecx + 0x00000120]");   // 0x00401250    8b8120010000
-  __asm__("ret");                                                  // 0x00401256    c3
-
-  __builtin_unreachable();
+    return ((const struct GAbodeInfo*)this)->abodeType;
 }
 
 enum ABODE_NUMBER __fastcall GetAbodeNumber__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this)
 {
-  __asm__("{disp32} mov     eax, dword ptr [ecx + 0x00000124]");   // 0x00401260    8b8124010000
-  __asm__("ret");                                                  // 0x00401266    c3
-
-  __builtin_unreachable();
+    return ((const struct GAbodeInfo*)this)->abodeNumber;
 }
 
 struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1)
