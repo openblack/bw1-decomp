@@ -10,7 +10,7 @@ struct Q222UR_GesturingRecognised8AtomData;
 
 struct AtomCollection
 {
-  uint8_t field_0x0[0x0];
+  uint8_t field_0x0[0x4];
 };
 static_assert(sizeof(struct AtomCollection) == 0x4, "Data type is of wrong size");
 
@@ -21,7 +21,7 @@ float __fastcall GetAge__14AtomCollectionFv(struct AtomCollection* this);
 
 struct UR_GesturingRecognised
 {
-  uint8_t field_0x0[0x0];
+  uint8_t field_0x0[0x4];
 };
 static_assert(sizeof(struct UR_GesturingRecognised) == 0x4, "Data type is of wrong size");
 
