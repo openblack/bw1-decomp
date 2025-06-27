@@ -625,6 +625,7 @@ target_compile_options(common_compile_options INTERFACE
     -masm=intel
     -march=i386
     $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g -gcodeview>
+    $<$<AND:$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>,$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>>:-fstandalone-debug -fno-eliminate-unused-debug-types>
 )
 target_include_directories(common_compile_options
     INTERFACE
