@@ -145,7 +145,7 @@
 .globl ?GetTown@Object@@UAEPAVTown@@XZ
 .globl ?GetMapChild@Object@@UAEPAV1@PBUMapCell@@@Z
 .globl ?Process@Object@@UAEIXZ
-.globl ?AsMultiMapFixed@Object@@UAE_NXZ
+.globl ?AsMultiMapFixed@Object@@UAEPAVMultiMapFixed@@XZ
 .globl ?IsResourceStore@Object@@UAE_NW4RESOURCE_TYPE@@@Z
 .globl ?StartOnFire@Object@@UAEXXZ
 .globl ?ValidForLockedSelectProcess@Object@@UAE_NPAVGInterfaceStatus@@@Z
@@ -5610,7 +5610,7 @@ _jmp_addr_0x004192ab:    pop                edi                                 
                          nop                                                              // 0x004192bd    90
                          nop                                                              // 0x004192be    90
                          nop                                                              // 0x004192bf    90
-?AsMultiMapFixed@Object@@UAE_NXZ:
+?AsMultiMapFixed@Object@@UAEPAVMultiMapFixed@@XZ:
                          xor.s              eax, eax                                      // 0x004192c0    33c0
                          ret                                                              // 0x004192c2    c3
                          nop                                                              // 0x004192c3    90

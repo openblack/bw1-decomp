@@ -157,7 +157,7 @@ struct ObjectVftable
   float (__fastcall* GetImpressiveValue)(struct Object* this);
   bool (__fastcall* IsSpellSeedReturnPoint)(struct Object* this);  /* 0x670 */
   bool (__fastcall* IsABeliever)(struct Object* this);
-  bool (__fastcall* AsMultiMapFixed)(struct Object* this);
+  struct MultiMapFixed* (__fastcall* AsMultiMapFixed)(struct Object* this);
   float (__fastcall* ApplyWaterSpell)(struct Object* this, const void* edx, struct SpellWater* spell);
   bool (__fastcall* IsResourceStore)(struct Object* this, const void* edx, enum RESOURCE_TYPE type);  /* 0x680 */
   bool (__fastcall* DeleteObjectAndTakeResource)(struct Object* this, const void* edx, struct Object* param_1, struct GInterfaceStatus* param_2);
@@ -245,7 +245,7 @@ struct ObjectVftable
   bool (__fastcall* IsFireMan)(struct Object* this);
   bool (__fastcall* IsARootedObject)(struct Object* this);  /* 0x7d0 */
   enum SOUND_COLLISION_TYPE (__fastcall* GetCollideSoundType)(struct Object* this);
-  bool (__fastcall* IsSolidToNewAbode)(struct Object* this);
+  bool32_t (__fastcall* IsSolidToNewAbode)(struct Object* this);
   uint32_t (__fastcall* RemoveFromGame)(struct Object* this);
   int (__fastcall* GetLandingPointCount)(struct Object* this);  /* 0x7e0 */
   bool (__fastcall* GetLandingPoint)(struct Object* this, const void* edx, uint8_t param_1, struct LHPoint* param_2);
@@ -625,7 +625,7 @@ bool __fastcall IsSpellSeedReturnPoint__6ObjectCFv(struct Object* this) asm("?Is
 // win1.41 00402740 mac 104d62b0 Object::IsABeliever(void)
 bool __fastcall IsABeliever__6ObjectFv(struct Object* this) asm("?IsABeliever@Object@@UAE_NXZ");
 // win1.41 004192c0 mac 100a9dc0 Object::AsMultiMapFixed(void)
-bool __fastcall AsMultiMapFixed__6ObjectFv(struct Object* this) asm("?AsMultiMapFixed@Object@@UAE_NXZ");
+struct MultiMapFixed* __fastcall AsMultiMapFixed__6ObjectFv(struct Object* this) asm("?AsMultiMapFixed@Object@@UAEPAVMultiMapFixed@@XZ");
 // win1.41 0063a8e0 mac 103d0400 Object::ApplyWaterSpell(SpellWater *)
 float __fastcall ApplyWaterSpell__6ObjectFP10SpellWater(struct Object* this, const void* edx, struct SpellWater* spell) asm("?ApplyWaterSpell@Object@@UAEMPAVSpellWater@@@Z");
 // win1.41 004192d0 mac 100a9e00 Object::IsResourceStore(RESOURCE_TYPE)
@@ -801,7 +801,7 @@ bool __fastcall IsARootedObject__6ObjectFv(struct Object* this) asm("?IsARootedO
 // win1.41 00637690 mac 103d7220 Object::GetCollideSoundType(void)
 enum SOUND_COLLISION_TYPE __fastcall GetCollideSoundType__6ObjectFv(struct Object* this) asm("?GetCollideSoundType@Object@@UAE?AW4SOUND_COLLISION_TYPE@@XZ");
 // win1.41 004198a0 mac 101bd530 Object::IsSolidToNewAbode(void)
-bool __fastcall IsSolidToNewAbode__6ObjectFv(struct Object* this) asm("?IsSolidToNewAbode@Object@@UAE_NXZ");
+bool32_t __fastcall IsSolidToNewAbode__6ObjectFv(struct Object* this) asm("?IsSolidToNewAbode@Object@@UAE_NXZ");
 // win1.41 00639b50 mac 103d2250 Object::RemoveFromGame(void)
 uint32_t __fastcall RemoveFromGame__6ObjectFv(struct Object* this) asm("?RemoveFromGame@Object@@UAEIXZ");
 // win1.41 00638430 mac 103d52a0 Object::GetLandingPointCount(void)
