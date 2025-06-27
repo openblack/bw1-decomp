@@ -1,0 +1,177 @@
+#include "Abode.h"
+
+extern const char debug_text_Abode[7];
+
+__attribute__((MOV32rr_REV))
+struct Abode* __fastcall CastAbode__5AbodeFv(struct GameThing* this)
+{
+    return ((struct Abode*)this);
+}
+
+bool __fastcall GetShouldNotBeAddedToPlanned__5AbodeFv(struct MultiMapFixed* this)
+{
+    asm(
+        "xor.s              eax, eax                 \n" // 0x00401650    33c0
+        "{disp8} mov        al, byte ptr [ecx + 0x7c]\n" // 0x00401652    8a417c
+        "shr                eax, 2                   \n" // 0x00401655    c1e802
+        "and                eax, 0x01                \n" // 0x00401658    83e001
+        "ret                                         \n" // 0x0040165b    c3
+    );
+    __builtin_unreachable();
+}
+
+void __fastcall SetShouldNotBeAddedToPlanned__5AbodeFi(struct MultiMapFixed* this, const void* edx, bool value)
+{
+    asm(
+        "{disp8} mov        al, byte ptr [esp + 0x04]\n" // 0x00401660    8a442404
+        "{disp8} mov        dl, byte ptr [ecx + 0x7c]\n" // 0x00401664    8a517c
+        "and                al, 0x01                 \n" // 0x00401667    2401
+        "shl                al, 2                    \n" // 0x00401669    c0e002
+        "and                dl, -0x05                \n" // 0x0040166c    80e2fb
+        "or.s               al, dl                   \n" // 0x0040166f    0ac2
+        "{disp8} mov        byte ptr [ecx + 0x7c], al\n" // 0x00401671    88417c
+    );
+}
+
+void __fastcall RestartBeingFunctional__5AbodeFv(struct Abode* this)
+{
+}
+
+void __fastcall SetTown__5AbodeFP4Town(struct MultiMapFixed* this, const void* edx, struct Town* town)
+{
+    ((struct Abode*)this)->town = town;
+}
+
+bool __fastcall IsRepaired__5AbodeFv(struct MultiMapFixed* this)
+{
+    asm(
+        "mov                eax, dword ptr [ecx]       \n"  // 0x004016a0    8b01
+        "call               dword ptr [eax + 0x884]    \n"  // 0x004016a2    ff9084080000
+        "{disp32} fcomp     dword ptr [_rdata_float1p0]\n"  // 0x004016a8    d81d90a38a00
+        "fnstsw             ax                         \n"  // 0x004016ae    dfe0
+        "test               ah, 0x01                   \n"  // 0x004016b0    f6c401
+        "{disp8} jne        _jmp_addr_0x004016bb       \n"  // 0x004016b3    7506
+        "mov                eax, 0x00000001            \n"  // 0x004016b5    b801000000
+        "ret                                           \n"  // 0x004016ba    c3
+        "_jmp_addr_0x004016bb:                         \n"
+        "xor.s              eax, eax                   \n"  // 0x004016bb    33c0
+        "ret                                           \n"  // 0x004016bd    c3
+    );
+    __builtin_unreachable();
+}
+
+bool __fastcall IsBuilt__5AbodeFv(struct MultiMapFixed* this)
+{
+    asm(
+        "{disp8} mov        al, byte ptr [ecx + 0x58]  \n"  // 0x004016c0    8a4158
+        "and                al, 0x02                   \n"  // 0x004016c3    2402
+        "cmp                al, 0x02                   \n"  // 0x004016c5    3c02
+        "{disp8} je         _jmp_addr_0x004016e4       \n"  // 0x004016c7    741b
+        "mov                edx, dword ptr [ecx]       \n"  // 0x004016c9    8b11
+        "call               dword ptr [edx + 0x880]    \n"  // 0x004016cb    ff9280080000
+        "{disp32} fcomp     dword ptr [_rdata_float1p0]\n"  // 0x004016d1    d81d90a38a00
+        "fnstsw             ax                         \n"  // 0x004016d7    dfe0
+        "test               ah, 0x01                   \n"  // 0x004016d9    f6c401
+        "{disp8} jne        _jmp_addr_0x004016e4       \n"  // 0x004016dc    7506
+        "mov                eax, 0x00000001            \n"  // 0x004016de    b801000000
+        "ret                                           \n"  // 0x004016e3    c3
+        "_jmp_addr_0x004016e4:                         \n"
+        "xor.s              eax, eax                   \n"  // 0x004016e4    33c0
+        "ret                                           \n"  // 0x004016e6    c3
+    );
+    __builtin_unreachable();
+}
+
+__attribute__((XOR32rr_REV))
+bool __fastcall CausesTownEmergencyIfDamaged__5AbodeFv(struct Abode* this)
+{
+    return false;
+}
+
+struct LH3DMesh* __fastcall GetDestructionMesh__5AbodeFv(struct MultiMapFixed* this)
+{
+    return ((struct Abode*)this)->destruction_mesh;
+}
+
+bool32_t __fastcall IsAbode__5AbodeFv(struct GameThingWithPos* this)
+{
+    return true;
+}
+
+bool32_t __fastcall IsCastShadowAtNight__5AbodeFv(struct GameThingWithPos* this)
+{
+    return true;
+}
+
+struct Town * __fastcall GetTown__5AbodeFv(struct GameThing* this)
+{
+    return ((struct Abode*)this)->town;
+}
+
+uint32_t __fastcall GetCreatureBeliefType__5AbodeFv(struct GameThingWithPos* this)
+{
+    return 3;
+}
+
+uint32_t __fastcall GetCreatureMimicType__5AbodeFv(const struct GameThingWithPos* this)
+{
+    return 5;
+}
+
+uint32_t __fastcall GetOrigin__5AbodeFv(const struct GameThingWithPos* this)
+{
+    return 1;
+}
+
+struct MapCoords* __fastcall GetArrivePos__5AbodeFv(struct GameThingWithPos* this, const void* edx, struct MapCoords* coords)
+{
+  asm(
+      "mov                eax, dword ptr [ecx]       \n"  // 0x00401770    8b01
+      "push               esi                        \n"  // 0x00401772    56
+      "{disp8} mov        esi, dword ptr [esp + 0x08]\n"  // 0x00401773    8b742408
+      "push               esi                        \n"  // 0x00401777    56
+      "call               dword ptr [eax + 0x864]    \n"  // 0x00401778    ff9064080000
+      "mov.s              eax, esi                   \n"  // 0x0040177e    8bc6
+      "pop                esi                        \n"  // 0x00401780    5e
+      "ret                0x0004                     \n"  // 0x00401781    c20400
+    );
+    __builtin_unreachable();
+}
+
+bool32_t __fastcall IsHouse__5AbodeFv(struct GameThingWithPos* this)
+{
+    return true;
+}
+
+uint32_t __fastcall GetSaveType__5AbodeFv(struct GameThing* this)
+{
+    return 7;
+}
+
+char* __fastcall GetDebugText__5AbodeFv(struct GameThing* this)
+{
+    // return (char*)debug_text_Abode;
+    asm("mov  eax, 0x009c7fb4");  // 0x004017b0    b8b47f9c00
+    asm("ret");                   // 0x004017b5    c3
+    __builtin_unreachable();
+}
+
+void __fastcall __dt__5AbodeFv(struct Base* this, const void* edx, uint8_t param_1)
+{
+    asm(
+        "push       esi                        \n"  // 0x004017c0    56
+        "mov.s      esi, ecx                   \n"  // 0x004017c1    8bf1
+        "call       _jmp_addr_0x00402b60       \n"  // 0x004017c3    e898130000
+        "test       byte ptr [esp + 0x08], 0x01\n"  // 0x004017c8    f644240801
+        "{disp8} je _jmp_addr_0x004017dd       \n"  // 0x004017cd    740e
+        "push       0x000000c4                 \n"  // 0x004017cf    68c4000000
+        "push       esi                        \n"  // 0x004017d4    56
+        "call       _jmp_addr_0x00436970       \n"  // 0x004017d5    e896510300
+        "add        esp, 0x08                  \n"  // 0x004017da    83c408
+        "_jmp_addr_0x004017dd:                         \n" 
+        "mov.s     eax, esi                   \n"  // 0x004017dd    8bc6
+        "pop       esi                        \n"  // 0x004017df    5e
+        "ret       0x0004                     \n"  // 0x004017e0    c20400
+    );
+    __builtin_unreachable();
+}

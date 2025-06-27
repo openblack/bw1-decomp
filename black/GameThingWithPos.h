@@ -68,7 +68,7 @@ struct GameThingWithPosVftable
   uint32_t (__fastcall* GetOverwriteInteractableToolTip)(struct GameThingWithPos* this);
   uint32_t (__fastcall* GetOverwriteDropToolTip)(struct GameThingWithPos* this);
   uint32_t (__fastcall* GetOverwriteTapToolTip)(struct GameThingWithPos* this);
-  bool (__fastcall* IsCastShadowAtNight)(struct GameThingWithPos* this);  /* 0x1a0 */
+  bool32_t (__fastcall* IsCastShadowAtNight)(struct GameThingWithPos* this);  /* 0x1a0 */
   void (__fastcall* CleanupWhenDeleted)(struct GameThingWithPos* this, const void* edx, int param_1);
   enum IMPRESSIVE_TYPE (__fastcall* GetImpressiveType)(struct GameThingWithPos* this);
   float (__fastcall* GetImpressiveIntensity)(struct GameThingWithPos* this, const void* edx, enum IMPRESSIVE_TYPE type);
@@ -94,7 +94,7 @@ struct GameThingWithPosVftable
   bool (__fastcall* IsQueryIcon)(struct GameThingWithPos* this);
   bool (__fastcall* IsStreetLight)(struct GameThingWithPos* this);  /* 0x200 */
   bool (__fastcall* IsStreetLantern)(struct GameThingWithPos* this);
-  bool (__fastcall* IsAbode)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsAbode)(struct GameThingWithPos* this);
   bool (__fastcall* IsField_1)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);
   bool (__fastcall* IsField_0)(struct GameThingWithPos* this);  /* 0x210 */
   bool (__fastcall* IsBuildingMaterial)(struct GameThingWithPos* this);
@@ -243,7 +243,7 @@ struct GameThingWithPosVftable
   bool (__fastcall* IsFemaleVillager)(struct GameThingWithPos* this);  /* 0x450 */
   bool (__fastcall* IsAnimal)(struct GameThingWithPos* this);
   bool (__fastcall* IsAChild)(struct GameThingWithPos* this);
-  bool (__fastcall* IsHouse)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsHouse)(struct GameThingWithPos* this);
   bool (__fastcall* IsObject)(const struct GameThingWithPos* this);  /* 0x460 */
   bool (__fastcall* IsFootball)(const struct GameThingWithPos* this);
   bool (__fastcall* IsCitadel)(struct GameThingWithPos* this);
@@ -419,7 +419,7 @@ uint32_t __fastcall GetOverwriteDropToolTip__16GameThingWithPosFv(struct GameThi
 // win1.41 005705c0 mac 103eff20 GameThingWithPos::GetOverwriteTapToolTip(void)
 uint32_t __fastcall GetOverwriteTapToolTip__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetOverwriteTapToolTip@GameThingWithPos@@UAEIXZ");
 // win1.41 004052e0 mac 10405890 GameThingWithPos::IsCastShadowAtNight(void)
-bool __fastcall IsCastShadowAtNight__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsCastShadowAtNight@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsCastShadowAtNight__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsCastShadowAtNight@GameThingWithPos@@UAE_NXZ");
 // win1.41 004052f0 mac 1055f350 GameThingWithPos::CleanupWhenDeleted(int)
 void __fastcall CleanupWhenDeleted__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?CleanupWhenDeleted@GameThingWithPos@@UAEXH@Z");
 // win1.41 0056ff70 mac 10569e60 GameThingWithPos::GetImpressiveType(void)
@@ -471,7 +471,7 @@ bool __fastcall IsStreetLight__16GameThingWithPosFv(struct GameThingWithPos* thi
 // win1.41 00401b70 mac 104a63f0 GameThingWithPos::IsStreetLantern(void)
 bool __fastcall IsStreetLantern__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsStreetLantern@GameThingWithPos@@UAE_NXZ");
 // win1.41 00405310 mac 1009aa60 GameThingWithPos::IsAbode(void)
-bool __fastcall IsAbode__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsAbode@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsAbode__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsAbode@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401e40 mac 104c28e0 GameThingWithPos::IsField(Creature *)
 bool __fastcall IsField__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsField_1@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401b80 mac 105e8170 GameThingWithPos::IsField(void)
@@ -769,7 +769,7 @@ bool __fastcall IsAnimal__16GameThingWithPosFv(struct GameThingWithPos* this) as
 // win1.41 004022c0 mac 10572f10 GameThingWithPos::IsAChild(void)
 bool __fastcall IsAChild__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsAChild@GameThingWithPos@@UAE_NXZ");
 // win1.41 00405540 mac 103c1df0 GameThingWithPos::IsHouse(void)
-bool __fastcall IsHouse__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsHouse@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsHouse__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsHouse@GameThingWithPos@@UAE_NXZ");
 // win1.41 00405550 mac 103c2360 GameThingWithPos::IsObject( const(void))
 bool __fastcall IsObject__16GameThingWithPosCFv(const struct GameThingWithPos* this) asm("?IsObject@GameThingWithPos@@UBE_NXZ");
 // win1.41 004022d0 mac 100b6810 GameThingWithPos::IsFootball(void)
