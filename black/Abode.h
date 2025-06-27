@@ -177,9 +177,9 @@ uint32_t __fastcall GetOrigin__5AbodeFv(const struct GameThingWithPos* this) asm
 // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
 bool __fastcall IsInteractable__5AbodeFv(struct GameThingWithPos* this) asm("?IsInteractable@Abode@@UAE_NXZ");
 // win1.41 00401720 mac 10435a10 Abode::IsCastShadowAtNight(void)
-bool __fastcall IsCastShadowAtNight__5AbodeFv(struct GameThingWithPos* this) asm("?IsCastShadowAtNight@Abode@@UAE_NXZ");
+bool32_t __fastcall IsCastShadowAtNight__5AbodeFv(struct GameThingWithPos* this) asm("?IsCastShadowAtNight@Abode@@UAE_NXZ");
 // win1.41 00401710 mac 100970f0 Abode::IsAbode(void)
-bool __fastcall IsAbode__5AbodeFv(struct GameThingWithPos* this) asm("?IsAbode@Abode@@UAE_NXZ");
+bool32_t __fastcall IsAbode__5AbodeFv(struct GameThingWithPos* this) asm("?IsAbode@Abode@@UAE_NXZ");
 // win1.41 004e43f0 mac 105e5610 Abode::CanBeStompedOnByCreature(Creature *)
 bool __fastcall CanBeStompedOnByCreature__5AbodeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeStompedOnByCreature@Abode@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3fa0 mac 105e63e0 Abode::CanBeKickedByCreature(Creature *)
@@ -191,7 +191,7 @@ float __fastcall GetHowMuchCreatureWantsToLookAtMe__5AbodeFv(struct GameThingWit
 // win1.41 0063b940 mac 103da700 Abode::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
 void __fastcall CalculateWhereIWillBeAfterNSeconds__5AbodeFfP7LHPoint(struct GameThingWithPos* this, const void* edx, float seconds, struct LHPoint* outPos) asm("?CalculateWhereIWillBeAfterNSeconds@Abode@@UAEXMPAULHPoint@@@Z");
 // win1.41 00401790 mac 10134300 Abode::IsHouse(void)
-bool __fastcall IsHouse__5AbodeFv(struct GameThingWithPos* this) asm("?IsHouse@Abode@@UAE_NXZ");
+bool32_t __fastcall IsHouse__5AbodeFv(struct GameThingWithPos* this) asm("?IsHouse@Abode@@UAE_NXZ");
 // win1.41 004061c0 mac 1014d0e0 Abode::IsWonder(void)
 bool __fastcall IsWonder__5AbodeFv(struct GameThingWithPos* this) asm("?IsWonder@Abode@@UAE_NXZ");
 // win1.41 00406810 mac 1001b380 Abode::GetScriptObjectType(void)
