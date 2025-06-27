@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00436960
 .extern _jmp_addr_0x004637e0
 .extern _jmp_addr_0x00475730
@@ -78,7 +77,7 @@ start_0x004d8230_0x004d8df0:
 _jmp_addr_0x004d8296:    pop              edi                                           // 0x004d8296    5f
                          pop              esi                                           // 0x004d8297    5e
                          ret              0x000c                                        // 0x004d8298    c20c00
-                         call             _jmp_addr_0x00401879                          // 0x004d829b    e8d995f2ff
+                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004d829b    e8d995f2ff
 _jmp_addr_0x004d82a0:    push             ecx                                           // 0x004d82a0    51
                          push             ebx                                           // 0x004d82a1    53
                          push             edi                                           // 0x004d82a2    57

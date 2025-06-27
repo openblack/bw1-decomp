@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern @FindControl__8SetupBoxFi@12
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
 .extern @__ct__12SetupControlFiiiiiPw@32
@@ -205,7 +204,7 @@ _jmp_addr_0x00515b67:    xor.s            eax, eax                              
                          {disp32} mov     dword ptr [eax + 0x00000240], 0x00000020      // 0x00515b6d    c7804002000020000000
                          pop              esi                                           // 0x00515b77    5e
                          ret              0x000c                                        // 0x00515b78    c20c00
-                         call             _jmp_addr_0x00401879                          // 0x00515b7b    e8f9bceeff
+                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00515b7b    e8f9bceeff
                          {disp32} jmp     @Destroy__13DialogBoxBaseFv@4                 // 0x00515b80    e90bdaffff
                          nop                                                            // 0x00515b85    90
                          nop                                                            // 0x00515b86    90

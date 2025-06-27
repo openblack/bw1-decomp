@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _NeedsBiggerText__Fv
 .extern _GetCurrentActiveBox__8SetupBoxFv
 .extern _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf
@@ -1656,7 +1655,7 @@ _jmp_addr_0x00448c19:    {disp32} mov       edx, dword ptr [eax + 0x0000013c]   
 _jmp_addr_0x00448c2e:    {disp32} mov       ecx, dword ptr [ecx + 0x0000013c]             // 0x00448c2e    8b893c010000
                          {disp32} mov       dword ptr [eax + 0x0000013c], ecx             // 0x00448c34    89883c010000
 _jmp_addr_0x00448c3a:    ret                                                              // 0x00448c3a    c3
-                         call               _jmp_addr_0x00401879                          // 0x00448c3b    e8398cfbff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00448c3b    e8398cfbff
 _jmp_addr_0x00448c40:    {disp32} mov       al, byte ptr [data_bytes + 0x294310]          // 0x00448c40    a010a3c500
                          test               al, 0x01                                      // 0x00448c45    a801
                          push               ebx                                           // 0x00448c47    53

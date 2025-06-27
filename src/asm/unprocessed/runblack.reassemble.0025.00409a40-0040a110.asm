@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @__dt__12SetupControlFv@4
 .extern _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori
@@ -349,7 +348,7 @@ _MouseDown__11SetupSliderFiib:
                          {disp32} mov       dword ptr [ecx + 0x00000248], edx        // 0x00409d7c    899148020000
                          {disp32} mov       dword ptr [ecx + 0x00000240], eax        // 0x00409d82    898140020000
 _jmp_addr_0x00409d88:    ret                0x000c                                   // 0x00409d88    c20c00
-                         call               _jmp_addr_0x00401879                     // 0x00409d8b    e8e97affff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x00409d8b    e8e97affff
 _MouseUp__11SetupSliderFiib:
                          push               ebx                                      // 0x00409d90    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]              // 0x00409d91    8b5c2408

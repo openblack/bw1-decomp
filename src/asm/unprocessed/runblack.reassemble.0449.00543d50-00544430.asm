@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _GetMidTextSize__Fv
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @__ct__10SetupButtonFiiiiiPwi@36
@@ -272,7 +271,7 @@ _jmp_addr_0x00544023:    {disp8} mov      dword ptr [esi + 0x28], eax           
                          pop              esi                                           // 0x00544036    5e
                          pop              ebx                                           // 0x00544037    5b
                          ret              0x000c                                        // 0x00544038    c20c00
-                         call             _jmp_addr_0x00401879                          // 0x0054403b    e839d8ebff
+                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054403b    e839d8ebff
                          call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544040    e84bf5fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab7c], 0x00000000 // 0x00544045    c7057c0bcd0000000000
                          ret                                                            // 0x0054404f    c3

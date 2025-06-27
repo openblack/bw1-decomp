@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern @SetSpeedUpFactor__7LHTimerFf@12
 .extern _jmp_addr_0x0046ee30
 .extern _jmp_addr_0x0046ee50
@@ -1630,7 +1629,7 @@ _jmp_addr_0x00470e57:    test               eax, eax                            
 _jmp_addr_0x00470e77:    xor.s              eax, eax                                      // 0x00470e77    33c0
                          pop                esi                                           // 0x00470e79    5e
                          ret                                                              // 0x00470e7a    c3
-                         call               _jmp_addr_0x00401879                          // 0x00470e7b    e8f909f9ff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00470e7b    e8f909f9ff
 _jmp_addr_0x00470e80:    {disp32} mov       al, byte ptr [data_bytes + 0x2987b0]          // 0x00470e80    a0b0e7c500
                          sub                esp, 0x10                                     // 0x00470e85    83ec10
                          push               ebx                                           // 0x00470e88    53
@@ -1875,7 +1874,7 @@ _jmp_addr_0x004711a7:    test               eax, eax                            
 _jmp_addr_0x004711c7:    xor.s              eax, eax                                      // 0x004711c7    33c0
                          pop                esi                                           // 0x004711c9    5e
                          ret                                                              // 0x004711ca    c3
-                         call               _jmp_addr_0x00401879                          // 0x004711cb    e8a906f9ff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004711cb    e8a906f9ff
 _jmp_addr_0x004711d0:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x004711d0    8b442408
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x004711d4    8b542404
                          push               eax                                           // 0x004711d8    50

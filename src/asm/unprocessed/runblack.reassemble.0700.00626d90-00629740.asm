@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _GetMidTextSize__Fv
 .extern _jmp_addr_0x00407a20
 .extern _jmp_addr_0x00408240
@@ -1192,7 +1191,7 @@ _jmp_addr_0x00627910:    push              esi                                  
                          mov.s             eax, esi                                      // 0x00627975    8bc6
                          pop               esi                                           // 0x00627977    5e
                          ret               0x0008                                        // 0x00627978    c20800
-                         call              _jmp_addr_0x004017f9                          // 0x0062797b    e8799eddff
+                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0062797b    e8799eddff
                          push              esi                                           // 0x00627980    56
                          mov.s             esi, ecx                                      // 0x00627981    8bf1
                          {disp8} mov       eax, dword ptr [esi + 0x04]                   // 0x00627983    8b4604
@@ -2060,7 +2059,7 @@ _globl_ct_0x00628290:    {disp32} jmp      _jmp_addr_0x006282a0                 
                          nop                                                             // 0x0062829f    90
 _jmp_addr_0x006282a0:    {disp32} mov      dword ptr [data_bytes + 0x37a98c], 0xffffffff // 0x006282a0    c7058c09d400ffffffff
                          ret                                                             // 0x006282aa    c3
-                         call              _jmp_addr_0x004017f9                          // 0x006282ab    e84995ddff
+                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x006282ab    e84995ddff
 _globl_ct_0x006282b0:    {disp32} jmp      _jmp_addr_0x006282c0                          // 0x006282b0    e90b000000
                          nop                                                             // 0x006282b5    90
                          nop                                                             // 0x006282b6    90

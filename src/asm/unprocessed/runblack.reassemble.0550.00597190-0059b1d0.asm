@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _jmp_addr_0x00407700
 .extern _jmp_addr_0x00407750
 .extern _jmp_addr_0x004077a0
@@ -1353,7 +1352,7 @@ _jmp_addr_0x00597eb7:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
 _jmp_addr_0x00597ec8:    pop                edi                                           // 0x00597ec8    5f
                          pop                esi                                           // 0x00597ec9    5e
                          ret                                                              // 0x00597eca    c3
-                         call               _jmp_addr_0x004017f9                          // 0x00597ecb    e82999e6ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00597ecb    e82999e6ff
 _jmp_addr_0x00597ed0:    {disp8} mov        edx, dword ptr [ecx + 0x7c]                   // 0x00597ed0    8b517c
                          test               edx, edx                                      // 0x00597ed3    85d2
                          {disp8} jbe        _jmp_addr_0x00597ee6                          // 0x00597ed5    760f
@@ -2740,7 +2739,7 @@ _jmp_addr_0x00598de1:    mov                eax, 0x00000001                     
                          pop                ebx                                           // 0x00598de6    5b
                          pop                ecx                                           // 0x00598de7    59
                          ret                0x0004                                        // 0x00598de8    c20400
-                         call               _jmp_addr_0x004017f9                          // 0x00598deb    e8098ae6ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00598deb    e8098ae6ff
 _globl_ct_0x00598df0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00598df0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00598df6    b001
                          test               al, cl                                        // 0x00598df8    84c8
@@ -3239,7 +3238,7 @@ _globl_ct_0x00599250:    {disp32} jmp       _jmp_addr_0x00599260                
                          nop                                                              // 0x0059925f    90
 _jmp_addr_0x00599260:    {disp32} mov       dword ptr [data_bytes + 0x34318c], 0xffffffff // 0x00599260    c7058c91d000ffffffff
                          ret                                                              // 0x0059926a    c3
-                         call               _jmp_addr_0x004017f9                          // 0x0059926b    e88985e6ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0059926b    e88985e6ff
 _globl_ct_0x00599270:    {disp32} jmp       _jmp_addr_0x00599280                          // 0x00599270    e90b000000
                          nop                                                              // 0x00599275    90
                          nop                                                              // 0x00599276    90
@@ -4354,7 +4353,7 @@ _jmp_addr_0x00599f84:    {disp8} mov        eax, dword ptr [esp + 0x15]         
                          add                esp, 0x04                                     // 0x00599f94    83c404
 _jmp_addr_0x00599f97:    add                esp, 0x14                                     // 0x00599f97    83c414
                          ret                                                              // 0x00599f9a    c3
-                         call               _jmp_addr_0x004017f9                          // 0x00599f9b    e85978e6ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00599f9b    e85978e6ff
 _jmp_addr_0x00599fa0:    push               ebx                                           // 0x00599fa0    53
                          push               ebp                                           // 0x00599fa1    55
                          {disp8} mov        ebp, dword ptr [esp + 0x10]                   // 0x00599fa2    8b6c2410

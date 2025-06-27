@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _GetMidTextSize__Fv
 .extern _GetSmallTextSize__Fv
 .extern @FindControl__8SetupBoxFi@12
@@ -1083,7 +1082,7 @@ _globl_ct_0x0056f9c0:    {disp32} jmp       _jmp_addr_0x0056f9d0                
                          nop                                                              // 0x0056f9cf    90
 _jmp_addr_0x0056f9d0:    {disp32} mov       dword ptr [data_bytes + 0x340074], 0xffffffff // 0x0056f9d0    c7057460d000ffffffff
                          ret                                                              // 0x0056f9da    c3
-                         call               _jmp_addr_0x004017f9                          // 0x0056f9db    e8191ee9ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0056f9db    e8191ee9ff
 _globl_ct_0x0056f9e0:    {disp32} jmp       _jmp_addr_0x0056f9f0                          // 0x0056f9e0    e90b000000
                          nop                                                              // 0x0056f9e5    90
                          nop                                                              // 0x0056f9e6    90
@@ -1223,7 +1222,7 @@ _jmp_addr_0x0056fafe:    or                 byte ptr [ecx + 0xa], 2             
                          call               dword ptr [eax + 8]                           // 0x0056fb04    ff5008
                          pop                esi                                           // 0x0056fb07    5e
                          ret                0x0004                                        // 0x0056fb08    c20400
-                         call               _jmp_addr_0x004017f9                          // 0x0056fb0b    e8e91ce9ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0056fb0b    e8e91ce9ff
 _ProcessDeadList__9GameThingFi@4:    {disp32} mov       eax, dword ptr [_game]                        // 0x0056fb10    a15c19d000
                          push               ebx                                           // 0x0056fb15    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                   // 0x0056fb16    8b5c2408
@@ -2619,7 +2618,7 @@ _globl_ct_0x00570650:    {disp32} jmp       _jmp_addr_0x00570660                
                          nop                                                              // 0x0057065f    90
 _jmp_addr_0x00570660:    {disp32} mov       dword ptr [data_bytes + 0x340430], 0xffffffff // 0x00570660    c7053064d000ffffffff
                          ret                                                              // 0x0057066a    c3
-                         call               _jmp_addr_0x004017f9                          // 0x0057066b    e88911e9ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0057066b    e88911e9ff
 _globl_ct_0x00570670:    {disp32} jmp       _jmp_addr_0x00570680                          // 0x00570670    e90b000000
                          nop                                                              // 0x00570675    90
                          nop                                                              // 0x00570676    90
@@ -2687,7 +2686,7 @@ _jmp_addr_0x005706cb:    {disp8} mov        edx, dword ptr [esp + 0x18]         
                          add                esp, 0x24                                     // 0x00570700    83c424
                          mov                eax, 0x00000001                               // 0x00570703    b801000000
                          ret                0x0020                                        // 0x00570708    c22000
-                         call               _jmp_addr_0x004017f9                          // 0x0057070b    e8e910e9ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0057070b    e8e910e9ff
                          push               ebx                                           // 0x00570710    53
                          push               esi                                           // 0x00570711    56
                          push               edi                                           // 0x00570712    57

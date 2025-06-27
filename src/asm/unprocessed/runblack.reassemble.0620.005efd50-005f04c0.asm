@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x005f04c0
 .extern @GetTopState__6LivingCFv@4
@@ -232,7 +231,7 @@ _jmp_addr_0x005efeda:    pop                edi                                 
                          pop                esi                                      // 0x005eff26    5e
                          pop                ebx                                      // 0x005eff27    5b
                          ret                0x0018                                   // 0x005eff28    c21800
-                         call               _jmp_addr_0x004017f9                     // 0x005eff2b    e8c918e1ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                     // 0x005eff2b    e8c918e1ff
                          mov                eax, 0x00000007                          // 0x005eff30    b807000000
                          ret                                                         // 0x005eff35    c3
                          nop                                                         // 0x005eff36    90

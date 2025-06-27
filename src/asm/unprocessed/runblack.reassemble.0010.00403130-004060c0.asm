@@ -8,7 +8,6 @@
 .extern rsrc_bytes
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00402b60
 .extern _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
 .extern _jmp_addr_0x004073f0
@@ -627,7 +626,7 @@ _jmp_addr_0x00403500:    xor.s              eax, eax                            
                          {disp8} mov        dword ptr [ecx + 0x10], eax                   // 0x00403525    894110
                          mov                dword ptr [ecx], eax                          // 0x00403528    8901
                          ret                                                              // 0x0040352a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0040352b    e849e3ffff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040352b    e849e3ffff
 _jmp_addr_0x00403530:    xor.s              eax, eax                                      // 0x00403530    33c0
                          {disp8} mov        dword ptr [ecx + 0x2c], eax                   // 0x00403532    89412c
                          {disp8} mov        dword ptr [ecx + 0x28], eax                   // 0x00403535    894128
@@ -663,7 +662,7 @@ _jmp_addr_0x00403530:    xor.s              eax, eax                            
                          {disp8} fadd       dword ptr [ecx + 0x2c]                        // 0x00403584    d8412c
                          {disp8} fstp       dword ptr [ecx + 0x2c]                        // 0x00403587    d9592c
                          ret                                                              // 0x0040358a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0040358b    e8e9e2ffff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040358b    e8e9e2ffff
 @GetNewEp__5AbodeF8ABODE_EPP7LHPoint@16:    sub                esp, 0x3c                                     // 0x00403590    83ec3c
                          mov                eax, dword ptr [ecx]                          // 0x00403593    8b01
                          push               ebx                                           // 0x00403595    53
@@ -2714,7 +2713,7 @@ _jmp_addr_0x00404955:    pop                esi                                 
                          pop                ebx                                           // 0x00404956    5b
                          add                esp, 0x18                                     // 0x00404957    83c418
                          ret                                                              // 0x0040495a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0040495b    e819cfffff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040495b    e819cfffff
 _jmp_addr_0x00404960:    sub                esp, 0x08                                     // 0x00404960    83ec08
                          push               ebx                                           // 0x00404963    53
                          push               ebp                                           // 0x00404964    55

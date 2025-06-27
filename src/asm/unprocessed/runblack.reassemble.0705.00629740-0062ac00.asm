@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern _GetMidTextSize__Fv
 .extern _jmp_addr_0x00407a20
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
@@ -1000,7 +999,7 @@ _jmp_addr_0x0062a1cd:    mov.s             ecx, edi                             
                          pop               ebp                                            // 0x0062a1d6    5d
                          pop               ebx                                            // 0x0062a1d7    5b
                          ret               0x0008                                         // 0x0062a1d8    c20800
-                         call              _jmp_addr_0x004017f9                           // 0x0062a1db    e81976ddff
+                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x0062a1db    e81976ddff
                          push              esi                                            // 0x0062a1e0    56
                          {disp8} mov       esi, dword ptr [ecx + 0x50]                    // 0x0062a1e1    8b7150
                          test              esi, esi                                       // 0x0062a1e4    85f6
@@ -1102,7 +1101,7 @@ _jmp_addr_0x0062a2af:    {disp32} mov      byte ptr [data_bytes + 0x37a991], 0x0
 _jmp_addr_0x0062a2b6:    pop               edi                                            // 0x0062a2b6    5f
                          pop               esi                                            // 0x0062a2b7    5e
                          ret               0x0004                                         // 0x0062a2b8    c20400
-                         call              _jmp_addr_0x004017f9                           // 0x0062a2bb    e83975ddff
+                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x0062a2bb    e83975ddff
 _globl_ct_0x0062a2c0:    call              _jmp_addr_0x0062a2d0                           // 0x0062a2c0    e80b000000
                          {disp32} jmp      _jmp_addr_0x0062a2e0                           // 0x0062a2c5    e916000000
                          nop                                                              // 0x0062a2ca    90

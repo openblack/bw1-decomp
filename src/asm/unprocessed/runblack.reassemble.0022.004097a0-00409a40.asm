@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @__dt__12SetupControlFv@4
 .extern _GetTextWidth__10SetupThingFPwfif
@@ -198,7 +197,7 @@ _KeyDown__11SetupButtonFii:
                          push               edx                                      // 0x00409935    52
                          call               dword ptr [eax]                          // 0x00409936    ff10
 _jmp_addr_0x00409938:    ret                0x0008                                   // 0x00409938    c20800
-                         call               _jmp_addr_0x00401879                     // 0x0040993b    e8397fffff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x0040993b    e8397fffff
 ___dt__11SetupButtonFb:
                          push               esi                                      // 0x00409940    56
                          mov.s              esi, ecx                                 // 0x00409941    8bf1

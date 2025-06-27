@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern _jmp_addr_0x00428850
 .extern _jmp_addr_0x0042acc0
@@ -288,7 +287,7 @@ _jmp_addr_0x005bc784:    ret                0x0004                              
                          push               0x00ea1db8                                           // 0x005bc790    68b81dea00
                          call               _jmp_addr_0x005bc750                                 // 0x005bc795    e8b6ffffff
                          ret                                                                     // 0x005bc79a    c3
-                         call               _jmp_addr_0x004017f9                                 // 0x005bc79b    e85950e4ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                                 // 0x005bc79b    e85950e4ff
                          {disp32} mov       eax, dword ptr [ecx + 0x00003470]                    // 0x005bc7a0    8b8170340000
                          test               eax, eax                                             // 0x005bc7a6    85c0
                          {disp8} je         _jmp_addr_0x005bc7b5                                 // 0x005bc7a8    740b

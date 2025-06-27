@@ -38,35 +38,12 @@
 .extern _jmp_addr_0x007fbac0
 .extern _rdata_float1p0
 
-.globl _jmp_addr_0x004017f9
-.globl _jmp_addr_0x00401879
 .globl _jmp_addr_0x00402b60
 .globl @SetZero__5AbodeFv@4
 .extern ?Delete@Abode@@UAEXH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .globl _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
-.globl ?CastSpellIcon@GameThing@@UAEIXZ
-.globl ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z
-.globl ?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z
-.globl ?AddFootpathLink@GameThing@@QAEXPAVGFootpath@@@Z
-.globl ?CastCreature@GameThing@@QAEPAVCreature@@XZ
-.globl ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z
-.globl ?CastOneOffSpellSeed@GameThing@@UAEIXZ
-.globl ?IsAvailable@GameThing@@QAE_NXZ
-.globl ?RemoveDance@GameThing@@QAEXXZ
-.globl ?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z
-.globl ?IsDeletedOnNewMap@GameThing@@QAE_NXZ
-.globl ?IsCreature@GameThing@@QAE_NPAVCreature@@@Z
-.globl ?GetShowNeedsPos@GameThing@@UAEIXZ
-.globl ?CastTree@GameThing@@UAEIXZ
-.globl ?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ
-.globl ?GetPlayerWhoLastPickedMeUp@GameThing@@QAEPAVGPlayer@@XZ
-.globl ?IsCreature@GameThing@@UAE_NXZ
-.globl ?GetPlayerWhoLastDroppedMe@GameThing@@QAEPAVGPlayer@@XZ
-.globl ?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z
 .globl ?SetPos@GameThingWithPos@@QAEXABUMapCoords@@@Z
-.globl ?GetComputerSeen@GameThing@@UAE_NXZ
-.globl ?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?CanBeFrighteningToCreature@Fixed@@UAE_NPAVCreature@@@Z
 .globl ?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ
 .globl ?PhysicsEditorCreate@GameThingWithPos@@QAEXH@Z
@@ -392,296 +369,6 @@
 .globl ?RestartBeingFunctional@Abode@@UAEXXZ
 .globl ?CausesTownEmergencyIfDamaged@Abode@@UAE_NXZ
 
-?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z:
-                         {disp32} fld       dword ptr [_rdata_float1p0]              // 0x004017f0    d90590a38a00
-                         ret                0x0004                                   // 0x004017f6    c20400
-                         // SEH code path?
-_jmp_addr_0x004017f9:    push               ecx                                      // 0x004017f9    51
-                         push               eax                                      // 0x004017fa    50
-                         call               ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ + 4                     // 0x004017fb    e8a4faffff
-?RemoveDance@GameThing@@QAEXXZ:
-                         ret                                                         // 0x00401800    c3
-                         nop                                                         // 0x00401801    90
-                         nop                                                         // 0x00401802    90
-                         nop                                                         // 0x00401803    90
-                         nop                                                         // 0x00401804    90
-                         nop                                                         // 0x00401805    90
-                         nop                                                         // 0x00401806    90
-                         nop                                                         // 0x00401807    90
-                         nop                                                         // 0x00401808    90
-                         nop                                                         // 0x00401809    90
-                         nop                                                         // 0x0040180a    90
-                         nop                                                         // 0x0040180b    90
-                         nop                                                         // 0x0040180c    90
-                         nop                                                         // 0x0040180d    90
-                         nop                                                         // 0x0040180e    90
-                         nop                                                         // 0x0040180f    90
-?IsAvailable@GameThing@@QAE_NXZ:
-                         xor.s              eax, eax                                 // 0x00401810    33c0
-                         {disp8} mov        al, byte ptr [ecx + 0x0a]                // 0x00401812    8a410a
-                         not                al                                       // 0x00401815    f6d0
-                         and                eax, 0x01                                // 0x00401817    83e001
-                         ret                                                         // 0x0040181a    c3
-                         call               _jmp_addr_0x00401879                     // 0x0040181b    e859000000
-?IsCreature@GameThing@@QAE_NPAVCreature@@@Z:
-                         xor.s              eax, eax                                 // 0x00401820    33c0
-                         ret                                                         // 0x00401822    c3
-                         nop                                                         // 0x00401823    90
-                         nop                                                         // 0x00401824    90
-                         nop                                                         // 0x00401825    90
-                         nop                                                         // 0x00401826    90
-                         nop                                                         // 0x00401827    90
-                         nop                                                         // 0x00401828    90
-                         nop                                                         // 0x00401829    90
-                         nop                                                         // 0x0040182a    90
-                         nop                                                         // 0x0040182b    90
-                         nop                                                         // 0x0040182c    90
-                         nop                                                         // 0x0040182d    90
-                         nop                                                         // 0x0040182e    90
-                         nop                                                         // 0x0040182f    90
-?IsCreature@GameThing@@UAE_NXZ:
-                         xor.s              eax, eax                                 // 0x00401830    33c0
-                         ret                0x0004                                   // 0x00401832    c20400
-                         nop                                                         // 0x00401835    90
-                         nop                                                         // 0x00401836    90
-                         nop                                                         // 0x00401837    90
-                         nop                                                         // 0x00401838    90
-                         nop                                                         // 0x00401839    90
-                         nop                                                         // 0x0040183a    90
-                         nop                                                         // 0x0040183b    90
-                         nop                                                         // 0x0040183c    90
-                         nop                                                         // 0x0040183d    90
-                         nop                                                         // 0x0040183e    90
-                         nop                                                         // 0x0040183f    90
-?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z:
-                         xor.s              eax, eax                                 // 0x00401840    33c0
-                         ret                0x0004                                   // 0x00401842    c20400
-                         nop                                                         // 0x00401845    90
-                         nop                                                         // 0x00401846    90
-                         nop                                                         // 0x00401847    90
-                         nop                                                         // 0x00401848    90
-                         nop                                                         // 0x00401849    90
-                         nop                                                         // 0x0040184a    90
-                         nop                                                         // 0x0040184b    90
-                         nop                                                         // 0x0040184c    90
-                         nop                                                         // 0x0040184d    90
-                         nop                                                         // 0x0040184e    90
-                         nop                                                         // 0x0040184f    90
-?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ:
-                         {disp32} fld       dword ptr [?maxAlignmentChangePerGameTurn@GameThing@@2MB]  // 0x00401850    d90594a38a00
-                         ret                                                         // 0x00401856    c3
-                         nop                                                         // 0x00401857    90
-                         nop                                                         // 0x00401858    90
-                         nop                                                         // 0x00401859    90
-                         nop                                                         // 0x0040185a    90
-                         nop                                                         // 0x0040185b    90
-                         nop                                                         // 0x0040185c    90
-                         nop                                                         // 0x0040185d    90
-                         nop                                                         // 0x0040185e    90
-                         nop                                                         // 0x0040185f    90
-?GetComputerSeen@GameThing@@UAE_NXZ:
-                         xor.s              eax, eax                                 // 0x00401860    33c0
-                         ret                                                         // 0x00401862    c3
-                         nop                                                         // 0x00401863    90
-                         nop                                                         // 0x00401864    90
-                         nop                                                         // 0x00401865    90
-                         nop                                                         // 0x00401866    90
-                         nop                                                         // 0x00401867    90
-                         nop                                                         // 0x00401868    90
-                         nop                                                         // 0x00401869    90
-                         nop                                                         // 0x0040186a    90
-                         nop                                                         // 0x0040186b    90
-                         nop                                                         // 0x0040186c    90
-                         nop                                                         // 0x0040186d    90
-                         nop                                                         // 0x0040186e    90
-                         nop                                                         // 0x0040186f    90
-?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z:
-                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00401870    d90598a38a00
-                         ret                0x0004                                   // 0x00401876    c20400
-_jmp_addr_0x00401879:    push               ecx                                      // 0x00401879    51
-                         push               eax                                      // 0x0040187a    50
-                         call               ?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ + 4                     // 0x0040187b    e834faffff
-?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z:
-                         xor.s              eax, eax                                 // 0x00401880    33c0
-                         ret                0x0004                                   // 0x00401882    c20400
-                         nop                                                         // 0x00401885    90
-                         nop                                                         // 0x00401886    90
-                         nop                                                         // 0x00401887    90
-                         nop                                                         // 0x00401888    90
-                         nop                                                         // 0x00401889    90
-                         nop                                                         // 0x0040188a    90
-                         nop                                                         // 0x0040188b    90
-                         nop                                                         // 0x0040188c    90
-                         nop                                                         // 0x0040188d    90
-                         nop                                                         // 0x0040188e    90
-                         nop                                                         // 0x0040188f    90
-?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z:
-                         xor.s              eax, eax                                 // 0x00401890    33c0
-                         ret                0x0004                                   // 0x00401892    c20400
-                         nop                                                         // 0x00401895    90
-                         nop                                                         // 0x00401896    90
-                         nop                                                         // 0x00401897    90
-                         nop                                                         // 0x00401898    90
-                         nop                                                         // 0x00401899    90
-                         nop                                                         // 0x0040189a    90
-                         nop                                                         // 0x0040189b    90
-                         nop                                                         // 0x0040189c    90
-                         nop                                                         // 0x0040189d    90
-                         nop                                                         // 0x0040189e    90
-                         nop                                                         // 0x0040189f    90
-?GetPlayerWhoLastPickedMeUp@GameThing@@QAEPAVGPlayer@@XZ:
-                         xor.s              eax, eax                                 // 0x004018a0    33c0
-                         ret                                                         // 0x004018a2    c3
-                         nop                                                         // 0x004018a3    90
-                         nop                                                         // 0x004018a4    90
-                         nop                                                         // 0x004018a5    90
-                         nop                                                         // 0x004018a6    90
-                         nop                                                         // 0x004018a7    90
-                         nop                                                         // 0x004018a8    90
-                         nop                                                         // 0x004018a9    90
-                         nop                                                         // 0x004018aa    90
-                         nop                                                         // 0x004018ab    90
-                         nop                                                         // 0x004018ac    90
-                         nop                                                         // 0x004018ad    90
-                         nop                                                         // 0x004018ae    90
-                         nop                                                         // 0x004018af    90
-?GetPlayerWhoLastDroppedMe@GameThing@@QAEPAVGPlayer@@XZ:
-                         xor.s              eax, eax                                 // 0x004018b0    33c0
-                         ret                                                         // 0x004018b2    c3
-                         nop                                                         // 0x004018b3    90
-                         nop                                                         // 0x004018b4    90
-                         nop                                                         // 0x004018b5    90
-                         nop                                                         // 0x004018b6    90
-                         nop                                                         // 0x004018b7    90
-                         nop                                                         // 0x004018b8    90
-                         nop                                                         // 0x004018b9    90
-                         nop                                                         // 0x004018ba    90
-                         nop                                                         // 0x004018bb    90
-                         nop                                                         // 0x004018bc    90
-                         nop                                                         // 0x004018bd    90
-                         nop                                                         // 0x004018be    90
-                         nop                                                         // 0x004018bf    90
-?AddFootpathLink@GameThing@@QAEXPAVGFootpath@@@Z:
-                         xor.s              eax, eax                                 // 0x004018c0    33c0
-                         ret                0x0004                                   // 0x004018c2    c20400
-                         nop                                                         // 0x004018c5    90
-                         nop                                                         // 0x004018c6    90
-                         nop                                                         // 0x004018c7    90
-                         nop                                                         // 0x004018c8    90
-                         nop                                                         // 0x004018c9    90
-                         nop                                                         // 0x004018ca    90
-                         nop                                                         // 0x004018cb    90
-                         nop                                                         // 0x004018cc    90
-                         nop                                                         // 0x004018cd    90
-                         nop                                                         // 0x004018ce    90
-                         nop                                                         // 0x004018cf    90
-?CastCreature@GameThing@@QAEPAVCreature@@XZ:
-                         xor.s              eax, eax                                 // 0x004018d0    33c0
-                         ret                                                         // 0x004018d2    c3
-                         nop                                                         // 0x004018d3    90
-                         nop                                                         // 0x004018d4    90
-                         nop                                                         // 0x004018d5    90
-                         nop                                                         // 0x004018d6    90
-                         nop                                                         // 0x004018d7    90
-                         nop                                                         // 0x004018d8    90
-                         nop                                                         // 0x004018d9    90
-                         nop                                                         // 0x004018da    90
-                         nop                                                         // 0x004018db    90
-                         nop                                                         // 0x004018dc    90
-                         nop                                                         // 0x004018dd    90
-                         nop                                                         // 0x004018de    90
-                         nop                                                         // 0x004018df    90
-?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ:
-                         xor.s              eax, eax                                 // 0x004018e0    33c0
-                         ret                                                         // 0x004018e2    c3
-                         nop                                                         // 0x004018e3    90
-                         nop                                                         // 0x004018e4    90
-                         nop                                                         // 0x004018e5    90
-                         nop                                                         // 0x004018e6    90
-                         nop                                                         // 0x004018e7    90
-                         nop                                                         // 0x004018e8    90
-                         nop                                                         // 0x004018e9    90
-                         nop                                                         // 0x004018ea    90
-                         nop                                                         // 0x004018eb    90
-                         nop                                                         // 0x004018ec    90
-                         nop                                                         // 0x004018ed    90
-                         nop                                                         // 0x004018ee    90
-                         nop                                                         // 0x004018ef    90
-?CastOneOffSpellSeed@GameThing@@UAEIXZ:
-                         xor.s              eax, eax                                 // 0x004018f0    33c0
-                         ret                                                         // 0x004018f2    c3
-                         nop                                                         // 0x004018f3    90
-                         nop                                                         // 0x004018f4    90
-                         nop                                                         // 0x004018f5    90
-                         nop                                                         // 0x004018f6    90
-                         nop                                                         // 0x004018f7    90
-                         nop                                                         // 0x004018f8    90
-                         nop                                                         // 0x004018f9    90
-                         nop                                                         // 0x004018fa    90
-                         nop                                                         // 0x004018fb    90
-                         nop                                                         // 0x004018fc    90
-                         nop                                                         // 0x004018fd    90
-                         nop                                                         // 0x004018fe    90
-                         nop                                                         // 0x004018ff    90
-?CastSpellIcon@GameThing@@UAEIXZ:
-                         xor.s              eax, eax                                 // 0x00401900    33c0
-                         ret                                                         // 0x00401902    c3
-                         nop                                                         // 0x00401903    90
-                         nop                                                         // 0x00401904    90
-                         nop                                                         // 0x00401905    90
-                         nop                                                         // 0x00401906    90
-                         nop                                                         // 0x00401907    90
-                         nop                                                         // 0x00401908    90
-                         nop                                                         // 0x00401909    90
-                         nop                                                         // 0x0040190a    90
-                         nop                                                         // 0x0040190b    90
-                         nop                                                         // 0x0040190c    90
-                         nop                                                         // 0x0040190d    90
-                         nop                                                         // 0x0040190e    90
-                         nop                                                         // 0x0040190f    90
-?CastTree@GameThing@@UAEIXZ:
-                         xor.s              eax, eax                                 // 0x00401910    33c0
-                         ret                                                         // 0x00401912    c3
-                         nop                                                         // 0x00401913    90
-                         nop                                                         // 0x00401914    90
-                         nop                                                         // 0x00401915    90
-                         nop                                                         // 0x00401916    90
-                         nop                                                         // 0x00401917    90
-                         nop                                                         // 0x00401918    90
-                         nop                                                         // 0x00401919    90
-                         nop                                                         // 0x0040191a    90
-                         nop                                                         // 0x0040191b    90
-                         nop                                                         // 0x0040191c    90
-                         nop                                                         // 0x0040191d    90
-                         nop                                                         // 0x0040191e    90
-                         nop                                                         // 0x0040191f    90
-?IsDeletedOnNewMap@GameThing@@QAE_NXZ:
-                         mov                eax, 0x00000001                          // 0x00401920    b801000000
-                         ret                                                         // 0x00401925    c3
-                         nop                                                         // 0x00401926    90
-                         nop                                                         // 0x00401927    90
-                         nop                                                         // 0x00401928    90
-                         nop                                                         // 0x00401929    90
-                         nop                                                         // 0x0040192a    90
-                         nop                                                         // 0x0040192b    90
-                         nop                                                         // 0x0040192c    90
-                         nop                                                         // 0x0040192d    90
-                         nop                                                         // 0x0040192e    90
-                         nop                                                         // 0x0040192f    90
-?GetShowNeedsPos@GameThing@@UAEIXZ:
-                         xor.s              eax, eax                                 // 0x00401930    33c0
-                         ret                0x0008                                   // 0x00401932    c20800
-                         nop                                                         // 0x00401935    90
-                         nop                                                         // 0x00401936    90
-                         nop                                                         // 0x00401937    90
-                         nop                                                         // 0x00401938    90
-                         nop                                                         // 0x00401939    90
-                         nop                                                         // 0x0040193a    90
-                         nop                                                         // 0x0040193b    90
-                         nop                                                         // 0x0040193c    90
-                         nop                                                         // 0x0040193d    90
-                         nop                                                         // 0x0040193e    90
-                         nop                                                         // 0x0040193f    90
 ?SetPos@GameThingWithPos@@QAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00401940    8b442404
                          mov                edx, dword ptr [eax]                     // 0x00401944    8b10
@@ -1942,7 +1629,7 @@ _jmp_addr_0x00401f49:    pop                edi                                 
                          mov                eax, dword ptr [ecx]                     // 0x00401f50    8b01
                          call               dword ptr [eax + 0x1f0]                  // 0x00401f52    ff90f0010000
                          ret                0x0004                                   // 0x00401f58    c20400
-                         call               _jmp_addr_0x00401879                     // 0x00401f5b    e819f9ffff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x00401f5b    e819f9ffff
 ?IsPickupableRock@GameThingWithPos@@UAE_NPAVCreature@@@Z:
                          push               esi                                      // 0x00401f60    56
                          mov.s              esi, ecx                                 // 0x00401f61    8bf1
@@ -2290,7 +1977,7 @@ _jmp_addr_0x00401f8b:    xor.s              eax, eax                            
                          mov                eax, dword ptr [ecx]                     // 0x00402100    8b01
                          call               dword ptr [eax + 0x3c4]                  // 0x00402102    ff90c4030000
                          ret                0x0004                                   // 0x00402108    c20400
-                         call               _jmp_addr_0x00401879                     // 0x0040210b    e869f7ffff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x0040210b    e869f7ffff
 ?IsFence@GameThingWithPos@@UBE_NXZ:
                          xor.s              eax, eax                                 // 0x00402110    33c0
                          ret                                                         // 0x00402112    c3
@@ -3527,7 +3214,7 @@ _jmp_addr_0x0040263a:    xor.s              eax, eax                            
                          mov                eax, dword ptr [ecx]                     // 0x00402660    8b01
                          call               dword ptr [eax + 0x608]                  // 0x00402662    ff9008060000
                          ret                0x0004                                   // 0x00402668    c20400
-                         call               _jmp_addr_0x00401879                     // 0x0040266b    e809f2ffff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x0040266b    e809f2ffff
 ?IsG3DObjectDrawnInHand@Object@@UAE_NXZ:
                          mov                al, 0x01                                 // 0x00402670    b001
                          ret                                                         // 0x00402672    c3

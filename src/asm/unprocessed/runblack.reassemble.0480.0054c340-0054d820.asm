@@ -8,7 +8,6 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern _jmp_addr_0x00401879
 .extern _jmp_addr_0x00407a20
 .extern _jmp_addr_0x00407a30
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
@@ -734,7 +733,7 @@ _jmp_addr_0x0054c85f:    pop                esi                                 
                          pop                ebx                                           // 0x0054c866    5b
                          add                esp, 0x0c                                     // 0x0054c867    83c40c
                          ret                                                              // 0x0054c86a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0054c86b    e80950ebff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054c86b    e80950ebff
                          cmp                dword ptr [esp + 0x04], 0x03                  // 0x0054c870    837c240403
                          {disp8} jne        _jmp_addr_0x0054c88e                          // 0x0054c875    7517
                          {disp32} mov       byte ptr [data_bytes + 0x286ced], 0x00        // 0x0054c877    c605edccc40000
@@ -1816,7 +1815,7 @@ _jmp_addr_0x0054d6e5:    test               esi, esi                            
                          {disp8} jne        _jmp_addr_0x0054d6a3                          // 0x0054d6e7    75ba
 _jmp_addr_0x0054d6e9:    pop                esi                                           // 0x0054d6e9    5e
                          ret                                                              // 0x0054d6ea    c3
-                         call               _jmp_addr_0x00401879                          // 0x0054d6eb    e88941ebff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054d6eb    e88941ebff
 _FUN_0054d6f0:           sub                esp, 0x10                                     // 0x0054d6f0    83ec10
                          push               ebx                                           // 0x0054d6f3    53
                          {disp32} mov       ebx, dword ptr [data_bytes + 0x4bf2c4]        // 0x0054d6f4    8b1dc452e800

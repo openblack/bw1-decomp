@@ -118,7 +118,7 @@ void __cdecl jmp_addr_0x00401130(void)
         "{disp32} mov      dword ptr [_abode_info_float_0x00c3c684], 0xffffffff\n" // 0x00401130    c70584c6c300ffffffff
         "ret\n"                                                                    // 0x0040113a    c3
         // SEH Code path ??
-        "call              _jmp_addr_0x00401879\n"                                 // 0x0040113b    e839070000
+        "call              ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9\n"                                 // 0x0040113b    e839070000
     );
 }
 

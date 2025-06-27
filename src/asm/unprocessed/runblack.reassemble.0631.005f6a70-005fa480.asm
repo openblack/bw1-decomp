@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004017f9
 .extern @AutoScroll__9SetupListFb@9
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
@@ -4283,7 +4282,7 @@ _jmp_addr_0x005fa000:    {disp32} mov       cl, byte ptr [data_bytes + 0x4bf350]
                          {disp32} mov       dword ptr [data_bytes + 0x286d14], eax         // 0x005fa060    a314cdc400
                          {disp32} mov       dword ptr [data_bytes + 0x286d0c], eax         // 0x005fa065    a30ccdc400
                          ret                                                               // 0x005fa06a    c3
-                         call               _jmp_addr_0x004017f9                           // 0x005fa06b    e88977e0ff
+                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x005fa06b    e88977e0ff
 _jmp_addr_0x005fa070:    push               ebx                                            // 0x005fa070    53
                          push               0x0                                            // 0x005fa071    6a00
                          call               _jmp_addr_0x005f89f0                           // 0x005fa073    e878e9ffff

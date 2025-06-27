@@ -8,7 +8,6 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern _jmp_addr_0x00401879
 .extern @ResetData__6LHFile@4
 .extern _jmp_addr_0x00436a70
 .extern @__ct__7LHPointFfff@20
@@ -189,7 +188,7 @@ _jmp_addr_0x0046d0e2:    fstp               st(0)                               
                          call               _jmp_addr_0x0046d100                          // 0x0046d0f0    e80b000000
                          mov                eax, 0x00000001                               // 0x0046d0f5    b801000000
                          ret                                                              // 0x0046d0fa    c3
-                         call               _jmp_addr_0x00401879                          // 0x0046d0fb    e87947f9ff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0046d0fb    e87947f9ff
 _jmp_addr_0x0046d100:    push               ecx                                           // 0x0046d100    51
                          push               esi                                           // 0x0046d101    56
                          push               edi                                           // 0x0046d102    57
@@ -1052,7 +1051,7 @@ _jmp_addr_0x0046daf0:    push               esi                                 
                          {disp32} mov       dword ptr [data_bytes + 0x4bf2bc], ecx        // 0x0046db63    890dbc52e800
 _jmp_addr_0x0046db69:    pop                esi                                           // 0x0046db69    5e
                          ret                                                              // 0x0046db6a    c3
-                         call               _jmp_addr_0x00401879                          // 0x0046db6b    e8093df9ff
+                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0046db6b    e8093df9ff
 _jmp_addr_0x0046db70:    sub                esp, 0x1c                                     // 0x0046db70    83ec1c
                          push               esi                                           // 0x0046db73    56
                          {disp8} mov        esi, dword ptr [esp + 0x24]                   // 0x0046db74    8b742424

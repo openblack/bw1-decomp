@@ -7,7 +7,6 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00401879
 .extern _GetMidTextSize__Fv
 .extern _GetSmallTextSize__Fv
 .extern _jmp_addr_0x00407a20
@@ -214,7 +213,7 @@ _MouseDown__9SetupEditFiib:
                          {disp32} mov         dword ptr [esi + 0x00000250], eax             // 0x0040c191    898650020000
 _jmp_addr_0x0040c197:    pop                  esi                                           // 0x0040c197    5e
                          ret                  0x000c                                        // 0x0040c198    c20c00
-                         call                 _jmp_addr_0x00401879                          // 0x0040c19b    e8d956ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040c19b    e8d956ffff
 _MouseUp__9SetupEditFiib:
                          {disp8} mov          al, byte ptr [esp + 0x0c]                     // 0x0040c1a0    8a44240c
                          test                 al, al                                        // 0x0040c1a4    84c0
@@ -1664,7 +1663,7 @@ _KeyDown__14SetupBigButtonFii:
                          push                 edx                                           // 0x0040d305    52
                          call                 dword ptr [eax]                               // 0x0040d306    ff10
 _jmp_addr_0x0040d308:    ret                  0x0008                                        // 0x0040d308    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x0040d30b    e86945ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040d30b    e86945ffff
 _HitTest__14SetupBigButtonFii:
                          {disp8} mov          edx, dword ptr [ecx + 0x08]                   // 0x0040d310    8b5108
                          {disp8} mov          eax, dword ptr [esp + 0x04]                   // 0x0040d313    8b442404
@@ -1689,7 +1688,7 @@ _jmp_addr_0x0040d34e:    xor.s                eax, eax                          
                          ret                  0x0008                                        // 0x0040d350    c20800
 _jmp_addr_0x0040d353:    mov                  eax, 0x00000001                               // 0x0040d353    b801000000
                          ret                  0x0008                                        // 0x0040d358    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x0040d35b    e81945ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040d35b    e81945ffff
 ___dt__14SetupBigButtonFb:
                          push                 esi                                           // 0x0040d360    56
                          mov.s                esi, ecx                                      // 0x0040d361    8bf1
@@ -1706,16 +1705,16 @@ _jmp_addr_0x0040d378:    mov.s                eax, esi                          
                          nop                                                                // 0x0040d37f    90
 _jmp_addr_0x0040d380:    {disp32} mov         dword ptr [ecx + 0x00000248], 0x00000000      // 0x0040d380    c7814802000000000000
                          ret                                                                // 0x0040d38a    c3
-                         call                 _jmp_addr_0x00401879                          // 0x0040d38b    e8e944ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040d38b    e8e944ffff
                          {disp32} mov         dword ptr [ecx + 0x00000248], 0x00000000      // 0x0040d390    c7814802000000000000
                          ret                                                                // 0x0040d39a    c3
-                         call                 _jmp_addr_0x00401879                          // 0x0040d39b    e8d944ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040d39b    e8d944ffff
                          {disp32} mov         dword ptr [ecx + 0x00000248], 0x00000002      // 0x0040d3a0    c7814802000002000000
                          ret                                                                // 0x0040d3aa    c3
-                         call                 _jmp_addr_0x00401879                          // 0x0040d3ab    e8c944ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040d3ab    e8c944ffff
                          {disp32} mov         dword ptr [ecx + 0x00000248], 0x00000003      // 0x0040d3b0    c7814802000003000000
                          ret                                                                // 0x0040d3ba    c3
-                         call                 _jmp_addr_0x00401879                          // 0x0040d3bb    e8b944ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040d3bb    e8b944ffff
 _Draw__15SetupHSBarGraphFbb:
                          sub                  esp, 0x00000218                               // 0x0040d3c0    81ec18020000
                          push                 ebx                                           // 0x0040d3c6    53
@@ -3229,7 +3228,7 @@ _KeyDown__15SetupHLineGraphFii:
                          push                 edx                                           // 0x0040e595    52
                          call                 dword ptr [eax]                               // 0x0040e596    ff10
 _jmp_addr_0x0040e598:    ret                  0x0008                                        // 0x0040e598    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x0040e59b    e8d932ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040e59b    e8d932ffff
 _MouseUp__15SetupHLineGraphFiib:
                          {disp8} mov          al, byte ptr [esp + 0x0c]                     // 0x0040e5a0    8a44240c
                          test                 al, al                                        // 0x0040e5a4    84c0
@@ -4133,7 +4132,7 @@ _KeyDown__14SetupVBarGraphFii:
                          push                 edx                                           // 0x0040ef85    52
                          call                 dword ptr [eax]                               // 0x0040ef86    ff10
 _jmp_addr_0x0040ef88:    ret                  0x0008                                        // 0x0040ef88    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x0040ef8b    e8e928ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040ef8b    e8e928ffff
 ___dt__14SetupVBarGraphFb:
                          push                 esi                                           // 0x0040ef90    56
                          mov.s                esi, ecx                                      // 0x0040ef91    8bf1
@@ -4742,7 +4741,7 @@ _KeyDown__14SetupTabButtonFii:
                          push                 edx                                           // 0x0040f685    52
                          call                 dword ptr [eax]                               // 0x0040f686    ff10
 _jmp_addr_0x0040f688:    ret                  0x0008                                        // 0x0040f688    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x0040f68b    e8e921ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040f68b    e8e921ffff
 ___dt__14SetupTabButtonFb:
                          push                 esi                                           // 0x0040f690    56
                          mov.s                esi, ecx                                      // 0x0040f691    8bf1
@@ -5931,7 +5930,7 @@ _KeyDown__12SetupPictureFii:
                          push                 edx                                           // 0x00410705    52
                          call                 dword ptr [eax]                               // 0x00410706    ff10
 _jmp_addr_0x00410708:    ret                  0x0008                                        // 0x00410708    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x0041070b    e86911ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0041070b    e86911ffff
 _Click__12SetupPictureFii:
                          ret                  0x0008                                        // 0x00410710    c20800
                          nop                                                                // 0x00410713    90
@@ -5992,7 +5991,7 @@ _SetFocus__12SetupPictureFb:
                          {disp32} mov         dword ptr [ecx + 0x00000268], eax             // 0x004107dc    898168020000
                          {disp32} mov         dword ptr [ecx + 0x00000250], eax             // 0x004107e2    898150020000
 _jmp_addr_0x004107e8:    ret                  0x0004                                        // 0x004107e8    c20400
-                         call                 _jmp_addr_0x00401879                          // 0x004107eb    e88910ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004107eb    e88910ffff
 _MouseDown__17SetupColourPickerFiib:
                          {disp32} mov         dword ptr [ecx + 0x0000023c], 0x00000001      // 0x004107f0    c7813c02000001000000
                          ret                  0x000c                                        // 0x004107fa    c20c00
@@ -6296,7 +6295,7 @@ _KeyDown__17SetupColourPickerFii:
                          push                 edx                                           // 0x00410b45    52
                          call                 dword ptr [eax]                               // 0x00410b46    ff10
 _jmp_addr_0x00410b48:    ret                  0x0008                                        // 0x00410b48    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x00410b4b    e8290dffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00410b4b    e8290dffff
 _Click__17SetupColourPickerFii:
                          ret                  0x0008                                        // 0x00410b50    c20800
                          nop                                                                // 0x00410b53    90
@@ -6796,7 +6795,7 @@ _KeyDown__13SetupCheckBoxFii:
                          push                 edx                                           // 0x00411065    52
                          call                 dword ptr [eax]                               // 0x00411066    ff10
 _jmp_addr_0x00411068:    ret                  0x0008                                        // 0x00411068    c20800
-                         call                 _jmp_addr_0x00401879                          // 0x0041106b    e80908ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0041106b    e80908ffff
 ___dt__13SetupCheckBoxFb:
                          push                 esi                                           // 0x00411070    56
                          mov.s                esi, ecx                                      // 0x00411071    8bf1
