@@ -9,6 +9,7 @@
 
 struct DialogBoxBase;
 struct SetupBox;
+struct SetupControl;
 
 struct DialogBoxBaseVftable
 {
