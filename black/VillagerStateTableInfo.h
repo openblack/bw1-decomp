@@ -43,7 +43,7 @@ struct GVillagerStateTableInfo
   uint32_t field_0x100;
   uint32_t field_0x104;
   float field_0x108;
-  float field_0x10c;
+  uint32_t field_0x10c;
   uint32_t field_0x110;
 };
 static_assert(sizeof(struct GVillagerStateTableInfo) == 0x114, "Data type is of wrong size");
