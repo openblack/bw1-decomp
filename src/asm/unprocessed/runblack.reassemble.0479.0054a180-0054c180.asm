@@ -27,7 +27,6 @@
 .extern _jmp_addr_0x004286c0
 .extern _jmp_addr_0x00429e30
 .extern _jmp_addr_0x0042a210
-.extern _jmp_addr_0x0042b460
 .extern _jmp_addr_0x0042e5e0
 .extern _jmp_addr_0x00435f30
 .extern _jmp_addr_0x004366f0

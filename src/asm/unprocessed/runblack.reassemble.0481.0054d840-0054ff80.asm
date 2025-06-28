@@ -26,7 +26,7 @@
 .extern _jmp_addr_0x004286c0
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
-.extern _jmp_addr_0x0042b460
+.extern _load_variables
 .extern _jmp_addr_0x0042e5e0
 .extern _jmp_addr_0x00435f30
 .extern ___nw__4BaseFUl
@@ -428,7 +428,7 @@
 .globl @EndTurn__5GGameFv@4
 .globl _jmp_addr_0x0054eb40
 .globl _jmp_addr_0x0054ec80
-.globl _jmp_addr_0x0054ef40
+.globl ?InitOneTimeOnly@GGame@@QAEIXZ
 .globl @Init__5GGameFv@4
 
 _jmp_addr_0x0054d8d0:    {disp32} mov       eax, dword ptr [data_bytes + 0x33b99c]        // 0x0054d8d0    a19c19d000
@@ -2091,7 +2091,9 @@ _jmp_addr_0x0054eebc:    {disp32} lea       eax, dword ptr [ecx * 0x8 + 0x000000
                          ret                0x000c                                        // 0x0054ef3b    c20c00
                          nop                                                              // 0x0054ef3e    90
                          nop                                                              // 0x0054ef3f    90
-_jmp_addr_0x0054ef40:    sub                esp, 0x00000608                               // 0x0054ef40    81ec08060000
+
+?InitOneTimeOnly@GGame@@QAEIXZ:
+                         sub                esp, 0x00000608                               // 0x0054ef40    81ec08060000
                          push               esi                                           // 0x0054ef46    56
                          push               edi                                           // 0x0054ef47    57
                          push               0x00bec764                                    // 0x0054ef48    6864c7be00
@@ -2184,7 +2186,7 @@ _jmp_addr_0x0054f0a6:    call               _jmp_addr_0x007dee00                
                          add                esp, 0x04                                     // 0x0054f0b5    83c404
                          push               0x00bec6b4                                    // 0x0054f0b8    68b4c6be00
                          call               _Report3D__FPCce                              // 0x0054f0bd    e80ecb2c00
-                         call               _jmp_addr_0x0042b460                          // 0x0054f0c2    e899c3edff
+                         call               _load_variables                               // 0x0054f0c2    e899c3edff
                          call               _jmp_addr_0x007dee00                          // 0x0054f0c7    e834fd2800
                          call               _jmp_addr_0x007dee00                          // 0x0054f0cc    e82ffd2800
                          push               0x1                                           // 0x0054f0d1    6a01

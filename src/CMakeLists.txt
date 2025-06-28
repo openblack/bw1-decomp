@@ -108,6 +108,8 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0084.00426ca0-0042acc0.asm
     asm/unprocessed/runblack.reassemble.0094.0042acc0-0042ae70.asm
     asm/unprocessed/runblack.reassemble.0098.0042ae70-0043f980.asm
+    c/LoaderAnon.050.c
+    asm/unprocessed/runblack.reassemble.0099.00434040-0043f980.asm
     asm/unprocessed/runblack.reassemble.0102.0043f980-00444d80.asm
     asm/unprocessed/runblack.reassemble.0105.00444d80-00447850.asm
     asm/unprocessed/runblack.reassemble.0110.00447850-00449de0.asm
