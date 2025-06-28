@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x0054d610
 .extern _jmp_addr_0x0054eb40
 .extern _jmp_addr_0x0054ec80
-.extern _jmp_addr_0x0054ef40
+.extern ?InitOneTimeOnly@GGame@@QAEIXZ
 .extern _StartPlaygroundGame__5GGameFPc@4
 .extern _jmp_addr_0x00555530
 .extern _jmp_addr_0x00564160
@@ -861,7 +861,7 @@ _jmp_addr_0x00641d99:    push              edi                                  
                          call              _jmp_addr_0x00719280                          // 0x00641d9a    e8e1740d00
                          call              _jmp_addr_0x005f4c90                          // 0x00641d9f    e8ec2efbff
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641da4    8b0d5c19d000
-                         call              _jmp_addr_0x0054ef40                          // 0x00641daa    e891d1f0ff
+                         call              ?InitOneTimeOnly@GGame@@QAEIXZ                // 0x00641daa    e891d1f0ff
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641daf    8b0d5c19d000
                          add               ecx, 0x00250310                               // 0x00641db5    81c110032500
                          call              _jmp_addr_0x0078e9b0                          // 0x00641dbb    e8f0cb1400
@@ -992,4 +992,3 @@ _jmp_addr_0x00641fb9:    call              _jmp_addr_0x00643420                 
 .byte 0x64, 0x1f, 0x64, 0x00      // 0x00641fd4
 .byte 0x70, 0x1f, 0x64, 0x00      // 0x00641fd8
 .byte 0x86, 0x1f, 0x64, 0x00      // 0x00641fdc
-
