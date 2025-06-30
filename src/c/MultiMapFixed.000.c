@@ -117,20 +117,18 @@ struct MapCoords* __fastcall GetResourceNearestEdge__13MultiMapFixedF13RESOURCE_
 {
     // clang crashes
     //return this->base.multiMapFixed_vftable->GetResourcePos(this, edx, type, param_4);
-    asm(
-        "{disp8} mov        edx, dword ptr [esp + 0x08]\n" // 0x00401590    8b542408
-        "mov                eax, dword ptr [ecx]       \n" // 0x00401594    8b01
-        "push               esi                        \n" // 0x00401596    56
-        "{disp8} mov        esi, dword ptr [esp + 0x08]\n" // 0x00401597    8b742408
-        "push               -0x1                       \n" // 0x0040159b    6aff
-        "push               edx                        \n" // 0x0040159d    52
-        "push               esi                        \n" // 0x0040159e    56
-        "call               dword ptr [eax + 0x8cc]    \n" // 0x0040159f    ff90cc080000
-        "mov.s              eax, esi                   \n" // 0x004015a5    8bc6
-        "pop                esi                        \n" // 0x004015a7    5e
-        "ret                0x0010                     \n" // 0x004015a8    c21000
-        "call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9       \n" // 0x004015ab    e8c9020000
-    );
+    asm("{disp8} mov        edx, dword ptr [esp + 0x08]"); // 0x00401590    8b542408
+    asm("mov                eax, dword ptr [ecx]       "); // 0x00401594    8b01
+    asm("push               esi                        "); // 0x00401596    56
+    asm("{disp8} mov        esi, dword ptr [esp + 0x08]"); // 0x00401597    8b742408
+    asm("push               -0x1                       "); // 0x0040159b    6aff
+    asm("push               edx                        "); // 0x0040159d    52
+    asm("push               esi                        "); // 0x0040159e    56
+    asm("call               dword ptr [eax + 0x8cc]    "); // 0x0040159f    ff90cc080000
+    asm("mov.s              eax, esi                   "); // 0x004015a5    8bc6
+    asm("pop                esi                        "); // 0x004015a7    5e
+    asm("ret                0x0010                     "); // 0x004015a8    c21000
+    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9"); // 0x004015ab    e8c9020000
     __builtin_unreachable();
 }
 
@@ -150,28 +148,24 @@ int __fastcall CalulateAmountOverMaximum__13MultiMapFixedF13RESOURCE_TYPE(struct
 
 bool __fastcall IsBeingBuilt__13MultiMapFixedFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
-    asm(
-        "mov                eax, dword ptr [ecx]   \n" // 0x004015e0    8b01
-        "call               dword ptr [eax + 0x890]\n" // 0x004015e2    ff9090080000
-        "dec                eax                    \n" // 0x004015e8    48
-        "neg                eax                    \n" // 0x004015e9    f7d8
-        "sbb.s              eax, eax               \n" // 0x004015eb    1bc0
-        "neg                eax                    \n" // 0x004015ed    f7d8
-        "ret                0x0004                 \n" // 0x004015ef    c20400
-    );
+    asm("mov                eax, dword ptr [ecx]   "); // 0x004015e0    8b01
+    asm("call               dword ptr [eax + 0x890]"); // 0x004015e2    ff9090080000
+    asm("dec                eax                    "); // 0x004015e8    48
+    asm("neg                eax                    "); // 0x004015e9    f7d8
+    asm("sbb.s              eax, eax               "); // 0x004015eb    1bc0
+    asm("neg                eax                    "); // 0x004015ed    f7d8
+    asm("ret                0x0004                 "); // 0x004015ef    c20400
     __builtin_unreachable();
 }
 
 bool __fastcall NeedsRepair__13MultiMapFixedFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
-    asm(
-        "mov                eax, dword ptr [ecx]   \n" // 0x00401600    8b01
-        "call               dword ptr [eax + 0x88c]\n" // 0x00401602    ff908c080000
-        "neg                eax                    \n" // 0x00401608    f7d8
-        "sbb.s              eax, eax               \n" // 0x0040160a    1bc0
-        "inc                eax                    \n" // 0x0040160c    40
-        "ret                0x0004                 \n" // 0x0040160d    c20400
-    );
+    asm("mov                eax, dword ptr [ecx]   "); // 0x00401600    8b01
+    asm("call               dword ptr [eax + 0x88c]"); // 0x00401602    ff908c080000
+    asm("neg                eax                    "); // 0x00401608    f7d8
+    asm("sbb.s              eax, eax               "); // 0x0040160a    1bc0
+    asm("inc                eax                    "); // 0x0040160c    40
+    asm("ret                0x0004                 "); // 0x0040160d    c20400
     __builtin_unreachable();
 }
 

@@ -26,7 +26,6 @@
 .extern _jmp_addr_0x004286c0
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
-.extern _jmp_addr_0x0042b460
 .extern _jmp_addr_0x0042e5e0
 .extern _jmp_addr_0x00435f30
 .extern ___nw__4BaseFUl

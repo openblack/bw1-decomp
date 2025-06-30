@@ -44,41 +44,38 @@ void __fastcall SetTown__5AbodeFP4Town(struct MultiMapFixed* this, const void* e
 
 bool __fastcall IsRepaired__5AbodeFv(struct MultiMapFixed* this)
 {
-    asm(
-        "mov                eax, dword ptr [ecx]       \n"  // 0x004016a0    8b01
-        "call               dword ptr [eax + 0x884]    \n"  // 0x004016a2    ff9084080000
-        "{disp32} fcomp     dword ptr [_rdata_float1p0]\n"  // 0x004016a8    d81d90a38a00
-        "fnstsw             ax                         \n"  // 0x004016ae    dfe0
-        "test               ah, 0x01                   \n"  // 0x004016b0    f6c401
-        "{disp8} jne        _jmp_addr_0x004016bb       \n"  // 0x004016b3    7506
-        "mov                eax, 0x00000001            \n"  // 0x004016b5    b801000000
-        "ret                                           \n"  // 0x004016ba    c3
-        "_jmp_addr_0x004016bb:                         \n"
-        "xor.s              eax, eax                   \n"  // 0x004016bb    33c0
-        "ret                                           \n"  // 0x004016bd    c3
-    );
+    asm("mov                eax, dword ptr [ecx]       ");  // 0x004016a0    8b01
+    asm("call               dword ptr [eax + 0x884]    ");  // 0x004016a2    ff9084080000
+    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");  // 0x004016a8    d81d90a38a00
+    asm("fnstsw             ax                         ");  // 0x004016ae    dfe0
+    asm("test               ah, 0x01                   ");  // 0x004016b0    f6c401
+    asm("{disp8} jne        _jmp_addr_0x004016bb       ");  // 0x004016b3    7506
+    asm("mov                eax, 0x00000001            ");  // 0x004016b5    b801000000
+    asm("ret                                           ");  // 0x004016ba    c3
+    asm("_jmp_addr_0x004016bb:                         ");
+    asm("xor.s              eax, eax                   ");  // 0x004016bb    33c0
+    asm("ret                                           ");  // 0x004016bd    c3
+
     __builtin_unreachable();
 }
 
 bool __fastcall IsBuilt__5AbodeFv(struct MultiMapFixed* this)
 {
-    asm(
-        "{disp8} mov        al, byte ptr [ecx + 0x58]  \n"  // 0x004016c0    8a4158
-        "and                al, 0x02                   \n"  // 0x004016c3    2402
-        "cmp                al, 0x02                   \n"  // 0x004016c5    3c02
-        "{disp8} je         _jmp_addr_0x004016e4       \n"  // 0x004016c7    741b
-        "mov                edx, dword ptr [ecx]       \n"  // 0x004016c9    8b11
-        "call               dword ptr [edx + 0x880]    \n"  // 0x004016cb    ff9280080000
-        "{disp32} fcomp     dword ptr [_rdata_float1p0]\n"  // 0x004016d1    d81d90a38a00
-        "fnstsw             ax                         \n"  // 0x004016d7    dfe0
-        "test               ah, 0x01                   \n"  // 0x004016d9    f6c401
-        "{disp8} jne        _jmp_addr_0x004016e4       \n"  // 0x004016dc    7506
-        "mov                eax, 0x00000001            \n"  // 0x004016de    b801000000
-        "ret                                           \n"  // 0x004016e3    c3
-        "_jmp_addr_0x004016e4:                         \n"
-        "xor.s              eax, eax                   \n"  // 0x004016e4    33c0
-        "ret                                           \n"  // 0x004016e6    c3
-    );
+    asm("{disp8} mov        al, byte ptr [ecx + 0x58]  ");  // 0x004016c0    8a4158
+    asm("and                al, 0x02                   ");  // 0x004016c3    2402
+    asm("cmp                al, 0x02                   ");  // 0x004016c5    3c02
+    asm("{disp8} je         _jmp_addr_0x004016e4       ");  // 0x004016c7    741b
+    asm("mov                edx, dword ptr [ecx]       ");  // 0x004016c9    8b11
+    asm("call               dword ptr [edx + 0x880]    ");  // 0x004016cb    ff9280080000
+    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");  // 0x004016d1    d81d90a38a00
+    asm("fnstsw             ax                         ");  // 0x004016d7    dfe0
+    asm("test               ah, 0x01                   ");  // 0x004016d9    f6c401
+    asm("{disp8} jne        _jmp_addr_0x004016e4       ");  // 0x004016dc    7506
+    asm("mov                eax, 0x00000001            ");  // 0x004016de    b801000000
+    asm("ret                                           ");  // 0x004016e3    c3
+    asm("_jmp_addr_0x004016e4:                         ");
+    asm("xor.s              eax, eax                   ");  // 0x004016e4    33c0
+    asm("ret                                           ");  // 0x004016e6    c3
     __builtin_unreachable();
 }
 
@@ -125,16 +122,14 @@ uint32_t __fastcall GetOrigin__5AbodeFv(const struct GameThingWithPos* this)
 
 struct MapCoords* __fastcall GetArrivePos__5AbodeFv(struct GameThingWithPos* this, const void* edx, struct MapCoords* coords)
 {
-  asm(
-      "mov                eax, dword ptr [ecx]       \n"  // 0x00401770    8b01
-      "push               esi                        \n"  // 0x00401772    56
-      "{disp8} mov        esi, dword ptr [esp + 0x08]\n"  // 0x00401773    8b742408
-      "push               esi                        \n"  // 0x00401777    56
-      "call               dword ptr [eax + 0x864]    \n"  // 0x00401778    ff9064080000
-      "mov.s              eax, esi                   \n"  // 0x0040177e    8bc6
-      "pop                esi                        \n"  // 0x00401780    5e
-      "ret                0x0004                     \n"  // 0x00401781    c20400
-    );
+    asm("mov                eax, dword ptr [ecx]       ");  // 0x00401770    8b01
+    asm("push               esi                        ");  // 0x00401772    56
+    asm("{disp8} mov        esi, dword ptr [esp + 0x08]");  // 0x00401773    8b742408
+    asm("push               esi                        ");  // 0x00401777    56
+    asm("call               dword ptr [eax + 0x864]    ");  // 0x00401778    ff9064080000
+    asm("mov.s              eax, esi                   ");  // 0x0040177e    8bc6
+    asm("pop                esi                        ");  // 0x00401780    5e
+    asm("ret                0x0004                     ");  // 0x00401781    c20400
     __builtin_unreachable();
 }
 
@@ -158,20 +153,18 @@ char* __fastcall GetDebugText__5AbodeFv(struct GameThing* this)
 
 void __fastcall __dt__5AbodeFv(struct Base* this, const void* edx, uint8_t param_1)
 {
-    asm(
-        "push       esi                        \n"  // 0x004017c0    56
-        "mov.s      esi, ecx                   \n"  // 0x004017c1    8bf1
-        "call       _jmp_addr_0x00402b60       \n"  // 0x004017c3    e898130000
-        "test       byte ptr [esp + 0x08], 0x01\n"  // 0x004017c8    f644240801
-        "{disp8} je _jmp_addr_0x004017dd       \n"  // 0x004017cd    740e
-        "push       0x000000c4                 \n"  // 0x004017cf    68c4000000
-        "push       esi                        \n"  // 0x004017d4    56
-        "call       _jmp_addr_0x00436970       \n"  // 0x004017d5    e896510300
-        "add        esp, 0x08                  \n"  // 0x004017da    83c408
-        "_jmp_addr_0x004017dd:                         \n" 
-        "mov.s     eax, esi                   \n"  // 0x004017dd    8bc6
-        "pop       esi                        \n"  // 0x004017df    5e
-        "ret       0x0004                     \n"  // 0x004017e0    c20400
-    );
+    asm("push       esi                        ");  // 0x004017c0    56
+    asm("mov.s      esi, ecx                   ");  // 0x004017c1    8bf1
+    asm("call       _jmp_addr_0x00402b60       ");  // 0x004017c3    e898130000
+    asm("test       byte ptr [esp + 0x08], 0x01");  // 0x004017c8    f644240801
+    asm("{disp8} je _jmp_addr_0x004017dd       ");  // 0x004017cd    740e
+    asm("push       0x000000c4                 ");  // 0x004017cf    68c4000000
+    asm("push       esi                        ");  // 0x004017d4    56
+    asm("call       _jmp_addr_0x00436970       ");  // 0x004017d5    e896510300
+    asm("add        esp, 0x08                  ");  // 0x004017da    83c408
+    asm("_jmp_addr_0x004017dd:                 ");
+    asm("mov.s     eax, esi                    ");  // 0x004017dd    8bc6
+    asm("pop       esi                         ");  // 0x004017df    5e
+    asm("ret       0x0004                      ");  // 0x004017e0    c20400
     __builtin_unreachable();
 }

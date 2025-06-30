@@ -233,6 +233,8 @@ void __fastcall StartTurn__5GGameFv(struct GGame* this);
 void __fastcall EndTurn__5GGameFv(struct GGame* this);
 // win1.41 0054e5c0 mac 100665c0 GGame::ProcessTurn(void)
 void __fastcall ProcessTurn__5GGameFv(struct GGame* this);
+// win1.41 0054ef40 mac 10514230 GGame::InitOneTimeOnly(void)
+uint32_t __fastcall InitOneTimeOnly__5GGameFv(struct GGame* this) asm("?InitOneTimeOnly@GGame@@QAEIXZ");
 // win1.41 0054f3b0 mac 101b9770 GGame::Init(void)
 bool __fastcall Init__5GGameFv(struct GGame* this);
 // win1.41 00550390 mac 10427340 GGame::LoadFiles(void)

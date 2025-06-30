@@ -595,54 +595,52 @@ const struct AbodeVftable __vt__5Abode = {
 
 struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Abode* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood)
 {
-  __asm__(
-    "{disp8} mov        eax, dword ptr [esp + 0x1c]\n"                                      // 0x00401350    8b44241c
-    "{disp8} mov        edx, dword ptr [esp + 0x14]\n"                                      // 0x00401354    8b542414
-    "push               esi\n"                                                              // 0x00401358    56
-    "push               edi\n"                                                              // 0x00401359    57
-    "push               eax\n"                                                              // 0x0040135a    50
-    "{disp8} mov        eax, dword ptr [esp + 0x1c]\n"                                      // 0x0040135b    8b44241c
-    "mov.s              esi, ecx\n"                                                         // 0x0040135f    8bf1
-    "{disp8} mov        ecx, dword ptr [esp + 0x24]\n"                                      // 0x00401361    8b4c2424
-    "push               ecx\n"                                                              // 0x00401365    51
-    "{disp8} mov        ecx, dword ptr [esp + 0x18]\n"                                      // 0x00401366    8b4c2418
-    "push               edx\n"                                                              // 0x0040136a    52
-    "{disp8} mov        edx, dword ptr [esp + 0x18]\n"                                      // 0x0040136b    8b542418
-    "push               eax\n"                                                              // 0x0040136f    50
-    "push               ecx\n"                                                              // 0x00401370    51
-    "push               edx\n"                                                              // 0x00401371    52
-    "mov.s              ecx, esi\n"                                                         // 0x00401372    8bce
-    "call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32\n" // 0x00401374    e867ce1200
-    "xor.s              edi, edi\n"                                                         // 0x00401379    33ff
-    "{disp32} mov       dword ptr [esi + 0x00000080], edi\n"                                // 0x0040137b    89be80000000
-    "{disp32} mov       dword ptr [esi + 0x00000084], edi\n"                                // 0x00401381    89be84000000
-    "{disp32} mov       dword ptr [esi + 0x00000088], edi\n"                                // 0x00401387    89be88000000
-    "{disp32} mov       dword ptr [esi + 0x00000098], edi\n"                                // 0x0040138d    89be98000000
-    "{disp32} mov       dword ptr [esi + 0x0000009c], edi\n"                                // 0x00401393    89be9c000000
-    "{disp32} mov       dword ptr [esi + 0x000000a0], edi\n"                                // 0x00401399    89bea0000000
-    "{disp32} mov       dword ptr [esi + 0x000000a4], edi\n"                                // 0x0040139f    89bea4000000
-    "mov.s              ecx, esi\n"                                                         // 0x004013a5    8bce
-    "mov                dword ptr [esi], 0x008a9a64\n"                                      // 0x004013a7    c706649a8a00
-    "call               @SetZero__5AbodeFv@4\n"                                             // 0x004013ad    e80e180000
-    "{disp8} mov        ecx, dword ptr [esp + 0x14]\n"                                      // 0x004013b2    8b4c2414
-    "cmp.s              ecx, edi\n"                                                         // 0x004013b6    3bcf
-    "{disp8} je         _jmp_addr_0x004013d4\n"                                             // 0x004013b8    741a
-    "push               esi\n"                                                              // 0x004013ba    56
-    "call               @AddStructureToTown__4TownFP13MultiMapFixed@12\n"                   // 0x004013bb    e8e0853300
-    "{disp32} mov       eax, dword ptr [esi + 0x00000098]\n"                                // 0x004013c0    8b8698000000
-    "{disp32} mov       cl, byte ptr [eax + 0x00000758]\n"                                  // 0x004013c6    8a8858070000
-    "dec                cl\n"                                                               // 0x004013cc    fec9
-    "{disp32} mov       byte ptr [esi + 0x000000b8], cl\n"                                  // 0x004013ce    888eb8000000
-    "_jmp_addr_0x004013d4:\n"
-    "{disp32} mov       eax, dword ptr [_game]                \n"                     // 0x004013d4    a15c19d000
-    "or                 byte ptr [eax + 0x59c0], 1\n"                                       // 0x004013d9    8088c059000001
-    "push               0x43480000\n"                                                       // 0x004013e0    6800004843
-    "mov.s              ecx, esi\n"                                                         // 0x004013e5    8bce
-    "call               @FindNearestDrinkingWater__5AbodeFf@12\n"                           // 0x004013e7    e8345c0000
-    "pop                edi\n"                                                              // 0x004013ec    5f
-    "mov.s              eax, esi\n"                                                         // 0x004013ed    8bc6
-    "pop                esi\n"                                                              // 0x004013ef    5e
-    "ret                0x001c\n"                                                           // 0x004013f0    c21c00
-  );
+    asm("{disp8} mov        eax, dword ptr [esp + 0x1c]");                                      // 0x00401350    8b44241c
+    asm("{disp8} mov        edx, dword ptr [esp + 0x14]");                                      // 0x00401354    8b542414
+    asm("push               esi");                                                              // 0x00401358    56
+    asm("push               edi");                                                              // 0x00401359    57
+    asm("push               eax");                                                              // 0x0040135a    50
+    asm("{disp8} mov        eax, dword ptr [esp + 0x1c]");                                      // 0x0040135b    8b44241c
+    asm("mov.s              esi, ecx");                                                         // 0x0040135f    8bf1
+    asm("{disp8} mov        ecx, dword ptr [esp + 0x24]");                                      // 0x00401361    8b4c2424
+    asm("push               ecx");                                                              // 0x00401365    51
+    asm("{disp8} mov        ecx, dword ptr [esp + 0x18]");                                      // 0x00401366    8b4c2418
+    asm("push               edx");                                                              // 0x0040136a    52
+    asm("{disp8} mov        edx, dword ptr [esp + 0x18]");                                      // 0x0040136b    8b542418
+    asm("push               eax");                                                              // 0x0040136f    50
+    asm("push               ecx");                                                              // 0x00401370    51
+    asm("push               edx");                                                              // 0x00401371    52
+    asm("mov.s              ecx, esi");                                                         // 0x00401372    8bce
+    asm("call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32"); // 0x00401374    e867ce1200
+    asm("xor.s              edi, edi");                                                         // 0x00401379    33ff
+    asm("{disp32} mov       dword ptr [esi + 0x00000080], edi");                                // 0x0040137b    89be80000000
+    asm("{disp32} mov       dword ptr [esi + 0x00000084], edi");                                // 0x00401381    89be84000000
+    asm("{disp32} mov       dword ptr [esi + 0x00000088], edi");                                // 0x00401387    89be88000000
+    asm("{disp32} mov       dword ptr [esi + 0x00000098], edi");                                // 0x0040138d    89be98000000
+    asm("{disp32} mov       dword ptr [esi + 0x0000009c], edi");                                // 0x00401393    89be9c000000
+    asm("{disp32} mov       dword ptr [esi + 0x000000a0], edi");                                // 0x00401399    89bea0000000
+    asm("{disp32} mov       dword ptr [esi + 0x000000a4], edi");                                // 0x0040139f    89bea4000000
+    asm("mov.s              ecx, esi");                                                         // 0x004013a5    8bce
+    asm("mov                dword ptr [esi], 0x008a9a64");                                      // 0x004013a7    c706649a8a00
+    asm("call               @SetZero__5AbodeFv@4");                                             // 0x004013ad    e80e180000
+    asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                                      // 0x004013b2    8b4c2414
+    asm("cmp.s              ecx, edi");                                                         // 0x004013b6    3bcf
+    asm("{disp8} je         _jmp_addr_0x004013d4");                                             // 0x004013b8    741a
+    asm("push               esi");                                                              // 0x004013ba    56
+    asm("call               @AddStructureToTown__4TownFP13MultiMapFixed@12");                   // 0x004013bb    e8e0853300
+    asm("{disp32} mov       eax, dword ptr [esi + 0x00000098]");                                // 0x004013c0    8b8698000000
+    asm("{disp32} mov       cl, byte ptr [eax + 0x00000758]");                                  // 0x004013c6    8a8858070000
+    asm("dec                cl");                                                               // 0x004013cc    fec9
+    asm("{disp32} mov       byte ptr [esi + 0x000000b8], cl");                                  // 0x004013ce    888eb8000000
+    asm("_jmp_addr_0x004013d4:");
+    asm("{disp32} mov       eax, dword ptr [_game]");                                           // 0x004013d4    a15c19d000
+    asm("or                 byte ptr [eax + 0x59c0], 1");                                       // 0x004013d9    8088c059000001
+    asm("push               0x43480000");                                                       // 0x004013e0    6800004843
+    asm("mov.s              ecx, esi");                                                         // 0x004013e5    8bce
+    asm("call               @FindNearestDrinkingWater__5AbodeFf@12");                           // 0x004013e7    e8345c0000
+    asm("pop                edi");                                                              // 0x004013ec    5f
+    asm("mov.s              eax, esi");                                                         // 0x004013ed    8bc6
+    asm("pop                esi");                                                              // 0x004013ef    5e
+    asm("ret                0x001c");                                                           // 0x004013f0    c21c00
   __builtin_unreachable();
 }
