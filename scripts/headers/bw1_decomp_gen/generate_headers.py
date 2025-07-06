@@ -251,6 +251,16 @@ def build_neighbour_function_headers(assigned_neighbour_functions, header_map):
         header_map[path] = header
 
 
+def build_loadit_headers(loadit_functions, header_map):
+    for t in loadit_functions:
+        path = get_struct_path("LoaderAnon")
+        header = header_map.get(path)
+        structs: list[Struct] = header.structs if header is not None else []
+        structs.append(t)
+        header = Header(path, [], structs)
+        header_map[path] = header
+
+
 def build_sinit_headers(sinit_functions, header_map):
     for t in sinit_functions:
         class_name = t.name.removeprefix("__sinit_").removesuffix("_cpp")
@@ -300,10 +310,12 @@ if __name__ == "__main__":
     class_method_look_up, class_static_method_look_up, class_list_functions, remainder_functions = find_methods(db['functions'])
     (
         assigned_neighbour_functions,
+        loadit_functions,
         sinit_functions,
         remainder_functions,
     ) = partition([
         lambda x: x.name in ROOMMATE_CLASS_MAP.keys(),
+        lambda x: x.name.startswith("LoadIt__FP10LoaderAnon"),
         lambda x: x.name.startswith("__sinit_"),
     ], remainder_functions)
 
@@ -462,6 +474,7 @@ if __name__ == "__main__":
     remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
     remainder_class_static_methods = build_remaining_static_function_headers(remainder_class_static_methods, header_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
+    build_loadit_headers(loadit_functions, header_map)
     build_sinit_headers(sinit_functions, header_map)
     consumed_template_container_structs = build_list_template_headers(template_container_structs, header_map, local_header_import_map)
     consumed_template_container_structs_flat = set()
