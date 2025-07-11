@@ -8,7 +8,7 @@
 .extern _jmp_addr_0x00405890
 .extern @FindNearestDrinkingWater__5AbodeFf@12
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004e3ee0
 .extern _jmp_addr_0x0050aad0
 .extern _Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi

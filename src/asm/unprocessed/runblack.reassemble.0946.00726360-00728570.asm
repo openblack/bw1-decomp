@@ -34,7 +34,7 @@
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436760
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004369d0
 .extern _jmp_addr_0x00438770
 .extern _jmp_addr_0x0043dc00
@@ -2958,7 +2958,7 @@ _jmp_addr_0x00727f20:    push               esi                                 
                          {disp8} je         _jmp_addr_0x00727fdd                                 // 0x00727fcd    740e
                          push               0x000000a0                                           // 0x00727fcf    68a0000000
                          push               esi                                                  // 0x00727fd4    56
-                         call               _jmp_addr_0x00436970                                 // 0x00727fd5    e896e9d0ff
+                         call               ??3Base@@SAXPAXK@Z                                 // 0x00727fd5    e896e9d0ff
                          add                esp, 0x08                                            // 0x00727fda    83c408
 _jmp_addr_0x00727fdd:    mov.s              eax, esi                                             // 0x00727fdd    8bc6
                          pop                esi                                                  // 0x00727fdf    5e

@@ -47,7 +47,7 @@ void __fastcall __dt__10GAbodeInfoFv(struct Base* this, const void* edx, uint8_t
     asm("{disp8} je         _jmp_addr_0x0040133d");                         // 0x0040132d    740e
     asm("push               0x000001c8");                                   // 0x0040132f    68c8010000
     asm("push               esi");                                          // 0x00401334    56
-    asm("call               _jmp_addr_0x00436970");                         // 0x00401335    e836560300
+    asm("call               ??3Base@@SAXPAXK@Z");                         // 0x00401335    e836560300
     asm("add                esp, 0x08");                                    // 0x0040133a    83c408
     asm("_jmp_addr_0x0040133d:");
     asm("mov.s              eax, esi");                                     // 0x0040133d    8bc6

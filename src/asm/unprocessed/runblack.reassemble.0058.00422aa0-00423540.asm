@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00422750
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x0052e280
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
@@ -444,7 +444,7 @@ _jmp_addr_0x00422e57:    add                esi, 0x04                           
                          {disp8} je         _jmp_addr_0x00422eb0                          // 0x00422ea3    740b
                          push               0x7c                                          // 0x00422ea5    6a7c
                          push               esi                                           // 0x00422ea7    56
-                         call               _jmp_addr_0x00436970                          // 0x00422ea8    e8c33a0100
+                         call               ??3Base@@SAXPAXK@Z                          // 0x00422ea8    e8c33a0100
                          add                esp, 0x08                                     // 0x00422ead    83c408
 _jmp_addr_0x00422eb0:    mov.s              eax, esi                                      // 0x00422eb0    8bc6
                          pop                esi                                           // 0x00422eb2    5e
