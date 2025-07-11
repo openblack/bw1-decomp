@@ -5,7 +5,7 @@ struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__12PlannedAbo
 
 const struct PlannedMultiMapFixedVftable __vt__12PlannedAbode = {
     Serialise__4BaseFR7Archive,
-    __dt__12PlannedAbodeFv,
+    __dt__12PlannedAbodeFUi,
     Delete__4BaseFi,
     ToBeDeleted__12PlannedAbodeFi,
     Get3DSoundPos__16GameThingWithPosFP7LHPoint,

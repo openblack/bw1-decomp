@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00402b60
+.extern ??1Abode@@UAE@XZ
 .extern @SetZero__5AbodeFv@4
 .extern _jmp_addr_0x00417900
 .extern _jmp_addr_0x00417b80
@@ -3942,7 +3942,7 @@ _jmp_addr_0x0055df7d:    mov.s              eax, esi                            
                          nop                                                               // 0x0055e00f    90
                          push               esi                                            // 0x0055e010    56
                          mov.s              esi, ecx                                       // 0x0055e011    8bf1
-                         call               _jmp_addr_0x00402b60                           // 0x0055e013    e8484beaff
+                         call               ??1Abode@@UAE@XZ                               // 0x0055e013    e8484beaff
                          test               byte ptr [esp + 0x08], 0x01                    // 0x0055e018    f644240801
                          {disp8} je         _jmp_addr_0x0055e02d                           // 0x0055e01d    740e
                          push               0x000000c8                                     // 0x0055e01f    68c8000000
@@ -10236,7 +10236,7 @@ _jmp_addr_0x0056119d:    mov.s              eax, esi                            
                          nop                                                               // 0x0056121f    90
                          push               esi                                            // 0x00561220    56
                          mov.s              esi, ecx                                       // 0x00561221    8bf1
-                         call               _jmp_addr_0x00402b60                           // 0x00561223    e83819eaff
+                         call               ??1Abode@@UAE@XZ                               // 0x00561223    e83819eaff
                          test               byte ptr [esp + 0x08], 0x01                    // 0x00561228    f644240801
                          {disp8} je         _jmp_addr_0x0056123d                           // 0x0056122d    740e
                          push               0x000000c8                                     // 0x0056122f    68c8000000
@@ -10777,7 +10777,7 @@ _jmp_addr_0x005614d0:    push               esi                                 
                          nop                                                               // 0x0056157f    90
                          push               esi                                            // 0x00561580    56
                          mov.s              esi, ecx                                       // 0x00561581    8bf1
-                         call               _jmp_addr_0x00402b60                           // 0x00561583    e8d815eaff
+                         call               ??1Abode@@UAE@XZ                               // 0x00561583    e8d815eaff
                          test               byte ptr [esp + 0x08], 0x01                    // 0x00561588    f644240801
                          {disp8} je         _jmp_addr_0x0056159d                           // 0x0056158d    740e
                          push               0x000000e4                                     // 0x0056158f    68e4000000
@@ -11287,7 +11287,7 @@ _jmp_addr_0x0056186d:    mov.s              eax, esi                            
                          nop                                                               // 0x005618cf    90
                          push               esi                                            // 0x005618d0    56
                          mov.s              esi, ecx                                       // 0x005618d1    8bf1
-                         call               _jmp_addr_0x00402b60                           // 0x005618d3    e88812eaff
+                         call               ??1Abode@@UAE@XZ                               // 0x005618d3    e88812eaff
                          test               byte ptr [esp + 0x08], 0x01                    // 0x005618d8    f644240801
                          {disp8} je         _jmp_addr_0x005618ed                           // 0x005618dd    740e
                          push               0x000000fc                                     // 0x005618df    68fc000000

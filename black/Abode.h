@@ -134,8 +134,10 @@ struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const
 
 // Override methods
 
-// win1.41 004017c0 mac 103d4980 Abode::_dt(void)
-void __fastcall __dt__5AbodeFv(struct Base* this, const void* edx, uint8_t param_1) asm("??_DAbode@@QAEXXZ");
+// win1.41 004017c0 mac 103d4980 Abode::_dt(unsigned int)
+void __fastcall __dt__5AbodeFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAbode@@UAEPAXI@Z");
+// win1.41 00402b60 mac inline Abode::_dt(void)
+void __fastcall __dt__5AbodeFv(struct Base* this) asm("??1Abode@@UAE@XZ");
 // win1.41 00402c10 mac 1033b510 Abode::Delete(void)
 void __fastcall Delete__5AbodeFv(struct Base* this, const void* edx, int param_1) asm("?Delete@Abode@@UAEXH@Z");
 // win1.41 00402c60 mac 100c6f40 Abode::ToBeDeleted(int)

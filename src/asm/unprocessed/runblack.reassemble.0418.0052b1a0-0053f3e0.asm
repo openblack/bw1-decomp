@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x00401140
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern _jmp_addr_0x00402b60
+.extern ??1Abode@@UAE@XZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
@@ -10738,7 +10738,7 @@ _jmp_addr_0x005312d4:    xor.s              eax, eax                            
                          nop                                                                     // 0x0053132f    90
                          push               esi                                                  // 0x00531330    56
                          mov.s              esi, ecx                                             // 0x00531331    8bf1
-                         call               _jmp_addr_0x00402b60                                 // 0x00531333    e82818edff
+                         call               ??1Abode@@UAE@XZ                                     // 0x00531333    e82818edff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x00531338    f644240801
                          {disp8} je         _jmp_addr_0x0053134d                                 // 0x0053133d    740e
                          push               0x00000318                                           // 0x0053133f    6818030000

@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern _jmp_addr_0x00402b60
+.extern ??1Abode@@UAE@XZ
 .extern @SetZero__5AbodeFv@4
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12

@@ -151,16 +151,16 @@ char* __fastcall GetDebugText__5AbodeFv(struct GameThing* this)
     __builtin_unreachable();
 }
 
-void __fastcall __dt__5AbodeFv(struct Base* this, const void* edx, uint8_t param_1)
+void __fastcall __dt__5AbodeFUi(struct Base* this, const void* edx, uint32_t param_1)
 {
     asm("push       esi                        ");  // 0x004017c0    56
     asm("mov.s      esi, ecx                   ");  // 0x004017c1    8bf1
-    asm("call       _jmp_addr_0x00402b60       ");  // 0x004017c3    e898130000
+    asm("call       ??1Abode@@UAE@XZ           ");  // 0x004017c3    e898130000
     asm("test       byte ptr [esp + 0x08], 0x01");  // 0x004017c8    f644240801
     asm("{disp8} je _jmp_addr_0x004017dd       ");  // 0x004017cd    740e
     asm("push       0x000000c4                 ");  // 0x004017cf    68c4000000
     asm("push       esi                        ");  // 0x004017d4    56
-    asm("call       ??3Base@@SAXPAXK@Z       ");  // 0x004017d5    e896510300
+    asm("call       ??3Base@@SAXPAXK@Z         ");  // 0x004017d5    e896510300
     asm("add        esp, 0x08                  ");  // 0x004017da    83c408
     asm("_jmp_addr_0x004017dd:                 ");
     asm("mov.s     eax, esi                    ");  // 0x004017dd    8bc6

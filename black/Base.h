@@ -15,7 +15,7 @@ struct LHPoint;
 struct BaseVftable
 {
   void (__fastcall* Serialise)(struct Base* this, const void* edx, struct Archive* param_1);  /* 0x0 */
-  void (__fastcall* __dt)(struct Base* this, const void* edx, uint8_t param_1);
+  void (__fastcall* __dt)(struct Base* this, const void* edx, uint32_t param_1);
   void (__fastcall* Delete)(struct Base* this, const void* edx, int param_1);
   void (__fastcall* ToBeDeleted)(struct Base* this, const void* edx, int param_1);
   int (__fastcall* Get3DSoundPos)(struct Base* this, const void* edx, struct LHPoint* pos);  /* 0x10 */
@@ -60,7 +60,7 @@ void __fastcall SetInfo__4BaseCFP8BaseInfo(const struct Base* this, const void* 
 // win1.41 004011b0 mac 101228f0 Base::Serialise(Archive&)
 void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, struct Archive* param_1) asm("?Serialise@Base@@UAEXAAVArchive@@@Z");
 // win1.41 00401210 mac 10082770 Base::~Base(void)
-void __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1Base@@UAE@XZ");
+void __fastcall __dt__4BaseFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??GBase@@UAE@XZ");
 // win1.41 004011c0 mac 1056ecc0 Base::Delete(int)
 void __fastcall Delete__4BaseFi(struct Base* this, const void* edx, int param_1) asm("?Delete@Base@@UAEXH@Z");
 // win1.41 004011d0 mac 1032b070 Base::ToBeDeleted(int)
