@@ -82,7 +82,7 @@
 .extern _jmp_addr_0x007f3e40
 .extern _jmp_addr_0x007f40c0
 .extern _jmp_addr_0x007f6f00
-.extern _jmp_addr_0x007f70e0
+.extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
 .extern _jmp_addr_0x007f7d40
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
@@ -341,7 +341,7 @@ _jmp_addr_0x0040628b:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          test               ebp, ebp                                      // 0x00406328    85ed
                          {disp8} je         _jmp_addr_0x0040633c                          // 0x0040632a    7410
                          mov.s              ecx, ebp                                      // 0x0040632c    8bcd
-                         call               _jmp_addr_0x007f70e0                          // 0x0040632e    e8ad0d3f00
+                         call               ??1FragMesh@@QAE@XZ                           // 0x0040632e    e8ad0d3f00
                          push               ebp                                           // 0x00406333    55
                          call                ___dl__FPv                                   // 0x00406334    e85f8b3a00
                          add                esp, 0x04                                     // 0x00406339    83c404
@@ -443,7 +443,7 @@ _jmp_addr_0x0040644e:    {disp32} fld       dword ptr [edi + 0x00000178]        
                          test               edi, edi                                      // 0x00406492    85ff
                          {disp8} je         _jmp_addr_0x004064a6                          // 0x00406494    7410
                          mov.s              ecx, edi                                      // 0x00406496    8bcf
-                         call               _jmp_addr_0x007f70e0                          // 0x00406498    e8430c3f00
+                         call               ??1FragMesh@@QAE@XZ                           // 0x00406498    e8430c3f00
                          push               edi                                           // 0x0040649d    57
                          call                ___dl__FPv                                   // 0x0040649e    e8f5893a00
                          add                esp, 0x04                                     // 0x004064a3    83c404

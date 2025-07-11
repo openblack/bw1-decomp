@@ -31,8 +31,8 @@
 .extern _Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi
 .extern _jmp_addr_0x00779590
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007f70e0
-.extern _jmp_addr_0x007f8d10
+.extern ??1FragMesh@@QAE@XZ
+.extern ?Release@LH3DSmoke@@QAEXXZ
 .extern @SetInverse__8LHMatrixFRC8LHMatrix@12
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fbac0
@@ -109,13 +109,13 @@ _jmp_addr_0x00402b60:    push               esi                                 
                          push               edi                                      // 0x00402b6b    57
                          mov                dword ptr [esi], 0x008a9a64              // 0x00402b6c    c706649a8a00
                          {disp8} je         _jmp_addr_0x00402b83                     // 0x00402b72    740f
-                         call               _jmp_addr_0x007f8d10                     // 0x00402b74    e897613f00
+                         call               ?Release@LH3DSmoke@@QAEXXZ               // 0x00402b74    e897613f00
                          {disp32} mov       dword ptr [esi + 0x0000008c], 0x00000000 // 0x00402b79    c7868c00000000000000
 _jmp_addr_0x00402b83:    {disp32} mov       edi, dword ptr [esi + 0x00000090]        // 0x00402b83    8bbe90000000
                          test               edi, edi                                 // 0x00402b89    85ff
                          {disp8} je         _jmp_addr_0x00402ba7                     // 0x00402b8b    741a
                          mov.s              ecx, edi                                 // 0x00402b8d    8bcf
-                         call               _jmp_addr_0x007f70e0                     // 0x00402b8f    e84c453f00
+                         call               ??1FragMesh@@QAE@XZ                      // 0x00402b8f    e84c453f00
                          push               edi                                      // 0x00402b94    57
                          call                ___dl__FPv                              // 0x00402b95    e8fec23a00
                          add                esp, 0x04                                // 0x00402b9a    83c404

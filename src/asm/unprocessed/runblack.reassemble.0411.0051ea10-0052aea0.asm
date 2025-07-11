@@ -169,7 +169,7 @@
 .extern _jmp_addr_0x008398a0
 .extern _jmp_addr_0x00839f10
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern _jmp_addr_0x00840c70
 .extern _BMan_Check__FP4Prssiii
 .extern _jmp_addr_0x00842100
@@ -12362,7 +12362,7 @@ _jmp_addr_0x005264dd:    {disp8} mov        ecx, dword ptr [esi + 0x08]         
                          call                ___dl__FPv                                          // 0x005264fd    e896892800
                          {disp8} mov        ecx, dword ptr [esi + 0x34]                          // 0x00526502    8b4e34
                          add                esp, 0x0c                                            // 0x00526505    83c40c
-                         call               _jmp_addr_0x00840520                                 // 0x00526508    e813a03100
+                         call               ?Release@LH3DSprite@@QAEXXZ                          // 0x00526508    e813a03100
                          {disp8} mov        eax, dword ptr [esi + 0x3c]                          // 0x0052650d    8b463c
                          push               eax                                                  // 0x00526510    50
                          {disp8} mov        dword ptr [esi + 0x34], ebx                          // 0x00526511    895e34

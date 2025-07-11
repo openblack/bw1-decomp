@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x008398a0
 .extern _jmp_addr_0x0083f310
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern @Draw__10LH3DSpriteFv@4
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x008412b0
@@ -4991,7 +4991,7 @@ _jmp_addr_0x00845d76:    pop                esi                                 
 _jmp_addr_0x00845d80:    {disp32} mov       ecx, dword ptr [data_bytes + 0x531534]         // 0x00845d80    8b0d3475ef00
                          test               ecx, ecx                                       // 0x00845d86    85c9
                          {disp8} je         _jmp_addr_0x00845d8f                           // 0x00845d88    7405
-                         call               _jmp_addr_0x00840520                           // 0x00845d8a    e891a7ffff
+                         call               ?Release@LH3DSprite@@QAEXXZ                    // 0x00845d8a    e891a7ffff
 _jmp_addr_0x00845d8f:    {disp32} mov       eax, dword ptr [data_bytes + 0x531538]         // 0x00845d8f    a13875ef00
                          test               eax, eax                                       // 0x00845d94    85c0
                          {disp32} mov       dword ptr [data_bytes + 0x531534], 0x00000000  // 0x00845d96    c7053475ef0000000000

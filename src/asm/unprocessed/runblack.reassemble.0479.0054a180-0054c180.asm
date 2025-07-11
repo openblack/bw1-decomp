@@ -391,7 +391,7 @@
 .extern _jmp_addr_0x0083f310
 .extern _jmp_addr_0x0083f890
 .extern _jmp_addr_0x008404a0
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x008415a0
 .extern _jmp_addr_0x00842030
@@ -3188,7 +3188,7 @@ _jmp_addr_0x0054c049:    {disp32} mov       eax, dword ptr [esi + 0x002502d0]   
                          call               ___dt__10LHFilePathFv                         // 0x0054c08c    e89fad2700
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4f3ab4]        // 0x0054c091    8b0db49aeb00
                          add                esp, 0x18                                     // 0x0054c097    83c418
-                         call               _jmp_addr_0x00840520                          // 0x0054c09a    e881442f00
+                         call               ?Release@LH3DSprite@@QAEXXZ                   // 0x0054c09a    e881442f00
                          {disp32} mov       dword ptr [data_bytes + 0x4bf36c], 0x00000000 // 0x0054c09f    c7056c53e80000000000
                          {disp32} mov       dword ptr [data_bytes + 0x4bf370], 0x00000000 // 0x0054c0a9    c7057053e80000000000
                          call               _jmp_addr_0x00469960                          // 0x0054c0b3    e8a8d8f1ff

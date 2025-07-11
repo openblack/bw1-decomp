@@ -76,7 +76,7 @@
 .extern _jmp_addr_0x008379e0
 .extern @Release__11LH3DTextureFv@4
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern @Draw__10LH3DSpriteFv@4
 
 .globl _jmp_addr_0x005f6a70
@@ -3140,7 +3140,7 @@ _jmp_addr_0x005f8f19:    cmp                eax, 0x02                           
                          call               @Release__11LH3DTextureFv@4                    // 0x005f8f56    e8e5ed2300
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x36ea98]         // 0x005f8f5b    8b0d984ad300
                          {disp32} mov       dword ptr [data_bytes + 0x371ca8], ebp         // 0x005f8f61    892da87cd300
-                         call               _jmp_addr_0x00840520                           // 0x005f8f67    e8b4752400
+                         call               ?Release@LH3DSprite@@QAEXXZ                    // 0x005f8f67    e8b4752400
                          {disp32} mov       edx, dword ptr [data_bytes + 0x371c9c]         // 0x005f8f6c    8b159c7cd300
                          push               edx                                            // 0x005f8f72    52
                          {disp32} mov       dword ptr [data_bytes + 0x36ea98], ebp         // 0x005f8f73    892d984ad300
@@ -4540,7 +4540,7 @@ _jmp_addr_0x005fa27a:    push               0x43160000                          
                          ret                                                               // 0x005fa359    c3
                          call               dword ptr [__imp__Disconnect_Dialup__QAEXH_Z@4]// 0x005fa35a    ff159c998a00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x36ea70]         // 0x005fa360    8b0d704ad300
-                         {disp32} jmp       _jmp_addr_0x00840520                           // 0x005fa366    e9b5612400
+                         {disp32} jmp       ?Release@LH3DSprite@@QAEXXZ                    // 0x005fa366    e9b5612400
                          nop                                                               // 0x005fa36b    90
                          nop                                                               // 0x005fa36c    90
                          nop                                                               // 0x005fa36d    90

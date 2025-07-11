@@ -397,7 +397,7 @@
 .extern _jmp_addr_0x0083f310
 .extern _jmp_addr_0x0083f890
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x008415a0
 .extern _jmp_addr_0x00842030

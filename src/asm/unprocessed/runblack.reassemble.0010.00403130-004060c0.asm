@@ -87,7 +87,7 @@
 .extern _jmp_addr_0x007c57d2
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x007da710
-.extern _jmp_addr_0x007f70e0
+.extern ??1FragMesh@@QAE@XZ
 .extern _Create__9LH3DSmokeFPC7LHPoint
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
@@ -1722,7 +1722,7 @@ _jmp_addr_0x00403f31:    {disp8} fld        dword ptr [eax + 0x18]              
                          test               esi, esi                                      // 0x00403f54    85f6
                          {disp8} je         _jmp_addr_0x00403f72                          // 0x00403f56    741a
                          mov.s              ecx, esi                                      // 0x00403f58    8bce
-                         call               _jmp_addr_0x007f70e0                          // 0x00403f5a    e881313f00
+                         call               ??1FragMesh@@QAE@XZ                           // 0x00403f5a    e881313f00
                          push               esi                                           // 0x00403f5f    56
                          call                ___dl__FPv                                   // 0x00403f60    e833af3a00
                          add                esp, 0x04                                     // 0x00403f65    83c404

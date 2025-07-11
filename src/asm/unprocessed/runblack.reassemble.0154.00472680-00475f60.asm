@@ -164,7 +164,7 @@
 .extern _operator_new
 .extern _jmp_addr_0x007c7d00
 .extern ___nw__FUl
-.extern _jmp_addr_0x007f8d10
+.extern ?Release@LH3DSmoke@@QAEXXZ
 .extern @Release__8LH3DMeshFv@4
 .extern _Report3D__FPCce
 .extern _jmp_addr_0x0081edd0
@@ -4768,7 +4768,7 @@ _jmp_addr_0x00475bca:    {disp32} mov       ecx, dword ptr [esi + 0x0000109c]   
                          {disp32} mov       dword ptr [esi + 0x00000380], ebx                    // 0x00475bd2    899e80030000
                          {disp32} mov       dword ptr [esi + 0x00001068], ebx                    // 0x00475bd8    899e68100000
                          {disp8} je         _jmp_addr_0x00475beb                                 // 0x00475bde    740b
-                         call               _jmp_addr_0x007f8d10                                 // 0x00475be0    e82b313800
+                         call               ?Release@LH3DSmoke@@QAEXXZ                           // 0x00475be0    e82b313800
                          {disp32} mov       dword ptr [esi + 0x0000109c], ebx                    // 0x00475be5    899e9c100000
 _jmp_addr_0x00475beb:    {disp32} mov       ecx, dword ptr [esi + 0x000010a0]                    // 0x00475beb    8b8ea0100000
                          cmp.s              ecx, ebx                                             // 0x00475bf1    3bcb
