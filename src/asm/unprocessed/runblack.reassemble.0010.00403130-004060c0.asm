@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern _jmp_addr_0x00402b60
+.extern ??1Abode@@UAE@XZ
 .extern _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
 .extern _jmp_addr_0x004073f0
 .extern _jmp_addr_0x00414520
@@ -241,7 +241,7 @@
 .globl ?MoveAbodeToPlannedAbodes@Abode@@UAEXXZ
 .globl ?DeleteDependancys@Abode@@UAEXXZ
 .globl ?GetTribe@Abode@@UAEPAUGTribeInfo@@XZ
-.globl ??_DPlannedAbode@@QAEXXZ
+.globl ??_GPlannedAbode@@QAEXXZ
 .globl ?ToBeDeleted@PlannedAbode@@UAEXH@Z
 .globl ?GetTown@PlannedAbode@@QAEPAVTown@@XZ
 .globl ?GetDebugText@PlannedAbode@@QAEPADXZ
@@ -3551,7 +3551,7 @@ _jmp_addr_0x0040506c:    mov.s              eax, edi                            
                          nop                                                              // 0x0040510e    90
                          nop                                                              // 0x0040510f    90
 
-??_DPlannedAbode@@QAEXXZ:
+??_GPlannedAbode@@QAEXXZ:
                          push               esi                                           // 0x00405110    56
                          mov.s              esi, ecx                                      // 0x00405111    8bf1
                          call               _jmp_addr_0x0056fa80                          // 0x00405113    e868a91600
@@ -4959,7 +4959,7 @@ _jmp_addr_0x004058ed:    xor.s              eax, eax                            
                          nop                                                              // 0x0040591f    90
                          push               esi                                           // 0x00405920    56
                          mov.s              esi, ecx                                      // 0x00405921    8bf1
-                         call               _jmp_addr_0x00402b60                          // 0x00405923    e838d2ffff
+                         call               ??1Abode@@UAE@XZ                              // 0x00405923    e838d2ffff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00405928    f644240801
                          {disp8} je         _jmp_addr_0x0040593d                          // 0x0040592d    740e
                          push               0x000000c4                                    // 0x0040592f    68c4000000

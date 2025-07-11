@@ -43,8 +43,8 @@ void __fastcall Init__12PlannedAbodeFP4Town(struct PlannedAbode* this, const voi
 
 // Override methods
 
-// win1.41 00405110 mac 1017d1f0 PlannedAbode::_dt(void)
-void __fastcall __dt__12PlannedAbodeFv(struct Base* this, const void* edx, uint8_t param_1) asm("??_DPlannedAbode@@QAEXXZ");
+// win1.41 00405110 mac 1017d1f0 PlannedAbode::_dt(unsigned int)
+void __fastcall __dt__12PlannedAbodeFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPlannedAbode@@QAEXXZ");
 // win1.41 004056b0 mac 100c5460 PlannedAbode::ToBeDeleted(int)
 void __fastcall ToBeDeleted__12PlannedAbodeFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@PlannedAbode@@UAEXH@Z");
 // win1.41 004050e0 mac 10352440 PlannedAbode::GetTown(void)

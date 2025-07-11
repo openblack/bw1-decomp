@@ -38,7 +38,7 @@ void __cdecl dynamic_atexit_destructor_for_AbodeInfos(void)
     __builtin_unreachable();
 }
 
-void __fastcall __dt__10GAbodeInfoFv(struct Base* this, const void* edx, uint8_t param_1)
+void __fastcall __dt__10GAbodeInfoFUi(struct Base* this, const void* edx, uint32_t param_1)
 {
     asm("push               esi");                                          // 0x00401320    56
     asm("mov.s              esi, ecx");                                     // 0x00401321    8bf1
