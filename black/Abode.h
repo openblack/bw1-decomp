@@ -181,9 +181,9 @@ bool32_t __fastcall IsCastShadowAtNight__5AbodeFv(struct GameThingWithPos* this)
 // win1.41 00401710 mac 100970f0 Abode::IsAbode(void)
 bool32_t __fastcall IsAbode__5AbodeFv(struct GameThingWithPos* this) asm("?IsAbode@Abode@@UAE_NXZ");
 // win1.41 004e43f0 mac 105e5610 Abode::CanBeStompedOnByCreature(Creature *)
-bool __fastcall CanBeStompedOnByCreature__5AbodeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeStompedOnByCreature@Abode@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeStompedOnByCreature__5AbodeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeStompedOnByCreature@Abode@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3fa0 mac 105e63e0 Abode::CanBeKickedByCreature(Creature *)
-bool __fastcall CanBeKickedByCreature__5AbodeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeKickedByCreature@Abode@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeKickedByCreature__5AbodeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeKickedByCreature@Abode@@UAE_NPAVCreature@@@Z");
 // win1.41 00401750 mac 100a48c0 Abode::GetCreatureMimicType(void)
 uint32_t __fastcall GetCreatureMimicType__5AbodeFv(const struct GameThingWithPos* this) asm("?GetCreatureMimicType@Abode@@UAEIXZ");
 // win1.41 004d1b60 mac 10242f80 Abode::GetHowMuchCreatureWantsToLookAtMe(void)
@@ -193,7 +193,7 @@ void __fastcall CalculateWhereIWillBeAfterNSeconds__5AbodeFfP7LHPoint(struct Gam
 // win1.41 00401790 mac 10134300 Abode::IsHouse(void)
 bool32_t __fastcall IsHouse__5AbodeFv(struct GameThingWithPos* this) asm("?IsHouse@Abode@@UAE_NXZ");
 // win1.41 004061c0 mac 1014d0e0 Abode::IsWonder(void)
-bool __fastcall IsWonder__5AbodeFv(struct GameThingWithPos* this) asm("?IsWonder@Abode@@UAE_NXZ");
+bool32_t __fastcall IsWonder__5AbodeFv(struct GameThingWithPos* this) asm("?IsWonder@Abode@@UAE_NXZ");
 // win1.41 00406810 mac 1001b380 Abode::GetScriptObjectType(void)
 uint32_t __fastcall GetScriptObjectType__5AbodeFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@Abode@@UAEIXZ");
 // win1.41 00402cb0 mac 10570ad0 Abode::DestroyedByBeam(void)

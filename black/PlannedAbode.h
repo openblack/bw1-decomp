@@ -58,7 +58,7 @@ uint32_t __fastcall Save__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
 // win1.41 004050f0 mac 10531c20 PlannedAbode::GetSaveType(void)
 uint32_t __fastcall GetSaveType__12PlannedAbodeFv(struct GameThing* this) asm("?GetSaveType@PlannedAbode@@UAEIXZ");
 // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)
-bool __fastcall IsWonder__12PlannedAbodeFv(struct GameThingWithPos* this) asm("?IsWonder@PlannedAbode@@UAE_NXZ");
+bool32_t __fastcall IsWonder__12PlannedAbodeFv(struct GameThingWithPos* this) asm("?IsWonder@PlannedAbode@@UAE_NXZ");
 // win1.41 00405710 mac 10570d80 PlannedAbode::CreatePlanned(float)
 struct MultiMapFixed* __fastcall CreatePlanned__12PlannedAbodeFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlanned@PlannedAbode@@QAEPAVMultiMapFixed@@M@Z");
 // win1.41 00405770 mac 10282ed0 PlannedAbode::CreatePlannedNoFixedCheck(float)
