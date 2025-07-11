@@ -41,7 +41,7 @@ static_assert(sizeof(struct FragPrimitive) == 0x14, "Data type is of wrong size"
 // Constructors
 
 // win1.41 0076d7a0 mac 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
-struct FragMesh* __fastcall __ct__13FragPrimitiveFR10GameOSFileP8LH3DMesh(struct FragPrimitive* this, const void* edx, struct GameOSFile* file, struct LH3DMesh* mesh);
+struct FragPrimitive* __fastcall __ct__13FragPrimitiveFR10GameOSFileP8LH3DMesh(struct FragPrimitive* this, const void* edx, struct GameOSFile* file, struct LH3DMesh* mesh);
 
 struct FragMesh
 {
@@ -58,5 +58,10 @@ static_assert(sizeof(struct FragMesh) == 0x28, "Data type is of wrong size");
 
 // win1.41 0076d520 mac 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
 struct FragMesh* __fastcall __ct__8FragMeshFR10GameOSFileP8LH3DMesh(struct FragMesh* this, const void* edx, struct GameOSFile* file, struct LH3DMesh* mesh);
+
+// Non-virtual methods
+
+// win1.41 007f70e0 mac 1015e8f0 FragMesh::_dt(void)
+void __fastcall __dt__8FragMeshFv(struct FragMesh* this) asm("??1FragMesh@@QAE@XZ");
 
 #endif /* BW1_DECOMP_VISCOUS_LIQUID_INCLUDED_H */

@@ -337,7 +337,7 @@
 .extern _jmp_addr_0x007e74c0
 .extern _jmp_addr_0x007e7530
 .extern _jmp_addr_0x007f6ee0
-.extern _jmp_addr_0x007f70e0
+.extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7960
 .extern _jmp_addr_0x007f7e30
 .extern _jmp_addr_0x007f8740
@@ -11395,7 +11395,7 @@ _jmp_addr_0x0076eab5:    {disp32} mov       esi, dword ptr [ebx + 0x00000094]   
                          test               esi, esi                                        // 0x0076eabb    85f6
                          {disp8} je         _jmp_addr_0x0076eacf                            // 0x0076eabd    7410
                          mov.s              ecx, esi                                        // 0x0076eabf    8bce
-                         call               _jmp_addr_0x007f70e0                            // 0x0076eac1    e81a860800
+                         call               ??1FragMesh@@QAE@XZ                             // 0x0076eac1    e81a860800
                          push               esi                                             // 0x0076eac6    56
                          call                ___dl__FPv                                     // 0x0076eac7    e8cc030400
                          add                esp, 0x04                                       // 0x0076eacc    83c404

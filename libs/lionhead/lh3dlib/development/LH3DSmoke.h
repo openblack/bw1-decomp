@@ -37,4 +37,9 @@ static_assert(sizeof(struct LH3DSmoke) == 0x110, "Data type is of wrong size");
 // win1.41 007f8b60 mac 100b4ab0 LH3DSmoke::Create(const LHPoint*)
 struct LH3DSmoke* __cdecl Create__9LH3DSmokeFPC7LHPoint(struct LHPoint* position);
 
+// Non-virtual methods
+
+// win1.41 007f8d10 mac 100b4a50 LH3DSmoke::Release(void)
+void __fastcall Release__9LH3DSmokeFv(struct LH3DSprite* this) asm("?Release@LH3DSmoke@@QAEXXZ");
+
 #endif /* BW1_DECOMP_LH3D_SMOKE_INCLUDED_H */

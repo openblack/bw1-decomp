@@ -65,7 +65,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern ___nw__FUl
 .extern _jmp_addr_0x007f6f00
-.extern _jmp_addr_0x007f70e0
+.extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
 .extern _jmp_addr_0x007f7d40
 .extern _jmp_addr_0x007faa50
@@ -2465,7 +2465,7 @@ _jmp_addr_0x0048c1f8:    {disp8} lea        edx, dword ptr [esp + 0x38]         
                          test               ebx, ebx                                             // 0x0048c315    85db
                          {disp8} je         _jmp_addr_0x0048c329                                 // 0x0048c317    7410
                          mov.s              ecx, ebx                                             // 0x0048c319    8bcb
-                         call               _jmp_addr_0x007f70e0                                 // 0x0048c31b    e8c0ad3600
+                         call               ??1FragMesh@@QAE@XZ                                  // 0x0048c31b    e8c0ad3600
                          push               ebx                                                  // 0x0048c320    53
                          call                ___dl__FPv                                          // 0x0048c321    e8722b3200
                          add                esp, 0x04                                            // 0x0048c326    83c404

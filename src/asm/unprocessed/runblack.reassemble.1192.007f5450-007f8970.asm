@@ -75,7 +75,7 @@
 .globl _jmp_addr_0x007f6e00
 .globl _jmp_addr_0x007f6ee0
 .globl _jmp_addr_0x007f6f00
-.globl _jmp_addr_0x007f70e0
+.globl ??1FragMesh@@QAE@XZ
 .globl _jmp_addr_0x007f7230
 .globl _jmp_addr_0x007f7960
 .globl _jmp_addr_0x007f7d40
@@ -2937,7 +2937,8 @@ _jmp_addr_0x007f70bb:    {disp8} mov        ecx, dword ptr [esp + 0x50]         
                          nop                                                               // 0x007f70dd    90
                          nop                                                               // 0x007f70de    90
                          nop                                                               // 0x007f70df    90
-_jmp_addr_0x007f70e0:    push               ebx                                            // 0x007f70e0    53
+??1FragMesh@@QAE@XZ:
+                         push               ebx                                            // 0x007f70e0    53
                          mov.s              ebx, ecx                                       // 0x007f70e1    8bd9
                          {disp8} mov        eax, dword ptr [ebx + 0x04]                    // 0x007f70e3    8b4304
                          push               edi                                            // 0x007f70e6    57
