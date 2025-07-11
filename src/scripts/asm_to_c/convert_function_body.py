@@ -14,25 +14,24 @@ def handle_known_pattern_return_0(line_group: List[str]) -> str | None:
     return None
 
 
-def handle_known_pattern_return_1(line_group: List[str]) -> str | None:
+def handle_known_pattern_return_32_bit_immediate(line_group: List[str]) -> str | None:
     if len(line_group) == 2:
-        if (
-            re.search(r'\bmov\s+eax,\s*0x[0-9a-f]{8}\b', line_group[0]) and
-            re.search(r'\bret\b', line_group[1])
-        ):
-            return f'{' ' * INDENT}return 1;'
+        match = re.search(r'\bmov\s+eax,\s*0x([0-9a-fA-F]{8})\b', line_group[0])
+        if match and re.search(r'\bret\b', line_group[1]):
+            imm_value = int(match.group(1), 16)
+            return f'{" " * INDENT}return {imm_value if imm_value < 10 else hex(imm_value)};'
     return None
 
 
 def handle_known_pattern_return(line_group: List[str]) -> str | None:
     if len(line_group) == 1:
-        if re.search(r'\bret\s+0x[0-9a-f]{4}\b', line_group[0]):
+        if re.search(r'\bret\b', line_group[0]):
             return f'{' ' * INDENT}return;'
     return None
 
 KNOWN_PATTERN_HANDLERS = [
     handle_known_pattern_return_0,
-    handle_known_pattern_return_1,
+    handle_known_pattern_return_32_bit_immediate,
     handle_known_pattern_return,
 ]
 

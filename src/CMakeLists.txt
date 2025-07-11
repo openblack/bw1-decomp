@@ -79,6 +79,7 @@ set(SOURCES_001
     c/_float_constants.001.c
     c/PlannedAbode.000.c
     c/GameThingWithPos.000.c
+    c/Object.000.c
 
     asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
 
