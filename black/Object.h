@@ -375,49 +375,49 @@ float __fastcall GetImpressiveValue__6ObjectFP6LivingP8Reaction(struct GameThing
 // win1.41 00639940 mac 103d2cf0 Object::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
 float __fastcall GetUpdateOfBoredomValue__6ObjectFP8ReactionP16GameThingWithPos(struct GameThingWithPos* this, const void* edx, struct Reaction* param_1, struct GameThingWithPos* param_2) asm("?GetUpdateOfBoredomValue@Object@@UAEMPAVReaction@@PAVGameThingWithPos@@@Z");
 // win1.41 00638550 mac 103d5010 Object::IsBuildingMaterial(void)
-bool __fastcall IsBuildingMaterial__6ObjectFv(struct GameThingWithPos* this) asm("?IsBuildingMaterial@Object@@UAE_NXZ");
+bool32_t __fastcall IsBuildingMaterial__6ObjectFv(struct GameThingWithPos* this) asm("?IsBuildingMaterial@Object@@UAE_NXZ");
 // win1.41 00402a20 mac 103db180 Object::IsSuitableForCreatureAction(void)
-bool __fastcall IsSuitableForCreatureAction__6ObjectFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureAction@Object@@UAE_NXZ");
+bool32_t __fastcall IsSuitableForCreatureAction__6ObjectFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureAction@Object@@UAE_NXZ");
 // win1.41 004e48c0 mac 105e4960 Object::CanBeEatenByCreature(Creature *)
-bool __fastcall CanBeEatenByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeEatenByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeEatenByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeEatenByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00402a40 mac 100db5e0 Object::CanBeAttackedByCreature(Creature *)
-bool __fastcall CanBeAttackedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeAttackedByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeAttackedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeAttackedByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00425c60 mac 100ade90 Object::CanBeFrighteningToCreature(Creature *)
-bool __fastcall CanBeFrighteningToCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeFrighteningToCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeFrighteningToCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeFrighteningToCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00402a80 mac 1056cf30 Object::CanBeHelpedByCreature(Creature *)
-bool __fastcall CanBeHelpedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeHelpedByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeHelpedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeHelpedByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00402a60 mac 100b95a0 Object::CanBePlayedWithByCreature(Creature *)
-bool __fastcall CanBePlayedWithByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePlayedWithByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBePlayedWithByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePlayedWithByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00402a70 mac 105a25d0 Object::CanBeImpressedByCreature(Creature *)
-bool __fastcall CanBeImpressedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeImpressedByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeImpressedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeImpressedByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3b40 mac 105e70f0 Object::CanBeInspectedByCreature(Creature *)
-bool __fastcall CanBeInspectedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeInspectedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3eb0 mac 105e66c0 Object::CanBePoodUponByCreature(Creature *)
-bool __fastcall CanBePoodUponByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePoodUponByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBePoodUponByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePoodUponByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3a20 mac 105e7240 Object::CanBePickedUpByCreature(Creature *)
-bool __fastcall CanBePickedUpByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePickedUpByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBePickedUpByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePickedUpByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3b00 mac 105e7170 Object::CanBeStrokedByCreature(Creature *)
-bool __fastcall CanBeStrokedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeStrokedByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeStrokedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeStrokedByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3c10 mac 105e6e70 Object::CanBeStompedOnByCreature(Creature *)
-bool __fastcall CanBeStompedOnByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeStompedOnByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeStompedOnByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeStompedOnByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3cf0 mac 105e6cb0 Object::CanBeThrownByCreature(Creature *)
-bool __fastcall CanBeThrownByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeThrownByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeThrownByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeThrownByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3d40 mac 105e6b50 Object::CanBePutInAStoragePit(Creature *)
-bool __fastcall CanBePutInAStoragePit__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePutInAStoragePit@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBePutInAStoragePit__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePutInAStoragePit@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00402a90 mac 103e4d10 Object::CanBeExaminedByCreature(Creature *)
-bool __fastcall CanBeExaminedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeExaminedByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeExaminedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeExaminedByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00402aa0 mac 1054f410 Object::IsOnFire(Creature *)
-bool __fastcall IsOnFire__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsOnFire@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall IsOnFire__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsOnFire@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3d90 mac 105e6a70 Object::CanBePutInFoodPile(Creature *)
-bool __fastcall CanBePutInFoodPile__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePutInFoodPile@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBePutInFoodPile__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePutInFoodPile@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3dd0 mac 105e69a0 Object::CanBePutInWoodPile(Creature *)
-bool __fastcall CanBePutInWoodPile__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePutInWoodPile@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBePutInWoodPile__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePutInWoodPile@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e3bb0 mac 105e6f50 Object::CanBeBroughtBackToCitadel(Creature *)
-bool __fastcall CanBeBroughtBackToCitadel__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeBroughtBackToCitadel@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeBroughtBackToCitadel__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeBroughtBackToCitadel@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 00402a30 mac 100ba330 Object::CanBePoodOn(Creature *)
-bool __fastcall CanBePoodOn__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePoodOn@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBePoodOn__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBePoodOn@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 004e4320 mac 105e56c0 Object::CanBeKickedByCreature(Creature *)
-bool __fastcall CanBeKickedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeKickedByCreature@Object@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeKickedByCreature__6ObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeKickedByCreature@Object@@UAE_NPAVCreature@@@Z");
 // win1.41 0063b8d0 mac 103da7f0 Object::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
 void __fastcall CalculateWhereIWillBeAfterNSeconds__6ObjectFfP7LHPoint(struct GameThingWithPos* this, const void* edx, float seconds, struct LHPoint* outPos) asm("?CalculateWhereIWillBeAfterNSeconds@Object@@UAEXMPAULHPoint@@@Z");
 // win1.41 00402b40 mac 1016dc30 Object::GetText(void)
@@ -427,7 +427,7 @@ float __fastcall GetHeight__6ObjectFv(const struct GameThingWithPos* this) asm("
 // win1.41 00639b20 mac 103d2290 Object::SetInScript(int)
 void __fastcall SetInScript__6ObjectFi(struct GameThingWithPos* this, const void* edx, int32_t param_1) asm("?SetInScript@Object@@UAEXH@Z");
 // win1.41 004029f0 mac 100219d0 Object::IsObject( const(void))
-bool __fastcall IsObject__6ObjectCFv(const struct GameThingWithPos* this) asm("?IsObject@Object@@UAE_NXZ");
+bool32_t __fastcall IsObject__6ObjectCFv(const struct GameThingWithPos* this) asm("?IsObject@Object@@UAE_NXZ");
 // win1.41 00638580 mac 103d4f70 Object::GetQueryFirstEnumText(void)
 enum HELP_TEXT __fastcall GetQueryFirstEnumText__6ObjectFv(struct GameThingWithPos* this) asm("?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ");
 // win1.41 00638590 mac 103d4f10 Object::GetQueryLastEnumText(void)
