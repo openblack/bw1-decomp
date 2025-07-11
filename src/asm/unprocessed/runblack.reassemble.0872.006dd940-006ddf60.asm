@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ___nw__4BaseFUl
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
@@ -560,7 +560,7 @@ _jmp_addr_0x006ddd7c:    mov              dword ptr [eax], edi                  
                          {disp8} je       _jmp_addr_0x006dddcd                     // 0x006dddbd    740e
                          push             0x00000138                               // 0x006dddbf    6838010000
                          push             esi                                      // 0x006dddc4    56
-                         call             _jmp_addr_0x00436970                     // 0x006dddc5    e8a68bd5ff
+                         call             ??3Base@@SAXPAXK@Z                     // 0x006dddc5    e8a68bd5ff
                          add              esp, 0x08                                // 0x006dddca    83c408
 _jmp_addr_0x006dddcd:    mov.s            eax, esi                                 // 0x006dddcd    8bc6
                          pop              esi                                      // 0x006dddcf    5e

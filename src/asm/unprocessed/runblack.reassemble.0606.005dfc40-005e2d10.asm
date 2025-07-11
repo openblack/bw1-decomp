@@ -16,7 +16,7 @@
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern _jmp_addr_0x00436760
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004369d0
 .extern _jmp_addr_0x004427b0
 .extern _jmp_addr_0x005198f0
@@ -2105,7 +2105,7 @@ _jmp_addr_0x005e171f:    ret                                                    
                          {disp8} je         _jmp_addr_0x005e173a                           // 0x005e172d    740b
                          push               0x58                                           // 0x005e172f    6a58
                          push               esi                                            // 0x005e1731    56
-                         call               _jmp_addr_0x00436970                           // 0x005e1732    e83952e5ff
+                         call               ??3Base@@SAXPAXK@Z                           // 0x005e1732    e83952e5ff
                          add                esp, 0x08                                      // 0x005e1737    83c408
 _jmp_addr_0x005e173a:    mov.s              eax, esi                                       // 0x005e173a    8bc6
                          pop                esi                                            // 0x005e173c    5e
@@ -2647,7 +2647,7 @@ _jmp_addr_0x005e1b88:    mov.s              ecx, edi                            
                          {disp8} je         _jmp_addr_0x005e1b9f                           // 0x005e1b92    740b
                          push               0x10                                           // 0x005e1b94    6a10
                          push               edi                                            // 0x005e1b96    57
-                         call               _jmp_addr_0x00436970                           // 0x005e1b97    e8d44de5ff
+                         call               ??3Base@@SAXPAXK@Z                           // 0x005e1b97    e8d44de5ff
                          add                esp, 0x08                                      // 0x005e1b9c    83c408
 _jmp_addr_0x005e1b9f:    mov.s              eax, edi                                       // 0x005e1b9f    8bc7
                          pop                edi                                            // 0x005e1ba1    5f

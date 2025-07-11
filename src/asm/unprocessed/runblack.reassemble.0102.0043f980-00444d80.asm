@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x00408240
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern _jmp_addr_0x00418a50
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x0043dff0
 .extern _jmp_addr_0x0043e890
 .extern _jmp_addr_0x00444d80
@@ -3140,7 +3140,7 @@ _jmp_addr_0x00441aa8:    mov.s              eax, edi                            
                          {disp8} je         _jmp_addr_0x00441b4d                          // 0x00441b3d    740e
                          push               0x000001d8                                    // 0x00441b3f    68d8010000
                          push               esi                                           // 0x00441b44    56
-                         call               _jmp_addr_0x00436970                          // 0x00441b45    e8264effff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x00441b45    e8264effff
                          add                esp, 0x08                                     // 0x00441b4a    83c408
 _jmp_addr_0x00441b4d:    mov.s              eax, esi                                      // 0x00441b4d    8bc6
                          pop                esi                                           // 0x00441b4f    5e

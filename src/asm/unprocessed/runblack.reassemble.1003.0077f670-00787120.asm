@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x00414360
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern ___nw__4BaseFUl
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern @__ct__9MapCoordsFv@4
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x004438c0
@@ -2061,7 +2061,7 @@ _jmp_addr_0x00780740:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x0078083a                          // 0x0078082a    740e
                          push               0x00000104                                    // 0x0078082c    6804010000
                          push               esi                                           // 0x00780831    56
-                         call               _jmp_addr_0x00436970                          // 0x00780832    e83961cbff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x00780832    e83961cbff
                          add                esp, 0x08                                     // 0x00780837    83c408
 _jmp_addr_0x0078083a:    mov.s              eax, esi                                      // 0x0078083a    8bc6
                          pop                esi                                           // 0x0078083c    5e

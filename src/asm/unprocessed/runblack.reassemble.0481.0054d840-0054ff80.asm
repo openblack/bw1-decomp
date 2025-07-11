@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x00435f30
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00437340
 .extern _jmp_addr_0x004373e0
 .extern _jmp_addr_0x00437a40
