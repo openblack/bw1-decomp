@@ -86,7 +86,7 @@
 .extern _jmp_addr_0x0083ae80
 .extern _jmp_addr_0x0083f310
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern @Draw__10LH3DSpriteFv@4
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x00841260
@@ -149,7 +149,7 @@
 .globl _jmp_addr_0x007f8970
 .globl _jmp_addr_0x007f8a20
 .globl _Create__9LH3DSmokeFPC7LHPoint
-.globl _jmp_addr_0x007f8d10
+.globl ?Release@LH3DSmoke@@QAEXXZ
 .globl _jmp_addr_0x007f8d30
 .globl _jmp_addr_0x007f8e00
 .globl _jmp_addr_0x007f9540
@@ -580,10 +580,11 @@ _jmp_addr_0x007f8c1a:    {disp8} mov        edx, dword ptr [esi + 0x10]         
                          nop                                                               // 0x007f8d0d    90
                          nop                                                               // 0x007f8d0e    90
                          nop                                                               // 0x007f8d0f    90
-_jmp_addr_0x007f8d10:    push               esi                                            // 0x007f8d10    56
+?Release@LH3DSmoke@@QAEXXZ:
+                         push               esi                                            // 0x007f8d10    56
                          mov.s              esi, ecx                                       // 0x007f8d11    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x10]                    // 0x007f8d13    8b4e10
-                         call               _jmp_addr_0x00840520                           // 0x007f8d16    e805780400
+                         call               ?Release@LH3DSprite@@QAEXXZ                    // 0x007f8d16    e805780400
                          push               esi                                            // 0x007f8d1b    56
                          call               _Free__7LH3DMemFPv                             // 0x007f8d1c    e83fa00400
                          add                esp, 0x04                                      // 0x007f8d21    83c404

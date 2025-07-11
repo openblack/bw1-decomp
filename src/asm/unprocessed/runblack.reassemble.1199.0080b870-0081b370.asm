@@ -27,7 +27,7 @@
 .extern _atexit@4
 .extern _jmp_addr_0x007c804a
 .extern _Create__9LH3DSmokeFPC7LHPoint
-.extern _jmp_addr_0x007f8d10
+.extern ?Release@LH3DSmoke@@QAEXXZ
 .extern _jmp_addr_0x007f8d30
 .extern _jmp_addr_0x007f8e00
 .extern _jmp_addr_0x007fa180
@@ -12642,7 +12642,7 @@ _jmp_addr_0x00815498:    {disp8} mov        ecx, dword ptr [esp + 0x24]         
                          mov                dword ptr [esi], 0x009a34d0                   // 0x0081550d    c706d0349a00
                          {disp8} mov        ecx, dword ptr [esi + 0x7c]                   // 0x00815513    8b4e7c
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000            // 0x00815516    c744241000000000
-                         call               _jmp_addr_0x007f8d10                          // 0x0081551e    e8ed37feff
+                         call               ?Release@LH3DSmoke@@QAEXXZ                    // 0x0081551e    e8ed37feff
                          {disp8} mov        dword ptr [esi + 0x7c], 0x00000000            // 0x00815523    c7467c00000000
                          mov                dword ptr [esi], 0x009a251c                   // 0x0081552a    c7061c259a00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbae4]        // 0x00815530    a1e41aea00

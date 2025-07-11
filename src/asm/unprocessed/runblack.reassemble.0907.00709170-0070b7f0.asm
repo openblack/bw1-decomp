@@ -75,7 +75,7 @@
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _CHAR2WCHAR__FPc
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern _jmp_addr_0x00840c70
 .extern _jmp_addr_0x00841170
 
@@ -1044,7 +1044,7 @@ _jmp_addr_0x00709940:    push               esi                                 
                          test               ecx, ecx                                      // 0x00709946    85c9
                          mov                dword ptr [esi], 0x0094228c                   // 0x00709948    c7068c229400
                          {disp8} je         _jmp_addr_0x0070995c                          // 0x0070994e    740c
-                         call               _jmp_addr_0x00840520                          // 0x00709950    e8cb6b1300
+                         call               ?Release@LH3DSprite@@QAEXXZ                   // 0x00709950    e8cb6b1300
                          {disp8} mov        dword ptr [esi + 0x64], 0x00000000            // 0x00709955    c7466400000000
 _jmp_addr_0x0070995c:    {disp8} mov        ecx, dword ptr [esi + 0x68]                   // 0x0070995c    8b4e68
                          test               ecx, ecx                                      // 0x0070995f    85c9

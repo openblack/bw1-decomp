@@ -160,7 +160,7 @@
 .extern _jmp_addr_0x00839fa0
 .extern _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern @Draw__10LH3DSpriteFv@4
 .extern _Alloc__7LH3DMemFl
 .extern _Free__7LH3DMemFPv
@@ -2987,18 +2987,18 @@ _jmp_addr_0x005c16e2:    push               ebx                                 
                          add                esp, 0x04                                      // 0x005c16e8    83c404
                          xor.s              ebx, ebx                                       // 0x005c16eb    33db
 _jmp_addr_0x005c16ed:    {disp32} mov       ecx, dword ptr [esi + 0x00002bfc]              // 0x005c16ed    8b8efc2b0000
-                         call               _jmp_addr_0x00840520                           // 0x005c16f3    e828ee2700
+                         call               ?Release@LH3DSprite@@QAEXXZ                    // 0x005c16f3    e828ee2700
                          {disp32} mov       ecx, dword ptr [esi + 0x00002c08]              // 0x005c16f8    8b8e082c0000
                          cmp.s              ecx, ebx                                       // 0x005c16fe    3bcb
                          pop                edi                                            // 0x005c1700    5f
                          pop                ebp                                            // 0x005c1701    5d
                          {disp8} je         _jmp_addr_0x005c1709                           // 0x005c1702    7405
-                         call               _jmp_addr_0x00840520                           // 0x005c1704    e817ee2700
+                         call               ?Release@LH3DSprite@@QAEXXZ                    // 0x005c1704    e817ee2700
 _jmp_addr_0x005c1709:    {disp32} mov       dword ptr [esi + 0x00002c08], ebx              // 0x005c1709    899e082c0000
                          {disp32} mov       ecx, dword ptr [esi + 0x00002c0c]              // 0x005c170f    8b8e0c2c0000
                          cmp.s              ecx, ebx                                       // 0x005c1715    3bcb
                          {disp8} je         _jmp_addr_0x005c1724                           // 0x005c1717    740b
-                         call               _jmp_addr_0x00840520                           // 0x005c1719    e802ee2700
+                         call               ?Release@LH3DSprite@@QAEXXZ                    // 0x005c1719    e802ee2700
                          {disp32} mov       dword ptr [esi + 0x00002c0c], ebx              // 0x005c171e    899e0c2c0000
 _jmp_addr_0x005c1724:    {disp32} mov       eax, dword ptr [esi + 0x00002c10]              // 0x005c1724    8b86102c0000
                          cmp.s              eax, ebx                                       // 0x005c172a    3bc3

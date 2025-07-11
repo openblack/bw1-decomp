@@ -50,7 +50,7 @@
 .extern _jmp_addr_0x007c73c0
 .extern ___nw__FUl
 .extern _jmp_addr_0x007f6f00
-.extern _jmp_addr_0x007f70e0
+.extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
 .extern _jmp_addr_0x007f7d40
 .extern _jmp_addr_0x007faa50
@@ -1433,7 +1433,7 @@ _jmp_addr_0x00482866:    {disp32} fmul      dword ptr [rdata_bytes + 0x2414]    
                          test               ebx, ebx                                             // 0x004828ca    85db
                          {disp8} je         _jmp_addr_0x004828de                                 // 0x004828cc    7410
                          mov.s              ecx, ebx                                             // 0x004828ce    8bcb
-                         call               _jmp_addr_0x007f70e0                                 // 0x004828d0    e80b483700
+                         call               ??1FragMesh@@QAE@XZ                                  // 0x004828d0    e80b483700
                          push               ebx                                                  // 0x004828d5    53
                          call                ___dl__FPv                                          // 0x004828d6    e8bdc53200
                          add                esp, 0x04                                            // 0x004828db    83c404

@@ -141,7 +141,7 @@
 .extern _jmp_addr_0x008379e0
 .extern @Release__11LH3DTextureFv@4
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern @Draw__10LH3DSpriteFv@4
 
 .globl _jmp_addr_0x0072a2f0
@@ -7091,7 +7091,7 @@ _jmp_addr_0x0072e0a0:    push               esi                                 
                          xor.s              edi, edi                                      // 0x0072e0a7    33ff
                          cmp.s              ecx, edi                                      // 0x0072e0a9    3bcf
                          {disp8} je         _jmp_addr_0x0072e0b5                          // 0x0072e0ab    7408
-                         call               _jmp_addr_0x00840520                          // 0x0072e0ad    e86e241100
+                         call               ?Release@LH3DSprite@@QAEXXZ                   // 0x0072e0ad    e86e241100
                          {disp8} mov        dword ptr [esi + 0x14], edi                   // 0x0072e0b2    897e14
 _jmp_addr_0x0072e0b5:    {disp8} mov        eax, dword ptr [esi + 0x18]                   // 0x0072e0b5    8b4618
                          cmp.s              eax, edi                                      // 0x0072e0b8    3bc7
