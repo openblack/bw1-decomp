@@ -43,7 +43,7 @@ void __fastcall Dump__4BaseFv(struct Base* this)
 {
 }
 
-void __fastcall __dt__4BaseFv(struct Base* this, const void* edx, uint8_t param_1)
+void __fastcall __dt__4BaseFUi(struct Base* this, const void* edx, uint32_t param_1)
 {
     asm("push             esi");                               // 0x00401210    56
     asm("mov.s            esi, ecx");                          // 0x00401211    8bf1

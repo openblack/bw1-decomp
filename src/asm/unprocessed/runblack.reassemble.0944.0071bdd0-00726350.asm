@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern _jmp_addr_0x00402b60
+.extern ??1Abode@@UAE@XZ
 .extern @SetZero__5AbodeFv@4
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
@@ -10546,7 +10546,7 @@ _jmp_addr_0x00722660:    push               esi                                 
                          nop                                                                     // 0x007226ff    90
                          push               esi                                                  // 0x00722700    56
                          mov.s              esi, ecx                                             // 0x00722701    8bf1
-                         call               _jmp_addr_0x00402b60                                 // 0x00722703    e85804ceff
+                         call               ??1Abode@@UAE@XZ                                     // 0x00722703    e85804ceff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x00722708    f644240801
                          {disp8} je         _jmp_addr_0x0072271d                                 // 0x0072270d    740e
                          push               0x000000dc                                           // 0x0072270f    68dc000000

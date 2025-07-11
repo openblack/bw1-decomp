@@ -5,7 +5,7 @@ struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__5Abode = &__
 
 const struct AbodeVftable __vt__5Abode = {
   Serialise__4BaseFR7Archive,
-  __dt__5AbodeFv,
+  __dt__5AbodeFUi,
   Delete__5AbodeFv,
   ToBeDeleted__5AbodeFi,
   Get3DSoundPos__16GameThingWithPosFP7LHPoint,

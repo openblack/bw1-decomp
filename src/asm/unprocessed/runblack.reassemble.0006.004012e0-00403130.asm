@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x007fbac0
 .extern _rdata_float1p0
 
-.globl _jmp_addr_0x00402b60
+.globl ??1Abode@@UAE@XZ
 .globl @SetZero__5AbodeFv@4
 .extern ?Delete@Abode@@UAEXH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
@@ -74,7 +74,7 @@
 .globl ?RemoveFromPlayer@MultiMapFixed@@UAEXXZ
 .globl ?CalulateAmountOverMaximum@MultiMapFixed@@UAEHW4RESOURCE_TYPE@@@Z
 .globl ?GetCollideData@MultiMapFixed@@UAEPAVNewCollide@@XZ
-.globl ??_DAbode@@QAEXXZ
+.globl ??_GAbode@@UAEPAXI@Z
 .globl ?Delete@Abode@@UAEXH@Z
 .globl ?ToBeDeleted@Abode@@UAEXH@Z
 .globl ?GetTown@Abode@@UAEPAVTown@@XZ
@@ -102,7 +102,8 @@
 .globl ?RestartBeingFunctional@Abode@@UAEXXZ
 .globl ?CausesTownEmergencyIfDamaged@Abode@@UAE_NXZ
 
-_jmp_addr_0x00402b60:    push               esi                                      // 0x00402b60    56
+??1Abode@@UAE@XZ:
+                         push               esi                                      // 0x00402b60    56
                          mov.s              esi, ecx                                 // 0x00402b61    8bf1
                          {disp32} mov       ecx, dword ptr [esi + 0x0000008c]        // 0x00402b63    8b8e8c000000
                          test               ecx, ecx                                 // 0x00402b69    85c9
