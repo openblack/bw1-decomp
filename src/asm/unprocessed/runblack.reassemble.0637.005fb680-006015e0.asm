@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern _jmp_addr_0x00417ba0
@@ -76,7 +76,7 @@
 .extern _jmp_addr_0x00644f00
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern @SetToZero__3PotFv@4
-.extern @CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z
 .extern @__ct__12PileResourceFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .extern _jmp_addr_0x0066f0d0
 .extern _jmp_addr_0x0066f1a0
@@ -2376,7 +2376,7 @@ _jmp_addr_0x005fc900:    push               0x0                                 
                          {disp32} jmp       _jmp_addr_0x005fcb88                          // 0x005fcab1    e9d2000000
 _jmp_addr_0x005fcab6:    {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x005fcab6    8d7e14
                          mov.s              ecx, edi                                      // 0x005fcab9    8bcf
-                         call               _jmp_addr_0x00403500                          // 0x005fcabb    e8406ae0ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x005fcabb    e8406ae0ff
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x005fcac0    d9442408
                          fcos                                                             // 0x005fcac4    d9ff
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x005fcac6    8b542410
@@ -8588,7 +8588,7 @@ _jmp_addr_0x00600ef0:    mov                eax, 0x00d4d1c4                     
                          nop                                                              // 0x00600f0f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00600f10    8b442404
                          push               eax                                           // 0x00600f14    50
-                         call               @CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords@12                          // 0x00600f15    e8e6d30600
+                         call               ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z                          // 0x00600f15    e8e6d30600
                          ret                0x0004                                        // 0x00600f1a    c20400
                          nop                                                              // 0x00600f1d    90
                          nop                                                              // 0x00600f1e    90

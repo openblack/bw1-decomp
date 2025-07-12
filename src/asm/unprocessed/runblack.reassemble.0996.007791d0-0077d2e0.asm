@@ -9,9 +9,9 @@
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ??1Abode@@UAE@XZ
-.extern @SetZero__5AbodeFv@4
+.extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern ?DeleteDependancys@Abode@@UAEXXZ
@@ -284,7 +284,7 @@ _jmp_addr_0x00779240:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x000000a4], edi             // 0x0077926f    89bea4000000
                          mov.s              ecx, esi                                      // 0x00779275    8bce
                          mov                dword ptr [esi], 0x008a9a64                   // 0x00779277    c706649a8a00
-                         call               @SetZero__5AbodeFv@4                          // 0x0077927d    e83e99c8ff
+                         call               ?SetZero@Abode@@QAEXXZ                        // 0x0077927d    e83e99c8ff
                          {disp32} mov       dword ptr [esi + 0x000000d8], edi             // 0x00779282    89bed8000000
                          {disp32} mov       dword ptr [esi + 0x000000e4], edi             // 0x00779288    89bee4000000
                          {disp32} mov       dword ptr [esi + 0x000000e0], edi             // 0x0077928e    89bee0000000
@@ -497,7 +497,7 @@ _jmp_addr_0x00779430:    xor.s              eax, eax                            
 _jmp_addr_0x00779432:    {disp32} mov       dword ptr [esi + 0x000000d4], eax             // 0x00779432    8986d4000000
 _jmp_addr_0x00779438:    push               edi                                           // 0x00779438    57
                          mov.s              ecx, esi                                      // 0x00779439    8bce
-                         call               @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12                          // 0x0077943b    e8c09dc8ff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z                          // 0x0077943b    e8c09dc8ff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x00779440    8b4e40
                          mov                eax, dword ptr [ecx]                          // 0x00779443    8b01
                          call               dword ptr [eax + 0x1e8]                       // 0x00779445    ff90e8010000

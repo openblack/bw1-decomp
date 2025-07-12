@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern _jmp_addr_0x00418a50
@@ -112,14 +112,14 @@
 .globl _jmp_addr_0x0066d660
 .globl _jmp_addr_0x0066d6a0
 .globl @__ct__12PotStructureFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
-.globl @CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords@12
+.globl ?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z
 .globl _jmp_addr_0x0066dfd0
 .globl @__ct__8PileFoodFv@4
 .globl @__ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .globl _jmp_addr_0x0066e0e0
 .globl _jmp_addr_0x0066e1a0
 .globl _jmp_addr_0x0066e1c0
-.globl @CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords@12
+.globl ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z
 .globl @__ct__12PileResourceFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .globl _jmp_addr_0x0066f0d0
 .globl _jmp_addr_0x0066f1a0
@@ -166,8 +166,8 @@
 .globl _globl_ct_0x00670a50
 .globl _globl_ct_0x00670a80
 .globl _globl_ct_0x00670ab0
-.globl _CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords
-.globl _CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z
 
 start_0x0066cce0_0x00671690:
 // Snippet: asm, [0x0066cce0, 0x00671680)
@@ -1668,8 +1668,8 @@ _jmp_addr_0x0066db7f:    pop                edi                                 
                          nop                                                              // 0x0066db8d    90
                          nop                                                              // 0x0066db8e    90
                          nop                                                              // 0x0066db8f    90
-_CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords:
-@CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066db90    8b442404
+?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066db90    8b442404
                          push               esi                                           // 0x0066db94    56
                          mov.s              esi, ecx                                      // 0x0066db95    8bf1
                          push               eax                                           // 0x0066db97    50
@@ -2330,7 +2330,7 @@ _jmp_addr_0x0066e1a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               esi                                           // 0x0066e1a4    56
                          mov.s              esi, ecx                                      // 0x0066e1a5    8bf1
                          push               eax                                           // 0x0066e1a7    50
-                         call               @CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords@12                          // 0x0066e1a8    e853010000
+                         call               ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z                          // 0x0066e1a8    e853010000
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x0066e1ad    8b4e40
                          mov                edx, dword ptr [ecx]                          // 0x0066e1b0    8b11
                          call               dword ptr [edx + 0x1e8]                       // 0x0066e1b2    ff92e8010000
@@ -2484,12 +2484,12 @@ _jmp_addr_0x0066e2f1:    mov                eax, 0x00000b38                     
                          nop                                                              // 0x0066e2fd    90
                          nop                                                              // 0x0066e2fe    90
                          nop                                                              // 0x0066e2ff    90
-_CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords:
-@CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066e300    8b442404
+?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066e300    8b442404
                          push               esi                                           // 0x0066e304    56
                          mov.s              esi, ecx                                      // 0x0066e305    8bf1
                          push               eax                                           // 0x0066e307    50
-                         call               @CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords@12                          // 0x0066e308    e883f8ffff
+                         call               ?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z                          // 0x0066e308    e883f8ffff
                          mov                edx, dword ptr [esi]                          // 0x0066e30d    8b16
                          mov.s              ecx, esi                                      // 0x0066e30f    8bce
                          call               dword ptr [edx + 0x42c]                       // 0x0066e311    ff922c040000
@@ -3177,7 +3177,7 @@ _jmp_addr_0x0066e8e2:    mov                eax, 0x00000001                     
                          {disp8} jmp        _jmp_addr_0x0066eb48                          // 0x0066eaec    eb5a
 _jmp_addr_0x0066eaee:    {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x0066eaee    8d7e14
                          mov.s              ecx, edi                                      // 0x0066eaf1    8bcf
-                         call               _jmp_addr_0x00403500                          // 0x0066eaf3    e8084ad9ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x0066eaf3    e8084ad9ff
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x0066eaf8    8b4c2418
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x0066eafc    8b54241c
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x0066eb00    8b442420

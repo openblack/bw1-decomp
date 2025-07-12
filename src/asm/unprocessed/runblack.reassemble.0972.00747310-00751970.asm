@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern @RemoveDeletedVillagerFromAbode__5AbodeFP8Villager@12
@@ -4846,7 +4846,7 @@ _jmp_addr_0x00749f60:    xor.s              eax, eax                            
                          {disp8} jmp        _jmp_addr_0x0074a0cc                           // 0x0074a070    eb5a
 _jmp_addr_0x0074a072:    {disp8} lea        edi, dword ptr [ebx + 0x14]                    // 0x0074a072    8d7b14
                          mov.s              ecx, edi                                       // 0x0074a075    8bcf
-                         call               _jmp_addr_0x00403500                           // 0x0074a077    e88494cbff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                  // 0x0074a077    e88494cbff
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                    // 0x0074a07c    8b4c2414
                          {disp8} mov        edx, dword ptr [esp + 0x18]                    // 0x0074a080    8b542418
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                    // 0x0074a084    8b44241c
@@ -5347,7 +5347,7 @@ _jmp_addr_0x0074a461:    {disp8} fstp       dword ptr [esp + 0x24]              
                          {disp32} jmp       _jmp_addr_0x0074a6a9                           // 0x0074a5d2    e9d2000000
 _jmp_addr_0x0074a5d7:    {disp8} lea        edi, dword ptr [esi + 0x14]                    // 0x0074a5d7    8d7e14
                          mov.s              ecx, edi                                       // 0x0074a5da    8bcf
-                         call               _jmp_addr_0x00403500                           // 0x0074a5dc    e81f8fcbff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                  // 0x0074a5dc    e81f8fcbff
                          {disp8} fld        dword ptr [esp + 0x28]                         // 0x0074a5e1    d9442428
                          fcos                                                              // 0x0074a5e5    d9ff
                          {disp8} mov        edx, dword ptr [esp + 0x14]                    // 0x0074a5e7    8b542414

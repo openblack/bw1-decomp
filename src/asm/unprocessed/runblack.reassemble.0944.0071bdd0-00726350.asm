@@ -9,10 +9,10 @@
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ??1Abode@@UAE@XZ
-.extern @SetZero__5AbodeFv@4
+.extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
-.extern _jmp_addr_0x00403500
+.extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern ?Process@Abode@@UAEIXZ
@@ -70,7 +70,7 @@
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
@@ -395,7 +395,7 @@
 .globl _jmp_addr_0x007260a0
 .globl @SetToZero__9SpellIconFv@4
 .globl _jmp_addr_0x00726140
-.globl @CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords@12
+.globl ?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z
 .globl _jmp_addr_0x00726210
 .globl _jmp_addr_0x00726280
 .globl _jmp_addr_0x007262a0
@@ -438,7 +438,7 @@
 .globl _globl_ct_0x00727ec0
 .globl _globl_ct_0x00727ef0
 .globl ?GetGuidanceResourceType@GameThing@@UAEIXZ
-.globl _CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z
 
 start_0x0071bdd0_0x00728570:
 // Snippet: asm, [0x0071bdd0, 0x0072853b)
@@ -10476,7 +10476,7 @@ _jmp_addr_0x00722660:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x000000a4], eax                    // 0x0072268e    8986a4000000
                          mov.s              ecx, esi                                             // 0x00722694    8bce
                          mov                dword ptr [esi], 0x008a9a64                          // 0x00722696    c706649a8a00
-                         call               @SetZero__5AbodeFv@4                                 // 0x0072269c    e81f05ceff
+                         call               ?SetZero@Abode@@QAEXXZ                               // 0x0072269c    e81f05ceff
                          mov.s              ecx, esi                                             // 0x007226a1    8bce
                          mov                dword ptr [esi], 0x00981078                          // 0x007226a3    c70678109800
                          call               _jmp_addr_0x007227b0                                 // 0x007226a9    e802010000
@@ -10636,7 +10636,7 @@ _jmp_addr_0x007227b0:    xor.s              eax, eax                            
                          {disp8} mov        edi, dword ptr [esp + 0x24]                          // 0x007227d5    8b7c2424
                          mov.s              esi, ecx                                             // 0x007227d9    8bf1
                          push               edi                                                  // 0x007227db    57
-                         call               @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12                                 // 0x007227dc    e81f0aceff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z                                 // 0x007227dc    e81f0aceff
                          test               byte ptr [esi + 0x0a], 0x01                          // 0x007227e1    f6460a01
                          {disp32} jne       _jmp_addr_0x00722893                                 // 0x007227e5    0f85a8000000
                          {disp8} lea        eax, dword ptr [esp + 0x08]                          // 0x007227eb    8d442408
@@ -12118,7 +12118,7 @@ _jmp_addr_0x00723843:    mov                edx, dword ptr [esi]                
                          {disp8} lea        ecx, dword ptr [esp + 0x4c]                          // 0x0072386d    8d4c244c
                          {disp8} fdivr      dword ptr [esp + 0x0c]                               // 0x00723871    d87c240c
                          {disp8} fstp       dword ptr [esp + 0x08]                               // 0x00723875    d95c2408
-                         call               _jmp_addr_0x00403500                                 // 0x00723879    e882fccdff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                        // 0x00723879    e882fccdff
                          {disp8} fld        dword ptr [esp + 0x08]                               // 0x0072387e    d9442408
                          fcos                                                                    // 0x00723882    d9ff
                          {disp8} lea        edx, dword ptr [esp + 0x10]                          // 0x00723884    8d542410
@@ -15881,12 +15881,12 @@ _jmp_addr_0x00726140:    mov                eax, dword ptr [ecx]                
                          {disp8} fstp       dword ptr [esi + 0x08]                               // 0x00726159    d95e08
                          pop                esi                                                  // 0x0072615c    5e
                          ret                0x0004                                               // 0x0072615d    c20400
-_CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords:
-@CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00726160    8b442404
+?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00726160    8b442404
                          push               esi                                                  // 0x00726164    56
                          mov.s              esi, ecx                                             // 0x00726165    8bf1
                          push               eax                                                  // 0x00726167    50
-                         call               @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12                                 // 0x00726168    e82387e0ff
+                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z                                 // 0x00726168    e82387e0ff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                          // 0x0072616d    8b4e40
                          mov                edx, dword ptr [ecx]                                 // 0x00726170    8b11
                          call               dword ptr [edx + 0xf8]                               // 0x00726172    ff92f8000000
