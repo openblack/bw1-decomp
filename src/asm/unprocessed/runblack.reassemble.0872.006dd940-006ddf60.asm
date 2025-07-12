@@ -8,13 +8,13 @@
 .extern rsrc_bytes
 
 .extern ___nw__4BaseFUl
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern ?ToBeDeleted@Object@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
+.extern  asm("?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z");
 .extern _jmp_addr_0x006dc9f0
 .extern _jmp_addr_0x006ddf60
 
@@ -560,7 +560,7 @@ _jmp_addr_0x006ddd7c:    mov              dword ptr [eax], edi                  
                          {disp8} je       _jmp_addr_0x006dddcd                     // 0x006dddbd    740e
                          push             0x00000138                               // 0x006dddbf    6838010000
                          push             esi                                      // 0x006dddc4    56
-                         call             _jmp_addr_0x00436970                     // 0x006dddc5    e8a68bd5ff
+                         call             ??3Base@@SAXPAXK@Z                     // 0x006dddc5    e8a68bd5ff
                          add              esp, 0x08                                // 0x006dddca    83c408
 _jmp_addr_0x006dddcd:    mov.s            eax, esi                                 // 0x006dddcd    8bc6
                          pop              esi                                      // 0x006dddcf    5e
@@ -627,7 +627,7 @@ _jmp_addr_0x006dde18:    {disp8} mov      ecx, dword ptr [esp + 0x08]           
                          nop                                                       // 0x006dde4f    90
                          {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x006dde50    8b442404
                          push             eax                                      // 0x006dde54    50
-                         call             @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12                     // 0x006dde55    e8868df5ff
+                         call             ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z                     // 0x006dde55    e8868df5ff
                          ret              0x0004                                   // 0x006dde5a    c20400
                          nop                                                       // 0x006dde5d    90
                          nop                                                       // 0x006dde5e    90

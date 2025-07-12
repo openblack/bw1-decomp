@@ -146,7 +146,7 @@ int __fastcall CalulateAmountOverMaximum__13MultiMapFixedF13RESOURCE_TYPE(struct
     return 0;
 }
 
-bool __fastcall IsBeingBuilt__13MultiMapFixedFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
+bool32_t __fastcall IsBeingBuilt__13MultiMapFixedFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
     asm("mov                eax, dword ptr [ecx]   "); // 0x004015e0    8b01
     asm("call               dword ptr [eax + 0x890]"); // 0x004015e2    ff9090080000
@@ -158,7 +158,7 @@ bool __fastcall IsBeingBuilt__13MultiMapFixedFP8Creature(struct GameThingWithPos
     __builtin_unreachable();
 }
 
-bool __fastcall NeedsRepair__13MultiMapFixedFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
+bool32_t __fastcall NeedsRepair__13MultiMapFixedFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
     asm("mov                eax, dword ptr [ecx]   "); // 0x00401600    8b01
     asm("call               dword ptr [eax + 0x88c]"); // 0x00401602    ff908c080000

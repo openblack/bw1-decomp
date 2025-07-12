@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern @AddVillagerToAbode__5AbodeFP8Villager@12
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00438770
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -650,7 +650,7 @@ _jmp_addr_0x0075670c:    xor.s              eax, eax                            
                          {disp8} je         _jmp_addr_0x0075675a                          // 0x0075674d    740b
                          push               0x34                                          // 0x0075674f    6a34
                          push               esi                                           // 0x00756751    56
-                         call               _jmp_addr_0x00436970                          // 0x00756752    e81902ceff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x00756752    e81902ceff
                          add                esp, 0x08                                     // 0x00756757    83c408
 _jmp_addr_0x0075675a:    mov.s              eax, esi                                      // 0x0075675a    8bc6
                          pop                esi                                           // 0x0075675c    5e

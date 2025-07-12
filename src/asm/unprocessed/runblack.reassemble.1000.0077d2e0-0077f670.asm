@@ -14,7 +14,7 @@
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x0043dc00
 .extern _jmp_addr_0x0043dc50
 .extern _jmp_addr_0x004640a0
@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x00726080
 .extern _jmp_addr_0x007260a0
 .extern @SetToZero__9SpellIconFv@4
-.extern @CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00726280
 .extern _jmp_addr_0x00726380
 .extern @__ct__Q29SpellIcon13TChargingDataFv@4
@@ -122,7 +122,7 @@
 .globl _globl_ct_0x0077eb40
 .globl _globl_ct_0x0077efc0
 .globl _globl_ct_0x0077eff0
-.globl _CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@WorshipSpellIcon@@UAEXABUMapCoords@@@Z
 
 start_0x0077d2e0_0x0077f670:
 // Snippet: asm, [0x0077d2e0, 0x0077f5f6)
@@ -2411,7 +2411,7 @@ _jmp_addr_0x0077ebbe:    ret                                                    
                          {disp8} je         _jmp_addr_0x0077ebdd                          // 0x0077ebcd    740e
                          push               0x00000128                                    // 0x0077ebcf    6828010000
                          push               esi                                           // 0x0077ebd4    56
-                         call               _jmp_addr_0x00436970                          // 0x0077ebd5    e8967dcbff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x0077ebd5    e8967dcbff
                          add                esp, 0x08                                     // 0x0077ebda    83c408
 _jmp_addr_0x0077ebdd:    mov.s              eax, esi                                      // 0x0077ebdd    8bc6
                          pop                esi                                           // 0x0077ebdf    5e
@@ -2488,7 +2488,7 @@ _jmp_addr_0x0077ec53:    mov.s              eax, esi                            
                          {disp8} je         _jmp_addr_0x0077ec93                          // 0x0077ec83    740e
                          push               0x00000084                                    // 0x0077ec85    6884000000
                          push               esi                                           // 0x0077ec8a    56
-                         call               _jmp_addr_0x00436970                          // 0x0077ec8b    e8e07ccbff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x0077ec8b    e8e07ccbff
                          add                esp, 0x08                                     // 0x0077ec90    83c408
 _jmp_addr_0x0077ec93:    mov.s              eax, esi                                      // 0x0077ec93    8bc6
                          pop                esi                                           // 0x0077ec95    5e
@@ -2708,7 +2708,7 @@ _jmp_addr_0x0077ee40:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp8} je         _jmp_addr_0x0077ee8a                          // 0x0077ee7d    740b
                          push               0x4c                                          // 0x0077ee7f    6a4c
                          push               esi                                           // 0x0077ee81    56
-                         call               _jmp_addr_0x00436970                          // 0x0077ee82    e8e97acbff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x0077ee82    e8e97acbff
                          add                esp, 0x08                                     // 0x0077ee87    83c408
 _jmp_addr_0x0077ee8a:    mov.s              eax, esi                                      // 0x0077ee8a    8bc6
                          pop                esi                                           // 0x0077ee8c    5e
@@ -3043,7 +3043,7 @@ _jmp_addr_0x0077f020:    push               esi                                 
                          {disp8} je         _jmp_addr_0x0077f12d                          // 0x0077f11d    740e
                          push               0x00000140                                    // 0x0077f11f    6840010000
                          push               esi                                           // 0x0077f124    56
-                         call               _jmp_addr_0x00436970                          // 0x0077f125    e84678cbff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x0077f125    e84678cbff
                          add                esp, 0x08                                     // 0x0077f12a    83c408
 _jmp_addr_0x0077f12d:    mov.s              eax, esi                                      // 0x0077f12d    8bc6
                          pop                esi                                           // 0x0077f12f    5e
@@ -3181,12 +3181,12 @@ _jmp_addr_0x0077f276:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0077f28d    90
                          nop                                                              // 0x0077f28e    90
                          nop                                                              // 0x0077f28f    90
-_CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords:
+?CallVirtualFunctionsForCreation@WorshipSpellIcon@@UAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0077f290    8b442404
                          push               esi                                           // 0x0077f294    56
                          mov.s              esi, ecx                                      // 0x0077f295    8bf1
                          push               eax                                           // 0x0077f297    50
-                         call               @CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords@12                          // 0x0077f298    e8c36efaff
+                         call               ?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z                          // 0x0077f298    e8c36efaff
                          mov.s              ecx, esi                                      // 0x0077f29d    8bce
                          call               @UpdateGraphicsWithPULevels__16WorshipSpellIconFv@4                          // 0x0077f29f    e87c000000
                          pop                esi                                           // 0x0077f2a4    5e

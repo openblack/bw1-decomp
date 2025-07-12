@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x00435f30
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00437340
 .extern _jmp_addr_0x004373e0
 .extern _jmp_addr_0x00437a40
@@ -296,7 +296,7 @@
 .extern _jmp_addr_0x0083f310
 .extern _jmp_addr_0x0083f890
 .extern @Create__10LH3DSpriteFli@8
-.extern _jmp_addr_0x00840520
+.extern ?Release@LH3DSprite@@QAEXXZ
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x008415a0
 .extern _jmp_addr_0x00842030

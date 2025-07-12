@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern ___nw__FUl
 .extern _jmp_addr_0x007f6f00
-.extern _jmp_addr_0x007f70e0
+.extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
 .extern _jmp_addr_0x007f7d40
 .extern _Create__9LH3DSmokeFPC7LHPoint
@@ -1836,7 +1836,7 @@ _jmp_addr_0x00488dea:    {disp8} fld        dword ptr [esp + 0x38]              
                          cmp.s              ebx, ebp                                      // 0x00488e5d    3bdd
                          {disp8} je         _jmp_addr_0x00488e71                          // 0x00488e5f    7410
                          mov.s              ecx, ebx                                      // 0x00488e61    8bcb
-                         call               _jmp_addr_0x007f70e0                          // 0x00488e63    e878e23600
+                         call               ??1FragMesh@@QAE@XZ                           // 0x00488e63    e878e23600
                          push               ebx                                           // 0x00488e68    53
                          call                ___dl__FPv                                   // 0x00488e69    e82a603200
                          add                esp, 0x04                                     // 0x00488e6e    83c404

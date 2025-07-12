@@ -72,7 +72,7 @@ const char* __fastcall GetText__20PlannedMultiMapFixedFv(struct GameThingWithPos
 // win1.41 00465560 mac 100d17b0 PlannedMultiMapFixed::IsWonder(void)
 bool __fastcall IsWonder__20PlannedMultiMapFixedFv(struct GameThingWithPos* this) asm("?IsWonder@PlannedMultiMapFixed@@UAE_NXZ");
 // win1.41 00648950 mac inline PlannedMultiMapFixed::CreateBuildingSite(void)
-bool __fastcall CreateBuildingSite__20PlannedMultiMapFixedFv(const struct GameThingWithPos* this) asm("?CreateBuildingSite@PlannedMultiMapFixed@@UBE_NXZ");
+bool32_t __fastcall CreateBuildingSite__20PlannedMultiMapFixedFv(const struct GameThingWithPos* this) asm("?CreateBuildingSite@PlannedMultiMapFixed@@UBE_NXZ");
 // win1.41 00469660 mac 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
 struct MultiMapFixed* __fastcall CreatePlanned__20PlannedMultiMapFixedFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlanned@PlannedMultiMapFixed@@QAEPAVMultiMapFixed@@M@Z");
 // win1.41 00465540 mac 100d1720 PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float)

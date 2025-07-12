@@ -43,8 +43,8 @@ void __fastcall Init__12PlannedAbodeFP4Town(struct PlannedAbode* this, const voi
 
 // Override methods
 
-// win1.41 00405110 mac 1017d1f0 PlannedAbode::_dt(void)
-void __fastcall __dt__12PlannedAbodeFv(struct Base* this, const void* edx, uint8_t param_1) asm("??_DPlannedAbode@@QAEXXZ");
+// win1.41 00405110 mac 1017d1f0 PlannedAbode::_dt(unsigned int)
+void __fastcall __dt__12PlannedAbodeFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPlannedAbode@@QAEXXZ");
 // win1.41 004056b0 mac 100c5460 PlannedAbode::ToBeDeleted(int)
 void __fastcall ToBeDeleted__12PlannedAbodeFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@PlannedAbode@@UAEXH@Z");
 // win1.41 004050e0 mac 10352440 PlannedAbode::GetTown(void)
@@ -58,7 +58,7 @@ uint32_t __fastcall Save__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
 // win1.41 004050f0 mac 10531c20 PlannedAbode::GetSaveType(void)
 uint32_t __fastcall GetSaveType__12PlannedAbodeFv(struct GameThing* this) asm("?GetSaveType@PlannedAbode@@UAEIXZ");
 // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)
-bool __fastcall IsWonder__12PlannedAbodeFv(struct GameThingWithPos* this) asm("?IsWonder@PlannedAbode@@UAE_NXZ");
+bool32_t __fastcall IsWonder__12PlannedAbodeFv(struct GameThingWithPos* this) asm("?IsWonder@PlannedAbode@@UAE_NXZ");
 // win1.41 00405710 mac 10570d80 PlannedAbode::CreatePlanned(float)
 struct MultiMapFixed* __fastcall CreatePlanned__12PlannedAbodeFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlanned@PlannedAbode@@QAEPAVMultiMapFixed@@M@Z");
 // win1.41 00405770 mac 10282ed0 PlannedAbode::CreatePlannedNoFixedCheck(float)

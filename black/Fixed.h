@@ -91,7 +91,7 @@ bool __fastcall ValidForLockedSelectProcess__11FixedObjectFP16GInterfaceStatus(s
 // win1.41 0052eba0 mac 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
 bool __fastcall NetworkFriendlyStartLockedSelect__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?NetworkFriendlyStartLockedSelect@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052e0e0 mac 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool __fastcall InterfaceSetInMagicHand__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?InterfaceSetInMagicHand@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall InterfaceSetInMagicHand__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?InterfaceSetInMagicHand@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052df50 mac 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)
 void __fastcall EndPhysics__11FixedObjectFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00401460 mac 10554e40 FixedObject::VillagerMustAvoid(Villager *)

@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ___nw__4BaseFUl
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004f5230
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x00561e10
@@ -696,7 +696,7 @@ _jmp_addr_0x005fa950:    push               esi                                 
                          {disp8} je         _jmp_addr_0x005fa9dd                          // 0x005fa9cd    740e
                          push               0x000000c0                                    // 0x005fa9cf    68c0000000
                          push               esi                                           // 0x005fa9d4    56
-                         call               _jmp_addr_0x00436970                          // 0x005fa9d5    e896bfe3ff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x005fa9d5    e896bfe3ff
                          add                esp, 0x08                                     // 0x005fa9da    83c408
 _jmp_addr_0x005fa9dd:    mov.s              eax, esi                                      // 0x005fa9dd    8bc6
                          pop                esi                                           // 0x005fa9df    5e
@@ -1377,7 +1377,7 @@ _jmp_addr_0x005faf00:    push               esi                                 
                          {disp8} je         _jmp_addr_0x005faf5a                          // 0x005faf4d    740b
                          push               0x1c                                          // 0x005faf4f    6a1c
                          push               esi                                           // 0x005faf51    56
-                         call               _jmp_addr_0x00436970                          // 0x005faf52    e819bae3ff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x005faf52    e819bae3ff
                          add                esp, 0x08                                     // 0x005faf57    83c408
 _jmp_addr_0x005faf5a:    mov.s              eax, esi                                      // 0x005faf5a    8bc6
                          pop                esi                                           // 0x005faf5c    5e

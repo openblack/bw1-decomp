@@ -93,7 +93,7 @@
 .globl _jmp_addr_0x0083f8d0
 .globl @Create__10LH3DSpriteFli@8
 .globl @SetToZero__10LH3DSpriteFv@4
-.globl _jmp_addr_0x00840520
+.globl ?Release@LH3DSprite@@QAEXXZ
 .globl @Draw__10LH3DSpriteFv@4
 .globl _jmp_addr_0x00840c70
 .globl _jmp_addr_0x00840cc0
@@ -1890,7 +1890,7 @@ _jmp_addr_0x0083d750:    push               esi                                 
 _jmp_addr_0x0083d7b0:    push               esi                                            // 0x0083d7b0    56
                          mov.s              esi, ecx                                       // 0x0083d7b1    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x18]                    // 0x0083d7b3    8b4e18
-                         call               _jmp_addr_0x00840520                           // 0x0083d7b6    e8652d0000
+                         call               ?Release@LH3DSprite@@QAEXXZ                    // 0x0083d7b6    e8652d0000
                          {disp8} mov        eax, dword ptr [esi + 0x20]                    // 0x0083d7bb    8b4620
                          push               eax                                            // 0x0083d7be    50
                          call                ___dl__FPv                                    // 0x0083d7bf    e8d416f7ff
@@ -5643,7 +5643,8 @@ _jmp_addr_0x008404e2:    pop                esi                                 
                          {disp8} mov        dword ptr [ecx + 0x18], eax                    // 0x00840519    894118
                          {disp8} mov        dword ptr [ecx + 0x1c], eax                    // 0x0084051c    89411c
                          ret                                                               // 0x0084051f    c3
-_jmp_addr_0x00840520:    push               ecx                                            // 0x00840520    51
+?Release@LH3DSprite@@QAEXXZ:
+                         push               ecx                                            // 0x00840520    51
                          call               _Free__7LH3DMemFPv                             // 0x00840521    e83a280000
                          pop                ecx                                            // 0x00840526    59
                          ret                                                               // 0x00840527    c3

@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x00481390
 .extern _jmp_addr_0x0048b970
 .extern _jmp_addr_0x0048d250
@@ -740,7 +740,7 @@ _jmp_addr_0x0048dd70:    sub                esp, 0x000000b8                     
                          {disp8} lea        ecx, dword ptr [esp + 0x44]                   // 0x0048ddd2    8d4c2444
                          {disp8} mov        dword ptr [esp + 0x3c], edx                   // 0x0048ddd6    8954243c
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x0048ddda    89442410
-                         call               _jmp_addr_0x00403500                          // 0x0048ddde    e81d57f7ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x0048ddde    e81d57f7ff
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x0048dde3    d9442410
                          fcos                                                             // 0x0048dde7    d9ff
                          {disp8} mov        eax, dword ptr [edi + 0x7c]                   // 0x0048dde9    8b477c

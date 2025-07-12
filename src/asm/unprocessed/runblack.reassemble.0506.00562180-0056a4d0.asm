@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x00407700
 .extern _jmp_addr_0x00407750
 .extern _jmp_addr_0x004077a0
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00436c00
 .extern _GetInfoPtr__9GBaseInfoFUl
 .extern _jmp_addr_0x0043dc00
@@ -3981,7 +3981,7 @@ _jmp_addr_0x00564a34:    ret                                                    
                          {disp8} je         _jmp_addr_0x00564b1d                          // 0x00564b0d    740e
                          push               0x00001128                                    // 0x00564b0f    6828110000
                          push               esi                                           // 0x00564b14    56
-                         call               _jmp_addr_0x00436970                          // 0x00564b15    e8561eedff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x00564b15    e8561eedff
                          add                esp, 0x08                                     // 0x00564b1a    83c408
 _jmp_addr_0x00564b1d:    mov.s              eax, esi                                      // 0x00564b1d    8bc6
                          pop                esi                                           // 0x00564b1f    5e

@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x0042a4b0
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern @__ct__12BuildingSiteFP20PlannedMultiMapFixed@12
 .extern _jmp_addr_0x0043dc00
 .extern @__ct__9MapCoordsFv@4
@@ -4004,7 +4004,7 @@ _jmp_addr_0x00648e5e:    pop                edi                                 
                          {disp8} je         _jmp_addr_0x00648ecd                           // 0x00648ebd    740e
                          push               0x00000a60                                     // 0x00648ebf    68600a0000
                          push               esi                                            // 0x00648ec4    56
-                         call               _jmp_addr_0x00436970                           // 0x00648ec5    e8a6dadeff
+                         call               ??3Base@@SAXPAXK@Z                           // 0x00648ec5    e8a6dadeff
                          add                esp, 0x08                                      // 0x00648eca    83c408
 _jmp_addr_0x00648ecd:    mov.s              eax, esi                                       // 0x00648ecd    8bc6
                          pop                esi                                            // 0x00648ecf    5e

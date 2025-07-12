@@ -35,6 +35,8 @@ struct LH3DSprite* __fastcall Create__10LH3DSpriteFli(int32_t param_1, int32_t p
 
 // win1.41 008404f0 mac 1000c7c0 LH3DSprite::SetToZero(void)
 void __fastcall SetToZero__10LH3DSpriteFv(struct LH3DSprite* this);
+// win1.41 00840520 mac 100b6440 LH3DSprite::Release(void)
+void __fastcall Release__10LH3DSpriteFv(struct LH3DSprite* this) asm("?Release@LH3DSprite@@QAEXXZ");
 // win1.41 00840530 mac 1002a870 LH3DSprite::Draw(void)
 void __fastcall Draw__10LH3DSpriteFv(struct LH3DSprite* this);
 

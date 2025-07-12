@@ -45,7 +45,7 @@ struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__10GAbodeInfo
 
 const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo = {
     Serialise__4BaseFR7Archive,
-    __dt__10GAbodeInfoFv,
+    __dt__10GAbodeInfoFUi,
     Delete__4BaseFi,
     ToBeDeleted__4BaseFi,
     Get3DSoundPos__4BaseFP7LHPoint,

@@ -8,11 +8,10 @@
 .extern rsrc_bytes
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern _jmp_addr_0x00402b60
-.extern @SetZero__5AbodeFv@4
+.extern ??1Abode@@UAE@XZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
-.extern _jmp_addr_0x00403500
+.extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern ?Process@Abode@@UAEIXZ
@@ -34,7 +33,7 @@
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436760
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004369d0
 .extern _jmp_addr_0x00438770
 .extern _jmp_addr_0x0043dc00
@@ -70,7 +69,7 @@
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
@@ -2958,7 +2957,7 @@ _jmp_addr_0x00727f20:    push               esi                                 
                          {disp8} je         _jmp_addr_0x00727fdd                                 // 0x00727fcd    740e
                          push               0x000000a0                                           // 0x00727fcf    68a0000000
                          push               esi                                                  // 0x00727fd4    56
-                         call               _jmp_addr_0x00436970                                 // 0x00727fd5    e896e9d0ff
+                         call               ??3Base@@SAXPAXK@Z                                 // 0x00727fd5    e896e9d0ff
                          add                esp, 0x08                                            // 0x00727fda    83c408
 _jmp_addr_0x00727fdd:    mov.s              eax, esi                                             // 0x00727fdd    8bc6
                          pop                esi                                                  // 0x00727fdf    5e

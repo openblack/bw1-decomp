@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004c4450
 .extern _jmp_addr_0x004d8980
 .extern _jmp_addr_0x004d8b50
@@ -386,7 +386,7 @@ _jmp_addr_0x004d786a:    mov                dl, 0x01                            
                          {disp8} je         _jmp_addr_0x004d78ea                          // 0x004d78dd    740b
                          push               0x4c                                          // 0x004d78df    6a4c
                          push               esi                                           // 0x004d78e1    56
-                         call               _jmp_addr_0x00436970                          // 0x004d78e2    e889f0f5ff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x004d78e2    e889f0f5ff
                          add                esp, 0x08                                     // 0x004d78e7    83c408
 _jmp_addr_0x004d78ea:    mov.s              eax, esi                                      // 0x004d78ea    8bc6
                          pop                esi                                           // 0x004d78ec    5e
@@ -408,7 +408,7 @@ _jmp_addr_0x004d78f0:    mov.s              eax, ecx                            
                          {disp8} je         _jmp_addr_0x004d792a                          // 0x004d791d    740b
                          push               0x18                                          // 0x004d791f    6a18
                          push               esi                                           // 0x004d7921    56
-                         call               _jmp_addr_0x00436970                          // 0x004d7922    e849f0f5ff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x004d7922    e849f0f5ff
                          add                esp, 0x08                                     // 0x004d7927    83c408
 _jmp_addr_0x004d792a:    mov.s              eax, esi                                      // 0x004d792a    8bc6
                          pop                esi                                           // 0x004d792c    5e

@@ -12,7 +12,7 @@
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
-.extern _jmp_addr_0x00436970
+.extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00439b90
 .extern _jmp_addr_0x0043a9e0
 .extern @__ct__9MapCoordsFv@4
@@ -3873,7 +3873,7 @@ _jmp_addr_0x005e6740:    {disp32} mov       dword ptr [data_bytes + 0x35a1a4], 0
                          {disp8} je         _jmp_addr_0x005e678a                          // 0x005e677d    740b
                          push               0xc                                           // 0x005e677f    6a0c
                          push               esi                                           // 0x005e6781    56
-                         call               _jmp_addr_0x00436970                          // 0x005e6782    e8e901e5ff
+                         call               ??3Base@@SAXPAXK@Z                          // 0x005e6782    e8e901e5ff
                          add                esp, 0x08                                     // 0x005e6787    83c408
 _jmp_addr_0x005e678a:    mov.s              eax, esi                                      // 0x005e678a    8bc6
                          pop                esi                                           // 0x005e678c    5e

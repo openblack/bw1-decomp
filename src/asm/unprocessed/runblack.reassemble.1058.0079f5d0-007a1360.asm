@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern _jmp_addr_0x00418a50
 .extern @__ct__7LHPointFfff@20
@@ -797,7 +797,7 @@ _jmp_addr_0x0079ffff:    {disp32} fld       dword ptr [esi + 0x000004a0]        
                          {disp8} mov        dword ptr [ecx + 0x08], edx                   // 0x007a0112    895108
                          {disp8} lea        ecx, dword ptr [esp + 0x40]                   // 0x007a0115    8d4c2440
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x007a0119    8944241c
-                         call               _jmp_addr_0x00403500                          // 0x007a011d    e8de33c6ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x007a011d    e8de33c6ff
                          {disp8} fld        dword ptr [esp + 0x1c]                        // 0x007a0122    d944241c
                          fcos                                                             // 0x007a0126    d9ff
                          {disp8} fstp       dword ptr [esp + 0x60]                        // 0x007a0128    d95c2460
@@ -1605,7 +1605,7 @@ _jmp_addr_0x007a0c69:    {disp8} fld        dword ptr [ebp + 0x00]              
                          {disp8} mov        dword ptr [eax + 0x08], ecx                   // 0x007a0d72    894808
                          {disp8} lea        ecx, dword ptr [esp + 0x70]                   // 0x007a0d75    8d4c2470
                          {disp8} mov        dword ptr [esp + 0x20], edx                   // 0x007a0d79    89542420
-                         call               _jmp_addr_0x00403500                          // 0x007a0d7d    e87e27c6ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x007a0d7d    e87e27c6ff
                          {disp8} fld        dword ptr [esp + 0x20]                        // 0x007a0d82    d9442420
                          fcos                                                             // 0x007a0d86    d9ff
                          {disp32} fstp      dword ptr [esp + 0x00000090]                  // 0x007a0d88    d99c2490000000
@@ -1850,7 +1850,7 @@ _jmp_addr_0x007a1062:    {disp32} mov       eax, dword ptr [esi + 0x00000134]   
                          {disp8} mov        dword ptr [eax + 0x04], edx                   // 0x007a1170    895004
                          {disp8} mov        dword ptr [eax + 0x08], ecx                   // 0x007a1173    894808
                          {disp32} lea       ecx, dword ptr [esp + 0x000000a0]             // 0x007a1176    8d8c24a0000000
-                         call               _jmp_addr_0x00403500                          // 0x007a117d    e87e23c6ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x007a117d    e87e23c6ff
                          {disp8} fld        dword ptr [esp + 0x3c]                        // 0x007a1182    d944243c
                          fcos                                                             // 0x007a1186    d9ff
                          {disp32} fstp      dword ptr [esp + 0x000000c0]                  // 0x007a1188    d99c24c0000000

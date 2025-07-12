@@ -5,7 +5,7 @@ struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__5Abode = &__
 
 const struct AbodeVftable __vt__5Abode = {
   Serialise__4BaseFR7Archive,
-  __dt__5AbodeFv,
+  __dt__5AbodeFUi,
   Delete__5AbodeFv,
   ToBeDeleted__5AbodeFi,
   Get3DSoundPos__16GameThingWithPosFP7LHPoint,
@@ -114,8 +114,8 @@ const struct AbodeVftable __vt__5Abode = {
   GetImpressiveIntensity__16GameThingWithPosF15IMPRESSIVE_TYPE,
   GetImpressiveValue__6ObjectFP6LivingP8Reaction,
   GetUpdateOfBoredomValue__6ObjectFP8ReactionP16GameThingWithPos,
-  IsTown__16GameThingWithPosFP8Creature,
   IsTown__16GameThingWithPosFv,
+  IsTown__16GameThingWithPosFP8Creature,
   IsActivityObjectWhichAngerAppliesTo__16GameThingWithPosFP8Creature,
   IsActivityObjectWhichCompassionAppliesTo__16GameThingWithPosFP8Creature,
   IsActivityObjectWhichPlayfulnessAppliesTo__16GameThingWithPosFP8Creature,
@@ -210,8 +210,8 @@ const struct AbodeVftable __vt__5Abode = {
   IsStoragePitBelongingToAnotherPlayer__16GameThingWithPosFP8Creature,
   IsStoragePitBelongingToMyPlayer__16GameThingWithPosFP8Creature,
   BenefitsFromHavingWaterSprinkledOnIt__16GameThingWithPosFP8Creature,
-  IsTree__16GameThingWithPosFP8Creature,
   IsTree__16GameThingWithPosFv,
+  IsTree__16GameThingWithPosFP8Creature,
   IsTreeNotTooNearPlannedForest__16GameThingWithPosFP8Creature,
   IsTreeBigEnoughForCreature__16GameThingWithPosFP8Creature,
   IsAFoodPileOutsideStoragePit__16GameThingWithPosFP8Creature,
@@ -245,8 +245,8 @@ const struct AbodeVftable __vt__5Abode = {
   IsToyBall__16GameThingWithPosFP8Creature,
   IsToyDie__16GameThingWithPosFP8Creature,
   IsToyCuddly__16GameThingWithPosFP8Creature,
-  IsLiving__16GameThingWithPosFP8Creature,
   IsLiving__16GameThingWithPosFv,
+  IsLiving__16GameThingWithPosFP8Creature,
   IsFence__16GameThingWithPosFv,
   IsSpellIcon__16GameThingWithPosFv,
   NothingScareyNearMe__16GameThingWithPosFP8Creature,
@@ -622,7 +622,7 @@ struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struc
     asm("{disp32} mov       dword ptr [esi + 0x000000a4], edi");                                // 0x0040139f    89bea4000000
     asm("mov.s              ecx, esi");                                                         // 0x004013a5    8bce
     asm("mov                dword ptr [esi], 0x008a9a64");                                      // 0x004013a7    c706649a8a00
-    asm("call               @SetZero__5AbodeFv@4");                                             // 0x004013ad    e80e180000
+    asm("call               ?SetZero@Abode@@QAEXXZ");                                           // 0x004013ad    e80e180000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                                      // 0x004013b2    8b4c2414
     asm("cmp.s              ecx, edi");                                                         // 0x004013b6    3bcf
     asm("{disp8} je         _jmp_addr_0x004013d4");                                             // 0x004013b8    741a
