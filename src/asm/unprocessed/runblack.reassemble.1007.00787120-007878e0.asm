@@ -21,7 +21,7 @@
 .extern ?Release@LH3DSmoke@@QAEXXZ
 .extern _jmp_addr_0x007fb5c0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
-.extern _CreateFromHD__8LH3DMeshFPci
+.extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x008379e0
@@ -253,7 +253,7 @@ _jmp_addr_0x00787365:    {disp8} mov        esi, dword ptr [esp + 0x0c]         
                          call               _jmp_addr_0x007c57d2                          // 0x00787397    e836e40300
                          push               0x1                                           // 0x0078739c    6a01
                          push               0x00de0d48                                    // 0x0078739e    68480dde00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x007873a3    e848f40700
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x007873a3    e848f40700
                          add                esp, 0x14                                     // 0x007873a8    83c414
                          test               eax, eax                                      // 0x007873ab    85c0
                          {disp32} mov       dword ptr [edi + esi * 0x4 + 0x00000110], eax // 0x007873ad    8984b710010000

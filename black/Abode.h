@@ -117,6 +117,8 @@ void __fastcall SetZero__5AbodeFv(struct Abode* this) asm("?SetZero@Abode@@QAEXX
 void __fastcall Init__5AbodeFiUlUl(struct Abode* this, const void* edx, int param_1, uint32_t food_amount, uint32_t wood_amount) asm("?Init@Abode@@QAEXHII@Z");
 // win1.41 00403590 mac 103602f0 Abode::GetNewEp(ABODE_EPP, MapCoords*)
 bool __fastcall GetNewEp__5AbodeF8ABODE_EPP7LHPoint(struct Abode* this, const void* edx, enum ABODE_EPP index, struct LHPoint* point) asm("?GetNewEp@Abode@@QAE_NW4ABODE_EPP@@PAULHPoint@@@Z");
+// win1.41 00403d20 mac 10573d50 Abode::DeleteAbodeSurroundingObjects(void)
+void __fastcall DeleteAbodeSurroundingObjects__5AbodeFv(struct Abode* this) asm("?DeleteAbodeSurroundingObjects@Abode@@QAEXXZ");
 // win1.41 00403e00 mac 10494a10 Abode::CreateAbodeSurroundingObjects(void)
 void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this) asm("?CreateAbodeSurroundingObjects@Abode@@QAEXXZ");
 // win1.41 00404060 mac 100d2ca0 Abode::AddVillagerToAbode(Villager *)

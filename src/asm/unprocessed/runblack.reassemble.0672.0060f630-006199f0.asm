@@ -59,7 +59,7 @@
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
-.extern _Create__8LH3DMeshFPvi
+.extern ?Create@LH3DMesh@@SAPAV1@PBX_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
@@ -13492,7 +13492,7 @@ _jmp_addr_0x00618425:    {disp8} mov        eax, dword ptr [esp + 0x10]         
 _jmp_addr_0x0061845d:    {disp8} mov        edi, dword ptr [esp + 0x18]                    // 0x0061845d    8b7c2418
 _jmp_addr_0x00618461:    push               0x0                                            // 0x00618461    6a00
                          push               edi                                            // 0x00618463    57
-                         call               _Create__8LH3DMeshFPvi                         // 0x00618464    e8f7df1e00
+                         call               ?Create@LH3DMesh@@SAPAV1@PBX_N@Z               // 0x00618464    e8f7df1e00
                          mov.s              esi, eax                                       // 0x00618469    8bf0
                          add                esp, 0x08                                      // 0x0061846b    83c408
                          test               esi, esi                                       // 0x0061846e    85f6
@@ -13802,7 +13802,7 @@ _jmp_addr_0x006187ed:    {disp8} mov        eax, dword ptr [esp + 0x18]         
 _jmp_addr_0x0061882e:    {disp8} mov        ecx, dword ptr [esp + 0x14]                    // 0x0061882e    8b4c2414
                          push               ecx                                            // 0x00618832    51
                          push               edi                                            // 0x00618833    57
-                         call               _Create__8LH3DMeshFPvi                         // 0x00618834    e827dc1e00
+                         call               ?Create@LH3DMesh@@SAPAV1@PBX_N@Z               // 0x00618834    e827dc1e00
                          mov.s              esi, eax                                       // 0x00618839    8bf0
                          add                esp, 0x08                                      // 0x0061883b    83c408
                          test               esi, esi                                       // 0x0061883e    85f6

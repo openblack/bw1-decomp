@@ -48,9 +48,9 @@
 .extern ___dt__10LHFilePathFv
 .extern _fscanf_10LHFilePath
 .extern ___nw__FUl
-.extern _CreatePack__8LH3DMeshFv@0
+.extern ?CreatePack@LH3DMesh@@SAXXZ@0
 .extern _CHAR2WCHAR__FPc
-.extern _CreatePack__8LH3DAnimFv
+.extern ?CreatePack@LH3DMesh@@SAXXZ
 
 .globl _jmp_addr_0x00550080
 .globl _jmp_addr_0x00550110
@@ -261,7 +261,7 @@ _jmp_addr_0x00550130:    xor.s              eax, eax                            
                          nop                                                               // 0x0055016d    90
                          nop                                                               // 0x0055016e    90
                          nop                                                               // 0x0055016f    90
-_jmp_addr_0x00550170:    {disp32} jmp       _CreatePack__8LH3DMeshFv@0                     // 0x00550170    e9eb7a2b00
+_jmp_addr_0x00550170:    {disp32} jmp       ?CreatePack@LH3DMesh@@SAXXZ                    // 0x00550170    e9eb7a2b00
                          nop                                                               // 0x00550175    90
                          nop                                                               // 0x00550176    90
                          nop                                                               // 0x00550177    90
@@ -277,7 +277,7 @@ _jmp_addr_0x00550180:    sub                esp, 0x000000a0                     
                          push               ebp                                            // 0x00550186    55
                          push               esi                                            // 0x00550187    56
                          push               edi                                            // 0x00550188    57
-                         call               _CreatePack__8LH3DAnimFv                       // 0x00550189    e8a2a82e00
+                         call               ?CreatePack@LH3DAnim@@SAXXZ                    // 0x00550189    e8a2a82e00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x517508]         // 0x0055018e    a108d5ed00
                          {disp32} mov       eax, dword ptr [eax + 0x00000510]              // 0x00550193    8b8010050000
                          and                dword ptr [eax + 0x50], 0xfffffeff             // 0x00550199    816050fffeffff

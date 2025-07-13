@@ -8,14 +8,14 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern _jmp_addr_0x00403730
-.extern _jmp_addr_0x00403740
-.extern _jmp_addr_0x00403770
-.extern _jmp_addr_0x004037e0
-.extern _jmp_addr_0x00403b90
-.extern _jmp_addr_0x00403bb0
-.extern _jmp_addr_0x00403be0
-.extern _jmp_addr_0x00403c50
+.extern ?GetSizeFootprintData@LH3DMesh@@QAEIXZ
+.extern ?GetSizeUV2Data@LH3DMesh@@QAEIXZ
+.extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
+.extern ?GetSizeEMetricsData@LH3DMesh@@QAEIXZ
+.extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
+.extern ?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ
+.extern ?GetSizeNameData_dup1@LH3DMesh@@QAEIXZ
+.extern ?GetSizeEMetricsData_dup1@LH3DMesh@@QAEIXZ
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern @ResetData__6LHFile@4
 .extern @__ct__7LHPointFfff@20
@@ -211,15 +211,15 @@
 .globl _jmp_addr_0x00804cf0
 .globl _jmp_addr_0x00804e60
 .globl _jmp_addr_0x00805cb0
-.globl _Create__8LH3DMeshFPvi
-.globl _CreateFromHD__8LH3DMeshFPci
+.globl ?Create@LH3DMesh@@SAPAV1@PBX_N@Z
+.globl ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .globl @Release__8LH3DMeshFv@4
 .globl _jmp_addr_0x00806da0
 .globl _jmp_addr_0x00806f60
 .globl _jmp_addr_0x00807830
 .globl _jmp_addr_0x00807970
-.globl _CreatePackInternal__8LH3DMeshFPv@4
-.globl _CreatePack__8LH3DMeshFv@0
+.globl ?CreatePackInternal@LH3DMesh@@SAXPBX@Z
+.globl ?CreatePack@LH3DMesh@@SAXXZ
 .globl _jmp_addr_0x00807e40
 .globl _jmp_addr_0x00807e80
 .globl @ComputeBoundingBox__13LH3DPrimitiveFR7LHPointR7LHPointRi@16
@@ -1226,7 +1226,7 @@ _jmp_addr_0x007f9559:    mov                eax, 0x00000001                     
                          call               _LHLoadData__FPcPvUlPUl                        // 0x007f95c1    e82a38fcff
                          push               0x1                                            // 0x007f95c6    6a01
                          push               edi                                            // 0x007f95c8    57
-                         call               _Create__8LH3DMeshFPvi                         // 0x007f95c9    e892ce0000
+                         call               ?Create@LH3DMesh@@SAPAV1@PBX_N@Z               // 0x007f95c9    e892ce0000
                          push               edi                                            // 0x007f95ce    57
                          {disp32} mov       dword ptr [data_bytes + 0x4d411c], eax         // 0x007f95cf    a31ca1e900
                          call               _Free__7LH3DMemFPv                             // 0x007f95d4    e887970400
@@ -2646,12 +2646,12 @@ _jmp_addr_0x007fa0a8:    test               edx, 0x00080000                     
                          test               edi, edi                                       // 0x007fa0b0    85ff
                          {disp8} je         _jmp_addr_0x007fa0c0                           // 0x007fa0b2    740c
                          mov.s              ecx, esi                                       // 0x007fa0b4    8bce
-                         call               _jmp_addr_0x00403730                           // 0x007fa0b6    e87596c0ff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x007fa0b6    e87596c0ff
                          {disp8} mov        edi, dword ptr [eax + 0x08]                    // 0x007fa0bb    8b7808
                          {disp8} jmp        _jmp_addr_0x007fa0c2                           // 0x007fa0be    eb02
 _jmp_addr_0x007fa0c0:    xor.s              edi, edi                                       // 0x007fa0c0    33ff
 _jmp_addr_0x007fa0c2:    mov.s              ecx, esi                                       // 0x007fa0c2    8bce
-                         call               _jmp_addr_0x00403bb0                           // 0x007fa0c4    e8e79ac0ff
+                         call               ?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ          // 0x007fa0c4    e8e79ac0ff
                          add                eax, dword ptr [esi + 0x48]                    // 0x007fa0c9    034648
                          add.s              eax, edi                                       // 0x007fa0cc    03c7
                          mov                eax, dword ptr [eax]                           // 0x007fa0ce    8b00
@@ -18610,7 +18610,9 @@ _jmp_addr_0x00806453:    pop                edi                                 
                          nop                                                               // 0x0080645d    90
                          nop                                                               // 0x0080645e    90
                          nop                                                               // 0x0080645f    90
-_Create__8LH3DMeshFPvi:  {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x00806460    8b442408
+
+?Create@LH3DMesh@@SAPAV1@PBX_N@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x00806460    8b442408
                          {disp32} mov       dword ptr [?g_b_dont_care_about_texture@LH3DMesh@@2PA_NA], eax         // 0x00806464    a354fee900
                          xor.s              ecx, ecx                                       // 0x00806469    33c9
                          push               ebx                                            // 0x0080646b    53
@@ -18871,7 +18873,7 @@ _jmp_addr_0x00806734:    test               eax, 0x00040000                     
                          test               edx, edx                                       // 0x0080673b    85d2
                          {disp8} je         _jmp_addr_0x00806753                           // 0x0080673d    7414
                          mov.s              ecx, ebp                                       // 0x0080673f    8bcd
-                         call               _jmp_addr_0x00403730                           // 0x00806741    e8eacfbfff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x00806741    e8eacfbfff
                          {disp8} mov        eax, dword ptr [eax + 0x08]                    // 0x00806746    8b4008
                          {disp8} mov        ecx, dword ptr [ebp + 0x48]                    // 0x00806749    8b4d48
                          mov                ebx, dword ptr [ecx + eax * 0x1]               // 0x0080674c    8b1c01
@@ -18886,10 +18888,10 @@ _jmp_addr_0x0080675f:    xor.s              ebx, ebx                            
 _jmp_addr_0x00806761:    test               dword ptr [ebp + 0x04], 0x00080000             // 0x00806761    f7450400000800
                          {disp8} je         _jmp_addr_0x00806783                           // 0x00806768    7419
                          mov.s              ecx, ebp                                       // 0x0080676a    8bcd
-                         call               _jmp_addr_0x00403bb0                           // 0x0080676c    e83fd4bfff
+                         call               ?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ          // 0x0080676c    e83fd4bfff
                          mov.s              ecx, ebp                                       // 0x00806771    8bcd
                          mov.s              esi, eax                                       // 0x00806773    8bf0
-                         call               _jmp_addr_0x00403b90                           // 0x00806775    e816d4bfff
+                         call               ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ    // 0x00806775    e816d4bfff
                          add.s              esi, eax                                       // 0x0080677a    03f0
                          add                esi, dword ptr [ebp + 0x48]                    // 0x0080677c    037548
                          mov                esi, dword ptr [esi]                           // 0x0080677f    8b36
@@ -18946,7 +18948,9 @@ _jmp_addr_0x008067da:    pop                edi                                 
                          nop                                                               // 0x008067ed    90
                          nop                                                               // 0x008067ee    90
                          nop                                                               // 0x008067ef    90
-_CreateFromHD__8LH3DMeshFPci:    sub                esp, 0x00000404                                // 0x008067f0    81ec04040000
+
+?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z:
+                         sub                esp, 0x00000404                                // 0x008067f0    81ec04040000
                          push               edi                                            // 0x008067f6    57
                          {disp32} mov       edi, dword ptr [esp + 0x0000040c]              // 0x008067f7    8bbc240c040000
                          {disp8} lea        eax, dword ptr [esp + 0x04]                    // 0x008067fe    8d442404
@@ -18980,7 +18984,7 @@ _jmp_addr_0x0080682d:    {disp8} mov        edx, dword ptr [esp + 0x04]         
                          {disp32} mov       ecx, dword ptr [esp + 0x00000428]              // 0x00806848    8b8c2428040000
                          push               ecx                                            // 0x0080684f    51
                          push               esi                                            // 0x00806850    56
-                         call               _Create__8LH3DMeshFPvi                         // 0x00806851    e80afcffff
+                         call               ?Create@LH3DMesh@@SAPAV1@PBX_N@Z               // 0x00806851    e80afcffff
                          push               esi                                            // 0x00806856    56
                          mov.s              edi, eax                                       // 0x00806857    8bf8
                          call               _Free__7LH3DMemFPv                             // 0x00806859    e802c50300
@@ -19013,7 +19017,7 @@ _jmp_addr_0x00806870:    sub                esp, 0x30                           
                          {disp8} mov        dword ptr [esp + 0x18], 0x00000000             // 0x008068b3    c744241800000000
                          {disp8} je         _jmp_addr_0x008068c9                           // 0x008068bb    740c
                          mov.s              ecx, edi                                       // 0x008068bd    8bcf
-                         call               _jmp_addr_0x00403730                           // 0x008068bf    e86ccebfff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x008068bf    e86ccebfff
                          {disp8} mov        esi, dword ptr [eax + 0x08]                    // 0x008068c4    8b7008
                          {disp8} jmp        _jmp_addr_0x008068cb                           // 0x008068c7    eb02
 _jmp_addr_0x008068c9:    xor.s              esi, esi                                       // 0x008068c9    33f6
@@ -19021,13 +19025,13 @@ _jmp_addr_0x008068cb:    mov.s              ecx, edi                            
                          call               _jmp_addr_0x00806ac0                           // 0x008068cd    e8ee010000
                          mov.s              ecx, edi                                       // 0x008068d2    8bcf
                          mov.s              ebx, eax                                       // 0x008068d4    8bd8
-                         call               _jmp_addr_0x00403c50                           // 0x008068d6    e875d3bfff
+                         call               ?GetSizeEMetricsData_dup1@LH3DMesh@@QAEIXZ     // 0x008068d6    e875d3bfff
                          mov.s              ecx, edi                                       // 0x008068db    8bcf
                          add.s              ebx, eax                                       // 0x008068dd    03d8
-                         call               _jmp_addr_0x00403be0                           // 0x008068df    e8fcd2bfff
+                         call               ?GetSizeNameData_dup1@LH3DMesh@@QAEIXZ         // 0x008068df    e8fcd2bfff
                          mov.s              ecx, edi                                       // 0x008068e4    8bcf
                          add.s              ebx, eax                                       // 0x008068e6    03d8
-                         call               _jmp_addr_0x00403bb0                           // 0x008068e8    e8c3d2bfff
+                         call               ?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ          // 0x008068e8    e8c3d2bfff
                          {disp8} mov        ebp, dword ptr [edi + 0x48]                    // 0x008068ed    8b6f48
                          {disp8} mov        ecx, dword ptr [edi + 0x0c]                    // 0x008068f0    8b4f0c
                          add.s              ebx, eax                                       // 0x008068f3    03d8
@@ -19234,7 +19238,7 @@ _jmp_addr_0x00806b3f:    xor.s              edi, edi                            
 _jmp_addr_0x00806b41:    test               ebx, ebx                                       // 0x00806b41    85db
                          {disp8} je         _jmp_addr_0x00806b5d                           // 0x00806b43    7418
                          mov.s              ecx, esi                                       // 0x00806b45    8bce
-                         call               _jmp_addr_0x00403b90                           // 0x00806b47    e844d0bfff
+                         call               ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ    // 0x00806b47    e844d0bfff
                          add                eax, dword ptr [esi + 0x48]                    // 0x00806b4c    034648
                          mov                ecx, dword ptr [eax]                           // 0x00806b4f    8b08
                          {disp8} mov        eax, dword ptr [esi + 0x48]                    // 0x00806b51    8b4648
@@ -19261,12 +19265,12 @@ _jmp_addr_0x00806b85:    xor.s              ebx, ebx                            
 _jmp_addr_0x00806b87:    test               ecx, 0x00040000                                // 0x00806b87    f7c100000400
                          {disp8} je         _jmp_addr_0x00806b9a                           // 0x00806b8d    740b
                          mov.s              ecx, esi                                       // 0x00806b8f    8bce
-                         call               _jmp_addr_0x00403740                           // 0x00806b91    e8aacbbfff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x00806b91    e8aacbbfff
                          mov                edi, dword ptr [eax]                           // 0x00806b96    8b38
                          {disp8} jmp        _jmp_addr_0x00806b9c                           // 0x00806b98    eb02
 _jmp_addr_0x00806b9a:    xor.s              edi, edi                                       // 0x00806b9a    33ff
 _jmp_addr_0x00806b9c:    mov.s              ecx, esi                                       // 0x00806b9c    8bce
-                         call               _jmp_addr_0x00403be0                           // 0x00806b9e    e83dd0bfff
+                         call               ?GetSizeNameData_dup1@LH3DMesh@@QAEIXZ         // 0x00806b9e    e83dd0bfff
                          add                eax, dword ptr [esi + 0x48]                    // 0x00806ba3    034648
                          add.s              eax, edi                                       // 0x00806ba6    03c7
                          mov                ecx, dword ptr [eax + ebx * 0x1]               // 0x00806ba8    8b0c18
@@ -19316,7 +19320,7 @@ _jmp_addr_0x00806be0:    sub                esp, 0x10                           
                          xor.s              ebp, ebp                                       // 0x00806bfd    33ed
                          test               ah, -0x80                                      // 0x00806bff    f6c480
                          {disp8} je         _jmp_addr_0x00806c12                           // 0x00806c02    740e
-                         call               _jmp_addr_0x00403730                           // 0x00806c04    e827cbbfff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x00806c04    e827cbbfff
                          {disp8} mov        eax, dword ptr [eax + 0x08]                    // 0x00806c09    8b4008
                          {disp8} mov        dword ptr [esp + 0x18], eax                    // 0x00806c0c    89442418
                          {disp8} jmp        _jmp_addr_0x00806c16                           // 0x00806c10    eb04
@@ -19324,7 +19328,7 @@ _jmp_addr_0x00806c12:    {disp8} mov        dword ptr [esp + 0x18], ebx         
 _jmp_addr_0x00806c16:    test               dword ptr [esi + 0x04], 0x00040000             // 0x00806c16    f7460400000400
                          {disp8} je         _jmp_addr_0x00806c2e                           // 0x00806c1d    740f
                          mov.s              ecx, esi                                       // 0x00806c1f    8bce
-                         call               _jmp_addr_0x00403740                           // 0x00806c21    e81acbbfff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x00806c21    e81acbbfff
                          mov                ecx, dword ptr [eax]                           // 0x00806c26    8b08
                          {disp8} mov        dword ptr [esp + 0x14], ecx                    // 0x00806c28    894c2414
                          {disp8} jmp        _jmp_addr_0x00806c32                           // 0x00806c2c    eb04
@@ -19332,7 +19336,7 @@ _jmp_addr_0x00806c2e:    {disp8} mov        dword ptr [esp + 0x14], ebx         
 _jmp_addr_0x00806c32:    test               dword ptr [esi + 0x04], 0x00080000             // 0x00806c32    f7460400000800
                          {disp8} je         _jmp_addr_0x00806c4a                           // 0x00806c39    740f
                          mov.s              ecx, esi                                       // 0x00806c3b    8bce
-                         call               _jmp_addr_0x00403770                           // 0x00806c3d    e82ecbbfff
+                         call               ?GetSizeNameData@LH3DMesh@@QAEIXZ              // 0x00806c3d    e82ecbbfff
                          mov                edx, dword ptr [eax]                           // 0x00806c42    8b10
                          {disp8} mov        dword ptr [esp + 0x10], edx                    // 0x00806c44    89542410
                          {disp8} jmp        _jmp_addr_0x00806c4e                           // 0x00806c48    eb04
@@ -19340,7 +19344,7 @@ _jmp_addr_0x00806c4a:    {disp8} mov        dword ptr [esp + 0x10], ebx         
 _jmp_addr_0x00806c4e:    test               dword ptr [esi + 0x04], 0x00100000             // 0x00806c4e    f7460400001000
                          {disp8} je         _jmp_addr_0x00806c60                           // 0x00806c55    7409
                          mov.s              ecx, esi                                       // 0x00806c57    8bce
-                         call               _jmp_addr_0x004037e0                           // 0x00806c59    e882cbbfff
+                         call               ?GetSizeEMetricsData@LH3DMesh@@QAEIXZ          // 0x00806c59    e882cbbfff
                          mov                ebx, dword ptr [eax]                           // 0x00806c5e    8b18
 _jmp_addr_0x00806c60:    mov.s              ecx, esi                                       // 0x00806c60    8bce
                          call               _jmp_addr_0x00806ac0                           // 0x00806c62    e859feffff
@@ -20509,7 +20513,7 @@ _jmp_addr_0x008079ec:    {disp8} mov        eax, dword ptr [ebp + 0x04]         
 _jmp_addr_0x00807a00:    test               ah, -0x80                                      // 0x00807a00    f6c480
                          {disp8} je         _jmp_addr_0x00807a15                           // 0x00807a03    7410
                          mov.s              ecx, ebp                                       // 0x00807a05    8bcd
-                         call               _jmp_addr_0x00403730                           // 0x00807a07    e824bdbfff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x00807a07    e824bdbfff
                          {disp8} mov        esi, dword ptr [eax + 0x08]                    // 0x00807a0c    8b7008
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x00807a0f    8b542410
                          {disp8} jmp        _jmp_addr_0x00807a17                           // 0x00807a13    eb02
@@ -20517,7 +20521,7 @@ _jmp_addr_0x00807a15:    xor.s              esi, esi                            
 _jmp_addr_0x00807a17:    test               dword ptr [ebp + 0x04], 0x00040000             // 0x00807a17    f7450400000400
                          {disp8} je         _jmp_addr_0x00807a2f                           // 0x00807a1e    740f
                          mov.s              ecx, ebp                                       // 0x00807a20    8bcd
-                         call               _jmp_addr_0x00403740                           // 0x00807a22    e819bdbfff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x00807a22    e819bdbfff
                          mov                edi, dword ptr [eax]                           // 0x00807a27    8b38
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x00807a29    8b542410
                          {disp8} jmp        _jmp_addr_0x00807a31                           // 0x00807a2d    eb02
@@ -20525,7 +20529,7 @@ _jmp_addr_0x00807a2f:    xor.s              edi, edi                            
 _jmp_addr_0x00807a31:    test               dword ptr [ebp + 0x04], 0x00080000             // 0x00807a31    f7450400000800
                          {disp8} je         _jmp_addr_0x00807a49                           // 0x00807a38    740f
                          mov.s              ecx, ebp                                       // 0x00807a3a    8bcd
-                         call               _jmp_addr_0x00403770                           // 0x00807a3c    e82fbdbfff
+                         call               ?GetSizeNameData@LH3DMesh@@QAEIXZ              // 0x00807a3c    e82fbdbfff
                          mov                eax, dword ptr [eax]                           // 0x00807a41    8b00
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x00807a43    8b542410
                          {disp8} jmp        _jmp_addr_0x00807a4b                           // 0x00807a47    eb02
@@ -20543,7 +20547,7 @@ _jmp_addr_0x00807a58:    {disp8} mov        eax, dword ptr [edx + 0x04]         
 _jmp_addr_0x00807a66:    test               ah, -0x80                                      // 0x00807a66    f6c480
                          {disp8} je         _jmp_addr_0x00807a7b                           // 0x00807a69    7410
                          mov.s              ecx, edx                                       // 0x00807a6b    8bca
-                         call               _jmp_addr_0x00403730                           // 0x00807a6d    e8bebcbfff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x00807a6d    e8bebcbfff
                          {disp8} mov        esi, dword ptr [eax + 0x08]                    // 0x00807a72    8b7008
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x00807a75    8b542410
                          {disp8} jmp        _jmp_addr_0x00807a7d                           // 0x00807a79    eb02
@@ -20551,7 +20555,7 @@ _jmp_addr_0x00807a7b:    xor.s              esi, esi                            
 _jmp_addr_0x00807a7d:    test               dword ptr [edx + 0x04], 0x00040000             // 0x00807a7d    f7420400000400
                          {disp8} je         _jmp_addr_0x00807a95                           // 0x00807a84    740f
                          mov.s              ecx, edx                                       // 0x00807a86    8bca
-                         call               _jmp_addr_0x00403740                           // 0x00807a88    e8b3bcbfff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x00807a88    e8b3bcbfff
                          mov                ebx, dword ptr [eax]                           // 0x00807a8d    8b18
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x00807a8f    8b542410
                          {disp8} jmp        _jmp_addr_0x00807a97                           // 0x00807a93    eb02
@@ -20559,7 +20563,7 @@ _jmp_addr_0x00807a95:    xor.s              ebx, ebx                            
 _jmp_addr_0x00807a97:    test               dword ptr [edx + 0x04], 0x00080000             // 0x00807a97    f7420400000800
                          {disp8} je         _jmp_addr_0x00807aaf                           // 0x00807a9e    740f
                          mov.s              ecx, edx                                       // 0x00807aa0    8bca
-                         call               _jmp_addr_0x00403770                           // 0x00807aa2    e8c9bcbfff
+                         call               ?GetSizeNameData@LH3DMesh@@QAEIXZ              // 0x00807aa2    e8c9bcbfff
                          mov                eax, dword ptr [eax]                           // 0x00807aa7    8b00
                          {disp8} mov        edx, dword ptr [esp + 0x10]                    // 0x00807aa9    8b542410
                          {disp8} jmp        _jmp_addr_0x00807ab1                           // 0x00807aad    eb02
@@ -20576,19 +20580,19 @@ _jmp_addr_0x00807aba:    {disp8} mov        ecx, dword ptr [esp + 0x20]         
                          {disp8} jmp        _jmp_addr_0x00807b09                           // 0x00807aca    eb3d
 _jmp_addr_0x00807acc:    test               ah, -0x80                                      // 0x00807acc    f6c480
                          {disp8} je         _jmp_addr_0x00807adb                           // 0x00807acf    740a
-                         call               _jmp_addr_0x00403730                           // 0x00807ad1    e85abcbfff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x00807ad1    e85abcbfff
                          {disp8} mov        esi, dword ptr [eax + 0x08]                    // 0x00807ad6    8b7008
                          {disp8} jmp        _jmp_addr_0x00807add                           // 0x00807ad9    eb02
 _jmp_addr_0x00807adb:    xor.s              esi, esi                                       // 0x00807adb    33f6
 _jmp_addr_0x00807add:    {disp8} mov        ecx, dword ptr [esp + 0x20]                    // 0x00807add    8b4c2420
                          test               dword ptr [ecx + 0x04], 0x00040000             // 0x00807ae1    f7410400000400
                          {disp8} je         _jmp_addr_0x00807af3                           // 0x00807ae8    7409
-                         call               _jmp_addr_0x00403740                           // 0x00807aea    e851bcbfff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x00807aea    e851bcbfff
                          mov                ebx, dword ptr [eax]                           // 0x00807aef    8b18
                          {disp8} jmp        _jmp_addr_0x00807af5                           // 0x00807af1    eb02
 _jmp_addr_0x00807af3:    xor.s              ebx, ebx                                       // 0x00807af3    33db
 _jmp_addr_0x00807af5:    {disp8} mov        ecx, dword ptr [esp + 0x20]                    // 0x00807af5    8b4c2420
-                         call               _jmp_addr_0x00403be0                           // 0x00807af9    e8e2c0bfff
+                         call               ?GetSizeNameData_dup1@LH3DMesh@@QAEIXZ         // 0x00807af9    e8e2c0bfff
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                    // 0x00807afe    8b4c2420
                          add                eax, dword ptr [ecx + 0x48]                    // 0x00807b02    034148
                          add.s              eax, ebx                                       // 0x00807b05    03c3
@@ -20676,7 +20680,9 @@ _jmp_addr_0x00807bcc:    pop                edi                                 
                          nop                                                               // 0x00807bdd    90
                          nop                                                               // 0x00807bde    90
                          nop                                                               // 0x00807bdf    90
-_CreatePackInternal__8LH3DMeshFPv@4:    {disp32} mov       eax, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x00807be0    a134fee900
+
+?CreatePackInternal@LH3DMesh@@SAXPBX@Z:
+                         {disp32} mov       eax, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x00807be0    a134fee900
                          test               eax, eax                                       // 0x00807be5    85c0
                          push               ebp                                            // 0x00807be7    55
                          push               esi                                            // 0x00807be8    56
@@ -20708,7 +20714,7 @@ _jmp_addr_0x00807c2d:    mov                eax, dword ptr [edi]                
                          add.s              eax, esi                                       // 0x00807c2f    03c6
                          push               0x0                                            // 0x00807c31    6a00
                          push               eax                                            // 0x00807c33    50
-                         call               _Create__8LH3DMeshFPvi                         // 0x00807c34    e827e8ffff
+                         call               ?Create@LH3DMesh@@SAPAV1@PBX_N@Z               // 0x00807c34    e827e8ffff
                          {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x00807c39    8b1534fee900
                          add                esp, 0x08                                      // 0x00807c3f    83c408
                          mov                dword ptr [ebx + edx * 0x1], eax               // 0x00807c42    890413
@@ -20731,7 +20737,9 @@ _jmp_addr_0x00807c55:    pop                esi                                 
                          nop                                                               // 0x00807c5d    90
                          nop                                                               // 0x00807c5e    90
                          nop                                                               // 0x00807c5f    90
-_CreatePack__8LH3DMeshFv@0:    sub                esp, 0x2c                                      // 0x00807c60    83ec2c
+
+?CreatePack@LH3DMesh@@SAXXZ:
+                         sub                esp, 0x2c                                      // 0x00807c60    83ec2c
                          push               edi                                            // 0x00807c63    57
                          push               0x2                                            // 0x00807c64    6a02
                          mov                ecx, 0x00edd3e0                                // 0x00807c66    b9e0d3ed00
@@ -20754,7 +20762,7 @@ _CreatePack__8LH3DMeshFv@0:    sub                esp, 0x2c                     
                          pop                edi                                            // 0x00807ca4    5f
                          {disp8} je         _jmp_addr_0x00807cb0                           // 0x00807ca5    7409
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                    // 0x00807ca7    8b4c2428
-                         call               _CreatePackInternal__8LH3DMeshFPv@4            // 0x00807cab    e830ffffff
+                         call               ?CreatePackInternal@LH3DMesh@@SAXPBX@Z         // 0x00807cab    e830ffffff
 _jmp_addr_0x00807cb0:    add                esp, 0x2c                                      // 0x00807cb0    83c42c
                          ret                                                               // 0x00807cb3    c3
                          nop                                                               // 0x00807cb4    90
@@ -23678,14 +23686,14 @@ _jmp_addr_0x00809ef2:    {disp32} mov       eax, dword ptr [data_bytes + 0x4e3ea
 _jmp_addr_0x00809f28:    test               ah, -0x80                                      // 0x00809f28    f6c480
                          {disp8} je         _jmp_addr_0x00809f39                           // 0x00809f2b    740c
                          mov.s              ecx, ebx                                       // 0x00809f2d    8bcb
-                         call               _jmp_addr_0x00403730                           // 0x00809f2f    e8fc97bfff
+                         call               ?GetSizeFootprintData@LH3DMesh@@QAEIXZ         // 0x00809f2f    e8fc97bfff
                          {disp8} mov        ebp, dword ptr [eax + 0x08]                    // 0x00809f34    8b6808
                          {disp8} jmp        _jmp_addr_0x00809f3b                           // 0x00809f37    eb02
 _jmp_addr_0x00809f39:    xor.s              ebp, ebp                                       // 0x00809f39    33ed
 _jmp_addr_0x00809f3b:    test               dword ptr [ebx + 0x04], 0x00040000             // 0x00809f3b    f7430400000400
                          {disp8} je         _jmp_addr_0x00809f4f                           // 0x00809f42    740b
                          mov.s              ecx, ebx                                       // 0x00809f44    8bcb
-                         call               _jmp_addr_0x00403740                           // 0x00809f46    e8f597bfff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x00809f46    e8f597bfff
                          mov                eax, dword ptr [eax]                           // 0x00809f4b    8b00
                          {disp8} jmp        _jmp_addr_0x00809f51                           // 0x00809f4d    eb02
 _jmp_addr_0x00809f4f:    xor.s              eax, eax                                       // 0x00809f4f    33c0

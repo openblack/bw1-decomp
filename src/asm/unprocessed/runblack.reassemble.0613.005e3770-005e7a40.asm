@@ -106,7 +106,7 @@
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _Create__10LH3DIslandFv
 .extern _Release__10LH3DIslandFv@0
-.extern _CreateFromHD__8LH3DMeshFPci
+.extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x0081b370
@@ -265,7 +265,7 @@ _jmp_addr_0x005e3837:    cmp                esi, 0x03                           
                          {disp32} jne       _jmp_addr_0x005e392e                          // 0x005e3846    0f85e2000000
                          push               ebp                                           // 0x005e384c    55
                          push               0x00bf355c                                    // 0x005e384d    685c35bf00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x005e3852    e8992f2200
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x005e3852    e8992f2200
                          {disp32} mov       dword ptr [data_bytes + 0x354320], eax        // 0x005e3857    a320a3d100
                          {disp32} mov       al, byte ptr [data_bytes + 0x3542cc]          // 0x005e385c    a0cca2d100
                          add                esp, 0x08                                     // 0x005e3861    83c408
@@ -436,7 +436,7 @@ _jmp_addr_0x005e3aee:    cmp                dword ptr [data_bytes + 0x35431c], e
                          {disp32} jne       _jmp_addr_0x005e3c5b                          // 0x005e3af4    0f8561010000
                          push               ebp                                           // 0x005e3afa    55
                          push               0x00bf3548                                    // 0x005e3afb    684835bf00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x005e3b00    e8eb2c2200
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x005e3b00    e8eb2c2200
                          add                esp, 0x08                                     // 0x005e3b05    83c408
                          mov                ecx, 0x00000001                               // 0x005e3b08    b901000000
                          {disp32} mov       dword ptr [data_bytes + 0x354320], eax        // 0x005e3b0d    a320a3d100
@@ -565,7 +565,7 @@ _jmp_addr_0x005e3c5b:    {disp32} mov       ebx, dword ptr [data_bytes + 0x35431
                          add                esp, 0x04                                     // 0x005e3ce7    83c404
 _jmp_addr_0x005e3cea:    push               ebp                                           // 0x005e3cea    55
                          push               0x00bf3510                                    // 0x005e3ceb    681035bf00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x005e3cf0    e8fb2a2200
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x005e3cf0    e8fb2a2200
                          add                esp, 0x08                                     // 0x005e3cf5    83c408
                          mov                ecx, 0x00000001                               // 0x005e3cf8    b901000000
                          {disp32} mov       dword ptr [data_bytes + 0x354328], eax        // 0x005e3cfd    a328a3d100

@@ -93,7 +93,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
-.extern _CreateFromHD__8LH3DMeshFPci
+.extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern _jmp_addr_0x00825440
 .extern _jmp_addr_0x00825f20
 .extern _jmp_addr_0x00828db0
@@ -12804,7 +12804,7 @@ _jmp_addr_0x00708db8:    cmp                ebx, dword ptr [ebp + edx * 0x4 + 0x
                          push               0x0                                           // 0x00708dbe    6a00
                          mov                edi, 0x00000001                               // 0x00708dc0    bf01000000
                          push               0x00c20520                                    // 0x00708dc5    682005c200
-_jmp_addr_0x00708dca:    call               _CreateFromHD__8LH3DMeshFPci                  // 0x00708dca    e821da0f00
+_jmp_addr_0x00708dca:    call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x00708dca    e821da0f00
                          add                esp, 0x08                                     // 0x00708dcf    83c408
 _jmp_addr_0x00708dd2:    {disp8} mov        edx, dword ptr [esi + 0x40]                   // 0x00708dd2    8b5640
                          push               eax                                           // 0x00708dd5    50

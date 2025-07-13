@@ -144,7 +144,7 @@
 .extern ___nw__FUl
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
-.extern _Create__8LH3DMeshFPvi
+.extern ?Create@LH3DMesh@@SAPAV1@PBX_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x0081b370
@@ -2359,7 +2359,7 @@ _jmp_addr_0x005c0fad:    {disp8} mov        edx, dword ptr [esp + 0x0c]         
                          push               0x0                                            // 0x005c0fb1    6a00
                          push               edi                                            // 0x005c0fb3    57
                          {disp8} mov        dword ptr [esi + 0x18], edx                    // 0x005c0fb4    895618
-                         call               _Create__8LH3DMeshFPvi                         // 0x005c0fb7    e8a4542400
+                         call               ?Create@LH3DMesh@@SAPAV1@PBX_N@Z               // 0x005c0fb7    e8a4542400
                          push               edi                                            // 0x005c0fbc    57
                          {disp8} mov        dword ptr [esi + 0x14], eax                    // 0x005c0fbd    894614
                          call               _Free__7LH3DMemFPv                             // 0x005c0fc0    e89b1d2800
