@@ -101,6 +101,8 @@ extern const struct AbodeVftable __vt__5Abode asm("??_7Abode@@6B@");
 
 // win1.41 00402e20 mac 103bf260 Abode::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, unsigned long, unsigned long, float, int, int)
 struct Abode* __cdecl Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, uint32_t param_6, uint32_t param_7, float food, int wood, int param_10) asm("?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z");
+// win1.41 00403190 mac 10589610 Abode::CreateWithoutSpecial(MapCoords const &, GAbodeInfo const *, Town *, float, float, unsigned long, unsigned long, float, int, int)
+struct Abode* __cdecl CreateWithoutSpecial__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood) asm("?CreateWithoutSpecial@Abode@@SAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Constructors
 
@@ -150,7 +152,7 @@ struct Town * __fastcall GetTown__5AbodeFv(struct GameThing* this) asm("?GetTown
 uint32_t __fastcall JustAddResource__5AbodeF13RESOURCE_TYPEUlb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, bool param_3) asm("?JustAddResource@Abode@@UAEIE@Z");
 // win1.41 00404d60 mac 1034cdd0 Abode::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
 uint32_t __fastcall JustRemoveResource__5AbodeF13RESOURCE_TYPEUlPb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, bool* param_3) asm("?JustRemoveResource@Abode@@UAEIE@Z");
-// win1.41 00404d30 mac 1006d300 Abode::CallVirtualFunctionsForCreationGetResource(RESOURCE_TYPE)
+// win1.41 00404d30 mac 1006d300 Abode::GetResource(RESOURCE_TYPE)
 uint32_t __fastcall GetResource__5AbodeF13RESOURCE_TYPE(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type) asm("?GetResource@Abode@@UAEIW4RESOURCE_TYPE@@@Z");
 // win1.41 00404d90 mac 101c95e0 Abode::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 uint32_t __fastcall AddResource__5AbodeF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* param_3, bool param_4, const struct MapCoords* coords, int param_6) asm("?AddResource@Abode@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NPBUMapCoords@@H@Z");

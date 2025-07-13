@@ -14,7 +14,7 @@ def parse_functions_from_file(file: TextIO) -> Generator[Tuple[str, str], None, 
         return instructions[:i]
 
     for lineno, line in enumerate(file, start=1):
-        if re.match(r'^\?\w+@', line):
+        if re.match(r'^\?\??\w+@', line):
             if current_name is not None:
                 end_line = lineno - 1
                 yield current_name, "\n".join(strip_trailing_nops(current_body)), start_line, end_line
