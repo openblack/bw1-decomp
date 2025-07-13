@@ -57,7 +57,7 @@
 .extern ___nw__FUl
 .extern _jmp_addr_0x007dee00
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _Create__8LH3DMeshFPvi
 .extern @Release__8LH3DMeshFv@4
@@ -12290,7 +12290,7 @@ _jmp_addr_0x00617794:    {disp32} mov       edx, dword ptr [ebx + 0x000047f4]   
                          mov.s              ecx, esi                                       // 0x006177a0    8bce
                          add.s              edx, esi                                       // 0x006177a2    03d6
                          add.s              ecx, eax                                       // 0x006177a4    03c8
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x006177a6    e8e53a1e00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x006177a6    e8e53a1e00
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x006177ab    8b83b8470000
                          inc                edi                                            // 0x006177b1    47
                          add                esi, 0x30                                      // 0x006177b2    83c630
@@ -13608,7 +13608,7 @@ _jmp_addr_0x00618619:    {disp32} mov       eax, dword ptr [ebx + 0x000047f4]   
                          mov.s              ecx, esi                                       // 0x00618627    8bce
                          add.s              edx, eax                                       // 0x00618629    03d0
                          add.s              ecx, ebp                                       // 0x0061862b    03cd
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x0061862d    e85e2c1e00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x0061862d    e85e2c1e00
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x00618632    8b83b8470000
                          inc                edi                                            // 0x00618638    47
                          add                esi, 0x30                                      // 0x00618639    83c630
@@ -13927,7 +13927,7 @@ _jmp_addr_0x006189df:    {disp32} mov       eax, dword ptr [ebx + 0x000047f4]   
                          mov.s              edx, esi                                       // 0x006189eb    8bd6
                          add.s              edx, eax                                       // 0x006189ed    03d0
                          add.s              ecx, esi                                       // 0x006189ef    03ce
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x006189f1    e89a281e00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x006189f1    e89a281e00
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x006189f6    8b83b8470000
                          inc                edi                                            // 0x006189fc    47
                          add                esi, 0x30                                      // 0x006189fd    83c630
@@ -14783,7 +14783,7 @@ _jmp_addr_0x00619487:    {disp32} mov       edx, dword ptr [ebx + 0x000047f4]   
                          {disp32} mov       ecx, dword ptr [ebx + 0x000047f8]              // 0x0061948d    8b8bf8470000
                          add.s              edx, esi                                       // 0x00619493    03d6
                          add.s              ecx, esi                                       // 0x00619495    03ce
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x00619497    e8f41d1e00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x00619497    e8f41d1e00
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x0061949c    8b83b8470000
                          inc                edi                                            // 0x006194a2    47
                          add                esi, 0x30                                      // 0x006194a3    83c630

@@ -108,7 +108,7 @@
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb5c0
 .extern _jmp_addr_0x00800c30
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -516,7 +516,7 @@ _jmp_addr_0x00686d57:    {disp32} mov       esi, dword ptr [esp + 0x000000b0]   
                          pop                ebx                                           // 0x00686d60    5b
 _jmp_addr_0x00686d61:    {disp32} mov       edx, dword ptr [esp + 0x000000a0]             // 0x00686d61    8b9424a0000000
                          {disp8} lea        ecx, dword ptr [esp + 0x6c]                   // 0x00686d68    8d4c246c
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x00686d6c    e81f451700
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x00686d6c    e81f451700
                          {disp8} lea        ecx, dword ptr [esp + 0x6c]                   // 0x00686d71    8d4c246c
                          push               ecx                                           // 0x00686d75    51
                          mov.s              ecx, esi                                      // 0x00686d76    8bce

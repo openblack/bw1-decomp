@@ -81,7 +81,7 @@
 .extern _jmp_addr_0x007fab30
 .extern _jmp_addr_0x007faff0
 .extern _jmp_addr_0x007fb180
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb5c0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x00839f10
@@ -19397,7 +19397,7 @@ _jmp_addr_0x005b15ba:    {disp8} mov        ecx, dword ptr [esp + 0x18]         
                          {disp8} lea        ecx, dword ptr [esp + 0x5c]                   // 0x005b1727    8d4c245c
                          {disp8} mov        dword ptr [esp + 0x54], 0x00000000            // 0x005b172b    c744245400000000
                          {disp8} mov        dword ptr [esp + 0x50], 0x00000000            // 0x005b1733    c744245000000000
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x005b173b    e8509b2400
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x005b173b    e8509b2400
                          {disp32} fld       dword ptr [esi + 0x000000a0]                  // 0x005b1740    d986a0000000
                          {disp32} fsub      dword ptr [esi + 0x000000b8]                  // 0x005b1746    d8a6b8000000
                          {disp8} lea        edx, dword ptr [esp + 0x14]                   // 0x005b174c    8d542414

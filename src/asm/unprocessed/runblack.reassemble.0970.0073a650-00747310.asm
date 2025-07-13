@@ -12,7 +12,7 @@
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern _jmp_addr_0x00403530
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern _jmp_addr_0x00404340
 .extern ?Process@Abode@@UAEIXZ
@@ -19366,7 +19366,7 @@ _jmp_addr_0x00746df0:    sub                esp, 0x18                           
                          {disp8} fild       dword ptr [esp + 0x0c]                               // 0x00746e8f    db44240c
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]              // 0x00746e93    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x1c]                               // 0x00746e99    d95c241c
-                         call               _jmp_addr_0x00403530                                 // 0x00746e9d    e88ec6cbff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z            // 0x00746e9d    e88ec6cbff
                          {disp8} mov        dword ptr [edi + 0x44], 0x3f800000                   // 0x00746ea2    c747440000803f
                          {disp8} mov        dword ptr [edi + 0x48], 0x00000000                   // 0x00746ea9    c7474800000000
                          pop                edi                                                  // 0x00746eb0    5f

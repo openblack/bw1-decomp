@@ -12,9 +12,8 @@
 .extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern _jmp_addr_0x00403500
-.extern _jmp_addr_0x00403530
-.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?Process@Abode@@UAEIXZ
 .extern _jmp_addr_0x00405b70
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
@@ -1690,11 +1689,11 @@ _jmp_addr_0x007271a9:    push               edi                                 
                          call               _jmp_addr_0x00519320                                 // 0x0072729c    e87f20dfff
                          {disp8} lea        edx, dword ptr [esp + 0x14]                          // 0x007272a1    8d542414
                          mov.s              ecx, edi                                             // 0x007272a5    8bcf
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8             // 0x007272a7    e8c4c2cdff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z             // 0x007272a7    e8c4c2cdff
                          {disp8} jmp        _jmp_addr_0x007272ba                                 // 0x007272ac    eb0c
 _jmp_addr_0x007272ae:    {disp8} lea        edx, dword ptr [esp + 0x14]                          // 0x007272ae    8d542414
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                          // 0x007272b2    8d4b14
-                         call               _jmp_addr_0x00403530                                 // 0x007272b5    e876c2cdff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z            // 0x007272b5    e876c2cdff
 _jmp_addr_0x007272ba:    {disp8} mov        ecx, dword ptr [esp + 0x0c]                          // 0x007272ba    8b4c240c
                          {disp8} mov        dword ptr [ebx + 0x44], ecx                          // 0x007272be    894b44
                          {disp8} mov        dword ptr [ebx + 0x48], 0x00000000                   // 0x007272c1    c7434800000000

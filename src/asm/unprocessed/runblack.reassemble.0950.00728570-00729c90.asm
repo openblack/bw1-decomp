@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403530
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern _jmp_addr_0x0046e7b0
 .extern _jmp_addr_0x0046e890
@@ -1345,7 +1345,7 @@ _jmp_addr_0x00729020:    sub                esp, 0x18                           
                          {disp8} lea        edx, dword ptr [esp + 0x14]              // 0x007290af    8d542414
                          {disp8} lea        ecx, dword ptr [esi + 0x14]              // 0x007290b3    8d4e14
                          {disp8} fstp       dword ptr [esp + 0x18]                   // 0x007290b6    d95c2418
-                         call               _jmp_addr_0x00403530                     // 0x007290ba    e871a4cdff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z// 0x007290ba    e871a4cdff
                          mov.s              edx, edi                                 // 0x007290bf    8bd7
                          mov.s              ecx, esi                                 // 0x007290c1    8bce
                          {disp8} mov        dword ptr [esi + 0x44], 0x3f800000       // 0x007290c3    c746440000803f

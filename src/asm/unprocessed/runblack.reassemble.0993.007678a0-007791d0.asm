@@ -11,7 +11,7 @@
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
+.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern _jmp_addr_0x00403b90
 .extern _jmp_addr_0x00403bb0
 .extern _jmp_addr_0x00403be0
@@ -20411,7 +20411,7 @@ _jmp_addr_0x00774da4:    {disp8} lea        edi, dword ptr [ebx + 0x14]         
                          call               _jmp_addr_0x00519320                            // 0x00774dae    e86d45daff
                          {disp8} lea        edx, dword ptr [esp + 0x18]                     // 0x00774db3    8d542418
                          mov.s              ecx, edi                                        // 0x00774db7    8bcf
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8        // 0x00774db9    e8b2e7c8ff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z        // 0x00774db9    e8b2e7c8ff
                          mov                edi, 0x40000000                                 // 0x00774dbe    bf00000040
 _jmp_addr_0x00774dc3:    {disp8} mov        eax, dword ptr [esp + 0x10]                     // 0x00774dc3    8b442410
                          {disp8} mov        dword ptr [ebx + 0x44], edi                     // 0x00774dc7    897b44

@@ -85,7 +85,7 @@
 .extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
 .extern _jmp_addr_0x007f7d40
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x00829690
 .extern _jmp_addr_0x00829780
 
@@ -2661,7 +2661,7 @@ _jmp_addr_0x00407b7c:    xor.s              eax, eax                            
                          {disp8} mov        dword ptr [esp + 0x48], 0x00000000            // 0x00407c70    c744244800000000
                          {disp8} mov        dword ptr [esp + 0x44], 0x00000000            // 0x00407c78    c744244400000000
                          {disp8} mov        dword ptr [esp + 0x40], 0x00000000            // 0x00407c80    c744244000000000
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x00407c88    e803363f00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x00407c88    e803363f00
                          {disp8} fld        dword ptr [esi + 0x08]                        // 0x00407c8d    d94608
                          {disp8} fsub       dword ptr [esi + 0x20]                        // 0x00407c90    d86620
                          {disp8} fld        dword ptr [esi + 0x24]                        // 0x00407c93    d94624
@@ -2793,7 +2793,7 @@ _jmp_addr_0x00407dab:    {disp8} fld        dword ptr [esp + 0x7c]              
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x00407e38    d95c241c
                          {disp8} fst        dword ptr [esp + 0x20]                        // 0x00407e3c    d9542420
                          {disp8} fstp       dword ptr [esp + 0x28]                        // 0x00407e40    d95c2428
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x00407e44    e847343f00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x00407e44    e847343f00
                          {disp8} fld        dword ptr [esi + 0x04]                        // 0x00407e49    d94604
                          {disp8} fsub       dword ptr [esi + 0x1c]                        // 0x00407e4c    d8661c
                          {disp8} fld        dword ptr [esi + 0x18]                        // 0x00407e4f    d94618

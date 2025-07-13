@@ -17,7 +17,7 @@
 .extern _operator_new
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007faff0
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x00802550
 .extern _Create__8LH3DMeshFPvi
 .extern _CreateFromHD__8LH3DMeshFPci
@@ -1134,7 +1134,7 @@ _jmp_addr_0x0086addb:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} fstp       dword ptr [esi + 0x04]                         // 0x0086ae5b    d95e04
                          {disp8} fstp       dword ptr [esi + 0x20]                         // 0x0086ae5e    d95e20
                          {disp8} fstp       dword ptr [esi + 0x24]                         // 0x0086ae61    d95e24
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x0086ae64    e82704f9ff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x0086ae64    e82704f9ff
                          {disp8} lea        edx, dword ptr [esp + 0x34]                    // 0x0086ae69    8d542434
                          mov.s              ecx, esi                                       // 0x0086ae6d    8bce
                          call               _jmp_addr_0x007faff0                           // 0x0086ae6f    e87c01f9ff

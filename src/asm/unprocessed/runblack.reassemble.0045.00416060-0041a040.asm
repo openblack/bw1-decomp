@@ -104,7 +104,7 @@
 .extern _jmp_addr_0x007c5a19
 .extern _operator_new
 .extern _jmp_addr_0x007deab0
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
 .globl _jmp_addr_0x00416750
@@ -4760,7 +4760,7 @@ _jmp_addr_0x004187c1:    {disp32} fstp      dword ptr [esi + 0x00000114]        
                          {disp8} fstp       dword ptr [esp + 0x40]                        // 0x0041885b    d95c2440
                          {disp8} fst        dword ptr [esp + 0x44]                        // 0x0041885f    d9542444
                          {disp8} fstp       dword ptr [esp + 0x4c]                        // 0x00418863    d95c244c
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x00418867    e8242a3e00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x00418867    e8242a3e00
                          {disp32} fld       dword ptr [esi + 0x00000114]                  // 0x0041886c    d98614010000
                          {disp8} lea        edx, dword ptr [esp + 0x14]                   // 0x00418872    8d542414
                          {disp32} fsub      dword ptr [esi + 0x0000012c]                  // 0x00418876    d8a62c010000
@@ -4838,7 +4838,7 @@ _jmp_addr_0x004188cc:    {disp32} jle       _jmp_addr_0x00418a25                
                          {disp8} fstp       dword ptr [esp + 0x40]                        // 0x004189b3    d95c2440
                          {disp8} fst        dword ptr [esp + 0x44]                        // 0x004189b7    d9542444
                          {disp8} fstp       dword ptr [esp + 0x4c]                        // 0x004189bb    d95c244c
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x004189bf    e8cc283e00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x004189bf    e8cc283e00
                          {disp32} fld       dword ptr [esi + 0x00000114]                  // 0x004189c4    d98614010000
                          {disp8} lea        edx, dword ptr [esp + 0x14]                   // 0x004189ca    8d542414
                          {disp32} fsub      dword ptr [esi + 0x0000012c]                  // 0x004189ce    d8a62c010000

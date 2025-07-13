@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x00403770
 .extern _jmp_addr_0x00403b90
 .extern _jmp_addr_0x00407700
@@ -2496,7 +2496,7 @@ _jmp_addr_0x00780be0:    sub                esp, 0x4c                           
                          {disp8} fild       dword ptr [esp + 0x24]                        // 0x00780c49    db442424
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x00780c4d    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x00780c53    d95c241c
-                         call               _jmp_addr_0x00403500                          // 0x00780c57    e8a428c8ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x00780c57    e8a428c8ff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x00780c5c    8b442414
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x00780c60    8b4c2418
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x00780c64    8b54241c
@@ -10753,7 +10753,7 @@ _jmp_addr_0x00785580:    sub                esp, 0x70                           
                          {disp8} lea        ecx, dword ptr [esp + 0x44]                   // 0x007856fe    8d4c2444
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x00785702    8944240c
                          {disp8} mov        dword ptr [esp + 0x04], edx                   // 0x00785706    89542404
-                         call               _jmp_addr_0x00403500                          // 0x0078570a    e8f1ddc7ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x0078570a    e8f1ddc7ff
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x0078570f    d9442404
                          fcos                                                             // 0x00785713    d9ff
                          {disp8} fstp       dword ptr [esp + 0x64]                        // 0x00785715    d95c2464

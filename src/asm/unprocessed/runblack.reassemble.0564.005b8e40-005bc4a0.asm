@@ -27,7 +27,7 @@
 .extern ___nw__FUl
 .extern _jmp_addr_0x007ea570
 .extern _jmp_addr_0x007ea810
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x0081b370
 .extern _jmp_addr_0x0081c090
 .extern _Random__Fff@8
@@ -944,7 +944,7 @@ _jmp_addr_0x005b977e:    {disp32} fstp      dword ptr [esi + 0x00003518]        
                          {disp8} fstp       dword ptr [esp + 0x1c]                         // 0x005b9818    d95c241c
                          {disp8} fst        dword ptr [esp + 0x20]                         // 0x005b981c    d9542420
                          {disp8} fstp       dword ptr [esp + 0x28]                         // 0x005b9820    d95c2428
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x005b9824    e8671a2400
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x005b9824    e8671a2400
                          {disp32} fld       dword ptr [esi + 0x00003518]                   // 0x005b9829    d98618350000
                          {disp32} fsub      dword ptr [esi + 0x00003530]                   // 0x005b982f    d8a630350000
                          {disp32} fld       dword ptr [esi + 0x0000352c]                   // 0x005b9835    d9862c350000
@@ -1066,7 +1066,7 @@ _jmp_addr_0x005b997e:    {disp32} fstp      dword ptr [esi + 0x00003548]        
                          {disp8} fstp       dword ptr [esp + 0x1c]                         // 0x005b9a18    d95c241c
                          {disp8} fst        dword ptr [esp + 0x20]                         // 0x005b9a1c    d9542420
                          {disp8} fstp       dword ptr [esp + 0x28]                         // 0x005b9a20    d95c2428
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x005b9a24    e867182400
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x005b9a24    e867182400
                          {disp32} fld       dword ptr [esi + 0x00003548]                   // 0x005b9a29    d98648350000
                          {disp32} fsub      dword ptr [esi + 0x00003560]                   // 0x005b9a2f    d8a660350000
                          {disp32} fld       dword ptr [esi + 0x0000355c]                   // 0x005b9a35    d9865c350000
@@ -1599,7 +1599,7 @@ _jmp_addr_0x005ba113:    {disp32} mov       ecx, dword ptr [esi + 0x00003574]   
                          {disp8} mov        dword ptr [esp + 0x48], 0x00000000             // 0x005ba197    c744244800000000
                          {disp8} mov        dword ptr [esp + 0x44], 0x00000000             // 0x005ba19f    c744244400000000
                          {disp8} mov        dword ptr [esp + 0x40], 0x00000000             // 0x005ba1a7    c744244000000000
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x005ba1af    e8dc102400
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x005ba1af    e8dc102400
                          {disp32} fld       dword ptr [esi + 0x00003578]                   // 0x005ba1b4    d98678350000
                          {disp32} fsub      dword ptr [esi + 0x00003590]                   // 0x005ba1ba    d8a690350000
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x005ba1c0    8d542410
@@ -1645,7 +1645,7 @@ _jmp_addr_0x005ba21d:    {disp32} mov       ecx, dword ptr [esi + 0x00003580]   
                          {disp8} mov        dword ptr [esp + 0x48], 0x00000000             // 0x005ba2a1    c744244800000000
                          {disp8} mov        dword ptr [esp + 0x44], 0x00000000             // 0x005ba2a9    c744244400000000
                          {disp8} mov        dword ptr [esp + 0x40], 0x00000000             // 0x005ba2b1    c744244000000000
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x005ba2b9    e8d20f2400
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x005ba2b9    e8d20f2400
                          {disp32} fld       dword ptr [esi + 0x00003578]                   // 0x005ba2be    d98678350000
                          {disp32} fsub      dword ptr [esi + 0x00003590]                   // 0x005ba2c4    d8a690350000
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x005ba2ca    8d542410

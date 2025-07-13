@@ -37,7 +37,7 @@
 .extern _jmp_addr_0x007c8837
 .extern _jmp_addr_0x007fac10
 .extern _jmp_addr_0x007fae60
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb5c0
 .extern _jmp_addr_0x00801c90
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -5993,7 +5993,7 @@ _jmp_addr_0x008467c0:    {disp32} mov       eax, dword ptr [data_bytes + 0x27221
                          {disp8} fld        dword ptr [esp + 0x30]                         // 0x008468db    d9442430
                          {disp8} fadd       dword ptr [eax + 0x08]                         // 0x008468df    d84008
                          {disp8} fstp       dword ptr [eax + 0x08]                         // 0x008468e2    d95808
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x008468e5    e8a649fbff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x008468e5    e8a649fbff
                          {disp8} fld        dword ptr [esp + 0x3c]                         // 0x008468ea    d944243c
                          push               ebx                                            // 0x008468ee    53
                          fchs                                                              // 0x008468ef    d9e0
@@ -13181,7 +13181,7 @@ _jmp_addr_0x0084bd76:    {disp8} mov        eax, dword ptr [ebp + -0x04]        
                          shl                ebx, 4                                         // 0x0084bd97    c1e304
                          add.s              ebx, edx                                       // 0x0084bd9a    03da
                          mov.s              edx, ebx                                       // 0x0084bd9c    8bd3
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x0084bd9e    e8edf4faff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x0084bd9e    e8edf4faff
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e80]              // 0x0084bda3    d905809eea00
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e84]              // 0x0084bda9    d905849eea00
                          push               ecx                                            // 0x0084bdaf    51
@@ -13696,7 +13696,7 @@ _jmp_addr_0x0084c3f0:    {disp8} mov        eax, dword ptr [ebx + 0x24]         
                          add.s              ebp, ecx                                       // 0x0084c410    03e9
                          mov.s              edx, ebp                                       // 0x0084c412    8bd5
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                    // 0x0084c414    8d4c243c
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x0084c418    e873eefaff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x0084c418    e873eefaff
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e90]              // 0x0084c41d    d905909eea00
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e94]              // 0x0084c423    d905949eea00
                          push               ecx                                            // 0x0084c429    51
@@ -14796,7 +14796,7 @@ _jmp_addr_0x0084d334:    {disp8} mov        ecx, dword ptr [edi + 0x24]         
                          add.s              esi, edx                                       // 0x0084d358    03f2
                          mov.s              edx, esi                                       // 0x0084d35a    8bd6
                          {disp8} mov        dword ptr [esp + 0x10], esi                    // 0x0084d35c    89742410
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x0084d360    e82bdffaff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x0084d360    e82bdffaff
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e90]              // 0x0084d365    d905909eea00
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e94]              // 0x0084d36b    d905949eea00
                          push               ecx                                            // 0x0084d371    51
@@ -15303,7 +15303,7 @@ _jmp_addr_0x0084dad3:    {disp8} mov        eax, dword ptr [edi + 0x24]         
                          add.s              esi, eax                                       // 0x0084daf6    03f0
                          mov.s              edx, esi                                       // 0x0084daf8    8bd6
                          {disp8} mov        dword ptr [esp + 0x1c], esi                    // 0x0084dafa    8974241c
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x0084dafe    e88dd7faff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x0084dafe    e88dd7faff
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e90]              // 0x0084db03    d905909eea00
                          {disp32} fld       dword ptr [data_bytes + 0x4e3e94]              // 0x0084db09    d905949eea00
                          push               ecx                                            // 0x0084db0f    51

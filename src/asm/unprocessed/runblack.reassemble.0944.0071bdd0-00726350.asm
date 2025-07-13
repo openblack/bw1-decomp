@@ -12,9 +12,9 @@
 .extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern _jmp_addr_0x00403500
-.extern _jmp_addr_0x00403530
-.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?Process@Abode@@UAEIXZ
 .extern _jmp_addr_0x00405b70
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
@@ -12117,7 +12117,7 @@ _jmp_addr_0x00723843:    mov                edx, dword ptr [esi]                
                          {disp8} lea        ecx, dword ptr [esp + 0x4c]                          // 0x0072386d    8d4c244c
                          {disp8} fdivr      dword ptr [esp + 0x0c]                               // 0x00723871    d87c240c
                          {disp8} fstp       dword ptr [esp + 0x08]                               // 0x00723875    d95c2408
-                         call               _jmp_addr_0x00403500                                 // 0x00723879    e882fccdff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                        // 0x00723879    e882fccdff
                          {disp8} fld        dword ptr [esp + 0x08]                               // 0x0072387e    d9442408
                          fcos                                                                    // 0x00723882    d9ff
                          {disp8} lea        edx, dword ptr [esp + 0x10]                          // 0x00723884    8d542410
