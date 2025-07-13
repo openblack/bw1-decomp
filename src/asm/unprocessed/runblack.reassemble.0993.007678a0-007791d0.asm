@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x00405fc0
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
-.extern @FindNearestDrinkingWater__5AbodeFf@12
+.extern ?FindNearestDrinkingWater@Abode@@QAEXM@Z
 .extern _jmp_addr_0x00407700
 .extern _jmp_addr_0x004077a0
 .extern @DeleteString__9SetupListFi@12
@@ -454,7 +454,7 @@
 .globl _jmp_addr_0x007789c0
 .globl @__ct__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
 .globl _Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi
-.globl @SetZero__6WonderFv@4
+.globl ?SetZero@Wonder@@QAEXXZ
 
 .globl _globl_ct_0x007685b0
 .globl _globl_ct_0x007685e0
@@ -2422,7 +2422,7 @@ _jmp_addr_0x00768cbd:    pop                edi                                 
                          {disp8} jne        _jmp_addr_0x00768d3a                            // 0x00768d14    7524
                          push               0x43c80000                                      // 0x00768d16    680000c843
                          mov.s              ecx, ebx                                        // 0x00768d1b    8bcb
-                         call               @FindNearestDrinkingWater__5AbodeFf@12          // 0x00768d1d    e8fee2c9ff
+                         call               ?FindNearestDrinkingWater@Abode@@QAEXM@Z        // 0x00768d1d    e8fee2c9ff
                          test               eax, eax                                        // 0x00768d22    85c0
                          {disp32} je        _jmp_addr_0x00768dad                            // 0x00768d24    0f8483000000
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x00768d2a    8d4c240c
@@ -26507,7 +26507,7 @@ _jmp_addr_0x00778de0:    {disp32} fld       dword ptr [rdata_bytes + 0xf2b10]   
                          call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z                            // 0x00778e28    e82385c8ff
                          mov.s              ecx, esi                                        // 0x00778e2d    8bce
                          mov                dword ptr [esi], 0x008df96c                     // 0x00778e2f    c7066cf98d00
-                         call               @SetZero__6WonderFv@4                           // 0x00778e35    e826020000
+                         call               ?SetZero@Wonder@@QAEXXZ                         // 0x00778e35    e826020000
                          mov.s              eax, esi                                        // 0x00778e3a    8bc6
                          pop                esi                                             // 0x00778e3c    5e
                          ret                0x001c                                          // 0x00778e3d    c21c00
@@ -26783,7 +26783,8 @@ _jmp_addr_0x00779030:    {disp32} fld       dword ptr [ecx + 0x000000c4]        
                          nop                                                                // 0x0077905d    90
                          nop                                                                // 0x0077905e    90
                          nop                                                                // 0x0077905f    90
-@SetZero__6WonderFv@4:   {disp32} mov       dword ptr [ecx + 0x000000c4], 0x00000000        // 0x00779060    c781c400000000000000
+?SetZero@Wonder@@QAEXXZ:
+                         {disp32} mov       dword ptr [ecx + 0x000000c4], 0x00000000        // 0x00779060    c781c400000000000000
                          ret                                                                // 0x0077906a    c3
                          nop                                                                // 0x0077906b    90
                          nop                                                                // 0x0077906c    90

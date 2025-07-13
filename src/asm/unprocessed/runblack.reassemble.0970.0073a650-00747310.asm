@@ -10,7 +10,7 @@
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ??1Abode@@UAE@XZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
+.extern ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
 .extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
 .extern _jmp_addr_0x00403530
 .extern ?DeleteDependancys@Abode@@UAEXXZ
@@ -18,7 +18,7 @@
 .extern ?Process@Abode@@UAEIXZ
 .extern @MakeFunctional__5AbodeFv@4
 .extern @IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town@24
-.extern @CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager@12
+.extern ?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z
 .extern @__ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff@28
 .extern @Init__12PlannedAbodeFP4Town@12
 .extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
@@ -539,7 +539,7 @@ _jmp_addr_0x0073a680:    xor.s              eax, eax                            
                          push               eax                                                  // 0x0073a701    50
                          {disp8} lea        eax, dword ptr [esp + 0x28]                          // 0x0073a702    8d442428
                          push               eax                                                  // 0x0073a706    50
-                         call               _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii                                 // 0x0073a707    e81487ccff
+                         call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z  // 0x0073a707    e81487ccff
                          add                esp, 0x28                                            // 0x0073a70c    83c428
                          test               eax, eax                                             // 0x0073a70f    85c0
                          {disp8} je         _jmp_addr_0x0073a71d                                 // 0x0073a711    740a
@@ -1751,7 +1751,7 @@ _jmp_addr_0x0073b383:    mov                eax, dword ptr [esi]                
                          {disp8} je         _jmp_addr_0x0073b3ae                                 // 0x0073b38f    741d
                          push               ebx                                                  // 0x0073b391    53
                          mov.s              ecx, esi                                             // 0x0073b392    8bce
-                         call               @CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager@12                                 // 0x0073b394    e8a797ccff
+                         call               ?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z  // 0x0073b394    e8a797ccff
                          {disp8} fcom       dword ptr [esp + 0x14]                               // 0x0073b399    d8542414
                          fnstsw             ax                                                   // 0x0073b39d    dfe0
                          test               ah, 0x41                                             // 0x0073b39f    f6c441

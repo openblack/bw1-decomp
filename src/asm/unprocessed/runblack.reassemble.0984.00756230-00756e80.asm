@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @AddVillagerToAbode__5AbodeFP8Villager@12
+.extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00438770
 .extern _jmp_addr_0x00561e10
@@ -124,7 +124,7 @@ _jmp_addr_0x0075628e:    {disp32} fcomp     dword ptr [_rdata_float1p0]         
                          ret                0x0004                                        // 0x007562a7    c20400
 _jmp_addr_0x007562aa:    push               esi                                           // 0x007562aa    56
                          mov.s              ecx, edi                                      // 0x007562ab    8bcf
-                         call               @AddVillagerToAbode__5AbodeFP8Villager@12     // 0x007562ad    e8aeddcaff
+                         call               ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z     // 0x007562ad    e8aeddcaff
                          pop                edi                                           // 0x007562b2    5f
                          pop                esi                                           // 0x007562b3    5e
                          pop                ebp                                           // 0x007562b4    5d

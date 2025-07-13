@@ -1,12 +1,11 @@
 .intel_syntax noprefix
 .align 16
 
-.extern @Init__5AbodeFiUlUl@20
+.extern ?Init@Abode@@QAEXHII@Z
 .extern _jmp_addr_0x00403190
 .extern _jmp_addr_0x00403d20
-.extern @CreateAbodeSurroundingObjects__5AbodeFv@4
+.extern ?CreateAbodeSurroundingObjects@Abode@@QAEXXZ
 .extern _jmp_addr_0x00405890
-.extern @FindNearestDrinkingWater__5AbodeFf@12
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004e3ee0
@@ -37,12 +36,12 @@
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fbac0
 .extern _rdata_float1p0
-
-.globl ??1Abode@@UAE@XZ
-.globl @SetZero__5AbodeFv@4
 .extern ?Delete@Abode@@UAEXH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.globl _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
+
+.globl ??1Abode@@UAE@XZ
+.globl ?SetZero@Abode@@QAEXXZ
+.globl ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
 .globl ?CanBeSleptNextToByCreature@Fixed@@UAE_NPAVCreature@@@Z
 .globl ?CanBePickedUpByCreature@Fixed@@UAE_NPAVCreature@@@Z
 .globl ?CanBeSetOnFire@Fixed@@UAE_NPAVCreature@@@Z
@@ -141,7 +140,8 @@ _jmp_addr_0x00402ba7:    mov.s              ecx, esi                            
                          nop                                                         // 0x00402bbd    90
                          nop                                                         // 0x00402bbe    90
                          nop                                                         // 0x00402bbf    90
-@SetZero__5AbodeFv@4:    xor.s              eax, eax                                 // 0x00402bc0    33c0
+?SetZero@Abode@@QAEXXZ:
+                         xor.s              eax, eax                                 // 0x00402bc0    33c0
                          {disp32} mov       byte ptr [ecx + 0x000000b6], al          // 0x00402bc2    8881b6000000
                          {disp32} mov       byte ptr [ecx + 0x000000b4], al          // 0x00402bc8    8881b4000000
                          {disp32} mov       byte ptr [ecx + 0x000000b7], al          // 0x00402bce    8881b7000000
@@ -398,7 +398,8 @@ _jmp_addr_0x00402de0:    mov                eax, dword ptr [ecx]                
                          nop                                                         // 0x00402e1d    90
                          nop                                                         // 0x00402e1e    90
                          nop                                                         // 0x00402e1f    90
-_Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii:    {disp8} mov        eax, dword ptr [esp + 0x08]              // 0x00402e20    8b442408
+?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x08]              // 0x00402e20    8b442408
                          {disp32} mov       ecx, dword ptr [eax + 0x00000120]        // 0x00402e24    8b8820010000
                          cmp                ecx, 0x00000100                          // 0x00402e2a    81f900010000
                          push               esi                                      // 0x00402e30    56
@@ -611,9 +612,9 @@ _jmp_addr_0x0040306d:    mov.s              esi, eax                            
                          push               edx                                      // 0x00403083    52
                          push               eax                                      // 0x00403084    50
                          mov.s              ecx, esi                                 // 0x00403085    8bce
-                         call               @Init__5AbodeFiUlUl@20                   // 0x00403087    e8a4000000
+                         call               ?Init@Abode@@QAEXHII@Z                   // 0x00403087    e8a4000000
                          mov.s              ecx, esi                                 // 0x0040308c    8bce
-                         call               @CreateAbodeSurroundingObjects__5AbodeFv@4                     // 0x0040308e    e86d0d0000
+                         call               ?CreateAbodeSurroundingObjects@Abode@@QAEXXZ                     // 0x0040308e    e86d0d0000
 _jmp_addr_0x00403093:    mov.s              eax, esi                                 // 0x00403093    8bc6
                          pop                esi                                      // 0x00403095    5e
                          ret                                                         // 0x00403096    c3

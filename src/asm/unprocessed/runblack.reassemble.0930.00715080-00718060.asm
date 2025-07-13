@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii
-.extern @AddVillagerToAbode__5AbodeFP8Villager@12
+.extern ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
+.extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern @IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town@24
 .extern _Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff
 .extern _GetInfoFromText__10GAbodeInfoFPc
@@ -716,7 +716,7 @@ _jmp_addr_0x00715727:    {disp32} mov       edx, dword ptr [esi + 0x00000120]   
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x0071574a    8d442454
                          push               esi                                           // 0x0071574e    56
                          push               eax                                           // 0x0071574f    50
-                         call               _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii                          // 0x00715750    e8cbd6ceff
+                         call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z  // 0x00715750    e8cbd6ceff
                          add                esp, 0x28                                     // 0x00715755    83c428
                          test               eax, eax                                      // 0x00715758    85c0
                          {disp32} mov       dword ptr [_PTR_00d99384], eax                // 0x0071575a    a38493d900
@@ -790,7 +790,7 @@ _jmp_addr_0x0071580e:    cmp.s              edi, ebx                            
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x00715846    8d442454
                          push               edi                                           // 0x0071584a    57
                          push               eax                                           // 0x0071584b    50
-                         call               _Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii                          // 0x0071584c    e8cfd5ceff
+                         call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z  // 0x0071584c    e8cfd5ceff
                          mov.s              edi, eax                                      // 0x00715851    8bf8
                          add                esp, 0x28                                     // 0x00715853    83c428
                          test               edi, edi                                      // 0x00715856    85ff
@@ -1236,7 +1236,7 @@ _jmp_addr_0x00715dc0:    {disp32} mov       ecx, dword ptr [_game]              
                          ret                                                              // 0x00715ded    c3
 _jmp_addr_0x00715dee:    push               edi                                           // 0x00715dee    57
                          mov.s              ecx, esi                                      // 0x00715def    8bce
-                         call               @AddVillagerToAbode__5AbodeFP8Villager@12     // 0x00715df1    e86ae2ceff
+                         call               ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z     // 0x00715df1    e86ae2ceff
                          xor.s              eax, eax                                      // 0x00715df6    33c0
                          pop                edi                                           // 0x00715df8    5f
                          pop                esi                                           // 0x00715df9    5e

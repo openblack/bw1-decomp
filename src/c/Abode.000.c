@@ -622,7 +622,7 @@ struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struc
     asm("{disp32} mov       dword ptr [esi + 0x000000a4], edi");                                // 0x0040139f    89bea4000000
     asm("mov.s              ecx, esi");                                                         // 0x004013a5    8bce
     asm("mov                dword ptr [esi], 0x008a9a64");                                      // 0x004013a7    c706649a8a00
-    asm("call               @SetZero__5AbodeFv@4");                                             // 0x004013ad    e80e180000
+    asm("call               ?SetZero@Abode@@QAEXXZ");                                           // 0x004013ad    e80e180000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                                      // 0x004013b2    8b4c2414
     asm("cmp.s              ecx, edi");                                                         // 0x004013b6    3bcf
     asm("{disp8} je         _jmp_addr_0x004013d4");                                             // 0x004013b8    741a
@@ -637,7 +637,7 @@ struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struc
     asm("or                 byte ptr [eax + 0x59c0], 1");                                       // 0x004013d9    8088c059000001
     asm("push               0x43480000");                                                       // 0x004013e0    6800004843
     asm("mov.s              ecx, esi");                                                         // 0x004013e5    8bce
-    asm("call               @FindNearestDrinkingWater__5AbodeFf@12");                           // 0x004013e7    e8345c0000
+    asm("call               ?FindNearestDrinkingWater@Abode@@QAEXM@Z");                         // 0x004013e7    e8345c0000
     asm("pop                edi");                                                              // 0x004013ec    5f
     asm("mov.s              eax, esi");                                                         // 0x004013ed    8bc6
     asm("pop                esi");                                                              // 0x004013ef    5e

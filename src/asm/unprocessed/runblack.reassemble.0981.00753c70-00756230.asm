@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @GetPosOutside__5AbodeFfff@24
+.extern ?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x005ec520
@@ -143,7 +143,7 @@ _jmp_addr_0x00753d45:    pop               edi                                  
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00753d8f    8d4c2414
                          push              ecx                                           // 0x00753d93    51
                          mov.s             ecx, eax                                      // 0x00753d94    8bc8
-                         call              @GetPosOutside__5AbodeFfff@24                 // 0x00753d96    e84535cbff
+                         call              ?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z  // 0x00753d96    e84535cbff
                          mov               ecx, dword ptr [eax]                          // 0x00753d9b    8b08
                          {disp8} mov       edx, dword ptr [esp + 0x18]                   // 0x00753d9d    8b542418
                          mov               dword ptr [edx], ecx                          // 0x00753da1    890a

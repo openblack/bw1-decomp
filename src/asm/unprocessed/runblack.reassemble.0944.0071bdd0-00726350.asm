@@ -9,7 +9,7 @@
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ??1Abode@@UAE@XZ
-.extern @SetZero__5AbodeFv@4
+.extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
 .extern _jmp_addr_0x00403500
@@ -10476,7 +10476,7 @@ _jmp_addr_0x00722660:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x000000a4], eax                    // 0x0072268e    8986a4000000
                          mov.s              ecx, esi                                             // 0x00722694    8bce
                          mov                dword ptr [esi], 0x008a9a64                          // 0x00722696    c706649a8a00
-                         call               @SetZero__5AbodeFv@4                                 // 0x0072269c    e81f05ceff
+                         call               ?SetZero@Abode@@QAEXXZ                               // 0x0072269c    e81f05ceff
                          mov.s              ecx, esi                                             // 0x007226a1    8bce
                          mov                dword ptr [esi], 0x00981078                          // 0x007226a3    c70678109800
                          call               _jmp_addr_0x007227b0                                 // 0x007226a9    e802010000

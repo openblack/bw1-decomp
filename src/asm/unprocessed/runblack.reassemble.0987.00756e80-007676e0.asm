@@ -9,14 +9,14 @@
 
 .extern _jmp_addr_0x00403770
 .extern _jmp_addr_0x00403b90
-.extern @AddVillagerToAbode__5AbodeFP8Villager@12
+.extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern _jmp_addr_0x00404340
 .extern _jmp_addr_0x004045d0
 .extern _jmp_addr_0x00404600
-.extern @GetRoomLeftForAdults__5AbodeFv@4
+.extern ?GetRoomLeftForAdults@Abode@@QAEHXZ
 .extern _jmp_addr_0x00404680
 .extern _jmp_addr_0x004046c0
-.extern @CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager@12
+.extern ?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z
 .extern _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf
 .extern _jmp_addr_0x00414600
 .extern _jmp_addr_0x0042a4b0
@@ -2116,7 +2116,7 @@ _jmp_addr_0x00757fc5:    mov                edx, dword ptr [esi]                
                          mov.s              ecx, esi                                      // 0x00757fe8    8bce
                          call               @GetAbode__8VillagerFv@4                      // 0x00757fea    e871a1ffff
                          mov.s              ecx, eax                                      // 0x00757fef    8bc8
-                         call               @CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager@12                          // 0x00757ff1    e84acbcaff
+                         call               ?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z  // 0x00757ff1    e84acbcaff
                          {disp8} fstp       dword ptr [esp + 0x04]                        // 0x00757ff6    d95c2404
 _jmp_addr_0x00757ffa:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00757ffa    8b442404
                          mov                edx, dword ptr [esi]                          // 0x00757ffe    8b16
@@ -2197,7 +2197,7 @@ _jmp_addr_0x00758080:    push               esi                                 
                          xor.s              eax, eax                                      // 0x007580a0    33c0
                          pop                esi                                           // 0x007580a2    5e
                          ret                0x0004                                        // 0x007580a3    c20400
-_jmp_addr_0x007580a6:    call               @GetRoomLeftForAdults__5AbodeFv@4             // 0x007580a6    e8b5c5caff
+_jmp_addr_0x007580a6:    call               ?GetRoomLeftForAdults@Abode@@QAEHXZ           // 0x007580a6    e8b5c5caff
                          test               eax, eax                                      // 0x007580ab    85c0
                          {disp8} jg         _jmp_addr_0x007580b6                          // 0x007580ad    7f07
                          pop                edi                                           // 0x007580af    5f
@@ -15858,7 +15858,7 @@ _jmp_addr_0x007613b8:    dec                dword ptr [edi + 0x0000076c]        
                          {disp32} mov       dword ptr [esi + 0x000000e4], 0x00000000      // 0x007613be    c786e400000000000000
 _jmp_addr_0x007613c8:    push               esi                                           // 0x007613c8    56
                          mov.s              ecx, eax                                      // 0x007613c9    8bc8
-                         call               @AddVillagerToAbode__5AbodeFP8Villager@12     // 0x007613cb    e8902ccaff
+                         call               ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z     // 0x007613cb    e8902ccaff
                          mov                edx, dword ptr [esi]                          // 0x007613d0    8b16
                          push               0x24                                          // 0x007613d2    6a24
                          mov.s              ecx, esi                                      // 0x007613d4    8bce
@@ -17383,7 +17383,7 @@ _jmp_addr_0x00762359:    mov.s              ecx, esi                            
                          mov.s              ecx, esi                                      // 0x00762365    8bce
                          call               @GetAbode__8VillagerFv@4                      // 0x00762367    e8f4fdfeff
                          mov.s              ecx, eax                                      // 0x0076236c    8bc8
-                         call               @AddVillagerToAbode__5AbodeFP8Villager@12     // 0x0076236e    e8ed1ccaff
+                         call               ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z     // 0x0076236e    e8ed1ccaff
                          {disp8} jmp        _jmp_addr_0x007623c7                          // 0x00762373    eb52
 _jmp_addr_0x00762375:    mov                eax, dword ptr [esi]                          // 0x00762375    8b06
                          mov.s              ecx, esi                                      // 0x00762377    8bce

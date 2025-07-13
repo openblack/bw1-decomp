@@ -110,27 +110,27 @@ struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struc
 // Non-virtual methods
 
 // win1.41 00402bc0 mac inlined Abode::SetZero(void)
-void __fastcall SetZero__5AbodeFv(struct Abode* this);
+void __fastcall SetZero__5AbodeFv(struct Abode* this) asm("?SetZero@Abode@@QAEXXZ");
 // win1.41 00403130 mac 1033b920 Abode::Init(int, unsigned long, unsigned long)
-void __fastcall Init__5AbodeFiUlUl(struct Abode* this, const void* edx, int param_1, uint32_t food_amount, uint32_t wood_amount);
+void __fastcall Init__5AbodeFiUlUl(struct Abode* this, const void* edx, int param_1, uint32_t food_amount, uint32_t wood_amount) asm("?Init@Abode@@QAEXHII@Z");
 // win1.41 00403590 mac 103602f0 Abode::GetNewEp(ABODE_EPP, MapCoords*)
-bool __fastcall GetNewEp__5AbodeF8ABODE_EPP7LHPoint(struct Abode* this, const void* edx, enum ABODE_EPP index, struct LHPoint* point);
+bool __fastcall GetNewEp__5AbodeF8ABODE_EPP7LHPoint(struct Abode* this, const void* edx, enum ABODE_EPP index, struct LHPoint* point) asm("?GetNewEp@Abode@@QAE_NW4ABODE_EPP@@PAULHPoint@@@Z");
 // win1.41 00403e00 mac 10494a10 Abode::CreateAbodeSurroundingObjects(void)
-void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this);
+void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this) asm("?CreateAbodeSurroundingObjects@Abode@@QAEXXZ");
 // win1.41 00404060 mac 100d2ca0 Abode::AddVillagerToAbode(Villager *)
-void __fastcall AddVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager);
+void __fastcall AddVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z");
 // win1.41 00404220 mac 1033b0e0 Abode::RemoveDeletedVillagerFromAbode(Villager *)
-void __fastcall RemoveDeletedVillagerFromAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager);
+void __fastcall RemoveDeletedVillagerFromAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?RemoveDeletedVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z");
 // win1.41 00404660 mac 1032c3e0 Abode::GetRoomLeftForAdults(void)
-int __fastcall GetRoomLeftForAdults__5AbodeFv(struct Abode* this);
+int __fastcall GetRoomLeftForAdults__5AbodeFv(struct Abode* this) asm("?GetRoomLeftForAdults@Abode@@QAEHXZ");
 // win1.41 00404b40 mac 10329410 Abode::CalculateScoreForAddingVillagerToAbode(Villager *)
-float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager);
+float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z");
 // win1.41 00405f40 mac 10177200 Abode::GetTribeType(void) const
-enum TRIBE_TYPE __fastcall GetTribeType__5AbodeCFv(struct Abode* this);
+enum TRIBE_TYPE __fastcall GetTribeType__5AbodeCFv(struct Abode* this) asm("?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ");
 // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)
-void __fastcall FindNearestDrinkingWater__5AbodeFf(struct Abode* this, const void* edx, float max_dist);
+void __fastcall FindNearestDrinkingWater__5AbodeFf(struct Abode* this, const void* edx, float max_dist) asm("?FindNearestDrinkingWater@Abode@@QAEXM@Z");
 // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
-struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const void* edx, struct MapCoords* coords, float param_2, float param_3, float param_4);
+struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const void* edx, struct MapCoords* coords, float param_2, float param_3, float param_4) asm("?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z");
 
 // Override methods
 
