@@ -452,8 +452,8 @@
 .globl _jmp_addr_0x00778300
 .globl _jmp_addr_0x007788d0
 .globl _jmp_addr_0x007789c0
-.globl @__ct__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
-.globl _Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi
+.globl ??0Wonder@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
+.globl ?Create@Wonder@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .globl ?SetZero@Wonder@@QAEXXZ
 
 .globl _globl_ct_0x007685b0
@@ -504,7 +504,7 @@
 .globl _globl_ct_0x00775dd0
 .globl _globl_ct_0x00778d20
 .globl _globl_ct_0x00778dd0
-.globl _CallVirtualFunctionsForCreation__6WonderFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@Wonder@@QAEXABUMapCoords@@@Z
 .globl ?AttitudeToCreatureEating@GameThingWithPos@@UAEIXZ
 
 start_0x007678a0_0x007791d0:
@@ -26487,7 +26487,8 @@ _jmp_addr_0x00778de0:    {disp32} fld       dword ptr [rdata_bytes + 0xf2b10]   
                          nop                                                                // 0x00778dfd    90
                          nop                                                                // 0x00778dfe    90
                          nop                                                                // 0x00778dff    90
-@__ct__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36:    {disp8} mov        eax, dword ptr [esp + 0x1c]                     // 0x00778e00    8b44241c
+??0Wonder@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x1c]                     // 0x00778e00    8b44241c
                          {disp8} mov        edx, dword ptr [esp + 0x14]                     // 0x00778e04    8b542414
                          push               esi                                             // 0x00778e08    56
                          push               eax                                             // 0x00778e09    50
@@ -26546,7 +26547,8 @@ _jmp_addr_0x00778de0:    {disp32} fld       dword ptr [rdata_bytes + 0xf2b10]   
                          nop                                                                // 0x00778e7d    90
                          nop                                                                // 0x00778e7e    90
                          nop                                                                // 0x00778e7f    90
-_Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi:    push               ebx                                             // 0x00778e80    53
+?Create@Wonder@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z:
+                         push               ebx                                             // 0x00778e80    53
                          push               esi                                             // 0x00778e81    56
                          push               edi                                             // 0x00778e82    57
                          push               0x25                                            // 0x00778e83    6a25
@@ -26571,7 +26573,7 @@ _Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi:    push               ebx
                          push               ecx                                             // 0x00778ebc    51
                          push               ebx                                             // 0x00778ebd    53
                          mov.s              ecx, eax                                        // 0x00778ebe    8bc8
-                         call               @__ct__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36                            // 0x00778ec0    e83bffffff
+                         call               ??0Wonder@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z  // 0x00778ec0    e83bffffff
                          mov.s              esi, eax                                        // 0x00778ec5    8bf0
                          test               esi, esi                                        // 0x00778ec7    85f6
                          {disp8} je         _jmp_addr_0x00778ef9                            // 0x00778ec9    742e
@@ -26893,7 +26895,7 @@ _jmp_addr_0x0077914b:    pop                edi                                 
                          nop                                                                // 0x0077915d    90
                          nop                                                                // 0x0077915e    90
                          nop                                                                // 0x0077915f    90
-_CallVirtualFunctionsForCreation__6WonderFRC9MapCoords:
+?CallVirtualFunctionsForCreation@Wonder@@QAEXABUMapCoords@@@Z:
                          push               esi                                             // 0x00779160    56
                          mov.s              esi, ecx                                        // 0x00779161    8bf1
                          {disp8} lea        eax, dword ptr [esi + 0x14]                     // 0x00779163    8d4614

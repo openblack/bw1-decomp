@@ -23,12 +23,12 @@ static struct MultiMapFixedVftable* const __vt__6Wonder = (struct MultiMapFixedV
 // Static methods
 
 // win1.41 00778e80 mac 101619e0 Wonder::Create(const MapCoords&, const GAbodeInfo*, Town*, float, float, float, int)
-struct Wonder* __cdecl Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood);
+struct Wonder* __cdecl Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood) asm("?Create@Wonder@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Constructors
 
 // win1.41 00778e00 mac 10161c40 Wonder::Wonder(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-struct Wonder* __fastcall __ct__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Wonder* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood);
+struct Wonder* __fastcall __ct__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Wonder* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood) asm("??0Wonder@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Non-virtual methods
 
@@ -38,6 +38,6 @@ void __fastcall SetZero__6WonderFv(struct Wonder* this) asm("?SetZero@Wonder@@QA
 // Override methods
 
 // win1.41 00779160 mac 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
-void __fastcall CallVirtualFunctionsForCreation__6WonderFRC9MapCoords(struct Wonder* this, const void* edx, const struct MapCoords* coords);
+void __fastcall CallVirtualFunctionsForCreation__6WonderFRC9MapCoords(struct Wonder* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Wonder@@QAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_WONDER_INCLUDED_H */
