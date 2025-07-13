@@ -32,7 +32,7 @@
 .extern  ___dl__FPv
 .extern ??1FragMesh@@QAE@XZ
 .extern ?Release@LH3DSmoke@@QAEXXZ
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fbac0
 .extern _rdata_float1p0
@@ -286,7 +286,7 @@ _jmp_addr_0x00402c98:    mov.s              ecx, esi                            
                          {disp8} mov        edx, dword ptr [edi + 0x40]              // 0x00402d1c    8b5740
                          add                edx, 0x14                                // 0x00402d1f    83c214
                          {disp8} lea        ecx, dword ptr [esp + 0x08]              // 0x00402d22    8d4c2408
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12    // 0x00402d26    e865853f00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z        // 0x00402d26    e865853f00
                          fld                dword ptr [esi]                          // 0x00402d2b    d906
                          {disp8} fld        dword ptr [esi + 0x04]                   // 0x00402d2d    d94604
                          {disp8} mov        eax, dword ptr [esp + 0x40]              // 0x00402d30    8b442440

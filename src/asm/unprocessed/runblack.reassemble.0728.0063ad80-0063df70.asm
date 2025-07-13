@@ -7,9 +7,9 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
-.extern _jmp_addr_0x00403530
-.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern _jmp_addr_0x004146b0
 .extern _jmp_addr_0x00417c20
 .extern _jmp_addr_0x00419c20
@@ -286,7 +286,7 @@ _jmp_addr_0x0063adb2:    {disp8} mov        edx, dword ptr [ecx + eax * 0x4 + 0x
                          {disp32} jmp       _jmp_addr_0x0063af92                           // 0x0063aed6    e9b7000000
 _jmp_addr_0x0063aedb:    {disp8} lea        edi, dword ptr [esi + 0x14]                    // 0x0063aedb    8d7e14
                          mov.s              ecx, edi                                       // 0x0063aede    8bcf
-                         call               _jmp_addr_0x00403500                           // 0x0063aee0    e81b86dcff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                  // 0x0063aee0    e81b86dcff
                          {disp8} fld        dword ptr [esp + 0x28]                         // 0x0063aee5    d9442428
                          fcos                                                              // 0x0063aee9    d9ff
                          {disp8} mov        edx, dword ptr [esp + 0x0c]                    // 0x0063aeeb    8b54240c
@@ -344,11 +344,11 @@ _jmp_addr_0x0063af65:    test               ah, 0x40                            
                          call               _jmp_addr_0x00519320                           // 0x0063af74    e8a7e3edff
                          {disp8} lea        edx, dword ptr [esp + 0x0c]                    // 0x0063af79    8d54240c
                          mov.s              ecx, edi                                       // 0x0063af7d    8bcf
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8       // 0x0063af7f    e8ec85dcff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z       // 0x0063af7f    e8ec85dcff
                          {disp8} jmp        _jmp_addr_0x0063af92                           // 0x0063af84    eb0c
 _jmp_addr_0x0063af86:    {disp8} lea        edx, dword ptr [esp + 0x0c]                    // 0x0063af86    8d54240c
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x0063af8a    8d4e14
-                         call               _jmp_addr_0x00403530                           // 0x0063af8d    e89e85dcff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z      // 0x0063af8d    e89e85dcff
 _jmp_addr_0x0063af92:    {disp8} mov        eax, dword ptr [esp + 0x2c]                    // 0x0063af92    8b44242c
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                    // 0x0063af96    8b4c2428
                          {disp8} mov        dword ptr [esi + 0x44], eax                    // 0x0063af9a    894644
@@ -899,7 +899,7 @@ _jmp_addr_0x0063b52d:    test               ah, 0x40                            
                          {disp8} fstp       dword ptr [esi + 0x40]                         // 0x0063b575    d95e40
                          {disp8} jmp        _jmp_addr_0x0063b582                           // 0x0063b578    eb08
 _jmp_addr_0x0063b57a:    {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x0063b57a    8d4e14
-                         call               _jmp_addr_0x00403530                           // 0x0063b57d    e8ae7fdcff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z      // 0x0063b57d    e8ae7fdcff
 _jmp_addr_0x0063b582:    {disp8} fld        dword ptr [esp + 0x18]                         // 0x0063b582    d9442418
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                    // 0x0063b586    8b4c2410
                          {disp8} fdiv       dword ptr [esp + 0x14]                         // 0x0063b58a    d8742414

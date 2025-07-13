@@ -12,8 +12,8 @@
 .extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern _jmp_addr_0x00403530
-.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern ?Process@Abode@@UAEIXZ
 .extern @MakeFunctional__5AbodeFv@4
@@ -4202,7 +4202,7 @@ _jmp_addr_0x0077ba04:    mov                edx, dword ptr [esi]                
                          call               _jmp_addr_0x00519320                          // 0x0077bab6    e865d8d9ff
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0077babb    8d542410
                          mov.s              ecx, ebx                                      // 0x0077babf    8bcb
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8      // 0x0077bac1    e8aa7ac8ff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z      // 0x0077bac1    e8aa7ac8ff
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x0077bac6    8b44240c
                          push               eax                                           // 0x0077baca    50
                          mov.s              ecx, ebx                                      // 0x0077bacb    8bcb
@@ -4210,7 +4210,7 @@ _jmp_addr_0x0077ba04:    mov                edx, dword ptr [esi]                
                          {disp8} jmp        _jmp_addr_0x0077bb1a                          // 0x0077bad2    eb46
 _jmp_addr_0x0077bad4:    {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0077bad4    8d542410
                          mov.s              ecx, ebx                                      // 0x0077bad8    8bcb
-                         call               _jmp_addr_0x00403530                          // 0x0077bada    e8517ac8ff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z     // 0x0077bada    e8517ac8ff
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                   // 0x0077badf    8b4c240c
                          push               ecx                                           // 0x0077bae3    51
                          mov.s              ecx, ebx                                      // 0x0077bae4    8bcb
@@ -4225,11 +4225,11 @@ _jmp_addr_0x0077baed:    test               ah, 0x40                            
                          call               _jmp_addr_0x00519320                          // 0x0077bafc    e81fd8d9ff
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0077bb01    8d542410
                          mov.s              ecx, ebx                                      // 0x0077bb05    8bcb
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8      // 0x0077bb07    e8647ac8ff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z      // 0x0077bb07    e8647ac8ff
                          {disp8} jmp        _jmp_addr_0x0077bb1a                          // 0x0077bb0c    eb0c
 _jmp_addr_0x0077bb0e:    {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0077bb0e    8d542410
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                   // 0x0077bb12    8d4f14
-                         call               _jmp_addr_0x00403530                          // 0x0077bb15    e8167ac8ff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z     // 0x0077bb15    e8167ac8ff
 _jmp_addr_0x0077bb1a:    {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x0077bb1a    8b442420
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                   // 0x0077bb1e    8b4c240c
                          {disp8} mov        dword ptr [edi + 0x48], ecx                   // 0x0077bb22    894f48

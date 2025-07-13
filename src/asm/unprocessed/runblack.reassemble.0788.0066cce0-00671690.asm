@@ -7,9 +7,9 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
-.extern _jmp_addr_0x00403530
-.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern _jmp_addr_0x00418a50
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ___nw__4BaseFUl
@@ -96,7 +96,7 @@
 .extern _wcslen
 .extern _operator_new
 .extern ___nw__FUl
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @ProjectPoint__8LH3DTechFP7LHPointPiPiPf@16
 .extern _jmp_addr_0x008321c0
@@ -3093,7 +3093,7 @@ _jmp_addr_0x0066e8e2:    mov                eax, 0x00000001                     
                          {disp8} mov        dword ptr [esp + 0x50], ebx                   // 0x0066e9b3    895c2450
                          {disp8} mov        dword ptr [esp + 0x4c], ebx                   // 0x0066e9b7    895c244c
                          {disp8} mov        dword ptr [esp + 0x48], ebx                   // 0x0066e9bb    895c2448
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x0066e9bf    e8ccc81800
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x0066e9bf    e8ccc81800
                          {disp32} fld       dword ptr [esi + 0x00000088]                  // 0x0066e9c4    d98688000000
                          {disp32} fsub      dword ptr [esi + 0x000000a0]                  // 0x0066e9ca    d8a6a0000000
                          {disp8} lea        edx, dword ptr [esp + 0x18]                   // 0x0066e9d0    8d542418
@@ -3175,7 +3175,7 @@ _jmp_addr_0x0066e8e2:    mov                eax, 0x00000001                     
                          {disp8} jmp        _jmp_addr_0x0066eb48                          // 0x0066eaec    eb5a
 _jmp_addr_0x0066eaee:    {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x0066eaee    8d7e14
                          mov.s              ecx, edi                                      // 0x0066eaf1    8bcf
-                         call               _jmp_addr_0x00403500                          // 0x0066eaf3    e8084ad9ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x0066eaf3    e8084ad9ff
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x0066eaf8    8b4c2418
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x0066eafc    8b54241c
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x0066eb00    8b442420
@@ -3196,11 +3196,11 @@ _jmp_addr_0x0066eb1b:    test               ah, 0x40                            
                          call               _jmp_addr_0x00519320                          // 0x0066eb2a    e8f1a7eaff
                          {disp8} lea        edx, dword ptr [esp + 0x18]                   // 0x0066eb2f    8d542418
                          mov.s              ecx, edi                                      // 0x0066eb33    8bcf
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8      // 0x0066eb35    e8364ad9ff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z      // 0x0066eb35    e8364ad9ff
                          {disp8} jmp        _jmp_addr_0x0066eb48                          // 0x0066eb3a    eb0c
 _jmp_addr_0x0066eb3c:    {disp8} lea        edx, dword ptr [esp + 0x18]                   // 0x0066eb3c    8d542418
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x0066eb40    8d4e14
-                         call               _jmp_addr_0x00403530                          // 0x0066eb43    e8e849d9ff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z     // 0x0066eb43    e8e849d9ff
 _jmp_addr_0x0066eb48:    {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x0066eb48    8b44240c
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x0066eb4c    8b4c2410
                          pop                edi                                           // 0x0066eb50    5f

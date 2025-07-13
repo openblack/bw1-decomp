@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern @SetPosition__10LH3DObjectFRC7LHPointff@16
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ___nw__4BaseFUl
@@ -1625,7 +1625,7 @@ _jmp_addr_0x00709eaa:    {disp8} mov        esi, dword ptr [ebp + 0x40]         
                          fpatan                                                           // 0x0070a031    d9f3
                          {disp32} fadd      dword ptr [rdata_bytes + 0x1e8d8]             // 0x0070a033    d805d8788c00
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x0070a039    d95c241c
-                         call               _jmp_addr_0x00403500                          // 0x0070a03d    e8be94cfff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x0070a03d    e8be94cfff
                          {disp8} fld        dword ptr [esp + 0x1c]                        // 0x0070a042    d944241c
                          {disp8} mov        ecx, dword ptr [esp + 0x30]                   // 0x0070a046    8b4c2430
                          fcos                                                             // 0x0070a04a    d9ff

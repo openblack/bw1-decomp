@@ -47,7 +47,7 @@
 .extern _jmp_addr_0x007dacdc
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x00800c10
 .extern _jmp_addr_0x00800d90
 .extern _jmp_addr_0x00800da0
@@ -1852,7 +1852,7 @@ _jmp_addr_0x0087905a:    xor.s              edx, edx                            
                          call               @DrawTriangle__10LH3DRenderFP8Vertex3DUlPUsUl@16     // 0x0087906e    e89d67fbff
                          {disp32} lea       edx, dword ptr [esi + 0x00000958]                    // 0x00879073    8d9658090000
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                          // 0x00879079    8d4c2418
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12                // 0x0087907d    e80e22f8ff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z                    // 0x0087907d    e80e22f8ff
                          xor.s              ecx, ecx                                             // 0x00879082    33c9
                          {disp32} mov       cx, word ptr [data_bytes + 0x4e3ea8]                 // 0x00879084    668b0da89eea00
                          pop                edi                                                  // 0x0087908b    5f

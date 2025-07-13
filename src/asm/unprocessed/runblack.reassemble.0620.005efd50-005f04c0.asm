@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403500
+.extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x005f04c0
 .extern @GetTopState__6LivingCFv@4
 .extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
@@ -325,7 +325,7 @@ _jmp_addr_0x005effe9:    {disp32} mov       dword ptr [esi + 0x0000015c], ebx   
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1ba04]        // 0x005f005c    d80d044a8c00
                          {disp8} fstp       dword ptr [esp + 0x54]                   // 0x005f0062    d95c2454
                          {disp8} fstp       dword ptr [esp + 0x14]                   // 0x005f0066    d95c2414
-                         call               _jmp_addr_0x00403500                     // 0x005f006a    e89134e1ff
+                         call               ?SetIdentity@LHMatrix@@QAEXXZ            // 0x005f006a    e89134e1ff
                          {disp32} fld       qword ptr [rdata_bytes + 0x1eb48]        // 0x005f006f    dd05487b8c00
                          {disp32} mov       eax, dword ptr [esi + 0x00000154]        // 0x005f0075    8b8654010000
                          fcos                                                        // 0x005f007b    d9ff

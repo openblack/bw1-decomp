@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007fac10
 .extern _jmp_addr_0x007faff0
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x0086d4e0
 
 .globl @UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29
@@ -691,7 +691,7 @@ _UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp8} mov        dword ptr [esp + 0x48], ebp                   // 0x00796788    896c2448
                          {disp8} mov        dword ptr [esp + 0x44], ebp                   // 0x0079678c    896c2444
                          {disp8} mov        dword ptr [esp + 0x40], ebp                   // 0x00796790    896c2440
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x00796794    e8f74a0600
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x00796794    e8f74a0600
                          {disp8} fld        dword ptr [esi + 0x64]                        // 0x00796799    d94664
                          {disp8} fsub       dword ptr [esi + 0x7c]                        // 0x0079679c    d8667c
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0079679f    8d542410
@@ -749,7 +749,7 @@ _UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp8} mov        dword ptr [esp + 0x48], ebp                   // 0x0079688a    896c2448
                          {disp8} mov        dword ptr [esp + 0x44], ebp                   // 0x0079688e    896c2444
                          {disp8} mov        dword ptr [esp + 0x40], ebp                   // 0x00796892    896c2440
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x00796896    e8f5490600
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x00796896    e8f5490600
                          {disp8} fld        dword ptr [esi + 0x64]                        // 0x0079689b    d94664
                          {disp8} fsub       dword ptr [esi + 0x7c]                        // 0x0079689e    d8667c
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x007968a1    8d542410

@@ -11,8 +11,8 @@
 .extern ?Delete@Abode@@UAEXH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern _jmp_addr_0x00403530
-.extern @PostTranslation__8LHMatrixFRC7LHPoint@8
+.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern _jmp_addr_0x00404340
@@ -134,7 +134,7 @@
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c7e64
 .extern ___nw__FUl
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -2689,7 +2689,7 @@ _jmp_addr_0x00737d33:    pop                edi                                 
                          call               _jmp_addr_0x00519320                           // 0x00737e23    e8f814deff
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e28    8d542418
                          mov.s              ecx, edi                                       // 0x00737e2c    8bcf
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8       // 0x00737e2e    e83db7ccff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z       // 0x00737e2e    e83db7ccff
                          {disp8} mov        eax, dword ptr [esp + 0x10]                    // 0x00737e33    8b442410
                          push               eax                                            // 0x00737e37    50
                          mov.s              ecx, edi                                       // 0x00737e38    8bcf
@@ -2697,7 +2697,7 @@ _jmp_addr_0x00737d33:    pop                edi                                 
                          {disp8} jmp        _jmp_addr_0x00737e87                           // 0x00737e3f    eb46
 _jmp_addr_0x00737e41:    {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e41    8d542418
                          mov.s              ecx, edi                                       // 0x00737e45    8bcf
-                         call               _jmp_addr_0x00403530                           // 0x00737e47    e8e4b6ccff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z      // 0x00737e47    e8e4b6ccff
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                    // 0x00737e4c    8b4c2410
                          push               ecx                                            // 0x00737e50    51
                          mov.s              ecx, edi                                       // 0x00737e51    8bcf
@@ -2712,11 +2712,11 @@ _jmp_addr_0x00737e5a:    test               ah, 0x40                            
                          call               _jmp_addr_0x00519320                           // 0x00737e69    e8b214deff
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e6e    8d542418
                          mov.s              ecx, edi                                       // 0x00737e72    8bcf
-                         call               @PostTranslation__8LHMatrixFRC7LHPoint@8       // 0x00737e74    e8f7b6ccff
+                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z       // 0x00737e74    e8f7b6ccff
                          {disp8} jmp        _jmp_addr_0x00737e87                           // 0x00737e79    eb0c
 _jmp_addr_0x00737e7b:    {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e7b    8d542418
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x00737e7f    8d4b14
-                         call               _jmp_addr_0x00403530                           // 0x00737e82    e8a9b6ccff
+                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z      // 0x00737e82    e8a9b6ccff
 _jmp_addr_0x00737e87:    {disp8} mov        eax, dword ptr [esp + 0x0c]                    // 0x00737e87    8b44240c
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                    // 0x00737e8b    8b4c2410
                          {disp8} mov        dword ptr [ebx + 0x48], ecx                    // 0x00737e8f    894b48
@@ -3117,7 +3117,7 @@ _jmp_addr_0x007382fc:    {disp32} fst       dword ptr [esi + 0x000000b4]        
                          {disp8} fstp       dword ptr [esp + 0x30]                         // 0x00738389    d95c2430
                          {disp8} fstp       dword ptr [esp + 0x34]                         // 0x0073838d    d95c2434
                          {disp8} fstp       dword ptr [esp + 0x38]                         // 0x00738391    d95c2438
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12          // 0x00738395    e8f62e0c00
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z              // 0x00738395    e8f62e0c00
                          {disp32} fld       dword ptr [esi + 0x000000a0]                   // 0x0073839a    d986a0000000
                          {disp32} fsub      dword ptr [esi + 0x000000b8]                   // 0x007383a0    d8a6b8000000
                          {disp32} fld       dword ptr [esi + 0x000000b4]                   // 0x007383a6    d986b4000000

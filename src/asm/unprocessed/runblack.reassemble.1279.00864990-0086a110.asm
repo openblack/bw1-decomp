@@ -27,7 +27,7 @@
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _getc_10LHFilePath
-.extern @SetInverse__8LHMatrixFRC8LHMatrix@12
+.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb5c0
 .extern _jmp_addr_0x007feaa0
 .extern _jmp_addr_0x007fead0
@@ -4588,7 +4588,7 @@ _jmp_addr_0x0086800b:    {disp8} lea        edi, dword ptr [ebx + -0x30]        
                          rep movsd          es:[edi], dword ptr ds:[esi]                  // 0x00868015    f3a5
                          mov.s              edx, ebp                                      // 0x00868017    8bd5
                          mov.s              ecx, ebx                                      // 0x00868019    8bcb
-                         call               @SetInverse__8LHMatrixFRC8LHMatrix@12         // 0x0086801b    e87032f9ff
+                         call               ?SetInverse@LHMatrix@@QAEXAAU1@@Z             // 0x0086801b    e87032f9ff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x00868020    8b442414
                          add                ebp, 0x30                                     // 0x00868024    83c530
                          add                ebx, 0x78                                     // 0x00868027    83c378
