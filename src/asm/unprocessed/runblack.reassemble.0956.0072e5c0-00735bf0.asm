@@ -139,7 +139,7 @@
 .extern _jmp_addr_0x00801c90
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x00804cf0
-.extern _CreateFromHD__8LH3DMeshFPci
+.extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x0081e9e0
 .extern _jmp_addr_0x00823240
@@ -9094,7 +9094,7 @@ _jmp_addr_0x00734205:    {disp32} mov       cl, byte ptr [data_bytes + 0x3daa08]
                          push               0x0                                           // 0x00734213    6a00
                          push               0x00c22a68                                    // 0x00734215    68682ac200
                          {disp32} mov       byte ptr [data_bytes + 0x3daa08], cl          // 0x0073421a    880d080ada00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x00734220    e8cb250d00
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x00734220    e8cb250d00
                          add                esp, 0x08                                     // 0x00734225    83c408
                          {disp32} mov       dword ptr [data_bytes + 0x3daa00], eax        // 0x00734228    a3000ada00
 _jmp_addr_0x0073422d:    {disp32} mov       cl, byte ptr [data_bytes + 0x3daa08]          // 0x0073422d    8a0d080ada00
@@ -9105,7 +9105,7 @@ _jmp_addr_0x0073422d:    {disp32} mov       cl, byte ptr [data_bytes + 0x3daa08]
                          push               0x0                                           // 0x0073423b    6a00
                          push               0x00c22a58                                    // 0x0073423d    68582ac200
                          {disp32} mov       byte ptr [data_bytes + 0x3daa08], cl          // 0x00734242    880d080ada00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x00734248    e8a3250d00
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x00734248    e8a3250d00
                          add                esp, 0x08                                     // 0x0073424d    83c408
                          {disp32} mov       dword ptr [data_bytes + 0x3da9fc], eax        // 0x00734250    a3fc09da00
 _jmp_addr_0x00734255:    {disp8} mov        eax, dword ptr [esp + 0x24]                   // 0x00734255    8b442424

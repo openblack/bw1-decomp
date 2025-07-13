@@ -194,7 +194,7 @@ static_assert(sizeof(struct LH3DAnim) == 0x60, "Data type is of wrong size");
 // win1.41 0083a1d0 mac 10129570 LH3DAnim::SetTransform(LH3DMatrix*, LH3DMesh*, LH3DMatrix*)
 float __cdecl SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix(struct LHMatrix* param_1, struct LH3DMesh* param_2, struct LHMatrix* param_3);
 // win1.41 0083aa30 mac 1061eac4 LH3DAnim::CreatePack(void)
-void __cdecl CreatePack__8LH3DAnimFv(void);
+void __cdecl CreatePack__8LH3DAnimFv(void) asm("?CreatePack@LH3DAnim@@SAXXZ");
 
 // Non-virtual methods
 

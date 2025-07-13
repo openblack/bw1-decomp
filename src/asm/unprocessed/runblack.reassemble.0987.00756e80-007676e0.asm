@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403770
-.extern _jmp_addr_0x00403b90
+.extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
+.extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern _jmp_addr_0x00404340
 .extern _jmp_addr_0x004045d0
@@ -1613,7 +1613,7 @@ _jmp_addr_0x00757a98:    {disp8} mov        dword ptr [esp + 0x14], 0x00000000  
 _jmp_addr_0x00757aa0:    test               eax, 0x00040000                               // 0x00757aa0    a900000400
                          {disp8} je         _jmp_addr_0x00757abc                          // 0x00757aa5    7415
                          mov.s              ecx, edi                                      // 0x00757aa7    8bcf
-                         call               _jmp_addr_0x00403b90                          // 0x00757aa9    e8e2c0caff
+                         call               ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ   // 0x00757aa9    e8e2c0caff
                          {disp8} mov        ecx, dword ptr [edi + 0x48]                   // 0x00757aae    8b4f48
                          mov                edx, dword ptr [eax + ecx * 0x1]              // 0x00757ab1    8b1408
                          add.s              eax, ecx                                      // 0x00757ab4    03c1
@@ -1623,7 +1623,7 @@ _jmp_addr_0x00757abc:    {disp8} mov        dword ptr [esp + 0x10], 0x00000000  
 _jmp_addr_0x00757ac4:    test               dword ptr [edi + 0x04], 0x00080000            // 0x00757ac4    f7470400000800
                          {disp8} je         _jmp_addr_0x00757ad8                          // 0x00757acb    740b
                          mov.s              ecx, edi                                      // 0x00757acd    8bcf
-                         call               _jmp_addr_0x00403770                          // 0x00757acf    e89cbccaff
+                         call               ?GetSizeNameData@LH3DMesh@@QAEIXZ             // 0x00757acf    e89cbccaff
                          mov                eax, dword ptr [eax]                          // 0x00757ad4    8b00
                          {disp8} jmp        _jmp_addr_0x00757ada                          // 0x00757ad6    eb02
 _jmp_addr_0x00757ad8:    xor.s              eax, eax                                      // 0x00757ad8    33c0

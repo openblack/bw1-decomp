@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x007e1890
 .extern @DeltaPos__7LHMouseFv@4
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
-.extern _CreateFromHD__8LH3DMeshFPci
+.extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern @ProjectPoint__8LH3DTechFP7LHPointPiPiPf@16
 .extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
@@ -3099,7 +3099,7 @@ _jmp_addr_0x005f8e3d:    {disp32} mov       edi, dword ptr [data_bytes + 0x36ea9
                          {disp32} mov       dword ptr [data_bytes + 0x36ea88], eax         // 0x005f8ea4    a3884ad300
                          mov                edi, dword ptr [eax]                           // 0x005f8ea9    8b38
                          push               0x00bf3d54                                     // 0x005f8eab    68543dbf00
-                         call               _CreateFromHD__8LH3DMeshFPci                   // 0x005f8eb0    e83bd92000
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z         // 0x005f8eb0    e83bd92000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x36ea88]         // 0x005f8eb5    8b0d884ad300
                          add                esp, 0x08                                      // 0x005f8ebb    83c408
                          mov.s              edx, eax                                       // 0x005f8ebe    8bd0

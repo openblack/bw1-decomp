@@ -275,7 +275,7 @@
 .extern _jmp_addr_0x007fb3f0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsPUlPUl@12
-.extern _Create__8LH3DMeshFPvi
+.extern ?Create@LH3DMesh@@SAPAV1@PBX_N@Z
 .extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
 .extern @Draw3DScreenTriangle__8LH3DTechFlP7LHPointP9LH3DColorPflPlP12LH3DMateriali@32
 .extern _Random__Fff@8
@@ -10401,7 +10401,7 @@ _jmp_addr_0x00530f7a:    mov.s              eax, esi                            
                          call               _LHLoadData__FPcPvUlPUl                              // 0x00530fc2    e829be2800
                          push               ebx                                                  // 0x00530fc7    53
                          push               edi                                                  // 0x00530fc8    57
-                         call               _Create__8LH3DMeshFPvi                               // 0x00530fc9    e892542d00
+                         call               ?Create@LH3DMesh@@SAPAV1@PBX_N@Z                     // 0x00530fc9    e892542d00
                          push               edi                                                  // 0x00530fce    57
                          {disp32} mov       dword ptr [data_bytes + 0x30a1d0], eax               // 0x00530fcf    a3d001cd00
                          call               _Free__7LH3DMemFPv                                   // 0x00530fd4    e8871d3100

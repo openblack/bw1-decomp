@@ -8,11 +8,11 @@
 .extern rsrc_bytes
 
 .extern ?SetIdentity@LHMatrix@@QAEXXZ
-.extern _jmp_addr_0x00403740
-.extern _jmp_addr_0x00403770
-.extern _jmp_addr_0x004037e0
-.extern _jmp_addr_0x00403b90
-.extern _jmp_addr_0x00403c50
+.extern ?GetSizeUV2Data@LH3DMesh@@QAEIXZ
+.extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
+.extern ?GetSizeEMetricsData@LH3DMesh@@QAEIXZ
+.extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
+.extern ?GetSizeEMetricsData_dup1@LH3DMesh@@QAEIXZ
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern _jmp_addr_0x00436760
 .extern _jmp_addr_0x00436960
@@ -209,17 +209,17 @@ _jmp_addr_0x005dfd53:    {disp8} mov        dword ptr [esp + 0x10], edi         
 _jmp_addr_0x005dfd57:    test               eax, 0x00040000                                // 0x005dfd57    a900000400
                          {disp8} je         _jmp_addr_0x005dfd69                           // 0x005dfd5c    740b
                          mov.s              ecx, esi                                       // 0x005dfd5e    8bce
-                         call               _jmp_addr_0x00403740                           // 0x005dfd60    e8db39e2ff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x005dfd60    e8db39e2ff
                          mov                ebp, dword ptr [eax]                           // 0x005dfd65    8b28
                          {disp8} jmp        _jmp_addr_0x005dfd6b                           // 0x005dfd67    eb02
 _jmp_addr_0x005dfd69:    xor.s              ebp, ebp                                       // 0x005dfd69    33ed
 _jmp_addr_0x005dfd6b:    test               dword ptr [esi + 0x04], 0x00080000             // 0x005dfd6b    f7460400000800
                          {disp8} je         _jmp_addr_0x005dfd7d                           // 0x005dfd72    7409
                          mov.s              ecx, esi                                       // 0x005dfd74    8bce
-                         call               _jmp_addr_0x00403770                           // 0x005dfd76    e8f539e2ff
+                         call               ?GetSizeNameData@LH3DMesh@@QAEIXZ              // 0x005dfd76    e8f539e2ff
                          mov                edi, dword ptr [eax]                           // 0x005dfd7b    8b38
 _jmp_addr_0x005dfd7d:    mov.s              ecx, esi                                       // 0x005dfd7d    8bce
-                         call               _jmp_addr_0x00403c50                           // 0x005dfd7f    e8cc3ee2ff
+                         call               ?GetSizeEMetricsData_dup1@LH3DMesh@@QAEIXZ     // 0x005dfd7f    e8cc3ee2ff
                          mov.s              ebx, eax                                       // 0x005dfd84    8bd8
                          add                ebx, dword ptr [esi + 0x48]                    // 0x005dfd86    035e48
                          {disp8} mov        eax, dword ptr [esp + 0x10]                    // 0x005dfd89    8b442410
@@ -264,7 +264,7 @@ _jmp_addr_0x005dfe08:    {disp8} mov        dword ptr [esp + 0x10], 0x00000000  
 _jmp_addr_0x005dfe10:    test               eax, 0x00040000                                // 0x005dfe10    a900000400
                          {disp8} je         _jmp_addr_0x005dfe28                           // 0x005dfe15    7411
                          mov.s              ecx, esi                                       // 0x005dfe17    8bce
-                         call               _jmp_addr_0x00403b90                           // 0x005dfe19    e8723de2ff
+                         call               ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ    // 0x005dfe19    e8723de2ff
                          {disp8} mov        ecx, dword ptr [esi + 0x48]                    // 0x005dfe1e    8b4e48
                          mov                ebp, dword ptr [eax + ecx * 0x1]               // 0x005dfe21    8b2c08
                          add.s              eax, ecx                                       // 0x005dfe24    03c1
@@ -273,14 +273,14 @@ _jmp_addr_0x005dfe28:    xor.s              ebp, ebp                            
 _jmp_addr_0x005dfe2a:    test               dword ptr [esi + 0x04], 0x00080000             // 0x005dfe2a    f7460400000800
                          {disp8} je         _jmp_addr_0x005dfe3e                           // 0x005dfe31    740b
                          mov.s              ecx, esi                                       // 0x005dfe33    8bce
-                         call               _jmp_addr_0x00403770                           // 0x005dfe35    e83639e2ff
+                         call               ?GetSizeNameData@LH3DMesh@@QAEIXZ              // 0x005dfe35    e83639e2ff
                          mov                edi, dword ptr [eax]                           // 0x005dfe3a    8b38
                          {disp8} jmp        _jmp_addr_0x005dfe40                           // 0x005dfe3c    eb02
 _jmp_addr_0x005dfe3e:    xor.s              edi, edi                                       // 0x005dfe3e    33ff
 _jmp_addr_0x005dfe40:    test               dword ptr [esi + 0x04], 0x00100000             // 0x005dfe40    f7460400001000
                          {disp8} je         _jmp_addr_0x005dfe54                           // 0x005dfe47    740b
                          mov.s              ecx, esi                                       // 0x005dfe49    8bce
-                         call               _jmp_addr_0x004037e0                           // 0x005dfe4b    e89039e2ff
+                         call               ?GetSizeEMetricsData@LH3DMesh@@QAEIXZ          // 0x005dfe4b    e89039e2ff
                          mov                eax, dword ptr [eax]                           // 0x005dfe50    8b00
                          {disp8} jmp        _jmp_addr_0x005dfe56                           // 0x005dfe52    eb02
 _jmp_addr_0x005dfe54:    xor.s              eax, eax                                       // 0x005dfe54    33c0

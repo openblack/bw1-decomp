@@ -89,7 +89,7 @@
 .extern _jmp_addr_0x007c789d
 .extern _jmp_addr_0x007c79fd
 .extern ___nw__FUl
-.extern _CreateFromHD__8LH3DMeshFPci
+.extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _ChangeFov__8LH3DTechFf@4
@@ -1355,7 +1355,7 @@ _jmp_addr_0x0078f320:    sub                esp, 0x0c                           
                          xor.s              ebx, ebx                                      // 0x0078f37a    33db
                          push               ebx                                           // 0x0078f37c    53
                          push               eax                                           // 0x0078f37d    50
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x0078f37e    e86d740700
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x0078f37e    e86d740700
                          add                esp, 0x08                                     // 0x0078f383    83c408
                          xor.s              ecx, ecx                                      // 0x0078f386    33c9
                          {disp32} mov       dword ptr [esi + 0x000000ec], eax             // 0x0078f388    8986ec000000
@@ -1387,7 +1387,7 @@ _jmp_addr_0x0078f320:    sub                esp, 0x0c                           
                          {disp8} je         _jmp_addr_0x0078f45a                          // 0x0078f3ed    746b
                          push               ebx                                           // 0x0078f3ef    53
                          push               eax                                           // 0x0078f3f0    50
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x0078f3f1    e8fa730700
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x0078f3f1    e8fa730700
                          add                esp, 0x08                                     // 0x0078f3f6    83c408
                          xor.s              ecx, ecx                                      // 0x0078f3f9    33c9
                          {disp32} mov       dword ptr [esi + 0x000000f4], eax             // 0x0078f3fb    8986f4000000

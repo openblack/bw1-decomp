@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00403740
+.extern ?GetSizeUV2Data@LH3DMesh@@QAEIXZ
 .extern @__ct__7LHPointFRC7LHPoint@12
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007acd20
@@ -1689,7 +1689,7 @@ _jmp_addr_0x0083d584:    xor.s              ebx, ebx                            
 _jmp_addr_0x0083d586:    test               ecx, 0x00040000                                // 0x0083d586    f7c100000400
                          {disp8} je         _jmp_addr_0x0083d599                           // 0x0083d58c    740b
                          mov.s              ecx, edi                                       // 0x0083d58e    8bcf
-                         call               _jmp_addr_0x00403740                           // 0x0083d590    e8ab61bcff
+                         call               ?GetSizeUV2Data@LH3DMesh@@QAEIXZ               // 0x0083d590    e8ab61bcff
                          mov                eax, dword ptr [eax]                           // 0x0083d595    8b00
                          {disp8} jmp        _jmp_addr_0x0083d59b                           // 0x0083d597    eb02
 _jmp_addr_0x0083d599:    xor.s              eax, eax                                       // 0x0083d599    33c0

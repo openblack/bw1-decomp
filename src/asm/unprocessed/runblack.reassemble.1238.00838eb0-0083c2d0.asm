@@ -70,7 +70,7 @@
 .globl _jmp_addr_0x0083a0e0
 .globl _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix
 .globl @GetListPtrFrames__8LH3DAnimFv@4
-.globl _CreatePack__8LH3DAnimFv
+.globl ?CreatePack@LH3DAnim@@SAXXZ
 .globl _jmp_addr_0x0083ac70
 .globl _jmp_addr_0x0083add0
 .globl _jmp_addr_0x0083ade0
@@ -2551,7 +2551,9 @@ _jmp_addr_0x0083a9c4:    {disp8} mov        eax, dword ptr [esp + 0x2c]         
                          nop                                                                // 0x0083aa2d    90
                          nop                                                                // 0x0083aa2e    90
                          nop                                                                // 0x0083aa2f    90
-_CreatePack__8LH3DAnimFv:{disp32} mov       eax, dword ptr [data_bytes + 0x517508]          // 0x0083aa30    a108d5ed00
+
+?CreatePack@LH3DAnim@@SAXXZ:
+                         {disp32} mov       eax, dword ptr [data_bytes + 0x517508]          // 0x0083aa30    a108d5ed00
                          sub                esp, 0x38                                       // 0x0083aa35    83ec38
                          push               ebp                                             // 0x0083aa38    55
                          xor.s              ebp, ebp                                        // 0x0083aa39    33ed

@@ -8,8 +8,8 @@
 .extern rsrc_bytes
 
 .extern ?SetIdentity@LHMatrix@@QAEXXZ
-.extern _jmp_addr_0x00403770
-.extern _jmp_addr_0x00403b90
+.extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
+.extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
 .extern _jmp_addr_0x00407700
 .extern _jmp_addr_0x004077a0
 .extern _jmp_addr_0x00407a30
@@ -12368,7 +12368,7 @@ _jmp_addr_0x00786c00:    xor.s              ebx, ebx                            
 _jmp_addr_0x00786c02:    test               ecx, 0x00040000                               // 0x00786c02    f7c100000400
                          {disp8} je         _jmp_addr_0x00786c1b                          // 0x00786c08    7411
                          mov.s              ecx, esi                                      // 0x00786c0a    8bce
-                         call               _jmp_addr_0x00403b90                          // 0x00786c0c    e87fcfc7ff
+                         call               ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ   // 0x00786c0c    e87fcfc7ff
                          {disp8} mov        ecx, dword ptr [esi + 0x48]                   // 0x00786c11    8b4e48
                          mov                ebp, dword ptr [eax + ecx * 0x1]              // 0x00786c14    8b2c08
                          add.s              eax, ecx                                      // 0x00786c17    03c1
@@ -12377,7 +12377,7 @@ _jmp_addr_0x00786c1b:    xor.s              ebp, ebp                            
 _jmp_addr_0x00786c1d:    test               dword ptr [esi + 0x04], 0x00080000            // 0x00786c1d    f7460400000800
                          {disp8} je         _jmp_addr_0x00786c31                          // 0x00786c24    740b
                          mov.s              ecx, esi                                      // 0x00786c26    8bce
-                         call               _jmp_addr_0x00403770                          // 0x00786c28    e843cbc7ff
+                         call               ?GetSizeNameData@LH3DMesh@@QAEIXZ             // 0x00786c28    e843cbc7ff
                          mov                eax, dword ptr [eax]                          // 0x00786c2d    8b00
                          {disp8} jmp        _jmp_addr_0x00786c33                          // 0x00786c2f    eb02
 _jmp_addr_0x00786c31:    xor.s              eax, eax                                      // 0x00786c31    33c0

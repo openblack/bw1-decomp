@@ -108,7 +108,7 @@ void __fastcall ToBeDeleted__5AbodeFi(struct Base* this, const void* edx, int pa
     asm("call               _jmp_addr_0x00739a60");                     // 0x00402c93    e8c86d3300
     asm("_jmp_addr_0x00402c98:");
     asm("mov.s              ecx, esi");                                 // 0x00402c98    8bce
-    asm("call               _jmp_addr_0x00403d20");                     // 0x00402c9a    e881100000
+    asm("call               ?DeleteAbodeSurroundingObjects@Abode@@QAEXXZ");                     // 0x00402c9a    e881100000
     asm("{disp8} mov        eax, dword ptr [esp + 0x0c]");              // 0x00402c9f    8b44240c
     asm("push               eax");                                      // 0x00402ca3    50
     asm("mov.s              ecx, esi");                                 // 0x00402ca4    8bce

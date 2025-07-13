@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
-.extern _CreateFromHD__8LH3DMeshFPci
+.extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x00866ba0
@@ -130,7 +130,7 @@ _jmp_addr_0x0048e2cf:    {disp32} mov       eax, dword ptr [data_bytes + 0x29e22
                          {disp32} mov       dword ptr [data_bytes + 0x29e224], eax        // 0x0048e2e5    a32442c600
                          mov                esi, dword ptr [eax]                          // 0x0048e2ea    8b30
                          push               0x009d114c                                    // 0x0048e2ec    684c119d00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x0048e2f1    e8fa843700
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x0048e2f1    e8fa843700
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x29e224]        // 0x0048e2f6    8b0d2442c600
                          add                esp, 0x08                                     // 0x0048e2fc    83c408
                          mov.s              edx, eax                                      // 0x0048e2ff    8bd0
@@ -152,7 +152,7 @@ _jmp_addr_0x0048e31f:    {disp32} mov       eax, dword ptr [data_bytes + 0x29e22
                          {disp32} mov       dword ptr [data_bytes + 0x29e228], eax        // 0x0048e335    a32842c600
                          mov                esi, dword ptr [eax]                          // 0x0048e33a    8b30
                          push               0x009d113c                                    // 0x0048e33c    683c119d00
-                         call               _CreateFromHD__8LH3DMeshFPci                  // 0x0048e341    e8aa843700
+                         call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x0048e341    e8aa843700
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x29e228]        // 0x0048e346    8b0d2842c600
                          add                esp, 0x08                                     // 0x0048e34c    83c408
                          mov.s              edx, eax                                      // 0x0048e34f    8bd0
