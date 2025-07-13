@@ -44,6 +44,6 @@ struct ShowNeedsVisuals* __fastcall __ct__16ShowNeedsVisualsFRC9MapCoordsP9GameT
 // Override methods
 
 // win1.41 00719e00 mac 10145510 ShowNeedsVisuals::CallVirtualFunctionsForCreation(const MapCoords &)
-void __fastcall CallVirtualFunctionsForCreation__16ShowNeedsVisualsFRC9MapCoords(struct ShowNeedsVisuals* this, const void* edx, const struct MapCoords* coords);
+void __fastcall CallVirtualFunctionsForCreation__16ShowNeedsVisualsFRC9MapCoords(struct ShowNeedsVisuals* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@ShowNeedsVisuals@@QAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_VISUALS_INCLUDED_H */

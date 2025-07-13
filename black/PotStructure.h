@@ -33,6 +33,6 @@ struct PotStructure* __fastcall __ct__12PotStructureFRC9MapCoordsPC8GPotInfoUlP1
 // Override methods
 
 // win1.41 0066db90 mac 1011afa0 PotStructure::CallVirtualFunctionsForCreation(const MapCoords&)
-void __fastcall CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords(struct PotStructure* this, const void* edx, const struct MapCoords* coords);
+void __fastcall CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords(struct PotStructure* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@PotStructure@@QAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_POT_STRUCTURE_INCLUDED_H */

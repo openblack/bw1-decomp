@@ -171,7 +171,7 @@
 .extern @RemoveMapObject__6ObjectFv@4
 .extern  ?IsObjectInMap@Object@@UAE_NPAUMapCell@@@Z
 .extern @RemoveMapObjectFromCell__6ObjectFP7MapCell@12
-.extern @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z
 .extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?InterfaceSetInMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
 .extern @ReduceLife__6ObjectFfP7GPlayer@16
@@ -339,7 +339,7 @@
 .globl _jmp_addr_0x0052e3f0
 .globl @InsertMapObject__13MultiMapFixedFv@4
 .globl _jmp_addr_0x0052e880
-.globl @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
+.globl ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z
 .globl @AllocateMultiChild__13MultiMapFixedFv@4
 .globl _jmp_addr_0x0052eac0
 .extern ?Built@MultiMapFixed@@UAE_NXZ
@@ -516,7 +516,6 @@
 .globl ?InsertMapObject@MultiMapFixed@@UAEXXZ
 .globl ?GetMapChild@MultiMapFixed@@UAEPAVObject@@PBUMapCell@@@Z
 .globl @SetMapChild__13MultiMapFixedFP6ObjectP7MapCell@16
-.globl _CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords
 .globl _InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell
 .globl @AddFootpath__13MultiMapFixedFP9GFootpath@12
 .globl _InsertMapObjectToCell__11FixedObjectFP7MapCell
@@ -6180,13 +6179,13 @@ _jmp_addr_0x0052e872:    {disp8} lea        ecx, dword ptr [esp + 0x04]         
                          ret                                                                     // 0x0052e87f    c3
 _jmp_addr_0x0052e880:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x0052e880    8b442404
                          push               eax                                                  // 0x0052e884    50
-                         call               @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12                                 // 0x0052e885    e856831000
+                         call               ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z  // 0x0052e885    e856831000
                          ret                0x0004                                               // 0x0052e88a    c20400
                          nop                                                                     // 0x0052e88d    90
                          nop                                                                     // 0x0052e88e    90
                          nop                                                                     // 0x0052e88f    90
-_CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords:
-@CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12:    sub                esp, 0x14                                            // 0x0052e890    83ec14
+?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z:
+                         sub                esp, 0x14                                            // 0x0052e890    83ec14
                          push               ebx                                                  // 0x0052e893    53
                          push               esi                                                  // 0x0052e894    56
                          mov.s              esi, ecx                                             // 0x0052e895    8bf1

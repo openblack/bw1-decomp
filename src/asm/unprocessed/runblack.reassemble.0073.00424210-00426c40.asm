@@ -56,7 +56,7 @@
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
 .extern ?ToBeDeleted@Object@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z
 .extern @SetScale__6ObjectFf@12
 .extern @SetYAngle__6ObjectFf@12
 .extern _jmp_addr_0x00639900
@@ -2070,7 +2070,7 @@ _jmp_addr_0x00425410:    mov                dword ptr [ecx], 0x008c36b0         
                          push               esi                                           // 0x00425428    56
                          mov.s              esi, ecx                                      // 0x00425429    8bf1
                          push               eax                                           // 0x0042542b    50
-                         call               @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12                          // 0x0042542c    e8af172100
+                         call               ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z  // 0x0042542c    e8af172100
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x00425431    8b4e40
                          mov                edx, dword ptr [ecx]                          // 0x00425434    8b11
                          call               dword ptr [edx + 0xf8]                        // 0x00425436    ff92f8000000
