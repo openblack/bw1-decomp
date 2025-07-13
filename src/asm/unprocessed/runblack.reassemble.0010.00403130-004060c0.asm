@@ -253,62 +253,6 @@
 .globl ?CreatePlanned@PlannedAbode@@QAEPAVMultiMapFixed@@M@Z
 .globl ?CreatePlannedNoFixedCheck@PlannedAbode@@QAEPAVMultiMapFixed@@M@Z
 
-?SetIdentity@LHMatrix@@QAEXXZ:
-                         xor.s              eax, eax                                      // 0x00403500    33c0
-                         {disp8} mov        dword ptr [ecx + 0x2c], eax                   // 0x00403502    89412c
-                         {disp8} mov        dword ptr [ecx + 0x28], eax                   // 0x00403505    894128
-                         {disp8} mov        dword ptr [ecx + 0x24], eax                   // 0x00403508    894124
-                         {disp8} mov        dword ptr [ecx + 0x1c], eax                   // 0x0040350b    89411c
-                         {disp8} mov        dword ptr [ecx + 0x18], eax                   // 0x0040350e    894118
-                         {disp8} mov        dword ptr [ecx + 0x14], eax                   // 0x00403511    894114
-                         {disp8} mov        dword ptr [ecx + 0x0c], eax                   // 0x00403514    89410c
-                         {disp8} mov        dword ptr [ecx + 0x08], eax                   // 0x00403517    894108
-                         {disp8} mov        dword ptr [ecx + 0x04], eax                   // 0x0040351a    894104
-                         mov                eax, 0x3f800000                               // 0x0040351d    b80000803f
-                         {disp8} mov        dword ptr [ecx + 0x20], eax                   // 0x00403522    894120
-                         {disp8} mov        dword ptr [ecx + 0x10], eax                   // 0x00403525    894110
-                         mov                dword ptr [ecx], eax                          // 0x00403528    8901
-                         ret                                                              // 0x0040352a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040352b    e849e3ffff
-?Translation@LHMatrix@@QAEXABVLHPoint@@@Z:
-                         xor.s              eax, eax                                      // 0x00403530    33c0
-                         {disp8} mov        dword ptr [ecx + 0x2c], eax                   // 0x00403532    89412c
-                         {disp8} mov        dword ptr [ecx + 0x28], eax                   // 0x00403535    894128
-                         {disp8} mov        dword ptr [ecx + 0x24], eax                   // 0x00403538    894124
-                         {disp8} mov        dword ptr [ecx + 0x1c], eax                   // 0x0040353b    89411c
-                         {disp8} mov        dword ptr [ecx + 0x18], eax                   // 0x0040353e    894118
-                         {disp8} mov        dword ptr [ecx + 0x14], eax                   // 0x00403541    894114
-                         {disp8} mov        dword ptr [ecx + 0x0c], eax                   // 0x00403544    89410c
-                         {disp8} mov        dword ptr [ecx + 0x08], eax                   // 0x00403547    894108
-                         {disp8} mov        dword ptr [ecx + 0x04], eax                   // 0x0040354a    894104
-                         mov                eax, 0x3f800000                               // 0x0040354d    b80000803f
-                         {disp8} mov        dword ptr [ecx + 0x20], eax                   // 0x00403552    894120
-                         {disp8} mov        dword ptr [ecx + 0x10], eax                   // 0x00403555    894110
-                         mov                dword ptr [ecx], eax                          // 0x00403558    8901
-                         mov                eax, dword ptr [edx]                          // 0x0040355a    8b02
-                         {disp8} mov        dword ptr [ecx + 0x24], eax                   // 0x0040355c    894124
-                         {disp8} mov        eax, dword ptr [edx + 0x04]                   // 0x0040355f    8b4204
-                         {disp8} mov        dword ptr [ecx + 0x28], eax                   // 0x00403562    894128
-                         {disp8} mov        edx, dword ptr [edx + 0x08]                   // 0x00403565    8b5208
-                         {disp8} mov        dword ptr [ecx + 0x2c], edx                   // 0x00403568    89512c
-                         ret                                                              // 0x0040356b    c3
-                         nop                                                              // 0x0040356c    90
-                         nop                                                              // 0x0040356d    90
-                         nop                                                              // 0x0040356e    90
-                         nop                                                              // 0x0040356f    90
-?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z:
-                         fld                dword ptr [edx]                               // 0x00403570    d902
-                         {disp8} fadd       dword ptr [ecx + 0x24]                        // 0x00403572    d84124
-                         {disp8} fstp       dword ptr [ecx + 0x24]                        // 0x00403575    d95924
-                         {disp8} fld        dword ptr [edx + 0x04]                        // 0x00403578    d94204
-                         {disp8} fadd       dword ptr [ecx + 0x28]                        // 0x0040357b    d84128
-                         {disp8} fstp       dword ptr [ecx + 0x28]                        // 0x0040357e    d95928
-                         {disp8} fld        dword ptr [edx + 0x08]                        // 0x00403581    d94208
-                         {disp8} fadd       dword ptr [ecx + 0x2c]                        // 0x00403584    d8412c
-                         {disp8} fstp       dword ptr [ecx + 0x2c]                        // 0x00403587    d9592c
-                         ret                                                              // 0x0040358a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040358b    e8e9e2ffff
-
 ?GetNewEp@Abode@@QAE_NW4ABODE_EPP@@PAULHPoint@@@Z:
                          sub                esp, 0x3c                                     // 0x00403590    83ec3c
                          mov                eax, dword ptr [ecx]                          // 0x00403593    8b01
