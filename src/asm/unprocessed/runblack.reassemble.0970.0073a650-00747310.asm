@@ -11,7 +11,7 @@
 .extern ??1Abode@@UAE@XZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
-.extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00403530
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern _jmp_addr_0x00404340
@@ -140,7 +140,7 @@
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
 .extern ?ToBeDeleted@Object@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00636e30
 .extern @SetScale__6ObjectFf@12
 .extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
@@ -457,8 +457,8 @@
 .globl _globl_ct_0x00744ae0
 .globl _globl_ct_0x00744bc0
 .globl _MakeFunctional__10TownCentreFv
-.globl _CallVirtualFunctionsForCreation__10TownCentreFRC9MapCoords
-.globl _CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@TownCentre@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@TownDesireFlags@@QAEXABUMapCoords@@@Z
 
 start_0x0073a650_0x00747310:
 // Snippet: asm, [0x0073a650, 0x007472ec)
@@ -15103,14 +15103,14 @@ _jmp_addr_0x00743ce4:    xor.s              eax, eax                            
                          nop                                                                     // 0x00743ced    90
                          nop                                                                     // 0x00743cee    90
                          nop                                                                     // 0x00743cef    90
-_CallVirtualFunctionsForCreation__10TownCentreFRC9MapCoords:
+?CallVirtualFunctionsForCreation@TownCentre@@QAEXABUMapCoords@@@Z:
                          sub                esp, 0x08                                            // 0x00743cf0    83ec08
                          push               esi                                                  // 0x00743cf3    56
                          mov.s              esi, ecx                                             // 0x00743cf4    8bf1
                          push               edi                                                  // 0x00743cf6    57
                          {disp8} lea        eax, dword ptr [esi + 0x14]                          // 0x00743cf7    8d4614
                          push               eax                                                  // 0x00743cfa    50
-                         call               @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12                                 // 0x00743cfb    e800f5cbff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z                                 // 0x00743cfb    e800f5cbff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                          // 0x00743d00    8b4e40
                          mov                edx, dword ptr [ecx]                                 // 0x00743d03    8b11
                          call               dword ptr [edx + 0x1e8]                              // 0x00743d05    ff92e8010000
@@ -19284,12 +19284,12 @@ _jmp_addr_0x00746db0:    {disp8} mov        eax, dword ptr [ecx + 0x5c]         
                          add                eax, 0x00da2930 /* _GTownDesireInfo_ARRAY_00da2930 */ // 0x00746db9    053029da00
                          ret                                                                     // 0x00746dbe    c3
                          nop                                                                     // 0x00746dbf    90
-_CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords:
+?CallVirtualFunctionsForCreation@TownDesireFlags@@QAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00746dc0    8b442404
                          push               esi                                                  // 0x00746dc4    56
                          mov.s              esi, ecx                                             // 0x00746dc5    8bf1
                          push               eax                                                  // 0x00746dc7    50
-                         call               @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12                                 // 0x00746dc8    e813feeeff
+                         call               ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z  // 0x00746dc8    e813feeeff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                          // 0x00746dcd    8b4e40
                          mov                eax, dword ptr [ecx]                                 // 0x00746dd0    8b01
                          xor.s              edx, edx                                             // 0x00746dd2    33d2

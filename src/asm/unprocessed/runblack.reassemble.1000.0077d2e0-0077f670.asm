@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x00726080
 .extern _jmp_addr_0x007260a0
 .extern @SetToZero__9SpellIconFv@4
-.extern @CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@SpellIcon@@QAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00726280
 .extern _jmp_addr_0x00726380
 .extern @__ct__Q29SpellIcon13TChargingDataFv@4
@@ -117,12 +117,12 @@
 .globl _Create__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi
 .globl @UpdateGraphicsWithPULevels__16WorshipSpellIconFv@4
 .globl _jmp_addr_0x0077f490
+.globl ?CallVirtualFunctionsForCreation@WorshipSpellIcon@@QAEXABUMapCoords@@@Z
 
 .globl _globl_ct_0x0077eb10
 .globl _globl_ct_0x0077eb40
 .globl _globl_ct_0x0077efc0
 .globl _globl_ct_0x0077eff0
-.globl _CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords
 
 start_0x0077d2e0_0x0077f670:
 // Snippet: asm, [0x0077d2e0, 0x0077f5f6)
@@ -3183,12 +3183,12 @@ _jmp_addr_0x0077f276:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0077f28d    90
                          nop                                                              // 0x0077f28e    90
                          nop                                                              // 0x0077f28f    90
-_CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords:
+?CallVirtualFunctionsForCreation@WorshipSpellIcon@@QAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0077f290    8b442404
                          push               esi                                           // 0x0077f294    56
                          mov.s              esi, ecx                                      // 0x0077f295    8bf1
                          push               eax                                           // 0x0077f297    50
-                         call               @CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords@12                          // 0x0077f298    e8c36efaff
+                         call               ?CallVirtualFunctionsForCreation@SpellIcon@@QAEXABUMapCoords@@@Z  // 0x0077f298    e8c36efaff
                          mov.s              ecx, esi                                      // 0x0077f29d    8bce
                          call               @UpdateGraphicsWithPULevels__16WorshipSpellIconFv@4                          // 0x0077f29f    e87c000000
                          pop                esi                                           // 0x0077f2a4    5e

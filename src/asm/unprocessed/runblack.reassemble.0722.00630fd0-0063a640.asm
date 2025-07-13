@@ -319,7 +319,6 @@
 .globl @InsertMapObjectToCell__6ObjectFP7MapCell@12
 .globl @RemoveMapObjectFromCell__6ObjectFP7MapCell@12
 .globl @MoveMapObject__6ObjectFRC9MapCoords@12
-.globl @CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12
 .globl _jmp_addr_0x00636e30
 .extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
 .extern ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z
@@ -405,7 +404,7 @@
 .globl _globl_ct_0x00636300
 .globl _globl_ct_0x00636330
 .globl _globl_ct_0x006363f0
-.globl _CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z
 .globl ?CleanupWhenDeleted@Object@@UAEXH@Z 
 .globl _RemoveMapObject__6ObjectFv
 .globl _InsertMapObject__6ObjectFv
@@ -9024,8 +9023,8 @@ _jmp_addr_0x00636b61:    {disp8} mov        ecx, dword ptr [esi + 0x40]         
                          {disp8} fld        dword ptr [eax + 0x30]                         // 0x00636bdb    d94030
                          ret                                                               // 0x00636bde    c3
                          nop                                                               // 0x00636bdf    90
-_CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords:
-@CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords@12:    push               esi                                            // 0x00636be0    56
+?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z:
+                         push               esi                                            // 0x00636be0    56
                          mov.s              esi, ecx                                       // 0x00636be1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00636be3    8b06
                          call               dword ptr [eax + 0x538]                        // 0x00636be5    ff9038050000

@@ -10,7 +10,7 @@
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ?Delete@Abode@@UAEXH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern ?DeleteDependancys@Abode@@UAEXXZ
@@ -40,7 +40,7 @@
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
-.extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern ?ReduceLife@MultiMapFixed@@UAEXMPAVGPlayer@@@Z
@@ -182,7 +182,7 @@
 .globl _globl_ct_0x00738ef0
 .globl _globl_ct_0x00738f20
 .globl _globl_ct_0x00738f40
-.globl _CallVirtualFunctionsForCreation__11TotemStatueFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@TotemStatue@@QAEXABUMapCoords@@@Z
 
 start_0x00736490_0x0073a650:
 // Snippet: asm, [0x00736490, 0x0073a5b2)
@@ -1640,7 +1640,7 @@ _jmp_addr_0x0073747b:    mov.s              ecx, esi                            
                          push               esi                                            // 0x00737494    56
                          mov.s              esi, ecx                                       // 0x00737495    8bf1
                          push               eax                                            // 0x00737497    50
-                         call               @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12                           // 0x00737498    e863bdccff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z                           // 0x00737498    e863bdccff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                    // 0x0073749d    8b4e40
                          mov                edx, dword ptr [ecx]                           // 0x007374a0    8b11
                          call               dword ptr [edx + 0xf8]                         // 0x007374a2    ff92f8000000
@@ -2631,7 +2631,7 @@ _jmp_addr_0x00737d33:    pop                edi                                 
                          nop                                                               // 0x00737d5d    90
                          nop                                                               // 0x00737d5e    90
                          nop                                                               // 0x00737d5f    90
-_CallVirtualFunctionsForCreation__11TotemStatueFRC9MapCoords:
+?CallVirtualFunctionsForCreation@TotemStatue@@QAEXABUMapCoords@@@Z:
                          sub                esp, 0x24                                      // 0x00737d60    83ec24
                          push               ebx                                            // 0x00737d63    53
                          push               esi                                            // 0x00737d64    56
@@ -2750,7 +2750,7 @@ _jmp_addr_0x00737eaf:    {disp32} mov       ecx, dword ptr [esi + 0x0000008c]   
                          {disp8} lea        edx, dword ptr [esp + 0x24]                    // 0x00737eec    8d542424
                          push               edx                                            // 0x00737ef0    52
                          mov.s              ecx, esi                                       // 0x00737ef1    8bce
-                         call               @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12                           // 0x00737ef3    e89869dfff
+                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z  // 0x00737ef3    e89869dfff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                    // 0x00737ef8    8b4e40
                          mov                eax, dword ptr [ecx]                           // 0x00737efb    8b01
                          xor.s              edx, edx                                       // 0x00737efd    33d2

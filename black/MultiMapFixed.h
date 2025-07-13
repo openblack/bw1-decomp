@@ -216,7 +216,7 @@ void __fastcall Draw__13MultiMapFixedFv(struct Object* this) asm("?Draw@MultiMap
 // win1.41 0052f0d0 mac 100de940 MultiMapFixed::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 uint32_t __fastcall GetDiscipleStateIfInteractedWith__13MultiMapFixedFP16GInterfaceStatusP8Villager(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct Villager* villager) asm("?GetDiscipleStateIfInteractedWith@MultiMapFixed@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z");
 // win1.41 0052e890 mac 100e0240 MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords&)
-void __fastcall CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords(struct MultiMapFixed* this, const void* edx, const struct MapCoords* coords);
+void __fastcall CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords(struct MultiMapFixed* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z");
 // win1.41 00401490 mac 1056ea60 MultiMapFixed::AsMultiMapFixed(void)
 struct MultiMapFixed* __fastcall AsMultiMapFixed__13MultiMapFixedFv(struct Object* this) asm("?AsMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ");
 // win1.41 0052f1f0 mac 100de6f0 MultiMapFixed::IsResourceStore(RESOURCE_TYPE)

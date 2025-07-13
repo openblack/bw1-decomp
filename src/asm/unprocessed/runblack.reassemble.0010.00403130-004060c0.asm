@@ -16,7 +16,7 @@
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00437eb0
 .extern @InsertMapObject__13MultiMapFixedFv@4
-.extern @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z
 .extern ?Built@MultiMapFixed@@UAE_NXZ
 .extern ?Repaired@MultiMapFixed@@UAE_NXZ
 .extern ?SaveObject@MultiMapFixed@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z
@@ -94,7 +94,7 @@
 
 .globl ?Init@Abode@@QAEXHII@Z
 .globl _jmp_addr_0x00403190
-.globl @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12
+.globl ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
 .globl _jmp_addr_0x00403500
 .globl _jmp_addr_0x00403530
 .globl @PostTranslation__8LHMatrixFRC7LHPoint@8
@@ -162,7 +162,7 @@
 .globl ?AddFootpath@GameThing@@QAEIPAVGFootpath@@@Z
 .globl _MakeFunctional__5AbodeFv
 .globl ?IsFunctional@GameThing@@QAE_NXZ
-.globl _CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords
+.globl ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
 .globl ?CanBecomeArtifact@GameThing@@QAE_NXZ
 .globl ?Get2DRadius@GameThing@@QAEMXZ
 .globl ?GetRadius@GameThing@@QAEMXZ
@@ -355,14 +355,14 @@ _jmp_addr_0x004031ed:    pop                edi                                 
                          nop                                                              // 0x004031fd    90
                          nop                                                              // 0x004031fe    90
                          nop                                                              // 0x004031ff    90
-_CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords:
-@CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00403200    8b442404
+?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00403200    8b442404
                          sub                esp, 0x20                                     // 0x00403204    83ec20
                          push               esi                                           // 0x00403207    56
                          push               edi                                           // 0x00403208    57
                          mov.s              esi, ecx                                      // 0x00403209    8bf1
                          push               eax                                           // 0x0040320b    50
-                         call               @CallVirtualFunctionsForCreation__13MultiMapFixedFRC9MapCoords@12                          // 0x0040320c    e87fb61200
+                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z  // 0x0040320c    e87fb61200
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x00403211    8b4e40
                          mov                eax, dword ptr [ecx]                          // 0x00403214    8b01
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                   // 0x00403216    8d54241c
@@ -4782,7 +4782,7 @@ _jmp_addr_0x0040575c:    xor.s              eax, eax                            
                          push               eax                                           // 0x004057a7    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x004057a8    8d4e14
                          push               ecx                                           // 0x004057ab    51
-                         call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z                          // 0x004057ac    e86fd6ffff
+                         call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z      // 0x004057ac    e86fd6ffff
                          mov.s              edi, eax                                      // 0x004057b1    8bf8
                          add                esp, 0x28                                     // 0x004057b3    83c428
                          test               edi, edi                                      // 0x004057b6    85ff
@@ -4995,7 +4995,7 @@ _jmp_addr_0x0040593d:    mov.s              eax, esi                            
                          push               esi                                           // 0x00405954    56
                          mov.s              esi, ecx                                      // 0x00405955    8bf1
                          push               eax                                           // 0x00405957    50
-                         call               @CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords@12                          // 0x00405958    e8a3d8ffff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z                          // 0x00405958    e8a3d8ffff
                          test               byte ptr [esi + 0x0a], 0x01                   // 0x0040595d    f6460a01
                          {disp8} jne        _jmp_addr_0x0040597c                          // 0x00405961    7519
                          push               0x0                                           // 0x00405963    6a00
