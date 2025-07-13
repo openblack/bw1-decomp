@@ -80,15 +80,15 @@ set(SOURCES_001
     c/PlannedAbode.000.c
     c/GameThingWithPos.000.c
     c/Object.000.c
+    c/Abode.002.c
 
-    asm/unprocessed/runblack.reassemble.0006.004012e0-00403130.asm
+    asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
 
-    asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
     asm/unprocessed/runblack.reassemble.0014.004060c0-004061a0.asm
     asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
     asm/unprocessed/runblack.reassemble.0022.004097a0-00409a40.asm
