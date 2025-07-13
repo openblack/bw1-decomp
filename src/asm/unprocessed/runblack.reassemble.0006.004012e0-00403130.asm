@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x00739a60
 .extern _Create__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi
 .extern _jmp_addr_0x0076d4c0
-.extern _Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi
+.extern ?Create@Wonder@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern _jmp_addr_0x00779590
 .extern  ___dl__FPv
 .extern ??1FragMesh@@QAE@XZ
@@ -499,7 +499,7 @@ _jmp_addr_0x00402f25:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          push               ecx                                      // 0x00402f41    51
                          push               eax                                      // 0x00402f42    50
                          push               edx                                      // 0x00402f43    52
-                         call               _Create__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi                     // 0x00402f44    e8375f3700
+                         call               ?Create@Wonder@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z  // 0x00402f44    e8375f3700
                          {disp32} jmp       _jmp_addr_0x0040306d                     // 0x00402f49    e91f010000
 _jmp_addr_0x00402f4e:    cmp                ecx, 0x00001004                          // 0x00402f4e    81f904100000
                          {disp32} jg        _jmp_addr_0x00402feb                     // 0x00402f54    0f8f91000000
