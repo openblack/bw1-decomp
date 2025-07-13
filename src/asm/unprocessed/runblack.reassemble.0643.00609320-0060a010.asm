@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x00403530
 .extern ___nw__4BaseFUl
-.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x00602880
 .extern _jmp_addr_0x006055c0
@@ -480,7 +480,7 @@ _jmp_addr_0x00609700:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          push              esi                                           // 0x00609704    56
                          mov.s             esi, ecx                                      // 0x00609705    8bf1
                          push              eax                                           // 0x00609707    50
-                         call              ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z  // 0x00609708    e88351f2ff
+                         call              ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z  // 0x00609708    e88351f2ff
                          {disp8} mov       eax, dword ptr [esi + 0x40]                   // 0x0060970d    8b4640
                          test              eax, eax                                      // 0x00609710    85c0
                          {disp8} je        _jmp_addr_0x0060975a                          // 0x00609712    7446

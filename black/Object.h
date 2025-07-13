@@ -609,7 +609,7 @@ uint32_t __fastcall GetHandHelpMessageSet__6ObjectFv(struct Object* this) asm("?
 // win1.41 006385d0 mac 103d4c90 Object::GetHandHelpCondition(void)
 uint32_t __fastcall GetHandHelpCondition__6ObjectFv(struct Object* this) asm("?GetHandHelpCondition@Object@@UAEIXZ");
 // win1.41 00636be0 mac 103d84b0 Object::CallVirtualFunctionsForCreation(MapCoords const &)
-void __fastcall CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z");
 // win1.41 006364f0 mac 103d93a0 Object::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__6ObjectFv(struct Object* this) asm("?Get3DType@Object@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 004026d0 mac 10586d80 Object::GetFoodValue(FOOD_TYPE)

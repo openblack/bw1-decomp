@@ -76,7 +76,7 @@
 .extern _jmp_addr_0x00644f00
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern @SetToZero__3PotFv@4
-.extern ?CallVirtualFunctionsForCreation@PileResource@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z
 .extern @__ct__12PileResourceFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .extern _jmp_addr_0x0066f0d0
 .extern _jmp_addr_0x0066f1a0
@@ -8588,7 +8588,7 @@ _jmp_addr_0x00600ef0:    mov                eax, 0x00d4d1c4                     
                          nop                                                              // 0x00600f0f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00600f10    8b442404
                          push               eax                                           // 0x00600f14    50
-                         call               ?CallVirtualFunctionsForCreation@PileResource@@QAEXABUMapCoords@@@Z  // 0x00600f15    e8e6d30600
+                         call               ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z  // 0x00600f15    e8e6d30600
                          ret                0x0004                                        // 0x00600f1a    c20400
                          nop                                                              // 0x00600f1d    90
                          nop                                                              // 0x00600f1e    90

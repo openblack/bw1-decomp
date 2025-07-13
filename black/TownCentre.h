@@ -65,7 +65,7 @@ bool __fastcall AddSpell__10TownCentreF15SPELL_SEED_TYPE(struct TownCentre* this
 // Override methods
 
 // win1.41 00743cf0 mac 1055b3c0 TownCentre::CallVirtualFunctionsForCreation(MapCoords const &)
-void __fastcall CallVirtualFunctionsForCreation__10TownCentreFRC9MapCoords(struct TownCentre* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@TownCentre@@QAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__10TownCentreFRC9MapCoords(struct TownCentre* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@TownCentre@@UAEXABUMapCoords@@@Z");
 // win1.41 00743e80 mac 1055b020 TownCentre::MakeFunctional(void)
 void __fastcall MakeFunctional__10TownCentreFv(struct TownCentre* this);
 

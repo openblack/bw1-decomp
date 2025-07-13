@@ -38,6 +38,6 @@ void __fastcall SetZero__6WonderFv(struct Wonder* this) asm("?SetZero@Wonder@@QA
 // Override methods
 
 // win1.41 00779160 mac 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
-void __fastcall CallVirtualFunctionsForCreation__6WonderFRC9MapCoords(struct Wonder* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Wonder@@QAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__6WonderFRC9MapCoords(struct Wonder* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Wonder@@UAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_WONDER_INCLUDED_H */

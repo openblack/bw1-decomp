@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00519ad0
 .extern @__ct__13MultiMapFixedFv@4
-.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00542a90
 .extern _jmp_addr_0x00542c50
 .extern _jmp_addr_0x00543200
@@ -218,7 +218,7 @@
 .globl _jmp_addr_0x00784f40
 .globl @__ct__12CreatureRoomFv@4
 .globl _jmp_addr_0x007867b0
-.globl ?CallVirtualFunctionsForCreation@WorshipTotem@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@WorshipTotem@@UAEXABUMapCoords@@@Z
 
 .globl _globl_ct_0x00780640
 .globl _globl_ct_0x00780670
@@ -2316,10 +2316,10 @@ _jmp_addr_0x00780a60:    {disp32} mov       eax, dword ptr [ecx + 0x00000100]   
                          jmp                dword ptr [eax + 0x428]                       // 0x00780aa8    ffa028040000
                          nop                                                              // 0x00780aae    90
                          nop                                                              // 0x00780aaf    90
-?CallVirtualFunctionsForCreation@WorshipTotem@@QAEXABUMapCoords@@@Z:
+?CallVirtualFunctionsForCreation@WorshipTotem@@UAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00780ab0    8b442404
                          push               eax                                           // 0x00780ab4    50
-                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z  // 0x00780ab5    e8d6dddaff
+                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z  // 0x00780ab5    e8d6dddaff
                          ret                0x0004                                        // 0x00780aba    c20400
                          nop                                                              // 0x00780abd    90
                          nop                                                              // 0x00780abe    90

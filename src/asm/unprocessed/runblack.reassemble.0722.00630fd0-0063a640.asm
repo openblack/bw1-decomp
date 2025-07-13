@@ -404,7 +404,7 @@
 .globl _globl_ct_0x00636300
 .globl _globl_ct_0x00636330
 .globl _globl_ct_0x006363f0
-.globl ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .globl ?CleanupWhenDeleted@Object@@UAEXH@Z 
 .globl _RemoveMapObject__6ObjectFv
 .globl _InsertMapObject__6ObjectFv
@@ -9023,7 +9023,7 @@ _jmp_addr_0x00636b61:    {disp8} mov        ecx, dword ptr [esi + 0x40]         
                          {disp8} fld        dword ptr [eax + 0x30]                         // 0x00636bdb    d94030
                          ret                                                               // 0x00636bde    c3
                          nop                                                               // 0x00636bdf    90
-?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z:
+?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z:
                          push               esi                                            // 0x00636be0    56
                          mov.s              esi, ecx                                       // 0x00636be1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00636be3    8b06
