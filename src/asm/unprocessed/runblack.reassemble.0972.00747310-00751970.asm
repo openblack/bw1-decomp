@@ -10,12 +10,12 @@
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
-.extern @RemoveDeletedVillagerFromAbode__5AbodeFP8Villager@12
+.extern ?RemoveDeletedVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z
 .extern _jmp_addr_0x00404630
-.extern @GetRoomLeftForAdults__5AbodeFv@4
+.extern ?GetRoomLeftForAdults@Abode@@QAEHXZ
 .extern _jmp_addr_0x00404cc0
 .extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
-.extern @GetTribeType__5AbodeCFv@4
+.extern ?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ
 .extern _jmp_addr_0x004141f0
 .extern _jmp_addr_0x004143b0
 .extern _jmp_addr_0x004145a0
@@ -10725,7 +10725,7 @@ _jmp_addr_0x0074ddbd:    {disp8} mov        ecx, dword ptr [esp + 0x1c]         
                          test               ah, 0x01                                       // 0x0074ddd4    f6c401
                          {disp8} je         _jmp_addr_0x0074de3c                           // 0x0074ddd7    7463
                          mov.s              ecx, esi                                       // 0x0074ddd9    8bce
-                         call               @GetTribeType__5AbodeCFv@4                     // 0x0074dddb    e86081cbff
+                         call               ?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ     // 0x0074dddb    e86081cbff
                          cmp.s              eax, ebx                                       // 0x0074dde0    3bc3
                          {disp8} je         _jmp_addr_0x0074dde9                           // 0x0074dde2    7405
                          cmp                ebx, -0x01                                     // 0x0074dde4    83fbff
@@ -10748,7 +10748,7 @@ _jmp_addr_0x0074de11:    {disp8} mov        eax, dword ptr [esp + 0x24]         
                          test               eax, eax                                       // 0x0074de15    85c0
                          {disp8} je         _jmp_addr_0x0074de32                           // 0x0074de17    7419
                          mov.s              ecx, esi                                       // 0x0074de19    8bce
-                         call               @GetRoomLeftForAdults__5AbodeFv@4              // 0x0074de1b    e84068cbff
+                         call               ?GetRoomLeftForAdults@Abode@@QAEHXZ            // 0x0074de1b    e84068cbff
                          test               eax, eax                                       // 0x0074de20    85c0
                          {disp8} jle        _jmp_addr_0x0074de3c                           // 0x0074de22    7e18
                          mov                eax, dword ptr [esi]                           // 0x0074de24    8b06
@@ -13802,7 +13802,7 @@ _jmp_addr_0x0074fe1c:    cmp.s              edi, ebx                            
                          {disp8} je         _jmp_addr_0x0074fe30                           // 0x0074fe1e    7410
                          push               esi                                            // 0x0074fe20    56
                          mov.s              ecx, edi                                       // 0x0074fe21    8bcf
-                         call               @RemoveDeletedVillagerFromAbode__5AbodeFP8Villager@12                           // 0x0074fe23    e8f843cbff
+                         call               ?RemoveDeletedVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z                           // 0x0074fe23    e8f843cbff
                          pop                edi                                            // 0x0074fe28    5f
                          pop                esi                                            // 0x0074fe29    5e
                          pop                ebp                                            // 0x0074fe2a    5d

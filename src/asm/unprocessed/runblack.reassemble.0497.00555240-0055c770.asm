@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00401140
-.extern @SetZero__5AbodeFv@4
+.extern ?SetZero@Abode@@QAEXXZ
 .extern _jmp_addr_0x00407a20
 .extern _GetCurrentActiveBox__8SetupBoxFv
 .extern _jmp_addr_0x00408f80
@@ -277,7 +277,7 @@
 .extern @__ct__8FragmentFv@4
 .extern _jmp_addr_0x0076f840
 .extern _jmp_addr_0x00770b70
-.extern @SetZero__6WonderFv@4
+.extern ?SetZero@Wonder@@QAEXXZ
 .extern _jmp_addr_0x00779240
 .extern _jmp_addr_0x0077ae60
 .extern _jmp_addr_0x0077f020
@@ -6033,7 +6033,7 @@ _jmp_addr_0x00558e51:    {disp8} mov        edx, dword ptr [esp + 0x10]         
                          {disp32} mov       dword ptr [esi + 0x000000a4], ebx             // 0x00558f9d    899ea4000000
                          mov.s              ecx, esi                                      // 0x00558fa3    8bce
                          mov                dword ptr [esi], 0x008a9a64                   // 0x00558fa5    c706649a8a00
-                         call               @SetZero__5AbodeFv@4                          // 0x00558fab    e8109ceaff
+                         call               ?SetZero@Abode@@QAEXXZ                        // 0x00558fab    e8109ceaff
                          {disp32} jmp       _jmp_addr_0x0055c2d0                          // 0x00558fb0    e91b330000
                          push               0x000002a2                                    // 0x00558fb5    68a2020000
                          push               0x00bec9e0                                    // 0x00558fba    68e0c9be00
@@ -7751,7 +7751,7 @@ _jmp_addr_0x00559d90:    mov.s              ecx, edi                            
                          call               _jmp_addr_0x0055cc10                          // 0x0055ab37    e8d4200000
                          mov.s              ecx, esi                                      // 0x0055ab3c    8bce
                          mov                dword ptr [esi], 0x008df96c                   // 0x0055ab3e    c7066cf98d00
-                         call               @SetZero__6WonderFv@4                         // 0x0055ab44    e817e52100
+                         call               ?SetZero@Wonder@@QAEXXZ                       // 0x0055ab44    e817e52100
                          {disp32} jmp       _jmp_addr_0x0055c2d0                          // 0x0055ab49    e982170000
                          push               0x0000049b                                    // 0x0055ab4e    689b040000
                          push               0x00bec9e0                                    // 0x0055ab53    68e0c9be00

@@ -33,7 +33,7 @@ struct Wonder* __fastcall __ct__6WonderFRC9MapCoordsPC10GAbodeInfoP4Townfffi(str
 // Non-virtual methods
 
 // win1.41 00779060 mac inlined Wonder::SetZero(void)
-void __fastcall SetZero__6WonderFv(struct Wonder* this);
+void __fastcall SetZero__6WonderFv(struct Wonder* this) asm("?SetZero@Wonder@@QAEXXZ");
 
 // Override methods
 

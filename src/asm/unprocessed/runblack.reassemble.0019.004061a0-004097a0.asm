@@ -90,15 +90,15 @@
 .extern _jmp_addr_0x00829780
 
 .extern ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
-.globl _jmp_addr_0x00406640
-.globl _jmp_addr_0x004069c0
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
-.globl @FindNearestDrinkingWater__5AbodeFf@12
-.globl _jmp_addr_0x004070f0
 .extern ?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
-.globl @GetPosOutside__5AbodeFfff@24
 .extern ?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z
+.globl _jmp_addr_0x00406640
+.globl _jmp_addr_0x004069c0
+.globl ?FindNearestDrinkingWater@Abode@@QAEXM@Z
+.globl _jmp_addr_0x004070f0
+.globl ?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z
 .globl _jmp_addr_0x004073f0
 .globl _jmp_addr_0x004074a0
 .globl _jmp_addr_0x00407540
@@ -1418,7 +1418,8 @@ _jmp_addr_0x00407015:    pop                esi                                 
                          add                esp, 0x08                                     // 0x00407019    83c408
                          ret                0x0004                                        // 0x0040701c    c20400
                          nop                                                              // 0x0040701f    90
-@FindNearestDrinkingWater__5AbodeFf@12:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00407020    8b442404
+?FindNearestDrinkingWater@Abode@@QAEXM@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00407020    8b442404
                          push               esi                                           // 0x00407024    56
                          mov.s              esi, ecx                                      // 0x00407025    8bf1
                          push               eax                                           // 0x00407027    50
@@ -1725,7 +1726,8 @@ _jmp_addr_0x0040725a:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x004072dd    90
                          nop                                                              // 0x004072de    90
                          nop                                                              // 0x004072df    90
-@GetPosOutside__5AbodeFfff@24:    sub                esp, 0x1c                                     // 0x004072e0    83ec1c
+?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z:
+                         sub                esp, 0x1c                                     // 0x004072e0    83ec1c
                          push               esi                                           // 0x004072e3    56
                          mov.s              esi, ecx                                      // 0x004072e4    8bf1
                          mov                eax, dword ptr [esi]                          // 0x004072e6    8b06

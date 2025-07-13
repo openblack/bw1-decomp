@@ -113,7 +113,7 @@
 .globl _jmp_addr_0x0077e810
 .globl _jmp_addr_0x0077f020
 .globl @__ct__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi@34
-.globl @SetZero__16WorshipSpellIconFv@4
+.globl ?SetZero@WorshipSpellIcon@@QAEXXZ
 .globl _Create__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi
 .globl @UpdateGraphicsWithPULevels__16WorshipSpellIconFv@4
 .globl _jmp_addr_0x0077f490
@@ -2927,7 +2927,7 @@ _jmp_addr_0x0077f020:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x00000130], edi             // 0x0077f070    89be30010000
                          mov.s              ecx, esi                                      // 0x0077f076    8bce
                          mov                dword ptr [esi], 0x0099d878                   // 0x0077f078    c70678d89900
-                         call               @SetZero__16WorshipSpellIconFv@4              // 0x0077f07e    e86d010000
+                         call               ?SetZero@WorshipSpellIcon@@QAEXXZ             // 0x0077f07e    e86d010000
                          pop                edi                                           // 0x0077f083    5f
                          mov.s              eax, esi                                      // 0x0077f084    8bc6
                          pop                esi                                           // 0x0077f086    5e
@@ -3095,7 +3095,7 @@ _jmp_addr_0x0077f12d:    mov.s              eax, esi                            
                          {disp32} mov       dword ptr [esi + 0x00000130], ebx             // 0x0077f199    899e30010000
                          mov.s              ecx, esi                                      // 0x0077f19f    8bce
                          mov                dword ptr [esi], 0x0099d878                   // 0x0077f1a1    c70678d89900
-                         call               @SetZero__16WorshipSpellIconFv@4              // 0x0077f1a7    e844000000
+                         call               ?SetZero@WorshipSpellIcon@@QAEXXZ             // 0x0077f1a7    e844000000
                          {disp8} mov        cx, word ptr [esp + 0x20]                     // 0x0077f1ac    668b4c2420
                          {disp32} mov       word ptr [esi + 0x0000013c], cx               // 0x0077f1b1    66898e3c010000
                          {disp32} mov       dword ptr [esi + 0x00000118], edi             // 0x0077f1b8    89be18010000
@@ -3126,7 +3126,9 @@ _jmp_addr_0x0077f1e0:    mov                dword ptr [ecx], 0x0099d878         
                          nop                                                              // 0x0077f1ed    90
                          nop                                                              // 0x0077f1ee    90
                          nop                                                              // 0x0077f1ef    90
-@SetZero__16WorshipSpellIconFv@4:    xor.s              eax, eax                                      // 0x0077f1f0    33c0
+
+?SetZero@WorshipSpellIcon@@QAEXXZ:
+                         xor.s              eax, eax                                      // 0x0077f1f0    33c0
                          {disp32} mov       dword ptr [ecx + 0x00000134], eax             // 0x0077f1f2    898134010000
                          {disp32} mov       byte ptr [ecx + 0x00000120], al               // 0x0077f1f8    888120010000
                          {disp32} mov       dword ptr [ecx + 0x00000128], eax             // 0x0077f1fe    898128010000

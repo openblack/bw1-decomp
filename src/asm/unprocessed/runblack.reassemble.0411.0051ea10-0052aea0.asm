@@ -10,7 +10,7 @@
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ??1Abode@@UAE@XZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern @Init__5AbodeFiUlUl@20
+.extern ?Init@Abode@@QAEXHII@Z
 .extern ?Process@Abode@@UAEIXZ
 .extern ?Built@Abode@@UAE_NXZ
 .extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
@@ -15342,7 +15342,7 @@ _jmp_addr_0x005282c1:    push               0x0000009d                          
                          push               0x0                                                  // 0x0052831c    6a00
                          push               0x0                                                  // 0x0052831e    6a00
                          mov.s              ecx, esi                                             // 0x00528320    8bce
-                         call               @Init__5AbodeFiUlUl@20                               // 0x00528322    e809aeedff
+                         call               ?Init@Abode@@QAEXHII@Z                               // 0x00528322    e809aeedff
 _jmp_addr_0x00528327:    pop                edi                                                  // 0x00528327    5f
                          mov.s              eax, esi                                             // 0x00528328    8bc6
                          pop                esi                                                  // 0x0052832a    5e
