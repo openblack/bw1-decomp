@@ -81,6 +81,7 @@ set(SOURCES_001
     c/GameThingWithPos.000.c
     c/Object.000.c
     c/Abode.002.c
+    c/LHMatrix.000.c
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 
