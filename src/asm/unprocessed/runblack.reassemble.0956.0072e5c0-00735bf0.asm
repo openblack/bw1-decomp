@@ -11,7 +11,7 @@
 .extern ??1Abode@@UAE@XZ
 .extern ?Delete@Abode@@UAEXH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern @MakeFunctional__5AbodeFv@4
 .extern ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
@@ -7024,7 +7024,7 @@ _jmp_addr_0x00732e72:    pop                edi                                 
                          mov.s              esi, ecx                                      // 0x00732e81    8bf1
                          {disp8} lea        eax, dword ptr [esi + 0x14]                   // 0x00732e83    8d4614
                          push               eax                                           // 0x00732e86    50
-                         call               ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z                          // 0x00732e87    e87403cdff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z                          // 0x00732e87    e87403cdff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x00732e8c    8b4e40
                          mov                edx, dword ptr [ecx]                          // 0x00732e8f    8b11
                          call               dword ptr [edx + 0x1e8]                       // 0x00732e91    ff92e8010000

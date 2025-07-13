@@ -112,14 +112,14 @@
 .globl _jmp_addr_0x0066d660
 .globl _jmp_addr_0x0066d6a0
 .globl @__ct__12PotStructureFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
-.globl ?CallVirtualFunctionsForCreation@PotStructure@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z
 .globl _jmp_addr_0x0066dfd0
 .globl @__ct__8PileFoodFv@4
 .globl @__ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .globl _jmp_addr_0x0066e0e0
 .globl _jmp_addr_0x0066e1a0
 .globl _jmp_addr_0x0066e1c0
-.globl ?CallVirtualFunctionsForCreation@PileResource@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z
 .globl @__ct__12PileResourceFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .globl _jmp_addr_0x0066f0d0
 .globl _jmp_addr_0x0066f1a0
@@ -1666,7 +1666,7 @@ _jmp_addr_0x0066db7f:    pop                edi                                 
                          nop                                                              // 0x0066db8d    90
                          nop                                                              // 0x0066db8e    90
                          nop                                                              // 0x0066db8f    90
-?CallVirtualFunctionsForCreation@PotStructure@@QAEXABUMapCoords@@@Z:
+?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066db90    8b442404
                          push               esi                                           // 0x0066db94    56
                          mov.s              esi, ecx                                      // 0x0066db95    8bf1
@@ -2328,7 +2328,7 @@ _jmp_addr_0x0066e1a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               esi                                           // 0x0066e1a4    56
                          mov.s              esi, ecx                                      // 0x0066e1a5    8bf1
                          push               eax                                           // 0x0066e1a7    50
-                         call               ?CallVirtualFunctionsForCreation@PileResource@@QAEXABUMapCoords@@@Z  // 0x0066e1a8    e853010000
+                         call               ?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z  // 0x0066e1a8    e853010000
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x0066e1ad    8b4e40
                          mov                edx, dword ptr [ecx]                          // 0x0066e1b0    8b11
                          call               dword ptr [edx + 0x1e8]                       // 0x0066e1b2    ff92e8010000
@@ -2482,12 +2482,12 @@ _jmp_addr_0x0066e2f1:    mov                eax, 0x00000b38                     
                          nop                                                              // 0x0066e2fd    90
                          nop                                                              // 0x0066e2fe    90
                          nop                                                              // 0x0066e2ff    90
-?CallVirtualFunctionsForCreation@PileResource@@QAEXABUMapCoords@@@Z:
+?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0066e300    8b442404
                          push               esi                                           // 0x0066e304    56
                          mov.s              esi, ecx                                      // 0x0066e305    8bf1
                          push               eax                                           // 0x0066e307    50
-                         call               ?CallVirtualFunctionsForCreation@PotStructure@@QAEXABUMapCoords@@@Z  // 0x0066e308    e883f8ffff
+                         call               ?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z  // 0x0066e308    e883f8ffff
                          mov                edx, dword ptr [esi]                          // 0x0066e30d    8b16
                          mov.s              ecx, esi                                      // 0x0066e30f    8bce
                          call               dword ptr [edx + 0x42c]                       // 0x0066e311    ff922c040000

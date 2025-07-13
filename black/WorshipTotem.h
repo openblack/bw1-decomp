@@ -51,6 +51,6 @@ struct WorshipTotem* __fastcall __ct__12WorshipTotemFP11WorshipSite(struct Worsh
 // Override methods
 
 // win1.41 00780ab0 mac 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)
-void __fastcall CallVirtualFunctionsForCreation__12WorshipTotemFRC9MapCoords(struct WorshipTotem* this, const void* edx, const struct MapCoords* coords);
+void __fastcall CallVirtualFunctionsForCreation__12WorshipTotemFRC9MapCoords(struct WorshipTotem* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@WorshipTotem@@UAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_WORSHIP_TOTEM_INCLUDED_H */

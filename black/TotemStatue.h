@@ -55,6 +55,6 @@ void __fastcall SetWorshipPercentage__11TotemStatueFf(struct TotemStatue* this, 
 // Override methods
 
 // win1.41 00737d60 mac 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)
-void __fastcall CallVirtualFunctionsForCreation__11TotemStatueFRC9MapCoords(struct TotemStatue* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@TotemStatue@@QAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__11TotemStatueFRC9MapCoords(struct TotemStatue* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@TotemStatue@@UAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_TOTEM_STATUE_INCLUDED_H */

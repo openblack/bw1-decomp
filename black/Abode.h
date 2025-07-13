@@ -219,7 +219,7 @@ void __fastcall Draw__5AbodeFv(struct Object* this) asm("?Draw@Abode@@UAEXXZ");
 // win1.41 00407170 mac 1034ec40 Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 uint32_t __fastcall GetDiscipleStateIfInteractedWith__5AbodeFP16GInterfaceStatusP8Villager(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct Villager* villager) asm("?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z");
 // win1.41 00403200 mac 10576c70 Abode::CallVirtualFunctionsForCreation(const MapCoords&)
-void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z");
 // win1.41 00406820 mac 1049b920 Abode::InterfaceValidToTap(GInterfaceStatus *)
 uint32_t __fastcall InterfaceValidToTap__5AbodeFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?InterfaceValidToTap@Abode@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 00406830 mac 102fed90 Abode::InterfaceTap(GInterfaceStatus *)

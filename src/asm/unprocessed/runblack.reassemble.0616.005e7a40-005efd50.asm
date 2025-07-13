@@ -81,7 +81,7 @@
 .extern _jmp_addr_0x00635430
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern ?ToBeDeleted@Object@@UAEXH@Z
-.extern ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .extern @SetScale__6ObjectFf@12
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern @SetLife__6ObjectFf@12
@@ -7391,7 +7391,7 @@ _jmp_addr_0x005ec9b0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               esi                                           // 0x005ec9b4    56
                          mov.s              esi, ecx                                      // 0x005ec9b5    8bf1
                          push               eax                                           // 0x005ec9b7    50
-                         call               ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z  // 0x005ec9b8    e823a20400
+                         call               ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z  // 0x005ec9b8    e823a20400
                          mov                edx, dword ptr [esi]                          // 0x005ec9bd    8b16
                          push               0x1                                           // 0x005ec9bf    6a01
                          mov.s              ecx, esi                                      // 0x005ec9c1    8bce

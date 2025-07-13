@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x00401140
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
 .extern _jmp_addr_0x00403b90
 .extern _jmp_addr_0x00403bb0
@@ -504,7 +504,7 @@
 .globl _globl_ct_0x00775dd0
 .globl _globl_ct_0x00778d20
 .globl _globl_ct_0x00778dd0
-.globl ?CallVirtualFunctionsForCreation@Wonder@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@Wonder@@UAEXABUMapCoords@@@Z
 .globl ?AttitudeToCreatureEating@GameThingWithPos@@UAEIXZ
 
 start_0x007678a0_0x007791d0:
@@ -26895,12 +26895,12 @@ _jmp_addr_0x0077914b:    pop                edi                                 
                          nop                                                                // 0x0077915d    90
                          nop                                                                // 0x0077915e    90
                          nop                                                                // 0x0077915f    90
-?CallVirtualFunctionsForCreation@Wonder@@QAEXABUMapCoords@@@Z:
+?CallVirtualFunctionsForCreation@Wonder@@UAEXABUMapCoords@@@Z:
                          push               esi                                             // 0x00779160    56
                          mov.s              esi, ecx                                        // 0x00779161    8bf1
                          {disp8} lea        eax, dword ptr [esi + 0x14]                     // 0x00779163    8d4614
                          push               eax                                             // 0x00779166    50
-                         call               ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z                            // 0x00779167    e894a0c8ff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z  // 0x00779167    e894a0c8ff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                     // 0x0077916c    8b4e40
                          mov                edx, dword ptr [ecx]                            // 0x0077916f    8b11
                          call               dword ptr [edx + 0x1f4]                         // 0x00779171    ff92f4010000

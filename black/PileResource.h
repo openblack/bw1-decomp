@@ -41,6 +41,6 @@ struct PileResource* __fastcall __ct__12PileResourceFRC9MapCoordsPC8GPotInfoUlP1
 // Override methods
 
 // win1.41 0066e300 mac 10119a80 PileResource::CallVirtualFunctionsForCreation(MapCoords const &)
-void __fastcall CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords(struct PileResource* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@PileResource@@QAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords(struct PileResource* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@PileResource@@UAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_PILE_RESOURCE_INCLUDED_H */

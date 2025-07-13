@@ -11,7 +11,7 @@
 .extern ??1Abode@@UAE@XZ
 .extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8

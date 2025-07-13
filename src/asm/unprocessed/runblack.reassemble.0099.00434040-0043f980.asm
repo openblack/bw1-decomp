@@ -26,7 +26,7 @@
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern _jmp_addr_0x0052e3f0
-.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @ReleaseCollideData__13MultiMapFixedFv@4
@@ -8160,7 +8160,7 @@ _jmp_addr_0x0043903b:    pop                esi                                 
                          mov.s              esi, ecx                                             // 0x00439051    8bf1
                          {disp8} lea        eax, dword ptr [esi + 0x14]                          // 0x00439053    8d4614
                          push               eax                                                  // 0x00439056    50
-                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z  // 0x00439057    e834580f00
+                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z  // 0x00439057    e834580f00
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                          // 0x0043905c    8b4e40
                          mov                edx, dword ptr [ecx]                                 // 0x0043905f    8b11
                          call               dword ptr [edx + 0x1e8]                              // 0x00439061    ff92e8010000

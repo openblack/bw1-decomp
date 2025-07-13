@@ -133,7 +133,7 @@
 .globl _jmp_addr_0x00719b90
 .globl _jmp_addr_0x00719c10
 .globl @__ct__16ShowNeedsVisualsFRC9MapCoordsP9GameThingPC14GShowNeedsInfo@20
-.globl ?CallVirtualFunctionsForCreation@ShowNeedsVisuals@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@ShowNeedsVisuals@@UAEXABUMapCoords@@@Z
 .globl _jmp_addr_0x00719e80
 .globl _jmp_addr_0x00719e90
 .globl _jmp_addr_0x0071a200
@@ -2924,7 +2924,7 @@ _jmp_addr_0x00719d22:    pop                edi                                 
                          {disp8} lea        eax, dword ptr [esi + 0x14]                   // 0x00719dbc    8d4614
                          push               eax                                           // 0x00719dbf    50
                          mov.s              ecx, esi                                      // 0x00719dc0    8bce
-                         call               ?CallVirtualFunctionsForCreation@ShowNeedsVisuals@@QAEXABUMapCoords@@@Z  // 0x00719dc2    e839000000
+                         call               ?CallVirtualFunctionsForCreation@ShowNeedsVisuals@@UAEXABUMapCoords@@@Z  // 0x00719dc2    e839000000
                          mov.s              eax, esi                                      // 0x00719dc7    8bc6
                          pop                esi                                           // 0x00719dc9    5e
                          ret                0x000c                                        // 0x00719dca    c20c00
@@ -2955,7 +2955,7 @@ _jmp_addr_0x00719de6:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          nop                                                              // 0x00719dfd    90
                          nop                                                              // 0x00719dfe    90
                          nop                                                              // 0x00719dff    90
-?CallVirtualFunctionsForCreation@ShowNeedsVisuals@@QAEXABUMapCoords@@@Z:
+?CallVirtualFunctionsForCreation@ShowNeedsVisuals@@UAEXABUMapCoords@@@Z:
                          push               esi                                           // 0x00719e00    56
                          mov.s              esi, ecx                                      // 0x00719e01    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00719e03    8b06

@@ -11,7 +11,7 @@
 .extern ??1Abode@@UAE@XZ
 .extern ?SetZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
-.extern ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00403500
 .extern _jmp_addr_0x00403530
 .extern @PostTranslation__8LHMatrixFRC7LHPoint@8
@@ -70,7 +70,7 @@
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
-.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
@@ -395,7 +395,7 @@
 .globl _jmp_addr_0x007260a0
 .globl @SetToZero__9SpellIconFv@4
 .globl _jmp_addr_0x00726140
-.globl ?CallVirtualFunctionsForCreation@SpellIcon@@QAEXABUMapCoords@@@Z
+.globl ?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z
 .globl _jmp_addr_0x00726210
 .globl _jmp_addr_0x00726280
 .globl _jmp_addr_0x007262a0
@@ -10635,7 +10635,7 @@ _jmp_addr_0x007227b0:    xor.s              eax, eax                            
                          {disp8} mov        edi, dword ptr [esp + 0x24]                          // 0x007227d5    8b7c2424
                          mov.s              esi, ecx                                             // 0x007227d9    8bf1
                          push               edi                                                  // 0x007227db    57
-                         call               ?CallVirtualFunctionsForCreation@Abode@@QAEXABUMapCoords@@@Z                                 // 0x007227dc    e81f0aceff
+                         call               ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z  // 0x007227dc    e81f0aceff
                          test               byte ptr [esi + 0x0a], 0x01                          // 0x007227e1    f6460a01
                          {disp32} jne       _jmp_addr_0x00722893                                 // 0x007227e5    0f85a8000000
                          {disp8} lea        eax, dword ptr [esp + 0x08]                          // 0x007227eb    8d442408
@@ -15880,12 +15880,12 @@ _jmp_addr_0x00726140:    mov                eax, dword ptr [ecx]                
                          {disp8} fstp       dword ptr [esi + 0x08]                               // 0x00726159    d95e08
                          pop                esi                                                  // 0x0072615c    5e
                          ret                0x0004                                               // 0x0072615d    c20400
-?CallVirtualFunctionsForCreation@SpellIcon@@QAEXABUMapCoords@@@Z:
+?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00726160    8b442404
                          push               esi                                                  // 0x00726164    56
                          mov.s              esi, ecx                                             // 0x00726165    8bf1
                          push               eax                                                  // 0x00726167    50
-                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@QAEXABUMapCoords@@@Z  // 0x00726168    e82387e0ff
+                         call               ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z  // 0x00726168    e82387e0ff
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                          // 0x0072616d    8b4e40
                          mov                edx, dword ptr [ecx]                                 // 0x00726170    8b11
                          call               dword ptr [edx + 0xf8]                               // 0x00726172    ff92f8000000

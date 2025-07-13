@@ -14,7 +14,7 @@
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern ?ToBeDeleted@Object@@UAEXH@Z
-.extern ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z
+.extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x006dc9f0
 .extern _jmp_addr_0x006ddf60
 
@@ -627,7 +627,7 @@ _jmp_addr_0x006dde18:    {disp8} mov      ecx, dword ptr [esp + 0x08]           
                          nop                                                       // 0x006dde4f    90
                          {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x006dde50    8b442404
                          push             eax                                      // 0x006dde54    50
-                         call             ?CallVirtualFunctionsForCreation@Object@@QAEXABUMapCoords@@@Z  // 0x006dde55    e8868df5ff
+                         call             ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z  // 0x006dde55    e8868df5ff
                          ret              0x0004                                   // 0x006dde5a    c20400
                          nop                                                       // 0x006dde5d    90
                          nop                                                       // 0x006dde5e    90
