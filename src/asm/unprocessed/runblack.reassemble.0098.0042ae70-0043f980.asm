@@ -126,7 +126,7 @@
 .extern _jmp_addr_0x0071cdf0
 .extern _GetFirstSpellSeedForMagicType__14GSpellSeedInfoF10MAGIC_TYPE
 .extern _jmp_addr_0x0072b100
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073b7a0
 .extern _jmp_addr_0x0073b800
 .extern _jmp_addr_0x0073b990

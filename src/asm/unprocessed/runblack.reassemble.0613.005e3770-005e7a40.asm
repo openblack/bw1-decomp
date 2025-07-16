@@ -73,7 +73,7 @@
 .extern _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi
 .extern _jmp_addr_0x007349e0
 .extern _jmp_addr_0x00735500
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0074a7c0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
@@ -1950,11 +1950,11 @@ _jmp_addr_0x005e4f46:    mov                ecx, dword ptr [eax]                
                          cmp.s              esi, ebp                                      // 0x005e4f75    3bf5
                          {disp32} je        _jmp_addr_0x005e5040                          // 0x005e4f77    0f84c3000000
 _jmp_addr_0x005e4f7d:    mov.s              ecx, esi                                      // 0x005e4f7d    8bce
-                         call               @GetStoragePit__4TownFv@4                     // 0x005e4f7f    e82c661500
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x005e4f7f    e82c661500
                          test               eax, eax                                      // 0x005e4f84    85c0
                          {disp8} je         _jmp_addr_0x005e4fb5                          // 0x005e4f86    742d
                          mov.s              ecx, esi                                      // 0x005e4f88    8bce
-                         call               @GetStoragePit__4TownFv@4                     // 0x005e4f8a    e821661500
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x005e4f8a    e821661500
                          add                eax, 0x14                                     // 0x005e4f8f    83c014
                          push               eax                                           // 0x005e4f92    50
                          {disp8} lea        ecx, dword ptr [esp + 0x5c]                   // 0x005e4f93    8d4c245c
@@ -1975,7 +1975,7 @@ _jmp_addr_0x005e4fb5:    {disp32} mov       esi, dword ptr [esi + 0x0000075c]   
                          cmp.s              edi, ebp                                      // 0x005e4fbf    3bfd
                          {disp8} je         _jmp_addr_0x005e503a                          // 0x005e4fc1    7477
                          mov.s              ecx, edi                                      // 0x005e4fc3    8bcf
-                         call               @GetStoragePit__4TownFv@4                     // 0x005e4fc5    e8e6651500
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x005e4fc5    e8e6651500
                          mov.s              esi, eax                                      // 0x005e4fca    8bf0
                          mov                edx, dword ptr [esi]                          // 0x005e4fcc    8b16
                          mov.s              ecx, esi                                      // 0x005e4fce    8bce

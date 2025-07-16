@@ -83,7 +83,7 @@
 .extern _jmp_addr_0x007341c0
 .extern _jmp_addr_0x00734f70
 .extern _jmp_addr_0x0073ae10
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073bca0
 .extern _jmp_addr_0x0073e420
 .extern _AsssignTownFeature__4TownFv
@@ -4788,7 +4788,7 @@ _jmp_addr_0x0071b171:    {disp32} mov       esi, dword ptr [edi + 0x00000a50]   
                          test               esi, esi                                      // 0x0071b177    85f6
                          {disp8} je         _jmp_addr_0x0071b1c4                          // 0x0071b179    7449
 _jmp_addr_0x0071b17b:    mov.s              ecx, esi                                      // 0x0071b17b    8bce
-                         call               @GetStoragePit__4TownFv@4                     // 0x0071b17d    e82e040200
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x0071b17d    e82e040200
                          test               eax, eax                                      // 0x0071b182    85c0
                          {disp8} je         _jmp_addr_0x0071b1ba                          // 0x0071b184    7434
                          {disp32} mov       edx, dword ptr [esi + 0x0000061c]             // 0x0071b186    8b961c060000
@@ -4823,7 +4823,7 @@ _jmp_addr_0x0071b1c4:    {disp32} mov       ecx, dword ptr [_game]              
                          mov                dword ptr [ecx], ebx                          // 0x0071b1de    8919
                          push               ebp                                           // 0x0071b1e0    55
                          mov.s              ecx, ebx                                      // 0x0071b1e1    8bcb
-                         call               @GetStoragePit__4TownFv@4                     // 0x0071b1e3    e8c8030200
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x0071b1e3    e8c8030200
                          {disp8} mov        ebp, dword ptr [esp + 0x2c]                   // 0x0071b1e8    8b6c242c
                          {disp32} lea       edi, dword ptr [ebx + 0x00000380]             // 0x0071b1ec    8dbb80030000
                          {disp8} mov        dword ptr [esp + 0x30], 0x00000011            // 0x0071b1f2    c744243011000000

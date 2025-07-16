@@ -148,8 +148,8 @@
 .extern _jmp_addr_0x0072a610
 .extern @SetWorshipPercentage__11TotemStatueFf@12
 .extern _jmp_addr_0x0073ae10
-.extern @GetStoragePit__4TownFv@4
-.extern @SetWorshipPercentage__4TownFf@12
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
+.extern ?SetWorshipPercentage@Town@@QAEXM@Z
 .extern _jmp_addr_0x00740450
 .extern _jmp_addr_0x00741980
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -4999,7 +4999,7 @@ _jmp_addr_0x00654873:    {disp8} mov        ecx, dword ptr [eax + 0x64]         
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                    // 0x006548c5    8b44241c
                          push               eax                                            // 0x006548c9    50
                          mov.s              ecx, edi                                       // 0x006548ca    8bcf
-                         call               @SetWorshipPercentage__4TownFf@12              // 0x006548cc    e88f770e00
+                         call               ?SetWorshipPercentage@Town@@QAEXM@Z            // 0x006548cc    e88f770e00
                          pop                edi                                            // 0x006548d1    5f
                          pop                esi                                            // 0x006548d2    5e
                          xor.s              eax, eax                                       // 0x006548d3    33c0
@@ -5098,7 +5098,7 @@ _jmp_addr_0x00654945:    {disp8} mov        eax, dword ptr [eax + 0x18]         
                          push               0x0                                            // 0x00654983    6a00
                          {disp8} je         _jmp_addr_0x00654996                           // 0x00654985    740f
                          mov.s              ecx, eax                                       // 0x00654987    8bc8
-                         call               @SetWorshipPercentage__4TownFf@12              // 0x00654989    e8d2760e00
+                         call               ?SetWorshipPercentage@Town@@QAEXM@Z            // 0x00654989    e8d2760e00
                          pop                edi                                            // 0x0065498e    5f
                          pop                esi                                            // 0x0065498f    5e
                          xor.s              eax, eax                                       // 0x00654990    33c0
@@ -12629,7 +12629,7 @@ _jmp_addr_0x006595f0:    push               ebx                                 
                          mov.s              ebx, eax                                       // 0x00659623    8bd8
                          {disp8} je         _jmp_addr_0x0065966a                           // 0x00659625    7443
                          mov.s              ecx, edi                                       // 0x00659627    8bcf
-                         call               @GetStoragePit__4TownFv@4                      // 0x00659629    e8821f0e00
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ      // 0x00659629    e8821f0e00
                          test               eax, eax                                       // 0x0065962e    85c0
                          {disp8} je         _jmp_addr_0x0065966a                           // 0x00659630    7438
                          test               ebx, ebx                                       // 0x00659632    85db
@@ -12645,7 +12645,7 @@ _jmp_addr_0x006595f0:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x0065966a                           // 0x0065964a    741e
 _jmp_addr_0x0065964c:    push               0x1                                            // 0x0065964c    6a01
                          mov.s              ecx, edi                                       // 0x0065964e    8bcf
-                         call               @GetStoragePit__4TownFv@4                      // 0x00659650    e85b1f0e00
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ      // 0x00659650    e85b1f0e00
                          push               eax                                            // 0x00659655    50
                          mov.s              ecx, esi                                       // 0x00659656    8bce
                          call               _jmp_addr_0x0065d1e0                           // 0x00659658    e8833b0000
@@ -16442,7 +16442,7 @@ _jmp_addr_0x0065be90:    sub                esp, 0x0c                           
                          push               eax                                            // 0x0065bf27    50
                          call               _jmp_addr_0x00658230                           // 0x0065bf28    e803c3ffff
                          mov.s              ecx, esi                                       // 0x0065bf2d    8bce
-                         call               @GetStoragePit__4TownFv@4                      // 0x0065bf2f    e87cf60d00
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ      // 0x0065bf2f    e87cf60d00
                          mov.s              ebx, eax                                       // 0x0065bf34    8bd8
                          test               ebx, ebx                                       // 0x0065bf36    85db
                          {disp8} jne        _jmp_addr_0x0065bf40                           // 0x0065bf38    7506
@@ -16886,7 +16886,7 @@ _jmp_addr_0x0065c3e4:    push               0x0                                 
                          mov.s              ecx, edi                                       // 0x0065c415    8bcf
                          call               _jmp_addr_0x00658230                           // 0x0065c417    e814beffff
                          mov.s              ecx, esi                                       // 0x0065c41c    8bce
-                         call               @GetStoragePit__4TownFv@4                      // 0x0065c41e    e88df10d00
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ      // 0x0065c41e    e88df10d00
                          mov.s              ebp, eax                                       // 0x0065c423    8be8
                          test               ebp, ebp                                       // 0x0065c425    85ed
                          {disp8} jne        _jmp_addr_0x0065c42f                           // 0x0065c427    7506
@@ -17104,7 +17104,7 @@ _jmp_addr_0x0065c654:    push               0x0                                 
                          mov.s              ecx, ebx                                       // 0x0065c683    8bcb
                          call               _jmp_addr_0x00658230                           // 0x0065c685    e8a6bbffff
                          mov.s              ecx, esi                                       // 0x0065c68a    8bce
-                         call               @GetStoragePit__4TownFv@4                      // 0x0065c68c    e81fef0d00
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ      // 0x0065c68c    e81fef0d00
                          mov.s              edi, eax                                       // 0x0065c691    8bf8
                          test               edi, edi                                       // 0x0065c693    85ff
                          {disp8} jne        _jmp_addr_0x0065c6a7                           // 0x0065c695    7510

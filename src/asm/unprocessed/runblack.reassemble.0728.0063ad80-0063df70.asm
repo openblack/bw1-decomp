@@ -113,7 +113,7 @@
 .extern _jmp_addr_0x007376a0
 .extern @GetWorshipSpeed__11TotemStatueFv@4
 .extern @SetWorshipPercentage__11TotemStatueFf@12
-.extern @SetWorshipPercentage__4TownFf@12
+.extern ?SetWorshipPercentage@Town@@QAEXM@Z
 .extern _Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff
 .extern _jmp_addr_0x00792fb0
 .extern _jmp_addr_0x00793380
@@ -3615,7 +3615,7 @@ _jmp_addr_0x0063d146:    mov.s              ecx, ebx                            
 _jmp_addr_0x0063d252:    {disp8} mov        eax, dword ptr [ebx + 0x10]                    // 0x0063d252    8b4310
                          push               eax                                            // 0x0063d255    50
                          mov.s              ecx, edi                                       // 0x0063d256    8bcf
-                         call               @SetWorshipPercentage__4TownFf@12              // 0x0063d258    e803ee0f00
+                         call               ?SetWorshipPercentage@Town@@QAEXM@Z            // 0x0063d258    e803ee0f00
                          {disp8} jmp        _jmp_addr_0x0063d26a                           // 0x0063d25d    eb0b
 _jmp_addr_0x0063d25f:    {disp8} mov        ecx, dword ptr [ebx + 0x10]                    // 0x0063d25f    8b4b10
                          push               ecx                                            // 0x0063d262    51

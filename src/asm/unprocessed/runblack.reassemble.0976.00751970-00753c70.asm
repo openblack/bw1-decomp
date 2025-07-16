@@ -43,13 +43,13 @@
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
 .extern _jmp_addr_0x0071ed40
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073bab0
 .extern _jmp_addr_0x0073d7d0
-.extern @RemoveVillager__4TownFP8Villager@12
+.extern ?RemoveVillager@Town@@QAEXPAVVillager@@@Z
 .extern _jmp_addr_0x0073e4b0
 .extern _jmp_addr_0x00747150
-.extern @IsInStateOfEmergency__4TownFv@4
+.extern ?IsInStateOfEmergency@Town@@QAE_NXZ
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
 .extern _jmp_addr_0x0074dc30
@@ -718,7 +718,7 @@ _jmp_addr_0x00751f10:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x00751f1e    8bce
                          call               dword ptr [edx + 0x48]                        // 0x00751f20    ff5248
                          mov.s              ecx, eax                                      // 0x00751f23    8bc8
-                         call               @GetStoragePit__4TownFv@4                     // 0x00751f25    e88696feff
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x00751f25    e88696feff
                          test               eax, eax                                      // 0x00751f2a    85c0
                          {disp8} jne        _jmp_addr_0x00751f35                          // 0x00751f2c    7507
 _jmp_addr_0x00751f2e:    mov.s              ecx, esi                                      // 0x00751f2e    8bce
@@ -2722,7 +2722,7 @@ _jmp_addr_0x00753340:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x0075334f    8bce
                          call               dword ptr [edx + 0x48]                        // 0x00753351    ff5248
                          mov.s              ecx, eax                                      // 0x00753354    8bc8
-                         call               @RemoveVillager__4TownFP8Villager@12          // 0x00753356    e8b5aefeff
+                         call               ?RemoveVillager@Town@@QAEXPAVVillager@@@Z     // 0x00753356    e8b5aefeff
                          push               0x0                                           // 0x0075335b    6a00
                          mov.s              ecx, esi                                      // 0x0075335d    8bce
                          call               _jmp_addr_0x00756530                          // 0x0075335f    e8cc310000
@@ -3237,7 +3237,7 @@ _jmp_addr_0x007538f0:    mov                edx, dword ptr [esi]                
 _jmp_addr_0x00753939:    cmp.s              edi, ebp                                      // 0x00753939    3bfd
                          {disp8} je         _jmp_addr_0x0075397b                          // 0x0075393b    743e
                          mov.s              ecx, edi                                      // 0x0075393d    8bcf
-                         call               @IsInStateOfEmergency__4TownFv@4              // 0x0075393f    e82c40ffff
+                         call               ?IsInStateOfEmergency@Town@@QAE_NXZ           // 0x0075393f    e82c40ffff
                          test               eax, eax                                      // 0x00753944    85c0
                          {disp8} je         _jmp_addr_0x0075397b                          // 0x00753946    7433
                          {disp8} mov        edi, dword ptr [esi + 0x28]                   // 0x00753948    8b7e28

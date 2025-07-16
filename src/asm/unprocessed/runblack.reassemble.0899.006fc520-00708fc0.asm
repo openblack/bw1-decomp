@@ -75,7 +75,7 @@
 .extern _jmp_addr_0x0073b910
 .extern _jmp_addr_0x0073bab0
 .extern _jmp_addr_0x0073cb50
-.extern @AddMagicTypesHeld__4TownF10MAGIC_TYPE@12
+.extern ?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z
 .extern _jmp_addr_0x0073d450
 .extern _jmp_addr_0x0073e420
 .extern _jmp_addr_0x0073e670
@@ -4112,7 +4112,7 @@ _jmp_addr_0x006ff128:    mov                eax, dword ptr [esi]                
                          push               edi                                           // 0x006ff142    57
                          mov.s              ecx, esi                                      // 0x006ff143    8bce
                          {disp8} je         _jmp_addr_0x006ff153                          // 0x006ff145    740c
-                         call               @AddMagicTypesHeld__4TownF10MAGIC_TYPE@12     // 0x006ff147    e834e20300
+                         call               ?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z     // 0x006ff147    e834e20300
                          pop                edi                                           // 0x006ff14c    5f
                          pop                esi                                           // 0x006ff14d    5e
                          pop                ebx                                           // 0x006ff14e    5b

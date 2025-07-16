@@ -64,7 +64,9 @@ static struct BaseVftable* const __vt__9TownStats = (struct BaseVftable* const)0
 
 // Non-virtual methods
 
+// win1.41 007493c0 mac 10562b60 TownStats::Remove(Villager *)
+void __fastcall Remove__9TownStatsFP8Villager(struct TownStats* this, const void* edx, struct Villager* villager) asm("?Remove@TownStats@@QAEXPAVVillager@@@Z");
 // win1.41 00749a60 mac 10562330 TownStats::Add(PlannedMultiMapFixed *)
-void __fastcall Add__9TownStatsFP20PlannedMultiMapFixed(struct TownStats* this, const void* edx, struct PlannedMultiMapFixed* planned);
+void __fastcall Add__9TownStatsFP20PlannedMultiMapFixed(struct TownStats* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?Add@TownStats@@QAEXPAVPlannedMultiMapFixed@@@Z");
 
 #endif /* BW1_DECOMP_TOWN_STATS_INCLUDED_H */

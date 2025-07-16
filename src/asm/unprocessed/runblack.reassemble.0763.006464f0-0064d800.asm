@@ -153,14 +153,14 @@
 .extern _jmp_addr_0x0073a7d0
 .extern _jmp_addr_0x0073a8f0
 .extern _jmp_addr_0x0073a9c0
-.extern @Birthday__4TownFv@4
+.extern ?Birthday@Town@@QAEXXZ
 .extern _jmp_addr_0x0073bab0
-.extern @SetWorshipPercentage__4TownFf@12
-.extern @GetTribe__4TownCFv@4
+.extern ?SetWorshipPercentage@Town@@QAEXM@Z
+.extern ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ
 .extern _jmp_addr_0x0073fbc0
 .extern _jmp_addr_0x00741500
 .extern _jmp_addr_0x00743bd0
-.extern @Process__4TownFv@4
+.extern ?Process@Town@@QAEIXZ
 .extern _jmp_addr_0x007489c0
 .extern _jmp_addr_0x0074cf30
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -4567,7 +4567,7 @@ _jmp_addr_0x00649545:    {disp32} mov       edi, dword ptr [edi + 0x0000075c]   
 _jmp_addr_0x0064954b:    test               edi, edi                                       // 0x0064954b    85ff
                          {disp8} je         _jmp_addr_0x00649584                           // 0x0064954d    7435
                          mov.s              ecx, edi                                       // 0x0064954f    8bcf
-                         call               @Process__4TownFv@4                            // 0x00649551    e82ade0f00
+                         call               ?Process@Town@@QAEIXZ                          // 0x00649551    e82ade0f00
                          {disp32} mov       ecx, dword ptr [edi + 0x00000618]              // 0x00649556    8b8f18060000
                          {disp32} mov       eax, dword ptr [edi + 0x0000061c]              // 0x0064955c    8b871c060000
                          {disp32} mov       edx, dword ptr [esi + 0x00000948]              // 0x00649562    8b9648090000
@@ -4819,7 +4819,7 @@ _jmp_addr_0x0064986b:    xor.s              eax, eax                            
                          call               dword ptr [rdata_bytes + 0x758]                // 0x006498d2    ff1558978a00
 _jmp_addr_0x006498d8:    push               0x0                                            // 0x006498d8    6a00
                          mov.s              ecx, esi                                       // 0x006498da    8bce
-                         call               @SetWorshipPercentage__4TownFf@12              // 0x006498dc    e87f270f00
+                         call               ?SetWorshipPercentage@Town@@QAEXM@Z            // 0x006498dc    e87f270f00
                          mov.s              ecx, esi                                       // 0x006498e1    8bce
                          call               _jmp_addr_0x0073a9c0                           // 0x006498e3    e8d8100f00
                          mov.s              ecx, esi                                       // 0x006498e8    8bce
@@ -5805,7 +5805,7 @@ _jmp_addr_0x0064a67f:    xor.s              eax, eax                            
                          test               esi, esi                                       // 0x0064a6b7    85f6
                          {disp8} je         _jmp_addr_0x0064a6cc                           // 0x0064a6b9    7411
 _jmp_addr_0x0064a6bb:    mov.s              ecx, esi                                       // 0x0064a6bb    8bce
-                         call               @Birthday__4TownFv@4                           // 0x0064a6bd    e80e0f0f00
+                         call               ?Birthday@Town@@QAEXXZ                         // 0x0064a6bd    e80e0f0f00
                          {disp32} mov       esi, dword ptr [esi + 0x0000075c]              // 0x0064a6c2    8bb65c070000
                          test               esi, esi                                       // 0x0064a6c8    85f6
                          {disp8} jne        _jmp_addr_0x0064a6bb                           // 0x0064a6ca    75ef
@@ -6309,7 +6309,7 @@ _jmp_addr_0x0064ab20:    {disp32} mov       ecx, dword ptr [_game]              
                          push               edi                                            // 0x0064ab54    57
                          {disp8} mov        edi, dword ptr [esp + 0x10]                    // 0x0064ab55    8b7c2410
 _jmp_addr_0x0064ab59:    mov.s              ecx, esi                                       // 0x0064ab59    8bce
-                         call               @GetTribe__4TownCFv@4                          // 0x0064ab5b    e8e01c0f00
+                         call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ           // 0x0064ab5b    e8e01c0f00
                          cmp                dword ptr [eax + 0x10], edi                    // 0x0064ab60    397810
                          {disp8} jne        _jmp_addr_0x0064ab73                           // 0x0064ab63    750e
                          {disp8} fld        dword ptr [esp + 0x08]                         // 0x0064ab65    d9442408

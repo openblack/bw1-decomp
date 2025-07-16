@@ -218,8 +218,8 @@
 .extern _GetNearestTownToPos__4TownFRC9MapCoords10TRIBE_TYPE10ABODE_TYPEf
 .extern _jmp_addr_0x0073b230
 .extern _jmp_addr_0x0073b260
-.extern @GetStoragePit__4TownFv@4
-.extern @GetTribe__4TownCFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
+.extern ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ
 .extern _jmp_addr_0x0073fda0
 .extern _jmp_addr_0x00741a70
 .extern _jmp_addr_0x007465d0
@@ -17175,7 +17175,7 @@ _jmp_addr_0x005356da:    pop                edi                                 
 _jmp_addr_0x005356f0:    push               esi                                                  // 0x005356f0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                          // 0x005356f1    8b742408
                          mov.s              ecx, esi                                             // 0x005356f5    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x005356f7    e8b45e2000
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x005356f7    e8b45e2000
                          test               eax, eax                                             // 0x005356fc    85c0
                          {disp8} je         _jmp_addr_0x0053570f                                 // 0x005356fe    740f
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                          // 0x00535700    8b4c240c
@@ -17807,7 +17807,7 @@ _jmp_addr_0x00535da4:    mov                edx, dword ptr [ebx]                
                          call               _jmp_addr_0x00535850                                 // 0x00535dbe    e88dfaffff
                          add                esp, 0x08                                            // 0x00535dc3    83c408
 _jmp_addr_0x00535dc6:    mov.s              ecx, ebx                                             // 0x00535dc6    8bcb
-                         call               @GetTribe__4TownCFv@4                                // 0x00535dc8    e8736a2000
+                         call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ                 // 0x00535dc8    e8736a2000
                          push               eax                                                  // 0x00535dcd    50
                          mov.s              ecx, esi                                             // 0x00535dce    8bce
                          call               _jmp_addr_0x00463190                                 // 0x00535dd0    e8bbd3f2ff
@@ -18405,7 +18405,7 @@ _jmp_addr_0x00536342:    {disp8} mov        ecx, dword ptr [esp + 0x30]         
                          test               eax, eax                                             // 0x0053635d    85c0
                          {disp32} je        _jmp_addr_0x0053641b                                 // 0x0053635f    0f84b6000000
 _jmp_addr_0x00536365:    mov.s              ecx, eax                                             // 0x00536365    8bc8
-                         call               @GetStoragePit__4TownFv@4                            // 0x00536367    e844522000
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x00536367    e844522000
                          mov.s              esi, eax                                             // 0x0053636c    8bf0
                          test               esi, esi                                             // 0x0053636e    85f6
                          {disp32} je        _jmp_addr_0x00536417                                 // 0x00536370    0f84a1000000

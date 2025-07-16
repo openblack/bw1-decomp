@@ -76,7 +76,7 @@
 .extern _jmp_addr_0x0071ebe0
 .extern _jmp_addr_0x0072a5f0
 .extern _jmp_addr_0x0072b230
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern @GetDesireForFood__8VillagerFv@4
 .extern _jmp_addr_0x0077bd60
@@ -3563,7 +3563,7 @@ _jmp_addr_0x0050b928:    {disp8} mov        eax, dword ptr [esp + 0x2c]         
                          test               eax, eax                                      // 0x0050b93e    85c0
                          {disp8} je         _jmp_addr_0x0050b957                          // 0x0050b940    7415
 _jmp_addr_0x0050b942:    mov.s              ecx, eax                                      // 0x0050b942    8bc8
-                         call               @GetStoragePit__4TownFv@4                     // 0x0050b944    e867fc2200
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x0050b944    e867fc2200
                          test               eax, eax                                      // 0x0050b949    85c0
                          {disp8} je         _jmp_addr_0x0050b957                          // 0x0050b94b    740a
                          push               ebx                                           // 0x0050b94d    53

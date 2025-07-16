@@ -70,7 +70,7 @@
 .extern _jmp_addr_0x00729b30
 .extern @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12
 .extern _jmp_addr_0x0072b200
-.extern @AdjustWorshipersWorshipping__4TownFlii@20
+.extern ?AdjustWorshipersWorshipping@Town@@QAEXJHH@Z
 .extern _jmp_addr_0x00741820
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -1479,7 +1479,7 @@ _jmp_addr_0x0077e188:    {disp32} inc       dword ptr [ebp + 0x00000124]        
                          mov.s              ecx, ebx                                      // 0x0077e1ac    8bcb
                          call               dword ptr [eax + 0x48]                        // 0x0077e1ae    ff5048
                          mov.s              ecx, eax                                      // 0x0077e1b1    8bc8
-                         call               @AdjustWorshipersWorshipping__4TownFlii@20    // 0x0077e1b3    e838dffbff
+                         call               ?AdjustWorshipersWorshipping@Town@@QAEXJHH@Z  // 0x0077e1b3    e838dffbff
 _jmp_addr_0x0077e1b8:    pop                edi                                           // 0x0077e1b8    5f
                          pop                ebp                                           // 0x0077e1b9    5d
                          pop                ebx                                           // 0x0077e1ba    5b

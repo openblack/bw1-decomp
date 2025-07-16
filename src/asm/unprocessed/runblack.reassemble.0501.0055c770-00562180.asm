@@ -81,7 +81,7 @@
 .extern _jmp_addr_0x00734160
 .extern _jmp_addr_0x007347c0
 .extern _jmp_addr_0x00737bf0
-.extern @SetWorshipPercentage__4TownFf@12
+.extern ?SetWorshipPercentage@Town@@QAEXM@Z
 .extern _jmp_addr_0x00743ae0
 .extern _jmp_addr_0x007469d0
 .extern _jmp_addr_0x00748ad0
@@ -10737,7 +10737,7 @@ _jmp_addr_0x005614d0:    push               esi                                 
                          push               eax                                            // 0x00561546    50
                          call               dword ptr [edx + 0x48]                         // 0x00561547    ff5248
                          mov.s              ecx, eax                                       // 0x0056154a    8bc8
-                         call               @SetWorshipPercentage__4TownFf@12              // 0x0056154c    e80fab1d00
+                         call               ?SetWorshipPercentage@Town@@QAEXM@Z            // 0x0056154c    e80fab1d00
                          ret                0x0004                                         // 0x00561551    c20400
                          nop                                                               // 0x00561554    90
                          nop                                                               // 0x00561555    90

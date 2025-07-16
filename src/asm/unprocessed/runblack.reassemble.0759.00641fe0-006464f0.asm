@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x006ec7b0
 .extern _jmp_addr_0x0071eb60
 .extern _jmp_addr_0x0071ed40
-.extern @AddStructureToTown__4TownFP13MultiMapFixed@12
+.extern ?AddStructureToTown@Town@@QAEXPAVMultiMapFixed@@@Z
 .extern _jmp_addr_0x00739a60
 .extern ?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
 .extern ?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
@@ -2222,7 +2222,7 @@ _jmp_addr_0x00643820:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} je         _jmp_addr_0x00643882                           // 0x00643871    740f
                          push               esi                                            // 0x00643873    56
                          mov.s              ecx, eax                                       // 0x00643874    8bc8
-                         call               @AddStructureToTown__4TownFP13MultiMapFixed@12 // 0x00643876    e825610f00
+                         call               ?AddStructureToTown@Town@@QAEXPAVMultiMapFixed@@@Z  // 0x00643876    e825610f00
                          {disp8} mov        dword ptr [esi + 0x7c], 0x00000001             // 0x0064387b    c7467c01000000
 _jmp_addr_0x00643882:    {disp32} mov       eax, dword ptr [data_bytes + 0x380d78]         // 0x00643882    a1786dd400
                          test               eax, eax                                       // 0x00643887    85c0
