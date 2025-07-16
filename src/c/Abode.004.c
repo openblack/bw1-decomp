@@ -174,8 +174,7 @@ void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
 
 void __fastcall InsertMapObject__5AbodeFv(struct Object* this)
 {
-    asm("{disp32} jmp       @InsertMapObject__13MultiMapFixedFv@4");         // 0x00403ee0    e96ba71200
-    __builtin_unreachable();
+    InsertMapObject__13MultiMapFixedFv(this);
 }
 
 __attribute__((XOR32rr_REV))
@@ -193,8 +192,7 @@ bool __fastcall ShouldFootpathsGoRound__5AbodeFv(struct Object* this)
 
 void __fastcall DeleteDependancys__5AbodeFv(struct Abode* this)
 {
-    asm("{disp32} jmp       _jmp_addr_0x00404560");                          // 0x00403f00    e95b060000
-    __builtin_unreachable();
+    RemoveAllVillagersFromAbode__5AbodeFv(this);
 }
 
 uint16_t __fastcall GetNumberOfInstanceForGlobalList__5AbodeFv(struct GameThing* this)
@@ -408,7 +406,7 @@ void __fastcall AddVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const 
     asm("mov.s              ecx, esi");                                      // 0x004040ea    8bce
     asm("call               @GetAbode__8VillagerFv@4");                      // 0x004040ec    e86fe03400
     asm("mov.s              ecx, eax");                                      // 0x004040f1    8bc8
-    asm("call               _jmp_addr_0x00404340");                          // 0x004040f3    e848020000
+    asm("call               ?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z");  // 0x004040f3    e848020000
     asm("{disp8} jmp        _jmp_addr_0x0040415a");                          // 0x004040f8    eb60
     asm("_jmp_addr_0x004040fa:");
     asm("{disp32} mov       eax, dword ptr [_game]");                        // 0x004040fa    a15c19d000
@@ -459,7 +457,7 @@ void __fastcall AddVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const 
     asm("mov.s              ecx, esi");                                      // 0x0040416e    8bce
     asm("{disp32} mov       dword ptr [edi + 0x000000a0], esi");             // 0x00404170    89b7a0000000
     asm("{disp32} mov       dword ptr [edi + 0x000000a4], eax");             // 0x00404176    8987a4000000
-    asm("call               _jmp_addr_0x00750de0");                          // 0x0040417c    e85fcc3400
+    asm("call               ?SetAbode@Villager@@QAEXPAVAbode@@@Z");          // 0x0040417c    e85fcc3400
     asm("mov                eax, dword ptr [edi]");                          // 0x00404181    8b07
     asm("mov.s              ecx, edi");                                      // 0x00404183    8bcf
     asm("call               dword ptr [eax + 0x48]");                        // 0x00404185    ff5048
@@ -597,7 +595,7 @@ void __fastcall RemoveDeletedVillagerFromAbode__5AbodeFP8Villager(struct Abode* 
     asm("_jmp_addr_0x004042f4:");
     asm("push               ebx");                                           // 0x004042f4    53
     asm("mov.s              ecx, edi");                                      // 0x004042f5    8bcf
-    asm("call               _jmp_addr_0x00750de0");                          // 0x004042f7    e8e4ca3400
+    asm("call               ?SetAbode@Villager@@QAEXPAVAbode@@@Z");          // 0x004042f7    e8e4ca3400
     asm("mov                edx, dword ptr [esi]");                          // 0x004042fc    8b16
     asm("mov.s              ecx, esi");                                      // 0x004042fe    8bce
     asm("call               dword ptr [edx + 0x48]");                        // 0x00404300    ff5248
@@ -615,7 +613,7 @@ void __fastcall RemoveDeletedVillagerFromAbode__5AbodeFP8Villager(struct Abode* 
     asm("call               dword ptr [edx + 0x48]");                        // 0x0040431b    ff5248
     asm("mov.s              ecx, eax");                                      // 0x0040431e    8bc8
     asm("add                ecx, 0x00000610");                               // 0x00404320    81c110060000
-    asm("call               _jmp_addr_0x007494c0");                          // 0x00404326    e895513400
+    asm("call               ?VillagerMoveOutOfAbode@TownStats@@QAEXPAVVillager@@@Z");  // 0x00404326    e895513400
     asm("_jmp_addr_0x0040432b:");
     asm("pop                edi");                                           // 0x0040432b    5f
     asm("pop                esi");                                           // 0x0040432c    5e

@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004046a0
+.extern ?FUN_004046a0@Abode@@QAEXXZ
 .extern _jmp_addr_0x004070f0
 .extern _GetCurrentActiveBox__8SetupBoxFv
 .extern _GetTextWidth__10SetupThingFPwfif
@@ -257,7 +257,7 @@ _jmp_addr_0x0051606d:    mov                eax, dword ptr [edi]                
                          call               dword ptr [eax + 0x30]                        // 0x00516073    ff5030
 _jmp_addr_0x00516076:    push               0x1                                           // 0x00516076    6a01
                          mov.s              ecx, esi                                      // 0x00516078    8bce
-                         call               _jmp_addr_0x004046a0                          // 0x0051607a    e821e6eeff
+                         call               ?FUN_004046a0@Abode@@QAEXXZ                   // 0x0051607a    e821e6eeff
                          cmp                dword ptr [esi + 0x00000090], ebx             // 0x0051607f    399e90000000
                          {disp32} je        _jmp_addr_0x00516130                          // 0x00516085    0f84a5000000
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x0051608b    8b4e40

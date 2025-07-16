@@ -62,7 +62,7 @@
 .extern @SetSpeed__8VillagerFli@16
 .extern _jmp_addr_0x007513f0
 .extern @GetChillOutPos__8VillagerFR9MapCoords@12
-.extern _jmp_addr_0x00756530
+.extern ?SetTown@Villager@@QAEXPAVTown@@@Z
 .extern _jmp_addr_0x00761090
 .extern _jmp_addr_0x00761400
 .extern _jmp_addr_0x007621a0
@@ -2725,7 +2725,7 @@ _jmp_addr_0x00753340:    push               esi                                 
                          call               ?RemoveVillager@Town@@QAEXPAVVillager@@@Z     // 0x00753356    e8b5aefeff
                          push               0x0                                           // 0x0075335b    6a00
                          mov.s              ecx, esi                                      // 0x0075335d    8bce
-                         call               _jmp_addr_0x00756530                          // 0x0075335f    e8cc310000
+                         call               ?SetTown@Villager@@QAEXPAVTown@@@Z            // 0x0075335f    e8cc310000
                          and                word ptr [esi + 0x000000b4], -0x0401          // 0x00753364    6681a6b4000000fffb
                          pop                esi                                           // 0x0075336d    5e
                          ret                                                              // 0x0075336e    c3

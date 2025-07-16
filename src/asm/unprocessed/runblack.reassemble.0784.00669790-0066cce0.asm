@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004055c0
+.extern ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -187,7 +187,7 @@ start_0x00669790_0x0066cce0:
                          {disp8} mov        dword ptr [esp + 0x50], eax                   // 0x00669800    89442450
                          {disp8} mov        dword ptr [esp + 0x54], eax                   // 0x00669804    89442454
                          {disp8} mov        dword ptr [esp + 0x48], ecx                   // 0x00669808    894c2448
-                         call               _jmp_addr_0x004055c0                          // 0x0066980c    e8afbdd9ff
+                         call               ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z                          // 0x0066980c    e8afbdd9ff
                          {disp8} mov        dword ptr [esp + 0x34], eax                   // 0x00669811    89442434
                          mov                eax, dword ptr [esi]                          // 0x00669815    8b06
                          add                esp, 0x14                                     // 0x00669817    83c414

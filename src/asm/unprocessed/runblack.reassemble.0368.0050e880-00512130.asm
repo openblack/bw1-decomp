@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004046a0
+.extern ?FUN_004046a0@Abode@@QAEXXZ
 .extern _jmp_addr_0x00419a60
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ___nw__4BaseFUl
@@ -5500,7 +5500,7 @@ _jmp_addr_0x00511fb7:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          {disp32} ja        _jmp_addr_0x005120c7                          // 0x00511fc0    0f8701010000
                          jmp                dword ptr [eax*4 + 0x5120d4]                  // 0x00511fc6    ff2485d4205100
                          push               0x0                                           // 0x00511fcd    6a00
-                         call               _jmp_addr_0x004046a0                          // 0x00511fcf    e8cc26efff
+                         call               ?FUN_004046a0@Abode@@QAEXXZ                   // 0x00511fcf    e8cc26efff
                          mov.s              eax, esi                                      // 0x00511fd4    8bc6
                          pop                esi                                           // 0x00511fd6    5e
                          ret                0x0004                                        // 0x00511fd7    c20400

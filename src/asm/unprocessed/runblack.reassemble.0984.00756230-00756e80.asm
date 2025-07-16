@@ -46,9 +46,9 @@
 .extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 
-.globl _jmp_addr_0x00756240
+.globl ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z
 .globl @SetSkeleton__8VillagerFi@9
-.globl _jmp_addr_0x00756530
+.globl ?SetTown@Villager@@QAEXPAVTown@@@Z
 .globl _jmp_addr_0x007566c0
 .globl _jmp_addr_0x00756760
 .globl _jmp_addr_0x007567e0
@@ -60,8 +60,7 @@
 .globl _globl_ct_0x00756d00
 .globl _SetSkeleton__8VillagerFi
 
-start_0x00756230_0x00756e80:
-// Snippet: asm, [0x00756230, 0x00756e56)
+_jmp_addr_0x00756230:
                          ret                                                              // 0x00756230    c3
                          nop                                                              // 0x00756231    90
                          nop                                                              // 0x00756232    90
@@ -78,7 +77,9 @@ start_0x00756230_0x00756e80:
                          nop                                                              // 0x0075623d    90
                          nop                                                              // 0x0075623e    90
                          nop                                                              // 0x0075623f    90
-_jmp_addr_0x00756240:    push               ebx                                           // 0x00756240    53
+
+?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z:
+                         push               ebx                                           // 0x00756240    53
                          push               ebp                                           // 0x00756241    55
                          push               esi                                           // 0x00756242    56
                          mov.s              esi, ecx                                      // 0x00756243    8bf1
@@ -401,7 +402,9 @@ _jmp_addr_0x00756512:    xor.s              eax, eax                            
                          nop                                                              // 0x0075652d    90
                          nop                                                              // 0x0075652e    90
                          nop                                                              // 0x0075652f    90
-_jmp_addr_0x00756530:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00756530    8b442404
+
+?SetTown@Villager@@QAEXPAVTown@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00756530    8b442404
                          {disp32} mov       dword ptr [ecx + 0x0000012c], eax             // 0x00756534    89812c010000
                          ret                0x0004                                        // 0x0075653a    c20400
                          nop                                                              // 0x0075653d    90

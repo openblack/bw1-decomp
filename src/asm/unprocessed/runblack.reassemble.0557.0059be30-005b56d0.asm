@@ -7371,7 +7371,7 @@ _jmp_addr_0x0059d030:    push               esi                                 
                          {disp32} mov       dword ptr [data_bytes + 0x347238], eax        // 0x005a4065    a338d2d000
                          {disp32} mov       dword ptr [data_bytes + 0x347284], esi        // 0x005a406a    893584d2d000
                          or                 esi, 0xffffffff                               // 0x005a4070    83ceff
-                         mov                eax, 0x00757f10                               // 0x005a4073    b8107f7500
+                         mov                eax, 0x00757f10 /* ?ChildBecomesAdult@Villager@@QAE_NXZ */ // 0x005a4073    b8107f7500
                          {disp32} mov       dword ptr [data_bytes + 0x347248], eax        // 0x005a4078    a348d2d000
                          xor.s              eax, eax                                      // 0x005a407d    33c0
                          {disp32} mov       dword ptr [data_bytes + 0x347294], esi        // 0x005a407f    893594d2d000

@@ -206,6 +206,8 @@ bool __fastcall IsMagicTypeHeld__4TownF10MAGIC_TYPE(struct Town* this, const voi
 struct TotemStatue* __fastcall GetTotemStatue__4TownFv(struct Town* this) asm("?GetTotemStatue@Town@@QAEPAVTotemStatue@@XZ");
 // win1.41 0073e210 mac 1054f460 Town::RemoveVillager(Villager *)
 void __fastcall RemoveVillager__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillager@Town@@QAEXPAVVillager@@@Z");
+// win1.41 0073e360 mac 1054f190 Town::RemoveVillagerOnWayToWorshipSite(Villager *)
+void __fastcall RemoveVillagerOnWayToWorshipSite__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillagerOnWayToWorshipSite@Town@@QAEXPAVVillager@@@Z");
 // win1.41 0073eb00 mac 1054dfe0 Town::AssignForestsToTown(void)
 void __fastcall AssignForestsToTown__4TownFv(struct Town* this) asm("?AssignForestsToTown@Town@@QAEXXZ");
 // win1.41 007408b0 mac 10008020 Town::GetCongregationPos(void)
