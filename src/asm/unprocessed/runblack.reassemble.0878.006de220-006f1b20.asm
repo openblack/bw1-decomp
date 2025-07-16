@@ -11,7 +11,7 @@
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern @Init__12PlannedAbodeFP4Town@12
-.extern _jmp_addr_0x004055c0
+.extern ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z
 .extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
 .extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
 .extern _jmp_addr_0x00407700
@@ -14144,7 +14144,7 @@ _jmp_addr_0x006e8460:    push               esi                                 
                          push               0x0                                           // 0x006e84bc    6a00
                          push               0x0                                           // 0x006e84be    6a00
                          push               edi                                           // 0x006e84c0    57
-                         call               _jmp_addr_0x004055c0                          // 0x006e84c1    e8fad0d1ff
+                         call               ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z                          // 0x006e84c1    e8fad0d1ff
                          add                esp, 0x14                                     // 0x006e84c6    83c414
                          push               eax                                           // 0x006e84c9    50
                          mov.s              ecx, esi                                      // 0x006e84ca    8bce
@@ -14154,7 +14154,7 @@ _jmp_addr_0x006e8460:    push               esi                                 
                          push               0x0                                           // 0x006e84d8    6a00
                          push               0x0                                           // 0x006e84da    6a00
                          push               edi                                           // 0x006e84dc    57
-                         call               _jmp_addr_0x004055c0                          // 0x006e84dd    e8ded0d1ff
+                         call               ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z                          // 0x006e84dd    e8ded0d1ff
                          add                esp, 0x14                                     // 0x006e84e2    83c414
                          {disp8} mov        dword ptr [esi + 0x70], eax                   // 0x006e84e5    894670
 _jmp_addr_0x006e84e8:    pop                edi                                           // 0x006e84e8    5f
@@ -15760,7 +15760,7 @@ _jmp_addr_0x006e9649:    push               0x3f800000                          
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x006e9652    8d4e14
                          push               0x0                                           // 0x006e9655    6a00
                          push               ecx                                           // 0x006e9657    51
-                         call               _jmp_addr_0x004055c0                          // 0x006e9658    e863bfd1ff
+                         call               ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z                          // 0x006e9658    e863bfd1ff
                          add                esp, 0x14                                     // 0x006e965d    83c414
                          push               eax                                           // 0x006e9660    50
                          mov.s              ecx, esi                                      // 0x006e9661    8bce
@@ -15778,7 +15778,7 @@ _jmp_addr_0x006e9679:    push               0x3f800000                          
                          {disp8} lea        eax, dword ptr [esi + 0x14]                   // 0x006e9682    8d4614
                          push               0x0                                           // 0x006e9685    6a00
                          push               eax                                           // 0x006e9687    50
-                         call               _jmp_addr_0x004055c0                          // 0x006e9688    e833bfd1ff
+                         call               ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z                          // 0x006e9688    e833bfd1ff
                          add                esp, 0x14                                     // 0x006e968d    83c414
                          {disp8} mov        dword ptr [esi + 0x70], eax                   // 0x006e9690    894670
 _jmp_addr_0x006e9693:    pop                esi                                           // 0x006e9693    5e

@@ -59,7 +59,7 @@
 .extern _FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf
 .extern @GetAbode__8VillagerFv@4
 .extern _jmp_addr_0x00752b80
-.extern _jmp_addr_0x00756240
+.extern ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z
 .extern _jmp_addr_0x0076d4c0
 .extern @__ct__8FragMeshFR10GameOSFileP8LH3DMesh@16
 .extern _jmp_addr_0x0076d680
@@ -1996,7 +1996,7 @@ _jmp_addr_0x004075f8:    pop                edi                                 
                          ret                0x0008                                        // 0x004075fd    c20800
 _jmp_addr_0x00407600:    push               ebp                                           // 0x00407600    55
                          mov.s              ecx, esi                                      // 0x00407601    8bce
-                         call               _jmp_addr_0x00756240                          // 0x00407603    e838ec3400
+                         call               ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z  // 0x00407603    e838ec3400
                          pop                edi                                           // 0x00407608    5f
                          pop                esi                                           // 0x00407609    5e
                          mov                eax, 0x00000001                               // 0x0040760a    b801000000
@@ -2064,11 +2064,11 @@ _jmp_addr_0x00407683:    {disp32} mov       esi, dword ptr [esi + 0x000000e4]   
                          ret                0x0004                                        // 0x00407693    c20400
 _jmp_addr_0x00407696:    push               ebp                                           // 0x00407696    55
                          mov.s              ecx, edi                                      // 0x00407697    8bcf
-                         call               _jmp_addr_0x00756240                          // 0x00407699    e8a2eb3400
+                         call               ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z  // 0x00407699    e8a2eb3400
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x0040769e    8b4c2414
                          push               ecx                                           // 0x004076a2    51
                          mov.s              ecx, esi                                      // 0x004076a3    8bce
-                         call               _jmp_addr_0x00756240                          // 0x004076a5    e896eb3400
+                         call               ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z  // 0x004076a5    e896eb3400
                          pop                edi                                           // 0x004076aa    5f
                          pop                esi                                           // 0x004076ab    5e
                          pop                ebp                                           // 0x004076ac    5d

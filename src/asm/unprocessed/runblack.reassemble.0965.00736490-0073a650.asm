@@ -15,8 +15,8 @@
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
-.extern _jmp_addr_0x00404340
-.extern _jmp_addr_0x00404580
+.extern ?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z
+.extern ?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z
 .extern @MakeFunctional__5AbodeFv@4
 .extern ?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
@@ -119,10 +119,10 @@
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
 .extern _jmp_addr_0x00750b50
-.extern _jmp_addr_0x00750de0
+.extern ?SetAbode@Villager@@QAEXPAVAbode@@@Z
 .extern @GetAbode__8VillagerFv@4
-.extern _jmp_addr_0x00756530
-.extern _jmp_addr_0x00761240
+.extern ?SetTown@Villager@@QAEXPAVTown@@@Z
+.extern ?MakeHomelessNoStateChange@Villager@@QAE_NXZ
 .extern _jmp_addr_0x007714b0
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
@@ -5374,6 +5374,8 @@ _jmp_addr_0x00739d03:    pop                edi                                 
                          nop                                                               // 0x00739d0d    90
                          nop                                                               // 0x00739d0e    90
                          nop                                                               // 0x00739d0f    90
+
+_jmp_addr_0x00739d10:
                          sub                esp, 0x00000094                                // 0x00739d10    81ec94000000
                          {disp32} mov       eax, dword ptr [esp + 0x00000098]              // 0x00739d16    8b842498000000
                          push               ebx                                            // 0x00739d1d    53
@@ -5483,7 +5485,7 @@ _jmp_addr_0x00739e72:    {disp8} mov        ecx, dword ptr [esi + 0x28]         
                          {disp8} je         _jmp_addr_0x00739f06                           // 0x00739e93    7471
                          push               0x1                                            // 0x00739e95    6a01
                          mov.s              ecx, esi                                       // 0x00739e97    8bce
-                         call               _jmp_addr_0x00404580                           // 0x00739e99    e8e2a6ccff
+                         call               ?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z   // 0x00739e99    e8e2a6ccff
                          cmp                eax, dword ptr [esp + 0x10]                    // 0x00739e9e    3b442410
                          {disp8} jg         _jmp_addr_0x00739f06                           // 0x00739ea2    7f62
                          mov                edx, dword ptr [esi]                           // 0x00739ea4    8b16
@@ -5575,7 +5577,7 @@ _jmp_addr_0x00739f93:    {disp8} mov        edx, dword ptr [esi + 0x28]         
                          push               0x0                                            // 0x00739fb6    6a00
                          mov.s              ecx, esi                                       // 0x00739fb8    8bce
                          inc                edi                                            // 0x00739fba    47
-                         call               _jmp_addr_0x00404580                           // 0x00739fbb    e8c0a5ccff
+                         call               ?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z   // 0x00739fbb    e8c0a5ccff
                          cmp                eax, dword ptr [esp + 0x10]                    // 0x00739fc0    3b442410
                          {disp8} jg         _jmp_addr_0x0073a00e                           // 0x00739fc4    7f48
                          mov                eax, dword ptr [esi]                           // 0x00739fc6    8b06
@@ -5669,7 +5671,7 @@ _jmp_addr_0x0073a05d:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          call               _jmp_addr_0x007492e0                           // 0x0073a0ae    e82df20000
                          push               edi                                            // 0x0073a0b3    57
                          mov.s              ecx, esi                                       // 0x0073a0b4    8bce
-                         call               _jmp_addr_0x00756530                           // 0x0073a0b6    e875c40100
+                         call               ?SetTown@Villager@@QAEXPAVTown@@@Z             // 0x0073a0b6    e875c40100
                          mov.s              ecx, esi                                       // 0x0073a0bb    8bce
                          call               @GetAbode__8VillagerFv@4                       // 0x0073a0bd    e89e800100
                          mov.s              ebx, eax                                       // 0x0073a0c2    8bd8
@@ -5682,10 +5684,10 @@ _jmp_addr_0x0073a05d:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp8} je         _jmp_addr_0x0073a10c                           // 0x0073a0d1    7439
                          push               esi                                            // 0x0073a0d3    56
                          mov.s              ecx, ebx                                       // 0x0073a0d4    8bcb
-                         call               _jmp_addr_0x00404340                           // 0x0073a0d6    e865a2ccff
+                         call               ?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z  // 0x0073a0d6    e865a2ccff
                          push               0x0                                            // 0x0073a0db    6a00
                          mov.s              ecx, esi                                       // 0x0073a0dd    8bce
-                         call               _jmp_addr_0x00750de0                           // 0x0073a0df    e8fc6c0100
+                         call               ?SetAbode@Villager@@QAEXPAVAbode@@@Z           // 0x0073a0df    e8fc6c0100
 _jmp_addr_0x0073a0e4:    push               0x0                                            // 0x0073a0e4    6a00
                          push               esi                                            // 0x0073a0e6    56
                          mov.s              ecx, edi                                       // 0x0073a0e7    8bcf
@@ -5701,7 +5703,7 @@ _jmp_addr_0x0073a0e4:    push               0x0                                 
                          pop                ebx                                            // 0x0073a101    5b
                          ret                0x0004                                         // 0x0073a102    c20400
 _jmp_addr_0x0073a105:    mov.s              ecx, esi                                       // 0x0073a105    8bce
-                         call               _jmp_addr_0x00761240                           // 0x0073a107    e834710200
+                         call               ?MakeHomelessNoStateChange@Villager@@QAE_NXZ   // 0x0073a107    e834710200
 _jmp_addr_0x0073a10c:    {disp32} mov       ecx, dword ptr [edi + 0x0000061c]              // 0x0073a10c    8b8f1c060000
                          add                ecx, dword ptr [edi + 0x00000618]              // 0x0073a112    038f18060000
                          cmp                ecx, 0x01                                      // 0x0073a118    83f901

@@ -10,7 +10,7 @@
 .extern ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern @IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town@24
-.extern _Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff
+.extern ?Create@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z
 .extern _GetInfoFromText__10GAbodeInfoFPc
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
@@ -689,7 +689,7 @@ _jmp_addr_0x007156fc:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          {disp8} lea        eax, dword ptr [esp + 0x40]                   // 0x00715707    8d442440
                          push               esi                                           // 0x0071570b    56
                          push               eax                                           // 0x0071570c    50
-                         call               _Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff                          // 0x0071570d    e8eefeceff
+                         call               ?Create@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z                          // 0x0071570d    e8eefeceff
                          add                esp, 0x14                                     // 0x00715712    83c414
                          {disp32} mov       dword ptr [_PTR_00d99384], eax                // 0x00715715    a38493d900
                          xor.s              eax, eax                                      // 0x0071571a    33c0
