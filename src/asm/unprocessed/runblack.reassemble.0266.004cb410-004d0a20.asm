@@ -76,7 +76,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064aac0
 .extern _jmp_addr_0x0071a200
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
@@ -7564,7 +7564,7 @@ _jmp_addr_0x004d0650:    sub                esp, 0x08                           
                          {disp32} mov       dword ptr [esi + 0x000010ec], eax             // 0x004d0690    8986ec100000
                          call               _jmp_addr_0x004d7bd0                          // 0x004d0696    e835750000
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x004d069b    8b4c2408
-                         call               @GetStoragePit__4TownFv@4                     // 0x004d069f    e80caf2600
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x004d069f    e80caf2600
                          test               eax, eax                                      // 0x004d06a4    85c0
                          {disp8} je         _jmp_addr_0x004d06b5                          // 0x004d06a6    740d
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x004d06a8    8b8e64010000

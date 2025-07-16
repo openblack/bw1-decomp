@@ -217,9 +217,8 @@
 .extern _jmp_addr_0x0072e3b0
 .extern _jmp_addr_0x007352b0
 .extern _jmp_addr_0x00735330
-.extern @AddStructureToTown__4TownFP13MultiMapFixed@12
 .extern _jmp_addr_0x00739a60
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073e420
 .extern _jmp_addr_0x0074cd50
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords

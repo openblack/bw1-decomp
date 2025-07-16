@@ -371,7 +371,7 @@ void __fastcall AddVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const 
     asm("{disp8} je         _jmp_addr_0x004040de");                          // 0x00404077    7465
     asm("push               esi");                                           // 0x00404079    56
     asm("mov.s              ecx, ebx");                                      // 0x0040407a    8bcb
-    asm("call               _jmp_addr_0x0073b580");                          // 0x0040407c    e8ff743300
+    asm("call               ?IsVillagerInHomelessList@Town@@QAE_NPAVVillager@@@Z");  // 0x0040407c    e8ff743300
     asm("test               eax, eax");                                      // 0x00404081    85c0
     asm("{disp8} je         _jmp_addr_0x004040de");                          // 0x00404083    7459
     asm("{disp32} mov       eax, dword ptr [ebx + 0x00000768]");             // 0x00404085    8b8368070000
@@ -475,7 +475,7 @@ void __fastcall AddVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const 
     asm("mov.s              ecx, edi");                                      // 0x0040419a    8bcf
     asm("call               dword ptr [eax + 0x48]");                        // 0x0040419c    ff5048
     asm("mov.s              ecx, eax");                                      // 0x0040419f    8bc8
-    asm("call               @AddVillagerToTown__4TownFP8Villager@12");       // 0x004041a1    e8ea5e3300
+    asm("call               ?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z"); // 0x004041a1    e8ea5e3300
     asm("_jmp_addr_0x004041a6:");
     asm("mov                edx, dword ptr [edi]");                          // 0x004041a6    8b17
     asm("push               esi");                                           // 0x004041a8    56
@@ -608,7 +608,7 @@ void __fastcall RemoveDeletedVillagerFromAbode__5AbodeFP8Villager(struct Abode* 
     asm("mov.s              ecx, esi");                                      // 0x0040430a    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x0040430c    ff5048
     asm("mov.s              ecx, eax");                                      // 0x0040430f    8bc8
-    asm("call               @RemoveVillager__4TownFP8Villager@12");          // 0x00404311    e8fa9e3300
+    asm("call               ?RemoveVillager@Town@@QAEXPAVVillager@@@Z");     // 0x00404311    e8fa9e3300
     asm("mov                edx, dword ptr [esi]");                          // 0x00404316    8b16
     asm("push               edi");                                           // 0x00404318    57
     asm("mov.s              ecx, esi");                                      // 0x00404319    8bce

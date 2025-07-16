@@ -54,7 +54,7 @@
 .extern _jmp_addr_0x006f6d00
 .extern _jmp_addr_0x0070d1a0
 .extern _jmp_addr_0x0070d220
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073e600
 .extern _jmp_addr_0x0073e6e0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -584,7 +584,7 @@ _jmp_addr_0x006f7409:    mov.s              eax, edi                            
 _jmp_addr_0x006f7439:    cmp                eax, 0x10                                     // 0x006f7439    83f810
                          {disp8} jne        _jmp_addr_0x006f7447                          // 0x006f743c    7509
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x006f743e    8b4c2404
-                         {disp32} jmp       @GetStoragePit__4TownFv@4                     // 0x006f7442    e969410400
+                         {disp32} jmp       ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x006f7442    e969410400
 _jmp_addr_0x006f7447:    push               0x00c0d390                                    // 0x006f7447    6890d3c000
                          call               _jmp_addr_0x006f62b0                          // 0x006f744c    e85feeffff
                          add                esp, 0x04                                     // 0x006f7451    83c404

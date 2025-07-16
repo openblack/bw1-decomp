@@ -24,9 +24,9 @@
 .extern ?GetFOVHelpCondition@Object@@UAEIXZ
 .extern _GameRand__5GRandFl
 .extern _GameFloatRand__5GRandFf
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073e900
-.extern @GetCongregationPos__4TownFv@12
+.extern ?GetCongregationPos@Town@@QAEPAUMapCoords@@PAU2@@Z
 .extern _jmp_addr_0x00749c60
 .extern _jmp_addr_0x00749c80
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -61,7 +61,7 @@ start_0x00753c70_0x00756230:
                          {disp8} lea       ecx, dword ptr [esp + 0x10]                   // 0x00753c86    8d4c2410
                          push              ecx                                           // 0x00753c8a    51
                          mov.s             ecx, esi                                      // 0x00753c8b    8bce
-                         call              @GetCongregationPos__4TownFv@12               // 0x00753c8d    e81eccfeff
+                         call              ?GetCongregationPos@Town@@QAEPAUMapCoords@@PAU2@@Z  // 0x00753c8d    e81eccfeff
                          {disp8} mov       edx, dword ptr [esi + 0x28]                   // 0x00753c92    8b5628
                          {disp32} fld      dword ptr [edx + 0x00000140]                  // 0x00753c95    d98240010000
                          add               edi, 0x14                                     // 0x00753c9b    83c714
@@ -247,7 +247,7 @@ _jmp_addr_0x00753e62:    {disp8} mov       esi, dword ptr [esp + 0x1c]          
 _jmp_addr_0x00753e7c:    test              ebx, ebx                                      // 0x00753e7c    85db
                          {disp8} je        _jmp_addr_0x00753ed3                          // 0x00753e7e    7453
                          mov.s             ecx, ebx                                      // 0x00753e80    8bcb
-                         call              @GetStoragePit__4TownFv@4                     // 0x00753e82    e82977feff
+                         call              ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ     // 0x00753e82    e82977feff
                          mov.s             edi, eax                                      // 0x00753e87    8bf8
                          test              edi, edi                                      // 0x00753e89    85ff
                          {disp8} je        _jmp_addr_0x00753e9b                          // 0x00753e8b    740e

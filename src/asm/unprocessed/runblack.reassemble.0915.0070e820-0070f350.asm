@@ -19,7 +19,7 @@
 .extern @GetWorshipSpeed__11TotemStatueFv@4
 .extern @SetWorshipPercentage__11TotemStatueFf@12
 .extern _jmp_addr_0x0073b8e0
-.extern @SetWorshipPercentage__4TownFf@12
+.extern ?SetWorshipPercentage@Town@@QAEXM@Z
 .extern _jmp_addr_0x0073cd20
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007c5a19
@@ -269,7 +269,7 @@ _jmp_addr_0x0070eac6:    mov                edx, dword ptr [esi]               /
                          {disp32} mov       ecx, dword ptr [esp + 0x00000438]  // 0x0070eadf    8b8c2438040000
                          push               ecx                                // 0x0070eae6    51
                          mov.s              ecx, eax                           // 0x0070eae7    8bc8
-                         call               @SetWorshipPercentage__4TownFf@12  // 0x0070eae9    e872d50200
+                         call               ?SetWorshipPercentage@Town@@QAEXM@Z// 0x0070eae9    e872d50200
                          mov.s              ecx, esi                           // 0x0070eaee    8bce
                          call               @GetWorshipSpeed__11TotemStatueFv@4// 0x0070eaf0    e86b970200
                          {disp32} fstp      dword ptr [esi + 0x00000088]       // 0x0070eaf5    d99e88000000

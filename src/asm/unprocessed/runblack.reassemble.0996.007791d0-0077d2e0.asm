@@ -100,13 +100,13 @@
 .extern @IsSpellSeed__9SpellIconF15SPELL_SEED_TYPE@12
 .extern @GetSpellSeedType__9SpellIconFv@4
 .extern _GetFirstSpellSeedForMagicType__14GSpellSeedInfoF10MAGIC_TYPE
-.extern @RemoveBuildingSite__4TownFP13MultiMapFixed@12
-.extern @GetTribe__4TownCFv@4
+.extern ?RemoveBuildingSite@Town@@QAEIPAVMultiMapFixed@@@Z
+.extern ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ
 .extern _jmp_addr_0x0073c950
 .extern _jmp_addr_0x0073ce40
 .extern _jmp_addr_0x0073d030
 .extern _jmp_addr_0x0073d2e0
-.extern @GetNextSpellIcon__4TownFP13TownSpellIcon@12
+.extern ?GetNextSpellIcon@Town@@QAEPAVTownSpellIcon@@PAV2@@Z
 .extern _jmp_addr_0x00740180
 .extern _jmp_addr_0x007401d0
 .extern _jmp_addr_0x007412a0
@@ -2934,7 +2934,7 @@ _jmp_addr_0x0077ac2a:    push               edi                                 
                          {disp8} je         _jmp_addr_0x0077ac3e                          // 0x0077ac34    7408
                          push               edi                                           // 0x0077ac36    57
                          mov.s              ecx, esi                                      // 0x0077ac37    8bce
-                         call               @RemoveBuildingSite__4TownFP13MultiMapFixed@12// 0x0077ac39    e8e20dfcff
+                         call               ?RemoveBuildingSite@Town@@QAEIPAVMultiMapFixed@@@Z// 0x0077ac39    e8e20dfcff
 _jmp_addr_0x0077ac3e:    {disp32} mov       esi, dword ptr [esi + 0x0000075c]             // 0x0077ac3e    8bb65c070000
                          test               esi, esi                                      // 0x0077ac44    85f6
                          {disp8} jne        _jmp_addr_0x0077ac2a                          // 0x0077ac46    75e2
@@ -3222,7 +3222,7 @@ _jmp_addr_0x0077af70:    push               esi                                 
                          push               ebx                                           // 0x0077af88    53
 _jmp_addr_0x0077af89:    {disp32} mov       ebx, dword ptr [edi + 0x0000008c]             // 0x0077af89    8b9f8c000000
                          mov.s              ecx, esi                                      // 0x0077af8f    8bce
-                         call               @GetTribe__4TownCFv@4                         // 0x0077af91    e8aa18fcff
+                         call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ          // 0x0077af91    e8aa18fcff
                          cmp.s              eax, ebx                                      // 0x0077af96    3bc3
                          {disp8} jne        _jmp_addr_0x0077afa2                          // 0x0077af98    7508
                          push               esi                                           // 0x0077af9a    56
@@ -5665,7 +5665,7 @@ _jmp_addr_0x0077c8fb:    pop                esi                                 
                          mov.s              edi, ecx                                      // 0x0077c917    8bf9
                          push               0x0                                           // 0x0077c919    6a00
                          mov.s              ecx, ebx                                      // 0x0077c91b    8bcb
-                         call               @GetNextSpellIcon__4TownFP13TownSpellIcon@12  // 0x0077c91d    e83e0afcff
+                         call               ?GetNextSpellIcon@Town@@QAEPAVTownSpellIcon@@PAV2@@Z  // 0x0077c91d    e83e0afcff
                          mov.s              esi, eax                                      // 0x0077c922    8bf0
                          test               esi, esi                                      // 0x0077c924    85f6
                          {disp8} je         _jmp_addr_0x0077c945                          // 0x0077c926    741d
@@ -5676,7 +5676,7 @@ _jmp_addr_0x0077c928:    mov.s              ecx, esi                            
                          call               @AddSpellIconIfNecessary__11WorshipSiteF15SPELL_SEED_TYPE@12                          // 0x0077c932    e8a9000000
                          push               esi                                           // 0x0077c937    56
                          mov.s              ecx, ebx                                      // 0x0077c938    8bcb
-                         call               @GetNextSpellIcon__4TownFP13TownSpellIcon@12  // 0x0077c93a    e8210afcff
+                         call               ?GetNextSpellIcon@Town@@QAEPAVTownSpellIcon@@PAV2@@Z  // 0x0077c93a    e8210afcff
                          mov.s              esi, eax                                      // 0x0077c93f    8bf0
                          test               esi, esi                                      // 0x0077c941    85f6
                          {disp8} jne        _jmp_addr_0x0077c928                          // 0x0077c943    75e3
@@ -5720,7 +5720,7 @@ _jmp_addr_0x0077c99a:    test               esi, esi                            
                          {disp8} jne        _jmp_addr_0x0077c966                          // 0x0077c99e    75c6
 _jmp_addr_0x0077c9a0:    push               0x0                                           // 0x0077c9a0    6a00
                          mov.s              ecx, ebx                                      // 0x0077c9a2    8bcb
-                         call               @GetNextSpellIcon__4TownFP13TownSpellIcon@12  // 0x0077c9a4    e8b709fcff
+                         call               ?GetNextSpellIcon@Town@@QAEPAVTownSpellIcon@@PAV2@@Z  // 0x0077c9a4    e8b709fcff
                          mov.s              esi, eax                                      // 0x0077c9a9    8bf0
                          xor.s              ebp, ebp                                      // 0x0077c9ab    33ed
                          cmp.s              esi, ebp                                      // 0x0077c9ad    3bf5
@@ -5733,7 +5733,7 @@ _jmp_addr_0x0077c9b1:    push               ebp                                 
                          call               _jmp_addr_0x0077caa0                          // 0x0077c9bc    e8df000000
                          push               esi                                           // 0x0077c9c1    56
                          mov.s              ecx, ebx                                      // 0x0077c9c2    8bcb
-                         call               @GetNextSpellIcon__4TownFP13TownSpellIcon@12  // 0x0077c9c4    e89709fcff
+                         call               ?GetNextSpellIcon@Town@@QAEPAVTownSpellIcon@@PAV2@@Z  // 0x0077c9c4    e89709fcff
                          mov.s              esi, eax                                      // 0x0077c9c9    8bf0
                          cmp.s              esi, ebp                                      // 0x0077c9cb    3bf5
                          {disp8} jne        _jmp_addr_0x0077c9b1                          // 0x0077c9cd    75e2

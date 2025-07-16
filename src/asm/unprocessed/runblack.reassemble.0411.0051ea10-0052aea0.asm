@@ -118,7 +118,7 @@
 .extern _jmp_addr_0x00730570
 .extern _jmp_addr_0x0073aaf0
 .extern _jmp_addr_0x0073ac90
-.extern @GetTribe__4TownCFv@4
+.extern ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
@@ -15301,7 +15301,7 @@ _Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi:    sub                e
                          {disp8} je         _jmp_addr_0x005282c1                                 // 0x005282a8    7417
                          push               0xf                                                  // 0x005282aa    6a0f
                          mov.s              ecx, edi                                             // 0x005282ac    8bcf
-                         call               @GetTribe__4TownCFv@4                                // 0x005282ae    e88d452100
+                         call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ                 // 0x005282ae    e88d452100
                          {disp8} mov        ecx, dword ptr [eax + 0x10]                          // 0x005282b3    8b4810
                          push               ecx                                                  // 0x005282b6    51
                          call               _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER       // 0x005282b7    e874d8edff

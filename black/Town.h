@@ -165,61 +165,63 @@ struct Town* __fastcall __ct__4TownFRC9MapCoordsPC9GTownInfoP7GPlayer10TRIBE_TYP
 // Non-virtual methods
 
 // win1.41 007399a0 mac 10556850 Town::AddStructureToTown(MultiMapFixed *)
-void __fastcall AddStructureToTown__4TownFP13MultiMapFixed(struct Town* this, const void* edx, struct MultiMapFixed* structure);
+void __fastcall AddStructureToTown__4TownFP13MultiMapFixed(struct Town* this, const void* edx, struct MultiMapFixed* structure) asm("?AddStructureToTown@Town@@QAEXPAVMultiMapFixed@@@Z");
 // win1.41 00739a20 mac 105567f0 Town::AddAbodeToTownStats(Abode *)
-void __fastcall AddAbodeToTownStats__4TownFP5Abode(struct Town* this, const void* edx, struct Abode* abode);
+void __fastcall AddAbodeToTownStats__4TownFP5Abode(struct Town* this, const void* edx, struct Abode* abode) asm("?AddAbodeToTownStats@Town@@QAEXPAVAbode@@@Z");
 // win1.41 0073a090 mac 10556400 Town::AddVillagerToTown(Villager *)
-bool __fastcall AddVillagerToTown__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager);
+bool __fastcall AddVillagerToTown__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z");
 // win1.41 0073b370 mac 10554d60 Town::FindAbodeWithSpaceInTown(Villager *, float)
-struct Abode* __fastcall FindAbodeWithSpaceInTown__4TownFP8Villagerf(struct Town* this, const void* edx, struct Villager* villager, float min_score);
+struct Abode* __fastcall FindAbodeWithSpaceInTown__4TownFP8Villagerf(struct Town* this, const void* edx, struct Villager* villager, float min_score) asm("?FindAbodeWithSpaceInTown@Town@@QAEPAVAbode@@PAVVillager@@M@Z");
 // win1.41 0073b5b0 mac 100572e0 Town::GetStoragePit(void)
-struct StoragePit* __fastcall GetStoragePit__4TownFv(struct Town* this);
+struct StoragePit* __fastcall GetStoragePit__4TownFv(struct Town* this) asm("?GetStoragePit@Town@@QAEPAVStoragePit@@XZ");
+// win1.41 0073b580 mac 10554bd0 Town::IsVillagerInHomelessList(Villager *)
+bool32_t __fastcall IsVillagerInHomelessList__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?IsVillagerInHomelessList@Town@@QAE_NPAVVillager@@@Z");
 // win1.41 0073b5d0 mac 10554b00 Town::Birthday(void)
-void __fastcall Birthday__4TownFv(struct Town* this);
+void __fastcall Birthday__4TownFv(struct Town* this) asm("?Birthday@Town@@QAEXXZ");
 // win1.41 0073ba20 mac 10554100 Town::RemoveBuildingSite(MultiMapFixed *)
-uint32_t __fastcall RemoveBuildingSite__4TownFP13MultiMapFixed(struct Town* this, const void* edx, struct MultiMapFixed* param_1);
+uint32_t __fastcall RemoveBuildingSite__4TownFP13MultiMapFixed(struct Town* this, const void* edx, struct MultiMapFixed* param_1) asm("?RemoveBuildingSite@Town@@QAEIPAVMultiMapFixed@@@Z");
 // win1.41 0073ba70 mac 10554050 Town::SetBeliefInPlayer(GPlayer *, float)
-void __fastcall SetBeliefInPlayer__4TownFP7GPlayerf(struct Town* this, const void* edx, struct GPlayer* player, float value);
+void __fastcall SetBeliefInPlayer__4TownFP7GPlayerf(struct Town* this, const void* edx, struct GPlayer* player, float value) asm("?SetBeliefInPlayer@Town@@QAEXPAVGPlayer@@M@Z");
 // win1.41 0073c060 mac 105539a0 Town::SetWorshipPercentage(float)
-void __fastcall SetWorshipPercentage__4TownFf(struct Town* this, const void* edx, float worship_percentage);
+void __fastcall SetWorshipPercentage__4TownFf(struct Town* this, const void* edx, float worship_percentage) asm("?SetWorshipPercentage@Town@@QAEXM@Z");
 // win1.41 0073c0f0 mac 10552710 Town::AdjustWorshipersWorshipping(long, int, int)
-void __fastcall AdjustWorshipersWorshipping__4TownFlii(struct Town* this, const void* edx, long param_1, int param_2, int param_3);
+void __fastcall AdjustWorshipersWorshipping__4TownFlii(struct Town* this, const void* edx, long param_1, int param_2, int param_3) asm("?AdjustWorshipersWorshipping@Town@@QAEXJHH@Z");
 // win1.41 0073c840 mac 1005d020 Town::GetTribe(void) const
-struct GTribeInfo* __fastcall GetTribe__4TownCFv(struct Town* this);
+struct GTribeInfo* __fastcall GetTribe__4TownCFv(struct Town* this) asm("?GetTribe@Town@@QBEPAVGTribeInfo@@XZ");
 // win1.41 0073c860 mac 10092530 Town::GetWorshipersNeeded(int, int, int *)
-int __fastcall GetWorshipersNeeded__4TownFiiPi(struct Town* this, const void* edx, int param_1, int param_2, int* result);
+int __fastcall GetWorshipersNeeded__4TownFiiPi(struct Town* this, const void* edx, int param_1, int param_2, int* result) asm("?GetWorshipersNeeded@Town@@QAEHHHPAH@Z");
 // win1.41 0073d080 mac 105516a0 Town::AddPlanned(PlannedMultiMapFixed *)
 void __fastcall AddPlanned__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z");
 // win1.41 0073d0d0 mac 10551530 Town::RemovePlanned(PlannedMultiMapFixed *)
 void __fastcall RemovePlanned__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z");
 // win1.41 0073d150 mac 105514f0 Town::AllVillagersCheckNeedNewAbode(void)
-void __fastcall AllVillagersCheckNeedNewAbode__4TownFv(struct Town* this);
+void __fastcall AllVillagersCheckNeedNewAbode__4TownFv(struct Town* this) asm("?AllVillagersCheckNeedNewAbode@Town@@QAEXXZ");
 // win1.41 0073d360 mac 10550fd0 Town::GetNextSpellIcon(TownSpellIcon *)
-struct TownSpellIcon* __fastcall GetNextSpellIcon__4TownFP13TownSpellIcon(const struct Town* this, const void* edx, const struct TownSpellIcon* icon);
+struct TownSpellIcon* __fastcall GetNextSpellIcon__4TownFP13TownSpellIcon(const struct Town* this, const void* edx, struct TownSpellIcon* icon) asm("?GetNextSpellIcon@Town@@QAEPAVTownSpellIcon@@PAV2@@Z");
 // win1.41 0073d380 mac 10550e80 Town::AddMagicTypesHeld(MAGIC_TYPE)
-bool __fastcall AddMagicTypesHeld__4TownF10MAGIC_TYPE(struct Town* this, const void* edx, enum MAGIC_TYPE type);
+bool __fastcall AddMagicTypesHeld__4TownF10MAGIC_TYPE(struct Town* this, const void* edx, enum MAGIC_TYPE type) asm("?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z");
 // win1.41 0073d630 mac 10550b00 Town::IsMagicTypeHeld(MAGIC_TYPE)
-bool __fastcall IsMagicTypeHeld__4TownF10MAGIC_TYPE(struct Town* this, const void* edx, enum MAGIC_TYPE type);
+bool __fastcall IsMagicTypeHeld__4TownF10MAGIC_TYPE(struct Town* this, const void* edx, enum MAGIC_TYPE type) asm("?IsMagicTypeHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z");
 // win1.41 0073e1d0 mac 1054f6b0 Town::GetTotemStatue(void)
-struct TotemStatue* __fastcall GetTotemStatue__4TownFv(struct Town* this);
+struct TotemStatue* __fastcall GetTotemStatue__4TownFv(struct Town* this) asm("?GetTotemStatue@Town@@QAEPAVTotemStatue@@XZ");
 // win1.41 0073e210 mac 1054f460 Town::RemoveVillager(Villager *)
-void __fastcall RemoveVillager__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager);
+void __fastcall RemoveVillager__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillager@Town@@QAEXPAVVillager@@@Z");
 // win1.41 0073eb00 mac 1054dfe0 Town::AssignForestsToTown(void)
-void __fastcall AssignForestsToTown__4TownFv(struct Town* this);
+void __fastcall AssignForestsToTown__4TownFv(struct Town* this) asm("?AssignForestsToTown@Town@@QAEXXZ");
 // win1.41 007408b0 mac 10008020 Town::GetCongregationPos(void)
-struct MapCoords* __fastcall GetCongregationPos__4TownFv(struct Town* this, const void* edx, struct MapCoords* coords);
+struct MapCoords* __fastcall GetCongregationPos__4TownFv(struct Town* this, const void* edx, struct MapCoords* coords) asm("?GetCongregationPos@Town@@QAEPAUMapCoords@@PAU2@@Z");
 // win1.41 00741b40 mac 105464d0 Town::MakeScenicForest(void)
-void __fastcall MakeScenicForest__4TownFv(struct Town* this);
+void __fastcall MakeScenicForest__4TownFv(struct Town* this) asm("?MakeScenicForest@Town@@QAEXXZ");
 // win1.41 007437f0 mac 10071340 Town::UpdateAttitudeToCreature(void)
-void __fastcall UpdateAttitudeToCreature__4TownFv(struct Town* this);
+void __fastcall UpdateAttitudeToCreature__4TownFv(struct Town* this) asm("?UpdateAttitudeToCreature@Town@@QAEXXZ");
 // win1.41 00747380 mac 100556c0 Town::Process(void)
-uint32_t __fastcall Process__4TownFv(struct Town* this);
+uint32_t __fastcall Process__4TownFv(struct Town* this) asm("?Process@Town@@QAEIXZ");
 // win1.41 007477a0 mac 10067510 Town::ProcessTownEmergency(void)
-void __fastcall ProcessTownEmergency__4TownFv(struct Town* this);
+void __fastcall ProcessTownEmergency__4TownFv(struct Town* this) asm("?ProcessTownEmergency@Town@@QAEXXZ");
 // win1.41 00747970 mac 1006d3c0 Town::IsInStateOfEmergency(void)
-bool __fastcall IsInStateOfEmergency__4TownFv(struct Town* this);
+bool __fastcall IsInStateOfEmergency__4TownFv(struct Town* this) asm("?IsInStateOfEmergency@Town@@QAE_NXZ");
 // win1.41 007479a0 mac 105602e0 Town::SetInStateOfEmergency(void)
-void __fastcall SetInStateOfEmergency__4TownFv(struct Town* this);
+void __fastcall SetInStateOfEmergency__4TownFv(struct Town* this) asm("?SetInStateOfEmergency@Town@@QAEXXZ");
 
 DECLARE_LH_LINKED_LIST(Town);
 DECLARE_LH_LIST_HEAD(Town);

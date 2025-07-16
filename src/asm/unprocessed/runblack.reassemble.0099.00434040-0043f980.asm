@@ -127,7 +127,7 @@
 .extern _jmp_addr_0x0071cdf0
 .extern _GetFirstSpellSeedForMagicType__14GSpellSeedInfoF10MAGIC_TYPE
 .extern _jmp_addr_0x0072b100
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073b7a0
 .extern _jmp_addr_0x0073b800
 .extern _jmp_addr_0x0073b990
@@ -10841,7 +10841,7 @@ _jmp_addr_0x0043ab1f:    cmp.s              esi, ebx                            
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000000                   // 0x0043ab29    c744241c00000000
                          {disp8} je         _jmp_addr_0x0043ab4c                                 // 0x0043ab31    7419
                          mov.s              ecx, esi                                             // 0x0043ab33    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0043ab35    e8760a3000
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0043ab35    e8760a3000
                          test               eax, eax                                             // 0x0043ab3a    85c0
                          {disp8} jne        _jmp_addr_0x0043ab9d                                 // 0x0043ab3c    755f
                          cmp                dword ptr [esi + 0x000009a4], ebx                    // 0x0043ab3e    399ea4090000
@@ -10872,7 +10872,7 @@ _jmp_addr_0x0043ab89:    cmp                byte ptr [esp + 0x13], bl           
                          {disp8} mov        byte ptr [esp + 0x13], 0x01                          // 0x0043ab93    c644241301
                          {disp32} jmp       _jmp_addr_0x0043aa7b                                 // 0x0043ab98    e9defeffff
 _jmp_addr_0x0043ab9d:    mov.s              ecx, esi                                             // 0x0043ab9d    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0043ab9f    e80c0a3000
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0043ab9f    e80c0a3000
                          add                eax, 0x14                                            // 0x0043aba4    83c014
                          mov                ecx, dword ptr [eax]                                 // 0x0043aba7    8b08
                          {disp8} mov        dword ptr [esp + 0x14], ecx                          // 0x0043aba9    894c2414

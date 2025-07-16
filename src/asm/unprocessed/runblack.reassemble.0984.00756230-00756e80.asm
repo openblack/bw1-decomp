@@ -32,8 +32,8 @@
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
 .extern @GetInfo__8ReactionCFv@4
 .extern _jmp_addr_0x006e48a0
-.extern @AddVillagerToTown__4TownFP8Villager@12
-.extern @RemoveVillager__4TownFP8Villager@12
+.extern ?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z
+.extern ?RemoveVillager@Town@@QAEXPAVVillager@@@Z
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
 .extern _jmp_addr_0x00751490
@@ -97,7 +97,7 @@ _jmp_addr_0x00756240:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x0075626a                          // 0x00756260    7408
                          push               esi                                           // 0x00756262    56
                          mov.s              ecx, ebx                                      // 0x00756263    8bcb
-                         call               @RemoveVillager__4TownFP8Villager@12          // 0x00756265    e8a67ffeff
+                         call               ?RemoveVillager@Town@@QAEXPAVVillager@@@Z     // 0x00756265    e8a67ffeff
 _jmp_addr_0x0075626a:    mov                eax, dword ptr [esi]                          // 0x0075626a    8b06
                          mov.s              ecx, esi                                      // 0x0075626c    8bce
                          call               dword ptr [eax + 0xaf8]                       // 0x0075626e    ff90f80a0000
@@ -116,7 +116,7 @@ _jmp_addr_0x0075628e:    {disp32} fcomp     dword ptr [_rdata_float1p0]         
                          {disp8} jne        _jmp_addr_0x007562aa                          // 0x00756299    750f
                          push               esi                                           // 0x0075629b    56
                          mov.s              ecx, ebp                                      // 0x0075629c    8bcd
-                         call               @AddVillagerToTown__4TownFP8Villager@12       // 0x0075629e    e8ed3dfeff
+                         call               ?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z // 0x0075629e    e8ed3dfeff
                          pop                edi                                           // 0x007562a3    5f
                          pop                esi                                           // 0x007562a4    5e
                          pop                ebp                                           // 0x007562a5    5d

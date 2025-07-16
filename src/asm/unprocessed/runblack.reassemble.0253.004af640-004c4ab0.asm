@@ -60,9 +60,9 @@
 .extern _GameFloatRand__5GRandFf
 .extern _jmp_addr_0x0072a5f0
 .extern _jmp_addr_0x0072b230
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073bab0
-.extern @GetTotemStatue__4TownFv@4
+.extern ?GetTotemStatue@Town@@QAEPAVTotemStatue@@XZ
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern @GetAbode__8VillagerFv@4
 .extern @GetTotemPos__11WorshipSiteFv@12
@@ -13097,7 +13097,7 @@ _jmp_addr_0x004b9001:    sub                esp, 0x10                           
                          test               eax, eax                                             // 0x004b907c    85c0
                          {disp32} je        _jmp_addr_0x004b9257                                 // 0x004b907e    0f84d3010000
                          mov.s              ecx, eax                                             // 0x004b9084    8bc8
-                         call               @GetTotemStatue__4TownFv@4                           // 0x004b9086    e845512800
+                         call               ?GetTotemStatue@Town@@QAEPAVTotemStatue@@XZ          // 0x004b9086    e845512800
                          test               eax, eax                                             // 0x004b908b    85c0
                          {disp32} je        _jmp_addr_0x004b9257                                 // 0x004b908d    0f84c4010000
                          {disp32} mov       edi, dword ptr [edi + 0x00001514]                    // 0x004b9093    8bbf14150000
@@ -15456,7 +15456,7 @@ _jmp_addr_0x004bac61:    {disp32} mov       esi, dword ptr [esi + 0x0000075c]   
                          test               ebx, ebx                                             // 0x004bac6b    85db
                          {disp32} je        _jmp_addr_0x004bae0f                                 // 0x004bac6d    0f849c010000
                          mov.s              ecx, ebx                                             // 0x004bac73    8bcb
-                         call               @GetStoragePit__4TownFv@4                            // 0x004bac75    e836092800
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x004bac75    e836092800
                          test               eax, eax                                             // 0x004bac7a    85c0
                          {disp32} je        _jmp_addr_0x004bae0f                                 // 0x004bac7c    0f848d010000
                          {disp32} mov       ecx, dword ptr [edi + 0x00001514]                    // 0x004bac82    8b8f14150000
@@ -19263,7 +19263,7 @@ _jmp_addr_0x004bd8f6:    {disp32} mov       ecx, dword ptr [ebx + 0x00001514]   
                          mov.s              edi, eax                                             // 0x004bd980    8bf8
                          mov.s              ecx, edi                                             // 0x004bd982    8bcf
                          {disp8} mov        dword ptr [esp + 0x14], edi                          // 0x004bd984    897c2414
-                         call               @GetStoragePit__4TownFv@4                            // 0x004bd988    e823dc2700
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x004bd988    e823dc2700
                          test               edi, edi                                             // 0x004bd98d    85ff
                          mov.s              ebp, eax                                             // 0x004bd98f    8be8
                          {disp8} mov        dword ptr [esp + 0x20], ebp                          // 0x004bd991    896c2420
@@ -19725,7 +19725,7 @@ _jmp_addr_0x004bde9c:    {disp32} mov       ecx, dword ptr [ebx + 0x00001514]   
                          mov.s              edi, eax                                             // 0x004bdf20    8bf8
                          mov.s              ecx, edi                                             // 0x004bdf22    8bcf
                          {disp8} mov        dword ptr [esp + 0x14], edi                          // 0x004bdf24    897c2414
-                         call               @GetStoragePit__4TownFv@4                            // 0x004bdf28    e883d62700
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x004bdf28    e883d62700
                          test               edi, edi                                             // 0x004bdf2d    85ff
                          mov.s              ebp, eax                                             // 0x004bdf2f    8be8
                          {disp8} mov        dword ptr [esp + 0x20], ebp                          // 0x004bdf31    896c2420
@@ -24813,7 +24813,7 @@ _jmp_addr_0x004c1a7f:    {disp32} mov       esi, dword ptr [esi + 0x0000075c]   
                          test               edi, edi                                             // 0x004c1a89    85ff
                          {disp32} je        _jmp_addr_0x004c1cc0                                 // 0x004c1a8b    0f842f020000
                          mov.s              ecx, edi                                             // 0x004c1a91    8bcf
-                         call               @GetStoragePit__4TownFv@4                            // 0x004c1a93    e8189b2700
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x004c1a93    e8189b2700
                          test               eax, eax                                             // 0x004c1a98    85c0
                          {disp8} mov        dword ptr [esp + 0x10], eax                          // 0x004c1a9a    89442410
                          {disp32} je        _jmp_addr_0x004c1cc0                                 // 0x004c1a9e    0f841c020000

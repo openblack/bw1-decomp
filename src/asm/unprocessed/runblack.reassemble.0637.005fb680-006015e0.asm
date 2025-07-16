@@ -102,8 +102,8 @@
 .extern _jmp_addr_0x007216f0
 .extern _jmp_addr_0x0072b4b0
 .extern _jmp_addr_0x0072d9c0
-.extern @AddVillagerToTown__4TownFP8Villager@12
-.extern @RemoveVillager__4TownFP8Villager@12
+.extern ?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z
+.extern ?RemoveVillager@Town@@QAEXPAVVillager@@@Z
 .extern @__ct__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff@32
 .extern _jmp_addr_0x00749ed0
 .extern _jmp_addr_0x00749f60
@@ -4313,7 +4313,7 @@ _jmp_addr_0x005fdaf0:    push               esi                                 
                          {disp8} je         _jmp_addr_0x005fdb26                          // 0x005fdb1c    7408
                          push               esi                                           // 0x005fdb1e    56
                          mov.s              ecx, eax                                      // 0x005fdb1f    8bc8
-                         call               @RemoveVillager__4TownFP8Villager@12          // 0x005fdb21    e8ea061400
+                         call               ?RemoveVillager@Town@@QAEXPAVVillager@@@Z     // 0x005fdb21    e8ea061400
 _jmp_addr_0x005fdb26:    push               0x0                                           // 0x005fdb26    6a00
                          push               0x009c8e00                                    // 0x005fdb28    68008e9c00
                          push               0x009c7f50                                    // 0x005fdb2d    68507f9c00
@@ -5068,10 +5068,10 @@ _jmp_addr_0x005fe3d1:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x005fe411                          // 0x005fe407    7408
                          push               edi                                           // 0x005fe409    57
                          mov.s              ecx, eax                                      // 0x005fe40a    8bc8
-                         call               @RemoveVillager__4TownFP8Villager@12          // 0x005fe40c    e8fffd1300
+                         call               ?RemoveVillager@Town@@QAEXPAVVillager@@@Z     // 0x005fe40c    e8fffd1300
 _jmp_addr_0x005fe411:    {disp32} mov       ecx, dword ptr [esi + 0x000000f4]             // 0x005fe411    8b8ef4000000
                          push               edi                                           // 0x005fe417    57
-                         call               @AddVillagerToTown__4TownFP8Villager@12       // 0x005fe418    e873bc1300
+                         call               ?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z // 0x005fe418    e873bc1300
                          {disp32} mov       eax, dword ptr [esi + 0x000000f0]             // 0x005fe41d    8b86f0000000
                          test               eax, eax                                      // 0x005fe423    85c0
                          {disp8} je         _jmp_addr_0x005fe434                          // 0x005fe425    740d

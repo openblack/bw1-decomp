@@ -219,9 +219,9 @@
 .extern _jmp_addr_0x0072e3b0
 .extern _jmp_addr_0x007352b0
 .extern _jmp_addr_0x00735330
-.extern @AddStructureToTown__4TownFP13MultiMapFixed@12
+.extern ?AddStructureToTown@Town@@QAEXPAVMultiMapFixed@@@Z
 .extern _jmp_addr_0x00739a60
-.extern @GetStoragePit__4TownFv@4
+.extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073e420
 .extern _jmp_addr_0x0074cd50
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -1584,11 +1584,11 @@ _jmp_addr_0x0071ca60:    push               esi                                 
                          add                eax, dword ptr [esi + 0x00000618]                    // 0x0071ca79    038618060000
                          {disp8} je         _jmp_addr_0x0071cae0                                 // 0x0071ca7f    745f
                          mov.s              ecx, esi                                             // 0x0071ca81    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0071ca83    e828eb0100
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0071ca83    e828eb0100
                          test               eax, eax                                             // 0x0071ca88    85c0
                          {disp8} je         _jmp_addr_0x0071cae0                                 // 0x0071ca8a    7454
                          mov.s              ecx, esi                                             // 0x0071ca8c    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0071ca8e    e81deb0100
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0071ca8e    e81deb0100
                          mov                edx, dword ptr [eax]                                 // 0x0071ca93    8b10
                          mov.s              ecx, eax                                             // 0x0071ca95    8bc8
                          call               dword ptr [edx + 0xd4]                               // 0x0071ca97    ff92d4000000
@@ -1638,11 +1638,11 @@ _jmp_addr_0x0071caf0:    push               esi                                 
                          add                eax, dword ptr [esi + 0x00000618]                    // 0x0071cb09    038618060000
                          {disp8} je         _jmp_addr_0x0071cb70                                 // 0x0071cb0f    745f
                          mov.s              ecx, esi                                             // 0x0071cb11    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0071cb13    e898ea0100
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0071cb13    e898ea0100
                          test               eax, eax                                             // 0x0071cb18    85c0
                          {disp8} je         _jmp_addr_0x0071cb70                                 // 0x0071cb1a    7454
                          mov.s              ecx, esi                                             // 0x0071cb1c    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0071cb1e    e88dea0100
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0071cb1e    e88dea0100
                          mov                edx, dword ptr [eax]                                 // 0x0071cb23    8b10
                          mov.s              ecx, eax                                             // 0x0071cb25    8bc8
                          call               dword ptr [edx + 0xd4]                               // 0x0071cb27    ff92d4000000
@@ -1752,11 +1752,11 @@ _jmp_addr_0x0071cc40:    push               esi                                 
                          add                eax, dword ptr [esi + 0x00000618]                    // 0x0071cc59    038618060000
                          {disp8} je         _jmp_addr_0x0071ccbb                                 // 0x0071cc5f    745a
                          mov.s              ecx, esi                                             // 0x0071cc61    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0071cc63    e848e90100
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0071cc63    e848e90100
                          test               eax, eax                                             // 0x0071cc68    85c0
                          {disp8} je         _jmp_addr_0x0071ccbb                                 // 0x0071cc6a    744f
                          mov.s              ecx, esi                                             // 0x0071cc6c    8bce
-                         call               @GetStoragePit__4TownFv@4                            // 0x0071cc6e    e83de90100
+                         call               ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ            // 0x0071cc6e    e83de90100
                          mov                edx, dword ptr [eax]                                 // 0x0071cc73    8b10
                          mov.s              ecx, eax                                             // 0x0071cc75    8bc8
                          call               dword ptr [edx + 0xd4]                               // 0x0071cc77    ff92d4000000
@@ -11329,7 +11329,7 @@ _jmp_addr_0x00722fdc:    {disp8} mov        edi, dword ptr [esp + 0x0c]         
                          {disp8} je         _jmp_addr_0x00723001                                 // 0x00722fe2    741d
                          push               esi                                                  // 0x00722fe4    56
                          mov.s              ecx, edi                                             // 0x00722fe5    8bcf
-                         call               @AddStructureToTown__4TownFP13MultiMapFixed@12       // 0x00722fe7    e8b4690100
+                         call               ?AddStructureToTown@Town@@QAEXPAVMultiMapFixed@@@Z   // 0x00722fe7    e8b4690100
                          mov                eax, dword ptr [esi]                                 // 0x00722fec    8b06
                          mov.s              ecx, esi                                             // 0x00722fee    8bce
                          call               dword ptr [eax + 0x48]                               // 0x00722ff0    ff5048
