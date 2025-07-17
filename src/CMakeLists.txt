@@ -90,6 +90,8 @@ set(SOURCES_001
     c/PlannedAbode.001.c
     c/PlannedMultiMapFixed.000.c
     c/PlannedAbode.002.c
+    c/GameThing.001.c
+    c/GameThingWithPos.001.c
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 

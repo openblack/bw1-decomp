@@ -19,8 +19,11 @@ def parse_functions_from_file(file: TextIO) -> Generator[Tuple[str, str], None, 
                 end_line = lineno - 1
                 yield current_name, "\n".join(strip_trailing_nops(current_body)), start_line, end_line
             start_line = lineno
-            current_name = line.strip().rstrip(':')
+            before, after = line.strip().split(':')
+            current_name = before
             current_body = []
+            if after:
+                current_body.append(after)
         elif current_name is not None:
             if line.strip():
                 current_body.append(line.rstrip('\n'))
