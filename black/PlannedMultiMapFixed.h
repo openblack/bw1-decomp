@@ -34,7 +34,7 @@ struct PlannedMultiMapFixed
 {
   struct GameThingWithPos super;  /* 0x0 */
   float field_0x28;
-  float field_0x2c;
+  float scale;
   uint32_t field_0x30;
   uint32_t field_0x34;
   struct GFootpathLink* footpath_link;

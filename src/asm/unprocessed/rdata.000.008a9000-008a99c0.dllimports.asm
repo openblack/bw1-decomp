@@ -277,7 +277,7 @@
 .globl __imp__GetGameData_LHSession__QAEPAXXZ@4
 .globl __imp__GetGameDataLength_LHSession__QAEKXZ@4
 .globl __imp__StopSession_LHSession__QAE_AW4LH_RETURN__XZ@4
-.globl __imp__GetTransportInfo_LHConnection__QAE_AW4LH_RETURN__PAVLHTransportInfo__H_Z@4
+.globl ?GetTransportInfo@LHConnection@@QAE?AW4LH_RETURN@@PAVLHTransportInfo@@H@Z
 .globl __imp__ClearAllData_LHTransportInfo__QAEXXZ@4
 .globl __imp__LHNetSetCurrentProfileData__YA_AW4LH_RETURN__PADPAEK_Z@4
 .globl __imp__LHNetGetCurrentProfileData__YA_AW4LH_RETURN__PADPAEPAK_Z@4
@@ -889,7 +889,7 @@ __imp__EmptyEventQ_LHSession__QAEXXZ@4:                                         
 __imp__GetGameData_LHSession__QAEPAXXZ@4:                                                                                      .long 0x005c2ec2 // 0x008a9464 LHMultiplayerR.dll::GetGameData_LHSession__QAEPAXXZ
 __imp__GetGameDataLength_LHSession__QAEKXZ@4:                                                                                  .long 0x005c2ee6 // 0x008a9468 LHMultiplayerR.dll::GetGameDataLength_LHSession__QAEKXZ
 __imp__StopSession_LHSession__QAE_AW4LH_RETURN__XZ@4:                                                                          .long 0x005c2f0e // 0x008a946c LHMultiplayerR.dll::StopSession_LHSession__QAE_AW4LH_RETURN__XZ
-__imp__GetTransportInfo_LHConnection__QAE_AW4LH_RETURN__PAVLHTransportInfo__H_Z@4:                                             .long 0x005c2f3e // 0x008a9470 LHMultiplayerR.dll::GetTransportInfo_LHConnection__QAE_AW4LH_RETURN__PAVLHTransportInfo__H_Z
+?GetTransportInfo@LHConnection@@QAE?AW4LH_RETURN@@PAVLHTransportInfo@@H@Z:                                                     .long 0x005c2f3e // 0x008a9470 LHMultiplayerR.dll::GetTransportInfo_LHConnection__QAE_AW4LH_RETURN__PAVLHTransportInfo__H_Z
 __imp__ClearAllData_LHTransportInfo__QAEXXZ@4:                                                                                 .long 0x005c2f8a // 0x008a9474 LHMultiplayerR.dll::ClearAllData_LHTransportInfo__QAEXXZ
 __imp__LHNetSetCurrentProfileData__YA_AW4LH_RETURN__PADPAEK_Z@4:                                                               .long 0x005c2fb2 // 0x008a9478 LHMultiplayerR.dll::LHNetSetCurrentProfileData__YA_AW4LH_RETURN__PADPAEK_Z
 __imp__LHNetGetCurrentProfileData__YA_AW4LH_RETURN__PADPAEPAK_Z@4:                                                             .long 0x005c2fec // 0x008a947c LHMultiplayerR.dll::LHNetGetCurrentProfileData__YA_AW4LH_RETURN__PADPAEPAK_Z
