@@ -16,10 +16,10 @@
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern ?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ?Process@Abode@@UAEIXZ
-.extern @MakeFunctional__5AbodeFv@4
-.extern @IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town@24
+.extern ?MakeFunctional@Abode@@UAEXXZ
+.extern ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z
 .extern ?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z
-.extern @__ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff@28
+.extern ??0PlannedAbode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern @Init__12PlannedAbodeFP4Town@12
 .extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
 .extern _jmp_addr_0x004056f0
@@ -594,7 +594,7 @@ _jmp_addr_0x0073a769:    mov.s              ecx, esi                            
                          push               0x0                                                  // 0x0073a77a    6a00
                          push               esi                                                  // 0x0073a77c    56
                          mov.s              ecx, ebx                                             // 0x0073a77d    8bcb
-                         call               @IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town@24                                 // 0x0073a77f    e88ca3ccff
+                         call               ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z  // 0x0073a77f    e88ca3ccff
                          cmp                eax, 0x01                                            // 0x0073a784    83f801
                          {disp8} je         _jmp_addr_0x0073a7b5                                 // 0x0073a787    742c
 _jmp_addr_0x0073a789:    {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x0073a789    8d4c241c
@@ -15299,7 +15299,7 @@ _MakeFunctional__10TownCentreFv:
                          push               ebx                                                  // 0x00743e80    53
                          push               ebp                                                  // 0x00743e81    55
                          mov.s              ebx, ecx                                             // 0x00743e82    8bd9
-                         call               @MakeFunctional__5AbodeFv@4                          // 0x00743e84    e85709ccff
+                         call               ?MakeFunctional@Abode@@UAEXXZ                        // 0x00743e84    e85709ccff
                          mov                eax, dword ptr [ebx]                                 // 0x00743e89    8b03
                          mov.s              ecx, ebx                                             // 0x00743e8b    8bcb
                          call               dword ptr [eax + 0x48]                               // 0x00743e8d    ff5048
@@ -15894,7 +15894,7 @@ _jmp_addr_0x00744410:    push               ebx                                 
                          add                esi, 0x14                                            // 0x00744441    83c614
                          push               esi                                                  // 0x00744444    56
                          mov.s              ecx, edi                                             // 0x00744445    8bcf
-                         call               @__ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff@28                                 // 0x00744447    e8340cccff
+                         call               ??0PlannedAbode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z  // 0x00744447    e8340cccff
                          mov                dword ptr [edi], 0x008e46dc                          // 0x0074444c    c707dc468e00
                          mov.s              eax, edi                                             // 0x00744452    8bc7
                          pop                edi                                                  // 0x00744454    5f
@@ -15920,7 +15920,7 @@ _jmp_addr_0x00744410:    push               ebx                                 
                          push               eax                                                  // 0x0074447a    50
                          push               ecx                                                  // 0x0074447b    51
                          mov.s              ecx, esi                                             // 0x0074447c    8bce
-                         call               @__ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff@28                                 // 0x0074447e    e8fd0bccff
+                         call               ??0PlannedAbode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z  // 0x0074447e    e8fd0bccff
                          mov                dword ptr [esi], 0x008e46dc                          // 0x00744483    c706dc468e00
                          mov.s              eax, esi                                             // 0x00744489    8bc6
                          pop                esi                                                  // 0x0074448b    5e

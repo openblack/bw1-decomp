@@ -18,7 +18,7 @@
 .extern ?GetSizeEMetricsData_dup1@LH3DMesh@@QAEIXZ
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern ?Built@Abode@@UAE_NXZ
-.extern @MakeFunctional__5AbodeFv@4
+.extern ?MakeFunctional@Abode@@UAEXXZ
 .extern _jmp_addr_0x00405fc0
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
@@ -26630,7 +26630,7 @@ _jmp_addr_0x00778eff:    pop                edi                                 
                          nop                                                                // 0x00778f1d    90
                          nop                                                                // 0x00778f1e    90
                          nop                                                                // 0x00778f1f    90
-                         {disp32} jmp       @MakeFunctional__5AbodeFv@4                     // 0x00778f20    e9bbb8c8ff
+                         {disp32} jmp       ?MakeFunctional@Abode@@UAEXXZ                   // 0x00778f20    e9bbb8c8ff
                          nop                                                                // 0x00778f25    90
                          nop                                                                // 0x00778f26    90
                          nop                                                                // 0x00778f27    90

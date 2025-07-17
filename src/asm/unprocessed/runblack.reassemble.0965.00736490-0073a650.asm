@@ -17,7 +17,7 @@
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z
-.extern @MakeFunctional__5AbodeFv@4
+.extern ?MakeFunctional@Abode@@UAEXXZ
 .extern ?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
@@ -1999,7 +1999,7 @@ _jmp_addr_0x00737790:    push               ecx                                 
                          nop                                                               // 0x007377cf    90
                          push               esi                                            // 0x007377d0    56
                          mov.s              esi, ecx                                       // 0x007377d1    8bf1
-                         call               @MakeFunctional__5AbodeFv@4                    // 0x007377d3    e808d0ccff
+                         call               ?MakeFunctional@Abode@@UAEXXZ                  // 0x007377d3    e808d0ccff
                          mov                eax, dword ptr [esi]                           // 0x007377d8    8b06
                          mov.s              ecx, esi                                       // 0x007377da    8bce
                          call               dword ptr [eax + 0x48]                         // 0x007377dc    ff5048
