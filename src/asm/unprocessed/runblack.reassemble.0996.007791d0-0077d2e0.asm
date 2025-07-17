@@ -16,7 +16,7 @@
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern ?Process@Abode@@UAEIXZ
-.extern @MakeFunctional__5AbodeFv@4
+.extern ?MakeFunctional@Abode@@UAEXXZ
 .extern ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
@@ -880,7 +880,7 @@ _jmp_addr_0x0077978b:    push               edi                                 
                          nop                                                              // 0x007797af    90
                          push               esi                                           // 0x007797b0    56
                          mov.s              esi, ecx                                      // 0x007797b1    8bf1
-                         call               @MakeFunctional__5AbodeFv@4                   // 0x007797b3    e828b0c8ff
+                         call               ?MakeFunctional@Abode@@UAEXXZ                 // 0x007797b3    e828b0c8ff
                          mov                eax, dword ptr [esi]                          // 0x007797b8    8b06
                          mov.s              ecx, esi                                      // 0x007797ba    8bce
                          call               dword ptr [eax + 0x48]                        // 0x007797bc    ff5048

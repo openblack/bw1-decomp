@@ -136,9 +136,9 @@ int __fastcall CalculateFoodNeededForDinner__5AbodeFv(struct Abode* this) asm("?
 // win1.41 00404630 mac inline Abode::NumVillagersOfSex(SEX_TYPE)
 struct Villager* __fastcall GetOtherParent__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?GetOtherParent@Abode@@QAEPAVVillager@@PAV2@@Z");
 // win1.41 004046a0 mac inline Abode::FUN_004046a0(void)
-void __fastcall FUN_004046a0__5AbodeFv(struct Abode* this) asm("?FUN_004046a0@Abode@@QAEXXZ");
+void __fastcall FUN_004046a0__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?FUN_004046a0@Abode@@QAEXH@Z");
 // win1.41 004046b0 mac inline Abode::FUN_004046a0(void)
-int __fastcall FUN_004046b0__5AbodeFv(struct Abode* this) asm("?FUN_004046b0@Abode@@QAEHXZ");;
+int __fastcall FUN_004046b0__5AbodeFv(struct Abode* this) asm("?FUN_004046b0@Abode@@QAEHXZ");
 // win1.41 004046c0 mac 105b93c0 Abode::IsTooCrowded(void)
 bool32_t __fastcall IsTooCrowded__5AbodeFv(struct Abode* this) asm("?IsTooCrowded@Abode@@QAE_NXZ");
 // win1.41 00404600 mac 1032c5d0 Abode::IsEnoughFoodForDinner(void)
@@ -311,7 +311,7 @@ void __fastcall MoveAbodeToPlannedAbodes__5AbodeFv(struct Abode* this) asm("?Mov
 // win1.41 00403f00 mac 100e33a0 Abode::DeleteDependancys(void)
 void __fastcall DeleteDependancys__5AbodeFv(struct Abode* this) asm("?DeleteDependancys@Abode@@UAEXXZ");
 // win1.41 004047e0 mac 103c1e30 Abode::MakeFunctional(void)
-void __fastcall MakeFunctional__5AbodeFv(struct Abode* this);
+void __fastcall MakeFunctional__5AbodeFv(struct Abode* this) asm("?MakeFunctional@Abode@@UAEXXZ");
 // win1.41 004073c0 mac 103b5600 Abode::StopBeingFunctional(GPlayer *)
 void __fastcall StopBeingFunctional__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z");
 // win1.41 00401680 mac 10371be0 Abode::RestartBeingFunctional(void)

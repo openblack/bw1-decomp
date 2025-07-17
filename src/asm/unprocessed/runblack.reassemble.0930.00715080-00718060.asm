@@ -9,7 +9,7 @@
 
 .extern ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
-.extern @IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town@24
+.extern ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z
 .extern ?Create@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z
 .extern _GetInfoFromText__10GAbodeInfoFPc
 .extern @DeleteString__9SetupListFi@12
@@ -776,7 +776,7 @@ _jmp_addr_0x0071580e:    cmp.s              edi, ebx                            
                          {disp8} lea        edx, dword ptr [esp + 0x40]                   // 0x00715821    8d542440
                          push               edx                                           // 0x00715825    52
                          mov.s              ecx, edi                                      // 0x00715826    8bcf
-                         call               @IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town@24                          // 0x00715828    e8e3f2ceff
+                         call               ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z  // 0x00715828    e8e3f2ceff
                          cmp                eax, 0x01                                     // 0x0071582d    83f801
                          {disp32} jne       _jmp_addr_0x00717e8a                          // 0x00715830    0f8554260000
                          push               0x0                                           // 0x00715836    6a00

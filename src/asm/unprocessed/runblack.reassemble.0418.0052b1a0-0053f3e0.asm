@@ -14,7 +14,7 @@
 .extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
-.extern @MakeFunctional__5AbodeFv@4
+.extern ?MakeFunctional@Abode@@UAEXXZ
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern _jmp_addr_0x00407700
@@ -10797,7 +10797,7 @@ _jmp_addr_0x0053134d:    mov.s              eax, esi                            
 _jmp_addr_0x005313cb:    mov.s              ecx, esi                                             // 0x005313cb    8bce
                          call               _jmp_addr_0x005313e0                                 // 0x005313cd    e80e000000
 _jmp_addr_0x005313d2:    mov.s              ecx, esi                                             // 0x005313d2    8bce
-                         call               @MakeFunctional__5AbodeFv@4                          // 0x005313d4    e80734edff
+                         call               ?MakeFunctional@Abode@@UAEXXZ                        // 0x005313d4    e80734edff
                          pop                esi                                                  // 0x005313d9    5e
                          ret                                                                     // 0x005313da    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x005313db    e89904edff

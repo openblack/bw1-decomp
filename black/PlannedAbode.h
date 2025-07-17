@@ -36,7 +36,7 @@ struct GPlannedAbodeInfo* __cdecl GetInfo__12PlannedAbodeFv(void) asm("?GetInfo@
 // Constructors
 
 // win1.41 00405080 mac 103e51a0 PlannedAbode::PlannedAbode(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-struct PlannedAbode* __fastcall __ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff(struct PlannedAbode* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, struct Town* town, float param_4, float param_5);
+struct PlannedAbode* __fastcall __ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff(struct PlannedAbode* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, struct Town* town, float param_4, float param_5)  asm("??0PlannedAbode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Non-virtual methods
 

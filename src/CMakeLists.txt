@@ -85,6 +85,8 @@ set(SOURCES_001
     c/Abode.003.c
     c/LH3DMesh.000.c
     c/Abode.004.c
+    c/AbodeInfo.004.c
+    c/Abode.005.c
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 

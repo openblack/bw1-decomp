@@ -11,7 +11,7 @@
 .extern ??1Abode@@UAE@XZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
-.extern @MakeFunctional__5AbodeFv@4
+.extern ?MakeFunctional@Abode@@UAEXXZ
 .extern ?ReduceLife@Abode@@UAEXMPAVGPlayer@@@Z
 .extern _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl
 .extern ___nw__4BaseFUl
@@ -2142,7 +2142,7 @@ _jmp_addr_0x0050ab35:    pop                edi                                 
                          nop                                                              // 0x0050ab4f    90
                          push               esi                                           // 0x0050ab50    56
                          mov.s              esi, ecx                                      // 0x0050ab51    8bf1
-                         call               @MakeFunctional__5AbodeFv@4                   // 0x0050ab53    e8889cefff
+                         call               ?MakeFunctional@Abode@@UAEXXZ                 // 0x0050ab53    e8889cefff
                          mov                eax, dword ptr [esi]                          // 0x0050ab58    8b06
                          mov.s              ecx, esi                                      // 0x0050ab5a    8bce
                          call               dword ptr [eax + 0x48]                        // 0x0050ab5c    ff5048

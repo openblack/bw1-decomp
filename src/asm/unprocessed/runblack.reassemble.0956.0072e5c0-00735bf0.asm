@@ -13,7 +13,7 @@
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
-.extern @MakeFunctional__5AbodeFv@4
+.extern ?MakeFunctional@Abode@@UAEXXZ
 .extern ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
@@ -7099,7 +7099,7 @@ _jmp_addr_0x00732f15:    pop                edi                                 
                          nop                                                              // 0x00732f2f    90
                          push               esi                                           // 0x00732f30    56
                          mov.s              esi, ecx                                      // 0x00732f31    8bf1
-                         call               @MakeFunctional__5AbodeFv@4                   // 0x00732f33    e8a818cdff
+                         call               ?MakeFunctional@Abode@@UAEXXZ                 // 0x00732f33    e8a818cdff
                          mov                eax, dword ptr [esi]                          // 0x00732f38    8b06
                          mov.s              ecx, esi                                      // 0x00732f3a    8bce
                          call               dword ptr [eax + 0x48]                        // 0x00732f3c    ff5048
