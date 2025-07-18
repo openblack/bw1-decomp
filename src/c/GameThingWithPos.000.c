@@ -1181,6 +1181,5 @@ float __fastcall GetReactionPower__16GameThingWithPosFv(struct GameThingWithPos*
 
 void __fastcall CleanUpBeforeReset__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("ret");                                                         // 0x004024e0    c3
-    __builtin_unreachable();
+    return;
 }

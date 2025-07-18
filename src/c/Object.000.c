@@ -39,8 +39,7 @@ void __fastcall SetJustScale__6ObjectFf(struct Object* this, const void* edx, fl
 
 void __fastcall UpdateFrom3DPosition__6ObjectFv(struct Object* this)
 {
-    asm("ret");                                                         // 0x00402540    c3
-    __builtin_unreachable();
+    return;
 }
 
 uint32_t __fastcall MoveAlongPath__6ObjectFv(struct Object* this)
