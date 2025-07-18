@@ -77,7 +77,6 @@ set(SOURCES_001
     c/_float_constants.000.c
     c/GameThing.000.c
     c/_float_constants.001.c
-    c/PlannedAbode.000.c
     c/GameThingWithPos.000.c
     c/Object.000.c
     c/Abode.002.c
@@ -87,9 +86,9 @@ set(SOURCES_001
     c/Abode.004.c
     c/AbodeInfo.004.c
     c/Abode.005.c
-    c/PlannedAbode.001.c
+    c/PlannedAbode.000.c
     c/PlannedMultiMapFixed.000.c
-    c/PlannedAbode.002.c
+    c/PlannedAbode.001.c
     c/GameThing.001.c
     c/GameThingWithPos.001.c
 
