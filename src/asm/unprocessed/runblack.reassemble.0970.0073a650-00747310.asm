@@ -20,9 +20,9 @@
 .extern ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z
 .extern ?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z
 .extern ??0PlannedAbode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern @Init__12PlannedAbodeFP4Town@12
+.extern ?Init@PlannedAbode@@QAEXPAVTown@@@Z
 .extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
-.extern _jmp_addr_0x004056f0
+.extern ?FUN_004056f0@PlannedAbode@@QAE_NH@Z
 .extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
 .extern _jmp_addr_0x00405b70
 .extern ?SaveObject@Abode@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z
@@ -130,7 +130,7 @@
 .extern _jmp_addr_0x00603320
 .extern @GetFirstIterator__9MapCoordsCFv@12
 .extern _jmp_addr_0x00603840
-.extern _jmp_addr_0x00603dc0
+.extern ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z
 .extern @InBounds__9MapCoordsCFv@4
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
 .extern @__apl__9MapCoordsFRC9MapCoords@12
@@ -147,7 +147,7 @@
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a710
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b0b0
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x00649810
@@ -2094,7 +2094,7 @@ _jmp_addr_0x0073b671:    push               0x0                                 
                          {disp8} je         _jmp_addr_0x0073b69b                                 // 0x0073b68c    740d
                          push               ebx                                                  // 0x0073b68e    53
                          mov.s              ecx, esi                                             // 0x0073b68f    8bce
-                         call               _jmp_addr_0x004056f0                                 // 0x0073b691    e85aa0ccff
+                         call               ?FUN_004056f0@PlannedAbode@@QAE_NH@Z                                 // 0x0073b691    e85aa0ccff
                          cmp                eax, 0x01                                            // 0x0073b696    83f801
                          {disp8} je         _jmp_addr_0x0073b6aa                                 // 0x0073b699    740f
 _jmp_addr_0x0073b69b:    {disp8} mov        edi, dword ptr [edi + 0x44]                          // 0x0073b69b    8b7f44
@@ -5674,7 +5674,7 @@ _jmp_addr_0x0073d9f6:    push               edi                                 
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                          // 0x0073da2e    8b4c2428
                          push               edx                                                  // 0x0073da32    52
                          push               eax                                                  // 0x0073da33    50
-                         call               _jmp_addr_0x00603dc0                                 // 0x0073da34    e88763ecff
+                         call               ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z                                 // 0x0073da34    e88763ecff
                          test               eax, eax                                             // 0x0073da39    85c0
                          {disp8} je         _jmp_addr_0x0073da77                                 // 0x0073da3b    743a
 _jmp_addr_0x0073da3d:    {disp8} mov        eax, dword ptr [esp + 0x2c]                          // 0x0073da3d    8b44242c
@@ -5722,7 +5722,7 @@ _jmp_addr_0x0073daa0:    {disp32} mov       eax, dword ptr [data_bytes + 0x3dc91
                          mov.s              esi, ecx                                             // 0x0073daa8    8bf1
                          {disp8} jne        _jmp_addr_0x0073dabb                                 // 0x0073daaa    750f
                          push               0x0                                                  // 0x0073daac    6a00
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType   // 0x0073daae    e8fdd0efff
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z   // 0x0073daae    e8fdd0efff
                          add                esp, 0x04                                            // 0x0073dab3    83c404
                          {disp32} mov       dword ptr [data_bytes + 0x3dc914], eax               // 0x0073dab6    a31429da00
 _jmp_addr_0x0073dabb:    mov                eax, dword ptr [esi]                                 // 0x0073dabb    8b06
@@ -15853,7 +15853,7 @@ _jmp_addr_0x007443b2:    ret                                                    
                          call               dword ptr [eax + 0x48]                               // 0x007443ee    ff5048
                          push               eax                                                  // 0x007443f1    50
                          mov.s              ecx, edi                                             // 0x007443f2    8bcf
-                         call               @Init__12PlannedAbodeFP4Town@12                      // 0x007443f4    e8a711ccff
+                         call               ?Init@PlannedAbode@@QAEXPAVTown@@@Z                  // 0x007443f4    e8a711ccff
                          mov                edx, dword ptr [esi]                                 // 0x007443f9    8b16
                          push               0x0                                                  // 0x007443fb    6a00
                          mov.s              ecx, esi                                             // 0x007443fd    8bce
@@ -15976,7 +15976,7 @@ _Create__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff:    push        
                          mov.s              esi, eax                                             // 0x0074450a    8bf0
                          push               edi                                                  // 0x0074450c    57
                          mov.s              ecx, esi                                             // 0x0074450d    8bce
-                         call               @Init__12PlannedAbodeFP4Town@12                      // 0x0074450f    e88c10ccff
+                         call               ?Init@PlannedAbode@@QAEXPAVTown@@@Z                  // 0x0074450f    e88c10ccff
                          pop                edi                                                  // 0x00744514    5f
                          mov.s              eax, esi                                             // 0x00744515    8bc6
                          pop                esi                                                  // 0x00744517    5e
@@ -15984,7 +15984,7 @@ _Create__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff:    push        
 _jmp_addr_0x00744519:    xor.s              esi, esi                                             // 0x00744519    33f6
                          push               edi                                                  // 0x0074451b    57
                          mov.s              ecx, esi                                             // 0x0074451c    8bce
-                         call               @Init__12PlannedAbodeFP4Town@12                      // 0x0074451e    e87d10ccff
+                         call               ?Init@PlannedAbode@@QAEXPAVTown@@@Z                  // 0x0074451e    e87d10ccff
                          pop                edi                                                  // 0x00744523    5f
                          mov.s              eax, esi                                             // 0x00744524    8bc6
                          pop                esi                                                  // 0x00744526    5e

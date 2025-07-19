@@ -20,7 +20,9 @@ static_assert(sizeof(struct Game3DObject) == 0x7c, "Data type is of wrong size")
 // Static methods
 
 // win1.41 0063abb0 mac 103da2c0 Game3DObject::Create(LH3DObject::ObjectType)
-struct Game3DObject* __cdecl Create__12Game3DObjectFQ210LH3DObject10ObjectType(enum LH3DObject__ObjectType type);
+struct Game3DObject* __cdecl Create__12Game3DObjectFQ210LH3DObject10ObjectType(enum LH3DObject__ObjectType type) asm("?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z");
+// win1.41 0063ad80 mac 103d9ee0 Game3DObject::Create(MapCoords const &, LH3DObject::ObjectType, MESH_LIST, float, float)
+struct Game3DObject* __cdecl Create__12Game3DObjectFRC9MapCoordsQ210LH3DObject10ObjectType9MESH_LISTff(const struct MapCoords* coords, enum LH3DObject__ObjectType type, enum MESH_LIST mesh, float param_4, float param_5) asm("?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z");
 
 // Non-virtual methods
 

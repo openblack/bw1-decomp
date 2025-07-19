@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ___nw__4BaseFUl
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x006de220
 
 .globl _jmp_addr_0x006ddf60
@@ -175,7 +175,7 @@ _jmp_addr_0x006de1a5:    mov              eax, dword ptr [esi]                  
                          mov.s            ecx, esi                                // 0x006de1a8    8bce
                          call             dword ptr [eax + 0x658]                 // 0x006de1aa    ff9058060000
                          push             0x1                                     // 0x006de1b0    6a01
-                         call             _Create__12Game3DObjectFQ210LH3DObject10ObjectType                    // 0x006de1b2    e8f9c9f5ff
+                         call             ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                    // 0x006de1b2    e8f9c9f5ff
                          {disp8} mov      dword ptr [esi + 0x40], eax             // 0x006de1b7    894640
                          mov              edi, dword ptr [eax]                    // 0x006de1ba    8b38
                          add              esp, 0x04                               // 0x006de1bc    83c404

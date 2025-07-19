@@ -182,7 +182,6 @@
 .extern _jmp_addr_0x007e0620
 .extern _jmp_addr_0x007e13b0
 .extern _jmp_addr_0x007e1450
-.extern _jmp_addr_0x007e1830
 .extern _jmp_addr_0x007e1890
 .extern _jmp_addr_0x007e19a0
 .extern _jmp_addr_0x007e19f0

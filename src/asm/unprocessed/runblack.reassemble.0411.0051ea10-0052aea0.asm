@@ -90,7 +90,7 @@
 .extern _jmp_addr_0x00639a60
 .extern ?GetFireGPHXDrawn@Object@@UAEXPA_N000@Z
 .extern ?ApplyWaterSpell@Object@@UAEMPAVSpellWater@@@Z
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063b680
 .extern @__ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff@24
@@ -2094,7 +2094,7 @@ _jmp_addr_0x0051fc8d:    cmp                edi, -0x01                          
                          push               edi                                                  // 0x0051fc9d    57
                          call               _Get3DType__6ObjectF9MESH_LIST                       // 0x0051fc9e    e81d681100
                          push               eax                                                  // 0x0051fca3    50
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType   // 0x0051fca4    e807af1100
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z   // 0x0051fca4    e807af1100
                          add                esp, 0x08                                            // 0x0051fca9    83c408
                          {disp8} mov        dword ptr [esi + 0x18], eax                          // 0x0051fcac    894618
 _jmp_addr_0x0051fcaf:    {disp8} mov        ecx, dword ptr [esi + 0x18]                          // 0x0051fcaf    8b4e18
@@ -16024,7 +16024,7 @@ _jmp_addr_0x00528970:    sub                esp, 0x10                           
                          push               edi                                                  // 0x00528a41    57
                          push               0x1                                                  // 0x00528a42    6a01
                          mov.s              esi, ecx                                             // 0x00528a44    8bf1
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType   // 0x00528a46    e865211100
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z   // 0x00528a46    e865211100
                          {disp8} mov        dword ptr [esi + 0x40], eax                          // 0x00528a4b    894640
                          mov                edi, dword ptr [eax]                                 // 0x00528a4e    8b38
                          add                esp, 0x04                                            // 0x00528a50    83c404

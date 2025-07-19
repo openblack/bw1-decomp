@@ -41,7 +41,7 @@
 .extern _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern ?ToBeDeleted@Object@@UAEXH@Z
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063b740
 .extern _jmp_addr_0x00715130
@@ -155,7 +155,7 @@ _jmp_addr_0x00609383:    xor.s             esi, esi                             
                          test              eax, eax                                      // 0x006093bd    85c0
                          {disp8} jne       _jmp_addr_0x006093d0                          // 0x006093bf    750f
                          push              0x0                                           // 0x006093c1    6a00
-                         call              _Create__12Game3DObjectFQ210LH3DObject10ObjectType                          // 0x006093c3    e8e8170300
+                         call              ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                          // 0x006093c3    e8e8170300
                          add               esp, 0x04                                     // 0x006093c8    83c404
                          {disp32} mov      dword ptr [data_bytes + 0x378e58], eax        // 0x006093cb    a358eed300
 _jmp_addr_0x006093d0:    {disp8} mov       ecx, dword ptr [ebx + 0x28]                   // 0x006093d0    8b4b28

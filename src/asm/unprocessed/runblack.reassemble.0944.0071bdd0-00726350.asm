@@ -158,8 +158,8 @@
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @MoveMapObject__6ObjectFRC9MapCoords@12
 .extern @SetScale__6ObjectFf@12
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
-.extern _jmp_addr_0x0063ad80
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
+.extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0063e540
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064a9c0
@@ -389,7 +389,7 @@
 .globl _jmp_addr_0x00724ec0
 .globl _jmp_addr_0x007254f0
 .globl _jmp_addr_0x00725c50
-.globl _jmp_addr_0x00725ea0
+.globl ??2SpellSeedGraphic@@SAPAXI@Z
 .globl @__ct__9SpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfofffi@36
 .globl _jmp_addr_0x00726080
 .globl _jmp_addr_0x007260a0
@@ -15526,7 +15526,9 @@ _jmp_addr_0x00725e80:    fldln2                                                 
                          nop                                                                     // 0x00725e9d    90
                          nop                                                                     // 0x00725e9e    90
                          nop                                                                     // 0x00725e9f    90
-_jmp_addr_0x00725ea0:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00725ea0    8b442404
+
+??2SpellSeedGraphic@@SAPAXI@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00725ea0    8b442404
                          push               eax                                                  // 0x00725ea4    50
                          call               _jmp_addr_0x005f8850                                 // 0x00725ea5    e8a629edff
                          add                esp, 0x04                                            // 0x00725eaa    83c404
@@ -15929,7 +15931,7 @@ _jmp_addr_0x00726140:    mov                eax, dword ptr [ecx]                
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x007261c9    8d4e14
                          push               0x0                                                  // 0x007261cc    6a00
                          push               ecx                                                  // 0x007261ce    51
-                         call               _jmp_addr_0x0063ad80                                 // 0x007261cf    e8ac4bf1ff
+                         call               ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z                                 // 0x007261cf    e8ac4bf1ff
                          add                esp, 0x14                                            // 0x007261d4    83c414
                          test               eax, eax                                             // 0x007261d7    85c0
                          {disp8} mov        dword ptr [esi + 0x40], eax                          // 0x007261d9    894640
@@ -15984,7 +15986,7 @@ _jmp_addr_0x00726210:    sub                esp, 0x0c                           
                          push               eax                                                  // 0x00726254    50
                          {disp8} lea        eax, dword ptr [esp + 0x14]                          // 0x00726255    8d442414
                          push               eax                                                  // 0x00726259    50
-                         call               _jmp_addr_0x00726f60                                 // 0x0072625a    e8010d0000
+                         call               ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z                                 // 0x0072625a    e8010d0000
                          add                esp, 0x14                                            // 0x0072625f    83c414
                          test               eax, eax                                             // 0x00726262    85c0
                          {disp8} mov        dword ptr [esi + 0x7c], eax                          // 0x00726264    89467c

@@ -138,7 +138,7 @@
 .extern _jmp_addr_0x0062ea20
 .extern _jmp_addr_0x00630d80
 .extern @InitialiseIsFixedForMapList__6ObjectFv@4
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063c2e0
 .extern _jmp_addr_0x0063c420
 .extern _jmp_addr_0x006443a0
@@ -8367,7 +8367,7 @@ _Create3DObject__6ObjectFv:
                          push               edi                                            // 0x006365f5    57
                          call               dword ptr [eax + 0x65c]                        // 0x006365f6    ff905c060000
                          push               eax                                            // 0x006365fc    50
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType                           // 0x006365fd    e8ae450000
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                           // 0x006365fd    e8ae450000
                          {disp8} mov        dword ptr [esi + 0x40], eax                    // 0x00636602    894640
                          mov                edi, dword ptr [eax]                           // 0x00636605    8b38
                          add                esp, 0x04                                      // 0x00636607    83c404
@@ -8968,7 +8968,7 @@ _jmp_addr_0x00636ae1:    mov                eax, 0x00000001                     
                          push               edi                                            // 0x00636b28    57
                          call               dword ptr [eax + 0x65c]                        // 0x00636b29    ff905c060000
                          push               eax                                            // 0x00636b2f    50
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType                           // 0x00636b30    e87b400000
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                           // 0x00636b30    e87b400000
                          {disp8} mov        dword ptr [esi + 0x40], eax                    // 0x00636b35    894640
                          mov                edi, dword ptr [eax]                           // 0x00636b38    8b38
                          add                esp, 0x04                                      // 0x00636b3a    83c404

@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x005d56c0
 .extern _jmp_addr_0x00602880
 .extern _jmp_addr_0x006055c0
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
@@ -193,7 +193,7 @@ _jmp_addr_0x004224a0:    {disp8} mov       eax, dword ptr [esi + 0x40]          
                          faddp             st(1), st                                     // 0x004224f3    dec1
                          {disp8} fadd      dword ptr [eax + 0x2c]                        // 0x004224f5    d8402c
                          {disp8} fstp      dword ptr [esp + 0x20]                        // 0x004224f8    d95c2420
-                         call              _Create__12Game3DObjectFQ210LH3DObject10ObjectType                          // 0x004224fc    e8af862100
+                         call              ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                          // 0x004224fc    e8af862100
                          {disp32} mov      dword ptr [esi + edi * 0x4 + 0x00000080], eax // 0x00422501    8984be80000000
                          {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00422508    8b1534fee900
                          mov               ebx, dword ptr [edx]                          // 0x0042250e    8b1a

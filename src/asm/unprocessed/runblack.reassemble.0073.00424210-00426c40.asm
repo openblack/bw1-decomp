@@ -60,7 +60,7 @@
 .extern @SetScale__6ObjectFf@12
 .extern @SetYAngle__6ObjectFf@12
 .extern _jmp_addr_0x00639900
-.extern _jmp_addr_0x0063ad80
+.extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0063e3a0
 .extern _jmp_addr_0x0063e3e0
 .extern _jmp_addr_0x0063e540
@@ -73,7 +73,7 @@
 .extern _jmp_addr_0x006e4750
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
-.extern _jmp_addr_0x00726f60
+.extern ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z
 .extern _jmp_addr_0x00727680
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073fe60
@@ -2190,7 +2190,7 @@ _jmp_addr_0x00425520:    {disp8} mov        edx, dword ptr [esp + 0x04]         
                          {disp8} lea        eax, dword ptr [esi + 0x14]                   // 0x00425565    8d4614
                          push               0x0                                           // 0x00425568    6a00
                          push               eax                                           // 0x0042556a    50
-                         call               _jmp_addr_0x0063ad80                          // 0x0042556b    e810582100
+                         call               ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z                          // 0x0042556b    e810582100
                          add                esp, 0x14                                     // 0x00425570    83c414
                          test               eax, eax                                      // 0x00425573    85c0
                          {disp8} mov        dword ptr [esi + 0x40], eax                   // 0x00425575    894640
@@ -2225,7 +2225,7 @@ _jmp_addr_0x00425520:    {disp8} mov        edx, dword ptr [esp + 0x04]         
                          push               ecx                                           // 0x004255d3    51
                          {disp8} lea        edx, dword ptr [esp + 0x18]                   // 0x004255d4    8d542418
                          push               edx                                           // 0x004255d8    52
-                         call               _jmp_addr_0x00726f60                          // 0x004255d9    e882193000
+                         call               ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z                          // 0x004255d9    e882193000
                          add                esp, 0x14                                     // 0x004255de    83c414
                          test               eax, eax                                      // 0x004255e1    85c0
                          {disp8} mov        dword ptr [esi + 0x5c], eax                   // 0x004255e3    89465c

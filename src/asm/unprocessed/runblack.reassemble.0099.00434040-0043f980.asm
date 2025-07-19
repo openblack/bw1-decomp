@@ -183,7 +183,7 @@
 .extern _jmp_addr_0x007e0620
 .extern _jmp_addr_0x007e13b0
 .extern _jmp_addr_0x007e1450
-.extern _jmp_addr_0x007e1830
+.extern ?New@UniqueKeyHeap@@QAEPAXH@Z
 .extern _jmp_addr_0x007e1890
 .extern _jmp_addr_0x007e19a0
 .extern _jmp_addr_0x007e19f0
@@ -4283,7 +4283,7 @@ _jmp_addr_0x00436870:    {disp32} mov       eax, dword ptr [data_bytes + 0x30dc7
                          add                esp, 0x14                                            // 0x004368aa    83c414
 _jmp_addr_0x004368ad:    {disp32} mov       ecx, dword ptr [data_bytes + 0x30db1c]               // 0x004368ad    8b0d1c3bcd00
                          push               esi                                                  // 0x004368b3    56
-                         call               _jmp_addr_0x007e1830                                 // 0x004368b4    e877af3a00
+                         call               ?New@UniqueKeyHeap@@QAEPAXH@Z                        // 0x004368b4    e877af3a00
                          mov.s              edx, eax                                             // 0x004368b9    8bd0
                          mov.s              ecx, esi                                             // 0x004368bb    8bce
                          shr                ecx, 2                                               // 0x004368bd    c1e902
@@ -4324,7 +4324,7 @@ _jmp_addr_0x004368e0:    {disp32} mov       eax, dword ptr [data_bytes + 0x30dc7
 _jmp_addr_0x0043691d:    {disp32} mov       ecx, dword ptr [data_bytes + 0x30db1c]               // 0x0043691d    8b0d1c3bcd00
                          {disp8} lea        esi, dword ptr [edi + 0x04]                          // 0x00436923    8d7704
                          push               esi                                                  // 0x00436926    56
-                         call               _jmp_addr_0x007e1830                                 // 0x00436927    e804af3a00
+                         call               ?New@UniqueKeyHeap@@QAEPAXH@Z                        // 0x00436927    e804af3a00
                          test               eax, eax                                             // 0x0043692c    85c0
                          {disp8} je         _jmp_addr_0x0043694e                                 // 0x0043692e    741e
                          mov                dword ptr [eax], esi                                 // 0x00436930    8930

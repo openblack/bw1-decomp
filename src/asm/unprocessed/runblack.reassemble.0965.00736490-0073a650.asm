@@ -62,7 +62,7 @@
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern ?IncreaseLife@Object@@UAEXM@Z
 .extern ?ResolveLoad@Object@@UAEXXZ
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern @GetSpecialPos__12Game3DObjectCFUlR9MapCoords@16
 .extern _jmp_addr_0x0063b5d0
 .extern @GetPlayerNumber__7GPlayerCFv@4
@@ -2643,7 +2643,7 @@ _jmp_addr_0x00737d33:    pop                edi                                 
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000             // 0x00737d7a    c744242c00000000
                          call               dword ptr [eax + 0x65c]                        // 0x00737d82    ff905c060000
                          push               eax                                            // 0x00737d88    50
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType                           // 0x00737d89    e8222ef0ff
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                           // 0x00737d89    e8222ef0ff
                          {disp32} mov       dword ptr [esi + 0x0000008c], eax              // 0x00737d8e    89868c000000
                          mov                edi, dword ptr [eax]                           // 0x00737d94    8b38
                          add                esp, 0x04                                      // 0x00737d96    83c404

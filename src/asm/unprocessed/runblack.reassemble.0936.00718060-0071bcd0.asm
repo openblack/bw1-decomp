@@ -59,7 +59,7 @@
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _PostLoadCleanup__7GPlayerFv
@@ -2963,7 +2963,7 @@ _jmp_addr_0x00719de6:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          push               eax                                           // 0x00719e0b    50
                          call               _Get3DType__6ObjectF9MESH_LIST                // 0x00719e0c    e8afc6f1ff
                          push               eax                                           // 0x00719e11    50
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType                          // 0x00719e12    e8990df2ff
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                          // 0x00719e12    e8990df2ff
                          add                esp, 0x08                                     // 0x00719e17    83c408
                          test               eax, eax                                      // 0x00719e1a    85c0
                          {disp8} mov        dword ptr [esi + 0x40], eax                   // 0x00719e1c    894640

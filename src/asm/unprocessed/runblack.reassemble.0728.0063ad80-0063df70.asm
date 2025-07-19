@@ -98,7 +98,7 @@
 .extern @ProcessOneSuperpacket__8GNetworkFv@4
 .extern _jmp_addr_0x00636120
 .extern _jmp_addr_0x006361f0
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063df70
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x00644800
@@ -139,7 +139,7 @@
 .extern _jmp_addr_0x00833a00
 .extern _jmp_addr_0x00868c80
 
-.globl _jmp_addr_0x0063ad80
+.globl ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .globl @GetDoorPosition__12Game3DObjectCFP9MapCoords@12
 .globl _jmp_addr_0x0063b040
 .globl @GetSpecialPos__12Game3DObjectCFUlR9MapCoords@16
@@ -168,14 +168,13 @@
 .globl ?CalculateWhereIWillBeAfterNSeconds@Object@@UAEXMPAULHPoint@@@Z
 .globl ?CalculateWhereIWillBeAfterNSeconds@Abode@@UAEXMPAULHPoint@@@Z
 
-start_0x0063ad80_0x0063df70:
-// Snippet: asm, [0x0063ad80, 0x0063ddcc)
-_jmp_addr_0x0063ad80:    {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0063ad80    8b442408
+?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0063ad80    8b442408
                          sub                esp, 0x0c                                      // 0x0063ad84    83ec0c
                          push               ebx                                            // 0x0063ad87    53
                          push               esi                                            // 0x0063ad88    56
                          push               eax                                            // 0x0063ad89    50
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType                           // 0x0063ad8a    e821feffff
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                           // 0x0063ad8a    e821feffff
                          mov.s              esi, eax                                       // 0x0063ad8f    8bf0
                          xor.s              ebx, ebx                                       // 0x0063ad91    33db
                          add                esp, 0x04                                      // 0x0063ad93    83c404

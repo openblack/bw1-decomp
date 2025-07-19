@@ -514,7 +514,7 @@ struct PlannedMultiMapFixed * __fastcall ConvertToPlanned__5AbodeFv(struct Multi
     asm("mov.s              esi, ecx");                                      // 0x00405051    8bf1
     asm("push               edi");                                           // 0x00405053    57
     asm("push               esi");                                           // 0x00405054    56
-    asm("call               _jmp_addr_0x00405660");                          // 0x00405055    e806060000
+    asm("call               ?Create@PlannedAbode@@SAPAV1@PAVAbode@@@Z");     // 0x00405055    e806060000
     asm("mov.s              edi, eax");                                      // 0x0040505a    8bf8
     asm("add                esp, 0x04");                                     // 0x0040505c    83c404
     asm("test               edi, edi");                                      // 0x0040505f    85ff

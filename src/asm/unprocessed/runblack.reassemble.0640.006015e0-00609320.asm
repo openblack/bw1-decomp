@@ -78,7 +78,7 @@
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a230
-.extern _jmp_addr_0x0063ad80
+.extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0063b680
 .extern _jmp_addr_0x00644800
 .extern _jmp_addr_0x00644f00
@@ -180,8 +180,8 @@
 .globl _jmp_addr_0x00603840
 .globl _jmp_addr_0x00603860
 .globl _jmp_addr_0x006038b0
-.globl _jmp_addr_0x00603b30
-.globl _jmp_addr_0x00603dc0
+.globl ?IsSuitableForFixed@MapCoords@@QBEXW4MESH_LIST@@MM@Z
+.globl ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z
 .globl _jmp_addr_0x006041c0
 .globl _jmp_addr_0x00604250
 .globl @InBounds__9MapCoordsCFv@4
@@ -1787,7 +1787,7 @@ _jmp_addr_0x006024ef:    pop                esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x00602539    8d4c2428
                          push               ebx                                           // 0x0060253d    53
                          push               ecx                                           // 0x0060253e    51
-                         call               _jmp_addr_0x0063ad80                          // 0x0060253f    e83c880300
+                         call               ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z                          // 0x0060253f    e83c880300
                          add                esp, 0x14                                     // 0x00602544    83c414
                          {disp32} mov       dword ptr [data_bytes + 0x37232c], eax        // 0x00602547    a32c83d300
                          {disp32} jmp       _jmp_addr_0x00602699                          // 0x0060254c    e948010000
@@ -3743,7 +3743,7 @@ _jmp_addr_0x006038b0:    sub                esp, 0x18                           
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x006038e8    8d4c2420
                          push               ebx                                           // 0x006038ec    53
                          push               ecx                                           // 0x006038ed    51
-                         call               _jmp_addr_0x0063ad80                          // 0x006038ee    e88d740300
+                         call               ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z                          // 0x006038ee    e88d740300
                          add                esp, 0x14                                     // 0x006038f3    83c414
                          {disp32} mov       dword ptr [data_bytes + 0x372330], eax        // 0x006038f6    a33083d300
                          {disp32} jmp       _jmp_addr_0x00603b10                          // 0x006038fb    e910020000
@@ -3938,7 +3938,9 @@ _jmp_addr_0x00603b24:    pop                ebp                                 
                          ret                0x000c                                        // 0x00603b2b    c20c00
                          nop                                                              // 0x00603b2e    90
                          nop                                                              // 0x00603b2f    90
-_jmp_addr_0x00603b30:    sub                esp, 0x1c                                     // 0x00603b30    83ec1c
+
+?IsSuitableForFixed@MapCoords@@QBEXW4MESH_LIST@@MM@Z:
+                         sub                esp, 0x1c                                     // 0x00603b30    83ec1c
                          push               ebx                                           // 0x00603b33    53
                          push               ebp                                           // 0x00603b34    55
                          push               esi                                           // 0x00603b35    56
@@ -3964,7 +3966,7 @@ _jmp_addr_0x00603b30:    sub                esp, 0x1c                           
                          {disp8} lea        eax, dword ptr [esp + 0x28]                   // 0x00603b6d    8d442428
                          push               ebp                                           // 0x00603b71    55
                          push               eax                                           // 0x00603b72    50
-                         call               _jmp_addr_0x0063ad80                          // 0x00603b73    e808720300
+                         call               ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z                          // 0x00603b73    e808720300
                          add                esp, 0x14                                     // 0x00603b78    83c414
                          {disp32} mov       dword ptr [data_bytes + 0x372334], eax        // 0x00603b7b    a33483d300
                          {disp32} jmp       _jmp_addr_0x00603d95                          // 0x00603b80    e910020000
@@ -4150,7 +4152,7 @@ _jmp_addr_0x00603d95:    cmp.s              eax, ebp                            
                          push               ecx                                           // 0x00603d9f    51
                          push               eax                                           // 0x00603da0    50
                          mov.s              ecx, esi                                      // 0x00603da1    8bce
-                         call               _jmp_addr_0x00603dc0                          // 0x00603da3    e818000000
+                         call               ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z                          // 0x00603da3    e818000000
                          pop                esi                                           // 0x00603da8    5e
                          pop                ebp                                           // 0x00603da9    5d
                          pop                ebx                                           // 0x00603daa    5b
@@ -4166,7 +4168,9 @@ _jmp_addr_0x00603db1:    pop                esi                                 
                          nop                                                              // 0x00603dbd    90
                          nop                                                              // 0x00603dbe    90
                          nop                                                              // 0x00603dbf    90
-_jmp_addr_0x00603dc0:    sub                esp, 0x34                                     // 0x00603dc0    83ec34
+
+?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z:
+                         sub                esp, 0x34                                     // 0x00603dc0    83ec34
                          push               ebx                                           // 0x00603dc3    53
                          push               ebp                                           // 0x00603dc4    55
                          mov.s              ebp, ecx                                      // 0x00603dc5    8be9
