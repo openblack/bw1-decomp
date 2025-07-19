@@ -803,7 +803,7 @@ void __fastcall MoveAbodeToPlannedAbodes__5AbodeFv(struct Abode* this)
     asm("test               eax, eax");                                      // 0x00404539    85c0
     asm("{disp8} jne        _jmp_addr_0x00404552");                          // 0x0040453b    7515
     asm("push               esi");                                           // 0x0040453d    56
-    asm("call               _jmp_addr_0x00405660");                          // 0x0040453e    e81d110000
+    asm("call               ?Create@PlannedAbode@@SAPAV1@PAVAbode@@@Z");     // 0x0040453e    e81d110000
     asm("add                esp, 0x04");                                     // 0x00404543    83c404
     asm("test               eax, eax");                                      // 0x00404546    85c0
     asm("{disp8} je         _jmp_addr_0x00404552");                          // 0x00404548    7408

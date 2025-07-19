@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x00553a70
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern _jmp_addr_0x007201d0
-.extern _jmp_addr_0x00726f60
+.extern ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z
 .extern _jmp_addr_0x00727630
 .extern _jmp_addr_0x00727680
 .extern _jmp_addr_0x007813b0
@@ -2288,7 +2288,7 @@ _jmp_addr_0x0079ddf0:    sub                esp, 0x28                           
                          {disp8} lea        eax, dword ptr [esp + 0x24]                   // 0x0079df24    8d442424
                          push               edi                                           // 0x0079df28    57
                          push               eax                                           // 0x0079df29    50
-                         call               _jmp_addr_0x00726f60                          // 0x0079df2a    e83190f8ff
+                         call               ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z                          // 0x0079df2a    e83190f8ff
                          add                esp, 0x14                                     // 0x0079df2f    83c414
                          push               0x0                                           // 0x0079df32    6a00
                          mov.s              ecx, eax                                      // 0x0079df34    8bc8

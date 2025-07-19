@@ -351,6 +351,7 @@
 #include "black/WeatherInfo.h"
 #include "black/WeatherThing.h"
 #include "black/Whale.h"
+#include "black/Windmill.h"
 #include "black/Wonder.h"
 #include "black/Workshop.h"
 #include "black/WorshipSite.h"

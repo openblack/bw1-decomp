@@ -84,7 +84,7 @@
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern _jmp_addr_0x0063a190
 .extern _jmp_addr_0x0063a940
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x00646950
 .extern _jmp_addr_0x0066cf10
@@ -9655,7 +9655,7 @@ _jmp_addr_0x00734800:    xor.s              eax, eax                            
                          push               edi                                           // 0x00734814    57
                          push               0x0                                           // 0x00734815    6a00
                          mov.s              esi, ecx                                      // 0x00734817    8bf1
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType                          // 0x00734819    e89263f0ff
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                          // 0x00734819    e89263f0ff
                          mov.s              ecx, eax                                      // 0x0073481e    8bc8
                          {disp8} mov        eax, dword ptr [esi + 0x58]                   // 0x00734820    8b4658
                          add                esp, 0x04                                     // 0x00734823    83c404

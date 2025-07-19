@@ -92,7 +92,7 @@
 .extern _jmp_addr_0x006a8510
 .extern _jmp_addr_0x006c99e0
 .extern _jmp_addr_0x006c9bd0
-.extern _jmp_addr_0x00726f60
+.extern ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z
 .extern _jmp_addr_0x00727630
 .extern _jmp_addr_0x00727680
 .extern @GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE@12
@@ -7167,7 +7167,7 @@ _jmp_addr_0x0068bcad:    cmp                esi, -0x01                          
                          {disp8} lea        ecx, dword ptr [esp + 0x4c]                   // 0x0068bd13    8d4c244c
                          call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x0068bd17    e84474f7ff
                          push               eax                                           // 0x0068bd1c    50
-                         call               _jmp_addr_0x00726f60                          // 0x0068bd1d    e83eb20900
+                         call               ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z                          // 0x0068bd1d    e83eb20900
                          add                esp, 0x14                                     // 0x0068bd22    83c414
                          push               ebx                                           // 0x0068bd25    53
                          mov.s              ecx, eax                                      // 0x0068bd26    8bc8

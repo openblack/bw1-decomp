@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0052e280
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
-.extern _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit@4
@@ -308,7 +308,7 @@ _jmp_addr_0x00422d5c:    cmp                dword ptr [eax], 0x00               
 _jmp_addr_0x00422d71:    push               ebx                                           // 0x00422d71    53
                          push               ebp                                           // 0x00422d72    55
                          push               0x0                                           // 0x00422d73    6a00
-                         call               _Create__12Game3DObjectFQ210LH3DObject10ObjectType                          // 0x00422d75    e8367e2100
+                         call               ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                          // 0x00422d75    e8367e2100
                          {disp8} mov        ebx, dword ptr [esp + 0x18]                   // 0x00422d7a    8b5c2418
                          add                esp, 0x04                                     // 0x00422d7e    83c404
                          test               ebx, ebx                                      // 0x00422d81    85db

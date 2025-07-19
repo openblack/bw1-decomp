@@ -66,7 +66,7 @@
 .extern _jmp_addr_0x00607c40
 .extern _jmp_addr_0x00607d00
 .extern @__ct__6ObjectFv@4
-.extern _jmp_addr_0x0063ad80
+.extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0068e070
 .extern _jmp_addr_0x0068e0f0
 .extern _jmp_addr_0x0068e200
@@ -2975,7 +2975,7 @@ _jmp_addr_0x0050b3f2:    push               0x1                                 
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x0050b449    8d4e14
                          push               0x0                                           // 0x0050b44c    6a00
                          push               ecx                                           // 0x0050b44e    51
-                         call               _jmp_addr_0x0063ad80                          // 0x0050b44f    e82cf91200
+                         call               ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z                          // 0x0050b44f    e82cf91200
                          add                esp, 0x14                                     // 0x0050b454    83c414
                          test               eax, eax                                      // 0x0050b457    85c0
                          {disp8} mov        dword ptr [esi + 0x40], eax                   // 0x0050b459    894640

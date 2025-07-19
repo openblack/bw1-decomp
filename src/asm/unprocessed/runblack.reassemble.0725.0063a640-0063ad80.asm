@@ -31,7 +31,7 @@
 .globl _jmp_addr_0x0063a810
 .extern ?ApplyWaterSpell@Object@@UAEMPAVSpellWater@@@Z
 .globl _jmp_addr_0x0063a940
-.globl _Create__12Game3DObjectFQ210LH3DObject10ObjectType
+.globl ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .globl @GetAltitudeFondation__12Game3DObjectCFv@4
 
 .globl _globl_ct_0x0063ab30
@@ -52,7 +52,6 @@
 .globl ?DiscipleInHandNear@Object@@UAEXPAVVillager@@PAVGInterfaceStatus@@@Z
 .globl ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 
-start_0x0063a640_0x0063ad80:
 // Snippet: asm, [0x0063a640, 0x0063ad63)
 _InitialiseIsFixedForMapList__6ObjectFv:
 @InitialiseIsFixedForMapList__6ObjectFv@4:    push               esi                                           // 0x0063a640    56
@@ -660,7 +659,9 @@ _jmp_addr_0x0063ab90:    {disp32} fld       dword ptr [rdata_bytes + 0x8830c]   
                          nop                                                              // 0x0063abad    90
                          nop                                                              // 0x0063abae    90
                          nop                                                              // 0x0063abaf    90
-_Create__12Game3DObjectFQ210LH3DObject10ObjectType:    {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x0063abb0    8b4c2404
+
+?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z:
+                         {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x0063abb0    8b4c2404
                          {disp32} jmp       @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x0063abb4    e917091d00
                          nop                                                              // 0x0063abb9    90
                          nop                                                              // 0x0063abba    90

@@ -55,7 +55,7 @@
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
 .extern _jmp_addr_0x007ded50
-.extern _jmp_addr_0x007e1830
+.extern ?New@UniqueKeyHeap@@QAEPAXH@Z
 .extern _jmp_addr_0x007e1890
 .extern @DeltaPos__7LHMouseFv@4
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
@@ -2508,7 +2508,7 @@ ___nw__9LocalBaseFUl:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 _jmp_addr_0x005f87f0:    {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005f87f0    8b442404
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x30db14]         // 0x005f87f4    8b0d143bcd00
                          push               eax                                            // 0x005f87fa    50
-                         call               _jmp_addr_0x007e1830                           // 0x005f87fb    e830901e00
+                         call               ?New@UniqueKeyHeap@@QAEPAXH@Z                  // 0x005f87fb    e830901e00
                          ret                                                               // 0x005f8800    c3
                          nop                                                               // 0x005f8801    90
                          nop                                                               // 0x005f8802    90
@@ -2576,7 +2576,7 @@ _jmp_addr_0x005f8840:    ret                                                    
 _jmp_addr_0x005f8850:    {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005f8850    8b442404
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x30db14]         // 0x005f8854    8b0d143bcd00
                          push               eax                                            // 0x005f885a    50
-                         call               _jmp_addr_0x007e1830                           // 0x005f885b    e8d08f1e00
+                         call               ?New@UniqueKeyHeap@@QAEPAXH@Z                  // 0x005f885b    e8d08f1e00
                          ret                                                               // 0x005f8860    c3
                          nop                                                               // 0x005f8861    90
                          nop                                                               // 0x005f8862    90

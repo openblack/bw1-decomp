@@ -30,6 +30,8 @@ extern const struct PlannedMultiMapFixedVftable __vt__12PlannedAbode asm("??_7Pl
 struct PlannedAbode* __cdecl CreateNoInit__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff(struct MapCoords* coords, struct GMultiMapFixedInfo* info, struct Town* town, float param_4, float param_5) asm("?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z");
 // win1.41 00405600 mac 10479fb0 PlannedAbode::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
 struct PlannedAbode* __cdecl Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4Townff(struct MapCoords* coords, struct GMultiMapFixedInfo* info, struct Town* town, float param_4, float param_5) asm("?Create@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z");
+// win1.41 00405660 mac 1043fad0 PlannedAbode::Create(Abode*)
+struct PlannedAbode* __cdecl Create__12PlannedAbodeFP5Abode(struct Abode* abode) asm("?Create@PlannedAbode@@SAPAV1@PAVAbode@@@Z");
 // win1.41 004056d0 mac 10007bf0 PlannedAbode::GetInfo(void)
 struct GPlannedAbodeInfo* __cdecl GetInfo__12PlannedAbodeFv(void) asm("?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");
 
@@ -43,7 +45,11 @@ struct PlannedAbode* __fastcall __ct__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP
 // Non-virtual methods
 
 // win1.41 004055a0 mac 103e5560 PlannedAbode::Init(Town *)
-void __fastcall Init__12PlannedAbodeFP4Town(struct PlannedAbode* this, const void* edx, struct Town* town);
+void __fastcall Init__12PlannedAbodeFP4Town(struct PlannedAbode* this, const void* edx, struct Town* town) asm("?Init@PlannedAbode@@QAEXPAVTown@@@Z");
+// win1.41 004056f0 mac inline PlannedAbode::FUN_004056f0(int)
+bool32_t __fastcall FUN_004056f0__12PlannedAbodeFP4Town(struct PlannedAbode* this, const void* edx, int param_1) asm("?FUN_004056f0@PlannedAbode@@QAE_NH@Z");
+// win1.41 004057f0 mac inline PlannedAbode::IsOkToBuild(void)
+bool32_t __fastcall IsOkToBuild__12PlannedAbodeFv(struct PlannedAbode* this) asm("?IsOkToBuild@PlannedAbode@@UAE_NXZ");
 
 // Override methods
 

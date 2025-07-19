@@ -1008,6 +1008,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\ValueSpinner.h"),
     BWPath(r"C:\Dev\black\Waterfall.h"),
     BWPath(r"C:\Dev\black\Waypoint.h"),
+    BWPath(r"C:\Dev\black\Windmill.h"),
     BWPath(r"C:\Dev\black\WeatherInfo.h"),
     BWPath(r"C:\Dev\black\WorshipSite.h"),
     BWPath(r"C:\Dev\black\WorshipSpell.h"),
@@ -1247,6 +1248,8 @@ ROOMMATE_CLASS_MAP = {
     "LH_SEEK_MODE": "LHFile",
     "LH_OPERATING_MODE": "LHLobby",
     "LHKeyMod": "LHKey",
+    "UniqueKeyHeap": "Heap",
+    "HeapWithPools": "Heap",
 }
 
 

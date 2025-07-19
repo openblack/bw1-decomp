@@ -252,7 +252,7 @@
 .extern _jmp_addr_0x00724c80
 .extern _jmp_addr_0x00724ec0
 .extern _jmp_addr_0x007254f0
-.extern _jmp_addr_0x00725ea0
+.extern ??2SpellSeedGraphic@@SAPAXI@Z
 .extern _jmp_addr_0x00726dc0
 .extern _jmp_addr_0x00727f20
 .extern _jmp_addr_0x0072a400
@@ -6336,7 +6336,7 @@ _jmp_addr_0x00558e51:    {disp8} mov        edx, dword ptr [esp + 0x10]         
                          push               0x00000302                                    // 0x00559487    6802030000
                          push               0x00bec9e0                                    // 0x0055948c    68e0c9be00
                          push               0x74                                          // 0x00559491    6a74
-                         call               _jmp_addr_0x00725ea0                          // 0x00559493    e808ca1c00
+                         call               ??2SpellSeedGraphic@@SAPAXI@Z                 // 0x00559493    e808ca1c00
                          add                esp, 0x0c                                     // 0x00559498    83c40c
                          cmp.s              eax, ebx                                      // 0x0055949b    3bc3
                          {disp32} je        _jmp_addr_0x0055c2b4                          // 0x0055949d    0f84112e0000

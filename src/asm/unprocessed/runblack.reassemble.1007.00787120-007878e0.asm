@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x00480240
 .extern _jmp_addr_0x00553a70
-.extern _jmp_addr_0x00726f60
+.extern ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z
 .extern _jmp_addr_0x00727680
 .extern _jmp_addr_0x00798af0
 .extern _jmp_addr_0x00799e60
@@ -641,7 +641,7 @@ _jmp_addr_0x007877ce:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          push               ecx                                           // 0x0078789b    51
                          {disp8} lea        eax, dword ptr [esp + 0x30]                   // 0x0078789c    8d442430
                          push               eax                                           // 0x007878a0    50
-                         call               _jmp_addr_0x00726f60                          // 0x007878a1    e8baf6f9ff
+                         call               ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z                          // 0x007878a1    e8baf6f9ff
                          add                esp, 0x14                                     // 0x007878a6    83c414
                          push               0x0                                           // 0x007878a9    6a00
                          mov.s              ecx, eax                                      // 0x007878ab    8bc8

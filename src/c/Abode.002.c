@@ -313,7 +313,7 @@ struct Abode* __cdecl Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii(c
     asm("push               ecx");                                      // 0x00402ec6    51
     asm("push               eax");                                      // 0x00402ec7    50
     asm("push               edx");                                      // 0x00402ec8    52
-    asm("call               _jmp_addr_0x00405890");                     // 0x00402ec9    e8c2290000
+    asm("call               ?Create@Windmill@@SAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");  // 0x00402ec9    e8c2290000
     asm("{disp32} jmp       _jmp_addr_0x0040306d");                     // 0x00402ece    e99a010000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x28]");              // 0x00402ed3    8b4c2428
     asm("{disp8} mov        edx, dword ptr [esp + 0x24]");              // 0x00402ed7    8b542424
