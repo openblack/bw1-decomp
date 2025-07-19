@@ -157,7 +157,7 @@
 .extern _jmp_addr_0x00636640
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @MoveMapObject__6ObjectFRC9MapCoords@12
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0063e540

@@ -154,7 +154,7 @@
 .extern _jmp_addr_0x00636640
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @MoveMapObject__6ObjectFRC9MapCoords@12
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0063e540
@@ -3022,7 +3022,7 @@ _jmp_addr_0x00728063:    mov                eax, dword ptr [edi]                
                          push               ecx                                                  // 0x00728082    51
                          mov.s              ecx, esi                                             // 0x00728083    8bce
                          fstp               dword ptr [esp]                                      // 0x00728085    d91c24
-                         call               @SetScale__6ObjectFf@12                              // 0x00728088    e87311f1ff
+                         call               ?SetScale@Object@@UAEXM@Z                            // 0x00728088    e87311f1ff
                          pop                edi                                                  // 0x0072808d    5f
                          mov.s              eax, esi                                             // 0x0072808e    8bc6
                          pop                esi                                                  // 0x00728090    5e
@@ -3079,7 +3079,7 @@ _jmp_addr_0x007280a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp32} mov       ecx, dword ptr [eax + 0x00000144]                    // 0x0072811e    8b8844010000
                          push               ecx                                                  // 0x00728124    51
                          mov.s              ecx, esi                                             // 0x00728125    8bce
-                         call               @SetScale__6ObjectFf@12                              // 0x00728127    e8d410f1ff
+                         call               ?SetScale@Object@@UAEXM@Z                            // 0x00728127    e8d410f1ff
                          pop                edi                                                  // 0x0072812c    5f
                          mov.s              eax, esi                                             // 0x0072812d    8bc6
                          pop                esi                                                  // 0x0072812f    5e

@@ -65,6 +65,7 @@
 .globl _globl_ct_0x00515f10
 .globl _globl_ct_0x00515f40
 .globl ?Draw@Abode@@UAEXXZ
+.globl ?Draw@Windmill@@UAEXXZ
 
 start_0x00515e90_0x005178d0:
 // Snippet: asm, [0x00515e90, 0x005178bf)
@@ -456,6 +457,8 @@ _jmp_addr_0x00516316:    pop                edi                                 
                          ret                                                              // 0x0051631d    c3
                          nop                                                              // 0x0051631e    90
                          nop                                                              // 0x0051631f    90
+
+?Draw@Windmill@@UAEXXZ:
                          sub                esp, 0x1c                                     // 0x00516320    83ec1c
                          push               esi                                           // 0x00516323    56
                          mov.s              esi, ecx                                      // 0x00516324    8bf1

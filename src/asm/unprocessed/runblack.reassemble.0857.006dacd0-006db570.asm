@@ -13,7 +13,7 @@
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x005e6540
 .extern _jmp_addr_0x00608840
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern _jmp_addr_0x0063e580
 .extern _jmp_addr_0x006d9290
 .extern _jmp_addr_0x006da350
@@ -595,7 +595,7 @@ _jmp_addr_0x006db21a:    push              ebx                                  
                          push              0x40000000                                     // 0x006db2d2    6800000040
                          mov.s             ecx, edi                                       // 0x006db2d7    8bcf
                          mov               dword ptr [edi], 0x008f170c                    // 0x006db2d9    c7070c178f00
-                         call              @SetScale__6ObjectFf@12                        // 0x006db2df    e81cdff5ff
+                         call              ?SetScale@Object@@UAEXM@Z                      // 0x006db2df    e81cdff5ff
                          or                word ptr [edi + 0x24], bx                      // 0x006db2e4    66095f24
                          {disp32} mov      dword ptr [esi + 0x000003f8], edi              // 0x006db2e8    89bef8030000
                          {disp8} jmp       _jmp_addr_0x006db361                           // 0x006db2ee    eb71
@@ -657,7 +657,7 @@ _jmp_addr_0x006db361:    push              0x00000aa2                           
                          push              0x40000000                                     // 0x006db3af    6800000040
                          mov.s             ecx, edi                                       // 0x006db3b4    8bcf
                          mov               dword ptr [edi], 0x008efeb4                    // 0x006db3b6    c707b4fe8e00
-                         call              @SetScale__6ObjectFf@12                        // 0x006db3bc    e83fdef5ff
+                         call              ?SetScale@Object@@UAEXM@Z                      // 0x006db3bc    e83fdef5ff
                          or                word ptr [edi + 0x24], bx                      // 0x006db3c1    66095f24
                          {disp8} jmp       _jmp_addr_0x006db3c9                           // 0x006db3c5    eb02
 _jmp_addr_0x006db3c7:    xor.s             edi, edi                                       // 0x006db3c7    33ff

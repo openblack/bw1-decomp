@@ -82,7 +82,7 @@
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a710
@@ -6284,7 +6284,7 @@ _jmp_addr_0x005ebea0:    {disp32} fld       dword ptr [rdata_bytes + 0x82414]   
                          {disp32} mov       edx, dword ptr [ebx + 0x00000128]             // 0x005ebf68    8b9328010000
                          push               edx                                           // 0x005ebf6e    52
                          mov.s              ecx, esi                                      // 0x005ebf6f    8bce
-                         call               @SetLife__6ObjectFf@12                        // 0x005ebf71    e8cae10400
+                         call               ?SetLife@Object@@UAEXM@Z                      // 0x005ebf71    e8cae10400
                          {disp8} mov        ebx, dword ptr [esi + 0x28]                   // 0x005ebf76    8b5e28
                          {disp32} mov       eax, dword ptr [ebx + 0x00000134]             // 0x005ebf79    8b8334010000
                          push               0x40                                          // 0x005ebf7f    6a40
@@ -6345,7 +6345,7 @@ _jmp_addr_0x005ec000:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x3f800000                                    // 0x005ec014    680000803f
                          mov.s              ecx, esi                                      // 0x005ec019    8bce
                          mov                dword ptr [esi], 0x008ce750                   // 0x005ec01b    c70650e78c00
-                         call               @SetScale__6ObjectFf@12                       // 0x005ec021    e8dad10400
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x005ec021    e8dad10400
                          mov.s              eax, esi                                      // 0x005ec026    8bc6
                          pop                esi                                           // 0x005ec028    5e
                          ret                0x0008                                        // 0x005ec029    c20800

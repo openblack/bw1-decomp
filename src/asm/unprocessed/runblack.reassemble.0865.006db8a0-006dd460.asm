@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x00607c40
 .extern _jmp_addr_0x00607d00
 .extern @SetGameAngle__13MobileWallHugFUs@10
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x0063e580
 .extern _jmp_addr_0x00646a00
@@ -475,7 +475,7 @@ _jmp_addr_0x006dbc4e:    push               0x00000b60                          
                          push               0x40000000                                     // 0x006dbc87    6800000040
                          mov.s              ecx, esi                                       // 0x006dbc8c    8bce
                          mov                dword ptr [esi], 0x008f170c                    // 0x006dbc8e    c7060c178f00
-                         call               @SetScale__6ObjectFf@12                        // 0x006dbc94    e867d5f5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dbc94    e867d5f5ff
                          or                 byte ptr [esi + 0x25], 0x20                    // 0x006dbc99    804e2520
                          push               ebp                                            // 0x006dbc9d    55
                          mov                ebp, dword ptr [esi]                           // 0x006dbc9e    8b2e
@@ -556,7 +556,7 @@ _jmp_addr_0x006dbd2e:    push               0x00000b70                          
                          push               0x40000000                                     // 0x006dbd67    6800000040
                          mov.s              ecx, esi                                       // 0x006dbd6c    8bce
                          mov                dword ptr [esi], 0x008efeb4                    // 0x006dbd6e    c706b4fe8e00
-                         call               @SetScale__6ObjectFf@12                        // 0x006dbd74    e887d4f5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dbd74    e887d4f5ff
                          or                 byte ptr [esi + 0x25], 0x20                    // 0x006dbd79    804e2520
                          push               ebp                                            // 0x006dbd7d    55
                          mov                ebp, dword ptr [esi]                           // 0x006dbd7e    8b2e
@@ -2355,7 +2355,7 @@ _jmp_addr_0x006dcfd0:    sub                esp, 0x00000098                     
                          push               0x40000000                                     // 0x006dd055    6800000040
                          mov.s              ecx, ebx                                       // 0x006dd05a    8bcb
                          mov                dword ptr [ebx], 0x008f170c                    // 0x006dd05c    c7030c178f00
-                         call               @SetScale__6ObjectFf@12                        // 0x006dd062    e899c1f5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dd062    e899c1f5ff
                          or                 byte ptr [ebx + 0x25], 0x20                    // 0x006dd067    804b2520
                          {disp8} jmp        _jmp_addr_0x006dd06f                           // 0x006dd06b    eb02
 _jmp_addr_0x006dd06d:    xor.s              ebx, ebx                                       // 0x006dd06d    33db
@@ -2410,7 +2410,7 @@ _jmp_addr_0x006dd06f:    mov                edx, dword ptr [ebx]                
                          push               0x40000000                                     // 0x006dd106    6800000040
                          mov.s              ecx, ebx                                       // 0x006dd10b    8bcb
                          mov                dword ptr [ebx], 0x008efeb4                    // 0x006dd10d    c703b4fe8e00
-                         call               @SetScale__6ObjectFf@12                        // 0x006dd113    e8e8c0f5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dd113    e8e8c0f5ff
                          or                 byte ptr [ebx + 0x25], 0x20                    // 0x006dd118    804b2520
                          {disp8} jmp        _jmp_addr_0x006dd120                           // 0x006dd11c    eb02
 _jmp_addr_0x006dd11e:    xor.s              ebx, ebx                                       // 0x006dd11e    33db
@@ -2465,7 +2465,7 @@ _jmp_addr_0x006dd13b:    call               dword ptr [edx + 0x658]             
                          push               0x40000000                                     // 0x006dd1b4    6800000040
                          mov.s              ecx, ebx                                       // 0x006dd1b9    8bcb
                          mov                dword ptr [ebx], 0x0093cf90                    // 0x006dd1bb    c70390cf9300
-                         call               @SetScale__6ObjectFf@12                        // 0x006dd1c1    e83ac0f5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dd1c1    e83ac0f5ff
                          or                 byte ptr [ebx + 0x25], 0x20                    // 0x006dd1c6    804b2520
                          {disp8} jmp        _jmp_addr_0x006dd1ce                           // 0x006dd1ca    eb02
 _jmp_addr_0x006dd1cc:    xor.s              ebx, ebx                                       // 0x006dd1cc    33db
@@ -2503,7 +2503,7 @@ _jmp_addr_0x006dd1ce:    mov                edx, dword ptr [ebx]                
                          push               0x40000000                                     // 0x006dd228    6800000040
                          mov.s              ecx, ebx                                       // 0x006dd22d    8bcb
                          mov                dword ptr [ebx], 0x0093c364                    // 0x006dd22f    c70364c39300
-                         call               @SetScale__6ObjectFf@12                        // 0x006dd235    e8c6bff5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dd235    e8c6bff5ff
                          or                 byte ptr [ebx + 0x25], 0x20                    // 0x006dd23a    804b2520
                          {disp8} jmp        _jmp_addr_0x006dd242                           // 0x006dd23e    eb02
 _jmp_addr_0x006dd240:    xor.s              ebx, ebx                                       // 0x006dd240    33db
@@ -2541,7 +2541,7 @@ _jmp_addr_0x006dd242:    mov                edx, dword ptr [ebx]                
                          push               0x40000000                                     // 0x006dd29c    6800000040
                          mov.s              ecx, ebx                                       // 0x006dd2a1    8bcb
                          mov                dword ptr [ebx], 0x0093b738                    // 0x006dd2a3    c70338b79300
-                         call               @SetScale__6ObjectFf@12                        // 0x006dd2a9    e852bff5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dd2a9    e852bff5ff
                          or                 byte ptr [ebx + 0x25], 0x20                    // 0x006dd2ae    804b2520
                          {disp8} jmp        _jmp_addr_0x006dd2b6                           // 0x006dd2b2    eb02
 _jmp_addr_0x006dd2b4:    xor.s              ebx, ebx                                       // 0x006dd2b4    33db
@@ -2609,7 +2609,7 @@ _jmp_addr_0x006dd31a:    mov.s              ecx, ebx                            
                          push               0x40000000                                     // 0x006dd37d    6800000040
                          mov.s              ecx, ebx                                       // 0x006dd382    8bcb
                          mov                dword ptr [ebx], 0x0093ab0c                    // 0x006dd384    c7030cab9300
-                         call               @SetScale__6ObjectFf@12                        // 0x006dd38a    e871bef5ff
+                         call               ?SetScale@Object@@UAEXM@Z                      // 0x006dd38a    e871bef5ff
                          or                 byte ptr [ebx + 0x25], 0x20                    // 0x006dd38f    804b2520
                          {disp8} jmp        _jmp_addr_0x006dd397                           // 0x006dd393    eb02
 _jmp_addr_0x006dd395:    xor.s              ebx, ebx                                       // 0x006dd395    33db

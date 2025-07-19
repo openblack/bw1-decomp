@@ -58,7 +58,7 @@
 .extern _jmp_addr_0x00616f10
 .extern _jmp_addr_0x00636640
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
-.extern @SetYAngle__6ObjectFf@12
+.extern ?SetYAngle@Object@@UAEXM@Z
 .extern _jmp_addr_0x007370b0
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
@@ -374,7 +374,7 @@ _jmp_addr_0x0060da70:    mov                edx, dword ptr [esi]                
                          call               _ConvertGameAngleTo3D__6GUtilsFl            // 0x0060daa1    e8aa011400
                          fstp               dword ptr [esp]                             // 0x0060daa6    d91c24
                          mov.s              ecx, esi                                    // 0x0060daa9    8bce
-                         call               @SetYAngle__6ObjectFf@12                    // 0x0060daab    e8b0b70200
+                         call               ?SetYAngle@Object@@UAEXM@Z                  // 0x0060daab    e8b0b70200
                          pop                esi                                         // 0x0060dab0    5e
                          ret                0x0004                                      // 0x0060dab1    c20400
                          nop                                                            // 0x0060dab4    90
@@ -394,7 +394,7 @@ _jmp_addr_0x0060da70:    mov                edx, dword ptr [esi]                
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                 // 0x0060dac2    8b7c240c
                          mov.s              esi, ecx                                    // 0x0060dac6    8bf1
                          push               edi                                         // 0x0060dac8    57
-                         call               @SetYAngle__6ObjectFf@12                    // 0x0060dac9    e892b70200
+                         call               ?SetYAngle@Object@@UAEXM@Z                  // 0x0060dac9    e892b70200
                          push               edi                                         // 0x0060dace    57
                          call               _jmp_addr_0x0074dc30                        // 0x0060dacf    e85c011400
                          add                esp, 0x04                                   // 0x0060dad4    83c404

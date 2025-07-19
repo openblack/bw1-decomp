@@ -24,7 +24,6 @@
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x00823c90
 
-.globl @InitialiseIsFixedForMapList__6ObjectFv@4
 .globl _jmp_addr_0x0063a6a0
 .globl _jmp_addr_0x0063a710
 .extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
@@ -37,7 +36,7 @@
 .globl _globl_ct_0x0063ab30
 .globl _globl_ct_0x0063ab60
 .globl _globl_ct_0x0063ab80
-.globl _InitialiseIsFixedForMapList__6ObjectFv
+.globl ?InitialiseIsFixedForMapList@Object@@UAEXXZ
 .globl ?CanBecomeArtifact@Object@@UAE_NXZ
 .globl ?IsDrowning@Object@@UAE_NXZ
 .globl ?DestroyedByBeam@Object@@UAEXXZ
@@ -52,9 +51,8 @@
 .globl ?DiscipleInHandNear@Object@@UAEXPAVVillager@@PAVGInterfaceStatus@@@Z
 .globl ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 
-// Snippet: asm, [0x0063a640, 0x0063ad63)
-_InitialiseIsFixedForMapList__6ObjectFv:
-@InitialiseIsFixedForMapList__6ObjectFv@4:    push               esi                                           // 0x0063a640    56
+?InitialiseIsFixedForMapList@Object@@UAEXXZ:
+                         push               esi                                           // 0x0063a640    56
                          mov.s              esi, ecx                                      // 0x0063a641    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x0063a643    8b4628
                          {disp8} mov        eax, dword ptr [eax + 0x10]                   // 0x0063a646    8b4010

@@ -174,7 +174,7 @@
 .extern @MoveTo__13MobileWallHugFv@4
 .extern @SetGameAngle__13MobileWallHugFUs@10
 .extern _jmp_addr_0x00637cc0
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a1b0
 .extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
@@ -11336,7 +11336,7 @@ _jmp_addr_0x0076e9bd:    mov.s              eax, esi                            
                          {disp8} mov        dword ptr [eax + 0x08], ecx                     // 0x0076ea28    894808
                          push               0x3f800000                                      // 0x0076ea2b    680000803f
                          mov.s              ecx, esi                                        // 0x0076ea30    8bce
-                         call               @SetScale__6ObjectFf@12                         // 0x0076ea32    e8c9a7ecff
+                         call               ?SetScale@Object@@UAEXM@Z                       // 0x0076ea32    e8c9a7ecff
                          test               esi, esi                                        // 0x0076ea37    85f6
                          {disp32} mov       edx, dword ptr [_game]                          // 0x0076ea39    8b155c19d000
                          {disp32} lea       edi, dword ptr [edx + 0x00205d2c]               // 0x0076ea3f    8dba2c5d2000

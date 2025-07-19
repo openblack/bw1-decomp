@@ -1073,7 +1073,7 @@ _jmp_addr_0x0063e8f0:    {disp8} mov       eax, dword ptr [esp + 0x08]          
                          push              0x3f800000                                    // 0x0063e914    680000803f
                          mov.s             ecx, esi                                      // 0x0063e919    8bce
                          mov               dword ptr [esi], 0x009313b0                   // 0x0063e91b    c706b0139300
-                         call              @SetLife__6ObjectFf@12                        // 0x0063e921    e81ab8ffff
+                         call              ?SetLife@Object@@UAEXM@Z                      // 0x0063e921    e81ab8ffff
                          {disp8} mov       dword ptr [esi + 0x6c], 0x00000000            // 0x0063e926    c7466c00000000
                          {disp32} mov      edx, dword ptr [data_bytes + 0x37f4e8]        // 0x0063e92d    8b15e854d400
                          {disp8} mov       dword ptr [esi + 0x70], edx                   // 0x0063e933    895670
