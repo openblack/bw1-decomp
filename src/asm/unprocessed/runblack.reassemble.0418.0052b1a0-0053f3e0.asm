@@ -170,15 +170,15 @@
 .extern @InsertMapObject__6ObjectFv@4
 .extern @RemoveMapObject__6ObjectFv@4
 .extern  ?IsObjectInMap@Object@@UAE_NPAUMapCell@@@Z
-.extern @RemoveMapObjectFromCell__6ObjectFP7MapCell@12
+.extern ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z
 .extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?InterfaceSetInMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
 .extern @ReduceLife__6ObjectFfP7GPlayer@16
 .extern _jmp_addr_0x00637cc0
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
-.extern @SetScale__6ObjectFf@12
-.extern @SetYAngle__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
+.extern ?SetYAngle@Object@@UAEXM@Z
 .extern ?IsObjectInMap@Object@@UAE_NXZ
 .extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
@@ -327,8 +327,6 @@
 .globl @__ct__11FixedObjectFv@4
 .globl @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
 .globl _jmp_addr_0x0052de20
-.globl @InsertMapObjectToCell__11FixedObjectFP7MapCell@12
-.globl @InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12
 .extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
 .globl @Load__11FixedObjectFR10GameOSFile@12
@@ -511,14 +509,14 @@
 .globl _Load__17GFootpathLinkSaveFR10GameOSFile
 .globl _Load__13MultiMapFixedFR10GameOSFile
 .globl ?Create3DObject@Fixed@@UAEXXZ
-.globl @GetDoorPos__13MultiMapFixedFv@12
+.globl ?GetDoorPos@MultiMapFixed@@UAEPAUMapCoords@@PAU2@@Z
 .globl _GetCollideData__14SingleMapFixedFv
 .globl ?InsertMapObject@MultiMapFixed@@UAEXXZ
 .globl ?GetMapChild@MultiMapFixed@@UAEPAVObject@@PBUMapCell@@@Z
-.globl @SetMapChild__13MultiMapFixedFP6ObjectP7MapCell@16
-.globl _InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell
-.globl @AddFootpath__13MultiMapFixedFP9GFootpath@12
-.globl _InsertMapObjectToCell__11FixedObjectFP7MapCell
+.globl ?SetMapChild@MultiMapFixed@@UAEXPAVObject@@PAUMapCell@@@Z
+.globl ?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z
+.globl ?AddFootpath@MultiMapFixed@@UAEIPAVGFootpath@@@Z
+.globl ?InsertMapObjectToCell@Fixed@@UAEXPAUMapCell@@@Z
 .globl ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z
 .globl ??1Fixed@@UAE@XZ
 .globl ?GetTownArtifactValue@Fixed@@UAEMXZ
@@ -3042,7 +3040,7 @@ _jmp_addr_0x0052ca3d:    {disp8} lea        ecx, dword ptr [esp + 0x08]         
                          call               @ToMap__9MapCoordsCFv@4                              // 0x0052ca41    e8ea690d00
                          push               eax                                                  // 0x0052ca46    50
                          mov.s              ecx, esi                                             // 0x0052ca47    8bce
-                         call               @InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12                                 // 0x0052ca49    e892140000
+                         call               ?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z                                 // 0x0052ca49    e892140000
                          {disp8} lea        edx, dword ptr [esp + 0x04]                          // 0x0052ca4e    8d542404
                          push               edx                                                  // 0x0052ca52    52
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                          // 0x0052ca53    8d44240c
@@ -3079,7 +3077,7 @@ _jmp_addr_0x0052ca9d:    {disp8} lea        ecx, dword ptr [esp + 0x08]         
                          call               @ToMap__9MapCoordsCFv@4                              // 0x0052caa1    e88a690d00
                          push               eax                                                  // 0x0052caa6    50
                          mov.s              ecx, esi                                             // 0x0052caa7    8bce
-                         call               @RemoveMapObjectFromCell__6ObjectFP7MapCell@12       // 0x0052caa9    e8229e1000
+                         call               ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z  // 0x0052caa9    e8229e1000
                          {disp8} lea        edx, dword ptr [esp + 0x04]                          // 0x0052caae    8d542404
                          push               edx                                                  // 0x0052cab2    52
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                          // 0x0052cab3    8d44240c
@@ -4980,11 +4978,11 @@ _jmp_addr_0x0052ddba:    mov.s              eax, esi                            
                          or                 byte ptr [eax + 0x59c0], 1                           // 0x0052ddf1    8088c059000001
                          push               edx                                                  // 0x0052ddf8    52
                          mov.s              ecx, esi                                             // 0x0052ddf9    8bce
-                         call               @SetYAngle__6ObjectFf@12                             // 0x0052ddfb    e860b41000
+                         call               ?SetYAngle@Object@@UAEXM@Z                           // 0x0052ddfb    e860b41000
                          {disp8} mov        eax, dword ptr [esp + 0x14]                          // 0x0052de00    8b442414
                          push               eax                                                  // 0x0052de04    50
                          mov.s              ecx, esi                                             // 0x0052de05    8bce
-                         call               @SetScale__6ObjectFf@12                              // 0x0052de07    e8f4b31000
+                         call               ?SetScale@Object@@UAEXM@Z                            // 0x0052de07    e8f4b31000
                          mov.s              eax, esi                                             // 0x0052de0c    8bc6
                          pop                esi                                                  // 0x0052de0e    5e
                          ret                0x0010                                               // 0x0052de0f    c21000
@@ -5068,8 +5066,9 @@ _jmp_addr_0x0052de78:    add                edi, 0x14                           
                          nop                                                                     // 0x0052de9d    90
                          nop                                                                     // 0x0052de9e    90
                          nop                                                                     // 0x0052de9f    90
-_InsertMapObjectToCell__11FixedObjectFP7MapCell:
-@InsertMapObjectToCell__11FixedObjectFP7MapCell@12:    push               esi                                                  // 0x0052dea0    56
+
+?InsertMapObjectToCell@Fixed@@UAEXPAUMapCell@@@Z:
+                         push               esi                                                  // 0x0052dea0    56
                          push               edi                                                  // 0x0052dea1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052dea2    8b7c240c
                          {disp8} mov        eax, dword ptr [edi + 0x04]                          // 0x0052dea6    8b4704
@@ -5102,8 +5101,8 @@ _jmp_addr_0x0052deb9:    push               esi                                 
                          nop                                                                     // 0x0052dedd    90
                          nop                                                                     // 0x0052dede    90
                          nop                                                                     // 0x0052dedf    90
-_InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell:
-@InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12:    push               esi                                                  // 0x0052dee0    56
+?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z:
+                         push               esi                                                  // 0x0052dee0    56
                          push               edi                                                  // 0x0052dee1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052dee2    8b7c240c
                          {disp8} mov        eax, dword ptr [edi + 0x04]                          // 0x0052dee6    8b4704
@@ -5609,7 +5608,8 @@ _jmp_addr_0x0052e354:    push               esi                                 
                          nop                                                                     // 0x0052e36d    90
                          nop                                                                     // 0x0052e36e    90
                          nop                                                                     // 0x0052e36f    90
-@GetDoorPos__13MultiMapFixedFv@12:
+
+?GetDoorPos@MultiMapFixed@@UAEPAUMapCoords@@PAU2@@Z:
                          sub                esp, 0x0c                                            // 0x0052e370    83ec0c
                          push               esi                                                  // 0x0052e373    56
                          mov.s              esi, ecx                                             // 0x0052e374    8bf1
@@ -5678,7 +5678,8 @@ _jmp_addr_0x0052e413:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052e41d    90
                          nop                                                                     // 0x0052e41e    90
                          nop                                                                     // 0x0052e41f    90
-@SetMapChild__13MultiMapFixedFP6ObjectP7MapCell@16:
+
+?SetMapChild@MultiMapFixed@@UAEXPAVObject@@PAUMapCell@@@Z:
                          push               ebx                                                  // 0x0052e420    53
                          push               esi                                                  // 0x0052e421    56
                          push               edi                                                  // 0x0052e422    57
@@ -6027,7 +6028,7 @@ _jmp_addr_0x0052e6d8:    {disp8} mov        eax, dword ptr [esi + 0x68]         
                          push               ebx                                                  // 0x0052e6ec    53
                          mov.s              ecx, esi                                             // 0x0052e6ed    8bce
                          {disp8} mov        dword ptr [esi + 0x6c], edi                          // 0x0052e6ef    897e6c
-                         call               @InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12                                 // 0x0052e6f2    e8e9f7ffff
+                         call               ?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z                                 // 0x0052e6f2    e8e9f7ffff
                          {disp8} mov        edi, dword ptr [esp + 0x14]                          // 0x0052e6f7    8b7c2414
                          add                ebp, 0x08                                            // 0x0052e6fb    83c508
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                          // 0x0052e6fe    8d4c2418
@@ -6108,7 +6109,7 @@ _jmp_addr_0x0052e79e:    {disp8} lea        ecx, dword ptr [esp + 0x18]         
                          {disp8} je         _jmp_addr_0x0052e7e2                                 // 0x0052e7cb    7415
 _jmp_addr_0x0052e7cd:    push               eax                                                  // 0x0052e7cd    50
                          mov.s              ecx, esi                                             // 0x0052e7ce    8bce
-                         call               @RemoveMapObjectFromCell__6ObjectFP7MapCell@12       // 0x0052e7d0    e8fb801000
+                         call               ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z  // 0x0052e7d0    e8fb801000
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                          // 0x0052e7d5    8d4c2404
                          call               @GetNext__20NewCollideDescriptorFv@4                 // 0x0052e7d9    e8a2c5f3ff
                          test               eax, eax                                             // 0x0052e7de    85c0
@@ -6760,7 +6761,8 @@ _jmp_addr_0x0052edef:    {disp8} fld        dword ptr [ecx + 0x5c]              
                          call               dword ptr [edx + 0x8a8]                              // 0x0052ee01    ff92a8080000
 _jmp_addr_0x0052ee07:    ret                0x0004                                               // 0x0052ee07    c20400
                          call               dword ptr [__imp__ShellExecuteA@4]                   // 0x0052ee0a    ff15ac978a00
-@AddFootpath__13MultiMapFixedFP9GFootpath@12:
+
+?AddFootpath@MultiMapFixed@@UAEIPAVGFootpath@@@Z:
                          push               edi                                                  // 0x0052ee10    57
                          mov.s              edi, ecx                                             // 0x0052ee11    8bf9
                          mov                eax, dword ptr [edi]                                 // 0x0052ee13    8b07
@@ -7456,14 +7458,14 @@ _jmp_addr_0x0052f420:    {disp8} mov        edx, dword ptr [esp + 0x04]         
                          nop                                                                     // 0x0052f43f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x0052f440    8b442404
                          push               eax                                                  // 0x0052f444    50
-                         call               @InsertMapObjectToCell__11FixedObjectFP7MapCell@12   // 0x0052f445    e856eaffff
+                         call               ?InsertMapObjectToCell@Fixed@@UAEXPAUMapCell@@@Z     // 0x0052f445    e856eaffff
                          ret                0x0004                                               // 0x0052f44a    c20400
                          nop                                                                     // 0x0052f44d    90
                          nop                                                                     // 0x0052f44e    90
                          nop                                                                     // 0x0052f44f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x0052f450    8b442404
                          push               eax                                                  // 0x0052f454    50
-                         call               @RemoveMapObjectFromCell__6ObjectFP7MapCell@12       // 0x0052f455    e876741000
+                         call               ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z  // 0x0052f455    e876741000
                          ret                0x0004                                               // 0x0052f45a    c20400
                          nop                                                                     // 0x0052f45d    90
                          nop                                                                     // 0x0052f45e    90

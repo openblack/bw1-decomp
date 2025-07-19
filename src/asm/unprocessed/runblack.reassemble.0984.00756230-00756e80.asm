@@ -1133,7 +1133,7 @@ _jmp_addr_0x00756b21:    push               edi                                 
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x00756b70    8b442408
                          push               eax                                           // 0x00756b74    50
                          mov.s              ecx, esi                                      // 0x00756b75    8bce
-                         call               @SetLife__6ObjectFf@12                        // 0x00756b77    e8c435eeff
+                         call               ?SetLife@Object@@UAEXM@Z                      // 0x00756b77    e8c435eeff
                          pop                esi                                           // 0x00756b7c    5e
                          ret                0x0004                                        // 0x00756b7d    c20400
 _jmp_addr_0x00756b80:    mov                edx, dword ptr [esi]                          // 0x00756b80    8b16
@@ -1153,7 +1153,7 @@ _jmp_addr_0x00756b80:    mov                edx, dword ptr [esi]                
 _jmp_addr_0x00756baf:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x00756baf    8b442408
                          push               eax                                           // 0x00756bb3    50
                          mov.s              ecx, esi                                      // 0x00756bb4    8bce
-                         call               @SetLife__6ObjectFf@12                        // 0x00756bb6    e88535eeff
+                         call               ?SetLife@Object@@UAEXM@Z                      // 0x00756bb6    e88535eeff
                          pop                esi                                           // 0x00756bbb    5e
                          ret                0x0004                                        // 0x00756bbc    c20400
                          nop                                                              // 0x00756bbf    90
