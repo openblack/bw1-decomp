@@ -228,7 +228,7 @@
 .extern @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
 .extern _jmp_addr_0x0074fbc0
 .extern _jmp_addr_0x007506c0
-.extern @ToBeDeleted__8VillagerFi@12
+.extern ?ToBeDeleted@Villager@@UAEXH@Z
 .extern @SetAge__8VillagerFUl@12
 .extern _jmp_addr_0x00754280
 .extern _jmp_addr_0x00754580

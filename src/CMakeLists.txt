@@ -95,7 +95,9 @@ set(SOURCES_001
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 
-    asm/unprocessed/rdata.003.008a99d0-0099f878.asm
+    asm/unprocessed/rdata.001.008aa8d8-008f84a8-vtables.asm
+    c/Villager.000.c
+    asm/unprocessed/rdata.003.008f84a8-0099f878-vtables.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
