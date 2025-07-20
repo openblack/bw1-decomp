@@ -211,6 +211,7 @@
 .globl ??1PlannedMultiMapFixed@@UAE@XZ
 .globl ?GetDebugText@PlannedMultiMapFixed@@QAEPADXZ
 .globl ?GetSaveType@PlannedMultiMapFixed@@UAEIXZ
+.globl ??GVillager@@UAE@XZ
 
 _IsClear__8BaseInfoCFv:
                          {disp8} mov        eax, dword ptr [ecx + 0x04]                    // 0x0055c770    8b4104
@@ -664,6 +665,8 @@ _jmp_addr_0x0055ca5c:    xor.s              eax, eax                            
                          nop                                                               // 0x0055cb3d    90
                          nop                                                               // 0x0055cb3e    90
                          nop                                                               // 0x0055cb3f    90
+
+??GVillager@@UAE@XZ:
                          push               esi                                            // 0x0055cb40    56
                          mov.s              esi, ecx                                       // 0x0055cb41    8bf1
                          call               _jmp_addr_0x0074fbc0                           // 0x0055cb43    e878301f00

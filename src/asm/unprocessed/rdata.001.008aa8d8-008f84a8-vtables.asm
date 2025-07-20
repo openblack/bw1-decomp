@@ -48464,18 +48464,18 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long 0x007502f0                                                                                                   // [0x385d0] 0x008a9000 + 0x385d0 = 0x008e15d0
+.long ?GetPlayer@Villager@@QAEPAVGPlayer@@XZ
 .long ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .long ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z
 .long ?RemoveDance@GameThing@@QAEXXZ
-.long 0x00751d50                                                                                                   // [0x385e0] 0x008a9000 + 0x385e0 = 0x008e15e0
+.long ?IsAvailable@Villager@@QAE_NXZ
 .long ?IsCreature@GameThing@@QAE_NPAVCreature@@@Z
 .long ?IsCreature@GameThing@@UAE_NXZ
 .long ?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z
 .long ?GetDrawImportance@Object@@UAEMXZ
 .long ?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ
 .long ?GetComputerSeen@GameThing@@UAE_NXZ
-.long 0x00751f00                                                                                                   // [0x385fc] 0x008a9000 + 0x385fc = 0x008e15fc
+.long ?GetTown@Villager@@QAEPAVTown@@XZ
 .long ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z
 .long ?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z
 .long ?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z
@@ -48496,7 +48496,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?JustRemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
 .long ?JustGetResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
 .long ?GetResource@Object@@UAEIW4RESOURCE_TYPE@@@Z
-.long 0x007564d0                                                                                                   // [0x38650] 0x008a9000 + 0x38650 = 0x008e1650
+.long ?AddResource@Villager@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@_NABUMapCoords@@H@Z
 .long ?RemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@PA_N@Z
 .long ?CastCreature@GameThing@@QAEPAVCreature@@XZ
 .long ?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ
@@ -48510,14 +48510,16 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetTownArtifactValue@GameThing@@QAEMXZ
 .long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
-.long 0x00751cf0, 0x00560fd0
+.long ?IsFunctional@Villager@@QAE_NXZ
+.long 0x00560fd0
 .long ?GetSampleForAttack@GameThing@@UAEIXZ
 .long ?GetGuidanceResourceType@GameThing@@UAEIXZ
 .long ?GetShowNeedsPos@MultiMapFixed@@UAEIKPAUMapCoords@@@Z
-.long 0x0071f5d0                                                                                                   // [0x3869c] 0x008a9000 + 0x3869c = 0x008e169c
-.long 0x0071f560, 0x00560fc0                                                                                       // [0x386a0] 0x008a9000 + 0x386a0 = 0x008e16a0
+.long 0x0071f5d0
+.long 0x0071f560
+.long 0x00560fc0
 .long ?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z
-.long 0x00754870                                                                                                   // [0x386ac] 0x008a9000 + 0x386ac = 0x008e16ac
+.long 0x00754870
 .long ?SetPos@GameThingWithPos@@QAEXABUMapCoords@@@Z
 .long ?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ
 .long ?GetArrivePos@GameThingWithPos@@QAEPAUMapCoords@@XZ
@@ -48529,21 +48531,21 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetLife@Object@@UAEMXZ
 .long ?GetScale@Object@@UAEMXZ
 .long _SetScale__6ObjectFf
-
 .long ?GetPower@GameThingWithPos@@UBEMXZ
-
 .long ?GetPSysPower@GameThingWithPos@@UBEMXZ
 .long 0x0060c070, 0x00753110, 0x0060c0b0
 .long ?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z
 .long 0x0060c0d0
 .long ?SetHeight@GameThingWithPos@@UAEXM@Z
 .long ?SetMaxHeight@GameThingWithPos@@UAEXM@Z
-
 .long ?GetMaxHeight@GameThingWithPos@@UAEMXZ
 .long ?GetPSysBeamTargetPos@GameThingWithPos@@UAEXPAULHPoint@@@Z
 .long 0x0060c0f0
 .long ?SetSpeedInMetresPerSecond@GameThingWithPos@@UAEXMH@Z
-.long 0x0060c140, 0x0060c160, 0x004173c0, 0x0060c040                                                               // [0x38710] 0x008a9000 + 0x38710 = 0x008e1710
+.long 0x0060c140
+.long 0x0060c160
+.long 0x004173c0
+.long 0x0060c040
 .long ?GetPhysicsMovementDirection@Object@@UAEXPAULHPoint@@@Z
 .long ?GetInteractPos@GameThingWithPos@@UAEXPAULHPoint@@@Z
 .long ?IsMoving@Object@@UAE_NXZ
@@ -48552,48 +48554,38 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?IsCannotBePickedUp@GameThingWithPos@@UBE_NXZ
 .long ?GetOverwritePickUpToolTip@GameThingWithPos@@UAEIXZ
 .long 0x004172c0
-
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
 .long ?IsInteractable@GameThingWithPos@@UAE_NXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
-
 .long ?GetOverwriteTapToolTip@GameThingWithPos@@UAEIXZ
 .long ?IsCastShadowAtNight@GameThingWithPos@@UAE_NXZ
 .long ?CleanupWhenDeleted@Object@@UAEXH@Z 
-
 .long ?GetImpressiveType@GameThingWithPos@@UAE?AW4IMPRESSIVE_TYPE@@XZ
-
 .long ?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z
 .long ?GetImpressiveValue@Object@@UAEMPAVLiving@@PAVReaction@@@Z
 .long ?GetUpdateOfBoredomValue@Object@@UAEMPAVReaction@@PAVGameThingWithPos@@@Z
 .long ?IsTown_1@GameThingWithPos@@UAE_NXZ
-
 .long ?IsTown_0@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?TrueFunction@GameThingWithPos@@UAE_NXZ
 .long ?FalseFunction@GameThingWithPos@@UAE_NXZ
 .long 0x00417470
-
 .long ?IsSuitableForCreatureActivity@GameThingWithPos@@UAE_NXZ
 .long ?IsTownCentre@GameThingWithPos@@UAE_NXZ
 .long ?IsTotemStatue@GameThingWithPos@@UAE_NXZ
 .long ?IsTownDesireFlag@GameThingWithPos@@UAE_NXZ
-
 .long ?IsRock_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsRock_0@GameThingWithPos@@UAE_NXZ
 .long ?IsSpellDispenser@GameThingWithPos@@UAE_NXZ
 .long ?IsMist@GameThingWithPos@@UAE_NXZ
-
 .long ?IsQueryIcon@GameThingWithPos@@UAE_NXZ
 .long ?IsStreetLight@GameThingWithPos@@UAE_NXZ
 .long ?IsStreetLantern@GameThingWithPos@@UAE_NXZ
 .long ?IsAbode@GameThingWithPos@@UAE_NXZ
-
 .long ?IsField_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsField_0@GameThingWithPos@@UAE_NXZ
 .long ?IsBuildingMaterial@Object@@UAE_NXZ
@@ -48604,8 +48596,12 @@ VftableAndRTTI SpecialVillager                                                  
 .long 0x004e4c90
 .long ?CanBeEatenByCreature@Object@@UAE_NPAVCreature@@@Z
 .long ?CanCreatureEatMe@GameThingWithPos@@UAE_NPAVCreature@@@Z
-.long 0x00417350, 0x004173d0
-.long 0x0055caa0, 0x00417390, 0x0055ca80, 0x004173e0                                                               // [0x387f0] 0x008a9000 + 0x387f0 = 0x008e17f0
+.long 0x00417350
+.long 0x004173d0
+.long 0x0055caa0
+.long 0x00417390
+.long 0x0055ca80
+.long 0x004173e0
 .long 0x00417410
 .long ?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeSleptNextToByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
@@ -48618,22 +48614,18 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBePutInAStoragePit@Object@@UAE_NPAVCreature@@@Z
 .long 0x00417420
-
 .long ?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeExaminedByCreature@Object@@UAE_NPAVCreature@@@Z
 .long ?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long 0x0055ca90
-
 .long ?CanActAsAContainer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?NeedsRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOnFire@Object@@UAE_NPAVCreature@@@Z
-
 .long ?IsNotOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsMushroom@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?CanBeGivenToTown@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBePutInFoodPile@Object@@UAE_NPAVCreature@@@Z
@@ -48642,11 +48634,14 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?CanHaveMagicWoodCastOnMe@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeBroughtBackToCitadel@Object@@UAE_NPAVCreature@@@Z
 .long 0x0055cab0
-.long 0x004e4d50, 0x004e4510, 0x004e46d0, 0x004e4b10                                                               // [0x38880] 0x008a9000 + 0x38880 = 0x008e1880
-
+.long 0x004e4d50
+.long 0x004e4510
+.long 0x004e46d0
+.long 0x004e4b10
 .long ?IsCow@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBePoodOn@Object@@UAE_NPAVCreature@@@Z
-.long 0x004e4840, 0x004e4890
+.long 0x004e4840
+.long 0x004e4890
 .long 0x004e3e20
 .long ?DoesTotemBelongToATownWhichIsVeryImpressedIndeed@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsDominantCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
@@ -48659,35 +48654,30 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?IsWorkshop_0@GameThingWithPos@@UAE_NXZ
 .long ?IsWorkshop_1@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsBuildingWhichIsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTree_1@GameThingWithPos@@UAE_NXZ
-
 .long ?IsTree_0@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long 0x004e3b60
 .long ?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsPickupableRock@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsCitadelPart_1@GameThingWithPos@@UAE_NXZ
 .long ?IsCitadelPart_0@GameThingWithPos@@UAE_NPAVCreature@@@Z
-.long 0x00532db0, 0x00532e00
+.long 0x00532db0
+.long 0x00532e00
 .long 0x00532e50
 .long ?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAVCreature@@@Z
@@ -48696,44 +48686,38 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsStealableByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsStealableScaffold@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToy@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToyBall@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsToyDie@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToyCuddly@GameThingWithPos@@UBE_NPAVCreature@@@Z
 .long 0x00417460
 .long ?IsLiving_0@GameThingWithPos@@UBE_NPAVCreature@@@Z
-
 .long ?IsFence@GameThingWithPos@@UBE_NXZ
 .long ?IsSpellIcon@GameThingWithPos@@UBE_NXZ
 .long ?NothingScareyNearMe@GameThingWithPos@@UBE_NXZ
 .long ?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UBE_NPAVCreature@@@Z
-
 .long ?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UBE_NPAVCreature@@@Z
 .long ?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UBE_NPAVCreature@@@Z
-.long 0x004eaba0, 0x004d1b40
-
+.long 0x004eaba0
+.long 0x004d1b40
 .long ?IsFlock@GameThingWithPos@@UBE_NXZ
 .long ?IsDance@GameThingWithPos@@UBE_NXZ
 .long ?IsReward@GameThingWithPos@@UBE_NXZ
 .long ?IsScriptContainer@GameThingWithPos@@UBE_NXZ
-
 .long ?IsWeather@GameThingWithPos@@UBE_NXZ
 .long ?IsSpell@GameThingWithPos@@UBE_NXZ
 .long ?IsDeletedWhenReleasedFromScript@GameThingWithPos@@UAE_NXZ
 .long 0x00416f80
-
 .long ?IsActive@GameThingWithPos@@UBE_NXZ
 .long ?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UBE_NXZ
-.long 0x0063b9b0, 0x00768580
+.long 0x0063b9b0
+.long 0x00768580
 .long ?GetText@Object@@UAEPBDXZ
 .long ?CalculateDesireForFood@GameThingWithPos@@UAEMXZ
 .long ?CalculateDesireForRest@GameThingWithPos@@UAEMXZ
@@ -48746,55 +48730,50 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?SetControlledByScript@GameThingWithPos@@UAEXH@Z
 .long 0x0055cb10
 .long ?IsInScript@GameThingWithPos@@UAE_NXZ
-.long 0x0055cac0, 0x0055cae0
+.long 0x0055cac0
+.long 0x0055cae0
 .long ?IsAnimal@GameThingWithPos@@UAE_NXZ
 .long 0x0055cb00
-
 .long ?IsHouse@GameThingWithPos@@UAE_NXZ
 .long ?IsObject@Object@@UAE_NXZ
 .long ?IsFootball@GameThingWithPos@@UBE_NXZ
 .long ?IsCitadel@GameThingWithPos@@UAE_NXZ
-
 .long ?IsForest@GameThingWithPos@@UAE_NXZ
 .long ?IsMobileObject@GameThingWithPos@@UAE_NXZ
 .long ?IsMobileStatic@GameThingWithPos@@UAE_NXZ
 .long ?IsAnyKindOfTree@GameThingWithPos@@UAE_NXZ
-
 .long ?IsDeadTree@GameThingWithPos@@UAE_NXZ
 .long ?IsPileFood@GameThingWithPos@@UAE_NXZ
 .long ?IsFeature@GameThingWithPos@@UAE_NXZ
 .long ?IsScriptMarker@GameThingWithPos@@UAE_NXZ
-
 .long ?IsScriptHighlight@GameThingWithPos@@UAE_NXZ
 .long ?IsWonder@GameThingWithPos@@UAE_NXZ
 .long ?IsInfluenceRing@GameThingWithPos@@UAE_NXZ
 .long ?IsPuzzleGame@GameThingWithPos@@UAE_NXZ
-
 .long ?IsScaffold@GameThingWithPos@@UAE_NXZ
-.long 0x00416ff0, 0x00416f90
+.long 0x00416ff0
+.long 0x00416f90
 .long ?IsSpeedUp@GameThingWithPos@@UAE_NXZ
-
 .long ?IsParticleContainer@GameThingWithPos@@UAE_NXZ
 .long ?IsSacrificeAltar@GameThingWithPos@@UAE_NXZ
 .long ?IsPot@GameThingWithPos@@UAE_NXZ
 .long ?IsComputerPlayer@GameThingWithPos@@UBE_NXZ
-
 .long ?CanBeThrownByPlayer@GameThingWithPos@@UBE_NXZ
 .long _SetSkeleton__8VillagerFi
-
 .long ?IsSpellSeed@GameThingWithPos@@UBE_NXZ
 .long ?IsSpellShield@GameThingWithPos@@UBE_NXZ
-
 .long ?IsPileResource@GameThingWithPos@@UBE_NXZ
 .long ?IsScriptTimer@GameThingWithPos@@UBE_NXZ
 .long ?CreateBuildingSite@GameThingWithPos@@UBE_NXZ
 .long 0x00753f20
-.long 0x00753f90, 0x00754050, 0x00754060, 0x00753020                                                               // [0x38a90] 0x008a9000 + 0x38a90 = 0x008e1a90
+.long 0x00753f90
+.long 0x00754050
+.long 0x00754060
+.long 0x00753020
 .long 0x0060c020
 .long ?SetAffectedByWind@GameThingWithPos@@UAEXH@Z
 .long ?GetReactionPower@GameThingWithPos@@UAEMXZ
 .long ?GetSpellCastPos@GameThingWithPos@@UAEXPAUMapCoords@@@Z
-
 .long ?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ
 .long ?DestroyedByBeam@Object@@UAEXXZ
 .long ?GetXAngle@Object@@UAEMXZ
@@ -48808,11 +48787,12 @@ VftableAndRTTI SpecialVillager                                                  
 .long 0x0060dac0
 .long ?UpdateFrom3DPosition@Object@@UAEXXZ
 .long _MoveAlongPath__6LivingFv
-.long 0x00756460, 0x00606cd0                                                                                       // [0x38ae4] 0x008a9000 + 0x38ae4 = 0x008e1ae4
+.long 0x00756460
+.long 0x00606cd0
 .long _Create3DObject__6ObjectFv
 .long ?GetMapChild@Object@@UAEPAV1@PBUMapCell@@@Z
 .long _SetMapChild__6ObjectFP6ObjectP7MapCell
-.long 0x00756450                                                                                                   // [0x38af8] 0x008a9000 + 0x38af8 = 0x008e1af8
+.long 0x00756450
 .long _RemoveMapObject__6ObjectFv
 .long _InsertMapObjectToCell__6ObjectFP7MapCell
 .long _RemoveMapObjectFromCell__6ObjectFP7MapCell
@@ -48835,7 +48815,8 @@ VftableAndRTTI SpecialVillager                                                  
 .long 0x00750320
 .long ?GetHoldYRotate@Object@@UAEMXZ
 .long ?HandShouldFeelWithMeshIntersect@Object@@UAE_NXZ
-.long 0x00417480, 0x00417490
+.long 0x00417480
+.long 0x00417490
 .long ?SetBeliefSprite@Object@@UAEXPAVLH3DSprite@@@Z
 .long ?GetBeliefSprite@Object@@UAEPAVLH3DSprite@@XZ
 .long 0x00756b40
@@ -48861,7 +48842,8 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?ProcessBySpell@Object@@UAEIPAVSpell@@@Z
 .long ?ApplySingleEffect@Object@@UAEXW4EFFECT_TYPE@@MPAVGameThing@@PBUMapCoords@@@Z
 .long 0x0055c9c0
-.long 0x0055c9d0, 0x0071f3d0
+.long 0x0055c9d0
+.long 0x0071f3d0
 .long ?DrawOutOfMap@Object@@UAEX_N@Z
 .long ?IsG3DObjectDrawnInHand@Object@@UAE_NXZ
 .long ?GetDrawRegion@Object@@UAEXPAULHRegion@@@Z
@@ -48902,7 +48884,8 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?IsAttackable@Object@@UAE_NPAV1@@Z
 .long ?IsAllied@Object@@UAE_NPAV1@@Z
 .long ?IsTouching@Object@@UAE_NPAUMapCoords@@0@Z
-.long 0x00753040, 0x0055c9a0
+.long 0x00753040
+.long 0x0055c9a0
 .long ?StartOnFire@Object@@UAEXXZ
 .long ?EndOnFire@Object@@UAEXXZ
 .long ?GetDistanceFromObject@Object@@UAEMPAV1@@Z
@@ -48919,14 +48902,18 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?ValidAsInterfaceTarget@Object@@UAE_NXZ
 .long ?ValidAsInterfaceLeashTarget@Object@@UAE_NXZ
 .long ?SelectOnlyAfterRecSystem@Object@@UAE_NXZ
-.long 0x007564a0, 0x00753080
+.long 0x007564a0
+.long 0x00753080
 .long ?InterfaceSetOutMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
 .long ?ValidToRemoveFromHand@Object@@UAE_NPAVGInterfaceStatus@@PBUMapCoords@@@Z
 .long ?RemoveFromHand@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@@Z
 .long ?ValidToShakeFromHand@Object@@UAE_NXZ
 .long ?InterfaceMustBeInInfluenceForInteraction@Object@@UAE_NXZ
 .long ?IsTuggable@Object@@UAE_NXZ
-.long 0x00752bd0, 0x00752c40, 0x00416f50, 0x00606bf0                                                               // [0x38cd0] 0x008a9000 + 0x38cd0 = 0x008e1cd0
+.long 0x00752bd0
+.long 0x00752c40
+.long 0x00416f50
+.long 0x00606bf0
 .long ?ValidForLockedApplyProcess@Object@@UAEIPAVGInterfaceStatus@@@Z
 .long ?ApplyUnlockProcess@Object@@UAEIPAVGInterfaceStatus@@@Z
 .long ?IsInterfacePowerUpWhenInHand@Object@@UAEIXZ
@@ -48947,17 +48934,22 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?FightThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@@Z
 .long 0x00751d70
 .long ?CanBeDestroyedBySpell@Object@@UAE_NPAVSpell@@@Z
-.long 0x0076aa80, 0x005efe90, 0x005efef0, 0x005eff30                                                               // [0x38d30] 0x008a9000 + 0x38d30 = 0x008e1d30
-.long 0x005eff40, 0x005f0a60
+.long 0x0076aa80
+.long 0x005efe90
+.long 0x005efef0
+.long 0x005eff30
+.long 0x005eff40
+.long 0x005f0a60
 .long ?DropSfx@Object@@UAEIXZ
-.long 0x005ed2f0                                                               // [0x38d40] 0x008a9000 + 0x38d40 = 0x008e1d40
+.long 0x005ed2f0
 .long ?InteractsWithPhysicsObjects@Object@@UAE_NXZ
 .long ?ChecksVerticesVObjects@Object@@UAEIXZ
 .long ?ShouldPhysicsRaiseObjectUntilNotIntersectingThis@Object@@UAEXPAV1@@Z
 .long ?PhysicallyDestroysAbodes@Object@@UAEIXZ
-.long 0x005ed3e0, 0x007564c0
+.long 0x005ed3e0
+.long 0x007564c0
 .long ?GetAlwaysRemainsInPhysicsInternalSystem@Object@@UAE_NXZ
-.long 0x00750ab0                                                               // [0x38d60] 0x008a9000 + 0x38d60 = 0x008e1d60
+.long 0x00750ab0
 .long 0x005edba0
 .long ?AddToRoutePlan@Object@@UAEXPAVRPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z
 .long ?GetRoutePlanRadius@Object@@UAEMPAVCreature@@@Z
@@ -48998,64 +48990,193 @@ VftableAndRTTI SpecialVillager                                                  
 .long _InitialiseIsFixedForMapList__6ObjectFv
 .long ?StandAnimation@Object@@UAEIXZ
 .long ?GetCollideData@Object@@UAEPAVNewCollide@@XZ
-.long 0x0060ad60, 0x00416f70, 0x0060fc50, 0x00473e40                                                               // [0x38e10] 0x008a9000 + 0x38e10 = 0x008e1e10
-.long 0x0060aee0, 0x0060bc40, 0x005f2710, 0x00753410                                                               // [0x38e20] 0x008a9000 + 0x38e20 = 0x008e1e20
-.long 0x0055c980, 0x005ec3e0, 0x00756ad0, 0x00763b00                                                               // [0x38e30] 0x008a9000 + 0x38e30 = 0x008e1e30
-.long 0x007642c0, 0x00764310, 0x00764320, 0x00764350                                                               // [0x38e40] 0x008a9000 + 0x38e40 = 0x008e1e40
-.long 0x0076a570, 0x0076a5e0, 0x005ec4b0, 0x0076b380                                                               // [0x38e50] 0x008a9000 + 0x38e50 = 0x008e1e50
-.long 0x007646a0, 0x007646d0, 0x005ecdb0, 0x00756c60                                                               // [0x38e60] 0x008a9000 + 0x38e60 = 0x008e1e60
-.long 0x00764920, 0x00764720, 0x0076ade0                                                                           // [0x38e70] 0x008a9000 + 0x38e70 = 0x008e1e70
+.long 0x0060ad60
+.long 0x00416f70
+.long 0x0060fc50
+.long 0x00473e40
+.long 0x0060aee0
+.long 0x0060bc40
+.long 0x005f2710
+.long 0x00753410
+.long 0x0055c980
+.long 0x005ec3e0
+.long 0x00756ad0
+.long 0x00763b00
+.long 0x007642c0
+.long 0x00764310
+.long 0x00764320
+.long 0x00764350
+.long 0x0076a570
+.long 0x0076a5e0
+.long 0x005ec4b0
+.long 0x0076b380
+.long 0x007646a0
+.long 0x007646d0
+.long 0x005ecdb0
+.long 0x00756c60
+.long 0x00764920
+.long 0x00764720
+.long 0x0076ade0
 .long _DecideWhatToDo__8VillagerFv
-.long 0x00751040, 0x005ecaf0                                                                                       // [0x38e80] 0x008a9000 + 0x38e80 = 0x008e1e80
+.long 0x00751040
+.long 0x005ecaf0
 .long _SetAge__8VillagerFUl
-.long 0x005f26d0                                                                                                   // [0x38e8c] 0x008a9000 + 0x38e8c = 0x008e1e8c
+.long 0x005f26d0
 .long _SetCurrentAndDestinationState__8VillagerFUcUc
-.long 0x00756590, 0x00756620                                                                                       // [0x38e94] 0x008a9000 + 0x38e94 = 0x008e1e94
+.long 0x00756590
+.long 0x00756620
 .long _SetTopState__8VillagerFUc
-.long 0x00763470, 0x00753740, 0x00753f00, 0x005ecba0                                                               // [0x38ea0] 0x008a9000 + 0x38ea0 = 0x008e1ea0
-.long 0x005ecb80, 0x00750110, 0x00752320                                                                           // [0x38eb0] 0x008a9000 + 0x38eb0 = 0x008e1eb0
+.long 0x00763470
+.long 0x00753740
+.long 0x00753f00
+.long 0x005ecba0
+.long 0x005ecb80
+.long 0x00750110
+.long 0x00752320
 .long _CallEntryStateFunction__8VillagerFUcUc
 .long _CallEntryStateFunction__8VillagerFUc
-.long 0x007527a0, 0x005ed9c0, 0x005edb10                                                                           // [0x38ec4] 0x008a9000 + 0x38ec4 = 0x008e1ec4
-.long 0x0076b000, 0x0076acb0, 0x005ed580, 0x00768780                                                               // [0x38ed0] 0x008a9000 + 0x38ed0 = 0x008e1ed0
-.long 0x005ee090, 0x005edda0, 0x005eddc0                                                                           // [0x38ee0] 0x008a9000 + 0x38ee0 = 0x008e1ee0
+.long 0x007527a0
+.long 0x005ed9c0
+.long 0x005edb10
+.long 0x0076b000
+.long 0x0076acb0
+.long 0x005ed580
+.long 0x00768780
+.long 0x005ee090
+.long 0x005edda0
+.long 0x005eddc0
 .long _SetState__8VillagerFUlUc
-.long 0x005edd90, 0x005ed7e0, 0x0076afe0                                                                           // [0x38ef0] 0x008a9000 + 0x38ef0 = 0x008e1ef0
+.long 0x005edd90
+.long 0x005ed7e0
+.long 0x0076afe0
 .long _EnterMoveOnPath__6LivingFUcUc
-.long 0x005eda50, 0x007687d0, 0x00768830, 0x00768840                                                               // [0x38f00] 0x008a9000 + 0x38f00 = 0x008e1f00
-.long 0x007689c0, 0x0055c9f0, 0x0055ca10, 0x00417070                                                               // [0x38f10] 0x008a9000 + 0x38f10 = 0x008e1f10
-.long 0x00752530, 0x005ecaa0, 0x007528b0, 0x005ecc10                                                               // [0x38f20] 0x008a9000 + 0x38f20 = 0x008e1f20
-.long 0x00764df0, 0x00764f60, 0x00763390, 0x00763410                                                               // [0x38f30] 0x008a9000 + 0x38f30 = 0x008e1f30
-.long 0x007634c0, 0x00763440, 0x006e4590, 0x007637d0                                                               // [0x38f40] 0x008a9000 + 0x38f40 = 0x008e1f40
-.long 0x005f11c0, 0x00751e10, 0x005f1360, 0x00763aa0                                                               // [0x38f50] 0x008a9000 + 0x38f50 = 0x008e1f50
-.long 0x00763ac0, 0x00763ae0, 0x005f1420, 0x00767630                                                               // [0x38f60] 0x008a9000 + 0x38f60 = 0x008e1f60
-.long 0x005f14c0, 0x00765b70, 0x00763820, 0x007639d0                                                               // [0x38f70] 0x008a9000 + 0x38f70 = 0x008e1f70
-.long 0x00765540, 0x005f1560, 0x00765c60, 0x005f1590                                                               // [0x38f80] 0x008a9000 + 0x38f80 = 0x008e1f80
-.long 0x00766010, 0x004170d0, 0x004170e0, 0x004170f0                                                               // [0x38f90] 0x008a9000 + 0x38f90 = 0x008e1f90
-.long 0x00766e30, 0x00766250, 0x00417120, 0x007665b0                                                               // [0x38fa0] 0x008a9000 + 0x38fa0 = 0x008e1fa0
-.long 0x00766620, 0x007668c0, 0x007668f0, 0x00766a20                                                               // [0x38fb0] 0x008a9000 + 0x38fb0 = 0x008e1fb0
-.long 0x00766a60, 0x007671e0, 0x00763990, 0x00766fd0                                                               // [0x38fc0] 0x008a9000 + 0x38fc0 = 0x008e1fc0
-.long 0x007672f0, 0x00767490, 0x007674b0, 0x00767520                                                               // [0x38fd0] 0x008a9000 + 0x38fd0 = 0x008e1fd0
-.long 0x005f15c0, 0x005f1610, 0x005f1620, 0x005f1630                                                               // [0x38fe0] 0x008a9000 + 0x38fe0 = 0x008e1fe0
-.long 0x005f1690, 0x005f16a0, 0x005f16e0, 0x007676e0                                                               // [0x38ff0] 0x008a9000 + 0x38ff0 = 0x008e1ff0
-.long 0x005f1710, 0x005f17a0, 0x005f17f0, 0x00765260                                                               // [0x39000] 0x008a9000 + 0x39000 = 0x008e2000
-.long 0x005f1820, 0x00765610, 0x00765bb0, 0x005f1870                                                               // [0x39010] 0x008a9000 + 0x39010 = 0x008e2010
-.long 0x005f1880, 0x00474970, 0x00474980, 0x00474990                                                               // [0x39020] 0x008a9000 + 0x39020 = 0x008e2020
-.long 0x00766df0, 0x00766200, 0x004749c0, 0x00766440                                                               // [0x39030] 0x008a9000 + 0x39030 = 0x008e2030
-.long 0x007664b0, 0x005f18a0, 0x005f18b0, 0x00766a10                                                               // [0x39040] 0x008a9000 + 0x39040 = 0x008e2040
-.long 0x00766a50, 0x00767210, 0x00767180, 0x00763850                                                               // [0x39050] 0x008a9000 + 0x39050 = 0x008e2050
-.long 0x00767320, 0x00767430, 0x00767540, 0x007675a0                                                               // [0x39060] 0x008a9000 + 0x39060 = 0x008e2060
-.long 0x00763980, 0x005f18c0, 0x005f1920, 0x005f1b10                                                               // [0x39070] 0x008a9000 + 0x39070 = 0x008e2070
-.long 0x005f1c00, 0x007640a0, 0x007640e0, 0x007648d0                                                               // [0x39080] 0x008a9000 + 0x39080 = 0x008e2080
-.long 0x00764110, 0x00764130, 0x007641a0, 0x00764230                                                               // [0x39090] 0x008a9000 + 0x39090 = 0x008e2090
-.long 0x00417260, 0x005ec340, 0x00417270, 0x0055c970                                                               // [0x390a0] 0x008a9000 + 0x390a0 = 0x008e20a0
-.long 0x005f2160, 0x005f2010                                                                                       // [0x390b0] 0x008a9000 + 0x390b0 = 0x008e20b0
+.long 0x005eda50
+.long 0x007687d0
+.long 0x00768830
+.long 0x00768840
+.long 0x007689c0
+.long 0x0055c9f0
+.long 0x0055ca10
+.long 0x00417070
+.long 0x00752530
+.long 0x005ecaa0
+.long 0x007528b0
+.long 0x005ecc10
+.long 0x00764df0
+.long 0x00764f60
+.long 0x00763390
+.long 0x00763410
+.long 0x007634c0
+.long 0x00763440
+.long 0x006e4590
+.long 0x007637d0
+.long 0x005f11c0
+.long 0x00751e10
+.long 0x005f1360
+.long 0x00763aa0
+.long 0x00763ac0
+.long 0x00763ae0
+.long 0x005f1420
+.long 0x00767630
+.long 0x005f14c0
+.long 0x00765b70
+.long 0x00763820
+.long 0x007639d0
+.long 0x00765540
+.long 0x005f1560
+.long 0x00765c60
+.long 0x005f1590
+.long 0x00766010
+.long 0x004170d0
+.long 0x004170e0
+.long 0x004170f0
+.long 0x00766e30
+.long 0x00766250
+.long 0x00417120
+.long 0x007665b0
+.long 0x00766620
+.long 0x007668c0
+.long 0x007668f0
+.long 0x00766a20
+.long 0x00766a60
+.long 0x007671e0
+.long 0x00763990
+.long 0x00766fd0
+.long 0x007672f0
+.long 0x00767490
+.long 0x007674b0
+.long 0x00767520
+.long 0x005f15c0
+.long 0x005f1610
+.long 0x005f1620
+.long 0x005f1630
+.long 0x005f1690
+.long 0x005f16a0
+.long 0x005f16e0
+.long 0x007676e0
+.long 0x005f1710
+.long 0x005f17a0
+.long 0x005f17f0
+.long 0x00765260
+.long 0x005f1820
+.long 0x00765610
+.long 0x00765bb0
+.long 0x005f1870
+.long 0x005f1880
+.long 0x00474970
+.long 0x00474980
+.long 0x00474990
+.long 0x00766df0
+.long 0x00766200
+.long 0x004749c0
+.long 0x00766440
+.long 0x007664b0
+.long 0x005f18a0
+.long 0x005f18b0
+.long 0x00766a10
+.long 0x00766a50
+.long 0x00767210
+.long 0x00767180
+.long 0x00763850
+.long 0x00767320
+.long 0x00767430
+.long 0x00767540
+.long 0x007675a0
+.long 0x00763980
+.long 0x005f18c0
+.long 0x005f1920
+.long 0x005f1b10
+.long 0x005f1c00
+.long 0x007640a0
+.long 0x007640e0
+.long 0x007648d0
+.long 0x00764110
+.long 0x00764130
+.long 0x007641a0
+.long 0x00764230
+.long 0x00417260
+.long 0x005ec340
+.long 0x00417270
+.long 0x0055c970
+.long 0x005f2160
+.long 0x005f2010
 .long _GetFinalState__8VillagerCFv
-.long 0x00751510                                                                                                   // [0x390bc] 0x008a9000 + 0x390bc = 0x008e20bc
-.long 0x00759b80, 0x0075bae0, 0x00417320, 0x005ee550                                                               // [0x390c0] 0x008a9000 + 0x390c0 = 0x008e20c0
-.long 0x004174a0, 0x004174b0, 0x004174c0, 0x004174d0                                                               // [0x390d0] 0x008a9000 + 0x390d0 = 0x008e20d0
-.long 0x004174e0, 0x004174f0, 0x00417500, 0x00417510                                                               // [0x390e0] 0x008a9000 + 0x390e0 = 0x008e20e0
-.long 0x00473ee0, 0x0071f490, 0x0071f240                                                                           // [0x390f0] 0x008a9000 + 0x390f0 = 0x008e20f0
+.long 0x00751510
+.long 0x00759b80
+.long 0x0075bae0
+.long 0x00417320
+.long 0x005ee550
+.long 0x004174a0
+.long 0x004174b0
+.long 0x004174c0
+.long 0x004174d0
+.long 0x004174e0
+.long 0x004174f0
+.long 0x00417500
+.long 0x00417510
+.long 0x00473ee0
+.long 0x0071f490
+.long 0x0071f240
 
 VftableAndRTTI Rock                                                                                                // [0x390fc] 0x008a9000 + 0x390fc = 0x008e20fc
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
@@ -71934,24 +72055,24 @@ VftableAndRTTI StoragePit                                                       
 
 VftableAndRTTI Villager                                                                                            // [0x4e95c] 0x008a9000 + 0x4e95c = 0x008f795c
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
-.long 0x0055cb40
+.long ??GVillager@@UAE@XZ
 .long ?Delete@Object@@UAEXH@Z
-.long _ToBeDeleted__8VillagerFi
+.long ?ToBeDeleted@Villager@@UAEXH@Z
 .long ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long 0x007502f0
+.long ?GetPlayer@Villager@@QAEPAVGPlayer@@XZ
 .long ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .long ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z
 .long ?RemoveDance@GameThing@@QAEXXZ
-.long 0x00751d50
+.long ?IsAvailable@Villager@@QAE_NXZ
 .long ?IsCreature@GameThing@@QAE_NPAVCreature@@@Z
 .long ?IsCreature@GameThing@@UAE_NXZ
 .long ?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z
 .long ?GetDrawImportance@Object@@UAEMXZ
 .long ?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ
 .long ?GetComputerSeen@GameThing@@UAE_NXZ
-.long 0x00751f00
+.long ?GetTown@Villager@@QAEPAVTown@@XZ
 .long ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z
 .long ?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z
 .long ?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z
@@ -71972,7 +72093,7 @@ VftableAndRTTI Villager                                                         
 .long ?JustRemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
 .long ?JustGetResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
 .long ?GetResource@Object@@UAEIW4RESOURCE_TYPE@@@Z
-.long 0x007564d0
+.long ?AddResource@Villager@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@_NABUMapCoords@@H@Z
 .long ?RemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@PA_N@Z
 .long ?CastCreature@GameThing@@QAEPAVCreature@@XZ
 .long ?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ
@@ -71986,7 +72107,7 @@ VftableAndRTTI Villager                                                         
 .long ?GetTownArtifactValue@GameThing@@QAEMXZ
 .long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
-.long 0x00751cf0
+.long ?IsFunctional@Villager@@QAE_NXZ
 .long 0x0055cb30
 .long ?GetSampleForAttack@GameThing@@UAEIXZ
 .long ?GetGuidanceResourceType@GameThing@@UAEIXZ
