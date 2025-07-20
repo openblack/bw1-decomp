@@ -231,7 +231,7 @@
 .extern @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
 .extern _jmp_addr_0x0074fbc0
 .extern _jmp_addr_0x007506c0
-.extern @ToBeDeleted__8VillagerFi@12
+.extern ?ToBeDeleted@Villager@@UAEXH@Z
 .extern @SetAge__8VillagerFUl@12
 .extern _jmp_addr_0x00754280
 .extern _jmp_addr_0x00754580
@@ -5182,7 +5182,7 @@ _jmp_addr_0x0071f081:    pop                ebx                                 
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x0071f0ca    8b442408
                          push               eax                                                  // 0x0071f0ce    50
                          mov.s              ecx, esi                                             // 0x0071f0cf    8bce
-                         call               @ToBeDeleted__8VillagerFi@12                         // 0x0071f0d1    e8da300300
+                         call               ?ToBeDeleted@Villager@@UAEXH@Z                       // 0x0071f0d1    e8da300300
                          pop                esi                                                  // 0x0071f0d6    5e
                          ret                0x0004                                               // 0x0071f0d7    c20400
                          nop                                                                     // 0x0071f0da    90

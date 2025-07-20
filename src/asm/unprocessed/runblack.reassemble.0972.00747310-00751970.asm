@@ -433,9 +433,8 @@
 .globl _ProcessState__8VillagerFv
 .globl _CreateCollideData__4TreeFv
 .globl _GetWoodValueMultiplier__4TreeFv
+.globl ?GetPlayer@Villager@@QAEPAVGPlayer@@XZ
 
-start_0x00747310_0x00751970:
-// Snippet: asm, [0x00747310, 0x0075193a)
 _globl_ct_0x00747310:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]           // 0x00747310    8a0d34c9fa00
                          mov                al, 0x01                                       // 0x00747316    b001
                          test               al, cl                                         // 0x00747318    84c8
@@ -14274,6 +14273,8 @@ _jmp_addr_0x007502c7:    mov                eax, 0x0000000d                     
                          nop                                                               // 0x007502ed    90
                          nop                                                               // 0x007502ee    90
                          nop                                                               // 0x007502ef    90
+
+?GetPlayer@Villager@@QAEPAVGPlayer@@XZ:
                          push               esi                                            // 0x007502f0    56
                          mov.s              esi, ecx                                       // 0x007502f1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x007502f3    8b06
