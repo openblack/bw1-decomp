@@ -24,6 +24,7 @@
 .globl _jmp_addr_0x00471a50
 .globl _jmp_addr_0x00471aa0
 .globl _jmp_addr_0x00471b10
+.globl ??GCPUCheck@@UAE@XZ
 
 .globl _globl_ct_0x00471a20
 
@@ -315,6 +316,7 @@ _jmp_addr_0x00471a50:    mov.s            edx, ecx                              
                          nop                                                            // 0x00471a7d    90
                          nop                                                            // 0x00471a7e    90
                          nop                                                            // 0x00471a7f    90
+??GCPUCheck@@UAE@XZ:
                          push             esi                                           // 0x00471a80    56
                          mov.s            esi, ecx                                      // 0x00471a81    8bf1
                          call             _jmp_addr_0x00471aa0                          // 0x00471a83    e818000000

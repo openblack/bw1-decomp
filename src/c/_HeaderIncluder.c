@@ -55,6 +55,7 @@
 #include "black/ControlHand.h"
 #include "black/ControlMap.h"
 #include "black/Cow.h"
+#include "black/CPUCheck.h"
 #include "black/CreatureAction.h"
 #include "black/CreatureActionsKnownAbout.h"
 #include "black/CreatureAgenda.h"
