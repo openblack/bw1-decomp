@@ -466,3 +466,4 @@
 #include "libs/lionhead/lhmultiplayer/ver4.0/LHSocketTCP.h"
 #include "libs/lionhead/lhmultiplayer/ver4.0/LHTransport.h"
 #include "libs/lionhead/lhmultiplayer/ver4.0/LHTransportInfo.h"
+#include "libs/ifc/ImmDevice.h"
