@@ -1250,6 +1250,7 @@ ROOMMATE_CLASS_MAP = {
     "LHKeyMod": "LHKey",
     "UniqueKeyHeap": "Heap",
     "HeapWithPools": "Heap",
+    "CPDesireNodeInfo": "GPlayerInfo",
 }
 
 

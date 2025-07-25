@@ -6,6 +6,27 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+// Forward Declares
+
+struct CPDesireNodeInfo;
+
+struct CPDesireNodeInfoVftable
+{
+  int (__fastcall* GetNumChildren)(struct CPDesireNodeInfo* this);  /* 0x0 */
+};
+static_assert(sizeof(struct CPDesireNodeInfoVftable) == 0x4, "Data type is of wrong size");
+
+struct CPDesireNodeInfo
+{
+  struct CPDesireNodeInfoVftable* vftable;  /* 0x0 */
+};
+static_assert(sizeof(struct CPDesireNodeInfo) == 0x4, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 00655b70 mac 104ab970 CPDesireNodeInfo::GetNumChildren(void)
+int __fastcall GetNumChildren__16CPDesireNodeInfoFv(struct CPDesireNodeInfo* this) asm("?GetNumChildren@CPDesireNodeInfo@@UAEHXZ");
+
 enum PLAYER_TYPE
 {
   PLAYER_TYPE_0 = 0x0,
