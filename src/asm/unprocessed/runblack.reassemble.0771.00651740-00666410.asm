@@ -231,6 +231,7 @@
 .globl _jmp_addr_0x00665d40
 .globl _jmp_addr_0x00665dd0
 .globl _jmp_addr_0x00665fc0
+.globl ?GetNumChildren@CPDesireNodeInfo@@UAEHXZ
 
 .globl _globl_ct_0x006524d0
 .globl _globl_ct_0x00652500
@@ -7001,7 +7002,9 @@ _jmp_addr_0x00655aa0:    push               ebx                                 
                          nop                                                               // 0x00655b6d    90
                          nop                                                               // 0x00655b6e    90
                          nop                                                               // 0x00655b6f    90
-_jmp_addr_0x00655b70:    xor.s              eax, eax                                       // 0x00655b70    33c0
+
+?GetNumChildren@CPDesireNodeInfo@@UAEHXZ:
+                         xor.s              eax, eax                                       // 0x00655b70    33c0
                          add                ecx, 0x58                                      // 0x00655b72    83c158
 _jmp_addr_0x00655b75:    cmp                dword ptr [ecx], -0x01                         // 0x00655b75    8339ff
                          {disp8} je         _jmp_addr_0x00655b83                           // 0x00655b78    7409
@@ -8074,7 +8077,7 @@ _jmp_addr_0x00656580:    push               ebx                                 
                          call               _jmp_addr_0x00655b90                           // 0x006565a2    e8e9f5ffff
                          mov.s              ecx, esi                                       // 0x006565a7    8bce
                          xor.s              ebx, ebx                                       // 0x006565a9    33db
-                         call               _jmp_addr_0x00655b70                           // 0x006565ab    e8c0f5ffff
+                         call               ?GetNumChildren@CPDesireNodeInfo@@UAEHXZ       // 0x006565ab    e8c0f5ffff
                          test               eax, eax                                       // 0x006565b0    85c0
                          {disp8} jbe        _jmp_addr_0x0065662a                           // 0x006565b2    7676
 _jmp_addr_0x006565b4:    push               0x000001f4                                     // 0x006565b4    68f4010000
@@ -8114,7 +8117,7 @@ _jmp_addr_0x00656610:    {disp32} mov       dword ptr [edi + 0x0000009c], eax   
 _jmp_addr_0x00656616:    {disp32} inc       dword ptr [edi + 0x000000a0]                   // 0x00656616    ff87a0000000
 _jmp_addr_0x0065661c:    {disp8} mov        ecx, dword ptr [esp + 0x14]                    // 0x0065661c    8b4c2414
                          inc                ebx                                            // 0x00656620    43
-                         call               _jmp_addr_0x00655b70                           // 0x00656621    e84af5ffff
+                         call               ?GetNumChildren@CPDesireNodeInfo@@UAEHXZ       // 0x00656621    e84af5ffff
                          cmp.s              ebx, eax                                       // 0x00656626    3bd8
                          .byte              0x72, 0x8a// {disp8} jb _jmp_addr_0x006565b4   // 0x00656628    728a
 _jmp_addr_0x0065662a:    mov.s              eax, edi                                       // 0x0065662a    8bc7
@@ -8165,7 +8168,7 @@ _jmp_addr_0x00656640:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          mov.s              ecx, eax                                       // 0x00656687    8bc8
                          xor.s              ebp, ebp                                       // 0x00656689    33ed
                          {disp8} mov        dword ptr [esp + 0x1c], eax                    // 0x0065668b    8944241c
-                         call               _jmp_addr_0x00655b70                           // 0x0065668f    e8dcf4ffff
+                         call               ?GetNumChildren@CPDesireNodeInfo@@UAEHXZ       // 0x0065668f    e8dcf4ffff
                          test               eax, eax                                       // 0x00656694    85c0
                          {disp8} jbe        _jmp_addr_0x0065670e                           // 0x00656696    7676
 _jmp_addr_0x00656698:    push               0x00000200                                     // 0x00656698    6800020000
@@ -8205,7 +8208,7 @@ _jmp_addr_0x006566f4:    {disp32} mov       dword ptr [esi + 0x0000009c], eax   
 _jmp_addr_0x006566fa:    {disp32} inc       dword ptr [esi + 0x000000a0]                   // 0x006566fa    ff86a0000000
 _jmp_addr_0x00656700:    {disp8} mov        ecx, dword ptr [esp + 0x1c]                    // 0x00656700    8b4c241c
                          inc                ebp                                            // 0x00656704    45
-                         call               _jmp_addr_0x00655b70                           // 0x00656705    e866f4ffff
+                         call               ?GetNumChildren@CPDesireNodeInfo@@UAEHXZ       // 0x00656705    e866f4ffff
                          cmp.s              ebp, eax                                       // 0x0065670a    3be8
                          .byte              0x72, 0x8a// {disp8} jb _jmp_addr_0x00656698   // 0x0065670c    728a
 _jmp_addr_0x0065670e:    pop                edi                                            // 0x0065670e    5f
@@ -8252,7 +8255,7 @@ _jmp_addr_0x00656720:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          mov.s              ecx, eax                                       // 0x00656767    8bc8
                          xor.s              ebp, ebp                                       // 0x00656769    33ed
                          {disp8} mov        dword ptr [esp + 0x1c], eax                    // 0x0065676b    8944241c
-                         call               _jmp_addr_0x00655b70                           // 0x0065676f    e8fcf3ffff
+                         call               ?GetNumChildren@CPDesireNodeInfo@@UAEHXZ       // 0x0065676f    e8fcf3ffff
                          test               eax, eax                                       // 0x00656774    85c0
                          {disp8} jbe        _jmp_addr_0x006567ee                           // 0x00656776    7676
 _jmp_addr_0x00656778:    push               0x0000020c                                     // 0x00656778    680c020000
@@ -8292,7 +8295,7 @@ _jmp_addr_0x006567d4:    {disp32} mov       dword ptr [esi + 0x0000009c], eax   
 _jmp_addr_0x006567da:    {disp32} inc       dword ptr [esi + 0x000000a0]                   // 0x006567da    ff86a0000000
 _jmp_addr_0x006567e0:    {disp8} mov        ecx, dword ptr [esp + 0x1c]                    // 0x006567e0    8b4c241c
                          inc                ebp                                            // 0x006567e4    45
-                         call               _jmp_addr_0x00655b70                           // 0x006567e5    e886f3ffff
+                         call               ?GetNumChildren@CPDesireNodeInfo@@UAEHXZ       // 0x006567e5    e886f3ffff
                          cmp.s              ebp, eax                                       // 0x006567ea    3be8
                          .byte              0x72, 0x8a// {disp8} jb _jmp_addr_0x00656778   // 0x006567ec    728a
 _jmp_addr_0x006567ee:    pop                edi                                            // 0x006567ee    5f
