@@ -31,7 +31,7 @@
 .extern _GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _ConvertWholeDistanceToMeters__6GUtilsFl
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _jmp_addr_0x007faa50
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
@@ -826,7 +826,7 @@ _jmp_addr_0x005044c4:    push               0x1                                 
                          push               0x009c7f30                                    // 0x00504509    68307f9c00
                          push               0x0                                           // 0x0050450e    6a00
                          push               edx                                           // 0x00504510    52
-                         call               _jmp_addr_0x007c5a19                          // 0x00504511    e803152c00
+                         call               ___RTDynamicCast                              // 0x00504511    e803152c00
                          mov.s              esi, eax                                      // 0x00504516    8bf0
                          mov                eax, dword ptr [esi]                          // 0x00504518    8b06
                          add                esp, 0x14                                     // 0x0050451a    83c414
@@ -860,7 +860,7 @@ _jmp_addr_0x00504553:    pop                edi                                 
                          push               0x009c7f30                                    // 0x00504585    68307f9c00
                          push               0x0                                           // 0x0050458a    6a00
                          push               edx                                           // 0x0050458c    52
-                         call               _jmp_addr_0x007c5a19                          // 0x0050458d    e887142c00
+                         call               ___RTDynamicCast                              // 0x0050458d    e887142c00
                          mov                edx, dword ptr [eax]                          // 0x00504592    8b10
                          add                esp, 0x14                                     // 0x00504594    83c414
                          push               0x0                                           // 0x00504597    6a00
@@ -896,7 +896,7 @@ _jmp_addr_0x00504553:    pop                edi                                 
                          push               0x009c7f30                                    // 0x005045dc    68307f9c00
                          push               0x0                                           // 0x005045e1    6a00
                          push               edx                                           // 0x005045e3    52
-                         call               _jmp_addr_0x007c5a19                          // 0x005045e4    e830142c00
+                         call               ___RTDynamicCast                              // 0x005045e4    e830142c00
                          add                esp, 0x14                                     // 0x005045e9    83c414
                          push               0x0                                           // 0x005045ec    6a00
                          push               edi                                           // 0x005045ee    57

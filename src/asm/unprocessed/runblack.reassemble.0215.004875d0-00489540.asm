@@ -56,7 +56,7 @@
 .extern _jmp_addr_0x0071ed40
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern _jmp_addr_0x007f6f00
 .extern ??1FragMesh@@QAE@XZ
@@ -983,7 +983,7 @@ _jmp_addr_0x00488218:    {disp32} mov       ecx, dword ptr [esi + 0x00004998]   
                          push               0x009c7f50                                    // 0x004882b9    68507f9c00
                          push               0x0                                           // 0x004882be    6a00
                          push               eax                                           // 0x004882c0    50
-                         call               _jmp_addr_0x007c5a19                          // 0x004882c1    e853d73300
+                         call               ___RTDynamicCast                              // 0x004882c1    e853d73300
                          mov.s              edi, eax                                      // 0x004882c6    8bf8
                          add                esp, 0x14                                     // 0x004882c8    83c414
                          test               edi, edi                                      // 0x004882cb    85ff
@@ -1647,7 +1647,7 @@ _jmp_addr_0x00488b5f:    {disp32} mov       ecx, dword ptr [esi + 0x000048cc]   
                          push               0x009c7f50                                    // 0x00488b81    68507f9c00
                          push               ebp                                           // 0x00488b86    55
                          push               eax                                           // 0x00488b87    50
-                         call               _jmp_addr_0x007c5a19                          // 0x00488b88    e88cce3300
+                         call               ___RTDynamicCast                              // 0x00488b88    e88cce3300
                          mov.s              edi, eax                                      // 0x00488b8d    8bf8
                          {disp32} mov       eax, dword ptr [esi + 0x00004834]             // 0x00488b8f    8b8634480000
                          add                esp, 0x14                                     // 0x00488b95    83c414

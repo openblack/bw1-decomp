@@ -118,7 +118,7 @@
 .extern _jmp_addr_0x007a1400
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _wcscpy
 .extern _operator_new
 .extern _jmp_addr_0x007c6ad3
@@ -801,7 +801,7 @@ _jmp_addr_0x0071580e:    cmp.s              edi, ebx                            
                          push               0x009c7fa0                                    // 0x0071586b    68a07f9c00
                          push               0x0                                           // 0x00715870    6a00
                          push               edi                                           // 0x00715872    57
-                         call               _jmp_addr_0x007c5a19                          // 0x00715873    e8a1010b00
+                         call               ___RTDynamicCast                              // 0x00715873    e8a1010b00
                          mov.s              ebp, eax                                      // 0x00715878    8be8
                          add                esp, 0x14                                     // 0x0071587a    83c414
                          test               ebp, ebp                                      // 0x0071587d    85ed
@@ -3756,7 +3756,7 @@ _jmp_addr_0x00717d14:    {disp32} mov       eax, dword ptr [data_bytes + 0x30ab1
                          push               0x009c7f18                                    // 0x00717dc9    68187f9c00
                          push               ebx                                           // 0x00717dce    53
                          push               eax                                           // 0x00717dcf    50
-                         call               _jmp_addr_0x007c5a19                          // 0x00717dd0    e844dc0a00
+                         call               ___RTDynamicCast                              // 0x00717dd0    e844dc0a00
                          mov.s              edi, eax                                      // 0x00717dd5    8bf8
                          add                esp, 0x14                                     // 0x00717dd7    83c414
                          cmp.s              edi, ebx                                      // 0x00717dda    3bfb

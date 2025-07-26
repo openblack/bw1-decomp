@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x00784c10
 .extern _jmp_addr_0x0079a5d0
 .extern  ___dl__FPv
-.extern _atexit@4
+.extern _atexit
 .extern ___nw__FUl
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
@@ -219,7 +219,7 @@ _jmp_addr_0x00794ac4:    {disp32} jmp       _jmp_addr_0x00794ad0                
                          nop                                                              // 0x00794ace    90
                          nop                                                              // 0x00794acf    90
 _jmp_addr_0x00794ad0:    push               0x00407870                                    // 0x00794ad0    6870784000
-                         call               _atexit@4                                     // 0x00794ad5    e8b70c0300
+                         call               _atexit                                       // 0x00794ad5    e8b70c0300
                          pop                ecx                                           // 0x00794ada    59
                          ret                                                              // 0x00794adb    c3
                          nop                                                              // 0x00794adc    90

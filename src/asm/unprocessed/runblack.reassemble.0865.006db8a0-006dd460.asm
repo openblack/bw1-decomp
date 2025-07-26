@@ -41,7 +41,7 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _atexit@4
+.extern _atexit
 .extern _operator_new
 .extern _LHRand__FlRU
 
@@ -1739,7 +1739,7 @@ _jmp_addr_0x006dc99c:    mov                dword ptr [eax], edx                
                          nop                                                               // 0x006dc9ae    90
                          nop                                                               // 0x006dc9af    90
 _jmp_addr_0x006dc9b0:    push               0x006dc9c0                                     // 0x006dc9b0    68c0c96d00
-                         call               _atexit@4                                      // 0x006dc9b5    e8d78d0e00
+                         call               _atexit                                        // 0x006dc9b5    e8d78d0e00
                          pop                ecx                                            // 0x006dc9ba    59
                          ret                                                               // 0x006dc9bb    c3
                          nop                                                               // 0x006dc9bc    90

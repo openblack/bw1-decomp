@@ -22,7 +22,7 @@
 .extern @CloseSegment__6LHFileFv@4
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern _jmp_addr_0x008421f0
 .extern _jmp_addr_0x0085e490
@@ -122,7 +122,7 @@ _jmp_addr_0x0051e500:    sub              esp, 0x6c                             
                          push             0x009cecb0                                           // 0x0051e514    68b0ec9c00
                          push             ebp                                                  // 0x0051e519    55
                          push             eax                                                  // 0x0051e51a    50
-                         call             _jmp_addr_0x007c5a19                                 // 0x0051e51b    e8f9742a00
+                         call             ___RTDynamicCast                                     // 0x0051e51b    e8f9742a00
                          mov.s            ebx, eax                                             // 0x0051e520    8bd8
                          {disp32} mov     eax, dword ptr [esp + 0x00000098]                    // 0x0051e522    8b842498000000
                          add              esp, 0x14                                            // 0x0051e529    83c414

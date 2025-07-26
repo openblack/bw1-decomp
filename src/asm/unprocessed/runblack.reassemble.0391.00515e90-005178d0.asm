@@ -37,8 +37,8 @@
 .extern _jmp_addr_0x00730570
 .extern @GetAbode__8VillagerFv@4
 .extern _jmp_addr_0x007a1400
-.extern _atexit@4
-.extern _jmp_addr_0x007c5a19
+.extern _atexit
+.extern ___RTDynamicCast
 .extern _wcscat
 .extern _wcscpy
 .extern _jmp_addr_0x007c647f
@@ -83,7 +83,7 @@ _jmp_addr_0x00515ea4:    {disp32} jmp       _jmp_addr_0x00515eb0                
                          nop                                                              // 0x00515eae    90
                          nop                                                              // 0x00515eaf    90
 _jmp_addr_0x00515eb0:    push               0x00407870                                    // 0x00515eb0    6870784000
-                         call               _atexit@4                                     // 0x00515eb5    e8d7f82a00
+                         call               _atexit                                       // 0x00515eb5    e8d7f82a00
                          pop                ecx                                           // 0x00515eba    59
                          ret                                                              // 0x00515ebb    c3
                          nop                                                              // 0x00515ebc    90
@@ -687,7 +687,7 @@ _jmp_addr_0x00516528:    {disp8} mov        eax, dword ptr [edi + 0x04]         
                          push               0x009c7f50                                    // 0x005165d1    68507f9c00
                          push               0x0                                           // 0x005165d6    6a00
                          push               esi                                           // 0x005165d8    56
-                         call               _jmp_addr_0x007c5a19                          // 0x005165d9    e83bf42a00
+                         call               ___RTDynamicCast                              // 0x005165d9    e83bf42a00
                          mov.s              ebx, eax                                      // 0x005165de    8bd8
                          add                esp, 0x14                                     // 0x005165e0    83c414
                          test               ebx, ebx                                      // 0x005165e3    85db

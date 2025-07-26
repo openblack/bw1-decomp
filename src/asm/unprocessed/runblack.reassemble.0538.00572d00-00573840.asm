@@ -27,7 +27,7 @@
 .extern @CanShowName__15SpecialVillagerFv@4
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _jmp_addr_0x007c6425
 .extern _wcslen
 .extern _jmp_addr_0x007c6ce0
@@ -234,7 +234,7 @@ _jmp_addr_0x00572fe9:    push              0x0                                  
                          push              0x009cd390                                    // 0x00572ff0    6890d39c00
                          push              0x0                                           // 0x00572ff5    6a00
                          push              eax                                           // 0x00572ff7    50
-                         call              _jmp_addr_0x007c5a19                          // 0x00572ff8    e81c2a2500
+                         call              ___RTDynamicCast                              // 0x00572ff8    e81c2a2500
                          add               esp, 0x14                                     // 0x00572ffd    83c414
                          test              eax, eax                                      // 0x00573000    85c0
                          {disp8} je        _jmp_addr_0x00573009                          // 0x00573002    7405
@@ -359,7 +359,7 @@ _jmp_addr_0x005731b1:    test              byte ptr [esi + 0x000000e0], 0x04    
                          push              0x009cafc8                                    // 0x005731c1    68c8af9c00
                          push              0x0                                           // 0x005731c6    6a00
                          push              esi                                           // 0x005731c8    56
-                         call              _jmp_addr_0x007c5a19                          // 0x005731c9    e84b282500
+                         call              ___RTDynamicCast                              // 0x005731c9    e84b282500
                          add               esp, 0x14                                     // 0x005731ce    83c414
                          test              eax, eax                                      // 0x005731d1    85c0
                          {disp8} je        _jmp_addr_0x0057321b                          // 0x005731d3    7446
@@ -408,7 +408,7 @@ _jmp_addr_0x00573259:    test              byte ptr [esi + 0x000000e0], 0x04    
                          push              0x009cafc8                                    // 0x00573269    68c8af9c00
                          push              0x0                                           // 0x0057326e    6a00
                          push              esi                                           // 0x00573270    56
-                         call              _jmp_addr_0x007c5a19                          // 0x00573271    e8a3272500
+                         call              ___RTDynamicCast                              // 0x00573271    e8a3272500
                          mov.s             edi, eax                                      // 0x00573276    8bf8
                          add               esp, 0x14                                     // 0x00573278    83c414
                          test              edi, edi                                      // 0x0057327b    85ff
@@ -480,7 +480,7 @@ _jmp_addr_0x00573347:    push              0x0                                  
                          push              0x009cafc8                                    // 0x0057334e    68c8af9c00
                          push              0x0                                           // 0x00573353    6a00
                          push              esi                                           // 0x00573355    56
-                         call              _jmp_addr_0x007c5a19                          // 0x00573356    e8be262500
+                         call              ___RTDynamicCast                              // 0x00573356    e8be262500
                          mov.s             esi, eax                                      // 0x0057335b    8bf0
                          add               esp, 0x14                                     // 0x0057335d    83c414
                          test              esi, esi                                      // 0x00573360    85f6

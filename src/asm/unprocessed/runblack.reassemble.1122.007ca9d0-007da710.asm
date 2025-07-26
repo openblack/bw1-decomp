@@ -201,6 +201,7 @@
 .globl _wctomb
 .globl _mbtowc
 .globl __filwbuf
+.globl __fptrap
 
 ___crtLCMapStringA:      push               ebp                                            // 0x007cb744    55
                          mov.s              ebp, esp                                       // 0x007cb745    8bec
@@ -19922,6 +19923,8 @@ _jmp_addr_0x007d8fac:    pop                edi                                 
                          pop                ebx                                            // 0x007d8fae    5b
                          leave                                                             // 0x007d8faf    c9
                          ret                                                               // 0x007d8fb0    c3
+
+__fptrap:
                          push               0x2                                            // 0x007d8fb1    6a02
                          call               __amsg_exit                                    // 0x007d8fb3    e8ef15ffff
                          pop                ecx                                            // 0x007d8fb8    59

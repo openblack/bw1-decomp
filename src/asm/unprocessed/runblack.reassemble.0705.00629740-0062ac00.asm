@@ -37,7 +37,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _Exists__8LHOSFileFPc
-.extern _atexit@4
+.extern _atexit
 .extern _wcscpy
 .extern _jmp_addr_0x007c6425
 .extern _wcslen
@@ -1119,7 +1119,7 @@ _jmp_addr_0x0062a2d0:    mov               ecx, 0x00d408d8                      
                          nop                                                              // 0x0062a2de    90
                          nop                                                              // 0x0062a2df    90
 _jmp_addr_0x0062a2e0:    push              0x0062a2f0                                     // 0x0062a2e0    68f0a26200
-                         call              _atexit@4                                      // 0x0062a2e5    e8a7b41900
+                         call              _atexit                                        // 0x0062a2e5    e8a7b41900
                          pop               ecx                                            // 0x0062a2ea    59
                          ret                                                              // 0x0062a2eb    c3
                          nop                                                              // 0x0062a2ec    90

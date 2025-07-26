@@ -13,7 +13,7 @@
 .extern @IsWater__9MapCoordsCFv@4
 .extern _GameRand__5GRandFl
 .extern _jmp_addr_0x007436f0
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 
 start_0x00423540_0x00423a80:
 // Snippet: asm, [0x00423540, 0x004239fd)
@@ -30,7 +30,7 @@ start_0x00423540_0x00423a80:
                          push               0x009c7f30                              // 0x0042355b    68307f9c00
                          push               0x0                                     // 0x00423560    6a00
                          push               eax                                     // 0x00423562    50
-                         call               _jmp_addr_0x007c5a19                    // 0x00423563    e8b1243a00
+                         call               ___RTDynamicCast                        // 0x00423563    e8b1243a00
                          mov.s              edi, eax                                // 0x00423568    8bf8
                          add                esp, 0x14                               // 0x0042356a    83c414
                          test               edi, edi                                // 0x0042356d    85ff

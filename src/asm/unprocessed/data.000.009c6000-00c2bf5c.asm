@@ -2025,7 +2025,7 @@ ___xc_z:
 
 ___xi_a:                                                                                                           // [0x1e40] 0x009c6000 + 0x1e40 = 0x009c7e40
 .long 0x00000000
-.long _jmp_addr_0x007c57a3
+.long ___onexitinit
 .long ___initstdio
 .long _jmp_addr_0x007d4cc3
 .long ___inittime
