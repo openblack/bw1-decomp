@@ -134,7 +134,7 @@
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit@4
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5f8c
+.extern _wcscat
 .extern _wcscpy
 .extern _jmp_addr_0x007c60f0
 .extern _operator_new
@@ -9460,18 +9460,18 @@ _jmp_addr_0x005c5c80:    {disp32} mov       ecx, dword ptr [_game]              
                          {disp8} jne        _jmp_addr_0x005c5d02                           // 0x005c5cee    7512
                          push               0x00bf0ce4                                     // 0x005c5cf0    68e40cbf00
                          push               0x00d16184                                     // 0x005c5cf5    688461d100
-                         call               _jmp_addr_0x007c5f8c                           // 0x005c5cfa    e88d022000
+                         call               _wcscat                                        // 0x005c5cfa    e88d022000
                          add                esp, 0x08                                      // 0x005c5cff    83c408
 _jmp_addr_0x005c5d02:    cmp                dword ptr [data_bytes + 0x350384], 0x02        // 0x005c5d02    833d8463d10002
                          {disp8} jle        _jmp_addr_0x005c5d1d                           // 0x005c5d09    7e12
                          push               0x00bef114                                     // 0x005c5d0b    6814f1be00
                          push               0x00d16184                                     // 0x005c5d10    688461d100
-                         call               _jmp_addr_0x007c5f8c                           // 0x005c5d15    e872022000
+                         call               _wcscat                                        // 0x005c5d15    e872022000
                          add                esp, 0x08                                      // 0x005c5d1a    83c408
 _jmp_addr_0x005c5d1d:    {disp8} lea        edx, dword ptr [esp + 0x24]                    // 0x005c5d1d    8d542424
                          push               edx                                            // 0x005c5d21    52
                          push               0x00d16184                                     // 0x005c5d22    688461d100
-                         call               _jmp_addr_0x007c5f8c                           // 0x005c5d27    e860022000
+                         call               _wcscat                                        // 0x005c5d27    e860022000
                          add                esp, 0x08                                      // 0x005c5d2c    83c408
                          pop                edi                                            // 0x005c5d2f    5f
                          pop                esi                                            // 0x005c5d30    5e

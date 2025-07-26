@@ -5584,7 +5584,7 @@ _CHAR2WCHAR__FPc:        {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               eax                                            // 0x008300b0    50
                          push               0x1                                            // 0x008300b1    6a01
                          push               0x0                                            // 0x008300b3    6a00
-                         call               dword ptr [__imp__MultiByteToWideChar@4]       // 0x008300b5    ff153c918a00
+                         call               dword ptr [__imp__MultiByteToWideChar@24]       // 0x008300b5    ff153c918a00
                          {disp32} mov       word ptr [eax * 0x2 + 0x00ecbd08], 0x0000      // 0x008300bb    66c7044508bdec000000
                          mov                eax, 0x00ecbd08                                // 0x008300c5    b808bdec00
                          ret                                                               // 0x008300ca    c3

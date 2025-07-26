@@ -11435,7 +11435,7 @@ _jmp_addr_0x007358f0:    push               ebx                                 
                          push               0x0                                           // 0x00735930    6a00
                          rep movsb                                                        // 0x00735932    f3a4
                          {disp8} mov        ecx, dword ptr [ebx + 0x04]                   // 0x00735934    8b4b04
-                         {disp32} mov       esi, dword ptr [__imp__MultiByteToWideChar@4] // 0x00735937    8b353c918a00
+                         {disp32} mov       esi, dword ptr [__imp__MultiByteToWideChar@24] // 0x00735937    8b353c918a00
                          push               ecx                                           // 0x0073593d    51
                          push               -0x1                                          // 0x0073593e    6aff
                          push               ebp                                           // 0x00735940    55

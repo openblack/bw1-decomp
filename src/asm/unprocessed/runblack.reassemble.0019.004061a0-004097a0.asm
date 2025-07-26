@@ -70,9 +70,9 @@
 .extern _atexit@4
 .extern _jmp_addr_0x007c5a19
 .extern _toupper
-.extern _jmp_addr_0x007c5f8c
+.extern _wcscat
 .extern _wcscpy
-.extern _jmp_addr_0x007c5fdb
+.extern __itow
 .extern ___nw__FUl
 .extern @Activate__Q24slim5TbIMEFPv@12
 .extern @UnActivate__Q24slim5TbIMEFv@4
@@ -3704,11 +3704,11 @@ _jmp_addr_0x00408919:    push               0xa                                 
                          push               eax                                           // 0x0040891f    50
                          {disp8} lea        ebx, dword ptr [ebp + 0x01]                   // 0x00408920    8d5d01
                          push               ebx                                           // 0x00408923    53
-                         call               _jmp_addr_0x007c5fdb                          // 0x00408924    e8b2d63b00
+                         call               __itow                                        // 0x00408924    e8b2d63b00
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x00408929    8d4c2424
                          push               0x009c810c                                    // 0x0040892d    680c819c00
                          push               ecx                                           // 0x00408932    51
-                         call               _jmp_addr_0x007c5f8c                          // 0x00408933    e854d63b00
+                         call               _wcscat                                       // 0x00408933    e854d63b00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4c6104]        // 0x00408938    8b0d04c1e800
                          add                esp, 0x14                                     // 0x0040893e    83c414
                          push               ebp                                           // 0x00408941    55
@@ -3716,7 +3716,7 @@ _jmp_addr_0x00408919:    push               0xa                                 
                          push               eax                                           // 0x00408947    50
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                   // 0x00408948    8d54241c
                          push               edx                                           // 0x0040894c    52
-                         call               _jmp_addr_0x007c5f8c                          // 0x0040894d    e83ad63b00
+                         call               _wcscat                                       // 0x0040894d    e83ad63b00
                          {disp32} mov       ecx, dword ptr [edi + 0x00000250]             // 0x00408952    8b8f50020000
                          add                esp, 0x08                                     // 0x00408958    83c408
                          {disp8} lea        eax, dword ptr [esp + 0x18]                   // 0x0040895b    8d442418
