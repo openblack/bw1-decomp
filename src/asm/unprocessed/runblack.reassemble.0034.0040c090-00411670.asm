@@ -33,7 +33,7 @@
 .extern _DrawBevBox__10SetupThingFiiiiiiiUl
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5f8c
+.extern _wcscat
 .extern _wcscpy
 .extern _wcslen
 .extern _jmp_addr_0x007c647f
@@ -392,7 +392,7 @@ _jmp_addr_0x0040c3aa:    {disp32} mov         eax, dword ptr [esi + 0x0000024c] 
                          {disp8} lea          eax, dword ptr [esp + 0x20]                   // 0x0040c442    8d442420
                          push                 eax                                           // 0x0040c446    50
                          push                 ebp                                           // 0x0040c447    55
-                         call                 _jmp_addr_0x007c5f8c                          // 0x0040c448    e83f9b3b00
+                         call                 _wcscat                                       // 0x0040c448    e83f9b3b00
                          push                 edi                                           // 0x0040c44d    57
                          call                 _wcslen                                       // 0x0040c44e    e80fa03b00
                          {disp32} mov         ecx, dword ptr [esi + 0x00000248]             // 0x0040c453    8b8e48020000
@@ -564,7 +564,7 @@ _jmp_addr_0x0040c5fa:    {disp32} mov         eax, dword ptr [esi + 0x0000024c] 
                          {disp8} lea          ecx, dword ptr [esp + 0x38]                   // 0x0040c694    8d4c2438
                          push                 ecx                                           // 0x0040c698    51
                          push                 ebx                                           // 0x0040c699    53
-                         call                 _jmp_addr_0x007c5f8c                          // 0x0040c69a    e8ed983b00
+                         call                 _wcscat                                       // 0x0040c69a    e8ed983b00
                          push                 edi                                           // 0x0040c69f    57
                          call                 _wcslen                                       // 0x0040c6a0    e8bd9d3b00
                          {disp32} mov         ecx, dword ptr [esi + 0x00000248]             // 0x0040c6a5    8b8e48020000

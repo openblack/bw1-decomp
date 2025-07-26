@@ -39,7 +39,7 @@
 .extern _jmp_addr_0x007a1400
 .extern _atexit@4
 .extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c5f8c
+.extern _wcscat
 .extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007f7960
@@ -2041,7 +2041,7 @@ _jmp_addr_0x0051770a:    {disp8} mov        edx, dword ptr [ecx + 0x08]         
                          {disp8} lea        ecx, dword ptr [esp + 0x58]                   // 0x00517718    8d4c2458
                          push               0x00be8ecc                                    // 0x0051771c    68cc8ebe00
                          push               ecx                                           // 0x00517721    51
-                         call               _jmp_addr_0x007c5f8c                          // 0x00517722    e865e82a00
+                         call               _wcscat                                       // 0x00517722    e865e82a00
                          add                esp, 0x10                                     // 0x00517727    83c410
 _jmp_addr_0x0051772a:    {disp8} fild       dword ptr [esp + 0x38]                        // 0x0051772a    db442438
                          {disp32} fadd      dword ptr [data_bytes + 0x300314]             // 0x0051772e    d8051463cc00

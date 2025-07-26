@@ -736,8 +736,6 @@ bool32_t __fastcall IsObjectTurningTooFastForCameraToFollowSmoothly__16GameThing
 void __fastcall CalculateWhereIWillBeAfterNSeconds__16GameThingWithPosFfP7LHPoint(struct GameThingWithPos* this, const void* edx, float seconds, struct LHPoint* outPos) asm("?CalculateWhereIWillBeAfterNSeconds@GameThingWithPos@@UAEXMPAULHPoint@@@Z");
 // win1.41 00768570 mac 10594c30 GameThingWithPos::AttitudeToCreatureEating(void)
 uint32_t __fastcall AttitudeToCreatureEating__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?AttitudeToCreatureEating@GameThingWithPos@@UAEIXZ");
-// win1.41 007c60db mac inlined GameThingWithPos::GetText(void)
-const char* __fastcall GetText__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetText@GameThingWithPos@@UAEPBDXZ");
 // win1.41 00402200 mac 100db7b0 GameThingWithPos::CalculateDesireForFood(void)
 float __fastcall CalculateDesireForFood__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?CalculateDesireForFood@GameThingWithPos@@UAEMXZ");
 // win1.41 00402210 mac 10111950 GameThingWithPos::CalculateDesireForRest(void)

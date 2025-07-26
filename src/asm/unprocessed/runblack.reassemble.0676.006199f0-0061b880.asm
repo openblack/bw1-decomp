@@ -47,7 +47,7 @@
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit@4
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5f8c
+.extern _wcscat
 .extern _wcscpy
 .extern _wcslen
 .extern _jmp_addr_0x007c647f
@@ -1628,7 +1628,7 @@ _jmp_addr_0x0061ac25:    {disp8} mov       eax, dword ptr [esi + 0x04]          
                          shl               edx, 9                                               // 0x0061ac38    c1e209
                          {disp32} lea      ecx, dword ptr [edx + eax * 0x1 + -0x00000200]       // 0x0061ac3b    8d8c0200feffff
                          push              ecx                                                  // 0x0061ac42    51
-                         call              _jmp_addr_0x007c5f8c                                 // 0x0061ac43    e844b31a00
+                         call              _wcscat                                              // 0x0061ac43    e844b31a00
                          {disp8} mov       ecx, dword ptr [esi + 0x04]                          // 0x0061ac48    8b4e04
                          add               esp, 0x08                                            // 0x0061ac4b    83c408
                          call              @UpdateHeights__9SetupListFv@4                       // 0x0061ac4e    e89dfedeff

@@ -1,16 +1,51 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
-.extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
+.globl _jmp_addr_0x007c614c
+.globl _jmp_addr_0x007c60f0
 
-.extern _jmp_addr_0x007c614c
 
-start_0x007c6160_0x007c61f0:
-// Snippet: asm, [0x007c6160, 0x007c61c9)
+_jmp_addr_0x007c60f0:    push             ebp                                           // 0x007c60f0    55
+                         mov.s            ebp, esp                                      // 0x007c60f1    8bec
+                         push             edi                                           // 0x007c60f3    57
+                         push             esi                                           // 0x007c60f4    56
+                         {disp8} mov      esi, dword ptr [ebp + 0x0c]                   // 0x007c60f5    8b750c
+                         {disp8} mov      ecx, dword ptr [ebp + 0x10]                   // 0x007c60f8    8b4d10
+                         {disp8} mov      edi, dword ptr [ebp + 0x08]                   // 0x007c60fb    8b7d08
+                         mov.s            eax, ecx                                      // 0x007c60fe    8bc1
+                         mov.s            edx, ecx                                      // 0x007c6100    8bd1
+                         add.s            eax, esi                                      // 0x007c6102    03c6
+                         cmp.s            edi, esi                                      // 0x007c6104    3bfe
+                         {disp8} jbe      _jmp_addr_0x007c6110                          // 0x007c6106    7608
+                         cmp.s            edi, eax                                      // 0x007c6108    3bf8
+                         {disp32} jb      _jmp_addr_0x007c6288                          // 0x007c610a    0f8278010000
+_jmp_addr_0x007c6110:    test             edi, 0x00000003                               // 0x007c6110    f7c703000000
+                         {disp8} jne      _jmp_addr_0x007c612c                          // 0x007c6116    7514
+                         shr              ecx, 2                                        // 0x007c6118    c1e902
+                         and              edx, 0x03                                     // 0x007c611b    83e203
+                         cmp              ecx, 0x08                                     // 0x007c611e    83f908
+                         .byte            0x72, 0x29// {disp8} jb _jmp_addr_0x007c614c  // 0x007c6121    7229
+                         rep movsd        es:[edi], dword ptr ds:[esi]                  // 0x007c6123    f3a5
+                         jmp              dword ptr [edx*4 + 0x7c6238]                  // 0x007c6125    ff249538627c00
+_jmp_addr_0x007c612c:    mov.s            eax, edi                                      // 0x007c612c    8bc7
+                         mov              edx, 0x00000003                               // 0x007c612e    ba03000000
+                         sub              ecx, 0x04                                     // 0x007c6133    83e904
+                         .byte            0x72, 0xc// {disp8} jb _jmp_addr_0x007c6144   // 0x007c6136    720c
+                         and              eax, 0x03                                     // 0x007c6138    83e003
+                         add.s            ecx, eax                                      // 0x007c613b    03c8
+                         jmp              dword ptr [eax*4 + 0x7c6150]                  // 0x007c613d    ff248550617c00
+_jmp_addr_0x007c6144:    jmp              dword ptr [ecx*4 + 0x7c6248]                  // 0x007c6144    ff248d48627c00
+                         nop                                                            // 0x007c614b    90
+_jmp_addr_0x007c614c:    jmp              dword ptr [ecx*4 + 0x7c61cc]                  // 0x007c614c    ff248dcc617c00
+
+// Snippet: db, [0x007c6153, 0x007c6154)
+.byte 0x90                        // 0x007c6153
+
+// Snippet: jmptbl, [0x007c6154, 0x007c6160)
+.byte 0x60, 0x61, 0x7c, 0x00      // 0x007c6154
+.byte 0x8c, 0x61, 0x7c, 0x00      // 0x007c6158
+.byte 0xb0, 0x61, 0x7c, 0x00      // 0x007c615c
+
                          and.s           edx, ecx                     // 0x007c6160    23d1
                          mov             al, byte ptr [esi]           // 0x007c6162    8a06
                          mov             byte ptr [edi], al           // 0x007c6164    8807
