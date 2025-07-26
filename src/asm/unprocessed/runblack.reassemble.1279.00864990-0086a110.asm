@@ -22,7 +22,7 @@
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
-.extern _atexit@4
+.extern _atexit
 .extern _operator_new
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -4622,7 +4622,7 @@ _jmp_addr_0x00868040:    sub                esp, 0x30                           
                          or.s               dl, al                                        // 0x00868057    0ad0
                          push               0x008682f0                                    // 0x00868059    68f0828600
                          {disp32} mov       byte ptr [data_bytes + 0x5dc500], dl          // 0x0086805e    88150025fa00
-                         call               _atexit@4                                     // 0x00868064    e828d7f5ff
+                         call               _atexit                                       // 0x00868064    e828d7f5ff
                          add                esp, 0x04                                     // 0x00868069    83c404
 _jmp_addr_0x0086806c:    {disp8} fld        dword ptr [esi + 0x0c]                        // 0x0086806c    d9460c
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000            // 0x0086806f    c744241000000000

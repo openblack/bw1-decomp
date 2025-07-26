@@ -67,7 +67,7 @@
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _jmp_addr_0x007c76e0
 .extern ___nw__FUl
 
@@ -570,7 +570,7 @@ _jmp_addr_0x0060dc6f:    push               0x0                                 
                          push               0x009c7f50                                  // 0x0060dc76    68507f9c00
                          push               0x0                                         // 0x0060dc7b    6a00
                          push               esi                                         // 0x0060dc7d    56
-                         call               _jmp_addr_0x007c5a19                        // 0x0060dc7e    e8967d1b00
+                         call               ___RTDynamicCast                            // 0x0060dc7e    e8967d1b00
                          mov.s              edi, eax                                    // 0x0060dc83    8bf8
                          add                esp, 0x14                                   // 0x0060dc85    83c414
                          test               edi, edi                                    // 0x0060dc88    85ff

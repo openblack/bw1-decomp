@@ -97,7 +97,7 @@
 .extern _jmp_addr_0x0077cf70
 .extern  ___dl__FPv
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _operator_new
 .extern ___nw__FUl
 
@@ -11850,7 +11850,7 @@ _jmp_addr_0x00561c74:    mov.s              esi, eax                            
                          push               eax                                            // 0x00561c8b    50
                          {disp8} mov        eax, dword ptr [esi + 0x04]                    // 0x00561c8c    8b4604
                          push               eax                                            // 0x00561c8f    50
-                         call               _jmp_addr_0x007c5a19                           // 0x00561c90    e8843d2600
+                         call               ___RTDynamicCast                               // 0x00561c90    e8843d2600
                          add                esp, 0x14                                      // 0x00561c95    83c414
                          test               eax, eax                                       // 0x00561c98    85c0
                          {disp8} je         _jmp_addr_0x00561ca7                           // 0x00561c9a    740b
@@ -12004,7 +12004,7 @@ _jmp_addr_0x00561e10:    push               ecx                                 
                          push               0x009c7f18                                     // 0x00561e41    68187f9c00
                          push               edi                                            // 0x00561e46    57
                          push               ebx                                            // 0x00561e47    53
-                         call               _jmp_addr_0x007c5a19                           // 0x00561e48    e8cc3b2600
+                         call               ___RTDynamicCast                               // 0x00561e48    e8cc3b2600
                          add                esp, 0x14                                      // 0x00561e4d    83c414
                          test               eax, eax                                       // 0x00561e50    85c0
                          {disp8} jne        _jmp_addr_0x00561e7c                           // 0x00561e52    7528

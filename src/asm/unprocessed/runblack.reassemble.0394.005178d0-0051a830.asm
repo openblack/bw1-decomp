@@ -55,8 +55,8 @@
 .extern _jmp_addr_0x0074eb40
 .extern _jmp_addr_0x00780ee0
 .extern _jmp_addr_0x007a1400
-.extern _atexit@4
-.extern _jmp_addr_0x007c5a19
+.extern _atexit
+.extern ___RTDynamicCast
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007f8d30
 .extern _jmp_addr_0x007faff0
@@ -164,7 +164,7 @@ _jmp_addr_0x005178ff:    {disp32} mov       dword ptr [data_bytes + 0x30030c], e
                          push               0x009cece0                                    // 0x005179be    68e0ec9c00
                          push               ebx                                           // 0x005179c3    53
                          push               edx                                           // 0x005179c4    52
-                         call               _jmp_addr_0x007c5a19                          // 0x005179c5    e84fe02a00
+                         call               ___RTDynamicCast                              // 0x005179c5    e84fe02a00
                          add                esp, 0x14                                     // 0x005179ca    83c414
                          cmp.s              eax, ebx                                      // 0x005179cd    3bc3
                          {disp8} je         _jmp_addr_0x005179dc                          // 0x005179cf    740b
@@ -1442,7 +1442,7 @@ _jmp_addr_0x00518937:    {disp32} mov       cl, byte ptr [data_bytes + 0x3002dc]
                          {disp32} mov       dword ptr [data_bytes + 0x3002d0], 0x00000000 // 0x00518952    c705d062cc0000000000
                          {disp32} mov       dword ptr [data_bytes + 0x3002d4], 0x3f800000 // 0x0051895c    c705d462cc000000803f
                          {disp32} mov       dword ptr [data_bytes + 0x3002d8], 0x00000000 // 0x00518966    c705d862cc0000000000
-                         call               _atexit@4                                     // 0x00518970    e81cce2a00
+                         call               _atexit                                       // 0x00518970    e81cce2a00
                          add                esp, 0x04                                     // 0x00518975    83c404
 _jmp_addr_0x00518978:    {disp32} fld       dword ptr [data_bytes + 0x3002d4]             // 0x00518978    d905d462cc00
                          push               ecx                                           // 0x0051897e    51

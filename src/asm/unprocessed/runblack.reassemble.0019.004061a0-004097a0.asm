@@ -67,8 +67,8 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _atexit@4
-.extern _jmp_addr_0x007c5a19
+.extern _atexit
+.extern ___RTDynamicCast
 .extern _toupper
 .extern _wcscat
 .extern _wcscpy
@@ -468,7 +468,7 @@ _jmp_addr_0x004064cf:    push               0x0                                 
                          push               0x009c7f50                                    // 0x004064d6    68507f9c00
                          push               0x0                                           // 0x004064db    6a00
                          push               eax                                           // 0x004064dd    50
-                         call               _jmp_addr_0x007c5a19                          // 0x004064de    e836f53b00
+                         call               ___RTDynamicCast                              // 0x004064de    e836f53b00
                          add                esp, 0x14                                     // 0x004064e3    83c414
                          test               eax, eax                                      // 0x004064e6    85c0
                          {disp8} je         _jmp_addr_0x004064ee                          // 0x004064e8    7404
@@ -2256,7 +2256,7 @@ _jmp_addr_0x00407854:    {disp32} jmp       _jmp_addr_0x00407860                
                          nop                                                              // 0x0040785e    90
                          nop                                                              // 0x0040785f    90
 _jmp_addr_0x00407860:    push               0x00407870                                    // 0x00407860    6870784000
-                         call               _atexit@4                                     // 0x00407865    e827df3b00
+                         call               _atexit                                       // 0x00407865    e827df3b00
                          pop                ecx                                           // 0x0040786a    59
                          ret                                                              // 0x0040786b    c3
                          nop                                                              // 0x0040786c    90
