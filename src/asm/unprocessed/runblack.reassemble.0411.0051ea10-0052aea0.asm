@@ -271,6 +271,13 @@
 .globl _jmp_addr_0x0052a8d0
 .globl _jmp_addr_0x0052a950
 .globl _jmp_addr_0x0052aa10
+.globl ?DrawTextString@EditorIconBase@@UAIIPAULH3DColor@@PAULHRegion@@@Z
+.globl ?GetTextColor@EditorIconBase@@UAIPAULH3DColor@@XZ
+.globl ?GetActiveColor@EditorIconBase@@UAIPAULH3DColor@@XZ
+.globl ?GetInactiveColor@EditorIconBase@@UAIPAULH3DColor@@XZ
+.globl ?GetText@EditorIconBase@@UAIPADXZ
+.globl ?DrawBox@EditorIconBase@@UAIXH@Z
+.globl ?DrawBubbleBox@EditorIconBase@@UAIXXZ
 
 .globl _globl_ct_0x0051eda0
 .globl _globl_ct_0x0051edd0
@@ -2827,6 +2834,8 @@ _jmp_addr_0x005202b0:    push               esi                                 
                          nop                                                                     // 0x005202fd    90
                          nop                                                                     // 0x005202fe    90
                          nop                                                                     // 0x005202ff    90
+
+?GetTextColor@EditorIconBase@@UAIPAULH3DColor@@XZ:
                          mov                eax, 0x00cc637c                                      // 0x00520300    b87c63cc00
                          ret                                                                     // 0x00520305    c3
                          nop                                                                     // 0x00520306    90
@@ -2839,6 +2848,8 @@ _jmp_addr_0x005202b0:    push               esi                                 
                          nop                                                                     // 0x0052030d    90
                          nop                                                                     // 0x0052030e    90
                          nop                                                                     // 0x0052030f    90
+
+?GetActiveColor@EditorIconBase@@UAIPAULH3DColor@@XZ:
                          mov                eax, 0x00cc6398                                      // 0x00520310    b89863cc00
                          ret                                                                     // 0x00520315    c3
                          nop                                                                     // 0x00520316    90
@@ -2851,6 +2862,8 @@ _jmp_addr_0x005202b0:    push               esi                                 
                          nop                                                                     // 0x0052031d    90
                          nop                                                                     // 0x0052031e    90
                          nop                                                                     // 0x0052031f    90
+
+?GetInactiveColor@EditorIconBase@@UAIPAULH3DColor@@XZ:
                          mov                eax, 0x00cc6378                                      // 0x00520320    b87863cc00
                          ret                                                                     // 0x00520325    c3
                          nop                                                                     // 0x00520326    90
@@ -2967,6 +2980,8 @@ _jmp_addr_0x005202b0:    push               esi                                 
                          nop                                                                     // 0x005203dd    90
                          nop                                                                     // 0x005203de    90
                          nop                                                                     // 0x005203df    90
+
+?GetText@EditorIconBase@@UAIPADXZ:
                          xor.s              eax, eax                                             // 0x005203e0    33c0
                          ret                                                                     // 0x005203e2    c3
                          nop                                                                     // 0x005203e3    90
@@ -3789,6 +3804,8 @@ _jmp_addr_0x00520af0:    mov.s              eax, ecx                            
                          {disp32} mov       dword ptr [data_bytes + 0x300390], ecx               // 0x00520b08    890d9063cc00
 _jmp_addr_0x00520b0e:    ret                                                                     // 0x00520b0e    c3
                          nop                                                                     // 0x00520b0f    90
+
+?DrawBox@EditorIconBase@@UAIXH@Z:
                          push               esi                                                  // 0x00520b10    56
                          mov.s              esi, ecx                                             // 0x00520b11    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x00520b13    8b06
@@ -4150,6 +4167,7 @@ _jmp_addr_0x00520eed:    add                esp, 0x10                           
                          nop                                                                     // 0x00520efd    90
                          nop                                                                     // 0x00520efe    90
                          nop                                                                     // 0x00520eff    90
+?DrawTextString@EditorIconBase@@UAIIPAULH3DColor@@PAULHRegion@@@Z:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x300390]               // 0x00520f00    a19063cc00
                          push               esi                                                  // 0x00520f05    56
                          mov.s              esi, ecx                                             // 0x00520f06    8bf1
@@ -4186,6 +4204,8 @@ _jmp_addr_0x00520f43:    xor.s              eax, eax                            
                          nop                                                                     // 0x00520f4d    90
                          nop                                                                     // 0x00520f4e    90
                          nop                                                                     // 0x00520f4f    90
+
+?DrawBubbleBox@EditorIconBase@@UAIXXZ:
                          push               esi                                                  // 0x00520f50    56
                          mov.s              esi, ecx                                             // 0x00520f51    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x00520f53    8b06
