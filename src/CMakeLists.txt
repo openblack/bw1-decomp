@@ -392,11 +392,13 @@ set(SOURCES_ZLIB
     asm/zlib/infutil.asm
     asm/zlib/inffast.asm
 )
+set(SOURCES_002
+    asm/unprocessed/runblack.reassemble.1078.007c5100-007c60db.asm
+)
 set(SOURCES_003
     asm/unprocessed/rdata.004.009a05c0-009a0738.asm
     asm/unprocessed/data.002.00c2d394-00c2d670.asm
-    asm/unprocessed/runblack.reassemble.1078.007c5100-007c6160.asm
-    asm/unprocessed/runblack.reassemble.1081.007c6160-007c61f0.asm
+    asm/unprocessed/runblack.reassemble.1081.007c60f0-007c61f0.asm
     asm/unprocessed/runblack.reassemble.1085.007c61f0-007c6250.asm
     asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
     asm/unprocessed/runblack.reassemble.1093.007c62f0-007c6390.asm
@@ -486,6 +488,7 @@ set(SOURCES_007
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
 add_library(runblack-reassembled-zlib OBJECT ${SOURCES_ZLIB})
+add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
 add_library(runblack-reassembled-src-003 OBJECT ${SOURCES_003})
 add_library(runblack-reassembled-src-004 OBJECT ${SOURCES_004})
 add_library(runblack-reassembled-src-005 OBJECT ${SOURCES_005})
@@ -542,6 +545,14 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\toupper.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcscat.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\xtow.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\purevirt.obj" OFF)
+set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
+add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
+set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\throw.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strcspn.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\memchr.obj" OFF)
@@ -552,9 +563,9 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\dosmap.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strncpy.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strncmp.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strchr.obj" OFF)
-set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\printf.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strtok.obj" ON)
@@ -566,9 +577,9 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncmp.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\towlower.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\abort.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\chmod.obj" ON)
-set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-004 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\slbeep.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strrchr.obj" ON)
@@ -599,11 +610,11 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\fputwc.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\ungetwc.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\fgetwc.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\mlock.obj" OFF WEAKEN_SYMBOLS _sigcritsect _ltlcritsect _hlcritsect _xlcritsect)
-set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-004 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 # libcmt is statically linked between 007aee98 and 008a6470
 # The text section is aligned on 1-byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
-add_library(runblack-reassembled-libcmt-004 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-005 OBJECT IMPORTED)
 
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcsdup.obj" ON)
@@ -626,7 +637,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj" ON)
 add_patched_libcmt_object("build\\intel\\mt_obj\\sehsupp.obj" ON)
-set_property(TARGET runblack-reassembled-libcmt-004 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-005 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_executable(runblack-reassembled)
 set_target_properties(runblack-reassembled PROPERTIES
@@ -657,14 +668,16 @@ target_link_libraries(runblack-reassembled
     PRIVATE
         runblack-reassembled-src-001
         runblack-reassembled-zlib
-        runblack-reassembled-src-003
+        runblack-reassembled-src-002
         runblack-reassembled-libcmt-001
-        runblack-reassembled-src-004
+        runblack-reassembled-src-003
         runblack-reassembled-libcmt-002
-        runblack-reassembled-src-005
+        runblack-reassembled-src-004
         runblack-reassembled-libcmt-003
-        runblack-reassembled-src-006
+        runblack-reassembled-src-005
         runblack-reassembled-libcmt-004
+        runblack-reassembled-src-006
+        runblack-reassembled-libcmt-005
         runblack-reassembled-src-007
         runblack-reassembled-rc
 )
@@ -689,6 +702,7 @@ add_custom_command(
 
 target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-zlib PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-003 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-005 PRIVATE common_compile_options)

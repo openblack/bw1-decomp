@@ -11,9 +11,9 @@
 .extern @__ct__8LHOSFileFv@4
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007bcad0
-.extern _jmp_addr_0x007c5f8c
+.extern _wcscat
 .extern _wcscpy
-.extern _jmp_addr_0x007c5fdb
+.extern __itow
 .extern _wcslen
 .extern _jmp_addr_0x007c64fc
 .extern _jmp_addr_0x007c6587
@@ -36,7 +36,7 @@
 .extern _atof
 .extern _strstr
 .extern _strrchr
-.extern _jmp_addr_0x007cd984
+.extern __itoa
 .extern _strpbrk
 .extern ___nw__FUl
 .extern _jmp_addr_0x007ded80
@@ -1224,7 +1224,7 @@ _jmp_addr_0x007e6ae0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          push             eax                                           // 0x007e6af0    50
                          push             0x0                                           // 0x007e6af1    6a00
                          push             0x0                                           // 0x007e6af3    6a00
-                         call             dword ptr [__imp__MultiByteToWideChar@4]      // 0x007e6af5    ff153c918a00
+                         call             dword ptr [__imp__MultiByteToWideChar@24]      // 0x007e6af5    ff153c918a00
                          {disp32} mov     word ptr [eax * 0x2 + 0x00e90edc], 0x0000     // 0x007e6afb    66c70445dc0ee9000000
                          mov              eax, 0x00e90edc                               // 0x007e6b05    b8dc0ee900
                          ret                                                            // 0x007e6b0a    c3
@@ -1240,7 +1240,7 @@ _jmp_addr_0x007e6ae0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          push             eax                                           // 0x007e6b20    50
                          push             0x0                                           // 0x007e6b21    6a00
                          push             0x0                                           // 0x007e6b23    6a00
-                         call             dword ptr [__imp__MultiByteToWideChar@4]      // 0x007e6b25    ff153c918a00
+                         call             dword ptr [__imp__MultiByteToWideChar@24]      // 0x007e6b25    ff153c918a00
                          {disp32} mov     word ptr [eax * 0x2 + 0x00e906dc], 0x0000     // 0x007e6b2b    66c70445dc06e9000000
                          mov              eax, 0x00e906dc                               // 0x007e6b35    b8dc06e900
                          ret                                                            // 0x007e6b3a    c3
@@ -1777,7 +1777,7 @@ _jmp_addr_0x007e6fa0:    {disp8} mov      eax, dword ptr [esp + 0x08]           
                          {disp8} mov      ecx, dword ptr [esp + 0x04]                   // 0x007e6fa4    8b4c2404
                          push             eax                                           // 0x007e6fa8    50
                          push             ecx                                           // 0x007e6fa9    51
-                         call             _jmp_addr_0x007c5f8c                          // 0x007e6faa    e8ddeffdff
+                         call             _wcscat                                       // 0x007e6faa    e8ddeffdff
                          add              esp, 0x08                                     // 0x007e6faf    83c408
                          ret                                                            // 0x007e6fb2    c3
                          nop                                                            // 0x007e6fb3    90
@@ -2158,7 +2158,7 @@ _jmp_addr_0x007e7220:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          push             eax                                           // 0x007e722c    50
                          push             ecx                                           // 0x007e722d    51
                          push             edx                                           // 0x007e722e    52
-                         call             _jmp_addr_0x007cd984                          // 0x007e722f    e85067feff
+                         call             __itoa                                        // 0x007e722f    e85067feff
                          add              esp, 0x0c                                     // 0x007e7234    83c40c
                          ret                                                            // 0x007e7237    c3
                          nop                                                            // 0x007e7238    90
@@ -2175,7 +2175,7 @@ _jmp_addr_0x007e7240:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          push             eax                                           // 0x007e724c    50
                          push             ecx                                           // 0x007e724d    51
                          push             edx                                           // 0x007e724e    52
-                         call             _jmp_addr_0x007c5fdb                          // 0x007e724f    e887edfdff
+                         call             __itow                                        // 0x007e724f    e887edfdff
                          add              esp, 0x0c                                     // 0x007e7254    83c40c
                          ret                                                            // 0x007e7257    c3
                          nop                                                            // 0x007e7258    90

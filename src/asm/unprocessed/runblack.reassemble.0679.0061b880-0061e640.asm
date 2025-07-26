@@ -53,7 +53,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007bd030
-.extern _jmp_addr_0x007c5f8c
+.extern _wcscat
 .extern _wcscpy
 .extern _wcslen
 .extern _jmp_addr_0x007c647f
@@ -2138,7 +2138,7 @@ _jmp_addr_0x0061d4b1:    {disp32} mov       eax, dword ptr [edi + 0x00000194]   
                          shl                edx, 9                                               // 0x0061d4c7    c1e209
                          {disp32} lea       ecx, dword ptr [edx + eax * 0x1 + -0x00000200]       // 0x0061d4ca    8d8c0200feffff
                          push               ecx                                                  // 0x0061d4d1    51
-                         call               _jmp_addr_0x007c5f8c                                 // 0x0061d4d2    e8b58a1a00
+                         call               _wcscat                                              // 0x0061d4d2    e8b58a1a00
                          {disp32} mov       ecx, dword ptr [edi + 0x00000194]                    // 0x0061d4d7    8b8f94010000
                          add                esp, 0x08                                            // 0x0061d4dd    83c408
                          call               @UpdateHeights__9SetupListFv@4                       // 0x0061d4e0    e80bd6deff
