@@ -45,7 +45,7 @@
 .extern @SetLHFilePointer__6LHFileFPcl@16
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern _wcscat
 .extern _wcscpy
@@ -679,7 +679,7 @@ _jmp_addr_0x0061a0f4:    {disp32} jmp      _jmp_addr_0x0061a100                 
                          nop                                                                    // 0x0061a0fe    90
                          nop                                                                    // 0x0061a0ff    90
 _jmp_addr_0x0061a100:    push              0x00407870                                           // 0x0061a100    6870784000
-                         call              _atexit@4                                            // 0x0061a105    e887b61a00
+                         call              _atexit                                              // 0x0061a105    e887b61a00
                          pop               ecx                                                  // 0x0061a10a    59
                          ret                                                                    // 0x0061a10b    c3
                          nop                                                                    // 0x0061a10c    90
@@ -1133,7 +1133,7 @@ _jmp_addr_0x0061a624:    {disp32} jmp      _jmp_addr_0x0061a630                 
                          nop                                                                    // 0x0061a62e    90
                          nop                                                                    // 0x0061a62f    90
 _jmp_addr_0x0061a630:    push              0x00407870                                           // 0x0061a630    6870784000
-                         call              _atexit@4                                            // 0x0061a635    e857b11a00
+                         call              _atexit                                              // 0x0061a635    e857b11a00
                          pop               ecx                                                  // 0x0061a63a    59
                          ret                                                                    // 0x0061a63b    c3
                          nop                                                                    // 0x0061a63c    90

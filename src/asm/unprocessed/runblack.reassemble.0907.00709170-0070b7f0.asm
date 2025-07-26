@@ -67,8 +67,8 @@
 .extern _jmp_addr_0x007a1400
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _atexit@4
-.extern _jmp_addr_0x007c5a19
+.extern _atexit
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0080b440
@@ -464,7 +464,7 @@ _jmp_addr_0x00709564:    {disp32} jmp       _jmp_addr_0x00709570                
                          nop                                                              // 0x0070956e    90
                          nop                                                              // 0x0070956f    90
 _jmp_addr_0x00709570:    push               0x00407870                                    // 0x00709570    6870784000
-                         call               _atexit@4                                     // 0x00709575    e817c20b00
+                         call               _atexit                                       // 0x00709575    e817c20b00
                          pop                ecx                                           // 0x0070957a    59
                          ret                                                              // 0x0070957b    c3
                          nop                                                              // 0x0070957c    90
@@ -595,7 +595,7 @@ _jmp_addr_0x0070961c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x0070965e    90
                          nop                                                              // 0x0070965f    90
 _jmp_addr_0x00709660:    push               0x00709670                                    // 0x00709660    6870967000
-                         call               _atexit@4                                     // 0x00709665    e827c10b00
+                         call               _atexit                                       // 0x00709665    e827c10b00
                          pop                ecx                                           // 0x0070966a    59
                          ret                                                              // 0x0070966b    c3
                          nop                                                              // 0x0070966c    90
@@ -2868,7 +2868,7 @@ _jmp_addr_0x0070ae74:    {disp32} jmp       _jmp_addr_0x0070ae80                
                          nop                                                              // 0x0070ae7e    90
                          nop                                                              // 0x0070ae7f    90
 _jmp_addr_0x0070ae80:    push               0x00407870                                    // 0x0070ae80    6870784000
-                         call               _atexit@4                                     // 0x0070ae85    e807a90b00
+                         call               _atexit                                       // 0x0070ae85    e807a90b00
                          pop                ecx                                           // 0x0070ae8a    59
                          ret                                                              // 0x0070ae8b    c3
                          nop                                                              // 0x0070ae8c    90
@@ -2970,7 +2970,7 @@ _jmp_addr_0x0070af2c:    {disp32} mov       ecx, dword ptr [_game]              
                          push               0x009c7f30                                    // 0x0070af9e    68307f9c00
                          push               0x0                                           // 0x0070afa3    6a00
                          push               esi                                           // 0x0070afa5    56
-                         call               _jmp_addr_0x007c5a19                          // 0x0070afa6    e86eaa0b00
+                         call               ___RTDynamicCast                              // 0x0070afa6    e86eaa0b00
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0070afab    8b0d5c19d000
                          add                esp, 0x18                                     // 0x0070afb1    83c418
                          push               eax                                           // 0x0070afb4    50

@@ -31,7 +31,7 @@
 .extern  ___dl__FPv
 .extern @Close__6LHFileFv@4
 .extern @CloseSegment__6LHFileFv@4
-.extern _atexit@4
+.extern _atexit
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @Release__8LH3DMeshFv@4
@@ -315,7 +315,7 @@ _jmp_addr_0x0047f124:    {disp32} jmp       _jmp_addr_0x0047f130                
                          nop                                                              // 0x0047f12e    90
                          nop                                                              // 0x0047f12f    90
 _jmp_addr_0x0047f130:    push               0x00407870                                    // 0x0047f130    6870784000
-                         call               _atexit@4                                     // 0x0047f135    e857663400
+                         call               _atexit                                       // 0x0047f135    e857663400
                          pop                ecx                                           // 0x0047f13a    59
                          ret                                                              // 0x0047f13b    c3
                          nop                                                              // 0x0047f13c    90

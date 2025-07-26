@@ -170,7 +170,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _jmp_addr_0x007c6edf
 .extern ___nw__FUl
 .extern _jmp_addr_0x007dee00
@@ -1682,7 +1682,7 @@ _jmp_addr_0x00553b99:    push               ebx                                 
                          push               0x009cd390                                    // 0x00553b9f    6890d39c00
                          push               ebx                                           // 0x00553ba4    53
                          push               eax                                           // 0x00553ba5    50
-                         call               _jmp_addr_0x007c5a19                          // 0x00553ba6    e86e1e2700
+                         call               ___RTDynamicCast                              // 0x00553ba6    e86e1e2700
                          {disp32} fld       dword ptr [data_bytes + 0x440000]             // 0x00553bab    d9050060e000
                          {disp32} fst       dword ptr [esi + 0x0000011c]                  // 0x00553bb1    d9961c010000
                          {disp32} mov       dword ptr [esi + 0x00000130], ebx             // 0x00553bb7    899e30010000
@@ -1790,7 +1790,7 @@ _jmp_addr_0x00553dc4:    push               ebx                                 
                          push               0x009cd390                                    // 0x00553dca    6890d39c00
                          push               ebx                                           // 0x00553dcf    53
                          push               eax                                           // 0x00553dd0    50
-                         call               _jmp_addr_0x007c5a19                          // 0x00553dd1    e8431c2700
+                         call               ___RTDynamicCast                              // 0x00553dd1    e8431c2700
                          add                esp, 0x14                                     // 0x00553dd6    83c414
                          cmp.s              eax, ebx                                      // 0x00553dd9    3bc3
                          {disp8} je         _jmp_addr_0x00553de6                          // 0x00553ddb    7409

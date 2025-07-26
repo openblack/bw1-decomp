@@ -71,7 +71,7 @@
 .extern @CloseSegment__6LHFileFv@4
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faaf0
@@ -1175,7 +1175,7 @@ _jmp_addr_0x004eabf4:    {disp32} jmp       _jmp_addr_0x004eac00                
                          nop                                                              // 0x004eabfe    90
                          nop                                                              // 0x004eabff    90
 _jmp_addr_0x004eac00:    push               0x00407870                                    // 0x004eac00    6870784000
-                         call               _atexit@4                                     // 0x004eac05    e887ab2d00
+                         call               _atexit                                       // 0x004eac05    e887ab2d00
                          pop                ecx                                           // 0x004eac0a    59
                          ret                                                              // 0x004eac0b    c3
                          nop                                                              // 0x004eac0c    90

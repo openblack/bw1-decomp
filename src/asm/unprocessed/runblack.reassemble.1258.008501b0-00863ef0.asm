@@ -16,7 +16,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
-.extern _atexit@4
+.extern _atexit
 .extern _operator_new
 .extern _malloc
 .extern _jmp_addr_0x007c73c0
@@ -14679,7 +14679,7 @@ _jmp_addr_0x0085bf00:    {disp32} mov       cl, byte ptr [data_bytes + 0x531554]
                          {disp32} mov       dword ptr [data_bytes + 0x531548], 0x00000000 // 0x0085bf1e    c7054875ef0000000000
                          {disp32} mov       dword ptr [data_bytes + 0x53154c], 0x00000000 // 0x0085bf28    c7054c75ef0000000000
                          {disp32} mov       dword ptr [data_bytes + 0x531550], 0x00000000 // 0x0085bf32    c7055075ef0000000000
-                         call               _atexit@4                                     // 0x0085bf3c    e85098f6ff
+                         call               _atexit                                       // 0x0085bf3c    e85098f6ff
                          add                esp, 0x04                                     // 0x0085bf41    83c404
 _jmp_addr_0x0085bf44:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]             // 0x0085bf44    db05c09eea00
                          {disp32} fmul      dword ptr [data_bytes + 0x2732b8]             // 0x0085bf4a    d80db892c300

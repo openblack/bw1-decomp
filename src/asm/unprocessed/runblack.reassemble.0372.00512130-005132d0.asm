@@ -53,7 +53,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _atexit@4
+.extern _atexit
 .extern _wcslen
 .extern _jmp_addr_0x007c647f
 .extern _operator_new
@@ -221,7 +221,7 @@ _jmp_addr_0x005122c0:    xor.s             eax, eax                             
                          nop                                                                    // 0x005122ce    90
                          nop                                                                    // 0x005122cf    90
 _jmp_addr_0x005122d0:    push              0x005122e0                                           // 0x005122d0    68e0225100
-                         call              _atexit@4                                            // 0x005122d5    e8b7342b00
+                         call              _atexit                                              // 0x005122d5    e8b7342b00
                          pop               ecx                                                  // 0x005122da    59
                          ret                                                                    // 0x005122db    c3
                          nop                                                                    // 0x005122dc    90
@@ -718,7 +718,7 @@ _jmp_addr_0x00512794:    {disp32} jmp      _jmp_addr_0x005127a0                 
                          nop                                                                    // 0x0051279e    90
                          nop                                                                    // 0x0051279f    90
 _jmp_addr_0x005127a0:    push              0x00407870                                           // 0x005127a0    6870784000
-                         call              _atexit@4                                            // 0x005127a5    e8e72f2b00
+                         call              _atexit                                              // 0x005127a5    e8e72f2b00
                          pop               ecx                                                  // 0x005127aa    59
                          ret                                                                    // 0x005127ab    c3
                          nop                                                                    // 0x005127ac    90

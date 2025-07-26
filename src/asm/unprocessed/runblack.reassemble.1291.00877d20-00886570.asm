@@ -29,7 +29,7 @@
 .extern @Open__6LHFileF12LH_FILE_MODE@12
 .extern _jmp_addr_0x007bda20
 .extern _jmp_addr_0x007be000
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
@@ -3091,7 +3091,7 @@ _jmp_addr_0x0087a090:    {disp32} mov       al, byte ptr [data_bytes + 0x5e3310]
                          {disp32} mov       dword ptr [data_bytes + 0x5e3304], 0xc788b800        // 0x0087a10a    c7050493fa0000b888c7
                          {disp32} mov       dword ptr [data_bytes + 0x5e3308], 0x00000000        // 0x0087a114    c7050893fa0000000000
                          {disp32} mov       dword ptr [data_bytes + 0x5e330c], 0xc788b800        // 0x0087a11e    c7050c93fa0000b888c7
-                         call               _atexit@4                                            // 0x0087a128    e864b6f4ff
+                         call               _atexit                                              // 0x0087a128    e864b6f4ff
                          add                esp, 0x04                                            // 0x0087a12d    83c404
 _jmp_addr_0x0087a130:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]                    // 0x0087a130    db05c09eea00
                          push               esi                                                  // 0x0087a136    56

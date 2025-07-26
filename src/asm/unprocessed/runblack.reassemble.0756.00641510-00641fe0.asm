@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x0073e560
 .extern _jmp_addr_0x007760a0
 .extern _jmp_addr_0x0078e9b0
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c6c29
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
@@ -342,7 +342,7 @@ _jmp_addr_0x00641854:    {disp32} jmp      _jmp_addr_0x00641860                 
                          nop                                                             // 0x0064185e    90
                          nop                                                             // 0x0064185f    90
 _jmp_addr_0x00641860:    push              0x00407870                                    // 0x00641860    6870784000
-                         call              _atexit@4                                     // 0x00641865    e8273f1800
+                         call              _atexit                                       // 0x00641865    e8273f1800
                          pop               ecx                                           // 0x0064186a    59
                          ret                                                             // 0x0064186b    c3
                          nop                                                             // 0x0064186c    90
