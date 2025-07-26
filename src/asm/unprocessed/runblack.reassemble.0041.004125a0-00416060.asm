@@ -68,6 +68,12 @@
 .globl _globl_ct_0x00414770
 
 .globl ?GetDebugText@Base@@UBEPBDXZ
+.globl ?GetPDMRegion@EditorIconBase@@UAIPAULHRegion@@XZ
+.globl ?GetTextRegion@EditorIconBase@@UAIPAULHRegion@@XZ
+.globl ?GetTextHandle@EditorIconBase@@UAIIXZ
+.globl ?GetTextHeight@EditorIconBase@@UAIMXZ
+.globl ?GetHiliteColor@EditorIconBase@@UAIPAULH3DColor@@XZ
+.globl ?IsScrollable@EditorIconBase@@UAI_NXZ
 
 start_0x004125a0_0x00416060:
 // Snippet: asm, [0x004125a0, 0x00416032)
@@ -3335,6 +3341,8 @@ _jmp_addr_0x00414b90:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          mov                byte ptr [ecx], al                            // 0x00414ba5    8801
                          ret                0x000c                                        // 0x00414ba7    c20c00
                          call               dword ptr [__imp__waveInClose@4]              // 0x00414baa    ff15a8988a00
+
+?GetPDMRegion@EditorIconBase@@UAIPAULHRegion@@XZ:
                          mov                eax, dword ptr [ecx]                          // 0x00414bb0    8b01
                          jmp                dword ptr [eax]                               // 0x00414bb2    ff20
                          nop                                                              // 0x00414bb4    90
@@ -3349,6 +3357,8 @@ _jmp_addr_0x00414b90:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          nop                                                              // 0x00414bbd    90
                          nop                                                              // 0x00414bbe    90
                          nop                                                              // 0x00414bbf    90
+
+?GetTextRegion@EditorIconBase@@UAIPAULHRegion@@XZ:
                          mov                eax, dword ptr [ecx]                          // 0x00414bc0    8b01
                          jmp                dword ptr [eax]                               // 0x00414bc2    ff20
                          nop                                                              // 0x00414bc4    90
@@ -3363,6 +3373,8 @@ _jmp_addr_0x00414b90:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          nop                                                              // 0x00414bcd    90
                          nop                                                              // 0x00414bce    90
                          nop                                                              // 0x00414bcf    90
+
+?GetTextHandle@EditorIconBase@@UAIIXZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x300390]        // 0x00414bd0    a19063cc00
                          ret                                                              // 0x00414bd5    c3
                          nop                                                              // 0x00414bd6    90
@@ -3375,6 +3387,8 @@ _jmp_addr_0x00414b90:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          nop                                                              // 0x00414bdd    90
                          nop                                                              // 0x00414bde    90
                          nop                                                              // 0x00414bdf    90
+
+?GetTextHeight@EditorIconBase@@UAIMXZ:
                          {disp32} fld       dword ptr [data_bytes + 0x223238]             // 0x00414be0    d9053892be00
                          ret                                                              // 0x00414be6    c3
                          nop                                                              // 0x00414be7    90
@@ -3386,6 +3400,8 @@ _jmp_addr_0x00414b90:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          nop                                                              // 0x00414bed    90
                          nop                                                              // 0x00414bee    90
                          nop                                                              // 0x00414bef    90
+
+?GetHiliteColor@EditorIconBase@@UAIPAULH3DColor@@XZ:
                          mov                eax, 0x00cc6388                               // 0x00414bf0    b88863cc00
                          ret                                                              // 0x00414bf5    c3
                          nop                                                              // 0x00414bf6    90
@@ -3398,6 +3414,8 @@ _jmp_addr_0x00414b90:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          nop                                                              // 0x00414bfd    90
                          nop                                                              // 0x00414bfe    90
                          nop                                                              // 0x00414bff    90
+
+?IsScrollable@EditorIconBase@@UAI_NXZ:
                          xor.s              eax, eax                                      // 0x00414c00    33c0
                          ret                                                              // 0x00414c02    c3
                          nop                                                              // 0x00414c03    90

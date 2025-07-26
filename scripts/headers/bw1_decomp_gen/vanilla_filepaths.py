@@ -811,6 +811,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\ControlMap.h"),
     BWPath(r"C:\Dev\black\Cow.h"),
     BWPath(r"C:\Dev\black\Climate.h"),
+    BWPath(r"C:\Dev\black\CPUCheck.h"),
     BWPath(r"C:\Dev\black\CreatureActionsKnownAbout.h"),
     BWPath(r"C:\Dev\black\CreatureAgenda.h"),
     BWPath(r"C:\Dev\black\CreatureAttitudeToPlayer.h"),
