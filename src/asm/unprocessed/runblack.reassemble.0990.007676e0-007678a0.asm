@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x007436f0
 .extern _jmp_addr_0x0074cd50
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 
 start_0x007676e0_0x007678a0:
 // Snippet: asm, [0x007676e0, 0x00767888)
@@ -31,7 +31,7 @@ start_0x007676e0_0x007678a0:
                          push               0x009c7f30                               // 0x00767706    68307f9c00
                          push               0x0                                      // 0x0076770b    6a00
                          push               eax                                      // 0x0076770d    50
-                         call               _jmp_addr_0x007c5a19                     // 0x0076770e    e806e30500
+                         call               ___RTDynamicCast                         // 0x0076770e    e806e30500
                          mov.s              esi, eax                                 // 0x00767713    8bf0
                          add                esp, 0x14                                // 0x00767715    83c414
                          test               esi, esi                                 // 0x00767718    85f6

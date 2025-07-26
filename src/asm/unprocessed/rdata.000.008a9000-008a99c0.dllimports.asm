@@ -75,7 +75,7 @@
 .globl __imp__ImmGetOpenStatus@4
 .globl __imp__GetTimeFormatA@4
 .globl __imp__DebugBreak@4
-.globl __imp__MultiByteToWideChar@4
+.globl __imp__MultiByteToWideChar@24
 .globl __imp__GetTimeFormatW@4
 .globl __imp__QueryPerformanceCounter@4
 .globl __imp__GetCommandLineA@0
@@ -684,7 +684,7 @@ __imp__ImmGetOpenStatus@4:                                                      
 .long 0
 __imp__GetTimeFormatA@4:                                                                                                       .long 0x005c051a // 0x008a9134 KERNEL32.DLL::GetTimeFormatA
 __imp__DebugBreak@4:                                                                                                           .long 0x005c0550 // 0x008a9138 KERNEL32.DLL::DebugBreak
-__imp__MultiByteToWideChar@4:                                                                                                  .long 0x005c04ee // 0x008a913c KERNEL32.DLL::MultiByteToWideChar
+__imp__MultiByteToWideChar@24:                                                                                                  .long 0x005c04ee // 0x008a913c KERNEL32.DLL::MultiByteToWideChar
 __imp__GetTimeFormatW@4:                                                                                                       .long 0x005c052c // 0x008a9140 KERNEL32.DLL::GetTimeFormatW
 __imp__QueryPerformanceCounter@4:                                                                                              .long 0x005c04b8 // 0x008a9144 KERNEL32.DLL::QueryPerformanceCounter
 __imp__GetCommandLineA@0:                                                                                                      .long 0x005c04a6 // 0x008a9148 KERNEL32.DLL::GetCommandLineA

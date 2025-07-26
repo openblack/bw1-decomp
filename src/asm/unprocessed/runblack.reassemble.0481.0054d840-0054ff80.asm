@@ -354,9 +354,9 @@
 .extern  ___dl__FPv
 .extern @__dt__8LHOSFileFv@4
 .extern _Exists__8LHOSFileFPc
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007c6bff
@@ -1258,7 +1258,7 @@ _jmp_addr_0x0054e3e0:    cmp                eax, 0x02                           
                          push               0x00bec570                                    // 0x0054e3f5    6870c5be00
                          push               0x0                                           // 0x0054e3fa    6a00
                          push               eax                                           // 0x0054e3fc    50
-                         call               _jmp_addr_0x007c5a19                          // 0x0054e3fd    e817762700
+                         call               ___RTDynamicCast                              // 0x0054e3fd    e817762700
                          add                esp, 0x14                                     // 0x0054e402    83c414
                          test               eax, eax                                      // 0x0054e405    85c0
                          {disp8} je         _jmp_addr_0x0054e41c                          // 0x0054e407    7413
@@ -2892,7 +2892,7 @@ _jmp_addr_0x0054fb85:    push               0x0                                 
                          push               0x009cd390                                    // 0x0054fb8c    6890d39c00
                          push               0x0                                           // 0x0054fb91    6a00
                          push               eax                                           // 0x0054fb93    50
-                         call               _jmp_addr_0x007c5a19                          // 0x0054fb94    e8805e2700
+                         call               ___RTDynamicCast                              // 0x0054fb94    e8805e2700
                          add                esp, 0x14                                     // 0x0054fb99    83c414
                          mov.s              edi, eax                                      // 0x0054fb9c    8bf8
                          test               edi, edi                                      // 0x0054fb9e    85ff

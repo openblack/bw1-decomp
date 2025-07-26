@@ -50,7 +50,7 @@
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 
 .globl @SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb@17
@@ -738,7 +738,7 @@ _jmp_addr_0x0060ae6b:    {disp8} mov        edx, dword ptr [esp + 0x0c]         
                          push               0x009c8dc8                              // 0x0060ae9c    68c88d9c00
                          push               0x0                                     // 0x0060aea1    6a00
                          push               esi                                     // 0x0060aea3    56
-                         call               _jmp_addr_0x007c5a19                    // 0x0060aea4    e870ab1b00
+                         call               ___RTDynamicCast                        // 0x0060aea4    e870ab1b00
                          add                esp, 0x14                               // 0x0060aea9    83c414
                          test               eax, eax                                // 0x0060aeac    85c0
                          {disp8} je         _jmp_addr_0x0060aec0                    // 0x0060aeae    7410

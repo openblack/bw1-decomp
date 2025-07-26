@@ -253,9 +253,9 @@
 .extern ___dl__FPv
 .extern @__dt__8LHOSFileFv@4
 .extern _Exists__8LHOSFileFPc
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007c6bff
@@ -1796,7 +1796,7 @@ _jmp_addr_0x0054d6a3:    push               0x0                                 
                          push               0x009c8de8                                    // 0x0054d6aa    68e88d9c00
                          push               0x0                                           // 0x0054d6af    6a00
                          push               esi                                           // 0x0054d6b1    56
-                         call               _jmp_addr_0x007c5a19                          // 0x0054d6b2    e862832700
+                         call               ___RTDynamicCast                              // 0x0054d6b2    e862832700
                          add                esp, 0x14                                     // 0x0054d6b7    83c414
                          test               eax, eax                                      // 0x0054d6ba    85c0
                          {disp8} je         _jmp_addr_0x0054d6ce                          // 0x0054d6bc    7410

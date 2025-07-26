@@ -53,7 +53,7 @@
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007aeea3
 .extern _jmp_addr_0x007aef3f
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0081e9e0
@@ -529,7 +529,7 @@ _jmp_addr_0x00609774:    {disp32} jmp      _jmp_addr_0x00609780                 
                          nop                                                             // 0x0060977e    90
                          nop                                                             // 0x0060977f    90
 _jmp_addr_0x00609780:    push              0x00407870                                    // 0x00609780    6870784000
-                         call              _atexit@4                                     // 0x00609785    e807c01b00
+                         call              _atexit                                       // 0x00609785    e807c01b00
                          pop               ecx                                           // 0x0060978a    59
                          ret                                                             // 0x0060978b    c3
                          nop                                                             // 0x0060978c    90
@@ -631,7 +631,7 @@ _jmp_addr_0x006097d0:    push              ecx                                  
                          nop                                                             // 0x0060989e    90
                          nop                                                             // 0x0060989f    90
 _jmp_addr_0x006098a0:    push              0x006098b0                                    // 0x006098a0    68b0986000
-                         call              _atexit@4                                     // 0x006098a5    e8e7be1b00
+                         call              _atexit                                       // 0x006098a5    e8e7be1b00
                          pop               ecx                                           // 0x006098aa    59
                          ret                                                             // 0x006098ab    c3
                          nop                                                             // 0x006098ac    90

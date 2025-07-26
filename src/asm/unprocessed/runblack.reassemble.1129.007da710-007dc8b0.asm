@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _atexit@4
+.extern _atexit
 .extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c6eb0
@@ -1123,7 +1123,7 @@ _jmp_addr_0x007db210:    push              -0x1                                 
                          push              esi                                            // 0x007db212    56
                          push              0x1                                            // 0x007db213    6a01
                          push              dword ptr [ebp + 0x18]                         // 0x007db215    ff7518
-                         call              dword ptr [__imp__MultiByteToWideChar@4]       // 0x007db218    ff153c918a00
+                         call              dword ptr [__imp__MultiByteToWideChar@24]       // 0x007db218    ff153c918a00
                          {disp8} jmp       _jmp_addr_0x007db222                           // 0x007db21e    eb02
 _jmp_addr_0x007db220:    xor.s             eax, eax                                       // 0x007db220    33c0
 _jmp_addr_0x007db222:    {disp8} lea       esp, dword ptr [ebp + -0x30]                   // 0x007db222    8d65d0
@@ -1673,7 +1673,7 @@ _jmp_addr_0x007db7c0:    mov               ecx, OFFSET _LHSys                   
                          nop                                                              // 0x007db7ce    90
                          nop                                                              // 0x007db7cf    90
 _jmp_addr_0x007db7d0:    push              0x007db7e0                                     // 0x007db7d0    68e0b77d00
-                         call              _atexit@4                                      // 0x007db7d5    e8b79ffeff
+                         call              _atexit                                        // 0x007db7d5    e8b79ffeff
                          pop               ecx                                            // 0x007db7da    59
                          ret                                                              // 0x007db7db    c3
                          nop                                                              // 0x007db7dc    90

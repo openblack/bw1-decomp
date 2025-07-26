@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x0074dc30
 .extern _jmp_addr_0x0074e2b0
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _jmp_addr_0x007faa50
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
@@ -386,7 +386,7 @@ _jmp_addr_0x00504c2f:    {disp32} mov       eax, dword ptr [esi + 0x000000d8]   
                          push               0x00be6720                                    // 0x00504c3f    682067be00
                          push               0x0                                           // 0x00504c44    6a00
                          push               eax                                           // 0x00504c46    50
-                         call               _jmp_addr_0x007c5a19                          // 0x00504c47    e8cd0d2c00
+                         call               ___RTDynamicCast                              // 0x00504c47    e8cd0d2c00
                          add                esp, 0x14                                     // 0x00504c4c    83c414
                          test               eax, eax                                      // 0x00504c4f    85c0
                          {disp8} je         _jmp_addr_0x00504c6a                          // 0x00504c51    7417

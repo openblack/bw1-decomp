@@ -19,7 +19,7 @@
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
 .extern _jmp_addr_0x0071b570
 .extern _jmp_addr_0x007a1400
-.extern _atexit@4
+.extern _atexit
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x00823c90
@@ -608,7 +608,7 @@ _jmp_addr_0x0063ab44:    {disp32} jmp       _jmp_addr_0x0063ab50                
                          nop                                                              // 0x0063ab4e    90
                          nop                                                              // 0x0063ab4f    90
 _jmp_addr_0x0063ab50:    push               0x00407870                                    // 0x0063ab50    6870784000
-                         call               _atexit@4                                     // 0x0063ab55    e837ac1800
+                         call               _atexit                                       // 0x0063ab55    e837ac1800
                          pop                ecx                                           // 0x0063ab5a    59
                          ret                                                              // 0x0063ab5b    c3
                          nop                                                              // 0x0063ab5c    90

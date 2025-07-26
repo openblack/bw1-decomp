@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x004726b0
 .extern _jmp_addr_0x004726d0
 .extern  ___dl__FPv
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
 .extern _operator_new
 
@@ -24,6 +24,7 @@
 .globl _jmp_addr_0x00471a50
 .globl _jmp_addr_0x00471aa0
 .globl _jmp_addr_0x00471b10
+.globl ??GCPUCheck@@UAE@XZ
 
 .globl _globl_ct_0x00471a20
 
@@ -281,7 +282,7 @@ _jmp_addr_0x00471a34:    {disp32} jmp     _jmp_addr_0x00471a40                  
                          nop                                                            // 0x00471a3e    90
                          nop                                                            // 0x00471a3f    90
 _jmp_addr_0x00471a40:    push             0x00407870                                    // 0x00471a40    6870784000
-                         call             _atexit@4                                     // 0x00471a45    e8473d3500
+                         call             _atexit                                       // 0x00471a45    e8473d3500
                          pop              ecx                                           // 0x00471a4a    59
                          ret                                                            // 0x00471a4b    c3
                          nop                                                            // 0x00471a4c    90
@@ -315,6 +316,7 @@ _jmp_addr_0x00471a50:    mov.s            edx, ecx                              
                          nop                                                            // 0x00471a7d    90
                          nop                                                            // 0x00471a7e    90
                          nop                                                            // 0x00471a7f    90
+??GCPUCheck@@UAE@XZ:
                          push             esi                                           // 0x00471a80    56
                          mov.s            esi, ecx                                      // 0x00471a81    8bf1
                          call             _jmp_addr_0x00471aa0                          // 0x00471a83    e818000000

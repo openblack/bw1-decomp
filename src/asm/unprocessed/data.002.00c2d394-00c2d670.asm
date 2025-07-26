@@ -27,7 +27,7 @@ __ldused:
 .long 0x00009873
 
 __FPinit:                                                                                                          // [0x26739c] 0x009c6000 + 0x26739c = 0x00c2d39c
-.long _fltused
+.long __fpmath
 .long _jmp_addr_0x007c561b
 .long _jmp_addr_0x007c561b
 

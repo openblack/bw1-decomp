@@ -1,11 +1,13 @@
 #include "AbodeInfo.h"
 
 void __cdecl dynamic_atexit_destructor_for_AbodeInfos(void) asm("??__FAbodeInfos@@YAXXZ");
-extern void __stdcall atexit(void*);
+extern int __cdecl atexit(void (__cdecl *)(void));
 
 void __cdecl _register_global_dtor_for_AbodeInfos(void)
 {
-    atexit(dynamic_atexit_destructor_for_AbodeInfos);
+    asm("push 0x004012e0");
+    asm("call _atexit");
+    //atexit(dynamic_atexit_destructor_for_AbodeInfos);
     __asm__("pop ecx");                      // 0x004012da    59
     __asm__("ret");                          // 0x004012db    c3
     // SEH?

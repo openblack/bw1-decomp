@@ -160,9 +160,9 @@
 .extern @OpenSegment__6LHFileFPc@12
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
-.extern _atexit@4
+.extern _atexit
 .extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c60f0
 .extern _jmp_addr_0x007c6425
@@ -763,7 +763,7 @@ _jmp_addr_0x0042b2d4:    {disp32} jmp       _jmp_addr_0x0042b2e0                
                          nop                                                                     // 0x0042b2de    90
                          nop                                                                     // 0x0042b2df    90
 _jmp_addr_0x0042b2e0:    push               0x00407870                                           // 0x0042b2e0    6870784000
-                         call               _atexit@4                                            // 0x0042b2e5    e8a7a43900
+                         call               _atexit                                              // 0x0042b2e5    e8a7a43900
                          pop                ecx                                                  // 0x0042b2ea    59
                          ret                                                                     // 0x0042b2eb    c3
                          nop                                                                     // 0x0042b2ec    90
@@ -870,7 +870,7 @@ _jmp_addr_0x0042b350:    xor.s              eax, eax                            
                          nop                                                                     // 0x0042b39e    90
                          nop                                                                     // 0x0042b39f    90
 _jmp_addr_0x0042b3a0:    push               0x0042b3b0                                           // 0x0042b3a0    68b0b34200
-                         call               _atexit@4                                            // 0x0042b3a5    e8e7a33900
+                         call               _atexit                                              // 0x0042b3a5    e8e7a33900
                          pop                ecx                                                  // 0x0042b3aa    59
                          ret                                                                     // 0x0042b3ab    c3
                          nop                                                                     // 0x0042b3ac    90
