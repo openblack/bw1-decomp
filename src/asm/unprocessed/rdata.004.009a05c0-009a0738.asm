@@ -10,9 +10,8 @@
 .globl ??_C@_0CB@OFOA@Bad?5read?5pointer?5?9?5no?5RTTI?5data?$CB@
 .globl ??_C@_0CE@DOMJ@Attempted?5a?5typeid?5of?5NULL?5point@
 
-.long 0x009bb880                                                                                                   // [0xf75c0] 0x008a9000 + 0xf75c0 = 0x009a05c0
-??_7type_info@@6B@:                                                                                                // [0xf75c4] 0x008a9000 + 0xf75c4 = 0x009a05c4
-.long _jmp_addr_0x007c568d
+.globl ??_Etype_info@@UAEPAXI@Z
+.set ??_Etype_info@@UAEPAXI@Z, 0x007c568d
 
 ??_C@_0CB@FCJM@Access?5violation?5?9?5no?5RTTI?5data?$CB@:
 .asciz "Access violation - no RTTI data!"                                                                          // [0xf75c8] 0x008a9000 + 0xf75c8 = 0x009a05c8

@@ -35,7 +35,7 @@
 .extern __ui64toa
 
 .globl _jmp_addr_0x007c5394
-.globl _jmp_addr_0x007c56e0
+.globl ?before@type_info@@QBEHABV1@@Z
 .globl _atexit
 .globl _jmp_addr_0x007c57d2
 .globl ___RTtypeid
@@ -46,83 +46,8 @@
 .globl _jmp_addr_0x007c614c
 .globl __fpmath
 .globl __fpclear
-.globl _jmp_addr_0x007c568d
 .globl ___onexitinit
 .globl __purecall
-
-// typinfo.obj
-_jmp_addr_0x007c5664:    push             esi                                           // 0x007c5664    56
-                         mov.s            esi, ecx                                      // 0x007c5665    8bf1
-                         push             0x1b                                          // 0x007c5667    6a1b
-                         mov              dword ptr [esi], 0x009a05c4                   // 0x007c5669    c706c4059a00
-                         call             __lock                                         // 0x007c566f    e842600000
-                         {disp8} mov      esi, dword ptr [esi + 0x04]                   // 0x007c5674    8b7604
-                         pop              ecx                                           // 0x007c5677    59
-                         test             esi, esi                                      // 0x007c5678    85f6
-                         {disp8} je       _jmp_addr_0x007c5683                          // 0x007c567a    7407
-                         push             esi                                           // 0x007c567c    56
-                         call             _free                                         // 0x007c567d    e804110000
-                         pop              ecx                                           // 0x007c5682    59
-_jmp_addr_0x007c5683:    push             0x1b                                          // 0x007c5683    6a1b
-                         call             __unlock                                      // 0x007c5685    e88d600000
-                         pop              ecx                                           // 0x007c568a    59
-                         pop              esi                                           // 0x007c568b    5e
-                         ret                                                            // 0x007c568c    c3
-_jmp_addr_0x007c568d:    push             esi                                           // 0x007c568d    56
-                         mov.s            esi, ecx                                      // 0x007c568e    8bf1
-                         call             _jmp_addr_0x007c5664                          // 0x007c5690    e8cfffffff
-                         test             byte ptr [esp + 0x08], 0x01                   // 0x007c5695    f644240801
-                         {disp8} je       _jmp_addr_0x007c56a3                          // 0x007c569a    7407
-                         push             esi                                           // 0x007c569c    56
-                         call              ___dl__FPv                                   // 0x007c569d    e8f697feff
-                         pop              ecx                                           // 0x007c56a2    59
-_jmp_addr_0x007c56a3:    mov.s            eax, esi                                      // 0x007c56a3    8bc6
-                         pop              esi                                           // 0x007c56a5    5e
-                         ret              0x0004                                        // 0x007c56a6    c20400
-                         {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007c56a9    8b442404
-                         add              ecx, 0x9                                      // 0x007c56ad    83c109
-                         add              eax, 0x09                                     // 0x007c56b0    83c009
-                         push             ecx                                           // 0x007c56b3    51
-                         push             eax                                           // 0x007c56b4    50
-                         call             _strcmp                                       // 0x007c56b5    e856770000
-                         neg              eax                                           // 0x007c56ba    f7d8
-                         pop              ecx                                           // 0x007c56bc    59
-                         sbb.s            eax, eax                                      // 0x007c56bd    1bc0
-                         pop              ecx                                           // 0x007c56bf    59
-                         inc              eax                                           // 0x007c56c0    40
-                         ret              0x0004                                        // 0x007c56c1    c20400
-                         {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007c56c4    8b442404
-                         add              ecx, 0x9                                      // 0x007c56c8    83c109
-                         add              eax, 0x09                                     // 0x007c56cb    83c009
-                         push             ecx                                           // 0x007c56ce    51
-                         push             eax                                           // 0x007c56cf    50
-                         call             _strcmp                                       // 0x007c56d0    e83b770000
-                         neg              eax                                           // 0x007c56d5    f7d8
-                         pop              ecx                                           // 0x007c56d7    59
-                         sbb.s            eax, eax                                      // 0x007c56d8    1bc0
-                         pop              ecx                                           // 0x007c56da    59
-                         neg              eax                                           // 0x007c56db    f7d8
-                         ret              0x0004                                        // 0x007c56dd    c20400
-_jmp_addr_0x007c56e0:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007c56e0    8b442404
-                         add              ecx, 0x9                                      // 0x007c56e4    83c109
-                         add              eax, 0x09                                     // 0x007c56e7    83c009
-                         push             ecx                                           // 0x007c56ea    51
-                         push             eax                                           // 0x007c56eb    50
-                         call             _strcmp                                       // 0x007c56ec    e81f770000
-                         pop              ecx                                           // 0x007c56f1    59
-                         pop              ecx                                           // 0x007c56f2    59
-                         xor.s            ecx, ecx                                      // 0x007c56f3    33c9
-                         test             eax, eax                                      // 0x007c56f5    85c0
-                         setg             cl                                            // 0x007c56f7    0f9fc1
-                         mov.s            eax, ecx                                      // 0x007c56fa    8bc1
-                         ret              0x0004                                        // 0x007c56fc    c20400
-                         {disp8} lea      eax, dword ptr [ecx + 0x08]                   // 0x007c56ff    8d4108
-                         ret                                                            // 0x007c5702    c3
-                         mov.s            eax, ecx                                      // 0x007c5703    8bc1
-                         mov              dword ptr [eax], 0x009a05c4                   // 0x007c5705    c700c4059a00
-                         ret              0x0004                                        // 0x007c570b    c20400
-                         mov.s            eax, ecx                                      // 0x007c570e    8bc1
-                         ret              0x0004                                        // 0x007c5710    c20400
 
 // atexit.obj
 ___onexit:               push             esi                                           // 0x007c5713    56
