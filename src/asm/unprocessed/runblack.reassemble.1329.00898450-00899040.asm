@@ -4,7 +4,7 @@
 .extern rdata_bytes
 
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -701,7 +701,7 @@ _jmp_addr_0x00898a9a:    {disp8} mov        ecx, dword ptr [eax + 0x34]         
                          push               eax                                           // 0x00898abd    50
                          push               edx                                           // 0x00898abe    52
                          push               ecx                                           // 0x00898abf    51
-                         call               _jmp_addr_0x007c57d2                          // 0x00898ac0    e80dcdf2ff
+                         call               _sprintf                                      // 0x00898ac0    e80dcdf2ff
                          add                esp, 0x28                                     // 0x00898ac5    83c428
                          pop                edi                                           // 0x00898ac8    5f
                          pop                esi                                           // 0x00898ac9    5e
@@ -713,7 +713,7 @@ _jmp_addr_0x00898acb:    cmp                cl, 0x73                            
                          push               edx                                           // 0x00898ad4    52
                          {disp8} mov        edx, dword ptr [esp + 0x18]                   // 0x00898ad5    8b542418
                          push               edx                                           // 0x00898ad9    52
-                         call               _jmp_addr_0x007c57d2                          // 0x00898ada    e8f3ccf2ff
+                         call               _sprintf                                      // 0x00898ada    e8f3ccf2ff
                          add                esp, 0x0c                                     // 0x00898adf    83c40c
                          pop                edi                                           // 0x00898ae2    5f
                          pop                esi                                           // 0x00898ae3    5e

@@ -22,7 +22,7 @@
 .extern  ___dl__FPv
 .extern _Exists__8LHOSFileFPc
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _jmp_addr_0x007c6425
 .extern _wcslen
 .extern _fopen__10LHFilePath
@@ -113,14 +113,14 @@ _jmp_addr_0x005499b5:    {disp8} lea       eax, dword ptr [esp + 0x0c]          
                          {disp32} lea      ecx, dword ptr [esp + 0x00000410]             // 0x005499ba    8d8c2410040000
                          push              0x00bea808                                    // 0x005499c1    6808a8be00
                          push              ecx                                           // 0x005499c6    51
-                         call              _jmp_addr_0x007c57d2                          // 0x005499c7    e806be2700
+                         call              _sprintf                                      // 0x005499c7    e806be2700
                          add               esp, 0x0c                                     // 0x005499cc    83c40c
                          {disp8} lea       edx, dword ptr [esp + 0x0c]                   // 0x005499cf    8d54240c
                          push              edx                                           // 0x005499d3    52
                          {disp32} lea      eax, dword ptr [esp + 0x00000610]             // 0x005499d4    8d842410060000
                          push              0x00bea7f0                                    // 0x005499db    68f0a7be00
                          push              eax                                           // 0x005499e0    50
-                         call              _jmp_addr_0x007c57d2                          // 0x005499e1    e8ecbd2700
+                         call              _sprintf                                      // 0x005499e1    e8ecbd2700
                          {disp32} lea      ecx, dword ptr [esp + 0x00000418]             // 0x005499e6    8d8c2418040000
                          push              ecx                                           // 0x005499ed    51
                          call              _Exists__8LHOSFileFPc                         // 0x005499ee    e8ad2c2700

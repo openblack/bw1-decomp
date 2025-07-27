@@ -176,7 +176,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _operator_new
 .extern _strncpy
@@ -16062,7 +16062,7 @@ _jmp_addr_0x0065ba40:    sub                esp, 0x00000738                     
                          {disp32} lea       ecx, dword ptr [esp + 0x0000064c]              // 0x0065ba54    8d8c244c060000
                          push               0x009cf968                                     // 0x0065ba5b    6868f99c00
                          push               ecx                                            // 0x0065ba60    51
-                         call               _jmp_addr_0x007c57d2                           // 0x0065ba61    e86c9d1600
+                         call               _sprintf                                       // 0x0065ba61    e86c9d1600
                          add                esp, 0x0c                                      // 0x0065ba66    83c40c
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x0065ba69    8d4c2410
                          call               @__ct__8LHOSFileFv@4                           // 0x0065ba6d    e8de0b1600

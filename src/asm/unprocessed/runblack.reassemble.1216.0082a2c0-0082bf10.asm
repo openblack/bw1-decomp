@@ -16,7 +16,7 @@
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
 .extern _jmp_addr_0x007bd030
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _malloc
 .extern _free
 .extern _jmp_addr_0x007dec80
@@ -1325,7 +1325,7 @@ _jmp_addr_0x0082afc5:    {disp8} mov        edx, dword ptr [ebp + 0x3c]         
                          {disp8} lea        edx, dword ptr [esp + 0x38]                   // 0x0082b01f    8d542438
                          push               0x00c386c4                                    // 0x0082b023    68c486c300
                          push               edx                                           // 0x0082b028    52
-                         call               _jmp_addr_0x007c57d2                          // 0x0082b029    e8a4a7f9ff
+                         call               _sprintf                                      // 0x0082b029    e8a4a7f9ff
                          push               0x0                                           // 0x0082b02e    6a00
                          push               0x0                                           // 0x0082b030    6a00
                          push               0x00000100                                    // 0x0082b032    6800010000
@@ -1379,7 +1379,7 @@ _jmp_addr_0x0082b0c6:    {disp32} lea       ecx, dword ptr [esp + 0x00000130]   
                          {disp32} lea       edx, dword ptr [esp + 0x00000134]             // 0x0082b0ce    8d942434010000
                          push               0x00c38474                                    // 0x0082b0d5    687484c300
                          push               edx                                           // 0x0082b0da    52
-                         call               _jmp_addr_0x007c57d2                          // 0x0082b0db    e8f2a6f9ff
+                         call               _sprintf                                      // 0x0082b0db    e8f2a6f9ff
                          add                esp, 0x0c                                     // 0x0082b0e0    83c40c
 _jmp_addr_0x0082b0e3:    pop                edi                                           // 0x0082b0e3    5f
                          pop                esi                                           // 0x0082b0e4    5e

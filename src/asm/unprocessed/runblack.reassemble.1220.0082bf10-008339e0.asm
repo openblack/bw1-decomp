@@ -19,7 +19,7 @@
 .extern @Seek__8LHOSFileFl12LH_SEEK_MODEPUl@20
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _jmp_addr_0x007c60f0
 .extern _wcslen
 .extern _operator_new
@@ -6874,7 +6874,7 @@ _jmp_addr_0x00830f7d:    {disp32} mov       eax, dword ptr [edi * 0x4 + 0x00c38d
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x00830f85    8d4c2414
                          push               0x00c38e08                                     // 0x00830f89    68088ec300
                          push               ecx                                            // 0x00830f8e    51
-                         call               _jmp_addr_0x007c57d2                           // 0x00830f8f    e83e48f9ff
+                         call               _sprintf                                       // 0x00830f8f    e83e48f9ff
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                    // 0x00830f94    8d54241c
                          push               edx                                            // 0x00830f98    52
                          call               _Exists__8LHOSFileFPc                          // 0x00830f99    e802b7f8ff

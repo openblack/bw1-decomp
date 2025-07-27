@@ -110,7 +110,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _operator_new
 .extern ___nw__FUl
@@ -4932,7 +4932,7 @@ _jmp_addr_0x004d3d57:    pop                esi                                 
                          push               eax                                                  // 0x004d3d64    50
                          push               0x009cda78                                           // 0x004d3d65    6878da9c00
                          push               0x00c83170                                           // 0x004d3d6a    687031c800
-                         call               _jmp_addr_0x007c57d2                                 // 0x004d3d6f    e85e1a2f00
+                         call               _sprintf                                             // 0x004d3d6f    e85e1a2f00
                          add                esp, 0x0c                                            // 0x004d3d74    83c40c
                          mov                eax, 0x00c83170                                      // 0x004d3d77    b87031c800
                          ret                0x0004                                               // 0x004d3d7c    c20400
@@ -5282,7 +5282,7 @@ _jmp_addr_0x004d40b8:    pop                edi                                 
                          push               eax                                                  // 0x004d40c4    50
                          push               0x009cda78                                           // 0x004d40c5    6878da9c00
                          push               0x00c83070                                           // 0x004d40ca    687030c800
-                         call               _jmp_addr_0x007c57d2                                 // 0x004d40cf    e8fe162f00
+                         call               _sprintf                                             // 0x004d40cf    e8fe162f00
                          add                esp, 0x0c                                            // 0x004d40d4    83c40c
                          mov                eax, 0x00c83070                                      // 0x004d40d7    b87030c800
                          ret                0x0004                                               // 0x004d40dc    c20400
@@ -5391,7 +5391,7 @@ _jmp_addr_0x004d41c2:    pop                esi                                 
                          push               eax                                                  // 0x004d41d4    50
                          push               0x009cda78                                           // 0x004d41d5    6878da9c00
                          push               0x00c82f70                                           // 0x004d41da    68702fc800
-                         call               _jmp_addr_0x007c57d2                                 // 0x004d41df    e8ee152f00
+                         call               _sprintf                                             // 0x004d41df    e8ee152f00
                          add                esp, 0x0c                                            // 0x004d41e4    83c40c
                          mov                eax, 0x00c82f70                                      // 0x004d41e7    b8702fc800
                          ret                0x0004                                               // 0x004d41ec    c20400

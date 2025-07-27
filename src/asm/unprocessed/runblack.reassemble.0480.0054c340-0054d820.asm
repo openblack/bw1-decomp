@@ -254,7 +254,7 @@
 .extern @__dt__8LHOSFileFv@4
 .extern _Exists__8LHOSFileFPc
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c647f

@@ -127,7 +127,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _wcslen
@@ -8890,7 +8890,7 @@ _jmp_addr_0x00734010:    sub                esp, 0x000000f0                     
                          push               eax                                           // 0x0073403d    50
                          {disp8} lea        ecx, dword ptr [esp + 0x40]                   // 0x0073403e    8d4c2440
                          push               ecx                                           // 0x00734042    51
-                         call               _jmp_addr_0x007c57d2                          // 0x00734043    e88a170900
+                         call               _sprintf                                      // 0x00734043    e88a170900
                          {disp32} mov       ebp, dword ptr [esp + 0x00000110]             // 0x00734048    8bac2410010000
                          or                 ecx, 0xffffffff                               // 0x0073404f    83c9ff
                          xor.s              eax, eax                                      // 0x00734052    33c0
@@ -8940,7 +8940,7 @@ _jmp_addr_0x007340a2:    mov                ecx, dword ptr [eax]                
                          push               eax                                           // 0x007340d9    50
                          {disp8} lea        eax, dword ptr [esp + 0x44]                   // 0x007340da    8d442444
                          push               eax                                           // 0x007340de    50
-                         call               _jmp_addr_0x007c57d2                          // 0x007340df    e8ee160900
+                         call               _sprintf                                      // 0x007340df    e8ee160900
                          or                 ecx, 0xffffffff                               // 0x007340e4    83c9ff
                          xor.s              eax, eax                                      // 0x007340e7    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x48]                   // 0x007340e9    8d7c2448
@@ -9996,7 +9996,7 @@ _jmp_addr_0x00734b44:    mov                ecx, dword ptr [eax]                
                          push               eax                                           // 0x00734b91    50
                          {disp8} lea        eax, dword ptr [esp + 0x2c]                   // 0x00734b92    8d44242c
                          push               eax                                           // 0x00734b96    50
-                         call               _jmp_addr_0x007c57d2                          // 0x00734b97    e8360c0900
+                         call               _sprintf                                      // 0x00734b97    e8360c0900
                          {disp32} mov       edx, dword ptr [esp + 0x00000160]             // 0x00734b9c    8b942460010000
                          or                 ecx, 0xffffffff                               // 0x00734ba3    83c9ff
                          xor.s              eax, eax                                      // 0x00734ba6    33c0
@@ -10354,7 +10354,7 @@ _jmp_addr_0x00734ee7:    mov                ecx, dword ptr [eax]                
                          push               eax                                           // 0x00734f18    50
                          {disp8} lea        edx, dword ptr [esp + 0x2c]                   // 0x00734f19    8d54242c
                          push               edx                                           // 0x00734f1d    52
-                         call               _jmp_addr_0x007c57d2                          // 0x00734f1e    e8af080900
+                         call               _sprintf                                      // 0x00734f1e    e8af080900
                          or                 ecx, 0xffffffff                               // 0x00734f23    83c9ff
                          xor.s              eax, eax                                      // 0x00734f26    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x30]                   // 0x00734f28    8d7c2430

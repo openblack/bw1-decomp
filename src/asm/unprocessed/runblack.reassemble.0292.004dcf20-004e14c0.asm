@@ -66,7 +66,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _operator_new
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -5529,7 +5529,7 @@ _jmp_addr_0x004e0c22:    or                 ecx, 0xffffffff                     
                          {disp32} lea       eax, dword ptr [esp + ecx * 0x1 + 0x00000130]   // 0x004e0c34    8d840c30010000
                          push               0x009cec10                                      // 0x004e0c3b    6810ec9c00
                          push               eax                                             // 0x004e0c40    50
-                         call               _jmp_addr_0x007c57d2                            // 0x004e0c41    e88c4b2e00
+                         call               _sprintf                                        // 0x004e0c41    e88c4b2e00
                          {disp32} mov       eax, dword ptr [esi + 0x00016b00]               // 0x004e0c46    8b86006b0100
                          add                esp, 0x0c                                       // 0x004e0c4c    83c40c
                          inc                ebp                                             // 0x004e0c4f    45

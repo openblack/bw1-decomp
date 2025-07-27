@@ -89,7 +89,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _operator_new
 .extern _jmp_addr_0x007c6587
 .extern ___nw__FUl
@@ -1261,7 +1261,7 @@ _jmp_addr_0x00424c22:    {disp8} fld        dword ptr [esi + 0x30]              
                          push               eax                                           // 0x00424c48    50
                          {disp8} lea        edx, dword ptr [esp + 0x34]                   // 0x00424c49    8d542434
                          push               edx                                           // 0x00424c4d    52
-                         call               _jmp_addr_0x007c57d2                          // 0x00424c4e    e87f0b3a00
+                         call               _sprintf                                      // 0x00424c4e    e87f0b3a00
                          or                 ecx, 0xffffffff                               // 0x00424c53    83c9ff
                          xor.s              eax, eax                                      // 0x00424c56    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x38]                   // 0x00424c58    8d7c2438
@@ -4363,7 +4363,7 @@ _jmp_addr_0x004269ff:    {disp8} mov        ecx, dword ptr [esi + 0x28]         
                          push               eax                                           // 0x00426a31    50
                          {disp8} lea        eax, dword ptr [esp + 0x20]                   // 0x00426a32    8d442420
                          push               eax                                           // 0x00426a36    50
-                         call               _jmp_addr_0x007c57d2                          // 0x00426a37    e896ed3900
+                         call               _sprintf                                      // 0x00426a37    e896ed3900
                          {disp32} mov       edx, dword ptr [esp + 0x000000f0]             // 0x00426a3c    8b9424f0000000
                          or                 ecx, 0xffffffff                               // 0x00426a43    83c9ff
                          xor.s              eax, eax                                      // 0x00426a46    33c0

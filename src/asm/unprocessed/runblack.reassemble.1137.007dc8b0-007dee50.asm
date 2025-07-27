@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x007aeea3
 .extern _jmp_addr_0x007aef3f
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _operator_new
 .extern _fprintf__10LHFilePath
 .extern _jmp_addr_0x007c6eb0
@@ -3053,7 +3053,7 @@ _jmp_addr_0x007de9bc:    push               edi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x007de9bd    8d442410
                          push               0x00c315c8                                    // 0x007de9c1    68c815c300
                          push               eax                                           // 0x007de9c6    50
-                         call               _jmp_addr_0x007c57d2                          // 0x007de9c7    e8066efeff
+                         call               _sprintf                                      // 0x007de9c7    e8066efeff
                          {disp8} mov        ax, word ptr [esi + 0x08]                     // 0x007de9cc    668b4608
                          {disp32} mov       edi, dword ptr [__imp__EnterCriticalSection@4]// 0x007de9d0    8b3d80918a00
                          and                eax, 0x0000ffff                               // 0x007de9d6    25ffff0000

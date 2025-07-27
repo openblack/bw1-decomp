@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 
 .globl _jmp_addr_0x0050e7e0
 
@@ -26,7 +26,7 @@ _jmp_addr_0x0050e7e0:    {disp32} mov     byte ptr [data_bytes + 0x2ffcd4], 0x00
                          fstp             qword ptr [esp]                        // 0x0050e804    dd1c24
                          push             0x009d0604                             // 0x0050e807    6804069d00
                          push             0x00cc5cd4                             // 0x0050e80c    68d45ccc00
-                         call             _jmp_addr_0x007c57d2                   // 0x0050e811    e8bc6f2b00
+                         call             _sprintf                               // 0x0050e811    e8bc6f2b00
                          add              esp, 0x10                              // 0x0050e816    83c410
                          mov              eax, 0x00cc5cd4                        // 0x0050e819    b8d45ccc00
                          ret                                                     // 0x0050e81e    c3
@@ -38,7 +38,7 @@ _jmp_addr_0x0050e7e0:    {disp32} mov     byte ptr [data_bytes + 0x2ffcd4], 0x00
                          fstp             qword ptr [esp]                        // 0x0050e82e    dd1c24
                          push             0x00be83bc                             // 0x0050e831    68bc83be00
                          push             0x00cc5cd4                             // 0x0050e836    68d45ccc00
-                         call             _jmp_addr_0x007c57d2                   // 0x0050e83b    e8926f2b00
+                         call             _sprintf                               // 0x0050e83b    e8926f2b00
                          add              esp, 0x18                              // 0x0050e840    83c418
 _jmp_addr_0x0050e843:    mov              eax, 0x00cc5cd4                        // 0x0050e843    b8d45ccc00
                          ret                                                     // 0x0050e848    c3
