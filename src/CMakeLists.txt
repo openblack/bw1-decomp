@@ -552,6 +552,7 @@ add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\fpinit.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\typinfo.obj" OFF DELETE_SECTIONS ".drectve" ".debug$F") # libcpmt.lib
+add_patched_libcmt_object("build\\intel\\mt_obj\\onexit.obj" OFF)
 set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
