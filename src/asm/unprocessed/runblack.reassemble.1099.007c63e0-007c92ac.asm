@@ -2959,7 +2959,7 @@ _jmp_addr_0x007c8030:    pop                  esi                               
 _jmp_addr_0x007c804a:    mov                  edx, 0x00c2d450                             // 0x007c804a    ba50d4c200
                          {disp32} jmp         _jmp_addr_0x007d2f90                        // 0x007c804f    e93caf0000
                          fxch                 st(1)                                       // 0x007c8054    d9c9
-_jmp_addr_0x007c8056:    cmp                  dword ptr [data_bytes + 0x4be194], 0x01     // 0x007c8056    833d9441e80001
+_jmp_addr_0x007c8056:    cmp                  dword ptr [OFFSET __adjust_fdiv], 0x01      // 0x007c8056    833d9441e80001
                          {disp8} je           _jmp_addr_0x007c8063                        // 0x007c805d    7404
                          fprem                                                            // 0x007c805f    d9f8
                          {disp8} jmp          _jmp_addr_0x007c8068                        // 0x007c8061    eb05
