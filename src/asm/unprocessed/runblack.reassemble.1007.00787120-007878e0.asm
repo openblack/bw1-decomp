@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x0079a5a0
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ?Release@LH3DSmoke@@QAEXXZ
 .extern _jmp_addr_0x007fb5c0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -250,7 +250,7 @@ _jmp_addr_0x00787365:    {disp8} mov        esi, dword ptr [esp + 0x0c]         
                          push               eax                                           // 0x0078738c    50
                          push               0x00c27554                                    // 0x0078738d    685475c200
                          push               0x00de0d48                                    // 0x00787392    68480dde00
-                         call               _jmp_addr_0x007c57d2                          // 0x00787397    e836e40300
+                         call               _sprintf                                      // 0x00787397    e836e40300
                          push               0x1                                           // 0x0078739c    6a01
                          push               0x00de0d48                                    // 0x0078739e    68480dde00
                          call               ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z        // 0x007873a3    e848f40700

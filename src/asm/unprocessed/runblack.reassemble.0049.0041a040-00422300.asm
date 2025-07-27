@@ -104,7 +104,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _operator_new
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -340,7 +340,7 @@ _jmp_addr_0x0041a1bd:    mov                edx, dword ptr [esi]                
                          push               eax                                           // 0x0041a1f0    50
                          {disp8} lea        edx, dword ptr [esp + 0x44]                   // 0x0041a1f1    8d542444
                          push               edx                                           // 0x0041a1f5    52
-                         call               _jmp_addr_0x007c57d2                          // 0x0041a1f6    e8d7b53a00
+                         call               _sprintf                                      // 0x0041a1f6    e8d7b53a00
                          or                 ecx, 0xffffffff                               // 0x0041a1fb    83c9ff
                          xor.s              eax, eax                                      // 0x0041a1fe    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x48]                   // 0x0041a200    8d7c2448

@@ -161,7 +161,7 @@
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c60f0
@@ -463,7 +463,7 @@ _jmp_addr_0x0042af11:    push               0x10                                
                          push               0x009cb5fc                                           // 0x0042af34    68fcb59c00
 _jmp_addr_0x0042af39:    {disp32} lea       ecx, dword ptr [esp + 0x000002e4]                    // 0x0042af39    8d8c24e4020000
                          push               ecx                                                  // 0x0042af40    51
-                         call               _jmp_addr_0x007c57d2                                 // 0x0042af41    e88ca83900
+                         call               _sprintf                                             // 0x0042af41    e88ca83900
                          add                esp, 0x08                                            // 0x0042af46    83c408
                          pop                edi                                                  // 0x0042af49    5f
                          pop                ebp                                                  // 0x0042af4a    5d
@@ -562,7 +562,7 @@ _jmp_addr_0x0042b042:    push               0x10                                
                          {disp32} lea       ecx, dword ptr [esp + 0x000000e4]                    // 0x0042b072    8d8c24e4000000
                          push               0x00c58370                                           // 0x0042b079    687083c500
                          push               ecx                                                  // 0x0042b07e    51
-                         call               _jmp_addr_0x007c57d2                                 // 0x0042b07f    e84ea73900
+                         call               _sprintf                                             // 0x0042b07f    e84ea73900
                          add                esp, 0x08                                            // 0x0042b084    83c408
                          push               0x1                                                  // 0x0042b087    6a01
                          {disp8} lea        edx, dword ptr [esp + 0x17]                          // 0x0042b089    8d542417
@@ -576,7 +576,7 @@ _jmp_addr_0x0042b042:    push               0x10                                
                          {disp32} lea       edx, dword ptr [esp + 0x000000ec]                    // 0x0042b09f    8d9424ec000000
                          push               0x009cb5d4                                           // 0x0042b0a6    68d4b59c00
                          push               edx                                                  // 0x0042b0ab    52
-                         call               _jmp_addr_0x007c57d2                                 // 0x0042b0ac    e821a73900
+                         call               _sprintf                                             // 0x0042b0ac    e821a73900
                          {disp8} mov        al, byte ptr [esp + 0x23]                            // 0x0042b0b1    8a442423
                          add                esp, 0x10                                            // 0x0042b0b5    83c410
                          test               al, al                                               // 0x0042b0b8    84c0
@@ -593,7 +593,7 @@ _jmp_addr_0x0042b0bc:    push               0x1                                 
                          {disp32} lea       eax, dword ptr [esp + 0x000000ec]                    // 0x0042b0d4    8d8424ec000000
                          push               0x009cb5d4                                           // 0x0042b0db    68d4b59c00
                          push               eax                                                  // 0x0042b0e0    50
-                         call               _jmp_addr_0x007c57d2                                 // 0x0042b0e1    e8eca63900
+                         call               _sprintf                                             // 0x0042b0e1    e8eca63900
                          {disp8} mov        al, byte ptr [esp + 0x23]                            // 0x0042b0e6    8a442423
                          add                esp, 0x10                                            // 0x0042b0ea    83c410
                          test               al, al                                               // 0x0042b0ed    84c0

@@ -50,7 +50,7 @@
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _operator_new
 .extern _jmp_addr_0x007c76e0
@@ -13947,7 +13947,7 @@ _jmp_addr_0x00618a16:    {disp8} mov        eax, dword ptr [edx + 0x10]         
                          {disp32} lea       edx, dword ptr [esp + 0x00000098]              // 0x00618a1e    8d942498000000
                          push               0x00bf43a0                                     // 0x00618a25    68a043bf00
                          push               edx                                            // 0x00618a2a    52
-                         call               _jmp_addr_0x007c57d2                           // 0x00618a2b    e8a2cd1a00
+                         call               _sprintf                                       // 0x00618a2b    e8a2cd1a00
                          {disp8} lea        eax, dword ptr [esp + 0x60]                    // 0x00618a30    8d442460
                          push               eax                                            // 0x00618a34    50
                          {disp32} lea       ecx, dword ptr [esp + 0x000000a4]              // 0x00618a35    8d8c24a4000000

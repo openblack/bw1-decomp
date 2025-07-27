@@ -186,7 +186,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c6425
@@ -2763,7 +2763,7 @@ _jmp_addr_0x00648290:    sub                esp, 0x64                           
                          {disp8} lea        eax, dword ptr [esp + 0x10]                    // 0x006482ca    8d442410
                          push               0x009d0604                                     // 0x006482ce    6804069d00
                          push               eax                                            // 0x006482d3    50
-                         call               _jmp_addr_0x007c57d2                           // 0x006482d4    e8f9d41700
+                         call               _sprintf                                       // 0x006482d4    e8f9d41700
                          push               0x0                                            // 0x006482d9    6a00
                          push               0x41200000                                     // 0x006482db    6800002041
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x006482e0    8d4c2420
@@ -4650,7 +4650,7 @@ _jmp_addr_0x00649676:    cmp                dword ptr [esi + 0x000008e0], 0x01  
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                    // 0x00649694    8d4c2424
                          push               0x00bff1c0                                     // 0x00649698    68c0f1bf00
                          push               ecx                                            // 0x0064969d    51
-                         call               _jmp_addr_0x007c57d2                           // 0x0064969e    e82fc11700
+                         call               _sprintf                                       // 0x0064969e    e82fc11700
                          add                esp, 0x14                                      // 0x006496a3    83c414
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x006496a6    8d542418
                          push               edx                                            // 0x006496aa    52

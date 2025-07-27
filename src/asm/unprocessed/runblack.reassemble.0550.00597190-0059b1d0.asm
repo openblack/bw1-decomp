@@ -86,7 +86,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c6425
@@ -4413,7 +4413,7 @@ _jmp_addr_0x00599fdc:    push               0x000002cf                          
                          push               eax                                           // 0x0059a023    50
                          push               0x00beff90                                    // 0x0059a024    6890ffbe00
                          push               ebx                                           // 0x0059a029    53
-                         call               _jmp_addr_0x007c57d2                          // 0x0059a02a    e8a3b72200
+                         call               _sprintf                                      // 0x0059a02a    e8a3b72200
                          add                esp, 0x1c                                     // 0x0059a02f    83c41c
                          push               ebx                                           // 0x0059a032    53
                          call                ___dl__FPv                                   // 0x0059a033    e8604e2100
@@ -4430,7 +4430,7 @@ _jmp_addr_0x0059a042:    movsx              ecx, byte ptr [data_bytes + 0x229f64
                          push               edx                                           // 0x0059a04f    52
                          push               0x00beff88                                    // 0x0059a050    6888ffbe00
                          push               ebx                                           // 0x0059a055    53
-                         call               _jmp_addr_0x007c57d2                          // 0x0059a056    e877b72200
+                         call               _sprintf                                      // 0x0059a056    e877b72200
                          add                esp, 0x14                                     // 0x0059a05b    83c414
                          push               ebx                                           // 0x0059a05e    53
                          call                ___dl__FPv                                   // 0x0059a05f    e8344e2100
@@ -4893,7 +4893,7 @@ _jmp_addr_0x0059a5fb:    cmp                dword ptr [ebp + 0x18], 0x0c        
                          {disp32} lea       eax, dword ptr [esp + 0x000000a0]             // 0x0059a635    8d8424a0000000
                          push               0x00bea808                                    // 0x0059a63c    6808a8be00
                          push               eax                                           // 0x0059a641    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0059a642    e88bb12200
+                         call               _sprintf                                      // 0x0059a642    e88bb12200
                          add                esp, 0x0c                                     // 0x0059a647    83c40c
                          {disp32} lea       ecx, dword ptr [esp + 0x0000009c]             // 0x0059a64a    8d8c249c000000
                          push               ecx                                           // 0x0059a651    51

@@ -46,7 +46,7 @@
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _wcscat
 .extern _wcscpy
 .extern _wcslen
@@ -603,7 +603,7 @@ _jmp_addr_0x0061a01c:    mov               eax, dword ptr [eax + ebx * 0x4]     
                          {disp8} lea       edx, dword ptr [esp + 0x5c]                          // 0x0061a024    8d54245c
                          push              0x00bf4434                                           // 0x0061a028    683444bf00
                          push              edx                                                  // 0x0061a02d    52
-                         call              _jmp_addr_0x007c57d2                                 // 0x0061a02e    e89fb71a00
+                         call              _sprintf                                             // 0x0061a02e    e89fb71a00
                          {disp8} lea       eax, dword ptr [esp + 0x24]                          // 0x0061a033    8d442424
                          push              eax                                                  // 0x0061a037    50
                          {disp8} lea       ecx, dword ptr [esp + 0x68]                          // 0x0061a038    8d4c2468

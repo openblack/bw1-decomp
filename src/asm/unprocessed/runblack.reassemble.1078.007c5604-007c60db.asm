@@ -35,45 +35,10 @@
 .extern __ui64toa
 
 .globl _jmp_addr_0x007c5394
-.globl _jmp_addr_0x007c57d2
 .globl ___RTtypeid
 .globl ___RTDynamicCast
 .globl _jmp_addr_0x007c614c
 .globl __purecall
-
-// vsprintf.obj
-_jmp_addr_0x007c57d2:    push             ebp                                           // 0x007c57d2    55
-                         mov.s            ebp, esp                                      // 0x007c57d3    8bec
-                         sub              esp, 0x20                                     // 0x007c57d5    83ec20
-                         {disp8} mov      eax, dword ptr [ebp + 0x08]                   // 0x007c57d8    8b4508
-                         push             esi                                           // 0x007c57db    56
-                         {disp8} mov      dword ptr [ebp + -0x18], eax                  // 0x007c57dc    8945e8
-                         {disp8} mov      dword ptr [ebp + -0x20], eax                  // 0x007c57df    8945e0
-                         {disp8} lea      eax, dword ptr [ebp + 0x10]                   // 0x007c57e2    8d4510
-                         {disp8} mov      dword ptr [ebp + -0x14], 0x00000042           // 0x007c57e5    c745ec42000000
-                         push             eax                                           // 0x007c57ec    50
-                         {disp8} lea      eax, dword ptr [ebp + -0x20]                  // 0x007c57ed    8d45e0
-                         push             dword ptr [ebp + 0x0c]                        // 0x007c57f0    ff750c
-                         {disp8} mov      dword ptr [ebp + -0x1c], 0x7fffffff           // 0x007c57f3    c745e4ffffff7f
-                         push             eax                                           // 0x007c57fa    50
-                         call             __output                                      // 0x007c57fb    e89a780000
-                         add              esp, 0x0c                                     // 0x007c5800    83c40c
-                         dec              dword ptr [ebp + -0x1c]                       // 0x007c5803    ff4de4
-                         mov.s            esi, eax                                      // 0x007c5806    8bf0
-                         {disp8} js       _jmp_addr_0x007c5812                          // 0x007c5808    7808
-                         {disp8} mov      eax, dword ptr [ebp + -0x20]                  // 0x007c580a    8b45e0
-                         and              byte ptr [eax], 0x00                          // 0x007c580d    802000
-                         {disp8} jmp      _jmp_addr_0x007c581f                          // 0x007c5810    eb0d
-_jmp_addr_0x007c5812:    {disp8} lea      eax, dword ptr [ebp + -0x20]                  // 0x007c5812    8d45e0
-                         push             eax                                           // 0x007c5815    50
-                         push             0x0                                           // 0x007c5816    6a00
-                         call             __flsbuf                                      // 0x007c5818    e865770000
-                         pop              ecx                                           // 0x007c581d    59
-                         pop              ecx                                           // 0x007c581e    59
-_jmp_addr_0x007c581f:    mov.s            eax, esi                                      // 0x007c581f    8bc6
-                         pop              esi                                           // 0x007c5821    5e
-                         leave                                                          // 0x007c5822    c9
-                         ret                                                            // 0x007c5823    c3
 
 // rtti.obj
 ___RTCastToVoid:

@@ -124,7 +124,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _operator_new
 .extern _jmp_addr_0x007c686f
 .extern _jmp_addr_0x007c6ce0
@@ -1660,7 +1660,7 @@ _jmp_addr_0x0072abb7:    mov                ecx, dword ptr [eax]                
                          push               eax                                           // 0x0072abf7    50
                          {disp8} lea        edx, dword ptr [esp + 0x30]                   // 0x0072abf8    8d542430
                          push               edx                                           // 0x0072abfc    52
-                         call               _jmp_addr_0x007c57d2                          // 0x0072abfd    e8d0ab0900
+                         call               _sprintf                                      // 0x0072abfd    e8d0ab0900
                          or                 ecx, 0xffffffff                               // 0x0072ac02    83c9ff
                          xor.s              eax, eax                                      // 0x0072ac05    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x34]                   // 0x0072ac07    8d7c2434

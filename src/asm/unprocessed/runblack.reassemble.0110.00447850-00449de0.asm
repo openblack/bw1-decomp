@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _wcslen
@@ -1717,7 +1717,7 @@ _jmp_addr_0x00448ce7:    {disp8} fld        dword ptr [esi + 0x04]              
                          push               eax                                           // 0x00448d17    50
                          push               0x009cdfd8                                    // 0x00448d18    68d8df9c00
                          push               0x00c5a284                                    // 0x00448d1d    6884a2c500
-                         call               _jmp_addr_0x007c57d2                          // 0x00448d22    e8abca3700
+                         call               _sprintf                                      // 0x00448d22    e8abca3700
                          {disp8} mov        ebp, dword ptr [esp + 0x44]                   // 0x00448d27    8b6c2444
                          add                esp, 0x28                                     // 0x00448d2b    83c428
                          push               0x1                                           // 0x00448d2e    6a01

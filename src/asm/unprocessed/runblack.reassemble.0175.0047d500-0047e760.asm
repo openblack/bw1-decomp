@@ -44,7 +44,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
 .extern _Exists__8LHOSFileFPc
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0083b450
@@ -1054,7 +1054,7 @@ _jmp_addr_0x0047df3c:    pop                edi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                   // 0x0047dfa7    8d44240c
                          push               0x009cf968                                    // 0x0047dfab    6868f99c00
                          push               eax                                           // 0x0047dfb0    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0047dfb1    e81c783400
+                         call               _sprintf                                      // 0x0047dfb1    e81c783400
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x0047dfb6    8d4c2414
                          push               ecx                                           // 0x0047dfba    51
                          call               _Exists__8LHOSFileFPc                         // 0x0047dfbb    e8e0e63300
@@ -1065,7 +1065,7 @@ _jmp_addr_0x0047df3c:    pop                edi                                 
                          {disp8} lea        edx, dword ptr [esp + 0x0c]                   // 0x0047dfc8    8d54240c
                          push               0x009cf944                                    // 0x0047dfcc    6844f99c00
                          push               edx                                           // 0x0047dfd1    52
-                         call               _jmp_addr_0x007c57d2                          // 0x0047dfd2    e8fb773400
+                         call               _sprintf                                      // 0x0047dfd2    e8fb773400
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x0047dfd7    8d442414
                          push               eax                                           // 0x0047dfdb    50
                          call               _Exists__8LHOSFileFPc                         // 0x0047dfdc    e8bfe63300
@@ -1094,7 +1094,7 @@ _jmp_addr_0x0047e000:    {disp32} mov       ecx, dword ptr [_game]              
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                   // 0x0047e01b    8d44240c
                          push               0x009cf968                                    // 0x0047e01f    6868f99c00
                          push               eax                                           // 0x0047e024    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0047e025    e8a8773400
+                         call               _sprintf                                      // 0x0047e025    e8a8773400
                          {disp32} mov       edi, dword ptr [__imp__DeleteFileA@4]         // 0x0047e02a    8b3d28928a00
                          add                esp, 0x0c                                     // 0x0047e030    83c40c
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                   // 0x0047e033    8d4c2408
@@ -1104,7 +1104,7 @@ _jmp_addr_0x0047e000:    {disp32} mov       ecx, dword ptr [_game]              
                          {disp8} lea        edx, dword ptr [esp + 0x0c]                   // 0x0047e03b    8d54240c
                          push               0x009cf944                                    // 0x0047e03f    6844f99c00
                          push               edx                                           // 0x0047e044    52
-                         call               _jmp_addr_0x007c57d2                          // 0x0047e045    e888773400
+                         call               _sprintf                                      // 0x0047e045    e888773400
                          add                esp, 0x0c                                     // 0x0047e04a    83c40c
                          {disp8} lea        eax, dword ptr [esp + 0x08]                   // 0x0047e04d    8d442408
                          push               eax                                           // 0x0047e051    50
