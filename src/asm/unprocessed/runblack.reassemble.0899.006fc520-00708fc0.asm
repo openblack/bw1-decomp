@@ -89,7 +89,7 @@
 .extern _jmp_addr_0x00792fb0
 .extern _jmp_addr_0x007a1400
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -2079,7 +2079,7 @@ _jmp_addr_0x006fdab3:    {disp8} mov        dword ptr [esp + 0x04], 0x3f800000  
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x006fdb18    8d4c2414
                          push               0x00c0da18                                    // 0x006fdb1c    6818dac000
                          push               ecx                                           // 0x006fdb21    51
-                         call               _jmp_addr_0x007c57d2                          // 0x006fdb22    e8ab7c0c00
+                         call               _sprintf                                      // 0x006fdb22    e8ab7c0c00
                          {disp32} mov       ecx, dword ptr [_script_dll]                  // 0x006fdb27    8b0d105cd900
                          add                esp, 0x0c                                     // 0x006fdb2d    83c40c
                          push               edi                                           // 0x006fdb30    57

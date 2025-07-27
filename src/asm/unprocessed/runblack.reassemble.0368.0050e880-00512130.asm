@@ -73,7 +73,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _LHLoadData__FPcPvUlPUl
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _operator_new
 .extern _malloc
@@ -1699,7 +1699,7 @@ _jmp_addr_0x0050f7c2:    push               0x6c                                
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                   // 0x0050f7cf    8d44240c
                          push               0x00be893c                                    // 0x0050f7d3    683c89be00
                          push               eax                                           // 0x0050f7d8    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0050f7d9    e8f45f2b00
+                         call               _sprintf                                      // 0x0050f7d9    e8f45f2b00
                          mov                ecx, dword ptr [edi]                          // 0x0050f7de    8b0f
                          push               0x0                                           // 0x0050f7e0    6a00
                          push               0x6c                                          // 0x0050f7e2    6a6c
@@ -2710,7 +2710,7 @@ _jmp_addr_0x00510340:    sub                esp, 0x00000210                     
                          {disp32} lea       ecx, dword ptr [esp + 0x00000118]             // 0x0051034f    8d8c2418010000
                          push               0x00be8974                                    // 0x00510356    687489be00
                          push               ecx                                           // 0x0051035b    51
-                         call               _jmp_addr_0x007c57d2                          // 0x0051035c    e871542b00
+                         call               _sprintf                                      // 0x0051035c    e871542b00
                          add                esp, 0x0c                                     // 0x00510361    83c40c
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                   // 0x00510364    8d4c2408
                          call               @__ct__8LHOSFileFv@4                          // 0x00510368    e8e3c22a00
@@ -4512,7 +4512,7 @@ _jmp_addr_0x005114aa:    push               ebx                                 
                          push               eax                                           // 0x00511535    50
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x00511536    8d442454
                          push               eax                                           // 0x0051153a    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0051153b    e892422b00
+                         call               _sprintf                                      // 0x0051153b    e892422b00
                          {disp32} mov       edx, dword ptr [esp + 0x00000188]             // 0x00511540    8b942488010000
                          or                 ecx, 0xffffffff                               // 0x00511547    83c9ff
                          xor.s              eax, eax                                      // 0x0051154a    33c0

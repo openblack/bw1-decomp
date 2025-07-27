@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x007aeea3
 .extern _jmp_addr_0x007aef3f
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _operator_new
 .extern _fprintf__10LHFilePath
 .extern _jmp_addr_0x007c6eb0
@@ -3891,7 +3891,7 @@ _jmp_addr_0x007e14b0:    push               ebx                                 
                          push               ecx                                           // 0x007e14e3    51
                          push               0x00c340cc                                    // 0x007e14e4    68cc40c300
                          push               esi                                           // 0x007e14e9    56
-                         call               _jmp_addr_0x007c57d2                          // 0x007e14ea    e8e342feff
+                         call               _sprintf                                      // 0x007e14ea    e8e342feff
                          add                esp, 0x28                                     // 0x007e14ef    83c428
                          mov.s              eax, esi                                      // 0x007e14f2    8bc6
                          pop                edi                                           // 0x007e14f4    5f
@@ -4368,7 +4368,7 @@ _jmp_addr_0x007e1900:    {disp32} mov       eax, dword ptr [ecx + 0x000000bc]   
                          dec                ecx                                           // 0x007e1945    49
                          add.s              ecx, esi                                      // 0x007e1946    03ce
                          push               ecx                                           // 0x007e1948    51
-                         call               _jmp_addr_0x007c57d2                          // 0x007e1949    e8843efeff
+                         call               _sprintf                                      // 0x007e1949    e8843efeff
                          add                esp, 0x0c                                     // 0x007e194e    83c40c
                          mov.s              eax, esi                                      // 0x007e1951    8bc6
                          pop                edi                                           // 0x007e1953    5f
@@ -4497,7 +4497,7 @@ _jmp_addr_0x007e19f0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               edi                                           // 0x007e1a38    57
                          push               0x00c34150                                    // 0x007e1a39    685041c300
                          push               esi                                           // 0x007e1a3e    56
-                         call               _jmp_addr_0x007c57d2                          // 0x007e1a3f    e88e3dfeff
+                         call               _sprintf                                      // 0x007e1a3f    e88e3dfeff
                          add                esp, 0x18                                     // 0x007e1a44    83c418
                          mov.s              eax, esi                                      // 0x007e1a47    8bc6
                          pop                edi                                           // 0x007e1a49    5f

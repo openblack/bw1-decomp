@@ -26,7 +26,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _jmp_addr_0x007bd030
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _jmp_addr_0x007c6c29
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -1269,7 +1269,7 @@ _jmp_addr_0x005de600:    {disp32} mov       ecx, dword ptr [_game]              
                          push               0x00bf3238                                    // 0x005de621    683832bf00
                          push               edx                                           // 0x005de626    52
                          {disp8} mov        dword ptr [esp + 0x30], eax                   // 0x005de627    89442430
-                         call               _jmp_addr_0x007c57d2                          // 0x005de62b    e8a2711e00
+                         call               _sprintf                                      // 0x005de62b    e8a2711e00
                          or                 ecx, 0xffffffff                               // 0x005de630    83c9ff
                          xor.s              eax, eax                                      // 0x005de633    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x34]                   // 0x005de635    8d7c2434

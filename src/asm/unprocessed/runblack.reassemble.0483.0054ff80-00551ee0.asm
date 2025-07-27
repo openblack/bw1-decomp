@@ -43,7 +43,7 @@
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007aeea3
 .extern _jmp_addr_0x007aef3f
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _fscanf_10LHFilePath
@@ -647,7 +647,7 @@ _jmp_addr_0x0055066a:    {disp8} lea        ebp, dword ptr [edi + 0x01]         
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                    // 0x0055066e    8d4c243c
                          push               0x00bec8dc                                     // 0x00550672    68dcc8be00
                          push               ecx                                            // 0x00550677    51
-                         call               _jmp_addr_0x007c57d2                           // 0x00550678    e855512700
+                         call               _sprintf                                       // 0x00550678    e855512700
                          add                esp, 0x0c                                      // 0x0055067d    83c40c
                          push               ebx                                            // 0x00550680    53
                          mov.s              ecx, esi                                       // 0x00550681    8bce

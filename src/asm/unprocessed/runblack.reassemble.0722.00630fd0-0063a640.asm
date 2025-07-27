@@ -195,7 +195,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscat
 .extern _wcscpy
@@ -4342,7 +4342,7 @@ _jmp_addr_0x0063369f:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp8} mov        eax, dword ptr [ebx + 0x0c]                    // 0x00633835    8b430c
                          push               0x00bfddb8                                     // 0x00633838    68b8ddbf00
                          push               eax                                            // 0x0063383d    50
-                         call               _jmp_addr_0x007c57d2                           // 0x0063383e    e88f1f1900
+                         call               _sprintf                                       // 0x0063383e    e88f1f1900
                          {disp8} mov        edx, dword ptr [ebx + 0x0c]                    // 0x00633843    8b530c
                          {disp8} mov        esi, dword ptr [esp + 0x20]                    // 0x00633846    8b742420
                          or                 ecx, 0xffffffff                                // 0x0063384a    83c9ff
@@ -7806,7 +7806,7 @@ _jmp_addr_0x006360b0:    {disp8} mov        al, byte ptr [ecx + 0x20]           
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x006360f1    8d542410
                          push               0x00bfdedc                                     // 0x006360f5    68dcdebf00
                          push               edx                                            // 0x006360fa    52
-                         call               _jmp_addr_0x007c57d2                           // 0x006360fb    e8d2f61800
+                         call               _sprintf                                       // 0x006360fb    e8d2f61800
                          {disp8} lea        eax, dword ptr [esp + 0x18]                    // 0x00636100    8d442418
                          push               eax                                            // 0x00636104    50
                          call               _jmp_addr_0x00558160                           // 0x00636105    e85620f2ff
@@ -7846,7 +7846,7 @@ _jmp_addr_0x0063613b:    {disp32} mov       ecx, dword ptr [_game]              
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x0063615d    8d442414
                          push               0x00bfdedc                                     // 0x00636161    68dcdebf00
                          push               eax                                            // 0x00636166    50
-                         call               _jmp_addr_0x007c57d2                           // 0x00636167    e866f61800
+                         call               _sprintf                                       // 0x00636167    e866f61800
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                    // 0x0063616c    8d4c241c
                          push               ecx                                            // 0x00636170    51
                          call               _Exists__8LHOSFileFPc                          // 0x00636171    e82a651800
@@ -7867,7 +7867,7 @@ _jmp_addr_0x0063618c:    push               esi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x00636195    8d442414
                          push               0x00bfdedc                                     // 0x00636199    68dcdebf00
                          push               eax                                            // 0x0063619e    50
-                         call               _jmp_addr_0x007c57d2                           // 0x0063619f    e82ef61800
+                         call               _sprintf                                       // 0x0063619f    e82ef61800
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                    // 0x006361a4    8d4c241c
                          push               ecx                                            // 0x006361a8    51
                          call               _Exists__8LHOSFileFPc                          // 0x006361a9    e8f2641800
@@ -8544,7 +8544,7 @@ _InsertMapObject__6ObjectFv:
                          push               eax                                            // 0x00636772    50
                          push               0x00bfdef0                                     // 0x00636773    68f0debf00
                          push               0x00d414d8  /* _CHAR_ARRAY_00d414d8 */         // 0x00636778    68d814d400
-                         call               _jmp_addr_0x007c57d2                           // 0x0063677d    e850f01800
+                         call               _sprintf                                       // 0x0063677d    e850f01800
                          add                esp, 0x0c                                      // 0x00636782    83c40c
 _jmp_addr_0x00636785:    push               ebx                                            // 0x00636785    53
                          mov                ebx, dword ptr [esi]                           // 0x00636786    8b1e

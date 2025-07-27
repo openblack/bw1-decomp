@@ -73,7 +73,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _wcscpy
 .extern _jmp_addr_0x007c6ce0
 .extern ___nw__FUl
@@ -1882,7 +1882,7 @@ _jmp_addr_0x0078929f:    push               ecx                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x40]                   // 0x007892a0    8d4c2440
                          push               0x00c27734                                    // 0x007892a4    683477c200
                          push               ecx                                           // 0x007892a9    51
-                         call               _jmp_addr_0x007c57d2                          // 0x007892aa    e823c50300
+                         call               _sprintf                                      // 0x007892aa    e823c50300
                          add                esp, 0x0c                                     // 0x007892af    83c40c
                          {disp8} lea        edx, dword ptr [esp + 0x3c]                   // 0x007892b2    8d54243c
                          push               edx                                           // 0x007892b6    52
@@ -2548,7 +2548,7 @@ _jmp_addr_0x00789a70:    sub                esp, 0x0000020c                     
                          push               0x00dd0c10                                    // 0x00789ad9    68100cdd00
                          push               0x00c277d8                                    // 0x00789ade    68d877c200
                          push               0x00dd0c10                                    // 0x00789ae3    68100cdd00
-                         call               _jmp_addr_0x007c57d2                          // 0x00789ae8    e8e5bc0300
+                         call               _sprintf                                      // 0x00789ae8    e8e5bc0300
                          push               ebx                                           // 0x00789aed    53
                          push               ebx                                           // 0x00789aee    53
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00789aef    8d4c2420

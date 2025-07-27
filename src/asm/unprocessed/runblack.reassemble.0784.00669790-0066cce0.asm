@@ -88,7 +88,7 @@
 .extern _jmp_addr_0x007ae2c0
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _wcslen
@@ -3759,7 +3759,7 @@ _jmp_addr_0x0066bf20:    sub                esp, 0x0000020c                     
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x0066bf6c    8d442414
                          push               0x009cf968                                    // 0x0066bf70    6868f99c00
                          push               eax                                           // 0x0066bf75    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0066bf76    e857981500
+                         call               _sprintf                                      // 0x0066bf76    e857981500
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x0066bf7b    8d4c241c
                          push               0x00000180                                    // 0x0066bf7f    6880010000
                          push               ecx                                           // 0x0066bf84    51

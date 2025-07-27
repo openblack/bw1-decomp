@@ -119,7 +119,7 @@
 .extern @CloseSegment__6LHFileFv@4
 .extern _jmp_addr_0x007bdfc0
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _operator_new
 .extern _fprintf__10LHFilePath
@@ -2727,7 +2727,7 @@ _jmp_addr_0x004ef174:    mov                edx, dword ptr [esi]                
                          push               eax                                                  // 0x004ef1eb    50
                          {disp8} lea        edx, dword ptr [esp + 0x48]                          // 0x004ef1ec    8d542448
                          push               edx                                                  // 0x004ef1f0    52
-                         call               _jmp_addr_0x007c57d2                                 // 0x004ef1f1    e8dc652d00
+                         call               _sprintf                                             // 0x004ef1f1    e8dc652d00
                          or                 ecx, 0xffffffff                                      // 0x004ef1f6    83c9ff
                          xor.s              eax, eax                                             // 0x004ef1f9    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x4c]                          // 0x004ef1fb    8d7c244c
@@ -2883,7 +2883,7 @@ _jmp_addr_0x004ef35c:    {disp32} mov       edi, dword ptr [esp + 0x00000128]   
                          {disp8} lea        edx, dword ptr [esp + 0x20]                          // 0x004ef374    8d542420
                          push               0x009c8c40                                           // 0x004ef378    68408c9c00
                          push               edx                                                  // 0x004ef37d    52
-                         call               _jmp_addr_0x007c57d2                                 // 0x004ef37e    e84f642d00
+                         call               _sprintf                                             // 0x004ef37e    e84f642d00
                          {disp8} mov        ecx, dword ptr [esi + 0x58]                          // 0x004ef383    8b4e58
                          mov                eax, dword ptr [ecx]                                 // 0x004ef386    8b01
                          add                esp, 0x0c                                            // 0x004ef388    83c40c

@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x007acd00
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007bd030
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _operator_new
 .extern _free
 .extern _jmp_addr_0x008002c0
@@ -1995,7 +1995,7 @@ _jmp_addr_0x0087110d:    cmp                  ebx, 0x09                         
 _jmp_addr_0x0087111f:    push                 0x00c397c4                                     // 0x0087111f    68c497c300
                          {disp8} lea          eax, dword ptr [esp + 0x14]                    // 0x00871124    8d442414
                          push                 eax                                            // 0x00871128    50
-_jmp_addr_0x00871129:    call                 _jmp_addr_0x007c57d2                           // 0x00871129    e8a446f5ff
+_jmp_addr_0x00871129:    call                 _sprintf                                       // 0x00871129    e8a446f5ff
                          movsx                ecx, word ptr [edi + 0x0e]                     // 0x0087112e    0fbf4f0e
                          movsx                edx, word ptr [edi + 0x0c]                     // 0x00871132    0fbf570c
                          imul                 ecx, edx                                       // 0x00871136    0fafca

@@ -70,7 +70,7 @@
 .extern _jmp_addr_0x0076a8d0
 .extern @SetupPauseForASecond__8VillagerF15VILLAGER_STATES@12
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _jmp_addr_0x007c6ce0
 .extern _fprintf__10LHFilePath
@@ -268,7 +268,7 @@ _jmp_addr_0x00751ab0:    push               esi                                 
                          push               edi                                           // 0x00751ad0    57
                          push               0x009c8054                                    // 0x00751ad1    6854809c00
                          push               esi                                           // 0x00751ad6    56
-                         call               _jmp_addr_0x007c57d2                          // 0x00751ad7    e8f63c0700
+                         call               _sprintf                                      // 0x00751ad7    e8f63c0700
                          add                esp, 0x10                                     // 0x00751adc    83c410
                          pop                edi                                           // 0x00751adf    5f
                          mov.s              eax, esi                                      // 0x00751ae0    8bc6
@@ -391,7 +391,7 @@ _jmp_addr_0x00751ba9:    mov.s              ecx, esi                            
                          push               eax                                           // 0x00751c31    50
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x00751c32    8d4c243c
                          push               ecx                                           // 0x00751c36    51
-                         call               _jmp_addr_0x007c57d2                          // 0x00751c37    e8963b0700
+                         call               _sprintf                                      // 0x00751c37    e8963b0700
                          or                 ecx, 0xffffffff                               // 0x00751c3c    83c9ff
                          xor.s              eax, eax                                      // 0x00751c3f    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x40]                   // 0x00751c41    8d7c2440
@@ -436,7 +436,7 @@ _jmp_addr_0x00751ca7:    call               _jmp_addr_0x00715130                
                          push               eax                                           // 0x00751caf    50
                          {disp8} lea        edx, dword ptr [esp + 0x3c]                   // 0x00751cb0    8d54243c
                          push               edx                                           // 0x00751cb4    52
-                         call               _jmp_addr_0x007c57d2                          // 0x00751cb5    e8183b0700
+                         call               _sprintf                                      // 0x00751cb5    e8183b0700
                          or                 ecx, 0xffffffff                               // 0x00751cba    83c9ff
                          xor.s              eax, eax                                      // 0x00751cbd    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x40]                   // 0x00751cbf    8d7c2440
@@ -2288,7 +2288,7 @@ _jmp_addr_0x00752f01:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} lea        edx, dword ptr [esp + 0x38]                   // 0x00752f0b    8d542438
                          push               0x00bf3aa4                                    // 0x00752f0f    68a43abf00
                          push               edx                                           // 0x00752f14    52
-                         call               _jmp_addr_0x007c57d2                          // 0x00752f15    e8b8280700
+                         call               _sprintf                                      // 0x00752f15    e8b8280700
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00752f1a    8b0d5c19d000
                          add                esp, 0x10                                     // 0x00752f20    83c410
                          call               @MyInterface__5GGameFv@4                      // 0x00752f23    e82829e0ff

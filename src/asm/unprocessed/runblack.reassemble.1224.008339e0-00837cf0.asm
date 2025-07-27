@@ -17,7 +17,7 @@
 .extern @SetName__6LHFileFPCc@12
 .extern @GetSegment__6LHFileFPcP9LHSegmenti@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _wcscpy
 .extern __itow
 .extern _wcslen
@@ -2888,7 +2888,7 @@ _jmp_addr_0x00835b64:    {disp32} mov       ecx, dword ptr [esi + 0x00edc334]   
                          {disp8} lea        eax, dword ptr [esp + 0x2c]                    // 0x00835cd8    8d44242c
                          push               0x00c38e34                                     // 0x00835cdc    68348ec300
                          push               eax                                            // 0x00835ce1    50
-                         call               _jmp_addr_0x007c57d2                           // 0x00835ce2    e8ebfaf8ff
+                         call               _sprintf                                       // 0x00835ce2    e8ebfaf8ff
                          add                esp, 0x0c                                      // 0x00835ce7    83c40c
 _jmp_addr_0x00835cea:    xor.s              ecx, ecx                                       // 0x00835cea    33c9
 _jmp_addr_0x00835cec:    {disp32} mov       esi, dword ptr [data_bytes + 0x51635c]         // 0x00835cec    8b355cc3ed00
@@ -4729,7 +4729,7 @@ _jmp_addr_0x00837466:    {disp32} mov       ecx, dword ptr [data_bytes + 0x5173d
                          {disp8} lea        edx, dword ptr [esp + 0x28]                    // 0x00837485    8d542428
                          push               0x00c38e34                                     // 0x00837489    68348ec300
                          push               edx                                            // 0x0083748e    52
-                         call               _jmp_addr_0x007c57d2                           // 0x0083748f    e83ee3f8ff
+                         call               _sprintf                                       // 0x0083748f    e83ee3f8ff
                          add                esp, 0x0c                                      // 0x00837494    83c40c
 _jmp_addr_0x00837497:    {disp32} mov       edx, dword ptr [data_bytes + 0x517470]         // 0x00837497    8b1570d4ed00
                          mov                ebp, dword ptr [ebx]                           // 0x0083749d    8b2b

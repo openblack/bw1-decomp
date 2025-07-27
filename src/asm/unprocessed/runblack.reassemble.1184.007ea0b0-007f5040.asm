@@ -19,7 +19,7 @@
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007af180
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _wcslen
 .extern _operator_new
 .extern _malloc
@@ -7918,7 +7918,7 @@ _jmp_addr_0x007ef8d7:    ret              0x0004                                
                          {disp8} lea      eax, dword ptr [esp + 0x4c]              // 0x007ef95d    8d44244c
                          push             0x009caf38                               // 0x007ef961    6838af9c00
                          push             eax                                      // 0x007ef966    50
-                         call             _jmp_addr_0x007c57d2                     // 0x007ef967    e8665efdff
+                         call             _sprintf                                 // 0x007ef967    e8665efdff
                          add              esp, 0x10                                // 0x007ef96c    83c410
                          {disp8} lea      ecx, dword ptr [esp + 0x44]              // 0x007ef96f    8d4c2444
                          push             0x00002010                               // 0x007ef973    6810200000
@@ -8132,7 +8132,7 @@ _jmp_addr_0x007efb60:    sub              esp, 0x00000124                       
                          {disp8} lea      eax, dword ptr [esp + 0x3c]              // 0x007efbc5    8d44243c
                          push             0x009caf38                               // 0x007efbc9    6838af9c00
                          push             eax                                      // 0x007efbce    50
-                         call             _jmp_addr_0x007c57d2                     // 0x007efbcf    e8fe5bfdff
+                         call             _sprintf                                 // 0x007efbcf    e8fe5bfdff
                          add              esp, 0x10                                // 0x007efbd4    83c410
                          {disp8} lea      ecx, dword ptr [esp + 0x34]              // 0x007efbd7    8d4c2434
                          push             0x00002010                               // 0x007efbdb    6810200000

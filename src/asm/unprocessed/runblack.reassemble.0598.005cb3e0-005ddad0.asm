@@ -264,7 +264,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _jmp_addr_0x007c6425
@@ -3856,7 +3856,7 @@ _jmp_addr_0x005cdaaf:    {disp8} mov        edx, dword ptr [esi + 0x28]         
                          push               eax                                            // 0x005cdaef    50
                          {disp8} lea        edx, dword ptr [esp + 0x28]                    // 0x005cdaf0    8d542428
                          push               edx                                            // 0x005cdaf4    52
-                         call               _jmp_addr_0x007c57d2                           // 0x005cdaf5    e8d87c1f00
+                         call               _sprintf                                       // 0x005cdaf5    e8d87c1f00
                          or                 ecx, 0xffffffff                                // 0x005cdafa    83c9ff
                          xor.s              eax, eax                                       // 0x005cdafd    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x2c]                    // 0x005cdaff    8d7c242c
@@ -18300,7 +18300,7 @@ _jmp_addr_0x005d8753:    xor.s              ecx, ecx                            
 _jmp_addr_0x005d8760:    push               0x00bf2978                                     // 0x005d8760    687829bf00
                          {disp8} lea        ecx, dword ptr [esp + 0x64]                    // 0x005d8765    8d4c2464
                          push               ecx                                            // 0x005d8769    51
-_jmp_addr_0x005d876a:    call               _jmp_addr_0x007c57d2                           // 0x005d876a    e863d01e00
+_jmp_addr_0x005d876a:    call               _sprintf                                       // 0x005d876a    e863d01e00
                          add                esp, 0x08                                      // 0x005d876f    83c408
 _jmp_addr_0x005d8772:    push               0x00000163                                     // 0x005d8772    6863010000
                          push               0x00bf29bc                                     // 0x005d8777    68bc29bf00

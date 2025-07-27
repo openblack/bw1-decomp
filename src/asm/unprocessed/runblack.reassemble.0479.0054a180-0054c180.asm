@@ -350,7 +350,7 @@
 .extern _jmp_addr_0x007bc680
 .extern _jmp_addr_0x007bc6a0
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _jmp_addr_0x007c647f
 .extern _jmp_addr_0x007c6bff
@@ -1508,7 +1508,7 @@ _jmp_addr_0x0054ab20:    {disp32} mov       al, byte ptr [data_bytes + 0x380ab8]
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x0054ab76    8d44241c
                          push               0x00bec348                                    // 0x0054ab7a    6848c3be00
                          push               eax                                           // 0x0054ab7f    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0054ab80    e84dac2700
+                         call               _sprintf                                      // 0x0054ab80    e84dac2700
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x0054ab85    8d4c2424
                          push               ecx                                           // 0x0054ab89    51
                          call               _Exists__8LHOSFileFPc                         // 0x0054ab8a    e8111b2700

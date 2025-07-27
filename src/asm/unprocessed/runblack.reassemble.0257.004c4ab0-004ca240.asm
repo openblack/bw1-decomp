@@ -81,7 +81,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern _operator_new
 .extern _fprintf__10LHFilePath
@@ -186,7 +186,7 @@ start_0x004c4ab0_0x004ca240:
                          {disp8} lea        eax, dword ptr [esp + 0x18]                          // 0x004c4b0e    8d442418
                          push               0x009caf38                                           // 0x004c4b12    6838af9c00
                          push               eax                                                  // 0x004c4b17    50
-                         call               _jmp_addr_0x007c57d2                                 // 0x004c4b18    e8b50c3000
+                         call               _sprintf                                             // 0x004c4b18    e8b50c3000
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x004c4b1d    8d4c2420
                          push               0x009d976c                                           // 0x004c4b21    686c979d00
                          push               ecx                                                  // 0x004c4b26    51

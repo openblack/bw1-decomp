@@ -39,7 +39,7 @@
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
 .extern _atexit
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
@@ -1826,7 +1826,7 @@ _jmp_addr_0x005e1479:    mov.s              ebx, eax                            
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                    // 0x005e148e    8d4c241c
                          push               0x00bf3314                                     // 0x005e1492    681433bf00
                          push               ecx                                            // 0x005e1497    51
-                         call               _jmp_addr_0x007c57d2                           // 0x005e1498    e835431e00
+                         call               _sprintf                                       // 0x005e1498    e835431e00
                          add                esp, 0x0c                                      // 0x005e149d    83c40c
                          pop                ebx                                            // 0x005e14a0    5b
                          add                esp, 0x00000414                                // 0x005e14a1    81c414040000
@@ -3773,7 +3773,7 @@ _jmp_addr_0x005e2918:    fld                dword ptr [esi]                     
                          push               eax                                            // 0x005e293a    50
                          {disp8} lea        eax, dword ptr [esp + 0x20]                    // 0x005e293b    8d442420
                          push               eax                                            // 0x005e293f    50
-                         call               _jmp_addr_0x007c57d2                           // 0x005e2940    e88d2e1e00
+                         call               _sprintf                                       // 0x005e2940    e88d2e1e00
                          {disp8} mov        edx, dword ptr [ebp + 0x08]                    // 0x005e2945    8b5508
                          or                 ecx, 0xffffffff                                // 0x005e2948    83c9ff
                          xor.s              eax, eax                                       // 0x005e294b    33c0

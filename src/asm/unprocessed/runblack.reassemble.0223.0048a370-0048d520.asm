@@ -61,7 +61,7 @@
 .extern _jmp_addr_0x0071ed40
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern _jmp_addr_0x007f6f00
@@ -134,7 +134,7 @@ _jmp_addr_0x0048a394:    push               eax                                 
                          {disp8} lea        eax, dword ptr [esp + 0x04]                          // 0x0048a39b    8d442404
                          push               0x009d112c                                           // 0x0048a39f    682c119d00
                          push               eax                                                  // 0x0048a3a4    50
-                         call               _jmp_addr_0x007c57d2                                 // 0x0048a3a5    e828b43300
+                         call               _sprintf                                             // 0x0048a3a5    e828b43300
                          add                esp, 0x0c                                            // 0x0048a3aa    83c40c
                          {disp8} lea        ecx, dword ptr [esp + 0x00]                          // 0x0048a3ad    8d4c2400
                          push               ecx                                                  // 0x0048a3b1    51
@@ -168,7 +168,7 @@ _jmp_addr_0x0048a3e4:    push               eax                                 
                          {disp8} lea        eax, dword ptr [esp + 0x04]                          // 0x0048a3eb    8d442404
                          push               0x009d112c                                           // 0x0048a3ef    682c119d00
                          push               eax                                                  // 0x0048a3f4    50
-                         call               _jmp_addr_0x007c57d2                                 // 0x0048a3f5    e8d8b33300
+                         call               _sprintf                                             // 0x0048a3f5    e8d8b33300
                          add                esp, 0x0c                                            // 0x0048a3fa    83c40c
                          {disp8} lea        ecx, dword ptr [esp + 0x00]                          // 0x0048a3fd    8d4c2400
                          push               ecx                                                  // 0x0048a401    51
