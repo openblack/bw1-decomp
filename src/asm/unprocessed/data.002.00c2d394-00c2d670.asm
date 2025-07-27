@@ -16,20 +16,8 @@
 .endm
 
 .globl ___crtLCMapStringA
-.globl __fltused
 .globl __ldused
-.globl __FPinit
 .globl __NLG_Destination
-
-__fltused:                                                                                                         // [0x267394] 0x009c6000 + 0x267394 = 0x00c2d394
-.long 0x00009875
-__ldused:
-.long 0x00009873
-
-__FPinit:                                                                                                          // [0x26739c] 0x009c6000 + 0x26739c = 0x00c2d39c
-.long __fpmath
-.long _jmp_addr_0x007c561b
-.long _jmp_addr_0x007c561b
 
 _RTTI_Type_Descriptor type_info, 1, V                                                                              // [0x2673a8] 0x009c6000 + 0x2673a8 = 0x00c2d3a8
 
