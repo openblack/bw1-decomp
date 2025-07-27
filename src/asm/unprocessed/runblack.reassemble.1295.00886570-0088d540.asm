@@ -23,7 +23,7 @@
 .extern _atof
 .extern _strstr
 .extern _tolower
-.extern _jmp_addr_0x007c989f
+.extern _realloc
 .extern __isctype
 .extern _jmp_addr_0x007da710
 .extern _jmp_addr_0x007dacdc
@@ -3119,7 +3119,7 @@ _jmp_addr_0x00887f00:    push             esi                                   
                          imul             ecx, eax                                             // 0x00887f18    0fafc8
                          push             ecx                                                  // 0x00887f1b    51
                          push             edx                                                  // 0x00887f1c    52
-                         call             _jmp_addr_0x007c989f                                 // 0x00887f1d    e87d19f4ff
+                         call             _realloc                                             // 0x00887f1d    e87d19f4ff
                          add              esp, 0x08                                            // 0x00887f22    83c408
                          {disp8} mov      dword ptr [esi + 0x14], eax                          // 0x00887f25    894614
                          pop              esi                                                  // 0x00887f28    5e

@@ -128,7 +128,7 @@
 .extern _malloc
 .extern _free
 .extern _strncpy
-.extern _jmp_addr_0x007c989f
+.extern _realloc
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fab30
@@ -2018,7 +2018,7 @@ _jmp_addr_0x0063c06b:    mov                eax, 0x38e38e39                     
                          add                esp, 0x04                                      // 0x0063c094    83c404
                          {disp8} jmp        _jmp_addr_0x0063c0a2                           // 0x0063c097    eb09
 _jmp_addr_0x0063c099:    push               ecx                                            // 0x0063c099    51
-                         call               _jmp_addr_0x007c989f                           // 0x0063c09a    e800d81800
+                         call               _realloc                                       // 0x0063c09a    e800d81800
                          add                esp, 0x08                                      // 0x0063c09f    83c408
 _jmp_addr_0x0063c0a2:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37e3cc]         // 0x0063c0a2    8b0dcc43d400
                          mov.s              edx, ecx                                       // 0x0063c0a8    8bd1

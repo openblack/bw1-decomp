@@ -16,10 +16,10 @@
 .extern _jmp_addr_0x007cf90a
 .extern _jmp_addr_0x007cfc36
 
-.globl _jmp_addr_0x007c989f
+.globl _realloc
 
-// Probably a type of realloc but it doesn't seem to match VS98
-_jmp_addr_0x007c989f:    push                 ebp                                         // 0x007c989f    55
+_realloc: // Doesn't seem to match VS98, perhaps overwritten?
+                         push                 ebp                                         // 0x007c989f    55
                          mov.s                ebp, esp                                    // 0x007c98a0    8bec
                          push                 -0x1                                        // 0x007c98a2    6aff
                          push                 0x009a0720                                  // 0x007c98a4    6820079a00

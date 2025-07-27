@@ -45,7 +45,7 @@
 .extern _strstr
 .extern _tolower
 .extern _abort
-.extern _jmp_addr_0x007c989f
+.extern _realloc
 .extern __controlfp
 .extern __aulldiv
 .extern __allmul
@@ -89,7 +89,7 @@
 .globl __setdefaultprecision
 .globl __ms_p5_mp_test_fdiv
 .globl _strcmp
-.globl _jmp_addr_0x007cce94
+.globl __msize
 .globl __flsbuf
 .globl __output
 .globl __itoa
@@ -2465,7 +2465,9 @@ _jmp_addr_0x007cce78:    mov                ax, word ptr [edx]                  
                          {disp8} je         _jmp_addr_0x007cce50                           // 0x007cce8d    74c1
                          add                ecx, 0x2                                       // 0x007cce8f    83c102
                          {disp8} jmp        _jmp_addr_0x007cce20                           // 0x007cce92    eb8c
-_jmp_addr_0x007cce94:    push               ebp                                            // 0x007cce94    55
+
+__msize:
+                         push               ebp                                            // 0x007cce94    55
                          mov.s              ebp, esp                                       // 0x007cce95    8bec
                          push               -0x1                                           // 0x007cce97    6aff
                          push               0x009a0940                                     // 0x007cce99    6840099a00
@@ -20266,7 +20268,7 @@ _jmp_addr_0x007d930e:    mov.s              eax, esi                            
                          shl                eax, 2                                         // 0x007d9310    c1e002
                          push               eax                                            // 0x007d9313    50
                          push               dword ptr [ebp + -0x04]                        // 0x007d9314    ff75fc
-                         call               _jmp_addr_0x007c989f                           // 0x007d9317    e88305ffff
+                         call               _realloc                                       // 0x007d9317    e88305ffff
                          pop                ecx                                            // 0x007d931c    59
                          test               eax, eax                                       // 0x007d931d    85c0
                          pop                ecx                                            // 0x007d931f    59
@@ -20283,7 +20285,7 @@ _jmp_addr_0x007d932c:    test               ebx, ebx                            
 _jmp_addr_0x007d9336:    {disp32} lea       eax, dword ptr [esi * 0x4 + 0x00000008]        // 0x007d9336    8d04b508000000
                          push               eax                                            // 0x007d933d    50
                          push               edi                                            // 0x007d933e    57
-                         call               _jmp_addr_0x007c989f                           // 0x007d933f    e85b05ffff
+                         call               _realloc                                       // 0x007d933f    e85b05ffff
                          pop                ecx                                            // 0x007d9344    59
                          test               eax, eax                                       // 0x007d9345    85c0
                          pop                ecx                                            // 0x007d9347    59

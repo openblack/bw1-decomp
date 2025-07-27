@@ -23,7 +23,7 @@
 .extern _strchr
 .extern _strtok
 .extern _strstr
-.extern _jmp_addr_0x007c989f
+.extern _realloc
 .extern __isctype
 .extern _jmp_addr_0x00886030
 .extern _jmp_addr_0x008860e0
@@ -4750,7 +4750,7 @@ _jmp_addr_0x008902dc:    mov              edx, dword ptr [edi]                  
                          {disp8} lea      ecx, dword ptr [esi + 0x01]                    // 0x008902e0    8d4e01
                          push             ecx                                            // 0x008902e3    51
                          push             edx                                            // 0x008902e4    52
-                         call             _jmp_addr_0x007c989f                           // 0x008902e5    e8b595f3ff
+                         call             _realloc                                       // 0x008902e5    e8b595f3ff
                          add              esp, 0x08                                      // 0x008902ea    83c408
                          test             eax, eax                                       // 0x008902ed    85c0
                          {disp8} jne      _jmp_addr_0x008902f4                           // 0x008902ef    7503
@@ -4991,7 +4991,7 @@ _jmp_addr_0x00890500:    push             ebx                                   
                          {disp32} lea     ecx, dword ptr [eax * 0x4 + 0x00000004]        // 0x0089050d    8d0c8504000000
                          push             ecx                                            // 0x00890514    51
                          push             edx                                            // 0x00890515    52
-                         call             _jmp_addr_0x007c989f                           // 0x00890516    e88493f3ff
+                         call             _realloc                                       // 0x00890516    e88493f3ff
                          add              esp, 0x08                                      // 0x0089051b    83c408
                          test             eax, eax                                       // 0x0089051e    85c0
                          {disp8} jne      _jmp_addr_0x00890526                           // 0x00890520    7504
