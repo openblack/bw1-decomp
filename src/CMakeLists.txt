@@ -402,6 +402,7 @@ set(SOURCES_003
 )
 set(SOURCES_004
     asm/unprocessed/rdata.004.009a05c0-009a0738.asm
+    asm/unprocessed/rdata.r.001.009bb894-009bbcc0.asm
     asm/unprocessed/data.002.00c2d394-00c2d670.asm
     asm/unprocessed/runblack.reassemble.1081.007c60f0-007c61f0.asm
     asm/unprocessed/runblack.reassemble.1085.007c61f0-007c6250.asm
@@ -484,8 +485,7 @@ set(SOURCES_007
 set(SOURCES_008
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    asm/unprocessed/rdata.006.009a62d4-009bbcc0-rtti.asm
-    asm/unprocessed/rdata.007.009bbcc0-009c5564.asm
+    asm/unprocessed/rdata.006.009a62d4-009bb894-rtti.asm
     asm/unprocessed/data.003.00c2d680-00c3c680.asm
     asm/unprocessed/data.004.00c3c680-00c3cff0.asm
 )
@@ -551,6 +551,7 @@ endfunction()
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\fpinit.obj" OFF)
+add_patched_libcmt_object("build\\intel\\mt_obj\\typinfo.obj" OFF DELETE_SECTIONS ".drectve" ".debug$F") # libcpmt.lib
 set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
