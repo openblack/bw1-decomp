@@ -551,7 +551,7 @@ endfunction()
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\fpinit.obj" OFF)
-add_patched_libcmt_object("build\\intel\\mt_obj\\typinfo.obj" OFF DELETE_SECTIONS ".drectve" ".debug$F") # libcpmt.lib
+add_patched_libcmt_object("build\\intel\\mt_obj\\typinfo.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\onexit.obj" OFF)
 add_patched_libcmt_object("build\\intel\\mt_obj\\sprintf.obj" OFF)
 set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
@@ -758,6 +758,10 @@ target_link_options(runblack-reassembled
         "/filealign:0x1000"
         "/entry:WinMainCRTStartup"
         "/safeseh:no"
+        "/demangle:no"
+        "/NODEFAULTLIB:libcpmt.lib"
+        "/OPT:NOREF"
+        "/OPT:NOICF"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug:FULL>"
 )
