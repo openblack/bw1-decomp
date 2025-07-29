@@ -7983,13 +7983,13 @@ _RTTI_Type_Descriptor PersistentOwner, 4, V                                     
 
 _RTTI_Type_Descriptor PSysFileData, 8, V                                                                           // [0x2298c0] 0x009c6000 + 0x2298c0 = 0x00bef8c0
 
-RTTI_Class_Type_DescriptorStdPadding exception                                                                      // [0x2298e0] 0x009c6000 + 0x2298e0 = 0x00bef8e0
+RTTI_Class_Type_DescriptorStdPadding exception                                                                     // [0x2298e0] 0x009c6000 + 0x2298e0 = 0x00bef8e0
 .align 2
-RTTI_Class_Type_DescriptorStdPadding bad_cast@std                                                                   // [0x2298f8] 0x009c6000 + 0x2298f8 = 0x00bef8f8
+RTTI_Class_Type_DescriptorStdPadding bad_cast@std                                                                  // [0x2298f8] 0x009c6000 + 0x2298f8 = 0x00bef8f8
 .align 2
 
-.byte 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6e, 0x67, 0x20, 0x6c, 0x6f, 0x63, 0x61                                       // [0x229914] 0x009c6000 + 0x229914 = 0x00bef914
-.byte 0x6c, 0x65, 0x20, 0x66, 0x61, 0x63, 0x65, 0x74, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00               // [0x229920] 0x009c6000 + 0x229920 = 0x00bef920
+.asciz "missing locale facet"                                                                                      // [0x229914] 0x009c6000 + 0x229914 = 0x00bef914
+.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00                                                                     // [0x229929] 0x009c6000 + 0x229929 = 0x00bef929
 
 _RTTI_Type_Descriptor facet@locale@std, 2, V                                                                       // [0x229930] 0x009c6000 + 0x229930 = 0x00bef930
 
