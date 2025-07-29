@@ -393,17 +393,19 @@ set(SOURCES_ZLIB
     asm/zlib/inffast.asm
 )
 set(SOURCES_002
-    asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
     asm/unprocessed/bss.001.asm
+    asm/unprocessed/xdata.x.000.009bbdc8-009be430.asm
+    asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
 )
 set(SOURCES_003
     asm/unprocessed/runblack.reassemble.1078.007c5604-007c60db.asm
-    asm/unprocessed/bss.002.asm
 )
 set(SOURCES_004
-    asm/unprocessed/rdata.004.009a05c0-009a0738.asm
-    asm/unprocessed/rdata.r.001.009bb894-009bbcc0.asm
-    asm/unprocessed/data.002.00c2d394-00c2d670.asm
+    asm/unprocessed/bss.002.asm
+    asm/unprocessed/rdata.004.009a0698-009a0738.asm
+    asm/unprocessed/rdata.r.001.009bb984-009bbdc8.asm
+    asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
+    asm/unprocessed/data.002.00c2d420-00c2d670.asm
     asm/unprocessed/runblack.reassemble.1081.007c60f0-007c61f0.asm
     asm/unprocessed/runblack.reassemble.1085.007c61f0-007c6250.asm
     asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
@@ -762,6 +764,7 @@ target_link_options(runblack-reassembled
         "/NODEFAULTLIB:libcpmt.lib"
         "/OPT:NOREF"
         "/OPT:NOICF"
+        "/alternatename:??_Etype_info@@UAEPAXI@Z=??_Gtype_info@@UAEPAXI@Z"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug:FULL>"
 )

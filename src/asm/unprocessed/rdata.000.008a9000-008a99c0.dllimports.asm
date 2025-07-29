@@ -126,7 +126,7 @@
 .globl __imp__GetLastError@0
 .globl __imp__HeapFree@4
 .globl __imp__HeapAlloc@4
-.globl __imp__IsBadReadPtr@4
+.globl __imp__IsBadReadPtr@8
 .globl __imp__SetEndOfFile@4
 .globl __imp__GetFileSize@4
 .globl __imp__WriteFile@4
@@ -735,7 +735,7 @@ __imp__GetTimeZoneInformation@4:                                                
 __imp__GetLastError@0:                                                                                                         .long 0x005c4760 // 0x008a91fc KERNEL32.DLL::GetLastError
 __imp__HeapFree@4:                                                                                                             .long 0x005c4754 // 0x008a9200 KERNEL32.DLL::HeapFree
 __imp__HeapAlloc@4:                                                                                                            .long 0x005c4748 // 0x008a9204 KERNEL32.DLL::HeapAlloc
-__imp__IsBadReadPtr@4:                                                                                                         .long 0x005c4738 // 0x008a9208 KERNEL32.DLL::IsBadReadPtr
+__imp__IsBadReadPtr@8:                                                                                                         .long 0x005c4738 // 0x008a9208 KERNEL32.DLL::IsBadReadPtr
 __imp__SetEndOfFile@4:                                                                                                         .long 0x005c4728 // 0x008a920c KERNEL32.DLL::SetEndOfFile
 __imp__GetFileSize@4:                                                                                                          .long 0x005c471a // 0x008a9210 KERNEL32.DLL::GetFileSize
 __imp__WriteFile@4:                                                                                                            .long 0x005c470e // 0x008a9214 KERNEL32.DLL::WriteFile

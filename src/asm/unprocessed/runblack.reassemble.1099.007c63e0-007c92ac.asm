@@ -180,6 +180,10 @@
 .globl ??1exception@@UAE@XZ
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
+.globl _jmp_addr_0x007c674d
+.globl _jmp_addr_0x007c66f1
+.globl _jmp_addr_0x007c67f0
+.globl _jmp_addr_0x007c6848
 
                          {disp8} mov          eax, dword ptr [ebp + 0x08]                 // 0x007c63e0    8b4508
                          pop                  esi                                         // 0x007c63e3    5e
@@ -542,7 +546,7 @@ _jmp_addr_0x007c6711:    {disp8} mov          dword ptr [ebp + 0x08], esi       
                          {disp8} jne          _jmp_addr_0x007c6777                        // 0x007c6748    752d
 _jmp_addr_0x007c674a:    push                 esi                                         // 0x007c674a    56
                          {disp8} jmp          _jmp_addr_0x007c6769                        // 0x007c674b    eb1c
-                         {disp8} mov          esi, dword ptr [ebp + 0x08]                 // 0x007c674d    8b7508
+_jmp_addr_0x007c674d:    {disp8} mov          esi, dword ptr [ebp + 0x08]                 // 0x007c674d    8b7508
 _jmp_addr_0x007c6750:    push                 0x9                                         // 0x007c6750    6a09
                          call                 __unlock                                    // 0x007c6752    e8c04f0000
                          pop                  ecx                                         // 0x007c6757    59

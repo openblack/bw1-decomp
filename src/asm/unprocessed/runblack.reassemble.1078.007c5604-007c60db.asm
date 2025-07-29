@@ -7,6 +7,199 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
+.section .rdata
+
+.globl ??_7bad_cast@@6B@
+.globl ??_C@_0CB@FCJM@Access?5violation?5?9?5no?5RTTI?5data?$CB@
+.globl ??_C@_0BC@OEMP@Bad?5dynamic_cast?$CB?$AA@
+.globl ??_7bad_typeid@@6B@
+.globl ??_C@_0CB@OFOA@Bad?5read?5pointer?5?9?5no?5RTTI?5data?$CB@
+.globl ??_C@_0CE@DOMJ@Attempted?5a?5typeid?5of?5NULL?5point@
+.globl ??_7exception@@6B@
+
+??_C@_0CB@FCJM@Access?5violation?5?9?5no?5RTTI?5data?$CB@:
+.asciz "Access violation - no RTTI data!"                                                                          // [0xf75c8] 0x008a9000 + 0xf75c8 = 0x009a05c8
+.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00                                                                     // [0xf75e9] 0x008a9000 + 0xf75e9 = 0x009a05e9
+
+.byte 0xff, 0xff, 0xff, 0xff, 0x74, 0x58, 0x7c, 0x00, 0x88, 0x58, 0x7c, 0x00, 0xe8, 0xb8, 0x9b, 0x00               // [0xf75f0] 0x008a9000 + 0xf75f0 = 0x009a05f0
+
+.long 0x7c58c8                                                                                                     // [0xf7600] 0x008a9000 + 0xf7600 = 0x009a0600
+.long ?what@exception@@UBEPBDXZ
+
+.byte 0x20, 0xb9, 0x9b, 0x00
+
+??_7bad_typeid@@6B@:                                                                                               // [0xf760c] 0x008a9000 + 0xf760c = 0x009a060c
+.long 0x007c5919
+.long ?what@exception@@UBEPBDXZ                                                                                    // [0xf7610] 0x008a9000 + 0xf7610 = 0x009a0610
+
+??_C@_0CB@OFOA@Bad?5read?5pointer?5?9?5no?5RTTI?5data?$CB@:
+.asciz "Bad read pointer - no RTTI data!"                                                                          // [0xf7614] 0x008a9000 + 0xf7614 = 0x009a0614
+
+.byte 0x00, 0x00, 0x00                                                                                             // [0xf7635] 0x008a9000 + 0xf7635 = 0x009a0635
+
+??_C@_0CE@DOMJ@Attempted?5a?5typeid?5of?5NULL?5point@:
+.asciz "Attempted a typeid of NULL pointer!"                                                                       // [0xf7638] 0x008a9000 + 0xf7638 = 0x009a0638
+
+.byte 0x00, 0x00, 0x00, 0x00                                                                                       // [0xf765c] 0x008a9000 + 0xf765c = 0x009a065c
+.byte 0xff, 0xff, 0xff, 0xff, 0xce, 0x59, 0x7c, 0x00, 0xe2, 0x59, 0x7c, 0x00                                       // [0xf7660] 0x008a9000 + 0xf7660 = 0x009a0660
+
+??_C@_0BC@OEMP@Bad?5dynamic_cast?$CB?$AA@:
+.asciz "Bad dynamic_cast!"                                                                                         // [0xf766c] 0x008a9000 + 0xf766c = 0x009a066c
+
+.byte 0x00, 0x00                                                                                                   // [0xf767e] 0x008a9000 + 0xf767e = 0x009a067e
+.byte 0xff, 0xff, 0xff, 0xff, 0xfe, 0x5a, 0x7c, 0x00, 0x12, 0x5b, 0x7c, 0x00, 0x70, 0xb9, 0x9b, 0x00               // [0xf7680] 0x008a9000 + 0xf7680 = 0x009a0680
+
+??_7bad_cast@@6B@:
+.long 0x007c5b48                                                                                                   // [0xf7690] 0x008a9000 + 0xf7690 = 0x009a0690
+.long ?what@exception@@UBEPBDXZ
+.section .rdata$r,"dr"
+
+.macro RTTIBaseClassDescriptor name num_base_classes
+    .global ??_R1A@?0A@A@\name@@8
+_RTTIBaseClassDescriptor__\name:
+??_R1A@?0A@A@\name@@8:
+    .long ??_R0?AV\name@@@8
+    .long \num_base_classes
+    .long 0x00000000
+    .long 0xFFFFFFFF
+    .long 0x00000000
+    .long 0x00000000
+.endm
+
+.macro RTTIBaseClassArray name
+    .global ??_R2\name@@8
+??_R2\name@@8:
+    .long ??_R1A@?0A@A@\name@@8
+.endm
+
+.macro RTTIClassHierarchyDescriptor name num_base_classes
+    .global ??_R3\name@@8
+??_R3\name@@8:
+    .long 0                  // signature
+    .long 0                  // attributes
+    .long \num_base_classes  // numBaseClasses
+    .long ??_R2\name@@8      // pBaseClassArray
+.endm
+
+.macro RTTICompleteObjectLocator name
+    .global ??_R4\name@@6B@
+??_R4\name@@6B@:
+    .long 0                  // signature
+    .long 0                  // offset
+    .long 0                  // cdOffset
+    .long ??_R0?AV\name@@@8  // pTypeDescriptor
+    .long ??_R3\name@@8      // pClassDescriptor
+.endm
+
+.long 0x00000000                                                                                                   // [0x112894] 0x008a9000 + 0x112894 = 0x009bb894
+RTTIBaseClassDescriptor bad_typeid 1                                                                               // [0x112898] 0x008a9000 + 0x112898 = 0x009bb898
+
+RTTIBaseClassDescriptor __non_rtti_object 2                                                                        // [0x1128b0] 0x008a9000 + 0x1128b0 = 0x009bb8b0
+
+RTTIBaseClassArray __non_rtti_object                                                                               // [0x1128c8] 0x008a9000 + 0x1128c8 = 0x009bb8c8
+.long ??_R1A@?0A@A@bad_typeid@@8
+.long ??_R1A@?0A@A@exception@@8
+.long 0x00000000
+
+RTTIClassHierarchyDescriptor __non_rtti_object 3                                                                   // [0x1128d8] 0x008a9000 + 0x1128d8 = 0x009bb8d8
+RTTICompleteObjectLocator __non_rtti_object                                                                        // [0x1128e8] 0x008a9000 + 0x1128e8 = 0x009bb8e8
+.long 0x00000000                                                                                                   // [0x1128fc] 0x008a9000 + 0x1128fc = 0x009bb8fc
+
+RTTIBaseClassArray bad_typeid                                                                                      // [0x112900] 0x008a9000 + 0x112900 = 0x009bb900
+.long ??_R1A@?0A@A@exception@@8                                                                                    // [0x1128d0] 0x008a9000 + 0x1128d0 = 0x009bb8d0
+.long 0x00000000
+
+.long 0x00000000                                                                                                   // [0x11290c] 0x008a9000 + 0x11290c = 0x009bb90c
+
+RTTIClassHierarchyDescriptor bad_typeid 2                                                                          // [0x112910] 0x008a9000 + 0x112910 = 0x009bb910
+RTTICompleteObjectLocator bad_typeid                                                                               // [0x112920] 0x008a9000 + 0x112920 = 0x009bb920
+.long 0x00000000
+
+RTTIBaseClassDescriptor bad_cast 1                                                                                 // [0x112938] 0x008a9000 + 0x112938 = 0x009bb938
+
+RTTIBaseClassArray bad_cast                                                                                        // [0x112950] 0x008a9000 + 0x112950 = 0x009bb950
+.long ??_R1A@?0A@A@exception@@8
+.long 0x00000000
+
+.byte 0x00, 0x00, 0x00, 0x00                                                                                       // [0x11295c] 0x008a9000 + 0x11295c = 0x009bb95c
+
+RTTIClassHierarchyDescriptor bad_cast 2                                                                            // [0x112960] 0x008a9000 + 0x112960 = 0x009bb960
+RTTICompleteObjectLocator bad_cast                                                                                 // [0x112970] 0x008a9000 + 0x112970 = 0x009bb970
+
+.section .xdata$x,"dr"
+
+.globl __TI3?AV__non_rtti_object@@
+.globl __TI2?AVbad_typeid@@
+
+__CT??_R0?AVbad_typeid@@@8??0bad_typeid@@QAE@ABV0@@Z12:                                                            // [0x115430] 0x008a9000 + 0x115430 = 0x009be430
+.byte 0x00, 0x00, 0x00, 0x00
+.long ??_R0?AVbad_typeid@@@8                                                                                       // [0x115434] 0x008a9000 + 0x115434 = 0x009be434
+.byte 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff                                                               // [0x115438] 0x008a9000 + 0x115438 = 0x009be438
+.byte 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0x01, 0x59, 0x7c, 0x00, 0x00, 0x00, 0x00, 0x00               // [0x115440] 0x008a9000 + 0x115440 = 0x009be440
+
+__CT??_R0?AV__non_rtti_object@@@8??0__non_rtti_object@@QAE@ABV0@@Z12:                                              // [0x115450] 0x008a9000 + 0x115450 = 0x009be450
+.byte 0x00, 0x00, 0x00, 0x00
+.long ??_R0?AV__non_rtti_object@@@8                                                                                // [0x115454] 0x008a9000 + 0x115454 = 0x009be454
+.byte 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff                                                               // [0x115458] 0x008a9000 + 0x115458 = 0x009be458
+.byte 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00, 0xe9, 0x58, 0x7c, 0x00, 0x00, 0x00, 0x00, 0x00               // [0x115460] 0x008a9000 + 0x115460 = 0x009be460
+
+__CTA3?AV__non_rtti_object@@:
+.long 0x00000003                                                                                                   // [0x115470] 0x008a9000 + 0x115470 = 0x009be470
+.long __CT??_R0?AV__non_rtti_object@@@8??0__non_rtti_object@@QAE@ABV0@@Z12                                         // [0x115474] 0x008a9000 + 0x115474 = 0x009be474
+.long __CT??_R0?AVbad_typeid@@@8??0bad_typeid@@QAE@ABV0@@Z12                                                       // [0x115478] 0x008a9000 + 0x115478 = 0x009be478
+.long __CT??_R0?AVexception@@@8??0exception@@QAE@ABV0@@Z12                                                         // [0x11547c] 0x008a9000 + 0x11547c = 0x009be47c
+
+__TI3?AV__non_rtti_object@@:
+.byte 0x00, 0x00, 0x00, 0x00, 0xe4, 0x58, 0x7c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x70, 0xe4, 0x9b, 0x00               // [0x115480] 0x008a9000 + 0x115480 = 0x009be480
+.byte 0x02, 0x00, 0x00, 0x00, 0x30, 0xe4, 0x9b, 0x00, 0xc8, 0xbd, 0x9b, 0x00, 0x00, 0x00, 0x00, 0x00               // [0x115490] 0x008a9000 + 0x115490 = 0x009be490
+
+__TI2?AVbad_typeid@@:
+.byte 0x00, 0x00, 0x00, 0x00, 0x35, 0x59, 0x7c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0xe4, 0x9b, 0x00               // [0x1154a0] 0x008a9000 + 0x1154a0 = 0x009be4a0
+
+__CT??_R0?AVbad_cast@@@8??0bad_cast@@QAE@ABV0@@Z12:
+.byte 0x00, 0x00, 0x00, 0x00                                                                                       // [0x1154b0] 0x008a9000 + 0x1154b0 = 0x009be4b0
+.long ??_R0?AVbad_cast@@@8                                                                                         // [0x1154b4] 0x008a9000 + 0x1154b4 = 0x009be4b4
+.byte 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff                                                               // [0x1154b8] 0x008a9000 + 0x1154b8 = 0x009be4b8
+.byte 0x00, 0x00, 0x00, 0x00, 0x0c, 0x00, 0x00, 0x00                                                               // [0x1154c0] 0x008a9000 + 0x1154c0 = 0x009be4c0
+.long ??0bad_cast@@QAE@ABV0@@Z                                                                                     // [0x1154c8] 0x008a9000 + 0x1154c8 = 0x009be4c8
+
+.long 0x00000000                                                                                                   // [0x1154cc] 0x008a9000 + 0x1154cc = 0x009be4cc
+
+__CTA2?AVbad_cast@@:
+.long 0x00000002                                                                                                   // [0x1154d0] 0x008a9000 + 0x1154d0 = 0x009be4d0
+.long __CT??_R0?AVbad_cast@@@8??0bad_cast@@QAE@ABV0@@Z12                                                           // [0x1154d4] 0x008a9000 + 0x1154d4 = 0x009be4d4
+.long __CT??_R0?AVexception@@@8??0exception@@QAE@ABV0@@Z12                                                         // [0x1154d8] 0x008a9000 + 0x1154d8 = 0x009be4d8
+
+.long 0x00000000                                                                                                   // [0x1154dc] 0x008a9000 + 0x1154dc = 0x009be4dc
+
+__TI2?AVbad_cast@@:
+.long 0x00000000                                                                                                   // [0x1154e0] 0x008a9000 + 0x1154e0 = 0x009be4e0
+.long ??1bad_cast@@UAE@XZ                                                                                          // [0x1154e4] 0x008a9000 + 0x1154e4 = 0x009be4e4
+.long 0x00000000                                                                                                   // [0x1154e8] 0x008a9000 + 0x1154e8 = 0x009be4e8
+.long __CTA2?AVbad_cast@@                                                                                          // [0x1154ec] 0x008a9000 + 0x1154ec = 0x009be4ec
+
+.section .data
+
+.macro ASCIZ_ALIGNED string alignment
+    .asciz "\string"
+    .align \alignment
+.endm
+
+.macro RTTI_Type_Descriptor name
+    .global ??_R0?AV\name@@@8
+??_R0?AV\name@@@8:
+    .long ??_7type_info@@6B@
+    .long 0
+    .asciz ".?AV\name@@"
+    .align 0x10
+.endm
+
+RTTI_Type_Descriptor bad_typeid                                                                                    // [0x2673c0] 0x009c6000 + 0x2673c0 = 0x00c2d3c0
+RTTI_Type_Descriptor __non_rtti_object                                                                             // [0x2673e0] 0x009c6000 + 0x2673e0 = 0x00c2d3e0
+RTTI_Type_Descriptor bad_cast                                                                                      // [0x267400] 0x009c6000 + 0x267400 = 0x00c2d400
+
+.section .text
+
 .extern  ___dl__FPv
 .extern _jmp_addr_0x007c6288
 .extern _malloc
@@ -39,8 +232,9 @@
 .globl ___RTDynamicCast
 .globl _jmp_addr_0x007c614c
 .globl __purecall
+.globl ??0bad_cast@@QAE@ABV0@@Z
+.globl ??1bad_cast@@UAE@XZ
 
-// rtti.obj
 ___RTCastToVoid:
                          push             ebp                                           // 0x007c5824    55
                          mov.s            ebp, esp                                      // 0x007c5825    8bec
@@ -181,14 +375,14 @@ ___RTtypeid:
                          push             0x009be4a0                                    // 0x007c5974    68a0e49b00
                          {disp8} lea      eax, dword ptr [ebp + -0x28]                  // 0x007c5979    8d45d8
                          push             eax                                           // 0x007c597c    50
-                         call             __CxxThrowException@8                          // 0x007c597d    e826330000
+                         call             __CxxThrowException@8                         // 0x007c597d    e826330000
 _jmp_addr_0x007c5982:    and              dword ptr [ebp + -0x04], 0x00                 // 0x007c5982    8365fc00
                          mov              eax, dword ptr [eax]                          // 0x007c5986    8b00
                          {disp8} mov      esi, dword ptr [eax + -0x04]                  // 0x007c5988    8b70fc
                          {disp8} mov      dword ptr [ebp + -0x1c], esi                  // 0x007c598b    8975e4
                          push             0x8                                           // 0x007c598e    6a08
                          push             dword ptr [esi + 0x0c]                        // 0x007c5990    ff760c
-                         call             dword ptr [__imp__IsBadReadPtr@4]             // 0x007c5993    ff1508928a00
+                         call             dword ptr [__imp__IsBadReadPtr@8]             // 0x007c5993    ff1508928a00
                          test             eax, eax                                      // 0x007c5999    85c0
                          {disp8} jne      _jmp_addr_0x007c59b3                          // 0x007c599b    7516
                          {disp8} mov      eax, dword ptr [esi + 0x0c]                   // 0x007c599d    8b460c

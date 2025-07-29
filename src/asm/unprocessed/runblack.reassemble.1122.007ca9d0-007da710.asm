@@ -21082,7 +21082,7 @@ _jmp_addr_0x007d9bb1:    push               esi                                 
                          pop                esi                                            // 0x007d9bb4    5e
                          push               dword ptr [esp + 0x0c]                         // 0x007d9bb5    ff74240c
                          push               dword ptr [esp + 0x0c]                         // 0x007d9bb9    ff74240c
-                         call               dword ptr [__imp__IsBadReadPtr@4]              // 0x007d9bbd    ff1508928a00
+                         call               dword ptr [__imp__IsBadReadPtr@8]              // 0x007d9bbd    ff1508928a00
                          test               eax, eax                                       // 0x007d9bc3    85c0
                          {disp8} je         _jmp_addr_0x007d9bc9                           // 0x007d9bc5    7402
                          xor.s              esi, esi                                       // 0x007d9bc7    33f6
