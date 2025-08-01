@@ -36,7 +36,7 @@
 .extern _wcslen
 .extern _swprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c8606
 .extern ___nw__FUl
@@ -361,7 +361,7 @@ _jmp_addr_0x005483da:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               eax                                           // 0x005483e5    50
                          call               @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20  // 0x005483e6    e8a58decff
                          push               edi                                           // 0x005483eb    57
-                         call               ___dt__10LHFilePathFv                         // 0x005483ec    e83fea2700
+                         call               _fclose                                       // 0x005483ec    e83fea2700
                          add                esp, 0x04                                     // 0x005483f1    83c404
                          pop                edi                                           // 0x005483f4    5f
                          pop                esi                                           // 0x005483f5    5e
@@ -384,7 +384,7 @@ _jmp_addr_0x00548400:    {disp8} mov        ebp, dword ptr [esp + 0x58]         
                          push               esi                                           // 0x00548420    56
                          call               _jmp_addr_0x007c748b                          // 0x00548421    e865f02700
                          push               edi                                           // 0x00548426    57
-                         call               ___dt__10LHFilePathFv                         // 0x00548427    e804ea2700
+                         call               _fclose                                       // 0x00548427    e804ea2700
                          {disp8} lea        edx, dword ptr [esp + 0x50]                   // 0x0054842c    8d542450
                          push               edx                                           // 0x00548430    52
                          {disp8} lea        eax, dword ptr [esp + 0x4c]                   // 0x00548431    8d44244c
@@ -919,7 +919,7 @@ _jmp_addr_0x00548a68:    push               ebp                                 
                          test               eax, eax                                      // 0x00548a7e    85c0
                          {disp32} jne       _jmp_addr_0x005489d4                          // 0x00548a80    0f854effffff
 _jmp_addr_0x00548a86:    push               ebp                                           // 0x00548a86    55
-                         call               ___dt__10LHFilePathFv                         // 0x00548a87    e8a4e32700
+                         call               _fclose                                       // 0x00548a87    e8a4e32700
                          add                esp, 0x04                                     // 0x00548a8c    83c404
 _jmp_addr_0x00548a8f:    pop                edi                                           // 0x00548a8f    5f
                          pop                esi                                           // 0x00548a90    5e

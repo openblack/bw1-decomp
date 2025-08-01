@@ -84,7 +84,7 @@
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c748b
 .extern __aulldiv
 .extern __allmul
@@ -1642,7 +1642,7 @@ _jmp_addr_0x0064332e:    push               esi                                 
                          push               ecx                                            // 0x00643336    51
                          call               _jmp_addr_0x007c748b                           // 0x00643337    e84f411800
                          push               esi                                            // 0x0064333c    56
-                         call               ___dt__10LHFilePathFv                          // 0x0064333d    e8ee3a1800
+                         call               _fclose                                        // 0x0064333d    e8ee3a1800
                          add                esp, 0x14                                      // 0x00643342    83c414
                          xor.s              edi, edi                                       // 0x00643345    33ff
                          mov                esi, 0x00bea970                                // 0x00643347    be70a9be00

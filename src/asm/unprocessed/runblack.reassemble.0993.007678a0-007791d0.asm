@@ -316,7 +316,7 @@
 .extern ___RTDynamicCast
 .extern _memmove
 .extern ??2@YAPAXI@Z
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c75a2
 .extern _getc_10LHFilePath
@@ -22615,7 +22615,7 @@ _jmp_addr_0x007766d0:    push               ecx                                 
                          cmp.s              eax, ebx                                        // 0x007766e7    3bc3
                          {disp8} je         _jmp_addr_0x00776719                            // 0x007766e9    742e
                          push               eax                                             // 0x007766eb    50
-                         call               ___dt__10LHFilePathFv                           // 0x007766ec    e83f070500
+                         call               _fclose                                         // 0x007766ec    e83f070500
                          add                esp, 0x04                                       // 0x007766f1    83c404
                          test               eax, eax                                        // 0x007766f4    85c0
                          {disp8} jne        _jmp_addr_0x00776719                            // 0x007766f6    7521
@@ -23600,7 +23600,7 @@ _jmp_addr_0x00777018:    xor.s              eax, eax                            
                          test               eax, eax                                        // 0x0077704a    85c0
                          {disp8} je         _jmp_addr_0x00777065                            // 0x0077704c    7417
                          push               eax                                             // 0x0077704e    50
-                         call               ___dt__10LHFilePathFv                           // 0x0077704f    e8dcfd0400
+                         call               _fclose                                         // 0x0077704f    e8dcfd0400
                          add                esp, 0x04                                       // 0x00777054    83c404
                          test               eax, eax                                        // 0x00777057    85c0
                          {disp8} jne        _jmp_addr_0x00777065                            // 0x00777059    750a
@@ -23661,7 +23661,7 @@ _jmp_addr_0x007770c1:    pop                edi                                 
                          cmp.s              eax, ebx                                        // 0x007770e8    3bc3
                          {disp8} je         _jmp_addr_0x0077711a                            // 0x007770ea    742e
                          push               eax                                             // 0x007770ec    50
-                         call               ___dt__10LHFilePathFv                           // 0x007770ed    e83efd0400
+                         call               _fclose                                         // 0x007770ed    e83efd0400
                          add                esp, 0x04                                       // 0x007770f2    83c404
                          test               eax, eax                                        // 0x007770f5    85c0
                          {disp8} jne        _jmp_addr_0x0077711a                            // 0x007770f7    7521

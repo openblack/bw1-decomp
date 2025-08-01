@@ -86,7 +86,7 @@
 .extern ??2@YAPAXI@Z
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _fscanf_10LHFilePath
 .extern _getc_10LHFilePath
 .extern ___nw__FUl
@@ -247,7 +247,7 @@ _jmp_addr_0x004c4b7d:    {disp8} mov        edx, dword ptr [ebx + 0x04]         
                          {disp8} mov        dword ptr [ebx + 0x04], edx                          // 0x004c4bb5    895304
                          {disp8} jne        _jmp_addr_0x004c4b7d                                 // 0x004c4bb8    75c3
 _jmp_addr_0x004c4bba:    push               esi                                                  // 0x004c4bba    56
-                         call               ___dt__10LHFilePathFv                                // 0x004c4bbb    e870223000
+                         call               _fclose                                              // 0x004c4bbb    e870223000
                          add                esp, 0x04                                            // 0x004c4bc0    83c404
                          pop                edi                                                  // 0x004c4bc3    5f
                          pop                esi                                                  // 0x004c4bc4    5e

@@ -26,7 +26,7 @@
 .extern _wcsncpy
 .extern _wcslen
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c8606
 .extern ___nw__FUl
 
@@ -162,7 +162,7 @@ _jmp_addr_0x00549a45:    push              ebp                                  
                          test              eax, eax                                      // 0x00549a5b    85c0
                          {disp32} jne      _jmp_addr_0x0054997f                          // 0x00549a5d    0f851cffffff
 _jmp_addr_0x00549a63:    push              ebp                                           // 0x00549a63    55
-                         call              ___dt__10LHFilePathFv                         // 0x00549a64    e8c7d32700
+                         call              _fclose                                       // 0x00549a64    e8c7d32700
                          add               esp, 0x04                                     // 0x00549a69    83c404
 _jmp_addr_0x00549a6c:    pop               edi                                           // 0x00549a6c    5f
                          pop               esi                                           // 0x00549a6d    5e

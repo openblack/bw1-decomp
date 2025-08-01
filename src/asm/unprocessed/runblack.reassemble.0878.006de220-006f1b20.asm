@@ -360,7 +360,7 @@
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007c8606
 .extern _strtok
@@ -18545,7 +18545,7 @@ _jmp_addr_0x006eb5b6:    push               ebp                                 
                          {disp32} jmp       _jmp_addr_0x006eb50b                          // 0x006eb5cd    e939ffffff
 _jmp_addr_0x006eb5d2:    {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x006eb5d2    8b742410
 _jmp_addr_0x006eb5d6:    push               ebp                                           // 0x006eb5d6    55
-                         call               ___dt__10LHFilePathFv                         // 0x006eb5d7    e854b80d00
+                         call               _fclose                                       // 0x006eb5d7    e854b80d00
                          add                esp, 0x04                                     // 0x006eb5dc    83c404
                          pop                edi                                           // 0x006eb5df    5f
                          mov.s              eax, esi                                      // 0x006eb5e0    8bc6

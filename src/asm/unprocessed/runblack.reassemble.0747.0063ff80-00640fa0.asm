@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x0078ea20
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c8859
@@ -100,7 +100,7 @@ _jmp_addr_0x0063fffa:    push              ebp                                  
                          cmp.s             eax, esi                                      // 0x00640019    3bc6
                          push              ebp                                           // 0x0064001b    55
                          {disp8} je        _jmp_addr_0x00640033                          // 0x0064001c    7415
-                         call              ___dt__10LHFilePathFv                         // 0x0064001e    e80d6e1800
+                         call              _fclose                                       // 0x0064001e    e80d6e1800
                          add               esp, 0x04                                     // 0x00640023    83c404
                          pop               edi                                           // 0x00640026    5f
                          pop               esi                                           // 0x00640027    5e
@@ -1040,7 +1040,7 @@ _jmp_addr_0x00640b65:    {disp8} mov       eax, dword ptr [esp + 0x10]          
                          {disp8} mov       dword ptr [esp + 0x20], 0xffffffff            // 0x00640b80    c7442420ffffffff
                          call              _jmp_addr_0x007c75a2                          // 0x00640b88    e8156a1800
                          push              esi                                           // 0x00640b8d    56
-                         call              ___dt__10LHFilePathFv                         // 0x00640b8e    e89d621800
+                         call              _fclose                                       // 0x00640b8e    e89d621800
                          add               esp, 0x14                                     // 0x00640b93    83c414
                          mov.s             eax, ebp                                      // 0x00640b96    8bc5
                          pop               ebp                                           // 0x00640b98    5d
@@ -1122,7 +1122,7 @@ _jmp_addr_0x00640c2a:    {disp8} fld       dword ptr [esi + 0x04]               
                          {disp8} jl        _jmp_addr_0x00640c2a                          // 0x00640c6a    7cbe
                          {disp8} mov       esi, dword ptr [esp + 0x0c]                   // 0x00640c6c    8b74240c
 _jmp_addr_0x00640c70:    push              esi                                           // 0x00640c70    56
-                         call              ___dt__10LHFilePathFv                         // 0x00640c71    e8ba611800
+                         call              _fclose                                       // 0x00640c71    e8ba611800
                          add               esp, 0x04                                     // 0x00640c76    83c404
                          push              0x00bfe330                                    // 0x00640c79    6830e3bf00
                          push              -0x1                                          // 0x00640c7e    6aff

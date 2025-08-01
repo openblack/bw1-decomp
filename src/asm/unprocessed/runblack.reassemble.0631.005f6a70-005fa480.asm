@@ -48,7 +48,7 @@
 .extern _swprintf
 .extern ??2@YAPAXI@Z
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c7e64
@@ -2894,7 +2894,7 @@ _jmp_addr_0x005f8b5f:    push               ebx                                 
                          call               _jmp_addr_0x007c748b                           // 0x005f8b98    e8eee81c00
                          push               ebx                                            // 0x005f8b9d    53
                          {disp32} mov       word ptr [data_bytes + 0x371b9c], bp           // 0x005f8b9e    66892d9c7bd300
-                         call               ___dt__10LHFilePathFv                          // 0x005f8ba5    e886e21c00
+                         call               _fclose                                        // 0x005f8ba5    e886e21c00
                          add                esp, 0x14                                      // 0x005f8baa    83c414
 _jmp_addr_0x005f8bad:    cmp                word ptr [data_bytes + 0x371a9c], bp           // 0x005f8bad    66392d9c7ad300
                          {disp8} jne        _jmp_addr_0x005f8be6                           // 0x005f8bb4    7530
