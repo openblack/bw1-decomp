@@ -136,7 +136,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _fscanf_10LHFilePath
@@ -9978,7 +9978,7 @@ _jmp_addr_0x00524b41:    pop                esi                                 
                          push               0x3                                                  // 0x00524b71    6a03
                          push               0x00be962c                                           // 0x00524b73    682c96be00
                          push               edi                                                  // 0x00524b78    57
-                         call               _fprintf__10LHFilePath                               // 0x00524b79    e832222a00
+                         call               _fprintf                                             // 0x00524b79    e832222a00
                          add                esp, 0x10                                            // 0x00524b7e    83c410
                          mov                esi, 0x00cc63f0                                      // 0x00524b81    bef063cc00
                          mov                ebx, 0x00000018                                      // 0x00524b86    bb18000000
@@ -10002,7 +10002,7 @@ _jmp_addr_0x00524b8b:    {disp8} fld        dword ptr [esi + 0x04]              
                          fstp               qword ptr [esp]                                      // 0x00524bc1    dd1c24
                          push               0x00be9618                                           // 0x00524bc4    681896be00
                          push               edi                                                  // 0x00524bc9    57
-                         call               _fprintf__10LHFilePath                               // 0x00524bca    e8e1212a00
+                         call               _fprintf                                             // 0x00524bca    e8e1212a00
                          add                esp, 0x38                                            // 0x00524bcf    83c438
                          add                esi, 0x18                                            // 0x00524bd2    83c618
                          dec                ebx                                                  // 0x00524bd5    4b

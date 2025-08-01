@@ -73,7 +73,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern __strcmpi
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -2979,7 +2979,7 @@ _jmp_addr_0x007535ba:    fld                st(0)                               
                          add                esp, 0x10                                     // 0x00753628    83c410
                          push               eax                                           // 0x0075362b    50
                          push               edx                                           // 0x0075362c    52
-                         call               _fprintf__10LHFilePath                        // 0x0075362d    e87e370700
+                         call               _fprintf                                      // 0x0075362d    e87e370700
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30dc74]        // 0x00753632    a1743ccd00
                          add                esp, 0x08                                     // 0x00753637    83c408
                          test               eax, eax                                      // 0x0075363a    85c0
@@ -2989,7 +2989,7 @@ _jmp_addr_0x007535ba:    fld                st(0)                               
                          {disp32} mov       eax, dword ptr [_game]                        // 0x00753645    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x002502d8]             // 0x0075364a    8b88d8022500
                          push               ecx                                           // 0x00753650    51
-                         call               _fprintf__10LHFilePath                        // 0x00753651    e85a370700
+                         call               _fprintf                                      // 0x00753651    e85a370700
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30dc74]        // 0x00753656    a1743ccd00
                          add                esp, 0x08                                     // 0x0075365b    83c408
                          test               eax, eax                                      // 0x0075365e    85c0
@@ -2998,7 +2998,7 @@ _jmp_addr_0x007535ba:    fld                st(0)                               
                          {disp32} mov       eax, dword ptr [edx + 0x002502d8]             // 0x00753668    8b82d8022500
                          push               0x009cf590                                    // 0x0075366e    6890f59c00
                          push               eax                                           // 0x00753673    50
-                         call               _fprintf__10LHFilePath                        // 0x00753674    e837370700
+                         call               _fprintf                                      // 0x00753674    e837370700
                          add                esp, 0x08                                     // 0x00753679    83c408
 _jmp_addr_0x0075367c:    pop                edi                                           // 0x0075367c    5f
                          pop                esi                                           // 0x0075367d    5e

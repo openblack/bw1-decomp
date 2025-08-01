@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x0078e9b0
 .extern _atexit
 .extern __unlink
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _tolower
@@ -802,7 +802,7 @@ _pc_main__Fv:            push              ebp                                  
                          push              ecx                                           // 0x00641cbb    51
                          push              0x00bfea98                                    // 0x00641cbc    6898eabf00
                          push              esi                                           // 0x00641cc1    56
-                         call              _fprintf__10LHFilePath                        // 0x00641cc2    e8e9501800
+                         call              _fprintf                                      // 0x00641cc2    e8e9501800
                          push              esi                                           // 0x00641cc7    56
                          call              ___dt__10LHFilePathFv                         // 0x00641cc8    e863511800
                          add               esp, 0x10                                     // 0x00641ccd    83c410

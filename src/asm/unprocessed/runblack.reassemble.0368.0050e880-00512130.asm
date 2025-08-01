@@ -78,7 +78,7 @@
 .extern ??2@YAPAXI@Z
 .extern _malloc
 .extern _free
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _jmp_addr_0x007c7e13
 .extern _LHRand__FlRU
 .extern ___nw__FUl
@@ -2997,7 +2997,7 @@ _jmp_addr_0x00510637:    mov                dword ptr [eax], ecx                
                          push               eax                                           // 0x00510680    50
                          push               0x00be899c                                    // 0x00510681    689c89be00
                          push               edx                                           // 0x00510686    52
-                         call               _fprintf__10LHFilePath                        // 0x00510687    e824672b00
+                         call               _fprintf                                      // 0x00510687    e824672b00
                          add                esp, 0x1c                                     // 0x0051068c    83c41c
 _jmp_addr_0x0051068f:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0051068f    8b442408
                          test               eax, eax                                      // 0x00510693    85c0
@@ -3035,7 +3035,7 @@ _jmp_addr_0x005106b0:    {disp32} mov       eax, dword ptr [data_bytes + 0x30dc8
                          push               eax                                           // 0x005106e3    50
                          push               0x00be89d0                                    // 0x005106e4    68d089be00
                          push               edx                                           // 0x005106e9    52
-                         call               _fprintf__10LHFilePath                        // 0x005106ea    e8c1662b00
+                         call               _fprintf                                      // 0x005106ea    e8c1662b00
                          add                esp, 0x1c                                     // 0x005106ef    83c41c
 _jmp_addr_0x005106f2:    {disp8} fld        dword ptr [esp + 0x10]                        // 0x005106f2    d9442410
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x005106f6    d81d98a38a00

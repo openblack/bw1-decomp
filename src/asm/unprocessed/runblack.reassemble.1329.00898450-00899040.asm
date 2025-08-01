@@ -5,7 +5,7 @@
 
 .extern  ___dl__FPv
 .extern _sprintf
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c75a2
@@ -87,7 +87,7 @@ _jmp_addr_0x008984b0:    push               esi                                 
                          push               edi                                           // 0x008984d0    57
                          push               0x00c3ae80                                    // 0x008984d1    6880aec300
                          push               0x00c2d820                                    // 0x008984d6    6820d8c200
-                         call               _fprintf__10LHFilePath                        // 0x008984db    e8d0e8f2ff
+                         call               _fprintf                                      // 0x008984db    e8d0e8f2ff
                          add                esp, 0x0c                                     // 0x008984e0    83c40c
                          push               0x1                                           // 0x008984e3    6a01
                          call               _exit                                         // 0x008984e5    e8f719f3ff
@@ -609,7 +609,7 @@ _jmp_addr_0x00898960:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               eax                                           // 0x008989e9    50
                          push               0x009cec10                                    // 0x008989ea    6810ec9c00
                          push               0x00c2d820                                    // 0x008989ef    6820d8c200
-                         call               _fprintf__10LHFilePath                        // 0x008989f4    e8b7e3f2ff
+                         call               _fprintf                                      // 0x008989f4    e8b7e3f2ff
                          add                esp, 0x000000dc                               // 0x008989f9    81c4dc000000
                          ret                                                              // 0x008989ff    c3
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x00898a00    8b4c2404

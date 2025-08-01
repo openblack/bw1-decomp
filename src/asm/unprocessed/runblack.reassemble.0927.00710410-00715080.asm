@@ -77,7 +77,7 @@
 .extern _atoi
 .extern _isdigit
 .extern __unlink
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
@@ -5268,7 +5268,7 @@ _jmp_addr_0x00713914:    {disp8} mov        esi, dword ptr [esp + 0x14]         
                          push               esi                                           // 0x00713921    56
                          push               0x00bfd850                                    // 0x00713922    6850d8bf00
                          push               edi                                           // 0x00713927    57
-                         call               _fprintf__10LHFilePath                        // 0x00713928    e883340b00
+                         call               _fprintf                                      // 0x00713928    e883340b00
                          push               edi                                           // 0x0071392d    57
                          call               ___dt__10LHFilePathFv                         // 0x0071392e    e8fd340b00
                          push               esi                                           // 0x00713933    56
@@ -6148,7 +6148,7 @@ _jmp_addr_0x00714175:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          push               eax                                           // 0x0071418d    50
                          push               0x00c20cbc                                    // 0x0071418e    68bc0cc200
                          push               edi                                           // 0x00714193    57
-                         call               _fprintf__10LHFilePath                        // 0x00714194    e8172c0b00
+                         call               _fprintf                                      // 0x00714194    e8172c0b00
                          mov                esi, dword ptr [esi]                          // 0x00714199    8b36
                          add                esp, 0x18                                     // 0x0071419b    83c418
                          test               esi, esi                                      // 0x0071419e    85f6
