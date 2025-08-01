@@ -53,7 +53,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c76e0
+.extern __CIacos
 .extern ___nw__FUl
 .extern _jmp_addr_0x007dee00
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
@@ -9551,7 +9551,7 @@ _jmp_addr_0x00615758:    mov.s              ecx, edi                            
                          push               eax                                            // 0x00615765    50
                          mov.s              ecx, edi                                       // 0x00615766    8bcf
                          call               @DotProduct__7Point2DFP7Point2D@12             // 0x00615768    e8a3bbffff
-                         call               _jmp_addr_0x007c76e0                           // 0x0061576d    e86e1f1b00
+                         call               __CIacos                                       // 0x0061576d    e86e1f1b00
                          {disp8} fstp       dword ptr [esp + 0x18]                         // 0x00615772    d95c2418
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                    // 0x00615776    8d4c242c
                          push               ecx                                            // 0x0061577a    51
@@ -10597,7 +10597,7 @@ _jmp_addr_0x00616500:    mov.s              ecx, edi                            
                          push               eax                                            // 0x0061650d    50
                          mov.s              ecx, edi                                       // 0x0061650e    8bcf
                          call               @DotProduct__7Point2DFP7Point2D@12             // 0x00616510    e8fbadffff
-                         call               _jmp_addr_0x007c76e0                           // 0x00616515    e8c6111b00
+                         call               __CIacos                                       // 0x00616515    e8c6111b00
                          {disp8} fstp       dword ptr [esp + 0x18]                         // 0x0061651a    d95c2418
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                    // 0x0061651e    8d4c242c
                          push               ecx                                            // 0x00616522    51

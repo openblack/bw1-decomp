@@ -272,7 +272,7 @@
 .extern _swprintf
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c76e0
+.extern __CIacos
 .extern _jmp_addr_0x007db770
 .extern ___nw__FUl
 .extern _jmp_addr_0x007dee00
@@ -1723,7 +1723,7 @@ _jmp_addr_0x005cc334:    {disp8} fld        dword ptr [esp + 0x24]              
                          {disp8} fld        dword ptr [esp + 0x10]                         // 0x005cc346    d9442410
                          {disp8} fmul       dword ptr [esp + 0x1c]                         // 0x005cc34a    d84c241c
                          faddp              st(1), st                                      // 0x005cc34e    dec1
-                         call               _jmp_addr_0x007c76e0                           // 0x005cc350    e88bb31f00
+                         call               __CIacos                                       // 0x005cc350    e88bb31f00
                          {disp32} fstp      dword ptr [esp + 0x00000084]                   // 0x005cc355    d99c2484000000
                          xor.s              esi, esi                                       // 0x005cc35c    33f6
                          test               ebp, ebp                                       // 0x005cc35e    85ed

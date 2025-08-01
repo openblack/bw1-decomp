@@ -138,7 +138,7 @@
 .globl __math_exit
 .globl _jmp_addr_0x007d1cf9
 .globl __filbuf
-.globl _jmp_addr_0x007d1e78
+.globl __read
 .globl __write
 .globl _jmp_addr_0x007d211b
 .globl __mtinit
@@ -9613,7 +9613,7 @@ _jmp_addr_0x007d1dd6:    {disp8} mov        eax, dword ptr [esi + 0x08]         
 _jmp_addr_0x007d1ddb:    push               dword ptr [esi + 0x18]                         // 0x007d1ddb    ff7618
                          push               dword ptr [esi + 0x08]                         // 0x007d1dde    ff7608
                          push               dword ptr [esi + 0x10]                         // 0x007d1de1    ff7610
-                         call               _jmp_addr_0x007d1e78                           // 0x007d1de4    e88f000000
+                         call               __read                                         // 0x007d1de4    e88f000000
                          add                esp, 0x0c                                      // 0x007d1de9    83c40c
                          {disp8} mov        dword ptr [esi + 0x04], eax                    // 0x007d1dec    894604
                          test               eax, eax                                       // 0x007d1def    85c0
@@ -9667,7 +9667,7 @@ _jmp_addr_0x007d1e62:    neg                eax                                 
 _jmp_addr_0x007d1e73:    or                 eax, -0x1                                      // 0x007d1e73    83c8ff
                          pop                esi                                            // 0x007d1e76    5e
                          ret                                                               // 0x007d1e77    c3
-_jmp_addr_0x007d1e78:    push               esi                                            // 0x007d1e78    56
+__read:                  push               esi                                            // 0x007d1e78    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x007d1e79    8b742408
                          cmp                esi, dword ptr [data_bytes + 0x5e6a60]         // 0x007d1e7d    3b3560cafa00
                          {disp8} jae        _jmp_addr_0x007d1ec5                           // 0x007d1e83    7340
@@ -18972,7 +18972,7 @@ _jmp_addr_0x007d8675:    {disp8} mov        eax, dword ptr [esi + 0x08]         
 _jmp_addr_0x007d867a:    push               dword ptr [esi + 0x18]                         // 0x007d867a    ff7618
                          push               dword ptr [esi + 0x08]                         // 0x007d867d    ff7608
                          push               dword ptr [esi + 0x10]                         // 0x007d8680    ff7610
-                         call               _jmp_addr_0x007d1e78                           // 0x007d8683    e8f097ffff
+                         call               __read                                         // 0x007d8683    e8f097ffff
                          add                esp, 0x0c                                      // 0x007d8688    83c40c
                          {disp8} mov        dword ptr [esi + 0x04], eax                    // 0x007d868b    894604
                          test               eax, eax                                       // 0x007d868e    85c0

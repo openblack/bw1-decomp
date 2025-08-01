@@ -107,7 +107,7 @@
 .extern _fopen
 .extern _fclose
 .extern __chkstk
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern _strncpy
 .extern _atof
 .extern _swscanf
@@ -2347,7 +2347,7 @@ _jmp_addr_0x0062cef4:    push               edi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                    // 0x0062cef7    8d44241c
                          push               0x1                                            // 0x0062cefb    6a01
                          push               eax                                            // 0x0062cefd    50
-                         call               _jmp_addr_0x007c748b                           // 0x0062cefe    e888a51900
+                         call               _fread                                         // 0x0062cefe    e888a51900
                          {disp8} mov        ecx, dword ptr [esp + 0x24]                    // 0x0062cf03    8b4c2424
                          and                ecx, 0x000000ff                                // 0x0062cf07    81e1ff000000
                          mov.s              eax, ecx                                       // 0x0062cf0d    8bc1
@@ -2422,7 +2422,7 @@ _jmp_addr_0x0062cf70:    sub                esp, 0x08                           
                          push               edi                                            // 0x0062cfb2    57
                          push               ebp                                            // 0x0062cfb3    55
                          {disp8} mov        dword ptr [esp + 0x30], ebp                    // 0x0062cfb4    896c2430
-                         call               _jmp_addr_0x007c748b                           // 0x0062cfb8    e8cea41900
+                         call               _fread                                         // 0x0062cfb8    e8cea41900
                          push               esi                                            // 0x0062cfbd    56
                          call               _fclose                                        // 0x0062cfbe    e86d9e1900
                          add                esp, 0x20                                      // 0x0062cfc3    83c420
@@ -2532,7 +2532,7 @@ _jmp_addr_0x0062d08e:    push               edi                                 
                          mov.s              ebx, eax                                       // 0x0062d0d1    8bd8
                          push               edi                                            // 0x0062d0d3    57
                          push               ebx                                            // 0x0062d0d4    53
-                         call               _jmp_addr_0x007c748b                           // 0x0062d0d5    e8b1a31900
+                         call               _fread                                         // 0x0062d0d5    e8b1a31900
                          push               esi                                            // 0x0062d0da    56
                          call               _fclose                                        // 0x0062d0db    e8509d1900
                          add                esp, 0x20                                      // 0x0062d0e0    83c420

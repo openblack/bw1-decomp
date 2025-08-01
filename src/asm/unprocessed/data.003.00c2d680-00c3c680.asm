@@ -14,6 +14,8 @@
 .globl ___badioinfo
 .globl __cfltcvt_tab
 .globl __d_inf
+.globl __indefinite
+.globl __piby2
 
 .macro ASCIZ_ALIGNED string alignment
     .asciz "\string"

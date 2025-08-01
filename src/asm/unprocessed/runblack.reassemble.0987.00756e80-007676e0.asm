@@ -299,7 +299,7 @@
 .extern _wcsncpy
 .extern _wcslen
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c76e0
+.extern __CIacos
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @ProjectPoint__8LH3DTechFP7LHPointPiPiPf@16
@@ -5968,7 +5968,7 @@ _jmp_addr_0x0075a5dc:    {disp8} fld        dword ptr [esp + 0x28]              
                          call               _jmp_addr_0x007a1400                          // 0x0075a638    e8c36d0400
                          {disp8} fld        dword ptr [esp + 0x18]                        // 0x0075a63d    d9442418
                          {disp8} mov        dword ptr [esi + 0x04], eax                   // 0x0075a641    894604
-                         call               _jmp_addr_0x007c76e0                          // 0x0075a644    e897d00600
+                         call               __CIacos                                      // 0x0075a644    e897d00600
                          fchs                                                             // 0x0075a649    d9e0
                          test               ebp, ebp                                      // 0x0075a64b    85ed
                          {disp8} je         _jmp_addr_0x0075a6c6                          // 0x0075a64d    7477
@@ -5999,7 +5999,7 @@ _jmp_addr_0x0075a651:    {disp8} fld        dword ptr [esp + 0x28]              
                          call               _jmp_addr_0x007a1400                          // 0x0075a6ad    e84e6d0400
                          {disp8} fld        dword ptr [esp + 0x18]                        // 0x0075a6b2    d9442418
                          {disp8} mov        dword ptr [esi + 0x04], eax                   // 0x0075a6b6    894604
-                         call               _jmp_addr_0x007c76e0                          // 0x0075a6b9    e822d00600
+                         call               __CIacos                                      // 0x0075a6b9    e822d00600
                          test               ebp, ebp                                      // 0x0075a6be    85ed
                          {disp8} je         _jmp_addr_0x0075a6c6                          // 0x0075a6c0    7404
 _jmp_addr_0x0075a6c2:    {disp8} mov        byte ptr [ebp + 0x00], 0x01                   // 0x0075a6c2    c6450001
