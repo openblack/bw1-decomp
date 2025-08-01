@@ -172,7 +172,6 @@
 .extern _malloc
 .extern __unlink
 .extern _getenv
-.extern _jmp_addr_0x007c6ce0
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv

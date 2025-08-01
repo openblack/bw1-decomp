@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _sprintf
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
 .extern @GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsPUlPUl@12
@@ -302,7 +302,7 @@ _jmp_addr_0x0042260e:    mov.s             ecx, esi                             
                          call              _jmp_addr_0x00527700                          // 0x00422610    e8eb501000
                          push              eax                                           // 0x00422615    50
                          push              ebx                                           // 0x00422616    53
-                         call              _jmp_addr_0x007c6ce0                          // 0x00422617    e8c4463a00
+                         call              __strcmpi                                     // 0x00422617    e8c4463a00
                          add               esp, 0x08                                     // 0x0042261c    83c408
                          test              eax, eax                                      // 0x0042261f    85c0
                          {disp8} je        _jmp_addr_0x0042263b                          // 0x00422621    7418

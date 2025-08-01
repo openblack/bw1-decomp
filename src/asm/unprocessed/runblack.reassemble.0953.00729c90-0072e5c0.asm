@@ -127,7 +127,7 @@
 .extern _sprintf
 .extern ??2@YAPAXI@Z
 .extern _isalpha
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern _jmp_addr_0x007c789d
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c804a
@@ -2337,7 +2337,7 @@ _jmp_addr_0x0072b17e:    mov.s              ecx, esi                            
                          call               _jmp_addr_0x0072b160                          // 0x0072b180    e8dbffffff
                          push               eax                                           // 0x0072b185    50
                          push               ebx                                           // 0x0072b186    53
-                         call               _jmp_addr_0x007c6ce0                          // 0x0072b187    e854bb0900
+                         call               __strcmpi                                     // 0x0072b187    e854bb0900
                          add                esp, 0x08                                     // 0x0072b18c    83c408
                          test               eax, eax                                      // 0x0072b18f    85c0
                          {disp8} je         _jmp_addr_0x0072b1ab                          // 0x0072b191    7418

@@ -72,7 +72,7 @@
 .extern _jmp_addr_0x007a1400
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern _fprintf__10LHFilePath
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
@@ -214,7 +214,7 @@ _jmp_addr_0x00751a37:    mov.s              ecx, edi                            
                          call               _jmp_addr_0x00751aa0                          // 0x00751a39    e862000000
                          push               eax                                           // 0x00751a3e    50
                          push               ebx                                           // 0x00751a3f    53
-                         call               _jmp_addr_0x007c6ce0                          // 0x00751a40    e89b520700
+                         call               __strcmpi                                     // 0x00751a40    e89b520700
                          add                esp, 0x08                                     // 0x00751a45    83c408
                          test               eax, eax                                      // 0x00751a48    85c0
                          {disp8} je         _jmp_addr_0x00751a87                          // 0x00751a4a    743b
