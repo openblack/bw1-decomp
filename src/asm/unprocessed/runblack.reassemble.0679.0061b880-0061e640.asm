@@ -57,7 +57,7 @@
 .extern _wcscpy
 .extern _wcslen
 .extern _swprintf
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6edf
 .extern ___nw__FUl
@@ -2007,7 +2007,7 @@ _jmp_addr_0x0061d2ad:    xor.s              edx, edx                            
                          call               dword ptr [__imp__DeleteObject@4]                    // 0x0061d2f9    ff156c908a00
 _jmp_addr_0x0061d2ff:    {disp8} lea        eax, dword ptr [esp + 0x24]                          // 0x0061d2ff    8d442424
                          push               eax                                                  // 0x0061d303    50
-                         call               _jmp_addr_0x007c6c29                                 // 0x0061d304    e820991a00
+                         call               __unlink                                             // 0x0061d304    e820991a00
                          add                esp, 0x04                                            // 0x0061d309    83c404
 _jmp_addr_0x0061d30c:    {disp8} mov        eax, dword ptr [esp + 0x14]                          // 0x0061d30c    8b442414
                          inc                eax                                                  // 0x0061d310    40

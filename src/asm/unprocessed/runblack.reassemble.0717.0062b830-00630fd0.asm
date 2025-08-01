@@ -103,7 +103,7 @@
 .extern _swprintf
 .extern ??2@YAPAXI@Z
 .extern _atoi
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
@@ -8513,11 +8513,11 @@ _jmp_addr_0x00630f39:    call               dword ptr [rdata_bytes + 0x428]     
                          push               0x00bfdb14                                     // 0x00630f64    6814dbbf00
                          call               __chmod                                        // 0x00630f69    e8f2881900
                          push               0x00bfdb14                                     // 0x00630f6e    6814dbbf00
-                         call               _jmp_addr_0x007c6c29                           // 0x00630f73    e8b15c1900
+                         call               __unlink                                       // 0x00630f73    e8b15c1900
                          add                esp, 0x0c                                      // 0x00630f78    83c40c
                          push               0x00bfdb14                                     // 0x00630f7b    6814dbbf00
                          push               0x00bfdaf0                                     // 0x00630f80    68f0dabf00
-                         call               dword ptr [__imp__MoveFileA@4]                 // 0x00630f85    ff155c918a00
+                         call               dword ptr [__imp__MoveFileA@8]                 // 0x00630f85    ff155c918a00
                          mov                ecx, 0x00d40f38                                // 0x00630f8b    b9380fd400
                          call               _jmp_addr_0x00630d80                           // 0x00630f90    e8ebfdffff
                          {disp32} mov       dword ptr [data_bytes + 0x37af68], 0x00000000  // 0x00630f95    c705680fd40000000000

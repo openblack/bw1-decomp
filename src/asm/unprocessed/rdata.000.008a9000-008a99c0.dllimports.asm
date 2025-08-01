@@ -83,7 +83,7 @@
 .globl __imp__OutputDebugStringA@4
 .globl __imp__QueryPerformanceFrequency@4
 .globl __imp__CopyFileA@4
-.globl __imp__MoveFileA@4
+.globl __imp__MoveFileA@8
 .globl __imp__GetDateFormatA@4
 .globl __imp__GetTempFileNameA@4
 .globl __imp__CreateDirectoryA@8
@@ -692,7 +692,7 @@ __imp__GetDateFormatW@4:                                                        
 __imp__OutputDebugStringA@4:                                                                                                   .long 0x005c0504 // 0x008a9150 KERNEL32.DLL::OutputDebugStringA
 __imp__QueryPerformanceFrequency@4:                                                                                            .long 0x005c04d2 // 0x008a9154 KERNEL32.DLL::QueryPerformanceFrequency
 __imp__CopyFileA@4:                                                                                                            .long 0x005c0472 // 0x008a9158 KERNEL32.DLL::CopyFileA
-__imp__MoveFileA@4:                                                                                                            .long 0x005c0466 // 0x008a915c KERNEL32.DLL::MoveFileA
+__imp__MoveFileA@8:                                                                                                            .long 0x005c0466 // 0x008a915c KERNEL32.DLL::MoveFileA
 __imp__GetDateFormatA@4:                                                                                                       .long 0x005c0454 // 0x008a9160 KERNEL32.DLL::GetDateFormatA
 __imp__GetTempFileNameA@4:                                                                                                     .long 0x005c0430 // 0x008a9164 KERNEL32.DLL::GetTempFileNameA
 __imp__CreateDirectoryA@8:                                                                                                     .long 0x005c041c // 0x008a9168 KERNEL32.DLL::CreateDirectoryA
