@@ -40,7 +40,7 @@
 .extern ??2@YAPAXI@Z
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern ___nw__FUl
 .extern _CHAR2WCHAR__FPc
 .extern _jmp_addr_0x008850d0
@@ -516,7 +516,7 @@ _jmp_addr_0x0059b672:    ret                                                    
                          nop                                                            // 0x0059b67e    90
                          nop                                                            // 0x0059b67f    90
 _jmp_addr_0x0059b680:    mov              eax, 0x00001848                               // 0x0059b680    b848180000
-                         call             _jmp_addr_0x007c6eb0                          // 0x0059b685    e826b82200
+                         call             __chkstk                                      // 0x0059b685    e826b82200
                          push             ebx                                           // 0x0059b68a    53
                          push             ebp                                           // 0x0059b68b    55
                          push             esi                                           // 0x0059b68c    56
@@ -881,7 +881,7 @@ _jmp_addr_0x0059bad7:    {disp8} mov      dword ptr [edi + 0x0d], ebx           
                          ret                                                            // 0x0059bade    c3
                          nop                                                            // 0x0059badf    90
 _jmp_addr_0x0059bae0:    mov              eax, 0x00001008                               // 0x0059bae0    b808100000
-                         call             _jmp_addr_0x007c6eb0                          // 0x0059bae5    e8c6b32200
+                         call             __chkstk                                      // 0x0059bae5    e8c6b32200
                          {disp32} mov     eax, dword ptr [esp + 0x00001014]             // 0x0059baea    8b842414100000
                          cmp              eax, 0x03                                     // 0x0059baf1    83f803
                          push             ebx                                           // 0x0059baf4    53

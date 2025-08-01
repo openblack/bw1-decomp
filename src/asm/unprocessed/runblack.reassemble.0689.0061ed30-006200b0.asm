@@ -39,7 +39,7 @@
 .extern _wcsncpy
 .extern _wcslen
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c6edf
 .extern @Release__11LH3DTextureFv@4
 
@@ -48,7 +48,7 @@
 start_0x0061ed30_0x006200b0:
 // Snippet: asm, [0x0061ed30, 0x0061fffa)
 _jmp_addr_0x0061ed30:    mov              eax, 0x00009060                               // 0x0061ed30    b860900000
-                         call             _jmp_addr_0x007c6eb0                          // 0x0061ed35    e876811a00
+                         call             __chkstk                                      // 0x0061ed35    e876811a00
                          push             ebx                                           // 0x0061ed3a    53
                          push             ebp                                           // 0x0061ed3b    55
                          {disp32} mov     ebp, dword ptr [esp + 0x00009070]             // 0x0061ed3c    8bac2470900000

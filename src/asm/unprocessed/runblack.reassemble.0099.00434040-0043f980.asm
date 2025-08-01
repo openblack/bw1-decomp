@@ -175,7 +175,7 @@
 .extern _fprintf
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e0620
@@ -18093,7 +18093,7 @@ _jmp_addr_0x0043f5cb:    pop                edi                                 
                          nop                                                                     // 0x0043f5de    90
                          nop                                                                     // 0x0043f5df    90
 _jmp_addr_0x0043f5e0:    mov                eax, 0x00001010                                      // 0x0043f5e0    b810100000
-                         call               _jmp_addr_0x007c6eb0                                 // 0x0043f5e5    e8c6783800
+                         call               __chkstk                                             // 0x0043f5e5    e8c6783800
                          push               ebx                                                  // 0x0043f5ea    53
                          push               ebp                                                  // 0x0043f5eb    55
                          push               esi                                                  // 0x0043f5ec    56

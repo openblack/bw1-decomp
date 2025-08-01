@@ -106,7 +106,7 @@
 .extern __unlink
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c748b
 .extern _strncpy
 .extern _atof
@@ -562,7 +562,7 @@ _jmp_addr_0x0062bb8a:    pop                esi                                 
                          nop                                                               // 0x0062bb9e    90
                          nop                                                               // 0x0062bb9f    90
 _jmp_addr_0x0062bba0:    mov                eax, 0x00001098                                // 0x0062bba0    b898100000
-                         call               _jmp_addr_0x007c6eb0                           // 0x0062bba5    e806b31900
+                         call               __chkstk                                       // 0x0062bba5    e806b31900
                          push               ebx                                            // 0x0062bbaa    53
                          push               ebp                                            // 0x0062bbab    55
                          xor.s              ebp, ebp                                       // 0x0062bbac    33ed
