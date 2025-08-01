@@ -12,7 +12,7 @@
 .extern _atol
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c6942
+.extern _isspace
 .extern _jmp_addr_0x007c6b68
 .extern _jmp_addr_0x007c6c55
 .extern _jmp_addr_0x007c6ce0
@@ -6689,14 +6689,14 @@ _jmp_addr_0x007cfe93:    cmp.s              eax, ebx                            
                          movzx              eax, byte ptr [esi + 0x01]                     // 0x007cfead    0fb64601
                          inc                esi                                            // 0x007cfeb1    46
                          push               eax                                            // 0x007cfeb2    50
-                         call               _jmp_addr_0x007c6942                           // 0x007cfeb3    e88a6affff
+                         call               _isspace                                       // 0x007cfeb3    e88a6affff
                          add                esp, 0x0c                                      // 0x007cfeb8    83c40c
 _jmp_addr_0x007cfebb:    test               eax, eax                                       // 0x007cfebb    85c0
                          {disp8} je         _jmp_addr_0x007cfecd                           // 0x007cfebd    740e
                          movzx              eax, byte ptr [esi + 0x01]                     // 0x007cfebf    0fb64601
                          inc                esi                                            // 0x007cfec3    46
                          push               eax                                            // 0x007cfec4    50
-                         call               _jmp_addr_0x007c6942                           // 0x007cfec5    e8786affff
+                         call               _isspace                                       // 0x007cfec5    e8786affff
                          pop                ecx                                            // 0x007cfeca    59
                          {disp8} jmp        _jmp_addr_0x007cfebb                           // 0x007cfecb    ebee
 _jmp_addr_0x007cfecd:    cmp                byte ptr [esi], 0x25                           // 0x007cfecd    803e25
@@ -7598,7 +7598,7 @@ _jmp_addr_0x007d08d0:    push               dword ptr [esp + 0x10]              
                          call               _jmp_addr_0x007d0899                           // 0x007d08d6    e8beffffff
                          mov.s              edi, eax                                       // 0x007d08db    8bf8
                          push               edi                                            // 0x007d08dd    57
-                         call               _jmp_addr_0x007c6942                           // 0x007d08de    e85f60ffff
+                         call               _isspace                                       // 0x007d08de    e85f60ffff
                          pop                ecx                                            // 0x007d08e3    59
                          test               eax, eax                                       // 0x007d08e4    85c0
                          pop                ecx                                            // 0x007d08e6    59

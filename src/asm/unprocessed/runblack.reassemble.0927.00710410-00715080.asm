@@ -75,7 +75,7 @@
 .extern _sprintf
 .extern ??2@YAPAXI@Z
 .extern _atoi
-.extern _jmp_addr_0x007c68ed
+.extern _isdigit
 .extern _jmp_addr_0x007c6c29
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
@@ -3751,7 +3751,7 @@ _jmp_addr_0x007129e0:    push               ebx                                 
 _jmp_addr_0x00712a08:    {disp8} mov        bl, byte ptr [esp + 0x0c]                     // 0x00712a08    8a5c240c
                          movsx              eax, bl                                       // 0x00712a0c    0fbec3
                          push               eax                                           // 0x00712a0f    50
-                         call               _jmp_addr_0x007c68ed                          // 0x00712a10    e8d83e0b00
+                         call               _isdigit                                      // 0x00712a10    e8d83e0b00
                          add                esp, 0x04                                     // 0x00712a15    83c404
                          test               eax, eax                                      // 0x00712a18    85c0
                          {disp8} jne        _jmp_addr_0x00712a5f                          // 0x00712a1a    7543
