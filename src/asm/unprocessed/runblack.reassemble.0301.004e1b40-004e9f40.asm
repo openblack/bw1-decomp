@@ -143,7 +143,7 @@
 .extern _wcscpy
 .extern _wcslen
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern ___nw__FUl
 .extern _Alloc__7LH3DMemFl
 
@@ -9554,7 +9554,7 @@ _jmp_addr_0x004e83cb:    movzx              ax, al                              
                          push               eax                                             // 0x004e840e    50
                          {disp8} lea        eax, dword ptr [esp + 0x08]                     // 0x004e840f    8d442408
                          push               eax                                             // 0x004e8413    50
-                         call               _jmp_addr_0x007c6edf                            // 0x004e8414    e8c6ea2d00
+                         call               _wcscmp                            // 0x004e8414    e8c6ea2d00
                          add                esp, 0x08                                       // 0x004e8419    83c408
                          test               eax, eax                                        // 0x004e841c    85c0
                          {disp8} je         _jmp_addr_0x004e842b                            // 0x004e841e    740b

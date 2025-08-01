@@ -262,7 +262,7 @@
 .extern _swprintf
 .extern ??2@YAPAXI@Z
 .extern __chkstk
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern _jmp_addr_0x007c7e64
 .extern _jmp_addr_0x007c8141
 .extern ___nw__FUl
@@ -29582,7 +29582,7 @@ _jmp_addr_0x0053e5e7:    {disp32} mov       ecx, dword ptr [eax + 0x00000258]   
                          add.s              ecx, edi                                             // 0x0053e5ed    03cf
                          push               ecx                                                  // 0x0053e5ef    51
                          push               0x00cd069c                                           // 0x0053e5f0    689c06cd00
-                         call               _jmp_addr_0x007c6edf                                 // 0x0053e5f5    e8e5882800
+                         call               _wcscmp                                 // 0x0053e5f5    e8e5882800
                          add                esp, 0x08                                            // 0x0053e5fa    83c408
                          test               eax, eax                                             // 0x0053e5fd    85c0
                          {disp8} jne        _jmp_addr_0x0053e610                                 // 0x0053e5ff    750f

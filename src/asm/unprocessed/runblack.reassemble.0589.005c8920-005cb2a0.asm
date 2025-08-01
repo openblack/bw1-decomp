@@ -54,7 +54,7 @@
 .extern _wcsncpy
 .extern _wcslen
 .extern _swprintf
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x00824b10
@@ -2127,7 +2127,7 @@ _jmp_addr_0x005c9e43:    {disp32} mov       ecx, dword ptr [data_bytes + 0x351bd
                          push               eax                                           // 0x005c9e7d    50
                          {disp8} lea        eax, dword ptr [esp + 0x38]                   // 0x005c9e7e    8d442438
                          push               eax                                           // 0x005c9e82    50
-                         call               _jmp_addr_0x007c6edf                          // 0x005c9e83    e857d01f00
+                         call               _wcscmp                          // 0x005c9e83    e857d01f00
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x005c9e88    8b4c2420
                          add                esp, 0x08                                     // 0x005c9e8c    83c408
                          test               eax, eax                                      // 0x005c9e8f    85c0

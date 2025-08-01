@@ -28,7 +28,7 @@
 .extern _atexit
 .extern _wcslen
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern _jmp_addr_0x007f43a0
 .extern _jmp_addr_0x007f4570
 .extern _jmp_addr_0x007f45d0
@@ -1052,7 +1052,7 @@ _jmp_addr_0x007f5ef0:    sub                esp, 0x00000100                     
                          push               0x009a22c0                                     // 0x007f5f28    68c0229a00
                          push               edi                                            // 0x007f5f2d    57
                          {disp32} mov       dword ptr [esi + 0x0000081c], 0xffffffff       // 0x007f5f2e    c7861c080000ffffffff
-                         call               _jmp_addr_0x007c6edf                           // 0x007f5f38    e8a20ffdff
+                         call               _wcscmp                           // 0x007f5f38    e8a20ffdff
                          add                esp, 0x14                                      // 0x007f5f3d    83c414
                          test               eax, eax                                       // 0x007f5f40    85c0
                          {disp8} jne        _jmp_addr_0x007f5f52                           // 0x007f5f42    750e

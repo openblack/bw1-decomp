@@ -171,7 +171,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern ___nw__FUl
 .extern _jmp_addr_0x007dee00
 .extern _Release__10LH3DIslandFv@0
@@ -786,7 +786,7 @@ _jmp_addr_0x00553046:    pop                edi                                 
 _jmp_addr_0x00553066:    {disp32} lea       eax, dword ptr [esi + 0x000008e4]             // 0x00553066    8d86e4080000
                          push               eax                                           // 0x0055306c    50
                          push               ebx                                           // 0x0055306d    53
-                         call               _jmp_addr_0x007c6edf                          // 0x0055306e    e86c3e2700
+                         call               _wcscmp                          // 0x0055306e    e86c3e2700
                          add                esp, 0x08                                     // 0x00553073    83c408
                          test               eax, eax                                      // 0x00553076    85c0
                          {disp8} je         _jmp_addr_0x00553090                          // 0x00553078    7416

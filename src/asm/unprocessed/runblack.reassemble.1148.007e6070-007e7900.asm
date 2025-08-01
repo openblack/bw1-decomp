@@ -29,7 +29,7 @@
 .extern _iswlower
 .extern _iswdigit
 .extern _iswspace
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern _jmp_addr_0x007c81cd
 .extern _strncpy
 .extern _strchr
@@ -1824,7 +1824,7 @@ _jmp_addr_0x007e6ff0:    {disp8} mov      eax, dword ptr [esp + 0x08]           
                          {disp8} mov      ecx, dword ptr [esp + 0x04]                   // 0x007e6ff4    8b4c2404
                          push             eax                                           // 0x007e6ff8    50
                          push             ecx                                           // 0x007e6ff9    51
-                         call             _jmp_addr_0x007c6edf                          // 0x007e6ffa    e8e0fefdff
+                         call             _wcscmp                          // 0x007e6ffa    e8e0fefdff
                          add              esp, 0x08                                     // 0x007e6fff    83c408
                          ret                                                            // 0x007e7002    c3
                          nop                                                            // 0x007e7003    90
