@@ -136,8 +136,8 @@
 .extern ___RTDynamicCast
 .extern _wcscat
 .extern _wcscpy
-.extern _jmp_addr_0x007c60f0
-.extern _operator_new
+.extern _memmove
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
@@ -6296,7 +6296,7 @@ _jmp_addr_0x005c3e60:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               ecx                                            // 0x005c3e90    51
                          add.s              eax, edx                                       // 0x005c3e91    03c2
                          push               eax                                            // 0x005c3e93    50
-                         call               _jmp_addr_0x007c60f0                           // 0x005c3e94    e857222000
+                         call               _memmove                                       // 0x005c3e94    e857222000
                          add                esp, 0x0c                                      // 0x005c3e99    83c40c
                          {disp8} mov        dword ptr [esi + 0x0c], 0x00000000             // 0x005c3e9c    c7460c00000000
                          pop                edi                                            // 0x005c3ea3    5f
@@ -6404,7 +6404,7 @@ _jmp_addr_0x005c3f7c:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          push               edx                                            // 0x005c3f9e    52
                          add.s              eax, ecx                                       // 0x005c3f9f    03c1
                          push               eax                                            // 0x005c3fa1    50
-                         call               _jmp_addr_0x007c60f0                           // 0x005c3fa2    e849212000
+                         call               _memmove                                       // 0x005c3fa2    e849212000
                          {disp8} mov        ecx, dword ptr [ebx + 0x08]                    // 0x005c3fa7    8b4b08
                          {disp8} mov        eax, dword ptr [esp + 0x24]                    // 0x005c3faa    8b442424
                          add.s              esi, ecx                                       // 0x005c3fae    03f1
@@ -6875,7 +6875,7 @@ _jmp_addr_0x005c43ad:    xor.s              edi, edi                            
 _jmp_addr_0x005c43af:    test               edi, edi                                       // 0x005c43af    85ff
                          {disp8} je         _jmp_addr_0x005c4402                           // 0x005c43b1    744f
                          push               0x8                                            // 0x005c43b3    6a08
-                         call               _operator_new                                 // 0x005c43b5    e834212000
+                         call               ??2@YAPAXI@Z                                   // 0x005c43b5    e834212000
                          add                esp, 0x04                                      // 0x005c43ba    83c404
                          test               eax, eax                                       // 0x005c43bd    85c0
                          {disp8} je         _jmp_addr_0x005c4402                           // 0x005c43bf    7441
@@ -9834,7 +9834,7 @@ _jmp_addr_0x005c6100:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          {disp32} lea       edx, dword ptr [esi + 0x00000588]              // 0x005c6146    8d9688050000
                          push               edx                                            // 0x005c614c    52
                          {disp32} mov       dword ptr [esi + 0x00000580], ecx              // 0x005c614d    898e80050000
-                         call               _jmp_addr_0x007c60f0                           // 0x005c6153    e898ff1f00
+                         call               _memmove                                       // 0x005c6153    e898ff1f00
                          {disp8} mov        eax, dword ptr [esp + 0x28]                    // 0x005c6158    8b442428
                          mov                dword ptr [edi], eax                           // 0x005c615c    8907
                          {disp8} mov        edi, dword ptr [esi + 0x24]                    // 0x005c615e    8b7e24

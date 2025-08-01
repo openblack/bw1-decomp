@@ -90,8 +90,8 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
 .extern _sprintf
-.extern _operator_new
-.extern _jmp_addr_0x007c6587
+.extern ??2@YAPAXI@Z
+.extern _atoi
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0083add0
@@ -3213,7 +3213,7 @@ _jmp_addr_0x00425df0:    push               ebx                                 
                          {disp32} lea       edi, dword ptr [ecx + 0x00205d24]             // 0x00425e3f    8db9245d2000
                          {disp8} je         _jmp_addr_0x00425e61                          // 0x00425e45    741a
                          push               0x8                                           // 0x00425e47    6a08
-                         call               _operator_new                                // 0x00425e49    e8a0063a00
+                         call               ??2@YAPAXI@Z                                  // 0x00425e49    e8a0063a00
                          add                esp, 0x04                                     // 0x00425e4e    83c404
                          cmp.s              eax, ebx                                      // 0x00425e51    3bc3
                          {disp8} je         _jmp_addr_0x00425e61                          // 0x00425e53    740c
@@ -4532,7 +4532,7 @@ _jmp_addr_0x00426b95:    ret                                                    
                          jmp                dword ptr [edx*4 + 0x426c04]                  // 0x00426bb7    ff2495046c4200
                          inc                ecx                                           // 0x00426bbe    41
                          push               ecx                                           // 0x00426bbf    51
-                         call               _jmp_addr_0x007c6587                          // 0x00426bc0    e8c2f93900
+                         call               _atoi                          // 0x00426bc0    e8c2f93900
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00426bc5    8b0d5c19d000
                          {disp32} mov       edx, dword ptr [ecx + 0x00250090]             // 0x00426bcb    8b9190002500
                          {disp32} mov       dword ptr [edx + 0x00000098], eax             // 0x00426bd1    898298000000

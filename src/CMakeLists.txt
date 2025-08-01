@@ -403,11 +403,6 @@ set(SOURCES_004
     asm/unprocessed/rdata.r.001.009bb984-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
     asm/unprocessed/data.002.00c2d418-00c2d670.asm
-    asm/unprocessed/runblack.reassemble.1081.007c60f0-007c61f0.asm
-    asm/unprocessed/runblack.reassemble.1085.007c61f0-007c6250.asm
-    asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
-    asm/unprocessed/runblack.reassemble.1093.007c62f0-007c6390.asm
-    asm/unprocessed/runblack.reassemble.1097.007c6390-007c63e0.asm
     asm/unprocessed/runblack.reassemble.1099.007c63e0-007c92ac.asm
 )
 # Likely a different calloc
@@ -565,6 +560,12 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\toupper.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcscat.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\xtow.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\purevirt.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\memmove.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncpy.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcslen.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\swprintf.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\new.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\atox.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
@@ -696,6 +697,60 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-libcmt-006
         runblack-reassembled-src-008
         runblack-reassembled-rc
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/rdata.004.009a0698-009a0738.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/rdata.004.009a0698-009a0738.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/rdata.r.001.009bb984-009bbdc8.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/rdata.r.001.009bb984-009bbdc8.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/data.002.00c2d418-00c2d670.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/data.002.00c2d418-00c2d670.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/runblack.reassemble.1099.007c63e0-007c92ac.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-004.dir/asm/unprocessed/runblack.reassemble.1099.007c63e0-007c92ac.asm${OBJ_SUFFIX}"
+            "--no-pad"
 )
 
 add_custom_command(

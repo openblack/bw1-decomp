@@ -72,7 +72,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
 .globl _jmp_addr_0x0070bb20
@@ -3252,7 +3252,7 @@ _jmp_addr_0x0070d92b:    cmp.s              esi, ebx                            
                          {disp32} lea       edi, dword ptr [ecx + 0x00205c8c]             // 0x0070d933    8db98c5c2000
                          {disp8} je         _jmp_addr_0x0070d955                          // 0x0070d939    741a
                          push               0x8                                           // 0x0070d93b    6a08
-                         call               _operator_new                                // 0x0070d93d    e8ac8b0b00
+                         call               ??2@YAPAXI@Z                                  // 0x0070d93d    e8ac8b0b00
                          add                esp, 0x04                                     // 0x0070d942    83c404
                          cmp.s              eax, ebx                                      // 0x0070d945    3bc3
                          {disp8} je         _jmp_addr_0x0070d955                          // 0x0070d947    740c

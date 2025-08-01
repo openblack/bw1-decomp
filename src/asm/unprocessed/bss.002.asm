@@ -154,6 +154,7 @@
 .globl _g_view_configuration
 .globl _Direct3DDevice7
 .globl __crtheap
+.globl __newmode
 
 // Start of libcmt.lib
                                            .space 0x38                                                             // [0x4be198] 0x009c6000 + 0x4be198 = 0x00e84198
@@ -193,7 +194,9 @@ ___crtLCMapStringA:                        .space 4                             
                                            .space 0xc
 ___lc_codepage:                            .space 4                                                                // [0x4be2b0] 0x009c6000 + 0x4be2b0 = 0x00e842b0
 ___lc_collate_cp:                          .space 4                                                                // [0x4be2b4] 0x009c6000 + 0x4be2b4 = 0x00e842b4
-                                           .space 0x24c
+                                           .space 0x8
+__newmode:                                 .space 4                                                                // [0x4be2c0] 0x009c6000 + 0x4be2c0 = 0x00e842c0
+                                           .space 0x240
 ___lc_id:                                  .space 4                                                                // [0x4be504] 0x009c6000 + 0x4be504 = 0x00e84504
                                            .space 0xb38                                                            // [0x4be508] 0x009c6000 + 0x4be508 = 0x00e84508
 

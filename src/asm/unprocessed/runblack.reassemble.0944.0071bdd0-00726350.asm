@@ -254,8 +254,8 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c6425
-.extern _operator_new
+.extern _wcsncpy
+.extern ??2@YAPAXI@Z
 .extern _strncpy
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -2465,7 +2465,7 @@ _jmp_addr_0x0071d3b0:    push               esi                                 
                          mov.s              esi, ecx                                             // 0x0071d3b8    8bf1
                          {disp8} je         _jmp_addr_0x0071d3e0                                 // 0x0071d3ba    7424
                          push               0x8                                                  // 0x0071d3bc    6a08
-                         call               _operator_new                                       // 0x0071d3be    e82b910a00
+                         call               ??2@YAPAXI@Z                                         // 0x0071d3be    e82b910a00
                          add                esp, 0x04                                            // 0x0071d3c3    83c404
                          test               eax, eax                                             // 0x0071d3c6    85c0
                          {disp8} je         _jmp_addr_0x0071d3d6                                 // 0x0071d3c8    740c
@@ -5083,7 +5083,7 @@ _jmp_addr_0x0071ef70:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               eax                                                  // 0x0071ef84    50
                          push               0x00d9a954                                           // 0x0071ef85    6854a9d900
                          {disp32} mov       dword ptr [data_bytes + 0x3d636c], ecx               // 0x0071ef8a    890d6cc3d900
-                         call               _jmp_addr_0x007c6425                                 // 0x0071ef90    e890740a00
+                         call               _wcsncpy                                             // 0x0071ef90    e890740a00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x3d6368]               // 0x0071ef95    a168c3d900
                          add                esp, 0x0c                                            // 0x0071ef9a    83c40c
                          cmp.s              eax, ebx                                             // 0x0071ef9d    3bc3
@@ -8362,7 +8362,7 @@ _jmp_addr_0x00721155:    {disp8} lea        edx, dword ptr [esp + 0x0c]         
                          mov.s              esi, eax                                             // 0x00721167    8bf0
                          {disp8} je         _jmp_addr_0x007211a8                                 // 0x00721169    743d
                          push               0x8                                                  // 0x0072116b    6a08
-                         call               _operator_new                                       // 0x0072116d    e87c530a00
+                         call               ??2@YAPAXI@Z                                         // 0x0072116d    e87c530a00
                          add                esp, 0x04                                            // 0x00721172    83c404
                          test               eax, eax                                             // 0x00721175    85c0
                          {disp8} je         _jmp_addr_0x007211a8                                 // 0x00721177    742f
@@ -12702,7 +12702,7 @@ _jmp_addr_0x00723e92:    {disp8} lea        ecx, dword ptr [ebp + -0x34]        
                          mov.s              ecx, edi                                             // 0x00723f43    8bcf
                          call               @SetGameAngle__13MobileWallHugFUs@10                 // 0x00723f45    e8469beeff
                          push               0x8                                                  // 0x00723f4a    6a08
-                         call               _operator_new                                       // 0x00723f4c    e89d250a00
+                         call               ??2@YAPAXI@Z                                         // 0x00723f4c    e89d250a00
                          add                esp, 0x04                                            // 0x00723f51    83c404
                          test               eax, eax                                             // 0x00723f54    85c0
                          {disp8} je         _jmp_addr_0x00723f6f                                 // 0x00723f56    7417
@@ -13217,7 +13217,7 @@ _jmp_addr_0x00724543:    {disp8} lea        edx, dword ptr [ebp + -0x34]        
                          mov.s              ecx, edi                                             // 0x007245f9    8bcf
                          call               @SetGameAngle__13MobileWallHugFUs@10                 // 0x007245fb    e89094eeff
                          push               0x8                                                  // 0x00724600    6a08
-                         call               _operator_new                                       // 0x00724602    e8e71e0a00
+                         call               ??2@YAPAXI@Z                                         // 0x00724602    e8e71e0a00
                          add                esp, 0x04                                            // 0x00724607    83c404
                          test               eax, eax                                             // 0x0072460a    85c0
                          {disp8} je         _jmp_addr_0x00724625                                 // 0x0072460c    7417

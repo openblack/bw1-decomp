@@ -296,9 +296,9 @@
 .extern  ___dl__FPv
 .extern _atexit
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _wcslen
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c76e0
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -485,7 +485,7 @@ _jmp_addr_0x00756f55:    {disp8} mov        edx, dword ptr [edi + 0x28]         
                          push               0xb                                           // 0x00756fa3    6a0b
                          call               _jmp_addr_0x00648290                          // 0x00756fa5    e8e612efff
                          push               0x8                                           // 0x00756faa    6a08
-                         call               _operator_new                                // 0x00756fac    e83df50600
+                         call               ??2@YAPAXI@Z                                  // 0x00756fac    e83df50600
                          xor.s              ebp, ebp                                      // 0x00756fb1    33ed
                          add                esp, 0x18                                     // 0x00756fb3    83c418
                          cmp.s              eax, ebp                                      // 0x00756fb6    3bc5
@@ -5338,7 +5338,7 @@ _jmp_addr_0x00759f8e:    {disp8} lea        edx, dword ptr [esp + 0x2c]         
                          {disp8} mov        dword ptr [esp + 0x30], eax                   // 0x00759f99    89442430
 _jmp_addr_0x00759f9d:    push               0x8                                           // 0x00759f9d    6a08
                          {disp8} lea        edi, dword ptr [esp + esi * 0x1 + 0x30]       // 0x00759f9f    8d7c3430
-                         call               _operator_new                                // 0x00759fa3    e846c50600
+                         call               ??2@YAPAXI@Z                                  // 0x00759fa3    e846c50600
                          xor.s              edx, edx                                      // 0x00759fa8    33d2
                          add                esp, 0x04                                     // 0x00759faa    83c404
                          cmp.s              eax, edx                                      // 0x00759fad    3bc2
@@ -18217,7 +18217,7 @@ _jmp_addr_0x00762aa4:    mov                ecx, dword ptr [edx]                
                          {disp32} lea       edi, dword ptr [esi + 0x00000430]             // 0x00762b2d    8dbe30040000
                          push               eax                                           // 0x00762b33    50
                          mov                dword ptr [edi], eax                          // 0x00762b34    8907
-                         call               _jmp_addr_0x007c6425                          // 0x00762b36    e8ea380600
+                         call               _wcsncpy                                      // 0x00762b36    e8ea380600
                          add                esp, 0x0c                                     // 0x00762b3b    83c40c
                          {disp32} mov       word ptr [esi + 0x0000022e], bx               // 0x00762b3e    66899e2e020000
                          xor.s              ecx, ecx                                      // 0x00762b45    33c9

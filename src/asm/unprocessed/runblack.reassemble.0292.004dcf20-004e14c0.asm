@@ -67,7 +67,7 @@
 .extern  ___dl__FPv
 .extern _atexit
 .extern _sprintf
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
@@ -1591,7 +1591,7 @@ _jmp_addr_0x004de30d:    xor.s              esi, esi                            
 _jmp_addr_0x004de30f:    test               esi, esi                                        // 0x004de30f    85f6
                          {disp8} je         _jmp_addr_0x004de347                            // 0x004de311    7434
                          push               0x8                                             // 0x004de313    6a08
-                         call               _operator_new                                  // 0x004de315    e8d4812e00
+                         call               ??2@YAPAXI@Z                                    // 0x004de315    e8d4812e00
                          add                esp, 0x04                                       // 0x004de31a    83c404
                          test               eax, eax                                        // 0x004de31d    85c0
                          {disp8} je         _jmp_addr_0x004de347                            // 0x004de31f    7426

@@ -92,7 +92,7 @@
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _wcslen
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _free
 .extern _jmp_addr_0x007c6c29
 .extern _jmp_addr_0x007c6edf
@@ -4387,7 +4387,7 @@ _jmp_addr_0x0066c4fd:    {disp8} mov        eax, dword ptr [eax + 0x04]         
                          cmp.s              ecx, edi                                      // 0x0066c504    3bcf
                          {disp32} jne       _jmp_addr_0x0066c59c                          // 0x0066c506    0f8590000000
 _jmp_addr_0x0066c50c:    push               0x8                                           // 0x0066c50c    6a08
-                         call               _operator_new                                // 0x0066c50e    e8db9f1500
+                         call               ??2@YAPAXI@Z                                  // 0x0066c50e    e8db9f1500
                          add                esp, 0x04                                     // 0x0066c513    83c404
                          cmp.s              eax, edi                                      // 0x0066c516    3bc7
                          {disp8} je         _jmp_addr_0x0066c523                          // 0x0066c518    7409

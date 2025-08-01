@@ -98,7 +98,7 @@
 .extern  ___dl__FPv
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern ___nw__FUl
 
 .globl @__ct__6MobileFv@4
@@ -12055,7 +12055,7 @@ _jmp_addr_0x00561ec2:    push               0x00000676                          
 _jmp_addr_0x00561ee4:    test               edi, edi                                       // 0x00561ee4    85ff
                          {disp8} je         _jmp_addr_0x00561f0d                           // 0x00561ee6    7425
                          push               0x8                                            // 0x00561ee8    6a08
-                         call               _operator_new                                 // 0x00561eea    e8ff452600
+                         call               ??2@YAPAXI@Z                                   // 0x00561eea    e8ff452600
                          add                esp, 0x04                                      // 0x00561eef    83c404
                          test               eax, eax                                       // 0x00561ef2    85c0
                          {disp8} je         _jmp_addr_0x00561f0d                           // 0x00561ef4    7417

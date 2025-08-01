@@ -102,7 +102,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007deab0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -3660,7 +3660,7 @@ _jmp_addr_0x00417c50:    push               esi                                 
                          test               edi, edi                                      // 0x00417c62    85ff
                          {disp8} je         _jmp_addr_0x00417c8b                          // 0x00417c64    7425
                          push               0x8                                           // 0x00417c66    6a08
-                         call               _operator_new                                // 0x00417c68    e881e83a00
+                         call               ??2@YAPAXI@Z                                  // 0x00417c68    e881e83a00
                          add                esp, 0x04                                     // 0x00417c6d    83c404
                          test               eax, eax                                      // 0x00417c70    85c0
                          {disp8} je         _jmp_addr_0x00417c8b                          // 0x00417c72    7417

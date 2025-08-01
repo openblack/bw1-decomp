@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x007c60f0
-.extern _jmp_addr_0x007c6587
+.extern _memmove
+.extern _atoi
 .extern _strncpy
 .extern _strncmp
 .extern _strstr
@@ -281,7 +281,7 @@ _jmp_addr_0x00896d4d:    mov              edx, 0x00fabf70                       
                          push             esi                                            // 0x00896d57    56
                          push             0x00fabf70                                     // 0x00896d58    6870bffa00
                          {disp32} mov     dword ptr [data_bytes + 0x5e67c4], ecx         // 0x00896d5d    890dc4c7fa00
-                         call             _jmp_addr_0x007c60f0                           // 0x00896d63    e888f3f2ff
+                         call             _memmove                                       // 0x00896d63    e888f3f2ff
                          add              esp, 0x0c                                      // 0x00896d68    83c40c
                          xor.s            eax, eax                                       // 0x00896d6b    33c0
                          pop              edi                                            // 0x00896d6d    5f
@@ -469,7 +469,7 @@ _jmp_addr_0x00896f22:    {disp8} lea      ecx, dword ptr [ebp + -0x0c]          
                          {disp8} lea      eax, dword ptr [esp + 0x18]                    // 0x00896f34    8d442418
                          {disp8} mov      byte ptr [esp + ebp * 0x1 + 0x0b], 0x00        // 0x00896f38    c6442c0b00
                          push             eax                                            // 0x00896f3d    50
-                         call             _jmp_addr_0x007c6587                           // 0x00896f3e    e844f6f2ff
+                         call             _atoi                           // 0x00896f3e    e844f6f2ff
                          add              esp, 0x10                                      // 0x00896f43    83c410
                          cmp              eax, 0x14                                      // 0x00896f46    83f814
                          {disp32} mov     dword ptr [data_bytes + 0x5e6770], eax         // 0x00896f49    a370c7fa00

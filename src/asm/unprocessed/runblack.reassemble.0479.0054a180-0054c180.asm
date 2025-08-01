@@ -352,7 +352,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c647f
+.extern _swprintf
 .extern _jmp_addr_0x007c6bff
 .extern _jmp_addr_0x007c6c29
 .extern _jmp_addr_0x007c6e30

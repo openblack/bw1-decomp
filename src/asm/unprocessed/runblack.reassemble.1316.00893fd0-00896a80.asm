@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _sprintf
-.extern _jmp_addr_0x007c6587
+.extern _atoi
 .extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c6ce0
@@ -2292,7 +2292,7 @@ _jmp_addr_0x008954d6:    add              esp, 0x0c                             
                          {disp8} mov      ecx, dword ptr [esi + 0x20]                    // 0x00895577    8b4e20
                          {disp8} mov      edx, dword ptr [ecx + 0x08]                    // 0x0089557a    8b5108
                          push             edx                                            // 0x0089557d    52
-                         call             _jmp_addr_0x007c6587                           // 0x0089557e    e80410f3ff
+                         call             _atoi                           // 0x0089557e    e80410f3ff
                          {disp8} mov      dword ptr [esp + 0x18], eax                    // 0x00895583    89442418
                          {disp8} mov      eax, dword ptr [esi + 0x20]                    // 0x00895587    8b4620
                          or               ecx, 0xffffffff                                // 0x0089558a    83c9ff

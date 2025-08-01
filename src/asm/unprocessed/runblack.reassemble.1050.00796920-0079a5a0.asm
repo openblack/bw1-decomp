@@ -52,9 +52,9 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _atexit
 .extern _sprintf
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _wcslen
-.extern _jmp_addr_0x007c647f
+.extern _swprintf
 .extern _jmp_addr_0x007c6ce0
 .extern _strstr
 .extern ___nw__FUl
@@ -3868,7 +3868,7 @@ _jmp_addr_0x0079989f:    xor.s                eax, eax                          
                          push                 eax                                           // 0x007998b3    50
                          push                 0x00c2a2e0                                    // 0x007998b4    68e0a2c200
                          push                 ecx                                           // 0x007998b9    51
-                         call                 _jmp_addr_0x007c647f                          // 0x007998ba    e8c0cb0200
+                         call                 _swprintf                                     // 0x007998ba    e8c0cb0200
                          add                  esp, 0x0c                                     // 0x007998bf    83c40c
                          mov                  edi, 0x00000001                               // 0x007998c2    bf01000000
                          {disp8} jmp          _jmp_addr_0x007998f0                          // 0x007998c7    eb27
@@ -3879,7 +3879,7 @@ _jmp_addr_0x007998c9:    xor.s                edx, edx                          
                          push                 edx                                           // 0x007998df    52
                          push                 0x00c2a2d4                                    // 0x007998e0    68d4a2c200
                          push                 eax                                           // 0x007998e5    50
-                         call                 _jmp_addr_0x007c647f                          // 0x007998e6    e894cb0200
+                         call                 _swprintf                                     // 0x007998e6    e894cb0200
                          add                  esp, 0x0c                                     // 0x007998eb    83c40c
                          xor.s                edi, edi                                      // 0x007998ee    33ff
 _jmp_addr_0x007998f0:    {disp32} mov         ecx, dword ptr [esp + 0x000000a0]             // 0x007998f0    8b8c24a0000000
@@ -4182,7 +4182,7 @@ _jmp_addr_0x00799e10:    inc                  esi                               
 _jmp_addr_0x00799e1e:    push                 esi                                           // 0x00799e1e    56
                          push                 edi                                           // 0x00799e1f    57
                          push                 0x00e06038                                    // 0x00799e20    683860e000
-                         call                 _jmp_addr_0x007c6425                          // 0x00799e25    e8fbc50200
+                         call                 _wcsncpy                                      // 0x00799e25    e8fbc50200
                          {disp32} mov         eax, dword ptr [data_bytes + 0x47012c]        // 0x00799e2a    a12c61e300
                          add                  esp, 0x0c                                     // 0x00799e2f    83c40c
                          inc                  eax                                           // 0x00799e32    40
@@ -4194,7 +4194,7 @@ _jmp_addr_0x00799e1e:    push                 esi                               
 _jmp_addr_0x00799e3f:    push                 esi                                           // 0x00799e3f    56
                          push                 edi                                           // 0x00799e40    57
                          push                 0x00e06038                                    // 0x00799e41    683860e000
-                         call                 _jmp_addr_0x007c6425                          // 0x00799e46    e8dac50200
+                         call                 _wcsncpy                                      // 0x00799e46    e8dac50200
                          add                  esp, 0x0c                                     // 0x00799e4b    83c40c
                          pop                  edi                                           // 0x00799e4e    5f
                          xor.s                eax, eax                                      // 0x00799e4f    33c0
