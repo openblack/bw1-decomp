@@ -84,7 +84,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _fscanf_10LHFilePath
@@ -3753,15 +3753,15 @@ _jmp_addr_0x004c7650:    {disp32} mov       dword ptr [data_bytes + 0x2bc82c], 0
                          push               0x009d987c                                           // 0x004c7667    687c989d00
                          push               esi                                                  // 0x004c766c    56
                          mov.s              edi, ecx                                             // 0x004c766d    8bf9
-                         call               _fprintf__10LHFilePath                               // 0x004c766f    e83cf72f00
+                         call               _fprintf                                             // 0x004c766f    e83cf72f00
                          add                esp, 0x08                                            // 0x004c7674    83c408
                          push               0x009d986c                                           // 0x004c7677    686c989d00
                          push               esi                                                  // 0x004c767c    56
-                         call               _fprintf__10LHFilePath                               // 0x004c767d    e82ef72f00
+                         call               _fprintf                                             // 0x004c767d    e82ef72f00
                          add                esp, 0x08                                            // 0x004c7682    83c408
                          push               0x009d9830                                           // 0x004c7685    6830989d00
                          push               esi                                                  // 0x004c768a    56
-                         call               _fprintf__10LHFilePath                               // 0x004c768b    e820f72f00
+                         call               _fprintf                                             // 0x004c768b    e820f72f00
                          {disp8} mov        ebx, dword ptr [esp + 0x1c]                          // 0x004c7690    8b5c241c
                          add                esp, 0x08                                            // 0x004c7694    83c408
                          push               ebx                                                  // 0x004c7697    53
@@ -3809,7 +3809,7 @@ _jmp_addr_0x004c7650:    {disp32} mov       dword ptr [data_bytes + 0x2bc82c], 0
                          add                esp, 0x08                                            // 0x004c76f1    83c408
                          push               0x009d9928                                           // 0x004c76f4    6828999d00
                          push               esi                                                  // 0x004c76f9    56
-                         call               _fprintf__10LHFilePath                               // 0x004c76fa    e8b1f62f00
+                         call               _fprintf                                             // 0x004c76fa    e8b1f62f00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x13920]                // 0x004c76ff    a120999d00
                          {disp32} mov       cx, word ptr [data_bytes + 0x13924]                  // 0x004c7704    668b0d24999d00
                          {disp32} mov       dl, byte ptr [data_bytes + 0x13926]                  // 0x004c770b    8a1526999d00
@@ -3871,7 +3871,7 @@ _jmp_addr_0x004c7650:    {disp32} mov       dword ptr [data_bytes + 0x2bc82c], 0
                          push               edx                                                  // 0x004c7803    52
                          push               0x009d98ec                                           // 0x004c7804    68ec989d00
                          push               esi                                                  // 0x004c7809    56
-                         call               _fprintf__10LHFilePath                               // 0x004c780a    e8a1f52f00
+                         call               _fprintf                                             // 0x004c780a    e8a1f52f00
                          push               ebx                                                  // 0x004c780f    53
                          push               esi                                                  // 0x004c7810    56
                          call               _jmp_addr_0x004c7d80                                 // 0x004c7811    e86a050000
@@ -3885,7 +3885,7 @@ _jmp_addr_0x004c7650:    {disp32} mov       dword ptr [data_bytes + 0x2bc82c], 0
                          push               ecx                                                  // 0x004c7831    51
                          push               0x009d98e0                                           // 0x004c7832    68e0989d00
                          push               esi                                                  // 0x004c7837    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7838    e873f52f00
+                         call               _fprintf                                             // 0x004c7838    e873f52f00
                          push               ebx                                                  // 0x004c783d    53
                          push               esi                                                  // 0x004c783e    56
                          call               _jmp_addr_0x004c7d80                                 // 0x004c783f    e83c050000
@@ -3898,14 +3898,14 @@ _jmp_addr_0x004c7650:    {disp32} mov       dword ptr [data_bytes + 0x2bc82c], 0
                          push               ecx                                                  // 0x004c7859    51
                          push               0x009d98d4                                           // 0x004c785a    68d4989d00
                          push               esi                                                  // 0x004c785f    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7860    e84bf52f00
+                         call               _fprintf                                             // 0x004c7860    e84bf52f00
                          push               ebx                                                  // 0x004c7865    53
                          push               esi                                                  // 0x004c7866    56
                          call               _jmp_addr_0x004c7d80                                 // 0x004c7867    e814050000
                          add                esp, 0x14                                            // 0x004c786c    83c414
                          push               0x009d98cc                                           // 0x004c786f    68cc989d00
                          push               esi                                                  // 0x004c7874    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7875    e836f52f00
+                         call               _fprintf                                             // 0x004c7875    e836f52f00
                          {disp8} mov        edx, dword ptr [ebp + 0x08]                          // 0x004c787a    8b5508
                          {disp8} mov        ecx, dword ptr [edx + 0x14]                          // 0x004c787d    8b4a14
                          mov                eax, dword ptr [ecx]                                 // 0x004c7880    8b01
@@ -3921,7 +3921,7 @@ _jmp_addr_0x004c7650:    {disp32} mov       dword ptr [data_bytes + 0x2bc82c], 0
                          fstp               qword ptr [esp]                                      // 0x004c7897    dd1c24
                          push               0x009d98bc                                           // 0x004c789a    68bc989d00
                          push               esi                                                  // 0x004c789f    56
-                         call               _fprintf__10LHFilePath                               // 0x004c78a0    e80bf52f00
+                         call               _fprintf                                             // 0x004c78a0    e80bf52f00
                          add                esp, 0x10                                            // 0x004c78a5    83c410
                          pop                edi                                                  // 0x004c78a8    5f
                          pop                esi                                                  // 0x004c78a9    5e
@@ -3947,7 +3947,7 @@ _jmp_addr_0x004c78c0:    push               ebx                                 
                          push               0x009d995c                                           // 0x004c78c7    685c999d00
                          push               ebx                                                  // 0x004c78cc    53
                          mov.s              esi, ecx                                             // 0x004c78cd    8bf1
-                         call               _fprintf__10LHFilePath                               // 0x004c78cf    e8dcf42f00
+                         call               _fprintf                                             // 0x004c78cf    e8dcf42f00
                          add                esp, 0x08                                            // 0x004c78d4    83c408
                          mov                edi, 0x00c67f10                                      // 0x004c78d7    bf107fc600
                          add                esi, 0x00000148                                      // 0x004c78dc    81c648010000
@@ -3960,7 +3960,7 @@ _jmp_addr_0x004c78e2:    {disp32} fld       dword ptr [esi + 0x000000a0]        
                          push               edi                                                  // 0x004c78f6    57
                          push               0x009d993c                                           // 0x004c78f7    683c999d00
                          push               ebx                                                  // 0x004c78fc    53
-                         call               _fprintf__10LHFilePath                               // 0x004c78fd    e8aef42f00
+                         call               _fprintf                                             // 0x004c78fd    e8aef42f00
                          add                edi, 0x000001c0                                      // 0x004c7902    81c7c0010000
                          add                esp, 0x1c                                            // 0x004c7908    83c41c
                          add                esi, 0x04                                            // 0x004c790b    83c604
@@ -3987,7 +3987,7 @@ _jmp_addr_0x004c7920:    push               ebx                                 
                          add                esp, 0x08                                            // 0x004c7935    83c408
                          push               0x009d98cc                                           // 0x004c7938    68cc989d00
                          push               ebx                                                  // 0x004c793d    53
-                         call               _fprintf__10LHFilePath                               // 0x004c793e    e86df42f00
+                         call               _fprintf                                             // 0x004c793e    e86df42f00
                          push               ebp                                                  // 0x004c7943    55
                          push               ebx                                                  // 0x004c7944    53
                          call               _jmp_addr_0x004c7d80                                 // 0x004c7945    e836040000
@@ -4000,7 +4000,7 @@ _jmp_addr_0x004c7920:    push               ebx                                 
                          push               ecx                                                  // 0x004c795a    51
                          push               0x009d998c                                           // 0x004c795b    688c999d00
                          push               ebx                                                  // 0x004c7960    53
-                         call               _fprintf__10LHFilePath                               // 0x004c7961    e84af42f00
+                         call               _fprintf                                             // 0x004c7961    e84af42f00
                          push               ebp                                                  // 0x004c7966    55
                          push               ebx                                                  // 0x004c7967    53
                          call               _jmp_addr_0x004c7d80                                 // 0x004c7968    e813040000
@@ -4009,7 +4009,7 @@ _jmp_addr_0x004c7920:    push               ebx                                 
                          push               edx                                                  // 0x004c7973    52
                          push               0x009d997c                                           // 0x004c7974    687c999d00
                          push               ebx                                                  // 0x004c7979    53
-                         call               _fprintf__10LHFilePath                               // 0x004c797a    e831f42f00
+                         call               _fprintf                                             // 0x004c797a    e831f42f00
                          mov                eax, dword ptr [esi]                                 // 0x004c797f    8b06
                          add                esp, 0x0c                                            // 0x004c7981    83c40c
                          mov.s              ecx, esi                                             // 0x004c7984    8bce
@@ -4037,7 +4037,7 @@ _jmp_addr_0x004c798f:    push               ebp                                 
                          push               eax                                                  // 0x004c79b6    50
                          push               0x009d9968                                           // 0x004c79b7    6868999d00
                          push               ebx                                                  // 0x004c79bc    53
-                         call               _fprintf__10LHFilePath                               // 0x004c79bd    e8eef32f00
+                         call               _fprintf                                             // 0x004c79bd    e8eef32f00
                          mov                eax, dword ptr [esi]                                 // 0x004c79c2    8b06
                          add                esp, 0x10                                            // 0x004c79c4    83c410
                          mov.s              ecx, esi                                             // 0x004c79c7    8bce
@@ -4070,7 +4070,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c79f4    83c408
                          push               0x009d999c                                           // 0x004c79f7    689c999d00
                          push               esi                                                  // 0x004c79fc    56
-                         call               _fprintf__10LHFilePath                               // 0x004c79fd    e8aef32f00
+                         call               _fprintf                                             // 0x004c79fd    e8aef32f00
                          add                esp, 0x08                                            // 0x004c7a02    83c408
                          push               ebx                                                  // 0x004c7a05    53
                          push               esi                                                  // 0x004c7a06    56
@@ -4104,7 +4104,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7a34    83c408
                          push               0x009d99ac                                           // 0x004c7a37    68ac999d00
                          push               esi                                                  // 0x004c7a3c    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7a3d    e86ef32f00
+                         call               _fprintf                                             // 0x004c7a3d    e86ef32f00
                          add                esp, 0x08                                            // 0x004c7a42    83c408
                          push               ebx                                                  // 0x004c7a45    53
                          push               esi                                                  // 0x004c7a46    56
@@ -4138,7 +4138,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7a74    83c408
                          push               0x009d99c0                                           // 0x004c7a77    68c0999d00
                          push               esi                                                  // 0x004c7a7c    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7a7d    e82ef32f00
+                         call               _fprintf                                             // 0x004c7a7d    e82ef32f00
                          add                esp, 0x08                                            // 0x004c7a82    83c408
                          push               ebx                                                  // 0x004c7a85    53
                          push               esi                                                  // 0x004c7a86    56
@@ -4172,7 +4172,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7ab4    83c408
                          push               0x009d99d4                                           // 0x004c7ab7    68d4999d00
                          push               esi                                                  // 0x004c7abc    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7abd    e8eef22f00
+                         call               _fprintf                                             // 0x004c7abd    e8eef22f00
                          add                esp, 0x08                                            // 0x004c7ac2    83c408
                          push               ebx                                                  // 0x004c7ac5    53
                          push               esi                                                  // 0x004c7ac6    56
@@ -4206,7 +4206,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7af4    83c408
                          push               0x009d99ec                                           // 0x004c7af7    68ec999d00
                          push               esi                                                  // 0x004c7afc    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7afd    e8aef22f00
+                         call               _fprintf                                             // 0x004c7afd    e8aef22f00
                          add                esp, 0x08                                            // 0x004c7b02    83c408
                          push               ebx                                                  // 0x004c7b05    53
                          push               esi                                                  // 0x004c7b06    56
@@ -4240,7 +4240,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7b34    83c408
                          push               0x009d9a00                                           // 0x004c7b37    68009a9d00
                          push               esi                                                  // 0x004c7b3c    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7b3d    e86ef22f00
+                         call               _fprintf                                             // 0x004c7b3d    e86ef22f00
                          add                esp, 0x08                                            // 0x004c7b42    83c408
                          push               ebx                                                  // 0x004c7b45    53
                          push               esi                                                  // 0x004c7b46    56
@@ -4274,7 +4274,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7b74    83c408
                          push               0x009d9a18                                           // 0x004c7b77    68189a9d00
                          push               esi                                                  // 0x004c7b7c    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7b7d    e82ef22f00
+                         call               _fprintf                                             // 0x004c7b7d    e82ef22f00
                          add                esp, 0x08                                            // 0x004c7b82    83c408
                          push               ebx                                                  // 0x004c7b85    53
                          push               esi                                                  // 0x004c7b86    56
@@ -4308,7 +4308,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7bb4    83c408
                          push               0x009d9a34                                           // 0x004c7bb7    68349a9d00
                          push               esi                                                  // 0x004c7bbc    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7bbd    e8eef12f00
+                         call               _fprintf                                             // 0x004c7bbd    e8eef12f00
                          add                esp, 0x08                                            // 0x004c7bc2    83c408
                          push               ebx                                                  // 0x004c7bc5    53
                          push               esi                                                  // 0x004c7bc6    56
@@ -4342,7 +4342,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7bf4    83c408
                          push               0x009d9a48                                           // 0x004c7bf7    68489a9d00
                          push               esi                                                  // 0x004c7bfc    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7bfd    e8aef12f00
+                         call               _fprintf                                             // 0x004c7bfd    e8aef12f00
                          add                esp, 0x08                                            // 0x004c7c02    83c408
                          push               ebx                                                  // 0x004c7c05    53
                          push               esi                                                  // 0x004c7c06    56
@@ -4376,7 +4376,7 @@ _jmp_addr_0x004c79d1:    pop                edi                                 
                          add                esp, 0x08                                            // 0x004c7c34    83c408
                          push               0x009d9a5c                                           // 0x004c7c37    685c9a9d00
                          push               esi                                                  // 0x004c7c3c    56
-                         call               _fprintf__10LHFilePath                               // 0x004c7c3d    e86ef12f00
+                         call               _fprintf                                             // 0x004c7c3d    e86ef12f00
                          add                esp, 0x08                                            // 0x004c7c42    83c408
                          push               ebx                                                  // 0x004c7c45    53
                          push               esi                                                  // 0x004c7c46    56
@@ -4409,7 +4409,7 @@ _jmp_addr_0x004c7c60:    push               ecx                                 
                          push               edi                                                  // 0x004c7c70    57
                          {disp8} mov        dword ptr [esp + 0x18], ebp                          // 0x004c7c71    896c2418
                          xor.s              ebx, ebx                                             // 0x004c7c75    33db
-                         call               _fprintf__10LHFilePath                               // 0x004c7c77    e834f12f00
+                         call               _fprintf                                             // 0x004c7c77    e834f12f00
                          {disp8} mov        esi, dword ptr [ebp + 0x10]                          // 0x004c7c7c    8b7510
                          add                esp, 0x08                                            // 0x004c7c7f    83c408
                          test               esi, esi                                             // 0x004c7c82    85f6
@@ -4419,7 +4419,7 @@ _jmp_addr_0x004c7c60:    push               ecx                                 
 _jmp_addr_0x004c7c8d:    push               ebx                                                  // 0x004c7c8d    53
                          push               0x009d9a90                                           // 0x004c7c8e    68909a9d00
                          push               edi                                                  // 0x004c7c93    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7c94    e817f12f00
+                         call               _fprintf                                             // 0x004c7c94    e817f12f00
                          mov                edx, dword ptr [esi]                                 // 0x004c7c99    8b16
                          add                esp, 0x0c                                            // 0x004c7c9b    83c40c
                          push               ebp                                                  // 0x004c7c9e    55
@@ -4431,7 +4431,7 @@ _jmp_addr_0x004c7c8d:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x004c7cba                                 // 0x004c7caa    740e
                          push               0x009cf590                                           // 0x004c7cac    6890f59c00
                          push               edi                                                  // 0x004c7cb1    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7cb2    e8f9f02f00
+                         call               _fprintf                                             // 0x004c7cb2    e8f9f02f00
                          add                esp, 0x08                                            // 0x004c7cb7    83c408
 _jmp_addr_0x004c7cba:    {disp8} mov        esi, dword ptr [esi + 0x08]                          // 0x004c7cba    8b7608
                          inc                ebx                                                  // 0x004c7cbd    43
@@ -4440,7 +4440,7 @@ _jmp_addr_0x004c7cba:    {disp8} mov        esi, dword ptr [esi + 0x08]         
                          {disp8} mov        ebp, dword ptr [esp + 0x10]                          // 0x004c7cc2    8b6c2410
 _jmp_addr_0x004c7cc6:    push               0x009d9a70                                           // 0x004c7cc6    68709a9d00
                          push               edi                                                  // 0x004c7ccb    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7ccc    e8dff02f00
+                         call               _fprintf                                             // 0x004c7ccc    e8dff02f00
                          {disp8} mov        esi, dword ptr [ebp + 0x24]                          // 0x004c7cd1    8b7524
                          add                esp, 0x08                                            // 0x004c7cd4    83c408
                          test               esi, esi                                             // 0x004c7cd7    85f6
@@ -4450,7 +4450,7 @@ _jmp_addr_0x004c7cc6:    push               0x009d9a70                          
 _jmp_addr_0x004c7ce2:    push               ebx                                                  // 0x004c7ce2    53
                          push               0x009d9a90                                           // 0x004c7ce3    68909a9d00
                          push               edi                                                  // 0x004c7ce8    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7ce9    e8c2f02f00
+                         call               _fprintf                                             // 0x004c7ce9    e8c2f02f00
                          mov                edx, dword ptr [esi]                                 // 0x004c7cee    8b16
                          add                esp, 0x0c                                            // 0x004c7cf0    83c40c
                          push               ebp                                                  // 0x004c7cf3    55
@@ -4462,7 +4462,7 @@ _jmp_addr_0x004c7ce2:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x004c7d0f                                 // 0x004c7cff    740e
                          push               0x009cf590                                           // 0x004c7d01    6890f59c00
                          push               edi                                                  // 0x004c7d06    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7d07    e8a4f02f00
+                         call               _fprintf                                             // 0x004c7d07    e8a4f02f00
                          add                esp, 0x08                                            // 0x004c7d0c    83c408
 _jmp_addr_0x004c7d0f:    {disp8} mov        esi, dword ptr [esi + 0x08]                          // 0x004c7d0f    8b7608
                          inc                ebx                                                  // 0x004c7d12    43
@@ -4481,25 +4481,25 @@ _jmp_addr_0x004c7d20:    push               esi                                 
                          push               0x009d9b40                                           // 0x004c7d26    68409b9d00
                          push               edi                                                  // 0x004c7d2b    57
                          mov.s              esi, ecx                                             // 0x004c7d2c    8bf1
-                         call               _fprintf__10LHFilePath                               // 0x004c7d2e    e87df02f00
+                         call               _fprintf                                             // 0x004c7d2e    e87df02f00
                          {disp8} mov        eax, dword ptr [esi + 0x08]                          // 0x004c7d33    8b4608
                          add                esp, 0x08                                            // 0x004c7d36    83c408
                          push               eax                                                  // 0x004c7d39    50
                          push               0x009d9b0c                                           // 0x004c7d3a    680c9b9d00
                          push               edi                                                  // 0x004c7d3f    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7d40    e86bf02f00
+                         call               _fprintf                                             // 0x004c7d40    e86bf02f00
                          {disp8} mov        ecx, dword ptr [esi + 0x10]                          // 0x004c7d45    8b4e10
                          add                esp, 0x0c                                            // 0x004c7d48    83c40c
                          push               ecx                                                  // 0x004c7d4b    51
                          push               0x009d9adc                                           // 0x004c7d4c    68dc9a9d00
                          push               edi                                                  // 0x004c7d51    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7d52    e859f02f00
+                         call               _fprintf                                             // 0x004c7d52    e859f02f00
                          {disp8} fld        dword ptr [esi + 0x18]                               // 0x004c7d57    d94618
                          add                esp, 0x04                                            // 0x004c7d5a    83c404
                          fstp               qword ptr [esp]                                      // 0x004c7d5d    dd1c24
                          push               0x009d9abc                                           // 0x004c7d60    68bc9a9d00
                          push               edi                                                  // 0x004c7d65    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7d66    e845f02f00
+                         call               _fprintf                                             // 0x004c7d66    e845f02f00
                          add                esp, 0x10                                            // 0x004c7d6b    83c410
                          pop                edi                                                  // 0x004c7d6e    5f
                          pop                esi                                                  // 0x004c7d6f    5e
@@ -4525,7 +4525,7 @@ _jmp_addr_0x004c7d80:    push               esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004c7d8a    8b7c240c
 _jmp_addr_0x004c7d8e:    push               0x009d9b54                                           // 0x004c7d8e    68549b9d00
                          push               edi                                                  // 0x004c7d93    57
-                         call               _fprintf__10LHFilePath                               // 0x004c7d94    e817f02f00
+                         call               _fprintf                                             // 0x004c7d94    e817f02f00
                          add                esp, 0x08                                            // 0x004c7d99    83c408
                          dec                esi                                                  // 0x004c7d9c    4e
                          {disp8} jne        _jmp_addr_0x004c7d8e                                 // 0x004c7d9d    75ef

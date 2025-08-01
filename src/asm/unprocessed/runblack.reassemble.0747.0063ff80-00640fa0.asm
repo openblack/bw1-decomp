@@ -22,7 +22,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064a9f0
 .extern _jmp_addr_0x0078ea20
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c748b
@@ -1093,7 +1093,7 @@ _jmp_addr_0x00640b65:    {disp8} mov       eax, dword ptr [esp + 0x10]          
                          push              0x0                                           // 0x00640c0b    6a00
                          push              0x00bfe358                                    // 0x00640c0d    6858e3bf00
                          push              esi                                           // 0x00640c12    56
-                         call              _fprintf__10LHFilePath                        // 0x00640c13    e898611800
+                         call              _fprintf                                      // 0x00640c13    e898611800
                          {disp32} mov      eax, dword ptr [edi + 0x00050000]             // 0x00640c18    8b8700000500
                          add               esp, 0x30                                     // 0x00640c1e    83c430
                          xor.s             ebx, ebx                                      // 0x00640c21    33db
@@ -1113,7 +1113,7 @@ _jmp_addr_0x00640c2a:    {disp8} fld       dword ptr [esi + 0x04]               
                          fstp              qword ptr [esp]                               // 0x00640c4d    dd1c24
                          push              0x00bfe34c                                    // 0x00640c50    684ce3bf00
                          push              edx                                           // 0x00640c55    52
-                         call              _fprintf__10LHFilePath                        // 0x00640c56    e855611800
+                         call              _fprintf                                      // 0x00640c56    e855611800
                          {disp32} mov      eax, dword ptr [edi + 0x00050000]             // 0x00640c5b    8b8700000500
                          add               esp, 0x20                                     // 0x00640c61    83c420
                          add               esi, 0x14                                     // 0x00640c64    83c614

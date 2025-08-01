@@ -173,7 +173,7 @@
 .extern __unlink
 .extern _getenv
 .extern __strcmpi
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
