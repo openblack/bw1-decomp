@@ -45,7 +45,7 @@
 .extern _atexit
 .extern __unlink
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _tolower
 .extern _strrchr
@@ -794,7 +794,7 @@ _pc_main__Fv:            push              ebp                                  
                          call              __unlink                                      // 0x00641c9b    e8894f1800
                          push              0x009cd0bc                                    // 0x00641ca0    68bcd09c00
                          push              0x00bfea9c                                    // 0x00641ca5    689ceabf00
-                         call              _fopen__10LHFilePath                          // 0x00641caa    e86e511800
+                         call              _fopen                                        // 0x00641caa    e86e511800
                          mov.s             esi, eax                                      // 0x00641caf    8bf0
                          {disp32} mov      eax, dword ptr [rdata_bytes + 0x3d4]          // 0x00641cb1    a1d4938a00
                          mov               ecx, dword ptr [eax]                          // 0x00641cb6    8b08

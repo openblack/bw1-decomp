@@ -25,7 +25,7 @@
 .extern _sprintf
 .extern _wcsncpy
 .extern _wcslen
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c8606
 .extern ___nw__FUl
@@ -78,7 +78,7 @@ _jmp_addr_0x00549930:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          {disp32} je       _jmp_addr_0x00549a6c                          // 0x0054993f    0f8427010000
                          push              0x009d976c                                    // 0x00549945    686c979d00
                          push              0x00bea824                                    // 0x0054994a    6824a8be00
-                         call              _fopen__10LHFilePath                          // 0x0054994f    e8c9d42700
+                         call              _fopen                                        // 0x0054994f    e8c9d42700
                          mov.s             ebp, eax                                      // 0x00549954    8be8
                          add               esp, 0x08                                     // 0x00549956    83c408
                          test              ebp, ebp                                      // 0x00549959    85ed

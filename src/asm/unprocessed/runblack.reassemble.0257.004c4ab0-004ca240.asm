@@ -85,7 +85,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _fscanf_10LHFilePath
 .extern _getc_10LHFilePath
@@ -175,7 +175,7 @@ start_0x004c4ab0_0x004ca240:
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                          // 0x004c4aed    8d4c2410
                          push               0x009d976c                                           // 0x004c4af1    686c979d00
                          push               ecx                                                  // 0x004c4af6    51
-                         call               _fopen__10LHFilePath                                 // 0x004c4af7    e821233000
+                         call               _fopen                                               // 0x004c4af7    e821233000
                          mov.s              esi, eax                                             // 0x004c4afc    8bf0
                          add                esp, 0x08                                            // 0x004c4afe    83c408
                          test               esi, esi                                             // 0x004c4b01    85f6
@@ -190,7 +190,7 @@ start_0x004c4ab0_0x004ca240:
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x004c4b1d    8d4c2420
                          push               0x009d976c                                           // 0x004c4b21    686c979d00
                          push               ecx                                                  // 0x004c4b26    51
-                         call               _fopen__10LHFilePath                                 // 0x004c4b27    e8f1223000
+                         call               _fopen                                               // 0x004c4b27    e8f1223000
                          mov.s              esi, eax                                             // 0x004c4b2c    8bf0
                          add                esp, 0x18                                            // 0x004c4b2e    83c418
                          test               esi, esi                                             // 0x004c4b31    85f6

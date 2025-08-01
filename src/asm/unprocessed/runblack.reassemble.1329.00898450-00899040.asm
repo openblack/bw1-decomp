@@ -6,7 +6,7 @@
 .extern  ___dl__FPv
 .extern _sprintf
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c75a2
 .extern _exit
@@ -79,7 +79,7 @@ _jmp_addr_0x008984b0:    push               esi                                 
                          push               0x009ce5dc                                    // 0x008984b6    68dce59c00
                          mov.s              esi, ecx                                      // 0x008984bb    8bf1
                          push               edi                                           // 0x008984bd    57
-                         call               _fopen__10LHFilePath                          // 0x008984be    e85ae9f2ff
+                         call               _fopen                                        // 0x008984be    e85ae9f2ff
                          add                esp, 0x08                                     // 0x008984c3    83c408
                          {disp32} mov       dword ptr [esi + 0x000001f8], eax             // 0x008984c6    8986f8010000
                          test               eax, eax                                      // 0x008984cc    85c0

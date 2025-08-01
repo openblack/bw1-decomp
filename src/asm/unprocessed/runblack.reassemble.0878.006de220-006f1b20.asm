@@ -359,7 +359,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007c8606
@@ -18462,7 +18462,7 @@ _jmp_addr_0x006eb49a:    {disp32} mov       ecx, dword ptr [esp + 0x00000624]   
                          call               _sprintf                                      // 0x006eb4b9    e814a30d00
                          push               0x009d976c                                    // 0x006eb4be    686c979d00
                          push               0x00d95b00                                    // 0x006eb4c3    68005bd900
-                         call               _fopen__10LHFilePath                          // 0x006eb4c8    e850b90d00
+                         call               _fopen                                        // 0x006eb4c8    e850b90d00
                          mov.s              ebp, eax                                      // 0x006eb4cd    8be8
                          add                esp, 0x18                                     // 0x006eb4cf    83c418
                          test               ebp, ebp                                      // 0x006eb4d2    85ed

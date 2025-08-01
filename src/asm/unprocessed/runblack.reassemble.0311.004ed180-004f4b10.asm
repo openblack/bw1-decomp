@@ -123,7 +123,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c7ae0
 .extern ___nw__FUl
@@ -3345,7 +3345,7 @@ _jmp_addr_0x004ef928:    pop                edi                                 
                          push               edi                                                  // 0x004ef94a    57
                          push               0x009cdd48                                           // 0x004ef94b    6848dd9c00
                          push               0x00be0260                                           // 0x004ef950    686002be00
-                         call               _fopen__10LHFilePath                                 // 0x004ef955    e8c3742d00
+                         call               _fopen                                               // 0x004ef955    e8c3742d00
                          add                esp, 0x08                                            // 0x004ef95a    83c408
                          xor.s              esi, esi                                             // 0x004ef95d    33f6
                          mov.s              edi, eax                                             // 0x004ef95f    8bf8

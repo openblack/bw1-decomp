@@ -173,7 +173,7 @@
 .extern __unlink
 .extern _getenv
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007da710
@@ -3976,7 +3976,7 @@ _jmp_addr_0x00436547:    cmp                dword ptr [data_bytes + 0x4ca5ec], e
                          call               __unlink                                             // 0x00436554    e8d0063900
                          push               0x009cd0bc                                           // 0x00436559    68bcd09c00
                          push               0x009cd0c0                                           // 0x0043655e    68c0d09c00
-                         call               _fopen__10LHFilePath                                 // 0x00436563    e8b5083900
+                         call               _fopen                                               // 0x00436563    e8b5083900
                          add                esp, 0x0c                                            // 0x00436568    83c40c
                          cmp.s              eax, ebx                                             // 0x0043656b    3bc3
                          {disp32} mov       dword ptr [data_bytes + 0x4ca5ec], eax               // 0x0043656d    a3ec05e900

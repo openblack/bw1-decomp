@@ -83,7 +83,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c748b
 .extern __aulldiv
@@ -1627,7 +1627,7 @@ _jmp_addr_0x006432f9:    push               0x009d976c                          
                          {disp8} mov        byte ptr [esp + 0x29], bl                      // 0x00643307    885c2429
                          {disp8} mov        byte ptr [esp + 0x2a], bl                      // 0x0064330b    885c242a
                          {disp8} mov        byte ptr [esp + 0x2b], bl                      // 0x0064330f    885c242b
-                         call               _fopen__10LHFilePath                           // 0x00643313    e8053b1800
+                         call               _fopen                                         // 0x00643313    e8053b1800
                          mov.s              esi, eax                                       // 0x00643318    8bf0
                          add                esp, 0x08                                      // 0x0064331a    83c408
                          cmp.s              esi, ebx                                       // 0x0064331d    3bf3

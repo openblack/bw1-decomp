@@ -35,7 +35,7 @@
 .extern _wcsncpy
 .extern _wcslen
 .extern _swprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c8606
@@ -300,7 +300,7 @@ _jmp_addr_0x005482e0:    sub                esp, 0x44                           
                          {disp8} mov        byte ptr [esp + 0x2d], 0x00                   // 0x00548335    c644242d00
                          {disp8} mov        byte ptr [esp + 0x2e], 0x00                   // 0x0054833a    c644242e00
                          {disp8} mov        byte ptr [esp + 0x2f], 0x00                   // 0x0054833f    c644242f00
-                         call               _fopen__10LHFilePath                          // 0x00548344    e8d4ea2700
+                         call               _fopen                                        // 0x00548344    e8d4ea2700
                          mov.s              edi, eax                                      // 0x00548349    8bf8
                          add                esp, 0x08                                     // 0x0054834b    83c408
                          cmp.s              edi, esi                                      // 0x0054834e    3bfe
@@ -852,7 +852,7 @@ _jmp_addr_0x00548990:    sub                esp, 0x00000494                     
                          push               edi                                           // 0x00548999    57
                          push               0x009d976c                                    // 0x0054899a    686c979d00
                          push               0x00bea824                                    // 0x0054899f    6824a8be00
-                         call               _fopen__10LHFilePath                          // 0x005489a4    e874e42700
+                         call               _fopen                                        // 0x005489a4    e874e42700
                          mov.s              ebp, eax                                      // 0x005489a9    8be8
                          add                esp, 0x08                                     // 0x005489ab    83c408
                          test               ebp, ebp                                      // 0x005489ae    85ed

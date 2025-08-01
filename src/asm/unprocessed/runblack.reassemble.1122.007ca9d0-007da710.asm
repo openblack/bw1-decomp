@@ -114,8 +114,8 @@
 .globl ___wtomb_environ
 .globl __stbuf
 .globl __ftbuf
-.globl _jmp_addr_0x007d0ab4
-.globl _jmp_addr_0x007d0c24
+.globl __openfile
+.globl __getstream
 .globl _jmp_addr_0x007d0cec
 .globl __freebuf
 .globl _jmp_addr_0x007d0df7
@@ -7795,7 +7795,7 @@ __ftbuf:                 cmp                dword ptr [esp + 0x04], 0x00        
                          pop                ecx                                            // 0x007d0ab1    59
 _jmp_addr_0x007d0ab2:    pop                esi                                            // 0x007d0ab2    5e
                          ret                                                               // 0x007d0ab3    c3
-_jmp_addr_0x007d0ab4:    push               ebp                                            // 0x007d0ab4    55
+__openfile:              push               ebp                                            // 0x007d0ab4    55
                          mov.s              ebp, esp                                       // 0x007d0ab5    8bec
                          push               ecx                                            // 0x007d0ab7    51
                          push               ecx                                            // 0x007d0ab8    51
@@ -7919,7 +7919,7 @@ _jmp_addr_0x007d0c1f:    pop                edi                                 
                          pop                ebx                                            // 0x007d0c21    5b
                          leave                                                             // 0x007d0c22    c9
                          ret                                                               // 0x007d0c23    c3
-_jmp_addr_0x007d0c24:    push               ebx                                            // 0x007d0c24    53
+__getstream:             push               ebx                                            // 0x007d0c24    53
                          push               esi                                            // 0x007d0c25    56
                          push               edi                                            // 0x007d0c26    57
                          push               0x2                                            // 0x007d0c27    6a02
