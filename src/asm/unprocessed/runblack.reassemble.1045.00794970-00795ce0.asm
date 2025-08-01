@@ -538,7 +538,7 @@ _jmp_addr_0x00794e30:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          {disp32} fld       dword ptr [data_bytes + 0x44002c]             // 0x00794e5e    d9052c60e000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1a6a0]             // 0x00794e64    d80da0368c00
                          fcos                                                             // 0x00794e6a    d9ff
-                         {disp32} fsubr     qword ptr [rdata_bytes + 0x2680]              // 0x00794e6c    dc2d80b68a00
+                         {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]   // 0x00794e6c    dc2d80b68a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0xf5e60]             // 0x00794e72    dc0d60ee9900
 _jmp_addr_0x00794e78:    push               ebx                                           // 0x00794e78    53
                          push               esi                                           // 0x00794e79    56

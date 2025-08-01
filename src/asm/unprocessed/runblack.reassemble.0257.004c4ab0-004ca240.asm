@@ -468,7 +468,7 @@ _jmp_addr_0x004c4da7:    {disp32} mov       eax, dword ptr [esi + 0x00020d18]   
                          mov.s              ecx, esi                                             // 0x004c4daf    8bce
                          call               _jmp_addr_0x004d7bd0                                 // 0x004c4db1    e81a2e0100
                          {disp32} fld       dword ptr [esp + 0x00000158]                         // 0x004c4db6    d9842458010000
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x19c48]                    // 0x004c4dbd    dc1d482c8c00
+                         {disp32} fcomp     qword ptr [__real@8@00000000000000000000]            // 0x004c4dbd    dc1d482c8c00
                          mov.s              edi, eax                                             // 0x004c4dc3    8bf8
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000                   // 0x004c4dc5    c744240c00000000
                          fnstsw             ax                                                   // 0x004c4dcd    dfe0

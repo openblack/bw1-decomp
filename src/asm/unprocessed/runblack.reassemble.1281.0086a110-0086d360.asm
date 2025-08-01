@@ -689,7 +689,7 @@ _jmp_addr_0x0086a845:    {disp32} mov       ecx, dword ptr [data_bytes + 0x5dc76
                          {disp8} mov        dword ptr [esp + 0x04], eax                    // 0x0086a878    89442404
                          {disp8} fild       dword ptr [esp + 0x04]                         // 0x0086a87c    db442404
                          fsubp              st(1), st                                      // 0x0086a880    dee9
-                         {disp32} fsubr     qword ptr [rdata_bytes + 0x2680]               // 0x0086a882    dc2d80b68a00
+                         {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]    // 0x0086a882    dc2d80b68a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x2b5d8]              // 0x0086a888    dc0dd8458d00
                          ret                                                               // 0x0086a88e    c3
                          nop                                                               // 0x0086a88f    90

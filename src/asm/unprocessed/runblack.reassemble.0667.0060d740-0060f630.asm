@@ -315,8 +315,8 @@ _jmp_addr_0x0060d9e1:    add                esp, 0x08                           
                          call               @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12                        // 0x0060d9f0    e8bb85ffff
                          fsqrt                                                          // 0x0060d9f5    d9fa
                          {disp32} fmul      qword ptr [rdata_bytes + 0x87670]           // 0x0060d9f7    dc0d70069300
-                         {disp32} fsub      qword ptr [rdata_bytes + 0x2680]            // 0x0060d9fd    dc2580b68a00
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x19c48]           // 0x0060da03    dc1d482c8c00
+                         {disp32} fsub      qword ptr [__real@8@3fff8000000000000000] // 0x0060d9fd    dc2580b68a00
+                         {disp32} fcomp     qword ptr [__real@8@00000000000000000000]   // 0x0060da03    dc1d482c8c00
                          fnstsw             ax                                          // 0x0060da09    dfe0
                          test               ah, 0x41                                    // 0x0060da0b    f6c441
                          {disp8} jne        _jmp_addr_0x0060da28                        // 0x0060da0e    7518
@@ -325,9 +325,9 @@ _jmp_addr_0x0060d9e1:    add                esp, 0x08                           
                          call               @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12                        // 0x0060da13    e89885ffff
                          fsqrt                                                          // 0x0060da18    d9fa
                          {disp32} fmul      qword ptr [rdata_bytes + 0x87670]           // 0x0060da1a    dc0d70069300
-                         {disp32} fsub      qword ptr [rdata_bytes + 0x2680]            // 0x0060da20    dc2580b68a00
+                         {disp32} fsub      qword ptr [__real@8@3fff8000000000000000] // 0x0060da20    dc2580b68a00
                          {disp8} jmp        _jmp_addr_0x0060da2e                        // 0x0060da26    eb06
-_jmp_addr_0x0060da28:    {disp32} fld       qword ptr [rdata_bytes + 0x19c48]           // 0x0060da28    dd05482c8c00
+_jmp_addr_0x0060da28:    {disp32} fld       qword ptr [__real@8@00000000000000000000]   // 0x0060da28    dd05482c8c00
 _jmp_addr_0x0060da2e:    call               _jmp_addr_0x007a1400                        // 0x0060da2e    e8cd391900
                          mov.s              edi, eax                                    // 0x0060da33    8bf8
                          cmp                edi, 0x0000ffff                             // 0x0060da35    81ffffff0000

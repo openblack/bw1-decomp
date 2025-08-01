@@ -4401,7 +4401,7 @@ _jmp_addr_0x0067723d:    {disp8} mov        eax, dword ptr [ebp + 0x00]         
                          pop                edi                                           // 0x0067725e    5f
                          {disp8} fst        dword ptr [esp + 0x40]                        // 0x0067725f    d9542440
                          pop                esi                                           // 0x00677263    5e
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x19c48]             // 0x00677264    dc1d482c8c00
+                         {disp32} fcomp     qword ptr [__real@8@00000000000000000000]     // 0x00677264    dc1d482c8c00
                          pop                ebp                                           // 0x0067726a    5d
                          fnstsw             ax                                            // 0x0067726b    dfe0
                          test               ah, 0x40                                      // 0x0067726d    f6c440

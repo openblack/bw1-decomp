@@ -3713,7 +3713,7 @@ _jmp_addr_0x005f97cc:    {disp8} mov        edx, dword ptr [esp + 0x58]         
                          {disp32} fild      dword ptr [esp + 0x000000a8]                   // 0x005f9811    db8424a8000000
                          fsqrt                                                             // 0x005f9818    d9fa
                          {disp32} fidiv     dword ptr [esp + 0x000000ac]                   // 0x005f981a    dab424ac000000
-                         {disp32} fsubr     qword ptr [rdata_bytes + 0x2680]               // 0x005f9821    dc2d80b68a00
+                         {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]    // 0x005f9821    dc2d80b68a00
                          {disp32} fcom      dword ptr [_rdata_float0p0]                    // 0x005f9827    d81598a38a00
                          fnstsw             ax                                             // 0x005f982d    dfe0
                          test               ah, 0x41                                       // 0x005f982f    f6c441
@@ -4339,7 +4339,7 @@ _jmp_addr_0x005fa112:    ret                                                    
                          push               esi                                            // 0x005fa124    56
                          {disp32} fmul      dword ptr [rdata_bytes + 0x57c90]              // 0x005fa125    d80d900c9000
                          fsin                                                              // 0x005fa12b    d9fe
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]               // 0x005fa12d    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]    // 0x005fa12d    dc0580b68a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x2260]               // 0x005fa133    dc0d60b28a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x82708]              // 0x005fa139    dc0d08b79200
                          {disp32} fadd      qword ptr [rdata_bytes + 0x82700]              // 0x005fa13f    dc0500b79200
@@ -4349,7 +4349,7 @@ _jmp_addr_0x005fa112:    ret                                                    
                          movsx              esi, al                                        // 0x005fa154    0fbef0
                          shl                esi, 8                                         // 0x005fa157    c1e608
                          fsin                                                              // 0x005fa15a    d9fe
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]               // 0x005fa15c    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]    // 0x005fa15c    dc0580b68a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x2260]               // 0x005fa162    dc0d60b28a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x82708]              // 0x005fa168    dc0d08b79200
                          {disp32} fadd      qword ptr [rdata_bytes + 0x82700]              // 0x005fa16e    dc0500b79200
@@ -4360,7 +4360,7 @@ _jmp_addr_0x005fa112:    ret                                                    
                          add.s              esi, eax                                       // 0x005fa186    03f0
                          fsin                                                              // 0x005fa188    d9fe
                          shl                esi, 8                                         // 0x005fa18a    c1e608
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]               // 0x005fa18d    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]    // 0x005fa18d    dc0580b68a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x2260]               // 0x005fa193    dc0d60b28a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x82708]              // 0x005fa199    dc0d08b79200
                          {disp32} fadd      qword ptr [rdata_bytes + 0x82700]              // 0x005fa19f    dc0500b79200

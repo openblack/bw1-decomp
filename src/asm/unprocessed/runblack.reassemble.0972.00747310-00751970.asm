@@ -5562,7 +5562,7 @@ _jmp_addr_0x0074a791:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                               // 0x0074a7be    90
                          nop                                                               // 0x0074a7bf    90
 _jmp_addr_0x0074a7c0:    sub                esp, 0x20                                      // 0x0074a7c0    83ec20
-                         {disp32} fld       qword ptr [rdata_bytes + 0x19c48]              // 0x0074a7c3    dd05482c8c00
+                         {disp32} fld       qword ptr [__real@8@00000000000000000000]      // 0x0074a7c3    dd05482c8c00
                          {disp32} mov       ecx, dword ptr [_game]                         // 0x0074a7c9    8b0d5c19d000
                          fsin                                                              // 0x0074a7cf    d9fe
                          {disp32} mov       eax, dword ptr [data_bytes + 0x3df79c]         // 0x0074a7d1    a19c57da00
@@ -5571,7 +5571,7 @@ _jmp_addr_0x0074a7c0:    sub                esp, 0x20                           
                          {disp32} mov       dword ptr [data_bytes + 0x3df79c], eax         // 0x0074a7dd    a39c57da00
                          xor.s              esi, esi                                       // 0x0074a7e2    33f6
                          {disp8} fstp       qword ptr [esp + 0x0c]                         // 0x0074a7e4    dd5c240c
-                         {disp32} fld       qword ptr [rdata_bytes + 0x19c48]              // 0x0074a7e8    dd05482c8c00
+                         {disp32} fld       qword ptr [__real@8@00000000000000000000]      // 0x0074a7e8    dd05482c8c00
                          fcos                                                              // 0x0074a7ee    d9ff
                          {disp8} fstp       qword ptr [esp + 0x18]                         // 0x0074a7f0    dd5c2418
 _jmp_addr_0x0074a7f4:    cmp                eax, 0x000007d0                                // 0x0074a7f4    3dd0070000
@@ -13033,7 +13033,7 @@ _FUN_0074f620:           {disp8} mov        ecx, dword ptr [esp + 0x04]         
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x0074f660    8b442404
                          push               eax                                            // 0x0074f664    50
                          call               _FUN_0074f620                                  // 0x0074f665    e8b6ffffff
-                         {disp32} fdivr     qword ptr [rdata_bytes + 0x2680]               // 0x0074f66a    dc3d80b68a00
+                         {disp32} fdivr     qword ptr [__real@8@3fff8000000000000000]    // 0x0074f66a    dc3d80b68a00
                          add                esp, 0x04                                      // 0x0074f670    83c404
                          ret                                                               // 0x0074f673    c3
                          nop                                                               // 0x0074f674    90

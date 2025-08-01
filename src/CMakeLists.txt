@@ -585,6 +585,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\fopen.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\fclose.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\chkstk.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcscmp.obj")
+add_patched_libcmt_object("..\\build\\intel\\mt_obj\\ieeemisc.obj" WEAKEN_SYMBOLS "__real@8@3fff8000000000000000" "__real@8@00000000000000000000")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)

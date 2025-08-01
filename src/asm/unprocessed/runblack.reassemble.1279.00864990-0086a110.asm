@@ -4645,7 +4645,7 @@ _jmp_addr_0x008680ac:    {disp8} fild       dword ptr [esp + 0x10]              
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1dc9c]             // 0x008680b5    d80d9c6c8c00
                          fld                st(0)                                         // 0x008680bb    d9c0
                          fsin                                                             // 0x008680bd    d9fe
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]              // 0x008680bf    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]   // 0x008680bf    dc0580b68a00
                          {disp8} fst        dword ptr [esp + 0x14]                        // 0x008680c5    d9542414
                          fmul               st, st(4)                                     // 0x008680c9    d8cc
                          {disp8} fst        dword ptr [esp + 0x18]                        // 0x008680cb    d9542418
@@ -4653,7 +4653,7 @@ _jmp_addr_0x008680ac:    {disp8} fild       dword ptr [esp + 0x10]              
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x008680d1    d95c241c
                          {disp8} mov        edi, dword ptr [esp + 0x1c]                   // 0x008680d5    8b7c241c
                          fcos                                                             // 0x008680d9    d9ff
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]              // 0x008680db    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]   // 0x008680db    dc0580b68a00
                          fld                st(0)                                         // 0x008680e1    d9c0
                          fmul               st, st(3)                                     // 0x008680e3    d8cb
                          {disp8} fadd       dword ptr [esi + 0x04]                        // 0x008680e5    d84604

@@ -6702,7 +6702,7 @@ _jmp_addr_0x0089d4f8:    xor.s              ebp, ebp                            
                          {disp8} fmul       qword ptr [eax + -0x08]                        // 0x0089d513    dc48f8
                          fmul               qword ptr [esi]                                // 0x0089d516    dc0e
                          {disp32} fmul      qword ptr [rdata_bytes + 0xfd168]              // 0x0089d518    dc0d68619a00
-                         {disp32} fdivr     qword ptr [rdata_bytes + 0x2680]               // 0x0089d51e    dc3d80b68a00
+                         {disp32} fdivr     qword ptr [__real@8@3fff8000000000000000]    // 0x0089d51e    dc3d80b68a00
                          {disp8} fstp       dword ptr [edx + -0x04]                        // 0x0089d524    d95afc
                          {disp8} jl         _jmp_addr_0x0089d4f8                           // 0x0089d527    7ccf
                          add                esi, 0x08                                      // 0x0089d529    83c608
