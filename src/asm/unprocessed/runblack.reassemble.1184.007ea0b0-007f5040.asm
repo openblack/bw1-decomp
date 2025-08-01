@@ -25,7 +25,7 @@
 .extern _malloc
 .extern _free
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c8859
 .extern _realloc
@@ -6448,7 +6448,7 @@ _jmp_addr_0x007ee760:    push             esi                                   
                          push             edi                                      // 0x007ee9d3    57
                          call             _jmp_addr_0x007c748b                     // 0x007ee9d4    e8b28afdff
                          push             esi                                      // 0x007ee9d9    56
-                         call             ___dt__10LHFilePathFv                    // 0x007ee9da    e85184fdff
+                         call             _fclose                                  // 0x007ee9da    e85184fdff
                          add              esp, 0x34                                // 0x007ee9df    83c434
                          xor.s            eax, eax                                 // 0x007ee9e2    33c0
                          pop              edi                                      // 0x007ee9e4    5f
@@ -6622,7 +6622,7 @@ _jmp_addr_0x007eebb1:    {disp32} mov     edx, dword ptr [esp + 0x00000c3c]     
                          mov.s            ecx, edi                                 // 0x007eebc3    8bcf
                          call             _jmp_addr_0x007ef2d0                     // 0x007eebc5    e806070000
                          push             ebx                                      // 0x007eebca    53
-                         call             ___dt__10LHFilePathFv                    // 0x007eebcb    e86082fdff
+                         call             _fclose                                  // 0x007eebcb    e86082fdff
                          add              esp, 0x04                                // 0x007eebd0    83c404
                          xor.s            eax, eax                                 // 0x007eebd3    33c0
                          pop              edi                                      // 0x007eebd5    5f

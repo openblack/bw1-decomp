@@ -361,7 +361,7 @@
 .extern _swprintf
 .extern _remove
 .extern __unlink
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c8668
 .extern ___nw__FUl

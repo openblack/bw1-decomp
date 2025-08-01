@@ -29,7 +29,7 @@
 .extern _sprintf
 .extern __unlink
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c75a2
 .extern ___nw__FUl
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
@@ -1966,7 +1966,7 @@ _jmp_addr_0x005ded6d:    mov.s              eax, ebx                            
                          push               ecx                                           // 0x005dedfb    51
                          call               _jmp_addr_0x007c75a2                          // 0x005dedfc    e8a1871e00
                          push               esi                                           // 0x005dee01    56
-                         call               ___dt__10LHFilePathFv                         // 0x005dee02    e829801e00
+                         call               _fclose                                       // 0x005dee02    e829801e00
                          {disp32} mov       ebx, dword ptr [esp + 0x00000868]             // 0x005dee07    8b9c2468080000
                          add                esp, 0x14                                     // 0x005dee0e    83c414
 _jmp_addr_0x005dee11:    push               0x00bf3214                                    // 0x005dee11    681432bf00

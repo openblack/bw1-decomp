@@ -161,7 +161,7 @@
 .extern _free
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c6eb0
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fb810
@@ -2296,7 +2296,7 @@ _jmp_addr_0x004797ec:    {disp32} mov       ecx, dword ptr [_game]              
                          push               esi                                           // 0x00479896    56
                          call               _fprintf                                      // 0x00479897    e814d53400
                          push               esi                                           // 0x0047989c    56
-                         call               ___dt__10LHFilePathFv                         // 0x0047989d    e88ed53400
+                         call               _fclose                                       // 0x0047989d    e88ed53400
                          add                esp, 0x14                                     // 0x004798a2    83c414
 _jmp_addr_0x004798a5:    pop                edi                                           // 0x004798a5    5f
                          pop                esi                                           // 0x004798a6    5e
