@@ -137,7 +137,7 @@
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _fscanf_10LHFilePath
 .extern _jmp_addr_0x007c804a
@@ -9841,7 +9841,7 @@ _jmp_addr_0x005249d0:    sub                esp, 0x20                           
                          push               esi                                                  // 0x005249d3    56
                          push               0x00be95c8                                           // 0x005249d4    68c895be00
                          push               0x00be95ac                                           // 0x005249d9    68ac95be00
-                         call               _fopen__10LHFilePath                                 // 0x005249de    e83a242a00
+                         call               _fopen                                               // 0x005249de    e83a242a00
                          mov.s              esi, eax                                             // 0x005249e3    8bf0
                          add                esp, 0x08                                            // 0x005249e5    83c408
                          test               esi, esi                                             // 0x005249e8    85f6
@@ -9967,7 +9967,7 @@ _jmp_addr_0x00524b41:    pop                esi                                 
                          push               edi                                                  // 0x00524b50    57
                          push               0x009cdd48                                           // 0x00524b51    6848dd9c00
                          push               0x00be95ac                                           // 0x00524b56    68ac95be00
-                         call               _fopen__10LHFilePath                                 // 0x00524b5b    e8bd222a00
+                         call               _fopen                                               // 0x00524b5b    e8bd222a00
                          mov.s              edi, eax                                             // 0x00524b60    8bf8
                          add                esp, 0x08                                            // 0x00524b62    83c408
                          test               edi, edi                                             // 0x00524b65    85ff

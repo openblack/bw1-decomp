@@ -22,7 +22,7 @@
 .extern _atexit
 .extern _sprintf
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern ___nw__FUl
 .extern _DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl
@@ -3018,7 +3018,7 @@ _jmp_addr_0x00446e6c:    push               ebx                                 
                          push               0x009cdd38                                    // 0x00446e82    6838dd9c00
                          {disp8} mov        dword ptr [esp + 0x18], ebx                   // 0x00446e87    895c2418
                          add                ebp, 0x08                                     // 0x00446e8b    83c508
-                         call               _fopen__10LHFilePath                          // 0x00446e8e    e88aff3700
+                         call               _fopen                                        // 0x00446e8e    e88aff3700
                          mov.s              esi, eax                                      // 0x00446e93    8bf0
                          add                esp, 0x08                                     // 0x00446e95    83c408
                          test               esi, esi                                      // 0x00446e98    85f6

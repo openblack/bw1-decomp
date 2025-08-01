@@ -28,7 +28,7 @@
 .extern _atexit
 .extern _sprintf
 .extern __unlink
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c75a2
 .extern ___nw__FUl
@@ -1878,7 +1878,7 @@ _jmp_addr_0x005dece4:    {disp32} mov       eax, dword ptr [esp + 0x0000085c]   
                          {disp32} je        _jmp_addr_0x005dee11                          // 0x005deced    0f841e010000
                          push               0x009ce5dc                                    // 0x005decf3    68dce59c00
                          push               eax                                           // 0x005decf8    50
-                         call               _fopen__10LHFilePath                          // 0x005decf9    e81f811e00
+                         call               _fopen                                        // 0x005decf9    e81f811e00
                          add                esp, 0x08                                     // 0x005decfe    83c408
                          test               eax, eax                                      // 0x005ded01    85c0
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x005ded03    89442420

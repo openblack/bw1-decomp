@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x007aeea3
 .extern _jmp_addr_0x007aef3f
 .extern _sprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _fscanf_10LHFilePath
 .extern ___nw__FUl
@@ -299,7 +299,7 @@ _jmp_addr_0x005501c0:    add                eax, 0x04                           
                          {disp8} jl         _jmp_addr_0x005501a9                           // 0x005501cc    7cdb
                          push               0x009d976c                                     // 0x005501ce    686c979d00
                          push               0x00bec860                                     // 0x005501d3    6860c8be00
-                         call               _fopen__10LHFilePath                           // 0x005501d8    e8406c2700
+                         call               _fopen                                         // 0x005501d8    e8406c2700
                          mov.s              edi, eax                                       // 0x005501dd    8bf8
                          add                esp, 0x08                                      // 0x005501df    83c408
                          cmp.s              edi, ebp                                       // 0x005501e2    3bfd
