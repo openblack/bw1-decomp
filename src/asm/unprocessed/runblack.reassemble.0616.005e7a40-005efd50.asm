@@ -122,7 +122,7 @@
 .extern _fclose
 .extern __chkstk
 .extern _fread
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern _jmp_addr_0x007c8606
 .extern _jmp_addr_0x007c8859
 .extern _jmp_addr_0x007c8912
@@ -2398,13 +2398,13 @@ _jmp_addr_0x005e9156:    push               edi                                 
                          dec                ecx                                           // 0x005e9168    49
                          push               ecx                                           // 0x005e9169    51
                          push               0x0092b3a8                                    // 0x005e916a    68a8b39200
-                         call               _jmp_addr_0x007c75a2                          // 0x005e916f    e82ee41d00
+                         call               _fwrite                                       // 0x005e916f    e82ee41d00
                          push               ebx                                           // 0x005e9174    53
                          push               0x1                                           // 0x005e9175    6a01
                          {disp32} lea       ecx, dword ptr [esi + 0x000000b8]             // 0x005e9177    8d8eb8000000
                          push               0x4                                           // 0x005e917d    6a04
                          push               ecx                                           // 0x005e917f    51
-                         call               _jmp_addr_0x007c75a2                          // 0x005e9180    e81de41d00
+                         call               _fwrite                                       // 0x005e9180    e81de41d00
                          {disp32} mov       esi, dword ptr [esi + 0x000000b4]             // 0x005e9185    8bb6b4000000
                          add                esp, 0x20                                     // 0x005e918b    83c420
                          test               esi, esi                                      // 0x005e918e    85f6
@@ -2417,7 +2417,7 @@ _jmp_addr_0x005e9193:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          push               0x1                                           // 0x005e919b    6a01
                          push               0x00000144                                    // 0x005e919d    6844010000
                          push               eax                                           // 0x005e91a2    50
-                         call               _jmp_addr_0x007c75a2                          // 0x005e91a3    e8fae31d00
+                         call               _fwrite                                       // 0x005e91a3    e8fae31d00
                          add                esp, 0x10                                     // 0x005e91a8    83c410
 _jmp_addr_0x005e91ab:    mov                esi, dword ptr [esi]                          // 0x005e91ab    8b36
                          test               esi, esi                                      // 0x005e91ad    85f6

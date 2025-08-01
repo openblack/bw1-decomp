@@ -30,7 +30,7 @@
 .extern __unlink
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern ___nw__FUl
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
@@ -1943,7 +1943,7 @@ _jmp_addr_0x005ded6d:    mov.s              eax, ebx                            
                          {disp8} lea        eax, dword ptr [esp + 0x28]                   // 0x005dedab    8d442428
                          push               eax                                           // 0x005dedaf    50
                          {disp8} mov        dword ptr [esp + 0x2c], ecx                   // 0x005dedb0    894c242c
-                         call               _jmp_addr_0x007c75a2                          // 0x005dedb4    e8e9871e00
+                         call               _fwrite                                       // 0x005dedb4    e8e9871e00
                          {disp8} mov        eax, dword ptr [esp + 0x28]                   // 0x005dedb9    8b442428
                          add                esp, 0x10                                     // 0x005dedbd    83c410
                          add.s              ebp, esi                                      // 0x005dedc0    03ee
@@ -1964,7 +1964,7 @@ _jmp_addr_0x005ded6d:    mov.s              eax, ebx                            
                          add                ecx, 0x00000200                               // 0x005dedf3    81c100020000
                          push               0x1                                           // 0x005dedf9    6a01
                          push               ecx                                           // 0x005dedfb    51
-                         call               _jmp_addr_0x007c75a2                          // 0x005dedfc    e8a1871e00
+                         call               _fwrite                                       // 0x005dedfc    e8a1871e00
                          push               esi                                           // 0x005dee01    56
                          call               _fclose                                       // 0x005dee02    e829801e00
                          {disp32} mov       ebx, dword ptr [esp + 0x00000868]             // 0x005dee07    8b9c2468080000
