@@ -139,7 +139,7 @@
 .extern _memmove
 .extern ??2@YAPAXI@Z
 .extern __CIasin
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern _jmp_addr_0x007c75a2
 .extern ___nw__FUl
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -6656,13 +6656,13 @@ _jmp_addr_0x005c4180:    push               esi                                 
                          push               0x4                                            // 0x005c41b1    6a04
                          push               0x1                                            // 0x005c41b3    6a01
                          push               esi                                            // 0x005c41b5    56
-                         call               _jmp_addr_0x007c748b                           // 0x005c41b6    e8d0322000
+                         call               _fread                                         // 0x005c41b6    e8d0322000
                          push               ebp                                            // 0x005c41bb    55
                          push               0x4                                            // 0x005c41bc    6a04
                          {disp8} lea        eax, dword ptr [esp + 0x28]                    // 0x005c41be    8d442428
                          push               0x1                                            // 0x005c41c2    6a01
                          push               eax                                            // 0x005c41c4    50
-                         call               _jmp_addr_0x007c748b                           // 0x005c41c5    e8c1322000
+                         call               _fread                                         // 0x005c41c5    e8c1322000
                          mov                edi, dword ptr [esi]                           // 0x005c41ca    8b3e
                          add                esp, 0x20                                      // 0x005c41cc    83c420
                          test               edi, edi                                       // 0x005c41cf    85ff
@@ -6712,7 +6712,7 @@ _jmp_addr_0x005c4231:    {disp8} mov        edx, dword ptr [esi + 0x08]         
                          add.s              edx, edi                                       // 0x005c4237    03d7
                          push               0x1                                            // 0x005c4239    6a01
                          push               edx                                            // 0x005c423b    52
-                         call               _jmp_addr_0x007c748b                           // 0x005c423c    e84a322000
+                         call               _fread                                         // 0x005c423c    e84a322000
                          {disp8} mov        eax, dword ptr [esp + 0x20]                    // 0x005c4241    8b442420
                          {disp8} mov        ecx, dword ptr [esi + 0x08]                    // 0x005c4245    8b4e08
                          push               ebp                                            // 0x005c4248    55
@@ -6720,7 +6720,7 @@ _jmp_addr_0x005c4231:    {disp8} mov        edx, dword ptr [esi + 0x08]         
                          push               eax                                            // 0x005c424b    50
                          {disp8} lea        edx, dword ptr [ecx + edi * 0x1 + 0x04]        // 0x005c424c    8d543904
                          push               edx                                            // 0x005c4250    52
-                         call               _jmp_addr_0x007c748b                           // 0x005c4251    e835322000
+                         call               _fread                                         // 0x005c4251    e835322000
                          mov                eax, dword ptr [esi]                           // 0x005c4256    8b06
                          add                esp, 0x20                                      // 0x005c4258    83c420
                          inc                ebx                                            // 0x005c425b    43

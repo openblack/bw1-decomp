@@ -18,7 +18,7 @@
 .extern __EH_prolog
 .extern _memcpy
 .extern __close
-.extern _jmp_addr_0x007d1e78
+.extern __read
 .extern __write
 .extern _jmp_addr_0x007d4d79
 .extern _jmp_addr_0x007d5fee
@@ -11936,7 +11936,7 @@ _jmp_addr_0x008a0e8a:    mov.s             ecx, esi                             
                          push              0x1                                             // 0x008a0eac    6a01
                          push              eax                                             // 0x008a0eae    50
                          push              dword ptr [esi + 0x4c]                          // 0x008a0eaf    ff764c
-                         call              _jmp_addr_0x007d1e78                            // 0x008a0eb2    e8c10ff3ff
+                         call              __read                                          // 0x008a0eb2    e8c10ff3ff
                          add               esp, 0x0c                                       // 0x008a0eb7    83c40c
                          test              eax, eax                                        // 0x008a0eba    85c0
                          {disp8} jle       _jmp_addr_0x008a0ee5                            // 0x008a0ebc    7e27
@@ -11952,7 +11952,7 @@ _jmp_addr_0x008a0ed2:    xor.s             eax, eax                             
 _jmp_addr_0x008a0ed4:    push              eax                                             // 0x008a0ed4    50
                          push              ecx                                             // 0x008a0ed5    51
                          push              dword ptr [esi + 0x4c]                          // 0x008a0ed6    ff764c
-                         call              _jmp_addr_0x007d1e78                            // 0x008a0ed9    e89a0ff3ff
+                         call              __read                                          // 0x008a0ed9    e89a0ff3ff
                          add               esp, 0x0c                                       // 0x008a0ede    83c40c
                          test              eax, eax                                        // 0x008a0ee1    85c0
                          {disp8} jg        _jmp_addr_0x008a0ee9                            // 0x008a0ee3    7f04

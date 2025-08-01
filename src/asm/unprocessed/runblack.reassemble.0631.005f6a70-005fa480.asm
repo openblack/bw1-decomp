@@ -50,7 +50,7 @@
 .extern _fopen
 .extern _fclose
 .extern __chkstk
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern _jmp_addr_0x007c7e64
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
@@ -2876,7 +2876,7 @@ _jmp_addr_0x005f8b5f:    push               ebx                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x47]                    // 0x005f8b62    8d4c2447
                          push               0x1                                            // 0x005f8b66    6a01
                          push               ecx                                            // 0x005f8b68    51
-                         call               _jmp_addr_0x007c748b                           // 0x005f8b69    e81de91c00
+                         call               _fread                                         // 0x005f8b69    e81de91c00
                          {disp8} mov        al, byte ptr [esp + 0x4f]                      // 0x005f8b6e    8a44244f
                          {disp8} mov        byte ptr [esi + 0x01], al                      // 0x005f8b72    884601
                          mov                byte ptr [esi], al                             // 0x005f8b75    8806
@@ -2891,7 +2891,7 @@ _jmp_addr_0x005f8b5f:    push               ebx                                 
                          push               0x00000080                                     // 0x005f8b8c    6880000000
                          push               0x2                                            // 0x005f8b91    6a02
                          push               0x00d37a9c                                     // 0x005f8b93    689c7ad300
-                         call               _jmp_addr_0x007c748b                           // 0x005f8b98    e8eee81c00
+                         call               _fread                                         // 0x005f8b98    e8eee81c00
                          push               ebx                                            // 0x005f8b9d    53
                          {disp32} mov       word ptr [data_bytes + 0x371b9c], bp           // 0x005f8b9e    66892d9c7bd300
                          call               _fclose                                        // 0x005f8ba5    e886e21c00

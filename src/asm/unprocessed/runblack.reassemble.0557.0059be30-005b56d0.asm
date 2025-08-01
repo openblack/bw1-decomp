@@ -71,7 +71,7 @@
 .extern _atoi
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c76e0
+.extern __CIacos
 .extern _jmp_addr_0x007c7ae0
 .extern _strncmp
 .extern _strchr
@@ -21661,7 +21661,7 @@ _jmp_addr_0x005b3561:    {disp8} fld        dword ptr [esp + 0x54]              
                          {disp8} fst        dword ptr [esp + 0x54]                        // 0x005b3637    d9542454
                          fmulp              st(1), st                                     // 0x005b363b    dec9
                          fdivp              st(1), st                                     // 0x005b363d    def9
-                         call               _jmp_addr_0x007c76e0                          // 0x005b363f    e89c402100
+                         call               __CIacos                                      // 0x005b363f    e89c402100
 _jmp_addr_0x005b3644:    {disp8} fmul       dword ptr [esp + 0x58]                        // 0x005b3644    d84c2458
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x005b3648    8d442454
                          push               eax                                           // 0x005b364c    50
