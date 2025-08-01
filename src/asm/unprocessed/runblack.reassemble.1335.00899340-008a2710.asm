@@ -12,7 +12,7 @@
 .extern _free
 .extern _isspace
 .extern _sscanf
-.extern _jmp_addr_0x007c6c34
+.extern _getenv
 .extern _fflush
 .extern _strlen
 .extern __EH_prolog
@@ -605,7 +605,7 @@ _jmp_addr_0x008998b6:    {disp8} mov        dword ptr [eax + -0x08], ebx        
                          {disp8} mov        dword ptr [esi + 0x4c], 0x00000054             // 0x008998c7    c7464c54000000
                          push               0x00c3c124                                     // 0x008998ce    6824c1c300
                          {disp8} mov        dword ptr [edi + 0x04], esi                    // 0x008998d3    897704
-                         call               _jmp_addr_0x007c6c34                           // 0x008998d6    e859d3f2ff
+                         call               _getenv                           // 0x008998d6    e859d3f2ff
                          add                esp, 0x04                                      // 0x008998db    83c404
                          cmp.s              eax, ebx                                       // 0x008998de    3bc3
                          {disp8} je         _jmp_addr_0x00899946                           // 0x008998e0    7464
