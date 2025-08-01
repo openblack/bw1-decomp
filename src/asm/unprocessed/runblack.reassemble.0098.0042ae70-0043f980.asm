@@ -171,7 +171,7 @@
 .extern _malloc
 .extern _rename
 .extern __unlink
-.extern _jmp_addr_0x007c6c34
+.extern _getenv
 .extern _jmp_addr_0x007c6ce0
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
@@ -1168,7 +1168,7 @@ _jmp_addr_0x0042b7aa:    {disp32} lea       eax, dword ptr [esp + 0x000001bc]   
                          {disp32} lea       ecx, dword ptr [esp + 0x000000b4]                    // 0x0042b7b2    8d8c24b4000000
                          call               _jmp_addr_0x007bcc00                                 // 0x0042b7b9    e842143900
 _jmp_addr_0x0042b7be:    push               0x009cc640                                           // 0x0042b7be    6840c69c00
-                         call               _jmp_addr_0x007c6c34                                 // 0x0042b7c3    e86cb43900
+                         call               _getenv                                              // 0x0042b7c3    e86cb43900
                          push               0x00000213                                           // 0x0042b7c8    6813020000
                          push               0x009cc624                                           // 0x0042b7cd    6824c69c00
                          push               0x00002124                                           // 0x0042b7d2    6824210000

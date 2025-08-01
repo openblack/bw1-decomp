@@ -155,6 +155,7 @@
 .globl _Direct3DDevice7
 .globl __crtheap
 .globl __newmode
+.globl ___env_initialized
 
 // Start of libcmt.lib
                                            .space 0x38                                                             // [0x4be198] 0x009c6000 + 0x4be198 = 0x00e84198
@@ -323,6 +324,7 @@ __nstream:                                 .space 4                     // _file
 ___setlc_active:                           .space 4                                                                // [0x5e7cc4] 0x009c6000 + 0x5e7cc4 = 0x00fadcc4
 ___unguarded_readlc_active:                .space 4                                                                // [0x5e7cc8] 0x009c6000 + 0x5e7cc8 = 0x00fadcc8
 __acmdln:                                  .space 4                                                                // [0x5e7ccc] 0x009c6000 + 0x5e7ccc = 0x00fadccc
-                                           .space 0x8
+___env_initialized:                        .space 4                                                                // [0x5e7cd0] 0x009c6000 + 0x5e7cd0 = 0x00fadcd0
+                                           .space 0x4
 ___onexitend:                              .space 4                                                                // [0x5e7cd8] 0x009c6000 + 0x5e7cd8 = 0x00fadcd8
 ___onexitbegin:                            .space 4                                                                // [0x5e7cdc] 0x009c6000 + 0x5e7cdc = 0x00fadcdc

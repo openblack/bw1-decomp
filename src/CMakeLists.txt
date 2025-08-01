@@ -578,6 +578,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\sscanf.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\_wctype.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\rename.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\unlink.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\getenv.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
