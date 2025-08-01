@@ -511,7 +511,7 @@ add_library(runblack-reassembled-rc OBJECT
 )
 
 function(add_patched_libcmt_object src_obj)
-    cmake_parse_arguments(ARG "NO_PAD" "" "WEAKEN_SYMBOLS;DELETE_SECTIONS" ${ARGN})
+    cmake_parse_arguments(ARG "NO_PAD;REMOVE_ASSOCIATIVE_FLAGS" "" "WEAKEN_SYMBOLS;DELETE_SECTIONS" ${ARGN})
 
     string(REPLACE "\\" "/" src_obj_fixed "${src_obj}")
     get_filename_component(obj ${src_obj_fixed} NAME)
@@ -542,6 +542,9 @@ function(add_patched_libcmt_object src_obj)
     set(PATCH_FLAGS "")
     if (ARG_NO_PAD)
         list(APPEND PATCH_FLAGS "--no-pad")
+    endif()
+    if (ARG_REMOVE_ASSOCIATIVE_FLAGS)
+        list(APPEND PATCH_FLAGS "--remove-associative-flags")
     endif()
 
     add_custom_command(
