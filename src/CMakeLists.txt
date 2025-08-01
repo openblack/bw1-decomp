@@ -397,15 +397,12 @@ set(SOURCES_002
     asm/unprocessed/xdata.x.000.009bbdc8-009be430.asm
     asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
 )
-set(SOURCES_003
-    asm/unprocessed/runblack.reassemble.1078.007c5604-007c60db.asm
-)
 set(SOURCES_004
     asm/unprocessed/bss.002.asm
     asm/unprocessed/rdata.004.009a0698-009a0738.asm
     asm/unprocessed/rdata.r.001.009bb984-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
-    asm/unprocessed/data.002.00c2d420-00c2d670.asm
+    asm/unprocessed/data.002.00c2d418-00c2d670.asm
     asm/unprocessed/runblack.reassemble.1081.007c60f0-007c61f0.asm
     asm/unprocessed/runblack.reassemble.1085.007c61f0-007c6250.asm
     asm/unprocessed/runblack.reassemble.1089.007c6250-007c62f0.asm
@@ -495,7 +492,6 @@ set(SOURCES_008
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
 add_library(runblack-reassembled-zlib OBJECT ${SOURCES_ZLIB})
 add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
-add_library(runblack-reassembled-src-003 OBJECT ${SOURCES_003})
 add_library(runblack-reassembled-src-004 OBJECT ${SOURCES_004})
 add_library(runblack-reassembled-src-005 OBJECT ${SOURCES_005})
 add_library(runblack-reassembled-src-006 OBJECT ${SOURCES_006})
@@ -558,16 +554,13 @@ function(add_patched_libcmt_object src_obj)
     set(LIBCMT_PATCHED_OBJECTS "${LIBCMT_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
 endfunction()
 
-add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\fpinit.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\typinfo.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\onexit.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\sprintf.obj")
-set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
-
-add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
-set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\rtti.obj" REMOVE_ASSOCIATIVE_FLAGS WEAKEN_SYMBOLS "__CT??_R0?AVexception@@@8??0exception@@QAE@ABV0@@Z12" "??_R0?AVexception@@@8" "??_R1A@?0A@A@exception@@8")
 add_patched_libcmt_object("build\\intel\\mt_obj\\toupper.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcscat.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\xtow.obj")
@@ -692,8 +685,6 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-src-001
         runblack-reassembled-zlib
         runblack-reassembled-src-002
-        runblack-reassembled-libcmt-001
-        runblack-reassembled-src-003
         runblack-reassembled-libcmt-002
         runblack-reassembled-src-004
         runblack-reassembled-libcmt-003
@@ -705,24 +696,6 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-libcmt-006
         runblack-reassembled-src-008
         runblack-reassembled-rc
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1078.007c5604-007c60db.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1078.007c5604-007c60db.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
-            "--no-pad"
 )
 
 add_custom_command(
@@ -746,7 +719,6 @@ add_custom_command(
 target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-zlib PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-003 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-005 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-006 PRIVATE common_compile_options)
@@ -773,6 +745,9 @@ target_link_options(runblack-reassembled
         "/OPT:NOREF"
         "/OPT:NOICF"
         "/alternatename:??_Etype_info@@UAEPAXI@Z=??_Gtype_info@@UAEPAXI@Z"
+        "/alternatename:??_E__non_rtti_object@@UAEPAXI@Z=??_G__non_rtti_object@@UAEPAXI@Z"
+        "/alternatename:??_Ebad_cast@@UAEPAXI@Z=??_Gbad_cast@@UAEPAXI@Z"
+        "/alternatename:??_Ebad_typeid@@UAEPAXI@Z=??_Gbad_typeid@@UAEPAXI@Z"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug:FULL>"
 )
