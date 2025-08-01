@@ -361,7 +361,7 @@
 .extern __strcmpi
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c73c0
+.extern __CIasin
 .extern _jmp_addr_0x007c8606
 .extern _strtok
 .extern _LHRand__FlRU
@@ -1138,7 +1138,7 @@ _jmp_addr_0x006de6b0:    push               edi                                 
                          fstp               st(0)                                         // 0x006de6ec    ddd8
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x006de6ee    d9442404
                          {disp8} fdivr      dword ptr [esp + 0x08]                        // 0x006de6f2    d87c2408
-                         call               _jmp_addr_0x007c73c0                          // 0x006de6f6    e8c58c0e00
+                         call               __CIasin                                      // 0x006de6f6    e8c58c0e00
                          fadd.s             st(0), st(0)                                  // 0x006de6fb    dcc0
                          ret                                                              // 0x006de6fd    c3
                          nop                                                              // 0x006de6fe    90
