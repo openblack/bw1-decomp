@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x007c6587
+.extern _atoi
 
 .globl _jmp_addr_0x00893f30
 
@@ -34,7 +34,7 @@ _jmp_addr_0x00893f42:    {disp8} mov     eax, dword ptr [esi + -0x04]       // 0
                          test            eax, eax                           // 0x00893f62    85c0
                          {disp8} je      _jmp_addr_0x00893f74               // 0x00893f64    740e
                          push            eax                                // 0x00893f66    50
-                         call            _jmp_addr_0x007c6587               // 0x00893f67    e81b26f3ff
+                         call            _atoi               // 0x00893f67    e81b26f3ff
                          add             esp, 0x04                          // 0x00893f6c    83c404
                          {disp8} mov     dword ptr [edi + 0x18], eax        // 0x00893f6f    894718
                          {disp8} jmp     _jmp_addr_0x00893f9e               // 0x00893f72    eb2a

@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _getc_10LHFilePath
@@ -4319,7 +4319,7 @@ _jmp_addr_0x00867d30:    lea                eax, dword ptr [esi + esi * 0x2]    
                          lea                ecx, dword ptr [eax + eax * 0x4]              // 0x00867d33    8d0c80
                          shl                ecx, 3                                        // 0x00867d36    c1e103
                          push               ecx                                           // 0x00867d39    51
-                         call               _operator_new                                // 0x00867d3a    e8afe7f5ff
+                         call               ??2@YAPAXI@Z                                  // 0x00867d3a    e8afe7f5ff
                          add                esp, 0x04                                     // 0x00867d3f    83c404
                          test               eax, eax                                      // 0x00867d42    85c0
                          {disp8} je         _jmp_addr_0x00867dae                          // 0x00867d44    7468
@@ -6345,7 +6345,7 @@ _jmp_addr_0x00869364:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          push               edi                                           // 0x008693a2    57
                          push               0x2c                                          // 0x008693a3    6a2c
                          mov.s              esi, ecx                                      // 0x008693a5    8bf1
-                         call               _operator_new                                // 0x008693a7    e842d1f5ff
+                         call               ??2@YAPAXI@Z                                  // 0x008693a7    e842d1f5ff
                          {disp8} mov        ebx, dword ptr [esp + 0x14]                   // 0x008693ac    8b5c2414
                          add                esp, 0x04                                     // 0x008693b0    83c404
                          test               eax, eax                                      // 0x008693b3    85c0
@@ -6363,7 +6363,7 @@ _jmp_addr_0x008693c5:    mov                dword ptr [esi], eax                
                          test               edi, edi                                      // 0x008693cf    85ff
                          {disp8} je         _jmp_addr_0x0086940c                          // 0x008693d1    7439
 _jmp_addr_0x008693d3:    push               0x2c                                          // 0x008693d3    6a2c
-                         call               _operator_new                                // 0x008693d5    e814d1f5ff
+                         call               ??2@YAPAXI@Z                                  // 0x008693d5    e814d1f5ff
                          add                esp, 0x04                                     // 0x008693da    83c404
                          test               eax, eax                                      // 0x008693dd    85c0
                          {disp8} je         _jmp_addr_0x008693eb                          // 0x008693df    740a

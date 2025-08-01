@@ -32,7 +32,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
 .extern _wcscpy
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _jmp_addr_0x00800c30
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _CHAR2WCHAR__FPc
@@ -1449,7 +1449,7 @@ _jmp_addr_0x0046eea2:    push               eax                                 
                          add                esp, 0x04                                     // 0x0046eeba    83c404
                          push               eax                                           // 0x0046eebd    50
                          push               esi                                           // 0x0046eebe    56
-                         call               _jmp_addr_0x007c6425                          // 0x0046eebf    e861753500
+                         call               _wcsncpy                                      // 0x0046eebf    e861753500
                          add                esp, 0x0c                                     // 0x0046eec4    83c40c
 _jmp_addr_0x0046eec7:    pop                esi                                           // 0x0046eec7    5e
                          pop                ebp                                           // 0x0046eec8    5d

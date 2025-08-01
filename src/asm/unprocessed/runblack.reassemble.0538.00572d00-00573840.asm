@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _wcslen
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x007c6eb0
@@ -85,7 +85,7 @@ _jmp_addr_0x00572da9:    {disp32} mov      esi, dword ptr [ebx + 0x000000ac]    
                          push              eax                                           // 0x00572db4    50
                          {disp8} lea       edi, dword ptr [esi + 0x24]                   // 0x00572db5    8d7e24
                          push              edi                                           // 0x00572db8    57
-                         call              _jmp_addr_0x007c6425                          // 0x00572db9    e867362500
+                         call              _wcsncpy                                      // 0x00572db9    e867362500
                          push              edi                                           // 0x00572dbe    57
                          {disp32} mov      word ptr [esi + 0x00000222], 0x0000           // 0x00572dbf    66c786220200000000
                          call              _wcslen                                       // 0x00572dc8    e895362500
@@ -588,7 +588,7 @@ _jmp_addr_0x0057349b:    {disp32} mov      edx, dword ptr [ebx + 0x000000b8]    
                          push              eax                                           // 0x005734a9    50
                          add               edx, 0x24                                     // 0x005734aa    83c224
                          push              edx                                           // 0x005734ad    52
-                         call              _jmp_addr_0x007c6425                          // 0x005734ae    e8722f2500
+                         call              _wcsncpy                                      // 0x005734ae    e8722f2500
                          {disp32} mov      eax, dword ptr [ebx + 0x000000b8]             // 0x005734b3    8b83b8000000
                          add               esp, 0x0c                                     // 0x005734b9    83c40c
                          {disp32} mov      word ptr [eax + 0x00000222], 0x0000           // 0x005734bc    66c780220200000000

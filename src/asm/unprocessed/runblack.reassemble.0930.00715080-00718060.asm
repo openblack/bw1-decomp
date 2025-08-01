@@ -120,7 +120,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c6ad3
 .extern _jmp_addr_0x007da710
 .extern @Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl@24
@@ -1701,7 +1701,7 @@ _jmp_addr_0x007163f2:    {disp32} mov       ecx, dword ptr [ebp + ebx * 0x4 + 0x
                          {disp8} je         _jmp_addr_0x00716433                          // 0x00716409    7428
                          push               0x8                                           // 0x0071640b    6a08
                          {disp8} mov        dword ptr [edi + 0x34], esi                   // 0x0071640d    897734
-                         call               _operator_new                                // 0x00716410    e8d9000b00
+                         call               ??2@YAPAXI@Z                                  // 0x00716410    e8d9000b00
                          add                esp, 0x04                                     // 0x00716415    83c404
                          test               eax, eax                                      // 0x00716418    85c0
                          {disp8} je         _jmp_addr_0x00716433                          // 0x0071641a    7417
@@ -3022,7 +3022,7 @@ _jmp_addr_0x0071704e:    {disp32} mov       dword ptr [_PTR_00d99384], ebx      
                          {disp8} mov        dword ptr [ecx + 0x08], edx                   // 0x007174dd    895108
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x007174e0    0f84a4090000
                          push               0x8                                           // 0x007174e6    6a08
-                         call               _operator_new                                // 0x007174e8    e801f00a00
+                         call               ??2@YAPAXI@Z                                  // 0x007174e8    e801f00a00
                          add                esp, 0x04                                     // 0x007174ed    83c404
                          cmp.s              eax, ebx                                      // 0x007174f0    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x007174f2    0f8492090000

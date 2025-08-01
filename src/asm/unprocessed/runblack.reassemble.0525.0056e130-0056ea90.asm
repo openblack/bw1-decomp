@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x0071d0b0
 .extern _jmp_addr_0x007a1400
 .extern _wcscpy
-.extern _jmp_addr_0x007c647f
+.extern _swprintf
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0056e130
@@ -553,7 +553,7 @@ _jmp_addr_0x0056e826:    {disp8} mov       edx, dword ptr [ecx + 0x08]          
                          add               eax, 0x24                                     // 0x0056e833    83c024
                          push              0x00bef0c0                                    // 0x0056e836    68c0f0be00
                          push              eax                                           // 0x0056e83b    50
-                         call              _jmp_addr_0x007c647f                          // 0x0056e83c    e83e7c2500
+                         call              _swprintf                                     // 0x0056e83c    e83e7c2500
                          add               esp, 0x10                                     // 0x0056e841    83c410
                          {disp8} jmp       _jmp_addr_0x0056e865                          // 0x0056e844    eb1f
 _jmp_addr_0x0056e846:    {disp32} mov      edx, dword ptr [data_bytes + 0x351ca8]        // 0x0056e846    8b15a87cd100

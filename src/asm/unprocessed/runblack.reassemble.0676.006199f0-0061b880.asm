@@ -50,7 +50,7 @@
 .extern _wcscat
 .extern _wcscpy
 .extern _wcslen
-.extern _jmp_addr_0x007c647f
+.extern _swprintf
 .extern ___nw__FUl
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
@@ -1565,7 +1565,7 @@ _jmp_addr_0x0061ab45:    push              edx                                  
                          {disp8} lea       eax, dword ptr [esp + 0x20]                          // 0x0061ab48    8d442420
                          push              0x00bf45a8                                           // 0x0061ab4c    68a845bf00
                          push              eax                                                  // 0x0061ab51    50
-                         call              _jmp_addr_0x007c647f                                 // 0x0061ab52    e828b91a00
+                         call              _swprintf                                            // 0x0061ab52    e828b91a00
                          {disp8} mov       edi, dword ptr [esi + 0x04]                          // 0x0061ab57    8b7e04
                          {disp32} mov      edx, dword ptr [edi + 0x00000250]                    // 0x0061ab5a    8b9750020000
                          add               esp, 0x14                                            // 0x0061ab60    83c414

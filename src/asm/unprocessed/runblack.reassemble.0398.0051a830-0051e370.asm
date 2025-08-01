@@ -64,7 +64,7 @@
 .extern _wcscat
 .extern _wcscpy
 .extern _wcslen
-.extern _jmp_addr_0x007c647f
+.extern _swprintf
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faaf0
 .extern _jmp_addr_0x007fab30
@@ -1206,7 +1206,7 @@ _jmp_addr_0x0051b540:    mov                edx, dword ptr [esi]                
                          {disp8} lea        edx, dword ptr [esp + eax * 0x2 + 0x3c]              // 0x0051b5cb    8d54443c
                          add                esp, 0x04                                            // 0x0051b5cf    83c404
                          push               edx                                                  // 0x0051b5d2    52
-                         call               _jmp_addr_0x007c647f                                 // 0x0051b5d3    e8a7ae2a00
+                         call               _swprintf                                            // 0x0051b5d3    e8a7ae2a00
                          add                esp, 0x0c                                            // 0x0051b5d8    83c40c
 _jmp_addr_0x0051b5db:    {disp32} mov       ecx, dword ptr [ebp + 0x0000010c]                    // 0x0051b5db    8b8d0c010000
                          test               ecx, ecx                                             // 0x0051b5e1    85c9
@@ -1262,7 +1262,7 @@ _jmp_addr_0x0051b63f:    {disp32} fld       dword ptr [esi + 0x000000e8]        
                          {disp8} lea        ecx, dword ptr [esp + eax * 0x2 + 0x5c]              // 0x0051b68c    8d4c445c
                          add                esp, 0x04                                            // 0x0051b690    83c404
                          push               ecx                                                  // 0x0051b693    51
-                         call               _jmp_addr_0x007c647f                                 // 0x0051b694    e8e6ad2a00
+                         call               _swprintf                                            // 0x0051b694    e8e6ad2a00
                          add                esp, 0x2c                                            // 0x0051b699    83c42c
                          mov.s              ecx, esi                                             // 0x0051b69c    8bce
                          call               @IsPregnant__8VillagerFv@4                           // 0x0051b69e    e86d6b2300
@@ -1306,7 +1306,7 @@ _jmp_addr_0x0051b70d:    add                ebp, 0x38                           
                          {disp8} lea        ecx, dword ptr [esp + eax * 0x2 + 0x3c]              // 0x0051b729    8d4c443c
                          add                esp, 0x04                                            // 0x0051b72d    83c404
                          push               ecx                                                  // 0x0051b730    51
-                         call               _jmp_addr_0x007c647f                                 // 0x0051b731    e849ad2a00
+                         call               _swprintf                                            // 0x0051b731    e849ad2a00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x351cac]               // 0x0051b736    a1ac7cd100
                          add                esp, 0x0c                                            // 0x0051b73b    83c40c
                          cmp                eax, 0x00001a35                                      // 0x0051b73e    3d351a0000
@@ -1335,7 +1335,7 @@ _jmp_addr_0x0051b758:    {disp8} mov        edi, dword ptr [eax + 0x08]         
                          {disp8} lea        ecx, dword ptr [esp + eax * 0x2 + 0x4c]              // 0x0051b78d    8d4c444c
                          add                esp, 0x04                                            // 0x0051b791    83c404
                          push               ecx                                                  // 0x0051b794    51
-                         call               _jmp_addr_0x007c647f                                 // 0x0051b795    e8e5ac2a00
+                         call               _swprintf                                            // 0x0051b795    e8e5ac2a00
                          add                esp, 0x1c                                            // 0x0051b79a    83c41c
                          mov.s              ecx, esi                                             // 0x0051b79d    8bce
                          call               @IsPregnant__8VillagerFv@4                           // 0x0051b79f    e86c6a2300

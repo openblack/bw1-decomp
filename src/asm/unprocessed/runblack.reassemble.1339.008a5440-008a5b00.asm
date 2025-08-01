@@ -7,7 +7,7 @@
 .extern @Open__8LHOSFileFPc12LH_FILE_MODE@16
 .extern @Close__8LHOSFileFv@4
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 
 .globl _jmp_addr_0x008a5440
 .globl _jmp_addr_0x008a5480
@@ -187,7 +187,7 @@ _jmp_addr_0x008a5590:    push             -0x1                                  
                          {disp32} mov     dword ptr [esp + 0x0000014c], ebp        // 0x008a55c9    89ac244c010000
                          lea              eax, dword ptr [eax + eax * 0x2]         // 0x008a55d0    8d0440
                          push             eax                                      // 0x008a55d3    50
-                         call             _operator_new                           // 0x008a55d4    e8150ff2ff
+                         call             ??2@YAPAXI@Z                             // 0x008a55d4    e8150ff2ff
                          {disp32} mov     cx, word ptr [esi + 0x00000114]          // 0x008a55d9    668b8e14010000
                          {disp32} mov     dx, word ptr [esi + 0x00000116]          // 0x008a55e0    668b9616010000
                          {disp8} mov      dword ptr [esp + 0x2c], eax              // 0x008a55e7    8944242c
