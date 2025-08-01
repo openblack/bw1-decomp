@@ -32,7 +32,7 @@
 .extern _fopen
 .extern _fclose
 .extern _fread
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern _jmp_addr_0x007c7ae0
 .extern _jmp_addr_0x007c8837
 .extern _jmp_addr_0x007fac10
@@ -3294,7 +3294,7 @@ _jmp_addr_0x00844aa0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x00844aa7    8d4c2410
                          push               0x1                                            // 0x00844aab    6a01
                          push               ecx                                            // 0x00844aad    51
-                         call               _jmp_addr_0x007c75a2                           // 0x00844aae    e8ef2af8ff
+                         call               _fwrite                                        // 0x00844aae    e8ef2af8ff
                          add                esp, 0x10                                      // 0x00844ab3    83c410
                          ret                                                               // 0x00844ab6    c3
                          nop                                                               // 0x00844ab7    90
@@ -3346,7 +3346,7 @@ _jmp_addr_0x00844af8:    {disp32} mov       eax, dword ptr [edi + -0x0000017c]  
                          push               edx                                            // 0x00844b23    52
                          push               eax                                            // 0x00844b24    50
                          push               ecx                                            // 0x00844b25    51
-                         call               _jmp_addr_0x007c75a2                           // 0x00844b26    e8772af8ff
+                         call               _fwrite                                        // 0x00844b26    e8772af8ff
                          push               esi                                            // 0x00844b2b    56
                          call               _fclose                                        // 0x00844b2c    e8ff22f8ff
                          add                esp, 0x14                                      // 0x00844b31    83c414

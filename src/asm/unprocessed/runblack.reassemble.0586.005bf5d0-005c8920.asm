@@ -140,7 +140,7 @@
 .extern ??2@YAPAXI@Z
 .extern __CIasin
 .extern _fread
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern ___nw__FUl
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -6743,13 +6743,13 @@ _jmp_addr_0x005c4263:    pop                edi                                 
                          mov.s              esi, ecx                                       // 0x005c427a    8bf1
                          push               0x1                                            // 0x005c427c    6a01
                          push               esi                                            // 0x005c427e    56
-                         call               _jmp_addr_0x007c75a2                           // 0x005c427f    e81e332000
+                         call               _fwrite                                        // 0x005c427f    e81e332000
                          push               ebx                                            // 0x005c4284    53
                          push               0x4                                            // 0x005c4285    6a04
                          {disp8} lea        eax, dword ptr [esp + 0x2c]                    // 0x005c4287    8d44242c
                          push               0x1                                            // 0x005c428b    6a01
                          push               eax                                            // 0x005c428d    50
-                         call               _jmp_addr_0x007c75a2                           // 0x005c428e    e80f332000
+                         call               _fwrite                                        // 0x005c428e    e80f332000
                          mov                eax, dword ptr [esi]                           // 0x005c4293    8b06
                          add                esp, 0x20                                      // 0x005c4295    83c420
                          xor.s              ebp, ebp                                       // 0x005c4298    33ed
@@ -6764,7 +6764,7 @@ _jmp_addr_0x005c42a1:    {disp8} mov        eax, dword ptr [esi + 0x08]         
                          add.s              ecx, eax                                       // 0x005c42a9    03c8
                          push               0x1                                            // 0x005c42ab    6a01
                          push               ecx                                            // 0x005c42ad    51
-                         call               _jmp_addr_0x007c75a2                           // 0x005c42ae    e8ef322000
+                         call               _fwrite                                        // 0x005c42ae    e8ef322000
                          {disp8} mov        edx, dword ptr [esp + 0x28]                    // 0x005c42b3    8b542428
                          {disp8} mov        eax, dword ptr [esi + 0x08]                    // 0x005c42b7    8b4608
                          push               ebx                                            // 0x005c42ba    53
@@ -6772,7 +6772,7 @@ _jmp_addr_0x005c42a1:    {disp8} mov        eax, dword ptr [esi + 0x08]         
                          push               edx                                            // 0x005c42bd    52
                          {disp8} lea        ecx, dword ptr [edi + eax * 0x1 + 0x04]        // 0x005c42be    8d4c0704
                          push               ecx                                            // 0x005c42c2    51
-                         call               _jmp_addr_0x007c75a2                           // 0x005c42c3    e8da322000
+                         call               _fwrite                                        // 0x005c42c3    e8da322000
                          mov                eax, dword ptr [esi]                           // 0x005c42c8    8b06
                          add                esp, 0x20                                      // 0x005c42ca    83c420
                          inc                ebp                                            // 0x005c42cd    45
