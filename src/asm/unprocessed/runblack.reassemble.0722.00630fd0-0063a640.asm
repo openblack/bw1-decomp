@@ -208,7 +208,7 @@
 .extern __unlink
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
@@ -1603,7 +1603,7 @@ _jmp_addr_0x00631b73:    pop                esi                                 
                          nop                                                               // 0x00631b7e    90
                          nop                                                               // 0x00631b7f    90
 _jmp_addr_0x00631b80:    mov                eax, 0x00001018                                // 0x00631b80    b818100000
-                         call               _jmp_addr_0x007c6eb0                           // 0x00631b85    e826531900
+                         call               __chkstk                                       // 0x00631b85    e826531900
                          push               ebp                                            // 0x00631b8a    55
                          mov.s              ebp, ecx                                       // 0x00631b8b    8be9
                          {disp32} mov       al, byte ptr [ebp + 0x00000188]                // 0x00631b8d    8a8588010000
@@ -3350,7 +3350,7 @@ _jmp_addr_0x00632e05:    add                esp, 0x0c                           
                          nop                                                               // 0x00632e0e    90
                          nop                                                               // 0x00632e0f    90
 _jmp_addr_0x00632e10:    mov                eax, 0x00001828                                // 0x00632e10    b828180000
-                         call               _jmp_addr_0x007c6eb0                           // 0x00632e15    e896401900
+                         call               __chkstk                                       // 0x00632e15    e896401900
                          push               ebx                                            // 0x00632e1a    53
                          mov.s              ebx, ecx                                       // 0x00632e1b    8bd9
                          push               ebp                                            // 0x00632e1d    55
@@ -6022,7 +6022,7 @@ _jmp_addr_0x006349b0:    {disp32} mov       eax, dword ptr [data_bytes + 0x37b31
                          nop                                                               // 0x006349ee    90
                          nop                                                               // 0x006349ef    90
 _ProcessOnePacket__8GNetworkFv@4:    mov                eax, 0x00001440                                // 0x006349f0    b840140000
-                         call               _jmp_addr_0x007c6eb0                           // 0x006349f5    e8b6241900
+                         call               __chkstk                                       // 0x006349f5    e8b6241900
                          push               ebx                                            // 0x006349fa    53
                          push               ebp                                            // 0x006349fb    55
                          push               esi                                            // 0x006349fc    56

@@ -17,7 +17,7 @@
 .extern _sprintf
 .extern ??2@YAPAXI@Z
 .extern _fprintf
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c8837
 .extern _strncpy
 .extern _strstr
@@ -4598,7 +4598,7 @@ _jmp_addr_0x007e1b03:    {disp8} mov        edx, dword ptr [ebp + 0x04]         
                          nop                                                              // 0x007e1b1e    90
                          nop                                                              // 0x007e1b1f    90
                          mov                eax, 0x00001f40                               // 0x007e1b20    b8401f0000
-                         call               _jmp_addr_0x007c6eb0                          // 0x007e1b25    e88653feff
+                         call               __chkstk                                      // 0x007e1b25    e88653feff
                          push               ebx                                           // 0x007e1b2a    53
                          push               ebp                                           // 0x007e1b2b    55
                          mov.s              ebx, ecx                                      // 0x007e1b2c    8bd9

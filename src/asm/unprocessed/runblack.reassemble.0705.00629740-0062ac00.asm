@@ -43,7 +43,7 @@
 .extern _wcslen
 .extern _swprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c81cd
 .extern _wcsncmp
@@ -339,7 +339,7 @@ _jmp_addr_0x006299b1:    pop               edi                                  
                          nop                                                              // 0x006299be    90
                          nop                                                              // 0x006299bf    90
                          mov               eax, 0x0000110c                                // 0x006299c0    b80c110000
-                         call              _jmp_addr_0x007c6eb0                           // 0x006299c5    e8e6d41900
+                         call              __chkstk                                       // 0x006299c5    e8e6d41900
                          push              ebp                                            // 0x006299ca    55
                          mov.s             ebp, ecx                                       // 0x006299cb    8be9
                          push              edi                                            // 0x006299cd    57

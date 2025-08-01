@@ -120,7 +120,7 @@
 .extern _sscanf
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c8606
@@ -921,7 +921,7 @@ _jmp_addr_0x005e80f0:    {disp32} mov       ax, word ptr [ecx + 0x000000b8]     
                          nop                                                              // 0x005e80fe    90
                          nop                                                              // 0x005e80ff    90
                          mov                eax, 0x00002034                               // 0x005e8100    b834200000
-                         call               _jmp_addr_0x007c6eb0                          // 0x005e8105    e8a6ed1d00
+                         call               __chkstk                                      // 0x005e8105    e8a6ed1d00
                          push               ebx                                           // 0x005e810a    53
                          push               esi                                           // 0x005e810b    56
                          push               edi                                           // 0x005e810c    57
@@ -1401,7 +1401,7 @@ _jmp_addr_0x005e8633:    {disp8} lea        ecx, dword ptr [esp + 0x10]         
                          nop                                                              // 0x005e865e    90
                          nop                                                              // 0x005e865f    90
                          mov                eax, 0x00001304                               // 0x005e8660    b804130000
-                         call               _jmp_addr_0x007c6eb0                          // 0x005e8665    e846e81d00
+                         call               __chkstk                                      // 0x005e8665    e846e81d00
                          push               ebx                                           // 0x005e866a    53
                          mov.s              ebx, ecx                                      // 0x005e866b    8bd9
                          cmp                byte ptr [ebx + 0x000000cc], 0x01             // 0x005e866d    80bbcc00000001

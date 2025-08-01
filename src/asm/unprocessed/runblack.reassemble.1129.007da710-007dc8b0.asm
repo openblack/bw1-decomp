@@ -10,7 +10,7 @@
 .extern _atexit
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern __errno
 .extern ___doserrno
 .extern _strncpy
@@ -701,7 +701,7 @@ _jmp_addr_0x007dad50:    call              __errno                              
 _jmp_addr_0x007dad60:    push              ebp                                            // 0x007dad60    55
                          mov.s             ebp, esp                                       // 0x007dad61    8bec
                          mov               eax, 0x00001004                                // 0x007dad63    b804100000
-                         call              _jmp_addr_0x007c6eb0                           // 0x007dad68    e843c1feff
+                         call              __chkstk                                       // 0x007dad68    e843c1feff
                          push              ebx                                            // 0x007dad6d    53
                          push              esi                                            // 0x007dad6e    56
                          xor.s             esi, esi                                       // 0x007dad6f    33f6
@@ -1091,7 +1091,7 @@ _jmp_addr_0x007db1ae:    push              edi                                  
                          {disp8} mov       dword ptr [ebp + -0x04], edi                   // 0x007db1c3    897dfc
                          add               eax, 0x03                                      // 0x007db1c6    83c003
                          and               al, -0x04                                      // 0x007db1c9    24fc
-                         call              _jmp_addr_0x007c6eb0                           // 0x007db1cb    e8e0bcfeff
+                         call              __chkstk                                       // 0x007db1cb    e8e0bcfeff
                          {disp8} mov       dword ptr [ebp + -0x18], esp                   // 0x007db1d0    8965e8
                          mov.s             esi, esp                                       // 0x007db1d3    8bf4
                          {disp8} mov       dword ptr [ebp + -0x20], esi                   // 0x007db1d5    8975e0
@@ -1196,7 +1196,7 @@ _jmp_addr_0x007db2c5:    push              esi                                  
                          add.s             eax, eax                                       // 0x007db2dd    03c0
                          add               eax, 0x03                                      // 0x007db2df    83c003
                          and               al, -0x04                                      // 0x007db2e2    24fc
-                         call              _jmp_addr_0x007c6eb0                           // 0x007db2e4    e8c7bbfeff
+                         call              __chkstk                                       // 0x007db2e4    e8c7bbfeff
                          {disp8} mov       dword ptr [ebp + -0x18], esp                   // 0x007db2e9    8965e8
                          mov.s             edi, esp                                       // 0x007db2ec    8bfc
                          {disp8} mov       dword ptr [ebp + -0x20], edi                   // 0x007db2ee    897de0

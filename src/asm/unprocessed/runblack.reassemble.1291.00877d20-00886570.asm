@@ -35,7 +35,7 @@
 .extern _atoi
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c73c0
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c882a
@@ -4345,7 +4345,7 @@ _jmp_addr_0x0087aef7:    pop                edi                                 
                          push               eax                                                  // 0x0087af0d    50
                          mov                eax, 0x0000806c                                      // 0x0087af0e    b86c800000
                          {disp32} mov       fs:[0x0], esp                                        // 0x0087af13    64892500000000
-                         call               _jmp_addr_0x007c6eb0                                 // 0x0087af1a    e891bff4ff
+                         call               __chkstk                                             // 0x0087af1a    e891bff4ff
                          {disp32} mov       eax, dword ptr [esp + 0x0000807c]                    // 0x0087af1f    8b84247c800000
                          push               ebx                                                  // 0x0087af26    53
                          push               ebp                                                  // 0x0087af27    55
@@ -10245,7 +10245,7 @@ _jmp_addr_0x0087f126:    pop                edi                                 
                          nop                                                                     // 0x0087f12e    90
                          nop                                                                     // 0x0087f12f    90
 _jmp_addr_0x0087f130:    mov                eax, 0x00008020                                      // 0x0087f130    b820800000
-                         call               _jmp_addr_0x007c6eb0                                 // 0x0087f135    e8767df4ff
+                         call               __chkstk                                             // 0x0087f135    e8767df4ff
                          push               ebp                                                  // 0x0087f13a    55
                          push               esi                                                  // 0x0087f13b    56
                          push               edi                                                  // 0x0087f13c    57

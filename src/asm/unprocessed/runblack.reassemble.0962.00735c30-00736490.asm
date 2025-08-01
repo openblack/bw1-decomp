@@ -10,14 +10,14 @@
 .extern _jmp_addr_0x00735bb0
 .extern _jmp_addr_0x00737160
 .extern _jmp_addr_0x00737170
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 
 .globl _jmp_addr_0x00735c30
 
 start_0x00735c30_0x00736490:
 // Snippet: asm, [0x00735c30, 0x0073643c)
 _jmp_addr_0x00735c30:    mov              eax, 0x00001308                               // 0x00735c30    b808130000
-                         call             _jmp_addr_0x007c6eb0                          // 0x00735c35    e876120900
+                         call             __chkstk                                      // 0x00735c35    e876120900
                          push             ebx                                           // 0x00735c3a    53
                          {disp32} mov     ebx, dword ptr [esp + 0x0000131c]             // 0x00735c3b    8b9c241c130000
                          {disp8} mov      dword ptr [esp + 0x0c], ebx                   // 0x00735c42    895c240c

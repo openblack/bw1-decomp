@@ -131,7 +131,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c7e64
 .extern ___nw__FUl
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -233,7 +233,7 @@ _jmp_addr_0x00736490:    push               ebx                                 
                          nop                                                               // 0x007364ee    90
                          nop                                                               // 0x007364ef    90
 _jmp_addr_0x007364f0:    mov                eax, 0x000012c4                                // 0x007364f0    b8c4120000
-                         call               _jmp_addr_0x007c6eb0                           // 0x007364f5    e8b6090900
+                         call               __chkstk                                       // 0x007364f5    e8b6090900
                          push               esi                                            // 0x007364fa    56
                          mov.s              esi, ecx                                       // 0x007364fb    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x18]                    // 0x007364fd    8b4e18
@@ -826,7 +826,7 @@ _jmp_addr_0x00736bdb:    {disp8} mov        edx, dword ptr [esp + 0x18]         
                          push               ebp                                            // 0x00736c20    55
                          mov.s              ebp, esp                                       // 0x00736c21    8bec
                          mov                eax, 0x000012e0                                // 0x00736c23    b8e0120000
-                         call               _jmp_addr_0x007c6eb0                           // 0x00736c28    e883020900
+                         call               __chkstk                                       // 0x00736c28    e883020900
                          push               esi                                            // 0x00736c2d    56
                          {disp32} mov       dword ptr [ebp + -0x000012dc], ecx             // 0x00736c2e    898d24edffff
                          cmp                dword ptr [ebp + 0x20], 0x00                   // 0x00736c34    837d2000

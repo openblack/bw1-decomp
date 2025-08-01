@@ -104,7 +104,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _strrchr
 .extern ___nw__FUl
 .extern @Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl@24
@@ -1812,7 +1812,7 @@ _jmp_addr_0x007192da:    xor.s              eax, eax                            
                          nop                                                              // 0x007192de    90
                          nop                                                              // 0x007192df    90
                          mov                eax, 0x00001f40                               // 0x007192e0    b8401f0000
-                         call               _jmp_addr_0x007c6eb0                          // 0x007192e5    e8c6db0a00
+                         call               __chkstk                                      // 0x007192e5    e8c6db0a00
                          {disp32} mov       eax, dword ptr [esp + 0x00001f44]             // 0x007192ea    8b8424441f0000
                          sub                eax, 0x00                                     // 0x007192f1    83e800
                          push               esi                                           // 0x007192f4    56
@@ -1887,7 +1887,7 @@ _jmp_addr_0x007193e5:    xor.s              eax, eax                            
                          ret                                                              // 0x007193ee    c3
                          nop                                                              // 0x007193ef    90
                          mov                eax, 0x00001f40                               // 0x007193f0    b8401f0000
-                         call               _jmp_addr_0x007c6eb0                          // 0x007193f5    e8b6da0a00
+                         call               __chkstk                                      // 0x007193f5    e8b6da0a00
                          {disp32} mov       eax, dword ptr [esp + 0x00001f44]             // 0x007193fa    8b8424441f0000
                          sub                eax, 0x00                                     // 0x00719401    83e800
                          push               esi                                           // 0x00719404    56
@@ -1962,7 +1962,7 @@ _jmp_addr_0x007194f5:    xor.s              eax, eax                            
                          ret                                                              // 0x007194fe    c3
                          nop                                                              // 0x007194ff    90
                          mov                eax, 0x00001f40                               // 0x00719500    b8401f0000
-                         call               _jmp_addr_0x007c6eb0                          // 0x00719505    e8a6d90a00
+                         call               __chkstk                                      // 0x00719505    e8a6d90a00
                          {disp32} mov       eax, dword ptr [esp + 0x00001f44]             // 0x0071950a    8b8424441f0000
                          sub                eax, 0x00                                     // 0x00719511    83e800
                          push               esi                                           // 0x00719514    56
