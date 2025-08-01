@@ -40,7 +40,7 @@
 .extern _wcslen
 .extern ??2@YAPAXI@Z
 .extern __chkstk
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern @Release__11LH3DTextureFv@4
 
 .globl _jmp_addr_0x0061ed30
@@ -1171,7 +1171,7 @@ _jmp_addr_0x0061fc48:    {disp8} mov      ecx, dword ptr [ecx + 0x08]           
                          push             ecx                                           // 0x0061fc4b    51
                          add              eax, 0x24                                     // 0x0061fc4c    83c024
                          push             eax                                           // 0x0061fc4f    50
-                         call             _jmp_addr_0x007c6edf                          // 0x0061fc50    e88a721a00
+                         call             _wcscmp                          // 0x0061fc50    e88a721a00
                          add              esp, 0x08                                     // 0x0061fc55    83c408
                          test             eax, eax                                      // 0x0061fc58    85c0
                          {disp8} jne      _jmp_addr_0x0061fca6                          // 0x0061fc5a    754a

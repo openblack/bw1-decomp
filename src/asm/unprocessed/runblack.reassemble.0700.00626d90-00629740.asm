@@ -72,7 +72,7 @@
 .extern _wcslen
 .extern _swprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern _swscanf
 .extern _strstr
 .extern _tolower
@@ -840,7 +840,7 @@ _jmp_addr_0x00627552:    {disp8} mov       edi, dword ptr [esi + 0x04]          
                          call              _jmp_addr_0x00632670                          // 0x00627557    e814b10000
                          push              eax                                           // 0x0062755c    50
                          push              edi                                           // 0x0062755d    57
-                         call              _jmp_addr_0x007c6edf                          // 0x0062755e    e87cf91900
+                         call              _wcscmp                          // 0x0062755e    e87cf91900
                          add               esp, 0x08                                     // 0x00627563    83c408
                          test              eax, eax                                      // 0x00627566    85c0
                          {disp8} jne       _jmp_addr_0x00627576                          // 0x00627568    750c

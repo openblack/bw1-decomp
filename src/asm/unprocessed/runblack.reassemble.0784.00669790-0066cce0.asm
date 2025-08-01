@@ -95,7 +95,7 @@
 .extern ??2@YAPAXI@Z
 .extern _free
 .extern __unlink
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern _strtok
 .extern __chmod
 .extern _jmp_addr_0x007dacdc
@@ -3259,7 +3259,7 @@ _jmp_addr_0x0066b965:    cmp                edi, dword ptr [esp + 0x10]         
                          {disp8} jae        _jmp_addr_0x0066b9a4                          // 0x0066b969    7339
                          push               ebp                                           // 0x0066b96b    55
                          push               esi                                           // 0x0066b96c    56
-                         call               _jmp_addr_0x007c6edf                          // 0x0066b96d    e86db51500
+                         call               _wcscmp                          // 0x0066b96d    e86db51500
                          add                esp, 0x08                                     // 0x0066b972    83c408
                          test               eax, eax                                      // 0x0066b975    85c0
                          {disp8} je         _jmp_addr_0x0066b9a0                          // 0x0066b977    7427
