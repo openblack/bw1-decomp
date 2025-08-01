@@ -142,7 +142,7 @@
 .extern _wcsncpy
 .extern _swprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
@@ -8076,7 +8076,7 @@ _jmp_addr_0x00625c6f:    {disp32} mov      eax, dword ptr [ebp + 0x0000183c]    
                          add               esp, 0x000011ec                               // 0x00625c8a    81c4ec110000
                          ret               0x0004                                        // 0x00625c90    c20400
 _jmp_addr_0x00625c93:    push              0x00bf46d8                                    // 0x00625c93    68d846bf00
-                         call              _jmp_addr_0x007c6c29                          // 0x00625c98    e88c0f1a00
+                         call              __unlink                                      // 0x00625c98    e88c0f1a00
                          push              0x009ce5dc                                    // 0x00625c9d    68dce59c00
                          push              0x00bf46d8                                    // 0x00625ca2    68d846bf00
                          call              _fopen__10LHFilePath                          // 0x00625ca7    e871111a00
