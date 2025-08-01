@@ -25,7 +25,7 @@
 .extern _atexit
 .extern ??2@YAPAXI@Z
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _getc_10LHFilePath
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb5c0
@@ -3107,7 +3107,7 @@ _jmp_addr_0x00866ec0:    sub                esp, 0x10                           
                          test               ebp, ebp                                      // 0x00866efe    85ed
                          {disp8} jne        _jmp_addr_0x00866f13                          // 0x00866f00    7511
                          push               edi                                           // 0x00866f02    57
-                         call               ___dt__10LHFilePathFv                         // 0x00866f03    e828fff5ff
+                         call               _fclose                                       // 0x00866f03    e828fff5ff
                          add                esp, 0x04                                     // 0x00866f08    83c404
                          pop                edi                                           // 0x00866f0b    5f
                          pop                esi                                           // 0x00866f0c    5e
@@ -3144,9 +3144,9 @@ _jmp_addr_0x00866f28:    push               edi                                 
                          dec                dword ptr [esp + 0x14]                        // 0x00866f6e    ff4c2414
                          {disp8} jne        _jmp_addr_0x00866f20                          // 0x00866f72    75ac
                          push               edi                                           // 0x00866f74    57
-                         call               ___dt__10LHFilePathFv                         // 0x00866f75    e8b6fef5ff
+                         call               _fclose                                       // 0x00866f75    e8b6fef5ff
                          push               ebp                                           // 0x00866f7a    55
-                         call               ___dt__10LHFilePathFv                         // 0x00866f7b    e8b0fef5ff
+                         call               _fclose                                       // 0x00866f7b    e8b0fef5ff
                          push               0x009ce5d8                                    // 0x00866f80    68d8e59c00
                          push               0x00c394fc                                    // 0x00866f85    68fc94c300
                          call               _fopen                                        // 0x00866f8a    e88efef5ff
@@ -3162,7 +3162,7 @@ _jmp_addr_0x00866f28:    push               edi                                 
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x00866fb0    89442410
                          {disp8} jne        _jmp_addr_0x00866fc7                          // 0x00866fb4    7511
                          push               edi                                           // 0x00866fb6    57
-                         call               ___dt__10LHFilePathFv                         // 0x00866fb7    e874fef5ff
+                         call               _fclose                                       // 0x00866fb7    e874fef5ff
                          add                esp, 0x04                                     // 0x00866fbc    83c404
                          pop                edi                                           // 0x00866fbf    5f
                          pop                esi                                           // 0x00866fc0    5e
@@ -3198,10 +3198,10 @@ _jmp_addr_0x00866fd9:    push               edi                                 
                          dec                dword ptr [esp + 0x14]                        // 0x0086701b    ff4c2414
                          {disp8} jne        _jmp_addr_0x00866fd4                          // 0x0086701f    75b3
                          push               edi                                           // 0x00867021    57
-                         call               ___dt__10LHFilePathFv                         // 0x00867022    e809fef5ff
+                         call               _fclose                                       // 0x00867022    e809fef5ff
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x00867027    8b542414
                          push               edx                                           // 0x0086702b    52
-                         call               ___dt__10LHFilePathFv                         // 0x0086702c    e8fffdf5ff
+                         call               _fclose                                       // 0x0086702c    e8fffdf5ff
                          add                esp, 0x08                                     // 0x00867031    83c408
 _jmp_addr_0x00867034:    pop                edi                                           // 0x00867034    5f
                          pop                esi                                           // 0x00867035    5e

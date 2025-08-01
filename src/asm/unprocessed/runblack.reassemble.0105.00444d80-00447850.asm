@@ -23,7 +23,7 @@
 .extern _sprintf
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern ___nw__FUl
 .extern _DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
@@ -3114,7 +3114,7 @@ _jmp_addr_0x00446f9a:    test               esi, esi                            
                          push               esi                                           // 0x00446fa4    56
                          call               _fprintf                                      // 0x00446fa5    e806fe3700
                          push               esi                                           // 0x00446faa    56
-                         call               ___dt__10LHFilePathFv                         // 0x00446fab    e880fe3700
+                         call               _fclose                                       // 0x00446fab    e880fe3700
                          add                esp, 0x0c                                     // 0x00446fb0    83c40c
 _jmp_addr_0x00446fb3:    {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00446fb3    8b44240c
                          {disp8} mov        esi, dword ptr [esp + 0x18]                   // 0x00446fb7    8b742418

@@ -3169,22 +3169,22 @@ _jmp_addr_0x0054c038:    {disp32} mov       ecx, dword ptr [esi + 0x00250058]   
                          call               dword ptr [edx + 4]                           // 0x0054c046    ff5204
 _jmp_addr_0x0054c049:    {disp32} mov       eax, dword ptr [esi + 0x002502d0]             // 0x0054c049    8b86d0022500
                          push               eax                                           // 0x0054c04f    50
-                         call               ___dt__10LHFilePathFv                         // 0x0054c050    e8dbad2700
+                         call               _fclose                                       // 0x0054c050    e8dbad2700
                          {disp32} mov       ecx, dword ptr [esi + 0x002502d4]             // 0x0054c055    8b8ed4022500
                          push               ecx                                           // 0x0054c05b    51
-                         call               ___dt__10LHFilePathFv                         // 0x0054c05c    e8cfad2700
+                         call               _fclose                                       // 0x0054c05c    e8cfad2700
                          {disp32} mov       edx, dword ptr [esi + 0x002502d8]             // 0x0054c061    8b96d8022500
                          push               edx                                           // 0x0054c067    52
-                         call               ___dt__10LHFilePathFv                         // 0x0054c068    e8c3ad2700
+                         call               _fclose                                       // 0x0054c068    e8c3ad2700
                          {disp32} mov       eax, dword ptr [esi + 0x002502dc]             // 0x0054c06d    8b86dc022500
                          push               eax                                           // 0x0054c073    50
-                         call               ___dt__10LHFilePathFv                         // 0x0054c074    e8b7ad2700
+                         call               _fclose                                       // 0x0054c074    e8b7ad2700
                          {disp32} mov       ecx, dword ptr [esi + 0x002502e0]             // 0x0054c079    8b8ee0022500
                          push               ecx                                           // 0x0054c07f    51
-                         call               ___dt__10LHFilePathFv                         // 0x0054c080    e8abad2700
+                         call               _fclose                                       // 0x0054c080    e8abad2700
                          {disp32} mov       edx, dword ptr [esi + 0x002502e4]             // 0x0054c085    8b96e4022500
                          push               edx                                           // 0x0054c08b    52
-                         call               ___dt__10LHFilePathFv                         // 0x0054c08c    e89fad2700
+                         call               _fclose                                       // 0x0054c08c    e89fad2700
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4f3ab4]        // 0x0054c091    8b0db49aeb00
                          add                esp, 0x18                                     // 0x0054c097    83c418
                          call               ?Release@LH3DSprite@@QAEXXZ                   // 0x0054c09a    e881442f00

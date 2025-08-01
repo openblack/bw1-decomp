@@ -124,7 +124,7 @@
 .extern ??2@YAPAXI@Z
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c7ae0
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -3412,7 +3412,7 @@ _jmp_addr_0x004efa2e:    {disp8} fadd       dword ptr [esp + 0x0c]              
                          test               ah, 0x01                                             // 0x004efa43    f6c401
                          {disp32} jne       _jmp_addr_0x004ef96d                                 // 0x004efa46    0f8521ffffff
 _jmp_addr_0x004efa4c:    push               edi                                                  // 0x004efa4c    57
-                         call               ___dt__10LHFilePathFv                                // 0x004efa4d    e8de732d00
+                         call               _fclose                                              // 0x004efa4d    e8de732d00
                          add                esp, 0x04                                            // 0x004efa52    83c404
                          pop                edi                                                  // 0x004efa55    5f
                          pop                esi                                                  // 0x004efa56    5e

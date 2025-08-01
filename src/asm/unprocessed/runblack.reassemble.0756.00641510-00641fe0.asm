@@ -46,7 +46,7 @@
 .extern __unlink
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _tolower
 .extern _strrchr
 .extern __controlfp
@@ -804,7 +804,7 @@ _pc_main__Fv:            push              ebp                                  
                          push              esi                                           // 0x00641cc1    56
                          call              _fprintf                                      // 0x00641cc2    e8e9501800
                          push              esi                                           // 0x00641cc7    56
-                         call              ___dt__10LHFilePathFv                         // 0x00641cc8    e863511800
+                         call              _fclose                                       // 0x00641cc8    e863511800
                          add               esp, 0x10                                     // 0x00641ccd    83c410
 _jmp_addr_0x00641cd0:    {disp8} lea       edx, dword ptr [ebp + -0x08]                  // 0x00641cd0    8d55f8
                          push              edx                                           // 0x00641cd3    52

@@ -174,7 +174,7 @@
 .extern _getenv
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
@@ -4039,7 +4039,7 @@ _jmp_addr_0x004365f0:    cmp                dword ptr [data_bytes + 0x4ca5f4], e
                          cmp.s              eax, ebx                                             // 0x004365fd    3bc3
                          {disp8} je         _jmp_addr_0x0043660a                                 // 0x004365ff    7409
                          push               eax                                                  // 0x00436601    50
-                         call               ___dt__10LHFilePathFv                                // 0x00436602    e829083900
+                         call               _fclose                                              // 0x00436602    e829083900
                          add                esp, 0x04                                            // 0x00436607    83c404
 _jmp_addr_0x0043660a:    {disp32} mov       esi, dword ptr [data_bytes + 0x2925e4]               // 0x0043660a    8b35e485c500
                          cmp                dword ptr [data_bytes + 0x2925ec], ebx               // 0x00436610    391dec85c500

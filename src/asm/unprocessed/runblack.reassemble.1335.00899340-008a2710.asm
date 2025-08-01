@@ -17,7 +17,7 @@
 .extern _strlen
 .extern __EH_prolog
 .extern _memcpy
-.extern _jmp_addr_0x007d0cec
+.extern __close
 .extern _jmp_addr_0x007d1e78
 .extern __write
 .extern _jmp_addr_0x007d4d79
@@ -11828,7 +11828,7 @@ _jmp_addr_0x008a0d95:    mov               eax, dword ptr [esi]                 
                          call              dword ptr [eax + 4]                             // 0x008a0d99    ff5004
                          push              dword ptr [esi + 0x4c]                          // 0x008a0d9c    ff764c
                          mov.s             edi, eax                                        // 0x008a0d9f    8bf8
-                         call              _jmp_addr_0x007d0cec                            // 0x008a0da1    e846fff2ff
+                         call              __close                                         // 0x008a0da1    e846fff2ff
                          cmp               eax, -0x01                                      // 0x008a0da6    83f8ff
                          pop               ecx                                             // 0x008a0da9    59
                          {disp8} je        _jmp_addr_0x008a0dc9                            // 0x008a0daa    741d

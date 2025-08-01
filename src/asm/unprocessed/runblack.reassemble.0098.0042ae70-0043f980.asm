@@ -175,7 +175,7 @@
 .extern __strcmpi
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl

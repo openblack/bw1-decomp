@@ -144,7 +144,7 @@
 .extern ??2@YAPAXI@Z
 .extern __unlink
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c748b
@@ -6780,7 +6780,7 @@ _jmp_addr_0x00624d49:    push              0x009ce5d8                           
                          {disp32} mov      dword ptr [eax + 0x00000300], edx             // 0x00624da3    899000030000
                          call              _jmp_addr_0x006208c0                          // 0x00624da9    e812bbffff
                          push              esi                                           // 0x00624dae    56
-                         call              ___dt__10LHFilePathFv                         // 0x00624daf    e87c201a00
+                         call              _fclose                                       // 0x00624daf    e87c201a00
                          add               esp, 0x04                                     // 0x00624db4    83c404
                          pop               edi                                           // 0x00624db7    5f
                          pop               esi                                           // 0x00624db8    5e
@@ -8102,7 +8102,7 @@ _jmp_addr_0x00625c93:    push              0x00bf46d8                           
                          push              edx                                           // 0x00625ce7    52
                          call              _jmp_addr_0x007c75a2                          // 0x00625ce8    e8b5181a00
                          push              esi                                           // 0x00625ced    56
-                         call              ___dt__10LHFilePathFv                         // 0x00625cee    e83d111a00
+                         call              _fclose                                       // 0x00625cee    e83d111a00
                          add               esp, 0x24                                     // 0x00625cf3    83c424
 _jmp_addr_0x00625cf6:    {disp32} mov      eax, dword ptr [ebp + 0x0000183c]             // 0x00625cf6    8b853c180000
                          mov               ecx, 0x00d40e20                               // 0x00625cfc    b9200ed400
@@ -8693,7 +8693,7 @@ _jmp_addr_0x0062632f:    {disp8} mov       ecx, dword ptr [esp + 0x14]          
                          call               ___dl__FPv                                   // 0x00626334    e85f8b1800
                          {disp8} mov       edx, dword ptr [esp + 0x14]                   // 0x00626339    8b542414
                          push              edx                                           // 0x0062633d    52
-                         call              ___dt__10LHFilePathFv                         // 0x0062633e    e8ed0a1a00
+                         call              _fclose                                       // 0x0062633e    e8ed0a1a00
                          add               esp, 0x08                                     // 0x00626343    83c408
                          pop               edi                                           // 0x00626346    5f
 _jmp_addr_0x00626347:    xor.s             eax, eax                                      // 0x00626347    33c0
@@ -8772,7 +8772,7 @@ _jmp_addr_0x006263da:    movsx             ecx, cl                              
                          .byte             0x72, 0xcf// {disp8} jb _jmp_addr_0x006263c5  // 0x006263f4    72cf
 _jmp_addr_0x006263f6:    {disp8} mov       edx, dword ptr [esp + 0x14]                   // 0x006263f6    8b542414
                          push              edx                                           // 0x006263fa    52
-                         call              ___dt__10LHFilePathFv                         // 0x006263fb    e8300a1a00
+                         call              _fclose                                       // 0x006263fb    e8300a1a00
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00626400    8b442414
                          push              eax                                           // 0x00626404    50
                          call               ___dl__FPv                                   // 0x00626405    e88e8a1800

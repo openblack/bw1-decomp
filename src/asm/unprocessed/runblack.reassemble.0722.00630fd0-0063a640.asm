@@ -207,7 +207,7 @@
 .extern _atoi
 .extern __unlink
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c748b
@@ -3005,7 +3005,7 @@ _jmp_addr_0x00632a30:    push               ecx                                 
                          push               esi                                            // 0x00632a6b    56
                          call               _jmp_addr_0x007c748b                           // 0x00632a6c    e81a4a1900
                          push               edi                                            // 0x00632a71    57
-                         call               ___dt__10LHFilePathFv                          // 0x00632a72    e8b9431900
+                         call               _fclose                                        // 0x00632a72    e8b9431900
                          add                esp, 0x20                                      // 0x00632a77    83c420
 _jmp_addr_0x00632a7a:    {disp8} mov        edi, dword ptr [esp + 0x20]                    // 0x00632a7a    8b7c2420
                          {disp8} mov        edx, dword ptr [esp + 0x28]                    // 0x00632a7e    8b542428
@@ -6413,7 +6413,7 @@ _jmp_addr_0x00634eb8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               ebx                                            // 0x00634f91    53
                          call               _jmp_addr_0x007c748b                           // 0x00634f92    e8f4241900
                          push               esi                                            // 0x00634f97    56
-                         call               ___dt__10LHFilePathFv                          // 0x00634f98    e8931e1900
+                         call               _fclose                                        // 0x00634f98    e8931e1900
                          add                esp, 0x28                                      // 0x00634f9d    83c428
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x00634fa0    8d4c2418
                          call               _jmp_addr_0x00781060                           // 0x00634fa4    e8b7c01400
@@ -6579,7 +6579,7 @@ _jmp_addr_0x0063517c:    cmp                dword ptr [esp + 0x14], 0x01        
                          push               eax                                            // 0x006351dc    50
                          call               _jmp_addr_0x007c75a2                           // 0x006351dd    e8c0231900
                          push               esi                                            // 0x006351e2    56
-                         call               ___dt__10LHFilePathFv                          // 0x006351e3    e8481c1900
+                         call               _fclose                                        // 0x006351e3    e8481c1900
                          add                esp, 0x14                                      // 0x006351e8    83c414
 _jmp_addr_0x006351eb:    {disp8} lea        ecx, dword ptr [esp + 0x34]                    // 0x006351eb    8d4c2434
                          call               _jmp_addr_0x00781070                           // 0x006351ef    e87cbe1400

@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x007aef3f
 .extern _sprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _fscanf_10LHFilePath
 .extern ___nw__FUl
 .extern ?CreatePack@LH3DMesh@@SAXXZ@0
@@ -441,7 +441,7 @@ _jmp_addr_0x00550368:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          xor.s              ebp, ebp                                       // 0x00550370    33ed
                          {disp32} jmp       _jmp_addr_0x00550202                           // 0x00550372    e98bfeffff
 _jmp_addr_0x00550377:    push               edi                                            // 0x00550377    57
-                         call               ___dt__10LHFilePathFv                          // 0x00550378    e8b36a2700
+                         call               _fclose                                        // 0x00550378    e8b36a2700
                          add                esp, 0x04                                      // 0x0055037d    83c404
                          pop                ebx                                            // 0x00550380    5b
 _jmp_addr_0x00550381:    pop                edi                                            // 0x00550381    5f

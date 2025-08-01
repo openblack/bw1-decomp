@@ -138,7 +138,7 @@
 .extern __strcmpi
 .extern _fprintf
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _fscanf_10LHFilePath
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007c8072
@@ -9946,7 +9946,7 @@ _jmp_addr_0x00524b28:    inc                edi                                 
                          {disp8} mov        dword ptr [esp + 0x20], edi                          // 0x00524b2b    897c2420
                          {disp32} jl        _jmp_addr_0x00524a3f                                 // 0x00524b2f    0f8c0affffff
                          push               esi                                                  // 0x00524b35    56
-                         call               ___dt__10LHFilePathFv                                // 0x00524b36    e8f5222a00
+                         call               _fclose                                              // 0x00524b36    e8f5222a00
                          add                esp, 0x04                                            // 0x00524b3b    83c404
                          pop                edi                                                  // 0x00524b3e    5f
                          pop                ebp                                                  // 0x00524b3f    5d
@@ -10008,7 +10008,7 @@ _jmp_addr_0x00524b8b:    {disp8} fld        dword ptr [esi + 0x04]              
                          dec                ebx                                                  // 0x00524bd5    4b
                          {disp8} jne        _jmp_addr_0x00524b8b                                 // 0x00524bd6    75b3
                          push               edi                                                  // 0x00524bd8    57
-                         call               ___dt__10LHFilePathFv                                // 0x00524bd9    e852222a00
+                         call               _fclose                                              // 0x00524bd9    e852222a00
                          add                esp, 0x04                                            // 0x00524bde    83c404
                          push               0x00be95f8                                           // 0x00524be1    68f895be00
                          push               -0x1                                                 // 0x00524be6    6aff

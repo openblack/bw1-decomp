@@ -30,7 +30,7 @@
 .extern _malloc
 .extern _free
 .extern _fopen
-.extern ___dt__10LHFilePathFv
+.extern _fclose
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c7ae0
@@ -3348,7 +3348,7 @@ _jmp_addr_0x00844af8:    {disp32} mov       eax, dword ptr [edi + -0x0000017c]  
                          push               ecx                                            // 0x00844b25    51
                          call               _jmp_addr_0x007c75a2                           // 0x00844b26    e8772af8ff
                          push               esi                                            // 0x00844b2b    56
-                         call               ___dt__10LHFilePathFv                          // 0x00844b2c    e8ff22f8ff
+                         call               _fclose                                        // 0x00844b2c    e8ff22f8ff
                          add                esp, 0x14                                      // 0x00844b31    83c414
                          pop                edi                                            // 0x00844b34    5f
                          pop                esi                                            // 0x00844b35    5e
