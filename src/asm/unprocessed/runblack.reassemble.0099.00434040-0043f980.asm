@@ -170,8 +170,7 @@
 .extern ??2@YAPAXI@Z
 .extern _atoi
 .extern _malloc
-.extern _jmp_addr_0x007c6bd1
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern _jmp_addr_0x007c6c34
 .extern _jmp_addr_0x007c6ce0
 .extern _fprintf__10LHFilePath
@@ -3975,7 +3974,7 @@ _jmp_addr_0x004364d9:    {disp32} mov       esi, dword ptr [data_bytes + 0x29261
 _jmp_addr_0x00436547:    cmp                dword ptr [data_bytes + 0x4ca5ec], ebx               // 0x00436547    391dec05e900
                          {disp8} jne        _jmp_addr_0x00436582                                 // 0x0043654d    7533
                          push               0x009cd0c0                                           // 0x0043654f    68c0d09c00
-                         call               _jmp_addr_0x007c6c29                                 // 0x00436554    e8d0063900
+                         call               __unlink                                             // 0x00436554    e8d0063900
                          push               0x009cd0bc                                           // 0x00436559    68bcd09c00
                          push               0x009cd0c0                                           // 0x0043655e    68c0d09c00
                          call               _fopen__10LHFilePath                                 // 0x00436563    e8b5083900

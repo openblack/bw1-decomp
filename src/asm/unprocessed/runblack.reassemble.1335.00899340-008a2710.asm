@@ -11,7 +11,7 @@
 .extern _malloc
 .extern _free
 .extern _isspace
-.extern _jmp_addr_0x007c6ad3
+.extern _sscanf
 .extern _jmp_addr_0x007c6c34
 .extern _fflush
 .extern _strlen
@@ -616,7 +616,7 @@ _jmp_addr_0x008998b6:    {disp8} mov        dword ptr [eax + -0x08], ebx        
                          push               0x00c3c11c                                     // 0x008998ec    681cc1c300
                          push               eax                                            // 0x008998f1    50
                          {disp8} mov        byte ptr [esp + 0x24], 0x78                    // 0x008998f2    c644242478
-                         call               _jmp_addr_0x007c6ad3                           // 0x008998f7    e8d7d1f2ff
+                         call               _sscanf                                        // 0x008998f7    e8d7d1f2ff
                          add                esp, 0x10                                      // 0x008998fc    83c410
                          test               eax, eax                                       // 0x008998ff    85c0
                          {disp8} jle        _jmp_addr_0x00899946                           // 0x00899901    7e43

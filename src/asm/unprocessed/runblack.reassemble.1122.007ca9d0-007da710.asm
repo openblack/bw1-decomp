@@ -13,7 +13,7 @@
 .extern _malloc
 .extern _free
 .extern _isspace
-.extern _jmp_addr_0x007c6b68
+.extern _iswspace
 .extern _jmp_addr_0x007c6c55
 .extern _jmp_addr_0x007c6ce0
 .extern ___dt__10LHFilePathFv
@@ -108,7 +108,7 @@
 .globl _jmp_addr_0x007cf8c5
 .globl _jmp_addr_0x007cf90a
 .globl _jmp_addr_0x007cfc36
-.globl _jmp_addr_0x007cfe3d
+.globl __input
 .globl _iswctype
 .globl _jmp_addr_0x007d0950
 .globl _jmp_addr_0x007d098f
@@ -6643,7 +6643,7 @@ _jmp_addr_0x007cfe38:    pop                edi                                 
                          pop                ebx                                            // 0x007cfe3a    5b
                          leave                                                             // 0x007cfe3b    c9
                          ret                                                               // 0x007cfe3c    c3
-_jmp_addr_0x007cfe3d:    push               ebp                                            // 0x007cfe3d    55
+__input:                 push               ebp                                            // 0x007cfe3d    55
                          mov.s              ebp, esp                                       // 0x007cfe3e    8bec
                          sub                esp, 0x000001c4                                // 0x007cfe40    81ecc4010000
                          and                byte ptr [ebp + -0x15], 0x00                   // 0x007cfe46    8065eb00
@@ -14278,7 +14278,7 @@ _jmp_addr_0x007d5275:    push               0x8                                 
                          inc                edi                                            // 0x007d529e    47
                          mov                ax, word ptr [edi]                             // 0x007d529f    668b07
                          push               eax                                            // 0x007d52a2    50
-                         call               _jmp_addr_0x007c6b68                           // 0x007d52a3    e8c018ffff
+                         call               _iswspace                                      // 0x007d52a3    e8c018ffff
                          add                esp, 0x0c                                      // 0x007d52a8    83c40c
 _jmp_addr_0x007d52ab:    test               eax, eax                                       // 0x007d52ab    85c0
                          {disp8} je         _jmp_addr_0x007d52bd                           // 0x007d52ad    740e
@@ -14286,7 +14286,7 @@ _jmp_addr_0x007d52ab:    test               eax, eax                            
                          inc                edi                                            // 0x007d52b0    47
                          mov                ax, word ptr [edi]                             // 0x007d52b1    668b07
                          push               eax                                            // 0x007d52b4    50
-                         call               _jmp_addr_0x007c6b68                           // 0x007d52b5    e8ae18ffff
+                         call               _iswspace                                      // 0x007d52b5    e8ae18ffff
                          pop                ecx                                            // 0x007d52ba    59
                          {disp8} jmp        _jmp_addr_0x007d52ab                           // 0x007d52bb    ebee
 _jmp_addr_0x007d52bd:    cmp                word ptr [edi], 0x25                           // 0x007d52bd    66833f25
@@ -15233,7 +15233,7 @@ _jmp_addr_0x007d5d96:    push               dword ptr [esp + 0x10]              
                          call               _jmp_addr_0x007d5d6c                           // 0x007d5d9c    e8cbffffff
                          mov.s              edi, eax                                       // 0x007d5da1    8bf8
                          push               edi                                            // 0x007d5da3    57
-                         call               _jmp_addr_0x007c6b68                           // 0x007d5da4    e8bf0dffff
+                         call               _iswspace                                      // 0x007d5da4    e8bf0dffff
                          pop                ecx                                            // 0x007d5da9    59
                          test               eax, eax                                       // 0x007d5daa    85c0
                          pop                ecx                                            // 0x007d5dac    59

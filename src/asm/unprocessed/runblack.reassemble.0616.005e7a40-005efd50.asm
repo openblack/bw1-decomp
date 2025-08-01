@@ -117,7 +117,7 @@
 .extern ??2@YAPAXI@Z
 .extern _atoi
 .extern _isprint
-.extern _jmp_addr_0x007c6ad3
+.extern _sscanf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
@@ -1056,7 +1056,7 @@ _jmp_addr_0x005e826e:    {disp8} lea        ecx, dword ptr [esp + 0x08]         
                          push               ecx                                           // 0x005e8272    51
                          push               0x009cda78                                    // 0x005e8273    6878da9c00
                          push               eax                                           // 0x005e8278    50
-                         call               _jmp_addr_0x007c6ad3                          // 0x005e8279    e855e81d00
+                         call               _sscanf                                       // 0x005e8279    e855e81d00
                          {disp32} mov       edx, dword ptr [esi + 0x000000dc]             // 0x005e827e    8b96dc000000
                          add                esp, 0x0c                                     // 0x005e8284    83c40c
                          cmp                word ptr [esp + 0x08], 0x01                   // 0x005e8287    66837c240801

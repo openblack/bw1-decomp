@@ -12,7 +12,7 @@
 .extern _atoi
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c6ad3
+.extern _sscanf
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x007c789d
 .extern _jmp_addr_0x007c79fd
@@ -2380,7 +2380,7 @@ _jmp_addr_0x0088ec02:    movsx            ecx, byte ptr [esp + esi * 0x1 + 0x04]
                          push             eax                                            // 0x0088ec39    50
                          push             0x00c39034                                     // 0x0088ec3a    683490c300
                          push             ecx                                            // 0x0088ec3f    51
-                         call             _jmp_addr_0x007c6ad3                           // 0x0088ec40    e88e7ef3ff
+                         call             _sscanf                                        // 0x0088ec40    e88e7ef3ff
                          {disp32} mov     eax, dword ptr [rdata_bytes + 0xfaf50]         // 0x0088ec45    a1503f9a00
                          {disp8} mov      ecx, dword ptr [esp + 0x24]                    // 0x0088ec4a    8b4c2424
                          add              esp, 0x0c                                      // 0x0088ec4e    83c40c

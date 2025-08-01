@@ -43,7 +43,7 @@
 .extern _jmp_addr_0x007760a0
 .extern _jmp_addr_0x0078e9b0
 .extern _atexit
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -247,7 +247,7 @@ _jmp_addr_0x00641694:    {disp8} mov       edx, dword ptr [ebp + 0x00]          
                          {disp8} lea       eax, dword ptr [esp + 0x2c]                   // 0x00641729    8d44242c
                          push              eax                                           // 0x0064172d    50
                          mov               byte ptr [edx + ecx * 0x1], 0x74              // 0x0064172e    c6040a74
-                         call              _jmp_addr_0x007c6c29                          // 0x00641732    e8f2541800
+                         call              __unlink                                      // 0x00641732    e8f2541800
                          {disp8} mov       ecx, dword ptr [esp + 0x18]                   // 0x00641737    8b4c2418
                          {disp8} mov       edx, dword ptr [ebp + 0x00]                   // 0x0064173b    8b5500
                          push              ecx                                           // 0x0064173e    51
@@ -791,7 +791,7 @@ _pc_main__Fv:            push              ebp                                  
                          cmp.s             al, bl                                        // 0x00641c92    3ac3
                          {disp8} je        _jmp_addr_0x00641cd0                          // 0x00641c94    743a
                          push              0x00bfea9c                                    // 0x00641c96    689ceabf00
-                         call              _jmp_addr_0x007c6c29                          // 0x00641c9b    e8894f1800
+                         call              __unlink                                      // 0x00641c9b    e8894f1800
                          push              0x009cd0bc                                    // 0x00641ca0    68bcd09c00
                          push              0x00bfea9c                                    // 0x00641ca5    689ceabf00
                          call              _fopen__10LHFilePath                          // 0x00641caa    e86e511800

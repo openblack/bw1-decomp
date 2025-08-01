@@ -258,8 +258,7 @@
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _swprintf
-.extern _jmp_addr_0x007c6bff
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c8668

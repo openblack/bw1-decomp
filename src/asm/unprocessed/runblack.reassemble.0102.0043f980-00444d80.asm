@@ -91,7 +91,7 @@
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _wcslen
-.extern _jmp_addr_0x007c6ad3
+.extern _sscanf
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c7300
@@ -220,7 +220,7 @@ _jmp_addr_0x0043f980:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        edx, dword ptr [esp + 0x14]                   // 0x0043f9c7    8d542414
                          push               0x009cd730                                    // 0x0043f9cb    6830d79c00
                          push               edx                                           // 0x0043f9d0    52
-                         call               _jmp_addr_0x007c6ad3                          // 0x0043f9d1    e8fd703800
+                         call               _sscanf                                       // 0x0043f9d1    e8fd703800
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x0043f9d6    8b442414
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x0043f9da    8b4c2418
                          add                esp, 0x0c                                     // 0x0043f9de    83c40c

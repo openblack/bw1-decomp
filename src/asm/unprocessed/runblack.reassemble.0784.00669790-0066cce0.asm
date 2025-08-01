@@ -94,7 +94,7 @@
 .extern _wcslen
 .extern ??2@YAPAXI@Z
 .extern _free
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern _jmp_addr_0x007c6edf
 .extern _strtok
 .extern __chmod
@@ -3766,7 +3766,7 @@ _jmp_addr_0x0066bf20:    sub                esp, 0x0000020c                     
                          call               __chmod                                       // 0x0066bf85    e8d6d81500
                          {disp8} lea        edx, dword ptr [esp + 0x24]                   // 0x0066bf8a    8d542424
                          push               edx                                           // 0x0066bf8e    52
-                         call               _jmp_addr_0x007c6c29                          // 0x0066bf8f    e895ac1500
+                         call               __unlink                                      // 0x0066bf8f    e895ac1500
                          push               esi                                           // 0x0066bf94    56
                          call               ebx                                           // 0x0066bf95    ffd3
                          push               edi                                           // 0x0066bf97    57

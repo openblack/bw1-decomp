@@ -169,8 +169,8 @@
 .extern ??2@YAPAXI@Z
 .extern _atoi
 .extern _malloc
-.extern _jmp_addr_0x007c6bd1
-.extern _jmp_addr_0x007c6c29
+.extern _rename
+.extern __unlink
 .extern _jmp_addr_0x007c6c34
 .extern _jmp_addr_0x007c6ce0
 .extern _fprintf__10LHFilePath
@@ -3419,7 +3419,7 @@ _jmp_addr_0x0042d509:    {disp8} lea        ecx, dword ptr [esp + 0x1c]         
                          {disp8} jne        _jmp_addr_0x0042d547                                 // 0x0042d519    752c
                          {disp32} lea       ecx, dword ptr [esp + 0x00000084]                    // 0x0042d51b    8d8c2484000000
                          push               ecx                                                  // 0x0042d522    51
-                         call               _jmp_addr_0x007c6c29                                 // 0x0042d523    e801973900
+                         call               __unlink                                             // 0x0042d523    e801973900
                          add                esp, 0x04                                            // 0x0042d528    83c404
                          test               bl, bl                                               // 0x0042d52b    84db
                          {disp8} jne        _jmp_addr_0x0042d547                                 // 0x0042d52d    7518
@@ -3427,7 +3427,7 @@ _jmp_addr_0x0042d509:    {disp8} lea        ecx, dword ptr [esp + 0x1c]         
                          push               edx                                                  // 0x0042d536    52
                          {disp32} lea       eax, dword ptr [esp + 0x0000009c]                    // 0x0042d537    8d84249c000000
                          push               eax                                                  // 0x0042d53e    50
-                         call               _jmp_addr_0x007c6bd1                                 // 0x0042d53f    e88d963900
+                         call               _rename                                 // 0x0042d53f    e88d963900
                          add                esp, 0x08                                            // 0x0042d544    83c408
 _jmp_addr_0x0042d547:    call               _jmp_addr_0x0042b400                                 // 0x0042d547    e8b4deffff
                          {disp32} lea       ecx, dword ptr [esp + 0x000000ac]                    // 0x0042d54c    8d8c24ac000000

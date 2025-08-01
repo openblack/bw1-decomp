@@ -205,7 +205,7 @@
 .extern ??2@YAPAXI@Z
 .extern _atol
 .extern _atoi
-.extern _jmp_addr_0x007c6c29
+.extern __unlink
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
@@ -6366,12 +6366,12 @@ _jmp_addr_0x00634eb8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               0x00bec7a4                                     // 0x00634ecf    68a4c7be00
                          call               __chmod                                        // 0x00634ed4    e887491900
                          push               0x00bec7a4                                     // 0x00634ed9    68a4c7be00
-                         call               _jmp_addr_0x007c6c29                           // 0x00634ede    e8461d1900
+                         call               __unlink                                       // 0x00634ede    e8461d1900
                          push               0x00000180                                     // 0x00634ee3    6880010000
                          push               0x00bec778                                     // 0x00634ee8    6878c7be00
                          call               __chmod                                        // 0x00634eed    e86e491900
                          push               0x00bec778                                     // 0x00634ef2    6878c7be00
-                         call               _jmp_addr_0x007c6c29                           // 0x00634ef7    e82d1d1900
+                         call               __unlink                                       // 0x00634ef7    e82d1d1900
                          add                esp, 0x18                                      // 0x00634efc    83c418
                          push               ebp                                            // 0x00634eff    55
                          push               0x00bf46d0                                     // 0x00634f00    68d046bf00
@@ -6563,7 +6563,7 @@ _jmp_addr_0x0063517c:    cmp                dword ptr [esp + 0x14], 0x01        
                          push               0x00bec7a4                                     // 0x006351a4    68a4c7be00
                          call               __chmod                                        // 0x006351a9    e8b2461900
                          push               0x00bec7a4                                     // 0x006351ae    68a4c7be00
-                         call               _jmp_addr_0x007c6c29                           // 0x006351b3    e8711a1900
+                         call               __unlink                                       // 0x006351b3    e8711a1900
                          push               0x009ce5dc                                     // 0x006351b8    68dce59c00
                          push               0x00bec7a4                                     // 0x006351bd    68a4c7be00
                          call               _fopen__10LHFilePath                           // 0x006351c2    e8561c1900
