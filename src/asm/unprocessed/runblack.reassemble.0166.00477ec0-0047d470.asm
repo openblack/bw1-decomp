@@ -160,7 +160,7 @@
 .extern ??2@YAPAXI@Z
 .extern _free
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
 .extern ___nw__FUl
@@ -2283,7 +2283,7 @@ _jmp_addr_0x004797ec:    {disp32} mov       ecx, dword ptr [_game]              
                          call               dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x00479869    ff155c938a00
                          add                esp, 0x0c                                     // 0x0047986f    83c40c
                          push               eax                                           // 0x00479872    50
-                         call               _fopen__10LHFilePath                          // 0x00479873    e8a5d53400
+                         call               _fopen                                        // 0x00479873    e8a5d53400
                          mov.s              esi, eax                                      // 0x00479878    8bf0
                          add                esp, 0x08                                     // 0x0047987a    83c408
                          test               esi, esi                                      // 0x0047987d    85f6

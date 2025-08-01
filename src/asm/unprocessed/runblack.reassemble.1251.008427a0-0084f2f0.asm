@@ -29,7 +29,7 @@
 .extern ??2@YAPAXI@Z
 .extern _malloc
 .extern _free
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
@@ -3314,7 +3314,7 @@ _jmp_addr_0x00844aa0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               0x009ce5dc                                     // 0x00844ac8    68dce59c00
                          push               eax                                            // 0x00844acd    50
                          mov.s              ebx, ecx                                       // 0x00844ace    8bd9
-                         call               _fopen__10LHFilePath                           // 0x00844ad0    e84823f8ff
+                         call               _fopen                                         // 0x00844ad0    e84823f8ff
                          mov                ecx, dword ptr [ebx]                           // 0x00844ad5    8b0b
                          mov.s              esi, eax                                       // 0x00844ad7    8bf0
                          push               ecx                                            // 0x00844ad9    51

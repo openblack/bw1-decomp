@@ -24,7 +24,7 @@
 .extern ??2@YAPAXI@Z
 .extern _malloc
 .extern _free
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c8859
@@ -6321,7 +6321,7 @@ _jmp_addr_0x007ee760:    push             esi                                   
                          push             0x009ce5d8                               // 0x007ee89c    68d8e59c00
                          mov.s            edi, ecx                                 // 0x007ee8a1    8bf9
                          push             eax                                      // 0x007ee8a3    50
-                         call             _fopen__10LHFilePath                     // 0x007ee8a4    e87485fdff
+                         call             _fopen                                   // 0x007ee8a4    e87485fdff
                          add              esp, 0x08                                // 0x007ee8a9    83c408
                          {disp8} lea      ecx, dword ptr [esp + 0x08]              // 0x007ee8ac    8d4c2408
                          mov.s            esi, eax                                 // 0x007ee8b0    8bf0
@@ -6466,7 +6466,7 @@ _jmp_addr_0x007ee9ef:    pop              edi                                   
                          push             0x009ce5d8                               // 0x007eea05    68d8e59c00
                          mov.s            esi, ecx                                 // 0x007eea0a    8bf1
                          push             eax                                      // 0x007eea0c    50
-                         call             _fopen__10LHFilePath                     // 0x007eea0d    e80b84fdff
+                         call             _fopen                                   // 0x007eea0d    e80b84fdff
                          add              esp, 0x08                                // 0x007eea12    83c408
                          test             eax, eax                                 // 0x007eea15    85c0
                          {disp8} je       _jmp_addr_0x007eea28                     // 0x007eea17    740f
@@ -6489,7 +6489,7 @@ _jmp_addr_0x007eea30:    sub              esp, 0x00000c20                       
                          push             0x009ce5d8                               // 0x007eea41    68d8e59c00
                          mov.s            edi, ecx                                 // 0x007eea46    8bf9
                          push             eax                                      // 0x007eea48    50
-                         call             _fopen__10LHFilePath                     // 0x007eea49    e8cf83fdff
+                         call             _fopen                                   // 0x007eea49    e8cf83fdff
                          {disp32} mov     ebp, dword ptr [esp + 0x00000c40]        // 0x007eea4e    8bac24400c0000
                          xor.s            esi, esi                                 // 0x007eea55    33f6
                          add              esp, 0x08                                // 0x007eea57    83c408

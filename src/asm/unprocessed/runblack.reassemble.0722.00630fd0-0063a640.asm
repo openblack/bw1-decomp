@@ -206,7 +206,7 @@
 .extern _atol
 .extern _atoi
 .extern __unlink
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6edf
@@ -2986,7 +2986,7 @@ _jmp_addr_0x00632a30:    push               ecx                                 
                          push               eax                                            // 0x00632a3e    50
                          xor.s              esi, esi                                       // 0x00632a3f    33f6
                          xor.s              ebx, ebx                                       // 0x00632a41    33db
-                         call               _fopen__10LHFilePath                           // 0x00632a43    e8d5431900
+                         call               _fopen                                         // 0x00632a43    e8d5431900
                          mov.s              edi, eax                                       // 0x00632a48    8bf8
                          add                esp, 0x08                                      // 0x00632a4a    83c408
                          test               edi, edi                                       // 0x00632a4d    85ff
@@ -6392,7 +6392,7 @@ _jmp_addr_0x00634eb8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               0x009ce5d8                                     // 0x00634f4a    68d8e59c00
                          push               0x00bec7a4                                     // 0x00634f4f    68a4c7be00
                          {disp32} mov       byte ptr [data_bytes + 0x33b834], 0x00         // 0x00634f54    c6053418d00000
-                         call               _fopen__10LHFilePath                           // 0x00634f5b    e8bd1e1900
+                         call               _fopen                                         // 0x00634f5b    e8bd1e1900
                          mov.s              esi, eax                                       // 0x00634f60    8bf0
                          add                esp, 0x0c                                      // 0x00634f62    83c40c
                          cmp.s              esi, ebp                                       // 0x00634f65    3bf5
@@ -6566,7 +6566,7 @@ _jmp_addr_0x0063517c:    cmp                dword ptr [esp + 0x14], 0x01        
                          call               __unlink                                       // 0x006351b3    e8711a1900
                          push               0x009ce5dc                                     // 0x006351b8    68dce59c00
                          push               0x00bec7a4                                     // 0x006351bd    68a4c7be00
-                         call               _fopen__10LHFilePath                           // 0x006351c2    e8561c1900
+                         call               _fopen                                         // 0x006351c2    e8561c1900
                          mov.s              esi, eax                                       // 0x006351c7    8bf0
                          add                esp, 0x14                                      // 0x006351c9    83c414
                          test               esi, esi                                       // 0x006351cc    85f6

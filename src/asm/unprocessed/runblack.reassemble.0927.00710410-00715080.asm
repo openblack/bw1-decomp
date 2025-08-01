@@ -78,7 +78,7 @@
 .extern _isdigit
 .extern __unlink
 .extern _fprintf
-.extern _fopen__10LHFilePath
+.extern _fopen
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c748b
@@ -4471,7 +4471,7 @@ _jmp_addr_0x00713140:    sub                esp, 0x68                           
                          {disp32} jne       _jmp_addr_0x00713297                          // 0x0071316d    0f8524010000
                          push               0x009ce5d8                                    // 0x00713173    68d8e59c00
                          push               edi                                           // 0x00713178    57
-                         call               _fopen__10LHFilePath                          // 0x00713179    e89f3c0b00
+                         call               _fopen                                        // 0x00713179    e89f3c0b00
                          mov.s              ebx, eax                                      // 0x0071317e    8bd8
                          add                esp, 0x08                                     // 0x00713180    83c408
                          test               ebx, ebx                                      // 0x00713183    85db
@@ -4608,7 +4608,7 @@ _jmp_addr_0x007132b0:    sub                esp, 0x08                           
                          {disp8} mov        edi, dword ptr [esp + 0x14]                   // 0x007132bc    8b7c2414
                          push               0x009ce5d8                                    // 0x007132c0    68d8e59c00
                          push               edi                                           // 0x007132c5    57
-                         call               _fopen__10LHFilePath                          // 0x007132c6    e8523b0b00
+                         call               _fopen                                        // 0x007132c6    e8523b0b00
                          mov.s              edx, eax                                      // 0x007132cb    8bd0
                          add                esp, 0x08                                     // 0x007132cd    83c408
                          test               edx, edx                                      // 0x007132d0    85d2
@@ -5049,7 +5049,7 @@ _jmp_addr_0x00713660:    sub                esp, 0x00000204                     
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x007136b8    8d44241c
                          push               0x00c20c98                                    // 0x007136bc    68980cc200
                          push               eax                                           // 0x007136c1    50
-                         call               _fopen__10LHFilePath                          // 0x007136c2    e856370b00
+                         call               _fopen                                        // 0x007136c2    e856370b00
                          mov.s              edi, eax                                      // 0x007136c7    8bf8
                          add                esp, 0x1c                                     // 0x007136c9    83c41c
                          test               edi, edi                                      // 0x007136cc    85ff
@@ -5151,7 +5151,7 @@ _jmp_addr_0x00713710:    sub                esp, 0x00000340                     
                          {disp32} lea       ecx, dword ptr [esp + 0x00000148]             // 0x007137da    8d8c2448010000
                          push               0x00c20ca0                                    // 0x007137e1    68a00cc200
                          push               ecx                                           // 0x007137e6    51
-                         call               _fopen__10LHFilePath                          // 0x007137e7    e831360b00
+                         call               _fopen                                        // 0x007137e7    e831360b00
                          add                esp, 0x08                                     // 0x007137ec    83c408
                          cmp.s              eax, ebp                                      // 0x007137ef    3bc5
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x007137f1    8944241c
@@ -5588,7 +5588,7 @@ _jmp_addr_0x00713bc1:    {disp8} mov        eax, dword ptr [ebx + 0x0d]         
 _jmp_addr_0x00713bd1:    push               0x009d976c                                    // 0x00713bd1    686c979d00
                          push               0x00bea824                                    // 0x00713bd6    6824a8be00
                          {disp8} mov        dword ptr [ebx + 0x0d], 0x00000000            // 0x00713bdb    c7430d00000000
-                         call               _fopen__10LHFilePath                          // 0x00713be2    e836320b00
+                         call               _fopen                                        // 0x00713be2    e836320b00
                          mov.s              ebp, eax                                      // 0x00713be7    8be8
                          add                esp, 0x08                                     // 0x00713be9    83c408
                          test               ebp, ebp                                      // 0x00713bec    85ed
@@ -6018,7 +6018,7 @@ _jmp_addr_0x0071401b:    push               ebp                                 
                          {disp8} jmp        _jmp_addr_0x00713fe1                          // 0x00714024    ebbb
 _jmp_addr_0x00714026:    push               0x009d976c                                    // 0x00714026    686c979d00
                          push               0x00bec914                                    // 0x0071402b    6814c9be00
-                         call               _fopen__10LHFilePath                          // 0x00714030    e8e82d0b00
+                         call               _fopen                                        // 0x00714030    e8e82d0b00
                          mov.s              ebp, eax                                      // 0x00714035    8be8
                          add                esp, 0x08                                     // 0x00714037    83c408
                          test               ebp, ebp                                      // 0x0071403a    85ed
@@ -6129,7 +6129,7 @@ _jmp_addr_0x00714130:    push               esi                                 
                          add                esp, 0x0c                                     // 0x00714154    83c40c
 _jmp_addr_0x00714157:    push               0x009cd0bc                                    // 0x00714157    68bcd09c00
                          push               esi                                           // 0x0071415c    56
-                         call               _fopen__10LHFilePath                          // 0x0071415d    e8bb2c0b00
+                         call               _fopen                                        // 0x0071415d    e8bb2c0b00
                          mov.s              edi, eax                                      // 0x00714162    8bf8
                          add                esp, 0x08                                     // 0x00714164    83c408
                          test               edi, edi                                      // 0x00714167    85ff
@@ -6205,7 +6205,7 @@ _jmp_addr_0x007141fb:    push               0x00c20ccc                          
                          push               edi                                           // 0x00714200    57
                          mov                dword ptr [esi], 0x00000000                   // 0x00714201    c70600000000
                          {disp8} mov        dword ptr [esi + 0x04], 0x00000000            // 0x00714207    c7460400000000
-                         call               _fopen__10LHFilePath                          // 0x0071420e    e80a2c0b00
+                         call               _fopen                                        // 0x0071420e    e80a2c0b00
                          mov.s              edi, eax                                      // 0x00714213    8bf8
                          add                esp, 0x08                                     // 0x00714215    83c408
                          test               edi, edi                                      // 0x00714218    85ff
@@ -6895,7 +6895,7 @@ _jmp_addr_0x0071486b:    inc                ebx                                 
                          {disp8} lea        eax, dword ptr [esp + 0x50]                   // 0x00714993    8d442450
                          push               0x00c20c98                                    // 0x00714997    68980cc200
                          push               eax                                           // 0x0071499c    50
-                         call               _fopen__10LHFilePath                          // 0x0071499d    e87b240b00
+                         call               _fopen                                        // 0x0071499d    e87b240b00
                          mov.s              esi, eax                                      // 0x007149a2    8bf0
                          push               esi                                           // 0x007149a4    56
                          push               0x4                                           // 0x007149a5    6a04
@@ -7044,7 +7044,7 @@ _jmp_addr_0x00714b11:    {disp32} mov       al, byte ptr [_ARGS_SETTINGS_PATH]  
                          {disp32} je        _jmp_addr_0x00714c08                          // 0x00714b18    0f84ea000000
                          push               0x00be95c8                                    // 0x00714b1e    68c895be00
                          push               0x00d9927c /* _ARGS_SETTINGS_PATH */          // 0x00714b23    687c92d900
-_jmp_addr_0x00714b28:    call               _fopen__10LHFilePath                          // 0x00714b28    e8f0220b00
+_jmp_addr_0x00714b28:    call               _fopen                                        // 0x00714b28    e8f0220b00
                          mov.s              edi, eax                                      // 0x00714b2d    8bf8
                          add                esp, 0x08                                     // 0x00714b2f    83c408
                          test               edi, edi                                      // 0x00714b32    85ff
