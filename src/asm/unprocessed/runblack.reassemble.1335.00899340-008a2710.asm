@@ -10,7 +10,7 @@
 .extern ??2@YAPAXI@Z
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c6942
+.extern _isspace
 .extern _jmp_addr_0x007c6ad3
 .extern _jmp_addr_0x007c6c34
 .extern _fflush
@@ -12982,7 +12982,7 @@ _jmp_addr_0x008a1984:    mov               eax, dword ptr [esi]                 
                          {disp8} mov       dword ptr [ebp + -0x04], eax                    // 0x008a1995    8945fc
                          {disp8} je        _jmp_addr_0x008a19c3                            // 0x008a1998    7429
                          push              eax                                             // 0x008a199a    50
-                         call              _jmp_addr_0x007c6942                            // 0x008a199b    e8a24ff2ff
+                         call              _isspace                                        // 0x008a199b    e8a24ff2ff
                          test              eax, eax                                        // 0x008a19a0    85c0
                          pop               ecx                                             // 0x008a19a2    59
                          {disp8} jne       _jmp_addr_0x008a19e3                            // 0x008a19a3    753e
@@ -13151,7 +13151,7 @@ _jmp_addr_0x008a1b40:    mov               eax, dword ptr [esi]                 
 _jmp_addr_0x008a1b4e:    cmp               eax, -0x01                                      // 0x008a1b4e    83f8ff
                          {disp8} je        _jmp_addr_0x008a1b6e                            // 0x008a1b51    741b
                          push              eax                                             // 0x008a1b53    50
-                         call              _jmp_addr_0x007c6942                            // 0x008a1b54    e8e94df2ff
+                         call              _isspace                                        // 0x008a1b54    e8e94df2ff
                          test              eax, eax                                        // 0x008a1b59    85c0
                          pop               ecx                                             // 0x008a1b5b    59
                          {disp8} je        _jmp_addr_0x008a1b82                            // 0x008a1b5c    7424

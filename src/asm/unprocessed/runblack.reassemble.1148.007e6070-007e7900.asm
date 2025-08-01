@@ -19,11 +19,11 @@
 .extern _atoi
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c686f
-.extern _jmp_addr_0x007c689d
-.extern _jmp_addr_0x007c68c5
-.extern _jmp_addr_0x007c68ed
-.extern _jmp_addr_0x007c6942
+.extern _isalpha
+.extern _isupper
+.extern _islower
+.extern _isdigit
+.extern _isspace
 .extern _jmp_addr_0x007c6b1c
 .extern _jmp_addr_0x007c6b2d
 .extern _jmp_addr_0x007c6b3b
@@ -1722,31 +1722,31 @@ _jmp_addr_0x007e6df3:    sbb.s            eax, eax                              
                          nop                                                            // 0x007e6f1f    90
                          movsx            eax, byte ptr [esp + 0x04]                    // 0x007e6f20    0fbe442404
                          push             eax                                           // 0x007e6f25    50
-                         call             _jmp_addr_0x007c686f                          // 0x007e6f26    e844f9fdff
+                         call             _isalpha                                      // 0x007e6f26    e844f9fdff
                          add              esp, 0x04                                     // 0x007e6f2b    83c404
                          ret                                                            // 0x007e6f2e    c3
                          nop                                                            // 0x007e6f2f    90
                          movsx            eax, byte ptr [esp + 0x04]                    // 0x007e6f30    0fbe442404
                          push             eax                                           // 0x007e6f35    50
-                         call             _jmp_addr_0x007c689d                          // 0x007e6f36    e862f9fdff
+                         call             _isupper                                      // 0x007e6f36    e862f9fdff
                          add              esp, 0x04                                     // 0x007e6f3b    83c404
                          ret                                                            // 0x007e6f3e    c3
                          nop                                                            // 0x007e6f3f    90
                          movsx            eax, byte ptr [esp + 0x04]                    // 0x007e6f40    0fbe442404
                          push             eax                                           // 0x007e6f45    50
-                         call             _jmp_addr_0x007c68c5                          // 0x007e6f46    e87af9fdff
+                         call             _islower                                      // 0x007e6f46    e87af9fdff
                          add              esp, 0x04                                     // 0x007e6f4b    83c404
                          ret                                                            // 0x007e6f4e    c3
                          nop                                                            // 0x007e6f4f    90
 _jmp_addr_0x007e6f50:    movsx            eax, byte ptr [esp + 0x04]                    // 0x007e6f50    0fbe442404
                          push             eax                                           // 0x007e6f55    50
-                         call             _jmp_addr_0x007c68ed                          // 0x007e6f56    e892f9fdff
+                         call             _isdigit                                      // 0x007e6f56    e892f9fdff
                          add              esp, 0x04                                     // 0x007e6f5b    83c404
                          ret                                                            // 0x007e6f5e    c3
                          nop                                                            // 0x007e6f5f    90
 _jmp_addr_0x007e6f60:    movsx            eax, byte ptr [esp + 0x04]                    // 0x007e6f60    0fbe442404
                          push             eax                                           // 0x007e6f65    50
-                         call             _jmp_addr_0x007c6942                          // 0x007e6f66    e8d7f9fdff
+                         call             _isspace                                      // 0x007e6f66    e8d7f9fdff
                          add              esp, 0x04                                     // 0x007e6f6b    83c404
                          ret                                                            // 0x007e6f6e    c3
                          nop                                                            // 0x007e6f6f    90
