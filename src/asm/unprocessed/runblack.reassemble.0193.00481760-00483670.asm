@@ -47,7 +47,7 @@
 .extern  ___dl__FPv
 .extern ___RTDynamicCast
 .extern _fprintf
-.extern _jmp_addr_0x007c73c0
+.extern __CIasin
 .extern ___nw__FUl
 .extern _jmp_addr_0x007f6f00
 .extern ??1FragMesh@@QAE@XZ
@@ -1968,7 +1968,7 @@ _jmp_addr_0x00482fb8:    {disp8} lea        eax, dword ptr [esp + 0x14]         
                          {disp8} fstp       dword ptr [esp + 0x0c]                               // 0x00482fce    d95c240c
                          add                esp, 0x04                                            // 0x00482fd2    83c404
 _jmp_addr_0x00482fd5:    {disp8} fld        dword ptr [esp + 0x18]                               // 0x00482fd5    d9442418
-                         call               _jmp_addr_0x007c73c0                                 // 0x00482fd9    e8e2433400
+                         call               __CIasin                                             // 0x00482fd9    e8e2433400
                          {disp8} fstp       dword ptr [esp + 0x0c]                               // 0x00482fde    d95c240c
 _jmp_addr_0x00482fe2:    {disp32} mov       ecx, dword ptr [esi + 0x000048b8]                    // 0x00482fe2    8b8eb8480000
                          {disp32} mov       edx, dword ptr [esi + 0x00004858]                    // 0x00482fe8    8b9658480000

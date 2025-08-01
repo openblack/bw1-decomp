@@ -138,7 +138,7 @@
 .extern _wcscpy
 .extern _memmove
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c73c0
+.extern __CIasin
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
 .extern ___nw__FUl
@@ -1124,7 +1124,7 @@ _jmp_addr_0x005c0011:    fxch               st(1)                               
                          fpatan                                                            // 0x005c0013    d9f3
                          {disp8} fstp       dword ptr [esp + 0x10]                         // 0x005c0015    d95c2410
                          {disp8} fld        dword ptr [esp + 0x14]                         // 0x005c0019    d9442414
-                         call               _jmp_addr_0x007c73c0                           // 0x005c001d    e89e732000
+                         call               __CIasin                                       // 0x005c001d    e89e732000
                          {disp8} fld        dword ptr [esp + 0x10]                         // 0x005c0022    d9442410
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x1e9e0]              // 0x005c0026    d81de0798c00
                          fnstsw             ax                                             // 0x005c002c    dfe0

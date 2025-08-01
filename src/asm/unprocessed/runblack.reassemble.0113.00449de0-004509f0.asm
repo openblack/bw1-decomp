@@ -40,7 +40,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c73c0
+.extern __CIasin
 .extern ___nw__FUl
 .extern @DeltaPos__7LHMouseFv@4
 .extern _jmp_addr_0x007e4b40
@@ -8826,7 +8826,7 @@ _jmp_addr_0x004506ee:    {disp32} lea       ecx, dword ptr [esi + 0x000000c4]   
                          {disp32} mov       ecx, dword ptr [esi + 0x000000dc]             // 0x00450710    8b8edc000000
                          {disp8} mov        dword ptr [esp + 0x18], eax                   // 0x00450716    89442418
                          {disp8} mov        dword ptr [esp + 0x1c], ecx                   // 0x0045071a    894c241c
-                         call               _jmp_addr_0x007c73c0                          // 0x0045071e    e89d6c3700
+                         call               __CIasin                                      // 0x0045071e    e89d6c3700
                          {disp8} fst        dword ptr [esp + 0x30]                        // 0x00450723    d9542430
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x00450727    8b542414
                          fadd               dword ptr [edx]                               // 0x0045072b    d802
