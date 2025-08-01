@@ -230,7 +230,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern _strncpy
 .extern _strrchr
 .extern ___nw__FUl
@@ -8525,7 +8525,7 @@ _GetTribeFromText__10GTribeInfoFPCc:    {disp32} mov       eax, dword ptr [data_
 _jmp_addr_0x0074c95b:    mov                ecx, dword ptr [eax]                           // 0x0074c95b    8b08
                          push               ecx                                            // 0x0074c95d    51
                          push               ebx                                            // 0x0074c95e    53
-                         call               _jmp_addr_0x007c6ce0                           // 0x0074c95f    e87ca30700
+                         call               __strcmpi                                      // 0x0074c95f    e87ca30700
                          add                esp, 0x08                                      // 0x0074c964    83c408
                          test               eax, eax                                       // 0x0074c967    85c0
                          {disp8} je         _jmp_addr_0x0074c980                           // 0x0074c969    7415
