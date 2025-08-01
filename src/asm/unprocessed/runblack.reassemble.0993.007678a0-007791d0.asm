@@ -318,7 +318,7 @@
 .extern ??2@YAPAXI@Z
 .extern _fclose
 .extern __chkstk
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern _getc_10LHFilePath
 .extern _jmp_addr_0x007c8859
 .extern ??0exception@@QAE@ABQBD@Z
@@ -22894,7 +22894,7 @@ _jmp_addr_0x00776976:    {disp8} mov        ebp, dword ptr [esi + 0x44]         
                          push               edi                                             // 0x0077699a    57
                          push               0x1                                             // 0x0077699b    6a01
                          push               ebp                                             // 0x0077699d    55
-                         call               _jmp_addr_0x007c75a2                            // 0x0077699e    e8ff0b0500
+                         call               _fwrite                                         // 0x0077699e    e8ff0b0500
                          add                esp, 0x10                                       // 0x007769a3    83c410
                          cmp.s              eax, edi                                        // 0x007769a6    3bc7
                          {disp8} jne        _jmp_addr_0x007769b6                            // 0x007769a8    750c

@@ -211,7 +211,7 @@
 .extern __chkstk
 .extern _wcscmp
 .extern _fread
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern _jmp_addr_0x007c79fd
 .extern _atof
 .extern _swscanf
@@ -6577,7 +6577,7 @@ _jmp_addr_0x0063517c:    cmp                dword ptr [esp + 0x14], 0x01        
                          push               0x1                                            // 0x006351d9    6a01
                          push               edx                                            // 0x006351db    52
                          push               eax                                            // 0x006351dc    50
-                         call               _jmp_addr_0x007c75a2                           // 0x006351dd    e8c0231900
+                         call               _fwrite                                        // 0x006351dd    e8c0231900
                          push               esi                                            // 0x006351e2    56
                          call               _fclose                                        // 0x006351e3    e8481c1900
                          add                esp, 0x14                                      // 0x006351e8    83c414

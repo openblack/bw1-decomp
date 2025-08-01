@@ -8,7 +8,7 @@
 .extern _fprintf
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern _exit
 .extern _fflush
 .extern _jmp_addr_0x00899040
@@ -808,7 +808,7 @@ _jmp_addr_0x00898b2c:    {disp8} mov        eax, dword ptr [esi + 0x18]         
                          push               0x00001000                                    // 0x00898b90    6800100000
                          push               0x1                                           // 0x00898b95    6a01
                          push               ecx                                           // 0x00898b97    51
-                         call               _jmp_addr_0x007c75a2                          // 0x00898b98    e805eaf2ff
+                         call               _fwrite                                       // 0x00898b98    e805eaf2ff
                          add                esp, 0x10                                     // 0x00898b9d    83c410
                          cmp                eax, 0x00001000                               // 0x00898ba0    3d00100000
                          {disp8} je         _jmp_addr_0x00898bb8                          // 0x00898ba5    7411
@@ -846,7 +846,7 @@ _jmp_addr_0x00898bb8:    {disp8} mov        ecx, dword ptr [esi + 0x18]         
                          push               esi                                           // 0x00898beb    56
                          push               0x1                                           // 0x00898bec    6a01
                          push               ecx                                           // 0x00898bee    51
-                         call               _jmp_addr_0x007c75a2                          // 0x00898bef    e8aee9f2ff
+                         call               _fwrite                                       // 0x00898bef    e8aee9f2ff
                          add                esp, 0x10                                     // 0x00898bf4    83c410
                          cmp.s              eax, esi                                      // 0x00898bf7    3bc6
                          {disp8} je         _jmp_addr_0x00898c0c                          // 0x00898bf9    7411

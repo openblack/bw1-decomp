@@ -148,7 +148,7 @@
 .extern __chkstk
 .extern _wcscmp
 .extern _fread
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern ___nw__FUl
 .extern _CHAR2WCHAR__FPc
 .extern _jmp_addr_0x00886780
@@ -8094,13 +8094,13 @@ _jmp_addr_0x00625c93:    push              0x00bf46d8                           
                          push              0x1                                           // 0x00625cd2    6a01
                          push              ecx                                           // 0x00625cd4    51
                          {disp8} mov       dword ptr [esp + 0x20], eax                   // 0x00625cd5    89442420
-                         call              _jmp_addr_0x007c75a2                          // 0x00625cd9    e8c4181a00
+                         call              _fwrite                                       // 0x00625cd9    e8c4181a00
                          push              esi                                           // 0x00625cde    56
                          push              0x1                                           // 0x00625cdf    6a01
                          {disp8} lea       edx, dword ptr [esp + 0x28]                   // 0x00625ce1    8d542428
                          push              0x2                                           // 0x00625ce5    6a02
                          push              edx                                           // 0x00625ce7    52
-                         call              _jmp_addr_0x007c75a2                          // 0x00625ce8    e8b5181a00
+                         call              _fwrite                                       // 0x00625ce8    e8b5181a00
                          push              esi                                           // 0x00625ced    56
                          call              _fclose                                       // 0x00625cee    e83d111a00
                          add               esp, 0x24                                     // 0x00625cf3    83c424

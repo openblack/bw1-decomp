@@ -82,7 +82,7 @@
 .extern _fclose
 .extern __chkstk
 .extern _fread
-.extern _jmp_addr_0x007c75a2
+.extern _fwrite
 .extern _jmp_addr_0x007c789d
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c7d00
@@ -5060,7 +5060,7 @@ _jmp_addr_0x00713660:    sub                esp, 0x00000204                     
                          push               ecx                                           // 0x007136d7    51
                          push               0x1                                           // 0x007136d8    6a01
                          push               edx                                           // 0x007136da    52
-                         call               _jmp_addr_0x007c75a2                          // 0x007136db    e8c23e0b00
+                         call               _fwrite                                       // 0x007136db    e8c23e0b00
                          push               edi                                           // 0x007136e0    57
                          call               _fclose                                       // 0x007136e1    e84a370b00
                          add                esp, 0x14                                     // 0x007136e6    83c414
@@ -6902,13 +6902,13 @@ _jmp_addr_0x0071486b:    inc                ebx                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x54]                   // 0x007149a7    8d4c2454
                          push               0x1                                           // 0x007149ab    6a01
                          push               ecx                                           // 0x007149ad    51
-                         call               _jmp_addr_0x007c75a2                          // 0x007149ae    e8ef2b0b00
+                         call               _fwrite                                       // 0x007149ae    e8ef2b0b00
                          {disp8} mov        edx, dword ptr [esp + 0x60]                   // 0x007149b3    8b542460
                          push               esi                                           // 0x007149b7    56
                          push               edx                                           // 0x007149b8    52
                          push               0x1                                           // 0x007149b9    6a01
                          push               ebx                                           // 0x007149bb    53
-                         call               _jmp_addr_0x007c75a2                          // 0x007149bc    e8e12b0b00
+                         call               _fwrite                                       // 0x007149bc    e8e12b0b00
                          push               esi                                           // 0x007149c1    56
                          call               _fclose                                       // 0x007149c2    e869240b00
                          {disp8} mov        ecx, dword ptr [esp + 0x50]                   // 0x007149c7    8b4c2450
