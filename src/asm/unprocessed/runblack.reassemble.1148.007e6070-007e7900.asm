@@ -15,8 +15,8 @@
 .extern _wcscpy
 .extern __itow
 .extern _wcslen
-.extern _jmp_addr_0x007c64fc
-.extern _jmp_addr_0x007c6587
+.extern _atol
+.extern _atoi
 .extern _malloc
 .extern _free
 .extern _jmp_addr_0x007c686f
@@ -1761,14 +1761,14 @@ _jmp_addr_0x007e6f70:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          nop                                                            // 0x007e6f7f    90
 _jmp_addr_0x007e6f80:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007e6f80    8b442404
                          push             eax                                           // 0x007e6f84    50
-                         call             _jmp_addr_0x007c6587                          // 0x007e6f85    e8fdf5fdff
+                         call             _atoi                          // 0x007e6f85    e8fdf5fdff
                          add              esp, 0x04                                     // 0x007e6f8a    83c404
                          ret                                                            // 0x007e6f8d    c3
                          nop                                                            // 0x007e6f8e    90
                          nop                                                            // 0x007e6f8f    90
 _jmp_addr_0x007e6f90:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x007e6f90    8b442404
                          push             eax                                           // 0x007e6f94    50
-                         call             _jmp_addr_0x007c64fc                          // 0x007e6f95    e862f5fdff
+                         call             _atol                                         // 0x007e6f95    e862f5fdff
                          add              esp, 0x04                                     // 0x007e6f9a    83c404
                          ret                                                            // 0x007e6f9d    c3
                          nop                                                            // 0x007e6f9e    90
@@ -2078,7 +2078,7 @@ _jmp_addr_0x007e71a0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          push             eax                                           // 0x007e71a4    50
                          call             _jmp_addr_0x007e6ab0                          // 0x007e71a5    e806f9ffff
                          push             eax                                           // 0x007e71aa    50
-                         call             _jmp_addr_0x007c6587                          // 0x007e71ab    e8d7f3fdff
+                         call             _atoi                          // 0x007e71ab    e8d7f3fdff
                          add              esp, 0x08                                     // 0x007e71b0    83c408
                          ret                                                            // 0x007e71b3    c3
                          nop                                                            // 0x007e71b4    90
@@ -2097,7 +2097,7 @@ _jmp_addr_0x007e71c0:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          push             eax                                           // 0x007e71c4    50
                          call             _jmp_addr_0x007e6ab0                          // 0x007e71c5    e8e6f8ffff
                          push             eax                                           // 0x007e71ca    50
-                         call             _jmp_addr_0x007c64fc                          // 0x007e71cb    e82cf3fdff
+                         call             _atol                                         // 0x007e71cb    e82cf3fdff
                          add              esp, 0x08                                     // 0x007e71d0    83c408
                          ret                                                            // 0x007e71d3    c3
                          nop                                                            // 0x007e71d4    90

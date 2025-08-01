@@ -94,7 +94,7 @@
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _wcslen
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern ___nw__FUl
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -6527,7 +6527,7 @@ _jmp_addr_0x00670c4d:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          {disp8} je         _jmp_addr_0x00670c7a                          // 0x00670c64    7414
                          {disp32} lea       edx, dword ptr [edi * 0x8 + 0x00000000]       // 0x00670c66    8d14fd00000000
                          push               edx                                           // 0x00670c6d    52
-                         call               _operator_new                                // 0x00670c6e    e87b581500
+                         call               ??2@YAPAXI@Z                                  // 0x00670c6e    e87b581500
                          add                esp, 0x04                                     // 0x00670c73    83c404
                          mov.s              ebx, eax                                      // 0x00670c76    8bd8
                          {disp8} jmp        _jmp_addr_0x00670c7c                          // 0x00670c78    eb02
@@ -6604,7 +6604,7 @@ _jmp_addr_0x00670cf0:    push               esi                                 
                          lea                eax, dword ptr [edi + edi * 0x2]              // 0x00670d0c    8d047f
                          shl                eax, 2                                        // 0x00670d0f    c1e002
                          push               eax                                           // 0x00670d12    50
-                         call               _operator_new                                // 0x00670d13    e8d6571500
+                         call               ??2@YAPAXI@Z                                  // 0x00670d13    e8d6571500
                          add                esp, 0x04                                     // 0x00670d18    83c404
                          mov.s              ebx, eax                                      // 0x00670d1b    8bd8
                          {disp8} jmp        _jmp_addr_0x00670d21                          // 0x00670d1d    eb02

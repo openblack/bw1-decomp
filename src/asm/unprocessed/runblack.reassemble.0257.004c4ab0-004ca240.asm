@@ -83,7 +83,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -380,7 +380,7 @@ _jmp_addr_0x004c4cc0:    xor.s              esi, esi                            
 _jmp_addr_0x004c4cc2:    test               esi, esi                                             // 0x004c4cc2    85f6
                          {disp8} je         _jmp_addr_0x004c4d0e                                 // 0x004c4cc4    7448
                          push               0x8                                                  // 0x004c4cc6    6a08
-                         call               _operator_new                                       // 0x004c4cc8    e821183000
+                         call               ??2@YAPAXI@Z                                         // 0x004c4cc8    e821183000
                          add                esp, 0x04                                            // 0x004c4ccd    83c404
                          test               eax, eax                                             // 0x004c4cd0    85c0
                          {disp8} je         _jmp_addr_0x004c4d0e                                 // 0x004c4cd2    743a
@@ -3464,7 +3464,7 @@ _jmp_addr_0x004c73d9:    xor.s              esi, esi                            
 _jmp_addr_0x004c73db:    cmp.s              esi, edi                                             // 0x004c73db    3bf7
                          {disp8} je         _jmp_addr_0x004c741a                                 // 0x004c73dd    743b
                          push               0x8                                                  // 0x004c73df    6a08
-                         call               _operator_new                                       // 0x004c73e1    e808f12f00
+                         call               ??2@YAPAXI@Z                                         // 0x004c73e1    e808f12f00
                          add                esp, 0x04                                            // 0x004c73e6    83c404
                          cmp.s              eax, edi                                             // 0x004c73e9    3bc7
                          {disp8} je         _jmp_addr_0x004c741a                                 // 0x004c73eb    742d
@@ -3538,7 +3538,7 @@ _jmp_addr_0x004c7497:    xor.s              esi, esi                            
 _jmp_addr_0x004c7499:    cmp.s              esi, edi                                             // 0x004c7499    3bf7
                          {disp8} je         _jmp_addr_0x004c74d8                                 // 0x004c749b    743b
                          push               0x8                                                  // 0x004c749d    6a08
-                         call               _operator_new                                       // 0x004c749f    e84af02f00
+                         call               ??2@YAPAXI@Z                                         // 0x004c749f    e84af02f00
                          add                esp, 0x04                                            // 0x004c74a4    83c404
                          cmp.s              eax, edi                                             // 0x004c74a7    3bc7
                          {disp8} je         _jmp_addr_0x004c74d8                                 // 0x004c74a9    742d

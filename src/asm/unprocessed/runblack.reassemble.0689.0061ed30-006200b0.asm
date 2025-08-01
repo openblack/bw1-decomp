@@ -36,9 +36,9 @@
 .extern _jmp_addr_0x006255c0
 .extern @IsLanLobby__20MPFEConnectionStatusFv@4
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _wcslen
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c6edf
 .extern @Release__11LH3DTextureFv@4
@@ -1180,7 +1180,7 @@ _jmp_addr_0x0061fc48:    {disp8} mov      ecx, dword ptr [ecx + 0x08]           
                          {disp8} lea      ebx, dword ptr [edi + 0x24]                   // 0x0061fc67    8d5f24
                          push             0x00c4cd30                                    // 0x0061fc6a    6830cdc400
                          push             ebx                                           // 0x0061fc6f    53
-                         call             _jmp_addr_0x007c6425                          // 0x0061fc70    e8b0671a00
+                         call             _wcsncpy                                      // 0x0061fc70    e8b0671a00
                          xor.s            ebp, ebp                                      // 0x0061fc75    33ed
                          push             ebx                                           // 0x0061fc77    53
                          {disp32} mov     word ptr [edi + 0x00000222], bp               // 0x0061fc78    6689af22020000
@@ -1302,7 +1302,7 @@ _jmp_addr_0x0061fe31:    add.s            eax, ecx                              
                          xor.s            eax, eax                                      // 0x0061fe3b    33c0
 _jmp_addr_0x0061fe3d:    {disp32} lea     edx, dword ptr [eax * 0x8 + 0x00000000]       // 0x0061fe3d    8d14c500000000
                          push             edx                                           // 0x0061fe44    52
-                         call             _operator_new                                // 0x0061fe45    e8a4661a00
+                         call             ??2@YAPAXI@Z                                  // 0x0061fe45    e8a4661a00
                          {disp32} mov     ebx, dword ptr [data_bytes + 0x37a700]        // 0x0061fe4a    8b1d0007d400
                          add              esp, 0x04                                     // 0x0061fe50    83c404
                          cmp.s            ebx, edi                                      // 0x0061fe53    3bdf

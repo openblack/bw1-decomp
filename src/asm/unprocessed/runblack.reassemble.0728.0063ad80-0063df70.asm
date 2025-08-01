@@ -123,8 +123,8 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
-.extern _operator_new
-.extern _jmp_addr_0x007c6587
+.extern ??2@YAPAXI@Z
+.extern _atoi
 .extern _malloc
 .extern _free
 .extern _strncpy
@@ -1639,7 +1639,7 @@ _jmp_addr_0x0063bcb4:    ret                                                    
                          {disp8} mov        dword ptr [esi + 0x1c], 0x00000000             // 0x0063bce0    c7461c00000000
                          {disp8} je         _jmp_addr_0x0063bd0d                           // 0x0063bce7    7424
                          push               0x8                                            // 0x0063bce9    6a08
-                         call               _operator_new                                 // 0x0063bceb    e8fea71800
+                         call               ??2@YAPAXI@Z                                   // 0x0063bceb    e8fea71800
                          add                esp, 0x04                                      // 0x0063bcf0    83c404
                          test               eax, eax                                       // 0x0063bcf3    85c0
                          {disp8} je         _jmp_addr_0x0063bd0d                           // 0x0063bcf5    7416
@@ -1810,7 +1810,7 @@ _jmp_addr_0x0063be41:    mov                eax, 0x00000001                     
                          {disp8} mov        dword ptr [esi + 0x30], 0xffffffff             // 0x0063be99    c74630ffffffff
                          {disp8} je         _jmp_addr_0x0063bebc                           // 0x0063bea0    741a
                          push               0x8                                            // 0x0063bea2    6a08
-                         call               _operator_new                                 // 0x0063bea4    e845a61800
+                         call               ??2@YAPAXI@Z                                   // 0x0063bea4    e845a61800
                          add                esp, 0x04                                      // 0x0063bea9    83c404
                          test               eax, eax                                       // 0x0063beac    85c0
                          {disp8} je         _jmp_addr_0x0063bebc                           // 0x0063beae    740c
@@ -1879,7 +1879,7 @@ _jmp_addr_0x0063bf50:    {disp8} mov        word ptr [esi + 0x02], 0x0004       
 _jmp_addr_0x0063bf56:    test               esi, esi                                       // 0x0063bf56    85f6
                          {disp8} je         _jmp_addr_0x0063bf74                           // 0x0063bf58    741a
                          push               0x8                                            // 0x0063bf5a    6a08
-                         call               _operator_new                                 // 0x0063bf5c    e88da51800
+                         call               ??2@YAPAXI@Z                                   // 0x0063bf5c    e88da51800
                          add                esp, 0x04                                      // 0x0063bf61    83c404
                          test               eax, eax                                       // 0x0063bf64    85c0
                          {disp8} je         _jmp_addr_0x0063bf74                           // 0x0063bf66    740c
@@ -4150,7 +4150,7 @@ _jmp_addr_0x0063d8de:    test               edx, edx                            
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x0063d970    8d4c2418
                          push               ecx                                            // 0x0063d974    51
                          {disp8} mov        byte ptr [esp + 0x1d], al                      // 0x0063d975    8844241d
-                         call               _jmp_addr_0x007c6587                           // 0x0063d979    e8098c1800
+                         call               _atoi                           // 0x0063d979    e8098c1800
                          or                 ecx, 0xffffffff                                // 0x0063d97e    83c9ff
                          mov.s              edx, eax                                       // 0x0063d981    8bd0
                          xor.s              eax, eax                                       // 0x0063d983    33c0

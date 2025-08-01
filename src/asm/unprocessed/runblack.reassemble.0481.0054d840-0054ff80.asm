@@ -358,7 +358,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscpy
-.extern _jmp_addr_0x007c647f
+.extern _swprintf
 .extern _jmp_addr_0x007c6bff
 .extern _jmp_addr_0x007c6c29
 .extern ___dt__10LHFilePathFv
@@ -3070,7 +3070,7 @@ _jmp_addr_0x0054fe29:    {disp8} mov        edx, dword ptr [eax + 0x08]         
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30a698]        // 0x0054fe32    a19806cd00
                          add                eax, 0x24                                     // 0x0054fe37    83c024
                          push               eax                                           // 0x0054fe3a    50
-                         call               _jmp_addr_0x007c647f                          // 0x0054fe3b    e83f662700
+                         call               _swprintf                                     // 0x0054fe3b    e83f662700
                          add                esp, 0x0c                                     // 0x0054fe40    83c40c
                          mov                ecx, 0x00d40e20                               // 0x0054fe43    b9200ed400
                          call               @IsInternetLobby__20MPFEConnectionStatusFv@4  // 0x0054fe48    e873dc0d00

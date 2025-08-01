@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c60f0
+.extern _memmove
 .extern ___nw__FUl
 .extern _jmp_addr_0x007ea570
 .extern _jmp_addr_0x007ea810
@@ -775,7 +775,7 @@ _jmp_addr_0x005b950c:    {disp8} lea        eax, dword ptr [ecx + 0x01]         
                          push               ecx                                            // 0x005b95ea    51
                          lea                eax, dword ptr [edi + edx * 0x4]               // 0x005b95eb    8d0497
                          push               eax                                            // 0x005b95ee    50
-                         call               _jmp_addr_0x007c60f0                           // 0x005b95ef    e8fcca2000
+                         call               _memmove                                       // 0x005b95ef    e8fcca2000
                          mov                eax, dword ptr [esi]                           // 0x005b95f4    8b06
                          add                esp, 0x0c                                      // 0x005b95f6    83c40c
                          dec                eax                                            // 0x005b95f9    48

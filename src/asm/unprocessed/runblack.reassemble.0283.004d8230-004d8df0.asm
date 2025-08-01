@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x0053a1a0
 .extern  ___dl__FPv
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 
 .globl _jmp_addr_0x004d82a0
 .globl _jmp_addr_0x004d8300
@@ -1120,7 +1120,7 @@ _jmp_addr_0x004d8d78:    cmp              dword ptr [eax + 0x04], esi           
 _jmp_addr_0x004d8d85:    test             eax, eax                                      // 0x004d8d85    85c0
                          {disp8} jne      _jmp_addr_0x004d8da5                          // 0x004d8d87    751c
 _jmp_addr_0x004d8d89:    push             0x8                                           // 0x004d8d89    6a08
-                         call             _operator_new                                // 0x004d8d8b    e85ed72e00
+                         call             ??2@YAPAXI@Z                                  // 0x004d8d8b    e85ed72e00
                          add              esp, 0x04                                     // 0x004d8d90    83c404
                          test             eax, eax                                      // 0x004d8d93    85c0
                          {disp8} je       _jmp_addr_0x004d8da5                          // 0x004d8d95    740e

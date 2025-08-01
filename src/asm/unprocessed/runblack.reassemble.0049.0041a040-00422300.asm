@@ -106,7 +106,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fbae0
@@ -14707,7 +14707,7 @@ _jmp_addr_0x00421f50:    push               edi                                 
                          {disp32} mov       edx, dword ptr [_game]                        // 0x00421f9f    8b155c19d000
                          push               0x8                                           // 0x00421fa5    6a08
                          {disp32} lea       esi, dword ptr [edx + 0x00205cbc]             // 0x00421fa7    8db2bc5c2000
-                         call               _operator_new                                // 0x00421fad    e83c453a00
+                         call               ??2@YAPAXI@Z                                  // 0x00421fad    e83c453a00
                          add                esp, 0x04                                     // 0x00421fb2    83c404
                          test               eax, eax                                      // 0x00421fb5    85c0
                          {disp8} je         _jmp_addr_0x00421fc5                          // 0x00421fb7    740c

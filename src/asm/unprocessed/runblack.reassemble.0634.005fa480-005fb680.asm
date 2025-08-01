@@ -46,7 +46,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c6ce0
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fac10
@@ -252,7 +252,7 @@ _jmp_addr_0x005fa601:    {disp8} mov        edx, dword ptr [ecx + eax * 0x4 + 0x
                          pop                esi                                           // 0x005fa652    5e
                          {disp8} je         _jmp_addr_0x005fa679                          // 0x005fa653    7424
                          push               0x8                                           // 0x005fa655    6a08
-                         call               _operator_new                                // 0x005fa657    e892be1c00
+                         call               ??2@YAPAXI@Z                                  // 0x005fa657    e892be1c00
                          add                esp, 0x04                                     // 0x005fa65c    83c404
                          cmp.s              eax, ebx                                      // 0x005fa65f    3bc3
                          {disp8} je         _jmp_addr_0x005fa679                          // 0x005fa661    7416

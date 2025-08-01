@@ -51,9 +51,9 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern _wcscpy
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _wcslen
-.extern _jmp_addr_0x007c647f
+.extern _swprintf
 .extern _jmp_addr_0x007c6edf
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -2317,7 +2317,7 @@ _jmp_addr_0x005ca0bc:    {disp8} mov        edx, dword ptr [eax + 0x08]         
                          push               0x00e05ef4                                    // 0x005ca0c2    68f45ee000
                          push               edx                                           // 0x005ca0c7    52
                          push               eax                                           // 0x005ca0c8    50
-                         call               _jmp_addr_0x007c647f                          // 0x005ca0c9    e8b1c31f00
+                         call               _swprintf                                     // 0x005ca0c9    e8b1c31f00
                          add                esp, 0x0c                                     // 0x005ca0ce    83c40c
                          mov                eax, 0x00000001                               // 0x005ca0d1    b801000000
                          pop                edi                                           // 0x005ca0d6    5f
@@ -2578,7 +2578,7 @@ _jmp_addr_0x005ca434:    {disp8} mov        ecx, dword ptr [eax + 0x08]         
                          push               ecx                                           // 0x005ca440    51
                          push               0x00bf19f8                                    // 0x005ca441    68f819bf00
                          push               edx                                           // 0x005ca446    52
-                         call               _jmp_addr_0x007c647f                          // 0x005ca447    e833c01f00
+                         call               _swprintf                                     // 0x005ca447    e833c01f00
                          mov                eax, 0x00000001                               // 0x005ca44c    b801000000
                          add                esp, 0x14                                     // 0x005ca451    83c414
                          {disp32} mov       dword ptr [data_bytes + 0x351bc4], eax        // 0x005ca454    a3c47bd100
@@ -2870,7 +2870,7 @@ _jmp_addr_0x005ca7f7:    {disp8} mov        ecx, dword ptr [eax + 0x08]         
                          push               edi                                           // 0x005ca81d    57
                          push               0x00bf19ec                                    // 0x005ca81e    68ec19bf00
                          push               edi                                           // 0x005ca823    57
-                         call               _jmp_addr_0x007c647f                          // 0x005ca824    e856bc1f00
+                         call               _swprintf                                     // 0x005ca824    e856bc1f00
                          add                esp, 0x10                                     // 0x005ca829    83c410
                          mov                eax, 0x00000001                               // 0x005ca82c    b801000000
                          pop                edi                                           // 0x005ca831    5f
@@ -3026,7 +3026,7 @@ _jmp_addr_0x005ca9f9:    {disp8} mov        ecx, dword ptr [ebp + 0x0c]         
                          push               ecx                                           // 0x005caa02    51
                          push               edx                                           // 0x005caa03    52
                          push               eax                                           // 0x005caa04    50
-                         call               _jmp_addr_0x007c6425                          // 0x005caa05    e81bba1f00
+                         call               _wcsncpy                                      // 0x005caa05    e81bba1f00
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x005caa0a    8b442420
                          add                esp, 0x0c                                     // 0x005caa0e    83c40c
                          cmp                eax, -0x01                                    // 0x005caa11    83f8ff

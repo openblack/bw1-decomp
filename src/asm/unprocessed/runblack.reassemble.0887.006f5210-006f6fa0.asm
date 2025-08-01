@@ -33,7 +33,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern _wcscpy
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 
 .globl @Init__19ScriptCreatureCurseFP8Creature@12
 .globl @ResolveLoad__19ScriptCreatureCurseFP8Creature@12
@@ -663,7 +663,7 @@ _jmp_addr_0x006f5849:    cmp                dword ptr [eax + 0x04], edi         
                          test               eax, eax                                      // 0x006f5850    85c0
                          {disp8} jne        _jmp_addr_0x006f5849                          // 0x006f5852    75f5
 _jmp_addr_0x006f5854:    push               0x8                                           // 0x006f5854    6a08
-                         call               _operator_new                                // 0x006f5856    e8930c0d00
+                         call               ??2@YAPAXI@Z                                  // 0x006f5856    e8930c0d00
                          add                esp, 0x04                                     // 0x006f585b    83c404
                          test               eax, eax                                      // 0x006f585e    85c0
                          {disp8} je         _jmp_addr_0x006f5879                          // 0x006f5860    7417
@@ -681,7 +681,7 @@ _jmp_addr_0x006f5883:    cmp                dword ptr [eax + 0x04], esi         
                          test               eax, eax                                      // 0x006f588a    85c0
                          {disp8} jne        _jmp_addr_0x006f5883                          // 0x006f588c    75f5
 _jmp_addr_0x006f588e:    push               0x8                                           // 0x006f588e    6a08
-                         call               _operator_new                                // 0x006f5890    e8590c0d00
+                         call               ??2@YAPAXI@Z                                  // 0x006f5890    e8590c0d00
                          add                esp, 0x04                                     // 0x006f5895    83c404
                          test               eax, eax                                      // 0x006f5898    85c0
                          {disp8} je         _jmp_addr_0x006f58b3                          // 0x006f589a    7417
@@ -1807,7 +1807,7 @@ _jmp_addr_0x006f6310:    {disp32} mov       dword ptr [data_bytes + 0x3d0050], 0
 _Create__9ScriptDLLFPCc: push               esi                                           // 0x006f6320    56
                          push               edi                                           // 0x006f6321    57
                          push               0x000000dc                                    // 0x006f6322    68dc000000
-                         call               _operator_new                                // 0x006f6327    e8c2010d00
+                         call               ??2@YAPAXI@Z                                  // 0x006f6327    e8c2010d00
                          mov.s              esi, eax                                      // 0x006f632c    8bf0
                          add                esp, 0x04                                     // 0x006f632e    83c404
                          test               esi, esi                                      // 0x006f6331    85f6

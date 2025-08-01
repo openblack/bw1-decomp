@@ -72,7 +72,7 @@
 .extern _atexit
 .extern _wcscat
 .extern _wcscpy
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _wcslen
 .extern _jmp_addr_0x007c6b68
 .extern _jmp_addr_0x007c6ce0
@@ -385,7 +385,7 @@ _jmp_addr_0x0079c862:    mov.s              edi, esi                            
                          push               edx                                           // 0x0079c86e    52
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x0079c86f    8d442454
                          push               eax                                           // 0x0079c873    50
-                         call               _jmp_addr_0x007c6425                          // 0x0079c874    e8ac9b0200
+                         call               _wcsncpy                                      // 0x0079c874    e8ac9b0200
                          {disp8} lea        ecx, dword ptr [esp + 0x58]                   // 0x0079c879    8d4c2458
                          xor.s              ebp, ebp                                      // 0x0079c87d    33ed
                          push               ecx                                           // 0x0079c87f    51
@@ -505,7 +505,7 @@ _jmp_addr_0x0079ca16:    mov.s              edi, esi                            
                          push               eax                                           // 0x0079ca22    50
                          {disp8} lea        ecx, dword ptr [esp + 0x74]                   // 0x0079ca23    8d4c2474
                          push               ecx                                           // 0x0079ca27    51
-                         call               _jmp_addr_0x007c6425                          // 0x0079ca28    e8f8990200
+                         call               _wcsncpy                                      // 0x0079ca28    e8f8990200
                          {disp8} lea        edx, dword ptr [esp + 0x78]                   // 0x0079ca2d    8d542478
                          push               edx                                           // 0x0079ca31    52
                          {disp8} mov        word ptr [esp + edi * 0x2 + 0x7c], 0x0000     // 0x0079ca32    66c7447c7c0000

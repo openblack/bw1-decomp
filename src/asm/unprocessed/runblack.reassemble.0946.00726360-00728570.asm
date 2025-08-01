@@ -251,8 +251,8 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c6425
-.extern _operator_new
+.extern _wcsncpy
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c90a0
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4

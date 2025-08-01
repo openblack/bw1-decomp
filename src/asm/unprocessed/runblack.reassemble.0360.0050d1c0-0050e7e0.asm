@@ -32,7 +32,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
 .extern _sprintf
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 
 .globl _jmp_addr_0x0050d1c0
 .globl _jmp_addr_0x0050d2a0
@@ -1614,7 +1614,7 @@ _jmp_addr_0x0050e280:    push               esi                                 
                          mov.s              edi, ecx                                      // 0x0050e288    8bf9
                          {disp8} je         _jmp_addr_0x0050e2d3                          // 0x0050e28a    7447
                          push               0x8                                           // 0x0050e28c    6a08
-                         call               _operator_new                                // 0x0050e28e    e85b822b00
+                         call               ??2@YAPAXI@Z                                  // 0x0050e28e    e85b822b00
                          add                esp, 0x04                                     // 0x0050e293    83c404
                          test               eax, eax                                      // 0x0050e296    85c0
                          {disp8} je         _jmp_addr_0x0050e2d3                          // 0x0050e298    7439
@@ -1811,7 +1811,7 @@ _jmp_addr_0x0050e422:    cmp.s              ecx, ebp                            
                          {disp8} jne        _jmp_addr_0x0050e422                          // 0x0050e42c    75f4
 _jmp_addr_0x0050e42e:    xor.s              esi, esi                                      // 0x0050e42e    33f6
 _jmp_addr_0x0050e430:    push               0x8                                           // 0x0050e430    6a08
-                         call               _operator_new                                // 0x0050e432    e8b7802b00
+                         call               ??2@YAPAXI@Z                                  // 0x0050e432    e8b7802b00
                          add                esp, 0x04                                     // 0x0050e437    83c404
                          cmp.s              eax, ebp                                      // 0x0050e43a    3bc5
                          {disp8} je         _jmp_addr_0x0050e44c                          // 0x0050e43c    740e

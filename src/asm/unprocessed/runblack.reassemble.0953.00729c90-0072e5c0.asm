@@ -125,7 +125,7 @@
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
 .extern _sprintf
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c686f
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x007c789d
@@ -2952,7 +2952,7 @@ _jmp_addr_0x0072b6ac:    mov                eax, dword ptr [esi]                
                          test               ebx, ebx                                      // 0x0072b6ca    85db
                          {disp8} je         _jmp_addr_0x0072b6f3                          // 0x0072b6cc    7425
                          push               0x8                                           // 0x0072b6ce    6a08
-                         call               _operator_new                                // 0x0072b6d0    e819ae0900
+                         call               ??2@YAPAXI@Z                                  // 0x0072b6d0    e819ae0900
                          add                esp, 0x04                                     // 0x0072b6d5    83c404
                          test               eax, eax                                      // 0x0072b6d8    85c0
                          {disp8} je         _jmp_addr_0x0072b6f3                          // 0x0072b6da    7417
@@ -2978,7 +2978,7 @@ _jmp_addr_0x0072b709:    {disp8} mov        edx, dword ptr [esp + 0x1c]         
                          test               edi, edi                                      // 0x0072b71a    85ff
                          {disp8} je         _jmp_addr_0x0072b743                          // 0x0072b71c    7425
                          push               0x8                                           // 0x0072b71e    6a08
-                         call               _operator_new                                // 0x0072b720    e8c9ad0900
+                         call               ??2@YAPAXI@Z                                  // 0x0072b720    e8c9ad0900
                          add                esp, 0x04                                     // 0x0072b725    83c404
                          test               eax, eax                                      // 0x0072b728    85c0
                          {disp8} je         _jmp_addr_0x0072b743                          // 0x0072b72a    7417
@@ -3401,7 +3401,7 @@ _jmp_addr_0x0072bb00:    push               esi                                 
                          test               esi, esi                                      // 0x0072bb07    85f6
                          {disp8} je         _jmp_addr_0x0072bb37                          // 0x0072bb09    742c
                          push               0x8                                           // 0x0072bb0b    6a08
-                         call               _operator_new                                // 0x0072bb0d    e8dca90900
+                         call               ??2@YAPAXI@Z                                  // 0x0072bb0d    e8dca90900
                          add                esp, 0x04                                     // 0x0072bb12    83c404
                          test               eax, eax                                      // 0x0072bb15    85c0
                          {disp8} je         _jmp_addr_0x0072bb2f                          // 0x0072bb17    7416
@@ -3463,7 +3463,7 @@ _jmp_addr_0x0072bba5:    {disp8} lea        edx, dword ptr [esp + 0x0c]         
                          mov.s              esi, eax                                      // 0x0072bbb7    8bf0
                          {disp8} je         _jmp_addr_0x0072bbf8                          // 0x0072bbb9    743d
                          push               0x8                                           // 0x0072bbbb    6a08
-                         call               _operator_new                                // 0x0072bbbd    e82ca90900
+                         call               ??2@YAPAXI@Z                                  // 0x0072bbbd    e82ca90900
                          add                esp, 0x04                                     // 0x0072bbc2    83c404
                          test               eax, eax                                      // 0x0072bbc5    85c0
                          {disp8} je         _jmp_addr_0x0072bbf8                          // 0x0072bbc7    742f

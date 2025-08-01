@@ -121,7 +121,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _fprintf__10LHFilePath
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -7585,7 +7585,7 @@ _jmp_addr_0x004f2670:    {disp32} mov       dword ptr [data_bytes + 0x2e7aac], 0
                          mov.s              edi, ecx                                             // 0x004f2686    8bf9
                          push               0x8                                                  // 0x004f2688    6a08
                          {disp32} mov       dword ptr [edi + 0x00000094], esi                    // 0x004f268a    89b794000000
-                         call               _operator_new                                       // 0x004f2690    e8593e2d00
+                         call               ??2@YAPAXI@Z                                         // 0x004f2690    e8593e2d00
                          add                esp, 0x04                                            // 0x004f2695    83c404
                          test               eax, eax                                             // 0x004f2698    85c0
                          {disp8} je         _jmp_addr_0x004f26a6                                 // 0x004f269a    740a

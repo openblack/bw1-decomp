@@ -23,7 +23,7 @@
 .extern _Exists__8LHOSFileFPc
 .extern _atexit
 .extern _sprintf
-.extern _jmp_addr_0x007c6425
+.extern _wcsncpy
 .extern _wcslen
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -757,7 +757,7 @@ _jmp_addr_0x0054a0b9:    {disp8} mov       ecx, dword ptr [eax + 0x18]          
                          {disp8} lea       edi, dword ptr [esi + 0x24]                   // 0x0054a118    8d7e24
                          push              0x00c4cd30                                    // 0x0054a11b    6830cdc400
                          push              edi                                           // 0x0054a120    57
-                         call              _jmp_addr_0x007c6425                          // 0x0054a121    e8ffc22700
+                         call              _wcsncpy                                      // 0x0054a121    e8ffc22700
                          push              edi                                           // 0x0054a126    57
                          {disp32} mov      word ptr [esi + 0x00000222], 0x0000           // 0x0054a127    66c786220200000000
                          call              _wcslen                                       // 0x0054a130    e82dc32700

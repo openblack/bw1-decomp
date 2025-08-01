@@ -81,7 +81,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007c6ce0
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -1815,7 +1815,7 @@ _jmp_addr_0x00643510:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} jge        _jmp_addr_0x0064351a                           // 0x00643516    7d02
                          xor.s              eax, eax                                       // 0x00643518    33c0
 _jmp_addr_0x0064351a:    push               eax                                            // 0x0064351a    50
-                         call               _operator_new                                 // 0x0064351b    e8ce2f1800
+                         call               ??2@YAPAXI@Z                                   // 0x0064351b    e8ce2f1800
                          add                esp, 0x04                                      // 0x00643520    83c404
                          ret                                                               // 0x00643523    c3
                          nop                                                               // 0x00643524    90

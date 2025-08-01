@@ -72,7 +72,7 @@ _jmp_KERNEL32_DLL__WriteFile:                      jmp              dword ptr [_
 _jmp_KERNEL32_DLL__GetFileSize:                    jmp              dword ptr [__imp__GetFileSize@4]                                          // 0x008a5132    ff2510928a00
 _jmp_KERNEL32_DLL__SetEndOfFile:                   jmp              dword ptr [__imp__SetEndOfFile@4]                                         // 0x008a5138    ff250c928a00
 _jmp_KERNEL32_DLL__IsBadReadPtr:                   jmp              dword ptr [__imp__IsBadReadPtr@8]                                         // 0x008a513e    ff2508928a00
-_jmp_KERNEL32_DLL__HeapAlloc:                      jmp              dword ptr [__imp__HeapAlloc@4]                                            // 0x008a5144    ff2504928a00
+_jmp_KERNEL32_DLL__HeapAlloc:                      jmp              dword ptr [__imp__HeapAlloc@12]                                           // 0x008a5144    ff2504928a00
 _jmp_KERNEL32_DLL__HeapFree:                       jmp              dword ptr [__imp__HeapFree@4]                                             // 0x008a514a    ff2500928a00
 _jmp_KERNEL32_DLL__GetLastError:                   jmp              dword ptr [__imp__GetLastError@0]                                         // 0x008a5150    ff25fc918a00
 _jmp_KERNEL32_DLL__GetTimeZoneInformation:         jmp              dword ptr [__imp__GetTimeZoneInformation@4]                               // 0x008a5156    ff25f8918a00

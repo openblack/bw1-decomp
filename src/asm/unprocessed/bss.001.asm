@@ -153,7 +153,6 @@
 .globl _g_smoke_additif_mat
 .globl _g_view_configuration
 .globl _Direct3DDevice7
-.globl __crtheap
 
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
