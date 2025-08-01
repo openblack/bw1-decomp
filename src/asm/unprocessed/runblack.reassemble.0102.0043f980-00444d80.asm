@@ -94,7 +94,7 @@
 .extern _sscanf
 .extern __chkstk
 .extern _wcscmp
-.extern _jmp_addr_0x007c7300
+.extern __isnan
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fa990
 .extern _jmp_addr_0x007faa50
@@ -3701,21 +3701,21 @@ _jmp_addr_0x00442096:    {disp32} mov       al, byte ptr [data_bytes + 0x293b54]
 _jmp_addr_0x004420d9:    {disp8} fld        dword ptr [esp + 0x1c]                        // 0x004420d9    d944241c
                          sub                esp, 0x08                                     // 0x004420dd    83ec08
                          fstp               qword ptr [esp]                               // 0x004420e0    dd1c24
-                         call               _jmp_addr_0x007c7300                          // 0x004420e3    e818523800
+                         call               __isnan                                       // 0x004420e3    e818523800
                          add                esp, 0x08                                     // 0x004420e8    83c408
                          test               eax, eax                                      // 0x004420eb    85c0
                          {disp8} jne        _jmp_addr_0x0044213a                          // 0x004420ed    754b
                          {disp8} fld        dword ptr [esp + 0x20]                        // 0x004420ef    d9442420
                          sub                esp, 0x08                                     // 0x004420f3    83ec08
                          fstp               qword ptr [esp]                               // 0x004420f6    dd1c24
-                         call               _jmp_addr_0x007c7300                          // 0x004420f9    e802523800
+                         call               __isnan                                       // 0x004420f9    e802523800
                          add                esp, 0x08                                     // 0x004420fe    83c408
                          test               eax, eax                                      // 0x00442101    85c0
                          {disp8} jne        _jmp_addr_0x0044213a                          // 0x00442103    7535
                          {disp8} fld        dword ptr [esp + 0x24]                        // 0x00442105    d9442424
                          sub                esp, 0x08                                     // 0x00442109    83ec08
                          fstp               qword ptr [esp]                               // 0x0044210c    dd1c24
-                         call               _jmp_addr_0x007c7300                          // 0x0044210f    e8ec513800
+                         call               __isnan                                       // 0x0044210f    e8ec513800
                          add                esp, 0x08                                     // 0x00442114    83c408
                          test               eax, eax                                      // 0x00442117    85c0
                          {disp8} jne        _jmp_addr_0x0044213a                          // 0x00442119    751f
@@ -3735,21 +3735,21 @@ _jmp_addr_0x0044213a:    {disp32} mov       edx, dword ptr [data_bytes + 0x293b4
 _jmp_addr_0x00442157:    {disp8} fld        dword ptr [esp + 0x28]                        // 0x00442157    d9442428
                          sub                esp, 0x08                                     // 0x0044215b    83ec08
                          fstp               qword ptr [esp]                               // 0x0044215e    dd1c24
-                         call               _jmp_addr_0x007c7300                          // 0x00442161    e89a513800
+                         call               __isnan                                       // 0x00442161    e89a513800
                          add                esp, 0x08                                     // 0x00442166    83c408
                          test               eax, eax                                      // 0x00442169    85c0
                          {disp8} jne        _jmp_addr_0x004421b8                          // 0x0044216b    754b
                          {disp8} fld        dword ptr [esp + 0x2c]                        // 0x0044216d    d944242c
                          sub                esp, 0x08                                     // 0x00442171    83ec08
                          fstp               qword ptr [esp]                               // 0x00442174    dd1c24
-                         call               _jmp_addr_0x007c7300                          // 0x00442177    e884513800
+                         call               __isnan                                       // 0x00442177    e884513800
                          add                esp, 0x08                                     // 0x0044217c    83c408
                          test               eax, eax                                      // 0x0044217f    85c0
                          {disp8} jne        _jmp_addr_0x004421b8                          // 0x00442181    7535
                          {disp8} fld        dword ptr [esp + 0x30]                        // 0x00442183    d9442430
                          sub                esp, 0x08                                     // 0x00442187    83ec08
                          fstp               qword ptr [esp]                               // 0x0044218a    dd1c24
-                         call               _jmp_addr_0x007c7300                          // 0x0044218d    e86e513800
+                         call               __isnan                                       // 0x0044218d    e86e513800
                          add                esp, 0x08                                     // 0x00442192    83c408
                          test               eax, eax                                      // 0x00442195    85c0
                          {disp8} jne        _jmp_addr_0x004421b8                          // 0x00442197    751f

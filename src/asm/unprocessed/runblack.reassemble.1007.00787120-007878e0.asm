@@ -356,7 +356,7 @@ _jmp_addr_0x00787460:    mov.s              eax, esi                            
                          {disp32} fld       dword ptr [ecx + 0x00017d04]                  // 0x007874c7    d981047d0100
                          {disp32} fadd      dword ptr [_rdata_float1p0]                   // 0x007874cd    d80590a38a00
                          {disp32} fmul      dword ptr [_rdata_float0p5]                   // 0x007874d3    d80db4a38a00
-                         {disp32} fsubr     qword ptr [rdata_bytes + 0x2680]              // 0x007874d9    dc2d80b68a00
+                         {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]   // 0x007874d9    dc2d80b68a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0xf5b80]             // 0x007874df    dc0d80eb9900
                          call               _jmp_addr_0x007a1400                          // 0x007874e5    e8169f0100
                          {disp8} jmp        _jmp_addr_0x0078751b                          // 0x007874ea    eb2f
