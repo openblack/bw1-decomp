@@ -16,7 +16,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ??2@YAPAXI@Z
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c8837
 .extern _strncpy

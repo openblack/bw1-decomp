@@ -122,7 +122,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _fprintf__10LHFilePath
+.extern _fprintf
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c7ae0
@@ -3367,7 +3367,7 @@ _jmp_addr_0x004ef96d:    cmp                esi, 0x0036ee80                     
                          fstp               qword ptr [esp]                                      // 0x004ef999    dd1c24
                          push               0x00be0240                                           // 0x004ef99c    684002be00
                          push               edi                                                  // 0x004ef9a1    57
-                         call               _fprintf__10LHFilePath                               // 0x004ef9a2    e809742d00
+                         call               _fprintf                                             // 0x004ef9a2    e809742d00
                          {disp8} fld        dword ptr [esp + 0x20]                               // 0x004ef9a7    d9442420
                          {disp32} fadd      dword ptr [_rdata_float1p0]                          // 0x004ef9ab    d80590a38a00
                          add                esp, 0x18                                            // 0x004ef9b1    83c418
