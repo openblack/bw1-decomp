@@ -21045,7 +21045,7 @@ _jmp_addr_0x005b2e75:    {disp32} mov       eax, dword ptr [edi + 0x00000140]   
                          fsub               dword ptr [eax + edx * 0x4]                   // 0x005b2e87    d82490
                          lea                edx, dword ptr [eax + edx * 0x4]              // 0x005b2e8a    8d1490
                          pop                esi                                           // 0x005b2e8d    5e
-                         {disp32} fcom      qword ptr [rdata_bytes + 0x19c48]             // 0x005b2e8e    dc15482c8c00
+                         {disp32} fcom      qword ptr [__real@8@00000000000000000000]     // 0x005b2e8e    dc15482c8c00
                          fnstsw             ax                                            // 0x005b2e94    dfe0
                          test               ah, 0x40                                      // 0x005b2e96    f6c440
                          {disp8} jne        _jmp_addr_0x005b2edf                          // 0x005b2e99    7544

@@ -5312,8 +5312,8 @@ _jmp_addr_0x0043721e:    mov.s              ecx, eax                            
                          {disp32} fmul      qword ptr [rdata_bytes + 0x1b9f0]                    // 0x0043724d    dc0df0498c00
                          {disp8} fld        qword ptr [esp + 0x18]                               // 0x00437253    dd442418
                          fsin                                                                    // 0x00437257    d9fe
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]                     // 0x00437259    dd0580b68a00
-                         {disp32} fld       qword ptr [rdata_bytes + 0x19c48]                    // 0x0043725f    dd05482c8c00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]            // 0x00437259    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@00000000000000000000]            // 0x0043725f    dd05482c8c00
                          {disp32} jle       _jmp_addr_0x00437316                                 // 0x00437265    0f8eab000000
                          {disp8} lea        ecx, dword ptr [edx + 0x04]                          // 0x0043726b    8d4a04
                          {disp8} lea        esi, dword ptr [edx + eax * 0x4 + 0x04]              // 0x0043726e    8d748204
@@ -5369,7 +5369,7 @@ _jmp_addr_0x004372d5:    {disp8} mov        ecx, dword ptr [esp + 0x18]         
                          {disp8} mov        dword ptr [esp + 0x28], esi                          // 0x004372f8    89742428
                          faddp              st(3), st                                            // 0x004372fc    dec3
                          fld                st(4)                                                // 0x004372fe    d9c4
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]                     // 0x00437300    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]            // 0x00437300    dc0580b68a00
                          fmulp              st(2), st                                            // 0x00437306    deca
                          fld                st(3)                                                // 0x00437308    d9c3
                          fmul               st, st(1)                                            // 0x0043730a    d8c9

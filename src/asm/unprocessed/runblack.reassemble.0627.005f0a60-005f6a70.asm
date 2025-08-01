@@ -6514,7 +6514,7 @@ _jmp_addr_0x005f4ddc:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} fstp       dword ptr [esp + 0x08]                        // 0x005f4e02    d95c2408
                          call               _jmp_addr_0x007de090                          // 0x005f4e06    e885921e00
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x005f4e0b    d9442404
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x2680]              // 0x005f4e0f    dc1d80b68a00
+                         {disp32} fcomp     qword ptr [__real@8@3fff8000000000000000]   // 0x005f4e0f    dc1d80b68a00
                          fnstsw             ax                                            // 0x005f4e15    dfe0
                          test               ah, 0x01                                      // 0x005f4e17    f6c401
                          {disp8} jne        _jmp_addr_0x005f4db4                          // 0x005f4e1a    7598

@@ -4088,13 +4088,13 @@ _jmp_addr_0x0083f270:    {disp8} fld        dword ptr [esp + 0x04]              
                          mov.s              esi, ecx                                       // 0x0083f275    8bf1
                          {disp8} fmul       dword ptr [esi + 0x0c]                         // 0x0083f277    d84e0c
                          {disp8} fadd       dword ptr [esi + 0x1c]                         // 0x0083f27a    d8461c
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]               // 0x0083f27d    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]    // 0x0083f27d    dd0580b68a00
                          call               _jmp_addr_0x007c804a                           // 0x0083f283    e8c28df8ff
                          {disp8} fstp       dword ptr [esi + 0x1c]                         // 0x0083f288    d95e1c
                          {disp8} fld        dword ptr [esp + 0x08]                         // 0x0083f28b    d9442408
                          {disp8} fmul       dword ptr [esi + 0x10]                         // 0x0083f28f    d84e10
                          {disp8} fadd       dword ptr [esi + 0x20]                         // 0x0083f292    d84620
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]               // 0x0083f295    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]    // 0x0083f295    dd0580b68a00
                          call               _jmp_addr_0x007c804a                           // 0x0083f29b    e8aa8df8ff
                          {disp8} fstp       dword ptr [esi + 0x20]                         // 0x0083f2a0    d95e20
                          pop                esi                                            // 0x0083f2a3    5e
@@ -6553,7 +6553,7 @@ _jmp_addr_0x008411e7:    mov.s              edx, ecx                            
                          {disp8} mov        dword ptr [esp + 0x00], edx                    // 0x008411f2    89542400
                          {disp8} fld        dword ptr [esp + 0x00]                         // 0x008411f6    d9442400
                          fsqrt                                                             // 0x008411fa    d9fa
-                         {disp32} fdivr     qword ptr [rdata_bytes + 0x2680]               // 0x008411fc    dc3d80b68a00
+                         {disp32} fdivr     qword ptr [__real@8@3fff8000000000000000]    // 0x008411fc    dc3d80b68a00
                          {disp8} fstp       dword ptr [esp + 0x04]                         // 0x00841202    d95c2404
                          {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x00841206    8b542404
                          add                edx, 0x00002000                                // 0x0084120a    81c200200000

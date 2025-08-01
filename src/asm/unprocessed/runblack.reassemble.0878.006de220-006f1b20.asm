@@ -10587,7 +10587,7 @@ _jmp_addr_0x006e5d9a:    mov.s              ecx, esi                            
                          push               ebp                                           // 0x006e5dd3    55
                          call               @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36                          // 0x006e5dd4    e8873fd4ff
                          {disp8} fld        dword ptr [edi + 0x68]                        // 0x006e5dd9    d94768
-                         {disp32} fcom      qword ptr [rdata_bytes + 0x19c48]             // 0x006e5ddc    dc15482c8c00
+                         {disp32} fcom      qword ptr [__real@8@00000000000000000000]     // 0x006e5ddc    dc15482c8c00
                          {disp32} mov       eax, dword ptr [edi + 0x00000124]             // 0x006e5de2    8b8724010000
                          {disp32} mov       edx, dword ptr [edi + 0x0000011c]             // 0x006e5de8    8b971c010000
                          {disp32} mov       ebp, dword ptr [edi + 0x00000114]             // 0x006e5dee    8baf14010000
@@ -10626,7 +10626,7 @@ _jmp_addr_0x006e5e27:    {disp32} mov       ecx, dword ptr [_game]              
                          add                esp, 0x00000194                               // 0x006e5e48    81c494010000
                          ret                0x0004                                        // 0x006e5e4e    c20400
 _jmp_addr_0x006e5e51:    {disp8} fld        dword ptr [esp + 0x2c]                        // 0x006e5e51    d944242c
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x19c48]             // 0x006e5e55    dc1d482c8c00
+                         {disp32} fcomp     qword ptr [__real@8@00000000000000000000]     // 0x006e5e55    dc1d482c8c00
                          fnstsw             ax                                            // 0x006e5e5b    dfe0
                          test               ah, 0x40                                      // 0x006e5e5d    f6c440
                          {disp8} jne        _jmp_addr_0x006e5eb7                          // 0x006e5e60    7555

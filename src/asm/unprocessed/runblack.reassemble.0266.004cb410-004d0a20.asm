@@ -5204,7 +5204,7 @@ _jmp_addr_0x004ceaeb:    {disp32} lea       edx, dword ptr [ebx + 0x000000c8]   
                          {disp8} lea        edx, dword ptr [esp + 0x34]                   // 0x004ceb4c    8d542434
                          push               edx                                           // 0x004ceb50    52
                          call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x004ceb51    e81ae22700
-                         {disp32} fcom      qword ptr [rdata_bytes + 0x19c48]             // 0x004ceb56    dc15482c8c00
+                         {disp32} fcom      qword ptr [__real@8@00000000000000000000]     // 0x004ceb56    dc15482c8c00
                          add                esp, 0x10                                     // 0x004ceb5c    83c410
                          fnstsw             ax                                            // 0x004ceb5f    dfe0
                          test               ah, 0x41                                      // 0x004ceb61    f6c441

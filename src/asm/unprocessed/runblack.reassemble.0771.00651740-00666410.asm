@@ -24875,12 +24875,12 @@ _jmp_addr_0x006649db:    {disp32} fsubr     dword ptr [_rdata_float1p0]         
                          fmulp              st(1), st                                      // 0x006649ef    dec9
                          fadd.s             st(0), st(0)                                   // 0x006649f1    dcc0
                          {disp32} fadd      qword ptr [rdata_bytes + 0x1ebe0]              // 0x006649f3    dc05e07b8c00
-                         {disp32} fcom      qword ptr [rdata_bytes + 0x2680]               // 0x006649f9    dc1580b68a00
+                         {disp32} fcom      qword ptr [__real@8@3fff8000000000000000]    // 0x006649f9    dc1580b68a00
                          fnstsw             ax                                             // 0x006649ff    dfe0
                          test               ah, 0x01                                       // 0x00664a01    f6c401
                          {disp8} jne        _jmp_addr_0x00664a0e                           // 0x00664a04    7508
                          fstp               st(0)                                          // 0x00664a06    ddd8
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]               // 0x00664a08    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]    // 0x00664a08    dd0580b68a00
 _jmp_addr_0x00664a0e:    {disp8} fstp       dword ptr [esp + 0x18]                         // 0x00664a0e    d95c2418
                          {disp8} jmp        _jmp_addr_0x00664a1c                           // 0x00664a12    eb08
 _jmp_addr_0x00664a14:    {disp8} mov        dword ptr [esp + 0x18], 0x00000000             // 0x00664a14    c744241800000000

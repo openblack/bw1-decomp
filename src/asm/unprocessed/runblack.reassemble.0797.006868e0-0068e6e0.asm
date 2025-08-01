@@ -2820,7 +2820,7 @@ _jmp_addr_0x00688709:    {disp8} mov        edx, dword ptr [edi + 0x34]         
                          mov.s              ecx, ebx                                      // 0x00688726    8bcb
                          call               _jmp_addr_0x00673cc0                          // 0x00688728    e893b5feff
                          {disp32} fdiv      dword ptr [data_bytes + 0x23c648]             // 0x0068872d    d8354826c000
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]              // 0x00688733    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x00688733    dd0580b68a00
                          call               _jmp_addr_0x007c804a                          // 0x00688739    e80cf91300
                          {disp8} lea        eax, dword ptr [esp + 0x18]                   // 0x0068873e    8d442418
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00688742    d95c2410
@@ -6726,7 +6726,7 @@ _jmp_addr_0x0068b688:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]   
                          {disp8} fstp       dword ptr [esi + 0x3c]                        // 0x0068b6c0    d95e3c
 _jmp_addr_0x0068b6c3:    fstp               st(0)                                         // 0x0068b6c3    ddd8
                          {disp8} fld        dword ptr [esi + 0x3c]                        // 0x0068b6c5    d9463c
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]              // 0x0068b6c8    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x0068b6c8    dd0580b68a00
                          call               _jmp_addr_0x007c804a                          // 0x0068b6ce    e877c91300
                          {disp8} fst        dword ptr [esp + 0x08]                        // 0x0068b6d3    d9542408
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0068b6d7    8b442408

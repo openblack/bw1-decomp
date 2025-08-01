@@ -6765,7 +6765,7 @@ _jmp_addr_0x0087c9a2:    pop                edi                                 
                          nop                                                                     // 0x0087c9ae    90
                          nop                                                                     // 0x0087c9af    90
 _jmp_addr_0x0087c9b0:    sub                esp, 0x7c                                            // 0x0087c9b0    83ec7c
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]                     // 0x0087c9b3    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]            // 0x0087c9b3    dd0580b68a00
                          push               ebx                                                  // 0x0087c9b9    53
                          fsqrt                                                                   // 0x0087c9ba    d9fa
                          push               ebp                                                  // 0x0087c9bc    55
@@ -8693,7 +8693,7 @@ _jmp_addr_0x0087e01d:    pop                esi                                 
                          nop                                                                     // 0x0087e02e    90
                          nop                                                                     // 0x0087e02f    90
 _jmp_addr_0x0087e030:    sub                esp, 0x58                                            // 0x0087e030    83ec58
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]                     // 0x0087e033    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]            // 0x0087e033    dd0580b68a00
                          push               ebx                                                  // 0x0087e039    53
                          fsqrt                                                                   // 0x0087e03a    d9fa
                          xor.s              eax, eax                                             // 0x0087e03c    33c0

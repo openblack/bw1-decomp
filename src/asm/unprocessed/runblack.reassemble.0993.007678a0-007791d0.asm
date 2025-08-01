@@ -18878,7 +18878,7 @@ _jmp_addr_0x00773d90:    mov                ecx, OFFSET _GGameInfo_00d019f8     
                          {disp8} fadd       dword ptr [esp + 0x04]                          // 0x00773e2f    d8442404
                          {disp8} fadd       dword ptr [esp + 0x08]                          // 0x00773e33    d8442408
                          fst                dword ptr [esi]                                 // 0x00773e37    d916
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x2680]                // 0x00773e39    dc1d80b68a00
+                         {disp32} fcomp     qword ptr [__real@8@3fff8000000000000000]     // 0x00773e39    dc1d80b68a00
                          fnstsw             ax                                              // 0x00773e3f    dfe0
                          test               ah, 0x41                                        // 0x00773e41    f6c441
                          {disp8} jne        _jmp_addr_0x00773e4c                            // 0x00773e44    7506

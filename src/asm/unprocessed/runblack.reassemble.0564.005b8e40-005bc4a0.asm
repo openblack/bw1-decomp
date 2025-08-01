@@ -1733,7 +1733,7 @@ _jmp_addr_0x005ba350:    sub                esp, 0x34                           
                          {disp8} fst        dword ptr [esp + 0x10]                         // 0x005ba3e2    d9542410
                          fabs                                                              // 0x005ba3e6    d9e1
                          mov                ebp, 0x00000001                                // 0x005ba3e8    bd01000000
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]               // 0x005ba3ed    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]    // 0x005ba3ed    dc0580b68a00
                          {disp8} mov        dword ptr [esp + 0x34], 0x00000000             // 0x005ba3f3    c744243400000000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x223c]               // 0x005ba3fb    d80d3cb28a00
                          {disp8} fstp       dword ptr [esp + 0x20]                         // 0x005ba401    d95c2420

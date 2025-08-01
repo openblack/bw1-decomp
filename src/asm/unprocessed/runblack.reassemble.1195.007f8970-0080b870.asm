@@ -15124,7 +15124,7 @@ _jmp_addr_0x00803949:    {disp8} fild       dword ptr [esp + 0x0c]              
                          {disp32} fmul      dword ptr [rdata_bytes + 0xf9bec]              // 0x0080395a    d80dec2b9a00
                          {disp8} mov        dword ptr [esp + 0x0c], esi                    // 0x00803960    8974240c
                          fsqrt                                                             // 0x00803964    d9fa
-                         {disp32} fdivr     qword ptr [rdata_bytes + 0x2680]               // 0x00803966    dc3d80b68a00
+                         {disp32} fdivr     qword ptr [__real@8@3fff8000000000000000]    // 0x00803966    dc3d80b68a00
                          {disp8} fstp       dword ptr [eax + -0x04]                        // 0x0080396c    d958fc
                          {disp8} jl         _jmp_addr_0x00803949                           // 0x0080396f    7cd8
                          cmp                dword ptr [data_bytes + 0x271bf8], edi         // 0x00803971    393df87bc300

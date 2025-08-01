@@ -6977,7 +6977,7 @@ _jmp_addr_0x0044ee30:    {disp8} fld        dword ptr [esp + 0x04]              
                          faddp              st(1), st                                     // 0x0044ee4c    dec1
                          fscale                                                           // 0x0044ee4e    d9fd
                          fstp               st(1)                                         // 0x0044ee50    ddd9
-                         {disp32} fsubr     qword ptr [rdata_bytes + 0x2680]              // 0x0044ee52    dc2d80b68a00
+                         {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]   // 0x0044ee52    dc2d80b68a00
                          {disp8} fld        dword ptr [ecx + 0x04]                        // 0x0044ee58    d94104
                          fsub               dword ptr [ecx]                               // 0x0044ee5b    d821
                          fmulp              st(1), st                                     // 0x0044ee5d    dec9
@@ -7027,7 +7027,7 @@ _jmp_addr_0x0044ee90:    sub                esp, 0x1c                           
                          faddp              st(1), st                                     // 0x0044eec8    dec1
                          fscale                                                           // 0x0044eeca    d9fd
                          fstp               st(1)                                         // 0x0044eecc    ddd9
-                         {disp32} fsubr     qword ptr [rdata_bytes + 0x2680]              // 0x0044eece    dc2d80b68a00
+                         {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]   // 0x0044eece    dc2d80b68a00
                          {disp8} fstp       dword ptr [esp + 0x00]                        // 0x0044eed4    d95c2400
                          {disp8} fmul       dword ptr [esp + 0x00]                        // 0x0044eed8    d84c2400
                          {disp8} fld        dword ptr [esp + 0x14]                        // 0x0044eedc    d9442414
@@ -8598,7 +8598,7 @@ _jmp_addr_0x00450300:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} fmul       dword ptr [esp + 0x10]                        // 0x00450331    d84c2410
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00450335    d95c2410
 _jmp_addr_0x00450339:    fabs                                                             // 0x00450339    d9e1
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x2680]              // 0x0045033b    dc1d80b68a00
+                         {disp32} fcomp     qword ptr [__real@8@3fff8000000000000000]   // 0x0045033b    dc1d80b68a00
                          fnstsw             ax                                            // 0x00450341    dfe0
                          test               ah, 0x41                                      // 0x00450343    f6c441
                          {disp8} jne        _jmp_addr_0x0045034d                          // 0x00450346    7505
@@ -8670,7 +8670,7 @@ _jmp_addr_0x0045040c:    {disp32} fld       dword ptr [esi + 0x00000088]        
                          {disp32} fld       dword ptr [esi + 0x000000dc]                  // 0x0045044c    d986dc000000
                          fabs                                                             // 0x00450452    d9e1
                          {disp32} fmul      qword ptr [rdata_bytes + 0x1ea00]             // 0x00450454    dc0d007a8c00
-                         {disp32} fsubr     qword ptr [rdata_bytes + 0x2680]              // 0x0045045a    dc2d80b68a00
+                         {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]   // 0x0045045a    dc2d80b68a00
                          {disp8} fld        dword ptr [esp + 0x14]                        // 0x00450460    d9442414
                          {disp32} fdiv      dword ptr [esp + 0x000000a0]                  // 0x00450464    d8b424a0000000
                          {disp32} fdiv      dword ptr [esi + 0x00000084]                  // 0x0045046b    d8b684000000

@@ -3023,7 +3023,7 @@ _jmp_addr_0x00519c31:    {disp32} mov       ecx, dword ptr [rdata_bytes + 0x2f6f
 _jmp_addr_0x00519c3b:    {disp8} fld        dword ptr [esp + 0x24]                        // 0x00519c3b    d9442424
                          {disp8} fmul       dword ptr [esp + 0x18]                        // 0x00519c3f    d84c2418
                          {disp8} fadd       dword ptr [esi + 0x38]                        // 0x00519c43    d84638
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2680]              // 0x00519c46    dd0580b68a00
+                         {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x00519c46    dd0580b68a00
                          call               _jmp_addr_0x007c804a                          // 0x00519c4c    e8f9e32a00
                          {disp8} fst        dword ptr [esi + 0x38]                        // 0x00519c51    d95638
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2210]              // 0x00519c54    d80d10b28a00

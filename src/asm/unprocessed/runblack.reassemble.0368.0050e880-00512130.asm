@@ -1930,7 +1930,7 @@ _jmp_addr_0x0050fa14:    {disp8} mov        dword ptr [esp + 0x08], edi         
                          nop                                                              // 0x0050fa7d    90
                          nop                                                              // 0x0050fa7e    90
                          nop                                                              // 0x0050fa7f    90
-                         {disp32} fld       qword ptr [rdata_bytes + 0x19c48]             // 0x0050fa80    dd05482c8c00
+                         {disp32} fld       qword ptr [__real@8@00000000000000000000]     // 0x0050fa80    dd05482c8c00
                          push               esi                                           // 0x0050fa86    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x0050fa87    8b742408
                          push               edi                                           // 0x0050fa8b    57
@@ -2511,7 +2511,7 @@ _jmp_addr_0x005100fa:    {disp8} mov        dword ptr [esp + 0x10], esi         
                          call               _jmp_addr_0x007a1400                          // 0x0051011c    e8df122900
                          fsin                                                             // 0x00510121    d9fe
                          {disp8} mov        dword ptr [edi + -0x04], eax                  // 0x00510123    8947fc
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]              // 0x00510126    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]   // 0x00510126    dc0580b68a00
                          {disp32} fmul      qword ptr [rdata_bytes + 0x2d008]             // 0x0051012c    dc0d08608d00
                          call               _jmp_addr_0x007a1400                          // 0x00510132    e8c9122900
                          mov                dword ptr [edi], eax                          // 0x00510137    8907

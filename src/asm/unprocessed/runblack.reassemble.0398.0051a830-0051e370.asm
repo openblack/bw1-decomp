@@ -2950,7 +2950,7 @@ _jmp_addr_0x0051caad:    {disp32} mov       ecx, dword ptr [esi + 0x000000cc]   
                          {disp32} fidiv     dword ptr [data_bytes + 0x222eb4]                    // 0x0051cb36    da35b48ebe00
                          add                esp, 0x0c                                            // 0x0051cb3c    83c40c
                          fcos                                                                    // 0x0051cb3f    d9ff
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2680]                     // 0x0051cb41    dc0580b68a00
+                         {disp32} fadd      qword ptr [__real@8@3fff8000000000000000]            // 0x0051cb41    dc0580b68a00
                          {disp8} fild       qword ptr [esp + 0x28]                               // 0x0051cb47    df6c2428
                          {disp32} fmul      dword ptr [rdata_bytes + 0x226c]                     // 0x0051cb4b    d80d6cb28a00
                          fmulp              st(1), st                                            // 0x0051cb51    dec9
