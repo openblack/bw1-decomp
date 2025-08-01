@@ -126,7 +126,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c686f
+.extern _isalpha
 .extern _jmp_addr_0x007c6ce0
 .extern _jmp_addr_0x007c789d
 .extern _jmp_addr_0x007c79fd
@@ -7488,7 +7488,7 @@ _jmp_addr_0x0072e4e0:    push               esi                                 
                          xor.s              eax, eax                                      // 0x0072e4e5    33c0
                          mov                ax, word ptr [esi]                            // 0x0072e4e7    668b06
                          push               eax                                           // 0x0072e4ea    50
-                         call               _jmp_addr_0x007c686f                          // 0x0072e4eb    e87f830900
+                         call               _isalpha                                      // 0x0072e4eb    e87f830900
                          add                esp, 0x04                                     // 0x0072e4f0    83c404
                          test               eax, eax                                      // 0x0072e4f3    85c0
                          {disp8} je         _jmp_addr_0x0072e546                          // 0x0072e4f5    744f

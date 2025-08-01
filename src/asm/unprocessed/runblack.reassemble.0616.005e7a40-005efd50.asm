@@ -116,7 +116,7 @@
 .extern _wcslen
 .extern ??2@YAPAXI@Z
 .extern _atoi
-.extern _jmp_addr_0x007c69c0
+.extern _isprint
 .extern _jmp_addr_0x007c6ad3
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
@@ -5828,7 +5828,7 @@ _jmp_addr_0x005ebac0:    push               esi                                 
                          {disp8} je         _jmp_addr_0x005ebaea                          // 0x005ebacb    741d
 _jmp_addr_0x005ebacd:    movsx              eax, byte ptr [esi]                           // 0x005ebacd    0fbe06
                          push               eax                                           // 0x005ebad0    50
-                         call               _jmp_addr_0x007c69c0                          // 0x005ebad1    e8eaae1d00
+                         call               _isprint                                      // 0x005ebad1    e8eaae1d00
                          add                esp, 0x04                                     // 0x005ebad6    83c404
                          test               eax, eax                                      // 0x005ebad9    85c0
                          {disp8} je         _jmp_addr_0x005ebae2                          // 0x005ebadb    7405
