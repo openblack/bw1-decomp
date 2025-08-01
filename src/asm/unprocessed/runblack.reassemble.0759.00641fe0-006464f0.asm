@@ -85,7 +85,7 @@
 .extern __strcmpi
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern __aulldiv
 .extern __allmul
 .extern _exit
@@ -1640,7 +1640,7 @@ _jmp_addr_0x0064332e:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                    // 0x00643330    8d4c2428
                          push               0x2                                            // 0x00643334    6a02
                          push               ecx                                            // 0x00643336    51
-                         call               _jmp_addr_0x007c748b                           // 0x00643337    e84f411800
+                         call               _fread                                         // 0x00643337    e84f411800
                          push               esi                                            // 0x0064333c    56
                          call               _fclose                                        // 0x0064333d    e8ee3a1800
                          add                esp, 0x14                                      // 0x00643342    83c414

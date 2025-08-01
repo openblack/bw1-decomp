@@ -179,7 +179,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c76e0
+.extern __CIacos
 .extern _jmp_addr_0x007c7e64
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007c8072
@@ -23781,7 +23781,7 @@ _jmp_addr_0x00685001:    test               edi, edi                            
                          call               _jmp_addr_0x004a1ba0                          // 0x0068511a    e881cae1ff
                          {disp8} fmul       dword ptr [esp + 0x30]                        // 0x0068511f    d84c2430
                          {disp8} fdivr      dword ptr [esp + 0x34]                        // 0x00685123    d87c2434
-                         call               _jmp_addr_0x007c76e0                          // 0x00685127    e8b4251400
+                         call               __CIacos                                      // 0x00685127    e8b4251400
                          {disp8} fst        dword ptr [esp + 0x30]                        // 0x0068512c    d9542430
                          add                ebx, 0x20                                     // 0x00685130    83c320
                          fabs                                                             // 0x00685133    d9e1
@@ -23842,7 +23842,7 @@ _jmp_addr_0x0068514c:    {disp8} fld        dword ptr [ebx + 0x04]              
                          call               _jmp_addr_0x004a1ba0                          // 0x00685215    e886c9e1ff
                          {disp8} fmul       dword ptr [esp + 0x58]                        // 0x0068521a    d84c2458
                          {disp8} fdivr      dword ptr [esp + 0x38]                        // 0x0068521e    d87c2438
-                         call               _jmp_addr_0x007c76e0                          // 0x00685222    e8b9241400
+                         call               __CIacos                                      // 0x00685222    e8b9241400
                          {disp8} mov        eax, dword ptr [esp + 0x2c]                   // 0x00685227    8b44242c
                          fabs                                                             // 0x0068522b    d9e1
                          {disp8} fsubr      dword ptr [esp + 0x24]                        // 0x0068522d    d86c2424
@@ -23947,7 +23947,7 @@ _jmp_addr_0x0068514c:    {disp8} fld        dword ptr [ebx + 0x04]              
                          call               _jmp_addr_0x004a1ba0                          // 0x00685396    e805c8e1ff
                          {disp8} fmul       dword ptr [esp + 0x24]                        // 0x0068539b    d84c2424
                          {disp8} fdivr      dword ptr [esp + 0x38]                        // 0x0068539f    d87c2438
-                         call               _jmp_addr_0x007c76e0                          // 0x006853a3    e838231400
+                         call               __CIacos                                      // 0x006853a3    e838231400
                          {disp8} fsubr      dword ptr [esp + 0x30]                        // 0x006853a8    d86c2430
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x006853ac    8b542410
                          fabs                                                             // 0x006853b0    d9e1

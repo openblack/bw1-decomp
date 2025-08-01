@@ -37,7 +37,7 @@
 .extern _swprintf
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern _jmp_addr_0x007c8606
 .extern ___nw__FUl
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
@@ -322,7 +322,7 @@ _jmp_addr_0x0054835e:    push               edi                                 
                          push               0x1                                           // 0x00548371    6a01
                          push               ecx                                           // 0x00548373    51
                          {disp8} mov        dword ptr [esp + 0x70], eax                   // 0x00548374    89442470
-                         call               _jmp_addr_0x007c748b                          // 0x00548378    e80ef12700
+                         call               _fread                                        // 0x00548378    e80ef12700
                          add                esp, 0x18                                     // 0x0054837d    83c418
                          mov                ebp, 0x008dece4                               // 0x00548380    bde4ec8d00
                          {disp8} lea        esi, dword ptr [esp + 0x38]                   // 0x00548385    8d742438
@@ -382,7 +382,7 @@ _jmp_addr_0x00548400:    {disp8} mov        ebp, dword ptr [esp + 0x58]         
                          mov.s              esi, eax                                      // 0x0054841c    8bf0
                          push               0x1                                           // 0x0054841e    6a01
                          push               esi                                           // 0x00548420    56
-                         call               _jmp_addr_0x007c748b                          // 0x00548421    e865f02700
+                         call               _fread                                        // 0x00548421    e865f02700
                          push               edi                                           // 0x00548426    57
                          call               _fclose                                       // 0x00548427    e804ea2700
                          {disp8} lea        edx, dword ptr [esp + 0x50]                   // 0x0054842c    8d542450

@@ -210,7 +210,7 @@
 .extern _fclose
 .extern __chkstk
 .extern _wcscmp
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c79fd
 .extern _atof
@@ -3003,7 +3003,7 @@ _jmp_addr_0x00632a30:    push               ecx                                 
                          mov.s              esi, eax                                       // 0x00632a68    8bf0
                          push               ebx                                            // 0x00632a6a    53
                          push               esi                                            // 0x00632a6b    56
-                         call               _jmp_addr_0x007c748b                           // 0x00632a6c    e81a4a1900
+                         call               _fread                                         // 0x00632a6c    e81a4a1900
                          push               edi                                            // 0x00632a71    57
                          call               _fclose                                        // 0x00632a72    e8b9431900
                          add                esp, 0x20                                      // 0x00632a77    83c420
@@ -6411,7 +6411,7 @@ _jmp_addr_0x00634eb8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          mov.s              ebx, eax                                       // 0x00634f8e    8bd8
                          push               edi                                            // 0x00634f90    57
                          push               ebx                                            // 0x00634f91    53
-                         call               _jmp_addr_0x007c748b                           // 0x00634f92    e8f4241900
+                         call               _fread                                         // 0x00634f92    e8f4241900
                          push               esi                                            // 0x00634f97    56
                          call               _fclose                                        // 0x00634f98    e8931e1900
                          add                esp, 0x28                                      // 0x00634f9d    83c428

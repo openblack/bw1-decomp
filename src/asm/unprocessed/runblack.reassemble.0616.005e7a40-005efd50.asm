@@ -121,7 +121,7 @@
 .extern _fopen
 .extern _fclose
 .extern __chkstk
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c8606
 .extern _jmp_addr_0x007c8859
@@ -2465,7 +2465,7 @@ _jmp_addr_0x005e91f0:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x005e920d    8d4c2428
                          push               0x4                                           // 0x005e9211    6a04
                          push               ecx                                           // 0x005e9213    51
-                         call               _jmp_addr_0x007c748b                          // 0x005e9214    e872e21d00
+                         call               _fread                                        // 0x005e9214    e872e21d00
                          push               0x2                                           // 0x005e9219    6a02
                          push               0xfffffebc                                    // 0x005e921b    68bcfeffff
                          push               ebp                                           // 0x005e9220    55
@@ -2530,7 +2530,7 @@ _jmp_addr_0x005e92b2:    push               0x000004d2                          
                          push               0x1                                           // 0x005e92db    6a01
                          push               0x00000144                                    // 0x005e92dd    6844010000
                          push               esi                                           // 0x005e92e2    56
-                         call               _jmp_addr_0x007c748b                          // 0x005e92e3    e8a3e11d00
+                         call               _fread                                        // 0x005e92e3    e8a3e11d00
                          add                esp, 0x10                                     // 0x005e92e8    83c410
                          cmp                eax, 0x01                                     // 0x005e92eb    83f801
                          {disp8} jne        _jmp_addr_0x005e9327                          // 0x005e92ee    7537
@@ -2590,7 +2590,7 @@ _jmp_addr_0x005e9373:    push               0x000004eb                          
                          mov.s              esi, eax                                      // 0x005e9387    8bf0
                          push               0x70                                          // 0x005e9389    6a70
                          push               esi                                           // 0x005e938b    56
-                         call               _jmp_addr_0x007c748b                          // 0x005e938c    e8fae01d00
+                         call               _fread                                        // 0x005e938c    e8fae01d00
                          add                esp, 0x1c                                     // 0x005e9391    83c41c
                          cmp                eax, 0x01                                     // 0x005e9394    83f801
                          {disp8} jne        _jmp_addr_0x005e93c4                          // 0x005e9397    752b

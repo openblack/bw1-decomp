@@ -68,7 +68,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c76e0
+.extern __CIacos
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0060d740
@@ -1756,7 +1756,7 @@ _jmp_addr_0x0060ed6d:    {disp8} lea        edi, dword ptr [esi + 0x0c]         
                          push               edx                                         // 0x0060ed7d    52
                          mov.s              ecx, edi                                    // 0x0060ed7e    8bcf
                          call               @DotProduct__7Point2DFP7Point2D@12          // 0x0060ed80    e88b250000
-                         call               _jmp_addr_0x007c76e0                        // 0x0060ed85    e856891b00
+                         call               __CIacos                                    // 0x0060ed85    e856891b00
                          {disp8} fstp       dword ptr [esp + 0x24]                      // 0x0060ed8a    d95c2424
                          {disp8} lea        eax, dword ptr [esp + 0x58]                 // 0x0060ed8e    8d442458
                          push               eax                                         // 0x0060ed92    50

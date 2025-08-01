@@ -31,7 +31,7 @@
 .extern _free
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c748b
+.extern _fread
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c7ae0
 .extern _jmp_addr_0x007c8837
@@ -3279,7 +3279,7 @@ _jmp_addr_0x00844a6f:    pop                edi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                    // 0x00844a87    8d4c240c
                          push               0x1                                            // 0x00844a8b    6a01
                          push               ecx                                            // 0x00844a8d    51
-                         call               _jmp_addr_0x007c748b                           // 0x00844a8e    e8f829f8ff
+                         call               _fread                                         // 0x00844a8e    e8f829f8ff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x00844a93    8b442414
                          add                esp, 0x10                                      // 0x00844a97    83c410
                          ret                                                               // 0x00844a9a    c3
