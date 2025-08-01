@@ -292,7 +292,7 @@ _jmp_addr_0x00405ac7:    mov.s              ecx, edi                            
                          call               _jmp_addr_0x00405a60                          // 0x00405ac9    e892ffffff
                          push               eax                                           // 0x00405ace    50
                          push               ebx                                           // 0x00405acf    53
-                         call               _jmp_addr_0x007c6ce0                          // 0x00405ad0    e80b123c00
+                         call               __strcmpi                                     // 0x00405ad0    e80b123c00
                          add                esp, 0x08                                     // 0x00405ad5    83c408
                          test               eax, eax                                      // 0x00405ad8    85c0
                          {disp8} je         _jmp_addr_0x00405b15                          // 0x00405ada    7439

@@ -66,7 +66,7 @@
 .extern _wcsncpy
 .extern _wcslen
 .extern _swprintf
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern _jmp_addr_0x007c6eb0
 .extern _jmp_addr_0x007c8668
 .extern ___nw__FUl
@@ -4402,7 +4402,7 @@ _jmp_addr_0x00571d5e:    cmp                dword ptr [ebp + 0x2c], ebx         
                          push               ecx                                           // 0x00571d67    51
                          {disp32} lea       edx, dword ptr [esp + 0x00000158]             // 0x00571d68    8d942458010000
                          push               edx                                           // 0x00571d6f    52
-                         call               _jmp_addr_0x007c6ce0                          // 0x00571d70    e86b4f2500
+                         call               __strcmpi                                     // 0x00571d70    e86b4f2500
                          add                esp, 0x08                                     // 0x00571d75    83c408
                          test               eax, eax                                      // 0x00571d78    85c0
                          {disp32} jle       _jmp_addr_0x00571e42                          // 0x00571d7a    0f8ec2000000

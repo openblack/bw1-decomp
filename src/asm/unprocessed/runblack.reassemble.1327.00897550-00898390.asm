@@ -6,7 +6,7 @@
 
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern _jmp_addr_0x008866c0
 .extern _jmp_addr_0x00886780
 .extern _jmp_addr_0x00886800
@@ -211,7 +211,7 @@ _jmp_addr_0x008976c6:    ret                                                    
                          call               _jmp_addr_0x008866c0                          // 0x0089770c    e8afeffeff
                          add                esp, 0x0c                                     // 0x00897711    83c40c
                          push               eax                                           // 0x00897714    50
-                         call               _jmp_addr_0x007c6ce0                          // 0x00897715    e8c6f5f2ff
+                         call               __strcmpi                                     // 0x00897715    e8c6f5f2ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x5f9da0]        // 0x0089771a    8b0da0fdfb00
                          add                esp, 0x08                                     // 0x00897720    83c408
                          {disp32} mov       edx, dword ptr [ecx + 0x00000084]             // 0x00897723    8b9184000000

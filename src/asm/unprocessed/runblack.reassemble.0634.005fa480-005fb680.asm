@@ -47,7 +47,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fac10
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -1834,7 +1834,7 @@ _jmp_addr_0x005fb3be:    mov                ecx, dword ptr [esi]                
                          call               @GetMagicInfoText__10GMagicInfoCFv@4          // 0x005fb3c0    e82b000000
                          push               eax                                           // 0x005fb3c5    50
                          push               ebx                                           // 0x005fb3c6    53
-                         call               _jmp_addr_0x007c6ce0                          // 0x005fb3c7    e814b91c00
+                         call               __strcmpi                                     // 0x005fb3c7    e814b91c00
                          add                esp, 0x08                                     // 0x005fb3cc    83c408
                          test               eax, eax                                      // 0x005fb3cf    85c0
                          {disp8} je         _jmp_addr_0x005fb3e8                          // 0x005fb3d1    7415

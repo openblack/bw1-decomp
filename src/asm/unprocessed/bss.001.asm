@@ -2,7 +2,6 @@
 .section .bss
 
 .globl ___onexitend
-.globl ___setlc_active
 .globl __wpgmptr
 .globl ___lc_collate_cp
 .globl __winminor

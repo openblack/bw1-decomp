@@ -82,7 +82,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6ce0
+.extern __strcmpi
 .extern _fopen__10LHFilePath
 .extern ___dt__10LHFilePathFv
 .extern _jmp_addr_0x007c748b
@@ -1649,7 +1649,7 @@ _jmp_addr_0x0064332e:    push               esi                                 
 _jmp_addr_0x0064334c:    {disp8} lea        edx, dword ptr [esp + 0x20]                    // 0x0064334c    8d542420
                          push               esi                                            // 0x00643350    56
                          push               edx                                            // 0x00643351    52
-                         call               _jmp_addr_0x007c6ce0                           // 0x00643352    e889391800
+                         call               __strcmpi                                      // 0x00643352    e889391800
                          add                esp, 0x08                                      // 0x00643357    83c408
                          test               eax, eax                                       // 0x0064335a    85c0
                          {disp8} je         _jmp_addr_0x00643399                           // 0x0064335c    743b
