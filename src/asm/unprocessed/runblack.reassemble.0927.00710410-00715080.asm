@@ -80,7 +80,7 @@
 .extern _fprintf
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c789d
@@ -7029,7 +7029,7 @@ _jmp_addr_0x00714ae0:    push               0x00407870                          
                          nop                                                              // 0x00714aee    90
                          nop                                                              // 0x00714aef    90
 @ParseConfigFile__8SettingsFPc@12:    mov                eax, 0x00001008                               // 0x00714af0    b808100000
-                         call               _jmp_addr_0x007c6eb0                          // 0x00714af5    e8b6230b00
+                         call               __chkstk                                      // 0x00714af5    e8b6230b00
                          {disp32} mov       eax, dword ptr [esp + 0x0000100c]             // 0x00714afa    8b84240c100000
                          test               eax, eax                                      // 0x00714b01    85c0
                          push               ebp                                           // 0x00714b03    55

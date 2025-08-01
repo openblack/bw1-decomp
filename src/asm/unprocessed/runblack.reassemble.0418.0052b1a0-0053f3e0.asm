@@ -261,7 +261,7 @@
 .extern _wcslen
 .extern _swprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c7e64
 .extern _jmp_addr_0x007c8141
@@ -17349,7 +17349,7 @@ _jmp_addr_0x00535840:    ret                                                    
                          nop                                                                     // 0x0053584e    90
                          nop                                                                     // 0x0053584f    90
 _jmp_addr_0x00535850:    mov                eax, 0x000640c8                                      // 0x00535850    b8c8400600
-                         call               _jmp_addr_0x007c6eb0                                 // 0x00535855    e856162900
+                         call               __chkstk                                             // 0x00535855    e856162900
                          push               ebx                                                  // 0x0053585a    53
                          push               ebp                                                  // 0x0053585b    55
                          push               esi                                                  // 0x0053585c    56
@@ -21373,7 +21373,7 @@ _jmp_addr_0x005387b4:    {disp8} mov        ecx, dword ptr [esp + 0x2c]         
                          nop                                                                     // 0x005387ce    90
                          nop                                                                     // 0x005387cf    90
 _AttemptRerenderFootpathWithCreatureRP__9GFootpathFP13GFootpathNodeP13GFootpathNodeRC9MapCoords:    mov                eax, 0x000640b0                                      // 0x005387d0    b8b0400600
-                         call               _jmp_addr_0x007c6eb0                                 // 0x005387d5    e8d6e62800
+                         call               __chkstk                                             // 0x005387d5    e8d6e62800
                          push               ebx                                                  // 0x005387da    53
                          push               esi                                                  // 0x005387db    56
                          push               edi                                                  // 0x005387dc    57
@@ -28065,7 +28065,7 @@ _jmp_addr_0x0053d1d1:    {disp8} mov        eax, dword ptr [esi + 0x14]         
                          nop                                                                     // 0x0053d20e    90
                          nop                                                                     // 0x0053d20f    90
                          mov                eax, 0x00001430                                      // 0x0053d210    b830140000
-                         call               _jmp_addr_0x007c6eb0                                 // 0x0053d215    e8969c2800
+                         call               __chkstk                                             // 0x0053d215    e8969c2800
                          {disp32} mov       eax, dword ptr [esp + 0x00001434]                    // 0x0053d21a    8b842434140000
                          dec                eax                                                  // 0x0053d221    48
                          {disp32} mov       edx, dword ptr [data_bytes + 0x30ab24]               // 0x0053d222    8b15240bcd00
@@ -29695,7 +29695,7 @@ _jmp_addr_0x0053e734:    {disp32} mov       ecx, dword ptr [data_bytes + 0x30ab3
                          {disp32} jmp       _jmp_addr_0x0053e220                                 // 0x0053e73a    e9e1faffff
                          nop                                                                     // 0x0053e73f    90
                          mov                eax, 0x00001208                                      // 0x0053e740    b808120000
-                         call               _jmp_addr_0x007c6eb0                                 // 0x0053e745    e866872800
+                         call               __chkstk                                             // 0x0053e745    e866872800
                          {disp32} mov       al, byte ptr [data_bytes + 0x30ab04]                 // 0x0053e74a    a0040bcd00
                          test               al, al                                               // 0x0053e74f    84c0
                          {disp32} mov       ecx, dword ptr [esp + 0x00001214]                    // 0x0053e751    8b8c2414120000

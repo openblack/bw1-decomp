@@ -58,7 +58,7 @@
 .extern _wcslen
 .extern _swprintf
 .extern __unlink
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c6edf
 .extern ___nw__FUl
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
@@ -1551,7 +1551,7 @@ _jmp_addr_0x0061cc80:    push               esi                                 
                          nop                                                                     // 0x0061ccae    90
                          nop                                                                     // 0x0061ccaf    90
 _jmp_addr_0x0061ccb0:    mov                eax, 0x00001018                                      // 0x0061ccb0    b818100000
-                         call               _jmp_addr_0x007c6eb0                                 // 0x0061ccb5    e8f6a11a00
+                         call               __chkstk                                             // 0x0061ccb5    e8f6a11a00
                          push               ebx                                                  // 0x0061ccba    53
                          mov.s              ebx, ecx                                             // 0x0061ccbb    8bd9
                          {disp32} mov       eax, dword ptr [ebx + 0x00000160]                    // 0x0061ccbd    8b8360010000

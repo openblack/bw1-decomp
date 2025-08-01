@@ -33,7 +33,7 @@
 .extern _wcscat
 .extern _wcscpy
 .extern _wcslen
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 
 .globl _jmp_addr_0x0079a5a0
 .globl _jmp_addr_0x0079a5d0
@@ -423,7 +423,7 @@ _jmp_addr_0x0079a906:    pop               edi                                  
                          nop                                                             // 0x0079a90e    90
                          nop                                                             // 0x0079a90f    90
 _jmp_addr_0x0079a910:    mov               eax, 0x00001408                               // 0x0079a910    b808140000
-                         call              _jmp_addr_0x007c6eb0                          // 0x0079a915    e896c50200
+                         call              __chkstk                                      // 0x0079a915    e896c50200
                          push              ebx                                           // 0x0079a91a    53
                          push              esi                                           // 0x0079a91b    56
                          {disp32} mov      esi, dword ptr [esp + 0x00001418]             // 0x0079a91c    8bb42418140000

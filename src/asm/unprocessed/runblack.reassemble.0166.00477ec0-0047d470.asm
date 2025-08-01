@@ -162,7 +162,7 @@
 .extern _fprintf
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fb880
@@ -2158,7 +2158,7 @@ _jmp_addr_0x00479699:    xor.s              eax, eax                            
                          nop                                                              // 0x0047969e    90
                          nop                                                              // 0x0047969f    90
 _jmp_addr_0x004796a0:    mov                eax, 0x00001204                               // 0x004796a0    b804120000
-                         call               _jmp_addr_0x007c6eb0                          // 0x004796a5    e806d83400
+                         call               __chkstk                                      // 0x004796a5    e806d83400
                          test               byte ptr [esp + 0x00001210], 0x04             // 0x004796aa    f684241012000004
                          push               ebx                                           // 0x004796b2    53
                          push               ebp                                           // 0x004796b3    55
@@ -5533,7 +5533,7 @@ _jmp_addr_0x0047beb2:    {disp32} mov       edx, dword ptr [ecx + 0x00000164]   
                          nop                                                              // 0x0047bede    90
                          nop                                                              // 0x0047bedf    90
 _jmp_addr_0x0047bee0:    mov                eax, 0x000010f4                               // 0x0047bee0    b8f4100000
-                         call               _jmp_addr_0x007c6eb0                          // 0x0047bee5    e8c6af3400
+                         call               __chkstk                                      // 0x0047bee5    e8c6af3400
                          push               ebx                                           // 0x0047beea    53
                          {disp32} mov       ebx, dword ptr [esp + 0x000010fc]             // 0x0047beeb    8b9c24fc100000
                          mov                eax, dword ptr [ebx]                          // 0x0047bef2    8b03

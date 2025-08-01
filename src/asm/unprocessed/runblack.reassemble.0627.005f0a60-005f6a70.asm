@@ -86,7 +86,7 @@
 .extern _sscanf
 .extern _iswspace
 .extern __strcmpi
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _strtok
 .extern _jmp_addr_0x007da710
 .extern ___nw__FUl
@@ -7963,7 +7963,7 @@ _jmp_addr_0x005f5fa2:    pop                edi                                 
                          nop                                                              // 0x005f5fae    90
                          nop                                                              // 0x005f5faf    90
                          mov                eax, 0x00001548                               // 0x005f5fb0    b848150000
-                         call               _jmp_addr_0x007c6eb0                          // 0x005f5fb5    e8f60e1d00
+                         call               __chkstk                                      // 0x005f5fb5    e8f60e1d00
                          {disp32} mov       eax, dword ptr [esp + 0x0000154c]             // 0x005f5fba    8b84244c150000
                          cmp                eax, 0x08                                     // 0x005f5fc1    83f808
                          push               ebx                                           // 0x005f5fc4    53

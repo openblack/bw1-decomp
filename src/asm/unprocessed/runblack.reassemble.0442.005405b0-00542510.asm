@@ -39,7 +39,7 @@
 .extern _wcscpy
 .extern _wcsncpy
 .extern _wcslen
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c81cd
 .extern ___nw__FUl
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
@@ -110,7 +110,7 @@ _jmp_addr_0x005405b0:    push               ebx                                 
                          nop                                                              // 0x0054065e    90
                          nop                                                              // 0x0054065f    90
 _jmp_addr_0x00540660:    mov                eax, 0x000018cc                               // 0x00540660    b8cc180000
-                         call               _jmp_addr_0x007c6eb0                          // 0x00540665    e846682800
+                         call               __chkstk                                      // 0x00540665    e846682800
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x620]          // 0x0054066a    8b1520968a00
                          push               ebx                                           // 0x00540670    53
                          push               ebp                                           // 0x00540671    55
@@ -1399,7 +1399,7 @@ _jmp_addr_0x00541826:    mov.s              ecx, esi                            
                          nop                                                              // 0x0054183e    90
                          nop                                                              // 0x0054183f    90
                          mov                eax, 0x00001a60                               // 0x00541840    b8601a0000
-                         call               _jmp_addr_0x007c6eb0                          // 0x00541845    e866562800
+                         call               __chkstk                                      // 0x00541845    e866562800
                          push               ebx                                           // 0x0054184a    53
                          push               ebp                                           // 0x0054184b    55
                          push               esi                                           // 0x0054184c    56

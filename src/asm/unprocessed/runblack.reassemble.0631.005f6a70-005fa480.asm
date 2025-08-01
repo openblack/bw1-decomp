@@ -49,7 +49,7 @@
 .extern ??2@YAPAXI@Z
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c7e64
 .extern ___nw__FUl
@@ -369,7 +369,7 @@ _jmp_addr_0x005f6d78:    pop                edi                                 
                          nop                                                               // 0x005f6d7e    90
                          nop                                                               // 0x005f6d7f    90
 _jmp_addr_0x005f6d80:    mov                eax, 0x0000549c                                // 0x005f6d80    b89c540000
-                         call               _jmp_addr_0x007c6eb0                           // 0x005f6d85    e826011d00
+                         call               __chkstk                                       // 0x005f6d85    e826011d00
                          {disp32} mov       eax, dword ptr [rdata_bytes + 0x620]           // 0x005f6d8a    a120968a00
                          push               ebx                                            // 0x005f6d8f    53
                          push               ebp                                            // 0x005f6d90    55

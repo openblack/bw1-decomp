@@ -145,7 +145,7 @@
 .extern __unlink
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
@@ -7751,7 +7751,7 @@ _jmp_addr_0x00625862:    {disp8} mov       eax, dword ptr [esp + 0x10]          
                          ret               0x0010                                        // 0x00625878    c21000
                          call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0062587b    e879bfddff
 _jmp_addr_0x00625880:    mov               eax, 0x000011ec                               // 0x00625880    b8ec110000
-                         call              _jmp_addr_0x007c6eb0                          // 0x00625885    e826161a00
+                         call              __chkstk                                      // 0x00625885    e826161a00
                          push              ebx                                           // 0x0062588a    53
                          push              ebp                                           // 0x0062588b    55
                          mov.s             ebp, ecx                                      // 0x0062588c    8be9

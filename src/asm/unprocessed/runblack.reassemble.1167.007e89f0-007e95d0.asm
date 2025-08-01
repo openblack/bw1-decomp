@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x007bcad0
 .extern _jmp_addr_0x007bd0c0
 .extern _toupper
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern ___nw__FUl
 .extern @SetFullscreenMode__8LHScreenFi@12
 .extern _jmp_addr_0x007ddc40
@@ -506,7 +506,7 @@ _jmp_addr_0x007e8d50:    {disp32} mov      eax, fs:[0x0]                        
                          push              eax                                      // 0x007e8d5d    50
                          mov               eax, 0x0000110c                          // 0x007e8d5e    b80c110000
                          {disp32} mov      fs:[0x0], esp                            // 0x007e8d63    64892500000000
-                         call              _jmp_addr_0x007c6eb0                     // 0x007e8d6a    e841e1fdff
+                         call              __chkstk                                 // 0x007e8d6a    e841e1fdff
                          push              esi                                      // 0x007e8d6f    56
                          mov.s             esi, ecx                                 // 0x007e8d70    8bf1
                          {disp8} lea       ecx, dword ptr [esp + 0x04]              // 0x007e8d72    8d4c2404

@@ -31,14 +31,14 @@
 .extern _wcsncpy
 .extern _wcslen
 .extern __strcmpi
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern ___nw__FUl
 .extern @GetStringWidth__13GatheringTextFPwif@20
 
 start_0x00572d00_0x00573840:
 // Snippet: asm, [0x00572d00, 0x00573801)
                          mov               eax, 0x00001018                               // 0x00572d00    b818100000
-                         call              _jmp_addr_0x007c6eb0                          // 0x00572d05    e8a6412500
+                         call              __chkstk                                      // 0x00572d05    e8a6412500
                          push              ebx                                           // 0x00572d0a    53
                          push              ebp                                           // 0x00572d0b    55
                          push              esi                                           // 0x00572d0c    56

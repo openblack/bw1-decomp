@@ -17,7 +17,7 @@
 .extern _sprintf
 .extern ??2@YAPAXI@Z
 .extern _fprintf
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c8837
 .extern _strncpy
 .extern _strstr

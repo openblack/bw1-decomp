@@ -92,7 +92,7 @@
 .extern _wcscpy
 .extern _wcslen
 .extern _sscanf
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c6edf
 .extern _jmp_addr_0x007c7300
 .extern ___nw__FUl
@@ -1843,7 +1843,7 @@ _jmp_addr_0x00440c14:    pop                esi                                 
                          ret                                                              // 0x00440c1e    c3
                          nop                                                              // 0x00440c1f    90
 _jmp_addr_0x00440c20:    mov                eax, 0x00002640                               // 0x00440c20    b840260000
-                         call               _jmp_addr_0x007c6eb0                          // 0x00440c25    e886623800
+                         call               __chkstk                                      // 0x00440c25    e886623800
                          {disp32} mov       al, byte ptr [data_bytes + 0x293a10]          // 0x00440c2a    a0109ac500
                          test               al, al                                        // 0x00440c2f    84c0
                          push               ebx                                           // 0x00440c31    53

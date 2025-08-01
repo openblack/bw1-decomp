@@ -317,7 +317,7 @@
 .extern _memmove
 .extern ??2@YAPAXI@Z
 .extern _fclose
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _jmp_addr_0x007c75a2
 .extern _getc_10LHFilePath
 .extern _jmp_addr_0x007c8859
@@ -10214,7 +10214,7 @@ _jmp_addr_0x0076db6e:    {disp8} fld        dword ptr [esi + 0x2c]              
                          nop                                                                // 0x0076dc2e    90
                          nop                                                                // 0x0076dc2f    90
 _jmp_addr_0x0076dc30:    mov                eax, 0x0002c1a8                                 // 0x0076dc30    b8a8c10200
-                         call               _jmp_addr_0x007c6eb0                            // 0x0076dc35    e876920500
+                         call               __chkstk                                        // 0x0076dc35    e876920500
                          push               ebx                                             // 0x0076dc3a    53
                          push               ebp                                             // 0x0076dc3b    55
                          push               esi                                             // 0x0076dc3c    56
@@ -10726,7 +10726,7 @@ _jmp_addr_0x0076e2bc:    pop                edi                                 
                          nop                                                                // 0x0076e2ce    90
                          nop                                                                // 0x0076e2cf    90
 _jmp_addr_0x0076e2d0:    mov                eax, 0x00058054                                 // 0x0076e2d0    b854800500
-                         call               _jmp_addr_0x007c6eb0                            // 0x0076e2d5    e8d68b0500
+                         call               __chkstk                                        // 0x0076e2d5    e8d68b0500
                          push               ebx                                             // 0x0076e2da    53
                          push               ebp                                             // 0x0076e2db    55
                          push               esi                                             // 0x0076e2dc    56
@@ -11562,7 +11562,7 @@ _jmp_addr_0x0076ec2f:    add                esp, 0x30                           
                          nop                                                                // 0x0076ec4e    90
                          nop                                                                // 0x0076ec4f    90
                          mov                eax, 0x00006060                                 // 0x0076ec50    b860600000
-                         call               _jmp_addr_0x007c6eb0                            // 0x0076ec55    e856820500
+                         call               __chkstk                                        // 0x0076ec55    e856820500
                          push               ebx                                             // 0x0076ec5a    53
                          push               ebp                                             // 0x0076ec5b    55
                          push               esi                                             // 0x0076ec5c    56

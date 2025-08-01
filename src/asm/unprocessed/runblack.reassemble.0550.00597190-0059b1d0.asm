@@ -94,7 +94,7 @@
 .extern _swprintf
 .extern ??2@YAPAXI@Z
 .extern _free
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern _strncpy
 .extern ___nw__FUl
 .extern _jmp_addr_0x00884b70
@@ -4665,7 +4665,7 @@ _jmp_addr_0x0059a2e4:    pop                esi                                 
                          nop                                                              // 0x0059a2ee    90
                          nop                                                              // 0x0059a2ef    90
                          mov                eax, 0x00001b70                               // 0x0059a2f0    b8701b0000
-                         call               _jmp_addr_0x007c6eb0                          // 0x0059a2f5    e8b6cb2200
+                         call               __chkstk                                      // 0x0059a2f5    e8b6cb2200
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x343190]        // 0x0059a2fa    8b0d9091d000
                          {disp32} mov       eax, dword ptr [ecx + 0x00000278]             // 0x0059a300    8b8178020000
                          test               eax, eax                                      // 0x0059a306    85c0
