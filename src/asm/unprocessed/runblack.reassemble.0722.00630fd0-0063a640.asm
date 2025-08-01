@@ -209,7 +209,7 @@
 .extern _fopen
 .extern _fclose
 .extern __chkstk
-.extern _jmp_addr_0x007c6edf
+.extern _wcscmp
 .extern _jmp_addr_0x007c748b
 .extern _jmp_addr_0x007c75a2
 .extern _jmp_addr_0x007c79fd
@@ -6909,7 +6909,7 @@ _jmp_addr_0x0063554c:    {disp8} mov        esi, dword ptr [eax + 0x04]         
                          {disp8} je         _jmp_addr_0x0063556f                           // 0x00635551    741c
                          push               esi                                            // 0x00635553    56
                          push               edi                                            // 0x00635554    57
-                         call               _jmp_addr_0x007c6edf                           // 0x00635555    e885191900
+                         call               _wcscmp                           // 0x00635555    e885191900
                          add                esp, 0x08                                      // 0x0063555a    83c408
                          test               eax, eax                                       // 0x0063555d    85c0
                          {disp8} jne        _jmp_addr_0x0063552a                           // 0x0063555f    75c9
