@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x00637dd0
 .extern _jmp_addr_0x0068e430
 .extern _jmp_addr_0x006de570
-.extern _jmp_addr_0x007c73c0
+.extern __CIasin
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
@@ -903,7 +903,7 @@ _jmp_addr_0x0048ed97:    {disp32} mov       eax, dword ptr [edi + 0x00005460]   
                          {disp32} fld       dword ptr [edi + 0x00005674]                  // 0x0048edcf    d98774560000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1a6a0]             // 0x0048edd5    d80da0368c00
                          {disp8} fld        dword ptr [esp + 0x34]                        // 0x0048eddb    d9442434
-                         call               _jmp_addr_0x007c73c0                          // 0x0048eddf    e8dc853300
+                         call               __CIasin                                      // 0x0048eddf    e8dc853300
                          {disp32} mov       eax, dword ptr [edi + 0x00005470]             // 0x0048ede4    8b8770540000
                          fsubp              st(1), st                                     // 0x0048edea    dee9
                          dec                eax                                           // 0x0048edec    48

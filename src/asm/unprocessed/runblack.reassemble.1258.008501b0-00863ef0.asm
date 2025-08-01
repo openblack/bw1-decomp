@@ -19,7 +19,7 @@
 .extern _atexit
 .extern ??2@YAPAXI@Z
 .extern _malloc
-.extern _jmp_addr_0x007c73c0
+.extern __CIasin
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007e67c0
 .extern _jmp_addr_0x007e6a30
@@ -5617,7 +5617,7 @@ _jmp_addr_0x008547c7:    {disp32} mov       ecx, dword ptr [data_bytes + 0x271d8
                          {disp8} fstp       dword ptr [ebp + -0x10]                       // 0x008548d6    d95df0
                          fstp               st(0)                                         // 0x008548d9    ddd8
                          {disp8} fld        dword ptr [ebp + -0x14]                       // 0x008548db    d945ec
-                         call               _jmp_addr_0x007c73c0                          // 0x008548de    e8dd2af7ff
+                         call               __CIasin                                      // 0x008548de    e8dd2af7ff
                          {disp32} fmul      dword ptr [rdata_bytes + 0xfaba8]             // 0x008548e3    d80da83b9a00
                          {disp32} fsubr     dword ptr [_rdata_float0p5]                   // 0x008548e9    d82db4a38a00
                          {disp8} fld        dword ptr [ebp + -0x10]                       // 0x008548ef    d945f0

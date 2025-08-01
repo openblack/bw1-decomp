@@ -36,7 +36,7 @@
 .extern _malloc
 .extern _free
 .extern __chkstk
-.extern _jmp_addr_0x007c73c0
+.extern __CIasin
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c882a
 .extern _jmp_addr_0x007c8837
@@ -5231,7 +5231,7 @@ _jmp_addr_0x0087b9df:    mov.s              ecx, ebx                            
                          fstp               st(0)                                                // 0x0087ba1a    ddd8
                          {disp8} fld        dword ptr [esp + 0x04]                               // 0x0087ba1c    d9442404
                          {disp8} fdivr      dword ptr [esp + 0x08]                               // 0x0087ba20    d87c2408
-                         call               _jmp_addr_0x007c73c0                                 // 0x0087ba24    e897b9f4ff
+                         call               __CIasin                                             // 0x0087ba24    e897b9f4ff
                          ret                0x0008                                               // 0x0087ba29    c20800
                          nop                                                                     // 0x0087ba2c    90
                          nop                                                                     // 0x0087ba2d    90
