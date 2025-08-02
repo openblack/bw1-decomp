@@ -33,7 +33,7 @@
 .extern _fclose
 .extern _fread
 .extern _fwrite
-.extern _jmp_addr_0x007c7ae0
+.extern  __CIpow
 .extern _jmp_addr_0x007c8837
 .extern _jmp_addr_0x007fac10
 .extern _jmp_addr_0x007fae60
@@ -5255,7 +5255,7 @@ _jmp_addr_0x0084605b:    test               ecx, ecx                            
                          {disp32} jne       _jmp_addr_0x00846270                           // 0x0084606f    0f85fb010000
                          {disp32} fld       qword ptr [rdata_bytes + 0x1ebe0]              // 0x00846075    dd05e07b8c00
                          {disp8} fld        dword ptr [esp + 0x20]                         // 0x0084607b    d9442420
-                         call               _jmp_addr_0x007c7ae0                           // 0x0084607f    e85c1af8ff
+                         call               __CIpow                                        // 0x0084607f    e85c1af8ff
                          fld                st(0)                                          // 0x00846084    d9c0
                          {disp8} fmul       dword ptr [esi + 0x0c]                         // 0x00846086    d84e0c
                          {disp8} fstp       dword ptr [esi + 0x0c]                         // 0x00846089    d95e0c
@@ -6204,7 +6204,7 @@ _jmp_addr_0x00846b3f:    {disp8} fld        dword ptr [esp + 0x18]              
                          {disp32} jle       _jmp_addr_0x00846f36                           // 0x00846bc8    0f8e68030000
                          {disp8} fld        dword ptr [esp + 0x34]                         // 0x00846bce    d9442434
                          {disp32} fld       dword ptr [esp + 0x00000120]                   // 0x00846bd2    d9842420010000
-                         call               _jmp_addr_0x007c7ae0                           // 0x00846bd9    e8020ff8ff
+                         call               __CIpow                                        // 0x00846bd9    e8020ff8ff
                          {disp8} fstp       dword ptr [esp + 0x20]                         // 0x00846bde    d95c2420
                          {disp8} mov        eax, dword ptr [esp + 0x24]                    // 0x00846be2    8b442424
                          mov                edi, 0xfffffff8                                // 0x00846be6    bff8ffffff
