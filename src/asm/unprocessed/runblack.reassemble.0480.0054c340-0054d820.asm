@@ -261,7 +261,6 @@
 .extern __unlink
 .extern _fclose
 .extern _time
-.extern _jmp_addr_0x007c8668
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
 .extern _jmp_addr_0x007ded50

@@ -157,7 +157,7 @@
 .globl __CallSettingFrame@12
 .globl ?terminate@@YAXXZ
 .globl ?_inconsistency@@YAXXZ
-.globl _jmp_addr_0x007d4cdf
+.globl __mbsnbcpy
 .globl _jmp_addr_0x007d4d79
 .globl __lseek_lk
 .globl __ioinit
@@ -13735,7 +13735,8 @@ _jmp_addr_0x007d4cc3:    cmp                dword ptr [data_bytes + 0x5e7cd4], 0
                          pop                ecx                                            // 0x007d4cd3    59
                          {disp32} mov       dword ptr [data_bytes + 0x5e7cd4], 0x00000001  // 0x007d4cd4    c705d4dcfa0001000000
 _jmp_addr_0x007d4cde:    ret                                                               // 0x007d4cde    c3
-_jmp_addr_0x007d4cdf:    push               ebp                                            // 0x007d4cdf    55
+
+__mbsnbcpy:              push               ebp                                            // 0x007d4cdf    55
                          mov.s              ebp, esp                                       // 0x007d4ce0    8bec
                          cmp                dword ptr [data_bytes + 0x5e6a7c], 0x00        // 0x007d4ce2    833d7ccafa0000
                          push               edi                                            // 0x007d4ce9    57
