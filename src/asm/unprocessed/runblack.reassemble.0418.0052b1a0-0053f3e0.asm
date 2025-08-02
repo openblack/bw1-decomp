@@ -264,7 +264,7 @@
 .extern __chkstk
 .extern _wcscmp
 .extern _qsort
-.extern _jmp_addr_0x007c8141
+.extern _bsearch
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
@@ -4791,7 +4791,7 @@ _jmp_addr_0x0052dc2f:    ret                                                    
                          push               ecx                                                  // 0x0052dc71    51
                          {disp8} lea        edx, dword ptr [esp + 0x18]                          // 0x0052dc72    8d542418
                          push               edx                                                  // 0x0052dc76    52
-                         call               _jmp_addr_0x007c8141                                 // 0x0052dc77    e8c5a42900
+                         call               _bsearch                                             // 0x0052dc77    e8c5a42900
                          add                esp, 0x14                                            // 0x0052dc7c    83c414
                          pop                edi                                                  // 0x0052dc7f    5f
                          pop                esi                                                  // 0x0052dc80    5e
