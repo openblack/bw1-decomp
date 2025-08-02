@@ -129,7 +129,7 @@
 .extern _isalpha
 .extern __strcmpi
 .extern _localtime
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007c804a
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -7395,7 +7395,7 @@ _jmp_addr_0x0072e3ad:    ret                                                    
 _jmp_addr_0x0072e3b0:    push               ecx                                           // 0x0072e3b0    51
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0072e3b1    8d442400
                          push               eax                                           // 0x0072e3b5    50
-                         call               _jmp_addr_0x007c79fd                          // 0x0072e3b6    e842960900
+                         call               _time                                         // 0x0072e3b6    e842960900
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x0072e3bb    8d4c2404
                          push               ecx                                           // 0x0072e3bf    51
                          call               _localtime                                    // 0x0072e3c0    e8d8940900

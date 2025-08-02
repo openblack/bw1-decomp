@@ -212,7 +212,7 @@
 .extern _wcscmp
 .extern _fread
 .extern _fwrite
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _atof
 .extern _swscanf
 .extern __chmod
@@ -5093,7 +5093,7 @@ _jmp_addr_0x00633fd6:    push               0x1                                 
                          {disp32} mov       edx, dword ptr [data_bytes + 0x37b0e0]         // 0x00633fdd    8b15e010d400
                          add                edx, 0x04                                      // 0x00633fe3    83c204
                          push               edx                                            // 0x00633fe6    52
-                         call               _jmp_addr_0x007c79fd                           // 0x00633fe7    e8113a1900
+                         call               _time                                          // 0x00633fe7    e8113a1900
                          add                esp, 0x04                                      // 0x00633fec    83c404
                          call               _jmp_addr_0x00633e40                           // 0x00633fef    e84cfeffff
                          pop                esi                                            // 0x00633ff4    5e
