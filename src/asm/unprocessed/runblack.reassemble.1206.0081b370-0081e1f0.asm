@@ -10,7 +10,7 @@
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern _jmp_addr_0x007a1480
 .extern _vsprintf
-.extern _jmp_addr_0x007c8837
+.extern _rand
 .extern _jmp_addr_0x0081a760
 .extern _jmp_addr_0x0081aab0
 .extern _jmp_addr_0x00820ec0
@@ -2349,7 +2349,7 @@ _jmp_addr_0x0081d176:    pop                edi                                 
                          add                esp, 0x08                                     // 0x0081d17a    83c408
                          ret                0x001c                                        // 0x0081d17d    c21c00
 _Random__Fff@8:          push               ecx                                           // 0x0081d180    51
-                         call               _jmp_addr_0x007c8837                          // 0x0081d181    e8b1b6faff
+                         call               _rand                                         // 0x0081d181    e8b1b6faff
                          {disp8} mov        dword ptr [esp + 0x00], eax                   // 0x0081d186    89442400
                          {disp8} fild       dword ptr [esp + 0x00]                        // 0x0081d18a    db442400
                          {disp32} fmul      dword ptr [rdata_bytes + 0xfa700]             // 0x0081d18e    d80d00379a00

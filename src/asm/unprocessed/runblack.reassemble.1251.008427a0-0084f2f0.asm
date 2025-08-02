@@ -34,7 +34,7 @@
 .extern _fread
 .extern _fwrite
 .extern  __CIpow
-.extern _jmp_addr_0x007c8837
+.extern _rand
 .extern _jmp_addr_0x007fac10
 .extern _jmp_addr_0x007fae60
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -5201,7 +5201,7 @@ _jmp_addr_0x00845fa0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} jne        _jmp_addr_0x00845fde                           // 0x00845fd7    7505
                          {disp8} mov        dword ptr [esi + 0x1c], eax                    // 0x00845fd9    89461c
                          {disp8} jmp        _jmp_addr_0x00845ff2                           // 0x00845fdc    eb14
-_jmp_addr_0x00845fde:    call               _jmp_addr_0x007c8837                           // 0x00845fde    e85428f8ff
+_jmp_addr_0x00845fde:    call               _rand                                          // 0x00845fde    e85428f8ff
                          and                eax, 0x8000000f                                // 0x00845fe3    250f000080
                          {disp8} jns        _jmp_addr_0x00845fef                           // 0x00845fe8    7905
                          dec                eax                                            // 0x00845fea    48
@@ -5343,7 +5343,7 @@ _jmp_addr_0x0084611e:    {disp8} fld        dword ptr [esp + 0x20]              
                          {disp8} fld        dword ptr [esi + 0x28]                         // 0x008461c9    d94628
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1651c]              // 0x008461cc    d80d1cf58b00
                          {disp8} fstp       dword ptr [esp + 0x04]                         // 0x008461d2    d95c2404
-                         call               _jmp_addr_0x007c8837                           // 0x008461d6    e85c26f8ff
+                         call               _rand                                          // 0x008461d6    e85c26f8ff
                          cdq                                                               // 0x008461db    99
                          mov                ecx, 0x00000064                                // 0x008461dc    b964000000
                          idiv               ecx                                            // 0x008461e1    f7f9
@@ -5352,7 +5352,7 @@ _jmp_addr_0x0084611e:    {disp8} fld        dword ptr [esp + 0x20]              
                          {disp8} fmul       dword ptr [esp + 0x20]                         // 0x008461eb    d84c2420
                          {disp8} fsub       dword ptr [esp + 0x04]                         // 0x008461ef    d8642404
                          {disp8} fstp       dword ptr [esi + 0x0c]                         // 0x008461f3    d95e0c
-                         call               _jmp_addr_0x007c8837                           // 0x008461f6    e83c26f8ff
+                         call               _rand                                          // 0x008461f6    e83c26f8ff
                          cdq                                                               // 0x008461fb    99
                          mov                ecx, 0x00000064                                // 0x008461fc    b964000000
                          idiv               ecx                                            // 0x00846201    f7f9
@@ -5417,7 +5417,7 @@ _jmp_addr_0x00846280:    push               ecx                                 
                          test               eax, eax                                       // 0x008462ac    85c0
                          push               edi                                            // 0x008462ae    57
                          {disp32} jne       _jmp_addr_0x0084634b                           // 0x008462af    0f8596000000
-                         call               _jmp_addr_0x007c8837                           // 0x008462b5    e87d25f8ff
+                         call               _rand                                          // 0x008462b5    e87d25f8ff
                          and                eax, 0x80000007                                // 0x008462ba    2507000080
                          {disp8} jns        _jmp_addr_0x008462c6                           // 0x008462bf    7905
                          dec                eax                                            // 0x008462c1    48

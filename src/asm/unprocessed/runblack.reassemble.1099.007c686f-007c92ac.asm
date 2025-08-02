@@ -94,8 +94,6 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _jmp_addr_0x007c882a
-.globl _jmp_addr_0x007c8837
 .globl _jmp_addr_0x007c8859
 .globl _jmp_addr_0x007c8912
 .globl _jmp_addr_0x007c8a95
@@ -111,19 +109,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-_jmp_addr_0x007c882a:    call                 __getptd                                    // 0x007c882a    e8fc9a0000
-                         {disp8} mov          ecx, dword ptr [esp + 0x04]                 // 0x007c882f    8b4c2404
-                         {disp8} mov          dword ptr [eax + 0x14], ecx                 // 0x007c8833    894814
-                         ret                                                              // 0x007c8836    c3
-_jmp_addr_0x007c8837:    call                 __getptd                                    // 0x007c8837    e8ef9a0000
-                         {disp8} mov          ecx, dword ptr [eax + 0x14]                 // 0x007c883c    8b4814
-                         imul                 ecx, ecx, 0x000343fd                        // 0x007c883f    69c9fd430300
-                         add                  ecx, 0x00269ec3                             // 0x007c8845    81c1c39e2600
-                         {disp8} mov          dword ptr [eax + 0x14], ecx                 // 0x007c884b    894814
-                         mov.s                eax, ecx                                    // 0x007c884e    8bc1
-                         shr                  eax, 0x10                                   // 0x007c8850    c1e810
-                         and                  eax, 0x00007fff                             // 0x007c8853    25ff7f0000
-                         ret                                                              // 0x007c8858    c3
 _jmp_addr_0x007c8859:    push                 ebp                                         // 0x007c8859    55
                          mov.s                ebp, esp                                    // 0x007c885a    8bec
                          push                 esi                                         // 0x007c885c    56
