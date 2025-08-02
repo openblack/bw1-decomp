@@ -85,7 +85,7 @@
 .extern _fwrite
 .extern _localtime
 .extern _time
-.extern _jmp_addr_0x007c7d00
+.extern __alldiv
 .extern _jmp_addr_0x007c8606
 .extern _jmp_addr_0x007c8668
 .extern _strtok
@@ -2193,7 +2193,7 @@ _jmp_addr_0x007119d0:    push               ecx                                 
                          push               esi                                           // 0x007119ef    56
                          push               edi                                           // 0x007119f0    57
                          mov.s              ebx, eax                                      // 0x007119f1    8bd8
-                         call               _jmp_addr_0x007c7d00                          // 0x007119f3    e808630b00
+                         call               __alldiv                                      // 0x007119f3    e808630b00
                          mov.s              ecx, ebx                                      // 0x007119f8    8bcb
                          call               __allshl                                      // 0x007119fa    e831860b00
                          push               0x0                                           // 0x007119ff    6a00
