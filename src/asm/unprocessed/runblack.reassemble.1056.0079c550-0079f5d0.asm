@@ -76,7 +76,7 @@
 .extern _wcslen
 .extern _iswspace
 .extern __strcmpi
-.extern _jmp_addr_0x007c81cd
+.extern _wcsstr
 .extern _jmp_addr_0x007c87d8
 .extern _wcsncat
 .extern ___nw__FUl
@@ -124,7 +124,7 @@ _jmp_addr_0x0079c550:    sub                esp, 0x00000184                     
                          {disp32} lea       edi, dword ptr [esp + 0x00000098]             // 0x0079c56d    8dbc2498000000
                          push               ebp                                           // 0x0079c574    55
                          rep stosd                                                        // 0x0079c575    f3ab
-                         call               _jmp_addr_0x007c81cd                          // 0x0079c577    e851bc0200
+                         call               _wcsstr                                       // 0x0079c577    e851bc0200
                          mov.s              ebx, eax                                      // 0x0079c57c    8bd8
                          add                esp, 0x08                                     // 0x0079c57e    83c408
                          test               ebx, ebx                                      // 0x0079c581    85db
@@ -232,7 +232,7 @@ _jmp_addr_0x0079c650:    sub                esp, 0x00000804                     
                          {disp32} mov       edi, dword ptr [esp + 0x0000082c]             // 0x0079c69b    8bbc242c080000
                          push               0x00c2a31c                                    // 0x0079c6a2    681ca3c200
                          push               edi                                           // 0x0079c6a7    57
-                         call               _jmp_addr_0x007c81cd                          // 0x0079c6a8    e820bb0200
+                         call               _wcsstr                                       // 0x0079c6a8    e820bb0200
                          push               edi                                           // 0x0079c6ad    57
                          mov.s              ebp, eax                                      // 0x0079c6ae    8be8
                          call               _wcslen                                       // 0x0079c6b0    e8ad9d0200
