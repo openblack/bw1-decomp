@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x007acdb0
 .extern  ___dl__FPv
 .extern _atexit
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern _Create__9LH3DSmokeFPC7LHPoint
 .extern ?Release@LH3DSmoke@@QAEXXZ
 .extern _jmp_addr_0x007f8d30
@@ -10144,13 +10144,13 @@ _jmp_addr_0x00813427:    pop                edi                                 
                          {disp8} fmul       dword ptr [esp + 0x10]                        // 0x008134b5    d84c2410
                          {disp32} fadd      dword ptr [esi + 0x000000a4]                  // 0x008134b9    d886a4000000
                          {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x008134bf    dd0580b68a00
-                         call               _jmp_addr_0x007c804a                          // 0x008134c5    e8804bfbff
+                         call               __CIfmod                                      // 0x008134c5    e8804bfbff
                          {disp32} fstp      dword ptr [esi + 0x000000a4]                  // 0x008134ca    d99ea4000000
                          {disp32} fld       dword ptr [data_bytes + 0x271ec0]             // 0x008134d0    d905c07ec300
                          {disp8} fmul       dword ptr [esp + 0x10]                        // 0x008134d6    d84c2410
                          {disp32} fadd      dword ptr [esi + 0x000000a8]                  // 0x008134da    d886a8000000
                          {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x008134e0    dd0580b68a00
-                         call               _jmp_addr_0x007c804a                          // 0x008134e6    e85f4bfbff
+                         call               __CIfmod                                      // 0x008134e6    e85f4bfbff
                          {disp32} fst       dword ptr [esi + 0x000000a8]                  // 0x008134eb    d996a8000000
                          {disp32} fld       dword ptr [esi + 0x000000a4]                  // 0x008134f1    d986a4000000
                          {disp32} fcom      dword ptr [_rdata_float0p0]                   // 0x008134f7    d81598a38a00
@@ -10356,13 +10356,13 @@ _jmp_addr_0x00813770:    push               ecx                                 
                          {disp8} fmul       dword ptr [esp + 0x00]                        // 0x00813787    d84c2400
                          {disp32} fadd      dword ptr [data_bytes + 0x4dbb1c]             // 0x0081378b    d8051c1bea00
                          {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x00813791    dd0580b68a00
-                         call               _jmp_addr_0x007c804a                          // 0x00813797    e8ae48fbff
+                         call               __CIfmod                                      // 0x00813797    e8ae48fbff
                          {disp32} fstp      dword ptr [data_bytes + 0x4dbb1c]             // 0x0081379c    d91d1c1bea00
                          {disp32} fld       dword ptr [data_bytes + 0x271ec0]             // 0x008137a2    d905c07ec300
                          {disp8} fmul       dword ptr [esp + 0x00]                        // 0x008137a8    d84c2400
                          {disp32} fadd      dword ptr [data_bytes + 0x4dbb20]             // 0x008137ac    d805201bea00
                          {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x008137b2    dd0580b68a00
-                         call               _jmp_addr_0x007c804a                          // 0x008137b8    e88d48fbff
+                         call               __CIfmod                                      // 0x008137b8    e88d48fbff
                          {disp32} fstp      dword ptr [data_bytes + 0x4dbb20]             // 0x008137bd    d91d201bea00
                          pop                ecx                                           // 0x008137c3    59
                          ret                                                              // 0x008137c4    c3

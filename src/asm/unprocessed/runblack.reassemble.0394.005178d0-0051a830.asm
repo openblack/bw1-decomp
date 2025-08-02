@@ -57,7 +57,7 @@
 .extern _jmp_addr_0x007a1400
 .extern _atexit
 .extern ___RTDynamicCast
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern _jmp_addr_0x007f8d30
 .extern _jmp_addr_0x007faff0
 .extern _jmp_addr_0x007fb3f0
@@ -2948,7 +2948,7 @@ _jmp_addr_0x00519ad0:    sub                esp, 0x34                           
                          {disp8} fstp       dword ptr [esi + 0x3c]                        // 0x00519b31    d95e3c
                          {disp8} fld        dword ptr [esp + 0x24]                        // 0x00519b34    d9442424
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x00519b38    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x00519b3e    e807e52a00
+                         call               __CIfmod                                      // 0x00519b3e    e807e52a00
                          {disp32} fcom      dword ptr [_rdata_float0p0]                   // 0x00519b43    d81598a38a00
                          fnstsw             ax                                            // 0x00519b49    dfe0
                          test               ah, 0x01                                      // 0x00519b4b    f6c401
@@ -2977,7 +2977,7 @@ _jmp_addr_0x00519b56:    push               ebx                                 
                          {disp8} fstp       dword ptr [esi + 0x34]                        // 0x00519b9a    d95e34
                          {disp8} fld        dword ptr [esp + 0x24]                        // 0x00519b9d    d9442424
                          {disp32} fld       qword ptr [rdata_bytes + 0x2f740]             // 0x00519ba1    dd0540878d00
-                         call               _jmp_addr_0x007c804a                          // 0x00519ba7    e89ee42a00
+                         call               __CIfmod                                      // 0x00519ba7    e89ee42a00
                          {disp32} fcom      dword ptr [_rdata_float0p0]                   // 0x00519bac    d81598a38a00
                          fnstsw             ax                                            // 0x00519bb2    dfe0
                          test               ah, 0x01                                      // 0x00519bb4    f6c401
@@ -3024,7 +3024,7 @@ _jmp_addr_0x00519c3b:    {disp8} fld        dword ptr [esp + 0x24]              
                          {disp8} fmul       dword ptr [esp + 0x18]                        // 0x00519c3f    d84c2418
                          {disp8} fadd       dword ptr [esi + 0x38]                        // 0x00519c43    d84638
                          {disp32} fld       qword ptr [__real@8@3fff8000000000000000]   // 0x00519c46    dd0580b68a00
-                         call               _jmp_addr_0x007c804a                          // 0x00519c4c    e8f9e32a00
+                         call               __CIfmod                                      // 0x00519c4c    e8f9e32a00
                          {disp8} fst        dword ptr [esi + 0x38]                        // 0x00519c51    d95638
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2210]              // 0x00519c54    d80d10b28a00
                          {disp8} mov        ecx, dword ptr [esi + 0x1c]                   // 0x00519c5a    8b4e1c
@@ -3532,13 +3532,13 @@ _jmp_addr_0x0051a2d0:    cmp                dword ptr [esi + 0x60], -0x01       
                          {disp8} fmul       dword ptr [esp + 0x18]                        // 0x0051a2f0    d84c2418
                          {disp8} fadd       dword ptr [esi + 0x44]                        // 0x0051a2f4    d84644
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x0051a2f7    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x0051a2fd    e848dd2a00
+                         call               __CIfmod                                      // 0x0051a2fd    e848dd2a00
                          {disp8} fstp       dword ptr [esi + 0x44]                        // 0x0051a302    d95e44
                          {disp32} fld       dword ptr [data_bytes + 0x222e90]             // 0x0051a305    d905908ebe00
                          {disp8} fmul       dword ptr [esp + 0x18]                        // 0x0051a30b    d84c2418
                          {disp8} fadd       dword ptr [esi + 0x40]                        // 0x0051a30f    d84640
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x0051a312    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x0051a318    e82ddd2a00
+                         call               __CIfmod                                      // 0x0051a318    e82ddd2a00
                          xor.s              eax, eax                                      // 0x0051a31d    33c0
                          {disp8} fstp       dword ptr [esi + 0x40]                        // 0x0051a31f    d95e40
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0051a322    8b0d5c19d000

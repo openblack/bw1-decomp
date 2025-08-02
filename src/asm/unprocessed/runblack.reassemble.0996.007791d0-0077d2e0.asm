@@ -135,7 +135,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsPUlPUl@12
 
@@ -3626,7 +3626,7 @@ _jmp_addr_0x0077b408:    {disp32} fld       dword ptr [rdata_bytes + 0xf3470]   
                          {disp32} fmul      dword ptr [_rdata_float0p001]                 // 0x0077b424    d80db0a38a00
                          {disp32} fadd      dword ptr [esi + 0x00000118]                  // 0x0077b42a    d88618010000
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x0077b430    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x0077b436    e80fcc0400
+                         call               __CIfmod                                      // 0x0077b436    e80fcc0400
                          {disp32} fst       dword ptr [esi + 0x00000118]                  // 0x0077b43b    d99618010000
                          fcos                                                             // 0x0077b441    d9ff
                          {disp32} fadd      dword ptr [_rdata_float1p0]                   // 0x0077b443    d80590a38a00

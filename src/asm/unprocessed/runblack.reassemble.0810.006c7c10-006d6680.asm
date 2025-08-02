@@ -173,7 +173,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern  __CIpow
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern _jmp_addr_0x007c8072
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fab30
@@ -19422,7 +19422,7 @@ _jmp_addr_0x006d503b:    {disp8} fmul       dword ptr [esp + 0x50]              
                          {disp8} je         _jmp_addr_0x006d5064                          // 0x006d5050    7412
                          {disp8} fld        dword ptr [esp + 0x14]                        // 0x006d5052    d9442414
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x006d5056    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x006d505c    e8e92f0f00
+                         call               __CIfmod                                      // 0x006d505c    e8e92f0f00
                          {disp8} fstp       dword ptr [edi + 0x24]                        // 0x006d5061    d95f24
 _jmp_addr_0x006d5064:    {disp32} mov       eax, dword ptr [data_bytes + 0x243798]        // 0x006d5064    a19897c000
                          {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x006d5069    d90590a38a00

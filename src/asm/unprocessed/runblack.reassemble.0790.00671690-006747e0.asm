@@ -74,7 +74,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -4287,7 +4287,7 @@ _jmp_addr_0x006740b8:    {disp8} fld        dword ptr [esp + 0x48]              
                          nop                                                              // 0x006740df    90
 _jmp_addr_0x006740e0:    {disp32} fld       dword ptr [ecx + 0x0000010c]                  // 0x006740e0    d9810c010000
                          {disp32} fild      dword ptr [ecx + 0x00000114]                  // 0x006740e6    db8114010000
-                         call               _jmp_addr_0x007c804a                          // 0x006740ec    e8593f1500
+                         call               __CIfmod                                      // 0x006740ec    e8593f1500
                          {disp32} jmp       _jmp_addr_0x007a1400                          // 0x006740f1    e90ad31200
                          nop                                                              // 0x006740f6    90
                          nop                                                              // 0x006740f7    90

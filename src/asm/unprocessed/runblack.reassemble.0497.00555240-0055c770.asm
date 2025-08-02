@@ -312,7 +312,7 @@
 .extern ___RTDynamicCast
 .extern _wcsncpy
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
 .extern _jmp_addr_0x00826c50
@@ -4169,7 +4169,7 @@ _jmp_addr_0x00557910:    sub                esp, 0x08                           
 _jmp_addr_0x00557960:    sub                esp, 0x08                                     // 0x00557960    83ec08
                          call               @GetDaysFromStart__9GGameInfoFv@4             // 0x00557963    e8d8ffffff
                          {disp32} fld       dword ptr [rdata_bytes + 0x368dc]             // 0x00557968    d905dcf88d00
-                         call               _jmp_addr_0x007c804a                          // 0x0055796e    e8d7062700
+                         call               __CIfmod                                      // 0x0055796e    e8d7062700
                          {disp8} fstp       dword ptr [esp + 0x04]                        // 0x00557973    d95c2404
                          xor.s              edx, edx                                      // 0x00557977    33d2
                          mov                ecx, 0x00bec948                               // 0x00557979    b948c9be00
@@ -4200,7 +4200,7 @@ _jmp_addr_0x005579ac:    cmp                edx, 0x0c                           
 _jmp_addr_0x005579c0:    push               ecx                                           // 0x005579c0    51
                          call               @GetDaysFromStart__9GGameInfoFv@4             // 0x005579c1    e87affffff
                          {disp32} fld       dword ptr [rdata_bytes + 0x368dc]             // 0x005579c6    d905dcf88d00
-                         call               _jmp_addr_0x007c804a                          // 0x005579cc    e879062700
+                         call               __CIfmod                                      // 0x005579cc    e879062700
                          xor.s              edx, edx                                      // 0x005579d1    33d2
                          mov                ecx, 0x00bec948                               // 0x005579d3    b948c9be00
 _jmp_addr_0x005579d8:    xor.s              eax, eax                                      // 0x005579d8    33c0
@@ -4238,7 +4238,7 @@ _jmp_addr_0x00557a12:    pop                ecx                                 
                          nop                                                              // 0x00557a1f    90
                          call               _jmp_addr_0x00557910                          // 0x00557a20    e8ebfeffff
                          {disp32} fld       qword ptr [rdata_bytes + 0x36920]             // 0x00557a25    dd0520f98d00
-                         call               _jmp_addr_0x007c804a                          // 0x00557a2b    e81a062700
+                         call               __CIfmod                                      // 0x00557a2b    e81a062700
                          ret                                                              // 0x00557a30    c3
                          nop                                                              // 0x00557a31    90
                          nop                                                              // 0x00557a32    90
@@ -4257,7 +4257,7 @@ _jmp_addr_0x00557a12:    pop                ecx                                 
                          nop                                                              // 0x00557a3f    90
                          call               _jmp_addr_0x00557910                          // 0x00557a40    e8cbfeffff
                          {disp32} fld       qword ptr [rdata_bytes + 0x36930]             // 0x00557a45    dd0530f98d00
-                         call               _jmp_addr_0x007c804a                          // 0x00557a4b    e8fa052700
+                         call               __CIfmod                                      // 0x00557a4b    e8fa052700
                          {disp32} fmul      qword ptr [rdata_bytes + 0x36928]             // 0x00557a50    dc0d28f98d00
                          ret                                                              // 0x00557a56    c3
                          nop                                                              // 0x00557a57    90
@@ -4271,7 +4271,7 @@ _jmp_addr_0x00557a12:    pop                ecx                                 
                          nop                                                              // 0x00557a5f    90
                          call               _jmp_addr_0x00557910                          // 0x00557a60    e8abfeffff
                          {disp32} fld       qword ptr [rdata_bytes + 0x36940]             // 0x00557a65    dd0540f98d00
-                         call               _jmp_addr_0x007c804a                          // 0x00557a6b    e8da052700
+                         call               __CIfmod                                      // 0x00557a6b    e8da052700
                          {disp32} fmul      qword ptr [rdata_bytes + 0x36938]             // 0x00557a70    dc0d38f98d00
                          ret                                                              // 0x00557a76    c3
                          nop                                                              // 0x00557a77    90
@@ -4286,7 +4286,7 @@ _jmp_addr_0x00557a12:    pop                ecx                                 
 _jmp_addr_0x00557a80:    sub                esp, 0x08                                     // 0x00557a80    83ec08
                          call               @GetDaysFromStart__9GGameInfoFv@4             // 0x00557a83    e8b8feffff
                          {disp32} fld       dword ptr [rdata_bytes + 0x368dc]             // 0x00557a88    d905dcf88d00
-                         call               _jmp_addr_0x007c804a                          // 0x00557a8e    e8b7052700
+                         call               __CIfmod                                      // 0x00557a8e    e8b7052700
                          {disp8} fstp       dword ptr [esp + 0x04]                        // 0x00557a93    d95c2404
                          xor.s              edx, edx                                      // 0x00557a97    33d2
                          mov                ecx, 0x00bec960                               // 0x00557a99    b960c9be00
