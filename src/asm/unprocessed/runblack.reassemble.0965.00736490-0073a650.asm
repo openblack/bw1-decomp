@@ -132,7 +132,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern __chkstk
-.extern _jmp_addr_0x007c7e64
+.extern _qsort
 .extern ___nw__FUl
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007feb30
@@ -5452,7 +5452,7 @@ _jmp_addr_0x00739df9:    {disp8} mov        edx, dword ptr [esp + 0x10]         
                          push               ecx                                            // 0x00739e19    51
                          {disp8} lea        edx, dword ptr [esp + 0x50]                    // 0x00739e1a    8d542450
                          push               edx                                            // 0x00739e1e    52
-                         call               _jmp_addr_0x007c7e64                           // 0x00739e1f    e840e00800
+                         call               _qsort                                         // 0x00739e1f    e840e00800
                          {disp8} mov        eax, dword ptr [esp + 0x3c]                    // 0x00739e24    8b44243c
                          add                esp, 0x10                                      // 0x00739e28    83c410
                          test               eax, eax                                       // 0x00739e2b    85c0
