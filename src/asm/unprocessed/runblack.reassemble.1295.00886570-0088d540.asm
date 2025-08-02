@@ -16,8 +16,8 @@
 .extern __strcmpi
 .extern _time
 .extern _qsort
-.extern _jmp_addr_0x007c882a
-.extern _jmp_addr_0x007c8837
+.extern _srand
+.extern _rand
 .extern _strncpy
 .extern _strchr
 .extern _atof
@@ -9813,7 +9813,7 @@ _jmp_addr_0x0088bb55:    push             0x0088bd00                            
 _jmp_addr_0x0088bb79:    {disp32} mov     dword ptr [esi + 0x00000424], 0x00000000             // 0x0088bb79    c7862404000000000000
                          call             _jmp_addr_0x0088a8d0                                 // 0x0088bb83    e848edffff
                          push             eax                                                  // 0x0088bb88    50
-                         call             _jmp_addr_0x007c882a                                 // 0x0088bb89    e89cccf3ff
+                         call             _srand                                               // 0x0088bb89    e89cccf3ff
                          add              esp, 0x04                                            // 0x0088bb8e    83c404
                          mov              eax, 0x00000001                                      // 0x0088bb91    b801000000
                          pop              esi                                                  // 0x0088bb96    5e
@@ -10248,7 +10248,7 @@ _jmp_addr_0x0088bfe7:    cdq                                                    
                          add              esp, 0x0c                                            // 0x0088c000    83c40c
                          cmp              eax, 0x04                                            // 0x0088c003    83f804
                          {disp8} jge      _jmp_addr_0x0088c045                                 // 0x0088c006    7d3d
-                         call             _jmp_addr_0x007c8837                                 // 0x0088c008    e82ac8f3ff
+                         call             _rand                                                // 0x0088c008    e82ac8f3ff
                          lea              eax, dword ptr [eax + eax * 0x4]                     // 0x0088c00d    8d0480
                          lea              eax, dword ptr [eax + eax * 0x4]                     // 0x0088c010    8d0480
                          lea              eax, dword ptr [eax + eax * 0x4]                     // 0x0088c013    8d0480

@@ -24,7 +24,7 @@
 .extern _wcslen
 .extern ??2@YAPAXI@Z
 .extern _iswspace
-.extern _jmp_addr_0x007c8837
+.extern _rand
 .extern _jmp_addr_0x007dee00
 .extern _jmp_addr_0x00813770
 .extern _jmp_addr_0x0081b370
@@ -6180,7 +6180,7 @@ _jmp_addr_0x00830755:    {disp32} mov       byte ptr [eax + 0x00eccd1c], al     
                          push               edi                                            // 0x00830764    57
                          xor.s              esi, esi                                       // 0x00830765    33f6
                          mov                edi, 0x00000100                                // 0x00830767    bf00010000
-_jmp_addr_0x0083076c:    call               _jmp_addr_0x007c8837                           // 0x0083076c    e8c680f9ff
+_jmp_addr_0x0083076c:    call               _rand                                          // 0x0083076c    e8c680f9ff
                          cdq                                                               // 0x00830771    99
                          idiv               edi                                            // 0x00830772    f7ff
                          xor.s              eax, eax                                       // 0x00830774    33c0
