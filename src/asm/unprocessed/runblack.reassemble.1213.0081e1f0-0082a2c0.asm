@@ -32,7 +32,7 @@
 .extern ??2@YAPAXI@Z
 .extern _malloc
 .extern _free
-.extern _jmp_addr_0x007c789d
+.extern _localtime
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007ddc40
 .extern _jmp_addr_0x007ded40
@@ -1804,7 +1804,7 @@ _jmp_addr_0x0081f402:    {disp8} lea        eax, dword ptr [esp + 0x14]         
                          call               _jmp_addr_0x007c79fd                                 // 0x0081f40f    e8e985faff
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                          // 0x0081f414    8d4c2418
                          push               ecx                                                  // 0x0081f418    51
-                         call               _jmp_addr_0x007c789d                                 // 0x0081f419    e87f84faff
+                         call               _localtime                                           // 0x0081f419    e87f84faff
                          {disp8} mov        ecx, dword ptr [eax + 0x0c]                          // 0x0081f41e    8b480c
                          add                esp, 0x08                                            // 0x0081f421    83c408
                          cmp                ecx, 0x01                                            // 0x0081f424    83f901

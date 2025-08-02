@@ -128,7 +128,7 @@
 .extern ??2@YAPAXI@Z
 .extern _isalpha
 .extern __strcmpi
-.extern _jmp_addr_0x007c789d
+.extern _localtime
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c804a
 .extern ___nw__FUl
@@ -7398,7 +7398,7 @@ _jmp_addr_0x0072e3b0:    push               ecx                                 
                          call               _jmp_addr_0x007c79fd                          // 0x0072e3b6    e842960900
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x0072e3bb    8d4c2404
                          push               ecx                                           // 0x0072e3bf    51
-                         call               _jmp_addr_0x007c789d                          // 0x0072e3c0    e8d8940900
+                         call               _localtime                                    // 0x0072e3c0    e8d8940900
                          {disp8} mov        ecx, dword ptr [eax + 0x08]                   // 0x0072e3c5    8b4808
                          add                esp, 0x08                                     // 0x0072e3c8    83c408
                          cmp                ecx, 0x17                                     // 0x0072e3cb    83f917
