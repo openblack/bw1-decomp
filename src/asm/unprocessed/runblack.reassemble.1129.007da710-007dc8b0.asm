@@ -1230,7 +1230,7 @@ _jmp_addr_0x007db32b:    push              -0x1                                 
                          push              edi                                            // 0x007db32d    57
                          push              0x00000220                                     // 0x007db32e    6820020000
                          push              dword ptr [ebp + 0x18]                         // 0x007db333    ff7518
-                         call              dword ptr [__imp__WideCharToMultiByte@4]       // 0x007db336    ff152c928a00
+                         call              dword ptr [__imp__WideCharToMultiByte@32]       // 0x007db336    ff152c928a00
                          {disp8} jmp       _jmp_addr_0x007db340                           // 0x007db33c    eb02
 _jmp_addr_0x007db33e:    xor.s             eax, eax                                       // 0x007db33e    33c0
 _jmp_addr_0x007db340:    {disp8} lea       esp, dword ptr [ebp + -0x30]                   // 0x007db340    8d65d0

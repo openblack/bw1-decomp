@@ -77,7 +77,7 @@
 .extern _iswspace
 .extern __strcmpi
 .extern _wcsstr
-.extern _jmp_addr_0x007c87d8
+.extern __wtoi
 .extern _wcsncat
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -390,7 +390,7 @@ _jmp_addr_0x0079c862:    mov.s              edi, esi                            
                          xor.s              ebp, ebp                                      // 0x0079c87d    33ed
                          push               ecx                                           // 0x0079c87f    51
                          {disp8} mov        word ptr [esp + edi * 0x2 + 0x5c], bp         // 0x0079c880    66896c7c5c
-                         call               _jmp_addr_0x007c87d8                          // 0x0079c885    e84ebf0200
+                         call               __wtoi                                        // 0x0079c885    e84ebf0200
                          add                esp, 0x10                                     // 0x0079c88a    83c410
                          cmp.s              eax, ebp                                      // 0x0079c88d    3bc5
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x0079c88f    8944241c
@@ -509,7 +509,7 @@ _jmp_addr_0x0079ca16:    mov.s              edi, esi                            
                          {disp8} lea        edx, dword ptr [esp + 0x78]                   // 0x0079ca2d    8d542478
                          push               edx                                           // 0x0079ca31    52
                          {disp8} mov        word ptr [esp + edi * 0x2 + 0x7c], 0x0000     // 0x0079ca32    66c7447c7c0000
-                         call               _jmp_addr_0x007c87d8                          // 0x0079ca39    e89abd0200
+                         call               __wtoi                                        // 0x0079ca39    e89abd0200
                          add                esp, 0x10                                     // 0x0079ca3e    83c410
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x0079ca41    89442420
 _jmp_addr_0x0079ca45:    inc                esi                                           // 0x0079ca45    46
