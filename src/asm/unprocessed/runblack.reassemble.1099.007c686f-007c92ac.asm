@@ -94,7 +94,6 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _jmp_addr_0x007c81cd
 .globl _jmp_addr_0x007c820e
 .globl _jmp_addr_0x007c8242
 .globl _jmp_addr_0x007c8249
@@ -129,35 +128,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-_jmp_addr_0x007c81cd:    {disp8} mov          eax, dword ptr [esp + 0x04]                 // 0x007c81cd    8b442404
-                         push                 esi                                         // 0x007c81d1    56
-                         push                 edi                                         // 0x007c81d2    57
-_jmp_addr_0x007c81d3:    mov                  dx, word ptr [eax]                          // 0x007c81d3    668b10
-                         test                 dx, dx                                      // 0x007c81d6    6685d2
-                         {disp8} je           _jmp_addr_0x007c8209                        // 0x007c81d9    742e
-                         {disp8} mov          ecx, dword ptr [esp + 0x10]                 // 0x007c81db    8b4c2410
-                         mov.s                edx, eax                                    // 0x007c81df    8bd0
-                         sub.s                edx, ecx                                    // 0x007c81e1    2bd1
-_jmp_addr_0x007c81e3:    mov                  si, word ptr [ecx]                          // 0x007c81e3    668b31
-                         test                 si, si                                      // 0x007c81e6    6685f6
-                         {disp8} je           _jmp_addr_0x007c81ff                        // 0x007c81e9    7414
-                         movzx                edi, word ptr [edx + ecx * 0x1]             // 0x007c81eb    0fb73c0a
-                         movzx                esi, si                                     // 0x007c81ef    0fb7f6
-                         sub.s                edi, esi                                    // 0x007c81f2    2bfe
-                         {disp8} jne          _jmp_addr_0x007c81ff                        // 0x007c81f4    7509
-                         inc                  ecx                                         // 0x007c81f6    41
-                         inc                  ecx                                         // 0x007c81f7    41
-                         cmp                  word ptr [edx + ecx * 0x1], 0x00            // 0x007c81f8    66833c0a00
-                         {disp8} jne          _jmp_addr_0x007c81e3                        // 0x007c81fd    75e4
-_jmp_addr_0x007c81ff:    cmp                  word ptr [ecx], 0x00                        // 0x007c81ff    66833900
-                         {disp8} je           _jmp_addr_0x007c820b                        // 0x007c8203    7406
-                         inc                  eax                                         // 0x007c8205    40
-                         inc                  eax                                         // 0x007c8206    40
-                         {disp8} jmp          _jmp_addr_0x007c81d3                        // 0x007c8207    ebca
-_jmp_addr_0x007c8209:    xor.s                eax, eax                                    // 0x007c8209    33c0
-_jmp_addr_0x007c820b:    pop                  edi                                         // 0x007c820b    5f
-                         pop                  esi                                         // 0x007c820c    5e
-                         ret                                                              // 0x007c820d    c3
 _jmp_addr_0x007c820e:    push                 ebp                                         // 0x007c820e    55
                          mov.s                ebp, esp                                    // 0x007c820f    8bec
                          push                 ecx                                         // 0x007c8211    51
