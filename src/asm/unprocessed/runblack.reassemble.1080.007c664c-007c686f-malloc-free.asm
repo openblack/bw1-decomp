@@ -4,11 +4,24 @@
 .globl _malloc
 .globl __nh_malloc
 .globl __heap_alloc
-.globl _jmp_addr_0x007c674d
-.globl _jmp_addr_0x007c66f1
 .globl _free
-.globl _jmp_addr_0x007c67f0
-.globl _jmp_addr_0x007c6848
+
+.section .rdata
+
+.long 0xffffffff                                                                         // [0xf7698] 0x008a9000 + 0xf7698 = 0x009a0698
+.long 0x00000000                                                                         // [0xf769c] 0x008a9000 + 0xf769c = 0x009a069c
+.long _jmp_addr_0x007c66f1                                                               // [0xf76a0] 0x008a9000 + 0xf76a0 = 0x009a06a0
+.long 0xffffffff                                                                         // [0xf76a4] 0x008a9000 + 0xf76a4 = 0x009a06a4
+.long 0x00000000                                                                         // [0xf76a8] 0x008a9000 + 0xf76a8 = 0x009a06a8
+.long _jmp_addr_0x007c674d                                                               // [0xf76ac] 0x008a9000 + 0xf76ac = 0x009a06ac
+.long 0xffffffff                                                                         // [0xf76b0] 0x008a9000 + 0xf76b0 = 0x009a06b0
+.long 0x00000000                                                                         // [0xf76b4] 0x008a9000 + 0xf76b4 = 0x009a06b4
+.long _jmp_addr_0x007c67f0                                                               // [0xf76b8] 0x008a9000 + 0xf76b8 = 0x009a06b8
+.long 0xffffffff                                                                         // [0xf76bc] 0x008a9000 + 0xf76bc = 0x009a06bc
+.long 0x00000000                                                                         // [0xf76c0] 0x008a9000 + 0xf76c0 = 0x009a06c0
+.long _jmp_addr_0x007c6848                                                               // [0xf76c4] 0x008a9000 + 0xf76c4 = 0x009a06c4
+
+.section .text
 
 _malloc:                 push                 dword ptr [__newmode]                       // 0x007c664c    ff35c042e800
                          push                 dword ptr [esp + 0x08]                      // 0x007c6652    ff742408

@@ -1,7 +1,6 @@
 .intel_syntax noprefix
 .section .bss
 
-.globl ___onexitend
 .globl __wpgmptr
 .globl ___lc_collate_cp
 .globl __winminor
