@@ -15,7 +15,7 @@
 .extern _free
 .extern __strcmpi
 .extern _time
-.extern _jmp_addr_0x007c7e64
+.extern _qsort
 .extern _jmp_addr_0x007c882a
 .extern _jmp_addr_0x007c8837
 .extern _strncpy
@@ -3309,7 +3309,7 @@ _jmp_addr_0x00888060:    {disp8} mov      eax, dword ptr [esp + 0x08]           
                          push             ecx                                                  // 0x00888071    51
                          push             edx                                                  // 0x00888072    52
                          push             eax                                                  // 0x00888073    50
-                         call             _jmp_addr_0x007c7e64                                 // 0x00888074    e8ebfdf3ff
+                         call             _qsort                                               // 0x00888074    e8ebfdf3ff
                          add              esp, 0x10                                            // 0x00888079    83c410
                          ret                                                                   // 0x0088807c    c3
                          nop                                                                   // 0x0088807d    90

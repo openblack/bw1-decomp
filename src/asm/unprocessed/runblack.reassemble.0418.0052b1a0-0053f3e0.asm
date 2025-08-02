@@ -263,7 +263,7 @@
 .extern ??2@YAPAXI@Z
 .extern __chkstk
 .extern _wcscmp
-.extern _jmp_addr_0x007c7e64
+.extern _qsort
 .extern _jmp_addr_0x007c8141
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
@@ -4765,7 +4765,7 @@ _jmp_addr_0x0052dc05:    xor.s              eax, eax                            
                          push               0x8                                                  // 0x0052dc23    6a08
                          push               ecx                                                  // 0x0052dc25    51
                          push               eax                                                  // 0x0052dc26    50
-                         call               _jmp_addr_0x007c7e64                                 // 0x0052dc27    e838a22900
+                         call               _qsort                                               // 0x0052dc27    e838a22900
                          add                esp, 0x10                                            // 0x0052dc2c    83c410
 _jmp_addr_0x0052dc2f:    ret                                                                     // 0x0052dc2f    c3
 @SortedMultiChildFind__13MultiMapFixedFRC7MapCell@12:    sub                esp, 0x08                                            // 0x0052dc30    83ec08

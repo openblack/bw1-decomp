@@ -246,7 +246,7 @@
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
 .extern _fprintf
-.extern _jmp_addr_0x007c7e64
+.extern _qsort
 .extern ___nw__FUl
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
@@ -11216,7 +11216,7 @@ _jmp_addr_0x0074162b:    {disp8} mov        edx, dword ptr [esp + 0x10]         
                          push               0xc                                                  // 0x00741634    6a0c
                          push               ebx                                                  // 0x00741636    53
                          push               edx                                                  // 0x00741637    52
-                         call               _jmp_addr_0x007c7e64                                 // 0x00741638    e827680800
+                         call               _qsort                                               // 0x00741638    e827680800
                          {disp8} lea        eax, dword ptr [ebx + -0x01]                         // 0x0074163d    8d43ff
                          add                esp, 0x10                                            // 0x00741640    83c410
                          cmp.s              eax, ebp                                             // 0x00741643    3bc5
@@ -18190,7 +18190,7 @@ _jmp_addr_0x0074614f:    fld                dword ptr [eax]                     
                          add                ecx, 0x00000278                                      // 0x00746179    81c178020000
                          push               0x11                                                 // 0x0074617f    6a11
                          push               ecx                                                  // 0x00746181    51
-                         call               _jmp_addr_0x007c7e64                                 // 0x00746182    e8dd1c0800
+                         call               _qsort                                               // 0x00746182    e8dd1c0800
                          add                esp, 0x10                                            // 0x00746187    83c410
                          pop                esi                                                  // 0x0074618a    5e
                          ret                                                                     // 0x0074618b    c3
@@ -18220,7 +18220,7 @@ _jmp_addr_0x007461a0:    mov                edi, dword ptr [eax]                
                          add                ecx, 0x00000344                                      // 0x007461ca    81c144030000
                          push               0x11                                                 // 0x007461d0    6a11
                          push               ecx                                                  // 0x007461d2    51
-                         call               _jmp_addr_0x007c7e64                                 // 0x007461d3    e88c1c0800
+                         call               _qsort                                               // 0x007461d3    e88c1c0800
                          add                esp, 0x10                                            // 0x007461d8    83c410
                          pop                edi                                                  // 0x007461db    5f
                          pop                esi                                                  // 0x007461dc    5e

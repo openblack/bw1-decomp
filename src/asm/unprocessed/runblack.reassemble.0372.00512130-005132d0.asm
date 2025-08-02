@@ -57,7 +57,7 @@
 .extern _wcslen
 .extern _swprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c7e64
+.extern _qsort
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @GetStringWidth__13GatheringTextFPwif@20
@@ -135,7 +135,7 @@ _jmp_addr_0x005121e4:    {disp32} mov      ecx, dword ptr [_game]               
                          push              eax                                                  // 0x005121fb    50
                          {disp32} lea      eax, dword ptr [esi + 0x00000160]                    // 0x005121fc    8d8660010000
                          push              eax                                                  // 0x00512202    50
-                         call              _jmp_addr_0x007c7e64                                 // 0x00512203    e85c5c2b00
+                         call              _qsort                                               // 0x00512203    e85c5c2b00
                          {disp32} mov      ecx, dword ptr [_game]                               // 0x00512208    8b0d5c19d000
                          add               esp, 0x10                                            // 0x0051220e    83c410
 _jmp_addr_0x00512211:    xor.s             ebx, ebx                                             // 0x00512211    33db
