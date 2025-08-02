@@ -139,7 +139,7 @@
 .extern _fprintf
 .extern _fopen
 .extern _fclose
-.extern _fscanf_10LHFilePath
+.extern _fscanf
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007c8072
 .extern ___nw__FUl
@@ -9856,7 +9856,7 @@ _jmp_addr_0x005249d0:    sub                esp, 0x20                           
                          push               ecx                                                  // 0x00524a00    51
                          push               0x00be95a4                                           // 0x00524a01    68a495be00
                          push               esi                                                  // 0x00524a06    56
-                         call               _fscanf_10LHFilePath                                 // 0x00524a07    e89e332a00
+                         call               _fscanf                                              // 0x00524a07    e89e332a00
                          add                esp, 0x10                                            // 0x00524a0c    83c410
                          xor.s              edi, edi                                             // 0x00524a0f    33ff
                          mov                ebx, 0x00cc63e0                                      // 0x00524a11    bbe063cc00
@@ -9880,7 +9880,7 @@ _jmp_addr_0x00524a3f:    cmp                edi, dword ptr [esp + 0x24]         
                          push               ebx                                                  // 0x00524a5e    53
                          push               0x00be9590                                           // 0x00524a5f    689095be00
                          push               esi                                                  // 0x00524a64    56
-                         call               _fscanf_10LHFilePath                                 // 0x00524a65    e840332a00
+                         call               _fscanf                                              // 0x00524a65    e840332a00
                          add                esp, 0x20                                            // 0x00524a6a    83c420
                          mov.s              edx, ebx                                             // 0x00524a6d    8bd3
                          xor.s              ecx, ecx                                             // 0x00524a6f    33c9

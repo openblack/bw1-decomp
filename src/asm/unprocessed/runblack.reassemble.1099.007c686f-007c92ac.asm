@@ -96,7 +96,7 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _fscanf_10LHFilePath
+.globl _fscanf
 .globl _getc_10LHFilePath
 .globl _jmp_addr_0x007c7e13
 .globl _jmp_addr_0x007c7e64
@@ -138,24 +138,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-_fscanf_10LHFilePath:    push                 ebp                                         // 0x007c7daa    55
-                         mov.s                ebp, esp                                    // 0x007c7dab    8bec
-                         push                 esi                                         // 0x007c7dad    56
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c7dae    ff7508
-                         call                 __lock_file                                 // 0x007c7db1    e85e340000
-                         {disp8} lea          eax, dword ptr [ebp + 0x10]                 // 0x007c7db6    8d4510
-                         push                 eax                                         // 0x007c7db9    50
-                         push                 dword ptr [ebp + 0x0c]                      // 0x007c7dba    ff750c
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c7dbd    ff7508
-                         call                 __input                                     // 0x007c7dc0    e878800000
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c7dc5    ff7508
-                         mov.s                esi, eax                                    // 0x007c7dc8    8bf0
-                         call                 __unlock_file                               // 0x007c7dca    e897340000
-                         add                  esp, 0x14                                   // 0x007c7dcf    83c414
-                         mov.s                eax, esi                                    // 0x007c7dd2    8bc6
-                         pop                  esi                                         // 0x007c7dd4    5e
-                         pop                  ebp                                         // 0x007c7dd5    5d
-                         ret                                                              // 0x007c7dd6    c3
 _getc_10LHFilePath:      push                 esi                                         // 0x007c7dd7    56
                          {disp8} mov          esi, dword ptr [esp + 0x08]                 // 0x007c7dd8    8b742408
                          push                 edi                                         // 0x007c7ddc    57

@@ -69,7 +69,7 @@
 .extern _jmp_addr_0x007a1400
 .extern _atexit
 .extern ___RTDynamicCast
-.extern _fscanf_10LHFilePath
+.extern _fscanf
 .extern _getc_10LHFilePath
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -29388,7 +29388,7 @@ _jmp_addr_0x004c4a29:    mov                edx, dword ptr [esi]                
                          push               eax                                                  // 0x004c4a32    50
                          push               0x009c8c40                                           // 0x004c4a33    68408c9c00
                          push               edi                                                  // 0x004c4a38    57
-                         call               _fscanf_10LHFilePath                                 // 0x004c4a39    e86c333000
+                         call               _fscanf                                              // 0x004c4a39    e86c333000
                          mov                eax, dword ptr [esi]                                 // 0x004c4a3e    8b06
                          add                esp, 0x0c                                            // 0x004c4a40    83c40c
                          inc                eax                                                  // 0x004c4a43    40

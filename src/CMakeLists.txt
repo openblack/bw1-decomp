@@ -595,6 +595,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\localtim.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\time.obj")
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\pow.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\lldiv.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\fscanf.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)

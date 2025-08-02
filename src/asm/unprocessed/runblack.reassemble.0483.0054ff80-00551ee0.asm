@@ -46,7 +46,7 @@
 .extern _sprintf
 .extern _fopen
 .extern _fclose
-.extern _fscanf_10LHFilePath
+.extern _fscanf
 .extern ___nw__FUl
 .extern ?CreatePack@LH3DMesh@@SAXXZ@0
 .extern _CHAR2WCHAR__FPc
@@ -310,13 +310,13 @@ _jmp_addr_0x005501c0:    add                eax, 0x04                           
                          push               ecx                                            // 0x005501f3    51
                          push               0x009cda78                                     // 0x005501f4    6878da9c00
                          push               edi                                            // 0x005501f9    57
-                         call               _fscanf_10LHFilePath                           // 0x005501fa    e8ab7b2700
+                         call               _fscanf                                        // 0x005501fa    e8ab7b2700
                          add                esp, 0x0c                                      // 0x005501ff    83c40c
 _jmp_addr_0x00550202:    {disp8} lea        edx, dword ptr [esp + 0x30]                    // 0x00550202    8d542430
                          push               edx                                            // 0x00550206    52
                          push               0x009c8c40                                     // 0x00550207    68408c9c00
                          push               edi                                            // 0x0055020c    57
-                         call               _fscanf_10LHFilePath                           // 0x0055020d    e8987b2700
+                         call               _fscanf                                        // 0x0055020d    e8987b2700
                          add                esp, 0x0c                                      // 0x00550212    83c40c
                          mov                esi, 0x00bec85c                                // 0x00550215    be5cc8be00
                          {disp8} lea        eax, dword ptr [esp + 0x30]                    // 0x0055021a    8d442430
@@ -353,7 +353,7 @@ _jmp_addr_0x00550267:    {disp8} lea        eax, dword ptr [esp + 0x18]         
                          push               eax                                            // 0x0055026b    50
                          push               0x009cda78                                     // 0x0055026c    6878da9c00
                          push               edi                                            // 0x00550271    57
-                         call               _fscanf_10LHFilePath                           // 0x00550272    e8337b2700
+                         call               _fscanf                                        // 0x00550272    e8337b2700
                          add                esp, 0x0c                                      // 0x00550277    83c40c
 _jmp_addr_0x0055027a:    {disp32} mov       eax, dword ptr [data_bytes + 0x517508]         // 0x0055027a    a108d5ed00
                          mov                ebp, 0x00000004                                // 0x0055027f    bd04000000
@@ -411,7 +411,7 @@ _jmp_addr_0x005502fe:    {disp8} lea        ecx, dword ptr [esp + 0x1c]         
                          push               ecx                                            // 0x00550311    51
                          push               0x00bec850                                     // 0x00550312    6850c8be00
                          push               edi                                            // 0x00550317    57
-                         call               _fscanf_10LHFilePath                           // 0x00550318    e88d7a2700
+                         call               _fscanf                                        // 0x00550318    e88d7a2700
                          add                esp, 0x18                                      // 0x0055031d    83c418
                          test               ebx, ebx                                       // 0x00550320    85db
                          {disp8} je         _jmp_addr_0x00550368                           // 0x00550322    7444
