@@ -320,7 +320,7 @@
 .extern __chkstk
 .extern _fwrite
 .extern _fgetc
-.extern _jmp_addr_0x007c8859
+.extern _fseek
 .extern ??0exception@@QAE@ABQBD@Z
 .extern __CxxThrowException@8
 .extern _memchr
@@ -23351,7 +23351,7 @@ _jmp_addr_0x00776d79:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               ecx                                             // 0x00776da5    51
                          push               edx                                             // 0x00776da6    52
                          push               eax                                             // 0x00776da7    50
-                         call               _jmp_addr_0x007c8859                            // 0x00776da8    e8ac1a0500
+                         call               _fseek                                          // 0x00776da8    e8ac1a0500
                          add                esp, 0x0c                                       // 0x00776dad    83c40c
                          test               eax, eax                                        // 0x00776db0    85c0
                          {disp8} jne        _jmp_addr_0x00776dee                            // 0x00776db2    753a
@@ -23422,7 +23422,7 @@ _jmp_addr_0x00776dee:    {disp8} mov        esi, dword ptr [esp + 0x10]         
                          push               0x1                                             // 0x00776e7d    6a01
                          push               esi                                             // 0x00776e7f    56
                          push               eax                                             // 0x00776e80    50
-                         call               _jmp_addr_0x007c8859                            // 0x00776e81    e8d3190500
+                         call               _fseek                                          // 0x00776e81    e8d3190500
                          add                esp, 0x0c                                       // 0x00776e86    83c40c
                          test               eax, eax                                        // 0x00776e89    85c0
                          {disp32} jne       _jmp_addr_0x00776f89                            // 0x00776e8b    0f85f8000000

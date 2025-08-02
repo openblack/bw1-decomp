@@ -609,6 +609,8 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\fgets.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\splitpat.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\wtox.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\rand.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\fseek.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\ftell.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)

@@ -27,7 +27,7 @@
 .extern _fclose
 .extern _fread
 .extern _fwrite
-.extern _jmp_addr_0x007c8859
+.extern _fseek
 .extern __sleep
 .extern _jmp_addr_0x007de090
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
@@ -327,7 +327,7 @@ _jmp_addr_0x006401ff:    test              edi, edi                             
                          push              0x1                                           // 0x006402d6    6a01
                          push              edx                                           // 0x006402d8    52
                          push              ebp                                           // 0x006402d9    55
-                         call              _jmp_addr_0x007c8859                          // 0x006402da    e87a851800
+                         call              _fseek                                        // 0x006402da    e87a851800
                          {disp32} mov      ecx, dword ptr [esi + 0x0000482c]             // 0x006402df    8b8e2c480000
                          mov               eax, dword ptr [ecx]                          // 0x006402e5    8b01
                          add               esp, 0x3c                                     // 0x006402e7    83c43c
@@ -375,7 +375,7 @@ _jmp_addr_0x00640394:    lea               ecx, dword ptr [eax + eax * 0x2]     
                          shl               ecx, 4                                        // 0x00640399    c1e104
                          push              ecx                                           // 0x0064039c    51
                          push              ebp                                           // 0x0064039d    55
-                         call              _jmp_addr_0x007c8859                          // 0x0064039e    e8b6841800
+                         call              _fseek                                        // 0x0064039e    e8b6841800
                          push              ebp                                           // 0x006403a3    55
                          push              0x4                                           // 0x006403a4    6a04
                          {disp8} lea       edx, dword ptr [esp + 0x68]                   // 0x006403a6    8d542468
@@ -436,7 +436,7 @@ _jmp_addr_0x00640394:    lea               ecx, dword ptr [eax + eax * 0x2]     
                          push              0x1                                           // 0x00640437    6a01
                          push              edx                                           // 0x00640439    52
                          push              ebp                                           // 0x0064043a    55
-                         call              _jmp_addr_0x007c8859                          // 0x0064043b    e819841800
+                         call              _fseek                                        // 0x0064043b    e819841800
                          add               esp, 0x1c                                     // 0x00640440    83c41c
 _jmp_addr_0x00640443:    push              ebp                                           // 0x00640443    55
                          push              0x4                                           // 0x00640444    6a04

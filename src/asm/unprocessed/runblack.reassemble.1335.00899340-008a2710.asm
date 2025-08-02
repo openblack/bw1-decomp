@@ -20,7 +20,7 @@
 .extern __close
 .extern __read
 .extern __write
-.extern _jmp_addr_0x007d4d79
+.extern __lseek
 .extern _jmp_addr_0x007d5fee
 .extern _jmp_addr_0x007d9487
 .extern _jmp_addr_0x007db352
@@ -11999,7 +11999,7 @@ _jmp_addr_0x008a0f2c:    mov.s             ecx, esi                             
                          push              ebx                                             // 0x008a0f38    53
                          push              dword ptr [esp + 0x10]                          // 0x008a0f39    ff742410
                          push              dword ptr [esi + 0x4c]                          // 0x008a0f3d    ff764c
-                         call              _jmp_addr_0x007d4d79                            // 0x008a0f40    e8343ef3ff
+                         call              __lseek                                         // 0x008a0f40    e8343ef3ff
                          add               esp, 0x0c                                       // 0x008a0f45    83c40c
                          cmp               eax, -0x01                                      // 0x008a0f48    83f8ff
                          {disp8} jne       _jmp_addr_0x008a0f50                            // 0x008a0f4b    7503
@@ -12081,7 +12081,7 @@ _jmp_addr_0x008a1003:    neg               eax                                  
                          push              0x1                                             // 0x008a1005    6a01
                          push              eax                                             // 0x008a1007    50
                          push              edx                                             // 0x008a1008    52
-                         call              _jmp_addr_0x007d4d79                            // 0x008a1009    e86b3df3ff
+                         call              __lseek                                         // 0x008a1009    e86b3df3ff
                          add               esp, 0x0c                                       // 0x008a100e    83c40c
                          cmp               eax, -0x01                                      // 0x008a1011    83f8ff
                          {disp8} jne       _jmp_addr_0x008a101b                            // 0x008a1014    7505

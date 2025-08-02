@@ -158,7 +158,7 @@
 .globl ?terminate@@YAXXZ
 .globl ?_inconsistency@@YAXXZ
 .globl __mbsnbcpy
-.globl _jmp_addr_0x007d4d79
+.globl __lseek
 .globl __lseek_lk
 .globl __ioinit
 .globl _strcpy
@@ -2632,7 +2632,7 @@ _jmp_addr_0x007cd047:    test               byte ptr [eax + 0x04], 0x20         
                          push               0x2                                            // 0x007cd04d    6a02
                          push               0x0                                            // 0x007cd04f    6a00
                          push               ebx                                            // 0x007cd051    53
-                         call               _jmp_addr_0x007d4d79                           // 0x007cd052    e8227d0000
+                         call               __lseek                                        // 0x007cd052    e8227d0000
                          add                esp, 0x0c                                      // 0x007cd057    83c40c
 _jmp_addr_0x007cd05a:    {disp8} mov        eax, dword ptr [esi + 0x08]                    // 0x007cd05a    8b4608
                          {disp8} mov        cl, byte ptr [ebp + 0x08]                      // 0x007cd05d    8a4d08
@@ -13805,7 +13805,7 @@ _jmp_addr_0x007d4d6b:    push               0x19                                
 _jmp_addr_0x007d4d76:    pop                edi                                            // 0x007d4d76    5f
                          pop                ebp                                            // 0x007d4d77    5d
                          ret                                                               // 0x007d4d78    c3
-_jmp_addr_0x007d4d79:    push               esi                                            // 0x007d4d79    56
+__lseek:                 push               esi                                            // 0x007d4d79    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x007d4d7a    8b742408
                          cmp                esi, dword ptr [data_bytes + 0x5e6a60]         // 0x007d4d7e    3b3560cafa00
                          {disp8} jae        _jmp_addr_0x007d4dc6                           // 0x007d4d84    7340
@@ -18851,7 +18851,7 @@ _jmp_addr_0x007d851e:    test               byte ptr [eax + 0x04], 0x20         
                          push               0x2                                            // 0x007d8524    6a02
                          push               ebx                                            // 0x007d8526    53
                          push               ecx                                            // 0x007d8527    51
-                         call               _jmp_addr_0x007d4d79                           // 0x007d8528    e84cc8ffff
+                         call               __lseek                                        // 0x007d8528    e84cc8ffff
                          add                esp, 0x0c                                      // 0x007d852d    83c40c
 _jmp_addr_0x007d8530:    {disp8} mov        eax, dword ptr [esi + 0x08]                    // 0x007d8530    8b4608
                          {disp8} mov        ebx, dword ptr [ebp + 0x08]                    // 0x007d8533    8b5d08
