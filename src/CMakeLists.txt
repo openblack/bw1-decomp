@@ -591,6 +591,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\fread.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\fwrite.obj")
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\acos.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\asctime.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\localtim.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
