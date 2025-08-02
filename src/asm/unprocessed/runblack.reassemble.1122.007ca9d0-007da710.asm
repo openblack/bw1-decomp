@@ -30,8 +30,8 @@
 .extern ?_GetRangeOfTrysToCheck@@YAPBU_s_TryBlockMapEntry@@PBU_s_FuncInfo@@HHPAI1@Z
 .extern __global_unwind2
 .extern __local_unwind2
-.extern _jmp_addr_0x007c85c2
-.extern _jmp_addr_0x007c85e5
+.extern __abnormal_termination
+.extern __NLG_Notify1
 .extern __NLG_Notify
 .extern _strcspn
 .extern _strtol
@@ -13047,7 +13047,7 @@ _jmp_addr_0x007d44ee:    {disp8} mov        eax, dword ptr [ebp + -0x28]        
                          {disp8} jne        _jmp_addr_0x007d453b                           // 0x007d4525    7514
                          cmp                dword ptr [ebp + -0x2c], 0x00                  // 0x007d4527    837dd400
                          {disp8} je         _jmp_addr_0x007d453b                           // 0x007d452b    740e
-                         call               _jmp_addr_0x007c85c2                           // 0x007d452d    e89040ffff
+                         call               __abnormal_termination                         // 0x007d452d    e89040ffff
                          push               eax                                            // 0x007d4532    50
                          push               edi                                            // 0x007d4533    57
                          call               _jmp_addr_0x007d472a                           // 0x007d4534    e8f1010000
@@ -13317,7 +13317,7 @@ __CallSettingFrame@12:   push               ebp                                 
                          push               dword ptr [ebp + 0x10]                         // 0x007d47d5    ff7510
                          {disp8} mov        ecx, dword ptr [ebp + 0x10]                    // 0x007d47d8    8b4d10
                          {disp8} mov        ebp, dword ptr [ebp + -0x04]                   // 0x007d47db    8b6dfc
-                         call               _jmp_addr_0x007c85e5                           // 0x007d47de    e8023effff
+                         call               __NLG_Notify1                                  // 0x007d47de    e8023effff
                          push               esi                                            // 0x007d47e3    56
                          push               edi                                            // 0x007d47e4    57
                          call               eax                                            // 0x007d47e5    ffd0
@@ -13332,7 +13332,7 @@ __CallSettingFrame@12:   push               ebp                                 
                          {disp8} jne        _jmp_addr_0x007d47ff                           // 0x007d47f8    7505
                          mov                ecx, 0x00000002                                // 0x007d47fa    b902000000
 _jmp_addr_0x007d47ff:    push               ecx                                            // 0x007d47ff    51
-                         call               _jmp_addr_0x007c85e5                           // 0x007d4800    e8e03dffff
+                         call               __NLG_Notify1                                  // 0x007d4800    e8e03dffff
                          pop                ebp                                            // 0x007d4805    5d
                          pop                ecx                                            // 0x007d4806    59
                          pop                ebx                                            // 0x007d4807    5b
