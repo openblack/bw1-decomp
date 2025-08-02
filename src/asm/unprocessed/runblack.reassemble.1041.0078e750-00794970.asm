@@ -87,7 +87,7 @@
 .extern _atoi
 .extern __strcmpi
 .extern _localtime
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern ___nw__FUl
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
@@ -1738,7 +1738,7 @@ _jmp_addr_0x0078f770:    push               ebp                                 
                          rep stosd                                                        // 0x0078f78c    f3ab
                          {disp8} lea        eax, dword ptr [ebp + -0x04]                  // 0x0078f78e    8d45fc
                          push               eax                                           // 0x0078f791    50
-                         call               _jmp_addr_0x007c79fd                          // 0x0078f792    e866820300
+                         call               _time                                         // 0x0078f792    e866820300
                          {disp8} lea        ecx, dword ptr [ebp + -0x04]                  // 0x0078f797    8d4dfc
                          push               ecx                                           // 0x0078f79a    51
                          call               _localtime                                    // 0x0078f79b    e8fd800300
@@ -5452,7 +5452,7 @@ _jmp_addr_0x00792110:    sub                esp, 0x00000184                     
                          call               _jmp_addr_0x0079a640                          // 0x00792138    e803850000
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x0079213d    8d44241c
                          push               eax                                           // 0x00792141    50
-                         call               _jmp_addr_0x007c79fd                          // 0x00792142    e8b6580300
+                         call               _time                                         // 0x00792142    e8b6580300
                          {disp32} mov       edx, dword ptr [_game]                        // 0x00792147    8b155c19d000
                          {disp32} mov       eax, dword ptr [edx + 0x000059ac]             // 0x0079214d    8b82ac590000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x386540]        // 0x00792153    8b0d40c5d400

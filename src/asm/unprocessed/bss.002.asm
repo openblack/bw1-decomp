@@ -158,7 +158,6 @@
 .globl ___env_initialized
 
 // Start of libcmt.lib
-                                           .space 0x1c                                                             // [0x4be1b4] 0x009c6000 + 0x4be1b8 = 0x00e841b4
 ___lconv_static_null:                      .space 4                                                                // [0x4be1d0] 0x009c6000 + 0x4be1d0 = 0x00e841d0
 __umaskval:                                .space 4                                                                // [0x4be1d4] 0x009c6000 + 0x4be1d4 = 0x00e841d4
 __osver:                                   .space 4                                                                // [0x4be1d8] 0x009c6000 + 0x4be1d8 = 0x00e841d8

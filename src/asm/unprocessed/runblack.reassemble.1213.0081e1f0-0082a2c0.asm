@@ -33,7 +33,7 @@
 .extern _malloc
 .extern _free
 .extern _localtime
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007ddc40
 .extern _jmp_addr_0x007ded40
 .extern _jmp_addr_0x007faaf0
@@ -1801,7 +1801,7 @@ _jmp_addr_0x0081f402:    {disp8} lea        eax, dword ptr [esp + 0x14]         
                          push               eax                                                  // 0x0081f406    50
                          xor.s              edi, edi                                             // 0x0081f407    33ff
                          {disp32} mov       dword ptr [data_bytes + 0x272390], ebx               // 0x0081f409    891d9083c300
-                         call               _jmp_addr_0x007c79fd                                 // 0x0081f40f    e8e985faff
+                         call               _time                                                // 0x0081f40f    e8e985faff
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                          // 0x0081f414    8d4c2418
                          push               ecx                                                  // 0x0081f418    51
                          call               _localtime                                           // 0x0081f419    e87f84faff

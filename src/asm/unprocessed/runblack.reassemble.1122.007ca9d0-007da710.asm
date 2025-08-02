@@ -146,7 +146,7 @@
 .globl ___tzset
 .globl __isindst
 .globl _gmtime
-.globl _jmp_addr_0x007d2b20
+.globl ___loctotime_t
 .globl _jmp_addr_0x007d2df7
 .globl _jmp_addr_0x007d2f90
 .globl _jmp_addr_0x007d300b
@@ -10782,7 +10782,7 @@ _jmp_addr_0x007d2b1c:    pop                edi                                 
                          pop                esi                                            // 0x007d2b1d    5e
                          pop                ebx                                            // 0x007d2b1e    5b
                          ret                                                               // 0x007d2b1f    c3
-_jmp_addr_0x007d2b20:    push               ebp                                            // 0x007d2b20    55
+___loctotime_t:          push               ebp                                            // 0x007d2b20    55
                          mov.s              ebp, esp                                       // 0x007d2b21    8bec
                          sub                esp, 0x24                                      // 0x007d2b23    83ec24
                          push               ebx                                            // 0x007d2b26    53
