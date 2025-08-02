@@ -123,7 +123,7 @@
 .extern __chkstk
 .extern _fread
 .extern _fwrite
-.extern _jmp_addr_0x007c8606
+.extern _fgets
 .extern _jmp_addr_0x007c8859
 .extern _jmp_addr_0x007c8912
 .extern _strncpy
@@ -3024,7 +3024,7 @@ _jmp_addr_0x005e97d6:    push               edi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x005e97d7    8d4c2414
                          push               0x00000800                                    // 0x005e97db    6800080000
                          push               ecx                                           // 0x005e97e0    51
-                         call               _jmp_addr_0x007c8606                          // 0x005e97e1    e820ee1d00
+                         call               _fgets                                        // 0x005e97e1    e820ee1d00
                          add                esp, 0x0c                                     // 0x005e97e6    83c40c
                          test               eax, eax                                      // 0x005e97e9    85c0
                          {disp32} je        _jmp_addr_0x005e9891                          // 0x005e97eb    0f84a0000000
