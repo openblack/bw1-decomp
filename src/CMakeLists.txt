@@ -397,12 +397,8 @@ set(SOURCES_002
     asm/unprocessed/xdata.x.000.009bbdc8-009be430.asm
     asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
 )
-# Likely a different malloc and free
-set(SOURCES_003 asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm)
-# Likely a different calloc
-set(SOURCES_005 asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
-# Likely a different realloc
-set(SOURCES_006 asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm asm/unprocessed/bss.002.asm)
+
+set(SOURCES_006  asm/unprocessed/bss.002.asm)
 
 set(SOURCES_007
     asm/unprocessed/rdata.r.001.009bb9b4-009bbdc8.asm
@@ -483,8 +479,9 @@ set(SOURCES_008
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
 add_library(runblack-reassembled-zlib OBJECT ${SOURCES_ZLIB})
 add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
-add_library(runblack-reassembled-src-003 OBJECT ${SOURCES_003})
-add_library(runblack-reassembled-src-005 OBJECT ${SOURCES_005})
+add_library(runblack-reassembled-src-malloc-free OBJECT asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm)
+add_library(runblack-reassembled-src-calloc OBJECT asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
+add_library(runblack-reassembled-src-realloc OBJECT asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
 add_library(runblack-reassembled-src-006 OBJECT ${SOURCES_006})
 add_library(runblack-reassembled-src-007 OBJECT ${SOURCES_007})
 add_library(runblack-reassembled-src-008 OBJECT ${SOURCES_008})
@@ -619,7 +616,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\strncmp.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strchr.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-add_library(runblack-reassembled-libcmt-004 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\printf.obj" NO_PAD)
 add_patched_libcmt_object("build\\intel\\mt_obj\\strtok.obj" NO_PAD)
@@ -631,7 +628,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncmp.obj" NO_PAD)
 add_patched_libcmt_object("build\\intel\\mt_obj\\towlower.obj" NO_PAD)
 add_patched_libcmt_object("build\\intel\\mt_obj\\abort.obj" NO_PAD)
 add_patched_libcmt_object("build\\intel\\mt_obj\\chmod.obj" NO_PAD)
-set_property(TARGET runblack-reassembled-libcmt-004 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-005 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
@@ -724,11 +721,12 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-zlib
         runblack-reassembled-src-002  # import jump table from lhlib?
         runblack-reassembled-libcmt-001
-        runblack-reassembled-src-003  # malloc and free
+        runblack-reassembled-src-malloc-free
         runblack-reassembled-libcmt-002
-        runblack-reassembled-src-005  # calloc
-        runblack-reassembled-libcmt-004
-        runblack-reassembled-src-006  # ralloc, bbs 002
+        runblack-reassembled-src-calloc
+        runblack-reassembled-libcmt-003
+        runblack-reassembled-src-realloc
+        runblack-reassembled-src-006  # bbs 002
         runblack-reassembled-libcmt-005
         runblack-reassembled-src-007
         runblack-reassembled-libcmt-006
@@ -740,8 +738,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-003.dir/asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-malloc-free.dir/asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-malloc-free.dir/asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -776,8 +774,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-realloc.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-realloc.dir/asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -793,8 +791,9 @@ add_custom_command(
 target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-zlib PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-003 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-005 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-malloc-free PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-calloc PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-realloc PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-006 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-007 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-008 PRIVATE common_compile_options)
