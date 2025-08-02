@@ -2,50 +2,6 @@
 .align 16
 .section .rdata$r,"dr"
 
-.macro RTTIBaseClassDescriptor name num_base_classes
-    .global ??_R1A@?0A@A@\name@@8
-_RTTIBaseClassDescriptor__\name:
-??_R1A@?0A@A@\name@@8:
-    .long ??_R0?AV\name@@@8
-    .long \num_base_classes
-    .long 0x00000000
-    .long 0xFFFFFFFF
-    .long 0x00000000
-    .long 0x00000000
-.endm
-
-.macro RTTIBaseClassArray name
-    .global ??_R2\name@@8
-??_R2\name@@8:
-    .long ??_R1A@?0A@A@\name@@8
-.endm
-
-.macro RTTIClassHierarchyDescriptor name num_base_classes
-    .global ??_R3\name@@8
-??_R3\name@@8:
-    .long 0                  // signature
-    .long 0                  // attributes
-    .long \num_base_classes  // numBaseClasses
-    .long ??_R2\name@@8      // pBaseClassArray
-.endm
-
-.macro RTTICompleteObjectLocator name
-    .global ??_R4\name@@6B@
-??_R4\name@@6B@:
-    .long 0                  // signature
-    .long 0                  // offset
-    .long 0                  // cdOffset
-    .long ??_R0?AV\name@@@8  // pTypeDescriptor
-    .long ??_R3\name@@8      // pClassDescriptor
-.endm
-
-RTTIBaseClassArray exception                                                                                       // [0x112984] 0x008a9000 + 0x112984 = 0x009bb984
-.long 0x00000000
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor exception 1                                                                           // [0x112990] 0x008a9000 + 0x112990 = 0x009bb990
-
-RTTICompleteObjectLocator exception                                                                                // [0x1129a0] 0x008a9000 + 0x1129a0 = 0x009bb9a0
 .byte 0x00, 0x00, 0x00, 0x00, 0x38, 0xc1, 0xc3, 0x00, 0x00, 0x00, 0x00, 0x00                                       // [0x1129b4] 0x008a9000 + 0x1129b4 = 0x009bb9b4
 .byte 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00               // [0x1129c0] 0x008a9000 + 0x1129c0 = 0x009bb9c0
 .byte 0xb8, 0xb9, 0x9b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00               // [0x1129d0] 0x008a9000 + 0x1129d0 = 0x009bb9d0
