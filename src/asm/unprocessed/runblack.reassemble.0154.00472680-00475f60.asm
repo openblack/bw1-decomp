@@ -162,7 +162,7 @@
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c7d00
+.extern __alldiv
 .extern ___nw__FUl
 .extern ?Release@LH3DSmoke@@QAEXXZ
 .extern @Release__8LH3DMeshFv@4
@@ -550,12 +550,12 @@ _jmp_addr_0x004729a0:    push               ebp                                 
                          sbb.s              edx, esi                                             // 0x004729e1    1bd6
                          push               edx                                                  // 0x004729e3    52
                          push               eax                                                  // 0x004729e4    50
-                         call               _jmp_addr_0x007c7d00                                 // 0x004729e5    e816533500
+                         call               __alldiv                                             // 0x004729e5    e816533500
                          push               0x0                                                  // 0x004729ea    6a00
                          push               0x000003e8                                           // 0x004729ec    68e8030000
                          push               edx                                                  // 0x004729f1    52
                          push               eax                                                  // 0x004729f2    50
-                         call               _jmp_addr_0x007c7d00                                 // 0x004729f3    e808533500
+                         call               __alldiv                                             // 0x004729f3    e808533500
                          mov.s              esi, eax                                             // 0x004729f8    8bf0
                          push               esi                                                  // 0x004729fa    56
                          push               0x009cf720                                           // 0x004729fb    6820f79c00
