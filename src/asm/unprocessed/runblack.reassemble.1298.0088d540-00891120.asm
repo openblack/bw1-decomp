@@ -16,7 +16,7 @@
 .extern __strcmpi
 .extern _localtime
 .extern _time
-.extern _jmp_addr_0x007c7e13
+.extern _vsprintf
 .extern _strcspn
 .extern _strncpy
 .extern _strncmp
@@ -4859,7 +4859,7 @@ _jmp_addr_0x008903d2:    {disp8} mov      ecx, dword ptr [esp + 0x0c]           
                          push             eax                                            // 0x008903da    50
                          push             ecx                                            // 0x008903db    51
                          push             0x00faae70                                     // 0x008903dc    6870aefa00
-                         call             _jmp_addr_0x007c7e13                           // 0x008903e1    e82d7af3ff
+                         call             _vsprintf                                      // 0x008903e1    e82d7af3ff
                          add              esp, 0x0c                                      // 0x008903e6    83c40c
                          cmp              eax, -0x01                                     // 0x008903e9    83f8ff
                          {disp8} je       _jmp_addr_0x00890405                           // 0x008903ec    7417
