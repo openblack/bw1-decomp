@@ -119,7 +119,7 @@
 .globl __imp__HeapReAlloc@4
 .globl __imp__SetFileAttributesA@8
 .globl __imp__RaiseException@16
-.globl __imp__RtlUnwind@4
+.globl __imp__RtlUnwind@16
 .globl __imp__GetLocalTime@4
 .globl __imp__GetSystemTime@4
 .globl __imp__GetTimeZoneInformation@4
@@ -728,7 +728,7 @@ __imp__Beep@8:                                                                  
 __imp__HeapReAlloc@4:                                                                                                          .long 0x005c47de // 0x008a91e0 KERNEL32.DLL::HeapReAlloc
 __imp__SetFileAttributesA@8:                                                                                                   .long 0x005c47c8 // 0x008a91e4 KERNEL32.DLL::SetFileAttributesA
 __imp__RaiseException@16:                                                                                                      .long 0x005c47b6 // 0x008a91e8 KERNEL32.DLL::RaiseException
-__imp__RtlUnwind@4:                                                                                                            .long 0x005c47aa // 0x008a91ec KERNEL32.DLL::RtlUnwind
+__imp__RtlUnwind@16:                                                                                                            .long 0x005c47aa // 0x008a91ec KERNEL32.DLL::RtlUnwind
 __imp__GetLocalTime@4:                                                                                                         .long 0x005c479a // 0x008a91f0 KERNEL32.DLL::GetLocalTime
 __imp__GetSystemTime@4:                                                                                                        .long 0x005c478a // 0x008a91f4 KERNEL32.DLL::GetSystemTime
 __imp__GetTimeZoneInformation@4:                                                                                               .long 0x005c4770 // 0x008a91f8 KERNEL32.DLL::GetTimeZoneInformation

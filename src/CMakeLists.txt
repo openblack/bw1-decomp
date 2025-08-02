@@ -603,6 +603,7 @@ add_patched_libcmt_object("..\\build\\intel\\mt_obj\\87fmod.obj")
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\ceil.obj" WEAKEN_SYMBOLS "__real@8@3fff8000000000000000")
 add_patched_libcmt_object("build\\intel\\mt_obj\\bsearch.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\wcsstr.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\trnsctrl.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)

@@ -1,7 +1,7 @@
 .intel_syntax noprefix
 .align 16
 
-.globl _jmp_KERNEL32_DLL__RtlUnwind
+.globl _RtlUnwind@16
 .globl _jmp_WSOCK32_DLL__Ordinal_10
 .globl _jmp_WSOCK32_DLL__Ordinal_115
 .globl _jmp_WSOCK32_DLL__Ordinal_116
@@ -78,7 +78,7 @@ _jmp_KERNEL32_DLL__GetLastError:                   jmp              dword ptr [_
 _jmp_KERNEL32_DLL__GetTimeZoneInformation:         jmp              dword ptr [__imp__GetTimeZoneInformation@4]                               // 0x008a5156    ff25f8918a00
 _jmp_KERNEL32_DLL__GetSystemTime:                  jmp              dword ptr [__imp__GetSystemTime@4]                                        // 0x008a515c    ff25f4918a00
 _jmp_KERNEL32_DLL__GetLocalTime:                   jmp              dword ptr [__imp__GetLocalTime@4]                                         // 0x008a5162    ff25f0918a00
-_jmp_KERNEL32_DLL__RtlUnwind:                      jmp              dword ptr [__imp__RtlUnwind@4]                                            // 0x008a5168    ff25ec918a00
+_RtlUnwind@16:                                     jmp              dword ptr [__imp__RtlUnwind@16]                                           // 0x008a5168    ff25ec918a00
 _jmp_KERNEL32_DLL__RaiseException:                 jmp              dword ptr [__imp__RaiseException@16]                                      // 0x008a516e    ff25e8918a00
 _jmp_KERNEL32_DLL__SetFileAttributesA:             jmp              dword ptr [__imp__SetFileAttributesA@8]                                   // 0x008a5174    ff25e4918a00
 _jmp_KERNEL32_DLL__HeapReAlloc:                    jmp              dword ptr [__imp__HeapReAlloc@4]                                          // 0x008a517a    ff25e0918a00
