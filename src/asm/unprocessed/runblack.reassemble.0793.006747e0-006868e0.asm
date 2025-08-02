@@ -183,7 +183,7 @@
 .extern _qsort
 .extern __CIfmod
 .extern _ceil
-.extern _jmp_addr_0x007c8141
+.extern _bsearch
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
@@ -19929,7 +19929,7 @@ _jmp_addr_0x00682580:    push               ebx                                 
                          push               eax                                           // 0x00682596    50
                          push               ecx                                           // 0x00682597    51
                          push               edi                                           // 0x00682598    57
-                         call               _jmp_addr_0x007c8141                          // 0x00682599    e8a35b1400
+                         call               _bsearch                                      // 0x00682599    e8a35b1400
                          add                esp, 0x14                                     // 0x0068259e    83c414
                          test               eax, eax                                      // 0x006825a1    85c0
                          {disp32} jne       _jmp_addr_0x0068262b                          // 0x006825a3    0f8582000000
