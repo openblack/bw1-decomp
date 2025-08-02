@@ -27,7 +27,7 @@
 .extern _wcslen
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c8606
+.extern _fgets
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x00549900
@@ -87,7 +87,7 @@ _jmp_addr_0x00549930:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          {disp32} lea      eax, dword ptr [esp + 0x00000210]             // 0x00549962    8d842410020000
                          push              0x00000200                                    // 0x00549969    6800020000
                          push              eax                                           // 0x0054996e    50
-                         call              _jmp_addr_0x007c8606                          // 0x0054996f    e892ec2700
+                         call              _fgets                                        // 0x0054996f    e892ec2700
                          add               esp, 0x0c                                     // 0x00549974    83c40c
                          test              eax, eax                                      // 0x00549977    85c0
                          {disp32} je       _jmp_addr_0x00549a63                          // 0x00549979    0f84e4000000
@@ -157,7 +157,7 @@ _jmp_addr_0x00549a45:    push              ebp                                  
                          {disp32} lea      eax, dword ptr [esp + 0x00000210]             // 0x00549a46    8d842410020000
                          push              0x00000200                                    // 0x00549a4d    6800020000
                          push              eax                                           // 0x00549a52    50
-                         call              _jmp_addr_0x007c8606                          // 0x00549a53    e8aeeb2700
+                         call              _fgets                                        // 0x00549a53    e8aeeb2700
                          add               esp, 0x0c                                     // 0x00549a58    83c40c
                          test              eax, eax                                      // 0x00549a5b    85c0
                          {disp32} jne      _jmp_addr_0x0054997f                          // 0x00549a5d    0f851cffffff

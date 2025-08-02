@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _atexit
-.extern _jmp_addr_0x007c8606
+.extern _fgets
 .extern _strtok
 
 .globl _jmp_addr_0x007bf0d0
@@ -28,7 +28,7 @@ _jmp_addr_0x007bf03d:    {disp32} mov     eax, dword ptr [esi + 0x000002ac]     
                          push             0x00000100                                     // 0x007bf04b    6800010000
                          push             esi                                            // 0x007bf050    56
                          {disp32} mov     dword ptr [esi + 0x0000029c], edx              // 0x007bf051    89969c020000
-                         call             _jmp_addr_0x007c8606                           // 0x007bf057    e8aa950000
+                         call             _fgets                                         // 0x007bf057    e8aa950000
                          add              esp, 0x0c                                      // 0x007bf05c    83c40c
                          test             eax, eax                                       // 0x007bf05f    85c0
                          {disp8} je       _jmp_addr_0x007bf0be                           // 0x007bf061    745b

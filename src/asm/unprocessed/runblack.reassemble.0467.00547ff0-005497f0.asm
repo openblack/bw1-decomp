@@ -38,7 +38,7 @@
 .extern _fopen
 .extern _fclose
 .extern _fread
-.extern _jmp_addr_0x007c8606
+.extern _fgets
 .extern ___nw__FUl
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern _CHAR2WCHAR__FPc
@@ -861,7 +861,7 @@ _jmp_addr_0x00548990:    sub                esp, 0x00000494                     
                          {disp32} lea       eax, dword ptr [esp + 0x000002a8]             // 0x005489b7    8d8424a8020000
                          push               0x00000200                                    // 0x005489be    6800020000
                          push               eax                                           // 0x005489c3    50
-                         call               _jmp_addr_0x007c8606                          // 0x005489c4    e83dfc2700
+                         call               _fgets                                        // 0x005489c4    e83dfc2700
                          add                esp, 0x0c                                     // 0x005489c9    83c40c
                          test               eax, eax                                      // 0x005489cc    85c0
                          {disp32} je        _jmp_addr_0x00548a86                          // 0x005489ce    0f84b2000000
@@ -914,7 +914,7 @@ _jmp_addr_0x00548a68:    push               ebp                                 
                          {disp32} lea       eax, dword ptr [esp + 0x000002a8]             // 0x00548a69    8d8424a8020000
                          push               0x00000200                                    // 0x00548a70    6800020000
                          push               eax                                           // 0x00548a75    50
-                         call               _jmp_addr_0x007c8606                          // 0x00548a76    e88bfb2700
+                         call               _fgets                                        // 0x00548a76    e88bfb2700
                          add                esp, 0x0c                                     // 0x00548a7b    83c40c
                          test               eax, eax                                      // 0x00548a7e    85c0
                          {disp32} jne       _jmp_addr_0x005489d4                          // 0x00548a80    0f854effffff
