@@ -45,7 +45,7 @@
 .extern ??2@YAPAXI@Z
 .extern __chkstk
 .extern _wcscmp
-.extern _jmp_addr_0x007c81cd
+.extern _wcsstr
 .extern _wcsncmp
 .extern _towlower
 .extern ___nw__FUl
@@ -666,7 +666,7 @@ _jmp_addr_0x00629d9c:    {disp8} lea       ecx, dword ptr [esp + 0x1c]          
                          push              ecx                                            // 0x00629da0    51
                          {disp32} lea      edx, dword ptr [esp + 0x00000120]              // 0x00629da1    8d942420010000
                          push              edx                                            // 0x00629da8    52
-                         call              _jmp_addr_0x007c81cd                           // 0x00629da9    e81fe41900
+                         call              _wcsstr                                        // 0x00629da9    e81fe41900
                          add               esp, 0x08                                      // 0x00629dae    83c408
                          test              eax, eax                                       // 0x00629db1    85c0
                          {disp32} je       _jmp_addr_0x00629ee5                           // 0x00629db3    0f842c010000
