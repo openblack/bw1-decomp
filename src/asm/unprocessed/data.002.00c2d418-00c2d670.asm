@@ -4,8 +4,6 @@
 
 .globl __NLG_Destination
 
-.byte 0x3f, 0x1b, 0x00, 0x00                                                                                       // [0x2674a0] 0x009c6000 + 0x2674a0 = 0x00c2d4a0
-
 // EXSUP.INC
 __NLG_Destination:                                                                                                 // [0x2674a0] 0x009c6000 + 0x2674a4 = 0x00c2d4a4
 .long 0x19930520
