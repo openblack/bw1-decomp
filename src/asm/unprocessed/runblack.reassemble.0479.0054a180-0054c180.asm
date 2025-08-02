@@ -355,7 +355,7 @@
 .extern _swprintf
 .extern __unlink
 .extern _jmp_addr_0x007c6e30
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007c8668
 .extern _jmp_addr_0x007db790
 .extern _jmp_addr_0x007de090

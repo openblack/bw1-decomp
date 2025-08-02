@@ -59,7 +59,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern ___nw__FUl
 
 .globl @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -4025,7 +4025,7 @@ _jmp_addr_0x00564b40:    push               esi                                 
 _jmp_addr_0x00564b70:    {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x00564b70    d90598a38a00
 _jmp_addr_0x00564b76:    push               0x00d0604c                                    // 0x00564b76    684c60d000
                          {disp32} fstp      dword ptr [esi + 0x0000107c]                  // 0x00564b7b    d99e7c100000
-                         call               _jmp_addr_0x007c79fd                          // 0x00564b81    e8772e2600
+                         call               _time                                         // 0x00564b81    e8772e2600
                          {disp32} mov       edx, dword ptr [_game]                        // 0x00564b86    8b155c19d000
                          {disp32} mov       eax, dword ptr [edx + 0x00205c88]             // 0x00564b8c    8b82885c2000
                          add                esp, 0x04                                     // 0x00564b92    83c404

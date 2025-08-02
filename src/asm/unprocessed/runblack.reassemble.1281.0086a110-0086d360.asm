@@ -15,7 +15,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _memmove
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007faff0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x00802550
@@ -666,7 +666,7 @@ _jmp_addr_0x0086a819:    {disp32} mov       eax, dword ptr [data_bytes + 0x5dc76
                          test               eax, eax                                       // 0x0086a81e    85c0
                          {disp8} jne        _jmp_addr_0x0086a83b                           // 0x0086a820    7519
 _jmp_addr_0x0086a822:    push               0x00fa276c                                     // 0x0086a822    686c27fa00
-                         call               _jmp_addr_0x007c79fd                           // 0x0086a827    e8d1d1f5ff
+                         call               _time                                          // 0x0086a827    e8d1d1f5ff
                          {disp8} mov        edx, dword ptr [esp + 0x08]                    // 0x0086a82c    8b542408
                          add                esp, 0x04                                      // 0x0086a830    83c404
                          mov                dword ptr [edx], 0x00000001                    // 0x0086a833    c70201000000

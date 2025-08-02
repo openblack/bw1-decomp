@@ -37,7 +37,7 @@
 .extern _free
 .extern __chkstk
 .extern __CIasin
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007c882a
 .extern _jmp_addr_0x007c8837
 .extern _strncpy
@@ -20645,7 +20645,7 @@ _jmp_addr_0x0088617d:    pop                esi                                 
                          add                esp, 0x0000020c                                      // 0x008861e3    81c40c020000
                          ret                                                                     // 0x008861e9    c3
 _jmp_addr_0x008861ea:    push               0x0                                                  // 0x008861ea    6a00
-                         call               _jmp_addr_0x007c79fd                                 // 0x008861ec    e80c18f4ff
+                         call               _time                                                // 0x008861ec    e80c18f4ff
                          xor                eax, 0x33333333                                      // 0x008861f1    3533333333
                          push               eax                                                  // 0x008861f6    50
                          call               _jmp_addr_0x007c882a                                 // 0x008861f7    e82e26f4ff

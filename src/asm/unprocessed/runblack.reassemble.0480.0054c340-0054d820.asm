@@ -260,7 +260,7 @@
 .extern _swprintf
 .extern __unlink
 .extern _fclose
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007c8668
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090

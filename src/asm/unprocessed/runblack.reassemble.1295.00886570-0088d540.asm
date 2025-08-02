@@ -14,7 +14,7 @@
 .extern _malloc
 .extern _free
 .extern __strcmpi
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007c7e64
 .extern _jmp_addr_0x007c882a
 .extern _jmp_addr_0x007c8837
@@ -8172,7 +8172,7 @@ _jmp_addr_0x0088aab0:    sub              esp, 0x48                             
                          {disp8} jmp      _jmp_addr_0x0088aae5                                 // 0x0088aae1    eb02
 _jmp_addr_0x0088aae3:    xor.s            esi, esi                                             // 0x0088aae3    33f6
 _jmp_addr_0x0088aae5:    push             0x0                                                  // 0x0088aae5    6a00
-                         call             _jmp_addr_0x007c79fd                                 // 0x0088aae7    e811cff3ff
+                         call             _time                                                // 0x0088aae7    e811cff3ff
                          add              esp, 0x04                                            // 0x0088aaec    83c404
                          mov.s            edi, eax                                             // 0x0088aaef    8bf8
                          call             _clock                                               // 0x0088aaf1    e813b70100

@@ -84,7 +84,7 @@
 .extern _fread
 .extern _fwrite
 .extern _localtime
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007c7d00
 .extern _jmp_addr_0x007c8606
 .extern _jmp_addr_0x007c8668
@@ -1182,7 +1182,7 @@ _jmp_addr_0x00710f3f:    {disp32} mov       ecx, dword ptr [_game]              
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x00710f45    e83620e4ff
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x00710f4a    8d442400
                          push               eax                                           // 0x00710f4e    50
-                         call               _jmp_addr_0x007c79fd                          // 0x00710f4f    e8a96a0b00
+                         call               _time                                         // 0x00710f4f    e8a96a0b00
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x00710f54    8d4c2404
                          push               ecx                                           // 0x00710f58    51
                          call               _localtime                                    // 0x00710f59    e83f690b00
@@ -1222,7 +1222,7 @@ _jmp_addr_0x00710fbf:    {disp32} mov       ecx, dword ptr [_game]              
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x00710fc5    e8b61fe4ff
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x00710fca    8d442400
                          push               eax                                           // 0x00710fce    50
-                         call               _jmp_addr_0x007c79fd                          // 0x00710fcf    e8296a0b00
+                         call               _time                                         // 0x00710fcf    e8296a0b00
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x00710fd4    8d4c2404
                          push               ecx                                           // 0x00710fd8    51
                          call               _localtime                                    // 0x00710fd9    e8bf680b00
@@ -1250,7 +1250,7 @@ _jmp_addr_0x0071101f:    {disp32} mov       ecx, dword ptr [_game]              
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x00711025    e8561fe4ff
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0071102a    8d442400
                          push               eax                                           // 0x0071102e    50
-                         call               _jmp_addr_0x007c79fd                          // 0x0071102f    e8c9690b00
+                         call               _time                                         // 0x0071102f    e8c9690b00
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x00711034    8d4c2404
                          push               ecx                                           // 0x00711038    51
                          call               _localtime                                    // 0x00711039    e85f680b00
@@ -1289,7 +1289,7 @@ _jmp_addr_0x0071108f:    {disp32} mov       ecx, dword ptr [_game]              
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x00711095    e8e61ee4ff
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0071109a    8d442400
                          push               eax                                           // 0x0071109e    50
-                         call               _jmp_addr_0x007c79fd                          // 0x0071109f    e859690b00
+                         call               _time                                         // 0x0071109f    e859690b00
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x007110a4    8d4c2404
                          push               ecx                                           // 0x007110a8    51
                          call               _localtime                                    // 0x007110a9    e8ef670b00
@@ -1328,7 +1328,7 @@ _jmp_addr_0x007110ff:    {disp32} mov       ecx, dword ptr [_game]              
                          call               @IsMultiplayerGame__5GGameCFv@4               // 0x00711105    e8761ee4ff
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0071110a    8d442400
                          push               eax                                           // 0x0071110e    50
-                         call               _jmp_addr_0x007c79fd                          // 0x0071110f    e8e9680b00
+                         call               _time                                         // 0x0071110f    e8e9680b00
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x00711114    8d4c2404
                          push               ecx                                           // 0x00711118    51
                          call               _localtime                                    // 0x00711119    e87f670b00

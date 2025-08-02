@@ -362,7 +362,7 @@
 .extern _remove
 .extern __unlink
 .extern _fclose
-.extern _jmp_addr_0x007c79fd
+.extern _time
 .extern _jmp_addr_0x007c8668
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
@@ -1909,7 +1909,7 @@ _jmp_addr_0x0054ec80:    push               ecx                                 
                          call               _ProcessDeadList__9GameThingFi@4              // 0x0054ec9f    e86c0e0200
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x0054eca4    8d442410
                          push               eax                                           // 0x0054eca8    50
-                         call               _jmp_addr_0x007c79fd                          // 0x0054eca9    e84f8d2700
+                         call               _time                                         // 0x0054eca9    e84f8d2700
                          {disp32} mov       edi, dword ptr [esi + 0x000059ac]             // 0x0054ecae    8bbeac590000
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x0054ecb4    8b4c2414
                          {disp32} mov       edx, dword ptr [data_bytes + 0x386540]        // 0x0054ecb8    8b1540c5d400
@@ -2987,7 +2987,7 @@ _jmp_addr_0x0054fc1e:    {disp32} lea       edi, dword ptr [ebx + 0x000059b8]   
                          call               _jmp_addr_0x0072e870                          // 0x0054fd10    e85beb1d00
                          {disp32} lea       edx, dword ptr [ebx + 0x000059ac]             // 0x0054fd15    8d93ac590000
                          push               edx                                           // 0x0054fd1b    52
-                         call               _jmp_addr_0x007c79fd                          // 0x0054fd1c    e8dc7c2700
+                         call               _time                                         // 0x0054fd1c    e8dc7c2700
                          add                esp, 0x08                                     // 0x0054fd21    83c408
                          cmp                dword ptr [ebx + 0x00205a0c], edi             // 0x0054fd24    39bb0c5a2000
                          {disp8} jne        _jmp_addr_0x0054fd3b                          // 0x0054fd2a    750f
