@@ -27,7 +27,7 @@
 .extern _fopen
 .extern _fclose
 .extern _fread
-.extern _jmp_addr_0x007c8859
+.extern _fseek
 .extern _realloc
 .extern __msize
 .extern ___nw__FUl
@@ -6510,7 +6510,7 @@ _jmp_addr_0x007eea71:    cmp.s            ebx, esi                              
                          push             esi                                      // 0x007eea84    56
                          push             edx                                      // 0x007eea85    52
                          push             ebx                                      // 0x007eea86    53
-                         call             _jmp_addr_0x007c8859                     // 0x007eea87    e8cd9dfdff
+                         call             _fseek                                   // 0x007eea87    e8cd9dfdff
                          add              esp, 0x0c                                // 0x007eea8c    83c40c
                          cmp              word ptr [edi + 0x06], si                // 0x007eea8f    66397706
                          {disp8} mov      dword ptr [esp + 0x10], esi              // 0x007eea93    89742410
