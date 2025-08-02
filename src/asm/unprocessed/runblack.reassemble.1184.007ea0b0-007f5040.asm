@@ -14983,7 +14983,7 @@ _jmp_addr_0x007f45a0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          push             ecx                                      // 0x007f45b6    51
                          push             0x0                                      // 0x007f45b7    6a00
                          push             0x0                                      // 0x007f45b9    6a00
-                         call             dword ptr [__imp__WideCharToMultiByte@4] // 0x007f45bb    ff152c928a00
+                         call             dword ptr [__imp__WideCharToMultiByte@32] // 0x007f45bb    ff152c928a00
                          {disp32} mov     byte ptr [esi + 0x000000ff], 0x00        // 0x007f45c1    c686ff00000000
                          pop              esi                                      // 0x007f45c8    5e
                          ret                                                       // 0x007f45c9    c3

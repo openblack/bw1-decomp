@@ -94,7 +94,6 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _jmp_addr_0x007c87d8
 .globl _jmp_addr_0x007c882a
 .globl _jmp_addr_0x007c8837
 .globl _jmp_addr_0x007c8859
@@ -112,66 +111,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-                         push                 ebp                                         // 0x007c87af    55
-                         mov.s                ebp, esp                                    // 0x007c87b0    8bec
-                         sub                  esp, 0x14                                   // 0x007c87b2    83ec14
-                         xor.s                eax, eax                                    // 0x007c87b5    33c0
-                         {disp8} lea          ecx, dword ptr [ebp + -0x14]                // 0x007c87b7    8d4dec
-                         push                 eax                                         // 0x007c87ba    50
-                         push                 eax                                         // 0x007c87bb    50
-                         push                 0x14                                        // 0x007c87bc    6a14
-                         push                 ecx                                         // 0x007c87be    51
-                         push                 -0x1                                        // 0x007c87bf    6aff
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c87c1    ff7508
-                         push                 eax                                         // 0x007c87c4    50
-                         push                 eax                                         // 0x007c87c5    50
-                         call                 dword ptr [__imp__WideCharToMultiByte@4]    // 0x007c87c6    ff152c928a00
-                         {disp8} lea          eax, dword ptr [ebp + -0x14]                // 0x007c87cc    8d45ec
-                         push                 eax                                         // 0x007c87cf    50
-                         call                 _atol                                       // 0x007c87d0    e827ddffff
-                         pop                  ecx                                         // 0x007c87d5    59
-                         leave                                                            // 0x007c87d6    c9
-                         ret                                                              // 0x007c87d7    c3
-_jmp_addr_0x007c87d8:    push                 ebp                                         // 0x007c87d8    55
-                         mov.s                ebp, esp                                    // 0x007c87d9    8bec
-                         sub                  esp, 0x14                                   // 0x007c87db    83ec14
-                         xor.s                eax, eax                                    // 0x007c87de    33c0
-                         {disp8} lea          ecx, dword ptr [ebp + -0x14]                // 0x007c87e0    8d4dec
-                         push                 eax                                         // 0x007c87e3    50
-                         push                 eax                                         // 0x007c87e4    50
-                         push                 0x14                                        // 0x007c87e5    6a14
-                         push                 ecx                                         // 0x007c87e7    51
-                         push                 -0x1                                        // 0x007c87e8    6aff
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c87ea    ff7508
-                         push                 eax                                         // 0x007c87ed    50
-                         push                 eax                                         // 0x007c87ee    50
-                         call                 dword ptr [__imp__WideCharToMultiByte@4]    // 0x007c87ef    ff152c928a00
-                         {disp8} lea          eax, dword ptr [ebp + -0x14]                // 0x007c87f5    8d45ec
-                         push                 eax                                         // 0x007c87f8    50
-                         call                 _atol                                       // 0x007c87f9    e8fedcffff
-                         pop                  ecx                                         // 0x007c87fe    59
-                         leave                                                            // 0x007c87ff    c9
-                         ret                                                              // 0x007c8800    c3
-                         push                 ebp                                         // 0x007c8801    55
-                         mov.s                ebp, esp                                    // 0x007c8802    8bec
-                         sub                  esp, 0x50                                   // 0x007c8804    83ec50
-                         xor.s                eax, eax                                    // 0x007c8807    33c0
-                         {disp8} lea          ecx, dword ptr [ebp + -0x50]                // 0x007c8809    8d4db0
-                         push                 eax                                         // 0x007c880c    50
-                         push                 eax                                         // 0x007c880d    50
-                         push                 0x50                                        // 0x007c880e    6a50
-                         push                 ecx                                         // 0x007c8810    51
-                         push                 -0x1                                        // 0x007c8811    6aff
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c8813    ff7508
-                         push                 eax                                         // 0x007c8816    50
-                         push                 eax                                         // 0x007c8817    50
-                         call                 dword ptr [__imp__WideCharToMultiByte@4]    // 0x007c8818    ff152c928a00
-                         {disp8} lea          eax, dword ptr [ebp + -0x50]                // 0x007c881e    8d45b0
-                         push                 eax                                         // 0x007c8821    50
-                         call                 __atoi64                                    // 0x007c8822    e86bddffff
-                         pop                  ecx                                         // 0x007c8827    59
-                         leave                                                            // 0x007c8828    c9
-                         ret                                                              // 0x007c8829    c3
 _jmp_addr_0x007c882a:    call                 __getptd                                    // 0x007c882a    e8fc9a0000
                          {disp8} mov          ecx, dword ptr [esp + 0x04]                 // 0x007c882f    8b4c2404
                          {disp8} mov          dword ptr [eax + 0x14], ecx                 // 0x007c8833    894814

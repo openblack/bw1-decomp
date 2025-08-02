@@ -2250,7 +2250,7 @@ _jmp_addr_0x004797ec:    {disp32} mov       ecx, dword ptr [_game]              
                          push               eax                                           // 0x004797f6    50
                          add                ecx, 0x00250310                               // 0x004797f7    81c110032500
                          call               _jmp_addr_0x0078ea20                          // 0x004797fd    e81e523100
-                         {disp32} mov       esi, dword ptr [__imp__WideCharToMultiByte@4] // 0x00479802    8b352c928a00
+                         {disp32} mov       esi, dword ptr [__imp__WideCharToMultiByte@32] // 0x00479802    8b352c928a00
                          push               0x0                                           // 0x00479808    6a00
                          push               0x0                                           // 0x0047980a    6a00
                          push               0x000003ff                                    // 0x0047980c    68ff030000

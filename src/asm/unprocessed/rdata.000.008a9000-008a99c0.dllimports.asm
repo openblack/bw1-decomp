@@ -135,7 +135,7 @@
 .globl __imp__SetFilePointer@4
 .globl __imp__FindClose@4
 .globl __imp__DeleteFileA@4
-.globl __imp__WideCharToMultiByte@4
+.globl __imp__WideCharToMultiByte@32
 .globl __imp__Sleep@4
 .globl __imp__GetSystemInfo@4
 .globl __imp__GlobalAlloc@4
@@ -744,7 +744,7 @@ __imp__CreateFileA@4:                                                           
 __imp__SetFilePointer@4:                                                                                                       .long 0x005c46e2 // 0x008a9220 KERNEL32.DLL::SetFilePointer
 __imp__FindClose@4:                                                                                                            .long 0x005c0316 // 0x008a9224 KERNEL32.DLL::FindClose
 __imp__DeleteFileA@4:                                                                                                          .long 0x005c0308 // 0x008a9228 KERNEL32.DLL::DeleteFileA
-__imp__WideCharToMultiByte@4:                                                                                                  .long 0x005c02f2 // 0x008a922c KERNEL32.DLL::WideCharToMultiByte
+__imp__WideCharToMultiByte@32:                                                                                                 .long 0x005c02f2 // 0x008a922c KERNEL32.DLL::WideCharToMultiByte
 __imp__Sleep@4:                                                                                                                .long 0x005c02ea // 0x008a9230 KERNEL32.DLL::Sleep
 __imp__GetSystemInfo@4:                                                                                                        .long 0x005c02da // 0x008a9234 KERNEL32.DLL::GetSystemInfo
 __imp__GlobalAlloc@4:                                                                                                          .long 0x005c02cc // 0x008a9238 KERNEL32.DLL::GlobalAlloc
