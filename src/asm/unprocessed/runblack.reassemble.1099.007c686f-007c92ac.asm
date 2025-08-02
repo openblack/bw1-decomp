@@ -96,7 +96,6 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _jmp_addr_0x007c7e13
 .globl _jmp_addr_0x007c7e64
 .globl _jmp_addr_0x007c804a
 .globl _jmp_addr_0x007c8072
@@ -136,37 +135,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-_jmp_addr_0x007c7e13:    push                 ebp                                         // 0x007c7e13    55
-                         mov.s                ebp, esp                                    // 0x007c7e14    8bec
-                         sub                  esp, 0x20                                   // 0x007c7e16    83ec20
-                         {disp8} mov          eax, dword ptr [ebp + 0x08]                 // 0x007c7e19    8b4508
-                         push                 esi                                         // 0x007c7e1c    56
-                         push                 dword ptr [ebp + 0x10]                      // 0x007c7e1d    ff7510
-                         {disp8} mov          dword ptr [ebp + -0x18], eax                // 0x007c7e20    8945e8
-                         {disp8} mov          dword ptr [ebp + -0x20], eax                // 0x007c7e23    8945e0
-                         {disp8} lea          eax, dword ptr [ebp + -0x20]                // 0x007c7e26    8d45e0
-                         push                 dword ptr [ebp + 0x0c]                      // 0x007c7e29    ff750c
-                         {disp8} mov          dword ptr [ebp + -0x14], 0x00000042         // 0x007c7e2c    c745ec42000000
-                         {disp8} mov          dword ptr [ebp + -0x1c], 0x7fffffff         // 0x007c7e33    c745e4ffffff7f
-                         push                 eax                                         // 0x007c7e3a    50
-                         call                 __output                                    // 0x007c7e3b    e85a520000
-                         add                  esp, 0x0c                                   // 0x007c7e40    83c40c
-                         dec                  dword ptr [ebp + -0x1c]                     // 0x007c7e43    ff4de4
-                         mov.s                esi, eax                                    // 0x007c7e46    8bf0
-                         {disp8} js           _jmp_addr_0x007c7e52                        // 0x007c7e48    7808
-                         {disp8} mov          eax, dword ptr [ebp + -0x20]                // 0x007c7e4a    8b45e0
-                         and                  byte ptr [eax], 0x00                        // 0x007c7e4d    802000
-                         {disp8} jmp          _jmp_addr_0x007c7e5f                        // 0x007c7e50    eb0d
-_jmp_addr_0x007c7e52:    {disp8} lea          eax, dword ptr [ebp + -0x20]                // 0x007c7e52    8d45e0
-                         push                 eax                                         // 0x007c7e55    50
-                         push                 0x0                                         // 0x007c7e56    6a00
-                         call                 __flsbuf                                    // 0x007c7e58    e825510000
-                         pop                  ecx                                         // 0x007c7e5d    59
-                         pop                  ecx                                         // 0x007c7e5e    59
-_jmp_addr_0x007c7e5f:    mov.s                eax, esi                                    // 0x007c7e5f    8bc6
-                         pop                  esi                                         // 0x007c7e61    5e
-                         leave                                                            // 0x007c7e62    c9
-                         ret                                                              // 0x007c7e63    c3
 _jmp_addr_0x007c7e64:    push                 ebp                                         // 0x007c7e64    55
                          mov.s                ebp, esp                                    // 0x007c7e65    8bec
                          sub                  esp, 0x000000f8                             // 0x007c7e67    81ecf8000000
