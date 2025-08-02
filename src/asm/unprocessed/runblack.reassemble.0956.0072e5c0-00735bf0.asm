@@ -133,7 +133,7 @@
 .extern _wcslen
 .extern ??2@YAPAXI@Z
 .extern _malloc
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern ___nw__FUl
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
@@ -5799,7 +5799,7 @@ _jmp_addr_0x007321a6:    pop                edi                                 
 _jmp_addr_0x007321b0:    {disp32} fld       dword ptr [rdata_bytes + 0xf0668]             // 0x007321b0    d90568969900
                          {disp8} fmul       dword ptr [esp + 0x04]                        // 0x007321b6    d84c2404
                          {disp32} fld       qword ptr [rdata_bytes + 0x2f740]             // 0x007321ba    dd0540878d00
-                         call               _jmp_addr_0x007c804a                          // 0x007321c0    e8855e0900
+                         call               __CIfmod                                      // 0x007321c0    e8855e0900
                          {disp32} fadd      dword ptr [rdata_bytes + 0x26134]             // 0x007321c5    d80534f18c00
                          call               _jmp_addr_0x007a1400                          // 0x007321cb    e830f20600
                          ret                0x0004                                        // 0x007321d0    c20400
@@ -5819,7 +5819,7 @@ _jmp_addr_0x007321b0:    {disp32} fld       dword ptr [rdata_bytes + 0xf0668]   
 _jmp_addr_0x007321e0:    {disp32} fld       dword ptr [rdata_bytes + 0xf066c]             // 0x007321e0    d9056c969900
                          {disp8} fmul       dword ptr [esp + 0x04]                        // 0x007321e6    d84c2404
                          {disp32} fld       qword ptr [rdata_bytes + 0x2f740]             // 0x007321ea    dd0540878d00
-                         call               _jmp_addr_0x007c804a                          // 0x007321f0    e8555e0900
+                         call               __CIfmod                                      // 0x007321f0    e8555e0900
                          call               _jmp_addr_0x007a1400                          // 0x007321f5    e806f20600
                          ret                0x0004                                        // 0x007321fa    c20400
                          nop                                                              // 0x007321fd    90
