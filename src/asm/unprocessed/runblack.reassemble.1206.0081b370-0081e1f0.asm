@@ -9,7 +9,7 @@
 
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern _jmp_addr_0x007a1480
-.extern _jmp_addr_0x007c7e13
+.extern _vsprintf
 .extern _jmp_addr_0x007c8837
 .extern _jmp_addr_0x0081a760
 .extern _jmp_addr_0x0081aab0
@@ -753,7 +753,7 @@ _Report3D__FPCce:        {disp8} mov        ecx, dword ptr [esp + 0x04]         
                          push               ecx                                           // 0x0081bbe2    51
                          {disp8} lea        edx, dword ptr [esp + 0x08]                   // 0x0081bbe3    8d542408
                          push               edx                                           // 0x0081bbe7    52
-                         call               _jmp_addr_0x007c7e13                          // 0x0081bbe8    e826c2faff
+                         call               _vsprintf                                     // 0x0081bbe8    e826c2faff
                          add                esp, 0x0c                                     // 0x0081bbed    83c40c
                          {disp8} lea        eax, dword ptr [esp + 0x00]                   // 0x0081bbf0    8d442400
                          push               eax                                           // 0x0081bbf4    50

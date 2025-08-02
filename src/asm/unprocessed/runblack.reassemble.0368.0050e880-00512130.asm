@@ -79,7 +79,7 @@
 .extern _malloc
 .extern _free
 .extern _fprintf
-.extern _jmp_addr_0x007c7e13
+.extern _vsprintf
 .extern _LHRand__FlRU
 .extern ___nw__FUl
 .extern _jmp_addr_0x007dd9c0
@@ -5357,7 +5357,7 @@ _jmp_addr_0x00511e02:    test               eax, eax                            
                          {disp32} lea       ecx, dword ptr [eax + ecx * 0x1 + 0x000001a0] // 0x00511e1b    8d8c08a0010000
                          push               esi                                           // 0x00511e22    56
                          push               ecx                                           // 0x00511e23    51
-                         call               _jmp_addr_0x007c7e13                          // 0x00511e24    e8ea5f2b00
+                         call               _vsprintf                                     // 0x00511e24    e8ea5f2b00
                          add                esp, 0x0c                                     // 0x00511e29    83c40c
 _jmp_addr_0x00511e2c:    pop                esi                                           // 0x00511e2c    5e
                          ret                0x000c                                        // 0x00511e2d    c20c00
