@@ -182,7 +182,7 @@
 .extern __CIacos
 .extern _qsort
 .extern __CIfmod
-.extern _jmp_addr_0x007c8072
+.extern _ceil
 .extern _jmp_addr_0x007c8141
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fae60
@@ -14335,7 +14335,7 @@ _jmp_addr_0x0067e5eb:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp32} fadd      dword ptr [rdata_bytes + 0x1e658]             // 0x0067e5f2    d80558768c00
                          {disp32} fdiv      dword ptr [rdata_bytes + 0x8c7c8]             // 0x0067e5f8    d835c8579300
                          fstp               qword ptr [esp]                               // 0x0067e5fe    dd1c24
-                         call               _jmp_addr_0x007c8072                          // 0x0067e601    e86c9a1400
+                         call               _ceil                                         // 0x0067e601    e86c9a1400
                          add                esp, 0x08                                     // 0x0067e606    83c408
                          call               _jmp_addr_0x007a1400                          // 0x0067e609    e8f22d1200
                          imul               eax, eax                                      // 0x0067e60e    0fafc0
