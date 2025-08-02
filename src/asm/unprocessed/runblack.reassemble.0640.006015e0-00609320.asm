@@ -113,7 +113,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c8072
+.extern _ceil
 .extern _strchr
 .extern _atof
 .extern _jmp_addr_0x007fac10
@@ -5286,7 +5286,7 @@ _jmp_addr_0x00604af0:    sub                esp, 0x18                           
                          {disp8} mov        dword ptr [esp + 0x28], edx                   // 0x00604b1c    89542428
                          {disp8} mov        dword ptr [esp + 0x2c], eax                   // 0x00604b20    8944242c
                          fstp               qword ptr [esp]                               // 0x00604b24    dd1c24
-                         call               _jmp_addr_0x007c8072                          // 0x00604b27    e846351c00
+                         call               _ceil                                         // 0x00604b27    e846351c00
                          add                esp, 0x08                                     // 0x00604b2c    83c408
                          call               _jmp_addr_0x007a1400                          // 0x00604b2f    e8ccc81900
                          cmp                eax, 0x03                                     // 0x00604b34    83f803
@@ -5398,7 +5398,7 @@ _jmp_addr_0x00604c30:    sub                esp, 0x18                           
                          {disp8} mov        dword ptr [esp + 0x28], edx                   // 0x00604c5c    89542428
                          {disp8} mov        dword ptr [esp + 0x2c], eax                   // 0x00604c60    8944242c
                          fstp               qword ptr [esp]                               // 0x00604c64    dd1c24
-                         call               _jmp_addr_0x007c8072                          // 0x00604c67    e806341c00
+                         call               _ceil                                         // 0x00604c67    e806341c00
                          add                esp, 0x08                                     // 0x00604c6c    83c408
                          call               _jmp_addr_0x007a1400                          // 0x00604c6f    e88cc71900
                          cmp                eax, 0x03                                     // 0x00604c74    83f803

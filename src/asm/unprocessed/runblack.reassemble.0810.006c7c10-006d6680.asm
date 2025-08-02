@@ -174,7 +174,7 @@
 .extern ??2@YAPAXI@Z
 .extern  __CIpow
 .extern __CIfmod
-.extern _jmp_addr_0x007c8072
+.extern _ceil
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fab30
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -15915,7 +15915,7 @@ _jmp_addr_0x006d227a:    {disp32} mov       esi, dword ptr [data_bytes + 0x388ec
                          {disp8} mov        dword ptr [ebp + -0x20], eax                  // 0x006d22b8    8945e0
                          {disp8} mov        dword ptr [ebp + -0x1c], 0x00000000           // 0x006d22bb    c745e400000000
                          fstp               qword ptr [esp]                               // 0x006d22c2    dd1c24
-                         call               _jmp_addr_0x007c8072                          // 0x006d22c5    e8a85d0f00
+                         call               _ceil                                         // 0x006d22c5    e8a85d0f00
                          add                esp, 0x08                                     // 0x006d22ca    83c408
                          call               _jmp_addr_0x007a1400                          // 0x006d22cd    e82ef10c00
                          {disp8} mov        edx, dword ptr [ebp + -0x24]                  // 0x006d22d2    8b55dc

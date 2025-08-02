@@ -151,7 +151,7 @@
 .globl __cintrindisp2
 .globl __ctrandisp2
 .globl __adj_fprem
-.globl _jmp_addr_0x007d3f8b
+.globl __frnd
 .globl _jmp_addr_0x007d3f9d
 .globl _jmp_addr_0x007d42f2
 .globl _jmp_addr_0x007d47c0
@@ -11187,7 +11187,7 @@ _jmp_addr_0x007d2f27:    push               ebp                                 
                          push               ecx                                            // 0x007d2f42    51
                          push               ecx                                            // 0x007d2f43    51
                          fstp               qword ptr [esp]                                // 0x007d2f44    dd1c24
-                         call               _jmp_addr_0x007d3f8b                           // 0x007d2f47    e83f100000
+                         call               __frnd                                         // 0x007d2f47    e83f100000
                          {disp8} fstp       qword ptr [ebp + -0x08]                        // 0x007d2f4c    dd5df8
                          {disp8} fld        qword ptr [ebp + -0x08]                        // 0x007d2f4f    dd45f8
                          {disp8} fcomp      qword ptr [ebp + 0x08]                         // 0x007d2f52    dc5d08
@@ -11203,7 +11203,7 @@ _jmp_addr_0x007d2f27:    push               ebp                                 
                          {disp8} fstp       qword ptr [ebp + 0x08]                         // 0x007d2f67    dd5d08
                          {disp8} fld        qword ptr [ebp + 0x08]                         // 0x007d2f6a    dd4508
                          fstp               qword ptr [esp]                                // 0x007d2f6d    dd1c24
-                         call               _jmp_addr_0x007d3f8b                           // 0x007d2f70    e816100000
+                         call               __frnd                                         // 0x007d2f70    e816100000
                          {disp8} fcomp      qword ptr [ebp + 0x08]                         // 0x007d2f75    dc5d08
                          pop                ecx                                            // 0x007d2f78    59
                          pop                ecx                                            // 0x007d2f79    59
@@ -12517,7 +12517,7 @@ _jmp_addr_0x007d3f72:    fprem                                                  
                          ret                                                               // 0x007d3f87    c3
                          fptan                                                             // 0x007d3f88    d9f2
                          ret                                                               // 0x007d3f8a    c3
-_jmp_addr_0x007d3f8b:    push               ebp                                            // 0x007d3f8b    55
+__frnd:                  push               ebp                                            // 0x007d3f8b    55
                          mov.s              ebp, esp                                       // 0x007d3f8c    8bec
                          push               ecx                                            // 0x007d3f8e    51
                          push               ecx                                            // 0x007d3f8f    51

@@ -141,7 +141,7 @@
 .extern _fclose
 .extern _fscanf
 .extern __CIfmod
-.extern _jmp_addr_0x007c8072
+.extern _ceil
 .extern ___nw__FUl
 .extern _jmp_addr_0x007deab0
 .extern _jmp_addr_0x007e2910
@@ -18728,7 +18728,7 @@ _jmp_addr_0x0052a670:    sub                esp, 0x10                           
                          {disp8} mov        dword ptr [esp + 0x18], edx                          // 0x0052a69c    89542418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                          // 0x0052a6a0    8944241c
                          fstp               qword ptr [esp]                                      // 0x0052a6a4    dd1c24
-                         call               _jmp_addr_0x007c8072                                 // 0x0052a6a7    e8c6d92900
+                         call               _ceil                                                // 0x0052a6a7    e8c6d92900
                          add                esp, 0x08                                            // 0x0052a6ac    83c408
                          call               _jmp_addr_0x007a1400                                 // 0x0052a6af    e84c6d2700
                          imul               eax, eax                                             // 0x0052a6b4    0fafc0
@@ -18835,7 +18835,7 @@ _jmp_addr_0x0052a7a0:    sub                esp, 0x10                           
                          {disp8} mov        dword ptr [esp + 0x18], edx                          // 0x0052a7cc    89542418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                          // 0x0052a7d0    8944241c
                          fstp               qword ptr [esp]                                      // 0x0052a7d4    dd1c24
-                         call               _jmp_addr_0x007c8072                                 // 0x0052a7d7    e896d82900
+                         call               _ceil                                                // 0x0052a7d7    e896d82900
                          add                esp, 0x08                                            // 0x0052a7dc    83c408
                          call               _jmp_addr_0x007a1400                                 // 0x0052a7df    e81c6c2700
                          imul               eax, eax                                             // 0x0052a7e4    0fafc0

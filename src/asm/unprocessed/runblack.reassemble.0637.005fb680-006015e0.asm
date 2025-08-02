@@ -127,7 +127,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c8072
+.extern _ceil
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fd140
 .extern _jmp_addr_0x00800da0
@@ -831,7 +831,7 @@ _jmp_addr_0x005fbb4b:    {disp8} fld        dword ptr [ebp + -0x04]             
                          fadd.s             st(0), st(0)                                  // 0x005fbb51    dcc0
                          {disp32} fdiv      dword ptr [rdata_bytes + 0x83100]             // 0x005fbb53    d83500c19200
                          fstp               qword ptr [esp]                               // 0x005fbb59    dd1c24
-                         call               _jmp_addr_0x007c8072                          // 0x005fbb5c    e811c51c00
+                         call               _ceil                                         // 0x005fbb5c    e811c51c00
                          add                esp, 0x08                                     // 0x005fbb61    83c408
                          call               _jmp_addr_0x007a1400                          // 0x005fbb64    e897581a00
                          mov.s              esi, eax                                      // 0x005fbb69    8bf0
