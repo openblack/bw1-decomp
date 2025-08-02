@@ -180,7 +180,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern __CIacos
-.extern _jmp_addr_0x007c7e64
+.extern _qsort
 .extern _jmp_addr_0x007c804a
 .extern _jmp_addr_0x007c8072
 .extern _jmp_addr_0x007c8141
@@ -17226,7 +17226,7 @@ _jmp_addr_0x006808e4:    {disp32} mov       eax, dword ptr [data_bytes + 0x38834
                          push               0x1c                                          // 0x006808f4    6a1c
                          push               eax                                           // 0x006808f6    50
                          push               ecx                                           // 0x006808f7    51
-                         call               _jmp_addr_0x007c7e64                          // 0x006808f8    e867751400
+                         call               _qsort                                        // 0x006808f8    e867751400
                          {disp32} mov       eax, dword ptr [data_bytes + 0x388340]        // 0x006808fd    a140e3d400
                          xor.s              ebp, ebp                                      // 0x00680902    33ed
                          add                esp, 0x10                                     // 0x00680904    83c410

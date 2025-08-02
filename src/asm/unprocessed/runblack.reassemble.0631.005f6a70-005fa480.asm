@@ -51,7 +51,7 @@
 .extern _fclose
 .extern __chkstk
 .extern _fread
-.extern _jmp_addr_0x007c7e64
+.extern _qsort
 .extern ___nw__FUl
 .extern _jmp_addr_0x007de090
 .extern _jmp_addr_0x007ded50
@@ -3055,7 +3055,7 @@ _jmp_addr_0x005f8db0:    fld                st(0)                               
                          push               0x34                                           // 0x005f8e0b    6a34
                          push               0x00001000                                     // 0x005f8e0d    6800100000
                          push               eax                                            // 0x005f8e12    50
-                         call               _jmp_addr_0x007c7e64                           // 0x005f8e13    e84cf01c00
+                         call               _qsort                                         // 0x005f8e13    e84cf01c00
                          add                esp, 0x10                                      // 0x005f8e18    83c410
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000             // 0x005f8e1b    c744242c00000000
                          {disp8} mov        esi, dword ptr [esp + 0x2c]                    // 0x005f8e23    8b74242c
