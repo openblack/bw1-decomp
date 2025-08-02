@@ -88,7 +88,7 @@
 .extern _fopen
 .extern _fclose
 .extern _fscanf
-.extern _getc_10LHFilePath
+.extern _fgetc
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
@@ -207,7 +207,7 @@ _jmp_addr_0x004c4b42:    push               ebx                                 
                          call               _fscanf                                              // 0x004c4b49    e85c323000
                          add                esp, 0x0c                                            // 0x004c4b4e    83c40c
 _jmp_addr_0x004c4b51:    push               esi                                                  // 0x004c4b51    56
-                         call               _getc_10LHFilePath                                   // 0x004c4b52    e880323000
+                         call               _fgetc                                               // 0x004c4b52    e880323000
                          add                esp, 0x04                                            // 0x004c4b57    83c404
                          cmp                al, 0x45                                             // 0x004c4b5a    3c45
                          {disp8} je         _jmp_addr_0x004c4b66                                 // 0x004c4b5c    7408

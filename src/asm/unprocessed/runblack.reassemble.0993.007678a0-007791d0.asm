@@ -319,7 +319,7 @@
 .extern _fclose
 .extern __chkstk
 .extern _fwrite
-.extern _getc_10LHFilePath
+.extern _fgetc
 .extern _jmp_addr_0x007c8859
 .extern ??0exception@@QAE@ABQBD@Z
 .extern __CxxThrowException@8
@@ -23030,7 +23030,7 @@ _jmp_addr_0x00776ab3:    {disp8} je         _jmp_addr_0x00776ad8                
                          mov                esi, 0x00000001                                 // 0x00776aba    be01000000
                          sub.s              esi, edi                                        // 0x00776abf    2bf7
 _jmp_addr_0x00776ac1:    push               ebx                                             // 0x00776ac1    53
-                         call               _getc_10LHFilePath                              // 0x00776ac2    e810130500
+                         call               _fgetc                                          // 0x00776ac2    e810130500
                          add                esp, 0x04                                       // 0x00776ac7    83c404
                          dec                esi                                             // 0x00776aca    4e
                          {disp8} jne        _jmp_addr_0x00776ac1                            // 0x00776acb    75f4
@@ -23179,7 +23179,7 @@ _jmp_addr_0x00776beb:    {disp8} mov        ecx, dword ptr [esi + 0x38]         
                          test               ecx, ecx                                        // 0x00776bee    85c9
                          {disp8} jne        _jmp_addr_0x00776c0d                            // 0x00776bf0    751b
                          push               eax                                             // 0x00776bf2    50
-                         call               _getc_10LHFilePath                              // 0x00776bf3    e8df110500
+                         call               _fgetc                                          // 0x00776bf3    e8df110500
                          add                esp, 0x04                                       // 0x00776bf8    83c404
                          cmp                eax, -0x01                                      // 0x00776bfb    83f8ff
                          {disp8} je         _jmp_addr_0x00776be0                            // 0x00776bfe    74e0
@@ -23223,7 +23223,7 @@ _jmp_addr_0x00776c2c:    test               ebx, ebx                            
                          mov                byte ptr [eax + ebp * 0x1], 0x00                // 0x00776c5c    c6042800
 _jmp_addr_0x00776c60:    {disp8} mov        ecx, dword ptr [esi + 0x50]                     // 0x00776c60    8b4e50
                          push               ecx                                             // 0x00776c63    51
-                         call               _getc_10LHFilePath                              // 0x00776c64    e86e110500
+                         call               _fgetc                                          // 0x00776c64    e86e110500
                          mov.s              ebx, eax                                        // 0x00776c69    8bd8
                          add                esp, 0x04                                       // 0x00776c6b    83c404
                          cmp                ebx, -0x01                                      // 0x00776c6e    83fbff
@@ -23293,7 +23293,7 @@ _jmp_addr_0x00776cd8:    {disp8} mov        edi, dword ptr [esi + 0x44]         
                          {disp8} jae        _jmp_addr_0x00776d43                            // 0x00776d1f    7322
 _jmp_addr_0x00776d21:    {disp8} mov        edx, dword ptr [esi + 0x50]                     // 0x00776d21    8b5650
                          push               edx                                             // 0x00776d24    52
-                         call               _getc_10LHFilePath                              // 0x00776d25    e8ad100500
+                         call               _fgetc                                          // 0x00776d25    e8ad100500
                          mov.s              ebx, eax                                        // 0x00776d2a    8bd8
                          add                esp, 0x04                                       // 0x00776d2c    83c404
                          cmp                ebx, -0x01                                      // 0x00776d2f    83fbff
