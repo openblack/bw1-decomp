@@ -68,7 +68,7 @@
 .extern _swprintf
 .extern __strcmpi
 .extern __chkstk
-.extern _jmp_addr_0x007c8668
+.extern __splitpath
 .extern ___nw__FUl
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
@@ -2966,7 +2966,7 @@ _jmp_addr_0x005709b3:    push               0x00000400                          
                          push               ecx                                           // 0x005709e0    51
                          {disp32} lea       edx, dword ptr [esp + 0x0000052c]             // 0x005709e1    8d94242c050000
                          push               edx                                           // 0x005709e8    52
-                         call               _jmp_addr_0x007c8668                          // 0x005709e9    e87a7c2500
+                         call               __splitpath                                   // 0x005709e9    e87a7c2500
                          or                 ecx, 0xffffffff                               // 0x005709ee    83c9ff
                          xor.s              eax, eax                                      // 0x005709f1    33c0
                          {disp8} lea        edi, dword ptr [esp + 0x30]                   // 0x005709f3    8d7c2430

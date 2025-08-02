@@ -356,7 +356,7 @@
 .extern __unlink
 .extern _jmp_addr_0x007c6e30
 .extern _time
-.extern _jmp_addr_0x007c8668
+.extern __splitpath
 .extern _jmp_addr_0x007db790
 .extern _jmp_addr_0x007de090
 .extern _jmp_addr_0x007ded50
@@ -1496,7 +1496,7 @@ _jmp_addr_0x0054ab20:    {disp32} mov       al, byte ptr [data_bytes + 0x380ab8]
                          push               edx                                           // 0x0054ab53    52
                          push               ebx                                           // 0x0054ab54    53
                          push               edi                                           // 0x0054ab55    57
-                         call               _jmp_addr_0x007c8668                          // 0x0054ab56    e80ddb2700
+                         call               __splitpath                                   // 0x0054ab56    e80ddb2700
                          movsx              edx, byte ptr [data_bytes + 0x2659e8]         // 0x0054ab5b    0fbe15e8b9c200
                          add                esp, 0x14                                     // 0x0054ab62    83c414
                          {disp32} lea       eax, dword ptr [esp + 0x00000110]             // 0x0054ab65    8d842410010000
