@@ -94,7 +94,6 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _jmp_addr_0x007c8a95
 .globl _floor
 .globl ??0exception@@QAE@ABQBD@Z
 .globl ??0exception@@QAE@ABV0@@Z
@@ -107,41 +106,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-_jmp_addr_0x007c8a95:    push                 ebp                                         // 0x007c8a95    55
-                         mov.s                ebp, esp                                    // 0x007c8a96    8bec
-                         push                 ebx                                         // 0x007c8a98    53
-                         push                 esi                                         // 0x007c8a99    56
-                         push                 edi                                         // 0x007c8a9a    57
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c8a9b    ff7508
-                         call                 _strlen                                     // 0x007c8a9e    e84d1b0000
-                         {disp8} mov          esi, dword ptr [ebp + 0x0c]                 // 0x007c8aa3    8b750c
-                         mov.s                edi, eax                                    // 0x007c8aa6    8bf8
-                         push                 esi                                         // 0x007c8aa8    56
-                         call                 __lock_file                                 // 0x007c8aa9    e866270000
-                         push                 esi                                         // 0x007c8aae    56
-                         call                 __stbuf                                     // 0x007c8aaf    e8497f0000
-                         push                 esi                                         // 0x007c8ab4    56
-                         push                 edi                                         // 0x007c8ab5    57
-                         push                 0x1                                         // 0x007c8ab6    6a01
-                         mov.s                ebx, eax                                    // 0x007c8ab8    8bd8
-                         push                 dword ptr [ebp + 0x08]                      // 0x007c8aba    ff7508
-                         call                 __fwrite_lk                                 // 0x007c8abd    e80febffff
-                         push                 esi                                         // 0x007c8ac2    56
-                         push                 ebx                                         // 0x007c8ac3    53
-                         {disp8} mov          dword ptr [ebp + 0x08], eax                 // 0x007c8ac4    894508
-                         call                 __ftbuf                                     // 0x007c8ac7    e8be7f0000
-                         push                 esi                                         // 0x007c8acc    56
-                         call                 __unlock_file                               // 0x007c8acd    e894270000
-                         add                  esp, 0x28                                   // 0x007c8ad2    83c428
-                         xor.s                eax, eax                                    // 0x007c8ad5    33c0
-                         cmp                  dword ptr [ebp + 0x08], edi                 // 0x007c8ad7    397d08
-                         pop                  edi                                         // 0x007c8ada    5f
-                         pop                  esi                                         // 0x007c8adb    5e
-                         sete                 al                                          // 0x007c8adc    0f94c0
-                         dec                  eax                                         // 0x007c8adf    48
-                         pop                  ebx                                         // 0x007c8ae0    5b
-                         pop                  ebp                                         // 0x007c8ae1    5d
-                         ret                                                              // 0x007c8ae2    c3
 _floor:    push                 ebp                                         // 0x007c8ae3    55
                          mov.s                ebp, esp                                    // 0x007c8ae4    8bec
                          push                 ecx                                         // 0x007c8ae6    51
