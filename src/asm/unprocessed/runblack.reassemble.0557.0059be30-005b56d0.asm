@@ -72,7 +72,7 @@
 .extern _malloc
 .extern _free
 .extern __CIacos
-.extern _jmp_addr_0x007c7ae0
+.extern  __CIpow
 .extern _strncmp
 .extern _strchr
 .extern _calloc
@@ -19443,7 +19443,7 @@ _jmp_addr_0x005b17a3:    pop                esi                                 
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x005b17d1    d95c2430
                          {disp32} fld       dword ptr [esi + 0x00000090]                  // 0x005b17d5    d98690000000
                          {disp32} fld       qword ptr [rdata_bytes + 0x2260]              // 0x005b17db    dd0560b28a00
-                         call               _jmp_addr_0x007c7ae0                          // 0x005b17e1    e8fa622100
+                         call               __CIpow                                       // 0x005b17e1    e8fa622100
                          {disp8} fstp       dword ptr [esp + 0x50]                        // 0x005b17e6    d95c2450
                          {disp32} mov       eax, dword ptr [esi + 0x0000526c]             // 0x005b17ea    8b866c520000
                          xor.s              edi, edi                                      // 0x005b17f0    33ff

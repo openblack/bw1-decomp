@@ -127,16 +127,16 @@
 .globl __except1
 .globl __except2
 .globl __ctrlfp
-.globl _jmp_addr_0x007d1bb0
+.globl __startTwoArgErrorHandling
 .globl __startOneArgErrorHandling
-.globl _jmp_addr_0x007d1c10
+.globl __twoToTOS
 .globl __load_CW
 .globl __convertTOStoQNaN
 .globl __fload_withFB
 .globl __checkTOS_withFB
 .globl __fast_exit
 .globl __math_exit
-.globl _jmp_addr_0x007d1cf9
+.globl __check_range_exit
 .globl __filbuf
 .globl __read
 .globl __write
@@ -147,7 +147,7 @@
 .globl __isindst
 .globl _gmtime
 .globl ___loctotime_t
-.globl _jmp_addr_0x007d2df7
+.globl __powhlp
 .globl _jmp_addr_0x007d2f90
 .globl _jmp_addr_0x007d300b
 .globl _jmp_addr_0x007d3c0c
@@ -9406,7 +9406,8 @@ _jmp_addr_0x007d1ba9:    ret                                                    
                          int3                                                              // 0x007d1bad    cc
                          int3                                                              // 0x007d1bae    cc
                          int3                                                              // 0x007d1baf    cc
-_jmp_addr_0x007d1bb0:    push               ebp                                            // 0x007d1bb0    55
+__startTwoArgErrorHandling:
+                         push               ebp                                            // 0x007d1bb0    55
                          mov.s              ebp, esp                                       // 0x007d1bb1    8bec
                          add                esp, -0x20                                     // 0x007d1bb3    83c4e0
                          {disp8} mov        dword ptr [ebp + -0x20], eax                   // 0x007d1bb6    8945e0
@@ -9452,7 +9453,7 @@ _jmp_addr_0x007d1c01:    leave                                                  
                          int3                                                              // 0x007d1c0d    cc
                          int3                                                              // 0x007d1c0e    cc
                          int3                                                              // 0x007d1c0f    cc
-_jmp_addr_0x007d1c10:    fld                st(0)                                          // 0x007d1c10    d9c0
+__twoToTOS:              fld                st(0)                                          // 0x007d1c10    d9c0
                          frndint                                                           // 0x007d1c12    d9fc
                          fsubr              st(1), st(0)                                   // 0x007d1c14    dce1
                          fxch               st(1)                                          // 0x007d1c16    d9c9
@@ -9531,7 +9532,7 @@ _jmp_addr_0x007d1ce3:    pop                edx                                 
                          add                esp, 0x08                                      // 0x007d1cef    83c408
                          and                eax, 0x7ff00000                                // 0x007d1cf2    250000f07f
                          {disp8} jmp        _jmp_addr_0x007d1d0d                           // 0x007d1cf7    eb14
-_jmp_addr_0x007d1cf9:    sub                esp, 0x08                                      // 0x007d1cf9    83ec08
+__check_range_exit:      sub                esp, 0x08                                      // 0x007d1cf9    83ec08
                          fst                qword ptr [esp]                                // 0x007d1cfc    dd1424
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x007d1cff    8b442404
                          add                esp, 0x08                                      // 0x007d1d03    83c408
@@ -9554,7 +9555,7 @@ _jmp_addr_0x007d1d32:    cmp                edx, 0x1d                           
                          call               __startOneArgErrorHandling                     // 0x007d1d37    e88bfeffff
                          pop                edx                                            // 0x007d1d3c    5a
                          ret                                                               // 0x007d1d3d    c3
-_jmp_addr_0x007d1d3e:    call               _jmp_addr_0x007d1bb0                           // 0x007d1d3e    e86dfeffff
+_jmp_addr_0x007d1d3e:    call               __startTwoArgErrorHandling                     // 0x007d1d3e    e86dfeffff
                          pop                edx                                            // 0x007d1d43    5a
                          ret                                                               // 0x007d1d44    c3
 _jmp_addr_0x007d1d45:    fldcw              word ptr [esp]                                 // 0x007d1d45    d92c24
@@ -11037,7 +11038,7 @@ _jmp_addr_0x007d2dbe:    mov                eax, 0x00000002                     
                          fstp               qword ptr [esp]                                // 0x007d2dd5    dd1c24
                          wait                                                              // 0x007d2dd8    9b
                          fnsave             dword ptr [esi + 0x08]                         // 0x007d2dd9    dd7608
-                         call               _jmp_addr_0x007d2df7                           // 0x007d2ddc    e816000000
+                         call               __powhlp                                       // 0x007d2ddc    e816000000
                          add                esp, 0x14                                      // 0x007d2de1    83c414
                          frstor             dword ptr [esi + 0x08]                         // 0x007d2de4    dd6608
                          fld                qword ptr [esi]                                // 0x007d2de7    dd06
@@ -11047,7 +11048,7 @@ _jmp_addr_0x007d2dbe:    mov                eax, 0x00000002                     
                          {disp8} je         _jmp_addr_0x007d2df6                           // 0x007d2def    7405
                          {disp32} jmp       _jmp_addr_0x007d1b99                           // 0x007d2df1    e9a3edffff
 _jmp_addr_0x007d2df6:    ret                                                               // 0x007d2df6    c3
-_jmp_addr_0x007d2df7:    push               ebp                                            // 0x007d2df7    55
+__powhlp:                push               ebp                                            // 0x007d2df7    55
                          mov.s              ebp, esp                                       // 0x007d2df8    8bec
                          push               ecx                                            // 0x007d2dfa    51
                          push               ecx                                            // 0x007d2dfb    51

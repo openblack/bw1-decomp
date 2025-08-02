@@ -125,7 +125,7 @@
 .extern _fprintf
 .extern _fopen
 .extern _fclose
-.extern _jmp_addr_0x007c7ae0
+.extern  __CIpow
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0080b440
@@ -6633,7 +6633,7 @@ _jmp_addr_0x004f1d94:    {disp32} mov       eax, dword ptr [rdata_bytes + 0x2852
 _jmp_addr_0x004f1d9d:    {disp32} fld       dword ptr [_rdata_float1p0]                          // 0x004f1d9d    d90590a38a00
                          {disp32} fdiv      dword ptr [rdata_bytes + 0x2852c]                    // 0x004f1da3    d8352c158d00
                          {disp32} fld       qword ptr [rdata_bytes + 0x28540]                    // 0x004f1da9    dd0540158d00
-                         call               _jmp_addr_0x007c7ae0                                 // 0x004f1daf    e82c5d2d00
+                         call               __CIpow                                              // 0x004f1daf    e82c5d2d00
                          {disp8} fstp       dword ptr [esp + 0x0c]                               // 0x004f1db4    d95c240c
                          {disp8} mov        ecx, dword ptr [esi + 0x08]                          // 0x004f1db8    8b4e08
                          {disp32} mov       edx, dword ptr [edi + 0x00000164]                    // 0x004f1dbb    8b9764010000

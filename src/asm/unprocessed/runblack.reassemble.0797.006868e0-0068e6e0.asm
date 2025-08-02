@@ -103,7 +103,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _atexit
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c7ae0
+.extern  __CIpow
 .extern _jmp_addr_0x007c804a
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fae60
@@ -1426,7 +1426,7 @@ _jmp_addr_0x0068785d:    {disp8} fild       dword ptr [esp + 0x10]              
                          fyl2x                                                            // 0x006878fe    d9f1
                          {disp8} fst        dword ptr [esp + 0x20]                        // 0x00687900    d9542420
                          {disp32} fmul      dword ptr [data_bytes + 0x388748]             // 0x00687904    d80d48e7d400
-                         call               _jmp_addr_0x007c7ae0                          // 0x0068790a    e8d1011400
+                         call               __CIpow                                       // 0x0068790a    e8d1011400
                          {disp32} fmul      dword ptr [_rdata_float0p5]                   // 0x0068790f    d80db4a38a00
                          {disp8} jmp        _jmp_addr_0x00687948                          // 0x00687915    eb31
 _jmp_addr_0x00687917:    {disp32} fsubr     dword ptr [rdata_bytes + 0x2478]              // 0x00687917    d82d78b48a00
@@ -1437,7 +1437,7 @@ _jmp_addr_0x00687917:    {disp32} fsubr     dword ptr [rdata_bytes + 0x2478]    
                          fyl2x                                                            // 0x0068792b    d9f1
                          {disp8} fst        dword ptr [esp + 0x20]                        // 0x0068792d    d9542420
                          {disp32} fmul      dword ptr [data_bytes + 0x388748]             // 0x00687931    d80d48e7d400
-                         call               _jmp_addr_0x007c7ae0                          // 0x00687937    e8a4011400
+                         call               __CIpow                                       // 0x00687937    e8a4011400
                          {disp32} fmul      dword ptr [_rdata_float0p5]                   // 0x0068793c    d80db4a38a00
                          {disp32} fsubr     dword ptr [_rdata_float1p0]                   // 0x00687942    d82d90a38a00
 _jmp_addr_0x00687948:    {disp8} fild       dword ptr [edi + 0x28]                        // 0x00687948    db4728

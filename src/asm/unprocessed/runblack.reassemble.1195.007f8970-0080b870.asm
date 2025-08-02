@@ -48,7 +48,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c7ae0
+.extern  __CIpow
 .extern _strncpy
 .extern _jmp_addr_0x007dee00
 .extern _jmp_addr_0x0080db30
@@ -4791,7 +4791,7 @@ _jmp_addr_0x007fb810:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp32} mov       dword ptr [esi + 0x00000144], edx              // 0x007fb847    899644010000
                          {disp8} fld        dword ptr [edi + 0x10]                         // 0x007fb84d    d94710
                          {disp32} fld       qword ptr [rdata_bytes + 0xf9bb8]              // 0x007fb850    dd05b82b9a00
-                         call               _jmp_addr_0x007c7ae0                           // 0x007fb856    e885c2fcff
+                         call               __CIpow                                        // 0x007fb856    e885c2fcff
                          {disp32} fstp      dword ptr [esi + 0x00000148]                   // 0x007fb85b    d99e48010000
                          {disp8} mov        eax, dword ptr [edi + 0x14]                    // 0x007fb861    8b4714
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                    // 0x007fb864    8b4c2414
