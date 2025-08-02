@@ -87,7 +87,7 @@
 .extern _fprintf
 .extern _fopen
 .extern _fclose
-.extern _fscanf_10LHFilePath
+.extern _fscanf
 .extern _getc_10LHFilePath
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
@@ -204,7 +204,7 @@ start_0x004c4ab0_0x004ca240:
 _jmp_addr_0x004c4b42:    push               ebx                                                  // 0x004c4b42    53
                          push               0x009cda78                                           // 0x004c4b43    6878da9c00
                          push               esi                                                  // 0x004c4b48    56
-                         call               _fscanf_10LHFilePath                                 // 0x004c4b49    e85c323000
+                         call               _fscanf                                              // 0x004c4b49    e85c323000
                          add                esp, 0x0c                                            // 0x004c4b4e    83c40c
 _jmp_addr_0x004c4b51:    push               esi                                                  // 0x004c4b51    56
                          call               _getc_10LHFilePath                                   // 0x004c4b52    e880323000
@@ -232,7 +232,7 @@ _jmp_addr_0x004c4b7d:    {disp8} mov        edx, dword ptr [ebx + 0x04]         
                          push               eax                                                  // 0x004c4b87    50
                          push               0x009c8c40                                           // 0x004c4b88    68408c9c00
                          push               esi                                                  // 0x004c4b8d    56
-                         call               _fscanf_10LHFilePath                                 // 0x004c4b8e    e817323000
+                         call               _fscanf                                              // 0x004c4b8e    e817323000
                          {disp8} mov        eax, dword ptr [ebx + 0x04]                          // 0x004c4b93    8b4304
                          lea                ecx, dword ptr [eax + eax * 0x2]                     // 0x004c4b96    8d0c40
                          lea                ecx, dword ptr [ecx + ecx * 0x8]                     // 0x004c4b99    8d0cc9
