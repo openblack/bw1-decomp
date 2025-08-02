@@ -20,7 +20,7 @@
 .extern ??2@YAPAXI@Z
 .extern _malloc
 .extern __CIasin
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern _jmp_addr_0x007e67c0
 .extern _jmp_addr_0x007e6a30
 .extern _jmp_addr_0x007fab30
@@ -14702,15 +14702,15 @@ _jmp_addr_0x0085bf44:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]   
                          {disp32} fstp      dword ptr [data_bytes + 0x531550]             // 0x0085bf98    d91d5075ef00
                          {disp32} fld       dword ptr [data_bytes + 0x531548]             // 0x0085bf9e    d9054875ef00
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x0085bfa4    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x0085bfaa    e89bc0f6ff
+                         call               __CIfmod                                      // 0x0085bfaa    e89bc0f6ff
                          {disp32} fstp      dword ptr [data_bytes + 0x531548]             // 0x0085bfaf    d91d4875ef00
                          {disp32} fld       dword ptr [data_bytes + 0x53154c]             // 0x0085bfb5    d9054c75ef00
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x0085bfbb    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x0085bfc1    e884c0f6ff
+                         call               __CIfmod                                      // 0x0085bfc1    e884c0f6ff
                          {disp32} fstp      dword ptr [data_bytes + 0x53154c]             // 0x0085bfc6    d91d4c75ef00
                          {disp32} fld       dword ptr [data_bytes + 0x531550]             // 0x0085bfcc    d9055075ef00
                          {disp32} fld       qword ptr [rdata_bytes + 0x2b5d8]             // 0x0085bfd2    dd05d8458d00
-                         call               _jmp_addr_0x007c804a                          // 0x0085bfd8    e86dc0f6ff
+                         call               __CIfmod                                      // 0x0085bfd8    e86dc0f6ff
                          {disp32} fstp      dword ptr [data_bytes + 0x531550]             // 0x0085bfdd    d91d5075ef00
                          {disp32} fld       dword ptr [data_bytes + 0x531548]             // 0x0085bfe3    d9054875ef00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x2732bc]        // 0x0085bfe9    a1bc92c300

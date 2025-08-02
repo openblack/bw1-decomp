@@ -17,7 +17,7 @@
 .extern _sprintf
 .extern _memmove
 .extern ??2@YAPAXI@Z
-.extern _jmp_addr_0x007c804a
+.extern __CIfmod
 .extern _jmp_addr_0x007dd9c0
 .extern _jmp_addr_0x007dda90
 .extern _jmp_addr_0x007faff0
@@ -4089,13 +4089,13 @@ _jmp_addr_0x0083f270:    {disp8} fld        dword ptr [esp + 0x04]              
                          {disp8} fmul       dword ptr [esi + 0x0c]                         // 0x0083f277    d84e0c
                          {disp8} fadd       dword ptr [esi + 0x1c]                         // 0x0083f27a    d8461c
                          {disp32} fld       qword ptr [__real@8@3fff8000000000000000]    // 0x0083f27d    dd0580b68a00
-                         call               _jmp_addr_0x007c804a                           // 0x0083f283    e8c28df8ff
+                         call               __CIfmod                                       // 0x0083f283    e8c28df8ff
                          {disp8} fstp       dword ptr [esi + 0x1c]                         // 0x0083f288    d95e1c
                          {disp8} fld        dword ptr [esp + 0x08]                         // 0x0083f28b    d9442408
                          {disp8} fmul       dword ptr [esi + 0x10]                         // 0x0083f28f    d84e10
                          {disp8} fadd       dword ptr [esi + 0x20]                         // 0x0083f292    d84620
                          {disp32} fld       qword ptr [__real@8@3fff8000000000000000]    // 0x0083f295    dd0580b68a00
-                         call               _jmp_addr_0x007c804a                           // 0x0083f29b    e8aa8df8ff
+                         call               __CIfmod                                       // 0x0083f29b    e8aa8df8ff
                          {disp8} fstp       dword ptr [esi + 0x20]                         // 0x0083f2a0    d95e20
                          pop                esi                                            // 0x0083f2a3    5e
                          ret                0x0004                                         // 0x0083f2a4    c20400

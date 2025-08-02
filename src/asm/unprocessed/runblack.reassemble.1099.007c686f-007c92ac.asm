@@ -70,9 +70,7 @@
 .extern _gmtime
 .extern ___loctotime_t
 .extern __powhlp
-.extern _jmp_addr_0x007d2f90
-.extern _jmp_addr_0x007d300b
-.extern _jmp_addr_0x007d3c0c
+.extern __cintrindisp2
 .extern _jmp_addr_0x007d3f8b
 .extern _jmp_addr_0x007d3f9d
 .extern _jmp_addr_0x007d42f2
@@ -96,7 +94,6 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _jmp_addr_0x007c804a
 .globl _jmp_addr_0x007c8072
 .globl _jmp_addr_0x007c8141
 .globl _jmp_addr_0x007c81cd
@@ -134,37 +131,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-                         int3                                                             // 0x007c8032    cc
-                         int3                                                             // 0x007c8033    cc
-                         int3                                                             // 0x007c8034    cc
-                         int3                                                             // 0x007c8035    cc
-                         int3                                                             // 0x007c8036    cc
-                         int3                                                             // 0x007c8037    cc
-                         int3                                                             // 0x007c8038    cc
-                         int3                                                             // 0x007c8039    cc
-                         int3                                                             // 0x007c803a    cc
-                         int3                                                             // 0x007c803b    cc
-                         int3                                                             // 0x007c803c    cc
-                         int3                                                             // 0x007c803d    cc
-                         int3                                                             // 0x007c803e    cc
-                         int3                                                             // 0x007c803f    cc
-                         mov                  edx, 0x00c2d450                             // 0x007c8040    ba50d4c200
-                         {disp32} jmp         _jmp_addr_0x007d300b                        // 0x007c8045    e9c1af0000
-_jmp_addr_0x007c804a:    mov                  edx, 0x00c2d450                             // 0x007c804a    ba50d4c200
-                         {disp32} jmp         _jmp_addr_0x007d2f90                        // 0x007c804f    e93caf0000
-                         fxch                 st(1)                                       // 0x007c8054    d9c9
-_jmp_addr_0x007c8056:    cmp                  dword ptr [OFFSET __adjust_fdiv], 0x01      // 0x007c8056    833d9441e80001
-                         {disp8} je           _jmp_addr_0x007c8063                        // 0x007c805d    7404
-                         fprem                                                            // 0x007c805f    d9f8
-                         {disp8} jmp          _jmp_addr_0x007c8068                        // 0x007c8061    eb05
-_jmp_addr_0x007c8063:    call                 _jmp_addr_0x007d3c0c                        // 0x007c8063    e8a4bb0000
-_jmp_addr_0x007c8068:    wait                                                             // 0x007c8068    9b
-                         fnstsw               ax                                          // 0x007c8069    dfe0
-                         wait                                                             // 0x007c806b    9b
-                         sahf                                                             // 0x007c806c    9e
-                         {disp8} jp           _jmp_addr_0x007c8056                        // 0x007c806d    7ae7
-                         fstp                 st(1)                                       // 0x007c806f    ddd9
-                         ret                                                              // 0x007c8071    c3
 _jmp_addr_0x007c8072:    push                 ebp                                         // 0x007c8072    55
                          mov.s                ebp, esp                                    // 0x007c8073    8bec
                          push                 ecx                                         // 0x007c8075    51
