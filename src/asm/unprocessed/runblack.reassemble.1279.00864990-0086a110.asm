@@ -26,7 +26,7 @@
 .extern ??2@YAPAXI@Z
 .extern _fopen
 .extern _fclose
-.extern _getc_10LHFilePath
+.extern _fgetc
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb5c0
 .extern _jmp_addr_0x007feaa0
@@ -3119,16 +3119,16 @@ _jmp_addr_0x00866f13:    mov                esi, 0x00f463c0                     
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000100            // 0x00866f18    c744241400010000
 _jmp_addr_0x00866f20:    {disp8} mov        dword ptr [esp + 0x10], 0x00000100            // 0x00866f20    c744241000010000
 _jmp_addr_0x00866f28:    push               edi                                           // 0x00866f28    57
-                         call               _getc_10LHFilePath                            // 0x00866f29    e8a90ef6ff
+                         call               _fgetc                                        // 0x00866f29    e8a90ef6ff
                          push               edi                                           // 0x00866f2e    57
                          mov.s              ebx, eax                                      // 0x00866f2f    8bd8
-                         call               _getc_10LHFilePath                            // 0x00866f31    e8a10ef6ff
+                         call               _fgetc                                        // 0x00866f31    e8a10ef6ff
                          push               edi                                           // 0x00866f36    57
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x00866f37    89442424
-                         call               _getc_10LHFilePath                            // 0x00866f3b    e8970ef6ff
+                         call               _fgetc                                        // 0x00866f3b    e8970ef6ff
                          push               ebp                                           // 0x00866f40    55
                          {disp8} mov        dword ptr [esp + 0x2c], eax                   // 0x00866f41    8944242c
-                         call               _getc_10LHFilePath                            // 0x00866f45    e88d0ef6ff
+                         call               _fgetc                                        // 0x00866f45    e88d0ef6ff
                          {disp8} mov        cl, byte ptr [esp + 0x2c]                     // 0x00866f4a    8a4c242c
                          {disp8} mov        byte ptr [esi + 0x03], al                     // 0x00866f4e    884603
                          {disp8} mov        al, byte ptr [esp + 0x28]                     // 0x00866f51    8a442428
@@ -3174,17 +3174,17 @@ _jmp_addr_0x00866fc7:    mov                esi, 0x00f063c0                     
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000100            // 0x00866fcc    c744241400010000
 _jmp_addr_0x00866fd4:    mov                ebp, 0x00000100                               // 0x00866fd4    bd00010000
 _jmp_addr_0x00866fd9:    push               edi                                           // 0x00866fd9    57
-                         call               _getc_10LHFilePath                            // 0x00866fda    e8f80df6ff
+                         call               _fgetc                                        // 0x00866fda    e8f80df6ff
                          push               edi                                           // 0x00866fdf    57
                          mov.s              ebx, eax                                      // 0x00866fe0    8bd8
-                         call               _getc_10LHFilePath                            // 0x00866fe2    e8f00df6ff
+                         call               _fgetc                                        // 0x00866fe2    e8f00df6ff
                          push               edi                                           // 0x00866fe7    57
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x00866fe8    89442428
-                         call               _getc_10LHFilePath                            // 0x00866fec    e8e60df6ff
+                         call               _fgetc                                        // 0x00866fec    e8e60df6ff
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x00866ff1    8b54241c
                          push               edx                                           // 0x00866ff5    52
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x00866ff6    89442428
-                         call               _getc_10LHFilePath                            // 0x00866ffa    e8d80df6ff
+                         call               _fgetc                                        // 0x00866ffa    e8d80df6ff
                          {disp8} mov        cl, byte ptr [esp + 0x28]                     // 0x00866fff    8a4c2428
                          {disp8} mov        byte ptr [esi + 0x03], al                     // 0x00867003    884603
                          {disp8} mov        al, byte ptr [esp + 0x2c]                     // 0x00867006    8a44242c

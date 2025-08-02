@@ -96,8 +96,6 @@
 .extern _jmp_addr_0x008a5168
 .extern __tolower_lk
 
-.globl _fscanf
-.globl _getc_10LHFilePath
 .globl _jmp_addr_0x007c7e13
 .globl _jmp_addr_0x007c7e64
 .globl _jmp_addr_0x007c804a
@@ -138,34 +136,6 @@
 .globl ?what@exception@@UBEPBDXZ
 .globl ??_Gexception@@UAEPAXI@Z
 
-_getc_10LHFilePath:      push                 esi                                         // 0x007c7dd7    56
-                         {disp8} mov          esi, dword ptr [esp + 0x08]                 // 0x007c7dd8    8b742408
-                         push                 edi                                         // 0x007c7ddc    57
-                         push                 esi                                         // 0x007c7ddd    56
-                         call                 __lock_file                                 // 0x007c7dde    e831340000
-                         dec                  dword ptr [esi + 0x04]                      // 0x007c7de3    ff4e04
-                         pop                  ecx                                         // 0x007c7de6    59
-                         {disp8} js           _jmp_addr_0x007c7df3                        // 0x007c7de7    780a
-                         mov                  eax, dword ptr [esi]                        // 0x007c7de9    8b06
-                         movzx                edi, byte ptr [eax]                         // 0x007c7deb    0fb638
-                         inc                  eax                                         // 0x007c7dee    40
-                         mov                  dword ptr [esi], eax                        // 0x007c7def    8906
-                         {disp8} jmp          _jmp_addr_0x007c7dfc                        // 0x007c7df1    eb09
-_jmp_addr_0x007c7df3:    push                 esi                                         // 0x007c7df3    56
-                         call                 __filbuf                                    // 0x007c7df4    e8a39f0000
-                         pop                  ecx                                         // 0x007c7df9    59
-                         mov.s                edi, eax                                    // 0x007c7dfa    8bf8
-_jmp_addr_0x007c7dfc:    push                 esi                                         // 0x007c7dfc    56
-                         call                 __unlock_file                               // 0x007c7dfd    e864340000
-                         pop                  ecx                                         // 0x007c7e02    59
-                         mov.s                eax, edi                                    // 0x007c7e03    8bc7
-                         pop                  edi                                         // 0x007c7e05    5f
-                         pop                  esi                                         // 0x007c7e06    5e
-                         ret                                                              // 0x007c7e07    c3
-                         push                 dword ptr [esp + 0x04]                      // 0x007c7e08    ff742404
-                         call                 _getc_10LHFilePath                          // 0x007c7e0c    e8c6ffffff
-                         pop                  ecx                                         // 0x007c7e11    59
-                         ret                                                              // 0x007c7e12    c3
 _jmp_addr_0x007c7e13:    push                 ebp                                         // 0x007c7e13    55
                          mov.s                ebp, esp                                    // 0x007c7e14    8bec
                          sub                  esp, 0x20                                   // 0x007c7e16    83ec20

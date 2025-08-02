@@ -70,7 +70,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern _fscanf
-.extern _getc_10LHFilePath
+.extern _fgetc
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 
@@ -29335,7 +29335,7 @@ _jmp_addr_0x004c4960:    {disp32} mov       dword ptr [data_bytes + 0x2bc640], 0
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004c4972    8b7c240c
                          mov.s              esi, ecx                                             // 0x004c4976    8bf1
 _jmp_addr_0x004c4978:    push               edi                                                  // 0x004c4978    57
-                         call               _getc_10LHFilePath                                   // 0x004c4979    e859343000
+                         call               _fgetc                                               // 0x004c4979    e859343000
                          add                esp, 0x04                                            // 0x004c497e    83c404
                          cmp                al, 0x45                                             // 0x004c4981    3c45
                          {disp8} je         _jmp_addr_0x004c49a1                                 // 0x004c4983    741c
@@ -29394,7 +29394,7 @@ _jmp_addr_0x004c4a29:    mov                edx, dword ptr [esi]                
                          inc                eax                                                  // 0x004c4a43    40
                          mov                dword ptr [esi], eax                                 // 0x004c4a44    8906
 _jmp_addr_0x004c4a46:    push               edi                                                  // 0x004c4a46    57
-                         call               _getc_10LHFilePath                                   // 0x004c4a47    e88b333000
+                         call               _fgetc                                               // 0x004c4a47    e88b333000
                          add                esp, 0x04                                            // 0x004c4a4c    83c404
                          cmp                al, 0x45                                             // 0x004c4a4f    3c45
                          {disp8} je         _jmp_addr_0x004c4a77                                 // 0x004c4a51    7424
