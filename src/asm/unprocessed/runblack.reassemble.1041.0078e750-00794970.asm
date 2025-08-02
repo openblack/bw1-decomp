@@ -86,7 +86,7 @@
 .extern ??2@YAPAXI@Z
 .extern _atoi
 .extern __strcmpi
-.extern _jmp_addr_0x007c789d
+.extern _localtime
 .extern _jmp_addr_0x007c79fd
 .extern ___nw__FUl
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
@@ -1741,7 +1741,7 @@ _jmp_addr_0x0078f770:    push               ebp                                 
                          call               _jmp_addr_0x007c79fd                          // 0x0078f792    e866820300
                          {disp8} lea        ecx, dword ptr [ebp + -0x04]                  // 0x0078f797    8d4dfc
                          push               ecx                                           // 0x0078f79a    51
-                         call               _jmp_addr_0x007c789d                          // 0x0078f79b    e8fd800300
+                         call               _localtime                                    // 0x0078f79b    e8fd800300
                          {disp32} mov       dx, word ptr [data_bytes + 0x286d30]          // 0x0078f7a0    668b1530cdc400
                          xor.s              eax, eax                                      // 0x0078f7a7    33c0
                          {disp32} mov       word ptr [ebp + -0x000000c8], dx              // 0x0078f7a9    66899538ffffff

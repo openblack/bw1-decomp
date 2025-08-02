@@ -14,7 +14,7 @@
 .extern _free
 .extern _sscanf
 .extern __strcmpi
-.extern _jmp_addr_0x007c789d
+.extern _localtime
 .extern _jmp_addr_0x007c79fd
 .extern _jmp_addr_0x007c7e13
 .extern _strcspn
@@ -4199,7 +4199,7 @@ _jmp_addr_0x0088fd25:    pop              edi                                   
                          {disp8} mov      dword ptr [esp + 0x04], eax                    // 0x0088fd38    89442404
                          {disp8} lea      eax, dword ptr [esp + 0x04]                    // 0x0088fd3c    8d442404
                          push             eax                                            // 0x0088fd40    50
-                         call             _jmp_addr_0x007c789d                           // 0x0088fd41    e8577bf3ff
+                         call             _localtime                                     // 0x0088fd41    e8577bf3ff
                          {disp8} mov      ecx, dword ptr [eax + 0x14]                    // 0x0088fd46    8b4814
                          add              esp, 0x08                                      // 0x0088fd49    83c408
                          cmp              ecx, 0x63                                      // 0x0088fd4c    83f963
