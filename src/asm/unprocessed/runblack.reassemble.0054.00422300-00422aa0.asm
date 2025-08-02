@@ -27,8 +27,8 @@
 .extern _jmp_addr_0x00719610
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c57d2
-.extern _jmp_addr_0x007c6ce0
+.extern _sprintf
+.extern __strcmpi
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
 .extern @GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsPUlPUl@12
@@ -302,7 +302,7 @@ _jmp_addr_0x0042260e:    mov.s             ecx, esi                             
                          call              _jmp_addr_0x00527700                          // 0x00422610    e8eb501000
                          push              eax                                           // 0x00422615    50
                          push              ebx                                           // 0x00422616    53
-                         call              _jmp_addr_0x007c6ce0                          // 0x00422617    e8c4463a00
+                         call              __strcmpi                                     // 0x00422617    e8c4463a00
                          add               esp, 0x08                                     // 0x0042261c    83c408
                          test              eax, eax                                      // 0x0042261f    85c0
                          {disp8} je        _jmp_addr_0x0042263b                          // 0x00422621    7418
@@ -390,7 +390,7 @@ _jmp_addr_0x00422687:    mov               ecx, dword ptr [eax]                 
                          push              eax                                           // 0x004226fc    50
                          {disp8} lea       eax, dword ptr [esp + 0x3c]                   // 0x004226fd    8d44243c
                          push              eax                                           // 0x00422701    50
-                         call              _jmp_addr_0x007c57d2                          // 0x00422702    e8cb303a00
+                         call              _sprintf                                      // 0x00422702    e8cb303a00
                          {disp32} mov      edx, dword ptr [esp + 0x000001d4]             // 0x00422707    8b9424d4010000
                          or                ecx, 0xffffffff                               // 0x0042270e    83c9ff
                          xor.s             eax, eax                                      // 0x00422711    33c0

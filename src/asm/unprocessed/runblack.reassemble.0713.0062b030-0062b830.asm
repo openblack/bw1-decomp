@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x0062d860
 .extern _jmp_addr_0x0062d9a0
 .extern _wcscpy
-.extern _jmp_addr_0x007c6eb0
+.extern __chkstk
 .extern ___nw__FUl
 
 .globl @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
@@ -307,7 +307,7 @@ _jmp_addr_0x0062b32c:    mov              eax, dword ptr [ecx]                  
                          nop                                                            // 0x0062b34e    90
                          nop                                                            // 0x0062b34f    90
 _jmp_addr_0x0062b350:    mov              eax, 0x00002820                               // 0x0062b350    b820280000
-                         call             _jmp_addr_0x007c6eb0                          // 0x0062b355    e856bb1900
+                         call             __chkstk                                      // 0x0062b355    e856bb1900
                          push             ebx                                           // 0x0062b35a    53
                          push             ebp                                           // 0x0062b35b    55
                          push             esi                                           // 0x0062b35c    56

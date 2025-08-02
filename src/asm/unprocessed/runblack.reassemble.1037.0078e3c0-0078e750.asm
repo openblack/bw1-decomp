@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0078da40
 .extern _jmp_addr_0x0078da70
 .extern _jmp_addr_0x0078da80
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern _jmp_addr_0x007dcad0
 
 .globl _jmp_addr_0x0078e3d0
@@ -194,7 +194,7 @@ _jmp_addr_0x0078e542:    push             eax                                   
                          push             eax                                    // 0x0078e555    50
                          push             0x009cb5d4                             // 0x0078e556    68d4b59c00
                          push             eax                                    // 0x0078e55b    50
-                         call             _jmp_addr_0x007c57d2                   // 0x0078e55c    e871720300
+                         call             _sprintf                               // 0x0078e55c    e871720300
                          add              esp, 0x10                              // 0x0078e561    83c410
 _jmp_addr_0x0078e564:    {disp8} lea      eax, dword ptr [esp + 0x08]            // 0x0078e564    8d442408
                          push             eax                                    // 0x0078e568    50

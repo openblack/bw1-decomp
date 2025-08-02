@@ -14,7 +14,7 @@
 .extern _Create__13PSysInterfaceFP5Spell13PARTICLE_TYPERC7LHPointRC7LHPointfQ213PSysInterface13NET_GAME_TYPE
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 
 .globl _jmp_addr_0x004f4b60
 .globl _jmp_addr_0x004f4b90
@@ -620,7 +620,7 @@ _jmp_addr_0x004f50e0:    sub                esp, 0x0c                           
                          lea                ecx, dword ptr [edi + edi * 0x2]         // 0x004f5118    8d0c7f
                          shl                ecx, 2                                   // 0x004f511b    c1e102
                          push               ecx                                      // 0x004f511e    51
-                         call               _operator_new                           // 0x004f511f    e8ca132d00
+                         call               ??2@YAPAXI@Z                             // 0x004f511f    e8ca132d00
                          add                esp, 0x04                                // 0x004f5124    83c404
                          mov.s              ebx, eax                                 // 0x004f5127    8bd8
                          {disp8} jmp        _jmp_addr_0x004f512d                     // 0x004f5129    eb02

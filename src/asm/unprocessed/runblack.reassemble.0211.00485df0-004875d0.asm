@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x006e8130
 .extern _jmp_addr_0x006e8160
 .extern _jmp_addr_0x007a1400
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
@@ -240,7 +240,7 @@ _jmp_addr_0x00486013:    push               0x0                                 
                          push               0x009c7f50                                           // 0x0048601a    68507f9c00
                          push               0x0                                                  // 0x0048601f    6a00
                          push               ebx                                                  // 0x00486021    53
-                         call               _jmp_addr_0x007c5a19                                 // 0x00486022    e8f2f93300
+                         call               ___RTDynamicCast                                     // 0x00486022    e8f2f93300
                          mov.s              ebx, eax                                             // 0x00486027    8bd8
                          add                esp, 0x14                                            // 0x00486029    83c414
                          test               ebx, ebx                                             // 0x0048602c    85db

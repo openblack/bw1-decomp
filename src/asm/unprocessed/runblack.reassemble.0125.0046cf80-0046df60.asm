@@ -40,7 +40,7 @@
 .extern @CloseSegment__6LHFileFv@4
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
-.extern _jmp_addr_0x007c57d2
+.extern _sprintf
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e6450
 .extern _jmp_addr_0x007e64a0
@@ -410,7 +410,7 @@ _jmp_addr_0x0046d37c:    {disp32} jge       _jmp_addr_0x0046d436                
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x0046d383    8d44241c
                          push               0x009ced64                                    // 0x0046d387    6864ed9c00
                          push               eax                                           // 0x0046d38c    50
-                         call               _jmp_addr_0x007c57d2                          // 0x0046d38d    e840843500
+                         call               _sprintf                                      // 0x0046d38d    e840843500
                          push               0x00000473                                    // 0x0046d392    6873040000
                          push               0x009ced1c                                    // 0x0046d397    681ced9c00
                          push               0x00005468                                    // 0x0046d39c    6868540000
@@ -466,7 +466,7 @@ _jmp_addr_0x0046d436:    push               0x5                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x0046d438    8d4c241c
                          push               0x009ced64                                    // 0x0046d43c    6864ed9c00
                          push               ecx                                           // 0x0046d441    51
-                         call               _jmp_addr_0x007c57d2                          // 0x0046d442    e88b833500
+                         call               _sprintf                                      // 0x0046d442    e88b833500
                          push               0x0000047e                                    // 0x0046d447    687e040000
                          push               0x009ced1c                                    // 0x0046d44c    681ced9c00
                          push               0x00005468                                    // 0x0046d451    6868540000

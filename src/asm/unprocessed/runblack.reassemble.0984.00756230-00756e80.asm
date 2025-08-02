@@ -43,8 +43,8 @@
 .extern _jmp_addr_0x00756000
 .extern _jmp_addr_0x00757180
 .extern @MakeChildOrphaned__8VillagerFP8Villager@12
-.extern _atexit@4
-.extern _jmp_addr_0x007c5a19
+.extern _atexit
+.extern ___RTDynamicCast
 
 .globl ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z
 .globl @SetSkeleton__8VillagerFi@9
@@ -1253,7 +1253,7 @@ _jmp_addr_0x00756c94:    {disp32} jmp       _jmp_addr_0x00756ca0                
                          nop                                                              // 0x00756c9e    90
                          nop                                                              // 0x00756c9f    90
 _jmp_addr_0x00756ca0:    push               0x00407870                                    // 0x00756ca0    6870784000
-                         call               _atexit@4                                     // 0x00756ca5    e8e7ea0600
+                         call               _atexit                                       // 0x00756ca5    e8e7ea0600
                          pop                ecx                                           // 0x00756caa    59
                          ret                                                              // 0x00756cab    c3
                          nop                                                              // 0x00756cac    90
@@ -1374,7 +1374,7 @@ _jmp_addr_0x00756d73:    cmp.s              esi, edi                            
                          push               0x009c7f50                                    // 0x00756d97    68507f9c00
                          push               0x0                                           // 0x00756d9c    6a00
                          push               esi                                           // 0x00756d9e    56
-                         call               _jmp_addr_0x007c5a19                          // 0x00756d9f    e875ec0600
+                         call               ___RTDynamicCast                              // 0x00756d9f    e875ec0600
                          add                esp, 0x14                                     // 0x00756da4    83c414
                          push               eax                                           // 0x00756da7    50
                          mov.s              ecx, edi                                      // 0x00756da8    8bcf

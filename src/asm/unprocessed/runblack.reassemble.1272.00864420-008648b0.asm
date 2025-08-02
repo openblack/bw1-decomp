@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern  ___dl__FPv
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern @FillPosAndHeading__8RPFollowFR7Point2DRff@20
 .extern @__ct__9RouteNodeFP9RouteNodeiRC7Point2DRC7Point2Dii@32
 .extern @GetLength__9RouteNodeFP7RPAvoid@12
@@ -276,7 +276,7 @@ _jmp_addr_0x00864770:    {disp32} mov       ecx, dword ptr [esi + 0x0006408c]   
                          {disp32} mov       dword ptr [esi + 0x00064048], edx             // 0x008647a7    899648400600
                          {disp8} je         _jmp_addr_0x0086480f                          // 0x008647ad    7460
                          push               0x2c                                          // 0x008647af    6a2c
-                         call               _operator_new                                // 0x008647b1    e8381df6ff
+                         call               ??2@YAPAXI@Z                                  // 0x008647b1    e8381df6ff
                          add                esp, 0x04                                     // 0x008647b6    83c404
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x008647b9    89442424
                          cmp.s              eax, ebp                                      // 0x008647bd    3bc5

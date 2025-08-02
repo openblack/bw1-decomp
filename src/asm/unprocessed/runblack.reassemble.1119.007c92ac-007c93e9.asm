@@ -91,14 +91,14 @@ _jmp_addr_0x007c9394:    cmp                  dword ptr [ebp + -0x20], ebx      
 _jmp_addr_0x007c9399:    push                 esi                                         // 0x007c9399    56
                          push                 0x8                                         // 0x007c939a    6a08
                          push                 dword ptr [data_bytes + 0x5e6ca8]           // 0x007c939c    ff35a8ccfa00
-                         call                 dword ptr [__imp__HeapAlloc@4]              // 0x007c93a2    ff1504928a00
+                         call                 dword ptr [__imp__HeapAlloc@12]             // 0x007c93a2    ff1504928a00
                          {disp8} mov          dword ptr [ebp + -0x20], eax                // 0x007c93a8    8945e0
 _jmp_addr_0x007c93ab:    cmp                  dword ptr [ebp + -0x20], ebx                // 0x007c93ab    395de0
                          {disp8} jne          _jmp_addr_0x007c93d7                        // 0x007c93ae    7527
-                         cmp                  dword ptr [data_bytes + 0x4be2c0], ebx      // 0x007c93b0    391dc042e800
+                         cmp                  dword ptr [__newmode], ebx                  // 0x007c93b0    391dc042e800
                          {disp8} je           _jmp_addr_0x007c93d7                        // 0x007c93b6    741f
                          push                 esi                                         // 0x007c93b8    56
-                         call                 _jmp_addr_0x007ce342                        // 0x007c93b9    e8844f0000
+                         call                 __callnewh                                  // 0x007c93b9    e8844f0000
                          pop                  ecx                                         // 0x007c93be    59
                          test                 eax, eax                                    // 0x007c93bf    85c0
                          {disp32} jne         _jmp_addr_0x007c92f7                        // 0x007c93c1    0f8530ffffff

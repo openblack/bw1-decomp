@@ -128,11 +128,11 @@
 .extern  ___dl__FPv
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _atexit@4
-.extern _jmp_addr_0x007c5a19
-.extern _operator_new
-.extern _jmp_addr_0x007c6eb0
-.extern _jmp_addr_0x007c7e64
+.extern _atexit
+.extern ___RTDynamicCast
+.extern ??2@YAPAXI@Z
+.extern __chkstk
+.extern _qsort
 .extern ___nw__FUl
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007feb30
@@ -233,7 +233,7 @@ _jmp_addr_0x00736490:    push               ebx                                 
                          nop                                                               // 0x007364ee    90
                          nop                                                               // 0x007364ef    90
 _jmp_addr_0x007364f0:    mov                eax, 0x000012c4                                // 0x007364f0    b8c4120000
-                         call               _jmp_addr_0x007c6eb0                           // 0x007364f5    e8b6090900
+                         call               __chkstk                                       // 0x007364f5    e8b6090900
                          push               esi                                            // 0x007364fa    56
                          mov.s              esi, ecx                                       // 0x007364fb    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x18]                    // 0x007364fd    8b4e18
@@ -826,7 +826,7 @@ _jmp_addr_0x00736bdb:    {disp8} mov        edx, dword ptr [esp + 0x18]         
                          push               ebp                                            // 0x00736c20    55
                          mov.s              ebp, esp                                       // 0x00736c21    8bec
                          mov                eax, 0x000012e0                                // 0x00736c23    b8e0120000
-                         call               _jmp_addr_0x007c6eb0                           // 0x00736c28    e883020900
+                         call               __chkstk                                       // 0x00736c28    e883020900
                          push               esi                                            // 0x00736c2d    56
                          {disp32} mov       dword ptr [ebp + -0x000012dc], ecx             // 0x00736c2e    898d24edffff
                          cmp                dword ptr [ebp + 0x20], 0x00                   // 0x00736c34    837d2000
@@ -1083,7 +1083,7 @@ _jmp_addr_0x00736faf:    call               _jmp_addr_0x00736fb6                
 _jmp_addr_0x00736fb6:    push               ebp                                            // 0x00736fb6    55
                          mov.s              ebp, esp                                       // 0x00736fb7    8bec
                          push               0x00407870                                     // 0x00736fb9    6870784000
-                         call               _atexit@4                                      // 0x00736fbe    e8cee70800
+                         call               _atexit                                        // 0x00736fbe    e8cee70800
                          pop                ecx                                            // 0x00736fc3    59
                          pop                ebp                                            // 0x00736fc4    5d
                          ret                                                               // 0x00736fc5    c3
@@ -1473,7 +1473,7 @@ _jmp_addr_0x00737324:    {disp32} jmp       _jmp_addr_0x00737330                
                          nop                                                               // 0x0073732e    90
                          nop                                                               // 0x0073732f    90
 _jmp_addr_0x00737330:    push               0x00407870                                     // 0x00737330    6870784000
-                         call               _atexit@4                                      // 0x00737335    e857e40800
+                         call               _atexit                                        // 0x00737335    e857e40800
                          pop                ecx                                            // 0x0073733a    59
                          ret                                                               // 0x0073733b    c3
                          nop                                                               // 0x0073733c    90
@@ -2166,7 +2166,7 @@ _jmp_addr_0x00737974:    {disp32} jmp       _jmp_addr_0x00737980                
                          nop                                                               // 0x0073797e    90
                          nop                                                               // 0x0073797f    90
 _jmp_addr_0x00737980:    push               0x00407870                                     // 0x00737980    6870784000
-                         call               _atexit@4                                      // 0x00737985    e807de0800
+                         call               _atexit                                        // 0x00737985    e807de0800
                          pop                ecx                                            // 0x0073798a    59
                          ret                                                               // 0x0073798b    c3
                          nop                                                               // 0x0073798c    90
@@ -2329,7 +2329,7 @@ _jmp_addr_0x00737a4c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x00737a9e    90
                          nop                                                               // 0x00737a9f    90
 _jmp_addr_0x00737aa0:    push               0x00737ab0                                     // 0x00737aa0    68b07a7300
-                         call               _atexit@4                                      // 0x00737aa5    e8e7dc0800
+                         call               _atexit                                        // 0x00737aa5    e8e7dc0800
                          pop                ecx                                            // 0x00737aaa    59
                          ret                                                               // 0x00737aab    c3
                          nop                                                               // 0x00737aac    90
@@ -4069,7 +4069,7 @@ _jmp_addr_0x00738ed4:    {disp32} jmp       _jmp_addr_0x00738ee0                
                          nop                                                               // 0x00738ede    90
                          nop                                                               // 0x00738edf    90
 _jmp_addr_0x00738ee0:    push               0x00407870                                     // 0x00738ee0    6870784000
-                         call               _atexit@4                                      // 0x00738ee5    e8a7c80800
+                         call               _atexit                                        // 0x00738ee5    e8a7c80800
                          pop                ecx                                            // 0x00738eea    59
                          ret                                                               // 0x00738eeb    c3
                          nop                                                               // 0x00738eec    90
@@ -4165,7 +4165,7 @@ _jmp_addr_0x00738f50:    xor.s              eax, eax                            
                          nop                                                               // 0x00738f8e    90
                          nop                                                               // 0x00738f8f    90
 _jmp_addr_0x00738f90:    push               0x00738fa0                                     // 0x00738f90    68a08f7300
-                         call               _atexit@4                                      // 0x00738f95    e8f7c70800
+                         call               _atexit                                        // 0x00738f95    e8f7c70800
                          pop                ecx                                            // 0x00738f9a    59
                          ret                                                               // 0x00738f9b    c3
                          nop                                                               // 0x00738f9c    90
@@ -4727,7 +4727,7 @@ _jmp_addr_0x007395e6:    xor.s              eax, eax                            
                          {disp32} lea       esi, dword ptr [edx + 0x00205c84]              // 0x00739637    8db2845c2000
                          {disp8} je         _jmp_addr_0x00739659                           // 0x0073963d    741a
                          push               0x8                                            // 0x0073963f    6a08
-                         call               _operator_new                                 // 0x00739641    e8a8ce0800
+                         call               ??2@YAPAXI@Z                                   // 0x00739641    e8a8ce0800
                          add                esp, 0x04                                      // 0x00739646    83c404
                          cmp.s              eax, ebp                                       // 0x00739649    3bc5
                          {disp8} je         _jmp_addr_0x00739659                           // 0x0073964b    740c
@@ -5045,7 +5045,7 @@ _jmp_addr_0x00739998:    pop                esi                                 
                          push               0x0                                            // 0x007399b2    6a00
                          push               edi                                            // 0x007399b4    57
                          mov.s              esi, ecx                                       // 0x007399b5    8bf1
-                         call               _jmp_addr_0x007c5a19                           // 0x007399b7    e85dc00800
+                         call               ___RTDynamicCast                               // 0x007399b7    e85dc00800
                          add                esp, 0x14                                      // 0x007399bc    83c414
                          test               eax, eax                                       // 0x007399bf    85c0
                          {disp8} je         _jmp_addr_0x007399ed                           // 0x007399c1    742a
@@ -5130,7 +5130,7 @@ _jmp_addr_0x00739a60:    push               ebx                                 
                          push               0x0                                            // 0x00739a73    6a00
                          push               esi                                            // 0x00739a75    56
                          mov.s              edi, ecx                                       // 0x00739a76    8bf9
-                         call               _jmp_addr_0x007c5a19                           // 0x00739a78    e89cbf0800
+                         call               ___RTDynamicCast                               // 0x00739a78    e89cbf0800
                          mov.s              ebx, eax                                       // 0x00739a7d    8bd8
                          add                esp, 0x14                                      // 0x00739a7f    83c414
                          test               ebx, ebx                                       // 0x00739a82    85db
@@ -5180,7 +5180,7 @@ _jmp_addr_0x00739af4:    push               0x0                                 
                          push               0x009c7f80                                     // 0x00739afb    68807f9c00
                          push               0x0                                            // 0x00739b00    6a00
                          push               esi                                            // 0x00739b02    56
-                         call               _jmp_addr_0x007c5a19                           // 0x00739b03    e811bf0800
+                         call               ___RTDynamicCast                               // 0x00739b03    e811bf0800
                          add                esp, 0x14                                      // 0x00739b08    83c414
                          test               eax, eax                                       // 0x00739b0b    85c0
                          {disp8} je         _jmp_addr_0x00739b17                           // 0x00739b0d    7408
@@ -5452,7 +5452,7 @@ _jmp_addr_0x00739df9:    {disp8} mov        edx, dword ptr [esp + 0x10]         
                          push               ecx                                            // 0x00739e19    51
                          {disp8} lea        edx, dword ptr [esp + 0x50]                    // 0x00739e1a    8d542450
                          push               edx                                            // 0x00739e1e    52
-                         call               _jmp_addr_0x007c7e64                           // 0x00739e1f    e840e00800
+                         call               _qsort                                         // 0x00739e1f    e840e00800
                          {disp8} mov        eax, dword ptr [esp + 0x3c]                    // 0x00739e24    8b44243c
                          add                esp, 0x10                                      // 0x00739e28    83c410
                          test               eax, eax                                       // 0x00739e2b    85c0

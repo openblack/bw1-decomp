@@ -67,8 +67,8 @@
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5a19
-.extern _jmp_addr_0x007c76e0
+.extern ___RTDynamicCast
+.extern __CIacos
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0060d740
@@ -315,8 +315,8 @@ _jmp_addr_0x0060d9e1:    add                esp, 0x08                           
                          call               @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12                        // 0x0060d9f0    e8bb85ffff
                          fsqrt                                                          // 0x0060d9f5    d9fa
                          {disp32} fmul      qword ptr [rdata_bytes + 0x87670]           // 0x0060d9f7    dc0d70069300
-                         {disp32} fsub      qword ptr [rdata_bytes + 0x2680]            // 0x0060d9fd    dc2580b68a00
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x19c48]           // 0x0060da03    dc1d482c8c00
+                         {disp32} fsub      qword ptr [__real@8@3fff8000000000000000] // 0x0060d9fd    dc2580b68a00
+                         {disp32} fcomp     qword ptr [__real@8@00000000000000000000]   // 0x0060da03    dc1d482c8c00
                          fnstsw             ax                                          // 0x0060da09    dfe0
                          test               ah, 0x41                                    // 0x0060da0b    f6c441
                          {disp8} jne        _jmp_addr_0x0060da28                        // 0x0060da0e    7518
@@ -325,9 +325,9 @@ _jmp_addr_0x0060d9e1:    add                esp, 0x08                           
                          call               @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12                        // 0x0060da13    e89885ffff
                          fsqrt                                                          // 0x0060da18    d9fa
                          {disp32} fmul      qword ptr [rdata_bytes + 0x87670]           // 0x0060da1a    dc0d70069300
-                         {disp32} fsub      qword ptr [rdata_bytes + 0x2680]            // 0x0060da20    dc2580b68a00
+                         {disp32} fsub      qword ptr [__real@8@3fff8000000000000000] // 0x0060da20    dc2580b68a00
                          {disp8} jmp        _jmp_addr_0x0060da2e                        // 0x0060da26    eb06
-_jmp_addr_0x0060da28:    {disp32} fld       qword ptr [rdata_bytes + 0x19c48]           // 0x0060da28    dd05482c8c00
+_jmp_addr_0x0060da28:    {disp32} fld       qword ptr [__real@8@00000000000000000000]   // 0x0060da28    dd05482c8c00
 _jmp_addr_0x0060da2e:    call               _jmp_addr_0x007a1400                        // 0x0060da2e    e8cd391900
                          mov.s              edi, eax                                    // 0x0060da33    8bf8
                          cmp                edi, 0x0000ffff                             // 0x0060da35    81ffffff0000
@@ -570,7 +570,7 @@ _jmp_addr_0x0060dc6f:    push               0x0                                 
                          push               0x009c7f50                                  // 0x0060dc76    68507f9c00
                          push               0x0                                         // 0x0060dc7b    6a00
                          push               esi                                         // 0x0060dc7d    56
-                         call               _jmp_addr_0x007c5a19                        // 0x0060dc7e    e8967d1b00
+                         call               ___RTDynamicCast                            // 0x0060dc7e    e8967d1b00
                          mov.s              edi, eax                                    // 0x0060dc83    8bf8
                          add                esp, 0x14                                   // 0x0060dc85    83c414
                          test               edi, edi                                    // 0x0060dc88    85ff
@@ -1756,7 +1756,7 @@ _jmp_addr_0x0060ed6d:    {disp8} lea        edi, dword ptr [esi + 0x0c]         
                          push               edx                                         // 0x0060ed7d    52
                          mov.s              ecx, edi                                    // 0x0060ed7e    8bcf
                          call               @DotProduct__7Point2DFP7Point2D@12          // 0x0060ed80    e88b250000
-                         call               _jmp_addr_0x007c76e0                        // 0x0060ed85    e856891b00
+                         call               __CIacos                                    // 0x0060ed85    e856891b00
                          {disp8} fstp       dword ptr [esp + 0x24]                      // 0x0060ed8a    d95c2424
                          {disp8} lea        eax, dword ptr [esp + 0x58]                 // 0x0060ed8e    8d442458
                          push               eax                                         // 0x0060ed92    50

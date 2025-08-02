@@ -23,8 +23,8 @@
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x006e8210
 .extern _jmp_addr_0x007a1400
-.extern _atexit@4
-.extern _jmp_addr_0x007c5a19
+.extern _atexit
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
@@ -751,7 +751,7 @@ _jmp_addr_0x00483ed0:    push               esi                                 
                          or.s               dl, al                                        // 0x00483ee1    0ad0
                          push               0x00483f30                                    // 0x00483ee3    68303f4800
                          {disp32} mov       byte ptr [data_bytes + 0x29e194], dl          // 0x00483ee8    88159441c600
-                         call               _atexit@4                                     // 0x00483eee    e89e183400
+                         call               _atexit                                       // 0x00483eee    e89e183400
                          add                esp, 0x04                                     // 0x00483ef3    83c404
 _jmp_addr_0x00483ef6:    {disp32} mov       eax, dword ptr [esi + 0x00005198]             // 0x00483ef6    8b8698510000
                          {disp32} fld       dword ptr [eax + 0x00064078]                  // 0x00483efc    d98078400600
@@ -1411,7 +1411,7 @@ _jmp_addr_0x0048464e:    push               0x0                                 
                          push               0x009cd390                                    // 0x00484655    6890d39c00
                          push               0x0                                           // 0x0048465a    6a00
                          push               eax                                           // 0x0048465c    50
-                         call               _jmp_addr_0x007c5a19                          // 0x0048465d    e8b7133400
+                         call               ___RTDynamicCast                              // 0x0048465d    e8b7133400
                          add                esp, 0x14                                     // 0x00484662    83c414
                          test               eax, eax                                      // 0x00484665    85c0
                          {disp8} je         _jmp_addr_0x00484672                          // 0x00484667    7409

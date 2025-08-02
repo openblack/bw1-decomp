@@ -18,7 +18,7 @@
 .extern @find__std__map__SubCollideBlockPosPNewCollide3Obj@16
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
 .extern _jmp_addr_0x007370b0
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern @__ct__Q210NewCollide3ObjFfP7LHPoint@16
@@ -56,7 +56,7 @@ _jmp_addr_0x0060d2b1:    push              ebx                                  
                          push              0x009c7f50                                  // 0x0060d2b7    68507f9c00
                          push              ebx                                         // 0x0060d2bc    53
                          push              edi                                         // 0x0060d2bd    57
-                         call              _jmp_addr_0x007c5a19                        // 0x0060d2be    e856871b00
+                         call              ___RTDynamicCast                            // 0x0060d2be    e856871b00
                          add               esp, 0x14                                   // 0x0060d2c3    83c414
                          test              eax, eax                                    // 0x0060d2c6    85c0
                          {disp32} je       _jmp_addr_0x0060d38f                        // 0x0060d2c8    0f84c1000000
@@ -412,7 +412,7 @@ _jmp_addr_0x0060d6af:    push              ebp                                  
                          push              0x009c7f50                                  // 0x0060d6b5    68507f9c00
                          push              ebp                                         // 0x0060d6ba    55
                          push              edi                                         // 0x0060d6bb    57
-                         call              _jmp_addr_0x007c5a19                        // 0x0060d6bc    e858831b00
+                         call              ___RTDynamicCast                            // 0x0060d6bc    e858831b00
                          add               esp, 0x14                                   // 0x0060d6c1    83c414
                          test              eax, eax                                    // 0x0060d6c4    85c0
                          {disp8} je        _jmp_addr_0x0060d709                        // 0x0060d6c6    7441

@@ -47,7 +47,7 @@
 .extern _Spiral__6GUtilsFRlRl
 .extern _jmp_addr_0x007a1400
 .extern  ___dl__FPv
-.extern _jmp_addr_0x007c5a19
+.extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern _jmp_addr_0x00824700
 .extern _jmp_addr_0x00824740
@@ -1257,7 +1257,7 @@ _jmp_addr_0x006d7a47:    {disp8} mov        eax, dword ptr [ebp + 0x00]         
                          push               0x009c7f50                                    // 0x006d7a6a    68507f9c00
                          push               0x0                                           // 0x006d7a6f    6a00
                          push               edi                                           // 0x006d7a71    57
-                         call               _jmp_addr_0x007c5a19                          // 0x006d7a72    e8a2df0e00
+                         call               ___RTDynamicCast                              // 0x006d7a72    e8a2df0e00
                          add                esp, 0x14                                     // 0x006d7a77    83c414
                          test               eax, eax                                      // 0x006d7a7a    85c0
                          {disp8} je         _jmp_addr_0x006d7a9d                          // 0x006d7a7c    741f
@@ -1363,7 +1363,7 @@ _jmp_addr_0x006d7ba0:    {disp8} mov        ecx, dword ptr [ebp + 0x00]         
                          push               0x009c7f50                                    // 0x006d7bc3    68507f9c00
                          push               0x0                                           // 0x006d7bc8    6a00
                          push               edi                                           // 0x006d7bca    57
-                         call               _jmp_addr_0x007c5a19                          // 0x006d7bcb    e849de0e00
+                         call               ___RTDynamicCast                              // 0x006d7bcb    e849de0e00
                          add                esp, 0x14                                     // 0x006d7bd0    83c414
                          test               eax, eax                                      // 0x006d7bd3    85c0
                          {disp8} je         _jmp_addr_0x006d7bfa                          // 0x006d7bd5    7423

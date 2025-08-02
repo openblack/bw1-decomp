@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern  ___dl__FPv
-.extern _operator_new
+.extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007f4980
 .extern _jmp_addr_0x007f4990
 .extern _jmp_addr_0x007f4aa0
@@ -55,7 +55,7 @@ _jmp_addr_0x007f5040:    push             -0x1                                  
                          xor.s            eax, eax                                // 0x007f5088    33c0
 _jmp_addr_0x007f508a:    {disp32} lea     ecx, dword ptr [eax * 0x4 + 0x00000000] // 0x007f508a    8d0c8500000000
                          push             ecx                                     // 0x007f5091    51
-                         call             _operator_new                          // 0x007f5092    e85714fdff
+                         call             ??2@YAPAXI@Z                            // 0x007f5092    e85714fdff
                          add              esp, 0x04                               // 0x007f5097    83c404
                          cmp.s            esi, ebx                                // 0x007f509a    3bf3
                          {disp8} mov      dword ptr [esp + 0x20], eax             // 0x007f509c    89442420

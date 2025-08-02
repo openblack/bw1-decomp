@@ -75,7 +75,7 @@
 .globl __imp__ImmGetOpenStatus@4
 .globl __imp__GetTimeFormatA@4
 .globl __imp__DebugBreak@4
-.globl __imp__MultiByteToWideChar@4
+.globl __imp__MultiByteToWideChar@24
 .globl __imp__GetTimeFormatW@4
 .globl __imp__QueryPerformanceCounter@4
 .globl __imp__GetCommandLineA@0
@@ -83,7 +83,7 @@
 .globl __imp__OutputDebugStringA@4
 .globl __imp__QueryPerformanceFrequency@4
 .globl __imp__CopyFileA@4
-.globl __imp__MoveFileA@4
+.globl __imp__MoveFileA@8
 .globl __imp__GetDateFormatA@4
 .globl __imp__GetTempFileNameA@4
 .globl __imp__CreateDirectoryA@8
@@ -119,14 +119,14 @@
 .globl __imp__HeapReAlloc@4
 .globl __imp__SetFileAttributesA@8
 .globl __imp__RaiseException@16
-.globl __imp__RtlUnwind@4
+.globl __imp__RtlUnwind@16
 .globl __imp__GetLocalTime@4
 .globl __imp__GetSystemTime@4
 .globl __imp__GetTimeZoneInformation@4
 .globl __imp__GetLastError@0
 .globl __imp__HeapFree@4
-.globl __imp__HeapAlloc@4
-.globl __imp__IsBadReadPtr@4
+.globl __imp__HeapAlloc@12
+.globl __imp__IsBadReadPtr@8
 .globl __imp__SetEndOfFile@4
 .globl __imp__GetFileSize@4
 .globl __imp__WriteFile@4
@@ -684,7 +684,7 @@ __imp__ImmGetOpenStatus@4:                                                      
 .long 0
 __imp__GetTimeFormatA@4:                                                                                                       .long 0x005c051a // 0x008a9134 KERNEL32.DLL::GetTimeFormatA
 __imp__DebugBreak@4:                                                                                                           .long 0x005c0550 // 0x008a9138 KERNEL32.DLL::DebugBreak
-__imp__MultiByteToWideChar@4:                                                                                                  .long 0x005c04ee // 0x008a913c KERNEL32.DLL::MultiByteToWideChar
+__imp__MultiByteToWideChar@24:                                                                                                  .long 0x005c04ee // 0x008a913c KERNEL32.DLL::MultiByteToWideChar
 __imp__GetTimeFormatW@4:                                                                                                       .long 0x005c052c // 0x008a9140 KERNEL32.DLL::GetTimeFormatW
 __imp__QueryPerformanceCounter@4:                                                                                              .long 0x005c04b8 // 0x008a9144 KERNEL32.DLL::QueryPerformanceCounter
 __imp__GetCommandLineA@0:                                                                                                      .long 0x005c04a6 // 0x008a9148 KERNEL32.DLL::GetCommandLineA
@@ -692,7 +692,7 @@ __imp__GetDateFormatW@4:                                                        
 __imp__OutputDebugStringA@4:                                                                                                   .long 0x005c0504 // 0x008a9150 KERNEL32.DLL::OutputDebugStringA
 __imp__QueryPerformanceFrequency@4:                                                                                            .long 0x005c04d2 // 0x008a9154 KERNEL32.DLL::QueryPerformanceFrequency
 __imp__CopyFileA@4:                                                                                                            .long 0x005c0472 // 0x008a9158 KERNEL32.DLL::CopyFileA
-__imp__MoveFileA@4:                                                                                                            .long 0x005c0466 // 0x008a915c KERNEL32.DLL::MoveFileA
+__imp__MoveFileA@8:                                                                                                            .long 0x005c0466 // 0x008a915c KERNEL32.DLL::MoveFileA
 __imp__GetDateFormatA@4:                                                                                                       .long 0x005c0454 // 0x008a9160 KERNEL32.DLL::GetDateFormatA
 __imp__GetTempFileNameA@4:                                                                                                     .long 0x005c0430 // 0x008a9164 KERNEL32.DLL::GetTempFileNameA
 __imp__CreateDirectoryA@8:                                                                                                     .long 0x005c041c // 0x008a9168 KERNEL32.DLL::CreateDirectoryA
@@ -728,14 +728,14 @@ __imp__Beep@8:                                                                  
 __imp__HeapReAlloc@4:                                                                                                          .long 0x005c47de // 0x008a91e0 KERNEL32.DLL::HeapReAlloc
 __imp__SetFileAttributesA@8:                                                                                                   .long 0x005c47c8 // 0x008a91e4 KERNEL32.DLL::SetFileAttributesA
 __imp__RaiseException@16:                                                                                                      .long 0x005c47b6 // 0x008a91e8 KERNEL32.DLL::RaiseException
-__imp__RtlUnwind@4:                                                                                                            .long 0x005c47aa // 0x008a91ec KERNEL32.DLL::RtlUnwind
+__imp__RtlUnwind@16:                                                                                                            .long 0x005c47aa // 0x008a91ec KERNEL32.DLL::RtlUnwind
 __imp__GetLocalTime@4:                                                                                                         .long 0x005c479a // 0x008a91f0 KERNEL32.DLL::GetLocalTime
 __imp__GetSystemTime@4:                                                                                                        .long 0x005c478a // 0x008a91f4 KERNEL32.DLL::GetSystemTime
 __imp__GetTimeZoneInformation@4:                                                                                               .long 0x005c4770 // 0x008a91f8 KERNEL32.DLL::GetTimeZoneInformation
 __imp__GetLastError@0:                                                                                                         .long 0x005c4760 // 0x008a91fc KERNEL32.DLL::GetLastError
 __imp__HeapFree@4:                                                                                                             .long 0x005c4754 // 0x008a9200 KERNEL32.DLL::HeapFree
-__imp__HeapAlloc@4:                                                                                                            .long 0x005c4748 // 0x008a9204 KERNEL32.DLL::HeapAlloc
-__imp__IsBadReadPtr@4:                                                                                                         .long 0x005c4738 // 0x008a9208 KERNEL32.DLL::IsBadReadPtr
+__imp__HeapAlloc@12:                                                                                                           .long 0x005c4748 // 0x008a9204 KERNEL32.DLL::HeapAlloc
+__imp__IsBadReadPtr@8:                                                                                                         .long 0x005c4738 // 0x008a9208 KERNEL32.DLL::IsBadReadPtr
 __imp__SetEndOfFile@4:                                                                                                         .long 0x005c4728 // 0x008a920c KERNEL32.DLL::SetEndOfFile
 __imp__GetFileSize@4:                                                                                                          .long 0x005c471a // 0x008a9210 KERNEL32.DLL::GetFileSize
 __imp__WriteFile@4:                                                                                                            .long 0x005c470e // 0x008a9214 KERNEL32.DLL::WriteFile
