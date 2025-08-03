@@ -12,7 +12,6 @@
 .globl ___winitenv
 .globl __environ
 .globl ___argc
-.globl _?cacheid@?1??_expandlocale@@9@9
 .globl __acmdln
 .globl ___wargv
 .globl __aenvptr
@@ -20,7 +19,6 @@
 .globl ___lc_codepage
 .globl __winmajor
 .globl __nhandle
-.globl __cflush
 .globl __winver
 .globl ___lc_handle
 .globl ___pioinfo
@@ -30,10 +28,8 @@
 .globl __C_Exit_Done
 .globl __wenvptr
 .globl ___initenv
-.globl _start_tics
 .globl __C_Termination_Done
 .globl ___mbcodepage
-.globl _?cachecp@?1??_expandlocale@@9@9
 .globl ___onexitbegin
 .globl __wenviron
 .globl __mbctype
@@ -44,10 +40,6 @@
 .globl __pgmptr
 .globl ___error_mode
 .globl _DAT_00c4cc68
-.globl _sigcritsect
-.globl _ltlcritsect
-.globl _hlcritsect
-.globl _xlcritsect
 .globl _SetupThing
 .globl _UINT_00c58604
 .globl _GCitadelHeartInfo_ARRAY_00c5e270
