@@ -398,9 +398,8 @@ set(SOURCES_002
     asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
 )
 
-set(SOURCES_006  asm/unprocessed/bss.002.asm)
-
 set(SOURCES_007
+    asm/unprocessed/bss.004.asm
     asm/unprocessed/rdata.r.001.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
     asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
@@ -482,9 +481,9 @@ add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
 add_library(runblack-reassembled-src-malloc-free OBJECT asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm)
 add_library(runblack-reassembled-src-calloc OBJECT asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
 add_library(runblack-reassembled-src-realloc OBJECT asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
-add_library(runblack-reassembled-src-006 OBJECT ${SOURCES_006})
 add_library(runblack-reassembled-src-007 OBJECT ${SOURCES_007})
 add_library(runblack-reassembled-src-008 OBJECT ${SOURCES_008})
+add_library(runblack-reassembled-src-bss-005 OBJECT asm/unprocessed/bss.005.asm)
 
 add_library(runblack-reassembled-rc OBJECT
     res/winnt.rh
@@ -607,10 +606,9 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\stdexcpt.obj" WEAKEN_SYMBOLS "?
 add_patched_libcmt_object("build\\intel\\mt_obj\\throw.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strcspn.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\memchr.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\lconv.obj" NO_PAD)
-list(APPEND LIBCMT_PATCHED_OBJECTS "${CMAKE_SOURCE_DIR}/lib/padding_at_0x00c2d4ec.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\strtol.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\dosmap.obj" NO_PAD)
+add_patched_libcmt_object("build\\intel\\mt_obj\\lconv.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\strtol.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\dosmap.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strncpy.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strncmp.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strchr.obj")
@@ -618,77 +616,75 @@ set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${
 
 add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
-add_patched_libcmt_object("build\\intel\\mt_obj\\printf.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\strtok.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\atof.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\swscanf.obj" NO_PAD)
+add_patched_libcmt_object("build\\intel\\mt_obj\\printf.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\strtok.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\atof.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\swscanf.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strstr.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\tolower.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncmp.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\towlower.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\abort.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\chmod.obj" NO_PAD)
+add_patched_libcmt_object("build\\intel\\mt_obj\\tolower.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncmp.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\towlower.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\abort.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\chmod.obj")
 set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-add_library(runblack-reassembled-libcmt-005 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-004 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
-add_patched_libcmt_object("build\\intel\\mt_obj\\slbeep.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\strrchr.obj" NO_PAD)
-add_patched_libcmt_object("..\\build\\intel\\mt_obj\\ieee87.obj" NO_PAD)
+add_patched_libcmt_object("build\\intel\\mt_obj\\slbeep.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\strrchr.obj")
+add_patched_libcmt_object("..\\build\\intel\\mt_obj\\ieee87.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\ulldiv.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\llmul.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\crt0dat.obj" NO_PAD WEAKEN_SYMBOLS __umaskval __osver __winver __winmajor __winminor ___argc ___argv ___wargv __environ ___initenv __wenviron ___winitenv __pgmptr __wpgmptr __exitflag __C_Termination_Done __C_Exit_Done)
+add_patched_libcmt_object("build\\intel\\mt_obj\\crt0dat.obj" WEAKEN_SYMBOLS __FPinit ___onexitbegin ___onexitend ___mbctype_initialized ___env_initialized)
 add_patched_libcmt_object("build\\intel\\mt_obj\\llshr.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\llshl.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\llrem.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\mkdir.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\fputc.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\ungetc.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\fgetpos.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\fsetpos.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\setvbuf.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\fflush.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncat.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wincrt0.obj" NO_PAD WEAKEN_SYMBOLS __aenvptr __wenvptr ___error_mode __acmdln)
-add_patched_libcmt_object("build\\intel\\mt_obj\\strlen.obj" NO_PAD)
+add_patched_libcmt_object("build\\intel\\mt_obj\\mkdir.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\fputc.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\ungetc.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\fgetpos.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\fsetpos.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\setvbuf.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\fflush.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncat.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wincrt0.obj" WEAKEN_SYMBOLS __acmdln)
+add_patched_libcmt_object("build\\intel\\mt_obj\\strlen.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\ehprolog.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\memcpy.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\memcmp.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\setlocal.obj" NO_PAD WEAKEN_SYMBOLS ___unguarded_readlc_active ___setlc_active "_?cachecp@?1??_expandlocale@@9@9" "_?cacheid@?1??_expandlocale@@9@9" "??_C@_03DBOJ@_?4?0?$AA@" "??_C@_01KPOD@?$DN?$AA@" "??_C@_01FAJB@?$DL?$AA@" "??_C@_02BGDO@?$DN?$DL?$AA@" "??_C@_01PJCK@?4?$AA@" "??_C@_07PCLE@LC_TIME?$AA@" "??_C@_0L@NKG@LC_NUMERIC?$AA@" "??_C@_0M@CBIH@LC_MONETARY?$AA@" "??_C@_08LFGE@LC_CTYPE?$AA@" "??_C@_06GCPK@LC_ALL?$AA@" "??_C@_01NON@_?$AA@" "??_C@_0L@CFLC@LC_COLLATE?$AA@")
+add_patched_libcmt_object("build\\intel\\mt_obj\\setlocal.obj" WEAKEN_SYMBOLS ___unguarded_readlc_active ___setlc_active "??_C@_03DBOJ@_?4?0?$AA@" "??_C@_01KPOD@?$DN?$AA@" "??_C@_01FAJB@?$DL?$AA@" "??_C@_02BGDO@?$DN?$DL?$AA@" "??_C@_01PJCK@?4?$AA@" "??_C@_07PCLE@LC_TIME?$AA@" "??_C@_0L@NKG@LC_NUMERIC?$AA@" "??_C@_0M@CBIH@LC_MONETARY?$AA@" "??_C@_08LFGE@LC_CTYPE?$AA@" "??_C@_06GCPK@LC_ALL?$AA@" "??_C@_01NON@_?$AA@" "??_C@_0L@CFLC@LC_COLLATE?$AA@")
 add_patched_libcmt_object("build\\intel\\mt_obj\\memset.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\_file.obj" WEAKEN_SYMBOLS __cflush)
+add_patched_libcmt_object("build\\intel\\mt_obj\\_file.obj" WEAKEN_SYMBOLS __nstream __bufin ___piob ___pioinfo)
 add_patched_libcmt_object("build\\intel\\mt_obj\\fputwc.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\ungetwc.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\fgetwc.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\mlock.obj" WEAKEN_SYMBOLS _sigcritsect _ltlcritsect _hlcritsect _xlcritsect)
-set_property(TARGET runblack-reassembled-libcmt-005 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+add_patched_libcmt_object("build\\intel\\mt_obj\\mlock.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\nlsdata2.obj")
+set_property(TARGET runblack-reassembled-libcmt-004 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-# libcmt is statically linked between 007aee98 and 008a6470
-# The text section is aligned on 1-byte boundaries so IMAGE_SCN_TYPE_NO_PAD needs to be set
-add_library(runblack-reassembled-libcmt-006 OBJECT IMPORTED)
-
+add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcsdup.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcsicmp.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\flength.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\fileno.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcsnicmp.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\chdir.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\strlwr.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\getpid.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecdtr.obj" NO_PAD)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsdup.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsicmp.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\flength.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\fileno.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsnicmp.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\chdir.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\strlwr.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\getpid.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecdtr.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strspn.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcschr.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcsrchr.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcspbrk.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\wcsspn.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecctr.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\clock.obj" NO_PAD WEAKEN_SYMBOLS _start_tics)
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcschr.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsrchr.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcspbrk.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\wcsspn.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\ehvecctr.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\clock.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\longjmp.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\setjmp3.obj")
-add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj" NO_PAD)
-add_patched_libcmt_object("build\\intel\\mt_obj\\sehsupp.obj" NO_PAD)
-set_property(TARGET runblack-reassembled-libcmt-006 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+add_patched_libcmt_object("build\\intel\\mt_obj\\mbtoupr.obj")
+add_patched_libcmt_object("build\\intel\\mt_obj\\sehsupp.obj")
+set_property(TARGET runblack-reassembled-libcmt-007 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_executable(runblack-reassembled)
 set_target_properties(runblack-reassembled PROPERTIES
@@ -726,10 +722,10 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-src-calloc
         runblack-reassembled-libcmt-003
         runblack-reassembled-src-realloc
-        runblack-reassembled-src-006  # bbs 002
-        runblack-reassembled-libcmt-005
-        runblack-reassembled-src-007
-        runblack-reassembled-libcmt-006
+        runblack-reassembled-libcmt-004
+        runblack-reassembled-src-007  # some lhlib with some libcmt mixed in
+        runblack-reassembled-libcmt-007
+        runblack-reassembled-src-bss-005
         runblack-reassembled-src-008
         runblack-reassembled-rc
 )
@@ -747,8 +743,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-006.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.005.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.005.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -794,9 +790,10 @@ target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_option
 target_link_libraries(runblack-reassembled-src-malloc-free PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-calloc PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-realloc PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-006 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-007 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-008 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-bss-005 PRIVATE common_compile_options)
+
 target_link_options(runblack-reassembled
     PRIVATE
         "-flavor"
