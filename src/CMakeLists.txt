@@ -97,7 +97,6 @@ set(SOURCES_001
 
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
     asm/unprocessed/rdata.r.001-rtti.asm
-    asm/unprocessed/rdata.r.002-libcpmt-rtti.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
@@ -383,6 +382,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1061.007aebb0-007aee98-jmp-table.asm
 )
 set(SOURCES_002
+    asm/unprocessed/rdata.r.002-libcpmt-rtti.asm
     asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm
     asm/unprocessed/runblack.reassemble.1063.007bf030-007bf210.asm
 )
@@ -547,10 +547,10 @@ function(add_patched_static_lib_object library_name src_obj)
     set(STATIC_LIB_PATCHED_OBJECTS "${STATIC_LIB_PATCHED_OBJECTS};${output_file}" PARENT_SCOPE)
 endfunction()
 
-add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcpmt-001 OBJECT IMPORTED)
 set(STATIC_LIB_PATCHED_OBJECTS)
-add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\delete.obj") # TODO, it's actually delop.obj from libcpmt.lob
-set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
+add_patched_static_lib_object(LIBCPMT "build\\intel\\mt_obj\\delop.obj")
+set_property(TARGET runblack-reassembled-libcpmt-001 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
 set(STATIC_LIB_PATCHED_OBJECTS)
@@ -725,8 +725,8 @@ target_include_directories(common_compile_options
 target_link_libraries(runblack-reassembled
     PRIVATE
         runblack-reassembled-src-001
-        runblack-reassembled-libcmt-001
-        runblack-reassembled-src-002  # mix of libcmt.lib and libcpmt.lib
+        runblack-reassembled-libcpmt-001
+        runblack-reassembled-src-002  # contents of libcpmt.lib
         runblack-reassembled-zlib
         runblack-reassembled-src-004  # import jump table from lhlib?
         runblack-reassembled-libcmt-002
@@ -741,6 +741,15 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-src-bss-005
         runblack-reassembled-src-008
         runblack-reassembled-rc
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.r.002-libcpmt-rtti.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.r.002-libcpmt-rtti.asm${OBJ_SUFFIX}"
+            "--no-pad"
 )
 
 add_custom_command(
