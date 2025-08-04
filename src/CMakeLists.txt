@@ -407,9 +407,9 @@ set(SOURCES_004
 
 set(SOURCES_007
     asm/unprocessed/bss.004.asm
-    asm/unprocessed/rdata.005.009a0744-009a6298.asm
+    asm/unprocessed/rdata.005.009a0744-009a6298.asm  # contains some d3d 7? data
     asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
-    asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
+    asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm  # contains some ddraw data
     asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
     asm/unprocessed/runblack.reassemble.1128.007da710-007db410.asm
     # end of libcmt and start of lhlib?
