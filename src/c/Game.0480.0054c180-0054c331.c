@@ -30,7 +30,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this)
     asm("                         {disp32} mov       ecx, dword ptr [edi + 0x0000e928]");             // 0x0054c1d7    8b8f28e90000
     asm("                         call               @Release__11LH3DTextureFv@4");                   // 0x0054c1dd    e85ebb2e00
     asm("                         push               edi");                                           // 0x0054c1e2    57
-    asm("                         call               ___dl__FPv");                                    // 0x0054c1e3    e8b02c2600
+    asm("                         call               ??3@YAXPAX@Z");                                    // 0x0054c1e3    e8b02c2600
     asm("                         add                esp, 0x04");                                     // 0x0054c1e8    83c404
     asm("_jmp_addr_0x0054c1eb:    {disp32} mov       edi, dword ptr [rdata_bytes + 0x1c4]");          // 0x0054c1eb    8b3dc4918a00
     asm("                         {disp32} mov       dword ptr [data_bytes + 0x30a6e8], ebx");        // 0x0054c1f1    891de806cd00

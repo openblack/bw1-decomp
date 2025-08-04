@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x00745ea0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern ___RTDynamicCast
 
@@ -157,7 +157,7 @@ _jmp_addr_0x004d7748:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          dec                ecx                                           // 0x004d774b    49
                          push               eax                                           // 0x004d774c    50
                          {disp8} mov        dword ptr [esi + 0x04], ecx                   // 0x004d774d    894e04
-                         call                ___dl__FPv                                   // 0x004d7750    e843772d00
+                         call               ??3@YAXPAX@Z                                  // 0x004d7750    e843772d00
                          add                esp, 0x04                                     // 0x004d7755    83c404
                          test               bl, bl                                        // 0x004d7758    84db
                          {disp8} jne        _jmp_addr_0x004d7766                          // 0x004d775a    750a

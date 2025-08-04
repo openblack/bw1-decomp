@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @__ct__8LHOSFileFv@4
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007bcad0
@@ -2565,7 +2565,7 @@ _jmp_addr_0x007e7637:    {disp8} mov      eax, dword ptr [esi + 0x08]           
                          test             eax, eax                                      // 0x007e763a    85c0
                          {disp8} je       _jmp_addr_0x007e7647                          // 0x007e763c    7409
                          push             eax                                           // 0x007e763e    50
-                         call              ___dl__FPv                                   // 0x007e763f    e85478fcff
+                         call             ??3@YAXPAX@Z                                  // 0x007e763f    e85478fcff
                          add              esp, 0x04                                     // 0x007e7644    83c404
 _jmp_addr_0x007e7647:    {disp8} lea      edx, dword ptr [esp + 0x24]                   // 0x007e7647    8d542424
                          push             edx                                           // 0x007e764b    52

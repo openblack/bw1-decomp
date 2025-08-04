@@ -59,7 +59,7 @@
 .extern @GetAnim__9MorphableFll@16
 .extern _jmp_addr_0x0074caf0
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007be340
 .extern _jmp_addr_0x007be360
 .extern _atexit
@@ -1004,7 +1004,7 @@ _jmp_addr_0x0059c746:    pop                esi                                 
                          push               esi                                           // 0x0059c786    56
                          call               @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20  // 0x0059c787    e8044ae7ff
                          push               esi                                           // 0x0059c78c    56
-                         call                ___dl__FPv                                   // 0x0059c78d    e806272100
+                         call               ??3@YAXPAX@Z                                  // 0x0059c78d    e806272100
                          add                esp, 0x04                                     // 0x0059c792    83c404
                          pop                edi                                           // 0x0059c795    5f
                          pop                esi                                           // 0x0059c796    5e
@@ -1676,7 +1676,7 @@ _jmp_addr_0x0059cfa6:    {disp8} mov        edx, dword ptr [edi + 0x04]         
                          dec                edx                                           // 0x0059cfa9    4a
                          push               eax                                           // 0x0059cfaa    50
                          {disp8} mov        dword ptr [edi + 0x04], edx                   // 0x0059cfab    895704
-                         call                ___dl__FPv                                   // 0x0059cfae    e8e51e2100
+                         call               ??3@YAXPAX@Z                                  // 0x0059cfae    e8e51e2100
                          add                esp, 0x04                                     // 0x0059cfb3    83c404
                          {disp8} jmp        _jmp_addr_0x0059cfba                          // 0x0059cfb6    eb02
 _jmp_addr_0x0059cfb8:    mov.s              ebx, eax                                      // 0x0059cfb8    8bd8
@@ -1684,7 +1684,7 @@ _jmp_addr_0x0059cfba:    test               esi, esi                            
                          mov.s              eax, esi                                      // 0x0059cfbc    8bc6
                          {disp8} jne        _jmp_addr_0x0059cf95                          // 0x0059cfbe    75d5
 _jmp_addr_0x0059cfc0:    push               ebp                                           // 0x0059cfc0    55
-                         call                ___dl__FPv                                   // 0x0059cfc1    e8d21e2100
+                         call               ??3@YAXPAX@Z                                  // 0x0059cfc1    e8d21e2100
                          add                esp, 0x04                                     // 0x0059cfc6    83c404
                          {disp8} jmp        _jmp_addr_0x0059cf86                          // 0x0059cfc9    ebbb
 _jmp_addr_0x0059cfcb:    pop                edi                                           // 0x0059cfcb    5f
@@ -20926,7 +20926,7 @@ _jmp_addr_0x005b2d07:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          push               edi                                           // 0x005b2d11    57
                          call               _jmp_addr_0x005b3760                          // 0x005b2d12    e8490a0000
                          push               ebp                                           // 0x005b2d17    55
-                         call                ___dl__FPv                                   // 0x005b2d18    e87bc11f00
+                         call               ??3@YAXPAX@Z                                  // 0x005b2d18    e87bc11f00
                          add                esp, 0x14                                     // 0x005b2d1d    83c414
                          pop                edi                                           // 0x005b2d20    5f
                          mov.s              eax, esi                                      // 0x005b2d21    8bc6
@@ -21954,7 +21954,7 @@ _jmp_addr_0x005b3983:    mov                ecx, dword ptr [esi]                
                          {disp8} jge        _jmp_addr_0x005b3983                          // 0x005b39a0    7de1
 _jmp_addr_0x005b39a2:    {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x005b39a2    8b542410
                          push               edx                                           // 0x005b39a6    52
-                         call                ___dl__FPv                                   // 0x005b39a7    e8ecb41f00
+                         call               ??3@YAXPAX@Z                                  // 0x005b39a7    e8ecb41f00
                          add                esp, 0x04                                     // 0x005b39ac    83c404
                          pop                edi                                           // 0x005b39af    5f
                          pop                esi                                           // 0x005b39b0    5e
@@ -21975,7 +21975,7 @@ _jmp_addr_0x005b39c0:    push               esi                                 
                          mov.s              esi, ecx                                      // 0x005b39c1    8bf1
                          mov                eax, dword ptr [esi]                          // 0x005b39c3    8b06
                          push               eax                                           // 0x005b39c5    50
-                         call                ___dl__FPv                                   // 0x005b39c6    e8cdb41f00
+                         call               ??3@YAXPAX@Z                                  // 0x005b39c6    e8cdb41f00
                          add                esp, 0x04                                     // 0x005b39cb    83c404
                          mov                dword ptr [esi], 0x00000000                   // 0x005b39ce    c70600000000
                          {disp8} mov        dword ptr [esi + 0x04], 0x00000000            // 0x005b39d4    c7460400000000

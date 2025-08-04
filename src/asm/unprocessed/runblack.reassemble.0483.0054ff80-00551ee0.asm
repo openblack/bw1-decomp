@@ -40,8 +40,8 @@
 .extern _jmp_addr_0x0064aac0
 .extern @GetRealInterface__7GPlayerFUl@12
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
-.extern _jmp_addr_0x007aeea3
+.extern  ??3@YAXPAX@Z
+.extern ??0_Lockit@std@@QAE@XZ
 .extern _jmp_addr_0x007aef3f
 .extern _sprintf
 .extern _fopen
@@ -215,7 +215,7 @@ _jmp_addr_0x005500ec:    sub                esi, 0x3c                           
                          {disp8} jne        _jmp_addr_0x005500ec                           // 0x005500f7    75f3
                          xor.s              edi, edi                                       // 0x005500f9    33ff
 _jmp_addr_0x005500fb:    push               ebp                                            // 0x005500fb    55
-                         call                ___dl__FPv                                    // 0x005500fc    e897ed2500
+                         call               ??3@YAXPAX@Z                                   // 0x005500fc    e897ed2500
                          add                esp, 0x04                                      // 0x00550101    83c404
                          pop                ebp                                            // 0x00550104    5d
 _jmp_addr_0x00550105:    {disp8} mov        dword ptr [ebx + 0x08], edi                    // 0x00550105    897b08
@@ -704,13 +704,13 @@ _jmp_addr_0x005506f8:    {disp8} lea        ecx, dword ptr [esp + 0x18]         
                          {disp8} jne        _jmp_addr_0x005506f8                           // 0x00550718    75de
 _jmp_addr_0x0055071a:    {disp8} mov        ecx, dword ptr [esp + 0x20]                    // 0x0055071a    8b4c2420
                          push               ecx                                            // 0x0055071e    51
-                         call                ___dl__FPv                                    // 0x0055071f    e874e72500
+                         call               ??3@YAXPAX@Z                                   // 0x0055071f    e874e72500
                          add                esp, 0x04                                      // 0x00550724    83c404
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x00550727    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x20], ebx                    // 0x0055072b    895c2420
                          {disp8} mov        dword ptr [esp + 0x28], ebx                    // 0x0055072f    895c2428
                          xor.s              esi, esi                                       // 0x00550733    33f6
-                         call               _jmp_addr_0x007aeea3                           // 0x00550735    e869e72500
+                         call               ??0_Lockit@std@@QAE@XZ                         // 0x00550735    e869e72500
                          {disp32} mov       eax, dword ptr [data_bytes + 0x33b9dc]         // 0x0055073a    a1dc19d000
                          dec                eax                                            // 0x0055073f    48
                          pop                edi                                            // 0x00550740    5f
@@ -724,7 +724,7 @@ _jmp_addr_0x00550755:    {disp8} lea        ecx, dword ptr [esp + 0x10]         
                          cmp.s              esi, ebx                                       // 0x0055075e    3bf3
                          {disp8} je         _jmp_addr_0x0055076b                           // 0x00550760    7409
                          push               esi                                            // 0x00550762    56
-                         call                ___dl__FPv                                    // 0x00550763    e830e72500
+                         call               ??3@YAXPAX@Z                                   // 0x00550763    e830e72500
                          add                esp, 0x04                                      // 0x00550768    83c404
 _jmp_addr_0x0055076b:    pop                esi                                            // 0x0055076b    5e
                          pop                ebx                                            // 0x0055076c    5b

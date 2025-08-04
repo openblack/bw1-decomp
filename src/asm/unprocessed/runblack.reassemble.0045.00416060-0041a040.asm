@@ -98,7 +98,7 @@
 .extern _ConvertGameAngleTo3D__6GUtilsFl
 .extern _jmp_addr_0x0074f310
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
@@ -3604,7 +3604,7 @@ _jmp_addr_0x00417bd6:    {disp32} mov       edx, dword ptr [edi + 0x00000988]   
                          dec                edx                                           // 0x00417bdc    4a
                          push               eax                                           // 0x00417bdd    50
                          {disp32} mov       dword ptr [edi + 0x00000988], edx             // 0x00417bde    899788090000
-                         call                ___dl__FPv                                   // 0x00417be4    e8af723900
+                         call               ??3@YAXPAX@Z                                  // 0x00417be4    e8af723900
                          add                esp, 0x04                                     // 0x00417be9    83c404
                          {disp8} jmp        _jmp_addr_0x00417bf0                          // 0x00417bec    eb02
 _jmp_addr_0x00417bee:    mov.s              ebp, eax                                      // 0x00417bee    8be8

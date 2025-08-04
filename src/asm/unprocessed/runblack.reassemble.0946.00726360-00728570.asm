@@ -245,7 +245,7 @@
 .extern _jmp_addr_0x0079dd20
 .extern _jmp_addr_0x0079ddf0
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit

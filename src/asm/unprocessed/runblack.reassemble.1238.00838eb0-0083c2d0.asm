@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x0046d720
 .extern _jmp_addr_0x0046edb0
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
 .extern @SetName__6LHFileFPCc@12
@@ -938,7 +938,7 @@ _jmp_addr_0x00839880:    {disp32} mov       eax, dword ptr [data_bytes + 0x51749
                          dec                dword ptr [data_bytes + 0x504654]               // 0x00839889    ff0d54a6ec00
                          push               eax                                             // 0x0083988f    50
                          {disp8} mov        dword ptr [eax + 0x08], 0x00000000              // 0x00839890    c7400800000000
-                         call                ___dl__FPv                                     // 0x00839897    e8fc55f7ff
+                         call               ??3@YAXPAX@Z                                    // 0x00839897    e8fc55f7ff
                          pop                ecx                                             // 0x0083989c    59
 _jmp_addr_0x0083989d:    ret                                                                // 0x0083989d    c3
                          nop                                                                // 0x0083989e    90

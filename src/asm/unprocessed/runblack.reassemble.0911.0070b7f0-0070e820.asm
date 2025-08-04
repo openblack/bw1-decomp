@@ -67,7 +67,7 @@
 .extern _jmp_addr_0x0077fe10
 .extern _jmp_addr_0x0077fe40
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -3306,7 +3306,7 @@ _jmp_addr_0x0070d99a:    {disp8} mov        edx, dword ptr [edi + 0x04]         
                          dec                edx                                           // 0x0070d99d    4a
                          push               eax                                           // 0x0070d99e    50
                          {disp8} mov        dword ptr [edi + 0x04], edx                   // 0x0070d99f    895704
-                         call                ___dl__FPv                                   // 0x0070d9a2    e8f1140a00
+                         call               ??3@YAXPAX@Z                                  // 0x0070d9a2    e8f1140a00
                          add                esp, 0x04                                     // 0x0070d9a7    83c404
                          {disp8} jmp        _jmp_addr_0x0070d9ae                          // 0x0070d9aa    eb02
 _jmp_addr_0x0070d9ac:    mov.s              ebx, eax                                      // 0x0070d9ac    8bd8

@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x005198f0
 .extern _jmp_addr_0x005feda0
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
 .extern _memmove
@@ -3285,10 +3285,10 @@ _jmp_addr_0x0086ca40:    {disp32} mov       eax, dword ptr [ecx + 0x00011008]   
                          {disp8} jne        _jmp_addr_0x0086ca7a                           // 0x0086ca51    7527
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x5dc90c]         // 0x0086ca53    8b0d0c29fa00
                          push               ecx                                            // 0x0086ca59    51
-                         call                ___dl__FPv                                    // 0x0086ca5a    e83924f4ff
+                         call               ??3@YAXPAX@Z                                   // 0x0086ca5a    e83924f4ff
                          {disp32} mov       edx, dword ptr [data_bytes + 0x5dc910]         // 0x0086ca5f    8b151029fa00
                          push               edx                                            // 0x0086ca65    52
-                         call                ___dl__FPv                                    // 0x0086ca66    e82d24f4ff
+                         call               ??3@YAXPAX@Z                                   // 0x0086ca66    e82d24f4ff
                          add                esp, 0x08                                      // 0x0086ca6b    83c408
                          xor.s              eax, eax                                       // 0x0086ca6e    33c0
                          {disp32} mov       dword ptr [data_bytes + 0x5dc90c], eax         // 0x0086ca70    a30c29fa00

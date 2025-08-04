@@ -250,7 +250,7 @@
 .extern _jmp_addr_0x00794370
 .extern _ProcessGameTurn__6TempleFv@0
 .extern _jmp_addr_0x007a1400
-.extern ___dl__FPv
+.extern ??3@YAXPAX@Z
 .extern @__dt__8LHOSFileFv@4
 .extern _Exists__8LHOSFileFPc
 .extern _atexit

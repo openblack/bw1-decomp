@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x0074dce0
 .extern _jmp_addr_0x0074e2b0
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern ___nw__FUl
@@ -890,7 +890,7 @@ _jmp_addr_0x0060c3cd:    {disp8} mov        eax, dword ptr [esp + 0x40]         
 _jmp_addr_0x0060c3d5:    mov.s              ecx, ebx                                      // 0x0060c3d5    8bcb
                          call               @SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb@17                          // 0x0060c3d7    e894e3ffff
 _jmp_addr_0x0060c3dc:    push               esi                                           // 0x0060c3dc    56
-                         call                ___dl__FPv                                   // 0x0060c3dd    e8b62a1a00
+                         call               ??3@YAXPAX@Z                                  // 0x0060c3dd    e8b62a1a00
                          add                esp, 0x04                                     // 0x0060c3e2    83c404
 _jmp_addr_0x0060c3e5:    pop                edi                                           // 0x0060c3e5    5f
                          pop                esi                                           // 0x0060c3e6    5e
@@ -1643,9 +1643,9 @@ _jmp_addr_0x0060ccba:    {disp8} mov        ecx, dword ptr [esp + 0x44]         
 _jmp_addr_0x0060ccca:    {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x0060ccca    8b4c2410
                          {disp8} mov        byte ptr [ecx + 0x74], -0x01                  // 0x0060ccce    c64174ff
 _jmp_addr_0x0060ccd2:    push               ebx                                           // 0x0060ccd2    53
-                         call                ___dl__FPv                                   // 0x0060ccd3    e8c0211a00
+                         call               ??3@YAXPAX@Z                                  // 0x0060ccd3    e8c0211a00
                          push               ebp                                           // 0x0060ccd8    55
-                         call                ___dl__FPv                                   // 0x0060ccd9    e8ba211a00
+                         call               ??3@YAXPAX@Z                                  // 0x0060ccd9    e8ba211a00
                          add                esp, 0x08                                     // 0x0060ccde    83c408
                          pop                ebp                                           // 0x0060cce1    5d
                          pop                ebx                                           // 0x0060cce2    5b

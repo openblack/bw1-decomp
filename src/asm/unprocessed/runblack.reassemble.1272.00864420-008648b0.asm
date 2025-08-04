@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern ??2@YAPAXI@Z
 .extern @FillPosAndHeading__8RPFollowFR7Point2DRff@20
 .extern @__ct__9RouteNodeFP9RouteNodeiRC7Point2DRC7Point2Dii@32
@@ -42,7 +42,7 @@ _jmp_addr_0x00864420:    {disp32} mov       eax, fs:[0x0]                       
                          {disp8} je         _jmp_addr_0x00864478                          // 0x0086445d    7419
 _jmp_addr_0x0086445f:    {disp8} mov        ebx, dword ptr [eax + 0x24]                   // 0x0086445f    8b5824
                          push               eax                                           // 0x00864462    50
-                         call                ___dl__FPv                                   // 0x00864463    e830aaf4ff
+                         call               ??3@YAXPAX@Z                                  // 0x00864463    e830aaf4ff
                          add                esp, 0x04                                     // 0x00864468    83c404
                          test               ebx, ebx                                      // 0x0086446b    85db
                          mov.s              eax, ebx                                      // 0x0086446d    8bc3
@@ -86,7 +86,7 @@ _jmp_addr_0x008644f3:    mov                ebp, dword ptr [ebx]                
                          mov.s              ecx, ebp                                      // 0x008644f9    8bcd
                          call               @__dt__5RPlanFv@4                             // 0x008644fb    e8f09b0000
                          push               ebp                                           // 0x00864500    55
-                         call                ___dl__FPv                                   // 0x00864501    e892a9f4ff
+                         call               ??3@YAXPAX@Z                                  // 0x00864501    e892a9f4ff
                          add                esp, 0x04                                     // 0x00864506    83c404
 _jmp_addr_0x00864509:    {disp32} mov       eax, dword ptr [esi + 0x000640b8]             // 0x00864509    8b86b8400600
                          inc                edi                                           // 0x0086450f    47
@@ -318,7 +318,7 @@ _jmp_addr_0x0086480f:    cmp.s              edi, ebp                            
                          {disp8} je         _jmp_addr_0x00864851                          // 0x0086483b    7414
 _jmp_addr_0x0086483d:    {disp8} mov        ebp, dword ptr [edi + 0x24]                   // 0x0086483d    8b6f24
                          push               edi                                           // 0x00864840    57
-                         call                ___dl__FPv                                   // 0x00864841    e852a6f4ff
+                         call               ??3@YAXPAX@Z                                  // 0x00864841    e852a6f4ff
                          add                esp, 0x04                                     // 0x00864846    83c404
                          test               ebp, ebp                                      // 0x00864849    85ed
                          mov.s              edi, ebp                                      // 0x0086484b    8bfd

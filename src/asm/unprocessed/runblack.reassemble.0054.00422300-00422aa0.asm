@@ -26,7 +26,7 @@
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _sprintf
 .extern __strcmpi
 .extern _jmp_addr_0x007feb30
@@ -267,7 +267,7 @@ _jmp_addr_0x004225ca:    {disp8} mov       edx, dword ptr [edi + 0x04]          
                          dec               edx                                           // 0x004225cd    4a
                          push              eax                                           // 0x004225ce    50
                          {disp8} mov       dword ptr [edi + 0x04], edx                   // 0x004225cf    895704
-                         call               ___dl__FPv                                   // 0x004225d2    e8c1c83800
+                         call              ??3@YAXPAX@Z                                  // 0x004225d2    e8c1c83800
                          add               esp, 0x04                                     // 0x004225d7    83c404
                          {disp8} jmp       _jmp_addr_0x004225de                          // 0x004225da    eb02
 _jmp_addr_0x004225dc:    mov.s             ebx, eax                                      // 0x004225dc    8bd8

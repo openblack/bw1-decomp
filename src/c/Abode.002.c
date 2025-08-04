@@ -18,7 +18,7 @@ void __fastcall __dt__5AbodeFv(struct Base* this)
     asm("mov.s              ecx, edi");                                 // 0x00402b8d    8bcf
     asm("call               ??1FragMesh@@QAE@XZ");                      // 0x00402b8f    e84c453f00
     asm("push               edi");                                      // 0x00402b94    57
-    asm("call                ___dl__FPv");                              // 0x00402b95    e8fec23a00
+    asm("call                ??3@YAXPAX@Z");                              // 0x00402b95    e8fec23a00
     asm("add                esp, 0x04");                                // 0x00402b9a    83c404
     asm("{disp32} mov       dword ptr [esi + 0x00000090], 0x00000000"); // 0x00402b9d    c7869000000000000000
     asm("_jmp_addr_0x00402ba7:");

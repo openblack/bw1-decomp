@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x00795980
 .extern _jmp_addr_0x0079a720
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @__ct__8LHOSFileFv@4
 .extern @__dt__8LHOSFileFv@4
 .extern @Open__16LHReleasedOSFileFPc12LH_FILE_MODE@16
@@ -1003,7 +1003,7 @@ ___dt__11InnerCameraFv:
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x007974d8    f644240801
                          {disp8} je           _jmp_addr_0x007974e8                          // 0x007974dd    7409
                          push                 esi                                           // 0x007974df    56
-                         call                  ___dl__FPv                                   // 0x007974e0    e8b3790100
+                         call                 ??3@YAXPAX@Z                                  // 0x007974e0    e8b3790100
                          add                  esp, 0x04                                     // 0x007974e5    83c404
 _jmp_addr_0x007974e8:    mov.s                eax, esi                                      // 0x007974e8    8bc6
                          pop                  esi                                           // 0x007974ea    5e
@@ -2757,7 +2757,7 @@ _jmp_addr_0x007989a0:    push                 esi                               
                          mov.s                ecx, edi                                      // 0x007989b4    8bcf
                          call                 _jmp_addr_0x00795090                          // 0x007989b6    e8d5c6ffff
                          push                 edi                                           // 0x007989bb    57
-                         call                  ___dl__FPv                                   // 0x007989bc    e8d7640100
+                         call                 ??3@YAXPAX@Z                                  // 0x007989bc    e8d7640100
                          add                  esp, 0x04                                     // 0x007989c1    83c404
 _jmp_addr_0x007989c4:    {disp32} mov         ecx, dword ptr [esi + 0x000000c4]             // 0x007989c4    8b8ec4000000
                          test                 ecx, ecx                                      // 0x007989ca    85c9
@@ -3347,7 +3347,7 @@ _jmp_addr_0x007990ce:    {disp8} mov          eax, dword ptr [edi + 0x24]       
                          mov.s                ecx, esi                                      // 0x007990d8    8bce
                          call                 _jmp_addr_0x0078da70                          // 0x007990da    e89149ffff
                          push                 esi                                           // 0x007990df    56
-                         call                  ___dl__FPv                                   // 0x007990e0    e8b35d0100
+                         call                 ??3@YAXPAX@Z                                  // 0x007990e0    e8b35d0100
                          add                  esp, 0x04                                     // 0x007990e5    83c404
 _jmp_addr_0x007990e8:    {disp8} mov          eax, dword ptr [edi + 0x2c]                   // 0x007990e8    8b472c
                          inc                  ebx                                           // 0x007990eb    43
@@ -3356,10 +3356,10 @@ _jmp_addr_0x007990e8:    {disp8} mov          eax, dword ptr [edi + 0x2c]       
                          pop                  esi                                           // 0x007990f0    5e
 _jmp_addr_0x007990f1:    {disp8} mov          ecx, dword ptr [edi + 0x24]                   // 0x007990f1    8b4f24
                          push                 ecx                                           // 0x007990f4    51
-                         call                  ___dl__FPv                                   // 0x007990f5    e89e5d0100
+                         call                 ??3@YAXPAX@Z                                  // 0x007990f5    e89e5d0100
                          {disp8} mov          edx, dword ptr [edi + 0x28]                   // 0x007990fa    8b5728
                          push                 edx                                           // 0x007990fd    52
-                         call                  ___dl__FPv                                   // 0x007990fe    e8955d0100
+                         call                 ??3@YAXPAX@Z                                  // 0x007990fe    e8955d0100
                          add                  esp, 0x08                                     // 0x00799103    83c408
                          pop                  edi                                           // 0x00799106    5f
                          pop                  ebx                                           // 0x00799107    5b

@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x006167f0
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
 .extern ___nw__FUl
 
@@ -84,7 +84,7 @@ start_0x0060a770_0x0060bbc0:
                          cmp.s              eax, ebp                                // 0x0060a7a1    3bc5
                          {disp8} je         _jmp_addr_0x0060a7ae                    // 0x0060a7a3    7409
                          push               eax                                     // 0x0060a7a5    50
-                         call                ___dl__FPv                             // 0x0060a7a6    e8ed461a00
+                         call               ??3@YAXPAX@Z                            // 0x0060a7a6    e8ed461a00
                          add                esp, 0x04                               // 0x0060a7ab    83c404
 _jmp_addr_0x0060a7ae:    mov                dword ptr [edi], ebp                    // 0x0060a7ae    892f
                          pop                edi                                     // 0x0060a7b0    5f

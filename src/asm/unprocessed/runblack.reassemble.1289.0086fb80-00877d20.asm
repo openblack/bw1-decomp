@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x007accc0
 .extern _jmp_addr_0x007acce0
 .extern _jmp_addr_0x007acd00
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007bd030
 .extern _sprintf
 .extern ??2@YAPAXI@Z
@@ -1083,7 +1083,7 @@ _jmp_addr_0x00870625:    test                 esi, esi                          
                          mov.s                ecx, esi                                       // 0x00870629    8bce
                          call                 _jmp_addr_0x00870410                           // 0x0087062b    e8e0fdffff
                          push                 esi                                            // 0x00870630    56
-                         call                  ___dl__FPv                                    // 0x00870631    e862e8f3ff
+                         call                 ??3@YAXPAX@Z                                   // 0x00870631    e862e8f3ff
                          add                  esp, 0x04                                      // 0x00870636    83c404
 _jmp_addr_0x00870639:    pop                  esi                                            // 0x00870639    5e
                          ret                                                                 // 0x0087063a    c3
@@ -2127,7 +2127,7 @@ _jmp_addr_0x00871264:    test                 esi, esi                          
                          mov.s                ecx, esi                                       // 0x0087126b    8bce
                          call                 _jmp_addr_0x00871d50                           // 0x0087126d    e8de0a0000
                          push                 esi                                            // 0x00871272    56
-                         call                  ___dl__FPv                                    // 0x00871273    e820dcf3ff
+                         call                 ??3@YAXPAX@Z                                   // 0x00871273    e820dcf3ff
                          add                  esp, 0x04                                      // 0x00871278    83c404
 _jmp_addr_0x0087127b:    test                 edi, edi                                       // 0x0087127b    85ff
                          mov.s                esi, edi                                       // 0x0087127d    8bf7
@@ -3305,7 +3305,7 @@ _jmp_addr_0x0087202c:    test                 esi, esi                          
                          mov.s                ecx, esi                                       // 0x00872030    8bce
                          call                 _jmp_addr_0x00871d50                           // 0x00872032    e819fdffff
                          push                 esi                                            // 0x00872037    56
-                         call                  ___dl__FPv                                    // 0x00872038    e85bcef3ff
+                         call                 ??3@YAXPAX@Z                                   // 0x00872038    e85bcef3ff
                          add                  esp, 0x04                                      // 0x0087203d    83c404
 _jmp_addr_0x00872040:    pop                  edi                                            // 0x00872040    5f
                          pop                  esi                                            // 0x00872041    5e

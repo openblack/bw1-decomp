@@ -95,7 +95,7 @@
 .extern _SigmoidThreshold__6GUtilsFff
 .extern _jmp_addr_0x00751fd0
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
@@ -7880,7 +7880,7 @@ _jmp_addr_0x004ff312:    {disp8} mov        eax, dword ptr [esi + 0x14]         
                          mov.s              ecx, ebx                                      // 0x004ff330    8bcb
                          call               dword ptr [edx]                               // 0x004ff332    ff12
                          push               ebx                                           // 0x004ff334    53
-                         call                ___dl__FPv                                   // 0x004ff335    e85efb2a00
+                         call               ??3@YAXPAX@Z                                  // 0x004ff335    e85efb2a00
                          add                esp, 0x04                                     // 0x004ff33a    83c404
 _jmp_addr_0x004ff33d:    {disp8} mov        ecx, dword ptr [esp + 0x28]                   // 0x004ff33d    8b4c2428
                          {disp8} mov        edx, dword ptr [esp + 0x2c]                   // 0x004ff341    8b54242c
@@ -7999,7 +7999,7 @@ _jmp_addr_0x004ff420:    {disp8} mov        edx, dword ptr [esp + 0x04]         
                          mov.s              ecx, ebx                                      // 0x004ff452    8bcb
                          call               dword ptr [edx]                               // 0x004ff454    ff12
                          push               ebx                                           // 0x004ff456    53
-                         call                ___dl__FPv                                   // 0x004ff457    e83cfa2a00
+                         call               ??3@YAXPAX@Z                                  // 0x004ff457    e83cfa2a00
                          add                esp, 0x04                                     // 0x004ff45c    83c404
 _jmp_addr_0x004ff45f:    {disp8} mov        ecx, dword ptr [esp + 0x1c]                   // 0x004ff45f    8b4c241c
                          {disp8} mov        edx, dword ptr [esp + 0x20]                   // 0x004ff463    8b542420

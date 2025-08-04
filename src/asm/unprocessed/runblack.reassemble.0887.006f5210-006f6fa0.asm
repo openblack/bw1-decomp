@@ -29,7 +29,7 @@
 .extern _AddToInternalList__5LHDLLFP5LHDLL
 .extern @__ct__5LHDLLFPCc@12
 .extern @__dt__5LHDLLFv@4
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern ___RTDynamicCast
 .extern _wcscpy
@@ -1831,7 +1831,7 @@ _jmp_addr_0x006f6352:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x006f6365    8bce
                          call               @__dt__5LHDLLFv@4                             // 0x006f6367    e854710b00
                          push               esi                                           // 0x006f636c    56
-                         call                ___dl__FPv                                   // 0x006f636d    e8268b0b00
+                         call               ??3@YAXPAX@Z                                  // 0x006f636d    e8268b0b00
                          add                esp, 0x04                                     // 0x006f6372    83c404
 _jmp_addr_0x006f6375:    mov.s              eax, edi                                      // 0x006f6375    8bc7
                          pop                edi                                           // 0x006f6377    5f

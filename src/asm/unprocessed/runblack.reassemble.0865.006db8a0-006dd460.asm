@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x006dd4f0
 .extern _GameRand__5GRandFl
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -2279,7 +2279,7 @@ _jmp_addr_0x006dcf8b:    {disp8} mov        edx, dword ptr [ebx + 0x04]         
                          dec                edx                                            // 0x006dcf8e    4a
                          push               eax                                            // 0x006dcf8f    50
                          {disp8} mov        dword ptr [ebx + 0x04], edx                    // 0x006dcf90    895304
-                         call                ___dl__FPv                                    // 0x006dcf93    e8001f0d00
+                         call               ??3@YAXPAX@Z                                   // 0x006dcf93    e8001f0d00
                          add                esp, 0x04                                      // 0x006dcf98    83c404
                          {disp8} jmp        _jmp_addr_0x006dcf9f                           // 0x006dcf9b    eb02
 _jmp_addr_0x006dcf9d:    mov.s              ebp, eax                                       // 0x006dcf9d    8be8

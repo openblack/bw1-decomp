@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @SetDest__8RPFollowFRC7Point2Dffff@28
 .extern _jmp_addr_0x00864420
 .extern @FillPosAndHeading__8RPFollowFR7Point2DRff@20
@@ -36,7 +36,7 @@ _jmp_addr_0x008641a8:    mov                edi, dword ptr [ebx]                
                          mov.s              ecx, edi                                      // 0x008641ae    8bcf
                          call               @__dt__5RPlanFv@4                             // 0x008641b0    e83b9f0000
                          push               edi                                           // 0x008641b5    57
-                         call                ___dl__FPv                                   // 0x008641b6    e8ddacf4ff
+                         call               ??3@YAXPAX@Z                                  // 0x008641b6    e8ddacf4ff
                          add                esp, 0x04                                     // 0x008641bb    83c404
 _jmp_addr_0x008641be:    {disp32} mov       eax, dword ptr [esi + 0x000640b8]             // 0x008641be    8b86b8400600
                          inc                ebp                                           // 0x008641c4    45
