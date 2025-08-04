@@ -96,6 +96,8 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 
     asm/unprocessed/rdata.003.008a99d0-0099f878.asm
+    asm/unprocessed/rdata.r.001-rtti.asm
+    asm/unprocessed/rdata.r.002-libcpmt-rtti.asm
     asm/unprocessed/data.000.009c6000-00c2bf5c.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
@@ -400,7 +402,7 @@ set(SOURCES_002
 
 set(SOURCES_007
     asm/unprocessed/bss.004.asm
-    asm/unprocessed/rdata.r.001.009bb9b4-009bbdc8.asm
+    asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
     asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
     asm/unprocessed/runblack.reassemble.1129.007da710-007dc8b0.asm
@@ -470,7 +472,6 @@ set(SOURCES_007
 set(SOURCES_008
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
-    asm/unprocessed/rdata.006.009a62d4-009bb894-rtti.asm
     asm/unprocessed/data.003.00c2d680-00c3c680.asm
     asm/unprocessed/data.004.00c3c680-00c3cff0.asm
 )
@@ -752,8 +753,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/rdata.r.001.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/rdata.r.001.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
