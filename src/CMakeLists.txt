@@ -854,7 +854,7 @@ target_link_options(runblack-reassembled
         "/entry:WinMainCRTStartup"
         "/safeseh:no"
         "/demangle:no"
-        "/NODEFAULTLIB:libcpmt.lib"
+        "/NODEFAULTLIB"
         "/OPT:NOREF"
         "/OPT:NOICF"
         "/alternatename:??_Etype_info@@UAEPAXI@Z=??_Gtype_info@@UAEPAXI@Z"
