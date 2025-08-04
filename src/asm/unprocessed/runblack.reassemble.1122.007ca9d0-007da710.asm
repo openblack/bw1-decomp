@@ -214,6 +214,7 @@
 .globl __rtzeropop
 .globl __nan2
 
+// a_map.obj
 ___crtLCMapStringA:      push               ebp                                            // 0x007cb744    55
                          mov.s              ebp, esp                                       // 0x007cb745    8bec
                          push               -0x1                                           // 0x007cb747    6aff
@@ -228,7 +229,7 @@ ___crtLCMapStringA:      push               ebp                                 
                          push               edi                                            // 0x007cb766    57
                          {disp8} mov        dword ptr [ebp + -0x18], esp                   // 0x007cb767    8965e8
                          xor.s              edi, edi                                       // 0x007cb76a    33ff
-                         cmp                dword ptr [data_bytes + 0x4be2b8], edi         // 0x007cb76c    393db842e800
+                         cmp                dword ptr [_?f_use@?1??__crtLCMapStringA@@9@9], edi         // 0x007cb76c    393db842e800
                          {disp8} jne        _jmp_addr_0x007cb7ba                           // 0x007cb772    7546
                          push               edi                                            // 0x007cb774    57
                          push               edi                                            // 0x007cb775    57
@@ -242,7 +243,7 @@ ___crtLCMapStringA:      push               ebp                                 
                          call               dword ptr [__imp__LCMapStringW@4]              // 0x007cb786    ff15f0928a00
                          test               eax, eax                                       // 0x007cb78c    85c0
                          {disp8} je         _jmp_addr_0x007cb798                           // 0x007cb78e    7408
-                         {disp32} mov       dword ptr [data_bytes + 0x4be2b8], ebx         // 0x007cb790    891db842e800
+                         {disp32} mov       dword ptr [_?f_use@?1??__crtLCMapStringA@@9@9], ebx         // 0x007cb790    891db842e800
                          {disp8} jmp        _jmp_addr_0x007cb7ba                           // 0x007cb796    eb22
 _jmp_addr_0x007cb798:    push               edi                                            // 0x007cb798    57
                          push               edi                                            // 0x007cb799    57
@@ -253,7 +254,7 @@ _jmp_addr_0x007cb798:    push               edi                                 
                          call               dword ptr [__imp__LCMapStringA@4]              // 0x007cb7a2    ff1508938a00
                          test               eax, eax                                       // 0x007cb7a8    85c0
                          {disp32} je        _jmp_addr_0x007cb8d2                           // 0x007cb7aa    0f8422010000
-                         {disp32} mov       dword ptr [data_bytes + 0x4be2b8], 0x00000002  // 0x007cb7b0    c705b842e80002000000
+                         {disp32} mov       dword ptr [_?f_use@?1??__crtLCMapStringA@@9@9], 0x00000002  // 0x007cb7b0    c705b842e80002000000
 _jmp_addr_0x007cb7ba:    cmp                dword ptr [ebp + 0x14], edi                    // 0x007cb7ba    397d14
                          {disp8} jle        _jmp_addr_0x007cb7cf                           // 0x007cb7bd    7e10
                          push               dword ptr [ebp + 0x14]                         // 0x007cb7bf    ff7514
@@ -262,7 +263,7 @@ _jmp_addr_0x007cb7ba:    cmp                dword ptr [ebp + 0x14], edi         
                          pop                ecx                                            // 0x007cb7ca    59
                          pop                ecx                                            // 0x007cb7cb    59
                          {disp8} mov        dword ptr [ebp + 0x14], eax                    // 0x007cb7cc    894514
-_jmp_addr_0x007cb7cf:    {disp32} mov       eax, dword ptr [data_bytes + 0x4be2b8]         // 0x007cb7cf    a1b842e800
+_jmp_addr_0x007cb7cf:    {disp32} mov       eax, dword ptr [_?f_use@?1??__crtLCMapStringA@@9@9]         // 0x007cb7cf    a1b842e800
                          cmp                eax, 0x02                                      // 0x007cb7d4    83f802
                          {disp8} jne        _jmp_addr_0x007cb7f6                           // 0x007cb7d7    751d
                          push               dword ptr [ebp + 0x1c]                         // 0x007cb7d9    ff751c
