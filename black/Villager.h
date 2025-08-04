@@ -242,8 +242,20 @@ bool32_t __fastcall RemoveVillagerFromWorshipSite__8VillagerFv(struct Villager* 
 
 // Override methods
 
+// win1.41 0055cb40 mac 10571890 Villager::~Villager(void)
+void __cdecl __dt__8VillagerFUi(void* ptr, size_t size) asm("??GVillager@@UAE@XZ");
 // win1.41 007521b0 mac 1056caa0 Villager::ToBeDeleted(int)
-void __fastcall ToBeDeleted__8VillagerFi(struct Villager* this, const void* edx, int param_1);
+void __fastcall ToBeDeleted__8VillagerFi(struct Villager* this, const void* edx, int param_1) asm("?ToBeDeleted@Villager@@UAEXH@Z");
+// win1.41 007502f0 mac 10064390 Villager::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__8VillagerFv(struct GameThing* this) asm("?GetPlayer@Villager@@QAEPAVGPlayer@@XZ");
+// win1.41 00751d50 mac inline Villager::IsAvailable(void)
+bool __fastcall IsAvailable__8VillagerFv(struct GameThing* this) asm("?IsAvailable@Villager@@QAE_NXZ");
+// win1.41 00751f00 mac inline Villager::GetTown(void)
+struct Town* __fastcall GetTown__8VillagerFv(struct GameThing* this) asm("?GetTown@Villager@@QAEPAVTown@@XZ");
+// win1.41 00751cf0 mac inline Villager::IsFunctional(void)
+bool __fastcall IsFunctional__8VillagerFv(struct GameThing* this) asm("?IsFunctional@Villager@@QAE_NXZ");
+// win1.41 007564d0 mac inline Villager::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+uint32_t __fastcall AddResource__8VillagerF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* param_3, bool param_4, const struct MapCoords* coords, int param_6) asm("?AddResource@Villager@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@_NABUMapCoords@@H@Z");
 // win1.41 0074ff70 mac 1004b3c0 Villager::ProcessState(void)
 uint32_t __fastcall ProcessState__8VillagerFv(struct Villager* this);
 // win1.41 007515c0 mac 10098ff0 Villager::DecideWhatToDo(void)

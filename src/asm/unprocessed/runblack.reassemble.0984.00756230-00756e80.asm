@@ -53,6 +53,7 @@
 .globl _jmp_addr_0x00756760
 .globl _jmp_addr_0x007567e0
 .globl @FindChildrenAndOrphanThem__8VillagerFv@4
+.globl ?AddResource@Villager@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@_NABUMapCoords@@H@Z
 
 .globl _globl_ct_0x00756c80
 .globl _globl_ct_0x00756cb0
@@ -356,6 +357,8 @@ _jmp_addr_0x0075648f:    {disp32} mov       cl, byte ptr [esi + 0x0000008c]     
                          nop                                                              // 0x007564cd    90
                          nop                                                              // 0x007564ce    90
                          nop                                                              // 0x007564cf    90
+
+?AddResource@Villager@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@_NABUMapCoords@@H@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x007564d0    8b442404
                          test               eax, eax                                      // 0x007564d4    85c0
                          push               esi                                           // 0x007564d6    56
