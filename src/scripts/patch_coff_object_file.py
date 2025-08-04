@@ -187,7 +187,7 @@ def get_symbols_with_aux(data, num, offset):
     return symbols
 
 
-def patch_libcmt(input_file: Path, output_file: Path, no_pad: bool, remove_associative_flags: bool):
+def patch_coff_object_file(input_file: Path, output_file: Path, no_pad: bool, remove_associative_flags: bool):
     with open(input_file, 'rb') as fin:
         data = bytearray(fin.read())
 
@@ -211,11 +211,11 @@ def patch_libcmt(input_file: Path, output_file: Path, no_pad: bool, remove_assoc
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="Patch libcmt COFF object file.")
+    parser = argparse.ArgumentParser(description="Patch COFF object file.")
     parser.add_argument("input_file", type=Path, help="Path to the input object file")
     parser.add_argument("output_file", type=Path, help="Path to the output object file")
     parser.add_argument("--no-pad", action="store_true", help="Set IMAGE_SCN_TYPE_NO_PAD on the first section, thereby removing padding before this obj.")
     parser.add_argument("--remove-associative-flags", action="store_true", help="Replace IMAGE_COMDAT_SELECT_ASSOCIATIVE flag with IMAGE_COMDAT_SELECT_ANY on all comdat section thereby preventing re-ordering.")
 
     args = parser.parse_args()
-    patch_libcmt(args.input_file, args.output_file, args.no_pad, args.remove_associative_flags)
+    patch_coff_object_file(args.input_file, args.output_file, args.no_pad, args.remove_associative_flags)
