@@ -11,7 +11,7 @@
 .extern _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf
 .extern _DrawBevBox__10SetupThingFiiiiiiiUl
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _wcslen
 .extern @Release__8LH3DMeshFv@4
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
@@ -46,7 +46,7 @@ ___dt__15SetupStaticTextFb:
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00411678    f644240801
                          {disp8} je         _jmp_addr_0x00411688                          // 0x0041167d    7409
                          push               esi                                           // 0x0041167f    56
-                         call                ___dl__FPv                                   // 0x00411680    e813d83900
+                         call               ??3@YAXPAX@Z                                  // 0x00411680    e813d83900
                          add                esp, 0x04                                     // 0x00411685    83c404
 _jmp_addr_0x00411688:    mov.s              eax, esi                                      // 0x00411688    8bc6
                          pop                esi                                           // 0x0041168a    5e

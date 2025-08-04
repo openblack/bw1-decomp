@@ -19,7 +19,7 @@
 .extern @GetAnim__9MorphableFll@16
 .extern _GameRand__5GRandFl
 .extern _jmp_addr_0x006de570
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
 .extern _jmp_addr_0x0085e490
@@ -564,7 +564,7 @@ _jmp_addr_0x00484d30:    sub                esp, 0x08                           
                          mov.s              ecx, edi                                 // 0x00484daa    8bcf
                          call               _jmp_addr_0x0085e490                     // 0x00484dac    e8df963d00
                          push               edi                                      // 0x00484db1    57
-                         call                ___dl__FPv                              // 0x00484db2    e8e1a03200
+                         call               ??3@YAXPAX@Z                             // 0x00484db2    e8e1a03200
                          add                esp, 0x04                                // 0x00484db7    83c404
                          {disp32} mov       dword ptr [esi + 0x00005220], 0x00000000 // 0x00484dba    c7862052000000000000
 _jmp_addr_0x00484dc4:    {disp8} mov        ecx, dword ptr [esp + 0x1c]              // 0x00484dc4    8b4c241c

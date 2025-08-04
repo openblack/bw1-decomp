@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x0051ebf0
 .extern @GetAnim__9MorphableFll@16
 .extern @GetSetAnim__9MorphableFlll@20
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @SetName__6LHFileFPCc@12
 .extern @Open__6LHFileF12LH_FILE_MODE@12
 .extern _jmp_addr_0x007bda20
@@ -169,7 +169,7 @@ _jmp_addr_0x0051e59b:    {disp32} mov     ecx, dword ptr [esi + 0x00000230]     
                          mov.s            ecx, edi                                             // 0x0051e5af    8bcf
                          call             _jmp_addr_0x0085e490                                 // 0x0051e5b1    e8dafe3300
                          push             edi                                                  // 0x0051e5b6    57
-                         call              ___dl__FPv                                          // 0x0051e5b7    e8dc082900
+                         call             ??3@YAXPAX@Z                                         // 0x0051e5b7    e8dc082900
                          add              esp, 0x04                                            // 0x0051e5bc    83c404
 _jmp_addr_0x0051e5bf:    add              ebx, 0x000002b8                                      // 0x0051e5bf    81c3b8020000
                          cmp              ebx, 0x00001050                                      // 0x0051e5c5    81fb50100000
@@ -252,7 +252,7 @@ _jmp_addr_0x0051e696:    {disp32} mov     edx, dword ptr [esi + 0x00000230]     
                          mov.s            ecx, edi                                             // 0x0051e6aa    8bcf
                          call             _jmp_addr_0x0085e490                                 // 0x0051e6ac    e8dffd3300
                          push             edi                                                  // 0x0051e6b1    57
-                         call              ___dl__FPv                                          // 0x0051e6b2    e8e1072900
+                         call             ??3@YAXPAX@Z                                         // 0x0051e6b2    e8e1072900
                          add              esp, 0x04                                            // 0x0051e6b7    83c404
 _jmp_addr_0x0051e6ba:    add              ebx, 0x000002b8                                      // 0x0051e6ba    81c3b8020000
                          cmp              ebx, 0x00001050                                      // 0x0051e6c0    81fb50100000

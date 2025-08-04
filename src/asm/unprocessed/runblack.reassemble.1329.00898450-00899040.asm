@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _sprintf
 .extern _fprintf
 .extern _fopen
@@ -55,7 +55,7 @@ _jmp_addr_0x00898450:    push               esi                                 
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00898488    f644240801
                          {disp8} je         _jmp_addr_0x00898498                          // 0x0089848d    7409
                          push               esi                                           // 0x0089848f    56
-                         call                ___dl__FPv                                   // 0x00898490    e8036af1ff
+                         call               ??3@YAXPAX@Z                                  // 0x00898490    e8036af1ff
                          add                esp, 0x04                                     // 0x00898495    83c404
 _jmp_addr_0x00898498:    mov.s              eax, esi                                      // 0x00898498    8bc6
                          pop                esi                                           // 0x0089849a    5e

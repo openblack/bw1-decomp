@@ -10,8 +10,8 @@
 .extern @SetSpeedUpFactor__7LHTimerFf@12
 .extern _jmp_addr_0x00449650
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
-.extern _jmp_addr_0x007aeea3
+.extern  ??3@YAXPAX@Z
+.extern ??0_Lockit@std@@QAE@XZ
 .extern _jmp_addr_0x007aef3f
 .extern _atexit
 .extern _sprintf
@@ -715,7 +715,7 @@ _jmp_addr_0x007dcf9d:    push               edi                                 
                          test               bl, 0x01                                      // 0x007dcfe5    f6c301
                          {disp8} je         _jmp_addr_0x007dcff3                          // 0x007dcfe8    7409
                          push               edi                                           // 0x007dcfea    57
-                         call                ___dl__FPv                                   // 0x007dcfeb    e8a81efdff
+                         call               ??3@YAXPAX@Z                                  // 0x007dcfeb    e8a81efdff
                          add                esp, 0x04                                     // 0x007dcff0    83c404
 _jmp_addr_0x007dcff3:    mov.s              eax, edi                                      // 0x007dcff3    8bc7
                          pop                edi                                           // 0x007dcff5    5f
@@ -725,7 +725,7 @@ _jmp_addr_0x007dcff3:    mov.s              eax, edi                            
 _jmp_addr_0x007dcffb:    test               bl, 0x01                                      // 0x007dcffb    f6c301
                          {disp8} je         _jmp_addr_0x007dd009                          // 0x007dcffe    7409
                          push               esi                                           // 0x007dd000    56
-                         call                ___dl__FPv                                   // 0x007dd001    e8921efdff
+                         call               ??3@YAXPAX@Z                                  // 0x007dd001    e8921efdff
                          add                esp, 0x04                                     // 0x007dd006    83c404
 _jmp_addr_0x007dd009:    mov.s              eax, esi                                      // 0x007dd009    8bc6
                          pop                esi                                           // 0x007dd00b    5e
@@ -1519,7 +1519,7 @@ _jmp_addr_0x007dd8e1:    pop                esi                                 
                          push               eax                                           // 0x007dd910    50
                          call               ??_M@YGXPAXIHP6EX0@Z@Z                        // 0x007dd911    e84d860c00
                          push               edi                                           // 0x007dd916    57
-                         call                ___dl__FPv                                   // 0x007dd917    e87c15fdff
+                         call               ??3@YAXPAX@Z                                  // 0x007dd917    e87c15fdff
                          add                esp, 0x04                                     // 0x007dd91c    83c404
                          mov                dword ptr [esi], 0x00000000                   // 0x007dd91f    c70600000000
                          pop                edi                                           // 0x007dd925    5f

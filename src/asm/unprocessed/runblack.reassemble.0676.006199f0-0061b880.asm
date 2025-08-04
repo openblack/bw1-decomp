@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x0063f830
 .extern _jmp_addr_0x007947c0
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @SetLHFilePointer__6LHFileFPcl@16
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
@@ -576,7 +576,7 @@ _jmp_addr_0x00619fc5:    {disp8} mov       edx, dword ptr [esp + 0x10]          
                          mov.s             ecx, esi                                             // 0x00619fd0    8bce
                          call              _jmp_addr_0x0085e490                                 // 0x00619fd2    e8b9442400
                          push              esi                                                  // 0x00619fd7    56
-                         call               ___dl__FPv                                          // 0x00619fd8    e8bb4e1900
+                         call              ??3@YAXPAX@Z                                         // 0x00619fd8    e8bb4e1900
                          add               esp, 0x04                                            // 0x00619fdd    83c404
 _jmp_addr_0x00619fe0:    push              0x0000067d                                           // 0x00619fe0    687d060000
                          push              0x00bf42d0                                           // 0x00619fe5    68d042bf00
@@ -647,7 +647,7 @@ _jmp_addr_0x0061a098:    test              esi, esi                             
                          mov.s             ecx, esi                                             // 0x0061a0a3    8bce
                          call              _jmp_addr_0x0085e490                                 // 0x0061a0a5    e8e6432400
                          push              esi                                                  // 0x0061a0aa    56
-                         call               ___dl__FPv                                          // 0x0061a0ab    e8e84d1900
+                         call              ??3@YAXPAX@Z                                         // 0x0061a0ab    e8e84d1900
                          add               esp, 0x04                                            // 0x0061a0b0    83c404
                          {disp8} jmp       _jmp_addr_0x0061a0bc                                 // 0x0061a0b3    eb07
 _jmp_addr_0x0061a0b5:    {disp8} mov       eax, dword ptr [esp + 0x10]                          // 0x0061a0b5    8b442410

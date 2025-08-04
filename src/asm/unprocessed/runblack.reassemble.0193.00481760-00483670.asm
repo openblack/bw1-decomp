@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x0071d8e0
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
 .extern _fprintf
 .extern __CIasin
@@ -1435,7 +1435,7 @@ _jmp_addr_0x00482866:    {disp32} fmul      dword ptr [rdata_bytes + 0x2414]    
                          mov.s              ecx, ebx                                             // 0x004828ce    8bcb
                          call               ??1FragMesh@@QAE@XZ                                  // 0x004828d0    e80b483700
                          push               ebx                                                  // 0x004828d5    53
-                         call                ___dl__FPv                                          // 0x004828d6    e8bdc53200
+                         call               ??3@YAXPAX@Z                                         // 0x004828d6    e8bdc53200
                          add                esp, 0x04                                            // 0x004828db    83c404
 _jmp_addr_0x004828de:    {disp8} mov        ebx, dword ptr [esp + 0x3c]                          // 0x004828de    8b5c243c
                          {disp32} mov       dword ptr [ebp + 0x00000090], 0x00000000             // 0x004828e2    c7859000000000000000
@@ -2152,7 +2152,7 @@ _jmp_addr_0x004831b0:    sub                esp, 0x08                           
                          mov.s              ecx, ebx                                             // 0x0048323c    8bcb
                          call               _jmp_addr_0x0085e490                                 // 0x0048323e    e84db23d00
                          push               ebx                                                  // 0x00483243    53
-                         call                ___dl__FPv                                          // 0x00483244    e84fbc3200
+                         call               ??3@YAXPAX@Z                                         // 0x00483244    e84fbc3200
                          add                esp, 0x04                                            // 0x00483249    83c404
                          {disp32} mov       dword ptr [esi + 0x00005220], edi                    // 0x0048324c    89be20520000
 _jmp_addr_0x00483252:    push               edi                                                  // 0x00483252    57

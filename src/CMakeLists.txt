@@ -379,7 +379,11 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1052.0079a5a0-0079c550.asm
     asm/unprocessed/runblack.reassemble.1056.0079c550-0079f5d0.asm
     asm/unprocessed/runblack.reassemble.1058.0079f5d0-007a1360.asm
-    asm/unprocessed/runblack.reassemble.1062.007a1360-007bf030.asm
+    asm/unprocessed/runblack.reassemble.1060.007a1360-007aebb0.asm
+    asm/unprocessed/runblack.reassemble.1061.007aebb0-007aee98-jmp-table.asm
+)
+set(SOURCES_002
+    asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm
     asm/unprocessed/runblack.reassemble.1063.007bf030-007bf210.asm
 )
 set(SOURCES_ZLIB
@@ -394,7 +398,7 @@ set(SOURCES_ZLIB
     asm/zlib/infutil.asm
     asm/zlib/inffast.asm
 )
-set(SOURCES_002
+set(SOURCES_004
     asm/unprocessed/bss.001.asm
     asm/unprocessed/xdata.x.000.009bbdc8-009be430.asm
     asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
@@ -477,8 +481,9 @@ set(SOURCES_008
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
-add_library(runblack-reassembled-zlib OBJECT ${SOURCES_ZLIB})
 add_library(runblack-reassembled-src-002 OBJECT ${SOURCES_002})
+add_library(runblack-reassembled-zlib OBJECT ${SOURCES_ZLIB})
+add_library(runblack-reassembled-src-004 OBJECT ${SOURCES_004})
 add_library(runblack-reassembled-src-malloc-free OBJECT asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm)
 add_library(runblack-reassembled-src-calloc OBJECT asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
 add_library(runblack-reassembled-src-realloc OBJECT asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
@@ -544,6 +549,11 @@ endfunction()
 
 add_library(runblack-reassembled-libcmt-001 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
+add_patched_libcmt_object("build\\intel\\mt_obj\\delete.obj")
+set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+
+add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
+set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("..\\build\\intel\\mt_obj\\fpinit.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\typinfo.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\onexit.obj")
@@ -559,9 +569,9 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\wcslen.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\swprintf.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\new.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\atox.obj")
-set_property(TARGET runblack-reassembled-libcmt-001 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\_ctype.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\sscanf.obj")
@@ -613,9 +623,9 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\dosmap.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strncpy.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strncmp.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strchr.obj")
-set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-add_library(runblack-reassembled-libcmt-003 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-004 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\printf.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strtok.obj")
@@ -627,9 +637,9 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\wcsncmp.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\towlower.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\abort.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\chmod.obj")
-set_property(TARGET runblack-reassembled-libcmt-003 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-004 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
-add_library(runblack-reassembled-libcmt-004 OBJECT IMPORTED)
+add_library(runblack-reassembled-libcmt-005 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
 add_patched_libcmt_object("build\\intel\\mt_obj\\slbeep.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\strrchr.obj")
@@ -661,7 +671,7 @@ add_patched_libcmt_object("build\\intel\\mt_obj\\ungetwc.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\fgetwc.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\mlock.obj")
 add_patched_libcmt_object("build\\intel\\mt_obj\\nlsdata2.obj")
-set_property(TARGET runblack-reassembled-libcmt-004 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
+set_property(TARGET runblack-reassembled-libcmt-005 PROPERTY IMPORTED_OBJECTS ${LIBCMT_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
 set(LIBCMT_PATCHED_OBJECTS)
@@ -715,20 +725,31 @@ target_include_directories(common_compile_options
 target_link_libraries(runblack-reassembled
     PRIVATE
         runblack-reassembled-src-001
-        runblack-reassembled-zlib
-        runblack-reassembled-src-002  # import jump table from lhlib?
         runblack-reassembled-libcmt-001
-        runblack-reassembled-src-malloc-free
+        runblack-reassembled-src-002  # mix of libcmt.lib and libcpmt.lib
+        runblack-reassembled-zlib
+        runblack-reassembled-src-004  # import jump table from lhlib?
         runblack-reassembled-libcmt-002
-        runblack-reassembled-src-calloc
+        runblack-reassembled-src-malloc-free
         runblack-reassembled-libcmt-003
-        runblack-reassembled-src-realloc
+        runblack-reassembled-src-calloc
         runblack-reassembled-libcmt-004
+        runblack-reassembled-src-realloc
+        runblack-reassembled-libcmt-005
         runblack-reassembled-src-007  # some lhlib with some libcmt mixed in
         runblack-reassembled-libcmt-007
         runblack-reassembled-src-bss-005
         runblack-reassembled-src-008
         runblack-reassembled-rc
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_libcmt.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm${OBJ_SUFFIX}"
+            "--no-pad"
 )
 
 add_custom_command(
@@ -786,8 +807,9 @@ add_custom_command(
 )
 
 target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-zlib PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-zlib PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-malloc-free PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-calloc PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-realloc PRIVATE common_compile_options)

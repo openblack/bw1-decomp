@@ -30,7 +30,7 @@
 .extern @GetAnim__9MorphableFll@16
 .extern _GameRand__5GRandFl
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007faaf0
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0085e490
@@ -397,7 +397,7 @@ _jmp_addr_0x00490d95:    {disp32} mov       eax, dword ptr [esi + 0x00005198]   
                          mov.s              ecx, ebx                                 // 0x00490dd3    8bcb
                          call               _jmp_addr_0x0085e490                     // 0x00490dd5    e8b6d63c00
                          push               ebx                                      // 0x00490dda    53
-                         call                ___dl__FPv                              // 0x00490ddb    e8b8e03100
+                         call               ??3@YAXPAX@Z                             // 0x00490ddb    e8b8e03100
                          add                esp, 0x04                                // 0x00490de0    83c404
 _jmp_addr_0x00490de3:    mov.s              ecx, esi                                 // 0x00490de3    8bce
                          {disp32} mov       dword ptr [esi + 0x00005220], ebp        // 0x00490de5    89ae20520000
@@ -467,7 +467,7 @@ _jmp_addr_0x00490ec3:    call               _jmp_addr_0x007a1400                
                          mov.s              ecx, edi                                 // 0x00490eea    8bcf
                          call               _jmp_addr_0x0085e490                     // 0x00490eec    e89fd53c00
                          push               edi                                      // 0x00490ef1    57
-                         call                ___dl__FPv                              // 0x00490ef2    e8a1df3100
+                         call               ??3@YAXPAX@Z                             // 0x00490ef2    e8a1df3100
                          add                esp, 0x04                                // 0x00490ef7    83c404
 _jmp_addr_0x00490efa:    mov.s              ecx, esi                                 // 0x00490efa    8bce
                          {disp32} mov       dword ptr [esi + 0x00005220], ebp        // 0x00490efc    89ae20520000

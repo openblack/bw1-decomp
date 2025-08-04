@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern ??2@YAPAXI@Z
 .extern _jmp_addr_0x007f4980
 .extern _jmp_addr_0x007f4990
@@ -161,7 +161,7 @@ _jmp_addr_0x007f51a1:    cmp.s            esi, ecx                              
                          mov              ecx, dword ptr [esi]                    // 0x007f51a5    8b0e
                          {disp8} mov      dword ptr [esp + 0x10], ecx             // 0x007f51a7    894c2410
 _jmp_addr_0x007f51ab:    push             edx                                     // 0x007f51ab    52
-                         call              ___dl__FPv                             // 0x007f51ac    e8e79cfbff
+                         call             ??3@YAXPAX@Z                            // 0x007f51ac    e8e79cfbff
                          {disp8} mov      eax, dword ptr [esp + 0x14]             // 0x007f51b1    8b442414
                          add              esp, 0x04                               // 0x007f51b5    83c404
                          pop              edi                                     // 0x007f51b8    5f

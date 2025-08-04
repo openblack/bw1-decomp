@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x00730ab0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -293,7 +293,7 @@ _jmp_addr_0x005fa6b1:    {disp32} mov       edx, dword ptr [data_bytes + 0x371cc
                          dec                edx                                           // 0x005fa6b7    4a
                          push               eax                                           // 0x005fa6b8    50
                          {disp32} mov       dword ptr [data_bytes + 0x371cc4], edx        // 0x005fa6b9    8915c47cd300
-                         call                ___dl__FPv                                   // 0x005fa6bf    e8d4471b00
+                         call               ??3@YAXPAX@Z                                  // 0x005fa6bf    e8d4471b00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x371cc0]        // 0x005fa6c4    8b0dc07cd300
                          add                esp, 0x04                                     // 0x005fa6ca    83c404
                          {disp8} jmp        _jmp_addr_0x005fa6d1                          // 0x005fa6cd    eb02

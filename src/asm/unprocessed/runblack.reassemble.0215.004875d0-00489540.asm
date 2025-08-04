@@ -55,7 +55,7 @@
 .extern _jmp_addr_0x0071ea40
 .extern _jmp_addr_0x0071ed40
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
 .extern ___nw__FUl
 .extern _jmp_addr_0x007f6f00
@@ -1838,7 +1838,7 @@ _jmp_addr_0x00488dea:    {disp8} fld        dword ptr [esp + 0x38]              
                          mov.s              ecx, ebx                                      // 0x00488e61    8bcb
                          call               ??1FragMesh@@QAE@XZ                           // 0x00488e63    e878e23600
                          push               ebx                                           // 0x00488e68    53
-                         call                ___dl__FPv                                   // 0x00488e69    e82a603200
+                         call               ??3@YAXPAX@Z                                  // 0x00488e69    e82a603200
                          add                esp, 0x04                                     // 0x00488e6e    83c404
 _jmp_addr_0x00488e71:    {disp32} mov       dword ptr [edi + 0x00000090], ebp             // 0x00488e71    89af90000000
                          pop                edi                                           // 0x00488e77    5f

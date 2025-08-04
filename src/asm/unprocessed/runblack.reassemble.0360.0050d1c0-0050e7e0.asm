@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x0074e1d0
 .extern _jmp_addr_0x0074e200
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -1759,7 +1759,7 @@ _jmp_addr_0x0050e340:    push               esi                                 
                          push               esi                                           // 0x0050e3aa    56
 _jmp_addr_0x0050e3ab:    {disp8} mov        esi, dword ptr [eax + 0x04]                   // 0x0050e3ab    8b7004
                          push               eax                                           // 0x0050e3ae    50
-                         call                ___dl__FPv                                   // 0x0050e3af    e8e40a2a00
+                         call               ??3@YAXPAX@Z                                  // 0x0050e3af    e8e40a2a00
                          add                esp, 0x04                                     // 0x0050e3b4    83c404
                          test               esi, esi                                      // 0x0050e3b7    85f6
                          mov.s              eax, esi                                      // 0x0050e3b9    8bc6

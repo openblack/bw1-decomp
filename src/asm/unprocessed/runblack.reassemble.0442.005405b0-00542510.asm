@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x0066bcd0
 .extern _jmp_addr_0x00719750
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007c5394
 .extern _wcscpy
 .extern _wcsncpy
@@ -1382,7 +1382,7 @@ _jmp_addr_0x0054178c:    {disp8} mov        ecx, dword ptr [esi + 0x38]         
                          mov.s              ecx, edi                                      // 0x0054180d    8bcf
                          call               dword ptr [__imp___1Dialup__QAE_XZ@4]         // 0x0054180f    ff1590998a00
                          push               edi                                           // 0x00541815    57
-                         call                ___dl__FPv                                   // 0x00541816    e87dd62600
+                         call               ??3@YAXPAX@Z                                  // 0x00541816    e87dd62600
                          add                esp, 0x04                                     // 0x0054181b    83c404
 _jmp_addr_0x0054181e:    {disp8} mov        dword ptr [esi + 0x54], 0x00000000            // 0x0054181e    c7465400000000
                          pop                edi                                           // 0x00541825    5f

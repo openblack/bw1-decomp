@@ -64,7 +64,7 @@ void __cdecl jmp_addr_0x004010a0(void)
     asm("test              eax, eax");                                      // 0x004010ca    85c0
     asm("{disp8} je        _jmp_addr_0x004010d7");                          // 0x004010cc    7409
     asm("push              eax");                                           // 0x004010ce    50
-    asm("call               ___dl__FPv");                                   // 0x004010cf    e8c4dd3a00
+    asm("call               ??3@YAXPAX@Z");                                   // 0x004010cf    e8c4dd3a00
     asm("add               esp, 0x04");                                     // 0x004010d4    83c404
     asm("_jmp_addr_0x004010d7:");
     asm("dec               ebp");                                           // 0x004010d7    4d
@@ -74,7 +74,7 @@ void __cdecl jmp_addr_0x004010a0(void)
     asm("test              bl, 0x01");                                      // 0x004010db    f6c301
     asm("{disp8} je        _jmp_addr_0x004010e9");                          // 0x004010de    7409
     asm("push              edi");                                           // 0x004010e0    57
-    asm("call               ___dl__FPv");                                   // 0x004010e1    e8b2dd3a00
+    asm("call               ??3@YAXPAX@Z");                                   // 0x004010e1    e8b2dd3a00
     asm("add               esp, 0x04");                                     // 0x004010e6    83c404
     asm("_jmp_addr_0x004010e9:");
     asm("mov.s             eax, edi");                                      // 0x004010e9    8bc7
@@ -87,13 +87,13 @@ void __cdecl jmp_addr_0x004010a0(void)
     asm("test              eax, eax");                                      // 0x004010f4    85c0
     asm("{disp8} je        _jmp_addr_0x00401101");                          // 0x004010f6    7409
     asm("push              eax");                                           // 0x004010f8    50
-    asm("call               ___dl__FPv");                                   // 0x004010f9    e89add3a00
+    asm("call               ??3@YAXPAX@Z");                                   // 0x004010f9    e89add3a00
     asm("add               esp, 0x04");                                     // 0x004010fe    83c404
     asm("_jmp_addr_0x00401101:");
     asm("test              bl, 0x01");                                      // 0x00401101    f6c301
     asm("{disp8} je        _jmp_addr_0x0040110f");                          // 0x00401104    7409
     asm("push              esi");                                           // 0x00401106    56
-    asm("call               ___dl__FPv");                                   // 0x00401107    e88cdd3a00
+    asm("call               ??3@YAXPAX@Z");                                   // 0x00401107    e88cdd3a00
     asm("add               esp, 0x04");                                     // 0x0040110c    83c404
     asm("_jmp_addr_0x0040110f:");
     asm("mov.s             eax, esi");                                      // 0x0040110f    8bc6

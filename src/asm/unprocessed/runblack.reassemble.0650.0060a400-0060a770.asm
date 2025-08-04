@@ -18,7 +18,7 @@
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
 .extern _Spiral__6GUtilsFRlRl
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern ___nw__FUl
 .extern @__dt__Q210NewCollide3ObjFv@4
 
@@ -44,7 +44,7 @@ _jmp_addr_0x0060a40c:    {disp32} mov      eax, dword ptr [data_bytes + 0x378ec0
                          mov.s             ecx, edi                               // 0x0060a41a    8bcf
                          call              @__dt__Q210NewCollide3ObjFv@4          // 0x0060a41c    e83f0a2200
                          push              edi                                    // 0x0060a421    57
-                         call               ___dl__FPv                            // 0x0060a422    e8714a1a00
+                         call              ??3@YAXPAX@Z                           // 0x0060a422    e8714a1a00
                          add               esp, 0x04                              // 0x0060a427    83c404
 _jmp_addr_0x0060a42a:    push              esi                                    // 0x0060a42a    56
                          {disp8} lea       ecx, dword ptr [esp + 0x0c]            // 0x0060a42b    8d4c240c

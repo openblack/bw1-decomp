@@ -55,7 +55,7 @@
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -851,7 +851,7 @@ _jmp_addr_0x0056f78a:    {disp8} mov        esi, dword ptr [esp + 0x28]         
                          call               dword ptr [eax + 0x38]                        // 0x0056f7b7    ff5038
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x0056f7ba    8b4c2420
                          push               ecx                                           // 0x0056f7be    51
-                         call                ___dl__FPv                                   // 0x0056f7bf    e8d4f62300
+                         call               ??3@YAXPAX@Z                                  // 0x0056f7bf    e8d4f62300
                          add                esp, 0x04                                     // 0x0056f7c4    83c404
                          pop                edi                                           // 0x0056f7c7    5f
                          pop                esi                                           // 0x0056f7c8    5e
@@ -4548,7 +4548,7 @@ ___dt__20SetupStaticTextNoHitFb:
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00571f18    f644240801
                          {disp8} je         _jmp_addr_0x00571f28                          // 0x00571f1d    7409
                          push               esi                                           // 0x00571f1f    56
-                         call                ___dl__FPv                                   // 0x00571f20    e873cf2300
+                         call               ??3@YAXPAX@Z                                  // 0x00571f20    e873cf2300
                          add                esp, 0x04                                     // 0x00571f25    83c404
 _jmp_addr_0x00571f28:    mov.s              eax, esi                                      // 0x00571f28    8bc6
                          pop                esi                                           // 0x00571f2a    5e
@@ -4562,7 +4562,7 @@ ___dt__14SetupMP3ButtonFb:
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00571f38    f644240801
                          {disp8} je         _jmp_addr_0x00571f48                          // 0x00571f3d    7409
                          push               esi                                           // 0x00571f3f    56
-                         call                ___dl__FPv                                   // 0x00571f40    e853cf2300
+                         call               ??3@YAXPAX@Z                                  // 0x00571f40    e853cf2300
                          add                esp, 0x04                                     // 0x00571f45    83c404
 _jmp_addr_0x00571f48:    mov.s              eax, esi                                      // 0x00571f48    8bc6
                          pop                esi                                           // 0x00571f4a    5e
@@ -5382,7 +5382,7 @@ _jmp_addr_0x00572936:    {disp32} mov       edx, dword ptr [esi + 0x000000ec]   
                          dec                edx                                           // 0x0057293c    4a
                          push               eax                                           // 0x0057293d    50
                          {disp32} mov       dword ptr [esi + 0x000000ec], edx             // 0x0057293e    8996ec000000
-                         call                ___dl__FPv                                   // 0x00572944    e84fc52300
+                         call               ??3@YAXPAX@Z                                  // 0x00572944    e84fc52300
                          add                esp, 0x04                                     // 0x00572949    83c404
                          {disp8} jmp        _jmp_addr_0x00572950                          // 0x0057294c    eb02
 _jmp_addr_0x0057294e:    mov.s              ebx, eax                                      // 0x0057294e    8bd8
@@ -5390,7 +5390,7 @@ _jmp_addr_0x00572950:    test               edi, edi                            
                          mov.s              eax, edi                                      // 0x00572952    8bc7
                          {disp8} jne        _jmp_addr_0x0057291d                          // 0x00572954    75c7
 _jmp_addr_0x00572956:    push               ebp                                           // 0x00572956    55
-                         call                ___dl__FPv                                   // 0x00572957    e83cc52300
+                         call               ??3@YAXPAX@Z                                  // 0x00572957    e83cc52300
                          {disp32} mov       eax, dword ptr [esi + 0x000000e8]             // 0x0057295c    8b86e8000000
                          add                esp, 0x04                                     // 0x00572962    83c404
                          test               eax, eax                                      // 0x00572965    85c0

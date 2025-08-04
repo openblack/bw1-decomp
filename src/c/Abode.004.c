@@ -237,7 +237,7 @@ void __fastcall RemoveDamage__5AbodeFv(struct MultiMapFixed* this)
     asm("mov.s              ecx, esi");                                      // 0x00403f58    8bce
     asm("call               ??1FragMesh@@QAE@XZ");                           // 0x00403f5a    e881313f00
     asm("push               esi");                                           // 0x00403f5f    56
-    asm("call                ___dl__FPv");                                   // 0x00403f60    e833af3a00
+    asm("call                ??3@YAXPAX@Z");                                   // 0x00403f60    e833af3a00
     asm("add                esp, 0x04");                                     // 0x00403f65    83c404
     asm("{disp32} mov       dword ptr [edi + 0x00000090], 0x00000000");      // 0x00403f68    c7879000000000000000
     asm("_jmp_addr_0x00403f72:");

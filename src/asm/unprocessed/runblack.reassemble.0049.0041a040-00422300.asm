@@ -100,7 +100,7 @@
 .extern _FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf
 .extern _jmp_addr_0x0074f310
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -3014,7 +3014,7 @@ _jmp_addr_0x0041bcb8:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          dec                ecx                                           // 0x0041bcbb    49
                          push               eax                                           // 0x0041bcbc    50
                          {disp8} mov        dword ptr [esi + 0x04], ecx                   // 0x0041bcbd    894e04
-                         call                ___dl__FPv                                   // 0x0041bcc0    e8d3313900
+                         call               ??3@YAXPAX@Z                                  // 0x0041bcc0    e8d3313900
                          add                esp, 0x04                                     // 0x0041bcc5    83c404
                          test               bl, bl                                        // 0x0041bcc8    84db
                          {disp8} jne        _jmp_addr_0x0041bcd6                          // 0x0041bcca    750a

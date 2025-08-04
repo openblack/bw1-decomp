@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x005b5b90
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007acf70
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
 .extern _jmp_addr_0x007bdfc0
@@ -24592,7 +24592,7 @@ _jmp_addr_0x00863a80:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x00863a8e    8bce
                          call               @__dt__5RPlanFv@4                             // 0x00863a90    e85ba60000
                          push               esi                                           // 0x00863a95    56
-                         call                ___dl__FPv                                   // 0x00863a96    e8fdb3f4ff
+                         call               ??3@YAXPAX@Z                                  // 0x00863a96    e8fdb3f4ff
                          add                esp, 0x04                                     // 0x00863a9b    83c404
                          {disp32} mov       dword ptr [edi + 0x0006408c], 0x00000000      // 0x00863a9e    c7878c40060000000000
 _jmp_addr_0x00863aa8:    mov.s              ecx, edi                                      // 0x00863aa8    8bcf

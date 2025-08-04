@@ -32,7 +32,7 @@ void LoadIt__FP10LoaderAnonPcP23GVillagerStateTableInfoUlbP6LHFile(struct Loader
     asm("{disp8} lea        edi, dword ptr [ebp + 0x10]             ");  // 0x00433f4f    8d7d10
     asm("push               ebx                                     ");  // 0x00433f52    53
     asm("rep movsd          es:[edi], dword ptr ds:[esi]            ");  // 0x00433f53    f3a5
-    asm("call                ___dl__FPv                             ");  // 0x00433f55    e83eaf3700
+    asm("call               ??3@YAXPAX@Z                            ");  // 0x00433f55    e83eaf3700
     asm("add                esp, 0x04                               ");  // 0x00433f5a    83c404
     asm("mov.s              ecx, ebp                                ");  // 0x00433f5d    8bcd
     asm("call               @SetInfoID__9GBaseInfoFv@4              ");  // 0x00433f5f    e86c2c0000

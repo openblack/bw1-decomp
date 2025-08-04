@@ -13,7 +13,7 @@
 .extern _DrawBigButton__10SetupThingFiibbi7BBSTYLEbii
 .extern _DrawBevBox__10SetupThingFiiiiiiiUl
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
 
@@ -247,7 +247,7 @@ ___dt__11SetupSliderFb:
                          test               byte ptr [esp + 0x08], 0x01              // 0x00409c58    f644240801
                          {disp8} je         _jmp_addr_0x00409c68                     // 0x00409c5d    7409
                          push               esi                                      // 0x00409c5f    56
-                         call                ___dl__FPv                              // 0x00409c60    e833523a00
+                         call               ??3@YAXPAX@Z                             // 0x00409c60    e833523a00
                          add                esp, 0x04                                // 0x00409c65    83c404
 _jmp_addr_0x00409c68:    mov.s              eax, esi                                 // 0x00409c68    8bc6
                          pop                esi                                      // 0x00409c6a    5e

@@ -26,7 +26,7 @@
 .extern _jmp_addr_0x0071ef70
 .extern @CanShowName__15SpecialVillagerFv@4
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
 .extern _wcsncpy
 .extern _wcslen
@@ -557,7 +557,7 @@ _jmp_addr_0x0057341d:    {disp32} mov      eax, dword ptr [ebx + 0x000000e0]    
                          mov.s             ecx, edi                                      // 0x00573444    8bcf
                          call              _jmp_addr_0x00575d20                          // 0x00573446    e8d5280000
                          push              esi                                           // 0x0057344b    56
-                         call               ___dl__FPv                                   // 0x0057344c    e847ba2300
+                         call              ??3@YAXPAX@Z                                  // 0x0057344c    e847ba2300
                          mov               eax, dword ptr [edi]                          // 0x00573451    8b07
                          add               esp, 0x04                                     // 0x00573453    83c404
                          test              eax, eax                                      // 0x00573456    85c0

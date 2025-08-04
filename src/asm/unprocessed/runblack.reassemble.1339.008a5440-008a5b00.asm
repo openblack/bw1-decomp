@@ -1,7 +1,7 @@
 .intel_syntax noprefix
 .align 16
 
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @__ct__8LHOSFileFv@4
 .extern @__dt__8LHOSFileFv@4
 .extern @Open__8LHOSFileFPc12LH_FILE_MODE@16
@@ -497,7 +497,7 @@ _jmp_addr_0x008a5a1e:    {disp32} mov     eax, dword ptr [esi + 0x00000108]     
                          .byte            0x72, 0xac// {disp8} jb _jmp_addr_0x008a59d5 // 0x008a5a27    72ac
 _jmp_addr_0x008a5a29:    {disp8} mov      edx, dword ptr [esp + 0x28]              // 0x008a5a29    8b542428
                          push             edx                                      // 0x008a5a2d    52
-                         call              ___dl__FPv                              // 0x008a5a2e    e86594f0ff
+                         call             ??3@YAXPAX@Z                             // 0x008a5a2e    e86594f0ff
                          add              esp, 0x04                                // 0x008a5a33    83c404
                          {disp8} lea      ecx, dword ptr [esp + 0x38]              // 0x008a5a36    8d4c2438
                          call             @Close__8LHOSFileFv@4                    // 0x008a5a3a    e8216ef1ff

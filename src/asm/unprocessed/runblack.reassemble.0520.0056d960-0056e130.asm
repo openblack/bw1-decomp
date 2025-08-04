@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x0056d220
 .extern _jmp_addr_0x0056d270
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _wcscpy
 .extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
 .extern _jmp_addr_0x0081b370
@@ -38,7 +38,7 @@ ___dt__15SetupHSBarGraphFb:
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0056d968    f644240801
                          {disp8} je         _jmp_addr_0x0056d978                          // 0x0056d96d    7409
                          push               esi                                           // 0x0056d96f    56
-                         call                ___dl__FPv                                   // 0x0056d970    e823152400
+                         call               ??3@YAXPAX@Z                                  // 0x0056d970    e823152400
                          add                esp, 0x04                                     // 0x0056d975    83c404
 _jmp_addr_0x0056d978:    mov.s              eax, esi                                      // 0x0056d978    8bc6
                          pop                esi                                           // 0x0056d97a    5e

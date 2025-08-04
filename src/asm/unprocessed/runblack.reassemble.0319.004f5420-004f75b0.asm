@@ -54,7 +54,7 @@
 .extern _jmp_addr_0x005fa7d0
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
@@ -3096,7 +3096,7 @@ _StringFunction__4PrssFlPci:
                          push               0x1                                            // 0x004f722b    6a01
                          call               _jmp_addr_0x0046c1b0                           // 0x004f722d    e87e4ff7ff
                          push               esi                                            // 0x004f7232    56
-                         call                ___dl__FPv                                    // 0x004f7233    e8607c2b00
+                         call               ??3@YAXPAX@Z                                   // 0x004f7233    e8607c2b00
                          add                esp, 0x04                                      // 0x004f7238    83c404
                          xor.s              eax, eax                                       // 0x004f723b    33c0
                          pop                esi                                            // 0x004f723d    5e

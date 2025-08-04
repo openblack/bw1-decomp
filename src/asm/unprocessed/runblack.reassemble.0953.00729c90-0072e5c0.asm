@@ -120,7 +120,7 @@
 .extern _jmp_addr_0x0073c9b0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x007a1400
-.extern  ___dl__FPv
+.extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -2849,7 +2849,7 @@ _jmp_addr_0x0072b5bc:    {disp32} mov       edx, dword ptr [esi + 0x00000108]   
                          dec                edx                                           // 0x0072b5c2    4a
                          push               eax                                           // 0x0072b5c3    50
                          {disp32} mov       dword ptr [esi + 0x00000108], edx             // 0x0072b5c4    899608010000
-                         call                ___dl__FPv                                   // 0x0072b5ca    e8c9380800
+                         call               ??3@YAXPAX@Z                                  // 0x0072b5ca    e8c9380800
                          add                esp, 0x04                                     // 0x0072b5cf    83c404
                          {disp8} jmp        _jmp_addr_0x0072b5d6                          // 0x0072b5d2    eb02
 _jmp_addr_0x0072b5d4:    mov.s              ebp, eax                                      // 0x0072b5d4    8be8
@@ -7311,7 +7311,7 @@ _jmp_addr_0x0072e280:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x0072e28b    8bce
                          call               dword ptr [rdata_bytes + 0x758]               // 0x0072e28d    ff1558978a00
                          push               esi                                           // 0x0072e293    56
-                         call                ___dl__FPv                                   // 0x0072e294    e8ff0b0800
+                         call               ??3@YAXPAX@Z                                  // 0x0072e294    e8ff0b0800
                          add                esp, 0x04                                     // 0x0072e299    83c404
 _jmp_addr_0x0072e29c:    pop                esi                                           // 0x0072e29c    5e
                          ret                                                              // 0x0072e29d    c3
