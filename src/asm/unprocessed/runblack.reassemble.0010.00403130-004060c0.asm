@@ -279,7 +279,7 @@ _jmp_addr_0x00405a8c:    {disp8} mov        eax, dword ptr [ebp + 0x00]         
                          push               edi                                           // 0x00405aa8    57
                          push               edx                                           // 0x00405aa9    52
                          push               ebx                                           // 0x00405aaa    53
-                         call               _jmp_addr_0x007da710                          // 0x00405aab    e8604c3d00
+                         call               __strnicmp                                    // 0x00405aab    e8604c3d00
                          add                esp, 0x0c                                     // 0x00405ab0    83c40c
                          test               eax, eax                                      // 0x00405ab3    85c0
                          {disp8} jne        _jmp_addr_0x00405ae8                          // 0x00405ab5    7531

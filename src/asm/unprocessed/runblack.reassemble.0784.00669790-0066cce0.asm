@@ -98,7 +98,7 @@
 .extern _wcscmp
 .extern _strtok
 .extern __chmod
-.extern _jmp_addr_0x007dacdc
+.extern __mbsdup
 .extern ___nw__FUl
 .extern _jmp_addr_0x00842100
 .extern _jmp_addr_0x00842120
@@ -3012,7 +3012,7 @@ _jmp_addr_0x0066b5f7:    mov.s              ecx, esi                            
                          call               dword ptr [rdata_bytes + 0x5c8]               // 0x0066b6a5    ff15c8958a00
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                   // 0x0066b6ab    8b44241c
                          push               eax                                           // 0x0066b6af    50
-                         call               _jmp_addr_0x007dacdc                          // 0x0066b6b0    e827f61600
+                         call               __mbsdup                                      // 0x0066b6b0    e827f61600
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x0066b6b5    8b4c2420
                          push               0x009cf590                                    // 0x0066b6b9    6890f59c00
                          push               ecx                                           // 0x0066b6be    51

@@ -129,7 +129,7 @@
 .extern _free
 .extern _strncpy
 .extern _realloc
-.extern _jmp_addr_0x007da710
+.extern __strnicmp
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fab30
 .extern _jmp_addr_0x007fac10
@@ -4129,7 +4129,7 @@ _jmp_addr_0x0063d8de:    test               edx, edx                            
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                    // 0x0063d930    8d4c2430
                          push               ecx                                            // 0x0063d934    51
                          push               edx                                            // 0x0063d935    52
-                         call               _jmp_addr_0x007da710                           // 0x0063d936    e8d5cd1900
+                         call               __strnicmp                                     // 0x0063d936    e8d5cd1900
                          add                esp, 0x0c                                      // 0x0063d93b    83c40c
                          test               eax, eax                                       // 0x0063d93e    85c0
                          {disp32} jne       _jmp_addr_0x0063da24                           // 0x0063d940    0f85de000000

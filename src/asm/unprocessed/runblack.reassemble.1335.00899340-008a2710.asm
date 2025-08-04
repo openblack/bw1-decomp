@@ -23,7 +23,7 @@
 .extern __lseek
 .extern _jmp_addr_0x007d5fee
 .extern _jmp_addr_0x007d9487
-.extern _jmp_addr_0x007db352
+.extern __setmode
 .extern _jmp_addr_0x008986b0
 .extern _longjmp
 .extern __setjmp3
@@ -12564,7 +12564,7 @@ _jmp_addr_0x008a1536:    cmp               dword ptr [esi + 0x4c], -0x01        
                          {disp8} je        _jmp_addr_0x008a1557                            // 0x008a1546    740f
                          push              edi                                             // 0x008a1548    57
                          push              dword ptr [esi + 0x4c]                          // 0x008a1549    ff764c
-                         call              _jmp_addr_0x007db352                            // 0x008a154c    e8019ef3ff
+                         call              __setmode                                       // 0x008a154c    e8019ef3ff
                          pop               ecx                                             // 0x008a1551    59
                          mov.s             edi, eax                                        // 0x008a1552    8bf8
                          pop               ecx                                             // 0x008a1554    59

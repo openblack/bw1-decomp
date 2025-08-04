@@ -44,7 +44,7 @@
 .extern _strchr
 .extern _tolower
 .extern __chmod
-.extern _jmp_addr_0x007dacdc
+.extern __mbsdup
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -20918,7 +20918,7 @@ _jmp_addr_0x00886440:    push               esi                                 
                          ret                                                                     // 0x0088645d    c3
 _jmp_addr_0x0088645e:    {disp8} mov        edx, dword ptr [esp + 0x0c]                          // 0x0088645e    8b54240c
                          push               edx                                                  // 0x00886462    52
-                         call               _jmp_addr_0x007dacdc                                 // 0x00886463    e87448f5ff
+                         call               __mbsdup                                             // 0x00886463    e87448f5ff
                          {disp8} mov        ecx, dword ptr [esi + 0x10]                          // 0x00886468    8b4e10
                          {disp8} mov        dword ptr [esp + 0x10], eax                          // 0x0088646b    89442410
                          {disp8} lea        eax, dword ptr [esp + 0x10]                          // 0x0088646f    8d442410

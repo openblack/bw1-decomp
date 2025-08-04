@@ -122,7 +122,7 @@
 .extern _wcscpy
 .extern ??2@YAPAXI@Z
 .extern _sscanf
-.extern _jmp_addr_0x007da710
+.extern __strnicmp
 .extern @Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl@24
 .extern _jmp_addr_0x007e73d0
 .extern @ScanLine__12LHScriptX_c_FPc@12
@@ -3509,7 +3509,7 @@ _jmp_addr_0x00717805:    cmp.s              eax, ebx                            
                          push               0x00c22040                                    // 0x00717acf    684020c200
                          push               ebp                                           // 0x00717ad4    55
                          {disp8} mov        dword ptr [esp + 0x34], ecx                   // 0x00717ad5    894c2434
-                         call               _jmp_addr_0x007da710                          // 0x00717ad9    e8322c0c00
+                         call               __strnicmp                                    // 0x00717ad9    e8322c0c00
                          add                esp, 0x0c                                     // 0x00717ade    83c40c
                          test               eax, eax                                      // 0x00717ae1    85c0
                          {disp8} jne        _jmp_addr_0x00717b2c                          // 0x00717ae3    7547

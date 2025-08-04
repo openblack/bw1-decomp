@@ -407,10 +407,13 @@ set(SOURCES_004
 
 set(SOURCES_007
     asm/unprocessed/bss.004.asm
+    asm/unprocessed/rdata.005.009a0744-009a6298.asm
     asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
     asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
-    asm/unprocessed/runblack.reassemble.1129.007da710-007dc8b0.asm
+    asm/unprocessed/runblack.reassemble.1128.007da710-007db410.asm
+    # end of libcmt and start of lhlib?
+    asm/unprocessed/runblack.reassemble.1129.007db410-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1137.007dc8b0-007dee50.asm
     c/PCMain.1138.007dee50-007deef0.c
     asm/unprocessed/runblack.reassemble.1139.007dee50-007e4e40.asm
@@ -472,7 +475,6 @@ set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm
-    asm/unprocessed/rdata.005.009a0744-009a6298.asm
 )
 set(SOURCES_008
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm

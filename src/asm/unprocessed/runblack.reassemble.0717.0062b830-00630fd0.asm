@@ -113,7 +113,7 @@
 .extern _swscanf
 .extern _abort
 .extern __chmod
-.extern _jmp_addr_0x007da710
+.extern __strnicmp
 .extern ___nw__FUl
 .extern _CHAR2WCHAR__FPc
 .extern __filelength
@@ -3837,7 +3837,7 @@ _jmp_addr_0x0062ddab:    {disp32} mov       ecx, dword ptr [data_bytes + 0x2377f
                          {disp8} lea        eax, dword ptr [esp + 0x38]                    // 0x0062ddfc    8d442438
                          push               eax                                            // 0x0062de00    50
                          push               edx                                            // 0x0062de01    52
-                         call               _jmp_addr_0x007da710                           // 0x0062de02    e809c91a00
+                         call               __strnicmp                                     // 0x0062de02    e809c91a00
                          add                esp, 0x0c                                      // 0x0062de07    83c40c
                          test               eax, eax                                       // 0x0062de0a    85c0
                          {disp8} jne        _jmp_addr_0x0062de6e                           // 0x0062de0c    7560
