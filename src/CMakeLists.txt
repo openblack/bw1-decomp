@@ -407,7 +407,7 @@ set(SOURCES_004
 
 set(SOURCES_007
     asm/unprocessed/bss.004.asm
-    asm/unprocessed/rdata.005.009a0744-009a6298.asm  # contains some d3d 7? data
+    asm/unprocessed/rdata.005.009a0744-009a6298.asm  # contains some d3d 7? data and some libjpeg data
     asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm  # contains some ddraw data
     asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
@@ -467,7 +467,7 @@ set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1324.00897480-00897550.asm
     asm/unprocessed/runblack.reassemble.1327.00897550-00898390.asm
     asm/unprocessed/runblack.reassemble.1328.00897550-00899040-ddraw.dll-winmm.dll-wearasr.dll.asm
-    asm/unprocessed/runblack.reassemble.1329.00898450-00899040.asm
+    asm/unprocessed/runblack.reassemble.1329.00898450-00899040.asm # contains some libjpeg functions
     asm/unprocessed/runblack.reassemble.1332.00899040-00899340.asm
     asm/unprocessed/runblack.reassemble.1335.00899340-008a2710.asm
     asm/unprocessed/runblack.reassemble.1336.008a2710-008a2770-imm32.dll.asm
@@ -480,7 +480,7 @@ set(SOURCES_008
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
     asm/unprocessed/data.003.00c2d680-00c3c680.asm
-    asm/unprocessed/data.004.00c3c680-00c3cff0.asm
+    asm/unprocessed/data.004.00c3c680-00c3cff0.asm  # some libjpeg strings
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
