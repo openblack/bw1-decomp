@@ -194,7 +194,7 @@
 .globl __imp__FatalAppExitA@8
 .globl __imp__InterlockedIncrement@4
 .globl __imp__InterlockedDecrement@4
-.globl __imp__InterlockedExchange@4
+.globl __imp__InterlockedExchange@8
 .globl __imp__GetCurrentProcessId@0
 .globl __imp__LHEditBox__YAHPBD00HPAD_Z@4
 .globl __imp__LHEditBox__YAHPBDKKKK0HPAD_Z@4
@@ -803,7 +803,7 @@ __imp__LCMapStringA@4:                                                          
 __imp__FatalAppExitA@8:                                                                                                        .long 0x005c485e // 0x008a930c KERNEL32.DLL::FatalAppExitA
 __imp__InterlockedIncrement@4:                                                                                                 .long 0x005c46bc // 0x008a9310 KERNEL32.DLL::InterlockedIncrement
 __imp__InterlockedDecrement@4:                                                                                                 .long 0x005c46a4 // 0x008a9314 KERNEL32.DLL::InterlockedDecrement
-__imp__InterlockedExchange@4:                                                                                                  .long 0x005c468e // 0x008a9318 KERNEL32.DLL::InterlockedExchange
+__imp__InterlockedExchange@8:                                                                                                  .long 0x005c468e // 0x008a9318 KERNEL32.DLL::InterlockedExchange
 __imp__GetCurrentProcessId@0:                                                                                                  .long 0x005c51a2 // 0x008a931c KERNEL32.DLL::GetCurrentProcessId
 .long 0
 __imp__LHEditBox__YAHPBD00HPAD_Z@4:                                                                                            .long 0x005c4158 // 0x008a9324 LHDialogLib.dll::LHEditBox__YAHPBD00HPAD_Z

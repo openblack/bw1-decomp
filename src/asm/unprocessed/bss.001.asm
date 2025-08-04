@@ -278,4 +278,4 @@ _g_info_transform:                         .space 0x3c                          
 _DAT_00e83a20:                             .space 0x4                                                              // [0x4bda20] 0x009c6000 + 0x4bda20 = 0x00e83a20
 // End of runblack.exe ?
 
-                                           .space 0x76c                                                            // [0x4bda24] 0x009c6000 + 0x4bda24 = 0x00e83a24
+                                           .space 0x3c                                                             // [0x4bda24] 0x009c6000 + 0x4bda24 = 0x00e83a24

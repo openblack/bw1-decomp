@@ -293,7 +293,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
-.extern _jmp_addr_0x007aef3f
+.extern ??1_Lockit@std@@QAE@XZ
 .extern ?_Xlen@std@@YAXXZ
 .extern _jmp_addr_0x007af180
 .extern _jmp_addr_0x007af2b3
@@ -22369,7 +22369,7 @@ _jmp_addr_0x00776477:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp32} mov       esi, dword ptr [data_bytes + 0x405b34]          // 0x0077649d    8b3534bbdc00
                          {disp32} mov       dword ptr [data_bytes + 0x405b34], ebx          // 0x007764a3    891d34bbdc00
 _jmp_addr_0x007764a9:    {disp8} lea        ecx, dword ptr [esp + 0x08]                     // 0x007764a9    8d4c2408
-                         call               _jmp_addr_0x007aef3f                            // 0x007764ad    e88d8a0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007764ad    e88d8a0300
                          cmp.s              esi, ebx                                        // 0x007764b2    3bf3
                          {disp8} je         _jmp_addr_0x007764bf                            // 0x007764b4    7409
                          push               esi                                             // 0x007764b6    56
@@ -22421,7 +22421,7 @@ _jmp_addr_0x007764d0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp8} mov        dword ptr [ecx + 0x08], ebx                     // 0x00776525    895908
 _jmp_addr_0x00776528:    {disp32} inc       dword ptr [data_bytes + 0x405c84]               // 0x00776528    ff0584bcdc00
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                     // 0x0077652e    8d4c2418
-                         call               _jmp_addr_0x007aef3f                            // 0x00776532    e8088a0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00776532    e8088a0300
                          cmp.s              ebp, ebx                                        // 0x00776537    3beb
                          {disp8} je         _jmp_addr_0x00776544                            // 0x00776539    7409
                          push               ebp                                             // 0x0077653b    55
@@ -22672,7 +22672,7 @@ _jmp_addr_0x00776776:    {disp8} mov        ecx, dword ptr [edi + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x00776780    8d4c240c
                          dec                edx                                             // 0x00776784    4a
                          and.s              edi, edx                                        // 0x00776785    23fa
-                         call               _jmp_addr_0x007aef3f                            // 0x00776787    e8b3870300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00776787    e8b3870300
                          cmp.s              edi, ebx                                        // 0x0077678c    3bfb
                          {disp8} je         _jmp_addr_0x00776798                            // 0x0077678e    7408
                          mov                eax, dword ptr [edi]                            // 0x00776790    8b07
@@ -22700,7 +22700,7 @@ _jmp_addr_0x007767bf:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          dec                ecx                                             // 0x007767c9    49
                          and.s              esi, ecx                                        // 0x007767ca    23f1
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                     // 0x007767cc    8d4c2408
-                         call               _jmp_addr_0x007aef3f                            // 0x007767d0    e86a870300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007767d0    e86a870300
                          cmp.s              esi, ebx                                        // 0x007767d5    3bf3
                          {disp8} je         _jmp_addr_0x007767e1                            // 0x007767d7    7408
                          mov                edx, dword ptr [esi]                            // 0x007767d9    8b16
@@ -23385,7 +23385,7 @@ _jmp_addr_0x00776dee:    {disp8} mov        esi, dword ptr [esp + 0x10]         
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x5e6930]          // 0x00776e12    8b0d30c9fa00
                          {disp8} mov        dword ptr [esi + 0x10], ecx                     // 0x00776e18    894e10
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x00776e1b    8d4c2410
-                         call               _jmp_addr_0x007aef3f                            // 0x00776e1f    e81b810300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00776e1f    e81b810300
                          mov.s              eax, esi                                        // 0x00776e24    8bc6
                          pop                esi                                             // 0x00776e26    5e
                          add                esp, 0x08                                       // 0x00776e27    83c408
@@ -23531,7 +23531,7 @@ _jmp_addr_0x00776f89:    {disp8} mov        esi, dword ptr [esp + 0x18]         
                          {disp32} mov       edx, dword ptr [data_bytes + 0x5e6930]          // 0x00776fad    8b1530c9fa00
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                     // 0x00776fb3    8d4c2418
                          {disp8} mov        dword ptr [esi + 0x10], edx                     // 0x00776fb7    895610
-                         call               _jmp_addr_0x007aef3f                            // 0x00776fba    e8807f0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00776fba    e8807f0300
                          pop                edi                                             // 0x00776fbf    5f
                          mov.s              eax, esi                                        // 0x00776fc0    8bc6
                          pop                esi                                             // 0x00776fc2    5e
@@ -23717,7 +23717,7 @@ _jmp_addr_0x00777176:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x00777180    8d4c240c
                          dec                edx                                             // 0x00777184    4a
                          and.s              esi, edx                                        // 0x00777185    23f2
-                         call               _jmp_addr_0x007aef3f                            // 0x00777187    e8b37d0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00777187    e8b37d0300
                          cmp.s              esi, ebx                                        // 0x0077718c    3bf3
                          {disp8} je         _jmp_addr_0x00777198                            // 0x0077718e    7408
                          mov                eax, dword ptr [esi]                            // 0x00777190    8b06
@@ -23744,7 +23744,7 @@ _jmp_addr_0x007771be:    {disp8} mov        edx, dword ptr [esi + 0x04]         
                          dec                ecx                                             // 0x007771c8    49
                          and.s              esi, ecx                                        // 0x007771c9    23f1
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x007771cb    8d4c240c
-                         call               _jmp_addr_0x007aef3f                            // 0x007771cf    e86b7d0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007771cf    e86b7d0300
                          cmp.s              esi, ebx                                        // 0x007771d4    3bf3
                          {disp8} je         _jmp_addr_0x007771e0                            // 0x007771d6    7408
                          mov                edx, dword ptr [esi]                            // 0x007771d8    8b16
@@ -24270,9 +24270,9 @@ _jmp_addr_0x007776a0:    sub                esp, 0x08                           
                          inc                eax                                             // 0x007776d0    40
                          {disp8} mov        dword ptr [esi + 0x04], eax                     // 0x007776d1    894604
 _jmp_addr_0x007776d4:    {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x007776d4    8d4c240c
-                         call               _jmp_addr_0x007aef3f                            // 0x007776d8    e862780300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007776d8    e862780300
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x007776dd    8d4c2410
-                         call               _jmp_addr_0x007aef3f                            // 0x007776e1    e859780300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007776e1    e859780300
                          mov.s              ecx, ebx                                        // 0x007776e6    8bcb
                          mov                dword ptr [ebx], 0x00900208                     // 0x007776e8    c70308029000
                          call               _jmp_addr_0x00778450                            // 0x007776ee    e85d0d0000
@@ -24399,9 +24399,9 @@ _jmp_addr_0x00777800:    sub                esp, 0x08                           
                          inc                eax                                             // 0x00777831    40
                          {disp8} mov        dword ptr [edi + 0x04], eax                     // 0x00777832    894704
 _jmp_addr_0x00777835:    {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x00777835    8d4c2410
-                         call               _jmp_addr_0x007aef3f                            // 0x00777839    e801770300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00777839    e801770300
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                     // 0x0077783e    8d4c2414
-                         call               _jmp_addr_0x007aef3f                            // 0x00777842    e8f8760300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00777842    e8f8760300
                          {disp8} lea        eax, dword ptr [esi + 0x04]                     // 0x00777847    8d4604
                          {disp8} mov        dword ptr [esi + 0x0c], eax                     // 0x0077784a    89460c
                          {disp8} lea        eax, dword ptr [esi + 0x14]                     // 0x0077784d    8d4614
@@ -24439,9 +24439,9 @@ _jmp_addr_0x00777835:    {disp8} lea        ecx, dword ptr [esp + 0x10]         
                          inc                eax                                             // 0x007778c1    40
                          {disp8} mov        dword ptr [ebx + 0x04], eax                     // 0x007778c2    894304
 _jmp_addr_0x007778c5:    {disp8} lea        ecx, dword ptr [esp + 0x14]                     // 0x007778c5    8d4c2414
-                         call               _jmp_addr_0x007aef3f                            // 0x007778c9    e871760300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007778c9    e871760300
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x007778ce    8d4c2410
-                         call               _jmp_addr_0x007aef3f                            // 0x007778d2    e868760300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007778d2    e868760300
                          mov                dword ptr [esi], 0x0099bab8                     // 0x007778d7    c706b8ba9900
                          {disp8} mov        byte ptr [esi + 0x48], 0x00                     // 0x007778dd    c6464800
                          {disp8} mov        ecx, dword ptr [ebp + 0x00]                     // 0x007778e1    8b4d00
@@ -24470,9 +24470,9 @@ _jmp_addr_0x007778fb:    cmp.s              ebp, ebx                            
                          inc                eax                                             // 0x00777927    40
                          {disp8} mov        dword ptr [ebp + 0x04], eax                     // 0x00777928    894504
 _jmp_addr_0x0077792b:    {disp8} lea        ecx, dword ptr [esp + 0x14]                     // 0x0077792b    8d4c2414
-                         call               _jmp_addr_0x007aef3f                            // 0x0077792f    e80b760300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x0077792f    e80b760300
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x00777934    8d4c2410
-                         call               _jmp_addr_0x007aef3f                            // 0x00777938    e802760300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00777938    e802760300
 _jmp_addr_0x0077793d:    {disp8} lea        eax, dword ptr [esi + 0x04]                     // 0x0077793d    8d4604
                          {disp8} mov        dword ptr [esi + 0x0c], eax                     // 0x00777940    89460c
                          {disp8} lea        eax, dword ptr [esi + 0x14]                     // 0x00777943    8d4614
@@ -24640,7 +24640,7 @@ _jmp_addr_0x00777af7:    push               eax                                 
                          {disp32} mov       dword ptr [data_bytes + 0x405c88], eax          // 0x00777b00    a388bcdc00
                          mov.s              edi, eax                                        // 0x00777b05    8bf8
 _jmp_addr_0x00777b07:    {disp8} lea        ecx, dword ptr [esp + 0x18]                     // 0x00777b07    8d4c2418
-                         call               _jmp_addr_0x007aef3f                            // 0x00777b0b    e82f740300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00777b0b    e82f740300
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                     // 0x00777b10    8d4c241c
                          {disp8} mov        dword ptr [esi + 0x38], edi                     // 0x00777b14    897e38
                          call               _jmp_addr_0x00581a30                            // 0x00777b17    e8149fe0ff
@@ -24743,7 +24743,7 @@ _jmp_addr_0x00777bfa:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x00777c04    8d4c2410
                          dec                eax                                             // 0x00777c08    48
                          and.s              esi, eax                                        // 0x00777c09    23f0
-                         call               _jmp_addr_0x007aef3f                            // 0x00777c0b    e82f730300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00777c0b    e82f730300
                          test               esi, esi                                        // 0x00777c10    85f6
                          {disp8} je         _jmp_addr_0x00777c1c                            // 0x00777c12    7408
                          mov                edx, dword ptr [esi]                            // 0x00777c14    8b16
@@ -24760,7 +24760,7 @@ _jmp_addr_0x00777c1c:    mov                esi, dword ptr [ebx]                
                          inc                eax                                             // 0x00777c31    40
                          {disp8} mov        dword ptr [esi + 0x04], eax                     // 0x00777c32    894604
 _jmp_addr_0x00777c35:    {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x00777c35    8d4c2410
-                         call               _jmp_addr_0x007aef3f                            // 0x00777c39    e801730300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00777c39    e801730300
 _jmp_addr_0x00777c3e:    mov.s              eax, edi                                        // 0x00777c3e    8bc7
                          pop                edi                                             // 0x00777c40    5f
                          pop                esi                                             // 0x00777c41    5e
@@ -25121,7 +25121,7 @@ _jmp_addr_0x0077800f:    {disp8} mov        dword ptr [ecx + 0x08], eax         
 _jmp_addr_0x00778012:    {disp8} mov        dword ptr [eax + 0x04], ecx                     // 0x00778012    894804
 _jmp_addr_0x00778015:    {disp8} mov        dword ptr [esi + 0x28], ebx                     // 0x00778015    895e28
 _jmp_addr_0x00778018:    {disp8} lea        ecx, dword ptr [esp + 0x1c]                     // 0x00778018    8d4c241c
-                         call               _jmp_addr_0x007aef3f                            // 0x0077801c    e81e6f0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x0077801c    e81e6f0300
                          {disp8} mov        eax, dword ptr [esp + 0x14]                     // 0x00778021    8b442414
                          push               eax                                             // 0x00778025    50
                          call               ??3@YAXPAX@Z                                    // 0x00778026    e86d6e0300
@@ -25428,7 +25428,7 @@ _jmp_addr_0x0077833e:    {disp8} mov        ecx, dword ptr [edi + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                     // 0x00778348    8d4c2418
                          dec                edx                                             // 0x0077834c    4a
                          and.s              edi, edx                                        // 0x0077834d    23fa
-                         call               _jmp_addr_0x007aef3f                            // 0x0077834f    e8eb6b0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x0077834f    e8eb6b0300
                          test               edi, edi                                        // 0x00778354    85ff
                          {disp8} je         _jmp_addr_0x00778360                            // 0x00778356    7408
                          mov                eax, dword ptr [edi]                            // 0x00778358    8b07
@@ -25450,9 +25450,9 @@ _jmp_addr_0x00778360:    test               ebp, ebp                            
                          inc                eax                                             // 0x0077838c    40
                          {disp8} mov        dword ptr [edi + 0x04], eax                     // 0x0077838d    894704
 _jmp_addr_0x00778390:    {disp8} lea        ecx, dword ptr [esp + 0x18]                     // 0x00778390    8d4c2418
-                         call               _jmp_addr_0x007aef3f                            // 0x00778394    e8a66b0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778394    e8a66b0300
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x00778399    8d4c240c
-                         call               _jmp_addr_0x007aef3f                            // 0x0077839d    e89d6b0300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x0077839d    e89d6b0300
 _jmp_addr_0x007783a2:    pop                edi                                             // 0x007783a2    5f
                          {disp8} mov        dword ptr [esi + 0x44], 0x00000000              // 0x007783a3    c7464400000000
                          pop                ebp                                             // 0x007783aa    5d
@@ -25769,7 +25769,7 @@ _jmp_addr_0x00778670:    sub                esp, 0x08                           
                          {disp32} mov       dword ptr [data_bytes + 0x4bdabc], esi          // 0x00778698    8935bc3ae800
                          {disp32} mov       dword ptr [data_bytes + 0x4bdac4], esi          // 0x0077869e    8935c43ae800
 _jmp_addr_0x007786a4:    {disp8} lea        ecx, dword ptr [esp + 0x08]                     // 0x007786a4    8d4c2408
-                         call               _jmp_addr_0x007aef3f                            // 0x007786a8    e892680300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007786a8    e892680300
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                     // 0x007786ad    8b44241c
                          push               0x2                                             // 0x007786b1    6a02
                          push               esi                                             // 0x007786b3    56
@@ -25787,9 +25787,9 @@ _jmp_addr_0x007786a4:    {disp8} lea        ecx, dword ptr [esp + 0x08]         
                          inc                eax                                             // 0x007786d7    40
                          {disp8} mov        dword ptr [esi + 0x04], eax                     // 0x007786d8    894604
 _jmp_addr_0x007786db:    {disp8} lea        ecx, dword ptr [esp + 0x1c]                     // 0x007786db    8d4c241c
-                         call               _jmp_addr_0x007aef3f                            // 0x007786df    e85b680300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007786df    e85b680300
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x007786e4    8d4c240c
-                         call               _jmp_addr_0x007aef3f                            // 0x007786e8    e852680300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007786e8    e852680300
                          {disp8} mov        esi, dword ptr [esp + 0x18]                     // 0x007786ed    8b742418
                          test               esi, esi                                        // 0x007786f1    85f6
                          {disp8} je         _jmp_addr_0x00778730                            // 0x007786f3    743b
@@ -25809,7 +25809,7 @@ _jmp_addr_0x0077870e:    {disp8} mov        edx, dword ptr [esi + 0x04]         
                          dec                ecx                                             // 0x00778718    49
                          and.s              esi, ecx                                        // 0x00778719    23f1
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                     // 0x0077871b    8d4c241c
-                         call               _jmp_addr_0x007aef3f                            // 0x0077871f    e81b680300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x0077871f    e81b680300
                          test               esi, esi                                        // 0x00778724    85f6
                          {disp8} je         _jmp_addr_0x00778730                            // 0x00778726    7408
                          mov                edx, dword ptr [esi]                            // 0x00778728    8b16
@@ -25861,7 +25861,7 @@ _jmp_addr_0x00778760:    sub                esp, 0x1c                           
                          inc                eax                                             // 0x0077877e    40
                          {disp8} mov        dword ptr [esi + 0x04], eax                     // 0x0077877f    894604
 _jmp_addr_0x00778782:    {disp8} lea        ecx, dword ptr [esp + 0x08]                     // 0x00778782    8d4c2408
-                         call               _jmp_addr_0x007aef3f                            // 0x00778786    e8b4670300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778786    e8b4670300
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x0077878b    8d4c2410
                          call               ??0_Lockit@std@@QAE@XZ                          // 0x0077878f    e80f670300
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x00778794    8d4c240c
@@ -25875,7 +25875,7 @@ _jmp_addr_0x00778782:    {disp8} lea        ecx, dword ptr [esp + 0x08]         
                          {disp32} mov       dword ptr [data_bytes + 0x4bdacc], eax          // 0x007787b1    a3cc3ae800
 _jmp_addr_0x007787b6:    {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x007787b6    8d4c240c
                          mov.s              esi, eax                                        // 0x007787ba    8bf0
-                         call               _jmp_addr_0x007aef3f                            // 0x007787bc    e87e670300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007787bc    e87e670300
                          push               0x1                                             // 0x007787c1    6a01
                          push               esi                                             // 0x007787c3    56
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x007787c4    8d4c240c
@@ -25911,10 +25911,10 @@ _jmp_addr_0x0077880c:    {disp8} lea        ecx, dword ptr [esp + 0x0c]         
                          call               _atexit                                         // 0x00778827    e865cf0400
                          add                esp, 0x04                                       // 0x0077882c    83c404
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x0077882f    8d4c240c
-                         call               _jmp_addr_0x007aef3f                            // 0x00778833    e807670300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778833    e807670300
                          {disp32} mov       dword ptr [data_bytes + 0x3406b4], esi          // 0x00778838    8935b466d000
 _jmp_addr_0x0077883e:    {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x0077883e    8d4c2410
-                         call               _jmp_addr_0x007aef3f                            // 0x00778842    e8f8660300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778842    e8f8660300
                          {disp8} mov        esi, dword ptr [esp + 0x04]                     // 0x00778847    8b742404
                          test               esi, esi                                        // 0x0077884b    85f6
                          {disp8} je         _jmp_addr_0x0077888a                            // 0x0077884d    743b
@@ -25934,7 +25934,7 @@ _jmp_addr_0x00778868:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x00778872    8d4c2410
                          dec                eax                                             // 0x00778876    48
                          and.s              esi, eax                                        // 0x00778877    23f0
-                         call               _jmp_addr_0x007aef3f                            // 0x00778879    e8c1660300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778879    e8c1660300
                          test               esi, esi                                        // 0x0077887e    85f6
                          {disp8} je         _jmp_addr_0x0077888a                            // 0x00778880    7408
                          mov                edx, dword ptr [esi]                            // 0x00778882    8b16
@@ -26095,12 +26095,12 @@ _jmp_addr_0x007789c0:    push               ecx                                 
                          inc                eax                                             // 0x007789e6    40
                          {disp8} mov        dword ptr [esi + 0x04], eax                     // 0x007789e7    894604
 _jmp_addr_0x007789ea:    {disp8} lea        ecx, dword ptr [esp + 0x0c]                     // 0x007789ea    8d4c240c
-                         call               _jmp_addr_0x007aef3f                            // 0x007789ee    e84c650300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x007789ee    e84c650300
                          push               0x00778a10                                      // 0x007789f3    68108a7700
                          call               _atexit                                         // 0x007789f8    e894cd0400
                          add                esp, 0x04                                       // 0x007789fd    83c404
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                     // 0x00778a00    8d4c2404
-                         call               _jmp_addr_0x007aef3f                            // 0x00778a04    e836650300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778a04    e836650300
                          mov.s              eax, esi                                        // 0x00778a09    8bc6
                          pop                esi                                             // 0x00778a0b    5e
                          pop                ecx                                             // 0x00778a0c    59
@@ -26128,7 +26128,7 @@ _jmp_addr_0x00778a3c:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                     // 0x00778a46    8d4c2404
                          dec                eax                                             // 0x00778a4a    48
                          and.s              esi, eax                                        // 0x00778a4b    23f0
-                         call               _jmp_addr_0x007aef3f                            // 0x00778a4d    e8ed640300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778a4d    e8ed640300
                          test               esi, esi                                        // 0x00778a52    85f6
                          {disp8} je         _jmp_addr_0x00778a5e                            // 0x00778a54    7408
                          mov                edx, dword ptr [esi]                            // 0x00778a56    8b16
@@ -26137,7 +26137,7 @@ _jmp_addr_0x00778a3c:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          call               dword ptr [edx]                                 // 0x00778a5c    ff12
 _jmp_addr_0x00778a5e:    {disp8} lea        ecx, dword ptr [esp + 0x08]                     // 0x00778a5e    8d4c2408
                          {disp32} mov       dword ptr [data_bytes + 0x405c8c], 0x00000000   // 0x00778a62    c7058cbcdc0000000000
-                         call               _jmp_addr_0x007aef3f                            // 0x00778a6c    e8ce640300
+                         call               ??1_Lockit@std@@QAE@XZ                          // 0x00778a6c    e8ce640300
                          pop                esi                                             // 0x00778a71    5e
                          add                esp, 0x08                                       // 0x00778a72    83c408
                          ret                                                                // 0x00778a75    c3

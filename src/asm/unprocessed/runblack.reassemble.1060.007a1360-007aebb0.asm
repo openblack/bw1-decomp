@@ -158,7 +158,7 @@
 .globl _jmp_addr_0x007aed2a
 .globl  ??3@YAXPAX@Z
 .globl ??0_Lockit@std@@QAE@XZ
-.globl _jmp_addr_0x007aef3f
+.globl ??1_Lockit@std@@QAE@XZ
 .globl ?_Xlen@std@@YAXXZ
 .globl _jmp_addr_0x007af180
 .globl _jmp_addr_0x007af268

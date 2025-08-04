@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
-.extern _jmp_addr_0x007aef3f
+.extern ??1_Lockit@std@@QAE@XZ
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -809,7 +809,7 @@ _jmp_addr_0x0064df2f:    {disp8} mov        dword ptr [ecx + 0x08], eax         
 _jmp_addr_0x0064df32:    {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x0064df32    894804
 _jmp_addr_0x0064df35:    {disp8} mov        dword ptr [esi + 0x20], ebx                   // 0x0064df35    895e20
 _jmp_addr_0x0064df38:    {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x0064df38    8d4c241c
-                         call               _jmp_addr_0x007aef3f                          // 0x0064df3c    e8fe0f1600
+                         call               ??1_Lockit@std@@QAE@XZ                        // 0x0064df3c    e8fe0f1600
                          {disp8} mov        esi, dword ptr [esp + 0x14]                   // 0x0064df41    8b742414
                          {disp8} lea        ecx, dword ptr [esi + 0x10]                   // 0x0064df45    8d4e10
                          call               _jmp_addr_0x00775380                          // 0x0064df48    e833741200
@@ -908,7 +908,7 @@ _jmp_addr_0x0064dfd0:    push               ecx                                 
                          {disp8} mov        dword ptr [eax + 0x08], ebp                   // 0x0064e011    896808
 _jmp_addr_0x0064e014:    {disp32} inc       dword ptr [data_bytes + 0x381a2c]             // 0x0064e014    ff052c7ad400
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0064e01a    8d4c2410
-                         call               _jmp_addr_0x007aef3f                          // 0x0064e01e    e81c0f1600
+                         call               ??1_Lockit@std@@QAE@XZ                        // 0x0064e01e    e81c0f1600
                          cmp.s              ebx, ebp                                      // 0x0064e023    3bdd
                          {disp8} je         _jmp_addr_0x0064e030                          // 0x0064e025    7409
                          push               ebx                                           // 0x0064e027    53
