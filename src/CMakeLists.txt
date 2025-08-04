@@ -378,7 +378,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1052.0079a5a0-0079c550.asm
     asm/unprocessed/runblack.reassemble.1056.0079c550-0079f5d0.asm
     asm/unprocessed/runblack.reassemble.1058.0079f5d0-007a1360.asm
-    asm/unprocessed/runblack.reassemble.1060.007a1360-007aebb0.asm
+    asm/unprocessed/runblack.reassemble.1060.007a1360-007aebb0.asm # some sse ops
     asm/unprocessed/runblack.reassemble.1061.007aebb0-007aee98-jmp-table.asm
     asm/unprocessed/bss.001.asm
 )
@@ -471,7 +471,7 @@ set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1332.00899040-00899340.asm
     asm/unprocessed/runblack.reassemble.1335.00899340-008a2710.asm
     asm/unprocessed/runblack.reassemble.1336.008a2710-008a2770-imm32.dll.asm
-    asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
+    asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm # contains simd ops
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm

@@ -122,7 +122,6 @@
 .extern _jmp_addr_0x00878f70
 .extern _jmp_addr_0x008790f0
 .extern _jmp_addr_0x008a2610
-.extern _jmp_addr_0x008a30a0
 
 .globl _jmp_addr_0x007a1400
 .globl _jmp_addr_0x007a1480
