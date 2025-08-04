@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x00603720
 .extern @InBounds__9MapCoordsCFv@4
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern @__ct__8PileFoodFv@4
 .extern @__ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .extern _jmp_addr_0x0066e0e0
@@ -750,7 +750,7 @@ _jmp_addr_0x005faa4e:    mov.s              ecx, esi                            
                          push               ecx                                           // 0x005faa5b    51
                          mov.s              ecx, esi                                      // 0x005faa5c    8bce
                          fstp               dword ptr [esp]                               // 0x005faa5e    d91c24
-                         call               @SetScale__6ObjectFf@12                       // 0x005faa61    e89ae70300
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x005faa61    e89ae70300
                          mov.s              eax, esi                                      // 0x005faa66    8bc6
                          pop                esi                                           // 0x005faa68    5e
                          ret                0x0014                                        // 0x005faa69    c21400

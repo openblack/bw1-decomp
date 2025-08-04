@@ -142,7 +142,7 @@
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00636e30
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern ?ResolveLoad@Object@@UAEXXZ
@@ -18938,7 +18938,7 @@ _jmp_addr_0x00746940:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp8} mov        ecx, dword ptr [eax + 0x34]                          // 0x0074697a    8b4834
                          push               ecx                                                  // 0x0074697d    51
                          mov.s              ecx, esi                                             // 0x0074697e    8bce
-                         call               @SetScale__6ObjectFf@12                              // 0x00746980    e87b28efff
+                         call               ?SetScale@Object@@UAEXM@Z                            // 0x00746980    e87b28efff
                          {disp8} mov        edx, dword ptr [esp + 0x0c]                          // 0x00746985    8b54240c
                          {disp8} mov        dword ptr [esi + 0x64], edx                          // 0x00746989    895664
                          {disp8} mov        dword ptr [esi + 0x6c], edi                          // 0x0074698c    897e6c

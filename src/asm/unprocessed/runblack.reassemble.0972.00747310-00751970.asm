@@ -5010,7 +5010,7 @@ _jmp_addr_0x0074a1e0:    {disp8} fld        dword ptr [esp + 0x04]              
                          ret                0x0004                                         // 0x0074a1f8    c20400
 _jmp_addr_0x0074a1fb:    {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x0074a1fb    8b542404
                          push               edx                                            // 0x0074a1ff    52
-                         call               @SetLife__6ObjectFf@12                         // 0x0074a200    e83bffeeff
+                         call               ?SetLife@Object@@UAEXM@Z                       // 0x0074a200    e83bffeeff
                          ret                0x0004                                         // 0x0074a205    c20400
                          nop                                                               // 0x0074a208    90
                          nop                                                               // 0x0074a209    90

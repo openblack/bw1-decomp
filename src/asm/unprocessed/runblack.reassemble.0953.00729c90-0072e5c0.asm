@@ -67,7 +67,7 @@
 .extern ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
 .extern ?GetQueryLastEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
 .extern ?ThrowObjectFromHand@Object@@UAEIPAVGInterfaceStatus@@H@Z
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern ?GetImpressiveValue@Object@@UAEMPAVLiving@@PAVReaction@@@Z
 .extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
@@ -4291,7 +4291,7 @@ _jmp_addr_0x0072c250:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          push               ecx                                           // 0x0072c281    51
                          mov.s              ecx, esi                                      // 0x0072c282    8bce
                          fstp               dword ptr [esp]                               // 0x0072c284    d91c24
-                         call               @SetScale__6ObjectFf@12                       // 0x0072c287    e874cff0ff
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x0072c287    e874cff0ff
                          mov.s              eax, esi                                      // 0x0072c28c    8bc6
                          pop                esi                                           // 0x0072c28e    5e
                          ret                0x0010                                        // 0x0072c28f    c21000
@@ -5037,7 +5037,7 @@ _jmp_addr_0x0072c9f0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               ecx                                           // 0x0072ca29    51
                          mov.s              ecx, esi                                      // 0x0072ca2a    8bce
                          {disp8} mov        dword ptr [esi + 0x6c], eax                   // 0x0072ca2c    89466c
-                         call               @SetScale__6ObjectFf@12                       // 0x0072ca2f    e8ccc7f0ff
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x0072ca2f    e8ccc7f0ff
                          {disp8} mov        eax, dword ptr [esi + 0x64]                   // 0x0072ca34    8b4664
                          {disp8} fld        dword ptr [eax + 0x6c]                        // 0x0072ca37    d9406c
                          mov.s              ecx, edi                                      // 0x0072ca3a    8bcf

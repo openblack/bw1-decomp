@@ -70,8 +70,8 @@
 .extern _jmp_addr_0x00635470
 .extern @__ct__6ObjectFv@4
 .extern @Create3DObject__6ObjectFv@4
-.extern @ActualMoveMapObject__6ObjectFRC9MapCoords@12
-.extern @SetScale__6ObjectFf@12
+.extern ?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z
+.extern ?SetScale@Object@@UAEXM@Z
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x00644f00
 .extern @GetPlayerNumber__7GPlayerCFv@4
@@ -2269,7 +2269,7 @@ _jmp_addr_0x005fc900:    push               0x0                                 
                          push               edi                                           // 0x005fc968    57
                          mov.s              esi, ecx                                      // 0x005fc969    8bf1
                          push               eax                                           // 0x005fc96b    50
-                         call               @ActualMoveMapObject__6ObjectFRC9MapCoords@12 // 0x005fc96c    e8cfb60300
+                         call               ?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z // 0x005fc96c    e8cfb60300
                          {disp8} mov        eax, dword ptr [esi + 0x40]                   // 0x005fc971    8b4640
                          xor.s              edi, edi                                      // 0x005fc974    33ff
                          cmp.s              eax, edi                                      // 0x005fc976    3bc7
@@ -8523,7 +8523,7 @@ _jmp_addr_0x00600e88:    mov.s              ecx, esi                            
                          push               ecx                                           // 0x00600e95    51
                          mov.s              ecx, esi                                      // 0x00600e96    8bce
                          fstp               dword ptr [esp]                               // 0x00600e98    d91c24
-                         call               @SetScale__6ObjectFf@12                       // 0x00600e9b    e860830300
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x00600e9b    e860830300
                          mov.s              eax, esi                                      // 0x00600ea0    8bc6
                          pop                esi                                           // 0x00600ea2    5e
                          ret                0x0014                                        // 0x00600ea3    c21400

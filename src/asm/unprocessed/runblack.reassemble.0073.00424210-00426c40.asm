@@ -57,8 +57,8 @@
 .extern _jmp_addr_0x00606ed0
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
-.extern @SetScale__6ObjectFf@12
-.extern @SetYAngle__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
+.extern ?SetYAngle@Object@@UAEXM@Z
 .extern _jmp_addr_0x00639900
 .extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0063e3a0
@@ -2034,7 +2034,7 @@ _jmp_addr_0x0042536a:    mov.s              eax, esi                            
                          push               ecx                                           // 0x004253d6    51
                          mov.s              ecx, esi                                      // 0x004253d7    8bce
                          fstp               dword ptr [esp]                               // 0x004253d9    d91c24
-                         call               @SetScale__6ObjectFf@12                       // 0x004253dc    e81f3e2100
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x004253dc    e81f3e2100
                          {disp8} mov        ecx, dword ptr [esi + 0x58]                   // 0x004253e1    8b4e58
                          push               ebx                                           // 0x004253e4    53
                          push               ebp                                           // 0x004253e5    55
@@ -2042,7 +2042,7 @@ _jmp_addr_0x0042536a:    mov.s              eax, esi                            
                          push               ecx                                           // 0x004253eb    51
                          mov.s              ecx, esi                                      // 0x004253ec    8bce
                          fstp               dword ptr [esp]                               // 0x004253ee    d91c24
-                         call               @SetYAngle__6ObjectFf@12                      // 0x004253f1    e86a3e2100
+                         call               ?SetYAngle@Object@@UAEXM@Z                    // 0x004253f1    e86a3e2100
                          {disp8} mov        eax, dword ptr [esp + 0x24]                   // 0x004253f6    8b442424
                          pop                edi                                           // 0x004253fa    5f
                          {disp8} mov        dword ptr [esi + 0x64], eax                   // 0x004253fb    894664

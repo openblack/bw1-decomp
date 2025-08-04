@@ -187,7 +187,7 @@
 .extern ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z
 .extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?InterfaceSetInMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
-.extern @ActualMoveMapObject__6ObjectFRC9MapCoords@12
+.extern ?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z
 .extern ?ThrowObjectFromHand@Object@@UAEIPAVGInterfaceStatus@@H@Z
 .extern ?GetImpressiveValue@Object@@UAEMPAVLiving@@PAVReaction@@@Z
 .extern ?ResolveLoad@Object@@UAEXXZ
@@ -12415,7 +12415,7 @@ _jmp_addr_0x006e71e0:    {disp8} mov        ecx, dword ptr [esp + 0x14]         
                          push               edi                                           // 0x006e7218    57
                          mov.s              esi, ecx                                      // 0x006e7219    8bf1
                          push               eax                                           // 0x006e721b    50
-                         call               @ActualMoveMapObject__6ObjectFRC9MapCoords@12 // 0x006e721c    e81f0ef5ff
+                         call               ?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z // 0x006e721c    e81f0ef5ff
                          {disp8} mov        eax, dword ptr [esi + 0x40]                   // 0x006e7221    8b4640
                          xor.s              edi, edi                                      // 0x006e7224    33ff
                          cmp.s              eax, edi                                      // 0x006e7226    3bc7
@@ -16003,7 +16003,7 @@ _jmp_addr_0x006e987f:    mov                eax, 0x00000ef0                     
                          push               edi                                           // 0x006e9898    57
                          mov.s              esi, ecx                                      // 0x006e9899    8bf1
                          push               eax                                           // 0x006e989b    50
-                         call               @ActualMoveMapObject__6ObjectFRC9MapCoords@12 // 0x006e989c    e89fe7f4ff
+                         call               ?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z // 0x006e989c    e89fe7f4ff
                          {disp8} mov        edi, dword ptr [esi + 0x40]                   // 0x006e98a1    8b7e40
                          test               edi, edi                                      // 0x006e98a4    85ff
                          {disp8} je         _jmp_addr_0x006e98f4                          // 0x006e98a6    744c

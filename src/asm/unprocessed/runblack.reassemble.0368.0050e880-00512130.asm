@@ -38,10 +38,10 @@
 .extern _jmp_addr_0x00608b30
 .extern ?SetUpPhysOb@Object@@UAEXPAVPhysOb@@@Z
 .extern _jmp_addr_0x00637cc0
-.extern @SetScale__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a230
-.extern @InitialiseIsFixedForMapList__6ObjectFv@4
+.extern ?InitialiseIsFixedForMapList@Object@@UAEXXZ
 .extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063b680
@@ -3272,9 +3272,9 @@ _jmp_addr_0x005108ea:    {disp8} mov        ecx, dword ptr [edi + 0x28]         
                          push               ecx                                           // 0x00510927    51
                          mov.s              ecx, esi                                      // 0x00510928    8bce
                          fstp               dword ptr [esp]                               // 0x0051092a    d91c24
-                         call               @SetScale__6ObjectFf@12                       // 0x0051092d    e8ce881200
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x0051092d    e8ce881200
                          mov.s              ecx, esi                                      // 0x00510932    8bce
-                         call               @InitialiseIsFixedForMapList__6ObjectFv@4     // 0x00510934    e8079d1200
+                         call               ?InitialiseIsFixedForMapList@Object@@UAEXXZ   // 0x00510934    e8079d1200
                          mov.s              ecx, esi                                      // 0x00510939    8bce
                          call               @AllocateMultiChild__13MultiMapFixedFv@4      // 0x0051093b    e810e10100
                          push               esi                                           // 0x00510940    56
@@ -3461,7 +3461,7 @@ _jmp_addr_0x00510a30:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          push               eax                                           // 0x00510a67    50
                          mov.s              ecx, esi                                      // 0x00510a68    8bce
                          {disp32} mov       dword ptr [esi + 0x00000094], edx             // 0x00510a6a    899694000000
-                         call               @SetLife__6ObjectFf@12                        // 0x00510a70    e8cb961200
+                         call               ?SetLife@Object@@UAEXM@Z                      // 0x00510a70    e8cb961200
                          mov.s              eax, esi                                      // 0x00510a75    8bc6
                          pop                esi                                           // 0x00510a77    5e
                          ret                0x001c                                        // 0x00510a78    c21c00

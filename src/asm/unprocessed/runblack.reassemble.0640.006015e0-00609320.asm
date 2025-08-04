@@ -64,16 +64,16 @@
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern @InsertMapObject__6ObjectFv@4
 .extern @RemoveMapObject__6ObjectFv@4
-.extern @InsertMapObjectToCell__6ObjectFP7MapCell@12
-.extern @RemoveMapObjectFromCell__6ObjectFP7MapCell@12
+.extern ?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z
+.extern ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z
 .extern ?GetPhysicsConstantsType@Object@@UAEIXZ
 .extern _jmp_addr_0x00637cc0
 .extern ?CreatureMustAvoid@Object@@UAE_NPAVCreature@@@Z
 .extern ?AddToRoutePlan@Object@@UAEXPAVRPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z
 .extern _jmp_addr_0x00638b00
 .extern ?GetHoldLoweringMultiplier@Object@@UAEMXZ
-.extern @SetScale__6ObjectFf@12
-.extern @SetYAngle__6ObjectFf@12
+.extern ?SetScale@Object@@UAEXM@Z
+.extern ?SetYAngle@Object@@UAEXM@Z
 .extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern @SetLife__6ObjectFf@12
@@ -8942,21 +8942,21 @@ _jmp_addr_0x00606e2d:    mov.s              eax, esi                            
                          push               0x3f800000                                    // 0x00606e56    680000803f
                          mov.s              ecx, esi                                      // 0x00606e5b    8bce
                          mov                dword ptr [esi], 0x008ce750                   // 0x00606e5d    c70650e78c00
-                         call               @SetScale__6ObjectFf@12                       // 0x00606e63    e898230300
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x00606e63    e898230300
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                   // 0x00606e68    8b44241c
                          {disp8} mov        edx, dword ptr [esp + 0x18]                   // 0x00606e6c    8b542418
                          mov                dword ptr [esi], 0x008eed1c                   // 0x00606e70    c7061ced8e00
                          push               eax                                           // 0x00606e76    50
                          mov.s              ecx, esi                                      // 0x00606e77    8bce
                          {disp8} mov        dword ptr [esi + 0x58], edx                   // 0x00606e79    895658
-                         call               @SetYAngle__6ObjectFf@12                      // 0x00606e7c    e8df230300
+                         call               ?SetYAngle@Object@@UAEXM@Z                    // 0x00606e7c    e8df230300
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x00606e81    8b4c2420
                          xor.s              ebx, ebx                                      // 0x00606e85    33db
                          push               ecx                                           // 0x00606e87    51
                          mov.s              ecx, esi                                      // 0x00606e88    8bce
                          {disp8} mov        dword ptr [esi + 0x60], ebx                   // 0x00606e8a    895e60
                          {disp8} mov        dword ptr [esi + 0x5c], ebx                   // 0x00606e8d    895e5c
-                         call               @SetScale__6ObjectFf@12                       // 0x00606e90    e86b230300
+                         call               ?SetScale@Object@@UAEXM@Z                     // 0x00606e90    e86b230300
                          cmp.s              esi, ebx                                      // 0x00606e95    3bf3
                          {disp32} mov       edx, dword ptr [_game]                        // 0x00606e97    8b155c19d000
                          {disp32} lea       edi, dword ptr [edx + 0x00205be4]             // 0x00606e9d    8dbae45b2000
@@ -9342,14 +9342,14 @@ _jmp_addr_0x006071ff:    pop                esi                                 
 _InsertMapObjectToCell__12MobileObjectFP7MapCell:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00607250    8b442404
                          push               eax                                           // 0x00607254    50
-                         call               @InsertMapObjectToCell__6ObjectFP7MapCell@12  // 0x00607255    e8d6f50200
+                         call               ?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z  // 0x00607255    e8d6f50200
                          ret                0x0004                                        // 0x0060725a    c20400
                          nop                                                              // 0x0060725d    90
                          nop                                                              // 0x0060725e    90
                          nop                                                              // 0x0060725f    90
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00607260    8b442404
                          push               eax                                           // 0x00607264    50
-                         call               @RemoveMapObjectFromCell__6ObjectFP7MapCell@12// 0x00607265    e866f60200
+                         call               ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z  // 0x00607265    e866f60200
                          ret                0x0004                                        // 0x0060726a    c20400
                          nop                                                              // 0x0060726d    90
                          nop                                                              // 0x0060726e    90
@@ -10903,7 +10903,7 @@ _jmp_addr_0x006081ff:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          push               edi                                           // 0x00608204    57
                          push               ecx                                           // 0x00608205    51
                          mov.s              ecx, esi                                      // 0x00608206    8bce
-                         call               @SetLife__6ObjectFf@12                        // 0x00608208    e8331f0300
+                         call               ?SetLife@Object@@UAEXM@Z                      // 0x00608208    e8331f0300
                          mov                edi, dword ptr [esi]                          // 0x0060820d    8b3e
                          {disp8} mov        ebx, dword ptr [esi + 0x28]                   // 0x0060820f    8b5e28
                          mov.s              ecx, esi                                      // 0x00608212    8bce
