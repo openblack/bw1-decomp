@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
-.extern _jmp_addr_0x007aef3f
+.extern ??1_Lockit@std@@QAE@XZ
 .extern _atexit
 .extern _sprintf
 .extern ??2@YAPAXI@Z
@@ -4121,7 +4121,7 @@ _jmp_addr_0x007e16f9:    {disp32} mov       ecx, dword ptr [data_bytes + 0x380ad
                          inc                ecx                                           // 0x007e16ff    41
                          {disp32} mov       dword ptr [data_bytes + 0x380ad4], ecx        // 0x007e1700    890dd46ad400
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x007e1706    8d4c242c
-                         call               _jmp_addr_0x007aef3f                          // 0x007e170a    e830d8fcff
+                         call               ??1_Lockit@std@@QAE@XZ                        // 0x007e170a    e830d8fcff
                          cmp.s              ebp, ebx                                      // 0x007e170f    3beb
                          {disp8} je         _jmp_addr_0x007e171c                          // 0x007e1711    7409
                          push               ebp                                           // 0x007e1713    55

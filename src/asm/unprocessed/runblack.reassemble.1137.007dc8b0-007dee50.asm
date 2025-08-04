@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
-.extern _jmp_addr_0x007aef3f
+.extern ??1_Lockit@std@@QAE@XZ
 .extern _atexit
 .extern _sprintf
 .extern ??2@YAPAXI@Z

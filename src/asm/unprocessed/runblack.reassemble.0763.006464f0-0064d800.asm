@@ -182,7 +182,7 @@
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
-.extern _jmp_addr_0x007aef3f
+.extern ??1_Lockit@std@@QAE@XZ
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
@@ -4162,7 +4162,7 @@ _jmp_addr_0x00649055:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp32} mov       esi, dword ptr [data_bytes + 0x33b9e4]         // 0x0064907a    8b35e419d000
                          {disp32} mov       dword ptr [data_bytes + 0x33b9e4], ebp         // 0x00649080    892de419d000
 _jmp_addr_0x00649086:    {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x00649086    8d4c2414
-                         call               _jmp_addr_0x007aef3f                           // 0x0064908a    e8b05e1600
+                         call               ??1_Lockit@std@@QAE@XZ                         // 0x0064908a    e8b05e1600
                          cmp.s              esi, ebp                                       // 0x0064908f    3bf5
                          {disp8} je         _jmp_addr_0x0064909c                           // 0x00649091    7409
                          push               esi                                            // 0x00649093    56

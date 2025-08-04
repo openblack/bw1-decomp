@@ -61,7 +61,7 @@ _jmp_WSOCK32_DLL__Ordinal_19:                      jmp              dword ptr [_
 _jmp_WSOCK32_DLL__Ordinal_151:                     jmp              dword ptr [__imp____WSAFDIsSet@4]                                         // 0x008a50f0    ff250c998a00
 _jmp_WSOCK32_DLL__Ordinal_111:                     jmp              dword ptr [__imp__WSAGetLastError@4]                                      // 0x008a50f6    ff2510998a00
 _jmp_WSOCK32_DLL__Ordinal_16:                      jmp              dword ptr [__imp__recv@4]                                                 // 0x008a50fc    ff2514998a00
-_jmp_KERNEL32_DLL__InterlockedExchange:            jmp              dword ptr [__imp__InterlockedExchange@4]                                  // 0x008a5102    ff2518938a00
+_jmp_KERNEL32_DLL__InterlockedExchange:            jmp              dword ptr [__imp__InterlockedExchange@8]                                  // 0x008a5102    ff2518938a00
 _jmp_KERNEL32_DLL__InterlockedDecrement:           jmp              dword ptr [__imp__InterlockedDecrement@4]                                 // 0x008a5108    ff2514938a00
 _jmp_KERNEL32_DLL__InterlockedIncrement:           jmp              dword ptr [__imp__InterlockedIncrement@4]                                 // 0x008a510e    ff2510938a00
 _jmp_KERNEL32_DLL__CloseHandle:                    jmp              dword ptr [__imp__CloseHandle@4]                                          // 0x008a5114    ff25c4928a00

@@ -3460,7 +3460,7 @@ _jmp_addr_0x00844c80:    push               0x00ef74f8                          
                          call               dword ptr [__imp__EnterCriticalSection@4]      // 0x00844c85    ff1580918a00
                          push               0x1                                            // 0x00844c8b    6a01
                          push               0x00ef7518                                     // 0x00844c8d    681875ef00
-                         call               dword ptr [__imp__InterlockedExchange@4]       // 0x00844c92    ff1518938a00
+                         call               dword ptr [__imp__InterlockedExchange@8]       // 0x00844c92    ff1518938a00
                          ret                                                               // 0x00844c98    c3
                          nop                                                               // 0x00844c99    90
                          nop                                                               // 0x00844c9a    90
@@ -3471,7 +3471,7 @@ _jmp_addr_0x00844c80:    push               0x00ef74f8                          
                          nop                                                               // 0x00844c9f    90
 _jmp_addr_0x00844ca0:    push               0x0                                            // 0x00844ca0    6a00
                          push               0x00ef7518                                     // 0x00844ca2    681875ef00
-                         call               dword ptr [__imp__InterlockedExchange@4]       // 0x00844ca7    ff1518938a00
+                         call               dword ptr [__imp__InterlockedExchange@8]       // 0x00844ca7    ff1518938a00
                          push               0x00ef74f8                                     // 0x00844cad    68f874ef00
                          call               dword ptr [__imp__LeaveCriticalSection@4]      // 0x00844cb2    ff1584918a00
                          ret                                                               // 0x00844cb8    c3
