@@ -106,10 +106,6 @@
 .extern ___crtLCMapStringA
 .extern __isctype
 .extern _strtod
-.extern _jmp_addr_0x007cbab2
-.extern _jmp_addr_0x007cbb41
-.extern _jmp_addr_0x007cbbd6
-.extern _jmp_addr_0x007cbe23
 .extern ___crtCompareStringA
 .extern _jmp_addr_0x007faff0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z

@@ -105,10 +105,10 @@
 .extern ___crtLCMapStringA
 .extern __isctype
 .extern _strtod
-.extern _jmp_addr_0x007cbab2
-.extern _jmp_addr_0x007cbb41
-.extern _jmp_addr_0x007cbbd6
-.extern _jmp_addr_0x007cbe23
+.extern __Getdays
+.extern __Getmonths
+.extern __Gettnames
+.extern __Strftime
 .extern ___crtCompareStringA
 .extern _jmp_addr_0x007faff0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -7397,7 +7397,7 @@ _jmp_addr_0x007b3cea:    push                 esi                               
                          push                 eax                                              // 0x007b3d0b    50
                          push                 dword ptr [ebp + 0x1c]                           // 0x007b3d0c    ff751c
                          push                 dword ptr [ebp + -0x20]                          // 0x007b3d0f    ff75e0
-                         call                 _jmp_addr_0x007cbe23                             // 0x007b3d12    e80c810100
+                         call                 __Strftime                                       // 0x007b3d12    e80c810100
                          mov.s                edi, eax                                         // 0x007b3d17    8bf8
                          add                  esp, 0x14                                        // 0x007b3d19    83c414
                          test                 edi, edi                                         // 0x007b3d1c    85ff
@@ -9851,7 +9851,7 @@ _jmp_addr_0x007b564b:    push                 ebp                               
                          mov.s                ebp, esp                                         // 0x007b564c    8bec
                          push                 ecx                                              // 0x007b564e    51
                          and                  dword ptr [ebp + -0x04], 0x00                    // 0x007b564f    8365fc00
-                         call                 _jmp_addr_0x007cbbd6                             // 0x007b5653    e87e650100
+                         call                 __Gettnames                                      // 0x007b5653    e87e650100
                          {disp8} mov          ecx, dword ptr [ebp + 0x08]                      // 0x007b5658    8b4d08
                          mov                  dword ptr [ecx], eax                             // 0x007b565b    8901
                          mov.s                eax, ecx                                         // 0x007b565d    8bc1
@@ -12518,7 +12518,7 @@ _jmp_addr_0x007b7428:    push                 esi                               
 _jmp_addr_0x007b745b:    push                 esi                                              // 0x007b745b    56
                          push                 edi                                              // 0x007b745c    57
                          mov.s                esi, ecx                                         // 0x007b745d    8bf1
-                         call                 _jmp_addr_0x007cbab2                             // 0x007b745f    e84e460100
+                         call                 __Getdays                                        // 0x007b745f    e84e460100
                          mov.s                edi, eax                                         // 0x007b7464    8bf8
                          test                 edi, edi                                         // 0x007b7466    85ff
                          {disp8} je           _jmp_addr_0x007b7481                             // 0x007b7468    7417
@@ -12548,7 +12548,7 @@ _jmp_addr_0x007b749e:    pop                  edi                               
 _jmp_addr_0x007b74a1:    push                 esi                                              // 0x007b74a1    56
                          push                 edi                                              // 0x007b74a2    57
                          mov.s                esi, ecx                                         // 0x007b74a3    8bf1
-                         call                 _jmp_addr_0x007cbb41                             // 0x007b74a5    e897460100
+                         call                 __Getmonths                                      // 0x007b74a5    e897460100
                          mov.s                edi, eax                                         // 0x007b74aa    8bf8
                          test                 edi, edi                                         // 0x007b74ac    85ff
                          {disp8} je           _jmp_addr_0x007b74c8                             // 0x007b74ae    7418
@@ -16337,7 +16337,7 @@ _jmp_addr_0x007b9f7c:    push                 esi                               
                          push                 eax                                              // 0x007b9f9d    50
                          push                 dword ptr [ebp + 0x1c]                           // 0x007b9f9e    ff751c
                          push                 dword ptr [ebp + -0x20]                          // 0x007b9fa1    ff75e0
-                         call                 _jmp_addr_0x007cbe23                             // 0x007b9fa4    e87a1e0100
+                         call                 __Strftime                                       // 0x007b9fa4    e87a1e0100
                          mov.s                edi, eax                                         // 0x007b9fa9    8bf8
                          add                  esp, 0x14                                        // 0x007b9fab    83c414
                          test                 edi, edi                                         // 0x007b9fae    85ff
