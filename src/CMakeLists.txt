@@ -676,6 +676,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\fgetwc.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mlock.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\nlsdata2.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_map.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\isctype.obj")
 set_property(TARGET runblack-reassembled-libcmt-005 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
