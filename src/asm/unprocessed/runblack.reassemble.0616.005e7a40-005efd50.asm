@@ -944,7 +944,7 @@ _jmp_addr_0x005e80f0:    {disp32} mov       ax, word ptr [ecx + 0x000000b8]     
                          add                esp, 0x18                                     // 0x005e814a    83c418
                          push               0x00bf37d8                                    // 0x005e814d    68d837bf00
                          call               edi                                           // 0x005e8152    ffd7
-                         {disp32} mov       ebx, dword ptr [__imp__GetProcAddress@4]      // 0x005e8154    8b1d70918a00
+                         {disp32} mov       ebx, dword ptr [__imp__GetProcAddress@8]      // 0x005e8154    8b1d70918a00
                          mov.s              esi, eax                                      // 0x005e815a    8bf0
                          test               esi, esi                                      // 0x005e815c    85f6
                          {disp8} je         _jmp_addr_0x005e81d6                          // 0x005e815e    7476

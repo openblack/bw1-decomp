@@ -88,7 +88,7 @@
 .globl __imp__GetTempFileNameA@4
 .globl __imp__CreateDirectoryA@8
 .globl __imp__LoadLibraryA@4
-.globl __imp__GetProcAddress@4
+.globl __imp__GetProcAddress@8
 .globl __imp__FreeLibrary@4
 .globl __imp__DeleteCriticalSection@4
 .globl __imp__InitializeCriticalSection@4
@@ -697,7 +697,7 @@ __imp__GetDateFormatA@4:                                                        
 __imp__GetTempFileNameA@4:                                                                                                     .long 0x005c0430 // 0x008a9164 KERNEL32.DLL::GetTempFileNameA
 __imp__CreateDirectoryA@8:                                                                                                     .long 0x005c041c // 0x008a9168 KERNEL32.DLL::CreateDirectoryA
 __imp__LoadLibraryA@4:                                                                                                         .long 0x005c040c // 0x008a916c KERNEL32.DLL::LoadLibraryA
-__imp__GetProcAddress@4:                                                                                                       .long 0x005c03fa // 0x008a9170 KERNEL32.DLL::GetProcAddress
+__imp__GetProcAddress@8:                                                                                                       .long 0x005c03fa // 0x008a9170 KERNEL32.DLL::GetProcAddress
 __imp__FreeLibrary@4:                                                                                                          .long 0x005c03ec // 0x008a9174 KERNEL32.DLL::FreeLibrary
 __imp__DeleteCriticalSection@4:                                                                                                .long 0x005c03d4 // 0x008a9178 KERNEL32.DLL::DeleteCriticalSection
 __imp__InitializeCriticalSection@4:                                                                                            .long 0x005c03b8 // 0x008a917c KERNEL32.DLL::InitializeCriticalSection

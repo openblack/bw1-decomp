@@ -160,7 +160,7 @@ _jmp_addr_0x007db4d0:    push              ebp                                  
                          ret                                                              // 0x007db500    c3
 _jmp_addr_0x007db501:    push              0x00c31184                                     // 0x007db501    688411c300
                          push              eax                                            // 0x007db506    50
-                         call              dword ptr [__imp__GetProcAddress@4]            // 0x007db507    ff1570918a00
+                         call              dword ptr [__imp__GetProcAddress@8]            // 0x007db507    ff1570918a00
                          test              eax, eax                                       // 0x007db50d    85c0
                          {disp32} mov      dword ptr [data_bytes + 0x4be57c], eax         // 0x007db50f    a37c45e800
                          {disp8} jne       _jmp_addr_0x007db51a                           // 0x007db514    7504

@@ -4427,7 +4427,7 @@ _jmp_addr_0x00571dc5:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          {disp8} lea        edi, dword ptr [esi + 0x01]                   // 0x00571dc9    8d7e01
                          push               edi                                           // 0x00571dcc    57
                          push               eax                                           // 0x00571dcd    50
-                         call               dword ptr [__imp__GetProcAddress@4]           // 0x00571dce    ff1570918a00
+                         call               dword ptr [__imp__GetProcAddress@8]           // 0x00571dce    ff1570918a00
                          cmp.s              eax, ebx                                      // 0x00571dd4    3bc3
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x00571dd6    8b4c2420
                          mov                dword ptr [ecx], eax                          // 0x00571dda    8901
