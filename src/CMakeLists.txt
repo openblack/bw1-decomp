@@ -491,6 +491,7 @@ add_library(runblack-reassembled-src-malloc-free OBJECT asm/unprocessed/runblack
 add_library(runblack-reassembled-src-calloc OBJECT asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
 add_library(runblack-reassembled-src-realloc OBJECT asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
 add_library(runblack-reassembled-src-007 OBJECT ${SOURCES_007})
+add_library(runblack-reassembled-src-msize OBJECT asm/unprocessed/runblack.reassemble.1121.007cce94-007ccf82-msize.asm)
 add_library(runblack-reassembled-src-008 OBJECT ${SOURCES_008})
 add_library(runblack-reassembled-src-bss-005 OBJECT asm/unprocessed/bss.005.asm)
 
@@ -689,6 +690,10 @@ add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\cvt.obj" WEAKEN_
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strcmp.obj")
 set_property(TARGET runblack-reassembled-libcmt-005 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
+add_library(runblack-reassembled-libcmt-006 OBJECT IMPORTED)
+set(STATIC_LIB_PATCHED_OBJECTS)
+set_property(TARGET runblack-reassembled-libcmt-006 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
+
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
 set(STATIC_LIB_PATCHED_OBJECTS)
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\wcsdup.obj")
@@ -752,6 +757,8 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-libcmt-004
         runblack-reassembled-src-realloc
         runblack-reassembled-libcmt-005
+        runblack-reassembled-src-msize
+        runblack-reassembled-libcmt-006
         runblack-reassembled-src-007  # some lhlib with some libcmt mixed in
         runblack-reassembled-libcmt-007
         runblack-reassembled-src-bss-005
@@ -835,6 +842,15 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-msize.dir/asm/unprocessed/runblack.reassemble.1121.007cce94-007ccf82-msize.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-msize.dir/asm/unprocessed/runblack.reassemble.1121.007cce94-007ccf82-msize.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -883,6 +899,7 @@ target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_option
 target_link_libraries(runblack-reassembled-src-malloc-free PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-calloc PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-realloc PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-msize PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-007 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-008 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-bss-005 PRIVATE common_compile_options)
