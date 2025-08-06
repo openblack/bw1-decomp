@@ -187,9 +187,9 @@
 .globl __imp__LCMapStringW@24
 .globl __imp__GetModuleFileNameA@4
 .globl __imp__HeapSize@4
-.globl __imp__CompareStringW@4
-.globl __imp__CompareStringA@4
-.globl __imp__GetCPInfo@4
+.globl __imp__CompareStringW@24
+.globl __imp__CompareStringA@24
+.globl __imp__GetCPInfo@8
 .globl __imp__LCMapStringA@24
 .globl __imp__FatalAppExitA@8
 .globl __imp__InterlockedIncrement@4
@@ -796,9 +796,9 @@ __imp__HeapDestroy@4:                                                           
 __imp__LCMapStringW@24:                                                                                                        .long 0x005c487e // 0x008a92f0 KERNEL32.DLL::LCMapStringW
 __imp__GetModuleFileNameA@4:                                                                                                   .long 0x005c48ca // 0x008a92f4 KERNEL32.DLL::GetModuleFileNameA
 __imp__HeapSize@4:                                                                                                             .long 0x005c48be // 0x008a92f8 KERNEL32.DLL::HeapSize
-__imp__CompareStringW@4:                                                                                                       .long 0x005c48ac // 0x008a92fc KERNEL32.DLL::CompareStringW
-__imp__CompareStringA@4:                                                                                                       .long 0x005c489a // 0x008a9300 KERNEL32.DLL::CompareStringA
-__imp__GetCPInfo@4:                                                                                                            .long 0x005c488e // 0x008a9304 KERNEL32.DLL::GetCPInfo
+__imp__CompareStringW@24:                                                                                                      .long 0x005c48ac // 0x008a92fc KERNEL32.DLL::CompareStringW
+__imp__CompareStringA@24:                                                                                                      .long 0x005c489a // 0x008a9300 KERNEL32.DLL::CompareStringA
+__imp__GetCPInfo@8:                                                                                                            .long 0x005c488e // 0x008a9304 KERNEL32.DLL::GetCPInfo
 __imp__LCMapStringA@24:                                                                                                        .long 0x005c486e // 0x008a9308 KERNEL32.DLL::LCMapStringA
 __imp__FatalAppExitA@8:                                                                                                        .long 0x005c485e // 0x008a930c KERNEL32.DLL::FatalAppExitA
 __imp__InterlockedIncrement@4:                                                                                                 .long 0x005c46bc // 0x008a9310 KERNEL32.DLL::InterlockedIncrement

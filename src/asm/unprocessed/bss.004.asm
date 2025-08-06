@@ -28,11 +28,9 @@
 .globl _g_smoke_additif_mat
 .globl _g_view_configuration
 .globl _Direct3DDevice7
-.globl _?f_use@?1??__crtCompareStringA@@9@9
 .globl __newmode
 .globl ___lc_id
 
-_?f_use@?1??__crtCompareStringA@@9@9:      .space 4                     // a_cmp.obj                               // [0x4be2bc] 0x009c6000 + 0x4be2bc = 0x00e842bc
 __newmode:                                 .space 4                     // _newmode.obj                            // [0x4be2c0] 0x009c6000 + 0x4be2c0 = 0x00e842c0
                                            .space 0x240
 ___lc_id:                                  .space 0x24                  // nlsdata3.obj                            // [0x4be504] 0x009c6000 + 0x4be504 = 0x00e84504
