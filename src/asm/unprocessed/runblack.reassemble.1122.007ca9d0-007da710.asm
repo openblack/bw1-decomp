@@ -211,12 +211,6 @@
 .globl __nan2
 .globl ___crtGetStringTypeA
 
-__setdefaultprecision:   push               0x00030000                                     // 0x007cc962    6800000300
-                         push               0x00010000                                     // 0x007cc967    6800000100
-                         call               __controlfp                                    // 0x007cc96c    e802d3ffff
-                         pop                ecx                                            // 0x007cc971    59
-                         pop                ecx                                            // 0x007cc972    59
-                         ret                                                               // 0x007cc973    c3
 _jmp_addr_0x007cc974:    push               ebp                                            // 0x007cc974    55
                          mov.s              ebp, esp                                       // 0x007cc975    8bec
                          sub                esp, 0x18                                      // 0x007cc977    83ec18

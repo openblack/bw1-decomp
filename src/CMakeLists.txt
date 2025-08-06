@@ -683,6 +683,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\nlsdata1.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strftime.obj" WEAKEN_SYMBOLS ___no_lead_zeros ___alternate_form) # mismatch for the __Strftime function
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\cmiscdat.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_cmp.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\fp8.obj")
 set_property(TARGET runblack-reassembled-libcmt-005 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
