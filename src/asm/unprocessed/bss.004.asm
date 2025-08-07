@@ -31,8 +31,7 @@
 .globl __newmode
 .globl ___lc_id
 
-__newmode:                                 .space 4                     // _newmode.obj                            // [0x4be2c0] 0x009c6000 + 0x4be2c0 = 0x00e842c0
-                                           .space 0x240
+                                           .space 0x23c
 ___lc_id:                                  .space 0x24                  // nlsdata3.obj                            // [0x4be504] 0x009c6000 + 0x4be504 = 0x00e84504
                                            .space 0xb18
 
