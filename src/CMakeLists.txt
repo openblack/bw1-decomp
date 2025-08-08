@@ -378,7 +378,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1052.0079a5a0-0079c550.asm
     asm/unprocessed/runblack.reassemble.1056.0079c550-0079f5d0.asm
     asm/unprocessed/runblack.reassemble.1058.0079f5d0-007a1360.asm
-    asm/unprocessed/runblack.reassemble.1060.007a1360-007aebb0.asm
+    asm/unprocessed/runblack.reassemble.1060.007a1360-007aebb0.asm # some sse ops
     asm/unprocessed/runblack.reassemble.1061.007aebb0-007aee98-jmp-table.asm
     asm/unprocessed/bss.001.asm
 )
@@ -405,12 +405,15 @@ set(SOURCES_004
     asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
 )
 
-set(SOURCES_007
+set(SOURCES_008
     asm/unprocessed/bss.004.asm
+    asm/unprocessed/rdata.005.009a0744-009a6298.asm  # contains some d3d 7? data and some libjpeg data
     asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
-    asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm
-    asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm
-    asm/unprocessed/runblack.reassemble.1129.007da710-007dc8b0.asm
+    asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm  # contains some ddraw data
+    asm/unprocessed/runblack.reassemble.1123.007ce4d2-007da710.asm
+    asm/unprocessed/runblack.reassemble.1128.007da710-007db410.asm
+    # end of libcmt and start of lhlib?
+    asm/unprocessed/runblack.reassemble.1129.007db410-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1137.007dc8b0-007dee50.asm
     c/PCMain.1138.007dee50-007deef0.c
     asm/unprocessed/runblack.reassemble.1139.007dee50-007e4e40.asm
@@ -464,21 +467,20 @@ set(SOURCES_007
     asm/unprocessed/runblack.reassemble.1324.00897480-00897550.asm
     asm/unprocessed/runblack.reassemble.1327.00897550-00898390.asm
     asm/unprocessed/runblack.reassemble.1328.00897550-00899040-ddraw.dll-winmm.dll-wearasr.dll.asm
-    asm/unprocessed/runblack.reassemble.1329.00898450-00899040.asm
+    asm/unprocessed/runblack.reassemble.1329.00898450-00899040.asm # contains some libjpeg functions
     asm/unprocessed/runblack.reassemble.1332.00899040-00899340.asm
     asm/unprocessed/runblack.reassemble.1335.00899340-008a2710.asm
     asm/unprocessed/runblack.reassemble.1336.008a2710-008a2770-imm32.dll.asm
-    asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm
+    asm/unprocessed/runblack.reassemble.1337.008a2770-008a5030.asm # contains simd ops
     asm/unprocessed/runblack.reassemble.1338.008a5030-008a5440-binkw32.dll-wsock32.dll-kernel32.dll-user32.dll-gdi32.dll-advapi32.dll-ole32.dll-lhlogr.dll.asm
     asm/unprocessed/runblack.reassemble.1339.008a5440-008a5b00.asm
     asm/unprocessed/runblack.reassemble.1342.008a5b00-008a5b0c-dll-jmp-table.asm
-    asm/unprocessed/rdata.005.009a0744-009a6298.asm
 )
-set(SOURCES_008
+set(SOURCES_009
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
     asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
     asm/unprocessed/data.003.00c2d680-00c3c680.asm
-    asm/unprocessed/data.004.00c3c680-00c3cff0.asm
+    asm/unprocessed/data.004.00c3c680-00c3cff0.asm  # some libjpeg strings
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
@@ -488,8 +490,10 @@ add_library(runblack-reassembled-src-004 OBJECT ${SOURCES_004})
 add_library(runblack-reassembled-src-malloc-free OBJECT asm/unprocessed/runblack.reassemble.1080.007c664c-007c686f-malloc-free.asm)
 add_library(runblack-reassembled-src-calloc OBJECT asm/unprocessed/runblack.reassemble.1119.007c92ac-007c93e9.asm)
 add_library(runblack-reassembled-src-realloc OBJECT asm/unprocessed/runblack.reassemble.1120.007c989f-007c9bce.asm)
-add_library(runblack-reassembled-src-007 OBJECT ${SOURCES_007})
+add_library(runblack-reassembled-src-msize OBJECT asm/unprocessed/runblack.reassemble.1121.007cce94-007ccf82-msize.asm)
+add_library(runblack-reassembled-src-007 OBJECT asm/unprocessed/runblack.reassemble.1122.007ce35d-007ce4d2.asm)
 add_library(runblack-reassembled-src-008 OBJECT ${SOURCES_008})
+add_library(runblack-reassembled-src-009 OBJECT ${SOURCES_009})
 add_library(runblack-reassembled-src-bss-005 OBJECT asm/unprocessed/bss.005.asm)
 
 add_library(runblack-reassembled-rc OBJECT
@@ -665,7 +669,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strlen.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\ehprolog.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\memcpy.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\memcmp.obj")
-add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\setlocal.obj" WEAKEN_SYMBOLS ___unguarded_readlc_active ___setlc_active "??_C@_03DBOJ@_?4?0?$AA@" "??_C@_01KPOD@?$DN?$AA@" "??_C@_01FAJB@?$DL?$AA@" "??_C@_02BGDO@?$DN?$DL?$AA@" "??_C@_01PJCK@?4?$AA@" "??_C@_07PCLE@LC_TIME?$AA@" "??_C@_0L@NKG@LC_NUMERIC?$AA@" "??_C@_0M@CBIH@LC_MONETARY?$AA@" "??_C@_08LFGE@LC_CTYPE?$AA@" "??_C@_06GCPK@LC_ALL?$AA@" "??_C@_01NON@_?$AA@" "??_C@_0L@CFLC@LC_COLLATE?$AA@")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\setlocal.obj" WEAKEN_SYMBOLS ___unguarded_readlc_active ___setlc_active "??_C@_01KPOD@?$DN?$AA@" "??_C@_01PJCK@?4?$AA@")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\memset.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_file.obj" WEAKEN_SYMBOLS __nstream __bufin ___piob ___pioinfo)
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\fputwc.obj")
@@ -673,7 +677,30 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\ungetwc.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\fgetwc.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mlock.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\nlsdata2.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_map.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\isctype.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strtod.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\ctype.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\nlsdata1.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strftime.obj" WEAKEN_SYMBOLS ___no_lead_zeros ___alternate_form) # mismatch for the __Strftime function
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\cmiscdat.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_cmp.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\fp8.obj")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\testfdiv.obj" WEAKEN_SYMBOLS "__real@8@3fff8000000000000000")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\cvt.obj" WEAKEN_SYMBOLS "__real@8@00000000000000000000")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strcmp.obj")
 set_property(TARGET runblack-reassembled-libcmt-005 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
+
+add_library(runblack-reassembled-libcmt-006 OBJECT IMPORTED)
+set(STATIC_LIB_PATCHED_OBJECTS)
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_flsbuf.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\output.obj" WEAKEN_SYMBOLS "??_C@_06ONKE@?$CInull?$CJ?$AA@")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\exsup3.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\xtoa.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\woutput.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_newmode.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\handler.obj")
+set_property(TARGET runblack-reassembled-libcmt-006 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
 set(STATIC_LIB_PATCHED_OBJECTS)
@@ -738,10 +765,13 @@ target_link_libraries(runblack-reassembled
         runblack-reassembled-libcmt-004
         runblack-reassembled-src-realloc
         runblack-reassembled-libcmt-005
-        runblack-reassembled-src-007  # some lhlib with some libcmt mixed in
+        runblack-reassembled-src-msize
+        runblack-reassembled-libcmt-006
+        runblack-reassembled-src-007
+        runblack-reassembled-src-008  # some lhlib with some libcmt mixed in
         runblack-reassembled-libcmt-007
         runblack-reassembled-src-bss-005
-        runblack-reassembled-src-008
+        runblack-reassembled-src-009
         runblack-reassembled-rc
 )
 
@@ -794,8 +824,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -803,8 +833,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -821,8 +851,62 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/runblack.reassemble.1122.007ca9d0-007da710.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-msize.dir/asm/unprocessed/runblack.reassemble.1121.007cce94-007ccf82-msize.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-msize.dir/asm/unprocessed/runblack.reassemble.1121.007cce94-007ccf82-msize.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/runblack.reassemble.1122.007ce35d-007ce4d2.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-007.dir/asm/unprocessed/runblack.reassemble.1122.007ce35d-007ce4d2.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/runblack.reassemble.1123.007ce4d2-007da710.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/runblack.reassemble.1123.007ce4d2-007da710.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/bss.004.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/bss.004.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.005.009a0744-009a6298.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.005.009a0744-009a6298.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -833,8 +917,10 @@ target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_option
 target_link_libraries(runblack-reassembled-src-malloc-free PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-calloc PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-realloc PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-msize PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-007 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-008 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-009 PRIVATE common_compile_options)
 target_link_libraries(runblack-reassembled-src-bss-005 PRIVATE common_compile_options)
 
 target_link_options(runblack-reassembled

@@ -74,7 +74,7 @@
 .extern ___RTDynamicCast
 .extern __strcmpi
 .extern _fprintf
-.extern _jmp_addr_0x007da710
+.extern __strnicmp
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _CHAR2WCHAR__FPc
@@ -201,7 +201,7 @@ _jmp_addr_0x007519fc:    {disp8} mov        eax, dword ptr [ebp + 0x00]         
                          push               edi                                           // 0x00751a18    57
                          push               edx                                           // 0x00751a19    52
                          push               ebx                                           // 0x00751a1a    53
-                         call               _jmp_addr_0x007da710                          // 0x00751a1b    e8f08c0800
+                         call               __strnicmp                                    // 0x00751a1b    e8f08c0800
                          add                esp, 0x0c                                     // 0x00751a20    83c40c
                          test               eax, eax                                      // 0x00751a23    85c0
                          {disp8} jne        _jmp_addr_0x00751a58                          // 0x00751a25    7531

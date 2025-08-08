@@ -38,7 +38,7 @@ _jmp_addr_0x00898450:    push               esi                                 
                          mov                dword ptr [esi], 0x009a59b0                   // 0x0089845a    c706b0599a00
                          push               eax                                           // 0x00898460    50
                          {disp8} lea        edi, dword ptr [esi + 0x08]                   // 0x00898461    8d7e08
-                         call               _jmp_addr_0x00898960                          // 0x00898464    e8f7040000
+                         call               _jpeg_std_error                               // 0x00898464    e8f7040000
                          push               0x00000168                                    // 0x00898469    6868010000
                          push               0x3e                                          // 0x0089846e    6a3e
                          push               edi                                           // 0x00898470    57
@@ -563,7 +563,7 @@ _jmp_addr_0x00898934:    mov                ecx, dword ptr [esi]                
                          nop                                                              // 0x0089895d    90
                          nop                                                              // 0x0089895e    90
                          nop                                                              // 0x0089895f    90
-_jmp_addr_0x00898960:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00898960    8b442404
+_jpeg_std_error:         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00898960    8b442404
                          xor.s              ecx, ecx                                      // 0x00898964    33c9
                          mov                dword ptr [eax], 0x008989b0                   // 0x00898966    c700b0898900
                          {disp8} mov        dword ptr [eax + 0x04], 0x00898a00            // 0x0089896c    c74004008a8900

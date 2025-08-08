@@ -31,7 +31,7 @@ _jmp_addr_0x007aebb6:    jmp                  dword ptr [__imp__inet_ntoa]      
                          jmp                  dword ptr [__imp__InitializeCriticalSection@4]   // 0x007aec34    ff257c918a00
                          jmp                  dword ptr [__imp__DeleteCriticalSection@4]       // 0x007aec3a    ff2578918a00
                          jmp                  dword ptr [__imp__FreeLibrary@4]                 // 0x007aec40    ff2574918a00
-                         jmp                  dword ptr [__imp__GetProcAddress@4]              // 0x007aec46    ff2570918a00
+                         jmp                  dword ptr [__imp__GetProcAddress@8]              // 0x007aec46    ff2570918a00
                          jmp                  dword ptr [__imp__LoadLibraryA@4]                // 0x007aec4c    ff256c918a00
                          jmp                  dword ptr [__imp__CreateDirectoryA@8]            // 0x007aec52    ff2568918a00
                          jmp                  dword ptr [__imp__GetTempFileNameA@4]            // 0x007aec58    ff2564918a00

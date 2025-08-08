@@ -177,7 +177,6 @@
 .extern _fopen
 .extern _fclose
 .extern __chkstk
-.extern _jmp_addr_0x007da710
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e0620
 .extern _jmp_addr_0x007e13b0

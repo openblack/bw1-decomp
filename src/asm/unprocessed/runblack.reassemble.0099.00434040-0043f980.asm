@@ -176,7 +176,7 @@
 .extern _fopen
 .extern _fclose
 .extern __chkstk
-.extern _jmp_addr_0x007da710
+.extern __strnicmp
 .extern ___nw__FUl
 .extern _jmp_addr_0x007e0620
 .extern _jmp_addr_0x007e13b0
@@ -16256,7 +16256,7 @@ _jmp_addr_0x0043e140:    push               esi                                 
                          push               0x4                                                  // 0x0043e145    6a04
                          push               0x009cd6a0                                           // 0x0043e147    68a0d69c00
                          push               esi                                                  // 0x0043e14c    56
-                         call               _jmp_addr_0x007da710                                 // 0x0043e14d    e8bec53900
+                         call               __strnicmp                                           // 0x0043e14d    e8bec53900
                          add                esp, 0x0c                                            // 0x0043e152    83c40c
                          test               eax, eax                                             // 0x0043e155    85c0
                          {disp8} je         _jmp_addr_0x0043e15d                                 // 0x0043e157    7404

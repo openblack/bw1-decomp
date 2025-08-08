@@ -16,7 +16,6 @@
 .globl ___wargv
 .globl __aenvptr
 .globl __mbcasemap
-.globl ___lc_codepage
 .globl __winmajor
 .globl __nhandle
 .globl __winver

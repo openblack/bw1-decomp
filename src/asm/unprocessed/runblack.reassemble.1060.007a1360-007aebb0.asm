@@ -106,10 +106,6 @@
 .extern ___crtLCMapStringA
 .extern __isctype
 .extern _strtod
-.extern _jmp_addr_0x007cbab2
-.extern _jmp_addr_0x007cbb41
-.extern _jmp_addr_0x007cbbd6
-.extern _jmp_addr_0x007cbe23
 .extern ___crtCompareStringA
 .extern _jmp_addr_0x007faff0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -11728,7 +11724,7 @@ _jmp_addr_0x007ad9d1:    call                 _jmp_addr_0x007ad360              
                          add                  esp, 0x00000404                                  // 0x007ad9dc    81c404040000
                          ret                  0x0004                                           // 0x007ad9e2    c20400
 _jmp_addr_0x007ad9e5:    {disp8} mov          ecx, dword ptr [esi + 0x08]                      // 0x007ad9e5    8b4e08
-                         {disp32} mov         ebx, dword ptr [__imp__GetProcAddress@4]         // 0x007ad9e8    8b1d70918a00
+                         {disp32} mov         ebx, dword ptr [__imp__GetProcAddress@8]         // 0x007ad9e8    8b1d70918a00
                          push                 0x00c2adec                                       // 0x007ad9ee    68ecadc200
                          push                 ecx                                              // 0x007ad9f3    51
                          {disp8} mov          byte ptr [esi + 0x04], 0x01                      // 0x007ad9f4    c6460401
