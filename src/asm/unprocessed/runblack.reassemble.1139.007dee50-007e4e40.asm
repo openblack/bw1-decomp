@@ -4610,7 +4610,7 @@ _jmp_addr_0x007e1b03:    {disp8} mov        edx, dword ptr [ebp + 0x04]         
                          push               eax                                           // 0x007e1b3b    50
                          push               eax                                           // 0x007e1b3c    50
                          push               ebp                                           // 0x007e1b3d    55
-                         call               dword ptr [__imp__HeapCreate@4]               // 0x007e1b3e    ff15e8928a00
+                         call               dword ptr [__imp__HeapCreate@12]              // 0x007e1b3e    ff15e8928a00
                          {disp32} mov       dword ptr [data_bytes + 0x4ca600], eax        // 0x007e1b44    a30006e900
                          mov                ecx, 0x000007d0                               // 0x007e1b49    b9d0070000
                          xor.s              eax, eax                                      // 0x007e1b4e    33c0

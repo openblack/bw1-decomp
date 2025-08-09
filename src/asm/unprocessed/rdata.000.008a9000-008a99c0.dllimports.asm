@@ -172,7 +172,7 @@
 .globl __imp__SetHandleCount@4
 .globl __imp__GetOEMCP@4
 .globl __imp__GetACP@4
-.globl __imp__GetEnvironmentVariableA@4
+.globl __imp__GetEnvironmentVariableA@12
 .globl __imp__CloseHandle@4
 .globl __imp__SetLastError@4
 .globl __imp__TlsFree@4
@@ -181,11 +181,11 @@
 .globl __imp__GetCurrentThreadId@4
 .globl __imp__IsBadWritePtr@4
 .globl __imp__VirtualAlloc@4
-.globl __imp__VirtualFree@4
-.globl __imp__HeapCreate@4
+.globl __imp__VirtualFree@12
+.globl __imp__HeapCreate@12
 .globl __imp__HeapDestroy@4
 .globl __imp__LCMapStringW@24
-.globl __imp__GetModuleFileNameA@4
+.globl __imp__GetModuleFileNameA@12
 .globl __imp__HeapSize@12
 .globl __imp__CompareStringW@24
 .globl __imp__CompareStringA@24
@@ -781,7 +781,7 @@ __imp__GetStdHandle@4:                                                          
 __imp__SetHandleCount@4:                                                                                                       .long 0x005c49c6 // 0x008a92b4 KERNEL32.DLL::SetHandleCount
 __imp__GetOEMCP@4:                                                                                                             .long 0x005c49ba // 0x008a92b8 KERNEL32.DLL::GetOEMCP
 __imp__GetACP@4:                                                                                                               .long 0x005c49b0 // 0x008a92bc KERNEL32.DLL::GetACP
-__imp__GetEnvironmentVariableA@4:                                                                                              .long 0x005c48e0 // 0x008a92c0 KERNEL32.DLL::GetEnvironmentVariableA
+__imp__GetEnvironmentVariableA@12:                                                                                             .long 0x005c48e0 // 0x008a92c0 KERNEL32.DLL::GetEnvironmentVariableA
 __imp__CloseHandle@4:                                                                                                          .long 0x005c46d4 // 0x008a92c4 KERNEL32.DLL::CloseHandle
 __imp__SetLastError@4:                                                                                                         .long 0x005c497e // 0x008a92c8 KERNEL32.DLL::SetLastError
 __imp__TlsFree@4:                                                                                                              .long 0x005c4974 // 0x008a92cc KERNEL32.DLL::TlsFree
@@ -790,11 +790,11 @@ __imp__TlsSetValue@4:                                                           
 __imp__GetCurrentThreadId@4:                                                                                                   .long 0x005c4944 // 0x008a92d8 KERNEL32.DLL::GetCurrentThreadId
 __imp__IsBadWritePtr@4:                                                                                                        .long 0x005c4934 // 0x008a92dc KERNEL32.DLL::IsBadWritePtr
 __imp__VirtualAlloc@4:                                                                                                         .long 0x005c4924 // 0x008a92e0 KERNEL32.DLL::VirtualAlloc
-__imp__VirtualFree@4:                                                                                                          .long 0x005c4916 // 0x008a92e4 KERNEL32.DLL::VirtualFree
-__imp__HeapCreate@4:                                                                                                           .long 0x005c4908 // 0x008a92e8 KERNEL32.DLL::HeapCreate
+__imp__VirtualFree@12:                                                                                                         .long 0x005c4916 // 0x008a92e4 KERNEL32.DLL::VirtualFree
+__imp__HeapCreate@12:                                                                                                          .long 0x005c4908 // 0x008a92e8 KERNEL32.DLL::HeapCreate
 __imp__HeapDestroy@4:                                                                                                          .long 0x005c48fa // 0x008a92ec KERNEL32.DLL::HeapDestroy
 __imp__LCMapStringW@24:                                                                                                        .long 0x005c487e // 0x008a92f0 KERNEL32.DLL::LCMapStringW
-__imp__GetModuleFileNameA@4:                                                                                                   .long 0x005c48ca // 0x008a92f4 KERNEL32.DLL::GetModuleFileNameA
+__imp__GetModuleFileNameA@12:                                                                                                  .long 0x005c48ca // 0x008a92f4 KERNEL32.DLL::GetModuleFileNameA
 __imp__HeapSize@12:                                                                                                            .long 0x005c48be // 0x008a92f8 KERNEL32.DLL::HeapSize
 __imp__CompareStringW@24:                                                                                                      .long 0x005c48ac // 0x008a92fc KERNEL32.DLL::CompareStringW
 __imp__CompareStringA@24:                                                                                                      .long 0x005c489a // 0x008a9300 KERNEL32.DLL::CompareStringA

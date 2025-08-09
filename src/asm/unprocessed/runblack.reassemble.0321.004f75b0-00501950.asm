@@ -11179,7 +11179,7 @@ _jmp_addr_0x0050188e:    pop                edi                                 
                          pop                ebx                                           // 0x00501895    5b
                          add                esp, 0x48                                     // 0x00501896    83c448
                          ret                                                              // 0x00501899    c3
-                         call               dword ptr [__imp__GetModuleFileNameA@4]       // 0x0050189a    ff15f4928a00
+                         call               dword ptr [__imp__GetModuleFileNameA@12]      // 0x0050189a    ff15f4928a00
 _jmp_addr_0x005018a0:    sub                esp, 0x10                                     // 0x005018a0    83ec10
                          push               esi                                           // 0x005018a3    56
                          mov.s              esi, ecx                                      // 0x005018a4    8bf1

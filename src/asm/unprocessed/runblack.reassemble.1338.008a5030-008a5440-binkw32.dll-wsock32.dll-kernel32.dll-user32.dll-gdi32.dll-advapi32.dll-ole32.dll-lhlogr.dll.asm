@@ -96,11 +96,11 @@ _jmp_KERNEL32_DLL__GetCPInfo:                      jmp              dword ptr [_
 _jmp_KERNEL32_DLL__CompareStringA:                 jmp              dword ptr [__imp__CompareStringA@24]                                      // 0x008a51c2    ff2500938a00
 _jmp_KERNEL32_DLL__CompareStringW:                 jmp              dword ptr [__imp__CompareStringW@24]                                      // 0x008a51c8    ff25fc928a00
 _jmp_KERNEL32_DLL__HeapSize:                       jmp              dword ptr [__imp__HeapSize@12]                                            // 0x008a51ce    ff25f8928a00
-_jmp_KERNEL32_DLL__GetModuleFileNameA:             jmp              dword ptr [__imp__GetModuleFileNameA@4]                                   // 0x008a51d4    ff25f4928a00
-_jmp_KERNEL32_DLL__GetEnvironmentVariableA:        jmp              dword ptr [__imp__GetEnvironmentVariableA@4]                              // 0x008a51da    ff25c0928a00
+_jmp_KERNEL32_DLL__GetModuleFileNameA:             jmp              dword ptr [__imp__GetModuleFileNameA@12]                                  // 0x008a51d4    ff25f4928a00
+_jmp_KERNEL32_DLL__GetEnvironmentVariableA:        jmp              dword ptr [__imp__GetEnvironmentVariableA@12]                             // 0x008a51da    ff25c0928a00
 _jmp_KERNEL32_DLL__HeapDestroy:                    jmp              dword ptr [__imp__HeapDestroy@4]                                          // 0x008a51e0    ff25ec928a00
-_jmp_KERNEL32_DLL__HeapCreate:                     jmp              dword ptr [__imp__HeapCreate@4]                                           // 0x008a51e6    ff25e8928a00
-_jmp_KERNEL32_DLL__VirtualFree:                    jmp              dword ptr [__imp__VirtualFree@4]                                          // 0x008a51ec    ff25e4928a00
+_jmp_KERNEL32_DLL__HeapCreate:                     jmp              dword ptr [__imp__HeapCreate@12]                                          // 0x008a51e6    ff25e8928a00
+_jmp_KERNEL32_DLL__VirtualFree:                    jmp              dword ptr [__imp__VirtualFree@12]                                         // 0x008a51ec    ff25e4928a00
 _jmp_KERNEL32_DLL__VirtualAlloc:                   jmp              dword ptr [__imp__VirtualAlloc@4]                                         // 0x008a51f2    ff25e0928a00
 _jmp_KERNEL32_DLL__IsBadWritePtr:                  jmp              dword ptr [__imp__IsBadWritePtr@4]                                        // 0x008a51f8    ff25dc928a00
 _jmp_KERNEL32_DLL__GetCurrentThreadId:             jmp              dword ptr [__imp__GetCurrentThreadId@4]                                   // 0x008a51fe    ff25d8928a00
