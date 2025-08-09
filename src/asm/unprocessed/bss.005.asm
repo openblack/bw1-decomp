@@ -151,6 +151,8 @@
 .globl ___mbctype_initialized
 .globl ___alternate_form
 .globl ___no_lead_zeros
+.globl ___active_heap
+.globl ___sbh_threshold
 
                                            .space 0xd4
 ___pioinfo:                                .space 0x100                                                            // [0x5e6960] 0x009c6000 + 0x5e6960 = 0x00fac960
@@ -161,9 +163,10 @@ __mbcasemap:                               .space 0x100                         
 __mbctype:                                 .space 4                                                                // [0x5e6b80] 0x009c6000 + 0x5e6b80 = 0x00facb80
                                            .space 0x100
 ___mblcid:                                 .space 4                                                                // [0x5e6c84] 0x009c6000 + 0x5e6c84 = 0x00facc84
-                                           .space 0x20
+                                           .space 0x1c
+___sbh_threshold:                          .space 4                                                                // [0x5e6ca4] 0x009c6000 + 0x5e6ca4 = 0x00facca4
 __crtheap:                                 .space 4                                                                // [0x5e6ca8] 0x009c6000 + 0x5e6ca8 = 0x00facca8
-                                           .space 0x4                                                              // [0x5e6cac] 0x009c6000 + 0x5e6cac = 0x00faccac
+___active_heap:                            .space 4                                                                // [0x5e6cac] 0x009c6000 + 0x5e6cac = 0x00faccac
 ___alternate_form:                         .space 4                                                                // [0x5e6cac] 0x009c6000 + 0x5e6cac = 0x00faccb0
 ___no_lead_zeros:                          .space 4                                                                // [0x5e6cac] 0x009c6000 + 0x5e6cac = 0x00faccb4
 ___piob:                                   .space 4                     // _file.obj: 00000004 C ___piob           // [0x5e6cb8] 0x009c6000 + 0x5e6cb8 = 0x00faccb8

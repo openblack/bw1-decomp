@@ -4634,7 +4634,7 @@ _jmp_addr_0x007e1b56:    inc                ebp                                 
                          push               edx                                           // 0x007e1b83    52
                          push               0x0                                           // 0x007e1b84    6a00
                          push               eax                                           // 0x007e1b86    50
-                         call               dword ptr [__imp__HeapFree@4]                 // 0x007e1b87    ff1500928a00
+                         call               dword ptr [__imp__HeapFree@12]                // 0x007e1b87    ff1500928a00
                          mov                dword ptr [esi], 0x00000000                   // 0x007e1b8d    c70600000000
                          mov                word ptr [edi], 0x0000                        // 0x007e1b93    66c7070000
                          {disp8} jmp        _jmp_addr_0x007e1ba6                          // 0x007e1b98    eb0c

@@ -945,7 +945,7 @@ _jmp_addr_0x0056f8bc:    push               edi                                 
                          pop                ebx                                           // 0x0056f8c5    5b
 _jmp_addr_0x0056f8c6:    pop                esi                                           // 0x0056f8c6    5e
                          ret                0x0018                                        // 0x0056f8c7    c21800
-                         call               dword ptr [__imp__HeapFree@4]                 // 0x0056f8ca    ff1500928a00
+                         call               dword ptr [__imp__HeapFree@12]                // 0x0056f8ca    ff1500928a00
 _jmp_addr_0x0056f8d0:    {disp8} mov        ecx, dword ptr [ecx + 0x04]                   // 0x0056f8d0    8b4904
                          {disp8} mov        eax, dword ptr [ecx + 0x04]                   // 0x0056f8d3    8b4104
                          {disp32} mov       edx, dword ptr [data_bytes + 0x33b9e4]        // 0x0056f8d6    8b15e419d000

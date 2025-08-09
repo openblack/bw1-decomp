@@ -73,7 +73,7 @@ _jmp_KERNEL32_DLL__GetFileSize:                    jmp              dword ptr [_
 _jmp_KERNEL32_DLL__SetEndOfFile:                   jmp              dword ptr [__imp__SetEndOfFile@4]                                         // 0x008a5138    ff250c928a00
 _jmp_KERNEL32_DLL__IsBadReadPtr:                   jmp              dword ptr [__imp__IsBadReadPtr@8]                                         // 0x008a513e    ff2508928a00
 _jmp_KERNEL32_DLL__HeapAlloc:                      jmp              dword ptr [__imp__HeapAlloc@12]                                           // 0x008a5144    ff2504928a00
-_jmp_KERNEL32_DLL__HeapFree:                       jmp              dword ptr [__imp__HeapFree@4]                                             // 0x008a514a    ff2500928a00
+_jmp_KERNEL32_DLL__HeapFree:                       jmp              dword ptr [__imp__HeapFree@12]                                            // 0x008a514a    ff2500928a00
 _jmp_KERNEL32_DLL__GetLastError:                   jmp              dword ptr [__imp__GetLastError@0]                                         // 0x008a5150    ff25fc918a00
 _jmp_KERNEL32_DLL__GetTimeZoneInformation:         jmp              dword ptr [__imp__GetTimeZoneInformation@4]                               // 0x008a5156    ff25f8918a00
 _jmp_KERNEL32_DLL__GetSystemTime:                  jmp              dword ptr [__imp__GetSystemTime@4]                                        // 0x008a515c    ff25f4918a00
@@ -81,7 +81,7 @@ _jmp_KERNEL32_DLL__GetLocalTime:                   jmp              dword ptr [_
 _RtlUnwind@16:                                     jmp              dword ptr [__imp__RtlUnwind@16]                                           // 0x008a5168    ff25ec918a00
 _jmp_KERNEL32_DLL__RaiseException:                 jmp              dword ptr [__imp__RaiseException@16]                                      // 0x008a516e    ff25e8918a00
 _jmp_KERNEL32_DLL__SetFileAttributesA:             jmp              dword ptr [__imp__SetFileAttributesA@8]                                   // 0x008a5174    ff25e4918a00
-_jmp_KERNEL32_DLL__HeapReAlloc:                    jmp              dword ptr [__imp__HeapReAlloc@4]                                          // 0x008a517a    ff25e0918a00
+_jmp_KERNEL32_DLL__HeapReAlloc:                    jmp              dword ptr [__imp__HeapReAlloc@16]                                         // 0x008a517a    ff25e0918a00
 _jmp_KERNEL32_DLL__Beep:                           jmp              dword ptr [__imp__Beep@8]                                                 // 0x008a5180    ff25dc918a00
 _jmp_KERNEL32_DLL__ExitProcess:                    jmp              dword ptr [__imp__ExitProcess@4]                                          // 0x008a5186    ff25d8918a00
 _jmp_KERNEL32_DLL__TerminateProcess:               jmp              dword ptr [__imp__TerminateProcess@8]                                     // 0x008a518c    ff25d4918a00
@@ -95,7 +95,7 @@ _jmp_KERNEL32_DLL__LCMapStringW:                   jmp              dword ptr [_
 _jmp_KERNEL32_DLL__GetCPInfo:                      jmp              dword ptr [__imp__GetCPInfo@8]                                            // 0x008a51bc    ff2504938a00
 _jmp_KERNEL32_DLL__CompareStringA:                 jmp              dword ptr [__imp__CompareStringA@24]                                      // 0x008a51c2    ff2500938a00
 _jmp_KERNEL32_DLL__CompareStringW:                 jmp              dword ptr [__imp__CompareStringW@24]                                      // 0x008a51c8    ff25fc928a00
-_jmp_KERNEL32_DLL__HeapSize:                       jmp              dword ptr [__imp__HeapSize@4]                                             // 0x008a51ce    ff25f8928a00
+_jmp_KERNEL32_DLL__HeapSize:                       jmp              dword ptr [__imp__HeapSize@12]                                            // 0x008a51ce    ff25f8928a00
 _jmp_KERNEL32_DLL__GetModuleFileNameA:             jmp              dword ptr [__imp__GetModuleFileNameA@4]                                   // 0x008a51d4    ff25f4928a00
 _jmp_KERNEL32_DLL__GetEnvironmentVariableA:        jmp              dword ptr [__imp__GetEnvironmentVariableA@4]                              // 0x008a51da    ff25c0928a00
 _jmp_KERNEL32_DLL__HeapDestroy:                    jmp              dword ptr [__imp__HeapDestroy@4]                                          // 0x008a51e0    ff25ec928a00
