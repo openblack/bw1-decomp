@@ -35,6 +35,7 @@
 .globl _?first_time@?1??__tzset@@9@9
 .globl _tzinfo
 .globl __stdbuf
+.globl __commode
 
 .align 8
 _tzapiused:                                .space 0x4                   // tzset.obj                               // [0x4be2d8] 0x009c6000 + 0x4be2d8 = 0x00e842d8
@@ -51,7 +52,9 @@ _?f_use@?1??__crtGetEnvironmentStringsA@@9@9:                           // a_env
                                            .space 0x18                                                             // [0x4be4e8] 0x009c6000 + 0x4be4e8 = 0x00e844e8
                                            .space 0x4
 ___lc_id:                                  .space 0x24                  // nlsdata3.obj                            // [0x4be504] 0x009c6000 + 0x4be504 = 0x00e84504
-                                           .space 0xb18
+                                           .space 0x2c
+__commode:                                 .space 4                                                                // [0x4be554] 0x009c6000 + 0x4be554 = 0x00e84554
+                                           .space 0xae8                                                            // [0x4be558] 0x009c6000 + 0x4be558 = 0x00e84558
 
 // Start of lh.lib ??
 _LHSys:                                    .space 0x70d8                                                           // [0x4bf040] 0x009c6000 + 0x4bf040 = 0x00e85040

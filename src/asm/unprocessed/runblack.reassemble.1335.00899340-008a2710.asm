@@ -22,7 +22,7 @@
 .extern __write
 .extern __lseek
 .extern _jmp_addr_0x007d5fee
-.extern _jmp_addr_0x007d9487
+.extern __sopen
 .extern __setmode
 .extern _jmp_addr_0x008986b0
 .extern _longjmp
@@ -12477,7 +12477,7 @@ _jmp_addr_0x008a145e:    push              0x00000180                           
                          push              eax                                             // 0x008a1463    50
                          push              edx                                             // 0x008a1464    52
                          push              dword ptr [ebp + 0x08]                          // 0x008a1465    ff7508
-                         call              _jmp_addr_0x007d9487                            // 0x008a1468    e81a80f3ff
+                         call              __sopen                                         // 0x008a1468    e81a80f3ff
                          add               esp, 0x10                                       // 0x008a146d    83c410
                          cmp               eax, -0x01                                      // 0x008a1470    83f8ff
                          {disp8} mov       dword ptr [esi + 0x4c], eax                     // 0x008a1473    89464c
