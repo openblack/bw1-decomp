@@ -689,6 +689,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\heapinit.obj" WEAKEN
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\sbheap.obj" WEAKEN_SYMBOLS ___sbh_threshold ___sbh_pHeaderList ___sbh_cntHeaderList ___sbh_pHeaderDefer ___sbh_initialized ___sbh_pHeaderScan ___sbh_indGroupDefer ___sbh_sizeHeaderList)
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\input.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\iswctype.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mbsnbico.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)

@@ -222,32 +222,6 @@
 
 .section .text
 
-// mbsnbico.obj
-__mbsnbicoll:            push               ebp                                            // 0x007d0950    55
-                         mov.s              ebp, esp                                       // 0x007d0951    8bec
-                         cmp                dword ptr [ebp + 0x10], 0x00                   // 0x007d0953    837d1000
-                         {disp8} jne        _jmp_addr_0x007d095d                           // 0x007d0957    7504
-                         xor.s              eax, eax                                       // 0x007d0959    33c0
-                         pop                ebp                                            // 0x007d095b    5d
-                         ret                                                               // 0x007d095c    c3
-_jmp_addr_0x007d095d:    push               dword ptr [data_bytes + 0x5e6a64]              // 0x007d095d    ff3564cafa00
-                         push               dword ptr [ebp + 0x10]                         // 0x007d0963    ff7510
-                         push               dword ptr [ebp + 0x0c]                         // 0x007d0966    ff750c
-                         push               dword ptr [ebp + 0x10]                         // 0x007d0969    ff7510
-                         push               dword ptr [ebp + 0x08]                         // 0x007d096c    ff7508
-                         push               0x1                                            // 0x007d096f    6a01
-                         push               dword ptr [data_bytes + 0x5e6c84]              // 0x007d0971    ff3584ccfa00
-                         call               ___crtCompareStringA                           // 0x007d0977    e83ebdffff
-                         add                esp, 0x1c                                      // 0x007d097c    83c41c
-                         test               eax, eax                                       // 0x007d097f    85c0
-                         {disp8} jne        _jmp_addr_0x007d098a                           // 0x007d0981    7507
-                         mov                eax, 0x7fffffff                                // 0x007d0983    b8ffffff7f
-                         pop                ebp                                            // 0x007d0988    5d
-                         ret                                                               // 0x007d0989    c3
-_jmp_addr_0x007d098a:    add                eax, -0x02                                     // 0x007d098a    83c0fe
-                         pop                ebp                                            // 0x007d098d    5d
-                         ret                                                               // 0x007d098e    c3
-
 // wtombenv.obj
 ___wtomb_environ:        push               ecx                                            // 0x007d098f    51
                          push               ebx                                            // 0x007d0990    53
