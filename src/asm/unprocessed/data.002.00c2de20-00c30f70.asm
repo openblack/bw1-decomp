@@ -13,15 +13,7 @@
 .globl __timezone
 .globl __infinity
 
-// input.obj
-_sbrackset:
-.asciz " \t-\r]"                                                                                                   // [0x269e48] 0x009c6000 + 0x269e48 = 0x00c2fe48
 .align 0x8
-
-_cbrackset:
-.asciz "]"                                                                                                         // [0x269e50] 0x009c6000 + 0x269e50 = 0x00c2fe50
-.align 0x8
-
 __d_inf:
 .byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xf0, 0x7f                                                               // [0x269e58] 0x009c6000 + 0x269e58 = 0x00c2fe58
 
