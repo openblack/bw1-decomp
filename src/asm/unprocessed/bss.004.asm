@@ -30,8 +30,28 @@
 .globl _Direct3DDevice7
 .globl __newmode
 .globl ___lc_id
+.globl _?f_use@?1??__crtGetEnvironmentStringsA@@9@9
+.globl _?_pgmname@?1??__setargv@@9@9
+.globl _?first_time@?1??__tzset@@9@9
+.globl _tzinfo
+.globl __stdbuf
 
-                                           .space 0x23c
+___old_sbh_decommitable_pages:             .space 0x4                   // sbheap.obj                               // [0x4be2c8] 0x009c6000 + 0x4be2c8 = 0x00e842c8
+__stdbuf:                                  .space 0x4                   // _sftbuf.obj                              // [0x4be2cc] 0x009c6000 + 0x4be2cc = 0x00e842cc
+                                           .space 0x8                   // part of _sftbuf.obj                     // [0x4be2d0] 0x009c6000 + 0x4be2d0 = 0x00e842d0
+_tzapiused:                                .space 0x4                   // tzset.obj                               // [0x4be2d8] 0x009c6000 + 0x4be2d8 = 0x00e842d8
+                                           .space 0x4
+_tzinfo:                                   .space 0xac                  // tzset.obj                               // [0x4be2e0] 0x009c6000 + 0x4be2e0 = 0x00e842e0
+                                           .space 0x4
+_?first_time@?1??__tzset@@9@9:             .space 4                     // tzset.obj                               // [0x4be390] 0x009c6000 + 0x4be390 = 0x00e84390
+                                           .space 0x4c                                                             // [0x4be394] 0x009c6000 + 0x4be394 = 0x00e84394
+
+_?_pgmname@?1??__setargv@@9@9:             .space 0x104                 // _setargv.obj                            // [0x4be3e0] 0x009c6000 + 0x4be3e0 = 0x00e843e0
+
+_?f_use@?1??__crtGetEnvironmentStringsA@@9@9:                           // a_env.obj
+                                           .space 0x4                                                              // [0x4be4e4] 0x009c6000 + 0x4be4e4 = 0x00e844e4
+                                           .space 0x18                                                             // [0x4be4e8] 0x009c6000 + 0x4be4e8 = 0x00e844e8
+                                           .space 0x4
 ___lc_id:                                  .space 0x24                  // nlsdata3.obj                            // [0x4be504] 0x009c6000 + 0x4be504 = 0x00e84504
                                            .space 0xb18
 

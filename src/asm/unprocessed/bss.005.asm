@@ -155,6 +155,7 @@
 .globl ___sbh_threshold
 .globl ___sbh_pHeaderList
 .globl ___sbh_cntHeaderList
+.globl ___sbh_sizeHeaderList
 
                                            .space 0xd4
 ___pioinfo:                                .space 0x100                                                            // [0x5e6960] 0x009c6000 + 0x5e6960 = 0x00fac960
@@ -165,7 +166,8 @@ __mbcasemap:                               .space 0x100                         
 __mbctype:                                 .space 4                                                                // [0x5e6b80] 0x009c6000 + 0x5e6b80 = 0x00facb80
                                            .space 0x100
 ___mblcid:                                 .space 4                                                                // [0x5e6c84] 0x009c6000 + 0x5e6c84 = 0x00facc84
-                                           .space 0x14
+___sbh_sizeHeaderList:                     .space 4                                                                // [0x5e6c88] 0x009c6000 + 0x5e6c88 = 0x00facc88
+                                           .space 0x10
 ___sbh_cntHeaderList:                      .space 4                                                                // [0x5e6c9c] 0x009c6000 + 0x5e6c9c = 0x00facc9c
 ___sbh_pHeaderList:                        .space 4                                                                // [0x5e6ca0] 0x009c6000 + 0x5e6ca0 = 0x00facca0
 ___sbh_threshold:                          .space 4                                                                // [0x5e6ca4] 0x009c6000 + 0x5e6ca4 = 0x00facca4
