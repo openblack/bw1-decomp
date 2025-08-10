@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x007d211b
 .extern __lseek_lk
 .extern _strcpy
-.extern _jmp_addr_0x007d9974
+.extern __get_osfhandle
 .extern __lock_fhandle
 .extern __unlock_fhandle
 .extern _jmp_addr_0x007dc8b0
@@ -771,7 +771,7 @@ _jmp_addr_0x007dae22:    {disp8} jge       _jmp_addr_0x007dae6a                 
                          push              dword ptr [ebp + 0x08]                         // 0x007dae29    ff7508
                          call              __lseek_lk                                     // 0x007dae2c    e8ad9fffff
                          push              dword ptr [ebp + 0x08]                         // 0x007dae31    ff7508
-                         call              _jmp_addr_0x007d9974                           // 0x007dae34    e83bebffff
+                         call              __get_osfhandle                                // 0x007dae34    e83bebffff
                          add               esp, 0x10                                      // 0x007dae39    83c410
                          push              eax                                            // 0x007dae3c    50
                          call              dword ptr [__imp__SetEndOfFile@4]              // 0x007dae3d    ff150c928a00

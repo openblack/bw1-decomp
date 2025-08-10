@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x007d211b
 .extern __lseek_lk
 .extern _strcpy
-.extern _jmp_addr_0x007d9974
+.extern __get_osfhandle
 .extern __lock_fhandle
 .extern __unlock_fhandle
 .extern _jmp_addr_0x007dc8b0
