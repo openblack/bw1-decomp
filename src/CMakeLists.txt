@@ -697,6 +697,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\stream.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\close.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_freebuf.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\ldexp.obj" WEAKEN_SYMBOLS "__real@8@00000000000000000000" "__real@8@3fff8000000000000000")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\util.obj" WEAKEN_SYMBOLS "__real@8@00000000000000000000")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
