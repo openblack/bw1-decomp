@@ -36,8 +36,7 @@
 .globl _tzinfo
 .globl __stdbuf
 
-__stdbuf:                                  .space 0x4                   // _sftbuf.obj                             // [0x4be2cc] 0x009c6000 + 0x4be2cc = 0x00e842cc
-                                           .space 0x8                   // part of _sftbuf.obj                     // [0x4be2d0] 0x009c6000 + 0x4be2d0 = 0x00e842d0
+.align 8
 _tzapiused:                                .space 0x4                   // tzset.obj                               // [0x4be2d8] 0x009c6000 + 0x4be2d8 = 0x00e842d8
                                            .space 0x4
 _tzinfo:                                   .space 0xac                  // tzset.obj                               // [0x4be2e0] 0x009c6000 + 0x4be2e0 = 0x00e842e0
