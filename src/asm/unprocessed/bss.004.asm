@@ -36,8 +36,7 @@
 .globl _tzinfo
 .globl __stdbuf
 
-___old_sbh_decommitable_pages:             .space 0x4                   // sbheap.obj                               // [0x4be2c8] 0x009c6000 + 0x4be2c8 = 0x00e842c8
-__stdbuf:                                  .space 0x4                   // _sftbuf.obj                              // [0x4be2cc] 0x009c6000 + 0x4be2cc = 0x00e842cc
+__stdbuf:                                  .space 0x4                   // _sftbuf.obj                             // [0x4be2cc] 0x009c6000 + 0x4be2cc = 0x00e842cc
                                            .space 0x8                   // part of _sftbuf.obj                     // [0x4be2d0] 0x009c6000 + 0x4be2d0 = 0x00e842d0
 _tzapiused:                                .space 0x4                   // tzset.obj                               // [0x4be2d8] 0x009c6000 + 0x4be2d8 = 0x00e842d8
                                            .space 0x4
@@ -61,8 +60,7 @@ _lpCriticalSection_00e8c118:               .space 0x18                          
                                            .space 0x4520                                                           // [0x4c6130] 0x009c6000 + 0x4c6130 = 0x00e8c130
 _lpCriticalSection_00e90650:               .space 0x18                                                             // [0x4ca650] 0x009c6000 + 0x4ca650 = 0x00e90650
                                            .space 0x9a04                                                           // [0x4ca668] 0x009c6000 + 0x4ca668 = 0x00e90668
-                                           .space 0xb0                                                           // [0x4ca668] 0x009c6000 + 0x4ca668 = 0x00e90668
-                                           //.space 0x9ab4                                                           // [0x4ca668] 0x009c6000 + 0x4ca668 = 0x00e90668
+                                           .space 0xb0                                                             // [0x4ca668] 0x009c6000 + 0x4ca668 = 0x00e90668
 _LH3DMist:                                 .space 0x4                                                              // [0x4d411c] 0x009c6000 + 0x4d411c = 0x00e9a11c
                                            .space 0x2444                                                           // [0x4d4120] 0x009c6000 + 0x4d4120 = 0x00e9a120
 ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A:.space 0x100 * 0x4                                                    // [0x4d6564] 0x009c6000 + 0x4d6564 = 0x00e9c564

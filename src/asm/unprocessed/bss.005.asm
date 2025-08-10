@@ -155,7 +155,11 @@
 .globl ___sbh_threshold
 .globl ___sbh_pHeaderList
 .globl ___sbh_cntHeaderList
+.globl ___sbh_pHeaderDefer
+.globl ___sbh_pHeaderScan
 .globl ___sbh_sizeHeaderList
+.globl ___sbh_indGroupDefer
+.globl ___sbh_initialized
 
                                            .space 0xd4
 ___pioinfo:                                .space 0x100                                                            // [0x5e6960] 0x009c6000 + 0x5e6960 = 0x00fac960
@@ -167,7 +171,10 @@ __mbctype:                                 .space 4                             
                                            .space 0x100
 ___mblcid:                                 .space 4                                                                // [0x5e6c84] 0x009c6000 + 0x5e6c84 = 0x00facc84
 ___sbh_sizeHeaderList:                     .space 4                                                                // [0x5e6c88] 0x009c6000 + 0x5e6c88 = 0x00facc88
-                                           .space 0x10
+___sbh_indGroupDefer:                      .space 4                                                                // [0x5e6c8c] 0x009c6000 + 0x5e6c8c = 0x00facc8c
+___sbh_pHeaderScan:                        .space 4                                                                // [0x5e6c90] 0x009c6000 + 0x5e6c90 = 0x00facc90
+___sbh_initialized:                        .space 4                                                                // [0x5e6c94] 0x009c6000 + 0x5e6c94 = 0x00facc94
+___sbh_pHeaderDefer:                       .space 4                                                                // [0x5e6c98] 0x009c6000 + 0x5e6c98 = 0x00facc98
 ___sbh_cntHeaderList:                      .space 4                                                                // [0x5e6c9c] 0x009c6000 + 0x5e6c9c = 0x00facc9c
 ___sbh_pHeaderList:                        .space 4                                                                // [0x5e6ca0] 0x009c6000 + 0x5e6ca0 = 0x00facca0
 ___sbh_threshold:                          .space 4                                                                // [0x5e6ca4] 0x009c6000 + 0x5e6ca4 = 0x00facca4

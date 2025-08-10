@@ -686,6 +686,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\woutput.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_newmode.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\handler.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\heapinit.obj" WEAKEN_SYMBOLS ___active_heap __crtheap)
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\sbheap.obj" WEAKEN_SYMBOLS ___sbh_threshold ___sbh_pHeaderList ___sbh_cntHeaderList ___sbh_pHeaderDefer ___sbh_initialized ___sbh_pHeaderScan ___sbh_indGroupDefer ___sbh_sizeHeaderList)
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)

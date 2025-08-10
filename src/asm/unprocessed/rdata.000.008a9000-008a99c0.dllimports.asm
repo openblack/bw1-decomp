@@ -179,8 +179,8 @@
 .globl __imp__TlsAlloc@4
 .globl __imp__TlsSetValue@4
 .globl __imp__GetCurrentThreadId@4
-.globl __imp__IsBadWritePtr@4
-.globl __imp__VirtualAlloc@4
+.globl __imp__IsBadWritePtr@8
+.globl __imp__VirtualAlloc@16
 .globl __imp__VirtualFree@12
 .globl __imp__HeapCreate@12
 .globl __imp__HeapDestroy@4
@@ -788,8 +788,8 @@ __imp__TlsFree@4:                                                               
 __imp__TlsAlloc@4:                                                                                                             .long 0x005c4968 // 0x008a92d0 KERNEL32.DLL::TlsAlloc
 __imp__TlsSetValue@4:                                                                                                          .long 0x005c495a // 0x008a92d4 KERNEL32.DLL::TlsSetValue
 __imp__GetCurrentThreadId@4:                                                                                                   .long 0x005c4944 // 0x008a92d8 KERNEL32.DLL::GetCurrentThreadId
-__imp__IsBadWritePtr@4:                                                                                                        .long 0x005c4934 // 0x008a92dc KERNEL32.DLL::IsBadWritePtr
-__imp__VirtualAlloc@4:                                                                                                         .long 0x005c4924 // 0x008a92e0 KERNEL32.DLL::VirtualAlloc
+__imp__IsBadWritePtr@8:                                                                                                        .long 0x005c4934 // 0x008a92dc KERNEL32.DLL::IsBadWritePtr
+__imp__VirtualAlloc@16:                                                                                                        .long 0x005c4924 // 0x008a92e0 KERNEL32.DLL::VirtualAlloc
 __imp__VirtualFree@12:                                                                                                         .long 0x005c4916 // 0x008a92e4 KERNEL32.DLL::VirtualFree
 __imp__HeapCreate@12:                                                                                                          .long 0x005c4908 // 0x008a92e8 KERNEL32.DLL::HeapCreate
 __imp__HeapDestroy@4:                                                                                                          .long 0x005c48fa // 0x008a92ec KERNEL32.DLL::HeapDestroy
