@@ -223,23 +223,6 @@
 
 .section .text
 
-__freebuf:               push               esi                                            // 0x007d0dcc    56
-                         {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x007d0dcd    8b742408
-                         {disp8} mov        eax, dword ptr [esi + 0x0c]                    // 0x007d0dd1    8b460c
-                         test               al, -0x7d                                      // 0x007d0dd4    a883
-                         {disp8} je         _jmp_addr_0x007d0df5                           // 0x007d0dd6    741d
-                         test               al, 0x08                                       // 0x007d0dd8    a808
-                         {disp8} je         _jmp_addr_0x007d0df5                           // 0x007d0dda    7419
-                         push               dword ptr [esi + 0x08]                         // 0x007d0ddc    ff7608
-                         call               _free                                          // 0x007d0ddf    e8a259ffff
-                         and                word ptr [esi + 0x0c], -0x0409                 // 0x007d0de4    6681660cf7fb
-                         xor.s              eax, eax                                       // 0x007d0dea    33c0
-                         pop                ecx                                            // 0x007d0dec    59
-                         mov                dword ptr [esi], eax                           // 0x007d0ded    8906
-                         {disp8} mov        dword ptr [esi + 0x08], eax                    // 0x007d0def    894608
-                         {disp8} mov        dword ptr [esi + 0x04], eax                    // 0x007d0df2    894604
-_jmp_addr_0x007d0df5:    pop                esi                                            // 0x007d0df5    5e
-                         ret                                                               // 0x007d0df6    c3
 _ldexp:                  push               ebp                                            // 0x007d0df7    55
                          mov.s              ebp, esp                                       // 0x007d0df8    8bec
                          sub                esp, 0x0c                                      // 0x007d0dfa    83ec0c
