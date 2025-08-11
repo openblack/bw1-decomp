@@ -159,8 +159,8 @@
 .globl __imp__GetLocaleInfoA@4
 .globl __imp__IsValidCodePage@4
 .globl __imp__IsValidLocale@4
-.globl __imp__GetEnvironmentStringsW@4
-.globl __imp__GetEnvironmentStrings@4
+.globl __imp__GetEnvironmentStringsW@0
+.globl __imp__GetEnvironmentStrings@0
 .globl __imp__FreeEnvironmentStringsW@4
 .globl __imp__FreeEnvironmentStringsA@4
 .globl __imp__UnhandledExceptionFilter@4
@@ -768,8 +768,8 @@ __imp__EnumSystemLocalesA@4:                                                    
 __imp__GetLocaleInfoA@4:                                                                                                       .long 0x005c4ae4 // 0x008a9280 KERNEL32.DLL::GetLocaleInfoA
 __imp__IsValidCodePage@4:                                                                                                      .long 0x005c4ad2 // 0x008a9284 KERNEL32.DLL::IsValidCodePage
 __imp__IsValidLocale@4:                                                                                                        .long 0x005c4ac2 // 0x008a9288 KERNEL32.DLL::IsValidLocale
-__imp__GetEnvironmentStringsW@4:                                                                                               .long 0x005c4aa8 // 0x008a928c KERNEL32.DLL::GetEnvironmentStringsW
-__imp__GetEnvironmentStrings@4:                                                                                                .long 0x005c4a90 // 0x008a9290 KERNEL32.DLL::GetEnvironmentStrings
+__imp__GetEnvironmentStringsW@0:                                                                                               .long 0x005c4aa8 // 0x008a928c KERNEL32.DLL::GetEnvironmentStringsW
+__imp__GetEnvironmentStrings@0:                                                                                                .long 0x005c4a90 // 0x008a9290 KERNEL32.DLL::GetEnvironmentStrings
 __imp__FreeEnvironmentStringsW@4:                                                                                              .long 0x005c4a76 // 0x008a9294 KERNEL32.DLL::FreeEnvironmentStringsW
 __imp__FreeEnvironmentStringsA@4:                                                                                              .long 0x005c4a5c // 0x008a9298 KERNEL32.DLL::FreeEnvironmentStringsA
 __imp__UnhandledExceptionFilter@4:                                                                                             .long 0x005c4a40 // 0x008a929c KERNEL32.DLL::UnhandledExceptionFilter

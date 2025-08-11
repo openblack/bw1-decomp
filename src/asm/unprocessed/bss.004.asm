@@ -30,12 +30,9 @@
 .globl _Direct3DDevice7
 .globl __newmode
 .globl ___lc_id
-.globl _?f_use@?1??__crtGetEnvironmentStringsA@@9@9
 .globl __stdbuf
 .globl __commode
 
-_?f_use@?1??__crtGetEnvironmentStringsA@@9@9:                           // a_env.obj
-                                           .space 0x4                                                              // [0x4be4e4] 0x009c6000 + 0x4be4e4 = 0x00e844e4
                                            .space 0x18                                                             // [0x4be4e8] 0x009c6000 + 0x4be4e8 = 0x00e844e8
                                            .space 0x4
 ___lc_id:                                  .space 0x24                  // nlsdata3.obj                            // [0x4be504] 0x009c6000 + 0x4be504 = 0x00e84504

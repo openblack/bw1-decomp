@@ -121,8 +121,8 @@ _jmp_KERNEL32_DLL__FlushFileBuffers:               jmp              dword ptr [_
 _jmp_KERNEL32_DLL__UnhandledExceptionFilter:       jmp              dword ptr [__imp__UnhandledExceptionFilter@4]                             // 0x008a5258    ff259c928a00
 _jmp_KERNEL32_DLL__FreeEnvironmentStringsA:        jmp              dword ptr [__imp__FreeEnvironmentStringsA@4]                              // 0x008a525e    ff2598928a00
 _jmp_KERNEL32_DLL__FreeEnvironmentStringsW:        jmp              dword ptr [__imp__FreeEnvironmentStringsW@4]                              // 0x008a5264    ff2594928a00
-_jmp_KERNEL32_DLL__GetEnvironmentStrings:          jmp              dword ptr [__imp__GetEnvironmentStrings@4]                                // 0x008a526a    ff2590928a00
-_jmp_KERNEL32_DLL__GetEnvironmentStringsW:         jmp              dword ptr [__imp__GetEnvironmentStringsW@4]                               // 0x008a5270    ff258c928a00
+_jmp_KERNEL32_DLL__GetEnvironmentStrings:          jmp              dword ptr [__imp__GetEnvironmentStrings@0]                                // 0x008a526a    ff2590928a00
+_jmp_KERNEL32_DLL__GetEnvironmentStringsW:         jmp              dword ptr [__imp__GetEnvironmentStringsW@0]                               // 0x008a5270    ff258c928a00
 _jmp_KERNEL32_DLL__IsValidLocale:                  jmp              dword ptr [__imp__IsValidLocale@4]                                        // 0x008a5276    ff2588928a00
 _jmp_KERNEL32_DLL__IsValidCodePage:                jmp              dword ptr [__imp__IsValidCodePage@4]                                      // 0x008a527c    ff2584928a00
 _jmp_KERNEL32_DLL__GetLocaleInfoA:                 jmp              dword ptr [__imp__GetLocaleInfoA@4]                                       // 0x008a5282    ff2580928a00
