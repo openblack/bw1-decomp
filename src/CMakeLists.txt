@@ -701,6 +701,8 @@ add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\util.obj" WEAKEN
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\fpexcept.obj" WEAKEN_SYMBOLS "__real@8@00000000000000000000")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\fpctrl.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\87disp.obj")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\genexcep.obj")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\common.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)

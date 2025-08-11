@@ -14,8 +14,6 @@
 .globl __infinity
 .globl __matherr_flag
 
-.byte 0x00, 0x00, 0x00, 0x00                                                                                       // [0x269f9c] 0x009c6000 + 0x269f9c = 0x00c2ff9c
-
 __timezone:
 .long 0x00007080                                                                                                   // [0x269fa0] 0x009c6000 + 0x269fa0 = 0x00c2ffa0
 
