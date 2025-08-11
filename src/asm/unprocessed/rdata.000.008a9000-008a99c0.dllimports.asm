@@ -132,7 +132,7 @@
 .globl __imp__WriteFile@20
 .globl __imp__ReadFile@20
 .globl __imp__CreateFileA@4
-.globl __imp__SetFilePointer@4
+.globl __imp__SetFilePointer@16
 .globl __imp__FindClose@4
 .globl __imp__DeleteFileA@4
 .globl __imp__WideCharToMultiByte@32
@@ -741,7 +741,7 @@ __imp__GetFileSize@4:                                                           
 __imp__WriteFile@20:                                                                                                           .long 0x005c470e // 0x008a9214 KERNEL32.DLL::WriteFile
 __imp__ReadFile@20:                                                                                                            .long 0x005c4702 // 0x008a9218 KERNEL32.DLL::ReadFile
 __imp__CreateFileA@4:                                                                                                          .long 0x005c46f4 // 0x008a921c KERNEL32.DLL::CreateFileA
-__imp__SetFilePointer@4:                                                                                                       .long 0x005c46e2 // 0x008a9220 KERNEL32.DLL::SetFilePointer
+__imp__SetFilePointer@16:                                                                                                      .long 0x005c46e2 // 0x008a9220 KERNEL32.DLL::SetFilePointer
 __imp__FindClose@4:                                                                                                            .long 0x005c0316 // 0x008a9224 KERNEL32.DLL::FindClose
 __imp__DeleteFileA@4:                                                                                                          .long 0x005c0308 // 0x008a9228 KERNEL32.DLL::DeleteFileA
 __imp__WideCharToMultiByte@32:                                                                                                 .long 0x005c02f2 // 0x008a922c KERNEL32.DLL::WideCharToMultiByte

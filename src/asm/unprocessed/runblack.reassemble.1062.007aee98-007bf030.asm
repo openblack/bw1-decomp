@@ -19755,7 +19755,7 @@ _jmp_addr_0x007bc6f0:    xor.s                eax, eax                          
                          push                 0x0                                              // 0x007bc705    6a00
                          push                 0x0                                              // 0x007bc707    6a00
                          push                 eax                                              // 0x007bc709    50
-                         call                 dword ptr [__imp__SetFilePointer@4]              // 0x007bc70a    ff1520928a00
+                         call                 dword ptr [__imp__SetFilePointer@16]             // 0x007bc70a    ff1520928a00
                          cmp                  eax, -0x01                                       // 0x007bc710    83f8ff
                          {disp8} je           _jmp_addr_0x007bc724                             // 0x007bc713    740f
                          {disp8} mov          ecx, dword ptr [esp + 0x04]                      // 0x007bc715    8b4c2404
@@ -19933,7 +19933,7 @@ _jmp_addr_0x007bc8a4:    {disp8} mov          edx, dword ptr [esp + 0x08]       
                          push                 0x0                                              // 0x007bc8ab    6a00
                          push                 edx                                              // 0x007bc8ad    52
                          push                 eax                                              // 0x007bc8ae    50
-_jmp_addr_0x007bc8af:    call                 dword ptr [__imp__SetFilePointer@4]              // 0x007bc8af    ff1520928a00
+_jmp_addr_0x007bc8af:    call                 dword ptr [__imp__SetFilePointer@16]             // 0x007bc8af    ff1520928a00
                          cmp                  eax, -0x01                                       // 0x007bc8b5    83f8ff
                          {disp8} jne          _jmp_addr_0x007bc8c2                             // 0x007bc8b8    7508
 _jmp_addr_0x007bc8ba:    mov                  eax, 0x00000003                                  // 0x007bc8ba    b803000000
@@ -21383,7 +21383,7 @@ _jmp_addr_0x007bd7b1:    pop                  esi                               
                          mov.s                ecx, esi                                         // 0x007bd7fc    8bce
                          push                 eax                                              // 0x007bd7fe    50
                          call                 @ReadData__6LHFileFPvUl@16                       // 0x007bd7ff    e81c090000
-                         {disp32} mov         ebp, dword ptr [__imp__SetFilePointer@4]         // 0x007bd804    8b2d20928a00
+                         {disp32} mov         ebp, dword ptr [__imp__SetFilePointer@16]        // 0x007bd804    8b2d20928a00
                          cmp                  eax, 0x02                                        // 0x007bd80a    83f802
                          {disp32} je          _jmp_addr_0x007bd8e6                             // 0x007bd80d    0f84d3000000
 _jmp_addr_0x007bd813:    test                 eax, eax                                         // 0x007bd813    85c0
@@ -21955,7 +21955,7 @@ _jmp_addr_0x007bdd2d:    {disp8} mov          eax, dword ptr [esi + 0x10]       
                          push                 0x0                                              // 0x007bdd34    6a00
                          push                 ecx                                              // 0x007bdd36    51
                          push                 eax                                              // 0x007bdd37    50
-                         call                 dword ptr [__imp__SetFilePointer@4]              // 0x007bdd38    ff1520928a00
+                         call                 dword ptr [__imp__SetFilePointer@16]             // 0x007bdd38    ff1520928a00
 _jmp_addr_0x007bdd3e:    cmp                  eax, -0x01                                       // 0x007bdd3e    83f8ff
                          {disp8} mov          dword ptr [esi + 0x5c], eax                      // 0x007bdd41    89465c
                          {disp8} jne          _jmp_addr_0x007bdd50                             // 0x007bdd44    750a
