@@ -220,16 +220,6 @@
 
 .section .text
 
-__frnd:                  push               ebp                                            // 0x007d3f8b    55
-                         mov.s              ebp, esp                                       // 0x007d3f8c    8bec
-                         push               ecx                                            // 0x007d3f8e    51
-                         push               ecx                                            // 0x007d3f8f    51
-                         {disp8} fld        qword ptr [ebp + 0x08]                         // 0x007d3f90    dd4508
-                         frndint                                                           // 0x007d3f93    d9fc
-                         {disp8} fstp       qword ptr [ebp + -0x08]                        // 0x007d3f95    dd5df8
-                         {disp8} fld        qword ptr [ebp + -0x08]                        // 0x007d3f98    dd45f8
-                         leave                                                             // 0x007d3f9b    c9
-                         ret                                                               // 0x007d3f9c    c3
 ___InternalCxxFrameHandler:
                          push               ebp                                            // 0x007d3f9d    55
                          mov.s              ebp, esp                                       // 0x007d3f9e    8bec
