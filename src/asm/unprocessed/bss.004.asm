@@ -31,11 +31,8 @@
 .globl __newmode
 .globl ___lc_id
 .globl _?f_use@?1??__crtGetEnvironmentStringsA@@9@9
-.globl _?_pgmname@?1??__setargv@@9@9
 .globl __stdbuf
 .globl __commode
-
-_?_pgmname@?1??__setargv@@9@9:             .space 0x104                 // _setargv.obj                            // [0x4be3e0] 0x009c6000 + 0x4be3e0 = 0x00e843e0
 
 _?f_use@?1??__crtGetEnvironmentStringsA@@9@9:                           // a_env.obj
                                            .space 0x4                                                              // [0x4be4e4] 0x009c6000 + 0x4be4e4 = 0x00e844e4
