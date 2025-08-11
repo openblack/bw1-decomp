@@ -2024,11 +2024,12 @@ ___xc_a:
 ___xc_z:
 .long 0x00000000
 
+// .CRT$XIC
 ___xi_a:                                                                                                           // [0x1e40] 0x009c6000 + 0x1e40 = 0x009c7e40
 .long 0x00000000
 .long ___onexitinit
 .long ___initstdio
-.long _jmp_addr_0x007d4cc3
+.long ___initmbctable
 .long ___inittime
 .long ?__CxxSetUnhandledExceptionFilter@@YAXXZ
 ___xi_z:                                                                                                           // [0x1e50] 0x009c6000 + 0x1e50 = 0x009c7e50

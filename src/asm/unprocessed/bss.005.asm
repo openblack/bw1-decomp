@@ -160,12 +160,16 @@
 .globl ___sbh_sizeHeaderList
 .globl ___sbh_indGroupDefer
 .globl ___sbh_initialized
+.globl ___ismbcodepage
+.globl ___mbulinfo
 
                                            .space 0xd4
 ___pioinfo:                                .space 0x100                                                            // [0x5e6960] 0x009c6000 + 0x5e6960 = 0x00fac960
 __nhandle:                                 .space 4                                                                // [0x5e6a60] 0x009c6000 + 0x5e6a60 = 0x00faca60
 ___mbcodepage:                             .space 4                                                                // [0x5e6a64] 0x009c6000 + 0x5e6a64 = 0x00faca64
-                                           .space 0x18
+                                           .space 0x8
+___mbulinfo:                               .space 0xc                                                              // [0x5e6a70] 0x009c6000 + 0x5e6a70 = 0x00faca70
+___ismbcodepage:                           .space 4                                                                // [0x5e6a7c] 0x009c6000 + 0x5e6a7c = 0x00faca7c
 __mbcasemap:                               .space 0x100                                                            // [0x5e6a80] 0x009c6000 + 0x5e6a80 = 0x00faca80
 __mbctype:                                 .space 4                                                                // [0x5e6b80] 0x009c6000 + 0x5e6b80 = 0x00facb80
                                            .space 0x100

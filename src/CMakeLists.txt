@@ -719,6 +719,7 @@ add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\frnd.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\frame.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\lowhelpr.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\hooks.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mbctype.obj" WEAKEN_SYMBOLS ___mblcid __mbctype __mbcasemap ___ismbcodepage ___mbulinfo ___mbcodepage)
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)

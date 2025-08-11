@@ -110,8 +110,8 @@ _jmp_KERNEL32_DLL__TlsFree:                        jmp              dword ptr [_
 _jmp_KERNEL32_DLL__SetLastError:                   jmp              dword ptr [__imp__SetLastError@4]                                         // 0x008a5216    ff25c8928a00
 _jmp_KERNEL32_DLL__TlsGetValue:                    jmp              dword ptr [__imp__TlsGetValue@4]                                          // 0x008a521c    ff25ac918a00
 _jmp_KERNEL32_DLL__GetCurrentThread:               jmp              dword ptr [__imp__GetCurrentThread@0]                                     // 0x008a5222    ff25b0918a00
-_jmp_KERNEL32_DLL__GetACP:                         jmp              dword ptr [__imp__GetACP@4]                                               // 0x008a5228    ff25bc928a00
-_jmp_KERNEL32_DLL__GetOEMCP:                       jmp              dword ptr [__imp__GetOEMCP@4]                                             // 0x008a522e    ff25b8928a00
+_jmp_KERNEL32_DLL__GetACP:                         jmp              dword ptr [__imp__GetACP@0]                                               // 0x008a5228    ff25bc928a00
+_jmp_KERNEL32_DLL__GetOEMCP:                       jmp              dword ptr [__imp__GetOEMCP@0]                                             // 0x008a522e    ff25b8928a00
 _jmp_KERNEL32_DLL__SetHandleCount:                 jmp              dword ptr [__imp__SetHandleCount@4]                                       // 0x008a5234    ff25b4928a00
 _jmp_KERNEL32_DLL__GetStdHandle:                   jmp              dword ptr [__imp__GetStdHandle@4]                                         // 0x008a523a    ff25b0928a00
 _jmp_KERNEL32_DLL__GetFileType:                    jmp              dword ptr [__imp__GetFileType@4]                                          // 0x008a5240    ff25ac928a00

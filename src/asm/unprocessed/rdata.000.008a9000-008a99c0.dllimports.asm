@@ -170,8 +170,8 @@
 .globl __imp__GetFileType@4
 .globl __imp__GetStdHandle@4
 .globl __imp__SetHandleCount@4
-.globl __imp__GetOEMCP@4
-.globl __imp__GetACP@4
+.globl __imp__GetOEMCP@0
+.globl __imp__GetACP@0
 .globl __imp__GetEnvironmentVariableA@12
 .globl __imp__CloseHandle@4
 .globl __imp__SetLastError@4
@@ -779,8 +779,8 @@ __imp__SetUnhandledExceptionFilter@4:                                           
 __imp__GetFileType@4:                                                                                                          .long 0x005c49e8 // 0x008a92ac KERNEL32.DLL::GetFileType
 __imp__GetStdHandle@4:                                                                                                         .long 0x005c49d8 // 0x008a92b0 KERNEL32.DLL::GetStdHandle
 __imp__SetHandleCount@4:                                                                                                       .long 0x005c49c6 // 0x008a92b4 KERNEL32.DLL::SetHandleCount
-__imp__GetOEMCP@4:                                                                                                             .long 0x005c49ba // 0x008a92b8 KERNEL32.DLL::GetOEMCP
-__imp__GetACP@4:                                                                                                               .long 0x005c49b0 // 0x008a92bc KERNEL32.DLL::GetACP
+__imp__GetOEMCP@0:                                                                                                             .long 0x005c49ba // 0x008a92b8 KERNEL32.DLL::GetOEMCP
+__imp__GetACP@0:                                                                                                               .long 0x005c49b0 // 0x008a92bc KERNEL32.DLL::GetACP
 __imp__GetEnvironmentVariableA@12:                                                                                             .long 0x005c48e0 // 0x008a92c0 KERNEL32.DLL::GetEnvironmentVariableA
 __imp__CloseHandle@4:                                                                                                          .long 0x005c46d4 // 0x008a92c4 KERNEL32.DLL::CloseHandle
 __imp__SetLastError@4:                                                                                                         .long 0x005c497e // 0x008a92c8 KERNEL32.DLL::SetLastError
