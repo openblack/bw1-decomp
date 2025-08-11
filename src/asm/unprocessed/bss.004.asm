@@ -33,8 +33,8 @@
 .globl __stdbuf
 .globl __commode
 
-                                           .space 0x8                                                              // [0x4be4f8] 0x009c6000 + 0x4be4f8 = 0x00e844f8
-                                           .space 0x4
+                                           .space 0x4                                                              // [0x4be4fc] 0x009c6000 + 0x4be4fc = 0x00e844fc
+                                           .space 0x4                                                              // [0x4be500] 0x009c6000 + 0x4be500 = 0x00e84500
 ___lc_id:                                  .space 0x24                  // nlsdata3.obj                            // [0x4be504] 0x009c6000 + 0x4be504 = 0x00e84504
                                            .space 0x2c
 __commode:                                 .space 4                                                                // [0x4be554] 0x009c6000 + 0x4be554 = 0x00e84554
