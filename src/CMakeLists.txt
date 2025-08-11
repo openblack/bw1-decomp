@@ -724,6 +724,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mbsnbcpy.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\lseek.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\ioinit.obj" WEAKEN_SYMBOLS __nhandle ___pioinfo)
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strcat.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\unhandld.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)

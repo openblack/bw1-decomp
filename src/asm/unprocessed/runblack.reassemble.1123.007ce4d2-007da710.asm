@@ -223,37 +223,6 @@
 
 .section .text
 
-?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z:    push               esi                                            // 0x007d5160    56
-                         {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x007d5161    8b742408
-                         mov                eax, dword ptr [esi]                           // 0x007d5165    8b06
-                         cmp                dword ptr [eax], 0xe06d7363                    // 0x007d5167    813863736de0
-                         {disp8} jne        _jmp_addr_0x007d5183                           // 0x007d516d    7514
-                         cmp                dword ptr [eax + 0x10], 0x03                   // 0x007d516f    83781003
-                         {disp8} jne        _jmp_addr_0x007d5183                           // 0x007d5173    750e
-                         cmp                dword ptr [eax + 0x14], 0x19930520             // 0x007d5175    81781420059319
-                         {disp8} jne        _jmp_addr_0x007d5183                           // 0x007d517c    7505
-                         {disp32} jmp       ?terminate@@YAXXZ                              // 0x007d517e    e989f6ffff
-_jmp_addr_0x007d5183:    {disp32} mov       eax, dword ptr [data_bytes + 0x4be3c0]         // 0x007d5183    a1c043e800
-                         test               eax, eax                                       // 0x007d5188    85c0
-                         {disp8} je         _jmp_addr_0x007d51a0                           // 0x007d518a    7414
-                         push               eax                                            // 0x007d518c    50
-                         call               ?_ValidateExecute@@YAHP6GHXZ@Z                           // 0x007d518d    e8574a0000
-                         test               eax, eax                                       // 0x007d5192    85c0
-                         pop                ecx                                            // 0x007d5194    59
-                         {disp8} je         _jmp_addr_0x007d51a0                           // 0x007d5195    7409
-                         push               esi                                            // 0x007d5197    56
-                         call               dword ptr [data_bytes + 0x4be3c0]              // 0x007d5198    ff15c043e800
-                         {disp8} jmp        _jmp_addr_0x007d51a2                           // 0x007d519e    eb02
-_jmp_addr_0x007d51a0:    xor.s              eax, eax                                       // 0x007d51a0    33c0
-_jmp_addr_0x007d51a2:    pop                esi                                            // 0x007d51a2    5e
-                         ret                0x0004                                         // 0x007d51a3    c20400
-?__CxxSetUnhandledExceptionFilter@@YAXXZ:    push               0x007d5160 /* ?__CxxUnhandledExceptionFilter@@YGJPAU_EXCEPTION_POINTERS@@@Z */                                    // 0x007d51a6    6860517d00
-                         call               dword ptr [rdata_bytes + 0x2a8]                // 0x007d51ab    ff15a8928a00
-                         {disp32} mov       dword ptr [data_bytes + 0x4be3c0], eax         // 0x007d51b1    a3c043e800
-                         ret                                                               // 0x007d51b6    c3
-?__CxxRestoreUnhandledExceptionFilter@@YAXXZ:    push               dword ptr [data_bytes + 0x4be3c0]              // 0x007d51b7    ff35c043e800
-                         call               dword ptr [rdata_bytes + 0x2a8]                // 0x007d51bd    ff15a8928a00
-                         ret                                                               // 0x007d51c3    c3
 __fltin2:                push               ebp                                            // 0x007d51c4    55
                          mov.s              ebp, esp                                       // 0x007d51c5    8bec
                          sub                esp, 0x18                                      // 0x007d51c7    83ec18
