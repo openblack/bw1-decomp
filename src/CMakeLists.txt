@@ -716,6 +716,7 @@ add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\powhlp.obj" WEAK
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\87cdisp.obj" WEAKEN_SYMBOLS __matherr_flag)
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\adj_fdiv.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\frnd.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\frame.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
