@@ -2554,7 +2554,7 @@ _jmp_addr_0x0081fd33:    {disp32} mov       dword ptr [ecx + 0x00000138], ebx   
 _jmp_addr_0x0081fd3f:    push               ecx                                                  // 0x0081fd3f    51
                          push               0x6                                                  // 0x0081fd40    6a06
                          call               _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture                                 // 0x0081fd42    e8e9ff0000
-                         {disp32} fld       qword ptr [rdata_bytes + 0x3410]                     // 0x0081fd47    dd0510c48a00
+                         {disp32} fld       qword ptr [__real@8@40008000000000000000]                     // 0x0081fd47    dd0510c48a00
                          fsqrt                                                                   // 0x0081fd4d    d9fa
                          {disp32} mov       dword ptr [data_bytes + 0x4f398c], eax               // 0x0081fd4f    a38c99eb00
                          or                 byte ptr [eax + 5], bl                               // 0x0081fd54    085805

@@ -366,7 +366,7 @@ _jmp_addr_0x004ed318:    pop                edi                                 
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x004ed328    8b0d5c19d000
                          {disp32} fld       dword ptr [ecx + 0x00205d64]                         // 0x004ed32e    d981645d2000
                          {disp32} mov       eax, dword ptr [esi + 0x000047b8]                    // 0x004ed334    8b86b8470000
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x3410]                     // 0x004ed33a    dc1d10c48a00
+                         {disp32} fcomp     qword ptr [__real@8@40008000000000000000]                     // 0x004ed33a    dc1d10c48a00
                          lea                ebx, dword ptr [eax + eax * 0x2]                     // 0x004ed340    8d1c40
                          shl                ebx, 2                                               // 0x004ed343    c1e302
                          push               edi                                                  // 0x004ed346    57
@@ -376,7 +376,7 @@ _jmp_addr_0x004ed318:    pop                edi                                 
                          {disp8} je         _jmp_addr_0x004ed35a                                 // 0x004ed350    7408
                          {disp32} fld       dword ptr [ecx + 0x00205d64]                         // 0x004ed352    d981645d2000
                          {disp8} jmp        _jmp_addr_0x004ed360                                 // 0x004ed358    eb06
-_jmp_addr_0x004ed35a:    {disp32} fld       qword ptr [rdata_bytes + 0x3410]                     // 0x004ed35a    dd0510c48a00
+_jmp_addr_0x004ed35a:    {disp32} fld       qword ptr [__real@8@40008000000000000000]                     // 0x004ed35a    dd0510c48a00
 _jmp_addr_0x004ed360:    {disp32} mov       eax, dword ptr [esi + 0x000047b4]                    // 0x004ed360    8b86b4470000
                          {disp8} fstp       dword ptr [esp + 0x10]                               // 0x004ed366    d95c2410
                          test               eax, eax                                             // 0x004ed36a    85c0

@@ -388,7 +388,7 @@ _jmp_addr_0x00686af9:    {disp8} fild       dword ptr [esp + 0x10]              
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x00686b85    89442410
                          {disp32} jle       _jmp_addr_0x00686af9                          // 0x00686b89    0f8e6affffff
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x00686b8f    8b442420
-_jmp_addr_0x00686b93:    {disp32} fld       qword ptr [rdata_bytes + 0x3410]              // 0x00686b93    dd0510c48a00
+_jmp_addr_0x00686b93:    {disp32} fld       qword ptr [__real@8@40008000000000000000]              // 0x00686b93    dd0510c48a00
                          sub.s              ebx, eax                                      // 0x00686b99    2bd8
                          fsqrt                                                            // 0x00686b9b    d9fa
                          mov.s              eax, ebx                                      // 0x00686b9d    8bc3

@@ -3281,7 +3281,7 @@ _jmp_addr_0x005f919b:    {disp32} fmul      dword ptr [rdata_bytes + 0x19c40]   
                          faddp              st(1), st                                      // 0x005f91b3    dec1
                          {disp32} fld       dword ptr [data_bytes + 0x371ccc]              // 0x005f91b5    d905cc7cd300
                          {disp32} fmul      qword ptr [rdata_bytes + 0x826e0]              // 0x005f91bb    dc0de0b69200
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x3410]               // 0x005f91c1    dc0510c48a00
+                         {disp32} fadd      qword ptr [__real@8@40008000000000000000]               // 0x005f91c1    dc0510c48a00
                          fsin                                                              // 0x005f91c7    d9fe
                          {disp32} fld       dword ptr [data_bytes + 0x371ccc]              // 0x005f91c9    d905cc7cd300
                          {disp32} fmul      qword ptr [rdata_bytes + 0x826d8]              // 0x005f91cf    dc0dd8b69200

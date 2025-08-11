@@ -4921,7 +4921,7 @@ _jmp_addr_0x00418a50:    fld                dword ptr [edx]                     
                          {disp8} mov        ecx, dword ptr [eax + 0x08]                   // 0x00418aae    8b4808
                          {disp8} mov        dword ptr [esp + 0x08], ecx                   // 0x00418ab1    894c2408
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x00418ab5    d9442408
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x3410]              // 0x00418ab9    dc1d10c48a00
+                         {disp32} fcomp     qword ptr [__real@8@40008000000000000000]              // 0x00418ab9    dc1d10c48a00
                          fnstsw             ax                                            // 0x00418abf    dfe0
                          test               ah, 0x01                                      // 0x00418ac1    f6c401
                          {disp8} je         _jmp_addr_0x00418b2c                          // 0x00418ac4    7466
@@ -5037,7 +5037,7 @@ _jmp_addr_0x00418be4:    fld                st(0)                               
                          call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x00418c4a    e841a43e00
                          {disp8} fsubr      dword ptr [esp + 0x18]                        // 0x00418c4f    d86c2418
                          {disp8} fst        dword ptr [esp + 0x28]                        // 0x00418c53    d9542428
-                         {disp32} fcomp     qword ptr [rdata_bytes + 0x3410]              // 0x00418c57    dc1d10c48a00
+                         {disp32} fcomp     qword ptr [__real@8@40008000000000000000]              // 0x00418c57    dc1d10c48a00
                          fnstsw             ax                                            // 0x00418c5d    dfe0
                          test               ah, 0x01                                      // 0x00418c5f    f6c401
                          {disp8} je         _jmp_addr_0x00418c6c                          // 0x00418c62    7408

@@ -514,7 +514,7 @@ _jmp_addr_0x0084f910:    push               ebp                                 
                          test               ecx, ecx                                      // 0x0084f975    85c9
                          {disp8} mov        dword ptr [ebp + -0x04], 0x00000000           // 0x0084f977    c745fc00000000
                          {disp32} jle       _jmp_addr_0x0084fc0c                          // 0x0084f97e    0f8e88020000
-                         {disp32} fld       qword ptr [rdata_bytes + 0x3410]              // 0x0084f984    dd0510c48a00
+                         {disp32} fld       qword ptr [__real@8@40008000000000000000]              // 0x0084f984    dd0510c48a00
                          {disp8} mov        esi, dword ptr [ebp + -0x08]                  // 0x0084f98a    8b75f8
                          fsqrt                                                            // 0x0084f98d    d9fa
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4e3ea0]        // 0x0084f98f    8b0da09eea00
