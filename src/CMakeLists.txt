@@ -703,6 +703,7 @@ add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\fpctrl.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\87disp.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\genexcep.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\common.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_filbuf.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
