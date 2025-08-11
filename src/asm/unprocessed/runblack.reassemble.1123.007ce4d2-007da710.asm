@@ -223,52 +223,6 @@
 
 .section .text
 
-                         int3                                                              // 0x007d47b4    cc
-                         int3                                                              // 0x007d47b5    cc
-                         int3                                                              // 0x007d47b6    cc
-                         int3                                                              // 0x007d47b7    cc
-                         int3                                                              // 0x007d47b8    cc
-                         int3                                                              // 0x007d47b9    cc
-                         int3                                                              // 0x007d47ba    cc
-                         int3                                                              // 0x007d47bb    cc
-                         int3                                                              // 0x007d47bc    cc
-                         int3                                                              // 0x007d47bd    cc
-                         int3                                                              // 0x007d47be    cc
-                         int3                                                              // 0x007d47bf    cc
-__CallSettingFrame@12:   push               ebp                                            // 0x007d47c0    55
-                         mov.s              ebp, esp                                       // 0x007d47c1    8bec
-                         sub                esp, 0x04                                      // 0x007d47c3    83ec04
-                         push               ebx                                            // 0x007d47c6    53
-                         push               ecx                                            // 0x007d47c7    51
-                         {disp8} mov        eax, dword ptr [ebp + 0x0c]                    // 0x007d47c8    8b450c
-                         add                eax, 0x0c                                      // 0x007d47cb    83c00c
-                         {disp8} mov        dword ptr [ebp + -0x04], eax                   // 0x007d47ce    8945fc
-                         {disp8} mov        eax, dword ptr [ebp + 0x08]                    // 0x007d47d1    8b4508
-                         push               ebp                                            // 0x007d47d4    55
-                         push               dword ptr [ebp + 0x10]                         // 0x007d47d5    ff7510
-                         {disp8} mov        ecx, dword ptr [ebp + 0x10]                    // 0x007d47d8    8b4d10
-                         {disp8} mov        ebp, dword ptr [ebp + -0x04]                   // 0x007d47db    8b6dfc
-                         call               __NLG_Notify1                                  // 0x007d47de    e8023effff
-                         push               esi                                            // 0x007d47e3    56
-                         push               edi                                            // 0x007d47e4    57
-                         call               eax                                            // 0x007d47e5    ffd0
-                         pop                edi                                            // 0x007d47e7    5f
-                         pop                esi                                            // 0x007d47e8    5e
-                         mov.s              ebx, ebp                                       // 0x007d47e9    8bdd
-                         pop                ebp                                            // 0x007d47eb    5d
-                         {disp8} mov        ecx, dword ptr [ebp + 0x10]                    // 0x007d47ec    8b4d10
-                         push               ebp                                            // 0x007d47ef    55
-                         mov.s              ebp, ebx                                       // 0x007d47f0    8beb
-                         cmp                ecx, 0x00000100                                // 0x007d47f2    81f900010000
-                         {disp8} jne        _jmp_addr_0x007d47ff                           // 0x007d47f8    7505
-                         mov                ecx, 0x00000002                                // 0x007d47fa    b902000000
-_jmp_addr_0x007d47ff:    push               ecx                                            // 0x007d47ff    51
-                         call               __NLG_Notify1                                  // 0x007d4800    e8e03dffff
-                         pop                ebp                                            // 0x007d4805    5d
-                         pop                ecx                                            // 0x007d4806    59
-                         pop                ebx                                            // 0x007d4807    5b
-                         leave                                                             // 0x007d4808    c9
-                         ret                0x000c                                         // 0x007d4809    c20c00
 ?terminate@@YAXXZ:       push               ebp                                            // 0x007d480c    55
                          mov.s              ebp, esp                                       // 0x007d480d    8bec
                          push               -0x1                                           // 0x007d480f    6aff

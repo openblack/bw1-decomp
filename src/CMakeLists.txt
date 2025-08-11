@@ -717,6 +717,7 @@ add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\87cdisp.obj" WEA
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\adj_fdiv.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\frnd.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\frame.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\lowhelpr.obj" WEAKEN_SYMBOLS)
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
