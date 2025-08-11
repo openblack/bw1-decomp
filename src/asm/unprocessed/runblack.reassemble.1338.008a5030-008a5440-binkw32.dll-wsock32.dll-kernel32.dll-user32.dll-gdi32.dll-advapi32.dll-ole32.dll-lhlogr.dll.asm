@@ -116,7 +116,7 @@ _jmp_KERNEL32_DLL__SetHandleCount:                 jmp              dword ptr [_
 _jmp_KERNEL32_DLL__GetStdHandle:                   jmp              dword ptr [__imp__GetStdHandle@4]                                         // 0x008a523a    ff25b0928a00
 _jmp_KERNEL32_DLL__GetFileType:                    jmp              dword ptr [__imp__GetFileType@4]                                          // 0x008a5240    ff25ac928a00
 _jmp_KERNEL32_DLL__SetUnhandledExceptionFilter:    jmp              dword ptr [__imp__SetUnhandledExceptionFilter@4]                          // 0x008a5246    ff25a8928a00
-_jmp_KERNEL32_DLL__SetConsoleCtrlHandler:          jmp              dword ptr [__imp__SetConsoleCtrlHandler@4]                                // 0x008a524c    ff25a4928a00
+_jmp_KERNEL32_DLL__SetConsoleCtrlHandler:          jmp              dword ptr [__imp__SetConsoleCtrlHandler@8]                                // 0x008a524c    ff25a4928a00
 _jmp_KERNEL32_DLL__FlushFileBuffers:               jmp              dword ptr [__imp__FlushFileBuffers@4]                                     // 0x008a5252    ff25a0928a00
 _jmp_KERNEL32_DLL__UnhandledExceptionFilter:       jmp              dword ptr [__imp__UnhandledExceptionFilter@4]                             // 0x008a5258    ff259c928a00
 _jmp_KERNEL32_DLL__FreeEnvironmentStringsA:        jmp              dword ptr [__imp__FreeEnvironmentStringsA@4]                              // 0x008a525e    ff2598928a00

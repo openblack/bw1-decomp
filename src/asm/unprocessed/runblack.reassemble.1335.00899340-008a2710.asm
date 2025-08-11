@@ -21,7 +21,7 @@
 .extern __read
 .extern __write
 .extern __lseek
-.extern _jmp_addr_0x007d5fee
+.extern _signal
 .extern __sopen
 .extern __setmode
 .extern _jmp_addr_0x008986b0
@@ -14138,7 +14138,7 @@ _jmp_addr_0x008a25d0:    push              ebp                                  
                          mov.s             ebp, esp                                        // 0x008a25d1    8bec
                          push              0x008a25b0                                      // 0x008a25d3    68b0258a00
                          push              0x4                                             // 0x008a25d8    6a04
-                         call              _jmp_addr_0x007d5fee                            // 0x008a25da    e80f3af3ff
+                         call              _signal                                         // 0x008a25da    e80f3af3ff
                          add               esp, 0x08                                       // 0x008a25df    83c408
                          mov               eax, 0x00fbfdc0                                 // 0x008a25e2    b8c0fdfb00
                          push              0x0                                             // 0x008a25e7    6a00

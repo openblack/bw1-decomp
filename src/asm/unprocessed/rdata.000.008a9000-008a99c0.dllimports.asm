@@ -165,7 +165,7 @@
 .globl __imp__FreeEnvironmentStringsA@4
 .globl __imp__UnhandledExceptionFilter@4
 .globl __imp__FlushFileBuffers@4
-.globl __imp__SetConsoleCtrlHandler@4
+.globl __imp__SetConsoleCtrlHandler@8
 .globl __imp__SetUnhandledExceptionFilter@4
 .globl __imp__GetFileType@4
 .globl __imp__GetStdHandle@4
@@ -774,7 +774,7 @@ __imp__FreeEnvironmentStringsW@4:                                               
 __imp__FreeEnvironmentStringsA@4:                                                                                              .long 0x005c4a5c // 0x008a9298 KERNEL32.DLL::FreeEnvironmentStringsA
 __imp__UnhandledExceptionFilter@4:                                                                                             .long 0x005c4a40 // 0x008a929c KERNEL32.DLL::UnhandledExceptionFilter
 __imp__FlushFileBuffers@4:                                                                                                     .long 0x005c4a2c // 0x008a92a0 KERNEL32.DLL::FlushFileBuffers
-__imp__SetConsoleCtrlHandler@4:                                                                                                .long 0x005c4a14 // 0x008a92a4 KERNEL32.DLL::SetConsoleCtrlHandler
+__imp__SetConsoleCtrlHandler@8:                                                                                                .long 0x005c4a14 // 0x008a92a4 KERNEL32.DLL::SetConsoleCtrlHandler
 __imp__SetUnhandledExceptionFilter@4:                                                                                          .long 0x005c49f6 // 0x008a92a8 KERNEL32.DLL::SetUnhandledExceptionFilter
 __imp__GetFileType@4:                                                                                                          .long 0x005c49e8 // 0x008a92ac KERNEL32.DLL::GetFileType
 __imp__GetStdHandle@4:                                                                                                         .long 0x005c49d8 // 0x008a92b0 KERNEL32.DLL::GetStdHandle

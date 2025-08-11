@@ -728,6 +728,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\unhandld.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\cfin.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\winput.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\w_map.obj" WEAKEN_SYMBOLS "??_C@_01A@?$AA?$AA@" "??_C@_13A@?$AA?$AA?$AA?$AA@")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\winsig.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
