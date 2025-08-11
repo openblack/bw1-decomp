@@ -733,6 +733,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\crt0msg.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_getbuf.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\ftelli64.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\fseeki64.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\commit.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
