@@ -32,17 +32,9 @@
 .globl ___lc_id
 .globl _?f_use@?1??__crtGetEnvironmentStringsA@@9@9
 .globl _?_pgmname@?1??__setargv@@9@9
-.globl _?first_time@?1??__tzset@@9@9
-.globl _tzinfo
 .globl __stdbuf
 .globl __commode
 
-.align 8
-_tzapiused:                                .space 0x4                   // tzset.obj                               // [0x4be2d8] 0x009c6000 + 0x4be2d8 = 0x00e842d8
-                                           .space 0x4
-_tzinfo:                                   .space 0xac                  // tzset.obj                               // [0x4be2e0] 0x009c6000 + 0x4be2e0 = 0x00e842e0
-                                           .space 0x4
-_?first_time@?1??__tzset@@9@9:             .space 4                     // tzset.obj                               // [0x4be390] 0x009c6000 + 0x4be390 = 0x00e84390
                                            .space 0x4c                                                             // [0x4be394] 0x009c6000 + 0x4be394 = 0x00e84394
 
 _?_pgmname@?1??__setargv@@9@9:             .space 0x104                 // _setargv.obj                            // [0x4be3e0] 0x009c6000 + 0x4be3e0 = 0x00e843e0

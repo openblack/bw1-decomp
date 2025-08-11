@@ -708,6 +708,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\read.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\write.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\timeset.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\tidtable.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\tzset.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
