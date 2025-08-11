@@ -35,7 +35,7 @@
 .globl __stdbuf
 .globl __commode
 
-                                           .space 0x4c                                                             // [0x4be394] 0x009c6000 + 0x4be394 = 0x00e84394
+                                           .space 0x24                                                             // [0x4be3bc] 0x009c6000 + 0x4be3bc = 0x00e843bc
 
 _?_pgmname@?1??__setargv@@9@9:             .space 0x104                 // _setargv.obj                            // [0x4be3e0] 0x009c6000 + 0x4be3e0 = 0x00e843e0
 
