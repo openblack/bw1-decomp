@@ -21,7 +21,7 @@
 .extern _memset
 .extern __lock
 .extern __unlock
-.extern _jmp_addr_0x007d211b
+.extern __write_lk
 .extern __lseek_lk
 .extern _strcpy
 .extern __get_osfhandle
@@ -745,7 +745,7 @@ _jmp_addr_0x007daddb:    push              eax                                  
                          {disp32} lea      eax, dword ptr [ebp + -0x00001004]             // 0x007daddc    8d85fcefffff
                          push              eax                                            // 0x007dade2    50
                          push              dword ptr [ebp + 0x08]                         // 0x007dade3    ff7508
-                         call              _jmp_addr_0x007d211b                           // 0x007dade6    e83073ffff
+                         call              __write_lk                                     // 0x007dade6    e83073ffff
                          add               esp, 0x0c                                      // 0x007dadeb    83c40c
                          cmp               eax, -0x01                                     // 0x007dadee    83f8ff
                          {disp8} je        _jmp_addr_0x007dadfb                           // 0x007dadf1    7408

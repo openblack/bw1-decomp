@@ -19968,7 +19968,7 @@ _jmp_addr_0x007bc8cc:    xor.s                eax, eax                          
                          push                 edx                                              // 0x007bc8f2    52
                          push                 eax                                              // 0x007bc8f3    50
                          push                 ecx                                              // 0x007bc8f4    51
-                         call                 dword ptr [__imp__ReadFile@4]                    // 0x007bc8f5    ff1518928a00
+                         call                 dword ptr [__imp__ReadFile@20]                   // 0x007bc8f5    ff1518928a00
                          test                 eax, eax                                         // 0x007bc8fb    85c0
                          {disp8} jne          _jmp_addr_0x007bc907                             // 0x007bc8fd    7508
                          mov                  eax, 0x00000003                                  // 0x007bc8ff    b803000000
@@ -19995,7 +19995,7 @@ _jmp_addr_0x007bc915:    xor.s                eax, eax                          
                          push                 edx                                              // 0x007bc932    52
                          push                 eax                                              // 0x007bc933    50
                          push                 ecx                                              // 0x007bc934    51
-                         call                 dword ptr [__imp__WriteFile@4]                   // 0x007bc935    ff1514928a00
+                         call                 dword ptr [__imp__WriteFile@20]                  // 0x007bc935    ff1514928a00
                          test                 eax, eax                                         // 0x007bc93b    85c0
                          {disp8} jne          _jmp_addr_0x007bc947                             // 0x007bc93d    7508
                          mov                  eax, 0x00000003                                  // 0x007bc93f    b803000000
@@ -22386,7 +22386,7 @@ _jmp_addr_0x007be0de:    {disp8} mov          edx, dword ptr [esp + 0x08]       
                          push                 esi                                              // 0x007be0ec    56
                          push                 edx                                              // 0x007be0ed    52
                          push                 eax                                              // 0x007be0ee    50
-                         call                 dword ptr [__imp__WriteFile@4]                   // 0x007be0ef    ff1514928a00
+                         call                 dword ptr [__imp__WriteFile@20]                  // 0x007be0ef    ff1514928a00
                          test                 eax, eax                                         // 0x007be0f5    85c0
                          {disp8} jne          _jmp_addr_0x007be102                             // 0x007be0f7    7509
                          mov                  eax, 0x00000003                                  // 0x007be0f9    b803000000
@@ -22454,7 +22454,7 @@ _jmp_addr_0x007be176:    {disp8} mov          edx, dword ptr [esp + 0x08]       
                          push                 esi                                              // 0x007be184    56
                          push                 edx                                              // 0x007be185    52
                          push                 eax                                              // 0x007be186    50
-                         call                 dword ptr [__imp__ReadFile@4]                    // 0x007be187    ff1518928a00
+                         call                 dword ptr [__imp__ReadFile@20]                   // 0x007be187    ff1518928a00
                          test                 eax, eax                                         // 0x007be18d    85c0
                          {disp8} jne          _jmp_addr_0x007be19a                             // 0x007be18f    7509
                          mov                  eax, 0x00000003                                  // 0x007be191    b803000000

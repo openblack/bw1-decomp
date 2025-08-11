@@ -21,7 +21,7 @@
 .extern _memset
 .extern __lock
 .extern __unlock
-.extern _jmp_addr_0x007d211b
+.extern __write_lk
 .extern __lseek_lk
 .extern _strcpy
 .extern __get_osfhandle

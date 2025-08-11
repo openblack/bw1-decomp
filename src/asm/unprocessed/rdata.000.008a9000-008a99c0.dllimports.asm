@@ -129,8 +129,8 @@
 .globl __imp__IsBadReadPtr@8
 .globl __imp__SetEndOfFile@4
 .globl __imp__GetFileSize@4
-.globl __imp__WriteFile@4
-.globl __imp__ReadFile@4
+.globl __imp__WriteFile@20
+.globl __imp__ReadFile@20
 .globl __imp__CreateFileA@4
 .globl __imp__SetFilePointer@4
 .globl __imp__FindClose@4
@@ -738,8 +738,8 @@ __imp__HeapAlloc@12:                                                            
 __imp__IsBadReadPtr@8:                                                                                                         .long 0x005c4738 // 0x008a9208 KERNEL32.DLL::IsBadReadPtr
 __imp__SetEndOfFile@4:                                                                                                         .long 0x005c4728 // 0x008a920c KERNEL32.DLL::SetEndOfFile
 __imp__GetFileSize@4:                                                                                                          .long 0x005c471a // 0x008a9210 KERNEL32.DLL::GetFileSize
-__imp__WriteFile@4:                                                                                                            .long 0x005c470e // 0x008a9214 KERNEL32.DLL::WriteFile
-__imp__ReadFile@4:                                                                                                             .long 0x005c4702 // 0x008a9218 KERNEL32.DLL::ReadFile
+__imp__WriteFile@20:                                                                                                           .long 0x005c470e // 0x008a9214 KERNEL32.DLL::WriteFile
+__imp__ReadFile@20:                                                                                                            .long 0x005c4702 // 0x008a9218 KERNEL32.DLL::ReadFile
 __imp__CreateFileA@4:                                                                                                          .long 0x005c46f4 // 0x008a921c KERNEL32.DLL::CreateFileA
 __imp__SetFilePointer@4:                                                                                                       .long 0x005c46e2 // 0x008a9220 KERNEL32.DLL::SetFilePointer
 __imp__FindClose@4:                                                                                                            .long 0x005c0316 // 0x008a9224 KERNEL32.DLL::FindClose
