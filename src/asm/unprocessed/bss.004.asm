@@ -35,8 +35,6 @@
 .globl __stdbuf
 .globl __commode
 
-                                           .space 0x4                                                              // [0x4be3dc] 0x009c6000 + 0x4be3dc = 0x00e843dc
-
 _?_pgmname@?1??__setargv@@9@9:             .space 0x104                 // _setargv.obj                            // [0x4be3e0] 0x009c6000 + 0x4be3e0 = 0x00e843e0
 
 _?f_use@?1??__crtGetEnvironmentStringsA@@9@9:                           // a_env.obj
