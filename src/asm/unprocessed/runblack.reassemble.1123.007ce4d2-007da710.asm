@@ -235,13 +235,13 @@ __mtinit:                push               esi                                 
                          {disp8} je         _jmp_addr_0x007d22f6                           // 0x007d22cb    7429
                          push               esi                                            // 0x007d22cd    56
                          push               dword ptr [data_bytes + 0x26a034]              // 0x007d22ce    ff353400c300
-                         call               dword ptr [__imp__TlsSetValue@4]               // 0x007d22d4    ff15d4928a00
+                         call               dword ptr [__imp__TlsSetValue@8]               // 0x007d22d4    ff15d4928a00
                          test               eax, eax                                       // 0x007d22da    85c0
                          {disp8} je         _jmp_addr_0x007d22f6                           // 0x007d22dc    7418
                          push               esi                                            // 0x007d22de    56
                          call               __initptd                                      // 0x007d22df    e834000000
                          pop                ecx                                            // 0x007d22e4    59
-                         call               dword ptr [__imp__GetCurrentThreadId@4]        // 0x007d22e5    ff15d8928a00
+                         call               dword ptr [__imp__GetCurrentThreadId@0]        // 0x007d22e5    ff15d8928a00
                          or                 dword ptr [esi + 4], 0xffffffff                // 0x007d22eb    834e04ff
                          push               0x1                                            // 0x007d22ef    6a01
                          mov                dword ptr [esi], eax                           // 0x007d22f1    8906
@@ -282,13 +282,13 @@ __getptd:                push               esi                                 
                          {disp8} je         _jmp_addr_0x007d237e                           // 0x007d2356    7426
                          push               esi                                            // 0x007d2358    56
                          push               dword ptr [data_bytes + 0x26a034]              // 0x007d2359    ff353400c300
-                         call               dword ptr [__imp__TlsSetValue@4]               // 0x007d235f    ff15d4928a00
+                         call               dword ptr [__imp__TlsSetValue@8]               // 0x007d235f    ff15d4928a00
                          test               eax, eax                                       // 0x007d2365    85c0
                          {disp8} je         _jmp_addr_0x007d237e                           // 0x007d2367    7415
                          push               esi                                            // 0x007d2369    56
                          call               __initptd                                      // 0x007d236a    e8a9ffffff
                          pop                ecx                                            // 0x007d236f    59
-                         call               dword ptr [__imp__GetCurrentThreadId@4]        // 0x007d2370    ff15d8928a00
+                         call               dword ptr [__imp__GetCurrentThreadId@0]        // 0x007d2370    ff15d8928a00
                          or                 dword ptr [esi + 4], 0xffffffff                // 0x007d2376    834e04ff
                          mov                dword ptr [esi], eax                           // 0x007d237a    8906
                          {disp8} jmp        _jmp_addr_0x007d2386                           // 0x007d237c    eb08
@@ -359,12 +359,13 @@ _jmp_addr_0x007d241b:    push               esi                                 
                          call               _free                                          // 0x007d241c    e86543ffff
                          pop                ecx                                            // 0x007d2421    59
 _jmp_addr_0x007d2422:    push               0x0                                            // 0x007d2422    6a00
-                         push               dword ptr [data_bytes + 0x26a034]              // 0x007d2424    ff353400c300
-                         call               dword ptr [__imp__TlsSetValue@4]               // 0x007d242a    ff15d4928a00
+                         push               dword ptr [___tlsindex]              // 0x007d2424    ff353400c300
+                         call               dword ptr [__imp__TlsSetValue@8]               // 0x007d242a    ff15d4928a00
                          pop                esi                                            // 0x007d2430    5e
 _jmp_addr_0x007d2431:    ret                                                               // 0x007d2431    c3
-                         jmp                dword ptr [__imp__GetCurrentThreadId@4]        // 0x007d2432    ff25d8928a00
-                         jmp                dword ptr [__imp__GetCurrentThread@4]          // 0x007d2438    ff25b0918a00
+                         jmp                dword ptr [__imp__GetCurrentThreadId@0]        // 0x007d2432    ff25d8928a00
+                         jmp                dword ptr [__imp__GetCurrentThread@0]          // 0x007d2438    ff25b0918a00
+
 ___tzset:                cmp                dword ptr [data_bytes + 0x4be390], 0x00        // 0x007d243e    833d9043e80000
                          {disp8} jne        _jmp_addr_0x007d246b                           // 0x007d2445    7524
                          push               0xb                                            // 0x007d2447    6a0b

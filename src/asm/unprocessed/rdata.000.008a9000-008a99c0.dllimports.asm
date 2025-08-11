@@ -104,7 +104,7 @@
 .globl __imp__GetVolumeInformationA@4
 .globl __imp__SetStdHandle@4
 .globl __imp__TlsGetValue@4
-.globl __imp__GetCurrentThread@4
+.globl __imp__GetCurrentThread@0
 .globl __imp__SetEnvironmentVariableA@8
 .globl __imp__GlobalMemoryStatus@4
 .globl __imp__GetVersionExA@4
@@ -177,8 +177,8 @@
 .globl __imp__SetLastError@4
 .globl __imp__TlsFree@4
 .globl __imp__TlsAlloc@4
-.globl __imp__TlsSetValue@4
-.globl __imp__GetCurrentThreadId@4
+.globl __imp__TlsSetValue@8
+.globl __imp__GetCurrentThreadId@0
 .globl __imp__IsBadWritePtr@8
 .globl __imp__VirtualAlloc@16
 .globl __imp__VirtualFree@12
@@ -713,7 +713,7 @@ __imp__SetErrorMode@4:                                                          
 __imp__GetVolumeInformationA@4:                                                                                                .long 0x005c047e // 0x008a91a4 KERNEL32.DLL::GetVolumeInformationA
 __imp__SetStdHandle@4:                                                                                                         .long 0x005c4b60 // 0x008a91a8 KERNEL32.DLL::SetStdHandle
 __imp__TlsGetValue@4:                                                                                                          .long 0x005c498e // 0x008a91ac KERNEL32.DLL::TlsGetValue
-__imp__GetCurrentThread@4:                                                                                                     .long 0x005c499c // 0x008a91b0 KERNEL32.DLL::GetCurrentThread
+__imp__GetCurrentThread@0:                                                                                                     .long 0x005c499c // 0x008a91b0 KERNEL32.DLL::GetCurrentThread
 __imp__SetEnvironmentVariableA@8:                                                                                              .long 0x005c4b46 // 0x008a91b4 KERNEL32.DLL::SetEnvironmentVariableA
 __imp__GlobalMemoryStatus@4:                                                                                                   .long 0x005c028a // 0x008a91b8 KERNEL32.DLL::GlobalMemoryStatus
 __imp__GetVersionExA@4:                                                                                                        .long 0x005c027a // 0x008a91bc KERNEL32.DLL::GetVersionExA
@@ -786,8 +786,8 @@ __imp__CloseHandle@4:                                                           
 __imp__SetLastError@4:                                                                                                         .long 0x005c497e // 0x008a92c8 KERNEL32.DLL::SetLastError
 __imp__TlsFree@4:                                                                                                              .long 0x005c4974 // 0x008a92cc KERNEL32.DLL::TlsFree
 __imp__TlsAlloc@4:                                                                                                             .long 0x005c4968 // 0x008a92d0 KERNEL32.DLL::TlsAlloc
-__imp__TlsSetValue@4:                                                                                                          .long 0x005c495a // 0x008a92d4 KERNEL32.DLL::TlsSetValue
-__imp__GetCurrentThreadId@4:                                                                                                   .long 0x005c4944 // 0x008a92d8 KERNEL32.DLL::GetCurrentThreadId
+__imp__TlsSetValue@8:                                                                                                          .long 0x005c495a // 0x008a92d4 KERNEL32.DLL::TlsSetValue
+__imp__GetCurrentThreadId@0:                                                                                                   .long 0x005c4944 // 0x008a92d8 KERNEL32.DLL::GetCurrentThreadId
 __imp__IsBadWritePtr@8:                                                                                                        .long 0x005c4934 // 0x008a92dc KERNEL32.DLL::IsBadWritePtr
 __imp__VirtualAlloc@16:                                                                                                        .long 0x005c4924 // 0x008a92e0 KERNEL32.DLL::VirtualAlloc
 __imp__VirtualFree@12:                                                                                                         .long 0x005c4916 // 0x008a92e4 KERNEL32.DLL::VirtualFree

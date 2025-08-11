@@ -2,15 +2,6 @@
 .balign 0
 .section .rdata
 
-.globl ___dnames
-.globl ___mnames
-
-___dnames:                                                                                                         // [0xf7af4] 0x008a9000 + 0xf7af4 = 0x009a0af4
-.asciz "SunMonTueWedThuFriSat"
-.byte 0x00, 0x00
-
-___mnames:                                                                                                         // [0xf7b0c] 0x008a9000 + 0xf7b0c = 0x009a0b0c
-.asciz "JanFebMarAprMayJunJulAugSepOctNovDec"
 .byte 0x00, 0x00, 0x00
 
 .asciz "TZ"                                                                                                        // [0xf7b34] 0x008a9000 + 0xf7b34 = 0x009a0b34
