@@ -227,25 +227,6 @@
 
 .section .text
 
-__getbuf:                {disp32} inc       dword ptr [__cflush]              // 0x007d6560    ff053042e800
-                         push               0x00001000                                     // 0x007d6566    6800100000
-                         call               _malloc                                        // 0x007d656b    e8dc00ffff
-                         pop                ecx                                            // 0x007d6570    59
-                         {disp8} mov        ecx, dword ptr [esp + 0x04]                    // 0x007d6571    8b4c2404
-                         test               eax, eax                                       // 0x007d6575    85c0
-                         {disp8} mov        dword ptr [ecx + 0x08], eax                    // 0x007d6577    894108
-                         {disp8} je         _jmp_addr_0x007d6589                           // 0x007d657a    740d
-                         or                 dword ptr [ecx + 0xc], 8                       // 0x007d657c    83490c08
-                         {disp8} mov        dword ptr [ecx + 0x18], 0x00001000             // 0x007d6580    c7411800100000
-                         {disp8} jmp        _jmp_addr_0x007d659a                           // 0x007d6587    eb11
-_jmp_addr_0x007d6589:    or                 dword ptr [ecx + 0xc], 4                       // 0x007d6589    83490c04
-                         {disp8} lea        eax, dword ptr [ecx + 0x14]                    // 0x007d658d    8d4114
-                         {disp8} mov        dword ptr [ecx + 0x08], eax                    // 0x007d6590    894108
-                         {disp8} mov        dword ptr [ecx + 0x18], 0x00000002             // 0x007d6593    c7411802000000
-_jmp_addr_0x007d659a:    {disp8} mov        eax, dword ptr [ecx + 0x08]                    // 0x007d659a    8b4108
-                         and                dword ptr [ecx + 0x04], 0x00                   // 0x007d659d    83610400
-                         mov                dword ptr [ecx], eax                           // 0x007d65a1    8901
-                         ret                                                               // 0x007d65a3    c3
 __ftelli64:              push               ebx                                            // 0x007d65a4    53
                          push               esi                                            // 0x007d65a5    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x007d65a6    8b74240c
