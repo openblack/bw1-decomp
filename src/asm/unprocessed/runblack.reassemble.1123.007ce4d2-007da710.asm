@@ -230,42 +230,6 @@
 
 .section .text
 
-                         int3                                                              // 0x007d7aec    cc
-                         int3                                                              // 0x007d7aed    cc
-                         int3                                                              // 0x007d7aee    cc
-                         int3                                                              // 0x007d7aef    cc
-_strpbrk:                push               ebp                                            // 0x007d7af0    55
-                         mov.s              ebp, esp                                       // 0x007d7af1    8bec
-                         push               esi                                            // 0x007d7af3    56
-                         xor.s              eax, eax                                       // 0x007d7af4    33c0
-                         push               eax                                            // 0x007d7af6    50
-                         push               eax                                            // 0x007d7af7    50
-                         push               eax                                            // 0x007d7af8    50
-                         push               eax                                            // 0x007d7af9    50
-                         push               eax                                            // 0x007d7afa    50
-                         push               eax                                            // 0x007d7afb    50
-                         push               eax                                            // 0x007d7afc    50
-                         push               eax                                            // 0x007d7afd    50
-                         {disp8} mov        edx, dword ptr [ebp + 0x0c]                    // 0x007d7afe    8b550c
-                         {disp8} lea        ecx, dword ptr [ecx + 0x00]                    // 0x007d7b01    8d4900
-_jmp_addr_0x007d7b04:    mov                al, byte ptr [edx]                             // 0x007d7b04    8a02
-                         or.s               al, al                                         // 0x007d7b06    0ac0
-                         {disp8} je         _jmp_addr_0x007d7b11                           // 0x007d7b08    7407
-                         inc                edx                                            // 0x007d7b0a    42
-                         bts                dword ptr [esp], eax                           // 0x007d7b0b    0fab0424
-                         {disp8} jmp        _jmp_addr_0x007d7b04                           // 0x007d7b0f    ebf3
-_jmp_addr_0x007d7b11:    {disp8} mov        esi, dword ptr [ebp + 0x08]                    // 0x007d7b11    8b7508
-_jmp_addr_0x007d7b14:    mov                al, byte ptr [esi]                             // 0x007d7b14    8a06
-                         or.s               al, al                                         // 0x007d7b16    0ac0
-                         {disp8} je         _jmp_addr_0x007d7b24                           // 0x007d7b18    740a
-                         inc                esi                                            // 0x007d7b1a    46
-                         bt                 dword ptr [esp], eax                           // 0x007d7b1b    0fa30424
-                         {disp8} jae        _jmp_addr_0x007d7b14                           // 0x007d7b1f    73f3
-                         {disp8} lea        eax, dword ptr [esi + -0x01]                   // 0x007d7b21    8d46ff
-_jmp_addr_0x007d7b24:    add                esp, 0x20                                      // 0x007d7b24    83c420
-                         pop                esi                                            // 0x007d7b27    5e
-                         leave                                                             // 0x007d7b28    c9
-                         ret                                                               // 0x007d7b29    c3
 ___get_qualified_locale:    push               ebx                                            // 0x007d7b2a    53
                          xor.s              ebx, ebx                                       // 0x007d7b2b    33db
                          cmp                dword ptr [data_bytes + 0x4be548], ebx         // 0x007d7b2d    391d4845e800
