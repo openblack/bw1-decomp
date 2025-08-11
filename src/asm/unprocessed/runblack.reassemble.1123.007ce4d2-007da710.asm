@@ -230,8 +230,6 @@
 
 .section .text
 
-___init_collate:         xor.s              eax, eax                                       // 0x007d7ae9    33c0
-                         ret                                                               // 0x007d7aeb    c3
                          int3                                                              // 0x007d7aec    cc
                          int3                                                              // 0x007d7aed    cc
                          int3                                                              // 0x007d7aee    cc
