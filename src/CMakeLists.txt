@@ -739,6 +739,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\wincmdln.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\stdenvp.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\stdargv.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_env.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\inittime.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
