@@ -698,7 +698,7 @@ _jmp_addr_0x004d0fcd:    {disp32} mov       ecx, dword ptr [esi + 0x00000160]   
                          mov                eax, 0x00000001                                      // 0x004d10c1    b801000000
                          pop                esi                                                  // 0x004d10c6    5e
                          ret                0x0004                                               // 0x004d10c7    c20400
-                         call               dword ptr [__imp__TlsAlloc@4]                        // 0x004d10ca    ff15d0928a00
+                         call               dword ptr [__imp__TlsAlloc@0]                        // 0x004d10ca    ff15d0928a00
                          push               esi                                                  // 0x004d10d0    56
                          mov.s              esi, ecx                                             // 0x004d10d1    8bf1
                          call               @GetCreature3D__8CreatureFv@4                        // 0x004d10d3    e87867faff

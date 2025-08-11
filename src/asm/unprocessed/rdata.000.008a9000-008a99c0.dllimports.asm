@@ -176,7 +176,7 @@
 .globl __imp__CloseHandle@4
 .globl __imp__SetLastError@4
 .globl __imp__TlsFree@4
-.globl __imp__TlsAlloc@4
+.globl __imp__TlsAlloc@0
 .globl __imp__TlsSetValue@8
 .globl __imp__GetCurrentThreadId@0
 .globl __imp__IsBadWritePtr@8
@@ -785,7 +785,7 @@ __imp__GetEnvironmentVariableA@12:                                              
 __imp__CloseHandle@4:                                                                                                          .long 0x005c46d4 // 0x008a92c4 KERNEL32.DLL::CloseHandle
 __imp__SetLastError@4:                                                                                                         .long 0x005c497e // 0x008a92c8 KERNEL32.DLL::SetLastError
 __imp__TlsFree@4:                                                                                                              .long 0x005c4974 // 0x008a92cc KERNEL32.DLL::TlsFree
-__imp__TlsAlloc@4:                                                                                                             .long 0x005c4968 // 0x008a92d0 KERNEL32.DLL::TlsAlloc
+__imp__TlsAlloc@0:                                                                                                             .long 0x005c4968 // 0x008a92d0 KERNEL32.DLL::TlsAlloc
 __imp__TlsSetValue@8:                                                                                                          .long 0x005c495a // 0x008a92d4 KERNEL32.DLL::TlsSetValue
 __imp__GetCurrentThreadId@0:                                                                                                   .long 0x005c4944 // 0x008a92d8 KERNEL32.DLL::GetCurrentThreadId
 __imp__IsBadWritePtr@8:                                                                                                        .long 0x005c4934 // 0x008a92dc KERNEL32.DLL::IsBadWritePtr

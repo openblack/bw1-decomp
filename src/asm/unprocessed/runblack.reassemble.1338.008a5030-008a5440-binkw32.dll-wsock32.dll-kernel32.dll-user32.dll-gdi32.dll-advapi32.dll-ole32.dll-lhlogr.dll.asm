@@ -105,7 +105,7 @@ _jmp_KERNEL32_DLL__VirtualAlloc:                   jmp              dword ptr [_
 _jmp_KERNEL32_DLL__IsBadWritePtr:                  jmp              dword ptr [__imp__IsBadWritePtr@8]                                        // 0x008a51f8    ff25dc928a00
 _jmp_KERNEL32_DLL__GetCurrentThreadId:             jmp              dword ptr [__imp__GetCurrentThreadId@0]                                   // 0x008a51fe    ff25d8928a00
 _jmp_KERNEL32_DLL__TlsSetValue:                    jmp              dword ptr [__imp__TlsSetValue@8]                                          // 0x008a5204    ff25d4928a00
-_jmp_KERNEL32_DLL__TlsAlloc:                       jmp              dword ptr [__imp__TlsAlloc@4]                                             // 0x008a520a    ff25d0928a00
+_jmp_KERNEL32_DLL__TlsAlloc:                       jmp              dword ptr [__imp__TlsAlloc@0]                                             // 0x008a520a    ff25d0928a00
 _jmp_KERNEL32_DLL__TlsFree:                        jmp              dword ptr [__imp__TlsFree@4]                                              // 0x008a5210    ff25cc928a00
 _jmp_KERNEL32_DLL__SetLastError:                   jmp              dword ptr [__imp__SetLastError@4]                                         // 0x008a5216    ff25c8928a00
 _jmp_KERNEL32_DLL__TlsGetValue:                    jmp              dword ptr [__imp__TlsGetValue@4]                                          // 0x008a521c    ff25ac918a00
