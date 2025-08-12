@@ -407,12 +407,12 @@ set(SOURCES_004
 
 set(SOURCES_008
     asm/unprocessed/bss.004.asm
-    asm/unprocessed/data.002.00c2de20-00c30f70.asm
     asm/unprocessed/rdata.005.009a0744-009a6298.asm  # contains some d3d 7? data and some libjpeg data
     asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm  # contains some ddraw data
     asm/unprocessed/runblack.reassemble.1128.007da710-007db410.asm
     # end of libcmt and start of lhlib?
+    asm/unprocessed/data.002.00c2de20-00c30f70.asm
     asm/unprocessed/runblack.reassemble.1129.007db410-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1137.007dc8b0-007dee50.asm
     c/PCMain.1138.007dee50-007deef0.c
@@ -781,6 +781,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mbschr.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strdup.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\chsize.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\tenpow.obj")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\constpow.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
