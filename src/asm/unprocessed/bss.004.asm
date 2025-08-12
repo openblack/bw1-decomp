@@ -33,7 +33,6 @@
 .globl __stdbuf
 .globl __commode
 
-                                           .space 0x4
 __commode:                                 .space 4                                                                // [0x4be554] 0x009c6000 + 0x4be554 = 0x00e84554
                                            .space 0xae8                                                            // [0x4be558] 0x009c6000 + 0x4be558 = 0x00e84558
 
