@@ -1068,7 +1068,7 @@ _jmp_addr_0x007db165:    push              edi                                  
                          push              edi                                            // 0x007db166    57
                          push              0x1                                            // 0x007db167    6a01
                          push              edi                                            // 0x007db169    57
-                         call              dword ptr [__imp__GetLocaleInfoA@4]            // 0x007db16a    ff1580928a00
+                         call              dword ptr [__imp__GetLocaleInfoA@16]           // 0x007db16a    ff1580928a00
                          test              eax, eax                                       // 0x007db170    85c0
                          {disp32} je       _jmp_addr_0x007db220                           // 0x007db172    0f84a8000000
                          push              0x2                                            // 0x007db178    6a02
@@ -1092,7 +1092,7 @@ _jmp_addr_0x007db1ae:    push              edi                                  
                          push              edi                                            // 0x007db1af    57
                          push              dword ptr [ebp + 0x0c]                         // 0x007db1b0    ff750c
                          push              dword ptr [ebp + 0x08]                         // 0x007db1b3    ff7508
-                         call              dword ptr [__imp__GetLocaleInfoA@4]            // 0x007db1b6    ff1580928a00
+                         call              dword ptr [__imp__GetLocaleInfoA@16]           // 0x007db1b6    ff1580928a00
                          {disp8} mov       dword ptr [ebp + -0x1c], eax                   // 0x007db1bc    8945e4
                          cmp.s             eax, edi                                       // 0x007db1bf    3bc7
                          {disp8} je        _jmp_addr_0x007db220                           // 0x007db1c1    745d
@@ -1117,7 +1117,7 @@ _jmp_addr_0x007db1e5:    or                dword ptr [ebp - 4], 0xffffffff      
                          push              esi                                            // 0x007db1f0    56
                          push              dword ptr [ebp + 0x0c]                         // 0x007db1f1    ff750c
                          push              dword ptr [ebp + 0x08]                         // 0x007db1f4    ff7508
-                         call              dword ptr [__imp__GetLocaleInfoA@4]            // 0x007db1f7    ff1580928a00
+                         call              dword ptr [__imp__GetLocaleInfoA@16]           // 0x007db1f7    ff1580928a00
                          test              eax, eax                                       // 0x007db1fd    85c0
                          {disp8} je        _jmp_addr_0x007db220                           // 0x007db1ff    741f
                          cmp               dword ptr [ebp + 0x14], edi                    // 0x007db201    397d14
@@ -1173,7 +1173,7 @@ _jmp_addr_0x007db278:    push              esi                                  
                          push              esi                                            // 0x007db279    56
                          push              0x1                                            // 0x007db27a    6a01
                          push              esi                                            // 0x007db27c    56
-                         call              dword ptr [__imp__GetLocaleInfoA@4]            // 0x007db27d    ff1580928a00
+                         call              dword ptr [__imp__GetLocaleInfoA@16]           // 0x007db27d    ff1580928a00
                          test              eax, eax                                       // 0x007db283    85c0
                          {disp32} je       _jmp_addr_0x007db33e                           // 0x007db285    0f84b3000000
                          push              0x2                                            // 0x007db28b    6a02
@@ -1185,7 +1185,7 @@ _jmp_addr_0x007db293:    cmp               eax, 0x02                            
                          push              dword ptr [ebp + 0x10]                         // 0x007db29b    ff7510
                          push              dword ptr [ebp + 0x0c]                         // 0x007db29e    ff750c
                          push              dword ptr [ebp + 0x08]                         // 0x007db2a1    ff7508
-                         call              dword ptr [__imp__GetLocaleInfoA@4]            // 0x007db2a4    ff1580928a00
+                         call              dword ptr [__imp__GetLocaleInfoA@16]           // 0x007db2a4    ff1580928a00
                          {disp32} jmp      _jmp_addr_0x007db340                           // 0x007db2aa    e991000000
 _jmp_addr_0x007db2af:    cmp               eax, 0x01                                      // 0x007db2af    83f801
                          {disp32} jne      _jmp_addr_0x007db33e                           // 0x007db2b2    0f8586000000

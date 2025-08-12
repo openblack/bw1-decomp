@@ -154,11 +154,11 @@
 .globl __imp__GetSystemTimeAsFileTime@4
 .globl __imp__GetStringTypeW@4
 .globl __imp__GetStringTypeA@4
-.globl __imp__GetUserDefaultLCID@4
-.globl __imp__EnumSystemLocalesA@4
-.globl __imp__GetLocaleInfoA@4
+.globl __imp__GetUserDefaultLCID@0
+.globl __imp__EnumSystemLocalesA@8
+.globl __imp__GetLocaleInfoA@16
 .globl __imp__IsValidCodePage@4
-.globl __imp__IsValidLocale@4
+.globl __imp__IsValidLocale@8
 .globl __imp__GetEnvironmentStringsW@0
 .globl __imp__GetEnvironmentStrings@0
 .globl __imp__FreeEnvironmentStringsW@4
@@ -763,11 +763,11 @@ __imp__GetVersion@0:                                                            
 __imp__GetSystemTimeAsFileTime@4:                                                                                              .long 0x005c51b8 // 0x008a926c KERNEL32.DLL::GetSystemTimeAsFileTime
 __imp__GetStringTypeW@4:                                                                                                       .long 0x005c4b34 // 0x008a9270 KERNEL32.DLL::GetStringTypeW
 __imp__GetStringTypeA@4:                                                                                                       .long 0x005c4b22 // 0x008a9274 KERNEL32.DLL::GetStringTypeA
-__imp__GetUserDefaultLCID@4:                                                                                                   .long 0x005c4b0c // 0x008a9278 KERNEL32.DLL::GetUserDefaultLCID
-__imp__EnumSystemLocalesA@4:                                                                                                   .long 0x005c4af6 // 0x008a927c KERNEL32.DLL::EnumSystemLocalesA
-__imp__GetLocaleInfoA@4:                                                                                                       .long 0x005c4ae4 // 0x008a9280 KERNEL32.DLL::GetLocaleInfoA
+__imp__GetUserDefaultLCID@0:                                                                                                   .long 0x005c4b0c // 0x008a9278 KERNEL32.DLL::GetUserDefaultLCID
+__imp__EnumSystemLocalesA@8:                                                                                                   .long 0x005c4af6 // 0x008a927c KERNEL32.DLL::EnumSystemLocalesA
+__imp__GetLocaleInfoA@16:                                                                                                      .long 0x005c4ae4 // 0x008a9280 KERNEL32.DLL::GetLocaleInfoA
 __imp__IsValidCodePage@4:                                                                                                      .long 0x005c4ad2 // 0x008a9284 KERNEL32.DLL::IsValidCodePage
-__imp__IsValidLocale@4:                                                                                                        .long 0x005c4ac2 // 0x008a9288 KERNEL32.DLL::IsValidLocale
+__imp__IsValidLocale@8:                                                                                                        .long 0x005c4ac2 // 0x008a9288 KERNEL32.DLL::IsValidLocale
 __imp__GetEnvironmentStringsW@0:                                                                                               .long 0x005c4aa8 // 0x008a928c KERNEL32.DLL::GetEnvironmentStringsW
 __imp__GetEnvironmentStrings@0:                                                                                                .long 0x005c4a90 // 0x008a9290 KERNEL32.DLL::GetEnvironmentStrings
 __imp__FreeEnvironmentStringsW@4:                                                                                              .long 0x005c4a76 // 0x008a9294 KERNEL32.DLL::FreeEnvironmentStringsW

@@ -123,11 +123,11 @@ _jmp_KERNEL32_DLL__FreeEnvironmentStringsA:        jmp              dword ptr [_
 _jmp_KERNEL32_DLL__FreeEnvironmentStringsW:        jmp              dword ptr [__imp__FreeEnvironmentStringsW@4]                              // 0x008a5264    ff2594928a00
 _jmp_KERNEL32_DLL__GetEnvironmentStrings:          jmp              dword ptr [__imp__GetEnvironmentStrings@0]                                // 0x008a526a    ff2590928a00
 _jmp_KERNEL32_DLL__GetEnvironmentStringsW:         jmp              dword ptr [__imp__GetEnvironmentStringsW@0]                               // 0x008a5270    ff258c928a00
-_jmp_KERNEL32_DLL__IsValidLocale:                  jmp              dword ptr [__imp__IsValidLocale@4]                                        // 0x008a5276    ff2588928a00
+_jmp_KERNEL32_DLL__IsValidLocale:                  jmp              dword ptr [__imp__IsValidLocale@8]                                        // 0x008a5276    ff2588928a00
 _jmp_KERNEL32_DLL__IsValidCodePage:                jmp              dword ptr [__imp__IsValidCodePage@4]                                      // 0x008a527c    ff2584928a00
-_jmp_KERNEL32_DLL__GetLocaleInfoA:                 jmp              dword ptr [__imp__GetLocaleInfoA@4]                                       // 0x008a5282    ff2580928a00
-_jmp_KERNEL32_DLL__EnumSystemLocalesA:             jmp              dword ptr [__imp__EnumSystemLocalesA@4]                                   // 0x008a5288    ff257c928a00
-_jmp_KERNEL32_DLL__GetUserDefaultLCID:             jmp              dword ptr [__imp__GetUserDefaultLCID@4]                                   // 0x008a528e    ff2578928a00
+_jmp_KERNEL32_DLL__GetLocaleInfoA:                 jmp              dword ptr [__imp__GetLocaleInfoA@16]                                      // 0x008a5282    ff2580928a00
+_jmp_KERNEL32_DLL__EnumSystemLocalesA:             jmp              dword ptr [__imp__EnumSystemLocalesA@8]                                   // 0x008a5288    ff257c928a00
+_jmp_KERNEL32_DLL__GetUserDefaultLCID:             jmp              dword ptr [__imp__GetUserDefaultLCID@0]                                   // 0x008a528e    ff2578928a00
 _jmp_KERNEL32_DLL__GetStringTypeA:                 jmp              dword ptr [__imp__GetStringTypeA@4]                                       // 0x008a5294    ff2574928a00
 _jmp_KERNEL32_DLL__GetStringTypeW:                 jmp              dword ptr [__imp__GetStringTypeW@4]                                       // 0x008a529a    ff2570928a00
 _jmp_KERNEL32_DLL__SetEnvironmentVariableA:        jmp              dword ptr [__imp__SetEnvironmentVariableA@8]                              // 0x008a52a0    ff25b4918a00

@@ -746,6 +746,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\initctyp.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\initcoll.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strpbrk.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\nlsdata3.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\getqloc.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
