@@ -777,6 +777,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\days.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\strnicmp.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\mantold.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\x10fout.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mbschr.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
