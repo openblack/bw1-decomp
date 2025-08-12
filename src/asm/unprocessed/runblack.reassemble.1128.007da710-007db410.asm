@@ -54,32 +54,6 @@
 .globl ___crtGetLocaleInfoA
 .globl __setmode
 
-// strdup.obj
-__strdup:
-                         push              esi                                            // 0x007dacdc    56
-                         {disp8} mov       esi, dword ptr [esp + 0x08]                    // 0x007dacdd    8b742408
-                         test              esi, esi                                       // 0x007dace1    85f6
-                         {disp8} je        _jmp_addr_0x007dad03                           // 0x007dace3    741e
-                         push              esi                                            // 0x007dace5    56
-                         call              _strlen                                        // 0x007dace6    e805f9feff
-                         inc               eax                                            // 0x007daceb    40
-                         push              eax                                            // 0x007dacec    50
-                         call              _malloc                                        // 0x007daced    e85ab9feff
-                         pop               ecx                                            // 0x007dacf2    59
-                         test              eax, eax                                       // 0x007dacf3    85c0
-                         pop               ecx                                            // 0x007dacf5    59
-                         {disp8} je        _jmp_addr_0x007dad03                           // 0x007dacf6    740b
-                         push              esi                                            // 0x007dacf8    56
-                         push              eax                                            // 0x007dacf9    50
-                         call              _strcpy                                        // 0x007dacfa    e871a3ffff
-                         pop               ecx                                            // 0x007dacff    59
-                         pop               ecx                                            // 0x007dad00    59
-                         pop               esi                                            // 0x007dad01    5e
-                         ret                                                              // 0x007dad02    c3
-_jmp_addr_0x007dad03:    xor.s             eax, eax                                       // 0x007dad03    33c0
-                         pop               esi                                            // 0x007dad05    5e
-                         ret                                                              // 0x007dad06    c3
-
 // chsize.obj
 __chsize:
                          push              esi                                            // 0x007dad07    56
