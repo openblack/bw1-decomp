@@ -13,7 +13,7 @@
 .extern _strncpy
 .extern _tolower
 .extern _realloc
-.extern __mbsdup
+.extern __strdup
 .extern _jmp_addr_0x00887d90
 .extern _jmp_addr_0x00887de0
 .extern _jmp_addr_0x00887e40
@@ -2757,7 +2757,7 @@ _jmp_addr_0x008938d3:    push             edi                                   
                          {disp8} mov      dword ptr [esi + 0x1c], ecx              // 0x00893911    894e1c
                          {disp8} je       _jmp_addr_0x00893924                     // 0x00893914    740e
                          push             eax                                      // 0x00893916    50
-                         call             __mbsdup                                 // 0x00893917    e8c073f4ff
+                         call             __strdup                                 // 0x00893917    e8c073f4ff
                          add              esp, 0x04                                // 0x0089391c    83c404
                          {disp8} mov      dword ptr [esi + 0x08], eax              // 0x0089391f    894608
                          {disp8} jmp      _jmp_addr_0x0089392b                     // 0x00893922    eb07
@@ -2766,7 +2766,7 @@ _jmp_addr_0x0089392b:    {disp8} mov      eax, dword ptr [esp + 0x18]           
                          test             eax, eax                                 // 0x0089392f    85c0
                          {disp8} je       _jmp_addr_0x00893941                     // 0x00893931    740e
                          push             eax                                      // 0x00893933    50
-                         call             __mbsdup                                 // 0x00893934    e8a373f4ff
+                         call             __strdup                                 // 0x00893934    e8a373f4ff
                          add              esp, 0x04                                // 0x00893939    83c404
                          {disp8} mov      dword ptr [esi + 0x0c], eax              // 0x0089393c    89460c
                          {disp8} jmp      _jmp_addr_0x00893948                     // 0x0089393f    eb07
@@ -3090,7 +3090,7 @@ _jmp_addr_0x00893bc0:    push             esi                                   
 _jmp_addr_0x00893bd3:    {disp8} mov      eax, dword ptr [esp + 0x10]              // 0x00893bd3    8b442410
                          mov              dword ptr [esi], 0x00000000              // 0x00893bd7    c70600000000
                          push             eax                                      // 0x00893bdd    50
-                         call             __mbsdup                                 // 0x00893bde    e8f970f4ff
+                         call             __strdup                                 // 0x00893bde    e8f970f4ff
                          add              esp, 0x04                                // 0x00893be3    83c404
                          mov              dword ptr [esi], eax                     // 0x00893be6    8906
                          test             eax, eax                                 // 0x00893be8    85c0

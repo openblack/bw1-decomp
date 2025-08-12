@@ -52,7 +52,7 @@
 .globl ___mtold12
 .globl _$I10_OUTPUT
 .globl __mbschr
-.globl __mbsdup
+.globl __strdup
 .globl __chsize_lk
 .globl ___multtenpow12
 .globl ___crtGetLocaleInfoW
@@ -638,8 +638,8 @@ _jmp_addr_0x007dacd8:    pop               esi                                  
                          pop               ebp                                            // 0x007dacda    5d
                          ret                                                              // 0x007dacdb    c3
 
-// mbsdup.obj
-__mbsdup:
+// strdup.obj
+__strdup:
                          push              esi                                            // 0x007dacdc    56
                          {disp8} mov       esi, dword ptr [esp + 0x08]                    // 0x007dacdd    8b742408
                          test              esi, esi                                       // 0x007dace1    85f6

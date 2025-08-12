@@ -12,7 +12,7 @@
 .extern _strncpy
 .extern _strncmp
 .extern _strstr
-.extern __mbsdup
+.extern __strdup
 .extern _jmp_addr_0x008862d0
 .extern _jmp_addr_0x00886570
 .extern _jmp_addr_0x00886690
@@ -398,7 +398,7 @@ _jmp_addr_0x00896e68:    {disp8} lea      eax, dword ptr [edi + -0x02]          
                          {disp8} lea      edx, dword ptr [esp + 0x18]                    // 0x00896e78    8d542418
                          {disp8} mov      byte ptr [esp + edi * 0x1 + 0x16], 0x00        // 0x00896e7c    c6443c1600
                          push             edx                                            // 0x00896e81    52
-                         call             __mbsdup                                       // 0x00896e82    e8553ef4ff
+                         call             __strdup                                       // 0x00896e82    e8553ef4ff
                          {disp32} mov     ecx, dword ptr [esi + 0x00000094]              // 0x00896e87    8b8e94000000
                          {disp8} mov      dword ptr [esp + 0x68], eax                    // 0x00896e8d    89442468
                          {disp8} lea      eax, dword ptr [esp + 0x68]                    // 0x00896e91    8d442468
