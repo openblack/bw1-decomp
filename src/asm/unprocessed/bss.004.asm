@@ -31,10 +31,15 @@
 .globl __newmode
 .globl ___lc_id
 .globl __stdbuf
-.globl __commode
 
+.globl __commode
 __commode:                                 .space 4                                                                // [0x4be554] 0x009c6000 + 0x4be554 = 0x00e84554
-                                           .space 0xae8                                                            // [0x4be558] 0x009c6000 + 0x4be558 = 0x00e84558
+                                           .space 0x14                                                             // [0x4be558] 0x009c6000 + 0x4be558 = 0x00e84558
+
+.globl __fmode
+__fmode:                                   .space 0x4                                                              // [0x4be56c] 0x009c6000 + 0x4be56c = 0x00e8456c
+
+                                           .space 0xad0                                                            // [0x4be570] 0x009c6000 + 0x4be570 = 0x00e84570
 
 // Start of lh.lib ??
 _LHSys:                                    .space 0x70d8                                                           // [0x4bf040] 0x009c6000 + 0x4bf040 = 0x00e85040

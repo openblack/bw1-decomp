@@ -19816,7 +19816,7 @@ _jmp_addr_0x007bc78f:    push                 0x3                               
                          push                 0x1                                              // 0x007bc793    6a01
                          push                 0x80000000                                       // 0x007bc795    6800000080
 _jmp_addr_0x007bc79a:    push                 esi                                              // 0x007bc79a    56
-                         call                 dword ptr [__imp__CreateFileA@4]                 // 0x007bc79b    ff151c928a00
+                         call                 dword ptr [__imp__CreateFileA@28]                // 0x007bc79b    ff151c928a00
                          mov.s                esi, eax                                         // 0x007bc7a1    8bf0
                          cmp                  esi, -0x01                                       // 0x007bc7a3    83feff
                          {disp8} jne          _jmp_addr_0x007bc7b3                             // 0x007bc7a6    750b
@@ -21148,7 +21148,7 @@ _jmp_addr_0x007bd5ae:    cmp                  ebp, 0x03                         
                          {disp8} jne          _jmp_addr_0x007bd5ba                             // 0x007bd5b6    7502
                          mov.s                esi, ebp                                         // 0x007bd5b8    8bf5
 _jmp_addr_0x007bd5ba:    {disp8} mov          eax, dword ptr [ebx + 0x40]                      // 0x007bd5ba    8b4340
-                         {disp32} mov         edi, dword ptr [__imp__CreateFileA@4]            // 0x007bd5bd    8b3d1c928a00
+                         {disp32} mov         edi, dword ptr [__imp__CreateFileA@28]           // 0x007bd5bd    8b3d1c928a00
                          test                 eax, eax                                         // 0x007bd5c3    85c0
                          {disp8} jne          _jmp_addr_0x007bd5e7                             // 0x007bd5c5    7520
                          test                 ebp, ebp                                         // 0x007bd5c7    85ed

@@ -66,7 +66,7 @@ _jmp_KERNEL32_DLL__InterlockedDecrement:           jmp              dword ptr [_
 _jmp_KERNEL32_DLL__InterlockedIncrement:           jmp              dword ptr [__imp__InterlockedIncrement@4]                                 // 0x008a510e    ff2510938a00
 _jmp_KERNEL32_DLL__CloseHandle:                    jmp              dword ptr [__imp__CloseHandle@4]                                          // 0x008a5114    ff25c4928a00
 _jmp_KERNEL32_DLL__SetFilePointer:                 jmp              dword ptr [__imp__SetFilePointer@16]                                      // 0x008a511a    ff2520928a00
-_jmp_KERNEL32_DLL__CreateFileA:                    jmp              dword ptr [__imp__CreateFileA@4]                                          // 0x008a5120    ff251c928a00
+_jmp_KERNEL32_DLL__CreateFileA:                    jmp              dword ptr [__imp__CreateFileA@28]                                         // 0x008a5120    ff251c928a00
 _jmp_KERNEL32_DLL__ReadFile:                       jmp              dword ptr [__imp__ReadFile@20]                                            // 0x008a5126    ff2518928a00
 _jmp_KERNEL32_DLL__WriteFile:                      jmp              dword ptr [__imp__WriteFile@20]                                           // 0x008a512c    ff2514928a00
 _jmp_KERNEL32_DLL__GetFileSize:                    jmp              dword ptr [__imp__GetFileSize@4]                                          // 0x008a5132    ff2510928a00
