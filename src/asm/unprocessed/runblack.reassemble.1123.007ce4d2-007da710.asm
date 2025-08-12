@@ -230,24 +230,6 @@
 
 .section .text
 
-__fptrap:
-                         push               0x2                                            // 0x007d8fb1    6a02
-                         call               __amsg_exit                                    // 0x007d8fb3    e8ef15ffff
-                         pop                ecx                                            // 0x007d8fb8    59
-                         ret                                                               // 0x007d8fb9    c3
-__isatty:                {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x007d8fba    8b442404
-                         cmp                eax, dword ptr [data_bytes + 0x5e6a60]         // 0x007d8fbe    3b0560cafa00
-                         .byte              0x72, 0x3// {disp8} jb _jmp_addr_0x007d8fc9    // 0x007d8fc4    7203
-                         xor.s              eax, eax                                       // 0x007d8fc6    33c0
-                         ret                                                               // 0x007d8fc8    c3
-_jmp_addr_0x007d8fc9:    mov.s              ecx, eax                                       // 0x007d8fc9    8bc8
-                         and                eax, 0x1f                                      // 0x007d8fcb    83e01f
-                         sar                ecx, 5                                         // 0x007d8fce    c1f905
-                         lea                eax, dword ptr [eax + eax * 0x8]               // 0x007d8fd1    8d04c0
-                         {disp32} mov       ecx, dword ptr [ecx * 0x4 + ___pioinfo]        // 0x007d8fd4    8b0c8d60c9fa00
-                         {disp8} mov        al, byte ptr [ecx + eax * 0x4 + 0x04]          // 0x007d8fdb    8a448104
-                         and                eax, 0x40                                      // 0x007d8fdf    83e040
-                         ret                                                               // 0x007d8fe2    c3
                          int3                                                              // 0x007d8fe3    cc
                          int3                                                              // 0x007d8fe4    cc
                          int3                                                              // 0x007d8fe5    cc
