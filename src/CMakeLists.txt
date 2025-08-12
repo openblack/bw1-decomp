@@ -755,6 +755,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\mbtowc.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_str.obj" WEAKEN_SYMBOLS "??_C@_01A@?$AA?$AA@" "??_C@_13A@?$AA?$AA?$AA?$AA@")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\huge.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\intrncvt.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\_fptostr.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
