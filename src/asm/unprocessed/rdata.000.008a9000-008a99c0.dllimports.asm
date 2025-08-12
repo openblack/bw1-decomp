@@ -102,7 +102,7 @@
 .globl __imp__GetTempPathA@4
 .globl __imp__SetErrorMode@4
 .globl __imp__GetVolumeInformationA@4
-.globl __imp__SetStdHandle@4
+.globl __imp__SetStdHandle@8
 .globl __imp__TlsGetValue@4
 .globl __imp__GetCurrentThread@0
 .globl __imp__SetEnvironmentVariableA@8
@@ -711,7 +711,7 @@ __imp__FindNextFileA@4:                                                         
 __imp__GetTempPathA@4:                                                                                                         .long 0x005c0444 // 0x008a919c KERNEL32.DLL::GetTempPathA
 __imp__SetErrorMode@4:                                                                                                         .long 0x005c0496 // 0x008a91a0 KERNEL32.DLL::SetErrorMode
 __imp__GetVolumeInformationA@4:                                                                                                .long 0x005c047e // 0x008a91a4 KERNEL32.DLL::GetVolumeInformationA
-__imp__SetStdHandle@4:                                                                                                         .long 0x005c4b60 // 0x008a91a8 KERNEL32.DLL::SetStdHandle
+__imp__SetStdHandle@8:                                                                                                         .long 0x005c4b60 // 0x008a91a8 KERNEL32.DLL::SetStdHandle
 __imp__TlsGetValue@4:                                                                                                          .long 0x005c498e // 0x008a91ac KERNEL32.DLL::TlsGetValue
 __imp__GetCurrentThread@0:                                                                                                     .long 0x005c499c // 0x008a91b0 KERNEL32.DLL::GetCurrentThread
 __imp__SetEnvironmentVariableA@8:                                                                                              .long 0x005c4b46 // 0x008a91b4 KERNEL32.DLL::SetEnvironmentVariableA
