@@ -28,9 +28,6 @@
 .globl _g_smoke_additif_mat
 .globl _g_view_configuration
 .globl _Direct3DDevice7
-.globl __newmode
-.globl ___lc_id
-.globl __stdbuf
 
                                            .space 0xac8                                                            // [0x4be578] 0x009c6000 + 0x4be578 = 0x00e84578
 

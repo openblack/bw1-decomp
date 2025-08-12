@@ -296,7 +296,7 @@
 .extern ??1_Lockit@std@@QAE@XZ
 .extern ?_Xlen@std@@YAXXZ
 .extern _jmp_addr_0x007af180
-.extern _jmp_addr_0x007af2b3
+.extern ?clear@ios_base@std@@QAEXH_N@Z
 .extern _jmp_addr_0x007af647
 .extern _jmp_addr_0x007af90b
 .extern _jmp_addr_0x007af961
@@ -26341,7 +26341,7 @@ _jmp_addr_0x00778c92:    mov.s              ecx, edi                            
                          or                 eax, 0x4                                        // 0x00778cbd    83c804
 _jmp_addr_0x00778cc0:    push               0x1                                             // 0x00778cc0    6a01
                          push               eax                                             // 0x00778cc2    50
-                         call               _jmp_addr_0x007af2b3                            // 0x00778cc3    e8eb650300
+                         call               ?clear@ios_base@std@@QAEXH_N@Z                  // 0x00778cc3    e8eb650300
                          mov                eax, 0x00778cce                                 // 0x00778cc8    b8ce8c7700
                          ret                                                                // 0x00778ccd    c3
                          {disp8} mov        edi, dword ptr [ebp + 0x08]                     // 0x00778cce    8b7d08
@@ -26366,7 +26366,7 @@ _jmp_addr_0x00778cea:    mov                eax, dword ptr [edi]                
                          or                 eax, 0x4                                        // 0x00778d01    83c804
 _jmp_addr_0x00778d04:    push               0x0                                             // 0x00778d04    6a00
                          push               eax                                             // 0x00778d06    50
-                         call               _jmp_addr_0x007af2b3                            // 0x00778d07    e8a7650300
+                         call               ?clear@ios_base@std@@QAEXH_N@Z                  // 0x00778d07    e8a7650300
 _jmp_addr_0x00778d0c:    mov.s              eax, edi                                        // 0x00778d0c    8bc7
                          {disp8} mov        ecx, dword ptr [ebp + -0x0c]                    // 0x00778d0e    8b4df4
                          {disp32} mov       fs:[0x0], ecx                                   // 0x00778d11    64890d00000000

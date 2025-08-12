@@ -385,7 +385,7 @@ set(SOURCES_001
 set(SOURCES_002
     asm/unprocessed/bss.002.asm
     asm/unprocessed/rdata.r.002-libcpmt-rtti.asm
-    asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm
+    asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm # some libcpmt.lib
     asm/unprocessed/runblack.reassemble.1063.007bf030-007bf210.asm
 )
 set(SOURCES_ZLIB

@@ -158,7 +158,7 @@
 .globl ?_Xlen@std@@YAXXZ
 .globl _jmp_addr_0x007af180
 .globl _jmp_addr_0x007af268
-.globl _jmp_addr_0x007af2b3
+.globl ?clear@ios_base@std@@QAEXH_N@Z
 .globl _jmp_addr_0x007af647
 .globl _jmp_addr_0x007af78a
 .globl _jmp_addr_0x007af7d8

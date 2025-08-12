@@ -159,7 +159,7 @@
 .globl ?_Xlen@std@@YAXXZ
 .globl _jmp_addr_0x007af180
 .globl _jmp_addr_0x007af268
-.globl _jmp_addr_0x007af2b3
+.globl ?clear@ios_base@std@@QAEXH_N@Z
 .globl _jmp_addr_0x007af647
 .globl _jmp_addr_0x007af78a
 .globl _jmp_addr_0x007af7d8
@@ -565,7 +565,9 @@ _jmp_addr_0x007af2a6:    push                 0x007af2b2                        
                          pop                  ecx                                              // 0x007af2b0    59
                          ret                                                                   // 0x007af2b1    c3
                          ret                                                                   // 0x007af2b2    c3
-_jmp_addr_0x007af2b3:    mov                  eax, 0x008a665c                                  // 0x007af2b3    b85c668a00
+// libcpmt.lib ios.obj
+?clear@ios_base@std@@QAEXH_N@Z:
+                         mov                  eax, 0x008a665c                                  // 0x007af2b3    b85c668a00
                          call                 __EH_prolog                                      // 0x007af2b8    e8afb30100
                          sub                  esp, 0x2c                                        // 0x007af2bd    83ec2c
                          {disp8} mov          eax, dword ptr [ebp + 0x08]                      // 0x007af2c0    8b4508
@@ -826,7 +828,7 @@ _jmp_addr_0x007af58c:    push                 0x2                               
                          and                  eax, 0x07                                        // 0x007af59d    83e007
                          mov.s                ecx, esi                                         // 0x007af5a0    8bce
                          {disp8} mov          dword ptr [esi + 0x08], eax                      // 0x007af5a2    894608
-                         call                 _jmp_addr_0x007af2b3                             // 0x007af5a5    e809fdffff
+                         call                 ?clear@ios_base@std@@QAEXH_N@Z                   // 0x007af5a5    e809fdffff
                          pop                  edi                                              // 0x007af5aa    5f
 _jmp_addr_0x007af5ab:    mov.s                eax, esi                                         // 0x007af5ab    8bc6
                          pop                  esi                                              // 0x007af5ad    5e
@@ -1048,7 +1050,7 @@ _jmp_addr_0x007af7ea:    push                 edi                               
                          {disp8} mov          dword ptr [esi + 0x14], edi                      // 0x007af7ff    897e14
                          {disp8} mov          dword ptr [esi + 0x18], edi                      // 0x007af802    897e18
                          {disp8} mov          dword ptr [esi + 0x1c], edi                      // 0x007af805    897e1c
-                         call                 _jmp_addr_0x007af2b3                             // 0x007af808    e8a6faffff
+                         call                 ?clear@ios_base@std@@QAEXH_N@Z                   // 0x007af808    e8a6faffff
                          pop                  edi                                              // 0x007af80d    5f
                          pop                  esi                                              // 0x007af80e    5e
                          ret                                                                   // 0x007af80f    c3
@@ -4146,7 +4148,7 @@ _jmp_addr_0x007b1aaa:    mov                  eax, dword ptr [esi]              
                          or                   al, 4                                            // 0x007b1ac0    0c04
 _jmp_addr_0x007b1ac2:    push                 0x0                                              // 0x007b1ac2    6a00
                          push                 eax                                              // 0x007b1ac4    50
-                         call                 _jmp_addr_0x007af2b3                             // 0x007b1ac5    e8e9d7ffff
+                         call                 ?clear@ios_base@std@@QAEXH_N@Z                   // 0x007b1ac5    e8e9d7ffff
 _jmp_addr_0x007b1aca:    mov.s                eax, esi                                         // 0x007b1aca    8bc6
                          pop                  edi                                              // 0x007b1acc    5f
                          pop                  esi                                              // 0x007b1acd    5e
@@ -4198,7 +4200,7 @@ _jmp_addr_0x007b1b2e:    mov.s                eax, ecx                          
                          mov.s                ecx, esi                                         // 0x007b1b5d    8bce
                          or                   al, 4                                            // 0x007b1b5f    0c04
                          push                 eax                                              // 0x007b1b61    50
-                         call                 _jmp_addr_0x007af2b3                             // 0x007b1b62    e84cd7ffff
+                         call                 ?clear@ios_base@std@@QAEXH_N@Z                   // 0x007b1b62    e84cd7ffff
 _jmp_addr_0x007b1b67:    cmp                  byte ptr [esp + 0x0c], 0x00                      // 0x007b1b67    807c240c00
                          {disp8} je           _jmp_addr_0x007b1b75                             // 0x007b1b6c    7407
                          mov.s                ecx, esi                                         // 0x007b1b6e    8bce
@@ -4652,7 +4654,7 @@ _jmp_addr_0x007b20ec:    mov                  eax, dword ptr [esi]              
                          or                   al, 4                                            // 0x007b2102    0c04
 _jmp_addr_0x007b2104:    push                 0x0                                              // 0x007b2104    6a00
                          push                 eax                                              // 0x007b2106    50
-                         call                 _jmp_addr_0x007af2b3                             // 0x007b2107    e8a7d1ffff
+                         call                 ?clear@ios_base@std@@QAEXH_N@Z                   // 0x007b2107    e8a7d1ffff
 _jmp_addr_0x007b210c:    mov.s                eax, esi                                         // 0x007b210c    8bc6
                          pop                  edi                                              // 0x007b210e    5f
                          pop                  esi                                              // 0x007b210f    5e
@@ -5524,7 +5526,7 @@ _jmp_addr_0x007b299c:    {disp8} mov          eax, dword ptr [esp + 0x04]       
                          mov.s                ecx, esi                                         // 0x007b29ca    8bce
                          or                   al, 4                                            // 0x007b29cc    0c04
                          push                 eax                                              // 0x007b29ce    50
-                         call                 _jmp_addr_0x007af2b3                             // 0x007b29cf    e8dfc8ffff
+                         call                 ?clear@ios_base@std@@QAEXH_N@Z                   // 0x007b29cf    e8dfc8ffff
 _jmp_addr_0x007b29d4:    cmp                  byte ptr [esp + 0x0c], 0x00                      // 0x007b29d4    807c240c00
                          {disp8} je           _jmp_addr_0x007b29e2                             // 0x007b29d9    7407
                          mov.s                ecx, esi                                         // 0x007b29db    8bce
