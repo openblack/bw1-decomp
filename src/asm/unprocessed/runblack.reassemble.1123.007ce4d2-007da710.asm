@@ -230,6 +230,7 @@
 
 .section .text
 
+// ctrmbox.obj
 ___crtMessageBoxA:       push             ebx                                           // 0x007da349    53
                          xor.s            ebx, ebx                                      // 0x007da34a    33db
                          cmp              dword ptr [data_bytes + 0x4be558], ebx        // 0x007da34c    391d5845e800
