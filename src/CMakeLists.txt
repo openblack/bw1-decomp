@@ -764,6 +764,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\w_str.obj" WEAKEN_SY
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\setenv.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\open.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\osfinfo.obj")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\matherr.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)

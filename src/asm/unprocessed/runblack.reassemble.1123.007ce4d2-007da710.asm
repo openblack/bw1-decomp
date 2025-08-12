@@ -231,8 +231,6 @@
 .section .text
 
 
-__matherr:               xor.s              eax, eax                                       // 0x007d9ade    33c0
-                         ret                                                               // 0x007d9ae0    c3
 __87except:              push               ebp                                            // 0x007d9ae1    55
                          mov.s              ebp, esp                                       // 0x007d9ae2    8bec
                          sub                esp, 0x58                                      // 0x007d9ae4    83ec58

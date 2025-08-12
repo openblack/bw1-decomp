@@ -6,10 +6,6 @@
 .globl __indefinite
 .globl __piby2
 
-.globl __matherr_flag
-__matherr_flag:
-.long 0x00002694                                                                                                   // [0x26ac40] 0x009c6000 + 0x26ac40 = 0x00c30c40
-
 .globl __lpdays
 __lpdays:
 .byte 0xff, 0xff, 0xff, 0xff, 0x1e, 0x00, 0x00, 0x00, 0x3b, 0x00, 0x00, 0x00                                       // [0x26ac44] 0x009c6000 + 0x26ac44 = 0x00c30c44
