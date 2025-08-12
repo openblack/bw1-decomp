@@ -9,7 +9,9 @@ __vt__\name:
 
 VftableAndRTTI length_error@std                                                                                    // [0xf6250] 0x008a9000 + 0xf6250 = 0x0099f250
 .long 0x007af14c, 0x007af012, 0x007af12f                                                                           // [0xf6254] 0x008a9000 + 0xf6254 = 0x0099f254
-.long 0x69727473, 0x7420676e, 0x6c206f6f, 0x00676e6f                                                               // [0xf6260] 0x008a9000 + 0xf6260 = 0x0099f260
+
+.globl ??_C@_0BA@HHMB@string?5too?5long?$AA@
+??_C@_0BA@HHMB@string?5too?5long?$AA@: .asciz "string too long"                                                    // [0xf6260] 0x008a9000 + 0xf6260 = 0x0099f260
 
 VftableAndRTTI logic_error@std                                                                                     // [0xf6270] 0x008a9000 + 0xf6270 = 0x0099f270
 .long 0x007af079, 0x007af012, 0x007af01f                                                                           // [0xf6274] 0x008a9000 + 0xf6274 = 0x0099f274

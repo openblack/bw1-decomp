@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x00545f00
 .extern _jmp_addr_0x00546120
 .extern _jmp_addr_0x0057e390
-.extern _jmp_addr_0x0057e590
+.extern ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEX_N@Z
 .extern _jmp_addr_0x0057e760
 .extern _jmp_addr_0x005804d0
 .extern _jmp_addr_0x005806d0
@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x00583bf0
 .extern _jmp_addr_0x00583d70
 .extern _jmp_addr_0x00587ef0
-.extern _jmp_addr_0x00589a50
+.extern ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z
 .extern _jmp_addr_0x00589af0
 .extern _jmp_addr_0x00589b80
 .extern _jmp_addr_0x0058ee70
