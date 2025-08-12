@@ -59,6 +59,9 @@
 .globl ___crtGetLocaleInfoA
 .globl __setmode
 
+int3
+int3
+
 // strnicmp.obj
 __strnicmp:
                          push              ebp                                            // 0x007da710    55
