@@ -32,7 +32,7 @@
 .globl ___lc_id
 .globl __stdbuf
 
-                                           .space 0x14                                                             // [0x4be558] 0x009c6000 + 0x4be558 = 0x00e84558
+                                           .space 0x8                                                              // [0x4be564] 0x009c6000 + 0x4be564 = 0x00e84564
 
 .globl __fmode
 __fmode:                                   .space 0x4                                                              // [0x4be56c] 0x009c6000 + 0x4be56c = 0x00e8456c
