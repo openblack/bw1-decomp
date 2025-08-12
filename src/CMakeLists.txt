@@ -95,9 +95,9 @@ set(SOURCES_001
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 
-    asm/unprocessed/rdata.003.008a99d0-0099f878.asm
+    asm/unprocessed/rdata.003.008a99d0-0099f250.asm
     asm/unprocessed/rdata.r.001-rtti.asm
-    asm/unprocessed/data.000.009c6000-00c2bf5c.asm
+    asm/unprocessed/data.000.009c6000-00c2b1d0.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
 
@@ -384,6 +384,8 @@ set(SOURCES_001
 )
 set(SOURCES_002
     asm/unprocessed/bss.002.asm
+    asm/unprocessed/data.001.00c2b1e0-00c2bf5c.asm
+    asm/unprocessed/rdata.004.0099f250-0099f878.asm
     asm/unprocessed/rdata.r.002-libcpmt-rtti.asm
     asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm # some libcpmt.lib
     asm/unprocessed/runblack.reassemble.1063.007bf030-007bf210.asm
@@ -857,6 +859,24 @@ add_custom_command(
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/bss.002.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.001.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.001.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.004.0099f250-0099f878.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.004.0099f250-0099f878.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
