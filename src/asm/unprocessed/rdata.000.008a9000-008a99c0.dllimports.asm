@@ -148,7 +148,7 @@
 .globl __imp__WaitForSingleObject@4
 .globl __imp__CreateEventA@4
 .globl __imp__OpenProcess@4
-.globl __imp__GetLocaleInfoW@4
+.globl __imp__GetLocaleInfoW@16
 .globl __imp__IsBadCodePtr@4
 .globl __imp__GetVersion@0
 .globl __imp__GetSystemTimeAsFileTime@4
@@ -757,7 +757,7 @@ __imp__SetEvent@4:                                                              
 __imp__WaitForSingleObject@4:                                                                                                  .long 0x005c4bb0 // 0x008a9254 KERNEL32.DLL::WaitForSingleObject
 __imp__CreateEventA@4:                                                                                                         .long 0x005c4ba0 // 0x008a9258 KERNEL32.DLL::CreateEventA
 __imp__OpenProcess@4:                                                                                                          .long 0x005c4b92 // 0x008a925c KERNEL32.DLL::OpenProcess
-__imp__GetLocaleInfoW@4:                                                                                                       .long 0x005c4b80 // 0x008a9260 KERNEL32.DLL::GetLocaleInfoW
+__imp__GetLocaleInfoW@16:                                                                                                      .long 0x005c4b80 // 0x008a9260 KERNEL32.DLL::GetLocaleInfoW
 __imp__IsBadCodePtr@4:                                                                                                         .long 0x005c4b70 // 0x008a9264 KERNEL32.DLL::IsBadCodePtr
 __imp__GetVersion@0:                                                                                                           .long 0x005c4850 // 0x008a9268 KERNEL32.DLL::GetVersion
 __imp__GetSystemTimeAsFileTime@4:                                                                                              .long 0x005c51b8 // 0x008a926c KERNEL32.DLL::GetSystemTimeAsFileTime

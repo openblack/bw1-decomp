@@ -133,7 +133,7 @@ _jmp_KERNEL32_DLL__GetStringTypeW:                 jmp              dword ptr [_
 _jmp_KERNEL32_DLL__SetEnvironmentVariableA:        jmp              dword ptr [__imp__SetEnvironmentVariableA@8]                              // 0x008a52a0    ff25b4918a00
 _jmp_KERNEL32_DLL__SetStdHandle:                   jmp              dword ptr [__imp__SetStdHandle@8]                                         // 0x008a52a6    ff25a8918a00
 _jmp_KERNEL32_DLL__IsBadCodePtr:                   jmp              dword ptr [__imp__IsBadCodePtr@4]                                         // 0x008a52ac    ff2564928a00
-_jmp_KERNEL32_DLL__GetLocaleInfoW:                 jmp              dword ptr [__imp__GetLocaleInfoW@4]                                       // 0x008a52b2    ff2560928a00
+_jmp_KERNEL32_DLL__GetLocaleInfoW:                 jmp              dword ptr [__imp__GetLocaleInfoW@16]                                      // 0x008a52b2    ff2560928a00
 _jmp_KERNEL32_DLL__OpenProcess:                    jmp              dword ptr [__imp__OpenProcess@4]                                          // 0x008a52b8    ff255c928a00
 _jmp_KERNEL32_DLL__CreateEventA:                   jmp              dword ptr [__imp__CreateEventA@4]                                         // 0x008a52be    ff2558928a00
 _jmp_KERNEL32_DLL__WaitForSingleObject:            jmp              dword ptr [__imp__WaitForSingleObject@4]                                  // 0x008a52c4    ff2554928a00

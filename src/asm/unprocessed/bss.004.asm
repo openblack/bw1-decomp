@@ -32,7 +32,7 @@
 .globl ___lc_id
 .globl __stdbuf
 
-                                           .space 0xad0                                                            // [0x4be570] 0x009c6000 + 0x4be570 = 0x00e84570
+                                           .space 0xac8                                                            // [0x4be578] 0x009c6000 + 0x4be578 = 0x00e84578
 
 // Start of lh.lib ??
 _LHSys:                                    .space 0x70d8                                                           // [0x4bf040] 0x009c6000 + 0x4bf040 = 0x00e85040

@@ -783,6 +783,8 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\chsize.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\tenpow.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\constpow.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\txtmode.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\w_loc.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_loc.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)

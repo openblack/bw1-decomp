@@ -5273,7 +5273,7 @@ _jmp_addr_0x0042e6c0:    push               ebx                                 
                          pop                ebp                                                  // 0x0042e795    5d
                          pop                ebx                                                  // 0x0042e796    5b
                          ret                0x0004                                               // 0x0042e797    c20400
-                         call               dword ptr [__imp__GetLocaleInfoW@4]                  // 0x0042e79a    ff1560928a00
+                         call               dword ptr [__imp__GetLocaleInfoW@16]                 // 0x0042e79a    ff1560928a00
 _jmp_addr_0x0042e7a0:    push               ebx                                                  // 0x0042e7a0    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                          // 0x0042e7a1    8b5c2408
                          mov                eax, dword ptr [ebx]                                 // 0x0042e7a5    8b03

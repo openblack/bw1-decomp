@@ -8977,7 +8977,7 @@ _jmp_addr_0x00606ebf:    pop                edi                                 
                          pop                esi                                           // 0x00606ec5    5e
                          pop                ebx                                           // 0x00606ec6    5b
                          ret                0x0014                                        // 0x00606ec7    c21400
-                         call               dword ptr [__imp__GetLocaleInfoW@4]           // 0x00606eca    ff1560928a00
+                         call               dword ptr [__imp__GetLocaleInfoW@16]          // 0x00606eca    ff1560928a00
 _jmp_addr_0x00606ed0:    push               esi                                           // 0x00606ed0    56
                          mov.s              esi, ecx                                      // 0x00606ed1    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x64]                   // 0x00606ed3    8b4e64
