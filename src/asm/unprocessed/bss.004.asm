@@ -32,9 +32,6 @@
 .globl ___lc_id
 .globl __stdbuf
 
-.globl __fmode
-__fmode:                                   .space 0x4                                                              // [0x4be56c] 0x009c6000 + 0x4be56c = 0x00e8456c
-
                                            .space 0xad0                                                            // [0x4be570] 0x009c6000 + 0x4be570 = 0x00e84570
 
 // Start of lh.lib ??
