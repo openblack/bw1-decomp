@@ -410,7 +410,6 @@ set(SOURCES_008
     asm/unprocessed/rdata.005.009a0744-009a6298.asm  # contains some d3d 7? data and some libjpeg data
     asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm  # contains some ddraw data
-    asm/unprocessed/runblack.reassemble.1128.007da710-007db410.asm
     # end of libcmt and start of lhlib?
     asm/unprocessed/data.002.00c2de20-00c30f70.asm
     asm/unprocessed/runblack.reassemble.1129.007db410-007dc8b0.asm
@@ -785,6 +784,7 @@ add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\constpow.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\txtmode.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\w_loc.obj")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\a_loc.obj")
+add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\setmode.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
@@ -884,78 +884,6 @@ add_custom_command(
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.005.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.005.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/runblack.reassemble.1128.007da710-007db410.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/runblack.reassemble.1128.007da710-007db410.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/bss.004.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/bss.004.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/data.002.00c2de20-00c30f70.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/data.002.00c2de20-00c30f70.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.005.009a0744-009a6298.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.005.009a0744-009a6298.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm${OBJ_SUFFIX}"
-            "--no-pad"
-)
-
-add_custom_command(
-    TARGET runblack-reassembled
-    PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-008.dir/asm/unprocessed/xdata.x.001.009be4f0-009c5564.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
