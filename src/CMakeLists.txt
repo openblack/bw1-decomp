@@ -767,6 +767,7 @@ add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\osfinfo.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\matherr.obj")
 add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\87except.obj" WEAKEN_SYMBOLS "__matherr_flag")
 add_patched_static_lib_object(LIBCMT "build\\intel\\mt_obj\\validate.obj")
+add_patched_static_lib_object(LIBCMT "..\\build\\intel\\mt_obj\\strgtold.obj")
 set_property(TARGET runblack-reassembled-libcmt-002 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-007 OBJECT IMPORTED)
