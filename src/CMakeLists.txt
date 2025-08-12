@@ -95,6 +95,7 @@ set(SOURCES_001
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 
+    asm/unprocessed/text.x.001.asm
     asm/unprocessed/rdata.003.008a99d0-0099f250.asm
     asm/unprocessed/rdata.r.001-rtti.asm
     asm/unprocessed/data.000.009c6000-00c2b1d0.asm
@@ -389,6 +390,8 @@ set(SOURCES_002
     asm/unprocessed/rdata.r.002-libcpmt-rtti.asm
     asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm # some libcpmt.lib
     asm/unprocessed/runblack.reassemble.1063.007bf030-007bf210.asm
+    asm/unprocessed/text.x.002.asm
+    asm/unprocessed/xdata.x.000.009bbdc8-009be430.asm
 )
 set(SOURCES_ZLIB
     asm/zlib/deflate.asm
@@ -403,7 +406,6 @@ set(SOURCES_ZLIB
     asm/zlib/inffast.asm
 )
 set(SOURCES_004
-    asm/unprocessed/xdata.x.000.009bbdc8-009be430.asm
     asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
 )
 
@@ -479,7 +481,6 @@ set(SOURCES_008
 )
 set(SOURCES_009
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
-    asm/unprocessed/runblack.reassemble.1345.008a6470-008a895d-exception-unwinding.asm
     asm/unprocessed/data.003.00c30f70-00c3c680.asm
     asm/unprocessed/data.004.00c3c680-00c3cff0.asm  # some libjpeg strings
 )
@@ -895,6 +896,15 @@ add_custom_command(
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm${OBJ_SUFFIX}"
+            "--no-pad"
+)
+
+add_custom_command(
+    TARGET runblack-reassembled
+    PRE_LINK
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/text.x.002.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/text.x.002.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
