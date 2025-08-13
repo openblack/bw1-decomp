@@ -407,7 +407,7 @@ set(SOURCES_ZLIB
     asm/zlib/inffast.asm
 )
 set(SOURCES_004
-    asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604.asm
+    asm/unprocessed/runblack.reassemble.1077.007c5100-007c5604-jmp-table.asm
 )
 
 set(SOURCES_008
