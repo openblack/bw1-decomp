@@ -74,7 +74,7 @@
 .extern _jmp_addr_0x00575670
 .extern _jmp_addr_0x00575880
 .extern _jmp_addr_0x00575b80
-.extern _jmp_addr_0x0057e590
+.extern ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEX_N@Z
 .extern _jmp_addr_0x0057e740
 .extern _jmp_addr_0x0057e760
 .extern _jmp_addr_0x005c46e0
@@ -864,7 +864,7 @@ _jmp_addr_0x006312a0:    sub                esp, 0x14                           
                          push               0x0                                            // 0x006312f7    6a00
                          mov.s              ecx, ebp                                       // 0x006312f9    8bcd
                          {disp32} lea       esi, dword ptr [eax + 0x000000c8]              // 0x006312fb    8db0c8000000
-                         call               _jmp_addr_0x0057e590                           // 0x00631301    e88ad2f4ff
+                         call               ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEX_N@Z                           // 0x00631301    e88ad2f4ff
                          or                 ecx, 0xffffffff                                // 0x00631306    83c9ff
                          xor.s              eax, eax                                       // 0x00631309    33c0
                          mov.s              edi, esi                                       // 0x0063130b    8bfe
