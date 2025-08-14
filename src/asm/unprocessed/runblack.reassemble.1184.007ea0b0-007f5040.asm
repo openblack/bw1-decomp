@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x00545f00
 .extern _jmp_addr_0x00546120
 .extern  ??3@YAXPAX@Z
-.extern _jmp_addr_0x007af180
+.extern ?_Xran@std@@YAXXZ
 .extern _atexit
 .extern _sprintf
 .extern _wcslen
@@ -14804,7 +14804,7 @@ _jmp_addr_0x007f4409:    cmp.s            esi, ebx                              
                          {disp8} jne      _jmp_addr_0x007f446d                     // 0x007f440b    7560
                          cmp              dword ptr [esi + 0x08], edi              // 0x007f440d    397e08
                          {disp8} jae      _jmp_addr_0x007f4417                     // 0x007f4410    7305
-                         call             _jmp_addr_0x007af180                     // 0x007f4412    e869adfbff
+                         call             ?_Xran@std@@YAXXZ                        // 0x007f4412    e869adfbff
 _jmp_addr_0x007f4417:    mov.s            ecx, esi                                 // 0x007f4417    8bce
                          call             _jmp_addr_0x00546120                     // 0x007f4419    e8021dd5ff
                          {disp8} mov      eax, dword ptr [esi + 0x08]              // 0x007f441e    8b4608
