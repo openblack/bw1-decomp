@@ -216,6 +216,7 @@
 #include "black/MPFEDatabase.h"
 #include "black/MPFEDownloads.h"
 #include "black/MPFELogin.h"
+#include "black/MPFEMessageObject.h"
 #include "black/MultiMapFixed.h"
 #include "black/MultiMapFixedInfo.h"
 #include "black/MultiplayerConditionBox.h"

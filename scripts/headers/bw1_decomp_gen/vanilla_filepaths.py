@@ -957,6 +957,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\MultiMapFixed.h"),
     BWPath(r"C:\dev\Black\MPFEConnectionStatus.cpp"),
     BWPath(r"C:\dev\Black\MPFEDownloads.cpp"),
+    BWPath(r"C:\dev\Black\MPFEMessageObject.cpp"),
     BWPath(r"C:\Dev\black\Network.h"),
     BWPath(r"C:\Dev\black\OneOffSpellSeed.h"),
     BWPath(r"C:\Dev\black\PileFood.h"),
