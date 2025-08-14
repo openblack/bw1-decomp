@@ -214,6 +214,7 @@
 #include "black/MPFEChooseConnection.h"
 #include "black/MPFEConnectionStatus.h"
 #include "black/MPFEDatabase.h"
+#include "black/MPFEDownloads.h"
 #include "black/MPFELogin.h"
 #include "black/MultiMapFixed.h"
 #include "black/MultiMapFixedInfo.h"
@@ -469,3 +470,4 @@
 #include "libs/lionhead/lhmultiplayer/ver4.0/LHTransport.h"
 #include "libs/lionhead/lhmultiplayer/ver4.0/LHTransportInfo.h"
 #include "libs/ifc/ImmDevice.h"
+
