@@ -128,6 +128,7 @@
 #include "black/Forest.h"
 #include "black/Fragment.h"
 #include "black/FrontEnd.h"
+#include "black/FuncT.h"
 #include "black/Game3DObject.h"
 #include "black/Game.h"
 #include "black/GameInfo.h"
