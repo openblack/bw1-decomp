@@ -230,6 +230,7 @@
 #include "black/ParticleContainer.h"
 #include "black/PathCreator.h"
 #include "black/PCMain.h"
+#include "black/Persistent.h"
 #include "black/PhysicsObject.h"
 #include "black/PhysicsSaveInfo.h"
 #include "black/PictureRoom.h"
