@@ -6,7 +6,7 @@
 .globl $L9718
 $L9718:
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a65c8    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a65cb    e9988cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a65cb    e9988cf0ff
                          mov              eax, 0x009bc488                         // 0x008a65d0    b888c49b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a65d5    e9cc1cf2ff
                          int3                                                     // 0x008a65da    cc
@@ -36,7 +36,7 @@ $L9718:
                          int3                                                     // 0x008a662a    cc
                          int3                                                     // 0x008a662b    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a662c    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a662f    e9348cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a662f    e9348cf0ff
                          mov              eax, 0x009bc5b0                         // 0x008a6634    b8b0c59b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6639    e9681cf2ff
                          int3                                                     // 0x008a663e    cc
@@ -48,7 +48,7 @@ $L9718:
                          int3                                                     // 0x008a6652    cc
                          int3                                                     // 0x008a6653    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x1c]            // 0x008a6654    8d4de4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6657    e90c8cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6657    e90c8cf0ff
                          mov              eax, 0x009bc660                         // 0x008a665c    b860c69b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6661    e9401cf2ff
                          int3                                                     // 0x008a6666    cc
@@ -92,7 +92,7 @@ $L9718:
                          int3                                                     // 0x008a66e2    cc
                          int3                                                     // 0x008a66e3    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x1c]            // 0x008a66e4    8d4de4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a66e7    e97c8bf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a66e7    e97c8bf0ff
                          mov              eax, 0x009bc798                         // 0x008a66ec    b898c79b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a66f1    e9b01bf2ff
                          int3                                                     // 0x008a66f6    cc
@@ -104,11 +104,11 @@ $L9718:
                          mov              eax, 0x009bc7c0                         // 0x008a6702    b8c0c79b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6707    e99a1bf2ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x3c]            // 0x008a670c    8d4dc4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a670f    e9548bf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a670f    e9548bf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x2c]            // 0x008a6714    8d4dd4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6717    e94c8bf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6717    e94c8bf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x1c]            // 0x008a671c    8d4de4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a671f    e9448bf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a671f    e9448bf0ff
                          mov              eax, 0x009bc7e8                         // 0x008a6724    b8e8c79b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6729    e9781bf2ff
                          int3                                                     // 0x008a672e    cc
@@ -137,7 +137,7 @@ $L9718:
                          {disp32} jmp     _jmp_addr_0x007afc28                    // 0x008a6777    e9ac94f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x14]            // 0x008a677c    8b4dec
                          add              ecx, 0x18                               // 0x008a677f    83c118
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6782    e9e18af0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6782    e9e18af0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x10]            // 0x008a6787    8d4df0
                          {disp32} jmp     ??1_Lockit@std@@QAE@XZ                  // 0x008a678a    e9b087f0ff
                          mov              eax, 0x009bc8a0                         // 0x008a678f    b8a0c89b00
@@ -160,9 +160,9 @@ $L9718:
                          {disp8} lea      ecx, dword ptr [ebp + -0x7c]            // 0x008a67c2    8d4d84
                          {disp32} jmp     _jmp_addr_0x007b0792                    // 0x008a67c5    e9c89ff0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a67ca    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a67cd    e9968af0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a67cd    e9968af0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a67d2    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a67d5    e98e8af0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a67d5    e98e8af0ff
                          mov              eax, 0x009bc908                         // 0x008a67da    b808c99b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a67df    e9c21af2ff
                          push             dword ptr [ebp + -0x10]                 // 0x008a67e4    ff75f0
@@ -172,9 +172,9 @@ $L9718:
                          {disp8} lea      ecx, dword ptr [ebp + -0x7c]            // 0x008a67ee    8d4d84
                          {disp32} jmp     _jmp_addr_0x007b0792                    // 0x008a67f1    e99c9ff0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a67f6    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a67f9    e96a8af0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a67f9    e96a8af0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a67fe    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6801    e9628af0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6801    e9628af0ff
                          mov              eax, 0x009bc948                         // 0x008a6806    b848c99b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a680b    e9961af2ff
                          push             dword ptr [ebp + -0x10]                 // 0x008a6810    ff75f0
@@ -216,7 +216,7 @@ _jmp_addr_0x008a6854:    ret                                                    
                          {disp8} mov      ecx, dword ptr [ebp + 0x10]             // 0x008a6884    8b4d10
                          {disp32} jmp     _jmp_addr_0x007afc28                    // 0x008a6887    e99c93f0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x24]            // 0x008a688c    8d4ddc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a688f    e9d489f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a688f    e9d489f0ff
                          mov              eax, 0x009bc9f0                         // 0x008a6894    b8f0c99b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6899    e9081af2ff
                          int3                                                     // 0x008a689e    cc
@@ -225,7 +225,7 @@ _jmp_addr_0x008a6854:    ret                                                    
                          {disp32} jmp     _jmp_addr_0x007afc28                    // 0x008a68a3    e98093f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x14]            // 0x008a68a8    8b4dec
                          add              ecx, 0x18                               // 0x008a68ab    83c118
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a68ae    e9b589f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a68ae    e9b589f0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x10]            // 0x008a68b3    8d4df0
                          {disp32} jmp     ??1_Lockit@std@@QAE@XZ                  // 0x008a68b6    e98486f0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x54]            // 0x008a68bb    8d4dac
@@ -244,41 +244,41 @@ _jmp_addr_0x008a6854:    ret                                                    
                          int3                                                     // 0x008a68ea    cc
                          int3                                                     // 0x008a68eb    cc
                          {disp8} mov      ecx, dword ptr [ebp + -0x14]            // 0x008a68ec    8b4dec
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a68ef    e97489f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a68ef    e97489f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x14]            // 0x008a68f4    8b4dec
                          add              ecx, 0x10                               // 0x008a68f7    83c110
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a68fa    e96989f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a68fa    e96989f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x14]            // 0x008a68ff    8b4dec
                          add              ecx, 0x20                               // 0x008a6902    83c120
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6905    e95e89f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6905    e95e89f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x14]            // 0x008a690a    8b4dec
                          add              ecx, 0x30                               // 0x008a690d    83c130
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6910    e95389f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6910    e95389f0ff
                          mov              eax, 0x009bcab0                         // 0x008a6915    b8b0ca9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a691a    e98719f2ff
                          int3                                                     // 0x008a691f    cc
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a6920    8b4df0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6923    e94089f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6923    e94089f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a6928    8b4df0
                          add              ecx, 0x10                               // 0x008a692b    83c110
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a692e    e93589f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a692e    e93589f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a6933    8b4df0
                          add              ecx, 0x20                               // 0x008a6936    83c120
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6939    e92a89f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6939    e92a89f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a693e    8b4df0
                          add              ecx, 0x30                               // 0x008a6941    83c130
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6944    e91f89f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6944    e91f89f0ff
                          mov              eax, 0x009bcaf0                         // 0x008a6949    b8f0ca9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a694e    e95319f2ff
                          int3                                                     // 0x008a6953    cc
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a6954    8b4df0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6957    e90c89f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6957    e90c89f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a695c    8b4df0
                          add              ecx, 0x10                               // 0x008a695f    83c110
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6962    e90189f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6962    e90189f0ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a6967    8b4df0
                          add              ecx, 0x20                               // 0x008a696a    83c120
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a696d    e9f688f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a696d    e9f688f0ff
                          mov              eax, 0x009bcb30                         // 0x008a6972    b830cb9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6977    e92a19f2ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x14]            // 0x008a697c    8d4dec
@@ -290,7 +290,7 @@ _jmp_addr_0x008a6854:    ret                                                    
                          {disp8} lea      ecx, dword ptr [ebp + -0x1c]            // 0x008a6990    8d4de4
                          {disp32} jmp     _jmp_addr_0x00581a30                    // 0x008a6993    e998b0cdff
                          {disp8} lea      ecx, dword ptr [ebp + -0x34]            // 0x008a6998    8d4dcc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a699b    e9c888f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a699b    e9c888f0ff
                          mov              eax, 0x009bcb90                         // 0x008a69a0    b890cb9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a69a5    e9fc18f2ff
                          int3                                                     // 0x008a69aa    cc
@@ -324,7 +324,7 @@ _jmp_addr_0x008a6854:    ret                                                    
                          mov              eax, 0x009bcc30                         // 0x008a6a06    b830cc9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6a0b    e99618f2ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x28]            // 0x008a6a10    8d4dd8
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6a13    e95088f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6a13    e95088f0ff
                          mov              eax, 0x009bcc60                         // 0x008a6a18    b860cc9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6a1d    e98418f2ff
                          int3                                                     // 0x008a6a22    cc
@@ -544,7 +544,7 @@ _jmp_addr_0x008a6be9:    ret                                                    
                          int3                                                     // 0x008a6cb6    cc
                          int3                                                     // 0x008a6cb7    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x24]            // 0x008a6cb8    8d4ddc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6cbb    e9a885f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6cbb    e9a885f0ff
                          mov              eax, 0x009bcf50                         // 0x008a6cc0    b850cf9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6cc5    e9dc15f2ff
                          int3                                                     // 0x008a6cca    cc
@@ -640,7 +640,7 @@ _jmp_addr_0x008a6dea:    ret                                                    
                          {disp8} lea      ecx, dword ptr [ebp + -0x24]            // 0x008a6df8    8d4ddc
                          {disp32} jmp     _jmp_addr_0x007b734a                    // 0x008a6dfb    e94a05f1ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x34]            // 0x008a6e00    8d4dcc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6e03    e96084f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6e03    e96084f0ff
                          mov              eax, 0x009bd170                         // 0x008a6e08    b870d19b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6e0d    e99414f2ff
                          int3                                                     // 0x008a6e12    cc
@@ -666,9 +666,9 @@ _jmp_addr_0x008a6dea:    ret                                                    
                          int3                                                     // 0x008a6e56    cc
                          int3                                                     // 0x008a6e57    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x38]            // 0x008a6e58    8d4dc8
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6e5b    e90884f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6e5b    e90884f0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x28]            // 0x008a6e60    8d4dd8
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6e63    e90084f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6e63    e90084f0ff
                          mov              eax, 0x009bd220                         // 0x008a6e68    b820d29b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6e6d    e93414f2ff
                          int3                                                     // 0x008a6e72    cc
@@ -682,7 +682,7 @@ _jmp_addr_0x008a6dea:    ret                                                    
                          {disp8} lea      ecx, dword ptr [ebp + -0x1c]            // 0x008a6e88    8d4de4
                          {disp32} jmp     _jmp_addr_0x00581a30                    // 0x008a6e8b    e9a0abcdff
                          {disp8} lea      ecx, dword ptr [ebp + -0x34]            // 0x008a6e90    8d4dcc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6e93    e9d083f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6e93    e9d083f0ff
                          mov              eax, 0x009bd278                         // 0x008a6e98    b878d29b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a6e9d    e90414f2ff
                          int3                                                     // 0x008a6ea2    cc
@@ -698,9 +698,9 @@ _jmp_addr_0x008a6dea:    ret                                                    
                          {disp8} lea      ecx, dword ptr [ebp + -0x50]            // 0x008a6ec4    8d4db0
                          {disp32} jmp     _jmp_addr_0x007b734a                    // 0x008a6ec7    e97e04f1ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x00000094]      // 0x008a6ecc    8d8d6cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6ed2    e99183f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6ed2    e99183f0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a6ed7    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6eda    e98983f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6eda    e98983f0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000c4]      // 0x008a6edf    8d8d3cffffff
                          {disp32} jmp     _jmp_addr_0x007b734a                    // 0x008a6ee5    e96004f1ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000e4]      // 0x008a6eea    8d8d1cffffff
@@ -733,7 +733,7 @@ _jmp_addr_0x008a6f3f:    ret                                                    
                          {disp8} lea      ecx, dword ptr [ebp + -0x30]            // 0x008a6f5c    8d4dd0
                          {disp32} jmp     _jmp_addr_0x00581a30                    // 0x008a6f5f    e9ccaacdff
                          {disp32} lea     ecx, dword ptr [ebp + -0x0000009c]      // 0x008a6f64    8d8d64ffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a6f6a    e9f982f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a6f6a    e9f982f0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x40]            // 0x008a6f6f    8d4dc0
                          {disp32} jmp     _jmp_addr_0x007b734a                    // 0x008a6f72    e9d303f1ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a6f77    8d4de0
@@ -871,7 +871,7 @@ _jmp_addr_0x008a6f3f:    ret                                                    
                          int3                                                     // 0x008a7156    cc
                          int3                                                     // 0x008a7157    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x28]            // 0x008a7158    8d4dd8
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a715b    e90881f0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a715b    e90881f0ff
                          mov              eax, 0x009bd688                         // 0x008a7160    b888d69b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a7165    e93c11f2ff
                          int3                                                     // 0x008a716a    cc
@@ -1121,13 +1121,13 @@ _jmp_addr_0x008a6f3f:    ret                                                    
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a748e    e9130ef2ff
                          int3                                                     // 0x008a7493    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a7494    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7497    e9cc7df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7497    e9cc7df0ff
                          {disp8} mov      eax, dword ptr [ebp + -0x10]            // 0x008a749c    8b45f0
                          and              eax, 0x01                               // 0x008a749f    83e001
                          test             eax, eax                                // 0x008a74a2    85c0
                          {disp32} je      _jmp_addr_0x008a74b2                    // 0x008a74a4    0f8408000000
                          {disp8} mov      ecx, dword ptr [ebp + 0x08]             // 0x008a74aa    8b4d08
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a74ad    e9b67df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a74ad    e9b67df0ff
 _jmp_addr_0x008a74b2:    ret                                                      // 0x008a74b2    c3
                          mov              eax, 0x009bdc70                         // 0x008a74b3    b870dc9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a74b8    e9e90df2ff
@@ -1135,21 +1135,21 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          int3                                                     // 0x008a74be    cc
                          int3                                                     // 0x008a74bf    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x24]            // 0x008a74c0    8d4ddc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a74c3    e9a07df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a74c3    e9a07df0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x34]            // 0x008a74c8    8d4dcc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a74cb    e9987df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a74cb    e9987df0ff
                          mov              eax, 0x009bdca0                         // 0x008a74d0    b8a0dc9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a74d5    e9cc0df2ff
                          int3                                                     // 0x008a74da    cc
                          int3                                                     // 0x008a74db    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x1c]            // 0x008a74dc    8d4de4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a74df    e9847df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a74df    e9847df0ff
                          mov              eax, 0x009bdcd0                         // 0x008a74e4    b8d0dc9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a74e9    e9b80df2ff
                          int3                                                     // 0x008a74ee    cc
                          int3                                                     // 0x008a74ef    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x28]            // 0x008a74f0    8d4dd8
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a74f3    e9707df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a74f3    e9707df0ff
                          mov              eax, 0x009bdcf8                         // 0x008a74f8    b8f8dc9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a74fd    e9a40df2ff
                          int3                                                     // 0x008a7502    cc
@@ -1157,13 +1157,13 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          {disp8} lea      ecx, dword ptr [ebp + -0x10]            // 0x008a7504    8d4df0
                          {disp32} jmp     _jmp_addr_0x00581a30                    // 0x008a7507    e924a5cdff
                          {disp8} lea      ecx, dword ptr [ebp + -0x2c]            // 0x008a750c    8d4dd4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a750f    e9547df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a750f    e9547df0ff
                          mov              eax, 0x009bdd20                         // 0x008a7514    b820dd9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a7519    e9880df2ff
                          int3                                                     // 0x008a751e    cc
                          int3                                                     // 0x008a751f    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x24]            // 0x008a7520    8d4ddc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7523    e9407df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7523    e9407df0ff
                          mov              eax, 0x009bdd50                         // 0x008a7528    b850dd9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a752d    e9740df2ff
                          int3                                                     // 0x008a7532    cc
@@ -1175,48 +1175,48 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          {disp8} lea      ecx, dword ptr [ebp + -0x70]            // 0x008a7544    8d4d90
                          {disp32} jmp     _jmp_addr_0x00581a30                    // 0x008a7547    e9e4a4cdff
                          {disp8} lea      ecx, dword ptr [ebp + -0x40]            // 0x008a754c    8d4dc0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a754f    e9147df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a754f    e9147df0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x6c]            // 0x008a7554    8d4d94
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7557    e90c7df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7557    e90c7df0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x00000094]      // 0x008a755c    8d8d6cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7562    e9017df0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7562    e9017df0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a7567    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a756a    e9f97cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a756a    e9f97cf0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000c4]      // 0x008a756f    8d8d3cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7575    e9ee7cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7575    e9ee7cf0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000e4]      // 0x008a757a    8d8d1cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7580    e9e37cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7580    e9e37cf0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000a4]      // 0x008a7585    8d8d5cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a758b    e9d87cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a758b    e9d87cf0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000d4]      // 0x008a7590    8d8d2cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7596    e9cd7cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7596    e9cd7cf0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000b4]      // 0x008a759b    8d8d4cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75a1    e9c27cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75a1    e9c27cf0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000f4]      // 0x008a75a6    8d8d0cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75ac    e9b77cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75ac    e9b77cf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x5c]            // 0x008a75b1    8d4da4
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75b4    e9af7cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75b4    e9af7cf0ff
                          mov              eax, 0x009bdd78                         // 0x008a75b9    b878dd9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a75be    e9e30cf2ff
                          int3                                                     // 0x008a75c3    cc
                          {disp8} lea      ecx, dword ptr [ebp + 0x24]             // 0x008a75c4    8d4d24
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75c7    e99c7cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75c7    e99c7cf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x28]            // 0x008a75cc    8d4dd8
                          {disp32} jmp     _jmp_addr_0x00581a30                    // 0x008a75cf    e95ca4cdff
                          {disp8} lea      ecx, dword ptr [ebp + -0x28]            // 0x008a75d4    8d4dd8
                          {disp32} jmp     _jmp_addr_0x00581a30                    // 0x008a75d7    e954a4cdff
                          {disp32} lea     ecx, dword ptr [ebp + -0x000000a4]      // 0x008a75dc    8d8d5cffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75e2    e9817cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75e2    e9817cf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x44]            // 0x008a75e7    8d4dbc
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75ea    e9797cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75ea    e9797cf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a75ef    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75f2    e9717cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75f2    e9717cf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a75f7    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a75fa    e9697cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a75fa    e9697cf0ff
                          {disp32} lea     ecx, dword ptr [ebp + -0x00000090]      // 0x008a75ff    8d8d70ffffff
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a7605    e95e7cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a7605    e95e7cf0ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x20]            // 0x008a760a    8d4de0
-                         {disp32} jmp     _jmp_addr_0x007af268                    // 0x008a760d    e9567cf0ff
+                         {disp32} jmp     ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ                    // 0x008a760d    e9567cf0ff
                          mov              eax, 0x009bde08                         // 0x008a7612    b808de9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a7617    e98a0cf2ff
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a761c    8b4df0

@@ -598,6 +598,7 @@ add_library(runblack-reassembled-libcpmt-001 OBJECT IMPORTED)
 set(STATIC_LIB_PATCHED_OBJECTS)
 add_patched_static_lib_object(LIBCPMT "build\\intel\\mt_obj\\delop.obj")
 add_patched_static_lib_object(LIBCPMT "build\\intel\\mt_obj\\xlock.obj")
+add_patched_static_lib_object(LIBCPMT "build\\intel\\mt_obj\\string.obj" WEAKEN_SYMBOLS "__CT??_R0?AVexception@@@8??0exception@@QAE@ABV0@@Z12" "??_R0?AVexception@@@8" "??_R1A@?0A@A@exception@@8" "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z" "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBDI@Z" "?erase@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@II@Z" "?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEX_N@Z" "?_Copy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXI@Z" "$L10248" "?_Split@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEXXZ" "?_Grow@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAE_NI_N@Z" DELETE_SECTIONS ".debug$F")
 set_property(TARGET runblack-reassembled-libcpmt-001 PROPERTY IMPORTED_OBJECTS ${STATIC_LIB_PATCHED_OBJECTS})
 
 add_library(runblack-reassembled-libcmt-002 OBJECT IMPORTED)
@@ -1006,6 +1007,9 @@ target_link_options(runblack-reassembled
         "/alternatename:??_Ebad_cast@@UAEPAXI@Z=??_Gbad_cast@@UAEPAXI@Z"
         "/alternatename:??_Ebad_typeid@@UAEPAXI@Z=??_Gbad_typeid@@UAEPAXI@Z"
         "/alternatename:??_Eexception@@UAEPAXI@Z=??_Gexception@@UAEPAXI@Z"
+        "/alternatename:??_Elength_error@std@@UAEPAXI@Z=??_Glength_error@std@@UAEPAXI@Z"
+        "/alternatename:??_Elogic_error@std@@UAEPAXI@Z=??_Glogic_error@std@@UAEPAXI@Z"
+        "/alternatename:??_Eout_of_range@std@@UAEPAXI@Z=??_Gout_of_range@std@@UAEPAXI@Z"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/pdb:$<TARGET_FILE:runblack-reassembled>.pdb>"
         "$<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:/debug:FULL>"
 )

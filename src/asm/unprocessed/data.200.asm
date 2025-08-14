@@ -56,9 +56,6 @@ _debug_text_\name:
     RTTI_Class_Type_Descriptor_And_Reflection Piece\name "Animal: \name for Puzzle"
 .endm
 
-_RTTI_Type_Descriptor logic_error@std, 4, V                                                                        // [0x2651e0] 0x009c6000 + 0x2651e0 = 0x00c2b1e0
-_RTTI_Type_Descriptor length_error@std, 2, V                                                                       // [0x265200] 0x009c6000 + 0x265200 = 0x00c2b200
-_RTTI_Type_Descriptor out_of_range@std, 2, V                                                                       // [0x265220] 0x009c6000 + 0x265220 = 0x00c2b220
 .byte 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00                                                               // [0x265240] 0x009c6000 + 0x265240 = 0x00c2b240
 
 _RTTI_Type_Descriptor runtime_error@std, 1, V                                                                      // [0x265248] 0x009c6000 + 0x265248 = 0x00c2b248

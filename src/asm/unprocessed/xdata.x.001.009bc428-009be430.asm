@@ -2,33 +2,6 @@
 .align 16
 .section .xdata$x,"dr"
 
-// string.obj
-.globl __CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z28
-__CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z28:
-.byte 0x00, 0x00, 0x00, 0x00, 0xe0, 0xb1, 0xc2, 0x00                                                               // [0x113428] 0x008a9000 + 0x113428 = 0x009bc428
-.byte 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00               // [0x113430] 0x008a9000 + 0x113430 = 0x009bc430
-.byte 0x95, 0xf0, 0x7a, 0x00, 0x00, 0x00, 0x00, 0x00                                                               // [0x113440] 0x008a9000 + 0x113440 = 0x009bc440
-
-.globl __CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z28
-__CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z28:
-.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0xb2, 0xc2, 0x00                                                               // [0x113448] 0x008a9000 + 0x113448 = 0x009bc448
-.byte 0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff, 0x00, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00               // [0x113450] 0x008a9000 + 0x113450 = 0x009bc450
-.byte 0x68, 0xf1, 0x7a, 0x00, 0x00, 0x00, 0x00, 0x00                                                               // [0x113460] 0x008a9000 + 0x113460 = 0x009bc460
-
-.globl __CTA3?AVlength_error@std@@
-__CTA3?AVlength_error@std@@:
-.long 0x00000003                                                                                                   // [0x113468] 0x008a9000 + 0x113468 = 0x009bc468
-.long __CT??_R0?AVlength_error@std@@@8??0length_error@std@@QAE@ABV01@@Z28                                          // [0x11346c] 0x008a9000 + 0x11346c = 0x009bc46c
-.long __CT??_R0?AVlogic_error@std@@@8??0logic_error@std@@QAE@ABV01@@Z28                                            // [0x113470] 0x008a9000 + 0x113470 = 0x009bc470
-.long __CT??_R0?AVexception@@@8??0exception@@QAE@ABV0@@Z12                                                         // [0x113474] 0x008a9000 + 0x113474 = 0x009bc474
-
-.globl __TI3?AVlength_error@std@@
-__TI3?AVlength_error@std@@:
-.byte 0x00, 0x00, 0x00, 0x00                                                                                       // [0x113478] 0x008a9000 + 0x113478 = 0x009bc478
-.long ??1length_error@std@@UAE@XZ                                                                                  // [0x11347c] 0x008a9000 + 0x11347c = 0x009bc47c
-.byte 0x00, 0x00, 0x00, 0x00                                                                                       // [0x113480] 0x008a9000 + 0x113480 = 0x009bc480
-.long __CTA3?AVlength_error@std@@                                                                                  // [0x113484] 0x008a9000 + 0x113484 = 0x009bc484
-
 .long 0x19930520                                                                                                   // [0x113488] 0x008a9000 + 0x113488 = 0x009bc488
 .long 0x00000001                                                                                                   // [0x11348c] 0x008a9000 + 0x11348c = 0x009bc48c
 .long 0x009bc4a8                                                                                                   // [0x113490] 0x008a9000 + 0x113490 = 0x009bc490
