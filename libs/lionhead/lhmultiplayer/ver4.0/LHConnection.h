@@ -16,10 +16,20 @@ struct LHNetEvent;
 struct LHNetUser;
 struct LHTransport;
 struct LHTransportInfo;
+struct LHConnection;
+
+struct LHConnectionVftable
+{
+  enum LH_RETURN (__fastcall* ProcessEvent)(struct LHConnection* this, const void* edx, struct LHNetEvent* event);  /* 0x0 */
+  void (__fastcall* __dt)(struct LHConnection* this);
+  void (__fastcall* Close)(struct LHConnection* this);
+  struct LHNetEvent* (__fastcall* Read)(struct LHConnection* this, const void* edx, const enum LH_NETEVENT_TYPE eventType);
+};
+static_assert(sizeof(struct LHConnectionVftable) == 0x10, "Data type is of wrong size");
 
 struct LHConnection
 {
-  uint32_t field_0x0;
+  struct LHConnectionVftable* vftable;
   int field_0x4;
   uint8_t field_0x8[0xc];
   uint32_t field_0x14;

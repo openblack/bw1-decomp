@@ -956,6 +956,8 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\Morphable.h"),
     BWPath(r"C:\Dev\black\MultiMapFixed.h"),
     BWPath(r"C:\dev\Black\MPFEConnectionStatus.cpp"),
+    BWPath(r"C:\dev\Black\MPFEDownloads.cpp"),
+    BWPath(r"C:\dev\Black\MPFEMessageObject.cpp"),
     BWPath(r"C:\Dev\black\Network.h"),
     BWPath(r"C:\Dev\black\OneOffSpellSeed.h"),
     BWPath(r"C:\Dev\black\PileFood.h"),
@@ -1013,6 +1015,11 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\WeatherInfo.h"),
     BWPath(r"C:\Dev\black\WorshipSite.h"),
     BWPath(r"C:\Dev\black\WorshipSpell.h"),
+    BWPath(r"C:\Dev\black\Persistent.h"),
+    BWPath(r"C:\Dev\black\Property.h"),
+    BWPath(r"C:\Dev\black\SecretCreature.h"),
+    BWPath(r"C:\Dev\black\SubArgument.h"),
+    BWPath(r"C:\Dev\black\SubOptionEntry.h"),
 }
 
 ROOMMATE_CLASS_MAP = {
@@ -1252,6 +1259,7 @@ ROOMMATE_CLASS_MAP = {
     "UniqueKeyHeap": "Heap",
     "HeapWithPools": "Heap",
     "CPDesireNodeInfo": "GPlayerInfo",
+    "SubOptionEntry": "INTERFACE_MESSAGE_TYPES",
 }
 
 
