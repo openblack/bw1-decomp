@@ -1019,6 +1019,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\Property.h"),
     BWPath(r"C:\Dev\black\SecretCreature.h"),
     BWPath(r"C:\Dev\black\SubArgument.h"),
+    BWPath(r"C:\Dev\black\SubOptionEntry.h"),
 }
 
 ROOMMATE_CLASS_MAP = {
@@ -1258,6 +1259,7 @@ ROOMMATE_CLASS_MAP = {
     "UniqueKeyHeap": "Heap",
     "HeapWithPools": "Heap",
     "CPDesireNodeInfo": "GPlayerInfo",
+    "SubOptionEntry": "INTERFACE_MESSAGE_TYPES",
 }
 
 

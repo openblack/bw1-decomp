@@ -318,6 +318,7 @@
 #include "black/SpellWater.h"
 #include "black/SpellWithObjects.h"
 #include "black/SubArgument.h"
+#include "black/SubOptionEntry.h"
 #include "black/StandardBuildingSite.h"
 #include "black/StartGameBox.h"
 #include "black/StatsBox.h"
