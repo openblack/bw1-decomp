@@ -273,6 +273,7 @@
 #include "black/Script.h"
 #include "black/ScriptHighlight.h"
 #include "black/ScriptMarker.h"
+#include "black/SecretCreature.h"
 #include "black/Settings.h"
 #include "black/SetupBigButton.h"
 #include "black/SetupBox.h"

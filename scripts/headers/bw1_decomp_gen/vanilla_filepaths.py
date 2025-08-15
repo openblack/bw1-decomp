@@ -1017,6 +1017,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\WorshipSpell.h"),
     BWPath(r"C:\Dev\black\Persistent.h"),
     BWPath(r"C:\Dev\black\Property.h"),
+    BWPath(r"C:\Dev\black\SecretCreature.h"),
 }
 
 ROOMMATE_CLASS_MAP = {
