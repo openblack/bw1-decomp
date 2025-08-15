@@ -2,7 +2,7 @@
 .pytest_cache
 .vscode
 generated_headers_output/
-build/
+build*/
 *.pyc
 *$py.class
 extracted_reversing_data_bw_141.json
