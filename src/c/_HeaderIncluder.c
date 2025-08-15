@@ -248,6 +248,7 @@
 #include "black/PotStructure.h"
 #include "black/PrayerIconInfo.h"
 #include "black/ProfileEditor.h"
+#include "black/Property.h"
 #include "black/PSysAtomCore.h"
 #include "black/PSysBase.h"
 #include "black/PSysEditor.h"
