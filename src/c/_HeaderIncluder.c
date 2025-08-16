@@ -415,6 +415,7 @@
 #include "libs/lionhead/lh3dlib/development/LH3DPrimitive.h"
 #include "libs/lionhead/lh3dlib/development/LH3DRender.h"
 #include "libs/lionhead/lh3dlib/development/LH3DSky.h"
+#include "libs/lionhead/lh3dlib/development/LH3DStorm.h"
 #include "libs/lionhead/lh3dlib/development/LH3DSmoke.h"
 #include "libs/lionhead/lh3dlib/development/LH3DSprite.h"
 #include "libs/lionhead/lh3dlib/development/LH3DSpriteObject.h"
