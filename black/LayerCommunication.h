@@ -2,27 +2,32 @@
 #define BW1_DECOMP_LAYER_COMMUNICATION_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uintptr_t */
+
+struct LayerCommunication;
+struct MPFEPlayerDetails;
+struct MPFEChannelDetails;
 
 struct LayerCommunicationVftable
 {
-  uintptr_t SendMessageW;  /* 0x0 */
-  uintptr_t SendMessageA;
-  uintptr_t LeaveMainRoom;
-  uintptr_t LeaveGameChannel;
-  uintptr_t BeginPlayerEnumeration;  /* 0x10 */
-  uintptr_t PopulateChannelPlayers;
-  uintptr_t Process;
-  uintptr_t InitialiseLobbyState;
-  uintptr_t CreateOrJoinRoom;  /* 0x20 */
-  uintptr_t StartGame;
-  uint32_t (__fastcall* Connect)(struct LayerCommunicationVftable* this);
-  uintptr_t Disconnect;
-  uintptr_t KickPlayerFromChannel;  /* 0x30 */
-  uintptr_t BanPlayerInChannel;
-  uintptr_t GetNumPeopleInRoom;
-  uintptr_t LockChannel;
-  uintptr_t SetInvite;  /* 0x40 */
+  void (__fastcall* SendMessageW)(struct LayerCommunication* this, const void* edx, wchar_t* message, bool param2, struct MPFEPlayerDetails* player);  /* 0x0 */
+  void (__fastcall* SendMessageA)(struct LayerCommunication* this, const void* edx, const char* message, bool param2, struct MPFEPlayerDetails* player);
+  void (__fastcall* LeaveMainRoom)(struct LayerCommunication* this);
+  void (__fastcall* LeaveGameChannel)(struct LayerCommunication* this);
+  void (__fastcall* BeginPlayerEnumeration)(struct LayerCommunication* this);  /* 0x10 */
+  void (__fastcall* PopulateChannelPlayers)(struct LayerCommunication* this, const void* edx, struct MPFEChannelDetails* channel);
+  void (__fastcall* Process)(struct LayerCommunication* this);
+  void (__fastcall* InitialiseLobbyState)(struct LayerCommunication* this);
+  void (__fastcall* CreateOrJoinRoom)(struct LayerCommunication* this, const void* edx, wchar_t* param1, wchar_t* param2, struct MPFEChannelDetails* channel);  /* 0x20 */
+  void (__fastcall* StartGame)(struct LayerCommunication* this);
+  uint32_t (__fastcall* Connect)(struct LayerCommunication* this);
+  void (__fastcall* Disconnect)(struct LayerCommunication* this);
+  void (__fastcall* KickPlayerFromChannel)(struct LayerCommunication* this, const void* edx, struct MPFEPlayerDetails* player);  /* 0x30 */
+  void (__fastcall* BanPlayerInChannel)(struct LayerCommunication* this, const void* edx, struct MPFEPlayerDetails* player);
+  uint32_t (__fastcall* GetNumPeopleInRoom)(struct LayerCommunication* this);
+  void (__fastcall* LockChannel)(struct LayerCommunication* this, const void* edx, bool lock);
+  void (__fastcall* SetInvite)(struct LayerCommunication* this, const void* edx, bool invite);  /* 0x40 */
 };
 static_assert(sizeof(struct LayerCommunicationVftable) == 0x44, "Data type is of wrong size");
 
