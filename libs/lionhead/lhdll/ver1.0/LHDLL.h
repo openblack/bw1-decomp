@@ -6,12 +6,13 @@
 
 // Forward Declares
 
+struct LHDLL;
 struct LHTransport;
 
 struct LHDLLVftable
 {
-  uintptr_t field_0x0;
-  uintptr_t field_0x4;
+  uint32_t (__fastcall* GetAPI)(struct LHDLL* this);
+  uint32_t (__fastcall* ResetAPI)(struct LHDLL* this);
 };
 static_assert(sizeof(struct LHDLLVftable) == 0x8, "Data type is of wrong size");
 
