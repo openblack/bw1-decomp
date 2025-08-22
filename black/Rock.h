@@ -13,11 +13,12 @@ struct GMobileStaticInfo;
 struct GPlayer;
 struct MapCoords;
 struct Object;
+struct Rock;
 
 struct RockVftable
 {
   struct MultiMapFixedVftable super;  /* 0x0 */
-  uintptr_t field_0x90c;
+  bool (__fastcall* IsMovable)(struct Rock* this);
 };
 static_assert(sizeof(struct RockVftable) == 0x910, "Data type is of wrong size");
 
