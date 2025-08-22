@@ -4,6 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint8_t, uintptr_t */
 
+// Forward Declares
+
+struct LHTransportInfo;
+
 enum LH_TRANSPORT_TYPE
 {
   LH_TRANSPORT_TYPE_BASE = 0x1,
@@ -26,10 +30,10 @@ static const char* LH_TRANSPORT_TYPE_strs[_LH_TRANSPORT_TYPE_COUNT] = {
 
 struct LHTransportInfoVftable
 {
-  uintptr_t GetEncodedLength;  /* 0x0 */
-  uintptr_t EncodeToBuffer;
-  uintptr_t DecodeFromBuffer;
-  uintptr_t ClearObject;
+  uint32_t (__fastcall* GetEncodedLength)(struct LHTransportInfo* this, const void* edx, uint32_t param1, void* param2);  /* 0x0 */
+  uint32_t (__fastcall* EncodeToBuffer)(struct LHTransportInfo* this, const void* edx, uint8_t* buffer, uint32_t length, void* param3);
+  uint32_t (__fastcall* DecodeFromBuffer)(struct LHTransportInfo* this, const void* edx, uint8_t* buffer);
+  void (__fastcall* ClearObject)(struct LHTransportInfo* this);
 };
 static_assert(sizeof(struct LHTransportInfoVftable) == 0x10, "Data type is of wrong size");
 

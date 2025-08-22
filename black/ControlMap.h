@@ -11,8 +11,8 @@
 
 struct ControlMap
 {
-  struct BindableAction bindable_actions[0x21];  /* 0x0 */
-  bool32_t bindable_action_states[0x21];  /* 0x648c */
+  struct BindableAction bindable_actions[_BINDABLE_ACTION_SIZE];  /* 0x0 */
+  bool32_t bindable_action_states[_BINDABLE_ACTION_SIZE];  /* 0x648c */
   bool32_t field2_0x6510;
   bool32_t field3_0x6514;
   bool32_t field4_0x6518;

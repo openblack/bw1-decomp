@@ -743,6 +743,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DVertex.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DVertexGroup.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DPrimitive.h"),
+    BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DStorm.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DSubMesh.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DMesh.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DSmoke.h"),
@@ -956,6 +957,8 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\Morphable.h"),
     BWPath(r"C:\Dev\black\MultiMapFixed.h"),
     BWPath(r"C:\dev\Black\MPFEConnectionStatus.cpp"),
+    BWPath(r"C:\dev\Black\MPFEDownloads.cpp"),
+    BWPath(r"C:\dev\Black\MPFEMessageObject.cpp"),
     BWPath(r"C:\Dev\black\Network.h"),
     BWPath(r"C:\Dev\black\OneOffSpellSeed.h"),
     BWPath(r"C:\Dev\black\PileFood.h"),
@@ -1013,6 +1016,11 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\WeatherInfo.h"),
     BWPath(r"C:\Dev\black\WorshipSite.h"),
     BWPath(r"C:\Dev\black\WorshipSpell.h"),
+    BWPath(r"C:\Dev\black\Persistent.h"),
+    BWPath(r"C:\Dev\black\Property.h"),
+    BWPath(r"C:\Dev\black\SecretCreature.h"),
+    BWPath(r"C:\Dev\black\SubArgument.h"),
+    BWPath(r"C:\Dev\black\SubOptionEntry.h"),
 }
 
 ROOMMATE_CLASS_MAP = {
@@ -1033,7 +1041,7 @@ ROOMMATE_CLASS_MAP = {
     "LHSys_field_0x70c4_t": "LHSystem",
     "LHSys_field_0x70c4_t_field_0x0_t": "LHSystem",
     "InfoTransform": "LH3DTech",
-        "TextureFormat": "LH3DTexture",
+    "TextureFormat": "LH3DTexture",
     "MaterialProperties": "LH3DMaterial",
     "LH3DMaterial__RenderMode": "LH3DMaterial",
     "LHSprite": "LH3DSprite",
@@ -1244,6 +1252,7 @@ ROOMMATE_CLASS_MAP = {
     "TEXTJUSTIFY": "GatheringText",
     "TextureFormat_": "LH3DTexture",
     "BBSTYLE": "SetupThing",
+    "BINDABLE_ACTIONS": "BindableAction",
     "CameraHelpReason": "CameraHelp",
     "AnimInfoType": "LH3DAnim",
     "LH_SEEK_MODE": "LHFile",
@@ -1252,6 +1261,7 @@ ROOMMATE_CLASS_MAP = {
     "UniqueKeyHeap": "Heap",
     "HeapWithPools": "Heap",
     "CPDesireNodeInfo": "GPlayerInfo",
+    "SubOptionEntry": "INTERFACE_MESSAGE_TYPES",
 }
 
 

@@ -2,7 +2,7 @@
 #define BW1_DECOMP_POT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
+#include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
 
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
 
@@ -12,16 +12,18 @@
 
 struct GPotInfo;
 struct MapCoords;
+struct MultiMapFixed;
 struct Town;
 
 struct PotVftable
 {
   struct MobileObjectVftable super;  /* 0x0 */
-  void (__fastcall* SetSize)(void* param_0);  /* 0x85c */
-  uintptr_t field_0x860;
-  uintptr_t field_0x864;
+  void (__fastcall* SetSize)(struct Pot *this);  /* 0x85c */
+  bool (__fastcall* IsPartOfStructure)(struct Pot *this);  /* 0x860 */
+  void (__fastcall* SetSpeedUp)(struct Pot *this, const void *edx, int32_t speed);
+  void (__fastcall* SetMultiMapFixed)(struct Pot *this, const void *edx, struct MultiMapFixed *multiMapFixed);
 };
-static_assert(sizeof(struct PotVftable) == 0x868, "Data type is of wrong size");
+static_assert(sizeof(struct PotVftable) == 0x86c, "Data type is of wrong size");
 
 union PotBase
 {

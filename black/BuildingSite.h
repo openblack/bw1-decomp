@@ -28,13 +28,13 @@ struct BuildingSiteVftable
   uint32_t (__fastcall* GetWoodForStats)(struct BuildingSite* this);
   struct Pot* (__fastcall* GetPileWood)(struct BuildingSite* this, const void* edx, struct MapCoords* coords);
   void (__fastcall* SetPileWood)(struct BuildingSite* this, const void* edx, struct Pot* wood_pile);
-  void (__fastcall* CreatePileWood)(struct BuildingSite* this);  /* 0x110 */
-  uintptr_t GetResourcePosAndYAngle;
-  uintptr_t RemovePotFromStructure;
-  void (__fastcall* IsLinkedToThisBuildingSite)(struct BuildingSite* this, const void* edx, struct Pot* wood_pile);
-  uintptr_t GetNearestEdge;  /* 0x120 */
-  uintptr_t GetNextPosFromIndex;
-  void (__fastcall* GetRandomBuildPos)(struct BuildingSite* this, const void* edx, struct Object* param_1, int32_t* param_2);
+  void (__fastcall* CreatePileWood)(struct BuildingSite* this);                                                           /* 0x110 */
+  void (__fastcall* GetResourcePosAndYAngle)(struct BuildingSite* this, const void* edx, uint32_t resource_type, uint32_t param_2, float* out_pos_and_angle);
+  void (__fastcall* RemovePotFromStructure)(struct BuildingSite* this, const void* edx, struct PotStructure* pot_structure);
+  bool (__fastcall* IsLinkedToThisBuildingSite)(struct BuildingSite* this, const void* edx, struct Pot* pot);
+  float (__fastcall* GetNearestEdge)(struct BuildingSite* this, const void* edx, float x, float y, int32_t* out_edge_info); /* 0x120 */
+  void (__fastcall* GetNextPosFromIndex)(struct BuildingSite* this, const void* edx, int32_t* in_out_index);
+  void (__fastcall* GetRandomBuildPos)(struct BuildingSite* this, const void* edx, struct Object* object, int32_t* out_pos);
 };
 static_assert(sizeof(struct BuildingSiteVftable) == 0x12c, "Data type is of wrong size");
 
