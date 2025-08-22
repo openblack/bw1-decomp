@@ -2,14 +2,19 @@
 #define BW1_DECOMP_SPELL_WITH_OBJECTS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint8_t, uintptr_t */
 
+// Forward Declares
+
 #include "Spell.h" /* For struct Spell, struct SpellVftable */
+
+struct SpellWithObjects;
 
 struct SpellWithObjectsVftable
 {
   struct SpellVftable super;  /* 0x0 */
-  uintptr_t field_0x554;
+  bool (__fastcall* GetSetObjectsDyingOnCloseDown)(struct SpellWithObjects* this);
 };
 static_assert(sizeof(struct SpellWithObjectsVftable) == 0x558, "Data type is of wrong size");
 
