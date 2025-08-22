@@ -4,10 +4,17 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
 
+#include "BindableAction.h" /* For enum BINDABLE_ACTIONS */
+#include "SubOptionEntry.h" /* For enum INTERFACE_MESSAGE_TYPES */
+
 // Forward Declares
 
+struct ControlMap;
 struct InnerCamera;
 struct InnerRoom;
+struct LHCoord;
+struct TempleRoom;
+struct Zoomer3d;
 
 enum TempleRoomsEnum
 {
@@ -34,22 +41,22 @@ static const char* TempleRoomsEnum_strs[_TempleRoomsEnum_COUNT] = {
 
 struct TempleRoomVftable
 {
-  uintptr_t field_0x0;
-  uintptr_t field_0x4;
-  uintptr_t field_0x8;
-  uintptr_t field_0xc;
-  uintptr_t field_0x10;
-  uintptr_t field_0x14;
-  uintptr_t field_0x18;
-  uintptr_t field_0x1c;
-  uintptr_t field_0x20;
-  uintptr_t field_0x24;
-  uintptr_t field_0x28;
-  uintptr_t field_0x2c;
-  uintptr_t field_0x30;
-  uintptr_t field_0x34;
-  uintptr_t field_0x38;
-  uintptr_t field_0x3c;
+  bool (__fastcall* IsAvailable)(struct TempleRoom* this);  /* 0x0 */
+  void (__fastcall* DrawAdditional)(struct TempleRoom* this, const void* edx, bool param);
+  void (__fastcall* PreDraw)(struct TempleRoom* this);
+  void (__fastcall* Draw)(struct TempleRoom* this);
+  void (__fastcall* DrawHand)(struct TempleRoom* this);  /* 0x10 */
+  void (__fastcall* Update)(struct TempleRoom* this);
+  void (__fastcall* UpdateMouse)(struct TempleRoom* this, const void* edx, struct LHCoord coord, enum INTERFACE_MESSAGE_TYPES message_type);
+  void (__fastcall* UpdateKeyboard)(struct TempleRoom* this, const void* edx, enum LH_KEY key, uint16_t param);
+  void (__fastcall* TriggerIntroCamera)(struct TempleRoom* this, const void* edx, bool param, struct Zoomer3d* zoomer1, struct Zoomer3d* zoomer2);  /* 0x20 */
+  void (__fastcall* InitEngine_1)(struct TempleRoom* this);
+  void (__fastcall* InitEngine_2)(struct TempleRoom* this, const void* edx, char* param1, char* param2, char* param3, char* param4);
+  void (__fastcall* CloseEngine)(struct TempleRoom* this);
+  void (__fastcall* CalculateTooltipsInsideCitadel)(struct TempleRoom* this, const void* edx, enum BINDABLE_ACTIONS* actions);  /* 0x30 */
+  void (__fastcall* PreToolTipProcess)(struct TempleRoom* this);
+  void (__fastcall* PostToolTipProcess)(struct TempleRoom* this);
+  void (__fastcall* OnEnterRoom)(struct TempleRoom* this);
 };
 static_assert(sizeof(struct TempleRoomVftable) == 0x40, "Data type is of wrong size");
 
