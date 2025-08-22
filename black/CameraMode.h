@@ -10,6 +10,7 @@
 struct CameraMode;
 struct GCamera;
 struct GameOSFile;
+struct LHCoord;
 
 enum CAMERA_MODE_HAND_STATUS
 {
@@ -64,7 +65,7 @@ struct CameraModeVftable
   void (__fastcall* Cleanup)(struct CameraMode* this);
   bool (__fastcall* CanExist)(struct CameraMode* this);
   bool (__fastcall* MouseIsLocked)(struct CameraMode* this);  /* 0x20 */
-  uint32_t GetMousePos;
+  void (__fastcall* GetMousePos)(struct CameraMode* this, const void* edx, struct LHCoord* pos);
   void (__fastcall* ProcessKeyMovement)(struct CameraMode* this, const void* edx, uint16_t param_2);
   void (__fastcall* ProcessMouseMovement)(struct CameraMode* this);
   void (__fastcall* Delete)(struct CameraMode* this);  /* 0x30 */
