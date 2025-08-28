@@ -24,9 +24,9 @@ struct InnerCameraVftable
   void (__fastcall* Reinit)(struct InnerCamera* this);
   void (__fastcall* Close)(struct InnerCamera* this);  /* 0x10 */
   uint32_t (__fastcall* CalcDoorHit)(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, struct LHCoord param_2, float param_3, bool param_4);
-  void (__fastcall* Update)(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, struct LHCoord* param_5, bool param_6);
-  void (__fastcall* UpdateMain)(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, struct LHCoord* param_5, bool param_6);
-  void (__fastcall* UpdateState)(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, struct LHCoord* param_5, bool param_6);  /* 0x20 */
+  void (__fastcall* Update)(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6);
+  void (__fastcall* UpdateMain)(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6);
+  void (__fastcall* UpdateState)(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6);  /* 0x20 */
   void (__fastcall* FocusOnSubMesh)(struct InnerCamera* this, const void* edx, struct LH3DMesh* param_1, int param_2, float param_3, float param_4, float param_5);
   void (__fastcall* TriggerIntro)(struct InnerCamera* this, const void* edx, bool param_1, struct Zoomer3d* param_2, struct Zoomer3d* param_3);
   struct InnerCamera* (__fastcall* __dt)(struct InnerCamera* this);

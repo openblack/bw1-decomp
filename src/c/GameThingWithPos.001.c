@@ -24,12 +24,12 @@ uint32_t __fastcall GetCreatureBeliefType__16GameThingWithPosFv(struct GameThing
 }
 
 __attribute__((XOR32rr_REV))
-uint32_t __fastcall GetOrigin__16GameThingWithPosFv(const struct GameThingWithPos* this)
+uint32_t __fastcall GetOrigin__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
 
-float __fastcall GetLife__16GameThingWithPosFv(const struct GameThingWithPos* this)
+float __fastcall GetLife__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x004052a0    d90590a38a00
     asm("ret");                                                              // 0x004052a6    c3
@@ -250,7 +250,7 @@ bool32_t __fastcall CanBeKickedByCreature__16GameThingWithPosFP8Creature(struct 
     return 0;
 }
 
-uint32_t __fastcall GetCreatureMimicType__16GameThingWithPosFv(const struct GameThingWithPos* this)
+uint32_t __fastcall GetCreatureMimicType__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0xa;
 }
@@ -262,7 +262,7 @@ float __fastcall GetHowMuchCreatureWantsToLookAtMe__16GameThingWithPosFv(struct 
     __builtin_unreachable();
 }
 
-float __fastcall GetHeight__16GameThingWithPosFv(const struct GameThingWithPos* this)
+float __fastcall GetHeight__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00405500    d90598a38a00
     asm("ret");                                                              // 0x00405506    c3
@@ -292,7 +292,7 @@ bool32_t __fastcall IsHouse__16GameThingWithPosFv(struct GameThingWithPos* this)
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsObject__16GameThingWithPosCFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsObject__16GameThingWithPosCFv(struct GameThingWithPos* this)
 {
     return 0;
 }

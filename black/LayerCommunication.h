@@ -12,7 +12,7 @@ struct MPFEChannelDetails;
 struct LayerCommunicationVftable
 {
   void (__fastcall* SendMessageW)(struct LayerCommunication* this, const void* edx, wchar_t* message, bool param2, struct MPFEPlayerDetails* player);  /* 0x0 */
-  void (__fastcall* SendMessageA)(struct LayerCommunication* this, const void* edx, const char* message, bool param2, struct MPFEPlayerDetails* player);
+  void (__fastcall* SendMessageA)(struct LayerCommunication* this, const void* edx, char const* message, bool param2, struct MPFEPlayerDetails* player);
   void (__fastcall* LeaveMainRoom)(struct LayerCommunication* this);
   void (__fastcall* LeaveGameChannel)(struct LayerCommunication* this);
   void (__fastcall* BeginPlayerEnumeration)(struct LayerCommunication* this);  /* 0x10 */

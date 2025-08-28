@@ -76,9 +76,9 @@ static_assert(sizeof(struct LivingDLList) == 0xc, "Data type is of wrong size");
 struct LivingVftable
 {
   struct MobileWallHugVftable super;  /* 0x0 */
-  bool (__fastcall* AmILikelyToMove)(const struct Living* this);  /* 0x874 */
+  bool (__fastcall* AmILikelyToMove)(struct Living* this);  /* 0x874 */
   void (__fastcall* SetFoodSpeedup)(struct Living* this, const void* edx, bool speedup);
-  bool (__fastcall* IsFoodSpeedUp)(const struct Living* this);
+  bool (__fastcall* IsFoodSpeedUp)(struct Living* this);
   uint32_t (__fastcall* GetNumTurnsToDieOver)(struct Living* this);  /* 0x880 */
   struct MapCoords* (__fastcall* GetFinalDestPos)(struct Living* this, const void* edx, struct MapCoords* pos);
   bool (__fastcall* FleeingFromObjectReaction)(struct Living* this);
@@ -123,8 +123,8 @@ struct LivingVftable
   int (__fastcall* ExitInLanded)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
   int (__fastcall* ExitNoChangeState)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
   int (__fastcall* ExitMoveOnPath)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
-  int (__fastcall* ExitMoveToPos)(struct Living* this);  /* 0x930 */
-  int (__fastcall* ExitBeingEaten)(struct Living* this);
+  int (__fastcall* ExitMoveToPos)(struct Living* this, const void* edx, uint8_t param_1);  /* 0x930 */
+  int (__fastcall* ExitBeingEaten)(struct Living* this, const void* edx, uint8_t param_1);
   void (__fastcall* SetState)(struct Living* this, const void* edx, enum LIVING_ACTION_INDEX index, enum VILLAGER_STATES state);
   uint32_t (__fastcall* EnterMoveToPos)(struct Living* this, const void* edx, enum VILLAGER_STATES state_1, enum VILLAGER_STATES state_2);
   uint32_t (__fastcall* EnterInScript)(struct Living* this, const void* edx, enum VILLAGER_STATES state_1, enum VILLAGER_STATES state_2);  /* 0x940 */
@@ -141,7 +141,7 @@ struct LivingVftable
   bool (__fastcall* IsStateExitFunctionSameAs)(const struct Living* this, const void* edx, enum VILLAGER_STATES state);
   bool (__fastcall* IsDeathState)(const struct Living* this, const void* edx, enum VILLAGER_STATES state);  /* 0x970 */
   uint32_t (__fastcall* DebugShowTime)(struct Living* this, const void* edx, uint32_t param_1, uint8_t param_2, uint8_t param_3);
-  bool (__fastcall* IsDancing)(const struct Living* this);
+  bool (__fastcall* IsDancing)(struct Living* this);
   bool (__fastcall* IsInterestedInFoodObject)(struct Living* this, const void* edx, struct Object* object);
   bool (__fastcall* IsInterestedInWoodObject)(struct Living* this, const void* edx, struct Object* object);  /* 0x980 */
   bool (__fastcall* IsAvailableForReaction)(struct Living* this, const void* edx, enum REACTION reaction);
@@ -234,10 +234,10 @@ struct LivingVftable
   uint32_t (__fastcall* NumGameTurnsBeforeReactingAgainToBurningObjectFunction)(struct Living* this, const void* edx, struct GameThingWithPos* param_1, uint32_t param_2, float param_3);  /* 0xae0 */
   uint32_t (__fastcall* NumGameTurnsToReactToShieldFunction)(struct Living* this, const void* edx, struct GameThingWithPos* param_1, uint32_t param_2, float param_3);
   uint32_t (__fastcall* NumGameTurnsBeforeReactingToShieldAgainFunction)(struct Living* this, const void* edx, struct GameThingWithPos* param_1, uint32_t param_2, float param_3);
-  uint32_t (__fastcall* IsPosValidForMapCellExistance)(struct Living* this, const void* edx, struct MapCoords* param_1);
-  void (__fastcall* MoveByTeleport)(struct Living* this, const void* edx, struct MapCoords* param_1);  /* 0xaf0 */
-  bool (__fastcall* IsDead)(const struct Living* this);
-  bool (__fastcall* IsChild)(const struct Living* this);
+  uint32_t (__fastcall* IsPosValidForMapCellExistance)(struct Living* this, const void* edx, const struct MapCoords* param_1);
+  void (__fastcall* MoveByTeleport)(struct Living* this, const void* edx, const struct MapCoords* param_1);  /* 0xaf0 */
+  bool (__fastcall* IsDead)(struct Living* this);
+  bool (__fastcall* IsChild)(struct Living* this);
   void (__fastcall* GetFleeingPositionFromMovingObject)(struct Living* this, const void* edx, struct MapCoords* param_1, struct GameThingWithPos* param_2, float param_3);
   void (__fastcall* GetFleeingPositionFromStationaryObject)(struct Living* this, const void* edx, struct MapCoords* param_1, struct GameThingWithPos* param_2, float param_3);  /* 0xb00 */
   enum VILLAGER_STATES (__fastcall* GetFinalState)(const struct Living* this);
@@ -254,7 +254,7 @@ struct LivingVftable
   void (__fastcall* SetBoxXForChessGame)(struct Living* this, const void* edx, int32_t param_1);  /* 0xb30 */
   void (__fastcall* SetBoxZForChessGame)(struct Living* this, const void* edx, int32_t param_1);
   uint32_t (__fastcall* GetTeamForChessGame)(struct Living* this);
-  bool (__fastcall* IsPosValidForTurnAngle)(struct Living* this, const void* edx, struct MapCoords* param_1);
+  bool (__fastcall* IsPosValidForTurnAngle)(struct Living* this, const void* edx, const struct MapCoords* param_1);
 };
 static_assert(sizeof(struct LivingVftable) == 0xb40, "Data type is of wrong size");
 

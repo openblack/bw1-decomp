@@ -789,7 +789,7 @@ bool32_t __fastcall IsToyDie__16GameThingWithPosFP8Creature(struct GameThingWith
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsToyCuddly__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature)
+bool32_t __fastcall IsToyCuddly__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
     return 0;
 }
@@ -804,31 +804,31 @@ bool32_t __fastcall IsLiving__16GameThingWithPosFP8Creature(const struct GameThi
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsFence__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsFence__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsSpellIcon__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsSpellIcon__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall CanBeUsedForThrowingDamageByCreature__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature)
+bool32_t __fastcall CanBeUsedForThrowingDamageByCreature__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
     return 0;
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsCreatureWhoSeemsFriendly__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature)
+bool32_t __fastcall IsCreatureWhoSeemsFriendly__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
     return 0;
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall CanBeThrownInTheSeaPlayfully__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature)
+bool32_t __fastcall CanBeThrownInTheSeaPlayfully__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature)
 {
     return 0;
 }
@@ -888,7 +888,7 @@ bool32_t __fastcall IsActive__16GameThingWithPosCFv(const struct GameThingWithPo
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsObjectTurningTooFastForCameraToFollowSmoothly__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsObjectTurningTooFastForCameraToFollowSmoothly__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
@@ -915,7 +915,7 @@ float __fastcall CalculatePeopleHidingIndicator__16GameThingWithPosFv(struct Gam
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsReadyForNewScriptAction__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsReadyForNewScriptAction__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
@@ -978,7 +978,7 @@ bool32_t __fastcall IsAChild__16GameThingWithPosFv(struct GameThingWithPos* this
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsFootball__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsFootball__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
@@ -1092,7 +1092,7 @@ bool32_t __fastcall IsSkeleton__16GameThingWithPosCFv(const struct GameThingWith
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsPoisoned__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsPoisoned__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     asm("xor.s              al, al");                                   // 0x00402400    32c0
     asm("ret");                                                         // 0x00402402    c3
@@ -1126,7 +1126,7 @@ bool32_t __fastcall IsPot__16GameThingWithPosFv(struct GameThingWithPos* this)
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsComputerPlayer__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsComputerPlayer__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
@@ -1137,25 +1137,25 @@ void __fastcall SetSkeleton__16GameThingWithPosFi(struct GameThingWithPos* this,
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsSpellSeed__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsSpellSeed__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsSpellShield__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsSpellShield__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsPileResource__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsPileResource__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }
 
 __attribute__((XOR32rr_REV))
-bool32_t __fastcall IsScriptTimer__16GameThingWithPosFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsScriptTimer__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
     return 0;
 }

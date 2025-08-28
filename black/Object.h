@@ -64,9 +64,9 @@ struct ObjectVftable
 {
   struct GameThingWithPosVftable super;  /* 0x0 */
   void (__fastcall* DestroyedByBeam)(struct Object* this);  /* 0x500 */
-  float (__fastcall* GetXAngle)(const struct Object* this);
-  float (__fastcall* GetYAngle)(const struct Object* this);
-  float (__fastcall* GetZAngle)(const struct Object* this);
+  float (__fastcall* GetXAngle)(struct Object* this);
+  float (__fastcall* GetYAngle)(struct Object* this);
+  float (__fastcall* GetZAngle)(struct Object* this);
   void (__fastcall* SetFocus)(struct Object* this, const void* edx, const struct LHPoint* focus);  /* 0x510 */
   void (__fastcall* SetXYZAngles)(struct Object* this, const void* edx, float x, float y, float z);
   void (__fastcall* SetXYZAnglesAndScale)(struct Object* this, const void* edx, float x, float y, float z, float scale);
@@ -86,8 +86,8 @@ struct ObjectVftable
   void (__fastcall* RemoveMapObjectFromCell)(struct Object* this, const void* edx, struct MapCell* param_1);  /* 0x550 */
   bool (__fastcall* IsObjectInMap_1)(struct Object* this, const void* edx, struct MapCell* cell);
   bool (__fastcall* IsObjectInMapCheck)(struct Object* this);
-  int (__fastcall* MoveMapObject)(struct Object* this, const void* edx, struct MapCoords* param_2);
-  void (__fastcall* ActualMoveMapObject)(struct Object* this, const void* edx, struct MapCoords* param_1);  /* 0x560 */
+  int (__fastcall* MoveMapObject)(struct Object* this, const void* edx, const struct MapCoords* param_2);
+  void (__fastcall* ActualMoveMapObject)(struct Object* this, const void* edx, const struct MapCoords* param_1);  /* 0x560 */
   struct Object* (__fastcall* GetPtr)(struct Object* this);
   float (__fastcall* GetMeshRadius)(const struct Object* this);
   struct Game3DObject* (__fastcall* Get3DObjectForPSys)(struct Object* this);
@@ -114,7 +114,7 @@ struct ObjectVftable
   float (__fastcall* GetSacrificeValue)(struct Object* this);  /* 0x5c0 */
   void (__fastcall* ReduceLifeDueToBurning)(struct Object* this, const void* edx, float param_1, struct GPlayer* param_2);
   void (__fastcall* FillInEffectDefenceMultiplier)(struct Object* this, const void* edx, struct EffectNumbers* param_1);
-  void (__fastcall* ApplyEffect)(struct Object* this, const void* edx, const void* param_1, struct EffectValues* param_2);
+  void (__fastcall* ApplyEffect)(struct Object* this, const void* edx, struct EffectValues* param_1, int param_2);
   float (__fastcall* GetDamageEffect)(struct Object* this, const void* edx, struct EffectValues* values);  /* 0x5d0 */
   float (__fastcall* GetHealEffect)(struct Object* this, const void* edx, struct EffectValues* values);
   void* (__fastcall* GetActualObjectToEffect)(struct Object* this, const void* edx, struct GPlayer* player, bool param_2);
@@ -155,7 +155,7 @@ struct ObjectVftable
   float (__fastcall* GetWoodValue)(struct Object* this);
   enum FOOD_TYPE (__fastcall* GetFoodType)(struct Object* this);
   float (__fastcall* GetImpressiveValue)(struct Object* this);
-  bool (__fastcall* IsSpellSeedReturnPoint)(struct Object* this);  /* 0x670 */
+  bool (__fastcall* IsSpellSeedReturnPoint)(const struct Object* this);  /* 0x670 */
   bool (__fastcall* IsABeliever)(struct Object* this);
   struct MultiMapFixed* (__fastcall* AsMultiMapFixed)(struct Object* this);
   float (__fastcall* ApplyWaterSpell)(struct Object* this, const void* edx, struct SpellWater* spell);
@@ -200,11 +200,11 @@ struct ObjectVftable
   bool32_t (__fastcall* IsTuggable)(struct Object* this);
   uint32_t (__fastcall* ValidToApplyThisToObject)(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct Object* param_2);
   uint32_t (__fastcall* ApplyThisToObject)(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct Object* param_2, struct GestureSystemPacketData* param_3);  /* 0x720 */
-  uint32_t (__fastcall* ValidToApplyThisToMapCoord)(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct MapCoords* param_2);
+  uint32_t (__fastcall* ValidToApplyThisToMapCoord)(struct Object* this, const void* edx, struct GInterfaceStatus* status, const struct MapCoords* param_2);
   uint32_t (__fastcall* ApplyThisToMapCoord)(struct Object* this, const void* edx, struct GInterfaceStatus* status, const struct MapCoords* param_2, struct GestureSystemPacketData* param_3);
   uint32_t (__fastcall* ValidForLockedApplyProcess)(struct Object* this, const void* edx, struct GInterfaceStatus* status);
   uint32_t (__fastcall* ApplyUnlockProcess)(struct Object* this, const void* edx, struct GInterfaceStatus* status);  /* 0x730 */
-  uint32_t (__fastcall* IsInterfacePowerUpWhenInHand)(struct Object* this);
+  uint32_t (__fastcall* IsInterfacePowerUpWhenInHand)(const struct Object* this);
   uint32_t (__fastcall* ApplyOnlyAfterRecSystem)(struct Object* this);
   uint32_t (__fastcall* ApplyOnlyAfterReleased)(struct Object* this);
   uint32_t (__fastcall* InterfaceValidToTap)(struct Object* this, const void* edx, struct GInterfaceStatus* status);  /* 0x740 */
@@ -353,13 +353,13 @@ uint32_t __fastcall Save__6ObjectFR10GameOSFile(struct GameThing* this, const vo
 // win1.41 0063a020 mac 103d1940 Object::ResolveLoad(void)
 void __fastcall ResolveLoad__6ObjectFv(struct GameThing* this) asm("?ResolveLoad@Object@@UAEXXZ");
 // win1.41 00402600 mac 1004b110 Object::GetLife(void)
-float __fastcall GetLife__6ObjectFv(const struct GameThingWithPos* this) asm("?GetLife@Object@@UAEMXZ");
+float __fastcall GetLife__6ObjectFv(struct GameThingWithPos* this) asm("?GetLife@Object@@UAEMXZ");
 // win1.41 00402520 mac 10044cb0 Object::GetScale(void)
-float __fastcall GetScale__6ObjectFv(const struct GameThingWithPos* this) asm("?GetScale@Object@@UAEMXZ");
+float __fastcall GetScale__6ObjectFv(struct GameThingWithPos* this) asm("?GetScale@Object@@UAEMXZ");
 // win1.41 00639200 mac 103d3c80 Object::SetScale(float)
 void __fastcall SetScale__6ObjectFf(struct GameThingWithPos* this, const void* edx, float scale);
 // win1.41 004027c0 mac 103d58a0 Object::GetDistanceFromObject(MapCoords &)
-float __fastcall GetDistanceFromObject__6ObjectFRC9MapCoords(const struct GameThingWithPos* this, const void* edx, struct MapCoords* target) asm("?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z");
+float __fastcall GetDistanceFromObject__6ObjectFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* target) asm("?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z");
 // win1.41 006394e0 mac 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
 void __fastcall GetPhysicsMovementDirection__6ObjectFP7LHPoint(struct GameThingWithPos* this, const void* edx, struct LHPoint* pos) asm("?GetPhysicsMovementDirection@Object@@UAEXPAULHPoint@@@Z");
 // win1.41 00402710 mac 10032610 Object::IsMoving( const(void))
@@ -423,11 +423,11 @@ void __fastcall CalculateWhereIWillBeAfterNSeconds__6ObjectFfP7LHPoint(struct Ga
 // win1.41 00402b40 mac 1016dc30 Object::GetText(void)
 const char* __fastcall GetText__6ObjectFv(struct GameThingWithPos* this) asm("?GetText@Object@@UAEPBDXZ");
 // win1.41 00638120 mac 10030760 Object::GetHeight(void)
-float __fastcall GetHeight__6ObjectFv(const struct GameThingWithPos* this) asm("?GetHeight@Object@@UAEMXZ");
+float __fastcall GetHeight__6ObjectFv(struct GameThingWithPos* this) asm("?GetHeight@Object@@UAEMXZ");
 // win1.41 00639b20 mac 103d2290 Object::SetInScript(int)
 void __fastcall SetInScript__6ObjectFi(struct GameThingWithPos* this, const void* edx, int32_t param_1) asm("?SetInScript@Object@@UAEXH@Z");
 // win1.41 004029f0 mac 100219d0 Object::IsObject( const(void))
-bool32_t __fastcall IsObject__6ObjectCFv(const struct GameThingWithPos* this) asm("?IsObject@Object@@UAE_NXZ");
+bool32_t __fastcall IsObject__6ObjectCFv(struct GameThingWithPos* this) asm("?IsObject@Object@@UAE_NXZ");
 // win1.41 00638580 mac 103d4f70 Object::GetQueryFirstEnumText(void)
 enum HELP_TEXT __fastcall GetQueryFirstEnumText__6ObjectFv(struct GameThingWithPos* this) asm("?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ");
 // win1.41 00638590 mac 103d4f10 Object::GetQueryLastEnumText(void)
@@ -439,11 +439,11 @@ uint32_t __fastcall GetFOVHelpCondition__6ObjectFv(struct GameThingWithPos* this
 // win1.41 0063ab20 mac 103cfe90 Object::DestroyedByBeam(void)
 void __fastcall DestroyedByBeam__6ObjectFv(struct Object* this) asm("?DestroyedByBeam@Object@@UAEXXZ");
 // win1.41 004024f0 mac 10055b70 Object::GetXAngle(void)
-float __fastcall GetXAngle__6ObjectFv(const struct Object* this) asm("?GetXAngle@Object@@UAEMXZ");
+float __fastcall GetXAngle__6ObjectFv(struct Object* this) asm("?GetXAngle@Object@@UAEMXZ");
 // win1.41 00402500 mac 1004c930 Object::GetYAngle(void)
-float __fastcall GetYAngle__6ObjectFv(const struct Object* this) asm("?GetYAngle@Object@@UAEMXZ");
+float __fastcall GetYAngle__6ObjectFv(struct Object* this) asm("?GetYAngle@Object@@UAEMXZ");
 // win1.41 00402510 mac 10055b30 Object::GetZAngle(void)
-float __fastcall GetZAngle__6ObjectFv(const struct Object* this) asm("?GetZAngle@Object@@UAEMXZ");
+float __fastcall GetZAngle__6ObjectFv(struct Object* this) asm("?GetZAngle@Object@@UAEMXZ");
 // win1.41 006393a0 mac 100299c0 Object::SetFocus(LHPoint const &)
 void __fastcall SetFocus__6ObjectFRC7LHPoint(struct Object* this, const void* edx, const struct LHPoint* focus) asm("?SetFocus@Object@@UAEXPBULHPoint@@@Z");
 // win1.41 00638d00 mac 10043070 Object::SetXYZAngles(float, float, float)
@@ -485,7 +485,7 @@ bool __fastcall IsObjectInMapCheck__6ObjectFv(struct Object* this) asm("?IsObjec
 // win1.41 00636a40 mac 1004d070 Object::MoveMapObject(MapCoords const &)
 uint32_t __fastcall MoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, struct MapCoords* param_2);
 // win1.41 00638040 mac 10055200 Object::ActualMoveMapObject(MapCoords const &)
-void __fastcall ActualMoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, struct MapCoords* param_2);
+void __fastcall ActualMoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2);
 // win1.41 00402570 mac 103dca60 Object::GetPtr(void)
 struct Object* __fastcall GetPtr__6ObjectFv(struct Object* this) asm("?GetPtr@Object@@UAEPAV1@XZ");
 // win1.41 00636bd0 mac 103d8710 Object::GetMeshRadius( const(void))
@@ -539,7 +539,7 @@ void __fastcall ReduceLifeDueToBurning__6ObjectFfP7GPlayer(struct Object* this, 
 // win1.41 00637900 mac 103d6a00 Object::FillInEffectDefenceMultiplier(EffectNumbers &)
 void __fastcall FillInEffectDefenceMultiplier__6ObjectFR13EffectNumbers(struct Object* this, const void* edx, struct EffectNumbers* param_1) asm("?FillInEffectDefenceMultiplier@Object@@UAEXPAVEffectNumbers@@@Z");
 // win1.41 00637980 mac 103d6510 Object::ApplyEffect(EffectValues &, int)
-void __fastcall ApplyEffect__6ObjectFR12EffectValuesi(struct Object* this, const void* edx, const void* param_1, struct EffectValues* param_2) asm("?ApplyEffect@Object@@UAEXPBXPAVEffectValues@@@Z");
+void __fastcall ApplyEffect__6ObjectFR12EffectValuesi(struct Object* this, const void* edx, struct EffectValues* param_1, int param_2) asm("?ApplyEffect@Object@@UAEXPBXPAVEffectValues@@@Z");
 // win1.41 00637d00 mac 103d6120 Object::GetDamageEffect(EffectValues &)
 float __fastcall GetDamageEffect__6ObjectFR12EffectValues(struct Object* this, const void* edx, struct EffectValues* values) asm("?GetDamageEffect@Object@@UAEMPAVEffectValues@@@Z");
 // win1.41 00637d80 mac 103d6050 Object::GetHealEffect(EffectValues &)
@@ -621,7 +621,7 @@ enum FOOD_TYPE __fastcall GetFoodType__6ObjectFv(struct Object* this) asm("?GetF
 // win1.41 00639390 mac 103d3840 Object::GetImpressiveValue(void)
 float __fastcall GetImpressiveValue__6ObjectFv(struct Object* this) asm("?GetImpressiveValue@Object@@UAEMXZ");
 // win1.41 00402730 mac 1056f400 Object::IsSpellSeedReturnPoint( const(void))
-bool __fastcall IsSpellSeedReturnPoint__6ObjectCFv(struct Object* this) asm("?IsSpellSeedReturnPoint@Object@@UAE_NXZ");
+bool __fastcall IsSpellSeedReturnPoint__6ObjectCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@Object@@UAE_NXZ");
 // win1.41 00402740 mac 104d62b0 Object::IsABeliever(void)
 bool __fastcall IsABeliever__6ObjectFv(struct Object* this) asm("?IsABeliever@Object@@UAE_NXZ");
 // win1.41 004192c0 mac 100a9dc0 Object::AsMultiMapFixed(void)
@@ -711,7 +711,7 @@ uint32_t __fastcall ValidToApplyThisToObject__6ObjectFP16GInterfaceStatusP6Objec
 // win1.41 004028c0 mac 10513670 Object::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
 uint32_t __fastcall ApplyThisToObject__6ObjectFP16GInterfaceStatusP6ObjectP23GestureSystemPacketData(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct Object* param_2, struct GestureSystemPacketData* param_3) asm("?ApplyThisToObject@Object@@UAEIPAVGInterfaceStatus@@PAV1@PAVGestureSystemPacketData@@@Z");
 // win1.41 004028d0 mac 10110bf0 Object::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
-uint32_t __fastcall ValidToApplyThisToMapCoord__6ObjectFP16GInterfaceStatusRC9MapCoords(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct MapCoords* param_2) asm("?ValidToApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PAUMapCoords@@@Z");
+uint32_t __fastcall ValidToApplyThisToMapCoord__6ObjectFP16GInterfaceStatusRC9MapCoords(struct Object* this, const void* edx, struct GInterfaceStatus* status, const struct MapCoords* param_2) asm("?ValidToApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PAUMapCoords@@@Z");
 // win1.41 004028e0 mac 10110b70 Object::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
 uint32_t __fastcall ApplyThisToMapCoord__6ObjectFP16GInterfaceStatusRC9MapCoordsP23GestureSystemPacketData(struct Object* this, const void* edx, struct GInterfaceStatus* status, const struct MapCoords* param_2, struct GestureSystemPacketData* param_3) asm("?ApplyThisToMapCoord@Object@@UAEIPAVGInterfaceStatus@@PBUMapCoords@@PAVGestureSystemPacketData@@@Z");
 // win1.41 004028f0 mac 1055f210 Object::ValidForLockedApplyProcess(GInterfaceStatus *)
@@ -719,7 +719,7 @@ uint32_t __fastcall ValidForLockedApplyProcess__6ObjectFP16GInterfaceStatus(stru
 // win1.41 00402900 mac 1016baf0 Object::ApplyUnlockProcess(GInterfaceStatus *)
 uint32_t __fastcall ApplyUnlockProcess__6ObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?ApplyUnlockProcess@Object@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 00402910 mac 10364e10 Object::IsInterfacePowerUpWhenInHand( const(void))
-uint32_t __fastcall IsInterfacePowerUpWhenInHand__6ObjectCFv(struct Object* this) asm("?IsInterfacePowerUpWhenInHand@Object@@UAEIXZ");
+uint32_t __fastcall IsInterfacePowerUpWhenInHand__6ObjectCFv(const struct Object* this) asm("?IsInterfacePowerUpWhenInHand@Object@@UAEIXZ");
 // win1.41 00402920 mac 103ad050 Object::ApplyOnlyAfterRecSystem(void)
 uint32_t __fastcall ApplyOnlyAfterRecSystem__6ObjectFv(struct Object* this) asm("?ApplyOnlyAfterRecSystem@Object@@UAEIXZ");
 // win1.41 00402930 mac 10101e60 Object::ApplyOnlyAfterReleased(void)

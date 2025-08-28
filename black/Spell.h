@@ -30,7 +30,7 @@ struct SpellVftable
   void (__fastcall* DrawSpellSeed)(struct Spell* this);
   void (__fastcall* Draw)(struct Spell* this);
   void (__fastcall* DebugDraw)(struct Spell* this);  /* 0x510 */
-  bool (__fastcall* NeedsContinualPackets)(struct Spell* this, const void* edx, const struct GInterfaceStatus* param_1);
+  bool (__fastcall* NeedsContinualPackets)(struct Spell* this, const void* edx, struct GInterfaceStatus* param_1);
   void (__fastcall* HasEnoughChantsAndLifeForRecast)(struct Spell* this);
   void (__fastcall* UpdateStruckReaction)(struct Spell* this);
   void (__fastcall* SetUpDestroyedReaction)(struct Spell* this);  /* 0x520 */
@@ -38,7 +38,7 @@ struct SpellVftable
   uint32_t (__fastcall* Process)(struct Spell* this);
   void (__fastcall* SpellEvent)(struct Spell* this, const void* edx, const struct SpellEventInfo* param_1);
   void (__fastcall* CloseDown)(struct Spell* this);  /* 0x530 */
-  int32_t (__fastcall* InitWithPos)(struct Spell* this, const void* edx, struct GameThing* param_1, struct MapCoords* param_2, struct SpellCastData* param_3, const struct PSysProcessInfo* param_4);
+  int32_t (__fastcall* InitWithPos)(struct Spell* this, const void* edx, struct GameThing* param_1, const struct MapCoords* param_2, struct SpellCastData* param_3, const struct PSysProcessInfo* param_4);
   int32_t (__fastcall* InitWithObject)(struct Spell* this, const void* edx, struct GameThing* param_1, struct Object* param_2, struct SpellCastData* param_3, const struct PSysProcessInfo* param_4);
   float (__fastcall* CalculateCostToMaintain)(struct Spell* this);
   void (__fastcall* AdjustSpellSeedPos)(struct Spell* this, const void* edx, struct MapCoords* pos);  /* 0x540 */

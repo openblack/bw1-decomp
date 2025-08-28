@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.extern ?Delete@Abode@@UAEXH@Z
+.extern ?Delete@Abode@@UAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
@@ -1573,7 +1573,7 @@ _jmp_addr_0x00737380:    {disp32} mov       dword ptr [data_bytes + 0x3dbcf0], 0
                          mov                eax, dword ptr [esi]                           // 0x00737413    8b06
                          call               dword ptr [eax + 0x910]                        // 0x00737415    ff9010090000
                          mov.s              ecx, esi                                       // 0x0073741b    8bce
-                         call               ?Delete@Abode@@UAEXH@Z                         // 0x0073741d    e8eeb7ccff
+                         call               ?Delete@Abode@@UAEXXZ                         // 0x0073741d    e8eeb7ccff
                          pop                esi                                            // 0x00737422    5e
                          ret                                                               // 0x00737423    c3
                          nop                                                               // 0x00737424    90

@@ -50,7 +50,7 @@ void __fastcall SetZero__5AbodeFv(struct Abode* this)
     __builtin_unreachable();
 }
 
-void __fastcall Delete__5AbodeFv(struct Base* this, const void* edx, int param_1)
+void __fastcall Delete__5AbodeFv(struct Base* this)
 {
     asm("push               esi");                                      // 0x00402c10    56
     asm("mov.s              esi, ecx");                                 // 0x00402c11    8bf1

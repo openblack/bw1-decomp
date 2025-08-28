@@ -14,7 +14,7 @@ struct LH3DStormVftable
   void (__fastcall* Update)(struct LH3DStorm* this, const void* edx, float param_1);  /* 0x0 */
   void (__fastcall* DrawClouds)(struct LH3DStorm* this);
   void (__fastcall* DebugDraw)(struct LH3DStorm* this);
-  void (__fastcall* CalcAtmos__)(struct LH3DStorm* this, const void* edx, struct LHPoint* point, struct WeatherInfo* info);
+  void (__fastcall* CalcAtmos)(struct LH3DStorm* this, const void* edx, struct LHPoint* point, struct WeatherInfo* info);
   void (__fastcall* __dt)(struct LH3DStorm* this);  /* 0x10 */
 };
 static_assert(sizeof(struct LH3DStormVftable) == 0x14, "Data type is of wrong size");

@@ -1,27 +1,27 @@
 #include "Object.h"
 
-float __fastcall GetXAngle__6ObjectFv(const struct Object* this)
+float __fastcall GetXAngle__6ObjectFv(struct Object* this)
 {
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004024f0    d90598a38a00
     asm("ret");                                                         // 0x004024f6    c3
     __builtin_unreachable();
 }
 
-float __fastcall GetYAngle__6ObjectFv(const struct Object* this)
+float __fastcall GetYAngle__6ObjectFv(struct Object* this)
 {
     asm("{disp8} fld        dword ptr [ecx + 0x4c]");                   // 0x00402500    d9414c
     asm("ret");                                                         // 0x00402503    c3
     __builtin_unreachable();
 }
 
-float __fastcall GetZAngle__6ObjectFv(const struct Object* this)
+float __fastcall GetZAngle__6ObjectFv(struct Object* this)
 {
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x00402510    d90598a38a00
     asm("ret");                                                         // 0x00402516    c3
     __builtin_unreachable();
 }
 
-float __fastcall GetScale__6ObjectFv(const struct GameThingWithPos* this)
+float __fastcall GetScale__6ObjectFv(struct GameThingWithPos* this)
 {
     asm("{disp8} fld        dword ptr [ecx + 0x50]");                   // 0x00402520    d94150
     asm("ret");                                                         // 0x00402523    c3
@@ -110,7 +110,7 @@ struct LH3DSprite* __fastcall GetBeliefSprite__6ObjectFv(struct Object* this)
     return 0;
 }
 
-float __fastcall GetLife__6ObjectFv(const struct GameThingWithPos* this)
+float __fastcall GetLife__6ObjectFv(struct GameThingWithPos* this)
 {
     asm("{disp8} fld        dword ptr [ecx + 0x48]");                   // 0x00402600    d94148
     asm("ret");                                                         // 0x00402603    c3
@@ -241,7 +241,7 @@ bool __fastcall IsMoving__6ObjectCFv(const struct GameThingWithPos* this)
 }
 
 __attribute__((XOR32rr_REV))
-bool __fastcall IsSpellSeedReturnPoint__6ObjectCFv(struct Object* this)
+bool __fastcall IsSpellSeedReturnPoint__6ObjectCFv(const struct Object* this)
 {
     return 0;
 }
@@ -297,7 +297,7 @@ void __fastcall EndOnFire__6ObjectFv(struct Object* this)
     return;
 }
 
-float __fastcall GetDistanceFromObject__6ObjectFRC9MapCoords(const struct GameThingWithPos* this, const void* edx, struct MapCoords* target)
+float __fastcall GetDistanceFromObject__6ObjectFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* target)
 {
     asm("{disp8} mov        eax, dword ptr [esp + 0x04]");              // 0x004027c0    8b442404
     asm("push               eax");                                      // 0x004027c4    50
@@ -392,7 +392,7 @@ uint32_t __fastcall ApplyThisToObject__6ObjectFP16GInterfaceStatusP6ObjectP23Ges
 }
 
 __attribute__((XOR32rr_REV))
-uint32_t __fastcall ValidToApplyThisToMapCoord__6ObjectFP16GInterfaceStatusRC9MapCoords(struct Object* this, const void* edx, struct GInterfaceStatus* status, struct MapCoords* param_2)
+uint32_t __fastcall ValidToApplyThisToMapCoord__6ObjectFP16GInterfaceStatusRC9MapCoords(struct Object* this, const void* edx, struct GInterfaceStatus* status, const struct MapCoords* param_2)
 {
     return 0;
 }
@@ -415,7 +415,7 @@ uint32_t __fastcall ApplyUnlockProcess__6ObjectFP16GInterfaceStatus(struct Objec
 }
 
 __attribute__((XOR32rr_REV))
-uint32_t __fastcall IsInterfacePowerUpWhenInHand__6ObjectCFv(struct Object* this)
+uint32_t __fastcall IsInterfacePowerUpWhenInHand__6ObjectCFv(const struct Object* this)
 {
     return 0;
 }
@@ -492,7 +492,7 @@ bool32_t __fastcall IsEffectReceiver__6ObjectFP12EffectValues(struct Object* thi
     return 1;
 }
 
-bool32_t __fastcall IsObject__6ObjectCFv(const struct GameThingWithPos* this)
+bool32_t __fastcall IsObject__6ObjectCFv(struct GameThingWithPos* this)
 {
     return 1;
 }

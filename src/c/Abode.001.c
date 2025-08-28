@@ -110,12 +110,12 @@ uint32_t __fastcall GetCreatureBeliefType__5AbodeFv(struct GameThingWithPos* thi
     return 3;
 }
 
-uint32_t __fastcall GetCreatureMimicType__5AbodeFv(const struct GameThingWithPos* this)
+uint32_t __fastcall GetCreatureMimicType__5AbodeFv(struct GameThingWithPos* this)
 {
     return 5;
 }
 
-uint32_t __fastcall GetOrigin__5AbodeFv(const struct GameThingWithPos* this)
+uint32_t __fastcall GetOrigin__5AbodeFv(struct GameThingWithPos* this)
 {
     return 1;
 }
