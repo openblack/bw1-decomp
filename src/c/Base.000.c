@@ -6,7 +6,7 @@ void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, s
 {
 }
 
-void __fastcall Delete__4BaseFi(struct Base* this, const void* edx, int param_1)
+void __fastcall Delete__4BaseFv(struct Base* this)
 {
     if (this)
     {

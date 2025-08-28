@@ -1,6 +1,6 @@
 #include "PlannedMultiMapFixed.h"
 
-float __fastcall GetScale__20PlannedMultiMapFixedFv(const struct GameThingWithPos* this)
+float __fastcall GetScale__20PlannedMultiMapFixedFv(struct GameThingWithPos* this)
 {
     return ((const struct PlannedMultiMapFixed*)this)->scale;
 }

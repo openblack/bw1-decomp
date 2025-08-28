@@ -71,12 +71,12 @@ static_assert(sizeof(struct GMoveBy) == 0xc, "Data type is of wrong size");
 struct MobileWallHugVftable
 {
   struct MobileVftable super;  /* 0x0 */
-  bool (__fastcall* AreWeThere)(struct MobileWallHug* this, const void* edx, struct MapCoords* param_1, float param_2);  /* 0x85c */
+  bool (__fastcall* AreWeThere)(struct MobileWallHug* this, const void* edx, const struct MapCoords* param_1, float param_2);  /* 0x85c */
   struct MapCoords* (__fastcall* GetDestPos)(struct MobileWallHug* this);  /* 0x860 */
   void (__fastcall* SetSpeed)(struct MobileWallHug* this, const void* edx, int speed);
   void (__fastcall* SetTowardsAngle)(struct MobileWallHug* this, const void* edx, uint16_t angle);
   void (__fastcall* MoveTo3D)(struct MobileWallHug* this);
-  void (__fastcall* SetNewWander)(struct MobileWallHug* this, const void* edx, struct MapCoords* param_1, int32_t param_2, int32_t param_3);  /* 0x870 */
+  void (__fastcall* SetNewWander)(struct MobileWallHug* this, const void* edx, const struct MapCoords* param_1, int32_t param_2, int32_t param_3);  /* 0x870 */
 };
 static_assert(sizeof(struct MobileWallHugVftable) == 0x874, "Data type is of wrong size");
 

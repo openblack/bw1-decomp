@@ -26,7 +26,7 @@ struct BuildingSiteVftable
   void (__fastcall* Init)(struct BuildingSite* this);  /* 0xfc */
   void (__fastcall* Process)(struct BuildingSite* this);  /* 0x100 */
   uint32_t (__fastcall* GetWoodForStats)(struct BuildingSite* this);
-  struct Pot* (__fastcall* GetPileWood)(struct BuildingSite* this, const void* edx, struct MapCoords* coords);
+  struct Pot* (__fastcall* GetPileWood)(struct BuildingSite* this, const void* edx, const struct MapCoords* coords);
   void (__fastcall* SetPileWood)(struct BuildingSite* this, const void* edx, struct Pot* wood_pile);
   void (__fastcall* CreatePileWood)(struct BuildingSite* this);                                                           /* 0x110 */
   void (__fastcall* GetResourcePosAndYAngle)(struct BuildingSite* this, const void* edx, uint32_t resource_type, uint32_t param_2, float* out_pos_and_angle);

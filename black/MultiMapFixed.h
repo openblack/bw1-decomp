@@ -196,7 +196,7 @@ bool32_t __fastcall IsBuildingWhichIsBeingBuilt__13MultiMapFixedFP8Creature(stru
 // win1.41 00422050 mac 100a56e0 MultiMapFixed::IsWonder(void)
 bool32_t __fastcall IsWonder__13MultiMapFixedFv(struct GameThingWithPos* this) asm("?IsWonder@MultiMapFixed@@UAE_NXZ");
 // win1.41 0052f590 mac 100ddc50 MultiMapFixed::CreateBuildingSite(void)
-bool32_t __fastcall CreateBuildingSite__13MultiMapFixedFv(const struct GameThingWithPos* this) asm("?CreateBuildingSite@MultiMapFixed@@UAE_NXZ");
+bool32_t __fastcall CreateBuildingSite__13MultiMapFixedFv(struct GameThingWithPos* this) asm("?CreateBuildingSite@MultiMapFixed@@UAE_NXZ");
 // win1.41 0052e400 mac 10033c30 MultiMapFixed::GetMapChild(MapCell const &)
 struct Object* __fastcall GetMapChild__13MultiMapFixedFRC7MapCell(struct Object* this, const void* edx, const struct MapCell* cell) asm("?GetMapChild@MultiMapFixed@@UAEPAVObject@@PBUMapCell@@@Z");
 // win1.41 0052e420 mac 100e0ec0 MultiMapFixed::SetMapChild(Object *, MapCell *)
@@ -206,7 +206,7 @@ void __fastcall InsertMapObject__13MultiMapFixedFv(struct Object* this) asm("?In
 // win1.41 0052e7b0 mac 100e0580 MultiMapFixed::RemoveMapObject(void)
 void __fastcall RemoveMapObject__13MultiMapFixedFv(struct Object* this) asm("?RemoveMapObject@MultiMapFixed@@UAEXXZ");
 // win1.41 0052e4f0 mac 100e0cd0 MultiMapFixed::MoveMapObject(MapCoords const &)
-int __fastcall MoveMapObject__13MultiMapFixedFRC9MapCoords(struct Object* this, const void* edx, struct MapCoords* param_2) asm("?MoveMapObject@MultiMapFixed@@UAEHPAUMapCoords@@@Z");
+int __fastcall MoveMapObject__13MultiMapFixedFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2) asm("?MoveMapObject@MultiMapFixed@@UAEHPAUMapCoords@@@Z");
 // win1.41 0052f5e0 mac 10099940 MultiMapFixed::ReduceLife(float, GPlayer *)
 void __fastcall ReduceLife__13MultiMapFixedFfP7GPlayer(struct Object* this, const void* edx, float value, struct GPlayer* player) asm("?ReduceLife@MultiMapFixed@@UAEXMPAVGPlayer@@@Z");
 // win1.41 0052f700 mac 10050020 MultiMapFixed::Process(void)

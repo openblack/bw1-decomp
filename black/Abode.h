@@ -165,7 +165,7 @@ void __fastcall __dt__5AbodeFUi(struct Base* this, const void* edx, uint32_t par
 // win1.41 00402b60 mac inline Abode::_dt(void)
 void __fastcall __dt__5AbodeFv(struct Base* this) asm("??1Abode@@UAE@XZ");
 // win1.41 00402c10 mac 1033b510 Abode::Delete(void)
-void __fastcall Delete__5AbodeFv(struct Base* this, const void* edx, int param_1) asm("?Delete@Abode@@UAEXH@Z");
+void __fastcall Delete__5AbodeFv(struct Base* this) asm("?Delete@Abode@@UAEXXZ");
 // win1.41 00402c60 mac 100c6f40 Abode::ToBeDeleted(int)
 void __fastcall ToBeDeleted__5AbodeFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Abode@@UAEXH@Z");
 // win1.41 00405f70 mac 1006d070 Abode::GetPlayer(void)
@@ -201,7 +201,7 @@ struct MapCoords * __fastcall GetArrivePos__5AbodeFv(struct GameThingWithPos* th
 // win1.41 00401740 mac 1040f9d0 Abode::GetCreatureBeliefType(void)
 uint32_t __fastcall GetCreatureBeliefType__5AbodeFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@Abode@@UAEIXZ");
 // win1.41 00401760 mac 10110c50 Abode::GetOrigin(void)
-uint32_t __fastcall GetOrigin__5AbodeFv(const struct GameThingWithPos* this) asm("?GetOrigin@Abode@@UAEIXZ");
+uint32_t __fastcall GetOrigin__5AbodeFv(struct GameThingWithPos* this) asm("?GetOrigin@Abode@@UAEIXZ");
 // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
 bool __fastcall IsInteractable__5AbodeFv(struct GameThingWithPos* this) asm("?IsInteractable@Abode@@UAE_NXZ");
 // win1.41 00401720 mac 10435a10 Abode::IsCastShadowAtNight(void)
@@ -213,7 +213,7 @@ bool32_t __fastcall CanBeStompedOnByCreature__5AbodeFP8Creature(struct GameThing
 // win1.41 004e3fa0 mac 105e63e0 Abode::CanBeKickedByCreature(Creature *)
 bool32_t __fastcall CanBeKickedByCreature__5AbodeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeKickedByCreature@Abode@@UAE_NPAVCreature@@@Z");
 // win1.41 00401750 mac 100a48c0 Abode::GetCreatureMimicType(void)
-uint32_t __fastcall GetCreatureMimicType__5AbodeFv(const struct GameThingWithPos* this) asm("?GetCreatureMimicType@Abode@@UAEIXZ");
+uint32_t __fastcall GetCreatureMimicType__5AbodeFv(struct GameThingWithPos* this) asm("?GetCreatureMimicType@Abode@@UAEIXZ");
 // win1.41 004d1b60 mac 10242f80 Abode::GetHowMuchCreatureWantsToLookAtMe(void)
 float __fastcall GetHowMuchCreatureWantsToLookAtMe__5AbodeFv(struct GameThingWithPos* this) asm("?GetHowMuchCreatureWantsToLookAtMe@Abode@@UAEMXZ");
 // win1.41 0063b940 mac 103da700 Abode::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)

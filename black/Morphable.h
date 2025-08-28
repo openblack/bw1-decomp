@@ -38,7 +38,7 @@ static_assert(sizeof(struct Morphable_field_0x4314_t) == 0x14, "Data type is of 
 struct MorphableVftable
 {
   void (__fastcall* SetAnimTime)(struct Morphable* this, const void* edx, int param_1, int param_2);  /* 0x0 */
-  uint32_t (__fastcall* LoadBase)(struct Morphable* this, const void* edx, const char* path);
+  uint32_t (__fastcall* LoadBase)(struct Morphable* this, const void* edx, char* path);
   void (__fastcall* SetSize)(struct Morphable* this, const void* edx, float scale);
   void (__fastcall* MorphAnims)(struct Morphable* this);
   void (__fastcall* MorphTexture)(struct Morphable* this);  /* 0x10 */

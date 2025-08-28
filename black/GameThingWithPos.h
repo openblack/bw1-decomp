@@ -34,16 +34,16 @@ struct GameThingWithPosVftable
   uint32_t (__fastcall* GetCreatureBeliefType)(struct GameThingWithPos* this);
   uint32_t (__fastcall* GetCreatureBeliefListType)(struct GameThingWithPos* this);  /* 0x110 */
   struct Citadel* (__fastcall* GetCitadel)(struct GameThingWithPos* this);
-  uint32_t (__fastcall* GetOrigin)(const struct GameThingWithPos* this);
-  float (__fastcall* GetLife)(const struct GameThingWithPos* this);
-  float (__fastcall* GetScale)(const struct GameThingWithPos* this);  /* 0x120 */
+  uint32_t (__fastcall* GetOrigin)(struct GameThingWithPos* this);
+  float (__fastcall* GetLife)(struct GameThingWithPos* this);
+  float (__fastcall* GetScale)(struct GameThingWithPos* this);  /* 0x120 */
   void (__fastcall* SetScale)(struct GameThingWithPos* this, const void* edx, float scale);
   float (__fastcall* GetPower)(const struct GameThingWithPos* this);
   float (__fastcall* GetPSysPower)(const struct GameThingWithPos* this);
   float (__fastcall* GetSpeedInMetres)(const struct GameThingWithPos* this);  /* 0x130 */
   void (__fastcall* SetSpeedInMetres)(struct GameThingWithPos* this, const void* edx, float speed, int scale);
-  float (__fastcall* GetRunningSpeedInMetres)(const struct GameThingWithPos* this);
-  float (__fastcall* GetDistanceFromObject)(const struct GameThingWithPos* this, const void* edx, struct MapCoords* target);
+  float (__fastcall* GetRunningSpeedInMetres)(struct GameThingWithPos* this);
+  float (__fastcall* GetDistanceFromObject)(struct GameThingWithPos* this, const void* edx, const struct MapCoords* target);
   float (__fastcall* GetDefaultSpeedInMetres)(struct GameThingWithPos* this);  /* 0x140 */
   void (__fastcall* SetHeight)(struct GameThingWithPos* this, const void* edx, float height);
   void (__fastcall* SetMaxHeight)(struct GameThingWithPos* this, const void* edx, float height);
@@ -204,16 +204,16 @@ struct GameThingWithPosVftable
   bool32_t (__fastcall* IsToy)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);
   bool32_t (__fastcall* IsToyBall)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);
   bool32_t (__fastcall* IsToyDie)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);
-  bool32_t (__fastcall* IsToyCuddly)(const struct GameThingWithPos* this, const void* edx, struct Creature* creature);  /* 0x3c0 */
+  bool32_t (__fastcall* IsToyCuddly)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);  /* 0x3c0 */
   bool32_t (__fastcall* IsLiving_1)(const struct GameThingWithPos* this);
   bool32_t (__fastcall* IsLiving_0)(const struct GameThingWithPos* this, const void* edx, struct Creature* creature);
-  bool32_t (__fastcall* IsFence)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsSpellIcon)(const struct GameThingWithPos* this);  /* 0x3d0 */
+  bool32_t (__fastcall* IsFence)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsSpellIcon)(struct GameThingWithPos* this);  /* 0x3d0 */
   bool32_t (__fastcall* NothingScareyNearMe)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* CanBeUsedForThrowingDamageByCreature)(const struct GameThingWithPos* this, const void* edx, struct Creature* creature);
-  bool32_t (__fastcall* IsCreatureWhoSeemsFriendly)(const struct GameThingWithPos* this, const void* edx, struct Creature* creature);
-  bool32_t (__fastcall* CanBeThrownInTheSeaPlayfully)(const struct GameThingWithPos* this, const void* edx, struct Creature* creature);  /* 0x3e0 */
-  uint32_t (__fastcall* GetCreatureMimicType)(const struct GameThingWithPos* this);
+  bool32_t (__fastcall* CanBeUsedForThrowingDamageByCreature)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);
+  bool32_t (__fastcall* IsCreatureWhoSeemsFriendly)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);
+  bool32_t (__fastcall* CanBeThrownInTheSeaPlayfully)(struct GameThingWithPos* this, const void* edx, struct Creature* creature);  /* 0x3e0 */
+  uint32_t (__fastcall* GetCreatureMimicType)(struct GameThingWithPos* this);
   float (__fastcall* GetHowMuchCreatureWantsToLookAtMe)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsFlock)(const struct GameThingWithPos* this);
   bool32_t (__fastcall* IsDance)(const struct GameThingWithPos* this);  /* 0x3f0 */
@@ -224,15 +224,15 @@ struct GameThingWithPosVftable
   bool32_t (__fastcall* IsDeletedWhenReleasedFromScript)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsMobileWallHug)(const struct GameThingWithPos* this);
   bool32_t (__fastcall* IsActive)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsObjectTurningTooFastForCameraToFollowSmoothly)(const struct GameThingWithPos* this);  /* 0x410 */
+  bool32_t (__fastcall* IsObjectTurningTooFastForCameraToFollowSmoothly)(struct GameThingWithPos* this);  /* 0x410 */
   void (__fastcall* CalculateWhereIWillBeAfterNSeconds)(struct GameThingWithPos* this, const void* edx, float seconds, struct LHPoint* outPos);
   uint32_t (__fastcall* AttitudeToCreatureEating)(struct GameThingWithPos* this);
   const char* (__fastcall* GetText)(struct GameThingWithPos* this);
   float (__fastcall* CalculateDesireForFood)(struct GameThingWithPos* this);  /* 0x420 */
   float (__fastcall* CalculateDesireForRest)(struct GameThingWithPos* this);
   float (__fastcall* CalculatePeopleHidingIndicator)(struct GameThingWithPos* this);
-  float (__fastcall* GetHeight)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsReadyForNewScriptAction)(const struct GameThingWithPos* this);  /* 0x430 */
+  float (__fastcall* GetHeight)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsReadyForNewScriptAction)(struct GameThingWithPos* this);  /* 0x430 */
   int (__fastcall* ForDrawFXGetNumVertices)(struct GameThingWithPos* this);
   void (__fastcall* ForDrawFXGetVertexPos)(struct GameThingWithPos* this, const void* edx, int32_t param_1, struct LHPoint* param_2);
   void (__fastcall* SetInScript)(struct GameThingWithPos* this, const void* edx, int32_t param_1);
@@ -244,8 +244,8 @@ struct GameThingWithPosVftable
   bool32_t (__fastcall* IsAnimal)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsAChild)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsHouse)(struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsObject)(const struct GameThingWithPos* this);  /* 0x460 */
-  bool32_t (__fastcall* IsFootball)(const struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsObject)(struct GameThingWithPos* this);  /* 0x460 */
+  bool32_t (__fastcall* IsFootball)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsCitadel)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsForest)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsMobileObject)(struct GameThingWithPos* this);  /* 0x470 */
@@ -261,19 +261,19 @@ struct GameThingWithPosVftable
   bool32_t (__fastcall* IsPuzzleGame)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsScaffold)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsSkeleton)(const struct GameThingWithPos* this);  /* 0x4a0 */
-  bool32_t (__fastcall* IsPoisoned)(const struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsPoisoned)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsSpeedUp)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsParticleContainer)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsSacrificeAltar)(struct GameThingWithPos* this);  /* 0x4b0 */
   bool32_t (__fastcall* IsPot)(struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsComputerPlayer)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* CanBeThrownByPlayer)(const struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsComputerPlayer)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* CanBeThrownByPlayer)(struct GameThingWithPos* this);
   void (__fastcall* SetSkeleton)(struct GameThingWithPos* this, const void* edx, int index);  /* 0x4c0 */
-  bool32_t (__fastcall* IsSpellSeed)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsSpellShield)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsPileResource)(const struct GameThingWithPos* this);
-  bool32_t (__fastcall* IsScriptTimer)(const struct GameThingWithPos* this);  /* 0x4d0 */
-  bool32_t (__fastcall* CreateBuildingSite)(const struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsSpellSeed)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsSpellShield)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsPileResource)(struct GameThingWithPos* this);
+  bool32_t (__fastcall* IsScriptTimer)(struct GameThingWithPos* this);  /* 0x4d0 */
+  bool32_t (__fastcall* CreateBuildingSite)(struct GameThingWithPos* this);
   enum HELP_TEXT (__fastcall* GetQueryFirstEnumText)(struct GameThingWithPos* this);
   enum HELP_TEXT (__fastcall* GetQueryLastEnumText)(struct GameThingWithPos* this);
   uint32_t (__fastcall* GetFOVHelpMessageSet)(struct GameThingWithPos* this);  /* 0x4e0 */
@@ -351,11 +351,11 @@ uint32_t __fastcall GetCreatureBeliefListType__16GameThingWithPosFv(struct GameT
 // win1.41 004019a0 mac 103e0d50 GameThingWithPos::GetCitadel(void)
 struct Citadel* __fastcall GetCitadel__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetCitadel@GameThingWithPos@@UAEPAUCitadel@@XZ");
 // win1.41 00405290 mac 103efe40 GameThingWithPos::GetOrigin(void)
-uint32_t __fastcall GetOrigin__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?GetOrigin@GameThingWithPos@@UBEIXZ");
+uint32_t __fastcall GetOrigin__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetOrigin@GameThingWithPos@@UBEIXZ");
 // win1.41 004052a0 mac 103e1210 GameThingWithPos::GetLife(void)
-float __fastcall GetLife__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?GetLife@GameThingWithPos@@UBEMXZ");
+float __fastcall GetLife__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetLife@GameThingWithPos@@UBEMXZ");
 // win1.41 004247e0 mac 103e0c80 GameThingWithPos::GetScale(void)
-float __fastcall GetScale__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?GetScale@GameThingWithPos@@UBEMXZ");
+float __fastcall GetScale__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetScale@GameThingWithPos@@UBEMXZ");
 // win1.41 004247f0 mac 103e31e0 GameThingWithPos::SetScale(float)
 void __fastcall SetScale__16GameThingWithPosFf(struct GameThingWithPos* this, const void* edx, float scale) asm("?SetScale@GameThingWithPos@@UAEXM@Z");
 // win1.41 0056fe60 mac 100bbfe0 GameThingWithPos::GetPower( const(void))
@@ -367,9 +367,9 @@ float __fastcall GetSpeedInMetres__16GameThingWithPosCFv(const struct GameThingW
 // win1.41 00570210 mac 10357d80 GameThingWithPos::SetSpeedInMetres(float, int)
 void __fastcall SetSpeedInMetres__16GameThingWithPosFfi(struct GameThingWithPos* this, const void* edx, float speed, int scale) asm("?SetSpeedInMetres@GameThingWithPos@@UAEXMH@Z");
 // win1.41 00570230 mac 10492670 GameThingWithPos::GetRunningSpeedInMetres(void)
-float __fastcall GetRunningSpeedInMetres__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?GetRunningSpeedInMetres@GameThingWithPos@@UBEMXZ");
+float __fastcall GetRunningSpeedInMetres__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetRunningSpeedInMetres@GameThingWithPos@@UBEMXZ");
 // win1.41 005702b0 mac 10172410 GameThingWithPos::GetDistanceFromObject(MapCoords const &)
-float __fastcall GetDistanceFromObject__16GameThingWithPosFRC9MapCoords(const struct GameThingWithPos* this, const void* edx, struct MapCoords* target) asm("?GetDistanceFromObject@GameThingWithPos@@UBEMPAUMapCoords@@@Z");
+float __fastcall GetDistanceFromObject__16GameThingWithPosFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* target) asm("?GetDistanceFromObject@GameThingWithPos@@UBEMPAUMapCoords@@@Z");
 // win1.41 00570240 mac 101473d0 GameThingWithPos::GetDefaultSpeedInMetres(void)
 float __fastcall GetDefaultSpeedInMetres__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetDefaultSpeedInMetres@GameThingWithPos@@UAEMXZ");
 // win1.41 004019b0 mac 103e1140 GameThingWithPos::SetHeight(float)
@@ -691,25 +691,25 @@ bool32_t __fastcall IsToyBall__16GameThingWithPosFP8Creature(struct GameThingWit
 // win1.41 004020e0 mac 10570d30 GameThingWithPos::IsToyDie(Creature *)
 bool32_t __fastcall IsToyDie__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsToyDie@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 004020f0 mac 1055e0d0 GameThingWithPos::IsToyCuddly(Creature *)
-bool32_t __fastcall IsToyCuddly__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsToyCuddly@GameThingWithPos@@UBE_NPAVCreature@@@Z");
+bool32_t __fastcall IsToyCuddly__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsToyCuddly@GameThingWithPos@@UBE_NPAVCreature@@@Z");
 // win1.41 00402350 mac 103d8a70 GameThingWithPos::IsLiving(void)
 bool32_t __fastcall IsLiving__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsLiving_1@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402100 mac 10560030 GameThingWithPos::IsLiving(Creature *)
 bool32_t __fastcall IsLiving__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsLiving_0@GameThingWithPos@@UBE_NPAVCreature@@@Z");
 // win1.41 00402110 mac 1007f100 GameThingWithPos::IsFence(void)
-bool32_t __fastcall IsFence__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsFence@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsFence__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsFence@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402120 mac 1055f270 GameThingWithPos::IsSpellIcon(void)
-bool32_t __fastcall IsSpellIcon__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsSpellIcon@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsSpellIcon__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsSpellIcon@GameThingWithPos@@UBE_NXZ");
 // win1.41 004e4480 mac 105e54b0 GameThingWithPos::NothingScareyNearMe(Creature *)
 bool32_t __fastcall NothingScareyNearMe__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this) asm("?NothingScareyNearMe@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402130 mac 1054f090 GameThingWithPos::CanBeUsedForThrowingDamageByCreature(Creature *)
-bool32_t __fastcall CanBeUsedForThrowingDamageByCreature__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UBE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeUsedForThrowingDamageByCreature__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UBE_NPAVCreature@@@Z");
 // win1.41 00402140 mac 1055f2b0 GameThingWithPos::IsCreatureWhoSeemsFriendly(Creature *)
-bool32_t __fastcall IsCreatureWhoSeemsFriendly__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UBE_NPAVCreature@@@Z");
+bool32_t __fastcall IsCreatureWhoSeemsFriendly__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UBE_NPAVCreature@@@Z");
 // win1.41 00402150 mac 1019d0f0 GameThingWithPos::CanBeThrownInTheSeaPlayfully(Creature *)
-bool32_t __fastcall CanBeThrownInTheSeaPlayfully__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UBE_NPAVCreature@@@Z");
+bool32_t __fastcall CanBeThrownInTheSeaPlayfully__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UBE_NPAVCreature@@@Z");
 // win1.41 004054e0 mac 10554000 GameThingWithPos::GetCreatureMimicType(void)
-uint32_t __fastcall GetCreatureMimicType__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?GetCreatureMimicType@GameThingWithPos@@UBEIXZ");
+uint32_t __fastcall GetCreatureMimicType__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetCreatureMimicType@GameThingWithPos@@UBEIXZ");
 // win1.41 004054f0 mac 100e5cc0 GameThingWithPos::GetHowMuchCreatureWantsToLookAtMe(void)
 float __fastcall GetHowMuchCreatureWantsToLookAtMe__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetHowMuchCreatureWantsToLookAtMe@GameThingWithPos@@UAEMXZ");
 // win1.41 00402160 mac 10057640 GameThingWithPos::IsFlock( const(void))
@@ -731,7 +731,7 @@ bool32_t __fastcall IsMobileWallHug__16GameThingWithPosCFv(const struct GameThin
 // win1.41 004021e0 mac 10576f20 GameThingWithPos::IsActive( const(void))
 bool32_t __fastcall IsActive__16GameThingWithPosCFv(const struct GameThingWithPos* this) asm("?IsActive@GameThingWithPos@@UBE_NXZ");
 // win1.41 004021f0 mac 1012f070 GameThingWithPos::IsObjectTurningTooFastForCameraToFollowSmoothly(void)
-bool32_t __fastcall IsObjectTurningTooFastForCameraToFollowSmoothly__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsObjectTurningTooFastForCameraToFollowSmoothly__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UBE_NXZ");
 // win1.41 005703a0 mac 103dbd40 GameThingWithPos::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
 void __fastcall CalculateWhereIWillBeAfterNSeconds__16GameThingWithPosFfP7LHPoint(struct GameThingWithPos* this, const void* edx, float seconds, struct LHPoint* outPos) asm("?CalculateWhereIWillBeAfterNSeconds@GameThingWithPos@@UAEXMPAULHPoint@@@Z");
 // win1.41 00768570 mac 10594c30 GameThingWithPos::AttitudeToCreatureEating(void)
@@ -743,9 +743,9 @@ float __fastcall CalculateDesireForRest__16GameThingWithPosFv(struct GameThingWi
 // win1.41 00402220 mac 100db800 GameThingWithPos::CalculatePeopleHidingIndicator(void)
 float __fastcall CalculatePeopleHidingIndicator__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?CalculatePeopleHidingIndicator@GameThingWithPos@@UAEMXZ");
 // win1.41 00405500 mac 100b1980 GameThingWithPos::GetHeight(void)
-float __fastcall GetHeight__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?GetHeight@GameThingWithPos@@UBEMXZ");
+float __fastcall GetHeight__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetHeight@GameThingWithPos@@UBEMXZ");
 // win1.41 00402230 mac 10495720 GameThingWithPos::IsReadyForNewScriptAction(void)
-bool32_t __fastcall IsReadyForNewScriptAction__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsReadyForNewScriptAction@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsReadyForNewScriptAction__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsReadyForNewScriptAction@GameThingWithPos@@UBE_NXZ");
 // win1.41 00570290 mac 1036ad90 GameThingWithPos::ForDrawFXGetNumVertices(void)
 int __fastcall ForDrawFXGetNumVertices__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?ForDrawFXGetNumVertices@GameThingWithPos@@UAEHXZ");
 // win1.41 005702a0 mac 1056f610 GameThingWithPos::ForDrawFXGetVertexPos(long, LHPoint *)
@@ -769,9 +769,9 @@ bool32_t __fastcall IsAChild__16GameThingWithPosFv(struct GameThingWithPos* this
 // win1.41 00405540 mac 103c1df0 GameThingWithPos::IsHouse(void)
 bool32_t __fastcall IsHouse__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsHouse@GameThingWithPos@@UAE_NXZ");
 // win1.41 00405550 mac 103c2360 GameThingWithPos::IsObject( const(void))
-bool32_t __fastcall IsObject__16GameThingWithPosCFv(const struct GameThingWithPos* this) asm("?IsObject@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsObject__16GameThingWithPosCFv(struct GameThingWithPos* this) asm("?IsObject@GameThingWithPos@@UBE_NXZ");
 // win1.41 004022d0 mac 100b6810 GameThingWithPos::IsFootball(void)
-bool32_t __fastcall IsFootball__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsFootball@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsFootball__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsFootball@GameThingWithPos@@UBE_NXZ");
 // win1.41 004022e0 mac 10159fa0 GameThingWithPos::IsCitadel(void)
 bool32_t __fastcall IsCitadel__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsCitadel@GameThingWithPos@@UAE_NXZ");
 // win1.41 004022f0 mac 100fd0e0 GameThingWithPos::IsForest(void)
@@ -803,7 +803,7 @@ bool32_t __fastcall IsScaffold__16GameThingWithPosFv(struct GameThingWithPos* th
 // win1.41 004023f0 mac 1019d850 GameThingWithPos::IsSkeleton( const(void))
 bool32_t __fastcall IsSkeleton__16GameThingWithPosCFv(const struct GameThingWithPos* this) asm("?IsSkeleton@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402400 mac 100dcd70 GameThingWithPos::IsPoisoned(void)
-bool32_t __fastcall IsPoisoned__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsPoisoned@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsPoisoned__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsPoisoned@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402410 mac 10427300 GameThingWithPos::IsSpeedUp(void)
 bool32_t __fastcall IsSpeedUp__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsSpeedUp@GameThingWithPos@@UAE_NXZ");
 // win1.41 00402420 mac 10170360 GameThingWithPos::IsParticleContainer(void)
@@ -813,19 +813,19 @@ bool32_t __fastcall IsSacrificeAltar__16GameThingWithPosFv(struct GameThingWithP
 // win1.41 00402440 mac 10570ed0 GameThingWithPos::IsPot(void)
 bool32_t __fastcall IsPot__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsPot@GameThingWithPos@@UAE_NXZ");
 // win1.41 00402450 mac 104daf10 GameThingWithPos::IsComputerPlayer(void)
-bool32_t __fastcall IsComputerPlayer__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsComputerPlayer@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsComputerPlayer__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsComputerPlayer@GameThingWithPos@@UBE_NXZ");
 // win1.41 005701c0 mac 103623e0 GameThingWithPos::CanBeThrownByPlayer(void)
-bool32_t __fastcall CanBeThrownByPlayer__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?CanBeThrownByPlayer@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall CanBeThrownByPlayer__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?CanBeThrownByPlayer@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402460 mac 1035b870 GameThingWithPos::SetSkeleton(int)
 void __fastcall SetSkeleton__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int index) asm("?SetSkeleton@GameThingWithPos@@UAEXH@Z");
 // win1.41 00402470 mac 1007b170 GameThingWithPos::IsSpellSeed(void)
-bool32_t __fastcall IsSpellSeed__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsSpellSeed@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsSpellSeed__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsSpellSeed@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402480 mac 10571e10 GameThingWithPos::IsSpellShield(void)
-bool32_t __fastcall IsSpellShield__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsSpellShield@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsSpellShield__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsSpellShield@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402490 mac 1054ecb0 GameThingWithPos::IsPileResource(void)
-bool32_t __fastcall IsPileResource__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsPileResource@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsPileResource__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsPileResource@GameThingWithPos@@UBE_NXZ");
 // win1.41 004024a0 mac 100bb900 GameThingWithPos::IsScriptTimer(void)
-bool32_t __fastcall IsScriptTimer__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsScriptTimer@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsScriptTimer__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsScriptTimer@GameThingWithPos@@UBE_NXZ");
 // win1.41 004178e0 mac 102ff000 GameThingWithPos::CreateBuildingSite(void)
 bool32_t __fastcall CreateBuildingSite__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?CreateBuildingSite@GameThingWithPos@@UBE_NXZ");
 // win1.41 00405560 mac 102ffbb0 GameThingWithPos::GetQueryFirstEnumText(void)

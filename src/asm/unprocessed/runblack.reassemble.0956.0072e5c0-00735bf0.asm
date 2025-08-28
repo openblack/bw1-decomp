@@ -9,7 +9,7 @@
 
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ??1Abode@@UAE@XZ
-.extern ?Delete@Abode@@UAEXH@Z
+.extern ?Delete@Abode@@UAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
@@ -6773,7 +6773,7 @@ _jmp_addr_0x00732c00:    mov                dword ptr [ecx], 0x008f7030         
                          mov                eax, dword ptr [esi]                          // 0x00732c13    8b06
                          call               dword ptr [eax + 0x910]                       // 0x00732c15    ff9010090000
                          mov.s              ecx, esi                                      // 0x00732c1b    8bce
-                         call               ?Delete@Abode@@UAEXH@Z                        // 0x00732c1d    e8eeffccff
+                         call               ?Delete@Abode@@UAEXXZ                        // 0x00732c1d    e8eeffccff
                          pop                esi                                           // 0x00732c22    5e
                          ret                                                              // 0x00732c23    c3
                          nop                                                              // 0x00732c24    90
