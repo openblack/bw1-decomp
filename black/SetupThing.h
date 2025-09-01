@@ -14,6 +14,7 @@
 
 // Forward Declares
 
+struct GatheringText;
 struct LH3DMaterial;
 
 enum BBSTYLE
@@ -75,11 +76,11 @@ struct SetupThing
   uint8_t field_0x48[0x10];
   struct LH3DColor LH3DColor_ARRAY_00c4ccd8[0x5];  /* 0x58 */
   uint8_t field_0x6c[0xc];
-  struct LH3DColor LH3DColor_00c4ccf8; /* 0x78 */
+  struct LH3DColor LH3DColor_00c4ccf8;  /* 0x78 */
   uint8_t field_0x7c[0x4];
   bool32_t DAT_00c4cd00;  /* 0x80 */
   uint8_t field_0x84[0x18];
-  uint8_t SetupBox; /* 0x9c */
+  uint8_t SetupBox;  /* 0x9c */
   uint8_t field_0xa0[0xc];
   struct GatheringText* PTR_00c4cd2c;  /* 0xac */
   char16_t WCHAR_00c4cd30[0x4];  /* 0xb0 */

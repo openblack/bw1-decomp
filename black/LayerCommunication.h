@@ -3,11 +3,13 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t, uintptr_t */
+#include <stdint.h> /* For uint32_t */
+
+// Forward Declares
 
 struct LayerCommunication;
-struct MPFEPlayerDetails;
 struct MPFEChannelDetails;
+struct MPFEPlayerDetails;
 
 struct LayerCommunicationVftable
 {

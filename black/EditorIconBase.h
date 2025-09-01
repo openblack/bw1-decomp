@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
+#include <stdint.h> /* For uint32_t, uintptr_t */
 
 // Forward Declares
 
@@ -35,7 +35,7 @@ static_assert(sizeof(struct EditorIconBaseVftable) == 0x44, "Data type is of wro
 
 struct EditorIconBase
 {
-    struct EditorIconBaseVftable* vftable;
+  struct EditorIconBaseVftable* vftable;  /* 0x0 */
 };
 static_assert(sizeof(struct EditorIconBase) == 0x4, "Data type is of wrong size");
 

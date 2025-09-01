@@ -2,9 +2,14 @@
 #define BW1_DECOMP_WINDMILL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
 
-#include "Abode.h" /* For struct Abode, struct AbodeInfo */
+#include "Abode.h" /* For struct Abode */
+
+// Forward Declares
+
+struct GAbodeInfo;
+struct MapCoords;
+struct Town;
 
 struct Windmill
 {

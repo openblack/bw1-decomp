@@ -12,11 +12,11 @@
 
 // Forward Declares
 
+struct LHConnection;
 struct LHNetEvent;
 struct LHNetUser;
 struct LHTransport;
 struct LHTransportInfo;
-struct LHConnection;
 
 struct LHConnectionVftable
 {
@@ -29,7 +29,7 @@ static_assert(sizeof(struct LHConnectionVftable) == 0x10, "Data type is of wrong
 
 struct LHConnection
 {
-  struct LHConnectionVftable* vftable;
+  struct LHConnectionVftable* vftable;  /* 0x0 */
   int field_0x4;
   uint8_t field_0x8[0xc];
   uint32_t field_0x14;

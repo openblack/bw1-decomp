@@ -3,18 +3,18 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint8_t, uintptr_t */
-
-// Forward Declares
+#include <stdint.h> /* For uint8_t */
 
 #include "Spell.h" /* For struct Spell, struct SpellVftable */
+
+// Forward Declares
 
 struct SpellWithObjects;
 
 struct SpellWithObjectsVftable
 {
   struct SpellVftable super;  /* 0x0 */
-  bool (__fastcall* GetSetObjectsDyingOnCloseDown)(struct SpellWithObjects* this);
+  bool (__fastcall* GetSetObjectsDyingOnCloseDown)(struct SpellWithObjects* this);  /* 0x554 */
 };
 static_assert(sizeof(struct SpellWithObjectsVftable) == 0x558, "Data type is of wrong size");
 

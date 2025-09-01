@@ -3,22 +3,30 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
+
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "Object.h" /* For struct Object, struct ObjectVftable */
 
 // Forward Declares
 
+struct Base;
+struct Creature;
 struct FixedObject;
+struct GInterfaceStatus;
 struct GObjectInfo;
 struct GameOSFile;
 struct GameThing;
 struct GameThingVftable;
+struct GameThingWithPos;
 struct GameThingWithPosVftable;
 struct MapCell;
 struct MapCoords;
 struct NewCollide;
+struct PhysicsObject;
 struct SingleMapFixed;
+struct Villager;
 
 struct FixedObjectVftable
 {
@@ -41,7 +49,7 @@ static_assert(sizeof(union FixedObjectBase) == 0x54, "Data type is of wrong size
 struct FixedObject
 {
   union FixedObjectBase base;  /* 0x0 */
-  struct GameThing* town_artifact;
+  struct GameThing* town_artifact;  /* 0x54 */
 };
 static_assert(sizeof(struct FixedObject) == 0x58, "Data type is of wrong size");
 

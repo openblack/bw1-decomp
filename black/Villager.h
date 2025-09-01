@@ -9,6 +9,7 @@
 #include <chlasm/GStates.h> /* For VILLAGER_STATE_LAST_STATE, enum VILLAGER_STATES */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */

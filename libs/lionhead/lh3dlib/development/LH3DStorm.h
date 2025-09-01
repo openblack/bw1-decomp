@@ -6,8 +6,8 @@
 // Forward Declares
 
 struct LH3DStorm;
-struct WeatherInfo;
 struct LHPoint;
+struct WeatherInfo;
 
 struct LH3DStormVftable
 {

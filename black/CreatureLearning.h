@@ -2,9 +2,10 @@
 #define BW1_DECOMP_CREATURE_LEARNING_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/CreatureEnum.h> /* For NUM_CREATURE_ACTIONS */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "Base.h" /* For struct Base */
 #include "CreatureAction.h" /* For struct PreviousActionContextStack */
@@ -48,5 +49,13 @@ static struct BaseVftable* const __vt__16CreatureLearning = (struct BaseVftable*
 
 // win1.41 004e0290 mac 10265060 CreatureLearning::CreatureLearning(Creature *)
 struct CreatureLearning* __fastcall __ct__16CreatureLearningFP8Creature(struct CreatureLearning* this, const void* edx, struct Creature* creature);
+
+struct CreatureLearningEpisode
+{
+  uint8_t field_0x0;
+};
+static_assert(sizeof(struct CreatureLearningEpisode) == 0x1, "Data type is of wrong size");
+
+DECLARE_LH_LINKED_LIST(CreatureLearningEpisode);
 
 #endif /* BW1_DECOMP_CREATURE_LEARNING_INCLUDED_H */

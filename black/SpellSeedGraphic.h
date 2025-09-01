@@ -4,13 +4,15 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum POWER_UP_TYPE */
+#include <chlasm/Enum.h> /* For enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 // Forward Declares
 
+struct GPlayer;
 struct Game3DObject;
+struct MapCoords;
 
 struct SpellSeedGraphic
 {

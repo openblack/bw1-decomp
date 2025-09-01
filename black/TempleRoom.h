@@ -2,17 +2,18 @@
 #define BW1_DECOMP_TEMPLE_ROOM_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
-#include "BindableAction.h" /* For enum BINDABLE_ACTIONS */
-#include "SubOptionEntry.h" /* For enum INTERFACE_MESSAGE_TYPES */
+#include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
+#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
 
 // Forward Declares
 
-struct ControlMap;
+enum BINDABLE_ACTIONS;
+enum INTERFACE_MESSAGE_TYPES;
 struct InnerCamera;
 struct InnerRoom;
-struct LHCoord;
 struct TempleRoom;
 struct Zoomer3d;
 

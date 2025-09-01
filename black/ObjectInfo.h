@@ -8,6 +8,7 @@
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 
 #include "BaseInfo.h" /* For struct GBaseInfo, struct GBaseInfoVftable */
+#include "Object.h" /* For enum FOOD_TYPE */
 
 // Forward Declares
 

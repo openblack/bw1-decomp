@@ -12,6 +12,8 @@
 
 // Forward Declares
 
+enum LHKey;
+enum LHKeyMod;
 struct SetupList;
 
 struct SetupEdit

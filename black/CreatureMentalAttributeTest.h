@@ -2,12 +2,13 @@
 #define BW1_DECOMP_CREATURE_MENTAL_ATTRIBUTE_TEST_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdint.h> /* For uint32_t */
 
 #include <chlasm/CreatureEnum.h> /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
 #include <chlasm/Enum.h> /* For enum CREATURE_DESIRES */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
+#include "CreatureLearning.h" /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
 
 enum DECISION_TREE_TYPE
@@ -20,14 +21,6 @@ static_assert(sizeof(enum DECISION_TREE_TYPE) == 0x4, "Data type is of wrong siz
 static const char* DECISION_TREE_TYPE_strs[_DECISION_TREE_TYPE_COUNT] = {
   "DECISION_TREE_TYPE_0x0",
 };
-
-struct CreatureLearningEpisode
-{
-  uint8_t field_0x0;
-};
-static_assert(sizeof(struct CreatureLearningEpisode) == 0x1, "Data type is of wrong size");
-
-DECLARE_LH_LINKED_LIST(CreatureLearningEpisode);
 
 struct AttributeTest
 {

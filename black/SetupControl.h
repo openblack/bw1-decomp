@@ -10,10 +10,10 @@
 
 // Forward Declares
 
-struct SetupBox;
-struct SetupControl;
 enum LHKey;
 enum LHKeyMod;
+struct SetupBox;
+struct SetupControl;
 
 struct SetupControlVftable
 {

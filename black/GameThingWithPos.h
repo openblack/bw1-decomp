@@ -8,12 +8,14 @@
 #include <chlasm/Enum.h> /* For enum DEATH_REASON, enum IMPRESSIVE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
 #include "MapCoords.h" /* For struct MapCoords */
 
 // Forward Declares
 
+struct Base;
 struct Citadel;
 struct Creature;
 struct GameOSFile;

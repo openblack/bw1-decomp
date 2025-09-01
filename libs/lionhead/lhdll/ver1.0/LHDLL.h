@@ -2,7 +2,7 @@
 #define BW1_DECOMP_LHDLL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 // Forward Declares
 
@@ -11,7 +11,7 @@ struct LHTransport;
 
 struct LHDLLVftable
 {
-  uint32_t (__fastcall* GetAPI)(struct LHDLL* this);
+  uint32_t (__fastcall* GetAPI)(struct LHDLL* this);  /* 0x0 */
   uint32_t (__fastcall* ResetAPI)(struct LHDLL* this);
 };
 static_assert(sizeof(struct LHDLLVftable) == 0x8, "Data type is of wrong size");

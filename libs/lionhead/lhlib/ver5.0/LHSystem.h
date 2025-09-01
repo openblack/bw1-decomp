@@ -7,7 +7,7 @@
 #include <uchar.h> /* For char16_t */
 
 #include <lionhead/lh3dlib/development/LHText.h> /* For struct LHText */
-#include <reversing_utils/re_common.h> /* For HWND, bool32_t */
+#include <reversing_utils/re_common.h> /* For HINSTANCE, HWND, bool32_t */
 
 #include "LHJoypad.h" /* For struct LHJoypads */
 #include "LHMouse.h" /* For struct LHMouse */

@@ -10,19 +10,19 @@ struct CPUCheck;
 
 struct CPUCheckVftable
 {
-  void (__fastcall* __dt)(struct CPUCheck* this, const void* edx, uint32_t param_1);
+  void (__fastcall* __dt)(struct CPUCheck* this, const void* edx, uint32_t param_1);  /* 0x0 */
 };
 static_assert(sizeof(struct CPUCheckVftable) == 0x4, "Data type is of wrong size");
 
 struct CPUCheck
 {
-    struct CPUCheckVftable* vftable;
+  struct CPUCheckVftable* vftable;  /* 0x0 */
 };
+static_assert(sizeof(struct CPUCheck) == 0x4, "Data type is of wrong size");
 
 // Override methods
 
 // win1.41 00471a80 mac 100c00a0 CPUCheck::~CPUCheck(void)
 void __fastcall __dt__8CPUCheckFUi(struct CPUCheck* this, const void* edx, uint32_t param_1) asm("??GCPUCheck@@UAE@XZ");
 
-
-#endif // BW1_DECOMP_CPU_CHECK_INCLUDED_H
+#endif /* BW1_DECOMP_CPU_CHECK_INCLUDED_H */

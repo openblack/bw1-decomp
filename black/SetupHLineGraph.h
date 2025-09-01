@@ -13,6 +13,8 @@
 
 // Forward Declares
 
+enum LHKey;
+enum LHKeyMod;
 struct SetupHLineGraph;
 
 struct HLineData

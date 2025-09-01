@@ -2,7 +2,7 @@
 #define BW1_DECOMP_LH_TRANSPORT_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint16_t, uint8_t, uintptr_t */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 // Forward Declares
 

@@ -10,6 +10,11 @@
 
 #include "SetupButton.h" /* For struct SetupButton */
 
+// Forward Declares
+
+enum LHKey;
+enum LHKeyMod;
+
 struct SetupTabButton
 {
   struct SetupButton super;  /* 0x0 */

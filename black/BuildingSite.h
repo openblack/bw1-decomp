@@ -2,7 +2,8 @@
 #define BW1_DECOMP_BUILDING_SITE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
@@ -19,6 +20,7 @@ struct MultiMapFixed;
 struct Object;
 struct PlannedMultiMapFixed;
 struct Pot;
+struct PotStructure;
 
 struct BuildingSiteVftable
 {
@@ -28,11 +30,11 @@ struct BuildingSiteVftable
   uint32_t (__fastcall* GetWoodForStats)(struct BuildingSite* this);
   struct Pot* (__fastcall* GetPileWood)(struct BuildingSite* this, const void* edx, const struct MapCoords* coords);
   void (__fastcall* SetPileWood)(struct BuildingSite* this, const void* edx, struct Pot* wood_pile);
-  void (__fastcall* CreatePileWood)(struct BuildingSite* this);                                                           /* 0x110 */
+  void (__fastcall* CreatePileWood)(struct BuildingSite* this);  /* 0x110 */
   void (__fastcall* GetResourcePosAndYAngle)(struct BuildingSite* this, const void* edx, uint32_t resource_type, uint32_t param_2, float* out_pos_and_angle);
   void (__fastcall* RemovePotFromStructure)(struct BuildingSite* this, const void* edx, struct PotStructure* pot_structure);
   bool (__fastcall* IsLinkedToThisBuildingSite)(struct BuildingSite* this, const void* edx, struct Pot* pot);
-  float (__fastcall* GetNearestEdge)(struct BuildingSite* this, const void* edx, float x, float y, int32_t* out_edge_info); /* 0x120 */
+  float (__fastcall* GetNearestEdge)(struct BuildingSite* this, const void* edx, float x, float y, int32_t* out_edge_info);  /* 0x120 */
   void (__fastcall* GetNextPosFromIndex)(struct BuildingSite* this, const void* edx, int32_t* in_out_index);
   void (__fastcall* GetRandomBuildPos)(struct BuildingSite* this, const void* edx, struct Object* object, int32_t* out_pos);
 };

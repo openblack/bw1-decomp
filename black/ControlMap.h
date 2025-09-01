@@ -7,7 +7,7 @@
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
-#include "BindableAction.h" /* For struct BindableAction */
+#include "BindableAction.h" /* For _BINDABLE_ACTION_SIZE, struct BindableAction */
 
 struct ControlMap
 {

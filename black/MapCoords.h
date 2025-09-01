@@ -4,9 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int16_t, int32_t, uint16_t, uint32_t */
 
+#include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum OBJECT_TYPE */
 #include <reversing_utils/re_common.h> /* For bool32_t */
-#include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 
 // Forward Declares
 

@@ -3,10 +3,12 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
+#include <stddef.h> /* For size_t */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "Fixed.h" /* For struct FixedObject, struct FixedObjectVftable */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
@@ -15,15 +17,21 @@
 
 // Forward Declares
 
+struct Base;
 struct BuildingSite;
+struct Creature;
 struct GFootpath;
 struct GFootpathLink;
 struct GInterfaceStatus;
 struct GMultiMapFixedInfo;
+struct GPlayer;
 struct GameOSFile;
+struct GameThing;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
 struct LH3DMesh;
+struct LHOSFile;
+struct Living;
 struct MapCell;
 struct MapCoords;
 struct MultiMapFixed;
@@ -31,6 +39,7 @@ struct NewCollide;
 struct ObjectVftable;
 struct PlannedMultiMapFixed;
 struct PotStructure;
+struct Town;
 struct Villager;
 
 struct MultiChild
