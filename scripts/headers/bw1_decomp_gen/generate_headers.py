@@ -25,6 +25,17 @@ HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
 ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = False
 
 
+if sys.platform == "win32":
+    llvm_bin = Path(r"C:\Program Files\LLVM\bin")
+else:
+    llvm_bin = Path(r"/usr/bin")
+
+
+def get_clang_resource_dir():
+    from subprocess import check_output
+    return check_output([llvm_bin / 'clang', '-print-resource-dir']).strip().decode('utf-8')
+
+
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
     functions: list[DefinedFunctionPrototype] = [DefinedFunctionPrototype.from_json(f) for f in function_db]
     (
@@ -78,8 +89,14 @@ def batched_arg_to_csnake(type_decls):
         for j, a in enumerate(p):
             source_list.append(f"void __arg_to_csnake_wrapping_declaration__{i}__{j}__({a});")
 
+    ignored_warnings = ["visibility", "microsoft-enum-forward-reference"]
     source = "\n".join(source_list)
-    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32", "-Wno-visibility", "-Wno-microsoft-enum-forward-reference"], unsaved_files=[('tmp.c', source)])
+    args = ["-m32", f"-resource-dir={get_clang_resource_dir()}"]
+    if sys.platform != "win32":
+        args.add("--target=i686-pc-windows-gnu")
+    for warning in ignored_warnings:
+        args.append(f"-Wno-{warning}")
+    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=args, unsaved_files=[('tmp.c', source)])
 
     error_strings: list[str] = []
     for diagnostic in translation_unit.diagnostics:
