@@ -6,7 +6,6 @@
 
 // Forward Declares
 
-struct FragMesh;
 struct GameOSFile;
 struct LH3DMesh;
 struct LH3DPrimitive;

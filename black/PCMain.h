@@ -21,7 +21,6 @@ void __cdecl __dl__FPv(void* address);
 void __cdecl __construct_new_array(void* address, size_t stride, int len, void* constructor);
 // win1.41 008a5f63 mac 101a7d90 operator delete[](void *,unsigned int,int,void (__thiscall*)(void *)) - ??_M@YGXPAXIHP6EX0@Z@Z
 void __cdecl __destroy_new_array(void* address, size_t stride, int len, void* destructor);
-
 // win1.41 007dee50 mac inlined WinMain
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, char* lpCmdLine, int nShowCmd);
 

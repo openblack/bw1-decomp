@@ -3,20 +3,20 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
+#include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
 #include "LHMatrix.h" /* For struct LHMatrix */
 
 // Forward Declares
 
-struct LH3DObject;
-struct LH3DMesh;
-struct LHPoint;
-struct LH3DMaterial;
 struct LH3DAnim;
 struct LH3DLODData;
+struct LH3DMaterial;
+struct LH3DMesh;
+struct LH3DObject;
 struct LHBoundingBox;
+struct LHPoint;
 
 enum LH3DObject__ObjectType
 {
@@ -121,7 +121,7 @@ struct LH3DObjectVftable
   void (__fastcall* DrawCutByPlane)(struct LH3DObject* this);
   void (__fastcall* DrawExtraMetric)(struct LH3DObject* this);  /* 0x120 */
   void (__fastcall* DrawSnow_1)(struct LH3DObject* this);
-  void (__fastcall* DrawSnow_2)(struct LH3DObject* this, const void* edx, struct  LH3DMaterial* material);
+  void (__fastcall* DrawSnow_2)(struct LH3DObject* this, const void* edx, struct LH3DMaterial* material);
   void (__fastcall* DrawReverse)(struct LH3DObject* this);
   void (__fastcall* DrawGlassFronted)(struct LH3DObject* this, const void* edx, float param_1, float param_2, float param_3);  /* 0x130 */
   void (__fastcall* DrawCage)(struct LH3DObject* this, const void* edx, float param_1);
@@ -135,7 +135,7 @@ struct LH3DObjectVftable
   void (__fastcall* DrawFizz_1)(struct LH3DObject* this);
   void (__fastcall* DrawFizz_2)(struct LH3DObject* this, const void* edx, float param_1, struct LH3DMaterial* material);
   void (__fastcall* DrawFroz_1)(struct LH3DObject* this);
-  void (__fastcall* DrawFroz_2)(struct LH3DObject* this, const void* edx, float param_1, uint32_t param_2, struct LH3DMaterial* material);
+  void (__fastcall* DrawFroz_2)(struct LH3DObject* this, const void* edx, float param_1, uint32_t param_2, struct LH3DMaterial* material);  /* 0x160 */
   void (__fastcall* DrawTextureShadow)(const struct LH3DObject* this, const void* edx, uint32_t param_1, uint32_t param_2);
   void (__fastcall* DrawTextureShadow32x32)(struct LH3DObject* this, const void* edx, void* param_1);
   void (__fastcall* DrawMorphLand)(struct LH3DObject* this);
@@ -143,7 +143,7 @@ struct LH3DObjectVftable
   void (__fastcall* DrawIntoSprite)(struct LH3DObject* this, const void* edx, void* sprite_data);
   void (__fastcall* DrawForMouse)(struct LH3DObject* this);
   void (__fastcall* Blend)(struct LH3DObject* this, const void* edx, struct LH3DObject* obj1, struct LH3DObject* obj2);
-  void (__fastcall* SetCurrentAnim)(struct LH3DObject* this, const void* edx, struct LH3DAnim* anim);
+  void (__fastcall* SetCurrentAnim)(struct LH3DObject* this, const void* edx, struct LH3DAnim* anim);  /* 0x180 */
   int32_t (__fastcall* GetCurrentAnim)(struct LH3DObject* this);
   void (__fastcall* SetCurrentCycleTime)(struct LH3DObject* this, const void* edx, int32_t time);
   float (__fastcall* GetCurrentCycleTime)(struct LH3DObject* this);

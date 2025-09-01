@@ -10,6 +10,11 @@
 #include "SetupRect.h" /* For struct SetupRect */
 #include "SetupThing.h" /* For enum BBSTYLE */
 
+// Forward Declares
+
+enum LHKey;
+enum LHKeyMod;
+
 struct SetupBigButton
 {
   struct SetupButton super;  /* 0x0 */

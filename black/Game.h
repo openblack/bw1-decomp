@@ -221,18 +221,16 @@ void __fastcall Loop__5GGameFv(struct GGame* this);
 void __fastcall ProcessOneGameTurn__5GGameFv(struct GGame* this);
 // win1.41 0054d820 mac 10083dd0 GGame::ProcessGameCode(void)
 void __fastcall ProcessGameCode__5GGameFv(struct GGame* this);
-// win1.41 0054d840 mac inline GGame::DisplayPlayerTextMessages(void)
-void __fastcall DisplayPlayerTextMessages__5GGameFv(struct GGame* this);
 // win1.41 0054d850 mac 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
 void __fastcall ProcessGraphicsEngine__5GGameFUlUl(struct GGame* this, const void* edx, uint32_t param_1, uint32_t param_2);
 // win1.41 0054da80 mac 10033dd0 GGame::ProcessGraphicsEngine(void)
 void __fastcall Process3dEngine__5GGameFv(struct GGame* this);
 // win1.41 0054e4f0 mac 10083c70 GGame::StartTurn(void)
 void __fastcall StartTurn__5GGameFv(struct GGame* this);
-// win1.41 0054e960 mac 10070430 GGame::EndTurn(void)
-void __fastcall EndTurn__5GGameFv(struct GGame* this);
 // win1.41 0054e5c0 mac 100665c0 GGame::ProcessTurn(void)
 void __fastcall ProcessTurn__5GGameFv(struct GGame* this);
+// win1.41 0054e960 mac 10070430 GGame::EndTurn(void)
+void __fastcall EndTurn__5GGameFv(struct GGame* this);
 // win1.41 0054ef40 mac 10514230 GGame::InitOneTimeOnly(void)
 uint32_t __fastcall InitOneTimeOnly__5GGameFv(struct GGame* this) asm("?InitOneTimeOnly@GGame@@QAEIXZ");
 // win1.41 0054f3b0 mac 101b9770 GGame::Init(void)

@@ -13,6 +13,7 @@
 
 struct BaseInfo;
 struct GBaseInfo;
+struct LHColor;
 
 struct GBaseInfoVftable
 {

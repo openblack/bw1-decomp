@@ -3,12 +3,14 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t, uintptr_t */
+#include <stdint.h> /* For uint32_t */
 
-#include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum ABODE_NUMBER */
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
+#include <chlasm/Enum.h> /* For enum ABODE_NUMBER, enum ABODE_TYPE */
 
 #include "ObjectInfo.h" /* For struct GObjectInfo, struct GObjectInfoVftable */
+
+// Forward Declares
 
 struct GMultiMapFixedInfo;
 struct MapCoords;
@@ -16,8 +18,8 @@ struct MapCoords;
 struct GMultiMapFixedInfoVftable
 {
   struct GObjectInfoVftable super;  /* 0x0 */
-  bool (__fastcall* IsOkToCreateAtPos)(const struct GMultiMapFixedInfo* this, const void* edx, const struct MapCoords* pos, float param_2, float param_3);
-  enum ABODE_TYPE (__fastcall* GetAbodeType)(const struct GMultiMapFixedInfo* this);
+  bool (__fastcall* IsOkToCreateAtPos)(const struct GMultiMapFixedInfo* this, const void* edx, const struct MapCoords* pos, float param_2, float param_3);  /* 0x3c */
+  enum ABODE_TYPE (__fastcall* GetAbodeType)(const struct GMultiMapFixedInfo* this);  /* 0x40 */
   enum ABODE_NUMBER (__fastcall* GetAbodeNumber)(const struct GMultiMapFixedInfo* this);
 };
 static_assert(sizeof(struct GMultiMapFixedInfoVftable) == 0x48, "Data type is of wrong size");

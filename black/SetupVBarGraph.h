@@ -14,6 +14,8 @@
 
 // Forward Declares
 
+enum LHKey;
+enum LHKeyMod;
 struct SetupVBarGraph;
 
 struct VBarData

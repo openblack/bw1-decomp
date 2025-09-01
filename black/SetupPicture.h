@@ -11,6 +11,8 @@
 
 // Forward Declares
 
+enum LHKey;
+enum LHKeyMod;
 struct LH3DMaterial;
 
 struct SetupPicture

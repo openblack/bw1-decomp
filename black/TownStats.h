@@ -12,6 +12,7 @@
 
 struct BaseVftable;
 struct PlannedMultiMapFixed;
+struct Villager;
 
 struct TownStats
 {

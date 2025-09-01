@@ -9,6 +9,11 @@
 
 #include "SetupControl.h" /* For struct SetupControl */
 
+// Forward Declares
+
+enum LHKey;
+enum LHKeyMod;
+
 struct SetupSlider
 {
   struct SetupControl super;  /* 0x0 */

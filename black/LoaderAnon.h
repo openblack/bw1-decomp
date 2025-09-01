@@ -6,12 +6,14 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
+// Forward Declares
+
 struct GVillagerStateTableInfo;
 struct LHFile;
 
 struct LoaderAnon
 {
-    uint32_t field_0x0;
+  uint32_t field_0x0;
 };
 static_assert(sizeof(struct LoaderAnon) == 0x4, "Data type is of wrong size");
 

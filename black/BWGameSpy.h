@@ -10,6 +10,7 @@ struct BWGameSpy
 {
   struct LayerCommunication super;  /* 0x0 */
 };
+static_assert(sizeof(struct BWGameSpy) == 0x4, "Data type is of wrong size");
 
 static struct LayerCommunicationVftable* const __vt__9BWGameSpy = (struct LayerCommunicationVftable* const)0x008c705c;
 

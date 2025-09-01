@@ -2,13 +2,25 @@
 #define BW1_DECOMP_PLANNED_ABODE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t */
+
+#include <chlasm/Enum.h> /* For enum ABODE_TYPE */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
 
 // Forward Declares
 
+struct Abode;
+struct Base;
 struct GMultiMapFixedInfo;
+struct GPlannedAbodeInfo;
+struct GameOSFile;
+struct GameThing;
+struct GameThingWithPos;
 struct MapCoords;
+struct MultiMapFixed;
 struct Town;
 
 struct PlannedAbode

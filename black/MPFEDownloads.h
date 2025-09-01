@@ -2,17 +2,15 @@
 #define BW1_DECOMP_MPFE_DOWNLOADS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
-
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 // Forward Declares
 
-struct MPFEDownloads;
+struct MPFEDatabase;
 
 struct MPFEDownloadsVftable
 {
-  void (__fastcall* GetFileNumber)(struct MPFEDatabase* this, const void* edx, uint32_t param_1);   /* 0x0 */
+  void (__fastcall* GetFileNumber)(struct MPFEDatabase* this, const void* edx, uint32_t param_1);  /* 0x0 */
   void (__fastcall* Refresh)(struct MPFEDatabase* this);
   void (__fastcall* Stop)(struct MPFEDatabase* this);
   void (__fastcall* FileCompleted)(struct MPFEDatabase* this);

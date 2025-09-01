@@ -14,6 +14,8 @@
 
 // Forward Declares
 
+enum LHKey;
+enum LHKeyMod;
 struct SetupList;
 
 struct SetupList__ListBoxDraw_t

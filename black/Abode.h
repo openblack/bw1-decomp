@@ -3,10 +3,12 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
+#include <stddef.h> /* For size_t */
+#include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For RESOURCE_TYPE_LAST, enum TRIBE_TYPE */
+#include <chlasm/Enum.h> /* For RESOURCE_TYPE_LAST, enum ABODE_TYPE, enum RESOURCE_TYPE, enum TRIBE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -17,15 +19,24 @@
 // Forward Declares
 
 struct Abode;
+struct Base;
+struct Creature;
 struct GAbodeInfo;
+struct GInterfaceStatus;
 struct GPlayer;
 struct GTribeInfo;
+struct GameOSFile;
+struct GameThing;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
 struct LH3DMesh;
 struct LH3DSmoke;
+struct LHOSFile;
 struct LHPoint;
 struct ObjectVftable;
+struct PhysOb;
+struct PhysicsObject;
+struct PlannedMultiMapFixed;
 struct Town;
 
 enum ABODE_EPP

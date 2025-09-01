@@ -8,6 +8,7 @@
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum EFFECT_TYPE, enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE, enum RESOURCE_TYPE, enum SOUND_COLLISION_TYPE, enum TRIBE_TYPE */
+#include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
@@ -18,6 +19,7 @@
 
 // Forward Declares
 
+struct Base;
 struct ControlHandUpdateInfo;
 struct Creature;
 struct EffectNumbers;
@@ -39,14 +41,17 @@ struct LHRegion;
 struct LandscapeVortex;
 struct Living;
 struct MapCell;
+struct MultiMapFixed;
 struct NewCollide;
 struct Object;
 struct PhysOb;
 struct PhysicsObject;
 struct RPHolder;
+struct Reaction;
 struct Scaffold;
 struct Spell;
 struct SpellWater;
+struct Town;
 struct Villager;
 
 enum FOOD_TYPE

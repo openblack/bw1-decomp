@@ -12,6 +12,9 @@
 
 // Forward Declares
 
+struct Base;
+struct GBaseInfo;
+struct GObjectInfo;
 struct LHFile;
 struct MapCoords;
 struct Town;

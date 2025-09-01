@@ -2,29 +2,34 @@
 #define BW1_DECOMP_PLANNED_MULTI_MAP_FIXED_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 
-#include "GameThingWithPos.h" /* For struct GameThingWithPos */
+#include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 
 // Forward Declares
 
+struct Base;
 struct GFootpathLink;
 struct GMultiMapFixedInfo;
 struct GObjectInfo;
+struct GameOSFile;
+struct GameThing;
 struct MapCoords;
+struct MultiMapFixed;
 struct PlannedMultiMapFixed;
 
 struct PlannedMultiMapFixedVftable
 {
   struct GameThingWithPosVftable super;  /* 0x0 */
-  struct MultiMapFixed* (__fastcall* CreatePlanned)(struct PlannedMultiMapFixed* this, const void* edx, float param_1); /* 0x500 */
+  struct MultiMapFixed* (__fastcall* CreatePlanned)(struct PlannedMultiMapFixed* this, const void* edx, float param_1);  /* 0x500 */
   struct MultiMapFixed* (__fastcall* CreatePlannedNoFixedCheck)(struct PlannedMultiMapFixed* this, const void* edx, float param_1);
   void (__fastcall* PostCreatePlanned)(struct PlannedMultiMapFixed* this, const void* edx, struct MultiMapFixed* param_1);
   bool (__fastcall* IsCivic)(struct PlannedMultiMapFixed* this);
-  enum ABODE_TYPE (__fastcall* GetAbodeType)(struct PlannedMultiMapFixed* this); /* 0x510 */
+  enum ABODE_TYPE (__fastcall* GetAbodeType)(struct PlannedMultiMapFixed* this);  /* 0x510 */
   float (__fastcall* GetDesireToBeRepaired)(struct PlannedMultiMapFixed* this);
   void (__fastcall* Draw)(struct PlannedMultiMapFixed* this);
 };

@@ -5,6 +5,7 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType, struct LH3DObject */
 
 // Forward Declares

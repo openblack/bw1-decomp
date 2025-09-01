@@ -2,7 +2,8 @@
 #define BW1_DECOMP_ROCK_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t, uintptr_t */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t */
 
 #include "MobileStatic.h" /* For struct MobileStatic */
 #include "MultiMapFixed.h" /* For struct MultiMapFixedVftable */
@@ -18,7 +19,7 @@ struct Rock;
 struct RockVftable
 {
   struct MultiMapFixedVftable super;  /* 0x0 */
-  bool (__fastcall* IsMovable)(struct Rock* this);
+  bool (__fastcall* IsMovable)(struct Rock* this);  /* 0x90c */
 };
 static_assert(sizeof(struct RockVftable) == 0x910, "Data type is of wrong size");
 

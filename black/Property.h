@@ -7,9 +7,9 @@
 
 // Forward Declares
 
-struct istream;
-struct Property;
 struct PersistenceStreamer;
+struct Property;
+struct istream;
 
 struct PropertyVftable
 {
