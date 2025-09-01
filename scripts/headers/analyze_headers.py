@@ -48,6 +48,7 @@ class FunctionMetadata:
     mac_addr: str
     decorated_name: str
     undecorated_name: Optional[str] = None
+    mangled_name: Optional[str] = None
     return_type: Optional[str] = None
     call_type: Optional[str] = None
     argument_types: List[str] = field(default_factory=list)
@@ -395,6 +396,8 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                             break
                     else:
                         call_type = "cdecl"
+                    if t.cursor.mangled_name != ("_" + t.spelling) and not t.cursor.mangled_name.startswith("@" + t.spelling):
+                        function_metadata[-1].mangled_name = t.cursor.mangled_name
                     function_metadata[-1].undecorated_name = t.spelling
                     function_metadata[-1].return_type = ret
                     function_metadata[-1].argument_types = arg_types

@@ -2,8 +2,9 @@ import re
 from dataclasses import dataclass
 
 import csnake
+from typing import Optional
 
-from csnake_overrides import CSnakeFuncPtr
+from csnake_overrides import CSnakeFuncPtr, CSnakeFunction
 from utils import arg_to_csnake, TYPE_SUBSTITUTION_MAP
 
 
@@ -78,13 +79,15 @@ funcptr_re = re.compile(r"(\((__fastcall|__thiscall|__stdcall|__cdecl)?\*)\)")
 class DefinedFunctionPrototype(FuncPtr):
     win_addr: int
     mac_addr: int
+    mangled_name: Optional[str]
     is_function_variadic: bool
 
-    def __init__(self, name: str, call_type: str, result: str, args: list[str], decorated_name: str,  arg_labels: list[str], win_addr: int, mac_addr: int, is_function_variadic: bool):
+    def __init__(self, name: str, call_type: str, result: str, args: list[str], decorated_name: str,  arg_labels: list[str], win_addr: int, mac_addr: int, mangled_name: Optional[str], is_function_variadic: bool):
         super().__init__(name, call_type, result, args, arg_labels)
         self.decorated_name = decorated_name
         self.win_addr = win_addr
         self.mac_addr = mac_addr
+        self.mangled_name = mangled_name
         self.is_function_variadic = is_function_variadic
 
     def __lt__(self, other: "DefinedFunctionPrototype") -> bool:
@@ -97,11 +100,12 @@ class DefinedFunctionPrototype(FuncPtr):
         result = decl['return_type']
         args = decl['argument_types']
         decorated_name = decl['decorated_name']
+        mangled_name = decl['mangled_name']
         arg_labels = decl['argument_names']
         win_addr = decl['win_addr']
         mac_addr = decl['mac_addr']
         is_function_variadic = decl['is_function_variadic']
-        return cls(name, call_type, result, args, decorated_name, arg_labels, win_addr, mac_addr, is_function_variadic)
+        return cls(name, call_type, result, args, decorated_name, arg_labels, win_addr, mac_addr, mangled_name, is_function_variadic)
 
     def to_csnake(self) -> csnake.Function:
         conv = self.call_type
@@ -124,7 +128,7 @@ class DefinedFunctionPrototype(FuncPtr):
         if self.is_function_variadic:
             params.append(["", "..."])
 
-        return csnake.Function(f"{conv} {self.name}", self.result, arguments=params)
+        return CSnakeFunction(f"{conv} {self.name}", self.result, arguments=params, mangled_name=self.mangled_name)
 
     def to_code(self, cw: csnake.CodeWriter):
         win_addr = f"{self.win_addr:08x}" if self.win_addr >= 0 else "inlined"
