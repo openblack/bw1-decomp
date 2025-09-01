@@ -1,6 +1,7 @@
 #ifndef BW1_DECOMP_IMMDEVICE_INCLUDED_H
 #define BW1_DECOMP_IMMDEVICE_INCLUDED_H
 
+#include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 #include <guiddef.h> /* For GUID */
