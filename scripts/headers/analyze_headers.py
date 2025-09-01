@@ -119,7 +119,10 @@ PATHS = [
     Path("libs"),
 ]
 
-llvm_bin = Path(r"C:\Program Files\LLVM\bin")
+if sys.platform == "win32":
+    llvm_bin = Path(r"C:\Program Files\LLVM\bin")
+else:
+    llvm_bin = Path(r"/usr/bin")
 Config.set_library_path(str(llvm_bin))
 
 
@@ -131,11 +134,13 @@ def get_clang_resource_dir():
 def parse_source(path: Optional[Path] = None, source: Optional[str] = None) -> TranslationUnit:
     assert path or source
     system_include_paths = [
-        Path("/usr/include/wine/windows"),
+        Path("/usr/x86_64-w64-mingw32/include"),
     ]
     ignored_warnings = ["visibility", "ignored-attributes", "int-conversion", "microsoft-enum-forward-reference",
                         "cast-calling-convention"]
     args = ["-m32", f"-resource-dir={get_clang_resource_dir()}"]
+    if sys.platform != "win32":
+        args.append("--target=i686-pc-windows-gnu")
     for p in system_include_paths:
         args.append(f"-isystem{p.as_posix()}")
         args.append(f"-I.")
