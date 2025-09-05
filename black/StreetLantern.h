@@ -15,7 +15,11 @@ struct GStreetLantern
 };
 static_assert(sizeof(struct GStreetLantern) == 0x64, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__14GStreetLantern = (struct ObjectVftable* const)0x008ea8d8;
+// win1.41 008ea8d4 mac 109e0fa4 GStreetLantern::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GStreetLantern asm("??_R4GStreetLantern@@6B@");
+
+// win1.41 008ea8d8 mac 109e0fac GStreetLantern::`vftable'
+extern const struct ObjectVftable __vt__14GStreetLantern asm("??_7GStreetLantern@@6B@");
 
 DECLARE_LH_LIST_HEAD(GStreetLantern);
 

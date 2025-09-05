@@ -13,6 +13,10 @@ struct GTreeInfo
 };
 static_assert(sizeof(struct GTreeInfo) == 0x140, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* const __vt__9GTreeInfo = (struct GObjectInfoVftable* const)0x0099a124;
+// win1.41 0099a120 mac 1075e054 GTreeInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GTreeInfo asm("??_R4GTreeInfo@@6B@");
+
+// win1.41 0099a124 mac 1075e05c GTreeInfo::`vftable'
+extern const struct GObjectInfoVftable __vt__9GTreeInfo asm("??_7GTreeInfo@@6B@");
 
 #endif /* BW1_DECOMP_TREE_INFO_INCLUDED_H */

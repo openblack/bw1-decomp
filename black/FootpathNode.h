@@ -18,7 +18,11 @@ struct GFootpathNode
 };
 static_assert(sizeof(struct GFootpathNode) == 0x30, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__13GFootpathNode = (struct GameThingVftable* const)0x008ddfbc;
+// win1.41 008ddfb8 mac 10742ff0 GFootpathNode::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GFootpathNode asm("??_R4GFootpathNode@@6B@");
+
+// win1.41 008ddfbc mac 10742ff8 GFootpathNode::`vftable'
+extern const struct GameThingVftable __vt__13GFootpathNode asm("??_7GFootpathNode@@6B@");
 
 // Constructors
 

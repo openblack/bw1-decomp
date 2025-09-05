@@ -21,7 +21,11 @@ struct GParticleContainer
 };
 static_assert(sizeof(struct GParticleContainer) == 0x40, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__18GParticleContainer = (struct GameThingVftable* const)0x008e2a14;
+// win1.41 008e2a10 mac 107461ec GParticleContainer::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18GParticleContainer asm("??_R4GParticleContainer@@6B@");
+
+// win1.41 008e2a14 mac 107461f4 GParticleContainer::`vftable'
+extern const struct GameThingVftable __vt__18GParticleContainer asm("??_7GParticleContainer@@6B@");
 
 DECLARE_LH_LIST_HEAD(GParticleContainer);
 

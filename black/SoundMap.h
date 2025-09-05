@@ -21,7 +21,11 @@ struct GSoundMap
 };
 static_assert(sizeof(struct GSoundMap) == 0x110, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__9GSoundMap = (struct BaseVftable* const)0x008df7a0;
+// win1.41 008df79c mac 109d7980 GSoundMap::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GSoundMap asm("??_R4GSoundMap@@6B@");
+
+// win1.41 008df7a0 mac 109d7988 GSoundMap::`vftable'
+extern const struct BaseVftable __vt__9GSoundMap asm("??_7GSoundMap@@6B@");
 
 // Constructors
 

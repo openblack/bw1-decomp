@@ -33,7 +33,11 @@ struct WorshipSpellIcon
 };
 static_assert(sizeof(struct WorshipSpellIcon) == 0x140, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__16WorshipSpellIcon = (struct MultiMapFixedVftable* const)0x0099d878;
+// win1.41 0099d874 mac 10733ab0 WorshipSpellIcon::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16WorshipSpellIcon asm("??_R4WorshipSpellIcon@@6B@");
+
+// win1.41 0099d878 mac 106f5b44 WorshipSpellIcon::`vftable'
+extern const struct MultiMapFixedVftable __vt__16WorshipSpellIcon asm("??_7WorshipSpellIcon@@6B@");
 
 // Static methods
 

@@ -43,7 +43,11 @@ struct VillagerName
 };
 static_assert(sizeof(struct VillagerName) == 0x464, "Data type is of wrong size");
 
-static struct DrawingObjectVftable* const __vt__12VillagerName = (struct DrawingObjectVftable* const)0x0099a9bc;
+// win1.41 0099a9b8 mac 109e9588 VillagerName::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12VillagerName asm("??_R4VillagerName@@6B@");
+
+// win1.41 0099a9bc mac 109e9590 VillagerName::`vftable'
+extern const struct DrawingObjectVftable __vt__12VillagerName asm("??_7VillagerName@@6B@");
 
 // Static methods
 

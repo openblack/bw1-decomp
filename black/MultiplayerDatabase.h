@@ -26,7 +26,11 @@ struct MultiplayerDatabase
 };
 static_assert(sizeof(struct MultiplayerDatabase) == 0x10, "Data type is of wrong size");
 
-static struct MultiplayerDatabaseVftable* const __vt__19MultiplayerDatabase = (struct MultiplayerDatabaseVftable* const)0x009309f4;
+// win1.41 009309f0 mac 10745c84 MultiplayerDatabase::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MultiplayerDatabase asm("??_R4MultiplayerDatabase@@6B@");
+
+// win1.41 009309f4 mac 10745c8c MultiplayerDatabase::`vftable'
+extern const struct MultiplayerDatabaseVftable __vt__19MultiplayerDatabase asm("??_7MultiplayerDatabase@@6B@");
 
 // Constructors
 

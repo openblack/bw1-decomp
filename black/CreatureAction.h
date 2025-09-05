@@ -59,6 +59,10 @@ struct CreaturePreviousActions
 };
 static_assert(sizeof(struct CreaturePreviousActions) == 0x528, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__23CreaturePreviousActions = (struct BaseVftable* const)0x008d154c;
+// win1.41 008d1548 mac 107875fc CreaturePreviousActions::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreaturePreviousActions asm("??_R4CreaturePreviousActions@@6B@");
+
+// win1.41 008d154c mac 10787604 CreaturePreviousActions::`vftable'
+extern const struct BaseVftable __vt__23CreaturePreviousActions asm("??_7CreaturePreviousActions@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_ACTION_INCLUDED_H */

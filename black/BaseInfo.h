@@ -40,7 +40,11 @@ struct GBaseInfo
 };
 static_assert(sizeof(struct GBaseInfo) == 0x10, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__9GBaseInfo = (struct GBaseInfoVftable* const)0x008c4d1c;
+// win1.41 008c4d18 mac 10730abc GBaseInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GBaseInfo asm("??_R4GBaseInfo@@6B@");
+
+// win1.41 008c4d1c mac 10730acc GBaseInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__9GBaseInfo asm("??_7GBaseInfo@@6B@");
 
 // Static methods
 
@@ -75,7 +79,11 @@ struct BaseInfo
 };
 static_assert(sizeof(struct BaseInfo) == 0xc, "Data type is of wrong size");
 
-static struct BaseInfoVftable* const __vt__8BaseInfo = (struct BaseInfoVftable* const)0x008ea8d0;
+// win1.41 008ea8cc mac 10745360 BaseInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8BaseInfo asm("??_R4BaseInfo@@6B@");
+
+// win1.41 008ea8d0 mac 10745368 BaseInfo::`vftable'
+extern const struct BaseInfoVftable __vt__8BaseInfo asm("??_7BaseInfo@@6B@");
 
 // Constructors
 

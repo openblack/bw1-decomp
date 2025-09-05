@@ -26,7 +26,11 @@ struct DialogBoxImmersion
 };
 static_assert(sizeof(struct DialogBoxImmersion) == 0x30, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__18DialogBoxImmersion = (struct DialogBoxBaseVftable* const)0x008d8644;
+// win1.41 008d8640 mac 109990a8 DialogBoxImmersion::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18DialogBoxImmersion asm("??_R4DialogBoxImmersion@@6B@");
+
+// win1.41 008d8644 mac 109990b0 DialogBoxImmersion::`vftable'
+extern const struct DialogBoxBaseVftable __vt__18DialogBoxImmersion asm("??_7DialogBoxImmersion@@6B@");
 
 // Constructors
 

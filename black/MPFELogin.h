@@ -28,7 +28,11 @@ struct MPFELogin
 };
 static_assert(sizeof(struct MPFELogin) == 0x5c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__9MPFELogin = (struct DialogBoxBaseVftable* const)0x00930968;
+// win1.41 00930964 mac 109a3a28 MPFELogin::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9MPFELogin asm("??_R4MPFELogin@@6B@");
+
+// win1.41 00930968 mac 109a3a30 MPFELogin::`vftable'
+extern const struct DialogBoxBaseVftable __vt__9MPFELogin asm("??_7MPFELogin@@6B@");
 
 // Constructors
 
@@ -41,7 +45,11 @@ struct MPFELoginDatabase
 };
 static_assert(sizeof(struct MPFELoginDatabase) == 0xc, "Data type is of wrong size");
 
-static struct MPFEDatabaseVftable* const __vt__17MPFELoginDatabase = (struct MPFEDatabaseVftable* const)0x00930990;
+// win1.41 0093098c mac 109a39c4 MPFELoginDatabase::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17MPFELoginDatabase asm("??_R4MPFELoginDatabase@@6B@");
+
+// win1.41 00930990 mac 109a39cc MPFELoginDatabase::`vftable'
+extern const struct MPFEDatabaseVftable __vt__17MPFELoginDatabase asm("??_7MPFELoginDatabase@@6B@");
 
 // Constructors
 

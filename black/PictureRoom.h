@@ -13,7 +13,11 @@ struct PictureRoomBase
 };
 static_assert(sizeof(struct PictureRoomBase) == 0x160, "Data type is of wrong size");
 
-static struct TempleRoomVftable* const __vt__15PictureRoomBase = (struct TempleRoomVftable* const)0x0099ed78;
+// win1.41 0099ed74 mac 10746f04 PictureRoomBase::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15PictureRoomBase asm("??_R4PictureRoomBase@@6B@");
+
+// win1.41 0099ed78 mac 10746f0c PictureRoomBase::`vftable'
+extern const struct TempleRoomVftable __vt__15PictureRoomBase asm("??_7PictureRoomBase@@6B@");
 
 // Constructors
 

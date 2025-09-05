@@ -87,7 +87,11 @@ struct GObjectInfo
 };
 static_assert(sizeof(struct GObjectInfo) == 0x100, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* const __vt__11GObjectInfo = (struct GObjectInfoVftable* const)0x00930a60;
+// win1.41 00930a5c mac 10734630 GObjectInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GObjectInfo asm("??_R4GObjectInfo@@6B@");
+
+// win1.41 00930a60 mac 10734638 GObjectInfo::`vftable'
+extern const struct GObjectInfoVftable __vt__11GObjectInfo asm("??_7GObjectInfo@@6B@");
 
 // Override methods
 

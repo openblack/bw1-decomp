@@ -310,8 +310,11 @@ struct Object
 };
 static_assert(sizeof(struct Object) == 0x54, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__6Object = (struct ObjectVftable* const)0x00930aa0;
+// win1.41 00930a9c mac 107313d4 Object::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Object asm("??_R4Object@@6B@");
 
+// win1.41 00930aa0 mac 10732c1c Object::`vftable'
+extern const struct ObjectVftable __vt__6Object asm("??_7Object@@6B@");
 // Static methods
 
 // win1.41 006364c0 mac 103d93a0 Object::Get3DType(MESH_LIST)

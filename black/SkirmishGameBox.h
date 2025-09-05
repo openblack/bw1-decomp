@@ -13,6 +13,10 @@ struct SkirmishGameBox
 };
 static_assert(sizeof(struct SkirmishGameBox) == 0x23c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__15SkirmishGameBox = (struct DialogBoxBaseVftable* const)0x008de94c;
+// win1.41 008de948 mac 109ed654 SkirmishGameBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SkirmishGameBox asm("??_R4SkirmishGameBox@@6B@");
+
+// win1.41 008de94c mac 109ed65c SkirmishGameBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__15SkirmishGameBox asm("??_7SkirmishGameBox@@6B@");
 
 #endif /* BW1_DECOMP_SKIRMISH_GAME_BOX_INCLUDED_H */

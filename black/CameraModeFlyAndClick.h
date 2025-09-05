@@ -11,6 +11,10 @@ struct CameraModeFlyAndClick
 };
 static_assert(sizeof(struct CameraModeFlyAndClick) == 0x8, "Data type is of wrong size");
 
-static struct CameraModeVftable* const __vt__21CameraModeFlyAndClick = (struct CameraModeVftable* const)0x008c7814;
+// win1.41 008c7810 mac inlined CameraModeFlyAndClick::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__21CameraModeFlyAndClick asm("??_R4CameraModeFlyAndClick@@6B@");
+
+// win1.41 008c7814 mac inlined CameraModeFlyAndClick::`vftable'
+extern const struct CameraModeVftable __vt__21CameraModeFlyAndClick asm("??_7CameraModeFlyAndClick@@6B@");
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FLY_AND_CLICK_INCLUDED_H */

@@ -15,7 +15,11 @@ struct WeatherThing
 };
 static_assert(sizeof(struct WeatherThing) == 0x88, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__12WeatherThing = (struct GameThingWithPosVftable* const)0x008ebc48;
+// win1.41 008ebc44 mac 109ea360 WeatherThing::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12WeatherThing asm("??_R4WeatherThing@@6B@");
+
+// win1.41 008ebc48 mac 109ea368 WeatherThing::`vftable'
+extern const struct GameThingWithPosVftable __vt__12WeatherThing asm("??_7WeatherThing@@6B@");
 
 DECLARE_LH_LIST_HEAD(WeatherThing);
 

@@ -19,7 +19,11 @@ struct GCameraEditor
 };
 static_assert(sizeof(struct GCameraEditor) == 0x28, "Data type is of wrong size");
 
-static struct PrssVftable* const __vt__13GCameraEditor = (struct PrssVftable* const)0x008c763c;
+// win1.41 008c7638 mac inlined GCameraEditor::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GCameraEditor asm("??_R4GCameraEditor@@6B@");
+
+// win1.41 008c763c mac inlined GCameraEditor::`vftable'
+extern const struct PrssVftable __vt__13GCameraEditor asm("??_7GCameraEditor@@6B@");
 
 // Static methods
 

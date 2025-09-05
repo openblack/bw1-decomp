@@ -12,7 +12,11 @@ struct SaveGameRoom
 };
 static_assert(sizeof(struct SaveGameRoom) == 0x160, "Data type is of wrong size");
 
-static struct TempleRoomVftable* const __vt__12SaveGameRoom = (struct TempleRoomVftable* const)0x0099edfc;
+// win1.41 0099edf8 mac 109c207c SaveGameRoom::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12SaveGameRoom asm("??_R4SaveGameRoom@@6B@");
+
+// win1.41 0099edfc mac 109c2084 SaveGameRoom::`vftable'
+extern const struct TempleRoomVftable __vt__12SaveGameRoom asm("??_7SaveGameRoom@@6B@");
 
 // Static methods
 

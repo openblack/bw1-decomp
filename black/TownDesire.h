@@ -52,7 +52,11 @@ struct TownDesire
 };
 static_assert(sizeof(struct TownDesire) == 0x564, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__10TownDesire = (struct BaseVftable* const)0x0099a0c8;
+// win1.41 0099a0c4 mac 109e5838 TownDesire::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10TownDesire asm("??_R4TownDesire@@6B@");
+
+// win1.41 0099a0c8 mac 109e5840 TownDesire::`vftable'
+extern const struct BaseVftable __vt__10TownDesire asm("??_7TownDesire@@6B@");
 
 // Constructors
 

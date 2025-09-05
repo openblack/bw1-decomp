@@ -36,7 +36,11 @@ struct GVirtualInfluence
 };
 static_assert(sizeof(struct GVirtualInfluence) == 0x60, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__17GVirtualInfluence = (struct BaseVftable* const)0x0099aa70;
+// win1.41 0099aa6c mac 1075e9c4 GVirtualInfluence::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GVirtualInfluence asm("??_R4GVirtualInfluence@@6B@");
+
+// win1.41 0099aa70 mac 1075e9cc GVirtualInfluence::`vftable'
+extern const struct BaseVftable __vt__17GVirtualInfluence asm("??_7GVirtualInfluence@@6B@");
 
 // Constructors
 

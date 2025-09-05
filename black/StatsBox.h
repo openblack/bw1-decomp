@@ -13,6 +13,10 @@ struct StatsBox
 };
 static_assert(sizeof(struct StatsBox) == 0x74, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__8StatsBox = (struct DialogBoxBaseVftable* const)0x008dea14;
+// win1.41 008dea10 mac 1099add0 StatsBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8StatsBox asm("??_R4StatsBox@@6B@");
+
+// win1.41 008dea14 mac 1099add8 StatsBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__8StatsBox asm("??_7StatsBox@@6B@");
 
 #endif /* BW1_DECOMP_STATS_BOX_INCLUDED_H */

@@ -81,7 +81,11 @@ struct HelpSystem
 };
 static_assert(sizeof(struct HelpSystem) == 0x4614, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__10HelpSystem = (struct BaseVftable* const)0x0092a47c;
+// win1.41 0092a478 mac 1099cab4 HelpSystem::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HelpSystem asm("??_R4HelpSystem@@6B@");
+
+// win1.41 0092a47c mac 1099cabc HelpSystem::`vftable'
+extern const struct BaseVftable __vt__10HelpSystem asm("??_7HelpSystem@@6B@");
 
 // Constructors
 

@@ -13,6 +13,10 @@ struct NewProfileBox
 };
 static_assert(sizeof(struct NewProfileBox) == 0x24, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__13NewProfileBox = (struct DialogBoxBaseVftable* const)0x008dec1c;
+// win1.41 008dec18 mac 109ed914 NewProfileBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13NewProfileBox asm("??_R4NewProfileBox@@6B@");
+
+// win1.41 008dec1c mac 109ed91c NewProfileBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__13NewProfileBox asm("??_7NewProfileBox@@6B@");
 
 #endif /* BW1_DECOMP_NEW_PROFILE_BOX_INCLUDED_H */

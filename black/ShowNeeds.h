@@ -18,7 +18,11 @@ struct ShowNeeds
 };
 static_assert(sizeof(struct ShowNeeds) == 0x24, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__9ShowNeeds = (struct GameThingVftable* const)0x008ec9ac;
+// win1.41 008ec9a8 mac 1075b608 ShowNeeds::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9ShowNeeds asm("??_R4ShowNeeds@@6B@");
+
+// win1.41 008ec9ac mac 1075b610 ShowNeeds::`vftable'
+extern const struct GameThingVftable __vt__9ShowNeeds asm("??_7ShowNeeds@@6B@");
 
 // Static methods
 

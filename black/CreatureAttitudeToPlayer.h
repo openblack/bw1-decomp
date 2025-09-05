@@ -62,6 +62,10 @@ struct CreatureAttitudeToPlayer
 };
 static_assert(sizeof(struct CreatureAttitudeToPlayer) == 0x1db4, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__24CreatureAttitudeToPlayer = (struct BaseVftable* const)0x008cf3dc;
+// win1.41 008cf3d8 mac 10783e38 CreatureAttitudeToPlayer::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__24CreatureAttitudeToPlayer asm("??_R4CreatureAttitudeToPlayer@@6B@");
+
+// win1.41 008cf3dc mac 10783e40 CreatureAttitudeToPlayer::`vftable'
+extern const struct BaseVftable __vt__24CreatureAttitudeToPlayer asm("??_7CreatureAttitudeToPlayer@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_ATTITUDE_TO_PLAYER_INCLUDED_H */

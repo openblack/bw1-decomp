@@ -91,7 +91,11 @@ struct GInterface
 };
 static_assert(sizeof(struct GInterface) == 0x47c, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__10GInterface = (struct GameThingWithPosVftable* const)0x0092a5a0;
+// win1.41 0092a59c mac 1099dd58 GInterface::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GInterface asm("??_R4GInterface@@6B@");
+
+// win1.41 0092a5a0 mac 1099dd60 GInterface::`vftable'
+extern const struct GameThingWithPosVftable __vt__10GInterface asm("??_7GInterface@@6B@");
 
 // Non-virtual methods
 

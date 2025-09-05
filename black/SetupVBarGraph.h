@@ -58,7 +58,11 @@ struct SetupVBarGraph
 };
 static_assert(sizeof(struct SetupVBarGraph) == 0x284, "Data type is of wrong size");
 
-static struct SetupVBarGraphVftable* const __vt__14SetupVBarGraph = (struct SetupVBarGraphVftable* const)0x008ab480;
+// win1.41 008ab47c mac 10730f60 SetupVBarGraph::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupVBarGraph asm("??_R4SetupVBarGraph@@6B@");
+
+// win1.41 008ab480 mac 10730f68 SetupVBarGraph::`vftable'
+extern const struct SetupVBarGraphVftable __vt__14SetupVBarGraph asm("??_7SetupVBarGraph@@6B@");
 
 // Constructors
 

@@ -21,8 +21,11 @@ struct Heap
 };
 static_assert(sizeof(struct Heap) == 0x4, "Data type is of wrong size");
 
-static struct HeapVftable* const __vt__4Heap = (struct HeapVftable* const)0x00931cc8;
+// win1.41 00931cc4 mac 10730a2c Heap::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Heap asm("??_R4Heap@@6B@");
 
+// win1.41 00931cc8 mac 10730a34 Heap::`vftable'
+extern const struct HeapVftable __vt__4Heap asm("??_7Heap@@6B@");
 // Non-virtual methods
 
 // win1.41 007e1160 mac 1013a820 Heap::New(int)

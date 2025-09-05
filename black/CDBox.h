@@ -13,6 +13,10 @@ struct CDBox
 };
 static_assert(sizeof(struct CDBox) == 0x34, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__5CDBox = (struct DialogBoxBaseVftable* const)0x008deb04;
+// win1.41 008deb00 mac 109ed714 CDBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CDBox asm("??_R4CDBox@@6B@");
+
+// win1.41 008deb04 mac 109ed71c CDBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__5CDBox asm("??_7CDBox@@6B@");
 
 #endif /* BW1_DECOMP_CD_BOX_INCLUDED_H */

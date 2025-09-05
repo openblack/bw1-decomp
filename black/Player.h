@@ -107,7 +107,11 @@ struct GPlayer
 };
 static_assert(sizeof(struct GPlayer) == 0xa60, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__7GPlayer = (struct GameThingVftable* const)0x00932be8;
+// win1.41 00932be4 mac 109bdcf4 GPlayer::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GPlayer asm("??_R4GPlayer@@6B@");
+
+// win1.41 00932be8 mac 109bdcfc GPlayer::`vftable'
+extern const struct GameThingVftable __vt__7GPlayer asm("??_7GPlayer@@6B@");
 
 // Static methods
 

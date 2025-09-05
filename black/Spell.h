@@ -93,7 +93,11 @@ struct Spell
 };
 static_assert(sizeof(struct Spell) == 0xec, "Data type is of wrong size");
 
-static struct SpellVftable* const __vt__5Spell = (struct SpellVftable* const)0x009805b0;
+// win1.41 009805ac mac 1075942c Spell::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Spell asm("??_R4Spell@@6B@");
+
+// win1.41 009805b0 mac 106f64a8 Spell::`vftable'
+extern const struct SpellVftable __vt__5Spell asm("??_7Spell@@6B@");
 
 // Constructors
 

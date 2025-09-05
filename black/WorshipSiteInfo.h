@@ -23,6 +23,10 @@ struct GWorshipSiteInfo
 };
 static_assert(sizeof(struct GWorshipSiteInfo) == 0x160, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* const __vt__16GWorshipSiteInfo = (struct GMultiMapFixedInfoVftable* const)0x0099c478;
+// win1.41 0099c474 mac 109eb3b4 GWorshipSiteInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GWorshipSiteInfo asm("??_R4GWorshipSiteInfo@@6B@");
+
+// win1.41 0099c478 mac 109eb3bc GWorshipSiteInfo::`vftable'
+extern const struct GMultiMapFixedInfoVftable __vt__16GWorshipSiteInfo asm("??_7GWorshipSiteInfo@@6B@");
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INFO_INCLUDED_H */

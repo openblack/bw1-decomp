@@ -52,7 +52,11 @@ struct SetupBox
 };
 static_assert(sizeof(struct SetupBox) == 0xcc, "Data type is of wrong size");
 
-static struct SetupBoxVftable* const __vt__8SetupBox = (struct SetupBoxVftable* const)0x008d85ec;
+// win1.41 008d85e8 mac 10731360 SetupBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8SetupBox asm("??_R4SetupBox@@6B@");
+
+// win1.41 008d85ec mac 10731368 SetupBox::`vftable'
+extern const struct SetupBoxVftable __vt__8SetupBox asm("??_7SetupBox@@6B@");
 
 // Static methods
 

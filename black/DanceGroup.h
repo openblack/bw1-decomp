@@ -32,6 +32,10 @@ struct DanceGroup
 };
 static_assert(sizeof(struct DanceGroup) == 0x17c, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__10DanceGroup = (struct GameThingVftable* const)0x008d44d0;
+// win1.41 008d44cc mac 10996e7c DanceGroup::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10DanceGroup asm("??_R4DanceGroup@@6B@");
+
+// win1.41 008d44d0 mac 10996e84 DanceGroup::`vftable'
+extern const struct GameThingVftable __vt__10DanceGroup asm("??_7DanceGroup@@6B@");
 
 #endif /* BW1_DECOMP_DANCE_GROUP_INCLUDED_H */

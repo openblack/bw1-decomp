@@ -26,7 +26,11 @@ struct CitadelPart
 };
 static_assert(sizeof(struct CitadelPart) == 0x8c, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__11CitadelPart = (struct MultiMapFixedVftable* const)0x008cab00;
+// win1.41 008caafc mac 107339ec CitadelPart::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11CitadelPart asm("??_R4CitadelPart@@6B@");
+
+// win1.41 008cab00 mac 10733a24 CitadelPart::`vftable'
+extern const struct MultiMapFixedVftable __vt__11CitadelPart asm("??_7CitadelPart@@6B@");
 
 // Constructors
 

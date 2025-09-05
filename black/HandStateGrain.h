@@ -17,7 +17,11 @@ struct HandStateGrain
 };
 static_assert(sizeof(struct HandStateGrain) == 0x228, "Data type is of wrong size");
 
-static struct HandStateVftable* const __vt__14HandStateGrain = (struct HandStateVftable* const)0x00900b00;
+// win1.41 00900afc mac 1099b3c0 HandStateGrain::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14HandStateGrain asm("??_R4HandStateGrain@@6B@");
+
+// win1.41 00900b00 mac 1099b3c8 HandStateGrain::`vftable'
+extern const struct HandStateVftable __vt__14HandStateGrain asm("??_7HandStateGrain@@6B@");
 
 // Constructors
 

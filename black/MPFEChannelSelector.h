@@ -39,7 +39,11 @@ struct MPFEChannelSelector
 };
 static_assert(sizeof(struct MPFEChannelSelector) == 0x58, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__19MPFEChannelSelector = (struct DialogBoxBaseVftable* const)0x00930780;
+// win1.41 0093077c mac 109a250c MPFEChannelSelector::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MPFEChannelSelector asm("??_R4MPFEChannelSelector@@6B@");
+
+// win1.41 00930780 mac 109a2514 MPFEChannelSelector::`vftable'
+extern const struct DialogBoxBaseVftable __vt__19MPFEChannelSelector asm("??_7MPFEChannelSelector@@6B@");
 
 // Constructors
 

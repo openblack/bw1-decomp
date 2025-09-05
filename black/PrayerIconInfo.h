@@ -14,6 +14,10 @@ struct GPrayerIconInfo
 };
 static_assert(sizeof(struct GPrayerIconInfo) == 0x108, "Data type is of wrong size");
 
-static struct GSingleMapFixedInfoVftable* const __vt__15GPrayerIconInfo = (struct GSingleMapFixedInfoVftable* const)0x009341c8;
+// win1.41 009341c4 mac 1074a620 GPrayerIconInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GPrayerIconInfo asm("??_R4GPrayerIconInfo@@6B@");
+
+// win1.41 009341c8 mac 1074a628 GPrayerIconInfo::`vftable'
+extern const struct GSingleMapFixedInfoVftable __vt__15GPrayerIconInfo asm("??_7GPrayerIconInfo@@6B@");
 
 #endif /* BW1_DECOMP_PRAYER_ICON_INFO_INCLUDED_H */

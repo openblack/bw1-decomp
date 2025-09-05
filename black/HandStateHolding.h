@@ -19,7 +19,11 @@ struct HandStateHolding
 };
 static_assert(sizeof(struct HandStateHolding) == 0x144, "Data type is of wrong size");
 
-static struct HandStateVftable* const __vt__16HandStateHolding = (struct HandStateVftable* const)0x00900b40;
+// win1.41 00900b3c mac 1099b3a4 HandStateHolding::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16HandStateHolding asm("??_R4HandStateHolding@@6B@");
+
+// win1.41 00900b40 mac 1099b3b4 HandStateHolding::`vftable'
+extern const struct HandStateVftable __vt__16HandStateHolding asm("??_7HandStateHolding@@6B@");
 
 // Constructors
 

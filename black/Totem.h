@@ -22,7 +22,11 @@ struct Totem
 };
 static_assert(sizeof(struct Totem) == 0xe4, "Data type is of wrong size");
 
-static struct AbodeVftable* const __vt__5Totem = (struct AbodeVftable* const)0x008ef57c;
+// win1.41 008ef578 mac 10755f88 Totem::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Totem asm("??_R4Totem@@6B@");
+
+// win1.41 008ef57c mac 10755fc8 Totem::`vftable'
+extern const struct AbodeVftable __vt__5Totem asm("??_7Totem@@6B@");
 
 // Constructors
 

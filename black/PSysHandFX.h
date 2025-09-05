@@ -50,7 +50,11 @@ struct PHandFX
 };
 static_assert(sizeof(struct PHandFX) == 0x74, "Data type is of wrong size");
 
-static struct PSysHandFXVftable* const __vt__7PHandFX = (struct PSysHandFXVftable* const)0x00936c1c;
+// win1.41 00936c18 mac 109b139c PHandFX::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7PHandFX asm("??_R4PHandFX@@6B@");
+
+// win1.41 00936c1c mac 109b13a4 PHandFX::`vftable'
+extern const struct PSysHandFXVftable __vt__7PHandFX asm("??_7PHandFX@@6B@");
 
 // Constructors
 

@@ -52,7 +52,11 @@ struct GGuidance
 };
 static_assert(sizeof(struct GGuidance) == 0xec, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__9GGuidance = (struct BaseVftable* const)0x009804ac;
+// win1.41 009804a8 mac 109d783c GGuidance::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GGuidance asm("??_R4GGuidance@@6B@");
+
+// win1.41 009804ac mac 109d7844 GGuidance::`vftable'
+extern const struct BaseVftable __vt__9GGuidance asm("??_7GGuidance@@6B@");
 
 // Static methods
 

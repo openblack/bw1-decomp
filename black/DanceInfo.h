@@ -13,6 +13,10 @@ struct GDanceInfo
 };
 static_assert(sizeof(struct GDanceInfo) == 0xb0, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__10GDanceInfo = (struct GBaseInfoVftable* const)0x008d3938;
+// win1.41 008d3934 mac 1099548c GDanceInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GDanceInfo asm("??_R4GDanceInfo@@6B@");
+
+// win1.41 008d3938 mac 10995494 GDanceInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__10GDanceInfo asm("??_7GDanceInfo@@6B@");
 
 #endif /* BW1_DECOMP_DANCE_INFO_INCLUDED_H */

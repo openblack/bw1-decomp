@@ -13,6 +13,10 @@ struct GBallInfo
 };
 static_assert(sizeof(struct GBallInfo) == 0x140, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__9GBallInfo = (struct GBaseInfoVftable* const)0x008c4f34;
+// win1.41 008c4f30 mac 10737af4 GBallInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GBallInfo asm("??_R4GBallInfo@@6B@");
+
+// win1.41 008c4f34 mac 10737afc GBallInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__9GBallInfo asm("??_7GBallInfo@@6B@");
 
 #endif /* BW1_DECOMP_BALL_INFO_INCLUDED_H */

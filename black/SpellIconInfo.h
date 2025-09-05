@@ -15,6 +15,10 @@ struct GSpellIconInfo
 };
 static_assert(sizeof(struct GSpellIconInfo) == 0x12c, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* const __vt__14GSpellIconInfo = (struct GMultiMapFixedInfoVftable* const)0x00981a58;
+// win1.41 00981a54 mac 109dc3c4 GSpellIconInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GSpellIconInfo asm("??_R4GSpellIconInfo@@6B@");
+
+// win1.41 00981a58 mac 109dc3cc GSpellIconInfo::`vftable'
+extern const struct GMultiMapFixedInfoVftable __vt__14GSpellIconInfo asm("??_7GSpellIconInfo@@6B@");
 
 #endif /* BW1_DECOMP_SPELL_ICON_INFO_INCLUDED_H */

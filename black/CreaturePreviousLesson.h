@@ -14,6 +14,10 @@ struct CreaturePreviousLesson
 };
 static_assert(sizeof(struct CreaturePreviousLesson) == 0x120c, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__22CreaturePreviousLesson = (struct BaseVftable* const)0x008d0430;
+// win1.41 008d042c mac 107874e4 CreaturePreviousLesson::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__22CreaturePreviousLesson asm("??_R4CreaturePreviousLesson@@6B@");
+
+// win1.41 008d0430 mac 107874ec CreaturePreviousLesson::`vftable'
+extern const struct BaseVftable __vt__22CreaturePreviousLesson asm("??_7CreaturePreviousLesson@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_PREVIOUS_LESSON_INCLUDED_H */

@@ -16,6 +16,10 @@ struct TerrainMapTypeInfo
 };
 static_assert(sizeof(struct TerrainMapTypeInfo) == 0x14, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__18TerrainMapTypeInfo = (struct GBaseInfoVftable* const)0x008df840;
+// win1.41 008df83c mac 10730ad8 TerrainMapTypeInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18TerrainMapTypeInfo asm("??_R4TerrainMapTypeInfo@@6B@");
+
+// win1.41 008df840 mac 10730ae0 TerrainMapTypeInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__18TerrainMapTypeInfo asm("??_7TerrainMapTypeInfo@@6B@");
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_TYPE_INFO_INCLUDED_H */

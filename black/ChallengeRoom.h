@@ -12,7 +12,11 @@ struct ChallengeRoom
 };
 static_assert(sizeof(struct ChallengeRoom) == 0x160, "Data type is of wrong size");
 
-static struct TempleRoomVftable* const __vt__13ChallengeRoom = (struct TempleRoomVftable* const)0x0099ead8;
+// win1.41 0099ead4 mac 10777d4c ChallengeRoom::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ChallengeRoom asm("??_R4ChallengeRoom@@6B@");
+
+// win1.41 0099ead8 mac 10777d54 ChallengeRoom::`vftable'
+extern const struct TempleRoomVftable __vt__13ChallengeRoom asm("??_7ChallengeRoom@@6B@");
 
 // Static methods
 

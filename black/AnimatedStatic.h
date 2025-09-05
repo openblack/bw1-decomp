@@ -15,7 +15,11 @@ struct AnimatedStatic
 };
 static_assert(sizeof(struct AnimatedStatic) == 0x98, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__14AnimatedStatic = (struct MultiMapFixedVftable* const)0x008c1a10;
+// win1.41 008c1a0c mac 10735450 AnimatedStatic::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14AnimatedStatic asm("??_R4AnimatedStatic@@6B@");
+
+// win1.41 008c1a10 mac 10735458 AnimatedStatic::`vftable'
+extern const struct MultiMapFixedVftable __vt__14AnimatedStatic asm("??_7AnimatedStatic@@6B@");
 
 DECLARE_LH_LINKED_LIST(AnimatedStatic);
 

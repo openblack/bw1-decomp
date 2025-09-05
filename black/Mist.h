@@ -26,7 +26,11 @@ struct Mist
 };
 static_assert(sizeof(struct Mist) == 0x54, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__4Mist = (struct GameThingWithPosVftable* const)0x008eb640;
+// win1.41 008eb63c mac 10745708 Mist::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Mist asm("??_R4Mist@@6B@");
+
+// win1.41 008eb640 mac 10745710 Mist::`vftable'
+extern const struct GameThingWithPosVftable __vt__4Mist asm("??_7Mist@@6B@");
 
 // Constructors
 

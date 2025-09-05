@@ -15,7 +15,11 @@ struct PuzzleGame
 };
 static_assert(sizeof(struct PuzzleGame) == 0x588, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__10PuzzleGame = (struct GameThingWithPosVftable* const)0x008f2338;
+// win1.41 008f2334 mac 10756934 PuzzleGame::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10PuzzleGame asm("??_R4PuzzleGame@@6B@");
+
+// win1.41 008f2338 mac 1075693c PuzzleGame::`vftable'
+extern const struct GameThingWithPosVftable __vt__10PuzzleGame asm("??_7PuzzleGame@@6B@");
 
 DECLARE_LH_LIST_HEAD(PuzzleGame);
 

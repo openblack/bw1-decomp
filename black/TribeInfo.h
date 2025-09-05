@@ -17,7 +17,11 @@ struct GTribeInfo
 };
 static_assert(sizeof(struct GTribeInfo) == 0x1c, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__10GTribeInfo = (struct GBaseInfoVftable* const)0x0099a190;
+// win1.41 0099a18c mac 1075e974 GTribeInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GTribeInfo asm("??_R4GTribeInfo@@6B@");
+
+// win1.41 0099a190 mac 1075e97c GTribeInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__10GTribeInfo asm("??_7GTribeInfo@@6B@");
 
 // Static methods
 

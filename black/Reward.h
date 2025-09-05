@@ -15,7 +15,11 @@ struct Reward
 };
 static_assert(sizeof(struct Reward) == 0xa8, "Data type is of wrong size");
 
-static struct MobileObjectVftable* const __vt__6Reward = (struct MobileObjectVftable* const)0x00941894;
+// win1.41 00941890 mac 10759768 Reward::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Reward asm("??_R4Reward@@6B@");
+
+// win1.41 00941894 mac 10759770 Reward::`vftable'
+extern const struct MobileObjectVftable __vt__6Reward asm("??_7Reward@@6B@");
 
 DECLARE_LH_LINKED_LIST(Reward);
 

@@ -65,7 +65,11 @@ struct GroupBehaviour
 };
 static_assert(sizeof(struct GroupBehaviour) == 0xe8, "Data type is of wrong size");
 
-static struct GroupBehaviourVftable* const __vt__14GroupBehaviour = (struct GroupBehaviourVftable* const)0x009003f8;
+// win1.41 009003f4 mac 10744630 GroupBehaviour::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GroupBehaviour asm("??_R4GroupBehaviour@@6B@");
+
+// win1.41 009003f8 mac 106f5ebc GroupBehaviour::`vftable'
+extern const struct GroupBehaviourVftable __vt__14GroupBehaviour asm("??_7GroupBehaviour@@6B@");
 
 // Constructors
 

@@ -117,7 +117,7 @@ def batched_arg_to_csnake(type_decls):
 
 
 def generate_globals_header(globals_decl: dict, function_proto_map: dict[str, FuncPtr], local_header_import_map: dict[str, Path]) -> GlobalsHeader:
-    members = [Struct.Member(g["name"], g["type"], g["address"]) for g in globals_decl]
+    members = [Struct.Member(g["name"], g["type"], g["win_addr"]) for g in globals_decl]
     globals_t = Struct("globals_t", None, members)
     header = GlobalsHeader(Path("globals.h"), includes=[], structs=[globals_t], function_proto_map=function_proto_map)
     header.build_include_list(local_header_import_map)
@@ -186,7 +186,7 @@ def get_virtual_methods(vftable, vftable_map):
     return result
 
 
-def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
+def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, rtti_locator_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
     consumed_vftable_addresses = set()
     consumed_methods = set()
     for t in header_structs:
@@ -203,8 +203,8 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
                     structs.append(associated_vftable)
                 if t.name in helper_base_map:
                     structs.append(helper_base_map[t.name])
-                new_struct = RTTIClass(t, vftable_address_look_up, virtual_table_function_arg_map, class_method_look_up, class_static_method_look_up)
-                consumed_vftable_addresses.add(new_struct.vftable_address)
+                new_struct = RTTIClass(t, vftable_address_look_up, rtti_locator_address_look_up, virtual_table_function_arg_map, class_method_look_up, class_static_method_look_up)
+                consumed_vftable_addresses.add(new_struct.vftable_win_address)
             else:
                 new_struct = t
                 (
@@ -225,7 +225,7 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
         except RuntimeError as e:
             print(e, file=sys.stderr)
 
-    remaining_vftable_addresses = {k: v for k, v in vftable_address_look_up.items() if v['address'] not in consumed_vftable_addresses}
+    remaining_vftable_addresses = {k: v for k, v in vftable_address_look_up.items() if v['win_addr'] not in consumed_vftable_addresses}
     remaining_class_methods = list()
     for v in class_method_look_up.values():
         for i in v:
@@ -323,6 +323,9 @@ if __name__ == "__main__":
 
     vftable_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__vt__")], global_decls)
     vftable_address_look_up = {i["name"].removeprefix("__vt__"): i for i in vftable_addresses}
+
+    locator_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTICompleObjectLocator__")], global_decls)
+    locator_address_look_up = {i["name"].removeprefix("__RTTICompleObjectLocator__"): i for i in locator_addresses}
 
     class_method_look_up, class_static_method_look_up, class_list_functions, remainder_functions = find_methods(db['functions'])
     (
@@ -488,7 +491,7 @@ if __name__ == "__main__":
     header_map: dict[Path, Header] = {}
 
     build_enum_headers(header_enums, header_map, local_header_import_map)
-    remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
+    remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, locator_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
     remainder_class_static_methods = build_remaining_static_function_headers(remainder_class_static_methods, header_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
     build_loadit_headers(loadit_functions, header_map)

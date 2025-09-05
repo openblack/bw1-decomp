@@ -16,7 +16,11 @@ struct GScript
 };
 static_assert(sizeof(struct GScript) == 0xbc, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__7GScript = (struct BaseVftable* const)0x00942174;
+// win1.41 00942170 mac 109c38c8 GScript::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GScript asm("??_R4GScript@@6B@");
+
+// win1.41 00942174 mac 109c38d0 GScript::`vftable'
+extern const struct BaseVftable __vt__7GScript asm("??_7GScript@@6B@");
 
 // Static methods
 

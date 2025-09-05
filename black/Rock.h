@@ -32,7 +32,11 @@ struct Rock
 };
 static_assert(sizeof(struct Rock) == 0x94, "Data type is of wrong size");
 
-static struct RockVftable* const __vt__4Rock = (struct RockVftable* const)0x008e2100;
+// win1.41 008e20fc mac 107387e8 Rock::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Rock asm("??_R4Rock@@6B@");
+
+// win1.41 008e2100 mac 10738828 Rock::`vftable'
+extern const struct RockVftable __vt__4Rock asm("??_7Rock@@6B@");
 
 // Constructors
 

@@ -13,6 +13,10 @@ struct MainMenu
 };
 static_assert(sizeof(struct MainMenu) == 0x38, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__8MainMenu = (struct DialogBoxBaseVftable* const)0x008dec44;
+// win1.41 008dec40 mac 109ed7d4 MainMenu::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8MainMenu asm("??_R4MainMenu@@6B@");
+
+// win1.41 008dec44 mac 109ed7dc MainMenu::`vftable'
+extern const struct DialogBoxBaseVftable __vt__8MainMenu asm("??_7MainMenu@@6B@");
 
 #endif /* BW1_DECOMP_MAIN_MENU_INCLUDED_H */

@@ -38,7 +38,11 @@ struct MobileObject
 };
 static_assert(sizeof(struct MobileObject) == 0x68, "Data type is of wrong size");
 
-static struct MobileObjectVftable* const __vt__12MobileObject = (struct MobileObjectVftable* const)0x008eed1c;
+// win1.41 008eed18 mac 106f3288 MobileObject::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MobileObject asm("??_R4MobileObject@@6B@");
+
+// win1.41 008eed1c mac 109ab974 MobileObject::`vftable'
+extern const struct MobileObjectVftable __vt__12MobileObject asm("??_7MobileObject@@6B@");
 
 // Static methods
 

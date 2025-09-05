@@ -13,7 +13,11 @@ struct GestureSystem
 };
 static_assert(sizeof(struct GestureSystem) == 0xca0, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__13GestureSystem = (struct BaseVftable* const)0x008df800;
+// win1.41 008df7fc mac 107330f8 GestureSystem::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GestureSystem asm("??_R4GestureSystem@@6B@");
+
+// win1.41 008df800 mac 10733100 GestureSystem::`vftable'
+extern const struct BaseVftable __vt__13GestureSystem asm("??_7GestureSystem@@6B@");
 
 // Constructors
 

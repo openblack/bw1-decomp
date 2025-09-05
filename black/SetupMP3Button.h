@@ -19,7 +19,11 @@ struct SetupMP3Button
 };
 static_assert(sizeof(struct SetupMP3Button) == 0x250, "Data type is of wrong size");
 
-static struct SetupControlVftable* const __vt__14SetupMP3Button = (struct SetupControlVftable* const)0x00900060;
+// win1.41 0090005c mac 10731104 SetupMP3Button::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupMP3Button asm("??_R4SetupMP3Button@@6B@");
+
+// win1.41 00900060 mac 1073110c SetupMP3Button::`vftable'
+extern const struct SetupControlVftable __vt__14SetupMP3Button asm("??_7SetupMP3Button@@6B@");
 
 // Constructors
 

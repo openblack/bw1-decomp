@@ -34,7 +34,11 @@ struct Tree
 };
 static_assert(sizeof(struct Tree) == 0x6c, "Data type is of wrong size");
 
-static struct TreeVftable* const __vt__4Tree = (struct TreeVftable* const)0x008e92f4;
+// win1.41 008e92f0 mac 1075df20 Tree::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Tree asm("??_R4Tree@@6B@");
+
+// win1.41 008e92f4 mac 106f65d0 Tree::`vftable'
+extern const struct TreeVftable __vt__4Tree asm("??_7Tree@@6B@");
 
 // Static methods
 

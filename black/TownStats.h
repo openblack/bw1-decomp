@@ -61,7 +61,11 @@ struct TownStats
 };
 static_assert(sizeof(struct TownStats) == 0x118, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__9TownStats = (struct BaseVftable* const)0x0099a00c;
+// win1.41 0099a008 mac 109e3664 TownStats::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9TownStats asm("??_R4TownStats@@6B@");
+
+// win1.41 0099a00c mac 109e366c TownStats::`vftable'
+extern const struct BaseVftable __vt__9TownStats asm("??_7TownStats@@6B@");
 
 // Non-virtual methods
 

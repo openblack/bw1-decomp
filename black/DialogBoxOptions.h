@@ -43,7 +43,11 @@ struct DialogBoxOptions
 };
 static_assert(sizeof(struct DialogBoxOptions) == 0x68, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__16DialogBoxOptions = (struct DialogBoxBaseVftable* const)0x008d861c;
+// win1.41 008d8618 mac 109990e8 DialogBoxOptions::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16DialogBoxOptions asm("??_R4DialogBoxOptions@@6B@");
+
+// win1.41 008d861c mac 109990f0 DialogBoxOptions::`vftable'
+extern const struct DialogBoxBaseVftable __vt__16DialogBoxOptions asm("??_7DialogBoxOptions@@6B@");
 
 // Constructors
 

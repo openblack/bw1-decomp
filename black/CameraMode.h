@@ -84,6 +84,10 @@ struct CameraMode
 };
 static_assert(sizeof(struct CameraMode) == 0x8, "Data type is of wrong size");
 
-static struct CameraModeVftable* const __vt__10CameraMode = (struct CameraModeVftable* const)0x008c76e0;
+// win1.41 008c76dc mac 10732dcc CameraMode::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10CameraMode asm("??_R4CameraMode@@6B@");
+
+// win1.41 008c76e0 mac 106f5b10 CameraMode::`vftable'
+extern const struct CameraModeVftable __vt__10CameraMode asm("??_7CameraMode@@6B@");
 
 #endif /* BW1_DECOMP_CAMERA_MODE_INCLUDED_H */

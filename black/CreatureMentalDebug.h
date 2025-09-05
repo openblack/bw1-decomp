@@ -24,6 +24,10 @@ struct CreatureMentalDebug
 };
 static_assert(sizeof(struct CreatureMentalDebug) == 0x4c, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__19CreatureMentalDebug = (struct BaseVftable* const)0x008cf8cc;
+// win1.41 008cf8c8 mac 1078766c CreatureMentalDebug::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19CreatureMentalDebug asm("??_R4CreatureMentalDebug@@6B@");
+
+// win1.41 008cf8cc mac 10787674 CreatureMentalDebug::`vftable'
+extern const struct BaseVftable __vt__19CreatureMentalDebug asm("??_7CreatureMentalDebug@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_DEBUG_INCLUDED_H */

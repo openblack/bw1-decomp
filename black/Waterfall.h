@@ -15,7 +15,11 @@ struct GWaterfall
 };
 static_assert(sizeof(struct GWaterfall) == 0x58, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__10GWaterfall = (struct ObjectVftable* const)0x008ec14c;
+// win1.41 008ec148 mac 1075d4a0 GWaterfall::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GWaterfall asm("??_R4GWaterfall@@6B@");
+
+// win1.41 008ec14c mac 1075d4a8 GWaterfall::`vftable'
+extern const struct ObjectVftable __vt__10GWaterfall asm("??_7GWaterfall@@6B@");
 
 DECLARE_LH_LIST_HEAD(GWaterfall);
 

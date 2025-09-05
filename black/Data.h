@@ -20,7 +20,11 @@ struct GData
 };
 static_assert(sizeof(struct GData) == 0x28, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__5GData = (struct BaseVftable* const)0x008d6034;
+// win1.41 008d6030 mac 10730b70 GData::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5GData asm("??_R4GData@@6B@");
+
+// win1.41 008d6034 mac 10730b78 GData::`vftable'
+extern const struct BaseVftable __vt__5GData asm("??_7GData@@6B@");
 
 // Constructors
 

@@ -29,7 +29,11 @@ struct TownCentre
 };
 static_assert(sizeof(struct TownCentre) == 0xe8, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__10TownCentre = (struct MultiMapFixedVftable* const)0x008e4bfc;
+// win1.41 008e4bf8 mac 1077f15c TownCentre::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10TownCentre asm("??_R4TownCentre@@6B@");
+
+// win1.41 008e4bfc mac 106f6a44 TownCentre::`vftable'
+extern const struct MultiMapFixedVftable __vt__10TownCentre asm("??_7TownCentre@@6B@");
 
 // Static methods
 

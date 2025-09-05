@@ -90,7 +90,11 @@ struct InnerCamera
 };
 static_assert(sizeof(struct InnerCamera) == 0x46c, "Data type is of wrong size");
 
-static struct InnerCameraVftable* const __vt__11InnerCamera = (struct InnerCameraVftable* const)0x0099ee70;
+// win1.41 0099ee6c mac 10777d9c InnerCamera::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11InnerCamera asm("??_R4InnerCamera@@6B@");
+
+// win1.41 0099ee70 mac 10777da4 InnerCamera::`vftable'
+extern const struct InnerCameraVftable __vt__11InnerCamera asm("??_7InnerCamera@@6B@");
 
 // Constructors
 

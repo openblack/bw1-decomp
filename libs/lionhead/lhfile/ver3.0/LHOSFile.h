@@ -26,7 +26,11 @@ struct LHOSFile
 };
 static_assert(sizeof(struct LHOSFile) == 0x8, "Data type is of wrong size");
 
-static struct LHOSFileVftable* const __vt__8LHOSFile = (struct LHOSFileVftable* const)0x0099f86c;
+// win1.41 0099f868 mac 1099a66c LHOSFile::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LHOSFile asm("??_R4LHOSFile@@6B@");
+
+// win1.41 0099f86c mac 1099a674 LHOSFile::`vftable'
+extern const struct LHOSFileVftable __vt__8LHOSFile asm("??_7LHOSFile@@6B@");
 
 // Static methods
 

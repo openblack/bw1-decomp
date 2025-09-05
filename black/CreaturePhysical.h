@@ -21,7 +21,11 @@ struct CreatureDamageMap
 };
 static_assert(sizeof(struct CreatureDamageMap) == 0x10, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__17CreatureDamageMap = (struct BaseVftable* const)0x008d14f0;
+// win1.41 008d14ec mac 1077e114 CreatureDamageMap::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17CreatureDamageMap asm("??_R4CreatureDamageMap@@6B@");
+
+// win1.41 008d14f0 mac 1077e11c CreatureDamageMap::`vftable'
+extern const struct BaseVftable __vt__17CreatureDamageMap asm("??_7CreatureDamageMap@@6B@");
 
 struct CreaturePhysical
 {
@@ -55,7 +59,11 @@ struct CreaturePhysical
 };
 static_assert(sizeof(struct CreaturePhysical) == 0x74, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__16CreaturePhysical = (struct BaseVftable* const)0x008d14d0;
+// win1.41 008d14cc mac 1077e14c CreaturePhysical::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16CreaturePhysical asm("??_R4CreaturePhysical@@6B@");
+
+// win1.41 008d14d0 mac 1077e154 CreaturePhysical::`vftable'
+extern const struct BaseVftable __vt__16CreaturePhysical asm("??_7CreaturePhysical@@6B@");
 
 // Constructors
 

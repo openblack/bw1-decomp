@@ -32,7 +32,11 @@ struct EffectValues
 };
 static_assert(sizeof(struct EffectValues) == 0x40, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__12EffectValues = (struct GBaseInfoVftable* const)0x008d8ba8;
+// win1.41 008d8ba4 mac 10734728 EffectValues::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12EffectValues asm("??_R4EffectValues@@6B@");
+
+// win1.41 008d8ba8 mac 10734730 EffectValues::`vftable'
+extern const struct GBaseInfoVftable __vt__12EffectValues asm("??_7EffectValues@@6B@");
 
 // Static methods
 

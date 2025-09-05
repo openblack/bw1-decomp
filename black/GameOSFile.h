@@ -32,7 +32,11 @@ struct GameOSFile
 };
 static_assert(sizeof(struct GameOSFile) == 0x230, "Data type is of wrong size");
 
-static struct LHOSFileVftable* const __vt__10GameOSFile = (struct LHOSFileVftable* const)0x008df960;
+// win1.41 008df95c mac 1099a69c GameOSFile::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GameOSFile asm("??_R4GameOSFile@@6B@");
+
+// win1.41 008df960 mac 1099a6a4 GameOSFile::`vftable'
+extern const struct LHOSFileVftable __vt__10GameOSFile asm("??_7GameOSFile@@6B@");
 
 // Static methods
 

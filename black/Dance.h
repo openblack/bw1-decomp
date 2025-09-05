@@ -22,7 +22,11 @@ struct Dance
 };
 static_assert(sizeof(struct Dance) == 0x12c, "Data type is of wrong size");
 
-static struct GroupBehaviourVftable* const __vt__5Dance = (struct GroupBehaviourVftable* const)0x008d3968;
+// win1.41 008d3964 mac 1074465c Dance::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Dance asm("??_R4Dance@@6B@");
+
+// win1.41 008d3968 mac 106f5ec0 Dance::`vftable'
+extern const struct GroupBehaviourVftable __vt__5Dance asm("??_7Dance@@6B@");
 
 // Constructors
 

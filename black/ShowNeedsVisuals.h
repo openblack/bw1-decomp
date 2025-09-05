@@ -34,7 +34,11 @@ struct ShowNeedsVisuals
 };
 static_assert(sizeof(struct ShowNeedsVisuals) == 0x94, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__16ShowNeedsVisuals = (struct ObjectVftable* const)0x008ecaac;
+// win1.41 008ecaa8 mac 1075acf0 ShowNeedsVisuals::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16ShowNeedsVisuals asm("??_R4ShowNeedsVisuals@@6B@");
+
+// win1.41 008ecaac mac 1075acf8 ShowNeedsVisuals::`vftable'
+extern const struct ObjectVftable __vt__16ShowNeedsVisuals asm("??_7ShowNeedsVisuals@@6B@");
 
 // Constructors
 

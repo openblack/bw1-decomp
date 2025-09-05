@@ -140,7 +140,11 @@ struct CameraModeNew3
 };
 static_assert(sizeof(struct CameraModeNew3) == 0x300, "Data type is of wrong size");
 
-static struct CameraModeNew3Vftable* const __vt__14CameraModeNew3 = (struct CameraModeNew3Vftable* const)0x008c7bfc;
+// win1.41 008c7bf8 mac 10732de0 CameraModeNew3::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CameraModeNew3 asm("??_R4CameraModeNew3@@6B@");
+
+// win1.41 008c7bfc mac 106f5b14 CameraModeNew3::`vftable'
+extern const struct CameraModeNew3Vftable __vt__14CameraModeNew3 asm("??_7CameraModeNew3@@6B@");
 
 // Static methods
 

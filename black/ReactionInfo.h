@@ -35,6 +35,10 @@ struct ReactionInfo
 };
 static_assert(sizeof(struct ReactionInfo) == 0x64, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__12ReactionInfo = (struct GBaseInfoVftable* const)0x009417ec;
+// win1.41 009417e8 mac 1075963c ReactionInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ReactionInfo asm("??_R4ReactionInfo@@6B@");
+
+// win1.41 009417ec mac 10759644 ReactionInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__12ReactionInfo asm("??_7ReactionInfo@@6B@");
 
 #endif /* BW1_DECOMP_REACTION_INFO_INCLUDED_H */

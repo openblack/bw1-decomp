@@ -13,6 +13,10 @@ struct GInterfaceMessageBuffer
 };
 static_assert(sizeof(struct GInterfaceMessageBuffer) == 0x14, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__23GInterfaceMessageBuffer = (struct BaseVftable* const)0x0092aaa4;
+// win1.41 0092aaa0 mac 1099f8dc GInterfaceMessageBuffer::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23GInterfaceMessageBuffer asm("??_R4GInterfaceMessageBuffer@@6B@");
+
+// win1.41 0092aaa4 mac 1099f8e4 GInterfaceMessageBuffer::`vftable'
+extern const struct BaseVftable __vt__23GInterfaceMessageBuffer asm("??_7GInterfaceMessageBuffer@@6B@");
 
 #endif /* BW1_DECOMP_INTERFACE_MESSAGE_BUFFER_INCLUDED_H */

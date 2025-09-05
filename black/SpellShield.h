@@ -17,7 +17,11 @@ struct SpellShield
 };
 static_assert(sizeof(struct SpellShield) == 0x10c, "Data type is of wrong size");
 
-static struct SpellWithObjectsVftable* const __vt__11SpellShield = (struct SpellWithObjectsVftable* const)0x009828d8;
+// win1.41 009828d4 mac 109e09bc SpellShield::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SpellShield asm("??_R4SpellShield@@6B@");
+
+// win1.41 009828d8 mac 109e09c4 SpellShield::`vftable'
+extern const struct SpellWithObjectsVftable __vt__11SpellShield asm("??_7SpellShield@@6B@");
 
 // Non-virtual methods
 

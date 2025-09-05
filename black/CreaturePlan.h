@@ -31,7 +31,11 @@ struct CreaturePlan
 };
 static_assert(sizeof(struct CreaturePlan) == 0x30, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__12CreaturePlan = (struct BaseVftable* const)0x008cc7cc;
+// win1.41 008cc7c8 mac 1098d1c0 CreaturePlan::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreaturePlan asm("??_R4CreaturePlan@@6B@");
+
+// win1.41 008cc7cc mac 1098d1c8 CreaturePlan::`vftable'
+extern const struct BaseVftable __vt__12CreaturePlan asm("??_7CreaturePlan@@6B@");
 
 struct CreaturePlanState
 {

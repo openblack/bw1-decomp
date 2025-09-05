@@ -15,7 +15,11 @@ struct TownArtifact
 };
 static_assert(sizeof(struct TownArtifact) == 0x40, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__12TownArtifact = (struct GameThingVftable* const)0x008c47d0;
+// win1.41 008c47cc mac 10736fe0 TownArtifact::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12TownArtifact asm("??_R4TownArtifact@@6B@");
+
+// win1.41 008c47d0 mac 10736fe8 TownArtifact::`vftable'
+extern const struct GameThingVftable __vt__12TownArtifact asm("??_7TownArtifact@@6B@");
 
 DECLARE_LH_LINKED_LIST(TownArtifact);
 

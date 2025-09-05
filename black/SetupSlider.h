@@ -24,7 +24,11 @@ struct SetupSlider
 };
 static_assert(sizeof(struct SetupSlider) == 0x250, "Data type is of wrong size");
 
-static struct SetupControlVftable* const __vt__11SetupSlider = (struct SetupControlVftable* const)0x008ab2ec;
+// win1.41 008ab2e8 mac 10731254 SetupSlider::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SetupSlider asm("??_R4SetupSlider@@6B@");
+
+// win1.41 008ab2ec mac 1073125c SetupSlider::`vftable'
+extern const struct SetupControlVftable __vt__11SetupSlider asm("??_7SetupSlider@@6B@");
 
 // Constructors
 

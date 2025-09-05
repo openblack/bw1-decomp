@@ -24,7 +24,11 @@ struct MPFEDatabase
 };
 static_assert(sizeof(struct MPFEDatabase) == 0xc, "Data type is of wrong size");
 
-static struct MPFEDatabaseVftable* const __vt__12MPFEDatabase = (struct MPFEDatabaseVftable* const)0x0093086c;
+// win1.41 00930868 mac 109a37c0 MPFEDatabase::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MPFEDatabase asm("??_R4MPFEDatabase@@6B@");
+
+// win1.41 0093086c mac 109a37c8 MPFEDatabase::`vftable'
+extern const struct MPFEDatabaseVftable __vt__12MPFEDatabase asm("??_7MPFEDatabase@@6B@");
 
 // Constructors
 

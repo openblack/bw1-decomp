@@ -60,7 +60,11 @@ struct CreatureAgenda
 };
 static_assert(sizeof(struct CreatureAgenda) == 0x1af8, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__14CreatureAgenda = (struct BaseVftable* const)0x008cf950;
+// win1.41 008cf94c mac 1078758c CreatureAgenda::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureAgenda asm("??_R4CreatureAgenda@@6B@");
+
+// win1.41 008cf950 mac 10787594 CreatureAgenda::`vftable'
+extern const struct BaseVftable __vt__14CreatureAgenda asm("??_7CreatureAgenda@@6B@");
 
 // Constructors
 

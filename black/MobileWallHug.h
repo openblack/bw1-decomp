@@ -108,7 +108,11 @@ struct MobileWallHug
 };
 static_assert(sizeof(struct MobileWallHug) == 0x8c, "Data type is of wrong size");
 
-static struct MobileWallHugVftable* const __vt__13MobileWallHug = (struct MobileWallHugVftable* const)0x008cded8;
+// win1.41 008cded4 mac 10732c5c MobileWallHug::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MobileWallHug asm("??_R4MobileWallHug@@6B@");
+
+// win1.41 008cded8 mac 10732c8c MobileWallHug::`vftable'
+extern const struct MobileWallHugVftable __vt__13MobileWallHug asm("??_7MobileWallHug@@6B@");
 
 // Constructors
 

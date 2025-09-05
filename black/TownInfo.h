@@ -29,6 +29,10 @@ struct GTownInfo
 };
 static_assert(sizeof(struct GTownInfo) == 0x18c, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__9GTownInfo = (struct GBaseInfoVftable* const)0x00999ab4;
+// win1.41 00999ab0 mac 109e35e4 GTownInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GTownInfo asm("??_R4GTownInfo@@6B@");
+
+// win1.41 00999ab4 mac 109e35ec GTownInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__9GTownInfo asm("??_7GTownInfo@@6B@");
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */

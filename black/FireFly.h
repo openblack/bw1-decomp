@@ -39,7 +39,11 @@ struct FireFly
 };
 static_assert(sizeof(struct FireFly) == 0xc4, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__7FireFly = (struct ObjectVftable* const)0x008da4f8;
+// win1.41 008da4f4 mac 1073f830 FireFly::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7FireFly asm("??_R4FireFly@@6B@");
+
+// win1.41 008da4f8 mac 106f5e14 FireFly::`vftable'
+extern const struct ObjectVftable __vt__7FireFly asm("??_7FireFly@@6B@");
 
 // Static methods
 

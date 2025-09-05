@@ -16,7 +16,11 @@ struct MPFEChooseConnection
 };
 static_assert(sizeof(struct MPFEChooseConnection) == 0x10, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__20MPFEChooseConnection = (struct DialogBoxBaseVftable* const)0x009307d8;
+// win1.41 009307d4 mac 109a2554 MPFEChooseConnection::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20MPFEChooseConnection asm("??_R4MPFEChooseConnection@@6B@");
+
+// win1.41 009307d8 mac 109a255c MPFEChooseConnection::`vftable'
+extern const struct DialogBoxBaseVftable __vt__20MPFEChooseConnection asm("??_7MPFEChooseConnection@@6B@");
 
 // Static methods
 

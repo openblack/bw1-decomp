@@ -39,7 +39,11 @@ struct Forest
 };
 static_assert(sizeof(struct Forest) == 0x58, "Data type is of wrong size");
 
-static struct ForestVftable* const __vt__6Forest = (struct ForestVftable* const)0x008de41c;
+// win1.41 008de418 mac 107434e0 Forest::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Forest asm("??_R4Forest@@6B@");
+
+// win1.41 008de41c mac 107434e8 Forest::`vftable'
+extern const struct ForestVftable __vt__6Forest asm("??_7Forest@@6B@");
 
 // Constructors
 

@@ -38,6 +38,10 @@ struct CreatureVisionState
 };
 static_assert(sizeof(struct CreatureVisionState) == 0x48, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__19CreatureVisionState = (struct BaseVftable* const)0x008cf880;
+// win1.41 008cf87c mac 107873fc CreatureVisionState::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19CreatureVisionState asm("??_R4CreatureVisionState@@6B@");
+
+// win1.41 008cf880 mac 10787404 CreatureVisionState::`vftable'
+extern const struct BaseVftable __vt__19CreatureVisionState asm("??_7CreatureVisionState@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_VISION_STATE_INCLUDED_H */

@@ -59,7 +59,11 @@ struct GMagicEffectInfo
 };
 static_assert(sizeof(struct GMagicEffectInfo) == 0x11c, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__16GMagicEffectInfo = (struct GBaseInfoVftable* const)0x008d8b78;
+// win1.41 008d8b74 mac 1073d070 GMagicEffectInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GMagicEffectInfo asm("??_R4GMagicEffectInfo@@6B@");
+
+// win1.41 008d8b78 mac 1073d078 GMagicEffectInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__16GMagicEffectInfo asm("??_7GMagicEffectInfo@@6B@");
 
 // Constructors
 

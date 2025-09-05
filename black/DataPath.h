@@ -23,7 +23,11 @@ struct DataPath
 };
 static_assert(sizeof(struct DataPath) == 0x30, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__8DataPath = (struct GameThingVftable* const)0x0092b41c;
+// win1.41 0092b418 mac 109a0f04 DataPath::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8DataPath asm("??_R4DataPath@@6B@");
+
+// win1.41 0092b41c mac 109a0f0c DataPath::`vftable'
+extern const struct GameThingVftable __vt__8DataPath asm("??_7DataPath@@6B@");
 
 // Constructors
 

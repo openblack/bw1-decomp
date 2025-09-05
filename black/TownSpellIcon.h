@@ -22,7 +22,11 @@ struct TownSpellIcon
 };
 static_assert(sizeof(struct TownSpellIcon) == 0x118, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__13TownSpellIcon = (struct MultiMapFixedVftable* const)0x008e7794;
+// win1.41 008e7790 mac 109e5998 TownSpellIcon::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13TownSpellIcon asm("??_R4TownSpellIcon@@6B@");
+
+// win1.41 008e7794 mac 109e59d8 TownSpellIcon::`vftable'
+extern const struct MultiMapFixedVftable __vt__13TownSpellIcon asm("??_7TownSpellIcon@@6B@");
 
 DECLARE_LH_LIST_HEAD(TownSpellIcon);
 

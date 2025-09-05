@@ -16,6 +16,10 @@ struct DancePathInfo
 };
 static_assert(sizeof(struct DancePathInfo) == 0x20, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__13DancePathInfo = (struct GameThingVftable* const)0x00900914;
+// win1.41 00900910 mac 10744cf0 DancePathInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DancePathInfo asm("??_R4DancePathInfo@@6B@");
+
+// win1.41 00900914 mac 10744cf8 DancePathInfo::`vftable'
+extern const struct GameThingVftable __vt__13DancePathInfo asm("??_7DancePathInfo@@6B@");
 
 #endif /* BW1_DECOMP_DANCE_PATH_INFO_INCLUDED_H */

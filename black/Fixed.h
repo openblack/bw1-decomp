@@ -53,8 +53,11 @@ struct FixedObject
 };
 static_assert(sizeof(struct FixedObject) == 0x58, "Data type is of wrong size");
 
-static struct FixedObjectVftable* const __vt__11FixedObject = (struct FixedObjectVftable* const)0x008db71c;
+// win1.41 008db718 mac 1073397c FixedObject::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11FixedObject asm("??_R4FixedObject@@6B@");
 
+// win1.41 008db71c mac 107339a4 FixedObject::`vftable'
+extern const struct FixedObjectVftable __vt__11FixedObject asm("??_7FixedObject@@6B@");
 // Constructors
 
 // win1.41 0052dd80 mac inlined FixedObject::FixedObject(void)
@@ -129,7 +132,11 @@ struct SingleMapFixed
 };
 static_assert(sizeof(struct SingleMapFixed) == 0x5c, "Data type is of wrong size");
 
-static struct SingleMapFixedVftable* const __vt__14SingleMapFixed = (struct SingleMapFixedVftable* const)0x008dc894;
+// win1.41 008dc890 mac 10740de0 SingleMapFixed::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SingleMapFixed asm("??_R4SingleMapFixed@@6B@");
+
+// win1.41 008dc894 mac 10740de8 SingleMapFixed::`vftable'
+extern const struct SingleMapFixedVftable __vt__14SingleMapFixed asm("??_7SingleMapFixed@@6B@");
 
 // Override methods
 
