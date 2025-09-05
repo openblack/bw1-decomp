@@ -28,7 +28,7 @@ struct SubArgument
 };
 static_assert(sizeof(struct SubArgument) == 0x4, "Data type is of wrong size");
 
-// win1.41 inline mac 1077e3e4 SubArgument::`vftable'
+// win1.41 inlined mac 1077e3e4 SubArgument::`vftable'
 extern const struct SubArgumentVftable __vt__11SubArgument asm("??_7SubArgument@@6B@");
 
 #endif /* BW1_DECOMP_SUB_ARGUMENT_INCLUDED_H */

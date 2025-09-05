@@ -25,7 +25,7 @@ struct Property
 };
 static_assert(sizeof(struct Property) == 0x4, "Data type is of wrong size");
 
-// win1.41 inline mac 1099a22c Property::`vftable'
+// win1.41 inlined mac 1099a22c Property::`vftable'
 extern const struct PropertyVftable __vt__8Property asm("??_7Property@@6B@");
 
 #endif /* BW1_DECOMP_PROPERTY_INCLUDED_H */
