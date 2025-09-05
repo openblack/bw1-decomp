@@ -90,7 +90,11 @@ struct Villager
 };
 static_assert(sizeof(struct Villager) == 0x130, "Data type is of wrong size");
 
-static struct VillagerVftable* const __vt__8Villager = (struct VillagerVftable* const)0x008f7960;
+// win1.41 008f795c mac 10732cdc Villager::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Villager asm("??_R4Villager@@6B@");
+
+// win1.41 008f7960 mac 106f5ae4 Villager::`vftable'
+extern const struct VillagerVftable __vt__8Villager asm("??_7Villager@@6B@");
 
 // Static methods
 

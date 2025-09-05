@@ -53,7 +53,11 @@ struct DataForScriptRemind
 };
 static_assert(sizeof(struct DataForScriptRemind) == 0x48, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__19DataForScriptRemind = (struct GameThingVftable* const)0x0092b520;
+// win1.41 0092b51c mac 109a0de0 DataForScriptRemind::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DataForScriptRemind asm("??_R4DataForScriptRemind@@6B@");
+
+// win1.41 0092b520 mac 109a0de8 DataForScriptRemind::`vftable'
+extern const struct GameThingVftable __vt__19DataForScriptRemind asm("??_7DataForScriptRemind@@6B@");
 
 // Static methods
 
@@ -295,7 +299,11 @@ struct Living
 };
 static_assert(sizeof(struct Living) == 0xe0, "Data type is of wrong size");
 
-static struct LivingVftable* const __vt__6Living = (struct LivingVftable* const)0x008cd394;
+// win1.41 008cd390 mac 10732c98 Living::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Living asm("??_R4Living@@6B@");
+
+// win1.41 008cd394 mac 106f5ae0 Living::`vftable'
+extern const struct LivingVftable __vt__6Living asm("??_7Living@@6B@");
 
 // Static methods
 

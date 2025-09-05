@@ -46,7 +46,11 @@ struct SpellIcon
 };
 static_assert(sizeof(struct SpellIcon) == 0x110, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__9SpellIcon = (struct MultiMapFixedVftable* const)0x008f84ac;
+// win1.41 008f84a8 mac 10733a6c SpellIcon::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SpellIcon asm("??_R4SpellIcon@@6B@");
+
+// win1.41 008f84ac mac 10733aa4 SpellIcon::`vftable'
+extern const struct MultiMapFixedVftable __vt__9SpellIcon asm("??_7SpellIcon@@6B@");
 
 // Constructors
 

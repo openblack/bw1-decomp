@@ -13,7 +13,11 @@ struct LoginBox
 };
 static_assert(sizeof(struct LoginBox) == 0x89c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__8LoginBox = (struct DialogBoxBaseVftable* const)0x008dec98;
+// win1.41 008dec94 mac 109ed794 LoginBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LoginBox asm("??_R4LoginBox@@6B@");
+
+// win1.41 008dec98 mac 109ed79c LoginBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__8LoginBox asm("??_7LoginBox@@6B@");
 
 // Non-virtual methods
 

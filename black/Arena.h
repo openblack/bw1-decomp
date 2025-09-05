@@ -15,7 +15,11 @@ struct GArena
 };
 static_assert(sizeof(struct GArena) == 0x4c, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__6GArena = (struct GameThingVftable* const)0x008c2c98;
+// win1.41 008c2c94 mac 10735f14 GArena::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GArena asm("??_R4GArena@@6B@");
+
+// win1.41 008c2c98 mac 106f5c54 GArena::`vftable'
+extern const struct GameThingVftable __vt__6GArena asm("??_7GArena@@6B@");
 
 DECLARE_LH_LIST_HEAD(GArena);
 

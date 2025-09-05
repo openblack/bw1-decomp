@@ -88,7 +88,11 @@ struct TempleRoom
 };
 static_assert(sizeof(struct TempleRoom) == 0xec, "Data type is of wrong size");
 
-static struct TempleRoomVftable* const __vt__10TempleRoom = (struct TempleRoomVftable* const)0x0099eec4;
+// win1.41 0099eec0 mac 10732ce8 TempleRoom::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10TempleRoom asm("??_R4TempleRoom@@6B@");
+
+// win1.41 0099eec4 mac 106f5af8 TempleRoom::`vftable'
+extern const struct TempleRoomVftable __vt__10TempleRoom asm("??_7TempleRoom@@6B@");
 
 // Constructors
 

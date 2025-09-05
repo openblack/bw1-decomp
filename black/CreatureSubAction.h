@@ -25,7 +25,11 @@ struct CreatureSubAction
 };
 static_assert(sizeof(struct CreatureSubAction) == 0x60, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__17CreatureSubAction = (struct BaseVftable* const)0x008cd374;
+// win1.41 008cd370 mac 1077e1bc CreatureSubAction::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17CreatureSubAction asm("??_R4CreatureSubAction@@6B@");
+
+// win1.41 008cd374 mac 1077e1c4 CreatureSubAction::`vftable'
+extern const struct BaseVftable __vt__17CreatureSubAction asm("??_7CreatureSubAction@@6B@");
 
 // Constructors
 
@@ -57,7 +61,11 @@ struct CreatureSubActionAgenda
 };
 static_assert(sizeof(struct CreatureSubActionAgenda) == 0xc50, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__23CreatureSubActionAgenda = (struct BaseVftable* const)0x008cd354;
+// win1.41 008cd350 mac 1077e1f4 CreatureSubActionAgenda::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreatureSubActionAgenda asm("??_R4CreatureSubActionAgenda@@6B@");
+
+// win1.41 008cd354 mac 1077e1fc CreatureSubActionAgenda::`vftable'
+extern const struct BaseVftable __vt__23CreatureSubActionAgenda asm("??_7CreatureSubActionAgenda@@6B@");
 
 // Constructors
 

@@ -46,7 +46,11 @@ struct Field
 };
 static_assert(sizeof(struct Field) == 0x124, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__5Field = (struct MultiMapFixedVftable* const)0x008d9b7c;
+// win1.41 008d9b78 mac 1073ee70 Field::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Field asm("??_R4Field@@6B@");
+
+// win1.41 008d9b7c mac 1073ee78 Field::`vftable'
+extern const struct MultiMapFixedVftable __vt__5Field asm("??_7Field@@6B@");
 
 // Static methods
 

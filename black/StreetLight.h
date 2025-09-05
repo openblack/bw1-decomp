@@ -15,7 +15,11 @@ struct GStreetLight
 };
 static_assert(sizeof(struct GStreetLight) == 0x2c, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__12GStreetLight = (struct GameThingWithPosVftable* const)0x008eb138;
+// win1.41 008eb134 mac 109e1864 GStreetLight::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GStreetLight asm("??_R4GStreetLight@@6B@");
+
+// win1.41 008eb138 mac 109e186c GStreetLight::`vftable'
+extern const struct GameThingWithPosVftable __vt__12GStreetLight asm("??_7GStreetLight@@6B@");
 
 DECLARE_LH_LIST_HEAD(GStreetLight);
 

@@ -18,7 +18,11 @@ struct MagicFireBall
 };
 static_assert(sizeof(struct MagicFireBall) == 0x60, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__13MagicFireBall = (struct ObjectVftable* const)0x0093595c;
+// win1.41 00935958 mac 109afc28 MagicFireBall::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MagicFireBall asm("??_R4MagicFireBall@@6B@");
+
+// win1.41 0093595c mac 109afc30 MagicFireBall::`vftable'
+extern const struct ObjectVftable __vt__13MagicFireBall asm("??_7MagicFireBall@@6B@");
 
 // Constructors
 

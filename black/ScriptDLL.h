@@ -62,7 +62,11 @@ struct ScriptDLL
 };
 static_assert(sizeof(struct ScriptDLL) == 0xdc, "Data type is of wrong size");
 
-static struct LHDLLVftable* const __vt__9ScriptDLL = (struct LHDLLVftable* const)0x00942200;
+// win1.41 009421fc mac 109c4210 ScriptDLL::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9ScriptDLL asm("??_R4ScriptDLL@@6B@");
+
+// win1.41 00942200 mac 109c4218 ScriptDLL::`vftable'
+extern const struct LHDLLVftable __vt__9ScriptDLL asm("??_7ScriptDLL@@6B@");
 
 // Static methods
 

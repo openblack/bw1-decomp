@@ -43,7 +43,11 @@ struct GTownDesireInfo
 };
 static_assert(sizeof(struct GTownDesireInfo) == 0x90, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__15GTownDesireInfo = (struct GBaseInfoVftable* const)0x0099a098;
+// win1.41 0099a094 mac 109e57f0 GTownDesireInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GTownDesireInfo asm("??_R4GTownDesireInfo@@6B@");
+
+// win1.41 0099a098 mac 109e57f8 GTownDesireInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__15GTownDesireInfo asm("??_7GTownDesireInfo@@6B@");
 
 // Non-virtual methods
 

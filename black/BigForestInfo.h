@@ -13,6 +13,10 @@ struct GBigForestInfo
 };
 static_assert(sizeof(struct GBigForestInfo) == 0x128, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* const __vt__14GBigForestInfo = (struct GMultiMapFixedInfoVftable* const)0x008c58b8;
+// win1.41 008c58b4 mac 1073865c GBigForestInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GBigForestInfo asm("??_R4GBigForestInfo@@6B@");
+
+// win1.41 008c58b8 mac 10738664 GBigForestInfo::`vftable'
+extern const struct GMultiMapFixedInfoVftable __vt__14GBigForestInfo asm("??_7GBigForestInfo@@6B@");
 
 #endif /* BW1_DECOMP_BIG_FOREST_INFO_INCLUDED_H */

@@ -16,6 +16,10 @@ struct CreatureExplorationMap
 };
 static_assert(sizeof(struct CreatureExplorationMap) == 0x2018, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__22CreatureExplorationMap = (struct BaseVftable* const)0x008d00e0;
+// win1.41 008d00dc mac 1098b8d8 CreatureExplorationMap::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__22CreatureExplorationMap asm("??_R4CreatureExplorationMap@@6B@");
+
+// win1.41 008d00e0 mac 1098b8e0 CreatureExplorationMap::`vftable'
+extern const struct BaseVftable __vt__22CreatureExplorationMap asm("??_7CreatureExplorationMap@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_EXPLORATION_MAP_INCLUDED_H */

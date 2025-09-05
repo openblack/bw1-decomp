@@ -16,7 +16,11 @@ struct GKeyBuffer
 };
 static_assert(sizeof(struct GKeyBuffer) == 0x10, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__10GKeyBuffer = (struct BaseVftable* const)0x008df780;
+// win1.41 008df77c mac 10733c44 GKeyBuffer::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GKeyBuffer asm("??_R4GKeyBuffer@@6B@");
+
+// win1.41 008df780 mac 10733c4c GKeyBuffer::`vftable'
+extern const struct BaseVftable __vt__10GKeyBuffer asm("??_7GKeyBuffer@@6B@");
 
 // Constructors
 

@@ -34,6 +34,10 @@ struct ValueSpinner
 };
 static_assert(sizeof(struct ValueSpinner) == 0xa0, "Data type is of wrong size");
 
-static struct ValueSpinnerVftable* const __vt__12ValueSpinner = (struct ValueSpinnerVftable* const)0x008c589c;
+// win1.41 008c5898 mac 10737b54 ValueSpinner::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ValueSpinner asm("??_R4ValueSpinner@@6B@");
+
+// win1.41 008c589c mac 10737b5c ValueSpinner::`vftable'
+extern const struct ValueSpinnerVftable __vt__12ValueSpinner asm("??_7ValueSpinner@@6B@");
 
 #endif /* BW1_DECOMP_VALUE_SPINNER_INCLUDED_H */

@@ -24,6 +24,10 @@ struct GSingleMapFixedInfo
 };
 static_assert(sizeof(struct GSingleMapFixedInfo) == 0x100, "Data type is of wrong size");
 
-static struct GSingleMapFixedInfoVftable* const __vt__19GSingleMapFixedInfo = (struct GSingleMapFixedInfoVftable* const)0x008db6dc;
+// win1.41 008db6d8 mac 10740ce8 GSingleMapFixedInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19GSingleMapFixedInfo asm("??_R4GSingleMapFixedInfo@@6B@");
+
+// win1.41 008db6dc mac 10740cf0 GSingleMapFixedInfo::`vftable'
+extern const struct GSingleMapFixedInfoVftable __vt__19GSingleMapFixedInfo asm("??_7GSingleMapFixedInfo@@6B@");
 
 #endif /* BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H */

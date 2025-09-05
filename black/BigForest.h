@@ -25,7 +25,11 @@ struct BigForest
 };
 static_assert(sizeof(struct BigForest) == 0x88, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* const __vt__9BigForest = (struct GMultiMapFixedInfoVftable* const)0x008c5904;
+// win1.41 008c5900 mac 10783da4 BigForest::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BigForest asm("??_R4BigForest@@6B@");
+
+// win1.41 008c5904 mac 106f7ce0 BigForest::`vftable'
+extern const struct GMultiMapFixedInfoVftable __vt__9BigForest asm("??_7BigForest@@6B@");
 
 // Static methods
 

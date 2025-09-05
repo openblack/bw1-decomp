@@ -120,7 +120,11 @@ struct GVillagerInfo
 };
 static_assert(sizeof(struct GVillagerInfo) == 0x3a4, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* const __vt__13GVillagerInfo = (struct GObjectInfoVftable* const)0x0099a3e4;
+// win1.41 0099a3e0 mac 109e7800 GVillagerInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GVillagerInfo asm("??_R4GVillagerInfo@@6B@");
+
+// win1.41 0099a3e4 mac 109e7808 GVillagerInfo::`vftable'
+extern const struct GObjectInfoVftable __vt__13GVillagerInfo asm("??_7GVillagerInfo@@6B@");
 
 // Static methods
 

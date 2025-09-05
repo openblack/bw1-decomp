@@ -29,6 +29,10 @@ struct CreatureInfo
 };
 static_assert(sizeof(struct CreatureInfo) == 0x394, "Data type is of wrong size");
 
-static struct GObjectInfoVftable* const __vt__12CreatureInfo = (struct GObjectInfoVftable* const)0x008cc758;
+// win1.41 008cc754 mac 1077e340 CreatureInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureInfo asm("??_R4CreatureInfo@@6B@");
+
+// win1.41 008cc758 mac 1077e348 CreatureInfo::`vftable'
+extern const struct GObjectInfoVftable __vt__12CreatureInfo asm("??_7CreatureInfo@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_INFO_INCLUDED_H */

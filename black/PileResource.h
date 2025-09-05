@@ -31,7 +31,11 @@ struct PileResource
 };
 static_assert(sizeof(struct PileResource) == 0xb4, "Data type is of wrong size");
 
-static struct PotVftable* const __vt__12PileResource = (struct PotVftable* const)0x009338d4;
+// win1.41 009338d0 mac 107481fc PileResource::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PileResource asm("??_R4PileResource@@6B@");
+
+// win1.41 009338d4 mac 10748244 PileResource::`vftable'
+extern const struct PotVftable __vt__12PileResource asm("??_7PileResource@@6B@");
 
 // Constructors
 

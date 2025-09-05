@@ -26,7 +26,11 @@ struct PhysicsObject
 };
 static_assert(sizeof(struct PhysicsObject) == 0x1dc, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__13PhysicsObject = (struct BaseVftable* const)0x00932b94;
+// win1.41 00932b90 mac 10746ec0 PhysicsObject::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PhysicsObject asm("??_R4PhysicsObject@@6B@");
+
+// win1.41 00932b94 mac 10746ec8 PhysicsObject::`vftable'
+extern const struct BaseVftable __vt__13PhysicsObject asm("??_7PhysicsObject@@6B@");
 
 // Constructors
 

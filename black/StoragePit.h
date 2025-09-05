@@ -23,6 +23,10 @@ struct StoragePit
 };
 static_assert(sizeof(struct StoragePit) == 0xdc, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__10StoragePit = (struct MultiMapFixedVftable* const)0x008f7030;
+// win1.41 008f702c mac 10747800 StoragePit::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10StoragePit asm("??_R4StoragePit@@6B@");
+
+// win1.41 008f7030 mac 106f604c StoragePit::`vftable'
+extern const struct MultiMapFixedVftable __vt__10StoragePit asm("??_7StoragePit@@6B@");
 
 #endif /* BW1_DECOMP_STORAGE_PIT_INCLUDED_H */

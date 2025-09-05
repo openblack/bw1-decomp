@@ -33,7 +33,11 @@ struct Reaction
 };
 static_assert(sizeof(struct Reaction) == 0x44, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__8Reaction = (struct GameThingVftable* const)0x008f3674;
+// win1.41 008f3670 mac 10759508 Reaction::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Reaction asm("??_R4Reaction@@6B@");
+
+// win1.41 008f3674 mac 10759510 Reaction::`vftable'
+extern const struct GameThingVftable __vt__8Reaction asm("??_7Reaction@@6B@");
 
 // Static methods
 

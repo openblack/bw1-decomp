@@ -15,7 +15,11 @@ struct SetupMultiList
 };
 static_assert(sizeof(struct SetupMultiList) == 0x2bc, "Data type is of wrong size");
 
-static struct SetupListVftable* const __vt__14SetupMultiList = (struct SetupListVftable* const)0x008ab364;
+// win1.41 008ab360 mac 107311c0 SetupMultiList::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupMultiList asm("??_R4SetupMultiList@@6B@");
+
+// win1.41 008ab364 mac 107311c8 SetupMultiList::`vftable'
+extern const struct SetupListVftable __vt__14SetupMultiList asm("??_7SetupMultiList@@6B@");
 
 // Constructors
 

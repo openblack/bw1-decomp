@@ -21,7 +21,11 @@ struct GEffectInfo
 };
 static_assert(sizeof(struct GEffectInfo) == 0x34, "Data type is of wrong size");
 
-static struct BaseInfoVftable* const __vt__11GEffectInfo = (struct BaseInfoVftable* const)0x008d8b48;
+// win1.41 008d8b44 mac 1073d04c GEffectInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GEffectInfo asm("??_R4GEffectInfo@@6B@");
+
+// win1.41 008d8b48 mac 1073d064 GEffectInfo::`vftable'
+extern const struct BaseInfoVftable __vt__11GEffectInfo asm("??_7GEffectInfo@@6B@");
 
 // Constructors
 

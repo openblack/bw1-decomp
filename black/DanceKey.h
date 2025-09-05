@@ -18,7 +18,11 @@ struct DanceKeyFrame
 };
 static_assert(sizeof(struct DanceKeyFrame) == 0x24, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__13DanceKeyFrame = (struct GameThingVftable* const)0x008d46f0;
+// win1.41 008d46ec mac 10997014 DanceKeyFrame::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DanceKeyFrame asm("??_R4DanceKeyFrame@@6B@");
+
+// win1.41 008d46f0 mac 1099701c DanceKeyFrame::`vftable'
+extern const struct GameThingVftable __vt__13DanceKeyFrame asm("??_7DanceKeyFrame@@6B@");
 
 // Constructors
 

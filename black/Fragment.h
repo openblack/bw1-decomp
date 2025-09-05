@@ -25,7 +25,11 @@ struct Fragment
 };
 static_assert(sizeof(struct Fragment) == 0xa8, "Data type is of wrong size");
 
-static struct RockVftable* const __vt__8Fragment = (struct RockVftable* const)0x0099aa98;
+// win1.41 0099aa94 mac 10746eac Fragment::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Fragment asm("??_R4Fragment@@6B@");
+
+// win1.41 0099aa98 mac 106f601c Fragment::`vftable'
+extern const struct RockVftable __vt__8Fragment asm("??_7Fragment@@6B@");
 
 // Constructors
 

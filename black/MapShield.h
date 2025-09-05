@@ -34,7 +34,11 @@ struct MapShield
 };
 static_assert(sizeof(struct MapShield) == 0x68, "Data type is of wrong size");
 
-static struct MapShieldVftable* const __vt__9MapShield = (struct MapShieldVftable* const)0x00982e74;
+// win1.41 00982e70 mac 109def60 MapShield::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9MapShield asm("??_R4MapShield@@6B@");
+
+// win1.41 00982e74 mac 109def98 MapShield::`vftable'
+extern const struct MapShieldVftable __vt__9MapShield asm("??_7MapShield@@6B@");
 
 // Constructors
 

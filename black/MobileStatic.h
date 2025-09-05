@@ -20,7 +20,11 @@ struct MobileStatic
 };
 static_assert(sizeof(struct MobileStatic) == 0x88, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__12MobileStatic = (struct MultiMapFixedVftable* const)0x008e80b4;
+// win1.41 008e80b0 mac 107387a4 MobileStatic::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MobileStatic asm("??_R4MobileStatic@@6B@");
+
+// win1.41 008e80b4 mac 107387dc MobileStatic::`vftable'
+extern const struct MultiMapFixedVftable __vt__12MobileStatic asm("??_7MobileStatic@@6B@");
 
 // Constructors
 

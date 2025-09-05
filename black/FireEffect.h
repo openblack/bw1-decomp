@@ -34,7 +34,11 @@ struct FireEffect
 };
 static_assert(sizeof(struct FireEffect) == 0x50, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__10FireEffect = (struct GameThingVftable* const)0x009996d4;
+// win1.41 009996d0 mac 1075c8a4 FireEffect::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10FireEffect asm("??_R4FireEffect@@6B@");
+
+// win1.41 009996d4 mac 1075c8ac FireEffect::`vftable'
+extern const struct GameThingVftable __vt__10FireEffect asm("??_7FireEffect@@6B@");
 
 // Constructors
 

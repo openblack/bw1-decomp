@@ -36,7 +36,11 @@ struct SoundTag
 };
 static_assert(sizeof(struct SoundTag) == 0x54, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__8SoundTag = (struct BaseVftable* const)0x00980538;
+// win1.41 00980534 mac 109d7a40 SoundTag::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8SoundTag asm("??_R4SoundTag@@6B@");
+
+// win1.41 00980538 mac 109d7a48 SoundTag::`vftable'
+extern const struct BaseVftable __vt__8SoundTag asm("??_7SoundTag@@6B@");
 
 // Static methods
 

@@ -195,7 +195,11 @@ struct Creature
 };
 static_assert(sizeof(struct Creature) == 0x12c8, "Data type is of wrong size");
 
-static struct LivingVftable* const __vt__8Creature = (struct LivingVftable* const)0x008cc810;
+// win1.41 008cc80c mac 1077dda8 Creature::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Creature asm("??_R4Creature@@6B@");
+
+// win1.41 008cc810 mac 1077e3fc Creature::`vftable'
+extern const struct LivingVftable __vt__8Creature asm("??_7Creature@@6B@");
 
 // Static methods
 

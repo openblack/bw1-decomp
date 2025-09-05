@@ -18,7 +18,11 @@ struct HandStateCamera
 };
 static_assert(sizeof(struct HandStateCamera) == 0xd8, "Data type is of wrong size");
 
-static struct HandStateVftable* const __vt__15HandStateCamera = (struct HandStateVftable* const)0x00900a54;
+// win1.41 00900a50 mac 1099b154 HandStateCamera::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15HandStateCamera asm("??_R4HandStateCamera@@6B@");
+
+// win1.41 00900a54 mac 1099b15c HandStateCamera::`vftable'
+extern const struct HandStateVftable __vt__15HandStateCamera asm("??_7HandStateCamera@@6B@");
 
 // Constructors
 

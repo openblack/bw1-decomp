@@ -13,6 +13,10 @@ struct Workshop
 };
 static_assert(sizeof(struct Workshop) == 0xe8, "Data type is of wrong size");
 
-static struct AbodeVftable* const __vt__8Workshop = (struct AbodeVftable* const)0x0099bb20;
+// win1.41 0099bb1c mac 1075a25c Workshop::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Workshop asm("??_R4Workshop@@6B@");
+
+// win1.41 0099bb20 mac 106f651c Workshop::`vftable'
+extern const struct AbodeVftable __vt__8Workshop asm("??_7Workshop@@6B@");
 
 #endif /* BW1_DECOMP_WORKSHOP_INCLUDED_H */

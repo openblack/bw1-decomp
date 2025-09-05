@@ -15,7 +15,11 @@ struct GClimate
 };
 static_assert(sizeof(struct GClimate) == 0x88, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__8GClimate = (struct GameThingVftable* const)0x008f9f9c;
+// win1.41 008f9f98 mac 109ea018 GClimate::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8GClimate asm("??_R4GClimate@@6B@");
+
+// win1.41 008f9f9c mac 109ea020 GClimate::`vftable'
+extern const struct GameThingVftable __vt__8GClimate asm("??_7GClimate@@6B@");
 
 DECLARE_LH_LINKED_LIST(GClimate);
 

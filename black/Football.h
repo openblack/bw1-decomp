@@ -13,6 +13,10 @@ struct Football
 };
 static_assert(sizeof(struct Football) == 0x318, "Data type is of wrong size");
 
-static struct AbodeVftable* const __vt__8Football = (struct AbodeVftable* const)0x008dd648;
+// win1.41 008dd644 mac 109993e8 Football::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Football asm("??_R4Football@@6B@");
+
+// win1.41 008dd648 mac 109993f0 Football::`vftable'
+extern const struct AbodeVftable __vt__8Football asm("??_7Football@@6B@");
 
 #endif /* BW1_DECOMP_FOOTBALL_INCLUDED_H */

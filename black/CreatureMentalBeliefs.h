@@ -15,7 +15,11 @@ struct CreatureBeliefList
 };
 static_assert(sizeof(struct CreatureBeliefList) == 0x14, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__18CreatureBeliefList = (struct BaseVftable* const)0x008cf90c;
+// win1.41 008cf908 mac 10787474 CreatureBeliefList::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureBeliefList asm("??_R4CreatureBeliefList@@6B@");
+
+// win1.41 008cf90c mac 1078747c CreatureBeliefList::`vftable'
+extern const struct BaseVftable __vt__18CreatureBeliefList asm("??_7CreatureBeliefList@@6B@");
 
 struct AllocatedBeliefList
 {
@@ -27,7 +31,11 @@ struct AllocatedBeliefList
 };
 static_assert(sizeof(struct AllocatedBeliefList) == 0x18, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__19AllocatedBeliefList = (struct BaseVftable* const)0x008cfe58;
+// win1.41 008cfe54 mac 107874ac AllocatedBeliefList::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19AllocatedBeliefList asm("??_R4AllocatedBeliefList@@6B@");
+
+// win1.41 008cfe58 mac 107874b4 AllocatedBeliefList::`vftable'
+extern const struct BaseVftable __vt__19AllocatedBeliefList asm("??_7AllocatedBeliefList@@6B@");
 
 struct CreatureBeliefs
 {
@@ -38,7 +46,11 @@ struct CreatureBeliefs
 };
 static_assert(sizeof(struct CreatureBeliefs) == 0x270, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__15CreatureBeliefs = (struct BaseVftable* const)0x008cf8ec;
+// win1.41 008cf8e8 mac 109899cc CreatureBeliefs::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15CreatureBeliefs asm("??_R4CreatureBeliefs@@6B@");
+
+// win1.41 008cf8ec mac 109899d4 CreatureBeliefs::`vftable'
+extern const struct BaseVftable __vt__15CreatureBeliefs asm("??_7CreatureBeliefs@@6B@");
 
 // Non-virtual methods
 

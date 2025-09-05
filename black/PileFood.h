@@ -23,7 +23,11 @@ struct PileFood
 };
 static_assert(sizeof(struct PileFood) == 0xbc, "Data type is of wrong size");
 
-static struct PotVftable* const __vt__8PileFood = (struct PotVftable* const)0x0093305c;
+// win1.41 00933058 mac 1074939c PileFood::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PileFood asm("??_R4PileFood@@6B@");
+
+// win1.41 0093305c mac 107493a4 PileFood::`vftable'
+extern const struct PotVftable __vt__8PileFood asm("??_7PileFood@@6B@");
 
 // Constructors
 

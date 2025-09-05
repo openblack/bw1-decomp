@@ -13,6 +13,10 @@ struct GSLobbyBox
 };
 static_assert(sizeof(struct GSLobbyBox) == 0x2b4, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__10GSLobbyBox = (struct DialogBoxBaseVftable* const)0x008deb7c;
+// win1.41 008deb78 mac 109edd0c GSLobbyBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GSLobbyBox asm("??_R4GSLobbyBox@@6B@");
+
+// win1.41 008deb7c mac 109edd14 GSLobbyBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__10GSLobbyBox asm("??_7GSLobbyBox@@6B@");
 
 #endif /* BW1_DECOMP_S_LOBBY_BOX_INCLUDED_H */

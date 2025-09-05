@@ -23,7 +23,11 @@ struct GAudio
 };
 static_assert(sizeof(struct GAudio) == 0x3d4, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__6GAudio = (struct GameThingVftable* const)0x008c48e0;
+// win1.41 008c48dc mac 1077682c GAudio::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GAudio asm("??_R4GAudio@@6B@");
+
+// win1.41 008c48e0 mac 10776834 GAudio::`vftable'
+extern const struct GameThingVftable __vt__6GAudio asm("??_7GAudio@@6B@");
 
 // Non-virtual methods
 

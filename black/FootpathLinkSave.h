@@ -20,7 +20,11 @@ struct GFootpathLinkSave
 };
 static_assert(sizeof(struct GFootpathLinkSave) == 0x24, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__17GFootpathLinkSave = (struct GameThingVftable* const)0x008de1c4;
+// win1.41 008de1c0 mac 10743110 GFootpathLinkSave::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GFootpathLinkSave asm("??_R4GFootpathLinkSave@@6B@");
+
+// win1.41 008de1c4 mac 10743118 GFootpathLinkSave::`vftable'
+extern const struct GameThingVftable __vt__17GFootpathLinkSave asm("??_7GFootpathLinkSave@@6B@");
 
 // Constructors
 

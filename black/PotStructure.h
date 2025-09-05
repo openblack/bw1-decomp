@@ -23,7 +23,11 @@ struct PotStructure
 };
 static_assert(sizeof(struct PotStructure) == 0x84, "Data type is of wrong size");
 
-static struct PotVftable* const __vt__12PotStructure = (struct PotVftable* const)0x008f8dcc;
+// win1.41 008f8dc8 mac 10747844 PotStructure::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PotStructure asm("??_R4PotStructure@@6B@");
+
+// win1.41 008f8dcc mac 1074784c PotStructure::`vftable'
+extern const struct PotVftable __vt__12PotStructure asm("??_7PotStructure@@6B@");
 
 // Constructors
 

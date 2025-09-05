@@ -112,7 +112,11 @@ struct Morphable
 };
 static_assert(sizeof(struct Morphable) == 0x4834, "Data type is of wrong size");
 
-static struct MorphableVftable* const __vt__9Morphable = (struct MorphableVftable* const)0x008cbef8;
+// win1.41 008cbef4 mac 1073d0fc Morphable::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Morphable asm("??_R4Morphable@@6B@");
+
+// win1.41 008cbef8 mac 1073d10c Morphable::`vftable'
+extern const struct MorphableVftable __vt__9Morphable asm("??_7Morphable@@6B@");
 
 // Static methods
 

@@ -60,7 +60,11 @@ struct SetupHLineGraph
 };
 static_assert(sizeof(struct SetupHLineGraph) == 0x258, "Data type is of wrong size");
 
-static struct SetupHLineGraphVftable* const __vt__15SetupHLineGraph = (struct SetupHLineGraphVftable* const)0x008ab424;
+// win1.41 008ab420 mac 10730fcc SetupHLineGraph::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupHLineGraph asm("??_R4SetupHLineGraph@@6B@");
+
+// win1.41 008ab424 mac 10730fd4 SetupHLineGraph::`vftable'
+extern const struct SetupHLineGraphVftable __vt__15SetupHLineGraph asm("??_7SetupHLineGraph@@6B@");
 
 // Constructors
 

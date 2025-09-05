@@ -21,7 +21,11 @@ struct HelpSpirit
 };
 static_assert(sizeof(struct HelpSpirit) == 0x64, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__10HelpSpirit = (struct ObjectVftable* const)0x009154b8;
+// win1.41 009154b4 mac 1099bee0 HelpSpirit::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HelpSpirit asm("??_R4HelpSpirit@@6B@");
+
+// win1.41 009154b8 mac 1099bee8 HelpSpirit::`vftable'
+extern const struct ObjectVftable __vt__10HelpSpirit asm("??_7HelpSpirit@@6B@");
 
 // Constructors
 

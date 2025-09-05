@@ -25,7 +25,11 @@ struct HelpProfile
 };
 static_assert(sizeof(struct HelpProfile) == 0x3358, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__11HelpProfile = (struct BaseVftable* const)0x00915458;
+// win1.41 00915454 mac 1099be34 HelpProfile::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11HelpProfile asm("??_R4HelpProfile@@6B@");
+
+// win1.41 00915458 mac 1099be3c HelpProfile::`vftable'
+extern const struct BaseVftable __vt__11HelpProfile asm("??_7HelpProfile@@6B@");
 
 // Static methods
 

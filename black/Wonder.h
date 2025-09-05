@@ -18,7 +18,11 @@ struct Wonder
 };
 static_assert(sizeof(struct Wonder) == 0xc8, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__6Wonder = (struct MultiMapFixedVftable* const)0x008df96c;
+// win1.41 008df968 mac 107605fc Wonder::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Wonder asm("??_R4Wonder@@6B@");
+
+// win1.41 008df96c mac 10760604 Wonder::`vftable'
+extern const struct MultiMapFixedVftable __vt__6Wonder asm("??_7Wonder@@6B@");
 
 // Static methods
 

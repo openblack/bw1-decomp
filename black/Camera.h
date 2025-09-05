@@ -37,7 +37,11 @@ struct GCamera
 };
 static_assert(sizeof(struct GCamera) == 0x1d8, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__7GCamera = (struct GameThingWithPosVftable* const)0x008c7110;
+// win1.41 008c710c mac 107770e8 GCamera::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GCamera asm("??_R4GCamera@@6B@");
+
+// win1.41 008c7110 mac 107770f0 GCamera::`vftable'
+extern const struct GameThingWithPosVftable __vt__7GCamera asm("??_7GCamera@@6B@");
 
 // Static methods
 

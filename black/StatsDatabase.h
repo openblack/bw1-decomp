@@ -11,7 +11,11 @@ struct StatsDatabase
 };
 static_assert(sizeof(struct StatsDatabase) == 0x10, "Data type is of wrong size");
 
-static struct MultiplayerDatabaseVftable* const __vt__13StatsDatabase = (struct MultiplayerDatabaseVftable* const)0x00930a0c;
+// win1.41 00930a08 mac 10745c98 StatsDatabase::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13StatsDatabase asm("??_R4StatsDatabase@@6B@");
+
+// win1.41 00930a0c mac 10745ca0 StatsDatabase::`vftable'
+extern const struct MultiplayerDatabaseVftable __vt__13StatsDatabase asm("??_7StatsDatabase@@6B@");
 
 // Constructors
 

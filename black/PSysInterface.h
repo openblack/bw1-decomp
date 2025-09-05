@@ -62,7 +62,11 @@ struct PSysInterface
 };
 static_assert(sizeof(struct PSysInterface) == 0x14, "Data type is of wrong size");
 
-static struct PSysInterfaceVftable* const __vt__13PSysInterface = (struct PSysInterfaceVftable* const)0x008fa9d8;
+// win1.41 008fa9d4 mac 107461ac PSysInterface::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PSysInterface asm("??_R4PSysInterface@@6B@");
+
+// win1.41 008fa9d8 mac 106f5fd8 PSysInterface::`vftable'
+extern const struct PSysInterfaceVftable __vt__13PSysInterface asm("??_7PSysInterface@@6B@");
 
 // Static methods
 

@@ -13,7 +13,11 @@ struct GMobileObjectInfo
 };
 static_assert(sizeof(struct GMobileObjectInfo) == 0x114, "Data type is of wrong size");
 
-static struct GBaseInfoVftable* const __vt__17GMobileObjectInfo = (struct GBaseInfoVftable* const)0x009305cc;
+// win1.41 009305c8 mac 10736eec GMobileObjectInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GMobileObjectInfo asm("??_R4GMobileObjectInfo@@6B@");
+
+// win1.41 009305cc mac 10736ef4 GMobileObjectInfo::`vftable'
+extern const struct GBaseInfoVftable __vt__17GMobileObjectInfo asm("??_7GMobileObjectInfo@@6B@");
 
 // Constructors
 

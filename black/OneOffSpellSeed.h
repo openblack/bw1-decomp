@@ -13,6 +13,10 @@ struct OneOffSpellSeed
 };
 static_assert(sizeof(struct OneOffSpellSeed) == 0x7c, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__15OneOffSpellSeed = (struct ObjectVftable* const)0x008f3774;
+// win1.41 008f3770 mac 1099eba8 OneOffSpellSeed::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15OneOffSpellSeed asm("??_R4OneOffSpellSeed@@6B@");
+
+// win1.41 008f3774 mac 106f8cd0 OneOffSpellSeed::`vftable'
+extern const struct ObjectVftable __vt__15OneOffSpellSeed asm("??_7OneOffSpellSeed@@6B@");
 
 #endif /* BW1_DECOMP_ONE_OFF_SPELL_SEED_INCLUDED_H */

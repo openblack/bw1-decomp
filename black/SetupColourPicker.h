@@ -25,7 +25,11 @@ struct SetupColourPicker
 };
 static_assert(sizeof(struct SetupColourPicker) == 0x258, "Data type is of wrong size");
 
-static struct SetupControlVftable* const __vt__17SetupColourPicker = (struct SetupControlVftable* const)0x008ab550;
+// win1.41 008ab54c mac 10730e58 SetupColourPicker::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17SetupColourPicker asm("??_R4SetupColourPicker@@6B@");
+
+// win1.41 008ab550 mac 10730e60 SetupColourPicker::`vftable'
+extern const struct SetupControlVftable __vt__17SetupColourPicker asm("??_7SetupColourPicker@@6B@");
 
 // Constructors
 

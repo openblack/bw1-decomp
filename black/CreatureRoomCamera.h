@@ -13,6 +13,10 @@ struct CreatureRoomCamera
 };
 static_assert(sizeof(struct CreatureRoomCamera) == 0x4c4, "Data type is of wrong size");
 
-static struct InnerCameraVftable* const __vt__18CreatureRoomCamera = (struct InnerCameraVftable* const)0x0099eb8c;
+// win1.41 0099eb88 mac 1098e6ec CreatureRoomCamera::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureRoomCamera asm("??_R4CreatureRoomCamera@@6B@");
+
+// win1.41 0099eb8c mac 1098e6f4 CreatureRoomCamera::`vftable'
+extern const struct InnerCameraVftable __vt__18CreatureRoomCamera asm("??_7CreatureRoomCamera@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_ROOM_CAMERA_INCLUDED_H */

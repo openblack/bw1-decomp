@@ -38,7 +38,11 @@ struct Citadel
 };
 static_assert(sizeof(struct Citadel) == 0x80, "Data type is of wrong size");
 
-static struct ContainerVftable* const __vt__7Citadel = (struct ContainerVftable* const)0x008c7e68;
+// win1.41 008c7e64 mac 10779c40 Citadel::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7Citadel asm("??_R4Citadel@@6B@");
+
+// win1.41 008c7e68 mac 10779c48 Citadel::`vftable'
+extern const struct ContainerVftable __vt__7Citadel asm("??_7Citadel@@6B@");
 
 // Static methods
 

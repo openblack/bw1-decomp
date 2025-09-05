@@ -13,7 +13,11 @@ struct GMobileStaticInfo
 };
 static_assert(sizeof(struct GMobileStaticInfo) == 0x12c, "Data type is of wrong size");
 
-static struct GMultiMapFixedInfoVftable* const __vt__17GMobileStaticInfo = (struct GMultiMapFixedInfoVftable* const)0x0093060c;
+// win1.41 00930608 mac 109acc58 GMobileStaticInfo::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GMobileStaticInfo asm("??_R4GMobileStaticInfo@@6B@");
+
+// win1.41 0093060c mac 109acc60 GMobileStaticInfo::`vftable'
+extern const struct GMultiMapFixedInfoVftable __vt__17GMobileStaticInfo asm("??_7GMobileStaticInfo@@6B@");
 
 // Static methods
 

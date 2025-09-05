@@ -43,7 +43,11 @@ struct CreatureLearning
 };
 static_assert(sizeof(struct CreatureLearning) == 0x16168, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__16CreatureLearning = (struct BaseVftable* const)0x008d0410;
+// win1.41 008d040c mac 107875c4 CreatureLearning::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16CreatureLearning asm("??_R4CreatureLearning@@6B@");
+
+// win1.41 008d0410 mac 107875cc CreatureLearning::`vftable'
+extern const struct BaseVftable __vt__16CreatureLearning asm("??_7CreatureLearning@@6B@");
 
 // Constructors
 

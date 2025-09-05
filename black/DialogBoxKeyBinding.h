@@ -25,7 +25,11 @@ struct DialogBoxKeyBinding
 };
 static_assert(sizeof(struct DialogBoxKeyBinding) == 0x1c, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__19DialogBoxKeyBinding = (struct DialogBoxBaseVftable* const)0x008d85a0;
+// win1.41 008d859c mac 10998f98 DialogBoxKeyBinding::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DialogBoxKeyBinding asm("??_R4DialogBoxKeyBinding@@6B@");
+
+// win1.41 008d85a0 mac 10998fa0 DialogBoxKeyBinding::`vftable'
+extern const struct DialogBoxBaseVftable __vt__19DialogBoxKeyBinding asm("??_7DialogBoxKeyBinding@@6B@");
 
 // Constructors
 

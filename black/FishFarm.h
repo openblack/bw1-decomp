@@ -28,7 +28,11 @@ struct FishFarm
 };
 static_assert(sizeof(struct FishFarm) == 0x98, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__8FishFarm = (struct MultiMapFixedVftable* const)0x008dadc0;
+// win1.41 008dadbc mac 107402f8 FishFarm::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8FishFarm asm("??_R4FishFarm@@6B@");
+
+// win1.41 008dadc0 mac 10740300 FishFarm::`vftable'
+extern const struct MultiMapFixedVftable __vt__8FishFarm asm("??_7FishFarm@@6B@");
 
 // Constructors
 

@@ -25,6 +25,10 @@ struct SpellWithObjects
 };
 static_assert(sizeof(struct SpellWithObjects) == 0xf4, "Data type is of wrong size");
 
-static struct SpellWithObjectsVftable* const __vt__16SpellWithObjects = (struct SpellWithObjectsVftable* const)0x008f4530;
+// win1.41 008f452c mac 109a58f4 SpellWithObjects::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellWithObjects asm("??_R4SpellWithObjects@@6B@");
+
+// win1.41 008f4530 mac 109a591c SpellWithObjects::`vftable'
+extern const struct SpellWithObjectsVftable __vt__16SpellWithObjects asm("??_7SpellWithObjects@@6B@");
 
 #endif /* BW1_DECOMP_SPELL_WITH_OBJECTS_INCLUDED_H */

@@ -31,7 +31,11 @@ struct CreatureMimicState
 };
 static_assert(sizeof(struct CreatureMimicState) == 0x3c, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__18CreatureMimicState = (struct BaseVftable* const)0x008d05f0;
+// win1.41 008d05ec mac 1078751c CreatureMimicState::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureMimicState asm("??_R4CreatureMimicState@@6B@");
+
+// win1.41 008d05f0 mac 10787524 CreatureMimicState::`vftable'
+extern const struct BaseVftable __vt__18CreatureMimicState asm("??_7CreatureMimicState@@6B@");
 
 // Constructors
 

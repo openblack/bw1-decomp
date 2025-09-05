@@ -15,7 +15,11 @@ struct Whale
 };
 static_assert(sizeof(struct Whale) == 0x74, "Data type is of wrong size");
 
-static struct MobileObjectVftable* const __vt__5Whale = (struct MobileObjectVftable* const)0x008febec;
+// win1.41 008febe8 mac 1075fc5c Whale::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Whale asm("??_R4Whale@@6B@");
+
+// win1.41 008febec mac 1075fc64 Whale::`vftable'
+extern const struct MobileObjectVftable __vt__5Whale asm("??_7Whale@@6B@");
 
 DECLARE_LH_LIST_HEAD(Whale);
 

@@ -39,7 +39,11 @@ struct Ball
 };
 static_assert(sizeof(struct Ball) == 0xb8, "Data type is of wrong size");
 
-static struct MobileVftable* const __vt__4Ball = (struct MobileVftable* const)0x008c4f74;
+// win1.41 008c4f70 mac 107371dc Ball::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Ball asm("??_R4Ball@@6B@");
+
+// win1.41 008c4f74 mac 107371e4 Ball::`vftable'
+extern const struct MobileVftable __vt__4Ball asm("??_7Ball@@6B@");
 
 // Constructors
 

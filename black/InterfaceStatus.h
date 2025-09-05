@@ -62,7 +62,11 @@ struct GInterfaceStatus
 };
 static_assert(sizeof(struct GInterfaceStatus) == 0x134, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__16GInterfaceStatus = (struct GameThingWithPosVftable* const)0x0092acd0;
+// win1.41 0092accc mac 1098d398 GInterfaceStatus::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GInterfaceStatus asm("??_R4GInterfaceStatus@@6B@");
+
+// win1.41 0092acd0 mac 106f8170 GInterfaceStatus::`vftable'
+extern const struct GameThingWithPosVftable __vt__16GInterfaceStatus asm("??_7GInterfaceStatus@@6B@");
 
 // Static methods
 

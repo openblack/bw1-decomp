@@ -135,7 +135,11 @@ struct MultiMapFixed
 };
 static_assert(sizeof(struct MultiMapFixed) == 0x7c, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__13MultiMapFixed = (struct MultiMapFixedVftable* const)0x008dbf84;
+// win1.41 008dbf80 mac 107339b0 MultiMapFixed::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MultiMapFixed asm("??_R4MultiMapFixed@@6B@");
+
+// win1.41 008dbf84 mac 107339e0 MultiMapFixed::`vftable'
+extern const struct MultiMapFixedVftable __vt__13MultiMapFixed asm("??_7MultiMapFixed@@6B@");
 
 // Static methods
 

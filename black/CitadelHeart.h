@@ -79,7 +79,11 @@ struct CitadelHeart
 };
 static_assert(sizeof(struct CitadelHeart) == 0xe8, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__12CitadelHeart = (struct MultiMapFixedVftable* const)0x008c8d00;
+// win1.41 008c8cfc mac 1077b83c CitadelHeart::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CitadelHeart asm("??_R4CitadelHeart@@6B@");
+
+// win1.41 008c8d00 mac 1077b844 CitadelHeart::`vftable'
+extern const struct MultiMapFixedVftable __vt__12CitadelHeart asm("??_7CitadelHeart@@6B@");
 
 // Static methods
 

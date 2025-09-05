@@ -22,6 +22,10 @@ struct StartGameBox
 };
 static_assert(sizeof(struct StartGameBox) == 0x20, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__12StartGameBox = (struct DialogBoxBaseVftable* const)0x008de99c;
+// win1.41 008de998 mac 109ed694 StartGameBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12StartGameBox asm("??_R4StartGameBox@@6B@");
+
+// win1.41 008de99c mac 109ed69c StartGameBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__12StartGameBox asm("??_7StartGameBox@@6B@");
 
 #endif /* BW1_DECOMP_START_GAME_BOX_INCLUDED_H */

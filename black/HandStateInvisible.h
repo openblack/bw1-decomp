@@ -15,7 +15,11 @@ struct HandStateInvisible
 };
 static_assert(sizeof(struct HandStateInvisible) == 0x8, "Data type is of wrong size");
 
-static struct HandStateVftable* const __vt__18HandStateInvisible = (struct HandStateVftable* const)0x008cbeb4;
+// win1.41 008cbeb0 mac 1077db84 HandStateInvisible::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18HandStateInvisible asm("??_R4HandStateInvisible@@6B@");
+
+// win1.41 008cbeb4 mac 1077db8c HandStateInvisible::`vftable'
+extern const struct HandStateVftable __vt__18HandStateInvisible asm("??_7HandStateInvisible@@6B@");
 
 // Constructors
 

@@ -16,7 +16,11 @@ struct SetupStaticText
 };
 static_assert(sizeof(struct SetupStaticText) == 0x244, "Data type is of wrong size");
 
-static struct SetupControlVftable* const __vt__15SetupStaticText = (struct SetupControlVftable* const)0x008ab5c0;
+// win1.41 008ab5bc mac 107312e0 SetupStaticText::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupStaticText asm("??_R4SetupStaticText@@6B@");
+
+// win1.41 008ab5c0 mac 107312e8 SetupStaticText::`vftable'
+extern const struct SetupControlVftable __vt__15SetupStaticText asm("??_7SetupStaticText@@6B@");
 
 // Constructors
 

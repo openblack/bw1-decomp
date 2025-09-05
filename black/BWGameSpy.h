@@ -12,7 +12,11 @@ struct BWGameSpy
 };
 static_assert(sizeof(struct BWGameSpy) == 0x4, "Data type is of wrong size");
 
-static struct LayerCommunicationVftable* const __vt__9BWGameSpy = (struct LayerCommunicationVftable* const)0x008c705c;
+// win1.41 008c7058 mac 109edca4 BWGameSpy::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BWGameSpy asm("??_R4BWGameSpy@@6B@");
+
+// win1.41 008c705c mac 109edcac BWGameSpy::`vftable'
+extern const struct LayerCommunicationVftable __vt__9BWGameSpy asm("??_7BWGameSpy@@6B@");
 
 // Override methods
 

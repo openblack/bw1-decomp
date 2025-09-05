@@ -44,7 +44,11 @@ struct Flock
 };
 static_assert(sizeof(struct Flock) == 0x90, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__5Flock = (struct GameThingWithPosVftable* const)0x008dd108;
+// win1.41 008dd104 mac 10742990 Flock::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Flock asm("??_R4Flock@@6B@");
+
+// win1.41 008dd108 mac 10742998 Flock::`vftable'
+extern const struct GameThingWithPosVftable __vt__5Flock asm("??_7Flock@@6B@");
 
 // Constructors
 

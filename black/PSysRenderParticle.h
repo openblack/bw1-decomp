@@ -13,6 +13,10 @@ struct RenderParticle
 };
 static_assert(sizeof(struct RenderParticle) == 0x18, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__14RenderParticle = (struct GameThingVftable* const)0x008fac3c;
+// win1.41 008fac38 mac 109b6a34 RenderParticle::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14RenderParticle asm("??_R4RenderParticle@@6B@");
+
+// win1.41 008fac3c mac 109b6a54 RenderParticle::`vftable'
+extern const struct GameThingVftable __vt__14RenderParticle asm("??_7RenderParticle@@6B@");
 
 #endif /* BW1_DECOMP_P_SYS_RENDER_PARTICLE_INCLUDED_H */

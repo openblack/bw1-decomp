@@ -26,6 +26,10 @@ struct GLeashStatus
 };
 static_assert(sizeof(struct GLeashStatus) == 0x3c, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__12GLeashStatus = (struct GameThingVftable* const)0x0092abd0;
+// win1.41 0092abcc mac 109a0a54 GLeashStatus::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GLeashStatus asm("??_R4GLeashStatus@@6B@");
+
+// win1.41 0092abd0 mac 109a0a5c GLeashStatus::`vftable'
+extern const struct GameThingVftable __vt__12GLeashStatus asm("??_7GLeashStatus@@6B@");
 
 #endif /* BW1_DECOMP_LEASH_STATUS_INCLUDED_H */

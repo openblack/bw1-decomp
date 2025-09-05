@@ -12,7 +12,11 @@ struct LHReleasedFile
 };
 static_assert(sizeof(struct LHReleasedFile) == 0x6c, "Data type is of wrong size");
 
-static struct LHFileVftable* const __vt__14LHReleasedFile = (struct LHFileVftable* const)0x008c4d0c;
+// win1.41 008c4d08 mac 101daa00 LHReleasedFile::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14LHReleasedFile asm("??_R4LHReleasedFile@@6B@");
+
+// win1.41 008c4d0c mac 101daa08 LHReleasedFile::`vftable'
+extern const struct LHFileVftable __vt__14LHReleasedFile asm("??_7LHReleasedFile@@6B@");
 
 // Constructors
 

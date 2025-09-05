@@ -32,7 +32,11 @@ struct Prss
 };
 static_assert(sizeof(struct Prss) == 0x10, "Data type is of wrong size");
 
-static struct PrssVftable* const __vt__4Prss = (struct PrssVftable* const)0x008d87b8;
+// win1.41 008d87b4 mac 101cbc0c Prss::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Prss asm("??_R4Prss@@6B@");
+
+// win1.41 008d87b8 mac 101cbc14 Prss::`vftable'
+extern const struct PrssVftable __vt__4Prss asm("??_7Prss@@6B@");
 
 // Override methods
 

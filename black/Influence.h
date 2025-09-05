@@ -25,7 +25,11 @@ struct InfluenceRing
 };
 static_assert(sizeof(struct InfluenceRing) == 0x44, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__13InfluenceRing = (struct GameThingWithPosVftable* const)0x008ea3cc;
+// win1.41 008ea3c8 mac 10744e50 InfluenceRing::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13InfluenceRing asm("??_R4InfluenceRing@@6B@");
+
+// win1.41 008ea3cc mac 10744e58 InfluenceRing::`vftable'
+extern const struct GameThingWithPosVftable __vt__13InfluenceRing asm("??_7InfluenceRing@@6B@");
 
 // Constructors
 

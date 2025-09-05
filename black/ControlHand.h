@@ -221,7 +221,11 @@ struct CHand
 };
 static_assert(sizeof(struct CHand) == 0x49c4, "Data type is of wrong size");
 
-static struct MorphableVftable* const __vt__5CHand = (struct MorphableVftable* const)0x008cbecc;
+// win1.41 008cbec8 mac 1077dbd8 CHand::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CHand asm("??_R4CHand@@6B@");
+
+// win1.41 008cbecc mac 1077dbe0 CHand::`vftable'
+extern const struct MorphableVftable __vt__5CHand asm("??_7CHand@@6B@");
 
 // Constructors
 

@@ -16,7 +16,11 @@ struct LH3DSpriteObject
 };
 static_assert(sizeof(struct LH3DSpriteObject) == 0x80, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* const __vt__16LH3DSpriteObject = (struct LH3DObjectVftable* const)0x009a34d0;
+// win1.41 009a34cc mac 101cc748 LH3DSpriteObject::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16LH3DSpriteObject asm("??_R4LH3DSpriteObject@@6B@");
+
+// win1.41 009a34d0 mac 101cc750 LH3DSpriteObject::`vftable'
+extern const struct LH3DObjectVftable __vt__16LH3DSpriteObject asm("??_7LH3DSpriteObject@@6B@");
 
 // Constructors
 

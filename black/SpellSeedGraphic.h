@@ -39,7 +39,11 @@ struct SpellSeedGraphic
 };
 static_assert(sizeof(struct SpellSeedGraphic) == 0x74, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__16SpellSeedGraphic = (struct GameThingWithPosVftable* const)0x00981aa8;
+// win1.41 00981aa4 mac 109dbe4c SpellSeedGraphic::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellSeedGraphic asm("??_R4SpellSeedGraphic@@6B@");
+
+// win1.41 00981aa8 mac 109dbe54 SpellSeedGraphic::`vftable'
+extern const struct GameThingWithPosVftable __vt__16SpellSeedGraphic asm("??_7SpellSeedGraphic@@6B@");
 
 // Static methods
 

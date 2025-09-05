@@ -13,6 +13,10 @@ struct SpellWater
 };
 static_assert(sizeof(struct SpellWater) == 0xf4, "Data type is of wrong size");
 
-static struct SpellVftable* const __vt__10SpellWater = (struct SpellVftable* const)0x008f553c;
+// win1.41 008f5538 mac 109dacc8 SpellWater::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10SpellWater asm("??_R4SpellWater@@6B@");
+
+// win1.41 008f553c mac 109dacd0 SpellWater::`vftable'
+extern const struct SpellVftable __vt__10SpellWater asm("??_7SpellWater@@6B@");
 
 #endif /* BW1_DECOMP_SPELL_WATER_INCLUDED_H */

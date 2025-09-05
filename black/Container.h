@@ -31,6 +31,10 @@ struct Container
 };
 static_assert(sizeof(struct Container) == 0x30, "Data type is of wrong size");
 
-static struct ContainerVftable* const __vt__9Container = (struct ContainerVftable* const)0x008cb980;
+// win1.41 008cb97c mac 10739750 Container::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Container asm("??_R4Container@@6B@");
+
+// win1.41 008cb980 mac 10739758 Container::`vftable'
+extern const struct ContainerVftable __vt__9Container asm("??_7Container@@6B@");
 
 #endif /* BW1_DECOMP_CONTAINER_INCLUDED_H */

@@ -11,6 +11,10 @@ struct PSysBase
 };
 static_assert(sizeof(struct PSysBase) == 0x14, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__8PSysBase = (struct GameThingVftable* const)0x008c9c34;
+// win1.41 008c9c30 mac 10746188 PSysBase::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PSysBase asm("??_R4PSysBase@@6B@");
+
+// win1.41 008c9c34 mac 106f5fd4 PSysBase::`vftable'
+extern const struct GameThingVftable __vt__8PSysBase asm("??_7PSysBase@@6B@");
 
 #endif /* BW1_DECOMP_P_SYS_BASE_INCLUDED_H */

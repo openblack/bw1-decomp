@@ -13,7 +13,11 @@ struct LH3DStaticMorphableObject
 };
 static_assert(sizeof(struct LH3DStaticMorphableObject) == 0x84, "Data type is of wrong size");
 
-static struct LH3DObjectVftable* const __vt__25LH3DStaticMorphableObject = (struct LH3DObjectVftable* const)0x009a2e34;
+// win1.41 009a2e30 mac 101ca694 LH3DStaticMorphableObject::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__25LH3DStaticMorphableObject asm("??_R4LH3DStaticMorphableObject@@6B@");
+
+// win1.41 009a2e34 mac 101ca6bc LH3DStaticMorphableObject::`vftable'
+extern const struct LH3DObjectVftable __vt__25LH3DStaticMorphableObject asm("??_7LH3DStaticMorphableObject@@6B@");
 
 // Constructors
 

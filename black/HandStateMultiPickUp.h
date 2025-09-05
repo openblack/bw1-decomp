@@ -15,7 +15,11 @@ struct HandStateMultiPickUp
 };
 static_assert(sizeof(struct HandStateMultiPickUp) == 0x8, "Data type is of wrong size");
 
-static struct HandStateVftable* const __vt__20HandStateMultiPickUp = (struct HandStateVftable* const)0x00900b6c;
+// win1.41 00900b68 mac 1099b58c HandStateMultiPickUp::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20HandStateMultiPickUp asm("??_R4HandStateMultiPickUp@@6B@");
+
+// win1.41 00900b6c mac 1099b594 HandStateMultiPickUp::`vftable'
+extern const struct HandStateVftable __vt__20HandStateMultiPickUp asm("??_7HandStateMultiPickUp@@6B@");
 
 // Constructors
 

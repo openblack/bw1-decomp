@@ -11,6 +11,10 @@ struct ScriptMarker
 };
 static_assert(sizeof(struct ScriptMarker) == 0x28, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__12ScriptMarker = (struct GameThingWithPosVftable* const)0x008e10b0;
+// win1.41 008e10ac mac 109c17cc ScriptMarker::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ScriptMarker asm("??_R4ScriptMarker@@6B@");
+
+// win1.41 008e10b0 mac 106fa474 ScriptMarker::`vftable'
+extern const struct GameThingWithPosVftable __vt__12ScriptMarker asm("??_7ScriptMarker@@6B@");
 
 #endif /* BW1_DECOMP_SCRIPT_MARKER_INCLUDED_H */

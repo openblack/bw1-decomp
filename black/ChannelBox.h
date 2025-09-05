@@ -13,6 +13,10 @@ struct ChannelBox
 };
 static_assert(sizeof(struct ChannelBox) == 0xad4, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__10ChannelBox = (struct DialogBoxBaseVftable* const)0x008dea3c;
+// win1.41 008dea38 mac 109a1fb0 ChannelBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10ChannelBox asm("??_R4ChannelBox@@6B@");
+
+// win1.41 008dea3c mac 109a1fb8 ChannelBox::`vftable'
+extern const struct DialogBoxBaseVftable __vt__10ChannelBox asm("??_7ChannelBox@@6B@");
 
 #endif /* BW1_DECOMP_CHANNEL_BOX_INCLUDED_H */

@@ -25,7 +25,11 @@ struct SetupTabButton
 };
 static_assert(sizeof(struct SetupTabButton) == 0x254, "Data type is of wrong size");
 
-static struct SetupControlVftable* const __vt__14SetupTabButton = (struct SetupControlVftable* const)0x008ab4d0;
+// win1.41 008ab4cc mac 10730f08 SetupTabButton::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupTabButton asm("??_R4SetupTabButton@@6B@");
+
+// win1.41 008ab4d0 mac 10730f10 SetupTabButton::`vftable'
+extern const struct SetupControlVftable __vt__14SetupTabButton asm("??_7SetupTabButton@@6B@");
 
 // Constructors
 

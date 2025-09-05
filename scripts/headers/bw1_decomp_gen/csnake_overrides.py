@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from typing import Iterable, Union, Optional
 from collections import deque
-from csnake.cconstructs import _ArrStructInitGen, _shape, assure_str, ShapelessError, NoValueError, Function, FuncPtr, FormattedLiteral, Variable, CExtendedLiteral, VariableValue, CStructLiteral, Struct, CodeWriterLite, LiteralFormatters, CArrayLiteral, generate_c_value_initializer
+from csnake.cconstructs import _ArrStructInitGen, _shape, assure_str, ShapelessError, NoValueError, Function, FuncPtr, FormattedLiteral, Variable, CExtendedLiteral, VariableValue, CStructLiteral, Struct, CodeWriterLite, LiteralFormatters, CArrayLiteral, generate_c_value_initializer, CLiteral
 
 
 @dataclass
@@ -136,6 +136,41 @@ class CSnakeFunction(Function):
 
     def generate_prototype(self, extern: bool = False) -> str:
         result = super().generate_prototype(extern)
+        if self.mangled_name is not None:
+            result = result + f' asm("{self.mangled_name}")'
+        return result
+
+
+class CSnakeVariable(Variable):
+
+    __slots__ = (
+        "name",
+        "primitive",
+        "qualifiers",
+        "array",
+        "comment",
+        "value",
+        "mangled_name",
+    )
+
+    def __init__(
+        self,
+        name: str,
+        primitive: Union[str, FuncPtr],
+        qualifiers: Optional[Union[Iterable[str], str]] = None,
+        array: Optional[Iterable] = None,
+        comment: Optional[str] = None,
+        value: Optional[CLiteral] = None,
+        mangled_name: Optional[str] = None,
+    ) -> None:
+        super().__init__(name, primitive, qualifiers, array, comment, value)
+        self.mangled_name = mangled_name
+
+    def set_mangled_name(self, mangled_name: str):
+        self.mangled_name = mangled_name
+
+    def generate_declaration(self, extern: bool = False) -> str:
+        result = super().generate_declaration(extern)
         if self.mangled_name is not None:
             result = result + f' asm("{self.mangled_name}")'
         return result

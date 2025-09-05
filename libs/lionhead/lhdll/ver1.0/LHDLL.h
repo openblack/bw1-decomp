@@ -30,7 +30,11 @@ struct LHDLL
 };
 static_assert(sizeof(struct LHDLL) == 0x24, "Data type is of wrong size");
 
-static struct LHDLLVftable* const __vt__5LHDLL = (struct LHDLLVftable* const)0x0099f014;
+// win1.41 0099f010 mac 109c41fc LHDLL::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5LHDLL asm("??_R4LHDLL@@6B@");
+
+// win1.41 0099f014 mac 109c4204 LHDLL::`vftable'
+extern const struct LHDLLVftable __vt__5LHDLL asm("??_7LHDLL@@6B@");
 
 // Static methods
 

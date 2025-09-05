@@ -17,7 +17,11 @@ struct DialogBoxSaveMessage
 };
 static_assert(sizeof(struct DialogBoxSaveMessage) == 0x24, "Data type is of wrong size");
 
-static struct DialogBoxBaseVftable* const __vt__20DialogBoxSaveMessage = (struct DialogBoxBaseVftable* const)0x008d8698;
+// win1.41 008d8694 mac 10999130 DialogBoxSaveMessage::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20DialogBoxSaveMessage asm("??_R4DialogBoxSaveMessage@@6B@");
+
+// win1.41 008d8698 mac 10999138 DialogBoxSaveMessage::`vftable'
+extern const struct DialogBoxBaseVftable __vt__20DialogBoxSaveMessage asm("??_7DialogBoxSaveMessage@@6B@");
 
 // Constructors
 

@@ -17,6 +17,10 @@ struct CreatureCommandState
 };
 static_assert(sizeof(struct CreatureCommandState) == 0x2c, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__20CreatureCommandState = (struct BaseVftable* const)0x008cf970;
+// win1.41 008cf96c mac 10787554 CreatureCommandState::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20CreatureCommandState asm("??_R4CreatureCommandState@@6B@");
+
+// win1.41 008cf970 mac 1078755c CreatureCommandState::`vftable'
+extern const struct BaseVftable __vt__20CreatureCommandState asm("??_7CreatureCommandState@@6B@");
 
 #endif /* BW1_DECOMP_CREATURE_COMMAND_STATE_INCLUDED_H */

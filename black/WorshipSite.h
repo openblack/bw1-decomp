@@ -44,7 +44,11 @@ struct WorshipSite
 };
 static_assert(sizeof(struct WorshipSite) == 0x128, "Data type is of wrong size");
 
-static struct MultiMapFixedVftable* const __vt__11WorshipSite = (struct MultiMapFixedVftable* const)0x008f2840;
+// win1.41 008f283c mac 10733a30 WorshipSite::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11WorshipSite asm("??_R4WorshipSite@@6B@");
+
+// win1.41 008f2840 mac 106f5b48 WorshipSite::`vftable'
+extern const struct MultiMapFixedVftable __vt__11WorshipSite asm("??_7WorshipSite@@6B@");
 
 // Non-virtual methods
 

@@ -15,7 +15,11 @@ struct GStream
 };
 static_assert(sizeof(struct GStream) == 0x28, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__7GStream = (struct GameThingVftable* const)0x008ebb48;
+// win1.41 008ebb44 mac 1075dd20 GStream::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GStream asm("??_R4GStream@@6B@");
+
+// win1.41 008ebb48 mac 1075dd28 GStream::`vftable'
+extern const struct GameThingVftable __vt__7GStream asm("??_7GStream@@6B@");
 
 // Static methods
 

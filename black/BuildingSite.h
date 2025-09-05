@@ -61,7 +61,11 @@ struct BuildingSite
 };
 static_assert(sizeof(struct BuildingSite) == 0x644, "Data type is of wrong size");
 
-static struct BuildingSiteVftable* const __vt__12BuildingSite = (struct BuildingSiteVftable* const)0x008c6b6c;
+// win1.41 008c6b68 mac 107391b8 BuildingSite::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12BuildingSite asm("??_R4BuildingSite@@6B@");
+
+// win1.41 008c6b6c mac 107391d0 BuildingSite::`vftable'
+extern const struct BuildingSiteVftable __vt__12BuildingSite asm("??_7BuildingSite@@6B@");
 
 // Constructors
 

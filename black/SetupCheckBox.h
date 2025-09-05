@@ -25,7 +25,11 @@ struct SetupCheckBox
 };
 static_assert(sizeof(struct SetupCheckBox) == 0x260, "Data type is of wrong size");
 
-static struct SetupControlVftable* const __vt__13SetupCheckBox = (struct SetupControlVftable* const)0x008ab588;
+// win1.41 008ab584 mac 10730d88 SetupCheckBox::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13SetupCheckBox asm("??_R4SetupCheckBox@@6B@");
+
+// win1.41 008ab588 mac 10730d90 SetupCheckBox::`vftable'
+extern const struct SetupControlVftable __vt__13SetupCheckBox asm("??_7SetupCheckBox@@6B@");
 
 // Constructors
 

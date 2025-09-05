@@ -13,6 +13,10 @@ struct PSysManager
 };
 static_assert(sizeof(struct PSysManager) == 0xe4, "Data type is of wrong size");
 
-static struct GameThingVftable* const __vt__11PSysManager = (struct GameThingVftable* const)0x009353c0;
+// win1.41 009353bc mac 109b86b8 PSysManager::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11PSysManager asm("??_R4PSysManager@@6B@");
+
+// win1.41 009353c0 mac 109b86c0 PSysManager::`vftable'
+extern const struct GameThingVftable __vt__11PSysManager asm("??_7PSysManager@@6B@");
 
 #endif /* BW1_DECOMP_P_SYS_MANAGER_INCLUDED_H */

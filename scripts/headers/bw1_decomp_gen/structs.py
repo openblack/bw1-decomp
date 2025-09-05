@@ -4,7 +4,7 @@ from collections import OrderedDict
 from dataclasses import dataclass
 import typing
 
-from csnake_overrides import CSnakeMultiLineArrayVariable, CSnakeUnion, CSnakeHexCIntLiteral
+from csnake_overrides import CSnakeMultiLineArrayVariable, CSnakeUnion, CSnakeHexCIntLiteral, CSnakeVariable
 from functions import DefinedFunctionPrototype, FuncPtr
 from utils import partition, extract_type_name
 
@@ -284,25 +284,55 @@ class Enum:
 
 @dataclass
 class RTTIClass(Struct):
-    vftable_address: typing.Optional[int]
+    vftable_win_address: typing.Optional[int]
+    vftable_mac_address: typing.Optional[int]
     vftable_type_name: typing.Optional[str]
+    vftable_decorated_name: typing.Optional[str]
+    vftable_msvc_mangled_name: typing.Optional[str]
+    locator_win_address: typing.Optional[int]
+    locator_mac_address: typing.Optional[int]
+    locator_type_name: typing.Optional[str]
+    locator_decorated_name: typing.Optional[str]
+    locator_msvc_mangled_name: typing.Optional[str]
     method_overrides: list[DefinedFunctionPrototype]
 
     @property
     def all_methods(self) -> list[DefinedFunctionPrototype]:
         return super().all_methods + self.method_overrides
 
-    def __init__(self, struct: Struct, vftable_map: dict[str, dict], virtual_table_function_arg_map: OrderedDict[str, list[str]], method_map: dict[str, DefinedFunctionPrototype], static_method_map: dict[str, DefinedFunctionPrototype]):
+    def __init__(self, struct: Struct, vftable_map: dict[str, dict], rtti_locator_map: dict[str, dict], virtual_table_function_arg_map: OrderedDict[str, list[str]], method_map: dict[str, DefinedFunctionPrototype], static_method_map: dict[str, DefinedFunctionPrototype]):
         self.name = struct.name
         self.size = struct.size
         self.members = struct.members[:]
         basename = struct.name.removeprefix("struct ")
         vftable_global = vftable_map.get(basename) or vftable_map.get(f"{len(basename)}{basename}")
-        self.vftable_address = vftable_global['address'] if vftable_global is not None else None
-        self.vftable_type_name = vftable_global['type'] if vftable_global is not None else None
-        if self.vftable_type_name is not None:
+        if vftable_global:
+            self.vftable_win_address = vftable_global['win_addr']
+            self.vftable_mac_address = vftable_global['mac_addr']
+            self.vftable_type_name = vftable_global['type']
+            self.vftable_decorated_name = vftable_global['decorated_name']
+            self.vftable_msvc_mangled_name = vftable_global['msvc_mangled_name']
             if not self.vftable_type_name.endswith("Vftable"):
                 raise TypeError(f"type: `{struct.name}` has a __vt__ declared with invalid type `{self.vftable_type_name}`")
+        else:
+            self.vftable_win_address = None
+            self.vftable_mac_address = None
+            self.vftable_type_name = None
+            self.vftable_decorated_name = None
+            self.vftable_msvc_mangled_name = None
+        locator_global = rtti_locator_map.get(basename) or rtti_locator_map.get(f"{len(basename)}{basename}")
+        if locator_global:
+            self.locator_win_address = locator_global['win_addr']
+            self.locator_mac_address = locator_global['mac_addr']
+            self.locator_type_name = locator_global['type']
+            self.locator_decorated_name = locator_global['decorated_name']
+            self.locator_msvc_mangled_name = locator_global['msvc_mangled_name']
+        else:
+            self.locator_win_address = None
+            self.locator_mac_address = None
+            self.locator_type_name = None
+            self.locator_decorated_name = None
+            self.locator_msvc_mangled_name = None
 
         def get_method_name(x: str) -> str:
             if "__" not in x:
@@ -334,12 +364,17 @@ class RTTIClass(Struct):
 
     def to_code_data(self, cw: csnake.CodeWriter):
         super().to_code_data(cw)
-        if self.vftable_address:
-            vftable_ptr_type = self.vftable_type_name + "* const"
-            # TODO: Custom fix needed https://gitlab.com/andrejr/csnake/-/merge_requests/10
-            address = csnake.FormattedLiteral(
-                value=self.vftable_address, int_formatter=lambda x: f"({vftable_ptr_type})0x{x:08x}")
-            cw.add_variable_initialization(csnake.Variable(f"__vt__{len(self.name)}{self.name}", vftable_ptr_type, ["static"], value=address))
+        if self.locator_win_address:
+            win_addr = f"{self.locator_win_address:08x}" if self.locator_win_address >= 0 else "inlined"
+            mac_addr = f"{self.locator_mac_address:08x}" if self.locator_mac_address >= 0 else "inlined"    
+            cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.locator_decorated_name}")
+            cw.add_variable_declaration(CSnakeVariable(f"__RTTICompleObjectLocator__{len(self.name)}{self.name}", self.locator_type_name, mangled_name=self.locator_msvc_mangled_name), extern=True)
+            cw.add_line()
+        if self.vftable_win_address:
+            win_addr = f"{self.vftable_win_address:08x}" if self.vftable_win_address >= 0 else "inlined"
+            mac_addr = f"{self.vftable_mac_address:08x}" if self.vftable_mac_address >= 0 else "inlined"
+            cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.vftable_decorated_name}")
+            cw.add_variable_declaration(CSnakeVariable(f"__vt__{len(self.name)}{self.name}", self.vftable_type_name, ["const"], mangled_name=self.vftable_msvc_mangled_name), extern=True)
             cw.add_line()
 
     def to_code_methods(self, cw: csnake.CodeWriter):

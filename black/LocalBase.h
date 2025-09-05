@@ -13,7 +13,11 @@ struct LocalBase
 };
 static_assert(sizeof(struct LocalBase) == 0x8, "Data type is of wrong size");
 
-static struct BaseVftable* const __vt__9LocalBase = (struct BaseVftable* const)0x008a9a44;
+// win1.41 008a9a40 mac 1099bd98 LocalBase::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9LocalBase asm("??_R4LocalBase@@6B@");
+
+// win1.41 008a9a44 mac 1099bda8 LocalBase::`vftable'
+extern const struct BaseVftable __vt__9LocalBase asm("??_7LocalBase@@6B@");
 
 // Static methods
 

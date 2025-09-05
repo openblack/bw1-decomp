@@ -13,6 +13,10 @@ struct SpellSeed
 };
 static_assert(sizeof(struct SpellSeed) == 0xa0, "Data type is of wrong size");
 
-static struct ObjectVftable* const __vt__9SpellSeed = (struct ObjectVftable* const)0x00981fc0;
+// win1.41 00981fbc mac 109dd91c SpellSeed::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SpellSeed asm("??_R4SpellSeed@@6B@");
+
+// win1.41 00981fc0 mac 109dd924 SpellSeed::`vftable'
+extern const struct ObjectVftable __vt__9SpellSeed asm("??_7SpellSeed@@6B@");
 
 #endif /* BW1_DECOMP_SPELL_SEED_INCLUDED_H */
