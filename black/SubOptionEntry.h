@@ -7,11 +7,6 @@
 #include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 
-enum INTERFACE_MESSAGE_TYPES
-{
-  INTERFACE_MESSAGE_TYPES_0
-};
-
 // Forward Declares
 
 struct SubOptionEntry;
