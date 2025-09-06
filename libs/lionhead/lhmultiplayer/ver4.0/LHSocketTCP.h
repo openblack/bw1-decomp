@@ -34,10 +34,10 @@ enum LH_RETURN __fastcall ReceiveUDPPacket__11LHSocketTCPFPP8LHPacketUlP15LHTran
 // Override methods
 
 // win1.41 100206e0 mac 10114410 LHSocketTCP::Connect(LHTransportInfo *)
-enum LH_RETURN __fastcall Connect__11LHSocketTCPFP15LHTransportInfo(struct LHSocketTCP* this, const void* edx, struct LHTransportInfo* transport_info);
+enum LH_RETURN __fastcall Connect__11LHSocketTCPFP15LHTransportInfo(struct LHSocket* this, const void* edx, struct LHTransportInfo* transport_info);
 // win1.41 10020900 mac 10114350 LHSocketTCP::Send(void *, long)
-enum LH_RETURN __fastcall Send__11LHSocketTCPFPvl(struct LHSocketTCP* this, const void* edx, const void* data, long data_len);
+enum LH_RETURN __fastcall Send__11LHSocketTCPFPvl(struct LHSocket* this, const void* edx, const void* data, long data_len);
 // win1.41 100210c0 mac 10113550 LHSocketTCP::SendPacket(LHPacket *)
-enum LH_RETURN __fastcall SendPacket__11LHSocketTCPFP8LHPacket(struct LHSocketTCP* this, const void* edx, const struct LHPacket* packet);
+enum LH_RETURN __fastcall SendPacket__11LHSocketTCPFP8LHPacket(struct LHSocket* this, const void* edx, const struct LHPacket* packet);
 
 #endif /* BW1_DECOMP_LH_SOCKET_TCP_INCLUDED_H */

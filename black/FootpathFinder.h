@@ -53,7 +53,7 @@ void __fastcall Init__15GFootpathFinderFv(struct GFootpathFinder* this);
 // Override methods
 
 // win1.41 005390e0 mac 100e7ce0 GFootpathFinder::Load(GameOSFile &)
-uint32_t __fastcall Load__15GFootpathFinderFR10GameOSFile(struct GFootpathFinder* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__15GFootpathFinderFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 
 DECLARE_LH_LINKED_LIST(GFootpathFinder);
 

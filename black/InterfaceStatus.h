@@ -17,6 +17,7 @@ struct GGuidance;
 struct GInterface;
 struct GLeashStatus;
 struct GVirtualInfluence;
+struct GameThing;
 struct Object;
 struct PSysProcessInfo;
 struct Spell;
@@ -92,6 +93,6 @@ void __fastcall Init__16GInterfaceStatusFUcP10GInterface(struct GInterfaceStatus
 // Override methods
 
 // win1.41 005dc8f0 mac 1036d0e0 GInterfaceStatus::UpdateSpellInfo(Spell *, PSysProcessInfo *)
-void __fastcall UpdateSpellInfo__16GInterfaceStatusFP5SpellP15PSysProcessInfo(struct GInterfaceStatus* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2);
+void __fastcall UpdateSpellInfo__16GInterfaceStatusFP5SpellP15PSysProcessInfo(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2);
 
 #endif /* BW1_DECOMP_INTERFACE_STATUS_INCLUDED_H */

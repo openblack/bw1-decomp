@@ -20,6 +20,7 @@
 // Forward Declares
 
 struct Abode;
+struct Base;
 struct BuildingSite;
 struct FireEffect;
 struct Football;
@@ -248,21 +249,21 @@ bool32_t __fastcall RemoveVillagerFromWorshipSite__8VillagerFv(struct Villager* 
 // Override methods
 
 // win1.41 007521b0 mac 1056caa0 Villager::ToBeDeleted(int)
-void __fastcall ToBeDeleted__8VillagerFi(struct Villager* this, const void* edx, int param_1);
+void __fastcall ToBeDeleted__8VillagerFi(struct Base* this, const void* edx, int param_1);
 // win1.41 0074ff70 mac 1004b3c0 Villager::ProcessState(void)
-uint32_t __fastcall ProcessState__8VillagerFv(struct Villager* this);
+uint32_t __fastcall ProcessState__8VillagerFv(struct Object* this);
 // win1.41 007515c0 mac 10098ff0 Villager::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__8VillagerFv(struct Villager* this);
+bool __fastcall DecideWhatToDo__8VillagerFv(struct Living* this);
 // win1.41 007528c0 mac 1056b4c0 Villager::SetAge(unsigned long)
 void __fastcall SetAge__8VillagerFUl(struct Villager* this, const void* edx, uint32_t age);
 // win1.41 007520e0 mac 10087ab0 Villager::SetCurrentAndDestinationState(unsigned char, unsigned char)
-int __fastcall SetCurrentAndDestinationState__8VillagerFUcUc(struct Villager* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination);
+int __fastcall SetCurrentAndDestinationState__8VillagerFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination);
 // win1.41 00752010 mac 1007bba0 Villager::SetTopState(unsigned char)
-int __fastcall SetTopState__8VillagerFUc(struct Villager* this, const void* edx, enum VILLAGER_STATES state);
+int __fastcall SetTopState__8VillagerFUc(struct Living* this, const void* edx, enum VILLAGER_STATES state);
 // win1.41 00753690 mac 1006a4d0 Villager::SetState(unsigned long, unsigned char)
-void __fastcall SetState__8VillagerFUlUc(struct Villager* this, const void* edx, enum LIVING_ACTION_INDEX index, enum VILLAGER_STATES state);
+void __fastcall SetState__8VillagerFUlUc(struct Living* this, const void* edx, enum LIVING_ACTION_INDEX index, enum VILLAGER_STATES state);
 // win1.41 00751dd0 mac 1004ec00 Villager::GetFinalState(void) const
-enum VILLAGER_STATES __fastcall GetFinalState__8VillagerCFv(struct Villager* this);
+enum VILLAGER_STATES __fastcall GetFinalState__8VillagerCFv(const struct Living* this);
 // win1.41 0055ca40 mac 100c54f0 Villager::GetVillagerName(void)
 const char* __fastcall GetVillagerName__8VillagerFv(struct Villager* this);
 // win1.41 0051b510 mac 10057c40 Villager::DrawVillagerInfo(void)

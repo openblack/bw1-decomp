@@ -15,6 +15,6 @@ static_assert(sizeof(struct BWLan) == 0x4, "Data type is of wrong size");
 // Override methods
 
 // win1.41 00440ac0 mac 10180f20 BWLan::Connect(void)
-uint32_t __fastcall Connect__5BWLanFv(struct BWLan* this);
+uint32_t __fastcall Connect__5BWLanFv(struct LayerCommunication* this);
 
 #endif /* BW1_DECOMP_BW_LAN_INCLUDED_H */

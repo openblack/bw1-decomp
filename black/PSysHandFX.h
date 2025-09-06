@@ -64,24 +64,24 @@ struct PHandFX* __fastcall __ct__7PHandFXFv(struct PHandFX* this);
 // Override methods
 
 // win1.41 0068d060 mac 1040e060 PHandFX::RemoveAllPermBands(void)
-void __fastcall RemoveAllPermBands__7PHandFXFv(struct PHandFX* this);
+void __fastcall RemoveAllPermBands__7PHandFXFv(struct PSysHandFX* this);
 // win1.41 0068ce90 mac 1040e0c0 PHandFX::DoRemoveFromHandVisual(void)
-void __fastcall DoRemoveFromHandVisual__7PHandFXFv(struct PHandFX* this);
+void __fastcall DoRemoveFromHandVisual__7PHandFXFv(struct PSysHandFX* this);
 // win1.41 0068de20 mac 1040c300 PHandFX::AddSpellToHandVisuals(bool)
-void __fastcall AddSpellToHandVisuals__7PHandFXFb(struct PHandFX* this, const void* edx, bool param_1);
+void __fastcall AddSpellToHandVisuals__7PHandFXFb(struct PSysHandFX* this, const void* edx, bool param_1);
 // win1.41 0068dda0 mac 1040c460 PHandFX::SetPULevel(long, bool)
-void __fastcall SetPULevel__7PHandFXFlb(struct PHandFX* this, const void* edx, uint32_t param_1, bool param_2);
+void __fastcall SetPULevel__7PHandFXFlb(struct PSysHandFX* this, const void* edx, uint32_t param_1, bool param_2);
 // win1.41 0068dd60 mac 1001b7a0 PHandFX::DrawHandFX(void)
-void __fastcall DrawHandFX__7PHandFXFv(struct PHandFX* this);
+void __fastcall DrawHandFX__7PHandFXFv(struct PSysHandFX* this);
 // win1.41 0068ccb0 mac 1040e200 PHandFX::GetPULevel(void)
-uint32_t __fastcall GetPULevel__7PHandFXFv(struct PHandFX* this);
+uint32_t __fastcall GetPULevel__7PHandFXFv(struct PSysHandFX* this);
 // win1.41 0068df20 mac 1040c000 PHandFX::StartTribalPowerRing(TRIBE_TYPE)
-void __fastcall StartTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PHandFX* this, const void* edx, enum TRIBE_TYPE tribe);
+void __fastcall StartTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PSysHandFX* this, const void* edx, enum TRIBE_TYPE tribe);
 // win1.41 0068dfa0 mac 1040bf70 PHandFX::StopTribalPowerRing(void)
-void __fastcall StopTribalPowerRing__7PHandFXFv(struct PHandFX* this);
+void __fastcall StopTribalPowerRing__7PHandFXFv(struct PSysHandFX* this);
 // win1.41 0068dfc0 mac 1040be00 PHandFX::ReleaseOrCreateTribalPowerRing(TRIBE_TYPE)
-void __fastcall ReleaseOrCreateTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PHandFX* this, const void* edx, enum TRIBE_TYPE tribe);
+void __fastcall ReleaseOrCreateTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PSysHandFX* this, const void* edx, enum TRIBE_TYPE tribe);
 // win1.41 0068ca10 mac 1040e670 PHandFX::Release(void)
-void __fastcall Release__7PHandFXFv(struct PHandFX* this);
+void __fastcall Release__7PHandFXFv(struct PSysHandFX* this);
 
 #endif /* BW1_DECOMP_P_SYS_HAND_FX_INCLUDED_H */

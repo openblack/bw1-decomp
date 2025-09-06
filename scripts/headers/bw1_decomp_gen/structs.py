@@ -358,6 +358,10 @@ class RTTIClass(Struct):
         self.static_methods = static_method_map.get(self.name, list())
         self.constructors.sort()
         virtual_table_function_names = list(virtual_table_function_arg_map.keys())
+        # Set the `this` param to that of the vftable of the superclass so assignment can be done
+        for o in self.method_overrides:
+            method_args = virtual_table_function_arg_map.get(get_method_name(o.name))
+            o.args[0] = method_args[0]
         self.method_overrides.sort(key=lambda x: virtual_table_function_names.index(get_method_name(x.name)))
         self.methods.sort()
         self.static_methods.sort()

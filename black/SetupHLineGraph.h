@@ -13,6 +13,7 @@
 
 // Forward Declares
 
+struct SetupControl;
 enum LHKey;
 enum LHKeyMod;
 struct SetupHLineGraph;
@@ -74,13 +75,13 @@ struct SetupHLineGraph* __fastcall __ct__15SetupHLineGraphFiiiiiPwb(struct Setup
 // Override methods
 
 // win1.41 0040dab0 mac 101180e0 SetupHLineGraph::Draw(bool, bool)
-void __fastcall Draw__15SetupHLineGraphFbb(struct SetupHLineGraph* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__15SetupHLineGraphFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0040e5a0 mac 101585b0 SetupHLineGraph::MouseUp(int, int, bool)
-void __fastcall MouseUp__15SetupHLineGraphFiib(struct SetupHLineGraph* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseUp__15SetupHLineGraphFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 0040e580 mac 10518860 SetupHLineGraph::KeyDown(int, int)
-void __fastcall KeyDown__15SetupHLineGraphFii(struct SetupHLineGraph* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__15SetupHLineGraphFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040e5c0 mac 0040e5c0 SetupHLineGraph::~SetupHLineGraph(void)
-void __fastcall __dt__15SetupHLineGraphFb(struct SetupHLineGraph* this, const void* edx, bool param_1);
+void __fastcall __dt__15SetupHLineGraphFb(struct SetupControl* this, const void* edx, bool param_1);
 // win1.41 0040e5e0 mac 102a7a10 SetupHLineGraph::Reset(void)
 void __fastcall Reset__15SetupHLineGraphFv(struct SetupHLineGraph* this);
 // win1.41 0040e650 mac 10211b80 SetupHLineGraph::SetScale(float, float, bool)

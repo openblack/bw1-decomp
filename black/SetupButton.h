@@ -34,14 +34,14 @@ struct SetupButton* __fastcall __ct__10SetupButtonFiiiiiPwi(struct SetupButton* 
 // Override methods
 
 // win1.41 004097a0 mac 100c7c90 SetupButton::Draw(bool, bool)
-void __fastcall Draw__11SetupButtonFbb(struct SetupButton* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__11SetupButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 00409900 mac 101104d0 SetupButton::MouseDown(int, int, bool)
-void __fastcall MouseDown__10SetupButtonFiib(struct SetupButton* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseDown__10SetupButtonFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 00409910 mac 10172660 SetupButton::MouseUp(int, int, bool)
-void __fastcall MouseUp__10SetupButtonFiib(struct SetupButton* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseUp__10SetupButtonFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 00409920 mac 1034a2d0 SetupButton::KeyDown(int, int)
-void __fastcall KeyDown__11SetupButtonFii(struct SetupButton* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__11SetupButtonFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 00409940 mac 10594240 SetupButton::~SetupButton(void)
-void __fastcall __dt__11SetupButtonFb(struct SetupButton* this, const void* edx, bool param_1);
+void __fastcall __dt__11SetupButtonFb(struct SetupControl* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_BUTTON_INCLUDED_H */

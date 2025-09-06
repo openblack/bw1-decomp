@@ -74,7 +74,11 @@ class FunctionMetadata:
         if len(split_decorated) <= 1:
             return False
         decorated = "::".join(split_decorated[:-1])
-        if demangle_type(this_candidate) not in class_hierarchies.get(decorated, [decorated]):
+        this_candidate_demangled = demangle_type(this_candidate)
+        if this_candidate_demangled in class_hierarchies.get(decorated, [decorated]):
+            if this_candidate_demangled != decorated:
+                self.argument_types[0] = self.argument_types[0].replace(this_candidate_demangled, decorated)
+        else:
             # Remove template part if there is one
             m = re.match(r'(\w+)<[\d\w]+>', decorated)
             if m:

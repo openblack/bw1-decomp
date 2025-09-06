@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct SetupControl;
 enum LHKey;
 enum LHKeyMod;
 
@@ -39,10 +40,10 @@ struct SetupTabButton* __fastcall __ct__14SetupTabButtonFiiiiiPwiii(struct Setup
 // Override methods
 
 // win1.41 0040f3a0 mac 104081c0 SetupTabButton::Draw(bool, bool)
-void __fastcall Draw__14SetupTabButtonFbb(struct SetupTabButton* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__14SetupTabButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0040f670 mac 1037abd0 SetupTabButton::KeyDown(int, int)
-void __fastcall KeyDown__14SetupTabButtonFii(struct SetupTabButton* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__14SetupTabButtonFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040f690 mac 10369440 SetupTabButton::~SetupTabButton(void)
-void __fastcall __dt__14SetupTabButtonFb(struct SetupTabButton* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupTabButtonFb(struct SetupControl* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_TAB_BUTTON_INCLUDED_H */

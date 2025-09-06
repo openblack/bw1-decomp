@@ -39,6 +39,6 @@ void __fastcall FUN_00536fa0__17GFootpathLinkSaveFv(struct GFootpathLinkSave* th
 // Override methods
 
 // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
-uint32_t __fastcall Load__17GFootpathLinkSaveFR10GameOSFile(struct GFootpathLinkSave* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__17GFootpathLinkSaveFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 
 #endif /* BW1_DECOMP_FOOTPATH_LINK_SAVE_INCLUDED_H */

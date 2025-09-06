@@ -21,6 +21,6 @@ extern const struct LayerCommunicationVftable __vt__9BWGameSpy asm("??_7BWGameSp
 // Override methods
 
 // win1.41 0043e290 mac 105d1460 BWGameSpy::Connect(void)
-uint32_t __fastcall Connect__9BWGameSpyFv(struct BWGameSpy* this);
+uint32_t __fastcall Connect__9BWGameSpyFv(struct LayerCommunication* this);
 
 #endif /* BW1_DECOMP_BW_GAME_SPY_INCLUDED_H */

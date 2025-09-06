@@ -271,6 +271,6 @@ void __fastcall ProcessOneSuperpacket__5GGameFv(struct GGame* this);
 // Override methods
 
 // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
-int __fastcall Save__5GGameFR10GameOSFile(struct GGame* this, const void* edx, struct GameOSFile* file);
+int __fastcall Save__5GGameFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 
 #endif /* BW1_DECOMP_GAME_INCLUDED_H */

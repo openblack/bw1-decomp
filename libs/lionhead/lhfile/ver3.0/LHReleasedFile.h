@@ -28,6 +28,6 @@ struct LHReleasedFile* __fastcall __ct__14LHReleasedFileFPCc(struct LHReleasedFi
 // Override methods
 
 // win1.41 007bd730 mac 1061c784 LHReleasedFile::Open(LH_FILE_MODE)
-uint32_t __fastcall Open__14LHReleasedFileF12LH_FILE_MODE(struct LHReleasedFile* this, const void* edx, enum LH_FILE_MODE mode);
+uint32_t __fastcall Open__14LHReleasedFileF12LH_FILE_MODE(struct LHFile* this, const void* edx, enum LH_FILE_MODE mode);
 
 #endif /* BW1_DECOMP_LH_RELEASED_FILE_INCLUDED_H */
