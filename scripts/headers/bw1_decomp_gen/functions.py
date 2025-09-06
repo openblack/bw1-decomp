@@ -100,7 +100,7 @@ class DefinedFunctionPrototype(FuncPtr):
         result = decl['return_type']
         args = decl['argument_types']
         decorated_name = decl['decorated_name']
-        mangled_name = decl['mangled_name']
+        mangled_name = decl['mangled_name'] if "?" in (decl['mangled_name'] or "") else None
         arg_labels = decl['argument_names']
         win_addr = decl['win_addr']
         mac_addr = decl['mac_addr']
