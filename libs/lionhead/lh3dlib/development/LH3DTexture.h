@@ -46,7 +46,7 @@ static_assert(sizeof(struct LH3DTexture) == 0x13c, "Data type is of wrong size")
 // win1.41 006186b0 mac 1061afb4 LH3DTexture::Create
 struct LH3DTexture* __cdecl Create__11LH3DTextureFPvUlUlP13TextureFormat(void* param_0, unsigned long param_1, unsigned long param_2, struct TextureFormat* param_3);
 // win1.41 008377e0 mac inlined LH3DTexture::SetPackedTexture(void)
-void __stdcall SetPackedTexture__LH3DTextureFv(void) asm("_SetPackedTexture__LH3DTextureFv@0");
+void __stdcall SetPackedTexture__LH3DTextureFv(void);
 // win1.41 00838480 mac 100c9060 LH3DTexture::GetThisTexture
 struct LH3DTexture* __cdecl GetThisTexture__11LH3DTextureFUl(unsigned long id);
 
