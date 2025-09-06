@@ -182,6 +182,6 @@ void __fastcall EndFightNow__14CameraModeNew3Fi(struct CameraModeNew3* this, con
 // Override methods
 
 // win1.41 0045a960 mac 1003a4f0 CameraModeNew3::Update(void)
-void __fastcall Update__14CameraModeNew3Fv(struct CameraModeNew3* this);
+void __fastcall Update__14CameraModeNew3Fv(struct CameraMode* this);
 
 #endif /* BW1_DECOMP_CAMERA_MODE_NEW3_INCLUDED_H */

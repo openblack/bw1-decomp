@@ -14,6 +14,7 @@
 struct Forest;
 struct GBigForestInfo;
 struct GameOSFile;
+struct GameThing;
 struct MapCoords;
 
 struct BigForest
@@ -44,7 +45,7 @@ struct BigForest* __fastcall __ct__9BigForestFRC9MapCoordsPC14GBigForestInfoUlff
 // Override methods
 
 // win1.41 004394e0 mac 100b2760 BigForest::Load(GameOSFile &)
-bool __fastcall Load__9BigForestFR10GameOSFile(struct BigForest* this, const void* edx, struct GameOSFile* file);
+bool __fastcall Load__9BigForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 
 DECLARE_LH_LIST_HEAD(BigForest);
 

@@ -109,8 +109,8 @@ struct WorshipSite* __fastcall CreateBuiltWorshipSite__12CitadelHeartFRC9MapCoor
 // Override methods
 
 // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
-uint32_t __fastcall Load__12CitadelHeartFR10GameOSFile(struct CitadelHeart* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__12CitadelHeartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 // win1.41 004675a0 mac 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
-void __fastcall CallVirtualFunctionsForCreation__12CitadelHeartFRC9MapCoords(struct CitadelHeart* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@CitadelHeart@@UAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__12CitadelHeartFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@CitadelHeart@@UAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_CITADEL_HEART_INCLUDED_H */

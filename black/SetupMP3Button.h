@@ -10,6 +10,10 @@
 
 #include "SetupButton.h" /* For struct SetupButton */
 
+// Forward Declares
+
+struct SetupControl;
+
 struct SetupMP3Button
 {
   struct SetupButton super;  /* 0x0 */
@@ -33,8 +37,8 @@ struct SetupMP3Button* __fastcall __ct__14SetupMP3ButtonFiiiiiPwiUi(struct Setup
 // Override methods
 
 // win1.41 0040cda0 mac 10426080 SetupMP3Button::Draw(bool, bool)
-void __fastcall Draw__14SetupMP3ButtonFbb(struct SetupMP3Button* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__14SetupMP3ButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 00571f30 mac 103547d0 SetupMP3Button::~SetupMP3Button(void)
-void __fastcall __dt__14SetupMP3ButtonFb(struct SetupMP3Button* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupMP3ButtonFb(struct SetupControl* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_MP3_BUTTON_INCLUDED_H */

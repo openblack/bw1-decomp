@@ -343,7 +343,7 @@ void __fastcall ToBeDeleted__6ObjectFi(struct Base* this, const void* edx, int p
 // win1.41 00639b70 mac 103d2180 Object::GetDrawImportance(void)
 float __fastcall GetDrawImportance__6ObjectFv(struct GameThing* this) asm("?GetDrawImportance@Object@@UAEMXZ");
 // win1.41 00419950 mac 100a9ec0 Object::GetTown(void)
-struct Town* __fastcall GetTown__6ObjectFv(const struct GameThing* this) asm("?GetTown@Object@@UAEPAVTown@@XZ");
+struct Town* __fastcall GetTown__6ObjectFv(struct GameThing* this) asm("?GetTown@Object@@UAEPAVTown@@XZ");
 // win1.41 00638110 mac 103d55b0 Object::GetRadius(void)
 float __fastcall GetRadius__6ObjectFv(struct GameThing* this) asm("?GetRadius@Object@@UAEMXZ");
 // win1.41 00638180 mac 10038d20 Object::Get2DRadius(void)
@@ -355,7 +355,7 @@ bool __fastcall CanBecomeArtifact__6ObjectFv(struct GameThing* this) asm("?CanBe
 // win1.41 005190e0 mac 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
 void __fastcall DrawInHand__6ObjectFP16GInterfaceStatus(struct GameThing* this, const void* edx, struct GInterfaceStatus* param_1) asm("?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z");
 // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
-uint32_t __fastcall Load__6ObjectFR10GameOSFile(struct Object* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
 uint32_t __fastcall Save__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Object@@UAEIPAVGameOSFile@@@Z");
 // win1.41 0063a020 mac 103d1940 Object::ResolveLoad(void)

@@ -28,8 +28,8 @@ struct LHReleasedOSFile* __fastcall __ct__16LHReleasedOSFileFv(struct LHReleased
 // Override methods
 
 // win1.41 0042fd40 mac 1012d3f0 LHReleasedOSFile::~LHReleasedOSFile(void)
-void __fastcall __dt__16LHReleasedOSFileFv(struct LHReleasedOSFile* this, const void* edx, bool param_1);
+void __fastcall __dt__16LHReleasedOSFileFv(struct LHOSFile* this, const void* edx, bool param_1);
 // win1.41 007bc7e0 mac 10164a30 LHReleasedOSFile::Open(const char*, LH_FILE_MODE)
-uint32_t __fastcall Open__16LHReleasedOSFileFPc12LH_FILE_MODE(struct LHReleasedOSFile* this, const void* edx, const char* path, enum LH_FILE_MODE mode);
+uint32_t __fastcall Open__16LHReleasedOSFileFPc12LH_FILE_MODE(struct LHOSFile* this, const void* edx, const char* path, enum LH_FILE_MODE mode);
 
 #endif /* BW1_DECOMP_LH_RELEASED_OS_FILE_INCLUDED_H */

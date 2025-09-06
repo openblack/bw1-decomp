@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct SetupControl;
 enum LHKey;
 enum LHKeyMod;
 
@@ -39,14 +40,14 @@ struct SetupCheckBox* __fastcall __ct__13SetupCheckBoxFiiibiPwi(struct SetupChec
 // Override methods
 
 // win1.41 00410f90 mac 10112370 SetupCheckBox::HitTest(int, int)
-bool __fastcall HitTest__13SetupCheckBoxFii(struct SetupCheckBox* this, const void* edx, int x, int y);
+bool __fastcall HitTest__13SetupCheckBoxFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 00410b80 mac 103c4a20 SetupCheckBox::Draw(bool, bool)
-void __fastcall Draw__13SetupCheckBoxFbb(struct SetupCheckBox* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__13SetupCheckBoxFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 00411020 mac 103dbde0 SetupCheckBox::Click(int, int)
-void __fastcall Click__13SetupCheckBoxFii(struct SetupCheckBox* this, const void* edx, int x, int y);
+void __fastcall Click__13SetupCheckBoxFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 00411050 mac 10599580 SetupCheckBox::KeyDown(int, int)
-void __fastcall KeyDown__13SetupCheckBoxFii(struct SetupCheckBox* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__13SetupCheckBoxFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 00411070 mac 105893e0 SetupCheckBox::~SetupCheckBox(void)
-void __fastcall __dt__13SetupCheckBoxFb(struct SetupCheckBox* this, const void* edx, bool param_1);
+void __fastcall __dt__13SetupCheckBoxFb(struct SetupControl* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_CHECK_BOX_INCLUDED_H */

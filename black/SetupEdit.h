@@ -59,20 +59,20 @@ int __fastcall CalcCharpos__9SetupEditFi(struct SetupEdit* this, const void* edx
 // Override methods
 
 // win1.41 0040c500 mac 100c1900 SetupEdit::SetFocus(bool)
-void __fastcall SetFocus__9SetupEditFb(struct SetupEdit* this, const void* edx, bool focus);
+void __fastcall SetFocus__9SetupEditFb(struct SetupControl* this, const void* edx, bool focus);
 // win1.41 0040c580 mac 1055c840 SetupEdit::Draw(bool, bool)
-void __fastcall Draw__9SetupEditFbb(struct SetupEdit* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__9SetupEditFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0040c150 mac 103dc010 SetupEdit::Drag(int, int)
-void __fastcall Drag__9SetupEditFii(struct SetupEdit* this, const void* edx, int x, int y);
+void __fastcall Drag__9SetupEditFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 0040c170 mac 10430180 SetupEdit::MouseDown(int, int, bool)
-void __fastcall MouseDown__9SetupEditFiib(struct SetupEdit* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseDown__9SetupEditFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 0040c1a0 mac 101178b0 SetupEdit::MouseUp(int, int, bool)
-void __fastcall MouseUp__9SetupEditFiib(struct SetupEdit* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseUp__9SetupEditFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 0040baf0 mac 103813a0 SetupEdit::KeyDown(int)
-void __fastcall KeyDown__9SetupEditFii(struct SetupEdit* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__9SetupEditFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040b5f0 mac 103e3630 SetupEdit::Char(int)
-void __fastcall Char__9SetupEditFi(struct SetupEdit* this, const void* edx, int character);
+void __fastcall Char__9SetupEditFi(struct SetupControl* this, const void* edx, int character);
 // win1.41 0040c560 mac 1035a3a0 SetupEdit::~SetupEdit(void)
-void __fastcall __dt__9SetupEditFb(struct SetupEdit* this, const void* edx, bool param_1);
+void __fastcall __dt__9SetupEditFb(struct SetupControl* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_EDIT_INCLUDED_H */

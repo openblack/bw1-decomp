@@ -15,6 +15,7 @@
 
 struct GSpellIconInfo;
 struct GSpellSeedInfo;
+struct Object;
 struct SpellSeedGraphic;
 
 struct Q29SpellIcon13TChargingData
@@ -71,6 +72,6 @@ enum SPELL_SEED_TYPE __fastcall GetSpellSeedType__9SpellIconFv(struct SpellIcon*
 // Override methods
 
 // win1.41 00726160 mac 105253c0 SpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
-void __fastcall CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords(struct SpellIcon* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_SPELL_ICON_INCLUDED_H */

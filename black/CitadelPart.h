@@ -42,7 +42,7 @@ struct CitadelPart* __fastcall __ct__11CitadelPartFRC9MapCoordsPC16GCitadelPartI
 // Override methods
 
 // win1.41 004698b0 mac 101c2780 CitadelPart::Load(GameOSFile &)
-uint32_t __fastcall Load__11CitadelPartFR10GameOSFile(struct CitadelPart* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__11CitadelPartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 
 DECLARE_LH_LIST_HEAD(CitadelPart);
 

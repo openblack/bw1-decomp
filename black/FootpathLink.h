@@ -45,6 +45,6 @@ uint32_t __fastcall UseFootpathIfNecessary__13GFootpathLinkFP6LivingRC9MapCoords
 // Override methods
 
 // win1.41 005365a0 mac 100eb8e0 GFootpathLink::Load(GameOSFile &)
-uint32_t __fastcall Load__13GFootpathLinkFR10GameOSFile(struct GFootpathLink* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__13GFootpathLinkFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 
 #endif /* BW1_DECOMP_FOOTPATH_LINK_INCLUDED_H */

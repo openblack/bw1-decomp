@@ -14,6 +14,7 @@
 // Forward Declares
 
 struct GBaseInfo;
+struct LHOSFile;
 struct MapCoords;
 
 struct GameOSFile
@@ -71,6 +72,6 @@ void __fastcall ReadCheckSum__10GameOSFileFP9GameThing(struct GameOSFile* this, 
 // Override methods
 
 // win1.41 inlined mac inlined GameOSFile::Open(char *, LH_FILE_MODE)
-uint32_t __fastcall Open__10GameOSFileFPc12LH_FILE_MODE(struct GameOSFile* this, const void* edx, const char* filename, enum LH_FILE_MODE mode);
+uint32_t __fastcall Open__10GameOSFileFPc12LH_FILE_MODE(struct LHOSFile* this, const void* edx, const char* filename, enum LH_FILE_MODE mode);
 
 #endif /* BW1_DECOMP_GAME_OS_FILE_INCLUDED_H */

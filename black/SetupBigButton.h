@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct SetupControl;
 enum LHKey;
 enum LHKeyMod;
 
@@ -38,12 +39,12 @@ struct SetupBigButton* __fastcall __ct__14SetupBigButtonFiiiPwiii(struct SetupBi
 // Override methods
 
 // win1.41 0040d310 mac 101670b0 SetupBigButton::HitTest(int, int)
-bool __fastcall HitTest__14SetupBigButtonFii(struct SetupBigButton* this, const void* edx, int x, int y);
+bool __fastcall HitTest__14SetupBigButtonFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 0040ceb0 mac 103deac0 SetupBigButton::Draw(bool, bool)
-void __fastcall Draw__14SetupBigButtonFbb(struct SetupBigButton* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__14SetupBigButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0040d2f0 mac 101689f0 SetupBigButton::KeyDown(int, int)
-void __fastcall KeyDown__14SetupBigButtonFii(struct SetupBigButton* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__14SetupBigButtonFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040d360 mac 1010fca0 SetupBigButton::~SetupBigButton(void)
-void __fastcall __dt__14SetupBigButtonFb(struct SetupBigButton* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupBigButtonFb(struct SetupControl* this, const void* edx, bool param_1);
 
 #endif /* BW1_DECOMP_SETUP_BIG_BUTTON_INCLUDED_H */

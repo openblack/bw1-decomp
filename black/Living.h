@@ -20,6 +20,7 @@
 
 // Forward Declares
 
+struct Base;
 struct DanceGroup;
 struct DataPath;
 struct Flock;
@@ -417,11 +418,11 @@ void __fastcall SetReactionDoneWhen__6LivingF8REACTION(struct Living* this, cons
 // Override methods
 
 // win1.41 005ec0a0 mac 10383210 Living::ToBeDeleted(int)
-void __fastcall ToBeDeleted__6LivingFi(struct Living* this, const void* edx, int param_1);
+void __fastcall ToBeDeleted__6LivingFi(struct Base* this, const void* edx, int param_1);
 // win1.41 005ee230 mac 1037e700 Living::MoveAlongPath(void)
-uint32_t __fastcall MoveAlongPath__6LivingFv(struct Living* this);
+uint32_t __fastcall MoveAlongPath__6LivingFv(struct Object* this);
 // win1.41 005ec1e0 mac 103830e0 Living::GetFinalDestPos(MapCoords *)
-void __fastcall GetFinalDestPos__6LivingFP9MapCoords(const struct Living* this, const void* edx, struct MapCoords* result);
+void __fastcall GetFinalDestPos__6LivingFP9MapCoords(struct Living* this, const void* edx, struct MapCoords* result);
 // win1.41 005f2980 mac 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
 uint32_t __fastcall SetCurrentAndDestinationState__6LivingFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination);
 // win1.41 005f28e0 mac 10075940 Living::SetTopState(unsigned char)
@@ -433,7 +434,7 @@ void __fastcall SetState__6LivingFUlUc(struct Living* this, const void* edx, enu
 // win1.41 005eddd0 mac 1037f260 Living::EnterMoveOnPath(unsigned char, unsigned char)
 uint32_t __fastcall EnterMoveOnPath__6LivingFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES state_1, enum VILLAGER_STATES state_2);
 // win1.41 00751dd0 mac 1004ec00 Living::GetFinalState(void)
-enum VILLAGER_STATES __fastcall GetFinalState__6LivingCFv(struct Living* this);
+enum VILLAGER_STATES __fastcall GetFinalState__6LivingCFv(const struct Living* this);
 
 DECLARE_LH_LINKED_LIST(Living);
 DECLARE_LH_LIST_HEAD(Living);

@@ -53,7 +53,7 @@ struct Tree* __fastcall __ct__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff(struct T
 // Override methods
 
 // win1.41 0074c5f0 mac 101559c0 Tree::CreateCollideData(void)
-void __fastcall CreateCollideData__4TreeFv(struct Tree* this);
+void __fastcall CreateCollideData__4TreeFv(struct SingleMapFixed* this);
 // win1.41 0074b810 mac 10157550 Tree::GetWoodValueMultiplier(void)
 float __fastcall GetWoodValueMultiplier__4TreeFv(struct Tree* this);
 // win1.41 0055d910 mac 100f0c30 Tree::GetForest(void)

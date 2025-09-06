@@ -58,6 +58,6 @@ void __fastcall RefreshChannelList__19MPFEChannelSelectorFv(struct MPFEChannelSe
 // Override methods
 
 // win1.41 00628e30 mac 1039df20 MPFEChannelSelector::InitControls(void)
-void __fastcall InitControls__19MPFEChannelSelectorFv(struct MPFEChannelSelector* this);
+void __fastcall InitControls__19MPFEChannelSelectorFv(struct DialogBoxBase* this);
 
 #endif /* BW1_DECOMP_MPFE_CHANNEL_SELECTOR_INCLUDED_H */

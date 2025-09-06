@@ -14,6 +14,7 @@
 
 // Forward Declares
 
+struct SetupControl;
 enum LHKey;
 enum LHKeyMod;
 struct SetupVBarGraph;
@@ -81,11 +82,11 @@ void __fastcall GetBar__14SetupVBarGraphFiR8VBarData(const struct SetupVBarGraph
 // Override methods
 
 // win1.41 0040e8b0 mac 10379480 SetupVBarGraph::Draw(bool, bool)
-void __fastcall Draw__14SetupVBarGraphFbb(struct SetupVBarGraph* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__14SetupVBarGraphFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0040ef70 mac 10350e50 SetupVBarGraph::KeyDown(int, int)
-void __fastcall KeyDown__14SetupVBarGraphFii(struct SetupVBarGraph* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__14SetupVBarGraphFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040ef90 mac 103de920 SetupVBarGraph::~SetupVBarGraph(void)
-void __fastcall __dt__14SetupVBarGraphFb(struct SetupVBarGraph* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupVBarGraphFb(struct SetupControl* this, const void* edx, bool param_1);
 // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
 void __fastcall Reset__14SetupVBarGraphFv(struct SetupVBarGraph* this);
 // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)

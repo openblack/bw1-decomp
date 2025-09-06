@@ -6,6 +6,10 @@
 
 #include "SetupList.h" /* For struct SetupList */
 
+// Forward Declares
+
+struct SetupControl;
+
 struct SetupMultiList
 {
   struct SetupList super;  /* 0x0 */
@@ -29,10 +33,10 @@ struct SetupMultiList* __fastcall __ct__14SetupMultiListFiiiiii(struct SetupMult
 // Override methods
 
 // win1.41 0040b560 mac 103f18b0 SetupMultiList::Click(int, int)
-void __fastcall Click__14SetupMultiListFii(struct SetupMultiList* this, const void* edx, int x, int y);
+void __fastcall Click__14SetupMultiListFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 0040b4a0 mac 103f18b0 SetupMultiList::~SetupMultiList(void)
-void __fastcall __dt__14SetupMultiListFb(struct SetupMultiList* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupMultiListFb(struct SetupControl* this, const void* edx, bool param_1);
 // win1.41 0040b530 mac 1047e020 SetupMultiList::IsSelected(int)
-bool __fastcall IsSelected__14SetupMultiListFi(struct SetupMultiList* this, const void* edx, int index);
+bool __fastcall IsSelected__14SetupMultiListFi(struct SetupList* this, const void* edx, int index);
 
 #endif /* BW1_DECOMP_SETUP_MULTI_LIST_INCLUDED_H */

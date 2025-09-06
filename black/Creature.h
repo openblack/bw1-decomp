@@ -28,6 +28,7 @@ struct GParticleContainer;
 struct GPlayer;
 struct LH3DCreature;
 struct LH3DSmoke;
+struct Object;
 
 struct CreatureEmotionsForMusic
 {
@@ -225,7 +226,7 @@ void __fastcall ProcessSpells__8CreatureFv(struct Creature* this);
 // Override methods
 
 // win1.41 00472dc0 mac 101e16f0 Creature::ProcessState(void)
-uint32_t __fastcall ProcessState__8CreatureFv(struct Creature* this);
+uint32_t __fastcall ProcessState__8CreatureFv(struct Object* this);
 
 DECLARE_LH_LINKED_LIST(Creature);
 

@@ -13,6 +13,7 @@
 // Forward Declares
 
 struct GameOSFile;
+struct GameThing;
 struct MapCoords;
 
 struct ForestVftable
@@ -60,7 +61,7 @@ struct Tree* __fastcall GetForestCentreTree__6ForestFv(struct Forest* this);
 // Override methods
 
 // win1.41 0053b070 mac 100ef950 Forest::Load(GameOSFile &)
-bool __fastcall Load__6ForestFR10GameOSFile(struct Forest* this, const void* edx, struct GameOSFile* file);
+bool __fastcall Load__6ForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 
 DECLARE_LH_LIST_HEAD(Forest);
 

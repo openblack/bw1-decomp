@@ -13,6 +13,7 @@
 struct GSpellIconInfo;
 struct GSpellSeedInfo;
 struct MapCoords;
+struct Object;
 struct WorshipSite;
 
 struct WorshipSpellIcon
@@ -61,7 +62,7 @@ void __fastcall StopRemoveFromPlayer__16WorshipSpellIconFv(struct WorshipSpellIc
 // Override methods
 
 // win1.41 0077f290 mac 105b6e40 WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
-void __fastcall CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords(struct WorshipSpellIcon* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@WorshipSpellIcon@@UAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@WorshipSpellIcon@@UAEXABUMapCoords@@@Z");
 
 DECLARE_LH_LIST_HEAD(WorshipSpellIcon);
 

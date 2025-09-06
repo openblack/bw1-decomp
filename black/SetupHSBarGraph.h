@@ -7,6 +7,10 @@
 
 #include "SetupVBarGraph.h" /* For struct SetupVBarGraph */
 
+// Forward Declares
+
+struct SetupControl;
+
 struct SetupHSBarGraph
 {
   struct SetupVBarGraph super;  /* 0x0 */
@@ -27,10 +31,10 @@ struct SetupHSBarGraph* __fastcall __ct__15SetupHSBarGraphFiiiiiPw(struct SetupH
 // Override methods
 
 // win1.41 0040d3c0 mac 100df500 SetupHSBarGraph::Draw(bool, bool)
-void __fastcall Draw__15SetupHSBarGraphFbb(struct SetupHSBarGraph* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__15SetupHSBarGraphFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0056d960 mac 100cd050 SetupHSBarGraph::~SetupHSBarGraph(void)
-void __fastcall __dt__15SetupHSBarGraphFb(struct SetupHSBarGraph* this, const void* edx, bool param_1);
+void __fastcall __dt__15SetupHSBarGraphFb(struct SetupControl* this, const void* edx, bool param_1);
 // win1.41 0040d9a0 mac 10130720 SetupHSBarGraph::SetScale(float)
-void __fastcall SetScale__15SetupHSBarGraphFf(struct SetupHSBarGraph* this, const void* edx, float scale);
+void __fastcall SetScale__15SetupHSBarGraphFf(struct SetupVBarGraph* this, const void* edx, float scale);
 
 #endif /* BW1_DECOMP_SETUP_HS_BAR_GRAPH_INCLUDED_H */

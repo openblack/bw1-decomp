@@ -246,6 +246,6 @@ void __fastcall GameTurnUpdate__5CHandFv(struct CHand* this);
 // Override methods
 
 // win1.41 0046c4a0 mac 101c85f0 CHand::SetSize(float)
-void __fastcall SetSize__5CHandFf(struct CHand* this, const void* edx, float size);
+void __fastcall SetSize__5CHandFf(struct Morphable* this, const void* edx, float size);
 
 #endif /* BW1_DECOMP_CONTROL_HAND_INCLUDED_H */

@@ -26,6 +26,6 @@ extern const struct ObjectVftable __vt__15TownDesireFlags asm("??_7TownDesireFla
 // Override methods
 
 // win1.41 00746dc0 mac 1055d830 TownDesireFlags::CallVirtualFunctionsForCreation(MapCoords const &)
-void __fastcall CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords(struct TownDesireFlags* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@TownDesireFlags@@UAEXABUMapCoords@@@Z");
+void __fastcall CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@TownDesireFlags@@UAEXABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_FLAGS_INCLUDED_H */

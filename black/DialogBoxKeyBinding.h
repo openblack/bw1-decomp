@@ -39,6 +39,6 @@ struct DialogBoxKeyBinding* __fastcall __ct__19DialogBoxKeyBindingFv(struct Dial
 // Override methods
 
 // win1.41 00512bd0 mac 102b1750 DialogBoxKeyBinding::InitControls(void)
-void __fastcall InitControls__19DialogBoxKeyBindingFv(struct DialogBoxKeyBinding* this);
+void __fastcall InitControls__19DialogBoxKeyBindingFv(struct DialogBoxBase* this);
 
 #endif /* BW1_DECOMP_DIALOG_BOX_KEY_BINDING_INCLUDED_H */

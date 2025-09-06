@@ -93,19 +93,19 @@ void __fastcall SetNum__9SetupListFi(struct SetupList* this, const void* edx, in
 // Override methods
 
 // win1.41 0040a5c0 mac 10388e60 SetupList::Draw(bool, bool)
-void __fastcall Draw__9SetupListFbb(struct SetupList* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__9SetupListFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0040a110 mac 101c7fc0 SetupList::Drag(int, int)
-void __fastcall Drag__9SetupListFii(struct SetupList* this, const void* edx, int x, int y);
+void __fastcall Drag__9SetupListFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 0040a370 mac 10478900 SetupList::MouseDown(int, int, bool)
-void __fastcall MouseDown__9SetupListFiib(struct SetupList* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseDown__9SetupListFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 0040a3f0 mac 100b4690 SetupList::MouseUp(int, int, bool)
-void __fastcall MouseUp__9SetupListFiib(struct SetupList* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseUp__9SetupListFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 0040a360 mac 100b7170 SetupList::Click(int, int)
-void __fastcall Click__9SetupListFii(struct SetupList* this, const void* edx, int x, int y);
+void __fastcall Click__9SetupListFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 00409eb0 mac 103d24f0 SetupList::KeyDown(int, int)
-void __fastcall KeyDown__9SetupListFii(struct SetupList* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__9SetupListFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
 // win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
-void __fastcall __dt__9SetupListFb(struct SetupList* this, const void* edx, bool param_1);
+void __fastcall __dt__9SetupListFb(struct SetupControl* this, const void* edx, bool param_1);
 // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
 bool __fastcall IsSelected__9SetupListFi(struct SetupList* this, const void* edx, int index);
 

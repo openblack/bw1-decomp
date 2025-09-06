@@ -59,9 +59,9 @@ struct MobileObject* __fastcall __ct__12MobileObjectFRC9MapCoordsPC17GMobileObje
 // Override methods
 
 // win1.41 00607250 mac 103bd0c0 MobileObject::InsertMapObjectToCell(MapCell *)
-void __fastcall InsertMapObjectToCell__12MobileObjectFP7MapCell(struct MobileObject* this, const void* edx, struct MapCell* cell);
+void __fastcall InsertMapObjectToCell__12MobileObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell);
 // win1.41 00607265 mac 103bd050 MobileObject::RemoveMapObjectFromCell(MapCell *)
-void __fastcall RemoveMapObjectFromCell__12MobileObjectFP7MapCell(struct MobileObject* this, const void* edx, struct MapCell* cell);
+void __fastcall RemoveMapObjectFromCell__12MobileObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell);
 
 DECLARE_LH_LINKED_LIST(MobileObject);
 
