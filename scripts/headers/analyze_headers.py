@@ -55,7 +55,10 @@ class FunctionMetadata:
     argument_names: List[str] = field(default_factory=list)
     is_function_variadic: bool = False
 
-    def fastcall_is_thiscall(self) -> bool:
+    def is_subtype(candidate, target, class_hierarchies):
+        return candidate in class_hierarchies[target]
+
+    def fastcall_is_thiscall(self, class_hierarchies) -> bool:
         if self.call_type != "__fastcall":
             return False
         if len(self.argument_types) < 1:
@@ -71,7 +74,7 @@ class FunctionMetadata:
         if len(split_decorated) <= 1:
             return False
         decorated = "::".join(split_decorated[:-1])
-        if demangle_type(this_candidate) != decorated:
+        if demangle_type(this_candidate) not in class_hierarchies.get(decorated, [decorated]):
             # Remove template part if there is one
             m = re.match(r'(\w+)<[\d\w]+>', decorated)
             if m:
@@ -88,8 +91,8 @@ class FunctionMetadata:
                 return False
         return True
 
-    def consolidate_thiscall(self):
-        if self.fastcall_is_thiscall():
+    def consolidate_thiscall(self, class_hierarchies):
+        if self.fastcall_is_thiscall(class_hierarchies):
             self.call_type = "__thiscall"
             if len(self.argument_types) > 1:
                 self.argument_types.pop(1)
@@ -1090,6 +1093,9 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
 
 
 def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> bool:
+    with open("scripts/headers/class_hierarchy.json") as f:
+        jch = json.load(f)
+    class_hierarchies = {i[0][1].removeprefix("class ").removeprefix("struct "): [j[1].removeprefix("class ").removeprefix("struct ") for j in i] for i in jch}
     if header_path is None:
         header_path = Path(__file__).parent.parent.parent
     elif type(header_path) is str:
@@ -1167,7 +1173,7 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     for f in function_metadata:
         if f.undecorated_name is None:
             continue
-        f.consolidate_thiscall()
+        f.consolidate_thiscall(class_hierarchies)
         f.return_type = fixup_type(f.return_type)
         f.argument_types = list(map(fixup_type, f.argument_types))
         result_functions.append(asdict(f))
