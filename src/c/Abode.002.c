@@ -1,6 +1,6 @@
 #include "Abode.h"
 
-void __fastcall __dt__5AbodeFv(struct Base* this)
+void __fastcall __dt__5AbodeFv(struct Abode* this)
 {
     asm("push               esi");                                      // 0x00402b60    56
     asm("mov.s              esi, ecx");                                 // 0x00402b61    8bf1

@@ -254,6 +254,11 @@ void __stdcall ProcessDeadList__9GameThingFi(int param_1);
 // win1.41 0056fa10 mac 10088880 GameThing::GameThing(void)
 struct GameThing* __fastcall __ct__9GameThingFv(struct GameThing* this);
 
+// Non-virtual Destructors
+
+// win1.41 0056fa50 mac 10086e30 GameThing::~GameThing(void)
+void __fastcall __dt__9GameThingFv(struct GameThing* this, const void* edx, uint8_t param_1) asm("??1GameThing@@UAE@XZ");
+
 // Non-virtual methods
 
 // win1.41 0056faa0 mac 10492500 GameThing::ProcessDead(int)
@@ -261,8 +266,6 @@ void __fastcall ProcessDead__9GameThingFi(struct GameThing* this, const void* ed
 
 // Override methods
 
-// win1.41 0056fa50 mac 10086e30 GameThing::~GameThing(void)
-void __fastcall __dt__9GameThingFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1GameThing@@UAE@XZ");
 // win1.41 0056fb70 mac 10380a20 GameThing::ToBeDeleted(int)
 void __fastcall ToBeDeleted__9GameThingFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GameThing@@UAEXH@Z");
 // win1.41 00570130 mac 10364e60 GameThing::GetPlayer(void)

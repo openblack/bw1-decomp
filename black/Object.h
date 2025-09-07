@@ -328,6 +328,11 @@ struct Object* __fastcall __ct__6ObjectFv(struct Object* this);
 // win1.41 00636520 mac 103d90d0 Object::Object(MapCoords const &, GObjectInfo const *)
 struct Object* __fastcall __ct__6ObjectFRC9MapCoordsPC11GObjectInfo(struct Object* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info);
 
+// Non-virtual Destructors
+
+// win1.41 006364a0 mac 103d8f50 Object::_dt(void)
+void __fastcall __dt__6ObjectFv(struct Object* this, const void* edx, uint8_t param_1) asm("??1Object@@UAE@XZ");
+
 // Non-virtual methods
 
 // win1.41 00638560 mac 1005ba80 Object::GetMapChild(MapCoords const &)
@@ -335,8 +340,6 @@ struct Object* __fastcall GetMapChild__6ObjectFRC9MapCoords(struct Object* this,
 
 // Override methods
 
-// win1.41 006364a0 mac 103d8f50 Object::_dt(void)
-void __fastcall __dt__6ObjectFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1Object@@UAE@XZ");
 // win1.41 006366a0 mac 103d8e50 Object::Delete(void)
 void __fastcall Delete__6ObjectFv(struct Base* this, const void* edx, int param_1) asm("?Delete@Object@@UAEXH@Z");
 // win1.41 00636670 mac 103d8eb0 Object::ToBeDeleted(int)

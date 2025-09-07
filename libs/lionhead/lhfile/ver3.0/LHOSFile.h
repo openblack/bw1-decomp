@@ -42,12 +42,15 @@ uint32_t __cdecl Exists__8LHOSFileFPc(const char* path);
 // win1.41 007bc650 mac 10164fc0 LHOSFile::LHOSFile(void)
 struct LHOSFile* __fastcall __ct__8LHOSFileFv(struct LHOSFile* this);
 
+// Non-virtual Destructors
+
+// win1.41 007bc680 mac inlined LHOSFile::~LHOSFile(void)
+void __fastcall __dt__8LHOSFileFv(struct LHOSFile* this);
+
 // Non-virtual methods
 
 // win1.41 0046b720 mac inlined LHOSFile::Write(char *const)
 uint32_t __fastcall Write__8LHOSFileFCPc(struct LHOSFile* this, const void* edx, const char* str);
-// win1.41 007bc680 mac inlined LHOSFile::~LHOSFile(void)
-void __fastcall __dt__8LHOSFileFv(struct LHOSFile* this);
 // win1.41 007bc860 mac 1061b68c LHOSFile::Close(void)
 uint32_t __fastcall Close__8LHOSFileFv(struct LHOSFile* this);
 // win1.41 007bc880 mac 1061beb4 LHOSFile::Seek(long, LH_SEEK_MODE, unsigned long *)

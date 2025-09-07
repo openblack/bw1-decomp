@@ -60,10 +60,13 @@ extern const struct PlannedMultiMapFixedVftable __vt__20PlannedMultiMapFixed asm
 // win1.41 00648780 mac 10115620 PlannedMultiMapFixed::PlannedMultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float)
 struct PlannedMultiMapFixed* __fastcall __ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff(struct PlannedMultiMapFixed* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, float param_3, float param_4);
 
-// Override methods
+// Non-virtual Destructors
 
 // win1.41 0055cbf0 mac 103e4400 PlannedMultiMapFixed::~PlannedMultiMapFixed(void)
-void __fastcall __dt__20PlannedMultiMapFixedFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1PlannedMultiMapFixed@@UAE@XZ");
+void __fastcall __dt__20PlannedMultiMapFixedFv(struct PlannedMultiMapFixed* this, const void* edx, uint8_t param_1) asm("??1PlannedMultiMapFixed@@UAE@XZ");
+
+// Override methods
+
 // win1.41 0055cbe0 mac 10111890 PlannedMultiMapFixed::GetDebugText(void)
 char* __fastcall GetDebugText__20PlannedMultiMapFixedFv(struct GameThing* this) asm("?GetDebugText@PlannedMultiMapFixed@@QAEPADXZ");
 // win1.41 00648af0 mac 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)

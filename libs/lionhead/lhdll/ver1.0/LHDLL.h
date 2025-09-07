@@ -46,7 +46,7 @@ struct LHDLL* __cdecl AddToInternalList__5LHDLLFP5LHDLL(struct LHDLL* param_1);
 // win1.41 007ad370 mac 1061e11c LHDLL::LHDLL(const char*)
 struct LHDLL* __fastcall __ct__5LHDLLFPCc(struct LHDLL* this, const void* edx, char* library_path);
 
-// Non-virtual methods
+// Non-virtual Destructors
 
 // win1.41 007ad4c0 mac 1061e14c LHDLL::~LHDLL(void)
 void __fastcall __dt__5LHDLLFv(struct LHDLL* this);
