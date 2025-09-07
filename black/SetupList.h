@@ -8,14 +8,13 @@
 
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
+#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 
 #include "SetupControl.h" /* For struct SetupControl, struct SetupControlVftable */
 #include "SetupRect.h" /* For struct SetupRect */
 
 // Forward Declares
 
-enum LHKey;
-enum LHKeyMod;
 struct SetupList;
 
 struct SetupList__ListBoxDraw_t

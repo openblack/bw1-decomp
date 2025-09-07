@@ -8,10 +8,11 @@
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
 
+#include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
+
 // Forward Declares
 
 enum BINDABLE_ACTIONS;
-enum INTERFACE_MESSAGE_TYPES;
 struct InnerCamera;
 struct InnerRoom;
 struct TempleRoom;

@@ -6,6 +6,8 @@
 #include <stdint.h> /* For uint32_t */
 #include <uchar.h> /* For char16_t */
 
+#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
+
 #include "SetupButton.h" /* For struct SetupButton */
 #include "SetupRect.h" /* For struct SetupRect */
 #include "SetupThing.h" /* For enum BBSTYLE */
@@ -13,8 +15,6 @@
 // Forward Declares
 
 struct SetupControl;
-enum LHKey;
-enum LHKeyMod;
 
 struct SetupCheckBox
 {

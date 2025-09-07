@@ -6,14 +6,13 @@
 #include <stdint.h> /* For uint32_t */
 #include <uchar.h> /* For char16_t */
 
+#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "SetupControl.h" /* For struct SetupControl */
 
 // Forward Declares
 
-enum LHKey;
-enum LHKeyMod;
 struct SetupList;
 
 struct SetupEdit

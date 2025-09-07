@@ -5,12 +5,9 @@
 #include <stdbool.h> /* For bool */
 #include <uchar.h> /* For char16_t */
 
+#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
+
 #include "SetupControl.h" /* For struct SetupControl */
-
-// Forward Declares
-
-enum LHKey;
-enum LHKeyMod;
 
 struct SetupButton
 {
