@@ -7,12 +7,12 @@
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 
 // Forward Declares
 
-struct Base;
 struct GFootpathLink;
 struct GMultiMapFixedInfo;
 struct GObjectInfo;
@@ -49,7 +49,11 @@ struct PlannedMultiMapFixed
 };
 static_assert(sizeof(struct PlannedMultiMapFixed) == 0x48, "Data type is of wrong size");
 
-static struct PlannedMultiMapFixedVftable* const __vt__20PlannedMultiMapFixed = (struct PlannedMultiMapFixedVftable* const)0x008f3154;
+// win1.41 008f3150 mac 107340b0 PlannedMultiMapFixed::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20PlannedMultiMapFixed asm("??_R4PlannedMultiMapFixed@@6B@");
+
+// win1.41 008f3154 mac 107340d0 PlannedMultiMapFixed::`vftable'
+extern const struct PlannedMultiMapFixedVftable __vt__20PlannedMultiMapFixed asm("??_7PlannedMultiMapFixed@@6B@");
 
 // Constructors
 

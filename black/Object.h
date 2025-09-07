@@ -315,6 +315,7 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Object asm("
 
 // win1.41 00930aa0 mac 10732c1c Object::`vftable'
 extern const struct ObjectVftable __vt__6Object asm("??_7Object@@6B@");
+
 // Static methods
 
 // win1.41 006364c0 mac 103d93a0 Object::Get3DType(MESH_LIST)
@@ -491,7 +492,7 @@ bool __fastcall IsObjectInMap__6ObjectFRC9MapCoords(struct Object* this, const v
 // win1.41 006366b0 mac 103d8d10 Object::IsObjectInMapCheck(void)
 bool __fastcall IsObjectInMapCheck__6ObjectFv(struct Object* this) asm("?IsObjectInMapCheck@Object@@UAE_NXZ");
 // win1.41 00636a40 mac 1004d070 Object::MoveMapObject(MapCoords const &)
-uint32_t __fastcall MoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, struct MapCoords* param_2);
+uint32_t __fastcall MoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2);
 // win1.41 00638040 mac 10055200 Object::ActualMoveMapObject(MapCoords const &)
 void __fastcall ActualMoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2);
 // win1.41 00402570 mac 103dca60 Object::GetPtr(void)

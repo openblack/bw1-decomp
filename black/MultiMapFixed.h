@@ -10,7 +10,7 @@
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
-#include "Fixed.h" /* For struct FixedObject, struct FixedObjectVftable */
+#include "Fixed.h" /* For struct Fixed, struct FixedVftable */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MapCoords.h" /* For struct JustMapXZ */
 #include "Object.h" /* For struct Object */
@@ -64,7 +64,7 @@ static_assert(sizeof(struct MultiChildList) == 0xc, "Data type is of wrong size"
 
 struct MultiMapFixedVftable
 {
-  struct FixedObjectVftable super;  /* 0x0 */
+  struct FixedVftable super;  /* 0x0 */
   struct MapCoords* (__fastcall* GetDoorPos)(struct MultiMapFixed* this, const void* edx, struct MapCoords* pos);  /* 0x864 */
   float (__fastcall* GetInfluence)(struct MultiMapFixed* this);
   bool (__fastcall* IsPlaytimeStructure)(struct MultiMapFixed* this);
@@ -112,7 +112,7 @@ static_assert(sizeof(struct MultiMapFixedVftable) == 0x90c, "Data type is of wro
 
 union MultiMapFixedBase
 {
-  struct FixedObject super;
+  struct Fixed super;
   struct Object super_object;
   struct GameThingWithPos super_gamethingwithpos;
   struct ObjectVftable* object_vftable;
@@ -251,7 +251,7 @@ size_t __fastcall SaveObject__13MultiMapFixedFR8LHOSFileRC9MapCoords(struct Obje
 // win1.41 00401630 mac inlined MultiMapFixed::GetCollideData(void)
 struct NewCollide* __fastcall GetCollideData__13MultiMapFixedFv(const struct Object* this) asm("?GetCollideData@MultiMapFixed@@UAEPAVNewCollide@@XZ");
 // win1.41 0052e490 mac 100e0d80 MultiMapFixed::IsObjectFullyInMap(void)
-bool __fastcall IsObjectFullyInMap__13MultiMapFixedFv(struct FixedObject* this) asm("?IsObjectFullyInMap@MultiMapFixed@@UAE_NXZ");
+bool __fastcall IsObjectFullyInMap__13MultiMapFixedFv(struct Fixed* this) asm("?IsObjectFullyInMap@MultiMapFixed@@UAE_NXZ");
 // win1.41 0052e370 mac 1002c2e0 MultiMapFixed::GetDoorPos(void)
 struct MapCoords* __fastcall GetDoorPos__13MultiMapFixedFv(struct MultiMapFixed* this, const void* edx, struct MapCoords* position);
 // win1.41 0052eca0 mac 1004af20 MultiMapFixed::GetInfluence(void)

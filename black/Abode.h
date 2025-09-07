@@ -144,18 +144,18 @@ void __fastcall RemoveAllVillagersFromAbode__5AbodeFv(struct Abode* this) asm("?
 int __fastcall NumVillagersOfSex__5AbodeFv(struct Abode* this) asm("?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z");
 // win1.41 004045d0 mac 103d89d0 Abode::CalculateFoodNeededForDinner(void)
 int __fastcall CalculateFoodNeededForDinner__5AbodeFv(struct Abode* this) asm("?CalculateFoodNeededForDinner@Abode@@QAEHXZ");
-// win1.41 00404630 mac inlined Abode::GetOtherParent(Villager *)
-struct Villager* __fastcall GetOtherParent__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?GetOtherParent@Abode@@QAEPAVVillager@@PAV2@@Z");
-// win1.41 004046a0 mac inlined Abode::FUN_004046a0(void)
-void __fastcall FUN_004046a0__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?FUN_004046a0@Abode@@QAEXH@Z");
-// win1.41 004046b0 mac inlined Abode::FUN_004046b0(void)
-int __fastcall FUN_004046b0__5AbodeFv(struct Abode* this) asm("?FUN_004046b0@Abode@@QAEHXZ");
 // win1.41 00404600 mac 1032c5d0 Abode::IsEnoughFoodForDinner(void)
 bool __fastcall IsEnoughFoodForDinner__5AbodeFv(struct Abode* this) asm("?IsEnoughFoodForDinner@Abode@@QAE_NXZ");
+// win1.41 00404630 mac inlined Abode::GetOtherParent(Villager *)
+struct Villager* __fastcall GetOtherParent__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?GetOtherParent@Abode@@QAEPAVVillager@@PAV2@@Z");
 // win1.41 00404660 mac 1032c3e0 Abode::GetRoomLeftForAdults(void)
 int __fastcall GetRoomLeftForAdults__5AbodeFv(struct Abode* this) asm("?GetRoomLeftForAdults@Abode@@QAEHXZ");
 // win1.41 00404680 mac 103e40f0 Abode::GetRoomLeftForChildren(void)
 int __fastcall GetRoomLeftForChildren__5AbodeFv(struct Abode* this) asm("?GetRoomLeftForChildren@Abode@@QAEHXZ");
+// win1.41 004046a0 mac inlined Abode::FUN_004046a0(void)
+void __fastcall FUN_004046a0__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?FUN_004046a0@Abode@@QAEXH@Z");
+// win1.41 004046b0 mac inlined Abode::FUN_004046b0(void)
+int __fastcall FUN_004046b0__5AbodeFv(struct Abode* this) asm("?FUN_004046b0@Abode@@QAEHXZ");
 // win1.41 004046c0 mac 105b93c0 Abode::IsTooCrowded(void)
 bool32_t __fastcall IsTooCrowded__5AbodeFv(struct Abode* this) asm("?IsTooCrowded@Abode@@QAE_NXZ");
 // win1.41 00404b40 mac 10329410 Abode::CalculateScoreForAddingVillagerToAbode(Villager *)

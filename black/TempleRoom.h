@@ -51,8 +51,8 @@ struct TempleRoomVftable
   void (__fastcall* UpdateMouse)(struct TempleRoom* this, const void* edx, struct LHCoord coord, enum INTERFACE_MESSAGE_TYPES message_type);
   void (__fastcall* UpdateKeyboard)(struct TempleRoom* this, const void* edx, enum LH_KEY key, uint16_t param);
   void (__fastcall* TriggerIntroCamera)(struct TempleRoom* this, const void* edx, bool param, struct Zoomer3d* zoomer1, struct Zoomer3d* zoomer2);  /* 0x20 */
-  void (__fastcall* InitEngine_1)(struct TempleRoom* this);
-  void (__fastcall* InitEngine_2)(struct TempleRoom* this, const void* edx, char* param1, char* param2, char* param3, char* param4);
+  void (__fastcall* InitEngine_0)(struct TempleRoom* this);
+  void (__fastcall* InitEngine_1)(struct TempleRoom* this, const void* edx, char* param1, char* param2, char* param3, char* param4);
   void (__fastcall* CloseEngine)(struct TempleRoom* this);
   void (__fastcall* CalculateTooltipsInsideCitadel)(struct TempleRoom* this, const void* edx, enum BINDABLE_ACTIONS* actions);  /* 0x30 */
   void (__fastcall* PreToolTipProcess)(struct TempleRoom* this);

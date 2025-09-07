@@ -2,8 +2,6 @@
 #define BW1_DECOMP_FUNC_T_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stddef.h> /* For size_t */
-#include <stdint.h> /* For uint32_t, uint8_t */
 
 // Forward Declares
 
