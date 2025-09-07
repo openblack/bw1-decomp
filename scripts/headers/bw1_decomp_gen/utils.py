@@ -1,3 +1,5 @@
+import sys
+from pathlib import Path
 from typing import Iterable, Callable
 from collections import OrderedDict
 
@@ -97,11 +99,32 @@ def arg_clang_wrapping_declaration_to_csnake(wrapping_declaration):
     return None
 
 
+if sys.platform == "win32":
+    llvm_bin = Path(r"C:\Program Files\LLVM\bin")
+else:
+    llvm_bin = Path(r"/usr/bin")
+
+
+def get_clang_resource_dir():
+    from subprocess import check_output
+    return check_output([llvm_bin / 'clang', '-print-resource-dir']).strip().decode('utf-8')
+
+
+def get_tu_from_source(source):
+    ignored_warnings = ["visibility", "microsoft-enum-forward-reference"]
+    args = ["-m32", f"-resource-dir={get_clang_resource_dir()}"]
+    if sys.platform != "win32":
+        args.append("--target=i686-pc-windows-gnu")
+    for warning in ignored_warnings:
+        args.append(f"-Wno-{warning}")
+    return cindex.TranslationUnit.from_source('tmp.c', args=args, unsaved_files=[('tmp.c', source)])
+
+
 def arg_to_csnake(type_decl):
     """This function is slow because it launched the compiler for each param. It can easily go from less than a second to more than 20 seconds"""
     headers = ["stdbool.h", "stdint.h"]
     source = f"{'\n'.join(f'#include <{h}>' for h in headers)}\nvoid __arg_to_csnake_wrapping_declaration({type_decl});"
-    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=["-m32"], unsaved_files=[('tmp.c', source)])
+    translation_unit = get_tu_from_source(source)
     if [d for d in translation_unit.diagnostics if d.severity >= cindex.Diagnostic.Error]:
         return type_decl
     result = arg_clang_wrapping_declaration_to_csnake(next(c for c in translation_unit.cursor.get_children() if c.spelling == "__arg_to_csnake_wrapping_declaration"))

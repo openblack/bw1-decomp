@@ -158,9 +158,9 @@ struct Town* __cdecl GetNearestTownToPos__4TownFRC9MapCoords10TRIBE_TYPE10ABODE_
 // win1.41 0073eac0 mac 1054e290 Town::AsssignTownFeature(void)
 void __cdecl AsssignTownFeature__4TownFv(void);
 // win1.41 007412f0 mac 100233e0 Town::FindClearArea(MapCoords &, MapCoords &, float, float, float, int (Object::)(void const *, void const *), Object *)
-bool __cdecl FindClearArea__4TownFR9MapCoordsR9MapCoordsfffM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, struct MapCoords* param_2, float param_3, float param_4, float param_5, bool (__fastcall* callback)(struct Object *), int index, uint32_t param_8, uint32_t param_9, struct Object* obj);
+bool __cdecl FindClearArea__4TownFR9MapCoordsR9MapCoordsfffM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, struct MapCoords* param_2, float param_3, float param_4, float param_5, bool (__fastcall* callback)(struct Object * param_1), int index, uint32_t param_8, uint32_t param_9, struct Object* obj);
 // win1.41 007413d0 mac 10038890 Town::CheckForClearArea(MapCoords &, float, int (Object::)(void const *, void const *), Object *)
-bool __cdecl CheckForClearArea__4TownFR9MapCoordsfM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, float param_2, bool (__fastcall* callback)(struct Object *), int index, uint32_t param_5, uint32_t param_6, struct Object* obj);
+bool __cdecl CheckForClearArea__4TownFR9MapCoordsfM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, float param_2, bool (__fastcall* callback)(struct Object * param_1), int index, uint32_t param_5, uint32_t param_6, struct Object* obj);
 
 // Constructors
 

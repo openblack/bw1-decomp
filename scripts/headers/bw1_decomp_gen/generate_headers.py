@@ -17,23 +17,12 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype
 from csnake_overrides import CSnakeFuncPtr
 from vftable import Vftable
-from utils import partition, extract_type_name, extract_type_from_func_name, arg_clang_wrapping_declaration_to_csnake, TEMPLATE_CONTAINER_STRUCTS_PREFIXES
+from utils import get_tu_from_source, partition, extract_type_name, extract_type_from_func_name, arg_clang_wrapping_declaration_to_csnake, TEMPLATE_CONTAINER_STRUCTS_PREFIXES
 from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, resolve_roommate, ROOMMATE_CLASS_MAP
 
 
 HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
 ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = False
-
-
-if sys.platform == "win32":
-    llvm_bin = Path(r"C:\Program Files\LLVM\bin")
-else:
-    llvm_bin = Path(r"/usr/bin")
-
-
-def get_clang_resource_dir():
-    from subprocess import check_output
-    return check_output([llvm_bin / 'clang', '-print-resource-dir']).strip().decode('utf-8')
 
 
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
@@ -91,12 +80,7 @@ def batched_arg_to_csnake(type_decls):
 
     ignored_warnings = ["visibility", "microsoft-enum-forward-reference"]
     source = "\n".join(source_list)
-    args = ["-m32", f"-resource-dir={get_clang_resource_dir()}"]
-    if sys.platform != "win32":
-        args.add("--target=i686-pc-windows-gnu")
-    for warning in ignored_warnings:
-        args.append(f"-Wno-{warning}")
-    translation_unit = cindex.TranslationUnit.from_source('tmp.c', args=args, unsaved_files=[('tmp.c', source)])
+    translation_unit = get_tu_from_source(source)
 
     error_strings: list[str] = []
     for diagnostic in translation_unit.diagnostics:
