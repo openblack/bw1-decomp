@@ -45,9 +45,9 @@ bool32_t __fastcall VillagerMustAvoid__11FixedObjectFP8Villager(struct Object* t
     return true;
 }
 
-struct GameThing * __fastcall GetTownArtifact__11FixedObjectFv(struct Object* this)
+struct GameThing* __fastcall GetTownArtifact__11FixedObjectFv(struct Object* this)
 {
-    return ((struct FixedObject*)this)->town_artifact;
+    return ((struct Fixed*)this)->town_artifact;
 }
 
 bool32_t __fastcall IsTownArtifact__11FixedObjectFv(struct Object* this)

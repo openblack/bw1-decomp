@@ -2,15 +2,16 @@
 #define BW1_DECOMP_SUB_OPTION_ENTRY_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint16_t */
 
-#include <reversing_utils/re_common.h> /* For bool32_t */
-#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
+#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 
 // Forward Declares
 
-struct SubOptionEntry;
 struct SubMeshDrawData;
+struct SubOptionEntry;
 
 struct SubOptionEntryVftable
 {

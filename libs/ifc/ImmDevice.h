@@ -1,10 +1,10 @@
-#ifndef BW1_DECOMP_IMMDEVICE_INCLUDED_H
-#define BW1_DECOMP_IMMDEVICE_INCLUDED_H
+#ifndef BW1_DECOMP_IMM_DEVICE_INCLUDED_H
+#define BW1_DECOMP_IMM_DEVICE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t */
 #include <guiddef.h> /* For GUID */
+#include <stdint.h> /* For int32_t, uint32_t */
 
 // Forward Declares
 
@@ -32,8 +32,8 @@ static_assert(sizeof(struct CImmDeviceVftable) == 0x34, "Data type is of wrong s
 
 struct CImmDevice
 {
-	struct CImmDeviceVftable* vftable;  /* 0x0 */
+  struct CImmDeviceVftable* vftable;  /* 0x0 */
 };
 static_assert(sizeof(struct CImmDevice) == 0x4, "Data type is of wrong size");
 
-#endif // BW1_DECOMP_IMMDEVICE_INCLUDED_H
+#endif /* BW1_DECOMP_IMM_DEVICE_INCLUDED_H */

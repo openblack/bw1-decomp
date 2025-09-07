@@ -282,6 +282,11 @@ class Enum:
             cw.add_line()
 
 
+TYPE_SUBSTITUTION_MAP = {
+    'Fixed': 'FixedObject',
+}
+
+
 @dataclass
 class RTTIClass(Struct):
     vftable_win_address: typing.Optional[int]
@@ -305,6 +310,9 @@ class RTTIClass(Struct):
         self.size = struct.size
         self.members = struct.members[:]
         basename = struct.name.removeprefix("struct ")
+        basename = TYPE_SUBSTITUTION_MAP.get(basename, basename)
+        if basename == 'Fixed':
+            basename = "FixedObject"
         vftable_global = vftable_map.get(basename) or vftable_map.get(f"{len(basename)}{basename}")
         if vftable_global:
             self.vftable_win_address = vftable_global['win_addr']
@@ -368,17 +376,18 @@ class RTTIClass(Struct):
 
     def to_code_data(self, cw: csnake.CodeWriter):
         super().to_code_data(cw)
+        basename = TYPE_SUBSTITUTION_MAP.get(self.name, self.name)
         if self.locator_win_address:
             win_addr = f"{self.locator_win_address:08x}" if self.locator_win_address >= 0 else "inlined"
             mac_addr = f"{self.locator_mac_address:08x}" if self.locator_mac_address >= 0 else "inlined"    
             cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.locator_decorated_name}")
-            cw.add_variable_declaration(CSnakeVariable(f"__RTTICompleObjectLocator__{len(self.name)}{self.name}", self.locator_type_name, mangled_name=self.locator_msvc_mangled_name), extern=True)
+            cw.add_variable_declaration(CSnakeVariable(f"__RTTICompleObjectLocator__{len(basename)}{basename}", self.locator_type_name, mangled_name=self.locator_msvc_mangled_name), extern=True)
             cw.add_line()
         if self.vftable_win_address:
             win_addr = f"{self.vftable_win_address:08x}" if self.vftable_win_address >= 0 else "inlined"
             mac_addr = f"{self.vftable_mac_address:08x}" if self.vftable_mac_address >= 0 else "inlined"
             cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.vftable_decorated_name}")
-            cw.add_variable_declaration(CSnakeVariable(f"__vt__{len(self.name)}{self.name}", self.vftable_type_name, ["const"], mangled_name=self.vftable_msvc_mangled_name), extern=True)
+            cw.add_variable_declaration(CSnakeVariable(f"__vt__{len(basename)}{basename}", self.vftable_type_name, ["const"], mangled_name=self.vftable_msvc_mangled_name), extern=True)
             cw.add_line()
 
     def to_code_methods(self, cw: csnake.CodeWriter):

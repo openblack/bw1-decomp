@@ -18,6 +18,8 @@ TYPES_TO_IGNORE = {
 
 TYPE_SUBSTITUTION_MAP = {
     "_Bool": "bool",
+    "struct FixedObject": "struct Fixed",
+    "FixedObject": "Fixed",
 }
 
 
@@ -73,7 +75,7 @@ class FunctionMetadata:
         split_decorated = self.decorated_name.split("(")[0].split(" ")[0].split("::")
         if len(split_decorated) <= 1:
             return False
-        decorated = "::".join(split_decorated[:-1])
+        decorated = "::".join(map(fixup_type, split_decorated[:-1]))
         this_candidate_demangled = demangle_type(this_candidate)
         if this_candidate_demangled in class_hierarchies.get(decorated, [decorated]):
             if this_candidate_demangled != decorated:
@@ -453,7 +455,7 @@ def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bo
         "GBigForestInfo": 0x1073865c,
         "GTotemStatueInfo": 0x109e33a8,
         "PileResource": 0x107481fc,
-        "FixedObject": 0x1073397c,
+        "Fixed": 0x1073397c,
         "ShowNeedsVisuals": 0x1075acf0,
         "PSysInterface": 0x107461ac,
         "TownCentre": 0x1077f15c,
@@ -758,7 +760,7 @@ def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bo
         "GBigForestInfo": 0x10738664,
         "GTotemStatueInfo": 0x109e33b0,
         "PileResource": 0x10748244,
-        "FixedObject": 0x107339a4,
+        "Fixed": 0x107339a4,
         "ShowNeedsVisuals": 0x1075acf8,
         "PSysInterface": 0x106f5fd8,
         "TownCentre": 0x106f6a44,

@@ -26,10 +26,11 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Heap asm("??
 
 // win1.41 00931cc8 mac 10730a34 Heap::`vftable'
 extern const struct HeapVftable __vt__4Heap asm("??_7Heap@@6B@");
+
 // Non-virtual methods
 
 // win1.41 007e1160 mac 1013a820 Heap::New(int)
-void* __thiscall New__4HeapFUl(struct Heap* this, const void* edx, int size) asm("?New@Heap@@QAEPAXH@Z");
+void* __fastcall New__4HeapFUl(struct Heap* this, const void* edx, int size) asm("?New@Heap@@QAEPAXH@Z");
 
 struct HeapWithPools
 {
@@ -40,7 +41,7 @@ static_assert(sizeof(struct HeapWithPools) == 0x4, "Data type is of wrong size")
 // Non-virtual methods
 
 // win1.41 007e20d0 mac 100404e0 HeapWithPools::New(int)
-void* __thiscall New__13HeapWithPoolsFUl(struct HeapWithPools* this, const void* edx, int size) asm("?New@HeapWithPools@@QAEPAXH@Z");
+void* __fastcall New__13HeapWithPoolsFUl(struct HeapWithPools* this, const void* edx, int size) asm("?New@HeapWithPools@@QAEPAXH@Z");
 
 struct UniqueKeyHeap
 {
@@ -51,6 +52,6 @@ static_assert(sizeof(struct UniqueKeyHeap) == 0x4, "Data type is of wrong size")
 // Non-virtual methods
 
 // win1.41 007e1830 mac 100405b0 UniqueKeyHeap::New(int)
-void* __thiscall New__13UniqueKeyHeapFUl(struct UniqueKeyHeap* this, const void* edx, int size) asm("?New@UniqueKeyHeap@@QAEPAXH@Z");
+void* __fastcall New__13UniqueKeyHeapFUl(struct UniqueKeyHeap* this, const void* edx, int size) asm("?New@UniqueKeyHeap@@QAEPAXH@Z");
 
 #endif /* BW1_DECOMP_HEAP_INCLUDED_H */

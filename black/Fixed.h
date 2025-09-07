@@ -13,7 +13,7 @@
 
 struct Base;
 struct Creature;
-struct FixedObject;
+struct Fixed;
 struct GInterfaceStatus;
 struct GObjectInfo;
 struct GameOSFile;
@@ -28,51 +28,52 @@ struct PhysicsObject;
 struct SingleMapFixed;
 struct Villager;
 
-struct FixedObjectVftable
+struct FixedVftable
 {
   struct ObjectVftable super;  /* 0x0 */
-  void (__fastcall* InsertMapObjectToCellAssumeFixed)(struct FixedObject* this, const void* edx, struct MapCell* cell);  /* 0x85c */
-  bool (__fastcall* IsObjectFullyInMap)(struct FixedObject* this);  /* 0x860 */
+  void (__fastcall* InsertMapObjectToCellAssumeFixed)(struct Fixed* this, const void* edx, struct MapCell* cell);  /* 0x85c */
+  bool (__fastcall* IsObjectFullyInMap)(struct Fixed* this);  /* 0x860 */
 };
-static_assert(sizeof(struct FixedObjectVftable) == 0x864, "Data type is of wrong size");
+static_assert(sizeof(struct FixedVftable) == 0x864, "Data type is of wrong size");
 
-union FixedObjectBase
+union FixedBase
 {
   struct Object super;
   struct ObjectVftable* object_vftable;
-  struct FixedObjectVftable* fixed_vftable;
+  struct FixedVftable* fixed_vftable;
   struct GameThingVftable* gameThing_vftable;
   struct GameThingWithPosVftable* gameThingWithPos_vftable;
 };
-static_assert(sizeof(union FixedObjectBase) == 0x54, "Data type is of wrong size");
+static_assert(sizeof(union FixedBase) == 0x54, "Data type is of wrong size");
 
-struct FixedObject
+struct Fixed
 {
-  union FixedObjectBase base;  /* 0x0 */
+  union FixedBase base;  /* 0x0 */
   struct GameThing* town_artifact;  /* 0x54 */
 };
-static_assert(sizeof(struct FixedObject) == 0x58, "Data type is of wrong size");
+static_assert(sizeof(struct Fixed) == 0x58, "Data type is of wrong size");
 
 // win1.41 008db718 mac 1073397c FixedObject::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11FixedObject asm("??_R4FixedObject@@6B@");
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11FixedObject asm("??_R4Fixed@@6B@");
 
 // win1.41 008db71c mac 107339a4 FixedObject::`vftable'
-extern const struct FixedObjectVftable __vt__11FixedObject asm("??_7FixedObject@@6B@");
+extern const struct FixedVftable __vt__11FixedObject asm("??_7Fixed@@6B@");
+
 // Constructors
 
 // win1.41 0052dd80 mac inlined FixedObject::FixedObject(void)
-struct FixedObject* __fastcall __ct__11FixedObjectFv(struct FixedObject* this);
+struct Fixed* __fastcall __ct__11FixedObjectFv(struct Fixed* this);
 // win1.41 0052ddc0 mac 100e1fb0 FixedObject::FixedObject(MapCoords const &, GObjectInfo const *, float, float)
-struct FixedObject* __fastcall __ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff(struct FixedObject* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info, float y_angle, float scale);
+struct Fixed* __fastcall __ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff(struct Fixed* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info, float y_angle, float scale);
 
 // Override methods
 
 // win1.41 0052dda0 mac 100e1f20 FixedObject::_dt(void)
-struct Base * __fastcall __dt__11FixedObjectFv(struct Base* this, const void* edx, uint8_t param_1) asm("??1Fixed@@UAE@XZ");
+struct Base* __fastcall __dt__11FixedObjectFv(struct Fixed* this, const void* edx, uint8_t param_1) asm("??1Fixed@@UAE@XZ");
 // win1.41 0052df20 mac 100e1bd0 FixedObject::GetTownArtifactValue(void)
 float __fastcall GetTownArtifactValue__11FixedObjectFv(struct GameThing* this) asm("?GetTownArtifactValue@Fixed@@UAEMXZ");
 // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)
-uint32_t __fastcall Load__11FixedObjectFR10GameOSFile(struct FixedObject* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
 uint32_t __fastcall Save__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Fixed@@UAEIPAVGameOSFile@@@Z");
 // win1.41 00425c60 mac 100ade90 FixedObject::CanBeFrighteningToCreature(Creature *)
@@ -110,24 +111,24 @@ bool32_t __fastcall VillagerMustAvoid__11FixedObjectFP8Villager(struct Object* t
 // win1.41 0052de50 mac 100e1df0 FixedObject::GetSpecialPos(unsigned long, MapCoords *)
 bool32_t __fastcall GetSpecialPos__11FixedObjectFUlP9MapCoords(struct Object* this, const void* edx, uint32_t index, struct MapCoords* pos) asm("?GetSpecialPos@Fixed@@UAE_NIPAUMapCoords@@@Z");
 // win1.41 00401470 mac 1057ad40 FixedObject::GetTownArtifact(void)
-struct GameThing * __fastcall GetTownArtifact__11FixedObjectFv(struct Object* this) asm("?GetTownArtifact@Fixed@@UAEPAVGameThing@@XZ");
+struct GameThing* __fastcall GetTownArtifact__11FixedObjectFv(struct Object* this) asm("?GetTownArtifact@Fixed@@UAEPAVGameThing@@XZ");
 // win1.41 00401480 mac 10588280 FixedObject::IsTownArtifact(void)
 bool32_t __fastcall IsTownArtifact__11FixedObjectFv(struct Object* this) asm("?IsTownArtifact@Fixed@@UAE_NXZ");
 // win1.41 0052dee0 mac 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
-void __fastcall InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell(struct FixedObject* this, const void* edx, struct MapCell* cell);
+void __fastcall InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell(struct Fixed* this, const void* edx, struct MapCell* cell);
 // win1.41 004252f0 mac 100a9cd0 FixedObject::IsObjectFullyInMap(void)
-bool __fastcall IsObjectFullyInMap__11FixedObjectFv(struct FixedObject* this);
+bool __fastcall IsObjectFullyInMap__11FixedObjectFv(struct Fixed* this);
 
 struct SingleMapFixedVftable
 {
-  struct FixedObjectVftable super;  /* 0x0 */
+  struct FixedVftable super;  /* 0x0 */
   void (__fastcall* CreateCollideData)(struct SingleMapFixed* this);  /* 0x864 */
 };
 static_assert(sizeof(struct SingleMapFixedVftable) == 0x868, "Data type is of wrong size");
 
 struct SingleMapFixed
 {
-  struct FixedObject super;  /* 0x0 */
+  struct Fixed super;  /* 0x0 */
   struct NewCollide* collide_data;  /* 0x58 */
 };
 static_assert(sizeof(struct SingleMapFixed) == 0x5c, "Data type is of wrong size");

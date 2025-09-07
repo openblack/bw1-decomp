@@ -1166,6 +1166,8 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\MagicWood.h"),
     BWPath(r"C:\Dev\black\CitadelEntrance.h"),
     BWPath(r"C:\Dev\black\PrayerSite.h"),
+    BWPath(r"C:\Dev\black\FuncT.h"),
+    BWPath(r"C:\Dev\libs\ifc\ImmDevice.h"),
 }
 
 ROOMMATE_CLASS_MAP = {
@@ -1512,7 +1514,6 @@ ROOMMATE_CLASS_MAP = {
     "HeapWithPools": "Heap",
     "HeapStore": "Heap",
     "CPDesireNodeInfo": "GPlayerInfo",
-    "SubOptionEntry": "INTERFACE_MESSAGE_TYPES",
     "BoolProperty": "Property",
     "SoundActionProperty": "Property",
     "StringProperty": "Property",
@@ -1585,15 +1586,15 @@ ROOMMATE_CLASS_MAP = {
     "UR_WillowWisp": "PSysProperties",
     "ZR_SurfRevol": "PSysProperties",
     "UR_PlasmaInf": "PSysProperties",
-    "SubOptionEntryButton": "TempleRoom",
-    "SubOptionEntryCheckBoxChecked": "TempleRoom",
-    "SubOptionEntryCheckBoxUnChecked": "TempleRoom",
-    "SubOptionEntryFrame": "TempleRoom",
-    "SubOptionEntryListBox": "TempleRoom",
-    "SubOptionEntryPicture": "TempleRoom",
-    "SubOptionEntryScroll": "TempleRoom",
-    "SubOptionEntrySlider": "TempleRoom",
-    "SubOptionEntryText": "TempleRoom",
+    "SubOptionEntryButton": "SubOptionEntry",
+    "SubOptionEntryCheckBoxChecked": "SubOptionEntry",
+    "SubOptionEntryCheckBoxUnChecked": "SubOptionEntry",
+    "SubOptionEntryFrame": "SubOptionEntry",
+    "SubOptionEntryListBox": "SubOptionEntry",
+    "SubOptionEntryPicture": "SubOptionEntry",
+    "SubOptionEntryScroll": "SubOptionEntry",
+    "SubOptionEntrySlider": "SubOptionEntry",
+    "SubOptionEntryText": "SubOptionEntry",
     "SubArgumentInteger": "CreatureScript",
     "SubArgumentObjectAndInteger": "CreatureScript",
     "SubArgumentPoint": "CreatureScript",
@@ -1638,6 +1639,7 @@ ROOMMATE_CLASS_MAP = {
     "GJAnimVolFX": "PSysModifiers",
     "GSpeedThreshold": "MobileObject",
     "MissionaryControl": "Villager",
+    "CImmDevice": "ImmDevice",
 }
 
 
