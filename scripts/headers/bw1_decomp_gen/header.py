@@ -53,6 +53,7 @@ C_STDLIB_HEADER_IMPORT_MAP = {
     "IDirect3DDevice7": "d3d.h",
     "D3DMATRIX": "d3dtypes.h",
     "D3DTLVERTEX": "d3dtypes.h",
+    "GUID": "guiddef.h",
 }
 
 
