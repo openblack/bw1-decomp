@@ -452,6 +452,7 @@
 #include "libs/lionhead/lhfile/ver3.0/LHSegment.h"
 #include "libs/lionhead/lhlib/ver5.0/GJVector.h"
 #include "libs/lionhead/lhlib/ver5.0/LHJoypad.h"
+#include "libs/lionhead/lhlib/ver5.0/LHKey.h"
 #include "libs/lionhead/lhlib/ver5.0/LHLinkedList.h"
 #include "libs/lionhead/lhlib/ver5.0/LHListHead.h"
 #include "libs/lionhead/lhlib/ver5.0/LHMouse.h"
