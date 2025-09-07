@@ -2,7 +2,12 @@
 #define BW1_DECOMP_LH_SURFACE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpragma-pack"
+#pragma clang diagnostic ignored "-Wmacro-redefined"
+#pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <ddraw.h> /* For IDirectDrawSurface7 */
+#pragma clang diagnostic pop
 #include <stdint.h> /* For uint16_t, uint32_t */
 
 // Forward Declares

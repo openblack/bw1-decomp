@@ -57,6 +57,20 @@ C_STDLIB_HEADER_IMPORT_MAP = {
 }
 
 
+HEADER_DIAGNOSTIC_IGNORE = {
+    "<d3dtypes.h>": [
+        "-Wpragma-pack",
+        "-Wmacro-redefined",
+        "-Wmissing-declarations",
+    ],
+    "<ddraw.h>": [
+        "-Wpragma-pack",
+        "-Wmacro-redefined",
+        "-Wmissing-declarations",
+    ],
+}
+
+
 def strip_arrays_and_modifiers(c_type):
     c_type = re.sub(r'\[\d*\]', '', c_type)
     c_type = re.sub(r'[()]', '', c_type)
@@ -239,7 +253,14 @@ class Header:
             if not c:
                 continue
             for i in c:
+                diagnostic_ignores = HEADER_DIAGNOSTIC_IGNORE.get(i.formatted_path, [])
+                if diagnostic_ignores:
+                    cw.add_line("#pragma clang diagnostic push")
+                    for ignore in diagnostic_ignores:
+                        cw.add_line(f'#pragma clang diagnostic ignored "{ignore}"')
                 cw.include(i.formatted_path, ("For " + ", ".join(sorted(i.dependencies)) if i.dependencies else None))
+                if diagnostic_ignores:
+                    cw.add_line("#pragma clang diagnostic pop")
             cw.add_line()
 
     def to_code_forward_declares(self, cw: csnake.CodeWriter):
