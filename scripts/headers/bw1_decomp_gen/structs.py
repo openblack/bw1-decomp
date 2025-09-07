@@ -367,11 +367,22 @@ class RTTIClass(Struct):
             return x[::-1].split("__", maxsplit=1)[-1][::-1]
 
         def match_overrides(struct_type) -> bool:
-            method_args = virtual_table_function_arg_map.get(get_method_name(struct_type.name))
-            if method_args is None:
-                return False
-            method_args = [x if type(x) is str else x.get_type_only() for x in method_args]
-            return struct_type.args[1:] == method_args[1:]
+            def match(name):
+                method_args = virtual_table_function_arg_map.get(name)
+                if method_args is None:
+                    return None
+                method_args = [x if type(x) is str else x.get_type_only() for x in method_args]
+                if not method_args:
+                    return None
+                if struct_type.args[1:] != method_args[1:]:
+                    return None
+                return name
+            return (
+                match(get_method_name(struct_type.name)) or
+                match(get_method_name(struct_type.name) + "_0") or
+                match(get_method_name(struct_type.name) + "_1") or
+                match(get_method_name(struct_type.name) + "_2")
+            )
 
         (
             self.constructors,
@@ -400,9 +411,9 @@ class RTTIClass(Struct):
         virtual_table_function_names = list(virtual_table_function_arg_map.keys())
         # Set the `this` param to that of the vftable of the superclass so assignment can be done
         for o in self.method_overrides:
-            method_args = virtual_table_function_arg_map.get(get_method_name(o.name))
+            method_args = virtual_table_function_arg_map.get(match_overrides(o))
             o.args[0] = method_args[0]
-        self.method_overrides.sort(key=lambda x: virtual_table_function_names.index(get_method_name(x.name)))
+        self.method_overrides.sort(key=lambda x: virtual_table_function_names.index(match_overrides(x)))
         self.methods.sort()
         self.static_methods.sort()
         self.global_var_methods.sort()
