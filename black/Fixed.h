@@ -66,10 +66,13 @@ struct Fixed* __fastcall __ct__11FixedObjectFv(struct Fixed* this);
 // win1.41 0052ddc0 mac 100e1fb0 FixedObject::FixedObject(MapCoords const &, GObjectInfo const *, float, float)
 struct Fixed* __fastcall __ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff(struct Fixed* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info, float y_angle, float scale);
 
-// Override methods
+// Non-virtual Destructors
 
 // win1.41 0052dda0 mac 100e1f20 FixedObject::_dt(void)
 struct Base* __fastcall __dt__11FixedObjectFv(struct Fixed* this, const void* edx, uint8_t param_1) asm("??1Fixed@@UAE@XZ");
+
+// Override methods
+
 // win1.41 0052df20 mac 100e1bd0 FixedObject::GetTownArtifactValue(void)
 float __fastcall GetTownArtifactValue__11FixedObjectFv(struct GameThing* this) asm("?GetTownArtifactValue@Fixed@@UAEMXZ");
 // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)

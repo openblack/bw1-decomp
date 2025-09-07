@@ -153,6 +153,11 @@ struct MultiMapFixed* __fastcall __ct__13MultiMapFixedFv(struct MultiMapFixed* t
 // win1.41 0052e1e0 mac 100e1460 MultiMapFixed::MultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float, float, int)
 struct MultiMapFixed* __fastcall __ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi(struct MultiMapFixed* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, float y_angle, float scale, float param_5, int param_6);
 
+// Non-virtual Destructors
+
+// win1.41 0052e1c0 mac 100e13a0 MultiMapFixed::_dt(void)
+struct Base* __fastcall __dt__13MultiMapFixedFv(struct MultiMapFixed* this, const void* edx, uint8_t param_1) asm("??_DMultiMapFixed@@QAEXXZ");
+
 // Non-virtual methods
 
 // win1.41 0052dc10 mac inlined MultiMapFixed::SortChildren(void)
@@ -166,8 +171,6 @@ void __fastcall ReleaseCollideData__13MultiMapFixedFv(struct MultiMapFixed* this
 
 // Override methods
 
-// win1.41 0052e1c0 mac 100e13a0 MultiMapFixed::_dt(void)
-struct Base * __fastcall __dt__13MultiMapFixedFv(struct Base* this, const void* edx, uint8_t param_1) asm("??_DMultiMapFixed@@QAEXXZ");
 // win1.41 0052e2b0 mac 100e1160 MultiMapFixed::ToBeDeleted(int)
 void __fastcall ToBeDeleted__13MultiMapFixedFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@MultiMapFixed@@UAEXH@Z");
 // win1.41 004220a0 mac 100a5880 MultiMapFixed::GetTown(void)

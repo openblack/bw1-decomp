@@ -319,6 +319,11 @@ struct GameThingWithPos* __fastcall __ct__16GameThingWithPosFv(struct GameThingW
 // win1.41 0055d050 mac inlined GameThingWithPos::GameThingWithPos(MapCoords const &)
 struct GameThingWithPos* __fastcall __ct__16GameThingWithPosFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* coords);
 
+// Non-virtual Destructors
+
+// win1.41 00424800 mac 1015a100 GameThingWithPos::~GameThingWithPos(void)
+void __fastcall __dt__16GameThingWithPosFv(struct GameThingWithPos* this, const void* edx, uint8_t param_1) asm("??1GameThingWithPos@@UAE@XZ");
+
 // Non-virtual methods
 
 // win1.41 005705d0 mac 10098a30 GameThingWithPos::SetToZero(void)
@@ -326,8 +331,6 @@ void __fastcall SetToZero__16GameThingWithPosFv(struct GameThingWithPos* this);
 
 // Override methods
 
-// win1.41 00424800 mac 1015a100 GameThingWithPos::~GameThingWithPos(void)
-void __fastcall __dt__16GameThingWithPosFv(struct Base* this, const void* edx, uint8_t param_1) asm ("??1GameThingWithPos@@UAE@XZ");
 // win1.41 0056fe00 mac 100bc3e0 GameThingWithPos::ToBeDeleted(int)
 void __fastcall ToBeDeleted__16GameThingWithPosFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GameThingWithPos@@UAEXH@Z");
 // win1.41 0056fe20 mac 106fd140 GameThingWithPos::Get3DSoundPos(LHPoint*)

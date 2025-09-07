@@ -99,6 +99,7 @@ class Composite:
 
 class Struct(Composite):
     constructors: list[DefinedFunctionPrototype] = []
+    destructors: list[DefinedFunctionPrototype] = []
     methods: list[DefinedFunctionPrototype] = []
     static_methods: list[DefinedFunctionPrototype] = []
     print_offset_at_each: typing.Optional[int] = 0x10
@@ -109,7 +110,7 @@ class Struct(Composite):
 
     @property
     def all_methods(self) -> list[DefinedFunctionPrototype]:
-        return self.constructors + self.methods + self.static_methods
+        return self.constructors + self.destructors + self.methods + self.static_methods
 
     @classmethod
     def from_json(cls, decl: dict) -> "Struct":
@@ -158,11 +159,20 @@ class Struct(Composite):
             for f in self.static_methods:
                 f.to_code(cw)
             cw.add_line()
+
         if self.constructors:
             cw.add_line('// Constructors')
             cw.add_line()
 
             for f in self.constructors:
+                f.to_code(cw)
+            cw.add_line()
+
+        if self.destructors:
+            cw.add_line('// Non-virtual Destructors')
+            cw.add_line()
+
+            for f in self.destructors:
                 f.to_code(cw)
             cw.add_line()
 
@@ -357,10 +367,12 @@ class RTTIClass(Struct):
         (
             self.constructors,
             self.method_overrides,
+            self.destructors,
             self.methods,
         ) = partition([
             lambda x: x.name.startswith('__ct__'),
-            match_overrides
+            match_overrides,
+            lambda x: x.name.startswith('__dt__'),
         ], method_map.get(self.name, list()))
 
         self.static_methods = static_method_map.get(self.name, list())
@@ -379,7 +391,7 @@ class RTTIClass(Struct):
         basename = TYPE_SUBSTITUTION_MAP.get(self.name, self.name)
         if self.locator_win_address:
             win_addr = f"{self.locator_win_address:08x}" if self.locator_win_address >= 0 else "inlined"
-            mac_addr = f"{self.locator_mac_address:08x}" if self.locator_mac_address >= 0 else "inlined"    
+            mac_addr = f"{self.locator_mac_address:08x}" if self.locator_mac_address >= 0 else "inlined"
             cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.locator_decorated_name}")
             cw.add_variable_declaration(CSnakeVariable(f"__RTTICompleObjectLocator__{len(basename)}{basename}", self.locator_type_name, mangled_name=self.locator_msvc_mangled_name), extern=True)
             cw.add_line()

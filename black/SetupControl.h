@@ -65,6 +65,11 @@ extern const struct SetupControlVftable __vt__12SetupControl asm("??_7SetupContr
 // win1.41 00409250 mac 101668d0 SetupControl::SetupControl(int, int, int, int, int, wchar_t *)
 struct SetupControl* __fastcall __ct__12SetupControlFiiiiiPw(struct SetupControl* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label);
 
+// Non-virtual Destructors
+
+// win1.41 004093c0 mac inlined SetupControl::~SetupControl(void)
+void __fastcall __dt__12SetupControlFv(struct SetupControl* this);
+
 // Non-virtual methods
 
 // win1.41 inlined mac inlined SetupControl::GetTextSize(void)
@@ -73,8 +78,6 @@ int __fastcall GetTextSize__12SetupControlFv(const struct SetupControl* this);
 void __fastcall SetToolTip__12SetupControlFUl(struct SetupControl* this, const void* edx, uint32_t tooltip_id);
 // win1.41 004092f0 mac 100c4fd0 SetupControl::SetToolTip(wchar_t *)
 void __fastcall SetToolTip__12SetupControlFPw(struct SetupControl* this, const void* edx, const char16_t* tooltip);
-// win1.41 004093c0 mac inlined SetupControl::~SetupControl(void)
-void __fastcall __dt__12SetupControlFv(struct SetupControl* this);
 
 // Override methods
 
