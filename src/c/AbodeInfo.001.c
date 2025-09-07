@@ -1,13 +1,13 @@
 #include "AbodeInfo.h"
 
-void __cdecl __CRTInit_GAbodeInfoArray(void)
+void __cdecl crt_global_initialize_for_AbodeInfos__10GAbodeInfoFv(void)
 {
-  dynamic_initializer_for_AbodeInfos();
-  _register_global_dtor_for_AbodeInfos();
+  dynamic_initializer_for_AbodeInfos__10GAbodeInfoFv();
+  crt_global_destruction_register_for_AbodeInfos__10GAbodeInfoFv();
 }
 
 __attribute__((noinline))
-void __cdecl dynamic_initializer_for_AbodeInfos(void)
+void __cdecl dynamic_initializer_for_AbodeInfos__10GAbodeInfoFv(void)
 {
     asm("mov eax, OFFSET _AbodeInfos");                         // 0x00401180    b890c6c300
     asm("mov              ecx, 0x00000093");                    // 0x00401185    b993000000

@@ -102,6 +102,7 @@ class Struct(Composite):
     destructors: list[DefinedFunctionPrototype] = []
     methods: list[DefinedFunctionPrototype] = []
     static_methods: list[DefinedFunctionPrototype] = []
+    global_var_methods: list[DefinedFunctionPrototype] = []
     print_offset_at_each: typing.Optional[int] = 0x10
 
     @property
@@ -110,7 +111,7 @@ class Struct(Composite):
 
     @property
     def all_methods(self) -> list[DefinedFunctionPrototype]:
-        return self.constructors + self.destructors + self.methods + self.static_methods
+        return self.constructors + self.destructors + self.methods + self.static_methods + self.global_var_methods
 
     @classmethod
     def from_json(cls, decl: dict) -> "Struct":
@@ -173,6 +174,14 @@ class Struct(Composite):
             cw.add_line()
 
             for f in self.destructors:
+                f.to_code(cw)
+            cw.add_line()
+
+        if self.global_var_methods:
+            cw.add_line('// Global Static variable lifetime methods')
+            cw.add_line()
+
+            for f in self.global_var_methods:
                 f.to_code(cw)
             cw.add_line()
 
@@ -375,7 +384,18 @@ class RTTIClass(Struct):
             lambda x: x.name.startswith('__dt__'),
         ], method_map.get(self.name, list()))
 
-        self.static_methods = static_method_map.get(self.name, list())
+        (
+            self.global_var_methods,
+            self.static_methods,
+        ) = partition([
+            lambda x: (
+                x.name.startswith('crt_global_initialize_for_') or
+                x.name.startswith('dynamic_initializer_for_') or
+                x.name.startswith('crt_global_destruction_register_for_') or
+                x.name.startswith('dynamic_atexit_destructor_for_')
+            ),
+        ], static_method_map.get(self.name, list()))
+
         self.constructors.sort()
         virtual_table_function_names = list(virtual_table_function_arg_map.keys())
         # Set the `this` param to that of the vftable of the superclass so assignment can be done
@@ -385,6 +405,7 @@ class RTTIClass(Struct):
         self.method_overrides.sort(key=lambda x: virtual_table_function_names.index(get_method_name(x.name)))
         self.methods.sort()
         self.static_methods.sort()
+        self.global_var_methods.sort()
 
     def to_code_data(self, cw: csnake.CodeWriter):
         super().to_code_data(cw)
