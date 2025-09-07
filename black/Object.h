@@ -159,7 +159,7 @@ struct ObjectVftable
   float (__fastcall* GetFoodValue)(struct Object* this, const void* edx, enum FOOD_TYPE type);  /* 0x660 */
   float (__fastcall* GetWoodValue)(struct Object* this);
   enum FOOD_TYPE (__fastcall* GetFoodType)(struct Object* this);
-  float (__fastcall* GetImpressiveValue)(struct Object* this);
+  float (__fastcall* GetImpressiveValue_1)(struct Object* this);
   bool (__fastcall* IsSpellSeedReturnPoint)(const struct Object* this);  /* 0x670 */
   bool (__fastcall* IsABeliever)(struct Object* this);
   struct MultiMapFixed* (__fastcall* AsMultiMapFixed)(struct Object* this);
@@ -181,7 +181,7 @@ struct ObjectVftable
   bool (__fastcall* IsTouching_3)(const struct Object* this, const void* edx, struct Object* param_1, float param_2);
   void (__fastcall* StartOnFire)(struct Object* this);
   void (__fastcall* EndOnFire)(struct Object* this);  /* 0x6c0 */
-  float (__fastcall* GetDistanceFromObject)(struct Object* this, const void* edx, struct Object* param_1);
+  float (__fastcall* GetDistanceFromObject_1)(struct Object* this, const void* edx, struct Object* param_1);
   float (__fastcall* GetTribalPower)(struct Object* this, const void* edx, enum TRIBE_TYPE param_1);
   bool (__fastcall* ValidForLockedSelectProcess)(struct Object* this, const void* edx, struct GInterfaceStatus* status);
   bool (__fastcall* NetworkFriendlyStartLockedSelect)(struct Object* this, const void* edx, struct GInterfaceStatus* status);  /* 0x6d0 */
@@ -335,13 +335,15 @@ void __fastcall __dt__6ObjectFv(struct Object* this, const void* edx, uint8_t pa
 
 // Non-virtual methods
 
+// win1.41 00637e00 mac 103d5f70 Object::IsTouching(Object *, float)
+bool __fastcall IsTouching__6ObjectFP6Objectf(const struct Object* this, const void* edx, struct Object* param_1, float param_2) asm("?IsTouching@Object@@UAE_NPAV1@M@Z");
 // win1.41 00638560 mac 1005ba80 Object::GetMapChild(MapCoords const &)
 struct Object* __fastcall GetMapChild__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coord);
 
 // Override methods
 
 // win1.41 006366a0 mac 103d8e50 Object::Delete(void)
-void __fastcall Delete__6ObjectFv(struct Base* this, const void* edx, int param_1) asm("?Delete@Object@@UAEXH@Z");
+void __fastcall Delete__6ObjectFv(struct Base* this) asm("?Delete@Object@@UAEXH@Z");
 // win1.41 00636670 mac 103d8eb0 Object::ToBeDeleted(int)
 void __fastcall ToBeDeleted__6ObjectFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Object@@UAEXH@Z");
 // win1.41 00639b70 mac 103d2180 Object::GetDrawImportance(void)
@@ -668,8 +670,6 @@ bool __fastcall IsAllied__6ObjectFP6Object(struct Object* this, const void* edx,
 bool __fastcall IsTouching__6ObjectFRC9MapCoordsRC9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1, struct MapCoords* param_2) asm("?IsTouching@Object@@UAE_NPAUMapCoords@@0@Z");
 // win1.41 00637e30 mac 103d5ef0 Object::IsTouching(MapCoords const &)
 bool __fastcall IsTouching__6ObjectFRC9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1) asm("?IsTouching@Object@@UAE_NPAUMapCoords@@@Z");
-// win1.41 00637e00 mac 103d5f70 Object::IsTouching(Object *, float)
-bool __fastcall IsTouching__6ObjectFP6Objectf(const struct Object* this, const void* edx, struct Object* param_1, float param_2) asm("?IsTouching@Object@@UAE_NPAV1@M@Z");
 // win1.41 00419300 mac 100a9e50 Object::StartOnFire(void)
 void __fastcall StartOnFire__6ObjectFv(struct Object* this) asm("?StartOnFire@Object@@UAEXXZ");
 // win1.41 004027b0 mac 100a8170 Object::EndOnFire(void)

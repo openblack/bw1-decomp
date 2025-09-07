@@ -167,8 +167,8 @@ struct GameThingVftable
   float (__fastcall* CalculateInfluence)(struct GameThing* this, const void* edx, const struct MapCoords* param_1);
   void (__fastcall* RemoveDance)(struct GameThing* this);
   bool (__fastcall* IsAvailable)(struct GameThing* this);
-  bool (__fastcall* IsCreature)(struct GameThing* this, const void* edx, struct Creature* param_1);  /* 0x30 */
-  bool (__fastcall* IsCreature2)(struct GameThing* this);
+  bool (__fastcall* IsCreature_0)(struct GameThing* this, const void* edx, struct Creature* param_1);  /* 0x30 */
+  bool (__fastcall* IsCreature_1)(struct GameThing* this);
   bool (__fastcall* IsCreatureNotTooNear)(struct GameThing* this, const void* edx, struct Creature* param_1);
   float (__fastcall* GetDrawImportance)(struct GameThing* this);
   float (__fastcall* GetMaxAlignmentChangePerGameTurn)(struct GameThing* this);  /* 0x40 */

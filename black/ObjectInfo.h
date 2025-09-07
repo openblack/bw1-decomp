@@ -17,8 +17,8 @@ struct GObjectInfo;
 struct GObjectInfoVftable
 {
   struct GBaseInfoVftable super;  /* 0x0 */
-  uint32_t (__fastcall* GetMesh)(const struct GObjectInfo* this);  /* 0x2c */
-  uint32_t (__fastcall* GetMesh__TRIBE_TYPE)(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe);  /* 0x30 */
+  uint32_t (__fastcall* GetMesh_0)(const struct GObjectInfo* this);  /* 0x2c */
+  uint32_t (__fastcall* GetMesh_1)(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe);  /* 0x30 */
   enum ALIGNMENT_TYPE (__fastcall* GetAlignmentType)(const struct GObjectInfo* this);
   enum FOOD_TYPE (__fastcall* GetFoodType)(const struct GObjectInfo* this);
 };
