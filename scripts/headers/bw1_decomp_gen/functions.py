@@ -16,6 +16,12 @@ CALL_TYPE_SUBSTITUTIONS = {
 def clean_up_type(typename):
     if type(typename) is csnake.FuncPtr:
         return typename
+
+    if "(*)(" in typename:
+        pattern = r'^(.+?)\s*\(\*\)\s*(.+?)\s*__attribute__\s*\(\(\s*(cdecl|fastcall|thiscall|stdcall)\s*\)\)(.*)$'
+        replacement = r'\1 (__\3*) \2\4'
+        typename = re.sub(pattern, replacement, typename)
+
     type_part, pointer_part, after_pointer_part = typename.partition("*")
     type_part = type_part.rstrip()
     type_part = TYPE_SUBSTITUTION_MAP.get(type_part, type_part)
