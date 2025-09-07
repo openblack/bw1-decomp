@@ -58,9 +58,9 @@ struct PlannedAbode* __fastcall __ct__12PlannedAbodeFP5Abode(struct PlannedAbode
 
 // win1.41 004055a0 mac 103e5560 PlannedAbode::Init(Town *)
 void __fastcall Init__12PlannedAbodeFP4Town(struct PlannedAbode* this, const void* edx, struct Town* town) asm("?Init@PlannedAbode@@QAEXPAVTown@@@Z");
-// win1.41 004056f0 mac inline PlannedAbode::FUN_004056f0(int)
+// win1.41 004056f0 mac inlined PlannedAbode::FUN_004056f0(int)
 bool32_t __fastcall FUN_004056f0__12PlannedAbodeFP4Town(struct PlannedAbode* this, const void* edx, int param_1) asm("?FUN_004056f0@PlannedAbode@@QAE_NH@Z");
-// win1.41 004057f0 mac inline PlannedAbode::IsOkToBuild(void)
+// win1.41 004057f0 mac inlined PlannedAbode::IsOkToBuild(void)
 bool32_t __fastcall IsOkToBuild__12PlannedAbodeFv(struct PlannedAbode* this) asm("?IsOkToBuild@PlannedAbode@@UAE_NXZ");
 
 // Override methods

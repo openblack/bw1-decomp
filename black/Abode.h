@@ -140,15 +140,15 @@ void __fastcall RemoveDeletedVillagerFromAbode__5AbodeFP8Villager(struct Abode* 
 void __fastcall RemoveAliveVillagerFromAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z");
 // win1.41 00404560 mac 10547ee0 Abode::RemoveAllVillagersFromAbode(void)
 void __fastcall RemoveAllVillagersFromAbode__5AbodeFv(struct Abode* this) asm("?RemoveAllVillagersFromAbode@Abode@@QAEXXZ");
-// win1.41 00404580 mac inline Abode::NumVillagersOfSex(SEX_TYPE)
+// win1.41 00404580 mac inlined Abode::NumVillagersOfSex(SEX_TYPE)
 int __fastcall NumVillagersOfSex__5AbodeFv(struct Abode* this) asm("?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z");
 // win1.41 004045d0 mac 103d89d0 Abode::CalculateFoodNeededForDinner(void)
 int __fastcall CalculateFoodNeededForDinner__5AbodeFv(struct Abode* this) asm("?CalculateFoodNeededForDinner@Abode@@QAEHXZ");
-// win1.41 00404630 mac inline Abode::NumVillagersOfSex(SEX_TYPE)
+// win1.41 00404630 mac inlined Abode::GetOtherParent(Villager *)
 struct Villager* __fastcall GetOtherParent__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?GetOtherParent@Abode@@QAEPAVVillager@@PAV2@@Z");
-// win1.41 004046a0 mac inline Abode::FUN_004046a0(void)
+// win1.41 004046a0 mac inlined Abode::FUN_004046a0(void)
 void __fastcall FUN_004046a0__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?FUN_004046a0@Abode@@QAEXH@Z");
-// win1.41 004046b0 mac inline Abode::FUN_004046a0(void)
+// win1.41 004046b0 mac inlined Abode::FUN_004046b0(void)
 int __fastcall FUN_004046b0__5AbodeFv(struct Abode* this) asm("?FUN_004046b0@Abode@@QAEHXZ");
 // win1.41 00404600 mac 1032c5d0 Abode::IsEnoughFoodForDinner(void)
 bool __fastcall IsEnoughFoodForDinner__5AbodeFv(struct Abode* this) asm("?IsEnoughFoodForDinner@Abode@@QAE_NXZ");
@@ -173,7 +173,7 @@ struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const
 
 // win1.41 004017c0 mac 103d4980 Abode::_dt(unsigned int)
 void __fastcall __dt__5AbodeFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAbode@@UAEPAXI@Z");
-// win1.41 00402b60 mac inline Abode::_dt(void)
+// win1.41 00402b60 mac inlined Abode::_dt(void)
 void __fastcall __dt__5AbodeFv(struct Base* this) asm("??1Abode@@UAE@XZ");
 // win1.41 00402c10 mac 1033b510 Abode::Delete(void)
 void __fastcall Delete__5AbodeFv(struct Base* this) asm("?Delete@Abode@@UAEXXZ");

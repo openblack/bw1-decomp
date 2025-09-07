@@ -66,7 +66,7 @@ char* __fastcall GetDebugText__20PlannedMultiMapFixedFv(struct GameThing* this) 
 uint32_t __fastcall Load__20PlannedMultiMapFixedFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z");
 // win1.41 00648990 mac 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
 uint32_t __fastcall Save__20PlannedMultiMapFixedFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z");
-// win1.41 0055cbd0 mac inline PlannedMultiMapFixed::GetSaveType(void)
+// win1.41 0055cbd0 mac inlined PlannedMultiMapFixed::GetSaveType(void)
 uint32_t __fastcall GetSaveType__20PlannedMultiMapFixedFv(struct GameThing* this) asm("?GetSaveType@PlannedMultiMapFixed@@UAEIXZ");
 // win1.41 004050c0 mac 103e0c80 PlannedMultiMapFixed::GetScale(void)
 float __fastcall GetScale__20PlannedMultiMapFixedFv(struct GameThingWithPos* this) asm("?GetScale@PlannedMultiMapFixed@@UBEMXZ");
@@ -76,7 +76,7 @@ void __fastcall SetScale__20PlannedMultiMapFixedFf(struct GameThingWithPos* this
 const char* __fastcall GetText__20PlannedMultiMapFixedFv(struct GameThingWithPos* this) asm("?GetText@PlannedMultiMapFixed@@UAEPBDXZ");
 // win1.41 00465560 mac 100d17b0 PlannedMultiMapFixed::IsWonder(void)
 bool __fastcall IsWonder__20PlannedMultiMapFixedFv(struct GameThingWithPos* this) asm("?IsWonder@PlannedMultiMapFixed@@UAE_NXZ");
-// win1.41 00648950 mac inline PlannedMultiMapFixed::CreateBuildingSite(void)
+// win1.41 00648950 mac inlined PlannedMultiMapFixed::CreateBuildingSite(void)
 bool32_t __fastcall CreateBuildingSite__20PlannedMultiMapFixedFv(struct GameThingWithPos* this) asm("?CreateBuildingSite@PlannedMultiMapFixed@@UBE_NXZ");
 // win1.41 00469660 mac 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
 struct MultiMapFixed* __fastcall CreatePlanned__20PlannedMultiMapFixedFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlanned@PlannedMultiMapFixed@@QAEPAVMultiMapFixed@@M@Z");
