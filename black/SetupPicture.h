@@ -6,13 +6,12 @@
 
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/Zoomer.h> /* For struct Zoomer */
+#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 
 #include "SetupButton.h" /* For struct SetupButton */
 
 // Forward Declares
 
-enum LHKey;
-enum LHKeyMod;
 struct LH3DMaterial;
 struct SetupControl;
 

@@ -140,6 +140,7 @@ def build_enum_headers(header_enums, header_map, local_header_import_map):
         header = Header(path, [], structs)
         header_map[path] = header
         local_header_import_map.update({v: path for v, _ in e.values})
+        local_header_import_map[e.decorated_name] = path
 
 
 def get_lowest_vftable(struct: Struct, vftable_map, helper_base_map):
