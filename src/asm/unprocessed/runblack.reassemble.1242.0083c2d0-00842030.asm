@@ -50,7 +50,6 @@
 .extern _jmp_addr_0x0086c2d0
 .extern _jmp_addr_0x0086cff0
 .extern @GetNormSq__7Point2DFv2@4
-.extern ___destroy_new_array
 .extern ??_L@YGXPAXIHP6EX0@Z1@Z
 
 .globl _jmp_addr_0x0083c2d0

@@ -1168,6 +1168,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\PrayerSite.h"),
     BWPath(r"C:\Dev\black\FuncT.h"),
     BWPath(r"C:\Dev\libs\ifc\ImmDevice.h"),
+    BWPath(r"C:\dev\black\_libcmt_helper.h"), # C-accessible c++ functions
 }
 
 ROOMMATE_CLASS_MAP = {
@@ -1453,11 +1454,11 @@ ROOMMATE_CLASS_MAP = {
     "WinMain": "PCMain",
     "ScanParameters__Fv": "PCMain",
     "IsACmdLineString__FPcPCc": "PCMain",
-    "operator_new": "PCMain",
-    "__nw__FUl": "PCMain",
-    "__dl__FPv": "PCMain",
-    "__construct_new_array": "PCMain",
-    "__destroy_new_array": "PCMain",
+    "operator_new": "_libcmt_helper",
+    "__nw__FUl": "_libcmt_helper",
+    "__dl__FPv": "_libcmt_helper",
+    "__construct_new_array": "_libcmt_helper",
+    "__destroy_new_array": "_libcmt_helper",
     "CHAR2WCHAR__FPc": "Utils",
     "FUN_0074f620": "Utils",
     "InfluenceRing": "Influence", # Validated with a __nw__4BaseFUl(..., __FILE__, ...) in Create__13InfluenceRingFRC9MapCoordsP7GPlayerfi

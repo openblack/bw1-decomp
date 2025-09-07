@@ -82,7 +82,6 @@
 .extern _jmp_addr_0x00874440
 .extern _jmp_addr_0x00880770
 .extern _jmp_addr_0x00881de0
-.extern ___destroy_new_array
 .extern ??_L@YGXPAXIHP6EX0@Z1@Z
 
 .globl _jmp_addr_0x00842b40
