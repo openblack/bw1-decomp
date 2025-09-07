@@ -2,8 +2,8 @@
 #define BW1_DECOMP_IMM_DEVICE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <guiddef.h> /* For GUID */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint32_t */
 
 // Forward Declares
