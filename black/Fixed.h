@@ -141,7 +141,7 @@ extern const struct SingleMapFixedVftable __vt__14SingleMapFixed asm("??_7Single
 // Override methods
 
 // win1.41 0052eb30 mac 10095a30 SingleMapFixed::GetCollideData(void)
-struct NewCollide* __fastcall GetCollideData__14SingleMapFixedFv(struct SingleMapFixed* this);
+struct NewCollide* __fastcall GetCollideData__14SingleMapFixedFv(const struct Object* this);
 // win1.41 0052f510 mac 100dde20 SingleMapFixed::CreateCollideData(void)
 void __fastcall CreateCollideData__14SingleMapFixedFv(struct SingleMapFixed* this);
 
