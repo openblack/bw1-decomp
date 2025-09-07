@@ -306,7 +306,11 @@ struct GameThingWithPos
 };
 static_assert(sizeof(struct GameThingWithPos) == 0x28, "Data type is of wrong size");
 
-static struct GameThingWithPosVftable* const __vt__16GameThingWithPos = (struct GameThingWithPosVftable* const)0x008c31a0;
+// win1.41 008c319c mac 107313b0 GameThingWithPos::`RTTI Complete Object Locator'
+extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GameThingWithPos asm("??_R4GameThingWithPos@@6B@");
+
+// win1.41 008c31a0 mac 107313c8 GameThingWithPos::`vftable'
+extern const struct GameThingWithPosVftable __vt__16GameThingWithPos asm("??_7GameThingWithPos@@6B@");
 
 // Constructors
 
@@ -327,11 +331,11 @@ void __fastcall __dt__16GameThingWithPosFv(struct Base* this, const void* edx, u
 // win1.41 0056fe00 mac 100bc3e0 GameThingWithPos::ToBeDeleted(int)
 void __fastcall ToBeDeleted__16GameThingWithPosFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GameThingWithPos@@UAEXH@Z");
 // win1.41 0056fe20 mac 106fd140 GameThingWithPos::Get3DSoundPos(LHPoint*)
-int __fastcall Get3DSoundPos__16GameThingWithPosFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1) asm ("?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z");
-// win1.41 004178f0 mac 101bb350 GameThingWithPos::GetDebugText(void)
-char* __fastcall GetDebugText__16GameThingWithPosFv(struct GameThing* this) asm("?GetDebugText@GameThingWithPos@@QAEPADXZ");
+int __fastcall Get3DSoundPos__16GameThingWithPosFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1) asm("?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z");
 // win1.41 00570350 mac 10005560 GameThingWithPos::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
 void __fastcall UseFootpathIfNecessary__16GameThingWithPosFP6LivingRC9MapCoordsUc(struct GameThing* this, const void* edx, struct Living* param_1, const struct MapCoords* param_2, unsigned char param_3) asm("?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z");
+// win1.41 004178f0 mac 101bb350 GameThingWithPos::GetDebugText(void)
+char* __fastcall GetDebugText__16GameThingWithPosFv(struct GameThing* this) asm("?GetDebugText@GameThingWithPos@@QAEPADXZ");
 // win1.41 005704a0 mac 1016a2c0 GameThingWithPos::Load(GameOSFile &)
 uint32_t __fastcall Load__16GameThingWithPosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z");
 // win1.41 005703f0 mac 10512f10 GameThingWithPos::Save(GameOSFile &)
@@ -829,7 +833,7 @@ bool32_t __fastcall IsPileResource__16GameThingWithPosFv(struct GameThingWithPos
 // win1.41 004024a0 mac 100bb900 GameThingWithPos::IsScriptTimer(void)
 bool32_t __fastcall IsScriptTimer__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsScriptTimer@GameThingWithPos@@UBE_NXZ");
 // win1.41 004178e0 mac 102ff000 GameThingWithPos::CreateBuildingSite(void)
-bool32_t __fastcall CreateBuildingSite__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?CreateBuildingSite@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall CreateBuildingSite__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?CreateBuildingSite@GameThingWithPos@@UBE_NXZ");
 // win1.41 00405560 mac 102ffbb0 GameThingWithPos::GetQueryFirstEnumText(void)
 enum HELP_TEXT __fastcall GetQueryFirstEnumText__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetQueryFirstEnumText@GameThingWithPos@@UAE?AW4HELP_TEXT@@XZ");
 // win1.41 00405570 mac 1055f0f0 GameThingWithPos::GetQueryLastEnumText(void)

@@ -26,9 +26,9 @@ extern const struct TempleRoomVftable __vt__12CreatureRoom asm("??_7CreatureRoom
 // win1.41 007865e0 mac 10287800 CreatureRoom::CreatureRoom(void)
 struct CreatureRoom* __fastcall __ct__12CreatureRoomFv(struct CreatureRoom* this);
 
-// Non-virtual methods
+// Override methods
 
 // win1.41 007878e0 mac 10284d70 CreatureRoom::InitEngine(void)
-void __fastcall InitEngine__12CreatureRoomFv(struct CreatureRoom* this);
+void __fastcall InitEngine__12CreatureRoomFv(struct TempleRoom* this);
 
 #endif /* BW1_DECOMP_CREATURE_ROOM_INCLUDED_H */

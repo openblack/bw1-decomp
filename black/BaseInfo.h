@@ -19,7 +19,7 @@ struct GBaseInfoVftable
 {
   struct BaseVftable super;  /* 0x0 */
   const char* (__fastcall* GetDebugText)(const struct GBaseInfo* this);  /* 0x1c */
-  struct LHColor* (__fastcall* GetDebugColor)(const struct BaseInfo* this, const void* edx, struct LHColor* color);  /* 0x20 */
+  struct LHColor* (__fastcall* GetDebugColor)(const struct GBaseInfo* this, const void* edx, struct LHColor* color);  /* 0x20 */
   struct GBaseInfo* (__fastcall* GetBaseInfo)(struct GBaseInfo* this, const void* edx, uint32_t* param_1);
   void (__fastcall* UpdateValue)(struct GBaseInfo* this, const void* edx, float param_1, uint32_t param_2, uint32_t param_3);
 };
@@ -59,7 +59,7 @@ void __fastcall SetInfoID__9GBaseInfoFv(struct GBaseInfo* this);
 // Override methods
 
 // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
-struct LHColor* __fastcall GetDebugColor__9GBaseInfoCFv(const struct BaseInfo* this, const void* edx, struct LHColor* color) asm("?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ");
+struct LHColor* __fastcall GetDebugColor__9GBaseInfoCFv(const struct GBaseInfo* this, const void* edx, struct LHColor* color) asm("?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ");
 // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)
 void __fastcall UpdateValue__9GBaseInfoFfUlUl(struct GBaseInfo* this, const void* edx, float param_1, uint32_t param_2, uint32_t param_3) asm("?UpdateValue@GBaseInfo@@UAEXMKK@Z");
 

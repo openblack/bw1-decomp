@@ -3835,6 +3835,6 @@ uint8_t* __fastcall GetSafeBuffer__12LH3DCreatureFv(struct LH3DCreature* this);
 // Override methods
 
 // win1.41 004eac90 mac 10274660 LH3DCreature::LoadBase(char *)
-uint32_t __fastcall LoadBase__12LH3DCreatureFPc(struct LH3DCreature* this, const void* edx, const char* path);
+uint32_t __fastcall LoadBase__12LH3DCreatureFPc(struct Morphable* this, const void* edx, char* path);
 
 #endif /* BW1_DECOMP_CREATURE_MORPH_INCLUDED_H */

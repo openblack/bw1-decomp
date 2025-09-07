@@ -187,7 +187,7 @@ uint32_t __fastcall RemoveFootpath__13MultiMapFixedFP9GFootpath(struct GameThing
 // win1.41 0052f180 mac 100de800 MultiMapFixed::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 uint32_t __fastcall AddResource__13MultiMapFixedF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* param_3, bool param_4, const struct MapCoords* coords, int param_6) asm("?AddResource@MultiMapFixed@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NPBUMapCoords@@H@Z");
 // win1.41 0052f1c0 mac 100de760 MultiMapFixed::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
-uint32_t __fastcall RemoveResource__13MultiMapFixedF13RESOURCE_TYPEUlP16GInterfaceStatusPb(struct GameThing* this, const void* edx, uint8_t param_1, uint8_t param_2, uint8_t param_3) asm("?RemoveResource@MultiMapFixed@@UAEIEEE@Z");
+uint32_t __fastcall RemoveResource__13MultiMapFixedF13RESOURCE_TYPEUlP16GInterfaceStatusPb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type, uint32_t param_2, struct GInterfaceStatus* param_3, bool* param_4) asm("?RemoveResource@MultiMapFixed@@UAEIEEE@Z");
 // win1.41 00401540 mac 10569bb0 MultiMapFixed::CastMultiMapFixed(void)
 struct MultiMapFixed* __fastcall CastMultiMapFixed__13MultiMapFixedFv(struct GameThing* this) asm("?CastMultiMapFixed@MultiMapFixed@@UAEPAV1@XZ");
 // win1.41 0052ef70 mac 1005fb60 MultiMapFixed::IsFunctional(void)

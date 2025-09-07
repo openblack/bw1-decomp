@@ -116,11 +116,11 @@ void __fastcall Close__11InnerCameraFv(struct InnerCamera* this);
 // win1.41 007969e0 mac 10539ae0 InnerCamera::CalcDoorHit(InnerRoom *, LHCoord, float, bool)
 uint32_t __fastcall CalcDoorHit__11InnerCameraFP9InnerRoom7LHCoordfb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, struct LHCoord param_2, float param_3, bool param_4);
 // win1.41 00796b60 mac 10539710 InnerCamera::Update(InnerRoom *, float, int, int, LHCoord const &, bool)
-void __fastcall Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, struct LHCoord* param_5, bool param_6);
+void __fastcall Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6);
 // win1.41 00795ce0 mac 10539fe0 InnerCamera::UpdateMain(InnerRoom *, float, int, int, LHCoord const &, bool)
-void __fastcall UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, struct LHCoord* param_5, bool param_6);
+void __fastcall UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6);
 // win1.41 007965f0 mac 10539e30 InnerCamera::UpdateState(InnerRoom *, float, int, int, LHCoord const &, bool)
-void __fastcall UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, struct LHCoord* param_5, bool param_6);
+void __fastcall UpdateState__11InnerCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6);
 // win1.41 00795570 mac 1053b120 InnerCamera::FocusOnSubMesh(LH3DMesh *, int, float, float, float)
 void __fastcall FocusOnSubMesh__11InnerCameraFP8LH3DMeshifff(struct InnerCamera* this, const void* edx, struct LH3DMesh* param_1, int param_2, float param_3, float param_4, float param_5);
 // win1.41 007957c0 mac 1053ada0 InnerCamera::TriggerIntro(bool, Zoomer3d *, Zoomer3d *)
