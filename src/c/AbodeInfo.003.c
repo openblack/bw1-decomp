@@ -1,13 +1,10 @@
 #include "AbodeInfo.h"
 
-void __cdecl dynamic_atexit_destructor_for_AbodeInfos(void) asm("??__FAbodeInfos@@YAXXZ");
-extern int __cdecl atexit(void (__cdecl *)(void));
-
-void __cdecl _register_global_dtor_for_AbodeInfos(void)
+void __cdecl crt_global_destruction_register_for_AbodeInfos__10GAbodeInfoFv(void)
 {
     asm("push 0x004012e0");
     asm("call _atexit");
-    //atexit(dynamic_atexit_destructor_for_AbodeInfos);
+    // atexit(dynamic_atexit_destructor_for_AbodeInfos__10GAbodeInfoFv);
     __asm__("pop ecx");                      // 0x004012da    59
     __asm__("ret");                          // 0x004012db    c3
     // SEH?
@@ -15,7 +12,7 @@ void __cdecl _register_global_dtor_for_AbodeInfos(void)
     __builtin_unreachable();
 }
 
-void __cdecl dynamic_atexit_destructor_for_AbodeInfos(void)
+void __cdecl dynamic_atexit_destructor_for_AbodeInfos__10GAbodeInfoFv(void)
 {
     asm("{disp32} mov       cl, byte ptr [_abode_info_bool_00c3c680]");     // 0x004012e0    8a0d80c6c300
     asm("mov                al, 0x01");                                     // 0x004012e6    b001

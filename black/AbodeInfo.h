@@ -73,6 +73,17 @@ int __cdecl GetInfoFromText__10GAbodeInfoFPc(const char* text);
 // win1.41 00405b30 mac 1006f680 GAbodeInfo::Find(TRIBE_TYPE, ABODE_NUMBER)
 struct GAbodeInfo* __cdecl Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER(enum TRIBE_TYPE tribe_type, enum ABODE_NUMBER abode_number);
 
+// Global Static variable lifetime methods
+
+// win1.41 00401170 mac inlined GAbodeInfo::`global initializer for 'AbodeInfos''
+void __cdecl crt_global_initialize_for_AbodeInfos__10GAbodeInfoFv(void);
+// win1.41 00401180 mac inlined GAbodeInfo::`dynamic initializer for 'AbodeInfos''
+void __cdecl dynamic_initializer_for_AbodeInfos__10GAbodeInfoFv(void) asm("??__EAbodeInfos@@YAXXZ");
+// win1.41 004012d0 mac inlined GAbodeInfo::`dynamic destructor registrar for 'AbodeInfos''
+void __cdecl crt_global_destruction_register_for_AbodeInfos__10GAbodeInfoFv(void);
+// win1.41 004012e0 mac inlined GAbodeInfo::`dynamic atexit destructor for 'AbodeInfos''
+void __cdecl dynamic_atexit_destructor_for_AbodeInfos__10GAbodeInfoFv(void) asm("??__FAbodeInfos@@YAXXZ");
+
 // Non-virtual methods
 
 // win1.41 00404b10 mac 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
@@ -92,8 +103,5 @@ uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this) asm
 enum ABODE_TYPE __fastcall GetAbodeType__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeType@GAbodeInfo@@UBE?AW4ABODE_TYPE@@XZ");
 // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
 enum ABODE_NUMBER __fastcall GetAbodeNumber__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeNumber@GAbodeInfo@@UBE?AW4ABODE_NUMBER@@XZ");
-
-void __cdecl dynamic_initializer_for_AbodeInfos(void) asm("??__EAbodeInfos@@YAXXZ");
-extern void __cdecl _register_global_dtor_for_AbodeInfos(void);
 
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */
