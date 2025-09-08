@@ -16,6 +16,15 @@ TYPES_TO_IGNORE = {
 }
 
 
+FUNCS_TO_IGNORE = {
+    "__RTDynamicCast", # part of libcmt
+    "__RTTypeName", # part of libcmt
+    "clampf", # util
+    "saturatef", # util
+    "clampi", # util
+}
+
+
 TYPE_SUBSTITUTION_MAP = {
     "_Bool": "bool",
     "struct FixedObject": "struct Fixed",
@@ -1047,7 +1056,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
         elif t.kind.name == "IDENTIFIER":
             if function_metadata and function_metadata[-1].undecorated_name is None:
                 id_kind = t.cursor.kind
-                if id_kind.name == "FUNCTION_DECL":
+                if id_kind.name == "FUNCTION_DECL" and t.cursor.spelling not in FUNCS_TO_IGNORE:
                     def fix_up_type_spelling(t):
                         if t.get_pointee().kind.name == 'FUNCTIONPROTO':
                             for ct in ["fastcall", "stdcall"]:
