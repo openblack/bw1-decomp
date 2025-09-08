@@ -19,7 +19,7 @@ def clean_up_type(typename):
 
     if "(*)(" in typename:
         pattern = r'^(.+?)\s*\(\*\)\s*(.+?)\s*__attribute__\s*\(\(\s*(cdecl|fastcall|thiscall|stdcall)\s*\)\)(.*)$'
-        replacement = r'\1 (__\3*) \2\4'
+        replacement = r'\1 (__\3*)\2\4'
         typename = re.sub(pattern, replacement, typename)
 
     type_part, pointer_part, after_pointer_part = typename.partition("*")
@@ -49,7 +49,7 @@ class FuncPtr:
 
     def get_types(self) -> set[str]:
         result = {self.result}
-        result.update(i for i in self.args if "(*)" not in i)
+        result.update(i for i in self.args if "*)(" not in i)
         return result - {"void"}
 
     @classmethod
