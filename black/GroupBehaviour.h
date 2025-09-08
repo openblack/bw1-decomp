@@ -20,8 +20,8 @@ struct GroupBehaviourVftable
   struct GameThingWithPosVftable super;  /* 0x0 */
   void (__fastcall* Process)(struct GroupBehaviour* this);  /* 0x500 */
   void (__fastcall* UpdateGroupBasedOnAction)(struct GroupBehaviour* this, const void* edx, struct DanceGroup* dance_group, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument, uint32_t param_4);
-  void (__fastcall* AddAction_1)(struct GroupBehaviour* this, const void* edx, float param_1, struct LHDynamicStack__Ul stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument);
-  void (__fastcall* AddAction_2)(struct GroupBehaviour* this, const void* edx, float param_1, uint32_t param_2, enum DANCE_GROUP_ACTION_TYPE action_type, struct DanceGroupActionArgument* arguments);
+  void (__fastcall* AddAction_0)(struct GroupBehaviour* this, const void* edx, float param_1, struct LHDynamicStack__Ul* stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument);
+  void (__fastcall* AddAction_1)(struct GroupBehaviour* this, const void* edx, float param_1, uint32_t param_2, enum DANCE_GROUP_ACTION_TYPE action_type, struct DanceGroupActionArgument* arguments);
   void (__fastcall* LoadDance)(struct GroupBehaviour* this, const void* edx, const char* param_1);  /* 0x510 */
   float (__fastcall* GetAngle)(struct GroupBehaviour* this);
 };
@@ -76,17 +76,14 @@ extern const struct GroupBehaviourVftable __vt__14GroupBehaviour asm("??_7GroupB
 // win1.41 00596070 mac 100fad20 GroupBehaviour::GroupBehaviour(void)
 struct GroupBehaviour* __fastcall __ct__14GroupBehaviourFv(struct GroupBehaviour* this);
 
-// Non-virtual methods
-
-// win1.41 00597300 mac 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
-void __fastcall AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct GroupBehaviour* this, const void* edx, float param_1, struct LHDynamicStack__Ul* stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument);
-
 // Override methods
 
 // win1.41 005964a0 mac 106ffb98 GroupBehaviour::Process(void)
 void __fastcall Process__14GroupBehaviour(struct GroupBehaviour* this);
 // win1.41 00596700 mac 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
 void __fastcall UpdateGroupBasedOnAction__14GroupBehaviourFP10DanceGroup23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgumentUl(struct GroupBehaviour* this, const void* edx, struct DanceGroup* dance_group, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument, uint32_t param_4);
+// win1.41 00597300 mac 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+void __fastcall AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct GroupBehaviour* this, const void* edx, float param_1, struct LHDynamicStack__Ul* stack, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument);
 // win1.41 00597270 mac 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
 void __fastcall AddAction__14GroupBehaviourFfUl23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct GroupBehaviour* this, const void* edx, float param_1, uint32_t param_2, enum DANCE_GROUP_ACTION_TYPE action_type, struct DanceGroupActionArgument* arguments);
 // win1.41 005978e0 mac 100f6eb0 GroupBehaviour::LoadDance(char const *)

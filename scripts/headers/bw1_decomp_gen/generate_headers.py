@@ -440,7 +440,14 @@ if __name__ == "__main__":
             struct_name = i.name
             for p in prefixes:
                 struct_name = struct_name.removeprefix(p)
-            template_container_structs[name].add("struct " + struct_name)
+            fundamental_types = {
+                "Ul": "uint32_t",
+                'l': "int32_t",
+                "Ui": "uint32_t",
+                'i': "int32_t",
+                'f': "float",
+            }
+            template_container_structs[name].add(fundamental_types.get(struct_name, "struct " + struct_name))
 
     def sub_funcptrs(struct: Struct) -> Struct:
         substitutions = {
