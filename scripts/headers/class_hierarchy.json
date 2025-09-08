@@ -17368,5 +17368,15 @@
             ".?AVBase@@",
             "class Base"
         ]
+    ],
+    [
+        [
+            ".?AVLHSocketTCP@@",
+            "class LHSocketTCP"
+        ],
+        [
+            ".?AVLHSocket@@",
+            "class LHSocket"
+        ]
     ]
 ]
