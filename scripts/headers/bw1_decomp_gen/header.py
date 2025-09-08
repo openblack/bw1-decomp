@@ -8,6 +8,7 @@ from dataclasses import dataclass
 from inflection import underscore
 from pathlib import Path
 
+from csnake_overrides import CSnakeFuncPtr
 from structs import Composite
 from functions import FuncPtr
 from utils import partition, extract_template_type, LH_COLLECTION_TEMPLATES, CONTAINER_DECLARATION_MACROS
@@ -231,6 +232,11 @@ class Header:
         for s in self.structs:
             defined_types_so_far.add(strip_pointers_arrays_and_modifiers(s.decorated_name))
             struct_types = {strip_pointers_arrays_and_modifiers(r) for r in s.get_types()}
+            func_ptr_type = set()
+            for r in struct_types:
+                if isinstance(r, CSnakeFuncPtr):
+                    func_ptr_type.update(strip_pointers_arrays_and_modifiers(a.primitive) for a in r.arguments)
+            struct_types.update(func_ptr_type)
             struct_types = {r for r in struct_types if type(r) is str and (r.startswith("struct ") or r.startswith("union ") or r.startswith("enum "))}
             struct_types.difference_update(defined_types_so_far)
             result.update(struct_types)

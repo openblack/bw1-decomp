@@ -46,6 +46,7 @@ struct NewCollide;
 struct Object;
 struct PhysOb;
 struct PhysicsObject;
+struct Point2D;
 struct RPHolder;
 struct Reaction;
 struct Scaffold;
