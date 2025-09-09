@@ -6,15 +6,15 @@
 
 // Forward Declares
 
-struct MPFEDatabase;
+struct MPFEDownloads;
 
 struct MPFEDownloadsVftable
 {
-  void (__fastcall* GetFileNumber)(struct MPFEDatabase* this, const void* edx, uint32_t param_1);  /* 0x0 */
-  void (__fastcall* Refresh)(struct MPFEDatabase* this);
-  void (__fastcall* Stop)(struct MPFEDatabase* this);
-  void (__fastcall* FileCompleted)(struct MPFEDatabase* this);
-  void (__fastcall* FileError)(struct MPFEDatabase* this);  /* 0x10 */
+  void (__fastcall* GetFileNumber)(struct MPFEDownloads* this, const void* edx, uint32_t param_1);  /* 0x0 */
+  void (__fastcall* Refresh)(struct MPFEDownloads* this);
+  void (__fastcall* Stop)(struct MPFEDownloads* this);
+  void (__fastcall* FileCompleted)(struct MPFEDownloads* this);
+  void (__fastcall* FileError)(struct MPFEDownloads* this);  /* 0x10 */
 };
 static_assert(sizeof(struct MPFEDownloadsVftable) == 0x14, "Data type is of wrong size");
 
@@ -36,8 +36,8 @@ struct MPFEDownloads* __fastcall __ct__13MPFEDownloadsFv(struct MPFEDownloads* t
 // Override methods
 
 // win1.41 0062e740 mac 103a49b0 MPFEDownloads::FileCompleted(void)
-void __fastcall FileCompleted__13MPFEDownloadsFv(struct MPFEDatabase* this) asm("?FileCompleted@MPFEDownloads@@UAEXXZ");
+void __fastcall FileCompleted__13MPFEDownloadsFv(struct MPFEDownloads* this) asm("?FileCompleted@MPFEDownloads@@UAEXXZ");
 // win1.41 0062e750 mac 103a4970 MPFEDownloads::FileError(void)
-void __fastcall FileError__13MPFEDownloadsFv(struct MPFEDatabase* this) asm("?FileError@MPFEDownloads@@UAEXXZ");
+void __fastcall FileError__13MPFEDownloadsFv(struct MPFEDownloads* this) asm("?FileError@MPFEDownloads@@UAEXXZ");
 
 #endif /* BW1_DECOMP_MPFE_DOWNLOADS_INCLUDED_H */

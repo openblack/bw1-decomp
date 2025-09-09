@@ -167,6 +167,27 @@
 .globl _globl_ct_0x004d4250
 .globl ?GetHowMuchCreatureWantsToLookAtMe@Fixed@@UAEMXZ
 .globl ?GetHowMuchCreatureWantsToLookAtMe@Abode@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@MobileStatic@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@Dove@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@Animal@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@Creature@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@Villager@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@Citadel@@UAEMXZ
+.globl ?GetHowMuchCreatureWantsToLookAtMe@Tree@@UAEMXZ
+.globl ??_GCreatureBeliefList@@UAEPAXI@Z
+.globl ??_GCreatureBeliefs@@UAEPAXI@Z
+.globl ??_GCreatureMentalDebug@@UAEPAXI@Z
+.globl ??_GCreatureMental@@UAEPAXI@Z
+.globl ??_GCreatureCommandState@@UAEPAXI@Z
+.globl ??_GCreatureAgenda@@UAEPAXI@Z
+.globl ??_GAttributeCreatureDominantDesire@@UAEPAXI@Z
+.globl ??_GAttributeCreatureHeight@@UAEPAXI@Z
+.globl ??_GAttributeCreatureSpellKnowledge@@UAEPAXI@Z
+.globl ??_GAttributeCreatureWhatHeIsCarrying@@UAEPAXI@Z
+.globl ??_GAttributeForestSize@@UAEPAXI@Z
+.globl ??_GAttributeMobileObjectType@@UAEPAXI@Z
+.globl ??_GAttributeAbodeType@@UAEPAXI@Z
+.globl ??_GAttributeAbodeBeingBuilt@@UAEPAXI@Z
 
 start_0x004d0a20_0x004d63f0:
 // Snippet: asm, [0x004d0a20, 0x004d63a1)
@@ -1575,6 +1596,7 @@ _jmp_addr_0x004d1ae7:    xor.s              eax, eax                            
                          pop                esi                                                  // 0x004d1ae9    5e
                          add                esp, 0x18                                            // 0x004d1aea    83c418
                          ret                0x0004                                               // 0x004d1aed    c20400
+?GetHowMuchCreatureWantsToLookAtMe@MobileStatic@@UAEMXZ:
                          mov                eax, dword ptr [ecx]                                 // 0x004d1af0    8b01
                          push               0x0                                                  // 0x004d1af2    6a00
                          call               dword ptr [eax + 0x3b4]                              // 0x004d1af4    ff90b4030000
@@ -1588,6 +1610,7 @@ _jmp_addr_0x004d1b05:    {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]   
                          nop                                                                     // 0x004d1b0d    90
                          nop                                                                     // 0x004d1b0e    90
                          nop                                                                     // 0x004d1b0f    90
+?GetHowMuchCreatureWantsToLookAtMe@Dove@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1c844]                    // 0x004d1b10    d90544588c00
                          ret                                                                     // 0x004d1b16    c3
                          nop                                                                     // 0x004d1b17    90
@@ -1599,6 +1622,7 @@ _jmp_addr_0x004d1b05:    {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]   
                          nop                                                                     // 0x004d1b1d    90
                          nop                                                                     // 0x004d1b1e    90
                          nop                                                                     // 0x004d1b1f    90
+?GetHowMuchCreatureWantsToLookAtMe@Animal@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x2238]                     // 0x004d1b20    d90538b28a00
                          ret                                                                     // 0x004d1b26    c3
                          nop                                                                     // 0x004d1b27    90
@@ -1610,6 +1634,7 @@ _jmp_addr_0x004d1b05:    {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]   
                          nop                                                                     // 0x004d1b2d    90
                          nop                                                                     // 0x004d1b2e    90
                          nop                                                                     // 0x004d1b2f    90
+?GetHowMuchCreatureWantsToLookAtMe@Creature@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x25fac]                    // 0x004d1b30    d905acef8c00
                          ret                                                                     // 0x004d1b36    c3
                          nop                                                                     // 0x004d1b37    90
@@ -1621,6 +1646,7 @@ _jmp_addr_0x004d1b05:    {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]   
                          nop                                                                     // 0x004d1b3d    90
                          nop                                                                     // 0x004d1b3e    90
                          nop                                                                     // 0x004d1b3f    90
+?GetHowMuchCreatureWantsToLookAtMe@Villager@@UAEMXZ:
                          {disp32} fld       dword ptr [_rdata_float0p5]                          // 0x004d1b40    d905b4a38a00
                          ret                                                                     // 0x004d1b46    c3
                          nop                                                                     // 0x004d1b47    90
@@ -1632,6 +1658,7 @@ _jmp_addr_0x004d1b05:    {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]   
                          nop                                                                     // 0x004d1b4d    90
                          nop                                                                     // 0x004d1b4e    90
                          nop                                                                     // 0x004d1b4f    90
+?GetHowMuchCreatureWantsToLookAtMe@Citadel@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x1c844]                    // 0x004d1b50    d90544588c00
                          ret                                                                     // 0x004d1b56    c3
                          nop                                                                     // 0x004d1b57    90
@@ -1655,6 +1682,7 @@ _jmp_addr_0x004d1b05:    {disp32} fld       dword ptr [rdata_bytes + 0x1ea44]   
                          nop                                                                     // 0x004d1b6d    90
                          nop                                                                     // 0x004d1b6e    90
                          nop                                                                     // 0x004d1b6f    90
+?GetHowMuchCreatureWantsToLookAtMe@Tree@@UAEMXZ:
                          {disp32} fld       dword ptr [rdata_bytes + 0x223c]                     // 0x004d1b70    d9053cb28a00
                          ret                                                                     // 0x004d1b76    c3
                          nop                                                                     // 0x004d1b77    90
@@ -2473,6 +2501,7 @@ _jmp_addr_0x004d2365:    {disp8} mov        ecx, dword ptr [esp + 0x1c]         
                          nop                                                                     // 0x004d24ed    90
                          nop                                                                     // 0x004d24ee    90
                          nop                                                                     // 0x004d24ef    90
+??_GCreatureBeliefList@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d24f0    56
                          mov.s              esi, ecx                                             // 0x004d24f1    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d24f3    e86844f6ff
@@ -2485,6 +2514,7 @@ _jmp_addr_0x004d2365:    {disp8} mov        ecx, dword ptr [esp + 0x1c]         
 _jmp_addr_0x004d250a:    mov.s              eax, esi                                             // 0x004d250a    8bc6
                          pop                esi                                                  // 0x004d250c    5e
                          ret                0x0004                                               // 0x004d250d    c20400
+??_GCreatureBeliefs@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d2510    56
                          mov.s              esi, ecx                                             // 0x004d2511    8bf1
                          call               _jmp_addr_0x004d8a20                                 // 0x004d2513    e808650000
@@ -2510,6 +2540,7 @@ _jmp_addr_0x004d252d:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d253d    90
                          nop                                                                     // 0x004d253e    90
                          nop                                                                     // 0x004d253f    90
+??_GCreatureMentalDebug@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d2540    56
                          mov.s              esi, ecx                                             // 0x004d2541    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d2543    e81844f6ff
@@ -2522,6 +2553,7 @@ _jmp_addr_0x004d252d:    mov.s              eax, esi                            
 _jmp_addr_0x004d255a:    mov.s              eax, esi                                             // 0x004d255a    8bc6
                          pop                esi                                                  // 0x004d255c    5e
                          ret                0x0004                                               // 0x004d255d    c20400
+??_GCreatureMental@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d2560    56
                          mov.s              esi, ecx                                             // 0x004d2561    8bf1
                          call               _jmp_addr_0x004d2590                                 // 0x004d2563    e828000000
@@ -4191,6 +4223,7 @@ _jmp_addr_0x004d34a0:    {disp32} mov       dword ptr [data_bytes + 0x2bcf68], 0
                          pop                ebp                                                  // 0x004d35db    5d
                          pop                ebx                                                  // 0x004d35dc    5b
                          ret                0x0008                                               // 0x004d35dd    c20800
+??_GCreatureCommandState@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d35e0    56
                          mov.s              esi, ecx                                             // 0x004d35e1    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d35e3    e87833f6ff
@@ -4203,6 +4236,7 @@ _jmp_addr_0x004d34a0:    {disp32} mov       dword ptr [data_bytes + 0x2bcf68], 0
 _jmp_addr_0x004d35fa:    mov.s              eax, esi                                             // 0x004d35fa    8bc6
                          pop                esi                                                  // 0x004d35fc    5e
                          ret                0x0004                                               // 0x004d35fd    c20400
+??_GCreatureAgenda@@UAEPAXI@Z:
                          push               ebx                                                  // 0x004d3600    53
                          push               ebp                                                  // 0x004d3601    55
                          push               esi                                                  // 0x004d3602    56
@@ -8105,6 +8139,7 @@ _jmp_addr_0x004d5d51:    pop                edi                                 
                          nop                                                                     // 0x004d5d9d    90
                          nop                                                                     // 0x004d5d9e    90
                          nop                                                                     // 0x004d5d9f    90
+??_GAttributeCreatureDominantDesire@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d5da0    56
                          mov.s              esi, ecx                                             // 0x004d5da1    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d5da3    e8b80bf6ff
@@ -8170,6 +8205,7 @@ _jmp_addr_0x004d5dba:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d5e0d    90
                          nop                                                                     // 0x004d5e0e    90
                          nop                                                                     // 0x004d5e0f    90
+??_GAttributeCreatureHeight@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d5e10    56
                          mov.s              esi, ecx                                             // 0x004d5e11    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d5e13    e8480bf6ff
@@ -8230,6 +8266,7 @@ _jmp_addr_0x004d5e2a:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d5e6d    90
                          nop                                                                     // 0x004d5e6e    90
                          nop                                                                     // 0x004d5e6f    90
+??_GAttributeCreatureSpellKnowledge@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d5e70    56
                          mov.s              esi, ecx                                             // 0x004d5e71    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d5e73    e8e80af6ff
@@ -8290,6 +8327,7 @@ _jmp_addr_0x004d5e8a:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d5ecd    90
                          nop                                                                     // 0x004d5ece    90
                          nop                                                                     // 0x004d5ecf    90
+??_GAttributeCreatureWhatHeIsCarrying@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d5ed0    56
                          mov.s              esi, ecx                                             // 0x004d5ed1    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d5ed3    e8880af6ff
@@ -8355,6 +8393,7 @@ _jmp_addr_0x004d5eea:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d5f3d    90
                          nop                                                                     // 0x004d5f3e    90
                          nop                                                                     // 0x004d5f3f    90
+??_GAttributeForestSize@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d5f40    56
                          mov.s              esi, ecx                                             // 0x004d5f41    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d5f43    e8180af6ff
@@ -8423,6 +8462,7 @@ _jmp_addr_0x004d5f5a:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d5fad    90
                          nop                                                                     // 0x004d5fae    90
                          nop                                                                     // 0x004d5faf    90
+??_GAttributeMobileObjectType@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d5fb0    56
                          mov.s              esi, ecx                                             // 0x004d5fb1    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d5fb3    e8a809f6ff
@@ -8491,6 +8531,7 @@ _jmp_addr_0x004d5fca:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d601d    90
                          nop                                                                     // 0x004d601e    90
                          nop                                                                     // 0x004d601f    90
+??_GAttributeAbodeType@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d6020    56
                          mov.s              esi, ecx                                             // 0x004d6021    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d6023    e83809f6ff
@@ -8556,6 +8597,7 @@ _jmp_addr_0x004d603a:    mov.s              eax, esi                            
                          nop                                                                     // 0x004d608d    90
                          nop                                                                     // 0x004d608e    90
                          nop                                                                     // 0x004d608f    90
+??_GAttributeAbodeBeingBuilt@@UAEPAXI@Z:
                          push               esi                                                  // 0x004d6090    56
                          mov.s              esi, ecx                                             // 0x004d6091    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004d6093    e8c808f6ff

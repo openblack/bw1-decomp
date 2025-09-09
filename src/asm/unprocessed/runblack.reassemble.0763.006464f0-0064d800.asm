@@ -330,6 +330,14 @@
 .globl _globl_ct_0x00648ce0
 .globl _globl_ct_0x00648d10
 .globl _globl_ct_0x00648d40
+.globl ?GetPlayer@GPlayer@@UAEPAVGPlayer@@XZ
+.globl ?CastPlayer@GPlayer@@UAEPAVGPlayer@@XZ
+.globl ??_GGPlayer@@UAEPAXI@Z
+.globl ?ToBeDeleted@GPlayer@@UAEXH@Z
+.globl ?Dump@GPlayer@@UAEXXZ
+.globl ?GetMaxAlignmentChangePerGameTurn@GPlayer@@UAEMXZ
+.globl ?MaintainSpell@GPlayer@@UAEXIM@Z
+.globl ?UpdateSpellInfo@GPlayer@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z
 
 start_0x006464f0_0x0064d800:
 // Snippet: asm, [0x006464f0, 0x0064d7e5)
@@ -3943,6 +3951,7 @@ _jmp_addr_0x00648e5e:    pop                edi                                 
                          nop                                                               // 0x00648e6d    90
                          nop                                                               // 0x00648e6e    90
                          nop                                                               // 0x00648e6f    90
+?GetPlayer@GPlayer@@UAEPAVGPlayer@@XZ:
                          mov.s              eax, ecx                                       // 0x00648e70    8bc1
                          ret                                                               // 0x00648e72    c3
                          nop                                                               // 0x00648e73    90
@@ -3958,6 +3967,7 @@ _jmp_addr_0x00648e5e:    pop                edi                                 
                          nop                                                               // 0x00648e7d    90
                          nop                                                               // 0x00648e7e    90
                          nop                                                               // 0x00648e7f    90
+?CastPlayer@GPlayer@@UAEPAVGPlayer@@XZ:
                          mov.s              eax, ecx                                       // 0x00648e80    8bc1
                          ret                                                               // 0x00648e82    c3
                          nop                                                               // 0x00648e83    90
@@ -3997,6 +4007,7 @@ _jmp_addr_0x00648e5e:    pop                edi                                 
                          nop                                                               // 0x00648ead    90
                          nop                                                               // 0x00648eae    90
                          nop                                                               // 0x00648eaf    90
+??_GGPlayer@@UAEPAXI@Z:
                          push               esi                                            // 0x00648eb0    56
                          mov.s              esi, ecx                                       // 0x00648eb1    8bf1
                          call               _jmp_addr_0x00648ee0                           // 0x00648eb3    e828000000
@@ -4179,6 +4190,7 @@ _jmp_addr_0x0064909c:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          nop                                                               // 0x006490ad    90
                          nop                                                               // 0x006490ae    90
                          nop                                                               // 0x006490af    90
+?ToBeDeleted@GPlayer@@UAEXH@Z:
                          push               esi                                            // 0x006490b0    56
                          mov.s              esi, ecx                                       // 0x006490b1    8bf1
                          call               _jmp_addr_0x006492b0                           // 0x006490b3    e8f8010000
@@ -5813,6 +5825,7 @@ _jmp_addr_0x0064a6cc:    pop                esi                                 
                          ret                                                               // 0x0064a6cd    c3
                          nop                                                               // 0x0064a6ce    90
                          nop                                                               // 0x0064a6cf    90
+?Dump@GPlayer@@UAEXXZ:
                          push               esi                                            // 0x0064a6d0    56
                          push               edi                                            // 0x0064a6d1    57
                          mov.s              edi, ecx                                       // 0x0064a6d2    8bf9
@@ -7254,6 +7267,7 @@ _jmp_addr_0x0064b664:    mov                eax, 0x000000fa                     
                          nop                                                               // 0x0064b66d    90
                          nop                                                               // 0x0064b66e    90
                          nop                                                               // 0x0064b66f    90
+?GetMaxAlignmentChangePerGameTurn@GPlayer@@UAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x64]                    // 0x0064b670    8b4164
                          {disp8} fld        dword ptr [eax + 0x10]                         // 0x0064b673    d94010
                          ret                                                               // 0x0064b676    c3
@@ -8802,6 +8816,7 @@ _jmp_addr_0x0064c422:    ret                0x0004                              
                          nop                                                               // 0x0064c42d    90
                          nop                                                               // 0x0064c42e    90
                          nop                                                               // 0x0064c42f    90
+?MaintainSpell@GPlayer@@UAEXIM@Z:
                          {disp32} mov       edx, dword ptr [_game]                         // 0x0064c430    8b155c19d000
                          xor.s              eax, eax                                       // 0x0064c436    33c0
                          {disp32} mov       al, byte ptr [edx + 0x00205a5b]                // 0x0064c438    8a825b5a2000
@@ -8830,6 +8845,7 @@ _jmp_addr_0x0064c45b:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                               // 0x0064c46d    90
                          nop                                                               // 0x0064c46e    90
                          nop                                                               // 0x0064c46f    90
+?UpdateSpellInfo@GPlayer@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z:
                          {disp32} mov       edx, dword ptr [_game]                         // 0x0064c470    8b155c19d000
                          xor.s              eax, eax                                       // 0x0064c476    33c0
                          {disp32} mov       al, byte ptr [edx + 0x00205a5b]                // 0x0064c478    8a825b5a2000

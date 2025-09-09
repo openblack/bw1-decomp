@@ -265,9 +265,30 @@
 .globl _globl_ct_0x00665980
 .globl _globl_ct_0x006659b0
 .globl _globl_ct_0x006659e0
+.globl ?Save@PlayerActionState@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@PlayerActionState@@UAEIAAVGameOSFile@@@Z
+.globl ?SaveExtraData@PlayerActionState@@UAEXAAVGameOSFile@@@Z
+.globl ?Save@PlayerSubAction@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@PlayerSubAction@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@PlayerSubActionArgument@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@PlayerSubActionArgument@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@GComputerSeen@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GComputerSeen@@UAEIAAVGameOSFile@@@Z
+.globl ?ToBeDeleted@GComputerPlayer@@UAEXH@Z
+.globl ?Save@GComputerPlayer@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GComputerPlayer@@UAEIAAVGameOSFile@@@Z
+.globl ?SaveExtraData@GComputerPlayer@@UAEXAAVGameOSFile@@@Z
+.globl ?GetScriptObjectType@GComputerPlayer@@UAEIXZ
+.globl ?Load@GComputerAttitudeToPlayer@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@GComputerAttitudeToPlayer@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@GComputerPlayerQueue@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GComputerPlayerQueue@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@GComputerSpellCast@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GComputerSpellCast@@UAEIAAVGameOSFile@@@Z
 
 start_0x00651740_0x00666410:
 // Snippet: asm, [0x00651740, 0x006663c8)
+?Save@PlayerActionState@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x00651740    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00651741    8b742408
                          push               edi                                            // 0x00651745    57
@@ -501,6 +522,7 @@ _jmp_addr_0x00651a14:    pop                edi                                 
                          pop                esi                                            // 0x00651a17    5e
                          ret                0x0004                                         // 0x00651a18    c20400
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x00651a1b    e8d9fddaff
+?Load@PlayerActionState@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                            // 0x00651a20    51
                          push               ebx                                            // 0x00651a21    53
                          push               esi                                            // 0x00651a22    56
@@ -766,6 +788,7 @@ _jmp_addr_0x00651d09:    pop                esi                                 
                          nop                                                               // 0x00651d1d    90
                          nop                                                               // 0x00651d1e    90
                          nop                                                               // 0x00651d1f    90
+?SaveExtraData@PlayerActionState@@UAEXAAVGameOSFile@@@Z:
                          push               ecx                                            // 0x00651d20    51
                          mov                eax, dword ptr [ecx]                           // 0x00651d21    8b01
                          call               dword ptr [eax + 0x1c]                         // 0x00651d23    ff501c
@@ -797,6 +820,7 @@ _jmp_addr_0x00651d7a:    pop                ecx                                 
                          ret                0x0004                                         // 0x00651d7b    c20400
                          nop                                                               // 0x00651d7e    90
                          nop                                                               // 0x00651d7f    90
+?Save@PlayerSubAction@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                            // 0x00651d80    53
                          push               esi                                            // 0x00651d81    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00651d82    8b74240c
@@ -881,6 +905,7 @@ _jmp_addr_0x00651e66:    pop                esi                                 
                          nop                                                               // 0x00651e6d    90
                          nop                                                               // 0x00651e6e    90
                          nop                                                               // 0x00651e6f    90
+?Load@PlayerSubAction@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                            // 0x00651e70    51
                          push               ebx                                            // 0x00651e71    53
                          push               edi                                            // 0x00651e72    57
@@ -974,6 +999,7 @@ _jmp_addr_0x00651f78:    pop                edi                                 
                          pop                ebx                                            // 0x00651f7b    5b
                          pop                ecx                                            // 0x00651f7c    59
                          ret                0x0004                                         // 0x00651f7d    c20400
+?Save@PlayerSubActionArgument@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                            // 0x00651f80    53
                          push               esi                                            // 0x00651f81    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00651f82    8b74240c
@@ -1120,6 +1146,7 @@ _jmp_addr_0x00652134:    pop                esi                                 
                          pop                ebx                                            // 0x00652137    5b
                          ret                0x0004                                         // 0x00652138    c20400
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x0065213b    e8b9f6daff
+?Load@PlayerSubActionArgument@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                            // 0x00652140    53
                          push               esi                                            // 0x00652141    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00652142    8b74240c
@@ -8692,6 +8719,7 @@ _jmp_addr_0x00656b78:    xor.s              eax, eax                            
                          nop                                                               // 0x00656b7d    90
                          nop                                                               // 0x00656b7e    90
                          nop                                                               // 0x00656b7f    90
+?Save@GComputerSeen@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x00656b80    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00656b81    8b742408
                          push               edi                                            // 0x00656b85    57
@@ -8736,6 +8764,7 @@ _jmp_addr_0x00656be3:    pop                edi                                 
                          nop                                                               // 0x00656bed    90
                          nop                                                               // 0x00656bee    90
                          nop                                                               // 0x00656bef    90
+?Load@GComputerSeen@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x00656bf0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00656bf1    8b742408
                          push               edi                                            // 0x00656bf5    57
@@ -9018,6 +9047,7 @@ _jmp_addr_0x00656edc:    mov                eax, 0x00000001                     
                          nop                                                               // 0x00656f1d    90
                          nop                                                               // 0x00656f1e    90
                          nop                                                               // 0x00656f1f    90
+?ToBeDeleted@GComputerPlayer@@UAEXH@Z:
                          push               ebx                                            // 0x00656f20    53
                          push               ebp                                            // 0x00656f21    55
                          mov.s              ebp, ecx                                       // 0x00656f22    8be9
@@ -9662,6 +9692,7 @@ _jmp_addr_0x00657636:    pop                esi                                 
                          add                esp, 0x0c                                      // 0x00657637    83c40c
                          ret                                                               // 0x0065763a    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x0065763b    e8b9a1daff
+?Save@GComputerPlayer@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                            // 0x00657640    51
                          push               esi                                            // 0x00657641    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00657642    8b74240c
@@ -9944,6 +9975,7 @@ _jmp_addr_0x00657990:    pop                edi                                 
                          nop                                                               // 0x0065799d    90
                          nop                                                               // 0x0065799e    90
                          nop                                                               // 0x0065799f    90
+?Load@GComputerPlayer@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                            // 0x006579a0    51
                          push               ebp                                            // 0x006579a1    55
                          push               esi                                            // 0x006579a2    56
@@ -10206,6 +10238,7 @@ _jmp_addr_0x00657cc7:    pop                esi                                 
                          pop                ecx                                            // 0x00657ccb    59
                          ret                0x0004                                         // 0x00657ccc    c20400
                          nop                                                               // 0x00657ccf    90
+?SaveExtraData@GComputerPlayer@@UAEXAAVGameOSFile@@@Z:
                          push               ecx                                            // 0x00657cd0    51
                          mov                eax, dword ptr [ecx]                           // 0x00657cd1    8b01
                          call               dword ptr [eax + 0x1c]                         // 0x00657cd3    ff501c
@@ -11248,6 +11281,7 @@ _jmp_addr_0x006587a1:    pop                edi                                 
                          nop                                                               // 0x006587ad    90
                          nop                                                               // 0x006587ae    90
                          nop                                                               // 0x006587af    90
+?GetScriptObjectType@GComputerPlayer@@UAEIXZ:
                          mov                eax, 0x00000026                                // 0x006587b0    b826000000
                          ret                                                               // 0x006587b5    c3
                          nop                                                               // 0x006587b6    90
@@ -11270,6 +11304,7 @@ _jmp_addr_0x006587c0:    {disp8} mov        ecx, dword ptr [ecx + 0x34]         
                          nop                                                               // 0x006587cd    90
                          nop                                                               // 0x006587ce    90
                          nop                                                               // 0x006587cf    90
+?Load@GComputerAttitudeToPlayer@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x006587d0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x006587d1    8b742408
                          push               edi                                            // 0x006587d5    57
@@ -11305,6 +11340,7 @@ _jmp_addr_0x00658828:    pop                edi                                 
                          pop                esi                                            // 0x0065882b    5e
                          ret                0x0004                                         // 0x0065882c    c20400
                          nop                                                               // 0x0065882f    90
+?Save@GComputerAttitudeToPlayer@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x00658830    56
                          push               edi                                            // 0x00658831    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                    // 0x00658832    8b7c240c
@@ -24445,6 +24481,7 @@ _jmp_addr_0x00664523:    pop                esi                                 
                          nop                                                               // 0x0066452d    90
                          nop                                                               // 0x0066452e    90
                          nop                                                               // 0x0066452f    90
+?Save@GComputerPlayerQueue@@UAEIAAVGameOSFile@@@Z:
                          push               ebp                                            // 0x00664530    55
                          push               esi                                            // 0x00664531    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00664532    8b74240c
@@ -24550,6 +24587,7 @@ _jmp_addr_0x0066464e:    pop                esi                                 
                          nop                                                               // 0x0066465d    90
                          nop                                                               // 0x0066465e    90
                          nop                                                               // 0x0066465f    90
+?Load@GComputerPlayerQueue@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                            // 0x00664660    53
                          push               esi                                            // 0x00664661    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x00664662    8b74240c
@@ -26573,6 +26611,7 @@ _jmp_addr_0x00665b60:    push               esi                                 
                          nop                                                               // 0x00665b8d    90
                          nop                                                               // 0x00665b8e    90
                          nop                                                               // 0x00665b8f    90
+?Save@GComputerSpellCast@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x00665b90    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00665b91    8b742408
                          push               edi                                            // 0x00665b95    57
@@ -26617,6 +26656,7 @@ _jmp_addr_0x00665bf3:    pop                edi                                 
                          nop                                                               // 0x00665bfd    90
                          nop                                                               // 0x00665bfe    90
                          nop                                                               // 0x00665bff    90
+?Load@GComputerSpellCast@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x00665c00    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00665c01    8b742408
                          push               edi                                            // 0x00665c05    57

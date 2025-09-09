@@ -15,8 +15,8 @@
 .extern @__ct__9MapCoordsFllf@20
 .extern _jmp_addr_0x006033b0
 .extern @GetFirstObjectFixed__9MapCoordsCFv@4
-.extern _jmp_addr_0x00606c10
-.extern _jmp_addr_0x00606c70
+.extern ?Save@Mobile@@UAEIAAVGameOSFile@@@Z
+.extern ?Load@Mobile@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x0060a450
 .extern _jmp_addr_0x0060a5e0
 .extern @GetObjectPtr__13CircleHugInfoFv@4
@@ -62,13 +62,23 @@
 .globl _jmp_addr_0x0060c1a0
 .globl _jmp_addr_0x0060c200
 .globl _jmp_addr_0x0060c3f0
-.globl _jmp_addr_0x0060c420
-.globl _jmp_addr_0x0060c740
+.globl ?Save@MobileWallHug@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@MobileWallHug@@UAEIAAVGameOSFile@@@Z
 .globl @MoveToCircleHugLinearSquareSweep__13MobileWallHugFRC9MapCoords@12
 .globl @Init__20ObjectCircleIteratorFiRC9MapCoords@16
 
 .globl _globl_ct_0x0060c1c0
 .globl _globl_ct_0x0060c1e0
+.globl ?SetNewWander@MobileWallHug@@UAEXABUMapCoords@@HH@Z
+.globl ?GetFacingDirection@MobileWallHug@@UAEMXZ
+.globl ?GetMovementDirection@MobileWallHug@@UAEXPAULHPoint@@@Z
+.globl ?GetSpeedInMetres@MobileWallHug@@UBEMXZ
+.globl ?SetSpeedInMetres@MobileWallHug@@UAEXMH@Z
+.globl ?GetRunningSpeedInMetres@MobileWallHug@@UAEMXZ
+.globl ?GetDefaultSpeedInMetres@MobileWallHug@@UAEMXZ
+.globl ?GetSpeedInMetresPerSecond@MobileWallHug@@UBEMXZ
+.globl ?GetRunningSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ
+.globl ?GetDefaultSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ
 
 start_0x0060bbc0_0x0060d280:
 // Snippet: asm, [0x0060bbc0, 0x0060d252)
@@ -128,6 +138,7 @@ _jmp_addr_0x0060bc22:    pop                edi                                 
                          nop                                                              // 0x0060bc3d    90
                          nop                                                              // 0x0060bc3e    90
                          nop                                                              // 0x0060bc3f    90
+?SetNewWander@MobileWallHug@@UAEXABUMapCoords@@HH@Z:
                          push               ebx                                           // 0x0060bc40    53
                          push               ebp                                           // 0x0060bc41    55
                          {disp8} mov        ebp, dword ptr [esp + 0x0c]                   // 0x0060bc42    8b6c240c
@@ -490,6 +501,7 @@ _jmp_addr_0x0060c000:    push               esi                                 
                          nop                                                              // 0x0060c01d    90
                          nop                                                              // 0x0060c01e    90
                          nop                                                              // 0x0060c01f    90
+?GetFacingDirection@MobileWallHug@@UAEMXZ:
                          xor.s              eax, eax                                      // 0x0060c020    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x5c]                     // 0x0060c022    668b415c
                          push               eax                                           // 0x0060c026    50
@@ -510,6 +522,7 @@ _jmp_addr_0x0060c000:    push               esi                                 
                          nop                                                              // 0x0060c03d    90
                          nop                                                              // 0x0060c03e    90
                          nop                                                              // 0x0060c03f    90
+?GetMovementDirection@MobileWallHug@@UAEXPAULHPoint@@@Z:
                          test               byte ptr [ecx + 0x24], 0x40                   // 0x0060c040    f6412440
                          {disp8} je         _jmp_addr_0x0060c056                          // 0x0060c044    7410
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x0060c046    8b542404
@@ -525,6 +538,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          {disp8} fstp       dword ptr [eax + 0x08]                        // 0x0060c069    d95808
                          ret                0x0004                                        // 0x0060c06c    c20400
                          nop                                                              // 0x0060c06f    90
+?GetSpeedInMetres@MobileWallHug@@UBEMXZ:
                          xor.s              eax, eax                                      // 0x0060c070    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x5a]                     // 0x0060c072    668b415a
                          push               eax                                           // 0x0060c076    50
@@ -533,6 +547,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          ret                                                              // 0x0060c07d    c3
                          nop                                                              // 0x0060c07e    90
                          nop                                                              // 0x0060c07f    90
+?SetSpeedInMetres@MobileWallHug@@UAEXMH@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0060c080    8b442404
                          push               esi                                           // 0x0060c084    56
                          push               edi                                           // 0x0060c085    57
@@ -562,6 +577,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          nop                                                              // 0x0060c0ad    90
                          nop                                                              // 0x0060c0ae    90
                          nop                                                              // 0x0060c0af    90
+?GetRunningSpeedInMetres@MobileWallHug@@UAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c0b0    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000118]             // 0x0060c0b3    8b8018010000
                          push               eax                                           // 0x0060c0b9    50
@@ -583,6 +599,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          nop                                                              // 0x0060c0cd    90
                          nop                                                              // 0x0060c0ce    90
                          nop                                                              // 0x0060c0cf    90
+?GetDefaultSpeedInMetres@MobileWallHug@@UAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c0d0    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000104]             // 0x0060c0d3    8b8004010000
                          push               eax                                           // 0x0060c0d9    50
@@ -604,6 +621,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          nop                                                              // 0x0060c0ed    90
                          nop                                                              // 0x0060c0ee    90
                          nop                                                              // 0x0060c0ef    90
+?GetSpeedInMetresPerSecond@MobileWallHug@@UBEMXZ:
                          xor.s              eax, eax                                      // 0x0060c0f0    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x5a]                     // 0x0060c0f2    668b415a
                          push               eax                                           // 0x0060c0f6    50
@@ -638,6 +656,7 @@ _jmp_addr_0x0060c110:    {disp8} fld        dword ptr [esp + 0x04]              
                          pop                esi                                           // 0x0060c136    5e
                          ret                0x0004                                        // 0x0060c137    c20400
                          call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x0060c13a    ff153c908a00
+?GetRunningSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c140    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000118]             // 0x0060c143    8b8018010000
                          push               eax                                           // 0x0060c149    50
@@ -652,6 +671,7 @@ _jmp_addr_0x0060c110:    {disp8} fld        dword ptr [esp + 0x04]              
                          nop                                                              // 0x0060c15d    90
                          nop                                                              // 0x0060c15e    90
                          nop                                                              // 0x0060c15f    90
+?GetDefaultSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c160    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000104]             // 0x0060c163    8b8004010000
                          push               eax                                           // 0x0060c169    50
@@ -920,13 +940,14 @@ _jmp_addr_0x0060c40e:    {disp8} mov        ax, word ptr [ecx + 0x02]           
                          ret                0x0004                                        // 0x0060c41b    c20400
                          nop                                                              // 0x0060c41e    90
                          nop                                                              // 0x0060c41f    90
-_jmp_addr_0x0060c420:    sub                esp, 0x24                                     // 0x0060c420    83ec24
+?Save@MobileWallHug@@UAEIAAVGameOSFile@@@Z:
+                         sub                esp, 0x24                                     // 0x0060c420    83ec24
                          push               esi                                           // 0x0060c423    56
                          {disp8} mov        esi, dword ptr [esp + 0x2c]                   // 0x0060c424    8b74242c
                          push               edi                                           // 0x0060c428    57
                          mov.s              edi, ecx                                      // 0x0060c429    8bf9
                          push               esi                                           // 0x0060c42b    56
-                         call               _jmp_addr_0x00606c10                          // 0x0060c42c    e8dfa7ffff
+                         call               ?Save@Mobile@@UAEIAAVGameOSFile@@@Z           // 0x0060c42c    e8dfa7ffff
                          test               eax, eax                                      // 0x0060c431    85c0
                          {disp32} je        _jmp_addr_0x0060c729                          // 0x0060c433    0f84f0020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0060c439    a190c9be00
@@ -1179,13 +1200,14 @@ _jmp_addr_0x0060c729:    pop                edi                                 
                          nop                                                              // 0x0060c73d    90
                          nop                                                              // 0x0060c73e    90
                          nop                                                              // 0x0060c73f    90
-_jmp_addr_0x0060c740:    sub                esp, 0x24                                     // 0x0060c740    83ec24
+?Load@MobileWallHug@@UAEIAAVGameOSFile@@@Z:
+                         sub                esp, 0x24                                     // 0x0060c740    83ec24
                          push               ebx                                           // 0x0060c743    53
                          push               esi                                           // 0x0060c744    56
                          {disp8} mov        esi, dword ptr [esp + 0x30]                   // 0x0060c745    8b742430
                          mov.s              ebx, ecx                                      // 0x0060c749    8bd9
                          push               esi                                           // 0x0060c74b    56
-                         call               _jmp_addr_0x00606c70                          // 0x0060c74c    e81fa5ffff
+                         call               ?Load@Mobile@@UAEIAAVGameOSFile@@@Z           // 0x0060c74c    e81fa5ffff
                          test               eax, eax                                      // 0x0060c751    85c0
                          {disp32} je        _jmp_addr_0x0060ca43                          // 0x0060c753    0f84ea020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x0060c759    a194c9be00

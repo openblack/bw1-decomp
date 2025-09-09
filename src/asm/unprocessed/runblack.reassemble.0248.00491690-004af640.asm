@@ -71,6 +71,14 @@
 .globl _globl_ct_0x00491a40
 .globl _globl_ct_0x00491ad0
 .globl _globl_ct_0x00491b90
+.globl ?GetBaseInfo@CreatureActionInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GCreatureActionInfo@@UAEPAXI@Z
+.globl ?GetBaseInfo@CreatureInitialDesireInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GCreatureInitialDesireInfo@@UAEPAXI@Z
+.globl ?GetBaseInfo@CreatureDesireActionEntry@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GCreatureDesireActionEntry@@UAEPAXI@Z
+.globl ?GetBaseInfo@CreatureDesireAttributeEntry@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GCreatureDesireAttributeEntry@@UAEPAXI@Z
 
 start_0x00491690_0x004af640:
 // Snippet: asm, [0x00491690, 0x004af626)
@@ -170,6 +178,7 @@ _jmp_addr_0x0049172c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x0049174d    90
                          nop                                                               // 0x0049174e    90
                          nop                                                               // 0x0049174f    90
+?GetBaseInfo@CreatureActionInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00491750    8b442404
                          mov                dword ptr [eax], 0x00000148                    // 0x00491754    c70048010000
                          mov                eax, 0x00c6c490                                // 0x0049175a    b890c4c600
@@ -227,6 +236,7 @@ _jmp_addr_0x004917b2:    ret                                                    
                          nop                                                               // 0x004917bd    90
                          nop                                                               // 0x004917be    90
                          nop                                                               // 0x004917bf    90
+??_GCreatureActionInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x004917c0    56
                          mov.s              esi, ecx                                       // 0x004917c1    8bf1
                          call               _jmp_addr_0x00436960                           // 0x004917c3    e89851faff
@@ -282,6 +292,7 @@ _jmp_addr_0x0049180c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x0049182d    90
                          nop                                                               // 0x0049182e    90
                          nop                                                               // 0x0049182f    90
+?GetBaseInfo@CreatureInitialDesireInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00491830    8b442404
                          mov                dword ptr [eax], 0x00000028                    // 0x00491834    c70028000000
                          mov                eax, 0x00c67e90                                // 0x0049183a    b8907ec600
@@ -339,6 +350,7 @@ _jmp_addr_0x00491892:    ret                                                    
                          nop                                                               // 0x0049189d    90
                          nop                                                               // 0x0049189e    90
                          nop                                                               // 0x0049189f    90
+??_GCreatureInitialDesireInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x004918a0    56
                          mov.s              esi, ecx                                       // 0x004918a1    8bf1
                          call               _jmp_addr_0x00436960                           // 0x004918a3    e8b850faff
@@ -394,6 +406,7 @@ _jmp_addr_0x004918ec:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x0049190d    90
                          nop                                                               // 0x0049190e    90
                          nop                                                               // 0x0049190f    90
+?GetBaseInfo@CreatureDesireActionEntry@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00491910    8b442404
                          mov                dword ptr [eax], 0x00000028                    // 0x00491914    c70028000000
                          mov                eax, 0x00c66950                                // 0x0049191a    b85069c600
@@ -451,6 +464,7 @@ _jmp_addr_0x00491972:    ret                                                    
                          nop                                                               // 0x0049197d    90
                          nop                                                               // 0x0049197e    90
                          nop                                                               // 0x0049197f    90
+??_GCreatureDesireActionEntry@@UAEPAXI@Z:
                          push               esi                                            // 0x00491980    56
                          mov.s              esi, ecx                                       // 0x00491981    8bf1
                          call               _jmp_addr_0x00436960                           // 0x00491983    e8d84ffaff
@@ -646,6 +660,7 @@ _jmp_addr_0x00491aec:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x00491b0d    90
                          nop                                                               // 0x00491b0e    90
                          nop                                                               // 0x00491b0f    90
+?GetBaseInfo@CreatureDesireAttributeEntry@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00491b10    8b442404
                          mov                dword ptr [eax], 0x00000028                    // 0x00491b14    c70028000000
                          mov                eax, 0x00c66090                                // 0x00491b1a    b89060c600
@@ -690,6 +705,7 @@ _jmp_addr_0x00491b60:    sub                esi, 0x38                           
                          pop                edi                                            // 0x00491b6d    5f
                          pop                esi                                            // 0x00491b6e    5e
 _jmp_addr_0x00491b6f:    ret                                                               // 0x00491b6f    c3
+??_GCreatureDesireAttributeEntry@@UAEPAXI@Z:
                          push               esi                                            // 0x00491b70    56
                          mov.s              esi, ecx                                       // 0x00491b71    8bf1
                          call               _jmp_addr_0x00436960                           // 0x00491b73    e8e84dfaff

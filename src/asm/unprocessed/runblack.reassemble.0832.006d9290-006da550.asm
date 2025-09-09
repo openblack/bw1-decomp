@@ -36,6 +36,8 @@
 .globl _jmp_addr_0x006d94a0
 .globl _jmp_addr_0x006da350
 .globl _jmp_addr_0x006da520
+.globl ?Save@PuzzleGame@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@PuzzleGame@@UAEIAAVGameOSFile@@@Z
 
 start_0x006d9290_0x006da550:
 // Snippet: asm, [0x006d9290, 0x006da53e)
@@ -471,6 +473,7 @@ _jmp_addr_0x006d9627:    push              0x40800000                           
                          nop                                                             // 0x006d96bd    90
                          nop                                                             // 0x006d96be    90
                          nop                                                             // 0x006d96bf    90
+?Save@PuzzleGame@@UAEIAAVGameOSFile@@@Z:
                          sub               esp, 0x08                                     // 0x006d96c0    83ec08
                          push              ebp                                           // 0x006d96c3    55
                          push              esi                                           // 0x006d96c4    56
@@ -973,6 +976,7 @@ _jmp_addr_0x006d9d35:    pop               esi                                  
                          add               esp, 0x08                                     // 0x006d9d39    83c408
                          ret               0x0004                                        // 0x006d9d3c    c20400
                          nop                                                             // 0x006d9d3f    90
+?Load@PuzzleGame@@UAEIAAVGameOSFile@@@Z:
                          push              ecx                                           // 0x006d9d40    51
                          push              ebp                                           // 0x006d9d41    55
                          push              esi                                           // 0x006d9d42    56

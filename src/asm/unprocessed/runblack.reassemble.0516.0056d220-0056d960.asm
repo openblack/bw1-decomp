@@ -26,6 +26,7 @@
 
 .globl _jmp_addr_0x0056d220
 .globl _jmp_addr_0x0056d270
+.globl ?Init@StatsBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 
 start_0x0056d220_0x0056d960:
 // Snippet: asm, [0x0056d220, 0x0056d93a)
@@ -175,6 +176,7 @@ _jmp_addr_0x0056d357:    mov.s             ecx, esi                             
                          nop                                                             // 0x0056d36d    90
                          nop                                                             // 0x0056d36e    90
                          nop                                                             // 0x0056d36f    90
+?Init@StatsBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          sub               esp, 0x0c                                     // 0x0056d370    83ec0c
                          {disp8} mov       eax, dword ptr [esp + 0x18]                   // 0x0056d373    8b442418
                          push              ebx                                           // 0x0056d377    53

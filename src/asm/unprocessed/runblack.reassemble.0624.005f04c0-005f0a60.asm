@@ -14,6 +14,8 @@
 .extern _jmp_addr_0x007fc760
 
 .globl _jmp_addr_0x005f04c0
+.globl ?GetPhysicsConstantsType@Animal@@UAEIXZ
+.globl ?SetUpPhysOb@Animal@@UAEXPAUPhysOb@@@Z
 
 start_0x005f04c0_0x005f0a60:
 // Snippet: asm, [0x005f04c0, 0x005f0a28)
@@ -32,6 +34,7 @@ _jmp_addr_0x005f04c0:    mov.s              eax, ecx                            
                          nop                                                         // 0x005f04cd    90
                          nop                                                         // 0x005f04ce    90
                          nop                                                         // 0x005f04cf    90
+?GetPhysicsConstantsType@Animal@@UAEIXZ:
                          mov                eax, 0x00000008                          // 0x005f04d0    b808000000
                          ret                                                         // 0x005f04d5    c3
                          nop                                                         // 0x005f04d6    90
@@ -44,6 +47,7 @@ _jmp_addr_0x005f04c0:    mov.s              eax, ecx                            
                          nop                                                         // 0x005f04dd    90
                          nop                                                         // 0x005f04de    90
                          nop                                                         // 0x005f04df    90
+?SetUpPhysOb@Animal@@UAEXPAUPhysOb@@@Z:
                          sub                esp, 0x40                                // 0x005f04e0    83ec40
                          push               ebx                                      // 0x005f04e3    53
                          push               ebp                                      // 0x005f04e4    55

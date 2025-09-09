@@ -68,6 +68,15 @@
 .globl _globl_ct_0x005b7d50
 .globl _globl_ct_0x005b7d80
 .globl _globl_ct_0x005b7db0
+.globl ?Enter@HandStateNormal@@UAEXXZ
+.globl ?Update@HandStateNormal@@UAEXMPAULHMatrix@@@Z
+.globl ?Enter@HandStatePlayAnim@@UAEXXZ
+.globl ?Update@HandStatePlayAnim@@UAEXMPAULHMatrix@@@Z
+.globl ?Enter@HandStateTotem@@UAEXXZ
+.globl ?Exit@HandStateTotem@@UAEXXZ
+.globl ?Update@HandStateTotem@@UAEXMPAULHMatrix@@@Z
+.globl ?Enter@HandStateTug@@UAEXXZ
+.globl ?Update@HandStateTug@@UAEXMPAULHMatrix@@@Z
 
 start_0x005b56d0_0x005b8e40:
 // Snippet: asm, [0x005b56d0, 0x005b8e1e)
@@ -664,6 +673,7 @@ _jmp_addr_0x005b5cf0:    ret                                                    
                          nop                                                              // 0x005b5cfd    90
                          nop                                                              // 0x005b5cfe    90
                          nop                                                              // 0x005b5cff    90
+?Enter@HandStateNormal@@UAEXXZ:
                          xor.s              eax, eax                                      // 0x005b5d00    33c0
                          {disp32} mov       dword ptr [data_bytes + 0x34e04c], eax        // 0x005b5d02    a34c40d100
                          {disp32} mov       dword ptr [data_bytes + 0x34dfb4], eax        // 0x005b5d07    a3b43fd100
@@ -2022,6 +2032,7 @@ _jmp_addr_0x005b7182:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          add                esp, 0x000000ac                               // 0x005b7198    81c4ac000000
                          ret                                                              // 0x005b719e    c3
                          nop                                                              // 0x005b719f    90
+?Update@HandStateNormal@@UAEXMPAULHMatrix@@@Z:
                          sub                esp, 0x40                                     // 0x005b71a0    83ec40
                          push               ebx                                           // 0x005b71a3    53
                          push               ebp                                           // 0x005b71a4    55
@@ -2341,6 +2352,7 @@ _jmp_addr_0x005b74e0:    {disp32} mov       dword ptr [data_bytes + 0x34e050], 0
                          nop                                                              // 0x005b750d    90
                          nop                                                              // 0x005b750e    90
                          nop                                                              // 0x005b750f    90
+?Enter@HandStatePlayAnim@@UAEXXZ:
                          {disp8} mov        dword ptr [ecx + 0x18], 0x00000000            // 0x005b7510    c7411800000000
                          ret                                                              // 0x005b7517    c3
                          nop                                                              // 0x005b7518    90
@@ -2351,6 +2363,7 @@ _jmp_addr_0x005b74e0:    {disp32} mov       dword ptr [data_bytes + 0x34e050], 0
                          nop                                                              // 0x005b751d    90
                          nop                                                              // 0x005b751e    90
                          nop                                                              // 0x005b751f    90
+?Update@HandStatePlayAnim@@UAEXMPAULHMatrix@@@Z:
                          sub                esp, 0x3c                                     // 0x005b7520    83ec3c
                          push               esi                                           // 0x005b7523    56
                          mov.s              esi, ecx                                      // 0x005b7524    8bf1
@@ -2488,6 +2501,7 @@ _jmp_addr_0x005b7660:    push               0x00407870                          
                          nop                                                              // 0x005b768d    90
                          nop                                                              // 0x005b768e    90
                          nop                                                              // 0x005b768f    90
+?Enter@HandStateTotem@@UAEXXZ:
                          sub                esp, 0x10                                     // 0x005b7690    83ec10
                          push               esi                                           // 0x005b7693    56
                          mov.s              esi, ecx                                      // 0x005b7694    8bf1
@@ -2568,9 +2582,11 @@ _jmp_addr_0x005b76f8:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          nop                                                              // 0x005b778d    90
                          nop                                                              // 0x005b778e    90
                          nop                                                              // 0x005b778f    90
+?Exit@HandStateTotem@@UAEXXZ:
                          {disp32} mov       dword ptr [data_bytes + 0x4bf2d0], 0x00000000 // 0x005b7790    c705d052e80000000000
                          ret                                                              // 0x005b779a    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005b779b    e859a0e4ff
+?Update@HandStateTotem@@UAEXMPAULHMatrix@@@Z:
                          push               ebp                                           // 0x005b77a0    55
                          mov.s              ebp, esp                                      // 0x005b77a1    8bec
                          sub                esp, 0x000000a4                               // 0x005b77a3    81eca4000000
@@ -3115,6 +3131,7 @@ _jmp_addr_0x005b7dc0:    {disp32} mov       dword ptr [data_bytes + 0x34e060], 0
                          nop                                                              // 0x005b7ded    90
                          nop                                                              // 0x005b7dee    90
                          nop                                                              // 0x005b7def    90
+?Enter@HandStateTug@@UAEXXZ:
                          sub                esp, 0x38                                     // 0x005b7df0    83ec38
                          push               ebx                                           // 0x005b7df3    53
                          xor.s              ebx, ebx                                      // 0x005b7df4    33db
@@ -3286,6 +3303,7 @@ _jmp_addr_0x005b7fc3:    {disp8} mov        eax, dword ptr [esp + 0x24]         
                          nop                                                              // 0x005b806d    90
                          nop                                                              // 0x005b806e    90
                          nop                                                              // 0x005b806f    90
+?Update@HandStateTug@@UAEXMPAULHMatrix@@@Z:
                          sub                esp, 0x00000110                               // 0x005b8070    81ec10010000
                          push               ebx                                           // 0x005b8076    53
                          push               ebp                                           // 0x005b8077    55

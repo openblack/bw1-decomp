@@ -18,6 +18,13 @@
 .extern _jmp_addr_0x006dc9f0
 .extern _jmp_addr_0x006ddf60
 
+.globl ?GetText@ChessGamePuzzle@@UAEPBDXZ
+.globl ??_GChessGamePuzzle@@UAEPAXI@Z
+.globl ?ToBeDeleted@ChessGamePuzzle@@UAEXH@Z
+.globl ?ToBeDeleted@ChessPion@@UAEXH@Z
+.globl ?CallVirtualFunctionsForCreation@ChessPion@@UAEXABUMapCoords@@@Z
+
+
 start_0x006dd940_0x006ddf60:
 // Snippet: asm, [0x006dd940, 0x006ddf3f)
                          {disp32} mov     eax, dword ptr [ecx + 0x00000148]        // 0x006dd940    8b8148010000
@@ -541,6 +548,7 @@ _jmp_addr_0x006ddd7c:    mov              dword ptr [eax], edi                  
                          nop                                                       // 0x006ddd9d    90
                          nop                                                       // 0x006ddd9e    90
                          nop                                                       // 0x006ddd9f    90
+?GetText@ChessGamePuzzle@@UAEPBDXZ:
                          mov              eax, 0x00c099d0                          // 0x006ddda0    b8d099c000
                          ret                                                       // 0x006ddda5    c3
                          nop                                                       // 0x006ddda6    90
@@ -553,6 +561,7 @@ _jmp_addr_0x006ddd7c:    mov              dword ptr [eax], edi                  
                          nop                                                       // 0x006dddad    90
                          nop                                                       // 0x006dddae    90
                          nop                                                       // 0x006dddaf    90
+??_GChessGamePuzzle@@UAEPAXI@Z:
                          push             esi                                      // 0x006dddb0    56
                          mov.s            esi, ecx                                 // 0x006dddb1    8bf1
                          call             _jmp_addr_0x0056fa80                     // 0x006dddb3    e8c81ce9ff
@@ -609,6 +618,7 @@ _jmp_addr_0x006dde18:    {disp8} mov      ecx, dword ptr [esp + 0x08]           
                          nop                                                       // 0x006dde2d    90
                          nop                                                       // 0x006dde2e    90
                          nop                                                       // 0x006dde2f    90
+?ToBeDeleted@ChessGamePuzzle@@UAEXH@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x006dde30    8b442404
                          push             eax                                      // 0x006dde34    50
                          call             ?ToBeDeleted@GameThingWithPos@@UAEXH@Z   // 0x006dde35    e8c61fe9ff
@@ -616,6 +626,7 @@ _jmp_addr_0x006dde18:    {disp8} mov      ecx, dword ptr [esp + 0x08]           
                          nop                                                       // 0x006dde3d    90
                          nop                                                       // 0x006dde3e    90
                          nop                                                       // 0x006dde3f    90
+?ToBeDeleted@ChessPion@@UAEXH@Z:
                          push             0x0                                      // 0x006dde40    6a00
                          call             ?ToBeDeleted@Object@@UAEXH@Z             // 0x006dde42    e82988f5ff
                          ret              0x0004                                   // 0x006dde47    c20400
@@ -625,6 +636,7 @@ _jmp_addr_0x006dde18:    {disp8} mov      ecx, dword ptr [esp + 0x08]           
                          nop                                                       // 0x006dde4d    90
                          nop                                                       // 0x006dde4e    90
                          nop                                                       // 0x006dde4f    90
+?CallVirtualFunctionsForCreation@ChessPion@@UAEXABUMapCoords@@@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x006dde50    8b442404
                          push             eax                                      // 0x006dde54    50
                          call             ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z  // 0x006dde55    e8868df5ff

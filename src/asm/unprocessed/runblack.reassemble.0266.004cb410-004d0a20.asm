@@ -116,6 +116,25 @@
 .globl _globl_ct_0x004d02c0
 .globl _globl_ct_0x004d02f0
 .globl _globl_ct_0x004d0320
+.globl ??_GAttribute@@UAEPAXI@Z
+.globl ??_GAttributeAllegiance@@UAEPAXI@Z
+.globl ??_GAttributeOrigin@@UAEPAXI@Z
+.globl ??_GAttributeAnimate@@UAEPAXI@Z
+.globl ??_GAttributeType@@UAEPAXI@Z
+.globl ??_GAttributeLife@@UAEPAXI@Z
+.globl ??_GAttributeVillagerJob@@UAEPAXI@Z
+.globl ??_GAttributeSex@@UAEPAXI@Z
+.globl ??_GAttributeOnFire@@UAEPAXI@Z
+.globl ??_GAttributePlayerNumber@@UAEPAXI@Z
+.globl ??_GAttributeIsHarderThanMe@@UAEPAXI@Z
+.globl ??_GAttributeCreatureType@@UAEPAXI@Z
+.globl ??_GCreatureLearningEpisode@@UAEPAXI@Z
+.globl ??_GAttributeTribe@@UAEPAXI@Z
+.globl ??_GAttributeTownReligiousBeliefInYou@@UAEPAXI@Z
+.globl ??_GAttributeWhatTownNeedsMost@@UAEPAXI@Z
+.globl ??_GAttributeTownSize@@UAEPAXI@Z
+.globl ??_GCreatureContext@@UAEPAXI@Z
+.globl ??_GCreatureVisionState@@UAEPAXI@Z
 
 start_0x004cb410_0x004d0a20:
 // Snippet: asm, [0x004cb410, 0x004d0a06)
@@ -438,6 +457,7 @@ _jmp_addr_0x004cb6e0:    mov.s              eax, ecx                            
                          nop                                                              // 0x004cb74d    90
                          nop                                                              // 0x004cb74e    90
                          nop                                                              // 0x004cb74f    90
+??_GAttribute@@UAEPAXI@Z:
                          push               esi                                           // 0x004cb750    56
                          mov.s              esi, ecx                                      // 0x004cb751    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cb753    e808b2f6ff
@@ -506,6 +526,7 @@ _jmp_addr_0x004cb76a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cb7bd    90
                          nop                                                              // 0x004cb7be    90
                          nop                                                              // 0x004cb7bf    90
+??_GAttributeAllegiance@@UAEPAXI@Z:
                          push               esi                                           // 0x004cb7c0    56
                          mov.s              esi, ecx                                      // 0x004cb7c1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cb7c3    e898b1f6ff
@@ -574,6 +595,7 @@ _jmp_addr_0x004cb7da:    mov.s              eax, esi                            
                          nop                                                              // 0x004cb82d    90
                          nop                                                              // 0x004cb82e    90
                          nop                                                              // 0x004cb82f    90
+??_GAttributeOrigin@@UAEPAXI@Z:
                          push               esi                                           // 0x004cb830    56
                          mov.s              esi, ecx                                      // 0x004cb831    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cb833    e828b1f6ff
@@ -654,6 +676,7 @@ _jmp_addr_0x004cb891:    ret                0x0004                              
                          nop                                                              // 0x004cb8ad    90
                          nop                                                              // 0x004cb8ae    90
                          nop                                                              // 0x004cb8af    90
+??_GAttributeAnimate@@UAEPAXI@Z:
                          push               esi                                           // 0x004cb8b0    56
                          mov.s              esi, ecx                                      // 0x004cb8b1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cb8b3    e8a8b0f6ff
@@ -717,6 +740,7 @@ _jmp_addr_0x004cb8ca:    mov.s              eax, esi                            
                          nop                                                              // 0x004cb90d    90
                          nop                                                              // 0x004cb90e    90
                          nop                                                              // 0x004cb90f    90
+??_GAttributeType@@UAEPAXI@Z:
                          push               esi                                           // 0x004cb910    56
                          mov.s              esi, ecx                                      // 0x004cb911    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cb913    e848b0f6ff
@@ -782,6 +806,7 @@ _jmp_addr_0x004cb92a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cb97d    90
                          nop                                                              // 0x004cb97e    90
                          nop                                                              // 0x004cb97f    90
+??_GAttributeLife@@UAEPAXI@Z:
                          push               esi                                           // 0x004cb980    56
                          mov.s              esi, ecx                                      // 0x004cb981    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cb983    e8d8aff6ff
@@ -845,6 +870,7 @@ _jmp_addr_0x004cb99a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cb9dd    90
                          nop                                                              // 0x004cb9de    90
                          nop                                                              // 0x004cb9df    90
+??_GAttributeVillagerJob@@UAEPAXI@Z:
                          push               esi                                           // 0x004cb9e0    56
                          mov.s              esi, ecx                                      // 0x004cb9e1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cb9e3    e878aff6ff
@@ -913,6 +939,7 @@ _jmp_addr_0x004cb9fa:    mov.s              eax, esi                            
                          nop                                                              // 0x004cba4d    90
                          nop                                                              // 0x004cba4e    90
                          nop                                                              // 0x004cba4f    90
+??_GAttributeSex@@UAEPAXI@Z:
                          push               esi                                           // 0x004cba50    56
                          mov.s              esi, ecx                                      // 0x004cba51    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cba53    e808aff6ff
@@ -978,6 +1005,7 @@ _jmp_addr_0x004cba6a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cbabd    90
                          nop                                                              // 0x004cbabe    90
                          nop                                                              // 0x004cbabf    90
+??_GAttributeOnFire@@UAEPAXI@Z:
                          push               esi                                           // 0x004cbac0    56
                          mov.s              esi, ecx                                      // 0x004cbac1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cbac3    e898aef6ff
@@ -1041,6 +1069,7 @@ _jmp_addr_0x004cbada:    mov.s              eax, esi                            
                          nop                                                              // 0x004cbb1d    90
                          nop                                                              // 0x004cbb1e    90
                          nop                                                              // 0x004cbb1f    90
+??_GAttributePlayerNumber@@UAEPAXI@Z:
                          push               esi                                           // 0x004cbb20    56
                          mov.s              esi, ecx                                      // 0x004cbb21    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cbb23    e838aef6ff
@@ -1101,6 +1130,7 @@ _jmp_addr_0x004cbb3a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cbb7d    90
                          nop                                                              // 0x004cbb7e    90
                          nop                                                              // 0x004cbb7f    90
+??_GAttributeIsHarderThanMe@@UAEPAXI@Z:
                          push               esi                                           // 0x004cbb80    56
                          mov.s              esi, ecx                                      // 0x004cbb81    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cbb83    e8d8adf6ff
@@ -1161,6 +1191,7 @@ _jmp_addr_0x004cbb9a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cbbdd    90
                          nop                                                              // 0x004cbbde    90
                          nop                                                              // 0x004cbbdf    90
+??_GAttributeCreatureType@@UAEPAXI@Z:
                          push               esi                                           // 0x004cbbe0    56
                          mov.s              esi, ecx                                      // 0x004cbbe1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cbbe3    e878adf6ff
@@ -1173,6 +1204,7 @@ _jmp_addr_0x004cbb9a:    mov.s              eax, esi                            
 _jmp_addr_0x004cbbfa:    mov.s              eax, esi                                      // 0x004cbbfa    8bc6
                          pop                esi                                           // 0x004cbbfc    5e
                          ret                0x0004                                        // 0x004cbbfd    c20400
+??_GCreatureLearningEpisode@@UAEPAXI@Z:
                          push               esi                                           // 0x004cbc00    56
                          mov.s              esi, ecx                                      // 0x004cbc01    8bf1
                          call               _jmp_addr_0x004d4500                          // 0x004cbc03    e8f8880000
@@ -3351,6 +3383,7 @@ _jmp_addr_0x004cd628:    {disp8} mov        esi, dword ptr [esp + 0x10]         
                          nop                                                              // 0x004cd69d    90
                          nop                                                              // 0x004cd69e    90
                          nop                                                              // 0x004cd69f    90
+??_GAttributeTribe@@UAEPAXI@Z:
                          push               esi                                           // 0x004cd6a0    56
                          mov.s              esi, ecx                                      // 0x004cd6a1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cd6a3    e8b892f6ff
@@ -3416,6 +3449,7 @@ _jmp_addr_0x004cd6ba:    mov.s              eax, esi                            
                          nop                                                              // 0x004cd70d    90
                          nop                                                              // 0x004cd70e    90
                          nop                                                              // 0x004cd70f    90
+??_GAttributeTownReligiousBeliefInYou@@UAEPAXI@Z:
                          push               esi                                           // 0x004cd710    56
                          mov.s              esi, ecx                                      // 0x004cd711    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cd713    e84892f6ff
@@ -3476,6 +3510,7 @@ _jmp_addr_0x004cd72a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cd76d    90
                          nop                                                              // 0x004cd76e    90
                          nop                                                              // 0x004cd76f    90
+??_GAttributeWhatTownNeedsMost@@UAEPAXI@Z:
                          push               esi                                           // 0x004cd770    56
                          mov.s              esi, ecx                                      // 0x004cd771    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cd773    e8e891f6ff
@@ -3544,6 +3579,7 @@ _jmp_addr_0x004cd78a:    mov.s              eax, esi                            
                          nop                                                              // 0x004cd7dd    90
                          nop                                                              // 0x004cd7de    90
                          nop                                                              // 0x004cd7df    90
+??_GAttributeTownSize@@UAEPAXI@Z:
                          push               esi                                           // 0x004cd7e0    56
                          mov.s              esi, ecx                                      // 0x004cd7e1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004cd7e3    e87891f6ff
@@ -6841,6 +6877,7 @@ _jmp_addr_0x004cfe3b:    {disp8} lea        ecx, dword ptr [esp + 0x14]         
                          nop                                                              // 0x004cfe5d    90
                          nop                                                              // 0x004cfe5e    90
                          nop                                                              // 0x004cfe5f    90
+??_GCreatureContext@@UAEPAXI@Z:
                          push               esi                                           // 0x004cfe60    56
                          mov.s              esi, ecx                                      // 0x004cfe61    8bf1
                          {disp8} lea        ecx, dword ptr [esi + 0x08]                   // 0x004cfe63    8d4e08
@@ -7310,6 +7347,7 @@ _jmp_addr_0x004d0340:    push               esi                                 
                          mov.s              eax, esi                                      // 0x004d036c    8bc6
                          pop                esi                                           // 0x004d036e    5e
                          ret                                                              // 0x004d036f    c3
+??_GCreatureVisionState@@UAEPAXI@Z:
                          push               esi                                           // 0x004d0370    56
                          mov.s              esi, ecx                                      // 0x004d0371    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004d0373    e8e865f6ff

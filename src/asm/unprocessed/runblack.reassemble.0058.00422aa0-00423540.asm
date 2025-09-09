@@ -30,9 +30,17 @@
 .globl _globl_ct_0x00423110
 .globl _globl_ct_0x004233b0
 .globl _globl_ct_0x004233e0
+.globl ?Save@ChessPion@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@ChessPion@@UAEIAAVGameOSFile@@@Z
+.globl ?GetSaveType@Feature@@UAEIXZ
+.globl ?GetDebugText@Feature@@UAEPADXZ
+.globl ??_GFeature@@UAEPAXI@Z
+.globl ?CreatureMustAvoid@ChessPion@@UAE_NPAVCreature@@@Z
+.globl ?AddToRoutePlan@ChessPion@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z
 
 start_0x00422aa0_0x00423540:
 // Snippet: asm, [0x00422aa0, 0x00423528)
+?Save@ChessPion@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                           // 0x00422aa0    51
                          push               esi                                           // 0x00422aa1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x00422aa2    8b74240c
@@ -137,6 +145,7 @@ _jmp_addr_0x00422bae:    pop                edi                                 
                          nop                                                              // 0x00422bbd    90
                          nop                                                              // 0x00422bbe    90
                          nop                                                              // 0x00422bbf    90
+?Load@ChessPion@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                           // 0x00422bc0    51
                          push               esi                                           // 0x00422bc1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x00422bc2    8b74240c
@@ -412,6 +421,7 @@ _jmp_addr_0x00422e57:    add                esi, 0x04                           
                          ret                                                              // 0x00422e6d    c3
                          nop                                                              // 0x00422e6e    90
                          nop                                                              // 0x00422e6f    90
+?GetSaveType@Feature@@UAEIXZ:
                          mov                eax, 0x00000074                               // 0x00422e70    b874000000
                          ret                                                              // 0x00422e75    c3
                          nop                                                              // 0x00422e76    90
@@ -424,6 +434,7 @@ _jmp_addr_0x00422e57:    add                esi, 0x04                           
                          nop                                                              // 0x00422e7d    90
                          nop                                                              // 0x00422e7e    90
                          nop                                                              // 0x00422e7f    90
+?GetDebugText@Feature@@UAEPADXZ:
                          mov                eax, 0x009c95b4                               // 0x00422e80    b8b4959c00
                          ret                                                              // 0x00422e85    c3
                          nop                                                              // 0x00422e86    90
@@ -436,6 +447,7 @@ _jmp_addr_0x00422e57:    add                esi, 0x04                           
                          nop                                                              // 0x00422e8d    90
                          nop                                                              // 0x00422e8e    90
                          nop                                                              // 0x00422e8f    90
+??_GFeature@@UAEPAXI@Z:
                          push               esi                                           // 0x00422e90    56
                          mov.s              esi, ecx                                      // 0x00422e91    8bf1
                          mov                dword ptr [esi], 0x008c2320                   // 0x00422e93    c70620238c00
@@ -459,6 +471,7 @@ _jmp_addr_0x00422eb0:    mov.s              eax, esi                            
                          nop                                                              // 0x00422ebd    90
                          nop                                                              // 0x00422ebe    90
                          nop                                                              // 0x00422ebf    90
+?CreatureMustAvoid@ChessPion@@UAE_NPAVCreature@@@Z:
                          mov                eax, 0x00000001                               // 0x00422ec0    b801000000
                          ret                0x0004                                        // 0x00422ec5    c20400
                          nop                                                              // 0x00422ec8    90
@@ -469,6 +482,7 @@ _jmp_addr_0x00422eb0:    mov.s              eax, esi                            
                          nop                                                              // 0x00422ecd    90
                          nop                                                              // 0x00422ece    90
                          nop                                                              // 0x00422ecf    90
+?AddToRoutePlan@ChessPion@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z:
                          sub                esp, 0x58                                     // 0x00422ed0    83ec58
                          push               ebx                                           // 0x00422ed3    53
                          push               ebp                                           // 0x00422ed4    55

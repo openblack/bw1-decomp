@@ -99,6 +99,11 @@
 .globl _globl_ct_0x0044d810
 .globl _globl_ct_0x0044df60
 .globl _globl_ct_0x0044ed20
+.globl ?CanPlayerGestureWhenCameraMoving@CameraModeTwoObjects@@UAE_NXZ
+.globl ?Validate@CameraModeTwoObjects@@UAEXXZ
+.globl ?Cleanup@CameraModeTwoObjects@@UAEXXZ
+.globl ?CanExist@CameraModeTwoObjects@@UAE_NXZ
+.globl ?Restart@CameraModeTwoObjects@@UAEXXZ
 
 start_0x00449de0_0x004509f0:
 // Snippet: asm, [0x00449de0, 0x00450923)
@@ -539,6 +544,7 @@ _jmp_addr_0x0044a212:    {disp32} mov       ecx, dword ptr [_game]              
                          pop                esi                                           // 0x0044a287    5e
                          ret                0x0004                                        // 0x0044a288    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0044a28b    e8e975fbff
+?CanPlayerGestureWhenCameraMoving@CameraModeTwoObjects@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x0044a290    33c0
                          ret                                                              // 0x0044a292    c3
                          nop                                                              // 0x0044a293    90
@@ -570,6 +576,7 @@ _jmp_addr_0x0044a212:    {disp32} mov       ecx, dword ptr [_game]              
                          nop                                                              // 0x0044a2ad    90
                          nop                                                              // 0x0044a2ae    90
                          nop                                                              // 0x0044a2af    90
+?Validate@CameraModeTwoObjects@@UAEXXZ:
                          ret                                                              // 0x0044a2b0    c3
                          nop                                                              // 0x0044a2b1    90
                          nop                                                              // 0x0044a2b2    90
@@ -598,6 +605,7 @@ _jmp_addr_0x0044a212:    {disp32} mov       ecx, dword ptr [_game]              
                          nop                                                              // 0x0044a2cd    90
                          nop                                                              // 0x0044a2ce    90
                          nop                                                              // 0x0044a2cf    90
+?Cleanup@CameraModeTwoObjects@@UAEXXZ:
                          ret                                                              // 0x0044a2d0    c3
                          nop                                                              // 0x0044a2d1    90
                          nop                                                              // 0x0044a2d2    90
@@ -614,6 +622,7 @@ _jmp_addr_0x0044a212:    {disp32} mov       ecx, dword ptr [_game]              
                          nop                                                              // 0x0044a2dd    90
                          nop                                                              // 0x0044a2de    90
                          nop                                                              // 0x0044a2df    90
+?CanExist@CameraModeTwoObjects@@UAE_NXZ:
                          mov                eax, 0x00000001                               // 0x0044a2e0    b801000000
                          ret                                                              // 0x0044a2e5    c3
                          nop                                                              // 0x0044a2e6    90
@@ -754,6 +763,7 @@ _jmp_addr_0x0044a389:    mov.s              eax, esi                            
                          pop                esi                                           // 0x0044a38b    5e
                          ret                0x0004                                        // 0x0044a38c    c20400
                          nop                                                              // 0x0044a38f    90
+?Restart@CameraModeTwoObjects@@UAEXXZ:
                          ret                                                              // 0x0044a390    c3
                          nop                                                              // 0x0044a391    90
                          nop                                                              // 0x0044a392    90

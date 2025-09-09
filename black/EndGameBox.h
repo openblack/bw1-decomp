@@ -23,7 +23,7 @@ extern const struct DialogBoxBaseVftable __vt__10EndGameBox asm("??_7EndGameBox@
 // Override methods
 
 // win1.41 0056e160 mac 1031c660 EndGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__10EndGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@EndGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__10EndGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@EndGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 0056e730 mac 1031c600 EndGameBox::Destroy(void)
 void __fastcall Destroy__10EndGameBoxFv(struct DialogBoxBase* this) asm("?Destroy@EndGameBox@@UAEXXZ");
 // win1.41 0053be30 mac 1031ba50 EndGameBox::CanESCOut(void)

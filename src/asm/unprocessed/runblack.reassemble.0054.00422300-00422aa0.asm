@@ -37,9 +37,14 @@
 .globl _jmp_addr_0x00422580
 .globl _jmp_addr_0x00422600
 .globl _jmp_addr_0x00422750
+.globl ?CallVirtualFunctionsForCreation@AnimatedStatic@@UAEXABUMapCoords@@@Z
+.globl ?ToBeDeleted@AnimatedStatic@@UAEXH@Z
+.globl ?SaveObject@AnimatedStatic@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
+.globl ?Draw@ChessPion@@UAEXXZ
 
 start_0x00422300_0x00422aa0:
 // Snippet: asm, [0x00422300, 0x00422a7e)
+?CallVirtualFunctionsForCreation@AnimatedStatic@@UAEXABUMapCoords@@@Z:
                          sub               esp, 0x14                                     // 0x00422300    83ec14
                          push              ebx                                           // 0x00422303    53
                          push              esi                                           // 0x00422304    56
@@ -244,6 +249,7 @@ _jmp_addr_0x00422593:    {disp8} mov       dword ptr [eax + -0x0c], edx         
                          {disp8} jne       _jmp_addr_0x00422593                          // 0x0042259c    75f5
                          ret                                                             // 0x0042259e    c3
                          nop                                                             // 0x0042259f    90
+?ToBeDeleted@AnimatedStatic@@UAEXH@Z:
                          {disp32} mov      eax, dword ptr [_game]                        // 0x004225a0    a15c19d000
                          push              ebx                                           // 0x004225a5    53
                          push              ebp                                           // 0x004225a6    55
@@ -335,6 +341,7 @@ _jmp_addr_0x0042263b:    mov.s             eax, edi                             
                          nop                                                             // 0x0042264d    90
                          nop                                                             // 0x0042264e    90
                          nop                                                             // 0x0042264f    90
+?SaveObject@AnimatedStatic@@UAEIAAULHOSFile@@ABUMapCoords@@@Z:
                          sub               esp, 0x000001ac                               // 0x00422650    81ecac010000
                          push              ebx                                           // 0x00422656    53
                          push              esi                                           // 0x00422657    56
@@ -446,6 +453,7 @@ _jmp_addr_0x00422750:    {disp8} mov       edx, dword ptr [esp + 0x04]          
                          nop                                                             // 0x0042276d    90
                          nop                                                             // 0x0042276e    90
                          nop                                                             // 0x0042276f    90
+?Draw@ChessPion@@UAEXXZ:
                          sub               esp, 0x10                                     // 0x00422770    83ec10
                          push              ebx                                           // 0x00422773    53
                          push              ebp                                           // 0x00422774    55

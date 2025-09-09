@@ -13,8 +13,8 @@
 .extern _jmp_addr_0x00550e40
 .extern @__ct__5TotemFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
 .extern _jmp_addr_0x00737790
-.extern _jmp_addr_0x00737800
-.extern _jmp_addr_0x007378b0
+.extern ?Load@Totem@@UAEIAAVGameOSFile@@@Z
+.extern ?Save@Totem@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x007a1400
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
@@ -22,6 +22,17 @@
 .globl _jmp_addr_0x006da550
 .globl _jmp_addr_0x006da6d0
 .globl _jmp_addr_0x006dab00
+.globl ?ValidForLockedSelectProcess@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z
+.globl ?InterfaceValidToTap@PuzzleTotem@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?InterfaceTap@PuzzleTotem@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?SetMaxHeight@PuzzleTotem@@UAEXM@Z
+.globl ?Load@PuzzleTotem@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@PuzzleTotem@@UAEIAAVGameOSFile@@@Z
+.globl ?NetworkFriendlyStartLockedSelect@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z
+.globl ?NetworkUnfriendlyStartLockedSelect@PuzzleTotem@@UAEIXZ
+.globl ?NetworkUnfriendlyEndLockedSelect@PuzzleTotem@@UAEIXZ
+.globl ?NetworkFriendlyEndLockedSelect@PuzzleTotem@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?NetworkUnfriendlyLockedSelect@PuzzleTotem@@UAEIPAUControlHandUpdateInfo@@@Z
 
 start_0x006da550_0x006dab60:
 // Snippet: asm, [0x006da550, 0x006dab30)
@@ -71,6 +82,7 @@ _jmp_addr_0x006da5c7:    xor.s              eax, eax                            
                          nop                                                              // 0x006da5cd    90
                          nop                                                              // 0x006da5ce    90
                          nop                                                              // 0x006da5cf    90
+?ValidForLockedSelectProcess@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z:
                          mov                eax, dword ptr [ecx]                          // 0x006da5d0    8b01
                          call               dword ptr [eax + 0xd4]                        // 0x006da5d2    ff90d4000000
                          neg                eax                                           // 0x006da5d8    f7d8
@@ -92,6 +104,7 @@ _jmp_addr_0x006da5c7:    xor.s              eax, eax                            
                          nop                                                              // 0x006da5ed    90
                          nop                                                              // 0x006da5ee    90
                          nop                                                              // 0x006da5ef    90
+?InterfaceValidToTap@PuzzleTotem@@UAEIPAVGInterfaceStatus@@@Z:
                          {disp32} mov       edx, dword ptr [ecx + 0x000000e4]             // 0x006da5f0    8b91e4000000
                          xor.s              eax, eax                                      // 0x006da5f6    33c0
                          cmp                edx, -0x01                                    // 0x006da5f8    83faff
@@ -112,6 +125,7 @@ _jmp_addr_0x006da5c7:    xor.s              eax, eax                            
                          nop                                                              // 0x006da60d    90
                          nop                                                              // 0x006da60e    90
                          nop                                                              // 0x006da60f    90
+?InterfaceTap@PuzzleTotem@@UAEIPAVGInterfaceStatus@@@Z:
                          {disp32} mov       edx, dword ptr [ecx + 0x000000e4]             // 0x006da610    8b91e4000000
                          or                 eax, -0x1                                     // 0x006da616    83c8ff
                          sub                esp, 0x00000168                               // 0x006da619    81ec68010000
@@ -205,6 +219,7 @@ _jmp_addr_0x006da701:    {disp32} mov       dword ptr [esi + 0x000000e8], ecx   
                          nop                                                              // 0x006da70d    90
                          nop                                                              // 0x006da70e    90
                          nop                                                              // 0x006da70f    90
+?SetMaxHeight@PuzzleTotem@@UAEXM@Z:
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x006da710    d9442404
                          push               esi                                           // 0x006da714    56
                          mov.s              esi, ecx                                      // 0x006da715    8bf1
@@ -224,12 +239,13 @@ _jmp_addr_0x006da701:    {disp32} mov       dword ptr [esi + 0x000000e8], ecx   
                          nop                                                              // 0x006da73d    90
                          nop                                                              // 0x006da73e    90
                          nop                                                              // 0x006da73f    90
+?Load@PuzzleTotem@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006da740    53
                          push               esi                                           // 0x006da741    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006da742    8b74240c
                          mov.s              ebx, ecx                                      // 0x006da746    8bd9
                          push               esi                                           // 0x006da748    56
-                         call               _jmp_addr_0x00737800                          // 0x006da749    e8b2d00500
+                         call               ?Load@Totem@@UAEIAAVGameOSFile@@@Z            // 0x006da749    e8b2d00500
                          test               eax, eax                                      // 0x006da74e    85c0
                          {disp32} je        _jmp_addr_0x006da7e0                          // 0x006da750    0f848a000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x006da756    a194c9be00
@@ -287,12 +303,13 @@ _jmp_addr_0x006da7e0:    pop                esi                                 
                          nop                                                              // 0x006da7ed    90
                          nop                                                              // 0x006da7ee    90
                          nop                                                              // 0x006da7ef    90
+?Save@PuzzleTotem@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006da7f0    53
                          push               esi                                           // 0x006da7f1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006da7f2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006da7f6    8bd9
                          push               esi                                           // 0x006da7f8    56
-                         call               _jmp_addr_0x007378b0                          // 0x006da7f9    e8b2d00500
+                         call               ?Save@Totem@@UAEIAAVGameOSFile@@@Z            // 0x006da7f9    e8b2d00500
                          test               eax, eax                                      // 0x006da7fe    85c0
                          {disp32} je        _jmp_addr_0x006da890                          // 0x006da800    0f848a000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006da806    a190c9be00
@@ -350,6 +367,7 @@ _jmp_addr_0x006da890:    pop                esi                                 
                          nop                                                              // 0x006da89d    90
                          nop                                                              // 0x006da89e    90
                          nop                                                              // 0x006da89f    90
+?NetworkFriendlyStartLockedSelect@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z:
                          push               esi                                           // 0x006da8a0    56
                          {disp8} lea        eax, dword ptr [ecx + 0x14]                   // 0x006da8a1    8d4114
                          mov                esi, dword ptr [eax]                          // 0x006da8a4    8b30
@@ -371,6 +389,7 @@ _jmp_addr_0x006da890:    pop                esi                                 
                          nop                                                              // 0x006da8dd    90
                          nop                                                              // 0x006da8de    90
                          nop                                                              // 0x006da8df    90
+?NetworkUnfriendlyStartLockedSelect@PuzzleTotem@@UAEIXZ:
                          push               esi                                           // 0x006da8e0    56
                          {disp8} lea        eax, dword ptr [ecx + 0x14]                   // 0x006da8e1    8d4114
                          mov                esi, dword ptr [eax]                          // 0x006da8e4    8b30
@@ -394,6 +413,7 @@ _jmp_addr_0x006da890:    pop                esi                                 
                          nop                                                              // 0x006da91d    90
                          nop                                                              // 0x006da91e    90
                          nop                                                              // 0x006da91f    90
+?NetworkUnfriendlyEndLockedSelect@PuzzleTotem@@UAEIXZ:
                          {disp32} mov       edx, dword ptr [ecx + 0x000000e4]             // 0x006da920    8b91e4000000
                          or                 eax, -0x1                                     // 0x006da926    83c8ff
                          cmp.s              edx, eax                                      // 0x006da929    3bd0
@@ -417,6 +437,7 @@ _jmp_addr_0x006da939:    {disp32} lea       eax, dword ptr [ecx + 0x000000c4]   
                          nop                                                              // 0x006da95d    90
                          nop                                                              // 0x006da95e    90
                          nop                                                              // 0x006da95f    90
+?NetworkFriendlyEndLockedSelect@PuzzleTotem@@UAEIPAVGInterfaceStatus@@@Z:
                          mov                eax, 0x00000001                               // 0x006da960    b801000000
                          ret                0x0004                                        // 0x006da965    c20400
                          nop                                                              // 0x006da968    90
@@ -427,6 +448,7 @@ _jmp_addr_0x006da939:    {disp32} lea       eax, dword ptr [ecx + 0x000000c4]   
                          nop                                                              // 0x006da96d    90
                          nop                                                              // 0x006da96e    90
                          nop                                                              // 0x006da96f    90
+?NetworkUnfriendlyLockedSelect@PuzzleTotem@@UAEIPAUControlHandUpdateInfo@@@Z:
                          push               esi                                           // 0x006da970    56
                          mov.s              esi, ecx                                      // 0x006da971    8bf1
                          {disp32} mov       ecx, dword ptr [esi + 0x000000e4]             // 0x006da973    8b8ee4000000

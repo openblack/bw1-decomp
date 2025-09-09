@@ -45,6 +45,8 @@
 .globl _globl_ct_0x004d7790
 .globl _globl_ct_0x004d77c0
 .globl _globl_ct_0x004d77f0
+.globl ??_GCreatureBelief@@UAEPAXI@Z
+.globl ??_GAllocatedBeliefList@@UAEPAXI@Z
 
 start_0x004d7640_0x004d8230:
 // Snippet: asm, [0x004d7640, 0x004d8200)
@@ -379,6 +381,7 @@ _jmp_addr_0x004d786a:    mov                dl, 0x01                            
                          nop                                                              // 0x004d78cd    90
                          nop                                                              // 0x004d78ce    90
                          nop                                                              // 0x004d78cf    90
+??_GCreatureBelief@@UAEPAXI@Z:
                          push               esi                                           // 0x004d78d0    56
                          mov.s              esi, ecx                                      // 0x004d78d1    8bf1
                          call               _jmp_addr_0x004d8b50                          // 0x004d78d3    e878120000
@@ -401,6 +404,7 @@ _jmp_addr_0x004d78f0:    mov.s              eax, ecx                            
                          {disp8} mov        dword ptr [eax + 0x10], ecx                   // 0x004d7906    894810
                          ret                                                              // 0x004d7909    c3
                          call               dword ptr [__imp__GetCommandLineA@0]          // 0x004d790a    ff1548918a00
+??_GAllocatedBeliefList@@UAEPAXI@Z:
                          push               esi                                           // 0x004d7910    56
                          mov.s              esi, ecx                                      // 0x004d7911    8bf1
                          call               _jmp_addr_0x00436960                          // 0x004d7913    e848f0f5ff

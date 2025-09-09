@@ -167,6 +167,8 @@
 .globl _globl_ct_0x0063c3a0
 .globl ?CalculateWhereIWillBeAfterNSeconds@Object@@UAEXMPAULHPoint@@@Z
 .globl ?CalculateWhereIWillBeAfterNSeconds@Abode@@UAEXMPAULHPoint@@@Z
+.globl ?CalculateWhereIWillBeAfterNSeconds@Villager@@UAEXMPAULHPoint@@@Z
+.globl ?CalculateWhereIWillBeAfterNSeconds@Creature@@UAEXMPAULHPoint@@@Z
 
 ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0063ad80    8b442408
@@ -1332,6 +1334,7 @@ _jmp_addr_0x0063b8c0:    {disp32} mov       dword ptr [data_bytes + 0x37e390], 0
                          nop                                                               // 0x0063b9ad    90
                          nop                                                               // 0x0063b9ae    90
                          nop                                                               // 0x0063b9af    90
+?CalculateWhereIWillBeAfterNSeconds@Villager@@UAEXMPAULHPoint@@@Z:
                          sub                esp, 0x14                                      // 0x0063b9b0    83ec14
                          push               ebx                                            // 0x0063b9b3    53
                          push               esi                                            // 0x0063b9b4    56
@@ -1416,6 +1419,7 @@ _jmp_addr_0x0063babf:    pop                edi                                 
                          nop                                                               // 0x0063bacd    90
                          nop                                                               // 0x0063bace    90
                          nop                                                               // 0x0063bacf    90
+?CalculateWhereIWillBeAfterNSeconds@Creature@@UAEXMPAULHPoint@@@Z:
                          sub                esp, 0x0c                                      // 0x0063bad0    83ec0c
                          {disp32} mov       eax, dword ptr [ecx + 0x00000160]              // 0x0063bad3    8b8160010000
                          {disp8} mov        eax, dword ptr [eax + 0x58]                    // 0x0063bad9    8b4058

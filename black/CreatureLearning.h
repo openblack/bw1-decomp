@@ -61,9 +61,10 @@ void __fastcall __dt__16CreatureLearningFv(struct Base* this, const void* edx, u
 
 struct CreatureLearningEpisode
 {
-  uint8_t field_0x0;
+  struct Base super;  /* 0x0 */
+  uint8_t field_0x8[0xc];
 };
-static_assert(sizeof(struct CreatureLearningEpisode) == 0x1, "Data type is of wrong size");
+static_assert(sizeof(struct CreatureLearningEpisode) == 0x14, "Data type is of wrong size");
 
 // Override methods
 

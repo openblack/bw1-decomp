@@ -10,7 +10,6 @@
 
 struct Base;
 struct GameOSFile;
-struct PSysProcessInfo;
 
 struct PSysBase
 {

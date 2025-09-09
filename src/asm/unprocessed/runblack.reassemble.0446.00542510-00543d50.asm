@@ -53,9 +53,13 @@
 .globl _jmp_addr_0x00542a90
 .globl _jmp_addr_0x00542c50
 .globl _jmp_addr_0x00543200
+.globl ?Init@TattooEditor@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@TattooEditor@@UAEXXZ
+.globl ?InitControls@TattooEditor@@UAEXXZ
 
 start_0x00542510_0x00543d50:
 // Snippet: asm, [0x00542510, 0x00543d14)
+?Init@TattooEditor@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00542510    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00542514    8b542404
                          push               ebx                                           // 0x00542518    53
@@ -279,6 +283,7 @@ _jmp_addr_0x0054278d:    push               ebx                                 
                          nop                                                              // 0x005427dd    90
                          nop                                                              // 0x005427de    90
                          nop                                                              // 0x005427df    90
+?Destroy@TattooEditor@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x005427e0    e8ab0dfdff
                          {disp32} mov       dword ptr [data_bytes + 0x30ab70], 0x00000000 // 0x005427e5    c705700bcd0000000000
                          ret                                                              // 0x005427ef    c3
@@ -1165,6 +1170,7 @@ _jmp_addr_0x005433cc:    pop                esi                                 
                          nop                                                              // 0x005433dd    90
                          nop                                                              // 0x005433de    90
                          nop                                                              // 0x005433df    90
+?InitControls@TattooEditor@@UAEXXZ:
                          push               ebx                                           // 0x005433e0    53
                          push               esi                                           // 0x005433e1    56
                          mov.s              esi, ecx                                      // 0x005433e2    8bf1

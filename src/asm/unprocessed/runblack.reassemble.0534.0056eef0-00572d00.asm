@@ -159,9 +159,15 @@
 .globl ?GetFOVHelpCondition@GameThingWithPos@@UAEIXZ
 .globl ?GetScriptObjectType@GameThingWithPos@@UAEIXZ
 .globl ?GetSpellCastPos@GameThingWithPos@@UAEXPAUMapCoords@@@Z
+.globl ?Init@MultiplayerConditionBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@MultiplayerConditionBox@@UAEXXZ
+.globl ?InitControls@MultiplayerConditionBox@@UAEXXZ
+.globl ?Init@GatheringBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@GatheringBox@@UAEXXZ
 
 start_0x0056eef0_0x00572d00:
 // Snippet: asm, [0x0056eef0, 0x00572cbb)
+?Init@MultiplayerConditionBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          sub                esp, 0x00000818                               // 0x0056eef0    81ec18080000
                          {disp32} mov       eax, dword ptr [esp + 0x00000824]             // 0x0056eef6    8b842424080000
                          push               ebx                                           // 0x0056eefd    53
@@ -425,6 +431,7 @@ _jmp_addr_0x0056f221:    {disp8} fld        dword ptr [esp + 0x10]              
                          nop                                                              // 0x0056f25d    90
                          nop                                                              // 0x0056f25e    90
                          nop                                                              // 0x0056f25f    90
+?Destroy@MultiplayerConditionBox@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x0056f260    e82b43faff
                          {disp32} mov       dword ptr [data_bytes + 0x340058], 0x00000000 // 0x0056f265    c7055860d00000000000
                          ret                                                              // 0x0056f26f    c3
@@ -580,6 +587,7 @@ _jmp_addr_0x0056f44d:    pop                edi                                 
                          add                esp, 0x00000830                               // 0x0056f456    81c430080000
                          ret                0x0020                                        // 0x0056f45c    c22000
                          nop                                                              // 0x0056f45f    90
+?InitControls@MultiplayerConditionBox@@UAEXXZ:
                          sub                esp, 0x00000808                               // 0x0056f460    81ec08080000
                          push               ebx                                           // 0x0056f466    53
                          push               ebp                                           // 0x0056f467    55
@@ -3342,6 +3350,7 @@ _jmp_addr_0x00570e84:    pop                edi                                 
                          add                esp, 0x00000400                               // 0x00570e88    81c400040000
                          ret                                                              // 0x00570e8e    c3
                          nop                                                              // 0x00570e8f    90
+?Init@GatheringBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          sub                esp, 0x00000458                               // 0x00570e90    81ec58040000
                          push               ebx                                           // 0x00570e96    53
                          push               ebp                                           // 0x00570e97    55
@@ -5058,6 +5067,7 @@ _jmp_addr_0x0057250b:    push               eax                                 
                          nop                                                              // 0x0057252d    90
                          nop                                                              // 0x0057252e    90
                          nop                                                              // 0x0057252f    90
+?Destroy@GatheringBox@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x00572530    e85b10faff
                          {disp32} mov       dword ptr [data_bytes + 0x34043c], 0x00000000 // 0x00572535    c7053c64d00000000000
                          ret                                                              // 0x0057253f    c3

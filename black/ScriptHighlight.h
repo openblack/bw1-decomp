@@ -106,7 +106,7 @@ bool __fastcall InteractsWithPhysicsObjects__15ScriptHighlightFv(struct Object* 
 // win1.41 00709810 mac 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
 bool __fastcall CanBecomeAPhysicsObject__15ScriptHighlightFv(struct Object* this) asm("?CanBecomeAPhysicsObject@ScriptHighlight@@UAE_NXZ");
 // win1.41 0070ae40 mac 104fa770 ScriptHighlight::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-void __fastcall AddToRoutePlan__15ScriptHighlightFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct ScriptHighlight* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int32_t param_1, struct Point2D param_2, float param_3, int32_t param_4)) asm("?AddToRoutePlan@ScriptHighlight@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
+void __fastcall AddToRoutePlan__15ScriptHighlightFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@ScriptHighlight@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 
 DECLARE_LH_LIST_HEAD(ScriptHighlight);
 

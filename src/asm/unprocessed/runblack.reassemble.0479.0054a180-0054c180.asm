@@ -446,9 +446,34 @@
 .globl _globl_ct_0x0054a580
 .globl _globl_ct_0x0054a5a0
 .globl _globl_ct_0x0054a5d0
+.globl ?InitSubDialogs@SetupMultiplayerMain@@UAEXXZ
+.globl ?InitSubDialogs@SetupLandscapeBox@@UAEXXZ
+.globl ?GetBaseInfo@GFurnitureInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGFurnitureInfo@@UAEPAXI@Z
+.globl ?SaveObject@Furniture@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
+.globl ?GetSaveType@Furniture@@UAEIXZ
+.globl ?GetDebugText@Furniture@@UAEPADXZ
+.globl ??_GFurniture@@UAEPAXI@Z
+.globl ?GetBaseInfo@GPlayerInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGKeyBuffer@@UAEPAXI@Z
+.globl ??_GGlobalGameLists@@UAEPAXI@Z
+.globl ?IsAvailable@GGame@@UAE_NXZ
+.globl ?GetSaveType@GGame@@UAEIXZ
+.globl ?GetDebugText@GGame@@UAEPADXZ
+.globl ??_GGSoundMap@@UAEPAXI@Z
+.globl ??_GGestureSystemDataList@@UAEPAXI@Z
+.globl ??_GGestureSystem@@UAEPAXI@Z
+.globl ?GetBaseInfo@TerrainMapTypeInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ?GetBaseInfo@TerrainMapInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGTerrainMap@@UAEPAXI@Z
+.globl ??_GGPlayerInfo@@UAEPAXI@Z
+.globl ??_GTerrainMapInfo@@UAEPAXI@Z
+.globl ??_GTerrainMapTypeInfo@@UAEPAXI@Z
+.globl ?ToBeDeleted@GGame@@UAEXH@Z
 
 start_0x0054a180_0x0054ff80:
 // Snippet: asm, [0x0054a180, 0x0054ff60)
+?InitSubDialogs@SetupMultiplayerMain@@UAEXXZ:
                          push               ebx                                           // 0x0054a180    53
                          push               esi                                           // 0x0054a181    56
                          push               0x000000bc                                    // 0x0054a182    68bc000000
@@ -501,6 +526,7 @@ _jmp_addr_0x0054a1d3:    push               0x005471e0                          
                          nop                                                              // 0x0054a20d    90
                          nop                                                              // 0x0054a20e    90
                          nop                                                              // 0x0054a20f    90
+?InitSubDialogs@SetupLandscapeBox@@UAEXXZ:
                          push               ebx                                           // 0x0054a210    53
                          push               esi                                           // 0x0054a211    56
                          push               0x000000c4                                    // 0x0054a212    68c4000000
@@ -644,6 +670,7 @@ _jmp_addr_0x0054a32c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x0054a34d    90
                          nop                                                              // 0x0054a34e    90
                          nop                                                              // 0x0054a34f    90
+?GetBaseInfo@GFurnitureInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0054a350    8b442404
                          mov                dword ptr [eax], 0x0000001f                   // 0x0054a354    c7001f000000
                          mov                eax, 0x00cd1690                               // 0x0054a35a    b89016cd00
@@ -701,6 +728,7 @@ _jmp_addr_0x0054a3b2:    ret                                                    
                          nop                                                              // 0x0054a3bd    90
                          nop                                                              // 0x0054a3be    90
                          nop                                                              // 0x0054a3bf    90
+??_GGFurnitureInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0054a3c0    56
                          mov.s              esi, ecx                                      // 0x0054a3c1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x0054a3c3    e898c5eeff
@@ -767,6 +795,7 @@ _jmp_addr_0x0054a42e:    xor.s              eax, eax                            
                          nop                                                              // 0x0054a43d    90
                          nop                                                              // 0x0054a43e    90
                          nop                                                              // 0x0054a43f    90
+?SaveObject@Furniture@@UAEIAAULHOSFile@@ABUMapCoords@@@Z:
                          mov                eax, 0x00000001                               // 0x0054a440    b801000000
                          ret                0x0008                                        // 0x0054a445    c20800
                          nop                                                              // 0x0054a448    90
@@ -777,6 +806,7 @@ _jmp_addr_0x0054a42e:    xor.s              eax, eax                            
                          nop                                                              // 0x0054a44d    90
                          nop                                                              // 0x0054a44e    90
                          nop                                                              // 0x0054a44f    90
+?GetSaveType@Furniture@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x0054a450    33c0
                          ret                                                              // 0x0054a452    c3
                          nop                                                              // 0x0054a453    90
@@ -792,6 +822,7 @@ _jmp_addr_0x0054a42e:    xor.s              eax, eax                            
                          nop                                                              // 0x0054a45d    90
                          nop                                                              // 0x0054a45e    90
                          nop                                                              // 0x0054a45f    90
+?GetDebugText@Furniture@@UAEPADXZ:
                          mov                eax, 0x00bea960                               // 0x0054a460    b860a9be00
                          ret                                                              // 0x0054a465    c3
                          nop                                                              // 0x0054a466    90
@@ -804,6 +835,7 @@ _jmp_addr_0x0054a42e:    xor.s              eax, eax                            
                          nop                                                              // 0x0054a46d    90
                          nop                                                              // 0x0054a46e    90
                          nop                                                              // 0x0054a46f    90
+??_GFurniture@@UAEPAXI@Z:
                          push               esi                                           // 0x0054a470    56
                          mov.s              esi, ecx                                      // 0x0054a471    8bf1
                          mov                dword ptr [esi], 0x008dedac                   // 0x0054a473    c706aced8d00
@@ -2392,6 +2424,7 @@ _jmp_addr_0x0054b820:    xor.s              eax, eax                            
                          {disp8} mov        dword ptr [ecx + 0x08], eax                   // 0x0054b827    894108
                          ret                                                              // 0x0054b82a    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054b82b    e84960ebff
+?GetBaseInfo@GPlayerInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0054b830    8b442404
                          mov                dword ptr [eax], 0x00000001                   // 0x0054b834    c70001000000
                          mov                eax, 0x00d47988                               // 0x0054b83a    b88879d400
@@ -2507,6 +2540,7 @@ _jmp_addr_0x0054b910:    mov.s              eax, ecx                            
                          nop                                                              // 0x0054b94d    90
                          nop                                                              // 0x0054b94e    90
                          nop                                                              // 0x0054b94f    90
+??_GGKeyBuffer@@UAEPAXI@Z:
                          push               esi                                           // 0x0054b950    56
                          mov.s              esi, ecx                                      // 0x0054b951    8bf1
                          call               _jmp_addr_0x005e1a90                          // 0x0054b953    e838610900
@@ -2519,6 +2553,7 @@ _jmp_addr_0x0054b910:    mov.s              eax, ecx                            
 _jmp_addr_0x0054b96a:    mov.s              eax, esi                                      // 0x0054b96a    8bc6
                          pop                esi                                           // 0x0054b96c    5e
                          ret                0x0004                                        // 0x0054b96d    c20400
+??_GGlobalGameLists@@UAEPAXI@Z:
                          push               esi                                           // 0x0054b970    56
                          mov.s              esi, ecx                                      // 0x0054b971    8bf1
                          mov                dword ptr [esi], 0x008df760                   // 0x0054b973    c70660f78d00
@@ -2534,12 +2569,14 @@ _jmp_addr_0x0054b96a:    mov.s              eax, esi                            
 _jmp_addr_0x0054b99a:    mov.s              eax, esi                                      // 0x0054b99a    8bc6
                          pop                esi                                           // 0x0054b99c    5e
                          ret                0x0004                                        // 0x0054b99d    c20400
+?IsAvailable@GGame@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x0054b9a0    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x0a]                     // 0x0054b9a2    8a410a
                          not                al                                            // 0x0054b9a5    f6d0
                          and                eax, 0x01                                     // 0x0054b9a7    83e001
                          ret                                                              // 0x0054b9aa    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054b9ab    e8c95eebff
+?GetSaveType@GGame@@UAEIXZ:
                          mov                eax, 0x0000006a                               // 0x0054b9b0    b86a000000
                          ret                                                              // 0x0054b9b5    c3
                          nop                                                              // 0x0054b9b6    90
@@ -2552,6 +2589,7 @@ _jmp_addr_0x0054b99a:    mov.s              eax, esi                            
                          nop                                                              // 0x0054b9bd    90
                          nop                                                              // 0x0054b9be    90
                          nop                                                              // 0x0054b9bf    90
+?GetDebugText@GGame@@UAEPADXZ:
                          mov                eax, 0x00bec3cc                               // 0x0054b9c0    b8ccc3be00
                          ret                                                              // 0x0054b9c5    c3
                          nop                                                              // 0x0054b9c6    90
@@ -2583,6 +2621,7 @@ _jmp_addr_0x0054b99a:    mov.s              eax, esi                            
                          pop                esi                                           // 0x0054ba08    5e
                          ret                                                              // 0x0054ba09    c3
                          call               dword ptr [rdata_bytes + 0x36c]               // 0x0054ba0a    ff156c938a00
+??_GGSoundMap@@UAEPAXI@Z:
                          push               esi                                           // 0x0054ba10    56
                          mov.s              esi, ecx                                      // 0x0054ba11    8bf1
                          call               _jmp_addr_0x00436960                          // 0x0054ba13    e848afeeff
@@ -2661,6 +2700,7 @@ _jmp_addr_0x0054baa0:    mov.s              eax, ecx                            
                          nop                                                              // 0x0054babd    90
                          nop                                                              // 0x0054babe    90
                          nop                                                              // 0x0054babf    90
+??_GGestureSystemDataList@@UAEPAXI@Z:
                          push               esi                                           // 0x0054bac0    56
                          mov.s              esi, ecx                                      // 0x0054bac1    8bf1
                          mov                dword ptr [esi], 0x008df7c0                   // 0x0054bac3    c706c0f78d00
@@ -2720,6 +2760,7 @@ _jmp_addr_0x0054bb33:    mov.s              eax, esi                            
                          {disp32} mov       dword ptr [eax + 0x00000c94], 0x00000001      // 0x0054bb4f    c780940c000001000000
                          ret                                                              // 0x0054bb59    c3
                          call               dword ptr [__imp__ImmReleaseContext@4]        // 0x0054bb5a    ff1514918a00
+??_GGestureSystem@@UAEPAXI@Z:
                          push               esi                                           // 0x0054bb60    56
                          mov.s              esi, ecx                                      // 0x0054bb61    8bf1
                          mov                dword ptr [esi], 0x008df800                   // 0x0054bb63    c70600f88d00
@@ -2894,15 +2935,18 @@ _jmp_addr_0x0054bd3d:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x0054bd6d    90
                          nop                                                              // 0x0054bd6e    90
                          nop                                                              // 0x0054bd6f    90
+?GetBaseInfo@TerrainMapTypeInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0054bd70    8b442404
                          mov                dword ptr [eax], 0x00000000                   // 0x0054bd74    c70000000000
                          xor.s              eax, eax                                      // 0x0054bd7a    33c0
                          ret                0x0004                                        // 0x0054bd7c    c20400
                          nop                                                              // 0x0054bd7f    90
+?GetBaseInfo@TerrainMapInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0054bd80    8b442404
                          mov                dword ptr [eax], 0x0000000e                   // 0x0054bd84    c7000e000000
                          {disp8} lea        eax, dword ptr [ecx + 0x10]                   // 0x0054bd8a    8d4110
                          ret                0x0004                                        // 0x0054bd8d    c20400
+??_GGTerrainMap@@UAEPAXI@Z:
                          push               ebx                                           // 0x0054bd90    53
                          push               ebp                                           // 0x0054bd91    55
                          push               esi                                           // 0x0054bd92    56
@@ -2984,6 +3028,7 @@ _jmp_addr_0x0054be30:    sub                esi, 0x14                           
                          nop                                                              // 0x0054be4d    90
                          nop                                                              // 0x0054be4e    90
                          nop                                                              // 0x0054be4f    90
+??_GGPlayerInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0054be50    56
                          mov.s              esi, ecx                                      // 0x0054be51    8bf1
                          call               _jmp_addr_0x00436960                          // 0x0054be53    e808abeeff
@@ -3009,6 +3054,7 @@ _jmp_addr_0x0054be6d:    mov.s              eax, esi                            
                          nop                                                              // 0x0054be7d    90
                          nop                                                              // 0x0054be7e    90
                          nop                                                              // 0x0054be7f    90
+??_GTerrainMapInfo@@UAEPAXI@Z:
                          push               ebx                                           // 0x0054be80    53
                          push               esi                                           // 0x0054be81    56
                          mov.s              ebx, ecx                                      // 0x0054be82    8bd9
@@ -3081,6 +3127,7 @@ _jmp_addr_0x0054beb9:    pop                edi                                 
                          nop                                                              // 0x0054befd    90
                          nop                                                              // 0x0054befe    90
                          nop                                                              // 0x0054beff    90
+??_GTerrainMapTypeInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0054bf00    56
                          mov.s              esi, ecx                                      // 0x0054bf01    8bf1
                          call               _jmp_addr_0x00436960                          // 0x0054bf03    e858aaeeff
@@ -3126,6 +3173,7 @@ _jmp_addr_0x0054bf20:    xor.s              eax, eax                            
                          nop                                                              // 0x0054bfcd    90
                          nop                                                              // 0x0054bfce    90
                          nop                                                              // 0x0054bfcf    90
+?ToBeDeleted@GGame@@UAEXH@Z:
                          push               esi                                           // 0x0054bfd0    56
                          push               edi                                           // 0x0054bfd1    57
                          mov.s              esi, ecx                                      // 0x0054bfd2    8bf1

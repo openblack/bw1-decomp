@@ -150,6 +150,10 @@
 .globl _globl_ct_0x005b3a30
 .globl _globl_ct_0x005b3a50
 .globl _Exit__9HandStateFv
+.globl ?Enter@HandStateCamera@@UAEXXZ
+.globl ?Enter@HandStateCitadel@@UAEXXZ
+.globl ?Update@HandStateCitadel@@UAEXMPAULHMatrix@@@Z
+.globl ?Enter@HandStateCreature@@UAEXXZ
 
 start_0x0059be30_0x005b56d0:
 // Snippet: asm, [0x0059be30, 0x005b568c)
@@ -17825,6 +17829,7 @@ _Exit__9HandStateFv:
                          nop                                                              // 0x005b02ed    90
                          nop                                                              // 0x005b02ee    90
                          nop                                                              // 0x005b02ef    90
+?Enter@HandStateCamera@@UAEXXZ:
                          xor.s              eax, eax                                      // 0x005b02f0    33c0
                          {disp8} mov        dword ptr [ecx + 0x1c], eax                   // 0x005b02f2    89411c
                          {disp8} mov        dword ptr [ecx + 0x18], eax                   // 0x005b02f5    894118
@@ -18552,6 +18557,7 @@ _jmp_addr_0x005b0be0:    {disp32} mov       dword ptr [data_bytes + 0x34dee4], 0
                          nop                                                              // 0x005b0c0d    90
                          nop                                                              // 0x005b0c0e    90
                          nop                                                              // 0x005b0c0f    90
+?Enter@HandStateCitadel@@UAEXXZ:
                          xor.s              eax, eax                                      // 0x005b0c10    33c0
                          {disp8} mov        dword ptr [ecx + 0x14], eax                   // 0x005b0c12    894114
                          {disp8} mov        dword ptr [ecx + 0x10], eax                   // 0x005b0c15    894110
@@ -18620,6 +18626,7 @@ _jmp_addr_0x005b0be0:    {disp32} mov       dword ptr [data_bytes + 0x34dee4], 0
                          nop                                                              // 0x005b0cfd    90
                          nop                                                              // 0x005b0cfe    90
                          nop                                                              // 0x005b0cff    90
+?Update@HandStateCitadel@@UAEXMPAULHMatrix@@@Z:
                          sub                esp, 0x70                                     // 0x005b0d00    83ec70
                          push               ebx                                           // 0x005b0d03    53
                          push               ebp                                           // 0x005b0d04    55
@@ -19201,6 +19208,7 @@ _jmp_addr_0x005b13c0:    {disp32} mov       dword ptr [data_bytes + 0x34def0], 0
                          nop                                                              // 0x005b13ed    90
                          nop                                                              // 0x005b13ee    90
                          nop                                                              // 0x005b13ef    90
+?Enter@HandStateCreature@@UAEXXZ:
                          sub                esp, 0x7c                                     // 0x005b13f0    83ec7c
                          push               ebx                                           // 0x005b13f3    53
                          push               esi                                           // 0x005b13f4    56

@@ -14,9 +14,13 @@
 .extern _jmp_addr_0x0078da80
 
 .globl _jmp_addr_0x0078dce0
+.globl ?UpdateKeyboard@SubOptionEntryButton@@UAEIW4LH_KEY@@G@Z
+.globl ?GetSubMeshData@SubOptionEntryCheckBoxUnChecked@@UAEXAAUSubMeshDrawData@@HH@Z
+.globl ?UpdateMouse@SubOptionEntryCheckBoxUnChecked@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z
 
 start_0x0078dcd0_0x0078de60:
 // Snippet: asm, [0x0078dcd0, 0x0078de45)
+?UpdateKeyboard@SubOptionEntryButton@@UAEIW4LH_KEY@@G@Z:
                          xor.s            eax, eax                               // 0x0078dcd0    33c0
                          ret              0x0008                                 // 0x0078dcd2    c20800
                          nop                                                     // 0x0078dcd5    90
@@ -54,6 +58,7 @@ _jmp_addr_0x0078dce0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078dd1d    90
                          nop                                                     // 0x0078dd1e    90
                          nop                                                     // 0x0078dd1f    90
+?GetSubMeshData@SubOptionEntryCheckBoxUnChecked@@UAEXAAUSubMeshDrawData@@HH@Z:
                          sub              esp, 0x24                              // 0x0078dd20    83ec24
                          {disp8} mov      eax, dword ptr [esp + 0x30]            // 0x0078dd23    8b442430
                          push             esi                                    // 0x0078dd27    56
@@ -121,6 +126,7 @@ _jmp_addr_0x0078dce0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078ddcd    90
                          nop                                                     // 0x0078ddce    90
                          nop                                                     // 0x0078ddcf    90
+?UpdateMouse@SubOptionEntryCheckBoxUnChecked@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]            // 0x0078ddd0    8b44240c
                          sub              esp, 0x24                              // 0x0078ddd4    83ec24
                          dec              eax                                    // 0x0078ddd7    48

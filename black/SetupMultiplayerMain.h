@@ -15,7 +15,7 @@ static_assert(sizeof(struct SetupMultiplayerMain) == 0x10, "Data type is of wron
 // Override methods
 
 // win1.41 00549b60 mac 105ce270 SetupMultiplayerMain::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__20SetupMultiplayerMainFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@SetupMultiplayerMain@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__20SetupMultiplayerMainFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@SetupMultiplayerMain@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00549f80 mac 105ce210 SetupMultiplayerMain::Destroy(void)
 void __fastcall Destroy__20SetupMultiplayerMainFv(struct DialogBoxBase* this) asm("?Destroy@SetupMultiplayerMain@@UAEXXZ");
 // win1.41 0054a180 mac 105cde40 SetupMultiplayerMain::InitSubDialogs(void)

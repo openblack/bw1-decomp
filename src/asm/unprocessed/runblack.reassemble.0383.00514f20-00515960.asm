@@ -39,6 +39,10 @@
 .extern ___nw__FUl
 
 .globl @__ct__20MiniDialogBoxOptions@4
+.globl ?Init@MiniDialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@MiniDialogBoxOptions@@UAEXXZ
+.globl ?InitControls@MiniDialogBoxOptions@@UAEXXZ
+.globl ?CanESCOut@MiniDialogBoxOptions@@UAE_NXZ
 
 start_0x00514f20_0x00515960:
 // Snippet: asm, [0x00514f20, 0x0051593a)
@@ -70,6 +74,7 @@ start_0x00514f20_0x00515960:
                          nop                                                             // 0x00514f4d    90
                          nop                                                             // 0x00514f4e    90
                          nop                                                             // 0x00514f4f    90
+?Init@MiniDialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x00514f50    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x00514f54    8b542404
                          sub               esp, 0x08                                     // 0x00514f58    83ec08
@@ -604,6 +609,7 @@ _jmp_addr_0x0051567c:    ret                                                    
                          nop                                                             // 0x0051567d    90
                          nop                                                             // 0x0051567e    90
                          nop                                                             // 0x0051567f    90
+?Destroy@MiniDialogBoxOptions@@UAEXXZ:
                          {disp32} jmp      @Destroy__13DialogBoxBaseFv@4                 // 0x00515680    e90bdfffff
                          nop                                                             // 0x00515685    90
                          nop                                                             // 0x00515686    90
@@ -616,6 +622,7 @@ _jmp_addr_0x0051567c:    ret                                                    
                          nop                                                             // 0x0051568d    90
                          nop                                                             // 0x0051568e    90
                          nop                                                             // 0x0051568f    90
+?InitControls@MiniDialogBoxOptions@@UAEXXZ:
                          sub               esp, 0x08                                     // 0x00515690    83ec08
                          push              ebx                                           // 0x00515693    53
                          push              esi                                           // 0x00515694    56
@@ -743,6 +750,7 @@ _jmp_addr_0x005157cb:    {disp8} mov       eax, dword ptr [esi + 0x28]          
                          nop                                                             // 0x0051580d    90
                          nop                                                             // 0x0051580e    90
                          nop                                                             // 0x0051580f    90
+?CanESCOut@MiniDialogBoxOptions@@UAE_NXZ:
                          {disp32} mov      eax, dword ptr [_game]                        // 0x00515810    a15c19d000
                          {disp32} mov      ecx, dword ptr [eax + 0x00250304]             // 0x00515815    8b8804032500
                          {disp8} mov       eax, dword ptr [ecx + 0x5c]                   // 0x0051581b    8b415c

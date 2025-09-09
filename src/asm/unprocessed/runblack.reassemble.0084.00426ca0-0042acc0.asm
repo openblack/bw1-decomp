@@ -117,6 +117,17 @@
 .globl _globl_ct_0x00429c60
 .globl _globl_ct_0x00429c90
 .globl _globl_ct_0x0042a620
+.globl ?GetSaveType@GAudio@@UAEIXZ
+.globl ?GetDebugText@GAudio@@UAEPADXZ
+.globl ??_GGAudio@@UAEPAXI@Z
+.globl ?ToBeDeleted@GAudio@@UAEXH@Z
+.globl ?Save@GAudio@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GAudio@@UAEIAAVGameOSFile@@@Z
+.globl ?GetSaveType@ThingMusicInfo@@UAEIXZ
+.globl ?GetDebugText@ThingMusicInfo@@UAEPADXZ
+.globl ??_GThingMusicInfo@@UAEPAXI@Z
+.globl ?Save@ThingMusicInfo@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@ThingMusicInfo@@UAEIAAVGameOSFile@@@Z
 
 start_0x00426ca0_0x0042acc0:
 // Snippet: asm, [0x00426ca0, 0x0042ac01)
@@ -341,6 +352,7 @@ _jmp_addr_0x00426f56:    mov.s              ecx, ebp                            
                          nop                                                                     // 0x00426f7d    90
                          nop                                                                     // 0x00426f7e    90
                          nop                                                                     // 0x00426f7f    90
+?GetSaveType@GAudio@@UAEIXZ:
                          mov                eax, 0x00000101                                      // 0x00426f80    b801010000
                          ret                                                                     // 0x00426f85    c3
                          nop                                                                     // 0x00426f86    90
@@ -353,6 +365,7 @@ _jmp_addr_0x00426f56:    mov.s              ecx, ebp                            
                          nop                                                                     // 0x00426f8d    90
                          nop                                                                     // 0x00426f8e    90
                          nop                                                                     // 0x00426f8f    90
+?GetDebugText@GAudio@@UAEPADXZ:
                          mov                eax, 0x009caf98                                      // 0x00426f90    b898af9c00
                          ret                                                                     // 0x00426f95    c3
                          nop                                                                     // 0x00426f96    90
@@ -365,6 +378,7 @@ _jmp_addr_0x00426f56:    mov.s              ecx, ebp                            
                          nop                                                                     // 0x00426f9d    90
                          nop                                                                     // 0x00426f9e    90
                          nop                                                                     // 0x00426f9f    90
+??_GGAudio@@UAEPAXI@Z:
                          push               esi                                                  // 0x00426fa0    56
                          mov.s              esi, ecx                                             // 0x00426fa1    8bf1
                          {disp32} lea       ecx, dword ptr [esi + 0x00000240]                    // 0x00426fa3    8d8e40020000
@@ -395,6 +409,7 @@ _jmp_addr_0x00426fcb:    mov.s              eax, esi                            
                          nop                                                                     // 0x00426fdd    90
                          nop                                                                     // 0x00426fde    90
                          nop                                                                     // 0x00426fdf    90
+?ToBeDeleted@GAudio@@UAEXH@Z:
                          push               edi                                                  // 0x00426fe0    57
                          mov.s              edi, ecx                                             // 0x00426fe1    8bf9
                          {disp8} mov        ecx, dword ptr [edi + 0x14]                          // 0x00426fe3    8b4f14
@@ -1925,6 +1940,7 @@ _jmp_addr_0x004282f0:    {disp32} mov       ecx, dword ptr [_game]              
                          nop                                                                     // 0x0042830d    90
                          nop                                                                     // 0x0042830e    90
                          nop                                                                     // 0x0042830f    90
+?Save@GAudio@@UAEIAAVGameOSFile@@@Z:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]               // 0x00428310    a190c9be00
                          test               eax, eax                                             // 0x00428315    85c0
                          push               ebx                                                  // 0x00428317    53
@@ -2038,6 +2054,7 @@ _jmp_addr_0x00428473:    pop                edi                                 
                          pop                ebx                                                  // 0x0042847b    5b
                          ret                0x0004                                               // 0x0042847c    c20400
                          nop                                                                     // 0x0042847f    90
+?Load@GAudio@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                                  // 0x00428480    51
                          push               ebx                                                  // 0x00428481    53
                          push               ebp                                                  // 0x00428482    55
@@ -3532,6 +3549,7 @@ _jmp_addr_0x004292ee:    pop                edi                                 
                          nop                                                                     // 0x004292fd    90
                          nop                                                                     // 0x004292fe    90
                          nop                                                                     // 0x004292ff    90
+?GetSaveType@ThingMusicInfo@@UAEIXZ:
                          mov                eax, 0x00000109                                      // 0x00429300    b809010000
                          ret                                                                     // 0x00429305    c3
                          nop                                                                     // 0x00429306    90
@@ -3544,6 +3562,7 @@ _jmp_addr_0x004292ee:    pop                edi                                 
                          nop                                                                     // 0x0042930d    90
                          nop                                                                     // 0x0042930e    90
                          nop                                                                     // 0x0042930f    90
+?GetDebugText@ThingMusicInfo@@UAEPADXZ:
                          mov                eax, 0x009cb3e4                                      // 0x00429310    b8e4b39c00
                          ret                                                                     // 0x00429315    c3
                          nop                                                                     // 0x00429316    90
@@ -3556,6 +3575,7 @@ _jmp_addr_0x004292ee:    pop                edi                                 
                          nop                                                                     // 0x0042931d    90
                          nop                                                                     // 0x0042931e    90
                          nop                                                                     // 0x0042931f    90
+??_GThingMusicInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x00429320    56
                          mov.s              esi, ecx                                             // 0x00429321    8bf1
                          call               _jmp_addr_0x0056fa80                                 // 0x00429323    e858671400
@@ -4164,6 +4184,7 @@ _jmp_addr_0x00429948:    pop                edi                                 
                          nop                                                                     // 0x0042994d    90
                          nop                                                                     // 0x0042994e    90
                          nop                                                                     // 0x0042994f    90
+?Save@ThingMusicInfo@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                                  // 0x00429950    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                          // 0x00429951    8b742408
                          push               edi                                                  // 0x00429955    57
@@ -4299,6 +4320,7 @@ _jmp_addr_0x00429ad2:    pop                edi                                 
                          nop                                                                     // 0x00429add    90
                          nop                                                                     // 0x00429ade    90
                          nop                                                                     // 0x00429adf    90
+?Load@ThingMusicInfo@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                                  // 0x00429ae0    53
                          push               esi                                                  // 0x00429ae1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                          // 0x00429ae2    8b74240c

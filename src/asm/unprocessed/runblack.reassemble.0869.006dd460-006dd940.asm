@@ -21,6 +21,22 @@
 .globl _jmp_addr_0x006dd4c0
 .globl _jmp_addr_0x006dd4f0
 .globl _jmp_addr_0x006dd7d0
+.globl ?CanBeFrighteningToCreature@PuzzleCow@@UAEIPAVCreature@@@Z
+.globl ?GetDebugText@PuzzleHorse@@UAEPADXZ
+.globl ?CanBecomeAPhysicsObject@PuzzleHorse@@UAE_NXZ
+.globl ??_GPuzzleHorse@@UAEPAXI@Z
+.globl ?GetSaveType@PuzzleTortoise@@UAEIXZ
+.globl ?GetDebugText@PuzzleTortoise@@UAEPADXZ
+.globl ?CanBecomeAPhysicsObject@PuzzleTortoise@@UAE_NXZ
+.globl ??_GPuzzleTortoise@@UAEPAXI@Z
+.globl ?GetSaveType@PuzzleCow@@UAEIXZ
+.globl ?GetDebugText@PuzzleCow@@UAEPADXZ
+.globl ?CanBecomeAPhysicsObject@PuzzleCow@@UAE_NXZ
+.globl ??_GPuzzleCow@@UAEPAXI@Z
+.globl ?GetSaveType@PuzzlePig@@UAEIXZ
+.globl ?GetDebugText@PuzzlePig@@UAEPADXZ
+.globl ?CanBecomeAPhysicsObject@PuzzlePig@@UAE_NXZ
+.globl ??_GPuzzlePig@@UAEPAXI@Z
 
 start_0x006dd460_0x006dd940:
 // Snippet: asm, [0x006dd460, 0x006dd914)
@@ -79,6 +95,7 @@ _jmp_addr_0x006dd460:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd4ad    90
                          nop                                                     // 0x006dd4ae    90
                          nop                                                     // 0x006dd4af    90
+?CanBeFrighteningToCreature@PuzzleCow@@UAEIPAVCreature@@@Z:
                          xor.s            eax, eax                               // 0x006dd4b0    33c0
                          ret              0x0004                                 // 0x006dd4b2    c20400
                          nop                                                     // 0x006dd4b5    90
@@ -142,6 +159,7 @@ _jmp_addr_0x006dd4f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd51d    90
                          nop                                                     // 0x006dd51e    90
                          nop                                                     // 0x006dd51f    90
+?GetDebugText@PuzzleHorse@@UAEPADXZ:
                          mov              eax, 0x00bee214                        // 0x006dd520    b814e2be00
                          ret                                                     // 0x006dd525    c3
                          nop                                                     // 0x006dd526    90
@@ -154,6 +172,7 @@ _jmp_addr_0x006dd4f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd52d    90
                          nop                                                     // 0x006dd52e    90
                          nop                                                     // 0x006dd52f    90
+?CanBecomeAPhysicsObject@PuzzleHorse@@UAE_NXZ:
                          xor.s            eax, eax                               // 0x006dd530    33c0
                          ret                                                     // 0x006dd532    c3
                          nop                                                     // 0x006dd533    90
@@ -214,6 +233,7 @@ _jmp_addr_0x006dd4f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd58d    90
                          nop                                                     // 0x006dd58e    90
                          nop                                                     // 0x006dd58f    90
+??_GPuzzleHorse@@UAEPAXI@Z:
                          push             esi                                    // 0x006dd590    56
                          mov.s            esi, ecx                               // 0x006dd591    8bf1
                          call             _jmp_addr_0x00417b80                   // 0x006dd593    e8e8a5d3ff
@@ -239,6 +259,7 @@ _jmp_addr_0x006dd5ad:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd5bd    90
                          nop                                                     // 0x006dd5be    90
                          nop                                                     // 0x006dd5bf    90
+?GetSaveType@PuzzleTortoise@@UAEIXZ:
                          mov              eax, 0x0000002d                        // 0x006dd5c0    b82d000000
                          ret                                                     // 0x006dd5c5    c3
                          nop                                                     // 0x006dd5c6    90
@@ -251,6 +272,7 @@ _jmp_addr_0x006dd5ad:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd5cd    90
                          nop                                                     // 0x006dd5ce    90
                          nop                                                     // 0x006dd5cf    90
+?GetDebugText@PuzzleTortoise@@UAEPADXZ:
                          mov              eax, 0x00bee238                        // 0x006dd5d0    b838e2be00
                          ret                                                     // 0x006dd5d5    c3
                          nop                                                     // 0x006dd5d6    90
@@ -263,6 +285,7 @@ _jmp_addr_0x006dd5ad:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd5dd    90
                          nop                                                     // 0x006dd5de    90
                          nop                                                     // 0x006dd5df    90
+?CanBecomeAPhysicsObject@PuzzleTortoise@@UAE_NXZ:
                          xor.s            eax, eax                               // 0x006dd5e0    33c0
                          ret                                                     // 0x006dd5e2    c3
                          nop                                                     // 0x006dd5e3    90
@@ -323,6 +346,7 @@ _jmp_addr_0x006dd5ad:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd63d    90
                          nop                                                     // 0x006dd63e    90
                          nop                                                     // 0x006dd63f    90
+??_GPuzzleTortoise@@UAEPAXI@Z:
                          push             esi                                    // 0x006dd640    56
                          mov.s            esi, ecx                               // 0x006dd641    8bf1
                          call             _jmp_addr_0x00417b80                   // 0x006dd643    e838a5d3ff
@@ -348,6 +372,7 @@ _jmp_addr_0x006dd65d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd66d    90
                          nop                                                     // 0x006dd66e    90
                          nop                                                     // 0x006dd66f    90
+?GetSaveType@PuzzleCow@@UAEIXZ:
                          mov              eax, 0x0000002d                        // 0x006dd670    b82d000000
                          ret                                                     // 0x006dd675    c3
                          nop                                                     // 0x006dd676    90
@@ -360,6 +385,7 @@ _jmp_addr_0x006dd65d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd67d    90
                          nop                                                     // 0x006dd67e    90
                          nop                                                     // 0x006dd67f    90
+?GetDebugText@PuzzleCow@@UAEPADXZ:
                          mov              eax, 0x00bee238                        // 0x006dd680    b838e2be00
                          ret                                                     // 0x006dd685    c3
                          nop                                                     // 0x006dd686    90
@@ -372,6 +398,7 @@ _jmp_addr_0x006dd65d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd68d    90
                          nop                                                     // 0x006dd68e    90
                          nop                                                     // 0x006dd68f    90
+?CanBecomeAPhysicsObject@PuzzleCow@@UAE_NXZ:
                          xor.s            eax, eax                               // 0x006dd690    33c0
                          ret                                                     // 0x006dd692    c3
                          nop                                                     // 0x006dd693    90
@@ -432,6 +459,7 @@ _jmp_addr_0x006dd65d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd6ed    90
                          nop                                                     // 0x006dd6ee    90
                          nop                                                     // 0x006dd6ef    90
+??_GPuzzleCow@@UAEPAXI@Z:
                          push             esi                                    // 0x006dd6f0    56
                          mov.s            esi, ecx                               // 0x006dd6f1    8bf1
                          call             _jmp_addr_0x00417b80                   // 0x006dd6f3    e888a4d3ff
@@ -457,6 +485,7 @@ _jmp_addr_0x006dd70d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd71d    90
                          nop                                                     // 0x006dd71e    90
                          nop                                                     // 0x006dd71f    90
+?GetSaveType@PuzzlePig@@UAEIXZ:
                          mov              eax, 0x0000002d                        // 0x006dd720    b82d000000
                          ret                                                     // 0x006dd725    c3
                          nop                                                     // 0x006dd726    90
@@ -469,6 +498,7 @@ _jmp_addr_0x006dd70d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd72d    90
                          nop                                                     // 0x006dd72e    90
                          nop                                                     // 0x006dd72f    90
+?GetDebugText@PuzzlePig@@UAEPADXZ:
                          mov              eax, 0x00bee238                        // 0x006dd730    b838e2be00
                          ret                                                     // 0x006dd735    c3
                          nop                                                     // 0x006dd736    90
@@ -481,6 +511,7 @@ _jmp_addr_0x006dd70d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd73d    90
                          nop                                                     // 0x006dd73e    90
                          nop                                                     // 0x006dd73f    90
+?CanBecomeAPhysicsObject@PuzzlePig@@UAE_NXZ:
                          xor.s            eax, eax                               // 0x006dd740    33c0
                          ret                                                     // 0x006dd742    c3
                          nop                                                     // 0x006dd743    90
@@ -541,6 +572,7 @@ _jmp_addr_0x006dd70d:    mov.s            eax, esi                              
                          nop                                                     // 0x006dd79d    90
                          nop                                                     // 0x006dd79e    90
                          nop                                                     // 0x006dd79f    90
+??_GPuzzlePig@@UAEPAXI@Z:
                          push             esi                                    // 0x006dd7a0    56
                          mov.s            esi, ecx                               // 0x006dd7a1    8bf1
                          call             _jmp_addr_0x00417b80                   // 0x006dd7a3    e8d8a3d3ff

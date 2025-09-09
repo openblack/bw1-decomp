@@ -12,10 +12,10 @@
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x005ec520
 .extern @IsReadyForNewAnimation__6LivingFUl@12
-.extern _jmp_addr_0x005ee560
-.extern _jmp_addr_0x005ee630
-.extern _jmp_addr_0x005ee960
-.extern _jmp_addr_0x005eed20
+.extern ?RemoveFromGame@Living@@UAEIXZ
+.extern ?Save@Living@@UAEIAAVGameOSFile@@@Z
+.extern ?Load@Living@@UAEIAAVGameOSFile@@@Z
+.extern ?ResolveLoad@Living@@UAEXXZ
 .extern @SetupMoveToWithHug__6LivingFRC9MapCoordsUc@13
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
@@ -42,10 +42,18 @@
 .globl @GetChillOutPos__8VillagerFR9MapCoords@12
 .globl _jmp_addr_0x00753e20
 .globl _jmp_addr_0x00754070
-.globl _jmp_addr_0x00754280
-.globl _jmp_addr_0x00754580
+.globl ?Save@Villager@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@Villager@@UAEIAAVGameOSFile@@@Z
 .globl _jmp_addr_0x00756000
 .globl _jmp_addr_0x00756170
+.globl ?RemoveFromGame@Villager@@UAEIXZ
+.globl ?IsFinalState@Villager@@UAE_NW4VILLAGER_STATES@@@Z
+.globl ?GetQueryFirstEnumText@Villager@@UAE?AW4HELP_TEXT@@XZ
+.globl ?GetQueryLastEnumText@Villager@@UAE?AW4HELP_TEXT@@XZ
+.globl ?GetFOVHelpMessageSet@Villager@@UAEIXZ
+.globl ?GetFOVHelpCondition@Villager@@UAEIXZ
+.globl ?ResolveLoad@Villager@@UAEXXZ
+.globl ?GetDiscipleStateIfInteractedWith@Villager@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
 
 start_0x00753c70_0x00756230:
 // Snippet: asm, [0x00753c70, 0x00756200)
@@ -190,11 +198,12 @@ _jmp_addr_0x00753df3:    mov               eax, 0x00000001                      
                          nop                                                             // 0x00753dfd    90
                          nop                                                             // 0x00753dfe    90
                          nop                                                             // 0x00753dff    90
+?RemoveFromGame@Villager@@UAEIXZ:
                          push              esi                                           // 0x00753e00    56
                          mov.s             esi, ecx                                      // 0x00753e01    8bf1
                          call              @DeleteDependancys__8VillagerFv@4             // 0x00753e03    e858bfffff
                          mov.s             ecx, esi                                      // 0x00753e08    8bce
-                         call              _jmp_addr_0x005ee560                          // 0x00753e0a    e851a7e9ff
+                         call              ?RemoveFromGame@Living@@UAEIXZ                // 0x00753e0a    e851a7e9ff
                          pop               esi                                           // 0x00753e0f    5e
                          ret                                                             // 0x00753e10    c3
                          nop                                                             // 0x00753e11    90
@@ -302,6 +311,7 @@ _jmp_addr_0x00753ed3:    {disp8} mov       eax, dword ptr [esp + 0x1c]          
                          nop                                                             // 0x00753efd    90
                          nop                                                             // 0x00753efe    90
                          nop                                                             // 0x00753eff    90
+?IsFinalState@Villager@@UAE_NW4VILLAGER_STATES@@@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x04]                   // 0x00753f00    8b442404
                          and               eax, 0x000000ff                               // 0x00753f04    25ff000000
                          lea               ecx, dword ptr [eax + eax * 0x2]              // 0x00753f09    8d0c40
@@ -312,6 +322,7 @@ _jmp_addr_0x00753ed3:    {disp8} mov       eax, dword ptr [esp + 0x1c]          
                          ret               0x0004                                        // 0x00753f1b    c20400
                          nop                                                             // 0x00753f1e    90
                          nop                                                             // 0x00753f1f    90
+?GetQueryFirstEnumText@Villager@@UAE?AW4HELP_TEXT@@XZ:
                          push              esi                                           // 0x00753f20    56
                          mov.s             esi, ecx                                      // 0x00753f21    8bf1
                          mov               eax, dword ptr [esi]                          // 0x00753f23    8b06
@@ -352,6 +363,7 @@ _jmp_addr_0x00753f87:    mov.s             ecx, esi                             
                          call              ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ                          // 0x00753f89    e8f245eeff
 _jmp_addr_0x00753f8e:    pop               esi                                           // 0x00753f8e    5e
                          ret                                                             // 0x00753f8f    c3
+?GetQueryLastEnumText@Villager@@UAE?AW4HELP_TEXT@@XZ:
                          push              esi                                           // 0x00753f90    56
                          mov.s             esi, ecx                                      // 0x00753f91    8bf1
                          mov               eax, dword ptr [esi]                          // 0x00753f93    8b06
@@ -425,6 +437,7 @@ _jmp_addr_0x00754049:    mov.s             eax, edi                             
                          ret                                                             // 0x0075404d    c3
                          nop                                                             // 0x0075404e    90
                          nop                                                             // 0x0075404f    90
+?GetFOVHelpMessageSet@Villager@@UAEIXZ:
                          {disp32} jmp      ?GetFOVHelpMessageSet@Object@@UAEIXZ          // 0x00754050    e94b45eeff
                          nop                                                             // 0x00754055    90
                          nop                                                             // 0x00754056    90
@@ -437,6 +450,7 @@ _jmp_addr_0x00754049:    mov.s             eax, edi                             
                          nop                                                             // 0x0075405d    90
                          nop                                                             // 0x0075405e    90
                          nop                                                             // 0x0075405f    90
+?GetFOVHelpCondition@Villager@@UAEIXZ:
                          {disp32} jmp      ?GetFOVHelpCondition@Object@@UAEIXZ           // 0x00754060    e94b45eeff
                          nop                                                             // 0x00754065    90
                          nop                                                             // 0x00754066    90
@@ -645,12 +659,13 @@ _jmp_addr_0x0075426a:    pop               esi                                  
                          nop                                                             // 0x0075427d    90
                          nop                                                             // 0x0075427e    90
                          nop                                                             // 0x0075427f    90
-_jmp_addr_0x00754280:    push              esi                                           // 0x00754280    56
+?Save@Villager@@UAEIAAVGameOSFile@@@Z:
+                         push              esi                                           // 0x00754280    56
                          {disp8} mov       esi, dword ptr [esp + 0x08]                   // 0x00754281    8b742408
                          push              edi                                           // 0x00754285    57
                          mov.s             edi, ecx                                      // 0x00754286    8bf9
                          push              esi                                           // 0x00754288    56
-                         call              _jmp_addr_0x005ee630                          // 0x00754289    e8a2a3e9ff
+                         call              ?Save@Living@@UAEIAAVGameOSFile@@@Z           // 0x00754289    e8a2a3e9ff
                          test              eax, eax                                      // 0x0075428e    85c0
                          {disp32} je       _jmp_addr_0x0075456d                          // 0x00754290    0f84d7020000
                          {disp32} mov      eax, dword ptr [data_bytes + 0x226990]        // 0x00754296    a190c9be00
@@ -882,12 +897,13 @@ _jmp_addr_0x0075456d:    pop               edi                                  
                          nop                                                             // 0x0075457d    90
                          nop                                                             // 0x0075457e    90
                          nop                                                             // 0x0075457f    90
-_jmp_addr_0x00754580:    push              ebx                                           // 0x00754580    53
+?Load@Villager@@UAEIAAVGameOSFile@@@Z:
+                         push              ebx                                           // 0x00754580    53
                          push              esi                                           // 0x00754581    56
                          {disp8} mov       esi, dword ptr [esp + 0x0c]                   // 0x00754582    8b74240c
                          mov.s             ebx, ecx                                      // 0x00754586    8bd9
                          push              esi                                           // 0x00754588    56
-                         call              _jmp_addr_0x005ee960                          // 0x00754589    e8d2a3e9ff
+                         call              ?Load@Living@@UAEIAAVGameOSFile@@@Z           // 0x00754589    e8d2a3e9ff
                          test              eax, eax                                      // 0x0075458e    85c0
                          {disp32} je       _jmp_addr_0x00754861                          // 0x00754590    0f84cb020000
                          {disp32} mov      eax, dword ptr [data_bytes + 0x226994]        // 0x00754596    a194c9be00
@@ -1119,10 +1135,11 @@ _jmp_addr_0x00754861:    pop               esi                                  
                          nop                                                             // 0x0075486d    90
                          nop                                                             // 0x0075486e    90
                          nop                                                             // 0x0075486f    90
+?ResolveLoad@Villager@@UAEXXZ:
                          push              esi                                           // 0x00754870    56
                          push              edi                                           // 0x00754871    57
                          mov.s             esi, ecx                                      // 0x00754872    8bf1
-                         call              _jmp_addr_0x005eed20                          // 0x00754874    e8a7a4e9ff
+                         call              ?ResolveLoad@Living@@UAEXXZ                   // 0x00754874    e8a7a4e9ff
                          {disp8} mov       ecx, dword ptr [esi + 0x40]                   // 0x00754879    8b4e40
                          mov               edi, dword ptr [ecx]                          // 0x0075487c    8b39
                          xor.s             eax, eax                                      // 0x0075487e    33c0
@@ -3451,6 +3468,7 @@ _jmp_addr_0x007560ab:    {disp8} mov       ecx, dword ptr [esi + 0x40]          
                          nop                                                             // 0x007560dd    90
                          nop                                                             // 0x007560de    90
                          nop                                                             // 0x007560df    90
+?GetDiscipleStateIfInteractedWith@Villager@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z:
                          push              ebx                                           // 0x007560e0    53
                          push              esi                                           // 0x007560e1    56
                          push              edi                                           // 0x007560e2    57

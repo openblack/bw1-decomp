@@ -183,8 +183,6 @@ void __fastcall Draw__12CitadelHeartFv(struct Object* this) asm("?Draw@CitadelHe
 void __fastcall GetWorldMatrix__12CitadelHeartFP8LHMatrix(struct Object* this, const void* edx, struct LHMatrix* param_1) asm("?GetWorldMatrix@CitadelHeart@@UAEXPAULHMatrix@@@Z");
 // win1.41 004675a0 mac 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__12CitadelHeartFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@CitadelHeart@@UAEXABUMapCoords@@@Z");
-// win1.41 004680d0 mac 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-void __fastcall AddToRoutePlan__12CitadelHeartFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int32_t param_1, struct Point2D param_2, float param_3, int32_t param_4)) asm("?AddToRoutePlan@CitadelHeart@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 00464b40 mac 101be8a0 CitadelHeart::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__12CitadelHeartFv(struct Object* this) asm("?Get3DType@CitadelHeart@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 00467b60 mac 101bdef0 CitadelHeart::GetPhysicsConstantsType(void)
@@ -197,6 +195,8 @@ bool __fastcall InteractsWithPhysicsObjects__12CitadelHeartFv(struct Object* thi
 uint32_t __fastcall ChecksVerticesVObjects__12CitadelHeartFv(struct Object* this) asm("?ChecksVerticesVObjects@CitadelHeart@@UAEIXZ");
 // win1.41 00467bb0 mac 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__12CitadelHeartFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@CitadelHeart@@UAEXPAVPhysicsObject@@_N@Z");
+// win1.41 004680d0 mac 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+void __fastcall AddToRoutePlan__12CitadelHeartFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@CitadelHeart@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 004680c0 mac 101bd390 CitadelHeart::GetRoutePlanRadius(Creature *)
 float __fastcall GetRoutePlanRadius__12CitadelHeartFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?GetRoutePlanRadius@CitadelHeart@@UAEMPAVCreature@@@Z");
 // win1.41 00464b50 mac 101c2180 CitadelHeart::GetObjectCollide(void)

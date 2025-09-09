@@ -150,6 +150,13 @@
 .globl _globl_ct_0x004ff940
 .globl _globl_ct_0x004ff960
 .globl _globl_ct_0x004ff990
+.globl ?MaintainSpell@Creature@@UAEXIM@Z
+.globl ?UpdateSpellInfo@Creature@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z
+.globl ?CanBeSuckedIntoVortex@Creature@@UAE_NPAVLandscapeVortex@@@Z
+.globl ?GetPSysBeamTargetPos@Creature@@UAEXPAULHPoint@@@Z
+.globl ?SetArgumentOfSubActionAgenda@SubArgumentObjectAndInteger@@UAEXPAVCreatureSubActionAgenda@@I@Z
+.globl ?SetArgumentOfSubActionAgenda@SubArgumentInteger@@UAEXPAVCreatureSubActionAgenda@@I@Z
+.globl ?SetArgumentOfSubActionAgenda@SubArgumentPoint@@UAEXPAVCreatureSubActionAgenda@@I@Z
 
 start_0x004f75b0_0x00501950:
 // Snippet: asm, [0x004f75b0, 0x0050193b)
@@ -1356,6 +1363,7 @@ _jmp_addr_0x004f833e:    xor.s              eax, eax                            
                          nop                                                              // 0x004f834d    90
                          nop                                                              // 0x004f834e    90
                          nop                                                              // 0x004f834f    90
+?MaintainSpell@Creature@@UAEXIM@Z:
                          push               ecx                                           // 0x004f8350    51
                          {disp8} fld        dword ptr [esp + 0x0c]                        // 0x004f8351    d944240c
                          push               esi                                           // 0x004f8355    56
@@ -1668,6 +1676,7 @@ _jmp_addr_0x004f8741:    pop                edi                                 
                          add                esp, 0x24                                     // 0x004f8745    83c424
                          ret                0x0010                                        // 0x004f8748    c21000
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004f874b    e82991f0ff
+?UpdateSpellInfo@Creature@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z:
                          sub                esp, 0x0c                                     // 0x004f8750    83ec0c
                          push               esi                                           // 0x004f8753    56
                          {disp8} mov        esi, dword ptr [esp + 0x18]                   // 0x004f8754    8b742418
@@ -1939,6 +1948,7 @@ _jmp_addr_0x004f8a06:    pop                edi                                 
                          nop                                                              // 0x004f8a0d    90
                          nop                                                              // 0x004f8a0e    90
                          nop                                                              // 0x004f8a0f    90
+?CanBeSuckedIntoVortex@Creature@@UAE_NPAVLandscapeVortex@@@Z:
                          push               esi                                           // 0x004f8a10    56
                          mov.s              esi, ecx                                      // 0x004f8a11    8bf1
                          {disp32} mov       al, byte ptr [esi + 0x0000037c]               // 0x004f8a13    8a867c030000
@@ -2045,6 +2055,7 @@ _jmp_addr_0x004f8b0c:    {disp8} mov        edx, dword ptr [esp + 0x0c]         
                          nop                                                              // 0x004f8b2d    90
                          nop                                                              // 0x004f8b2e    90
                          nop                                                              // 0x004f8b2f    90
+?GetPSysBeamTargetPos@Creature@@UAEXPAULHPoint@@@Z:
                          sub                esp, 0x0c                                     // 0x004f8b30    83ec0c
                          call               @GetCreature3D__8CreatureFv@4                 // 0x004f8b33    e818edf7ff
                          test               eax, eax                                      // 0x004f8b38    85c0
@@ -8278,6 +8289,7 @@ _jmp_addr_0x004ff680:    {disp32} mov       dword ptr [data_bytes + 0x2e7b08], 0
                          {disp8} mov        dword ptr [eax + 0x48], ecx                   // 0x004ff6c9    894848
                          ret                0x0008                                        // 0x004ff6cc    c20800
                          nop                                                              // 0x004ff6cf    90
+?SetArgumentOfSubActionAgenda@SubArgumentObjectAndInteger@@UAEXPAVCreatureSubActionAgenda@@I@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x004ff6d0    8b442408
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x004ff6d4    8b542404
                          lea                eax, dword ptr [eax + eax * 0x2]              // 0x004ff6d8    8d0440
@@ -8289,6 +8301,7 @@ _jmp_addr_0x004ff680:    {disp32} mov       dword ptr [data_bytes + 0x2e7b08], 0
                          {disp8} mov        dword ptr [eax + 0x38], ecx                   // 0x004ff6e9    894838
                          ret                0x0008                                        // 0x004ff6ec    c20800
                          nop                                                              // 0x004ff6ef    90
+?SetArgumentOfSubActionAgenda@SubArgumentInteger@@UAEXPAVCreatureSubActionAgenda@@I@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x004ff6f0    8b442408
                          {disp8} mov        ecx, dword ptr [ecx + 0x04]                   // 0x004ff6f4    8b4904
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x004ff6f7    8b542404
@@ -8353,6 +8366,7 @@ _jmp_addr_0x004ff680:    {disp32} mov       dword ptr [data_bytes + 0x2e7b08], 0
                          nop                                                              // 0x004ff77d    90
                          nop                                                              // 0x004ff77e    90
                          nop                                                              // 0x004ff77f    90
+?SetArgumentOfSubActionAgenda@SubArgumentPoint@@UAEXPAVCreatureSubActionAgenda@@I@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x004ff780    8b442408
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x004ff784    8b542404
                          lea                eax, dword ptr [eax + eax * 0x2]              // 0x004ff788    8d0440

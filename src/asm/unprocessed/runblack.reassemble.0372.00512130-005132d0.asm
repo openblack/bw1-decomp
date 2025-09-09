@@ -73,6 +73,8 @@
 .globl _WantsMouseControl__13DialogBoxBaseFv
 .globl _CloseNotification__13DialogBoxBaseFv
 .globl _CanESCOut__13DialogBoxBaseFv
+.globl ?Init@DialogBoxKeyBinding@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@DialogBoxKeyBinding@@UAEXXZ
 
 start_0x00512130_0x005132d0:
 // Snippet: asm, [0x00512130, 0x00513290)
@@ -961,6 +963,7 @@ _jmp_addr_0x005129c4:    pop               esi                                  
                          pop               ebx                                                  // 0x005129cb    5b
                          pop               ecx                                                  // 0x005129cc    59
                          ret               0x0020                                               // 0x005129cd    c22000
+?Init@DialogBoxKeyBinding@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                          // 0x005129d0    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x04]                          // 0x005129d4    8b542404
                          push              esi                                                  // 0x005129d8    56
@@ -1105,6 +1108,7 @@ _jmp_addr_0x00512b67:    {disp8} mov       dword ptr [edi + 0x14], eax          
                          nop                                                                    // 0x00512bbd    90
                          nop                                                                    // 0x00512bbe    90
                          nop                                                                    // 0x00512bbf    90
+?Destroy@DialogBoxKeyBinding@@UAEXXZ:
                          {disp32} jmp      @Destroy__13DialogBoxBaseFv@4                        // 0x00512bc0    e9cb090000
                          nop                                                                    // 0x00512bc5    90
                          nop                                                                    // 0x00512bc6    90

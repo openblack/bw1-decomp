@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x004eb430
 .extern _jmp_addr_0x006171a0
 .extern @MorphInit__9MorphableFR7LHPointlPv@20
-.extern _jmp_addr_0x00617eb0
+.extern ?SetAnimTime@Morphable@@UAEXHH@Z
 .extern _jmp_addr_0x006182f0
 .extern @GetAnim__9MorphableFll@16
 .extern _jmp_addr_0x0068e260
@@ -67,6 +67,7 @@
 .globl _globl_ct_0x0047f190
 .globl _globl_ct_0x0047f450
 .globl _globl_ct_0x0047f470
+.globl ?SetAnimTime@CreatureFalling@@UAEXHH@Z
 
 start_0x0047ef30_0x00480530:
 // Snippet: asm, [0x0047ef30, 0x004804c8)
@@ -1734,6 +1735,7 @@ _jmp_addr_0x00480380:    {disp32} fld       dword ptr [ecx + 0x00004aa8]        
                          nop                                                              // 0x004803cd    90
                          nop                                                              // 0x004803ce    90
                          nop                                                              // 0x004803cf    90
+?SetAnimTime@CreatureFalling@@UAEXHH@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x004803d0    8b442404
                          push               esi                                           // 0x004803d4    56
                          mov.s              esi, ecx                                      // 0x004803d5    8bf1
@@ -1748,19 +1750,19 @@ _jmp_addr_0x00480380:    {disp32} fld       dword ptr [ecx + 0x00004aa8]        
                          push               edi                                           // 0x004803f7    57
                          push               0x51                                          // 0x004803f8    6a51
                          mov.s              ecx, esi                                      // 0x004803fa    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x004803fc    e8af7a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x004803fc    e8af7a1900
                          push               edi                                           // 0x00480401    57
                          push               0x52                                          // 0x00480402    6a52
                          mov.s              ecx, esi                                      // 0x00480404    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x00480406    e8a57a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x00480406    e8a57a1900
                          push               edi                                           // 0x0048040b    57
                          push               0x53                                          // 0x0048040c    6a53
                          mov.s              ecx, esi                                      // 0x0048040e    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x00480410    e89b7a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x00480410    e89b7a1900
                          push               edi                                           // 0x00480415    57
                          push               0x54                                          // 0x00480416    6a54
                          mov.s              ecx, esi                                      // 0x00480418    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x0048041a    e8917a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x0048041a    e8917a1900
                          pop                edi                                           // 0x0048041f    5f
                          pop                esi                                           // 0x00480420    5e
                          ret                0x0008                                        // 0x00480421    c20800
@@ -1768,11 +1770,11 @@ _jmp_addr_0x00480380:    {disp32} fld       dword ptr [ecx + 0x00004aa8]        
                          push               edi                                           // 0x00480428    57
                          push               0x5b                                          // 0x00480429    6a5b
                          mov.s              ecx, esi                                      // 0x0048042b    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x0048042d    e87e7a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x0048042d    e87e7a1900
                          push               edi                                           // 0x00480432    57
                          push               0x5c                                          // 0x00480433    6a5c
                          mov.s              ecx, esi                                      // 0x00480435    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x00480437    e8747a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x00480437    e8747a1900
                          pop                edi                                           // 0x0048043c    5f
                          pop                esi                                           // 0x0048043d    5e
                          ret                0x0008                                        // 0x0048043e    c20800
@@ -1780,19 +1782,19 @@ _jmp_addr_0x00480380:    {disp32} fld       dword ptr [ecx + 0x00004aa8]        
                          push               edi                                           // 0x00480445    57
                          push               0x71                                          // 0x00480446    6a71
                          mov.s              ecx, esi                                      // 0x00480448    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x0048044a    e8617a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x0048044a    e8617a1900
                          push               edi                                           // 0x0048044f    57
                          push               0x72                                          // 0x00480450    6a72
                          mov.s              ecx, esi                                      // 0x00480452    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x00480454    e8577a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x00480454    e8577a1900
                          push               edi                                           // 0x00480459    57
                          push               0x73                                          // 0x0048045a    6a73
                          mov.s              ecx, esi                                      // 0x0048045c    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x0048045e    e84d7a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x0048045e    e84d7a1900
                          push               edi                                           // 0x00480463    57
                          push               0x74                                          // 0x00480464    6a74
                          mov.s              ecx, esi                                      // 0x00480466    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x00480468    e8437a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x00480468    e8437a1900
                          pop                edi                                           // 0x0048046d    5f
                          pop                esi                                           // 0x0048046e    5e
                          ret                0x0008                                        // 0x0048046f    c20800
@@ -1807,7 +1809,7 @@ _jmp_addr_0x00480480:    mov                eax, dword ptr [ebx]                
                          {disp32} lea       ecx, dword ptr [edi + 0x00000093]             // 0x00480486    8d8f93000000
                          push               ecx                                           // 0x0048048c    51
                          mov.s              ecx, esi                                      // 0x0048048d    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x0048048f    e81c7a1900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x0048048f    e81c7a1900
                          inc                edi                                           // 0x00480494    47
                          add                ebx, 0x04                                     // 0x00480495    83c304
                          cmp                edi, 0x07                                     // 0x00480498    83ff07
@@ -1821,7 +1823,7 @@ _jmp_addr_0x00480480:    mov                eax, dword ptr [ebx]                
                          push               edx                                           // 0x004804a8    52
                          push               eax                                           // 0x004804a9    50
                          mov.s              ecx, esi                                      // 0x004804aa    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x004804ac    e8ff791900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x004804ac    e8ff791900
                          pop                edi                                           // 0x004804b1    5f
                          pop                esi                                           // 0x004804b2    5e
                          ret                0x0008                                        // 0x004804b3    c20800
@@ -1829,7 +1831,7 @@ _jmp_addr_0x004804b6:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          push               ecx                                           // 0x004804ba    51
                          push               eax                                           // 0x004804bb    50
                          mov.s              ecx, esi                                      // 0x004804bc    8bce
-                         call               _jmp_addr_0x00617eb0                          // 0x004804be    e8ed791900
+                         call               ?SetAnimTime@Morphable@@UAEXHH@Z              // 0x004804be    e8ed791900
                          pop                edi                                           // 0x004804c3    5f
                          pop                esi                                           // 0x004804c4    5e
                          ret                0x0008                                        // 0x004804c5    c20800

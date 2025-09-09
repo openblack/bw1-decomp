@@ -17,9 +17,16 @@
 
 .globl _jmp_addr_0x0078e3d0
 .globl _jmp_addr_0x0078e580
+.globl ?UpdateKeyboard@SubOptionEntryScroll@@UAEIW4LH_KEY@@G@Z
+.globl ?GetSubMeshData@SubOptionEntryText@@UAEXAAUSubMeshDrawData@@HH@Z
+.globl ?UpdateMouse@SubOptionEntryText@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z
+.globl ?UpdateKeyboard@SubOptionEntryText@@UAEIW4LH_KEY@@G@Z
+.globl ?GetSubMeshData@SubOptionEntryListBox@@UAEXAAUSubMeshDrawData@@HH@Z
+.globl ?UpdateMouse@SubOptionEntryListBox@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z
 
 start_0x0078e3c0_0x0078e750:
 // Snippet: asm, [0x0078e3c0, 0x0078e733)
+?UpdateKeyboard@SubOptionEntryScroll@@UAEIW4LH_KEY@@G@Z:
                          xor.s            eax, eax                               // 0x0078e3c0    33c0
                          ret              0x0008                                 // 0x0078e3c2    c20800
                          nop                                                     // 0x0078e3c5    90
@@ -63,6 +70,7 @@ _jmp_addr_0x0078e3d0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078e40d    90
                          nop                                                     // 0x0078e40e    90
                          nop                                                     // 0x0078e40f    90
+?GetSubMeshData@SubOptionEntryText@@UAEXAAUSubMeshDrawData@@HH@Z:
                          sub              esp, 0x24                              // 0x0078e410    83ec24
                          {disp8} mov      eax, dword ptr [esp + 0x30]            // 0x0078e413    8b442430
                          push             esi                                    // 0x0078e417    56
@@ -139,6 +147,7 @@ _jmp_addr_0x0078e3d0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078e4dd    90
                          nop                                                     // 0x0078e4de    90
                          nop                                                     // 0x0078e4df    90
+?UpdateMouse@SubOptionEntryText@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z:
                          ret              0x0010                                 // 0x0078e4e0    c21000
                          nop                                                     // 0x0078e4e3    90
                          nop                                                     // 0x0078e4e4    90
@@ -153,6 +162,7 @@ _jmp_addr_0x0078e3d0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078e4ed    90
                          nop                                                     // 0x0078e4ee    90
                          nop                                                     // 0x0078e4ef    90
+?UpdateKeyboard@SubOptionEntryText@@UAEIW4LH_KEY@@G@Z:
                          sub              esp, 0x24                              // 0x0078e4f0    83ec24
                          push             esi                                    // 0x0078e4f3    56
                          {disp8} lea      eax, dword ptr [esp + 0x04]            // 0x0078e4f4    8d442404
@@ -246,6 +256,7 @@ _jmp_addr_0x0078e580:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078e5cd    90
                          nop                                                     // 0x0078e5ce    90
                          nop                                                     // 0x0078e5cf    90
+?GetSubMeshData@SubOptionEntryListBox@@UAEXAAUSubMeshDrawData@@HH@Z:
                          sub              esp, 0x24                              // 0x0078e5d0    83ec24
                          {disp8} mov      eax, dword ptr [esp + 0x30]            // 0x0078e5d3    8b442430
                          push             esi                                    // 0x0078e5d7    56
@@ -317,6 +328,7 @@ _jmp_addr_0x0078e580:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078e69d    90
                          nop                                                     // 0x0078e69e    90
                          nop                                                     // 0x0078e69f    90
+?UpdateMouse@SubOptionEntryListBox@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]            // 0x0078e6a0    8b44240c
                          sub              esp, 0x24                              // 0x0078e6a4    83ec24
                          push             esi                                    // 0x0078e6a7    56

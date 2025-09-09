@@ -58,6 +58,7 @@
 .globl _jmp_addr_0x006d7190
 .globl _jmp_addr_0x006d71d0
 .globl _jmp_addr_0x006d7480
+.globl ?ToBeDeleted@PuzzleGame@@UAEXH@Z
 
 start_0x006d6cb0_0x006d8b00:
 // Snippet: asm, [0x006d6cb0, 0x006d8a97)
@@ -373,6 +374,7 @@ _jmp_addr_0x006d6fcf:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          nop                                                              // 0x006d6fed    90
                          nop                                                              // 0x006d6fee    90
                          nop                                                              // 0x006d6fef    90
+?ToBeDeleted@PuzzleGame@@UAEXH@Z:
                          push               ebx                                           // 0x006d6ff0    53
                          push               ebp                                           // 0x006d6ff1    55
                          push               esi                                           // 0x006d6ff2    56

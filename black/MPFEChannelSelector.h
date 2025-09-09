@@ -58,7 +58,7 @@ void __fastcall RefreshChannelList__19MPFEChannelSelectorFv(struct MPFEChannelSe
 // Override methods
 
 // win1.41 00628450 mac 1039e270 MPFEChannelSelector::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__19MPFEChannelSelectorFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@MPFEChannelSelector@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__19MPFEChannelSelectorFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@MPFEChannelSelector@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00628e20 mac 1039e230 MPFEChannelSelector::Destroy(void)
 void __fastcall Destroy__19MPFEChannelSelectorFv(struct DialogBoxBase* this) asm("?Destroy@MPFEChannelSelector@@UAEXXZ");
 // win1.41 00628430 mac 1039e800 MPFEChannelSelector::Show(void)

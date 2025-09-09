@@ -209,6 +209,8 @@
 .globl _jmp_addr_0x00555180
 .globl _jmp_addr_0x005551d0
 .globl _Save__5GGameFR10GameOSFile
+.globl ?Load@GGame@@UAEIAAVGameOSFile@@@Z
+.globl ?ResolveLoad@GGame@@UAEXXZ
 
 start_0x005529e0_0x00555240:
 // Snippet: asm, [0x005529e0, 0x00555226)
@@ -2548,6 +2550,7 @@ _jmp_addr_0x0055481d:    pop                esi                                 
                          nop                                                              // 0x0055482d    90
                          nop                                                              // 0x0055482e    90
                          nop                                                              // 0x0055482f    90
+?Load@GGame@@UAEIAAVGameOSFile@@@Z:
                          sub                esp, 0x00000128                               // 0x00554830    81ec28010000
                          push               ebp                                           // 0x00554836    55
                          push               esi                                           // 0x00554837    56
@@ -3148,6 +3151,7 @@ _jmp_addr_0x0055506f:    pop                esi                                 
                          nop                                                              // 0x0055507d    90
                          nop                                                              // 0x0055507e    90
                          nop                                                              // 0x0055507f    90
+?ResolveLoad@GGame@@UAEXXZ:
                          push               esi                                           // 0x00555080    56
                          mov.s              esi, ecx                                      // 0x00555081    8bf1
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00555083    8b0d5c19d000

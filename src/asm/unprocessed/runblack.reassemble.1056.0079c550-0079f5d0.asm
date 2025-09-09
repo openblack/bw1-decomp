@@ -56,9 +56,9 @@
 .extern _jmp_addr_0x00798b30
 .extern _jmp_addr_0x007991c0
 .extern _jmp_addr_0x00799e60
-.extern _jmp_addr_0x00799f80
+.extern ?PreDraw@GameOptionsRoom@@UAEXXZ
 .extern _jmp_addr_0x00799fe0
-.extern _jmp_addr_0x0079a230
+.extern ?DrawAdditional@GameOptionsRoom@@UAEX_N@Z
 .extern _jmp_addr_0x0079a3a0
 .extern _jmp_addr_0x0079a5a0
 .extern _jmp_addr_0x0079a600
@@ -894,7 +894,7 @@ _jmp_addr_0x0079cdc6:    {disp32} mov       dword ptr [ebx + 0x00000124], eax   
                          push               esi                                           // 0x0079ced5    56
                          mov.s              esi, ecx                                      // 0x0079ced6    8bf1
                          push               ebx                                           // 0x0079ced8    53
-                         call               _jmp_addr_0x0079a230                          // 0x0079ced9    e852d3ffff
+                         call               ?DrawAdditional@GameOptionsRoom@@UAEX_N@Z     // 0x0079ced9    e852d3ffff
                          {disp32} mov       eax, dword ptr [esi + 0x00000164]             // 0x0079cede    8b8664010000
                          test               eax, eax                                      // 0x0079cee4    85c0
                          {disp32} je        _jmp_addr_0x0079cf93                          // 0x0079cee6    0f84a7000000
@@ -2568,7 +2568,7 @@ _jmp_addr_0x0079e212:    inc                esi                                 
                          {disp32} fstp      dword ptr [data_bytes + 0x474194]             // 0x0079e22f    d91d94a1e300
 _jmp_addr_0x0079e235:    push               ebx                                           // 0x0079e235    53
                          mov.s              ecx, edi                                      // 0x0079e236    8bcf
-                         call               _jmp_addr_0x0079a230                          // 0x0079e238    e8f3bfffff
+                         call               ?DrawAdditional@GameOptionsRoom@@UAEX_N@Z     // 0x0079e238    e8f3bfffff
                          pop                edi                                           // 0x0079e23d    5f
                          pop                ebx                                           // 0x0079e23e    5b
                          ret                0x0004                                        // 0x0079e23f    c20400
@@ -3851,7 +3851,7 @@ _jmp_addr_0x0079f425:    ret                                                    
                          nop                                                              // 0x0079f42d    90
                          nop                                                              // 0x0079f42e    90
                          nop                                                              // 0x0079f42f    90
-                         {disp32} jmp       _jmp_addr_0x00799f80                          // 0x0079f430    e94babffff
+                         {disp32} jmp       ?PreDraw@GameOptionsRoom@@UAEXXZ              // 0x0079f430    e94babffff
                          nop                                                              // 0x0079f435    90
                          nop                                                              // 0x0079f436    90
                          nop                                                              // 0x0079f437    90

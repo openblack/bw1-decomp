@@ -15,7 +15,7 @@ static_assert(sizeof(struct SetupLandscapeBox) == 0x10, "Data type is of wrong s
 // Override methods
 
 // win1.41 00546280 mac 105cd3c0 SetupLandscapeBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__17SetupLandscapeBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@SetupLandscapeBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__17SetupLandscapeBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@SetupLandscapeBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00546d10 mac 105cd360 SetupLandscapeBox::Destroy(void)
 void __fastcall Destroy__17SetupLandscapeBoxFv(struct DialogBoxBase* this) asm("?Destroy@SetupLandscapeBox@@UAEXXZ");
 // win1.41 0054a210 mac 105cdd70 SetupLandscapeBox::InitSubDialogs(void)

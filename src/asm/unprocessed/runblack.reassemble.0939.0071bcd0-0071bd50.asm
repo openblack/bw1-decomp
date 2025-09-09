@@ -9,8 +9,12 @@
 
 .extern _jmp_addr_0x006de570
 
+.globl ?GetSampleForAttack@Rock@@UAEIXZ
+
+
 start_0x0071bcd0_0x0071bd50:
 // Snippet: asm, [0x0071bcd0, 0x0071bd25)
+?GetSampleForAttack@Rock@@UAEIXZ:
                          push           0xa                          // 0x0071bcd0    6a0a
                          call           _jmp_addr_0x006de570         // 0x0071bcd2    e89928fcff
                          add            esp, 0x04                    // 0x0071bcd7    83c404

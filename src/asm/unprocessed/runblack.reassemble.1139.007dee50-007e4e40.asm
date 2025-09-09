@@ -97,6 +97,8 @@
 .globl _jmp_addr_0x007e4b80
 
 .globl _globl_ct_0x007e0440
+.globl ?SetToZero@HeapStore@@UAEXXZ
+.globl ?SetToZero@Heap@@UAEXXZ
 
 _jmp_addr_0x007deef0:    push               ebp                                           // 0x007deef0    55
                          mov.s              ebp, esp                                      // 0x007deef1    8bec
@@ -3243,7 +3245,7 @@ _jmp_addr_0x007e0fa0:    push               -0x1                                
                          mov                dword ptr [esi], 0x00931cc8                   // 0x007e0fdd    c706c81c9300
                          {disp8} mov        dword ptr [esi + 0x10], eax                   // 0x007e0fe3    894610
                          {disp8} mov        dword ptr [esi + 0x24], edx                   // 0x007e0fe6    895624
-                         call               _jmp_addr_0x007e1020                          // 0x007e0fe9    e832000000
+                         call               ?SetToZero@Heap@@UAEXXZ                       // 0x007e0fe9    e832000000
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x007e0fee    8b4c2408
                          mov.s              eax, esi                                      // 0x007e0ff2    8bc6
                          pop                esi                                           // 0x007e0ff4    5e
@@ -3280,7 +3282,8 @@ _jmp_addr_0x007e1010:    ret                                                    
                          nop                                                              // 0x007e101d    90
                          nop                                                              // 0x007e101e    90
                          nop                                                              // 0x007e101f    90
-_jmp_addr_0x007e1020:    push               esi                                           // 0x007e1020    56
+?SetToZero@Heap@@UAEXXZ:
+                         push               esi                                           // 0x007e1020    56
                          mov.s              esi, ecx                                      // 0x007e1021    8bf1
                          push               edi                                           // 0x007e1023    57
                          xor.s              eax, eax                                      // 0x007e1024    33c0
@@ -4166,9 +4169,10 @@ _jmp_addr_0x007e171c:    {disp32} mov       edi, dword ptr [data_bytes + 0x380ad
                          nop                                                              // 0x007e177d    90
                          nop                                                              // 0x007e177e    90
                          nop                                                              // 0x007e177f    90
+?SetToZero@HeapStore@@UAEXXZ:
                          push               esi                                           // 0x007e1780    56
                          mov.s              esi, ecx                                      // 0x007e1781    8bf1
-                         call               _jmp_addr_0x007e1020                          // 0x007e1783    e898f8ffff
+                         call               ?SetToZero@Heap@@UAEXXZ                       // 0x007e1783    e898f8ffff
                          {disp32} mov       dword ptr [esi + 0x000000bc], 0x00000001      // 0x007e1788    c786bc00000001000000
                          pop                esi                                           // 0x007e1792    5e
                          ret                                                              // 0x007e1793    c3

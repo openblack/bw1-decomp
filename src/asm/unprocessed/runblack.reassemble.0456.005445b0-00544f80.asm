@@ -36,9 +36,16 @@
 .globl _jmp_addr_0x00544770
 .globl _jmp_addr_0x00544b60
 .globl _jmp_addr_0x00544df0
+.globl ?Init@StartGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@StartGameBox@@UAEXXZ
+.globl ?InitControls@StartGameBox@@UAEXXZ
+.globl ?Init@SkirmishGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@SkirmishGameBox@@UAEXXZ
+.globl ?InitControls@SkirmishGameBox@@UAEXXZ
 
 start_0x005445b0_0x00544f80:
 // Snippet: asm, [0x005445b0, 0x00544f4f)
+?Init@StartGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x005445b0    8b44240c
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x005445b4    8b542404
                          push             esi                                           // 0x005445b8    56
@@ -150,9 +157,11 @@ _jmp_addr_0x00544722:    xor.s            eax, eax                              
                          nop                                                            // 0x0054472d    90
                          nop                                                            // 0x0054472e    90
                          nop                                                            // 0x0054472f    90
+?Destroy@StartGameBox@@UAEXXZ:
                          call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544730    e85beefcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab84], 0x00000000 // 0x00544735    c705840bcd0000000000
                          ret                                                            // 0x0054473f    c3
+?InitControls@StartGameBox@@UAEXXZ:
                          cmp              dword ptr [data_bytes + 0x351cac], 0x00000d7a // 0x00544740    813dac7cd1007a0d0000
                          {disp32} mov     eax, dword ptr [data_bytes + 0x351ca8]        // 0x0054474a    a1a87cd100
                          {disp8} jbe      _jmp_addr_0x00544756                          // 0x0054474f    7605
@@ -228,6 +237,7 @@ _jmp_addr_0x00544814:    pop              esi                                   
                          nop                                                            // 0x0054481d    90
                          nop                                                            // 0x0054481e    90
                          nop                                                            // 0x0054481f    90
+?Init@SkirmishGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x00544820    8b44240c
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x00544824    8b542404
                          push             esi                                           // 0x00544828    56
@@ -548,6 +558,7 @@ _jmp_addr_0x00544b84:    pop              esi                                   
                          nop                                                            // 0x00544b8d    90
                          nop                                                            // 0x00544b8e    90
                          nop                                                            // 0x00544b8f    90
+?Destroy@SkirmishGameBox@@UAEXXZ:
                          call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544b90    e8fbe9fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab88], 0x00000000 // 0x00544b95    c705880bcd0000000000
                          ret                                                            // 0x00544b9f    c3
@@ -576,6 +587,7 @@ _jmp_addr_0x00544bba:    push             edx                                   
                          nop                                                            // 0x00544bcd    90
                          nop                                                            // 0x00544bce    90
                          nop                                                            // 0x00544bcf    90
+?InitControls@SkirmishGameBox@@UAEXXZ:
                          {disp32} mov     eax, dword ptr [data_bytes + 0x351cac]        // 0x00544bd0    a1ac7cd100
                          sub              esp, 0x00000144                               // 0x00544bd5    81ec44010000
                          push             ebx                                           // 0x00544bdb    53

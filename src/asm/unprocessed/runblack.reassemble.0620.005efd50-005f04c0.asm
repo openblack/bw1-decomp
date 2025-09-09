@@ -21,6 +21,12 @@
 .extern _jmp_addr_0x007fc760
 
 .globl _globl_ct_0x005efd50
+.globl ?InitialisePhysicsFromHand@Villager@@UAEIAAULHPoint@@0PAVGInterfaceStatus@@PAVObject@@H@Z
+.globl ?InitialisePhysics@Villager@@UAEIABULHPoint@@0PAVObject@@_NPAVGInterfaceStatus@@@Z
+.globl ?GetPhysicsConstantsType@Villager@@UAEIXZ
+.globl ?SetUpPhysOb@Villager@@UAEXPAUPhysOb@@@Z
+.globl ?InitialisePhysicsFromHand@Living@@UAEIAAULHPoint@@0PAVGInterfaceStatus@@PAVObject@@H@Z
+.globl ?InitialisePhysics@Living@@UAEIABULHPoint@@0PAVObject@@_NPAVGInterfaceStatus@@@Z
 
 start_0x005efd50_0x005f04c0:
 // Snippet: asm, [0x005efd50, 0x005f0482)
@@ -46,7 +52,8 @@ _jmp_addr_0x005efd70:    push               0x00407870                          
                          nop                                                         // 0x005efd7d    90
                          nop                                                         // 0x005efd7e    90
                          nop                                                         // 0x005efd7f    90
-_jmp_addr_0x005efd80:    push               esi                                      // 0x005efd80    56
+?InitialisePhysicsFromHand@Living@@UAEIAAULHPoint@@0PAVGInterfaceStatus@@PAVObject@@H@Z:
+                         push               esi                                      // 0x005efd80    56
                          mov.s              esi, ecx                                 // 0x005efd81    8bf1
                          mov                eax, dword ptr [esi]                     // 0x005efd83    8b06
                          push               edi                                      // 0x005efd85    57
@@ -103,7 +110,8 @@ _jmp_addr_0x005efe06:    mov.s              eax, edi                            
                          nop                                                         // 0x005efe0d    90
                          nop                                                         // 0x005efe0e    90
                          nop                                                         // 0x005efe0f    90
-_jmp_addr_0x005efe10:    push               esi                                      // 0x005efe10    56
+?InitialisePhysics@Living@@UAEIABULHPoint@@0PAVObject@@_NPAVGInterfaceStatus@@@Z:
+                         push               esi                                      // 0x005efe10    56
                          mov.s              esi, ecx                                 // 0x005efe11    8bf1
                          call               @GetTopState__6LivingCFv@4               // 0x005efe13    e8d8290000
                          cmp                al, 0x0a                                 // 0x005efe18    3c0a
@@ -157,6 +165,7 @@ _jmp_addr_0x005efe57:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          nop                                                         // 0x005efe8d    90
                          nop                                                         // 0x005efe8e    90
                          nop                                                         // 0x005efe8f    90
+?InitialisePhysicsFromHand@Villager@@UAEIAAULHPoint@@0PAVGInterfaceStatus@@PAVObject@@H@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x14]              // 0x005efe90    8b442414
                          {disp8} mov        edx, dword ptr [esp + 0x0c]              // 0x005efe94    8b54240c
                          push               esi                                      // 0x005efe98    56
@@ -171,7 +180,7 @@ _jmp_addr_0x005efe57:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          push               eax                                      // 0x005efeab    50
                          push               ecx                                      // 0x005efeac    51
                          mov.s              ecx, edi                                 // 0x005efead    8bcf
-                         call               _jmp_addr_0x005efd80                     // 0x005efeaf    e8ccfeffff
+                         call               ?InitialisePhysicsFromHand@Living@@UAEIAAULHPoint@@0PAVGInterfaceStatus@@PAVObject@@H@Z                     // 0x005efeaf    e8ccfeffff
                          mov.s              esi, eax                                 // 0x005efeb4    8bf0
                          test               esi, esi                                 // 0x005efeb6    85f6
                          {disp8} je         _jmp_addr_0x005efec8                     // 0x005efeb8    740e
@@ -204,6 +213,7 @@ _jmp_addr_0x005efeda:    pop                edi                                 
                          nop                                                         // 0x005efeed    90
                          nop                                                         // 0x005efeee    90
                          nop                                                         // 0x005efeef    90
+?InitialisePhysics@Villager@@UAEIABULHPoint@@0PAVObject@@_NPAVGInterfaceStatus@@@Z:
                          push               ebx                                      // 0x005efef0    53
                          {disp8} mov        ebx, dword ptr [esp + 0x0c]              // 0x005efef1    8b5c240c
                          push               esi                                      // 0x005efef5    56
@@ -225,13 +235,14 @@ _jmp_addr_0x005efeda:    pop                edi                                 
                          push               ebx                                      // 0x005eff1a    53
                          push               edi                                      // 0x005eff1b    57
                          mov.s              ecx, esi                                 // 0x005eff1c    8bce
-                         call               _jmp_addr_0x005efe10                     // 0x005eff1e    e8edfeffff
+                         call               ?InitialisePhysics@Living@@UAEIABULHPoint@@0PAVObject@@_NPAVGInterfaceStatus@@@Z                     // 0x005eff1e    e8edfeffff
                          mov.s              eax, edi                                 // 0x005eff23    8bc7
                          pop                edi                                      // 0x005eff25    5f
                          pop                esi                                      // 0x005eff26    5e
                          pop                ebx                                      // 0x005eff27    5b
                          ret                0x0018                                   // 0x005eff28    c21800
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                     // 0x005eff2b    e8c918e1ff
+?GetPhysicsConstantsType@Villager@@UAEIXZ:
                          mov                eax, 0x00000007                          // 0x005eff30    b807000000
                          ret                                                         // 0x005eff35    c3
                          nop                                                         // 0x005eff36    90
@@ -244,6 +255,7 @@ _jmp_addr_0x005efeda:    pop                edi                                 
                          nop                                                         // 0x005eff3d    90
                          nop                                                         // 0x005eff3e    90
                          nop                                                         // 0x005eff3f    90
+?SetUpPhysOb@Villager@@UAEXPAUPhysOb@@@Z:
                          sub                esp, 0x40                                // 0x005eff40    83ec40
                          push               ebx                                      // 0x005eff43    53
                          push               ebp                                      // 0x005eff44    55

@@ -21,7 +21,6 @@ struct GameThing;
 struct GameThingWithPos;
 struct Living;
 struct MapCoords;
-struct Object;
 
 struct ForestVftable
 {
@@ -77,6 +76,8 @@ uint32_t __fastcall IsFootpathLink__6ForestFv(struct GameThing* this) asm("?IsFo
 struct GFootpathLink* __fastcall GetFootpathLink__6ForestFv(struct GameThing* this) asm("?GetFootpathLink@Forest@@UAEPAVGFootpathLink@@XZ");
 // win1.41 0053acf0 mac 100f07e0 Forest::GetNearestPathTo(MapCoords const &, float, int)
 uint32_t __fastcall GetNearestPathTo__6ForestFRC9MapCoordsfi(struct GameThing* this, const void* edx, const struct MapCoords* param_1, float param_2, int param_3) asm("?GetNearestPathTo@Forest@@UAEIABUMapCoords@@MH@Z");
+// win1.41 0053ad60 mac 100f05a0 Forest::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
+void __fastcall UseFootpathIfNecessary__6ForestFP6LivingRC9MapCoordsUc(struct GameThing* this, const void* edx, struct Living* param_1, const struct MapCoords* param_2, unsigned char param_3) asm("?UseFootpathIfNecessary@Forest@@UAEXPAVLiving@@ABUMapCoords@@E@Z");
 // win1.41 0053ac50 mac 100f08e0 Forest::AddFootpath(GFootpath *)
 uint32_t __fastcall AddFootpath__6ForestFP9GFootpath(struct GameThing* this, const void* edx, struct GFootpath* param_1) asm("?AddFootpath@Forest@@UAEIPAVGFootpath@@@Z");
 // win1.41 0053acc0 mac 100f0830 Forest::RemoveFootpath(GFootpath *)
@@ -103,8 +104,6 @@ uint32_t __fastcall IsSuitableForCreatureActivity__6ForestFv(struct GameThingWit
 const char* __fastcall GetText__6ForestFv(struct GameThingWithPos* this) asm("?GetText@Forest@@UAEPBDXZ");
 // win1.41 00539ad0 mac 100ef6e0 Forest::IsForest(void)
 uint32_t __fastcall IsForest__6ForestFv(struct GameThingWithPos* this) asm("?IsForest@Forest@@UAEIXZ");
-// win1.41 0053ad60 mac 100f05a0 Forest::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-void __fastcall UseFootpathIfNecessary__6ForestFP6LivingRC9MapCoordsUc(struct Object* this, const void* edx, struct Living* param_1, const struct MapCoords* param_2, uint8_t param_3) asm("?UseFootpathIfNecessary@Forest@@UAEXPAVLiving@@ABUMapCoords@@E@Z");
 
 DECLARE_LH_LIST_HEAD(Forest);
 

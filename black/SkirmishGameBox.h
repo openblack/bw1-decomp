@@ -22,7 +22,7 @@ extern const struct DialogBoxBaseVftable __vt__15SkirmishGameBox asm("??_7Skirmi
 // Override methods
 
 // win1.41 00544820 mac 105baab0 SkirmishGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__15SkirmishGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@SkirmishGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__15SkirmishGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@SkirmishGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00544b90 mac 105ba740 SkirmishGameBox::Destroy(void)
 void __fastcall Destroy__15SkirmishGameBoxFv(struct DialogBoxBase* this) asm("?Destroy@SkirmishGameBox@@UAEXXZ");
 // win1.41 00544bd0 mac 105ba3e0 SkirmishGameBox::InitControls(void)

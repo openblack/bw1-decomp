@@ -81,6 +81,8 @@
 .globl _globl_ct_0x006f3680
 .globl _globl_ct_0x006f36a0
 .globl _globl_ct_0x006f36d0
+.globl ?GetBaseInfo@GScriptOpposingCreature@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGScriptOpposingCreature@@UAEPAXI@Z
 
 start_0x006f1b20_0x006f5210:
 // Snippet: asm, [0x006f1b20, 0x006f51db)
@@ -2543,6 +2545,7 @@ _jmp_addr_0x006f36ec:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                                     // 0x006f370d    90
                          nop                                                                     // 0x006f370e    90
                          nop                                                                     // 0x006f370f    90
+?GetBaseInfo@GScriptOpposingCreature@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x006f3710    8b442404
                          mov                dword ptr [eax], 0x00000011                          // 0x006f3714    c70011000000
                          mov                eax, 0x00d95e50                                      // 0x006f371a    b8505ed900
@@ -2587,6 +2590,7 @@ _jmp_addr_0x006f3760:    sub                esi, 0x1c                           
                          pop                edi                                                  // 0x006f376d    5f
                          pop                esi                                                  // 0x006f376e    5e
 _jmp_addr_0x006f376f:    ret                                                                     // 0x006f376f    c3
+??_GGScriptOpposingCreature@@UAEPAXI@Z:
                          push               esi                                                  // 0x006f3770    56
                          mov.s              esi, ecx                                             // 0x006f3771    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x006f3773    e8e831d4ff

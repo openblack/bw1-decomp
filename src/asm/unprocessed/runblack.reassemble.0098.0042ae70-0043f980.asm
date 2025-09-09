@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x004c48b0
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
-.extern _jmp_addr_0x00517f10
+.extern ?Draw@Rock@@UAEXXZ
 .extern ?Draw@MultiMapFixed@@UAEXXZ
 .extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .extern _jmp_addr_0x0052e280
@@ -71,11 +71,11 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
-.extern _jmp_addr_0x00607c40
-.extern _jmp_addr_0x00607d00
+.extern ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z
+.extern ?Load@MobileObject@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x00608750
-.extern _jmp_addr_0x00609330
-.extern _jmp_addr_0x00609700
+.extern ?GetScriptObjectType@MobileStatic@@UAEIXZ
+.extern ?CallVirtualFunctionsForCreation@MobileStatic@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00620770
 .extern _jmp_addr_0x006227c0
 .extern _jmp_addr_0x00622c10
@@ -87,7 +87,7 @@
 .extern _jmp_addr_0x00624f20
 .extern _jmp_addr_0x00626360
 .extern _jmp_addr_0x00626a70
-.extern _jmp_addr_0x00628430
+.extern ?Show@MPFEChannelSelector@@UAEXXZ
 .extern _jmp_addr_0x006297b0
 .extern _jmp_addr_0x00629860
 .extern _jmp_addr_0x00629b50
@@ -115,8 +115,8 @@
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
 .extern _jmp_addr_0x006e4750
 .extern @__ct__4RockFRC9MapCoordsPC17GMobileStaticInfoP6ObjectP7GPlayerff@32
-.extern _jmp_addr_0x006e77b0
-.extern _jmp_addr_0x006e7870
+.extern ?Save@Rock@@UAEIAAVGameOSFile@@@Z
+.extern ?Load@Rock@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x006e8160
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
@@ -400,6 +400,11 @@
 .globl ?IsBuilt@MultiMapFixed@@UAE_NXZ
 .globl ?ConvertToPlanned@MultiMapFixed@@UAEPAVPlannedMultiMapFixed@@XZ
 .globl ??$LoadIt@VGVillagerStateTableInfo@@@@YAXPAVLoaderAnon@@PADPAVGVillagerStateTableInfo@@K_NPAVLHFile@@@Z
+.globl ?GetMesh@GObjectInfo@@UBEIXZ
+.globl ?GetBaseInfo@GObjectInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGLeashSelectorInfo@@UAEPAXI@Z
+.globl ?GetBaseInfo@GMagicInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGBaseInfo@@UAEPAXI@Z
 
 start_0x0042ae70_0x0043f980:
 // Snippet: asm, [0x0042ae70, 0x0043f967)
@@ -835,6 +840,7 @@ _jmp_addr_0x0042b350:    xor.s              eax, eax                            
                          nop                                                                     // 0x0042b36d    90
                          nop                                                                     // 0x0042b36e    90
                          nop                                                                     // 0x0042b36f    90
+?GetMesh@GObjectInfo@@UBEIXZ:
                          xor.s              eax, eax                                             // 0x0042b370    33c0
                          ret                                                                     // 0x0042b372    c3
                          nop                                                                     // 0x0042b373    90
@@ -850,6 +856,7 @@ _jmp_addr_0x0042b350:    xor.s              eax, eax                            
                          nop                                                                     // 0x0042b37d    90
                          nop                                                                     // 0x0042b37e    90
                          nop                                                                     // 0x0042b37f    90
+?GetBaseInfo@GObjectInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x0042b380    8b442404
                          mov                dword ptr [eax], 0x0000002d                          // 0x0042b384    c7002d000000
                          mov                eax, 0x00d41668                                      // 0x0042b38a    b86816d400
@@ -886,6 +893,7 @@ _jmp_addr_0x0042b3a0:    push               0x0042b3b0                          
                          {disp32} jmp       _jmp_addr_0x00436960                                 // 0x0042b3c9    e992b50000
 _jmp_addr_0x0042b3ce:    ret                                                                     // 0x0042b3ce    c3
                          nop                                                                     // 0x0042b3cf    90
+??_GGLeashSelectorInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x0042b3d0    56
                          mov.s              esi, ecx                                             // 0x0042b3d1    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x0042b3d3    e888b50000
@@ -3606,6 +3614,7 @@ _jmp_addr_0x0042d6b0:    push               ebx                                 
                          pop                ebx                                                  // 0x0042d6f6    5b
                          ret                0x0004                                               // 0x0042d6f7    c20400
                          call               dword ptr [__imp__ShellExecuteA@4]                   // 0x0042d6fa    ff15ac978a00
+?GetBaseInfo@GMagicInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x0042d700    8b442404
                          mov                dword ptr [eax], 0x0000002a                          // 0x0042d704    c7002a000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x371d10]               // 0x0042d70a    a1107dd300
@@ -5138,6 +5147,7 @@ _jmp_addr_0x0042e5e0:    mov.s              eax, ecx                            
                          nop                                                                     // 0x0042e5fd    90
                          nop                                                                     // 0x0042e5fe    90
                          nop                                                                     // 0x0042e5ff    90
+??_GGBaseInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x0042e600    56
                          mov.s              esi, ecx                                             // 0x0042e601    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x0042e603    e858830000

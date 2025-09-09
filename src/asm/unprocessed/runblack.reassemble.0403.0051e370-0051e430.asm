@@ -13,8 +13,12 @@
 .extern _jmp_addr_0x0051e500
 .extern _jmp_addr_0x0051ea10
 
+.globl ?ClickFunction@AnimEdit@@UAEXHHH@Z
+
+
 start_0x0051e370_0x0051e430:
 // Snippet: asm, [0x0051e370, 0x0051e40f)
+?ClickFunction@AnimEdit@@UAEXHHH@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x04]              // 0x0051e370    8b442404
                          dec              eax                                      // 0x0051e374    48
                          cmp              eax, 0x06                                // 0x0051e375    83f806

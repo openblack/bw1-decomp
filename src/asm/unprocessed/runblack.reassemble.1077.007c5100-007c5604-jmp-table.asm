@@ -2,6 +2,8 @@
 .align 16
 
 .globl _jmp_addr_0x007c5394
+.globl ?Close@LHLobby@@UAEXXZ
+.globl ?ProcessEvent@LHLobby@@UAE?AW4LH_RETURN@@PAULHNetEvent@@@Z
 
                          jmp              dword ptr [__imp___1LH_SamplePlayOptions__QAE_XZ@4]                                                                                        // 0x007c5100    ff2558978a00
                          jmp              dword ptr [__imp___0LH_SamplePlayOptions__QAE_XZ@4]                                                                                        // 0x007c5106    ff255c978a00
@@ -157,7 +159,9 @@ _jmp_addr_0x007c5394:    jmp              dword ptr [__imp__GetIPAddress__YAPADX
                          jmp              dword ptr [__imp__Open_LHHttp2__QAE_AW4LH_RETURN__PADG_Z@4]                                                                                // 0x007c548a    ff25d0948a00
                          jmp              dword ptr [__imp___0LHHttp2__QAE_XZ@4]                                                                                                     // 0x007c5490    ff25b0968a00
                          jmp              dword ptr [__imp__Read_LHConnection__UAEPAVLHNetEvent__KW4LH_NETEVENT_TYPE___Z@4]                                                          // 0x007c5496    ff25d8948a00
+?Close@LHLobby@@UAEXXZ:
                          jmp              dword ptr [__imp__Close_LHLobby__UAEXXZ@4]                                                                                                 // 0x007c549c    ff25dc948a00
+?ProcessEvent@LHLobby@@UAE?AW4LH_RETURN@@PAULHNetEvent@@@Z:
                          jmp              dword ptr [__imp__ProcessEvent_LHLobby__EAE_AW4LH_RETURN__PAVLHNetEvent___Z@4]                                                             // 0x007c54a2    ff25e0948a00
                          jmp              dword ptr [__imp__Create_LHTransport__SAPAV1_W4LH_TRANSPORT_TYPE___Z@4]                                                                    // 0x007c54a8    ff25e8948a00
                          jmp              dword ptr [__imp___0LHLobby__QAE_XZ@4]                                                                                                     // 0x007c54ae    ff25ec948a00

@@ -18,16 +18,16 @@
 .extern _jmp_addr_0x006056b0
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00607000
-.extern _jmp_addr_0x00607c40
-.extern _jmp_addr_0x00607d00
+.extern ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z
+.extern ?Load@MobileObject@@UAEIAAVGameOSFile@@@Z
 .extern @SetGameAngle__13MobileWallHugFUs@10
 .extern @SetScale__6ObjectFf@12
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x0063e580
 .extern _jmp_addr_0x00646a00
 .extern @__ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
-.extern _jmp_addr_0x0066f5a0
-.extern _jmp_addr_0x0066f5e0
+.extern ?Save@PileFood@@UAEIAAVGameOSFile@@@Z
+.extern ?Load@PileFood@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x006d66e0
 .extern _jmp_addr_0x006d7190
 .extern _jmp_addr_0x006d9290
@@ -62,6 +62,14 @@
 .globl _jmp_addr_0x006dcfd0
 
 .globl _globl_ct_0x006dc980
+.globl ?Load@HanoiBlock@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@HanoiBlock@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@PuzzleGrain@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@PuzzleGrain@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@PuzzleMobileObject@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@PuzzleMobileObject@@UAEIAAVGameOSFile@@@Z
+.globl ?GetImmersionTexture@PuzzleMobileObject@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
+.globl ?GetImmersionTexture@PuzzleGrain@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 
 start_0x006db8a0_0x006dd460:
 // Snippet: asm, [0x006db8a0, 0x006dd439)
@@ -139,12 +147,13 @@ _jmp_addr_0x006db952:    pop                esi                                 
                          nop                                                               // 0x006db95d    90
                          nop                                                               // 0x006db95e    90
                          nop                                                               // 0x006db95f    90
+?Load@HanoiBlock@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                            // 0x006db960    53
                          push               esi                                            // 0x006db961    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x006db962    8b74240c
                          mov.s              ebx, ecx                                       // 0x006db966    8bd9
                          push               esi                                            // 0x006db968    56
-                         call               _jmp_addr_0x00607d00                           // 0x006db969    e892c3f2ff
+                         call               ?Load@MobileObject@@UAEIAAVGameOSFile@@@Z      // 0x006db969    e892c3f2ff
                          test               eax, eax                                       // 0x006db96e    85c0
                          {disp8} je         _jmp_addr_0x006db9db                           // 0x006db970    7469
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]         // 0x006db972    a194c9be00
@@ -201,12 +210,13 @@ _jmp_addr_0x006db9db:    pop                esi                                 
                          nop                                                               // 0x006db9ed    90
                          nop                                                               // 0x006db9ee    90
                          nop                                                               // 0x006db9ef    90
+?Save@HanoiBlock@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                            // 0x006db9f0    53
                          push               esi                                            // 0x006db9f1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x006db9f2    8b74240c
                          mov.s              ebx, ecx                                       // 0x006db9f6    8bd9
                          push               esi                                            // 0x006db9f8    56
-                         call               _jmp_addr_0x00607c40                           // 0x006db9f9    e842c2f2ff
+                         call               ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z      // 0x006db9f9    e842c2f2ff
                          test               eax, eax                                       // 0x006db9fe    85c0
                          {disp8} je         _jmp_addr_0x006dba6b                           // 0x006dba00    7469
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x006dba02    a190c9be00
@@ -642,12 +652,13 @@ _jmp_addr_0x006dbe2c:    push               esi                                 
                          nop                                                               // 0x006dbe3d    90
                          nop                                                               // 0x006dbe3e    90
                          nop                                                               // 0x006dbe3f    90
+?Load@PuzzleGrain@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x006dbe40    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x006dbe41    8b742408
                          push               edi                                            // 0x006dbe45    57
                          mov.s              edi, ecx                                       // 0x006dbe46    8bf9
                          push               esi                                            // 0x006dbe48    56
-                         call               _jmp_addr_0x0066f5e0                           // 0x006dbe49    e89237f9ff
+                         call               ?Load@PileFood@@UAEIAAVGameOSFile@@@Z          // 0x006dbe49    e89237f9ff
                          test               eax, eax                                       // 0x006dbe4e    85c0
                          {disp8} je         _jmp_addr_0x006dbe9b                           // 0x006dbe50    7449
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]         // 0x006dbe52    a194c9be00
@@ -690,12 +701,13 @@ _jmp_addr_0x006dbe9b:    pop                edi                                 
                          nop                                                               // 0x006dbead    90
                          nop                                                               // 0x006dbeae    90
                          nop                                                               // 0x006dbeaf    90
+?Save@PuzzleGrain@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x006dbeb0    56
                          push               edi                                            // 0x006dbeb1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                    // 0x006dbeb2    8b7c240c
                          mov.s              esi, ecx                                       // 0x006dbeb6    8bf1
                          push               edi                                            // 0x006dbeb8    57
-                         call               _jmp_addr_0x0066f5a0                           // 0x006dbeb9    e8e236f9ff
+                         call               ?Save@PileFood@@UAEIAAVGameOSFile@@@Z          // 0x006dbeb9    e8e236f9ff
                          test               eax, eax                                       // 0x006dbebe    85c0
                          {disp8} je         _jmp_addr_0x006dbf0b                           // 0x006dbec0    7449
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x006dbec2    a190c9be00
@@ -738,12 +750,13 @@ _jmp_addr_0x006dbf0b:    pop                edi                                 
                          nop                                                               // 0x006dbf1d    90
                          nop                                                               // 0x006dbf1e    90
                          nop                                                               // 0x006dbf1f    90
+?Load@PuzzleMobileObject@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x006dbf20    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x006dbf21    8b742408
                          push               edi                                            // 0x006dbf25    57
                          mov.s              edi, ecx                                       // 0x006dbf26    8bf9
                          push               esi                                            // 0x006dbf28    56
-                         call               _jmp_addr_0x00607d00                           // 0x006dbf29    e8d2bdf2ff
+                         call               ?Load@MobileObject@@UAEIAAVGameOSFile@@@Z      // 0x006dbf29    e8d2bdf2ff
                          test               eax, eax                                       // 0x006dbf2e    85c0
                          {disp8} je         _jmp_addr_0x006dbf78                           // 0x006dbf30    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]         // 0x006dbf32    a194c9be00
@@ -773,12 +786,13 @@ _jmp_addr_0x006dbf78:    pop                edi                                 
                          pop                esi                                            // 0x006dbf7b    5e
                          ret                0x0004                                         // 0x006dbf7c    c20400
                          nop                                                               // 0x006dbf7f    90
+?Save@PuzzleMobileObject@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                            // 0x006dbf80    56
                          push               edi                                            // 0x006dbf81    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                    // 0x006dbf82    8b7c240c
                          mov.s              esi, ecx                                       // 0x006dbf86    8bf1
                          push               edi                                            // 0x006dbf88    57
-                         call               _jmp_addr_0x00607c40                           // 0x006dbf89    e8b2bcf2ff
+                         call               ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z      // 0x006dbf89    e8b2bcf2ff
                          test               eax, eax                                       // 0x006dbf8e    85c0
                          {disp8} je         _jmp_addr_0x006dbfd8                           // 0x006dbf90    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x006dbf92    a190c9be00
@@ -1327,6 +1341,7 @@ _jmp_addr_0x006dc420:    sub                esp, 0x18                           
                          nop                                                               // 0x006dc50d    90
                          nop                                                               // 0x006dc50e    90
                          nop                                                               // 0x006dc50f    90
+?GetImmersionTexture@PuzzleMobileObject@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x68]                    // 0x006dc510    8b4168
                          cmp                eax, 0x12                                      // 0x006dc513    83f812
                          {disp8} jge        _jmp_addr_0x006dc542                           // 0x006dc516    7d2a
@@ -1353,6 +1368,7 @@ _jmp_addr_0x006dc542:    or                 eax, -0x1                           
                          nop                                                               // 0x006dc54d    90
                          nop                                                               // 0x006dc54e    90
                          nop                                                               // 0x006dc54f    90
+?GetImmersionTexture@PuzzleGrain@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ:
                          mov                eax, 0x00000011                                // 0x006dc550    b811000000
                          ret                                                               // 0x006dc555    c3
                          nop                                                               // 0x006dc556    90

@@ -62,6 +62,8 @@
 .globl _jmp_addr_0x0062a220
 
 .globl _globl_ct_0x0062a2c0
+.globl ?Destroy@MPFECreateGame@@UAEXXZ
+.globl ?Init@MPFECreateGame@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 
 start_0x00629740_0x0062ac00:
 // Snippet: asm, [0x00629740, 0x0062abd8)
@@ -1146,7 +1148,7 @@ _jmp_addr_0x0062a310:    push              esi                                  
                          push              0x0000030c                                     // 0x0062a32a    680c030000
                          mov.s             ecx, esi                                       // 0x0062a32f    8bce
                          mov               dword ptr [esi], 0x009307a8                    // 0x0062a331    c706a8079300
-                         call              _jmp_addr_0x0062a630                           // 0x0062a337    e8f4020000
+                         call              ?Init@MPFECreateGame@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z                           // 0x0062a337    e8f4020000
                          {disp8} mov       eax, dword ptr [esi + 0x04]                    // 0x0062a33c    8b4604
                          {disp32} mov      dword ptr [eax + 0x00000098], 0x00000001       // 0x0062a33f    c7809800000001000000
                          mov.s             eax, esi                                       // 0x0062a349    8bc6
@@ -1383,7 +1385,8 @@ _jmp_addr_0x0062a580:    push              ebx                                  
                          nop                                                              // 0x0062a62d    90
                          nop                                                              // 0x0062a62e    90
                          nop                                                              // 0x0062a62f    90
-_jmp_addr_0x0062a630:    {disp8} mov       eax, dword ptr [esp + 0x0c]                    // 0x0062a630    8b44240c
+?Init@MPFECreateGame@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
+                         {disp8} mov       eax, dword ptr [esp + 0x0c]                    // 0x0062a630    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x04]                    // 0x0062a634    8b542404
                          push              ebx                                            // 0x0062a638    53
                          push              esi                                            // 0x0062a639    56
@@ -1755,6 +1758,7 @@ _jmp_addr_0x0062aab0:    ret                                                    
                          nop                                                              // 0x0062aafd    90
                          nop                                                              // 0x0062aafe    90
                          nop                                                              // 0x0062aaff    90
+?Destroy@MPFECreateGame@@UAEXXZ:
                          ret                                                              // 0x0062ab00    c3
                          nop                                                              // 0x0062ab01    90
                          nop                                                              // 0x0062ab02    90

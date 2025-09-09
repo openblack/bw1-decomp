@@ -173,6 +173,28 @@
 .globl _globl_ct_0x00644290
 
 .globl _jmp_addr_0x00642530
+.globl ?GetActualMemoryRequired@Heap@@UBEXI@Z
+.globl ?GetActualMemoryRequired@HeapStore@@UBEXI@Z
+.globl ?GetMesh@GPFootballInfo@@UBEIXZ
+.globl ?GetBaseInfo@GPFootballInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGPFootballInfo@@UAEPAXI@Z
+.globl ?GetBaseInfo@GPFootballPositionInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGPFootballPositionInfo@@UAEPAXI@Z
+.globl ??_GPPlannedFootball@@UAEPAXI@Z
+.globl ?ToBeDeleted@PPlannedFootball@@UAEXH@Z
+.globl ?CreatePlanned@PPlannedFootball@@UAEPAVMultiMapFixed@@M@Z
+.globl ?GetPlayer@PFootball@@UAEPAVGPlayer@@XZ
+.globl ?IsRepaired@PFootball@@UAE_NXZ
+.globl ?IsBuilt@PFootball@@UAE_NXZ
+.globl ?GetMesh@PFootball@@UBEHXZ
+.globl ?IsPlaytimeStructure@PFootball@@UAE_NXZ
+.globl ?IsPlaytimeStarted@PFootball@@UAE_NXZ
+.globl ?SaveObject@PFootball@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
+.globl ??_GPFootball@@UAEPAXI@Z
+.globl ?Draw@PFootball@@UAEXXZ
+.globl ?CallVirtualFunctionsForCreation@PFootball@@UAEXABUMapCoords@@@Z
+.globl ?AddPlaytimeVillager@PFootball@@UAE_NPAVVillager@@@Z
+.globl ??_GPhysicsObject@@UAEPAXI@Z
 
 start_0x00641fe0_0x006464f0:
 // Snippet: asm, [0x00641fe0, 0x006464d1)
@@ -1703,6 +1725,7 @@ _jmp_addr_0x006433f4:    pop                edi                                 
                          ret                                                               // 0x006433fd    c3
                          nop                                                               // 0x006433fe    90
                          nop                                                               // 0x006433ff    90
+?GetActualMemoryRequired@Heap@@UBEXI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00643400    8b442404
                          ret                0x0004                                         // 0x00643404    c20400
                          nop                                                               // 0x00643407    90
@@ -1714,6 +1737,7 @@ _jmp_addr_0x006433f4:    pop                edi                                 
                          nop                                                               // 0x0064340d    90
                          nop                                                               // 0x0064340e    90
                          nop                                                               // 0x0064340f    90
+?GetActualMemoryRequired@HeapStore@@UBEXI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00643410    8b442404
                          add                eax, 0x04                                      // 0x00643414    83c004
                          ret                0x0004                                         // 0x00643417    c20400
@@ -1903,6 +1927,7 @@ _jmp_addr_0x006435a0:    xor.s              eax, eax                            
                          nop                                                               // 0x006435bd    90
                          nop                                                               // 0x006435be    90
                          nop                                                               // 0x006435bf    90
+?GetMesh@GPFootballInfo@@UBEIXZ:
                          {disp32} mov       eax, dword ptr [ecx + 0x00000120]              // 0x006435c0    8b8120010000
                          ret                                                               // 0x006435c6    c3
                          nop                                                               // 0x006435c7    90
@@ -1914,6 +1939,7 @@ _jmp_addr_0x006435a0:    xor.s              eax, eax                            
                          nop                                                               // 0x006435cd    90
                          nop                                                               // 0x006435ce    90
                          nop                                                               // 0x006435cf    90
+?GetBaseInfo@GPFootballInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x006435d0    8b442404
                          mov                dword ptr [eax], 0x00000001                    // 0x006435d4    c70001000000
                          mov                eax, 0x00d46ae8                                // 0x006435da    b8e86ad400
@@ -1950,6 +1976,7 @@ _jmp_addr_0x006435f0:    push               0x00643600                          
                          {disp32} jmp       _jmp_addr_0x00436960                           // 0x00643619    e94233dfff
 _jmp_addr_0x0064361e:    ret                                                               // 0x0064361e    c3
                          nop                                                               // 0x0064361f    90
+??_GGPFootballInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x00643620    56
                          mov.s              esi, ecx                                       // 0x00643621    8bf1
                          call               _jmp_addr_0x00436960                           // 0x00643623    e83833dfff
@@ -2007,6 +2034,7 @@ _jmp_addr_0x0064366c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x0064368d    90
                          nop                                                               // 0x0064368e    90
                          nop                                                               // 0x0064368f    90
+?GetBaseInfo@GPFootballPositionInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00643690    8b442404
                          mov                dword ptr [eax], 0x0000000a                    // 0x00643694    c7000a000000
                          mov                eax, 0x00d46c10                                // 0x0064369a    b8106cd400
@@ -2051,6 +2079,7 @@ _jmp_addr_0x006436e0:    sub                esi, 0x24                           
                          pop                edi                                            // 0x006436ed    5f
                          pop                esi                                            // 0x006436ee    5e
 _jmp_addr_0x006436ef:    ret                                                               // 0x006436ef    c3
+??_GGPFootballPositionInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x006436f0    56
                          mov.s              esi, ecx                                       // 0x006436f1    8bf1
                          call               _jmp_addr_0x00436960                           // 0x006436f3    e86832dfff
@@ -2100,6 +2129,7 @@ _jmp_addr_0x0064374c:    mov.s              eax, esi                            
                          nop                                                               // 0x0064375d    90
                          nop                                                               // 0x0064375e    90
                          nop                                                               // 0x0064375f    90
+??_GPPlannedFootball@@UAEPAXI@Z:
                          push               esi                                            // 0x00643760    56
                          mov.s              esi, ecx                                       // 0x00643761    8bf1
                          call               _jmp_addr_0x0056fa80                           // 0x00643763    e818c3f2ff
@@ -2112,6 +2142,7 @@ _jmp_addr_0x0064374c:    mov.s              eax, esi                            
 _jmp_addr_0x0064377a:    mov.s              eax, esi                                       // 0x0064377a    8bc6
                          pop                esi                                            // 0x0064377c    5e
                          ret                0x0004                                         // 0x0064377d    c20400
+?ToBeDeleted@PPlannedFootball@@UAEXH@Z:
                          push               esi                                            // 0x00643780    56
                          mov.s              esi, ecx                                       // 0x00643781    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x48]                    // 0x00643783    8b4e48
@@ -2139,6 +2170,7 @@ _jmp_addr_0x006437a0:    {disp8} mov        eax, dword ptr [ecx + 0x40]         
                          nop                                                               // 0x006437ad    90
                          nop                                                               // 0x006437ae    90
                          nop                                                               // 0x006437af    90
+?CreatePlanned@PPlannedFootball@@UAEPAVMultiMapFixed@@M@Z:
                          push               ecx                                            // 0x006437b0    51
                          push               esi                                            // 0x006437b1    56
                          mov.s              esi, ecx                                       // 0x006437b2    8bf1
@@ -2263,6 +2295,7 @@ _jmp_addr_0x006438ce:    pop                edi                                 
                          nop                                                               // 0x006438dd    90
                          nop                                                               // 0x006438de    90
                          nop                                                               // 0x006438df    90
+?GetPlayer@PFootball@@UAEPAVGPlayer@@XZ:
                          xor.s              eax, eax                                       // 0x006438e0    33c0
                          ret                                                               // 0x006438e2    c3
                          nop                                                               // 0x006438e3    90
@@ -2278,6 +2311,7 @@ _jmp_addr_0x006438ce:    pop                edi                                 
                          nop                                                               // 0x006438ed    90
                          nop                                                               // 0x006438ee    90
                          nop                                                               // 0x006438ef    90
+?IsRepaired@PFootball@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                           // 0x006438f0    8b01
                          call               dword ptr [eax + 0x884]                        // 0x006438f2    ff9084080000
                          {disp32} fcomp     dword ptr [_rdata_float1p0]                    // 0x006438f8    d81d90a38a00
@@ -2290,6 +2324,7 @@ _jmp_addr_0x0064390b:    xor.s              eax, eax                            
                          ret                                                               // 0x0064390d    c3
                          nop                                                               // 0x0064390e    90
                          nop                                                               // 0x0064390f    90
+?IsBuilt@PFootball@@UAE_NXZ:
                          {disp8} mov        al, byte ptr [ecx + 0x58]                      // 0x00643910    8a4158
                          and                al, 0x02                                       // 0x00643913    2402
                          cmp                al, 0x02                                       // 0x00643915    3c02
@@ -2313,6 +2348,7 @@ _jmp_addr_0x00643934:    xor.s              eax, eax                            
                          nop                                                               // 0x0064393d    90
                          nop                                                               // 0x0064393e    90
                          nop                                                               // 0x0064393f    90
+?GetMesh@PFootball@@UBEHXZ:
                          {disp8} mov        ecx, dword ptr [ecx + 0x28]                    // 0x00643940    8b4928
                          mov                eax, dword ptr [ecx]                           // 0x00643943    8b01
                          {disp8} jmp        dword ptr [eax + 0x2c]                         // 0x00643945    ff602c
@@ -2324,6 +2360,7 @@ _jmp_addr_0x00643934:    xor.s              eax, eax                            
                          nop                                                               // 0x0064394d    90
                          nop                                                               // 0x0064394e    90
                          nop                                                               // 0x0064394f    90
+?IsPlaytimeStructure@PFootball@@UAE_NXZ:
                          mov                eax, 0x00000001                                // 0x00643950    b801000000
                          ret                                                               // 0x00643955    c3
                          nop                                                               // 0x00643956    90
@@ -2336,6 +2373,7 @@ _jmp_addr_0x00643934:    xor.s              eax, eax                            
                          nop                                                               // 0x0064395d    90
                          nop                                                               // 0x0064395e    90
                          nop                                                               // 0x0064395f    90
+?IsPlaytimeStarted@PFootball@@UAE_NXZ:
                          {disp8} mov        edx, dword ptr [ecx + 0x7c]                    // 0x00643960    8b517c
                          xor.s              eax, eax                                       // 0x00643963    33c0
                          cmp                edx, 0x03                                      // 0x00643965    83fa03
@@ -2351,6 +2389,7 @@ _jmp_addr_0x00643934:    xor.s              eax, eax                            
                          nop                                                               // 0x0064397d    90
                          nop                                                               // 0x0064397e    90
                          nop                                                               // 0x0064397f    90
+?SaveObject@PFootball@@UAEIAAULHOSFile@@ABUMapCoords@@@Z:
                          xor.s              eax, eax                                       // 0x00643980    33c0
                          ret                0x0008                                         // 0x00643982    c20800
                          nop                                                               // 0x00643985    90
@@ -2364,6 +2403,7 @@ _jmp_addr_0x00643934:    xor.s              eax, eax                            
                          nop                                                               // 0x0064398d    90
                          nop                                                               // 0x0064398e    90
                          nop                                                               // 0x0064398f    90
+??_GPFootball@@UAEPAXI@Z:
                          push               esi                                            // 0x00643990    56
                          mov.s              esi, ecx                                       // 0x00643991    8bf1
                          call               _jmp_addr_0x006439c0                           // 0x00643993    e828000000
@@ -2976,6 +3016,7 @@ _jmp_addr_0x00643fa3:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          nop                                                               // 0x00643fcd    90
                          nop                                                               // 0x00643fce    90
                          nop                                                               // 0x00643fcf    90
+?Draw@PFootball@@UAEXXZ:
                          {disp32} jmp       ?Draw@MultiMapFixed@@UAEXXZ                    // 0x00643fd0    e9bb40edff
                          nop                                                               // 0x00643fd5    90
                          nop                                                               // 0x00643fd6    90
@@ -3012,6 +3053,7 @@ _jmp_addr_0x00643fa3:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp32} mov       dword ptr [ecx + 0x00000080], 0x00000001       // 0x00644020    c7818000000001000000
                          ret                                                               // 0x0064402a    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x0064402b    e8c9d7dbff
+?CallVirtualFunctionsForCreation@PFootball@@UAEXABUMapCoords@@@Z:
                          sub                esp, 0x14                                      // 0x00644030    83ec14
                          push               ebx                                            // 0x00644033    53
                          push               esi                                            // 0x00644034    56
@@ -3163,6 +3205,7 @@ _jmp_addr_0x006441c7:    pop                edi                                 
                          nop                                                               // 0x006441fd    90
                          nop                                                               // 0x006441fe    90
                          nop                                                               // 0x006441ff    90
+?AddPlaytimeVillager@PFootball@@UAE_NPAVVillager@@@Z:
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                    // 0x00644200    8b4c2404
                          call               _jmp_addr_0x007630f0                           // 0x00644204    e8e7ee1100
                          ret                0x0004                                         // 0x00644209    c20400
@@ -4099,6 +4142,7 @@ _jmp_addr_0x00644d61:    pop                esi                                 
                          nop                                                               // 0x00644d6d    90
                          nop                                                               // 0x00644d6e    90
                          nop                                                               // 0x00644d6f    90
+??_GPhysicsObject@@UAEPAXI@Z:
                          push               ebx                                            // 0x00644d70    53
                          {disp8} mov        bl, byte ptr [esp + 0x08]                      // 0x00644d71    8a5c2408
                          test               bl, 0x02                                       // 0x00644d75    f6c302

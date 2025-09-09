@@ -29,9 +29,9 @@
 .extern @__ct__8PileFoodFv@4
 .extern @__ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
 .extern _jmp_addr_0x0066e0e0
-.extern _jmp_addr_0x0066e1a0
-.extern _jmp_addr_0x0066f5a0
-.extern _jmp_addr_0x0066f5e0
+.extern ?CallVirtualFunctionsForCreation@PileFood@@UAEXABUMapCoords@@@Z
+.extern ?Save@PileFood@@UAEIAAVGameOSFile@@@Z
+.extern ?Load@PileFood@@UAEIAAVGameOSFile@@@Z
 .extern @__ct__5SpellF10MAGIC_TYPEP9GameThing@16
 .extern _jmp_addr_0x00722270
 .extern _jmp_addr_0x00724c80
@@ -91,6 +91,21 @@
 .globl _globl_ct_0x005fad60
 .globl _globl_ct_0x005faed0
 .globl _globl_ct_0x005fb380
+.globl ?SetPlayer@MagicFood@@UAEXPAVGPlayer@@@Z
+.globl ?GetPlayer@MagicFood@@UAEPAVGPlayer@@XZ
+.globl ?GetImpressiveType@MagicFood@@UAE?AW4IMPRESSIVE_TYPE@@XZ
+.globl ?GetSaveType@MagicFood@@UAEIXZ
+.globl ?GetDebugText@MagicFood@@UAEPADXZ
+.globl ??_GMagicFood@@UAEPAXI@Z
+.globl ?CallVirtualFunctionsForCreation@MagicFood@@UAEXABUMapCoords@@@Z
+.globl ?Save@MagicFood@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@MagicFood@@UAEIAAVGameOSFile@@@Z
+.globl ?GetSaveType@GMagicHand@@UAEIXZ
+.globl ?GetDebugText@GMagicHand@@UAEPADXZ
+.globl ??_GGMagicHand@@UAEPAXI@Z
+.globl ?CleanUpForSerialisation@GMagicHand@@UAEXXZ
+.globl ?Save@GMagicHand@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GMagicHand@@UAEIAAVGameOSFile@@@Z
 
 start_0x005fa480_0x005fb680:
 // Snippet: asm, [0x005fa480, 0x005fb66f)
@@ -636,12 +651,14 @@ _jmp_addr_0x005fa950:    push               esi                                 
                          nop                                                              // 0x005fa96d    90
                          nop                                                              // 0x005fa96e    90
                          nop                                                              // 0x005fa96f    90
+?SetPlayer@MagicFood@@UAEXPAVGPlayer@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x005fa970    8b442404
                          {disp32} mov       dword ptr [ecx + 0x000000bc], eax             // 0x005fa974    8981bc000000
                          ret                0x0004                                        // 0x005fa97a    c20400
                          nop                                                              // 0x005fa97d    90
                          nop                                                              // 0x005fa97e    90
                          nop                                                              // 0x005fa97f    90
+?GetPlayer@MagicFood@@UAEPAVGPlayer@@XZ:
                          {disp32} mov       eax, dword ptr [ecx + 0x000000bc]             // 0x005fa980    8b81bc000000
                          ret                                                              // 0x005fa986    c3
                          nop                                                              // 0x005fa987    90
@@ -653,6 +670,7 @@ _jmp_addr_0x005fa950:    push               esi                                 
                          nop                                                              // 0x005fa98d    90
                          nop                                                              // 0x005fa98e    90
                          nop                                                              // 0x005fa98f    90
+?GetImpressiveType@MagicFood@@UAE?AW4IMPRESSIVE_TYPE@@XZ:
                          mov                eax, 0x00000010                               // 0x005fa990    b810000000
                          ret                                                              // 0x005fa995    c3
                          nop                                                              // 0x005fa996    90
@@ -665,6 +683,7 @@ _jmp_addr_0x005fa950:    push               esi                                 
                          nop                                                              // 0x005fa99d    90
                          nop                                                              // 0x005fa99e    90
                          nop                                                              // 0x005fa99f    90
+?GetSaveType@MagicFood@@UAEIXZ:
                          mov                eax, 0x0000001e                               // 0x005fa9a0    b81e000000
                          ret                                                              // 0x005fa9a5    c3
                          nop                                                              // 0x005fa9a6    90
@@ -677,6 +696,7 @@ _jmp_addr_0x005fa950:    push               esi                                 
                          nop                                                              // 0x005fa9ad    90
                          nop                                                              // 0x005fa9ae    90
                          nop                                                              // 0x005fa9af    90
+?GetDebugText@MagicFood@@UAEPADXZ:
                          mov                eax, 0x00bf3e04                               // 0x005fa9b0    b8043ebf00
                          ret                                                              // 0x005fa9b5    c3
                          nop                                                              // 0x005fa9b6    90
@@ -689,6 +709,7 @@ _jmp_addr_0x005fa950:    push               esi                                 
                          nop                                                              // 0x005fa9bd    90
                          nop                                                              // 0x005fa9be    90
                          nop                                                              // 0x005fa9bf    90
+??_GMagicFood@@UAEPAXI@Z:
                          push               esi                                           // 0x005fa9c0    56
                          mov.s              esi, ecx                                      // 0x005fa9c1    8bf1
                          call               _jmp_addr_0x005faa70                          // 0x005fa9c3    e8a8000000
@@ -792,11 +813,12 @@ _jmp_addr_0x005faa90:    mov                eax, 0x00d4d308                     
                          nop                                                              // 0x005faaad    90
                          nop                                                              // 0x005faaae    90
                          nop                                                              // 0x005faaaf    90
+?CallVirtualFunctionsForCreation@MagicFood@@UAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x005faab0    8b442404
                          push               esi                                           // 0x005faab4    56
                          mov.s              esi, ecx                                      // 0x005faab5    8bf1
                          push               eax                                           // 0x005faab7    50
-                         call               _jmp_addr_0x0066e1a0                          // 0x005faab8    e8e3360700
+                         call               ?CallVirtualFunctionsForCreation@PileFood@@UAEXABUMapCoords@@@Z                          // 0x005faab8    e8e3360700
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x005faabd    8b4e40
                          test               ecx, ecx                                      // 0x005faac0    85c9
                          {disp8} je         _jmp_addr_0x005faad8                          // 0x005faac2    7414
@@ -838,12 +860,13 @@ _jmp_addr_0x005faae0:    {disp32} fld       dword ptr [rdata_bytes + 0x223c]    
                          nop                                                              // 0x005faafd    90
                          nop                                                              // 0x005faafe    90
                          nop                                                              // 0x005faaff    90
+?Save@MagicFood@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x005fab00    56
                          push               edi                                           // 0x005fab01    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x005fab02    8b7c240c
                          mov.s              esi, ecx                                      // 0x005fab06    8bf1
                          push               edi                                           // 0x005fab08    57
-                         call               _jmp_addr_0x0066f5a0                          // 0x005fab09    e8924a0700
+                         call               ?Save@PileFood@@UAEIAAVGameOSFile@@@Z         // 0x005fab09    e8924a0700
                          test               eax, eax                                      // 0x005fab0e    85c0
                          {disp8} je         _jmp_addr_0x005fab2a                          // 0x005fab10    7418
                          {disp32} mov       eax, dword ptr [esi + 0x000000bc]             // 0x005fab12    8b86bc000000
@@ -873,12 +896,13 @@ _jmp_addr_0x005fab2a:    pop                edi                                 
                          nop                                                              // 0x005fab3d    90
                          nop                                                              // 0x005fab3e    90
                          nop                                                              // 0x005fab3f    90
+?Load@MagicFood@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x005fab40    56
                          push               edi                                           // 0x005fab41    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x005fab42    8b7c240c
                          mov.s              esi, ecx                                      // 0x005fab46    8bf1
                          push               edi                                           // 0x005fab48    57
-                         call               _jmp_addr_0x0066f5e0                          // 0x005fab49    e8924a0700
+                         call               ?Load@PileFood@@UAEIAAVGameOSFile@@@Z         // 0x005fab49    e8924a0700
                          test               eax, eax                                      // 0x005fab4e    85c0
                          {disp8} je         _jmp_addr_0x005fab6a                          // 0x005fab50    7418
                          add                esi, 0x000000bc                               // 0x005fab52    81c6bc000000
@@ -1346,6 +1370,7 @@ _jmp_addr_0x005faf00:    push               esi                                 
                          nop                                                              // 0x005faf1d    90
                          nop                                                              // 0x005faf1e    90
                          nop                                                              // 0x005faf1f    90
+?GetSaveType@GMagicHand@@UAEIXZ:
                          mov                eax, 0x000000fd                               // 0x005faf20    b8fd000000
                          ret                                                              // 0x005faf25    c3
                          nop                                                              // 0x005faf26    90
@@ -1358,6 +1383,7 @@ _jmp_addr_0x005faf00:    push               esi                                 
                          nop                                                              // 0x005faf2d    90
                          nop                                                              // 0x005faf2e    90
                          nop                                                              // 0x005faf2f    90
+?GetDebugText@GMagicHand@@UAEPADXZ:
                          mov                eax, 0x00bf3e74                               // 0x005faf30    b8743ebf00
                          ret                                                              // 0x005faf35    c3
                          nop                                                              // 0x005faf36    90
@@ -1370,6 +1396,7 @@ _jmp_addr_0x005faf00:    push               esi                                 
                          nop                                                              // 0x005faf3d    90
                          nop                                                              // 0x005faf3e    90
                          nop                                                              // 0x005faf3f    90
+??_GGMagicHand@@UAEPAXI@Z:
                          push               esi                                           // 0x005faf40    56
                          mov.s              esi, ecx                                      // 0x005faf41    8bf1
                          call               _jmp_addr_0x005faf60                          // 0x005faf43    e818000000
@@ -1712,6 +1739,7 @@ _jmp_addr_0x005fb291:    pop                ebp                                 
                          nop                                                              // 0x005fb29d    90
                          nop                                                              // 0x005fb29e    90
                          nop                                                              // 0x005fb29f    90
+?CleanUpForSerialisation@GMagicHand@@UAEXXZ:
                          xor.s              eax, eax                                      // 0x005fb2a0    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x14]                     // 0x005fb2a2    8a4114
                          cmp                eax, 0x01                                     // 0x005fb2a5    83f801
@@ -1728,6 +1756,7 @@ _jmp_addr_0x005fb2bb:    ret                                                    
                          nop                                                              // 0x005fb2bd    90
                          nop                                                              // 0x005fb2be    90
                          nop                                                              // 0x005fb2bf    90
+?Save@GMagicHand@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x005fb2c0    53
                          push               esi                                           // 0x005fb2c1    56
                          mov.s              esi, ecx                                      // 0x005fb2c2    8bf1
@@ -1763,6 +1792,7 @@ _jmp_addr_0x005fb309:    push               0x1                                 
                          mov                eax, 0x00000001                               // 0x005fb317    b801000000
                          pop                ebx                                           // 0x005fb31c    5b
                          ret                0x0004                                        // 0x005fb31d    c20400
+?Load@GMagicHand@@UAEIAAVGameOSFile@@@Z:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x005fb320    a194c9be00
                          test               eax, eax                                      // 0x005fb325    85c0
                          push               ebx                                           // 0x005fb327    53

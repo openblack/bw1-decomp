@@ -81,6 +81,9 @@
 .globl _jmp_addr_0x0061d780
 .globl _jmp_addr_0x0061d930
 .globl _jmp_addr_0x0061dc70
+.globl ?Init@ChannelBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@ChannelBox@@UAEXXZ
+.globl ?InitControls@ChannelBox@@UAEXXZ
 
 start_0x0061b880_0x0061e640:
 // Snippet: asm, [0x0061b880, 0x0061e60e)
@@ -448,6 +451,7 @@ _jmp_addr_0x0061bcaa:    {disp8} mov        edx, dword ptr [eax + 0x08]         
                          nop                                                                     // 0x0061bccd    90
                          nop                                                                     // 0x0061bcce    90
                          nop                                                                     // 0x0061bccf    90
+?Init@ChannelBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          sub                esp, 0x0c                                            // 0x0061bcd0    83ec0c
                          {disp8} mov        eax, dword ptr [esp + 0x18]                          // 0x0061bcd3    8b442418
                          push               ebx                                                  // 0x0061bcd7    53
@@ -1348,9 +1352,11 @@ _jmp_addr_0x0061ca39:    mov.s              ecx, esi                            
                          pop                ebx                                                  // 0x0061ca49    5b
                          add                esp, 0x0c                                            // 0x0061ca4a    83c40c
                          ret                0x000c                                               // 0x0061ca4d    c20c00
+?Destroy@ChannelBox@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                        // 0x0061ca50    e83b6befff
                          {disp32} mov       dword ptr [data_bytes + 0x379014], 0x00000000        // 0x0061ca55    c70514f0d30000000000
                          ret                                                                     // 0x0061ca5f    c3
+?InitControls@ChannelBox@@UAEXXZ:
                          push               ecx                                                  // 0x0061ca60    51
                          push               ebx                                                  // 0x0061ca61    53
                          push               ebp                                                  // 0x0061ca62    55

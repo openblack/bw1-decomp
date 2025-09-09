@@ -23,7 +23,7 @@ extern const struct DialogBoxBaseVftable __vt__7SkipBox asm("??_7SkipBox@@6B@");
 // Override methods
 
 // win1.41 005441c0 mac 105bb390 SkipBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__7SkipBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@SkipBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__7SkipBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@SkipBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00544430 mac 105bb330 SkipBox::Destroy(void)
 void __fastcall Destroy__7SkipBoxFv(struct DialogBoxBase* this) asm("?Destroy@SkipBox@@UAEXXZ");
 // win1.41 0053bd60 mac 105c5e80 SkipBox::CanESCOut(void)

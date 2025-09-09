@@ -22,7 +22,7 @@ extern const struct DialogBoxBaseVftable __vt__8StatsBox asm("??_7StatsBox@@6B@"
 // Override methods
 
 // win1.41 0056d370 mac 1031d8a0 StatsBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__8StatsBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@StatsBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__8StatsBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@StatsBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 0056d980 mac 1031d840 StatsBox::Destroy(void)
 void __fastcall Destroy__8StatsBoxFv(struct DialogBoxBase* this) asm("?Destroy@StatsBox@@UAEXXZ");
 // win1.41 0056d990 mac 1031d780 StatsBox::InitControls(void)

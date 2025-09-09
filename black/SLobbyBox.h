@@ -22,7 +22,7 @@ extern const struct DialogBoxBaseVftable __vt__10GSLobbyBox asm("??_7GSLobbyBox@
 // Override methods
 
 // win1.41 00599740 mac 105d3580 GSLobbyBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__10GSLobbyBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@GSLobbyBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__10GSLobbyBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@GSLobbyBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 0059a250 mac 105d3340 GSLobbyBox::Destroy(void)
 void __fastcall Destroy__10GSLobbyBoxFv(struct DialogBoxBase* this) asm("?Destroy@GSLobbyBox@@UAEXXZ");
 // win1.41 0059a0a0 mac 105d33a0 GSLobbyBox::InitControls(void)
