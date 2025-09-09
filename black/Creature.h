@@ -53,7 +53,6 @@ struct PhysicsObject;
 struct RPHolder;
 struct Reaction;
 struct Spell;
-struct Villager;
 
 struct CreatureEmotionsForMusic
 {
@@ -458,10 +457,10 @@ bool __fastcall InteractsWithPhysicsObjects__8CreatureFv(struct Object* this) as
 void __fastcall ReactToPhysicsImpact__8CreatureFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Creature@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00479d10 mac 101d6d70 Creature::CanBecomeAPhysicsObject(void)
 bool __fastcall CanBecomeAPhysicsObject__8CreatureFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Creature@@UAE_NXZ");
-// win1.41 0047d500 mac 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-void __fastcall AddToRoutePlan__8CreatureFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Creature* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int32_t param_1, struct Point2D param_2, float param_3, int32_t param_4)) asm("?AddToRoutePlan@Creature@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 0047d4b0 mac 101cf930 Creature::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__8CreatureFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@Creature@@UAE_NPAVCreature@@@Z");
+// win1.41 0047d500 mac 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+void __fastcall AddToRoutePlan__8CreatureFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@Creature@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 00477f00 mac 101da0d0 Creature::IsScary(void)
 bool __fastcall IsScary__8CreatureFv(struct Object* this) asm("?IsScary@Creature@@UAE_NXZ");
 // win1.41 00477ee0 mac 101da160 Creature::GetFacingPitch(void)
@@ -481,7 +480,7 @@ bool __fastcall DecideWhatToDo__8CreatureFv(struct Living* this) asm("?DecideWha
 // win1.41 0047b1a0 mac 101d49f0 Creature::GetAge(void)
 uint32_t __fastcall GetAge__8CreatureFv(struct Living* this) asm("?GetAge@Creature@@UAEIXZ");
 // win1.41 0047b1b0 mac 101d49b0 Creature::SetAge(unsigned long)
-void __fastcall SetAge__8CreatureFUl(struct Villager* this, const void* edx, uint32_t param_1) asm("?SetAge@Creature@@UAEXI@Z");
+void __fastcall SetAge__8CreatureFUl(struct Living* this, const void* edx, uint32_t param_1) asm("?SetAge@Creature@@UAEXI@Z");
 // win1.41 00473f00 mac inlined Creature::CallIntoAnimationFunction(VILLAGER_STATES)
 int __fastcall CallIntoAnimationFunction__8CreatureF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallIntoAnimationFunction@Creature@@UAEHW4VILLAGER_STATES@@@Z");
 // win1.41 00473f10 mac inlined Creature::CallOutofAnimationFunction(VILLAGER_STATES)
@@ -503,7 +502,7 @@ bool __fastcall IsDancing__8CreatureFv(struct Living* this) asm("?IsDancing@Crea
 // win1.41 004f2820 mac 1027db00 Creature::IsAvailableForReaction(REACTION)
 bool __fastcall IsAvailableForReaction__8CreatureF8REACTION(struct Living* this, const void* edx, enum REACTION param_1) asm("?IsAvailableForReaction@Creature@@UAE_NW4REACTION@@@Z");
 // win1.41 004f2780 mac 1027dca0 Creature::UpdateHowImpressed(Reaction *, int)
-void __fastcall UpdateHowImpressed__8CreatureFP8Reactioni(struct Villager* this, const void* edx, struct Reaction* param_1, int param_2) asm("?UpdateHowImpressed@Creature@@UAEXPAVReaction@@H@Z");
+void __fastcall UpdateHowImpressed__8CreatureFP8Reactioni(struct Living* this, const void* edx, struct Reaction* param_1, int param_2) asm("?UpdateHowImpressed@Creature@@UAEXPAVReaction@@H@Z");
 // win1.41 004f2680 mac inlined Creature::AddReaction(Reaction *, VILLAGER_STATES)
 void __fastcall AddReaction__8CreatureFP8Reaction15VILLAGER_STATES(struct Living* this, const void* edx, struct Reaction* param_1, enum VILLAGER_STATES param_2) asm("?AddReaction@Creature@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z");
 // win1.41 004f26d0 mac 1027ddf0 Creature::StartReacting(REACTION, GameThingWithPos *, Reaction *)

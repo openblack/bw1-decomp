@@ -46,6 +46,10 @@
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
 .extern _CHAR2WCHAR__FPc
 
+.globl ?Init@LoginBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@LoginBox@@UAEXXZ
+
+
 start_0x005405b0_0x00542510:
 // Snippet: asm, [0x005405b0, 0x005424ea)
 _jmp_addr_0x005405b0:    push               ebx                                           // 0x005405b0    53
@@ -825,6 +829,7 @@ _jmp_addr_0x00540f80:    {disp32} mov       eax, dword ptr [data_bytes + 0x30ab6
                          nop                                                              // 0x0054103d    90
                          nop                                                              // 0x0054103e    90
                          nop                                                              // 0x0054103f    90
+?Init@LoginBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00541040    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00541044    8b542404
                          push               ebx                                           // 0x00541048    53
@@ -1368,6 +1373,7 @@ _jmp_addr_0x0054178c:    {disp8} mov        ecx, dword ptr [esi + 0x38]         
                          nop                                                              // 0x005417ed    90
                          nop                                                              // 0x005417ee    90
                          nop                                                              // 0x005417ef    90
+?Destroy@LoginBox@@UAEXXZ:
                          push               esi                                           // 0x005417f0    56
                          mov.s              esi, ecx                                      // 0x005417f1    8bf1
                          call               _jmp_addr_0x00541e70                          // 0x005417f3    e878060000

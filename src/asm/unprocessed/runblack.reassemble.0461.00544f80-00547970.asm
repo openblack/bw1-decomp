@@ -76,6 +76,15 @@
 .globl _globl_ct_0x00546200
 .globl _globl_ct_0x00546230
 .globl _globl_ct_0x00546250
+.globl ?Init@HistoryBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@HistoryBox@@UAEXXZ
+.globl ?InitControls@HistoryBox@@UAEXXZ
+.globl ?WantsKeyControl@HistoryBox@@UAE_NXZ
+.globl ?WantsMouseControl@HistoryBox@@UAE_NXZ
+.globl ?CanESCOut@HistoryBox@@UAE_NXZ
+.globl ?Init@SetupLandscapeBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@SetupLandscapeBox@@UAEXXZ
+.globl ?InitControls@SetupLandscapeBox@@UAEXXZ
 
 start_0x00544f80_0x00547970:
 // Snippet: asm, [0x00544f80, 0x0054791d)
@@ -265,6 +274,7 @@ _jmp_addr_0x00545219:    {disp32} mov       al, byte ptr [data_bytes + 0x4bf350]
                          nop                                                              // 0x0054522d    90
                          nop                                                              // 0x0054522e    90
                          nop                                                              // 0x0054522f    90
+?Init@HistoryBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00545230    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00545234    8b542404
                          push               esi                                           // 0x00545238    56
@@ -382,9 +392,11 @@ _jmp_addr_0x0054538d:    xor.s              eax, eax                            
                          nop                                                              // 0x005453ad    90
                          nop                                                              // 0x005453ae    90
                          nop                                                              // 0x005453af    90
+?Destroy@HistoryBox@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x005453b0    e8dbe1fcff
                          {disp32} mov       dword ptr [data_bytes + 0x30ab90], 0x00000000 // 0x005453b5    c705900bcd0000000000
                          ret                                                              // 0x005453bf    c3
+?InitControls@HistoryBox@@UAEXXZ:
                          ret                                                              // 0x005453c0    c3
                          nop                                                              // 0x005453c1    90
                          nop                                                              // 0x005453c2    90
@@ -452,6 +464,7 @@ _jmp_addr_0x00545452:    ret                0x0018                              
                          nop                                                              // 0x0054545d    90
                          nop                                                              // 0x0054545e    90
                          nop                                                              // 0x0054545f    90
+?WantsKeyControl@HistoryBox@@UAE_NXZ:
                          xor.s              al, al                                        // 0x00545460    32c0
                          ret                                                              // 0x00545462    c3
                          nop                                                              // 0x00545463    90
@@ -467,6 +480,7 @@ _jmp_addr_0x00545452:    ret                0x0018                              
                          nop                                                              // 0x0054546d    90
                          nop                                                              // 0x0054546e    90
                          nop                                                              // 0x0054546f    90
+?WantsMouseControl@HistoryBox@@UAE_NXZ:
                          sub                esp, 0x10                                     // 0x00545470    83ec10
                          push               esi                                           // 0x00545473    56
                          mov.s              esi, ecx                                      // 0x00545474    8bf1
@@ -523,6 +537,7 @@ _jmp_addr_0x005454d2:    {disp32} mov       eax, dword ptr [data_bytes + 0x286d0
                          nop                                                              // 0x005454ed    90
                          nop                                                              // 0x005454ee    90
                          nop                                                              // 0x005454ef    90
+?CanESCOut@HistoryBox@@UAE_NXZ:
                          xor.s              al, al                                        // 0x005454f0    32c0
                          ret                                                              // 0x005454f2    c3
                          nop                                                              // 0x005454f3    90
@@ -1955,6 +1970,7 @@ _jmp_addr_0x00546260:    {disp32} fld       dword ptr [rdata_bytes + 0x35ce0]   
                          nop                                                              // 0x0054627d    90
                          nop                                                              // 0x0054627e    90
                          nop                                                              // 0x0054627f    90
+?Init@SetupLandscapeBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00546280    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00546284    8b542404
                          push               ebx                                           // 0x00546288    53
@@ -2702,9 +2718,11 @@ _jmp_addr_0x00546ce4:    {disp8} mov        edx, dword ptr [eax + 0x08]         
                          {disp32} mov       ecx, dword ptr [eax + 0x00000444]             // 0x00546d05    8b8844040000
                          mov                edx, dword ptr [ecx]                          // 0x00546d0b    8b11
                          {disp8} jmp        dword ptr [edx + 0xc]                         // 0x00546d0d    ff620c
+?Destroy@SetupLandscapeBox@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x00546d10    e87bc8fcff
                          {disp32} mov       dword ptr [data_bytes + 0x30b664], 0x00000000 // 0x00546d15    c7056416cd0000000000
                          ret                                                              // 0x00546d1f    c3
+?InitControls@SetupLandscapeBox@@UAEXXZ:
                          push               ebx                                           // 0x00546d20    53
                          push               esi                                           // 0x00546d21    56
                          mov.s              ebx, ecx                                      // 0x00546d22    8bd9

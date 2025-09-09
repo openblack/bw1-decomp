@@ -40,7 +40,7 @@ struct DialogBoxImmersion* __fastcall __ct__18DialogBoxImmersion(struct DialogBo
 // Override methods
 
 // win1.41 00514a80 mac 102b39f0 DialogBoxImmersion::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__18DialogBoxImmersionFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@DialogBoxImmersion@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__18DialogBoxImmersionFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@DialogBoxImmersion@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00514d70 mac 102b3990 DialogBoxImmersion::Destroy(void)
 void __fastcall Destroy__18DialogBoxImmersionFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxImmersion@@UAEXXZ");
 // win1.41 00514d80 mac 102b3920 DialogBoxImmersion::InitControls(void)

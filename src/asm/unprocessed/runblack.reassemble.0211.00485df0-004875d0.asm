@@ -39,7 +39,7 @@
 .extern _jmp_addr_0x00617a10
 .extern _jmp_addr_0x00617a80
 .extern _jmp_addr_0x006182f0
-.extern _jmp_addr_0x00619500
+.extern ?MorphTexture@Morphable@@UAEXXZ
 .extern @GetAnim__9MorphableFll@16
 .extern _GameRand__5GRandFl
 .extern _jmp_addr_0x006e8130
@@ -631,7 +631,7 @@ _jmp_addr_0x004864d6:    pop                edi                                 
                          push               esi                                                  // 0x004864e3    56
                          mov.s              esi, ecx                                             // 0x004864e4    8bf1
                          {disp8} mov        dword ptr [esp + 0x18], esi                          // 0x004864e6    89742418
-                         call               _jmp_addr_0x00619500                                 // 0x004864ea    e811301900
+                         call               ?MorphTexture@Morphable@@UAEXXZ                      // 0x004864ea    e811301900
                          {disp8} mov        eax, dword ptr [esp + 0x20]                          // 0x004864ef    8b442420
                          {disp32} mov       ecx, dword ptr [esi + eax * 0x4 + 0x0000569c]        // 0x004864f3    8b8c869c560000
                          test               ecx, ecx                                             // 0x004864fa    85c9

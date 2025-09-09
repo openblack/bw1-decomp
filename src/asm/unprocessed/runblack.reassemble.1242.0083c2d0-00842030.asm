@@ -119,6 +119,10 @@
 .globl _jmp_addr_0x00841b00
 .globl _jmp_addr_0x00841b50
 .globl _FUN_00841c20
+.globl ?Update@GWeather@@UAEXM@Z
+.globl ?DrawClouds@GWeather@@UAEXXZ
+.globl ?CalcAtmos@GWeather@@UAEXPAULHPoint@@PAUWeatherInfo@@@Z
+.globl ?DebugDraw@GWeather@@UAEXXZ
 
 start_0x0083c2d0_0x00842030:
 // Snippet: asm, [0x0083c2d0, 0x00841fe2)
@@ -4730,6 +4734,7 @@ _jmp_addr_0x0083f8f7:    ret                                                    
                          nop                                                               // 0x0083f8fd    90
                          nop                                                               // 0x0083f8fe    90
                          nop                                                               // 0x0083f8ff    90
+?Update@GWeather@@UAEXM@Z:
                          sub                esp, 0x20                                      // 0x0083f900    83ec20
                          {disp8} fld        dword ptr [esp + 0x24]                         // 0x0083f903    d9442424
                          push               esi                                            // 0x0083f907    56
@@ -5014,6 +5019,7 @@ _jmp_addr_0x0083fc77:    {disp8} mov        eax, dword ptr [esp + 0x30]         
                          add                esp, 0x20                                      // 0x0083fc89    83c420
                          ret                0x0004                                         // 0x0083fc8c    c20400
                          nop                                                               // 0x0083fc8f    90
+?DrawClouds@GWeather@@UAEXXZ:
                          sub                esp, 0x38                                      // 0x0083fc90    83ec38
                          push               ebx                                            // 0x0083fc93    53
                          push               esi                                            // 0x0083fc94    56
@@ -5307,6 +5313,7 @@ _jmp_addr_0x008400cb:    pop                esi                                 
                          nop                                                               // 0x008400dd    90
                          nop                                                               // 0x008400de    90
                          nop                                                               // 0x008400df    90
+?CalcAtmos@GWeather@@UAEXPAULHPoint@@PAUWeatherInfo@@@Z:
                          push               esi                                            // 0x008400e0    56
                          mov.s              esi, ecx                                       // 0x008400e1    8bf1
                          {disp32} fld       dword ptr [esi + 0x000000a0]                   // 0x008400e3    d986a0000000
@@ -5465,6 +5472,7 @@ _jmp_addr_0x008402d8:    pop                edi                                 
                          nop                                                               // 0x008402dd    90
                          nop                                                               // 0x008402de    90
                          nop                                                               // 0x008402df    90
+?DebugDraw@GWeather@@UAEXXZ:
                          sub                esp, 0x3c                                      // 0x008402e0    83ec3c
                          push               ebx                                            // 0x008402e3    53
                          push               esi                                            // 0x008402e4    56

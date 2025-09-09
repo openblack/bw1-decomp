@@ -237,7 +237,7 @@
 .globl _jmp_addr_0x006266f0
 .globl _jmp_addr_0x00626780
 .globl _jmp_addr_0x00626790
-.globl _jmp_addr_0x00626a00
+.globl ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z
 .globl _jmp_addr_0x00626a50
 .globl _jmp_addr_0x00626a70
 
@@ -4335,7 +4335,7 @@ _jmp_addr_0x00622f73:    test              ebx, ebx                             
                          call              _jmp_addr_0x00626e50                          // 0x00622f81    e8ca3e0000
                          push              ebx                                           // 0x00622f86    53
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00622f87    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00622f8b    e8703a0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00622f8b    e8703a0000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00622f90    8b442414
                          test              eax, eax                                      // 0x00622f94    85c0
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x00622f96    c7442410a4708c00
@@ -4354,7 +4354,7 @@ _jmp_addr_0x00622fb3:    push              ebp                                  
                          call              _jmp_addr_0x00626d90                          // 0x00622fb8    e8d33d0000
                          push              0x0                                           // 0x00622fbd    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00622fbf    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00622fc3    e8383a0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00622fc3    e8383a0000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00622fc8    8b442414
                          test              eax, eax                                      // 0x00622fcc    85c0
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x00622fce    c7442410a4708c00
@@ -4422,7 +4422,7 @@ _jmp_addr_0x00623088:    push              edi                                  
                          call              _jmp_addr_0x00626f30                          // 0x0062308d    e89e3e0000
                          push              ebp                                           // 0x00623092    55
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623093    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623097    e864390000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623097    e864390000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x0062309c    8b442414
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x006230a0    c7442410a4708c00
                          pop               ebx                                           // 0x006230a8    5b
@@ -4448,7 +4448,7 @@ _jmp_addr_0x006230c3:    mov.s             ecx, esi                             
                          call              _jmp_addr_0x00622d60                          // 0x006230e0    e87bfcffff
                          push              eax                                           // 0x006230e5    50
                          {disp8} lea       ecx, dword ptr [esp + 0x10]                   // 0x006230e6    8d4c2410
-                         call              _jmp_addr_0x00626a00                          // 0x006230ea    e811390000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006230ea    e811390000
                          {disp8} mov       eax, dword ptr [esp + 0x10]                   // 0x006230ef    8b442410
                          {disp8} mov       dword ptr [esp + 0x0c], 0x008c70a4            // 0x006230f3    c744240ca4708c00
                          {disp8} jmp       _jmp_addr_0x006230a9                          // 0x006230fb    ebac
@@ -4467,7 +4467,7 @@ _jmp_addr_0x006230fd:    mov.s             ecx, esi                             
                          call              _jmp_addr_0x0062dc30                          // 0x0062312b    e800ab0000
                          push              0x0                                           // 0x00623130    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x10]                   // 0x00623132    8d4c2410
-                         call              _jmp_addr_0x00626a00                          // 0x00623136    e8c5380000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623136    e8c5380000
                          {disp8} mov       eax, dword ptr [esp + 0x10]                   // 0x0062313b    8b442410
                          test              eax, eax                                      // 0x0062313f    85c0
                          {disp8} mov       dword ptr [esp + 0x0c], 0x008c70a4            // 0x00623141    c744240ca4708c00
@@ -4522,7 +4522,7 @@ _jmp_addr_0x006231ae:    push              ecx                                  
                          {disp8} je        _jmp_addr_0x006231d4                          // 0x006231c8    740a
                          push              eax                                           // 0x006231ca    50
                          {disp8} lea       ecx, dword ptr [esp + 0x04]                   // 0x006231cb    8d4c2404
-                         call              _jmp_addr_0x00626a00                          // 0x006231cf    e82c380000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006231cf    e82c380000
 _jmp_addr_0x006231d4:    {disp8} mov       eax, dword ptr [esp + 0x04]                   // 0x006231d4    8b442404
                          test              eax, eax                                      // 0x006231d8    85c0
                          {disp8} mov       dword ptr [esp + 0x00], 0x008c70a4            // 0x006231da    c7442400a4708c00
@@ -4610,7 +4610,7 @@ _jmp_addr_0x006232c6:    {disp8} lea       ecx, dword ptr [esp + 0x0c]          
                          call              _jmp_addr_0x00622d60                          // 0x006232d1    e88afaffff
                          push              eax                                           // 0x006232d6    50
                          {disp8} lea       ecx, dword ptr [esp + 0x0c]                   // 0x006232d7    8d4c240c
-                         call              _jmp_addr_0x00626a00                          // 0x006232db    e820370000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006232db    e820370000
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x006232e0    8b44240c
                          test              eax, eax                                      // 0x006232e4    85c0
                          {disp8} mov       dword ptr [esp + 0x08], 0x008c70a4            // 0x006232e6    c7442408a4708c00
@@ -4721,7 +4721,7 @@ _jmp_addr_0x00623426:    {disp32} mov      eax, dword ptr [edi + 0x00000200]    
                          call              _jmp_addr_0x006273b0                          // 0x00623431    e87a3f0000
                          push              ebp                                           // 0x00623436    55
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623437    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x0062343b    e8c0350000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x0062343b    e8c0350000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00623440    8b442414
                          test              eax, eax                                      // 0x00623444    85c0
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x00623446    c7442410a4708c00
@@ -4768,7 +4768,7 @@ _jmp_addr_0x00623470:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          call              _jmp_addr_0x00627480                          // 0x0062349b    e8e03f0000
                          push              edi                                           // 0x006234a0    57
                          {disp8} lea       ecx, dword ptr [esp + 0x1c]                   // 0x006234a1    8d4c241c
-                         call              _jmp_addr_0x00626a00                          // 0x006234a5    e856350000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006234a5    e856350000
                          test              bl, bl                                        // 0x006234aa    84db
                          mov               edi, 0x008c70a4                               // 0x006234ac    bfa4708c00
                          {disp32} je       _jmp_addr_0x0062356d                          // 0x006234b1    0f84b6000000
@@ -4784,7 +4784,7 @@ _jmp_addr_0x00623470:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          call              _jmp_addr_0x00622d60                          // 0x006234d4    e887f8ffff
                          push              eax                                           // 0x006234d9    50
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x006234da    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x006234de    e81d350000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006234de    e81d350000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x006234e3    8b442414
                          test              eax, eax                                      // 0x006234e7    85c0
                          {disp8} mov       dword ptr [esp + 0x10], edi                   // 0x006234e9    897c2410
@@ -4808,7 +4808,7 @@ _jmp_addr_0x006234fa:    mov.s             ecx, esi                             
                          call              _jmp_addr_0x0062c360                          // 0x00623528    e8338e0000
                          push              0x0                                           // 0x0062352d    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x0062352f    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623533    e8c8340000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623533    e8c8340000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00623538    8b442414
                          test              eax, eax                                      // 0x0062353c    85c0
                          {disp8} mov       dword ptr [esp + 0x10], edi                   // 0x0062353e    897c2410
@@ -4934,7 +4934,7 @@ _jmp_addr_0x006236a1:    {disp8} mov       eax, dword ptr [edi + 0x04]          
                          call              _jmp_addr_0x00622d60                          // 0x006236c3    e898f6ffff
                          push              eax                                           // 0x006236c8    50
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x006236c9    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x006236cd    e82e330000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006236cd    e82e330000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x006236d2    8b442414
                          cmp.s             eax, ebx                                      // 0x006236d6    3bc3
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x006236d8    c7442410a4708c00
@@ -4995,7 +4995,7 @@ _jmp_addr_0x0062375e:    {disp8} mov       edi, dword ptr [eax + 0x08]          
                          call              _jmp_addr_0x0062c360                          // 0x006237aa    e8b18b0000
                          push              ebx                                           // 0x006237af    53
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x006237b0    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x006237b4    e847320000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006237b4    e847320000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x006237b9    8b442414
                          cmp.s             eax, ebx                                      // 0x006237bd    3bc3
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x006237bf    c7442410a4708c00
@@ -5017,7 +5017,7 @@ _jmp_addr_0x006237dc:    push              0x00bf46cc                           
                          call              _jmp_addr_0x00622d60                          // 0x006237ed    e86ef5ffff
                          push              eax                                           // 0x006237f2    50
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x006237f3    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x006237f7    e804320000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006237f7    e804320000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x006237fc    8b442414
                          cmp.s             eax, ebx                                      // 0x00623800    3bc3
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x00623802    c7442410a4708c00
@@ -5057,7 +5057,7 @@ _jmp_addr_0x00623820:    sub               esp, 0x10                            
                          call              _jmp_addr_0x006311a0                          // 0x00623865    e836d90000
                          push              0x0                                           // 0x0062386a    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x10]                   // 0x0062386c    8d4c2410
-                         call              _jmp_addr_0x00626a00                          // 0x00623870    e88b310000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623870    e88b310000
                          {disp32} mov      esi, dword ptr [edi + 0x00000320]             // 0x00623875    8bb720030000
                          inc               esi                                           // 0x0062387b    46
                          cmp               esi, 0x05                                     // 0x0062387c    83fe05
@@ -5067,7 +5067,7 @@ _jmp_addr_0x00623881:    push              esi                                  
                          call              _jmp_addr_0x0062c360                          // 0x00623886    e8d58a0000
                          push              0x0                                           // 0x0062388b    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x0062388d    8d4c2418
-                         call              _jmp_addr_0x00626a00                          // 0x00623891    e86a310000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623891    e86a310000
                          {disp8} mov       eax, dword ptr [esp + 0x18]                   // 0x00623896    8b442418
                          test              eax, eax                                      // 0x0062389a    85c0
                          {disp8} mov       dword ptr [esp + 0x14], 0x008c70a4            // 0x0062389c    c7442414a4708c00
@@ -5279,7 +5279,7 @@ _jmp_addr_0x00623a9f:    {disp32} mov      al, byte ptr [ebp + 0x000015ca]      
                          call              _jmp_addr_0x00622d60                          // 0x00623aea    e871f2ffff
                          push              eax                                           // 0x00623aef    50
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623af0    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623af4    e8072f0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623af4    e8072f0000
                          {disp32} mov      byte ptr [ebp + 0x000015ca], 0x00             // 0x00623af9    c685ca15000000
                          call              esi                                           // 0x00623b00    ffd6
                          {disp32} mov      dword ptr [data_bytes + 0x37a89c], eax        // 0x00623b02    a39c08d400
@@ -5308,7 +5308,7 @@ _jmp_addr_0x00623b1c:    {disp32} mov      al, byte ptr [ebp + 0x000015c9]      
                          call              _jmp_addr_0x0062c700                          // 0x00623b54    e8a78b0000
                          push              edi                                           // 0x00623b59    57
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623b5a    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623b5e    e89d2e0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623b5e    e89d2e0000
                          call              esi                                           // 0x00623b63    ffd6
                          {disp32} mov      dword ptr [data_bytes + 0x37a894], eax        // 0x00623b65    a39408d400
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00623b6a    8b442414
@@ -5336,7 +5336,7 @@ _jmp_addr_0x00623b7f:    {disp32} mov      al, byte ptr [ebp + 0x000015cb]      
                          call              _jmp_addr_0x00627df0                          // 0x00623bb7    e834420000
                          push              edi                                           // 0x00623bbc    57
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623bbd    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623bc1    e83a2e0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623bc1    e83a2e0000
                          call              esi                                           // 0x00623bc6    ffd6
                          {disp32} mov      dword ptr [data_bytes + 0x37a898], eax        // 0x00623bc8    a39808d400
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00623bcd    8b442414
@@ -5364,7 +5364,7 @@ _jmp_addr_0x00623be2:    {disp32} mov      al, byte ptr [ebp + 0x000015c8]      
                          call              _jmp_addr_0x00632e10                          // 0x00623c1e    e8edf10000
                          push              edi                                           // 0x00623c23    57
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623c24    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623c28    e8d32d0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623c28    e8d32d0000
                          call              esi                                           // 0x00623c2d    ffd6
                          {disp32} mov      dword ptr [data_bytes + 0x37a888], eax        // 0x00623c2f    a38808d400
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00623c34    8b442414
@@ -5390,7 +5390,7 @@ _jmp_addr_0x00623c42:    {disp32} mov      al, byte ptr [ebp + 0x000015cc]      
                          call              _jmp_addr_0x0062bba0                          // 0x00623c7a    e8217f0000
                          push              edi                                           // 0x00623c7f    57
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623c80    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623c84    e8772d0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623c84    e8772d0000
                          call              esi                                           // 0x00623c89    ffd6
                          {disp32} mov      dword ptr [data_bytes + 0x37a88c], eax        // 0x00623c8b    a38c08d400
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00623c90    8b442414
@@ -5423,7 +5423,7 @@ _jmp_addr_0x00623ca5:    {disp32} mov      al, byte ptr [ebp + 0x000015ce]      
                          call              _jmp_addr_0x006311a0                          // 0x00623cf1    e8aad40000
                          push              edi                                           // 0x00623cf6    57
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623cf7    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623cfb    e8002d0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623cfb    e8002d0000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00623d00    8b442414
                          cmp.s             eax, edi                                      // 0x00623d04    3bc7
                          {disp8} mov       dword ptr [esp + 0x10], ebx                   // 0x00623d06    895c2410
@@ -5643,7 +5643,7 @@ _jmp_addr_0x00623fb5:    add               esp, 0x04                            
                          call              _jmp_addr_0x00630110                          // 0x00623fd4    e837c10000
                          push              0x0                                           // 0x00623fd9    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00623fdb    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00623fdf    e81c2a0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00623fdf    e81c2a0000
                          push              0x0000012c                                    // 0x00623fe4    682c010000
                          call              dword ptr [__imp__Sleep@4]                    // 0x00623fe9    ff1530928a00
                          {disp32} mov      ecx, dword ptr [ebp + 0x00000a60]             // 0x00623fef    8b8d600a0000
@@ -5806,7 +5806,7 @@ _jmp_addr_0x00624180:    sub               esp, 0x08                            
                          call              _jmp_addr_0x00632e10                          // 0x006241aa    e861ec0000
                          push              0x0                                           // 0x006241af    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x08]                   // 0x006241b1    8d4c2408
-                         call              _jmp_addr_0x00626a00                          // 0x006241b5    e846280000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006241b5    e846280000
                          {disp32} mov      ecx, dword ptr [esi + 0x00000a60]             // 0x006241ba    8b8e600a0000
                          mov               eax, dword ptr [ecx]                          // 0x006241c0    8b01
                          call              dword ptr [eax + 0x18]                        // 0x006241c2    ff5018
@@ -5907,7 +5907,7 @@ _jmp_addr_0x00624294:    mov.s             ecx, edi                             
                          call              _jmp_addr_0x006311a0                          // 0x006242e5    e8b6ce0000
                          push              esi                                           // 0x006242ea    56
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x006242eb    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x006242ef    e80c270000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006242ef    e80c270000
                          {disp32} mov      ecx, dword ptr [edi + 0x00000a64]             // 0x006242f4    8b8f640a0000
                          add               ecx, 0x00000ac4                               // 0x006242fa    81c1c40a0000
                          push              ecx                                           // 0x00624300    51
@@ -5917,7 +5917,7 @@ _jmp_addr_0x00624294:    mov.s             ecx, edi                             
                          call              _jmp_addr_0x0062cac0                          // 0x0062430c    e8af870000
                          push              esi                                           // 0x00624311    56
                          {disp8} lea       ecx, dword ptr [esp + 0x1c]                   // 0x00624312    8d4c241c
-                         call              _jmp_addr_0x00626a00                          // 0x00624316    e8e5260000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00624316    e8e5260000
                          {disp8} mov       eax, dword ptr [esp + 0x1c]                   // 0x0062431b    8b44241c
                          test              eax, eax                                      // 0x0062431f    85c0
                          {disp8} mov       dword ptr [esp + 0x18], ebx                   // 0x00624321    895c2418
@@ -5939,7 +5939,7 @@ _jmp_addr_0x00624345:    {disp32} mov      al, byte ptr [edi + 0x000015d2]      
                          call              _jmp_addr_0x00630270                          // 0x00624357    e814bf0000
                          push              esi                                           // 0x0062435c    56
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x0062435d    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x00624361    e89a260000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00624361    e89a260000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x00624366    8b442414
                          test              eax, eax                                      // 0x0062436a    85c0
                          {disp8} mov       dword ptr [esp + 0x10], ebx                   // 0x0062436c    895c2410
@@ -6012,7 +6012,7 @@ _jmp_addr_0x00624436:    {disp32} mov      al, byte ptr [edi + 0x000015d2]      
                          call              _jmp_addr_0x00630270                          // 0x00624450    e81bbe0000
                          push              esi                                           // 0x00624455    56
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x00624456    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x0062445a    e8a1250000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x0062445a    e8a1250000
                          {disp8} mov       eax, dword ptr [esp + 0x14]                   // 0x0062445f    8b442414
                          test              eax, eax                                      // 0x00624463    85c0
                          {disp8} mov       dword ptr [esp + 0x10], 0x008c70a4            // 0x00624465    c7442410a4708c00
@@ -6082,7 +6082,7 @@ _jmp_addr_0x006244f8:    {disp32} mov      al, byte ptr [edi + 0x00000118]      
                          call              _jmp_addr_0x0062c360                          // 0x00624512    e8497e0000
                          push              0x0                                           // 0x00624517    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x00624519    8d4c2418
-                         call              _jmp_addr_0x00626a00                          // 0x0062451d    e8de240000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x0062451d    e8de240000
                          {disp8} mov       eax, dword ptr [esp + 0x18]                   // 0x00624522    8b442418
                          test              eax, eax                                      // 0x00624526    85c0
                          {disp8} mov       dword ptr [esp + 0x14], 0x008c70a4            // 0x00624528    c7442414a4708c00
@@ -6315,7 +6315,7 @@ _jmp_addr_0x006247a5:    {disp32} mov      al, byte ptr [data_bytes + 0x37a5fe] 
                          call              _jmp_addr_0x00630300                          // 0x006247bc    e83fbb0000
                          push              0x0                                           // 0x006247c1    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x006247c3    8d4c2418
-                         call              _jmp_addr_0x00626a00                          // 0x006247c7    e834220000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006247c7    e834220000
                          mov               ecx, 0x00d3f038                               // 0x006247cc    b938f0d300
                          call              _jmp_addr_0x00622d40                          // 0x006247d1    e86ae5ffff
                          {disp8} mov       edx, dword ptr [esp + 0x18]                   // 0x006247d6    8b542418
@@ -6375,7 +6375,7 @@ _jmp_addr_0x00624863:    {disp32} mov      al, byte ptr [data_bytes + 0x37a5fe] 
                          call              _jmp_addr_0x00630300                          // 0x0062487a    e881ba0000
                          push              0x0                                           // 0x0062487f    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x00624881    8d4c2418
-                         call              _jmp_addr_0x00626a00                          // 0x00624885    e876210000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00624885    e876210000
                          mov               ecx, 0x00d3f038                               // 0x0062488a    b938f0d300
                          call              _jmp_addr_0x00622d40                          // 0x0062488f    e8ace4ffff
                          push              eax                                           // 0x00624894    50
@@ -6459,7 +6459,7 @@ _jmp_addr_0x00624977:    {disp8} mov       ecx, dword ptr [esp + 0x10]          
                          call              _jmp_addr_0x00630300                          // 0x00624989    e872b90000
                          push              0x0                                           // 0x0062498e    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x00624990    8d4c2418
-                         call              _jmp_addr_0x00626a00                          // 0x00624994    e867200000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00624994    e867200000
                          {disp8} mov       ecx, dword ptr [esp + 0x10]                   // 0x00624999    8b4c2410
                          call              _jmp_addr_0x00622d40                          // 0x0062499d    e89ee3ffff
                          {disp8} mov       edx, dword ptr [esp + 0x18]                   // 0x006249a2    8b542418
@@ -6815,7 +6815,7 @@ _jmp_addr_0x00624df0:    sub               esp, 0x08                            
                          call              _jmp_addr_0x00627f80                          // 0x00624e09    e872310000
                          push              0x0                                           // 0x00624e0e    6a00
                          {disp8} lea       ecx, dword ptr [esp + 0x08]                   // 0x00624e10    8d4c2408
-                         call              _jmp_addr_0x00626a00                          // 0x00624e14    e8e71b0000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x00624e14    e8e71b0000
                          mov.s             ecx, esi                                      // 0x00624e19    8bce
                          call              _jmp_addr_0x00622d40                          // 0x00624e1b    e820dfffff
                          {disp32} mov      edx, dword ptr [esi + 0x00000a64]             // 0x00624e20    8b96640a0000
@@ -7058,7 +7058,7 @@ _jmp_addr_0x006250d8:    {disp32} mov      eax, dword ptr [esp + 0x00000a20]    
                          call              _jmp_addr_0x00633260                          // 0x00625112    e849e10000
                          push              edi                                           // 0x00625117    57
                          {disp8} lea       ecx, dword ptr [esp + 0x0c]                   // 0x00625118    8d4c240c
-                         call              _jmp_addr_0x00626a00                          // 0x0062511c    e8df180000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x0062511c    e8df180000
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x00625121    8b44240c
                          test              eax, eax                                      // 0x00625125    85c0
                          {disp8} mov       dword ptr [esp + 0x08], 0x008c70a4            // 0x00625127    c7442408a4708c00
@@ -7389,7 +7389,7 @@ _jmp_addr_0x006253c6:    pop               edi                                  
                          {disp8} je        _jmp_addr_0x00625400                          // 0x006253f4    740a
                          push              eax                                           // 0x006253f6    50
                          {disp8} lea       ecx, dword ptr [esp + 0x04]                   // 0x006253f7    8d4c2404
-                         call              _jmp_addr_0x00626a00                          // 0x006253fb    e800160000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006253fb    e800160000
 _jmp_addr_0x00625400:    {disp8} mov       eax, dword ptr [esp + 0x04]                   // 0x00625400    8b442404
                          test              eax, eax                                      // 0x00625404    85c0
                          {disp8} mov       dword ptr [esp + 0x00], 0x008c70a4            // 0x00625406    c7442400a4708c00
@@ -7680,7 +7680,7 @@ _jmp_addr_0x0062579f:    {disp32} inc      dword ptr [data_bytes + 0x379b40]    
 _jmp_addr_0x006257a5:    mov               ecx, dword ptr [edi]                          // 0x006257a5    8b0f
                          push              ecx                                           // 0x006257a7    51
                          {disp8} lea       ecx, dword ptr [esp + 0x1c]                   // 0x006257a8    8d4c241c
-                         call              _jmp_addr_0x00626a00                          // 0x006257ac    e84f120000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006257ac    e84f120000
 _jmp_addr_0x006257b1:    {disp8} mov       edi, dword ptr [edi + 0x04]                   // 0x006257b1    8b7f04
                          test              edi, edi                                      // 0x006257b4    85ff
                          {disp8} jne       _jmp_addr_0x00625758                          // 0x006257b6    75a0
@@ -7696,7 +7696,7 @@ _jmp_addr_0x006257d2:    {disp8} lea       ecx, dword ptr [esp + 0x10]          
                          {disp8} mov       edx, dword ptr [esi + 0x04]                   // 0x006257db    8b5604
                          push              edx                                           // 0x006257de    52
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x006257df    8d4c2414
-                         call              _jmp_addr_0x00626a00                          // 0x006257e3    e818120000
+                         call              ?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z                          // 0x006257e3    e818120000
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x379a98]        // 0x006257e8    8b0d98fad300
                          {disp8} mov       edx, dword ptr [esi + 0x04]                   // 0x006257ee    8b5604
                          mov               eax, dword ptr [ecx]                          // 0x006257f1    8b01
@@ -9468,7 +9468,8 @@ _jmp_addr_0x006269e0:    {disp32} fld      dword ptr [rdata_bytes + 0x876d4]    
                          nop                                                             // 0x006269fd    90
                          nop                                                             // 0x006269fe    90
                          nop                                                             // 0x006269ff    90
-_jmp_addr_0x00626a00:    {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x00626a00    8b542404
+?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z:
+                         {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x00626a00    8b542404
                          {disp8} mov       ecx, dword ptr [ecx + 0x04]                   // 0x00626a04    8b4904
                          {disp32} mov      eax, dword ptr [data_bytes + 0x379a98]        // 0x00626a07    a198fad300
                          push              esi                                           // 0x00626a0c    56

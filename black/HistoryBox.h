@@ -20,13 +20,10 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HistoryBox 
 // win1.41 008de974 mac 109ed4b4 HistoryBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10HistoryBox asm("??_7HistoryBox@@6B@");
 
-// Non-virtual methods
-
-// win1.41 00545230 mac 105b9ac0 HistoryBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__10HistoryBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct HistoryBox* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@HistoryBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
-
 // Override methods
 
+// win1.41 00545230 mac 105b9ac0 HistoryBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+void __fastcall Init__10HistoryBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@HistoryBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 005453b0 mac 105b9a60 HistoryBox::Destroy(void)
 void __fastcall Destroy__10HistoryBoxFv(struct DialogBoxBase* this) asm("?Destroy@HistoryBox@@UAEXXZ");
 // win1.41 00545460 mac 105b98b0 HistoryBox::WantsKeyControl(void)

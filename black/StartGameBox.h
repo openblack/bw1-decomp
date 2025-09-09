@@ -32,7 +32,7 @@ extern const struct DialogBoxBaseVftable __vt__12StartGameBox asm("??_7StartGame
 // Override methods
 
 // win1.41 005445b0 mac 105bae70 StartGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__12StartGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@StartGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__12StartGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@StartGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00544730 mac 105bae10 StartGameBox::Destroy(void)
 void __fastcall Destroy__12StartGameBoxFv(struct DialogBoxBase* this) asm("?Destroy@StartGameBox@@UAEXXZ");
 // win1.41 00544740 mac 105bad90 StartGameBox::InitControls(void)

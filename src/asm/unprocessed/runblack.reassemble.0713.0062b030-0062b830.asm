@@ -32,6 +32,7 @@
 
 .globl @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .globl _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v
+.globl ?Destroy@MPFEChooseConnection@@UAEXXZ
 
 start_0x0062b030_0x0062b830:
 // Snippet: asm, [0x0062b030, 0x0062b800)
@@ -290,6 +291,7 @@ _jmp_addr_0x0062b32c:    mov              eax, dword ptr [ecx]                  
                          nop                                                            // 0x0062b33d    90
                          nop                                                            // 0x0062b33e    90
                          nop                                                            // 0x0062b33f    90
+?Destroy@MPFEChooseConnection@@UAEXXZ:
                          ret                                                            // 0x0062b340    c3
                          nop                                                            // 0x0062b341    90
                          nop                                                            // 0x0062b342    90

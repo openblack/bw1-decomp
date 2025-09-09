@@ -14,9 +14,13 @@
 .extern _jmp_addr_0x0078da80
 
 .globl _jmp_addr_0x0078de70
+.globl ?UpdateKeyboard@SubOptionEntryCheckBoxUnChecked@@UAEIW4LH_KEY@@G@Z
+.globl ?GetSubMeshData@SubOptionEntryCheckBoxChecked@@UAEXAAUSubMeshDrawData@@HH@Z
+.globl ?UpdateMouse@SubOptionEntryCheckBoxChecked@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z
 
 start_0x0078de60_0x0078dff0:
 // Snippet: asm, [0x0078de60, 0x0078dfd5)
+?UpdateKeyboard@SubOptionEntryCheckBoxUnChecked@@UAEIW4LH_KEY@@G@Z:
                          xor.s            eax, eax                               // 0x0078de60    33c0
                          ret              0x0008                                 // 0x0078de62    c20800
                          nop                                                     // 0x0078de65    90
@@ -54,6 +58,7 @@ _jmp_addr_0x0078de70:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078dead    90
                          nop                                                     // 0x0078deae    90
                          nop                                                     // 0x0078deaf    90
+?GetSubMeshData@SubOptionEntryCheckBoxChecked@@UAEXAAUSubMeshDrawData@@HH@Z:
                          sub              esp, 0x24                              // 0x0078deb0    83ec24
                          {disp8} mov      eax, dword ptr [esp + 0x30]            // 0x0078deb3    8b442430
                          push             esi                                    // 0x0078deb7    56
@@ -121,6 +126,7 @@ _jmp_addr_0x0078de70:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x0078df5d    90
                          nop                                                     // 0x0078df5e    90
                          nop                                                     // 0x0078df5f    90
+?UpdateMouse@SubOptionEntryCheckBoxChecked@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]            // 0x0078df60    8b44240c
                          sub              esp, 0x24                              // 0x0078df64    83ec24
                          dec              eax                                    // 0x0078df67    48

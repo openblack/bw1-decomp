@@ -108,9 +108,9 @@
 .globl _jmp_addr_0x00799190
 .globl _jmp_addr_0x007991c0
 .globl _jmp_addr_0x00799e60
-.globl _jmp_addr_0x00799f80
+.globl ?PreDraw@GameOptionsRoom@@UAEXXZ
 .globl _jmp_addr_0x00799fe0
-.globl _jmp_addr_0x0079a230
+.globl ?DrawAdditional@GameOptionsRoom@@UAEX_N@Z
 .globl _jmp_addr_0x0079a290
 .globl _jmp_addr_0x0079a3a0
 
@@ -128,6 +128,7 @@
 .globl _Init__11InnerCameraFPc
 .globl _Close__11InnerCameraFv
 .globl _Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb
+.globl ?DrawHand@GameOptionsRoom@@UAEXXZ
 
 start_0x00796920_0x0079a5a0:
 // Snippet: asm, [0x00796920, 0x0079a58c)
@@ -4251,6 +4252,7 @@ _jmp_addr_0x00799ec2:    ret                                                    
                          nop                                                                // 0x00799ecd    90
                          nop                                                                // 0x00799ece    90
                          nop                                                                // 0x00799ecf    90
+?DrawHand@GameOptionsRoom@@UAEXXZ:
                          {disp32} mov         al, byte ptr [data_bytes + 0x47011c]          // 0x00799ed0    a01c61e300
                          test                 al, al                                        // 0x00799ed5    84c0
                          {disp8} je           _jmp_addr_0x00799f32                          // 0x00799ed7    7459
@@ -4323,7 +4325,8 @@ _jmp_addr_0x00799f67:    {disp32} mov         dword ptr [data_bytes + 0x2641c0],
 _jmp_addr_0x00799f7d:    ret                                                                // 0x00799f7d    c3
                          nop                                                                // 0x00799f7e    90
                          nop                                                                // 0x00799f7f    90
-_jmp_addr_0x00799f80:    push                 esi                                           // 0x00799f80    56
+?PreDraw@GameOptionsRoom@@UAEXXZ:
+                         push                 esi                                           // 0x00799f80    56
                          mov.s                esi, ecx                                      // 0x00799f81    8bf1
                          {disp32} mov         eax, dword ptr [esi + 0x000000e0]             // 0x00799f83    8b86e0000000
                          test                 eax, eax                                      // 0x00799f89    85c0
@@ -4528,7 +4531,8 @@ _jmp_addr_0x0079a1eb:    {disp32} mov         ecx, dword ptr [data_bytes + 0x470
                          nop                                                                // 0x0079a22d    90
                          nop                                                                // 0x0079a22e    90
                          nop                                                                // 0x0079a22f    90
-_jmp_addr_0x0079a230:    {disp32} mov         ecx, dword ptr [_game]                        // 0x0079a230    8b0d5c19d000
+?DrawAdditional@GameOptionsRoom@@UAEX_N@Z:
+                         {disp32} mov         ecx, dword ptr [_game]                        // 0x0079a230    8b0d5c19d000
                          xor.s                eax, eax                                      // 0x0079a236    33c0
                          {disp32} mov         al, byte ptr [ecx + 0x00205a59]               // 0x0079a238    8a81595a2000
                          inc                  eax                                           // 0x0079a23e    40

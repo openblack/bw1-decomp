@@ -104,6 +104,9 @@
 .globl _globl_ct_0x005caba0
 .globl _globl_ct_0x005cac40
 .globl _globl_ct_0x005cace0
+.globl ?GetBaseInfo@GToolTipsInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGToolTipsInfo@@UAEPAXI@Z
+.globl ??_GHelpText@@UAEPAXI@Z
 
 start_0x005c8920_0x005cb2a0:
 // Snippet: asm, [0x005c8920, 0x005cb264)
@@ -1751,6 +1754,7 @@ _jmp_addr_0x005c99bc:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x005c99dd    90
                          nop                                                              // 0x005c99de    90
                          nop                                                              // 0x005c99df    90
+?GetBaseInfo@GToolTipsInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x005c99e0    8b442404
                          mov                dword ptr [eax], 0x000000aa                   // 0x005c99e4    c700aa000000
                          mov                eax, 0x00d16918                               // 0x005c99ea    b81869d100
@@ -1795,6 +1799,7 @@ _jmp_addr_0x005c9a30:    sub                esi, 0x1c                           
                          pop                edi                                           // 0x005c9a3d    5f
                          pop                esi                                           // 0x005c9a3e    5e
 _jmp_addr_0x005c9a3f:    ret                                                              // 0x005c9a3f    c3
+??_GGToolTipsInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x005c9a40    56
                          mov.s              esi, ecx                                      // 0x005c9a41    8bf1
                          call               _jmp_addr_0x00436960                          // 0x005c9a43    e818cfe6ff
@@ -3415,6 +3420,7 @@ _jmp_addr_0x005cad00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          pop                esi                                           // 0x005cad8b    5e
                          ret                0x0004                                        // 0x005cad8c    c20400
                          nop                                                              // 0x005cad8f    90
+??_GHelpText@@UAEPAXI@Z:
                          push               esi                                           // 0x005cad90    56
                          mov.s              esi, ecx                                      // 0x005cad91    8bf1
                          call               _jmp_addr_0x005cb070                          // 0x005cad93    e8d8020000

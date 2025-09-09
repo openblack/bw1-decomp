@@ -119,8 +119,6 @@ enum HOLD_TYPE __fastcall GetHoldType__12MobileStaticFv(struct Object* this) asm
 float __fastcall GetHoldLoweringMultiplier__12MobileStaticFv(struct Object* this) asm("?GetHoldLoweringMultiplier@MobileStatic@@UAEMXZ");
 // win1.41 00439680 mac 100b42d0 MobileStatic::GetMesh( const(void))
 int __fastcall GetMesh__12MobileStaticCFv(const struct Object* this) asm("?GetMesh@MobileStatic@@UBEHXZ");
-// win1.41 00608ac0 mac 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-void __fastcall AddToRoutePlan__12MobileStaticFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int32_t param_1, struct Point2D param_2, float param_3, int32_t param_4)) asm("?AddToRoutePlan@MobileStatic@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 00517f60 mac 10042f50 MobileStatic::Draw(void)
 void __fastcall Draw__12MobileStaticFv(struct Object* this) asm("?Draw@MobileStatic@@UAEXXZ");
 // win1.41 00439670 mac 100b4280 MobileStatic::CanBePickedUp(void)
@@ -161,6 +159,8 @@ void __fastcall ReactToPhysicsImpact__12MobileStaticFP13PhysicsObjectb(struct Ob
 bool __fastcall CanBecomeAPhysicsObject__12MobileStaticFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MobileStatic@@UAE_NXZ");
 // win1.41 00609010 mac 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__12MobileStaticFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@MobileStatic@@UAE_NPAVCreature@@@Z");
+// win1.41 00608ac0 mac 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+void __fastcall AddToRoutePlan__12MobileStaticFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@MobileStatic@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 00439690 mac 100b4420 MobileStatic::IsSolidToNewAbode(void)
 uint32_t __fastcall IsSolidToNewAbode__12MobileStaticFv(struct Object* this) asm("?IsSolidToNewAbode@MobileStatic@@UAEIXZ");
 // win1.41 00439660 mac 100b4240 MobileStatic::GetTastiness(void)

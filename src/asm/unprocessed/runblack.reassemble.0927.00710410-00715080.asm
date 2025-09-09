@@ -168,6 +168,10 @@
 .globl _globl_ct_0x00714c90
 .globl _globl_ct_0x00714cc0
 .globl _globl_ct_0x00714ce0
+.globl ?GetScriptObjectType@ScriptTimer@@UAEIXZ
+.globl ?Save@ScriptTimer@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@ScriptTimer@@UAEIAAVGameOSFile@@@Z
+.globl ??_GSecretCreature@@UAEPAXI@Z
 
 start_0x00710410_0x00715080:
 // Snippet: asm, [0x00710410, 0x00715018)
@@ -1800,6 +1804,7 @@ _jmp_addr_0x007115fa:    pop                edi                                 
                          pop                esi                                           // 0x007115fd    5e
                          ret                                                              // 0x007115fe    c3
                          nop                                                              // 0x007115ff    90
+?GetScriptObjectType@ScriptTimer@@UAEIXZ:
                          mov                eax, 0x00000011                               // 0x00711600    b811000000
                          ret                                                              // 0x00711605    c3
                          nop                                                              // 0x00711606    90
@@ -1888,6 +1893,7 @@ _jmp_addr_0x007116d0:    sub                esp, 0x08                           
                          add                esp, 0x08                                     // 0x007116fb    83c408
                          ret                                                              // 0x007116fe    c3
                          nop                                                              // 0x007116ff    90
+?Save@ScriptTimer@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x00711700    53
                          push               esi                                           // 0x00711701    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x00711702    8b74240c
@@ -1957,6 +1963,7 @@ _jmp_addr_0x0071179a:    pop                esi                                 
                          nop                                                              // 0x007117ad    90
                          nop                                                              // 0x007117ae    90
                          nop                                                              // 0x007117af    90
+?Load@ScriptTimer@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x007117b0    53
                          push               esi                                           // 0x007117b1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x007117b2    8b74240c
@@ -2520,6 +2527,7 @@ _jmp_addr_0x00711c90:    {disp32} mov       ecx, dword ptr [rdata_bytes + 0xae26
                          nop                                                              // 0x00711d5d    90
                          nop                                                              // 0x00711d5e    90
                          nop                                                              // 0x00711d5f    90
+??_GSecretCreature@@UAEPAXI@Z:
                          push               esi                                           // 0x00711d60    56
                          mov.s              esi, ecx                                      // 0x00711d61    8bf1
                          call               _jmp_addr_0x00711d80                          // 0x00711d63    e818000000

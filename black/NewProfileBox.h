@@ -23,7 +23,7 @@ extern const struct DialogBoxBaseVftable __vt__13NewProfileBox asm("??_7NewProfi
 // Override methods
 
 // win1.41 0053ce80 mac 105c3a30 NewProfileBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__13NewProfileBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@NewProfileBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__13NewProfileBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@NewProfileBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 0053d150 mac 105c39d0 NewProfileBox::Destroy(void)
 void __fastcall Destroy__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?Destroy@NewProfileBox@@UAEXXZ");
 // win1.41 0053bd10 mac 105c5f90 NewProfileBox::CanESCOut(void)

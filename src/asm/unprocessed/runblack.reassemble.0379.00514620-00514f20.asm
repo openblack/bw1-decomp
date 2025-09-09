@@ -41,6 +41,9 @@
 .globl _jmp_addr_0x00514620
 .globl _jmp_addr_0x005148b0
 .globl @__ct__18DialogBoxImmersion@4
+.globl ?Init@DialogBoxImmersion@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@DialogBoxImmersion@@UAEXXZ
+.globl ?InitControls@DialogBoxImmersion@@UAEXXZ
 
 start_0x00514620_0x00514f20:
 // Snippet: asm, [0x00514620, 0x00514efa)
@@ -399,6 +402,7 @@ _jmp_addr_0x00514a5f:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          nop                                                             // 0x00514a7d    90
                          nop                                                             // 0x00514a7e    90
                          nop                                                             // 0x00514a7f    90
+?Init@DialogBoxImmersion@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x00514a80    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x00514a84    8b542404
                          push              ebx                                           // 0x00514a88    53
@@ -637,6 +641,7 @@ _jmp_addr_0x00514cce:    {disp8} mov       dword ptr [edi + 0x24], eax          
                          nop                                                             // 0x00514d6d    90
                          nop                                                             // 0x00514d6e    90
                          nop                                                             // 0x00514d6f    90
+?Destroy@DialogBoxImmersion@@UAEXXZ:
                          {disp32} jmp      @Destroy__13DialogBoxBaseFv@4                 // 0x00514d70    e91be8ffff
                          nop                                                             // 0x00514d75    90
                          nop                                                             // 0x00514d76    90
@@ -649,6 +654,7 @@ _jmp_addr_0x00514cce:    {disp8} mov       dword ptr [edi + 0x24], eax          
                          nop                                                             // 0x00514d7d    90
                          nop                                                             // 0x00514d7e    90
                          nop                                                             // 0x00514d7f    90
+?InitControls@DialogBoxImmersion@@UAEXXZ:
                          {disp32} mov      eax, dword ptr [data_bytes + 0x386558]        // 0x00514d80    a158c5d400
                          mov.s             edx, eax                                      // 0x00514d85    8bd0
                          push              edx                                           // 0x00514d87    52

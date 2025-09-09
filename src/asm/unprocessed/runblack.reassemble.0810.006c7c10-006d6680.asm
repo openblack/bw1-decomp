@@ -236,7 +236,7 @@
 .globl _jmp_addr_0x006ca910
 .globl _jmp_addr_0x006ca930
 .globl _jmp_addr_0x006ca990
-.globl _jmp_addr_0x006cb040
+.globl ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z
 .globl _jmp_addr_0x006d0af0
 .globl _jmp_addr_0x006d0b10
 .globl _jmp_addr_0x006d0b20
@@ -281,6 +281,118 @@
 .globl _globl_ct_0x006d6150
 .globl _globl_ct_0x006d6180
 .globl _globl_ct_0x006d61a0
+.globl ??_GParticle3DObjAnimTextured@@UAEPAXI@Z
+.globl ?GetDebugText@RenderParticleCreatureRef@@UAEPADXZ
+.globl ??_GRenderParticleCreatureRef@@UAEPAXI@Z
+.globl ?GetDebugText@RenderParticleGameObjectRef@@UAEPADXZ
+.globl ??_GRenderParticleGameObjectRef@@UAEPAXI@Z
+.globl ?GetDebugText@Particle3DAnim@@UAEPADXZ
+.globl ??_GParticle3DAnim@@UAEPAXI@Z
+.globl ??_GParticle3DAnimWithCamera@@UAEPAXI@Z
+.globl ?GetSaveType@Chain@@UAEIXZ
+.globl ?GetDebugText@Chain@@UAEPADXZ
+.globl ??_GChain@@UAEPAXI@Z
+.globl ??_GRenderParticleGJMesh@@UAEPAXI@Z
+.globl ??_GRenderParticleGJMeshRotatingUV@@UAEPAXI@Z
+.globl ?GetDebugText@RenderParticleMist@@UAEPADXZ
+.globl ??_GRenderParticleMist@@UAEPAXI@Z
+.globl ??_GParticlePlayerSymbol@@UAEPAXI@Z
+.globl ?GetDebugText@RenderParticleGameObject@@UAEPADXZ
+.globl ??_GRenderParticleGameObject@@UAEPAXI@Z
+.globl ?GetDebugText@ParticleLightMap@@UAEPADXZ
+.globl ??_GParticleLightMap@@UAEPAXI@Z
+.globl ??_GRenderParticleVolBlendMesh@@UAEPAXI@Z
+.globl ?Save@GJPSysInterface@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@PSysManager@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomCore@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@DrawOffsetLT@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@DrawOffsetDecay@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@Particle3DPnt@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@ParticleChainJoint@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@Chain@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_BeliefSprite@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_ManaPathNew@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@UR_PlasmaInf@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@SubCollectionData@UR_Plasma@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_Plasma@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_VolFXOnObject@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_LightSheetOnObject@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_LightSheetOnObject@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_SimpleBeam@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_OrientSpriteWithVelocity@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@AttatchFireBallToAtom@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@AR_FadeOutOnceConditionTrue@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@AddSoundToAtom@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@RemoveSoundFromAtom@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomDataRipple@UpdateRuleGravityWithFloor@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_BankedTurning@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UpdateRuleShieldSpark@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_VapourEndEffect@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@AddSubCollectionsToAtom@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@CreateNewBaseAtom@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@ParentAtomData@ER_GlintsOnTarget@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@ER_GlintsOnTarget@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_HealSpellChakra@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_OrientSpriteWithRandomAngle@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_SideSpin@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_InitialSpin@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@RemoveRuleAfterConditionTrue@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_OrientWithVelocity@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_FollowTargets@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@SubCollectionData@UR_SimpleBeam@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_AtomsAtEPTarget@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@UR_Lightning_CollectionData@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_AddDefensiveSphere@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_CloudMoverNew@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_CreatureSpellCompassion@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_CreatureSpellGeneric@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_CreatureSpellGeneric@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_CreatureSpell@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_CreatureSpellItch@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_CreatureSpellFreeze@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@SpellPointInf@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_VortexAttract@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_Explosion@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_Explosion@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_Flocking@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_SphereSurfaceTracer@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@CheckShieldDeflections@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_ForestPath@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_CloudGather@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@AtomData@UR_CloudGather@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@DebrisCollectionData@UR_Tornado@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@FlyingCollectionData@UR_Tornado@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@FlyingAtomData@UR_Tornado@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_Tornado@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@EmitterRule@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_WillowWisp@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@ER_BurstFromParentAtom@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@ER_EmitFromParentAtom@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_FollowTargets@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_Trail@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@LightningForkFlicker@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@EmitterRuleLightningSprite@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@CollectionData@UR_HandSprinkle@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@DefensiveSphere@@UAEIAAVGameOSFile@@@Z
+.globl ?GetSaveType@DefensiveShield@@UAEIXZ
+.globl ?GetDebugText@DefensiveShield@@UAEPADXZ
+.globl ??_GDefensiveShield@@UAEPAXI@Z
+.globl ?GetSaveType@DefensiveSphere@@UAEIXZ
+.globl ?GetDebugText@DefensiveSphere@@UAEPADXZ
+.globl ??_GDefensiveSphere@@UAEPAXI@Z
+.globl ?GetSaveType@PSysSound@@UAEIXZ
+.globl ?GetDebugText@PSysSound@@UAEPADXZ
+.globl ??_GPSysSound@@UAEPAXI@Z
+.globl ?Get3DSoundPos@PSysSound@@UAEHPAULHPoint@@@Z
+.globl ?Load@PSysSound@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@PSysSound@@UAEIAAVGameOSFile@@@Z
+.globl ??_GCollectionData@UR_StormCast@@UAEPAXI@Z
+.globl ??_GAtomData@UR_StormCast@@UAEPAXI@Z
+.globl ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@DrawOffset@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z
+.globl ?Save@DefensiveShield@@UAEIAAVGameOSFile@@@Z
 
 start_0x006c7c10_0x006d6680:
 // Snippet: asm, [0x006c7c10, 0x006d6639)
@@ -485,6 +597,7 @@ _jmp_addr_0x006c7df0:    push               esi                                 
                          nop                                                              // 0x006c7e3d    90
                          nop                                                              // 0x006c7e3e    90
                          nop                                                              // 0x006c7e3f    90
+??_GParticle3DObjAnimTextured@@UAEPAXI@Z:
                          push               esi                                           // 0x006c7e40    56
                          mov.s              esi, ecx                                      // 0x006c7e41    8bf1
                          call               _jmp_addr_0x006c7e60                          // 0x006c7e43    e818000000
@@ -541,6 +654,7 @@ _jmp_addr_0x006c7e9b:    mov                dword ptr [esi], 0x00939448         
                          nop                                                              // 0x006c7ebd    90
                          nop                                                              // 0x006c7ebe    90
                          nop                                                              // 0x006c7ebf    90
+?GetDebugText@RenderParticleCreatureRef@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006c7ec0    b8a8ea9c00
                          ret                                                              // 0x006c7ec5    c3
                          nop                                                              // 0x006c7ec6    90
@@ -567,6 +681,7 @@ _jmp_addr_0x006c7e9b:    mov                dword ptr [esi], 0x00939448         
                          nop                                                              // 0x006c7edd    90
                          nop                                                              // 0x006c7ede    90
                          nop                                                              // 0x006c7edf    90
+??_GRenderParticleCreatureRef@@UAEPAXI@Z:
                          push               esi                                           // 0x006c7ee0    56
                          mov.s              esi, ecx                                      // 0x006c7ee1    8bf1
                          mov                dword ptr [esi], 0x008fac3c                   // 0x006c7ee3    c7063cac8f00
@@ -779,6 +894,7 @@ _jmp_addr_0x006c80f0:    push               esi                                 
                          nop                                                              // 0x006c811d    90
                          nop                                                              // 0x006c811e    90
                          nop                                                              // 0x006c811f    90
+?GetDebugText@RenderParticleGameObjectRef@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006c8120    b8a8ea9c00
                          ret                                                              // 0x006c8125    c3
                          nop                                                              // 0x006c8126    90
@@ -791,6 +907,7 @@ _jmp_addr_0x006c80f0:    push               esi                                 
                          nop                                                              // 0x006c812d    90
                          nop                                                              // 0x006c812e    90
                          nop                                                              // 0x006c812f    90
+??_GRenderParticleGameObjectRef@@UAEPAXI@Z:
                          push               esi                                           // 0x006c8130    56
                          mov.s              esi, ecx                                      // 0x006c8131    8bf1
                          call               _jmp_addr_0x006c8190                          // 0x006c8133    e858000000
@@ -1206,6 +1323,7 @@ _jmp_addr_0x006c8540:    push               esi                                 
                          nop                                                              // 0x006c857d    90
                          nop                                                              // 0x006c857e    90
                          nop                                                              // 0x006c857f    90
+?GetDebugText@Particle3DAnim@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006c8580    b8a8ea9c00
                          ret                                                              // 0x006c8585    c3
                          nop                                                              // 0x006c8586    90
@@ -1233,6 +1351,7 @@ _jmp_addr_0x006c8540:    push               esi                                 
                          nop                                                              // 0x006c859d    90
                          nop                                                              // 0x006c859e    90
                          nop                                                              // 0x006c859f    90
+??_GParticle3DAnim@@UAEPAXI@Z:
                          push               esi                                           // 0x006c85a0    56
                          mov.s              esi, ecx                                      // 0x006c85a1    8bf1
                          call               _jmp_addr_0x006c85c0                          // 0x006c85a3    e818000000
@@ -1340,6 +1459,7 @@ _jmp_addr_0x006c8630:    push               esi                                 
                          nop                                                              // 0x006c867d    90
                          nop                                                              // 0x006c867e    90
                          nop                                                              // 0x006c867f    90
+??_GParticle3DAnimWithCamera@@UAEPAXI@Z:
                          push               esi                                           // 0x006c8680    56
                          mov.s              esi, ecx                                      // 0x006c8681    8bf1
                          call               _jmp_addr_0x006c86a0                          // 0x006c8683    e818000000
@@ -1481,6 +1601,7 @@ _jmp_addr_0x006c87d0:    push               esi                                 
                          nop                                                              // 0x006c87ed    90
                          nop                                                              // 0x006c87ee    90
                          nop                                                              // 0x006c87ef    90
+?GetSaveType@Chain@@UAEIXZ:
                          mov                eax, 0x000000b6                               // 0x006c87f0    b8b6000000
                          ret                                                              // 0x006c87f5    c3
                          nop                                                              // 0x006c87f6    90
@@ -1493,6 +1614,7 @@ _jmp_addr_0x006c87d0:    push               esi                                 
                          nop                                                              // 0x006c87fd    90
                          nop                                                              // 0x006c87fe    90
                          nop                                                              // 0x006c87ff    90
+?GetDebugText@Chain@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006c8800    b8a8ea9c00
                          ret                                                              // 0x006c8805    c3
                          nop                                                              // 0x006c8806    90
@@ -1505,6 +1627,7 @@ _jmp_addr_0x006c87d0:    push               esi                                 
                          nop                                                              // 0x006c880d    90
                          nop                                                              // 0x006c880e    90
                          nop                                                              // 0x006c880f    90
+??_GChain@@UAEPAXI@Z:
                          push               esi                                           // 0x006c8810    56
                          mov.s              esi, ecx                                      // 0x006c8811    8bf1
                          call               _jmp_addr_0x006c8900                          // 0x006c8813    e8e8000000
@@ -1776,6 +1899,7 @@ _jmp_addr_0x006c8a90:    push               esi                                 
                          nop                                                              // 0x006c8abd    90
                          nop                                                              // 0x006c8abe    90
                          nop                                                              // 0x006c8abf    90
+??_GRenderParticleGJMesh@@UAEPAXI@Z:
                          push               esi                                           // 0x006c8ac0    56
                          mov.s              esi, ecx                                      // 0x006c8ac1    8bf1
                          call               _jmp_addr_0x006c8ae0                          // 0x006c8ac3    e818000000
@@ -1870,6 +1994,7 @@ _jmp_addr_0x006c8b60:    push               esi                                 
                          nop                                                              // 0x006c8b8d    90
                          nop                                                              // 0x006c8b8e    90
                          nop                                                              // 0x006c8b8f    90
+??_GRenderParticleGJMeshRotatingUV@@UAEPAXI@Z:
                          push               esi                                           // 0x006c8b90    56
                          mov.s              esi, ecx                                      // 0x006c8b91    8bf1
                          call               _jmp_addr_0x006c8bb0                          // 0x006c8b93    e818000000
@@ -3529,6 +3654,7 @@ _jmp_addr_0x006c9c70:    push               esi                                 
                          nop                                                              // 0x006c9cad    90
                          nop                                                              // 0x006c9cae    90
                          nop                                                              // 0x006c9caf    90
+?GetDebugText@RenderParticleMist@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006c9cb0    b8a8ea9c00
                          ret                                                              // 0x006c9cb5    c3
                          nop                                                              // 0x006c9cb6    90
@@ -3541,6 +3667,7 @@ _jmp_addr_0x006c9c70:    push               esi                                 
                          nop                                                              // 0x006c9cbd    90
                          nop                                                              // 0x006c9cbe    90
                          nop                                                              // 0x006c9cbf    90
+??_GRenderParticleMist@@UAEPAXI@Z:
                          push               esi                                           // 0x006c9cc0    56
                          mov.s              esi, ecx                                      // 0x006c9cc1    8bf1
                          call               _jmp_addr_0x006c9ce0                          // 0x006c9cc3    e818000000
@@ -3608,6 +3735,7 @@ _jmp_addr_0x006c9d10:    push               esi                                 
                          nop                                                              // 0x006c9d4d    90
                          nop                                                              // 0x006c9d4e    90
                          nop                                                              // 0x006c9d4f    90
+??_GParticlePlayerSymbol@@UAEPAXI@Z:
                          push               esi                                           // 0x006c9d50    56
                          mov.s              esi, ecx                                      // 0x006c9d51    8bf1
                          call               _jmp_addr_0x006c9dd0                          // 0x006c9d53    e878000000
@@ -3774,6 +3902,7 @@ _jmp_addr_0x006c9e60:    push               esi                                 
                          nop                                                              // 0x006c9ebd    90
                          nop                                                              // 0x006c9ebe    90
                          nop                                                              // 0x006c9ebf    90
+?GetDebugText@RenderParticleGameObject@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006c9ec0    b8a8ea9c00
                          ret                                                              // 0x006c9ec5    c3
                          nop                                                              // 0x006c9ec6    90
@@ -3786,6 +3915,7 @@ _jmp_addr_0x006c9e60:    push               esi                                 
                          nop                                                              // 0x006c9ecd    90
                          nop                                                              // 0x006c9ece    90
                          nop                                                              // 0x006c9ecf    90
+??_GRenderParticleGameObject@@UAEPAXI@Z:
                          push               esi                                           // 0x006c9ed0    56
                          mov.s              esi, ecx                                      // 0x006c9ed1    8bf1
                          call               _jmp_addr_0x006c9fc0                          // 0x006c9ed3    e8e8000000
@@ -4319,6 +4449,7 @@ _jmp_addr_0x006ca3f0:    push               esi                                 
                          nop                                                              // 0x006ca43d    90
                          nop                                                              // 0x006ca43e    90
                          nop                                                              // 0x006ca43f    90
+?GetDebugText@ParticleLightMap@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006ca440    b8a8ea9c00
                          ret                                                              // 0x006ca445    c3
                          nop                                                              // 0x006ca446    90
@@ -4331,6 +4462,7 @@ _jmp_addr_0x006ca3f0:    push               esi                                 
                          nop                                                              // 0x006ca44d    90
                          nop                                                              // 0x006ca44e    90
                          nop                                                              // 0x006ca44f    90
+??_GParticleLightMap@@UAEPAXI@Z:
                          push               esi                                           // 0x006ca450    56
                          mov.s              esi, ecx                                      // 0x006ca451    8bf1
                          {disp8} lea        ecx, dword ptr [esi + 0x2c]                   // 0x006ca453    8d4e2c
@@ -4656,6 +4788,7 @@ _jmp_addr_0x006ca710:    push               esi                                 
                          nop                                                              // 0x006ca74d    90
                          nop                                                              // 0x006ca74e    90
                          nop                                                              // 0x006ca74f    90
+??_GRenderParticleVolBlendMesh@@UAEPAXI@Z:
                          push               esi                                           // 0x006ca750    56
                          mov.s              esi, ecx                                      // 0x006ca751    8bf1
                          call               _jmp_addr_0x006ca770                          // 0x006ca753    e818000000
@@ -5609,7 +5742,8 @@ _jmp_addr_0x006cb020:    fldln2                                                 
                          nop                                                              // 0x006cb03d    90
                          nop                                                              // 0x006cb03e    90
                          nop                                                              // 0x006cb03f    90
-_jmp_addr_0x006cb040:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x006cb040    8b442404
+?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x006cb040    8b442404
                          push               eax                                           // 0x006cb044    50
                          call               ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x006cb045    e8964beaff
                          neg                eax                                           // 0x006cb04a    f7d8
@@ -5629,12 +5763,13 @@ _jmp_addr_0x006cb040:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x006cb05d    90
                          nop                                                              // 0x006cb05e    90
                          nop                                                              // 0x006cb05f    90
+?Save@GJPSysInterface@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cb060    56
                          push               edi                                           // 0x006cb061    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cb062    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cb066    8bf1
                          push               edi                                           // 0x006cb068    57
-                         call               _jmp_addr_0x006cb040                          // 0x006cb069    e8d2ffffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cb069    e8d2ffffff
                          test               eax, eax                                      // 0x006cb06e    85c0
                          {disp8} je         _jmp_addr_0x006cb087                          // 0x006cb070    7415
                          add                esi, 0x14                                     // 0x006cb072    83c614
@@ -5651,12 +5786,13 @@ _jmp_addr_0x006cb087:    pop                edi                                 
                          ret                0x0004                                        // 0x006cb08b    c20400
                          nop                                                              // 0x006cb08e    90
                          nop                                                              // 0x006cb08f    90
+?Save@PSysManager@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cb090    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cb091    8b742408
                          push               edi                                           // 0x006cb095    57
                          mov.s              edi, ecx                                      // 0x006cb096    8bf9
                          push               esi                                           // 0x006cb098    56
-                         call               _jmp_addr_0x006cb040                          // 0x006cb099    e8a2ffffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cb099    e8a2ffffff
                          test               eax, eax                                      // 0x006cb09e    85c0
                          {disp32} je        _jmp_addr_0x006cb332                          // 0x006cb0a0    0f848c020000
                          push               ebx                                           // 0x006cb0a6    53
@@ -5874,12 +6010,13 @@ _jmp_addr_0x006cb332:    pop                edi                                 
                          nop                                                              // 0x006cb33d    90
                          nop                                                              // 0x006cb33e    90
                          nop                                                              // 0x006cb33f    90
-_jmp_addr_0x006cb340:    push               esi                                           // 0x006cb340    56
+?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z:
+                         push               esi                                           // 0x006cb340    56
                          push               edi                                           // 0x006cb341    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cb342    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cb346    8bf1
                          push               edi                                           // 0x006cb348    57
-                         call               _jmp_addr_0x006cb040                          // 0x006cb349    e8f2fcffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cb349    e8f2fcffff
                          test               eax, eax                                      // 0x006cb34e    85c0
                          {disp8} je         _jmp_addr_0x006cb367                          // 0x006cb350    7415
                          add                esi, 0x1c                                     // 0x006cb352    83c61c
@@ -5896,12 +6033,13 @@ _jmp_addr_0x006cb367:    pop                edi                                 
                          ret                0x0004                                        // 0x006cb36b    c20400
                          nop                                                              // 0x006cb36e    90
                          nop                                                              // 0x006cb36f    90
-_jmp_addr_0x006cb370:    push               esi                                           // 0x006cb370    56
+?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z:
+                         push               esi                                           // 0x006cb370    56
                          push               edi                                           // 0x006cb371    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cb372    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cb376    8bf1
                          push               edi                                           // 0x006cb378    57
-                         call               _jmp_addr_0x006cb040                          // 0x006cb379    e8c2fcffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cb379    e8c2fcffff
                          test               eax, eax                                      // 0x006cb37e    85c0
                          {disp8} je         _jmp_addr_0x006cb397                          // 0x006cb380    7415
                          add                esi, 0x1c                                     // 0x006cb382    83c61c
@@ -5918,13 +6056,14 @@ _jmp_addr_0x006cb397:    pop                edi                                 
                          ret                0x0004                                        // 0x006cb39b    c20400
                          nop                                                              // 0x006cb39e    90
                          nop                                                              // 0x006cb39f    90
+?Save@AtomCore@@UAEIAAVGameOSFile@@@Z:
                          sub                esp, 0x08                                     // 0x006cb3a0    83ec08
                          push               esi                                           // 0x006cb3a3    56
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x006cb3a4    8b742410
                          push               edi                                           // 0x006cb3a8    57
                          mov.s              edi, ecx                                      // 0x006cb3a9    8bf9
                          push               esi                                           // 0x006cb3ab    56
-                         call               _jmp_addr_0x006cb040                          // 0x006cb3ac    e88ffcffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cb3ac    e88ffcffff
                          test               eax, eax                                      // 0x006cb3b1    85c0
                          {disp32} je        _jmp_addr_0x006cb667                          // 0x006cb3b3    0f84ae020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cb3b9    a190c9be00
@@ -6166,7 +6305,7 @@ _jmp_addr_0x006cb667:    pop                edi                                 
                          push               edi                                           // 0x006cb688    57
                          mov.s              edi, ecx                                      // 0x006cb689    8bf9
                          push               esi                                           // 0x006cb68b    56
-                         call               _jmp_addr_0x006cb040                          // 0x006cb68c    e8aff9ffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cb68c    e8aff9ffff
                          test               eax, eax                                      // 0x006cb691    85c0
                          {disp32} je        _jmp_addr_0x006cb8a1                          // 0x006cb693    0f8408020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cb699    a190c9be00
@@ -6351,12 +6490,13 @@ _jmp_addr_0x006cb8a1:    pop                edi                                 
                          nop                                                              // 0x006cb8ad    90
                          nop                                                              // 0x006cb8ae    90
                          nop                                                              // 0x006cb8af    90
-_jmp_addr_0x006cb8b0:    push               esi                                           // 0x006cb8b0    56
+?Save@DrawOffset@@UAEIAAVGameOSFile@@@Z:
+                         push               esi                                           // 0x006cb8b0    56
                          push               edi                                           // 0x006cb8b1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cb8b2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cb8b6    8bf1
                          push               edi                                           // 0x006cb8b8    57
-                         call               _jmp_addr_0x006cb040                          // 0x006cb8b9    e882f7ffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cb8b9    e882f7ffff
                          test               eax, eax                                      // 0x006cb8be    85c0
                          {disp8} je         _jmp_addr_0x006cb908                          // 0x006cb8c0    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cb8c2    a190c9be00
@@ -6386,12 +6526,13 @@ _jmp_addr_0x006cb908:    pop                edi                                 
                          pop                esi                                           // 0x006cb90b    5e
                          ret                0x0004                                        // 0x006cb90c    c20400
                          nop                                                              // 0x006cb90f    90
+?Save@DrawOffsetLT@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cb910    53
                          push               esi                                           // 0x006cb911    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cb912    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cb916    8bd9
                          push               esi                                           // 0x006cb918    56
-                         call               _jmp_addr_0x006cb8b0                          // 0x006cb919    e892ffffff
+                         call               ?Save@DrawOffset@@UAEIAAVGameOSFile@@@Z       // 0x006cb919    e892ffffff
                          test               eax, eax                                      // 0x006cb91e    85c0
                          {disp32} je        _jmp_addr_0x006cb9aa                          // 0x006cb920    0f8484000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cb926    a190c9be00
@@ -6455,12 +6596,13 @@ _jmp_addr_0x006cb9aa:    pop                esi                                 
                          nop                                                              // 0x006cb9bd    90
                          nop                                                              // 0x006cb9be    90
                          nop                                                              // 0x006cb9bf    90
+?Save@DrawOffsetDecay@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cb9c0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cb9c1    8b742408
                          push               edi                                           // 0x006cb9c5    57
                          mov.s              edi, ecx                                      // 0x006cb9c6    8bf9
                          push               esi                                           // 0x006cb9c8    56
-                         call               _jmp_addr_0x006cb8b0                          // 0x006cb9c9    e8e2feffff
+                         call               ?Save@DrawOffset@@UAEIAAVGameOSFile@@@Z       // 0x006cb9c9    e8e2feffff
                          test               eax, eax                                      // 0x006cb9ce    85c0
                          {disp32} je        _jmp_addr_0x006cbac7                          // 0x006cb9d0    0f84f1000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cb9d6    a190c9be00
@@ -6547,12 +6689,13 @@ _jmp_addr_0x006cbac7:    pop                edi                                 
                          ret                0x0004                                        // 0x006cbacb    c20400
                          nop                                                              // 0x006cbace    90
                          nop                                                              // 0x006cbacf    90
-_jmp_addr_0x006cbad0:    push               esi                                           // 0x006cbad0    56
+?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z:
+                         push               esi                                           // 0x006cbad0    56
                          push               edi                                           // 0x006cbad1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cbad2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cbad6    8bf1
                          push               edi                                           // 0x006cbad8    57
-                         call               _jmp_addr_0x006cb040                          // 0x006cbad9    e862f5ffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cbad9    e862f5ffff
                          test               eax, eax                                      // 0x006cbade    85c0
                          {disp8} je         _jmp_addr_0x006cbb26                          // 0x006cbae0    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cbae2    a190c9be00
@@ -6584,9 +6727,10 @@ _jmp_addr_0x006cbb26:    pop                edi                                 
                          nop                                                              // 0x006cbb2d    90
                          nop                                                              // 0x006cbb2e    90
                          nop                                                              // 0x006cbb2f    90
+?Save@Particle3DPnt@@UAEIAAVGameOSFile@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x006cbb30    8b442404
                          push               eax                                           // 0x006cbb34    50
-                         call               _jmp_addr_0x006cbad0                          // 0x006cbb35    e896ffffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cbb35    e896ffffff
                          neg                eax                                           // 0x006cbb3a    f7d8
                          sbb.s              eax, eax                                      // 0x006cbb3c    1bc0
                          neg                eax                                           // 0x006cbb3e    f7d8
@@ -6609,7 +6753,7 @@ _jmp_addr_0x006cbb26:    pop                edi                                 
                          push               edi                                           // 0x006cbb55    57
                          mov.s              edi, ecx                                      // 0x006cbb56    8bf9
                          push               esi                                           // 0x006cbb58    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cbb59    e872ffffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cbb59    e872ffffff
                          test               eax, eax                                      // 0x006cbb5e    85c0
                          {disp32} je        _jmp_addr_0x006cbc9a                          // 0x006cbb60    0f8434010000
                          push               ebx                                           // 0x006cbb66    53
@@ -6735,7 +6879,7 @@ _jmp_addr_0x006cbc9a:    pop                edi                                 
                          push               edi                                           // 0x006cbcb5    57
                          mov.s              edi, ecx                                      // 0x006cbcb6    8bf9
                          push               esi                                           // 0x006cbcb8    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cbcb9    e812feffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cbcb9    e812feffff
                          test               eax, eax                                      // 0x006cbcbe    85c0
                          {disp32} je        _jmp_addr_0x006cbe70                          // 0x006cbcc0    0f84aa010000
                          push               ebx                                           // 0x006cbcc6    53
@@ -6889,7 +7033,7 @@ _jmp_addr_0x006cbe80:    push               esi                                 
                          push               edi                                           // 0x006cbe85    57
                          mov.s              edi, ecx                                      // 0x006cbe86    8bf9
                          push               esi                                           // 0x006cbe88    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cbe89    e842fcffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cbe89    e842fcffff
                          test               eax, eax                                      // 0x006cbe8e    85c0
                          {disp8} je         _jmp_addr_0x006cbee1                          // 0x006cbe90    744f
                          {disp8} lea        eax, dword ptr [edi + 0x18]                   // 0x006cbe92    8d4718
@@ -6935,7 +7079,7 @@ _jmp_addr_0x006cbef0:    push               esi                                 
                          push               edi                                           // 0x006cbef5    57
                          mov.s              edi, ecx                                      // 0x006cbef6    8bf9
                          push               esi                                           // 0x006cbef8    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cbef9    e8d2fbffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cbef9    e8d2fbffff
                          test               eax, eax                                      // 0x006cbefe    85c0
                          {disp32} je        _jmp_addr_0x006cc000                          // 0x006cbf00    0f84fa000000
                          push               ebx                                           // 0x006cbf06    53
@@ -7282,7 +7426,7 @@ _jmp_addr_0x006cc2d5:    pop                edi                                 
                          push               edi                                           // 0x006cc2e5    57
                          mov.s              edi, ecx                                      // 0x006cc2e6    8bf9
                          push               esi                                           // 0x006cc2e8    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cc2e9    e8e2f7ffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cc2e9    e8e2f7ffff
                          test               eax, eax                                      // 0x006cc2ee    85c0
                          {disp8} je         _jmp_addr_0x006cc343                          // 0x006cc2f0    7451
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cc2f2    a190c9be00
@@ -7326,7 +7470,7 @@ _jmp_addr_0x006cc350:    push               esi                                 
                          push               edi                                           // 0x006cc355    57
                          mov.s              edi, ecx                                      // 0x006cc356    8bf9
                          push               esi                                           // 0x006cc358    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cc359    e872f7ffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cc359    e872f7ffff
                          test               eax, eax                                      // 0x006cc35e    85c0
                          {disp8} je         _jmp_addr_0x006cc3b3                          // 0x006cc360    7451
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cc362    a190c9be00
@@ -7390,7 +7534,7 @@ _jmp_addr_0x006cc3b3:    pop                edi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cc3e2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cc3e6    8bf1
                          push               edi                                           // 0x006cc3e8    57
-                         call               _jmp_addr_0x006cbad0                          // 0x006cc3e9    e8e2f6ffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cc3e9    e8e2f6ffff
                          test               eax, eax                                      // 0x006cc3ee    85c0
                          {disp8} je         _jmp_addr_0x006cc438                          // 0x006cc3f0    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cc3f2    a190c9be00
@@ -7425,7 +7569,7 @@ _jmp_addr_0x006cc438:    pop                edi                                 
                          push               edi                                           // 0x006cc445    57
                          mov.s              edi, ecx                                      // 0x006cc446    8bf9
                          push               esi                                           // 0x006cc448    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cc449    e882f6ffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cc449    e882f6ffff
                          test               eax, eax                                      // 0x006cc44e    85c0
                          {disp32} je        _jmp_addr_0x006cc52a                          // 0x006cc450    0f84d4000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cc456    a190c9be00
@@ -7515,12 +7659,13 @@ _jmp_addr_0x006cc52a:    pop                edi                                 
                          nop                                                              // 0x006cc53d    90
                          nop                                                              // 0x006cc53e    90
                          nop                                                              // 0x006cc53f    90
+?Save@ParticleChainJoint@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cc540    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cc541    8b742408
                          push               edi                                           // 0x006cc545    57
                          mov.s              edi, ecx                                      // 0x006cc546    8bf9
                          push               esi                                           // 0x006cc548    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cc549    e882f5ffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cc549    e882f5ffff
                          test               eax, eax                                      // 0x006cc54e    85c0
                          {disp32} je        _jmp_addr_0x006cc625                          // 0x006cc550    0f84cf000000
                          push               ebx                                           // 0x006cc556    53
@@ -7600,7 +7745,7 @@ _jmp_addr_0x006cc625:    pop                edi                                 
                          push               edi                                           // 0x006cc635    57
                          mov.s              edi, ecx                                      // 0x006cc636    8bf9
                          push               esi                                           // 0x006cc638    56
-                         call               _jmp_addr_0x006cbad0                          // 0x006cc639    e892f4ffff
+                         call               ?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z   // 0x006cc639    e892f4ffff
                          test               eax, eax                                      // 0x006cc63e    85c0
                          {disp32} je        _jmp_addr_0x006cc772                          // 0x006cc640    0f842c010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cc646    a190c9be00
@@ -7713,12 +7858,13 @@ _jmp_addr_0x006cc772:    pop                edi                                 
                          nop                                                              // 0x006cc77d    90
                          nop                                                              // 0x006cc77e    90
                          nop                                                              // 0x006cc77f    90
+?Save@Chain@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cc780    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cc781    8b742408
                          push               edi                                           // 0x006cc785    57
                          mov.s              edi, ecx                                      // 0x006cc786    8bf9
                          push               esi                                           // 0x006cc788    56
-                         call               _jmp_addr_0x006cb040                          // 0x006cc789    e8b2e8ffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006cc789    e8b2e8ffff
                          test               eax, eax                                      // 0x006cc78e    85c0
                          {disp32} je        _jmp_addr_0x006cca5d                          // 0x006cc790    0f84c7020000
                          push               ebx                                           // 0x006cc796    53
@@ -7957,12 +8103,13 @@ _jmp_addr_0x006cca5d:    pop                edi                                 
                          nop                                                              // 0x006cca6d    90
                          nop                                                              // 0x006cca6e    90
                          nop                                                              // 0x006cca6f    90
+?Save@AtomData@UR_BeliefSprite@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cca70    53
                          push               esi                                           // 0x006cca71    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cca72    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cca76    8bd9
                          push               esi                                           // 0x006cca78    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cca79    e8c2e8ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cca79    e8c2e8ffff
                          test               eax, eax                                      // 0x006cca7e    85c0
                          {disp32} je        _jmp_addr_0x006ccb08                          // 0x006cca80    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cca86    a190c9be00
@@ -8012,12 +8159,13 @@ _jmp_addr_0x006ccb08:    pop                esi                                 
                          pop                ebx                                           // 0x006ccb0b    5b
                          ret                0x0004                                        // 0x006ccb0c    c20400
                          nop                                                              // 0x006ccb0f    90
+?Save@AtomData@UR_ManaPathNew@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ccb10    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ccb11    8b742408
                          push               edi                                           // 0x006ccb15    57
                          mov.s              edi, ecx                                      // 0x006ccb16    8bf9
                          push               esi                                           // 0x006ccb18    56
-                         call               _jmp_addr_0x006cb340                          // 0x006ccb19    e822e8ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ccb19    e822e8ffff
                          test               eax, eax                                      // 0x006ccb1e    85c0
                          {disp32} je        _jmp_addr_0x006ccd58                          // 0x006ccb20    0f8432020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ccb26    a190c9be00
@@ -8200,12 +8348,13 @@ _jmp_addr_0x006ccd58:    pop                edi                                 
                          pop                esi                                           // 0x006ccd5b    5e
                          ret                0x0004                                        // 0x006ccd5c    c20400
                          nop                                                              // 0x006ccd5f    90
+?Save@UR_PlasmaInf@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ccd60    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ccd61    8b742408
                          push               edi                                           // 0x006ccd65    57
                          mov.s              edi, ecx                                      // 0x006ccd66    8bf9
                          push               esi                                           // 0x006ccd68    56
-                         call               _jmp_addr_0x006cb040                          // 0x006ccd69    e8d2e2ffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006ccd69    e8d2e2ffff
                          test               eax, eax                                      // 0x006ccd6e    85c0
                          {disp32} je        _jmp_addr_0x006ccf4a                          // 0x006ccd70    0f84d4010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ccd76    a190c9be00
@@ -8372,12 +8521,13 @@ _jmp_addr_0x006ccf4a:    pop                edi                                 
                          nop                                                              // 0x006ccf5d    90
                          nop                                                              // 0x006ccf5e    90
                          nop                                                              // 0x006ccf5f    90
+?Save@SubCollectionData@UR_Plasma@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ccf60    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ccf61    8b742408
                          push               edi                                           // 0x006ccf65    57
                          mov.s              edi, ecx                                      // 0x006ccf66    8bf9
                          push               esi                                           // 0x006ccf68    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ccf69    e802e4ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ccf69    e802e4ffff
                          test               eax, eax                                      // 0x006ccf6e    85c0
                          {disp32} je        _jmp_addr_0x006cd0af                          // 0x006ccf70    0f8439010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ccf76    a190c9be00
@@ -8493,12 +8643,13 @@ _jmp_addr_0x006cd0af:    pop                edi                                 
                          nop                                                              // 0x006cd0bd    90
                          nop                                                              // 0x006cd0be    90
                          nop                                                              // 0x006cd0bf    90
+?Save@AtomData@UR_Plasma@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd0c0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cd0c1    8b742408
                          push               edi                                           // 0x006cd0c5    57
                          mov.s              edi, ecx                                      // 0x006cd0c6    8bf9
                          push               esi                                           // 0x006cd0c8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cd0c9    e872e2ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd0c9    e872e2ffff
                          test               eax, eax                                      // 0x006cd0ce    85c0
                          {disp32} je        _jmp_addr_0x006cd273                          // 0x006cd0d0    0f849d010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd0d6    a190c9be00
@@ -8640,12 +8791,13 @@ _jmp_addr_0x006cd273:    pop                edi                                 
                          nop                                                              // 0x006cd27d    90
                          nop                                                              // 0x006cd27e    90
                          nop                                                              // 0x006cd27f    90
+?Save@AtomData@UR_VolFXOnObject@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd280    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cd281    8b742408
                          push               edi                                           // 0x006cd285    57
                          mov.s              edi, ecx                                      // 0x006cd286    8bf9
                          push               esi                                           // 0x006cd288    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cd289    e8b2e0ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd289    e8b2e0ffff
                          test               eax, eax                                      // 0x006cd28e    85c0
                          {disp8} je         _jmp_addr_0x006cd2e3                          // 0x006cd290    7451
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd292    a190c9be00
@@ -8684,12 +8836,13 @@ _jmp_addr_0x006cd2e3:    pop                edi                                 
                          nop                                                              // 0x006cd2ed    90
                          nop                                                              // 0x006cd2ee    90
                          nop                                                              // 0x006cd2ef    90
+?Save@AtomData@UR_LightSheetOnObject@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd2f0    56
                          push               edi                                           // 0x006cd2f1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cd2f2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cd2f6    8bf1
                          push               edi                                           // 0x006cd2f8    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cd2f9    e842e0ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd2f9    e842e0ffff
                          test               eax, eax                                      // 0x006cd2fe    85c0
                          {disp8} je         _jmp_addr_0x006cd348                          // 0x006cd300    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd302    a190c9be00
@@ -8719,12 +8872,13 @@ _jmp_addr_0x006cd348:    pop                edi                                 
                          pop                esi                                           // 0x006cd34b    5e
                          ret                0x0004                                        // 0x006cd34c    c20400
                          nop                                                              // 0x006cd34f    90
+?Save@CollectionData@UR_LightSheetOnObject@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd350    56
                          push               edi                                           // 0x006cd351    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cd352    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cd356    8bf1
                          push               edi                                           // 0x006cd358    57
-                         call               _jmp_addr_0x006cb370                          // 0x006cd359    e812e0ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd359    e812e0ffff
                          test               eax, eax                                      // 0x006cd35e    85c0
                          {disp8} je         _jmp_addr_0x006cd3a6                          // 0x006cd360    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd362    a190c9be00
@@ -8756,12 +8910,13 @@ _jmp_addr_0x006cd3a6:    pop                edi                                 
                          nop                                                              // 0x006cd3ad    90
                          nop                                                              // 0x006cd3ae    90
                          nop                                                              // 0x006cd3af    90
+?Save@AtomData@UR_SimpleBeam@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cd3b0    53
                          push               esi                                           // 0x006cd3b1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cd3b2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cd3b6    8bd9
                          push               esi                                           // 0x006cd3b8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cd3b9    e882dfffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd3b9    e882dfffff
                          test               eax, eax                                      // 0x006cd3be    85c0
                          {disp32} je        _jmp_addr_0x006cd491                          // 0x006cd3c0    0f84cb000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd3c6    a190c9be00
@@ -8840,12 +8995,13 @@ _jmp_addr_0x006cd491:    pop                esi                                 
                          nop                                                              // 0x006cd49d    90
                          nop                                                              // 0x006cd49e    90
                          nop                                                              // 0x006cd49f    90
+?Save@AtomData@UR_OrientSpriteWithVelocity@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cd4a0    53
                          push               esi                                           // 0x006cd4a1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cd4a2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cd4a6    8bd9
                          push               esi                                           // 0x006cd4a8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cd4a9    e892deffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd4a9    e892deffff
                          test               eax, eax                                      // 0x006cd4ae    85c0
                          {disp32} je        _jmp_addr_0x006cd59f                          // 0x006cd4b0    0f84e9000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd4b6    a190c9be00
@@ -8940,12 +9096,13 @@ _jmp_addr_0x006cd59f:    pop                esi                                 
                          nop                                                              // 0x006cd5ad    90
                          nop                                                              // 0x006cd5ae    90
                          nop                                                              // 0x006cd5af    90
+?Save@AtomData@AttatchFireBallToAtom@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cd5b0    53
                          push               esi                                           // 0x006cd5b1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cd5b2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cd5b6    8bd9
                          push               esi                                           // 0x006cd5b8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cd5b9    e882ddffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd5b9    e882ddffff
                          test               eax, eax                                      // 0x006cd5be    85c0
                          {disp32} je        _jmp_addr_0x006cd653                          // 0x006cd5c0    0f848d000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd5c6    a190c9be00
@@ -9004,12 +9161,13 @@ _jmp_addr_0x006cd653:    pop                esi                                 
                          nop                                                              // 0x006cd65d    90
                          nop                                                              // 0x006cd65e    90
                          nop                                                              // 0x006cd65f    90
+?Save@AtomData@AR_FadeOutOnceConditionTrue@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd660    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cd661    8b742408
                          push               edi                                           // 0x006cd665    57
                          mov.s              edi, ecx                                      // 0x006cd666    8bf9
                          push               esi                                           // 0x006cd668    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cd669    e8d2dcffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd669    e8d2dcffff
                          test               eax, eax                                      // 0x006cd66e    85c0
                          {disp32} je        _jmp_addr_0x006cd765                          // 0x006cd670    0f84ef000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd676    a190c9be00
@@ -9098,12 +9256,13 @@ _jmp_addr_0x006cd765:    pop                edi                                 
                          nop                                                              // 0x006cd76d    90
                          nop                                                              // 0x006cd76e    90
                          nop                                                              // 0x006cd76f    90
+?Save@AtomData@AddSoundToAtom@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd770    56
                          push               edi                                           // 0x006cd771    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cd772    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cd776    8bf1
                          push               edi                                           // 0x006cd778    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cd779    e8c2dbffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd779    e8c2dbffff
                          test               eax, eax                                      // 0x006cd77e    85c0
                          {disp8} je         _jmp_addr_0x006cd7c6                          // 0x006cd780    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd782    a190c9be00
@@ -9135,12 +9294,13 @@ _jmp_addr_0x006cd7c6:    pop                edi                                 
                          nop                                                              // 0x006cd7cd    90
                          nop                                                              // 0x006cd7ce    90
                          nop                                                              // 0x006cd7cf    90
+?Save@AtomData@RemoveSoundFromAtom@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd7d0    56
                          push               edi                                           // 0x006cd7d1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cd7d2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cd7d6    8bf1
                          push               edi                                           // 0x006cd7d8    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cd7d9    e862dbffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd7d9    e862dbffff
                          test               eax, eax                                      // 0x006cd7de    85c0
                          {disp8} je         _jmp_addr_0x006cd826                          // 0x006cd7e0    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd7e2    a190c9be00
@@ -9172,12 +9332,13 @@ _jmp_addr_0x006cd826:    pop                edi                                 
                          nop                                                              // 0x006cd82d    90
                          nop                                                              // 0x006cd82e    90
                          nop                                                              // 0x006cd82f    90
+?Save@AtomDataRipple@UpdateRuleGravityWithFloor@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd830    56
                          push               edi                                           // 0x006cd831    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cd832    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cd836    8bf1
                          push               edi                                           // 0x006cd838    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cd839    e802dbffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd839    e802dbffff
                          test               eax, eax                                      // 0x006cd83e    85c0
                          {disp8} je         _jmp_addr_0x006cd888                          // 0x006cd840    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd842    a190c9be00
@@ -9207,12 +9368,13 @@ _jmp_addr_0x006cd888:    pop                edi                                 
                          pop                esi                                           // 0x006cd88b    5e
                          ret                0x0004                                        // 0x006cd88c    c20400
                          nop                                                              // 0x006cd88f    90
+?Save@AtomData@UR_BankedTurning@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd890    56
                          push               edi                                           // 0x006cd891    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cd892    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cd896    8bf1
                          push               edi                                           // 0x006cd898    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cd899    e8a2daffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd899    e8a2daffff
                          test               eax, eax                                      // 0x006cd89e    85c0
                          {disp8} je         _jmp_addr_0x006cd8e6                          // 0x006cd8a0    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd8a2    a190c9be00
@@ -9244,12 +9406,13 @@ _jmp_addr_0x006cd8e6:    pop                edi                                 
                          nop                                                              // 0x006cd8ed    90
                          nop                                                              // 0x006cd8ee    90
                          nop                                                              // 0x006cd8ef    90
+?Save@AtomData@UpdateRuleShieldSpark@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cd8f0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cd8f1    8b742408
                          push               edi                                           // 0x006cd8f5    57
                          mov.s              edi, ecx                                      // 0x006cd8f6    8bf9
                          push               esi                                           // 0x006cd8f8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cd8f9    e842daffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cd8f9    e842daffff
                          test               eax, eax                                      // 0x006cd8fe    85c0
                          {disp32} je        _jmp_addr_0x006cda31                          // 0x006cd900    0f842b010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cd906    a190c9be00
@@ -9359,12 +9522,13 @@ _jmp_addr_0x006cda31:    pop                edi                                 
                          nop                                                              // 0x006cda3d    90
                          nop                                                              // 0x006cda3e    90
                          nop                                                              // 0x006cda3f    90
+?Save@AtomData@UR_VapourEndEffect@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cda40    56
                          push               edi                                           // 0x006cda41    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cda42    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cda46    8bf1
                          push               edi                                           // 0x006cda48    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cda49    e8f2d8ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cda49    e8f2d8ffff
                          test               eax, eax                                      // 0x006cda4e    85c0
                          {disp8} je         _jmp_addr_0x006cda96                          // 0x006cda50    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cda52    a190c9be00
@@ -9396,12 +9560,13 @@ _jmp_addr_0x006cda96:    pop                edi                                 
                          nop                                                              // 0x006cda9d    90
                          nop                                                              // 0x006cda9e    90
                          nop                                                              // 0x006cda9f    90
+?Save@AtomData@AddSubCollectionsToAtom@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cdaa0    56
                          push               edi                                           // 0x006cdaa1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cdaa2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cdaa6    8bf1
                          push               edi                                           // 0x006cdaa8    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cdaa9    e892d8ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdaa9    e892d8ffff
                          test               eax, eax                                      // 0x006cdaae    85c0
                          {disp8} je         _jmp_addr_0x006cdaf6                          // 0x006cdab0    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cdab2    a190c9be00
@@ -9433,12 +9598,13 @@ _jmp_addr_0x006cdaf6:    pop                edi                                 
                          nop                                                              // 0x006cdafd    90
                          nop                                                              // 0x006cdafe    90
                          nop                                                              // 0x006cdaff    90
+?Save@AtomData@CreateNewBaseAtom@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cdb00    56
                          push               edi                                           // 0x006cdb01    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cdb02    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cdb06    8bf1
                          push               edi                                           // 0x006cdb08    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cdb09    e832d8ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdb09    e832d8ffff
                          test               eax, eax                                      // 0x006cdb0e    85c0
                          {disp8} je         _jmp_addr_0x006cdb58                          // 0x006cdb10    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cdb12    a190c9be00
@@ -9468,12 +9634,13 @@ _jmp_addr_0x006cdb58:    pop                edi                                 
                          pop                esi                                           // 0x006cdb5b    5e
                          ret                0x0004                                        // 0x006cdb5c    c20400
                          nop                                                              // 0x006cdb5f    90
+?Save@ParentAtomData@ER_GlintsOnTarget@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cdb60    53
                          push               esi                                           // 0x006cdb61    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cdb62    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cdb66    8bd9
                          push               esi                                           // 0x006cdb68    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cdb69    e8d2d7ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdb69    e8d2d7ffff
                          test               eax, eax                                      // 0x006cdb6e    85c0
                          {disp32} je        _jmp_addr_0x006cdc3f                          // 0x006cdb70    0f84c9000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cdb76    a190c9be00
@@ -9554,12 +9721,13 @@ _jmp_addr_0x006cdc3f:    pop                esi                                 
                          nop                                                              // 0x006cdc4d    90
                          nop                                                              // 0x006cdc4e    90
                          nop                                                              // 0x006cdc4f    90
+?Save@AtomData@ER_GlintsOnTarget@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cdc50    56
                          push               edi                                           // 0x006cdc51    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cdc52    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cdc56    8bf1
                          push               edi                                           // 0x006cdc58    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cdc59    e8e2d6ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdc59    e8e2d6ffff
                          test               eax, eax                                      // 0x006cdc5e    85c0
                          {disp8} je         _jmp_addr_0x006cdca8                          // 0x006cdc60    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cdc62    a190c9be00
@@ -9589,12 +9757,13 @@ _jmp_addr_0x006cdca8:    pop                edi                                 
                          pop                esi                                           // 0x006cdcab    5e
                          ret                0x0004                                        // 0x006cdcac    c20400
                          nop                                                              // 0x006cdcaf    90
+?Save@AtomData@UR_HealSpellChakra@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cdcb0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cdcb1    8b742408
                          push               edi                                           // 0x006cdcb5    57
                          mov.s              edi, ecx                                      // 0x006cdcb6    8bf9
                          push               esi                                           // 0x006cdcb8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cdcb9    e882d6ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdcb9    e882d6ffff
                          test               eax, eax                                      // 0x006cdcbe    85c0
                          {disp32} je        _jmp_addr_0x006cde01                          // 0x006cdcc0    0f843b010000
                          push               ebx                                           // 0x006cdcc6    53
@@ -9712,12 +9881,13 @@ _jmp_addr_0x006cde01:    pop                edi                                 
                          nop                                                              // 0x006cde0d    90
                          nop                                                              // 0x006cde0e    90
                          nop                                                              // 0x006cde0f    90
+?Save@AtomData@UR_OrientSpriteWithRandomAngle@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cde10    53
                          push               esi                                           // 0x006cde11    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cde12    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cde16    8bd9
                          push               esi                                           // 0x006cde18    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cde19    e822d5ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cde19    e822d5ffff
                          test               eax, eax                                      // 0x006cde1e    85c0
                          {disp32} je        _jmp_addr_0x006cdea8                          // 0x006cde20    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cde26    a190c9be00
@@ -9767,12 +9937,13 @@ _jmp_addr_0x006cdea8:    pop                esi                                 
                          pop                ebx                                           // 0x006cdeab    5b
                          ret                0x0004                                        // 0x006cdeac    c20400
                          nop                                                              // 0x006cdeaf    90
+?Save@AtomData@UR_SideSpin@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cdeb0    53
                          push               esi                                           // 0x006cdeb1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cdeb2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cdeb6    8bd9
                          push               esi                                           // 0x006cdeb8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cdeb9    e882d4ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdeb9    e882d4ffff
                          test               eax, eax                                      // 0x006cdebe    85c0
                          {disp32} je        _jmp_addr_0x006cdf48                          // 0x006cdec0    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cdec6    a190c9be00
@@ -9822,12 +9993,13 @@ _jmp_addr_0x006cdf48:    pop                esi                                 
                          pop                ebx                                           // 0x006cdf4b    5b
                          ret                0x0004                                        // 0x006cdf4c    c20400
                          nop                                                              // 0x006cdf4f    90
+?Save@AtomData@UR_InitialSpin@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cdf50    53
                          push               esi                                           // 0x006cdf51    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cdf52    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cdf56    8bd9
                          push               esi                                           // 0x006cdf58    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cdf59    e8e2d3ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdf59    e8e2d3ffff
                          test               eax, eax                                      // 0x006cdf5e    85c0
                          {disp32} je        _jmp_addr_0x006cdfe8                          // 0x006cdf60    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cdf66    a190c9be00
@@ -9877,12 +10049,13 @@ _jmp_addr_0x006cdfe8:    pop                esi                                 
                          pop                ebx                                           // 0x006cdfeb    5b
                          ret                0x0004                                        // 0x006cdfec    c20400
                          nop                                                              // 0x006cdfef    90
+?Save@AtomData@RemoveRuleAfterConditionTrue@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cdff0    53
                          push               esi                                           // 0x006cdff1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cdff2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cdff6    8bd9
                          push               esi                                           // 0x006cdff8    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cdff9    e842d3ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cdff9    e842d3ffff
                          test               eax, eax                                      // 0x006cdffe    85c0
                          {disp32} je        _jmp_addr_0x006ce088                          // 0x006ce000    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce006    a190c9be00
@@ -9932,12 +10105,13 @@ _jmp_addr_0x006ce088:    pop                esi                                 
                          pop                ebx                                           // 0x006ce08b    5b
                          ret                0x0004                                        // 0x006ce08c    c20400
                          nop                                                              // 0x006ce08f    90
+?Save@AtomData@UR_OrientWithVelocity@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce090    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce091    8b742408
                          push               edi                                           // 0x006ce095    57
                          mov.s              edi, ecx                                      // 0x006ce096    8bf9
                          push               esi                                           // 0x006ce098    56
-                         call               _jmp_addr_0x006cb340                          // 0x006ce099    e8a2d2ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce099    e8a2d2ffff
                          test               eax, eax                                      // 0x006ce09e    85c0
                          {disp32} je        _jmp_addr_0x006ce168                          // 0x006ce0a0    0f84c2000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce0a6    a190c9be00
@@ -10005,12 +10179,13 @@ _jmp_addr_0x006ce168:    pop                edi                                 
                          pop                esi                                           // 0x006ce16b    5e
                          ret                0x0004                                        // 0x006ce16c    c20400
                          nop                                                              // 0x006ce16f    90
+?Save@AtomData@UR_FollowTargets@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce170    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce171    8b742408
                          push               edi                                           // 0x006ce175    57
                          mov.s              edi, ecx                                      // 0x006ce176    8bf9
                          push               esi                                           // 0x006ce178    56
-                         call               _jmp_addr_0x006cb340                          // 0x006ce179    e8c2d1ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce179    e8c2d1ffff
                          test               eax, eax                                      // 0x006ce17e    85c0
                          {disp8} je         _jmp_addr_0x006ce1d3                          // 0x006ce180    7451
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce182    a190c9be00
@@ -10049,12 +10224,13 @@ _jmp_addr_0x006ce1d3:    pop                edi                                 
                          nop                                                              // 0x006ce1dd    90
                          nop                                                              // 0x006ce1de    90
                          nop                                                              // 0x006ce1df    90
+?Save@SubCollectionData@UR_SimpleBeam@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce1e0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce1e1    8b742408
                          push               edi                                           // 0x006ce1e5    57
                          mov.s              edi, ecx                                      // 0x006ce1e6    8bf9
                          push               esi                                           // 0x006ce1e8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ce1e9    e882d1ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce1e9    e882d1ffff
                          test               eax, eax                                      // 0x006ce1ee    85c0
                          {disp32} je        _jmp_addr_0x006ce32f                          // 0x006ce1f0    0f8439010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce1f6    a190c9be00
@@ -10170,12 +10346,13 @@ _jmp_addr_0x006ce32f:    pop                edi                                 
                          nop                                                              // 0x006ce33d    90
                          nop                                                              // 0x006ce33e    90
                          nop                                                              // 0x006ce33f    90
+?Save@CollectionData@UR_AtomsAtEPTarget@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce340    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce341    8b742408
                          push               edi                                           // 0x006ce345    57
                          mov.s              edi, ecx                                      // 0x006ce346    8bf9
                          push               esi                                           // 0x006ce348    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ce349    e822d0ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce349    e822d0ffff
                          test               eax, eax                                      // 0x006ce34e    85c0
                          {disp8} je         _jmp_addr_0x006ce3a3                          // 0x006ce350    7451
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce352    a190c9be00
@@ -10214,12 +10391,13 @@ _jmp_addr_0x006ce3a3:    pop                edi                                 
                          nop                                                              // 0x006ce3ad    90
                          nop                                                              // 0x006ce3ae    90
                          nop                                                              // 0x006ce3af    90
+?Save@UR_Lightning_CollectionData@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce3b0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce3b1    8b742408
                          push               edi                                           // 0x006ce3b5    57
                          mov.s              edi, ecx                                      // 0x006ce3b6    8bf9
                          push               esi                                           // 0x006ce3b8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ce3b9    e8b2cfffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce3b9    e8b2cfffff
                          test               eax, eax                                      // 0x006ce3be    85c0
                          {disp32} je        _jmp_addr_0x006ce690                          // 0x006ce3c0    0f84ca020000
                          push               ebx                                           // 0x006ce3c6    53
@@ -10467,12 +10645,13 @@ _jmp_addr_0x006ce690:    pop                edi                                 
                          nop                                                              // 0x006ce69d    90
                          nop                                                              // 0x006ce69e    90
                          nop                                                              // 0x006ce69f    90
+?Save@CollectionData@UR_AddDefensiveSphere@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006ce6a0    53
                          push               esi                                           // 0x006ce6a1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006ce6a2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006ce6a6    8bd9
                          push               esi                                           // 0x006ce6a8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ce6a9    e8c2ccffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce6a9    e8c2ccffff
                          test               eax, eax                                      // 0x006ce6ae    85c0
                          {disp8} je         _jmp_addr_0x006ce703                          // 0x006ce6b0    7451
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce6b2    a190c9be00
@@ -10513,12 +10692,13 @@ _jmp_addr_0x006ce703:    pop                esi                                 
                          nop                                                              // 0x006ce70d    90
                          nop                                                              // 0x006ce70e    90
                          nop                                                              // 0x006ce70f    90
+?Save@CollectionData@UR_CloudMoverNew@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce710    56
                          push               edi                                           // 0x006ce711    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006ce712    8b7c240c
                          mov.s              esi, ecx                                      // 0x006ce716    8bf1
                          push               edi                                           // 0x006ce718    57
-                         call               _jmp_addr_0x006cb370                          // 0x006ce719    e852ccffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce719    e852ccffff
                          test               eax, eax                                      // 0x006ce71e    85c0
                          {disp8} je         _jmp_addr_0x006ce766                          // 0x006ce720    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce722    a190c9be00
@@ -10550,12 +10730,13 @@ _jmp_addr_0x006ce766:    pop                edi                                 
                          nop                                                              // 0x006ce76d    90
                          nop                                                              // 0x006ce76e    90
                          nop                                                              // 0x006ce76f    90
+?Save@CollectionData@UR_CreatureSpellCompassion@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce770    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce771    8b742408
                          push               edi                                           // 0x006ce775    57
                          mov.s              edi, ecx                                      // 0x006ce776    8bf9
                          push               esi                                           // 0x006ce778    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ce779    e8f2cbffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce779    e8f2cbffff
                          test               eax, eax                                      // 0x006ce77e    85c0
                          {disp32} je        _jmp_addr_0x006ce848                          // 0x006ce780    0f84c2000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce786    a190c9be00
@@ -10623,12 +10804,13 @@ _jmp_addr_0x006ce848:    pop                edi                                 
                          pop                esi                                           // 0x006ce84b    5e
                          ret                0x0004                                        // 0x006ce84c    c20400
                          nop                                                              // 0x006ce84f    90
+?Save@AtomData@UR_CreatureSpellGeneric@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce850    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce851    8b742408
                          push               edi                                           // 0x006ce855    57
                          mov.s              edi, ecx                                      // 0x006ce856    8bf9
                          push               esi                                           // 0x006ce858    56
-                         call               _jmp_addr_0x006cb340                          // 0x006ce859    e8e2caffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce859    e8e2caffff
                          test               eax, eax                                      // 0x006ce85e    85c0
                          {disp32} je        _jmp_addr_0x006ce991                          // 0x006ce860    0f842b010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce866    a190c9be00
@@ -10738,12 +10920,13 @@ _jmp_addr_0x006ce991:    pop                edi                                 
                          nop                                                              // 0x006ce99d    90
                          nop                                                              // 0x006ce99e    90
                          nop                                                              // 0x006ce99f    90
+?Save@CollectionData@UR_CreatureSpellGeneric@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ce9a0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ce9a1    8b742408
                          push               edi                                           // 0x006ce9a5    57
                          mov.s              edi, ecx                                      // 0x006ce9a6    8bf9
                          push               esi                                           // 0x006ce9a8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ce9a9    e8c2c9ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ce9a9    e8c2c9ffff
                          test               eax, eax                                      // 0x006ce9ae    85c0
                          {disp32} je        _jmp_addr_0x006ceb37                          // 0x006ce9b0    0f8481010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ce9b6    a190c9be00
@@ -10867,12 +11050,13 @@ _jmp_addr_0x006ceb37:    pop                edi                                 
                          ret                0x0004                                        // 0x006ceb3b    c20400
                          nop                                                              // 0x006ceb3e    90
                          nop                                                              // 0x006ceb3f    90
+?Save@CollectionData@UR_CreatureSpell@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006ceb40    53
                          push               esi                                           // 0x006ceb41    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006ceb42    8b74240c
                          mov.s              ebx, ecx                                      // 0x006ceb46    8bd9
                          push               esi                                           // 0x006ceb48    56
-                         call               _jmp_addr_0x006cb370                          // 0x006ceb49    e822c8ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006ceb49    e822c8ffff
                          test               eax, eax                                      // 0x006ceb4e    85c0
                          {disp32} je        _jmp_addr_0x006cebe3                          // 0x006ceb50    0f848d000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ceb56    a190c9be00
@@ -10931,12 +11115,13 @@ _jmp_addr_0x006cebe3:    pop                esi                                 
                          nop                                                              // 0x006cebed    90
                          nop                                                              // 0x006cebee    90
                          nop                                                              // 0x006cebef    90
+?Save@CollectionData@UR_CreatureSpellItch@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cebf0    56
                          push               edi                                           // 0x006cebf1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cebf2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cebf6    8bf1
                          push               edi                                           // 0x006cebf8    57
-                         call               _jmp_addr_0x006cb370                          // 0x006cebf9    e872c7ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cebf9    e872c7ffff
                          test               eax, eax                                      // 0x006cebfe    85c0
                          {disp8} je         _jmp_addr_0x006cec46                          // 0x006cec00    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cec02    a190c9be00
@@ -10968,12 +11153,13 @@ _jmp_addr_0x006cec46:    pop                edi                                 
                          nop                                                              // 0x006cec4d    90
                          nop                                                              // 0x006cec4e    90
                          nop                                                              // 0x006cec4f    90
+?Save@CollectionData@UR_CreatureSpellFreeze@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cec50    53
                          push               esi                                           // 0x006cec51    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cec52    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cec56    8bd9
                          push               esi                                           // 0x006cec58    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cec59    e812c7ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cec59    e812c7ffff
                          test               eax, eax                                      // 0x006cec5e    85c0
                          {disp32} je        _jmp_addr_0x006ced50                          // 0x006cec60    0f84ea000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cec66    a190c9be00
@@ -11066,12 +11252,13 @@ _jmp_addr_0x006ced50:    pop                esi                                 
                          nop                                                              // 0x006ced5d    90
                          nop                                                              // 0x006ced5e    90
                          nop                                                              // 0x006ced5f    90
+?Save@SpellPointInf@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006ced60    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006ced61    8b742408
                          push               edi                                           // 0x006ced65    57
                          mov.s              edi, ecx                                      // 0x006ced66    8bf9
                          push               esi                                           // 0x006ced68    56
-                         call               _jmp_addr_0x006cb040                          // 0x006ced69    e8d2c2ffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006ced69    e8d2c2ffff
                          test               eax, eax                                      // 0x006ced6e    85c0
                          {disp32} je        _jmp_addr_0x006cee67                          // 0x006ced70    0f84f1000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006ced76    a190c9be00
@@ -11158,12 +11345,13 @@ _jmp_addr_0x006cee67:    pop                edi                                 
                          ret                0x0004                                        // 0x006cee6b    c20400
                          nop                                                              // 0x006cee6e    90
                          nop                                                              // 0x006cee6f    90
+?Save@AtomData@UR_VortexAttract@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cee70    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cee71    8b742408
                          push               edi                                           // 0x006cee75    57
                          mov.s              edi, ecx                                      // 0x006cee76    8bf9
                          push               esi                                           // 0x006cee78    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cee79    e8c2c4ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cee79    e8c2c4ffff
                          test               eax, eax                                      // 0x006cee7e    85c0
                          {disp32} je        _jmp_addr_0x006ceff0                          // 0x006cee80    0f846a010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cee86    a190c9be00
@@ -11295,12 +11483,13 @@ _jmp_addr_0x006ceff0:    pop                edi                                 
                          nop                                                              // 0x006ceffd    90
                          nop                                                              // 0x006ceffe    90
                          nop                                                              // 0x006cefff    90
+?Save@CollectionData@UR_Explosion@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cf000    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cf001    8b742408
                          push               edi                                           // 0x006cf005    57
                          mov.s              edi, ecx                                      // 0x006cf006    8bf9
                          push               esi                                           // 0x006cf008    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cf009    e862c3ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf009    e862c3ffff
                          test               eax, eax                                      // 0x006cf00e    85c0
                          {disp32} je        _jmp_addr_0x006cf241                          // 0x006cf010    0f842b020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cf016    a190c9be00
@@ -11496,12 +11685,13 @@ _jmp_addr_0x006cf241:    pop                edi                                 
                          nop                                                              // 0x006cf24d    90
                          nop                                                              // 0x006cf24e    90
                          nop                                                              // 0x006cf24f    90
+?Save@AtomData@UR_Explosion@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cf250    56
                          push               edi                                           // 0x006cf251    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006cf252    8b7c240c
                          mov.s              esi, ecx                                      // 0x006cf256    8bf1
                          push               edi                                           // 0x006cf258    57
-                         call               _jmp_addr_0x006cb340                          // 0x006cf259    e8e2c0ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf259    e8e2c0ffff
                          test               eax, eax                                      // 0x006cf25e    85c0
                          {disp8} je         _jmp_addr_0x006cf2a6                          // 0x006cf260    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cf262    a190c9be00
@@ -11533,12 +11723,13 @@ _jmp_addr_0x006cf2a6:    pop                edi                                 
                          nop                                                              // 0x006cf2ad    90
                          nop                                                              // 0x006cf2ae    90
                          nop                                                              // 0x006cf2af    90
+?Save@CollectionData@UR_Flocking@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cf2b0    53
                          push               esi                                           // 0x006cf2b1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cf2b2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cf2b6    8bd9
                          push               esi                                           // 0x006cf2b8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cf2b9    e8b2c0ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf2b9    e8b2c0ffff
                          test               eax, eax                                      // 0x006cf2be    85c0
                          {disp32} je        _jmp_addr_0x006cf348                          // 0x006cf2c0    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cf2c6    a190c9be00
@@ -11588,12 +11779,13 @@ _jmp_addr_0x006cf348:    pop                esi                                 
                          pop                ebx                                           // 0x006cf34b    5b
                          ret                0x0004                                        // 0x006cf34c    c20400
                          nop                                                              // 0x006cf34f    90
+?Save@AtomData@UR_SphereSurfaceTracer@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cf350    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cf351    8b742408
                          push               edi                                           // 0x006cf355    57
                          mov.s              edi, ecx                                      // 0x006cf356    8bf9
                          push               esi                                           // 0x006cf358    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cf359    e8e2bfffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf359    e8e2bfffff
                          test               eax, eax                                      // 0x006cf35e    85c0
                          {disp32} je        _jmp_addr_0x006cf455                          // 0x006cf360    0f84ef000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cf366    a190c9be00
@@ -11682,12 +11874,13 @@ _jmp_addr_0x006cf455:    pop                edi                                 
                          nop                                                              // 0x006cf45d    90
                          nop                                                              // 0x006cf45e    90
                          nop                                                              // 0x006cf45f    90
+?Save@AtomData@CheckShieldDeflections@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cf460    53
                          push               esi                                           // 0x006cf461    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cf462    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cf466    8bd9
                          push               esi                                           // 0x006cf468    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cf469    e8d2beffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf469    e8d2beffff
                          test               eax, eax                                      // 0x006cf46e    85c0
                          {disp32} je        _jmp_addr_0x006cf4f8                          // 0x006cf470    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cf476    a190c9be00
@@ -11737,12 +11930,13 @@ _jmp_addr_0x006cf4f8:    pop                esi                                 
                          pop                ebx                                           // 0x006cf4fb    5b
                          ret                0x0004                                        // 0x006cf4fc    c20400
                          nop                                                              // 0x006cf4ff    90
+?Save@AtomData@UR_ForestPath@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cf500    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cf501    8b742408
                          push               edi                                           // 0x006cf505    57
                          mov.s              edi, ecx                                      // 0x006cf506    8bf9
                          push               esi                                           // 0x006cf508    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cf509    e832beffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf509    e832beffff
                          test               eax, eax                                      // 0x006cf50e    85c0
                          {disp32} je        _jmp_addr_0x006cf605                          // 0x006cf510    0f84ef000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cf516    a190c9be00
@@ -11831,12 +12025,13 @@ _jmp_addr_0x006cf605:    pop                edi                                 
                          nop                                                              // 0x006cf60d    90
                          nop                                                              // 0x006cf60e    90
                          nop                                                              // 0x006cf60f    90
+?Save@CollectionData@UR_CloudGather@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cf610    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cf611    8b742408
                          push               edi                                           // 0x006cf615    57
                          mov.s              edi, ecx                                      // 0x006cf616    8bf9
                          push               esi                                           // 0x006cf618    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cf619    e852bdffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf619    e852bdffff
                          test               eax, eax                                      // 0x006cf61e    85c0
                          {disp32} je        _jmp_addr_0x006cf85e                          // 0x006cf620    0f8438020000
                          push               ebx                                           // 0x006cf626    53
@@ -12037,12 +12232,13 @@ _jmp_addr_0x006cf85e:    pop                edi                                 
                          nop                                                              // 0x006cf86d    90
                          nop                                                              // 0x006cf86e    90
                          nop                                                              // 0x006cf86f    90
+?Save@AtomData@UR_CloudGather@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cf870    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cf871    8b742408
                          push               edi                                           // 0x006cf875    57
                          mov.s              edi, ecx                                      // 0x006cf876    8bf9
                          push               esi                                           // 0x006cf878    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cf879    e8c2baffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf879    e8c2baffff
                          test               eax, eax                                      // 0x006cf87e    85c0
                          {disp32} je        _jmp_addr_0x006cf9e9                          // 0x006cf880    0f8463010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cf886    a190c9be00
@@ -12161,12 +12357,13 @@ _jmp_addr_0x006cf9e9:    pop                edi                                 
                          xor.s              eax, eax                                      // 0x006cf9ea    33c0
                          pop                esi                                           // 0x006cf9ec    5e
                          ret                0x0004                                        // 0x006cf9ed    c20400
+?Save@DebrisCollectionData@UR_Tornado@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cf9f0    53
                          push               esi                                           // 0x006cf9f1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cf9f2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cf9f6    8bd9
                          push               esi                                           // 0x006cf9f8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cf9f9    e872b9ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cf9f9    e872b9ffff
                          test               eax, eax                                      // 0x006cf9fe    85c0
                          {disp32} je        _jmp_addr_0x006cfa8a                          // 0x006cfa00    0f8484000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cfa06    a190c9be00
@@ -12230,12 +12427,13 @@ _jmp_addr_0x006cfa8a:    pop                esi                                 
                          nop                                                              // 0x006cfa9d    90
                          nop                                                              // 0x006cfa9e    90
                          nop                                                              // 0x006cfa9f    90
+?Save@FlyingCollectionData@UR_Tornado@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006cfaa0    53
                          push               esi                                           // 0x006cfaa1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006cfaa2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006cfaa6    8bd9
                          push               esi                                           // 0x006cfaa8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cfaa9    e8c2b8ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cfaa9    e8c2b8ffff
                          test               eax, eax                                      // 0x006cfaae    85c0
                          {disp32} je        _jmp_addr_0x006cfb3a                          // 0x006cfab0    0f8484000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cfab6    a190c9be00
@@ -12299,12 +12497,13 @@ _jmp_addr_0x006cfb3a:    pop                esi                                 
                          nop                                                              // 0x006cfb4d    90
                          nop                                                              // 0x006cfb4e    90
                          nop                                                              // 0x006cfb4f    90
+?Save@FlyingAtomData@UR_Tornado@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cfb50    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cfb51    8b742408
                          push               edi                                           // 0x006cfb55    57
                          mov.s              edi, ecx                                      // 0x006cfb56    8bf9
                          push               esi                                           // 0x006cfb58    56
-                         call               _jmp_addr_0x006cb340                          // 0x006cfb59    e8e2b7ffff
+                         call               ?Save@BaseAtomModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cfb59    e8e2b7ffff
                          test               eax, eax                                      // 0x006cfb5e    85c0
                          {disp32} je        _jmp_addr_0x006cfc2a                          // 0x006cfb60    0f84c4000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cfb66    a190c9be00
@@ -12386,12 +12585,13 @@ _jmp_addr_0x006cfc2a:    pop                edi                                 
                          nop                                                              // 0x006cfc3d    90
                          nop                                                              // 0x006cfc3e    90
                          nop                                                              // 0x006cfc3f    90
+?Save@CollectionData@UR_Tornado@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cfc40    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cfc41    8b742408
                          push               edi                                           // 0x006cfc45    57
                          mov.s              edi, ecx                                      // 0x006cfc46    8bf9
                          push               esi                                           // 0x006cfc48    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cfc49    e822b7ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cfc49    e822b7ffff
                          test               eax, eax                                      // 0x006cfc4e    85c0
                          {disp32} je        _jmp_addr_0x006cfed7                          // 0x006cfc50    0f8481020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cfc56    a190c9be00
@@ -12597,12 +12797,13 @@ _jmp_addr_0x006cfed7:    pop                edi                                 
                          ret                0x0004                                        // 0x006cfedb    c20400
                          nop                                                              // 0x006cfede    90
                          nop                                                              // 0x006cfedf    90
+?Save@CollectionData@EmitterRule@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cfee0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cfee1    8b742408
                          push               edi                                           // 0x006cfee5    57
                          mov.s              edi, ecx                                      // 0x006cfee6    8bf9
                          push               esi                                           // 0x006cfee8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cfee9    e882b4ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cfee9    e882b4ffff
                          test               eax, eax                                      // 0x006cfeee    85c0
                          {disp32} je        _jmp_addr_0x006cffb8                          // 0x006cfef0    0f84c2000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cfef6    a190c9be00
@@ -12670,12 +12871,13 @@ _jmp_addr_0x006cffb8:    pop                edi                                 
                          pop                esi                                           // 0x006cffbb    5e
                          ret                0x0004                                        // 0x006cffbc    c20400
                          nop                                                              // 0x006cffbf    90
+?Save@CollectionData@UR_WillowWisp@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006cffc0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006cffc1    8b742408
                          push               edi                                           // 0x006cffc5    57
                          mov.s              edi, ecx                                      // 0x006cffc6    8bf9
                          push               esi                                           // 0x006cffc8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006cffc9    e8a2b3ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006cffc9    e8a2b3ffff
                          test               eax, eax                                      // 0x006cffce    85c0
                          {disp32} je        _jmp_addr_0x006d00c5                          // 0x006cffd0    0f84ef000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006cffd6    a190c9be00
@@ -12764,12 +12966,13 @@ _jmp_addr_0x006d00c5:    pop                edi                                 
                          nop                                                              // 0x006d00cd    90
                          nop                                                              // 0x006d00ce    90
                          nop                                                              // 0x006d00cf    90
+?Save@CollectionData@ER_BurstFromParentAtom@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d00d0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006d00d1    8b742408
                          push               edi                                           // 0x006d00d5    57
                          mov.s              edi, ecx                                      // 0x006d00d6    8bf9
                          push               esi                                           // 0x006d00d8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006d00d9    e892b2ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006d00d9    e892b2ffff
                          test               eax, eax                                      // 0x006d00de    85c0
                          {disp32} je        _jmp_addr_0x006d01a8                          // 0x006d00e0    0f84c2000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006d00e6    a190c9be00
@@ -12837,12 +13040,13 @@ _jmp_addr_0x006d01a8:    pop                edi                                 
                          pop                esi                                           // 0x006d01ab    5e
                          ret                0x0004                                        // 0x006d01ac    c20400
                          nop                                                              // 0x006d01af    90
+?Save@CollectionData@ER_EmitFromParentAtom@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d01b0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006d01b1    8b742408
                          push               edi                                           // 0x006d01b5    57
                          mov.s              edi, ecx                                      // 0x006d01b6    8bf9
                          push               esi                                           // 0x006d01b8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006d01b9    e8b2b1ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006d01b9    e8b2b1ffff
                          test               eax, eax                                      // 0x006d01be    85c0
                          {disp32} je        _jmp_addr_0x006d0288                          // 0x006d01c0    0f84c2000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006d01c6    a190c9be00
@@ -12910,12 +13114,13 @@ _jmp_addr_0x006d0288:    pop                edi                                 
                          pop                esi                                           // 0x006d028b    5e
                          ret                0x0004                                        // 0x006d028c    c20400
                          nop                                                              // 0x006d028f    90
+?Save@CollectionData@UR_FollowTargets@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d0290    56
                          push               edi                                           // 0x006d0291    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006d0292    8b7c240c
                          mov.s              esi, ecx                                      // 0x006d0296    8bf1
                          push               edi                                           // 0x006d0298    57
-                         call               _jmp_addr_0x006cb370                          // 0x006d0299    e8d2b0ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006d0299    e8d2b0ffff
                          test               eax, eax                                      // 0x006d029e    85c0
                          {disp8} je         _jmp_addr_0x006d02e6                          // 0x006d02a0    7444
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006d02a2    a190c9be00
@@ -12947,13 +13152,14 @@ _jmp_addr_0x006d02e6:    pop                edi                                 
                          nop                                                              // 0x006d02ed    90
                          nop                                                              // 0x006d02ee    90
                          nop                                                              // 0x006d02ef    90
+?Save@CollectionData@UR_Trail@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                           // 0x006d02f0    51
                          push               esi                                           // 0x006d02f1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006d02f2    8b74240c
                          push               edi                                           // 0x006d02f6    57
                          mov.s              edi, ecx                                      // 0x006d02f7    8bf9
                          push               esi                                           // 0x006d02f9    56
-                         call               _jmp_addr_0x006cb370                          // 0x006d02fa    e871b0ffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006d02fa    e871b0ffff
                          test               eax, eax                                      // 0x006d02ff    85c0
                          {disp32} je        _jmp_addr_0x006d0420                          // 0x006d0301    0f8419010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006d0307    a190c9be00
@@ -13056,12 +13262,13 @@ _jmp_addr_0x006d0420:    pop                edi                                 
                          nop                                                              // 0x006d042d    90
                          nop                                                              // 0x006d042e    90
                          nop                                                              // 0x006d042f    90
+?Save@CollectionData@LightningForkFlicker@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d0430    56
                          push               edi                                           // 0x006d0431    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006d0432    8b7c240c
                          mov.s              esi, ecx                                      // 0x006d0436    8bf1
                          push               edi                                           // 0x006d0438    57
-                         call               _jmp_addr_0x006cb370                          // 0x006d0439    e832afffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006d0439    e832afffff
                          test               eax, eax                                      // 0x006d043e    85c0
                          {disp8} je         _jmp_addr_0x006d0488                          // 0x006d0440    7446
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006d0442    a190c9be00
@@ -13091,12 +13298,13 @@ _jmp_addr_0x006d0488:    pop                edi                                 
                          pop                esi                                           // 0x006d048b    5e
                          ret                0x0004                                        // 0x006d048c    c20400
                          nop                                                              // 0x006d048f    90
+?Save@CollectionData@EmitterRuleLightningSprite@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d0490    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006d0491    8b742408
                          push               edi                                           // 0x006d0495    57
                          mov.s              edi, ecx                                      // 0x006d0496    8bf9
                          push               esi                                           // 0x006d0498    56
-                         call               _jmp_addr_0x006cb370                          // 0x006d0499    e8d2aeffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006d0499    e8d2aeffff
                          test               eax, eax                                      // 0x006d049e    85c0
                          {disp32} je        _jmp_addr_0x006d05cd                          // 0x006d04a0    0f8427010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006d04a6    a190c9be00
@@ -13210,12 +13418,13 @@ _jmp_addr_0x006d05cd:    pop                edi                                 
                          nop                                                              // 0x006d05dd    90
                          nop                                                              // 0x006d05de    90
                          nop                                                              // 0x006d05df    90
+?Save@CollectionData@UR_HandSprinkle@@UAEIAAVGameOSFile@@@Z:
                          push               ebx                                           // 0x006d05e0    53
                          push               esi                                           // 0x006d05e1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x006d05e2    8b74240c
                          mov.s              ebx, ecx                                      // 0x006d05e6    8bd9
                          push               esi                                           // 0x006d05e8    56
-                         call               _jmp_addr_0x006cb370                          // 0x006d05e9    e882adffff
+                         call               ?Save@BaseCollectionModifierData@@UAEIAAVGameOSFile@@@Z                          // 0x006d05e9    e882adffff
                          test               eax, eax                                      // 0x006d05ee    85c0
                          {disp32} je        _jmp_addr_0x006d0678                          // 0x006d05f0    0f8482000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x006d05f6    a190c9be00
@@ -13265,12 +13474,13 @@ _jmp_addr_0x006d0678:    pop                esi                                 
                          pop                ebx                                           // 0x006d067b    5b
                          ret                0x0004                                        // 0x006d067c    c20400
                          nop                                                              // 0x006d067f    90
-_jmp_addr_0x006d0680:    push               esi                                           // 0x006d0680    56
+?Save@DefensiveShield@@UAEIAAVGameOSFile@@@Z:
+                         push               esi                                           // 0x006d0680    56
                          push               edi                                           // 0x006d0681    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006d0682    8b7c240c
                          mov.s              esi, ecx                                      // 0x006d0686    8bf1
                          push               edi                                           // 0x006d0688    57
-                         call               _jmp_addr_0x006cb040                          // 0x006d0689    e8b2a9ffff
+                         call               ?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z                          // 0x006d0689    e8b2a9ffff
                          test               eax, eax                                      // 0x006d068e    85c0
                          {disp8} je         _jmp_addr_0x006d06a7                          // 0x006d0690    7415
                          add                esi, 0x1c                                     // 0x006d0692    83c61c
@@ -13287,12 +13497,13 @@ _jmp_addr_0x006d06a7:    pop                edi                                 
                          ret                0x0004                                        // 0x006d06ab    c20400
                          nop                                                              // 0x006d06ae    90
                          nop                                                              // 0x006d06af    90
+?Save@DefensiveSphere@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d06b0    56
                          push               edi                                           // 0x006d06b1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x006d06b2    8b7c240c
                          mov.s              esi, ecx                                      // 0x006d06b6    8bf1
                          push               edi                                           // 0x006d06b8    57
-                         call               _jmp_addr_0x006d0680                          // 0x006d06b9    e8c2ffffff
+                         call               ?Save@DefensiveShield@@UAEIAAVGameOSFile@@@Z  // 0x006d06b9    e8c2ffffff
                          test               eax, eax                                      // 0x006d06be    85c0
                          {disp8} je         _jmp_addr_0x006d06d7                          // 0x006d06c0    7415
                          add                esi, 0x20                                     // 0x006d06c2    83c620
@@ -13707,6 +13918,7 @@ _jmp_addr_0x006d0a95:    {disp32} inc       dword ptr [data_bytes + 0x388e4c]   
                          nop                                                              // 0x006d0aad    90
                          nop                                                              // 0x006d0aae    90
                          nop                                                              // 0x006d0aaf    90
+?GetSaveType@DefensiveShield@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x006d0ab0    33c0
                          ret                                                              // 0x006d0ab2    c3
                          nop                                                              // 0x006d0ab3    90
@@ -13722,6 +13934,7 @@ _jmp_addr_0x006d0a95:    {disp32} inc       dword ptr [data_bytes + 0x388e4c]   
                          nop                                                              // 0x006d0abd    90
                          nop                                                              // 0x006d0abe    90
                          nop                                                              // 0x006d0abf    90
+?GetDebugText@DefensiveShield@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006d0ac0    b8a8ea9c00
                          ret                                                              // 0x006d0ac5    c3
                          nop                                                              // 0x006d0ac6    90
@@ -13734,6 +13947,7 @@ _jmp_addr_0x006d0a95:    {disp32} inc       dword ptr [data_bytes + 0x388e4c]   
                          nop                                                              // 0x006d0acd    90
                          nop                                                              // 0x006d0ace    90
                          nop                                                              // 0x006d0acf    90
+??_GDefensiveShield@@UAEPAXI@Z:
                          push               esi                                           // 0x006d0ad0    56
                          mov.s              esi, ecx                                      // 0x006d0ad1    8bf1
                          call               _jmp_addr_0x006759c0                          // 0x006d0ad3    e8e84efaff
@@ -13996,6 +14210,7 @@ _jmp_addr_0x006d0cb0:    push               esi                                 
                          nop                                                              // 0x006d0cdd    90
                          nop                                                              // 0x006d0cde    90
                          nop                                                              // 0x006d0cdf    90
+?GetSaveType@DefensiveSphere@@UAEIXZ:
                          mov                eax, 0x000000b7                               // 0x006d0ce0    b8b7000000
                          ret                                                              // 0x006d0ce5    c3
                          nop                                                              // 0x006d0ce6    90
@@ -14008,6 +14223,7 @@ _jmp_addr_0x006d0cb0:    push               esi                                 
                          nop                                                              // 0x006d0ced    90
                          nop                                                              // 0x006d0cee    90
                          nop                                                              // 0x006d0cef    90
+?GetDebugText@DefensiveSphere@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x006d0cf0    b8a8ea9c00
                          ret                                                              // 0x006d0cf5    c3
                          nop                                                              // 0x006d0cf6    90
@@ -14020,6 +14236,7 @@ _jmp_addr_0x006d0cb0:    push               esi                                 
                          nop                                                              // 0x006d0cfd    90
                          nop                                                              // 0x006d0cfe    90
                          nop                                                              // 0x006d0cff    90
+??_GDefensiveSphere@@UAEPAXI@Z:
                          push               esi                                           // 0x006d0d00    56
                          mov.s              esi, ecx                                      // 0x006d0d01    8bf1
                          call               _jmp_addr_0x006759c0                          // 0x006d0d03    e8b84cfaff
@@ -14275,6 +14492,7 @@ _jmp_addr_0x006d0ee0:    push               esi                                 
                          nop                                                              // 0x006d0f2d    90
                          nop                                                              // 0x006d0f2e    90
                          nop                                                              // 0x006d0f2f    90
+?GetSaveType@PSysSound@@UAEIXZ:
                          mov                eax, 0x00000016                               // 0x006d0f30    b816000000
                          ret                                                              // 0x006d0f35    c3
                          nop                                                              // 0x006d0f36    90
@@ -14287,6 +14505,7 @@ _jmp_addr_0x006d0ee0:    push               esi                                 
                          nop                                                              // 0x006d0f3d    90
                          nop                                                              // 0x006d0f3e    90
                          nop                                                              // 0x006d0f3f    90
+?GetDebugText@PSysSound@@UAEPADXZ:
                          mov                eax, 0x00c09778                               // 0x006d0f40    b87897c000
                          ret                                                              // 0x006d0f45    c3
                          nop                                                              // 0x006d0f46    90
@@ -14299,6 +14518,7 @@ _jmp_addr_0x006d0ee0:    push               esi                                 
                          nop                                                              // 0x006d0f4d    90
                          nop                                                              // 0x006d0f4e    90
                          nop                                                              // 0x006d0f4f    90
+??_GPSysSound@@UAEPAXI@Z:
                          push               esi                                           // 0x006d0f50    56
                          mov.s              esi, ecx                                      // 0x006d0f51    8bf1
                          call               _jmp_addr_0x006d0fc0                          // 0x006d0f53    e868000000
@@ -14376,6 +14596,7 @@ _jmp_addr_0x006d0fc0:    push               esi                                 
                          nop                                                              // 0x006d0ffd    90
                          nop                                                              // 0x006d0ffe    90
                          nop                                                              // 0x006d0fff    90
+?Get3DSoundPos@PSysSound@@UAEHPAULHPoint@@@Z:
                          {disp8} mov        eax, dword ptr [ecx + 0x38]                   // 0x006d1000    8b4138
                          sub                esp, 0x0c                                     // 0x006d1003    83ec0c
                          test               eax, eax                                      // 0x006d1006    85c0
@@ -14731,6 +14952,7 @@ _jmp_addr_0x006d138f:    pop                edi                                 
                          nop                                                              // 0x006d139d    90
                          nop                                                              // 0x006d139e    90
                          nop                                                              // 0x006d139f    90
+?Load@PSysSound@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d13a0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006d13a1    8b742408
                          push               edi                                           // 0x006d13a5    57
@@ -14818,6 +15040,7 @@ _jmp_addr_0x006d1491:    pop                edi                                 
                          nop                                                              // 0x006d149d    90
                          nop                                                              // 0x006d149e    90
                          nop                                                              // 0x006d149f    90
+?Save@PSysSound@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006d14a0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006d14a1    8b742408
                          push               edi                                           // 0x006d14a5    57
@@ -20617,6 +20840,7 @@ _jmp_addr_0x006d5f70:    push               esi                                 
                          nop                                                              // 0x006d5f9d    90
                          nop                                                              // 0x006d5f9e    90
                          nop                                                              // 0x006d5f9f    90
+??_GCollectionData@UR_StormCast@@UAEPAXI@Z:
                          push               esi                                           // 0x006d5fa0    56
                          mov.s              esi, ecx                                      // 0x006d5fa1    8bf1
                          mov                dword ptr [esi], 0x008fb3ec                   // 0x006d5fa3    c706ecb38f00
@@ -20640,6 +20864,7 @@ _jmp_addr_0x006d5fc0:    mov.s              eax, esi                            
                          nop                                                              // 0x006d5fcd    90
                          nop                                                              // 0x006d5fce    90
                          nop                                                              // 0x006d5fcf    90
+??_GAtomData@UR_StormCast@@UAEPAXI@Z:
                          push               esi                                           // 0x006d5fd0    56
                          mov.s              esi, ecx                                      // 0x006d5fd1    8bf1
                          mov                dword ptr [esi], 0x008fb2ec                   // 0x006d5fd3    c706ecb28f00

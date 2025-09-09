@@ -11,11 +11,17 @@
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x0054ae20
 
+.globl ?Destroy@SkipBox@@UAEXXZ
+.globl ?InitControls@SkipBox@@UAEXXZ
+
+
 start_0x00544430_0x005445b0:
 // Snippet: asm, [0x00544430, 0x0054459d)
+?Destroy@SkipBox@@UAEXXZ:
                          call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544430    e85bf1fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab80], 0x00000000 // 0x00544435    c705800bcd0000000000
                          ret                                                            // 0x0054443f    c3
+?InitControls@SkipBox@@UAEXXZ:
                          push             esi                                           // 0x00544440    56
                          mov.s            esi, ecx                                      // 0x00544441    8bf1
                          {disp8} mov      eax, dword ptr [esi + 0x20]                   // 0x00544443    8b4620

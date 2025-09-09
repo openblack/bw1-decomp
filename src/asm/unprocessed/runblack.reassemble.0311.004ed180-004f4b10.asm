@@ -70,9 +70,9 @@
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x005dc130
 .extern _jmp_addr_0x005ecc20
-.extern _jmp_addr_0x005f1630
-.extern _jmp_addr_0x005f1b10
-.extern _jmp_addr_0x005f1c00
+.extern ?FleeFromSpellPriority@Living@@UAEEPAVReaction@@0@Z
+.extern ?NumGameTurnsToReactToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
+.extern ?NumGameTurnsBeforeReactingAgainToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .extern _jmp_addr_0x005fc590
 .extern _jmp_addr_0x005fc6a0
 .extern @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16
@@ -96,7 +96,7 @@
 .extern _GameRand__5GRandFl
 .extern _GameFloatRand__5GRandFf
 .extern _jmp_addr_0x006de570
-.extern _jmp_addr_0x006e4590
+.extern ?StartReacting@Living@@UAEXW4REACTION@@PAVGameThingWithPos@@PAVReaction@@@Z
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
 .extern _jmp_addr_0x007218f0
@@ -229,6 +229,57 @@
 .globl _globl_ct_0x004f3c80
 .globl _globl_ct_0x004f3ca0
 .globl _globl_ct_0x004f3cd0
+.globl ?GetBaseInfo@GCreaturePenInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGCreaturePenInfo@@UAEPAXI@Z
+.globl ??_GCreaturePen@@UAEPAXI@Z
+.globl ?ConvertToPlanned@CreaturePen@@UAEPAVPlannedMultiMapFixed@@XZ
+.globl ?GetText@PlannedCreaturePen@@UAEPBDXZ
+.globl ??_GPlannedCreaturePen@@UAEPAXI@Z
+.globl ?SaveObject@CreaturePen@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
+.globl ??_GCreatureDamageMap@@UAEPAXI@Z
+.globl ??_GCreaturePhysical@@UAEPAXI@Z
+.globl ?DecideWhatToDo@Creature@@UAE_NXZ
+.globl ??_GCreaturePreviousActions@@UAEPAXI@Z
+.globl ?AddReaction@Creature@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z
+.globl ?StartReacting@Creature@@UAEXW4REACTION@@PAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?UpdateHowImpressed@Creature@@UAEXPAVReaction@@H@Z
+.globl ?IsAvailableForReaction@Creature@@UAE_NW4REACTION@@@Z
+.globl ?StandardNumGameTurnsToReactFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z
+.globl ?StandardNumGameTurnsBeforeReactingAgainFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z
+.globl ?NumGameTurnsToReactToCreatureFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z
+.globl ?NumGameTurnsBeforeReactingAgainToCreatureFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z
+.globl ?FleeFromSpellPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupFleeFromObject@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?SetupLookAtNiceSpell@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?SetupReactToHandPuttingStuffInStoragePit@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToHandPuttingStuffInStoragePitPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?ReactToCreaturePriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToCreature@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToFoodPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToFood@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToMagicTreePriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToMagicTree@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToBallPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToBall@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToFirePriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToFire@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?SetupReactToMagicShield@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToFlyingObjectPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToFlyingObject@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToHandPickUpPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToHandPickUp@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToHandUsingTotemPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToHandUsingTotem@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToObjectCrushedPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToObjectCrushed@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToFightPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToFight@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToTeleportPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToTeleport@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?ReactToDeathPriority@Creature@@UAEEPAVReaction@@0@Z
+.globl ?SetupReactToDeath@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?SetupReactToFainting@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
+.globl ?SetupReactToConfused@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 
 start_0x004ed180_0x004f4b10:
 // Snippet: asm, [0x004ed180, 0x004f4af9)
@@ -2284,6 +2335,7 @@ _jmp_addr_0x004eed9c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                                     // 0x004eedbd    90
                          nop                                                                     // 0x004eedbe    90
                          nop                                                                     // 0x004eedbf    90
+?GetBaseInfo@GCreaturePenInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004eedc0    8b442404
                          mov                dword ptr [eax], 0x00000005                          // 0x004eedc4    c70005000000
                          mov                eax, 0x00cad428                                      // 0x004eedca    b828d4ca00
@@ -2341,6 +2393,7 @@ _jmp_addr_0x004eee22:    ret                                                    
                          nop                                                                     // 0x004eee2d    90
                          nop                                                                     // 0x004eee2e    90
                          nop                                                                     // 0x004eee2f    90
+??_GGCreaturePenInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x004eee30    56
                          mov.s              esi, ecx                                             // 0x004eee31    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004eee33    e8287bf4ff
@@ -2409,6 +2462,7 @@ _jmp_addr_0x004eee60:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          nop                                                                     // 0x004eeecd    90
                          nop                                                                     // 0x004eeece    90
                          nop                                                                     // 0x004eeecf    90
+??_GCreaturePen@@UAEPAXI@Z:
                          push               esi                                                  // 0x004eeed0    56
                          mov.s              esi, ecx                                             // 0x004eeed1    8bf1
                          call               _jmp_addr_0x004eef00                                 // 0x004eeed3    e828000000
@@ -2504,6 +2558,7 @@ _jmp_addr_0x004eefba:    pop                edi                                 
                          pop                esi                                                  // 0x004eefbd    5e
                          ret                                                                     // 0x004eefbe    c3
                          nop                                                                     // 0x004eefbf    90
+?ConvertToPlanned@CreaturePen@@UAEPAVPlannedMultiMapFixed@@XZ:
                          sub                esp, 0x08                                            // 0x004eefc0    83ec08
                          push               esi                                                  // 0x004eefc3    56
                          push               edi                                                  // 0x004eefc4    57
@@ -2558,6 +2613,7 @@ _jmp_addr_0x004ef035:    pop                edi                                 
                          nop                                                                     // 0x004ef03d    90
                          nop                                                                     // 0x004ef03e    90
                          nop                                                                     // 0x004ef03f    90
+?GetText@PlannedCreaturePen@@UAEPBDXZ:
                          mov                eax, 0x00be01b8                                      // 0x004ef040    b8b801be00
                          ret                                                                     // 0x004ef045    c3
                          nop                                                                     // 0x004ef046    90
@@ -2570,6 +2626,7 @@ _jmp_addr_0x004ef035:    pop                edi                                 
                          nop                                                                     // 0x004ef04d    90
                          nop                                                                     // 0x004ef04e    90
                          nop                                                                     // 0x004ef04f    90
+??_GPlannedCreaturePen@@UAEPAXI@Z:
                          push               esi                                                  // 0x004ef050    56
                          mov.s              esi, ecx                                             // 0x004ef051    8bf1
                          call               _jmp_addr_0x0056fa80                                 // 0x004ef053    e8280a0800
@@ -2648,6 +2705,7 @@ _jmp_addr_0x004ef0f4:    pop                edi                                 
                          nop                                                                     // 0x004ef0fd    90
                          nop                                                                     // 0x004ef0fe    90
                          nop                                                                     // 0x004ef0ff    90
+?SaveObject@CreaturePen@@UAEIAAULHOSFile@@ABUMapCoords@@@Z:
                          sub                esp, 0x00000148                                      // 0x004ef100    81ec48010000
                          push               ebp                                                  // 0x004ef106    55
                          push               esi                                                  // 0x004ef107    56
@@ -2969,6 +3027,7 @@ _jmp_addr_0x004ef35c:    {disp32} mov       edi, dword ptr [esp + 0x00000128]   
                          nop                                                                     // 0x004ef49d    90
                          nop                                                                     // 0x004ef49e    90
                          nop                                                                     // 0x004ef49f    90
+??_GCreatureDamageMap@@UAEPAXI@Z:
                          push               esi                                                  // 0x004ef4a0    56
                          mov.s              esi, ecx                                             // 0x004ef4a1    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004ef4a3    e8b874f4ff
@@ -2981,6 +3040,7 @@ _jmp_addr_0x004ef35c:    {disp32} mov       edi, dword ptr [esp + 0x00000128]   
 _jmp_addr_0x004ef4ba:    mov.s              eax, esi                                             // 0x004ef4ba    8bc6
                          pop                esi                                                  // 0x004ef4bc    5e
                          ret                0x0004                                               // 0x004ef4bd    c20400
+??_GCreaturePhysical@@UAEPAXI@Z:
                          push               esi                                                  // 0x004ef4c0    56
                          mov.s              esi, ecx                                             // 0x004ef4c1    8bf1
                          {disp8} lea        ecx, dword ptr [esi + 0x5c]                          // 0x004ef4c3    8d4e5c
@@ -4422,6 +4482,7 @@ _jmp_addr_0x004f0552:    pop                edi                                 
                          nop                                                                     // 0x004f055d    90
                          nop                                                                     // 0x004f055e    90
                          nop                                                                     // 0x004f055f    90
+?DecideWhatToDo@Creature@@UAE_NXZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x21a26c]               // 0x004f0560    a16c02be00
                          push               esi                                                  // 0x004f0565    56
                          push               edi                                                  // 0x004f0566    57
@@ -6878,6 +6939,7 @@ _jmp_addr_0x004f202b:    mov                dword ptr [esi], eax                
                          nop                                                                     // 0x004f203d    90
                          nop                                                                     // 0x004f203e    90
                          nop                                                                     // 0x004f203f    90
+??_GCreaturePreviousActions@@UAEPAXI@Z:
                          push               esi                                                  // 0x004f2040    56
                          mov.s              esi, ecx                                             // 0x004f2041    8bf1
                          call               _jmp_addr_0x00436960                                 // 0x004f2043    e81849f4ff
@@ -7579,6 +7641,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       _jmp_addr_0x004f2670                
 _jmp_addr_0x004f2670:    {disp32} mov       dword ptr [data_bytes + 0x2e7aac], 0xffffffff        // 0x004f2670    c705acdaca00ffffffff
                          ret                                                                     // 0x004f267a    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f267b    e8f9f1f0ff
+?AddReaction@Creature@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z:
                          push               esi                                                  // 0x004f2680    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                          // 0x004f2681    8b742408
                          push               edi                                                  // 0x004f2685    57
@@ -7618,6 +7681,7 @@ _jmp_addr_0x004f26a8:    {disp8} mov        dword ptr [esi + 0x18], eax         
                          nop                                                                     // 0x004f26cd    90
                          nop                                                                     // 0x004f26ce    90
                          nop                                                                     // 0x004f26cf    90
+?StartReacting@Creature@@UAEXW4REACTION@@PAVGameThingWithPos@@PAVReaction@@@Z:
                          {disp32} mov       eax, dword ptr [ecx + 0x00000164]                    // 0x004f26d0    8b8164010000
                          {disp32} mov       edx, dword ptr [eax + 0x00000f4c]                    // 0x004f26d6    8b904c0f0000
                          {disp32} mov       dword ptr [eax + 0x00000f7c], edx                    // 0x004f26dc    89907c0f0000
@@ -7647,7 +7711,7 @@ _jmp_addr_0x004f26a8:    {disp8} mov        dword ptr [esi + 0x18], eax         
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x004f2763    8b442408
                          push               edx                                                  // 0x004f2767    52
                          push               eax                                                  // 0x004f2768    50
-                         call               _jmp_addr_0x006e4590                                 // 0x004f2769    e8221e1f00
+                         call               ?StartReacting@Living@@UAEXW4REACTION@@PAVGameThingWithPos@@PAVReaction@@@Z                                 // 0x004f2769    e8221e1f00
                          ret                0x000c                                               // 0x004f276e    c20c00
                          nop                                                                     // 0x004f2771    90
                          nop                                                                     // 0x004f2772    90
@@ -7664,6 +7728,7 @@ _jmp_addr_0x004f26a8:    {disp8} mov        dword ptr [esi + 0x18], eax         
                          nop                                                                     // 0x004f277d    90
                          nop                                                                     // 0x004f277e    90
                          nop                                                                     // 0x004f277f    90
+?UpdateHowImpressed@Creature@@UAEXPAVReaction@@H@Z:
                          push               esi                                                  // 0x004f2780    56
                          push               edi                                                  // 0x004f2781    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f2782    8b7c240c
@@ -7730,6 +7795,7 @@ _jmp_addr_0x004f280c:    pop                edi                                 
                          nop                                                                     // 0x004f281d    90
                          nop                                                                     // 0x004f281e    90
                          nop                                                                     // 0x004f281f    90
+?IsAvailableForReaction@Creature@@UAE_NW4REACTION@@@Z:
                          push               esi                                                  // 0x004f2820    56
                          mov.s              esi, ecx                                             // 0x004f2821    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x004f2823    8b06
@@ -7864,6 +7930,7 @@ _jmp_addr_0x004f29ac:    xor.s              eax, eax                            
                          nop                                                                     // 0x004f29bd    90
                          nop                                                                     // 0x004f29be    90
                          nop                                                                     // 0x004f29bf    90
+?StandardNumGameTurnsToReactFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z:
                          sub                esp, 0x08                                            // 0x004f29c0    83ec08
                          {disp8} mov        eax, dword ptr [esp + 0x10]                          // 0x004f29c3    8b442410
                          lea                eax, dword ptr [eax + eax * 0x4]                     // 0x004f29c7    8d0480
@@ -7898,6 +7965,7 @@ _jmp_addr_0x004f29ac:    xor.s              eax, eax                            
                          nop                                                                     // 0x004f2a1d    90
                          nop                                                                     // 0x004f2a1e    90
                          nop                                                                     // 0x004f2a1f    90
+?StandardNumGameTurnsBeforeReactingAgainFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z:
                          sub                esp, 0x08                                            // 0x004f2a20    83ec08
                          {disp8} mov        eax, dword ptr [esp + 0x10]                          // 0x004f2a23    8b442410
                          lea                eax, dword ptr [eax + eax * 0x4]                     // 0x004f2a27    8d0480
@@ -7919,13 +7987,14 @@ _jmp_addr_0x004f29ac:    xor.s              eax, eax                            
                          add                esp, 0x08                                            // 0x004f2a69    83c408
                          ret                0x000c                                               // 0x004f2a6c    c20c00
                          nop                                                                     // 0x004f2a6f    90
+?NumGameTurnsToReactToCreatureFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                          // 0x004f2a70    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x004f2a74    8b542408
                          push               eax                                                  // 0x004f2a78    50
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x004f2a79    8b442408
                          push               edx                                                  // 0x004f2a7d    52
                          push               eax                                                  // 0x004f2a7e    50
-                         call               _jmp_addr_0x005f1b10                                 // 0x004f2a7f    e88cf00f00
+                         call               ?NumGameTurnsToReactToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z                                 // 0x004f2a7f    e88cf00f00
                          ret                0x000c                                               // 0x004f2a84    c20c00
                          nop                                                                     // 0x004f2a87    90
                          nop                                                                     // 0x004f2a88    90
@@ -7936,13 +8005,14 @@ _jmp_addr_0x004f29ac:    xor.s              eax, eax                            
                          nop                                                                     // 0x004f2a8d    90
                          nop                                                                     // 0x004f2a8e    90
                          nop                                                                     // 0x004f2a8f    90
+?NumGameTurnsBeforeReactingAgainToCreatureFunction@Creature@@UAEIPAVGameThingWithPos@@IM@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                          // 0x004f2a90    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x004f2a94    8b542408
                          push               eax                                                  // 0x004f2a98    50
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x004f2a99    8b442408
                          push               edx                                                  // 0x004f2a9d    52
                          push               eax                                                  // 0x004f2a9e    50
-                         call               _jmp_addr_0x005f1c00                                 // 0x004f2a9f    e85cf10f00
+                         call               ?NumGameTurnsBeforeReactingAgainToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z                                 // 0x004f2a9f    e85cf10f00
                          ret                0x000c                                               // 0x004f2aa4    c20c00
                          nop                                                                     // 0x004f2aa7    90
                          nop                                                                     // 0x004f2aa8    90
@@ -7953,6 +8023,7 @@ _jmp_addr_0x004f29ac:    xor.s              eax, eax                            
                          nop                                                                     // 0x004f2aad    90
                          nop                                                                     // 0x004f2aae    90
                          nop                                                                     // 0x004f2aaf    90
+?FleeFromSpellPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f2ab0    56
                          push               edi                                                  // 0x004f2ab1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f2ab2    8b7c240c
@@ -7976,7 +8047,7 @@ _jmp_addr_0x004f29ac:    xor.s              eax, eax                            
 _jmp_addr_0x004f2ae5:    push               0x0                                                  // 0x004f2ae5    6a00
                          push               edi                                                  // 0x004f2ae7    57
                          mov.s              ecx, esi                                             // 0x004f2ae8    8bce
-                         call               _jmp_addr_0x005f1630                                 // 0x004f2aea    e841eb0f00
+                         call               ?FleeFromSpellPriority@Living@@UAEEPAVReaction@@0@Z  // 0x004f2aea    e841eb0f00
                          pop                edi                                                  // 0x004f2aef    5f
                          pop                esi                                                  // 0x004f2af0    5e
                          ret                0x0008                                               // 0x004f2af1    c20800
@@ -7992,6 +8063,7 @@ _jmp_addr_0x004f2ae5:    push               0x0                                 
                          nop                                                                     // 0x004f2afd    90
                          nop                                                                     // 0x004f2afe    90
                          nop                                                                     // 0x004f2aff    90
+?SetupFleeFromObject@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f2b00    56
                          push               edi                                                  // 0x004f2b01    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f2b02    8b7c240c
@@ -8021,6 +8093,7 @@ _jmp_addr_0x004f2ae5:    push               0x0                                 
                          nop                                                                     // 0x004f2b3d    90
                          nop                                                                     // 0x004f2b3e    90
                          nop                                                                     // 0x004f2b3f    90
+?SetupLookAtNiceSpell@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f2b40    56
                          push               edi                                                  // 0x004f2b41    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f2b42    8b7c240c
@@ -8050,6 +8123,7 @@ _jmp_addr_0x004f2ae5:    push               0x0                                 
                          nop                                                                     // 0x004f2b7d    90
                          nop                                                                     // 0x004f2b7e    90
                          nop                                                                     // 0x004f2b7f    90
+?SetupReactToHandPuttingStuffInStoragePit@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f2b80    56
                          push               edi                                                  // 0x004f2b81    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f2b82    8b7c240c
@@ -8076,6 +8150,7 @@ _jmp_addr_0x004f2ae5:    push               0x0                                 
                          nop                                                                     // 0x004f2bbd    90
                          nop                                                                     // 0x004f2bbe    90
                          nop                                                                     // 0x004f2bbf    90
+?ReactToHandPuttingStuffInStoragePitPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f2bc0    56
                          mov.s              esi, ecx                                             // 0x004f2bc1    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x004f2bc3    8b06
@@ -8094,6 +8169,7 @@ _jmp_addr_0x004f2be5:    xor.s              al, al                              
                          pop                esi                                                  // 0x004f2be7    5e
                          ret                0x0008                                               // 0x004f2be8    c20800
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2beb    e889ecf0ff
+?ReactToCreaturePriority@Creature@@UAEEPAVReaction@@0@Z:
                          sub                esp, 0x08                                            // 0x004f2bf0    83ec08
                          mov.s              eax, ecx                                             // 0x004f2bf3    8bc1
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                          // 0x004f2bf5    8b4c240c
@@ -8167,6 +8243,7 @@ _jmp_addr_0x004f2cd2:    pop                edi                                 
                          nop                                                                     // 0x004f2cdd    90
                          nop                                                                     // 0x004f2cde    90
                          nop                                                                     // 0x004f2cdf    90
+?SetupReactToCreature@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f2ce0    8b442404
                          push               ebx                                                  // 0x004f2ce4    53
                          push               esi                                                  // 0x004f2ce5    56
@@ -8235,6 +8312,7 @@ _jmp_addr_0x004f2d6e:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          nop                                                                     // 0x004f2d8d    90
                          nop                                                                     // 0x004f2d8e    90
                          nop                                                                     // 0x004f2d8f    90
+?ReactToFoodPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f2d90    56
                          mov.s              esi, ecx                                             // 0x004f2d91    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x004f2d93    8b06
@@ -8273,6 +8351,7 @@ _jmp_addr_0x004f2dce:    xor.s              al, al                              
                          nop                                                                     // 0x004f2ddd    90
                          nop                                                                     // 0x004f2dde    90
                          nop                                                                     // 0x004f2ddf    90
+?SetupReactToFood@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f2de0    56
                          push               edi                                                  // 0x004f2de1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f2de2    8b7c240c
@@ -8306,6 +8385,7 @@ _jmp_addr_0x004f2dce:    xor.s              al, al                              
                          nop                                                                     // 0x004f2e1d    90
                          nop                                                                     // 0x004f2e1e    90
                          nop                                                                     // 0x004f2e1f    90
+?ReactToMagicTreePriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f2e20    56
                          mov.s              esi, ecx                                             // 0x004f2e21    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x004f2e23    8b06
@@ -8324,6 +8404,7 @@ _jmp_addr_0x004f2e45:    xor.s              al, al                              
                          pop                esi                                                  // 0x004f2e47    5e
                          ret                0x0008                                               // 0x004f2e48    c20800
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2e4b    e829eaf0ff
+?SetupReactToMagicTree@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f2e50    8b442404
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x004f2e54    8b542408
                          push               eax                                                  // 0x004f2e58    50
@@ -8343,6 +8424,7 @@ _jmp_addr_0x004f2e45:    xor.s              al, al                              
                          nop                                                                     // 0x004f2e6d    90
                          nop                                                                     // 0x004f2e6e    90
                          nop                                                                     // 0x004f2e6f    90
+?ReactToBallPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f2e70    56
                          mov.s              esi, ecx                                             // 0x004f2e71    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x004f2e73    8b06
@@ -8361,6 +8443,7 @@ _jmp_addr_0x004f2e95:    xor.s              al, al                              
                          pop                esi                                                  // 0x004f2e97    5e
                          ret                0x0008                                               // 0x004f2e98    c20800
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2e9b    e8d9e9f0ff
+?SetupReactToBall@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f2ea0    56
                          mov.s              esi, ecx                                             // 0x004f2ea1    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x28]                          // 0x004f2ea3    8b4628
@@ -8381,6 +8464,7 @@ _jmp_addr_0x004f2e95:    xor.s              al, al                              
                          pop                esi                                                  // 0x004f2ed7    5e
                          ret                0x0008                                               // 0x004f2ed8    c20800
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2edb    e899e9f0ff
+?ReactToFirePriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               ecx                                                  // 0x004f2ee0    51
                          push               ebx                                                  // 0x004f2ee1    53
                          {disp8} mov        ebx, dword ptr [esp + 0x0c]                          // 0x004f2ee2    8b5c240c
@@ -8443,6 +8527,7 @@ _jmp_addr_0x004f2f5e:    pop                edi                                 
                          nop                                                                     // 0x004f2f6d    90
                          nop                                                                     // 0x004f2f6e    90
                          nop                                                                     // 0x004f2f6f    90
+?SetupReactToFire@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          sub                esp, 0x08                                            // 0x004f2f70    83ec08
                          push               ebx                                                  // 0x004f2f73    53
                          push               ebp                                                  // 0x004f2f74    55
@@ -8541,6 +8626,7 @@ _jmp_addr_0x004f305d:    mov.s              ecx, esi                            
                          nop                                                                     // 0x004f308d    90
                          nop                                                                     // 0x004f308e    90
                          nop                                                                     // 0x004f308f    90
+?SetupReactToMagicShield@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f3090    8b442404
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x004f3094    8b542408
                          push               eax                                                  // 0x004f3098    50
@@ -8890,6 +8976,7 @@ _jmp_addr_0x004f3473:    pop                edi                                 
                          nop                                                                     // 0x004f347d    90
                          nop                                                                     // 0x004f347e    90
                          nop                                                                     // 0x004f347f    90
+?ReactToFlyingObjectPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               ebx                                                  // 0x004f3480    53
                          push               esi                                                  // 0x004f3481    56
                          mov.s              esi, ecx                                             // 0x004f3482    8bf1
@@ -8987,6 +9074,7 @@ _jmp_addr_0x004f3593:    pop                edi                                 
                          pop                ebx                                                  // 0x004f3597    5b
                          ret                0x0008                                               // 0x004f3598    c20800
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f359b    e8d9e2f0ff
+?SetupReactToFlyingObject@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f35a0    56
                          push               edi                                                  // 0x004f35a1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f35a2    8b7c240c
@@ -9030,6 +9118,7 @@ _jmp_addr_0x004f361a:    pop                edi                                 
                          pop                esi                                                  // 0x004f361b    5e
                          ret                0x0008                                               // 0x004f361c    c20800
                          nop                                                                     // 0x004f361f    90
+?ReactToHandPickUpPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               ebx                                                  // 0x004f3620    53
                          push               esi                                                  // 0x004f3621    56
                          push               edi                                                  // 0x004f3622    57
@@ -9092,6 +9181,7 @@ _jmp_addr_0x004f36a5:    pop                edi                                 
                          nop                                                                     // 0x004f36ad    90
                          nop                                                                     // 0x004f36ae    90
                          nop                                                                     // 0x004f36af    90
+?SetupReactToHandPickUp@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          sub                esp, 0x08                                            // 0x004f36b0    83ec08
                          push               esi                                                  // 0x004f36b3    56
                          mov.s              esi, ecx                                             // 0x004f36b4    8bf1
@@ -9166,6 +9256,7 @@ _jmp_addr_0x004f36a5:    pop                edi                                 
                          nop                                                                     // 0x004f37cd    90
                          nop                                                                     // 0x004f37ce    90
                          nop                                                                     // 0x004f37cf    90
+?ReactToHandUsingTotemPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f37d0    56
                          mov.s              esi, ecx                                             // 0x004f37d1    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x004f37d3    8b06
@@ -9204,6 +9295,7 @@ _jmp_addr_0x004f380e:    xor.s              al, al                              
                          nop                                                                     // 0x004f381d    90
                          nop                                                                     // 0x004f381e    90
                          nop                                                                     // 0x004f381f    90
+?SetupReactToHandUsingTotem@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f3820    56
                          push               edi                                                  // 0x004f3821    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f3822    8b7c240c
@@ -9235,6 +9327,7 @@ _jmp_addr_0x004f380e:    xor.s              al, al                              
                          pop                edi                                                  // 0x004f386b    5f
                          pop                esi                                                  // 0x004f386c    5e
                          ret                0x0008                                               // 0x004f386d    c20800
+?ReactToObjectCrushedPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f3870    56
                          mov.s              esi, ecx                                             // 0x004f3871    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x004f3873    8b06
@@ -9306,6 +9399,7 @@ _jmp_addr_0x004f3922:    pop                edi                                 
                          nop                                                                     // 0x004f392d    90
                          nop                                                                     // 0x004f392e    90
                          nop                                                                     // 0x004f392f    90
+?SetupReactToObjectCrushed@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f3930    56
                          mov.s              esi, ecx                                             // 0x004f3931    8bf1
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x004f3933    8b0d5c19d000
@@ -9340,6 +9434,7 @@ _jmp_addr_0x004f3922:    pop                edi                                 
                          nop                                                                     // 0x004f398d    90
                          nop                                                                     // 0x004f398e    90
                          nop                                                                     // 0x004f398f    90
+?ReactToFightPriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               esi                                                  // 0x004f3990    56
                          push               edi                                                  // 0x004f3991    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f3992    8b7c240c
@@ -9387,6 +9482,7 @@ _jmp_addr_0x004f39ef:    pop                edi                                 
                          nop                                                                     // 0x004f39fd    90
                          nop                                                                     // 0x004f39fe    90
                          nop                                                                     // 0x004f39ff    90
+?SetupReactToFight@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          ret                0x0008                                               // 0x004f3a00    c20800
                          nop                                                                     // 0x004f3a03    90
                          nop                                                                     // 0x004f3a04    90
@@ -9401,6 +9497,7 @@ _jmp_addr_0x004f39ef:    pop                edi                                 
                          nop                                                                     // 0x004f3a0d    90
                          nop                                                                     // 0x004f3a0e    90
                          nop                                                                     // 0x004f3a0f    90
+?ReactToTeleportPriority@Creature@@UAEEPAVReaction@@0@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f3a10    8b442404
                          push               esi                                                  // 0x004f3a14    56
                          {disp8} mov        esi, dword ptr [eax + 0x14]                          // 0x004f3a15    8b7014
@@ -9439,6 +9536,7 @@ _jmp_addr_0x004f3a3d:    push               edi                                 
                          nop                                                                     // 0x004f3a5d    90
                          nop                                                                     // 0x004f3a5e    90
                          nop                                                                     // 0x004f3a5f    90
+?SetupReactToTeleport@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f3a60    56
                          push               edi                                                  // 0x004f3a61    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x004f3a62    8b7c240c
@@ -9497,6 +9595,7 @@ _jmp_addr_0x004f3a3d:    push               edi                                 
 _jmp_addr_0x004f3b1b:    pop                edi                                                  // 0x004f3b1b    5f
                          pop                esi                                                  // 0x004f3b1c    5e
                          ret                0x0008                                               // 0x004f3b1d    c20800
+?ReactToDeathPriority@Creature@@UAEEPAVReaction@@0@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f3b20    8b442404
                          {disp8} mov        ecx, dword ptr [eax + 0x14]                          // 0x004f3b24    8b4814
                          test               ecx, ecx                                             // 0x004f3b27    85c9
@@ -9524,6 +9623,7 @@ _jmp_addr_0x004f3b3c:    xor.s              al, al                              
                          nop                                                                     // 0x004f3b4d    90
                          nop                                                                     // 0x004f3b4e    90
                          nop                                                                     // 0x004f3b4f    90
+?SetupReactToDeath@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f3b50    8b442404
                          push               esi                                                  // 0x004f3b54    56
                          mov.s              esi, ecx                                             // 0x004f3b55    8bf1
@@ -9551,6 +9651,7 @@ _jmp_addr_0x004f3b3c:    xor.s              al, al                              
                          nop                                                                     // 0x004f3b8d    90
                          nop                                                                     // 0x004f3b8e    90
                          nop                                                                     // 0x004f3b8f    90
+?SetupReactToFainting@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f3b90    56
                          push               0x1                                                  // 0x004f3b91    6a01
                          push               0x0                                                  // 0x004f3b93    6a00
@@ -9576,6 +9677,7 @@ _jmp_addr_0x004f3b3c:    xor.s              al, al                              
                          ret                0x0008                                               // 0x004f3bcb    c20800
                          nop                                                                     // 0x004f3bce    90
                          nop                                                                     // 0x004f3bcf    90
+?SetupReactToConfused@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f3bd0    8b442404
                          push               esi                                                  // 0x004f3bd4    56
                          push               0x1                                                  // 0x004f3bd5    6a01

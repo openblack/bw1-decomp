@@ -265,6 +265,21 @@
 .globl _globl_ct_0x005c82d0
 .globl _globl_ct_0x005c8650
 .globl _globl_ct_0x005c8680
+.globl ?Get3DSoundPos@HelpDude@@UAEHPAULHPoint@@@Z
+.globl ??_GHelpDude@@UAEPAXI@Z
+.globl ??_GLocalBase@@UAEPAXI@Z
+.globl ??_GHelpProfile@@UAEPAXI@Z
+.globl ?GetBaseInfo@HelpSpiritInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GHelpSpiritInfo@@UAEPAXI@Z
+.globl ?SaveObject@HelpSpirit@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
+.globl ?ValidForPlaceInHand@HelpSpirit@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?Create3DObject@HelpSpirit@@UAEXXZ
+.globl ??_GHelpSpirit@@UAEPAXI@Z
+.globl ?CallVirtualFunctionsForCreation@HelpSpirit@@UAEXABUMapCoords@@@Z
+.globl ?Process@HelpSpirit@@UAEIXZ
+.globl ?GetBaseInfo@HelpSystemInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GHelpSystemInfo@@UAEPAXI@Z
+.globl ??_GHelpSystem@@UAEPAXI@Z
 
 start_0x005bf5d0_0x005c8920:
 // Snippet: asm, [0x005bf5d0, 0x005c88d8)
@@ -3664,6 +3679,7 @@ _jmp_addr_0x005c2090:    mov.s              eax, ecx                            
                          nop                                                               // 0x005c20dd    90
                          nop                                                               // 0x005c20de    90
                          nop                                                               // 0x005c20df    90
+?Get3DSoundPos@HelpDude@@UAEHPAULHPoint@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005c20e0    8b442404
                          add                ecx, 0x00003374                                // 0x005c20e4    81c174330000
                          mov                edx, dword ptr [ecx]                           // 0x005c20ea    8b11
@@ -3688,6 +3704,7 @@ _jmp_addr_0x005c2090:    mov.s              eax, ecx                            
                          nop                                                               // 0x005c210d    90
                          nop                                                               // 0x005c210e    90
                          nop                                                               // 0x005c210f    90
+??_GHelpDude@@UAEPAXI@Z:
                          push               esi                                            // 0x005c2110    56
                          mov.s              esi, ecx                                       // 0x005c2111    8bf1
                          push               0x0                                            // 0x005c2113    6a00
@@ -3708,6 +3725,7 @@ _jmp_addr_0x005c2148:    mov.s              eax, esi                            
                          ret                0x0004                                         // 0x005c214b    c20400
                          nop                                                               // 0x005c214e    90
                          nop                                                               // 0x005c214f    90
+??_GLocalBase@@UAEPAXI@Z:
                          push               esi                                            // 0x005c2150    56
                          mov.s              esi, ecx                                       // 0x005c2151    8bf1
                          call               _jmp_addr_0x00436960                           // 0x005c2153    e80848e7ff
@@ -7071,6 +7089,7 @@ _jmp_addr_0x005c4551:    pop                edi                                 
                          nop                                                               // 0x005c455d    90
                          nop                                                               // 0x005c455e    90
                          nop                                                               // 0x005c455f    90
+??_GHelpProfile@@UAEPAXI@Z:
                          push               esi                                            // 0x005c4560    56
                          mov.s              esi, ecx                                       // 0x005c4561    8bf1
                          call               _jmp_addr_0x00436960                           // 0x005c4563    e8f823e7ff
@@ -7536,6 +7555,7 @@ _jmp_addr_0x005c49cc:    {disp8} lea        ecx, dword ptr [esi + 0x08]         
                          nop                                                               // 0x005c49fd    90
                          nop                                                               // 0x005c49fe    90
                          nop                                                               // 0x005c49ff    90
+?GetBaseInfo@HelpSpiritInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005c4a00    8b442404
                          mov                dword ptr [eax], 0x00000003                    // 0x005c4a04    c70003000000
                          mov                eax, 0x00d15ae8                                // 0x005c4a0a    b8e85ad100
@@ -7593,6 +7613,7 @@ _jmp_addr_0x005c4a62:    ret                                                    
                          nop                                                               // 0x005c4a6d    90
                          nop                                                               // 0x005c4a6e    90
                          nop                                                               // 0x005c4a6f    90
+??_GHelpSpiritInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x005c4a70    56
                          mov.s              esi, ecx                                       // 0x005c4a71    8bf1
                          call               _jmp_addr_0x00436960                           // 0x005c4a73    e8e81ee7ff
@@ -7650,6 +7671,7 @@ _jmp_addr_0x005c4a8d:    mov.s              eax, esi                            
                          nop                                                               // 0x005c4add    90
                          nop                                                               // 0x005c4ade    90
                          nop                                                               // 0x005c4adf    90
+?SaveObject@HelpSpirit@@UAEIAAULHOSFile@@ABUMapCoords@@@Z:
                          xor.s              eax, eax                                       // 0x005c4ae0    33c0
                          ret                0x0008                                         // 0x005c4ae2    c20800
                          nop                                                               // 0x005c4ae5    90
@@ -7663,6 +7685,7 @@ _jmp_addr_0x005c4a8d:    mov.s              eax, esi                            
                          nop                                                               // 0x005c4aed    90
                          nop                                                               // 0x005c4aee    90
                          nop                                                               // 0x005c4aef    90
+?ValidForPlaceInHand@HelpSpirit@@UAEIPAVGInterfaceStatus@@@Z:
                          xor.s              eax, eax                                       // 0x005c4af0    33c0
                          ret                0x0004                                         // 0x005c4af2    c20400
                          nop                                                               // 0x005c4af5    90
@@ -7676,6 +7699,7 @@ _jmp_addr_0x005c4a8d:    mov.s              eax, esi                            
                          nop                                                               // 0x005c4afd    90
                          nop                                                               // 0x005c4afe    90
                          nop                                                               // 0x005c4aff    90
+?Create3DObject@HelpSpirit@@UAEXXZ:
                          ret                                                               // 0x005c4b00    c3
                          nop                                                               // 0x005c4b01    90
                          nop                                                               // 0x005c4b02    90
@@ -7692,6 +7716,7 @@ _jmp_addr_0x005c4a8d:    mov.s              eax, esi                            
                          nop                                                               // 0x005c4b0d    90
                          nop                                                               // 0x005c4b0e    90
                          nop                                                               // 0x005c4b0f    90
+??_GHelpSpirit@@UAEPAXI@Z:
                          push               esi                                            // 0x005c4b10    56
                          mov.s              esi, ecx                                       // 0x005c4b11    8bf1
                          call               _jmp_addr_0x00636640                           // 0x005c4b13    e8281b0700
@@ -7751,6 +7776,7 @@ _jmp_addr_0x005c4b84:    mov.s              eax, esi                            
                          nop                                                               // 0x005c4b8d    90
                          nop                                                               // 0x005c4b8e    90
                          nop                                                               // 0x005c4b8f    90
+?CallVirtualFunctionsForCreation@HelpSpirit@@UAEXABUMapCoords@@@Z:
                          push               esi                                            // 0x005c4b90    56
                          mov.s              esi, ecx                                       // 0x005c4b91    8bf1
                          mov                eax, dword ptr [esi]                           // 0x005c4b93    8b06
@@ -8441,6 +8467,7 @@ _jmp_addr_0x005c5260:    {disp8} mov        ecx, dword ptr [esp + 0x04]         
                          nop                                                               // 0x005c526d    90
                          nop                                                               // 0x005c526e    90
                          nop                                                               // 0x005c526f    90
+?Process@HelpSpirit@@UAEIXZ:
                          push               esi                                            // 0x005c5270    56
                          mov.s              esi, ecx                                       // 0x005c5271    8bf1
                          call               _jmp_addr_0x005c50c0                           // 0x005c5273    e848feffff
@@ -8591,6 +8618,7 @@ _jmp_addr_0x005c5380:    xor.s              eax, eax                            
                          nop                                                               // 0x005c539d    90
                          nop                                                               // 0x005c539e    90
                          nop                                                               // 0x005c539f    90
+?GetBaseInfo@HelpSystemInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005c53a0    8b442404
                          mov                dword ptr [eax], 0x00000001                    // 0x005c53a4    c70001000000
                          mov                eax, 0x00d16160                                // 0x005c53aa    b86061d100
@@ -8627,6 +8655,7 @@ _jmp_addr_0x005c53c0:    push               0x005c53d0                          
                          {disp32} jmp       _jmp_addr_0x00436960                           // 0x005c53e9    e97215e7ff
 _jmp_addr_0x005c53ee:    ret                                                               // 0x005c53ee    c3
                          nop                                                               // 0x005c53ef    90
+??_GHelpSystemInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x005c53f0    56
                          mov.s              esi, ecx                                       // 0x005c53f1    8bf1
                          call               _jmp_addr_0x00436960                           // 0x005c53f3    e86815e7ff
@@ -8654,6 +8683,7 @@ _jmp_addr_0x005c540a:    mov.s              eax, esi                            
                          nop                                                               // 0x005c542d    90
                          nop                                                               // 0x005c542e    90
                          nop                                                               // 0x005c542f    90
+??_GHelpSystem@@UAEPAXI@Z:
                          push               esi                                            // 0x005c5430    56
                          mov.s              esi, ecx                                       // 0x005c5431    8bf1
                          call               _jmp_addr_0x005c5680                           // 0x005c5433    e848020000

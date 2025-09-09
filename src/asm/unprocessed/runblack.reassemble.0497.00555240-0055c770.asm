@@ -422,6 +422,9 @@
 .globl _globl_ct_0x00557c90
 .globl _globl_ct_0x00557cb0
 .globl _globl_ct_0x00557ce0
+.globl ??_GGameArea@@UAEPAXI@Z
+.globl ??_GGGameInfo@@UAEPAXI@Z
+.globl ??_GGameOSFile@@UAEPAXI@Z
 
 start_0x00555240_0x0055c770:
 // Snippet: asm, [0x00555240, 0x0055c32b)
@@ -3420,6 +3423,7 @@ _jmp_addr_0x005571c0:    mov.s              eax, ecx                            
                          nop                                                              // 0x0055721d    90
                          nop                                                              // 0x0055721e    90
                          nop                                                              // 0x0055721f    90
+??_GGameArea@@UAEPAXI@Z:
                          push               esi                                           // 0x00557220    56
                          mov.s              esi, ecx                                      // 0x00557221    8bf1
                          call               _jmp_addr_0x00557240                          // 0x00557223    e818000000
@@ -4017,6 +4021,7 @@ _jmp_addr_0x00557774:    {disp8} mov        cx, word ptr [eax + -0x02]          
                          pop                esi                                           // 0x005577ab    5e
                          add                esp, 0x08                                     // 0x005577ac    83c408
                          ret                                                              // 0x005577af    c3
+??_GGGameInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x005577b0    56
                          mov.s              esi, ecx                                      // 0x005577b1    8bf1
                          call               _jmp_addr_0x00436960                          // 0x005577b3    e8a8f1edff
@@ -4830,6 +4835,7 @@ _jmp_addr_0x00557ff0:    push               esi                                 
                          nop                                                              // 0x0055802d    90
                          nop                                                              // 0x0055802e    90
                          nop                                                              // 0x0055802f    90
+??_GGameOSFile@@UAEPAXI@Z:
                          push               esi                                           // 0x00558030    56
                          mov.s              esi, ecx                                      // 0x00558031    8bf1
                          call               _jmp_addr_0x00558050                          // 0x00558033    e818000000

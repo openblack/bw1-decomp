@@ -53,7 +53,7 @@
 .extern @SelectMesh__9MorphableFl@12
 .extern @ReadBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfo@20
 .extern _jmp_addr_0x00617dc0
-.extern _jmp_addr_0x00618360
+.extern ?LoadBase@Morphable@@UAEIPAD@Z
 .extern _Create__11LH3DTextureFPvUlUlP13TextureFormat
 .extern @GetAnim__9MorphableFll@16
 .extern @GetSetAnim__9MorphableFlll@20
@@ -104,6 +104,8 @@
 .globl _globl_ct_0x004eac40
 .globl _globl_ct_0x004eac60
 .globl _LoadBase__12LH3DCreatureFPc
+.globl ?GetCreatureMimicType@Villager@@UAEIXZ
+.globl ?GetCreatureMimicType@Animal@@UAEIXZ
 
 start_0x004e9f40_0x004ed180:
 // Snippet: asm, [0x004e9f40, 0x004ed15e)
@@ -1128,6 +1130,7 @@ _jmp_addr_0x004eab93:    pop                edi                                 
                          add                esp, 0x08                                     // 0x004eab97    83c408
                          ret                                                              // 0x004eab9a    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004eab9b    e8d96cf1ff
+?GetCreatureMimicType@Villager@@UAEIXZ:
                          push               esi                                           // 0x004eaba0    56
                          mov.s              esi, ecx                                      // 0x004eaba1    8bf1
                          mov                eax, dword ptr [esi]                          // 0x004eaba3    8b06
@@ -1152,6 +1155,7 @@ _jmp_addr_0x004eabb6:    {disp8} mov        ecx, dword ptr [esi + 0x28]         
                          nop                                                              // 0x004eabcd    90
                          nop                                                              // 0x004eabce    90
                          nop                                                              // 0x004eabcf    90
+?GetCreatureMimicType@Animal@@UAEIXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x004eabd0    8b4128
                          {disp8} mov        eax, dword ptr [eax + 0x14]                   // 0x004eabd3    8b4014
                          dec                eax                                           // 0x004eabd6    48
@@ -1260,7 +1264,7 @@ _LoadBase__12LH3DCreatureFPc:
                          push               esi                                           // 0x004eac94    56
                          mov.s              esi, ecx                                      // 0x004eac95    8bf1
                          push               eax                                           // 0x004eac97    50
-                         call               _jmp_addr_0x00618360                          // 0x004eac98    e8c3d61200
+                         call               ?LoadBase@Morphable@@UAEIPAD@Z                // 0x004eac98    e8c3d61200
                          test               eax, eax                                      // 0x004eac9d    85c0
                          {disp8} jne        _jmp_addr_0x004eaca5                          // 0x004eac9f    7504
                          pop                esi                                           // 0x004eaca1    5e

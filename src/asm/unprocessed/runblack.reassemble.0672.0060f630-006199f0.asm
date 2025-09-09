@@ -86,7 +86,7 @@
 .globl @__as__17Point2DCompare_0_@12
 .globl @SetSpeed__13MobileWallHugFl@12
 .globl _jmp_addr_0x0060f850
-.globl _jmp_addr_0x0060fc50
+.globl ?SetSpeed@MobileWallHug@@UAEXH@Z
 .globl _jmp_addr_0x0060fc80
 .globl _jmp_addr_0x0060fce0
 .globl _jmp_addr_0x0060fe00
@@ -173,17 +173,17 @@
 .globl _jmp_addr_0x00617a80
 .globl @ReadBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfo@20
 .globl _jmp_addr_0x00617dc0
-.globl _jmp_addr_0x00617eb0
+.globl ?SetAnimTime@Morphable@@UAEXHH@Z
 .globl @ReadExtraDataBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfol@24
 .globl _jmp_addr_0x00618150
 .globl _jmp_addr_0x006182f0
-.globl _jmp_addr_0x00618360
+.globl ?LoadBase@Morphable@@UAEIPAD@Z
 .globl _Create__11LH3DTextureFPvUlUlP13TextureFormat
 .globl @LoadMesh__9MorphableFPcl@16
 .globl _jmp_addr_0x00618b40
 .globl _jmp_addr_0x00618c40
-.globl _jmp_addr_0x00619100
-.globl _jmp_addr_0x00619500
+.globl ?MorphAnims@Morphable@@UAEXXZ
+.globl ?MorphTexture@Morphable@@UAEXXZ
 .globl @GetAnim__9MorphableFll@16
 .globl @GetSetAnim__9MorphableFlll@20
 
@@ -743,7 +743,8 @@ _jmp_addr_0x0060fc38:    mov.s              edi, eax                            
                          nop                                                               // 0x0060fc4d    90
                          nop                                                               // 0x0060fc4e    90
                          nop                                                               // 0x0060fc4f    90
-_jmp_addr_0x0060fc50:    {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x0060fc50    8b442404
+?SetSpeed@MobileWallHug@@UAEXH@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x0060fc50    8b442404
                          test               eax, eax                                       // 0x0060fc54    85c0
                          {disp8} jge        _jmp_addr_0x0060fc61                           // 0x0060fc56    7d09
                          xor.s              eax, eax                                       // 0x0060fc58    33c0
@@ -13002,7 +13003,8 @@ _jmp_addr_0x00617e53:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          nop                                                               // 0x00617ead    90
                          nop                                                               // 0x00617eae    90
                          nop                                                               // 0x00617eaf    90
-_jmp_addr_0x00617eb0:    push               ebx                                            // 0x00617eb0    53
+?SetAnimTime@Morphable@@UAEXHH@Z:
+                         push               ebx                                            // 0x00617eb0    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                    // 0x00617eb1    8b5c2408
                          push               ebp                                            // 0x00617eb5    55
                          {disp8} mov        ebp, dword ptr [esp + 0x10]                    // 0x00617eb6    8b6c2410
@@ -13394,7 +13396,8 @@ _jmp_addr_0x006182f0:    sub                esp, 0x0c                           
                          nop                                                               // 0x0061835d    90
                          nop                                                               // 0x0061835e    90
                          nop                                                               // 0x0061835f    90
-_jmp_addr_0x00618360:    sub                esp, 0x00000080                                // 0x00618360    81ec80000000
+?LoadBase@Morphable@@UAEIPAD@Z:
+                         sub                esp, 0x00000080                                // 0x00618360    81ec80000000
                          push               ebx                                            // 0x00618366    53
                          mov.s              ebx, ecx                                       // 0x00618367    8bd9
                          or                 ecx, 0xffffffff                                // 0x00618369    83c9ff
@@ -14512,7 +14515,8 @@ _jmp_addr_0x006190f1:    fstp               st(0)                               
                          ret                                                               // 0x006190fd    c3
                          nop                                                               // 0x006190fe    90
                          nop                                                               // 0x006190ff    90
-_jmp_addr_0x00619100:    sub                esp, 0x38                                      // 0x00619100    83ec38
+?MorphAnims@Morphable@@UAEXXZ:
+                         sub                esp, 0x38                                      // 0x00619100    83ec38
                          push               ebx                                            // 0x00619103    53
                          mov.s              ebx, ecx                                       // 0x00619104    8bd9
                          {disp32} fld       dword ptr [ebx + 0x000000a0]                   // 0x00619106    d983a0000000
@@ -14825,7 +14829,8 @@ _jmp_addr_0x006194f3:    pop                edi                                 
                          nop                                                               // 0x006194fd    90
                          nop                                                               // 0x006194fe    90
                          nop                                                               // 0x006194ff    90
-_jmp_addr_0x00619500:    sub                esp, 0x0c                                      // 0x00619500    83ec0c
+?MorphTexture@Morphable@@UAEXXZ:
+                         sub                esp, 0x0c                                      // 0x00619500    83ec0c
                          push               ebx                                            // 0x00619503    53
                          push               ebp                                            // 0x00619504    55
                          push               esi                                            // 0x00619505    56

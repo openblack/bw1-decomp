@@ -940,6 +940,7 @@ target_link_options(runblack-reassembled
         "link"
         "/includeglob:*"
         "/FIXED"
+        "/errorlimit:0"
         "/sectionvsize:.text,0x004a795d"
         "/sectionvsize:.data,0x5f8e00"
         "$<$<CONFIG:Release>:/sectionvsize:.rsrc,0x393E>" # Required padding for garbage string in vanilla

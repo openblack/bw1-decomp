@@ -124,6 +124,9 @@
 .globl _globl_ct_0x005e2870
 .globl _globl_ct_0x005e2a30
 .globl _globl_ct_0x005e2a60
+.globl ?GetBaseInfo@GJobInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGJobInfo@@UAEPAXI@Z
+.globl ??_GGKeyInput@@UAEPAXI@Z
 
 start_0x005dfc40_0x005e2d10:
 // Snippet: asm, [0x005dfc40, 0x005e2cfd)
@@ -2054,6 +2057,7 @@ _jmp_addr_0x005e169c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                               // 0x005e16bd    90
                          nop                                                               // 0x005e16be    90
                          nop                                                               // 0x005e16bf    90
+?GetBaseInfo@GJobInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005e16c0    8b442404
                          mov                dword ptr [eax], 0x00000010                    // 0x005e16c4    c70010000000
                          mov                eax, 0x00d19cc8                                // 0x005e16ca    b8c89cd100
@@ -2098,6 +2102,7 @@ _jmp_addr_0x005e1710:    sub                esi, 0x58                           
                          pop                edi                                            // 0x005e171d    5f
                          pop                esi                                            // 0x005e171e    5e
 _jmp_addr_0x005e171f:    ret                                                               // 0x005e171f    c3
+??_GGJobInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x005e1720    56
                          mov.s              esi, ecx                                       // 0x005e1721    8bf1
                          call               _jmp_addr_0x00436960                           // 0x005e1723    e83852e5ff
@@ -2608,6 +2613,7 @@ _jmp_addr_0x005e1b2b:    {disp8} mov        ecx, dword ptr [ebx + 0x08]         
                          pop                ebx                                            // 0x005e1b3b    5b
                          ret                0x0004                                         // 0x005e1b3c    c20400
                          nop                                                               // 0x005e1b3f    90
+??_GGKeyInput@@UAEPAXI@Z:
                          push               ebx                                            // 0x005e1b40    53
                          {disp8} mov        bl, byte ptr [esp + 0x08]                      // 0x005e1b41    8a5c2408
                          test               bl, 0x02                                       // 0x005e1b45    f6c302

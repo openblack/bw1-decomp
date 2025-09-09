@@ -78,6 +78,10 @@
 .globl _Destroy__13DialogBoxBaseFv
 .globl _Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v
 .globl _Show__13DialogBoxBaseFv
+.globl ?CanESCOut@DialogBoxOptions@@UAE_NXZ
+.globl ?Init@DialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@DialogBoxOptions@@UAEXXZ
+.globl ?InitControls@DialogBoxOptions@@UAEXXZ
 
 start_0x005132d0_0x00514620:
 // Snippet: asm, [0x005132d0, 0x005145f6)
@@ -611,6 +615,7 @@ _jmp_addr_0x005137f0:    {disp32} fld      dword ptr [rdata_bytes + 0x2f614]    
                          nop                                                             // 0x0051382d    90
                          nop                                                             // 0x0051382e    90
                          nop                                                             // 0x0051382f    90
+?CanESCOut@DialogBoxOptions@@UAE_NXZ:
                          {disp32} mov      eax, dword ptr [_game]                        // 0x00513830    a15c19d000
                          {disp32} mov      ecx, dword ptr [eax + 0x00250304]             // 0x00513835    8b8804032500
                          {disp8} mov       eax, dword ptr [ecx + 0x5c]                   // 0x0051383b    8b415c
@@ -635,6 +640,7 @@ _jmp_addr_0x00513850:    mov               dword ptr [ecx], 0x008d861c          
                          nop                                                             // 0x0051385d    90
                          nop                                                             // 0x0051385e    90
                          nop                                                             // 0x0051385f    90
+?Init@DialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x00513860    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x00513864    8b542404
                          push              ebx                                           // 0x00513868    53
@@ -1041,6 +1047,7 @@ _jmp_addr_0x00513d81:    push              0x00514da0                           
                          pop               ebx                                           // 0x00513d9b    5b
                          ret               0x000c                                        // 0x00513d9c    c20c00
                          nop                                                             // 0x00513d9f    90
+?Destroy@DialogBoxOptions@@UAEXXZ:
                          push              esi                                           // 0x00513da0    56
                          mov.s             esi, ecx                                      // 0x00513da1    8bf1
                          call              @Destroy__13DialogBoxBaseFv@4                 // 0x00513da3    e8e8f7ffff
@@ -1062,6 +1069,7 @@ _jmp_addr_0x00513d81:    push              0x00514da0                           
                          nop                                                             // 0x00513dbd    90
                          nop                                                             // 0x00513dbe    90
                          nop                                                             // 0x00513dbf    90
+?InitControls@DialogBoxOptions@@UAEXXZ:
                          push              esi                                           // 0x00513dc0    56
                          push              edi                                           // 0x00513dc1    57
                          mov.s             esi, ecx                                      // 0x00513dc2    8bf1

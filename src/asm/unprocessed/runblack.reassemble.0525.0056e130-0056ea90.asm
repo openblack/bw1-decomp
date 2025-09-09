@@ -32,6 +32,9 @@
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0056e130
+.globl ?Init@EndGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@EndGameBox@@UAEXXZ
+.globl ?InitControls@EndGameBox@@UAEXXZ
 
 start_0x0056e130_0x0056ea90:
 // Snippet: asm, [0x0056e130, 0x0056ea7b)
@@ -57,6 +60,7 @@ _jmp_addr_0x0056e13e:    mov               ebx, dword ptr [edx]                 
                          pop               ebx                                           // 0x0056e15b    5b
                          ret               0x0004                                        // 0x0056e15c    c20400
                          nop                                                             // 0x0056e15f    90
+?Init@EndGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          sub               esp, 0x10                                     // 0x0056e160    83ec10
                          {disp8} mov       eax, dword ptr [esp + 0x1c]                   // 0x0056e163    8b44241c
                          push              ebx                                           // 0x0056e167    53
@@ -481,9 +485,11 @@ _jmp_addr_0x0056e710:    {disp32} mov      ecx, dword ptr [_game]               
                          nop                                                             // 0x0056e72d    90
                          nop                                                             // 0x0056e72e    90
                          nop                                                             // 0x0056e72f    90
+?Destroy@EndGameBox@@UAEXXZ:
                          call              @Destroy__13DialogBoxBaseFv@4                 // 0x0056e730    e85b4efaff
                          {disp32} mov      dword ptr [data_bytes + 0x34006c], 0x00000000 // 0x0056e735    c7056c60d00000000000
                          ret                                                             // 0x0056e73f    c3
+?InitControls@EndGameBox@@UAEXXZ:
                          sub               esp, 0x0000080c                               // 0x0056e740    81ec0c080000
                          push              ebp                                           // 0x0056e746    55
                          push              esi                                           // 0x0056e747    56

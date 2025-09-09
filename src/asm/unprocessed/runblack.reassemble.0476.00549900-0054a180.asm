@@ -37,6 +37,10 @@
 .globl _globl_ct_0x00549ae0
 .globl _globl_ct_0x00549b10
 .globl _globl_ct_0x00549b30
+.globl ?Show@SetupOnlineLandscapes@@UAEXXZ
+.globl ?Init@SetupMultiplayerMain@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@SetupMultiplayerMain@@UAEXXZ
+.globl ?InitControls@SetupMultiplayerMain@@UAEXXZ
 
 start_0x00549900_0x0054a180:
 // Snippet: asm, [0x00549900, 0x0054a159)
@@ -56,6 +60,7 @@ _jmp_addr_0x00549900:    ret                                                    
                          nop                                                             // 0x0054990d    90
                          nop                                                             // 0x0054990e    90
                          nop                                                             // 0x0054990f    90
+?Show@SetupOnlineLandscapes@@UAEXXZ:
                          {disp32} mov      eax, dword ptr [data_bytes + 0x30b670]        // 0x00549910    a17016cd00
                          push              esi                                           // 0x00549915    56
                          mov.s             esi, ecx                                      // 0x00549916    8bf1
@@ -290,6 +295,7 @@ _jmp_addr_0x00549b40:    {disp32} fld      dword ptr [rdata_bytes + 0x35d0c]    
                          nop                                                             // 0x00549b5d    90
                          nop                                                             // 0x00549b5e    90
                          nop                                                             // 0x00549b5f    90
+?Init@SetupMultiplayerMain@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x00549b60    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x00549b64    8b542404
                          push              esi                                           // 0x00549b68    56
@@ -618,9 +624,11 @@ _jmp_addr_0x00549f78:    pop               edi                                  
                          nop                                                             // 0x00549f7d    90
                          nop                                                             // 0x00549f7e    90
                          nop                                                             // 0x00549f7f    90
+?Destroy@SetupMultiplayerMain@@UAEXXZ:
                          call              @Destroy__13DialogBoxBaseFv@4                 // 0x00549f80    e80b96fcff
                          {disp32} mov      dword ptr [data_bytes + 0x30b680], 0x00000000 // 0x00549f85    c7058016cd0000000000
                          ret                                                             // 0x00549f8f    c3
+?InitControls@SetupMultiplayerMain@@UAEXXZ:
                          push              ebx                                           // 0x00549f90    53
                          mov.s             ebx, ecx                                      // 0x00549f91    8bd9
                          call              _GetSmallTextSize__Fv                         // 0x00549f93    e878daebff

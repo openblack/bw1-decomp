@@ -20,7 +20,7 @@
 .extern _SetMessage__6GDebugFUsPce
 .extern _jmp_addr_0x00517f90
 .extern ?Draw@MultiMapFixed@@UAEXXZ
-.extern _jmp_addr_0x00518150
+.extern ?Draw@MobileObject@@UAEXXZ
 .extern @GetCamera__5GGameFv@4
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005575a0
@@ -65,6 +65,9 @@
 .globl _globl_ct_0x00515f10
 .globl _globl_ct_0x00515f40
 .globl ?Draw@Abode@@UAEXXZ
+.globl ?Draw@Windmill@@UAEXXZ
+.globl ?Draw@TownCentre@@UAEXXZ
+.globl ?Draw@Ball@@UAEXXZ
 
 start_0x00515e90_0x005178d0:
 // Snippet: asm, [0x00515e90, 0x005178bf)
@@ -456,6 +459,7 @@ _jmp_addr_0x00516316:    pop                edi                                 
                          ret                                                              // 0x0051631d    c3
                          nop                                                              // 0x0051631e    90
                          nop                                                              // 0x0051631f    90
+?Draw@Windmill@@UAEXXZ:
                          sub                esp, 0x1c                                     // 0x00516320    83ec1c
                          push               esi                                           // 0x00516323    56
                          mov.s              esi, ecx                                      // 0x00516324    8bf1
@@ -560,6 +564,7 @@ _jmp_addr_0x00516448:    pop                esi                                 
                          nop                                                              // 0x0051644d    90
                          nop                                                              // 0x0051644e    90
                          nop                                                              // 0x0051644f    90
+?Draw@TownCentre@@UAEXXZ:
                          sub                esp, 0x08                                     // 0x00516450    83ec08
                          push               ebx                                           // 0x00516453    53
                          push               esi                                           // 0x00516454    56
@@ -929,6 +934,7 @@ _jmp_addr_0x00516840:    {disp8} fld        dword ptr [esp + 0x0c]              
                          pop                esi                                           // 0x00516866    5e
                          ret                0x000c                                        // 0x00516867    c20c00
                          call               dword ptr [__imp__ScreenToClient@4]           // 0x0051686a    ff155c988a00
+?Draw@Ball@@UAEXXZ:
                          push               esi                                           // 0x00516870    56
                          mov.s              esi, ecx                                      // 0x00516871    8bf1
                          {disp8} fld        dword ptr [esi + 0x1c]                        // 0x00516873    d9461c
@@ -940,7 +946,7 @@ _jmp_addr_0x00516840:    {disp8} fld        dword ptr [esp + 0x0c]              
                          call               _SetMessage__6GDebugFUsPce                    // 0x00516888    e813b5ffff
                          add                esp, 0x14                                     // 0x0051688d    83c414
                          mov.s              ecx, esi                                      // 0x00516890    8bce
-                         call               _jmp_addr_0x00518150                          // 0x00516892    e8b9180000
+                         call               ?Draw@MobileObject@@UAEXXZ                    // 0x00516892    e8b9180000
                          pop                esi                                           // 0x00516897    5e
                          ret                                                              // 0x00516898    c3
                          nop                                                              // 0x00516899    90

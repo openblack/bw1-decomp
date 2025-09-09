@@ -28,6 +28,8 @@
 
 .globl _jmp_addr_0x0056da00
 .globl ___dt__15SetupHSBarGraphFb
+.globl ?Destroy@StatsBox@@UAEXXZ
+.globl ?InitControls@StatsBox@@UAEXXZ
 
 start_0x0056d960_0x0056e130:
 // Snippet: asm, [0x0056d960, 0x0056e0fd)
@@ -45,9 +47,11 @@ _jmp_addr_0x0056d978:    mov.s              eax, esi                            
                          ret                0x0004                                        // 0x0056d97b    c20400
                          nop                                                              // 0x0056d97e    90
                          nop                                                              // 0x0056d97f    90
+?Destroy@StatsBox@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x0056d980    e80b5cfaff
                          {disp32} mov       dword ptr [data_bytes + 0x340068], 0x00000000 // 0x0056d985    c7056860d00000000000
                          ret                                                              // 0x0056d98f    c3
+?InitControls@StatsBox@@UAEXXZ:
                          push               esi                                           // 0x0056d990    56
                          mov.s              esi, ecx                                      // 0x0056d991    8bf1
                          call               _jmp_addr_0x00566890                          // 0x0056d993    e8f88effff

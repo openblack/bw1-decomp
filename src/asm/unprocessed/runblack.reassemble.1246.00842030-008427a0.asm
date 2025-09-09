@@ -29,6 +29,7 @@
 .globl _globl_ct_0x008421d0
 .globl _PrssKey__4PrssF6LH_KEYUs
 .globl _PrssMouse__4PrssFP10MouseInput
+.globl ?Terminate@Prss@@UAEXXZ
 
 start_0x00842030_0x008427a0:
 // Snippet: asm, [0x00842030, 0x0084269a)
@@ -135,6 +136,7 @@ _jmp_addr_0x0084212c:    ret                                                    
                          nop                                                            // 0x0084212d    90
                          nop                                                            // 0x0084212e    90
                          nop                                                            // 0x0084212f    90
+?Terminate@Prss@@UAEXXZ:
                          push             esi                                           // 0x00842130    56
                          mov.s            esi, ecx                                      // 0x00842131    8bf1
                          {disp8} mov      eax, dword ptr [esi + 0x04]                   // 0x00842133    8b4604

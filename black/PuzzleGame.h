@@ -43,7 +43,6 @@ struct PhysOb;
 struct PhysicsObject;
 struct PlannedMultiMapFixed;
 struct RPHolder;
-struct Villager;
 
 struct PuzzleGame
 {
@@ -161,8 +160,6 @@ uint32_t __fastcall Save__9ChessPionFR10GameOSFile(struct GameThing* this, const
 uint32_t __fastcall GetSaveType__9ChessPionFv(struct GameThing* this) asm("?GetSaveType@ChessPion@@UAEIXZ");
 // win1.41 00422770 mac inlined ChessPion::Draw(void)
 void __fastcall Draw__9ChessPionFv(struct Object* this) asm("?Draw@ChessPion@@UAEXXZ");
-// win1.41 00422ed0 mac inlined ChessPion::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-void __fastcall AddToRoutePlan__9ChessPionFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct ChessPion* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int32_t param_1, struct Point2D param_2, float param_3, int32_t param_4)) asm("?AddToRoutePlan@ChessPion@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 006dde50 mac inlined ChessPion::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__9ChessPionFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@ChessPion@@UAEXABUMapCoords@@@Z");
 // win1.41 00422210 mac inlined ChessPion::SetUpPhysOb(PhysOb *)
@@ -173,6 +170,8 @@ bool __fastcall InteractsWithPhysicsObjects__9ChessPionFv(struct Object* this) a
 uint32_t __fastcall ChecksVerticesVObjects__9ChessPionFv(struct Object* this) asm("?ChecksVerticesVObjects@ChessPion@@UAEIXZ");
 // win1.41 00422ec0 mac inlined ChessPion::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__9ChessPionFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@ChessPion@@UAE_NPAVCreature@@@Z");
+// win1.41 00422ed0 mac inlined ChessPion::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+void __fastcall AddToRoutePlan__9ChessPionFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@ChessPion@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 006de260 mac inlined ChessPion::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__9ChessPionFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@ChessPion@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 

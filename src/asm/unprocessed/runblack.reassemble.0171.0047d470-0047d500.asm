@@ -10,6 +10,7 @@
 .extern @GetCreature3D__8CreatureFv@4
 
 .globl _jmp_addr_0x0047d470
+.globl ?CreatureMustAvoid@Creature@@UAE_NPAVCreature@@@Z
 
 start_0x0047d470_0x0047d500:
 // Snippet: asm, [0x0047d470, 0x0047d4e6)
@@ -47,6 +48,7 @@ _jmp_addr_0x0047d4a2:    ret                                                // 0
                          nop                                                // 0x0047d4ad    90
                          nop                                                // 0x0047d4ae    90
                          nop                                                // 0x0047d4af    90
+?CreatureMustAvoid@Creature@@UAE_NPAVCreature@@@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x04]       // 0x0047d4b0    8b442404
                          test             eax, eax                          // 0x0047d4b4    85c0
                          {disp8} je       _jmp_addr_0x0047d4e1              // 0x0047d4b6    7429

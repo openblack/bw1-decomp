@@ -30,6 +30,8 @@
 .globl _jmp_addr_0x005159c0
 
 .globl _globl_ct_0x00515960
+.globl ?Init@DialogBoxSaveMessage@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@DialogBoxSaveMessage@@UAEXXZ
 
 start_0x00515960_0x00515e90:
 // Snippet: asm, [0x00515960, 0x00515e5e)
@@ -88,6 +90,7 @@ _jmp_addr_0x005159c0:    mov              dword ptr [ecx], 0x008d8698           
                          nop                                                            // 0x005159cd    90
                          nop                                                            // 0x005159ce    90
                          nop                                                            // 0x005159cf    90
+?Init@DialogBoxSaveMessage@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x005159d0    8b44240c
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x005159d4    8b542404
                          push             esi                                           // 0x005159d8    56
@@ -205,6 +208,7 @@ _jmp_addr_0x00515b67:    xor.s            eax, eax                              
                          pop              esi                                           // 0x00515b77    5e
                          ret              0x000c                                        // 0x00515b78    c20c00
                          call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00515b7b    e8f9bceeff
+?Destroy@DialogBoxSaveMessage@@UAEXXZ:
                          {disp32} jmp     @Destroy__13DialogBoxBaseFv@4                 // 0x00515b80    e90bdaffff
                          nop                                                            // 0x00515b85    90
                          nop                                                            // 0x00515b86    90

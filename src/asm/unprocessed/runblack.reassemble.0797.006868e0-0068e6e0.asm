@@ -204,9 +204,18 @@
 .globl _GetPULevel__7PHandFXFv
 .globl _RemoveAllPermBands__7PHandFXFv
 .globl _AddSpellToHandVisuals__7PHandFXFb
+.globl ?Eval@TestFunnel@@UBEXMPAM0@Z
+.globl ?Eval@TestFunnelParab@@UBEXMPAM0@Z
+.globl ?Eval@TestFunnelSpout@@UBEXMPAM0@Z
+.globl ??_GCollectionData@UR_RingSpin@@UAEPAXI@Z
+.globl ??_GAtomData@UR_GesturingRecognised@@UAEPAXI@Z
+.globl ??_GParentCollectionData@ZR_ChainGesture@@UAEPAXI@Z
+.globl ??_GAtomData@ZR_ChainGesture@@UAEPAXI@Z
+.globl ??_GBand@PHandFX@@UAEPAXI@Z
 
 start_0x006868e0_0x0068e6e0:
 // Snippet: asm, [0x006868e0, 0x0068e6cc)
+?Eval@TestFunnel@@UBEXMPAM0@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x006868e0    8b442408
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x006868e4    d9442404
                          fstp               dword ptr [eax]                               // 0x006868e8    d918
@@ -226,6 +235,7 @@ start_0x006868e0_0x0068e6e0:
                          nop                                                              // 0x0068690d    90
                          nop                                                              // 0x0068690e    90
                          nop                                                              // 0x0068690f    90
+?Eval@TestFunnelParab@@UBEXMPAM0@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x00686910    8b442408
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x00686914    d9442404
                          fstp               dword ptr [eax]                               // 0x00686918    d918
@@ -239,6 +249,7 @@ start_0x006868e0_0x0068e6e0:
                          fstp               dword ptr [eax]                               // 0x00686936    d918
                          ret                0x000c                                        // 0x00686938    c20c00
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0068693b    e8b9aed7ff
+?Eval@TestFunnelSpout@@UBEXMPAM0@Z:
                          {disp32} fld       dword ptr [rdata_bytes + 0x8d664]             // 0x00686940    d90564669300
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x00686946    8b442408
                          {disp8} fmul       dword ptr [esp + 0x04]                        // 0x0068694a    d84c2404
@@ -1499,6 +1510,7 @@ _jmp_addr_0x006879a0:    push               esi                                 
                          nop                                                              // 0x006879cd    90
                          nop                                                              // 0x006879ce    90
                          nop                                                              // 0x006879cf    90
+??_GCollectionData@UR_RingSpin@@UAEPAXI@Z:
                          push               esi                                           // 0x006879d0    56
                          mov.s              esi, ecx                                      // 0x006879d1    8bf1
                          mov                dword ptr [esi], 0x008fb3ec                   // 0x006879d3    c706ecb38f00
@@ -2377,6 +2389,7 @@ _jmp_addr_0x00688196:    {disp32} mov       eax, dword ptr [data_bytes + 0x388b2
                          nop                                                              // 0x006881cd    90
                          nop                                                              // 0x006881ce    90
                          nop                                                              // 0x006881cf    90
+??_GAtomData@UR_GesturingRecognised@@UAEPAXI@Z:
                          push               esi                                           // 0x006881d0    56
                          mov.s              esi, ecx                                      // 0x006881d1    8bf1
                          call               _jmp_addr_0x00688200                          // 0x006881d3    e828000000
@@ -4990,6 +5003,7 @@ _jmp_addr_0x0068a290:    push               esi                                 
                          nop                                                              // 0x0068a2cd    90
                          nop                                                              // 0x0068a2ce    90
                          nop                                                              // 0x0068a2cf    90
+??_GParentCollectionData@ZR_ChainGesture@@UAEPAXI@Z:
                          push               esi                                           // 0x0068a2d0    56
                          mov.s              esi, ecx                                      // 0x0068a2d1    8bf1
                          mov                dword ptr [esi], 0x008fb3ec                   // 0x0068a2d3    c706ecb38f00
@@ -5013,6 +5027,7 @@ _jmp_addr_0x0068a2f0:    mov.s              eax, esi                            
                          nop                                                              // 0x0068a2fd    90
                          nop                                                              // 0x0068a2fe    90
                          nop                                                              // 0x0068a2ff    90
+??_GAtomData@ZR_ChainGesture@@UAEPAXI@Z:
                          push               esi                                           // 0x0068a300    56
                          mov.s              esi, ecx                                      // 0x0068a301    8bf1
                          mov                dword ptr [esi], 0x008fb2ec                   // 0x0068a303    c706ecb28f00
@@ -8463,6 +8478,7 @@ _jmp_addr_0x0068ca30:    push               ebx                                 
                          nop                                                              // 0x0068cabd    90
                          nop                                                              // 0x0068cabe    90
                          nop                                                              // 0x0068cabf    90
+??_GBand@PHandFX@@UAEPAXI@Z:
                          push               esi                                           // 0x0068cac0    56
                          mov.s              esi, ecx                                      // 0x0068cac1    8bf1
                          call               _jmp_addr_0x0068cae0                          // 0x0068cac3    e818000000

@@ -37,6 +37,10 @@
 .globl ?SaveObject@Abode@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z
 .globl ?IsCivic@Abode@@UAE_NXZ
 .globl ?GetTribe@Abode@@UAEPAUGTribeInfo@@XZ
+.globl ?GetDebugText@Windmill@@UAEPADXZ
+.globl ?GetSaveType@Windmill@@UAEIXZ
+.globl ??_GWindmill@@UAEPAXI@Z
+.globl ?CallVirtualFunctionsForCreation@Windmill@@UAEXABUMapCoords@@@Z
 
 ?Create@Windmill@@SAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z:
                          push               esi                                           // 0x00405890    56
@@ -92,7 +96,7 @@ _jmp_addr_0x004058ed:    xor.s              eax, eax                            
                          nop                                                              // 0x004058fe    90
                          nop                                                              // 0x004058ff    90
 
-_jmp_addr_0x00405900:
+?GetSaveType@Windmill@@UAEIXZ:
                          mov                eax, 0x000000f8                               // 0x00405900    b8f8000000
                          ret                                                              // 0x00405905    c3
                          nop                                                              // 0x00405906    90
@@ -105,6 +109,7 @@ _jmp_addr_0x00405900:
                          nop                                                              // 0x0040590d    90
                          nop                                                              // 0x0040590e    90
                          nop                                                              // 0x0040590f    90
+?GetDebugText@Windmill@@UAEPADXZ:
                          mov                eax, 0x009c8048                               // 0x00405910    b848809c00
                          ret                                                              // 0x00405915    c3
                          nop                                                              // 0x00405916    90
@@ -118,7 +123,7 @@ _jmp_addr_0x00405900:
                          nop                                                              // 0x0040591e    90
                          nop                                                              // 0x0040591f    90
 
-_jmp_addr_0x00405920:
+??_GWindmill@@UAEPAXI@Z:
                          push               esi                                           // 0x00405920    56
                          mov.s              esi, ecx                                      // 0x00405921    8bf1
                          call               ??1Abode@@UAE@XZ                              // 0x00405923    e838d2ffff
@@ -144,7 +149,7 @@ _jmp_addr_0x0040593d:    mov.s              eax, esi                            
                          nop                                                              // 0x0040594d    90
                          nop                                                              // 0x0040594e    90
                          nop                                                              // 0x0040594f    90
-_jmp_addr_0x00405950:
+?CallVirtualFunctionsForCreation@Windmill@@UAEXABUMapCoords@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00405950    8b442404
                          push               esi                                           // 0x00405954    56
                          mov.s              esi, ecx                                      // 0x00405955    8bf1

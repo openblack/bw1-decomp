@@ -41,6 +41,15 @@
 .globl _jmp_addr_0x004d72e0
 .globl _jmp_addr_0x004d74a0
 .globl _jmp_addr_0x004d75c0
+.globl ??_GCreatureBeliefSmall@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutVillager@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutTown@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutFlock@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutCitadel@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutCreature@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutForest@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutAbode@@UAEPAXI@Z
+.globl ??_GCreatureBeliefAboutContext@@UAEPAXI@Z
 
 start_0x004d63f0_0x004d7640:
 // Snippet: asm, [0x004d63f0, 0x004d75ff)
@@ -70,6 +79,7 @@ start_0x004d63f0_0x004d7640:
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d6424    8d44814c
                          ret                0x0004                                  // 0x004d6428    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d642b    e849b4f2ff
+??_GCreatureBeliefSmall@@UAEPAXI@Z:
                          push               esi                                     // 0x004d6430    56
                          mov.s              esi, ecx                                // 0x004d6431    8bf1
                          call               _jmp_addr_0x004daab0                    // 0x004d6433    e878460000
@@ -102,6 +112,7 @@ _jmp_addr_0x004d644a:    mov.s              eax, esi                            
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d6474    8d44814c
                          ret                0x0004                                  // 0x004d6478    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d647b    e8f9b3f2ff
+??_GCreatureBeliefAboutVillager@@UAEPAXI@Z:
                          push               esi                                     // 0x004d6480    56
                          mov.s              esi, ecx                                // 0x004d6481    8bf1
                          call               _jmp_addr_0x004dac30                    // 0x004d6483    e8a8470000
@@ -134,6 +145,7 @@ _jmp_addr_0x004d649a:    mov.s              eax, esi                            
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d64c4    8d44814c
                          ret                0x0004                                  // 0x004d64c8    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d64cb    e8a9b3f2ff
+??_GCreatureBeliefAboutTown@@UAEPAXI@Z:
                          push               esi                                     // 0x004d64d0    56
                          mov.s              esi, ecx                                // 0x004d64d1    8bf1
                          call               _jmp_addr_0x004daaf0                    // 0x004d64d3    e818460000
@@ -166,6 +178,7 @@ _jmp_addr_0x004d64ea:    mov.s              eax, esi                            
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d6514    8d44814c
                          ret                0x0004                                  // 0x004d6518    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d651b    e859b3f2ff
+??_GCreatureBeliefAboutFlock@@UAEPAXI@Z:
                          push               esi                                     // 0x004d6520    56
                          mov.s              esi, ecx                                // 0x004d6521    8bf1
                          call               _jmp_addr_0x004dab30                    // 0x004d6523    e808460000
@@ -198,6 +211,7 @@ _jmp_addr_0x004d653a:    mov.s              eax, esi                            
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d6564    8d44814c
                          ret                0x0004                                  // 0x004d6568    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d656b    e809b3f2ff
+??_GCreatureBeliefAboutCitadel@@UAEPAXI@Z:
                          push               esi                                     // 0x004d6570    56
                          mov.s              esi, ecx                                // 0x004d6571    8bf1
                          call               _jmp_addr_0x004dacb0                    // 0x004d6573    e838470000
@@ -230,6 +244,7 @@ _jmp_addr_0x004d658a:    mov.s              eax, esi                            
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d65b4    8d44814c
                          ret                0x0004                                  // 0x004d65b8    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d65bb    e8b9b2f2ff
+??_GCreatureBeliefAboutCreature@@UAEPAXI@Z:
                          push               esi                                     // 0x004d65c0    56
                          mov.s              esi, ecx                                // 0x004d65c1    8bf1
                          call               _jmp_addr_0x004dab70                    // 0x004d65c3    e8a8450000
@@ -262,6 +277,7 @@ _jmp_addr_0x004d65da:    mov.s              eax, esi                            
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d6604    8d44814c
                          ret                0x0004                                  // 0x004d6608    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d660b    e869b2f2ff
+??_GCreatureBeliefAboutForest@@UAEPAXI@Z:
                          push               esi                                     // 0x004d6610    56
                          mov.s              esi, ecx                                // 0x004d6611    8bf1
                          call               _jmp_addr_0x004dabb0                    // 0x004d6613    e898450000
@@ -294,6 +310,7 @@ _jmp_addr_0x004d662a:    mov.s              eax, esi                            
                          {disp8} lea        eax, dword ptr [ecx + eax * 0x4 + 0x4c] // 0x004d6654    8d44814c
                          ret                0x0004                                  // 0x004d6658    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                    // 0x004d665b    e819b2f2ff
+??_GCreatureBeliefAboutAbode@@UAEPAXI@Z:
                          push               esi                                     // 0x004d6660    56
                          mov.s              esi, ecx                                // 0x004d6661    8bf1
                          call               _jmp_addr_0x004dac70                    // 0x004d6663    e808460000
@@ -359,6 +376,7 @@ _jmp_addr_0x004d667a:    mov.s              eax, esi                            
                          nop                                                        // 0x004d66bd    90
                          nop                                                        // 0x004d66be    90
                          nop                                                        // 0x004d66bf    90
+??_GCreatureBeliefAboutContext@@UAEPAXI@Z:
                          push               esi                                     // 0x004d66c0    56
                          mov.s              esi, ecx                                // 0x004d66c1    8bf1
                          call               _jmp_addr_0x004dacf0                    // 0x004d66c3    e828460000

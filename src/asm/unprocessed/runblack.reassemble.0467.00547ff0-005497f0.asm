@@ -51,9 +51,13 @@
 .extern __fileno
 
 .globl _jmp_addr_0x00548990
+.globl ?Init@SetupOnlineLandscapes@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@SetupOnlineLandscapes@@UAEXXZ
+.globl ?InitControls@SetupOnlineLandscapes@@UAEXXZ
 
 start_0x00547ff0_0x005497f0:
 // Snippet: asm, [0x00547ff0, 0x00549789)
+?Init@SetupOnlineLandscapes@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00547ff0    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00547ff4    8b542404
                          push               ebx                                           // 0x00547ff8    53
@@ -246,9 +250,11 @@ _jmp_addr_0x00548280:    {disp32} mov       dword ptr [edi + 0x000000a8], eax   
                          ret                0x000c                                        // 0x0054829b    c20c00
                          nop                                                              // 0x0054829e    90
                          nop                                                              // 0x0054829f    90
+?Destroy@SetupOnlineLandscapes@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x005482a0    e8ebb2fcff
                          {disp32} mov       dword ptr [data_bytes + 0x30b670], 0x00000000 // 0x005482a5    c7057016cd0000000000
                          ret                                                              // 0x005482af    c3
+?InitControls@SetupOnlineLandscapes@@UAEXXZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30b670]        // 0x005482b0    a17016cd00
                          {disp8} mov        edx, dword ptr [eax + 0x04]                   // 0x005482b5    8b5004
                          xor.s              eax, eax                                      // 0x005482b8    33c0

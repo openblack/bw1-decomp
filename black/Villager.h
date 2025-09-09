@@ -15,8 +15,8 @@
 
 #include "GameThing.h" /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
-#include "Living.h" /* For struct Living, struct LivingVftable, struct Living__StateTableEntry */
-#include "LivingAction.h" /* For enum LIVING_ACTION_INDEX */
+#include "Living.h" /* For struct Living, struct LivingVftable */
+#include "LivingAction.h" /* For enum LIVING_ACTION_INDEX, struct Living__StateTableEntry */
 #include "Object.h" /* For struct Object */
 
 // Forward Declares
@@ -467,7 +467,7 @@ bool __fastcall DecideWhatToDo__8VillagerFv(struct Living* this);
 // win1.41 00751040 mac 1056f5e0 Villager::Birthday(void)
 void __fastcall Birthday__8VillagerFv(struct Living* this) asm("?Birthday@Villager@@UAEXXZ");
 // win1.41 007528c0 mac 1056b4c0 Villager::SetAge(unsigned long)
-void __fastcall SetAge__8VillagerFUl(struct Villager* this, const void* edx, uint32_t age);
+void __fastcall SetAge__8VillagerFUl(struct Living* this, const void* edx, uint32_t age);
 // win1.41 007520e0 mac 10087ab0 Villager::SetCurrentAndDestinationState(unsigned char, unsigned char)
 int __fastcall SetCurrentAndDestinationState__8VillagerFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination);
 // win1.41 00756590 mac inlined Villager::CallIntoAnimationFunction(VILLAGER_STATES)
@@ -513,7 +513,7 @@ bool __fastcall IsAvailableForReaction__8VillagerF8REACTION(struct Living* this,
 // win1.41 00763410 mac 1000edf0 Villager::IsAvailableForBeliefButNotReaction(REACTION)
 bool __fastcall IsAvailableForBeliefButNotReaction__8VillagerF8REACTION(struct Living* this, const void* edx, enum REACTION param_1) asm("?IsAvailableForBeliefButNotReaction@Villager@@UAE_NW4REACTION@@@Z");
 // win1.41 007634c0 mac 100072a0 Villager::UpdateHowImpressed(Reaction *, int)
-void __fastcall UpdateHowImpressed__8VillagerFP8Reactioni(struct Villager* this, const void* edx, struct Reaction* param_1, int param_2) asm("?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z");
+void __fastcall UpdateHowImpressed__8VillagerFP8Reactioni(struct Living* this, const void* edx, struct Reaction* param_1, int param_2) asm("?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z");
 // win1.41 00763440 mac inlined Villager::AddReaction(Reaction *, VILLAGER_STATES)
 void __fastcall AddReaction__8VillagerFP8Reaction15VILLAGER_STATES(struct Living* this, const void* edx, struct Reaction* param_1, enum VILLAGER_STATES param_2) asm("?AddReaction@Villager@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z");
 // win1.41 007637d0 mac 105941a0 Villager::StopReacting(void)

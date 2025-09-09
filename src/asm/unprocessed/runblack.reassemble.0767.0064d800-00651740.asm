@@ -107,6 +107,8 @@
 .globl _globl_ct_0x0064e6d0
 .globl _globl_ct_0x0064e6f0
 .globl _globl_ct_0x0064e720
+.globl ?ToBeDeleted@PlayerActionState@@UAEXH@Z
+.globl ?GetPlayer@PlayerActionState@@UAEPAVGPlayer@@XZ
 
 start_0x0064d800_0x00651740:
 // Snippet: asm, [0x0064d800, 0x00651721)
@@ -3063,6 +3065,7 @@ _jmp_addr_0x006500c0:    xor.s              eax, eax                            
                          {disp8} mov        dword ptr [ecx + 0x7c], eax                   // 0x006500fb    89417c
                          ret                                                              // 0x006500fe    c3
                          nop                                                              // 0x006500ff    90
+?ToBeDeleted@PlayerActionState@@UAEXH@Z:
                          push               ebx                                           // 0x00650100    53
                          push               ebp                                           // 0x00650101    55
                          push               esi                                           // 0x00650102    56
@@ -3866,6 +3869,7 @@ _jmp_addr_0x006508c2:    {disp32} fcom      dword ptr [_rdata_float1p0]         
 _jmp_addr_0x006508d7:    add                esp, 0x08                                     // 0x006508d7    83c408
                          ret                                                              // 0x006508da    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x006508db    e8190fdbff
+?GetPlayer@PlayerActionState@@UAEPAVGPlayer@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x4c]                   // 0x006508e0    8b414c
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x006508e3    8b0d5c19d000
                          push               eax                                           // 0x006508e9    50

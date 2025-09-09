@@ -66,9 +66,17 @@
 .globl _jmp_addr_0x0047dc50
 .globl _jmp_addr_0x0047deb0
 .globl _jmp_addr_0x0047e060
+.globl ?AddToRoutePlan@Creature@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z
+.globl ?SetSpeedInMetres@Creature@@UAEXMH@Z
+.globl ?GetQueryFirstEnumText@Creature@@UAE?AW4HELP_TEXT@@XZ
+.globl ?GetQueryLastEnumText@Creature@@UAE?AW4HELP_TEXT@@XZ
+.globl ?ReduceLife@Creature@@UAEXMPAVGPlayer@@@Z
+.globl ?IncreaseLife@Creature@@UAEXM@Z
+.globl ?SetHeight@Creature@@UAEXM@Z
 
 start_0x0047d500_0x0047e760:
 // Snippet: asm, [0x0047d500, 0x0047e740)
+?AddToRoutePlan@Creature@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z:
                          sub                esp, 0x08                                     // 0x0047d500    83ec08
                          push               ebx                                           // 0x0047d503    53
                          push               esi                                           // 0x0047d504    56
@@ -369,6 +377,7 @@ _jmp_addr_0x0047d807:    pop                esi                                 
                          pop                edi                                           // 0x0047d80b    5f
                          add                esp, 0x14                                     // 0x0047d80c    83c414
                          ret                                                              // 0x0047d80f    c3
+?SetSpeedInMetres@Creature@@UAEXMH@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0047d810    8b442404
                          {disp32} mov       ecx, dword ptr [ecx + 0x00000160]             // 0x0047d814    8b8960010000
                          {disp8} mov        ecx, dword ptr [ecx + 0x58]                   // 0x0047d81a    8b4958
@@ -451,6 +460,7 @@ _jmp_addr_0x0047d8e6:    pop                edi                                 
                          pop                ebx                                           // 0x0047d8e9    5b
                          add                esp, 0x08                                     // 0x0047d8ea    83c408
                          ret                0x0008                                        // 0x0047d8ed    c20800
+?GetQueryFirstEnumText@Creature@@UAE?AW4HELP_TEXT@@XZ:
                          push               ebx                                           // 0x0047d8f0    53
                          push               esi                                           // 0x0047d8f1    56
                          mov.s              esi, ecx                                      // 0x0047d8f2    8bf1
@@ -483,6 +493,7 @@ _jmp_addr_0x0047d93a:    pop                esi                                 
                          pop                ebx                                           // 0x0047d93d    5b
                          ret                                                              // 0x0047d93e    c3
                          nop                                                              // 0x0047d93f    90
+?GetQueryLastEnumText@Creature@@UAE?AW4HELP_TEXT@@XZ:
                          mov                eax, dword ptr [ecx]                          // 0x0047d940    8b01
                          jmp                dword ptr [eax + 0x4d8]                       // 0x0047d942    ffa0d8040000
                          nop                                                              // 0x0047d948    90
@@ -817,6 +828,7 @@ _jmp_addr_0x0047dcfb:    pop                esi                                 
                          ret                                                              // 0x0047dcfd    c3
                          nop                                                              // 0x0047dcfe    90
                          nop                                                              // 0x0047dcff    90
+?ReduceLife@Creature@@UAEXMPAVGPlayer@@@Z:
                          sub                esp, 0x30                                     // 0x0047dd00    83ec30
                          push               edi                                           // 0x0047dd03    57
                          mov.s              edi, ecx                                      // 0x0047dd04    8bf9
@@ -909,6 +921,7 @@ _jmp_addr_0x0047ddfd:    {disp8} mov        edx, dword ptr [esp + 0x3c]         
                          nop                                                              // 0x0047de1d    90
                          nop                                                              // 0x0047de1e    90
                          nop                                                              // 0x0047de1f    90
+?IncreaseLife@Creature@@UAEXM@Z:
                          push               esi                                           // 0x0047de20    56
                          mov.s              esi, ecx                                      // 0x0047de21    8bf1
                          call               @GetCreature3D__8CreatureFv@4                 // 0x0047de23    e8289affff
@@ -946,6 +959,7 @@ _jmp_addr_0x0047de65:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0047de7d    90
                          nop                                                              // 0x0047de7e    90
                          nop                                                              // 0x0047de7f    90
+?SetHeight@Creature@@UAEXM@Z:
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x0047de80    d9442404
                          {disp32} mov       eax, dword ptr [ecx + 0x00000160]             // 0x0047de84    8b8160010000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x20d38]             // 0x0047de8a    d80d389d8c00

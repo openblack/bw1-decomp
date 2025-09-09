@@ -25,6 +25,10 @@
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x00543d50
+.globl ?Init@CDBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@CDBox@@UAEXXZ
+.globl ?InitControls@CDBox@@UAEXXZ
+.globl ?Init@SkipBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 
 start_0x00543d50_0x00544430:
 // Snippet: asm, [0x00543d50, 0x0054441a)
@@ -70,6 +74,7 @@ _jmp_addr_0x00543d50:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          nop                                                            // 0x00543d7d    90
                          nop                                                            // 0x00543d7e    90
                          nop                                                            // 0x00543d7f    90
+?Init@CDBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x00543d80    8b44240c
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x00543d84    8b542404
                          push             ebx                                           // 0x00543d88    53
@@ -272,9 +277,11 @@ _jmp_addr_0x00544023:    {disp8} mov      dword ptr [esi + 0x28], eax           
                          pop              ebx                                           // 0x00544037    5b
                          ret              0x000c                                        // 0x00544038    c20c00
                          call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054403b    e839d8ebff
+?Destroy@CDBox@@UAEXXZ:
                          call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544040    e84bf5fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab7c], 0x00000000 // 0x00544045    c7057c0bcd0000000000
                          ret                                                            // 0x0054404f    c3
+?InitControls@CDBox@@UAEXXZ:
                          push             esi                                           // 0x00544050    56
                          mov.s            esi, ecx                                      // 0x00544051    8bf1
                          {disp32} mov     ecx, dword ptr [_global]                      // 0x00544053    8b0d203bcd00
@@ -415,6 +422,7 @@ _jmp_addr_0x005441af:    pop              esi                                   
                          nop                                                            // 0x005441bd    90
                          nop                                                            // 0x005441be    90
                          nop                                                            // 0x005441bf    90
+?Init@SkipBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x005441c0    8b44240c
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x005441c4    8b542404
                          push             ebx                                           // 0x005441c8    53

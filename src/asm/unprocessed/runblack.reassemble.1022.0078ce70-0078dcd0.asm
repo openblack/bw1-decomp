@@ -44,6 +44,13 @@
 .globl _globl_ct_0x0078d940
 .globl _globl_ct_0x0078d970
 .globl _globl_ct_0x0078da10
+.globl ?Draw@GameOptionsRoom@@UAEXXZ
+.globl ?UpdateMouse@GameOptionsRoom@@UAEXULHCoord@@W4INTERFACE_MESSAGE_TYPES@@@Z
+.globl ?UpdateKeyboard@GameOptionsRoom@@UAEXW4LH_KEY@@G@Z
+.globl ?Update@GameOptionsRoom@@UAEXXZ
+.globl ?IsAvailable@GameOptionsRoom@@UAE_NXZ
+.globl ?GetSubMeshData@SubOptionEntryButton@@UAEXAAUSubMeshDrawData@@HH@Z
+.globl ?UpdateMouse@SubOptionEntryButton@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z
 
 start_0x0078ce70_0x0078dcd0:
 // Snippet: asm, [0x0078ce70, 0x0078dcb5)
@@ -789,6 +796,7 @@ _jmp_addr_0x0078d716:    {disp32} mov      dword ptr [ebx + 0x00000124], eax    
                          nop                                                             // 0x0078d80d    90
                          nop                                                             // 0x0078d80e    90
                          nop                                                             // 0x0078d80f    90
+?Draw@GameOptionsRoom@@UAEXXZ:
                          {disp32} jmp      _jmp_addr_0x0078f1f0                          // 0x0078d810    e9db190000
                          nop                                                             // 0x0078d815    90
                          nop                                                             // 0x0078d816    90
@@ -801,6 +809,7 @@ _jmp_addr_0x0078d716:    {disp32} mov      dword ptr [ebx + 0x00000124], eax    
                          nop                                                             // 0x0078d81d    90
                          nop                                                             // 0x0078d81e    90
                          nop                                                             // 0x0078d81f    90
+?UpdateMouse@GameOptionsRoom@@UAEXULHCoord@@W4INTERFACE_MESSAGE_TYPES@@@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x0078d820    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x08]                   // 0x0078d824    8b542408
                          push              eax                                           // 0x0078d828    50
@@ -818,6 +827,7 @@ _jmp_addr_0x0078d716:    {disp32} mov      dword ptr [ebx + 0x00000124], eax    
                          nop                                                             // 0x0078d83d    90
                          nop                                                             // 0x0078d83e    90
                          nop                                                             // 0x0078d83f    90
+?UpdateKeyboard@GameOptionsRoom@@UAEXW4LH_KEY@@G@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x08]                   // 0x0078d840    8b442408
                          {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x0078d844    8b542404
                          push              eax                                           // 0x0078d848    50
@@ -838,6 +848,7 @@ _jmp_addr_0x0078d716:    {disp32} mov      dword ptr [ebx + 0x00000124], eax    
                          nop                                                             // 0x0078d85d    90
                          nop                                                             // 0x0078d85e    90
                          nop                                                             // 0x0078d85f    90
+?Update@GameOptionsRoom@@UAEXXZ:
                          push              esi                                           // 0x0078d860    56
                          mov.s             esi, ecx                                      // 0x0078d861    8bf1
                          call              _GetCurrentActiveBox__8SetupBoxFv             // 0x0078d863    e868a6c7ff
@@ -883,6 +894,7 @@ _jmp_addr_0x0078d8e4:    pop               esi                                  
                          nop                                                             // 0x0078d8ed    90
                          nop                                                             // 0x0078d8ee    90
                          nop                                                             // 0x0078d8ef    90
+?IsAvailable@GameOptionsRoom@@UAE_NXZ:
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x0078d8f0    8b0d5c19d000
                          call              @IsMultiplayerGame__5GGameCFv@4               // 0x0078d8f6    e88556dcff
                          test              eax, eax                                      // 0x0078d8fb    85c0
@@ -1116,6 +1128,7 @@ _jmp_addr_0x0078db20:    {disp8} mov       eax, dword ptr [esp + 0x0c]          
                          nop                                                             // 0x0078db5d    90
                          nop                                                             // 0x0078db5e    90
                          nop                                                             // 0x0078db5f    90
+?GetSubMeshData@SubOptionEntryButton@@UAEXAAUSubMeshDrawData@@HH@Z:
                          sub               esp, 0x24                                     // 0x0078db60    83ec24
                          {disp8} mov       eax, dword ptr [esp + 0x30]                   // 0x0078db63    8b442430
                          push              esi                                           // 0x0078db67    56
@@ -1194,6 +1207,7 @@ _jmp_addr_0x0078dc00:    {disp8} mov       byte ptr [esp + 0x3b], dl            
                          nop                                                             // 0x0078dc3d    90
                          nop                                                             // 0x0078dc3e    90
                          nop                                                             // 0x0078dc3f    90
+?UpdateMouse@SubOptionEntryButton@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x0078dc40    8b44240c
                          sub               esp, 0x24                                     // 0x0078dc44    83ec24
                          dec               eax                                           // 0x0078dc47    48

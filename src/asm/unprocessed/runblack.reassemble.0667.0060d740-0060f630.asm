@@ -79,6 +79,8 @@
 .globl _jmp_addr_0x0060db00
 
 .globl _globl_ct_0x0060dae0
+.globl ?SetYAngle@MobileWallHug@@UAEXM@Z
+.globl ?PrssKey@EditorHug@@UAEXW4LH_KEY@@G@Z
 
 start_0x0060d740_0x0060f630:
 // Snippet: asm, [0x0060d740, 0x0060f5d9)
@@ -389,6 +391,7 @@ _jmp_addr_0x0060da70:    mov                edx, dword ptr [esi]                
                          nop                                                            // 0x0060dabd    90
                          nop                                                            // 0x0060dabe    90
                          nop                                                            // 0x0060dabf    90
+?SetYAngle@MobileWallHug@@UAEXM@Z:
                          push               esi                                         // 0x0060dac0    56
                          push               edi                                         // 0x0060dac1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                 // 0x0060dac2    8b7c240c
@@ -456,6 +459,7 @@ _jmp_addr_0x0060db00:    push               esi                                 
                          nop                                                            // 0x0060db2d    90
                          nop                                                            // 0x0060db2e    90
                          nop                                                            // 0x0060db2f    90
+?PrssKey@EditorHug@@UAEXW4LH_KEY@@G@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                 // 0x0060db30    8b442404
                          sub                esp, 0x00000288                             // 0x0060db34    81ec88020000
                          push               ebx                                         // 0x0060db3a    53

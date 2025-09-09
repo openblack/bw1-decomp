@@ -71,9 +71,11 @@
 .globl _globl_ct_0x005b8ee0
 .globl _globl_ct_0x005bad00
 .globl _globl_ct_0x005bafe0
+.globl ?DrawTheHeldObject@HandStateTug@@UAEXXZ
 
 start_0x005b8e40_0x005bc4a0:
 // Snippet: asm, [0x005b8e40, 0x005bc489)
+?DrawTheHeldObject@HandStateTug@@UAEXXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x04]                    // 0x005b8e40    8b4104
                          {disp32} mov       ecx, dword ptr [eax + 0x00004904]              // 0x005b8e43    8b8804490000
                          mov                edx, dword ptr [ecx]                           // 0x005b8e49    8b11

@@ -100,6 +100,10 @@
 .globl _globl_ct_0x004f7140
 .globl _globl_ct_0x004f7170
 .globl _StringFunction__4PrssFlPci
+.globl ?SetFocus@Creature@@UAEXPBULHPoint@@@Z
+.globl ?ProcessTurn@CreatureSelect@@UAEHXZ
+.globl ?Display@CreatureSelect@@UAEXXZ
+.globl ?ClickFunction@CreatureSelect@@UAEXHHH@Z
 
 start_0x004f5420_0x004f75b0:
 // Snippet: asm, [0x004f5420, 0x004f7598)
@@ -2057,6 +2061,7 @@ _jmp_addr_0x004f6751:    pop                edi                                 
                          nop                                                               // 0x004f675d    90
                          nop                                                               // 0x004f675e    90
                          nop                                                               // 0x004f675f    90
+?SetFocus@Creature@@UAEXPBULHPoint@@@Z:
                          sub                esp, 0x0c                                      // 0x004f6760    83ec0c
                          push               ebx                                            // 0x004f6763    53
                          push               ebp                                            // 0x004f6764    55
@@ -3085,6 +3090,7 @@ _StringFunction__4PrssFlPci:
                          nop                                                               // 0x004f720d    90
                          nop                                                               // 0x004f720e    90
                          nop                                                               // 0x004f720f    90
+?ProcessTurn@CreatureSelect@@UAEHXZ:
                          push               esi                                            // 0x004f7210    56
                          mov.s              esi, ecx                                       // 0x004f7211    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x0c]                    // 0x004f7213    8b460c
@@ -3117,6 +3123,7 @@ _jmp_addr_0x004f723f:    mov.s              eax, esi                            
                          nop                                                               // 0x004f724d    90
                          nop                                                               // 0x004f724e    90
                          nop                                                               // 0x004f724f    90
+?Display@CreatureSelect@@UAEXXZ:
                          push               ecx                                            // 0x004f7250    51
                          push               ebx                                            // 0x004f7251    53
                          push               ebp                                            // 0x004f7252    55
@@ -3344,6 +3351,7 @@ _jmp_addr_0x004f74bd:    pop                edi                                 
                          nop                                                               // 0x004f74cd    90
                          nop                                                               // 0x004f74ce    90
                          nop                                                               // 0x004f74cf    90
+?ClickFunction@CreatureSelect@@UAEXHHH@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x004f74d0    8b442404
                          push               esi                                            // 0x004f74d4    56
                          dec                eax                                            // 0x004f74d5    48

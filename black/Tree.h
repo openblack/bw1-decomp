@@ -145,8 +145,6 @@ void __fastcall SetLife__4TreeFf(struct Object* this, const void* edx, float par
 uint32_t __fastcall Process__4TreeFv(struct Object* this) asm("?Process@Tree@@UAEIXZ");
 // win1.41 0055d8a0 mac 101594d0 Tree::GetMesh( const(void))
 int __fastcall GetMesh__4TreeCFv(const struct Object* this) asm("?GetMesh@Tree@@UBEHXZ");
-// win1.41 0074a180 mac 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-void __fastcall AddToRoutePlan__4TreeFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Tree* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int32_t param_1, struct Point2D param_2, float param_3, int32_t param_4)) asm("?AddToRoutePlan@Tree@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 0074ab00 mac 10044ce0 Tree::Draw(void)
 void __fastcall Draw__4TreeFv(struct Object* this) asm("?Draw@Tree@@UAEXXZ");
 // win1.41 0074b270 mac 10157fc0 Tree::DrawOutOfMap(bool)
@@ -195,6 +193,8 @@ void __fastcall ReactToPhysicsImpact__4TreeFP13PhysicsObjectb(struct Object* thi
 bool __fastcall CanBecomeAPhysicsObject__4TreeFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Tree@@UAE_NXZ");
 // win1.41 0074c0e0 mac 10156590 Tree::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__4TreeFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@Tree@@UAE_NPAVCreature@@@Z");
+// win1.41 0074a180 mac 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+void __fastcall AddToRoutePlan__4TreeFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@Tree@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 0074a140 mac 10158d40 Tree::GetRoutePlanRadius(Creature *)
 float __fastcall GetRoutePlanRadius__4TreeFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?GetRoutePlanRadius@Tree@@UAEMPAVCreature@@@Z");
 // win1.41 0074b720 mac 10157800 Tree::IsARootedObject(void)

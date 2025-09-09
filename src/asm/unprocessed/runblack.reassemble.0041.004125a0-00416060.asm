@@ -74,6 +74,8 @@
 .globl ?GetTextHeight@EditorIconBase@@UAIMXZ
 .globl ?GetHiliteColor@EditorIconBase@@UAIPAULH3DColor@@XZ
 .globl ?IsScrollable@EditorIconBase@@UAI_NXZ
+.globl ?GetBaseInfo@GAlignmentInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGAlignmentInfo@@UAEPAXI@Z
 
 start_0x004125a0_0x00416060:
 // Snippet: asm, [0x004125a0, 0x00416032)
@@ -2343,6 +2345,7 @@ _jmp_addr_0x0041408c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x004140bd    90
                          nop                                                              // 0x004140be    90
                          nop                                                              // 0x004140bf    90
+?GetBaseInfo@GAlignmentInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x004140c0    8b442404
                          mov                dword ptr [eax], 0x00000007                   // 0x004140c4    c70007000000
                          mov                eax, 0x00c4ce20                               // 0x004140ca    b820cec400
@@ -2387,6 +2390,7 @@ _jmp_addr_0x00414110:    sub                esi, 0x48                           
                          pop                edi                                           // 0x0041411d    5f
                          pop                esi                                           // 0x0041411e    5e
 _jmp_addr_0x0041411f:    ret                                                              // 0x0041411f    c3
+??_GGAlignmentInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00414120    56
                          mov.s              esi, ecx                                      // 0x00414121    8bf1
                          call               _jmp_addr_0x00436960                          // 0x00414123    e838280200

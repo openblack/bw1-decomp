@@ -15,7 +15,7 @@ static_assert(sizeof(struct SpellSetupBox) == 0x10, "Data type is of wrong size"
 // Override methods
 
 // win1.41 00547970 mac 105cc310 SpellSetupBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__13SpellSetupBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@SpellSetupBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__13SpellSetupBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@SpellSetupBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00547c30 mac 105cc2b0 SpellSetupBox::Destroy(void)
 void __fastcall Destroy__13SpellSetupBoxFv(struct DialogBoxBase* this) asm("?Destroy@SpellSetupBox@@UAEXXZ");
 // win1.41 00547c40 mac 105cc120 SpellSetupBox::InitControls(void)

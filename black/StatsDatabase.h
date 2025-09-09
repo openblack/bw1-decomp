@@ -6,10 +6,6 @@
 
 #include "MultiplayerDatabase.h" /* For struct MultiplayerDatabase */
 
-// Forward Declares
-
-struct CreatureDatabase;
-
 struct StatsDatabase
 {
   struct MultiplayerDatabase super;  /* 0x0 */
@@ -30,6 +26,6 @@ struct StatsDatabase* __fastcall __ct__13StatsDatabaseFv(struct StatsDatabase* t
 // Override methods
 
 // win1.41 006338f0 mac 10109920 StatsDatabase::Send(void)
-uint32_t __fastcall Send__13StatsDatabaseFv(struct CreatureDatabase* this) asm("?Send@StatsDatabase@@UAEIXZ");
+uint32_t __fastcall Send__13StatsDatabaseFv(struct MultiplayerDatabase* this) asm("?Send@StatsDatabase@@UAEIXZ");
 
 #endif /* BW1_DECOMP_STATS_DATABASE_INCLUDED_H */

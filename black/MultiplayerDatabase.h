@@ -8,13 +8,13 @@
 
 // Forward Declares
 
-struct CreatureDatabase;
 struct DBInfo;
+struct MultiplayerDatabase;
 
 struct MultiplayerDatabaseVftable
 {
-  bool32_t (__fastcall* Send)(struct CreatureDatabase* this);  /* 0x0 */
-  bool32_t (__fastcall* ReceiveReturnData)(struct CreatureDatabase* this);
+  bool32_t (__fastcall* Send)(struct MultiplayerDatabase* this);  /* 0x0 */
+  bool32_t (__fastcall* ReceiveReturnData)(struct MultiplayerDatabase* this);
 };
 static_assert(sizeof(struct MultiplayerDatabaseVftable) == 0x8, "Data type is of wrong size");
 
@@ -41,6 +41,6 @@ struct MultiplayerDatabase* __fastcall __ct__19MultiplayerDatabaseFv(struct Mult
 // Override methods
 
 // win1.41 00633610 mac 10109f20 MultiplayerDatabase::ReceiveReturnData(void)
-uint32_t __fastcall ReceiveReturnData__19MultiplayerDatabaseFv(struct CreatureDatabase* this) asm("?ReceiveReturnData@MultiplayerDatabase@@UAEIXZ");
+uint32_t __fastcall ReceiveReturnData__19MultiplayerDatabaseFv(struct MultiplayerDatabase* this) asm("?ReceiveReturnData@MultiplayerDatabase@@UAEIXZ");
 
 #endif /* BW1_DECOMP_MULTIPLAYER_DATABASE_INCLUDED_H */

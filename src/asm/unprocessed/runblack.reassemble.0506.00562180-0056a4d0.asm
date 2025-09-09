@@ -134,6 +134,10 @@
 .globl _globl_ct_0x005649a0
 .globl _globl_ct_0x005649d0
 .globl _globl_ct_0x005649f0
+.globl ?GetPlayer@GameStats@@UAEPAVGPlayer@@XZ
+.globl ?SetPlayer@GameStats@@UAEXPAVGPlayer@@@Z
+.globl ?GetDebugText@GameStats@@UAEPADXZ
+.globl ??_GGameStats@@UAEPAXI@Z
 
 start_0x00562180_0x0056a4d0:
 // Snippet: asm, [0x00562180, 0x0056a4a9)
@@ -3932,6 +3936,7 @@ _jmp_addr_0x00564a34:    ret                                                    
                          nop                                                              // 0x00564abd    90
                          nop                                                              // 0x00564abe    90
                          nop                                                              // 0x00564abf    90
+?GetPlayer@GameStats@@UAEPAVGPlayer@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x14]                   // 0x00564ac0    8b4114
                          ret                                                              // 0x00564ac3    c3
                          nop                                                              // 0x00564ac4    90
@@ -3946,6 +3951,7 @@ _jmp_addr_0x00564a34:    ret                                                    
                          nop                                                              // 0x00564acd    90
                          nop                                                              // 0x00564ace    90
                          nop                                                              // 0x00564acf    90
+?SetPlayer@GameStats@@UAEXPAVGPlayer@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00564ad0    8b442404
                          {disp8} mov        dword ptr [ecx + 0x14], eax                   // 0x00564ad4    894114
                          ret                0x0004                                        // 0x00564ad7    c20400
@@ -3962,6 +3968,7 @@ _jmp_addr_0x00564a34:    ret                                                    
                          nop                                                              // 0x00564aed    90
                          nop                                                              // 0x00564aee    90
                          nop                                                              // 0x00564aef    90
+?GetDebugText@GameStats@@UAEPADXZ:
                          mov                eax, 0x00bee588                               // 0x00564af0    b888e5be00
                          ret                                                              // 0x00564af5    c3
                          nop                                                              // 0x00564af6    90
@@ -3974,6 +3981,7 @@ _jmp_addr_0x00564a34:    ret                                                    
                          nop                                                              // 0x00564afd    90
                          nop                                                              // 0x00564afe    90
                          nop                                                              // 0x00564aff    90
+??_GGameStats@@UAEPAXI@Z:
                          push               esi                                           // 0x00564b00    56
                          mov.s              esi, ecx                                      // 0x00564b01    8bf1
                          call               _jmp_addr_0x00564b30                          // 0x00564b03    e828000000

@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x007989e0
 .extern _jmp_addr_0x00798b30
 .extern _jmp_addr_0x007991c0
-.extern _jmp_addr_0x0079a230
+.extern ?DrawAdditional@GameOptionsRoom@@UAEX_N@Z
 .extern _jmp_addr_0x0079a290
 .extern _jmp_addr_0x0079a600
 .extern _jmp_addr_0x0079a620
@@ -123,6 +123,11 @@
 .globl _globl_ct_0x0078b080
 .globl _InitEngine__12CreatureRoomFv
 .globl _Reinit__11InnerCameraFv
+.globl ?Init@CreatureRoomCamera@@UAEXPAD@Z
+.globl ?Close@CreatureRoomCamera@@UAEXXZ
+.globl ?Update@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z
+.globl ?UpdateState@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z
+.globl ?UpdateMain@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z
 
 start_0x007878e0_0x0078b520:
 // Snippet: asm, [0x007878e0, 0x0078b501)
@@ -1288,7 +1293,7 @@ _jmp_addr_0x007889a5:    call               ebx                                 
 _jmp_addr_0x007889ea:    {disp32} mov       edx, dword ptr [esp + 0x000001a4]             // 0x007889ea    8b9424a4010000
                          push               edx                                           // 0x007889f1    52
                          mov.s              ecx, esi                                      // 0x007889f2    8bce
-                         call               _jmp_addr_0x0079a230                          // 0x007889f4    e837180100
+                         call               ?DrawAdditional@GameOptionsRoom@@UAEX_N@Z     // 0x007889f4    e837180100
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x007889f9    8d4c2438
                          call               dword ptr [rdata_bytes + 0x758]               // 0x007889fd    ff1558978a00
                          pop                edi                                           // 0x00788a03    5f
@@ -2783,6 +2788,7 @@ _jmp_addr_0x00789d80:    {disp32} fld       dword ptr [rdata_bytes + 0xf5c00]   
                          nop                                                              // 0x00789d9d    90
                          nop                                                              // 0x00789d9e    90
                          nop                                                              // 0x00789d9f    90
+?Init@CreatureRoomCamera@@UAEXPAD@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00789da0    8b442404
                          push               esi                                           // 0x00789da4    56
                          mov.s              esi, ecx                                      // 0x00789da5    8bf1
@@ -2816,6 +2822,7 @@ _jmp_addr_0x00789d80:    {disp32} fld       dword ptr [rdata_bytes + 0xf5c00]   
                          nop                                                              // 0x00789dfd    90
                          nop                                                              // 0x00789dfe    90
                          nop                                                              // 0x00789dff    90
+?Close@CreatureRoomCamera@@UAEXXZ:
                          {disp32} jmp       @Close__11InnerCameraFv@4                     // 0x00789e00    e99bd60000
                          nop                                                              // 0x00789e05    90
                          nop                                                              // 0x00789e06    90
@@ -2828,6 +2835,7 @@ _jmp_addr_0x00789d80:    {disp32} fld       dword ptr [rdata_bytes + 0xf5c00]   
                          nop                                                              // 0x00789e0d    90
                          nop                                                              // 0x00789e0e    90
                          nop                                                              // 0x00789e0f    90
+?Update@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x00789e10    8b442418
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x00789e14    8b542414
                          push               eax                                           // 0x00789e18    50
@@ -2852,6 +2860,7 @@ _jmp_addr_0x00789d80:    {disp32} fld       dword ptr [rdata_bytes + 0xf5c00]   
                          nop                                                              // 0x00789e3d    90
                          nop                                                              // 0x00789e3e    90
                          nop                                                              // 0x00789e3f    90
+?UpdateState@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z:
                          push               esi                                           // 0x00789e40    56
                          mov.s              esi, ecx                                      // 0x00789e41    8bf1
                          {disp32} mov       eax, dword ptr [esi + 0x00000438]             // 0x00789e43    8b8638040000
@@ -3258,6 +3267,7 @@ _jmp_addr_0x0078a3a0:    {disp8} mov        eax, dword ptr [esp + 0x20]         
                          nop                                                              // 0x0078a3dd    90
                          nop                                                              // 0x0078a3de    90
                          nop                                                              // 0x0078a3df    90
+?UpdateMain@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z:
                          sub                esp, 0x58                                     // 0x0078a3e0    83ec58
                          {disp8} mov        eax, dword ptr [esp + 0x6c]                   // 0x0078a3e3    8b44246c
                          push               ebx                                           // 0x0078a3e7    53

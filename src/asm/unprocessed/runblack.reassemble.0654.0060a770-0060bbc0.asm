@@ -61,6 +61,8 @@
 .globl @AreWeThere__13MobileWallHugFf@12
 .globl _jmp_addr_0x0060adc0
 .globl @MoveTo__13MobileWallHugFv@4
+.globl ?AreWeThere@MobileWallHug@@UAE_NABUMapCoords@@M@Z
+.globl ?MoveTo3D@MobileWallHug@@UAEXXZ
 
 start_0x0060a770_0x0060bbc0:
 // Snippet: asm, [0x0060a770, 0x0060bb7b)
@@ -626,6 +628,7 @@ _jmp_addr_0x0060ad2f:    pop                esi                                 
                          pop                esi                                     // 0x0060ad5b    5e
                          ret                0x0004                                  // 0x0060ad5c    c20400
                          nop                                                        // 0x0060ad5f    90
+?AreWeThere@MobileWallHug@@UAE_NABUMapCoords@@M@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]             // 0x0060ad60    8b442404
                          {disp8} mov        edx, dword ptr [ecx + 0x14]             // 0x0060ad64    8b5114
                          push               esi                                     // 0x0060ad67    56
@@ -765,6 +768,7 @@ _jmp_addr_0x0060aecd:    pop                edi                                 
                          nop                                                        // 0x0060aedd    90
                          nop                                                        // 0x0060aede    90
                          nop                                                        // 0x0060aedf    90
+?MoveTo3D@MobileWallHug@@UAEXXZ:
                          {disp8} fld        dword ptr [ecx + 0x1c]                  // 0x0060aee0    d9411c
                          {disp32} fld       dword ptr [ecx + 0x00000088]            // 0x0060aee3    d98188000000
                          fcompp                                                     // 0x0060aee9    ded9

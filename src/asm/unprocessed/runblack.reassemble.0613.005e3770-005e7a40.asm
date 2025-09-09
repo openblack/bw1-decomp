@@ -202,6 +202,12 @@
 .globl _globl_ct_0x005e7690
 .globl _globl_ct_0x005e7990
 .globl _globl_ct_0x005e79c0
+.globl ??_GGLanguage@@UAEPAXI@Z
+.globl ?SaveExtraData@GLeashStatus@@UAEXAAVGameOSFile@@@Z
+.globl ?Save@GLeashStatus@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GLeashStatus@@UAEIAAVGameOSFile@@@Z
+.globl ?GetPlayer@GLeashStatus@@UAEPAVGPlayer@@XZ
+.globl ?ResolveLoad@GLeashStatus@@UAEXXZ
 
 start_0x005e3770_0x005e7a40:
 // Snippet: asm, [0x005e3770, 0x005e7a0b)
@@ -3866,6 +3872,7 @@ _jmp_addr_0x005e6740:    {disp32} mov       dword ptr [data_bytes + 0x35a1a4], 0
                          nop                                                              // 0x005e676d    90
                          nop                                                              // 0x005e676e    90
                          nop                                                              // 0x005e676f    90
+??_GGLanguage@@UAEPAXI@Z:
                          push               esi                                           // 0x005e6770    56
                          mov.s              esi, ecx                                      // 0x005e6771    8bf1
                          call               _jmp_addr_0x005e6790                          // 0x005e6773    e818000000
@@ -4805,6 +4812,7 @@ _jmp_addr_0x005e71aa:    {disp8} mov        edx, dword ptr [esi + 0x14]         
                          nop                                                              // 0x005e71cd    90
                          nop                                                              // 0x005e71ce    90
                          nop                                                              // 0x005e71cf    90
+?SaveExtraData@GLeashStatus@@UAEXAAVGameOSFile@@@Z:
                          push               ecx                                           // 0x005e71d0    51
                          mov                eax, dword ptr [ecx]                          // 0x005e71d1    8b01
                          call               dword ptr [eax + 0x1c]                        // 0x005e71d3    ff501c
@@ -4836,6 +4844,7 @@ _jmp_addr_0x005e722a:    pop                ecx                                 
                          ret                0x0004                                        // 0x005e722b    c20400
                          nop                                                              // 0x005e722e    90
                          nop                                                              // 0x005e722f    90
+?Save@GLeashStatus@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x005e7230    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x005e7231    8b742408
                          push               edi                                           // 0x005e7235    57
@@ -5004,6 +5013,7 @@ _jmp_addr_0x005e7427:    pop                edi                                 
                          ret                0x0004                                        // 0x005e742b    c20400
                          nop                                                              // 0x005e742e    90
                          nop                                                              // 0x005e742f    90
+?Load@GLeashStatus@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x005e7430    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x005e7431    8b742408
                          push               edi                                           // 0x005e7435    57
@@ -5184,6 +5194,7 @@ _jmp_addr_0x005e761c:    pop                edi                                 
                          nop                                                              // 0x005e762d    90
                          nop                                                              // 0x005e762e    90
                          nop                                                              // 0x005e762f    90
+?GetPlayer@GLeashStatus@@UAEPAVGPlayer@@XZ:
                          xor.s              eax, eax                                      // 0x005e7630    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x30]                     // 0x005e7632    8a4130
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005e7635    8b0d5c19d000
@@ -5204,6 +5215,7 @@ _jmp_addr_0x005e761c:    pop                edi                                 
                          nop                                                              // 0x005e764d    90
                          nop                                                              // 0x005e764e    90
                          nop                                                              // 0x005e764f    90
+?ResolveLoad@GLeashStatus@@UAEXXZ:
                          ret                                                              // 0x005e7650    c3
                          nop                                                              // 0x005e7651    90
                          nop                                                              // 0x005e7652    90

@@ -23,7 +23,7 @@ extern const struct DialogBoxBaseVftable __vt__12TattooEditor asm("??_7TattooEdi
 // Override methods
 
 // win1.41 00542510 mac 105bdae0 TattooEditor::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__12TattooEditorFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@TattooEditor@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__12TattooEditorFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@TattooEditor@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 005427e0 mac 105bda80 TattooEditor::Destroy(void)
 void __fastcall Destroy__12TattooEditorFv(struct DialogBoxBase* this) asm("?Destroy@TattooEditor@@UAEXXZ");
 // win1.41 0053bd20 mac 105c5eb0 TattooEditor::CanESCOut(void)

@@ -50,6 +50,11 @@
 
 .globl _globl_ct_0x0050e2e0
 .globl _globl_ct_0x0050e310
+.globl ?Save@DanceGroup@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@DanceGroup@@UAEIAAVGameOSFile@@@Z
+.globl ?GetSaveType@DanceKeyAction@@UAEIXZ
+.globl ?GetDebugText@DanceKeyAction@@UAEPADXZ
+.globl ??_GDanceKeyAction@@UAEPAXI@Z
 
 start_0x0050d1c0_0x0050e7e0:
 // Snippet: asm, [0x0050d1c0, 0x0050e773)
@@ -476,6 +481,7 @@ _jmp_addr_0x0050d62d:    {disp8} mov        eax, dword ptr [eax + 0x04]         
                          nop                                                              // 0x0050d63d    90
                          nop                                                              // 0x0050d63e    90
                          nop                                                              // 0x0050d63f    90
+?Save@DanceGroup@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x0050d640    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x0050d641    8b742408
                          push               edi                                           // 0x0050d645    57
@@ -766,6 +772,7 @@ _jmp_addr_0x0050d9ab:    pop                edi                                 
                          nop                                                              // 0x0050d9bd    90
                          nop                                                              // 0x0050d9be    90
                          nop                                                              // 0x0050d9bf    90
+?Load@DanceGroup@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                           // 0x0050d9c0    51
                          push               esi                                           // 0x0050d9c1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x0050d9c2    8b74240c
@@ -1727,6 +1734,7 @@ _jmp_addr_0x0050e340:    push               esi                                 
                          nop                                                              // 0x0050e37d    90
                          nop                                                              // 0x0050e37e    90
                          nop                                                              // 0x0050e37f    90
+?GetSaveType@DanceKeyAction@@UAEIXZ:
                          mov                eax, 0x00000079                               // 0x0050e380    b879000000
                          ret                                                              // 0x0050e385    c3
                          nop                                                              // 0x0050e386    90
@@ -1739,6 +1747,7 @@ _jmp_addr_0x0050e340:    push               esi                                 
                          nop                                                              // 0x0050e38d    90
                          nop                                                              // 0x0050e38e    90
                          nop                                                              // 0x0050e38f    90
+?GetDebugText@DanceKeyAction@@UAEPADXZ:
                          mov                eax, 0x00be82f0                               // 0x0050e390    b8f082be00
                          ret                                                              // 0x0050e395    c3
                          nop                                                              // 0x0050e396    90
@@ -1751,6 +1760,7 @@ _jmp_addr_0x0050e340:    push               esi                                 
                          nop                                                              // 0x0050e39d    90
                          nop                                                              // 0x0050e39e    90
                          nop                                                              // 0x0050e39f    90
+??_GDanceKeyAction@@UAEPAXI@Z:
                          push               edi                                           // 0x0050e3a0    57
                          mov.s              edi, ecx                                      // 0x0050e3a1    8bf9
                          {disp8} mov        eax, dword ptr [edi + 0x14]                   // 0x0050e3a3    8b4714

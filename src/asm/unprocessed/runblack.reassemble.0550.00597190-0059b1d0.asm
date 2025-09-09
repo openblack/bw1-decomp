@@ -114,8 +114,8 @@
 .globl _jmp_addr_0x00597ed0
 .globl _jmp_addr_0x00597f20
 .globl _jmp_addr_0x005981d0
-.globl _jmp_addr_0x00598240
-.globl _jmp_addr_0x005985c0
+.globl ?Save@GroupBehaviour@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@GroupBehaviour@@UAEIAAVGameOSFile@@@Z
 .globl _jmp_addr_0x00598980
 .globl _jmp_addr_0x00598ab0
 .globl _jmp_addr_0x00598b00
@@ -139,6 +139,9 @@
 .globl _AddAction__14GroupBehaviourFfUl23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument
 .globl _LoadDance__14GroupBehaviourFPCc
 .globl _AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument
+.globl ?Init@GSLobbyBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?InitControls@GSLobbyBox@@UAEXXZ
+.globl ?Destroy@GSLobbyBox@@UAEXXZ
 
 start_0x00597190_0x0059b1d0:
 // Snippet: asm, [0x00597190, 0x0059b161)
@@ -1653,7 +1656,8 @@ _jmp_addr_0x00598229:    {disp8} mov        eax, dword ptr [eax + 0x04]         
                          nop                                                              // 0x0059823d    90
                          nop                                                              // 0x0059823e    90
                          nop                                                              // 0x0059823f    90
-_jmp_addr_0x00598240:    push               esi                                           // 0x00598240    56
+?Save@GroupBehaviour@@UAEIAAVGameOSFile@@@Z:
+                         push               esi                                           // 0x00598240    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x00598241    8b742408
                          push               edi                                           // 0x00598245    57
                          mov.s              edi, ecx                                      // 0x00598246    8bf9
@@ -1932,7 +1936,8 @@ _jmp_addr_0x005985ae:    pop                edi                                 
                          nop                                                              // 0x005985bd    90
                          nop                                                              // 0x005985be    90
                          nop                                                              // 0x005985bf    90
-_jmp_addr_0x005985c0:    push               ecx                                           // 0x005985c0    51
+?Load@GroupBehaviour@@UAEIAAVGameOSFile@@@Z:
+                         push               ecx                                           // 0x005985c0    51
                          push               ebx                                           // 0x005985c1    53
                          push               esi                                           // 0x005985c2    56
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x005985c3    8b742410
@@ -3757,6 +3762,7 @@ _jmp_addr_0x0059973c:    ret                                                    
                          nop                                                              // 0x0059973d    90
                          nop                                                              // 0x0059973e    90
                          nop                                                              // 0x0059973f    90
+?Init@GSLobbyBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00599740    8b44240c
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00599744    8b542404
                          push               ebx                                           // 0x00599748    53
@@ -4463,6 +4469,7 @@ _jmp_addr_0x0059a06e:    {disp8} mov        edi, dword ptr [esp + 0x14]         
                          pop                ebx                                           // 0x0059a09b    5b
                          ret                0x000c                                        // 0x0059a09c    c20c00
                          nop                                                              // 0x0059a09f    90
+?InitControls@GSLobbyBox@@UAEXXZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x343190]        // 0x0059a0a0    a19091d000
                          push               ebx                                           // 0x0059a0a5    53
                          push               esi                                           // 0x0059a0a6    56
@@ -4608,6 +4615,7 @@ _jmp_addr_0x0059a244:    ret                                                    
                          nop                                                              // 0x0059a24d    90
                          nop                                                              // 0x0059a24e    90
                          nop                                                              // 0x0059a24f    90
+?Destroy@GSLobbyBox@@UAEXXZ:
                          call               @Destroy__13DialogBoxBaseFv@4                 // 0x0059a250    e83b93f7ff
                          {disp32} mov       dword ptr [data_bytes + 0x343190], 0x00000000 // 0x0059a255    c7059091d00000000000
                          ret                                                              // 0x0059a25f    c3

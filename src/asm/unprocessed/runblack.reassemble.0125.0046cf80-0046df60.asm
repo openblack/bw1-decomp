@@ -66,6 +66,7 @@
 .globl _jmp_addr_0x0046de40
 .globl _jmp_addr_0x0046df00
 .globl _LoadBinary_5CHandFPci
+.globl ?AddForDrawing@CHand@@UAE_NXZ
 
 start_0x0046cf80_0x0046df60:
 // Snippet: asm, [0x0046cf80, 0x0046df48)
@@ -185,6 +186,7 @@ _jmp_addr_0x0046d0e2:    fstp               st(0)                               
                          nop                                                              // 0x0046d0ed    90
                          nop                                                              // 0x0046d0ee    90
                          nop                                                              // 0x0046d0ef    90
+?AddForDrawing@CHand@@UAE_NXZ:
                          call               _jmp_addr_0x0046d100                          // 0x0046d0f0    e80b000000
                          mov                eax, 0x00000001                               // 0x0046d0f5    b801000000
                          ret                                                              // 0x0046d0fa    c3

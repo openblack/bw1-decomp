@@ -22,15 +22,15 @@ static_assert(sizeof(struct AR_FadeOutOnceConditionTrue__AtomData) == 0x14, "Dat
 // Override methods
 
 // win1.41 0055f640 mac inlined AR_FadeOutOnceConditionTrue::AtomData::_dt( (void))
-void __fastcall __dt__Q227AR_FadeOutOnceConditionTrue8AtomDataFv(struct AR_FadeOutOnceConditionTrue__AtomData* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AR_FadeOutOnceConditionTrue@@UAEPAXI@Z");
-// win1.41 0055f620 mac inlined AR_FadeOutOnceConditionTrue::AtomData::GetSaveType( (void))
-uint32_t __fastcall GetSaveType__Q227AR_FadeOutOnceConditionTrue8AtomDataFv(struct AR_FadeOutOnceConditionTrue__AtomData* this) asm("?GetSaveType@AtomData@AR_FadeOutOnceConditionTrue@@UAEIXZ");
+void __fastcall __dt__Q227AR_FadeOutOnceConditionTrue8AtomDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AR_FadeOutOnceConditionTrue@@UAEPAXI@Z");
 // win1.41 0055f630 mac inlined AR_FadeOutOnceConditionTrue::AtomData::GetDebugText( (void))
-char* __fastcall GetDebugText__Q227AR_FadeOutOnceConditionTrue8AtomDataFv(struct AR_FadeOutOnceConditionTrue__AtomData* this) asm("?GetDebugText@AtomData@AR_FadeOutOnceConditionTrue@@UAEPADXZ");
+char* __fastcall GetDebugText__Q227AR_FadeOutOnceConditionTrue8AtomDataFv(struct GameThing* this) asm("?GetDebugText@AtomData@AR_FadeOutOnceConditionTrue@@UAEPADXZ");
 // win1.41 00696b00 mac inlined AR_FadeOutOnceConditionTrue::AtomData::Load( (GameOSFile &))
-uint32_t __fastcall Load__Q227AR_FadeOutOnceConditionTrue8AtomDataFR10GameOSFile(struct AR_FadeOutOnceConditionTrue__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AR_FadeOutOnceConditionTrue@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Load__Q227AR_FadeOutOnceConditionTrue8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AR_FadeOutOnceConditionTrue@@UAEIAAVGameOSFile@@@Z");
 // win1.41 006cd660 mac inlined AR_FadeOutOnceConditionTrue::AtomData::Save( (GameOSFile &))
-uint32_t __fastcall Save__Q227AR_FadeOutOnceConditionTrue8AtomDataFR10GameOSFile(struct AR_FadeOutOnceConditionTrue__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AR_FadeOutOnceConditionTrue@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Save__Q227AR_FadeOutOnceConditionTrue8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AR_FadeOutOnceConditionTrue@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055f620 mac inlined AR_FadeOutOnceConditionTrue::AtomData::GetSaveType( (void))
+uint32_t __fastcall GetSaveType__Q227AR_FadeOutOnceConditionTrue8AtomDataFv(struct GameThing* this) asm("?GetSaveType@AtomData@AR_FadeOutOnceConditionTrue@@UAEIXZ");
 
 struct AddSoundToAtom__AtomData
 {
@@ -41,15 +41,15 @@ static_assert(sizeof(struct AddSoundToAtom__AtomData) == 0x14, "Data type is of 
 // Override methods
 
 // win1.41 0055f6c0 mac inlined AddSoundToAtom::AtomData::_dt( (void))
-void __fastcall __dt__Q214AddSoundToAtom8AtomDataFv(struct AddSoundToAtom__AtomData* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AddSoundToAtom@@UAEPAXI@Z");
-// win1.41 0055f6a0 mac inlined AddSoundToAtom::AtomData::GetSaveType( (void))
-uint32_t __fastcall GetSaveType__Q214AddSoundToAtom8AtomDataFv(struct AddSoundToAtom__AtomData* this) asm("?GetSaveType@AtomData@AddSoundToAtom@@UAEIXZ");
+void __fastcall __dt__Q214AddSoundToAtom8AtomDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AddSoundToAtom@@UAEPAXI@Z");
 // win1.41 0055f6b0 mac inlined AddSoundToAtom::AtomData::GetDebugText( (void))
-char* __fastcall GetDebugText__Q214AddSoundToAtom8AtomDataFv(struct AddSoundToAtom__AtomData* this) asm("?GetDebugText@AtomData@AddSoundToAtom@@UAEPADXZ");
+char* __fastcall GetDebugText__Q214AddSoundToAtom8AtomDataFv(struct GameThing* this) asm("?GetDebugText@AtomData@AddSoundToAtom@@UAEPADXZ");
 // win1.41 00696c10 mac inlined AddSoundToAtom::AtomData::Load( (GameOSFile &))
-uint32_t __fastcall Load__Q214AddSoundToAtom8AtomDataFR10GameOSFile(struct AddSoundToAtom__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AddSoundToAtom@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Load__Q214AddSoundToAtom8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AddSoundToAtom@@UAEIAAVGameOSFile@@@Z");
 // win1.41 006cd770 mac inlined AddSoundToAtom::AtomData::Save( (GameOSFile &))
-uint32_t __fastcall Save__Q214AddSoundToAtom8AtomDataFR10GameOSFile(struct AddSoundToAtom__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AddSoundToAtom@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Save__Q214AddSoundToAtom8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AddSoundToAtom@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055f6a0 mac inlined AddSoundToAtom::AtomData::GetSaveType( (void))
+uint32_t __fastcall GetSaveType__Q214AddSoundToAtom8AtomDataFv(struct GameThing* this) asm("?GetSaveType@AtomData@AddSoundToAtom@@UAEIXZ");
 
 struct AddSubCollectionsToAtom__AtomData
 {
@@ -60,15 +60,15 @@ static_assert(sizeof(struct AddSubCollectionsToAtom__AtomData) == 0x14, "Data ty
 // Override methods
 
 // win1.41 0055fc10 mac inlined AddSubCollectionsToAtom::AtomData::_dt( (void))
-void __fastcall __dt__Q223AddSubCollectionsToAtom8AtomDataFv(struct AddSubCollectionsToAtom__AtomData* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AddSubCollectionsToAtom@@UAEPAXI@Z");
-// win1.41 0055fbf0 mac inlined AddSubCollectionsToAtom::AtomData::GetSaveType( (void))
-uint32_t __fastcall GetSaveType__Q223AddSubCollectionsToAtom8AtomDataFv(struct AddSubCollectionsToAtom__AtomData* this) asm("?GetSaveType@AtomData@AddSubCollectionsToAtom@@UAEIXZ");
+void __fastcall __dt__Q223AddSubCollectionsToAtom8AtomDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AddSubCollectionsToAtom@@UAEPAXI@Z");
 // win1.41 0055fc00 mac inlined AddSubCollectionsToAtom::AtomData::GetDebugText( (void))
-char* __fastcall GetDebugText__Q223AddSubCollectionsToAtom8AtomDataFv(struct AddSubCollectionsToAtom__AtomData* this) asm("?GetDebugText@AtomData@AddSubCollectionsToAtom@@UAEPADXZ");
+char* __fastcall GetDebugText__Q223AddSubCollectionsToAtom8AtomDataFv(struct GameThing* this) asm("?GetDebugText@AtomData@AddSubCollectionsToAtom@@UAEPADXZ");
 // win1.41 00696f30 mac inlined AddSubCollectionsToAtom::AtomData::Load( (GameOSFile &))
-uint32_t __fastcall Load__Q223AddSubCollectionsToAtom8AtomDataFR10GameOSFile(struct AddSubCollectionsToAtom__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AddSubCollectionsToAtom@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Load__Q223AddSubCollectionsToAtom8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AddSubCollectionsToAtom@@UAEIAAVGameOSFile@@@Z");
 // win1.41 006cdaa0 mac inlined AddSubCollectionsToAtom::AtomData::Save( (GameOSFile &))
-uint32_t __fastcall Save__Q223AddSubCollectionsToAtom8AtomDataFR10GameOSFile(struct AddSubCollectionsToAtom__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AddSubCollectionsToAtom@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Save__Q223AddSubCollectionsToAtom8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AddSubCollectionsToAtom@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055fbf0 mac inlined AddSubCollectionsToAtom::AtomData::GetSaveType( (void))
+uint32_t __fastcall GetSaveType__Q223AddSubCollectionsToAtom8AtomDataFv(struct GameThing* this) asm("?GetSaveType@AtomData@AddSubCollectionsToAtom@@UAEIXZ");
 
 struct AttatchFireBallToAtom__AtomData
 {
@@ -79,15 +79,15 @@ static_assert(sizeof(struct AttatchFireBallToAtom__AtomData) == 0x14, "Data type
 // Override methods
 
 // win1.41 0055f7c0 mac inlined AttatchFireBallToAtom::AtomData::_dt( (void))
-void __fastcall __dt__Q221AttatchFireBallToAtom8AtomDataFv(struct AttatchFireBallToAtom__AtomData* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AttatchFireBallToAtom@@UAEPAXI@Z");
-// win1.41 0055f7a0 mac inlined AttatchFireBallToAtom::AtomData::GetSaveType( (void))
-uint32_t __fastcall GetSaveType__Q221AttatchFireBallToAtom8AtomDataFv(struct AttatchFireBallToAtom__AtomData* this) asm("?GetSaveType@AtomData@AttatchFireBallToAtom@@UAEIXZ");
+void __fastcall __dt__Q221AttatchFireBallToAtom8AtomDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAtomData@AttatchFireBallToAtom@@UAEPAXI@Z");
 // win1.41 0055f7b0 mac inlined AttatchFireBallToAtom::AtomData::GetDebugText( (void))
-char* __fastcall GetDebugText__Q221AttatchFireBallToAtom8AtomDataFv(struct AttatchFireBallToAtom__AtomData* this) asm("?GetDebugText@AtomData@AttatchFireBallToAtom@@UAEPADXZ");
+char* __fastcall GetDebugText__Q221AttatchFireBallToAtom8AtomDataFv(struct GameThing* this) asm("?GetDebugText@AtomData@AttatchFireBallToAtom@@UAEPADXZ");
 // win1.41 00696a50 mac inlined AttatchFireBallToAtom::AtomData::Load( (GameOSFile &))
-uint32_t __fastcall Load__Q221AttatchFireBallToAtom8AtomDataFR10GameOSFile(struct AttatchFireBallToAtom__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AttatchFireBallToAtom@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Load__Q221AttatchFireBallToAtom8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@AtomData@AttatchFireBallToAtom@@UAEIAAVGameOSFile@@@Z");
 // win1.41 006cd5b0 mac inlined AttatchFireBallToAtom::AtomData::Save( (GameOSFile &))
-uint32_t __fastcall Save__Q221AttatchFireBallToAtom8AtomDataFR10GameOSFile(struct AttatchFireBallToAtom__AtomData* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AttatchFireBallToAtom@@UAEIAAVGameOSFile@@@Z");
+uint32_t __fastcall Save__Q221AttatchFireBallToAtom8AtomDataFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@AtomData@AttatchFireBallToAtom@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055f7a0 mac inlined AttatchFireBallToAtom::AtomData::GetSaveType( (void))
+uint32_t __fastcall GetSaveType__Q221AttatchFireBallToAtom8AtomDataFv(struct GameThing* this) asm("?GetSaveType@AtomData@AttatchFireBallToAtom@@UAEIXZ");
 
 struct CheckShieldDeflections__AtomData
 {
@@ -1213,6 +1213,7 @@ struct ZR_ChainGesture__AtomData
 {
   struct BaseAtomModifierData super;  /* 0x0 */
 };
+static_assert(sizeof(struct ZR_ChainGesture__AtomData) == 0x14, "Data type is of wrong size");
 
 // Override methods
 
@@ -1223,6 +1224,7 @@ struct ZR_ChainGesture__ParentCollectionData
 {
   struct BaseCollectionModifierData super;  /* 0x0 */
 };
+static_assert(sizeof(struct ZR_ChainGesture__ParentCollectionData) == 0x14, "Data type is of wrong size");
 
 // Override methods
 
@@ -1233,6 +1235,7 @@ struct ZR_SurfRevol__CollectionData
 {
   struct BaseCollectionModifierData super;  /* 0x0 */
 };
+static_assert(sizeof(struct ZR_SurfRevol__CollectionData) == 0x14, "Data type is of wrong size");
 
 // Override methods
 

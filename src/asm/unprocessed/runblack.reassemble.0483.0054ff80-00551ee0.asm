@@ -87,6 +87,7 @@
 .globl _jmp_addr_0x00551580
 .globl _jmp_addr_0x005515d0
 .globl _jmp_addr_0x00551630
+.globl ?Dump@GGame@@UAEXXZ
 
 start_0x0054ff80_0x00551ee0:
 // Snippet: asm, [0x0054ff80, 0x00551e20)
@@ -742,6 +743,7 @@ _jmp_addr_0x0055076b:    pop                esi                                 
                          nop                                                               // 0x0055077d    90
                          nop                                                               // 0x0055077e    90
                          nop                                                               // 0x0055077f    90
+?Dump@GGame@@UAEXXZ:
                          push               esi                                            // 0x00550780    56
                          push               edi                                            // 0x00550781    57
                          mov.s              edi, ecx                                       // 0x00550782    8bf9

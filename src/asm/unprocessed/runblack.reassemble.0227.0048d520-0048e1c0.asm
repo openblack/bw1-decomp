@@ -17,8 +17,8 @@
 .extern @GetPlayer__5GGameFUl@12
 .extern _jmp_addr_0x005df310
 .extern _jmp_addr_0x00617a10
-.extern _jmp_addr_0x00619100
-.extern _jmp_addr_0x00619500
+.extern ?MorphAnims@Morphable@@UAEXXZ
+.extern ?MorphTexture@Morphable@@UAEXXZ
 .extern @GetAnim__9MorphableFll@16
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064a9f0
@@ -55,7 +55,7 @@ _jmp_addr_0x0048d539:    ret                                                    
                          push               esi                                           // 0x0048d543    56
                          push               edi                                           // 0x0048d544    57
                          mov.s              esi, ecx                                      // 0x0048d545    8bf1
-                         call               _jmp_addr_0x00619500                          // 0x0048d547    e8b4bf1800
+                         call               ?MorphTexture@Morphable@@UAEXXZ               // 0x0048d547    e8b4bf1800
                          {disp32} mov       ecx, dword ptr [esi + 0x00004834]             // 0x0048d54c    8b8e34480000
                          test               ecx, ecx                                      // 0x0048d552    85c9
                          {disp8} je         _jmp_addr_0x0048d56c                          // 0x0048d554    7416
@@ -247,7 +247,7 @@ _jmp_addr_0x0048d750:    xor.s              eax, eax                            
                          nop                                                              // 0x0048d78f    90
                          push               esi                                           // 0x0048d790    56
                          mov.s              esi, ecx                                      // 0x0048d791    8bf1
-                         call               _jmp_addr_0x00619100                          // 0x0048d793    e868b91800
+                         call               ?MorphAnims@Morphable@@UAEXXZ                 // 0x0048d793    e868b91800
                          mov.s              ecx, esi                                      // 0x0048d798    8bce
                          call               _jmp_addr_0x0048d750                          // 0x0048d79a    e8b1ffffff
                          pop                esi                                           // 0x0048d79f    5e

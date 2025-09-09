@@ -110,6 +110,10 @@
 .globl _globl_ct_0x0070da60
 .globl _globl_ct_0x0070da90
 .globl _globl_ct_0x0070dab0
+.globl ?GetScriptObjectType@ScriptMarker@@UAEIXZ
+.globl ?ToBeDeleted@ScriptMarker@@UAEXH@Z
+.globl ?Save@ScriptMarker@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@ScriptMarker@@UAEIAAVGameOSFile@@@Z
 
 start_0x0070b7f0_0x0070e820:
 // Snippet: asm, [0x0070b7f0, 0x0070e78b)
@@ -3271,6 +3275,7 @@ _jmp_addr_0x0070d955:    pop                edi                                 
                          nop                                                              // 0x0070d95d    90
                          nop                                                              // 0x0070d95e    90
                          nop                                                              // 0x0070d95f    90
+?GetScriptObjectType@ScriptMarker@@UAEIXZ:
                          mov                eax, 0x00000001                               // 0x0070d960    b801000000
                          ret                                                              // 0x0070d965    c3
                          nop                                                              // 0x0070d966    90
@@ -3283,6 +3288,7 @@ _jmp_addr_0x0070d955:    pop                edi                                 
                          nop                                                              // 0x0070d96d    90
                          nop                                                              // 0x0070d96e    90
                          nop                                                              // 0x0070d96f    90
+?ToBeDeleted@ScriptMarker@@UAEXH@Z:
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0070d970    a15c19d000
                          push               ebx                                           // 0x0070d975    53
                          push               ebp                                           // 0x0070d976    55
@@ -3331,6 +3337,7 @@ _jmp_addr_0x0070d9b5:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          nop                                                              // 0x0070d9cd    90
                          nop                                                              // 0x0070d9ce    90
                          nop                                                              // 0x0070d9cf    90
+?Save@ScriptMarker@@UAEIAAVGameOSFile@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0070d9d0    8b442404
                          push               eax                                           // 0x0070d9d4    50
                          call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x0070d9d5    e8162ae6ff
@@ -3351,6 +3358,7 @@ _jmp_addr_0x0070d9b5:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          nop                                                              // 0x0070d9ed    90
                          nop                                                              // 0x0070d9ee    90
                          nop                                                              // 0x0070d9ef    90
+?Load@ScriptMarker@@UAEIAAVGameOSFile@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0070d9f0    8b442404
                          push               eax                                           // 0x0070d9f4    50
                          call               ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z // 0x0070d9f5    e8a62ae6ff

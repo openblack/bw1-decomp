@@ -13,8 +13,12 @@
 .extern _jmp_addr_0x007a1400
 .extern ___RTDynamicCast
 
+.globl ?ReactToCreaturePriority@Villager@@UAEEPAVReaction@@0@Z
+
+
 start_0x007676e0_0x007678a0:
 // Snippet: asm, [0x007676e0, 0x00767888)
+?ReactToCreaturePriority@Villager@@UAEEPAVReaction@@0@Z:
                          sub                esp, 0x08                                // 0x007676e0    83ec08
                          push               ebx                                      // 0x007676e3    53
                          push               esi                                      // 0x007676e4    56

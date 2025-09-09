@@ -39,7 +39,6 @@ struct ObjectVftable;
 struct PhysicsObject;
 struct Reaction;
 struct ReactionDoneWhen;
-struct Villager;
 
 struct DataForScriptRemind
 {
@@ -124,7 +123,7 @@ struct LivingVftable
   bool (__fastcall* DecideWhatToDo)(struct Living* this);
   void (__fastcall* Birthday)(struct Living* this);
   uint32_t (__fastcall* GetAge)(struct Living* this);  /* 0x8d0 */
-  void (__fastcall* SetAge)(struct Villager* this, const void* edx, uint32_t age);
+  void (__fastcall* SetAge)(struct Living* this, const void* edx, uint32_t age);
   bool (__fastcall* LookAtFlyingObjectReaction)(struct Living* this);
   int (__fastcall* SetCurrentAndDestinationState)(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination);
   int (__fastcall* CallIntoAnimationFunction)(struct Living* this, const void* edx, enum VILLAGER_STATES state);  /* 0x8e0 */
@@ -170,7 +169,7 @@ struct LivingVftable
   bool (__fastcall* IsInterestedInWoodObject)(struct Living* this, const void* edx, struct Object* object);  /* 0x980 */
   bool (__fastcall* IsAvailableForReaction)(struct Living* this, const void* edx, enum REACTION reaction);
   bool (__fastcall* IsAvailableForBeliefButNotReaction)(struct Living* this, const void* edx, enum REACTION reaction);
-  void (__fastcall* UpdateHowImpressed)(struct Villager* this, const void* edx, struct Reaction* param_1, int param_2);
+  void (__fastcall* UpdateHowImpressed)(struct Living* this, const void* edx, struct Reaction* param_1, int param_2);
   void (__fastcall* AddReaction)(struct Living* this, const void* edx, struct Reaction* reaction, enum VILLAGER_STATES state);  /* 0x990 */
   void (__fastcall* StartReacting)(struct Living* this, const void* edx, enum REACTION type, struct GameThingWithPos* target, struct Reaction* reaction);
   void (__fastcall* StopReacting)(struct Living* this);

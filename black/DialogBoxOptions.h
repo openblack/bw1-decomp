@@ -58,7 +58,7 @@ struct DialogBoxOptions* __fastcall __ct__16DialogBoxOptionsFv(struct DialogBoxO
 // Override methods
 
 // win1.41 00513860 mac 102b5130 DialogBoxOptions::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__16DialogBoxOptionsFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@DialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__16DialogBoxOptionsFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@DialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00513da0 mac 102b50c0 DialogBoxOptions::Destroy(void)
 void __fastcall Destroy__16DialogBoxOptionsFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxOptions@@UAEXXZ");
 // win1.41 00513830 mac 102b5900 DialogBoxOptions::CanESCOut(void)

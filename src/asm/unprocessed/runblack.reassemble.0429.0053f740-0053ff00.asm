@@ -28,6 +28,9 @@
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0053f740
+.globl ?Init@MainMenu@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
+.globl ?Destroy@MainMenu@@UAEXXZ
+.globl ?InitControls@MainMenu@@UAEXXZ
 
 start_0x0053f740_0x0053ff00:
 // Snippet: asm, [0x0053f740, 0x0053fee6)
@@ -193,6 +196,7 @@ _jmp_addr_0x0053f8e9:    {disp8} fld       dword ptr [esp + 0x10]               
                          nop                                                             // 0x0053f90d    90
                          nop                                                             // 0x0053f90e    90
                          nop                                                             // 0x0053f90f    90
+?Init@MainMenu@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          {disp8} mov       eax, dword ptr [esp + 0x0c]                   // 0x0053f910    8b44240c
                          {disp8} mov       edx, dword ptr [esp + 0x04]                   // 0x0053f914    8b542404
                          sub               esp, 0x00000400                               // 0x0053f918    81ec00040000
@@ -361,6 +365,7 @@ _jmp_addr_0x0053fb32:    push              0x0                                  
                          nop                                                             // 0x0053fb4d    90
                          nop                                                             // 0x0053fb4e    90
                          nop                                                             // 0x0053fb4f    90
+?Destroy@MainMenu@@UAEXXZ:
                          push              esi                                           // 0x0053fb50    56
                          mov.s             esi, ecx                                      // 0x0053fb51    8bf1
                          call              _jmp_addr_0x005de8b0                          // 0x0053fb53    e858ed0900
@@ -383,6 +388,7 @@ _jmp_addr_0x0053fb86:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          {disp32} mov      byte ptr [data_bytes + 0x30ab01], 0x01        // 0x0053fb97    c605010bcd0001
                          ret                                                             // 0x0053fb9e    c3
                          nop                                                             // 0x0053fb9f    90
+?InitControls@MainMenu@@UAEXXZ:
                          sub               esp, 0x00000200                               // 0x0053fba0    81ec00020000
                          push              ebx                                           // 0x0053fba6    53
                          push              ebp                                           // 0x0053fba7    55

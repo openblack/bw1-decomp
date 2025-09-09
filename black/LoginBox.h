@@ -25,8 +25,9 @@ extern const struct DialogBoxBaseVftable __vt__8LoginBox asm("??_7LoginBox@@6B@"
 struct LoginBox* __fastcall __ct__8LoginBoxFv(struct LoginBox* this);
 
 // Override methods
+
 // win1.41 00541040 mac 105beb60 LoginBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__8LoginBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@LoginBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+void __fastcall Init__8LoginBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@LoginBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 005417f0 mac 105beb30 LoginBox::Destroy(void)
 void __fastcall Destroy__8LoginBoxFv(struct DialogBoxBase* this) asm("?Destroy@LoginBox@@UAEXXZ");
 

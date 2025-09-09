@@ -348,6 +348,50 @@
 .globl _globl_ct_0x00685750
 .globl _globl_ct_0x00685780
 .globl _globl_ct_0x006857b0
+.globl ?GetDebugText@AtomCollection@@UAEPADXZ
+.globl ??_GAtomCollection@@UAEPAXI@Z
+.globl ?GetSaveType@CollectionData@UR_Explosion@@UAEIXZ
+.globl ?GetDebugText@CollectionData@UR_Explosion@@UAEPADXZ
+.globl ??_GCollectionData@UR_Explosion@@UAEPAXI@Z
+.globl ?GetBaseInfo@GMagicFireBallInfo@@UAEPAVGBaseInfo@@AAI@Z
+.globl ??_GGMagicFireBallInfo@@UAEPAXI@Z
+.globl ?IsTuggable@MagicFireBall@@UAEIXZ
+.globl ?IsMagicFireBall@MagicFireBall@@UAEIXZ
+.globl ?InteractsWithPhysicsObjects@MagicFireBall@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@MagicFireBall@@UAE_NXZ
+.globl ?CanBePickedUpByCreature@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBeSetOnFire@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBeStompedOnByCreature@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBeThrownByCreature@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBePutInAStoragePit@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBeDestroyedByStoning@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBeStonedAndEatenByCreature@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBeExaminedByCreature@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanBeFoughtByCreature@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?CanActAsAContainer@MagicFireBall@@UAEIPAVCreature@@@Z
+.globl ?SaveObject@MagicFireBall@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
+.globl ?GetSaveType@MagicFireBall@@UAEIXZ
+.globl ?GetDebugText@MagicFireBall@@UAEPADXZ
+.globl ??_GMagicFireBall@@UAEPAXI@Z
+.globl ?GetPlayer@MagicFireBall@@UAEPAVGPlayer@@XZ
+.globl ?ToBeDeleted@MagicFireBall@@UAEXH@Z
+.globl ?InsertMapObject@MagicFireBall@@UAEXXZ
+.globl ?Get2DRadius@MagicFireBall@@UAEMXZ
+.globl ?GetHeight@MagicFireBall@@UAEMXZ
+.globl ?GetHeatCapacity@MagicFireBall@@UAEMXZ
+.globl ?GetFireGPHXDrawn@MagicFireBall@@UAEXPA_N000@Z
+.globl ?GetRainCoolingMultiplier@MagicFireBall@@UAEMXZ
+.globl ?ValidForPlaceInHand@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?InterfaceValidToTap@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?InterfaceTap@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?InterfaceSetInMagicHand@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z
+.globl ?Draw@MagicFireBall@@UAEXXZ
+.globl ?Save@MagicFireBall@@UAEIAAVGameOSFile@@@Z
+.globl ?Load@MagicFireBall@@UAEIAAVGameOSFile@@@Z
+.globl ??_GCollectionData@UR_Rope@@UAEPAXI@Z
+.globl ??_GCollectionData@UR_Articulate@@UAEPAXI@Z
+.globl ??_GAtomData@UR_Articulate@@UAEPAXI@Z
+.globl ??_GCollectionData@ZR_SurfRevol@@UAEPAXI@Z
 
 start_0x006747e0_0x006868e0:
 // Snippet: asm, [0x006747e0, 0x006868ca)
@@ -439,6 +483,7 @@ _jmp_addr_0x00674830:    push               esi                                 
                          nop                                                              // 0x0067487d    90
                          nop                                                              // 0x0067487e    90
                          nop                                                              // 0x0067487f    90
+?GetDebugText@AtomCollection@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x00674880    b8a8ea9c00
                          ret                                                              // 0x00674885    c3
                          nop                                                              // 0x00674886    90
@@ -451,6 +496,7 @@ _jmp_addr_0x00674830:    push               esi                                 
                          nop                                                              // 0x0067488d    90
                          nop                                                              // 0x0067488e    90
                          nop                                                              // 0x0067488f    90
+??_GAtomCollection@@UAEPAXI@Z:
                          push               esi                                           // 0x00674890    56
                          mov.s              esi, ecx                                      // 0x00674891    8bf1
                          call               _jmp_addr_0x006749a0                          // 0x00674893    e808010000
@@ -14018,6 +14064,7 @@ _jmp_addr_0x0067e140:    push               esi                                 
                          pop                esi                                           // 0x0067e18b    5e
                          ret                0x0004                                        // 0x0067e18c    c20400
                          nop                                                              // 0x0067e18f    90
+?GetSaveType@CollectionData@UR_Explosion@@UAEIXZ:
                          mov                eax, 0x000000cf                               // 0x0067e190    b8cf000000
                          ret                                                              // 0x0067e195    c3
                          nop                                                              // 0x0067e196    90
@@ -14030,6 +14077,7 @@ _jmp_addr_0x0067e140:    push               esi                                 
                          nop                                                              // 0x0067e19d    90
                          nop                                                              // 0x0067e19e    90
                          nop                                                              // 0x0067e19f    90
+?GetDebugText@CollectionData@UR_Explosion@@UAEPADXZ:
                          mov                eax, 0x009ceaa8                               // 0x0067e1a0    b8a8ea9c00
                          ret                                                              // 0x0067e1a5    c3
                          nop                                                              // 0x0067e1a6    90
@@ -14042,6 +14090,7 @@ _jmp_addr_0x0067e140:    push               esi                                 
                          nop                                                              // 0x0067e1ad    90
                          nop                                                              // 0x0067e1ae    90
                          nop                                                              // 0x0067e1af    90
+??_GCollectionData@UR_Explosion@@UAEPAXI@Z:
                          push               ecx                                           // 0x0067e1b0    51
                          push               esi                                           // 0x0067e1b1    56
                          mov.s              esi, ecx                                      // 0x0067e1b2    8bf1
@@ -20270,6 +20319,7 @@ _jmp_addr_0x0068287c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x0068289d    90
                          nop                                                              // 0x0068289e    90
                          nop                                                              // 0x0068289f    90
+?GetBaseInfo@GMagicFireBallInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x006828a0    8b442404
                          mov                dword ptr [eax], 0x00000003                   // 0x006828a4    c70003000000
                          mov                eax, 0x00d4e3b0                               // 0x006828aa    b8b0e3d400
@@ -20327,6 +20377,7 @@ _jmp_addr_0x00682902:    ret                                                    
                          nop                                                              // 0x0068290d    90
                          nop                                                              // 0x0068290e    90
                          nop                                                              // 0x0068290f    90
+??_GGMagicFireBallInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00682910    56
                          mov.s              esi, ecx                                      // 0x00682911    8bf1
                          call               _jmp_addr_0x00436960                          // 0x00682913    e84840dbff
@@ -20469,6 +20520,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          mov.s              eax, esi                                      // 0x00682a3c    8bc6
                          pop                esi                                           // 0x00682a3e    5e
                          ret                                                              // 0x00682a3f    c3
+?IsTuggable@MagicFireBall@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x00682a40    33c0
                          ret                                                              // 0x00682a42    c3
                          nop                                                              // 0x00682a43    90
@@ -20484,6 +20536,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682a4d    90
                          nop                                                              // 0x00682a4e    90
                          nop                                                              // 0x00682a4f    90
+?IsMagicFireBall@MagicFireBall@@UAEIXZ:
                          mov.s              eax, ecx                                      // 0x00682a50    8bc1
                          ret                                                              // 0x00682a52    c3
                          nop                                                              // 0x00682a53    90
@@ -20499,6 +20552,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682a5d    90
                          nop                                                              // 0x00682a5e    90
                          nop                                                              // 0x00682a5f    90
+?InteractsWithPhysicsObjects@MagicFireBall@@UAE_NXZ:
                          xor.s              al, al                                        // 0x00682a60    32c0
                          ret                                                              // 0x00682a62    c3
                          nop                                                              // 0x00682a63    90
@@ -20514,6 +20568,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682a6d    90
                          nop                                                              // 0x00682a6e    90
                          nop                                                              // 0x00682a6f    90
+?CanBecomeAPhysicsObject@MagicFireBall@@UAE_NXZ:
                          xor.s              eax, eax                                      // 0x00682a70    33c0
                          ret                                                              // 0x00682a72    c3
                          nop                                                              // 0x00682a73    90
@@ -20529,6 +20584,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682a7d    90
                          nop                                                              // 0x00682a7e    90
                          nop                                                              // 0x00682a7f    90
+?CanBePickedUpByCreature@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682a80    33c0
                          ret                0x0004                                        // 0x00682a82    c20400
                          nop                                                              // 0x00682a85    90
@@ -20542,6 +20598,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682a8d    90
                          nop                                                              // 0x00682a8e    90
                          nop                                                              // 0x00682a8f    90
+?CanBeSetOnFire@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682a90    33c0
                          ret                0x0004                                        // 0x00682a92    c20400
                          nop                                                              // 0x00682a95    90
@@ -20555,6 +20612,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682a9d    90
                          nop                                                              // 0x00682a9e    90
                          nop                                                              // 0x00682a9f    90
+?CanBeStompedOnByCreature@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682aa0    33c0
                          ret                0x0004                                        // 0x00682aa2    c20400
                          nop                                                              // 0x00682aa5    90
@@ -20568,6 +20626,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682aad    90
                          nop                                                              // 0x00682aae    90
                          nop                                                              // 0x00682aaf    90
+?CanBeThrownByCreature@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682ab0    33c0
                          ret                0x0004                                        // 0x00682ab2    c20400
                          nop                                                              // 0x00682ab5    90
@@ -20581,6 +20640,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682abd    90
                          nop                                                              // 0x00682abe    90
                          nop                                                              // 0x00682abf    90
+?CanBePutInAStoragePit@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682ac0    33c0
                          ret                0x0004                                        // 0x00682ac2    c20400
                          nop                                                              // 0x00682ac5    90
@@ -20594,6 +20654,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682acd    90
                          nop                                                              // 0x00682ace    90
                          nop                                                              // 0x00682acf    90
+?CanBeDestroyedByStoning@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682ad0    33c0
                          ret                0x0004                                        // 0x00682ad2    c20400
                          nop                                                              // 0x00682ad5    90
@@ -20607,6 +20668,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682add    90
                          nop                                                              // 0x00682ade    90
                          nop                                                              // 0x00682adf    90
+?CanBeStonedAndEatenByCreature@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682ae0    33c0
                          ret                0x0004                                        // 0x00682ae2    c20400
                          nop                                                              // 0x00682ae5    90
@@ -20620,6 +20682,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682aed    90
                          nop                                                              // 0x00682aee    90
                          nop                                                              // 0x00682aef    90
+?CanBeExaminedByCreature@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682af0    33c0
                          ret                0x0004                                        // 0x00682af2    c20400
                          nop                                                              // 0x00682af5    90
@@ -20633,6 +20696,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682afd    90
                          nop                                                              // 0x00682afe    90
                          nop                                                              // 0x00682aff    90
+?CanBeFoughtByCreature@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682b00    33c0
                          ret                0x0004                                        // 0x00682b02    c20400
                          nop                                                              // 0x00682b05    90
@@ -20646,6 +20710,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682b0d    90
                          nop                                                              // 0x00682b0e    90
                          nop                                                              // 0x00682b0f    90
+?CanActAsAContainer@MagicFireBall@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x00682b10    33c0
                          ret                0x0004                                        // 0x00682b12    c20400
                          nop                                                              // 0x00682b15    90
@@ -20659,6 +20724,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682b1d    90
                          nop                                                              // 0x00682b1e    90
                          nop                                                              // 0x00682b1f    90
+?SaveObject@MagicFireBall@@UAEIAAULHOSFile@@ABUMapCoords@@@Z:
                          xor.s              eax, eax                                      // 0x00682b20    33c0
                          ret                0x0008                                        // 0x00682b22    c20800
                          nop                                                              // 0x00682b25    90
@@ -20672,6 +20738,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682b2d    90
                          nop                                                              // 0x00682b2e    90
                          nop                                                              // 0x00682b2f    90
+?GetSaveType@MagicFireBall@@UAEIXZ:
                          mov                eax, 0x00000020                               // 0x00682b30    b820000000
                          ret                                                              // 0x00682b35    c3
                          nop                                                              // 0x00682b36    90
@@ -20684,6 +20751,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682b3d    90
                          nop                                                              // 0x00682b3e    90
                          nop                                                              // 0x00682b3f    90
+?GetDebugText@MagicFireBall@@UAEPADXZ:
                          mov                eax, 0x00c02424                               // 0x00682b40    b82424c000
                          ret                                                              // 0x00682b45    c3
                          nop                                                              // 0x00682b46    90
@@ -20696,6 +20764,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682b4d    90
                          nop                                                              // 0x00682b4e    90
                          nop                                                              // 0x00682b4f    90
+??_GMagicFireBall@@UAEPAXI@Z:
                          push               esi                                           // 0x00682b50    56
                          mov.s              esi, ecx                                      // 0x00682b51    8bf1
                          call               _jmp_addr_0x00682be0                          // 0x00682b53    e888000000
@@ -20760,6 +20829,7 @@ _jmp_addr_0x00682be0:    mov                dword ptr [ecx], 0x0093595c         
                          nop                                                              // 0x00682bed    90
                          nop                                                              // 0x00682bee    90
                          nop                                                              // 0x00682bef    90
+?GetPlayer@MagicFireBall@@UAEPAVGPlayer@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x5c]                   // 0x00682bf0    8b415c
                          test               eax, eax                                      // 0x00682bf3    85c0
                          {disp8} je         _jmp_addr_0x00682c05                          // 0x00682bf5    740e
@@ -20788,6 +20858,7 @@ _jmp_addr_0x00682c05:    {disp32} mov       ecx, dword ptr [_game]              
                          nop                                                              // 0x00682c2d    90
                          nop                                                              // 0x00682c2e    90
                          nop                                                              // 0x00682c2f    90
+?ToBeDeleted@MagicFireBall@@UAEXH@Z:
                          push               edi                                           // 0x00682c30    57
                          mov.s              edi, ecx                                      // 0x00682c31    8bf9
                          test               byte ptr [edi + 0x0a], 0x01                   // 0x00682c33    f6470a01
@@ -20875,6 +20946,7 @@ _jmp_addr_0x00682d02:    pop                edi                                 
                          nop                                                              // 0x00682d0d    90
                          nop                                                              // 0x00682d0e    90
                          nop                                                              // 0x00682d0f    90
+?InsertMapObject@MagicFireBall@@UAEXXZ:
                          ret                                                              // 0x00682d10    c3
                          nop                                                              // 0x00682d11    90
                          nop                                                              // 0x00682d12    90
@@ -20891,11 +20963,13 @@ _jmp_addr_0x00682d02:    pop                edi                                 
                          nop                                                              // 0x00682d1d    90
                          nop                                                              // 0x00682d1e    90
                          nop                                                              // 0x00682d1f    90
+?Get2DRadius@MagicFireBall@@UAEMXZ:
                          mov                eax, dword ptr [ecx]                          // 0x00682d20    8b01
                          call               dword ptr [eax + 0x120]                       // 0x00682d22    ff9020010000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x8c910]             // 0x00682d28    d80d10599300
                          ret                                                              // 0x00682d2e    c3
                          nop                                                              // 0x00682d2f    90
+?GetHeight@MagicFireBall@@UAEMXZ:
                          mov                eax, dword ptr [ecx]                          // 0x00682d30    8b01
                          {disp8} jmp        dword ptr [eax + 0x64]                        // 0x00682d32    ff6064
                          nop                                                              // 0x00682d35    90
@@ -20909,6 +20983,7 @@ _jmp_addr_0x00682d02:    pop                edi                                 
                          nop                                                              // 0x00682d3d    90
                          nop                                                              // 0x00682d3e    90
                          nop                                                              // 0x00682d3f    90
+?GetHeatCapacity@MagicFireBall@@UAEMXZ:
                          push               ecx                                           // 0x00682d40    51
                          push               esi                                           // 0x00682d41    56
                          mov.s              esi, ecx                                      // 0x00682d42    8bf1
@@ -20946,6 +21021,7 @@ _jmp_addr_0x00682d7c:    {disp32} fld       dword ptr [_rdata_float1p0]         
                          nop                                                              // 0x00682d8d    90
                          nop                                                              // 0x00682d8e    90
                          nop                                                              // 0x00682d8f    90
+?GetFireGPHXDrawn@MagicFireBall@@UAEXPA_N000@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00682d90    8b442404
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                   // 0x00682d94    8b4c240c
                          {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x00682d98    8b542408
@@ -20956,6 +21032,7 @@ _jmp_addr_0x00682d7c:    {disp32} fld       dword ptr [_rdata_float1p0]         
                          mov                byte ptr [eax], 0x00                          // 0x00682da9    c60000
                          ret                0x0010                                        // 0x00682dac    c21000
                          nop                                                              // 0x00682daf    90
+?GetRainCoolingMultiplier@MagicFireBall@@UAEMXZ:
                          {disp8} mov        al, byte ptr [ecx + 0x58]                     // 0x00682db0    8a4158
                          test               al, al                                        // 0x00682db3    84c0
                          {disp8} je         _jmp_addr_0x00682dbc                          // 0x00682db5    7405
@@ -20975,6 +21052,7 @@ _jmp_addr_0x00682dbc:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                              // 0x00682dcd    90
                          nop                                                              // 0x00682dce    90
                          nop                                                              // 0x00682dcf    90
+?ValidForPlaceInHand@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z:
                          push               esi                                           // 0x00682dd0    56
                          mov.s              esi, ecx                                      // 0x00682dd1    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00682dd3    8b4c2408
@@ -21026,6 +21104,7 @@ _jmp_addr_0x00682e10:    {disp8} mov        edx, dword ptr [ecx + 0x28]         
                          ret                0x0004                                        // 0x00682e3b    c20400
                          nop                                                              // 0x00682e3e    90
                          nop                                                              // 0x00682e3f    90
+?InterfaceValidToTap@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z:
                          mov                eax, 0x00000001                               // 0x00682e40    b801000000
                          ret                0x0004                                        // 0x00682e45    c20400
                          nop                                                              // 0x00682e48    90
@@ -21036,6 +21115,7 @@ _jmp_addr_0x00682e10:    {disp8} mov        edx, dword ptr [ecx + 0x28]         
                          nop                                                              // 0x00682e4d    90
                          nop                                                              // 0x00682e4e    90
                          nop                                                              // 0x00682e4f    90
+?InterfaceTap@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00682e50    8b442404
                          push               esi                                           // 0x00682e54    56
                          mov.s              esi, ecx                                      // 0x00682e55    8bf1
@@ -21059,6 +21139,7 @@ _jmp_addr_0x00682e74:    xor.s              eax, eax                            
                          nop                                                              // 0x00682e7d    90
                          nop                                                              // 0x00682e7e    90
                          nop                                                              // 0x00682e7f    90
+?InterfaceSetInMagicHand@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00682e80    8b442404
                          push               esi                                           // 0x00682e84    56
                          mov.s              esi, ecx                                      // 0x00682e85    8bf1
@@ -21122,6 +21203,7 @@ _jmp_addr_0x00682f14:    pop                edi                                 
                          pop                esi                                           // 0x00682f17    5e
                          ret                0x0004                                        // 0x00682f18    c20400
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00682f1b    e8d9e8d7ff
+?Draw@MagicFireBall@@UAEXXZ:
                          ret                                                              // 0x00682f20    c3
                          nop                                                              // 0x00682f21    90
                          nop                                                              // 0x00682f22    90
@@ -21429,6 +21511,7 @@ _jmp_addr_0x0068329b:    pop                esi                                 
                          nop                                                              // 0x006832ad    90
                          nop                                                              // 0x006832ae    90
                          nop                                                              // 0x006832af    90
+?Save@MagicFireBall@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x006832b0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x006832b1    8b742408
                          push               edi                                           // 0x006832b5    57
@@ -21475,6 +21558,7 @@ _jmp_addr_0x00683311:    pop                edi                                 
                          nop                                                              // 0x0068331d    90
                          nop                                                              // 0x0068331e    90
                          nop                                                              // 0x0068331f    90
+?Load@MagicFireBall@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                           // 0x00683320    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x00683321    8b742408
                          push               edi                                           // 0x00683325    57
@@ -22836,6 +22920,7 @@ _jmp_addr_0x006843e0:    push               esi                                 
                          nop                                                              // 0x0068440d    90
                          nop                                                              // 0x0068440e    90
                          nop                                                              // 0x0068440f    90
+??_GCollectionData@UR_Rope@@UAEPAXI@Z:
                          push               esi                                           // 0x00684410    56
                          mov.s              esi, ecx                                      // 0x00684411    8bf1
                          call               _jmp_addr_0x00684430                          // 0x00684413    e818000000
@@ -24160,6 +24245,7 @@ _jmp_addr_0x006855c0:    push               esi                                 
                          nop                                                              // 0x006855ed    90
                          nop                                                              // 0x006855ee    90
                          nop                                                              // 0x006855ef    90
+??_GCollectionData@UR_Articulate@@UAEPAXI@Z:
                          push               esi                                           // 0x006855f0    56
                          mov.s              esi, ecx                                      // 0x006855f1    8bf1
                          mov                dword ptr [esi], 0x008fb3ec                   // 0x006855f3    c706ecb38f00
@@ -24183,6 +24269,7 @@ _jmp_addr_0x00685610:    mov.s              eax, esi                            
                          nop                                                              // 0x0068561d    90
                          nop                                                              // 0x0068561e    90
                          nop                                                              // 0x0068561f    90
+??_GAtomData@UR_Articulate@@UAEPAXI@Z:
                          push               esi                                           // 0x00685620    56
                          mov.s              esi, ecx                                      // 0x00685621    8bf1
                          mov                dword ptr [esi], 0x008fb2ec                   // 0x00685623    c706ecb28f00
@@ -25199,6 +25286,7 @@ _jmp_addr_0x00686120:    push               esi                                 
                          nop                                                              // 0x0068617d    90
                          nop                                                              // 0x0068617e    90
                          nop                                                              // 0x0068617f    90
+??_GCollectionData@ZR_SurfRevol@@UAEPAXI@Z:
                          push               esi                                           // 0x00686180    56
                          mov.s              esi, ecx                                      // 0x00686181    8bf1
                          call               _jmp_addr_0x006861a0                          // 0x00686183    e818000000
