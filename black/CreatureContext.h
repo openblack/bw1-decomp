@@ -27,6 +27,11 @@ struct CreatureContext
 };
 static_assert(sizeof(struct CreatureContext) == 0x70, "Data type is of wrong size");
 
+// Override methods
+
+// win1.41 004cfe60 mac 101da7e0 CreatureContext::_dt(void)
+void __fastcall __dt__15CreatureContextFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureContext@@UAEPAXI@Z");
+
 struct PreviousContextStack
 {
   struct Creature* creature;  /* 0x0 */

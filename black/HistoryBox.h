@@ -2,7 +2,8 @@
 #define BW1_DECOMP_HISTORY_BOX_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
@@ -18,5 +19,23 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HistoryBox 
 
 // win1.41 008de974 mac 109ed4b4 HistoryBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10HistoryBox asm("??_7HistoryBox@@6B@");
+
+// Non-virtual methods
+
+// win1.41 00545230 mac 105b9ac0 HistoryBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+void __fastcall Init__10HistoryBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct HistoryBox* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@HistoryBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+
+// Override methods
+
+// win1.41 005453b0 mac 105b9a60 HistoryBox::Destroy(void)
+void __fastcall Destroy__10HistoryBoxFv(struct DialogBoxBase* this) asm("?Destroy@HistoryBox@@UAEXXZ");
+// win1.41 00545460 mac 105b98b0 HistoryBox::WantsKeyControl(void)
+bool __fastcall WantsKeyControl__10HistoryBoxFv(struct DialogBoxBase* this) asm("?WantsKeyControl@HistoryBox@@UAE_NXZ");
+// win1.41 00545470 mac 105b97c0 HistoryBox::WantsMouseControl(void)
+bool __fastcall WantsMouseControl__10HistoryBoxFv(struct DialogBoxBase* this) asm("?WantsMouseControl@HistoryBox@@UAE_NXZ");
+// win1.41 005454f0 mac 105b9780 HistoryBox::CanESCOut(void)
+bool __fastcall CanESCOut__10HistoryBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@HistoryBox@@UAE_NXZ");
+// win1.41 005453c0 mac 105b9a20 HistoryBox::InitControls(void)
+void __fastcall InitControls__10HistoryBoxFv(struct DialogBoxBase* this) asm("?InitControls@HistoryBox@@UAEXXZ");
 
 #endif /* BW1_DECOMP_HISTORY_BOX_INCLUDED_H */

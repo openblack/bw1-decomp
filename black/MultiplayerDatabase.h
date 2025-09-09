@@ -2,6 +2,7 @@
 #define BW1_DECOMP_MULTIPLAYER_DATABASE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
@@ -36,5 +37,10 @@ extern const struct MultiplayerDatabaseVftable __vt__19MultiplayerDatabase asm("
 
 // win1.41 00633400 mac 1010a230 MultiplayerDatabase::MultiplayerDatabase(void)
 struct MultiplayerDatabase* __fastcall __ct__19MultiplayerDatabaseFv(struct MultiplayerDatabase* this);
+
+// Override methods
+
+// win1.41 00633610 mac 10109f20 MultiplayerDatabase::ReceiveReturnData(void)
+uint32_t __fastcall ReceiveReturnData__19MultiplayerDatabaseFv(struct CreatureDatabase* this) asm("?ReceiveReturnData@MultiplayerDatabase@@UAEIXZ");
 
 #endif /* BW1_DECOMP_MULTIPLAYER_DATABASE_INCLUDED_H */

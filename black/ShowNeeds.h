@@ -2,12 +2,17 @@
 #define BW1_DECOMP_SHOW_NEEDS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 #include "GameThing.h" /* For struct GameThing */
 
 // Forward Declares
 
+struct Base;
+struct GPlayer;
+struct GameOSFile;
 struct GameThingWithPos;
+struct MapCoords;
 struct ShowNeedsVisuals;
 
 struct ShowNeeds
@@ -33,5 +38,24 @@ struct ShowNeeds* __cdecl Create__9ShowNeedsFP16GameThingWithPos(struct GameThin
 
 // win1.41 00719ab0 mac 10145e60 ShowNeeds::ShowNeeds(GameThingWithPos *)
 struct ShowNeeds* __fastcall __ct__9ShowNeedsFP16GameThingWithPos(struct ShowNeeds* this, const void* edx, struct GameThingWithPos* game_thing);
+
+// Override methods
+
+// win1.41 0055dd40 mac 101462a0 ShowNeeds::_dt(void)
+void __fastcall __dt__9ShowNeedsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GShowNeeds@@UAEPAXI@Z");
+// win1.41 00719b20 mac 10145da0 ShowNeeds::ToBeDeleted(int)
+void __fastcall ToBeDeleted__9ShowNeedsFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@ShowNeeds@@UAEXH@Z");
+// win1.41 00719c30 mac 10145a10 ShowNeeds::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__9ShowNeedsFv(struct GameThing* this) asm("?GetPlayer@ShowNeeds@@UAEPAVGPlayer@@XZ");
+// win1.41 0055dd30 mac 10146370 ShowNeeds::GetDebugText(void)
+char* __fastcall GetDebugText__9ShowNeedsFv(struct GameThing* this) asm("?GetDebugText@ShowNeeds@@UAEPADXZ");
+// win1.41 00719d30 mac 10145850 ShowNeeds::GetShowNeedsPos(unsigned long, MapCoords *)
+uint32_t __fastcall GetShowNeedsPos__9ShowNeedsFUlP9MapCoords(struct GameThing* this, const void* edx, uint32_t param_1, struct MapCoords* param_2) asm("?GetShowNeedsPos@ShowNeeds@@UAEIIPAUMapCoords@@@Z");
+// win1.41 00719cf0 mac 101458d0 ShowNeeds::Load(GameOSFile &)
+uint32_t __fastcall Load__9ShowNeedsFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@ShowNeeds@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00719cb0 mac 10145970 ShowNeeds::Save(GameOSFile &)
+uint32_t __fastcall Save__9ShowNeedsFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@ShowNeeds@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055dd20 mac 10146330 ShowNeeds::GetSaveType(void)
+uint32_t __fastcall GetSaveType__9ShowNeedsFv(struct GameThing* this) asm("?GetSaveType@ShowNeeds@@UAEIXZ");
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_INCLUDED_H */

@@ -2,11 +2,18 @@
 #define BW1_DECOMP_ANIMATED_STATIC_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "Feature.h" /* For struct Feature */
+
+// Forward Declares
+
+struct Base;
+struct LHOSFile;
+struct MapCoords;
+struct Object;
 
 struct AnimatedStatic
 {
@@ -20,6 +27,17 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14AnimatedSta
 
 // win1.41 008c1a10 mac 10735458 AnimatedStatic::`vftable'
 extern const struct MultiMapFixedVftable __vt__14AnimatedStatic asm("??_7AnimatedStatic@@6B@");
+
+// Override methods
+
+// win1.41 004221a0 mac 100a5e20 AnimatedStatic::_dt(void)
+void __fastcall __dt__14AnimatedStaticFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAnimatedStatic@@UAEPAXI@Z");
+// win1.41 004225a0 mac 100a6cb0 AnimatedStatic::ToBeDeleted(int)
+void __fastcall ToBeDeleted__14AnimatedStaticFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@AnimatedStatic@@UAEXH@Z");
+// win1.41 00422300 mac 100a6f10 AnimatedStatic::CallVirtualFunctionsForCreation(MapCoords const &)
+void __fastcall CallVirtualFunctionsForCreation__14AnimatedStaticFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@AnimatedStatic@@UAEXABUMapCoords@@@Z");
+// win1.41 00422650 mac 100a6a10 AnimatedStatic::SaveObject(LHOSFile &, MapCoords const &)
+uint32_t __fastcall SaveObject__14AnimatedStaticFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@AnimatedStatic@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 DECLARE_LH_LINKED_LIST(AnimatedStatic);
 

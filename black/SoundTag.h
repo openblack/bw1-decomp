@@ -13,6 +13,7 @@
 
 // Forward Declares
 
+struct Base;
 struct GameThingWithPos;
 
 struct SoundTag
@@ -56,6 +57,15 @@ struct SoundTag* __fastcall __ct__8SoundTagFP16GameThingWithPosRC7LHPointUlbUlUl
 
 // win1.41 0071e4f0 mac 100a0490 SoundTag::Set(GameThingWithPos *, LHPoint const &, LHPoint const &, unsigned long, bool, unsigned long, unsigned long, int, int, unsigned long, int, int)
 void __fastcall Set__8SoundTagFP16GameThingWithPosRC7LHPointRC7LHPointUlbUlUliiUlii(struct SoundTag* this, const void* edx, struct GameThingWithPos* param_1, struct LHPoint* param_2, struct LHPoint* param_3, uint32_t param_4, bool param_5, uint32_t param_6, uint32_t param_7, int param_8, int param_9, uint32_t param_10, int param_11, int param_12);
+
+// Override methods
+
+// win1.41 0071e3c0 mac 10514730 SoundTag::_dt(void)
+void __fastcall __dt__8SoundTagFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GSoundTag@@UAEPAXI@Z");
+// win1.41 0071ecb0 mac 105137d0 SoundTag::ToBeDeleted(int)
+void __fastcall ToBeDeleted__8SoundTagFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@SoundTag@@UAEXH@Z");
+// win1.41 0071ec90 mac 10513850 SoundTag::Get3DSoundPos(LHPoint *)
+int __fastcall Get3DSoundPos__8SoundTagFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1) asm("?Get3DSoundPos@SoundTag@@UAEHPAULHPoint@@@Z");
 
 DECLARE_LH_LIST_HEAD(SoundTag);
 

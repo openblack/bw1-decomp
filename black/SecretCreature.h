@@ -22,4 +22,9 @@ static_assert(sizeof(struct SecretCreature) == 0x4, "Data type is of wrong size"
 // win1.41 0095726c mac 1075ac64 SecretCreature::`vftable'
 extern const struct SecretCreatureVftable __vt__14SecretCreature asm("??_7SecretCreature@@6B@");
 
+// Override methods
+
+// win1.41 00711d60 mac 101441a0 SecretCreature::_dt(void)
+void __fastcall __dt__14SecretCreatureFv(struct SecretCreature* this) asm("??_GSecretCreature@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_SECRET_CREATURE_INCLUDED_H */

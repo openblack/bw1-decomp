@@ -2,9 +2,16 @@
 #define BW1_DECOMP_P_SYS_MANAGER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "PSysBase.h" /* For struct PSysBase */
+
+// Forward Declares
+
+struct Base;
+struct GPlayer;
+struct GameOSFile;
+struct GameThing;
 
 struct PSysManager
 {
@@ -18,5 +25,20 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11PSysManager
 
 // win1.41 009353c0 mac 109b86c0 PSysManager::`vftable'
 extern const struct GameThingVftable __vt__11PSysManager asm("??_7PSysManager@@6B@");
+
+// Override methods
+
+// win1.41 00672cb0 mac 103dcfb0 PSysManager::_dt(void)
+void __fastcall __dt__11PSysManagerFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPSysManager@@UAEPAXI@Z");
+// win1.41 006735c0 mac 103dc100 PSysManager::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__11PSysManagerFv(struct GameThing* this) asm("?GetPlayer@PSysManager@@UAEPAVGPlayer@@XZ");
+// win1.41 00672ca0 mac 10423d00 PSysManager::GetDebugText(void)
+char* __fastcall GetDebugText__11PSysManagerFv(struct GameThing* this) asm("?GetDebugText@PSysManager@@UAEPADXZ");
+// win1.41 00694500 mac 1041d6f0 PSysManager::Load(GameOSFile &)
+uint32_t __fastcall Load__11PSysManagerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@PSysManager@@UAEIAAVGameOSFile@@@Z");
+// win1.41 006cb090 mac 104858d0 PSysManager::Save(GameOSFile &)
+uint32_t __fastcall Save__11PSysManagerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@PSysManager@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00672c90 mac 10423cc0 PSysManager::GetSaveType(void)
+uint32_t __fastcall GetSaveType__11PSysManagerFv(struct GameThing* this) asm("?GetSaveType@PSysManager@@UAEIXZ");
 
 #endif /* BW1_DECOMP_P_SYS_MANAGER_INCLUDED_H */

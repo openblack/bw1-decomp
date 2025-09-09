@@ -1,0 +1,28 @@
+#ifndef BW1_DECOMP_ARROW_INCLUDED_H
+#define BW1_DECOMP_ARROW_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
+
+#include "MobileObject.h" /* For struct MobileObject */
+
+// Forward Declares
+
+struct Base;
+struct GPlayer;
+struct GameThing;
+
+struct Arrow
+{
+  struct MobileObject super;  /* 0x0 */
+};
+static_assert(sizeof(struct Arrow) == 0x68, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 00425c00 mac inlined Arrow::_dt(void)
+void __fastcall __dt__5ArrowFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GArrow@@UAEPAXI@Z");
+// win1.41 00425bf0 mac inlined Arrow::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__5ArrowFv(struct GameThing* this) asm("?GetPlayer@Arrow@@UAEPAVGPlayer@@XZ");
+
+#endif /* BW1_DECOMP_ARROW_INCLUDED_H */

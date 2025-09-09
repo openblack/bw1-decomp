@@ -6,6 +6,11 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+// Forward Declares
+
+struct Base;
+struct GPlayer;
+
 struct GameStats
 {
   struct GameThing super;  /* 0x0 */
@@ -28,5 +33,16 @@ extern const struct GameThingVftable __vt__9GameStats asm("??_7GameStats@@6B@");
 
 // win1.41 00564a40 mac 1031b7d0 GameStats::GameStats(void)
 struct GameStats* __fastcall __ct__9GameStatsFv(struct GameStats* this);
+
+// Override methods
+
+// win1.41 00564b00 mac 1031b740 GameStats::_dt(void)
+void __fastcall __dt__9GameStatsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGameStats@@UAEPAXI@Z");
+// win1.41 00564ac0 mac 103109d0 GameStats::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__9GameStatsFv(struct GameThing* this) asm("?GetPlayer@GameStats@@UAEPAVGPlayer@@XZ");
+// win1.41 00564ad0 mac 10310a10 GameStats::SetPlayer(GPlayer *)
+void __fastcall SetPlayer__9GameStatsFP7GPlayer(struct GameThing* this, const void* edx, struct GPlayer* param_1) asm("?SetPlayer@GameStats@@UAEXPAVGPlayer@@@Z");
+// win1.41 00564af0 mac 10310a90 GameStats::GetDebugText(void)
+char* __fastcall GetDebugText__9GameStatsFv(struct GameThing* this) asm("?GetDebugText@GameStats@@UAEPADXZ");
 
 #endif /* BW1_DECOMP_GAME_STATS_INCLUDED_H */

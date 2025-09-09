@@ -13,8 +13,15 @@
 
 // Forward Declares
 
+struct Base;
+struct Creature;
 struct GBallInfo;
+struct GPlayer;
+struct GameOSFile;
+struct GameThing;
+struct GameThingWithPos;
 struct MapCoords;
+struct Object;
 struct Town;
 
 struct Ball
@@ -54,6 +61,35 @@ struct Ball* __fastcall __ct__4BallFRC9MapCoordsPC9GBallInfo(struct Ball* this, 
 
 // win1.41 004360e0 mac 100b04d0 Ball::IsBallFree(void)
 bool __fastcall IsBallFree__4BallFv(struct Ball* this);
+
+// Override methods
+
+// win1.41 00435ae0 mac 100b0b20 Ball::_dt(void)
+void __fastcall __dt__4BallFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GBall@@UAEPAXI@Z");
+// win1.41 00435f60 mac 100b0630 Ball::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__4BallFv(struct GameThing* this) asm("?GetPlayer@Ball@@UAEPAVGPlayer@@XZ");
+// win1.41 00435ad0 mac 100affd0 Ball::GetDebugText(void)
+char* __fastcall GetDebugText__4BallFv(struct GameThing* this) asm("?GetDebugText@Ball@@UAEPADXZ");
+// win1.41 00436260 mac 100b0080 Ball::Load(GameOSFile &)
+uint32_t __fastcall Load__4BallFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Ball@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00436110 mac 100b0260 Ball::Save(GameOSFile &)
+uint32_t __fastcall Save__4BallFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Ball@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00435ac0 mac 100affa0 Ball::GetSaveType(void)
+uint32_t __fastcall GetSaveType__4BallFv(struct GameThing* this) asm("?GetSaveType@Ball@@UAEIXZ");
+// win1.41 00435ab0 mac 100aff50 Ball::CanBePickedUpByCreature(Creature *)
+uint32_t __fastcall CanBePickedUpByCreature__4BallFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBePickedUpByCreature@Ball@@UAEIPAVCreature@@@Z");
+// win1.41 004363b0 mac 100b0040 Ball::IsToy(Creature *)
+uint32_t __fastcall IsToy__4BallFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsToy@Ball@@UAEIPAVCreature@@@Z");
+// win1.41 004363c0 mac 100b0000 Ball::IsToyBall(Creature *)
+uint32_t __fastcall IsToyBall__4BallFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsToyBall@Ball@@UAEIPAVCreature@@@Z");
+// win1.41 00436100 mac 100b0450 Ball::GetScriptObjectType(void)
+uint32_t __fastcall GetScriptObjectType__4BallFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@Ball@@UAEIXZ");
+// win1.41 00435c30 mac 100b0970 Ball::Process(void)
+uint32_t __fastcall Process__4BallFv(struct Object* this) asm("?Process@Ball@@UAEIXZ");
+// win1.41 00516870 mac 100cb190 Ball::Draw(void)
+void __fastcall Draw__4BallFv(struct Object* this) asm("?Draw@Ball@@UAEXXZ");
+// win1.41 004360f0 mac 100b0490 Ball::GetPhysicsConstantsType(void)
+uint32_t __fastcall GetPhysicsConstantsType__4BallFv(struct Object* this) asm("?GetPhysicsConstantsType@Ball@@UAEIXZ");
 
 DECLARE_LH_LIST_HEAD(Ball);
 

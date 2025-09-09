@@ -8,6 +8,10 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+// Forward Declares
+
+struct Base;
+
 struct GTribeInfo
 {
   struct GBaseInfo super;  /* 0x0 */
@@ -27,5 +31,12 @@ extern const struct GBaseInfoVftable __vt__10GTribeInfo asm("??_7GTribeInfo@@6B@
 
 // win1.41 0074c940 mac 10159bc0 GTribeInfo::GetTribeFromText(char const *)
 struct GTribeInfo* __cdecl GetTribeFromText__10GTribeInfoFPCc(const char* str);
+
+// Override methods
+
+// win1.41 0074c920 mac 10159d30 GTribeInfo::_dt(void)
+void __fastcall __dt__10GTribeInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTribeInfo@@UAEPAXI@Z");
+// win1.41 0074c8c0 mac 10159ef0 GTribeInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__10GTribeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GTribeInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_TRIBE_INFO_INCLUDED_H */

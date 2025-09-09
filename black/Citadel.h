@@ -2,6 +2,7 @@
 #define BW1_DECOMP_CITADEL_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
@@ -9,9 +10,14 @@
 
 // Forward Declares
 
+struct Base;
 struct CitadelHeart;
+struct Creature;
 struct GCitadelHeartInfo;
 struct GTribeInfo;
+struct GameOSFile;
+struct GameThing;
+struct GameThingWithPos;
 struct LH3DMesh;
 struct Living;
 struct MapCoords;
@@ -55,6 +61,37 @@ struct Citadel* __cdecl CreateCitadel__7CitadelFRC9MapCoordsPC17GCitadelHeartInf
 void* __fastcall AddTown__7CitadelFP4Town(struct Citadel* this, const void* edx, struct Town* town);
 // win1.41 00463220 mac 101b9420 Citadel::FindOrCreateWorshipSite(GTribeInfo const *)
 struct WorshipSite* __fastcall FindOrCreateWorshipSite__7CitadelFPC10GTribeInfo(struct Citadel* this, const void* edx, struct GTribeInfo* tribe_info);
+
+// Override methods
+
+// win1.41 00462ae0 mac 101b6d30 Citadel::_dt(void)
+void __fastcall __dt__7CitadelFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCitadel@@UAEPAXI@Z");
+// win1.41 00462b90 mac 101ba6a0 Citadel::ToBeDeleted(int)
+void __fastcall ToBeDeleted__7CitadelFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Citadel@@UAEXH@Z");
+// win1.41 00462ad0 mac 101b6ff0 Citadel::GetDebugText(void)
+char* __fastcall GetDebugText__7CitadelFv(struct GameThing* this) asm("?GetDebugText@Citadel@@UAEPADXZ");
+// win1.41 00463dc0 mac 101b71d0 Citadel::Load(GameOSFile &)
+uint32_t __fastcall Load__7CitadelFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Citadel@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00463b00 mac 101b7db0 Citadel::Save(GameOSFile &)
+uint32_t __fastcall Save__7CitadelFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Citadel@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00462ac0 mac 101b6fb0 Citadel::GetSaveType(void)
+uint32_t __fastcall GetSaveType__7CitadelFv(struct GameThing* this) asm("?GetSaveType@Citadel@@UAEIXZ");
+// win1.41 00462a60 mac 101b6e50 Citadel::GetCreatureBeliefType(void)
+uint32_t __fastcall GetCreatureBeliefType__7CitadelFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@Citadel@@UAEIXZ");
+// win1.41 00462a70 mac 101b6e90 Citadel::GetCreatureBeliefListType(void)
+uint32_t __fastcall GetCreatureBeliefListType__7CitadelFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefListType@Citadel@@UAEIXZ");
+// win1.41 00462a80 mac 101b6ed0 Citadel::GetOrigin(void)
+uint32_t __fastcall GetOrigin__7CitadelFv(struct GameThingWithPos* this) asm("?GetOrigin@Citadel@@UAEIXZ");
+// win1.41 004e40e0 mac 105e5f60 Citadel::IsActivityObjectWhichAngerAppliesTo(Creature *)
+bool __fastcall IsActivityObjectWhichAngerAppliesTo__7CitadelFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Citadel@@UAE_NPAVCreature@@@Z");
+// win1.41 00462a90 mac 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
+uint32_t __fastcall IsSuitableForCreatureActivity__7CitadelFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureActivity@Citadel@@UAEIXZ");
+// win1.41 004d1b50 mac 10242fd0 Citadel::GetHowMuchCreatureWantsToLookAtMe(void)
+float __fastcall GetHowMuchCreatureWantsToLookAtMe__7CitadelFv(struct GameThingWithPos* this) asm("?GetHowMuchCreatureWantsToLookAtMe@Citadel@@UAEMXZ");
+// win1.41 00462aa0 mac 101b6f50 Citadel::GetText(void)
+const char* __fastcall GetText__7CitadelFv(struct GameThingWithPos* this) asm("?GetText@Citadel@@UAEPBDXZ");
+// win1.41 00462ab0 mac 101b6f80 Citadel::IsCitadel(void)
+uint32_t __fastcall IsCitadel__7CitadelFv(struct GameThingWithPos* this) asm("?IsCitadel@Citadel@@UAEIXZ");
 
 // win1.41 004699c0 mac 101c4740 CPController::Init(LH3DMesh*)
 void __cdecl Init__12CPControllerFP8LH3DMesh(struct LH3DMesh* mesh);

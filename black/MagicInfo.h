@@ -2,7 +2,7 @@
 #define BW1_DECOMP_MAGIC_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum MAGIC_TYPE */
 
@@ -10,6 +10,7 @@
 
 // Forward Declares
 
+struct Base;
 struct GMagicEffectInfo;
 
 struct GMagicInfo
@@ -42,5 +43,12 @@ void __fastcall __ct__10GMagicInfoFv(struct GMagicInfo* this);
 const char* __fastcall GetMagicInfoText__10GMagicInfoCFv(const struct GMagicInfo* this);
 // win1.41 005fb680 mac 103adc30 GMagicInfo::GetMagicEffectInfo(void) const
 struct GMagicEffectInfo* __fastcall GetMagicEffectInfo__10GMagicInfoCFv(const struct GMagicInfo* this);
+
+// Override methods
+
+// win1.41 00435680 mac 1018ee20 GMagicInfo::_dt(void)
+void __fastcall __dt__10GMagicInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicInfo@@UAEPAXI@Z");
+// win1.41 0042d700 mac 101980a0 GMagicInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__10GMagicInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMagicInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_MAGIC_INFO_INCLUDED_H */

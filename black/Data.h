@@ -40,4 +40,9 @@ void __fastcall Reset__5GDataFv(struct GData* this);
 // win1.41 006de530 mac inlined GData::Rand(float)
 float __fastcall Rand__5GDataFf(struct GData* this, const void* edx, float scale, const char* src_file, uint32_t src_line);
 
+// Override methods
+
+// win1.41 00510610 mac 1056c340 GData::_dt(void)
+void __fastcall __dt__5GDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGData@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_DATA_INCLUDED_H */

@@ -6,6 +6,10 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+// Forward Declares
+
+struct Base;
+
 struct DancePathInfo
 {
   struct GameThing super;  /* 0x0 */
@@ -21,5 +25,10 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DancePathIn
 
 // win1.41 00900914 mac 10744cf8 DancePathInfo::`vftable'
 extern const struct GameThingVftable __vt__13DancePathInfo asm("??_7DancePathInfo@@6B@");
+
+// Override methods
+
+// win1.41 005961c0 mac 100fafe0 DancePathInfo::_dt(void)
+void __fastcall __dt__13DancePathInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GDancePathInfo@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_DANCE_PATH_INFO_INCLUDED_H */

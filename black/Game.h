@@ -27,6 +27,7 @@
 
 // Forward Declares
 
+struct Base;
 struct Config;
 struct ControlMap;
 struct DialogBoxKeyBinding;
@@ -270,7 +271,23 @@ void __fastcall ProcessOneSuperpacket__5GGameFv(struct GGame* this);
 
 // Override methods
 
+// win1.41 0054c330 mac 10496be0 GGame::Delete(void)
+void __fastcall Delete__5GGameFv(struct Base* this) asm("?Delete@GGame@@UAEXXZ");
+// win1.41 0054bfd0 mac 103dcca0 GGame::ToBeDeleted(int)
+void __fastcall ToBeDeleted__5GGameFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GGame@@UAEXH@Z");
+// win1.41 00550780 mac 10560930 GGame::Dump(void)
+void __fastcall Dump__5GGameFv(struct Base* this) asm("?Dump@GGame@@UAEXXZ");
+// win1.41 0054b9a0 mac 1009d100 GGame::IsAvailable(void)
+bool __fastcall IsAvailable__5GGameFv(struct GameThing* this) asm("?IsAvailable@GGame@@UAE_NXZ");
+// win1.41 0054b9c0 mac 10496160 GGame::GetDebugText(void)
+char* __fastcall GetDebugText__5GGameFv(struct GameThing* this) asm("?GetDebugText@GGame@@UAEPADXZ");
+// win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
+uint32_t __fastcall Load__5GGameFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GGame@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
 int __fastcall Save__5GGameFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+// win1.41 0054b9b0 mac 10512c00 GGame::GetSaveType(void)
+uint32_t __fastcall GetSaveType__5GGameFv(struct GameThing* this) asm("?GetSaveType@GGame@@UAEIXZ");
+// win1.41 00555080 mac 100c76b0 GGame::ResolveLoad(void)
+void __fastcall ResolveLoad__5GGameFv(struct GameThing* this) asm("?ResolveLoad@GGame@@UAEXXZ");
 
 #endif /* BW1_DECOMP_GAME_INCLUDED_H */

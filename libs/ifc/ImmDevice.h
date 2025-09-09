@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <guiddef.h> /* For GUID */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For int32_t, uint32_t */
+#include <stdint.h> /* For uint32_t */
 
 // Forward Declares
 
@@ -22,8 +22,8 @@ struct CImmDeviceVftable
   int (__fastcall* GetProductName)(struct CImmDevice* this, const void* edx, char* lpszProductName, int nMaxCount);
   int (__fastcall* GetProductGUIDString)(struct CImmDevice* this, const void* edx, char* lpszProductName, int nMaxCount);
   GUID (__fastcall* GetProductGUID)(struct CImmDevice* this);
-  bool (__fastcall* GetCurrentPosition)(struct CImmDevice* this, const void* edx, int32_t* lXPos, int32_t* lYPos);  /* 0x20 */
-  bool (__fastcall* ChangeScreenResolution)(struct CImmDevice* this, const void* edx, bool bAutoSet, int32_t dwXScreenSize, int32_t dwYScreenSize);
+  bool (__fastcall* GetCurrentPosition)(struct CImmDevice* this, const void* edx, int* lXPos, int* lYPos);  /* 0x20 */
+  bool (__fastcall* ChangeScreenResolution)(struct CImmDevice* this, const void* edx, bool bAutoSet, int dwXScreenSize, int dwYScreenSize);
   bool (__fastcall* SwitchToAbsoluteMode)(struct CImmDevice* this, const void* edx, bool bAbsMode);
   bool (__fastcall* prepare_device)(struct CImmDevice* this);
   void (__fastcall* reset)(struct CImmDevice* this);  /* 0x30 */

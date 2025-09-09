@@ -4,7 +4,16 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/Enum.h> /* For enum ABODE_TYPE */
+
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
+
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+struct GMultiMapFixedInfo;
+struct GObjectInfo;
 
 struct GWorshipSiteInfo
 {
@@ -28,5 +37,16 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GWorshipSit
 
 // win1.41 0099c478 mac 109eb3bc GWorshipSiteInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__16GWorshipSiteInfo asm("??_7GWorshipSiteInfo@@6B@");
+
+// Override methods
+
+// win1.41 0077a920 mac 105b0900 GWorshipSiteInfo::_dt(void)
+void __fastcall __dt__16GWorshipSiteInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGWorshipSiteInfo@@UAEPAXI@Z");
+// win1.41 0077a8b0 mac 105b3c70 GWorshipSiteInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__16GWorshipSiteInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GWorshipSiteInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 00464370 mac inlined GWorshipSiteInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__16GWorshipSiteInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GWorshipSiteInfo@@UBEIXZ");
+// win1.41 00464380 mac inlined GWorshipSiteInfo::GetAbodeType( const(void))
+enum ABODE_TYPE __fastcall GetAbodeType__16GWorshipSiteInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeType@GWorshipSiteInfo@@UBE?AW4ABODE_TYPE@@XZ");
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INFO_INCLUDED_H */

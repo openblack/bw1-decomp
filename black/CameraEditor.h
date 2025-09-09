@@ -34,7 +34,7 @@ void __cdecl CreateSegFile__13GCameraEditorFv(void);
 // win1.41 00446450 mac 1019b070 GCameraEditor::Draw3DPart(void)
 void __cdecl Draw3DPart__13GCameraEditorFv(void);
 // win1.41 00446fe0 mac 1019adf0 GCameraEditor::LoadCameraFromHD(long, GCameraEditor::CameraBin &)
-void __cdecl LoadCameraFromHD__13GCameraEditorFlRQ213GCameraEditor9CameraBin(int32_t param_1, struct GCameraEditor__CameraBin* param_2);
+void __cdecl LoadCameraFromHD__13GCameraEditorFlRQ213GCameraEditor9CameraBin(int param_1, struct GCameraEditor__CameraBin* param_2);
 
 struct Q213GCameraEditor9InfoTrack
 {

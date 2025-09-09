@@ -2,6 +2,7 @@
 #define BW1_DECOMP_MPFE_LOGIN_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 #include "MPFEDatabase.h" /* For struct MPFEDatabase */
@@ -38,6 +39,15 @@ extern const struct DialogBoxBaseVftable __vt__9MPFELogin asm("??_7MPFELogin@@6B
 
 // win1.41 00630580 mac 103a80e0 MPFELogin::MPFELogin(void)
 struct MPFELogin* __fastcall __ct__9MPFELoginFv(struct MPFELogin* this);
+
+// Override methods
+
+// win1.41 006307f0 mac 103a7750 MPFELogin::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+void __fastcall Init__9MPFELoginFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@MPFELogin@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+// win1.41 00630d60 mac 103a7720 MPFELogin::Destroy(void)
+void __fastcall Destroy__9MPFELoginFv(struct DialogBoxBase* this) asm("?Destroy@MPFELogin@@UAEXXZ");
+// win1.41 00630610 mac 103a7d90 MPFELogin::InitControls(void)
+void __fastcall InitControls__9MPFELoginFv(struct DialogBoxBase* this) asm("?InitControls@MPFELogin@@UAEXXZ");
 
 struct MPFELoginDatabase
 {

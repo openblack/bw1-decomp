@@ -22,4 +22,33 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__22CreatureExp
 // win1.41 008d00e0 mac 1098b8e0 CreatureExplorationMap::`vftable'
 extern const struct BaseVftable __vt__22CreatureExplorationMap asm("??_7CreatureExplorationMap@@6B@");
 
+// Override methods
+
+// win1.41 004df5c0 mac 10246800 CreatureExplorationMap::_dt(void)
+void __fastcall __dt__22CreatureExplorationMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureExplorationMap@@UAEPAXI@Z");
+
+struct CreatureExplorationRegionEntry
+{
+  struct Base super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureExplorationRegionEntry) == 0x8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004df430 mac 10260660 CreatureExplorationRegionEntry::_dt(void)
+void __fastcall __dt__30CreatureExplorationRegionEntryFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureExplorationRegionEntry@@UAEPAXI@Z");
+
+struct CreatureGlobalExplorationMap
+{
+  struct Base super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureGlobalExplorationMap) == 0x8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004df450 mac 102605a0 CreatureGlobalExplorationMap::_dt(void)
+void __fastcall __dt__28CreatureGlobalExplorationMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureGlobalExplorationMap@@UAEPAXI@Z");
+// win1.41 004dfbd0 mac 10260d20 CreatureGlobalExplorationMap::Dump(void)
+void __fastcall Dump__28CreatureGlobalExplorationMapFv(struct Base* this) asm("?Dump@CreatureGlobalExplorationMap@@UAEXXZ");
+
 #endif /* BW1_DECOMP_CREATURE_EXPLORATION_MAP_INCLUDED_H */

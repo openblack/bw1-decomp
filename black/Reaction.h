@@ -11,7 +11,9 @@
 
 // Forward Declares
 
+struct Base;
 struct GPlayer;
+struct GameOSFile;
 struct GameThingWithPos;
 struct ReactionInfo;
 
@@ -48,6 +50,27 @@ struct Reaction* __cdecl CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlaye
 
 // win1.41 006e4700 mac 1008c230 Reaction::GetInfo(void) const
 struct ReactionInfo* __fastcall GetInfo__8ReactionCFv(struct Reaction* this);
+
+// Override methods
+
+// win1.41 0055c800 mac 10136550 Reaction::_dt(void)
+void __fastcall __dt__8ReactionFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GReaction@@UAEPAXI@Z");
+// win1.41 006e3aa0 mac 10136200 Reaction::ToBeDeleted(int)
+void __fastcall ToBeDeleted__8ReactionFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Reaction@@UAEXH@Z");
+// win1.41 0055c7b0 mac 10099cb0 Reaction::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__8ReactionFv(struct GameThing* this) asm("?GetPlayer@Reaction@@UAEPAVGPlayer@@XZ");
+// win1.41 0055c7c0 mac 10134150 Reaction::SetPlayer(GPlayer *)
+void __fastcall SetPlayer__8ReactionFP7GPlayer(struct GameThing* this, const void* edx, struct GPlayer* param_1) asm("?SetPlayer@Reaction@@UAEXPAVGPlayer@@@Z");
+// win1.41 0055c7d0 mac 10049510 Reaction::GetRadius(void)
+float __fastcall GetRadius__8ReactionFv(struct GameThing* this) asm("?GetRadius@Reaction@@UAEMXZ");
+// win1.41 0055c7f0 mac 101342c0 Reaction::GetDebugText(void)
+char* __fastcall GetDebugText__8ReactionFv(struct GameThing* this) asm("?GetDebugText@Reaction@@UAEPADXZ");
+// win1.41 006e4ba0 mac 10134400 Reaction::Load(GameOSFile &)
+uint32_t __fastcall Load__8ReactionFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Reaction@@UAEIAAVGameOSFile@@@Z");
+// win1.41 006e4990 mac 10134810 Reaction::Save(GameOSFile &)
+uint32_t __fastcall Save__8ReactionFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Reaction@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055c7e0 mac 10134280 Reaction::GetSaveType(void)
+uint32_t __fastcall GetSaveType__8ReactionFv(struct GameThing* this) asm("?GetSaveType@Reaction@@UAEIXZ");
 
 DECLARE_LH_LIST_HEAD(Reaction);
 

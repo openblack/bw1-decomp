@@ -34,4 +34,9 @@ void __fastcall SetBelief__7GBeliefFUlf(struct GBelief* this, const void* edx, i
 // win1.41 00438a00 mac 100b13e0 GBelief::SetBeliefInPlayerCap(GPlayer *, float)
 void __fastcall SetBeliefInPlayerCap__7GBeliefFP7GPlayerf(struct GBelief* this, const void* edx, struct GPlayer* player, float cap);
 
+// Override methods
+
+// win1.41 00739320 mac 105581c0 GBelief::_dt(void)
+void __fastcall __dt__7GBeliefFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGBelief@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_BELIEF_INCLUDED_H */

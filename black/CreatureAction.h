@@ -7,10 +7,13 @@
 #include <chlasm/CreatureEnum.h> /* For NUM_CREATURE_ACTIONS */
 
 #include "Base.h" /* For struct Base */
+#include "BaseInfo.h" /* For struct GBaseInfo */
+#include "CreatureMorph.h" /* For struct LH3DCreature */
 
 // Forward Declares
 
 struct CreatureContext;
+struct Morphable;
 
 struct CreatureActionContextStart
 {
@@ -64,5 +67,56 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreaturePre
 
 // win1.41 008d154c mac 10787604 CreaturePreviousActions::`vftable'
 extern const struct BaseVftable __vt__23CreaturePreviousActions asm("??_7CreaturePreviousActions@@6B@");
+
+// Override methods
+
+// win1.41 004f2040 mac 10246760 CreaturePreviousActions::_dt(void)
+void __fastcall __dt__23CreaturePreviousActionsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreaturePreviousActions@@UAEPAXI@Z");
+
+struct CreatureActionKnownAbout
+{
+  struct Base super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureActionKnownAbout) == 0x8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004e29b0 mac 10266bf0 CreatureActionKnownAbout::_dt(void)
+void __fastcall __dt__24CreatureActionKnownAboutFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureActionKnownAbout@@UAEPAXI@Z");
+
+struct CreatureActionKnownAboutEntry
+{
+  struct GBaseInfo super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureActionKnownAboutEntry) == 0x10, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004e2db0 mac 102676b0 CreatureActionKnownAboutEntry::_dt(void)
+void __fastcall __dt__29CreatureActionKnownAboutEntryFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureActionKnownAboutEntry@@UAEPAXI@Z");
+// win1.41 004e2d50 mac 10267920 CreatureActionKnownAboutEntry::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__29CreatureActionKnownAboutEntryFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@CreatureActionKnownAboutEntry@@UAEPAVGBaseInfo@@AAI@Z");
+
+struct CreatureFalling
+{
+  struct LH3DCreature super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureFalling) == 0x57b8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004803d0 mac inlined CreatureFalling::SetAnimTime(long, long)
+void __fastcall SetAnimTime__15CreatureFallingFll(struct Morphable* this, const void* edx, int param_1, int param_2) asm("?SetAnimTime@CreatureFalling@@UAEXHH@Z");
+
+struct CreatureMagicActionKnownAboutEntry
+{
+  struct CreatureActionKnownAboutEntry super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureMagicActionKnownAboutEntry) == 0x10, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004e2e50 mac 10267580 CreatureMagicActionKnownAboutEntry::_dt(void)
+void __fastcall __dt__34CreatureMagicActionKnownAboutEntryFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureMagicActionKnownAboutEntry@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_CREATURE_ACTION_INCLUDED_H */

@@ -21,6 +21,11 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureBel
 // win1.41 008cf90c mac 1078747c CreatureBeliefList::`vftable'
 extern const struct BaseVftable __vt__18CreatureBeliefList asm("??_7CreatureBeliefList@@6B@");
 
+// Override methods
+
+// win1.41 004d24f0 mac 10246b60 CreatureBeliefList::_dt(void)
+void __fastcall __dt__18CreatureBeliefListFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureBeliefList@@UAEPAXI@Z");
+
 struct AllocatedBeliefList
 {
   struct Base super;  /* 0x0 */
@@ -36,6 +41,11 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19AllocatedBe
 
 // win1.41 008cfe58 mac 107874b4 AllocatedBeliefList::`vftable'
 extern const struct BaseVftable __vt__19AllocatedBeliefList asm("??_7AllocatedBeliefList@@6B@");
+
+// Override methods
+
+// win1.41 004d7910 mac 10246ad0 AllocatedBeliefList::_dt(void)
+void __fastcall __dt__19AllocatedBeliefListFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAllocatedBeliefList@@UAEPAXI@Z");
 
 struct CreatureBeliefs
 {
@@ -56,5 +66,10 @@ extern const struct BaseVftable __vt__15CreatureBeliefs asm("??_7CreatureBeliefs
 
 // win1.41 004d8ea0 mac 10250c70 CreatureBeliefs::Initialise(void)
 void __fastcall Initialise__15CreatureBeliefsFv(struct CreatureBeliefs* this);
+
+// Override methods
+
+// win1.41 004d2510 mac 10252390 CreatureBeliefs::_dt(void)
+void __fastcall __dt__15CreatureBeliefsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureBeliefs@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_BELIEFS_INCLUDED_H */

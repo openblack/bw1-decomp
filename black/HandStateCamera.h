@@ -29,4 +29,9 @@ extern const struct HandStateVftable __vt__15HandStateCamera asm("??_7HandStateC
 // win1.41 005b02b0 mac 10336ec0 HandStateCamera::HandStateCamera(CHand*)
 struct HandStateCamera* __fastcall __ct__15HandStateCameraFP5CHand(struct HandStateCamera* this, const void* edx, struct CHand* hand);
 
+// Override methods
+
+// win1.41 005b02f0 mac 10336de0 HandStateCamera::Enter(void)
+void __fastcall Enter__15HandStateCameraFv(struct HandState* this) asm("?Enter@HandStateCamera@@UAEXXZ");
+
 #endif /* BW1_DECOMP_HAND_STATE_CAMERA_INCLUDED_H */

@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct Base;
 struct GameThing;
 struct LHPoint;
 struct PSysInterface;
@@ -32,13 +33,13 @@ static const char* PSysInterface__NET_GAME_TYPE_strs[_PSysInterface__NET_GAME_TY
 struct PSysInterfaceVftable
 {
   struct GameThingVftable super;  /* 0x0 */
-  uint32_t (__fastcall* Process__1)(struct PSysBase* this, const void* edx, const struct PSysProcessInfo* info, uint32_t param_3);  /* 0xfc */
-  void (__fastcall* Process__2)(struct PSysBase* this, const void* edx, struct PSysProcessInfo* info);  /* 0x100 */
-  void (__fastcall* Draw__1)(struct PSysBase* this, const void* edx, float param_1, bool param_2);
-  void (__fastcall* Draw__2)(struct PSysBase* this, const void* edx, bool param_1);
+  uint32_t (__fastcall* Process_1)(struct PSysBase* this, const void* edx, const struct PSysProcessInfo* info, uint32_t param_3);  /* 0xfc */
+  void (__fastcall* Process_2)(struct PSysBase* this, const void* edx, struct PSysProcessInfo* info);  /* 0x100 */
+  void (__fastcall* Draw_1)(struct PSysBase* this, const void* edx, float param_1, bool param_2);
+  void (__fastcall* Draw_2)(struct PSysBase* this, const void* edx, bool param_1);
   void (__fastcall* AddDrawing)(struct PSysInterface* this, const void* edx, float param_1, const struct LHPoint* param_2);
-  void (__fastcall* AddTarget__1)(struct PSysInterface* this, const void* edx, const struct LHPoint* target);  /* 0x110 */
-  void (__fastcall* AddTarget__2)(struct PSysInterface* this, const void* edx, struct GameThing* target);
+  void (__fastcall* AddTarget_1)(struct PSysInterface* this, const void* edx, const struct LHPoint* target);  /* 0x110 */
+  void (__fastcall* AddTarget_2)(struct PSysInterface* this, const void* edx, struct GameThing* target);
   void (__fastcall* CloseDown)(struct PSysInterface* this);
   void (__fastcall* SetMagnitude)(struct PSysInterface* this, const void* edx, float value);
   void (__fastcall* SetAge)(struct PSysInterface* this, const void* edx, float value);  /* 0x120 */
@@ -72,5 +73,10 @@ extern const struct PSysInterfaceVftable __vt__13PSysInterface asm("??_7PSysInte
 
 // win1.41 0068e910 mac 100053c0 PSysInterface::Create(Spell *, PARTICLE_TYPE, LHPoint const &, LHPoint const &, float, PSysInterface::NET_GAME_TYPE)
 struct PSysInterface* __cdecl Create__13PSysInterfaceFP5Spell13PARTICLE_TYPERC7LHPointRC7LHPointfQ213PSysInterface13NET_GAME_TYPE(struct Spell* spell, enum PARTICLE_TYPE particle_type, struct LHPoint* param_3, struct LHPoint* param_4, float param_5, enum PSysInterface__NET_GAME_TYPE game_type);
+
+// Override methods
+
+// win1.41 0055ee30 mac 101109b0 PSysInterface::_dt(void)
+void __fastcall __dt__13PSysInterfaceFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPSysInterface@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_P_SYS_INTERFACE_INCLUDED_H */

@@ -5,11 +5,19 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 
+#include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
+
 #include "Pot.h" /* For struct Pot */
 
 // Forward Declares
 
+struct Base;
+struct GInterfaceStatus;
+struct GPlayer;
 struct GPotInfo;
+struct GameOSFile;
+struct GameThing;
+struct GameThingWithPos;
 struct MapCoords;
 struct MultiMapFixed;
 struct Object;
@@ -37,7 +45,41 @@ struct PotStructure* __fastcall __ct__12PotStructureFRC9MapCoordsPC8GPotInfoUlP1
 
 // Override methods
 
+// win1.41 0055d650 mac 101160f0 PotStructure::_dt(void)
+void __fastcall __dt__12PotStructureFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPotStructure@@UAEPAXI@Z");
+// win1.41 0066d960 mac 1011b560 PotStructure::ToBeDeleted(int)
+void __fastcall ToBeDeleted__12PotStructureFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@PotStructure@@UAEXH@Z");
+// win1.41 0066f230 mac 10116cf0 PotStructure::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__12PotStructureFv(struct GameThing* this) asm("?GetPlayer@PotStructure@@UAEPAVGPlayer@@XZ");
+// win1.41 0055d620 mac 10115fe0 PotStructure::SetPlayer(GPlayer *)
+void __fastcall SetPlayer__12PotStructureFP7GPlayer(struct GameThing* this, const void* edx, struct GPlayer* param_1) asm("?SetPlayer@PotStructure@@UAEXPAVGPlayer@@@Z");
+// win1.41 0066ef60 mac 10117830 PotStructure::GetTown(void)
+struct Town* __fastcall GetTown__12PotStructureFv(struct GameThing* this) asm("?GetTown@PotStructure@@UAEPAVTown@@XZ");
+// win1.41 0066d9b0 mac 1011b3d0 PotStructure::JustRemoveResource(RESOURCE_TYPE, unsigned long, bool *)
+uint32_t __fastcall JustRemoveResource__12PotStructureF13RESOURCE_TYPEUlPb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, bool* param_3) asm("?JustRemoveResource@PotStructure@@UAEIW4RESOURCE_TYPE@@IPA_N@Z");
+// win1.41 0066ef00 mac 10077c70 PotStructure::GetResource(RESOURCE_TYPE)
+uint32_t __fastcall GetResource__12PotStructureF13RESOURCE_TYPE(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1) asm("?GetResource@PotStructure@@UAEIW4RESOURCE_TYPE@@@Z");
+// win1.41 0066ed70 mac 10117b70 PotStructure::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+uint32_t __fastcall AddResource__12PotStructureF13RESOURCE_TYPEUlP16GInterfaceStatusbRC9MapCoordsi(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, struct GInterfaceStatus* param_3, bool param_4, const struct MapCoords* param_5, int param_6) asm("?AddResource@PotStructure@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NPBUMapCoords@@H@Z");
+// win1.41 0066ee10 mac 10117970 PotStructure::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
+uint32_t __fastcall RemoveResource__12PotStructureF13RESOURCE_TYPEUlP16GInterfaceStatusPb(struct GameThing* this, const void* edx, enum RESOURCE_TYPE param_1, uint32_t param_2, struct GInterfaceStatus* param_3, bool* param_4) asm("?RemoveResource@PotStructure@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@PA_N@Z");
+// win1.41 0066db10 mac 1011b060 PotStructure::Load(GameOSFile &)
+uint32_t __fastcall Load__12PotStructureFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@PotStructure@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0066da90 mac 1011b150 PotStructure::Save(GameOSFile &)
+uint32_t __fastcall Save__12PotStructureFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@PotStructure@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055d640 mac 101160a0 PotStructure::CanBeThrownByPlayer(void)
+uint32_t __fastcall CanBeThrownByPlayer__12PotStructureFv(struct GameThingWithPos* this) asm("?CanBeThrownByPlayer@PotStructure@@UAEIXZ");
 // win1.41 0066db90 mac 1011afa0 PotStructure::CallVirtualFunctionsForCreation(const MapCoords&)
 void __fastcall CallVirtualFunctionsForCreation__12PotStructureFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@PotStructure@@UAEXABUMapCoords@@@Z");
+// win1.41 0066da30 mac 1011b250 PotStructure::IsResourceStore(RESOURCE_TYPE)
+bool __fastcall IsResourceStore__12PotStructureF13RESOURCE_TYPE(struct Object* this, const void* edx, enum RESOURCE_TYPE param_1) asm("?IsResourceStore@PotStructure@@UAE_NW4RESOURCE_TYPE@@@Z");
+// win1.41 0066d480 mac inlined PotStructure::SetSize(void)
+void __fastcall SetSize__12PotStructureFv(struct Pot* this) asm("?SetSize@PotStructure@@UAEXXZ");
+// win1.41 0066da00 mac 10077bc0 PotStructure::IsPartOfStructure(void)
+bool __fastcall IsPartOfStructure__12PotStructureFv(struct Pot* this) asm("?IsPartOfStructure@PotStructure@@UAE_NXZ");
+// win1.41 0055d530 mac inlined PotStructure::SetSpeedUp(int)
+void __fastcall SetSpeedUp__12PotStructureFi(struct Pot* this, const void* edx, int param_1) asm("?SetSpeedUp@PotStructure@@UAEXH@Z");
+// win1.41 0055d630 mac 10116020 PotStructure::SetMultiMapFixed(MultiMapFixed *)
+void __fastcall SetMultiMapFixed__12PotStructureFP13MultiMapFixed(struct Pot* this, const void* edx, struct MultiMapFixed* param_1) asm("?SetMultiMapFixed@PotStructure@@UAEXPAVMultiMapFixed@@@Z");
 
 #endif /* BW1_DECOMP_POT_STRUCTURE_INCLUDED_H */

@@ -21,4 +21,9 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GInterfaceF
 // win1.41 0092ab04 mac 1099e27c GInterfaceFlags::`vftable'
 extern const struct BaseVftable __vt__15GInterfaceFlags asm("??_7GInterfaceFlags@@6B@");
 
+// Override methods
+
+// win1.41 005ce340 mac 1035c820 GInterfaceFlags::_dt(void)
+void __fastcall __dt__15GInterfaceFlagsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGInterfaceFlags@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_INTERFACE_FLAGS_INCLUDED_H */

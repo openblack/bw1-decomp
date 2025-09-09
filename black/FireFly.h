@@ -2,6 +2,7 @@
 #define BW1_DECOMP_FIRE_FLY_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
@@ -11,7 +12,13 @@
 
 // Forward Declares
 
+struct Base;
+struct GameOSFile;
+struct GameThing;
+struct GameThingWithPos;
 struct LH3DSprite;
+struct LHOSFile;
+struct PhysicsObject;
 
 struct FireFly
 {
@@ -56,6 +63,35 @@ struct FireFly* __cdecl Create__7FireFlyFRC9MapCoords(struct MapCoords* coord);
 struct FireFly* __fastcall __ct__7FireFlyFRC9MapCoords(struct FireFly* this, const void* edx, struct MapCoords* coords);
 // win1.41 0052a340 mac 100d9e04 FireFly::FireFly(void)
 struct FireFly* __fastcall __ct__7FireFlyFv(struct FireFly* this);
+
+// Override methods
+
+// win1.41 0052a310 mac 100d9be0 FireFly::_dt(void)
+void __fastcall __dt__7FireFlyFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GFireFly@@UAEPAXI@Z");
+// win1.41 0052a4c0 mac 100d9ab0 FireFly::ToBeDeleted(int)
+void __fastcall ToBeDeleted__7FireFlyFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@FireFly@@UAEXH@Z");
+// win1.41 0052a300 mac 100d66d0 FireFly::GetDebugText(void)
+char* __fastcall GetDebugText__7FireFlyFv(struct GameThing* this) asm("?GetDebugText@FireFly@@UAEPADXZ");
+// win1.41 0052bbc0 mac 100d6850 FireFly::Load(GameOSFile &)
+uint32_t __fastcall Load__7FireFlyFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@FireFly@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0052b870 mac 100d7020 FireFly::Save(GameOSFile &)
+uint32_t __fastcall Save__7FireFlyFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@FireFly@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0052a2f0 mac 100d6690 FireFly::GetSaveType(void)
+uint32_t __fastcall GetSaveType__7FireFlyFv(struct GameThing* this) asm("?GetSaveType@FireFly@@UAEIXZ");
+// win1.41 0052a1d0 mac 100da180 FireFly::IsMoving( const(void))
+bool __fastcall IsMoving__7FireFlyCFv(const struct GameThingWithPos* this) asm("?IsMoving@FireFly@@UBE_NXZ");
+// win1.41 0052aa90 mac 100d9130 FireFly::Draw(void)
+void __fastcall Draw__7FireFlyFv(struct Object* this) asm("?Draw@FireFly@@UAEXXZ");
+// win1.41 0052a510 mac 100d9950 FireFly::CallVirtualFunctionsForCreation(MapCoords const &)
+void __fastcall CallVirtualFunctionsForCreation__7FireFlyFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@FireFly@@UAEXABUMapCoords@@@Z");
+// win1.41 0052a1a0 mac 100da240 FireFly::InteractsWithPhysicsObjects(void)
+bool __fastcall InteractsWithPhysicsObjects__7FireFlyFv(struct Object* this) asm("?InteractsWithPhysicsObjects@FireFly@@UAE_NXZ");
+// win1.41 0052a1b0 mac 100da1f0 FireFly::ReactToPhysicsImpact(PhysicsObject *, bool)
+void __fastcall ReactToPhysicsImpact__7FireFlyFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@FireFly@@UAEXPAVPhysicsObject@@_N@Z");
+// win1.41 0052a1c0 mac 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
+bool __fastcall CanBecomeAPhysicsObject__7FireFlyFv(struct Object* this) asm("?CanBecomeAPhysicsObject@FireFly@@UAE_NXZ");
+// win1.41 0052bf10 mac 100d6710 FireFly::SaveObject(LHOSFile &, MapCoords const &)
+uint32_t __fastcall SaveObject__7FireFlyFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@FireFly@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 DECLARE_LH_LIST_HEAD(FireFly);
 

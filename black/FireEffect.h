@@ -10,8 +10,11 @@
 
 // Forward Declares
 
+struct Base;
 struct FireGraphic;
 struct GPlayer;
+struct GameOSFile;
+struct LHPoint;
 struct Object;
 
 struct FireEffect
@@ -49,6 +52,27 @@ struct FireEffect* __fastcall __ct__10FireEffectFv(struct FireEffect* this);
 
 // win1.41 00730ad0 mac 1014c5c0 FireEffect::CreateSprites(void)
 struct FireGraphic* __fastcall CreateSprites__10FireEffectFv(struct FireEffect* this);
+
+// Override methods
+
+// win1.41 0072eae0 mac 10150470 FireEffect::_dt(void)
+void __fastcall __dt__10FireEffectFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GFireEffect@@UAEPAXI@Z");
+// win1.41 0072ebe0 mac 101500c0 FireEffect::ToBeDeleted(int)
+void __fastcall ToBeDeleted__10FireEffectFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@FireEffect@@UAEXH@Z");
+// win1.41 0072ee70 mac 1014fd50 FireEffect::Get3DSoundPos(LHPoint *)
+int __fastcall Get3DSoundPos__10FireEffectFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1) asm("?Get3DSoundPos@FireEffect@@UAEHPAULHPoint@@@Z");
+// win1.41 0072eab0 mac 1014cc60 FireEffect::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__10FireEffectFv(struct GameThing* this) asm("?GetPlayer@FireEffect@@UAEPAVGPlayer@@XZ");
+// win1.41 0072ead0 mac 10150910 FireEffect::GetDebugText(void)
+char* __fastcall GetDebugText__10FireEffectFv(struct GameThing* this) asm("?GetDebugText@FireEffect@@UAEPADXZ");
+// win1.41 00730df0 mac 1014bcc0 FireEffect::Load(GameOSFile &)
+uint32_t __fastcall Load__10FireEffectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@FireEffect@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00730b00 mac 1014c110 FireEffect::Save(GameOSFile &)
+uint32_t __fastcall Save__10FireEffectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@FireEffect@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0072eac0 mac 101508d0 FireEffect::GetSaveType(void)
+uint32_t __fastcall GetSaveType__10FireEffectFv(struct GameThing* this) asm("?GetSaveType@FireEffect@@UAEIXZ");
+// win1.41 007310d0 mac 1014bc70 FireEffect::ResolveLoad(void)
+void __fastcall ResolveLoad__10FireEffectFv(struct GameThing* this) asm("?ResolveLoad@FireEffect@@UAEXXZ");
 
 DECLARE_LH_LIST_HEAD(FireEffect);
 

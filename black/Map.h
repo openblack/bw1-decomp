@@ -98,4 +98,9 @@ struct MapCell* __fastcall ToMap__4GMapFll(struct GMap* this, const void* edx, u
 // win1.41 00612690 mac 10049c10 GMap::InBounds(long, long)
 bool __fastcall InBounds__4GMapCFll(struct GMap* this, const void* edx, uint32_t x, uint32_t z);
 
+// Override methods
+
+// win1.41 006010c0 mac 1055f620 GMap::_dt(void)
+void __fastcall __dt__4GMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMap@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_MAP_INCLUDED_H */

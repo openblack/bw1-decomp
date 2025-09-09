@@ -2,24 +2,40 @@
 #define BW1_DECOMP_CITADEL_HEART_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For LEASH_TYPE_LAST */
+#include <chlasm/Enum.h> /* For LEASH_TYPE_LAST, enum ABODE_TYPE */
+#include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
+#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
 #include "Object.h" /* For struct Object */
 
 // Forward Declares
 
+struct Base;
 struct Citadel;
+struct Creature;
 struct GCitadelHeartInfo;
+struct GInterfaceStatus;
+struct GPlayer;
 struct GTribeInfo;
 struct GWorshipSiteInfo;
 struct GameOSFile;
 struct GameThing;
+struct GameThingWithPos;
 struct LH3DObject;
 struct LH3DSprite;
+struct LHMatrix;
+struct LHOSFile;
 struct MapCoords;
+struct MultiMapFixed;
+struct PhysOb;
+struct PhysicsObject;
+struct PlannedMultiMapFixed;
+struct RPHolder;
 struct TempleLeash;
 struct WorshipSite;
 
@@ -37,6 +53,27 @@ struct LeashObj
   float field_0x74;
 };
 static_assert(sizeof(struct LeashObj) == 0x78, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 00464890 mac 101c0f00 LeashObj::_dt(void)
+void __fastcall __dt__8LeashObjFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GLeashObj@@UAEPAXI@Z");
+// win1.41 00464580 mac 101c1870 LeashObj::GetOverwriteInteractableToolTip(void)
+uint32_t __fastcall GetOverwriteInteractableToolTip__8LeashObjFv(struct GameThingWithPos* this) asm("?GetOverwriteInteractableToolTip@LeashObj@@UAEIXZ");
+// win1.41 00464860 mac 101c25e0 LeashObj::GetText(void)
+const char* __fastcall GetText__8LeashObjFv(struct GameThingWithPos* this) asm("?GetText@LeashObj@@UAEPBDXZ");
+// win1.41 00464870 mac 101c2620 LeashObj::GetQueryFirstEnumText(void)
+enum HELP_TEXT __fastcall GetQueryFirstEnumText__8LeashObjFv(struct GameThingWithPos* this) asm("?GetQueryFirstEnumText@LeashObj@@UAE?AW4HELP_TEXT@@XZ");
+// win1.41 00464880 mac 101c2690 LeashObj::GetQueryLastEnumText(void)
+enum HELP_TEXT __fastcall GetQueryLastEnumText__8LeashObjFv(struct GameThingWithPos* this) asm("?GetQueryLastEnumText@LeashObj@@UAE?AW4HELP_TEXT@@XZ");
+// win1.41 00464850 mac 101c2590 LeashObj::ValidAsInterfaceLeashTarget(void)
+uint32_t __fastcall ValidAsInterfaceLeashTarget__8LeashObjFv(struct Object* this) asm("?ValidAsInterfaceLeashTarget@LeashObj@@UAEIXZ");
+// win1.41 00464450 mac 101c1a60 LeashObj::InterfaceValidToTap(GInterfaceStatus *)
+uint32_t __fastcall InterfaceValidToTap__8LeashObjFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceValidToTap@LeashObj@@UAEIPAVGInterfaceStatus@@@Z");
+// win1.41 00464490 mac 101c18f0 LeashObj::InterfaceTap(GInterfaceStatus *)
+uint32_t __fastcall InterfaceTap__8LeashObjFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceTap@LeashObj@@UAEIPAVGInterfaceStatus@@@Z");
+// win1.41 00464840 mac 101c2540 LeashObj::SaveObject(LHOSFile &, MapCoords const &)
+uint32_t __fastcall SaveObject__8LeashObjFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@LeashObj@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 struct TempleLeash
 {
@@ -108,9 +145,75 @@ struct WorshipSite* __fastcall CreateBuiltWorshipSite__12CitadelHeartFRC9MapCoor
 
 // Override methods
 
+// win1.41 00464bc0 mac 101c0df0 CitadelHeart::_dt(void)
+void __fastcall __dt__12CitadelHeartFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCitadelHeart@@UAEPAXI@Z");
+// win1.41 00464c50 mac 101c0b90 CitadelHeart::ToBeDeleted(int)
+void __fastcall ToBeDeleted__12CitadelHeartFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@CitadelHeart@@UAEXH@Z");
+// win1.41 00468020 mac 10075fd0 CitadelHeart::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__12CitadelHeartFv(struct GameThing* this) asm("?GetPlayer@CitadelHeart@@UAEPAVGPlayer@@XZ");
+// win1.41 00464bb0 mac 101c23c0 CitadelHeart::GetDebugText(void)
+char* __fastcall GetDebugText__12CitadelHeartFv(struct GameThing* this) asm("?GetDebugText@CitadelHeart@@UAEPADXZ");
 // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
 uint32_t __fastcall Load__12CitadelHeartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+// win1.41 004655c0 mac 101bf9c0 CitadelHeart::Save(GameOSFile &)
+uint32_t __fastcall Save__12CitadelHeartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@CitadelHeart@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00464ba0 mac 101c2380 CitadelHeart::GetSaveType(void)
+uint32_t __fastcall GetSaveType__12CitadelHeartFv(struct GameThing* this) asm("?GetSaveType@CitadelHeart@@UAEIXZ");
+// win1.41 00465a10 mac 101bf690 CitadelHeart::ResolveLoad(void)
+void __fastcall ResolveLoad__12CitadelHeartFv(struct GameThing* this) asm("?ResolveLoad@CitadelHeart@@UAEXXZ");
+// win1.41 00464b80 mac 101c2250 CitadelHeart::IsCitadelHeart(void)
+uint32_t __fastcall IsCitadelHeart__12CitadelHeartFv(struct GameThingWithPos* this) asm("?IsCitadelHeart@CitadelHeart@@UAEIXZ");
+// win1.41 00468dc0 mac 101bbf10 CitadelHeart::CreateBuildingSite(void)
+uint32_t __fastcall CreateBuildingSite__12CitadelHeartFv(struct GameThingWithPos* this) asm("?CreateBuildingSite@CitadelHeart@@UAEIXZ");
+// win1.41 004680b0 mac 101bd410 CitadelHeart::GetScriptObjectType(void)
+uint32_t __fastcall GetScriptObjectType__12CitadelHeartFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@CitadelHeart@@UAEIXZ");
+// win1.41 00464b20 mac inlined CitadelHeart::SetSpecularColor(LH3DColor)
+void __fastcall SetSpecularColor__12CitadelHeartF9LH3DColor(struct Object* this, const void* edx, struct LH3DColor param_1) asm("?SetSpecularColor@CitadelHeart@@UAEXULH3DColor@@@Z");
+// win1.41 00464b30 mac 100173c0 CitadelHeart::GetSpecularColor(void)
+struct LH3DColor __fastcall GetSpecularColor__12CitadelHeartFv(struct Object* this) asm("?GetSpecularColor@CitadelHeart@@UAE?AULH3DColor@@XZ");
+// win1.41 00468c30 mac 101bc080 CitadelHeart::GetActualObjectToEffect(GPlayer *, bool)
+void* __fastcall GetActualObjectToEffect__12CitadelHeartFP7GPlayerb(struct Object* this, const void* edx, struct GPlayer* param_1, bool param_2) asm("?GetActualObjectToEffect@CitadelHeart@@UAEPAXPAVGPlayer@@_N@Z");
+// win1.41 00468da0 mac 101bc010 CitadelHeart::DestroyedByEffect(GPlayer *, float)
+uint32_t __fastcall DestroyedByEffect__12CitadelHeartFP7GPlayerf(struct Object* this, const void* edx, struct GPlayer* param_1, float param_2) asm("?DestroyedByEffect@CitadelHeart@@UAEIPAVGPlayer@@M@Z");
+// win1.41 004665a0 mac 1008a6f0 CitadelHeart::Process(void)
+uint32_t __fastcall Process__12CitadelHeartFv(struct Object* this) asm("?Process@CitadelHeart@@UAEIXZ");
+// win1.41 00464b90 mac 10011680 CitadelHeart::Draw(void)
+void __fastcall Draw__12CitadelHeartFv(struct Object* this) asm("?Draw@CitadelHeart@@UAEXXZ");
+// win1.41 00467870 mac 101be3b0 CitadelHeart::GetWorldMatrix(LHMatrix *)
+void __fastcall GetWorldMatrix__12CitadelHeartFP8LHMatrix(struct Object* this, const void* edx, struct LHMatrix* param_1) asm("?GetWorldMatrix@CitadelHeart@@UAEXPAULHMatrix@@@Z");
 // win1.41 004675a0 mac 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__12CitadelHeartFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@CitadelHeart@@UAEXABUMapCoords@@@Z");
+// win1.41 004680d0 mac 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+void __fastcall AddToRoutePlan__12CitadelHeartFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int32_t param_1, struct Point2D param_2, float param_3, int32_t param_4)) asm("?AddToRoutePlan@CitadelHeart@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
+// win1.41 00464b40 mac 101be8a0 CitadelHeart::Get3DType(void)
+enum LH3DObject__ObjectType __fastcall Get3DType__12CitadelHeartFv(struct Object* this) asm("?Get3DType@CitadelHeart@@UAE?AW4LH3DObject__ObjectType@@XZ");
+// win1.41 00467b60 mac 101bdef0 CitadelHeart::GetPhysicsConstantsType(void)
+uint32_t __fastcall GetPhysicsConstantsType__12CitadelHeartFv(struct Object* this) asm("?GetPhysicsConstantsType@CitadelHeart@@UAEIXZ");
+// win1.41 00467b70 mac 101bde40 CitadelHeart::SetUpPhysOb(PhysOb *)
+void __fastcall SetUpPhysOb__12CitadelHeartFP6PhysOb(struct Object* this, const void* edx, struct PhysOb* param_1) asm("?SetUpPhysOb@CitadelHeart@@UAEXPAUPhysOb@@@Z");
+// win1.41 00467b40 mac 101bdf40 CitadelHeart::InteractsWithPhysicsObjects(void)
+bool __fastcall InteractsWithPhysicsObjects__12CitadelHeartFv(struct Object* this) asm("?InteractsWithPhysicsObjects@CitadelHeart@@UAE_NXZ");
+// win1.41 00467b30 mac 101bdfc0 CitadelHeart::ChecksVerticesVObjects(void)
+uint32_t __fastcall ChecksVerticesVObjects__12CitadelHeartFv(struct Object* this) asm("?ChecksVerticesVObjects@CitadelHeart@@UAEIXZ");
+// win1.41 00467bb0 mac 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
+void __fastcall ReactToPhysicsImpact__12CitadelHeartFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@CitadelHeart@@UAEXPAVPhysicsObject@@_N@Z");
+// win1.41 004680c0 mac 101bd390 CitadelHeart::GetRoutePlanRadius(Creature *)
+float __fastcall GetRoutePlanRadius__12CitadelHeartFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?GetRoutePlanRadius@CitadelHeart@@UAEMPAVCreature@@@Z");
+// win1.41 00464b50 mac 101c2180 CitadelHeart::GetObjectCollide(void)
+uint32_t __fastcall GetObjectCollide__12CitadelHeartFv(struct Object* this) asm("?GetObjectCollide@CitadelHeart@@UAEIXZ");
+// win1.41 004673a0 mac 101be8e0 CitadelHeart::SaveObject(LHOSFile &, MapCoords const &)
+uint32_t __fastcall SaveObject__12CitadelHeartFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@CitadelHeart@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
+// win1.41 00464b70 mac 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
+bool __fastcall ShouldFootpathsGoRound__12CitadelHeartFv(struct Object* this) asm("?ShouldFootpathsGoRound@CitadelHeart@@UAE_NXZ");
+// win1.41 00467d10 mac inlined CitadelHeart::GetDoorPos(MapCoords *)
+struct MapCoords* __fastcall GetDoorPos__12CitadelHeartFP9MapCoords(struct MultiMapFixed* this, const void* edx, struct MapCoords* param_1) asm("?GetDoorPos@CitadelHeart@@UAEPAUMapCoords@@PAU2@@Z");
+// win1.41 00465000 mac 101c0570 CitadelHeart::Built(void)
+bool __fastcall Built__12CitadelHeartFv(struct MultiMapFixed* this) asm("?Built@CitadelHeart@@UAE_NXZ");
+// win1.41 00464b60 mac 101c21c0 CitadelHeart::GetAbodeType(void)
+enum ABODE_TYPE __fastcall GetAbodeType__12CitadelHeartFv(struct MultiMapFixed* this) asm("?GetAbodeType@CitadelHeart@@UAE?AW4ABODE_TYPE@@XZ");
+// win1.41 00465430 mac 101bfcc0 CitadelHeart::ConvertToPlanned(void)
+struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__12CitadelHeartFv(struct MultiMapFixed* this) asm("?ConvertToPlanned@CitadelHeart@@UAEPAVPlannedMultiMapFixed@@XZ");
+// win1.41 00468fb0 mac 101bb6e0 CitadelHeart::CreateCollideData(void)
+void __fastcall CreateCollideData__12CitadelHeartFv(struct MultiMapFixed* this) asm("?CreateCollideData@CitadelHeart@@UAEXXZ");
 
 #endif /* BW1_DECOMP_CITADEL_HEART_INCLUDED_H */

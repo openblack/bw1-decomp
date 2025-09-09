@@ -11,7 +11,9 @@
 
 // Forward Declares
 
+struct Base;
 struct GFootpathNode;
+struct GameOSFile;
 struct GameThingWithPos;
 struct MapCoords;
 struct MultiMapFixed;
@@ -65,6 +67,21 @@ uint32_t __fastcall GetNextPos__9GFootpathFRC9MapCoordsRP13GFootpathNodeR9MapCoo
 uint32_t __fastcall GetNextPos__9GFootpathFRP13GFootpathNodeR9MapCoordsi(struct GFootpath* this, const void* edx, struct GFootpathNode** next_node, struct MapCoords* next_pos, int backwards);
 // win1.41 005352c0 mac 100edfa0 GFootpath::GetNearestPos(MapCoords const &, int)
 struct GFootpathNode* __fastcall GetNearestPos__9GFootpathFRC9MapCoordsi(struct GFootpath* this, const void* edx, const struct MapCoords* coords, int param_3);
+
+// Override methods
+
+// win1.41 00534e00 mac 100eeb80 GFootpath::_dt(void)
+void __fastcall __dt__9GFootpathFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGFootpath@@UAEPAXI@Z");
+// win1.41 00534f00 mac 100ee7a0 GFootpath::ToBeDeleted(int)
+void __fastcall ToBeDeleted__9GFootpathFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GFootpath@@UAEXH@Z");
+// win1.41 00534df0 mac 100ef250 GFootpath::GetDebugText(void)
+char* __fastcall GetDebugText__9GFootpathFv(struct GameThing* this) asm("?GetDebugText@GFootpath@@UAEPADXZ");
+// win1.41 00535f10 mac 100ecb10 GFootpath::Load(GameOSFile &)
+uint32_t __fastcall Load__9GFootpathFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GFootpath@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00535e00 mac 100ece10 GFootpath::Save(GameOSFile &)
+uint32_t __fastcall Save__9GFootpathFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GFootpath@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00534de0 mac 100ef210 GFootpath::GetSaveType(void)
+uint32_t __fastcall GetSaveType__9GFootpathFv(struct GameThing* this) asm("?GetSaveType@GFootpath@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(GFootpath);
 DECLARE_LH_LIST_HEAD(GFootpath);

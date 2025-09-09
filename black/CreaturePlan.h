@@ -37,6 +37,11 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreaturePla
 // win1.41 008cc7cc mac 1098d1c8 CreaturePlan::`vftable'
 extern const struct BaseVftable __vt__12CreaturePlan asm("??_7CreaturePlan@@6B@");
 
+// Override methods
+
+// win1.41 00473b70 mac 10278860 CreaturePlan::_dt(void)
+void __fastcall __dt__12CreaturePlanFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreaturePlan@@UAEPAXI@Z");
+
 struct CreaturePlanState
 {
   struct CreaturePlan plans[0x28];  /* 0x0 */
@@ -59,5 +64,16 @@ struct CreaturePlanState* __fastcall __ct__17CreaturePlanStateFv(struct Creature
 void __fastcall Initialise__17CreaturePlanStateFP14CreatureMental(struct CreaturePlanState* this, const void* edx, struct CreatureMental* mental);
 // win1.41 004f1480 mac 10278340 CreaturePlanState::SetupRemainingGoalsToPlanFor(Creature *)
 void __fastcall SetupRemainingGoalsToPlanFor__17CreaturePlanStateFP8Creature(struct CreaturePlanState* this, const void* edx, struct Creature* creature);
+
+struct CreatureTimeToWait
+{
+  struct Base super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureTimeToWait) == 0x8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004e34e0 mac inlined CreatureTimeToWait::_dt(void)
+void __fastcall __dt__18CreatureTimeToWaitFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureTimeToWait@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_CREATURE_PLAN_INCLUDED_H */

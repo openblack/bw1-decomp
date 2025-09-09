@@ -9,6 +9,7 @@
 // Forward Declares
 
 struct CHand;
+struct LHMatrix;
 
 struct HandStateTotem
 {
@@ -27,5 +28,14 @@ extern const struct HandStateVftable __vt__14HandStateTotem asm("??_7HandStateTo
 
 // win1.41 005b7670 mac 1033d4c0 HandStateTotem::HandStateTotem(CHand*)
 struct HandStateTotem* __fastcall __ct__14HandStateTotemFP5CHand(struct HandStateTotem* this, const void* edx, struct CHand* hand);
+
+// Override methods
+
+// win1.41 005b7690 mac 1033d350 HandStateTotem::Enter(void)
+void __fastcall Enter__14HandStateTotemFv(struct HandState* this) asm("?Enter@HandStateTotem@@UAEXXZ");
+// win1.41 005b7790 mac 1033d310 HandStateTotem::Exit(void)
+void __fastcall Exit__14HandStateTotemFv(struct HandState* this) asm("?Exit@HandStateTotem@@UAEXXZ");
+// win1.41 005b77a0 mac 1033cd20 HandStateTotem::Update(float, LHMatrix *)
+void __fastcall Update__14HandStateTotemFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateTotem@@UAEXMPAULHMatrix@@@Z");
 
 #endif /* BW1_DECOMP_HAND_STATE_TOTEM_INCLUDED_H */

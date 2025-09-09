@@ -6,6 +6,10 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+// Forward Declares
+
+struct Base;
+
 struct GSpecialVillagerInfo
 {
   struct GBaseInfo super;  /* 0x0 */
@@ -26,5 +30,12 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20GSpecialVil
 
 // win1.41 00980568 mac 1075b7ec GSpecialVillagerInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__20GSpecialVillagerInfo asm("??_7GSpecialVillagerInfo@@6B@");
+
+// Override methods
+
+// win1.41 0071f880 mac 10146650 GSpecialVillagerInfo::_dt(void)
+void __fastcall __dt__20GSpecialVillagerInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSpecialVillagerInfo@@UAEPAXI@Z");
+// win1.41 0071ee80 mac 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__20GSpecialVillagerInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpecialVillagerInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INFO_INCLUDED_H */

@@ -8,7 +8,10 @@
 
 // Forward Declares
 
+struct Base;
 struct GInterfaceStatus;
+struct GPlayer;
+struct GameOSFile;
 
 struct GLeashStatus
 {
@@ -31,5 +34,22 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GLeashStatu
 
 // win1.41 0092abd0 mac 109a0a5c GLeashStatus::`vftable'
 extern const struct GameThingVftable __vt__12GLeashStatus asm("??_7GLeashStatus@@6B@");
+
+// Override methods
+
+// win1.41 005db940 mac 1037aca0 GLeashStatus::_dt(void)
+void __fastcall __dt__12GLeashStatusFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGLeashStatus@@UAEPAXI@Z");
+// win1.41 005e7630 mac 1037ae50 GLeashStatus::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__12GLeashStatusFv(struct GameThing* this) asm("?GetPlayer@GLeashStatus@@UAEPAVGPlayer@@XZ");
+// win1.41 005e7430 mac 1037aeb0 GLeashStatus::Load(GameOSFile &)
+uint32_t __fastcall Load__12GLeashStatusFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GLeashStatus@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005e7230 mac 1037b1a0 GLeashStatus::Save(GameOSFile &)
+uint32_t __fastcall Save__12GLeashStatusFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GLeashStatus@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005db930 mac 1037ad30 GLeashStatus::GetSaveType(void)
+uint32_t __fastcall GetSaveType__12GLeashStatusFv(struct GameThing* this) asm("?GetSaveType@GLeashStatus@@UAEIXZ");
+// win1.41 005e71d0 mac 1037b4b0 GLeashStatus::SaveExtraData(GameOSFile &)
+void __fastcall SaveExtraData__12GLeashStatusFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?SaveExtraData@GLeashStatus@@UAEXAAVGameOSFile@@@Z");
+// win1.41 005e7650 mac 1037ae10 GLeashStatus::ResolveLoad(void)
+void __fastcall ResolveLoad__12GLeashStatusFv(struct GameThing* this) asm("?ResolveLoad@GLeashStatus@@UAEXXZ");
 
 #endif /* BW1_DECOMP_LEASH_STATUS_INCLUDED_H */

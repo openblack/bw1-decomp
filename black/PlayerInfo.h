@@ -8,6 +8,7 @@
 
 // Forward Declares
 
+struct Base;
 struct CPDesireNodeInfo;
 
 enum PLAYER_TYPE
@@ -66,6 +67,13 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GPlayerInfo
 
 // win1.41 008df730 mac 10730bf0 GPlayerInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__11GPlayerInfo asm("??_7GPlayerInfo@@6B@");
+
+// Override methods
+
+// win1.41 0054be50 mac 104e7bd0 GPlayerInfo::_dt(void)
+void __fastcall __dt__11GPlayerInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPlayerInfo@@UAEPAXI@Z");
+// win1.41 0054b830 mac 1058eb00 GPlayerInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__11GPlayerInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPlayerInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 struct PlayerInfo
 {

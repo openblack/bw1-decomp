@@ -71,4 +71,9 @@ extern const struct BaseVftable __vt__14CreatureAgenda asm("??_7CreatureAgenda@@
 // win1.41 004d34b0 mac 102471c0 CreatureAgenda::CreatureAgenda(Creature *, CreatureInfo const *)
 struct CreatureAgenda* __fastcall __ct__14CreatureAgendaFP8CreaturePC12CreatureInfo(struct CreatureAgenda* this, const void* edx, struct CreatureInfo* info);
 
+// Override methods
+
+// win1.41 004d3600 mac 10246c50 CreatureAgenda::_dt(void)
+void __fastcall __dt__14CreatureAgendaFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureAgenda@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_AGENDA_INCLUDED_H */

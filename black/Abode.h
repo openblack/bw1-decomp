@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stddef.h> /* For size_t */
-#include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For RESOURCE_TYPE_LAST, enum ABODE_TYPE, enum RESOURCE_TYPE, enum TRIBE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
@@ -243,7 +243,7 @@ void __fastcall DestroyedByBeam__5AbodeFv(struct Object* this) asm("?DestroyedBy
 // win1.41 00403ee0 mac 1036edb0 Abode::InsertMapObject(void)
 void __fastcall InsertMapObject__5AbodeFv(struct Object* this) asm("?InsertMapObject@Abode@@UAEXXZ");
 // win1.41 00402cf0 mac 101c66a0 Abode::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
-bool __fastcall GetPSysFireLocalRndFlamePos__5AbodeFP7LHPointPl(struct Object* this, const void* edx, struct LHPoint* point, int32_t* param_2) asm("?GetPSysFireLocalRndFlamePos@Abode@@UAE_NPAULHPoint@@PAH@Z");
+bool __fastcall GetPSysFireLocalRndFlamePos__5AbodeFP7LHPointPl(struct Object* this, const void* edx, struct LHPoint* point, int* param_2) asm("?GetPSysFireLocalRndFlamePos@Abode@@UAE_NPAULHPoint@@PAH@Z");
 // win1.41 00405d90 mac 10097be0 Abode::ReduceLife(float, GPlayer *)
 void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* edx, float value, struct GPlayer* player) asm("?ReduceLife@Abode@@UAEXMPAVGPlayer@@@Z");
 // win1.41 00405ed0 mac 10112270 Abode::IncreaseLife(float)

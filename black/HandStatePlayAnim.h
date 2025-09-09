@@ -9,6 +9,7 @@
 // Forward Declares
 
 struct CHand;
+struct LHMatrix;
 
 struct HandStatePlayAnim
 {
@@ -29,5 +30,12 @@ extern const struct HandStateVftable __vt__17HandStatePlayAnim asm("??_7HandStat
 
 // win1.41 005b74f0 mac 1033cb50 HandStatePlayAnim::HandStatePlayAnim(CHand*)
 struct HandStatePlayAnim* __fastcall __ct__17HandStatePlayAnimFP5CHand(struct HandStatePlayAnim* this, const void* edx, struct CHand* hand);
+
+// Override methods
+
+// win1.41 005b7510 mac 1033cb10 HandStatePlayAnim::Enter(void)
+void __fastcall Enter__17HandStatePlayAnimFv(struct HandState* this) asm("?Enter@HandStatePlayAnim@@UAEXXZ");
+// win1.41 005b7520 mac 1033c970 HandStatePlayAnim::Update(float, LHMatrix *)
+void __fastcall Update__17HandStatePlayAnimFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStatePlayAnim@@UAEXMPAULHMatrix@@@Z");
 
 #endif /* BW1_DECOMP_HAND_STATE_PLAY_ANIM_INCLUDED_H */

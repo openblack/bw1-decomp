@@ -2,9 +2,15 @@
 #define BW1_DECOMP_CREATURE_ROOM_CAMERA_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint8_t */
 
 #include "InnerCamera.h" /* For struct InnerCamera */
+
+// Forward Declares
+
+struct InnerRoom;
+struct LHCoord;
 
 struct CreatureRoomCamera
 {
@@ -18,5 +24,18 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureRoo
 
 // win1.41 0099eb8c mac 1098e6f4 CreatureRoomCamera::`vftable'
 extern const struct InnerCameraVftable __vt__18CreatureRoomCamera asm("??_7CreatureRoomCamera@@6B@");
+
+// Override methods
+
+// win1.41 00789da0 mac 10288e30 CreatureRoomCamera::Init(char *)
+void __fastcall Init__18CreatureRoomCameraFPc(struct InnerCamera* this, const void* edx, char* param_1) asm("?Init@CreatureRoomCamera@@UAEXPAD@Z");
+// win1.41 00789e00 mac 10288de0 CreatureRoomCamera::Close(void)
+void __fastcall Close__18CreatureRoomCameraFv(struct InnerCamera* this) asm("?Close@CreatureRoomCamera@@UAEXXZ");
+// win1.41 00789e10 mac 10288d70 CreatureRoomCamera::Update(InnerRoom *, float, int, int, LHCoord const &, bool)
+void __fastcall Update__18CreatureRoomCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6) asm("?Update@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z");
+// win1.41 0078a3e0 mac 10287ad0 CreatureRoomCamera::UpdateMain(InnerRoom *, float, int, int, LHCoord const &, bool)
+void __fastcall UpdateMain__18CreatureRoomCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6) asm("?UpdateMain@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z");
+// win1.41 00789e40 mac 10288c00 CreatureRoomCamera::UpdateState(InnerRoom *, float, int, int, LHCoord const &, bool)
+void __fastcall UpdateState__18CreatureRoomCameraFP9InnerRoomfiiRC7LHCoordb(struct InnerCamera* this, const void* edx, struct InnerRoom* param_1, float param_2, int param_3, int param_4, const struct LHCoord* param_5, bool param_6) asm("?UpdateState@CreatureRoomCamera@@UAEXPAUInnerRoom@@MHHABULHCoord@@_N@Z");
 
 #endif /* BW1_DECOMP_CREATURE_ROOM_CAMERA_INCLUDED_H */

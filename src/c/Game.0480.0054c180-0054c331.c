@@ -109,6 +109,6 @@ void __fastcall FUN_0054c2e0(struct GGame* this)
     asm("add                esp, 0x08");                                     // 0x0054c324    83c408
 }
 
-void __fastcall Delete__5GGameFv(struct GGame* this)
+void __fastcall Delete__5GGameFv(struct Base* this)
 {
 }

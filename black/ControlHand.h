@@ -2,6 +2,7 @@
 #define BW1_DECOMP_CONTROL_HAND_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
@@ -247,5 +248,13 @@ void __fastcall GameTurnUpdate__5CHandFv(struct CHand* this);
 
 // win1.41 0046c4a0 mac 101c85f0 CHand::SetSize(float)
 void __fastcall SetSize__5CHandFf(struct Morphable* this, const void* edx, float size);
+// win1.41 0046bf80 mac 101c8cf0 CHand::MorphTexture(void)
+void __fastcall MorphTexture__5CHandFv(struct Morphable* this) asm("?MorphTexture@CHand@@UAEXXZ");
+// win1.41 0046c350 mac 101c8670 CHand::UpdateTime(long)
+void __fastcall UpdateTime__5CHandFl(struct Morphable* this, const void* edx, int param_1) asm("?UpdateTime@CHand@@UAEXH@Z");
+// win1.41 0046c550 mac 10029b00 CHand::PrepareForDrawing(void)
+void __fastcall PrepareForDrawing__5CHandFv(struct Morphable* this) asm("?PrepareForDrawing@CHand@@UAEXXZ");
+// win1.41 0046d0f0 mac 101c7f70 CHand::AddForDrawing(void)
+bool __fastcall AddForDrawing__5CHandFv(struct Morphable* this) asm("?AddForDrawing@CHand@@UAE_NXZ");
 
 #endif /* BW1_DECOMP_CONTROL_HAND_INCLUDED_H */

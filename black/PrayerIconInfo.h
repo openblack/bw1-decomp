@@ -6,6 +6,11 @@
 
 #include "SingleMapFixedInfo.h" /* For struct GSingleMapFixedInfo */
 
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+
 struct GPrayerIconInfo
 {
   struct GSingleMapFixedInfo super;  /* 0x0 */
@@ -19,5 +24,12 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GPrayerIcon
 
 // win1.41 009341c8 mac 1074a628 GPrayerIconInfo::`vftable'
 extern const struct GSingleMapFixedInfoVftable __vt__15GPrayerIconInfo asm("??_7GPrayerIconInfo@@6B@");
+
+// Override methods
+
+// win1.41 00670770 mac 1011e8e0 GPrayerIconInfo::_dt(void)
+void __fastcall __dt__15GPrayerIconInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPrayerIconInfo@@UAEPAXI@Z");
+// win1.41 00670720 mac 1011eb60 GPrayerIconInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__15GPrayerIconInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPrayerIconInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_PRAYER_ICON_INFO_INCLUDED_H */

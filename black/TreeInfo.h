@@ -2,9 +2,13 @@
 #define BW1_DECOMP_TREE_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "SingleMapFixedInfo.h" /* For struct GSingleMapFixedInfo */
+
+// Forward Declares
+
+struct Base;
 
 struct GTreeInfo
 {
@@ -18,5 +22,10 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GTreeInfo as
 
 // win1.41 0099a124 mac 1075e05c GTreeInfo::`vftable'
 extern const struct GObjectInfoVftable __vt__9GTreeInfo asm("??_7GTreeInfo@@6B@");
+
+// Override methods
+
+// win1.41 00749dd0 mac 10155680 GTreeInfo::_dt(void)
+void __fastcall __dt__9GTreeInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTreeInfo@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_TREE_INFO_INCLUDED_H */

@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stddef.h> /* For size_t */
-#include <stdint.h> /* For int32_t, uint32_t, uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
@@ -91,7 +91,7 @@ struct MultiMapFixedVftable
   bool (__fastcall* IsCivic)(struct MultiMapFixed* this);  /* 0x8c0 */
   enum ABODE_TYPE (__fastcall* GetAbodeType)(struct MultiMapFixed* this);
   void (__fastcall* SetPower)(struct MultiMapFixed* this, const void* edx, float power);
-  struct MapCoords* (__fastcall* GetResourcePos)(struct MultiMapFixed* this, const void* edx, enum RESOURCE_TYPE type, int32_t param_2);
+  struct MapCoords* (__fastcall* GetResourcePos)(struct MultiMapFixed* this, const void* edx, enum RESOURCE_TYPE type, int param_2);
   bool (__fastcall* IsPoisonedResource)(struct MultiMapFixed* this);  /* 0x8d0 */
   struct MapCoords* (__fastcall* GetResourceNearestEdge)(struct MultiMapFixed* this, const void* edx, struct MapCoords* coords, enum RESOURCE_TYPE type, struct Object* param_3, int param_4);
   float (__fastcall* GetDesireToBeRepaired)(struct MultiMapFixed* this);
@@ -308,7 +308,7 @@ enum ABODE_TYPE __fastcall GetAbodeType__13MultiMapFixedFv(struct MultiMapFixed*
 // win1.41 00401550 mac 102ff050 MultiMapFixed::SetPower(float)
 void __fastcall SetPower__13MultiMapFixedFf(struct MultiMapFixed* this, const void* edx, float power) asm("?SetPower@MultiMapFixed@@UAEXM@Z");
 // win1.41 00401560 mac 10369300 MultiMapFixed::GetResourcePos(RESOURCE_TYPE, long)
-struct MapCoords* __fastcall GetResourcePos__13MultiMapFixedF13RESOURCE_TYPEl(struct MultiMapFixed* this, const void* edx, enum RESOURCE_TYPE type, int32_t param_2) asm("?GetResourcePos@MultiMapFixed@@UAEPAUMapCoords@@W4RESOURCE_TYPE@@H@Z");
+struct MapCoords* __fastcall GetResourcePos__13MultiMapFixedF13RESOURCE_TYPEl(struct MultiMapFixed* this, const void* edx, enum RESOURCE_TYPE type, int param_2) asm("?GetResourcePos@MultiMapFixed@@UAEPAUMapCoords@@W4RESOURCE_TYPE@@H@Z");
 // win1.41 00401580 mac 1035b520 MultiMapFixed::IsPoisonedResource(RESOURCE_TYPE)
 bool __fastcall IsPoisonedResource__13MultiMapFixedF13RESOURCE_TYPE(struct MultiMapFixed* this) asm("?IsPoisonedResource@MultiMapFixed@@UAE_NXZ");
 // win1.41 00401590 mac 10368ea0 MultiMapFixed::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)

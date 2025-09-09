@@ -76,4 +76,9 @@ void __fastcall VillagerMoveOutOfAbode__9TownStatsFP8Villager(struct TownStats* 
 // win1.41 00749a60 mac 10562330 TownStats::Add(PlannedMultiMapFixed *)
 void __fastcall Add__9TownStatsFP20PlannedMultiMapFixed(struct TownStats* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?Add@TownStats@@QAEXPAVPlannedMultiMapFixed@@@Z");
 
+// Override methods
+
+// win1.41 007391a0 mac 10558800 TownStats::_dt(void)
+void __fastcall __dt__9TownStatsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GTownStats@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_TOWN_STATS_INCLUDED_H */

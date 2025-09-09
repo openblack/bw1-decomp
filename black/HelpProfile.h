@@ -41,4 +41,9 @@ struct HelpProfile* __cdecl Create__11HelpProfileFv(void);
 // win1.41 005c4770 mac 1034b310 HelpProfile::SetToZero(void)
 void __fastcall SetToZero__11HelpProfileFv(struct HelpProfile* this);
 
+// Override methods
+
+// win1.41 005c4560 mac 1034b480 HelpProfile::_dt(void)
+void __fastcall __dt__11HelpProfileFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GHelpProfile@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_HELP_PROFILE_INCLUDED_H */

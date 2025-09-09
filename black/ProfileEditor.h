@@ -2,7 +2,8 @@
 #define BW1_DECOMP_PROFILE_EDITOR_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
@@ -18,5 +19,16 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ProfileEdit
 
 // win1.41 008dec6c mac 109ed81c ProfileEditor::`vftable'
 extern const struct DialogBoxBaseVftable __vt__13ProfileEditor asm("??_7ProfileEditor@@6B@");
+
+// Override methods
+
+// win1.41 0053dd30 mac 105c2560 ProfileEditor::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+void __fastcall Init__13ProfileEditorFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@ProfileEditor@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+// win1.41 0053e210 mac 105c2500 ProfileEditor::Destroy(void)
+void __fastcall Destroy__13ProfileEditorFv(struct DialogBoxBase* this) asm("?Destroy@ProfileEditor@@UAEXXZ");
+// win1.41 0053bd30 mac 105c5f30 ProfileEditor::CanESCOut(void)
+bool __fastcall CanESCOut__13ProfileEditorFv(struct DialogBoxBase* this) asm("?CanESCOut@ProfileEditor@@UAE_NXZ");
+// win1.41 0053e380 mac 105c2140 ProfileEditor::InitControls(void)
+void __fastcall InitControls__13ProfileEditorFv(struct DialogBoxBase* this) asm("?InitControls@ProfileEditor@@UAEXXZ");
 
 #endif /* BW1_DECOMP_PROFILE_EDITOR_INCLUDED_H */

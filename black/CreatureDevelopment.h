@@ -1,0 +1,39 @@
+#ifndef BW1_DECOMP_CREATURE_DEVELOPMENT_INCLUDED_H
+#define BW1_DECOMP_CREATURE_DEVELOPMENT_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
+
+#include "BaseInfo.h" /* For struct GBaseInfo */
+
+// Forward Declares
+
+struct Base;
+
+struct CreatureDevelopmentDurationEntry
+{
+  struct GBaseInfo super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureDevelopmentDurationEntry) == 0x10, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004db5c0 mac 1025bfd0 CreatureDevelopmentDurationEntry::_dt(void)
+void __fastcall __dt__32CreatureDevelopmentDurationEntryFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureDevelopmentDurationEntry@@UAEPAXI@Z");
+// win1.41 004db560 mac 1025c590 CreatureDevelopmentDurationEntry::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__32CreatureDevelopmentDurationEntryFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@CreatureDevelopmentDurationEntry@@UAEPAVGBaseInfo@@AAI@Z");
+
+struct CreatureDevelopmentPhaseEntry
+{
+  struct GBaseInfo super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureDevelopmentPhaseEntry) == 0x10, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004db4f0 mac 1025c220 CreatureDevelopmentPhaseEntry::_dt(void)
+void __fastcall __dt__29CreatureDevelopmentPhaseEntryFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureDevelopmentPhaseEntry@@UAEPAXI@Z");
+// win1.41 004db480 mac 1025c4d0 CreatureDevelopmentPhaseEntry::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__29CreatureDevelopmentPhaseEntryFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@CreatureDevelopmentPhaseEntry@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif /* BW1_DECOMP_CREATURE_DEVELOPMENT_INCLUDED_H */

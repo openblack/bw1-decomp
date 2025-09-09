@@ -8,6 +8,10 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+// Forward Declares
+
+struct Base;
+
 struct ReactionInfo
 {
   struct GBaseInfo super;  /* 0x0 */
@@ -40,5 +44,12 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ReactionInf
 
 // win1.41 009417ec mac 10759644 ReactionInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__12ReactionInfo asm("??_7ReactionInfo@@6B@");
+
+// Override methods
+
+// win1.41 006e0e60 mac 10135410 ReactionInfo::_dt(void)
+void __fastcall __dt__12ReactionInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GReactionInfo@@UAEPAXI@Z");
+// win1.41 006e0e00 mac 101368d0 ReactionInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__12ReactionInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@ReactionInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_REACTION_INFO_INCLUDED_H */

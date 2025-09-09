@@ -10,6 +10,10 @@
 
 // Forward Declares
 
+struct Base;
+struct GPlayer;
+struct GameOSFile;
+struct GameThing;
 struct MapCoords;
 struct MistListNode;
 
@@ -36,6 +40,35 @@ extern const struct GameThingWithPosVftable __vt__4Mist asm("??_7Mist@@6B@");
 
 // win1.41 00606270 mac 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
 struct MistListNode* __fastcall __ct__4MistFRC9MapCoordsfUlf(struct Mist* this, const void* edx, struct MapCoords* coords, float param_3, uint32_t param_4, float param_5);
+
+// Override methods
+
+// win1.41 0055ebd0 mac 101045f0 Mist::_dt(void)
+void __fastcall __dt__4MistFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GMist@@UAEPAXI@Z");
+// win1.41 00606300 mac 10105480 Mist::ToBeDeleted(int)
+void __fastcall ToBeDeleted__4MistFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Mist@@UAEXH@Z");
+// win1.41 0055eb70 mac 10104680 Mist::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__4MistFv(struct GameThing* this) asm("?GetPlayer@Mist@@UAEPAVGPlayer@@XZ");
+// win1.41 0055ebc0 mac 10104780 Mist::GetDebugText(void)
+char* __fastcall GetDebugText__4MistFv(struct GameThing* this) asm("?GetDebugText@Mist@@UAEPADXZ");
+// win1.41 00606a10 mac 10104820 Mist::Load(GameOSFile &)
+uint32_t __fastcall Load__4MistFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Mist@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00606920 mac 10104980 Mist::Save(GameOSFile &)
+uint32_t __fastcall Save__4MistFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Mist@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055ebb0 mac 10104750 Mist::GetSaveType(void)
+uint32_t __fastcall GetSaveType__4MistFv(struct GameThing* this) asm("?GetSaveType@Mist@@UAEIXZ");
+// win1.41 00606af0 mac 101047c0 Mist::ResolveLoad(void)
+void __fastcall ResolveLoad__4MistFv(struct GameThing* this) asm("?ResolveLoad@Mist@@UAEXXZ");
+// win1.41 0055eba0 mac 10104710 Mist::GetCreatureBeliefType(void)
+uint32_t __fastcall GetCreatureBeliefType__4MistFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@Mist@@UAEIXZ");
+// win1.41 006067d0 mac 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
+float __fastcall GetDistanceFromObject__4MistFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* param_1) asm("?GetDistanceFromObject@Mist@@UAEMPBUMapCoords@@@Z");
+// win1.41 0055eb90 mac 101046e0 Mist::IsMist(void)
+uint32_t __fastcall IsMist__4MistFv(struct GameThingWithPos* this) asm("?IsMist@Mist@@UAEIXZ");
+// win1.41 0055eb80 mac 101046b0 Mist::GetText(void)
+const char* __fastcall GetText__4MistFv(struct GameThingWithPos* this) asm("?GetText@Mist@@UAEPBDXZ");
+// win1.41 00606910 mac 10104af0 Mist::GetScriptObjectType(void)
+uint32_t __fastcall GetScriptObjectType__4MistFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@Mist@@UAEIXZ");
 
 DECLARE_LH_LIST_HEAD(Mist);
 

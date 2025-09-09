@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint32_t, uint8_t */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST_142, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum MAGIC_TYPE, enum TRIBE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
@@ -28,15 +28,22 @@
 
 // Forward Declares
 
+struct Base;
+struct Citadel;
+struct Creature;
 struct Creche;
 struct GPlayer;
 struct GTownInfo;
 struct GTribeInfo;
+struct GameOSFile;
+struct GameThing;
+struct GameThingWithPos;
 struct MultiMapFixed;
 struct StoragePit;
 struct TotemStatue;
 struct TownCentre;
 struct TownDesireFlags;
+struct WorshipSite;
 
 struct PlayerTownInteract
 {
@@ -229,6 +236,69 @@ void __fastcall ProcessTownEmergency__4TownFv(struct Town* this) asm("?ProcessTo
 bool __fastcall IsInStateOfEmergency__4TownFv(struct Town* this) asm("?IsInStateOfEmergency@Town@@QAE_NXZ");
 // win1.41 007479a0 mac 105602e0 Town::SetInStateOfEmergency(void)
 void __fastcall SetInStateOfEmergency__4TownFv(struct Town* this) asm("?SetInStateOfEmergency@Town@@QAEXXZ");
+
+// Override methods
+
+// win1.41 007392b0 mac 10558ef0 Town::_dt(void)
+void __fastcall __dt__4TownFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GTown@@UAEPAXI@Z");
+// win1.41 00739970 mac 10556980 Town::ToBeDeleted(int)
+void __fastcall ToBeDeleted__4TownFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Town@@UAEXH@Z");
+// win1.41 007391e0 mac 1054a050 Town::GetTown(void)
+struct Town* __fastcall GetTown__4TownFv(struct GameThing* this) asm("?GetTown@Town@@UAEPAVTown@@XZ");
+// win1.41 0073ff00 mac 1054a490 Town::GetVillagerActivityDesire(Villager *)
+float __fastcall GetVillagerActivityDesire__4TownFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1) asm("?GetVillagerActivityDesire@Town@@UAEMPAVVillager@@@Z");
+// win1.41 0073ff10 mac 100956a0 Town::SetVillagerActivity(Villager *)
+uint32_t __fastcall SetVillagerActivity__4TownFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1) asm("?SetVillagerActivity@Town@@UAEIPAVVillager@@@Z");
+// win1.41 0073d6e0 mac 10550600 Town::GetRadius(void)
+float __fastcall GetRadius__4TownFv(struct GameThing* this) asm("?GetRadius@Town@@UAEMXZ");
+// win1.41 0073af80 mac 10555020 Town::GetNumberOfInstanceForGlobalList(void)
+uint16_t __fastcall GetNumberOfInstanceForGlobalList__4TownFv(struct GameThing* this) asm("?GetNumberOfInstanceForGlobalList@Town@@UAEGXZ");
+// win1.41 007392a0 mac 105594a0 Town::GetDebugText(void)
+char* __fastcall GetDebugText__4TownFv(struct GameThing* this) asm("?GetDebugText@Town@@UAEPADXZ");
+// win1.41 0073f450 mac 1054aa80 Town::Load(GameOSFile &)
+uint32_t __fastcall Load__4TownFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Town@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0073ed30 mac 1054c770 Town::Save(GameOSFile &)
+uint32_t __fastcall Save__4TownFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Town@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00739290 mac 10559470 Town::GetSaveType(void)
+uint32_t __fastcall GetSaveType__4TownFv(struct GameThing* this) asm("?GetSaveType@Town@@UAEIXZ");
+// win1.41 007412e0 mac 10547990 Town::ResolveLoad(void)
+void __fastcall ResolveLoad__4TownFv(struct GameThing* this) asm("?ResolveLoad@Town@@UAEXXZ");
+// win1.41 007391f0 mac 10559130 Town::GetCreatureBeliefType(void)
+uint32_t __fastcall GetCreatureBeliefType__4TownFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@Town@@UAEIXZ");
+// win1.41 00739200 mac 10559170 Town::GetCreatureBeliefListType(void)
+uint32_t __fastcall GetCreatureBeliefListType__4TownFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefListType@Town@@UAEIXZ");
+// win1.41 0073bc40 mac 10553f20 Town::GetCitadel(void)
+struct Citadel* __fastcall GetCitadel__4TownFv(struct GameThingWithPos* this) asm("?GetCitadel@Town@@UAEPAVCitadel@@XZ");
+// win1.41 007391d0 mac 10559100 Town::GetOrigin(void)
+uint32_t __fastcall GetOrigin__4TownFv(struct GameThingWithPos* this) asm("?GetOrigin@Town@@UAEIXZ");
+// win1.41 00739250 mac inlined Town::IsTown_0(void)
+bool __fastcall IsTown_0__4TownFv(struct GameThingWithPos* this) asm("?IsTown_0@Town@@UAE_NXZ");
+// win1.41 00739220 mac inlined Town::IsTown_1(Creature *)
+bool __fastcall IsTown_1__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTown_1@Town@@UAE_NPAVCreature@@@Z");
+// win1.41 004e47f0 mac 105e4b50 Town::IsActivityObjectWhichAngerAppliesTo(Creature *)
+bool __fastcall IsActivityObjectWhichAngerAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Town@@UAE_NPAVCreature@@@Z");
+// win1.41 00739230 mac 105592e0 Town::IsActivityObjectWhichCompassionAppliesTo(Creature *)
+bool __fastcall IsActivityObjectWhichCompassionAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichCompassionAppliesTo@Town@@UAE_NPAVCreature@@@Z");
+// win1.41 00739240 mac 10559340 Town::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
+bool __fastcall IsActivityObjectWhichPlayfulnessAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAE_NPAVCreature@@@Z");
+// win1.41 004e4750 mac 105e4c40 Town::IsTownBelongingToAnotherPlayer(Creature *)
+bool __fastcall IsTownBelongingToAnotherPlayer__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTownBelongingToAnotherPlayer@Town@@UAE_NPAVCreature@@@Z");
+// win1.41 00739260 mac 105593a0 Town::IsSuitableForCreatureActivity(void)
+uint32_t __fastcall IsSuitableForCreatureActivity__4TownFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureActivity@Town@@UAEIXZ");
+// win1.41 00739270 mac 105593f0 Town::CanBePlayedWithByCreature(Creature *)
+uint32_t __fastcall CanBePlayedWithByCreature__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBePlayedWithByCreature@Town@@UAEIPAVCreature@@@Z");
+// win1.41 0073c940 mac 1006fa90 Town::GetWorshipSite(void)
+struct WorshipSite* __fastcall GetWorshipSite__4TownFv(struct GameThingWithPos* this) asm("?GetWorshipSite@Town@@UAEPAVWorshipSite@@XZ");
+// win1.41 004e4140 mac 105e5e00 Town::IsTownBelongingToOtherPlayer(Creature *)
+uint32_t __fastcall IsTownBelongingToOtherPlayer__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTownBelongingToOtherPlayer@Town@@UAEIPAVCreature@@@Z");
+// win1.41 00739210 mac 105591b0 Town::IsScriptContainer( const(void))
+uint32_t __fastcall IsScriptContainer__4TownCFv(const struct GameThingWithPos* this) asm("?IsScriptContainer@Town@@UBEIXZ");
+// win1.41 00739280 mac 10559440 Town::GetText(void)
+const char* __fastcall GetText__4TownFv(struct GameThingWithPos* this) asm("?GetText@Town@@UAEPBDXZ");
+// win1.41 00747f00 mac 10065180 Town::CalculateDesireForFood(void)
+float __fastcall CalculateDesireForFood__4TownFv(struct GameThingWithPos* this) asm("?CalculateDesireForFood@Town@@UAEMXZ");
+// win1.41 0073e200 mac 1054f630 Town::GetScriptObjectType(void)
+uint32_t __fastcall GetScriptObjectType__4TownFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@Town@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(Town);
 DECLARE_LH_LIST_HEAD(Town);

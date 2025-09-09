@@ -8,6 +8,10 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+// Forward Declares
+
+struct Base;
+
 struct GVillagerStateTableInfo
 {
   struct GBaseInfo super;  /* 0x0 */
@@ -58,5 +62,12 @@ extern const struct BaseVftable __vt__23GVillagerStateTableInfo asm("??_7GVillag
 
 // win1.41 inlined mac 1004aff0 GVillagerStateTableInfo::GetInfo(void)
 struct GVillagerStateTableInfo* __cdecl GetInfo__23GVillagerStateTableInfoFv(void);
+
+// Override methods
+
+// win1.41 007695f0 mac 1059c500 GVillagerStateTableInfo::_dt(void)
+void __fastcall __dt__23GVillagerStateTableInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGVillagerStateTableInfo@@UAEPAXI@Z");
+// win1.41 00769580 mac 1059c630 GVillagerStateTableInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__23GVillagerStateTableInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GVillagerStateTableInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_VILLAGER_STATE_TABLE_INFO_INCLUDED_H */

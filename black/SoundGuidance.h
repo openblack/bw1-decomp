@@ -73,4 +73,9 @@ void __fastcall __ct__9GGuidanceFv(struct GGuidance* this);
 // win1.41 0071ac70 mac 105122a0 GGuidance::Init(GInterfaceStatus&)
 void __fastcall Init__9GGuidanceFR16GInterfaceStatus(struct GGuidance* this, const void* edx, struct GInterfaceStatus* status);
 
+// Override methods
+
+// win1.41 0071ab30 mac 10512620 GGuidance::_dt(void)
+void __fastcall __dt__9GGuidanceFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGGuidance@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_SOUND_GUIDANCE_INCLUDED_H */

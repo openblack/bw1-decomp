@@ -6,6 +6,11 @@
 
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+
 struct CreatureInfo
 {
   struct GLivingInfo super;  /* 0x0 */
@@ -34,5 +39,12 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureInf
 
 // win1.41 008cc758 mac 1077e348 CreatureInfo::`vftable'
 extern const struct GObjectInfoVftable __vt__12CreatureInfo asm("??_7CreatureInfo@@6B@");
+
+// Override methods
+
+// win1.41 00472c80 mac 101d2300 CreatureInfo::_dt(void)
+void __fastcall __dt__12CreatureInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureInfo@@UAEPAXI@Z");
+// win1.41 00472c10 mac 101e2980 CreatureInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__12CreatureInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@CreatureInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_CREATURE_INFO_INCLUDED_H */

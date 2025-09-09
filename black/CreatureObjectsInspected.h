@@ -19,4 +19,9 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__24CreatureObj
 // win1.41 008d0548 mac 1078763c CreatureObjectsInspected::`vftable'
 extern const struct BaseVftable __vt__24CreatureObjectsInspected asm("??_7CreatureObjectsInspected@@6B@");
 
+// Override methods
+
+// win1.41 004e3520 mac 102466c0 CreatureObjectsInspected::_dt(void)
+void __fastcall __dt__24CreatureObjectsInspectedFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureObjectsInspected@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_OBJECTS_INSPECTED_INCLUDED_H */

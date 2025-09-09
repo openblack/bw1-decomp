@@ -30,6 +30,7 @@ TEMPLATE_CONTAINER_STRUCTS_PREFIXES = OrderedDict({
 
 TYPE_SUBSTITUTION_MAP = {
     "_Bool": "bool",
+    "int32_t": "int",
 }
 
 

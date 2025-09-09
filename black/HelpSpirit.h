@@ -10,6 +10,9 @@
 
 // Forward Declares
 
+struct Base;
+struct GInterfaceStatus;
+struct LHOSFile;
 struct MapCoords;
 
 struct HelpSpirit
@@ -31,5 +34,20 @@ extern const struct ObjectVftable __vt__10HelpSpirit asm("??_7HelpSpirit@@6B@");
 
 // win1.41 005c4aa0 mac 1034c700 HelpSpirit::HelpSpirit(MapCoords const &, HELP_SPIRIT_TYPE)
 struct HelpSpirit* __fastcall __ct__10HelpSpiritFRC9MapCoords16HELP_SPIRIT_TYPE(struct HelpSpirit* this, const void* edx, const struct MapCoords* coords, enum HELP_SPIRIT_TYPE type);
+
+// Override methods
+
+// win1.41 005c4b10 mac 1034b510 HelpSpirit::_dt(void)
+void __fastcall __dt__10HelpSpiritFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GHelpSpirit@@UAEPAXI@Z");
+// win1.41 005c4b00 mac 1034b640 HelpSpirit::Create3DObject(void)
+void __fastcall Create3DObject__10HelpSpiritFv(struct Object* this) asm("?Create3DObject@HelpSpirit@@UAEXXZ");
+// win1.41 005c5270 mac 10083340 HelpSpirit::Process(void)
+uint32_t __fastcall Process__10HelpSpiritFv(struct Object* this) asm("?Process@HelpSpirit@@UAEIXZ");
+// win1.41 005c4b90 mac 1034c540 HelpSpirit::CallVirtualFunctionsForCreation(MapCoords const &)
+void __fastcall CallVirtualFunctionsForCreation__10HelpSpiritFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@HelpSpirit@@UAEXABUMapCoords@@@Z");
+// win1.41 005c4af0 mac 1034b5f0 HelpSpirit::ValidForPlaceInHand(GInterfaceStatus *)
+uint32_t __fastcall ValidForPlaceInHand__10HelpSpiritFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForPlaceInHand@HelpSpirit@@UAEIPAVGInterfaceStatus@@@Z");
+// win1.41 005c4ae0 mac 1034b5a0 HelpSpirit::SaveObject(LHOSFile &, MapCoords const &)
+uint32_t __fastcall SaveObject__10HelpSpiritFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@HelpSpirit@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_HELP_SPIRIT_INCLUDED_H */

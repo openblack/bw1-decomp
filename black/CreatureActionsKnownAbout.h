@@ -13,4 +13,9 @@ struct CreatureActionsKnownAbout
 };
 static_assert(sizeof(struct CreatureActionsKnownAbout) == 0x18, "Data type is of wrong size");
 
+// Override methods
+
+// win1.41 004e2230 mac 10266a40 CreatureActionsKnownAbout::_dt(void)
+void __fastcall __dt__25CreatureActionsKnownAboutFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureActionsKnownAbout@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_ACTIONS_KNOWN_ABOUT_INCLUDED_H */

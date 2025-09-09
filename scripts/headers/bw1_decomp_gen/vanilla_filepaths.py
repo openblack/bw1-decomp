@@ -1337,6 +1337,7 @@ ROOMMATE_CLASS_MAP = {
     "PuzzleVillager": "PuzzleGame",
     "PuzzleGrain": "PuzzleGame",
     "ChessGamePuzzle": "PuzzleGame",
+    "ChessPiece": "PuzzleGame",
     "ChessKing": "PuzzleGame",
     "ChessKnight": "PuzzleGame",
     "ChessMad": "PuzzleGame",
@@ -1441,6 +1442,7 @@ ROOMMATE_CLASS_MAP = {
     "AtomCollection": "PSysAtomCore",
     "AtomCore": "PSysAtomCore",
     "UR_GesturingRecognised": "PSysAtomCore",
+    "UR_Plasma": "PSysAtomCore",
     "BaseAtomModifierData": "PSysModifiers",
     "BaseCollectionModifierData": "PSysModifiers",
     "DrawOffset": "PSysModifiers",
@@ -1638,6 +1640,10 @@ ROOMMATE_CLASS_MAP = {
     "GSpeedThreshold": "MobileObject",
     "MissionaryControl": "Villager",
     "CImmDevice": "ImmDevice",
+    "GAlignmentInfo": "AlignmentInfo",
+    "GPBallInfo": "BallInfo",
+    "GPFootballInfo": "FootballInfo",
+    "GPFootballPositionInfo": "FootballPositionInfo",
 }
 
 

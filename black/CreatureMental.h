@@ -83,4 +83,9 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureMen
 // win1.41 008cf8ac mac 10787444 CreatureMental::`vftable'
 extern const struct BaseVftable __vt__14CreatureMental asm("??_7CreatureMental@@6B@");
 
+// Override methods
+
+// win1.41 004d2560 mac 10245b60 CreatureMental::_dt(void)
+void __fastcall __dt__14CreatureMentalFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureMental@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

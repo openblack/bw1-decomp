@@ -2,11 +2,16 @@
 #define BW1_DECOMP_CLIMATE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
 #include "GameThing.h" /* For struct GameThing */
+
+// Forward Declares
+
+struct Base;
+struct GameOSFile;
 
 struct GClimate
 {
@@ -20,6 +25,21 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8GClimate asm
 
 // win1.41 008f9f9c mac 109ea020 GClimate::`vftable'
 extern const struct GameThingVftable __vt__8GClimate asm("??_7GClimate@@6B@");
+
+// Override methods
+
+// win1.41 0055dee0 mac 105a2870 GClimate::_dt(void)
+void __fastcall __dt__8GClimateFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGClimate@@UAEPAXI@Z");
+// win1.41 007713e0 mac 105a2620 GClimate::ToBeDeleted(int)
+void __fastcall ToBeDeleted__8GClimateFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GClimate@@UAEXH@Z");
+// win1.41 0055ded0 mac 1059ef50 GClimate::GetDebugText(void)
+char* __fastcall GetDebugText__8GClimateFv(struct GameThing* this) asm("?GetDebugText@GClimate@@UAEPADXZ");
+// win1.41 007736e0 mac 1059ef90 GClimate::Load(GameOSFile &)
+uint32_t __fastcall Load__8GClimateFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GClimate@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00773320 mac 1059f860 GClimate::Save(GameOSFile &)
+uint32_t __fastcall Save__8GClimateFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GClimate@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055dec0 mac 1059ef10 GClimate::GetSaveType(void)
+uint32_t __fastcall GetSaveType__8GClimateFv(struct GameThing* this) asm("?GetSaveType@GClimate@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(GClimate);
 

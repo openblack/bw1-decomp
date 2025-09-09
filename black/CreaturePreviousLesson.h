@@ -20,4 +20,9 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__22CreaturePre
 // win1.41 008d0430 mac 107874ec CreaturePreviousLesson::`vftable'
 extern const struct BaseVftable __vt__22CreaturePreviousLesson asm("??_7CreaturePreviousLesson@@6B@");
 
+// Override methods
+
+// win1.41 004e03a0 mac 10245f80 CreaturePreviousLesson::_dt(void)
+void __fastcall __dt__22CreaturePreviousLessonFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreaturePreviousLesson@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_PREVIOUS_LESSON_INCLUDED_H */

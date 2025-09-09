@@ -21,6 +21,7 @@ struct GameThing;
 struct GameThingVftable;
 struct GameThingWithPos;
 struct GameThingWithPosVftable;
+struct GestureSystemPacketData;
 struct MapCell;
 struct MapCoords;
 struct NewCollide;
@@ -144,6 +145,30 @@ extern const struct SingleMapFixedVftable __vt__14SingleMapFixed asm("??_7Single
 
 // Override methods
 
+// win1.41 0052eb40 mac 100e00a0 SingleMapFixed::_dt(void)
+void __fastcall __dt__14SingleMapFixedFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GSingleMapFixed@@UAEPAXI@Z");
+// win1.41 0052e620 mac 100e0990 SingleMapFixed::InsertMapObject(void)
+void __fastcall InsertMapObject__14SingleMapFixedFv(struct Object* this) asm("?InsertMapObject@SingleMapFixed@@UAEXXZ");
+// win1.41 0052e600 mac 100e0a30 SingleMapFixed::RemoveMapObject(void)
+void __fastcall RemoveMapObject__14SingleMapFixedFv(struct Object* this) asm("?RemoveMapObject@SingleMapFixed@@UAEXXZ");
+// win1.41 0052f440 mac 100de110 SingleMapFixed::InsertMapObjectToCell(MapCell *)
+void __fastcall InsertMapObjectToCell__14SingleMapFixedFP7MapCell(struct Object* this, const void* edx, struct MapCell* param_1) asm("?InsertMapObjectToCell@SingleMapFixed@@UAEXPAUMapCell@@@Z");
+// win1.41 0052f450 mac 100de0a0 SingleMapFixed::RemoveMapObjectFromCell(MapCell *)
+void __fastcall RemoveMapObjectFromCell__14SingleMapFixedFP7MapCell(struct Object* this, const void* edx, struct MapCell* param_1) asm("?RemoveMapObjectFromCell@SingleMapFixed@@UAEXPAUMapCell@@@Z");
+// win1.41 0052eb10 mac 100e32e0 SingleMapFixed::GetMesh( const(void))
+int __fastcall GetMesh__14SingleMapFixedCFv(const struct Object* this) asm("?GetMesh@SingleMapFixed@@UBEHXZ");
+// win1.41 00518100 mac 10038230 SingleMapFixed::Draw(void)
+void __fastcall Draw__14SingleMapFixedFv(struct Object* this) asm("?Draw@SingleMapFixed@@UAEXXZ");
+// win1.41 0052e880 mac 100e0470 SingleMapFixed::CallVirtualFunctionsForCreation(MapCoords const &)
+void __fastcall CallVirtualFunctionsForCreation__14SingleMapFixedFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@SingleMapFixed@@UAEXABUMapCoords@@@Z");
+// win1.41 0052eaf0 mac 100e3210 SingleMapFixed::ValidForPlaceInHand(GInterfaceStatus *)
+uint32_t __fastcall ValidForPlaceInHand__14SingleMapFixedFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForPlaceInHand@SingleMapFixed@@UAEIPAVGInterfaceStatus@@@Z");
+// win1.41 0052eb00 mac 100e3270 SingleMapFixed::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+uint32_t __fastcall ValidToApplyThisToMapCoord__14SingleMapFixedFP16GInterfaceStatusRC9MapCoords(struct Object* this, const void* edx, struct GInterfaceStatus* param_1, const struct MapCoords* param_2) asm("?ValidToApplyThisToMapCoord@SingleMapFixed@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z");
+// win1.41 0052f420 mac 100de180 SingleMapFixed::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
+uint32_t __fastcall ApplyThisToMapCoord__14SingleMapFixedFP16GInterfaceStatusRC9MapCoordsP23GestureSystemPacketData(struct Object* this, const void* edx, struct GInterfaceStatus* param_1, const struct MapCoords* param_2, struct GestureSystemPacketData* param_3) asm("?ApplyThisToMapCoord@SingleMapFixed@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z");
+// win1.41 0052eb20 mac 100e3350 SingleMapFixed::ApplyOnlyAfterReleased(void)
+uint32_t __fastcall ApplyOnlyAfterReleased__14SingleMapFixedFv(struct Object* this) asm("?ApplyOnlyAfterReleased@SingleMapFixed@@UAEIXZ");
 // win1.41 0052eb30 mac 10095a30 SingleMapFixed::GetCollideData(void)
 struct NewCollide* __fastcall GetCollideData__14SingleMapFixedFv(const struct Object* this);
 // win1.41 0052f510 mac 100dde20 SingleMapFixed::CreateCollideData(void)

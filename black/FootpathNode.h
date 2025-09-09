@@ -2,11 +2,16 @@
 #define BW1_DECOMP_FOOTPATH_NODE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "Living.h" /* For struct Living */
 #include "MapCoords.h" /* For struct MapCoords */
+
+// Forward Declares
+
+struct Base;
+struct GameOSFile;
 
 struct GFootpathNode
 {
@@ -37,5 +42,22 @@ struct GFootpathNode* __fastcall __ct__13GFootpathNodeFRC9MapCoordsii(struct GFo
 void __fastcall PurgeFollowerList__13GFootpathNodeFv(struct GFootpathNode* this);
 // win1.41 00538b10 mac 100e8d10 GFootpathNode::ClearFromPreviousNode(void)
 void __fastcall ClearFromPreviousNode__13GFootpathNodeFv(struct GFootpathNode* this);
+
+// Override methods
+
+// win1.41 00534d70 mac 100eef60 GFootpathNode::_dt(void)
+void __fastcall __dt__13GFootpathNodeFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGFootpathNode@@UAEPAXI@Z");
+// win1.41 00538970 mac 100e91f0 GFootpathNode::ToBeDeleted(int)
+void __fastcall ToBeDeleted__13GFootpathNodeFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GFootpathNode@@UAEXH@Z");
+// win1.41 00534d60 mac 100ef030 GFootpathNode::GetDebugText(void)
+char* __fastcall GetDebugText__13GFootpathNodeFv(struct GameThing* this) asm("?GetDebugText@GFootpathNode@@UAEPADXZ");
+// win1.41 00538c10 mac 100e86f0 GFootpathNode::Load(GameOSFile &)
+uint32_t __fastcall Load__13GFootpathNodeFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GFootpathNode@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00538d70 mac 100e83f0 GFootpathNode::Save(GameOSFile &)
+uint32_t __fastcall Save__13GFootpathNodeFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GFootpathNode@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00534d50 mac 100eeff0 GFootpathNode::GetSaveType(void)
+uint32_t __fastcall GetSaveType__13GFootpathNodeFv(struct GameThing* this) asm("?GetSaveType@GFootpathNode@@UAEIXZ");
+// win1.41 00538ea0 mac 100e83b0 GFootpathNode::ResolveLoad(void)
+void __fastcall ResolveLoad__13GFootpathNodeFv(struct GameThing* this) asm("?ResolveLoad@GFootpathNode@@UAEXXZ");
 
 #endif /* BW1_DECOMP_FOOTPATH_NODE_INCLUDED_H */

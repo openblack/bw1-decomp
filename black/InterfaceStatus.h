@@ -13,10 +13,13 @@
 
 // Forward Declares
 
+struct Base;
 struct GGuidance;
 struct GInterface;
 struct GLeashStatus;
+struct GPlayer;
 struct GVirtualInfluence;
+struct GameOSFile;
 struct GameThing;
 struct Object;
 struct PSysProcessInfo;
@@ -92,7 +95,27 @@ void __fastcall Init__16GInterfaceStatusFUcP10GInterface(struct GInterfaceStatus
 
 // Override methods
 
+// win1.41 005db990 mac 1036f480 GInterfaceStatus::_dt(void)
+void __fastcall __dt__16GInterfaceStatusFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGInterfaceStatus@@UAEPAXI@Z");
+// win1.41 005dbb00 mac 1036f260 GInterfaceStatus::ToBeDeleted(int)
+void __fastcall ToBeDeleted__16GInterfaceStatusFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GInterfaceStatus@@UAEXH@Z");
+// win1.41 005dbc20 mac 10058730 GInterfaceStatus::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__16GInterfaceStatusFv(struct GameThing* this) asm("?GetPlayer@GInterfaceStatus@@UAEPAVGPlayer@@XZ");
 // win1.41 005dc8f0 mac 1036d0e0 GInterfaceStatus::UpdateSpellInfo(Spell *, PSysProcessInfo *)
 void __fastcall UpdateSpellInfo__16GInterfaceStatusFP5SpellP15PSysProcessInfo(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2);
+// win1.41 005db980 mac 1036be40 GInterfaceStatus::GetDebugText(void)
+char* __fastcall GetDebugText__16GInterfaceStatusFv(struct GameThing* this) asm("?GetDebugText@GInterfaceStatus@@UAEPADXZ");
+// win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
+uint32_t __fastcall Load__16GInterfaceStatusFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GInterfaceStatus@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
+uint32_t __fastcall Save__16GInterfaceStatusFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GInterfaceStatus@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005db970 mac 1036be00 GInterfaceStatus::GetSaveType(void)
+uint32_t __fastcall GetSaveType__16GInterfaceStatusFv(struct GameThing* this) asm("?GetSaveType@GInterfaceStatus@@UAEIXZ");
+// win1.41 005dd130 mac 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)
+void __fastcall SaveExtraData__16GInterfaceStatusFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?SaveExtraData@GInterfaceStatus@@UAEXAAVGameOSFile@@@Z");
+// win1.41 005dd190 mac 1036c020 GInterfaceStatus::ResolveLoad(void)
+void __fastcall ResolveLoad__16GInterfaceStatusFv(struct GameThing* this) asm("?ResolveLoad@GInterfaceStatus@@UAEXXZ");
+// win1.41 005db960 mac 1036bdc0 GInterfaceStatus::GetText(void)
+const char* __fastcall GetText__16GInterfaceStatusFv(struct GameThingWithPos* this) asm("?GetText@GInterfaceStatus@@UAEPBDXZ");
 
 #endif /* BW1_DECOMP_INTERFACE_STATUS_INCLUDED_H */

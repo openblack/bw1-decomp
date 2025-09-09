@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stddef.h> /* For size_t */
-#include <stdint.h> /* For int32_t, uint32_t, uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum EFFECT_TYPE, enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE, enum RESOURCE_TYPE, enum SOUND_COLLISION_TYPE, enum TRIBE_TYPE */
@@ -98,8 +98,8 @@ struct ObjectVftable
   float (__fastcall* GetMeshRadius)(const struct Object* this);
   struct Game3DObject* (__fastcall* Get3DObjectForPSys)(struct Object* this);
   bool (__fastcall* GetPSysFireFlameMatrix)(struct Object* this, const void* edx, struct LHMatrix* matrix);  /* 0x570 */
-  bool (__fastcall* GetPSysFireLocalRndFlamePos)(struct Object* this, const void* edx, struct LHPoint* point, int32_t* param_2);
-  bool (__fastcall* GetPSysFireWorldFlamePos)(struct Object* this, const void* edx, const struct LHPoint* param_1, int32_t param_2, struct LHPoint* param_3);
+  bool (__fastcall* GetPSysFireLocalRndFlamePos)(struct Object* this, const void* edx, struct LHPoint* point, int* param_2);
+  bool (__fastcall* GetPSysFireWorldFlamePos)(struct Object* this, const void* edx, const struct LHPoint* param_1, int param_2, struct LHPoint* param_3);
   float (__fastcall* GetPSysFireLocalFlameScale)(struct Object* this);
   uint32_t (__fastcall* GetPSysFireMaxFlames)(struct Object* this);  /* 0x580 */
   float (__fastcall* GetSpotEffectPower)(const struct Object* this);
@@ -124,7 +124,7 @@ struct ObjectVftable
   float (__fastcall* GetDamageEffect)(struct Object* this, const void* edx, struct EffectValues* values);  /* 0x5d0 */
   float (__fastcall* GetHealEffect)(struct Object* this, const void* edx, struct EffectValues* values);
   void* (__fastcall* GetActualObjectToEffect)(struct Object* this, const void* edx, struct GPlayer* player, bool param_2);
-  void (__fastcall* DrawValue)(struct Object* this, const void* edx, int32_t param_1, float param_2);
+  void (__fastcall* DrawValue)(struct Object* this, const void* edx, int param_1, float param_2);
   void (__fastcall* ScaffoldMoved)(struct Object* this, const void* edx, struct Scaffold* scaffold);  /* 0x5e0 */
   float (__fastcall* GetHeatCapacity)(struct Object* this);
   void (__fastcall* GetFireGPHXDrawn)(struct Object* this, const void* edx, bool* param_1, bool* param_2, bool* param_3, bool* param_4);
@@ -440,7 +440,7 @@ const char* __fastcall GetText__6ObjectFv(struct GameThingWithPos* this) asm("?G
 // win1.41 00638120 mac 10030760 Object::GetHeight(void)
 float __fastcall GetHeight__6ObjectFv(struct GameThingWithPos* this) asm("?GetHeight@Object@@UAEMXZ");
 // win1.41 00639b20 mac 103d2290 Object::SetInScript(int)
-void __fastcall SetInScript__6ObjectFi(struct GameThingWithPos* this, const void* edx, int32_t param_1) asm("?SetInScript@Object@@UAEXH@Z");
+void __fastcall SetInScript__6ObjectFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?SetInScript@Object@@UAEXH@Z");
 // win1.41 004029f0 mac 100219d0 Object::IsObject( const(void))
 bool32_t __fastcall IsObject__6ObjectCFv(struct GameThingWithPos* this) asm("?IsObject@Object@@UAE_NXZ");
 // win1.41 00638580 mac 103d4f70 Object::GetQueryFirstEnumText(void)
@@ -510,9 +510,9 @@ struct Game3DObject* __fastcall Get3DObjectForPSys__6ObjectFv(struct Object* thi
 // win1.41 00732630 mac 101499d0 Object::GetPSysFireFlameMatrix(LHMatrix *)
 bool __fastcall GetPSysFireFlameMatrix__6ObjectFP8LHMatrix(struct Object* this, const void* edx, struct LHMatrix* matrix) asm("?GetPSysFireFlameMatrix@Object@@UAE_NPAULHMatrix@@@Z");
 // win1.41 00732770 mac 10149520 Object::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
-bool __fastcall GetPSysFireLocalRndFlamePos__6ObjectFP7LHPointPl(struct Object* this, const void* edx, struct LHPoint* point, int32_t* param_2) asm("?GetPSysFireLocalRndFlamePos@Object@@UAE_NPAULHPoint@@PAH@Z");
+bool __fastcall GetPSysFireLocalRndFlamePos__6ObjectFP7LHPointPl(struct Object* this, const void* edx, struct LHPoint* point, int* param_2) asm("?GetPSysFireLocalRndFlamePos@Object@@UAE_NPAULHPoint@@PAH@Z");
 // win1.41 00732660 mac 10149810 Object::GetPSysFireWorldFlamePos(LHPoint const &, long, LHPoint *)
-bool __fastcall GetPSysFireWorldFlamePos__6ObjectFRC7LHPointlP7LHPoint(struct Object* this, const void* edx, const struct LHPoint* param_1, int32_t param_2, struct LHPoint* param_3) asm("?GetPSysFireWorldFlamePos@Object@@UAE_NPBULHPoint@@HPAU2@@Z");
+bool __fastcall GetPSysFireWorldFlamePos__6ObjectFRC7LHPointlP7LHPoint(struct Object* this, const void* edx, const struct LHPoint* param_1, int param_2, struct LHPoint* param_3) asm("?GetPSysFireWorldFlamePos@Object@@UAE_NPBULHPoint@@HPAU2@@Z");
 // win1.41 00732950 mac 101493c0 Object::GetPSysFireLocalFlameScale(void)
 float __fastcall GetPSysFireLocalFlameScale__6ObjectFv(struct Object* this) asm("?GetPSysFireLocalFlameScale@Object@@UAEMXZ");
 // win1.41 00732a30 mac 101492c0 Object::GetPSysFireMaxFlames(void)
@@ -562,7 +562,7 @@ float __fastcall GetHealEffect__6ObjectFR12EffectValues(struct Object* this, con
 // win1.41 00637cf0 mac 103d6220 Object::GetActualObjectToEffect(GPlayer *, bool)
 void* __fastcall GetActualObjectToEffect__6ObjectFP7GPlayerb(struct Object* this, const void* edx, struct GPlayer* player, bool param_2) asm("?GetActualObjectToEffect@Object@@UAEPAXPAVGPlayer@@_N@Z");
 // win1.41 006392c0 mac 103d38b0 Object::DrawValue(long, float)
-void __fastcall DrawValue__6ObjectFlf(struct Object* this, const void* edx, int32_t param_1, float param_2) asm("?DrawValue@Object@@UAEXHM@Z");
+void __fastcall DrawValue__6ObjectFlf(struct Object* this, const void* edx, int param_1, float param_2) asm("?DrawValue@Object@@UAEXHM@Z");
 // win1.41 00402640 mac 10368980 Object::ScaffoldMoved(Scaffold *)
 void __fastcall ScaffoldMoved__6ObjectFP8Scaffold(struct Object* this, const void* edx, struct Scaffold* scaffold) asm("?ScaffoldMoved@Object@@UAEXPAVScaffold@@@Z");
 // win1.41 00637ce0 mac 103d6270 Object::GetHeatCapacity(void)

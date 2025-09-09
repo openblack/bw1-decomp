@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct Base;
 struct GFootpath;
 struct GFootpathNode;
 struct GameOSFile;
@@ -52,8 +53,18 @@ void __fastcall Init__15GFootpathFinderFv(struct GFootpathFinder* this);
 
 // Override methods
 
+// win1.41 00538ff0 mac 100e7f30 GFootpathFinder::_dt(void)
+void __fastcall __dt__15GFootpathFinderFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGFootpathFinder@@UAEPAXI@Z");
+// win1.41 005391c0 mac 100e78e0 GFootpathFinder::ToBeDeleted(int)
+void __fastcall ToBeDeleted__15GFootpathFinderFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GFootpathFinder@@UAEXH@Z");
+// win1.41 00538fe0 mac 100e7110 GFootpathFinder::GetDebugText(void)
+char* __fastcall GetDebugText__15GFootpathFinderFv(struct GameThing* this) asm("?GetDebugText@GFootpathFinder@@UAEPADXZ");
 // win1.41 005390e0 mac 100e7ce0 GFootpathFinder::Load(GameOSFile &)
 uint32_t __fastcall Load__15GFootpathFinderFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+// win1.41 00539150 mac 100e7c00 GFootpathFinder::Save(GameOSFile &)
+uint32_t __fastcall Save__15GFootpathFinderFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GFootpathFinder@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00538fd0 mac 100e70d0 GFootpathFinder::GetSaveType(void)
+uint32_t __fastcall GetSaveType__15GFootpathFinderFv(struct GameThing* this) asm("?GetSaveType@GFootpathFinder@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(GFootpathFinder);
 
