@@ -7,8 +7,11 @@
 
 #include <chlasm/Enum.h> /* For enum TRIBE_TYPE */
 
+#include "PSysBase.h" /* For struct PSysBase */
+
 // Forward Declares
 
+struct Base;
 struct HandFX;
 struct LHPoint;
 struct PSysHandFX;
@@ -83,5 +86,16 @@ void __fastcall StopTribalPowerRing__7PHandFXFv(struct PSysHandFX* this);
 void __fastcall ReleaseOrCreateTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PSysHandFX* this, const void* edx, enum TRIBE_TYPE tribe);
 // win1.41 0068ca10 mac 1040e670 PHandFX::Release(void)
 void __fastcall Release__7PHandFXFv(struct PSysHandFX* this);
+
+struct PHandFX__Band
+{
+  struct PSysBase super;  /* 0x0 */
+};
+static_assert(sizeof(struct PHandFX__Band) == 0x14, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 0068cac0 mac inlined PHandFX::Band::_dt( (void))
+void __fastcall __dt__Q27PHandFX4BandFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GBand@PHandFX@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_P_SYS_HAND_FX_INCLUDED_H */

@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For int32_t, uint32_t, uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "LH3DColor.h" /* For struct LH3DColor */
 #include "LHMatrix.h" /* For struct LHMatrix */
@@ -51,62 +51,62 @@ struct LH3DObjectVftable
   void (__fastcall* __dt)(struct LH3DObject* this, const void* edx, bool param_1);
   float (__fastcall* GetU)(struct LH3DObject* this);
   float (__fastcall* GetV)(struct LH3DObject* this);
-  void (__fastcall* SetPaper)(struct LH3DObject* this, const void* edx, int32_t param_1);  /* 0x10 */
+  void (__fastcall* SetPaper)(struct LH3DObject* this, const void* edx, int param_1);  /* 0x10 */
   bool (__fastcall* IsPaper)(struct LH3DObject* this);
-  void (__fastcall* SetNoSnow)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetNoSnow)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsNoSnow)(struct LH3DObject* this);
   void (__fastcall* SetPosition_1)(struct LH3DObject* this, const void* edx, const struct LHPoint* point, float param_2, float param_3);  /* 0x20 */
   void (__fastcall* SetPosition_2)(struct LH3DObject* this, const void* edx, float x, float y, float z);
   void (__fastcall* SetLinkedPosition)(struct LH3DObject* this, const void* edx, struct LH3DObject* linked_obj);
   void (__fastcall* SetColorSpecular)(struct LH3DObject* this, const void* edx, uint32_t param_1, uint32_t param_2);
   void (__fastcall* SetWindowColor)(struct LH3DObject* this, const void* edx, uint32_t color);  /* 0x30 */
-  void (__fastcall* SetSnowlevel_1)(struct LH3DObject* this, const void* edx, int32_t level);
+  void (__fastcall* SetSnowlevel_1)(struct LH3DObject* this, const void* edx, int level);
   void (__fastcall* SetSnowlevel_2)(struct LH3DObject* this, const void* edx, struct LHPoint* point);
   bool (__fastcall* IsUseAlpha)(struct LH3DObject* this);
-  void (__fastcall* SetNeedSorting)(struct LH3DObject* this, const void* edx, int32_t value);  /* 0x40 */
+  void (__fastcall* SetNeedSorting)(struct LH3DObject* this, const void* edx, int value);  /* 0x40 */
   bool (__fastcall* IsNeedSorting)(struct LH3DObject* this);
-  void (__fastcall* SetDrawWithGlobalAlpha)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetDrawWithGlobalAlpha)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsDrawWithGlobalAlpha)(struct LH3DObject* this);
-  void (__fastcall* SetLinked)(struct LH3DObject* this, const void* edx, int32_t param_1);  /* 0x50 */
+  void (__fastcall* SetLinked)(struct LH3DObject* this, const void* edx, int param_1);  /* 0x50 */
   bool (__fastcall* IsLinked)(struct LH3DObject* this);
-  void (__fastcall* SetDynamicLighting)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetDynamicLighting)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsDynamicLighting)(struct LH3DObject* this);
-  void (__fastcall* SetEnumFlag)(struct LH3DObject* this, const void* edx, int32_t flag);  /* 0x60 */
-  int32_t (__fastcall* GetEnumFlag)(struct LH3DObject* this);
-  void (__fastcall* SetSpecialLight)(struct LH3DObject* this, const void* edx, int32_t param_1);
-  int32_t (__fastcall* GetSpecialLight)(struct LH3DObject* this);
-  void (__fastcall* SetDontDraw)(struct LH3DObject* this, const void* edx, int32_t param_1);  /* 0x70 */
-  int32_t (__fastcall* GetDontDraw)(struct LH3DObject* this);
-  void (__fastcall* SetCastDynamicShadow)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetEnumFlag)(struct LH3DObject* this, const void* edx, int flag);  /* 0x60 */
+  int (__fastcall* GetEnumFlag)(struct LH3DObject* this);
+  void (__fastcall* SetSpecialLight)(struct LH3DObject* this, const void* edx, int param_1);
+  int (__fastcall* GetSpecialLight)(struct LH3DObject* this);
+  void (__fastcall* SetDontDraw)(struct LH3DObject* this, const void* edx, int param_1);  /* 0x70 */
+  int (__fastcall* GetDontDraw)(struct LH3DObject* this);
+  void (__fastcall* SetCastDynamicShadow)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsCastDynamicShadow)(struct LH3DObject* this);
-  void (__fastcall* SetShadowOnTexture)(struct LH3DObject* this, const void* edx, int32_t param_1);  /* 0x80 */
+  void (__fastcall* SetShadowOnTexture)(struct LH3DObject* this, const void* edx, int param_1);  /* 0x80 */
   bool (__fastcall* IsShadowOnTexture)(struct LH3DObject* this);
-  void (__fastcall* SetFootPrintOnTexture)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetFootPrintOnTexture)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsFootPrintOnTexture)(struct LH3DObject* this);
-  void (__fastcall* SetShadowOnTextureChroma)(struct LH3DObject* this, const void* edx, int32_t param_1);  /* 0x90 */
+  void (__fastcall* SetShadowOnTextureChroma)(struct LH3DObject* this, const void* edx, int param_1);  /* 0x90 */
   bool (__fastcall* IsShadowOnTextureChroma)(struct LH3DObject* this);
-  void (__fastcall* SetDisappear)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetDisappear)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsDisappear)(struct LH3DObject* this);
-  void (__fastcall* SetNeedClipping)(struct LH3DObject* this, const void* edx, int32_t param_1);  /* 0xa0 */
+  void (__fastcall* SetNeedClipping)(struct LH3DObject* this, const void* edx, int param_1);  /* 0xa0 */
   bool (__fastcall* IsNeedClipping)(struct LH3DObject* this);
-  int32_t (__fastcall* GetVisageId)(struct LH3DObject* this);
-  void (__fastcall* SetVisage)(struct LH3DObject* this, const void* edx, int32_t visage_id);
+  int (__fastcall* GetVisageId)(struct LH3DObject* this);
+  void (__fastcall* SetVisage)(struct LH3DObject* this, const void* edx, int visage_id);
   bool (__fastcall* IsHuman)(struct LH3DObject* this);  /* 0xb0 */
   void (__fastcall* SetHuman)(struct LH3DObject* this);
   bool (__fastcall* IsInBuild)(struct LH3DObject* this);
-  void (__fastcall* SetInBuild)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetInBuild)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsHumanShadowed)(struct LH3DObject* this);  /* 0xc0 */
-  void (__fastcall* SetHumanShadowed)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetHumanShadowed)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsGlowing)(struct LH3DObject* this);
-  void (__fastcall* SetIsGlowing)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetIsGlowing)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsSuperSortedPolys)(struct LH3DObject* this);  /* 0xd0 */
-  void (__fastcall* SetSuperSortedPolys)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetSuperSortedPolys)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsFastBlending)(struct LH3DObject* this);
   void (__fastcall* SetFastBlending)(struct LH3DObject* this, const void* edx, float param_1, struct LH3DMesh* mesh1, struct LH3DMesh* mesh2);
-  void (__fastcall* SetNeedTilling)(struct LH3DObject* this, const void* edx, int32_t param_1);  /* 0xe0 */
+  void (__fastcall* SetNeedTilling)(struct LH3DObject* this, const void* edx, int param_1);  /* 0xe0 */
   bool (__fastcall* IsNeedTilling)(struct LH3DObject* this);
   void (__fastcall* SetAnimatedUV_1)(struct LH3DObject* this, const void* edx, float param_1, float param_2, float param_3);
-  void (__fastcall* SetAnimatedUV_2)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* SetAnimatedUV_2)(struct LH3DObject* this, const void* edx, int param_1);
   bool (__fastcall* IsAnimatedUV)(struct LH3DObject* this);  /* 0xf0 */
   uint32_t (__fastcall* SetMesh)(struct LH3DObject* this, const void* edx, struct LH3DMesh* param_1, struct LH3DMesh* param_2, struct LH3DMesh* param_3);
   struct LH3DMesh* (__fastcall* GetMesh)(const struct LH3DObject* this);
@@ -127,7 +127,7 @@ struct LH3DObjectVftable
   void (__fastcall* DrawCage)(struct LH3DObject* this, const void* edx, float param_1);
   void (__fastcall* DrawVolLightGJ)(struct LH3DObject* this, const void* edx, uint32_t param_1, uint32_t param_2, struct LH3DMaterial* material);
   void (__fastcall* DrawEnvMapST)(struct LH3DObject* this);
-  void (__fastcall* DrawLOD)(struct LH3DObject* this, const void* edx, struct LH3DLODData* lod_data, int32_t param_2);  /* 0x140 */
+  void (__fastcall* DrawLOD)(struct LH3DObject* this, const void* edx, struct LH3DLODData* lod_data, int param_2);  /* 0x140 */
   void (__fastcall* DrawEnvMapMT)(struct LH3DObject* this);
   void (__fastcall* DrawRefMapMT)(struct LH3DObject* this);
   void (__fastcall* DrawNormals)(const struct LH3DObject* this);
@@ -144,12 +144,12 @@ struct LH3DObjectVftable
   void (__fastcall* DrawForMouse)(struct LH3DObject* this);
   void (__fastcall* Blend)(struct LH3DObject* this, const void* edx, struct LH3DObject* obj1, struct LH3DObject* obj2);
   void (__fastcall* SetCurrentAnim)(struct LH3DObject* this, const void* edx, struct LH3DAnim* anim);  /* 0x180 */
-  int32_t (__fastcall* GetCurrentAnim)(struct LH3DObject* this);
-  void (__fastcall* SetCurrentCycleTime)(struct LH3DObject* this, const void* edx, int32_t time);
+  int (__fastcall* GetCurrentAnim)(struct LH3DObject* this);
+  void (__fastcall* SetCurrentCycleTime)(struct LH3DObject* this, const void* edx, int time);
   float (__fastcall* GetCurrentCycleTime)(struct LH3DObject* this);
   void (__fastcall* SetLastAnim)(struct LH3DObject* this, const void* edx, const struct LH3DAnim* anim);  /* 0x190 */
   struct LH3DAnim* (__fastcall* GetLastAnim)(struct LH3DObject* this);
-  void (__fastcall* SetLastCycleTime)(struct LH3DObject* this, const void* edx, int32_t time);
+  void (__fastcall* SetLastCycleTime)(struct LH3DObject* this, const void* edx, int time);
   float (__fastcall* GetLastCycleTime)(struct LH3DObject* this);
   void (__fastcall* SetBlendFactor)(struct LH3DObject* this, const void* edx, float factor);  /* 0x1a0 */
   float (__fastcall* GetBlendFactor)(struct LH3DObject* this);
@@ -161,11 +161,11 @@ struct LH3DObjectVftable
   bool (__fastcall* ContainsThisBoundingBox)(struct LH3DObject* this, const void* edx, const struct LHBoundingBox* bbox);
   bool (__fastcall* GetChimneyPos)(const struct LH3DObject* this, const void* edx, struct LHPoint* point);  /* 0x1c0 */
   bool (__fastcall* GetDoorPos)(const struct LH3DObject* this, const void* edx, struct LHPoint* point);
-  bool (__fastcall* GetExtraPos_1)(const struct LH3DObject* this, const void* edx, int32_t param_1, struct LHPoint* point);
-  void (__fastcall* GetExtraPos_2)(struct LH3DObject* this, const void* edx, int32_t param_1, struct LHMatrix* matrix);
-  void (__fastcall* SetLod)(struct LH3DObject* this, const void* edx, int32_t lod);  /* 0x1d0 */
+  bool (__fastcall* GetExtraPos_1)(const struct LH3DObject* this, const void* edx, int param_1, struct LHPoint* point);
+  void (__fastcall* GetExtraPos_2)(struct LH3DObject* this, const void* edx, int param_1, struct LHMatrix* matrix);
+  void (__fastcall* SetLod)(struct LH3DObject* this, const void* edx, int lod);  /* 0x1d0 */
   float (__fastcall* GetLod)(struct LH3DObject* this);
-  void (__fastcall* SetStatus)(struct LH3DObject* this, const void* edx, int32_t status);
+  void (__fastcall* SetStatus)(struct LH3DObject* this, const void* edx, int status);
   float (__fastcall* GetStatus)(struct LH3DObject* this);
   void (__fastcall* CheckTriangleCollide)(struct LH3DObject* this);  /* 0x1e0 */
   void (__fastcall* CheckPixelCollide)(struct LH3DObject* this);
@@ -184,8 +184,8 @@ struct LH3DObjectVftable
   void (__fastcall* SetNasty)(struct LH3DObject* this, const void* edx, float nasty);
   float (__fastcall* GetNasty)(struct LH3DObject* this);
   void (__fastcall* InitTemple)(struct LH3DObject* this, const void* edx, struct LHPoint* point, float param_2);  /* 0x220 */
-  void (__fastcall* GetNewEP)(struct LH3DObject* this, const void* edx, int32_t param_1, int32_t param_2, struct LHMatrix* matrix);
-  int32_t (__fastcall* HowManyNewEp)(struct LH3DObject* this, const void* edx, int32_t param_1);
+  void (__fastcall* GetNewEP)(struct LH3DObject* this, const void* edx, int param_1, int param_2, struct LHMatrix* matrix);
+  int (__fastcall* HowManyNewEp)(struct LH3DObject* this, const void* edx, int param_1);
 };
 static_assert(sizeof(struct LH3DObjectVftable) == 0x22c, "Data type is of wrong size");
 

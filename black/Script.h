@@ -3,11 +3,12 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For int8_t, uint8_t */
+#include <stdint.h> /* For int8_t, uint32_t, uint8_t */
 
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_INTERFACE_LEVEL */
 
 #include "Base.h" /* For struct Base */
+#include "BaseInfo.h" /* For struct GBaseInfo */
 
 struct GScript
 {
@@ -45,5 +46,23 @@ void __fastcall ProcessFade__7GScriptFb(struct GScript* this, const void* edx, b
 void __fastcall SetupScreenFadeTo__7GScriptFUcUcUcSc(struct GScript* this, const void* edx, uint8_t r, uint8_t g, uint8_t b, int8_t a);
 // win1.41 006ebbc0 mac 104d7300 GScript::CleanGameForScriptReboot(void)
 void __fastcall CleanGameForScriptReboot__7GScriptFv(struct GScript* this);
+
+// Override methods
+
+// win1.41 006eb150 mac 104d7b60 GScript::_dt(void)
+void __fastcall __dt__7GScriptFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGScript@@UAEPAXI@Z");
+
+struct GScriptOpposingCreature
+{
+  struct GBaseInfo super;  /* 0x0 */
+};
+static_assert(sizeof(struct GScriptOpposingCreature) == 0x10, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 006f3770 mac 104e3ad0 GScriptOpposingCreature::_dt(void)
+void __fastcall __dt__23GScriptOpposingCreatureFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGScriptOpposingCreature@@UAEPAXI@Z");
+// win1.41 006f3710 mac 104e7b10 GScriptOpposingCreature::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__23GScriptOpposingCreatureFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GScriptOpposingCreature@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_SCRIPT_INCLUDED_H */

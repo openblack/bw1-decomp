@@ -2,6 +2,7 @@
 #define BW1_DECOMP_CREATURE_DATABASE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 #include "MultiplayerDatabase.h" /* For struct MultiplayerDatabase */
 
@@ -21,5 +22,10 @@ extern const struct MultiplayerDatabaseVftable __vt__16CreatureDatabase asm("??_
 
 // win1.41 006336b0 mac 10109d30 CreatureDatabase::CreatureDatabase(void)
 struct CreatureDatabase* __fastcall __ct__16CreatureDatabaseFv(struct CreatureDatabase* this);
+
+// Override methods
+
+// win1.41 006336d0 mac 10109aa0 CreatureDatabase::Send(void)
+uint32_t __fastcall Send__16CreatureDatabaseFv(struct CreatureDatabase* this) asm("?Send@CreatureDatabase@@UAEIXZ");
 
 #endif /* BW1_DECOMP_CREATURE_DATABASE_INCLUDED_H */

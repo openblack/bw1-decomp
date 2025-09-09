@@ -9,6 +9,7 @@
 // Forward Declares
 
 struct CHand;
+struct LHMatrix;
 
 struct HandStateCitadel
 {
@@ -28,5 +29,12 @@ extern const struct HandStateVftable __vt__16HandStateCitadel asm("??_7HandState
 
 // win1.41 005b0bf0 mac 103377e0 HandStateCitadel::HandStateCitadel(CHand*)
 struct HandStateCitadel* __fastcall __ct__16HandStateCitadelFP5CHand(struct HandStateCitadel* this, const void* edx, struct CHand* hand);
+
+// Override methods
+
+// win1.41 005b0c10 mac 10337710 HandStateCitadel::Enter(void)
+void __fastcall Enter__16HandStateCitadelFv(struct HandState* this) asm("?Enter@HandStateCitadel@@UAEXXZ");
+// win1.41 005b0d00 mac 10336f60 HandStateCitadel::Update(float, LHMatrix *)
+void __fastcall Update__16HandStateCitadelFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateCitadel@@UAEXMPAULHMatrix@@@Z");
 
 #endif /* BW1_DECOMP_HAND_STATE_CITADEL_INCLUDED_H */

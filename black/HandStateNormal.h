@@ -9,6 +9,7 @@
 // Forward Declares
 
 struct CHand;
+struct LHMatrix;
 
 struct HandStateNormal
 {
@@ -28,5 +29,12 @@ extern const struct HandStateVftable __vt__15HandStateNormal asm("??_7HandStateN
 
 // win1.41 005b5c70 mac 1033c8a0 HandStateNormal::HandStateNormal(CHand*)
 struct HandStateNormal* __fastcall __ct__15HandStateNormalFP5CHand(struct HandStateNormal* this, const void* edx, struct CHand* hand);
+
+// Override methods
+
+// win1.41 005b5d00 mac 1033c7a0 HandStateNormal::Enter(void)
+void __fastcall Enter__15HandStateNormalFv(struct HandState* this) asm("?Enter@HandStateNormal@@UAEXXZ");
+// win1.41 005b71a0 mac 100792d0 HandStateNormal::Update(float, LHMatrix *)
+void __fastcall Update__15HandStateNormalFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateNormal@@UAEXMPAULHMatrix@@@Z");
 
 #endif /* BW1_DECOMP_HAND_STATE_NORMAL_INCLUDED_H */

@@ -24,4 +24,9 @@ extern const struct BaseVftable __vt__9GLanguage asm("??_7GLanguage@@6B@");
 // win1.41 005e6750 mac 1019cef0 GLanguage::GLanguage(void)
 void __fastcall __ct__9GLanguageFv(struct GLanguage* this);
 
+// Override methods
+
+// win1.41 005e6770 mac 1017a5a0 GLanguage::_dt(void)
+void __fastcall __dt__9GLanguageFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGLanguage@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_LANGUAGE_INCLUDED_H */

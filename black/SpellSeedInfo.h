@@ -3,11 +3,16 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum MAGIC_TYPE, enum POWER_UP_TYPE, enum SPELL_SEED_TYPE */
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
+
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
 
 struct GSpellSeedInfo
 {
@@ -31,5 +36,14 @@ enum POWER_UP_TYPE __fastcall GetPowerUpFromMagicType__14GSpellSeedInfoCF10MAGIC
 enum MAGIC_TYPE __fastcall GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE(const struct GSpellSeedInfo* this, const void* edx, enum POWER_UP_TYPE power_type);
 // win1.41 0072b060 mac inlined GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const
 bool __fastcall SpellSeedIsOfMagicType__14GSpellSeedInfoCF10MAGIC_TYPE(const struct GSpellSeedInfo* this, const void* edx, enum MAGIC_TYPE type);
+
+// Override methods
+
+// win1.41 0072aee0 mac 1052d120 GSpellSeedInfo::_dt(void)
+void __fastcall __dt__14GSpellSeedInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSpellSeedInfo@@UAEPAXI@Z");
+// win1.41 0072ae70 mac 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__14GSpellSeedInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpellSeedInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 0072ae60 mac 1052df00 GSpellSeedInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__14GSpellSeedInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GSpellSeedInfo@@UBEIXZ");
 
 #endif /* BW1_DECOMP_SPELL_SEED_INFO_INCLUDED_H */

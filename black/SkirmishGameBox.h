@@ -2,7 +2,7 @@
 #define BW1_DECOMP_SKIRMISH_GAME_BOX_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
@@ -18,5 +18,14 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SkirmishGam
 
 // win1.41 008de94c mac 109ed65c SkirmishGameBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__15SkirmishGameBox asm("??_7SkirmishGameBox@@6B@");
+
+// Override methods
+
+// win1.41 00544820 mac 105baab0 SkirmishGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+void __fastcall Init__15SkirmishGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@SkirmishGameBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+// win1.41 00544b90 mac 105ba740 SkirmishGameBox::Destroy(void)
+void __fastcall Destroy__15SkirmishGameBoxFv(struct DialogBoxBase* this) asm("?Destroy@SkirmishGameBox@@UAEXXZ");
+// win1.41 00544bd0 mac 105ba3e0 SkirmishGameBox::InitControls(void)
+void __fastcall InitControls__15SkirmishGameBoxFv(struct DialogBoxBase* this) asm("?InitControls@SkirmishGameBox@@UAEXXZ");
 
 #endif /* BW1_DECOMP_SKIRMISH_GAME_BOX_INCLUDED_H */

@@ -2,9 +2,14 @@
 #define BW1_DECOMP_SHOW_NEEDS_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
+
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
 
 struct GShowNeedsInfo
 {
@@ -18,5 +23,14 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GShowNeedsI
 
 // win1.41 009572c8 mac 1075b5b0 GShowNeedsInfo::`vftable'
 extern const struct ObjectVftable __vt__14GShowNeedsInfo asm("??_7GShowNeedsInfo@@6B@");
+
+// Override methods
+
+// win1.41 00719a80 mac 10146040 GShowNeedsInfo::_dt(void)
+void __fastcall __dt__14GShowNeedsInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGShowNeedsInfo@@UAEPAXI@Z");
+// win1.41 00719a10 mac 101461f0 GShowNeedsInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__14GShowNeedsInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GShowNeedsInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 00719a00 mac 10144960 GShowNeedsInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__14GShowNeedsInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GShowNeedsInfo@@UBEIXZ");
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_INFO_INCLUDED_H */

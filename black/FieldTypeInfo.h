@@ -2,9 +2,16 @@
 #define BW1_DECOMP_FIELD_TYPE_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
+
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+struct MapCoords;
 
 struct GFieldTypeInfo
 {
@@ -18,6 +25,15 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GFieldTypeI
 
 // win1.41 008d9b30 mac 1073ed2c GFieldTypeInfo::`vftable'
 extern const struct MultiMapFixedVftable __vt__14GFieldTypeInfo asm("??_7GFieldTypeInfo@@6B@");
+
+// Override methods
+
+// win1.41 00527da0 mac 100d1a40 GFieldTypeInfo::_dt(void)
+void __fastcall __dt__14GFieldTypeInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGFieldTypeInfo@@UAEPAXI@Z");
+// win1.41 00527d30 mac 100d18c0 GFieldTypeInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__14GFieldTypeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GFieldTypeInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 00528e50 mac 100d4190 GFieldTypeInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
+bool __fastcall IsOkToCreateAtPos__14GFieldTypeInfoCFRC9MapCoordsff(const struct GMultiMapFixedInfo* this, const void* edx, const struct MapCoords* param_1, float param_2, float param_3) asm("?IsOkToCreateAtPos@GFieldTypeInfo@@UBE_NABUMapCoords@@MM@Z");
 
 // win1.41 00527cf0 mac inlined __sinit_GFieldTypeInfo_cpp
 void __cdecl __sinit_GFieldTypeInfo_cpp(void);

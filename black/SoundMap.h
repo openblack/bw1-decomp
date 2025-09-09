@@ -32,4 +32,11 @@ extern const struct BaseVftable __vt__9GSoundMap asm("??_7GSoundMap@@6B@");
 // win1.41 0054b9d0 mac inlined GSoundMap::GSoundMap(void)
 struct GSoundMap* __fastcall __ct__9GSoundMapFv(struct GSoundMap* this);
 
+// Override methods
+
+// win1.41 0054ba10 mac 100cb590 GSoundMap::_dt(void)
+void __fastcall __dt__9GSoundMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSoundMap@@UAEPAXI@Z");
+// win1.41 0071d990 mac 10068330 GSoundMap::Dump(void)
+void __fastcall Dump__9GSoundMapFv(struct Base* this) asm("?Dump@GSoundMap@@UAEXXZ");
+
 #endif /* BW1_DECOMP_SOUND_MAP_INCLUDED_H */

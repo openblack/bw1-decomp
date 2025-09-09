@@ -2,8 +2,14 @@
 #define BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 #include "ObjectInfo.h" /* For struct GObjectInfo, struct GObjectInfoVftable */
+
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
 
 struct GSingleMapFixedInfoVftable
 {
@@ -29,5 +35,14 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19GSingleMapF
 
 // win1.41 008db6dc mac 10740cf0 GSingleMapFixedInfo::`vftable'
 extern const struct GSingleMapFixedInfoVftable __vt__19GSingleMapFixedInfo asm("??_7GSingleMapFixedInfo@@6B@");
+
+// Override methods
+
+// win1.41 0052dd50 mac 100e2210 GSingleMapFixedInfo::_dt(void)
+void __fastcall __dt__19GSingleMapFixedInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSingleMapFixedInfo@@UAEPAXI@Z");
+// win1.41 0052dce0 mac 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__19GSingleMapFixedInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSingleMapFixedInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 0052dcd0 mac 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__19GSingleMapFixedInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GSingleMapFixedInfo@@UBEIXZ");
 
 #endif /* BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H */

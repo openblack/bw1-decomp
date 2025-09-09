@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct Base;
 struct GPrayerIconInfo;
 struct GTownDesireFunction;
 
@@ -53,5 +54,12 @@ extern const struct GBaseInfoVftable __vt__15GTownDesireInfo asm("??_7GTownDesir
 
 // win1.41 00746580 mac 1005ebc0 GTownDesireInfo::GetDesireFunctions(void) const
 struct GTownDesireFunction* __fastcall GetDesireFunctions__15GTownDesireInfoCFv(const struct GTownDesireInfo* this);
+
+// Override methods
+
+// win1.41 00744b90 mac 1055d6c0 GTownDesireInfo::_dt(void)
+void __fastcall __dt__15GTownDesireInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTownDesireInfo@@UAEPAXI@Z");
+// win1.41 00744b20 mac 1055ef20 GTownDesireInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__15GTownDesireInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GTownDesireInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INFO_INCLUDED_H */

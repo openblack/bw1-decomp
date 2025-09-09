@@ -2,7 +2,7 @@
 #define BW1_DECOMP_HELP_SYSTEM_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include "Base.h" /* For struct Base */
 
@@ -107,8 +107,13 @@ void __fastcall ResetIcons__10HelpSystemFv(struct HelpSystem* this);
 // win1.41 005c67e0 mac 1034f730 HelpSystem::ClearDialogueControl(void)
 void __fastcall ClearDialogueControl__10HelpSystemFv(struct HelpSystem* this);
 // win1.41 005c6ad0 mac 1034f2c0 HelpSystem::SetWideScreen(int, ulong)
-void __fastcall SetWideScreen__10HelpSystemFiUl(struct HelpSystem* this, const void* edx, int32_t param_2, uint32_t param_3);
+void __fastcall SetWideScreen__10HelpSystemFiUl(struct HelpSystem* this, const void* edx, int param_2, uint32_t param_3);
 // win1.41 005c6b60 mac 1001d4b0 HelpSystem::GetWideScreenPercentage(void) const
 float __fastcall GetWideScreenPercentage__10HelpSystemCFv(const struct HelpSystem* this);
+
+// Override methods
+
+// win1.41 005c5430 mac 10351450 HelpSystem::_dt(void)
+void __fastcall __dt__10HelpSystemFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GHelpSystem@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INCLUDED_H */

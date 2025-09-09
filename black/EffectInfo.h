@@ -6,6 +6,10 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+// Forward Declares
+
+struct Base;
+
 struct GEffectInfo
 {
   struct GBaseInfo super;  /* 0x0 */
@@ -31,5 +35,12 @@ extern const struct BaseInfoVftable __vt__11GEffectInfo asm("??_7GEffectInfo@@6B
 
 // win1.41 00524d40 mac 100cc740 GEffectInfo::GEffectInfo(void)
 struct GEffectInfo* __fastcall __ct__11GEffectInfoFv(struct GEffectInfo* this);
+
+// Override methods
+
+// win1.41 00524dd0 mac 100cc6a0 GEffectInfo::_dt(void)
+void __fastcall __dt__11GEffectInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGEffectInfo@@UAEPAXI@Z");
+// win1.41 00524d70 mac 100ccc90 GEffectInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__11GEffectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GEffectInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_EFFECT_INFO_INCLUDED_H */

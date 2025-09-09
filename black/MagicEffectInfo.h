@@ -6,6 +6,11 @@
 
 #include "EffectInfo.h" /* For struct GEffectInfo */
 
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+
 struct GMagicEffectInfo
 {
   struct GEffectInfo super;  /* 0x0 */
@@ -69,5 +74,12 @@ extern const struct GBaseInfoVftable __vt__16GMagicEffectInfo asm("??_7GMagicEff
 
 // win1.41 00524e00 mac 100ccad0 GMagicEffectInfo::GMagicEffectInfo(void)
 struct GMagicEffectInfo* __fastcall __ct__16GMagicEffectInfoFv(struct GMagicEffectInfo* this);
+
+// Override methods
+
+// win1.41 00524ea0 mac 100cca30 GMagicEffectInfo::_dt(void)
+void __fastcall __dt__16GMagicEffectInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicEffectInfo@@UAEPAXI@Z");
+// win1.41 00524e30 mac 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__16GMagicEffectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMagicEffectInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_MAGIC_EFFECT_INFO_INCLUDED_H */

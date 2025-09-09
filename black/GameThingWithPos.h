@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum DEATH_REASON, enum IMPRESSIVE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
@@ -236,9 +236,9 @@ struct GameThingWithPosVftable
   float (__fastcall* GetHeight)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsReadyForNewScriptAction)(struct GameThingWithPos* this);  /* 0x430 */
   int (__fastcall* ForDrawFXGetNumVertices)(struct GameThingWithPos* this);
-  void (__fastcall* ForDrawFXGetVertexPos)(struct GameThingWithPos* this, const void* edx, int32_t param_1, struct LHPoint* param_2);
-  void (__fastcall* SetInScript)(struct GameThingWithPos* this, const void* edx, int32_t param_1);
-  void (__fastcall* SetControlledByScript)(struct GameThingWithPos* this, const void* edx, int32_t param_1);  /* 0x440 */
+  void (__fastcall* ForDrawFXGetVertexPos)(struct GameThingWithPos* this, const void* edx, int param_1, struct LHPoint* param_2);
+  void (__fastcall* SetInScript)(struct GameThingWithPos* this, const void* edx, int param_1);
+  void (__fastcall* SetControlledByScript)(struct GameThingWithPos* this, const void* edx, int param_1);  /* 0x440 */
   enum DEATH_REASON (__fastcall* GetDeathReason)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsInScript)(struct GameThingWithPos* this);
   bool32_t (__fastcall* IsMaleVillager)(struct GameThingWithPos* this);
@@ -758,11 +758,11 @@ bool32_t __fastcall IsReadyForNewScriptAction__16GameThingWithPosFv(struct GameT
 // win1.41 00570290 mac 1036ad90 GameThingWithPos::ForDrawFXGetNumVertices(void)
 int __fastcall ForDrawFXGetNumVertices__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?ForDrawFXGetNumVertices@GameThingWithPos@@UAEHXZ");
 // win1.41 005702a0 mac 1056f610 GameThingWithPos::ForDrawFXGetVertexPos(long, LHPoint *)
-void __fastcall ForDrawFXGetVertexPos__16GameThingWithPosFlP7LHPoint(struct GameThingWithPos* this, const void* edx, int32_t param_1, struct LHPoint* param_2) asm("?ForDrawFXGetVertexPos@GameThingWithPos@@UAEXHPAULHPoint@@@Z");
+void __fastcall ForDrawFXGetVertexPos__16GameThingWithPosFlP7LHPoint(struct GameThingWithPos* this, const void* edx, int param_1, struct LHPoint* param_2) asm("?ForDrawFXGetVertexPos@GameThingWithPos@@UAEXHPAULHPoint@@@Z");
 // win1.41 00405510 mac 10003460 GameThingWithPos::SetInScript(int)
-void __fastcall SetInScript__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int32_t param_1) asm("?SetInScript@GameThingWithPos@@UAEXH@Z");
+void __fastcall SetInScript__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?SetInScript@GameThingWithPos@@UAEXH@Z");
 // win1.41 00402240 mac 100552b0 GameThingWithPos::SetControlledByScript(int)
-void __fastcall SetControlledByScript__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int32_t param_1) asm("?SetControlledByScript@GameThingWithPos@@UAEXH@Z");
+void __fastcall SetControlledByScript__16GameThingWithPosFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?SetControlledByScript@GameThingWithPos@@UAEXH@Z");
 // win1.41 00402270 mac 101a4ed0 GameThingWithPos::GetDeathReason(void)
 enum DEATH_REASON __fastcall GetDeathReason__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetDeathReason@GameThingWithPos@@UAE?AW4DEATH_REASON@@XZ");
 // win1.41 00402280 mac 1004cf30 GameThingWithPos::IsInScript(void)

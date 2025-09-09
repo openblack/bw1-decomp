@@ -2,9 +2,13 @@
 #define BW1_DECOMP_TERRAIN_MAP_TYPE_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
+
+// Forward Declares
+
+struct Base;
 
 struct TerrainMapTypeInfo
 {
@@ -21,5 +25,12 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18TerrainMapT
 
 // win1.41 008df840 mac 10730ae0 TerrainMapTypeInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__18TerrainMapTypeInfo asm("??_7TerrainMapTypeInfo@@6B@");
+
+// Override methods
+
+// win1.41 0054bf00 mac 10512cc0 TerrainMapTypeInfo::_dt(void)
+void __fastcall __dt__18TerrainMapTypeInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GTerrainMapTypeInfo@@UAEPAXI@Z");
+// win1.41 0054bd70 mac 10588760 TerrainMapTypeInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__18TerrainMapTypeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@TerrainMapTypeInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_TYPE_INFO_INCLUDED_H */

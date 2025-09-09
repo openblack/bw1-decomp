@@ -2,7 +2,7 @@
 #define BW1_DECOMP_KEY_BUFFER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint16_t, uint8_t, uintptr_t */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t, uintptr_t */
 
 #include "Base.h" /* For struct Base */
 
@@ -26,5 +26,21 @@ extern const struct BaseVftable __vt__10GKeyBuffer asm("??_7GKeyBuffer@@6B@");
 
 // win1.41 0054b930 mac inlined GKeyBuffer::GKeyBuffer(void)
 struct GKeyBuffer* __fastcall __ct__10GKeyBuffer(struct GKeyBuffer* this);
+
+// Override methods
+
+// win1.41 0054b950 mac 10167a10 GKeyBuffer::_dt(void)
+void __fastcall __dt__10GKeyBufferFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGKeyBuffer@@UAEPAXI@Z");
+
+struct GKeyInput
+{
+  struct Base super;  /* 0x0 */
+};
+static_assert(sizeof(struct GKeyInput) == 0x8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 005e1b40 mac 1016c7e0 GKeyInput::_dt(void)
+void __fastcall __dt__9GKeyInputFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGKeyInput@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_KEY_BUFFER_INCLUDED_H */

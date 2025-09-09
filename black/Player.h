@@ -17,11 +17,14 @@
 
 // Forward Declares
 
+struct Base;
 struct Citadel;
 struct Creature;
 struct GAlignment;
 struct GInterface;
 struct GameStats;
+struct PSysProcessInfo;
+struct Spell;
 
 enum PLAYER_NAME
 {
@@ -144,6 +147,25 @@ bool32_t __fastcall IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE(struct GPlayer* th
 struct GInterface* __fastcall GetRealInterface__7GPlayerFUl(struct GPlayer* this, const void* edx, int param_2);
 // win1.41 0064d800 mac 10021970 GPlayer::GetPlayerColour(void) const
 struct LH3DColor __fastcall GetPlayerColour__7GPlayerCFv(struct GPlayer* this);
+
+// Override methods
+
+// win1.41 00648eb0 mac 10497380 GPlayer::_dt(void)
+void __fastcall __dt__7GPlayerFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPlayer@@UAEPAXI@Z");
+// win1.41 006490b0 mac 10497310 GPlayer::ToBeDeleted(int)
+void __fastcall ToBeDeleted__7GPlayerFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GPlayer@@UAEXH@Z");
+// win1.41 0064a6d0 mac 10496550 GPlayer::Dump(void)
+void __fastcall Dump__7GPlayerFv(struct Base* this) asm("?Dump@GPlayer@@UAEXXZ");
+// win1.41 00648e70 mac 1048ea90 GPlayer::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__7GPlayerFv(struct GameThing* this) asm("?GetPlayer@GPlayer@@UAEPAVGPlayer@@XZ");
+// win1.41 0064b670 mac 1002b8e0 GPlayer::GetMaxAlignmentChangePerGameTurn(void)
+float __fastcall GetMaxAlignmentChangePerGameTurn__7GPlayerFv(struct GameThing* this) asm("?GetMaxAlignmentChangePerGameTurn@GPlayer@@UAEMXZ");
+// win1.41 0064c430 mac inlined GPlayer::MaintainSpell(unsigned int, float)
+void __fastcall MaintainSpell__7GPlayerFUif(struct GameThing* this, const void* edx, uint32_t param_1, float param_2) asm("?MaintainSpell@GPlayer@@UAEXIM@Z");
+// win1.41 0064c470 mac 10491f30 GPlayer::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+void __fastcall UpdateSpellInfo__7GPlayerFP5SpellP15PSysProcessInfo(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2) asm("?UpdateSpellInfo@GPlayer@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z");
+// win1.41 00648e80 mac 1048eac0 GPlayer::CastPlayer(void)
+struct GPlayer* __fastcall CastPlayer__7GPlayerFv(struct GameThing* this) asm("?CastPlayer@GPlayer@@UAEPAVGPlayer@@XZ");
 
 DECLARE_LH_LIST_HEAD(GPlayer);
 

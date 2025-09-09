@@ -6,12 +6,15 @@
 
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "DancePathInfo.h" /* For struct DancePathInfo */
+#include "GameThing.h" /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 
 // Forward Declares
 
+struct Base;
 struct DanceGroup;
 struct DanceGroupActionArgument;
+struct GameOSFile;
 struct GroupBehaviour;
 struct LHDynamicStack__Ul;
 
@@ -78,6 +81,14 @@ struct GroupBehaviour* __fastcall __ct__14GroupBehaviourFv(struct GroupBehaviour
 
 // Override methods
 
+// win1.41 00596190 mac 100fa600 GroupBehaviour::_dt(void)
+void __fastcall __dt__14GroupBehaviourFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGroupBehaviour@@UAEPAXI@Z");
+// win1.41 00596320 mac 100fa080 GroupBehaviour::ToBeDeleted(int)
+void __fastcall ToBeDeleted__14GroupBehaviourFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GroupBehaviour@@UAEXH@Z");
+// win1.41 005985c0 mac 100f4e70 GroupBehaviour::Load(GameOSFile &)
+uint32_t __fastcall Load__14GroupBehaviourFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GroupBehaviour@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00598240 mac 100f5a80 GroupBehaviour::Save(GameOSFile &)
+uint32_t __fastcall Save__14GroupBehaviourFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GroupBehaviour@@UAEIAAVGameOSFile@@@Z");
 // win1.41 005964a0 mac 106ffb98 GroupBehaviour::Process(void)
 void __fastcall Process__14GroupBehaviour(struct GroupBehaviour* this);
 // win1.41 00596700 mac 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
@@ -90,5 +101,37 @@ void __fastcall AddAction__14GroupBehaviourFfUl23DANCE_GROUP_ACTION_TYPERC24Danc
 void __fastcall LoadDance__14GroupBehaviourFPCc(struct GroupBehaviour* this, const void* edx, const char* param_1);
 // win1.41 0050cc40 mac 100f4e30 GroupBehaviour::GetAngle(void)
 float __fastcall GetAngle__14GroupBehaviourFv(struct GroupBehaviour* this);
+
+struct DanceEditState
+{
+  struct GroupBehaviour super;  /* 0x0 */
+};
+static_assert(sizeof(struct DanceEditState) == 0xe8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 0050cc50 mac inlined DanceEditState::_dt(void)
+void __fastcall __dt__14DanceEditStateFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GDanceEditState@@UAEPAXI@Z");
+// win1.41 0050cc90 mac inlined DanceEditState::ToBeDeleted(int)
+void __fastcall ToBeDeleted__14DanceEditStateFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@DanceEditState@@UAEXH@Z");
+
+struct DanceKeyAction
+{
+  struct GameThing super;  /* 0x0 */
+};
+static_assert(sizeof(struct DanceKeyAction) == 0x14, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 0050e3a0 mac 102aed30 DanceKeyAction::_dt(void)
+void __fastcall __dt__14DanceKeyActionFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GDanceKeyAction@@UAEPAXI@Z");
+// win1.41 0050e390 mac 102aee40 DanceKeyAction::GetDebugText(void)
+char* __fastcall GetDebugText__14DanceKeyActionFv(struct GameThing* this) asm("?GetDebugText@DanceKeyAction@@UAEPADXZ");
+// win1.41 0050ea00 mac 102ae600 DanceKeyAction::Load(GameOSFile &)
+uint32_t __fastcall Load__14DanceKeyActionFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@DanceKeyAction@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0050e880 mac 102ae810 DanceKeyAction::Save(GameOSFile &)
+uint32_t __fastcall Save__14DanceKeyActionFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@DanceKeyAction@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0050e380 mac 102aee00 DanceKeyAction::GetSaveType(void)
+uint32_t __fastcall GetSaveType__14DanceKeyActionFv(struct GameThing* this) asm("?GetSaveType@DanceKeyAction@@UAEIXZ");
 
 #endif /* BW1_DECOMP_GROUP_BEHAVIOUR_INCLUDED_H */

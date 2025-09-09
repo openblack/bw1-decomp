@@ -68,6 +68,11 @@ struct TownDesire* __fastcall __ct__10TownDesireFv(struct TownDesire* this);
 // win1.41 00745ae0 mac 1005c8d0 TownDesire::Process(void)
 void __fastcall Process__10TownDesireFv(struct TownDesire* this);
 
+// Override methods
+
+// win1.41 00745730 mac 1055ea40 TownDesire::_dt(void)
+void __fastcall __dt__10TownDesireFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GTownDesire@@UAEPAXI@Z");
+
 struct GTownDesireFunction
 {
   const char* name;  /* 0x0 */

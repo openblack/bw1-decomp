@@ -2,9 +2,15 @@
 #define BW1_DECOMP_MOBILE_OBJECT_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "MobileInfo.h" /* For struct GMobileInfo */
+
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+struct GObjectInfo;
 
 struct GMobileObjectInfo
 {
@@ -23,5 +29,14 @@ extern const struct GBaseInfoVftable __vt__17GMobileObjectInfo asm("??_7GMobileO
 
 // win1.41 inlined mac 100ad720 GMobileObjectInfo::GMobileObjectInfo(void)
 struct GMobileObjectInfo* __fastcall __ct__17GMobileObjectInfoFv(struct GMobileObjectInfo* this);
+
+// Override methods
+
+// win1.41 00606e10 mac 100ad680 GMobileObjectInfo::_dt(void)
+void __fastcall __dt__17GMobileObjectInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMobileObjectInfo@@UAEPAXI@Z");
+// win1.41 00606da0 mac 100ad7d0 GMobileObjectInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__17GMobileObjectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMobileObjectInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 00425920 mac 100ad790 GMobileObjectInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__17GMobileObjectInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GMobileObjectInfo@@UBEIXZ");
 
 #endif /* BW1_DECOMP_MOBILE_OBJECT_INFO_INCLUDED_H */

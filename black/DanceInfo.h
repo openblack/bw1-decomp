@@ -2,9 +2,13 @@
 #define BW1_DECOMP_DANCE_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
+
+// Forward Declares
+
+struct Base;
 
 struct GDanceInfo
 {
@@ -18,5 +22,12 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GDanceInfo 
 
 // win1.41 008d3938 mac 10995494 GDanceInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__10GDanceInfo asm("??_7GDanceInfo@@6B@");
+
+// Override methods
+
+// win1.41 0050b670 mac 102a8e60 GDanceInfo::_dt(void)
+void __fastcall __dt__10GDanceInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGDanceInfo@@UAEPAXI@Z");
+// win1.41 0050b600 mac 102aa810 GDanceInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__10GDanceInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GDanceInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_DANCE_INFO_INCLUDED_H */

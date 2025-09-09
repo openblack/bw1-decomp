@@ -37,4 +37,9 @@ extern const struct BaseVftable __vt__13PhysicsObject asm("??_7PhysicsObject@@6B
 // win1.41 00644330 mac 10113e20 PhysicsObject::PhysicsObject(void)
 struct PhysicsObject* __fastcall __ct__13PhysicsObjectFv(struct PhysicsObject* this);
 
+// Override methods
+
+// win1.41 00644d70 mac 10113d90 PhysicsObject::_dt(void)
+void __fastcall __dt__13PhysicsObjectFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPhysicsObject@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_PHYSICS_OBJECT_INCLUDED_H */

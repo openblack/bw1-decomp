@@ -11,6 +11,7 @@
 // Forward Declares
 
 struct Base;
+struct GameOSFile;
 struct LH_AudioBank;
 struct LH_SamplePlayOptions;
 
@@ -39,5 +40,20 @@ uint32_t __fastcall PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions(struct GAud
 void __fastcall StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE(const struct GAudio* this, const void* edx, uint32_t param_1, uint32_t param_2, enum AUDIO_SFX_BANK_TYPE type);
 // win1.41 0042a330 mac 1017e410 GAudio::ReleaseLoopOnSoundEffect(Base *, unsigned long, AUDIO_SFX_BANK_TYPE) const
 void __fastcall ReleaseLoopOnSoundEffect__6GAudioCFP4BaseUl19AUDIO_SFX_BANK_TYPE(struct GAudio* this, const void* edx, struct Base* param_1, uint32_t param_2, enum AUDIO_SFX_BANK_TYPE type);
+
+// Override methods
+
+// win1.41 00426fa0 mac 10179100 GAudio::_dt(void)
+void __fastcall __dt__6GAudioFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGAudio@@UAEPAXI@Z");
+// win1.41 00426fe0 mac 1017ae30 GAudio::ToBeDeleted(int)
+void __fastcall ToBeDeleted__6GAudioFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GAudio@@UAEXH@Z");
+// win1.41 00426f90 mac 101791e0 GAudio::GetDebugText(void)
+char* __fastcall GetDebugText__6GAudioFv(struct GameThing* this) asm("?GetDebugText@GAudio@@UAEPADXZ");
+// win1.41 00428480 mac 10179710 GAudio::Load(GameOSFile &)
+uint32_t __fastcall Load__6GAudioFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GAudio@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00428310 mac 10179bd0 GAudio::Save(GameOSFile &)
+uint32_t __fastcall Save__6GAudioFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GAudio@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00426f80 mac 101791a0 GAudio::GetSaveType(void)
+uint32_t __fastcall GetSaveType__6GAudioFv(struct GameThing* this) asm("?GetSaveType@GAudio@@UAEIXZ");
 
 #endif /* BW1_DECOMP_AUDIO_INCLUDED_H */

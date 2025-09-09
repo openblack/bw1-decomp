@@ -71,6 +71,8 @@ void __fastcall ReadCheckSum__10GameOSFileFP9GameThing(struct GameOSFile* this, 
 
 // Override methods
 
+// win1.41 00558030 mac 1030fcb0 GameOSFile::_dt(void)
+void* __fastcall __dt__10GameOSFileFv(struct LHOSFile* this, const void* edx, bool param_1) asm("??_GGameOSFile@@UAEPAXI@Z");
 // win1.41 inlined mac inlined GameOSFile::Open(char *, LH_FILE_MODE)
 uint32_t __fastcall Open__10GameOSFileFPc12LH_FILE_MODE(struct LHOSFile* this, const void* edx, const char* filename, enum LH_FILE_MODE mode);
 

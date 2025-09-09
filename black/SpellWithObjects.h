@@ -3,12 +3,15 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "Spell.h" /* For struct Spell, struct SpellVftable */
 
 // Forward Declares
 
+struct Base;
+struct GameOSFile;
+struct GameThing;
 struct SpellWithObjects;
 
 struct SpellWithObjectsVftable
@@ -30,5 +33,30 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellWithOb
 
 // win1.41 008f4530 mac 109a591c SpellWithObjects::`vftable'
 extern const struct SpellWithObjectsVftable __vt__16SpellWithObjects asm("??_7SpellWithObjects@@6B@");
+
+// Override methods
+
+// win1.41 0055cf80 mac 1030e320 SpellWithObjects::_dt(void)
+void __fastcall __dt__16SpellWithObjectsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GSpellWithObjects@@UAEPAXI@Z");
+// win1.41 00720fd0 mac 10517170 SpellWithObjects::ToBeDeleted(int)
+void __fastcall ToBeDeleted__16SpellWithObjectsFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@SpellWithObjects@@UAEXH@Z");
+// win1.41 0055cf70 mac 10519dd0 SpellWithObjects::GetDebugText(void)
+char* __fastcall GetDebugText__16SpellWithObjectsFv(struct GameThing* this) asm("?GetDebugText@SpellWithObjects@@UAEPADXZ");
+// win1.41 007210f0 mac 10516ed0 SpellWithObjects::Load(GameOSFile &)
+uint32_t __fastcall Load__16SpellWithObjectsFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@SpellWithObjects@@UAEIAAVGameOSFile@@@Z");
+// win1.41 007211d0 mac 10516d00 SpellWithObjects::Save(GameOSFile &)
+uint32_t __fastcall Save__16SpellWithObjectsFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@SpellWithObjects@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0055cf60 mac 10519d90 SpellWithObjects::GetSaveType(void)
+uint32_t __fastcall GetSaveType__16SpellWithObjectsFv(struct GameThing* this) asm("?GetSaveType@SpellWithObjects@@UAEIXZ");
+// win1.41 007212f0 mac 10516c10 SpellWithObjects::ProcessSpellSeed(void)
+void __fastcall ProcessSpellSeed__16SpellWithObjectsFv(struct Spell* this) asm("?ProcessSpellSeed@SpellWithObjects@@UAEXXZ");
+// win1.41 00721290 mac 10516c70 SpellWithObjects::Process(void)
+uint32_t __fastcall Process__16SpellWithObjectsFv(struct Spell* this) asm("?Process@SpellWithObjects@@UAEIXZ");
+// win1.41 00721300 mac 10516b50 SpellWithObjects::CloseDown(void)
+void __fastcall CloseDown__16SpellWithObjectsFv(struct Spell* this) asm("?CloseDown@SpellWithObjects@@UAEXXZ");
+// win1.41 0055cea0 mac inlined SpellWithObjects::GetMaxObjectsToCreate(void)
+int __fastcall GetMaxObjectsToCreate__16SpellWithObjectsFv(struct Spell* this) asm("?GetMaxObjectsToCreate@SpellWithObjects@@UAEHXZ");
+// win1.41 0055cf50 mac 103b1b10 SpellWithObjects::GetSetObjectsDyingOnCloseDown(void)
+bool __fastcall GetSetObjectsDyingOnCloseDown__16SpellWithObjectsFv(struct SpellWithObjects* this) asm("?GetSetObjectsDyingOnCloseDown@SpellWithObjects@@UAE_NXZ");
 
 #endif /* BW1_DECOMP_SPELL_WITH_OBJECTS_INCLUDED_H */

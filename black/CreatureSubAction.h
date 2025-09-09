@@ -36,6 +36,11 @@ extern const struct BaseVftable __vt__17CreatureSubAction asm("??_7CreatureSubAc
 // win1.41 00473db0 mac 101e0720 CreatureSubAction::CreatureSubAction(void)
 void __fastcall __ct__17CreatureSubActionFv(struct CreatureSubAction* this);
 
+// Override methods
+
+// win1.41 00473dd0 mac 101deb60 CreatureSubAction::_dt(void)
+void __fastcall __dt__17CreatureSubActionFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureSubAction@@UAEPAXI@Z");
+
 struct CreatureSubActionAgenda
 {
   struct Base super;  /* 0x0 */
@@ -71,5 +76,10 @@ extern const struct BaseVftable __vt__23CreatureSubActionAgenda asm("??_7Creatur
 
 // win1.41 004ff1b0 mac 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
 void __fastcall __ct__23CreatureSubActionAgendaFP8Creature(struct CreatureSubActionAgenda* this, const void* edx, struct Creature* creature);
+
+// Override methods
+
+// win1.41 00473df0 mac 101e0670 CreatureSubActionAgenda::_dt(void)
+void __fastcall __dt__23CreatureSubActionAgendaFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureSubActionAgenda@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_CREATURE_SUB_ACTION_INCLUDED_H */

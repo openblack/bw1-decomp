@@ -6,14 +6,26 @@
 
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 
+#include "Fixed.h" /* For struct SingleMapFixed */
 #include "SpellIcon.h" /* For struct SpellIcon */
 
 // Forward Declares
 
+struct Base;
+struct Citadel;
+struct EffectValues;
+struct GPlayer;
 struct GSpellIconInfo;
 struct GSpellSeedInfo;
+struct GameOSFile;
+struct GameThing;
+struct GameThingWithPos;
+struct LHOSFile;
 struct MapCoords;
 struct Object;
+struct PSysProcessInfo;
+struct Spell;
+struct Town;
 struct WorshipSite;
 
 struct WorshipSpellIcon
@@ -61,9 +73,62 @@ void __fastcall StopRemoveFromPlayer__16WorshipSpellIconFv(struct WorshipSpellIc
 
 // Override methods
 
+// win1.41 0077f110 mac 105b6fb0 WorshipSpellIcon::_dt(void)
+void __fastcall __dt__16WorshipSpellIconFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GWorshipSpellIcon@@UAEPAXI@Z");
+// win1.41 0077f230 mac 105b6ed0 WorshipSpellIcon::ToBeDeleted(int)
+void __fastcall ToBeDeleted__16WorshipSpellIconFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@WorshipSpellIcon@@UAEXH@Z");
+// win1.41 0077f6f0 mac inlined WorshipSpellIcon::MaintainSpell(unsigned int, float)
+void __fastcall MaintainSpell__16WorshipSpellIconFUif(struct GameThing* this, const void* edx, uint32_t param_1, float param_2) asm("?MaintainSpell@WorshipSpellIcon@@UAEXIM@Z");
+// win1.41 0077f750 mac 105b64c0 WorshipSpellIcon::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+void __fastcall UpdateSpellInfo__16WorshipSpellIconFP5SpellP15PSysProcessInfo(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2) asm("?UpdateSpellInfo@WorshipSpellIcon@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z");
+// win1.41 0077f100 mac 105b4440 WorshipSpellIcon::GetDebugText(void)
+char* __fastcall GetDebugText__16WorshipSpellIconFv(struct GameThing* this) asm("?GetDebugText@WorshipSpellIcon@@UAEPADXZ");
+// win1.41 007801f0 mac 105b4690 WorshipSpellIcon::Load(GameOSFile &)
+uint32_t __fastcall Load__16WorshipSpellIconFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@WorshipSpellIcon@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0077ff80 mac 105b4bc0 WorshipSpellIcon::Save(GameOSFile &)
+uint32_t __fastcall Save__16WorshipSpellIconFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@WorshipSpellIcon@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0077f0f0 mac 105b4400 WorshipSpellIcon::GetSaveType(void)
+uint32_t __fastcall GetSaveType__16WorshipSpellIconFv(struct GameThing* this) asm("?GetSaveType@WorshipSpellIcon@@UAEIXZ");
+// win1.41 0077f0a0 mac 10381d20 WorshipSpellIcon::GetWorshipSite(void)
+struct WorshipSite* __fastcall GetWorshipSite__16WorshipSpellIconFv(struct GameThingWithPos* this) asm("?GetWorshipSite@WorshipSpellIcon@@UAEPAVWorshipSite@@XZ");
+// win1.41 0077f0e0 mac 105b43b0 WorshipSpellIcon::ApplyEffect(EffectValues &, int)
+void __fastcall ApplyEffect__16WorshipSpellIconFR12EffectValuesi(struct Object* this, const void* edx, struct EffectValues* param_1, int param_2) asm("?ApplyEffect@WorshipSpellIcon@@UAEXAAVEffectValues@@H@Z");
+// win1.41 0077f390 mac 105b6a70 WorshipSpellIcon::Process(void)
+uint32_t __fastcall Process__16WorshipSpellIconFv(struct Object* this) asm("?Process@WorshipSpellIcon@@UAEIXZ");
 // win1.41 0077f290 mac 105b6e40 WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
 void __fastcall CallVirtualFunctionsForCreation__16WorshipSpellIconFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@WorshipSpellIcon@@UAEXABUMapCoords@@@Z");
+// win1.41 0077f0b0 mac 105b42c0 WorshipSpellIcon::IsEffectReceiver(EffectValues *)
+uint32_t __fastcall IsEffectReceiver__16WorshipSpellIconFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@WorshipSpellIcon@@UAEIPAVEffectValues@@@Z");
+// win1.41 0077f0d0 mac 105b4360 WorshipSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
+uint32_t __fastcall SaveObject__16WorshipSpellIconFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@WorshipSpellIcon@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 DECLARE_LH_LIST_HEAD(WorshipSpellIcon);
+
+struct PrayerIcon
+{
+  struct SingleMapFixed super;  /* 0x0 */
+};
+static_assert(sizeof(struct PrayerIcon) == 0x5c, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 00670960 mac inlined PrayerIcon::_dt(void)
+void __fastcall __dt__10PrayerIconFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPrayerIcon@@UAEPAXI@Z");
+// win1.41 00670980 mac inlined PrayerIcon::ToBeDeleted(int)
+void __fastcall ToBeDeleted__10PrayerIconFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@PrayerIcon@@UAEXH@Z");
+// win1.41 006709a0 mac inlined PrayerIcon::GetPlayer(void)
+struct GPlayer* __fastcall GetPlayer__10PrayerIconFv(struct GameThing* this) asm("?GetPlayer@PrayerIcon@@UAEPAVGPlayer@@XZ");
+// win1.41 006709b0 mac inlined PrayerIcon::GetTown(void)
+struct Town* __fastcall GetTown__10PrayerIconFv(struct GameThing* this) asm("?GetTown@PrayerIcon@@UAEPAVTown@@XZ");
+// win1.41 00670940 mac inlined PrayerIcon::GetCreatureBeliefType(void)
+uint32_t __fastcall GetCreatureBeliefType__10PrayerIconFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@PrayerIcon@@UAEIXZ");
+// win1.41 006709e0 mac inlined PrayerIcon::GetCitadel(void)
+struct Citadel* __fastcall GetCitadel__10PrayerIconFv(struct GameThingWithPos* this) asm("?GetCitadel@PrayerIcon@@UAEPAVCitadel@@XZ");
+// win1.41 006709d0 mac inlined PrayerIcon::Process(void)
+uint32_t __fastcall Process__10PrayerIconFv(struct Object* this) asm("?Process@PrayerIcon@@UAEIXZ");
+// win1.41 00670950 mac inlined PrayerIcon::GetMesh( const(void))
+int __fastcall GetMesh__10PrayerIconCFv(const struct Object* this) asm("?GetMesh@PrayerIcon@@UBEHXZ");
+// win1.41 006709f0 mac inlined PrayerIcon::Draw(void)
+void __fastcall Draw__10PrayerIconFv(struct Object* this) asm("?Draw@PrayerIcon@@UAEXXZ");
 
 #endif /* BW1_DECOMP_WORSHIP_SPELL_ICON_INCLUDED_H */

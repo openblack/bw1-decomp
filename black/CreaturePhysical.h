@@ -27,6 +27,11 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17CreatureDam
 // win1.41 008d14f0 mac 1077e11c CreatureDamageMap::`vftable'
 extern const struct BaseVftable __vt__17CreatureDamageMap asm("??_7CreatureDamageMap@@6B@");
 
+// Override methods
+
+// win1.41 004ef4a0 mac 101e28f0 CreatureDamageMap::_dt(void)
+void __fastcall __dt__17CreatureDamageMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureDamageMap@@UAEPAXI@Z");
+
 struct CreaturePhysical
 {
   struct Base super;  /* 0x0 */
@@ -69,5 +74,10 @@ extern const struct BaseVftable __vt__16CreaturePhysical asm("??_7CreaturePhysic
 
 // win1.41 004ef2c0 mac 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
 struct CreaturePhysical* __fastcall __ct__16CreaturePhysicalFRC9MapCoordsUsPC12CreatureInfoP8Creature(struct CreaturePhysical* this, const void* edx, const struct MapCoords* coords, uint16_t param_2, const struct CreatureInfo* info, struct Creature* creature);
+
+// Override methods
+
+// win1.41 004ef4c0 mac 101defb0 CreaturePhysical::_dt(void)
+void __fastcall __dt__16CreaturePhysicalFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreaturePhysical@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_CREATURE_PHYSICAL_INCLUDED_H */

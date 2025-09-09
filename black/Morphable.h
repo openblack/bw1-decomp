@@ -142,4 +142,15 @@ struct CAnim* __fastcall GetAnim__9MorphableFll(struct Morphable* this, const vo
 // win1.41 00619690 mac 10084450 Morphable::GetSetAnim(long, long, long)
 struct CAnim* __fastcall GetSetAnim__9MorphableFlll(struct Morphable* this, const void* edx, long param_1, long param_2, long param_3);
 
+// Override methods
+
+// win1.41 00617eb0 mac 10107d70 Morphable::SetAnimTime(long, long)
+void __fastcall SetAnimTime__9MorphableFll(struct Morphable* this, const void* edx, int param_1, int param_2) asm("?SetAnimTime@Morphable@@UAEXHH@Z");
+// win1.41 00618360 mac 101073d0 Morphable::LoadBase(char *)
+uint32_t __fastcall LoadBase__9MorphableFPc(struct Morphable* this, const void* edx, char* param_1) asm("?LoadBase@Morphable@@UAEIPAD@Z");
+// win1.41 00619100 mac 101063f0 Morphable::MorphAnims(void)
+void __fastcall MorphAnims__9MorphableFv(struct Morphable* this) asm("?MorphAnims@Morphable@@UAEXXZ");
+// win1.41 00619500 mac 101061c0 Morphable::MorphTexture(void)
+void __fastcall MorphTexture__9MorphableFv(struct Morphable* this) asm("?MorphTexture@Morphable@@UAEXXZ");
+
 #endif /* BW1_DECOMP_MORPHABLE_INCLUDED_H */

@@ -2,6 +2,7 @@
 #define BW1_DECOMP_INTERFACE_COLLIDE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -31,5 +32,10 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GInterfaceC
 
 // win1.41 0092aac4 mac 10733138 GInterfaceCollide::`vftable'
 extern const struct BaseVftable __vt__17GInterfaceCollide asm("??_7GInterfaceCollide@@6B@");
+
+// Override methods
+
+// win1.41 005ce380 mac 1017a1d0 GInterfaceCollide::_dt(void)
+void __fastcall __dt__17GInterfaceCollideFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGInterfaceCollide@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_INTERFACE_COLLIDE_INCLUDED_H */

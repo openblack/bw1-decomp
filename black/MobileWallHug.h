@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For int16_t, int32_t, int8_t, uint16_t, uint32_t, uint8_t */
+#include <stdint.h> /* For int16_t, int8_t, uint16_t, uint32_t, uint8_t */
 
 #include "Collide.h" /* For struct CircleHugInfo */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
@@ -13,10 +13,14 @@
 
 // Forward Declares
 
+struct Base;
 struct GFootpath;
 struct GMobileWallHugInfo;
+struct GameOSFile;
+struct GameThing;
 struct GameThingVftable;
 struct GameThingWithPosVftable;
+struct LHPoint;
 struct MobileWallHug;
 struct ObjectVftable;
 struct Point2D;
@@ -76,7 +80,7 @@ struct MobileWallHugVftable
   void (__fastcall* SetSpeed)(struct MobileWallHug* this, const void* edx, int speed);
   void (__fastcall* SetTowardsAngle)(struct MobileWallHug* this, const void* edx, uint16_t angle);
   void (__fastcall* MoveTo3D)(struct MobileWallHug* this);
-  void (__fastcall* SetNewWander)(struct MobileWallHug* this, const void* edx, const struct MapCoords* param_1, int32_t param_2, int32_t param_3);  /* 0x870 */
+  void (__fastcall* SetNewWander)(struct MobileWallHug* this, const void* edx, const struct MapCoords* param_1, int param_2, int param_3);  /* 0x870 */
 };
 static_assert(sizeof(struct MobileWallHugVftable) == 0x874, "Data type is of wrong size");
 
@@ -144,8 +148,46 @@ void __fastcall SetToZero__13MobileWallHugFv(struct MobileWallHug* this);
 
 // Override methods
 
-// win1.41 0060f760 mac 103c1910 MobileWallHug::SetSpeed(long)
-void __fastcall SetSpeed__13MobileWallHugFl(struct MobileWallHug* this, const void* edx, int speed);
+// win1.41 00474910 mac 103c19a0 MobileWallHug::_dt(void)
+void __fastcall __dt__13MobileWallHugFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GMobileWallHug@@UAEPAXI@Z");
+// win1.41 0060c740 mac 103c23a0 MobileWallHug::Load(GameOSFile &)
+uint32_t __fastcall Load__13MobileWallHugFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@MobileWallHug@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0060c420 mac 103c28c0 MobileWallHug::Save(GameOSFile &)
+uint32_t __fastcall Save__13MobileWallHugFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@MobileWallHug@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0060c070 mac 100321c0 MobileWallHug::GetSpeedInMetres( const(void))
+float __fastcall GetSpeedInMetres__13MobileWallHugCFv(const struct GameThingWithPos* this) asm("?GetSpeedInMetres@MobileWallHug@@UBEMXZ");
+// win1.41 0060c080 mac 103c3320 MobileWallHug::SetSpeedInMetres(float, int)
+void __fastcall SetSpeedInMetres__13MobileWallHugFfi(struct GameThingWithPos* this, const void* edx, float param_1, int param_2) asm("?SetSpeedInMetres@MobileWallHug@@UAEXMH@Z");
+// win1.41 0060c0b0 mac 103c32b0 MobileWallHug::GetRunningSpeedInMetres(void)
+float __fastcall GetRunningSpeedInMetres__13MobileWallHugFv(struct GameThingWithPos* this) asm("?GetRunningSpeedInMetres@MobileWallHug@@UAEMXZ");
+// win1.41 0060c0d0 mac 103c3240 MobileWallHug::GetDefaultSpeedInMetres(void)
+float __fastcall GetDefaultSpeedInMetres__13MobileWallHugFv(struct GameThingWithPos* this) asm("?GetDefaultSpeedInMetres@MobileWallHug@@UAEMXZ");
+// win1.41 0060c0f0 mac 103c31d0 MobileWallHug::GetSpeedInMetresPerSecond( const(void))
+float __fastcall GetSpeedInMetresPerSecond__13MobileWallHugCFv(const struct GameThingWithPos* this) asm("?GetSpeedInMetresPerSecond@MobileWallHug@@UBEMXZ");
+// win1.41 0060c140 mac 103c30c0 MobileWallHug::GetRunningSpeedInMetresPerSecond(void)
+float __fastcall GetRunningSpeedInMetresPerSecond__13MobileWallHugFv(struct GameThingWithPos* this) asm("?GetRunningSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ");
+// win1.41 0060c160 mac 103c3040 MobileWallHug::GetDefaultSpeedInMetresPerSecond(void)
+float __fastcall GetDefaultSpeedInMetresPerSecond__13MobileWallHugFv(struct GameThingWithPos* this) asm("?GetDefaultSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ");
+// win1.41 0060c040 mac 103c3450 MobileWallHug::GetMovementDirection(LHPoint *)
+void __fastcall GetMovementDirection__13MobileWallHugFP7LHPoint(struct GameThingWithPos* this, const void* edx, struct LHPoint* param_1) asm("?GetMovementDirection@MobileWallHug@@UAEXPAULHPoint@@@Z");
+// win1.41 00416f80 mac 1002c440 MobileWallHug::IsMobileWallHug( const(void))
+uint32_t __fastcall IsMobileWallHug__13MobileWallHugCFv(const struct GameThingWithPos* this) asm("?IsMobileWallHug@MobileWallHug@@UBEIXZ");
+// win1.41 0060c020 mac 103c3520 MobileWallHug::GetFacingDirection(void)
+float __fastcall GetFacingDirection__13MobileWallHugFv(struct GameThingWithPos* this) asm("?GetFacingDirection@MobileWallHug@@UAEMXZ");
+// win1.41 0060dac0 mac 103c1a50 MobileWallHug::SetYAngle(float)
+void __fastcall SetYAngle__13MobileWallHugFf(struct Object* this, const void* edx, float param_1) asm("?SetYAngle@MobileWallHug@@UAEXM@Z");
+// win1.41 0060ad60 mac 1004abe0 MobileWallHug::AreWeThere(MapCoords const &, float)
+bool __fastcall AreWeThere__13MobileWallHugFRC9MapCoordsf(struct MobileWallHug* this, const void* edx, const struct MapCoords* param_1, float param_2) asm("?AreWeThere@MobileWallHug@@UAE_NABUMapCoords@@M@Z");
+// win1.41 00416f70 mac 100482a0 MobileWallHug::GetDestPos(void)
+struct MapCoords* __fastcall GetDestPos__13MobileWallHugFv(struct MobileWallHug* this) asm("?GetDestPos@MobileWallHug@@UAEPAUMapCoords@@XZ");
+// win1.41 0060fc50 mac 10084230 MobileWallHug::SetSpeed(long)
+void __fastcall SetSpeed__13MobileWallHugFl(struct MobileWallHug* this, const void* edx, int param_1) asm("?SetSpeed@MobileWallHug@@UAEXH@Z");
+// win1.41 00473e40 mac 10079ab0 MobileWallHug::SetTowardsAngle(unsigned short)
+void __fastcall SetTowardsAngle__13MobileWallHugFUs(struct MobileWallHug* this, const void* edx, uint16_t param_1) asm("?SetTowardsAngle@MobileWallHug@@UAEXG@Z");
+// win1.41 0060aee0 mac 103c3b10 MobileWallHug::MoveTo3D(void)
+void __fastcall MoveTo3D__13MobileWallHugFv(struct MobileWallHug* this) asm("?MoveTo3D@MobileWallHug@@UAEXXZ");
+// win1.41 0060bc40 mac 103c3780 MobileWallHug::SetNewWander(MapCoords const &, long, long)
+void __fastcall SetNewWander__13MobileWallHugFRC9MapCoordsll(struct MobileWallHug* this, const void* edx, const struct MapCoords* param_1, int param_2, int param_3) asm("?SetNewWander@MobileWallHug@@UAEXABUMapCoords@@HH@Z");
 
 struct std__pair__pMobileWallHug__ulong
 {

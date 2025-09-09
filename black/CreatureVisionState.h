@@ -44,4 +44,9 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19CreatureVis
 // win1.41 008cf880 mac 10787404 CreatureVisionState::`vftable'
 extern const struct BaseVftable __vt__19CreatureVisionState asm("??_7CreatureVisionState@@6B@");
 
+// Override methods
+
+// win1.41 004d0370 mac 10245880 CreatureVisionState::_dt(void)
+void __fastcall __dt__19CreatureVisionStateFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureVisionState@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_VISION_STATE_INCLUDED_H */

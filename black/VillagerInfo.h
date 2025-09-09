@@ -9,6 +9,12 @@
 
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+struct GObjectInfo;
+
 struct DiscipleInfo
 {
   uint32_t field_0x0;
@@ -132,5 +138,14 @@ extern const struct GObjectInfoVftable __vt__13GVillagerInfo asm("??_7GVillagerI
 int __cdecl GetInfoFromText__13GVillagerInfoFPc(const char* text);
 // win1.41 00752650 mac 1056be30 GVillagerInfo::Find(TRIBE_TYPE, VILLAGER_NUMBER)
 struct GVillagerInfo* __cdecl Find__13GVillagerInfoF10TRIBE_TYPE15VILLAGER_NUMBER(enum TRIBE_TYPE type, int villager_number);
+
+// Override methods
+
+// win1.41 0074f900 mac 1056bfe0 GVillagerInfo::_dt(void)
+void __fastcall __dt__13GVillagerInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGVillagerInfo@@UAEPAXI@Z");
+// win1.41 0074f890 mac 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__13GVillagerInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GVillagerInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 0074f880 mac 10571e50 GVillagerInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__13GVillagerInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GVillagerInfo@@UBEIXZ");
 
 #endif /* BW1_DECOMP_VILLAGER_INFO_INCLUDED_H */

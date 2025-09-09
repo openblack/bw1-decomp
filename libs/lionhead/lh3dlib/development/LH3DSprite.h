@@ -29,7 +29,7 @@ static_assert(sizeof(struct LH3DSprite) == 0x34, "Data type is of wrong size");
 // Static methods
 
 // win1.41 008404a0 mac 100b64f0 LH3DSprite::Create(long, int)
-struct LH3DSprite* __fastcall Create__10LH3DSpriteFli(int32_t param_1, int32_t param_2);
+struct LH3DSprite* __fastcall Create__10LH3DSpriteFli(int param_1, int param_2);
 
 // Non-virtual methods
 

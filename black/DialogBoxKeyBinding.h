@@ -2,7 +2,7 @@
 #define BW1_DECOMP_DIALOG_BOX_KEY_BINDING_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
@@ -38,6 +38,10 @@ struct DialogBoxKeyBinding* __fastcall __ct__19DialogBoxKeyBindingFv(struct Dial
 
 // Override methods
 
+// win1.41 005129d0 mac 102b18f0 DialogBoxKeyBinding::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+void __fastcall Init__19DialogBoxKeyBindingFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__cdecl* param_3)(int32_t param_1, struct SetupBox * param_2, struct SetupControl * param_3, int32_t param_4, int32_t param_5)) asm("?Init@DialogBoxKeyBinding@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
+// win1.41 00512bc0 mac 102b1890 DialogBoxKeyBinding::Destroy(void)
+void __fastcall Destroy__19DialogBoxKeyBindingFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxKeyBinding@@UAEXXZ");
 // win1.41 00512bd0 mac 102b1750 DialogBoxKeyBinding::InitControls(void)
 void __fastcall InitControls__19DialogBoxKeyBindingFv(struct DialogBoxBase* this);
 

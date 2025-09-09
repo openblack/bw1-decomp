@@ -42,4 +42,9 @@ extern const struct BaseVftable __vt__18CreatureMimicState asm("??_7CreatureMimi
 // win1.41 004e9d20 mac 1026fe50 CreatureMimicState::CreatureMimicState(void)
 void __fastcall __ct__18CreatureMimicStateFv(struct CreatureMimicState* this);
 
+// Override methods
+
+// win1.41 004e9d40 mac 10245ef0 CreatureMimicState::_dt(void)
+void __fastcall __dt__18CreatureMimicStateFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureMimicState@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_MIMIC_INCLUDED_H */

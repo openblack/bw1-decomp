@@ -6,6 +6,12 @@
 
 #include "ContainerInfo.h" /* For struct GContainerInfo */
 
+// Forward Declares
+
+struct Base;
+struct GBaseInfo;
+struct LHColor;
+
 struct GTownInfo
 {
   struct GContainerInfo super;  /* 0x0 */
@@ -34,5 +40,14 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GTownInfo as
 
 // win1.41 00999ab4 mac 109e35ec GTownInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__9GTownInfo asm("??_7GTownInfo@@6B@");
+
+// Override methods
+
+// win1.41 00738fc0 mac 10545c00 GTownInfo::_dt(void)
+void __fastcall __dt__9GTownInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTownInfo@@UAEPAXI@Z");
+// win1.41 0073fd80 mac inlined GTownInfo::GetDebugColor( const(LHColor *))
+struct LHColor* __fastcall GetDebugColor__9GTownInfoCFP7LHColor(const struct GBaseInfo* this, const void* edx, struct LHColor* param_1) asm("?GetDebugColor@GTownInfo@@UBEPAULHColor@@PAU2@@Z");
+// win1.41 00738f70 mac 10545ba0 GTownInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__9GTownInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GTownInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */

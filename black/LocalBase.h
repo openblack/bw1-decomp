@@ -29,4 +29,9 @@ struct LocalBase* __cdecl __nw__9LocalBaseFUl(size_t size, const char* file_name
 // win1.41 inlined mac 1034ab30 LocalBase::LocalBase(void)
 struct LocalBase* __fastcall __ct__9LocalBaseFv(struct LocalBase* this);
 
+// Override methods
+
+// win1.41 005c2150 mac 1033f600 LocalBase::_dt(void)
+void __fastcall __dt__9LocalBaseFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GLocalBase@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_LOCAL_BASE_INCLUDED_H */

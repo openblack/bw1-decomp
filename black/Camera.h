@@ -12,7 +12,10 @@
 
 // Forward Declares
 
+struct Base;
 struct CameraMode;
+struct GameOSFile;
+struct GameThing;
 struct MapCoords;
 
 struct GCamera
@@ -73,5 +76,26 @@ void __fastcall Update__7GCameraFv(struct GCamera* this);
 void __fastcall UpdateGameThingWithPosData__7GCameraFv(struct GCamera* this);
 // win1.41 00443680 mac 10198790 GCamera::SetCameraFov(float, float)
 void __fastcall SetCameraFov__7GCameraFff(struct GCamera* this, const void* edx, float fov, float time);
+
+// Override methods
+
+// win1.41 00441b30 mac 10378450 GCamera::_dt(void)
+void __fastcall __dt__7GCameraFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGCamera@@UAEPAXI@Z");
+// win1.41 00441ee0 mac 1019a0f0 GCamera::ToBeDeleted(int)
+void __fastcall ToBeDeleted__7GCameraFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@GCamera@@UAEXH@Z");
+// win1.41 00443840 mac 10198640 GCamera::GetDebugText(void)
+char* __fastcall GetDebugText__7GCameraFv(struct GameThing* this) asm("?GetDebugText@GCamera@@UAEPADXZ");
+// win1.41 004433a0 mac 10198870 GCamera::Load(GameOSFile &)
+uint32_t __fastcall Load__7GCameraFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GCamera@@UAEIAAVGameOSFile@@@Z");
+// win1.41 004430e0 mac 10198d40 GCamera::Save(GameOSFile &)
+uint32_t __fastcall Save__7GCameraFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GCamera@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00441b20 mac 101982e0 GCamera::GetSaveType(void)
+uint32_t __fastcall GetSaveType__7GCameraFv(struct GameThing* this) asm("?GetSaveType@GCamera@@UAEIXZ");
+// win1.41 00441b00 mac 10086270 GCamera::IsMoving( const(void))
+bool __fastcall IsMoving__7GCameraCFv(const struct GameThingWithPos* this) asm("?IsMoving@GCamera@@UBE_NXZ");
+// win1.41 00441af0 mac 101980f0 GCamera::GetText(void)
+const char* __fastcall GetText__7GCameraFv(struct GameThingWithPos* this) asm("?GetText@GCamera@@UAEPBDXZ");
+// win1.41 00441b10 mac 101982b0 GCamera::GetHeight(void)
+float __fastcall GetHeight__7GCameraFv(struct GameThingWithPos* this) asm("?GetHeight@GCamera@@UAEMXZ");
 
 #endif /* BW1_DECOMP_CAMERA_INCLUDED_H */

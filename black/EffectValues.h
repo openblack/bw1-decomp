@@ -43,4 +43,9 @@ extern const struct GBaseInfoVftable __vt__12EffectValues asm("??_7EffectValues@
 // win1.41 00525040 mac 100cc350 EffectValues::EffectValues(EFFECT_TYPE, float, GameThing *, float, GPlayer *)
 struct EffectValues* __fastcall __ct__12EffectValuesF11EFFECT_TYPEfP9GameThingfP7GPlayer(struct EffectValues* this, enum EFFECT_TYPE type, float value, struct GameThing* source, float param_4, struct GPlayer* player);
 
+// Override methods
+
+// win1.41 00524f40 mac 10412ff0 EffectValues::_dt(void)
+void __fastcall __dt__12EffectValuesFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GEffectValues@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_EFFECT_VALUES_INCLUDED_H */

@@ -8,6 +8,8 @@
 
 // Forward Declares
 
+struct Base;
+struct GameOSFile;
 struct GroupBehaviour;
 
 enum DANCE_GROUP_ACTION_TYPE
@@ -37,5 +39,18 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10DanceGroup 
 
 // win1.41 008d44d0 mac 10996e84 DanceGroup::`vftable'
 extern const struct GameThingVftable __vt__10DanceGroup asm("??_7DanceGroup@@6B@");
+
+// Override methods
+
+// win1.41 0050cf00 mac 102aa590 DanceGroup::_dt(void)
+void __fastcall __dt__10DanceGroupFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GDanceGroup@@UAEPAXI@Z");
+// win1.41 0050cef0 mac 102aaa60 DanceGroup::GetDebugText(void)
+char* __fastcall GetDebugText__10DanceGroupFv(struct GameThing* this) asm("?GetDebugText@DanceGroup@@UAEPADXZ");
+// win1.41 0050d9c0 mac 102aab20 DanceGroup::Load(GameOSFile &)
+uint32_t __fastcall Load__10DanceGroupFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@DanceGroup@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0050d640 mac 102ab450 DanceGroup::Save(GameOSFile &)
+uint32_t __fastcall Save__10DanceGroupFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@DanceGroup@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0050cee0 mac 102aaa20 DanceGroup::GetSaveType(void)
+uint32_t __fastcall GetSaveType__10DanceGroupFv(struct GameThing* this) asm("?GetSaveType@DanceGroup@@UAEIXZ");
 
 #endif /* BW1_DECOMP_DANCE_GROUP_INCLUDED_H */

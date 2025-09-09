@@ -68,4 +68,9 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__24CreatureAtt
 // win1.41 008cf3dc mac 10783e40 CreatureAttitudeToPlayer::`vftable'
 extern const struct BaseVftable __vt__24CreatureAttitudeToPlayer asm("??_7CreatureAttitudeToPlayer@@6B@");
 
+// Override methods
+
+// win1.41 004c81a0 mac 10235cc0 CreatureAttitudeToPlayer::_dt(void)
+void __fastcall __dt__24CreatureAttitudeToPlayerFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureAttitudeToPlayer@@UAEPAXI@Z");
+
 #endif /* BW1_DECOMP_CREATURE_ATTITUDE_TO_PLAYER_INCLUDED_H */

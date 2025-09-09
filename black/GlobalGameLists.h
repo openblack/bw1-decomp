@@ -2,6 +2,7 @@
 #define BW1_DECOMP_GLOBAL_GAME_LISTS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdint.h> /* For uint32_t */
 
 #include "AnimatedStatic.h" /* For struct AnimatedStatic */
 #include "Arena.h" /* For struct GArena */
@@ -113,5 +114,12 @@ static_assert(sizeof(struct GlobalGameLists) == 0x190, "Data type is of wrong si
 
 // win1.41 00591370 mac 10059120 GlobalGameLists::Process(void)
 void __fastcall Process__15GlobalGameListsFv(struct GlobalGameLists* this);
+
+// Override methods
+
+// win1.41 0054b970 mac 10547350 GlobalGameLists::_dt(void)
+void __fastcall __dt__15GlobalGameListsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGlobalGameLists@@UAEPAXI@Z");
+// win1.41 005914d0 mac 10336280 GlobalGameLists::Dump(void)
+void __fastcall Dump__15GlobalGameListsFv(struct Base* this) asm("?Dump@GlobalGameLists@@UAEXXZ");
 
 #endif /* BW1_DECOMP_GLOBAL_GAME_LISTS_INCLUDED_H */

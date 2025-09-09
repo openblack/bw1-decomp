@@ -2,7 +2,7 @@
 #define BW1_DECOMP_GESTURE_SYSTEM_DATA_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "Base.h" /* For struct Base */
 
@@ -18,5 +18,10 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GestureSyst
 
 // win1.41 008df7e0 mac 107330c8 GestureSystemData::`vftable'
 extern const struct BaseVftable __vt__17GestureSystemData asm("??_7GestureSystemData@@6B@");
+
+// Override methods
+
+// win1.41 00579690 mac 1042dc90 GestureSystemData::_dt(void)
+void __fastcall __dt__17GestureSystemDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGestureSystemData@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_DATA_INCLUDED_H */

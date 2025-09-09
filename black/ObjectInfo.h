@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct Base;
 struct GObjectInfo;
 
 struct GObjectInfoVftable
@@ -95,8 +96,14 @@ extern const struct GObjectInfoVftable __vt__11GObjectInfo asm("??_7GObjectInfo@
 
 // Override methods
 
+// win1.41 006363c0 mac 101cbbe0 GObjectInfo::_dt(void)
+void __fastcall __dt__11GObjectInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGObjectInfo@@UAEPAXI@Z");
 // win1.41 004012c0 mac 10511e08 GObjectInfo::GetDebugText(void)
 const char* __fastcall GetDebugText__11GObjectInfoCFv(const struct GBaseInfo* this) asm("?GetDebugText@GObjectInfo@@UBEPBDXZ");
+// win1.41 0042b380 mac 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__11GObjectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GObjectInfo@@UAEPAVGBaseInfo@@AAI@Z");
+// win1.41 0042b370 mac 1016ddf0 GObjectInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GObjectInfo@@UBEIXZ");
 // win1.41 00401290 mac 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
 uint32_t __fastcall GetMesh__11GObjectInfoCF10TRIBE_TYPE(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe) asm("?GetMesh@GObjectInfo@@UBE?AW4MeshId@@W4TRIBE_TYPE@@@Z");
 // win1.41 004012a0 mac 1016de30 GObjectInfo::GetAlignmentType(void) const

@@ -9,9 +9,13 @@
 
 // Forward Declares
 
+struct Base;
 struct GSpecialVillagerInfo;
 struct GVillagerInfo;
+struct GameOSFile;
+struct GameThing;
 struct MapCoords;
+struct Object;
 
 struct SpecialVillager
 {
@@ -35,5 +39,22 @@ struct SpecialVillager* __cdecl Create__15SpecialVillagerFRC9MapCoordsPC13GVilla
 
 // win1.41 0071f470 mac 101470a0 SpecialVillager::CanShowName(void)
 bool __fastcall CanShowName__15SpecialVillagerFv(struct SpecialVillager* this);
+
+// Override methods
+
+// win1.41 00560fe0 mac 10147590 SpecialVillager::_dt(void)
+void __fastcall __dt__15SpecialVillagerFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GSpecialVillager@@UAEPAXI@Z");
+// win1.41 0071f0c0 mac 101477e0 SpecialVillager::ToBeDeleted(int)
+void __fastcall ToBeDeleted__15SpecialVillagerFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@SpecialVillager@@UAEXH@Z");
+// win1.41 00560fd0 mac 10147cc0 SpecialVillager::GetDebugText(void)
+char* __fastcall GetDebugText__15SpecialVillagerFv(struct GameThing* this) asm("?GetDebugText@SpecialVillager@@UAEPADXZ");
+// win1.41 0071f5d0 mac 10146d20 SpecialVillager::Load(GameOSFile &)
+uint32_t __fastcall Load__15SpecialVillagerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@SpecialVillager@@UAEIAAVGameOSFile@@@Z");
+// win1.41 0071f560 mac 10146e00 SpecialVillager::Save(GameOSFile &)
+uint32_t __fastcall Save__15SpecialVillagerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@SpecialVillager@@UAEIAAVGameOSFile@@@Z");
+// win1.41 00560fc0 mac 10147c80 SpecialVillager::GetSaveType(void)
+uint32_t __fastcall GetSaveType__15SpecialVillagerFv(struct GameThing* this) asm("?GetSaveType@SpecialVillager@@UAEIXZ");
+// win1.41 0071f3d0 mac 1002d450 SpecialVillager::Draw(void)
+void __fastcall Draw__15SpecialVillagerFv(struct Object* this) asm("?Draw@SpecialVillager@@UAEXXZ");
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INCLUDED_H */

@@ -2,9 +2,13 @@
 #define BW1_DECOMP_WEATHER_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
+
+// Forward Declares
+
+struct Base;
 
 struct WeatherInfo
 {
@@ -18,5 +22,18 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11WeatherInfo
 
 // win1.41 0099b9b8 mac 109ea154 WeatherInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__11WeatherInfo asm("??_7WeatherInfo@@6B@");
+
+struct GWeatherInfo
+{
+  struct GBaseInfo super;  /* 0x0 */
+};
+static_assert(sizeof(struct GWeatherInfo) == 0x10, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 00770e30 mac 105a3520 GWeatherInfo::_dt(void)
+void __fastcall __dt__12GWeatherInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGWeatherInfo@@UAEPAXI@Z");
+// win1.41 00770dd0 mac 105a3640 GWeatherInfo::GetBaseInfo(unsigned long &)
+struct GBaseInfo* __fastcall GetBaseInfo__12GWeatherInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GWeatherInfo@@UAEPAVGBaseInfo@@AAI@Z");
 
 #endif /* BW1_DECOMP_WEATHER_INFO_INCLUDED_H */

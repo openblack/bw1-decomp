@@ -8,6 +8,8 @@
 
 // Forward Declares
 
+struct Base;
+struct GameOSFile;
 struct ScriptedCamera;
 
 struct DataPath
@@ -33,5 +35,18 @@ extern const struct GameThingVftable __vt__8DataPath asm("??_7DataPath@@6B@");
 
 // win1.41 005ef040 mac 1037d350 DataPath::DataPath(void)
 struct DataPath* __fastcall __ct__8DataPathFv(struct DataPath* this);
+
+// Override methods
+
+// win1.41 005ef090 mac 1037d2b0 DataPath::_dt(void)
+void __fastcall __dt__8DataPathFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GDataPath@@UAEPAXI@Z");
+// win1.41 005ef080 mac 10383880 DataPath::GetDebugText(void)
+char* __fastcall GetDebugText__8DataPathFv(struct GameThing* this) asm("?GetDebugText@DataPath@@UAEPADXZ");
+// win1.41 005eeec0 mac 1037d3e0 DataPath::Load(GameOSFile &)
+uint32_t __fastcall Load__8DataPathFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@DataPath@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005eed30 mac 1037d620 DataPath::Save(GameOSFile &)
+uint32_t __fastcall Save__8DataPathFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@DataPath@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005ef070 mac 10383840 DataPath::GetSaveType(void)
+uint32_t __fastcall GetSaveType__8DataPathFv(struct GameThing* this) asm("?GetSaveType@DataPath@@UAEIXZ");
 
 #endif /* BW1_DECOMP_DATA_PATH_INCLUDED_H */

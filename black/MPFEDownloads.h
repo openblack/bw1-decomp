@@ -33,4 +33,11 @@ extern const struct MPFEDownloadsVftable __vt__13MPFEDownloads asm("??_7MPFEDown
 // win1.41 0062e580 mac 103a4cc0 MPFEDownloads::MPFEDownloads(void)
 struct MPFEDownloads* __fastcall __ct__13MPFEDownloadsFv(struct MPFEDownloads* this) asm("??0MPFEDownloads@@QAE@XZ");
 
+// Override methods
+
+// win1.41 0062e740 mac 103a49b0 MPFEDownloads::FileCompleted(void)
+void __fastcall FileCompleted__13MPFEDownloadsFv(struct MPFEDatabase* this) asm("?FileCompleted@MPFEDownloads@@UAEXXZ");
+// win1.41 0062e750 mac 103a4970 MPFEDownloads::FileError(void)
+void __fastcall FileError__13MPFEDownloadsFv(struct MPFEDatabase* this) asm("?FileError@MPFEDownloads@@UAEXXZ");
+
 #endif /* BW1_DECOMP_MPFE_DOWNLOADS_INCLUDED_H */

@@ -2,9 +2,14 @@
 #define BW1_DECOMP_BIG_FOREST_INFO_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
+
+// Forward Declares
+
+struct Base;
+struct GObjectInfo;
 
 struct GBigForestInfo
 {
@@ -18,5 +23,12 @@ extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GBigForestI
 
 // win1.41 008c58b8 mac 10738664 GBigForestInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__14GBigForestInfo asm("??_7GBigForestInfo@@6B@");
+
+// Override methods
+
+// win1.41 00438cb0 mac 100b33d0 GBigForestInfo::_dt(void)
+void __fastcall __dt__14GBigForestInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGBigForestInfo@@UAEPAXI@Z");
+// win1.41 00438c50 mac 100b2530 GBigForestInfo::GetMesh( const(void))
+uint32_t __fastcall GetMesh__14GBigForestInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GBigForestInfo@@UBEIXZ");
 
 #endif /* BW1_DECOMP_BIG_FOREST_INFO_INCLUDED_H */

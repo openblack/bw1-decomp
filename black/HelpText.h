@@ -46,6 +46,11 @@ extern const struct BaseVftable __vt__8HelpText asm("??_7HelpText@@6B@");
 // win1.41 005cad40 mac 103579b0 HelpText::HelpText(LHRegion const &)
 struct HelpText* __fastcall __ct__8HelpTextFRC8LHRegion(struct HelpText* this, const void* edx, struct LHRegion* region);
 
+// Override methods
+
+// win1.41 005cad90 mac 103575a0 HelpText::_dt(void)
+void __fastcall __dt__8HelpTextFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GHelpText@@UAEPAXI@Z");
+
 struct HelpTextDataBase
 {
   struct HelpText* array;  /* 0x0 */

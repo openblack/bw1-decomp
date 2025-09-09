@@ -54,12 +54,33 @@ extern const struct BaseVftable __vt__16CreatureLearning asm("??_7CreatureLearni
 // win1.41 004e0290 mac 10265060 CreatureLearning::CreatureLearning(Creature *)
 struct CreatureLearning* __fastcall __ct__16CreatureLearningFP8Creature(struct CreatureLearning* this, const void* edx, struct Creature* creature);
 
+// Override methods
+
+// win1.41 004e03d0 mac 10246a10 CreatureLearning::_dt(void)
+void __fastcall __dt__16CreatureLearningFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureLearning@@UAEPAXI@Z");
+
 struct CreatureLearningEpisode
 {
   uint8_t field_0x0;
 };
 static_assert(sizeof(struct CreatureLearningEpisode) == 0x1, "Data type is of wrong size");
 
+// Override methods
+
+// win1.41 004cbc00 mac 10250410 CreatureLearningEpisode::_dt(void)
+void __fastcall __dt__23CreatureLearningEpisodeFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureLearningEpisode@@UAEPAXI@Z");
+
 DECLARE_LH_LINKED_LIST(CreatureLearningEpisode);
+
+struct CreatureLearningContext
+{
+  struct Base super;  /* 0x0 */
+};
+static_assert(sizeof(struct CreatureLearningContext) == 0x8, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 004e1d30 mac 10262750 CreatureLearningContext::_dt(void)
+void __fastcall __dt__23CreatureLearningContextFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureLearningContext@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_CREATURE_LEARNING_INCLUDED_H */

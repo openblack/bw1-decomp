@@ -2,7 +2,7 @@
 #define BW1_DECOMP_GESTURE_SYSTEM_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint8_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "Base.h" /* For struct Base */
 
@@ -23,6 +23,11 @@ extern const struct BaseVftable __vt__13GestureSystem asm("??_7GestureSystem@@6B
 
 // win1.41 0054bb40 mac inlined GestureSystem::GestureSystem(void)
 struct GestureSystem* __fastcall __ct__13GestureSystem(struct GestureSystem* this);
+
+// Override methods
+
+// win1.41 0054bb60 mac 1042dc00 GestureSystem::_dt(void)
+void __fastcall __dt__13GestureSystemFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGestureSystem@@UAEPAXI@Z");
 
 struct GestureSystemPacketData
 {

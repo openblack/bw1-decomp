@@ -28,4 +28,9 @@ extern const struct HandStateVftable __vt__17HandStateCreature asm("??_7HandStat
 // win1.41 005b13d0 mac 10338f00 HandStateCreature::HandStateCreature(CHand*)
 struct HandStateCreature* __fastcall __ct__17HandStateCreatureFP5CHand(struct HandStateCreature* this, const void* edx, struct CHand* hand);
 
+// Override methods
+
+// win1.41 005b13f0 mac 10338c40 HandStateCreature::Enter(void)
+void __fastcall Enter__17HandStateCreatureFv(struct HandState* this) asm("?Enter@HandStateCreature@@UAEXXZ");
+
 #endif /* BW1_DECOMP_HAND_STATE_CREATURE_INCLUDED_H */

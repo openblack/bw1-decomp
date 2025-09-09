@@ -9,6 +9,7 @@
 
 // Forward Declares
 
+struct Base;
 struct GFootpathLink;
 struct GameOSFile;
 
@@ -38,6 +39,10 @@ void __fastcall FUN_00536fa0__17GFootpathLinkSaveFv(struct GFootpathLinkSave* th
 
 // Override methods
 
+// win1.41 005371f0 mac 100eb6b0 GFootpathLinkSave::_dt(void)
+void __fastcall __dt__17GFootpathLinkSaveFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGFootpathLinkSave@@UAEPAXI@Z");
+// win1.41 005371e0 mac 100ef0b0 GFootpathLinkSave::GetDebugText(void)
+char* __fastcall GetDebugText__17GFootpathLinkSaveFv(struct GameThing* this) asm("?GetDebugText@GFootpathLinkSave@@UAEPADXZ");
 // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
 uint32_t __fastcall Load__17GFootpathLinkSaveFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
 

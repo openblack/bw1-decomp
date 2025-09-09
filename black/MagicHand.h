@@ -3,11 +3,14 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t */
 
 #include "GameThing.h" /* For struct GameThing */
 
 // Forward Declares
 
+struct Base;
+struct GameOSFile;
 struct Object;
 
 struct GMagicHand
@@ -17,5 +20,20 @@ struct GMagicHand
   struct Object* object_in_hand;
 };
 static_assert(sizeof(struct GMagicHand) == 0x1c, "Data type is of wrong size");
+
+// Override methods
+
+// win1.41 005faf40 mac 103ad580 GMagicHand::_dt(void)
+void __fastcall __dt__10GMagicHandFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicHand@@UAEPAXI@Z");
+// win1.41 005fb2a0 mac 103acf80 GMagicHand::CleanUpForSerialisation(void)
+void __fastcall CleanUpForSerialisation__10GMagicHandFv(struct Base* this) asm("?CleanUpForSerialisation@GMagicHand@@UAEXXZ");
+// win1.41 005faf30 mac 103acd80 GMagicHand::GetDebugText(void)
+char* __fastcall GetDebugText__10GMagicHandFv(struct GameThing* this) asm("?GetDebugText@GMagicHand@@UAEPADXZ");
+// win1.41 005fb320 mac 103acdc0 GMagicHand::Load(GameOSFile &)
+uint32_t __fastcall Load__10GMagicHandFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GMagicHand@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005fb2c0 mac 103ace90 GMagicHand::Save(GameOSFile &)
+uint32_t __fastcall Save__10GMagicHandFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GMagicHand@@UAEIAAVGameOSFile@@@Z");
+// win1.41 005faf20 mac 103acd40 GMagicHand::GetSaveType(void)
+uint32_t __fastcall GetSaveType__10GMagicHandFv(struct GameThing* this) asm("?GetSaveType@GMagicHand@@UAEIXZ");
 
 #endif /* BW1_DECOMP_MAGIC_HAND_INCLUDED_H */
