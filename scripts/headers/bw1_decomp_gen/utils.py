@@ -42,7 +42,7 @@ def extract_template_type(type_name: str) -> str:
 
 
 def extract_type_name(type_name: str) -> str:
-    return type_name.removeprefix("const ").removeprefix("struct ").removeprefix("union ").removeprefix("enum ").removesuffix("*").strip()
+    return type_name.removeprefix("const ").removeprefix("struct ").removeprefix("union ").removeprefix("enum ").removesuffix("*").replace("::", "__").strip()
 
 
 def partition(preds: list[Callable], iterable: Iterable) -> list:
