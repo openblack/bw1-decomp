@@ -1531,9 +1531,6 @@ ROOMMATE_CLASS_MAP = {
     "AR_FadeOutOnceConditionTrue": "PSysProperties",
     "AddSoundToAtom": "PSysProperties",
     "AddSubCollectionsToAtom": "PSysProperties",
-    "AR_FadeOutOnceConditionTrue": "PSysProperties",
-    "AddSoundToAtom": "PSysProperties",
-    "AddSubCollectionsToAtom": "PSysProperties",
     "AttatchFireBallToAtom": "PSysProperties",
     "CheckShieldDeflections": "PSysProperties",
     "CreateNewBaseAtom": "PSysProperties",
@@ -1644,7 +1641,24 @@ ROOMMATE_CLASS_MAP = {
 }
 
 
+ROOMMATE_CONTAINED_CLASS_SUFFIXES = {
+    "__AtomData",
+    "__FlyingAtomData",
+    "__ParentAtomData",
+    "__AtomDataRipple",
+    "__CollectionData",
+    "__SubCollectionData",
+    "__DebrisCollectionData",
+    "__FlyingCollectionData",
+    "__ParentCollectionData",
+    "__Band",
+}
+
+
 def resolve_roommate(struct_name):
+    for suffix in ROOMMATE_CONTAINED_CLASS_SUFFIXES:
+        if struct_name.endswith(suffix):
+            return resolve_roommate(struct_name.removesuffix(suffix))
     struct_name = demangle_type(struct_name)
     if "::" in struct_name:
         split = struct_name.split("::")[0]
