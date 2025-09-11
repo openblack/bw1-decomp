@@ -51,6 +51,8 @@ def demangle_type(mangled_type_name: str) -> str:
             index += len(m.group(0))
             parts.append(m.group(1))
         return "::".join(parts)
+    if "__" in mangled_type_name:
+        return mangled_type_name.replace("__", "::")
     return mangled_type_name
 
 @dataclass
