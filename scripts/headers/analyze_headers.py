@@ -8,7 +8,7 @@ from dataclasses import dataclass, asdict, field
 from pathlib import Path
 from typing import List, Tuple, Set, Optional, Dict, Union
 
-from clang.cindex import TranslationUnit, Diagnostic, Config, Token, TranslationUnitLoadError
+from clang.cindex import TranslationUnit, Diagnostic, Config, Token, TranslationUnitLoadError, conf
 
 
 TYPES_TO_IGNORE = {
@@ -67,6 +67,7 @@ class FunctionMetadata:
     argument_types: List[str] = field(default_factory=list)
     argument_names: List[str] = field(default_factory=list)
     is_function_variadic: bool = False
+    inline_body: Optional[str] = None
 
     def is_subtype(candidate, target, class_hierarchies):
         return candidate in class_hierarchies[target]
@@ -1105,6 +1106,42 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                             found_issues = True
                             sys.stderr.write(
                                 f"{t.extent.start.file.name}:{t.extent.start.line}: function declaration \"{t.spelling}\" trouble parsing: \"{param_type.spelling}\"\n")
+                    is_inline = conf.lib.clang_Cursor_isFunctionInlined(t.cursor) == 1
+                    if is_inline:
+                        def get_source_text_from_extent(tu, extent):
+                            tokens = list(tu.get_tokens(extent=extent))
+                            if not tokens:
+                                return ""
+
+                            out_lines = []
+                            current_line = tokens[0].extent.start.line
+                            current_column = tokens[0].extent.start.column
+
+                            for tok in tokens:
+                                start = tok.extent.start
+                                # Insert newlines if we've jumped lines
+                                while current_line < start.line:
+                                    out_lines.append("\n")
+                                    current_line += 1
+                                    current_column = 1
+
+                                # Insert spaces if we've jumped columns
+                                while current_column < start.column:
+                                    out_lines.append(" ")
+                                    current_column += 1
+
+                                # Add the token spelling
+                                out_lines.append(tok.spelling)
+                                # Advance column based on token width
+                                tok_len = tok.extent.end.column - tok.extent.start.column
+                                current_column += max(tok_len, len(tok.spelling))
+
+                            return "".join(out_lines)
+                        compound_statement = next(i for i in t.cursor.get_children() if i.kind.name == 'COMPOUND_STMT')
+                        function_metadata[-1].inline_body = get_source_text_from_extent(tu, compound_statement.extent)
+
+
+
 
     return found_issues
 

@@ -87,14 +87,16 @@ class DefinedFunctionPrototype(FuncPtr):
     mac_addr: int
     mangled_name: Optional[str]
     is_function_variadic: bool
+    inline_body: Optional[str]
 
-    def __init__(self, name: str, call_type: str, result: str, args: list[str], decorated_name: str,  arg_labels: list[str], win_addr: int, mac_addr: int, mangled_name: Optional[str], is_function_variadic: bool):
+    def __init__(self, name: str, call_type: str, result: str, args: list[str], decorated_name: str,  arg_labels: list[str], win_addr: int, mac_addr: int, mangled_name: Optional[str], is_function_variadic: bool, inline_body: Optional[str]):
         super().__init__(name, call_type, result, args, arg_labels)
         self.decorated_name = decorated_name
         self.win_addr = win_addr
         self.mac_addr = mac_addr
         self.mangled_name = mangled_name
         self.is_function_variadic = is_function_variadic
+        self.inline_body = inline_body
 
     def __lt__(self, other: "DefinedFunctionPrototype") -> bool:
         return self.win_addr < other.win_addr
@@ -111,7 +113,8 @@ class DefinedFunctionPrototype(FuncPtr):
         win_addr = decl['win_addr']
         mac_addr = decl['mac_addr']
         is_function_variadic = decl['is_function_variadic']
-        return cls(name, call_type, result, args, decorated_name, arg_labels, win_addr, mac_addr, mangled_name, is_function_variadic)
+        inline_body = decl['inline_body']
+        return cls(name, call_type, result, args, decorated_name, arg_labels, win_addr, mac_addr, mangled_name, is_function_variadic, inline_body)
 
     def to_csnake(self) -> csnake.Function:
         conv = self.call_type
@@ -134,10 +137,19 @@ class DefinedFunctionPrototype(FuncPtr):
         if self.is_function_variadic:
             params.append(["", "..."])
 
-        return CSnakeFunction(f"{conv} {self.name}", self.result, arguments=params, mangled_name=self.mangled_name)
+        qualifiers = None
+        if self.inline_body:
+            qualifiers = ['inline']
+
+        return CSnakeFunction(f"{conv} {self.name}", self.result, qualifiers=qualifiers, arguments=params, mangled_name=self.mangled_name)
 
     def to_code(self, cw: csnake.CodeWriter):
         win_addr = f"{self.win_addr:08x}" if self.win_addr >= 0 else "inlined"
         mac_addr = f"{self.mac_addr:08x}" if self.mac_addr >= 0 else "inlined"
         cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.decorated_name}")
-        cw.add_function_prototype(self.to_csnake())
+        func = self.to_csnake()
+        if not self.inline_body:
+            cw.add_function_prototype(func)
+        else:
+            func.add_code([i.strip() for i in self.inline_body.split("\n")][1:-1])
+            cw.add_function_definition(func)
