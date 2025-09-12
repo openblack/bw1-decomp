@@ -9,7 +9,7 @@
 
 .extern _GetMidTextSize__Fv
 .extern _jmp_addr_0x00407a20
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__9SetupListFiiiii@28
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
@@ -104,7 +104,7 @@ _jmp_addr_0x0062b0cd:    push             esi                                   
                          push             0x28                                          // 0x0062b106    6a28
                          push             0x2                                           // 0x0062b108    6a02
                          mov.s            ecx, esi                                      // 0x0062b10a    8bce
-                         call             @__ct__12SetupControlFiiiiiPw@32              // 0x0062b10c    e83fe1ddff
+                         call             ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0062b10c    e83fe1ddff
                          mov              dword ptr [esi], 0x008ab5c0                   // 0x0062b111    c706c0b58a00
                          {disp32} mov     dword ptr [esi + 0x0000023c], 0x00000001      // 0x0062b117    c7863c02000001000000
                          {disp32} mov     byte ptr [esi + 0x0000022a], 0x00             // 0x0062b121    c6862a02000000

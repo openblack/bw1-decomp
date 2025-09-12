@@ -9,7 +9,7 @@
 
 .extern _GetSmallTextSize__Fv
 .extern _jmp_addr_0x00407a20
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @__ct__14SetupVBarGraphFiiiiiPw@32
 .extern @__ct__14SetupTabButtonFiiiiiPwiii@35
@@ -196,7 +196,7 @@ _jmp_addr_0x0056e2be:    {disp8} fld       dword ptr [esp + 0x24]               
                          push              0x28                                          // 0x0056e319    6a28
                          push              0x1                                           // 0x0056e31b    6a01
                          mov.s             ecx, esi                                      // 0x0056e31d    8bce
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x0056e31f    e82cafe9ff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0056e31f    e82cafe9ff
                          mov               dword ptr [esi], 0x008ab5c0                   // 0x0056e324    c706c0b58a00
                          {disp32} mov      dword ptr [esi + 0x0000023c], ebx             // 0x0056e32a    899e3c020000
                          {disp32} mov      byte ptr [esi + 0x0000022a], 0x00             // 0x0056e330    c6862a02000000
@@ -219,7 +219,7 @@ _jmp_addr_0x0056e341:    push              0x00000237                           
                          push              0x28                                          // 0x0056e372    6a28
                          push              0x1                                           // 0x0056e374    6a01
                          mov.s             ecx, esi                                      // 0x0056e376    8bce
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x0056e378    e8d3aee9ff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0056e378    e8d3aee9ff
                          mov               dword ptr [esi], 0x008ab5c0                   // 0x0056e37d    c706c0b58a00
                          {disp32} mov      dword ptr [esi + 0x0000023c], ebx             // 0x0056e383    899e3c020000
                          {disp32} mov      byte ptr [esi + 0x0000022a], 0x00             // 0x0056e389    c6862a02000000
@@ -249,7 +249,7 @@ _jmp_addr_0x0056e3d9:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              0x0000012c                                    // 0x0056e3e9    682c010000
                          push              0x1                                           // 0x0056e3ee    6a01
                          mov.s             ecx, esi                                      // 0x0056e3f0    8bce
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x0056e3f2    e859aee9ff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0056e3f2    e859aee9ff
                          mov               dword ptr [esi], 0x008ab5c0                   // 0x0056e3f7    c706c0b58a00
                          {disp32} mov      dword ptr [esi + 0x0000023c], 0x00000001      // 0x0056e3fd    c7863c02000001000000
                          {disp32} mov      byte ptr [esi + 0x0000022a], 0x00             // 0x0056e407    c6862a02000000
@@ -275,7 +275,7 @@ _jmp_addr_0x0056e418:    {disp8} mov       dword ptr [edi + 0x40], esi          
                          push              0x28                                          // 0x0056e454    6a28
                          push              0x1                                           // 0x0056e456    6a01
                          mov.s             ecx, esi                                      // 0x0056e458    8bce
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x0056e45a    e8f1ade9ff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0056e45a    e8f1ade9ff
                          mov               dword ptr [esi], 0x008ab5c0                   // 0x0056e45f    c706c0b58a00
                          {disp32} mov      dword ptr [esi + 0x0000023c], ebx             // 0x0056e465    899e3c020000
                          {disp32} mov      byte ptr [esi + 0x0000022a], 0x00             // 0x0056e46b    c6862a02000000
@@ -311,7 +311,7 @@ _jmp_addr_0x0056e4cf:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              0x28                                          // 0x0056e4df    6a28
                          push              0x1                                           // 0x0056e4e1    6a01
                          mov.s             ecx, esi                                      // 0x0056e4e3    8bce
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x0056e4e5    e866ade9ff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0056e4e5    e866ade9ff
                          mov               dword ptr [esi], 0x008ab5c0                   // 0x0056e4ea    c706c0b58a00
                          {disp32} mov      dword ptr [esi + 0x0000023c], ebx             // 0x0056e4f0    899e3c020000
                          {disp32} mov      byte ptr [esi + 0x0000022a], 0x00             // 0x0056e4f6    c6862a02000000

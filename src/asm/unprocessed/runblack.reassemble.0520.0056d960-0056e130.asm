@@ -3,11 +3,8 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
 
-.extern ??_DSetupControl@@QAEXXZ
+.extern ??1SetupControl@@UAE@XZ
 .extern ?adjust@SetupThing@@SAMAAH0@Z
 .extern ?adjusty@SetupThing@@SAHH@Z
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
@@ -31,12 +28,10 @@
 .globl ?Destroy@StatsBox@@UAEXXZ
 .globl ?InitControls@StatsBox@@UAEXXZ
 
-start_0x0056d960_0x0056e130:
-// Snippet: asm, [0x0056d960, 0x0056e0fd)
 ??_GSetupHSBarGraph@@UAEPAXI@Z:
                          push               esi                                           // 0x0056d960    56
                          mov.s              esi, ecx                                      // 0x0056d961    8bf1
-                         call               ??_DSetupControl@@QAEXXZ                      // 0x0056d963    e858bae9ff
+                         call               ??1SetupControl@@UAE@XZ                       // 0x0056d963    e858bae9ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0056d968    f644240801
                          {disp8} je         _jmp_addr_0x0056d978                          // 0x0056d96d    7409
                          push               esi                                           // 0x0056d96f    56

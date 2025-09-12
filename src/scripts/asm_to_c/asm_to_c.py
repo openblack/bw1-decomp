@@ -58,9 +58,12 @@ def process_text_mode(asm_path: Path, max_iterations: int):
 
 def process_vtable_mode(filepath: Path):
     REVERSING_DATABASE_FILENAME = "extracted_reversing_data_bw_141.json"
+    extra_headers = []
     with open(REVERSING_DATABASE_FILENAME, "r") as f:
         db = json.load(f)
     mangled_lookup = {i["mangled_name"]: i["undecorated_name"] for i in db['functions']}
+    mangled_lookup['__purecall'] = '(void*)_purecall'
+    extra_header_lookup = {'__purecall': "_libcmt_helper.h"}
     with open(filepath, "r") as f:
         all_lines = f.readlines()
     first_vt_line = next(i for i, l in enumerate(all_lines) if l.startswith("VftableAndRTTI"))
@@ -77,16 +80,17 @@ def process_vtable_mode(filepath: Path):
         if not entry.strip():
             print("vftable entry is blank", file=sys.stderr)
             exit(1)
-        if entry[0] != '?':
+        if entry[0] != '?' and entry != '__purecall':
             print(f"vftable entry is not properly formatted as thiscall: {entry}", file=sys.stderr)
             exit(1)
-        assert entry and entry[0] == '?'
         entries.append(entry)
+    extra_headers = sorted(filter(None, (extra_header_lookup.get(i) for i in entries)))
     c_entries = [mangled_lookup[i] for i in entries]
     with path.open("w") as f:
-        f.write(f'''\
-#include "{type_name}.h"
-
+        f.write(f'#include "{type_name}.h"\n')
+        for header in extra_headers:
+            f.write(f'#include "{header}"\n')
+        f.write(f'''
 const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__{len(type_name)}{type_name} = &__RTTICompleteObjectLocator__{len(type_name)}{type_name};
 
 const struct {type_name}Vftable __vt__{len(type_name)}{type_name} = {{

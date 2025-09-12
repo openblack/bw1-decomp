@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _GetMidTextSize__Fv
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__11SetupSliderFiiiiifPw@36
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
@@ -109,7 +109,7 @@ _jmp_addr_0x00514fa3:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          push              0x32                                          // 0x00514fb0    6a32
                          push              0x000003e7                                    // 0x00514fb2    68e7030000
                          mov.s             ecx, edi                                      // 0x00514fb7    8bcf
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x00514fb9    e89242efff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x00514fb9    e89242efff
                          mov               dword ptr [edi], 0x008ab5c0                   // 0x00514fbe    c707c0b58a00
                          {disp32} mov      dword ptr [edi + 0x0000023c], 0x00000004      // 0x00514fc4    c7873c02000004000000
                          {disp32} mov      byte ptr [edi + 0x0000022a], 0x00             // 0x00514fce    c6872a02000000
@@ -256,7 +256,7 @@ _jmp_addr_0x005151db:    {disp8} mov       edx, dword ptr [eax + 0x08]          
                          push              0x32                                          // 0x005151eb    6a32
                          push              0x000003e7                                    // 0x005151ed    68e7030000
                          mov.s             ecx, edi                                      // 0x005151f2    8bcf
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x005151f4    e85740efff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x005151f4    e85740efff
                          mov               dword ptr [edi], 0x008ab5c0                   // 0x005151f9    c707c0b58a00
                          {disp32} mov      dword ptr [edi + 0x0000023c], ebx             // 0x005151ff    899f3c020000
                          {disp32} mov      byte ptr [edi + 0x0000022a], 0x00             // 0x00515205    c6872a02000000
@@ -284,7 +284,7 @@ _jmp_addr_0x0051524c:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          push              0x32                                          // 0x0051525f    6a32
                          push              0x000003e7                                    // 0x00515261    68e7030000
                          mov.s             ecx, edi                                      // 0x00515266    8bcf
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x00515268    e8e33fefff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x00515268    e8e33fefff
                          mov               dword ptr [edi], 0x008ab5c0                   // 0x0051526d    c707c0b58a00
                          {disp32} mov      dword ptr [edi + 0x0000023c], 0x00000004      // 0x00515273    c7873c02000004000000
                          {disp32} mov      byte ptr [edi + 0x0000022a], 0x00             // 0x0051527d    c6872a02000000

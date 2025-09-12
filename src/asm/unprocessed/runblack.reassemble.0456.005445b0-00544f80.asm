@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00407a20
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__9SetupListFiiiii@28
 .extern @DeleteString__9SetupListFi@12
@@ -76,7 +76,7 @@ start_0x005445b0_0x00544f80:
                          push             0x28                                          // 0x00544609    6a28
                          push             0x1                                           // 0x0054460b    6a01
                          mov.s            ecx, esi                                      // 0x0054460d    8bce
-                         call             @__ct__12SetupControlFiiiiiPw@32              // 0x0054460f    e83c4cecff
+                         call             ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0054460f    e83c4cecff
                          mov              dword ptr [esi], 0x008ab5c0                   // 0x00544614    c706c0b58a00
                          {disp32} mov     dword ptr [esi + 0x0000023c], 0x00000004      // 0x0054461a    c7863c02000004000000
                          {disp32} mov     byte ptr [esi + 0x0000022a], 0x00             // 0x00544624    c6862a02000000
@@ -268,7 +268,7 @@ _jmp_addr_0x00544814:    pop              esi                                   
                          push             0x28                                          // 0x00544879    6a28
                          push             0x1                                           // 0x0054487b    6a01
                          mov.s            ecx, esi                                      // 0x0054487d    8bce
-                         call             @__ct__12SetupControlFiiiiiPw@32              // 0x0054487f    e8cc49ecff
+                         call             ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0054487f    e8cc49ecff
                          mov              dword ptr [esi], 0x008ab5c0                   // 0x00544884    c706c0b58a00
                          {disp32} mov     dword ptr [esi + 0x0000023c], 0x00000004      // 0x0054488a    c7863c02000004000000
                          {disp32} mov     byte ptr [esi + 0x0000022a], 0x00             // 0x00544894    c6862a02000000

@@ -1477,6 +1477,7 @@ ROOMMATE_CLASS_MAP = {
     "__dl__FPv": "_libcmt_helper",
     "__construct_new_array": "_libcmt_helper",
     "__destroy_new_array": "_libcmt_helper",
+    "_purecall": "_libcmt_helper",
     "CHAR2WCHAR__FPc": "Utils",
     "FUN_0074f620": "Utils",
     "InfluenceRing": "Influence", # Validated with a __nw__4BaseFUl(..., __FILE__, ...) in Create__13InfluenceRingFRC9MapCoordsP7GPlayerfi

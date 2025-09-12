@@ -14,7 +14,7 @@
 .extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
 .extern @FindControl__8SetupBoxFi@12
 .extern _jmp_addr_0x00408240
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__11SetupSliderFiiiiifPw@36
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
@@ -685,7 +685,7 @@ _jmp_addr_0x005138c9:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          push              0x32                                          // 0x005138d6    6a32
                          push              0x000003e7                                    // 0x005138d8    68e7030000
                          mov.s             ecx, edi                                      // 0x005138dd    8bcf
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x005138df    e86c59efff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x005138df    e86c59efff
                          mov               dword ptr [edi], 0x008ab5c0                   // 0x005138e4    c707c0b58a00
                          {disp32} mov      dword ptr [edi + 0x0000023c], 0x00000004      // 0x005138ea    c7873c02000004000000
                          {disp32} mov      byte ptr [edi + 0x0000022a], bl               // 0x005138f4    889f2a020000

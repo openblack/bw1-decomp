@@ -3,16 +3,13 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
 
 .extern _GetMidTextSize__Fv
 .extern _GetSmallTextSize__Fv
 .extern @FindControl__8SetupBoxFi@12
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
-.extern @__ct__12SetupControlFiiiiiPw@32
-.extern ??_DSetupControl@@QAEXXZ
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
+.extern ??1SetupControl@@UAE@XZ
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__11SetupSliderFiiiiifPw@36
 .extern @AutoScroll__9SetupListFb@9
@@ -78,7 +75,7 @@
 .globl _jmp_addr_0x0056f7d0
 .globl _jmp_addr_0x0056f8d0
 .globl _jmp_addr_0x0056f910
-.globl ??0GameThing@@QAE@XZ 
+.globl ??0GameThing@@QAE@XZ
 .globl _jmp_addr_0x0056fa70
 .globl _jmp_addr_0x0056fa80
 .globl @ProcessDead__9GameThingFi@12
@@ -165,8 +162,6 @@
 .globl ?Init@GatheringBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 .globl ?Destroy@GatheringBox@@UAEXXZ
 
-start_0x0056eef0_0x00572d00:
-// Snippet: asm, [0x0056eef0, 0x00572cbb)
 ?Init@MultiplayerConditionBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z:
                          sub                esp, 0x00000818                               // 0x0056eef0    81ec18080000
                          {disp32} mov       eax, dword ptr [esp + 0x00000824]             // 0x0056eef6    8b842424080000
@@ -365,7 +360,7 @@ _jmp_addr_0x0056f17c:    {disp8} mov        ecx, dword ptr [eax + 0x08]         
                          push               0x28                                          // 0x0056f189    6a28
                          push               0x1                                           // 0x0056f18b    6a01
                          mov.s              ecx, esi                                      // 0x0056f18d    8bce
-                         call               @__ct__12SetupControlFiiiiiPw@32              // 0x0056f18f    e8bca0e9ff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0056f18f    e8bca0e9ff
                          mov                dword ptr [esi], 0x008ab5c0                   // 0x0056f194    c706c0b58a00
                          {disp32} mov       dword ptr [esi + 0x0000023c], 0x00000001      // 0x0056f19a    c7863c02000001000000
                          {disp32} mov       byte ptr [esi + 0x0000022a], 0x00             // 0x0056f1a4    c6862a02000000
@@ -3511,7 +3506,7 @@ _jmp_addr_0x0057103e:    push               0x000000e2                          
                          push               eax                                           // 0x005710a8    50
                          push               0x000003e8                                    // 0x005710a9    68e8030000
                          mov.s              ecx, edi                                      // 0x005710ae    8bcf
-                         call               @__ct__12SetupControlFiiiiiPw@32              // 0x005710b0    e89b81e9ff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x005710b0    e89b81e9ff
                          {disp32} mov       dword ptr [edi + 0x0000023c], ebx             // 0x005710b5    899f3c020000
                          {disp32} mov       byte ptr [edi + 0x0000022a], bl               // 0x005710bb    889f2a020000
                          {disp32} mov       dword ptr [edi + 0x00000240], ebx             // 0x005710c1    899f40020000
@@ -4333,7 +4328,7 @@ _jmp_addr_0x00571bd7:    push               0x00000115                          
                          push               eax                                           // 0x00571c3d    50
                          push               0x00010435                                    // 0x00571c3e    6835040100
                          mov.s              ecx, edi                                      // 0x00571c43    8bcf
-                         call               @__ct__12SetupControlFiiiiiPw@32              // 0x00571c45    e80676e9ff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x00571c45    e80676e9ff
                          {disp32} mov       dword ptr [edi + 0x0000023c], 0x00000002      // 0x00571c4a    c7873c02000002000000
                          {disp32} mov       byte ptr [edi + 0x0000022a], bl               // 0x00571c54    889f2a020000
                          {disp32} mov       dword ptr [edi + 0x00000240], ebx             // 0x00571c5a    899f40020000
@@ -4557,7 +4552,7 @@ _HitTest__20SetupStaticTextNoHitFii:
 ??_GSetupStaticTextNoHit@@UAEPAXI@Z:
                          push               esi                                           // 0x00571f10    56
                          mov.s              esi, ecx                                      // 0x00571f11    8bf1
-                         call               ??_DSetupControl@@QAEXXZ                      // 0x00571f13    e8a874e9ff
+                         call               ??1SetupControl@@UAE@XZ                       // 0x00571f13    e8a874e9ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00571f18    f644240801
                          {disp8} je         _jmp_addr_0x00571f28                          // 0x00571f1d    7409
                          push               esi                                           // 0x00571f1f    56
@@ -4571,7 +4566,7 @@ _jmp_addr_0x00571f28:    mov.s              eax, esi                            
 ??_GSetupMP3Button@@UAEPAXI@Z:
                          push               esi                                           // 0x00571f30    56
                          mov.s              esi, ecx                                      // 0x00571f31    8bf1
-                         call               ??_DSetupControl@@QAEXXZ                      // 0x00571f33    e88874e9ff
+                         call               ??1SetupControl@@UAE@XZ                       // 0x00571f33    e88874e9ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00571f38    f644240801
                          {disp8} je         _jmp_addr_0x00571f48                          // 0x00571f3d    7409
                          push               esi                                           // 0x00571f3f    56

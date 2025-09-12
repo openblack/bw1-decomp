@@ -3,12 +3,9 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
 
-.extern @__ct__12SetupControlFiiiiiPw@32
-.extern ??_DSetupControl@@QAEXXZ
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
+.extern ??1SetupControl@@UAE@XZ  
 .extern ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z
 .extern ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z
 .extern ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z
@@ -26,8 +23,6 @@
 .globl _Drag__11SetupSliderFii
 .globl _KeyDown__9SetupListFii
 
-start_0x00409a40_0x0040a110:
-// Snippet: asm, [0x00409a40, 0x0040a0ec)
 _Draw__11SetupSliderFbb:
                          push               ecx                                      // 0x00409a40    51
                          push               ebx                                      // 0x00409a41    53
@@ -214,7 +209,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
                          push               eax                                      // 0x00409c10    50
                          push               ecx                                      // 0x00409c11    51
                          mov.s              ecx, esi                                 // 0x00409c12    8bce
-                         call               @__ct__12SetupControlFiiiiiPw@32         // 0x00409c14    e837f6ffff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z         // 0x00409c14    e837f6ffff
                          {disp8} mov        edx, dword ptr [esp + 0x20]              // 0x00409c19    8b542420
                          {disp8} mov        ecx, dword ptr [esi + 0x14]              // 0x00409c1d    8b4e14
                          mov.s              eax, edx                                 // 0x00409c20    8bc2
@@ -243,7 +238,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
 ??_GSetupSlider@@UAEPAXI@Z:
                          push               esi                                      // 0x00409c50    56
                          mov.s              esi, ecx                                 // 0x00409c51    8bf1
-                         call               ??_DSetupControl@@QAEXXZ                 // 0x00409c53    e868f7ffff
+                         call               ??1SetupControl@@UAE@XZ                  // 0x00409c53    e868f7ffff
                          test               byte ptr [esp + 0x08], 0x01              // 0x00409c58    f644240801
                          {disp8} je         _jmp_addr_0x00409c68                     // 0x00409c5d    7409
                          push               esi                                      // 0x00409c5f    56

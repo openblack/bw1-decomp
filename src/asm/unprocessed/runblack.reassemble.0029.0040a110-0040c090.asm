@@ -3,13 +3,10 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
 
 .extern _GetSmallTextSize__Fv
-.extern @__ct__12SetupControlFiiiiiPw@32
-.extern ??_DSetupControl@@QAEXXZ
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
+.extern ??1SetupControl@@UAE@XZ  
 .extern @AutoScroll__9SetupListFb@9
 .extern ?SetFocusNext@SetupBox@@QAEXXZ
 .extern ?SetFocusPrev@SetupBox@@QAEXXZ
@@ -51,8 +48,6 @@
 .globl _IsSelected__9SetupListFi
 .globl ??_GSetupList@@UAEPAXI@Z
 
-start_0x0040a110_0x0040c090:
-// Snippet: asm, [0x0040a110, 0x0040bfa3)
 _Drag__9SetupListFii:
                          sub                  esp, 0x10                                       // 0x0040a110    83ec10
                          push                 ebx                                             // 0x0040a113    53
@@ -356,7 +351,7 @@ _jmp_addr_0x0040a44a:    ret                  0x000c                            
                          push                 eax                                             // 0x0040a46f    50
                          push                 ecx                                             // 0x0040a470    51
                          mov.s                ecx, esi                                        // 0x0040a471    8bce
-                         call                 @__ct__12SetupControlFiiiiiPw@32                // 0x0040a473    e8d8edffff
+                         call                 ??0SetupControl@@QAE@HHHHHPA_W@Z                // 0x0040a473    e8d8edffff
                          xor.s                eax, eax                                        // 0x0040a478    33c0
                          or                   ecx, 0xffffffff                                 // 0x0040a47a    83c9ff
                          {disp32} mov         byte ptr [esi + 0x0000023c], al                 // 0x0040a47d    88863c020000
@@ -432,7 +427,7 @@ _IsSelected__9SetupListFi:
                          call                 ??3@YAXPAX@Z                                    // 0x0040a58c    e807493a00
                          add                  esp, 0x18                                       // 0x0040a591    83c418
                          mov.s                ecx, esi                                        // 0x0040a594    8bce
-                         call                 ??_DSetupControl@@QAEXXZ                        // 0x0040a596    e825eeffff
+                         call                 ??1SetupControl@@UAE@XZ                         // 0x0040a596    e825eeffff
                          test                 byte ptr [esp + 0x08], 0x01                     // 0x0040a59b    f644240801
                          {disp8} je           _jmp_addr_0x0040a5ab                            // 0x0040a5a0    7409
                          push                 esi                                             // 0x0040a5a2    56
@@ -1744,7 +1739,7 @@ _jmp_addr_0x0040b4c0:    push                 esi                               
                          call                 ??3@YAXPAX@Z                                    // 0x0040b51e    e875393a00
                          add                  esp, 0x1c                                       // 0x0040b523    83c41c
                          mov.s                ecx, esi                                        // 0x0040b526    8bce
-                         call                 ??_DSetupControl@@QAEXXZ                        // 0x0040b528    e893deffff
+                         call                 ??1SetupControl@@UAE@XZ                         // 0x0040b528    e893deffff
                          pop                  esi                                             // 0x0040b52d    5e
                          ret                                                                  // 0x0040b52e    c3
                          nop                                                                  // 0x0040b52f    90

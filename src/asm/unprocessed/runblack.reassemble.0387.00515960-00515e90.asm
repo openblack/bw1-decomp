@@ -9,7 +9,7 @@
 
 .extern @FindControl__8SetupBoxFi@12
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__9SetupEditFiiiiiPwi@33
 .extern ??0DialogBoxBase@@QAE@XZ
@@ -123,7 +123,7 @@ _jmp_addr_0x00515a1a:    {disp8} mov      ecx, dword ptr [eax + 0x08]           
                          push             0x000000af                                    // 0x00515a2a    68af000000
                          push             0x000007d3                                    // 0x00515a2f    68d3070000
                          mov.s            ecx, esi                                      // 0x00515a34    8bce
-                         call             @__ct__12SetupControlFiiiiiPw@32              // 0x00515a36    e81538efff
+                         call             ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x00515a36    e81538efff
                          mov              dword ptr [esi], 0x008ab5c0                   // 0x00515a3b    c706c0b58a00
                          {disp32} mov     dword ptr [esi + 0x0000023c], 0x00000004      // 0x00515a41    c7863c02000004000000
                          {disp32} mov     byte ptr [esi + 0x0000022a], 0x00             // 0x00515a4b    c6862a02000000
