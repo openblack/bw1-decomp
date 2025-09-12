@@ -123,7 +123,7 @@
 .globl _globl_ct_0x00798320
 .globl _CalcDoorHit__11InnerCameraFP9InnerRoom7LHCoordfb
 .globl _PreDraw__11InnerCameraFv
-.globl ___dt__11InnerCameraFv
+.globl ??_GInnerCamera@@UAEPAXI@Z
 .globl _ReloadCamera__11InnerCameraFPc
 .globl _Init__11InnerCameraFPc
 .globl _Close__11InnerCameraFv
@@ -997,7 +997,7 @@ _jmp_addr_0x007974c0:    mov                  dword ptr [ecx], 0x0099ee70       
                          nop                                                                // 0x007974cd    90
                          nop                                                                // 0x007974ce    90
                          nop                                                                // 0x007974cf    90
-___dt__11InnerCameraFv:
+??_GInnerCamera@@UAEPAXI@Z:
                          push                 esi                                           // 0x007974d0    56
                          mov.s                esi, ecx                                      // 0x007974d1    8bf1
                          call                 _jmp_addr_0x007974c0                          // 0x007974d3    e8e8ffffff

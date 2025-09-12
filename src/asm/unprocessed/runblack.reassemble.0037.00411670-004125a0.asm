@@ -35,11 +35,11 @@
 .globl _jmp_addr_0x004120a0
 .globl _jmp_addr_0x004120f0
 .globl _DrawBigButton__10SetupThingFiibbi7BBSTYLEbii
-.globl ___dt__15SetupStaticTextFb
+.globl ??_GSetupStaticText@@UAEPAXI@Z
 
 start_0x00411670_0x004125a0:
 // Snippet: asm, [0x00411670, 0x0041255f)
-___dt__15SetupStaticTextFb:
+??_GSetupStaticText@@UAEPAXI@Z:
                          push               esi                                           // 0x00411670    56
                          mov.s              esi, ecx                                      // 0x00411671    8bf1
                          call               @__dt__12SetupControlFv@4                     // 0x00411673    e8487dffff

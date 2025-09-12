@@ -66,8 +66,8 @@
 .globl _Drag__12SetupPictureFii
 .globl _HitTest__14SetupBigButtonFii
 .globl _AddLine__15SetupHLineGraphFR9HLineData
-.globl ___dt__12SetupPictureFb
-.globl ___dt__13SetupCheckBoxFb
+.globl ??_GSetupPicture@@UAEPAXI@Z
+.globl ??_GSetupCheckBox@@UAEPAXI@Z
 .globl _Draw__15SetupHSBarGraphFbb
 .globl _SetFocus__12SetupPictureFb
 .globl _HitTest__13SetupCheckBoxFii
@@ -91,23 +91,23 @@
 .globl _KeyDown__14SetupVBarGraphFii
 .globl _Draw__15SetupHLineGraphFbb
 .globl _MouseDown__12SetupPictureFiib
-.globl ___dt__14SetupTabButtonFb
-.globl ___dt__14SetupBigButtonFb
+.globl ??_GSetupTabButton@@UAEPAXI@Z
+.globl ??_GSetupBigButton@@UAEPAXI@Z
 .globl _Draw__14SetupVBarGraphFbb
 .globl _Draw__9SetupEditFbb
 .globl _MouseUp__12SetupPictureFiib
-.globl ___dt__17SetupColourPickerFb
-.globl ___dt__14SetupVBarGraphFb
+.globl ??_GSetupColourPicker@@UAEPAXI@Z
+.globl ??_GSetupVBarGraph@@UAEPAXI@Z
 .globl _SetScale__15SetupHLineGraphFffb
 .globl _Drag__9SetupEditFii
 .globl _Reset__14SetupVBarGraphFv
 .globl _SetFocus__9SetupEditFb
 .globl _Click__13SetupCheckBoxFii
-.globl ___dt__15SetupHLineGraphFb
+.globl ??_GSetupHLineGraph@@UAEPAXI@Z
 .globl _MouseUp__9SetupEditFiib
 .globl _KeyDown__15SetupHLineGraphFii
 .globl _Draw__14SetupTabButtonFbb
-.globl ___dt__9SetupEditFb
+.globl ??_GSetupEdit@@UAEPAXI@Z
 .globl _Draw__17SetupColourPickerFbb
 .globl _MouseUp__17SetupColourPickerFiib
 .globl _KeyDown__14SetupBigButtonFii
@@ -473,7 +473,7 @@ _jmp_addr_0x0040c558:    pop                  esi                               
                          nop                                                                // 0x0040c55d    90
                          nop                                                                // 0x0040c55e    90
                          nop                                                                // 0x0040c55f    90
-___dt__9SetupEditFb:
+??_GSetupEdit@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040c560    56
                          mov.s                esi, ecx                                      // 0x0040c561    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040c563    e858ceffff
@@ -1689,7 +1689,7 @@ _jmp_addr_0x0040d34e:    xor.s                eax, eax                          
 _jmp_addr_0x0040d353:    mov                  eax, 0x00000001                               // 0x0040d353    b801000000
                          ret                  0x0008                                        // 0x0040d358    c20800
                          call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040d35b    e81945ffff
-___dt__14SetupBigButtonFb:
+??_GSetupBigButton@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040d360    56
                          mov.s                esi, ecx                                      // 0x0040d361    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040d363    e858c0ffff
@@ -3242,7 +3242,7 @@ _jmp_addr_0x0040e5b9:    ret                  0x000c                            
                          nop                                                                // 0x0040e5bd    90
                          nop                                                                // 0x0040e5be    90
                          nop                                                                // 0x0040e5bf    90
-___dt__15SetupHLineGraphFb:
+??_GSetupHLineGraph@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040e5c0    56
                          mov.s                esi, ecx                                      // 0x0040e5c1    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040e5c3    e8f8adffff
@@ -4133,7 +4133,7 @@ _KeyDown__14SetupVBarGraphFii:
                          call                 dword ptr [eax]                               // 0x0040ef86    ff10
 _jmp_addr_0x0040ef88:    ret                  0x0008                                        // 0x0040ef88    c20800
                          call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040ef8b    e8e928ffff
-___dt__14SetupVBarGraphFb:
+??_GSetupVBarGraph@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040ef90    56
                          mov.s                esi, ecx                                      // 0x0040ef91    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040ef93    e828a4ffff
@@ -4742,7 +4742,7 @@ _KeyDown__14SetupTabButtonFii:
                          call                 dword ptr [eax]                               // 0x0040f686    ff10
 _jmp_addr_0x0040f688:    ret                  0x0008                                        // 0x0040f688    c20800
                          call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0040f68b    e8e921ffff
-___dt__14SetupTabButtonFb:
+??_GSetupTabButton@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040f690    56
                          mov.s                esi, ecx                                      // 0x0040f691    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x0040f693    e8289dffff
@@ -5946,7 +5946,7 @@ _Click__12SetupPictureFii:
                          nop                                                                // 0x0041071d    90
                          nop                                                                // 0x0041071e    90
                          nop                                                                // 0x0041071f    90
-___dt__12SetupPictureFb:
+??_GSetupPicture@@UAEPAXI@Z:
                          push                 esi                                           // 0x00410720    56
                          mov.s                esi, ecx                                      // 0x00410721    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x00410723    e8988cffff
@@ -6311,7 +6311,7 @@ _Click__17SetupColourPickerFii:
                          nop                                                                // 0x00410b5d    90
                          nop                                                                // 0x00410b5e    90
                          nop                                                                // 0x00410b5f    90
-___dt__17SetupColourPickerFb:
+??_GSetupColourPicker@@UAEPAXI@Z:
                          push                 esi                                           // 0x00410b60    56
                          mov.s                esi, ecx                                      // 0x00410b61    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x00410b63    e85888ffff
@@ -6796,7 +6796,7 @@ _KeyDown__13SetupCheckBoxFii:
                          call                 dword ptr [eax]                               // 0x00411066    ff10
 _jmp_addr_0x00411068:    ret                  0x0008                                        // 0x00411068    c20800
                          call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0041106b    e80908ffff
-___dt__13SetupCheckBoxFb:
+??_GSetupCheckBox@@UAEPAXI@Z:
                          push                 esi                                           // 0x00411070    56
                          mov.s                esi, ecx                                      // 0x00411071    8bf1
                          call                 @__dt__12SetupControlFv@4                     // 0x00411073    e84883ffff

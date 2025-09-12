@@ -418,7 +418,7 @@
 .globl _jmp_addr_0x00435300
 
 .globl _Connect__9BWGameSpyFv
-.globl ___dt__16LHReleasedOSFileFv
+.globl ??_GLHReleasedOSFile@@UAEPAXI@Z
 .globl _Load__9BigForestFR10GameOSFile
 .globl ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
 .globl ?IsRepaired@MultiMapFixed@@UAE_NXZ

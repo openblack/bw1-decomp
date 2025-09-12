@@ -21,7 +21,7 @@
 .globl _KeyDown__11SetupSliderFii
 .globl _MouseDown__10SetupButtonFiib
 .globl _KeyDown__11SetupButtonFii
-.globl ___dt__11SetupButtonFb
+.globl ??_GSetupButton@@UAEPAXI@Z
 
 start_0x004097a0_0x00409a40:
 // Snippet: asm, [0x004097a0, 0x00409a1a)
@@ -198,7 +198,7 @@ _KeyDown__11SetupButtonFii:
                          call               dword ptr [eax]                          // 0x00409936    ff10
 _jmp_addr_0x00409938:    ret                0x0008                                   // 0x00409938    c20800
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x0040993b    e8397fffff
-___dt__11SetupButtonFb:
+??_GSetupButton@@UAEPAXI@Z:
                          push               esi                                      // 0x00409940    56
                          mov.s              esi, ecx                                 // 0x00409941    8bf1
                          call               @__dt__12SetupControlFv@4                // 0x00409943    e878faffff
