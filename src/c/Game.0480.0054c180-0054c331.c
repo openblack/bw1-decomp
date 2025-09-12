@@ -80,7 +80,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this)
     asm("                         {disp8} mov        eax, dword ptr [esp + 0x0c]");                   // 0x0054c2be    8b44240c
     asm("                         mov.s              ecx, esi");                                      // 0x0054c2c2    8bce
     asm("                         {disp32} mov       dword ptr [esi + 0x00205e70], eax");             // 0x0054c2c4    8986705e2000
-    asm("                         call               @Loop__5GGameFv@4");                             // 0x0054c2ca    e8510c0000
+    asm("                         call               ?Loop@GGame@@QAEIXZ");                             // 0x0054c2ca    e8510c0000
     asm("                         pop                edi");                                           // 0x0054c2cf    5f
     asm("_jmp_addr_0x0054c2d0:    pop                esi");                                           // 0x0054c2d0    5e
     asm("                         pop                ebx");                                           // 0x0054c2d1    5b

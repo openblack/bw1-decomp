@@ -110,7 +110,7 @@
 .extern _jmp_addr_0x0054ab00
 .extern _jmp_addr_0x0054ab20
 .extern _jmp_addr_0x00550080
-.extern _jmp_addr_0x00550110
+.extern ?FinishInitialisation@GGame@@QAEXXZ
 .extern @LoadFiles__5GGameFv@4
 .extern _jmp_addr_0x00550410
 .extern _jmp_addr_0x005508a0
@@ -203,7 +203,7 @@
 .extern _jmp_addr_0x005e2160
 .extern _jmp_addr_0x005e2890
 .extern _PreDraw__10GLandscapeFv
-.extern _jmp_addr_0x005e42e0
+.extern ?Draw@GLandscape@@QAEIXZ
 .extern _jmp_addr_0x005e5280
 .extern _jmp_addr_0x005e55c0
 .extern _jmp_addr_0x005e57b0
@@ -420,11 +420,11 @@
 
 .globl _jmp_addr_0x0054d920
 .globl _jmp_addr_0x0054da00
-.globl @Process3dEngine__5GGameFv@4
-.globl @StartTurn__5GGameFv@4
-.globl @ProcessTurn__5GGameFv@4
+.globl ?Process3dEngine@GGame@@QAEIXZ
+.globl ?StartTurn@GGame@@QAEIXZ
+.globl ?ProcessTurn@GGame@@QAEIXZ
 .globl @FastNormalize__7LHPointFv@4
-.globl @EndTurn__5GGameFv@4
+.globl ?EndTurn@GGame@@QAEIXZ
 .globl _jmp_addr_0x0054eb40
 .globl _jmp_addr_0x0054ec80
 .globl ?InitOneTimeOnly@GGame@@QAEIXZ
@@ -565,7 +565,7 @@ _jmp_addr_0x0054da6b:    call               _jmp_addr_0x00844ca0                
                          nop                                                              // 0x0054da7d    90
                          nop                                                              // 0x0054da7e    90
                          nop                                                              // 0x0054da7f    90
-@Process3dEngine__5GGameFv@4:    sub                esp, 0x0000014c                               // 0x0054da80    81ec4c010000
+?Process3dEngine@GGame@@QAEIXZ:    sub                esp, 0x0000014c                               // 0x0054da80    81ec4c010000
                          {disp32} mov       al, byte ptr [data_bytes + 0x380a74]          // 0x0054da86    a0746ad400
                          push               ebx                                           // 0x0054da8b    53
                          push               ebp                                           // 0x0054da8c    55
@@ -884,7 +884,7 @@ _jmp_addr_0x0054dead:    call               _jmp_addr_0x006ca6e0                
                          test               al, al                                        // 0x0054ded4    84c0
                          {disp8} je         _jmp_addr_0x0054dee3                          // 0x0054ded6    740b
                          {disp32} lea       ecx, dword ptr [ebp + 0x00205a20]             // 0x0054ded8    8d8d205a2000
-                         call               _jmp_addr_0x005e42e0                          // 0x0054dede    e8fd630900
+                         call               ?Draw@GLandscape@@QAEIXZ                      // 0x0054dede    e8fd630900
 _jmp_addr_0x0054dee3:    xor.s              eax, eax                                      // 0x0054dee3    33c0
                          {disp32} mov       al, byte ptr [ebp + 0x00205a59]               // 0x0054dee5    8a85595a2000
                          {disp8} mov        dword ptr [esp + 0x18], 0x00000001            // 0x0054deeb    c744241801000000
@@ -1341,7 +1341,7 @@ _jmp_addr_0x0054e4d1:    call               _jmp_addr_0x007dee00                
                          nop                                                              // 0x0054e4ed    90
                          nop                                                              // 0x0054e4ee    90
                          nop                                                              // 0x0054e4ef    90
-@StartTurn__5GGameFv@4:  push               ebp                                           // 0x0054e4f0    55
+?StartTurn@GGame@@QAEIXZ:  push               ebp                                           // 0x0054e4f0    55
                          mov.s              ebp, ecx                                      // 0x0054e4f1    8be9
                          {disp32} mov       ecx, dword ptr [ebp + 0x00205a44]             // 0x0054e4f3    8b8d445a2000
                          {disp8} mov        al, byte ptr [ebp + 0x14]                     // 0x0054e4f9    8a4514
@@ -1411,7 +1411,7 @@ _jmp_addr_0x0054e586:    mov.s              ecx, ebp                            
 _jmp_addr_0x0054e5b9:    pop                ebp                                           // 0x0054e5b9    5d
                          ret                                                              // 0x0054e5ba    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054e5bb    e8b932ebff
-@ProcessTurn__5GGameFv@4:sub                esp, 0x10                                     // 0x0054e5c0    83ec10
+?ProcessTurn@GGame@@QAEIXZ:sub                esp, 0x10                                     // 0x0054e5c0    83ec10
                          push               esi                                           // 0x0054e5c3    56
                          push               edi                                           // 0x0054e5c4    57
                          mov.s              esi, ecx                                      // 0x0054e5c5    8bf1
@@ -1657,7 +1657,7 @@ _jmp_addr_0x0054e909:    add                esp, 0x10                           
                          nop                                                              // 0x0054e95d    90
                          nop                                                              // 0x0054e95e    90
                          nop                                                              // 0x0054e95f    90
-@EndTurn__5GGameFv@4:    push               ebx                                           // 0x0054e960    53
+?EndTurn@GGame@@QAEIXZ:    push               ebx                                           // 0x0054e960    53
                          push               esi                                           // 0x0054e961    56
                          mov.s              esi, ecx                                      // 0x0054e962    8bf1
                          call               _jmp_addr_0x007dee00                          // 0x0054e964    e897042900
@@ -2969,7 +2969,7 @@ _jmp_addr_0x0054fc1e:    {disp32} lea       edi, dword ptr [ebx + 0x000059b8]   
                          {disp32} mov       dword ptr [ebx + 0x002502bc], edi             // 0x0054fcc4    89bbbc022500
                          {disp32} mov       dword ptr [ebx + 0x00205e78], edi             // 0x0054fcca    89bb785e2000
                          mov.s              ecx, ebx                                      // 0x0054fcd0    8bcb
-                         call               _jmp_addr_0x00550110                          // 0x0054fcd2    e839040000
+                         call               ?FinishInitialisation@GGame@@QAEXXZ           // 0x0054fcd2    e839040000
                          call               _jmp_addr_0x00865000                          // 0x0054fcd7    e824533100
                          {disp32} mov       dword ptr [ebx + 0x00250538], 0x00000001      // 0x0054fcdc    c7833805250001000000
                          {disp32} mov       dword ptr [ebx + 0x00205d60], edi             // 0x0054fce6    89bb605d2000

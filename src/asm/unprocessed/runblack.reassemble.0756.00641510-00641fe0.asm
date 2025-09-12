@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x0053c480
 .extern _jmp_addr_0x0053ce70
 .extern _jmp_addr_0x00544f80
-.extern @StartGame__5GGameFv@4
+.extern ?StartGame@GGame@@QAEIXZ
 .extern _jmp_addr_0x0054d610
 .extern _jmp_addr_0x0054eb40
 .extern _jmp_addr_0x0054ec80
@@ -933,7 +933,7 @@ _jmp_addr_0x00641ed3:    {disp32} mov      al, byte ptr [data_bytes + 0x30a6dd] 
                          {disp32} mov      eax, dword ptr [data_bytes + 0x2387f8]        // 0x00641ee7    a1f8e7bf00
                          mov               dword ptr [eax], edx                          // 0x00641eec    8910
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641eee    8b0d5c19d000
-                         call              @StartGame__5GGameFv@4                        // 0x00641ef4    e897a2f0ff
+                         call              ?StartGame@GGame@@QAEIXZ                        // 0x00641ef4    e897a2f0ff
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641ef9    8b0d5c19d000
                          call              _jmp_addr_0x0054ec80                          // 0x00641eff    e87ccdf0ff
                          {disp32} mov      eax, dword ptr [_game]                        // 0x00641f04    a15c19d000

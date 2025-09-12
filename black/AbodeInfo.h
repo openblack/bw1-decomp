@@ -99,6 +99,8 @@ void __cdecl dynamic_atexit_destructor_for_AbodeInfos__10GAbodeInfoFv(void) asm(
 bool __fastcall IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town(const struct GAbodeInfo* this, const void* edx, const struct MapCoords* coords, float param_2, float param_3, struct Town* town) asm("?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z");
 // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)
 void __fastcall LoadBinary__10GAbodeInfoFP6LHFile(struct GAbodeInfo* this, const void* edx, struct LHFile* file);
+// win1.41 00405a60 mac inlined GAbodeInfo::GetDescription(void)
+const char* __fastcall GetDescription__10GAbodeInfoFv(struct GAbodeInfo* this) asm("?GetDescription@GAbodeInfo@@QAEPBDXZ");
 
 // Override methods
 

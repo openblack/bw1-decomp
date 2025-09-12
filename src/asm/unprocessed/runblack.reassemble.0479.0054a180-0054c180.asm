@@ -106,7 +106,7 @@
 .extern _jmp_addr_0x0053c470
 .extern _jmp_addr_0x0053ce60
 .extern _jmp_addr_0x00550080
-.extern _jmp_addr_0x00550110
+.extern ?FinishInitialisation@GGame@@QAEXXZ
 .extern _jmp_addr_0x00550390
 .extern _jmp_addr_0x00550410
 .extern _jmp_addr_0x005508a0
@@ -199,7 +199,6 @@
 .extern _jmp_addr_0x005e2160
 .extern _jmp_addr_0x005e2890
 .extern _jmp_addr_0x005e3f60
-.extern _jmp_addr_0x005e42e0
 .extern _jmp_addr_0x005e5280
 .extern _jmp_addr_0x005e55c0
 .extern _jmp_addr_0x005e57b0
