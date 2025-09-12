@@ -331,7 +331,7 @@
 .globl @InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12
 .extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
-.globl @Load__11FixedObjectFR10GameOSFile@12
+.globl ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z
 .globl @__ct__13MultiMapFixedFv@4
 .globl @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
 .globl _jmp_addr_0x0052e280
@@ -505,7 +505,7 @@
 .globl _Load__13GFootpathLinkFR10GameOSFile
 .globl _Load__15GFootpathFinderFR10GameOSFile
 .globl ?CreateCollideData@MultiMapFixed@@UAEXXZ
-.globl _Load__11FixedObjectFR10GameOSFile
+.globl ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z
 .globl _CreateCollideData__14SingleMapFixedFv
 .globl _Load__6ForestFR10GameOSFile
 .globl _Load__17GFootpathLinkSaveFR10GameOSFile
@@ -516,9 +516,9 @@
 .globl ?InsertMapObject@MultiMapFixed@@UAEXXZ
 .globl ?GetMapChild@MultiMapFixed@@UAEPAVObject@@PBUMapCell@@@Z
 .globl ?SetMapChild@MultiMapFixed@@UAEXPAVObject@@PAUMapCell@@@Z
-.globl _InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell
+.globl ?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z
 .globl ?AddFootpathLink@MultiMapFixed@@QAEXPAVGFootpath@@@Z
-.globl _InsertMapObjectToCell__11FixedObjectFP7MapCell
+.globl ?InsertMapObjectToCell@Fixed@@UAEXPAUMapCell@@@Z
 .globl ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z
 .globl ??1Fixed@@UAE@XZ
 .globl ?GetTownArtifactValue@Fixed@@UAEMXZ
@@ -5301,7 +5301,7 @@ _jmp_addr_0x0052de78:    add                edi, 0x14                           
                          nop                                                                     // 0x0052de9d    90
                          nop                                                                     // 0x0052de9e    90
                          nop                                                                     // 0x0052de9f    90
-_InsertMapObjectToCell__11FixedObjectFP7MapCell:
+?InsertMapObjectToCell@Fixed@@UAEXPAUMapCell@@@Z:
 @InsertMapObjectToCell__11FixedObjectFP7MapCell@12:    push               esi                                                  // 0x0052dea0    56
                          push               edi                                                  // 0x0052dea1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052dea2    8b7c240c
@@ -5335,7 +5335,7 @@ _jmp_addr_0x0052deb9:    push               esi                                 
                          nop                                                                     // 0x0052dedd    90
                          nop                                                                     // 0x0052dede    90
                          nop                                                                     // 0x0052dedf    90
-_InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell:
+?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z:
 @InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12:    push               esi                                                  // 0x0052dee0    56
                          push               edi                                                  // 0x0052dee1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052dee2    8b7c240c
@@ -5617,8 +5617,9 @@ _jmp_addr_0x0052e167:    pop                edi                                 
                          ret                0x0004                                               // 0x0052e16b    c20400
                          nop                                                                     // 0x0052e16e    90
                          nop                                                                     // 0x0052e16f    90
-_Load__11FixedObjectFR10GameOSFile:
-@Load__11FixedObjectFR10GameOSFile@12:    push               esi                                                  // 0x0052e170    56
+
+?Load@Fixed@@QAEIAAVGGameOSFile@@@Z:
+                         push               esi                                                  // 0x0052e170    56
                          push               edi                                                  // 0x0052e171    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052e172    8b7c240c
                          mov.s              esi, ecx                                             // 0x0052e176    8bf1
@@ -7577,7 +7578,7 @@ _Load__13MultiMapFixedFR10GameOSFile:
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                          // 0x0052f312    8b74240c
                          mov.s              ebx, ecx                                             // 0x0052f316    8bd9
                          push               esi                                                  // 0x0052f318    56
-                         call               @Load__11FixedObjectFR10GameOSFile@12                // 0x0052f319    e852eeffff
+                         call               ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z                // 0x0052f319    e852eeffff
                          test               eax, eax                                             // 0x0052f31e    85c0
                          {disp32} je        _jmp_addr_0x0052f3be                                 // 0x0052f320    0f8498000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]               // 0x0052f326    a194c9be00

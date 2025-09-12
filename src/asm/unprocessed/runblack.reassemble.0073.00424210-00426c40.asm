@@ -26,7 +26,7 @@
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
 .extern _jmp_addr_0x0052de20
 .extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
-.extern @Load__11FixedObjectFR10GameOSFile@12
+.extern ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z
 .extern _jmp_addr_0x00535850
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -140,7 +140,7 @@
 .globl _globl_ct_0x00426ac0
 .globl _globl_ct_0x00426af0
 .globl _globl_ct_0x00426b20
-.globl _IsObjectFullyInMap__11FixedObjectFv
+.globl ?IsObjectFullyInMap@Fixed@@UAE_NXZ
 .globl ?GetDebugText@GameThing@@QAEPADXZ
 .globl ??1GameThingWithPos@@UAE@XZ
 .globl ?GetScale@GameThingWithPos@@UBEMXZ
@@ -1968,7 +1968,8 @@ _jmp_addr_0x004252d0:    push               esi                                 
                          mov.s              eax, esi                                      // 0x004252ec    8bc6
                          pop                esi                                           // 0x004252ee    5e
                          ret                                                              // 0x004252ef    c3
-_IsObjectFullyInMap__11FixedObjectFv:
+
+?IsObjectFullyInMap@Fixed@@UAE_NXZ:
                          mov                eax, dword ptr [ecx]                          // 0x004252f0    8b01
                          jmp                dword ptr [eax + 0x558]                       // 0x004252f2    ffa058050000
                          nop                                                              // 0x004252f8    90
@@ -2510,7 +2511,7 @@ _jmp_addr_0x004257c5:    pop                edi                                 
                          push               edi                                           // 0x004257d5    57
                          mov.s              edi, ecx                                      // 0x004257d6    8bf9
                          push               esi                                           // 0x004257d8    56
-                         call               @Load__11FixedObjectFR10GameOSFile@12         // 0x004257d9    e892891000
+                         call               ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z         // 0x004257d9    e892891000
                          test               eax, eax                                      // 0x004257de    85c0
                          {disp32} je        _jmp_addr_0x004258b1                          // 0x004257e0    0f84cb000000
                          push               ebx                                           // 0x004257e6    53

@@ -50,7 +50,7 @@
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
 .extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
-.extern @Load__11FixedObjectFR10GameOSFile@12
+.extern ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z
 .extern ?CallVirtualFunctionsForCreation@SingleMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x0052eac0
 .extern ?ApplyThisToMapCoord@SingleMapFixed@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z
@@ -7992,7 +7992,7 @@ _jmp_addr_0x0074c291:    pop                edi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                    // 0x0074c2a2    8b74240c
                          mov.s              ebx, ecx                                       // 0x0074c2a6    8bd9
                          push               esi                                            // 0x0074c2a8    56
-                         call               @Load__11FixedObjectFR10GameOSFile@12          // 0x0074c2a9    e8c21edeff
+                         call               ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z          // 0x0074c2a9    e8c21edeff
                          test               eax, eax                                       // 0x0074c2ae    85c0
                          {disp32} je        _jmp_addr_0x0074c381                           // 0x0074c2b0    0f84cb000000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]         // 0x0074c2b6    a194c9be00

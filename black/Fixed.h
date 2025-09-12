@@ -78,7 +78,7 @@ struct Base* __fastcall __dt__11FixedObjectFv(struct Fixed* this, const void* ed
 // win1.41 0052df20 mac 100e1bd0 FixedObject::GetTownArtifactValue(void)
 float __fastcall GetTownArtifactValue__11FixedObjectFv(struct GameThing* this) asm("?GetTownArtifactValue@Fixed@@UAEMXZ");
 // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)
-uint32_t __fastcall Load__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@Fixed@@QAEIAAVGGameOSFile@@@Z");
 // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
 uint32_t __fastcall Save__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Fixed@@UAEIPAVGameOSFile@@@Z");
 // win1.41 00425c60 mac 100ade90 FixedObject::CanBeFrighteningToCreature(Creature *)
@@ -100,7 +100,7 @@ void __fastcall InsertMapObject__11FixedObjectFv(struct Object* this) asm("?Inse
 // win1.41 0052e5c0 mac 100e0af0 FixedObject::RemoveMapObject(void)
 void __fastcall RemoveMapObject__11FixedObjectFv(struct Object* this) asm("?RemoveMapObject@Fixed@@UAEXXZ");
 // win1.41 0052dea0 mac 100e1d30 FixedObject::InsertMapObjectToCell(MapCell *)
-void __fastcall InsertMapObjectToCell__11FixedObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell);
+void __fastcall InsertMapObjectToCell__11FixedObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell) asm("?InsertMapObjectToCell@Fixed@@UAEXPAUMapCell@@@Z");
 // win1.41 00401450 mac 1057a200 FixedObject::CanBeCrushed(void)
 bool32_t __fastcall CanBeCrushed__11FixedObjectFv(struct Object* this) asm("?CanBeCrushed@Fixed@@UAE_NXZ");
 // win1.41 0052eb90 mac 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
@@ -120,9 +120,9 @@ struct GameThing* __fastcall GetTownArtifact__11FixedObjectFv(struct Object* thi
 // win1.41 00401480 mac 10588280 FixedObject::IsTownArtifact(void)
 bool32_t __fastcall IsTownArtifact__11FixedObjectFv(struct Object* this) asm("?IsTownArtifact@Fixed@@UAE_NXZ");
 // win1.41 0052dee0 mac 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
-void __fastcall InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell(struct Fixed* this, const void* edx, struct MapCell* cell);
+void __fastcall InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell(struct Fixed* this, const void* edx, struct MapCell* cell) asm("?InsertMapObjectToCellAssumeFixed@Fixed@@UAEXPAUMapCell@@@Z");
 // win1.41 004252f0 mac 100a9cd0 FixedObject::IsObjectFullyInMap(void)
-bool __fastcall IsObjectFullyInMap__11FixedObjectFv(struct Fixed* this);
+bool __fastcall IsObjectFullyInMap__11FixedObjectFv(struct Fixed* this) asm("?IsObjectFullyInMap@Fixed@@UAE_NXZ");
 
 struct SingleMapFixedVftable
 {
