@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _GetSmallTextSize__Fv
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @AutoScroll__9SetupListFb@9
 .extern @__ct__9SetupListFiiiii@28
@@ -1186,7 +1186,7 @@ _jmp_addr_0x0061a660:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          {disp8} lea       ecx, dword ptr [ebp + 0x01]                          // 0x0061a6a8    8d4d01
                          push              ecx                                                  // 0x0061a6ab    51
                          mov.s             ecx, edi                                             // 0x0061a6ac    8bcf
-                         call              @__ct__12SetupControlFiiiiiPw@32                     // 0x0061a6ae    e89debdeff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z                     // 0x0061a6ae    e89debdeff
                          mov               dword ptr [edi], 0x008ab5c0                          // 0x0061a6b3    c707c0b58a00
                          {disp32} mov      dword ptr [edi + 0x0000023c], ebx                    // 0x0061a6b9    899f3c020000
                          {disp32} mov      byte ptr [edi + 0x0000022a], bl                      // 0x0061a6bf    889f2a020000

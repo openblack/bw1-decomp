@@ -30,7 +30,7 @@ struct SetupControlVftable
   void (__fastcall* Click)(struct SetupControl* this, const void* edx, int x, int y);
   void (__fastcall* KeyDown)(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
   void (__fastcall* Char)(struct SetupControl* this, const void* edx, int character);
-  struct SetupControl* (__fastcall* __dt)(struct SetupControl* this, const void* edx, bool param_1);  /* 0x30 */
+  void (__fastcall* __dt)(struct SetupControl* this, const void* edx, bool param_1);  /* 0x30 */
 };
 static_assert(sizeof(struct SetupControlVftable) == 0x34, "Data type is of wrong size");
 
@@ -78,12 +78,12 @@ struct SetupControl* __fastcall __ct__12SetupControlFiiiiiPw(struct SetupControl
 // Non-virtual Destructors
 
 // win1.41 004093c0 mac inlined SetupControl::~SetupControl(void)
-void __fastcall __dt__12SetupControlFv(struct SetupControl* this);
+void __fastcall __dt__12SetupControlFv(struct SetupControl* this) asm("??1SetupControl@@UAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 inlined mac inlined SetupControl::GetTextSize(void)
-int __fastcall GetTextSize__12SetupControlFv(const struct SetupControl* this) asm("?GetTextSize@SetupControl@@QAEHXZ");
+int __fastcall GetTextSize__12SetupControlFv(struct SetupControl* this) asm("?GetTextSize@SetupControl@@QAEHXZ");
 // win1.41 00409210 mac 1057a320 SetupControl::SetToolTip(unsigned long)
 void __fastcall SetToolTip__12SetupControlFUl(struct SetupControl* this, const void* edx, uint32_t tooltip_id) asm("?SetToolTip@SetupControl@@QAEXK@Z");
 // win1.41 004092f0 mac 100c4fd0 SetupControl::SetToolTip(wchar_t *)
@@ -106,10 +106,10 @@ void __fastcall MouseUp__12SetupControlFiib(struct SetupControl* this, const voi
 // win1.41 00409370 mac 103e3120 SetupControl::Click(int, int)
 void __fastcall Click__12SetupControlFii(struct SetupControl* this, const void* edx, int x, int y) asm("?Click@SetupControl@@UAEXHH@Z");
 // win1.41 00409380 mac 100d4e40 SetupControl::KeyDown(int, int)
-void __fastcall KeyDown__12SetupControlFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupControl@@UAEXHH@Z");
+void __fastcall KeyDown__12SetupControlFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupControl@@UAEXW4LHKey@@W4LHKeyMod@@@Z");
 // win1.41 00409390 mac 105049b0 SetupControl::Char(int)
 void __fastcall Char__12SetupControlFi(struct SetupControl* this, const void* edx, int character) asm("?Char@SetupControl@@UAEXH@Z");
 // win1.41 004093a0 mac 100c48e0 SetupControl::~SetupControl(bool)
-void __fastcall __dt__12SetupControlFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__12SetupControlFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_GSetupControl@@UAEPAXI@Z");
 
 #endif /* BW1_DECOMP_SETUP_CONTROL_INCLUDED_H */

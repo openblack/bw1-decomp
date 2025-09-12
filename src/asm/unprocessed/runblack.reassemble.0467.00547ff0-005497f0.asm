@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x00408100
 .extern _jmp_addr_0x00408240
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__9SetupListFiiiii@28
 .extern @DeleteString__9SetupListFi@12
@@ -139,7 +139,7 @@ _jmp_addr_0x005480f8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               0x50                                          // 0x00548105    6a50
                          push               0x3                                           // 0x00548107    6a03
                          mov.s              ecx, esi                                      // 0x00548109    8bce
-                         call               @__ct__12SetupControlFiiiiiPw@32              // 0x0054810b    e84011ecff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0054810b    e84011ecff
                          mov                dword ptr [esi], 0x008ab5c0                   // 0x00548110    c706c0b58a00
                          {disp32} mov       dword ptr [esi + 0x0000023c], ebx             // 0x00548116    899e3c020000
                          {disp32} mov       byte ptr [esi + 0x0000022a], bl               // 0x0054811c    889e2a020000
@@ -182,7 +182,7 @@ _jmp_addr_0x00548170:    push               0x000001d8                          
                          push               0x0000015e                                    // 0x005481a7    685e010000
                          push               0x6                                           // 0x005481ac    6a06
                          mov.s              ecx, esi                                      // 0x005481ae    8bce
-                         call               @__ct__12SetupControlFiiiiiPw@32              // 0x005481b0    e89b10ecff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x005481b0    e89b10ecff
                          mov                dword ptr [esi], 0x008ab5c0                   // 0x005481b5    c706c0b58a00
                          {disp32} mov       dword ptr [esi + 0x0000023c], ebx             // 0x005481bb    899e3c020000
                          {disp32} mov       byte ptr [esi + 0x0000022a], bl               // 0x005481c1    889e2a020000

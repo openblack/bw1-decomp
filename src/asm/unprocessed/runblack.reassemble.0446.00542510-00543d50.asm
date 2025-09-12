@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x00408100
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @__ct__12SetupPictureFiiiP12LH3DMaterialiibib@38
 .extern @__ct__17SetupColourPickerFiiiiiiP12LH3DMaterial@33
@@ -135,7 +135,7 @@ _jmp_addr_0x005425e7:    {disp8} mov        ecx, dword ptr [eax + 0x08]         
                          push               0x00000096                                    // 0x005425f4    6896000000
                          push               0x000003e7                                    // 0x005425f9    68e7030000
                          mov.s              ecx, esi                                      // 0x005425fe    8bce
-                         call               @__ct__12SetupControlFiiiiiPw@32              // 0x00542600    e84b6cecff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x00542600    e84b6cecff
                          mov                dword ptr [esi], 0x008ab5c0                   // 0x00542605    c706c0b58a00
                          {disp32} mov       dword ptr [esi + 0x0000023c], 0x00000004      // 0x0054260b    c7863c02000004000000
                          {disp32} mov       byte ptr [esi + 0x0000022a], bl               // 0x00542615    889e2a020000

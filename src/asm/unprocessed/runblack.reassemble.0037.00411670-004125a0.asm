@@ -3,11 +3,8 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
 
-.extern ??_DSetupControl@@QAEXXZ
+.extern ??1SetupControl@@UAE@XZ
 .extern ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z
 .extern ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z
 .extern _jmp_addr_0x007a1400
@@ -37,12 +34,10 @@
 .globl ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z
 .globl ??_GSetupStaticText@@UAEPAXI@Z
 
-start_0x00411670_0x004125a0:
-// Snippet: asm, [0x00411670, 0x0041255f)
 ??_GSetupStaticText@@UAEPAXI@Z:
                          push               esi                                           // 0x00411670    56
                          mov.s              esi, ecx                                      // 0x00411671    8bf1
-                         call               ??_DSetupControl@@QAEXXZ                      // 0x00411673    e8487dffff
+                         call               ??1SetupControl@@UAE@XZ                       // 0x00411673    e8487dffff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00411678    f644240801
                          {disp8} je         _jmp_addr_0x00411688                          // 0x0041167d    7409
                          push               esi                                           // 0x0041167f    56

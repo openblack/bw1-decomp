@@ -9,7 +9,7 @@
 
 .extern _GetMidTextSize__Fv
 .extern _GetSmallTextSize__Fv
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__9SetupListFiiiii@28
 .extern @DeleteString__9SetupListFi@12
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
@@ -341,7 +341,7 @@ _jmp_addr_0x0056d5b9:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          push              0x28                                          // 0x0056d5c6    6a28
                          push              0x1                                           // 0x0056d5c8    6a01
                          mov.s             ecx, esi                                      // 0x0056d5ca    8bce
-                         call              @__ct__12SetupControlFiiiiiPw@32              // 0x0056d5cc    e87fbce9ff
+                         call              ??0SetupControl@@QAE@HHHHHPA_W@Z              // 0x0056d5cc    e87fbce9ff
                          mov               dword ptr [esi], 0x008ab5c0                   // 0x0056d5d1    c706c0b58a00
                          {disp32} mov      dword ptr [esi + 0x0000023c], 0x00000001      // 0x0056d5d7    c7863c02000001000000
                          {disp32} mov      byte ptr [esi + 0x0000022a], 0x00             // 0x0056d5e1    c6862a02000000

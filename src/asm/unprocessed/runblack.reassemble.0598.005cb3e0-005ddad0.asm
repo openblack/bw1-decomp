@@ -12,7 +12,7 @@
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
-.extern @__ct__12SetupControlFiiiiiPw@32
+.extern ??0SetupControl@@QAE@HHHHHPA_W@Z
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__9SetupEditFiiiiiPwi@33
 .extern ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z
@@ -25226,7 +25226,7 @@ _jmp_addr_0x005dd490:    mov                dword ptr [ecx], 0x0092b1e0         
                          push               0x32                                           // 0x005dd4e5    6a32
                          push               0x000007d3                                     // 0x005dd4e7    68d3070000
                          mov.s              ecx, esi                                       // 0x005dd4ec    8bce
-                         call               @__ct__12SetupControlFiiiiiPw@32               // 0x005dd4ee    e85dbde2ff
+                         call               ??0SetupControl@@QAE@HHHHHPA_W@Z               // 0x005dd4ee    e85dbde2ff
                          mov                dword ptr [esi], 0x008ab5c0                    // 0x005dd4f3    c706c0b58a00
                          {disp32} mov       dword ptr [esi + 0x0000023c], 0x00000004       // 0x005dd4f9    c7863c02000004000000
                          {disp32} mov       byte ptr [esi + 0x0000022a], 0x00              // 0x005dd503    c6862a02000000
