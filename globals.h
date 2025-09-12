@@ -6,6 +6,11 @@
 #pragma clang diagnostic ignored "-Wmacro-redefined"
 #pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <d3d.h> /* For IDirect3DDevice7 */
+#pragma clang diagnostic pop
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpragma-pack"
+#pragma clang diagnostic ignored "-Wmacro-redefined"
+#pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <d3dtypes.h> /* For D3DMATRIX */
 #pragma clang diagnostic pop
 #include <stdbool.h> /* For bool */
@@ -69,10 +74,10 @@ struct LHSys;
 struct LiquidParticleGroup;
 struct MPFEConnectionStatus;
 struct MapCoords;
+struct MobileWallHug;
 struct PlayerProfile;
 struct ScriptDLL;
 struct SetRenderModeData;
-struct SetupRect;
 struct SetupThing;
 struct SetupThingDraw_t;
 struct VillagerName;
@@ -110,17 +115,16 @@ struct globals_t
   float* FLOAT_00c2a150;
   float* g_maxX;  /* 0x00c2ab00 */
   float* g_maxY;  /* 0x00c2ab04 */
-  void (__cdecl** _FPinit)(void);  /* 0x00c2d39c */
+  void (__cdecl** _FPinit)( void );  /* 0x00c2d39c */
   int* __app_type;  /* 0x00c2d674 */
-  LPCRITICAL_SECTION (*_locktable)[48];  /* 0x00c2da60 */
+  LPCRITICAL_SECTION (*_locktable)[0x30];  /* 0x00c2da60 */
   int32_t (*sin_lookup_table)[0x800];  /* 0x00c31614 */
   int32_t (*cos_lookup_table)[0x800];  /* 0x00c31e14 */
   char (*s_parsed_line)[0x200];  /* 0x00c341c0 */
   float* DAT_00c371d4;
-  uint32_t* g_delta_time__8LH3DTech;  /* 0x00c38134 ?g_delta_time@LH3DTech@@2MA */
+  uint32_t* g_delta_time__8LH3DTech;  /* 0x00c38134 */
   uint32_t* DAT_00c386d0;
   uint32_t* DAT_00c38714;
-  // End of data's non-virtual allocations
   struct GAbodeInfo (*GAbodeInfo_ARRAY_00c3c690)[0x93];
   struct SetupThing* SetupThing;  /* 0x00c4cc80 */
   uint32_t* UINT_00c58604;
@@ -147,8 +151,8 @@ struct globals_t
   int* DAT_00d019bc;
   struct GGameInfo* GGameInfo_00d019f8;
   struct GameThing_t* GameThing;  /* 0x00d06080 */
-  struct Villager__StateTable* VillagerStateTable;
-  struct Animal__StateTable* AnimalStateTable;
+  struct Villager__StateTable* VillagerStateTable;  /* 0x00d09198 */
+  struct Animal__StateTable* AnimalStateTable;  /* 0x00d12108 */
   void** DAT_00d13f3c;
   struct HelpTextDataBase* HelpTextDataBasePatch;  /* 0x00d17ca0 */
   struct HelpTextDataBase* HelpTextDataBase_00d17ca8;
@@ -211,8 +215,9 @@ struct globals_t
   float* near_clipping;  /* 0x00e839e0 */
   struct InfoTransform* g_info_transform;  /* 0x00e839e4 */
   int* DAT_00e83a20;
-  int* __error_mode; /* 0x00e84220 */
-  void (**_adbgmsg)(void); /* 0x00e843dc */
+  char** _aenvptr;  /* 0x00e84218 */
+  int* __error_mode;  /* 0x00e84220 */
+  void (__cdecl** _adbgmsg)( void );  /* 0x00e843dc */
   struct LHSys* LHSys;  /* 0x00e85040 */
   RTL_CRITICAL_SECTION* lpCriticalSection_00e8c118;
   RTL_CRITICAL_SECTION* lpCriticalSection_00e90650;
@@ -270,8 +275,7 @@ struct globals_t
   void (__cdecl** PTR_00fa51d0)(int param_0, int param_1);
   struct LH3DSubMesh** LH3DSubMesh_g_current_sub_mesh;  /* 0x00fa93bc */
   HANDLE* _crtheap;  /* 0x00facca8 */
-  char** _acmdln;/* 0x00fadccc */
-  char** _aenvptr; /* 0x00e84218 */
+  char** _acmdln;  /* 0x00fadccc */
   struct custom_footpath_display_control_t* custom_footpath_display_control;  /* 0x00fae800 */
 };
 
@@ -298,9 +302,9 @@ static struct globals_t globals = {
     .FLOAT_00c2a150 = (float*)0x00c2a150,
     .g_maxX = (float*)0x00c2ab00,
     .g_maxY = (float*)0x00c2ab04,
-    ._FPinit = (void (__cdecl**)(void)) 0x00c2d39c,
+    ._FPinit = (void (__cdecl**)( void ))0x00c2d39c,
     .__app_type = (int*)0x00c2d674,
-    ._locktable = (LPCRITICAL_SECTION (*)[48]) 0x00c2da60,
+    ._locktable = (LPCRITICAL_SECTION (*)[48])0x00c2da60,
     .sin_lookup_table = (int32_t (*)[2048])0x00c31614,
     .cos_lookup_table = (int32_t (*)[2048])0x00c31e14,
     .s_parsed_line = (char (*)[512])0x00c341c0,
@@ -399,8 +403,9 @@ static struct globals_t globals = {
     .near_clipping = (float*)0x00e839e0,
     .g_info_transform = (struct InfoTransform*)0x00e839e4,
     .DAT_00e83a20 = (int*)0x00e83a20,
+    ._aenvptr = (char**)0x00e84218,
     .__error_mode = (int*)0x00e84220,
-    ._adbgmsg = (void (**)(void))0x00e843dc,
+    ._adbgmsg = (void (__cdecl**)( void ))0x00e843dc,
     .LHSys = (struct LHSys*)0x00e85040,
     .lpCriticalSection_00e8c118 = (RTL_CRITICAL_SECTION*)0x00e8c118,
     .lpCriticalSection_00e90650 = (RTL_CRITICAL_SECTION*)0x00e90650,
@@ -459,7 +464,6 @@ static struct globals_t globals = {
     .LH3DSubMesh_g_current_sub_mesh = (struct LH3DSubMesh**)0x00fa93bc,
     ._crtheap = (HANDLE*)0x00facca8,
     ._acmdln = (char**)0x00fadccc,
-    ._aenvptr = (char**)0x00e84218,
     .custom_footpath_display_control = (struct custom_footpath_display_control_t*)0x00fae800,
 };
 

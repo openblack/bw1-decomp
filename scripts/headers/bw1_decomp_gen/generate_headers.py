@@ -316,7 +316,7 @@ if __name__ == "__main__":
     vftable_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__vt__")], global_decls)
     vftable_address_look_up = {i["name"].removeprefix("__vt__"): i for i in vftable_addresses}
 
-    locator_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTICompleObjectLocator__")], global_decls)
+    locator_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTICompleObjectLocator__")], remainder_globals)
     locator_address_look_up = {i["name"].removeprefix("__RTTICompleObjectLocator__"): i for i in locator_addresses}
 
     class_method_look_up, class_static_method_look_up, class_list_functions, remainder_functions = find_methods(db['functions'])
