@@ -492,7 +492,7 @@
 .globl ?IsCastShadowAtNight@MobileStatic@@UAEIXZ
 .globl ?IsResourceStore@Rock@@UAE_NW4RESOURCE_TYPE@@@Z
 .globl ?SetPlayer@Rock@@UAEXPAVGPlayer@@@Z
-.globl ?IsRock_0@Rock@@UAEIXZ
+.globl ?IsRock@Rock@@UAEIXZ
 .globl ?IsMovable@Rock@@UAE_NXZ
 .globl ?GetCreatureMimicType@Rock@@UAEIXZ
 .globl ?CanBeAttackedByCreature@Rock@@UAEIPAVCreature@@@Z
@@ -9116,7 +9116,7 @@ _jmp_addr_0x004395c0:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          nop                                                                     // 0x0043972d    90
                          nop                                                                     // 0x0043972e    90
                          nop                                                                     // 0x0043972f    90
-?IsRock_0@Rock@@UAEIXZ:
+?IsRock@Rock@@UAEIXZ:
                          mov                eax, 0x00000001                                      // 0x00439730    b801000000
                          ret                                                                     // 0x00439735    c3
                          nop                                                                     // 0x00439736    90

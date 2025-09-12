@@ -375,8 +375,8 @@
 .globl ?GetBaseInfo@GFieldTypeInfo@@UAEPAVGBaseInfo@@AAI@Z
 .globl ??_GGFieldTypeInfo@@UAEPAXI@Z
 .globl ?GetCreatureBeliefType@Field@@UAEIXZ
-.globl ?IsField_1@Field@@UAEIPAVCreature@@@Z
-.globl ?IsField_0@Field@@UAEIXZ
+.globl ?IsField@Field@@UAEIPAVCreature@@@Z
+.globl ?IsField@Field@@UAEIXZ
 .globl ?BenefitsFromHavingWaterSprinkledOnIt@Field@@UAEIPAVCreature@@@Z
 .globl ?CanBePoodOn@Field@@UAEIPAVCreature@@@Z
 .globl ?CanBePickedUpByCreature@Field@@UAEIPAVCreature@@@Z
@@ -413,7 +413,7 @@
 .globl ?ValidForPlaceInHand@Field@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?ApplyWaterSpell@Field@@UAEMPAVSpellWater@@@Z
 .globl ?Process@Field@@UAEIXZ
-.globl ?IsTouching_2@Field@@UBE_NPAUMapCoords@@@Z
+.globl ?IsTouching@Field@@UBE_NPAUMapCoords@@@Z
 .globl ?GetArrivePos@Field@@UAEPAUMapCoords@@PAU2@@Z
 .globl ?InterfaceSetInMagicHand@Field@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?ProcessInInteract@Field@@UAEIPAVGInterfaceStatus@@@Z
@@ -425,7 +425,7 @@
 .globl ?Save@Field@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@Field@@UAEIAAVGameOSFile@@@Z
 .globl ?GetDiscipleStateIfInteractedWith@Field@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
-.globl ?CanBeDestroyedBySpell_1@Field@@UAEIPAVSpell@@@Z
+.globl ?CanBeDestroyedBySpell@Field@@UAEIPAVSpell@@@Z
 .globl ?GetOverwriteInteractableToolTip@Field@@UAEIXZ
 .globl ?DestroyedByEffect@Field@@UAEIPAVGPlayer@@M@Z
 .globl ?ReduceLifeDueToBurning@Field@@UAEXMPAVGPlayer@@@Z
@@ -14961,7 +14961,7 @@ _jmp_addr_0x00527e87:    push               0x40                                
                          nop                                                                     // 0x00527f2d    90
                          nop                                                                     // 0x00527f2e    90
                          nop                                                                     // 0x00527f2f    90
-?IsField_1@Field@@UAEIPAVCreature@@@Z:
+?IsField@Field@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                      // 0x00527f30    b801000000
                          ret                0x0004                                               // 0x00527f35    c20400
                          nop                                                                     // 0x00527f38    90
@@ -14972,7 +14972,7 @@ _jmp_addr_0x00527e87:    push               0x40                                
                          nop                                                                     // 0x00527f3d    90
                          nop                                                                     // 0x00527f3e    90
                          nop                                                                     // 0x00527f3f    90
-?IsField_0@Field@@UAEIXZ:
+?IsField@Field@@UAEIXZ:
                          mov                eax, 0x00000001                                      // 0x00527f40    b801000000
                          ret                                                                     // 0x00527f45    c3
                          nop                                                                     // 0x00527f46    90
@@ -16990,7 +16990,7 @@ _jmp_addr_0x00529285:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052928d    90
                          nop                                                                     // 0x0052928e    90
                          nop                                                                     // 0x0052928f    90
-?IsTouching_2@Field@@UBE_NPAUMapCoords@@@Z:
+?IsTouching@Field@@UBE_NPAUMapCoords@@@Z:
                          {disp8} mov        edx, dword ptr [esp + 0x04]                          // 0x00529290    8b542404
                          fild               dword ptr [edx]                                      // 0x00529294    db02
                          {disp32} fmul      dword ptr [rdata_bytes + 0x30ad4]                    // 0x00529296    d80dd49a8d00
@@ -18175,7 +18175,7 @@ _jmp_addr_0x00529fe4:    pop                edi                                 
                          pop                esi                                                  // 0x00529fe7    5e
                          ret                0x0008                                               // 0x00529fe8    c20800
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00529feb    e88978edff
-?CanBeDestroyedBySpell_1@Field@@UAEIPAVSpell@@@Z:
+?CanBeDestroyedBySpell@Field@@UAEIPAVSpell@@@Z:
                          xor.s              eax, eax                                             // 0x00529ff0    33c0
                          ret                0x0004                                               // 0x00529ff2    c20400
                          nop                                                                     // 0x00529ff5    90

@@ -259,7 +259,7 @@
 .globl ?GetScale@Creature@@UAEMXZ
 .globl ?GetAge@Creature@@UAEIXZ
 .globl ?SetAge@Creature@@UAEXI@Z
-.globl ?CanBeDestroyedBySpell_1@Creature@@UAEIPAVSpell@@@Z
+.globl ?CanBeDestroyedBySpell@Creature@@UAEIPAVSpell@@@Z
 .globl ?GetMaxAlignmentChangePerGameTurn@Creature@@UAEMXZ
 .globl ?GetImpressiveValue@Creature@@UAEMPAVLiving@@PAVReaction@@@Z
 .globl ?GetRunningSpeedInMetres@Creature@@UAEMXZ
@@ -4537,7 +4537,7 @@ _jmp_addr_0x0047b1c0:    {disp32} mov       eax, dword ptr [ecx + 0x00000160]   
                          nop                                                              // 0x0047b1dd    90
                          nop                                                              // 0x0047b1de    90
                          nop                                                              // 0x0047b1df    90
-?CanBeDestroyedBySpell_1@Creature@@UAEIPAVSpell@@@Z:
+?CanBeDestroyedBySpell@Creature@@UAEIPAVSpell@@@Z:
                          xor.s              eax, eax                                      // 0x0047b1e0    33c0
                          ret                0x0004                                        // 0x0047b1e2    c20400
                          nop                                                              // 0x0047b1e5    90

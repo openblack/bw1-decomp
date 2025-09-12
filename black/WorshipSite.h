@@ -124,9 +124,9 @@ uint32_t __fastcall IsSuitableForCreatureAction__11WorshipSiteFv(struct GameThin
 // win1.41 004e4b60 mac 105e3fa0 WorshipSite::CanHaveMagicFoodCastOnMe(Creature *)
 uint32_t __fastcall CanHaveMagicFoodCastOnMe__11WorshipSiteFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanHaveMagicFoodCastOnMe@WorshipSite@@UAEIPAVCreature@@@Z");
 // win1.41 0055dca0 mac inlined WorshipSite::IsWorshipSite_1(void)
-uint32_t __fastcall IsWorshipSite_1__11WorshipSiteFv(struct GameThingWithPos* this) asm("?IsWorshipSite_1@WorshipSite@@UAEIXZ");
+uint32_t __fastcall IsWorshipSite_1__11WorshipSiteFv(struct GameThingWithPos* this) asm("?IsWorshipSite@WorshipSite@@UAEIXZ");
 // win1.41 0055dc90 mac inlined WorshipSite::IsWorshipSite_0(Creature *)
-uint32_t __fastcall IsWorshipSite_0__11WorshipSiteFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsWorshipSite_0@WorshipSite@@UAEIPAVCreature@@@Z");
+uint32_t __fastcall IsWorshipSite_0__11WorshipSiteFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsWorshipSite@WorshipSite@@UAEIPAVCreature@@@Z");
 // win1.41 0055dcb0 mac 105b3f30 WorshipSite::GetWorshipSite(void)
 struct WorshipSite* __fastcall GetWorshipSite__11WorshipSiteFv(struct GameThingWithPos* this) asm("?GetWorshipSite@WorshipSite@@UAEPAVWorshipSite@@XZ");
 // win1.41 0077c310 mac 105b0430 WorshipSite::CalculateDesireForFood(void)

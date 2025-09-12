@@ -88,7 +88,7 @@ void __fastcall PhysicsEditorCreate__4RockFi(struct GameThingWithPos* this, cons
 // win1.41 006e7a60 mac 1013c420 Rock::GetOverwriteTapToolTip(void)
 uint32_t __fastcall GetOverwriteTapToolTip__4RockFv(struct GameThingWithPos* this) asm("?GetOverwriteTapToolTip@Rock@@UAEIXZ");
 // win1.41 00439730 mac inlined Rock::IsRock_0(void)
-uint32_t __fastcall IsRock_0__4RockFv(struct GameThingWithPos* this) asm("?IsRock_0@Rock@@UAEIXZ");
+uint32_t __fastcall IsRock_0__4RockFv(struct GameThingWithPos* this) asm("?IsRock@Rock@@UAEIXZ");
 // win1.41 00439760 mac 100b4030 Rock::CanBeAttackedByCreature(Creature *)
 uint32_t __fastcall CanBeAttackedByCreature__4RockFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBeAttackedByCreature@Rock@@UAEIPAVCreature@@@Z");
 // win1.41 006e7a70 mac 1013c3c0 Rock::CanBePickedUpByCreature(Creature *)

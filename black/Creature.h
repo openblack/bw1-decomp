@@ -453,7 +453,7 @@ uint32_t __fastcall ValidToFightThisToObject__8CreatureFP16GInterfaceStatusRC9Ma
 // win1.41 004c5fe0 mac 102345e0 Creature::FightThisToObject(GInterfaceStatus *, Object *)
 uint32_t __fastcall FightThisToObject__8CreatureFP16GInterfaceStatusP6Object(struct Object* this, const void* edx, struct GInterfaceStatus* param_1, struct Object* param_2) asm("?FightThisToObject@Creature@@UAEIPAVGInterfaceStatus@@PAVObject@@@Z");
 // win1.41 0047b1e0 mac inlined Creature::CanBeDestroyedBySpell_1(Spell *)
-uint32_t __fastcall CanBeDestroyedBySpell_1__8CreatureFP5Spell(struct Object* this, const void* edx, struct Spell* param_1) asm("?CanBeDestroyedBySpell_1@Creature@@UAEIPAVSpell@@@Z");
+uint32_t __fastcall CanBeDestroyedBySpell_1__8CreatureFP5Spell(struct Object* this, const void* edx, struct Spell* param_1) asm("?CanBeDestroyedBySpell@Creature@@UAEIPAVSpell@@@Z");
 // win1.41 00479b80 mac 101d6f90 Creature::GetPhysicsConstantsType(void)
 uint32_t __fastcall GetPhysicsConstantsType__8CreatureFv(struct Object* this) asm("?GetPhysicsConstantsType@Creature@@UAEIXZ");
 // win1.41 00479b90 mac 101d6db0 Creature::SetUpPhysOb(PhysOb *)

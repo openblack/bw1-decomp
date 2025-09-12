@@ -75,7 +75,7 @@ uint32_t __fastcall Save__12PileResourceFR10GameOSFile(struct GameThing* this, c
 // win1.41 0066e3d0 mac 10119880 PileResource::GetLife(void)
 float __fastcall GetLife__12PileResourceFv(struct GameThingWithPos* this) asm("?GetLife@PileResource@@UAEMXZ");
 // win1.41 0066e3c0 mac inlined PileResource::IsField_1(Creature *)
-uint32_t __fastcall IsField_1__12PileResourceFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsField_1@PileResource@@UAEIPAVCreature@@@Z");
+uint32_t __fastcall IsField_1__12PileResourceFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsField@PileResource@@UAEIPAVCreature@@@Z");
 // win1.41 0066e390 mac 101199a0 PileResource::CanBePickedUpByCreature(Creature *)
 uint32_t __fastcall CanBePickedUpByCreature__12PileResourceFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBePickedUpByCreature@PileResource@@UAEIPAVCreature@@@Z");
 // win1.41 0066ed60 mac 10117ce0 PileResource::IsPileResource(void)

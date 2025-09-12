@@ -119,9 +119,9 @@ uint32_t __fastcall CanBeUsedForRepair__4TreeFP8Creature(struct GameThingWithPos
 // win1.41 0055d940 mac 10159790 Tree::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
 uint32_t __fastcall BenefitsFromHavingWaterSprinkledOnIt__4TreeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?BenefitsFromHavingWaterSprinkledOnIt@Tree@@UAEIPAVCreature@@@Z");
 // win1.41 0055d9d0 mac inlined Tree::IsTree_1(void)
-uint32_t __fastcall IsTree_1__4TreeFv(struct GameThingWithPos* this) asm("?IsTree_1@Tree@@UAEIXZ");
+uint32_t __fastcall IsTree_1__4TreeFv(struct GameThingWithPos* this) asm("?IsTree@Tree@@UAEIXZ");
 // win1.41 0055d920 mac inlined Tree::IsTree_0(Creature *)
-uint32_t __fastcall IsTree_0__4TreeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTree_0@Tree@@UAEIPAVCreature@@@Z");
+uint32_t __fastcall IsTree_0__4TreeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTree@Tree@@UAEIPAVCreature@@@Z");
 // win1.41 004e46e0 mac 105e4dc0 Tree::IsTreeNotTooNearPlannedForest(Creature *)
 uint32_t __fastcall IsTreeNotTooNearPlannedForest__4TreeFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTreeNotTooNearPlannedForest@Tree@@UAEIPAVCreature@@@Z");
 // win1.41 0074c0a0 mac 10156670 Tree::IsTreeBigEnoughForCreature(Creature *)

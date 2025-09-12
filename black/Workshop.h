@@ -72,9 +72,9 @@ uint32_t __fastcall CanActAsAContainer__8WorkshopFP8Creature(struct GameThingWit
 // win1.41 007792f0 mac 101648e0 Workshop::IsStoragePit(Creature *)
 uint32_t __fastcall IsStoragePit__8WorkshopFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsStoragePit@Workshop@@UAEIPAVCreature@@@Z");
 // win1.41 007792c0 mac inlined Workshop::IsWorkshop_0(void)
-uint32_t __fastcall IsWorkshop_0__8WorkshopFv(struct GameThingWithPos* this) asm("?IsWorkshop_0@Workshop@@UAEIXZ");
+uint32_t __fastcall IsWorkshop_0__8WorkshopFv(struct GameThingWithPos* this) asm("?IsWorkshop@Workshop@@UAEIXZ");
 // win1.41 007792d0 mac inlined Workshop::IsWorkshop_1(Creature *)
-uint32_t __fastcall IsWorkshop_1__8WorkshopFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsWorkshop_1@Workshop@@UAEIPAVCreature@@@Z");
+uint32_t __fastcall IsWorkshop_1__8WorkshopFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsWorkshop@Workshop@@UAEIPAVCreature@@@Z");
 // win1.41 0077a6d0 mac 10161cd0 Workshop::CreateBuildingSite(void)
 uint32_t __fastcall CreateBuildingSite__8WorkshopFv(struct GameThingWithPos* this) asm("?CreateBuildingSite@Workshop@@UAEIXZ");
 // win1.41 0077a610 mac 10161f90 Workshop::ScaffoldMoved(Scaffold *)
