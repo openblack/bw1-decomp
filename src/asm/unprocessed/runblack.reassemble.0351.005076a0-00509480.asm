@@ -741,7 +741,7 @@ _jmp_addr_0x00507e39:    {disp32} mov       ecx, dword ptr [esi + 0x00000160]   
                          {disp8} mov        dword ptr [ecx + 0x34], edx                   // 0x00507e4f    895134
 _jmp_addr_0x00507e52:    {disp32} mov       esi, dword ptr [esi + 0x00000160]             // 0x00507e52    8bb660010000
                          {disp8} fld        dword ptr [esi + 0x1c]                        // 0x00507e58    d9461c
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]              // 0x00507e5b    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                   // 0x00507e5b    d81d2cb28a00
                          fnstsw             ax                                            // 0x00507e61    dfe0
                          test               ah, 0x41                                      // 0x00507e63    f6c441
                          {disp8} je         _jmp_addr_0x00507e6f                          // 0x00507e66    7407
@@ -1151,7 +1151,7 @@ _jmp_addr_0x0050811a:    mov                eax, 0x00000002                     
                          {disp8} fstp       dword ptr [esp + 0x24]                        // 0x0050830d    d95c2424
                          {disp8} fstp       dword ptr [esp + 0x28]                        // 0x00508311    d95c2428
                          call               _jmp_addr_0x006e8160                          // 0x00508315    e846fe1d00
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]              // 0x0050831a    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                   // 0x0050831a    d81d2cb28a00
                          add                esp, 0x0c                                     // 0x00508320    83c40c
                          fnstsw             ax                                            // 0x00508323    dfe0
                          test               ah, 0x41                                      // 0x00508325    f6c441
@@ -1225,7 +1225,7 @@ _jmp_addr_0x005083b7:    call               _jmp_addr_0x0047d640                
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x0050841e    d95c2430
                          {disp8} fstp       dword ptr [esp + 0x34]                        // 0x00508422    d95c2434
                          call               _jmp_addr_0x006e8160                          // 0x00508426    e835fd1d00
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]              // 0x0050842b    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                   // 0x0050842b    d81d2cb28a00
                          add                esp, 0x0c                                     // 0x00508431    83c40c
                          fnstsw             ax                                            // 0x00508434    dfe0
                          test               ah, 0x41                                      // 0x00508436    f6c441
@@ -1537,7 +1537,7 @@ _jmp_addr_0x0050878a:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          cmp                dword ptr [ecx + 0x00001bdc], 0x32            // 0x005087cb    83b9dc1b000032
                          {disp8} jg         _jmp_addr_0x00508809                          // 0x005087d2    7f35
 _jmp_addr_0x005087d4:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x005087d4    d9442404
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]              // 0x005087d8    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                   // 0x005087d8    d81d2cb28a00
                          fnstsw             ax                                            // 0x005087de    dfe0
                          test               ah, 0x01                                      // 0x005087e0    f6c401
                          {disp8} je         _jmp_addr_0x00508821                          // 0x005087e3    743c

@@ -2660,7 +2660,7 @@ _jmp_addr_0x00546c0d:    {disp32} mov       dword ptr [esi + 0x000004a4], ebx   
                          nop                                                              // 0x00546c2e    90
                          nop                                                              // 0x00546c2f    90
 _jmp_addr_0x00546c30:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x00546c30    d9442404
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x223c]              // 0x00546c34    d81d3cb28a00
+                         {disp32} fcomp     dword ptr [__real@3e999999]                   // 0x00546c34    d81d3cb28a00
                          fnstsw             ax                                            // 0x00546c3a    dfe0
                          test               ah, 0x01                                      // 0x00546c3c    f6c401
                          {disp8} je         _jmp_addr_0x00546c6e                          // 0x00546c3f    742d

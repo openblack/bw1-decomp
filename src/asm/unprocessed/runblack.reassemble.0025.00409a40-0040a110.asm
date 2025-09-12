@@ -287,13 +287,13 @@ _Drag__11SetupSliderFii:
 _jmp_addr_0x00409cca:    cmp.s              ecx, eax                                 // 0x00409cca    3bc8
                          {disp8} jge        _jmp_addr_0x00409ce0                     // 0x00409ccc    7d12
 _jmp_addr_0x00409cce:    {disp32} fld       dword ptr [esi + 0x00000240]             // 0x00409cce    d98640020000
-                         {disp32} fsub      dword ptr [rdata_bytes + 0x222c]         // 0x00409cd4    d8252cb28a00
+                         {disp32} fsub      dword ptr [__real@3dcccccd]              // 0x00409cd4    d8252cb28a00
                          {disp32} fstp      dword ptr [esi + 0x0000023c]             // 0x00409cda    d99e3c020000
 _jmp_addr_0x00409ce0:    add.s              ebx, eax                                 // 0x00409ce0    03d8
                          cmp.s              ecx, ebx                                 // 0x00409ce2    3bcb
                          {disp8} jl         _jmp_addr_0x00409cf8                     // 0x00409ce4    7c12
                          {disp32} fld       dword ptr [esi + 0x00000240]             // 0x00409ce6    d98640020000
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x222c]         // 0x00409cec    d8052cb28a00
+                         {disp32} fadd      dword ptr [__real@3dcccccd]              // 0x00409cec    d8052cb28a00
 _jmp_addr_0x00409cf2:    {disp32} fstp      dword ptr [esi + 0x0000023c]             // 0x00409cf2    d99e3c020000
 _jmp_addr_0x00409cf8:    {disp32} fld       dword ptr [esi + 0x0000023c]             // 0x00409cf8    d9863c020000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00409cfe    d81d98a38a00

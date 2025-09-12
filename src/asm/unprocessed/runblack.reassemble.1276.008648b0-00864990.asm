@@ -31,13 +31,13 @@ start_0x008648b0_0x00864990:
                          {disp32} fmul      dword ptr [rdata_bytes + 0xfabc0] // 0x008648eb    d80dc03b9a00
                          fadd.s             st(0), st(0)                      // 0x008648f1    dcc0
                          fsqrt                                                // 0x008648f3    d9fa
-                         {disp32} fld       dword ptr [rdata_bytes + 0x222c]  // 0x008648f5    d9052cb28a00
+                         {disp32} fld       dword ptr [__real@3dcccccd]       // 0x008648f5    d9052cb28a00
                          fcomp              st(1)                             // 0x008648fb    d8d9
                          fnstsw             ax                                // 0x008648fd    dfe0
                          test               ah, 0x41                          // 0x008648ff    f6c441
                          {disp8} jne        _jmp_addr_0x0086490c              // 0x00864902    7508
                          fstp               st(0)                             // 0x00864904    ddd8
-                         {disp32} fld       dword ptr [rdata_bytes + 0x222c]  // 0x00864906    d9052cb28a00
+                         {disp32} fld       dword ptr [__real@3dcccccd]       // 0x00864906    d9052cb28a00
 _jmp_addr_0x0086490c:    {disp32} fld       dword ptr [esi + 0x00064034]      // 0x0086490c    d98634400600
                          {disp32} fcomp     dword ptr [esi + 0x0006403c]      // 0x00864912    d89e3c400600
                          fnstsw             ax                                // 0x00864918    dfe0

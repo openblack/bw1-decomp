@@ -366,7 +366,7 @@ _jmp_addr_0x006f1d7b:    push               0x00c0cbf4                          
                          {disp8} mov        dword ptr [esp + 0x24], edx                          // 0x006f1e69    89542424
                          fstp               dword ptr [esp]                                      // 0x006f1e6d    d91c24
                          {disp8} fld        dword ptr [esp + 0x10]                               // 0x006f1e70    d9442410
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2270]                     // 0x006f1e74    d80d70b28a00
+                         {disp32} fmul      dword ptr [__real@437f0000]                          // 0x006f1e74    d80d70b28a00
                          call               _jmp_addr_0x007a1400                                 // 0x006f1e7a    e881f50a00
                          {disp8} fld        dword ptr [esp + 0x14]                               // 0x006f1e7f    d9442414
                          push               eax                                                  // 0x006f1e83    50

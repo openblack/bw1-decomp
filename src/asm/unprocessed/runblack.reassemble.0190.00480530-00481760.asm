@@ -1385,7 +1385,7 @@ _jmp_addr_0x00481410:    {disp32} mov       eax, dword ptr [data_bytes + 0x29e20
                          cmp.s              eax, esi                                 // 0x00481422    3bc6
                          {disp32} jne       _jmp_addr_0x00481724                     // 0x00481424    0f85fa020000
 _jmp_addr_0x0048142a:    {disp32} fld       dword ptr [esi + 0x0000009c]             // 0x0048142a    d9869c000000
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x2244]         // 0x00481430    d81d44b28a00
+                         {disp32} fcomp     dword ptr [__real@3e4ccccd]              // 0x00481430    d81d44b28a00
                          fnstsw             ax                                       // 0x00481436    dfe0
                          test               ah, 0x41                                 // 0x00481438    f6c441
                          {disp32} jne       _jmp_addr_0x004815b0                     // 0x0048143b    0f856f010000

@@ -275,7 +275,7 @@ _jmp_addr_0x004898f0:    {disp32} mov       eax, dword ptr [esi + 0x00004af4]   
                          push               ecx                                                  // 0x0048990b    51
                          mov.s              ecx, esi                                             // 0x0048990c    8bce
                          {disp32} fmul      dword ptr [rdata_bytes + 0x26174]                    // 0x0048990e    d80d74f18c00
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2260]                     // 0x00489914    dc0560b28a00
+                         {disp32} fadd      qword ptr [__real@3fe0000000000000]                  // 0x00489914    dc0560b28a00
                          fstp               dword ptr [esp]                                      // 0x0048991a    d91c24
                          push               edi                                                  // 0x0048991d    57
                          call               _jmp_addr_0x00489ce0                                 // 0x0048991e    e8bd030000

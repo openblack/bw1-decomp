@@ -983,7 +983,7 @@ _jmp_addr_0x005e0882:    {disp8} fld        dword ptr [esp + 0x10]              
                          fdivp              st(1), st                                      // 0x005e0898    def9
 _jmp_addr_0x005e089a:    {disp32} fld       dword ptr [_rdata_float1p0]                    // 0x005e089a    d90590a38a00
                          fsub               st, st(1)                                      // 0x005e08a0    d8e1
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2270]               // 0x005e08a2    d80d70b28a00
+                         {disp32} fmul      dword ptr [__real@437f0000]                    // 0x005e08a2    d80d70b28a00
                          call               _jmp_addr_0x007a1400                           // 0x005e08a8    e8530b1c00
                          {disp32} fcomp     qword ptr [rdata_bytes + 0x1ec68]              // 0x005e08ad    dc1d687c8c00
                          {disp8} mov        edx, dword ptr [ebx + 0x4c]                    // 0x005e08b3    8b534c
@@ -3257,7 +3257,7 @@ _jmp_addr_0x005e22e0:    {disp8} fld        dword ptr [esp + 0x04]              
                          fstp               st(0)                                          // 0x005e22f1    ddd8
                          {disp32} fld       dword ptr [_rdata_float0p0]                    // 0x005e22f3    d90598a38a00
                          {disp8} jmp        _jmp_addr_0x005e2356                           // 0x005e22f9    eb5b
-_jmp_addr_0x005e22fb:    {disp32} fcom      dword ptr [rdata_bytes + 0x2228]               // 0x005e22fb    d81528b28a00
+_jmp_addr_0x005e22fb:    {disp32} fcom      dword ptr [__real@447a0000]                    // 0x005e22fb    d81528b28a00
                          fnstsw             ax                                             // 0x005e2301    dfe0
                          test               ah, 0x41                                       // 0x005e2303    f6c441
                          {disp8} jne        _jmp_addr_0x005e2312                           // 0x005e2306    750a

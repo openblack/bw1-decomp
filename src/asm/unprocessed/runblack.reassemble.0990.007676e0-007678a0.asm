@@ -76,7 +76,7 @@ start_0x007676e0_0x007678a0:
                          {disp8} mov        dword ptr [esp + 0x0c], ecx              // 0x00767794    894c240c
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000       // 0x00767798    c744241000000000
                          {disp8} fild       qword ptr [esp + 0x0c]                   // 0x007677a0    df6c240c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x224c]         // 0x007677a4    d80d4cb28a00
+                         {disp32} fmul      dword ptr [__real@3fc00000]              // 0x007677a4    d80d4cb28a00
                          call               _jmp_addr_0x007a1400                     // 0x007677aa    e8519c0300
                          pop                edi                                      // 0x007677af    5f
                          pop                esi                                      // 0x007677b0    5e

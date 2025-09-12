@@ -1806,7 +1806,7 @@ _jmp_addr_0x0060ce44:    mov.s              ecx, ebx                            
                          {disp32} jne       _jmp_addr_0x0060ccca                          // 0x0060ce58    0f856cfeffff
                          fld                dword ptr [ebx]                               // 0x0060ce5e    d903
                          {disp8} fdiv       dword ptr [esp + 0x14]                        // 0x0060ce60    d8742414
-                         {disp32} fcom      dword ptr [rdata_bytes + 0x2270]              // 0x0060ce64    d81570b28a00
+                         {disp32} fcom      dword ptr [__real@437f0000]                   // 0x0060ce64    d81570b28a00
                          fst                dword ptr [ebx]                               // 0x0060ce6a    d913
                          fnstsw             ax                                            // 0x0060ce6c    dfe0
                          test               ah, 0x41                                      // 0x0060ce6e    f6c441

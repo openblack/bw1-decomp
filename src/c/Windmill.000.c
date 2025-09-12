@@ -691,6 +691,29 @@ const struct AbodeVftable __vt__8Windmill = {
   GetTribe__5AbodeFv,
 };
 
+const float rdata_float_6_2831855 asm("__real@40c90fdb") = 6.2831855f;
+const float rdata_float_0_00075075077 asm("__real@3a440441") = 0.00075075077f;
+const float rdata_float_0_0022522523 asm("__real@3b130c31") = 0.0022522523f;
+const double rdata_double_0_100000001490116119385 asm("__real@3fb999999999999a") = 0.100000001490116119385;
+const float rdata_float_1000_0 asm("__real@447a0000") = 1000.0f;
+const float rdata_float_0_1 asm("__real@3dcccccd") = 0.1f;
+const float rdata_float_1_1 asm("__real@3f8ccccd") = 1.1f;
+const float rdata_float_300_0 asm("__real@43960000") = 300.0f;
+const float rdata_float_0_7 asm("__real@3f333333") = 0.7f;
+const float rdata_float_0_3 asm("__real@3e999999") = 0.3f;
+const float rdata_float_1400_0 asm("__real@44af0000") = 1400.0f;
+const float rdata_float_0_2 asm("__real@3e4ccccd") = 0.2f;
+const float rdata_float_2000_0 asm("__real@44fa0000") = 2000.0f;
+const float rdata_float_1_5 asm("__real@3fc00000") = 1.5f;
+const uint32_t LH3DColor_ARRAY_008ab250[4] asm("?LH3DColor_ARRAY_008ab250@@3PAKA") = {
+    0xffffffff, 0xffffffff, 0xffff8000, 0xff000000
+};
+const double rdata_double_0_5 asm("__real@3fe0000000000000") = 0.5;
+const float rdata_float_0_16666667 asm("__real@3e2aaaab") = 0.16666667f;
+const float rdata_float_0_33333334 asm("__real@3eaaaaab") = 0.33333334f;
+const float rdata_float_255_0 asm("__real@437f0000") = 255.0f;
+const float rdata_float_0_75 asm("__real@3f400000") = 0.75f;
+
 __attribute__((XOR32rr_REV))
 void __fastcall Open__8WindmillFv(struct Windmill* this)
 {
@@ -739,22 +762,22 @@ void __fastcall PreDraw__8WindmillFv(struct Windmill* this)
     asm("{disp32} fld       dword ptr [data_bytes + 0x286c78]");             // 0x004059f6    d90578ccc400
     asm("fcos");                                                             // 0x004059fc    d9ff
     asm("fabs");                                                             // 0x004059fe    d9e1
-    asm("{disp32} fmul      qword ptr [rdata_bytes + 0x2220]");              // 0x00405a00    dc0d20b28a00
+    asm("{disp32} fmul      qword ptr [__real@3fb999999999999a]");           // 0x00405a00    dc0d20b28a00
     asm("fld                st(1)");                                         // 0x00405a06    d9c1
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0x2218]");              // 0x00405a08    d80d18b28a00
+    asm("{disp32} fmul      dword ptr [__real@3b130c31]");                   // 0x00405a08    d80d18b28a00
     asm("faddp              st(1), st");                                     // 0x00405a0e    dec1
     asm("{disp32} fsubr     dword ptr [data_bytes + 0x286c74]");             // 0x00405a10    d82d74ccc400
     asm("{disp32} fstp      dword ptr [data_bytes + 0x286c74]");             // 0x00405a16    d91d74ccc400
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0x2214]");              // 0x00405a1c    d80d14b28a00
+    asm("{disp32} fmul      dword ptr [__real@3a440441]");                   // 0x00405a1c    d80d14b28a00
     asm("{disp32} fadd      dword ptr [data_bytes + 0x286c78]");             // 0x00405a22    d80578ccc400
-    asm("{disp32} fcom      dword ptr [rdata_bytes + 0x2210]");              // 0x00405a28    d81510b28a00
+    asm("{disp32} fcom      dword ptr [__real@40c90fdb]     ");              // 0x00405a28    d81510b28a00
     asm("{disp32} fst       dword ptr [data_bytes + 0x286c78]");             // 0x00405a2e    d91578ccc400
     asm("fnstsw             ax");                                            // 0x00405a34    dfe0
     asm("test               ah, 0x41");                                      // 0x00405a36    f6c441
     asm("{disp8} jne        _jmp_addr_0x00405a55");                          // 0x00405a39    751a
     asm("_jmp_addr_0x00405a3b:");
-    asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2210]");              // 0x00405a3b    d82510b28a00
-    asm("{disp32} fcom      dword ptr [rdata_bytes + 0x2210]");              // 0x00405a41    d81510b28a00
+    asm("{disp32} fsub      dword ptr [__real@40c90fdb]     ");              // 0x00405a3b    d82510b28a00
+    asm("{disp32} fcom      dword ptr [__real@40c90fdb]     ");              // 0x00405a41    d81510b28a00
     asm("fnstsw             ax");                                            // 0x00405a47    dfe0
     asm("test               ah, 0x41");                                      // 0x00405a49    f6c441
     asm("{disp8} je         _jmp_addr_0x00405a3b");                          // 0x00405a4c    74ed

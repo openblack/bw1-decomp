@@ -437,7 +437,7 @@ _jmp_addr_0x0056de69:    cmp                dword ptr [data_bytes + 0x504228], 0
 _jmp_addr_0x0056de8e:    {disp32} fld       dword ptr [esi + 0x00000090]                  // 0x0056de8e    d98690000000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x19c40]             // 0x0056de94    d80d402c8c00
                          {disp8} fst        dword ptr [esp + 0x10]                        // 0x0056de9a    d9542410
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]              // 0x0056de9e    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                   // 0x0056de9e    d81d2cb28a00
                          fnstsw             ax                                            // 0x0056dea4    dfe0
                          test               ah, 0x41                                      // 0x0056dea6    f6c441
                          {disp8} jne        _jmp_addr_0x0056deb7                          // 0x0056dea9    750c

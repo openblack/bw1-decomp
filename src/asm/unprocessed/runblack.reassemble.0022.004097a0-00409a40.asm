@@ -224,10 +224,10 @@ _KeyDown__11SetupSliderFii:
                          {disp32} mov       dword ptr [ecx + 0x0000023c], 0x3f800000 // 0x00409983    c7813c0200000000803f
                          {disp8} jmp        _jmp_addr_0x004099af                     // 0x0040998d    eb20
                          {disp32} fld       dword ptr [ecx + 0x0000023c]             // 0x0040998f    d9813c020000
-                         {disp32} fsub      dword ptr [rdata_bytes + 0x222c]         // 0x00409995    d8252cb28a00
+                         {disp32} fsub      dword ptr [__real@3dcccccd]              // 0x00409995    d8252cb28a00
                          {disp8} jmp        _jmp_addr_0x004099a9                     // 0x0040999b    eb0c
                          {disp32} fld       dword ptr [ecx + 0x0000023c]             // 0x0040999d    d9813c020000
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x222c]         // 0x004099a3    d8052cb28a00
+                         {disp32} fadd      dword ptr [__real@3dcccccd]              // 0x004099a3    d8052cb28a00
 _jmp_addr_0x004099a9:    {disp32} fstp      dword ptr [ecx + 0x0000023c]             // 0x004099a9    d9993c020000
 _jmp_addr_0x004099af:    mov                dl, 0x01                                 // 0x004099af    b201
 _jmp_addr_0x004099b1:    {disp32} fld       dword ptr [ecx + 0x0000023c]             // 0x004099b1    d9813c020000

@@ -1644,7 +1644,7 @@ _jmp_addr_0x0066a816:    mov                esi, dword ptr [edi]                
                          mov                edx, dword ptr [esi]                          // 0x0066a827    8b16
                          mov.s              ecx, esi                                      // 0x0066a829    8bce
                          call               dword ptr [edx + 0x424]                       // 0x0066a82b    ff9224040000
-                         {disp32} fcom      dword ptr [rdata_bytes + 0x2244]              // 0x0066a831    d81544b28a00
+                         {disp32} fcom      dword ptr [__real@3e4ccccd]                   // 0x0066a831    d81544b28a00
                          fnstsw             ax                                            // 0x0066a837    dfe0
                          test               ah, 0x01                                      // 0x0066a839    f6c401
                          {disp8} je         _jmp_addr_0x0066a846                          // 0x0066a83c    7408
@@ -5142,7 +5142,7 @@ _globl_ct_0x0066cb60:    {disp32} jmp       _jmp_addr_0x0066cb70                
                          nop                                                              // 0x0066cb6e    90
                          nop                                                              // 0x0066cb6f    90
 _jmp_addr_0x0066cb70:    fldln2                                                           // 0x0066cb70    d9ed
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2260]              // 0x0066cb72    dd0560b28a00
+                         {disp32} fld       qword ptr [__real@3fe0000000000000]           // 0x0066cb72    dd0560b28a00
                          fyl2x                                                            // 0x0066cb78    d9f1
                          {disp32} fdivr     dword ptr [_rdata_float1p0]                   // 0x0066cb7a    d83d90a38a00
                          {disp32} fstp      dword ptr [data_bytes + 0x386654]             // 0x0066cb80    d91d54c6d400

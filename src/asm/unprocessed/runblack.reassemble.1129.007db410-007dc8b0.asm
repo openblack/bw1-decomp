@@ -393,7 +393,7 @@ _jmp_addr_0x007db770:    {disp8} fld       dword ptr [esp + 0x08]               
                          fnstsw            ax                                             // 0x007db780    dfe0
                          test              ah, 0x01                                       // 0x007db782    f6c401
                          {disp8} je        _jmp_addr_0x007db78d                           // 0x007db785    7406
-                         {disp32} fadd     dword ptr [rdata_bytes + 0x2210]               // 0x007db787    d80510b28a00
+                         {disp32} fadd     dword ptr [__real@40c90fdb]                    // 0x007db787    d80510b28a00
 _jmp_addr_0x007db78d:    ret                                                              // 0x007db78d    c3
                          nop                                                              // 0x007db78e    90
                          nop                                                              // 0x007db78f    90

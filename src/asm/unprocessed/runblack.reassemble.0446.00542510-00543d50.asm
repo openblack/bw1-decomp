@@ -1435,12 +1435,12 @@ _jmp_addr_0x005437b2:    sub.s              edx, eax                            
                          sub.s              esi, edi                                      // 0x005437bc    2bf7
                          {disp8} mov        dword ptr [esp + 0x64], esi                   // 0x005437be    89742464
                          fmul               st, st(1)                                     // 0x005437c2    d8c9
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2244]              // 0x005437c4    d80d44b28a00
+                         {disp32} fmul      dword ptr [__real@3e4ccccd]                   // 0x005437c4    d80d44b28a00
                          {disp32} fadd      dword ptr [data_bytes + 0x30a4dc]             // 0x005437ca    d805dc04cd00
                          {disp32} fstp      dword ptr [data_bytes + 0x30a4dc]             // 0x005437d0    d91ddc04cd00
                          {disp8} fild       dword ptr [esp + 0x64]                        // 0x005437d6    db442464
                          fmul               st, st(1)                                     // 0x005437da    d8c9
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x222c]              // 0x005437dc    d80d2cb28a00
+                         {disp32} fmul      dword ptr [__real@3dcccccd]                   // 0x005437dc    d80d2cb28a00
                          {disp32} fsubr     dword ptr [data_bytes + 0x30a4d8]             // 0x005437e2    d82dd804cd00
                          {disp32} fstp      dword ptr [data_bytes + 0x30a4d8]             // 0x005437e8    d91dd804cd00
                          fstp               st(0)                                         // 0x005437ee    ddd8

@@ -940,7 +940,7 @@ _jmp_addr_0x0048aed4:    push               0x33                                
                          {disp8} fadd       dword ptr [esp + 0x1c]                               // 0x0048af42    d844241c
                          {disp8} fstp       dword ptr [esp + 0x3c]                               // 0x0048af46    d95c243c
                          {disp32} fld       dword ptr [ecx + 0x00000090]                         // 0x0048af4a    d98190000000
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x222c]                     // 0x0048af50    d80d2cb28a00
+                         {disp32} fmul      dword ptr [__real@3dcccccd]                          // 0x0048af50    d80d2cb28a00
                          fstp               dword ptr [esp]                                      // 0x0048af56    d91c24
                          push               0x3                                                  // 0x0048af59    6a03
                          call               _jmp_addr_0x006de570                                 // 0x0048af5b    e810362500
@@ -2177,7 +2177,7 @@ _jmp_addr_0x0048be7e:    {disp8} lea        edx, dword ptr [esp + 0x10]         
                          test               ah, 0x01                                             // 0x0048bec4    f6c401
                          {disp8} jne        _jmp_addr_0x0048bf3e                                 // 0x0048bec7    7575
                          {disp8} fld        dword ptr [esp + 0x28]                               // 0x0048bec9    d9442428
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x224c]                     // 0x0048becd    d81d4cb28a00
+                         {disp32} fcomp     dword ptr [__real@3fc00000]                          // 0x0048becd    d81d4cb28a00
                          fnstsw             ax                                                   // 0x0048bed3    dfe0
                          test               ah, 0x41                                             // 0x0048bed5    f6c441
                          {disp8} je         _jmp_addr_0x0048bf3e                                 // 0x0048bed8    7464
@@ -2187,7 +2187,7 @@ _jmp_addr_0x0048be7e:    {disp8} lea        edx, dword ptr [esp + 0x10]         
                          test               ah, 0x01                                             // 0x0048bee6    f6c401
                          {disp8} jne        _jmp_addr_0x0048bf3e                                 // 0x0048bee9    7553
                          {disp8} fld        dword ptr [esp + 0x24]                               // 0x0048beeb    d9442424
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x224c]                     // 0x0048beef    d81d4cb28a00
+                         {disp32} fcomp     dword ptr [__real@3fc00000]                          // 0x0048beef    d81d4cb28a00
                          fnstsw             ax                                                   // 0x0048bef5    dfe0
                          test               ah, 0x41                                             // 0x0048bef7    f6c441
                          {disp8} je         _jmp_addr_0x0048bf3e                                 // 0x0048befa    7442

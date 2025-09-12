@@ -232,7 +232,7 @@ _jmp_addr_0x0082a46d:    {disp8} mov        ecx, dword ptr [edi + 0x10]         
                          {disp8} mov        dword ptr [esp + 0x44], ebp                   // 0x0082a492    896c2444
                          {disp8} fild       qword ptr [esp + 0x40]                        // 0x0082a496    df6c2440
                          {disp32} fmul      dword ptr [rdata_bytes + 0x82320]             // 0x0082a49a    d80d20b39200
-                         {disp32} fsubr     dword ptr [rdata_bytes + 0x2270]              // 0x0082a4a0    d82d70b28a00
+                         {disp32} fsubr     dword ptr [__real@437f0000]                   // 0x0082a4a0    d82d70b28a00
                          call               _jmp_addr_0x007a1400                          // 0x0082a4a6    e8556ff7ff
                          {disp8} mov        ecx, dword ptr [edi + 0x10]                   // 0x0082a4ab    8b4f10
                          shl                eax, 0x18                                     // 0x0082a4ae    c1e018
@@ -1571,7 +1571,7 @@ _SetProjMatrix__10LH3DRenderFP9D3DMATRIXP9D3DMATRIXfff:    {disp8} fld        dw
                          {disp8} je         _jmp_addr_0x0082b2ed                          // 0x0082b2e3    7408
                          fstp               st(0)                                         // 0x0082b2e5    ddd8
                          {disp32} fld       dword ptr [rdata_bytes + 0x1e62c]             // 0x0082b2e7    d9052c768c00
-_jmp_addr_0x0082b2ed:    {disp32} fmul      qword ptr [rdata_bytes + 0x2260]              // 0x0082b2ed    dc0d60b28a00
+_jmp_addr_0x0082b2ed:    {disp32} fmul      qword ptr [__real@3fe0000000000000]           // 0x0082b2ed    dc0d60b28a00
                          push               esi                                           // 0x0082b2f3    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x0082b2f4    8b74240c
                          push               edi                                           // 0x0082b2f8    57

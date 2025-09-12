@@ -76,7 +76,7 @@ _jmp_addr_0x004116a1:    {disp8} fild       dword ptr [esp + 0x10]              
                          fstp               dword ptr [esp]                               // 0x004116d5    d91c24
                          push               ecx                                           // 0x004116d8    51
                          {disp32} fld       dword ptr [_near_clipping]                    // 0x004116d9    d905e039e800
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x224c]              // 0x004116df    d80d4cb28a00
+                         {disp32} fmul      dword ptr [__real@3fc00000]                   // 0x004116df    d80d4cb28a00
                          fstp               dword ptr [esp]                               // 0x004116e5    d91c24
                          push               ecx                                           // 0x004116e8    51
                          {disp8} fild       dword ptr [esp + 0x30]                        // 0x004116e9    db442430
@@ -214,7 +214,7 @@ _jmp_addr_0x0041180d:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          and                eax, 0x000000ff                               // 0x00411864    25ff000000
                          {disp32} fld       dword ptr [_near_clipping]                    // 0x00411869    d905e039e800
                          push               eax                                           // 0x0041186f    50
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x224c]              // 0x00411870    d80d4cb28a00
+                         {disp32} fmul      dword ptr [__real@3fc00000]                   // 0x00411870    d80d4cb28a00
                          {disp8} mov        eax, dword ptr [esp + 0x48]                   // 0x00411876    8b442448
                          push               ecx                                           // 0x0041187a    51
                          push               edx                                           // 0x0041187b    52
@@ -271,7 +271,7 @@ _jmp_addr_0x004118e8:    {disp8} fild       dword ptr [esp + 0x24]              
                          push               edx                                           // 0x00411910    52
                          {disp32} fld       dword ptr [_near_clipping]                    // 0x00411911    d905e039e800
                          push               eax                                           // 0x00411917    50
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x224c]              // 0x00411918    d80d4cb28a00
+                         {disp32} fmul      dword ptr [__real@3fc00000]                   // 0x00411918    d80d4cb28a00
                          {disp8} mov        eax, dword ptr [esp + 0x50]                   // 0x0041191e    8b442450
                          push               ecx                                           // 0x00411922    51
                          fstp               dword ptr [esp]                               // 0x00411923    d91c24
@@ -403,7 +403,7 @@ _jmp_addr_0x00411a82:    cmp                eax, 0x01                           
                          {disp8} mov        dword ptr [esp + 0x18], ecx                   // 0x00411a96    894c2418
 _jmp_addr_0x00411a9a:    {disp32} fld       dword ptr [_near_clipping]                    // 0x00411a9a    d905e039e800
                          push               0x45800000                                    // 0x00411aa0    6800008045
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x224c]              // 0x00411aa5    d80d4cb28a00
+                         {disp32} fmul      dword ptr [__real@3fc00000]                   // 0x00411aa5    d80d4cb28a00
                          push               0x0                                           // 0x00411aab    6a00
                          push               0x0                                           // 0x00411aad    6a00
                          push               0x0                                           // 0x00411aaf    6a00

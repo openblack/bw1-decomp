@@ -130,7 +130,7 @@ _jmp_addr_0x0046dfdf:    {disp8} lea        ecx, dword ptr [esi + 0x78]         
                          call               _jmp_addr_0x0074caf0                          // 0x0046e021    e8caea2d00
 _jmp_addr_0x0046e026:    {disp8} fld        dword ptr [esp + 0x10]                        // 0x0046e026    d9442410
                          {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x0046e02a    8b442410
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]              // 0x0046e02e    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                   // 0x0046e02e    d81d2cb28a00
                          {disp8} mov        edx, dword ptr [esp + 0x0c]                   // 0x0046e034    8b54240c
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x0046e038    8b4c2414
                          {disp32} mov       dword ptr [data_bytes + 0x34df34], eax        // 0x0046e03c    a3343fd100

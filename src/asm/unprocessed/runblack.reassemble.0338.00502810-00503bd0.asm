@@ -633,7 +633,7 @@ _jmp_addr_0x00502e70:    sub                esp, 0x20                           
                          {disp8} fstp       dword ptr [esp + 0x20]                               // 0x00502eba    d95c2420
                          {disp8} fstp       dword ptr [esp + 0x24]                               // 0x00502ebe    d95c2424
                          call               _jmp_addr_0x006e8160                                 // 0x00502ec2    e899521e00
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]                     // 0x00502ec7    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                          // 0x00502ec7    d81d2cb28a00
                          add                esp, 0x0c                                            // 0x00502ecd    83c40c
                          fnstsw             ax                                                   // 0x00502ed0    dfe0
                          test               ah, 0x01                                             // 0x00502ed2    f6c401
@@ -811,7 +811,7 @@ _jmp_addr_0x00503055:    mov                eax, 0x00000002                     
                          fsubp              st(1), st                                            // 0x00503107    dee9
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x00503109    d95c2414
                          call               _jmp_addr_0x006e8160                                 // 0x0050310d    e84e501e00
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]                     // 0x00503112    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                          // 0x00503112    d81d2cb28a00
                          add                esp, 0x04                                            // 0x00503118    83c404
                          fnstsw             ax                                                   // 0x0050311b    dfe0
                          test               ah, 0x01                                             // 0x0050311d    f6c401

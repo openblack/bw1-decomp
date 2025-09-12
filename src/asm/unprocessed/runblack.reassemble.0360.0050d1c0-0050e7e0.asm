@@ -227,14 +227,14 @@ _jmp_addr_0x0050d3e3:    {disp8} fadd       dword ptr [esp + 0x14]              
                          fnstsw             ax                                            // 0x0050d3f5    dfe0
                          test               ah, 0x01                                      // 0x0050d3f7    f6c401
                          {disp8} je         _jmp_addr_0x0050d404                          // 0x0050d3fa    7408
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x2210]              // 0x0050d3fc    d80510b28a00
+                         {disp32} fadd      dword ptr [__real@40c90fdb]                   // 0x0050d3fc    d80510b28a00
                          {disp8} jmp        _jmp_addr_0x0050d41b                          // 0x0050d402    eb17
-_jmp_addr_0x0050d404:    {disp32} fcomp     dword ptr [rdata_bytes + 0x2210]              // 0x0050d404    d81d10b28a00
+_jmp_addr_0x0050d404:    {disp32} fcomp     dword ptr [__real@40c90fdb]                   // 0x0050d404    d81d10b28a00
                          fnstsw             ax                                            // 0x0050d40a    dfe0
                          test               ah, 0x41                                      // 0x0050d40c    f6c441
                          {disp8} jne        _jmp_addr_0x0050d41f                          // 0x0050d40f    750e
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x0050d411    d9442410
-                         {disp32} fsub      dword ptr [rdata_bytes + 0x2210]              // 0x0050d415    d82510b28a00
+                         {disp32} fsub      dword ptr [__real@40c90fdb]                   // 0x0050d415    d82510b28a00
 _jmp_addr_0x0050d41b:    {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0050d41b    d95c2410
 _jmp_addr_0x0050d41f:    {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x0050d41f    8b542410
                          push               edx                                           // 0x0050d423    52

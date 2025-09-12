@@ -1062,7 +1062,7 @@ _jmp_addr_0x00490587:    {disp32} mov       eax, dword ptr [esi + 0x00004994]   
 _jmp_addr_0x004905b4:    {disp32} mov       ecx, dword ptr [esi + 0x00004864]             // 0x004905b4    8b8e64480000
                          {disp8} mov        dword ptr [esp + 0x08], ecx                   // 0x004905ba    894c2408
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x004905be    d9442408
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2228]              // 0x004905c2    d80d28b28a00
+                         {disp32} fmul      dword ptr [__real@447a0000]                   // 0x004905c2    d80d28b28a00
                          call               _jmp_addr_0x007a1400                          // 0x004905c8    e8330e3100
                          add.s              edi, eax                                      // 0x004905cd    03f8
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30dc70]        // 0x004905cf    a1703ccd00

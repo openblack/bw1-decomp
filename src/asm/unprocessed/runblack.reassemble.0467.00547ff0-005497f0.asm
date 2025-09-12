@@ -775,7 +775,7 @@ _jmp_addr_0x00548890:    push               ebx                                 
                          {disp8} mov        si, word ptr [esp + 0x20]                     // 0x005488a4    668b742420
                          push               edi                                           // 0x005488a9    57
                          {disp8} mov        edi, dword ptr [esp + 0x14]                   // 0x005488aa    8b7c2414
-_jmp_addr_0x005488ae:    {disp32} fld       dword ptr [rdata_bytes + 0x2210]              // 0x005488ae    d90510b28a00
+_jmp_addr_0x005488ae:    {disp32} fld       dword ptr [__real@40c90fdb]                   // 0x005488ae    d90510b28a00
                          {disp8} fild       dword ptr [esp + 0x20]                        // 0x005488b4    db442420
 _jmp_addr_0x005488b8:    fld                st(1)                                         // 0x005488b8    d9c1
                          fcos                                                             // 0x005488ba    d9ff

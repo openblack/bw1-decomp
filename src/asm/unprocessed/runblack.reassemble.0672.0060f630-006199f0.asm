@@ -9562,7 +9562,7 @@ _jmp_addr_0x00615758:    mov.s              ecx, edi                            
                          fnstsw             ax                                             // 0x00615788    dfe0
                          test               ah, 0x01                                       // 0x0061578a    f6c401
                          {disp8} je         _jmp_addr_0x0061579b                           // 0x0061578d    740c
-                         {disp32} fld       dword ptr [rdata_bytes + 0x2210]               // 0x0061578f    d90510b28a00
+                         {disp32} fld       dword ptr [__real@40c90fdb]                    // 0x0061578f    d90510b28a00
                          {disp8} fsub       dword ptr [esp + 0x18]                         // 0x00615795    d8642418
                          {disp8} jmp        _jmp_addr_0x0061579f                           // 0x00615799    eb04
 _jmp_addr_0x0061579b:    {disp8} fld        dword ptr [esp + 0x18]                         // 0x0061579b    d9442418
@@ -9588,7 +9588,7 @@ _jmp_addr_0x0061579f:    {disp32} mov       ebp, dword ptr [esp + 0x00000094]   
                          mov                ecx, OFFSET _Point2D_00d3ee60                  // 0x006157e9    b960eed300
                          call               @__as__7Point2DFRC7Point2D2@12                 // 0x006157ee    e82dbaffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x006157f3    d9442418
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x2270]               // 0x006157f7    d81d70b28a00
+                         {disp32} fcomp     dword ptr [__real@437f0000]                    // 0x006157f7    d81d70b28a00
                          fnstsw             ax                                             // 0x006157fd    dfe0
                          test               ah, 0x41                                       // 0x006157ff    f6c441
                          {disp8} jne        _jmp_addr_0x0061580d                           // 0x00615802    7509
@@ -10608,7 +10608,7 @@ _jmp_addr_0x00616500:    mov.s              ecx, edi                            
                          fnstsw             ax                                             // 0x00616530    dfe0
                          test               ah, 0x41                                       // 0x00616532    f6c441
                          {disp8} jne        _jmp_addr_0x00616543                           // 0x00616535    750c
-                         {disp32} fld       dword ptr [rdata_bytes + 0x2210]               // 0x00616537    d90510b28a00
+                         {disp32} fld       dword ptr [__real@40c90fdb]                    // 0x00616537    d90510b28a00
                          {disp8} fsub       dword ptr [esp + 0x18]                         // 0x0061653d    d8642418
                          {disp8} jmp        _jmp_addr_0x00616547                           // 0x00616541    eb04
 _jmp_addr_0x00616543:    {disp8} fld        dword ptr [esp + 0x18]                         // 0x00616543    d9442418
@@ -10634,7 +10634,7 @@ _jmp_addr_0x00616547:    {disp32} mov       ebp, dword ptr [esp + 0x00000094]   
                          mov                ecx, OFFSET _Point2D_00d3ee60                  // 0x00616591    b960eed300
                          call               @__as__7Point2DFRC7Point2D2@12                 // 0x00616596    e885acffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x0061659b    d9442418
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x2270]               // 0x0061659f    d81d70b28a00
+                         {disp32} fcomp     dword ptr [__real@437f0000]                    // 0x0061659f    d81d70b28a00
                          fnstsw             ax                                             // 0x006165a5    dfe0
                          test               ah, 0x41                                       // 0x006165a7    f6c441
                          {disp8} jne        _jmp_addr_0x006165b5                           // 0x006165aa    7509

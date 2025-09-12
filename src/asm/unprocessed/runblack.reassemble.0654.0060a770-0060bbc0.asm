@@ -776,7 +776,7 @@ _jmp_addr_0x0060aecd:    pop                edi                                 
                          fnstsw             ax                                      // 0x0060aeee    dfe0
                          test               ah, 0x01                                // 0x0060aef0    f6c401
                          {disp8} je         _jmp_addr_0x0060aefd                    // 0x0060aef3    7408
-                         {disp32} fsub      dword ptr [rdata_bytes + 0x2244]        // 0x0060aef5    d82544b28a00
+                         {disp32} fsub      dword ptr [__real@3e4ccccd]             // 0x0060aef5    d82544b28a00
                          {disp8} jmp        _jmp_addr_0x0060af15                    // 0x0060aefb    eb18
 _jmp_addr_0x0060aefd:    {disp32} fld       dword ptr [ecx + 0x00000088]            // 0x0060aefd    d98188000000
                          fcompp                                                     // 0x0060af03    ded9
@@ -784,7 +784,7 @@ _jmp_addr_0x0060aefd:    {disp32} fld       dword ptr [ecx + 0x00000088]        
                          test               ah, 0x41                                // 0x0060af07    f6c441
                          {disp8} jne        _jmp_addr_0x0060af18                    // 0x0060af0a    750c
                          {disp8} fld        dword ptr [ecx + 0x1c]                  // 0x0060af0c    d9411c
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x2244]        // 0x0060af0f    d80544b28a00
+                         {disp32} fadd      dword ptr [__real@3e4ccccd]             // 0x0060af0f    d80544b28a00
 _jmp_addr_0x0060af15:    {disp8} fstp       dword ptr [ecx + 0x1c]                  // 0x0060af15    d9591c
 _jmp_addr_0x0060af18:    {disp32} jmp       @MoveTo__13MobileWallHugFv@4            // 0x0060af18    e903000000
                          nop                                                        // 0x0060af1d    90

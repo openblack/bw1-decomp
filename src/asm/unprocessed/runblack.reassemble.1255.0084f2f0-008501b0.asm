@@ -604,7 +604,7 @@ _jmp_addr_0x0084f99b:    {disp8} fld        dword ptr [ecx + 0x18]              
                          {disp8} mov        dword ptr [ebx + 0x14], eax                   // 0x0084fa77    894314
                          {disp8} mov        dword ptr [ebx + 0x10], eax                   // 0x0084fa7a    894310
                          {disp8} jmp        _jmp_addr_0x0084fafc                          // 0x0084fa7d    eb7d
-_jmp_addr_0x0084fa7f:    {disp32} fmul      dword ptr [rdata_bytes + 0x2270]              // 0x0084fa7f    d80d70b28a00
+_jmp_addr_0x0084fa7f:    {disp32} fmul      dword ptr [__real@437f0000]                   // 0x0084fa7f    d80d70b28a00
                          {disp8} lea        ecx, dword ptr [ebp + -0x1c]                  // 0x0084fa85    8d4de4
                          {disp8} mov        dword ptr [ebp + -0x18], ecx                  // 0x0084fa88    894de8
                          {disp8} fstp       dword ptr [ebp + -0x10]                       // 0x0084fa8b    d95df0
@@ -881,7 +881,7 @@ _jmp_addr_0x0084fcf4:    fld                dword ptr [edi]                     
                          {disp8} mov        dword ptr [ecx + 0x14], eax                   // 0x0084fdd2    894114
                          {disp8} mov        dword ptr [ecx + 0x10], eax                   // 0x0084fdd5    894110
                          {disp32} jmp       _jmp_addr_0x0084fe5d                          // 0x0084fdd8    e980000000
-_jmp_addr_0x0084fddd:    {disp32} fmul      dword ptr [rdata_bytes + 0x2270]              // 0x0084fddd    d80d70b28a00
+_jmp_addr_0x0084fddd:    {disp32} fmul      dword ptr [__real@437f0000]                   // 0x0084fddd    d80d70b28a00
                          {disp8} lea        edx, dword ptr [ebp + -0x1c]                  // 0x0084fde3    8d55e4
                          {disp8} mov        dword ptr [ebp + -0x0c], edx                  // 0x0084fde6    8955f4
                          {disp8} fstp       dword ptr [ebp + -0x40]                       // 0x0084fde9    d95dc0
