@@ -17,7 +17,7 @@ from typedef import Typedef
 from functions import FuncPtr, DefinedFunctionPrototype
 from csnake_overrides import CSnakeFuncPtr
 from vftable import Vftable
-from utils import get_tu_from_source, partition, extract_type_name, extract_type_from_func_name, arg_clang_wrapping_declaration_to_csnake, TEMPLATE_CONTAINER_STRUCTS_PREFIXES
+from utils import get_tu_from_source, partition, extract_type_name, extract_type_from_func_name, arg_clang_wrapping_declaration_to_csnake, TEMPLATE_CONTAINER_STRUCTS_PREFIXES, LH_COLLECTION_TEMPLATES, FUNDAMENTAL_TYPES
 from vanilla_filepaths import map_projects_to_object_files, get_object_file_base_names, resolve_roommate, ROOMMATE_CLASS_MAP
 
 
@@ -26,14 +26,21 @@ ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = False
 
 
 def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
+    def is_container(func):
+        name = func.decorated_name
+        containers = LH_COLLECTION_TEMPLATES.union({"LHLinkedNode"})
+        for c in containers:
+            if name.startswith(f"{name}<"):
+                return True
+        return False
     functions: list[DefinedFunctionPrototype] = [DefinedFunctionPrototype.from_json(f) for f in function_db]
     (
-        class_list_functions,
+        class_container_functions,
         thiscalls,
         static_methods,
         remainder,
     ) = partition([
-        lambda x: x.decorated_name.startswith("LHLinkedList<") or x.decorated_name.startswith("LHLinkedNode<") or x.decorated_name.startswith("LHListHead<"),
+        is_container,
         lambda x: x.call_type == '__thiscall',
         lambda x: "::" in x.decorated_name,
     ], functions)
@@ -46,12 +53,12 @@ def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionProt
         key = extract_type_from_func_name(f.decorated_name)
         static_method_map[key] = static_method_map.get(key, []) + [f]
     class_list_function_map: dict[str: DefinedFunctionPrototype] = {}
-    for f in class_list_functions:
+    for f in class_container_functions:
         templated_name = extract_type_from_func_name(f.decorated_name)
         inner_type = templated_name.split("<", 1)[1].rstrip('>')
         key = extract_type_name(inner_type)
-        class_list_function_map[key] = class_list_function_map.get(key, []) + [f]
-    return thiscall_map, static_method_map, class_list_function_map, remainder
+        class_container_functions[key] = class_container_functions.get(key, []) + [f]
+    return thiscall_map, static_method_map, class_container_functions, remainder
 
 
 PRIMITIVE_LOOK_UP = {
@@ -440,14 +447,7 @@ if __name__ == "__main__":
             struct_name = i.name
             for p in prefixes:
                 struct_name = struct_name.removeprefix(p)
-            fundamental_types = {
-                "Ul": "uint32_t",
-                'l': "int32_t",
-                "Ui": "uint32_t",
-                'i': "int32_t",
-                'f': "float",
-            }
-            template_container_structs[name].add(fundamental_types.get(struct_name, "struct " + struct_name))
+            template_container_structs[name].add(FUNDAMENTAL_TYPES.get(struct_name, "struct " + struct_name))
 
     def sub_funcptrs(struct: Struct) -> Struct:
         substitutions = {

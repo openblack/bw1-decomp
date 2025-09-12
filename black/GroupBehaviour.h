@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <lionhead/lhlib/ver5.0/LHDynamicStack.h> /* For struct LHDynamicStack__Ul */
+
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "DancePathInfo.h" /* For struct DancePathInfo */
 #include "GameThing.h" /* For struct GameThing */
@@ -16,7 +18,6 @@ struct DanceGroup;
 struct DanceGroupActionArgument;
 struct GameOSFile;
 struct GroupBehaviour;
-struct LHDynamicStack__Ul;
 
 struct GroupBehaviourVftable
 {

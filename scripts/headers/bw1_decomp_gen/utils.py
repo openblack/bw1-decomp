@@ -7,7 +7,7 @@ from csnake_overrides import CSnakeFuncPtr
 from clang import cindex
 
 
-LH_COLLECTION_TEMPLATES = ["LHLinkedList", "LHListHead", "GJVector", "LHDynamicStack"]
+LH_COLLECTION_TEMPLATES = {"LHLinkedList", "LHListHead", "GJVector", "LHDynamicStack"}
 
 
 CONTAINER_DECLARATION_MACROS = {
@@ -31,6 +31,15 @@ TEMPLATE_CONTAINER_STRUCTS_PREFIXES = OrderedDict({
 TYPE_SUBSTITUTION_MAP = {
     "_Bool": "bool",
     "int32_t": "int",
+}
+
+
+FUNDAMENTAL_TYPES = {
+    "Ul": "uint32_t",
+    'l': "int32_t",
+    "Ui": "uint32_t",
+    'i': "int32_t",
+    'f': "float",
 }
 
 

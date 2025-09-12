@@ -11,7 +11,7 @@ from pathlib import Path
 from csnake_overrides import CSnakeFuncPtr
 from structs import Composite
 from functions import FuncPtr
-from utils import partition, extract_template_type, LH_COLLECTION_TEMPLATES, CONTAINER_DECLARATION_MACROS
+from utils import partition, extract_template_type, LH_COLLECTION_TEMPLATES, CONTAINER_DECLARATION_MACROS, FUNDAMENTAL_TYPES
 
 
 C_FUNDAMENTAL_TYPES = {
@@ -208,10 +208,19 @@ class Header:
         result = self.get_types()
         pointers = set(filter(self.is_forward_declarable_pointer, result))
         result.difference_update(pointers)
-        lh_lists = {i for i in result if any(i.startswith("struct " + prefix) for prefix in LH_COLLECTION_TEMPLATES)}
-        lh_lists_underlying_type = {"struct " + extract_template_type(i) for i in lh_lists}
-        result.difference_update(lh_lists)
-        result.update(lh_lists_underlying_type)
+        lh_containers = {i for i in result if any(i.startswith("struct " + prefix) for prefix in LH_COLLECTION_TEMPLATES)}
+        lh_containers_underlying_type = set()
+        for i in lh_containers:
+            extracted_type = extract_template_type(i)
+            fundamental_type = FUNDAMENTAL_TYPES.get(extracted_type.removesuffix("*"))
+            if fundamental_type:
+                lh_containers_underlying_type.add(f"{fundamental_type}*")
+                # Fundamental types will have to be declared in the container header
+                result.add(i.strip("*"))
+            else:
+                lh_containers_underlying_type.add(f"struct {extracted_type}")
+        result.difference_update(lh_containers)
+        result.update(lh_containers_underlying_type)
         if any(hasattr(i, "size") and i.size is not None for i in self.structs):
             result.add("static_assert")
         type_name_set = {s.decorated_name for s in self.structs}
