@@ -119,8 +119,8 @@
 .globl _jmp_addr_0x00408f80
 .globl @SetFocusControl__8SetupBoxFP12SetupControl@12
 .globl @SetFocus__12SetupControlFb@9
-.globl @__ct__12SetupControlFiiiiiPw@32
-.globl @__dt__12SetupControlFv@4
+.globl ??0SetupControl@@QAE@HHHHHPB_S@Z
+.globl ??1SetupControl@@UAE@XZ  
 .globl _globl_ct_0x00407840
 .globl _globl_ct_0x00407880
 .globl _globl_ct_0x004078b0
@@ -131,19 +131,19 @@
 .globl _globl_ct_0x00407950
 .globl _globl_ct_0x00407970
 .globl _globl_ct_0x004079a0
-.globl _Char__12SetupControlFi
-.globl _Hide__12SetupControlFb
-.globl _KeyDown__12SetupControlFii
-.globl _SetToolTip__12SetupControlFPw
-.globl _SetToolTip__12SetupControlFUl
-.globl _HitTest__12SetupControlFii
-.globl _Drag__12SetupControlFii
+.globl ?Char@SetupControl@@UAEXH@Z
+.globl ?Hide@SetupControl@@UAEX_N@Z
+.globl ?KeyDown@SetupControl@@UAEXW4LHKey@@W4LHKeyMod@@@Z
+.globl ?SetToolTip@SetupControl@@QAEXPB_S@Z
+.globl ?SetToolTip@SetupControl@@QAEXI@Z
+.globl ?HitTest@SetupControl@@UAE_NHH@Z
+.globl ?Drag@SetupControl@@UAEXHH@Z
 .globl ??_GSetupControl@@UAEPAXI@Z
-.globl _MouseDown__12SetupControlFiib
+.globl ?MouseDown@SetupControl@@UAEXHH_N@Z
 .globl _Draw__15SetupStaticTextFbb
-.globl _Click__12SetupControlFii
-.globl _MouseUp__12SetupControlFiib
-.globl _SetFocus__12SetupControlFb
+.globl ?Click@SetupControl@@UAEXHH@Z
+.globl ?MouseUp@SetupControl@@UAEXHH_N@Z
+.globl ?SetFocus@SetupControl@@UAEX_N@Z
 .globl ?IsFunctional@Abode@@UAE_NXZ
 .globl ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .globl ?Save@Abode@@UAEIPAVGameOSFile@@@Z
@@ -2511,7 +2511,7 @@ _jmp_addr_0x0040916a:    pop                edi                                 
                          nop                                                              // 0x0040917d    90
                          nop                                                              // 0x0040917e    90
                          nop                                                              // 0x0040917f    90
-_SetFocus__12SetupControlFb:
+?SetFocus@SetupControl@@UAEX_N@Z:
 @SetFocus__12SetupControlFb@9:    {disp8} mov        al, byte ptr [esp + 0x04]                     // 0x00409180    8a442404
                          test               al, al                                        // 0x00409184    84c0
                          push               esi                                           // 0x00409186    56
@@ -2563,7 +2563,7 @@ _jmp_addr_0x004091ff:    pop                esi                                 
                          nop                                                              // 0x0040920d    90
                          nop                                                              // 0x0040920e    90
                          nop                                                              // 0x0040920f    90
-_SetToolTip__12SetupControlFUl:
+?SetToolTip@SetupControl@@QAEXI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00409210    8b442404
                          cmp                eax, dword ptr [data_bytes + 0x351cac]        // 0x00409214    3b05ac7cd100
                          {disp8} jae        _jmp_addr_0x00409220                          // 0x0040921a    7304
@@ -2587,7 +2587,8 @@ _jmp_addr_0x00409231:    lea                edx, dword ptr [eax + eax * 0x2]    
                          nop                                                              // 0x0040924d    90
                          nop                                                              // 0x0040924e    90
                          nop                                                              // 0x0040924f    90
-@__ct__12SetupControlFiiiiiPw@32:    {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x00409250    8b442418
+??0SetupControl@@QAE@HHHHHPB_S@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x00409250    8b442418
                          push               ebx                                           // 0x00409254    53
                          push               esi                                           // 0x00409255    56
                          mov.s              esi, ecx                                      // 0x00409256    8bf1
@@ -2633,21 +2634,21 @@ _jmp_addr_0x00409231:    lea                edx, dword ptr [eax + eax * 0x2]    
                          nop                                                              // 0x004092ed    90
                          nop                                                              // 0x004092ee    90
                          nop                                                              // 0x004092ef    90
-_SetToolTip__12SetupControlFPw:
+?SetToolTip@SetupControl@@QAEXPB_S@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x004092f0    8b442404
                          {disp32} mov       dword ptr [ecx + 0x00000224], eax             // 0x004092f4    898124020000
                          ret                0x0004                                        // 0x004092fa    c20400
                          nop                                                              // 0x004092fd    90
                          nop                                                              // 0x004092fe    90
                          nop                                                              // 0x004092ff    90
-_Hide__12SetupControlFb:
+?Hide@SetupControl@@UAEX_N@Z:
                          {disp8} mov        al, byte ptr [esp + 0x04]                     // 0x00409300    8a442404
                          {disp32} mov       byte ptr [ecx + 0x00000229], al               // 0x00409304    888129020000
                          ret                0x0004                                        // 0x0040930a    c20400
                          nop                                                              // 0x0040930d    90
                          nop                                                              // 0x0040930e    90
                          nop                                                              // 0x0040930f    90
-_HitTest__12SetupControlFii:
+?HitTest@SetupControl@@UAE_NHH@Z:
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00409310    8b542404
                          cmp                edx, dword ptr [ecx + 0x08]                   // 0x00409314    3b5108
                          {disp8} jl         _jmp_addr_0x00409334                          // 0x00409317    7c1b
@@ -2669,7 +2670,7 @@ _jmp_addr_0x00409334:    xor.s              eax, eax                            
                          nop                                                              // 0x0040933d    90
                          nop                                                              // 0x0040933e    90
                          nop                                                              // 0x0040933f    90
-_Drag__12SetupControlFii:
+?Drag@SetupControl@@UAEXHH@Z:
                          ret                0x0008                                        // 0x00409340    c20800
                          nop                                                              // 0x00409343    90
                          nop                                                              // 0x00409344    90
@@ -2684,7 +2685,7 @@ _Drag__12SetupControlFii:
                          nop                                                              // 0x0040934d    90
                          nop                                                              // 0x0040934e    90
                          nop                                                              // 0x0040934f    90
-_MouseDown__12SetupControlFiib:
+?MouseDown@SetupControl@@UAEXHH_N@Z:
                          ret                0x000c                                        // 0x00409350    c20c00
                          nop                                                              // 0x00409353    90
                          nop                                                              // 0x00409354    90
@@ -2699,7 +2700,7 @@ _MouseDown__12SetupControlFiib:
                          nop                                                              // 0x0040935d    90
                          nop                                                              // 0x0040935e    90
                          nop                                                              // 0x0040935f    90
-_MouseUp__12SetupControlFiib:
+?MouseUp@SetupControl@@UAEXHH_N@Z:
                          ret                0x000c                                        // 0x00409360    c20c00
                          nop                                                              // 0x00409363    90
                          nop                                                              // 0x00409364    90
@@ -2714,7 +2715,7 @@ _MouseUp__12SetupControlFiib:
                          nop                                                              // 0x0040936d    90
                          nop                                                              // 0x0040936e    90
                          nop                                                              // 0x0040936f    90
-_Click__12SetupControlFii:
+?Click@SetupControl@@UAEXHH@Z:
                          ret                0x0008                                        // 0x00409370    c20800
                          nop                                                              // 0x00409373    90
                          nop                                                              // 0x00409374    90
@@ -2729,7 +2730,7 @@ _Click__12SetupControlFii:
                          nop                                                              // 0x0040937d    90
                          nop                                                              // 0x0040937e    90
                          nop                                                              // 0x0040937f    90
-_KeyDown__12SetupControlFii:
+?KeyDown@SetupControl@@UAEXW4LHKey@@W4LHKeyMod@@@Z:
                          ret                0x0008                                        // 0x00409380    c20800
                          nop                                                              // 0x00409383    90
                          nop                                                              // 0x00409384    90
@@ -2744,7 +2745,7 @@ _KeyDown__12SetupControlFii:
                          nop                                                              // 0x0040938d    90
                          nop                                                              // 0x0040938e    90
                          nop                                                              // 0x0040938f    90
-_Char__12SetupControlFi:
+?Char@SetupControl@@UAEXH@Z:
                          ret                0x0004                                        // 0x00409390    c20400
                          nop                                                              // 0x00409393    90
                          nop                                                              // 0x00409394    90
@@ -2762,7 +2763,7 @@ _Char__12SetupControlFi:
 ??_GSetupControl@@UAEPAXI@Z:
                          push               esi                                           // 0x004093a0    56
                          mov.s              esi, ecx                                      // 0x004093a1    8bf1
-                         call               @__dt__12SetupControlFv@4                     // 0x004093a3    e818000000
+                         call               ??1SetupControl@@UAE@XZ                       // 0x004093a3    e818000000
                          test               byte ptr [esp + 0x08], 0x01                   // 0x004093a8    f644240801
                          {disp8} je         _jmp_addr_0x004093b8                          // 0x004093ad    7409
                          push               esi                                           // 0x004093af    56
@@ -2773,7 +2774,7 @@ _jmp_addr_0x004093b8:    mov.s              eax, esi                            
                          ret                0x0004                                        // 0x004093bb    c20400
                          nop                                                              // 0x004093be    90
                          nop                                                              // 0x004093bf    90
-@__dt__12SetupControlFv@4:    push               esi                                           // 0x004093c0    56
+??1SetupControl@@UAE@XZ  :    push               esi                                           // 0x004093c0    56
                          mov.s              esi, ecx                                      // 0x004093c1    8bf1
                          {disp32} mov       ecx, dword ptr [esi + 0x00000234]             // 0x004093c3    8b8e34020000
                          mov                dword ptr [esi], 0x008ab27c                   // 0x004093c9    c7067cb28a00

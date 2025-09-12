@@ -14,5 +14,7 @@ void __cdecl __dl__FPv(void* address);
 void __cdecl __construct_new_array(void* address, size_t stride, int len, void* constructor) asm("??_L@YGXPAXIHP6EX0@Z1@Z");
 // win1.41 008a5f63 mac 101a7d90 operator delete[](void *,unsigned int,int,void (__thiscall*)(void *))
 void __cdecl __destroy_new_array(void* address, size_t stride, int len, void* destructor) asm("??_M@YGXPAXIHP6EX0@Z@Z");
+// win1.41 007c60db mac 00000000 _purecall(void)
+void __cdecl _purecall(void);
 
 #endif /* BW1_DECOMP__LIBCMT_HELPER_INCLUDED_H */

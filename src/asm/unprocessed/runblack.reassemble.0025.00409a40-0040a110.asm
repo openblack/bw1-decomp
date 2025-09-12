@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__ct__12SetupControlFiiiiiPw@32
-.extern @__dt__12SetupControlFv@4
+.extern ??0SetupControl@@QAE@HHHHHPB_S@Z
+.extern ??1SetupControl@@UAE@XZ  
 .extern _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori
 .extern _DrawBigButton__10SetupThingFiibbi7BBSTYLEbii
 .extern _DrawBevBox__10SetupThingFiiiiiiiUl
@@ -214,7 +214,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
                          push               eax                                      // 0x00409c10    50
                          push               ecx                                      // 0x00409c11    51
                          mov.s              ecx, esi                                 // 0x00409c12    8bce
-                         call               @__ct__12SetupControlFiiiiiPw@32         // 0x00409c14    e837f6ffff
+                         call               ??0SetupControl@@QAE@HHHHHPB_S@Z         // 0x00409c14    e837f6ffff
                          {disp8} mov        edx, dword ptr [esp + 0x20]              // 0x00409c19    8b542420
                          {disp8} mov        ecx, dword ptr [esi + 0x14]              // 0x00409c1d    8b4e14
                          mov.s              eax, edx                                 // 0x00409c20    8bc2
@@ -243,7 +243,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
 ??_GSetupSlider@@UAEPAXI@Z:
                          push               esi                                      // 0x00409c50    56
                          mov.s              esi, ecx                                 // 0x00409c51    8bf1
-                         call               @__dt__12SetupControlFv@4                // 0x00409c53    e868f7ffff
+                         call               ??1SetupControl@@UAE@XZ                  // 0x00409c53    e868f7ffff
                          test               byte ptr [esp + 0x08], 0x01              // 0x00409c58    f644240801
                          {disp8} je         _jmp_addr_0x00409c68                     // 0x00409c5d    7409
                          push               esi                                      // 0x00409c5f    56
