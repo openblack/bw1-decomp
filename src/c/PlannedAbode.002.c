@@ -1,6 +1,6 @@
 #include "PlannedAbode.h"
 
-const double rdata_real_1_25 asm("__real@3ff4000000000000") = 1.25;
+const double rdata_double_1_25 asm("__real@3ff4000000000000") = 1.25;
 
 struct PlannedAbode* __fastcall __ct__12PlannedAbodeFP5Abode(struct PlannedAbode* this, const void* edx, struct Abode* abode)
 {

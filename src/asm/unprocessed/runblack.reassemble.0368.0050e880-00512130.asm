@@ -1809,11 +1809,11 @@ _jmp_addr_0x0050f823:    {disp8} mov        esi, dword ptr [edi + 0x04]         
                          {disp8} jmp        _jmp_addr_0x0050f870                          // 0x0050f864    eb0a
 _jmp_addr_0x0050f866:    {disp8} jbe        _jmp_addr_0x0050f870                          // 0x0050f866    7608
                          fstp               st(0)                                         // 0x0050f868    ddd8
-                         {disp32} fld       dword ptr [rdata_bytes + 0x222c]              // 0x0050f86a    d9052cb28a00
+                         {disp32} fld       dword ptr [__real@3dcccccd]                   // 0x0050f86a    d9052cb28a00
 _jmp_addr_0x0050f870:    {disp32} mov       edx, dword ptr [_game]                        // 0x0050f870    8b155c19d000
                          {disp32} fmul      dword ptr [edx + 0x00205d64]                  // 0x0050f876    d88a645d2000
                          fadd               st, st(1)                                     // 0x0050f87c    d8c1
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2238]              // 0x0050f87e    d80d38b28a00
+                         {disp32} fmul      dword ptr [__real@3f333333]                   // 0x0050f87e    d80d38b28a00
                          {disp8} fstp       dword ptr [esi + 0x30]                        // 0x0050f884    d95e30
                          fstp               st(0)                                         // 0x0050f887    ddd8
 _jmp_addr_0x0050f889:    {disp8} fld        dword ptr [esi + 0x14]                        // 0x0050f889    d94614
@@ -4167,14 +4167,14 @@ _jmp_addr_0x0051109d:    {disp8} mov        eax, dword ptr [esp + 0x18]         
 ?GetHoldRadius@DeadTree@@UAEMXZ:
                          mov                eax, dword ptr [ecx]                          // 0x005110e0    8b01
                          call               dword ptr [eax + 0x64]                        // 0x005110e2    ff5064
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2244]              // 0x005110e5    d80d44b28a00
+                         {disp32} fmul      dword ptr [__real@3e4ccccd]                   // 0x005110e5    d80d44b28a00
                          ret                                                              // 0x005110eb    c3
                          nop                                                              // 0x005110ec    90
                          nop                                                              // 0x005110ed    90
                          nop                                                              // 0x005110ee    90
                          nop                                                              // 0x005110ef    90
 ?GetHoldLoweringMultiplier@DeadTree@@UAEMXZ:
-                         {disp32} fld       dword ptr [rdata_bytes + 0x222c]              // 0x005110f0    d9052cb28a00
+                         {disp32} fld       dword ptr [__real@3dcccccd]                   // 0x005110f0    d9052cb28a00
                          ret                                                              // 0x005110f6    c3
                          nop                                                              // 0x005110f7    90
                          nop                                                              // 0x005110f8    90

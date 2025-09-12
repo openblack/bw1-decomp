@@ -607,7 +607,7 @@ _jmp_addr_0x0042303e:    mov                edx, dword ptr [esi]                
                          mov.s              ecx, esi                                      // 0x00423045    8bce
                          call               dword ptr [edx + 0x63c]                       // 0x00423047    ff923c060000
                          {disp8} fld        dword ptr [edi + 0x1c]                        // 0x0042304d    d9471c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2238]              // 0x00423050    d80d38b28a00
+                         {disp32} fmul      dword ptr [__real@3f333333]                   // 0x00423050    d80d38b28a00
                          {disp8} mov        edi, dword ptr [esp + 0x78]                   // 0x00423056    8b7c2478
                          test               edi, edi                                      // 0x0042305a    85ff
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x0042305c    d95c2414

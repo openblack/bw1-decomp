@@ -407,7 +407,7 @@ _jmp_addr_0x004f5621:    {disp8} fstp       dword ptr [esp + 0x08]              
                          add                esi, 0x4c                                      // 0x004f56ab    83c64c
                          mov.s              ecx, esi                                       // 0x004f56ae    8bce
                          call               _jmp_addr_0x004f5360                           // 0x004f56b0    e8abfcffff
-                         {disp32} fld       dword ptr [rdata_bytes + 0x222c]               // 0x004f56b5    d9052cb28a00
+                         {disp32} fld       dword ptr [__real@3dcccccd]                    // 0x004f56b5    d9052cb28a00
                          {disp8} fsub       dword ptr [esi + 0x0c]                         // 0x004f56bb    d8660c
                          {disp32} mov       ecx, dword ptr [edi + 0x00000160]              // 0x004f56be    8b8f60010000
                          fmulp              st(1), st                                      // 0x004f56c4    dec9
@@ -611,7 +611,7 @@ _jmp_addr_0x004f5621:    {disp8} fstp       dword ptr [esp + 0x08]              
                          add                esi, 0x00000094                                // 0x004f584a    81c694000000
                          mov.s              ecx, esi                                       // 0x004f5850    8bce
                          call               _jmp_addr_0x004f5360                           // 0x004f5852    e809fbffff
-                         {disp32} fld       dword ptr [rdata_bytes + 0x222c]               // 0x004f5857    d9052cb28a00
+                         {disp32} fld       dword ptr [__real@3dcccccd]                    // 0x004f5857    d9052cb28a00
                          {disp8} fsub       dword ptr [esi + 0x0c]                         // 0x004f585d    d8660c
                          {disp32} mov       eax, dword ptr [edi + 0x00000160]              // 0x004f5860    8b8760010000
                          pop                edi                                            // 0x004f5866    5f
@@ -2450,7 +2450,7 @@ _jmp_addr_0x004f6b60:    sub                esp, 0x14                           
                          fsqrt                                                             // 0x004f6b98    d9fa
                          fstp               st(2)                                          // 0x004f6b9a    ddda
                          fstp               st(0)                                          // 0x004f6b9c    ddd8
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2268]               // 0x004f6b9e    d80d68b28a00
+                         {disp32} fmul      dword ptr [__real@3e2aaaab]                    // 0x004f6b9e    d80d68b28a00
                          {disp8} fstp       dword ptr [esp + 0x10]                         // 0x004f6ba4    d95c2410
                          call               @GetCreature3D__8CreatureFv@4                  // 0x004f6ba8    e8a30cf8ff
                          {disp32} fld       dword ptr [eax + 0x00000090]                   // 0x004f6bad    d98090000000

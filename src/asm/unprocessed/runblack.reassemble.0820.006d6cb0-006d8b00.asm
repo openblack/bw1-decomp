@@ -535,7 +535,7 @@ _jmp_addr_0x006d7190:    {disp8} fld        dword ptr [esp + 0x04]              
                          test               ah, 0x01                                      // 0x006d719c    f6c401
                          {disp8} jne        _jmp_addr_0x006d71b0                          // 0x006d719f    750f
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x006d71a1    d9442404
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x2260]              // 0x006d71a5    dc0560b28a00
+                         {disp32} fadd      qword ptr [__real@3fe0000000000000]           // 0x006d71a5    dc0560b28a00
                          {disp32} jmp       _jmp_addr_0x007a1400                          // 0x006d71ab    e950a20c00
 _jmp_addr_0x006d71b0:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x006d71b0    d9442404
                          push               ecx                                           // 0x006d71b4    51

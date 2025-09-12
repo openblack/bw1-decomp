@@ -200,7 +200,7 @@ _jmp_addr_0x0056d357:    mov.s             ecx, esi                             
                          {disp8} fild      qword ptr [esp + 0x14]                        // 0x0056d3a3    df6c2414
                          shr               esi, 1                                        // 0x0056d3a7    d1ee
                          mov               edx, 0x00000190                               // 0x0056d3a9    ba90010000
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x2268]              // 0x0056d3ae    d80d68b28a00
+                         {disp32} fmul     dword ptr [__real@3e2aaaab]                   // 0x0056d3ae    d80d68b28a00
                          sub.s             edx, esi                                      // 0x0056d3b4    2bd6
                          {disp8} mov       dword ptr [esp + 0x18], ebx                   // 0x0056d3b6    895c2418
                          {disp8} mov       ebx, dword ptr [esp + 0x24]                   // 0x0056d3ba    8b5c2424

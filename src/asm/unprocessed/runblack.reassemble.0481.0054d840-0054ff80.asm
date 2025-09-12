@@ -1463,7 +1463,7 @@ _jmp_addr_0x0054e5b9:    pop                ebp                                 
                          {disp32} mov       ecx, dword ptr [esi + 0x00250060]             // 0x0054e6a3    8b8e60002500
                          call               _jmp_addr_0x005c4660                          // 0x0054e6a9    e8b25f0700
                          {disp32} fld       dword ptr [data_bytes + 0x33ba3c]             // 0x0054e6ae    d9053c1ad000
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x222c]              // 0x0054e6b4    d80d2cb28a00
+                         {disp32} fmul      dword ptr [__real@3dcccccd]                   // 0x0054e6b4    d80d2cb28a00
                          push               0x3dcccccd                                    // 0x0054e6ba    68cdcccc3d
                          push               ecx                                           // 0x0054e6bf    51
                          fstp               dword ptr [esp]                               // 0x0054e6c0    d91c24

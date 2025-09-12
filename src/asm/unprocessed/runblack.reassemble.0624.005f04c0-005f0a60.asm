@@ -120,7 +120,7 @@ _jmp_addr_0x005f0589:    {disp32} mov       dword ptr [esi + 0x0000015c], ebx   
                          call               dword ptr [edx + 0x64]                   // 0x005f05db    ff5264
                          fld                st(0)                                    // 0x005f05de    d9c0
                          {disp32} mov       edi, dword ptr [esi + 0x0000015c]        // 0x005f05e0    8bbe5c010000
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x223c]         // 0x005f05e6    d80d3cb28a00
+                         {disp32} fmul      dword ptr [__real@3e999999]              // 0x005f05e6    d80d3cb28a00
                          {disp8} lea        ecx, dword ptr [esp + 0x20]              // 0x005f05ec    8d4c2420
                          {disp8} fstp       dword ptr [esp + 0x18]                   // 0x005f05f0    d95c2418
                          fld                st(0)                                    // 0x005f05f4    d9c0

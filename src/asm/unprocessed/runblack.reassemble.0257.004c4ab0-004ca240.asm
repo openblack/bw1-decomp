@@ -3106,7 +3106,7 @@ _jmp_addr_0x004c6f04:    mov                edx, dword ptr [esi]                
                          {disp32} je        _jmp_addr_0x004c6fba                                 // 0x004c6f22    0f8492000000
                          {disp32} mov       ecx, dword ptr [esi + 0x00000160]                    // 0x004c6f28    8b8e60010000
                          {disp8} fld        dword ptr [ecx + 0x30]                               // 0x004c6f2e    d94130
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]                     // 0x004c6f31    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                          // 0x004c6f31    d81d2cb28a00
                          fnstsw             ax                                                   // 0x004c6f37    dfe0
                          test               ah, 0x41                                             // 0x004c6f39    f6c441
                          {disp8} jne        _jmp_addr_0x004c6fba                                 // 0x004c6f3c    757c

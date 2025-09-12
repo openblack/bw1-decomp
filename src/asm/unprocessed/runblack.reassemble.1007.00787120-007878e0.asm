@@ -578,7 +578,7 @@ _jmp_addr_0x007876ed:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          {disp8} mov        eax, dword ptr [esi + -0x04]                  // 0x00787799    8b46fc
                          fstp               st(0)                                         // 0x0078779c    ddd8
                          {disp8} fld        dword ptr [eax + 0x3c]                        // 0x0078779e    d9403c
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x224c]              // 0x007877a1    d8054cb28a00
+                         {disp32} fadd      dword ptr [__real@3fc00000]                   // 0x007877a1    d8054cb28a00
                          {disp8} fstp       dword ptr [eax + 0x3c]                        // 0x007877a7    d9583c
                          {disp32} mov       dword ptr [esi + 0x000001ac], 0xffa0a0a0      // 0x007877aa    c786ac010000a0a0a0ff
                          {disp32} jl        _jmp_addr_0x0078765b                          // 0x007877b4    0f8ca1feffff

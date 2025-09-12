@@ -285,7 +285,7 @@ _jmp_addr_0x0048d7b0:    push               ecx                                 
                          {disp32} mov       dword ptr [esi + 0x00004f8c], edx             // 0x0048d7f3    89968c4f0000
                          {disp32} fstp      dword ptr [esi + 0x00004f60]                  // 0x0048d7f9    d99e604f0000
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x0048d7ff    d9442404
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2268]              // 0x0048d803    d80d68b28a00
+                         {disp32} fmul      dword ptr [__real@3e2aaaab]                   // 0x0048d803    d80d68b28a00
                          {disp32} fstp      dword ptr [esi + 0x00004f74]                  // 0x0048d809    d99e744f0000
                          call               _jmp_addr_0x004ec4b0                          // 0x0048d80f    e89cec0500
                          {disp8} fmul       dword ptr [esp + 0x04]                        // 0x0048d814    d84c2404

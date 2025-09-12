@@ -188,7 +188,7 @@ _GetNearClipping__11LandFeatureFv@0:    {disp32} mov       eax, dword ptr [data_
                          sub                esp, 0x1c                               // 0x005e2f35    83ec1c
                          test               eax, eax                                // 0x005e2f38    85c0
                          {disp8} je         _jmp_addr_0x005e2f46                    // 0x005e2f3a    740a
-                         {disp32} fld       dword ptr [rdata_bytes + 0x222c]        // 0x005e2f3c    d9052cb28a00
+                         {disp32} fld       dword ptr [__real@3dcccccd]             // 0x005e2f3c    d9052cb28a00
                          add                esp, 0x1c                               // 0x005e2f42    83c41c
                          ret                                                        // 0x005e2f45    c3
 _jmp_addr_0x005e2f46:    {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]       // 0x005e2f46    d905b81dea00
@@ -212,7 +212,7 @@ _jmp_addr_0x005e2f46:    {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]   
                          fnstsw             ax                                      // 0x005e2fa4    dfe0
                          test               ah, 0x41                                // 0x005e2fa6    f6c441
                          {disp8} je         _jmp_addr_0x005e2fb5                    // 0x005e2fa9    740a
-                         {disp32} fld       dword ptr [rdata_bytes + 0x223c]        // 0x005e2fab    d9053cb28a00
+                         {disp32} fld       dword ptr [__real@3e999999]             // 0x005e2fab    d9053cb28a00
                          add                esp, 0x1c                               // 0x005e2fb1    83c41c
                          ret                                                        // 0x005e2fb4    c3
 _jmp_addr_0x005e2fb5:    {disp8} fld        dword ptr [esp + 0x00]                  // 0x005e2fb5    d9442400
@@ -226,7 +226,7 @@ _jmp_addr_0x005e2fb5:    {disp8} fld        dword ptr [esp + 0x00]              
 _jmp_addr_0x005e2fd0:    {disp8} fld        dword ptr [esp + 0x00]                  // 0x005e2fd0    d9442400
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1ebd4]       // 0x005e2fd4    d80dd47b8c00
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1ec8c]       // 0x005e2fda    d80d8c7c8c00
-                         {disp32} fadd      dword ptr [rdata_bytes + 0x223c]        // 0x005e2fe0    d8053cb28a00
+                         {disp32} fadd      dword ptr [__real@3e999999]             // 0x005e2fe0    d8053cb28a00
                          add                esp, 0x1c                               // 0x005e2fe6    83c41c
                          ret                                                        // 0x005e2fe9    c3
                          call               dword ptr [__imp__BinkSetSoundSystem@8] // 0x005e2fea    ff1548998a00

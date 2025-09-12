@@ -6626,7 +6626,7 @@ _jmp_addr_0x004cfb5f:    ret                                                    
                          mov.s              ecx, eax                                      // 0x004cfb84    8bc8
                          call               @GetPlayerNumber__7GPlayerCFv@4               // 0x004cfb86    e805ac1700
                          {disp8} fld        dword ptr [esi + 0x38]                        // 0x004cfb8b    d94638
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2228]              // 0x004cfb8e    d80d28b28a00
+                         {disp32} fmul      dword ptr [__real@447a0000]                   // 0x004cfb8e    d80d28b28a00
                          mov.s              edi, eax                                      // 0x004cfb94    8bf8
                          call               _jmp_addr_0x007a1400                          // 0x004cfb96    e865182d00
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x004cfb9b    8b0d5c19d000

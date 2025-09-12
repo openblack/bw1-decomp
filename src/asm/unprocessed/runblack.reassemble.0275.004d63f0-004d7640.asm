@@ -1096,7 +1096,7 @@ _jmp_addr_0x004d6df8:    add                esi, 0x04                           
                          pop                ebp                                     // 0x004d6e06    5d
                          pop                ebx                                     // 0x004d6e07    5b
                          {disp8} fadd       dword ptr [esp + 0x00]                  // 0x004d6e08    d8442400
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x226c]        // 0x004d6e0c    d80d6cb28a00
+                         {disp32} fmul      dword ptr [__real@3eaaaaab]             // 0x004d6e0c    d80d6cb28a00
                          add                esp, 0x4c                               // 0x004d6e12    83c44c
                          ret                                                        // 0x004d6e15    c3
                          nop                                                        // 0x004d6e16    90

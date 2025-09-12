@@ -3507,7 +3507,7 @@ _jmp_addr_0x0081dec2:    fld                st(1)                               
                          {disp8} fmul       dword ptr [eax + 0x1c]                        // 0x0081df17    d8481c
                          faddp              st(1), st                                     // 0x0081df1a    dec1
                          {disp8} fstp       dword ptr [edi + 0x1c]                        // 0x0081df1c    d95f1c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2270]              // 0x0081df1f    d80d70b28a00
+                         {disp32} fmul      dword ptr [__real@437f0000]                   // 0x0081df1f    d80d70b28a00
                          {disp8} fstp       dword ptr [ebp + -0x0c]                       // 0x0081df25    d95df4
                          {disp8} fld        dword ptr [ebp + -0x0c]                       // 0x0081df28    d945f4
                          {disp8} mov        edx, dword ptr [ebp + -0x08]                  // 0x0081df2b    8b55f8

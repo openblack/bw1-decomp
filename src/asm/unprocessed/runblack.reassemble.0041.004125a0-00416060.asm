@@ -2036,16 +2036,16 @@ _jmp_addr_0x00413d69:    {disp32} mov       eax, dword ptr [_SetupThing]        
 _jmp_addr_0x00413ddd:    mov.s              edx, esi                                      // 0x00413ddd    8bd6
                          and                edx, 0x03                                     // 0x00413ddf    83e203
                          cmp                edi, 0x08                                     // 0x00413de2    83ff08
-                         {disp32} mov       eax, dword ptr [edx * 0x4 + _LH3DColor_ARRAY_008ab250]       // 0x00413de5    8b049550b28a00
+                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?LH3DColor_ARRAY_008ab250@@3PAKA]       // 0x00413de5    8b049550b28a00
                          {disp8} mov        dword ptr [esp + 0x34], eax                   // 0x00413dec    89442434
                          {disp8} jne        _jmp_addr_0x00413e0e                          // 0x00413df0    751c
-                         {disp32} mov       eax, dword ptr [_LH3DColor_ARRAY_008ab250]    // 0x00413df2    a150b28a00
+                         {disp32} mov       eax, dword ptr [?LH3DColor_ARRAY_008ab250@@3PAKA]    // 0x00413df2    a150b28a00
                          mov.s              ecx, esi                                      // 0x00413df7    8bce
                          and                ecx, 0x1f                                     // 0x00413df9    83e11f
                          cmp                cl, 0x0d                                      // 0x00413dfc    80f90d
                          {disp8} mov        dword ptr [esp + 0x34], eax                   // 0x00413dff    89442434
                          {disp8} jne        _jmp_addr_0x00413e0e                          // 0x00413e03    7509
-                         {disp32} mov       eax, dword ptr [_LH3DColor_ARRAY_008ab250 + 8]         // 0x00413e05    a158b28a00
+                         {disp32} mov       eax, dword ptr [?LH3DColor_ARRAY_008ab250@@3PAKA + 8]         // 0x00413e05    a158b28a00
                          {disp8} mov        dword ptr [esp + 0x34], eax                   // 0x00413e0a    89442434
 _jmp_addr_0x00413e0e:    {disp8} mov        edi, dword ptr [esp + 0x30]                   // 0x00413e0e    8b7c2430
                          xor.s              ebx, ebx                                      // 0x00413e12    33db

@@ -2800,7 +2800,7 @@ _jmp_addr_0x005ca6fb:    mov                edx, dword ptr [esi]                
                          push               ecx                                           // 0x005ca720    51
                          mov.s              ecx, eax                                      // 0x005ca721    8bc8
                          call               _jmp_addr_0x00740ea0                          // 0x005ca723    e878671700
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2228]              // 0x005ca728    d80d28b28a00
+                         {disp32} fmul      dword ptr [__real@447a0000]                   // 0x005ca728    d80d28b28a00
                          {disp32} fcom      dword ptr [_rdata_float0p0]                   // 0x005ca72e    d81598a38a00
                          fnstsw             ax                                            // 0x005ca734    dfe0
                          test               ah, 0x01                                      // 0x005ca736    f6c401

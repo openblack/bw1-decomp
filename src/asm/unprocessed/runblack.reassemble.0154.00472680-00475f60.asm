@@ -843,7 +843,7 @@ _globl_ct_0x00472b90:    {disp32} jmp       _jmp_addr_0x00472ba0                
                          nop                                                                     // 0x00472b9e    90
                          nop                                                                     // 0x00472b9f    90
 _jmp_addr_0x00472ba0:    fldln2                                                                  // 0x00472ba0    d9ed
-                         {disp32} fld       qword ptr [rdata_bytes + 0x2260]                     // 0x00472ba2    dd0560b28a00
+                         {disp32} fld       qword ptr [__real@3fe0000000000000]                  // 0x00472ba2    dd0560b28a00
                          fyl2x                                                                   // 0x00472ba8    d9f1
                          {disp32} fdivr     dword ptr [_rdata_float1p0]                          // 0x00472baa    d83d90a38a00
                          {disp32} fstp      dword ptr [data_bytes + 0x299d04]                    // 0x00472bb0    d91d04fdc500
@@ -1987,7 +1987,7 @@ _jmp_addr_0x00473b0e:    mov.s              ecx, esi                            
                          {disp8} mov        dword ptr [esp + 0x14], eax                          // 0x00473b1b    89442414
                          {disp8} fild       dword ptr [esp + 0x14]                               // 0x00473b1f    db442414
                          push               esi                                                  // 0x00473b23    56
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x222c]                     // 0x00473b24    d80d2cb28a00
+                         {disp32} fmul      dword ptr [__real@3dcccccd]                          // 0x00473b24    d80d2cb28a00
                          {disp32} fld       dword ptr [esi + 0x00001270]                         // 0x00473b2a    d98670120000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x237c4]                    // 0x00473b30    d80dc4c78c00
                          faddp              st(1), st                                            // 0x00473b36    dec1

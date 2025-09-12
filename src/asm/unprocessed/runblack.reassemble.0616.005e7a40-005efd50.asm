@@ -12073,12 +12073,12 @@ _jmp_addr_0x005efa92:    call               _jmp_addr_0x007a1400                
                          call               dword ptr [edx + 0x514]                       // 0x005efaaf    ff9214050000
                          {disp8} fadd       dword ptr [edi + 0x64]                        // 0x005efab5    d84764
                          {disp8} fst        dword ptr [esp + 0x2c]                        // 0x005efab8    d954242c
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x2210]              // 0x005efabc    d81d10b28a00
+                         {disp32} fcomp     dword ptr [__real@40c90fdb]                   // 0x005efabc    d81d10b28a00
                          fnstsw             ax                                            // 0x005efac2    dfe0
                          test               ah, 0x41                                      // 0x005efac4    f6c441
                          {disp8} jne        _jmp_addr_0x005efad7                          // 0x005efac7    750e
                          {disp8} fld        dword ptr [esp + 0x2c]                        // 0x005efac9    d944242c
-                         {disp32} fsub      dword ptr [rdata_bytes + 0x2210]              // 0x005efacd    d82510b28a00
+                         {disp32} fsub      dword ptr [__real@40c90fdb]                   // 0x005efacd    d82510b28a00
                          {disp8} fstp       dword ptr [esp + 0x2c]                        // 0x005efad3    d95c242c
 _jmp_addr_0x005efad7:    {disp8} mov        eax, dword ptr [esp + 0x2c]                   // 0x005efad7    8b44242c
                          push               eax                                           // 0x005efadb    50

@@ -1118,7 +1118,7 @@ _jmp_addr_0x00505864:    mov                edx, dword ptr [esi]                
                          {disp8} fstp       dword ptr [esp + 0x1c]                               // 0x0050587b    d95c241c
                          call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords                                 // 0x0050587f    e8ec742400
                          {disp8} fld        dword ptr [esp + 0x1c]                               // 0x00505884    d944241c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x2230]                     // 0x00505888    d80d30b28a00
+                         {disp32} fmul      dword ptr [__real@3f8ccccd]                          // 0x00505888    d80d30b28a00
                          add                esp, 0x08                                            // 0x0050588e    83c408
                          fcompp                                                                  // 0x00505891    ded9
                          fnstsw             ax                                                   // 0x00505893    dfe0
@@ -2772,7 +2772,7 @@ _jmp_addr_0x00506b29:    {disp8} fild       dword ptr [esi + 0x14]              
                          push               ecx                                                  // 0x00506b81    51
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x00506b82    d95c2414
                          call               _jmp_addr_0x006e8160                                 // 0x00506b86    e8d5151e00
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]                     // 0x00506b8b    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                          // 0x00506b8b    d81d2cb28a00
                          add                esp, 0x04                                            // 0x00506b91    83c404
                          fnstsw             ax                                                   // 0x00506b94    dfe0
                          test               ah, 0x01                                             // 0x00506b96    f6c401
@@ -2848,7 +2848,7 @@ _jmp_addr_0x00506bf9:    {disp32} mov       ecx, dword ptr [esi + 0x00000160]   
                          push               edx                                                  // 0x00506c67    52
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x00506c68    d95c2414
                          call               _jmp_addr_0x006e8160                                 // 0x00506c6c    e8ef141e00
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x222c]                     // 0x00506c71    d81d2cb28a00
+                         {disp32} fcomp     dword ptr [__real@3dcccccd]                          // 0x00506c71    d81d2cb28a00
                          add                esp, 0x04                                            // 0x00506c77    83c404
                          fnstsw             ax                                                   // 0x00506c7a    dfe0
                          test               ah, 0x01                                             // 0x00506c7c    f6c401
@@ -3675,7 +3675,7 @@ _jmp_addr_0x005075d5:    mov.s              ecx, edi                            
                          {disp8} fstp       dword ptr [esp + 0x20]                               // 0x00507635    d95c2420
                          {disp8} fstp       dword ptr [esp + 0x24]                               // 0x00507639    d95c2424
                          {disp8} fld        dword ptr [esp + 0x14]                               // 0x0050763d    d9442414
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x224c]                     // 0x00507641    d80d4cb28a00
+                         {disp32} fmul      dword ptr [__real@3fc00000]                          // 0x00507641    d80d4cb28a00
                          fstp               dword ptr [esp]                                      // 0x00507647    d91c24
                          push               eax                                                  // 0x0050764a    50
                          push               0x0                                                  // 0x0050764b    6a00

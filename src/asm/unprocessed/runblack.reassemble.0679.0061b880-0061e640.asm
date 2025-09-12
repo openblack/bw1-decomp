@@ -98,7 +98,7 @@ _jmp_addr_0x0061b880:    push               ebx                                 
                          {disp8} mov        si, word ptr [esp + 0x20]                            // 0x0061b894    668b742420
                          push               edi                                                  // 0x0061b899    57
                          {disp8} mov        edi, dword ptr [esp + 0x14]                          // 0x0061b89a    8b7c2414
-_jmp_addr_0x0061b89e:    {disp32} fld       dword ptr [rdata_bytes + 0x2210]                     // 0x0061b89e    d90510b28a00
+_jmp_addr_0x0061b89e:    {disp32} fld       dword ptr [__real@40c90fdb]                          // 0x0061b89e    d90510b28a00
                          {disp8} fild       dword ptr [esp + 0x20]                               // 0x0061b8a4    db442420
 _jmp_addr_0x0061b8a8:    fld                st(1)                                                // 0x0061b8a8    d9c1
                          fcos                                                                    // 0x0061b8aa    d9ff
@@ -2826,7 +2826,7 @@ _jmp_addr_0x0061dd92:    {disp8} fld        dword ptr [esp + 0x10]              
                          call               edi                                                  // 0x0061dda9    ffd7
                          {disp32} mov       dword ptr [data_bytes + 0x379020], eax               // 0x0061ddab    a320f0d300
 _jmp_addr_0x0061ddb0:    {disp8} fld        dword ptr [esp + 0x14]                               // 0x0061ddb0    d9442414
-                         {disp32} fcomp     dword ptr [rdata_bytes + 0x2244]                     // 0x0061ddb4    d81d44b28a00
+                         {disp32} fcomp     dword ptr [__real@3e4ccccd]                          // 0x0061ddb4    d81d44b28a00
                          fnstsw             ax                                                   // 0x0061ddba    dfe0
                          test               ah, 0x41                                             // 0x0061ddbc    f6c441
                          {disp32} jne       _jmp_addr_0x0061debb                                 // 0x0061ddbf    0f85f6000000

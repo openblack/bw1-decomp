@@ -835,7 +835,7 @@ _jmp_addr_0x005faad8:    pop                esi                                 
                          nop                                                              // 0x005faadd    90
                          nop                                                              // 0x005faade    90
                          nop                                                              // 0x005faadf    90
-_jmp_addr_0x005faae0:    {disp32} fld       dword ptr [rdata_bytes + 0x223c]              // 0x005faae0    d9053cb28a00
+_jmp_addr_0x005faae0:    {disp32} fld       dword ptr [__real@3e999999]                   // 0x005faae0    d9053cb28a00
                          ret                                                              // 0x005faae6    c3
                          nop                                                              // 0x005faae7    90
                          nop                                                              // 0x005faae8    90
