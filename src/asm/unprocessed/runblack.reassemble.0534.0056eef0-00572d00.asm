@@ -114,8 +114,8 @@
 .globl _globl_ct_0x00570620
 .globl _globl_ct_0x00570650
 .globl _globl_ct_0x00570670
-.globl ___dt__20SetupStaticTextNoHitFb
-.globl ___dt__14SetupMP3ButtonFb
+.globl ??_GSetupStaticTextNoHit@@UAEPAXI@Z
+.globl ??_GSetupMP3Button@@UAEPAXI@Z
 .globl ?GetSaveType@GameThing@@UAEIXZ
 .globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z
@@ -4550,7 +4550,7 @@ _HitTest__20SetupStaticTextNoHitFii:
                          nop                                                              // 0x00571f0d    90
                          nop                                                              // 0x00571f0e    90
                          nop                                                              // 0x00571f0f    90
-___dt__20SetupStaticTextNoHitFb:
+??_GSetupStaticTextNoHit@@UAEPAXI@Z:
                          push               esi                                           // 0x00571f10    56
                          mov.s              esi, ecx                                      // 0x00571f11    8bf1
                          call               @__dt__12SetupControlFv@4                     // 0x00571f13    e8a874e9ff
@@ -4564,7 +4564,7 @@ _jmp_addr_0x00571f28:    mov.s              eax, esi                            
                          ret                0x0004                                        // 0x00571f2b    c20400
                          nop                                                              // 0x00571f2e    90
                          nop                                                              // 0x00571f2f    90
-___dt__14SetupMP3ButtonFb:
+??_GSetupMP3Button@@UAEPAXI@Z:
                          push               esi                                           // 0x00571f30    56
                          mov.s              esi, ecx                                      // 0x00571f31    8bf1
                          call               @__dt__12SetupControlFv@4                     // 0x00571f33    e88874e9ff

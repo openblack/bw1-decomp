@@ -145,7 +145,7 @@
 .globl _SetToolTip__12SetupControlFUl
 .globl _HitTest__12SetupControlFii
 .globl _Drag__12SetupControlFii
-.globl ___dt__12SetupControlFb
+.globl ??_GSetupControl@@UAEPAXI@Z
 .globl _MouseDown__12SetupControlFiib
 .globl _Draw__15SetupStaticTextFbb
 .globl _Click__12SetupControlFii
@@ -4690,7 +4690,7 @@ _Char__12SetupControlFi:
                          nop                                                              // 0x0040939d    90
                          nop                                                              // 0x0040939e    90
                          nop                                                              // 0x0040939f    90
-___dt__12SetupControlFb:
+??_GSetupControl@@UAEPAXI@Z:
                          push               esi                                           // 0x004093a0    56
                          mov.s              esi, ecx                                      // 0x004093a1    8bf1
                          call               @__dt__12SetupControlFv@4                     // 0x004093a3    e818000000

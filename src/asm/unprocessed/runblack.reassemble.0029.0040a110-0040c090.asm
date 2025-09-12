@@ -38,7 +38,7 @@
 .globl _jmp_addr_0x0040b000
 .globl @SetNum__9SetupListFi@12
 .globl @__ct__14SetupMultiListFiiiiii@32
-.globl ___dt__14SetupMultiListFb
+.globl ??_GSetupMultiList@@UAEPAXI@Z
 .globl _KeyDown__9SetupEditFii
 .globl _Click__9SetupListFii
 .globl _Drag__9SetupListFii
@@ -49,7 +49,7 @@
 .globl _MouseUp__9SetupListFiib
 .globl _Click__14SetupMultiListFii
 .globl _IsSelected__9SetupListFi
-.globl ___dt__9SetupListFb
+.globl ??_GSetupList@@UAEPAXI@Z
 
 start_0x0040a110_0x0040c090:
 // Snippet: asm, [0x0040a110, 0x0040bfa3)
@@ -408,7 +408,7 @@ _IsSelected__9SetupListFi:
                          nop                                                                  // 0x0040a53d    90
                          nop                                                                  // 0x0040a53e    90
                          nop                                                                  // 0x0040a53f    90
-___dt__9SetupListFb:
+??_GSetupList@@UAEPAXI@Z:
                          push                 esi                                             // 0x0040a540    56
                          mov.s                esi, ecx                                        // 0x0040a541    8bf1
                          {disp32} mov         eax, dword ptr [esi + 0x00000268]               // 0x0040a543    8b8668020000
@@ -1702,7 +1702,7 @@ _jmp_addr_0x0040b497:    mov.s                eax, esi                          
                          nop                                                                  // 0x0040b49d    90
                          nop                                                                  // 0x0040b49e    90
                          nop                                                                  // 0x0040b49f    90
-___dt__14SetupMultiListFb:
+??_GSetupMultiList@@UAEPAXI@Z:
                          push                 esi                                             // 0x0040b4a0    56
                          mov.s                esi, ecx                                        // 0x0040b4a1    8bf1
                          call                 _jmp_addr_0x0040b4c0                            // 0x0040b4a3    e818000000

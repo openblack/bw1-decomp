@@ -393,7 +393,7 @@
 .globl _jmp_addr_0x0042e380
 
 .globl _Connect__9BWGameSpyFv
-.globl ___dt__16LHReleasedOSFileFv
+.globl ??_GLHReleasedOSFile@@UAEPAXI@Z
 .globl _Load__9BigForestFR10GameOSFile
 .globl ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
 .globl ?IsRepaired@MultiMapFixed@@UAE_NXZ
@@ -7466,7 +7466,7 @@ _jmp_addr_0x0042fd2f:    pop                esi                                 
                          nop                                                                     // 0x0042fd3d    90
                          nop                                                                     // 0x0042fd3e    90
                          nop                                                                     // 0x0042fd3f    90
-___dt__16LHReleasedOSFileFv:
+??_GLHReleasedOSFile@@UAEPAXI@Z:
                          push               esi                                                  // 0x0042fd40    56
                          mov.s              esi, ecx                                             // 0x0042fd41    8bf1
                          call               @__dt__8LHOSFileFv@4                                 // 0x0042fd43    e838c93800

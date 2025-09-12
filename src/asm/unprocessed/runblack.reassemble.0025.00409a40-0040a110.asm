@@ -20,7 +20,7 @@
 .globl @__ct__11SetupSliderFiiiiifPw@36
 .globl @AutoScroll__9SetupListFb@9
 .globl _MouseDown__11SetupSliderFiib
-.globl ___dt__11SetupSliderFb
+.globl ??_GSetupSlider@@UAEPAXI@Z
 .globl _Draw__11SetupSliderFbb
 .globl _MouseUp__11SetupSliderFiib
 .globl _Drag__11SetupSliderFii
@@ -240,7 +240,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
                          nop                                                         // 0x00409c4d    90
                          nop                                                         // 0x00409c4e    90
                          nop                                                         // 0x00409c4f    90
-___dt__11SetupSliderFb:
+??_GSetupSlider@@UAEPAXI@Z:
                          push               esi                                      // 0x00409c50    56
                          mov.s              esi, ecx                                 // 0x00409c51    8bf1
                          call               @__dt__12SetupControlFv@4                // 0x00409c53    e868f7ffff
