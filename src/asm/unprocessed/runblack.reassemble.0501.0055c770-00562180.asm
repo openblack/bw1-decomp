@@ -220,7 +220,7 @@
 .globl ?IsChild@Villager@@UAE_NXZ
 .globl ?IsFoodSpeedUp@Villager@@UAE_NXZ
 .globl ?IsABeliever@Villager@@UAE_NXZ
-.globl ?IsTouching_3@Villager@@UBE_NPAVObject@@M@Z
+.globl ?IsTouching@Villager@@UBE_NPAVObject@@M@Z
 .globl ?GetMesh@Villager@@UBEHXZ
 .globl ?GetDetailMesh@Villager@@UAEHH@Z
 .globl ?IsScriptState@Villager@@UBE_NW4VILLAGER_STATES@@@Z
@@ -368,7 +368,7 @@
 .globl ?CastTree@Tree@@UAEPAVTree@@XZ
 .globl ?IsResourceStore@Tree@@UAE_NW4RESOURCE_TYPE@@@Z
 .globl ?GetCarriedTreeType@Tree@@UAEIXZ
-.globl ?IsTree_0@Tree@@UAEIPAVCreature@@@Z
+.globl ?IsTree@Tree@@UAEIPAVCreature@@@Z
 .globl ?CanBePlayedWithByCreature@Tree@@UAEIPAVCreature@@@Z
 .globl ?BenefitsFromHavingWaterSprinkledOnIt@Tree@@UAEIPAVCreature@@@Z
 .globl ?GetCreatureBeliefType@Tree@@UAEIXZ
@@ -379,7 +379,7 @@
 .globl ?CanBeAttackedByCreature@Tree@@UAEIPAVCreature@@@Z
 .globl ?CanBeThrownInTheSeaPlayfully@Tree@@UAEIPAVCreature@@@Z
 .globl ?IsAnyKindOfTree@Tree@@UAEIXZ
-.globl ?IsTree_1@Tree@@UAEIXZ
+.globl ?IsTree@Tree@@UAEIXZ
 .globl ?HandShouldFeelWithMeshIntersect@Tree@@UAEIXZ
 .globl ?GetComputerSeen@Tree@@UAE_NXZ
 .globl ?IsCastShadowAtNight@Tree@@UAEIXZ
@@ -413,8 +413,8 @@
 .globl ?InteractsWithPhysicsObjects@WorshipSite@@UAE_NXZ
 .globl ?GetAbodeType@WorshipSite@@UAE?AW4ABODE_TYPE@@XZ
 .globl ?IsSuitableForCreatureAction@WorshipSite@@UAEIXZ
-.globl ?IsWorshipSite_0@WorshipSite@@UAEIPAVCreature@@@Z
-.globl ?IsWorshipSite_1@WorshipSite@@UAEIXZ
+.globl ?IsWorshipSite@WorshipSite@@UAEIPAVCreature@@@Z
+.globl ?IsWorshipSite@WorshipSite@@UAEIXZ
 .globl ?GetWorshipSite@WorshipSite@@UAEPAVWorshipSite@@XZ
 .globl ?GetMesh@WorshipSite@@UBEHXZ
 .globl ?GetSaveType@WorshipSite@@UAEIXZ
@@ -513,9 +513,9 @@
 .globl ?SetMagnitude@GJPSysInterface@@UAEXM@Z
 .globl ?SetAge@GJPSysInterface@@UAEXM@Z
 .globl ?SetAlpha@GJPSysInterface@@UAEXE@Z
-.globl ?AddTarget__2@GJPSysInterface@@UAEXPAVGameThing@@@Z
-.globl ?AddTarget__1@GJPSysInterface@@UAEXPBULHPoint@@@Z
-.globl ?Draw__1@GJPSysInterface@@UAEXM_N@Z
+.globl ?AddTarget_@GJPSysInterface@@UAEXPAVGameThing@@@Z
+.globl ?AddTarget_@GJPSysInterface@@UAEXPBULHPoint@@@Z
+.globl ?Draw_@GJPSysInterface@@UAEXM_N@Z
 .globl ?AddDrawing@GJPSysInterface@@UAEXMPBULHPoint@@@Z
 .globl ??_GGJPSysInterface@@UAEPAXI@Z
 .globl ??_GPSysInterface@@UAEPAXI@Z
@@ -1064,7 +1064,7 @@ _jmp_addr_0x0055c81a:    mov.s              eax, esi                            
                          nop                                                               // 0x0055c99d    90
                          nop                                                               // 0x0055c99e    90
                          nop                                                               // 0x0055c99f    90
-?IsTouching_3@Villager@@UBE_NPAVObject@@M@Z:
+?IsTouching@Villager@@UBE_NPAVObject@@M@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0055c9a0    8b442408
                          {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x0055c9a4    8b542404
                          push               eax                                            // 0x0055c9a8    50
@@ -3581,7 +3581,7 @@ _GetForest__4TreeFv:
                          nop                                                               // 0x0055d91d    90
                          nop                                                               // 0x0055d91e    90
                          nop                                                               // 0x0055d91f    90
-?IsTree_0@Tree@@UAEIPAVCreature@@@Z:
+?IsTree@Tree@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                // 0x0055d920    b801000000
                          ret                0x0004                                         // 0x0055d925    c20400
                          nop                                                               // 0x0055d928    90
@@ -3711,7 +3711,7 @@ _GetForest__4TreeFv:
                          nop                                                               // 0x0055d9cd    90
                          nop                                                               // 0x0055d9ce    90
                          nop                                                               // 0x0055d9cf    90
-?IsTree_1@Tree@@UAEIXZ:
+?IsTree@Tree@@UAEIXZ:
                          mov                eax, 0x00000001                                // 0x0055d9d0    b801000000
                          ret                                                               // 0x0055d9d5    c3
                          nop                                                               // 0x0055d9d6    90
@@ -4230,7 +4230,7 @@ _jmp_addr_0x0055dc2a:    mov.s              eax, esi                            
                          nop                                                               // 0x0055dc8d    90
                          nop                                                               // 0x0055dc8e    90
                          nop                                                               // 0x0055dc8f    90
-?IsWorshipSite_0@WorshipSite@@UAEIPAVCreature@@@Z:
+?IsWorshipSite@WorshipSite@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                // 0x0055dc90    b801000000
                          ret                0x0004                                         // 0x0055dc95    c20400
                          nop                                                               // 0x0055dc98    90
@@ -4241,7 +4241,7 @@ _jmp_addr_0x0055dc2a:    mov.s              eax, esi                            
                          nop                                                               // 0x0055dc9d    90
                          nop                                                               // 0x0055dc9e    90
                          nop                                                               // 0x0055dc9f    90
-?IsWorshipSite_1@WorshipSite@@UAEIXZ:
+?IsWorshipSite@WorshipSite@@UAEIXZ:
                          mov                eax, 0x00000001                                // 0x0055dca0    b801000000
                          ret                                                               // 0x0055dca5    c3
                          nop                                                               // 0x0055dca6    90
@@ -6134,7 +6134,7 @@ _jmp_addr_0x0055ec90:    push               esi                                 
                          nop                                                               // 0x0055ed5d    90
                          nop                                                               // 0x0055ed5e    90
                          nop                                                               // 0x0055ed5f    90
-?AddTarget__2@GJPSysInterface@@UAEXPAVGameThing@@@Z:
+?AddTarget_@GJPSysInterface@@UAEXPAVGameThing@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x0055ed60    8b442404
                          {disp8} mov        ecx, dword ptr [ecx + 0x14]                    // 0x0055ed64    8b4914
                          push               eax                                            // 0x0055ed67    50
@@ -6151,7 +6151,7 @@ _jmp_addr_0x0055ec90:    push               esi                                 
                          nop                                                               // 0x0055ed7d    90
                          nop                                                               // 0x0055ed7e    90
                          nop                                                               // 0x0055ed7f    90
-?AddTarget__1@GJPSysInterface@@UAEXPBULHPoint@@@Z:
+?AddTarget_@GJPSysInterface@@UAEXPBULHPoint@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x0055ed80    8b442404
                          {disp8} mov        ecx, dword ptr [ecx + 0x14]                    // 0x0055ed84    8b4914
                          push               eax                                            // 0x0055ed87    50
@@ -6168,7 +6168,7 @@ _jmp_addr_0x0055ec90:    push               esi                                 
                          nop                                                               // 0x0055ed9d    90
                          nop                                                               // 0x0055ed9e    90
                          nop                                                               // 0x0055ed9f    90
-?Draw__1@GJPSysInterface@@UAEXM_N@Z:
+?Draw_@GJPSysInterface@@UAEXM_N@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0055eda0    8b442408
                          {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x0055eda4    8b542404
                          {disp8} mov        ecx, dword ptr [ecx + 0x14]                    // 0x0055eda8    8b4914

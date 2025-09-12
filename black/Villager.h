@@ -398,9 +398,9 @@ bool __fastcall IsABeliever__8VillagerFv(struct Object* this) asm("?IsABeliever@
 // win1.41 0076a4c0 mac 1059a990 Villager::SetDying(void)
 bool __fastcall SetDying__8VillagerFv(struct Object* this) asm("?SetDying@Villager@@UAE_NXZ");
 // win1.41 00753040 mac inlined Villager::IsTouching_2( const(MapCoords *))
-bool __fastcall IsTouching_2__8VillagerCFP9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1) asm("?IsTouching_2@Villager@@UBE_NPAUMapCoords@@@Z");
+bool __fastcall IsTouching_2__8VillagerCFP9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1) asm("?IsTouching@Villager@@UBE_NPAUMapCoords@@@Z");
 // win1.41 0055c9a0 mac inlined Villager::IsTouching_3( const(Object *, float))
-bool __fastcall IsTouching_3__8VillagerCFP6Objectf(const struct Object* this, const void* edx, struct Object* param_1, float param_2) asm("?IsTouching_3@Villager@@UBE_NPAVObject@@M@Z");
+bool __fastcall IsTouching_3__8VillagerCFP6Objectf(const struct Object* this, const void* edx, struct Object* param_1, float param_2) asm("?IsTouching@Villager@@UBE_NPAVObject@@M@Z");
 // win1.41 007564a0 mac 105651b0 Villager::ValidForPlaceInHand(GInterfaceStatus *)
 uint32_t __fastcall ValidForPlaceInHand__8VillagerFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForPlaceInHand@Villager@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 00753080 mac 1056a940 Villager::InterfaceSetInMagicHand(GInterfaceStatus *)

@@ -80,9 +80,9 @@ uint32_t __fastcall GetCreatureBeliefType__11CitadelPartFv(struct GameThingWithP
 // win1.41 00464a80 mac 1008aa80 CitadelPart::GetCitadel(void)
 struct Citadel* __fastcall GetCitadel__11CitadelPartFv(struct GameThingWithPos* this) asm("?GetCitadel@CitadelPart@@UAEPAVCitadel@@XZ");
 // win1.41 00464b00 mac inlined CitadelPart::IsCitadelPart_0(void)
-uint32_t __fastcall IsCitadelPart_0__11CitadelPartFv(struct GameThingWithPos* this) asm("?IsCitadelPart_0@CitadelPart@@UAEIXZ");
+uint32_t __fastcall IsCitadelPart_0__11CitadelPartFv(struct GameThingWithPos* this) asm("?IsCitadelPart@CitadelPart@@UAEIXZ");
 // win1.41 00464b10 mac inlined CitadelPart::IsCitadelPart_1(Creature *)
-uint32_t __fastcall IsCitadelPart_1__11CitadelPartFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsCitadelPart_1@CitadelPart@@UAEIPAVCreature@@@Z");
+uint32_t __fastcall IsCitadelPart_1__11CitadelPartFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsCitadelPart@CitadelPart@@UAEIPAVCreature@@@Z");
 // win1.41 00469780 mac 101c2a50 CitadelPart::GetActualObjectToEffect(GPlayer *, bool)
 void* __fastcall GetActualObjectToEffect__11CitadelPartFP7GPlayerb(struct Object* this, const void* edx, struct GPlayer* param_1, bool param_2) asm("?GetActualObjectToEffect@CitadelPart@@UAEPAXPAVGPlayer@@_N@Z");
 // win1.41 004695c0 mac 101c32d0 CitadelPart::DestroyedByEffect(GPlayer *, float)
@@ -96,7 +96,7 @@ void __fastcall CallVirtualFunctionsForCreation__11CitadelPartFRC9MapCoords(stru
 // win1.41 004694b0 mac 101c3720 CitadelPart::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__11CitadelPartFv(struct Object* this) asm("?Get3DType@CitadelPart@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 004695d0 mac inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
-uint32_t __fastcall CanBeDestroyedBySpell_1__11CitadelPartFP5Spell(struct Object* this, const void* edx, struct Spell* param_1) asm("?CanBeDestroyedBySpell_1@CitadelPart@@UAEIPAVSpell@@@Z");
+uint32_t __fastcall CanBeDestroyedBySpell_1__11CitadelPartFP5Spell(struct Object* this, const void* edx, struct Spell* param_1) asm("?CanBeDestroyedBySpell@CitadelPart@@UAEIPAVSpell@@@Z");
 // win1.41 004697f0 mac 101c2970 CitadelPart::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__11CitadelPartFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@CitadelPart@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 004694c0 mac 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)

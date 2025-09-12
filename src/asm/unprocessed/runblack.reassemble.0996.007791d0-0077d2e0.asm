@@ -211,8 +211,8 @@
 .globl _globl_ct_0x0077a840
 .globl _globl_ct_0x0077a870
 .globl ?Get3DType@Workshop@@UAE?AW4LH3DObject__ObjectType@@XZ
-.globl ?IsWorkshop_0@Workshop@@UAEIXZ
-.globl ?IsWorkshop_1@Workshop@@UAEIPAVCreature@@@Z
+.globl ?IsWorkshop@Workshop@@UAEIXZ
+.globl ?IsWorkshop@Workshop@@UAEIPAVCreature@@@Z
 .globl ?CanActAsAContainer@Workshop@@UAEIPAVCreature@@@Z
 .globl ?IsStoragePit@Workshop@@UAEIPAVCreature@@@Z
 .globl ?GetSaveType@Workshop@@UAEIXZ
@@ -369,7 +369,7 @@ _jmp_addr_0x00779240:    push               esi                                 
                          nop                                                              // 0x007792bd    90
                          nop                                                              // 0x007792be    90
                          nop                                                              // 0x007792bf    90
-?IsWorkshop_0@Workshop@@UAEIXZ:
+?IsWorkshop@Workshop@@UAEIXZ:
                          mov                eax, 0x00000001                               // 0x007792c0    b801000000
                          ret                                                              // 0x007792c5    c3
                          nop                                                              // 0x007792c6    90
@@ -382,7 +382,7 @@ _jmp_addr_0x00779240:    push               esi                                 
                          nop                                                              // 0x007792cd    90
                          nop                                                              // 0x007792ce    90
                          nop                                                              // 0x007792cf    90
-?IsWorkshop_1@Workshop@@UAEIPAVCreature@@@Z:
+?IsWorkshop@Workshop@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                               // 0x007792d0    b801000000
                          ret                0x0004                                        // 0x007792d5    c20400
                          nop                                                              // 0x007792d8    90

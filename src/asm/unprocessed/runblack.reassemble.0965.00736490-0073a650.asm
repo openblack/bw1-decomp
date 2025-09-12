@@ -226,10 +226,10 @@
 .globl ?GetCreatureBeliefType@Town@@UAEIXZ
 .globl ?GetCreatureBeliefListType@Town@@UAEIXZ
 .globl ?IsScriptContainer@Town@@UBEIXZ
-.globl ?IsTown_1@Town@@UAE_NPAVCreature@@@Z
+.globl ?IsTown@Town@@UAE_NPAVCreature@@@Z
 .globl ?IsActivityObjectWhichCompassionAppliesTo@Town@@UAE_NPAVCreature@@@Z
 .globl ?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAE_NPAVCreature@@@Z
-.globl ?IsTown_0@Town@@UAE_NXZ
+.globl ?IsTown@Town@@UAE_NXZ
 .globl ?IsSuitableForCreatureActivity@Town@@UAEIXZ
 .globl ?CanBePlayedWithByCreature@Town@@UAEIPAVCreature@@@Z
 .globl ?GetText@Town@@UAEPBDXZ
@@ -4483,7 +4483,7 @@ _jmp_addr_0x007391c3:    mov.s              eax, esi                            
                          nop                                                               // 0x0073921d    90
                          nop                                                               // 0x0073921e    90
                          nop                                                               // 0x0073921f    90
-?IsTown_1@Town@@UAE_NPAVCreature@@@Z:
+?IsTown@Town@@UAE_NPAVCreature@@@Z:
                          mov                eax, 0x00000001                                // 0x00739220    b801000000
                          ret                0x0004                                         // 0x00739225    c20400
                          nop                                                               // 0x00739228    90
@@ -4516,7 +4516,7 @@ _jmp_addr_0x007391c3:    mov.s              eax, esi                            
                          nop                                                               // 0x0073924d    90
                          nop                                                               // 0x0073924e    90
                          nop                                                               // 0x0073924f    90
-?IsTown_0@Town@@UAE_NXZ:
+?IsTown@Town@@UAE_NXZ:
                          mov                eax, 0x00000001                                // 0x00739250    b801000000
                          ret                                                               // 0x00739255    c3
                          nop                                                               // 0x00739256    90

@@ -226,7 +226,7 @@
 .globl ?CanBeStompedOnByCreature@Living@@UAEIPAVCreature@@@Z
 .globl ?CanBeDancedWith@Living@@UAEIPAVCreature@@@Z
 .globl ?IsAggressive@Living@@UAEIPAVCreature@@@Z
-.globl ?IsLiving_1@Living@@UBEIXZ
+.globl ?IsLiving@Living@@UBEIXZ
 .globl ?IsNotLiving@Living@@UAEIXZ
 .globl ?SetSpecularColor@Living@@UAEXULH3DColor@@@Z
 .globl ?GetSpecularColor@Living@@UAE?AULH3DColor@@XZ
@@ -2633,7 +2633,7 @@ _jmp_addr_0x00417408:    xor.s              eax, eax                            
                          nop                                                              // 0x0041745d    90
                          nop                                                              // 0x0041745e    90
                          nop                                                              // 0x0041745f    90
-?IsLiving_1@Living@@UBEIXZ:
+?IsLiving@Living@@UBEIXZ:
                          mov                eax, 0x00000001                               // 0x00417460    b801000000
                          ret                                                              // 0x00417465    c3
                          nop                                                              // 0x00417466    90

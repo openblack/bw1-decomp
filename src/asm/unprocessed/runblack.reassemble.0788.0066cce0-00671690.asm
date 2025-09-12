@@ -199,7 +199,7 @@
 .globl ?Get3DType@PileFood@@UAE?AW4LH3DObject__ObjectType@@XZ
 .globl ?CanBePickedUpByCreature@PileResource@@UAEIPAVCreature@@@Z
 .globl ?IsTuggable@PileResource@@UAEIXZ
-.globl ?IsField_1@PileResource@@UAEIPAVCreature@@@Z
+.globl ?IsField@PileResource@@UAEIPAVCreature@@@Z
 .globl ?GetLife@PileResource@@UAEMXZ
 .globl ?SetLife@PileResource@@UAEXM@Z
 .globl ?ValidForLockedSelectProcess@PileResource@@UAE_NPAVGInterfaceStatus@@@Z
@@ -2697,7 +2697,7 @@ _jmp_addr_0x0066e3aa:    xor.s              eax, eax                            
                          nop                                                              // 0x0066e3bd    90
                          nop                                                              // 0x0066e3be    90
                          nop                                                              // 0x0066e3bf    90
-?IsField_1@PileResource@@UAEIPAVCreature@@@Z:
+?IsField@PileResource@@UAEIPAVCreature@@@Z:
                          xor.s              eax, eax                                      // 0x0066e3c0    33c0
                          ret                0x0004                                        // 0x0066e3c2    c20400
                          nop                                                              // 0x0066e3c5    90

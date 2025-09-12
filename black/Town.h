@@ -281,9 +281,9 @@ struct Citadel* __fastcall GetCitadel__4TownFv(struct GameThingWithPos* this) as
 // win1.41 007391d0 mac 10559100 Town::GetOrigin(void)
 uint32_t __fastcall GetOrigin__4TownFv(struct GameThingWithPos* this) asm("?GetOrigin@Town@@UAEIXZ");
 // win1.41 00739250 mac inlined Town::IsTown_0(void)
-bool __fastcall IsTown_0__4TownFv(struct GameThingWithPos* this) asm("?IsTown_0@Town@@UAE_NXZ");
+bool __fastcall IsTown_0__4TownFv(struct GameThingWithPos* this) asm("?IsTown@Town@@UAE_NXZ");
 // win1.41 00739220 mac inlined Town::IsTown_1(Creature *)
-bool __fastcall IsTown_1__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTown_1@Town@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsTown_1__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTown@Town@@UAE_NPAVCreature@@@Z");
 // win1.41 004e47f0 mac 105e4b50 Town::IsActivityObjectWhichAngerAppliesTo(Creature *)
 bool __fastcall IsActivityObjectWhichAngerAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Town@@UAE_NPAVCreature@@@Z");
 // win1.41 00739230 mac 105592e0 Town::IsActivityObjectWhichCompassionAppliesTo(Creature *)

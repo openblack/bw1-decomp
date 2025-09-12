@@ -142,7 +142,7 @@
 .globl ?ValidToApplyThisToObject@Villager@@UAEIPAVGInterfaceStatus@@PAVObject@@@Z
 .globl ?ApplyThisToObject@Villager@@UAEIPAVGInterfaceStatus@@PAVObject@@PAUGestureSystemPacketData@@@Z
 .globl ?GetScriptObjectType@Villager@@UAEIXZ
-.globl ?IsTouching_2@Villager@@UBE_NPAUMapCoords@@@Z
+.globl ?IsTouching@Villager@@UBE_NPAUMapCoords@@@Z
 .globl ?InterfaceSetInMagicHand@Villager@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?SetSpeedInMetres@Villager@@UAEXMH@Z
 .globl ?SetFoodSpeedup@Villager@@UAEX_N@Z
@@ -2436,7 +2436,7 @@ _jmp_addr_0x0075300a:    pop                edi                                 
                          nop                                                              // 0x0075303d    90
                          nop                                                              // 0x0075303e    90
                          nop                                                              // 0x0075303f    90
-?IsTouching_2@Villager@@UBE_NPAUMapCoords@@@Z:
+?IsTouching@Villager@@UBE_NPAUMapCoords@@@Z:
                          push               esi                                           // 0x00753040    56
                          mov.s              esi, ecx                                      // 0x00753041    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00753043    8b4c2408

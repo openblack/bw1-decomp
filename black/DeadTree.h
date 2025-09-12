@@ -66,7 +66,7 @@ uint32_t __fastcall Save__8DeadTreeFR10GameOSFile(struct GameThing* this, const 
 // win1.41 005109e0 mac 100c4120 DeadTree::GetSaveType(void)
 uint32_t __fastcall GetSaveType__8DeadTreeFv(struct GameThing* this) asm("?GetSaveType@DeadTree@@UAEIXZ");
 // win1.41 005109d0 mac inlined DeadTree::IsRock_0(void)
-uint32_t __fastcall IsRock_0__8DeadTreeFv(struct GameThingWithPos* this) asm("?IsRock_0@DeadTree@@UAEIXZ");
+uint32_t __fastcall IsRock_0__8DeadTreeFv(struct GameThingWithPos* this) asm("?IsRock@DeadTree@@UAEIXZ");
 // win1.41 00510980 mac 100c0e80 DeadTree::IsAnyKindOfTree(void)
 uint32_t __fastcall IsAnyKindOfTree__8DeadTreeFv(struct GameThingWithPos* this) asm("?IsAnyKindOfTree@DeadTree@@UAEIXZ");
 // win1.41 00510990 mac 100c0ec0 DeadTree::IsDeadTree(void)

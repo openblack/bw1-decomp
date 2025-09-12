@@ -115,9 +115,9 @@ uint32_t __fastcall GetCreatureBeliefType__5FieldFv(struct GameThingWithPos* thi
 // win1.41 0052a000 mac 100d1d20 Field::GetOverwriteInteractableToolTip(void)
 uint32_t __fastcall GetOverwriteInteractableToolTip__5FieldFv(struct GameThingWithPos* this) asm("?GetOverwriteInteractableToolTip@Field@@UAEIXZ");
 // win1.41 00527f30 mac inlined Field::IsField_1(Creature *)
-uint32_t __fastcall IsField_1__5FieldFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsField_1@Field@@UAEIPAVCreature@@@Z");
+uint32_t __fastcall IsField_1__5FieldFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsField@Field@@UAEIPAVCreature@@@Z");
 // win1.41 00527f40 mac inlined Field::IsField_0(void)
-uint32_t __fastcall IsField_0__5FieldFv(struct GameThingWithPos* this) asm("?IsField_0@Field@@UAEIXZ");
+uint32_t __fastcall IsField_0__5FieldFv(struct GameThingWithPos* this) asm("?IsField@Field@@UAEIXZ");
 // win1.41 00527fd0 mac 100d62f0 Field::CanBeEatenByCreature(Creature *)
 uint32_t __fastcall CanBeEatenByCreature__5FieldFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBeEatenByCreature@Field@@UAEIPAVCreature@@@Z");
 // win1.41 00527fe0 mac 100d6340 Field::CanBeSleptNextToByCreature(Creature *)
@@ -173,7 +173,7 @@ enum RESOURCE_TYPE __fastcall GetResourceType__5FieldFv(struct Object* this) asm
 // win1.41 00528050 mac 100d64c0 Field::IsLockedInInteract(void)
 bool __fastcall IsLockedInInteract__5FieldFv(struct Object* this) asm("?IsLockedInInteract@Field@@UAE_NXZ");
 // win1.41 00529290 mac inlined Field::IsTouching_2( const(MapCoords *))
-bool __fastcall IsTouching_2__5FieldCFP9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1) asm("?IsTouching_2@Field@@UBE_NPAUMapCoords@@@Z");
+bool __fastcall IsTouching_2__5FieldCFP9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1) asm("?IsTouching@Field@@UBE_NPAUMapCoords@@@Z");
 // win1.41 005299e0 mac 100d2a40 Field::ValidForLockedSelectProcess(GInterfaceStatus *)
 bool __fastcall ValidForLockedSelectProcess__5FieldFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@Field@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00529900 mac 100d2ac0 Field::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
@@ -193,7 +193,7 @@ uint32_t __fastcall IsTuggable__5FieldFv(struct Object* this) asm("?IsTuggable@F
 // win1.41 00528900 mac 100d4c80 Field::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__5FieldFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@Field@@UAEIPAVEffectValues@@@Z");
 // win1.41 00529ff0 mac inlined Field::CanBeDestroyedBySpell_1(Spell *)
-uint32_t __fastcall CanBeDestroyedBySpell_1__5FieldFP5Spell(struct Object* this, const void* edx, struct Spell* param_1) asm("?CanBeDestroyedBySpell_1@Field@@UAEIPAVSpell@@@Z");
+uint32_t __fastcall CanBeDestroyedBySpell_1__5FieldFP5Spell(struct Object* this, const void* edx, struct Spell* param_1) asm("?CanBeDestroyedBySpell@Field@@UAEIPAVSpell@@@Z");
 // win1.41 00528020 mac 100d6410 Field::InteractsWithPhysicsObjects(void)
 bool __fastcall InteractsWithPhysicsObjects__5FieldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Field@@UAE_NXZ");
 // win1.41 00528030 mac 100d6450 Field::CanBecomeAPhysicsObject(void)

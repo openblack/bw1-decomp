@@ -494,7 +494,7 @@ uint32_t __fastcall CanBeDancedWith__6LivingFP8Creature(struct GameThingWithPos*
 // win1.41 00417450 mac 10130dc0 Living::IsAggressive(Creature *)
 uint32_t __fastcall IsAggressive__6LivingFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsAggressive@Living@@UAEIPAVCreature@@@Z");
 // win1.41 00417460 mac inlined Living::IsLiving_1( const(void))
-uint32_t __fastcall IsLiving_1__6LivingCFv(const struct GameThingWithPos* this) asm("?IsLiving_1@Living@@UBEIXZ");
+uint32_t __fastcall IsLiving_1__6LivingCFv(const struct GameThingWithPos* this) asm("?IsLiving@Living@@UBEIXZ");
 // win1.41 00768580 mac 10594bb0 Living::AttitudeToCreatureEating(void)
 uint32_t __fastcall AttitudeToCreatureEating__6LivingFv(struct GameThingWithPos* this) asm("?AttitudeToCreatureEating@Living@@UAEIXZ");
 // win1.41 00416ff0 mac 1012f810 Living::IsSkeleton( const(void))

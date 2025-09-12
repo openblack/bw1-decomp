@@ -157,9 +157,9 @@
 .globl ?GetDebugText@PSysManager@@UAEPADXZ
 .globl ??_GPSysManager@@UAEPAXI@Z
 .globl ?GetPlayer@PSysManager@@UAEPAVGPlayer@@XZ
-.globl ?Process__2@GJPSysInterface@@UAEXPAUPSysProcessInfo@@@Z
-.globl ?Process__1@GJPSysInterface@@UAEIPBUPSysProcessInfo@@I@Z
-.globl ?Draw__2@GJPSysInterface@@UAEX_N@Z
+.globl ?Process_@GJPSysInterface@@UAEXPAUPSysProcessInfo@@@Z
+.globl ?Process_@GJPSysInterface@@UAEIPBUPSysProcessInfo@@I@Z
+.globl ?Draw_@GJPSysInterface@@UAEX_N@Z
 .globl ?GetSaveType@AtomCore@@UAEIXZ
 .globl ?GetDebugText@AtomCore@@UAEPADXZ
 .globl ??_GAtomCore@@UAEPAXI@Z
@@ -3294,7 +3294,7 @@ _jmp_addr_0x00673660:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0067368d    90
                          nop                                                              // 0x0067368e    90
                          nop                                                              // 0x0067368f    90
-?Process__2@GJPSysInterface@@UAEXPAUPSysProcessInfo@@@Z:
+?Process_@GJPSysInterface@@UAEXPAUPSysProcessInfo@@@Z:
                          {disp32} mov       edx, dword ptr [data_bytes + 0x33ba38]        // 0x00673690    8b15381ad000
                          mov                eax, dword ptr [ecx]                          // 0x00673696    8b01
                          push               edx                                           // 0x00673698    52
@@ -3311,7 +3311,7 @@ _jmp_addr_0x00673660:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x006736ad    90
                          nop                                                              // 0x006736ae    90
                          nop                                                              // 0x006736af    90
-?Process__1@GJPSysInterface@@UAEIPBUPSysProcessInfo@@I@Z:
+?Process_@GJPSysInterface@@UAEIPBUPSysProcessInfo@@I@Z:
                          push               ecx                                           // 0x006736b0    51
                          push               esi                                           // 0x006736b1    56
                          mov.s              esi, ecx                                      // 0x006736b2    8bf1
@@ -3342,7 +3342,7 @@ _jmp_addr_0x006736e7:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          ret                0x0008                                        // 0x006736fb    c20800
                          nop                                                              // 0x006736fe    90
                          nop                                                              // 0x006736ff    90
-?Draw__2@GJPSysInterface@@UAEX_N@Z:
+?Draw_@GJPSysInterface@@UAEX_N@Z:
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00673700    8b542404
                          mov                eax, dword ptr [ecx]                          // 0x00673704    8b01
                          push               edx                                           // 0x00673706    52

@@ -151,7 +151,7 @@
 .globl ?InterfaceValidToTap@DeadTree@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?InterfaceTap@DeadTree@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?HandShouldFeelWithMeshIntersect@DeadTree@@UAEIXZ
-.globl ?IsRock_0@DeadTree@@UAEIXZ
+.globl ?IsRock@DeadTree@@UAEIXZ
 .globl ?GetSaveType@DeadTree@@UAEIXZ
 .globl ?GetDebugText@DeadTree@@UAEPADXZ
 .globl ??_GDeadTree@@UAEPAXI@Z
@@ -3447,7 +3447,7 @@ _jmp_addr_0x005108ea:    {disp8} mov        ecx, dword ptr [edi + 0x28]         
                          nop                                                              // 0x005109cd    90
                          nop                                                              // 0x005109ce    90
                          nop                                                              // 0x005109cf    90
-?IsRock_0@DeadTree@@UAEIXZ:
+?IsRock@DeadTree@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x005109d0    33c0
                          ret                                                              // 0x005109d2    c3
                          nop                                                              // 0x005109d3    90

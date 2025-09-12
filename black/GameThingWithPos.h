@@ -449,9 +449,9 @@ float __fastcall GetImpressiveValue__16GameThingWithPosFP6LivingP8Reaction(struc
 // win1.41 0056feb0 mac 10002750 GameThingWithPos::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
 float __fastcall GetUpdateOfBoredomValue__16GameThingWithPosFP8ReactionP16GameThingWithPos(struct GameThingWithPos* this, const void* edx, struct Reaction* param_1, struct GameThingWithPos* param_2) asm("?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z");
 // win1.41 00401ae0 mac 100d3ed0 GameThingWithPos::IsTown(void)
-bool __fastcall IsTown__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsTown_1@GameThingWithPos@@UAE_NXZ");
+bool __fastcall IsTown__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsTown@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401a50 mac 1002b190 GameThingWithPos::IsTown(Creature *)
-bool __fastcall IsTown__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTown_0@GameThingWithPos@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsTown__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTown@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401a60 mac 103efcc0 GameThingWithPos::IsActivityObjectWhichAngerAppliesTo(Creature *)
 bool __fastcall IsActivityObjectWhichAngerAppliesTo__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401a70 mac 100c8d70 GameThingWithPos::IsActivityObjectWhichCompassionAppliesTo(Creature *)
@@ -475,9 +475,9 @@ bool32_t __fastcall IsTotemStatue__16GameThingWithPosFv(struct GameThingWithPos*
 // win1.41 00401b10 mac 103d8ae0 GameThingWithPos::IsTownDesireFlag(void)
 bool32_t __fastcall IsTownDesireFlag__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsTownDesireFlag@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401f50 mac 104a9cd0 GameThingWithPos::IsRock(Creature *)
-bool32_t __fastcall IsRock__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsRock_1@GameThingWithPos@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall IsRock__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsRock@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401b20 mac 10135ee0 GameThingWithPos::IsRock(void)
-bool32_t __fastcall IsRock__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsRock_0@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsRock__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsRock@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401b30 mac 103d8b30 GameThingWithPos::IsSpellDispenser(void)
 bool32_t __fastcall IsSpellDispenser__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsSpellDispenser@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401b40 mac 100c3630 GameThingWithPos::IsMist(void)
@@ -491,9 +491,9 @@ bool32_t __fastcall IsStreetLantern__16GameThingWithPosFv(struct GameThingWithPo
 // win1.41 00405310 mac 1009aa60 GameThingWithPos::IsAbode(void)
 bool32_t __fastcall IsAbode__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsAbode@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401e40 mac 104c28e0 GameThingWithPos::IsField(Creature *)
-bool32_t __fastcall IsField__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsField_1@GameThingWithPos@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall IsField__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsField@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401b80 mac 105e8170 GameThingWithPos::IsField(void)
-bool32_t __fastcall IsField__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsField_0@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsField__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsField@GameThingWithPos@@UAE_NXZ");
 // win1.41 00405320 mac 105e8120 GameThingWithPos::IsBuildingMaterial(void)
 bool32_t __fastcall IsBuildingMaterial__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsBuildingMaterial@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401b90 mac 1009eea0 GameThingWithPos::IsMagicFireBall(void)
@@ -615,15 +615,15 @@ bool32_t __fastcall IsAggressive__16GameThingWithPosFP8Creature(struct GameThing
 // win1.41 00401de0 mac 100ed8f0 GameThingWithPos::IsStoragePit(Creature *)
 bool32_t __fastcall IsStoragePit__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401e00 mac 10553fb0 GameThingWithPos::IsWorshipSite(Creature *)
-bool32_t __fastcall IsWorshipSite__16GameThingWithPosFP8Creature(struct GameThingWithPos* this) asm("?IsWorshipSite_0@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsWorshipSite__16GameThingWithPosFP8Creature(struct GameThingWithPos* this) asm("?IsWorshipSite@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401df0 mac 103d4fd0 GameThingWithPos::IsWorshipSite(void)
-bool32_t __fastcall IsWorshipSite__16GameThingWithPosFv(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsWorshipSite_1@GameThingWithPos@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall IsWorshipSite__16GameThingWithPosFv(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsWorshipSite@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401e10 mac 10136890 GameThingWithPos::GetWorshipSite(void)
 struct WorshipSite* __fastcall GetWorshipSite__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?GetWorshipSite@GameThingWithPos@@UAEPAUWorshipSite@@XZ");
 // win1.41 004023b0 mac 1042dbb0 GameThingWithPos::IsWorkshop(Creature *)
-bool32_t __fastcall IsWorkshop__16GameThingWithPosFP8Creature(struct GameThingWithPos* this) asm("?IsWorkshop_0@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsWorkshop__16GameThingWithPosFP8Creature(struct GameThingWithPos* this) asm("?IsWorkshop@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401e20 mac 1002c6a0 GameThingWithPos::IsWorkshop(void)
-bool32_t __fastcall IsWorkshop__16GameThingWithPosFv(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsWorkshop_1@GameThingWithPos@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall IsWorkshop__16GameThingWithPosFv(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsWorkshop@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 004054c0 mac 1048f310 GameThingWithPos::IsBuildingWhichIsBeingBuilt(Creature *)
 bool32_t __fastcall IsBuildingWhichIsBeingBuilt__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsBuildingWhichIsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401e30 mac 104964f0 GameThingWithPos::IsStoragePitWithFoodInIt(Creature *)
@@ -641,9 +641,9 @@ bool32_t __fastcall IsStoragePitBelongingToMyPlayer__16GameThingWithPosFP8Creatu
 // win1.41 00401ea0 mac 1055e010 GameThingWithPos::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
 bool32_t __fastcall BenefitsFromHavingWaterSprinkledOnIt__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00402320 mac 1055e8b0 GameThingWithPos::IsTree(Creature *)
-bool32_t __fastcall IsTree__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsTree_1@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsTree__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsTree@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401eb0 mac 1055e440 GameThingWithPos::IsTree(void)
-bool32_t __fastcall IsTree__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsTree_0@GameThingWithPos@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall IsTree__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsTree@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401ec0 mac 10159e90 GameThingWithPos::IsTreeNotTooNearPlannedForest(Creature *)
 bool32_t __fastcall IsTreeNotTooNearPlannedForest__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401ed0 mac 1017ac30 GameThingWithPos::IsTreeBigEnoughForCreature(Creature *)
@@ -659,9 +659,9 @@ bool32_t __fastcall CanBeUsedForBuildingHomeByCreature__16GameThingWithPosFP8Cre
 // win1.41 00401f60 mac 1055ec40 GameThingWithPos::IsPickupableRock(Creature *)
 bool32_t __fastcall IsPickupableRock__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsPickupableRock@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00402360 mac 1055e860 GameThingWithPos::IsCitadelPart(void)
-bool32_t __fastcall IsCitadelPart__16GameThingWithPosFP8Creature(struct GameThingWithPos* this) asm("?IsCitadelPart_1@GameThingWithPos@@UAE_NXZ");
+bool32_t __fastcall IsCitadelPart__16GameThingWithPosFP8Creature(struct GameThingWithPos* this) asm("?IsCitadelPart@GameThingWithPos@@UAE_NXZ");
 // win1.41 00401fa0 mac 1055df30 GameThingWithPos::IsCitadelPart(Creature *)
-bool32_t __fastcall IsCitadelPart__16GameThingWithPosFv(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsCitadelPart_0@GameThingWithPos@@UAE_NPAVCreature@@@Z");
+bool32_t __fastcall IsCitadelPart__16GameThingWithPosFv(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsCitadelPart@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401fb0 mac 1055ddd0 GameThingWithPos::IsPlayingFootball(Creature *)
 bool32_t __fastcall IsPlayingFootball__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsPlayingFootball@GameThingWithPos@@UAE_NPAVCreature@@@Z");
 // win1.41 00401fc0 mac 10365210 GameThingWithPos::IsPlayingFootballAndMySideHasJustScored(Creature *)
@@ -711,9 +711,9 @@ bool32_t __fastcall IsToyDie__16GameThingWithPosFP8Creature(struct GameThingWith
 // win1.41 004020f0 mac 1055e0d0 GameThingWithPos::IsToyCuddly(Creature *)
 bool32_t __fastcall IsToyCuddly__16GameThingWithPosFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsToyCuddly@GameThingWithPos@@UBE_NPAVCreature@@@Z");
 // win1.41 00402350 mac 103d8a70 GameThingWithPos::IsLiving(void)
-bool32_t __fastcall IsLiving__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsLiving_1@GameThingWithPos@@UBE_NXZ");
+bool32_t __fastcall IsLiving__16GameThingWithPosFv(const struct GameThingWithPos* this) asm("?IsLiving@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402100 mac 10560030 GameThingWithPos::IsLiving(Creature *)
-bool32_t __fastcall IsLiving__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsLiving_0@GameThingWithPos@@UBE_NPAVCreature@@@Z");
+bool32_t __fastcall IsLiving__16GameThingWithPosFP8Creature(const struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?IsLiving@GameThingWithPos@@UBE_NPAVCreature@@@Z");
 // win1.41 00402110 mac 1007f100 GameThingWithPos::IsFence(void)
 bool32_t __fastcall IsFence__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?IsFence@GameThingWithPos@@UBE_NXZ");
 // win1.41 00402120 mac 1055f270 GameThingWithPos::IsSpellIcon(void)
