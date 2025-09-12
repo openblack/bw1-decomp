@@ -59,6 +59,11 @@ C_STDLIB_HEADER_IMPORT_MAP = {
 
 
 HEADER_DIAGNOSTIC_IGNORE = {
+    "<d3d.h>": [
+        "-Wpragma-pack",
+        "-Wmacro-redefined",
+        "-Wmissing-declarations",
+    ],
     "<d3dtypes.h>": [
         "-Wpragma-pack",
         "-Wmacro-redefined",
@@ -340,7 +345,7 @@ class GlobalsHeader(Header):
     def to_code_inner(self, cw: csnake.CodeWriter):
         super().to_code_inner(cw)
 
-        cw.add_line(f"volatile static struct {self.globals_struct.name} globals = {{")
+        cw.add_line(f"static struct {self.globals_struct.name} globals = {{")
         for m in sorted(self.globals_struct.members):
             data_type = m.data_type
             if isinstance(data_type, csnake.FuncPtr):
