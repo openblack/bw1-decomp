@@ -2162,7 +2162,7 @@ _jmp_addr_0x00752c2f:    pop                edi                                 
                          test               eax, eax                                      // 0x00752ccb    85c0
                          {disp8} je         _jmp_addr_0x00752cdd                          // 0x00752ccd    740e
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x00752ccf    d9442410
-                         {disp32} fmul      qword ptr [rdata_bytes + 0x18d8]              // 0x00752cd3    dc0dd8a88a00
+                         {disp32} fmul      qword ptr [__real@3ff4000000000000]           // 0x00752cd3    dc0dd8a88a00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00752cd9    d95c2410
 _jmp_addr_0x00752cdd:    {disp8} fld        dword ptr [esp + 0x10]                        // 0x00752cdd    d9442410
                          mov.s              ecx, edi                                      // 0x00752ce1    8bcf

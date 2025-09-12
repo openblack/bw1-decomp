@@ -1,5 +1,7 @@
 #include "PlannedAbode.h"
 
+const double rdata_real_1_25 asm("__real@3ff4000000000000") = 1.25;
+
 struct PlannedAbode* __fastcall __ct__12PlannedAbodeFP5Abode(struct PlannedAbode* this, const void* edx, struct Abode* abode)
 {
     asm("{disp8} mov        eax, dword ptr [esp + 0x04]");                   // 0x00405580    8b442404
@@ -308,7 +310,7 @@ bool32_t __fastcall IsOkToBuild__12PlannedAbodeFv(struct PlannedAbode* this)
     asm("mov.s              ecx, esi");                                      // 0x00405803    8bce
     asm("mov.s              edi, eax");                                      // 0x00405805    8bf8
     asm("call               dword ptr [edx + 0x120]");                       // 0x00405807    ff9220010000
-    asm("{disp32} fmul      qword ptr [rdata_bytes + 0x18d8]");              // 0x0040580d    dc0dd8a88a00
+    asm("{disp32} fmul      qword ptr [__real@3ff4000000000000]");           // 0x0040580d    dc0dd8a88a00
     asm("{disp8} mov        eax, dword ptr [esp + 0x08]");                   // 0x00405813    8b442408
     asm("mov                edx, dword ptr [edi]");                          // 0x00405817    8b17
     asm("push               ecx");                                           // 0x00405819    51
