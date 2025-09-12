@@ -31,6 +31,8 @@ struct LHPoint* __cdecl ConvertMapCoordToLandscapePoint__10GLandscapeFRC9MapCoor
 
 // Non-virtual methods
 
+// win1.41 005e42e0 mac 1004d770 GLandscape::Draw(void)
+void __fastcall Draw__10GLandscapeFv(struct GLandscape* this) asm("?Draw@GLandscape@@QAEIXZ");
 // win1.41 005e52e0 mac 10379f50 GLandscape::Open(char *)
 void __fastcall Open__10GLandscapeFPc(struct GLandscape* this, const void* edx, const char* path);
 

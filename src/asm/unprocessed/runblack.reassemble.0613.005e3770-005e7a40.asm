@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x004059f0
+.extern ?PreDraw@Windmill@@QAEIXZ
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ___nw__4BaseFUl
@@ -159,7 +159,7 @@
 .extern _jmp_addr_0x00879930
 
 .globl _PreDraw__10GLandscapeFv
-.globl _jmp_addr_0x005e42e0
+.globl ?Draw@GLandscape@@QAEIXZ
 .globl _jmp_addr_0x005e5280
 .globl @Open__10GLandscapeFPc@12
 .globl _jmp_addr_0x005e55c0
@@ -1097,7 +1097,8 @@ _jmp_addr_0x005e42cf:    pop                edi                                 
                          nop                                                              // 0x005e42dd    90
                          nop                                                              // 0x005e42de    90
                          nop                                                              // 0x005e42df    90
-_jmp_addr_0x005e42e0:    sub                esp, 0x60                                     // 0x005e42e0    83ec60
+?Draw@GLandscape@@QAEIXZ:
+                         sub                esp, 0x60                                     // 0x005e42e0    83ec60
                          push               ebx                                           // 0x005e42e3    53
                          push               ebp                                           // 0x005e42e4    55
                          {disp8} mov        dword ptr [esp + 0x18], ecx                   // 0x005e42e5    894c2418
@@ -1470,7 +1471,7 @@ _jmp_addr_0x005e47d3:    {disp8} fld        dword ptr [esp + 0x24]              
                          {disp32} fstp      dword ptr [data_bytes + 0x3543a8]             // 0x005e486a    d91da8a3d100
                          {disp32} mov       dword ptr [data_bytes + 0x3543a4], 0x00000000 // 0x005e4870    c705a4a3d10000000000
                          {disp32} mov       dword ptr [data_bytes + 0x22d578], eax        // 0x005e487a    a37835bf00
-                         call               _jmp_addr_0x004059f0                          // 0x005e487f    e86c11e2ff
+                         call               ?PreDraw@Windmill@@QAEIXZ                     // 0x005e487f    e86c11e2ff
                          call               _jmp_addr_0x0074a7c0                          // 0x005e4884    e8375f1600
                          call               _jmp_addr_0x008296d0                          // 0x005e4889    e8424e2400
                          call               _jmp_addr_0x005e5830                          // 0x005e488e    e89d0f0000

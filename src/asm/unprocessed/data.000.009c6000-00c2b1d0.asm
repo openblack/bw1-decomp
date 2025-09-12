@@ -82,6 +82,7 @@ _debug_text_\name:
 .globl ??_C@_01KPOD@?$DN?$AA@
 .globl ??_C@_01PJCK@?4?$AA@
 .globl ??_C@_06ONKE@?$CInull?$CJ?$AA@
+.globl ??_C@_09ABCDEFGH@Windmill?$AA@
 
 data_bytes:
 _data_bytes:
@@ -2063,6 +2064,7 @@ RTTI_Class_Type_Descriptor_Reflection_And_Path Abode "Abode:" "Abode.cpp"       
 RTTI_Class_Type_Descriptor                     PlannedMultiMapFixed                                                // [0x1fd8] 0x009c6000 + 0x1fd8 = 0x009c7fd8
 RTTI_Class_Type_Descriptor_And_Reflection      PlannedAbode "Planned Abode"                                        // [0x2000] 0x009c6000 + 0x2000 = 0x009c8000
 RTTI_Class_Type_Descriptor                     Windmill                                                            // [0x2030] 0x009c6000 + 0x2030 = 0x009c8030
+??_C@_09ABCDEFGH@Windmill?$AA@:
 ASCIZ_ALIGNED "Windmill:" 4                                                                                        // [0x2048] 0x009c6000 + 0x2048 = 0x009c8048
 ASCIZ_ALIGNED "%s_%s" 16                                                                                           // [0x2054] 0x009c6000 + 0x2054 = 0x009c8054
 RTTI_Class_Type_Descriptor                     Creature                                                            // [0x2060] 0x009c6000 + 0x2060 = 0x009c8060

@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00405980
-.extern _jmp_addr_0x004059d0
+.extern ?Open@Windmill@@QAEXXZ
+.extern ?Close@Windmill@@QAEXXZ
 .extern _jmp_addr_0x00428ef0
 .extern _jmp_addr_0x00428f90
 .extern _jmp_addr_0x00436960
@@ -53,7 +53,7 @@
 .extern ?CreatePack@LH3DMesh@@SAXXZ
 
 .globl _jmp_addr_0x00550080
-.globl _jmp_addr_0x00550110
+.globl ?FinishInitialisation@GGame@@QAEXXZ
 .globl @LoadFiles__5GGameFv@4
 .globl _jmp_addr_0x00550410
 .globl @Birthday__5GGameFv@4
@@ -181,7 +181,7 @@ _jmp_addr_0x00550080:    push               esi                                 
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x00550083    8b0d203bcd00
                          push               edi                                            // 0x00550089    57
                          call               _jmp_addr_0x00428f90                           // 0x0055008a    e8018fedff
-                         call               _jmp_addr_0x004059d0                           // 0x0055008f    e83c59ebff
+                         call               ?Close@Windmill@@QAEXXZ                        // 0x0055008f    e83c59ebff
                          xor.s              edi, edi                                       // 0x00550094    33ff
                          mov.s              ecx, esi                                       // 0x00550096    8bce
                          {disp32} mov       dword ptr [data_bytes + 0x4bf208], edi         // 0x00550098    893d0852e800
@@ -228,7 +228,8 @@ _jmp_addr_0x00550109:    pop                edi                                 
                          nop                                                               // 0x0055010d    90
                          nop                                                               // 0x0055010e    90
                          nop                                                               // 0x0055010f    90
-_jmp_addr_0x00550110:    push               esi                                            // 0x00550110    56
+?FinishInitialisation@GGame@@QAEXXZ:
+                         push               esi                                            // 0x00550110    56
                          mov.s              esi, ecx                                       // 0x00550111    8bf1
                          call               @MyInterface__5GGameFv@4                       // 0x00550113    e838570000
                          test               eax, eax                                       // 0x00550118    85c0
@@ -243,7 +244,7 @@ _jmp_addr_0x00550130:    xor.s              eax, eax                            
                          {disp32} mov       dword ptr [data_bytes + 0x4bf370], eax         // 0x0055013c    a37053e800
                          {disp32} mov       dword ptr [data_bytes + 0x4bf208], 0x0054ffe0  // 0x00550141    c7050852e800e0ff5400
                          {disp32} mov       dword ptr [data_bytes + 0x4bf354], eax         // 0x0055014b    a35453e800
-                         call               _jmp_addr_0x00405980                           // 0x00550150    e82b58ebff
+                         call               ?Open@Windmill@@QAEXXZ                         // 0x00550150    e82b58ebff
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x00550155    8b0d203bcd00
                          call               _jmp_addr_0x00428ef0                           // 0x0055015b    e8908dedff
                          pop                esi                                            // 0x00550160    5e
