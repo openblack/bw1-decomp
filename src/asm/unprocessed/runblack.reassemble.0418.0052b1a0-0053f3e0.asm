@@ -511,13 +511,13 @@
 .globl _Load__17GFootpathLinkSaveFR10GameOSFile
 .globl _Load__13MultiMapFixedFR10GameOSFile
 .globl ?Create3DObject@Fixed@@UAEXXZ
-.globl @GetDoorPos__13MultiMapFixedFv@12
+.globl ?GetDoorPos@MultiMapFixed@@UAEPAUMapCoords@@PAU2@@Z
 .globl _GetCollideData__14SingleMapFixedFv
 .globl ?InsertMapObject@MultiMapFixed@@UAEXXZ
 .globl ?GetMapChild@MultiMapFixed@@UAEPAVObject@@PBUMapCell@@@Z
-.globl @SetMapChild__13MultiMapFixedFP6ObjectP7MapCell@16
+.globl ?SetMapChild@MultiMapFixed@@UAEXPAVObject@@PAUMapCell@@@Z
 .globl _InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell
-.globl @AddFootpath__13MultiMapFixedFP9GFootpath@12
+.globl ?AddFootpathLink@MultiMapFixed@@QAEXPAVGFootpath@@@Z
 .globl _InsertMapObjectToCell__11FixedObjectFP7MapCell
 .globl ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z
 .globl ??1Fixed@@UAE@XZ
@@ -5842,7 +5842,7 @@ _jmp_addr_0x0052e354:    push               esi                                 
                          nop                                                                     // 0x0052e36d    90
                          nop                                                                     // 0x0052e36e    90
                          nop                                                                     // 0x0052e36f    90
-@GetDoorPos__13MultiMapFixedFv@12:
+?GetDoorPos@MultiMapFixed@@UAEPAUMapCoords@@PAU2@@Z:
                          sub                esp, 0x0c                                            // 0x0052e370    83ec0c
                          push               esi                                                  // 0x0052e373    56
                          mov.s              esi, ecx                                             // 0x0052e374    8bf1
@@ -5911,7 +5911,7 @@ _jmp_addr_0x0052e413:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052e41d    90
                          nop                                                                     // 0x0052e41e    90
                          nop                                                                     // 0x0052e41f    90
-@SetMapChild__13MultiMapFixedFP6ObjectP7MapCell@16:
+?SetMapChild@MultiMapFixed@@UAEXPAVObject@@PAUMapCell@@@Z:
                          push               ebx                                                  // 0x0052e420    53
                          push               esi                                                  // 0x0052e421    56
                          push               edi                                                  // 0x0052e422    57
@@ -7001,7 +7001,7 @@ _jmp_addr_0x0052edef:    {disp8} fld        dword ptr [ecx + 0x5c]              
                          call               dword ptr [edx + 0x8a8]                              // 0x0052ee01    ff92a8080000
 _jmp_addr_0x0052ee07:    ret                0x0004                                               // 0x0052ee07    c20400
                          call               dword ptr [__imp__ShellExecuteA@4]                   // 0x0052ee0a    ff15ac978a00
-@AddFootpath__13MultiMapFixedFP9GFootpath@12:
+?AddFootpathLink@MultiMapFixed@@QAEXPAVGFootpath@@@Z:
                          push               edi                                                  // 0x0052ee10    57
                          mov.s              edi, ecx                                             // 0x0052ee11    8bf9
                          mov                eax, dword ptr [edi]                                 // 0x0052ee13    8b07
