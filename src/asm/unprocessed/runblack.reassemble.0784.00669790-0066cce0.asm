@@ -1865,7 +1865,7 @@ _jmp_addr_0x0066aa62:    mov                eax, dword ptr [edi]                
                          add                esp, 0x08                                     // 0x0066aa81    83c408
                          mov.s              ecx, edi                                      // 0x0066aa84    8bcf
                          call               dword ptr [edx + 0x60]                        // 0x0066aa86    ff5260
-                         {disp32} fmul      qword ptr [rdata_bytes + 0x18d8]              // 0x0066aa89    dc0dd8a88a00
+                         {disp32} fmul      qword ptr [__real@3ff4000000000000]           // 0x0066aa89    dc0dd8a88a00
                          mov                eax, dword ptr [esi]                          // 0x0066aa8f    8b06
                          mov.s              ecx, esi                                      // 0x0066aa91    8bce
                          {disp8} fstp       qword ptr [esp + 0x14]                        // 0x0066aa93    dd5c2414

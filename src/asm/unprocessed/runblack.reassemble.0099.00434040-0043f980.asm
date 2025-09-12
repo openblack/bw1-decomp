@@ -13235,7 +13235,7 @@ _jmp_addr_0x0043c120:    sub                esp, 0x2c                           
                          mov                edx, dword ptr [eax]                                 // 0x0043c12e    8b10
                          mov.s              ecx, eax                                             // 0x0043c130    8bc8
                          call               dword ptr [edx + 0x60]                               // 0x0043c132    ff5260
-                         {disp32} fmul      qword ptr [rdata_bytes + 0x18d8]                     // 0x0043c135    dc0dd8a88a00
+                         {disp32} fmul      qword ptr [__real@3ff4000000000000]                  // 0x0043c135    dc0dd8a88a00
                          {disp8} mov        ebp, dword ptr [esp + 0x40]                          // 0x0043c13b    8b6c2440
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000                   // 0x0043c13f    c744241000000000
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x0043c147    d95c2414

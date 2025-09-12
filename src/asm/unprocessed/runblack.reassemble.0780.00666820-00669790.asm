@@ -2532,7 +2532,7 @@ _jmp_addr_0x006681ff:    pop                edi                                 
                          push               0x3e800000                               // 0x006682c7    680000803e
                          call               _GameFloatRand__5GRandFf                 // 0x006682cc    e85f620700
                          mov                edx, dword ptr [edi]                     // 0x006682d1    8b17
-                         {disp32} fadd      qword ptr [rdata_bytes + 0x18d8]         // 0x006682d3    dc05d8a88a00
+                         {disp32} fadd      qword ptr [__real@3ff4000000000000]      // 0x006682d3    dc05d8a88a00
                          add                esp, 0x14                                // 0x006682d9    83c414
                          mov.s              ecx, edi                                 // 0x006682dc    8bcf
                          {disp8} fstp       qword ptr [esp + 0x10]                   // 0x006682de    dd5c2410
