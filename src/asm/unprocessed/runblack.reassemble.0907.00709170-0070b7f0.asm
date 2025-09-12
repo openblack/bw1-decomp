@@ -28,7 +28,7 @@
 .extern @__ct__11FixedObjectFv@4
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
 .extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
-.extern @Load__11FixedObjectFR10GameOSFile@12
+.extern ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z
 .extern ?CallVirtualFunctionsForCreation@SingleMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x0052eac0
 .extern _jmp_addr_0x0052f690
@@ -2386,7 +2386,7 @@ _jmp_addr_0x0070a8e1:    pop                edi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x0070a8f2    8b74240c
                          mov.s              ebx, ecx                                      // 0x0070a8f6    8bd9
                          push               esi                                           // 0x0070a8f8    56
-                         call               @Load__11FixedObjectFR10GameOSFile@12         // 0x0070a8f9    e87238e2ff
+                         call               ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z         // 0x0070a8f9    e87238e2ff
                          test               eax, eax                                      // 0x0070a8fe    85c0
                          {disp32} je        _jmp_addr_0x0070aa61                          // 0x0070a900    0f845b010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x0070a906    a194c9be00

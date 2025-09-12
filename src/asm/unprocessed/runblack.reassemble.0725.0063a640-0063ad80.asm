@@ -37,7 +37,7 @@
 .globl _globl_ct_0x0063ab30
 .globl _globl_ct_0x0063ab60
 .globl _globl_ct_0x0063ab80
-.globl _InitialiseIsFixedForMapList__6ObjectFv
+.globl ?InitialiseIsFixedForMapList@Object@@UAEXH@Z
 .globl ?CanBecomeArtifact@Object@@UAE_NXZ
 .globl ?IsDrowning@Object@@UAE_NXZ
 .globl ?DestroyedByBeam@Object@@UAEXXZ
@@ -53,7 +53,7 @@
 .globl ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
 
 // Snippet: asm, [0x0063a640, 0x0063ad63)
-_InitialiseIsFixedForMapList__6ObjectFv:
+?InitialiseIsFixedForMapList@Object@@UAEXH@Z:
 @InitialiseIsFixedForMapList__6ObjectFv@4:    push               esi                                           // 0x0063a640    56
                          mov.s              esi, ecx                                      // 0x0063a641    8bf1
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x0063a643    8b4628

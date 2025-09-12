@@ -406,18 +406,18 @@
 .globl _globl_ct_0x006363f0
 .globl ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .globl ?CleanupWhenDeleted@Object@@UAEXH@Z 
-.globl _RemoveMapObject__6ObjectFv
-.globl _InsertMapObject__6ObjectFv
-.globl _SetYAngle__6ObjectFf
-.globl _RemoveMapObjectFromCell__6ObjectFP7MapCell
-.globl _ActualMoveMapObject__6ObjectFRC9MapCoords
-.globl _MoveMapObject__6ObjectFRC9MapCoords
-.globl _SetLife__6ObjectFf
+.globl ?RemoveMapObject@Object@@UAEXXZ
+.globl ?InsertMapObject@Object@@UAEXXZ
+.globl ?SetYAngle@Object@@UAEXM@Z
+.globl ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z
+.globl ?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z
+.globl ?MoveMapObject@Object@@UAEIUMapCoords@@@Z
+.globl ?SetLife@Object@@UAEXM@Z
 .globl _Load__6ObjectFR10GameOSFile
 .globl _ReduceLife__6ObjectFfP7GPlayer
-.globl _Create3DObject__6ObjectFv
-.globl _InsertMapObjectToCell__6ObjectFP7MapCell
-.globl _SetScale__6ObjectFf
+.globl ?Create3DObject@Object@@UAEXXZ
+.globl ?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z
+.globl ?SetScale@Object@@UAEXM@Z
 .globl ??1Object@@UAE@XZ
 .globl ?Delete@Object@@UAEXH@Z
 .globl ?ToBeDeleted@Object@@UAEXH@Z
@@ -8376,7 +8376,7 @@ _jmp_addr_0x00636508:    {disp8} mov        ecx, dword ptr [ecx + eax * 0x4 + 0x
                          nop                                                               // 0x006365ed    90
                          nop                                                               // 0x006365ee    90
                          nop                                                               // 0x006365ef    90
-_Create3DObject__6ObjectFv:
+?Create3DObject@Object@@UAEXXZ:
 @Create3DObject__6ObjectFv@4:    push               esi                                            // 0x006365f0    56
                          mov.s              esi, ecx                                       // 0x006365f1    8bf1
                          mov                eax, dword ptr [esi]                           // 0x006365f3    8b06
@@ -8540,7 +8540,7 @@ _jmp_addr_0x00636731:    pop                edi                                 
                          pop                ebx                                            // 0x00636739    5b
                          ret                                                               // 0x0063673a    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x0063673b    e8b9b0dcff
-_InsertMapObject__6ObjectFv:
+?InsertMapObject@Object@@UAEXXZ:
 @InsertMapObject__6ObjectFv@4:    push               esi                                            // 0x00636740    56
                          mov.s              esi, ecx                                       // 0x00636741    8bf1
                          push               edi                                            // 0x00636743    57
@@ -8574,7 +8574,7 @@ _jmp_addr_0x00636785:    push               ebx                                 
 _jmp_addr_0x0063679d:    pop                edi                                            // 0x0063679d    5f
                          pop                esi                                            // 0x0063679e    5e
                          ret                                                               // 0x0063679f    c3
-_RemoveMapObject__6ObjectFv:
+?RemoveMapObject@Object@@UAEXXZ:
 @RemoveMapObject__6ObjectFv@4:    push               esi                                            // 0x006367a0    56
                          mov.s              esi, ecx                                       // 0x006367a1    8bf1
                          push               edi                                            // 0x006367a3    57
@@ -8645,7 +8645,7 @@ _jmp_addr_0x0063681d:    pop                edi                                 
                          nop                                                               // 0x0063682d    90
                          nop                                                               // 0x0063682e    90
                          nop                                                               // 0x0063682f    90
-_InsertMapObjectToCell__6ObjectFP7MapCell:
+?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z:
 @InsertMapObjectToCell__6ObjectFP7MapCell@12:    push               ebx                                            // 0x00636830    53
                          push               esi                                            // 0x00636831    56
                          mov.s              ebx, ecx                                       // 0x00636832    8bd9
@@ -8714,7 +8714,7 @@ _jmp_addr_0x006368be:    push               edi                                 
                          ret                0x0004                                         // 0x006368cb    c20400
                          nop                                                               // 0x006368ce    90
                          nop                                                               // 0x006368cf    90
-_RemoveMapObjectFromCell__6ObjectFP7MapCell:
+?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z:
 @RemoveMapObjectFromCell__6ObjectFP7MapCell@12:    push               ebx                                            // 0x006368d0    53
                          push               ebp                                            // 0x006368d1    55
                          push               esi                                            // 0x006368d2    56
@@ -8858,7 +8858,7 @@ _jmp_addr_0x00636a22:    push               ebx                                 
                          nop                                                               // 0x00636a3d    90
                          nop                                                               // 0x00636a3e    90
                          nop                                                               // 0x00636a3f    90
-_MoveMapObject__6ObjectFRC9MapCoords:
+?MoveMapObject@Object@@UAEIUMapCoords@@@Z:
 @MoveMapObject__6ObjectFRC9MapCoords@12:    {disp8} mov        dx, word ptr [ecx + 0x16]                      // 0x00636a40    668b5116
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00636a44    8b442404
                          cmp                dx, word ptr [eax + 0x02]                      // 0x00636a48    663b5002
@@ -11061,7 +11061,7 @@ _jmp_addr_0x00637f9b:    xor.s              eax, eax                            
                          nop                                                               // 0x0063803d    90
                          nop                                                               // 0x0063803e    90
                          nop                                                               // 0x0063803f    90
-_ActualMoveMapObject__6ObjectFRC9MapCoords:
+?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z:
 @ActualMoveMapObject__6ObjectFRC9MapCoords@12:    push               esi                                            // 0x00638040    56
                          mov.s              esi, ecx                                       // 0x00638041    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00638043    8b06
@@ -12841,7 +12841,7 @@ _jmp_addr_0x006391f7:    pop                esi                                 
                          pop                ebx                                            // 0x006391f9    5b
                          add                esp, 0x14                                      // 0x006391fa    83c414
                          ret                0x0010                                         // 0x006391fd    c21000
-_SetScale__6ObjectFf:
+?SetScale@Object@@UAEXM@Z:
 @SetScale__6ObjectFf@12: push               esi                                            // 0x00639200    56
                          mov.s              esi, ecx                                       // 0x00639201    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00639203    8b06
@@ -12886,7 +12886,7 @@ _jmp_addr_0x0063924f:    pop                esi                                 
                          nop                                                               // 0x0063925d    90
                          nop                                                               // 0x0063925e    90
                          nop                                                               // 0x0063925f    90
-_SetYAngle__6ObjectFf:
+?SetYAngle@Object@@UAEXM@Z:
 @SetYAngle__6ObjectFf@12:push               esi                                            // 0x00639260    56
                          mov.s              esi, ecx                                       // 0x00639261    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00639263    8b06
@@ -14340,7 +14340,7 @@ _jmp_addr_0x0063a127:    .byte              0x66, 0x81, 0x63, 0x24, 0xcf, 0xff//
                          nop                                                               // 0x0063a13d    90
                          nop                                                               // 0x0063a13e    90
                          nop                                                               // 0x0063a13f    90
-_SetLife__6ObjectFf:
+?SetLife@Object@@UAEXM@Z:
 @SetLife__6ObjectFf@12:  {disp8} mov        dx, word ptr [ecx + 0x24]                      // 0x0063a140    668b5124
                          test               dh, 0x02                                       // 0x0063a144    f6c602
                          push               esi                                            // 0x0063a147    56

@@ -381,7 +381,7 @@ float __fastcall GetLife__6ObjectFv(struct GameThingWithPos* this) asm("?GetLife
 // win1.41 00402520 mac 10044cb0 Object::GetScale(void)
 float __fastcall GetScale__6ObjectFv(struct GameThingWithPos* this) asm("?GetScale@Object@@UAEMXZ");
 // win1.41 00639200 mac 103d3c80 Object::SetScale(float)
-void __fastcall SetScale__6ObjectFf(struct GameThingWithPos* this, const void* edx, float scale);
+void __fastcall SetScale__6ObjectFf(struct GameThingWithPos* this, const void* edx, float scale) asm("?SetScale@Object@@UAEXM@Z");
 // win1.41 004027c0 mac 103d58a0 Object::GetDistanceFromObject(MapCoords &)
 float __fastcall GetDistanceFromObject__6ObjectFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* target) asm("?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z");
 // win1.41 006394e0 mac 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
@@ -479,7 +479,7 @@ void __fastcall SetJustScale__6ObjectFf(struct Object* this, const void* edx, fl
 // win1.41 0063a800 mac 10038850 Object::SetYJustAngle(float)
 void __fastcall SetYJustAngle__6ObjectFf(struct Object* this, const void* edx, float angle) asm("?SetYJustAngle@Object@@UAEXM@Z");
 // win1.41 00639260 mac 1004cc10 Object::SetYAngle(float)
-void __fastcall SetYAngle__6ObjectFf(struct Object* this, const void* edx, float angle);
+void __fastcall SetYAngle__6ObjectFf(struct Object* this, const void* edx, float angle) asm("?SetYAngle@Object@@UAEXM@Z");
 // win1.41 00402540 mac 100def80 Object::UpdateFrom3DPosition(void)
 void __fastcall UpdateFrom3DPosition__6ObjectFv(struct Object* this) asm("?UpdateFrom3DPosition@Object@@UAEXXZ");
 // win1.41 00402550 mac 105890b0 Object::MoveAlongPath(void)
@@ -489,27 +489,27 @@ bool __fastcall IsReachable__6ObjectFv(struct Object* this) asm("?IsReachable@Ob
 // win1.41 0063a920 mac 103d03c0 Object::BlocksTownClearArea( const(void))
 bool __fastcall BlocksTownClearArea__6ObjectCFv(const struct Object* this) asm("?BlocksTownClearArea@Object@@UAE_NXZ");
 // win1.41 006365f0 mac 103d90d0 Object::Create3DObject(void)
-void __fastcall Create3DObject__6ObjectFv(struct Object* this);
+void __fastcall Create3DObject__6ObjectFv(struct Object* this) asm("?Create3DObject@Object@@UAEXXZ");
 // win1.41 00418c90 mac 1005ba80 Object::GetMapChild(MapCell const &)
 struct Object* __fastcall GetMapChild__6ObjectFRC7MapCell(struct Object* this, const void* edx, const struct MapCell* param_1) asm("?GetMapChild@Object@@UAEPAV1@PBUMapCell@@@Z");
 // win1.41 00418cc0 mac 10053b70 Object::SetMapChild(Object *, MapCell *)
-void __fastcall SetMapChild__6ObjectFP6ObjectP7MapCell(struct Object* this, const void* edx, struct Object* child, struct MapCell* cell);
+void __fastcall SetMapChild__6ObjectFP6ObjectP7MapCell(struct Object* this, const void* edx, struct Object* child, struct MapCell* cell) asm("?SetMapChild@Object@@UAEXPAV1@PAUMapCell@@@Z");
 // win1.41 00636740 mac 1004ad80 Object::InsertMapObject(void)
-void __fastcall InsertMapObject__6ObjectFv(struct Object* this);
+void __fastcall InsertMapObject__6ObjectFv(struct Object* this) asm("?InsertMapObject@Object@@UAEXXZ");
 // win1.41 006367a0 mac 1004ace0 Object::RemoveMapObject(void)
-void __fastcall RemoveMapObject__6ObjectFv(struct Object* this);
+void __fastcall RemoveMapObject__6ObjectFv(struct Object* this) asm("?RemoveMapObject@Object@@UAEXXZ");
 // win1.41 00636830 mac 10053ed0 Object::InsertMapObjectToCell(MapCell *)
-void __fastcall InsertMapObjectToCell__6ObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell);
+void __fastcall InsertMapObjectToCell__6ObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell) asm("?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z");
 // win1.41 006368d0 mac 10053bc0 Object::RemoveMapObjectFromCell(MapCell *)
-void __fastcall RemoveMapObjectFromCell__6ObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell);
+void __fastcall RemoveMapObjectFromCell__6ObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell) asm("?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z");
 // win1.41 006367d0 mac 1016ea00 Object::IsObjectInMap(MapCoords const &)
 bool __fastcall IsObjectInMap__6ObjectFRC9MapCoords(struct Object* this, const void* edx, struct MapCell* cell) asm("?IsObjectInMap@Object@@UAE_NPAUMapCell@@@Z");
 // win1.41 006366b0 mac 103d8d10 Object::IsObjectInMapCheck(void)
 bool __fastcall IsObjectInMapCheck__6ObjectFv(struct Object* this) asm("?IsObjectInMapCheck@Object@@UAE_NXZ");
 // win1.41 00636a40 mac 1004d070 Object::MoveMapObject(MapCoords const &)
-uint32_t __fastcall MoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2);
+uint32_t __fastcall MoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2) asm("?MoveMapObject@Object@@UAEIUMapCoords@@@Z");
 // win1.41 00638040 mac 10055200 Object::ActualMoveMapObject(MapCoords const &)
-void __fastcall ActualMoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2);
+void __fastcall ActualMoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2) asm("?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z");
 // win1.41 00402570 mac 103dca60 Object::GetPtr(void)
 struct Object* __fastcall GetPtr__6ObjectFv(struct Object* this) asm("?GetPtr@Object@@UAEPAV1@XZ");
 // win1.41 00636bd0 mac 103d8710 Object::GetMeshRadius( const(void))
@@ -549,7 +549,7 @@ void __fastcall SetBeliefSprite__6ObjectFP12BeliefSprite(struct Object* this, co
 // win1.41 004025f0 mac 1016bab0 Object::GetBeliefSprite(void)
 struct LH3DSprite* __fastcall GetBeliefSprite__6ObjectFv(struct Object* this) asm("?GetBeliefSprite@Object@@UAEPAVLH3DSprite@@XZ");
 // win1.41 0063a140 mac 100515d0 Object::SetLife(float)
-void __fastcall SetLife__6ObjectFf(struct Object* this, const void* edx, float life);
+void __fastcall SetLife__6ObjectFf(struct Object* this, const void* edx, float life) asm("?SetLife@Object@@UAEXM@Z");
 // win1.41 00402610 mac 1005f530 Object::IsAlive(void)
 bool __fastcall IsAlive__6ObjectFv(struct Object* this) asm("?IsAlive@Object@@UAE_NXZ");
 // win1.41 00637810 mac 1004b140 Object::ReduceLife(float, GPlayer *)
@@ -881,7 +881,7 @@ enum IMMERSION_EFFECT_TYPE __fastcall GetInHandImmersionTexture__6ObjectFv(struc
 // win1.41 00419a50 mac 100a5a00 Object::ShouldFootpathsGoRound(void)
 bool __fastcall ShouldFootpathsGoRound__6ObjectFv(struct Object* this) asm("?ShouldFootpathsGoRound@Object@@UAE_NXZ");
 // win1.41 0063a640 mac 103d0b20 Object::InitialiseIsFixedForMapList(void)
-void __fastcall InitialiseIsFixedForMapList__6ObjectFv(struct Object* this);
+void __fastcall InitialiseIsFixedForMapList__6ObjectFv(struct Object* this) asm("?InitialiseIsFixedForMapList@Object@@UAEXH@Z");
 // win1.41 00402b50 mac 10335f20 Object::StandAnimation(void)
 uint32_t __fastcall StandAnimation__6ObjectFv(struct Object* this) asm("?StandAnimation@Object@@UAEIXZ");
 // win1.41 00419b30 mac 1009cd00 Object::GetCollideData(void)

@@ -136,7 +136,7 @@
 .globl _globl_ct_0x00416cb0
 .globl _globl_ct_0x00416cd0
 .globl _globl_ct_0x00416dd0
-.globl _SetMapChild__6ObjectFP6ObjectP7MapCell
+.globl ?SetMapChild@Object@@UAEXPAV1@PAUMapCell@@@Z
 .globl _StorePreviousState__6LivingFv
 .globl ?GetDebugText@GameThingWithPos@@QAEPADXZ
 .globl ?IsWonder@GameThingWithPos@@UAE_NXZ
@@ -5335,7 +5335,7 @@ _jmp_addr_0x00418c7f:    pop                esi                                 
 _jmp_addr_0x00418cb9:    {disp8} mov        eax, dword ptr [esi + 0x20]                   // 0x00418cb9    8b4620
                          pop                esi                                           // 0x00418cbc    5e
                          ret                0x0004                                        // 0x00418cbd    c20400
-_SetMapChild__6ObjectFP6ObjectP7MapCell:
+?SetMapChild@Object@@UAEXPAV1@PAUMapCell@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00418cc0    8b442404
                          {disp8} mov        dword ptr [ecx + 0x20], eax                   // 0x00418cc4    894120
                          ret                0x0008                                        // 0x00418cc7    c20800
