@@ -69,6 +69,8 @@ struct MapCoords* __fastcall __ct__9MapCoordsFRC7LHPoint(struct MapCoords* this,
 
 // Non-virtual methods
 
+// win1.41 00602880 mac 10569c60 MapCoords::ConvertToText(char *)
+char* ConvertToText__9MapCoordsFPc(struct MapCoords* this,const void* edx, char* buff) asm("?ConvertToText@MapCoords@@QAEPADPAD@Z");
 // win1.41 006042c0 mac 100499f0 MapCoords::InBounds(void) const
 bool32_t __fastcall InBounds__9MapCoordsCFv(const struct MapCoords* this);
 // win1.41 006053c0 mac 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const

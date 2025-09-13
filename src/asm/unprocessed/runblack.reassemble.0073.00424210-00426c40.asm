@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x0057d440
 .extern _jmp_addr_0x00597400
 .extern @GetNearestTown__9MapCoordsCFf@12
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @IsWater__9MapCoordsCFv@4
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x006055c0
@@ -1308,7 +1308,7 @@ _jmp_addr_0x00424c22:    {disp8} fld        dword ptr [esi + 0x30]              
                          fstp               qword ptr [esp]                               // 0x00424c30    dd1c24
                          push               ecx                                           // 0x00424c33    51
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00424c34    8d4c2418
-                         call               _jmp_addr_0x00602880                          // 0x00424c38    e843dc1d00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00424c38    e843dc1d00
                          push               eax                                           // 0x00424c3d    50
                          push               0x45                                          // 0x00424c3e    6a45
                          call               _jmp_addr_0x00715130                          // 0x00424c40    e8eb042f00

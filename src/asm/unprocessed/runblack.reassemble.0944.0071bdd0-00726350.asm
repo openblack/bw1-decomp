@@ -16,7 +16,7 @@
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?Process@Abode@@UAEIXZ
-.extern _jmp_addr_0x00405b70
+.extern ?GetAbodeText@Abode@@QAEPADPAD@Z
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern _jmp_addr_0x00419d10
@@ -136,7 +136,7 @@
 .extern _jmp_addr_0x005fd000
 .extern _jmp_addr_0x00601f40
 .extern _jmp_addr_0x00601f90
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603500
 .extern _jmp_addr_0x00603620
@@ -11217,12 +11217,12 @@ _jmp_addr_0x00722c8a:    {disp32} mov       ecx, dword ptr [esi + 0x000000c8]   
                          {disp32} lea       ecx, dword ptr [esp + 0x00000104]                    // 0x00722cd5    8d8c2404010000
                          push               ecx                                                  // 0x00722cdc    51
                          mov.s              ecx, esi                                             // 0x00722cdd    8bce
-                         call               _jmp_addr_0x00405b70                                 // 0x00722cdf    e88c2eceff
+                         call               ?GetAbodeText@Abode@@QAEPADPAD@Z                     // 0x00722cdf    e88c2eceff
                          push               eax                                                  // 0x00722ce4    50
                          {disp32} lea       edx, dword ptr [esp + 0x000001d0]                    // 0x00722ce5    8d9424d0010000
                          push               edx                                                  // 0x00722cec    52
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                          // 0x00722ced    8d4c2438
-                         call               _jmp_addr_0x00602880                                 // 0x00722cf1    e88afbedff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x00722cf1    e88afbedff
                          push               eax                                                  // 0x00722cf6    50
                          push               edi                                                  // 0x00722cf7    57
                          push               0x5a                                                 // 0x00722cf8    6a5a

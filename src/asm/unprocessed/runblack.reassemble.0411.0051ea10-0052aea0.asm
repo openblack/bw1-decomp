@@ -13,7 +13,7 @@
 .extern ?Init@Abode@@QAEXHII@Z
 .extern ?Process@Abode@@UAEIXZ
 .extern ?Built@Abode@@UAE_NXZ
-.extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
+.extern ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
@@ -58,7 +58,7 @@
 .extern _jmp_addr_0x005dc870
 .extern _RequestChangeTexture__FP6Object
 .extern _jmp_addr_0x00601f40
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @GetFirstIterator__9MapCoordsCFv@12
 .extern _jmp_addr_0x00603830
@@ -13923,7 +13923,7 @@ _jmp_addr_0x005275e7:    mov                ecx, dword ptr [eax]                
                          {disp32} lea       eax, dword ptr [esp + 0x00000100]                    // 0x0052764b    8d842400010000
                          push               eax                                                  // 0x00527652    50
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                          // 0x00527653    8d4c2424
-                         call               _jmp_addr_0x00602880                                 // 0x00527657    e824b20d00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x00527657    e824b20d00
                          push               eax                                                  // 0x0052765c    50
                          push               0x4b                                                 // 0x0052765d    6a4b
                          call               _jmp_addr_0x00715130                                 // 0x0052765f    e8ccda1e00
@@ -14504,7 +14504,7 @@ _jmp_addr_0x00527ab7:    mov                ecx, dword ptr [eax]                
                          {disp32} lea       edx, dword ptr [esp + 0x000000fc]                    // 0x00527b10    8d9424fc000000
                          push               edx                                                  // 0x00527b17    52
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x00527b18    8d4c2420
-                         call               _jmp_addr_0x00602880                                 // 0x00527b1c    e85fad0d00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x00527b1c    e85fad0d00
                          push               eax                                                  // 0x00527b21    50
                          push               0x22                                                 // 0x00527b22    6a22
                          call               _jmp_addr_0x00715130                                 // 0x00527b24    e807d61e00
@@ -15485,7 +15485,7 @@ _Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi:    sub                e
                          call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ                 // 0x005282ae    e88d452100
                          {disp8} mov        ecx, dword ptr [eax + 0x10]                          // 0x005282b3    8b4810
                          push               ecx                                                  // 0x005282b6    51
-                         call               _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER       // 0x005282b7    e874d8edff
+                         call               ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z       // 0x005282b7    e874d8edff
                          add                esp, 0x08                                            // 0x005282bc    83c408
                          mov.s              esi, eax                                             // 0x005282bf    8bf0
 _jmp_addr_0x005282c1:    push               0x0000009d                                           // 0x005282c1    689d000000
@@ -16526,7 +16526,7 @@ _jmp_addr_0x00528d4a:    mov                edx, dword ptr [esi]                
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                          // 0x00528d78    8d4c2434
                          push               ecx                                                  // 0x00528d7c    51
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x00528d7d    8d4c2420
-                         call               _jmp_addr_0x00602880                                 // 0x00528d81    e8fa9a0d00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x00528d81    e8fa9a0d00
                          push               eax                                                  // 0x00528d86    50
                          push               0x1d                                                 // 0x00528d87    6a1d
                          call               _jmp_addr_0x00715130                                 // 0x00528d89    e8a2c31e00
@@ -16554,7 +16554,7 @@ _jmp_addr_0x00528da4:    mov                eax, dword ptr [esi]                
                          {disp8} lea        edx, dword ptr [esp + 0x34]                          // 0x00528dd2    8d542434
                          push               edx                                                  // 0x00528dd6    52
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x00528dd7    8d4c2420
-                         call               _jmp_addr_0x00602880                                 // 0x00528ddb    e8a09a0d00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x00528ddb    e8a09a0d00
                          push               eax                                                  // 0x00528de0    50
                          push               ebx                                                  // 0x00528de1    53
                          push               0x59                                                 // 0x00528de2    6a59

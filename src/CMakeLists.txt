@@ -93,6 +93,7 @@ set(SOURCES_001
     c/GameThingWithPos.001.c
     c/PlannedAbode.002.c
     c/Windmill.000.c
+    c/AbodeInfo.005.c
 
     asm/unprocessed/runblack.reassemble.0010.00403130-004060c0.asm
 

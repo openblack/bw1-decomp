@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x005c9090
 .extern _jmp_addr_0x005d56c0
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x006055c0
 .extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
@@ -389,7 +389,7 @@ _jmp_addr_0x00422687:    mov               ecx, dword ptr [eax]                 
                          {disp32} lea      edx, dword ptr [esp + 0x000000fc]             // 0x004226e0    8d9424fc000000
                          push              edx                                           // 0x004226e7    52
                          {disp8} lea       ecx, dword ptr [esp + 0x20]                   // 0x004226e8    8d4c2420
-                         call              _jmp_addr_0x00602880                          // 0x004226ec    e88f011e00
+                         call              ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x004226ec    e88f011e00
                          push              eax                                           // 0x004226f1    50
                          push              0x57                                          // 0x004226f2    6a57
                          call              _jmp_addr_0x00715130                          // 0x004226f4    e8372a2f00

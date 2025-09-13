@@ -176,6 +176,8 @@ bool32_t __fastcall IsTooCrowded__5AbodeFv(struct Abode* this) asm("?IsTooCrowde
 float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?CalculateScoreForAddingVillagerToAbode@Abode@@QAEMPAVVillager@@@Z");
 // win1.41 00404cc0 mac 1019cca0 Abode::ChildToAdult(Villager *)
 void __fastcall ChildToAdult__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?ChildToAdult@Abode@@QAEXPAVVillager@@@Z");
+// win1.41 00405b70 mac 101cbdc0 Abode::GetAbodeText(char *)
+char* __fastcall GetAbodeText__5AbodeFPc(struct Abode* this, const void* edx, char* buff) asm("?GetAbodeText@Abode@@QAEPADPAD@Z");
 // win1.41 00405f40 mac 10177200 Abode::GetTribeType(void) const
 enum TRIBE_TYPE __fastcall GetTribeType__5AbodeCFv(struct Abode* this) asm("?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ");
 // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)

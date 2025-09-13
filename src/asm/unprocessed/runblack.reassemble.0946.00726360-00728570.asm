@@ -15,7 +15,6 @@
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?Process@Abode@@UAEIXZ
-.extern _jmp_addr_0x00405b70
 .extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern _jmp_addr_0x00419d10
@@ -132,7 +131,7 @@
 .extern _jmp_addr_0x005fd000
 .extern _jmp_addr_0x00601f40
 .extern _jmp_addr_0x00601f90
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603500
 .extern _jmp_addr_0x00603620

@@ -23,8 +23,8 @@
 .extern ?Init@PlannedAbode@@QAEXPAVTown@@@Z
 .extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
 .extern ?FUN_004056f0@PlannedAbode@@QAE_NH@Z
-.extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
-.extern _jmp_addr_0x00405b70
+.extern ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z
+.extern ?GetAbodeText@Abode@@QAEPADPAD@Z
 .extern ?SaveObject@Abode@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z
 .extern ?ReduceLife@Abode@@UAEXMPAVGPlayer@@@Z
 .extern ?IncreaseLife@Abode@@UAEXM@Z
@@ -125,7 +125,7 @@
 .extern @GetMagicInfoText__10GMagicInfoCFv@4
 .extern _jmp_addr_0x00601f90
 .extern @GetNearestTown__9MapCoordsCFf@12
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603320
 .extern @GetFirstIterator__9MapCoordsCFv@12
@@ -568,7 +568,7 @@ _jmp_addr_0x0073a680:    xor.s              eax, eax                            
                          call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ                 // 0x0073a6d7    e864210000
                          {disp8} mov        edx, dword ptr [eax + 0x10]                          // 0x0073a6dc    8b5010
                          push               edx                                                  // 0x0073a6df    52
-                         call               _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER       // 0x0073a6e0    e84bb4ccff
+                         call               ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z       // 0x0073a6e0    e84bb4ccff
                          add                esp, 0x08                                            // 0x0073a6e5    83c408
                          test               eax, eax                                             // 0x0073a6e8    85c0
                          {disp8} je         _jmp_addr_0x0073a71d                                 // 0x0073a6ea    7431
@@ -617,7 +617,7 @@ _jmp_addr_0x0073a730:    push               ecx                                 
                          call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ                 // 0x0073a739    e802210000
                          {disp8} mov        eax, dword ptr [eax + 0x10]                          // 0x0073a73e    8b4010
                          push               eax                                                  // 0x0073a741    50
-                         call               _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER       // 0x0073a742    e8e9b3ccff
+                         call               ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z       // 0x0073a742    e8e9b3ccff
                          mov.s              ebx, eax                                             // 0x0073a747    8bd8
                          add                esp, 0x08                                            // 0x0073a749    83c408
                          test               ebx, ebx                                             // 0x0073a74c    85db
@@ -2872,7 +2872,7 @@ _jmp_addr_0x0073bcdf:    mov                ecx, dword ptr [eax]                
                          {disp32} lea       eax, dword ptr [esp + 0x00000108]                    // 0x0073bd3d    8d842408010000
                          push               eax                                                  // 0x0073bd44    50
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                          // 0x0073bd45    8d4c242c
-                         call               _jmp_addr_0x00602880                                 // 0x0073bd49    e8326becff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x0073bd49    e8326becff
                          {disp32} mov       ecx, dword ptr [esi + 0x000005b4]                    // 0x0073bd4e    8b8eb4050000
                          push               eax                                                  // 0x0073bd54    50
                          push               ecx                                                  // 0x0073bd55    51
@@ -3109,7 +3109,7 @@ _jmp_addr_0x0073bfe9:    {disp8} mov        ecx, dword ptr [esp + 0x18]         
                          {disp32} lea       edx, dword ptr [esp + 0x00000100]                    // 0x0073c008    8d942400010000
                          push               edx                                                  // 0x0073c00f    52
                          mov.s              ecx, edi                                             // 0x0073c010    8bcf
-                         call               _jmp_addr_0x00602880                                 // 0x0073c012    e86968ecff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x0073c012    e86968ecff
                          push               eax                                                  // 0x0073c017    50
                          {disp32} mov       eax, dword ptr [esi + 0x000005b4]                    // 0x0073c018    8b86b4050000
                          push               eax                                                  // 0x0073c01e    50
@@ -5701,7 +5701,7 @@ _jmp_addr_0x0073d9e6:    {disp8} mov        ecx, dword ptr [esp + 0x20]         
                          {disp8} fstp       dword ptr [esp + 0x38]                               // 0x0073d9f2    d95c2438
 _jmp_addr_0x0073d9f6:    push               edi                                                  // 0x0073d9f6    57
                          push               esi                                                  // 0x0073d9f7    56
-                         call               _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER       // 0x0073d9f8    e83381ccff
+                         call               ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z       // 0x0073d9f8    e83381ccff
                          mov.s              esi, eax                                             // 0x0073d9fd    8bf0
                          {disp32} mov       eax, dword ptr [esi + 0x0000010c]                    // 0x0073d9ff    8b860c010000
                          add                esp, 0x08                                            // 0x0073da05    83c408
@@ -15713,12 +15713,12 @@ _jmp_addr_0x007441d1:    mov                edx, dword ptr [esi]                
                          {disp32} lea       ecx, dword ptr [esp + 0x00000160]                    // 0x0074421d    8d8c2460010000
                          push               ecx                                                  // 0x00744224    51
                          mov.s              ecx, esi                                             // 0x00744225    8bce
-                         call               _jmp_addr_0x00405b70                                 // 0x00744227    e84419ccff
+                         call               ?GetAbodeText@Abode@@QAEPADPAD@Z                     // 0x00744227    e84419ccff
                          push               eax                                                  // 0x0074422c    50
                          {disp32} lea       edx, dword ptr [esp + 0x00000100]                    // 0x0074422d    8d942400010000
                          push               edx                                                  // 0x00744234    52
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                          // 0x00744235    8d4c2424
-                         call               _jmp_addr_0x00602880                                 // 0x00744239    e842e6ebff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x00744239    e842e6ebff
                          push               eax                                                  // 0x0074423e    50
                          push               ebx                                                  // 0x0074423f    53
                          push               0x9                                                  // 0x00744240    6a09

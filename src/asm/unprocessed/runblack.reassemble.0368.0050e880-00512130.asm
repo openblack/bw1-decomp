@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x00597f20
 .extern _jmp_addr_0x005e6540
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x00605250
 .extern _jmp_addr_0x006055c0
 .extern _jmp_addr_0x00608750
@@ -4602,7 +4602,7 @@ _jmp_addr_0x005114aa:    push               ebx                                 
                          {disp32} lea       edx, dword ptr [esp + 0x00000114]             // 0x00511519    8d942414010000
                          push               edx                                           // 0x00511520    52
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x00511521    8d4c2438
-                         call               _jmp_addr_0x00602880                          // 0x00511525    e856130f00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00511525    e856130f00
                          push               eax                                           // 0x0051152a    50
                          push               0x2b                                          // 0x0051152b    6a2b
                          call               _jmp_addr_0x00715130                          // 0x0051152d    e8fe3b2000

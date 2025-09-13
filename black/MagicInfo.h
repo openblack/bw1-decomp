@@ -39,7 +39,7 @@ extern const struct GBaseInfoVftable __vt__10GMagicInfo asm("??_7GMagicInfo@@6B@
 // Static methods
 
 // win1.41 005fb3b0 mac 103ae320 GMagicInfo::GetInfoFromText(char const *)
-enum MAGIC_TYPE __cdecl GetInfoFromText__10GMagicInfoFPCc(const char* text);
+enum MAGIC_TYPE __cdecl GetInfoFromText__10GMagicInfoFPCc(const char* text) asm("?GetInfoFromText@GMagicInfo@@SAHPAD@Z");
 
 // Constructors
 

@@ -63,7 +63,7 @@
 .extern _jmp_addr_0x0056fa80
 .extern _jmp_addr_0x0056fef0
 .extern @GetTopState__6LivingCFv@4
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603320
 .extern @IsCloseToEqual__9MapCoordsCFRC9MapCoordsf@16
@@ -5014,7 +5014,7 @@ _jmp_addr_0x0077c179:    mov                edx, dword ptr [eax]                
                          {disp32} lea       edx, dword ptr [esp + 0x0000011c]             // 0x0077c230    8d94241c010000
                          push               edx                                           // 0x0077c237    52
                          {disp8} lea        ecx, dword ptr [esp + 0x40]                   // 0x0077c238    8d4c2440
-                         call               _jmp_addr_0x00602880                          // 0x0077c23c    e83f66e8ff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x0077c23c    e83f66e8ff
                          push               eax                                           // 0x0077c241    50
                          push               0x16                                          // 0x0077c242    6a16
                          call               _jmp_addr_0x00715130                          // 0x0077c244    e8e78ef9ff

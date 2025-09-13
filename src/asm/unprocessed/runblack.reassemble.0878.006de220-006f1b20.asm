@@ -13,7 +13,7 @@
 .extern ?Init@PlannedAbode@@QAEXPAVTown@@@Z
 .extern ?CreateNoInit@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z
 .extern ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ
-.extern _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER
+.extern ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z
 .extern _jmp_addr_0x00407700
 .extern _jmp_addr_0x004077a0
 .extern _jmp_addr_0x00414320
@@ -147,7 +147,7 @@
 .extern _jmp_addr_0x005fe6e0
 .extern _jmp_addr_0x00602200
 .extern _jmp_addr_0x006024d0
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603320
 .extern @Set__9MapCoordsFRC7LHPoint@12
@@ -15163,7 +15163,7 @@ _jmp_addr_0x006e8dda:    call               dword ptr [eax + 0x48]              
                          {disp32} mov       eax, dword ptr [eax + 0x000005b8]             // 0x006e8de8    8b80b8050000
                          push               0xc                                           // 0x006e8dee    6a0c
                          push               eax                                           // 0x006e8df0    50
-                         call               _Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER// 0x006e8df1    e83acdd1ff
+                         call               ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z// 0x006e8df1    e83acdd1ff
                          mov.s              ebx, eax                                      // 0x006e8df6    8bd8
                          {disp32} mov       eax, dword ptr [ebx + 0x0000010c]             // 0x006e8df8    8b830c010000
                          add                esp, 0x08                                     // 0x006e8dfe    83c408
@@ -18205,7 +18205,7 @@ _jmp_addr_0x006eafa5:    mov                edx, dword ptr [esi]                
                          {disp32} lea       edx, dword ptr [esp + 0x00000100]             // 0x006eaff6    8d942400010000
                          push               edx                                           // 0x006eaffd    52
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x006eaffe    8d4c2424
-                         call               _jmp_addr_0x00602880                          // 0x006eb002    e87978f1ff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x006eb002    e87978f1ff
                          push               eax                                           // 0x006eb007    50
                          push               ebx                                           // 0x006eb008    53
                          push               0x2c                                          // 0x006eb009    6a2c
