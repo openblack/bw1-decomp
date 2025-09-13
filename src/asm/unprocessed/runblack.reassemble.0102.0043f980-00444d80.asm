@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00407700
+.extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern _jmp_addr_0x00408240
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
@@ -5293,7 +5293,7 @@ _jmp_addr_0x00443359:    {disp8} mov        ecx, dword ptr [edi + 0x58]         
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x00443369    8d442414
                          push               eax                                           // 0x0044336d    50
                          mov.s              ecx, esi                                      // 0x0044336e    8bce
-                         call               _jmp_addr_0x00407700                          // 0x00443370    e88b43fcff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z            // 0x00443370    e88b43fcff
                          {disp8} mov        ecx, dword ptr [edi + 0x58]                   // 0x00443375    8b4f58
                          {disp8} mov        ecx, dword ptr [edi + ecx * 0x4 + 0x28]       // 0x00443378    8b4c8f28
                          mov                edx, dword ptr [ecx]                          // 0x0044337c    8b11

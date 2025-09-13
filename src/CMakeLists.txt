@@ -95,8 +95,12 @@ set(SOURCES_001
     c/Windmill.000.c
     c/AbodeInfo.005.c
     c/Abode.006.c
+    c/PlannedAbode.003.c
+    c/Abode.007.c
+    c/PlannedAbode.004.c
+    c/Abode.008.c
 
-    asm/unprocessed/runblack.reassemble.0014.004060c0-004061a0.asm
+    asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
 
     asm/unprocessed/text.x.001.asm
     asm/unprocessed/rdata.003.008a99d0-0099f250.asm
@@ -107,7 +111,6 @@ set(SOURCES_001
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
 
-    asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
     asm/unprocessed/runblack.reassemble.0022.004097a0-00409a40.asm
     asm/unprocessed/runblack.reassemble.0025.00409a40-0040a110.asm
     asm/unprocessed/runblack.reassemble.0029.0040a110-0040c090.asm

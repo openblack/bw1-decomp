@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00407700
+.extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern _jmp_addr_0x0042a6d0
 .extern _jmp_addr_0x0043f980

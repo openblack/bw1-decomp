@@ -3,22 +3,7 @@
 const float rdata_float_1000_0 asm("__real@447a0000") = 1000.0f;
 const float rdata_float_0_1 asm("__real@3dcccccd") = 0.1f;
 const float rdata_float_1_1 asm("__real@3f8ccccd") = 1.1f;
-
 const float rdata_float_300_0 asm("__real@43960000") = 300.0f;
-const float rdata_float_0_7 asm("__real@3f333333") = 0.7f;
-const float rdata_float_0_3 asm("__real@3e999999") = 0.3f;
-const float rdata_float_1400_0 asm("__real@44af0000") = 1400.0f;
-const float rdata_float_0_2 asm("__real@3e4ccccd") = 0.2f;
-const float rdata_float_2000_0 asm("__real@44fa0000") = 2000.0f;
-const float rdata_float_1_5 asm("__real@3fc00000") = 1.5f;
-const uint32_t LH3DColor_ARRAY_008ab250[4] asm("?LH3DColor_ARRAY_008ab250@@3PAKA") = {
-    0xffffffff, 0xffffffff, 0xffff8000, 0xff000000
-};
-const double rdata_double_0_5 asm("__real@3fe0000000000000") = 0.5;
-const float rdata_float_0_16666667 asm("__real@3e2aaaab") = 0.16666667f;
-const float rdata_float_0_33333334 asm("__real@3eaaaaab") = 0.33333334f;
-const float rdata_float_255_0 asm("__real@437f0000") = 255.0f;
-const float rdata_float_0_75 asm("__real@3f400000") = 0.75f;
 
 char* __fastcall GetAbodeText__5AbodeFPc(struct Abode* this, const void* edx, char* buff)
 {
@@ -293,7 +278,7 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp8} jne        _jmp_addr_0x00405e5e");                          // 0x00405e54    7508
     asm("push               ebx");                                           // 0x00405e56    53
     asm("mov.s              ecx, esi");                                      // 0x00405e57    8bce
-    asm("call               _jmp_addr_0x004073f0");                          // 0x00405e59    e892150000
+    asm("call               ?FUN_004073c0@Abode@@UAEXPAVGPlayer@@@Z");       // 0x00405e59    e892150000
     asm("_jmp_addr_0x00405e5e:");
     asm("{disp8} mov        eax, dword ptr [esi + 0x74]");                   // 0x00405e5e    8b4674
     asm("test               eax, eax");                                      // 0x00405e61    85c0

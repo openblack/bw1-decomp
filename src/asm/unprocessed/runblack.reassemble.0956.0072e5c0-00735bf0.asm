@@ -19,7 +19,7 @@
 .extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
 .extern ?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
 .extern ?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z
-.extern _jmp_addr_0x00407700
+.extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern @SetPosition__10LH3DObjectFRC7LHPointff@16
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
@@ -4180,7 +4180,7 @@ _jmp_addr_0x00730cd6:    {disp8} mov        edx, dword ptr [edi + 0x40]         
                          push               eax                                           // 0x00730cfe    50
                          mov.s              ecx, esi                                      // 0x00730cff    8bce
                          xor.s              ebx, ebx                                      // 0x00730d01    33db
-                         call               _jmp_addr_0x00407700                          // 0x00730d03    e8f869cdff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z            // 0x00730d03    e8f869cdff
                          {disp8} mov        edi, dword ptr [edi + 0x48]                   // 0x00730d08    8b7f48
                          test               edi, edi                                      // 0x00730d0b    85ff
                          {disp8} je         _jmp_addr_0x00730d32                          // 0x00730d0d    7423
