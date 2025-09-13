@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00407750
+.extern ??$ReadIt@H@GameOSFile@@QAEXAAH@Z
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
@@ -820,7 +820,7 @@ _jmp_addr_0x0072a27e:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x0072a291:    {disp32} lea       edx, dword ptr [edi + 0x00000094]             // 0x0072a291    8d9794000000
                          push               edx                                           // 0x0072a297    52
                          mov.s              ecx, esi                                      // 0x0072a298    8bce
-                         call               _jmp_addr_0x00407750                          // 0x0072a29a    e8b1d4cdff
+                         call               ??$ReadIt@H@GameOSFile@@QAEXAAH@Z             // 0x0072a29a    e8b1d4cdff
                          {disp32} lea       eax, dword ptr [edi + 0x00000098]             // 0x0072a29f    8d8798000000
                          push               eax                                           // 0x0072a2a5    50
                          mov.s              ecx, esi                                      // 0x0072a2a6    8bce

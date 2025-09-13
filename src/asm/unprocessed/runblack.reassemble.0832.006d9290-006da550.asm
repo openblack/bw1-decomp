@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00407700
-.extern _jmp_addr_0x004077a0
+.extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
+.extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
 .extern _jmp_addr_0x00419d10
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x004640a0
@@ -562,7 +562,7 @@ _jmp_addr_0x006d97cb:    cmp               dword ptr [data_bytes + 0x226990], eb
                          {disp8} lea       ecx, dword ptr [esp + 0x1c]                   // 0x006d97db    8d4c241c
                          push              ecx                                           // 0x006d97df    51
                          mov.s             ecx, esi                                      // 0x006d97e0    8bce
-                         call              _jmp_addr_0x00407700                          // 0x006d97e2    e819dfd2ff
+                         call              ??$WriteIt@I@GameOSFile@@QAEXAAI@Z            // 0x006d97e2    e819dfd2ff
                          {disp8} mov       eax, dword ptr [esp + 0x1c]                   // 0x006d97e7    8b44241c
                          test              eax, eax                                      // 0x006d97eb    85c0
                          {disp8} jbe       _jmp_addr_0x006d9812                          // 0x006d97ed    7623
@@ -1064,7 +1064,7 @@ _jmp_addr_0x006d9e2c:    {disp32} mov      ecx, dword ptr [esi + 0x00000214]    
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x006d9e49    8d4c2418
                          push              ecx                                           // 0x006d9e4d    51
                          mov.s             ecx, esi                                      // 0x006d9e4e    8bce
-                         call              _jmp_addr_0x004077a0                          // 0x006d9e50    e84bd9d2ff
+                         call              ??$ReadIt@H@GameOSFile@@QAEXAAI@Z             // 0x006d9e50    e84bd9d2ff
                          {disp8} mov       eax, dword ptr [esp + 0x18]                   // 0x006d9e55    8b442418
                          xor.s             edi, edi                                      // 0x006d9e59    33ff
                          cmp.s             eax, ebx                                      // 0x006d9e5b    3bc3

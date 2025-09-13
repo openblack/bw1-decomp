@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00407700
-.extern _jmp_addr_0x004077a0
+.extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
+.extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern _GetCurrentActiveBox__8SetupBoxFv
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
@@ -24539,7 +24539,7 @@ _jmp_addr_0x005dcd06:    {disp32} lea       ecx, dword ptr [edi + 0x000000c8]   
                          add                edi, 0x38                                      // 0x005dcd9a    83c738
                          push               edi                                            // 0x005dcd9d    57
                          mov.s              ecx, esi                                       // 0x005dcd9e    8bce
-                         call               _jmp_addr_0x00407700                           // 0x005dcda0    e85ba9e2ff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z             // 0x005dcda0    e85ba9e2ff
                          pop                ebp                                            // 0x005dcda5    5d
                          pop                ebx                                            // 0x005dcda6    5b
                          pop                edi                                            // 0x005dcda7    5f
@@ -24822,7 +24822,7 @@ _jmp_addr_0x005dd08b:    {disp32} lea       edx, dword ptr [edi + 0x000000e8]   
                          add                edi, 0x38                                      // 0x005dd111    83c738
                          push               edi                                            // 0x005dd114    57
                          mov.s              ecx, esi                                       // 0x005dd115    8bce
-                         call               _jmp_addr_0x004077a0                           // 0x005dd117    e884a6e2ff
+                         call               ??$ReadIt@H@GameOSFile@@QAEXAAI@Z              // 0x005dd117    e884a6e2ff
                          pop                ebp                                            // 0x005dd11c    5d
                          pop                ebx                                            // 0x005dd11d    5b
                          pop                edi                                            // 0x005dd11e    5f

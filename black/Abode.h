@@ -7,6 +7,7 @@
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For RESOURCE_TYPE_LAST, enum ABODE_TYPE, enum RESOURCE_TYPE, enum TRIBE_TYPE */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
@@ -166,16 +167,22 @@ struct Villager* __fastcall GetOtherParent__5AbodeFP8Villager(struct Abode* this
 int __fastcall GetRoomLeftForAdults__5AbodeFv(struct Abode* this) asm("?GetRoomLeftForAdults@Abode@@QAEHXZ");
 // win1.41 00404680 mac 103e40f0 Abode::GetRoomLeftForChildren(void)
 int __fastcall GetRoomLeftForChildren__5AbodeFv(struct Abode* this) asm("?GetRoomLeftForChildren@Abode@@QAEHXZ");
-// win1.41 004046a0 mac inlined Abode::FUN_004046a0(void)
+// win1.41 004046a0 mac inlined Abode::FUN_004046a0(int)
 void __fastcall FUN_004046a0__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?FUN_004046a0@Abode@@QAEXH@Z");
-// win1.41 00405d80 mac inlined Abode::FUN_004046b0(void)
+// win1.41 00405d80 mac inlined Abode::FUN_00405d80(void)
 int __fastcall FUN_00405d80__5AbodeFv(struct Abode* this) asm("?FUN_00405d80@Abode@@QAEHXZ");
 // win1.41 00405fa0 mac 10003a60 Abode::ArriveHome(void)
 void __fastcall ArriveHome__5AbodeFv(struct Abode* this) asm("?ArriveHome@Abode@@QAEXXZ");
 // win1.41 00405fb0 mac 1009fda0 Abode::LeaveHome(void)
 void __fastcall LeaveHome__5AbodeFv(struct Abode* this) asm("?LeaveHome@Abode@@QAEXXZ");
 // win1.41 00405fc0 mac 100cd2d0 Abode::GetNearestWaterPos(MapCoords &)
-bool GetNearestWaterPos__5AbodeFR9MapCoords(struct Abode* this, const void* edx, struct MapCoords* coords) asm("?GetNearestWaterPos@Abode@@QAE_NAAUMapCoords@@@Z");
+bool __fastcall GetNearestWaterPos__5AbodeFR9MapCoords(struct Abode* this, const void* edx, struct MapCoords* coords) asm("?GetNearestWaterPos@Abode@@QAE_NAAUMapCoords@@@Z");
+// win1.41 00406640 mac 10172a50 Abode::ApplyEffectsDueToPhysicalDestruction(Object *, GPlayer *)
+void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(struct Abode* this, const void* edx, struct Object* object, struct GPlayer* player) asm("?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z");
+// win1.41 004069c0 mac 1036ee00 Abode::FindVillager( int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
+struct Villager* __fastcall FindVillager__5AbodeFPFP16GameThingWithPos18SCRIPT_OBJECT_TYPEUl_i18SCRIPT_OBJECT_TYPEUl(struct Abode* this, const void* edx, int (*)(struct GameThingWithPos* param_1, enum SCRIPT_OBJECT_TYPE param_2, uint32_t param_3), enum SCRIPT_OBJECT_TYPE param_2, uint32_t param_3) asm("?FindVillager@Abode@@QAEPAVVillager@@P6AHPAVGameThingWithPos@@W4SCRIPT_OBJECT_TYPE@@I@Z1I@Z");
+// win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
+uint8_t __fastcall GetNumAdultsInAbode__5AbodeFv(struct Abode* this) asm("?GetNumAdultsInAbode@Abode@@QAEEXZ");
 // win1.41 004046b0 mac inlined Abode::FUN_004046b0(void)
 int __fastcall FUN_004046b0__5AbodeFv(struct Abode* this) asm("?FUN_004046b0@Abode@@QAEHXZ");
 // win1.41 004046c0 mac 105b93c0 Abode::IsTooCrowded(void)
@@ -190,8 +197,24 @@ char* __fastcall GetAbodeText__5AbodeFPc(struct Abode* this, const void* edx, ch
 enum TRIBE_TYPE __fastcall GetTribeType__5AbodeCFv(struct Abode* this) asm("?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ");
 // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)
 void __fastcall FindNearestDrinkingWater__5AbodeFf(struct Abode* this, const void* edx, float max_dist) asm("?FindNearestDrinkingWater@Abode@@QAEXM@Z");
+// win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
+void __fastcall DrawPercentFull__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?DrawPercentFull@Abode@@QAEXH@Z");
+// win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
+struct MapCoords* __fastcall FUN_00407230__5AbodeFb(struct Abode* this, const void* edx, struct MapCoords* coords, bool param_2) asm("?FUN_00407230@Abode@@QAEPAUMapCoords@@_N@Z");
 // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
 struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const void* edx, struct MapCoords* coords, float param_2, float param_3, float param_4) asm("?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z");
+// win1.41 004073c0 mac inlined Abode::FUN_004073c0(GPlayer *)
+void __fastcall FUN_004073c0__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?FUN_004073c0@Abode@@UAEXPAVGPlayer@@@Z");
+// win1.41 004074a0 mac 100e7ac0 Abode::CalculateDesireToGainMale(void)
+float __fastcall CalculateDesireToGainMale__5AbodeFv(struct Abode* this) asm("?CalculateDesireToGainMale@Abode@@QAEMXZ");
+// win1.41 00407540 mac 100af0d0 Abode::CalculateDesireToGainVillager(void)
+float __fastcall CalculateDesireToGainVillager__5AbodeFv(struct Abode* this) asm("?CalculateDesireToGainVillager@Abode@@QAEMXZ");
+// win1.41 004075b0 mac 10518900 Abode::TakeVillagerFrom(Abode&, int)
+bool __fastcall TakeVillagerFrom__5AbodeFR5Abodei(struct Abode* this, const void* edx, struct Abode* other, int param_2) asm("?TakeVillagerFrom@Abode@@QAE_NAAV1@@Z");
+// win1.41 00407620 mac 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
+bool __fastcall SwapMaleForFemaleFrom__5AbodeFR5Abode(struct Abode* this, const void* edx, struct Abode* other) asm("?SwapMaleForFemaleFrom@Abode@@QAE_NAAV1@@Z");
+// win1.41 004076c0 mac 105a17d0 Abode::GetVillagerHealthTotal(void)
+float __fastcall GetVillagerHealthTotal__5AbodeFv(struct Abode* this) asm("?GetVillagerHealthTotal@Abode@@QAEMXZ");
 
 // Override methods
 
@@ -271,7 +294,7 @@ void __fastcall IncreaseLife__5AbodeFf(struct Object* this, const void* edx, flo
 uint32_t __fastcall DestroyedByEffect__5AbodeFP7GPlayerf(struct Object* this, const void* edx, struct GPlayer* player, float param_2) asm("?DestroyedByEffect@Abode@@UAEIPAVGPlayer@@M@Z");
 // win1.41 00404440 mac 1004fcb0 Abode::Process(void)
 uint32_t __fastcall Process__5AbodeFv(struct Object* this) asm("?Process@Abode@@UAEIXZ");
-// win1.41 00515f70 mac 100ac700 Abode::GetMesh(void) const
+// win1.41 00404aa0 mac 100ac700 Abode::GetMesh(void) const
 int __fastcall GetMesh__5AbodeCFv(const struct Object* this) asm("?GetMesh@Abode@@UBEHXZ");
 // win1.41 00515f70 mac 10036a60 Abode::Draw(void)
 void __fastcall Draw__5AbodeFv(struct Object* this) asm("?Draw@Abode@@UAEXXZ");

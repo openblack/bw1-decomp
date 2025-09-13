@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x005dfc40
-.extern _jmp_addr_0x006f62b0
+.extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .extern _jmp_addr_0x006f6ba0
 .extern _jmp_addr_0x006f6bc0
 .extern _jmp_addr_0x0070d220
@@ -60,7 +60,7 @@ _jmp_addr_0x00708fef:    {disp32} mov      ecx, dword ptr [_script_dll]         
                          test              edi, edi                               // 0x00709043    85ff
                          {disp8} jne       _jmp_addr_0x0070905b                   // 0x00709045    7514
                          push              0x00c0d428                             // 0x00709047    6828d4c000
-                         call              _jmp_addr_0x006f62b0                   // 0x0070904c    e85fd2feff
+                         call              ?ScriptErrorMessage@GScript@@QAEXPAD@Z // 0x0070904c    e85fd2feff
                          add               esp, 0x04                              // 0x00709051    83c404
                          pop               edi                                    // 0x00709054    5f
                          pop               esi                                    // 0x00709055    5e

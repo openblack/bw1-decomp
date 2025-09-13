@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00407700
-.extern _jmp_addr_0x004077a0
+.extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
+.extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
 .extern _jmp_addr_0x004141a0
 .extern _jmp_addr_0x004146f0
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
@@ -8937,7 +8937,7 @@ _jmp_addr_0x0064c548:    {disp8} mov        edx, dword ptr [edi + 0x64]         
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x0064c563    8d442414
                          push               eax                                            // 0x0064c567    50
                          mov.s              ecx, esi                                       // 0x0064c568    8bce
-                         call               _jmp_addr_0x00407700                           // 0x0064c56a    e891b1dbff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z             // 0x0064c56a    e891b1dbff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x0064c56f    8b442414
                          test               eax, eax                                       // 0x0064c573    85c0
                          {disp8} jbe        _jmp_addr_0x0064c597                           // 0x0064c575    7620
@@ -8960,7 +8960,7 @@ _jmp_addr_0x0064c597:    {disp32} mov       eax, dword ptr [data_bytes + 0x22699
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x0064c5a8    8d4c2414
                          push               ecx                                            // 0x0064c5ac    51
                          mov.s              ecx, esi                                       // 0x0064c5ad    8bce
-                         call               _jmp_addr_0x00407700                           // 0x0064c5af    e84cb1dbff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z             // 0x0064c5af    e84cb1dbff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x0064c5b4    8b442414
                          xor.s              ebp, ebp                                       // 0x0064c5b8    33ed
                          test               eax, eax                                       // 0x0064c5ba    85c0
@@ -9002,7 +9002,7 @@ _jmp_addr_0x0064c620:    {disp32} mov       eax, dword ptr [data_bytes + 0x22699
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x0064c635    8d442414
                          push               eax                                            // 0x0064c639    50
                          mov.s              ecx, esi                                       // 0x0064c63a    8bce
-                         call               _jmp_addr_0x00407700                           // 0x0064c63c    e8bfb0dbff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z             // 0x0064c63c    e8bfb0dbff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x0064c641    8b442414
                          xor.s              ebp, ebp                                       // 0x0064c645    33ed
                          test               eax, eax                                       // 0x0064c647    85c0
@@ -9119,7 +9119,7 @@ _jmp_addr_0x0064c7a3:    {disp32} lea       eax, dword ptr [edi + 0x00000934]   
                          {disp32} lea       edx, dword ptr [edi + 0x00000948]              // 0x0064c7bf    8d9748090000
                          push               edx                                            // 0x0064c7c5    52
                          mov.s              ecx, esi                                       // 0x0064c7c6    8bce
-                         call               _jmp_addr_0x00407700                           // 0x0064c7c8    e833afdbff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z             // 0x0064c7c8    e833afdbff
                          {disp32} lea       eax, dword ptr [edi + 0x000000dc]              // 0x0064c7cd    8d87dc000000
                          push               eax                                            // 0x0064c7d3    50
                          mov.s              ecx, esi                                       // 0x0064c7d4    8bce
@@ -9257,7 +9257,7 @@ _jmp_addr_0x0064c94a:    {disp8} lea        edx, dword ptr [edi + 0x64]         
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x0064c95d    8d442414
                          push               eax                                            // 0x0064c961    50
                          mov.s              ecx, esi                                       // 0x0064c962    8bce
-                         call               _jmp_addr_0x004077a0                           // 0x0064c964    e837aedbff
+                         call               ??$ReadIt@H@GameOSFile@@QAEXAAI@Z              // 0x0064c964    e837aedbff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x0064c969    8b442414
                          xor.s              ebp, ebp                                       // 0x0064c96d    33ed
                          cmp.s              eax, ebx                                       // 0x0064c96f    3bc3
@@ -9277,7 +9277,7 @@ _jmp_addr_0x0064c98c:    cmp                dword ptr [data_bytes + 0x226994], e
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x0064c994    8d4c2414
                          push               ecx                                            // 0x0064c998    51
                          mov.s              ecx, esi                                       // 0x0064c999    8bce
-                         call               _jmp_addr_0x004077a0                           // 0x0064c99b    e800aedbff
+                         call               ??$ReadIt@H@GameOSFile@@QAEXAAI@Z              // 0x0064c99b    e800aedbff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x0064c9a0    8b442414
                          test               eax, eax                                       // 0x0064c9a4    85c0
                          {disp8} jbe        _jmp_addr_0x0064c9c2                           // 0x0064c9a6    761a
@@ -9313,7 +9313,7 @@ _jmp_addr_0x0064c9e8:    {disp32} mov       ecx, dword ptr [esi + 0x00000214]   
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x0064ca06    8d442414
                          push               eax                                            // 0x0064ca0a    50
                          mov.s              ecx, esi                                       // 0x0064ca0b    8bce
-                         call               _jmp_addr_0x004077a0                           // 0x0064ca0d    e88eaddbff
+                         call               ??$ReadIt@H@GameOSFile@@QAEXAAI@Z              // 0x0064ca0d    e88eaddbff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x0064ca12    8b442414
                          test               eax, eax                                       // 0x0064ca16    85c0
                          {disp8} jbe        _jmp_addr_0x0064ca34                           // 0x0064ca18    761a
@@ -9436,7 +9436,7 @@ _jmp_addr_0x0064cb92:    {disp32} lea       ecx, dword ptr [edi + 0x00000944]   
                          {disp32} lea       edx, dword ptr [edi + 0x00000948]              // 0x0064cba0    8d9748090000
                          push               edx                                            // 0x0064cba6    52
                          mov.s              ecx, esi                                       // 0x0064cba7    8bce
-                         call               _jmp_addr_0x004077a0                           // 0x0064cba9    e8f2abdbff
+                         call               ??$ReadIt@H@GameOSFile@@QAEXAAI@Z              // 0x0064cba9    e8f2abdbff
                          {disp32} lea       eax, dword ptr [edi + 0x000000dc]              // 0x0064cbae    8d87dc000000
                          push               eax                                            // 0x0064cbb4    50
                          mov.s              ecx, esi                                       // 0x0064cbb5    8bce

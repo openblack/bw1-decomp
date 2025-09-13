@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern ?FUN_004046a0@Abode@@QAEXH@Z
-.extern _jmp_addr_0x004070f0
+.extern ?DrawPercentFull@Abode@@QAEXH@Z
 .extern _GetCurrentActiveBox__8SetupBoxFv
 .extern _GetTextWidth__10SetupThingFPwfif
 .extern _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori
@@ -450,7 +450,7 @@ _jmp_addr_0x0051630a:    cmp.s              edi, ebx                            
                          {disp8} je         _jmp_addr_0x00516316                          // 0x0051630c    7408
 _jmp_addr_0x0051630e:    push               edi                                           // 0x0051630e    57
                          mov.s              ecx, esi                                      // 0x0051630f    8bce
-                         call               _jmp_addr_0x004070f0                          // 0x00516311    e8da0defff
+                         call               ?DrawPercentFull@Abode@@QAEXH@Z               // 0x00516311    e8da0defff
 _jmp_addr_0x00516316:    pop                edi                                           // 0x00516316    5f
                          pop                esi                                           // 0x00516317    5e
                          pop                ebp                                           // 0x00516318    5d

@@ -9,6 +9,7 @@
 
 #include "Base.h" /* For struct Base */
 #include "BaseInfo.h" /* For struct GBaseInfo */
+#include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
 struct GScript
 {
@@ -55,6 +56,12 @@ void __fastcall ProcessFade__7GScriptFb(struct GScript* this, const void* edx, b
 void __fastcall SetupScreenFadeTo__7GScriptFUcUcUcSc(struct GScript* this, const void* edx, uint8_t r, uint8_t g, uint8_t b, int8_t a);
 // win1.41 006ebbc0 mac 104d7300 GScript::CleanGameForScriptReboot(void)
 void __fastcall CleanGameForScriptReboot__7GScriptFv(struct GScript* this);
+// win1.41 006f62b0 mac 104e7c70 GScript::ScriptErrorMessage(char*)
+void __fastcall ScriptErrorMessage__7GScriptFPc(struct GScript* this, const void* edx, char* msg) asm("?ScriptErrorMessage@GScript@@QAEXPAD@Z");
+// win1.41 006f62c0 mac 100054c0 GScript::ScriptWarningMessage(char*)
+void __fastcall ScriptWarningMessage__7GScriptFPc(struct GScript* this, const void* edx, char* msg) asm("?ScriptWarningMessage@GScript@@QAEXPAD@Z");
+// win1.41 006f741 mac 104ea250 GScript::FindInTown(GameThingWithPos*, int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
+struct Abode* __fastcall FindInTown__7GScriptFP16GameThingWithPosPFP16GameThingWithPos18SCRIPT_OBJECT_TYPEUl_i18SCRIPT_OBJECT_TYPEUl(struct GScript* this, const void* edx, struct GameThingWithPos* param_1, int (*)(struct GameThingWithPos* param_1, enum SCRIPT_OBJECT_TYPE param_2, uint32_t param_3), enum SCRIPT_OBJECT_TYPE param_2, uint32_t param_3) asm("?FindInTown@GScript@@QAEPAVAbode@@PAVGameThingWithPos@@P6AH0W4SCRIPT_OBJECT_TYPE@@I@Z1I@Z");
 
 // Override methods
 

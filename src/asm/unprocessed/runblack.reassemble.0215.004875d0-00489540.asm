@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00406640
+.extern ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z
 .extern _jmp_addr_0x0042a4b0
 .extern _jmp_addr_0x00436960
 .extern _jmp_addr_0x0046c0b0
@@ -1860,7 +1860,7 @@ _jmp_addr_0x00488e9f:    push               eax                                 
                          {disp32} mov       eax, dword ptr [esi + 0x00004834]             // 0x00488ea0    8b8634480000
                          push               eax                                           // 0x00488ea6    50
                          mov.s              ecx, edi                                      // 0x00488ea7    8bcf
-                         call               _jmp_addr_0x00406640                          // 0x00488ea9    e892d7f7ff
+                         call               ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z                          // 0x00488ea9    e892d7f7ff
                          and                byte ptr [edi + 0x7c], -0x21                  // 0x00488eae    80677cdf
                          pop                edi                                           // 0x00488eb2    5f
                          {disp32} mov       dword ptr [esi + 0x000048cc], ebp             // 0x00488eb3    89aecc480000

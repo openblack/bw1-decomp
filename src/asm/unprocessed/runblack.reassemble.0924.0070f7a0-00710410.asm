@@ -26,7 +26,7 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x0064d6a0
 .extern _jmp_addr_0x006de570
-.extern _jmp_addr_0x006f62b0
+.extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .extern _jmp_addr_0x006f6ba0
 .extern _jmp_addr_0x006f6bc0
 .extern _jmp_addr_0x006f8260
@@ -358,7 +358,7 @@ _jmp_addr_0x0070fb08:    {disp32} mov     ecx, dword ptr [_global]              
                          cmp              esi, 0x55                                     // 0x0070fb38    83fe55
                          {disp8} jle      _jmp_addr_0x0070fb4a                          // 0x0070fb3b    7e0d
 _jmp_addr_0x0070fb3d:    push             0x00c20adc                                    // 0x0070fb3d    68dc0ac200
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fb42    e86967feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fb42    e86967feff
                          add              esp, 0x04                                     // 0x0070fb47    83c404
 _jmp_addr_0x0070fb4a:    {disp32} mov     ecx, dword ptr [_game]                        // 0x0070fb4a    8b0d5c19d000
                          {disp32} mov     edx, dword ptr [ecx + 0x00250090]             // 0x0070fb50    8b9190002500
@@ -440,14 +440,14 @@ _jmp_addr_0x0070fbe4:    call             _jmp_addr_0x006f8260                  
                          mov.s            edi, eax                                      // 0x0070fc20    8bf8
                          {disp8} jne      _jmp_addr_0x0070fc31                          // 0x0070fc22    750d
                          push             0x00c0c258                                    // 0x0070fc24    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fc29    e88266feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fc29    e88266feff
                          add              esp, 0x04                                     // 0x0070fc2e    83c404
 _jmp_addr_0x0070fc31:    test             edi, edi                                      // 0x0070fc31    85ff
                          {disp8} jle      _jmp_addr_0x0070fc3a                          // 0x0070fc33    7e05
                          cmp              edi, 0x55                                     // 0x0070fc35    83ff55
                          {disp8} jl       _jmp_addr_0x0070fc47                          // 0x0070fc38    7c0d
 _jmp_addr_0x0070fc3a:    push             0x00c20adc                                    // 0x0070fc3a    68dc0ac200
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fc3f    e86c66feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fc3f    e86c66feff
                          add              esp, 0x04                                     // 0x0070fc44    83c404
 _jmp_addr_0x0070fc47:    test             esi, esi                                      // 0x0070fc47    85f6
                          {disp8} je       _jmp_addr_0x0070fc58                          // 0x0070fc49    740d
@@ -474,7 +474,7 @@ _jmp_addr_0x0070fc58:    pop              edi                                   
                          test             eax, eax                                      // 0x0070fc7a    85c0
                          {disp8} jne      _jmp_addr_0x0070fc8d                          // 0x0070fc7c    750f
                          push             0x00c0c258                                    // 0x0070fc7e    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fc83    e82866feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fc83    e82866feff
                          add              esp, 0x04                                     // 0x0070fc88    83c404
                          pop              ecx                                           // 0x0070fc8b    59
                          ret                                                            // 0x0070fc8c    c3
@@ -512,7 +512,7 @@ _jmp_addr_0x0070fc8d:    {disp32} mov     ecx, dword ptr [_global]              
                          test             edi, edi                                      // 0x0070fcdd    85ff
                          {disp8} jne      _jmp_addr_0x0070fcee                          // 0x0070fcdf    750d
 _jmp_addr_0x0070fce1:    push             0x00c0c258                                    // 0x0070fce1    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fce6    e8c565feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fce6    e8c565feff
                          add              esp, 0x04                                     // 0x0070fceb    83c404
 _jmp_addr_0x0070fcee:    test             esi, esi                                      // 0x0070fcee    85f6
                          {disp8} je       _jmp_addr_0x0070fd03                          // 0x0070fcf0    7411
@@ -552,7 +552,7 @@ _jmp_addr_0x0070fd03:    pop              edi                                   
                          test             esi, esi                                      // 0x0070fd3d    85f6
                          {disp8} jne      _jmp_addr_0x0070fd51                          // 0x0070fd3f    7510
                          push             0x00c0c258                                    // 0x0070fd41    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fd46    e86565feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fd46    e86565feff
                          add              esp, 0x04                                     // 0x0070fd4b    83c404
                          pop              esi                                           // 0x0070fd4e    5e
                          pop              ecx                                           // 0x0070fd4f    59
@@ -590,7 +590,7 @@ _jmp_addr_0x0070fd51:    {disp32} mov     ecx, dword ptr [_global]              
                          test             eax, eax                                      // 0x0070fd8a    85c0
                          {disp8} jne      _jmp_addr_0x0070fdb7                          // 0x0070fd8c    7529
                          push             0x00c0c258                                    // 0x0070fd8e    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fd93    e81865feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fd93    e81865feff
                          {disp32} mov     ecx, dword ptr [_script_dll]                  // 0x0070fd98    8b0d105cd900
                          add              esp, 0x04                                     // 0x0070fd9e    83c404
                          {disp8} mov      dword ptr [esp + 0x00], 0x00000000            // 0x0070fda1    c744240000000000
@@ -628,7 +628,7 @@ _jmp_addr_0x0070fdb7:    {disp32} mov     ecx, dword ptr [_global]              
                          cmp              esi, 0x55                                     // 0x0070fdf8    83fe55
                          {disp8} jl       _jmp_addr_0x0070fe0a                          // 0x0070fdfb    7c0d
 _jmp_addr_0x0070fdfd:    push             0x00c20b04                                    // 0x0070fdfd    68040bc200
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fe02    e8a964feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fe02    e8a964feff
                          add              esp, 0x04                                     // 0x0070fe07    83c404
 _jmp_addr_0x0070fe0a:    test             esi, esi                                      // 0x0070fe0a    85f6
                          {disp8} jle      _jmp_addr_0x0070fe13                          // 0x0070fe0c    7e05
@@ -700,7 +700,7 @@ _jmp_addr_0x0070fe2d:    {disp32} mov     ecx, dword ptr [_global]              
                          test             esi, esi                                      // 0x0070fec5    85f6
                          {disp8} jne      _jmp_addr_0x0070fedb                          // 0x0070fec7    7512
                          push             0x00c0c258                                    // 0x0070fec9    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070fece    e8dd63feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070fece    e8dd63feff
                          add              esp, 0x04                                     // 0x0070fed3    83c404
                          pop              esi                                           // 0x0070fed6    5e
                          add              esp, 0x1c                                     // 0x0070fed7    83c41c
@@ -732,7 +732,7 @@ _jmp_addr_0x0070fedb:    {disp8} lea      ecx, dword ptr [esp + 0x08]           
                          test             eax, eax                                      // 0x0070ff1a    85c0
                          {disp8} jne      _jmp_addr_0x0070ff2d                          // 0x0070ff1c    750f
                          push             0x00c0c258                                    // 0x0070ff1e    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070ff23    e88863feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070ff23    e88863feff
                          add              esp, 0x04                                     // 0x0070ff28    83c404
                          pop              ecx                                           // 0x0070ff2b    59
                          ret                                                            // 0x0070ff2c    c3
@@ -757,7 +757,7 @@ _jmp_addr_0x0070ff2d:    {disp32} mov     ecx, dword ptr [_global]              
                          test             eax, eax                                      // 0x0070ff5a    85c0
                          {disp8} jne      _jmp_addr_0x0070ff7c                          // 0x0070ff5c    751e
                          push             0x00c0c258                                    // 0x0070ff5e    6858c2c000
-                         call             _jmp_addr_0x006f62b0                          // 0x0070ff63    e84863feff
+                         call             ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x0070ff63    e84863feff
                          {disp32} mov     ecx, dword ptr [_script_dll]                  // 0x0070ff68    8b0d105cd900
                          add              esp, 0x04                                     // 0x0070ff6e    83c404
                          push             0x6                                           // 0x0070ff71    6a06

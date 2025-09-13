@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00407700
+.extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern _jmp_addr_0x0042a6d0
 .extern _jmp_addr_0x0043f980
@@ -13921,7 +13921,7 @@ _jmp_addr_0x0043c8df:    test               eax, eax                            
                          push               eax                                                  // 0x0043c8f1    50
                          mov.s              ecx, esi                                             // 0x0043c8f2    8bce
                          xor.s              ebp, ebp                                             // 0x0043c8f4    33ed
-                         call               _jmp_addr_0x00407700                                 // 0x0043c8f6    e805aefcff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z                   // 0x0043c8f6    e805aefcff
                          {disp8} mov        ebx, dword ptr [edi + 0x20]                          // 0x0043c8fb    8b5f20
                          test               ebx, ebx                                             // 0x0043c8fe    85db
                          {disp8} je         _jmp_addr_0x0043c929                                 // 0x0043c900    7427
@@ -13954,7 +13954,7 @@ _jmp_addr_0x0043c943:    test               eax, eax                            
                          push               eax                                                  // 0x0043c955    50
                          mov.s              ecx, esi                                             // 0x0043c956    8bce
                          xor.s              ebp, ebp                                             // 0x0043c958    33ed
-                         call               _jmp_addr_0x00407700                                 // 0x0043c95a    e8a1adfcff
+                         call               ??$WriteIt@I@GameOSFile@@QAEXAAI@Z                   // 0x0043c95a    e8a1adfcff
                          {disp8} mov        ebx, dword ptr [edi + 0x28]                          // 0x0043c95f    8b5f28
                          test               ebx, ebx                                             // 0x0043c962    85db
                          {disp8} je         _jmp_addr_0x0043c98d                                 // 0x0043c964    7427

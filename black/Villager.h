@@ -663,7 +663,11 @@ const char* __fastcall GetVillagerName__8VillagerFv(struct Villager* this);
 uint32_t __fastcall DrawVillagerInfo__8VillagerFv(struct Villager* this);
 
 DECLARE_LH_LINKED_LIST(Villager);
+
 DECLARE_LH_LIST_HEAD(Villager);
+
+// win1.41 004077f0 mac 10139990 LHListHead<Villager>::AddToLast(Villager *)
+void __fastcall AddToLast__21LHListHead_8Villager_FP8Villager(struct LHListHead__Villager* this, const void* edx, struct Villager* element) asm("?AddToLast@?$LHListHead@VVillager@@@@QAEXPAVVillager@@@Z");
 
 struct MissionaryControl
 {

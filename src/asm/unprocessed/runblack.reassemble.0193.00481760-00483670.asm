@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00406640
+.extern ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z
 .extern _jmp_addr_0x00428790
 .extern _jmp_addr_0x0042a4b0
 .extern @__ct__7LHPointFRC7LHPoint@12
@@ -1449,14 +1449,14 @@ _jmp_addr_0x004828f1:    {disp32} mov       ecx, dword ptr [esi + 0x00004834]   
                          {disp32} mov       eax, dword ptr [esi + 0x00004834]                    // 0x00482901    8b8634480000
                          push               eax                                                  // 0x00482907    50
                          mov.s              ecx, ebp                                             // 0x00482908    8bcd
-                         call               _jmp_addr_0x00406640                                 // 0x0048290a    e8313df8ff
+                         call               ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z                                 // 0x0048290a    e8313df8ff
                          {disp32} jmp       _jmp_addr_0x00482b07                                 // 0x0048290f    e9f3010000
 _jmp_addr_0x00482914:    xor.s              eax, eax                                             // 0x00482914    33c0
                          push               eax                                                  // 0x00482916    50
                          {disp32} mov       eax, dword ptr [esi + 0x00004834]                    // 0x00482917    8b8634480000
                          push               eax                                                  // 0x0048291d    50
                          mov.s              ecx, ebp                                             // 0x0048291e    8bcd
-                         call               _jmp_addr_0x00406640                                 // 0x00482920    e81b3df8ff
+                         call               ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z                                 // 0x00482920    e81b3df8ff
                          {disp32} jmp       _jmp_addr_0x00482b07                                 // 0x00482925    e9dd010000
 _jmp_addr_0x0048292a:    mov                edx, dword ptr [edi]                                 // 0x0048292a    8b17
                          mov.s              ecx, edi                                             // 0x0048292c    8bcf
