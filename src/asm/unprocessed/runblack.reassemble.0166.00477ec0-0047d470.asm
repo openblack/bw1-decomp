@@ -113,7 +113,7 @@
 .extern _jmp_addr_0x005e6f70
 .extern ?IsDancing@Living@@UAE_NXZ
 .extern @GetNearestTown__9MapCoordsCFf@12
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x006055c0
 .extern _jmp_addr_0x00605870
@@ -415,7 +415,7 @@ _jmp_addr_0x00477fdf:    push               edi                                 
                          {disp32} lea       edx, dword ptr [esp + 0x000000f8]             // 0x0047800b    8d9424f8000000
                          push               edx                                           // 0x00478012    52
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x00478013    8d4c241c
-                         call               _jmp_addr_0x00602880                          // 0x00478017    e864a81800
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00478017    e864a81800
                          push               eax                                           // 0x0047801c    50
                          push               0x2f                                          // 0x0047801d    6a2f
                          call               _jmp_addr_0x00715130                          // 0x0047801f    e80cd12900

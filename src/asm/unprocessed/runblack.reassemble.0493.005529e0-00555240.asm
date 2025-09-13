@@ -109,7 +109,7 @@
 .extern _jmp_addr_0x005e2990
 .extern _jmp_addr_0x005e29e0
 .extern _jmp_addr_0x00601330
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x00602fc0
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
@@ -887,7 +887,7 @@ _jmp_addr_0x00553135:    push               eax                                 
 _jmp_addr_0x00553174:    {disp32} lea       edx, dword ptr [esp + 0x000000d4]             // 0x00553174    8d9424d4000000
                          push               edx                                           // 0x0055317b    52
                          {disp32} lea       ecx, dword ptr [esi + 0x0025009c]             // 0x0055317c    8d8e9c002500
-                         call               _jmp_addr_0x00602880                          // 0x00553182    e8f9f60a00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00553182    e8f9f60a00
                          push               eax                                           // 0x00553187    50
                          push               0x35                                          // 0x00553188    6a35
                          call               _jmp_addr_0x00715130                          // 0x0055318a    e8a11f1c00

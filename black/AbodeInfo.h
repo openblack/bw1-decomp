@@ -78,9 +78,9 @@ extern const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbode
 // Static methods
 
 // win1.41 00405a70 mac 101ca0c0 GAbodeInfo::GetInfoFromText(char *)
-int __cdecl GetInfoFromText__10GAbodeInfoFPc(const char* text);
+int __cdecl GetInfoFromText__10GAbodeInfoFPc(const char* text) asm("?GetInfoFromText@GAbodeInfo@@SAHPAD@Z");
 // win1.41 00405b30 mac 1006f680 GAbodeInfo::Find(TRIBE_TYPE, ABODE_NUMBER)
-struct GAbodeInfo* __cdecl Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER(enum TRIBE_TYPE tribe_type, enum ABODE_NUMBER abode_number);
+struct GAbodeInfo* __cdecl Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER(enum TRIBE_TYPE tribe_type, enum ABODE_NUMBER abode_number) asm("?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z");
 
 // Global Static variable lifetime methods
 

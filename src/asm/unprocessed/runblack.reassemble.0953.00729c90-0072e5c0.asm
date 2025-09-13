@@ -49,7 +49,7 @@
 .extern @GetMagicEffectInfo__10GMagicInfoCFv@4
 .extern _jmp_addr_0x005fbb00
 .extern @GetNearestTown__9MapCoordsCFf@12
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x006055c0
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
@@ -1778,7 +1778,7 @@ _jmp_addr_0x0072abb7:    mov                ecx, dword ptr [eax]                
                          {disp32} lea       ecx, dword ptr [esp + 0x000000f0]             // 0x0072abdb    8d8c24f0000000
                          push               ecx                                           // 0x0072abe2    51
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x0072abe3    8d4c2414
-                         call               _jmp_addr_0x00602880                          // 0x0072abe7    e8947cedff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x0072abe7    e8947cedff
                          push               eax                                           // 0x0072abec    50
                          push               0x54                                          // 0x0072abed    6a54
                          call               _jmp_addr_0x00715130                          // 0x0072abef    e83ca5feff

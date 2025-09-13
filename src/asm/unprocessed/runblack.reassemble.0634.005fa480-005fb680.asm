@@ -70,7 +70,7 @@
 .globl _jmp_addr_0x005fb0b0
 .globl _jmp_addr_0x005fb130
 .globl _jmp_addr_0x005fb190
-.globl _GetInfoFromText__10GMagicInfoFPCc
+.globl ?GetInfoFromText@GMagicInfo@@SAHPAD@Z
 .globl @GetMagicInfoText__10GMagicInfoCFv@4
 .globl _jmp_addr_0x005fb400
 .globl _jmp_addr_0x005fb420
@@ -1854,7 +1854,9 @@ _jmp_addr_0x005fb3a0:    push               0x00407870                          
                          nop                                                              // 0x005fb3ad    90
                          nop                                                              // 0x005fb3ae    90
                          nop                                                              // 0x005fb3af    90
-_GetInfoFromText__10GMagicInfoFPCc:    push               ebx                                           // 0x005fb3b0    53
+
+?GetInfoFromText@GMagicInfo@@SAHPAD@Z:
+                         push               ebx                                           // 0x005fb3b0    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                   // 0x005fb3b1    8b5c2408
                          push               esi                                           // 0x005fb3b5    56
                          push               edi                                           // 0x005fb3b6    57

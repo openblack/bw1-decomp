@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x005fa9f0
 .extern @__ct__12MobileObjectFv@4
 .extern _jmp_addr_0x00600e20
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @ToMap__9MapCoordsCFv@4
 .extern @IsWater__9MapCoordsCFv@4
 .extern @InBounds__9MapCoordsCFv@4
@@ -1167,7 +1167,7 @@ _jmp_addr_0x0066d587:    mov                ecx, dword ptr [eax]                
                          {disp32} lea       edx, dword ptr [esp + 0x000000f8]             // 0x0066d5d8    8d9424f8000000
                          push               edx                                           // 0x0066d5df    52
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x0066d5e0    8d4c241c
-                         call               _jmp_addr_0x00602880                          // 0x0066d5e4    e89752f9ff
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x0066d5e4    e89752f9ff
                          push               eax                                           // 0x0066d5e9    50
                          push               0x26                                          // 0x0066d5ea    6a26
                          call               _jmp_addr_0x00715130                          // 0x0066d5ec    e83f7b0a00

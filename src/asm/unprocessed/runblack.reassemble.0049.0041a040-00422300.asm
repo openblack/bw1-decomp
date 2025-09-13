@@ -63,7 +63,7 @@
 .extern @GetTopState__6LivingCFv@4
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
 .extern @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x00603030
 .extern _jmp_addr_0x006033b0
 .extern @ToMap__9MapCoordsCFv@4
@@ -522,7 +522,7 @@ _jmp_addr_0x0041a1bd:    mov                edx, dword ptr [esi]                
                          {disp32} lea       ecx, dword ptr [esp + 0x000000a0]             // 0x0041a1d4    8d8c24a0000000
                          push               ecx                                           // 0x0041a1db    51
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x0041a1dc    8d4c2428
-                         call               _jmp_addr_0x00602880                          // 0x0041a1e0    e89b861e00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x0041a1e0    e89b861e00
                          push               eax                                           // 0x0041a1e5    50
                          push               0x19                                          // 0x0041a1e6    6a19
                          call               _jmp_addr_0x00715130                          // 0x0041a1e8    e843af2f00

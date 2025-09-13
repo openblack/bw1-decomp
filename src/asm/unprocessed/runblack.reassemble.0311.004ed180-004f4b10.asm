@@ -76,7 +76,7 @@
 .extern _jmp_addr_0x005fc590
 .extern _jmp_addr_0x005fc6a0
 .extern @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @ToMap__9MapCoordsCFv@4
 .extern @InBounds__9MapCoordsCFv@4
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
@@ -2777,7 +2777,7 @@ _jmp_addr_0x004ef174:    mov                edx, dword ptr [esi]                
                          {disp32} lea       ecx, dword ptr [esp + 0x00000108]                    // 0x004ef1cf    8d8c2408010000
                          push               ecx                                                  // 0x004ef1d6    51
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                          // 0x004ef1d7    8d4c242c
-                         call               _jmp_addr_0x00602880                                 // 0x004ef1db    e8a0361100
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x004ef1db    e8a0361100
                          push               eax                                                  // 0x004ef1e0    50
                          push               0x15                                                 // 0x004ef1e1    6a15
                          call               _jmp_addr_0x00715130                                 // 0x004ef1e3    e8485f2200

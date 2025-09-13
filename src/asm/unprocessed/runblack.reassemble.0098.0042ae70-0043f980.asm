@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x005f2af0
 .extern _jmp_addr_0x005f3120
 .extern _jmp_addr_0x005f32f0
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603720
 .extern @InBounds__9MapCoordsCFv@4

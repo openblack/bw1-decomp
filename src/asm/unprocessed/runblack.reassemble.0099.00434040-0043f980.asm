@@ -60,7 +60,7 @@
 .extern _jmp_addr_0x005f2af0
 .extern _jmp_addr_0x005f3120
 .extern _jmp_addr_0x005f32f0
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603720
 .extern @InBounds__9MapCoordsCFv@4
@@ -8291,7 +8291,7 @@ _jmp_addr_0x00438fa2:    mov                edx, dword ptr [esi]                
                          {disp32} lea       edx, dword ptr [esp + 0x000000f8]                    // 0x00438fe2    8d9424f8000000
                          push               edx                                                  // 0x00438fe9    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x00438fea    8d4e14
-                         call               _jmp_addr_0x00602880                                 // 0x00438fed    e88e981c00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x00438fed    e88e981c00
                          push               eax                                                  // 0x00438ff2    50
                          push               0x3a                                                 // 0x00438ff3    6a3a
                          call               _jmp_addr_0x00715130                                 // 0x00438ff5    e836c12d00
@@ -9409,7 +9409,7 @@ _jmp_addr_0x004398d4:    mov                ecx, dword ptr [eax]                
                          fstp               qword ptr [esp]                                      // 0x00439922    dd1c24
                          push               ecx                                                  // 0x00439925    51
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                          // 0x00439926    8d4c2428
-                         call               _jmp_addr_0x00602880                                 // 0x0043992a    e8518f1c00
+                         call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x0043992a    e8518f1c00
                          push               eax                                                  // 0x0043992f    50
                          push               0x49                                                 // 0x00439930    6a49
                          call               _jmp_addr_0x00715130                                 // 0x00439932    e8f9b72d00

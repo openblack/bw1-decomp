@@ -11,7 +11,7 @@
 .extern ___nw__4BaseFUl
 .extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x0056fef0
-.extern _jmp_addr_0x00602880
+.extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x006055c0
 .extern @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12
 .extern _jmp_addr_0x0060a010
@@ -392,7 +392,7 @@ _jmp_addr_0x00609614:    mov               ecx, dword ptr [eax]                 
                          {disp32} lea      ecx, dword ptr [esp + 0x000000ec]             // 0x00609635    8d8c24ec000000
                          push              ecx                                           // 0x0060963c    51
                          {disp8} lea       ecx, dword ptr [esp + 0x10]                   // 0x0060963d    8d4c2410
-                         call              _jmp_addr_0x00602880                          // 0x00609641    e83a92ffff
+                         call              ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00609641    e83a92ffff
                          push              eax                                           // 0x00609646    50
                          push              0x4a                                          // 0x00609647    6a4a
                          call              _jmp_addr_0x00715130                          // 0x00609649    e8e2ba1000

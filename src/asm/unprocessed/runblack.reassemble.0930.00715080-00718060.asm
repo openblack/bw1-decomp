@@ -11,7 +11,7 @@
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z
 .extern ?Create@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z
-.extern _GetInfoFromText__10GAbodeInfoFPc
+.extern ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
 .extern _jmp_addr_0x00419d10
@@ -58,7 +58,7 @@
 .extern _jmp_addr_0x005cd9d0
 .extern @Open__10GLandscapeFPc@12
 .extern _RenderLoadingFrame__Fb
-.extern _GetInfoFromText__10GMagicInfoFPCc
+.extern ?GetInfoFromText@GMagicInfo@@SAHPAD@Z
 .extern _jmp_addr_0x006063d0
 .extern _jmp_addr_0x00607000
 .extern _jmp_addr_0x00608770
@@ -104,7 +104,7 @@
 .extern _Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff
 .extern _GetTribeFromText__10GTribeInfoFPCc
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
-.extern _GetInfoFromText__13GVillagerInfoFPc
+.extern ?GetInfoFromText@GVillagerInfo@@SAHPAD@Z
 .extern _Find__13GVillagerInfoF10TRIBE_TYPE15VILLAGER_NUMBER
 .extern _jmp_addr_0x00770bc0
 .extern _jmp_addr_0x00771300
@@ -626,7 +626,7 @@ _jmp_addr_0x007154ed:    test               eax, eax                            
                          ret                                                              // 0x00715628    c3
                          {disp32} lea       ecx, dword ptr [ebp + 0x00001000]             // 0x00715629    8d8d00100000
                          push               ecx                                           // 0x0071562f    51
-                         call               _GetInfoFromText__10GAbodeInfoFPc             // 0x00715630    e83b04cfff
+                         call               ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z         // 0x00715630    e83b04cfff
                          lea                edx, dword ptr [eax + eax * 0x8]              // 0x00715635    8d14c0
                          lea                eax, dword ptr [eax + edx * 0x2]              // 0x00715638    8d0450
                          {disp32} lea       ecx, dword ptr [ebp + 0x00000800]             // 0x0071563b    8d8d00080000
@@ -732,7 +732,7 @@ _jmp_addr_0x00715727:    {disp32} mov       edx, dword ptr [esi + 0x00000120]   
                          ret                                                              // 0x0071577b    c3
                          {disp32} lea       ecx, dword ptr [ebp + 0x00001000]             // 0x0071577c    8d8d00100000
                          push               ecx                                           // 0x00715782    51
-                         call               _GetInfoFromText__10GAbodeInfoFPc             // 0x00715783    e8e802cfff
+                         call               ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z         // 0x00715783    e8e802cfff
                          lea                edx, dword ptr [eax + eax * 0x8]              // 0x00715788    8d14c0
                          lea                eax, dword ptr [eax + edx * 0x2]              // 0x0071578b    8d0450
                          {disp32} lea       ecx, dword ptr [ebp + 0x00000800]             // 0x0071578e    8d8d00080000
@@ -916,7 +916,7 @@ _jmp_addr_0x007158e8:    {disp32} mov       dword ptr [_DAT_00d99380], edi      
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x007159d6    0f84ae240000
                          add                ebp, 0x00000800                               // 0x007159dc    81c500080000
                          push               ebp                                           // 0x007159e2    55
-                         call               _GetInfoFromText__10GMagicInfoFPCc            // 0x007159e3    e8c859eeff
+                         call               ?GetInfoFromText@GMagicInfo@@SAHPAD@Z         // 0x007159e3    e8c859eeff
                          mov.s              esi, eax                                      // 0x007159e8    8bf0
                          add                esp, 0x04                                     // 0x007159ea    83c404
                          cmp                esi, 0x2a                                     // 0x007159ed    83fe2a
@@ -957,7 +957,7 @@ _jmp_addr_0x007158e8:    {disp32} mov       dword ptr [_DAT_00d99380], edi      
                          {disp32} lea       eax, dword ptr [ebp + 0x00001000]             // 0x00715a54    8d8500100000
                          push               eax                                           // 0x00715a5a    50
                          {disp32} lea       edi, dword ptr [ebp + 0x00000800]             // 0x00715a5b    8dbd00080000
-                         call               _GetInfoFromText__13GVillagerInfoFPc          // 0x00715a61    e87abf0300
+                         call               ?GetInfoFromText@GVillagerInfo@@SAHPAD@Z      // 0x00715a61    e87abf0300
                          lea                ecx, dword ptr [eax + eax * 0x2]              // 0x00715a66    8d0c40
                          lea                ecx, dword ptr [eax + ecx * 0x4]              // 0x00715a69    8d0c88
                          lea                edx, dword ptr [ecx + ecx * 0x8]              // 0x00715a6c    8d14c9
@@ -1061,7 +1061,7 @@ _jmp_addr_0x00715b86:    push               esi                                 
                          {disp8} jne        _jmp_addr_0x00715bf3                          // 0x00715baa    7547
                          {disp32} lea       edx, dword ptr [ebp + 0x00000800]             // 0x00715bac    8d9500080000
                          push               edx                                           // 0x00715bb2    52
-                         call               _GetInfoFromText__13GVillagerInfoFPc          // 0x00715bb3    e828be0300
+                         call               ?GetInfoFromText@GVillagerInfo@@SAHPAD@Z      // 0x00715bb3    e828be0300
                          {disp8} mov        dword ptr [esp + 0x14], eax                   // 0x00715bb8    89442414
                          {disp32} mov       eax, dword ptr [ebp + 0x00006008]             // 0x00715bbc    8b8508600000
                          {disp32} lea       ecx, dword ptr [esp + 0x000000f8]             // 0x00715bc2    8d8c24f8000000
@@ -1083,7 +1083,7 @@ _jmp_addr_0x00715bf3:    cmp                eax, 0x12                           
                          {disp8} jne        _jmp_addr_0x00715c5f                          // 0x00715bf6    7567
                          {disp32} lea       eax, dword ptr [ebp + 0x00001000]             // 0x00715bf8    8d8500100000
                          push               eax                                           // 0x00715bfe    50
-                         call               _GetInfoFromText__13GVillagerInfoFPc          // 0x00715bff    e8dcbd0300
+                         call               ?GetInfoFromText@GVillagerInfo@@SAHPAD@Z      // 0x00715bff    e8dcbd0300
                          {disp32} mov       ecx, dword ptr [ebp + 0x0000600c]             // 0x00715c04    8b8d0c600000
                          {disp32} lea       edx, dword ptr [esp + 0x00000350]             // 0x00715c0a    8d942450030000
                          push               ebp                                           // 0x00715c11    55
@@ -2057,7 +2057,7 @@ _jmp_addr_0x007167e7:    {disp32} fild      dword ptr [ebp + 0x0000600c]        
                          ret                                                              // 0x00716880    c3
                          {disp32} lea       edx, dword ptr [ebp + 0x00001000]             // 0x00716881    8d9500100000
                          push               edx                                           // 0x00716887    52
-                         call               _GetInfoFromText__10GAbodeInfoFPc             // 0x00716888    e8e3f1ceff
+                         call               ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z         // 0x00716888    e8e3f1ceff
                          lea                ecx, dword ptr [eax + eax * 0x8]              // 0x0071688d    8d0cc0
                          lea                eax, dword ptr [eax + ecx * 0x2]              // 0x00716890    8d0448
                          lea                edx, dword ptr [eax + eax * 0x2]              // 0x00716893    8d1440
@@ -2073,7 +2073,7 @@ _jmp_addr_0x007167e7:    {disp32} fild      dword ptr [ebp + 0x0000600c]        
                          push               ecx                                           // 0x007168c0    51
                          {disp8} mov        dword ptr [esp + 0x20], edx                   // 0x007168c1    89542420
                          {disp8} mov        dword ptr [esp + 0x38], eax                   // 0x007168c5    89442438
-                         call               _GetInfoFromText__10GMagicInfoFPCc            // 0x007168c9    e8e24aeeff
+                         call               ?GetInfoFromText@GMagicInfo@@SAHPAD@Z         // 0x007168c9    e8e24aeeff
                          {disp32} mov       edx, dword ptr [ebp + 0x00006000]             // 0x007168ce    8b9500600000
                          {disp32} mov       ecx, dword ptr [_game]                  // 0x007168d4    8b0d5c19d000
                          add                esp, 0x10                                     // 0x007168da    83c410
@@ -3379,7 +3379,7 @@ _jmp_addr_0x00717805:    cmp.s              eax, ebx                            
                          add                ebp, 0x00000800                               // 0x00717927    81c500080000
                          push               ebp                                           // 0x0071792d    55
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x0071792e    89442428
-                         call               _GetInfoFromText__10GMagicInfoFPCc            // 0x00717932    e8793aeeff
+                         call               ?GetInfoFromText@GMagicInfo@@SAHPAD@Z         // 0x00717932    e8793aeeff
                          mov.s              edi, eax                                      // 0x00717937    8bf8
                          add                esp, 0x0c                                     // 0x00717939    83c40c
                          cmp.s              edi, ebx                                      // 0x0071793c    3bfb
@@ -3409,7 +3409,7 @@ _jmp_addr_0x00717805:    cmp.s              eax, ebx                            
                          add                esp, 0x10                                     // 0x00717990    83c410
                          {disp32} jmp       _jmp_addr_0x00716a39                          // 0x00717993    e9a1f0ffff
                          push               ebp                                           // 0x00717998    55
-                         call               _GetInfoFromText__10GMagicInfoFPCc            // 0x00717999    e8123aeeff
+                         call               ?GetInfoFromText@GMagicInfo@@SAHPAD@Z         // 0x00717999    e8123aeeff
                          {disp32} fld       dword ptr [ebp + 0x00006034]                  // 0x0071799e    d98534600000
                          fstp               dword ptr [esp]                               // 0x007179a4    d91c24
                          push               eax                                           // 0x007179a7    50
