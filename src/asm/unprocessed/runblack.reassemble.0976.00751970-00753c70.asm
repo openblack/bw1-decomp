@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00405fa0
-.extern _jmp_addr_0x00405fb0
+.extern ?ArriveHome@Abode@@QAEXXZ
+.extern ?LeaveHome@Abode@@QAEXXZ
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern _jmp_addr_0x0048f820
 .extern _jmp_addr_0x004ea900
@@ -820,7 +820,7 @@ _jmp_addr_0x00751fa0:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x00751fb3    8bce
                          call               @GetAbode__8VillagerFv@4                      // 0x00751fb5    e8a6010000
                          mov.s              ecx, eax                                      // 0x00751fba    8bc8
-                         call               _jmp_addr_0x00405fa0                          // 0x00751fbc    e8df3fcbff
+                         call               ?ArriveHome@Abode@@QAEXXZ                     // 0x00751fbc    e8df3fcbff
 _jmp_addr_0x00751fc1:    pop                esi                                           // 0x00751fc1    5e
                          ret                                                              // 0x00751fc2    c3
                          nop                                                              // 0x00751fc3    90
@@ -850,7 +850,7 @@ _jmp_addr_0x00751fd0:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x00751ff5    8bce
                          call               @GetAbode__8VillagerFv@4                      // 0x00751ff7    e864010000
                          mov.s              ecx, eax                                      // 0x00751ffc    8bc8
-                         call               _jmp_addr_0x00405fb0                          // 0x00751ffe    e8ad3fcbff
+                         call               ?LeaveHome@Abode@@QAEXXZ                      // 0x00751ffe    e8ad3fcbff
 _jmp_addr_0x00752003:    pop                esi                                           // 0x00752003    5e
                          ret                                                              // 0x00752004    c3
                          nop                                                              // 0x00752005    90

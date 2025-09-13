@@ -695,24 +695,6 @@ const float rdata_float_6_2831855 asm("__real@40c90fdb") = 6.2831855f;
 const float rdata_float_0_00075075077 asm("__real@3a440441") = 0.00075075077f;
 const float rdata_float_0_0022522523 asm("__real@3b130c31") = 0.0022522523f;
 const double rdata_double_0_100000001490116119385 asm("__real@3fb999999999999a") = 0.100000001490116119385;
-const float rdata_float_1000_0 asm("__real@447a0000") = 1000.0f;
-const float rdata_float_0_1 asm("__real@3dcccccd") = 0.1f;
-const float rdata_float_1_1 asm("__real@3f8ccccd") = 1.1f;
-const float rdata_float_300_0 asm("__real@43960000") = 300.0f;
-const float rdata_float_0_7 asm("__real@3f333333") = 0.7f;
-const float rdata_float_0_3 asm("__real@3e999999") = 0.3f;
-const float rdata_float_1400_0 asm("__real@44af0000") = 1400.0f;
-const float rdata_float_0_2 asm("__real@3e4ccccd") = 0.2f;
-const float rdata_float_2000_0 asm("__real@44fa0000") = 2000.0f;
-const float rdata_float_1_5 asm("__real@3fc00000") = 1.5f;
-const uint32_t LH3DColor_ARRAY_008ab250[4] asm("?LH3DColor_ARRAY_008ab250@@3PAKA") = {
-    0xffffffff, 0xffffffff, 0xffff8000, 0xff000000
-};
-const double rdata_double_0_5 asm("__real@3fe0000000000000") = 0.5;
-const float rdata_float_0_16666667 asm("__real@3e2aaaab") = 0.16666667f;
-const float rdata_float_0_33333334 asm("__real@3eaaaaab") = 0.33333334f;
-const float rdata_float_255_0 asm("__real@437f0000") = 255.0f;
-const float rdata_float_0_75 asm("__real@3f400000") = 0.75f;
 
 __attribute__((XOR32rr_REV))
 void __fastcall Open__8WindmillFv(struct Windmill* this)

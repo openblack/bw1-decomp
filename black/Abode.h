@@ -168,6 +168,14 @@ int __fastcall GetRoomLeftForAdults__5AbodeFv(struct Abode* this) asm("?GetRoomL
 int __fastcall GetRoomLeftForChildren__5AbodeFv(struct Abode* this) asm("?GetRoomLeftForChildren@Abode@@QAEHXZ");
 // win1.41 004046a0 mac inlined Abode::FUN_004046a0(void)
 void __fastcall FUN_004046a0__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?FUN_004046a0@Abode@@QAEXH@Z");
+// win1.41 00405d80 mac inlined Abode::FUN_004046b0(void)
+int __fastcall FUN_00405d80__5AbodeFv(struct Abode* this) asm("?FUN_00405d80@Abode@@QAEHXZ");
+// win1.41 00405fa0 mac 10003a60 Abode::ArriveHome(void)
+void __fastcall ArriveHome__5AbodeFv(struct Abode* this) asm("?ArriveHome@Abode@@QAEXXZ");
+// win1.41 00405fb0 mac 1009fda0 Abode::LeaveHome(void)
+void __fastcall LeaveHome__5AbodeFv(struct Abode* this) asm("?LeaveHome@Abode@@QAEXXZ");
+// win1.41 00405fc0 mac 100cd2d0 Abode::GetNearestWaterPos(MapCoords &)
+bool GetNearestWaterPos__5AbodeFR9MapCoords(struct Abode* this, const void* edx, struct MapCoords* coords) asm("?GetNearestWaterPos@Abode@@QAE_NAAUMapCoords@@@Z");
 // win1.41 004046b0 mac inlined Abode::FUN_004046b0(void)
 int __fastcall FUN_004046b0__5AbodeFv(struct Abode* this) asm("?FUN_004046b0@Abode@@QAEHXZ");
 // win1.41 004046c0 mac 105b93c0 Abode::IsTooCrowded(void)
