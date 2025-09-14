@@ -57,7 +57,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Forest asm("??_R2F
 // win1.41 009ac7b8 mac inlined Forest::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Forest asm("??_R3Forest@@8");
 // win1.41 008de418 mac 107434e0 Forest::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Forest asm("??_R4Forest@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6Forest asm("??_R4Forest@@6B@");
 // win1.41 008de41c mac 107434e8 Forest::`vftable'
 extern const struct ForestVftable __vt__6Forest asm("??_7Forest@@6B@");
 

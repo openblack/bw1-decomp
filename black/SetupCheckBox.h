@@ -37,7 +37,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13SetupCheckBox asm
 // win1.41 009a6950 mac inlined SetupCheckBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13SetupCheckBox asm("??_R3SetupCheckBox@@8");
 // win1.41 008ab584 mac 10730d88 SetupCheckBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13SetupCheckBox asm("??_R4SetupCheckBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13SetupCheckBox asm("??_R4SetupCheckBox@@6B@");
 // win1.41 008ab588 mac 10730d90 SetupCheckBox::`vftable'
 extern const struct SetupControlVftable __vt__13SetupCheckBox asm("??_7SetupCheckBox@@6B@");
 

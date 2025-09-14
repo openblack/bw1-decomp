@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14CreatureBelief as
 // win1.41 009aaa18 mac inlined CreatureBelief::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14CreatureBelief asm("??_R3CreatureBelief@@8");
 // win1.41 008cfe0c mac 10989878 CreatureBelief::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureBelief asm("??_R4CreatureBelief@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14CreatureBelief asm("??_R4CreatureBelief@@6B@");
 // win1.41 008cfe10 mac 10989880 CreatureBelief::`vftable'
 extern const struct BaseVftable __vt__14CreatureBelief asm("??_7CreatureBelief@@6B@");
 

@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21GestureSystemData
 // win1.41 009ad1c8 mac inlined GestureSystemDataList::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21GestureSystemDataList asm("??_R3GestureSystemDataList@@8");
 // win1.41 008df7bc mac 10733088 GestureSystemDataList::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__21GestureSystemDataList asm("??_R4GestureSystemDataList@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__21GestureSystemDataList asm("??_R4GestureSystemDataList@@6B@");
 // win1.41 008df7c0 mac 10733090 GestureSystemDataList::`vftable'
 extern const struct BaseVftable __vt__21GestureSystemDataList asm("??_7GestureSystemDataList@@6B@");
 

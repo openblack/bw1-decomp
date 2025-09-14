@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GStream asm("??_R2
 // win1.41 009adcf0 mac inlined GStream::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GStream asm("??_R3GStream@@8");
 // win1.41 008ebb44 mac 1075dd20 GStream::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GStream asm("??_R4GStream@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7GStream asm("??_R4GStream@@6B@");
 // win1.41 008ebb48 mac 1075dd28 GStream::`vftable'
 extern const struct GameThingVftable __vt__7GStream asm("??_7GStream@@6B@");
 

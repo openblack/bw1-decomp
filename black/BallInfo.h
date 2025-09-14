@@ -29,7 +29,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GBallInfo asm("??_
 // win1.41 009a8300 mac inlined GBallInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GBallInfo asm("??_R3GBallInfo@@8");
 // win1.41 008c4f30 mac 10737af4 GBallInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GBallInfo asm("??_R4GBallInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GBallInfo asm("??_R4GBallInfo@@6B@");
 // win1.41 008c4f34 mac 10737afc GBallInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__9GBallInfo asm("??_7GBallInfo@@6B@");
 

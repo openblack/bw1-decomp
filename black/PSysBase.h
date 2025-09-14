@@ -28,7 +28,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8PSysBase asm("??_R
 // win1.41 009a9078 mac inlined PSysBase::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8PSysBase asm("??_R3PSysBase@@8");
 // win1.41 008c9c30 mac 10746188 PSysBase::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PSysBase asm("??_R4PSysBase@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8PSysBase asm("??_R4PSysBase@@6B@");
 // win1.41 008c9c34 mac 106f5fd4 PSysBase::`vftable'
 extern const struct GameThingVftable __vt__8PSysBase asm("??_7PSysBase@@6B@");
 

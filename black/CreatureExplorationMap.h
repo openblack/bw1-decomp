@@ -27,7 +27,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__22CreatureExplorati
 // win1.41 009aae28 mac inlined CreatureExplorationMap::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__22CreatureExplorationMap asm("??_R3CreatureExplorationMap@@8");
 // win1.41 008d00dc mac 1098b8d8 CreatureExplorationMap::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__22CreatureExplorationMap asm("??_R4CreatureExplorationMap@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__22CreatureExplorationMap asm("??_R4CreatureExplorationMap@@6B@");
 // win1.41 008d00e0 mac 1098b8e0 CreatureExplorationMap::`vftable'
 extern const struct BaseVftable __vt__22CreatureExplorationMap asm("??_7CreatureExplorationMap@@6B@");
 

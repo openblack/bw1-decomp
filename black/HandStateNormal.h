@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15HandStateNormal a
 // win1.41 009b1090 mac inlined HandStateNormal::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15HandStateNormal asm("??_R3HandStateNormal@@8");
 // win1.41 00900b9c mac 1099b8cc HandStateNormal::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15HandStateNormal asm("??_R4HandStateNormal@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15HandStateNormal asm("??_R4HandStateNormal@@6B@");
 // win1.41 00900ba0 mac 1099b8d4 HandStateNormal::`vftable'
 extern const struct HandStateVftable __vt__15HandStateNormal asm("??_7HandStateNormal@@6B@");
 

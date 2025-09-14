@@ -121,7 +121,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GPlayer asm("??_R2
 // win1.41 009b3238 mac inlined GPlayer::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GPlayer asm("??_R3GPlayer@@8");
 // win1.41 00932be4 mac 109bdcf4 GPlayer::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GPlayer asm("??_R4GPlayer@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7GPlayer asm("??_R4GPlayer@@6B@");
 // win1.41 00932be8 mac 109bdcfc GPlayer::`vftable'
 extern const struct GameThingVftable __vt__7GPlayer asm("??_7GPlayer@@6B@");
 

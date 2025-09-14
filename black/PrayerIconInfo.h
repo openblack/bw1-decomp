@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GPrayerIconInfo a
 // win1.41 009b35e0 mac inlined GPrayerIconInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GPrayerIconInfo asm("??_R3GPrayerIconInfo@@8");
 // win1.41 009341c4 mac 1074a620 GPrayerIconInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GPrayerIconInfo asm("??_R4GPrayerIconInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15GPrayerIconInfo asm("??_R4GPrayerIconInfo@@6B@");
 // win1.41 009341c8 mac 1074a628 GPrayerIconInfo::`vftable'
 extern const struct GSingleMapFixedInfoVftable __vt__15GPrayerIconInfo asm("??_7GPrayerIconInfo@@6B@");
 

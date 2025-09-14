@@ -35,7 +35,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19CreatureMentalDeb
 // win1.41 009aa2e8 mac inlined CreatureMentalDebug::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19CreatureMentalDebug asm("??_R3CreatureMentalDebug@@8");
 // win1.41 008cf8c8 mac 1078766c CreatureMentalDebug::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19CreatureMentalDebug asm("??_R4CreatureMentalDebug@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__19CreatureMentalDebug asm("??_R4CreatureMentalDebug@@6B@");
 // win1.41 008cf8cc mac 10787674 CreatureMentalDebug::`vftable'
 extern const struct BaseVftable __vt__19CreatureMentalDebug asm("??_7CreatureMentalDebug@@6B@");
 

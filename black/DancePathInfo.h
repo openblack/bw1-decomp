@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13DancePathInfo asm
 // win1.41 009b0e20 mac inlined DancePathInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13DancePathInfo asm("??_R3DancePathInfo@@8");
 // win1.41 00900910 mac 10744cf0 DancePathInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DancePathInfo asm("??_R4DancePathInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13DancePathInfo asm("??_R4DancePathInfo@@6B@");
 // win1.41 00900914 mac 10744cf8 DancePathInfo::`vftable'
 extern const struct GameThingVftable __vt__13DancePathInfo asm("??_7DancePathInfo@@6B@");
 

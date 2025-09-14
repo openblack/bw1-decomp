@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15PictureRoomBase a
 // win1.41 009baad0 mac inlined PictureRoomBase::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15PictureRoomBase asm("??_R3PictureRoomBase@@8");
 // win1.41 0099ed74 mac 10746f04 PictureRoomBase::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15PictureRoomBase asm("??_R4PictureRoomBase@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15PictureRoomBase asm("??_R4PictureRoomBase@@6B@");
 // win1.41 0099ed78 mac 10746f0c PictureRoomBase::`vftable'
 extern const struct TempleRoomVftable __vt__15PictureRoomBase asm("??_7PictureRoomBase@@6B@");
 

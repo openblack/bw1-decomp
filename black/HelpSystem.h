@@ -92,7 +92,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10HelpSystem asm("?
 // win1.41 009b13c8 mac inlined HelpSystem::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10HelpSystem asm("??_R3HelpSystem@@8");
 // win1.41 0092a478 mac 1099cab4 HelpSystem::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HelpSystem asm("??_R4HelpSystem@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10HelpSystem asm("??_R4HelpSystem@@6B@");
 // win1.41 0092a47c mac 1099cabc HelpSystem::`vftable'
 extern const struct BaseVftable __vt__10HelpSystem asm("??_7HelpSystem@@6B@");
 

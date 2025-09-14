@@ -43,7 +43,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GWorshipSiteInfo 
 // win1.41 009ba2f8 mac inlined GWorshipSiteInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GWorshipSiteInfo asm("??_R3GWorshipSiteInfo@@8");
 // win1.41 0099c474 mac 109eb3b4 GWorshipSiteInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GWorshipSiteInfo asm("??_R4GWorshipSiteInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16GWorshipSiteInfo asm("??_R4GWorshipSiteInfo@@6B@");
 // win1.41 0099c478 mac 109eb3bc GWorshipSiteInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__16GWorshipSiteInfo asm("??_7GWorshipSiteInfo@@6B@");
 

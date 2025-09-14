@@ -54,7 +54,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16CreatureLearning 
 // win1.41 009aae78 mac inlined CreatureLearning::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16CreatureLearning asm("??_R3CreatureLearning@@8");
 // win1.41 008d040c mac 107875c4 CreatureLearning::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16CreatureLearning asm("??_R4CreatureLearning@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16CreatureLearning asm("??_R4CreatureLearning@@6B@");
 // win1.41 008d0410 mac 107875cc CreatureLearning::`vftable'
 extern const struct BaseVftable __vt__16CreatureLearning asm("??_7CreatureLearning@@6B@");
 

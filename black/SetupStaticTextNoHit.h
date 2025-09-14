@@ -29,7 +29,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20SetupStaticTextNo
 // win1.41 009b05c0 mac inlined SetupStaticTextNoHit::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20SetupStaticTextNoHit asm("??_R3SetupStaticTextNoHit@@8");
 // win1.41 00900094 mac 1099b094 SetupStaticTextNoHit::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20SetupStaticTextNoHit asm("??_R4SetupStaticTextNoHit@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20SetupStaticTextNoHit asm("??_R4SetupStaticTextNoHit@@6B@");
 // win1.41 00900098 mac 1099b09c SetupStaticTextNoHit::`vftable'
 extern const struct SetupControlVftable __vt__20SetupStaticTextNoHit asm("??_7SetupStaticTextNoHit@@6B@");
 

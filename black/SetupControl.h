@@ -65,7 +65,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12SetupControl asm(
 // win1.41 009a6590 mac inlined SetupControl::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12SetupControl asm("??_R3SetupControl@@8");
 // win1.41 008ab278 mac 10730d58 SetupControl::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12SetupControl asm("??_R4SetupControl@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12SetupControl asm("??_R4SetupControl@@6B@");
 // win1.41 008ab27c mac 10730d60 SetupControl::`vftable'
 extern const struct SetupControlVftable __vt__12SetupControl asm("??_7SetupControl@@6B@");
 

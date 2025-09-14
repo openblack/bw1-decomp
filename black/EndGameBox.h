@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10EndGameBox asm("?
 // win1.41 009ac998 mac inlined EndGameBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10EndGameBox asm("??_R3EndGameBox@@8");
 // win1.41 008de9e8 mac 1099ad1c EndGameBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10EndGameBox asm("??_R4EndGameBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10EndGameBox asm("??_R4EndGameBox@@6B@");
 // win1.41 008de9ec mac 1099ad24 EndGameBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10EndGameBox asm("??_7EndGameBox@@6B@");
 

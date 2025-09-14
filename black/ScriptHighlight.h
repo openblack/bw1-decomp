@@ -41,7 +41,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15ScriptHighlight a
 // win1.41 009b8fa0 mac inlined ScriptHighlight::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15ScriptHighlight asm("??_R3ScriptHighlight@@8");
 // win1.41 00942288 mac 109c45c8 ScriptHighlight::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15ScriptHighlight asm("??_R4ScriptHighlight@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15ScriptHighlight asm("??_R4ScriptHighlight@@6B@");
 // win1.41 0094228c mac 106fa600 ScriptHighlight::`vftable'
 extern const struct ObjectVftable __vt__15ScriptHighlight asm("??_7ScriptHighlight@@6B@");
 

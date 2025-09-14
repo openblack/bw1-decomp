@@ -29,7 +29,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14TerrainMapInfo as
 // win1.41 009ad308 mac inlined TerrainMapInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14TerrainMapInfo asm("??_R3TerrainMapInfo@@8");
 // win1.41 008df86c mac 10730b28 TerrainMapInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14TerrainMapInfo asm("??_R4TerrainMapInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14TerrainMapInfo asm("??_R4TerrainMapInfo@@6B@");
 // win1.41 008df870 mac 10730b30 TerrainMapInfo::`vftable'
 extern const struct BaseInfoVftable __vt__14TerrainMapInfo asm("??_7TerrainMapInfo@@6B@");
 

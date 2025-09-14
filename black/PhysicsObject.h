@@ -37,7 +37,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13PhysicsObject asm
 // win1.41 009b31e8 mac inlined PhysicsObject::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13PhysicsObject asm("??_R3PhysicsObject@@8");
 // win1.41 00932b90 mac 10746ec0 PhysicsObject::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PhysicsObject asm("??_R4PhysicsObject@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13PhysicsObject asm("??_R4PhysicsObject@@6B@");
 // win1.41 00932b94 mac 10746ec8 PhysicsObject::`vftable'
 extern const struct BaseVftable __vt__13PhysicsObject asm("??_7PhysicsObject@@6B@");
 

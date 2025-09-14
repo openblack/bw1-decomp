@@ -57,7 +57,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7FireFly asm("??_R2
 // win1.41 009ac2c0 mac inlined FireFly::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7FireFly asm("??_R3FireFly@@8");
 // win1.41 008da4f4 mac 1073f830 FireFly::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7FireFly asm("??_R4FireFly@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7FireFly asm("??_R4FireFly@@6B@");
 // win1.41 008da4f8 mac 106f5e14 FireFly::`vftable'
 extern const struct ObjectVftable __vt__7FireFly asm("??_7FireFly@@6B@");
 

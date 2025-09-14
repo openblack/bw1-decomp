@@ -46,7 +46,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20MiniDialogBoxOpti
 // win1.41 009aba70 mac inlined MiniDialogBoxOptions::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20MiniDialogBoxOptions asm("??_R3MiniDialogBoxOptions@@8");
 // win1.41 008d8668 mac 10999048 MiniDialogBoxOptions::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20MiniDialogBoxOptions asm("??_R4MiniDialogBoxOptions@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20MiniDialogBoxOptions asm("??_R4MiniDialogBoxOptions@@6B@");
 // win1.41 008d866c mac 10999050 MiniDialogBoxOptions::`vftable'
 extern const struct DialogBoxBaseVftable __vt__20MiniDialogBoxOptions asm("??_7MiniDialogBoxOptions@@6B@");
 

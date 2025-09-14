@@ -26,7 +26,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20HandStateMultiPic
 // win1.41 009b1040 mac inlined HandStateMultiPickUp::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20HandStateMultiPickUp asm("??_R3HandStateMultiPickUp@@8");
 // win1.41 00900b68 mac 1099b58c HandStateMultiPickUp::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20HandStateMultiPickUp asm("??_R4HandStateMultiPickUp@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20HandStateMultiPickUp asm("??_R4HandStateMultiPickUp@@6B@");
 // win1.41 00900b6c mac 1099b594 HandStateMultiPickUp::`vftable'
 extern const struct HandStateVftable __vt__20HandStateMultiPickUp asm("??_7HandStateMultiPickUp@@6B@");
 

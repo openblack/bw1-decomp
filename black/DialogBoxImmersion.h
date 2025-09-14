@@ -37,7 +37,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18DialogBoxImmersio
 // win1.41 009aba20 mac inlined DialogBoxImmersion::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18DialogBoxImmersion asm("??_R3DialogBoxImmersion@@8");
 // win1.41 008d8640 mac 109990a8 DialogBoxImmersion::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18DialogBoxImmersion asm("??_R4DialogBoxImmersion@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18DialogBoxImmersion asm("??_R4DialogBoxImmersion@@6B@");
 // win1.41 008d8644 mac 109990b0 DialogBoxImmersion::`vftable'
 extern const struct DialogBoxBaseVftable __vt__18DialogBoxImmersion asm("??_7DialogBoxImmersion@@6B@");
 

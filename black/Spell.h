@@ -112,7 +112,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Spell asm("??_R2Sp
 // win1.41 009b92b0 mac inlined Spell::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Spell asm("??_R3Spell@@8");
 // win1.41 009805ac mac 1075942c Spell::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Spell asm("??_R4Spell@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5Spell asm("??_R4Spell@@6B@");
 // win1.41 009805b0 mac 106f64a8 Spell::`vftable'
 extern const struct SpellVftable __vt__5Spell asm("??_7Spell@@6B@");
 

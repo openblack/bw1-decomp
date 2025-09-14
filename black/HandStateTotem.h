@@ -29,7 +29,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14HandStateTotem as
 // win1.41 009b1130 mac inlined HandStateTotem::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14HandStateTotem asm("??_R3HandStateTotem@@8");
 // win1.41 00900be0 mac 1099ba34 HandStateTotem::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14HandStateTotem asm("??_R4HandStateTotem@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14HandStateTotem asm("??_R4HandStateTotem@@6B@");
 // win1.41 00900be4 mac 1099ba3c HandStateTotem::`vftable'
 extern const struct HandStateVftable __vt__14HandStateTotem asm("??_7HandStateTotem@@6B@");
 

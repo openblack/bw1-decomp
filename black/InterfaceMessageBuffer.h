@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23GInterfaceMessage
 // win1.41 009b1650 mac inlined GInterfaceMessageBuffer::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23GInterfaceMessageBuffer asm("??_R3GInterfaceMessageBuffer@@8");
 // win1.41 0092aaa0 mac 1099f8dc GInterfaceMessageBuffer::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23GInterfaceMessageBuffer asm("??_R4GInterfaceMessageBuffer@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__23GInterfaceMessageBuffer asm("??_R4GInterfaceMessageBuffer@@6B@");
 // win1.41 0092aaa4 mac 1099f8e4 GInterfaceMessageBuffer::`vftable'
 extern const struct BaseVftable __vt__23GInterfaceMessageBuffer asm("??_7GInterfaceMessageBuffer@@6B@");
 

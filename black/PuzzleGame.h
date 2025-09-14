@@ -62,7 +62,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10PuzzleGame asm("?
 // win1.41 009ad9b0 mac inlined PuzzleGame::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10PuzzleGame asm("??_R3PuzzleGame@@8");
 // win1.41 008f2334 mac 10756934 PuzzleGame::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10PuzzleGame asm("??_R4PuzzleGame@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10PuzzleGame asm("??_R4PuzzleGame@@6B@");
 // win1.41 008f2338 mac 1075693c PuzzleGame::`vftable'
 extern const struct GameThingWithPosVftable __vt__10PuzzleGame asm("??_7PuzzleGame@@6B@");
 

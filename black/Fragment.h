@@ -47,7 +47,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Fragment asm("??_R
 // win1.41 009b9f08 mac inlined Fragment::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Fragment asm("??_R3Fragment@@8");
 // win1.41 0099aa94 mac 10746eac Fragment::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Fragment asm("??_R4Fragment@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Fragment asm("??_R4Fragment@@6B@");
 // win1.41 0099aa98 mac 106f601c Fragment::`vftable'
 extern const struct RockVftable __vt__8Fragment asm("??_7Fragment@@6B@");
 

@@ -41,7 +41,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13MagicFireBall asm
 // win1.41 009b3b50 mac inlined MagicFireBall::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13MagicFireBall asm("??_R3MagicFireBall@@8");
 // win1.41 00935958 mac 109afc28 MagicFireBall::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MagicFireBall asm("??_R4MagicFireBall@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13MagicFireBall asm("??_R4MagicFireBall@@6B@");
 // win1.41 0093595c mac 109afc30 MagicFireBall::`vftable'
 extern const struct ObjectVftable __vt__13MagicFireBall asm("??_7MagicFireBall@@6B@");
 

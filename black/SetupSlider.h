@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11SetupSlider asm("
 // win1.41 009a6630 mac inlined SetupSlider::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11SetupSlider asm("??_R3SetupSlider@@8");
 // win1.41 008ab2e8 mac 10731254 SetupSlider::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SetupSlider asm("??_R4SetupSlider@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11SetupSlider asm("??_R4SetupSlider@@6B@");
 // win1.41 008ab2ec mac 1073125c SetupSlider::`vftable'
 extern const struct SetupControlVftable __vt__11SetupSlider asm("??_7SetupSlider@@6B@");
 

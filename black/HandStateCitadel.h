@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16HandStateCitadel 
 // win1.41 009b0f00 mac inlined HandStateCitadel::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16HandStateCitadel asm("??_R3HandStateCitadel@@8");
 // win1.41 00900a7c mac 1099b18c HandStateCitadel::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16HandStateCitadel asm("??_R4HandStateCitadel@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16HandStateCitadel asm("??_R4HandStateCitadel@@6B@");
 // win1.41 00900a80 mac 1099b194 HandStateCitadel::`vftable'
 extern const struct HandStateVftable __vt__16HandStateCitadel asm("??_7HandStateCitadel@@6B@");
 

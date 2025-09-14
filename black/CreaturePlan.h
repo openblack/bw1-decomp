@@ -42,7 +42,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CreaturePlan asm(
 // win1.41 009a9478 mac inlined CreaturePlan::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CreaturePlan asm("??_R3CreaturePlan@@8");
 // win1.41 008cc7c8 mac 1098d1c0 CreaturePlan::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreaturePlan asm("??_R4CreaturePlan@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12CreaturePlan asm("??_R4CreaturePlan@@6B@");
 // win1.41 008cc7cc mac 1098d1c8 CreaturePlan::`vftable'
 extern const struct BaseVftable __vt__12CreaturePlan asm("??_7CreaturePlan@@6B@");
 

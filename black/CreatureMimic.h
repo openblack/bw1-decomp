@@ -42,7 +42,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18CreatureMimicStat
 // win1.41 009ab1a0 mac inlined CreatureMimicState::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18CreatureMimicState asm("??_R3CreatureMimicState@@8");
 // win1.41 008d05ec mac 1078751c CreatureMimicState::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureMimicState asm("??_R4CreatureMimicState@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18CreatureMimicState asm("??_R4CreatureMimicState@@6B@");
 // win1.41 008d05f0 mac 10787524 CreatureMimicState::`vftable'
 extern const struct BaseVftable __vt__18CreatureMimicState asm("??_7CreatureMimicState@@6B@");
 

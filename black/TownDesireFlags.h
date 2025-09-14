@@ -39,7 +39,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15TownDesireFlags a
 // win1.41 009ad698 mac inlined TownDesireFlags::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15TownDesireFlags asm("??_R3TownDesireFlags@@8");
 // win1.41 008e9b68 mac 1098d0cc TownDesireFlags::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15TownDesireFlags asm("??_R4TownDesireFlags@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15TownDesireFlags asm("??_R4TownDesireFlags@@6B@");
 // win1.41 008e9b6c mac 106f814c TownDesireFlags::`vftable'
 extern const struct ObjectVftable __vt__15TownDesireFlags asm("??_7TownDesireFlags@@6B@");
 

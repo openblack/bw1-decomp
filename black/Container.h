@@ -46,7 +46,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9Container asm("??_
 // win1.41 009a9228 mac inlined Container::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9Container asm("??_R3Container@@8");
 // win1.41 008cb97c mac 10739750 Container::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Container asm("??_R4Container@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9Container asm("??_R4Container@@6B@");
 // win1.41 008cb980 mac 10739758 Container::`vftable'
 extern const struct ContainerVftable __vt__9Container asm("??_7Container@@6B@");
 

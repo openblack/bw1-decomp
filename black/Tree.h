@@ -62,7 +62,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Tree asm("??_R2Tre
 // win1.41 009ad4a8 mac inlined Tree::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Tree asm("??_R3Tree@@8");
 // win1.41 008e92f0 mac 1075df20 Tree::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Tree asm("??_R4Tree@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__4Tree asm("??_R4Tree@@6B@");
 // win1.41 008e92f4 mac 106f65d0 Tree::`vftable'
 extern const struct TreeVftable __vt__4Tree asm("??_7Tree@@6B@");
 

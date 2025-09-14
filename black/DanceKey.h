@@ -33,7 +33,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13DanceKeyFrame asm
 // win1.41 009ab778 mac inlined DanceKeyFrame::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13DanceKeyFrame asm("??_R3DanceKeyFrame@@8");
 // win1.41 008d46ec mac 10997014 DanceKeyFrame::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DanceKeyFrame asm("??_R4DanceKeyFrame@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13DanceKeyFrame asm("??_R4DanceKeyFrame@@6B@");
 // win1.41 008d46f0 mac 1099701c DanceKeyFrame::`vftable'
 extern const struct GameThingVftable __vt__13DanceKeyFrame asm("??_7DanceKeyFrame@@6B@");
 

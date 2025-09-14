@@ -71,7 +71,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15SetupHLineGraph a
 // win1.41 009a67c0 mac inlined SetupHLineGraph::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15SetupHLineGraph asm("??_R3SetupHLineGraph@@8");
 // win1.41 008ab420 mac 10730fcc SetupHLineGraph::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupHLineGraph asm("??_R4SetupHLineGraph@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15SetupHLineGraph asm("??_R4SetupHLineGraph@@6B@");
 // win1.41 008ab424 mac 10730fd4 SetupHLineGraph::`vftable'
 extern const struct SetupHLineGraphVftable __vt__15SetupHLineGraph asm("??_7SetupHLineGraph@@6B@");
 

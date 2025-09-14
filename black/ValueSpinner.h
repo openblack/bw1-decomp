@@ -45,7 +45,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12ValueSpinner asm(
 // win1.41 009a8418 mac inlined ValueSpinner::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12ValueSpinner asm("??_R3ValueSpinner@@8");
 // win1.41 008c5898 mac 10737b54 ValueSpinner::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ValueSpinner asm("??_R4ValueSpinner@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12ValueSpinner asm("??_R4ValueSpinner@@6B@");
 // win1.41 008c589c mac 10737b5c ValueSpinner::`vftable'
 extern const struct ValueSpinnerVftable __vt__12ValueSpinner asm("??_7ValueSpinner@@6B@");
 

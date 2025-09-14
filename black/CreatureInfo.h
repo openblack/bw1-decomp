@@ -45,7 +45,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CreatureInfo asm(
 // win1.41 009a93d8 mac inlined CreatureInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CreatureInfo asm("??_R3CreatureInfo@@8");
 // win1.41 008cc754 mac 1077e340 CreatureInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureInfo asm("??_R4CreatureInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12CreatureInfo asm("??_R4CreatureInfo@@6B@");
 // win1.41 008cc758 mac 1077e348 CreatureInfo::`vftable'
 extern const struct GObjectInfoVftable __vt__12CreatureInfo asm("??_7CreatureInfo@@6B@");
 

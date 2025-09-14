@@ -55,7 +55,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10TownCentre asm("?
 // win1.41 009adac8 mac inlined TownCentre::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10TownCentre asm("??_R3TownCentre@@8");
 // win1.41 008e4bf8 mac 1077f15c TownCentre::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10TownCentre asm("??_R4TownCentre@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10TownCentre asm("??_R4TownCentre@@6B@");
 // win1.41 008e4bfc mac 106f6a44 TownCentre::`vftable'
 extern const struct MultiMapFixedVftable __vt__10TownCentre asm("??_7TownCentre@@6B@");
 

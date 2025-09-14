@@ -74,7 +74,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Field asm("??_R2Fi
 // win1.41 009ac268 mac inlined Field::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Field asm("??_R3Field@@8");
 // win1.41 008d9b78 mac 1073ee70 Field::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Field asm("??_R4Field@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5Field asm("??_R4Field@@6B@");
 // win1.41 008d9b7c mac 1073ee78 Field::`vftable'
 extern const struct MultiMapFixedVftable __vt__5Field asm("??_7Field@@6B@");
 

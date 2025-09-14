@@ -26,7 +26,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18CreatureBeliefLis
 // win1.41 009aa3d8 mac inlined CreatureBeliefList::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18CreatureBeliefList asm("??_R3CreatureBeliefList@@8");
 // win1.41 008cf908 mac 10787474 CreatureBeliefList::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureBeliefList asm("??_R4CreatureBeliefList@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18CreatureBeliefList asm("??_R4CreatureBeliefList@@6B@");
 // win1.41 008cf90c mac 1078747c CreatureBeliefList::`vftable'
 extern const struct BaseVftable __vt__18CreatureBeliefList asm("??_7CreatureBeliefList@@6B@");
 
@@ -56,7 +56,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19AllocatedBeliefLi
 // win1.41 009aaa68 mac inlined AllocatedBeliefList::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19AllocatedBeliefList asm("??_R3AllocatedBeliefList@@8");
 // win1.41 008cfe54 mac 107874ac AllocatedBeliefList::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19AllocatedBeliefList asm("??_R4AllocatedBeliefList@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__19AllocatedBeliefList asm("??_R4AllocatedBeliefList@@6B@");
 // win1.41 008cfe58 mac 107874b4 AllocatedBeliefList::`vftable'
 extern const struct BaseVftable __vt__19AllocatedBeliefList asm("??_7AllocatedBeliefList@@6B@");
 
@@ -85,7 +85,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15CreatureBeliefs a
 // win1.41 009aa388 mac inlined CreatureBeliefs::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15CreatureBeliefs asm("??_R3CreatureBeliefs@@8");
 // win1.41 008cf8e8 mac 109899cc CreatureBeliefs::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15CreatureBeliefs asm("??_R4CreatureBeliefs@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15CreatureBeliefs asm("??_R4CreatureBeliefs@@6B@");
 // win1.41 008cf8ec mac 109899d4 CreatureBeliefs::`vftable'
 extern const struct BaseVftable __vt__15CreatureBeliefs asm("??_7CreatureBeliefs@@6B@");
 

@@ -34,7 +34,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GStreetLight asm(
 // win1.41 009ada60 mac inlined GStreetLight::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GStreetLight asm("??_R3GStreetLight@@8");
 // win1.41 008eb134 mac 109e1864 GStreetLight::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GStreetLight asm("??_R4GStreetLight@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12GStreetLight asm("??_R4GStreetLight@@6B@");
 // win1.41 008eb138 mac 109e186c GStreetLight::`vftable'
 extern const struct GameThingWithPosVftable __vt__12GStreetLight asm("??_7GStreetLight@@6B@");
 

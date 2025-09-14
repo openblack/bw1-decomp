@@ -45,7 +45,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GGameInfo asm("??_
 // win1.41 009ad3f8 mac inlined GGameInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GGameInfo asm("??_R3GGameInfo@@8");
 // win1.41 008df8f4 mac 1099a584 GGameInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GGameInfo asm("??_R4GGameInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GGameInfo asm("??_R4GGameInfo@@6B@");
 // win1.41 008df8f8 mac 1099a58c GGameInfo::`vftable'
 extern const struct BaseVftable __vt__9GGameInfo asm("??_7GGameInfo@@6B@");
 

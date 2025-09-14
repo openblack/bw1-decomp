@@ -38,7 +38,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19MultiplayerDataba
 // win1.41 009b2d40 mac inlined MultiplayerDatabase::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19MultiplayerDatabase asm("??_R3MultiplayerDatabase@@8");
 // win1.41 009309f0 mac 10745c84 MultiplayerDatabase::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MultiplayerDatabase asm("??_R4MultiplayerDatabase@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__19MultiplayerDatabase asm("??_R4MultiplayerDatabase@@6B@");
 // win1.41 009309f4 mac 10745c8c MultiplayerDatabase::`vftable'
 extern const struct MultiplayerDatabaseVftable __vt__19MultiplayerDatabase asm("??_7MultiplayerDatabase@@6B@");
 

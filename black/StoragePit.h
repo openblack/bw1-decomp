@@ -52,7 +52,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10StoragePit asm("?
 // win1.41 009ad7f8 mac inlined StoragePit::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10StoragePit asm("??_R3StoragePit@@8");
 // win1.41 008f702c mac 10747800 StoragePit::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10StoragePit asm("??_R4StoragePit@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10StoragePit asm("??_R4StoragePit@@6B@");
 // win1.41 008f7030 mac 106f604c StoragePit::`vftable'
 extern const struct MultiMapFixedVftable __vt__10StoragePit asm("??_7StoragePit@@6B@");
 

@@ -80,7 +80,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GroupBehaviour as
 // win1.41 009b0e60 mac inlined GroupBehaviour::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GroupBehaviour asm("??_R3GroupBehaviour@@8");
 // win1.41 009003f4 mac 10744630 GroupBehaviour::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GroupBehaviour asm("??_R4GroupBehaviour@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14GroupBehaviour asm("??_R4GroupBehaviour@@6B@");
 // win1.41 009003f8 mac 106f5ebc GroupBehaviour::`vftable'
 extern const struct GroupBehaviourVftable __vt__14GroupBehaviour asm("??_7GroupBehaviour@@6B@");
 

@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17GMobileObjectInfo
 // win1.41 009b2000 mac inlined GMobileObjectInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17GMobileObjectInfo asm("??_R3GMobileObjectInfo@@8");
 // win1.41 009305c8 mac 10736eec GMobileObjectInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GMobileObjectInfo asm("??_R4GMobileObjectInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17GMobileObjectInfo asm("??_R4GMobileObjectInfo@@6B@");
 // win1.41 009305cc mac 10736ef4 GMobileObjectInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__17GMobileObjectInfo asm("??_7GMobileObjectInfo@@6B@");
 

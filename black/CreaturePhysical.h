@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17CreatureDamageMap
 // win1.41 009ab368 mac inlined CreatureDamageMap::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17CreatureDamageMap asm("??_R3CreatureDamageMap@@8");
 // win1.41 008d14ec mac 1077e114 CreatureDamageMap::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17CreatureDamageMap asm("??_R4CreatureDamageMap@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17CreatureDamageMap asm("??_R4CreatureDamageMap@@6B@");
 // win1.41 008d14f0 mac 1077e11c CreatureDamageMap::`vftable'
 extern const struct BaseVftable __vt__17CreatureDamageMap asm("??_7CreatureDamageMap@@6B@");
 
@@ -84,7 +84,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16CreaturePhysical 
 // win1.41 009ab318 mac inlined CreaturePhysical::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16CreaturePhysical asm("??_R3CreaturePhysical@@8");
 // win1.41 008d14cc mac 1077e14c CreaturePhysical::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16CreaturePhysical asm("??_R4CreaturePhysical@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16CreaturePhysical asm("??_R4CreaturePhysical@@6B@");
 // win1.41 008d14d0 mac 1077e154 CreaturePhysical::`vftable'
 extern const struct BaseVftable __vt__16CreaturePhysical asm("??_7CreaturePhysical@@6B@");
 

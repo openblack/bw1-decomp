@@ -51,7 +51,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GCamera asm("??_R2
 // win1.41 009a8818 mac inlined GCamera::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GCamera asm("??_R3GCamera@@8");
 // win1.41 008c710c mac 107770e8 GCamera::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GCamera asm("??_R4GCamera@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7GCamera asm("??_R4GCamera@@6B@");
 // win1.41 008c7110 mac 107770f0 GCamera::`vftable'
 extern const struct GameThingWithPosVftable __vt__7GCamera asm("??_7GCamera@@6B@");
 

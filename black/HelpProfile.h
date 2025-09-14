@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11HelpProfile asm("
 // win1.41 009b1270 mac inlined HelpProfile::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11HelpProfile asm("??_R3HelpProfile@@8");
 // win1.41 00915454 mac 1099be34 HelpProfile::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11HelpProfile asm("??_R4HelpProfile@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11HelpProfile asm("??_R4HelpProfile@@6B@");
 // win1.41 00915458 mac 1099be3c HelpProfile::`vftable'
 extern const struct BaseVftable __vt__11HelpProfile asm("??_7HelpProfile@@6B@");
 

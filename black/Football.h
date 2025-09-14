@@ -40,7 +40,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Football asm("??_R
 // win1.41 009ac5c8 mac inlined Football::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Football asm("??_R3Football@@8");
 // win1.41 008dd644 mac 109993e8 Football::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Football asm("??_R4Football@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Football asm("??_R4Football@@6B@");
 // win1.41 008dd648 mac 109993f0 Football::`vftable'
 extern const struct AbodeVftable __vt__8Football asm("??_7Football@@6B@");
 

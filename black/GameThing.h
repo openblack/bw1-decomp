@@ -249,7 +249,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GameThing asm("??_
 // win1.41 009b0520 mac inlined GameThing::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GameThing asm("??_R3GameThing@@8");
 // win1.41 008fff4c mac 10731394 GameThing::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GameThing asm("??_R4GameThing@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GameThing asm("??_R4GameThing@@6B@");
 // win1.41 008fff50 mac 107313a4 GameThing::`vftable'
 extern const struct GameThingVftable __vt__9GameThing asm("??_7GameThing@@6B@");
 

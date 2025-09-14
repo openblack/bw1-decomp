@@ -35,7 +35,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20StandardBuildingS
 // win1.41 009a8668 mac inlined StandardBuildingSite::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20StandardBuildingSite asm("??_R3StandardBuildingSite@@8");
 // win1.41 008c6df0 mac 10739334 StandardBuildingSite::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20StandardBuildingSite asm("??_R4StandardBuildingSite@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20StandardBuildingSite asm("??_R4StandardBuildingSite@@6B@");
 // win1.41 008c6df4 mac 1073933c StandardBuildingSite::`vftable'
 extern const struct BuildingSiteVftable __vt__20StandardBuildingSite asm("??_7StandardBuildingSite@@6B@");
 

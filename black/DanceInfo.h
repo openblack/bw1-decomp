@@ -28,7 +28,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GDanceInfo asm("?
 // win1.41 009ab570 mac inlined GDanceInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GDanceInfo asm("??_R3GDanceInfo@@8");
 // win1.41 008d3934 mac 1099548c GDanceInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GDanceInfo asm("??_R4GDanceInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GDanceInfo asm("??_R4GDanceInfo@@6B@");
 // win1.41 008d3938 mac 10995494 GDanceInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__10GDanceInfo asm("??_7GDanceInfo@@6B@");
 

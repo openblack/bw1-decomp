@@ -23,7 +23,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9BWGameSpy asm("??_
 // win1.41 009a8728 mac inlined BWGameSpy::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9BWGameSpy asm("??_R3BWGameSpy@@8");
 // win1.41 008c7058 mac 109edca4 BWGameSpy::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BWGameSpy asm("??_R4BWGameSpy@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9BWGameSpy asm("??_R4BWGameSpy@@6B@");
 // win1.41 008c705c mac 109edcac BWGameSpy::`vftable'
 extern const struct LayerCommunicationVftable __vt__9BWGameSpy asm("??_7BWGameSpy@@6B@");
 

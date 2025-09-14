@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10ChannelBox asm("?
 // win1.41 009aca88 mac inlined ChannelBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10ChannelBox asm("??_R3ChannelBox@@8");
 // win1.41 008dea38 mac 109a1fb0 ChannelBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10ChannelBox asm("??_R4ChannelBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10ChannelBox asm("??_R4ChannelBox@@6B@");
 // win1.41 008dea3c mac 109a1fb8 ChannelBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10ChannelBox asm("??_7ChannelBox@@6B@");
 

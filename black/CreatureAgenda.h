@@ -71,7 +71,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14CreatureAgenda as
 // win1.41 009aa428 mac inlined CreatureAgenda::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14CreatureAgenda asm("??_R3CreatureAgenda@@8");
 // win1.41 008cf94c mac 1078758c CreatureAgenda::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureAgenda asm("??_R4CreatureAgenda@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14CreatureAgenda asm("??_R4CreatureAgenda@@6B@");
 // win1.41 008cf950 mac 10787594 CreatureAgenda::`vftable'
 extern const struct BaseVftable __vt__14CreatureAgenda asm("??_7CreatureAgenda@@6B@");
 

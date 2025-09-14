@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8StatsBox asm("??_R
 // win1.41 009ac9e8 mac inlined StatsBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8StatsBox asm("??_R3StatsBox@@8");
 // win1.41 008dea10 mac 1099add0 StatsBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8StatsBox asm("??_R4StatsBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8StatsBox asm("??_R4StatsBox@@6B@");
 // win1.41 008dea14 mac 1099add8 StatsBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__8StatsBox asm("??_7StatsBox@@6B@");
 

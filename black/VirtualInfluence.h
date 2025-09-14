@@ -47,7 +47,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17GVirtualInfluence
 // win1.41 009b9ea0 mac inlined GVirtualInfluence::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17GVirtualInfluence asm("??_R3GVirtualInfluence@@8");
 // win1.41 0099aa6c mac 1075e9c4 GVirtualInfluence::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GVirtualInfluence asm("??_R4GVirtualInfluence@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17GVirtualInfluence asm("??_R4GVirtualInfluence@@6B@");
 // win1.41 0099aa70 mac 1075e9cc GVirtualInfluence::`vftable'
 extern const struct BaseVftable __vt__17GVirtualInfluence asm("??_7GVirtualInfluence@@6B@");
 

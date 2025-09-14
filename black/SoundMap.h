@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GSoundMap asm("??_
 // win1.41 009ad178 mac inlined GSoundMap::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GSoundMap asm("??_R3GSoundMap@@8");
 // win1.41 008df79c mac 109d7980 GSoundMap::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GSoundMap asm("??_R4GSoundMap@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GSoundMap asm("??_R4GSoundMap@@6B@");
 // win1.41 008df7a0 mac 109d7988 GSoundMap::`vftable'
 extern const struct BaseVftable __vt__9GSoundMap asm("??_7GSoundMap@@6B@");
 

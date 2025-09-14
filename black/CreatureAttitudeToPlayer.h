@@ -73,7 +73,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__24CreatureAttitudeT
 // win1.41 009a9c58 mac inlined CreatureAttitudeToPlayer::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__24CreatureAttitudeToPlayer asm("??_R3CreatureAttitudeToPlayer@@8");
 // win1.41 008cf3d8 mac 10783e38 CreatureAttitudeToPlayer::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__24CreatureAttitudeToPlayer asm("??_R4CreatureAttitudeToPlayer@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__24CreatureAttitudeToPlayer asm("??_R4CreatureAttitudeToPlayer@@6B@");
 // win1.41 008cf3dc mac 10783e40 CreatureAttitudeToPlayer::`vftable'
 extern const struct BaseVftable __vt__24CreatureAttitudeToPlayer asm("??_7CreatureAttitudeToPlayer@@6B@");
 

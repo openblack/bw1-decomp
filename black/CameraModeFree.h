@@ -27,7 +27,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14CameraModeFree as
 // win1.41 009a8af8 mac inlined CameraModeFree::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14CameraModeFree asm("??_R3CameraModeFree@@8");
 // win1.41 008c7954 mac 1077708c CameraModeFree::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CameraModeFree asm("??_R4CameraModeFree@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14CameraModeFree asm("??_R4CameraModeFree@@6B@");
 // win1.41 008c7958 mac 106f6780 CameraModeFree::`vftable'
 extern const struct CameraModeVftable __vt__14CameraModeFree asm("??_7CameraModeFree@@6B@");
 

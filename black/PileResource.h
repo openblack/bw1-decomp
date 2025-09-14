@@ -53,7 +53,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12PileResource asm(
 // win1.41 009b34c8 mac inlined PileResource::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12PileResource asm("??_R3PileResource@@8");
 // win1.41 009338d0 mac 107481fc PileResource::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PileResource asm("??_R4PileResource@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12PileResource asm("??_R4PileResource@@6B@");
 // win1.41 009338d4 mac 10748244 PileResource::`vftable'
 extern const struct PotVftable __vt__12PileResource asm("??_7PileResource@@6B@");
 

@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GJPSysInterface a
 // win1.41 009aecd0 mac inlined GJPSysInterface::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GJPSysInterface asm("??_R3GJPSysInterface@@8");
 // win1.41 008fa89c mac 109b880c GJPSysInterface::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GJPSysInterface asm("??_R4GJPSysInterface@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15GJPSysInterface asm("??_R4GJPSysInterface@@6B@");
 // win1.41 008fa8a0 mac 109b8814 GJPSysInterface::`vftable'
 extern const struct PSysInterfaceVftable __vt__15GJPSysInterface asm("??_7GJPSysInterface@@6B@");
 

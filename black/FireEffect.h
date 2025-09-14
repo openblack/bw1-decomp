@@ -48,7 +48,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10FireEffect asm("?
 // win1.41 009b9850 mac inlined FireEffect::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10FireEffect asm("??_R3FireEffect@@8");
 // win1.41 009996d0 mac 1075c8a4 FireEffect::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10FireEffect asm("??_R4FireEffect@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10FireEffect asm("??_R4FireEffect@@6B@");
 // win1.41 009996d4 mac 1075c8ac FireEffect::`vftable'
 extern const struct GameThingVftable __vt__10FireEffect asm("??_7FireEffect@@6B@");
 

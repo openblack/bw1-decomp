@@ -38,7 +38,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17GInterfaceCollide
 // win1.41 009b15b0 mac inlined GInterfaceCollide::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17GInterfaceCollide asm("??_R3GInterfaceCollide@@8");
 // win1.41 0092aac0 mac 10733130 GInterfaceCollide::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GInterfaceCollide asm("??_R4GInterfaceCollide@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17GInterfaceCollide asm("??_R4GInterfaceCollide@@6B@");
 // win1.41 0092aac4 mac 10733138 GInterfaceCollide::`vftable'
 extern const struct BaseVftable __vt__17GInterfaceCollide asm("??_7GInterfaceCollide@@6B@");
 

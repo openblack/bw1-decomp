@@ -100,7 +100,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10TempleRoom asm("?
 // win1.41 009babd0 mac inlined TempleRoom::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10TempleRoom asm("??_R3TempleRoom@@8");
 // win1.41 0099eec0 mac 10732ce8 TempleRoom::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10TempleRoom asm("??_R4TempleRoom@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10TempleRoom asm("??_R4TempleRoom@@6B@");
 // win1.41 0099eec4 mac 106f5af8 TempleRoom::`vftable'
 extern const struct TempleRoomVftable __vt__10TempleRoom asm("??_7TempleRoom@@6B@");
 

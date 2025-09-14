@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13ProfileEditor asm
 // win1.41 009acb28 mac inlined ProfileEditor::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13ProfileEditor asm("??_R3ProfileEditor@@8");
 // win1.41 008dec68 mac 109ed814 ProfileEditor::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ProfileEditor asm("??_R4ProfileEditor@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13ProfileEditor asm("??_R4ProfileEditor@@6B@");
 // win1.41 008dec6c mac 109ed81c ProfileEditor::`vftable'
 extern const struct DialogBoxBaseVftable __vt__13ProfileEditor asm("??_7ProfileEditor@@6B@");
 

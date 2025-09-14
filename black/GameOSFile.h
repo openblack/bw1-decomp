@@ -44,7 +44,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GameOSFile asm("?
 // win1.41 009ad448 mac inlined GameOSFile::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GameOSFile asm("??_R3GameOSFile@@8");
 // win1.41 008df95c mac 1099a69c GameOSFile::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GameOSFile asm("??_R4GameOSFile@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GameOSFile asm("??_R4GameOSFile@@6B@");
 // win1.41 008df960 mac 1099a6a4 GameOSFile::`vftable'
 extern const struct LHOSFileVftable __vt__10GameOSFile asm("??_7GameOSFile@@6B@");
 

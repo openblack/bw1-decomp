@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GFieldTypeInfo as
 // win1.41 009ac200 mac inlined GFieldTypeInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GFieldTypeInfo asm("??_R3GFieldTypeInfo@@8");
 // win1.41 008d9b2c mac 1073ed24 GFieldTypeInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GFieldTypeInfo asm("??_R4GFieldTypeInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14GFieldTypeInfo asm("??_R4GFieldTypeInfo@@6B@");
 // win1.41 008d9b30 mac 1073ed2c GFieldTypeInfo::`vftable'
 extern const struct MultiMapFixedVftable __vt__14GFieldTypeInfo asm("??_7GFieldTypeInfo@@6B@");
 

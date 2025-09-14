@@ -73,7 +73,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23CreaturePreviousA
 // win1.41 009ab3b8 mac inlined CreaturePreviousActions::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23CreaturePreviousActions asm("??_R3CreaturePreviousActions@@8");
 // win1.41 008d1548 mac 107875fc CreaturePreviousActions::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreaturePreviousActions asm("??_R4CreaturePreviousActions@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__23CreaturePreviousActions asm("??_R4CreaturePreviousActions@@6B@");
 // win1.41 008d154c mac 10787604 CreaturePreviousActions::`vftable'
 extern const struct BaseVftable __vt__23CreaturePreviousActions asm("??_7CreaturePreviousActions@@6B@");
 

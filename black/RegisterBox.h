@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11RegisterBox asm("
 // win1.41 009acb78 mac inlined RegisterBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11RegisterBox asm("??_R3RegisterBox@@8");
 // win1.41 008debc8 mac 109ed854 RegisterBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11RegisterBox asm("??_R4RegisterBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11RegisterBox asm("??_R4RegisterBox@@6B@");
 // win1.41 008debcc mac 109ed85c RegisterBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__11RegisterBox asm("??_7RegisterBox@@6B@");
 

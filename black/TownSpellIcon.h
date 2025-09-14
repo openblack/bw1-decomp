@@ -42,7 +42,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13TownSpellIcon asm
 // win1.41 009ae540 mac inlined TownSpellIcon::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13TownSpellIcon asm("??_R3TownSpellIcon@@8");
 // win1.41 008e7790 mac 109e5998 TownSpellIcon::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13TownSpellIcon asm("??_R4TownSpellIcon@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13TownSpellIcon asm("??_R4TownSpellIcon@@6B@");
 // win1.41 008e7794 mac 109e59d8 TownSpellIcon::`vftable'
 extern const struct MultiMapFixedVftable __vt__13TownSpellIcon asm("??_7TownSpellIcon@@6B@");
 

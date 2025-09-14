@@ -28,7 +28,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20DialogBoxSaveMess
 // win1.41 009abac0 mac inlined DialogBoxSaveMessage::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20DialogBoxSaveMessage asm("??_R3DialogBoxSaveMessage@@8");
 // win1.41 008d8694 mac 10999130 DialogBoxSaveMessage::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20DialogBoxSaveMessage asm("??_R4DialogBoxSaveMessage@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20DialogBoxSaveMessage asm("??_R4DialogBoxSaveMessage@@6B@");
 // win1.41 008d8698 mac 10999138 DialogBoxSaveMessage::`vftable'
 extern const struct DialogBoxBaseVftable __vt__20DialogBoxSaveMessage asm("??_7DialogBoxSaveMessage@@6B@");
 

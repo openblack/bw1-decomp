@@ -123,7 +123,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9Morphable asm("??_
 // win1.41 009a9260 mac inlined Morphable::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9Morphable asm("??_R3Morphable@@8");
 // win1.41 008cbef4 mac 1073d0fc Morphable::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Morphable asm("??_R4Morphable@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9Morphable asm("??_R4Morphable@@6B@");
 // win1.41 008cbef8 mac 1073d10c Morphable::`vftable'
 extern const struct MorphableVftable __vt__9Morphable asm("??_7Morphable@@6B@");
 

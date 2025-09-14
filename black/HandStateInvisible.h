@@ -27,7 +27,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18HandStateInvisibl
 // win1.41 009a9330 mac inlined HandStateInvisible::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18HandStateInvisible asm("??_R3HandStateInvisible@@8");
 // win1.41 008cbeb0 mac 1077db84 HandStateInvisible::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18HandStateInvisible asm("??_R4HandStateInvisible@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18HandStateInvisible asm("??_R4HandStateInvisible@@6B@");
 // win1.41 008cbeb4 mac 1077db8c HandStateInvisible::`vftable'
 extern const struct HandStateVftable __vt__18HandStateInvisible asm("??_7HandStateInvisible@@6B@");
 

@@ -34,7 +34,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12StartGameBox asm(
 // win1.41 009acd08 mac inlined StartGameBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12StartGameBox asm("??_R3StartGameBox@@8");
 // win1.41 008de998 mac 109ed694 StartGameBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12StartGameBox asm("??_R4StartGameBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12StartGameBox asm("??_R4StartGameBox@@6B@");
 // win1.41 008de99c mac 109ed69c StartGameBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__12StartGameBox asm("??_7StartGameBox@@6B@");
 

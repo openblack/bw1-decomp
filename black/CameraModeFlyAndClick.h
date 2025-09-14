@@ -22,7 +22,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21CameraModeFlyAndC
 // win1.41 009a8a08 mac inlined CameraModeFlyAndClick::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21CameraModeFlyAndClick asm("??_R3CameraModeFlyAndClick@@8");
 // win1.41 008c7810 mac inlined CameraModeFlyAndClick::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__21CameraModeFlyAndClick asm("??_R4CameraModeFlyAndClick@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__21CameraModeFlyAndClick asm("??_R4CameraModeFlyAndClick@@6B@");
 // win1.41 008c7814 mac inlined CameraModeFlyAndClick::`vftable'
 extern const struct CameraModeVftable __vt__21CameraModeFlyAndClick asm("??_7CameraModeFlyAndClick@@6B@");
 

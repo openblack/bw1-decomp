@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9LocalBase asm("??_
 // win1.41 009b11b8 mac inlined LocalBase::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9LocalBase asm("??_R3LocalBase@@8");
 // win1.41 008a9a40 mac 1099bd98 LocalBase::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9LocalBase asm("??_R4LocalBase@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9LocalBase asm("??_R4LocalBase@@6B@");
 // win1.41 008a9a44 mac 1099bda8 LocalBase::`vftable'
 extern const struct BaseVftable __vt__9LocalBase asm("??_7LocalBase@@6B@");
 

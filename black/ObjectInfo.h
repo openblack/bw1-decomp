@@ -99,7 +99,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GObjectInfo asm("
 // win1.41 009b2e18 mac inlined GObjectInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GObjectInfo asm("??_R3GObjectInfo@@8");
 // win1.41 00930a5c mac 10734630 GObjectInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GObjectInfo asm("??_R4GObjectInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11GObjectInfo asm("??_R4GObjectInfo@@6B@");
 // win1.41 00930a60 mac 10734638 GObjectInfo::`vftable'
 extern const struct GObjectInfoVftable __vt__11GObjectInfo asm("??_7GObjectInfo@@6B@");
 

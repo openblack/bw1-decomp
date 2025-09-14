@@ -34,7 +34,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GameStats asm("??_
 // win1.41 009b0490 mac inlined GameStats::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GameStats asm("??_R3GameStats@@8");
 // win1.41 008ffdbc mac 1099ab2c GameStats::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GameStats asm("??_R4GameStats@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GameStats asm("??_R4GameStats@@6B@");
 // win1.41 008ffdc0 mac 1099ab34 GameStats::`vftable'
 extern const struct GameThingVftable __vt__9GameStats asm("??_7GameStats@@6B@");
 

@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__24CreatureObjectsIn
 // win1.41 009ab100 mac inlined CreatureObjectsInspected::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__24CreatureObjectsInspected asm("??_R3CreatureObjectsInspected@@8");
 // win1.41 008d0544 mac 10787634 CreatureObjectsInspected::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__24CreatureObjectsInspected asm("??_R4CreatureObjectsInspected@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__24CreatureObjectsInspected asm("??_R4CreatureObjectsInspected@@6B@");
 // win1.41 008d0548 mac 1078763c CreatureObjectsInspected::`vftable'
 extern const struct BaseVftable __vt__24CreatureObjectsInspected asm("??_7CreatureObjectsInspected@@6B@");
 

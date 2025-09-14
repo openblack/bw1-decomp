@@ -146,7 +146,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13MultiMapFixed asm
 // win1.41 009ac458 mac inlined MultiMapFixed::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13MultiMapFixed asm("??_R3MultiMapFixed@@8");
 // win1.41 008dbf80 mac 107339b0 MultiMapFixed::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MultiMapFixed asm("??_R4MultiMapFixed@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13MultiMapFixed asm("??_R4MultiMapFixed@@6B@");
 // win1.41 008dbf84 mac 107339e0 MultiMapFixed::`vftable'
 extern const struct MultiMapFixedVftable __vt__13MultiMapFixed asm("??_7MultiMapFixed@@6B@");
 

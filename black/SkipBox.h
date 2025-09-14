@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7SkipBox asm("??_R2
 // win1.41 009acdf8 mac inlined SkipBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7SkipBox asm("??_R3SkipBox@@8");
 // win1.41 008dead8 mac 109ed6d4 SkipBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7SkipBox asm("??_R4SkipBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7SkipBox asm("??_R4SkipBox@@6B@");
 // win1.41 008deadc mac 109ed6dc SkipBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__7SkipBox asm("??_7SkipBox@@6B@");
 

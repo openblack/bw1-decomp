@@ -35,7 +35,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10HelpSpirit asm("?
 // win1.41 009b1328 mac inlined HelpSpirit::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10HelpSpirit asm("??_R3HelpSpirit@@8");
 // win1.41 009154b4 mac 1099bee0 HelpSpirit::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HelpSpirit asm("??_R4HelpSpirit@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10HelpSpirit asm("??_R4HelpSpirit@@6B@");
 // win1.41 009154b8 mac 1099bee8 HelpSpirit::`vftable'
 extern const struct ObjectVftable __vt__10HelpSpirit asm("??_7HelpSpirit@@6B@");
 

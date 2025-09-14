@@ -54,7 +54,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12VillagerName asm(
 // win1.41 009b9e00 mac inlined VillagerName::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12VillagerName asm("??_R3VillagerName@@8");
 // win1.41 0099a9b8 mac 109e9588 VillagerName::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12VillagerName asm("??_R4VillagerName@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12VillagerName asm("??_R4VillagerName@@6B@");
 // win1.41 0099a9bc mac 109e9590 VillagerName::`vftable'
 extern const struct DrawingObjectVftable __vt__12VillagerName asm("??_7VillagerName@@6B@");
 

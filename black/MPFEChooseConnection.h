@@ -27,7 +27,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20MPFEChooseConnect
 // win1.41 009b25c0 mac inlined MPFEChooseConnection::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20MPFEChooseConnection asm("??_R3MPFEChooseConnection@@8");
 // win1.41 009307d4 mac 109a2554 MPFEChooseConnection::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20MPFEChooseConnection asm("??_R4MPFEChooseConnection@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20MPFEChooseConnection asm("??_R4MPFEChooseConnection@@6B@");
 // win1.41 009307d8 mac 109a255c MPFEChooseConnection::`vftable'
 extern const struct DialogBoxBaseVftable __vt__20MPFEChooseConnection asm("??_7MPFEChooseConnection@@6B@");
 

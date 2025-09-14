@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SetupBigButton as
 // win1.41 009a6770 mac inlined SetupBigButton::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SetupBigButton asm("??_R3SetupBigButton@@8");
 // win1.41 008ab3dc mac 107310ac SetupBigButton::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupBigButton asm("??_R4SetupBigButton@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14SetupBigButton asm("??_R4SetupBigButton@@6B@");
 // win1.41 008ab3e0 mac 107310b4 SetupBigButton::`vftable'
 extern const struct SetupControlVftable __vt__14SetupBigButton asm("??_7SetupBigButton@@6B@");
 

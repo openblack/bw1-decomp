@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15SkirmishGameBox a
 // win1.41 009acad8 mac inlined SkirmishGameBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15SkirmishGameBox asm("??_R3SkirmishGameBox@@8");
 // win1.41 008de948 mac 109ed654 SkirmishGameBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SkirmishGameBox asm("??_R4SkirmishGameBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15SkirmishGameBox asm("??_R4SkirmishGameBox@@6B@");
 // win1.41 008de94c mac 109ed65c SkirmishGameBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__15SkirmishGameBox asm("??_7SkirmishGameBox@@6B@");
 

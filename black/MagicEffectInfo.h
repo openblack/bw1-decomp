@@ -75,7 +75,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GMagicEffectInfo 
 // win1.41 009abf48 mac inlined GMagicEffectInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GMagicEffectInfo asm("??_R3GMagicEffectInfo@@8");
 // win1.41 008d8b74 mac 1073d070 GMagicEffectInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GMagicEffectInfo asm("??_R4GMagicEffectInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16GMagicEffectInfo asm("??_R4GMagicEffectInfo@@6B@");
 // win1.41 008d8b78 mac 1073d078 GMagicEffectInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__16GMagicEffectInfo asm("??_7GMagicEffectInfo@@6B@");
 

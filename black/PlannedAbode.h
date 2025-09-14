@@ -41,7 +41,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12PlannedAbode asm(
 // win1.41 009a64e0 mac inlined PlannedAbode::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12PlannedAbode asm("??_R3PlannedAbode@@8");
 // win1.41 008aa3b8 mac 10746fa8 PlannedAbode::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PlannedAbode asm("??_R4PlannedAbode@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12PlannedAbode asm("??_R4PlannedAbode@@6B@");
 // win1.41 008aa3bc mac 10746fb0 PlannedAbode::`vftable'
 extern const struct PlannedMultiMapFixedVftable __vt__12PlannedAbode asm("??_7PlannedAbode@@6B@");
 

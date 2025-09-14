@@ -193,7 +193,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5GGame asm("??_R2GG
 // win1.41 009ad038 mac inlined GGame::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5GGame asm("??_R3GGame@@8");
 // win1.41 008df62c mac 10732e00 GGame::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5GGame asm("??_R4GGame@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5GGame asm("??_R4GGame@@6B@");
 // win1.41 008df630 mac 10732e08 GGame::`vftable'
 extern const struct GameThingVftable __vt__5GGame asm("??_7GGame@@6B@");
 

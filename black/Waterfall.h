@@ -34,7 +34,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GWaterfall asm("?
 // win1.41 009adb98 mac inlined GWaterfall::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GWaterfall asm("??_R3GWaterfall@@8");
 // win1.41 008ec148 mac 1075d4a0 GWaterfall::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GWaterfall asm("??_R4GWaterfall@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GWaterfall asm("??_R4GWaterfall@@6B@");
 // win1.41 008ec14c mac 1075d4a8 GWaterfall::`vftable'
 extern const struct ObjectVftable __vt__10GWaterfall asm("??_7GWaterfall@@6B@");
 

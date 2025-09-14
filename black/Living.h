@@ -70,7 +70,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19DataForScriptRemi
 // win1.41 009b1a48 mac inlined DataForScriptRemind::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19DataForScriptRemind asm("??_R3DataForScriptRemind@@8");
 // win1.41 0092b51c mac 109a0de0 DataForScriptRemind::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DataForScriptRemind asm("??_R4DataForScriptRemind@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__19DataForScriptRemind asm("??_R4DataForScriptRemind@@6B@");
 // win1.41 0092b520 mac 109a0de8 DataForScriptRemind::`vftable'
 extern const struct GameThingVftable __vt__19DataForScriptRemind asm("??_7DataForScriptRemind@@6B@");
 
@@ -338,7 +338,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Living asm("??_R2L
 // win1.41 009a9618 mac inlined Living::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Living asm("??_R3Living@@8");
 // win1.41 008cd390 mac 10732c98 Living::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Living asm("??_R4Living@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6Living asm("??_R4Living@@6B@");
 // win1.41 008cd394 mac 106f5ae0 Living::`vftable'
 extern const struct LivingVftable __vt__6Living asm("??_7Living@@6B@");
 

@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17GFootpathLinkSave
 // win1.41 009ac6b8 mac inlined GFootpathLinkSave::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17GFootpathLinkSave asm("??_R3GFootpathLinkSave@@8");
 // win1.41 008de1c0 mac 10743110 GFootpathLinkSave::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GFootpathLinkSave asm("??_R4GFootpathLinkSave@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17GFootpathLinkSave asm("??_R4GFootpathLinkSave@@6B@");
 // win1.41 008de1c4 mac 10743118 GFootpathLinkSave::`vftable'
 extern const struct GameThingVftable __vt__17GFootpathLinkSave asm("??_7GFootpathLinkSave@@6B@");
 

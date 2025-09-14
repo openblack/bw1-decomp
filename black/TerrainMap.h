@@ -26,7 +26,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GTerrainMap asm("
 // win1.41 009ad2b8 mac inlined GTerrainMap::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GTerrainMap asm("??_R3GTerrainMap@@8");
 // win1.41 008df81c mac 10730ba8 GTerrainMap::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GTerrainMap asm("??_R4GTerrainMap@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11GTerrainMap asm("??_R4GTerrainMap@@6B@");
 // win1.41 008df820 mac 10730bb0 GTerrainMap::`vftable'
 extern const struct BaseVftable __vt__11GTerrainMap asm("??_7GTerrainMap@@6B@");
 

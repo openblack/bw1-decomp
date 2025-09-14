@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8PileWood asm("??_R
 // win1.41 009adc50 mac inlined PileWood::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8PileWood asm("??_R3PileWood@@8");
 // win1.41 008e5d88 mac 10748250 PileWood::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PileWood asm("??_R4PileWood@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8PileWood asm("??_R4PileWood@@6B@");
 // win1.41 008e5d8c mac 10748258 PileWood::`vftable'
 extern const struct PotVftable __vt__8PileWood asm("??_7PileWood@@6B@");
 

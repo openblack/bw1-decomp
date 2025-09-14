@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19DialogBoxKeyBindi
 // win1.41 009ab908 mac inlined DialogBoxKeyBinding::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19DialogBoxKeyBinding asm("??_R3DialogBoxKeyBinding@@8");
 // win1.41 008d859c mac 10998f98 DialogBoxKeyBinding::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DialogBoxKeyBinding asm("??_R4DialogBoxKeyBinding@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__19DialogBoxKeyBinding asm("??_R4DialogBoxKeyBinding@@6B@");
 // win1.41 008d85a0 mac 10998fa0 DialogBoxKeyBinding::`vftable'
 extern const struct DialogBoxBaseVftable __vt__19DialogBoxKeyBinding asm("??_7DialogBoxKeyBinding@@6B@");
 

@@ -88,7 +88,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14CreatureMental as
 // win1.41 009aa338 mac inlined CreatureMental::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14CreatureMental asm("??_R3CreatureMental@@8");
 // win1.41 008cf8a8 mac 1078743c CreatureMental::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureMental asm("??_R4CreatureMental@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14CreatureMental asm("??_R4CreatureMental@@6B@");
 // win1.41 008cf8ac mac 10787444 CreatureMental::`vftable'
 extern const struct BaseVftable __vt__14CreatureMental asm("??_7CreatureMental@@6B@");
 

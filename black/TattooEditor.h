@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12TattooEditor asm(
 // win1.41 009acc68 mac inlined TattooEditor::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12TattooEditor asm("??_R3TattooEditor@@8");
 // win1.41 008debf0 mac 109ed754 TattooEditor::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12TattooEditor asm("??_R4TattooEditor@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12TattooEditor asm("??_R4TattooEditor@@6B@");
 // win1.41 008debf4 mac 109ed75c TattooEditor::`vftable'
 extern const struct DialogBoxBaseVftable __vt__12TattooEditor asm("??_7TattooEditor@@6B@");
 

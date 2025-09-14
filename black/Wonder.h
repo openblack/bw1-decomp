@@ -40,7 +40,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Wonder asm("??_R2W
 // win1.41 009ae450 mac inlined Wonder::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Wonder asm("??_R3Wonder@@8");
 // win1.41 008df968 mac 107605fc Wonder::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Wonder asm("??_R4Wonder@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6Wonder asm("??_R4Wonder@@6B@");
 // win1.41 008df96c mac 10760604 Wonder::`vftable'
 extern const struct MultiMapFixedVftable __vt__6Wonder asm("??_7Wonder@@6B@");
 

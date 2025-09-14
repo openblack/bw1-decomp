@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SetupTabButton as
 // win1.41 009a6860 mac inlined SetupTabButton::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SetupTabButton asm("??_R3SetupTabButton@@8");
 // win1.41 008ab4cc mac 10730f08 SetupTabButton::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupTabButton asm("??_R4SetupTabButton@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14SetupTabButton asm("??_R4SetupTabButton@@6B@");
 // win1.41 008ab4d0 mac 10730f10 SetupTabButton::`vftable'
 extern const struct SetupControlVftable __vt__14SetupTabButton asm("??_7SetupTabButton@@6B@");
 

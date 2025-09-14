@@ -45,7 +45,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9BigForest asm("??_
 // win1.41 009a84d0 mac inlined BigForest::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9BigForest asm("??_R3BigForest@@8");
 // win1.41 008c5900 mac 10783da4 BigForest::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BigForest asm("??_R4BigForest@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9BigForest asm("??_R4BigForest@@6B@");
 // win1.41 008c5904 mac 106f7ce0 BigForest::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__9BigForest asm("??_7BigForest@@6B@");
 

@@ -41,7 +41,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Workshop asm("??_R
 // win1.41 009ba298 mac inlined Workshop::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Workshop asm("??_R3Workshop@@8");
 // win1.41 0099bb1c mac 1075a25c Workshop::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Workshop asm("??_R4Workshop@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Workshop asm("??_R4Workshop@@6B@");
 // win1.41 0099bb20 mac 106f651c Workshop::`vftable'
 extern const struct AbodeVftable __vt__8Workshop asm("??_7Workshop@@6B@");
 

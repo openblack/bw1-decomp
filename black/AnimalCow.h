@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__3Cow asm("??_R2Cow@
 // win1.41 009a6d40 mac inlined Cow::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__3Cow asm("??_R3Cow@@8");
 // win1.41 008ad058 mac 1074b2d0 Cow::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__3Cow asm("??_R4Cow@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__3Cow asm("??_R4Cow@@6B@");
 // win1.41 008ad05c mac 1074b318 Cow::`vftable'
 extern const struct LivingVftable __vt__3Cow asm("??_7Cow@@6B@");
 
